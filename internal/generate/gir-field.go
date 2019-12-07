@@ -66,7 +66,7 @@ func (f *Field) generateGetterBody(g *jen.Group) {
 		Qual(gi.PackageName, f.record.giInfotype+"FieldGet").
 		Call(
 			jen.Id(f.record.giInfoGoName),
-			jen.Id(receiverName).Dot(fieldNameNative),
+			jen.Id(receiverName).Dot(nativeAccessorName).Call(),
 			jen.Lit(f.Name),
 		)
 
@@ -113,7 +113,7 @@ func (f *Field) generateSetterBody(g *jen.Group) {
 	}
 
 	if f.Type.isRecord() {
-		jenValue = jenValue.Dot(fieldNameNative)
+		jenValue = jenValue.Dot(nativeAccessorName).Call()
 	}
 
 	value := f.Type.createFromInArgument(jenValue)
@@ -135,7 +135,7 @@ func (f *Field) generateSetterBody(g *jen.Group) {
 		Qual(gi.PackageName, f.record.giInfotype+"FieldSet").
 		Call(
 			jen.Id(f.record.giInfoGoName),
-			jen.Id(receiverName).Dot(fieldNameNative),
+			jen.Id(receiverName).Dot(nativeAccessorName).Call(),
 			jen.Lit(f.Name),
 			jen.Id("argValue"),
 		)

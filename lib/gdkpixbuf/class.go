@@ -4,6 +4,7 @@ package gdkpixbuf
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
@@ -44,7 +45,7 @@ func PixbufNewFromNative(native unsafe.Pointer) *Pixbuf {
 
 // Object upcasts to *Object
 func (recv *Pixbuf) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -282,9 +283,78 @@ func PixbufNewFromResourceAtScale(resourcePath string, width int32, height int32
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_stream' : parameter 'stream' of type 'Gio.InputStream' not supported
+var pixbufNewFromStreamFunction *gi.Function
+var pixbufNewFromStreamFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_stream_at_scale' : parameter 'stream' of type 'Gio.InputStream' not supported
+func pixbufNewFromStreamFunction_Set() error {
+	var err error
+	pixbufNewFromStreamFunction_Once.Do(func() {
+		err = pixbufObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufNewFromStreamFunction, err = pixbufObject.InvokerNew("new_from_stream")
+	})
+	return err
+}
+
+// PixbufNewFromStream is a representation of the C type gdk_pixbuf_new_from_stream.
+func PixbufNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) *Pixbuf {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(stream.Native())
+	inArgs[1].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := pixbufNewFromStreamFunction_Set()
+	if err == nil {
+		ret = pixbufNewFromStreamFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PixbufNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
+
+var pixbufNewFromStreamAtScaleFunction *gi.Function
+var pixbufNewFromStreamAtScaleFunction_Once sync.Once
+
+func pixbufNewFromStreamAtScaleFunction_Set() error {
+	var err error
+	pixbufNewFromStreamAtScaleFunction_Once.Do(func() {
+		err = pixbufObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufNewFromStreamAtScaleFunction, err = pixbufObject.InvokerNew("new_from_stream_at_scale")
+	})
+	return err
+}
+
+// PixbufNewFromStreamAtScale is a representation of the C type gdk_pixbuf_new_from_stream_at_scale.
+func PixbufNewFromStreamAtScale(stream *gio.InputStream, width int32, height int32, preserveAspectRatio bool, cancellable *gio.Cancellable) *Pixbuf {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(stream.Native())
+	inArgs[1].SetInt32(width)
+	inArgs[2].SetInt32(height)
+	inArgs[3].SetBoolean(preserveAspectRatio)
+	inArgs[4].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := pixbufNewFromStreamAtScaleFunction_Set()
+	if err == nil {
+		ret = pixbufNewFromStreamAtScaleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PixbufNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_pixbuf_new_from_stream_finish' : parameter 'async_result' of type 'Gio.AsyncResult' not supported
 
@@ -308,7 +378,7 @@ func pixbufAddAlphaFunction_Set() error {
 // AddAlpha is a representation of the C type gdk_pixbuf_add_alpha.
 func (recv *Pixbuf) AddAlpha(substituteColor bool, r uint8, g uint8, b uint8) *Pixbuf {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(substituteColor)
 	inArgs[2].SetUint8(r)
 	inArgs[3].SetUint8(g)
@@ -344,7 +414,7 @@ func pixbufApplyEmbeddedOrientationFunction_Set() error {
 // ApplyEmbeddedOrientation is a representation of the C type gdk_pixbuf_apply_embedded_orientation.
 func (recv *Pixbuf) ApplyEmbeddedOrientation() *Pixbuf {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -376,8 +446,8 @@ func pixbufCompositeFunction_Set() error {
 // Composite is a representation of the C type gdk_pixbuf_composite.
 func (recv *Pixbuf) Composite(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType, overallAlpha int32) {
 	var inArgs [12]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(dest.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(dest.Native())
 	inArgs[2].SetInt32(destX)
 	inArgs[3].SetInt32(destY)
 	inArgs[4].SetInt32(destWidth)
@@ -415,8 +485,8 @@ func pixbufCompositeColorFunction_Set() error {
 // CompositeColor is a representation of the C type gdk_pixbuf_composite_color.
 func (recv *Pixbuf) CompositeColor(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType, overallAlpha int32, checkX int32, checkY int32, checkSize int32, color1 uint32, color2 uint32) {
 	var inArgs [17]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(dest.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(dest.Native())
 	inArgs[2].SetInt32(destX)
 	inArgs[3].SetInt32(destY)
 	inArgs[4].SetInt32(destWidth)
@@ -459,7 +529,7 @@ func pixbufCompositeColorSimpleFunction_Set() error {
 // CompositeColorSimple is a representation of the C type gdk_pixbuf_composite_color_simple.
 func (recv *Pixbuf) CompositeColorSimple(destWidth int32, destHeight int32, interpType InterpType, overallAlpha int32, checkSize int32, color1 uint32, color2 uint32) *Pixbuf {
 	var inArgs [8]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(destWidth)
 	inArgs[2].SetInt32(destHeight)
 	inArgs[3].SetInt32(int32(interpType))
@@ -498,7 +568,7 @@ func pixbufCopyFunction_Set() error {
 // Copy is a representation of the C type gdk_pixbuf_copy.
 func (recv *Pixbuf) Copy() *Pixbuf {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -530,12 +600,12 @@ func pixbufCopyAreaFunction_Set() error {
 // CopyArea is a representation of the C type gdk_pixbuf_copy_area.
 func (recv *Pixbuf) CopyArea(srcX int32, srcY int32, width int32, height int32, destPixbuf *Pixbuf, destX int32, destY int32) {
 	var inArgs [8]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(srcX)
 	inArgs[2].SetInt32(srcY)
 	inArgs[3].SetInt32(width)
 	inArgs[4].SetInt32(height)
-	inArgs[5].SetPointer(destPixbuf.native)
+	inArgs[5].SetPointer(destPixbuf.Native())
 	inArgs[6].SetInt32(destX)
 	inArgs[7].SetInt32(destY)
 
@@ -565,8 +635,8 @@ func pixbufCopyOptionsFunction_Set() error {
 // CopyOptions is a representation of the C type gdk_pixbuf_copy_options.
 func (recv *Pixbuf) CopyOptions(destPixbuf *Pixbuf) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(destPixbuf.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(destPixbuf.Native())
 
 	var ret gi.Argument
 
@@ -598,7 +668,7 @@ func pixbufFillFunction_Set() error {
 // Fill is a representation of the C type gdk_pixbuf_fill.
 func (recv *Pixbuf) Fill(pixel uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(pixel)
 
 	err := pixbufFillFunction_Set()
@@ -627,7 +697,7 @@ func pixbufFlipFunction_Set() error {
 // Flip is a representation of the C type gdk_pixbuf_flip.
 func (recv *Pixbuf) Flip(horizontal bool) *Pixbuf {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(horizontal)
 
 	var ret gi.Argument
@@ -660,7 +730,7 @@ func pixbufGetBitsPerSampleFunction_Set() error {
 // GetBitsPerSample is a representation of the C type gdk_pixbuf_get_bits_per_sample.
 func (recv *Pixbuf) GetBitsPerSample() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -692,7 +762,7 @@ func pixbufGetByteLengthFunction_Set() error {
 // GetByteLength is a representation of the C type gdk_pixbuf_get_byte_length.
 func (recv *Pixbuf) GetByteLength() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -724,7 +794,7 @@ func pixbufGetColorspaceFunction_Set() error {
 // GetColorspace is a representation of the C type gdk_pixbuf_get_colorspace.
 func (recv *Pixbuf) GetColorspace() Colorspace {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -756,7 +826,7 @@ func pixbufGetHasAlphaFunction_Set() error {
 // GetHasAlpha is a representation of the C type gdk_pixbuf_get_has_alpha.
 func (recv *Pixbuf) GetHasAlpha() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -788,7 +858,7 @@ func pixbufGetHeightFunction_Set() error {
 // GetHeight is a representation of the C type gdk_pixbuf_get_height.
 func (recv *Pixbuf) GetHeight() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -820,7 +890,7 @@ func pixbufGetNChannelsFunction_Set() error {
 // GetNChannels is a representation of the C type gdk_pixbuf_get_n_channels.
 func (recv *Pixbuf) GetNChannels() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -852,7 +922,7 @@ func pixbufGetOptionFunction_Set() error {
 // GetOption is a representation of the C type gdk_pixbuf_get_option.
 func (recv *Pixbuf) GetOption(key string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -887,7 +957,7 @@ func pixbufGetPixelsFunction_Set() error {
 // GetPixels is a representation of the C type gdk_pixbuf_get_pixels.
 func (recv *Pixbuf) GetPixels() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := pixbufGetPixelsFunction_Set()
 	if err == nil {
@@ -915,7 +985,7 @@ func pixbufGetPixelsWithLengthFunction_Set() error {
 // GetPixelsWithLength is a representation of the C type gdk_pixbuf_get_pixels_with_length.
 func (recv *Pixbuf) GetPixelsWithLength() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -947,7 +1017,7 @@ func pixbufGetRowstrideFunction_Set() error {
 // GetRowstride is a representation of the C type gdk_pixbuf_get_rowstride.
 func (recv *Pixbuf) GetRowstride() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -979,7 +1049,7 @@ func pixbufGetWidthFunction_Set() error {
 // GetWidth is a representation of the C type gdk_pixbuf_get_width.
 func (recv *Pixbuf) GetWidth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1011,7 +1081,7 @@ func pixbufNewSubpixbufFunction_Set() error {
 // NewSubpixbuf is a representation of the C type gdk_pixbuf_new_subpixbuf.
 func (recv *Pixbuf) NewSubpixbuf(srcX int32, srcY int32, width int32, height int32) *Pixbuf {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(srcX)
 	inArgs[2].SetInt32(srcY)
 	inArgs[3].SetInt32(width)
@@ -1049,7 +1119,7 @@ func pixbufReadPixelsFunction_Set() error {
 // ReadPixels is a representation of the C type gdk_pixbuf_read_pixels.
 func (recv *Pixbuf) ReadPixels() uint8 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1081,7 +1151,7 @@ func pixbufRefFunction_Set() error {
 // Ref is a representation of the C type gdk_pixbuf_ref.
 func (recv *Pixbuf) Ref() *Pixbuf {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1113,7 +1183,7 @@ func pixbufRemoveOptionFunction_Set() error {
 // RemoveOption is a representation of the C type gdk_pixbuf_remove_option.
 func (recv *Pixbuf) RemoveOption(key string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(key)
 
 	var ret gi.Argument
@@ -1146,7 +1216,7 @@ func pixbufRotateSimpleFunction_Set() error {
 // RotateSimple is a representation of the C type gdk_pixbuf_rotate_simple.
 func (recv *Pixbuf) RotateSimple(angle PixbufRotation) *Pixbuf {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(angle))
 
 	var ret gi.Argument
@@ -1179,8 +1249,8 @@ func pixbufSaturateAndPixelateFunction_Set() error {
 // SaturateAndPixelate is a representation of the C type gdk_pixbuf_saturate_and_pixelate.
 func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixelate bool) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(dest.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(dest.Native())
 	inArgs[2].SetFloat32(saturation)
 	inArgs[3].SetBoolean(pixelate)
 
@@ -1202,13 +1272,13 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 
 // UNSUPPORTED : C value 'gdk_pixbuf_save_to_callbackv' : parameter 'save_func' of type 'PixbufSaveFunc' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_save_to_stream' : parameter 'stream' of type 'Gio.OutputStream' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_save_to_stream' : parameter 'error' of type 'GLib.Error' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_save_to_stream_async' : parameter 'stream' of type 'Gio.OutputStream' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_save_to_stream_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_save_to_streamv' : parameter 'stream' of type 'Gio.OutputStream' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_save_to_streamv' : parameter 'option_keys' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_save_to_streamv_async' : parameter 'stream' of type 'Gio.OutputStream' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_save_to_streamv_async' : parameter 'option_keys' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gdk_pixbuf_savev' : parameter 'option_keys' of type 'nil' not supported
 
@@ -1230,8 +1300,8 @@ func pixbufScaleFunction_Set() error {
 // Scale is a representation of the C type gdk_pixbuf_scale.
 func (recv *Pixbuf) Scale(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType) {
 	var inArgs [11]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(dest.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(dest.Native())
 	inArgs[2].SetInt32(destX)
 	inArgs[3].SetInt32(destY)
 	inArgs[4].SetInt32(destWidth)
@@ -1268,7 +1338,7 @@ func pixbufScaleSimpleFunction_Set() error {
 // ScaleSimple is a representation of the C type gdk_pixbuf_scale_simple.
 func (recv *Pixbuf) ScaleSimple(destWidth int32, destHeight int32, interpType InterpType) *Pixbuf {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(destWidth)
 	inArgs[2].SetInt32(destHeight)
 	inArgs[3].SetInt32(int32(interpType))
@@ -1303,7 +1373,7 @@ func pixbufSetOptionFunction_Set() error {
 // SetOption is a representation of the C type gdk_pixbuf_set_option.
 func (recv *Pixbuf) SetOption(key string, value string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(key)
 	inArgs[2].SetString(value)
 
@@ -1337,7 +1407,7 @@ func pixbufUnrefFunction_Set() error {
 // Unref is a representation of the C type gdk_pixbuf_unref.
 func (recv *Pixbuf) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := pixbufUnrefFunction_Set()
 	if err == nil {
@@ -1381,7 +1451,7 @@ func PixbufAnimationNewFromNative(native unsafe.Pointer) *PixbufAnimation {
 
 // Object upcasts to *Object
 func (recv *PixbufAnimation) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -1465,7 +1535,40 @@ func PixbufAnimationNewFromResource(resourcePath string) *PixbufAnimation {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_animation_new_from_stream' : parameter 'stream' of type 'Gio.InputStream' not supported
+var pixbufAnimationNewFromStreamFunction *gi.Function
+var pixbufAnimationNewFromStreamFunction_Once sync.Once
+
+func pixbufAnimationNewFromStreamFunction_Set() error {
+	var err error
+	pixbufAnimationNewFromStreamFunction_Once.Do(func() {
+		err = pixbufAnimationObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufAnimationNewFromStreamFunction, err = pixbufAnimationObject.InvokerNew("new_from_stream")
+	})
+	return err
+}
+
+// PixbufAnimationNewFromStream is a representation of the C type gdk_pixbuf_animation_new_from_stream.
+func PixbufAnimationNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) *PixbufAnimation {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(stream.Native())
+	inArgs[1].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := pixbufAnimationNewFromStreamFunction_Set()
+	if err == nil {
+		ret = pixbufAnimationNewFromStreamFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PixbufAnimationNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_pixbuf_animation_new_from_stream_finish' : parameter 'async_result' of type 'Gio.AsyncResult' not supported
 
@@ -1487,7 +1590,7 @@ func pixbufAnimationGetHeightFunction_Set() error {
 // GetHeight is a representation of the C type gdk_pixbuf_animation_get_height.
 func (recv *PixbufAnimation) GetHeight() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1521,7 +1624,7 @@ func pixbufAnimationGetStaticImageFunction_Set() error {
 // GetStaticImage is a representation of the C type gdk_pixbuf_animation_get_static_image.
 func (recv *PixbufAnimation) GetStaticImage() *Pixbuf {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1553,7 +1656,7 @@ func pixbufAnimationGetWidthFunction_Set() error {
 // GetWidth is a representation of the C type gdk_pixbuf_animation_get_width.
 func (recv *PixbufAnimation) GetWidth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1585,7 +1688,7 @@ func pixbufAnimationIsStaticImageFunction_Set() error {
 // IsStaticImage is a representation of the C type gdk_pixbuf_animation_is_static_image.
 func (recv *PixbufAnimation) IsStaticImage() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1617,7 +1720,7 @@ func pixbufAnimationRefFunction_Set() error {
 // Ref is a representation of the C type gdk_pixbuf_animation_ref.
 func (recv *PixbufAnimation) Ref() *PixbufAnimation {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1649,7 +1752,7 @@ func pixbufAnimationUnrefFunction_Set() error {
 // Unref is a representation of the C type gdk_pixbuf_animation_unref.
 func (recv *PixbufAnimation) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := pixbufAnimationUnrefFunction_Set()
 	if err == nil {
@@ -1693,7 +1796,7 @@ func PixbufAnimationIterNewFromNative(native unsafe.Pointer) *PixbufAnimationIte
 
 // Object upcasts to *Object
 func (recv *PixbufAnimationIter) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -1729,7 +1832,7 @@ func pixbufAnimationIterGetDelayTimeFunction_Set() error {
 // GetDelayTime is a representation of the C type gdk_pixbuf_animation_iter_get_delay_time.
 func (recv *PixbufAnimationIter) GetDelayTime() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1761,7 +1864,7 @@ func pixbufAnimationIterGetPixbufFunction_Set() error {
 // GetPixbuf is a representation of the C type gdk_pixbuf_animation_iter_get_pixbuf.
 func (recv *PixbufAnimationIter) GetPixbuf() *Pixbuf {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1793,7 +1896,7 @@ func pixbufAnimationIterOnCurrentlyLoadingFrameFunction_Set() error {
 // OnCurrentlyLoadingFrame is a representation of the C type gdk_pixbuf_animation_iter_on_currently_loading_frame.
 func (recv *PixbufAnimationIter) OnCurrentlyLoadingFrame() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1841,7 +1944,7 @@ func PixbufLoaderNewFromNative(native unsafe.Pointer) *PixbufLoader {
 
 // Object upcasts to *Object
 func (recv *PixbufLoader) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -1857,9 +1960,19 @@ func (recv *PixbufLoader) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *PixbufLoader) FieldParentInstance() *gobject.Object {
+	argValue := gi.ObjectFieldGet(pixbufLoaderObject, recv.Native(), "parent_instance")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *PixbufLoader) SetFieldParentInstance(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(pixbufLoaderObject, recv.Native(), "parent_instance", argValue)
+}
 
 var pixbufLoaderNewFunction *gi.Function
 var pixbufLoaderNewFunction_Once sync.Once
@@ -1979,7 +2092,7 @@ func pixbufLoaderCloseFunction_Set() error {
 // Close is a representation of the C type gdk_pixbuf_loader_close.
 func (recv *PixbufLoader) Close() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2011,7 +2124,7 @@ func pixbufLoaderGetAnimationFunction_Set() error {
 // GetAnimation is a representation of the C type gdk_pixbuf_loader_get_animation.
 func (recv *PixbufLoader) GetAnimation() *PixbufAnimation {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2043,7 +2156,7 @@ func pixbufLoaderGetFormatFunction_Set() error {
 // GetFormat is a representation of the C type gdk_pixbuf_loader_get_format.
 func (recv *PixbufLoader) GetFormat() *PixbufFormat {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2075,7 +2188,7 @@ func pixbufLoaderGetPixbufFunction_Set() error {
 // GetPixbuf is a representation of the C type gdk_pixbuf_loader_get_pixbuf.
 func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2107,7 +2220,7 @@ func pixbufLoaderSetSizeFunction_Set() error {
 // SetSize is a representation of the C type gdk_pixbuf_loader_set_size.
 func (recv *PixbufLoader) SetSize(width int32, height int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(width)
 	inArgs[2].SetInt32(height)
 
@@ -2157,12 +2270,12 @@ func PixbufSimpleAnimNewFromNative(native unsafe.Pointer) *PixbufSimpleAnim {
 
 // PixbufAnimation upcasts to *PixbufAnimation
 func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {
-	return PixbufAnimationNewFromNative(recv.native)
+	return PixbufAnimationNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *PixbufSimpleAnim) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -2232,8 +2345,8 @@ func pixbufSimpleAnimAddFrameFunction_Set() error {
 // AddFrame is a representation of the C type gdk_pixbuf_simple_anim_add_frame.
 func (recv *PixbufSimpleAnim) AddFrame(pixbuf *Pixbuf) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(pixbuf.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(pixbuf.Native())
 
 	err := pixbufSimpleAnimAddFrameFunction_Set()
 	if err == nil {
@@ -2261,7 +2374,7 @@ func pixbufSimpleAnimGetLoopFunction_Set() error {
 // GetLoop is a representation of the C type gdk_pixbuf_simple_anim_get_loop.
 func (recv *PixbufSimpleAnim) GetLoop() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2293,7 +2406,7 @@ func pixbufSimpleAnimSetLoopFunction_Set() error {
 // SetLoop is a representation of the C type gdk_pixbuf_simple_anim_set_loop.
 func (recv *PixbufSimpleAnim) SetLoop(loop bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(loop)
 
 	err := pixbufSimpleAnimSetLoopFunction_Set()
@@ -2338,12 +2451,12 @@ func PixbufSimpleAnimIterNewFromNative(native unsafe.Pointer) *PixbufSimpleAnimI
 
 // PixbufAnimationIter upcasts to *PixbufAnimationIter
 func (recv *PixbufSimpleAnimIter) PixbufAnimationIter() *PixbufAnimationIter {
-	return PixbufAnimationIterNewFromNative(recv.native)
+	return PixbufAnimationIterNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *PixbufSimpleAnimIter) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*

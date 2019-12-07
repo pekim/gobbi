@@ -29,9 +29,9 @@ func focusTrackerNotifyFunction_Set() error {
 }
 
 // FocusTrackerNotify is a representation of the C type atk_focus_tracker_notify.
-func FocusTrackerNotify(object *Object) {
+func FocusTrackerNotify(object_ *Object) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(object.native)
+	inArgs[0].SetPointer(object_.Native())
 
 	err := focusTrackerNotifyFunction_Set()
 	if err == nil {

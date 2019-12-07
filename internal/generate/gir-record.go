@@ -268,7 +268,7 @@ func (r *Record) generateAncestorAccessors(f *file) {
 
 func (r *Record) generateAncestorAccessorBody(g *jen.Group, ancestor *Class) {
 	// recv.native
-	native := jen.Id(receiverName).Dot(fieldNameNative)
+	native := jen.Id(receiverName).Dot(nativeAccessorName).Call()
 
 	// SomeClassNewFromNative
 	//	OR
@@ -304,7 +304,7 @@ if the Object is not a %s.`,
 			Op("*").Qual(gobjectNs.goFullPackageName, "Object")).
 		Params(jen.Op("*").Id(r.goName)).
 		BlockFunc(func(g *jen.Group) {
-			native := jen.Id("object").Dot("Native").Call()
+			native := jen.Id("object").Dot(nativeAccessorName).Call()
 			g.Return(jen.Id(r.newFromNativeName).Call(native))
 		})
 
@@ -315,7 +315,7 @@ func (r *Record) generateNativeAccessor(f *file) {
 	f.
 		Func().
 		Params(jen.Id(receiverName).Op("*").Id(r.goName)).
-		Id("Native").
+		Id(nativeAccessorName).
 		Params().
 		Params(jen.Qual("unsafe", "Pointer")).
 		Block(jen.
@@ -325,11 +325,16 @@ func (r *Record) generateNativeAccessor(f *file) {
 	f.Line()
 }
 
-func (r *Record) createFromArgument(g *jen.Group, argName *jen.Statement, argValue *jen.Statement) {
+func (r *Record) createFromArgument(g *jen.Group, foreignNamespace *Namespace, argName *jen.Statement, argValue *jen.Statement) {
+	newFromNativeFunc := jen.Id(r.newFromNativeName)
+	if foreignNamespace != nil {
+		newFromNativeFunc = jen.Qual(foreignNamespace.goFullPackageName, r.newFromNativeName)
+	}
+
 	g.
 		Add(argName).
 		Op(":=").
-		Id(r.newFromNativeName).
+		Add(newFromNativeFunc).
 		Call(argValue)
 }
 
@@ -345,7 +350,7 @@ func (r *Record) generateStructFinalizer(f *file) {
 			// SomeStuct.Free(obj.native)
 			g.
 				Id(r.giInfoGoName).Dot("Free").
-				Call(jen.Id("obj").Dot(fieldNameNative))
+				Call(jen.Id("obj").Dot(nativeAccessorName).Call())
 		})
 }
 
@@ -382,7 +387,7 @@ func (r *Record) generateStructConstructor(f *file) {
 			struct_ := jen.
 				Id(r.giInfoGoName).Dot("Alloc").
 				Call()
-			r.createFromArgument(g, jen.Id("structGo"), struct_)
+			r.createFromArgument(g, nil, jen.Id("structGo"), struct_)
 
 			// GEN: runtime.SetFinalizer(structGo, finalizeSomeType)
 			g.

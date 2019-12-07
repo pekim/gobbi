@@ -4,6 +4,8 @@ package gtk
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gdk "github.com/pekim/gobbi/lib/gdk"
+	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
@@ -47,7 +49,7 @@ func (recv *AboutDialogClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AboutDialogClass) FieldParentClass() *DialogClass {
-	argValue := gi.StructFieldGet(aboutDialogClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(aboutDialogClassStruct, recv.Native(), "parent_class")
 	value := DialogClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -55,8 +57,8 @@ func (recv *AboutDialogClass) FieldParentClass() *DialogClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AboutDialogClass) SetFieldParentClass(value *DialogClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(aboutDialogClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(aboutDialogClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'activate_link' : for field getter : missing Type
@@ -91,7 +93,7 @@ func AboutDialogClassStruct() *AboutDialogClass {
 	return structGo
 }
 func finalizeAboutDialogClass(obj *AboutDialogClass) {
-	aboutDialogClassStruct.Free(obj.native)
+	aboutDialogClassStruct.Free(obj.Native())
 }
 
 var aboutDialogPrivateStruct *gi.Struct
@@ -140,7 +142,7 @@ func AboutDialogPrivateStruct() *AboutDialogPrivate {
 	return structGo
 }
 func finalizeAboutDialogPrivate(obj *AboutDialogPrivate) {
-	aboutDialogPrivateStruct.Free(obj.native)
+	aboutDialogPrivateStruct.Free(obj.Native())
 }
 
 var accelGroupClassStruct *gi.Struct
@@ -213,7 +215,7 @@ func AccelGroupClassStruct() *AccelGroupClass {
 	return structGo
 }
 func finalizeAccelGroupClass(obj *AccelGroupClass) {
-	accelGroupClassStruct.Free(obj.native)
+	accelGroupClassStruct.Free(obj.Native())
 }
 
 var accelGroupEntryStruct *gi.Struct
@@ -252,7 +254,7 @@ func (recv *AccelGroupEntry) Native() unsafe.Pointer {
 
 // FieldKey returns the C field 'key'.
 func (recv *AccelGroupEntry) FieldKey() *AccelKey {
-	argValue := gi.StructFieldGet(accelGroupEntryStruct, recv.native, "key")
+	argValue := gi.StructFieldGet(accelGroupEntryStruct, recv.Native(), "key")
 	value := AccelKeyNewFromNative(argValue.Pointer())
 	return value
 }
@@ -260,8 +262,8 @@ func (recv *AccelGroupEntry) FieldKey() *AccelKey {
 // SetFieldKey sets the value of the C field 'key'.
 func (recv *AccelGroupEntry) SetFieldKey(value *AccelKey) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(accelGroupEntryStruct, recv.native, "key", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(accelGroupEntryStruct, recv.Native(), "key", argValue)
 }
 
 // UNSUPPORTED : C value 'closure' : for field getter : no Go type for 'GObject.Closure'
@@ -270,7 +272,7 @@ func (recv *AccelGroupEntry) SetFieldKey(value *AccelKey) {
 
 // FieldAccelPathQuark returns the C field 'accel_path_quark'.
 func (recv *AccelGroupEntry) FieldAccelPathQuark() glib.Quark {
-	argValue := gi.StructFieldGet(accelGroupEntryStruct, recv.native, "accel_path_quark")
+	argValue := gi.StructFieldGet(accelGroupEntryStruct, recv.Native(), "accel_path_quark")
 	value := glib.Quark(argValue.Uint32())
 	return value
 }
@@ -279,7 +281,7 @@ func (recv *AccelGroupEntry) FieldAccelPathQuark() glib.Quark {
 func (recv *AccelGroupEntry) SetFieldAccelPathQuark(value glib.Quark) {
 	var argValue gi.Argument
 	argValue.SetUint32(uint32(value))
-	gi.StructFieldSet(accelGroupEntryStruct, recv.native, "accel_path_quark", argValue)
+	gi.StructFieldSet(accelGroupEntryStruct, recv.Native(), "accel_path_quark", argValue)
 }
 
 // AccelGroupEntryStruct creates an uninitialised AccelGroupEntry.
@@ -294,7 +296,7 @@ func AccelGroupEntryStruct() *AccelGroupEntry {
 	return structGo
 }
 func finalizeAccelGroupEntry(obj *AccelGroupEntry) {
-	accelGroupEntryStruct.Free(obj.native)
+	accelGroupEntryStruct.Free(obj.Native())
 }
 
 var accelGroupPrivateStruct *gi.Struct
@@ -343,7 +345,7 @@ func AccelGroupPrivateStruct() *AccelGroupPrivate {
 	return structGo
 }
 func finalizeAccelGroupPrivate(obj *AccelGroupPrivate) {
-	accelGroupPrivateStruct.Free(obj.native)
+	accelGroupPrivateStruct.Free(obj.Native())
 }
 
 var accelKeyStruct *gi.Struct
@@ -382,7 +384,7 @@ func (recv *AccelKey) Native() unsafe.Pointer {
 
 // FieldAccelKey returns the C field 'accel_key'.
 func (recv *AccelKey) FieldAccelKey() uint32 {
-	argValue := gi.StructFieldGet(accelKeyStruct, recv.native, "accel_key")
+	argValue := gi.StructFieldGet(accelKeyStruct, recv.Native(), "accel_key")
 	value := argValue.Uint32()
 	return value
 }
@@ -391,7 +393,7 @@ func (recv *AccelKey) FieldAccelKey() uint32 {
 func (recv *AccelKey) SetFieldAccelKey(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(accelKeyStruct, recv.native, "accel_key", argValue)
+	gi.StructFieldSet(accelKeyStruct, recv.Native(), "accel_key", argValue)
 }
 
 // UNSUPPORTED : C value 'accel_mods' : for field getter : no Go type for 'Gdk.ModifierType'
@@ -400,7 +402,7 @@ func (recv *AccelKey) SetFieldAccelKey(value uint32) {
 
 // FieldAccelFlags returns the C field 'accel_flags'.
 func (recv *AccelKey) FieldAccelFlags() uint32 {
-	argValue := gi.StructFieldGet(accelKeyStruct, recv.native, "accel_flags")
+	argValue := gi.StructFieldGet(accelKeyStruct, recv.Native(), "accel_flags")
 	value := argValue.Uint32()
 	return value
 }
@@ -409,7 +411,7 @@ func (recv *AccelKey) FieldAccelFlags() uint32 {
 func (recv *AccelKey) SetFieldAccelFlags(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(accelKeyStruct, recv.native, "accel_flags", argValue)
+	gi.StructFieldSet(accelKeyStruct, recv.Native(), "accel_flags", argValue)
 }
 
 // AccelKeyStruct creates an uninitialised AccelKey.
@@ -424,7 +426,7 @@ func AccelKeyStruct() *AccelKey {
 	return structGo
 }
 func finalizeAccelKey(obj *AccelKey) {
-	accelKeyStruct.Free(obj.native)
+	accelKeyStruct.Free(obj.Native())
 }
 
 var accelLabelClassStruct *gi.Struct
@@ -463,7 +465,7 @@ func (recv *AccelLabelClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AccelLabelClass) FieldParentClass() *LabelClass {
-	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.Native(), "parent_class")
 	value := LabelClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -471,13 +473,13 @@ func (recv *AccelLabelClass) FieldParentClass() *LabelClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AccelLabelClass) SetFieldParentClass(value *LabelClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(accelLabelClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(accelLabelClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // FieldSignalQuote1 returns the C field 'signal_quote1'.
 func (recv *AccelLabelClass) FieldSignalQuote1() string {
-	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.native, "signal_quote1")
+	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.Native(), "signal_quote1")
 	value := argValue.String(false)
 	return value
 }
@@ -486,12 +488,12 @@ func (recv *AccelLabelClass) FieldSignalQuote1() string {
 func (recv *AccelLabelClass) SetFieldSignalQuote1(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(accelLabelClassStruct, recv.native, "signal_quote1", argValue)
+	gi.StructFieldSet(accelLabelClassStruct, recv.Native(), "signal_quote1", argValue)
 }
 
 // FieldSignalQuote2 returns the C field 'signal_quote2'.
 func (recv *AccelLabelClass) FieldSignalQuote2() string {
-	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.native, "signal_quote2")
+	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.Native(), "signal_quote2")
 	value := argValue.String(false)
 	return value
 }
@@ -500,12 +502,12 @@ func (recv *AccelLabelClass) FieldSignalQuote2() string {
 func (recv *AccelLabelClass) SetFieldSignalQuote2(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(accelLabelClassStruct, recv.native, "signal_quote2", argValue)
+	gi.StructFieldSet(accelLabelClassStruct, recv.Native(), "signal_quote2", argValue)
 }
 
 // FieldModNameShift returns the C field 'mod_name_shift'.
 func (recv *AccelLabelClass) FieldModNameShift() string {
-	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.native, "mod_name_shift")
+	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.Native(), "mod_name_shift")
 	value := argValue.String(false)
 	return value
 }
@@ -514,12 +516,12 @@ func (recv *AccelLabelClass) FieldModNameShift() string {
 func (recv *AccelLabelClass) SetFieldModNameShift(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(accelLabelClassStruct, recv.native, "mod_name_shift", argValue)
+	gi.StructFieldSet(accelLabelClassStruct, recv.Native(), "mod_name_shift", argValue)
 }
 
 // FieldModNameControl returns the C field 'mod_name_control'.
 func (recv *AccelLabelClass) FieldModNameControl() string {
-	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.native, "mod_name_control")
+	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.Native(), "mod_name_control")
 	value := argValue.String(false)
 	return value
 }
@@ -528,12 +530,12 @@ func (recv *AccelLabelClass) FieldModNameControl() string {
 func (recv *AccelLabelClass) SetFieldModNameControl(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(accelLabelClassStruct, recv.native, "mod_name_control", argValue)
+	gi.StructFieldSet(accelLabelClassStruct, recv.Native(), "mod_name_control", argValue)
 }
 
 // FieldModNameAlt returns the C field 'mod_name_alt'.
 func (recv *AccelLabelClass) FieldModNameAlt() string {
-	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.native, "mod_name_alt")
+	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.Native(), "mod_name_alt")
 	value := argValue.String(false)
 	return value
 }
@@ -542,12 +544,12 @@ func (recv *AccelLabelClass) FieldModNameAlt() string {
 func (recv *AccelLabelClass) SetFieldModNameAlt(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(accelLabelClassStruct, recv.native, "mod_name_alt", argValue)
+	gi.StructFieldSet(accelLabelClassStruct, recv.Native(), "mod_name_alt", argValue)
 }
 
 // FieldModSeparator returns the C field 'mod_separator'.
 func (recv *AccelLabelClass) FieldModSeparator() string {
-	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.native, "mod_separator")
+	argValue := gi.StructFieldGet(accelLabelClassStruct, recv.Native(), "mod_separator")
 	value := argValue.String(false)
 	return value
 }
@@ -556,7 +558,7 @@ func (recv *AccelLabelClass) FieldModSeparator() string {
 func (recv *AccelLabelClass) SetFieldModSeparator(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(accelLabelClassStruct, recv.native, "mod_separator", argValue)
+	gi.StructFieldSet(accelLabelClassStruct, recv.Native(), "mod_separator", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -587,7 +589,7 @@ func AccelLabelClassStruct() *AccelLabelClass {
 	return structGo
 }
 func finalizeAccelLabelClass(obj *AccelLabelClass) {
-	accelLabelClassStruct.Free(obj.native)
+	accelLabelClassStruct.Free(obj.Native())
 }
 
 var accelLabelPrivateStruct *gi.Struct
@@ -636,7 +638,7 @@ func AccelLabelPrivateStruct() *AccelLabelPrivate {
 	return structGo
 }
 func finalizeAccelLabelPrivate(obj *AccelLabelPrivate) {
-	accelLabelPrivateStruct.Free(obj.native)
+	accelLabelPrivateStruct.Free(obj.Native())
 }
 
 var accelMapClassStruct *gi.Struct
@@ -685,7 +687,7 @@ func AccelMapClassStruct() *AccelMapClass {
 	return structGo
 }
 func finalizeAccelMapClass(obj *AccelMapClass) {
-	accelMapClassStruct.Free(obj.native)
+	accelMapClassStruct.Free(obj.Native())
 }
 
 var accessibleClassStruct *gi.Struct
@@ -758,7 +760,7 @@ func AccessibleClassStruct() *AccessibleClass {
 	return structGo
 }
 func finalizeAccessibleClass(obj *AccessibleClass) {
-	accessibleClassStruct.Free(obj.native)
+	accessibleClassStruct.Free(obj.Native())
 }
 
 var accessiblePrivateStruct *gi.Struct
@@ -807,7 +809,7 @@ func AccessiblePrivateStruct() *AccessiblePrivate {
 	return structGo
 }
 func finalizeAccessiblePrivate(obj *AccessiblePrivate) {
-	accessiblePrivateStruct.Free(obj.native)
+	accessiblePrivateStruct.Free(obj.Native())
 }
 
 var actionBarClassStruct *gi.Struct
@@ -872,7 +874,7 @@ func ActionBarClassStruct() *ActionBarClass {
 	return structGo
 }
 func finalizeActionBarClass(obj *ActionBarClass) {
-	actionBarClassStruct.Free(obj.native)
+	actionBarClassStruct.Free(obj.Native())
 }
 
 var actionBarPrivateStruct *gi.Struct
@@ -921,7 +923,7 @@ func ActionBarPrivateStruct() *ActionBarPrivate {
 	return structGo
 }
 func finalizeActionBarPrivate(obj *ActionBarPrivate) {
-	actionBarPrivateStruct.Free(obj.native)
+	actionBarPrivateStruct.Free(obj.Native())
 }
 
 var actionClassStruct *gi.Struct
@@ -1014,7 +1016,7 @@ func ActionClassStruct() *ActionClass {
 	return structGo
 }
 func finalizeActionClass(obj *ActionClass) {
-	actionClassStruct.Free(obj.native)
+	actionClassStruct.Free(obj.Native())
 }
 
 var actionEntryStruct *gi.Struct
@@ -1053,7 +1055,7 @@ func (recv *ActionEntry) Native() unsafe.Pointer {
 
 // FieldName returns the C field 'name'.
 func (recv *ActionEntry) FieldName() string {
-	argValue := gi.StructFieldGet(actionEntryStruct, recv.native, "name")
+	argValue := gi.StructFieldGet(actionEntryStruct, recv.Native(), "name")
 	value := argValue.String(false)
 	return value
 }
@@ -1062,12 +1064,12 @@ func (recv *ActionEntry) FieldName() string {
 func (recv *ActionEntry) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(actionEntryStruct, recv.native, "name", argValue)
+	gi.StructFieldSet(actionEntryStruct, recv.Native(), "name", argValue)
 }
 
 // FieldStockId returns the C field 'stock_id'.
 func (recv *ActionEntry) FieldStockId() string {
-	argValue := gi.StructFieldGet(actionEntryStruct, recv.native, "stock_id")
+	argValue := gi.StructFieldGet(actionEntryStruct, recv.Native(), "stock_id")
 	value := argValue.String(false)
 	return value
 }
@@ -1076,12 +1078,12 @@ func (recv *ActionEntry) FieldStockId() string {
 func (recv *ActionEntry) SetFieldStockId(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(actionEntryStruct, recv.native, "stock_id", argValue)
+	gi.StructFieldSet(actionEntryStruct, recv.Native(), "stock_id", argValue)
 }
 
 // FieldLabel returns the C field 'label'.
 func (recv *ActionEntry) FieldLabel() string {
-	argValue := gi.StructFieldGet(actionEntryStruct, recv.native, "label")
+	argValue := gi.StructFieldGet(actionEntryStruct, recv.Native(), "label")
 	value := argValue.String(false)
 	return value
 }
@@ -1090,12 +1092,12 @@ func (recv *ActionEntry) FieldLabel() string {
 func (recv *ActionEntry) SetFieldLabel(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(actionEntryStruct, recv.native, "label", argValue)
+	gi.StructFieldSet(actionEntryStruct, recv.Native(), "label", argValue)
 }
 
 // FieldAccelerator returns the C field 'accelerator'.
 func (recv *ActionEntry) FieldAccelerator() string {
-	argValue := gi.StructFieldGet(actionEntryStruct, recv.native, "accelerator")
+	argValue := gi.StructFieldGet(actionEntryStruct, recv.Native(), "accelerator")
 	value := argValue.String(false)
 	return value
 }
@@ -1104,12 +1106,12 @@ func (recv *ActionEntry) FieldAccelerator() string {
 func (recv *ActionEntry) SetFieldAccelerator(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(actionEntryStruct, recv.native, "accelerator", argValue)
+	gi.StructFieldSet(actionEntryStruct, recv.Native(), "accelerator", argValue)
 }
 
 // FieldTooltip returns the C field 'tooltip'.
 func (recv *ActionEntry) FieldTooltip() string {
-	argValue := gi.StructFieldGet(actionEntryStruct, recv.native, "tooltip")
+	argValue := gi.StructFieldGet(actionEntryStruct, recv.Native(), "tooltip")
 	value := argValue.String(false)
 	return value
 }
@@ -1118,7 +1120,7 @@ func (recv *ActionEntry) FieldTooltip() string {
 func (recv *ActionEntry) SetFieldTooltip(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(actionEntryStruct, recv.native, "tooltip", argValue)
+	gi.StructFieldSet(actionEntryStruct, recv.Native(), "tooltip", argValue)
 }
 
 // UNSUPPORTED : C value 'callback' : for field getter : no Go type for 'GObject.Callback'
@@ -1137,7 +1139,7 @@ func ActionEntryStruct() *ActionEntry {
 	return structGo
 }
 func finalizeActionEntry(obj *ActionEntry) {
-	actionEntryStruct.Free(obj.native)
+	actionEntryStruct.Free(obj.Native())
 }
 
 var actionGroupClassStruct *gi.Struct
@@ -1210,7 +1212,7 @@ func ActionGroupClassStruct() *ActionGroupClass {
 	return structGo
 }
 func finalizeActionGroupClass(obj *ActionGroupClass) {
-	actionGroupClassStruct.Free(obj.native)
+	actionGroupClassStruct.Free(obj.Native())
 }
 
 var actionGroupPrivateStruct *gi.Struct
@@ -1259,7 +1261,7 @@ func ActionGroupPrivateStruct() *ActionGroupPrivate {
 	return structGo
 }
 func finalizeActionGroupPrivate(obj *ActionGroupPrivate) {
-	actionGroupPrivateStruct.Free(obj.native)
+	actionGroupPrivateStruct.Free(obj.Native())
 }
 
 var actionPrivateStruct *gi.Struct
@@ -1308,7 +1310,7 @@ func ActionPrivateStruct() *ActionPrivate {
 	return structGo
 }
 func finalizeActionPrivate(obj *ActionPrivate) {
-	actionPrivateStruct.Free(obj.native)
+	actionPrivateStruct.Free(obj.Native())
 }
 
 var actionableInterfaceStruct *gi.Struct
@@ -1373,7 +1375,7 @@ func ActionableInterfaceStruct() *ActionableInterface {
 	return structGo
 }
 func finalizeActionableInterface(obj *ActionableInterface) {
-	actionableInterfaceStruct.Free(obj.native)
+	actionableInterfaceStruct.Free(obj.Native())
 }
 
 var activatableIfaceStruct *gi.Struct
@@ -1430,7 +1432,7 @@ func ActivatableIfaceStruct() *ActivatableIface {
 	return structGo
 }
 func finalizeActivatableIface(obj *ActivatableIface) {
-	activatableIfaceStruct.Free(obj.native)
+	activatableIfaceStruct.Free(obj.Native())
 }
 
 var adjustmentClassStruct *gi.Struct
@@ -1507,7 +1509,7 @@ func AdjustmentClassStruct() *AdjustmentClass {
 	return structGo
 }
 func finalizeAdjustmentClass(obj *AdjustmentClass) {
-	adjustmentClassStruct.Free(obj.native)
+	adjustmentClassStruct.Free(obj.Native())
 }
 
 var adjustmentPrivateStruct *gi.Struct
@@ -1556,7 +1558,7 @@ func AdjustmentPrivateStruct() *AdjustmentPrivate {
 	return structGo
 }
 func finalizeAdjustmentPrivate(obj *AdjustmentPrivate) {
-	adjustmentPrivateStruct.Free(obj.native)
+	adjustmentPrivateStruct.Free(obj.Native())
 }
 
 var alignmentClassStruct *gi.Struct
@@ -1595,7 +1597,7 @@ func (recv *AlignmentClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AlignmentClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(alignmentClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(alignmentClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1603,8 +1605,8 @@ func (recv *AlignmentClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AlignmentClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(alignmentClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(alignmentClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -1635,7 +1637,7 @@ func AlignmentClassStruct() *AlignmentClass {
 	return structGo
 }
 func finalizeAlignmentClass(obj *AlignmentClass) {
-	alignmentClassStruct.Free(obj.native)
+	alignmentClassStruct.Free(obj.Native())
 }
 
 var alignmentPrivateStruct *gi.Struct
@@ -1684,7 +1686,7 @@ func AlignmentPrivateStruct() *AlignmentPrivate {
 	return structGo
 }
 func finalizeAlignmentPrivate(obj *AlignmentPrivate) {
-	alignmentPrivateStruct.Free(obj.native)
+	alignmentPrivateStruct.Free(obj.Native())
 }
 
 var appChooserButtonClassStruct *gi.Struct
@@ -1723,7 +1725,7 @@ func (recv *AppChooserButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AppChooserButtonClass) FieldParentClass() *ComboBoxClass {
-	argValue := gi.StructFieldGet(appChooserButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(appChooserButtonClassStruct, recv.Native(), "parent_class")
 	value := ComboBoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1731,8 +1733,8 @@ func (recv *AppChooserButtonClass) FieldParentClass() *ComboBoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AppChooserButtonClass) SetFieldParentClass(value *ComboBoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(appChooserButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(appChooserButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'custom_item_activated' : for field getter : missing Type
@@ -1751,7 +1753,7 @@ func AppChooserButtonClassStruct() *AppChooserButtonClass {
 	return structGo
 }
 func finalizeAppChooserButtonClass(obj *AppChooserButtonClass) {
-	appChooserButtonClassStruct.Free(obj.native)
+	appChooserButtonClassStruct.Free(obj.Native())
 }
 
 var appChooserButtonPrivateStruct *gi.Struct
@@ -1800,7 +1802,7 @@ func AppChooserButtonPrivateStruct() *AppChooserButtonPrivate {
 	return structGo
 }
 func finalizeAppChooserButtonPrivate(obj *AppChooserButtonPrivate) {
-	appChooserButtonPrivateStruct.Free(obj.native)
+	appChooserButtonPrivateStruct.Free(obj.Native())
 }
 
 var appChooserDialogClassStruct *gi.Struct
@@ -1839,7 +1841,7 @@ func (recv *AppChooserDialogClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AppChooserDialogClass) FieldParentClass() *DialogClass {
-	argValue := gi.StructFieldGet(appChooserDialogClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(appChooserDialogClassStruct, recv.Native(), "parent_class")
 	value := DialogClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1847,8 +1849,8 @@ func (recv *AppChooserDialogClass) FieldParentClass() *DialogClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AppChooserDialogClass) SetFieldParentClass(value *DialogClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(appChooserDialogClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(appChooserDialogClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // AppChooserDialogClassStruct creates an uninitialised AppChooserDialogClass.
@@ -1863,7 +1865,7 @@ func AppChooserDialogClassStruct() *AppChooserDialogClass {
 	return structGo
 }
 func finalizeAppChooserDialogClass(obj *AppChooserDialogClass) {
-	appChooserDialogClassStruct.Free(obj.native)
+	appChooserDialogClassStruct.Free(obj.Native())
 }
 
 var appChooserDialogPrivateStruct *gi.Struct
@@ -1912,7 +1914,7 @@ func AppChooserDialogPrivateStruct() *AppChooserDialogPrivate {
 	return structGo
 }
 func finalizeAppChooserDialogPrivate(obj *AppChooserDialogPrivate) {
-	appChooserDialogPrivateStruct.Free(obj.native)
+	appChooserDialogPrivateStruct.Free(obj.Native())
 }
 
 var appChooserWidgetClassStruct *gi.Struct
@@ -1951,7 +1953,7 @@ func (recv *AppChooserWidgetClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AppChooserWidgetClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(appChooserWidgetClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(appChooserWidgetClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1959,8 +1961,8 @@ func (recv *AppChooserWidgetClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AppChooserWidgetClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(appChooserWidgetClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(appChooserWidgetClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'application_selected' : for field getter : missing Type
@@ -1987,7 +1989,7 @@ func AppChooserWidgetClassStruct() *AppChooserWidgetClass {
 	return structGo
 }
 func finalizeAppChooserWidgetClass(obj *AppChooserWidgetClass) {
-	appChooserWidgetClassStruct.Free(obj.native)
+	appChooserWidgetClassStruct.Free(obj.Native())
 }
 
 var appChooserWidgetPrivateStruct *gi.Struct
@@ -2036,7 +2038,7 @@ func AppChooserWidgetPrivateStruct() *AppChooserWidgetPrivate {
 	return structGo
 }
 func finalizeAppChooserWidgetPrivate(obj *AppChooserWidgetPrivate) {
-	appChooserWidgetPrivateStruct.Free(obj.native)
+	appChooserWidgetPrivateStruct.Free(obj.Native())
 }
 
 var applicationClassStruct *gi.Struct
@@ -2097,7 +2099,7 @@ func ApplicationClassStruct() *ApplicationClass {
 	return structGo
 }
 func finalizeApplicationClass(obj *ApplicationClass) {
-	applicationClassStruct.Free(obj.native)
+	applicationClassStruct.Free(obj.Native())
 }
 
 var applicationPrivateStruct *gi.Struct
@@ -2146,7 +2148,7 @@ func ApplicationPrivateStruct() *ApplicationPrivate {
 	return structGo
 }
 func finalizeApplicationPrivate(obj *ApplicationPrivate) {
-	applicationPrivateStruct.Free(obj.native)
+	applicationPrivateStruct.Free(obj.Native())
 }
 
 var applicationWindowClassStruct *gi.Struct
@@ -2185,7 +2187,7 @@ func (recv *ApplicationWindowClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ApplicationWindowClass) FieldParentClass() *WindowClass {
-	argValue := gi.StructFieldGet(applicationWindowClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(applicationWindowClassStruct, recv.Native(), "parent_class")
 	value := WindowClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -2193,8 +2195,8 @@ func (recv *ApplicationWindowClass) FieldParentClass() *WindowClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ApplicationWindowClass) SetFieldParentClass(value *WindowClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(applicationWindowClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(applicationWindowClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ApplicationWindowClassStruct creates an uninitialised ApplicationWindowClass.
@@ -2209,7 +2211,7 @@ func ApplicationWindowClassStruct() *ApplicationWindowClass {
 	return structGo
 }
 func finalizeApplicationWindowClass(obj *ApplicationWindowClass) {
-	applicationWindowClassStruct.Free(obj.native)
+	applicationWindowClassStruct.Free(obj.Native())
 }
 
 var applicationWindowPrivateStruct *gi.Struct
@@ -2258,7 +2260,7 @@ func ApplicationWindowPrivateStruct() *ApplicationWindowPrivate {
 	return structGo
 }
 func finalizeApplicationWindowPrivate(obj *ApplicationWindowPrivate) {
-	applicationWindowPrivateStruct.Free(obj.native)
+	applicationWindowPrivateStruct.Free(obj.Native())
 }
 
 var arrowAccessibleClassStruct *gi.Struct
@@ -2297,7 +2299,7 @@ func (recv *ArrowAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ArrowAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
-	argValue := gi.StructFieldGet(arrowAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(arrowAccessibleClassStruct, recv.Native(), "parent_class")
 	value := WidgetAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -2305,8 +2307,8 @@ func (recv *ArrowAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ArrowAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(arrowAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(arrowAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ArrowAccessibleClassStruct creates an uninitialised ArrowAccessibleClass.
@@ -2321,7 +2323,7 @@ func ArrowAccessibleClassStruct() *ArrowAccessibleClass {
 	return structGo
 }
 func finalizeArrowAccessibleClass(obj *ArrowAccessibleClass) {
-	arrowAccessibleClassStruct.Free(obj.native)
+	arrowAccessibleClassStruct.Free(obj.Native())
 }
 
 var arrowAccessiblePrivateStruct *gi.Struct
@@ -2370,7 +2372,7 @@ func ArrowAccessiblePrivateStruct() *ArrowAccessiblePrivate {
 	return structGo
 }
 func finalizeArrowAccessiblePrivate(obj *ArrowAccessiblePrivate) {
-	arrowAccessiblePrivateStruct.Free(obj.native)
+	arrowAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var arrowClassStruct *gi.Struct
@@ -2409,7 +2411,7 @@ func (recv *ArrowClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ArrowClass) FieldParentClass() *MiscClass {
-	argValue := gi.StructFieldGet(arrowClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(arrowClassStruct, recv.Native(), "parent_class")
 	value := MiscClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -2417,8 +2419,8 @@ func (recv *ArrowClass) FieldParentClass() *MiscClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ArrowClass) SetFieldParentClass(value *MiscClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(arrowClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(arrowClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -2449,7 +2451,7 @@ func ArrowClassStruct() *ArrowClass {
 	return structGo
 }
 func finalizeArrowClass(obj *ArrowClass) {
-	arrowClassStruct.Free(obj.native)
+	arrowClassStruct.Free(obj.Native())
 }
 
 var arrowPrivateStruct *gi.Struct
@@ -2498,7 +2500,7 @@ func ArrowPrivateStruct() *ArrowPrivate {
 	return structGo
 }
 func finalizeArrowPrivate(obj *ArrowPrivate) {
-	arrowPrivateStruct.Free(obj.native)
+	arrowPrivateStruct.Free(obj.Native())
 }
 
 var aspectFrameClassStruct *gi.Struct
@@ -2537,7 +2539,7 @@ func (recv *AspectFrameClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AspectFrameClass) FieldParentClass() *FrameClass {
-	argValue := gi.StructFieldGet(aspectFrameClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(aspectFrameClassStruct, recv.Native(), "parent_class")
 	value := FrameClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -2545,8 +2547,8 @@ func (recv *AspectFrameClass) FieldParentClass() *FrameClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AspectFrameClass) SetFieldParentClass(value *FrameClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(aspectFrameClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(aspectFrameClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -2577,7 +2579,7 @@ func AspectFrameClassStruct() *AspectFrameClass {
 	return structGo
 }
 func finalizeAspectFrameClass(obj *AspectFrameClass) {
-	aspectFrameClassStruct.Free(obj.native)
+	aspectFrameClassStruct.Free(obj.Native())
 }
 
 var aspectFramePrivateStruct *gi.Struct
@@ -2626,7 +2628,7 @@ func AspectFramePrivateStruct() *AspectFramePrivate {
 	return structGo
 }
 func finalizeAspectFramePrivate(obj *AspectFramePrivate) {
-	aspectFramePrivateStruct.Free(obj.native)
+	aspectFramePrivateStruct.Free(obj.Native())
 }
 
 var assistantClassStruct *gi.Struct
@@ -2665,7 +2667,7 @@ func (recv *AssistantClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AssistantClass) FieldParentClass() *WindowClass {
-	argValue := gi.StructFieldGet(assistantClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(assistantClassStruct, recv.Native(), "parent_class")
 	value := WindowClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -2673,8 +2675,8 @@ func (recv *AssistantClass) FieldParentClass() *WindowClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AssistantClass) SetFieldParentClass(value *WindowClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(assistantClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(assistantClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'prepare' : for field getter : missing Type
@@ -2725,7 +2727,7 @@ func AssistantClassStruct() *AssistantClass {
 	return structGo
 }
 func finalizeAssistantClass(obj *AssistantClass) {
-	assistantClassStruct.Free(obj.native)
+	assistantClassStruct.Free(obj.Native())
 }
 
 var assistantPrivateStruct *gi.Struct
@@ -2774,7 +2776,7 @@ func AssistantPrivateStruct() *AssistantPrivate {
 	return structGo
 }
 func finalizeAssistantPrivate(obj *AssistantPrivate) {
-	assistantPrivateStruct.Free(obj.native)
+	assistantPrivateStruct.Free(obj.Native())
 }
 
 var binClassStruct *gi.Struct
@@ -2813,7 +2815,7 @@ func (recv *BinClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *BinClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(binClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(binClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -2821,8 +2823,8 @@ func (recv *BinClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *BinClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(binClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(binClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -2853,7 +2855,7 @@ func BinClassStruct() *BinClass {
 	return structGo
 }
 func finalizeBinClass(obj *BinClass) {
-	binClassStruct.Free(obj.native)
+	binClassStruct.Free(obj.Native())
 }
 
 var binPrivateStruct *gi.Struct
@@ -2902,7 +2904,7 @@ func BinPrivateStruct() *BinPrivate {
 	return structGo
 }
 func finalizeBinPrivate(obj *BinPrivate) {
-	binPrivateStruct.Free(obj.native)
+	binPrivateStruct.Free(obj.Native())
 }
 
 var bindingArgStruct *gi.Struct
@@ -2955,7 +2957,7 @@ func BindingArgStruct() *BindingArg {
 	return structGo
 }
 func finalizeBindingArg(obj *BindingArg) {
-	bindingArgStruct.Free(obj.native)
+	bindingArgStruct.Free(obj.Native())
 }
 
 var bindingEntryStruct *gi.Struct
@@ -2994,7 +2996,7 @@ func (recv *BindingEntry) Native() unsafe.Pointer {
 
 // FieldKeyval returns the C field 'keyval'.
 func (recv *BindingEntry) FieldKeyval() uint32 {
-	argValue := gi.StructFieldGet(bindingEntryStruct, recv.native, "keyval")
+	argValue := gi.StructFieldGet(bindingEntryStruct, recv.Native(), "keyval")
 	value := argValue.Uint32()
 	return value
 }
@@ -3003,7 +3005,7 @@ func (recv *BindingEntry) FieldKeyval() uint32 {
 func (recv *BindingEntry) SetFieldKeyval(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(bindingEntryStruct, recv.native, "keyval", argValue)
+	gi.StructFieldSet(bindingEntryStruct, recv.Native(), "keyval", argValue)
 }
 
 // UNSUPPORTED : C value 'modifiers' : for field getter : no Go type for 'Gdk.ModifierType'
@@ -3012,7 +3014,7 @@ func (recv *BindingEntry) SetFieldKeyval(value uint32) {
 
 // FieldBindingSet returns the C field 'binding_set'.
 func (recv *BindingEntry) FieldBindingSet() *BindingSet {
-	argValue := gi.StructFieldGet(bindingEntryStruct, recv.native, "binding_set")
+	argValue := gi.StructFieldGet(bindingEntryStruct, recv.Native(), "binding_set")
 	value := BindingSetNewFromNative(argValue.Pointer())
 	return value
 }
@@ -3020,13 +3022,13 @@ func (recv *BindingEntry) FieldBindingSet() *BindingSet {
 // SetFieldBindingSet sets the value of the C field 'binding_set'.
 func (recv *BindingEntry) SetFieldBindingSet(value *BindingSet) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(bindingEntryStruct, recv.native, "binding_set", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(bindingEntryStruct, recv.Native(), "binding_set", argValue)
 }
 
 // FieldDestroyed returns the C field 'destroyed'.
 func (recv *BindingEntry) FieldDestroyed() uint32 {
-	argValue := gi.StructFieldGet(bindingEntryStruct, recv.native, "destroyed")
+	argValue := gi.StructFieldGet(bindingEntryStruct, recv.Native(), "destroyed")
 	value := argValue.Uint32()
 	return value
 }
@@ -3035,12 +3037,12 @@ func (recv *BindingEntry) FieldDestroyed() uint32 {
 func (recv *BindingEntry) SetFieldDestroyed(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(bindingEntryStruct, recv.native, "destroyed", argValue)
+	gi.StructFieldSet(bindingEntryStruct, recv.Native(), "destroyed", argValue)
 }
 
 // FieldInEmission returns the C field 'in_emission'.
 func (recv *BindingEntry) FieldInEmission() uint32 {
-	argValue := gi.StructFieldGet(bindingEntryStruct, recv.native, "in_emission")
+	argValue := gi.StructFieldGet(bindingEntryStruct, recv.Native(), "in_emission")
 	value := argValue.Uint32()
 	return value
 }
@@ -3049,12 +3051,12 @@ func (recv *BindingEntry) FieldInEmission() uint32 {
 func (recv *BindingEntry) SetFieldInEmission(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(bindingEntryStruct, recv.native, "in_emission", argValue)
+	gi.StructFieldSet(bindingEntryStruct, recv.Native(), "in_emission", argValue)
 }
 
 // FieldMarksUnbound returns the C field 'marks_unbound'.
 func (recv *BindingEntry) FieldMarksUnbound() uint32 {
-	argValue := gi.StructFieldGet(bindingEntryStruct, recv.native, "marks_unbound")
+	argValue := gi.StructFieldGet(bindingEntryStruct, recv.Native(), "marks_unbound")
 	value := argValue.Uint32()
 	return value
 }
@@ -3063,12 +3065,12 @@ func (recv *BindingEntry) FieldMarksUnbound() uint32 {
 func (recv *BindingEntry) SetFieldMarksUnbound(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(bindingEntryStruct, recv.native, "marks_unbound", argValue)
+	gi.StructFieldSet(bindingEntryStruct, recv.Native(), "marks_unbound", argValue)
 }
 
 // FieldSetNext returns the C field 'set_next'.
 func (recv *BindingEntry) FieldSetNext() *BindingEntry {
-	argValue := gi.StructFieldGet(bindingEntryStruct, recv.native, "set_next")
+	argValue := gi.StructFieldGet(bindingEntryStruct, recv.Native(), "set_next")
 	value := BindingEntryNewFromNative(argValue.Pointer())
 	return value
 }
@@ -3076,13 +3078,13 @@ func (recv *BindingEntry) FieldSetNext() *BindingEntry {
 // SetFieldSetNext sets the value of the C field 'set_next'.
 func (recv *BindingEntry) SetFieldSetNext(value *BindingEntry) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(bindingEntryStruct, recv.native, "set_next", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(bindingEntryStruct, recv.Native(), "set_next", argValue)
 }
 
 // FieldHashNext returns the C field 'hash_next'.
 func (recv *BindingEntry) FieldHashNext() *BindingEntry {
-	argValue := gi.StructFieldGet(bindingEntryStruct, recv.native, "hash_next")
+	argValue := gi.StructFieldGet(bindingEntryStruct, recv.Native(), "hash_next")
 	value := BindingEntryNewFromNative(argValue.Pointer())
 	return value
 }
@@ -3090,13 +3092,13 @@ func (recv *BindingEntry) FieldHashNext() *BindingEntry {
 // SetFieldHashNext sets the value of the C field 'hash_next'.
 func (recv *BindingEntry) SetFieldHashNext(value *BindingEntry) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(bindingEntryStruct, recv.native, "hash_next", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(bindingEntryStruct, recv.Native(), "hash_next", argValue)
 }
 
 // FieldSignals returns the C field 'signals'.
 func (recv *BindingEntry) FieldSignals() *BindingSignal {
-	argValue := gi.StructFieldGet(bindingEntryStruct, recv.native, "signals")
+	argValue := gi.StructFieldGet(bindingEntryStruct, recv.Native(), "signals")
 	value := BindingSignalNewFromNative(argValue.Pointer())
 	return value
 }
@@ -3104,8 +3106,8 @@ func (recv *BindingEntry) FieldSignals() *BindingSignal {
 // SetFieldSignals sets the value of the C field 'signals'.
 func (recv *BindingEntry) SetFieldSignals(value *BindingSignal) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(bindingEntryStruct, recv.native, "signals", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(bindingEntryStruct, recv.Native(), "signals", argValue)
 }
 
 // BindingEntryStruct creates an uninitialised BindingEntry.
@@ -3120,7 +3122,7 @@ func BindingEntryStruct() *BindingEntry {
 	return structGo
 }
 func finalizeBindingEntry(obj *BindingEntry) {
-	bindingEntryStruct.Free(obj.native)
+	bindingEntryStruct.Free(obj.Native())
 }
 
 var bindingSetStruct *gi.Struct
@@ -3159,7 +3161,7 @@ func (recv *BindingSet) Native() unsafe.Pointer {
 
 // FieldSetName returns the C field 'set_name'.
 func (recv *BindingSet) FieldSetName() string {
-	argValue := gi.StructFieldGet(bindingSetStruct, recv.native, "set_name")
+	argValue := gi.StructFieldGet(bindingSetStruct, recv.Native(), "set_name")
 	value := argValue.String(false)
 	return value
 }
@@ -3168,12 +3170,12 @@ func (recv *BindingSet) FieldSetName() string {
 func (recv *BindingSet) SetFieldSetName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(bindingSetStruct, recv.native, "set_name", argValue)
+	gi.StructFieldSet(bindingSetStruct, recv.Native(), "set_name", argValue)
 }
 
 // FieldPriority returns the C field 'priority'.
 func (recv *BindingSet) FieldPriority() int32 {
-	argValue := gi.StructFieldGet(bindingSetStruct, recv.native, "priority")
+	argValue := gi.StructFieldGet(bindingSetStruct, recv.Native(), "priority")
 	value := argValue.Int32()
 	return value
 }
@@ -3182,7 +3184,7 @@ func (recv *BindingSet) FieldPriority() int32 {
 func (recv *BindingSet) SetFieldPriority(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(bindingSetStruct, recv.native, "priority", argValue)
+	gi.StructFieldSet(bindingSetStruct, recv.Native(), "priority", argValue)
 }
 
 // UNSUPPORTED : C value 'widget_path_pspecs' : for field getter : no Go type for 'GLib.SList'
@@ -3199,7 +3201,7 @@ func (recv *BindingSet) SetFieldPriority(value int32) {
 
 // FieldEntries returns the C field 'entries'.
 func (recv *BindingSet) FieldEntries() *BindingEntry {
-	argValue := gi.StructFieldGet(bindingSetStruct, recv.native, "entries")
+	argValue := gi.StructFieldGet(bindingSetStruct, recv.Native(), "entries")
 	value := BindingEntryNewFromNative(argValue.Pointer())
 	return value
 }
@@ -3207,13 +3209,13 @@ func (recv *BindingSet) FieldEntries() *BindingEntry {
 // SetFieldEntries sets the value of the C field 'entries'.
 func (recv *BindingSet) SetFieldEntries(value *BindingEntry) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(bindingSetStruct, recv.native, "entries", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(bindingSetStruct, recv.Native(), "entries", argValue)
 }
 
 // FieldCurrent returns the C field 'current'.
 func (recv *BindingSet) FieldCurrent() *BindingEntry {
-	argValue := gi.StructFieldGet(bindingSetStruct, recv.native, "current")
+	argValue := gi.StructFieldGet(bindingSetStruct, recv.Native(), "current")
 	value := BindingEntryNewFromNative(argValue.Pointer())
 	return value
 }
@@ -3221,13 +3223,13 @@ func (recv *BindingSet) FieldCurrent() *BindingEntry {
 // SetFieldCurrent sets the value of the C field 'current'.
 func (recv *BindingSet) SetFieldCurrent(value *BindingEntry) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(bindingSetStruct, recv.native, "current", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(bindingSetStruct, recv.Native(), "current", argValue)
 }
 
 // FieldParsed returns the C field 'parsed'.
 func (recv *BindingSet) FieldParsed() uint32 {
-	argValue := gi.StructFieldGet(bindingSetStruct, recv.native, "parsed")
+	argValue := gi.StructFieldGet(bindingSetStruct, recv.Native(), "parsed")
 	value := argValue.Uint32()
 	return value
 }
@@ -3236,7 +3238,7 @@ func (recv *BindingSet) FieldParsed() uint32 {
 func (recv *BindingSet) SetFieldParsed(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(bindingSetStruct, recv.native, "parsed", argValue)
+	gi.StructFieldSet(bindingSetStruct, recv.Native(), "parsed", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_binding_set_activate' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
@@ -3259,7 +3261,7 @@ func bindingSetAddPathFunction_Set() error {
 // AddPath is a representation of the C type gtk_binding_set_add_path.
 func (recv *BindingSet) AddPath(pathType PathType, pathPattern string, priority PathPriorityType) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(pathType))
 	inArgs[2].SetString(pathPattern)
 	inArgs[3].SetInt32(int32(priority))
@@ -3284,7 +3286,7 @@ func BindingSetStruct() *BindingSet {
 	return structGo
 }
 func finalizeBindingSet(obj *BindingSet) {
-	bindingSetStruct.Free(obj.native)
+	bindingSetStruct.Free(obj.Native())
 }
 
 var bindingSignalStruct *gi.Struct
@@ -3323,7 +3325,7 @@ func (recv *BindingSignal) Native() unsafe.Pointer {
 
 // FieldNext returns the C field 'next'.
 func (recv *BindingSignal) FieldNext() *BindingSignal {
-	argValue := gi.StructFieldGet(bindingSignalStruct, recv.native, "next")
+	argValue := gi.StructFieldGet(bindingSignalStruct, recv.Native(), "next")
 	value := BindingSignalNewFromNative(argValue.Pointer())
 	return value
 }
@@ -3331,13 +3333,13 @@ func (recv *BindingSignal) FieldNext() *BindingSignal {
 // SetFieldNext sets the value of the C field 'next'.
 func (recv *BindingSignal) SetFieldNext(value *BindingSignal) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(bindingSignalStruct, recv.native, "next", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(bindingSignalStruct, recv.Native(), "next", argValue)
 }
 
 // FieldSignalName returns the C field 'signal_name'.
 func (recv *BindingSignal) FieldSignalName() string {
-	argValue := gi.StructFieldGet(bindingSignalStruct, recv.native, "signal_name")
+	argValue := gi.StructFieldGet(bindingSignalStruct, recv.Native(), "signal_name")
 	value := argValue.String(false)
 	return value
 }
@@ -3346,12 +3348,12 @@ func (recv *BindingSignal) FieldSignalName() string {
 func (recv *BindingSignal) SetFieldSignalName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(bindingSignalStruct, recv.native, "signal_name", argValue)
+	gi.StructFieldSet(bindingSignalStruct, recv.Native(), "signal_name", argValue)
 }
 
 // FieldNArgs returns the C field 'n_args'.
 func (recv *BindingSignal) FieldNArgs() uint32 {
-	argValue := gi.StructFieldGet(bindingSignalStruct, recv.native, "n_args")
+	argValue := gi.StructFieldGet(bindingSignalStruct, recv.Native(), "n_args")
 	value := argValue.Uint32()
 	return value
 }
@@ -3360,7 +3362,7 @@ func (recv *BindingSignal) FieldNArgs() uint32 {
 func (recv *BindingSignal) SetFieldNArgs(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(bindingSignalStruct, recv.native, "n_args", argValue)
+	gi.StructFieldSet(bindingSignalStruct, recv.Native(), "n_args", argValue)
 }
 
 // UNSUPPORTED : C value 'args' : for field getter : missing Type
@@ -3379,7 +3381,7 @@ func BindingSignalStruct() *BindingSignal {
 	return structGo
 }
 func finalizeBindingSignal(obj *BindingSignal) {
-	bindingSignalStruct.Free(obj.native)
+	bindingSignalStruct.Free(obj.Native())
 }
 
 var booleanCellAccessibleClassStruct *gi.Struct
@@ -3418,7 +3420,7 @@ func (recv *BooleanCellAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *BooleanCellAccessibleClass) FieldParentClass() *RendererCellAccessibleClass {
-	argValue := gi.StructFieldGet(booleanCellAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(booleanCellAccessibleClassStruct, recv.Native(), "parent_class")
 	value := RendererCellAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -3426,8 +3428,8 @@ func (recv *BooleanCellAccessibleClass) FieldParentClass() *RendererCellAccessib
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *BooleanCellAccessibleClass) SetFieldParentClass(value *RendererCellAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(booleanCellAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(booleanCellAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // BooleanCellAccessibleClassStruct creates an uninitialised BooleanCellAccessibleClass.
@@ -3442,7 +3444,7 @@ func BooleanCellAccessibleClassStruct() *BooleanCellAccessibleClass {
 	return structGo
 }
 func finalizeBooleanCellAccessibleClass(obj *BooleanCellAccessibleClass) {
-	booleanCellAccessibleClassStruct.Free(obj.native)
+	booleanCellAccessibleClassStruct.Free(obj.Native())
 }
 
 var booleanCellAccessiblePrivateStruct *gi.Struct
@@ -3491,7 +3493,7 @@ func BooleanCellAccessiblePrivateStruct() *BooleanCellAccessiblePrivate {
 	return structGo
 }
 func finalizeBooleanCellAccessiblePrivate(obj *BooleanCellAccessiblePrivate) {
-	booleanCellAccessiblePrivateStruct.Free(obj.native)
+	booleanCellAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var borderStruct *gi.Struct
@@ -3530,7 +3532,7 @@ func (recv *Border) Native() unsafe.Pointer {
 
 // FieldLeft returns the C field 'left'.
 func (recv *Border) FieldLeft() int16 {
-	argValue := gi.StructFieldGet(borderStruct, recv.native, "left")
+	argValue := gi.StructFieldGet(borderStruct, recv.Native(), "left")
 	value := argValue.Int16()
 	return value
 }
@@ -3539,12 +3541,12 @@ func (recv *Border) FieldLeft() int16 {
 func (recv *Border) SetFieldLeft(value int16) {
 	var argValue gi.Argument
 	argValue.SetInt16(value)
-	gi.StructFieldSet(borderStruct, recv.native, "left", argValue)
+	gi.StructFieldSet(borderStruct, recv.Native(), "left", argValue)
 }
 
 // FieldRight returns the C field 'right'.
 func (recv *Border) FieldRight() int16 {
-	argValue := gi.StructFieldGet(borderStruct, recv.native, "right")
+	argValue := gi.StructFieldGet(borderStruct, recv.Native(), "right")
 	value := argValue.Int16()
 	return value
 }
@@ -3553,12 +3555,12 @@ func (recv *Border) FieldRight() int16 {
 func (recv *Border) SetFieldRight(value int16) {
 	var argValue gi.Argument
 	argValue.SetInt16(value)
-	gi.StructFieldSet(borderStruct, recv.native, "right", argValue)
+	gi.StructFieldSet(borderStruct, recv.Native(), "right", argValue)
 }
 
 // FieldTop returns the C field 'top'.
 func (recv *Border) FieldTop() int16 {
-	argValue := gi.StructFieldGet(borderStruct, recv.native, "top")
+	argValue := gi.StructFieldGet(borderStruct, recv.Native(), "top")
 	value := argValue.Int16()
 	return value
 }
@@ -3567,12 +3569,12 @@ func (recv *Border) FieldTop() int16 {
 func (recv *Border) SetFieldTop(value int16) {
 	var argValue gi.Argument
 	argValue.SetInt16(value)
-	gi.StructFieldSet(borderStruct, recv.native, "top", argValue)
+	gi.StructFieldSet(borderStruct, recv.Native(), "top", argValue)
 }
 
 // FieldBottom returns the C field 'bottom'.
 func (recv *Border) FieldBottom() int16 {
-	argValue := gi.StructFieldGet(borderStruct, recv.native, "bottom")
+	argValue := gi.StructFieldGet(borderStruct, recv.Native(), "bottom")
 	value := argValue.Int16()
 	return value
 }
@@ -3581,7 +3583,7 @@ func (recv *Border) FieldBottom() int16 {
 func (recv *Border) SetFieldBottom(value int16) {
 	var argValue gi.Argument
 	argValue.SetInt16(value)
-	gi.StructFieldSet(borderStruct, recv.native, "bottom", argValue)
+	gi.StructFieldSet(borderStruct, recv.Native(), "bottom", argValue)
 }
 
 var borderNewFunction *gi.Function
@@ -3632,7 +3634,7 @@ func borderCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_border_copy.
 func (recv *Border) Copy() *Border {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3664,7 +3666,7 @@ func borderFreeFunction_Set() error {
 // Free is a representation of the C type gtk_border_free.
 func (recv *Border) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := borderFreeFunction_Set()
 	if err == nil {
@@ -3710,7 +3712,7 @@ func (recv *BoxClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *BoxClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(boxClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(boxClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -3718,8 +3720,8 @@ func (recv *BoxClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *BoxClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(boxClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(boxClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -3750,7 +3752,7 @@ func BoxClassStruct() *BoxClass {
 	return structGo
 }
 func finalizeBoxClass(obj *BoxClass) {
-	boxClassStruct.Free(obj.native)
+	boxClassStruct.Free(obj.Native())
 }
 
 var boxPrivateStruct *gi.Struct
@@ -3799,7 +3801,7 @@ func BoxPrivateStruct() *BoxPrivate {
 	return structGo
 }
 func finalizeBoxPrivate(obj *BoxPrivate) {
-	boxPrivateStruct.Free(obj.native)
+	boxPrivateStruct.Free(obj.Native())
 }
 
 var buildableIfaceStruct *gi.Struct
@@ -3892,7 +3894,7 @@ func BuildableIfaceStruct() *BuildableIface {
 	return structGo
 }
 func finalizeBuildableIface(obj *BuildableIface) {
-	buildableIfaceStruct.Free(obj.native)
+	buildableIfaceStruct.Free(obj.Native())
 }
 
 var builderClassStruct *gi.Struct
@@ -3981,7 +3983,7 @@ func BuilderClassStruct() *BuilderClass {
 	return structGo
 }
 func finalizeBuilderClass(obj *BuilderClass) {
-	builderClassStruct.Free(obj.native)
+	builderClassStruct.Free(obj.Native())
 }
 
 var builderPrivateStruct *gi.Struct
@@ -4030,7 +4032,7 @@ func BuilderPrivateStruct() *BuilderPrivate {
 	return structGo
 }
 func finalizeBuilderPrivate(obj *BuilderPrivate) {
-	builderPrivateStruct.Free(obj.native)
+	builderPrivateStruct.Free(obj.Native())
 }
 
 var buttonAccessibleClassStruct *gi.Struct
@@ -4069,7 +4071,7 @@ func (recv *ButtonAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ButtonAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(buttonAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(buttonAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4077,8 +4079,8 @@ func (recv *ButtonAccessibleClass) FieldParentClass() *ContainerAccessibleClass 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ButtonAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(buttonAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(buttonAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ButtonAccessibleClassStruct creates an uninitialised ButtonAccessibleClass.
@@ -4093,7 +4095,7 @@ func ButtonAccessibleClassStruct() *ButtonAccessibleClass {
 	return structGo
 }
 func finalizeButtonAccessibleClass(obj *ButtonAccessibleClass) {
-	buttonAccessibleClassStruct.Free(obj.native)
+	buttonAccessibleClassStruct.Free(obj.Native())
 }
 
 var buttonAccessiblePrivateStruct *gi.Struct
@@ -4142,7 +4144,7 @@ func ButtonAccessiblePrivateStruct() *ButtonAccessiblePrivate {
 	return structGo
 }
 func finalizeButtonAccessiblePrivate(obj *ButtonAccessiblePrivate) {
-	buttonAccessiblePrivateStruct.Free(obj.native)
+	buttonAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var buttonBoxClassStruct *gi.Struct
@@ -4181,7 +4183,7 @@ func (recv *ButtonBoxClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ButtonBoxClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(buttonBoxClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(buttonBoxClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4189,8 +4191,8 @@ func (recv *ButtonBoxClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ButtonBoxClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(buttonBoxClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(buttonBoxClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -4221,7 +4223,7 @@ func ButtonBoxClassStruct() *ButtonBoxClass {
 	return structGo
 }
 func finalizeButtonBoxClass(obj *ButtonBoxClass) {
-	buttonBoxClassStruct.Free(obj.native)
+	buttonBoxClassStruct.Free(obj.Native())
 }
 
 var buttonBoxPrivateStruct *gi.Struct
@@ -4270,7 +4272,7 @@ func ButtonBoxPrivateStruct() *ButtonBoxPrivate {
 	return structGo
 }
 func finalizeButtonBoxPrivate(obj *ButtonBoxPrivate) {
-	buttonBoxPrivateStruct.Free(obj.native)
+	buttonBoxPrivateStruct.Free(obj.Native())
 }
 
 var buttonClassStruct *gi.Struct
@@ -4309,7 +4311,7 @@ func (recv *ButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ButtonClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(buttonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(buttonClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4317,8 +4319,8 @@ func (recv *ButtonClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ButtonClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(buttonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(buttonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'pressed' : for field getter : missing Type
@@ -4373,7 +4375,7 @@ func ButtonClassStruct() *ButtonClass {
 	return structGo
 }
 func finalizeButtonClass(obj *ButtonClass) {
-	buttonClassStruct.Free(obj.native)
+	buttonClassStruct.Free(obj.Native())
 }
 
 var buttonPrivateStruct *gi.Struct
@@ -4422,7 +4424,7 @@ func ButtonPrivateStruct() *ButtonPrivate {
 	return structGo
 }
 func finalizeButtonPrivate(obj *ButtonPrivate) {
-	buttonPrivateStruct.Free(obj.native)
+	buttonPrivateStruct.Free(obj.Native())
 }
 
 var calendarClassStruct *gi.Struct
@@ -4461,7 +4463,7 @@ func (recv *CalendarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CalendarClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(calendarClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(calendarClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4469,8 +4471,8 @@ func (recv *CalendarClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CalendarClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(calendarClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(calendarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'month_changed' : for field getter : missing Type
@@ -4529,7 +4531,7 @@ func CalendarClassStruct() *CalendarClass {
 	return structGo
 }
 func finalizeCalendarClass(obj *CalendarClass) {
-	calendarClassStruct.Free(obj.native)
+	calendarClassStruct.Free(obj.Native())
 }
 
 var calendarPrivateStruct *gi.Struct
@@ -4578,7 +4580,7 @@ func CalendarPrivateStruct() *CalendarPrivate {
 	return structGo
 }
 func finalizeCalendarPrivate(obj *CalendarPrivate) {
-	calendarPrivateStruct.Free(obj.native)
+	calendarPrivateStruct.Free(obj.Native())
 }
 
 var cellAccessibleClassStruct *gi.Struct
@@ -4617,7 +4619,7 @@ func (recv *CellAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CellAccessibleClass) FieldParentClass() *AccessibleClass {
-	argValue := gi.StructFieldGet(cellAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(cellAccessibleClassStruct, recv.Native(), "parent_class")
 	value := AccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4625,8 +4627,8 @@ func (recv *CellAccessibleClass) FieldParentClass() *AccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CellAccessibleClass) SetFieldParentClass(value *AccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(cellAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(cellAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'update_cache' : for field getter : missing Type
@@ -4645,7 +4647,7 @@ func CellAccessibleClassStruct() *CellAccessibleClass {
 	return structGo
 }
 func finalizeCellAccessibleClass(obj *CellAccessibleClass) {
-	cellAccessibleClassStruct.Free(obj.native)
+	cellAccessibleClassStruct.Free(obj.Native())
 }
 
 var cellAccessibleParentIfaceStruct *gi.Struct
@@ -4746,7 +4748,7 @@ func CellAccessibleParentIfaceStruct() *CellAccessibleParentIface {
 	return structGo
 }
 func finalizeCellAccessibleParentIface(obj *CellAccessibleParentIface) {
-	cellAccessibleParentIfaceStruct.Free(obj.native)
+	cellAccessibleParentIfaceStruct.Free(obj.Native())
 }
 
 var cellAccessiblePrivateStruct *gi.Struct
@@ -4795,7 +4797,7 @@ func CellAccessiblePrivateStruct() *CellAccessiblePrivate {
 	return structGo
 }
 func finalizeCellAccessiblePrivate(obj *CellAccessiblePrivate) {
-	cellAccessiblePrivateStruct.Free(obj.native)
+	cellAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var cellAreaBoxClassStruct *gi.Struct
@@ -4860,7 +4862,7 @@ func CellAreaBoxClassStruct() *CellAreaBoxClass {
 	return structGo
 }
 func finalizeCellAreaBoxClass(obj *CellAreaBoxClass) {
-	cellAreaBoxClassStruct.Free(obj.native)
+	cellAreaBoxClassStruct.Free(obj.Native())
 }
 
 var cellAreaBoxPrivateStruct *gi.Struct
@@ -4909,7 +4911,7 @@ func CellAreaBoxPrivateStruct() *CellAreaBoxPrivate {
 	return structGo
 }
 func finalizeCellAreaBoxPrivate(obj *CellAreaBoxPrivate) {
-	cellAreaBoxPrivateStruct.Free(obj.native)
+	cellAreaBoxPrivateStruct.Free(obj.Native())
 }
 
 var cellAreaClassStruct *gi.Struct
@@ -5054,9 +5056,68 @@ func (recv *CellAreaClass) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
-// UNSUPPORTED : C value 'gtk_cell_area_class_find_cell_property' : return type 'GObject.ParamSpec' not supported
+var cellAreaClassFindCellPropertyFunction *gi.Function
+var cellAreaClassFindCellPropertyFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_cell_area_class_install_cell_property' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
+func cellAreaClassFindCellPropertyFunction_Set() error {
+	var err error
+	cellAreaClassFindCellPropertyFunction_Once.Do(func() {
+		err = cellAreaClassStruct_Set()
+		if err != nil {
+			return
+		}
+		cellAreaClassFindCellPropertyFunction, err = cellAreaClassStruct.InvokerNew("find_cell_property")
+	})
+	return err
+}
+
+// FindCellProperty is a representation of the C type gtk_cell_area_class_find_cell_property.
+func (recv *CellAreaClass) FindCellProperty(propertyName string) *gobject.ParamSpec {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(propertyName)
+
+	var ret gi.Argument
+
+	err := cellAreaClassFindCellPropertyFunction_Set()
+	if err == nil {
+		ret = cellAreaClassFindCellPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gobject.ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var cellAreaClassInstallCellPropertyFunction *gi.Function
+var cellAreaClassInstallCellPropertyFunction_Once sync.Once
+
+func cellAreaClassInstallCellPropertyFunction_Set() error {
+	var err error
+	cellAreaClassInstallCellPropertyFunction_Once.Do(func() {
+		err = cellAreaClassStruct_Set()
+		if err != nil {
+			return
+		}
+		cellAreaClassInstallCellPropertyFunction, err = cellAreaClassStruct.InvokerNew("install_cell_property")
+	})
+	return err
+}
+
+// InstallCellProperty is a representation of the C type gtk_cell_area_class_install_cell_property.
+func (recv *CellAreaClass) InstallCellProperty(propertyId uint32, pspec *gobject.ParamSpec) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(propertyId)
+	inArgs[2].SetPointer(pspec.Native())
+
+	err := cellAreaClassInstallCellPropertyFunction_Set()
+	if err == nil {
+		cellAreaClassInstallCellPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var cellAreaClassListCellPropertiesFunction *gi.Function
 var cellAreaClassListCellPropertiesFunction_Once sync.Once
@@ -5076,7 +5137,7 @@ func cellAreaClassListCellPropertiesFunction_Set() error {
 // ListCellProperties is a representation of the C type gtk_cell_area_class_list_cell_properties.
 func (recv *CellAreaClass) ListCellProperties() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -5102,7 +5163,7 @@ func CellAreaClassStruct() *CellAreaClass {
 	return structGo
 }
 func finalizeCellAreaClass(obj *CellAreaClass) {
-	cellAreaClassStruct.Free(obj.native)
+	cellAreaClassStruct.Free(obj.Native())
 }
 
 var cellAreaContextClassStruct *gi.Struct
@@ -5191,7 +5252,7 @@ func CellAreaContextClassStruct() *CellAreaContextClass {
 	return structGo
 }
 func finalizeCellAreaContextClass(obj *CellAreaContextClass) {
-	cellAreaContextClassStruct.Free(obj.native)
+	cellAreaContextClassStruct.Free(obj.Native())
 }
 
 var cellAreaContextPrivateStruct *gi.Struct
@@ -5240,7 +5301,7 @@ func CellAreaContextPrivateStruct() *CellAreaContextPrivate {
 	return structGo
 }
 func finalizeCellAreaContextPrivate(obj *CellAreaContextPrivate) {
-	cellAreaContextPrivateStruct.Free(obj.native)
+	cellAreaContextPrivateStruct.Free(obj.Native())
 }
 
 var cellAreaPrivateStruct *gi.Struct
@@ -5289,7 +5350,7 @@ func CellAreaPrivateStruct() *CellAreaPrivate {
 	return structGo
 }
 func finalizeCellAreaPrivate(obj *CellAreaPrivate) {
-	cellAreaPrivateStruct.Free(obj.native)
+	cellAreaPrivateStruct.Free(obj.Native())
 }
 
 var cellEditableIfaceStruct *gi.Struct
@@ -5350,7 +5411,7 @@ func CellEditableIfaceStruct() *CellEditableIface {
 	return structGo
 }
 func finalizeCellEditableIface(obj *CellEditableIface) {
-	cellEditableIfaceStruct.Free(obj.native)
+	cellEditableIfaceStruct.Free(obj.Native())
 }
 
 var cellLayoutIfaceStruct *gi.Struct
@@ -5435,7 +5496,7 @@ func CellLayoutIfaceStruct() *CellLayoutIface {
 	return structGo
 }
 func finalizeCellLayoutIface(obj *CellLayoutIface) {
-	cellLayoutIfaceStruct.Free(obj.native)
+	cellLayoutIfaceStruct.Free(obj.Native())
 }
 
 var cellRendererAccelClassStruct *gi.Struct
@@ -5474,7 +5535,7 @@ func (recv *CellRendererAccelClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CellRendererAccelClass) FieldParentClass() *CellRendererTextClass {
-	argValue := gi.StructFieldGet(cellRendererAccelClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(cellRendererAccelClassStruct, recv.Native(), "parent_class")
 	value := CellRendererTextClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -5482,8 +5543,8 @@ func (recv *CellRendererAccelClass) FieldParentClass() *CellRendererTextClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CellRendererAccelClass) SetFieldParentClass(value *CellRendererTextClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(cellRendererAccelClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(cellRendererAccelClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'accel_edited' : for field getter : missing Type
@@ -5526,7 +5587,7 @@ func CellRendererAccelClassStruct() *CellRendererAccelClass {
 	return structGo
 }
 func finalizeCellRendererAccelClass(obj *CellRendererAccelClass) {
-	cellRendererAccelClassStruct.Free(obj.native)
+	cellRendererAccelClassStruct.Free(obj.Native())
 }
 
 var cellRendererAccelPrivateStruct *gi.Struct
@@ -5575,7 +5636,7 @@ func CellRendererAccelPrivateStruct() *CellRendererAccelPrivate {
 	return structGo
 }
 func finalizeCellRendererAccelPrivate(obj *CellRendererAccelPrivate) {
-	cellRendererAccelPrivateStruct.Free(obj.native)
+	cellRendererAccelPrivateStruct.Free(obj.Native())
 }
 
 var cellRendererClassStruct *gi.Struct
@@ -5686,7 +5747,7 @@ func CellRendererClassStruct() *CellRendererClass {
 	return structGo
 }
 func finalizeCellRendererClass(obj *CellRendererClass) {
-	cellRendererClassStruct.Free(obj.native)
+	cellRendererClassStruct.Free(obj.Native())
 }
 
 var cellRendererClassPrivateStruct *gi.Struct
@@ -5735,7 +5796,7 @@ func CellRendererClassPrivateStruct() *CellRendererClassPrivate {
 	return structGo
 }
 func finalizeCellRendererClassPrivate(obj *CellRendererClassPrivate) {
-	cellRendererClassPrivateStruct.Free(obj.native)
+	cellRendererClassPrivateStruct.Free(obj.Native())
 }
 
 var cellRendererComboClassStruct *gi.Struct
@@ -5774,7 +5835,7 @@ func (recv *CellRendererComboClass) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *CellRendererComboClass) FieldParent() *CellRendererTextClass {
-	argValue := gi.StructFieldGet(cellRendererComboClassStruct, recv.native, "parent")
+	argValue := gi.StructFieldGet(cellRendererComboClassStruct, recv.Native(), "parent")
 	value := CellRendererTextClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -5782,8 +5843,8 @@ func (recv *CellRendererComboClass) FieldParent() *CellRendererTextClass {
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *CellRendererComboClass) SetFieldParent(value *CellRendererTextClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(cellRendererComboClassStruct, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(cellRendererComboClassStruct, recv.Native(), "parent", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -5814,7 +5875,7 @@ func CellRendererComboClassStruct() *CellRendererComboClass {
 	return structGo
 }
 func finalizeCellRendererComboClass(obj *CellRendererComboClass) {
-	cellRendererComboClassStruct.Free(obj.native)
+	cellRendererComboClassStruct.Free(obj.Native())
 }
 
 var cellRendererComboPrivateStruct *gi.Struct
@@ -5863,7 +5924,7 @@ func CellRendererComboPrivateStruct() *CellRendererComboPrivate {
 	return structGo
 }
 func finalizeCellRendererComboPrivate(obj *CellRendererComboPrivate) {
-	cellRendererComboPrivateStruct.Free(obj.native)
+	cellRendererComboPrivateStruct.Free(obj.Native())
 }
 
 var cellRendererPixbufClassStruct *gi.Struct
@@ -5902,7 +5963,7 @@ func (recv *CellRendererPixbufClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CellRendererPixbufClass) FieldParentClass() *CellRendererClass {
-	argValue := gi.StructFieldGet(cellRendererPixbufClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(cellRendererPixbufClassStruct, recv.Native(), "parent_class")
 	value := CellRendererClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -5910,8 +5971,8 @@ func (recv *CellRendererPixbufClass) FieldParentClass() *CellRendererClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CellRendererPixbufClass) SetFieldParentClass(value *CellRendererClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(cellRendererPixbufClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(cellRendererPixbufClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -5942,7 +6003,7 @@ func CellRendererPixbufClassStruct() *CellRendererPixbufClass {
 	return structGo
 }
 func finalizeCellRendererPixbufClass(obj *CellRendererPixbufClass) {
-	cellRendererPixbufClassStruct.Free(obj.native)
+	cellRendererPixbufClassStruct.Free(obj.Native())
 }
 
 var cellRendererPixbufPrivateStruct *gi.Struct
@@ -5991,7 +6052,7 @@ func CellRendererPixbufPrivateStruct() *CellRendererPixbufPrivate {
 	return structGo
 }
 func finalizeCellRendererPixbufPrivate(obj *CellRendererPixbufPrivate) {
-	cellRendererPixbufPrivateStruct.Free(obj.native)
+	cellRendererPixbufPrivateStruct.Free(obj.Native())
 }
 
 var cellRendererPrivateStruct *gi.Struct
@@ -6040,7 +6101,7 @@ func CellRendererPrivateStruct() *CellRendererPrivate {
 	return structGo
 }
 func finalizeCellRendererPrivate(obj *CellRendererPrivate) {
-	cellRendererPrivateStruct.Free(obj.native)
+	cellRendererPrivateStruct.Free(obj.Native())
 }
 
 var cellRendererProgressClassStruct *gi.Struct
@@ -6079,7 +6140,7 @@ func (recv *CellRendererProgressClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CellRendererProgressClass) FieldParentClass() *CellRendererClass {
-	argValue := gi.StructFieldGet(cellRendererProgressClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(cellRendererProgressClassStruct, recv.Native(), "parent_class")
 	value := CellRendererClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -6087,8 +6148,8 @@ func (recv *CellRendererProgressClass) FieldParentClass() *CellRendererClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CellRendererProgressClass) SetFieldParentClass(value *CellRendererClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(cellRendererProgressClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(cellRendererProgressClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -6119,7 +6180,7 @@ func CellRendererProgressClassStruct() *CellRendererProgressClass {
 	return structGo
 }
 func finalizeCellRendererProgressClass(obj *CellRendererProgressClass) {
-	cellRendererProgressClassStruct.Free(obj.native)
+	cellRendererProgressClassStruct.Free(obj.Native())
 }
 
 var cellRendererProgressPrivateStruct *gi.Struct
@@ -6168,7 +6229,7 @@ func CellRendererProgressPrivateStruct() *CellRendererProgressPrivate {
 	return structGo
 }
 func finalizeCellRendererProgressPrivate(obj *CellRendererProgressPrivate) {
-	cellRendererProgressPrivateStruct.Free(obj.native)
+	cellRendererProgressPrivateStruct.Free(obj.Native())
 }
 
 var cellRendererSpinClassStruct *gi.Struct
@@ -6207,7 +6268,7 @@ func (recv *CellRendererSpinClass) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *CellRendererSpinClass) FieldParent() *CellRendererTextClass {
-	argValue := gi.StructFieldGet(cellRendererSpinClassStruct, recv.native, "parent")
+	argValue := gi.StructFieldGet(cellRendererSpinClassStruct, recv.Native(), "parent")
 	value := CellRendererTextClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -6215,8 +6276,8 @@ func (recv *CellRendererSpinClass) FieldParent() *CellRendererTextClass {
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *CellRendererSpinClass) SetFieldParent(value *CellRendererTextClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(cellRendererSpinClassStruct, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(cellRendererSpinClassStruct, recv.Native(), "parent", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -6247,7 +6308,7 @@ func CellRendererSpinClassStruct() *CellRendererSpinClass {
 	return structGo
 }
 func finalizeCellRendererSpinClass(obj *CellRendererSpinClass) {
-	cellRendererSpinClassStruct.Free(obj.native)
+	cellRendererSpinClassStruct.Free(obj.Native())
 }
 
 var cellRendererSpinPrivateStruct *gi.Struct
@@ -6296,7 +6357,7 @@ func CellRendererSpinPrivateStruct() *CellRendererSpinPrivate {
 	return structGo
 }
 func finalizeCellRendererSpinPrivate(obj *CellRendererSpinPrivate) {
-	cellRendererSpinPrivateStruct.Free(obj.native)
+	cellRendererSpinPrivateStruct.Free(obj.Native())
 }
 
 var cellRendererSpinnerClassStruct *gi.Struct
@@ -6335,7 +6396,7 @@ func (recv *CellRendererSpinnerClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CellRendererSpinnerClass) FieldParentClass() *CellRendererClass {
-	argValue := gi.StructFieldGet(cellRendererSpinnerClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(cellRendererSpinnerClassStruct, recv.Native(), "parent_class")
 	value := CellRendererClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -6343,8 +6404,8 @@ func (recv *CellRendererSpinnerClass) FieldParentClass() *CellRendererClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CellRendererSpinnerClass) SetFieldParentClass(value *CellRendererClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(cellRendererSpinnerClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(cellRendererSpinnerClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -6375,7 +6436,7 @@ func CellRendererSpinnerClassStruct() *CellRendererSpinnerClass {
 	return structGo
 }
 func finalizeCellRendererSpinnerClass(obj *CellRendererSpinnerClass) {
-	cellRendererSpinnerClassStruct.Free(obj.native)
+	cellRendererSpinnerClassStruct.Free(obj.Native())
 }
 
 var cellRendererSpinnerPrivateStruct *gi.Struct
@@ -6424,7 +6485,7 @@ func CellRendererSpinnerPrivateStruct() *CellRendererSpinnerPrivate {
 	return structGo
 }
 func finalizeCellRendererSpinnerPrivate(obj *CellRendererSpinnerPrivate) {
-	cellRendererSpinnerPrivateStruct.Free(obj.native)
+	cellRendererSpinnerPrivateStruct.Free(obj.Native())
 }
 
 var cellRendererTextClassStruct *gi.Struct
@@ -6463,7 +6524,7 @@ func (recv *CellRendererTextClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CellRendererTextClass) FieldParentClass() *CellRendererClass {
-	argValue := gi.StructFieldGet(cellRendererTextClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(cellRendererTextClassStruct, recv.Native(), "parent_class")
 	value := CellRendererClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -6471,8 +6532,8 @@ func (recv *CellRendererTextClass) FieldParentClass() *CellRendererClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CellRendererTextClass) SetFieldParentClass(value *CellRendererClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(cellRendererTextClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(cellRendererTextClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'edited' : for field getter : missing Type
@@ -6507,7 +6568,7 @@ func CellRendererTextClassStruct() *CellRendererTextClass {
 	return structGo
 }
 func finalizeCellRendererTextClass(obj *CellRendererTextClass) {
-	cellRendererTextClassStruct.Free(obj.native)
+	cellRendererTextClassStruct.Free(obj.Native())
 }
 
 var cellRendererTextPrivateStruct *gi.Struct
@@ -6556,7 +6617,7 @@ func CellRendererTextPrivateStruct() *CellRendererTextPrivate {
 	return structGo
 }
 func finalizeCellRendererTextPrivate(obj *CellRendererTextPrivate) {
-	cellRendererTextPrivateStruct.Free(obj.native)
+	cellRendererTextPrivateStruct.Free(obj.Native())
 }
 
 var cellRendererToggleClassStruct *gi.Struct
@@ -6595,7 +6656,7 @@ func (recv *CellRendererToggleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CellRendererToggleClass) FieldParentClass() *CellRendererClass {
-	argValue := gi.StructFieldGet(cellRendererToggleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(cellRendererToggleClassStruct, recv.Native(), "parent_class")
 	value := CellRendererClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -6603,8 +6664,8 @@ func (recv *CellRendererToggleClass) FieldParentClass() *CellRendererClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CellRendererToggleClass) SetFieldParentClass(value *CellRendererClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(cellRendererToggleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(cellRendererToggleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'toggled' : for field getter : missing Type
@@ -6639,7 +6700,7 @@ func CellRendererToggleClassStruct() *CellRendererToggleClass {
 	return structGo
 }
 func finalizeCellRendererToggleClass(obj *CellRendererToggleClass) {
-	cellRendererToggleClassStruct.Free(obj.native)
+	cellRendererToggleClassStruct.Free(obj.Native())
 }
 
 var cellRendererTogglePrivateStruct *gi.Struct
@@ -6688,7 +6749,7 @@ func CellRendererTogglePrivateStruct() *CellRendererTogglePrivate {
 	return structGo
 }
 func finalizeCellRendererTogglePrivate(obj *CellRendererTogglePrivate) {
-	cellRendererTogglePrivateStruct.Free(obj.native)
+	cellRendererTogglePrivateStruct.Free(obj.Native())
 }
 
 var cellViewClassStruct *gi.Struct
@@ -6727,7 +6788,7 @@ func (recv *CellViewClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CellViewClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(cellViewClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(cellViewClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -6735,8 +6796,8 @@ func (recv *CellViewClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CellViewClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(cellViewClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(cellViewClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -6767,7 +6828,7 @@ func CellViewClassStruct() *CellViewClass {
 	return structGo
 }
 func finalizeCellViewClass(obj *CellViewClass) {
-	cellViewClassStruct.Free(obj.native)
+	cellViewClassStruct.Free(obj.Native())
 }
 
 var cellViewPrivateStruct *gi.Struct
@@ -6816,7 +6877,7 @@ func CellViewPrivateStruct() *CellViewPrivate {
 	return structGo
 }
 func finalizeCellViewPrivate(obj *CellViewPrivate) {
-	cellViewPrivateStruct.Free(obj.native)
+	cellViewPrivateStruct.Free(obj.Native())
 }
 
 var checkButtonClassStruct *gi.Struct
@@ -6855,7 +6916,7 @@ func (recv *CheckButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CheckButtonClass) FieldParentClass() *ToggleButtonClass {
-	argValue := gi.StructFieldGet(checkButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(checkButtonClassStruct, recv.Native(), "parent_class")
 	value := ToggleButtonClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -6863,8 +6924,8 @@ func (recv *CheckButtonClass) FieldParentClass() *ToggleButtonClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CheckButtonClass) SetFieldParentClass(value *ToggleButtonClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(checkButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(checkButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'draw_indicator' : for field getter : missing Type
@@ -6899,7 +6960,7 @@ func CheckButtonClassStruct() *CheckButtonClass {
 	return structGo
 }
 func finalizeCheckButtonClass(obj *CheckButtonClass) {
-	checkButtonClassStruct.Free(obj.native)
+	checkButtonClassStruct.Free(obj.Native())
 }
 
 var checkMenuItemAccessibleClassStruct *gi.Struct
@@ -6938,7 +6999,7 @@ func (recv *CheckMenuItemAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CheckMenuItemAccessibleClass) FieldParentClass() *MenuItemAccessibleClass {
-	argValue := gi.StructFieldGet(checkMenuItemAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(checkMenuItemAccessibleClassStruct, recv.Native(), "parent_class")
 	value := MenuItemAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -6946,8 +7007,8 @@ func (recv *CheckMenuItemAccessibleClass) FieldParentClass() *MenuItemAccessible
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CheckMenuItemAccessibleClass) SetFieldParentClass(value *MenuItemAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(checkMenuItemAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(checkMenuItemAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // CheckMenuItemAccessibleClassStruct creates an uninitialised CheckMenuItemAccessibleClass.
@@ -6962,7 +7023,7 @@ func CheckMenuItemAccessibleClassStruct() *CheckMenuItemAccessibleClass {
 	return structGo
 }
 func finalizeCheckMenuItemAccessibleClass(obj *CheckMenuItemAccessibleClass) {
-	checkMenuItemAccessibleClassStruct.Free(obj.native)
+	checkMenuItemAccessibleClassStruct.Free(obj.Native())
 }
 
 var checkMenuItemAccessiblePrivateStruct *gi.Struct
@@ -7011,7 +7072,7 @@ func CheckMenuItemAccessiblePrivateStruct() *CheckMenuItemAccessiblePrivate {
 	return structGo
 }
 func finalizeCheckMenuItemAccessiblePrivate(obj *CheckMenuItemAccessiblePrivate) {
-	checkMenuItemAccessiblePrivateStruct.Free(obj.native)
+	checkMenuItemAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var checkMenuItemClassStruct *gi.Struct
@@ -7050,7 +7111,7 @@ func (recv *CheckMenuItemClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CheckMenuItemClass) FieldParentClass() *MenuItemClass {
-	argValue := gi.StructFieldGet(checkMenuItemClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(checkMenuItemClassStruct, recv.Native(), "parent_class")
 	value := MenuItemClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -7058,8 +7119,8 @@ func (recv *CheckMenuItemClass) FieldParentClass() *MenuItemClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CheckMenuItemClass) SetFieldParentClass(value *MenuItemClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(checkMenuItemClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(checkMenuItemClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'toggled' : for field getter : missing Type
@@ -7098,7 +7159,7 @@ func CheckMenuItemClassStruct() *CheckMenuItemClass {
 	return structGo
 }
 func finalizeCheckMenuItemClass(obj *CheckMenuItemClass) {
-	checkMenuItemClassStruct.Free(obj.native)
+	checkMenuItemClassStruct.Free(obj.Native())
 }
 
 var checkMenuItemPrivateStruct *gi.Struct
@@ -7147,7 +7208,7 @@ func CheckMenuItemPrivateStruct() *CheckMenuItemPrivate {
 	return structGo
 }
 func finalizeCheckMenuItemPrivate(obj *CheckMenuItemPrivate) {
-	checkMenuItemPrivateStruct.Free(obj.native)
+	checkMenuItemPrivateStruct.Free(obj.Native())
 }
 
 var colorButtonClassStruct *gi.Struct
@@ -7186,7 +7247,7 @@ func (recv *ColorButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ColorButtonClass) FieldParentClass() *ButtonClass {
-	argValue := gi.StructFieldGet(colorButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(colorButtonClassStruct, recv.Native(), "parent_class")
 	value := ButtonClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -7194,8 +7255,8 @@ func (recv *ColorButtonClass) FieldParentClass() *ButtonClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ColorButtonClass) SetFieldParentClass(value *ButtonClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(colorButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(colorButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'color_set' : for field getter : missing Type
@@ -7230,7 +7291,7 @@ func ColorButtonClassStruct() *ColorButtonClass {
 	return structGo
 }
 func finalizeColorButtonClass(obj *ColorButtonClass) {
-	colorButtonClassStruct.Free(obj.native)
+	colorButtonClassStruct.Free(obj.Native())
 }
 
 var colorButtonPrivateStruct *gi.Struct
@@ -7279,7 +7340,7 @@ func ColorButtonPrivateStruct() *ColorButtonPrivate {
 	return structGo
 }
 func finalizeColorButtonPrivate(obj *ColorButtonPrivate) {
-	colorButtonPrivateStruct.Free(obj.native)
+	colorButtonPrivateStruct.Free(obj.Native())
 }
 
 var colorChooserDialogClassStruct *gi.Struct
@@ -7318,7 +7379,7 @@ func (recv *ColorChooserDialogClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ColorChooserDialogClass) FieldParentClass() *DialogClass {
-	argValue := gi.StructFieldGet(colorChooserDialogClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(colorChooserDialogClassStruct, recv.Native(), "parent_class")
 	value := DialogClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -7326,8 +7387,8 @@ func (recv *ColorChooserDialogClass) FieldParentClass() *DialogClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ColorChooserDialogClass) SetFieldParentClass(value *DialogClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(colorChooserDialogClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(colorChooserDialogClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -7358,7 +7419,7 @@ func ColorChooserDialogClassStruct() *ColorChooserDialogClass {
 	return structGo
 }
 func finalizeColorChooserDialogClass(obj *ColorChooserDialogClass) {
-	colorChooserDialogClassStruct.Free(obj.native)
+	colorChooserDialogClassStruct.Free(obj.Native())
 }
 
 var colorChooserDialogPrivateStruct *gi.Struct
@@ -7407,7 +7468,7 @@ func ColorChooserDialogPrivateStruct() *ColorChooserDialogPrivate {
 	return structGo
 }
 func finalizeColorChooserDialogPrivate(obj *ColorChooserDialogPrivate) {
-	colorChooserDialogPrivateStruct.Free(obj.native)
+	colorChooserDialogPrivateStruct.Free(obj.Native())
 }
 
 var colorChooserInterfaceStruct *gi.Struct
@@ -7480,7 +7541,7 @@ func ColorChooserInterfaceStruct() *ColorChooserInterface {
 	return structGo
 }
 func finalizeColorChooserInterface(obj *ColorChooserInterface) {
-	colorChooserInterfaceStruct.Free(obj.native)
+	colorChooserInterfaceStruct.Free(obj.Native())
 }
 
 var colorChooserWidgetClassStruct *gi.Struct
@@ -7519,7 +7580,7 @@ func (recv *ColorChooserWidgetClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ColorChooserWidgetClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(colorChooserWidgetClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(colorChooserWidgetClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -7527,8 +7588,8 @@ func (recv *ColorChooserWidgetClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ColorChooserWidgetClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(colorChooserWidgetClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(colorChooserWidgetClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -7575,7 +7636,7 @@ func ColorChooserWidgetClassStruct() *ColorChooserWidgetClass {
 	return structGo
 }
 func finalizeColorChooserWidgetClass(obj *ColorChooserWidgetClass) {
-	colorChooserWidgetClassStruct.Free(obj.native)
+	colorChooserWidgetClassStruct.Free(obj.Native())
 }
 
 var colorChooserWidgetPrivateStruct *gi.Struct
@@ -7624,7 +7685,7 @@ func ColorChooserWidgetPrivateStruct() *ColorChooserWidgetPrivate {
 	return structGo
 }
 func finalizeColorChooserWidgetPrivate(obj *ColorChooserWidgetPrivate) {
-	colorChooserWidgetPrivateStruct.Free(obj.native)
+	colorChooserWidgetPrivateStruct.Free(obj.Native())
 }
 
 var colorSelectionClassStruct *gi.Struct
@@ -7663,7 +7724,7 @@ func (recv *ColorSelectionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ColorSelectionClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(colorSelectionClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(colorSelectionClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -7671,8 +7732,8 @@ func (recv *ColorSelectionClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ColorSelectionClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(colorSelectionClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(colorSelectionClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'color_changed' : for field getter : missing Type
@@ -7707,7 +7768,7 @@ func ColorSelectionClassStruct() *ColorSelectionClass {
 	return structGo
 }
 func finalizeColorSelectionClass(obj *ColorSelectionClass) {
-	colorSelectionClassStruct.Free(obj.native)
+	colorSelectionClassStruct.Free(obj.Native())
 }
 
 var colorSelectionDialogClassStruct *gi.Struct
@@ -7746,7 +7807,7 @@ func (recv *ColorSelectionDialogClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ColorSelectionDialogClass) FieldParentClass() *DialogClass {
-	argValue := gi.StructFieldGet(colorSelectionDialogClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(colorSelectionDialogClassStruct, recv.Native(), "parent_class")
 	value := DialogClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -7754,8 +7815,8 @@ func (recv *ColorSelectionDialogClass) FieldParentClass() *DialogClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ColorSelectionDialogClass) SetFieldParentClass(value *DialogClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(colorSelectionDialogClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(colorSelectionDialogClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -7786,7 +7847,7 @@ func ColorSelectionDialogClassStruct() *ColorSelectionDialogClass {
 	return structGo
 }
 func finalizeColorSelectionDialogClass(obj *ColorSelectionDialogClass) {
-	colorSelectionDialogClassStruct.Free(obj.native)
+	colorSelectionDialogClassStruct.Free(obj.Native())
 }
 
 var colorSelectionDialogPrivateStruct *gi.Struct
@@ -7835,7 +7896,7 @@ func ColorSelectionDialogPrivateStruct() *ColorSelectionDialogPrivate {
 	return structGo
 }
 func finalizeColorSelectionDialogPrivate(obj *ColorSelectionDialogPrivate) {
-	colorSelectionDialogPrivateStruct.Free(obj.native)
+	colorSelectionDialogPrivateStruct.Free(obj.Native())
 }
 
 var colorSelectionPrivateStruct *gi.Struct
@@ -7884,7 +7945,7 @@ func ColorSelectionPrivateStruct() *ColorSelectionPrivate {
 	return structGo
 }
 func finalizeColorSelectionPrivate(obj *ColorSelectionPrivate) {
-	colorSelectionPrivateStruct.Free(obj.native)
+	colorSelectionPrivateStruct.Free(obj.Native())
 }
 
 var comboBoxAccessibleClassStruct *gi.Struct
@@ -7923,7 +7984,7 @@ func (recv *ComboBoxAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ComboBoxAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(comboBoxAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(comboBoxAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -7931,8 +7992,8 @@ func (recv *ComboBoxAccessibleClass) FieldParentClass() *ContainerAccessibleClas
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ComboBoxAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(comboBoxAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(comboBoxAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ComboBoxAccessibleClassStruct creates an uninitialised ComboBoxAccessibleClass.
@@ -7947,7 +8008,7 @@ func ComboBoxAccessibleClassStruct() *ComboBoxAccessibleClass {
 	return structGo
 }
 func finalizeComboBoxAccessibleClass(obj *ComboBoxAccessibleClass) {
-	comboBoxAccessibleClassStruct.Free(obj.native)
+	comboBoxAccessibleClassStruct.Free(obj.Native())
 }
 
 var comboBoxAccessiblePrivateStruct *gi.Struct
@@ -7996,7 +8057,7 @@ func ComboBoxAccessiblePrivateStruct() *ComboBoxAccessiblePrivate {
 	return structGo
 }
 func finalizeComboBoxAccessiblePrivate(obj *ComboBoxAccessiblePrivate) {
-	comboBoxAccessiblePrivateStruct.Free(obj.native)
+	comboBoxAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var comboBoxClassStruct *gi.Struct
@@ -8035,7 +8096,7 @@ func (recv *ComboBoxClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ComboBoxClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(comboBoxClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(comboBoxClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -8043,8 +8104,8 @@ func (recv *ComboBoxClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ComboBoxClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(comboBoxClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(comboBoxClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
@@ -8079,7 +8140,7 @@ func ComboBoxClassStruct() *ComboBoxClass {
 	return structGo
 }
 func finalizeComboBoxClass(obj *ComboBoxClass) {
-	comboBoxClassStruct.Free(obj.native)
+	comboBoxClassStruct.Free(obj.Native())
 }
 
 var comboBoxPrivateStruct *gi.Struct
@@ -8128,7 +8189,7 @@ func ComboBoxPrivateStruct() *ComboBoxPrivate {
 	return structGo
 }
 func finalizeComboBoxPrivate(obj *ComboBoxPrivate) {
-	comboBoxPrivateStruct.Free(obj.native)
+	comboBoxPrivateStruct.Free(obj.Native())
 }
 
 var comboBoxTextClassStruct *gi.Struct
@@ -8167,7 +8228,7 @@ func (recv *ComboBoxTextClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ComboBoxTextClass) FieldParentClass() *ComboBoxClass {
-	argValue := gi.StructFieldGet(comboBoxTextClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(comboBoxTextClassStruct, recv.Native(), "parent_class")
 	value := ComboBoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -8175,8 +8236,8 @@ func (recv *ComboBoxTextClass) FieldParentClass() *ComboBoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ComboBoxTextClass) SetFieldParentClass(value *ComboBoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(comboBoxTextClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(comboBoxTextClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -8207,7 +8268,7 @@ func ComboBoxTextClassStruct() *ComboBoxTextClass {
 	return structGo
 }
 func finalizeComboBoxTextClass(obj *ComboBoxTextClass) {
-	comboBoxTextClassStruct.Free(obj.native)
+	comboBoxTextClassStruct.Free(obj.Native())
 }
 
 var comboBoxTextPrivateStruct *gi.Struct
@@ -8256,7 +8317,7 @@ func ComboBoxTextPrivateStruct() *ComboBoxTextPrivate {
 	return structGo
 }
 func finalizeComboBoxTextPrivate(obj *ComboBoxTextPrivate) {
-	comboBoxTextPrivateStruct.Free(obj.native)
+	comboBoxTextPrivateStruct.Free(obj.Native())
 }
 
 var containerAccessibleClassStruct *gi.Struct
@@ -8295,7 +8356,7 @@ func (recv *ContainerAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ContainerAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
-	argValue := gi.StructFieldGet(containerAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(containerAccessibleClassStruct, recv.Native(), "parent_class")
 	value := WidgetAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -8303,8 +8364,8 @@ func (recv *ContainerAccessibleClass) FieldParentClass() *WidgetAccessibleClass 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ContainerAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(containerAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(containerAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'add_gtk' : for field getter : missing Type
@@ -8327,7 +8388,7 @@ func ContainerAccessibleClassStruct() *ContainerAccessibleClass {
 	return structGo
 }
 func finalizeContainerAccessibleClass(obj *ContainerAccessibleClass) {
-	containerAccessibleClassStruct.Free(obj.native)
+	containerAccessibleClassStruct.Free(obj.Native())
 }
 
 var containerAccessiblePrivateStruct *gi.Struct
@@ -8376,7 +8437,7 @@ func ContainerAccessiblePrivateStruct() *ContainerAccessiblePrivate {
 	return structGo
 }
 func finalizeContainerAccessiblePrivate(obj *ContainerAccessiblePrivate) {
-	containerAccessiblePrivateStruct.Free(obj.native)
+	containerAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var containerCellAccessibleClassStruct *gi.Struct
@@ -8415,7 +8476,7 @@ func (recv *ContainerCellAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ContainerCellAccessibleClass) FieldParentClass() *CellAccessibleClass {
-	argValue := gi.StructFieldGet(containerCellAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(containerCellAccessibleClassStruct, recv.Native(), "parent_class")
 	value := CellAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -8423,8 +8484,8 @@ func (recv *ContainerCellAccessibleClass) FieldParentClass() *CellAccessibleClas
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ContainerCellAccessibleClass) SetFieldParentClass(value *CellAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(containerCellAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(containerCellAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ContainerCellAccessibleClassStruct creates an uninitialised ContainerCellAccessibleClass.
@@ -8439,7 +8500,7 @@ func ContainerCellAccessibleClassStruct() *ContainerCellAccessibleClass {
 	return structGo
 }
 func finalizeContainerCellAccessibleClass(obj *ContainerCellAccessibleClass) {
-	containerCellAccessibleClassStruct.Free(obj.native)
+	containerCellAccessibleClassStruct.Free(obj.Native())
 }
 
 var containerCellAccessiblePrivateStruct *gi.Struct
@@ -8488,7 +8549,7 @@ func ContainerCellAccessiblePrivateStruct() *ContainerCellAccessiblePrivate {
 	return structGo
 }
 func finalizeContainerCellAccessiblePrivate(obj *ContainerCellAccessiblePrivate) {
-	containerCellAccessiblePrivateStruct.Free(obj.native)
+	containerCellAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var containerClassStruct *gi.Struct
@@ -8527,7 +8588,7 @@ func (recv *ContainerClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ContainerClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(containerClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(containerClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -8535,8 +8596,8 @@ func (recv *ContainerClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ContainerClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(containerClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(containerClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'add' : for field getter : missing Type
@@ -8611,7 +8672,38 @@ func (recv *ContainerClass) SetFieldParentClass(value *WidgetClass) {
 
 // UNSUPPORTED : C value '_gtk_reserved8' : for field setter : missing Type
 
-// UNSUPPORTED : C value 'gtk_container_class_find_child_property' : return type 'GObject.ParamSpec' not supported
+var containerClassFindChildPropertyFunction *gi.Function
+var containerClassFindChildPropertyFunction_Once sync.Once
+
+func containerClassFindChildPropertyFunction_Set() error {
+	var err error
+	containerClassFindChildPropertyFunction_Once.Do(func() {
+		err = containerClassStruct_Set()
+		if err != nil {
+			return
+		}
+		containerClassFindChildPropertyFunction, err = containerClassStruct.InvokerNew("find_child_property")
+	})
+	return err
+}
+
+// FindChildProperty is a representation of the C type gtk_container_class_find_child_property.
+func (recv *ContainerClass) FindChildProperty(propertyName string) *gobject.ParamSpec {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(propertyName)
+
+	var ret gi.Argument
+
+	err := containerClassFindChildPropertyFunction_Set()
+	if err == nil {
+		ret = containerClassFindChildPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gobject.ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var containerClassHandleBorderWidthFunction *gi.Function
 var containerClassHandleBorderWidthFunction_Once sync.Once
@@ -8631,7 +8723,7 @@ func containerClassHandleBorderWidthFunction_Set() error {
 // HandleBorderWidth is a representation of the C type gtk_container_class_handle_border_width.
 func (recv *ContainerClass) HandleBorderWidth() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := containerClassHandleBorderWidthFunction_Set()
 	if err == nil {
@@ -8643,7 +8735,35 @@ func (recv *ContainerClass) HandleBorderWidth() {
 
 // UNSUPPORTED : C value 'gtk_container_class_install_child_properties' : parameter 'pspecs' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_container_class_install_child_property' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
+var containerClassInstallChildPropertyFunction *gi.Function
+var containerClassInstallChildPropertyFunction_Once sync.Once
+
+func containerClassInstallChildPropertyFunction_Set() error {
+	var err error
+	containerClassInstallChildPropertyFunction_Once.Do(func() {
+		err = containerClassStruct_Set()
+		if err != nil {
+			return
+		}
+		containerClassInstallChildPropertyFunction, err = containerClassStruct.InvokerNew("install_child_property")
+	})
+	return err
+}
+
+// InstallChildProperty is a representation of the C type gtk_container_class_install_child_property.
+func (recv *ContainerClass) InstallChildProperty(propertyId uint32, pspec *gobject.ParamSpec) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(propertyId)
+	inArgs[2].SetPointer(pspec.Native())
+
+	err := containerClassInstallChildPropertyFunction_Set()
+	if err == nil {
+		containerClassInstallChildPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var containerClassListChildPropertiesFunction *gi.Function
 var containerClassListChildPropertiesFunction_Once sync.Once
@@ -8663,7 +8783,7 @@ func containerClassListChildPropertiesFunction_Set() error {
 // ListChildProperties is a representation of the C type gtk_container_class_list_child_properties.
 func (recv *ContainerClass) ListChildProperties() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -8689,7 +8809,7 @@ func ContainerClassStruct() *ContainerClass {
 	return structGo
 }
 func finalizeContainerClass(obj *ContainerClass) {
-	containerClassStruct.Free(obj.native)
+	containerClassStruct.Free(obj.Native())
 }
 
 var containerPrivateStruct *gi.Struct
@@ -8738,7 +8858,7 @@ func ContainerPrivateStruct() *ContainerPrivate {
 	return structGo
 }
 func finalizeContainerPrivate(obj *ContainerPrivate) {
-	containerPrivateStruct.Free(obj.native)
+	containerPrivateStruct.Free(obj.Native())
 }
 
 var cssProviderClassStruct *gi.Struct
@@ -8807,7 +8927,7 @@ func CssProviderClassStruct() *CssProviderClass {
 	return structGo
 }
 func finalizeCssProviderClass(obj *CssProviderClass) {
-	cssProviderClassStruct.Free(obj.native)
+	cssProviderClassStruct.Free(obj.Native())
 }
 
 var cssProviderPrivateStruct *gi.Struct
@@ -8856,7 +8976,7 @@ func CssProviderPrivateStruct() *CssProviderPrivate {
 	return structGo
 }
 func finalizeCssProviderPrivate(obj *CssProviderPrivate) {
-	cssProviderPrivateStruct.Free(obj.native)
+	cssProviderPrivateStruct.Free(obj.Native())
 }
 
 var cssSectionStruct *gi.Struct
@@ -8911,7 +9031,7 @@ func cssSectionGetEndLineFunction_Set() error {
 // GetEndLine is a representation of the C type gtk_css_section_get_end_line.
 func (recv *CssSection) GetEndLine() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -8943,7 +9063,7 @@ func cssSectionGetEndPositionFunction_Set() error {
 // GetEndPosition is a representation of the C type gtk_css_section_get_end_position.
 func (recv *CssSection) GetEndPosition() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -8977,7 +9097,7 @@ func cssSectionGetParentFunction_Set() error {
 // GetParent is a representation of the C type gtk_css_section_get_parent.
 func (recv *CssSection) GetParent() *CssSection {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -9009,7 +9129,7 @@ func cssSectionGetSectionTypeFunction_Set() error {
 // GetSectionType is a representation of the C type gtk_css_section_get_section_type.
 func (recv *CssSection) GetSectionType() CssSectionType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -9041,7 +9161,7 @@ func cssSectionGetStartLineFunction_Set() error {
 // GetStartLine is a representation of the C type gtk_css_section_get_start_line.
 func (recv *CssSection) GetStartLine() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -9073,7 +9193,7 @@ func cssSectionGetStartPositionFunction_Set() error {
 // GetStartPosition is a representation of the C type gtk_css_section_get_start_position.
 func (recv *CssSection) GetStartPosition() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -9105,7 +9225,7 @@ func cssSectionRefFunction_Set() error {
 // Ref is a representation of the C type gtk_css_section_ref.
 func (recv *CssSection) Ref() *CssSection {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -9137,7 +9257,7 @@ func cssSectionUnrefFunction_Set() error {
 // Unref is a representation of the C type gtk_css_section_unref.
 func (recv *CssSection) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := cssSectionUnrefFunction_Set()
 	if err == nil {
@@ -9159,7 +9279,7 @@ func CssSectionStruct() *CssSection {
 	return structGo
 }
 func finalizeCssSection(obj *CssSection) {
-	cssSectionStruct.Free(obj.native)
+	cssSectionStruct.Free(obj.Native())
 }
 
 var dialogClassStruct *gi.Struct
@@ -9198,7 +9318,7 @@ func (recv *DialogClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *DialogClass) FieldParentClass() *WindowClass {
-	argValue := gi.StructFieldGet(dialogClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(dialogClassStruct, recv.Native(), "parent_class")
 	value := WindowClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -9206,8 +9326,8 @@ func (recv *DialogClass) FieldParentClass() *WindowClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *DialogClass) SetFieldParentClass(value *WindowClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(dialogClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(dialogClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'response' : for field getter : missing Type
@@ -9246,7 +9366,7 @@ func DialogClassStruct() *DialogClass {
 	return structGo
 }
 func finalizeDialogClass(obj *DialogClass) {
-	dialogClassStruct.Free(obj.native)
+	dialogClassStruct.Free(obj.Native())
 }
 
 var dialogPrivateStruct *gi.Struct
@@ -9295,7 +9415,7 @@ func DialogPrivateStruct() *DialogPrivate {
 	return structGo
 }
 func finalizeDialogPrivate(obj *DialogPrivate) {
-	dialogPrivateStruct.Free(obj.native)
+	dialogPrivateStruct.Free(obj.Native())
 }
 
 var drawingAreaClassStruct *gi.Struct
@@ -9334,7 +9454,7 @@ func (recv *DrawingAreaClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *DrawingAreaClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(drawingAreaClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(drawingAreaClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -9342,8 +9462,8 @@ func (recv *DrawingAreaClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *DrawingAreaClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(drawingAreaClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(drawingAreaClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -9374,7 +9494,7 @@ func DrawingAreaClassStruct() *DrawingAreaClass {
 	return structGo
 }
 func finalizeDrawingAreaClass(obj *DrawingAreaClass) {
-	drawingAreaClassStruct.Free(obj.native)
+	drawingAreaClassStruct.Free(obj.Native())
 }
 
 var editableInterfaceStruct *gi.Struct
@@ -9467,7 +9587,7 @@ func EditableInterfaceStruct() *EditableInterface {
 	return structGo
 }
 func finalizeEditableInterface(obj *EditableInterface) {
-	editableInterfaceStruct.Free(obj.native)
+	editableInterfaceStruct.Free(obj.Native())
 }
 
 var entryAccessibleClassStruct *gi.Struct
@@ -9506,7 +9626,7 @@ func (recv *EntryAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *EntryAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
-	argValue := gi.StructFieldGet(entryAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(entryAccessibleClassStruct, recv.Native(), "parent_class")
 	value := WidgetAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -9514,8 +9634,8 @@ func (recv *EntryAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *EntryAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(entryAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(entryAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // EntryAccessibleClassStruct creates an uninitialised EntryAccessibleClass.
@@ -9530,7 +9650,7 @@ func EntryAccessibleClassStruct() *EntryAccessibleClass {
 	return structGo
 }
 func finalizeEntryAccessibleClass(obj *EntryAccessibleClass) {
-	entryAccessibleClassStruct.Free(obj.native)
+	entryAccessibleClassStruct.Free(obj.Native())
 }
 
 var entryAccessiblePrivateStruct *gi.Struct
@@ -9579,7 +9699,7 @@ func EntryAccessiblePrivateStruct() *EntryAccessiblePrivate {
 	return structGo
 }
 func finalizeEntryAccessiblePrivate(obj *EntryAccessiblePrivate) {
-	entryAccessiblePrivateStruct.Free(obj.native)
+	entryAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var entryBufferClassStruct *gi.Struct
@@ -9688,7 +9808,7 @@ func EntryBufferClassStruct() *EntryBufferClass {
 	return structGo
 }
 func finalizeEntryBufferClass(obj *EntryBufferClass) {
-	entryBufferClassStruct.Free(obj.native)
+	entryBufferClassStruct.Free(obj.Native())
 }
 
 var entryBufferPrivateStruct *gi.Struct
@@ -9737,7 +9857,7 @@ func EntryBufferPrivateStruct() *EntryBufferPrivate {
 	return structGo
 }
 func finalizeEntryBufferPrivate(obj *EntryBufferPrivate) {
-	entryBufferPrivateStruct.Free(obj.native)
+	entryBufferPrivateStruct.Free(obj.Native())
 }
 
 var entryClassStruct *gi.Struct
@@ -9776,7 +9896,7 @@ func (recv *EntryClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *EntryClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(entryClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(entryClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -9784,8 +9904,8 @@ func (recv *EntryClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *EntryClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(entryClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(entryClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'populate_popup' : for field getter : missing Type
@@ -9876,7 +9996,7 @@ func EntryClassStruct() *EntryClass {
 	return structGo
 }
 func finalizeEntryClass(obj *EntryClass) {
-	entryClassStruct.Free(obj.native)
+	entryClassStruct.Free(obj.Native())
 }
 
 var entryCompletionClassStruct *gi.Struct
@@ -9961,7 +10081,7 @@ func EntryCompletionClassStruct() *EntryCompletionClass {
 	return structGo
 }
 func finalizeEntryCompletionClass(obj *EntryCompletionClass) {
-	entryCompletionClassStruct.Free(obj.native)
+	entryCompletionClassStruct.Free(obj.Native())
 }
 
 var entryCompletionPrivateStruct *gi.Struct
@@ -10010,7 +10130,7 @@ func EntryCompletionPrivateStruct() *EntryCompletionPrivate {
 	return structGo
 }
 func finalizeEntryCompletionPrivate(obj *EntryCompletionPrivate) {
-	entryCompletionPrivateStruct.Free(obj.native)
+	entryCompletionPrivateStruct.Free(obj.Native())
 }
 
 var entryPrivateStruct *gi.Struct
@@ -10059,7 +10179,7 @@ func EntryPrivateStruct() *EntryPrivate {
 	return structGo
 }
 func finalizeEntryPrivate(obj *EntryPrivate) {
-	entryPrivateStruct.Free(obj.native)
+	entryPrivateStruct.Free(obj.Native())
 }
 
 var eventBoxClassStruct *gi.Struct
@@ -10098,7 +10218,7 @@ func (recv *EventBoxClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *EventBoxClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(eventBoxClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(eventBoxClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -10106,8 +10226,8 @@ func (recv *EventBoxClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *EventBoxClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(eventBoxClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(eventBoxClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -10138,7 +10258,7 @@ func EventBoxClassStruct() *EventBoxClass {
 	return structGo
 }
 func finalizeEventBoxClass(obj *EventBoxClass) {
-	eventBoxClassStruct.Free(obj.native)
+	eventBoxClassStruct.Free(obj.Native())
 }
 
 var eventBoxPrivateStruct *gi.Struct
@@ -10187,7 +10307,7 @@ func EventBoxPrivateStruct() *EventBoxPrivate {
 	return structGo
 }
 func finalizeEventBoxPrivate(obj *EventBoxPrivate) {
-	eventBoxPrivateStruct.Free(obj.native)
+	eventBoxPrivateStruct.Free(obj.Native())
 }
 
 var eventControllerClassStruct *gi.Struct
@@ -10236,7 +10356,7 @@ func EventControllerClassStruct() *EventControllerClass {
 	return structGo
 }
 func finalizeEventControllerClass(obj *EventControllerClass) {
-	eventControllerClassStruct.Free(obj.native)
+	eventControllerClassStruct.Free(obj.Native())
 }
 
 var eventControllerKeyClassStruct *gi.Struct
@@ -10285,7 +10405,7 @@ func EventControllerKeyClassStruct() *EventControllerKeyClass {
 	return structGo
 }
 func finalizeEventControllerKeyClass(obj *EventControllerKeyClass) {
-	eventControllerKeyClassStruct.Free(obj.native)
+	eventControllerKeyClassStruct.Free(obj.Native())
 }
 
 var eventControllerMotionClassStruct *gi.Struct
@@ -10334,7 +10454,7 @@ func EventControllerMotionClassStruct() *EventControllerMotionClass {
 	return structGo
 }
 func finalizeEventControllerMotionClass(obj *EventControllerMotionClass) {
-	eventControllerMotionClassStruct.Free(obj.native)
+	eventControllerMotionClassStruct.Free(obj.Native())
 }
 
 var eventControllerScrollClassStruct *gi.Struct
@@ -10383,7 +10503,7 @@ func EventControllerScrollClassStruct() *EventControllerScrollClass {
 	return structGo
 }
 func finalizeEventControllerScrollClass(obj *EventControllerScrollClass) {
-	eventControllerScrollClassStruct.Free(obj.native)
+	eventControllerScrollClassStruct.Free(obj.Native())
 }
 
 var expanderAccessibleClassStruct *gi.Struct
@@ -10422,7 +10542,7 @@ func (recv *ExpanderAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ExpanderAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(expanderAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(expanderAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -10430,8 +10550,8 @@ func (recv *ExpanderAccessibleClass) FieldParentClass() *ContainerAccessibleClas
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ExpanderAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(expanderAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(expanderAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ExpanderAccessibleClassStruct creates an uninitialised ExpanderAccessibleClass.
@@ -10446,7 +10566,7 @@ func ExpanderAccessibleClassStruct() *ExpanderAccessibleClass {
 	return structGo
 }
 func finalizeExpanderAccessibleClass(obj *ExpanderAccessibleClass) {
-	expanderAccessibleClassStruct.Free(obj.native)
+	expanderAccessibleClassStruct.Free(obj.Native())
 }
 
 var expanderAccessiblePrivateStruct *gi.Struct
@@ -10495,7 +10615,7 @@ func ExpanderAccessiblePrivateStruct() *ExpanderAccessiblePrivate {
 	return structGo
 }
 func finalizeExpanderAccessiblePrivate(obj *ExpanderAccessiblePrivate) {
-	expanderAccessiblePrivateStruct.Free(obj.native)
+	expanderAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var expanderClassStruct *gi.Struct
@@ -10534,7 +10654,7 @@ func (recv *ExpanderClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ExpanderClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(expanderClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(expanderClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -10542,8 +10662,8 @@ func (recv *ExpanderClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ExpanderClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(expanderClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(expanderClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
@@ -10578,7 +10698,7 @@ func ExpanderClassStruct() *ExpanderClass {
 	return structGo
 }
 func finalizeExpanderClass(obj *ExpanderClass) {
-	expanderClassStruct.Free(obj.native)
+	expanderClassStruct.Free(obj.Native())
 }
 
 var expanderPrivateStruct *gi.Struct
@@ -10627,7 +10747,7 @@ func ExpanderPrivateStruct() *ExpanderPrivate {
 	return structGo
 }
 func finalizeExpanderPrivate(obj *ExpanderPrivate) {
-	expanderPrivateStruct.Free(obj.native)
+	expanderPrivateStruct.Free(obj.Native())
 }
 
 var fileChooserButtonClassStruct *gi.Struct
@@ -10666,7 +10786,7 @@ func (recv *FileChooserButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FileChooserButtonClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(fileChooserButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(fileChooserButtonClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -10674,8 +10794,8 @@ func (recv *FileChooserButtonClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FileChooserButtonClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(fileChooserButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fileChooserButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'file_set' : for field getter : missing Type
@@ -10710,7 +10830,7 @@ func FileChooserButtonClassStruct() *FileChooserButtonClass {
 	return structGo
 }
 func finalizeFileChooserButtonClass(obj *FileChooserButtonClass) {
-	fileChooserButtonClassStruct.Free(obj.native)
+	fileChooserButtonClassStruct.Free(obj.Native())
 }
 
 var fileChooserButtonPrivateStruct *gi.Struct
@@ -10759,7 +10879,7 @@ func FileChooserButtonPrivateStruct() *FileChooserButtonPrivate {
 	return structGo
 }
 func finalizeFileChooserButtonPrivate(obj *FileChooserButtonPrivate) {
-	fileChooserButtonPrivateStruct.Free(obj.native)
+	fileChooserButtonPrivateStruct.Free(obj.Native())
 }
 
 var fileChooserDialogClassStruct *gi.Struct
@@ -10798,7 +10918,7 @@ func (recv *FileChooserDialogClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FileChooserDialogClass) FieldParentClass() *DialogClass {
-	argValue := gi.StructFieldGet(fileChooserDialogClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(fileChooserDialogClassStruct, recv.Native(), "parent_class")
 	value := DialogClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -10806,8 +10926,8 @@ func (recv *FileChooserDialogClass) FieldParentClass() *DialogClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FileChooserDialogClass) SetFieldParentClass(value *DialogClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(fileChooserDialogClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fileChooserDialogClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -10838,7 +10958,7 @@ func FileChooserDialogClassStruct() *FileChooserDialogClass {
 	return structGo
 }
 func finalizeFileChooserDialogClass(obj *FileChooserDialogClass) {
-	fileChooserDialogClassStruct.Free(obj.native)
+	fileChooserDialogClassStruct.Free(obj.Native())
 }
 
 var fileChooserDialogPrivateStruct *gi.Struct
@@ -10887,7 +11007,7 @@ func FileChooserDialogPrivateStruct() *FileChooserDialogPrivate {
 	return structGo
 }
 func finalizeFileChooserDialogPrivate(obj *FileChooserDialogPrivate) {
-	fileChooserDialogPrivateStruct.Free(obj.native)
+	fileChooserDialogPrivateStruct.Free(obj.Native())
 }
 
 var fileChooserNativeClassStruct *gi.Struct
@@ -10926,7 +11046,7 @@ func (recv *FileChooserNativeClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FileChooserNativeClass) FieldParentClass() *NativeDialogClass {
-	argValue := gi.StructFieldGet(fileChooserNativeClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(fileChooserNativeClassStruct, recv.Native(), "parent_class")
 	value := NativeDialogClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -10934,8 +11054,8 @@ func (recv *FileChooserNativeClass) FieldParentClass() *NativeDialogClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FileChooserNativeClass) SetFieldParentClass(value *NativeDialogClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(fileChooserNativeClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fileChooserNativeClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // FileChooserNativeClassStruct creates an uninitialised FileChooserNativeClass.
@@ -10950,7 +11070,7 @@ func FileChooserNativeClassStruct() *FileChooserNativeClass {
 	return structGo
 }
 func finalizeFileChooserNativeClass(obj *FileChooserNativeClass) {
-	fileChooserNativeClassStruct.Free(obj.native)
+	fileChooserNativeClassStruct.Free(obj.Native())
 }
 
 var fileChooserWidgetClassStruct *gi.Struct
@@ -10989,7 +11109,7 @@ func (recv *FileChooserWidgetClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FileChooserWidgetClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(fileChooserWidgetClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(fileChooserWidgetClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -10997,8 +11117,8 @@ func (recv *FileChooserWidgetClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FileChooserWidgetClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(fileChooserWidgetClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fileChooserWidgetClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -11029,7 +11149,7 @@ func FileChooserWidgetClassStruct() *FileChooserWidgetClass {
 	return structGo
 }
 func finalizeFileChooserWidgetClass(obj *FileChooserWidgetClass) {
-	fileChooserWidgetClassStruct.Free(obj.native)
+	fileChooserWidgetClassStruct.Free(obj.Native())
 }
 
 var fileChooserWidgetPrivateStruct *gi.Struct
@@ -11078,7 +11198,7 @@ func FileChooserWidgetPrivateStruct() *FileChooserWidgetPrivate {
 	return structGo
 }
 func finalizeFileChooserWidgetPrivate(obj *FileChooserWidgetPrivate) {
-	fileChooserWidgetPrivateStruct.Free(obj.native)
+	fileChooserWidgetPrivateStruct.Free(obj.Native())
 }
 
 var fileFilterInfoStruct *gi.Struct
@@ -11121,7 +11241,7 @@ func (recv *FileFilterInfo) Native() unsafe.Pointer {
 
 // FieldFilename returns the C field 'filename'.
 func (recv *FileFilterInfo) FieldFilename() string {
-	argValue := gi.StructFieldGet(fileFilterInfoStruct, recv.native, "filename")
+	argValue := gi.StructFieldGet(fileFilterInfoStruct, recv.Native(), "filename")
 	value := argValue.String(false)
 	return value
 }
@@ -11130,12 +11250,12 @@ func (recv *FileFilterInfo) FieldFilename() string {
 func (recv *FileFilterInfo) SetFieldFilename(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(fileFilterInfoStruct, recv.native, "filename", argValue)
+	gi.StructFieldSet(fileFilterInfoStruct, recv.Native(), "filename", argValue)
 }
 
 // FieldUri returns the C field 'uri'.
 func (recv *FileFilterInfo) FieldUri() string {
-	argValue := gi.StructFieldGet(fileFilterInfoStruct, recv.native, "uri")
+	argValue := gi.StructFieldGet(fileFilterInfoStruct, recv.Native(), "uri")
 	value := argValue.String(false)
 	return value
 }
@@ -11144,12 +11264,12 @@ func (recv *FileFilterInfo) FieldUri() string {
 func (recv *FileFilterInfo) SetFieldUri(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(fileFilterInfoStruct, recv.native, "uri", argValue)
+	gi.StructFieldSet(fileFilterInfoStruct, recv.Native(), "uri", argValue)
 }
 
 // FieldDisplayName returns the C field 'display_name'.
 func (recv *FileFilterInfo) FieldDisplayName() string {
-	argValue := gi.StructFieldGet(fileFilterInfoStruct, recv.native, "display_name")
+	argValue := gi.StructFieldGet(fileFilterInfoStruct, recv.Native(), "display_name")
 	value := argValue.String(false)
 	return value
 }
@@ -11158,12 +11278,12 @@ func (recv *FileFilterInfo) FieldDisplayName() string {
 func (recv *FileFilterInfo) SetFieldDisplayName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(fileFilterInfoStruct, recv.native, "display_name", argValue)
+	gi.StructFieldSet(fileFilterInfoStruct, recv.Native(), "display_name", argValue)
 }
 
 // FieldMimeType returns the C field 'mime_type'.
 func (recv *FileFilterInfo) FieldMimeType() string {
-	argValue := gi.StructFieldGet(fileFilterInfoStruct, recv.native, "mime_type")
+	argValue := gi.StructFieldGet(fileFilterInfoStruct, recv.Native(), "mime_type")
 	value := argValue.String(false)
 	return value
 }
@@ -11172,7 +11292,7 @@ func (recv *FileFilterInfo) FieldMimeType() string {
 func (recv *FileFilterInfo) SetFieldMimeType(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(fileFilterInfoStruct, recv.native, "mime_type", argValue)
+	gi.StructFieldSet(fileFilterInfoStruct, recv.Native(), "mime_type", argValue)
 }
 
 // FileFilterInfoStruct creates an uninitialised FileFilterInfo.
@@ -11187,7 +11307,7 @@ func FileFilterInfoStruct() *FileFilterInfo {
 	return structGo
 }
 func finalizeFileFilterInfo(obj *FileFilterInfo) {
-	fileFilterInfoStruct.Free(obj.native)
+	fileFilterInfoStruct.Free(obj.Native())
 }
 
 var fixedChildStruct *gi.Struct
@@ -11226,7 +11346,7 @@ func (recv *FixedChild) Native() unsafe.Pointer {
 
 // FieldWidget returns the C field 'widget'.
 func (recv *FixedChild) FieldWidget() *Widget {
-	argValue := gi.StructFieldGet(fixedChildStruct, recv.native, "widget")
+	argValue := gi.StructFieldGet(fixedChildStruct, recv.Native(), "widget")
 	value := WidgetNewFromNative(argValue.Pointer())
 	return value
 }
@@ -11234,13 +11354,13 @@ func (recv *FixedChild) FieldWidget() *Widget {
 // SetFieldWidget sets the value of the C field 'widget'.
 func (recv *FixedChild) SetFieldWidget(value *Widget) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(fixedChildStruct, recv.native, "widget", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fixedChildStruct, recv.Native(), "widget", argValue)
 }
 
 // FieldX returns the C field 'x'.
 func (recv *FixedChild) FieldX() int32 {
-	argValue := gi.StructFieldGet(fixedChildStruct, recv.native, "x")
+	argValue := gi.StructFieldGet(fixedChildStruct, recv.Native(), "x")
 	value := argValue.Int32()
 	return value
 }
@@ -11249,12 +11369,12 @@ func (recv *FixedChild) FieldX() int32 {
 func (recv *FixedChild) SetFieldX(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(fixedChildStruct, recv.native, "x", argValue)
+	gi.StructFieldSet(fixedChildStruct, recv.Native(), "x", argValue)
 }
 
 // FieldY returns the C field 'y'.
 func (recv *FixedChild) FieldY() int32 {
-	argValue := gi.StructFieldGet(fixedChildStruct, recv.native, "y")
+	argValue := gi.StructFieldGet(fixedChildStruct, recv.Native(), "y")
 	value := argValue.Int32()
 	return value
 }
@@ -11263,7 +11383,7 @@ func (recv *FixedChild) FieldY() int32 {
 func (recv *FixedChild) SetFieldY(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(fixedChildStruct, recv.native, "y", argValue)
+	gi.StructFieldSet(fixedChildStruct, recv.Native(), "y", argValue)
 }
 
 // FixedChildStruct creates an uninitialised FixedChild.
@@ -11278,7 +11398,7 @@ func FixedChildStruct() *FixedChild {
 	return structGo
 }
 func finalizeFixedChild(obj *FixedChild) {
-	fixedChildStruct.Free(obj.native)
+	fixedChildStruct.Free(obj.Native())
 }
 
 var fixedClassStruct *gi.Struct
@@ -11317,7 +11437,7 @@ func (recv *FixedClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FixedClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(fixedClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(fixedClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -11325,8 +11445,8 @@ func (recv *FixedClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FixedClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(fixedClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fixedClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -11357,7 +11477,7 @@ func FixedClassStruct() *FixedClass {
 	return structGo
 }
 func finalizeFixedClass(obj *FixedClass) {
-	fixedClassStruct.Free(obj.native)
+	fixedClassStruct.Free(obj.Native())
 }
 
 var fixedPrivateStruct *gi.Struct
@@ -11406,7 +11526,7 @@ func FixedPrivateStruct() *FixedPrivate {
 	return structGo
 }
 func finalizeFixedPrivate(obj *FixedPrivate) {
-	fixedPrivateStruct.Free(obj.native)
+	fixedPrivateStruct.Free(obj.Native())
 }
 
 var flowBoxAccessibleClassStruct *gi.Struct
@@ -11445,7 +11565,7 @@ func (recv *FlowBoxAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FlowBoxAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(flowBoxAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(flowBoxAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -11453,8 +11573,8 @@ func (recv *FlowBoxAccessibleClass) FieldParentClass() *ContainerAccessibleClass
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FlowBoxAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(flowBoxAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(flowBoxAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // FlowBoxAccessibleClassStruct creates an uninitialised FlowBoxAccessibleClass.
@@ -11469,7 +11589,7 @@ func FlowBoxAccessibleClassStruct() *FlowBoxAccessibleClass {
 	return structGo
 }
 func finalizeFlowBoxAccessibleClass(obj *FlowBoxAccessibleClass) {
-	flowBoxAccessibleClassStruct.Free(obj.native)
+	flowBoxAccessibleClassStruct.Free(obj.Native())
 }
 
 var flowBoxAccessiblePrivateStruct *gi.Struct
@@ -11518,7 +11638,7 @@ func FlowBoxAccessiblePrivateStruct() *FlowBoxAccessiblePrivate {
 	return structGo
 }
 func finalizeFlowBoxAccessiblePrivate(obj *FlowBoxAccessiblePrivate) {
-	flowBoxAccessiblePrivateStruct.Free(obj.native)
+	flowBoxAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var flowBoxChildAccessibleClassStruct *gi.Struct
@@ -11557,7 +11677,7 @@ func (recv *FlowBoxChildAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FlowBoxChildAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(flowBoxChildAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(flowBoxChildAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -11565,8 +11685,8 @@ func (recv *FlowBoxChildAccessibleClass) FieldParentClass() *ContainerAccessible
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FlowBoxChildAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(flowBoxChildAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(flowBoxChildAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // FlowBoxChildAccessibleClassStruct creates an uninitialised FlowBoxChildAccessibleClass.
@@ -11581,7 +11701,7 @@ func FlowBoxChildAccessibleClassStruct() *FlowBoxChildAccessibleClass {
 	return structGo
 }
 func finalizeFlowBoxChildAccessibleClass(obj *FlowBoxChildAccessibleClass) {
-	flowBoxChildAccessibleClassStruct.Free(obj.native)
+	flowBoxChildAccessibleClassStruct.Free(obj.Native())
 }
 
 var flowBoxChildClassStruct *gi.Struct
@@ -11620,7 +11740,7 @@ func (recv *FlowBoxChildClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FlowBoxChildClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(flowBoxChildClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(flowBoxChildClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -11628,8 +11748,8 @@ func (recv *FlowBoxChildClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FlowBoxChildClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(flowBoxChildClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(flowBoxChildClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
@@ -11656,7 +11776,7 @@ func FlowBoxChildClassStruct() *FlowBoxChildClass {
 	return structGo
 }
 func finalizeFlowBoxChildClass(obj *FlowBoxChildClass) {
-	flowBoxChildClassStruct.Free(obj.native)
+	flowBoxChildClassStruct.Free(obj.Native())
 }
 
 var flowBoxClassStruct *gi.Struct
@@ -11695,7 +11815,7 @@ func (recv *FlowBoxClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FlowBoxClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(flowBoxClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(flowBoxClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -11703,8 +11823,8 @@ func (recv *FlowBoxClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FlowBoxClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(flowBoxClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(flowBoxClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'child_activated' : for field getter : missing Type
@@ -11771,7 +11891,7 @@ func FlowBoxClassStruct() *FlowBoxClass {
 	return structGo
 }
 func finalizeFlowBoxClass(obj *FlowBoxClass) {
-	flowBoxClassStruct.Free(obj.native)
+	flowBoxClassStruct.Free(obj.Native())
 }
 
 var fontButtonClassStruct *gi.Struct
@@ -11810,7 +11930,7 @@ func (recv *FontButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FontButtonClass) FieldParentClass() *ButtonClass {
-	argValue := gi.StructFieldGet(fontButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(fontButtonClassStruct, recv.Native(), "parent_class")
 	value := ButtonClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -11818,8 +11938,8 @@ func (recv *FontButtonClass) FieldParentClass() *ButtonClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FontButtonClass) SetFieldParentClass(value *ButtonClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(fontButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fontButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'font_set' : for field getter : missing Type
@@ -11854,7 +11974,7 @@ func FontButtonClassStruct() *FontButtonClass {
 	return structGo
 }
 func finalizeFontButtonClass(obj *FontButtonClass) {
-	fontButtonClassStruct.Free(obj.native)
+	fontButtonClassStruct.Free(obj.Native())
 }
 
 var fontButtonPrivateStruct *gi.Struct
@@ -11903,7 +12023,7 @@ func FontButtonPrivateStruct() *FontButtonPrivate {
 	return structGo
 }
 func finalizeFontButtonPrivate(obj *FontButtonPrivate) {
-	fontButtonPrivateStruct.Free(obj.native)
+	fontButtonPrivateStruct.Free(obj.Native())
 }
 
 var fontChooserDialogClassStruct *gi.Struct
@@ -11942,7 +12062,7 @@ func (recv *FontChooserDialogClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FontChooserDialogClass) FieldParentClass() *DialogClass {
-	argValue := gi.StructFieldGet(fontChooserDialogClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(fontChooserDialogClassStruct, recv.Native(), "parent_class")
 	value := DialogClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -11950,8 +12070,8 @@ func (recv *FontChooserDialogClass) FieldParentClass() *DialogClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FontChooserDialogClass) SetFieldParentClass(value *DialogClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(fontChooserDialogClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fontChooserDialogClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -11982,7 +12102,7 @@ func FontChooserDialogClassStruct() *FontChooserDialogClass {
 	return structGo
 }
 func finalizeFontChooserDialogClass(obj *FontChooserDialogClass) {
-	fontChooserDialogClassStruct.Free(obj.native)
+	fontChooserDialogClassStruct.Free(obj.Native())
 }
 
 var fontChooserDialogPrivateStruct *gi.Struct
@@ -12031,7 +12151,7 @@ func FontChooserDialogPrivateStruct() *FontChooserDialogPrivate {
 	return structGo
 }
 func finalizeFontChooserDialogPrivate(obj *FontChooserDialogPrivate) {
-	fontChooserDialogPrivateStruct.Free(obj.native)
+	fontChooserDialogPrivateStruct.Free(obj.Native())
 }
 
 var fontChooserIfaceStruct *gi.Struct
@@ -12116,7 +12236,7 @@ func FontChooserIfaceStruct() *FontChooserIface {
 	return structGo
 }
 func finalizeFontChooserIface(obj *FontChooserIface) {
-	fontChooserIfaceStruct.Free(obj.native)
+	fontChooserIfaceStruct.Free(obj.Native())
 }
 
 var fontChooserWidgetClassStruct *gi.Struct
@@ -12155,7 +12275,7 @@ func (recv *FontChooserWidgetClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FontChooserWidgetClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(fontChooserWidgetClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(fontChooserWidgetClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -12163,8 +12283,8 @@ func (recv *FontChooserWidgetClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FontChooserWidgetClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(fontChooserWidgetClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fontChooserWidgetClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -12211,7 +12331,7 @@ func FontChooserWidgetClassStruct() *FontChooserWidgetClass {
 	return structGo
 }
 func finalizeFontChooserWidgetClass(obj *FontChooserWidgetClass) {
-	fontChooserWidgetClassStruct.Free(obj.native)
+	fontChooserWidgetClassStruct.Free(obj.Native())
 }
 
 var fontChooserWidgetPrivateStruct *gi.Struct
@@ -12260,7 +12380,7 @@ func FontChooserWidgetPrivateStruct() *FontChooserWidgetPrivate {
 	return structGo
 }
 func finalizeFontChooserWidgetPrivate(obj *FontChooserWidgetPrivate) {
-	fontChooserWidgetPrivateStruct.Free(obj.native)
+	fontChooserWidgetPrivateStruct.Free(obj.Native())
 }
 
 var fontSelectionClassStruct *gi.Struct
@@ -12299,7 +12419,7 @@ func (recv *FontSelectionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FontSelectionClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(fontSelectionClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(fontSelectionClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -12307,8 +12427,8 @@ func (recv *FontSelectionClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FontSelectionClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(fontSelectionClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fontSelectionClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -12339,7 +12459,7 @@ func FontSelectionClassStruct() *FontSelectionClass {
 	return structGo
 }
 func finalizeFontSelectionClass(obj *FontSelectionClass) {
-	fontSelectionClassStruct.Free(obj.native)
+	fontSelectionClassStruct.Free(obj.Native())
 }
 
 var fontSelectionDialogClassStruct *gi.Struct
@@ -12378,7 +12498,7 @@ func (recv *FontSelectionDialogClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FontSelectionDialogClass) FieldParentClass() *DialogClass {
-	argValue := gi.StructFieldGet(fontSelectionDialogClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(fontSelectionDialogClassStruct, recv.Native(), "parent_class")
 	value := DialogClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -12386,8 +12506,8 @@ func (recv *FontSelectionDialogClass) FieldParentClass() *DialogClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FontSelectionDialogClass) SetFieldParentClass(value *DialogClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(fontSelectionDialogClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fontSelectionDialogClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -12418,7 +12538,7 @@ func FontSelectionDialogClassStruct() *FontSelectionDialogClass {
 	return structGo
 }
 func finalizeFontSelectionDialogClass(obj *FontSelectionDialogClass) {
-	fontSelectionDialogClassStruct.Free(obj.native)
+	fontSelectionDialogClassStruct.Free(obj.Native())
 }
 
 var fontSelectionDialogPrivateStruct *gi.Struct
@@ -12467,7 +12587,7 @@ func FontSelectionDialogPrivateStruct() *FontSelectionDialogPrivate {
 	return structGo
 }
 func finalizeFontSelectionDialogPrivate(obj *FontSelectionDialogPrivate) {
-	fontSelectionDialogPrivateStruct.Free(obj.native)
+	fontSelectionDialogPrivateStruct.Free(obj.Native())
 }
 
 var fontSelectionPrivateStruct *gi.Struct
@@ -12516,7 +12636,7 @@ func FontSelectionPrivateStruct() *FontSelectionPrivate {
 	return structGo
 }
 func finalizeFontSelectionPrivate(obj *FontSelectionPrivate) {
-	fontSelectionPrivateStruct.Free(obj.native)
+	fontSelectionPrivateStruct.Free(obj.Native())
 }
 
 var frameAccessibleClassStruct *gi.Struct
@@ -12555,7 +12675,7 @@ func (recv *FrameAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FrameAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(frameAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(frameAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -12563,8 +12683,8 @@ func (recv *FrameAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FrameAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(frameAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(frameAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // FrameAccessibleClassStruct creates an uninitialised FrameAccessibleClass.
@@ -12579,7 +12699,7 @@ func FrameAccessibleClassStruct() *FrameAccessibleClass {
 	return structGo
 }
 func finalizeFrameAccessibleClass(obj *FrameAccessibleClass) {
-	frameAccessibleClassStruct.Free(obj.native)
+	frameAccessibleClassStruct.Free(obj.Native())
 }
 
 var frameAccessiblePrivateStruct *gi.Struct
@@ -12628,7 +12748,7 @@ func FrameAccessiblePrivateStruct() *FrameAccessiblePrivate {
 	return structGo
 }
 func finalizeFrameAccessiblePrivate(obj *FrameAccessiblePrivate) {
-	frameAccessiblePrivateStruct.Free(obj.native)
+	frameAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var frameClassStruct *gi.Struct
@@ -12667,7 +12787,7 @@ func (recv *FrameClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FrameClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(frameClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(frameClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -12675,8 +12795,8 @@ func (recv *FrameClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FrameClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(frameClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(frameClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'compute_child_allocation' : for field getter : missing Type
@@ -12711,7 +12831,7 @@ func FrameClassStruct() *FrameClass {
 	return structGo
 }
 func finalizeFrameClass(obj *FrameClass) {
-	frameClassStruct.Free(obj.native)
+	frameClassStruct.Free(obj.Native())
 }
 
 var framePrivateStruct *gi.Struct
@@ -12760,7 +12880,7 @@ func FramePrivateStruct() *FramePrivate {
 	return structGo
 }
 func finalizeFramePrivate(obj *FramePrivate) {
-	framePrivateStruct.Free(obj.native)
+	framePrivateStruct.Free(obj.Native())
 }
 
 var gLAreaClassStruct *gi.Struct
@@ -12821,7 +12941,7 @@ func GLAreaClassStruct() *GLAreaClass {
 	return structGo
 }
 func finalizeGLAreaClass(obj *GLAreaClass) {
-	gLAreaClassStruct.Free(obj.native)
+	gLAreaClassStruct.Free(obj.Native())
 }
 
 var gestureClassStruct *gi.Struct
@@ -12870,7 +12990,7 @@ func GestureClassStruct() *GestureClass {
 	return structGo
 }
 func finalizeGestureClass(obj *GestureClass) {
-	gestureClassStruct.Free(obj.native)
+	gestureClassStruct.Free(obj.Native())
 }
 
 var gestureDragClassStruct *gi.Struct
@@ -12919,7 +13039,7 @@ func GestureDragClassStruct() *GestureDragClass {
 	return structGo
 }
 func finalizeGestureDragClass(obj *GestureDragClass) {
-	gestureDragClassStruct.Free(obj.native)
+	gestureDragClassStruct.Free(obj.Native())
 }
 
 var gestureLongPressClassStruct *gi.Struct
@@ -12968,7 +13088,7 @@ func GestureLongPressClassStruct() *GestureLongPressClass {
 	return structGo
 }
 func finalizeGestureLongPressClass(obj *GestureLongPressClass) {
-	gestureLongPressClassStruct.Free(obj.native)
+	gestureLongPressClassStruct.Free(obj.Native())
 }
 
 var gestureMultiPressClassStruct *gi.Struct
@@ -13017,7 +13137,7 @@ func GestureMultiPressClassStruct() *GestureMultiPressClass {
 	return structGo
 }
 func finalizeGestureMultiPressClass(obj *GestureMultiPressClass) {
-	gestureMultiPressClassStruct.Free(obj.native)
+	gestureMultiPressClassStruct.Free(obj.Native())
 }
 
 var gesturePanClassStruct *gi.Struct
@@ -13066,7 +13186,7 @@ func GesturePanClassStruct() *GesturePanClass {
 	return structGo
 }
 func finalizeGesturePanClass(obj *GesturePanClass) {
-	gesturePanClassStruct.Free(obj.native)
+	gesturePanClassStruct.Free(obj.Native())
 }
 
 var gestureRotateClassStruct *gi.Struct
@@ -13115,7 +13235,7 @@ func GestureRotateClassStruct() *GestureRotateClass {
 	return structGo
 }
 func finalizeGestureRotateClass(obj *GestureRotateClass) {
-	gestureRotateClassStruct.Free(obj.native)
+	gestureRotateClassStruct.Free(obj.Native())
 }
 
 var gestureSingleClassStruct *gi.Struct
@@ -13164,7 +13284,7 @@ func GestureSingleClassStruct() *GestureSingleClass {
 	return structGo
 }
 func finalizeGestureSingleClass(obj *GestureSingleClass) {
-	gestureSingleClassStruct.Free(obj.native)
+	gestureSingleClassStruct.Free(obj.Native())
 }
 
 var gestureStylusClassStruct *gi.Struct
@@ -13213,7 +13333,7 @@ func GestureStylusClassStruct() *GestureStylusClass {
 	return structGo
 }
 func finalizeGestureStylusClass(obj *GestureStylusClass) {
-	gestureStylusClassStruct.Free(obj.native)
+	gestureStylusClassStruct.Free(obj.Native())
 }
 
 var gestureSwipeClassStruct *gi.Struct
@@ -13262,7 +13382,7 @@ func GestureSwipeClassStruct() *GestureSwipeClass {
 	return structGo
 }
 func finalizeGestureSwipeClass(obj *GestureSwipeClass) {
-	gestureSwipeClassStruct.Free(obj.native)
+	gestureSwipeClassStruct.Free(obj.Native())
 }
 
 var gestureZoomClassStruct *gi.Struct
@@ -13311,7 +13431,7 @@ func GestureZoomClassStruct() *GestureZoomClass {
 	return structGo
 }
 func finalizeGestureZoomClass(obj *GestureZoomClass) {
-	gestureZoomClassStruct.Free(obj.native)
+	gestureZoomClassStruct.Free(obj.Native())
 }
 
 var gradientStruct *gi.Struct
@@ -13438,9 +13558,9 @@ func gradientAddColorStopFunction_Set() error {
 // AddColorStop is a representation of the C type gtk_gradient_add_color_stop.
 func (recv *Gradient) AddColorStop(offset float64, color *SymbolicColor) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(offset)
-	inArgs[2].SetPointer(color.native)
+	inArgs[2].SetPointer(color.Native())
 
 	err := gradientAddColorStopFunction_Set()
 	if err == nil {
@@ -13468,7 +13588,7 @@ func gradientRefFunction_Set() error {
 // Ref is a representation of the C type gtk_gradient_ref.
 func (recv *Gradient) Ref() *Gradient {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13504,7 +13624,7 @@ func gradientToStringFunction_Set() error {
 // ToString is a representation of the C type gtk_gradient_to_string.
 func (recv *Gradient) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13536,7 +13656,7 @@ func gradientUnrefFunction_Set() error {
 // Unref is a representation of the C type gtk_gradient_unref.
 func (recv *Gradient) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := gradientUnrefFunction_Set()
 	if err == nil {
@@ -13582,7 +13702,7 @@ func (recv *GridClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *GridClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(gridClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(gridClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -13590,8 +13710,8 @@ func (recv *GridClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *GridClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(gridClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(gridClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -13638,7 +13758,7 @@ func GridClassStruct() *GridClass {
 	return structGo
 }
 func finalizeGridClass(obj *GridClass) {
-	gridClassStruct.Free(obj.native)
+	gridClassStruct.Free(obj.Native())
 }
 
 var gridPrivateStruct *gi.Struct
@@ -13687,7 +13807,7 @@ func GridPrivateStruct() *GridPrivate {
 	return structGo
 }
 func finalizeGridPrivate(obj *GridPrivate) {
-	gridPrivateStruct.Free(obj.native)
+	gridPrivateStruct.Free(obj.Native())
 }
 
 var hBoxClassStruct *gi.Struct
@@ -13726,7 +13846,7 @@ func (recv *HBoxClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HBoxClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(hBoxClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(hBoxClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -13734,8 +13854,8 @@ func (recv *HBoxClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HBoxClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(hBoxClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(hBoxClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // HBoxClassStruct creates an uninitialised HBoxClass.
@@ -13750,7 +13870,7 @@ func HBoxClassStruct() *HBoxClass {
 	return structGo
 }
 func finalizeHBoxClass(obj *HBoxClass) {
-	hBoxClassStruct.Free(obj.native)
+	hBoxClassStruct.Free(obj.Native())
 }
 
 var hButtonBoxClassStruct *gi.Struct
@@ -13789,7 +13909,7 @@ func (recv *HButtonBoxClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HButtonBoxClass) FieldParentClass() *ButtonBoxClass {
-	argValue := gi.StructFieldGet(hButtonBoxClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(hButtonBoxClassStruct, recv.Native(), "parent_class")
 	value := ButtonBoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -13797,8 +13917,8 @@ func (recv *HButtonBoxClass) FieldParentClass() *ButtonBoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HButtonBoxClass) SetFieldParentClass(value *ButtonBoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(hButtonBoxClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(hButtonBoxClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // HButtonBoxClassStruct creates an uninitialised HButtonBoxClass.
@@ -13813,7 +13933,7 @@ func HButtonBoxClassStruct() *HButtonBoxClass {
 	return structGo
 }
 func finalizeHButtonBoxClass(obj *HButtonBoxClass) {
-	hButtonBoxClassStruct.Free(obj.native)
+	hButtonBoxClassStruct.Free(obj.Native())
 }
 
 var hPanedClassStruct *gi.Struct
@@ -13852,7 +13972,7 @@ func (recv *HPanedClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HPanedClass) FieldParentClass() *PanedClass {
-	argValue := gi.StructFieldGet(hPanedClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(hPanedClassStruct, recv.Native(), "parent_class")
 	value := PanedClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -13860,8 +13980,8 @@ func (recv *HPanedClass) FieldParentClass() *PanedClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HPanedClass) SetFieldParentClass(value *PanedClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(hPanedClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(hPanedClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // HPanedClassStruct creates an uninitialised HPanedClass.
@@ -13876,7 +13996,7 @@ func HPanedClassStruct() *HPanedClass {
 	return structGo
 }
 func finalizeHPanedClass(obj *HPanedClass) {
-	hPanedClassStruct.Free(obj.native)
+	hPanedClassStruct.Free(obj.Native())
 }
 
 var hSVClassStruct *gi.Struct
@@ -13915,7 +14035,7 @@ func (recv *HSVClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HSVClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(hSVClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(hSVClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -13923,8 +14043,8 @@ func (recv *HSVClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HSVClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(hSVClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(hSVClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
@@ -13963,7 +14083,7 @@ func HSVClassStruct() *HSVClass {
 	return structGo
 }
 func finalizeHSVClass(obj *HSVClass) {
-	hSVClassStruct.Free(obj.native)
+	hSVClassStruct.Free(obj.Native())
 }
 
 var hSVPrivateStruct *gi.Struct
@@ -14012,7 +14132,7 @@ func HSVPrivateStruct() *HSVPrivate {
 	return structGo
 }
 func finalizeHSVPrivate(obj *HSVPrivate) {
-	hSVPrivateStruct.Free(obj.native)
+	hSVPrivateStruct.Free(obj.Native())
 }
 
 var hScaleClassStruct *gi.Struct
@@ -14051,7 +14171,7 @@ func (recv *HScaleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HScaleClass) FieldParentClass() *ScaleClass {
-	argValue := gi.StructFieldGet(hScaleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(hScaleClassStruct, recv.Native(), "parent_class")
 	value := ScaleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -14059,8 +14179,8 @@ func (recv *HScaleClass) FieldParentClass() *ScaleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HScaleClass) SetFieldParentClass(value *ScaleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(hScaleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(hScaleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // HScaleClassStruct creates an uninitialised HScaleClass.
@@ -14075,7 +14195,7 @@ func HScaleClassStruct() *HScaleClass {
 	return structGo
 }
 func finalizeHScaleClass(obj *HScaleClass) {
-	hScaleClassStruct.Free(obj.native)
+	hScaleClassStruct.Free(obj.Native())
 }
 
 var hScrollbarClassStruct *gi.Struct
@@ -14114,7 +14234,7 @@ func (recv *HScrollbarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HScrollbarClass) FieldParentClass() *ScrollbarClass {
-	argValue := gi.StructFieldGet(hScrollbarClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(hScrollbarClassStruct, recv.Native(), "parent_class")
 	value := ScrollbarClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -14122,8 +14242,8 @@ func (recv *HScrollbarClass) FieldParentClass() *ScrollbarClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HScrollbarClass) SetFieldParentClass(value *ScrollbarClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(hScrollbarClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(hScrollbarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // HScrollbarClassStruct creates an uninitialised HScrollbarClass.
@@ -14138,7 +14258,7 @@ func HScrollbarClassStruct() *HScrollbarClass {
 	return structGo
 }
 func finalizeHScrollbarClass(obj *HScrollbarClass) {
-	hScrollbarClassStruct.Free(obj.native)
+	hScrollbarClassStruct.Free(obj.Native())
 }
 
 var hSeparatorClassStruct *gi.Struct
@@ -14177,7 +14297,7 @@ func (recv *HSeparatorClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HSeparatorClass) FieldParentClass() *SeparatorClass {
-	argValue := gi.StructFieldGet(hSeparatorClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(hSeparatorClassStruct, recv.Native(), "parent_class")
 	value := SeparatorClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -14185,8 +14305,8 @@ func (recv *HSeparatorClass) FieldParentClass() *SeparatorClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HSeparatorClass) SetFieldParentClass(value *SeparatorClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(hSeparatorClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(hSeparatorClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // HSeparatorClassStruct creates an uninitialised HSeparatorClass.
@@ -14201,7 +14321,7 @@ func HSeparatorClassStruct() *HSeparatorClass {
 	return structGo
 }
 func finalizeHSeparatorClass(obj *HSeparatorClass) {
-	hSeparatorClassStruct.Free(obj.native)
+	hSeparatorClassStruct.Free(obj.Native())
 }
 
 var handleBoxClassStruct *gi.Struct
@@ -14240,7 +14360,7 @@ func (recv *HandleBoxClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HandleBoxClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(handleBoxClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(handleBoxClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -14248,8 +14368,8 @@ func (recv *HandleBoxClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HandleBoxClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(handleBoxClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(handleBoxClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'child_attached' : for field getter : missing Type
@@ -14288,7 +14408,7 @@ func HandleBoxClassStruct() *HandleBoxClass {
 	return structGo
 }
 func finalizeHandleBoxClass(obj *HandleBoxClass) {
-	handleBoxClassStruct.Free(obj.native)
+	handleBoxClassStruct.Free(obj.Native())
 }
 
 var handleBoxPrivateStruct *gi.Struct
@@ -14337,7 +14457,7 @@ func HandleBoxPrivateStruct() *HandleBoxPrivate {
 	return structGo
 }
 func finalizeHandleBoxPrivate(obj *HandleBoxPrivate) {
-	handleBoxPrivateStruct.Free(obj.native)
+	handleBoxPrivateStruct.Free(obj.Native())
 }
 
 var headerBarAccessibleClassStruct *gi.Struct
@@ -14376,7 +14496,7 @@ func (recv *HeaderBarAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HeaderBarAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(headerBarAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(headerBarAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -14384,8 +14504,8 @@ func (recv *HeaderBarAccessibleClass) FieldParentClass() *ContainerAccessibleCla
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HeaderBarAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(headerBarAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(headerBarAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // HeaderBarAccessibleClassStruct creates an uninitialised HeaderBarAccessibleClass.
@@ -14400,7 +14520,7 @@ func HeaderBarAccessibleClassStruct() *HeaderBarAccessibleClass {
 	return structGo
 }
 func finalizeHeaderBarAccessibleClass(obj *HeaderBarAccessibleClass) {
-	headerBarAccessibleClassStruct.Free(obj.native)
+	headerBarAccessibleClassStruct.Free(obj.Native())
 }
 
 var headerBarAccessiblePrivateStruct *gi.Struct
@@ -14449,7 +14569,7 @@ func HeaderBarAccessiblePrivateStruct() *HeaderBarAccessiblePrivate {
 	return structGo
 }
 func finalizeHeaderBarAccessiblePrivate(obj *HeaderBarAccessiblePrivate) {
-	headerBarAccessiblePrivateStruct.Free(obj.native)
+	headerBarAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var headerBarClassStruct *gi.Struct
@@ -14488,7 +14608,7 @@ func (recv *HeaderBarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HeaderBarClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(headerBarClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(headerBarClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -14496,8 +14616,8 @@ func (recv *HeaderBarClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HeaderBarClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(headerBarClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(headerBarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -14528,7 +14648,7 @@ func HeaderBarClassStruct() *HeaderBarClass {
 	return structGo
 }
 func finalizeHeaderBarClass(obj *HeaderBarClass) {
-	headerBarClassStruct.Free(obj.native)
+	headerBarClassStruct.Free(obj.Native())
 }
 
 var headerBarPrivateStruct *gi.Struct
@@ -14577,7 +14697,7 @@ func HeaderBarPrivateStruct() *HeaderBarPrivate {
 	return structGo
 }
 func finalizeHeaderBarPrivate(obj *HeaderBarPrivate) {
-	headerBarPrivateStruct.Free(obj.native)
+	headerBarPrivateStruct.Free(obj.Native())
 }
 
 var iMContextClassStruct *gi.Struct
@@ -14714,7 +14834,7 @@ func IMContextClassStruct() *IMContextClass {
 	return structGo
 }
 func finalizeIMContextClass(obj *IMContextClass) {
-	iMContextClassStruct.Free(obj.native)
+	iMContextClassStruct.Free(obj.Native())
 }
 
 var iMContextInfoStruct *gi.Struct
@@ -14753,7 +14873,7 @@ func (recv *IMContextInfo) Native() unsafe.Pointer {
 
 // FieldContextId returns the C field 'context_id'.
 func (recv *IMContextInfo) FieldContextId() string {
-	argValue := gi.StructFieldGet(iMContextInfoStruct, recv.native, "context_id")
+	argValue := gi.StructFieldGet(iMContextInfoStruct, recv.Native(), "context_id")
 	value := argValue.String(false)
 	return value
 }
@@ -14762,12 +14882,12 @@ func (recv *IMContextInfo) FieldContextId() string {
 func (recv *IMContextInfo) SetFieldContextId(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(iMContextInfoStruct, recv.native, "context_id", argValue)
+	gi.StructFieldSet(iMContextInfoStruct, recv.Native(), "context_id", argValue)
 }
 
 // FieldContextName returns the C field 'context_name'.
 func (recv *IMContextInfo) FieldContextName() string {
-	argValue := gi.StructFieldGet(iMContextInfoStruct, recv.native, "context_name")
+	argValue := gi.StructFieldGet(iMContextInfoStruct, recv.Native(), "context_name")
 	value := argValue.String(false)
 	return value
 }
@@ -14776,12 +14896,12 @@ func (recv *IMContextInfo) FieldContextName() string {
 func (recv *IMContextInfo) SetFieldContextName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(iMContextInfoStruct, recv.native, "context_name", argValue)
+	gi.StructFieldSet(iMContextInfoStruct, recv.Native(), "context_name", argValue)
 }
 
 // FieldDomain returns the C field 'domain'.
 func (recv *IMContextInfo) FieldDomain() string {
-	argValue := gi.StructFieldGet(iMContextInfoStruct, recv.native, "domain")
+	argValue := gi.StructFieldGet(iMContextInfoStruct, recv.Native(), "domain")
 	value := argValue.String(false)
 	return value
 }
@@ -14790,12 +14910,12 @@ func (recv *IMContextInfo) FieldDomain() string {
 func (recv *IMContextInfo) SetFieldDomain(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(iMContextInfoStruct, recv.native, "domain", argValue)
+	gi.StructFieldSet(iMContextInfoStruct, recv.Native(), "domain", argValue)
 }
 
 // FieldDomainDirname returns the C field 'domain_dirname'.
 func (recv *IMContextInfo) FieldDomainDirname() string {
-	argValue := gi.StructFieldGet(iMContextInfoStruct, recv.native, "domain_dirname")
+	argValue := gi.StructFieldGet(iMContextInfoStruct, recv.Native(), "domain_dirname")
 	value := argValue.String(false)
 	return value
 }
@@ -14804,12 +14924,12 @@ func (recv *IMContextInfo) FieldDomainDirname() string {
 func (recv *IMContextInfo) SetFieldDomainDirname(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(iMContextInfoStruct, recv.native, "domain_dirname", argValue)
+	gi.StructFieldSet(iMContextInfoStruct, recv.Native(), "domain_dirname", argValue)
 }
 
 // FieldDefaultLocales returns the C field 'default_locales'.
 func (recv *IMContextInfo) FieldDefaultLocales() string {
-	argValue := gi.StructFieldGet(iMContextInfoStruct, recv.native, "default_locales")
+	argValue := gi.StructFieldGet(iMContextInfoStruct, recv.Native(), "default_locales")
 	value := argValue.String(false)
 	return value
 }
@@ -14818,7 +14938,7 @@ func (recv *IMContextInfo) FieldDefaultLocales() string {
 func (recv *IMContextInfo) SetFieldDefaultLocales(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(iMContextInfoStruct, recv.native, "default_locales", argValue)
+	gi.StructFieldSet(iMContextInfoStruct, recv.Native(), "default_locales", argValue)
 }
 
 // IMContextInfoStruct creates an uninitialised IMContextInfo.
@@ -14833,7 +14953,7 @@ func IMContextInfoStruct() *IMContextInfo {
 	return structGo
 }
 func finalizeIMContextInfo(obj *IMContextInfo) {
-	iMContextInfoStruct.Free(obj.native)
+	iMContextInfoStruct.Free(obj.Native())
 }
 
 var iMContextSimpleClassStruct *gi.Struct
@@ -14872,7 +14992,7 @@ func (recv *IMContextSimpleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *IMContextSimpleClass) FieldParentClass() *IMContextClass {
-	argValue := gi.StructFieldGet(iMContextSimpleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(iMContextSimpleClassStruct, recv.Native(), "parent_class")
 	value := IMContextClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -14880,8 +15000,8 @@ func (recv *IMContextSimpleClass) FieldParentClass() *IMContextClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *IMContextSimpleClass) SetFieldParentClass(value *IMContextClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(iMContextSimpleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(iMContextSimpleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // IMContextSimpleClassStruct creates an uninitialised IMContextSimpleClass.
@@ -14896,7 +15016,7 @@ func IMContextSimpleClassStruct() *IMContextSimpleClass {
 	return structGo
 }
 func finalizeIMContextSimpleClass(obj *IMContextSimpleClass) {
-	iMContextSimpleClassStruct.Free(obj.native)
+	iMContextSimpleClassStruct.Free(obj.Native())
 }
 
 var iMContextSimplePrivateStruct *gi.Struct
@@ -14945,7 +15065,7 @@ func IMContextSimplePrivateStruct() *IMContextSimplePrivate {
 	return structGo
 }
 func finalizeIMContextSimplePrivate(obj *IMContextSimplePrivate) {
-	iMContextSimplePrivateStruct.Free(obj.native)
+	iMContextSimplePrivateStruct.Free(obj.Native())
 }
 
 var iMMulticontextClassStruct *gi.Struct
@@ -14984,7 +15104,7 @@ func (recv *IMMulticontextClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *IMMulticontextClass) FieldParentClass() *IMContextClass {
-	argValue := gi.StructFieldGet(iMMulticontextClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(iMMulticontextClassStruct, recv.Native(), "parent_class")
 	value := IMContextClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -14992,8 +15112,8 @@ func (recv *IMMulticontextClass) FieldParentClass() *IMContextClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *IMMulticontextClass) SetFieldParentClass(value *IMContextClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(iMMulticontextClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(iMMulticontextClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -15024,7 +15144,7 @@ func IMMulticontextClassStruct() *IMMulticontextClass {
 	return structGo
 }
 func finalizeIMMulticontextClass(obj *IMMulticontextClass) {
-	iMMulticontextClassStruct.Free(obj.native)
+	iMMulticontextClassStruct.Free(obj.Native())
 }
 
 var iMMulticontextPrivateStruct *gi.Struct
@@ -15073,7 +15193,7 @@ func IMMulticontextPrivateStruct() *IMMulticontextPrivate {
 	return structGo
 }
 func finalizeIMMulticontextPrivate(obj *IMMulticontextPrivate) {
-	iMMulticontextPrivateStruct.Free(obj.native)
+	iMMulticontextPrivateStruct.Free(obj.Native())
 }
 
 var iconFactoryClassStruct *gi.Struct
@@ -15142,7 +15262,7 @@ func IconFactoryClassStruct() *IconFactoryClass {
 	return structGo
 }
 func finalizeIconFactoryClass(obj *IconFactoryClass) {
-	iconFactoryClassStruct.Free(obj.native)
+	iconFactoryClassStruct.Free(obj.Native())
 }
 
 var iconFactoryPrivateStruct *gi.Struct
@@ -15191,7 +15311,7 @@ func IconFactoryPrivateStruct() *IconFactoryPrivate {
 	return structGo
 }
 func finalizeIconFactoryPrivate(obj *IconFactoryPrivate) {
-	iconFactoryPrivateStruct.Free(obj.native)
+	iconFactoryPrivateStruct.Free(obj.Native())
 }
 
 var iconInfoClassStruct *gi.Struct
@@ -15240,7 +15360,7 @@ func IconInfoClassStruct() *IconInfoClass {
 	return structGo
 }
 func finalizeIconInfoClass(obj *IconInfoClass) {
-	iconInfoClassStruct.Free(obj.native)
+	iconInfoClassStruct.Free(obj.Native())
 }
 
 var iconSetStruct *gi.Struct
@@ -15307,7 +15427,37 @@ func IconSetNew() *IconSet {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_set_new_from_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
+var iconSetNewFromPixbufFunction *gi.Function
+var iconSetNewFromPixbufFunction_Once sync.Once
+
+func iconSetNewFromPixbufFunction_Set() error {
+	var err error
+	iconSetNewFromPixbufFunction_Once.Do(func() {
+		err = iconSetStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSetNewFromPixbufFunction, err = iconSetStruct.InvokerNew("new_from_pixbuf")
+	})
+	return err
+}
+
+// IconSetNewFromPixbuf is a representation of the C type gtk_icon_set_new_from_pixbuf.
+func IconSetNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *IconSet {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(pixbuf.Native())
+
+	var ret gi.Argument
+
+	err := iconSetNewFromPixbufFunction_Set()
+	if err == nil {
+		ret = iconSetNewFromPixbufFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconSetNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var iconSetAddSourceFunction *gi.Function
 var iconSetAddSourceFunction_Once sync.Once
@@ -15327,8 +15477,8 @@ func iconSetAddSourceFunction_Set() error {
 // AddSource is a representation of the C type gtk_icon_set_add_source.
 func (recv *IconSet) AddSource(source *IconSource) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(source.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(source.Native())
 
 	err := iconSetAddSourceFunction_Set()
 	if err == nil {
@@ -15356,7 +15506,7 @@ func iconSetCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_icon_set_copy.
 func (recv *IconSet) Copy() *IconSet {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -15390,7 +15540,7 @@ func iconSetRefFunction_Set() error {
 // Ref is a representation of the C type gtk_icon_set_ref.
 func (recv *IconSet) Ref() *IconSet {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -15404,11 +15554,79 @@ func (recv *IconSet) Ref() *IconSet {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_set_render_icon' : return type 'GdkPixbuf.Pixbuf' not supported
+var iconSetRenderIconFunction *gi.Function
+var iconSetRenderIconFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_icon_set_render_icon_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
+func iconSetRenderIconFunction_Set() error {
+	var err error
+	iconSetRenderIconFunction_Once.Do(func() {
+		err = iconSetStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSetRenderIconFunction, err = iconSetStruct.InvokerNew("render_icon")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_icon_set_render_icon_surface' : parameter 'for_window' of type 'Gdk.Window' not supported
+// RenderIcon is a representation of the C type gtk_icon_set_render_icon.
+func (recv *IconSet) RenderIcon(style *Style, direction TextDirection, state StateType, size IconSize, widget *Widget, detail string) *gdkpixbuf.Pixbuf {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(style.Native())
+	inArgs[2].SetInt32(int32(direction))
+	inArgs[3].SetInt32(int32(state))
+	inArgs[4].SetInt32(int32(size))
+	inArgs[5].SetPointer(widget.Native())
+	inArgs[6].SetString(detail)
+
+	var ret gi.Argument
+
+	err := iconSetRenderIconFunction_Set()
+	if err == nil {
+		ret = iconSetRenderIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdkpixbuf.PixbufNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var iconSetRenderIconPixbufFunction *gi.Function
+var iconSetRenderIconPixbufFunction_Once sync.Once
+
+func iconSetRenderIconPixbufFunction_Set() error {
+	var err error
+	iconSetRenderIconPixbufFunction_Once.Do(func() {
+		err = iconSetStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSetRenderIconPixbufFunction, err = iconSetStruct.InvokerNew("render_icon_pixbuf")
+	})
+	return err
+}
+
+// RenderIconPixbuf is a representation of the C type gtk_icon_set_render_icon_pixbuf.
+func (recv *IconSet) RenderIconPixbuf(context *StyleContext, size IconSize) *gdkpixbuf.Pixbuf {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(context.Native())
+	inArgs[2].SetInt32(int32(size))
+
+	var ret gi.Argument
+
+	err := iconSetRenderIconPixbufFunction_Set()
+	if err == nil {
+		ret = iconSetRenderIconPixbufFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdkpixbuf.PixbufNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_icon_set_render_icon_surface' : return type 'cairo.Surface' not supported
 
 var iconSetUnrefFunction *gi.Function
 var iconSetUnrefFunction_Once sync.Once
@@ -15428,7 +15646,7 @@ func iconSetUnrefFunction_Set() error {
 // Unref is a representation of the C type gtk_icon_set_unref.
 func (recv *IconSet) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := iconSetUnrefFunction_Set()
 	if err == nil {
@@ -15520,7 +15738,7 @@ func iconSourceCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_icon_source_copy.
 func (recv *IconSource) Copy() *IconSource {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -15552,7 +15770,7 @@ func iconSourceFreeFunction_Set() error {
 // Free is a representation of the C type gtk_icon_source_free.
 func (recv *IconSource) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := iconSourceFreeFunction_Set()
 	if err == nil {
@@ -15580,7 +15798,7 @@ func iconSourceGetDirectionFunction_Set() error {
 // GetDirection is a representation of the C type gtk_icon_source_get_direction.
 func (recv *IconSource) GetDirection() TextDirection {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -15612,7 +15830,7 @@ func iconSourceGetDirectionWildcardedFunction_Set() error {
 // GetDirectionWildcarded is a representation of the C type gtk_icon_source_get_direction_wildcarded.
 func (recv *IconSource) GetDirectionWildcarded() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -15644,7 +15862,7 @@ func iconSourceGetFilenameFunction_Set() error {
 // GetFilename is a representation of the C type gtk_icon_source_get_filename.
 func (recv *IconSource) GetFilename() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -15676,7 +15894,7 @@ func iconSourceGetIconNameFunction_Set() error {
 // GetIconName is a representation of the C type gtk_icon_source_get_icon_name.
 func (recv *IconSource) GetIconName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -15690,7 +15908,37 @@ func (recv *IconSource) GetIconName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_source_get_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
+var iconSourceGetPixbufFunction *gi.Function
+var iconSourceGetPixbufFunction_Once sync.Once
+
+func iconSourceGetPixbufFunction_Set() error {
+	var err error
+	iconSourceGetPixbufFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceGetPixbufFunction, err = iconSourceStruct.InvokerNew("get_pixbuf")
+	})
+	return err
+}
+
+// GetPixbuf is a representation of the C type gtk_icon_source_get_pixbuf.
+func (recv *IconSource) GetPixbuf() *gdkpixbuf.Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := iconSourceGetPixbufFunction_Set()
+	if err == nil {
+		ret = iconSourceGetPixbufFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdkpixbuf.PixbufNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var iconSourceGetSizeFunction *gi.Function
 var iconSourceGetSizeFunction_Once sync.Once
@@ -15710,7 +15958,7 @@ func iconSourceGetSizeFunction_Set() error {
 // GetSize is a representation of the C type gtk_icon_source_get_size.
 func (recv *IconSource) GetSize() IconSize {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -15742,7 +15990,7 @@ func iconSourceGetSizeWildcardedFunction_Set() error {
 // GetSizeWildcarded is a representation of the C type gtk_icon_source_get_size_wildcarded.
 func (recv *IconSource) GetSizeWildcarded() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -15774,7 +16022,7 @@ func iconSourceGetStateFunction_Set() error {
 // GetState is a representation of the C type gtk_icon_source_get_state.
 func (recv *IconSource) GetState() StateType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -15806,7 +16054,7 @@ func iconSourceGetStateWildcardedFunction_Set() error {
 // GetStateWildcarded is a representation of the C type gtk_icon_source_get_state_wildcarded.
 func (recv *IconSource) GetStateWildcarded() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -15838,7 +16086,7 @@ func iconSourceSetDirectionFunction_Set() error {
 // SetDirection is a representation of the C type gtk_icon_source_set_direction.
 func (recv *IconSource) SetDirection(direction TextDirection) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(direction))
 
 	err := iconSourceSetDirectionFunction_Set()
@@ -15867,7 +16115,7 @@ func iconSourceSetDirectionWildcardedFunction_Set() error {
 // SetDirectionWildcarded is a representation of the C type gtk_icon_source_set_direction_wildcarded.
 func (recv *IconSource) SetDirectionWildcarded(setting bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(setting)
 
 	err := iconSourceSetDirectionWildcardedFunction_Set()
@@ -15896,7 +16144,7 @@ func iconSourceSetFilenameFunction_Set() error {
 // SetFilename is a representation of the C type gtk_icon_source_set_filename.
 func (recv *IconSource) SetFilename(filename string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(filename)
 
 	err := iconSourceSetFilenameFunction_Set()
@@ -15925,7 +16173,7 @@ func iconSourceSetIconNameFunction_Set() error {
 // SetIconName is a representation of the C type gtk_icon_source_set_icon_name.
 func (recv *IconSource) SetIconName(iconName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(iconName)
 
 	err := iconSourceSetIconNameFunction_Set()
@@ -15936,7 +16184,34 @@ func (recv *IconSource) SetIconName(iconName string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_source_set_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
+var iconSourceSetPixbufFunction *gi.Function
+var iconSourceSetPixbufFunction_Once sync.Once
+
+func iconSourceSetPixbufFunction_Set() error {
+	var err error
+	iconSourceSetPixbufFunction_Once.Do(func() {
+		err = iconSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		iconSourceSetPixbufFunction, err = iconSourceStruct.InvokerNew("set_pixbuf")
+	})
+	return err
+}
+
+// SetPixbuf is a representation of the C type gtk_icon_source_set_pixbuf.
+func (recv *IconSource) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(pixbuf.Native())
+
+	err := iconSourceSetPixbufFunction_Set()
+	if err == nil {
+		iconSourceSetPixbufFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var iconSourceSetSizeFunction *gi.Function
 var iconSourceSetSizeFunction_Once sync.Once
@@ -15956,7 +16231,7 @@ func iconSourceSetSizeFunction_Set() error {
 // SetSize is a representation of the C type gtk_icon_source_set_size.
 func (recv *IconSource) SetSize(size IconSize) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(size))
 
 	err := iconSourceSetSizeFunction_Set()
@@ -15985,7 +16260,7 @@ func iconSourceSetSizeWildcardedFunction_Set() error {
 // SetSizeWildcarded is a representation of the C type gtk_icon_source_set_size_wildcarded.
 func (recv *IconSource) SetSizeWildcarded(setting bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(setting)
 
 	err := iconSourceSetSizeWildcardedFunction_Set()
@@ -16014,7 +16289,7 @@ func iconSourceSetStateFunction_Set() error {
 // SetState is a representation of the C type gtk_icon_source_set_state.
 func (recv *IconSource) SetState(state StateType) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(state))
 
 	err := iconSourceSetStateFunction_Set()
@@ -16043,7 +16318,7 @@ func iconSourceSetStateWildcardedFunction_Set() error {
 // SetStateWildcarded is a representation of the C type gtk_icon_source_set_state_wildcarded.
 func (recv *IconSource) SetStateWildcarded(setting bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(setting)
 
 	err := iconSourceSetStateWildcardedFunction_Set()
@@ -16124,7 +16399,7 @@ func IconThemeClassStruct() *IconThemeClass {
 	return structGo
 }
 func finalizeIconThemeClass(obj *IconThemeClass) {
-	iconThemeClassStruct.Free(obj.native)
+	iconThemeClassStruct.Free(obj.Native())
 }
 
 var iconThemePrivateStruct *gi.Struct
@@ -16173,7 +16448,7 @@ func IconThemePrivateStruct() *IconThemePrivate {
 	return structGo
 }
 func finalizeIconThemePrivate(obj *IconThemePrivate) {
-	iconThemePrivateStruct.Free(obj.native)
+	iconThemePrivateStruct.Free(obj.Native())
 }
 
 var iconViewAccessibleClassStruct *gi.Struct
@@ -16212,7 +16487,7 @@ func (recv *IconViewAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *IconViewAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(iconViewAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(iconViewAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -16220,8 +16495,8 @@ func (recv *IconViewAccessibleClass) FieldParentClass() *ContainerAccessibleClas
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *IconViewAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(iconViewAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(iconViewAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // IconViewAccessibleClassStruct creates an uninitialised IconViewAccessibleClass.
@@ -16236,7 +16511,7 @@ func IconViewAccessibleClassStruct() *IconViewAccessibleClass {
 	return structGo
 }
 func finalizeIconViewAccessibleClass(obj *IconViewAccessibleClass) {
-	iconViewAccessibleClassStruct.Free(obj.native)
+	iconViewAccessibleClassStruct.Free(obj.Native())
 }
 
 var iconViewAccessiblePrivateStruct *gi.Struct
@@ -16285,7 +16560,7 @@ func IconViewAccessiblePrivateStruct() *IconViewAccessiblePrivate {
 	return structGo
 }
 func finalizeIconViewAccessiblePrivate(obj *IconViewAccessiblePrivate) {
-	iconViewAccessiblePrivateStruct.Free(obj.native)
+	iconViewAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var iconViewClassStruct *gi.Struct
@@ -16324,7 +16599,7 @@ func (recv *IconViewClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *IconViewClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(iconViewClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(iconViewClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -16332,8 +16607,8 @@ func (recv *IconViewClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *IconViewClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(iconViewClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(iconViewClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'item_activated' : for field getter : missing Type
@@ -16396,7 +16671,7 @@ func IconViewClassStruct() *IconViewClass {
 	return structGo
 }
 func finalizeIconViewClass(obj *IconViewClass) {
-	iconViewClassStruct.Free(obj.native)
+	iconViewClassStruct.Free(obj.Native())
 }
 
 var iconViewPrivateStruct *gi.Struct
@@ -16445,7 +16720,7 @@ func IconViewPrivateStruct() *IconViewPrivate {
 	return structGo
 }
 func finalizeIconViewPrivate(obj *IconViewPrivate) {
-	iconViewPrivateStruct.Free(obj.native)
+	iconViewPrivateStruct.Free(obj.Native())
 }
 
 var imageAccessibleClassStruct *gi.Struct
@@ -16484,7 +16759,7 @@ func (recv *ImageAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ImageAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
-	argValue := gi.StructFieldGet(imageAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(imageAccessibleClassStruct, recv.Native(), "parent_class")
 	value := WidgetAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -16492,8 +16767,8 @@ func (recv *ImageAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ImageAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(imageAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(imageAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ImageAccessibleClassStruct creates an uninitialised ImageAccessibleClass.
@@ -16508,7 +16783,7 @@ func ImageAccessibleClassStruct() *ImageAccessibleClass {
 	return structGo
 }
 func finalizeImageAccessibleClass(obj *ImageAccessibleClass) {
-	imageAccessibleClassStruct.Free(obj.native)
+	imageAccessibleClassStruct.Free(obj.Native())
 }
 
 var imageAccessiblePrivateStruct *gi.Struct
@@ -16557,7 +16832,7 @@ func ImageAccessiblePrivateStruct() *ImageAccessiblePrivate {
 	return structGo
 }
 func finalizeImageAccessiblePrivate(obj *ImageAccessiblePrivate) {
-	imageAccessiblePrivateStruct.Free(obj.native)
+	imageAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var imageCellAccessibleClassStruct *gi.Struct
@@ -16596,7 +16871,7 @@ func (recv *ImageCellAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ImageCellAccessibleClass) FieldParentClass() *RendererCellAccessibleClass {
-	argValue := gi.StructFieldGet(imageCellAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(imageCellAccessibleClassStruct, recv.Native(), "parent_class")
 	value := RendererCellAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -16604,8 +16879,8 @@ func (recv *ImageCellAccessibleClass) FieldParentClass() *RendererCellAccessible
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ImageCellAccessibleClass) SetFieldParentClass(value *RendererCellAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(imageCellAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(imageCellAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ImageCellAccessibleClassStruct creates an uninitialised ImageCellAccessibleClass.
@@ -16620,7 +16895,7 @@ func ImageCellAccessibleClassStruct() *ImageCellAccessibleClass {
 	return structGo
 }
 func finalizeImageCellAccessibleClass(obj *ImageCellAccessibleClass) {
-	imageCellAccessibleClassStruct.Free(obj.native)
+	imageCellAccessibleClassStruct.Free(obj.Native())
 }
 
 var imageCellAccessiblePrivateStruct *gi.Struct
@@ -16669,7 +16944,7 @@ func ImageCellAccessiblePrivateStruct() *ImageCellAccessiblePrivate {
 	return structGo
 }
 func finalizeImageCellAccessiblePrivate(obj *ImageCellAccessiblePrivate) {
-	imageCellAccessiblePrivateStruct.Free(obj.native)
+	imageCellAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var imageClassStruct *gi.Struct
@@ -16708,7 +16983,7 @@ func (recv *ImageClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ImageClass) FieldParentClass() *MiscClass {
-	argValue := gi.StructFieldGet(imageClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(imageClassStruct, recv.Native(), "parent_class")
 	value := MiscClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -16716,8 +16991,8 @@ func (recv *ImageClass) FieldParentClass() *MiscClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ImageClass) SetFieldParentClass(value *MiscClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(imageClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(imageClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -16748,7 +17023,7 @@ func ImageClassStruct() *ImageClass {
 	return structGo
 }
 func finalizeImageClass(obj *ImageClass) {
-	imageClassStruct.Free(obj.native)
+	imageClassStruct.Free(obj.Native())
 }
 
 var imageMenuItemClassStruct *gi.Struct
@@ -16787,7 +17062,7 @@ func (recv *ImageMenuItemClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ImageMenuItemClass) FieldParentClass() *MenuItemClass {
-	argValue := gi.StructFieldGet(imageMenuItemClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(imageMenuItemClassStruct, recv.Native(), "parent_class")
 	value := MenuItemClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -16795,8 +17070,8 @@ func (recv *ImageMenuItemClass) FieldParentClass() *MenuItemClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ImageMenuItemClass) SetFieldParentClass(value *MenuItemClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(imageMenuItemClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(imageMenuItemClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -16827,7 +17102,7 @@ func ImageMenuItemClassStruct() *ImageMenuItemClass {
 	return structGo
 }
 func finalizeImageMenuItemClass(obj *ImageMenuItemClass) {
-	imageMenuItemClassStruct.Free(obj.native)
+	imageMenuItemClassStruct.Free(obj.Native())
 }
 
 var imageMenuItemPrivateStruct *gi.Struct
@@ -16876,7 +17151,7 @@ func ImageMenuItemPrivateStruct() *ImageMenuItemPrivate {
 	return structGo
 }
 func finalizeImageMenuItemPrivate(obj *ImageMenuItemPrivate) {
-	imageMenuItemPrivateStruct.Free(obj.native)
+	imageMenuItemPrivateStruct.Free(obj.Native())
 }
 
 var imagePrivateStruct *gi.Struct
@@ -16925,7 +17200,7 @@ func ImagePrivateStruct() *ImagePrivate {
 	return structGo
 }
 func finalizeImagePrivate(obj *ImagePrivate) {
-	imagePrivateStruct.Free(obj.native)
+	imagePrivateStruct.Free(obj.Native())
 }
 
 var infoBarClassStruct *gi.Struct
@@ -16964,7 +17239,7 @@ func (recv *InfoBarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *InfoBarClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(infoBarClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(infoBarClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -16972,8 +17247,8 @@ func (recv *InfoBarClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *InfoBarClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(infoBarClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(infoBarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'response' : for field getter : missing Type
@@ -17012,7 +17287,7 @@ func InfoBarClassStruct() *InfoBarClass {
 	return structGo
 }
 func finalizeInfoBarClass(obj *InfoBarClass) {
-	infoBarClassStruct.Free(obj.native)
+	infoBarClassStruct.Free(obj.Native())
 }
 
 var infoBarPrivateStruct *gi.Struct
@@ -17061,7 +17336,7 @@ func InfoBarPrivateStruct() *InfoBarPrivate {
 	return structGo
 }
 func finalizeInfoBarPrivate(obj *InfoBarPrivate) {
-	infoBarPrivateStruct.Free(obj.native)
+	infoBarPrivateStruct.Free(obj.Native())
 }
 
 var invisibleClassStruct *gi.Struct
@@ -17100,7 +17375,7 @@ func (recv *InvisibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *InvisibleClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(invisibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(invisibleClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -17108,8 +17383,8 @@ func (recv *InvisibleClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *InvisibleClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(invisibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(invisibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -17140,7 +17415,7 @@ func InvisibleClassStruct() *InvisibleClass {
 	return structGo
 }
 func finalizeInvisibleClass(obj *InvisibleClass) {
-	invisibleClassStruct.Free(obj.native)
+	invisibleClassStruct.Free(obj.Native())
 }
 
 var invisiblePrivateStruct *gi.Struct
@@ -17189,7 +17464,7 @@ func InvisiblePrivateStruct() *InvisiblePrivate {
 	return structGo
 }
 func finalizeInvisiblePrivate(obj *InvisiblePrivate) {
-	invisiblePrivateStruct.Free(obj.native)
+	invisiblePrivateStruct.Free(obj.Native())
 }
 
 var labelAccessibleClassStruct *gi.Struct
@@ -17228,7 +17503,7 @@ func (recv *LabelAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *LabelAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
-	argValue := gi.StructFieldGet(labelAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(labelAccessibleClassStruct, recv.Native(), "parent_class")
 	value := WidgetAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -17236,8 +17511,8 @@ func (recv *LabelAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *LabelAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(labelAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(labelAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // LabelAccessibleClassStruct creates an uninitialised LabelAccessibleClass.
@@ -17252,7 +17527,7 @@ func LabelAccessibleClassStruct() *LabelAccessibleClass {
 	return structGo
 }
 func finalizeLabelAccessibleClass(obj *LabelAccessibleClass) {
-	labelAccessibleClassStruct.Free(obj.native)
+	labelAccessibleClassStruct.Free(obj.Native())
 }
 
 var labelAccessiblePrivateStruct *gi.Struct
@@ -17301,7 +17576,7 @@ func LabelAccessiblePrivateStruct() *LabelAccessiblePrivate {
 	return structGo
 }
 func finalizeLabelAccessiblePrivate(obj *LabelAccessiblePrivate) {
-	labelAccessiblePrivateStruct.Free(obj.native)
+	labelAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var labelClassStruct *gi.Struct
@@ -17340,7 +17615,7 @@ func (recv *LabelClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *LabelClass) FieldParentClass() *MiscClass {
-	argValue := gi.StructFieldGet(labelClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(labelClassStruct, recv.Native(), "parent_class")
 	value := MiscClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -17348,8 +17623,8 @@ func (recv *LabelClass) FieldParentClass() *MiscClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *LabelClass) SetFieldParentClass(value *MiscClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(labelClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(labelClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'move_cursor' : for field getter : missing Type
@@ -17412,7 +17687,7 @@ func LabelClassStruct() *LabelClass {
 	return structGo
 }
 func finalizeLabelClass(obj *LabelClass) {
-	labelClassStruct.Free(obj.native)
+	labelClassStruct.Free(obj.Native())
 }
 
 var labelPrivateStruct *gi.Struct
@@ -17461,7 +17736,7 @@ func LabelPrivateStruct() *LabelPrivate {
 	return structGo
 }
 func finalizeLabelPrivate(obj *LabelPrivate) {
-	labelPrivateStruct.Free(obj.native)
+	labelPrivateStruct.Free(obj.Native())
 }
 
 var labelSelectionInfoStruct *gi.Struct
@@ -17510,7 +17785,7 @@ func LabelSelectionInfoStruct() *LabelSelectionInfo {
 	return structGo
 }
 func finalizeLabelSelectionInfo(obj *LabelSelectionInfo) {
-	labelSelectionInfoStruct.Free(obj.native)
+	labelSelectionInfoStruct.Free(obj.Native())
 }
 
 var layoutClassStruct *gi.Struct
@@ -17549,7 +17824,7 @@ func (recv *LayoutClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *LayoutClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(layoutClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(layoutClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -17557,8 +17832,8 @@ func (recv *LayoutClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *LayoutClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(layoutClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(layoutClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -17589,7 +17864,7 @@ func LayoutClassStruct() *LayoutClass {
 	return structGo
 }
 func finalizeLayoutClass(obj *LayoutClass) {
-	layoutClassStruct.Free(obj.native)
+	layoutClassStruct.Free(obj.Native())
 }
 
 var layoutPrivateStruct *gi.Struct
@@ -17638,7 +17913,7 @@ func LayoutPrivateStruct() *LayoutPrivate {
 	return structGo
 }
 func finalizeLayoutPrivate(obj *LayoutPrivate) {
-	layoutPrivateStruct.Free(obj.native)
+	layoutPrivateStruct.Free(obj.Native())
 }
 
 var levelBarAccessibleClassStruct *gi.Struct
@@ -17677,7 +17952,7 @@ func (recv *LevelBarAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *LevelBarAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
-	argValue := gi.StructFieldGet(levelBarAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(levelBarAccessibleClassStruct, recv.Native(), "parent_class")
 	value := WidgetAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -17685,8 +17960,8 @@ func (recv *LevelBarAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *LevelBarAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(levelBarAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(levelBarAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // LevelBarAccessibleClassStruct creates an uninitialised LevelBarAccessibleClass.
@@ -17701,7 +17976,7 @@ func LevelBarAccessibleClassStruct() *LevelBarAccessibleClass {
 	return structGo
 }
 func finalizeLevelBarAccessibleClass(obj *LevelBarAccessibleClass) {
-	levelBarAccessibleClassStruct.Free(obj.native)
+	levelBarAccessibleClassStruct.Free(obj.Native())
 }
 
 var levelBarAccessiblePrivateStruct *gi.Struct
@@ -17750,7 +18025,7 @@ func LevelBarAccessiblePrivateStruct() *LevelBarAccessiblePrivate {
 	return structGo
 }
 func finalizeLevelBarAccessiblePrivate(obj *LevelBarAccessiblePrivate) {
-	levelBarAccessiblePrivateStruct.Free(obj.native)
+	levelBarAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var levelBarClassStruct *gi.Struct
@@ -17803,7 +18078,7 @@ func LevelBarClassStruct() *LevelBarClass {
 	return structGo
 }
 func finalizeLevelBarClass(obj *LevelBarClass) {
-	levelBarClassStruct.Free(obj.native)
+	levelBarClassStruct.Free(obj.Native())
 }
 
 var levelBarPrivateStruct *gi.Struct
@@ -17852,7 +18127,7 @@ func LevelBarPrivateStruct() *LevelBarPrivate {
 	return structGo
 }
 func finalizeLevelBarPrivate(obj *LevelBarPrivate) {
-	levelBarPrivateStruct.Free(obj.native)
+	levelBarPrivateStruct.Free(obj.Native())
 }
 
 var linkButtonAccessibleClassStruct *gi.Struct
@@ -17891,7 +18166,7 @@ func (recv *LinkButtonAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *LinkButtonAccessibleClass) FieldParentClass() *ButtonAccessibleClass {
-	argValue := gi.StructFieldGet(linkButtonAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(linkButtonAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ButtonAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -17899,8 +18174,8 @@ func (recv *LinkButtonAccessibleClass) FieldParentClass() *ButtonAccessibleClass
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *LinkButtonAccessibleClass) SetFieldParentClass(value *ButtonAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(linkButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(linkButtonAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // LinkButtonAccessibleClassStruct creates an uninitialised LinkButtonAccessibleClass.
@@ -17915,7 +18190,7 @@ func LinkButtonAccessibleClassStruct() *LinkButtonAccessibleClass {
 	return structGo
 }
 func finalizeLinkButtonAccessibleClass(obj *LinkButtonAccessibleClass) {
-	linkButtonAccessibleClassStruct.Free(obj.native)
+	linkButtonAccessibleClassStruct.Free(obj.Native())
 }
 
 var linkButtonAccessiblePrivateStruct *gi.Struct
@@ -17964,7 +18239,7 @@ func LinkButtonAccessiblePrivateStruct() *LinkButtonAccessiblePrivate {
 	return structGo
 }
 func finalizeLinkButtonAccessiblePrivate(obj *LinkButtonAccessiblePrivate) {
-	linkButtonAccessiblePrivateStruct.Free(obj.native)
+	linkButtonAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var linkButtonClassStruct *gi.Struct
@@ -18033,7 +18308,7 @@ func LinkButtonClassStruct() *LinkButtonClass {
 	return structGo
 }
 func finalizeLinkButtonClass(obj *LinkButtonClass) {
-	linkButtonClassStruct.Free(obj.native)
+	linkButtonClassStruct.Free(obj.Native())
 }
 
 var linkButtonPrivateStruct *gi.Struct
@@ -18082,7 +18357,7 @@ func LinkButtonPrivateStruct() *LinkButtonPrivate {
 	return structGo
 }
 func finalizeLinkButtonPrivate(obj *LinkButtonPrivate) {
-	linkButtonPrivateStruct.Free(obj.native)
+	linkButtonPrivateStruct.Free(obj.Native())
 }
 
 var listBoxAccessibleClassStruct *gi.Struct
@@ -18121,7 +18396,7 @@ func (recv *ListBoxAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ListBoxAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(listBoxAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(listBoxAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -18129,8 +18404,8 @@ func (recv *ListBoxAccessibleClass) FieldParentClass() *ContainerAccessibleClass
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ListBoxAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(listBoxAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(listBoxAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ListBoxAccessibleClassStruct creates an uninitialised ListBoxAccessibleClass.
@@ -18145,7 +18420,7 @@ func ListBoxAccessibleClassStruct() *ListBoxAccessibleClass {
 	return structGo
 }
 func finalizeListBoxAccessibleClass(obj *ListBoxAccessibleClass) {
-	listBoxAccessibleClassStruct.Free(obj.native)
+	listBoxAccessibleClassStruct.Free(obj.Native())
 }
 
 var listBoxAccessiblePrivateStruct *gi.Struct
@@ -18194,7 +18469,7 @@ func ListBoxAccessiblePrivateStruct() *ListBoxAccessiblePrivate {
 	return structGo
 }
 func finalizeListBoxAccessiblePrivate(obj *ListBoxAccessiblePrivate) {
-	listBoxAccessiblePrivateStruct.Free(obj.native)
+	listBoxAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var listBoxClassStruct *gi.Struct
@@ -18233,7 +18508,7 @@ func (recv *ListBoxClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ListBoxClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(listBoxClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(listBoxClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -18241,8 +18516,8 @@ func (recv *ListBoxClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ListBoxClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(listBoxClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(listBoxClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'row_selected' : for field getter : missing Type
@@ -18301,7 +18576,7 @@ func ListBoxClassStruct() *ListBoxClass {
 	return structGo
 }
 func finalizeListBoxClass(obj *ListBoxClass) {
-	listBoxClassStruct.Free(obj.native)
+	listBoxClassStruct.Free(obj.Native())
 }
 
 var listBoxRowAccessibleClassStruct *gi.Struct
@@ -18340,7 +18615,7 @@ func (recv *ListBoxRowAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ListBoxRowAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(listBoxRowAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(listBoxRowAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -18348,8 +18623,8 @@ func (recv *ListBoxRowAccessibleClass) FieldParentClass() *ContainerAccessibleCl
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ListBoxRowAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(listBoxRowAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(listBoxRowAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ListBoxRowAccessibleClassStruct creates an uninitialised ListBoxRowAccessibleClass.
@@ -18364,7 +18639,7 @@ func ListBoxRowAccessibleClassStruct() *ListBoxRowAccessibleClass {
 	return structGo
 }
 func finalizeListBoxRowAccessibleClass(obj *ListBoxRowAccessibleClass) {
-	listBoxRowAccessibleClassStruct.Free(obj.native)
+	listBoxRowAccessibleClassStruct.Free(obj.Native())
 }
 
 var listBoxRowClassStruct *gi.Struct
@@ -18403,7 +18678,7 @@ func (recv *ListBoxRowClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ListBoxRowClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(listBoxRowClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(listBoxRowClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -18411,8 +18686,8 @@ func (recv *ListBoxRowClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ListBoxRowClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(listBoxRowClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(listBoxRowClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
@@ -18439,7 +18714,7 @@ func ListBoxRowClassStruct() *ListBoxRowClass {
 	return structGo
 }
 func finalizeListBoxRowClass(obj *ListBoxRowClass) {
-	listBoxRowClassStruct.Free(obj.native)
+	listBoxRowClassStruct.Free(obj.Native())
 }
 
 var listStoreClassStruct *gi.Struct
@@ -18508,7 +18783,7 @@ func ListStoreClassStruct() *ListStoreClass {
 	return structGo
 }
 func finalizeListStoreClass(obj *ListStoreClass) {
-	listStoreClassStruct.Free(obj.native)
+	listStoreClassStruct.Free(obj.Native())
 }
 
 var listStorePrivateStruct *gi.Struct
@@ -18557,7 +18832,7 @@ func ListStorePrivateStruct() *ListStorePrivate {
 	return structGo
 }
 func finalizeListStorePrivate(obj *ListStorePrivate) {
-	listStorePrivateStruct.Free(obj.native)
+	listStorePrivateStruct.Free(obj.Native())
 }
 
 var lockButtonAccessibleClassStruct *gi.Struct
@@ -18596,7 +18871,7 @@ func (recv *LockButtonAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *LockButtonAccessibleClass) FieldParentClass() *ButtonAccessibleClass {
-	argValue := gi.StructFieldGet(lockButtonAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(lockButtonAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ButtonAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -18604,8 +18879,8 @@ func (recv *LockButtonAccessibleClass) FieldParentClass() *ButtonAccessibleClass
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *LockButtonAccessibleClass) SetFieldParentClass(value *ButtonAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(lockButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(lockButtonAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // LockButtonAccessibleClassStruct creates an uninitialised LockButtonAccessibleClass.
@@ -18620,7 +18895,7 @@ func LockButtonAccessibleClassStruct() *LockButtonAccessibleClass {
 	return structGo
 }
 func finalizeLockButtonAccessibleClass(obj *LockButtonAccessibleClass) {
-	lockButtonAccessibleClassStruct.Free(obj.native)
+	lockButtonAccessibleClassStruct.Free(obj.Native())
 }
 
 var lockButtonAccessiblePrivateStruct *gi.Struct
@@ -18669,7 +18944,7 @@ func LockButtonAccessiblePrivateStruct() *LockButtonAccessiblePrivate {
 	return structGo
 }
 func finalizeLockButtonAccessiblePrivate(obj *LockButtonAccessiblePrivate) {
-	lockButtonAccessiblePrivateStruct.Free(obj.native)
+	lockButtonAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var lockButtonClassStruct *gi.Struct
@@ -18708,7 +18983,7 @@ func (recv *LockButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *LockButtonClass) FieldParentClass() *ButtonClass {
-	argValue := gi.StructFieldGet(lockButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(lockButtonClassStruct, recv.Native(), "parent_class")
 	value := ButtonClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -18716,8 +18991,8 @@ func (recv *LockButtonClass) FieldParentClass() *ButtonClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *LockButtonClass) SetFieldParentClass(value *ButtonClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(lockButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(lockButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'reserved0' : for field getter : missing Type
@@ -18764,7 +19039,7 @@ func LockButtonClassStruct() *LockButtonClass {
 	return structGo
 }
 func finalizeLockButtonClass(obj *LockButtonClass) {
-	lockButtonClassStruct.Free(obj.native)
+	lockButtonClassStruct.Free(obj.Native())
 }
 
 var lockButtonPrivateStruct *gi.Struct
@@ -18813,7 +19088,7 @@ func LockButtonPrivateStruct() *LockButtonPrivate {
 	return structGo
 }
 func finalizeLockButtonPrivate(obj *LockButtonPrivate) {
-	lockButtonPrivateStruct.Free(obj.native)
+	lockButtonPrivateStruct.Free(obj.Native())
 }
 
 var menuAccessibleClassStruct *gi.Struct
@@ -18852,7 +19127,7 @@ func (recv *MenuAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MenuAccessibleClass) FieldParentClass() *MenuShellAccessibleClass {
-	argValue := gi.StructFieldGet(menuAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(menuAccessibleClassStruct, recv.Native(), "parent_class")
 	value := MenuShellAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -18860,8 +19135,8 @@ func (recv *MenuAccessibleClass) FieldParentClass() *MenuShellAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MenuAccessibleClass) SetFieldParentClass(value *MenuShellAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(menuAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(menuAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // MenuAccessibleClassStruct creates an uninitialised MenuAccessibleClass.
@@ -18876,7 +19151,7 @@ func MenuAccessibleClassStruct() *MenuAccessibleClass {
 	return structGo
 }
 func finalizeMenuAccessibleClass(obj *MenuAccessibleClass) {
-	menuAccessibleClassStruct.Free(obj.native)
+	menuAccessibleClassStruct.Free(obj.Native())
 }
 
 var menuAccessiblePrivateStruct *gi.Struct
@@ -18925,7 +19200,7 @@ func MenuAccessiblePrivateStruct() *MenuAccessiblePrivate {
 	return structGo
 }
 func finalizeMenuAccessiblePrivate(obj *MenuAccessiblePrivate) {
-	menuAccessiblePrivateStruct.Free(obj.native)
+	menuAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var menuBarClassStruct *gi.Struct
@@ -18964,7 +19239,7 @@ func (recv *MenuBarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MenuBarClass) FieldParentClass() *MenuShellClass {
-	argValue := gi.StructFieldGet(menuBarClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(menuBarClassStruct, recv.Native(), "parent_class")
 	value := MenuShellClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -18972,8 +19247,8 @@ func (recv *MenuBarClass) FieldParentClass() *MenuShellClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MenuBarClass) SetFieldParentClass(value *MenuShellClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(menuBarClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(menuBarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -19004,7 +19279,7 @@ func MenuBarClassStruct() *MenuBarClass {
 	return structGo
 }
 func finalizeMenuBarClass(obj *MenuBarClass) {
-	menuBarClassStruct.Free(obj.native)
+	menuBarClassStruct.Free(obj.Native())
 }
 
 var menuBarPrivateStruct *gi.Struct
@@ -19053,7 +19328,7 @@ func MenuBarPrivateStruct() *MenuBarPrivate {
 	return structGo
 }
 func finalizeMenuBarPrivate(obj *MenuBarPrivate) {
-	menuBarPrivateStruct.Free(obj.native)
+	menuBarPrivateStruct.Free(obj.Native())
 }
 
 var menuButtonAccessibleClassStruct *gi.Struct
@@ -19092,7 +19367,7 @@ func (recv *MenuButtonAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MenuButtonAccessibleClass) FieldParentClass() *ToggleButtonAccessibleClass {
-	argValue := gi.StructFieldGet(menuButtonAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(menuButtonAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ToggleButtonAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -19100,8 +19375,8 @@ func (recv *MenuButtonAccessibleClass) FieldParentClass() *ToggleButtonAccessibl
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MenuButtonAccessibleClass) SetFieldParentClass(value *ToggleButtonAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(menuButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(menuButtonAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // MenuButtonAccessibleClassStruct creates an uninitialised MenuButtonAccessibleClass.
@@ -19116,7 +19391,7 @@ func MenuButtonAccessibleClassStruct() *MenuButtonAccessibleClass {
 	return structGo
 }
 func finalizeMenuButtonAccessibleClass(obj *MenuButtonAccessibleClass) {
-	menuButtonAccessibleClassStruct.Free(obj.native)
+	menuButtonAccessibleClassStruct.Free(obj.Native())
 }
 
 var menuButtonAccessiblePrivateStruct *gi.Struct
@@ -19165,7 +19440,7 @@ func MenuButtonAccessiblePrivateStruct() *MenuButtonAccessiblePrivate {
 	return structGo
 }
 func finalizeMenuButtonAccessiblePrivate(obj *MenuButtonAccessiblePrivate) {
-	menuButtonAccessiblePrivateStruct.Free(obj.native)
+	menuButtonAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var menuButtonClassStruct *gi.Struct
@@ -19204,7 +19479,7 @@ func (recv *MenuButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MenuButtonClass) FieldParentClass() *ToggleButtonClass {
-	argValue := gi.StructFieldGet(menuButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(menuButtonClassStruct, recv.Native(), "parent_class")
 	value := ToggleButtonClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -19212,8 +19487,8 @@ func (recv *MenuButtonClass) FieldParentClass() *ToggleButtonClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MenuButtonClass) SetFieldParentClass(value *ToggleButtonClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(menuButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(menuButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -19244,7 +19519,7 @@ func MenuButtonClassStruct() *MenuButtonClass {
 	return structGo
 }
 func finalizeMenuButtonClass(obj *MenuButtonClass) {
-	menuButtonClassStruct.Free(obj.native)
+	menuButtonClassStruct.Free(obj.Native())
 }
 
 var menuButtonPrivateStruct *gi.Struct
@@ -19293,7 +19568,7 @@ func MenuButtonPrivateStruct() *MenuButtonPrivate {
 	return structGo
 }
 func finalizeMenuButtonPrivate(obj *MenuButtonPrivate) {
-	menuButtonPrivateStruct.Free(obj.native)
+	menuButtonPrivateStruct.Free(obj.Native())
 }
 
 var menuClassStruct *gi.Struct
@@ -19332,7 +19607,7 @@ func (recv *MenuClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MenuClass) FieldParentClass() *MenuShellClass {
-	argValue := gi.StructFieldGet(menuClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(menuClassStruct, recv.Native(), "parent_class")
 	value := MenuShellClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -19340,8 +19615,8 @@ func (recv *MenuClass) FieldParentClass() *MenuShellClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MenuClass) SetFieldParentClass(value *MenuShellClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(menuClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(menuClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -19372,7 +19647,7 @@ func MenuClassStruct() *MenuClass {
 	return structGo
 }
 func finalizeMenuClass(obj *MenuClass) {
-	menuClassStruct.Free(obj.native)
+	menuClassStruct.Free(obj.Native())
 }
 
 var menuItemAccessibleClassStruct *gi.Struct
@@ -19411,7 +19686,7 @@ func (recv *MenuItemAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MenuItemAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(menuItemAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(menuItemAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -19419,8 +19694,8 @@ func (recv *MenuItemAccessibleClass) FieldParentClass() *ContainerAccessibleClas
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MenuItemAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(menuItemAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(menuItemAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // MenuItemAccessibleClassStruct creates an uninitialised MenuItemAccessibleClass.
@@ -19435,7 +19710,7 @@ func MenuItemAccessibleClassStruct() *MenuItemAccessibleClass {
 	return structGo
 }
 func finalizeMenuItemAccessibleClass(obj *MenuItemAccessibleClass) {
-	menuItemAccessibleClassStruct.Free(obj.native)
+	menuItemAccessibleClassStruct.Free(obj.Native())
 }
 
 var menuItemAccessiblePrivateStruct *gi.Struct
@@ -19484,7 +19759,7 @@ func MenuItemAccessiblePrivateStruct() *MenuItemAccessiblePrivate {
 	return structGo
 }
 func finalizeMenuItemAccessiblePrivate(obj *MenuItemAccessiblePrivate) {
-	menuItemAccessiblePrivateStruct.Free(obj.native)
+	menuItemAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var menuItemClassStruct *gi.Struct
@@ -19523,7 +19798,7 @@ func (recv *MenuItemClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MenuItemClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(menuItemClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(menuItemClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -19531,13 +19806,13 @@ func (recv *MenuItemClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MenuItemClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(menuItemClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(menuItemClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // FieldHideOnActivate returns the C field 'hide_on_activate'.
 func (recv *MenuItemClass) FieldHideOnActivate() uint32 {
-	argValue := gi.StructFieldGet(menuItemClassStruct, recv.native, "hide_on_activate")
+	argValue := gi.StructFieldGet(menuItemClassStruct, recv.Native(), "hide_on_activate")
 	value := argValue.Uint32()
 	return value
 }
@@ -19546,7 +19821,7 @@ func (recv *MenuItemClass) FieldHideOnActivate() uint32 {
 func (recv *MenuItemClass) SetFieldHideOnActivate(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(menuItemClassStruct, recv.native, "hide_on_activate", argValue)
+	gi.StructFieldSet(menuItemClassStruct, recv.Native(), "hide_on_activate", argValue)
 }
 
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
@@ -19609,7 +19884,7 @@ func MenuItemClassStruct() *MenuItemClass {
 	return structGo
 }
 func finalizeMenuItemClass(obj *MenuItemClass) {
-	menuItemClassStruct.Free(obj.native)
+	menuItemClassStruct.Free(obj.Native())
 }
 
 var menuItemPrivateStruct *gi.Struct
@@ -19658,7 +19933,7 @@ func MenuItemPrivateStruct() *MenuItemPrivate {
 	return structGo
 }
 func finalizeMenuItemPrivate(obj *MenuItemPrivate) {
-	menuItemPrivateStruct.Free(obj.native)
+	menuItemPrivateStruct.Free(obj.Native())
 }
 
 var menuPrivateStruct *gi.Struct
@@ -19707,7 +19982,7 @@ func MenuPrivateStruct() *MenuPrivate {
 	return structGo
 }
 func finalizeMenuPrivate(obj *MenuPrivate) {
-	menuPrivateStruct.Free(obj.native)
+	menuPrivateStruct.Free(obj.Native())
 }
 
 var menuShellAccessibleClassStruct *gi.Struct
@@ -19746,7 +20021,7 @@ func (recv *MenuShellAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MenuShellAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(menuShellAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(menuShellAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -19754,8 +20029,8 @@ func (recv *MenuShellAccessibleClass) FieldParentClass() *ContainerAccessibleCla
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MenuShellAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(menuShellAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(menuShellAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // MenuShellAccessibleClassStruct creates an uninitialised MenuShellAccessibleClass.
@@ -19770,7 +20045,7 @@ func MenuShellAccessibleClassStruct() *MenuShellAccessibleClass {
 	return structGo
 }
 func finalizeMenuShellAccessibleClass(obj *MenuShellAccessibleClass) {
-	menuShellAccessibleClassStruct.Free(obj.native)
+	menuShellAccessibleClassStruct.Free(obj.Native())
 }
 
 var menuShellAccessiblePrivateStruct *gi.Struct
@@ -19819,7 +20094,7 @@ func MenuShellAccessiblePrivateStruct() *MenuShellAccessiblePrivate {
 	return structGo
 }
 func finalizeMenuShellAccessiblePrivate(obj *MenuShellAccessiblePrivate) {
-	menuShellAccessiblePrivateStruct.Free(obj.native)
+	menuShellAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var menuShellClassStruct *gi.Struct
@@ -19858,7 +20133,7 @@ func (recv *MenuShellClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MenuShellClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(menuShellClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(menuShellClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -19866,13 +20141,13 @@ func (recv *MenuShellClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MenuShellClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(menuShellClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(menuShellClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // FieldSubmenuPlacement returns the C field 'submenu_placement'.
 func (recv *MenuShellClass) FieldSubmenuPlacement() uint32 {
-	argValue := gi.StructFieldGet(menuShellClassStruct, recv.native, "submenu_placement")
+	argValue := gi.StructFieldGet(menuShellClassStruct, recv.Native(), "submenu_placement")
 	value := argValue.Uint32()
 	return value
 }
@@ -19881,7 +20156,7 @@ func (recv *MenuShellClass) FieldSubmenuPlacement() uint32 {
 func (recv *MenuShellClass) SetFieldSubmenuPlacement(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(menuShellClassStruct, recv.native, "submenu_placement", argValue)
+	gi.StructFieldSet(menuShellClassStruct, recv.Native(), "submenu_placement", argValue)
 }
 
 // UNSUPPORTED : C value 'deactivate' : for field getter : missing Type
@@ -19948,7 +20223,7 @@ func MenuShellClassStruct() *MenuShellClass {
 	return structGo
 }
 func finalizeMenuShellClass(obj *MenuShellClass) {
-	menuShellClassStruct.Free(obj.native)
+	menuShellClassStruct.Free(obj.Native())
 }
 
 var menuShellPrivateStruct *gi.Struct
@@ -19997,7 +20272,7 @@ func MenuShellPrivateStruct() *MenuShellPrivate {
 	return structGo
 }
 func finalizeMenuShellPrivate(obj *MenuShellPrivate) {
-	menuShellPrivateStruct.Free(obj.native)
+	menuShellPrivateStruct.Free(obj.Native())
 }
 
 var menuToolButtonClassStruct *gi.Struct
@@ -20036,7 +20311,7 @@ func (recv *MenuToolButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MenuToolButtonClass) FieldParentClass() *ToolButtonClass {
-	argValue := gi.StructFieldGet(menuToolButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(menuToolButtonClassStruct, recv.Native(), "parent_class")
 	value := ToolButtonClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -20044,8 +20319,8 @@ func (recv *MenuToolButtonClass) FieldParentClass() *ToolButtonClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MenuToolButtonClass) SetFieldParentClass(value *ToolButtonClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(menuToolButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(menuToolButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'show_menu' : for field getter : missing Type
@@ -20080,7 +20355,7 @@ func MenuToolButtonClassStruct() *MenuToolButtonClass {
 	return structGo
 }
 func finalizeMenuToolButtonClass(obj *MenuToolButtonClass) {
-	menuToolButtonClassStruct.Free(obj.native)
+	menuToolButtonClassStruct.Free(obj.Native())
 }
 
 var menuToolButtonPrivateStruct *gi.Struct
@@ -20129,7 +20404,7 @@ func MenuToolButtonPrivateStruct() *MenuToolButtonPrivate {
 	return structGo
 }
 func finalizeMenuToolButtonPrivate(obj *MenuToolButtonPrivate) {
-	menuToolButtonPrivateStruct.Free(obj.native)
+	menuToolButtonPrivateStruct.Free(obj.Native())
 }
 
 var messageDialogClassStruct *gi.Struct
@@ -20168,7 +20443,7 @@ func (recv *MessageDialogClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MessageDialogClass) FieldParentClass() *DialogClass {
-	argValue := gi.StructFieldGet(messageDialogClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(messageDialogClassStruct, recv.Native(), "parent_class")
 	value := DialogClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -20176,8 +20451,8 @@ func (recv *MessageDialogClass) FieldParentClass() *DialogClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MessageDialogClass) SetFieldParentClass(value *DialogClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(messageDialogClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(messageDialogClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -20208,7 +20483,7 @@ func MessageDialogClassStruct() *MessageDialogClass {
 	return structGo
 }
 func finalizeMessageDialogClass(obj *MessageDialogClass) {
-	messageDialogClassStruct.Free(obj.native)
+	messageDialogClassStruct.Free(obj.Native())
 }
 
 var messageDialogPrivateStruct *gi.Struct
@@ -20257,7 +20532,7 @@ func MessageDialogPrivateStruct() *MessageDialogPrivate {
 	return structGo
 }
 func finalizeMessageDialogPrivate(obj *MessageDialogPrivate) {
-	messageDialogPrivateStruct.Free(obj.native)
+	messageDialogPrivateStruct.Free(obj.Native())
 }
 
 var miscClassStruct *gi.Struct
@@ -20296,7 +20571,7 @@ func (recv *MiscClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MiscClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(miscClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(miscClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -20304,8 +20579,8 @@ func (recv *MiscClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MiscClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(miscClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(miscClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -20336,7 +20611,7 @@ func MiscClassStruct() *MiscClass {
 	return structGo
 }
 func finalizeMiscClass(obj *MiscClass) {
-	miscClassStruct.Free(obj.native)
+	miscClassStruct.Free(obj.Native())
 }
 
 var miscPrivateStruct *gi.Struct
@@ -20385,7 +20660,7 @@ func MiscPrivateStruct() *MiscPrivate {
 	return structGo
 }
 func finalizeMiscPrivate(obj *MiscPrivate) {
-	miscPrivateStruct.Free(obj.native)
+	miscPrivateStruct.Free(obj.Native())
 }
 
 var mountOperationClassStruct *gi.Struct
@@ -20454,7 +20729,7 @@ func MountOperationClassStruct() *MountOperationClass {
 	return structGo
 }
 func finalizeMountOperationClass(obj *MountOperationClass) {
-	mountOperationClassStruct.Free(obj.native)
+	mountOperationClassStruct.Free(obj.Native())
 }
 
 var mountOperationPrivateStruct *gi.Struct
@@ -20503,7 +20778,7 @@ func MountOperationPrivateStruct() *MountOperationPrivate {
 	return structGo
 }
 func finalizeMountOperationPrivate(obj *MountOperationPrivate) {
-	mountOperationPrivateStruct.Free(obj.native)
+	mountOperationPrivateStruct.Free(obj.Native())
 }
 
 var nativeDialogClassStruct *gi.Struct
@@ -20584,7 +20859,7 @@ func NativeDialogClassStruct() *NativeDialogClass {
 	return structGo
 }
 func finalizeNativeDialogClass(obj *NativeDialogClass) {
-	nativeDialogClassStruct.Free(obj.native)
+	nativeDialogClassStruct.Free(obj.Native())
 }
 
 var notebookAccessibleClassStruct *gi.Struct
@@ -20623,7 +20898,7 @@ func (recv *NotebookAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *NotebookAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(notebookAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(notebookAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -20631,8 +20906,8 @@ func (recv *NotebookAccessibleClass) FieldParentClass() *ContainerAccessibleClas
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *NotebookAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(notebookAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(notebookAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // NotebookAccessibleClassStruct creates an uninitialised NotebookAccessibleClass.
@@ -20647,7 +20922,7 @@ func NotebookAccessibleClassStruct() *NotebookAccessibleClass {
 	return structGo
 }
 func finalizeNotebookAccessibleClass(obj *NotebookAccessibleClass) {
-	notebookAccessibleClassStruct.Free(obj.native)
+	notebookAccessibleClassStruct.Free(obj.Native())
 }
 
 var notebookAccessiblePrivateStruct *gi.Struct
@@ -20696,7 +20971,7 @@ func NotebookAccessiblePrivateStruct() *NotebookAccessiblePrivate {
 	return structGo
 }
 func finalizeNotebookAccessiblePrivate(obj *NotebookAccessiblePrivate) {
-	notebookAccessiblePrivateStruct.Free(obj.native)
+	notebookAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var notebookClassStruct *gi.Struct
@@ -20735,7 +21010,7 @@ func (recv *NotebookClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *NotebookClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(notebookClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(notebookClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -20743,8 +21018,8 @@ func (recv *NotebookClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *NotebookClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(notebookClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(notebookClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'switch_page' : for field getter : missing Type
@@ -20835,7 +21110,7 @@ func NotebookClassStruct() *NotebookClass {
 	return structGo
 }
 func finalizeNotebookClass(obj *NotebookClass) {
-	notebookClassStruct.Free(obj.native)
+	notebookClassStruct.Free(obj.Native())
 }
 
 var notebookPageAccessibleClassStruct *gi.Struct
@@ -20888,7 +21163,7 @@ func NotebookPageAccessibleClassStruct() *NotebookPageAccessibleClass {
 	return structGo
 }
 func finalizeNotebookPageAccessibleClass(obj *NotebookPageAccessibleClass) {
-	notebookPageAccessibleClassStruct.Free(obj.native)
+	notebookPageAccessibleClassStruct.Free(obj.Native())
 }
 
 var notebookPageAccessiblePrivateStruct *gi.Struct
@@ -20937,7 +21212,7 @@ func NotebookPageAccessiblePrivateStruct() *NotebookPageAccessiblePrivate {
 	return structGo
 }
 func finalizeNotebookPageAccessiblePrivate(obj *NotebookPageAccessiblePrivate) {
-	notebookPageAccessiblePrivateStruct.Free(obj.native)
+	notebookPageAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var notebookPrivateStruct *gi.Struct
@@ -20986,7 +21261,7 @@ func NotebookPrivateStruct() *NotebookPrivate {
 	return structGo
 }
 func finalizeNotebookPrivate(obj *NotebookPrivate) {
-	notebookPrivateStruct.Free(obj.native)
+	notebookPrivateStruct.Free(obj.Native())
 }
 
 var numerableIconClassStruct *gi.Struct
@@ -21043,7 +21318,7 @@ func NumerableIconClassStruct() *NumerableIconClass {
 	return structGo
 }
 func finalizeNumerableIconClass(obj *NumerableIconClass) {
-	numerableIconClassStruct.Free(obj.native)
+	numerableIconClassStruct.Free(obj.Native())
 }
 
 var numerableIconPrivateStruct *gi.Struct
@@ -21092,7 +21367,7 @@ func NumerableIconPrivateStruct() *NumerableIconPrivate {
 	return structGo
 }
 func finalizeNumerableIconPrivate(obj *NumerableIconPrivate) {
-	numerableIconPrivateStruct.Free(obj.native)
+	numerableIconPrivateStruct.Free(obj.Native())
 }
 
 var offscreenWindowClassStruct *gi.Struct
@@ -21131,7 +21406,7 @@ func (recv *OffscreenWindowClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *OffscreenWindowClass) FieldParentClass() *WindowClass {
-	argValue := gi.StructFieldGet(offscreenWindowClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(offscreenWindowClassStruct, recv.Native(), "parent_class")
 	value := WindowClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -21139,8 +21414,8 @@ func (recv *OffscreenWindowClass) FieldParentClass() *WindowClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *OffscreenWindowClass) SetFieldParentClass(value *WindowClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(offscreenWindowClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(offscreenWindowClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -21171,7 +21446,7 @@ func OffscreenWindowClassStruct() *OffscreenWindowClass {
 	return structGo
 }
 func finalizeOffscreenWindowClass(obj *OffscreenWindowClass) {
-	offscreenWindowClassStruct.Free(obj.native)
+	offscreenWindowClassStruct.Free(obj.Native())
 }
 
 var orientableIfaceStruct *gi.Struct
@@ -21224,7 +21499,7 @@ func OrientableIfaceStruct() *OrientableIface {
 	return structGo
 }
 func finalizeOrientableIface(obj *OrientableIface) {
-	orientableIfaceStruct.Free(obj.native)
+	orientableIfaceStruct.Free(obj.Native())
 }
 
 var overlayClassStruct *gi.Struct
@@ -21263,7 +21538,7 @@ func (recv *OverlayClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *OverlayClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(overlayClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(overlayClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -21271,8 +21546,8 @@ func (recv *OverlayClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *OverlayClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(overlayClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(overlayClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'get_child_position' : for field getter : missing Type
@@ -21323,7 +21598,7 @@ func OverlayClassStruct() *OverlayClass {
 	return structGo
 }
 func finalizeOverlayClass(obj *OverlayClass) {
-	overlayClassStruct.Free(obj.native)
+	overlayClassStruct.Free(obj.Native())
 }
 
 var overlayPrivateStruct *gi.Struct
@@ -21372,7 +21647,7 @@ func OverlayPrivateStruct() *OverlayPrivate {
 	return structGo
 }
 func finalizeOverlayPrivate(obj *OverlayPrivate) {
-	overlayPrivateStruct.Free(obj.native)
+	overlayPrivateStruct.Free(obj.Native())
 }
 
 var padActionEntryStruct *gi.Struct
@@ -21411,7 +21686,7 @@ func (recv *PadActionEntry) Native() unsafe.Pointer {
 
 // FieldType returns the C field 'type'.
 func (recv *PadActionEntry) FieldType() PadActionType {
-	argValue := gi.StructFieldGet(padActionEntryStruct, recv.native, "type")
+	argValue := gi.StructFieldGet(padActionEntryStruct, recv.Native(), "type")
 	value := PadActionType(argValue.Int32())
 	return value
 }
@@ -21420,12 +21695,12 @@ func (recv *PadActionEntry) FieldType() PadActionType {
 func (recv *PadActionEntry) SetFieldType(value PadActionType) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(padActionEntryStruct, recv.native, "type", argValue)
+	gi.StructFieldSet(padActionEntryStruct, recv.Native(), "type", argValue)
 }
 
 // FieldIndex returns the C field 'index'.
 func (recv *PadActionEntry) FieldIndex() int32 {
-	argValue := gi.StructFieldGet(padActionEntryStruct, recv.native, "index")
+	argValue := gi.StructFieldGet(padActionEntryStruct, recv.Native(), "index")
 	value := argValue.Int32()
 	return value
 }
@@ -21434,12 +21709,12 @@ func (recv *PadActionEntry) FieldIndex() int32 {
 func (recv *PadActionEntry) SetFieldIndex(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(padActionEntryStruct, recv.native, "index", argValue)
+	gi.StructFieldSet(padActionEntryStruct, recv.Native(), "index", argValue)
 }
 
 // FieldMode returns the C field 'mode'.
 func (recv *PadActionEntry) FieldMode() int32 {
-	argValue := gi.StructFieldGet(padActionEntryStruct, recv.native, "mode")
+	argValue := gi.StructFieldGet(padActionEntryStruct, recv.Native(), "mode")
 	value := argValue.Int32()
 	return value
 }
@@ -21448,12 +21723,12 @@ func (recv *PadActionEntry) FieldMode() int32 {
 func (recv *PadActionEntry) SetFieldMode(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(padActionEntryStruct, recv.native, "mode", argValue)
+	gi.StructFieldSet(padActionEntryStruct, recv.Native(), "mode", argValue)
 }
 
 // FieldLabel returns the C field 'label'.
 func (recv *PadActionEntry) FieldLabel() string {
-	argValue := gi.StructFieldGet(padActionEntryStruct, recv.native, "label")
+	argValue := gi.StructFieldGet(padActionEntryStruct, recv.Native(), "label")
 	value := argValue.String(false)
 	return value
 }
@@ -21462,12 +21737,12 @@ func (recv *PadActionEntry) FieldLabel() string {
 func (recv *PadActionEntry) SetFieldLabel(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(padActionEntryStruct, recv.native, "label", argValue)
+	gi.StructFieldSet(padActionEntryStruct, recv.Native(), "label", argValue)
 }
 
 // FieldActionName returns the C field 'action_name'.
 func (recv *PadActionEntry) FieldActionName() string {
-	argValue := gi.StructFieldGet(padActionEntryStruct, recv.native, "action_name")
+	argValue := gi.StructFieldGet(padActionEntryStruct, recv.Native(), "action_name")
 	value := argValue.String(false)
 	return value
 }
@@ -21476,7 +21751,7 @@ func (recv *PadActionEntry) FieldActionName() string {
 func (recv *PadActionEntry) SetFieldActionName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(padActionEntryStruct, recv.native, "action_name", argValue)
+	gi.StructFieldSet(padActionEntryStruct, recv.Native(), "action_name", argValue)
 }
 
 // PadActionEntryStruct creates an uninitialised PadActionEntry.
@@ -21491,7 +21766,7 @@ func PadActionEntryStruct() *PadActionEntry {
 	return structGo
 }
 func finalizePadActionEntry(obj *PadActionEntry) {
-	padActionEntryStruct.Free(obj.native)
+	padActionEntryStruct.Free(obj.Native())
 }
 
 var padControllerClassStruct *gi.Struct
@@ -21540,7 +21815,7 @@ func PadControllerClassStruct() *PadControllerClass {
 	return structGo
 }
 func finalizePadControllerClass(obj *PadControllerClass) {
-	padControllerClassStruct.Free(obj.native)
+	padControllerClassStruct.Free(obj.Native())
 }
 
 var pageRangeStruct *gi.Struct
@@ -21579,7 +21854,7 @@ func (recv *PageRange) Native() unsafe.Pointer {
 
 // FieldStart returns the C field 'start'.
 func (recv *PageRange) FieldStart() int32 {
-	argValue := gi.StructFieldGet(pageRangeStruct, recv.native, "start")
+	argValue := gi.StructFieldGet(pageRangeStruct, recv.Native(), "start")
 	value := argValue.Int32()
 	return value
 }
@@ -21588,12 +21863,12 @@ func (recv *PageRange) FieldStart() int32 {
 func (recv *PageRange) SetFieldStart(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(pageRangeStruct, recv.native, "start", argValue)
+	gi.StructFieldSet(pageRangeStruct, recv.Native(), "start", argValue)
 }
 
 // FieldEnd returns the C field 'end'.
 func (recv *PageRange) FieldEnd() int32 {
-	argValue := gi.StructFieldGet(pageRangeStruct, recv.native, "end")
+	argValue := gi.StructFieldGet(pageRangeStruct, recv.Native(), "end")
 	value := argValue.Int32()
 	return value
 }
@@ -21602,7 +21877,7 @@ func (recv *PageRange) FieldEnd() int32 {
 func (recv *PageRange) SetFieldEnd(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(pageRangeStruct, recv.native, "end", argValue)
+	gi.StructFieldSet(pageRangeStruct, recv.Native(), "end", argValue)
 }
 
 // PageRangeStruct creates an uninitialised PageRange.
@@ -21617,7 +21892,7 @@ func PageRangeStruct() *PageRange {
 	return structGo
 }
 func finalizePageRange(obj *PageRange) {
-	pageRangeStruct.Free(obj.native)
+	pageRangeStruct.Free(obj.Native())
 }
 
 var panedAccessibleClassStruct *gi.Struct
@@ -21656,7 +21931,7 @@ func (recv *PanedAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *PanedAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(panedAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(panedAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -21664,8 +21939,8 @@ func (recv *PanedAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *PanedAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(panedAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(panedAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // PanedAccessibleClassStruct creates an uninitialised PanedAccessibleClass.
@@ -21680,7 +21955,7 @@ func PanedAccessibleClassStruct() *PanedAccessibleClass {
 	return structGo
 }
 func finalizePanedAccessibleClass(obj *PanedAccessibleClass) {
-	panedAccessibleClassStruct.Free(obj.native)
+	panedAccessibleClassStruct.Free(obj.Native())
 }
 
 var panedAccessiblePrivateStruct *gi.Struct
@@ -21729,7 +22004,7 @@ func PanedAccessiblePrivateStruct() *PanedAccessiblePrivate {
 	return structGo
 }
 func finalizePanedAccessiblePrivate(obj *PanedAccessiblePrivate) {
-	panedAccessiblePrivateStruct.Free(obj.native)
+	panedAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var panedClassStruct *gi.Struct
@@ -21768,7 +22043,7 @@ func (recv *PanedClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *PanedClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(panedClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(panedClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -21776,8 +22051,8 @@ func (recv *PanedClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *PanedClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(panedClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(panedClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'cycle_child_focus' : for field getter : missing Type
@@ -21832,7 +22107,7 @@ func PanedClassStruct() *PanedClass {
 	return structGo
 }
 func finalizePanedClass(obj *PanedClass) {
-	panedClassStruct.Free(obj.native)
+	panedClassStruct.Free(obj.Native())
 }
 
 var panedPrivateStruct *gi.Struct
@@ -21881,7 +22156,7 @@ func PanedPrivateStruct() *PanedPrivate {
 	return structGo
 }
 func finalizePanedPrivate(obj *PanedPrivate) {
-	panedPrivateStruct.Free(obj.native)
+	panedPrivateStruct.Free(obj.Native())
 }
 
 var paperSizeStruct *gi.Struct
@@ -22077,7 +22352,7 @@ func paperSizeCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_paper_size_copy.
 func (recv *PaperSize) Copy() *PaperSize {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -22109,7 +22384,7 @@ func paperSizeFreeFunction_Set() error {
 // Free is a representation of the C type gtk_paper_size_free.
 func (recv *PaperSize) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := paperSizeFreeFunction_Set()
 	if err == nil {
@@ -22137,7 +22412,7 @@ func paperSizeGetDefaultBottomMarginFunction_Set() error {
 // GetDefaultBottomMargin is a representation of the C type gtk_paper_size_get_default_bottom_margin.
 func (recv *PaperSize) GetDefaultBottomMargin(unit Unit) float64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(unit))
 
 	var ret gi.Argument
@@ -22170,7 +22445,7 @@ func paperSizeGetDefaultLeftMarginFunction_Set() error {
 // GetDefaultLeftMargin is a representation of the C type gtk_paper_size_get_default_left_margin.
 func (recv *PaperSize) GetDefaultLeftMargin(unit Unit) float64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(unit))
 
 	var ret gi.Argument
@@ -22203,7 +22478,7 @@ func paperSizeGetDefaultRightMarginFunction_Set() error {
 // GetDefaultRightMargin is a representation of the C type gtk_paper_size_get_default_right_margin.
 func (recv *PaperSize) GetDefaultRightMargin(unit Unit) float64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(unit))
 
 	var ret gi.Argument
@@ -22236,7 +22511,7 @@ func paperSizeGetDefaultTopMarginFunction_Set() error {
 // GetDefaultTopMargin is a representation of the C type gtk_paper_size_get_default_top_margin.
 func (recv *PaperSize) GetDefaultTopMargin(unit Unit) float64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(unit))
 
 	var ret gi.Argument
@@ -22269,7 +22544,7 @@ func paperSizeGetDisplayNameFunction_Set() error {
 // GetDisplayName is a representation of the C type gtk_paper_size_get_display_name.
 func (recv *PaperSize) GetDisplayName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -22301,7 +22576,7 @@ func paperSizeGetHeightFunction_Set() error {
 // GetHeight is a representation of the C type gtk_paper_size_get_height.
 func (recv *PaperSize) GetHeight(unit Unit) float64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(unit))
 
 	var ret gi.Argument
@@ -22334,7 +22609,7 @@ func paperSizeGetNameFunction_Set() error {
 // GetName is a representation of the C type gtk_paper_size_get_name.
 func (recv *PaperSize) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -22366,7 +22641,7 @@ func paperSizeGetPpdNameFunction_Set() error {
 // GetPpdName is a representation of the C type gtk_paper_size_get_ppd_name.
 func (recv *PaperSize) GetPpdName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -22398,7 +22673,7 @@ func paperSizeGetWidthFunction_Set() error {
 // GetWidth is a representation of the C type gtk_paper_size_get_width.
 func (recv *PaperSize) GetWidth(unit Unit) float64 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(unit))
 
 	var ret gi.Argument
@@ -22431,7 +22706,7 @@ func paperSizeIsCustomFunction_Set() error {
 // IsCustom is a representation of the C type gtk_paper_size_is_custom.
 func (recv *PaperSize) IsCustom() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -22463,8 +22738,8 @@ func paperSizeIsEqualFunction_Set() error {
 // IsEqual is a representation of the C type gtk_paper_size_is_equal.
 func (recv *PaperSize) IsEqual(size2 *PaperSize) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(size2.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(size2.Native())
 
 	var ret gi.Argument
 
@@ -22496,7 +22771,7 @@ func paperSizeIsIppFunction_Set() error {
 // IsIpp is a representation of the C type gtk_paper_size_is_ipp.
 func (recv *PaperSize) IsIpp() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -22528,7 +22803,7 @@ func paperSizeSetSizeFunction_Set() error {
 // SetSize is a representation of the C type gtk_paper_size_set_size.
 func (recv *PaperSize) SetSize(width float64, height float64, unit Unit) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(width)
 	inArgs[2].SetFloat64(height)
 	inArgs[3].SetInt32(int32(unit))
@@ -22591,7 +22866,7 @@ func PlacesSidebarClassStruct() *PlacesSidebarClass {
 	return structGo
 }
 func finalizePlacesSidebarClass(obj *PlacesSidebarClass) {
-	placesSidebarClassStruct.Free(obj.native)
+	placesSidebarClassStruct.Free(obj.Native())
 }
 
 var plugClassStruct *gi.Struct
@@ -22630,7 +22905,7 @@ func (recv *PlugClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *PlugClass) FieldParentClass() *WindowClass {
-	argValue := gi.StructFieldGet(plugClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(plugClassStruct, recv.Native(), "parent_class")
 	value := WindowClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -22638,8 +22913,8 @@ func (recv *PlugClass) FieldParentClass() *WindowClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *PlugClass) SetFieldParentClass(value *WindowClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(plugClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(plugClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'embedded' : for field getter : missing Type
@@ -22674,7 +22949,7 @@ func PlugClassStruct() *PlugClass {
 	return structGo
 }
 func finalizePlugClass(obj *PlugClass) {
-	plugClassStruct.Free(obj.native)
+	plugClassStruct.Free(obj.Native())
 }
 
 var plugPrivateStruct *gi.Struct
@@ -22723,7 +22998,7 @@ func PlugPrivateStruct() *PlugPrivate {
 	return structGo
 }
 func finalizePlugPrivate(obj *PlugPrivate) {
-	plugPrivateStruct.Free(obj.native)
+	plugPrivateStruct.Free(obj.Native())
 }
 
 var popoverAccessibleClassStruct *gi.Struct
@@ -22762,7 +23037,7 @@ func (recv *PopoverAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *PopoverAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(popoverAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(popoverAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -22770,8 +23045,8 @@ func (recv *PopoverAccessibleClass) FieldParentClass() *ContainerAccessibleClass
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *PopoverAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(popoverAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(popoverAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // PopoverAccessibleClassStruct creates an uninitialised PopoverAccessibleClass.
@@ -22786,7 +23061,7 @@ func PopoverAccessibleClassStruct() *PopoverAccessibleClass {
 	return structGo
 }
 func finalizePopoverAccessibleClass(obj *PopoverAccessibleClass) {
-	popoverAccessibleClassStruct.Free(obj.native)
+	popoverAccessibleClassStruct.Free(obj.Native())
 }
 
 var popoverClassStruct *gi.Struct
@@ -22825,7 +23100,7 @@ func (recv *PopoverClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *PopoverClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(popoverClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(popoverClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -22833,8 +23108,8 @@ func (recv *PopoverClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *PopoverClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(popoverClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(popoverClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'closed' : for field getter : missing Type
@@ -22853,7 +23128,7 @@ func PopoverClassStruct() *PopoverClass {
 	return structGo
 }
 func finalizePopoverClass(obj *PopoverClass) {
-	popoverClassStruct.Free(obj.native)
+	popoverClassStruct.Free(obj.Native())
 }
 
 var popoverMenuClassStruct *gi.Struct
@@ -22892,7 +23167,7 @@ func (recv *PopoverMenuClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *PopoverMenuClass) FieldParentClass() *PopoverClass {
-	argValue := gi.StructFieldGet(popoverMenuClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(popoverMenuClassStruct, recv.Native(), "parent_class")
 	value := PopoverClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -22900,8 +23175,8 @@ func (recv *PopoverMenuClass) FieldParentClass() *PopoverClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *PopoverMenuClass) SetFieldParentClass(value *PopoverClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(popoverMenuClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(popoverMenuClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // PopoverMenuClassStruct creates an uninitialised PopoverMenuClass.
@@ -22916,7 +23191,7 @@ func PopoverMenuClassStruct() *PopoverMenuClass {
 	return structGo
 }
 func finalizePopoverMenuClass(obj *PopoverMenuClass) {
-	popoverMenuClassStruct.Free(obj.native)
+	popoverMenuClassStruct.Free(obj.Native())
 }
 
 var popoverPrivateStruct *gi.Struct
@@ -22965,7 +23240,7 @@ func PopoverPrivateStruct() *PopoverPrivate {
 	return structGo
 }
 func finalizePopoverPrivate(obj *PopoverPrivate) {
-	popoverPrivateStruct.Free(obj.native)
+	popoverPrivateStruct.Free(obj.Native())
 }
 
 var printOperationClassStruct *gi.Struct
@@ -23094,7 +23369,7 @@ func PrintOperationClassStruct() *PrintOperationClass {
 	return structGo
 }
 func finalizePrintOperationClass(obj *PrintOperationClass) {
-	printOperationClassStruct.Free(obj.native)
+	printOperationClassStruct.Free(obj.Native())
 }
 
 var printOperationPreviewIfaceStruct *gi.Struct
@@ -23199,7 +23474,7 @@ func PrintOperationPreviewIfaceStruct() *PrintOperationPreviewIface {
 	return structGo
 }
 func finalizePrintOperationPreviewIface(obj *PrintOperationPreviewIface) {
-	printOperationPreviewIfaceStruct.Free(obj.native)
+	printOperationPreviewIfaceStruct.Free(obj.Native())
 }
 
 var printOperationPrivateStruct *gi.Struct
@@ -23248,7 +23523,7 @@ func PrintOperationPrivateStruct() *PrintOperationPrivate {
 	return structGo
 }
 func finalizePrintOperationPrivate(obj *PrintOperationPrivate) {
-	printOperationPrivateStruct.Free(obj.native)
+	printOperationPrivateStruct.Free(obj.Native())
 }
 
 var progressBarAccessibleClassStruct *gi.Struct
@@ -23287,7 +23562,7 @@ func (recv *ProgressBarAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ProgressBarAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
-	argValue := gi.StructFieldGet(progressBarAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(progressBarAccessibleClassStruct, recv.Native(), "parent_class")
 	value := WidgetAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -23295,8 +23570,8 @@ func (recv *ProgressBarAccessibleClass) FieldParentClass() *WidgetAccessibleClas
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ProgressBarAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(progressBarAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(progressBarAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ProgressBarAccessibleClassStruct creates an uninitialised ProgressBarAccessibleClass.
@@ -23311,7 +23586,7 @@ func ProgressBarAccessibleClassStruct() *ProgressBarAccessibleClass {
 	return structGo
 }
 func finalizeProgressBarAccessibleClass(obj *ProgressBarAccessibleClass) {
-	progressBarAccessibleClassStruct.Free(obj.native)
+	progressBarAccessibleClassStruct.Free(obj.Native())
 }
 
 var progressBarAccessiblePrivateStruct *gi.Struct
@@ -23360,7 +23635,7 @@ func ProgressBarAccessiblePrivateStruct() *ProgressBarAccessiblePrivate {
 	return structGo
 }
 func finalizeProgressBarAccessiblePrivate(obj *ProgressBarAccessiblePrivate) {
-	progressBarAccessiblePrivateStruct.Free(obj.native)
+	progressBarAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var progressBarClassStruct *gi.Struct
@@ -23399,7 +23674,7 @@ func (recv *ProgressBarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ProgressBarClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(progressBarClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(progressBarClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -23407,8 +23682,8 @@ func (recv *ProgressBarClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ProgressBarClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(progressBarClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(progressBarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -23439,7 +23714,7 @@ func ProgressBarClassStruct() *ProgressBarClass {
 	return structGo
 }
 func finalizeProgressBarClass(obj *ProgressBarClass) {
-	progressBarClassStruct.Free(obj.native)
+	progressBarClassStruct.Free(obj.Native())
 }
 
 var progressBarPrivateStruct *gi.Struct
@@ -23488,7 +23763,7 @@ func ProgressBarPrivateStruct() *ProgressBarPrivate {
 	return structGo
 }
 func finalizeProgressBarPrivate(obj *ProgressBarPrivate) {
-	progressBarPrivateStruct.Free(obj.native)
+	progressBarPrivateStruct.Free(obj.Native())
 }
 
 var radioActionClassStruct *gi.Struct
@@ -23527,7 +23802,7 @@ func (recv *RadioActionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RadioActionClass) FieldParentClass() *ToggleActionClass {
-	argValue := gi.StructFieldGet(radioActionClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(radioActionClassStruct, recv.Native(), "parent_class")
 	value := ToggleActionClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -23535,8 +23810,8 @@ func (recv *RadioActionClass) FieldParentClass() *ToggleActionClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RadioActionClass) SetFieldParentClass(value *ToggleActionClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(radioActionClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(radioActionClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'changed' : for field getter : missing Type
@@ -23571,7 +23846,7 @@ func RadioActionClassStruct() *RadioActionClass {
 	return structGo
 }
 func finalizeRadioActionClass(obj *RadioActionClass) {
-	radioActionClassStruct.Free(obj.native)
+	radioActionClassStruct.Free(obj.Native())
 }
 
 var radioActionEntryStruct *gi.Struct
@@ -23610,7 +23885,7 @@ func (recv *RadioActionEntry) Native() unsafe.Pointer {
 
 // FieldName returns the C field 'name'.
 func (recv *RadioActionEntry) FieldName() string {
-	argValue := gi.StructFieldGet(radioActionEntryStruct, recv.native, "name")
+	argValue := gi.StructFieldGet(radioActionEntryStruct, recv.Native(), "name")
 	value := argValue.String(false)
 	return value
 }
@@ -23619,12 +23894,12 @@ func (recv *RadioActionEntry) FieldName() string {
 func (recv *RadioActionEntry) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(radioActionEntryStruct, recv.native, "name", argValue)
+	gi.StructFieldSet(radioActionEntryStruct, recv.Native(), "name", argValue)
 }
 
 // FieldStockId returns the C field 'stock_id'.
 func (recv *RadioActionEntry) FieldStockId() string {
-	argValue := gi.StructFieldGet(radioActionEntryStruct, recv.native, "stock_id")
+	argValue := gi.StructFieldGet(radioActionEntryStruct, recv.Native(), "stock_id")
 	value := argValue.String(false)
 	return value
 }
@@ -23633,12 +23908,12 @@ func (recv *RadioActionEntry) FieldStockId() string {
 func (recv *RadioActionEntry) SetFieldStockId(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(radioActionEntryStruct, recv.native, "stock_id", argValue)
+	gi.StructFieldSet(radioActionEntryStruct, recv.Native(), "stock_id", argValue)
 }
 
 // FieldLabel returns the C field 'label'.
 func (recv *RadioActionEntry) FieldLabel() string {
-	argValue := gi.StructFieldGet(radioActionEntryStruct, recv.native, "label")
+	argValue := gi.StructFieldGet(radioActionEntryStruct, recv.Native(), "label")
 	value := argValue.String(false)
 	return value
 }
@@ -23647,12 +23922,12 @@ func (recv *RadioActionEntry) FieldLabel() string {
 func (recv *RadioActionEntry) SetFieldLabel(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(radioActionEntryStruct, recv.native, "label", argValue)
+	gi.StructFieldSet(radioActionEntryStruct, recv.Native(), "label", argValue)
 }
 
 // FieldAccelerator returns the C field 'accelerator'.
 func (recv *RadioActionEntry) FieldAccelerator() string {
-	argValue := gi.StructFieldGet(radioActionEntryStruct, recv.native, "accelerator")
+	argValue := gi.StructFieldGet(radioActionEntryStruct, recv.Native(), "accelerator")
 	value := argValue.String(false)
 	return value
 }
@@ -23661,12 +23936,12 @@ func (recv *RadioActionEntry) FieldAccelerator() string {
 func (recv *RadioActionEntry) SetFieldAccelerator(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(radioActionEntryStruct, recv.native, "accelerator", argValue)
+	gi.StructFieldSet(radioActionEntryStruct, recv.Native(), "accelerator", argValue)
 }
 
 // FieldTooltip returns the C field 'tooltip'.
 func (recv *RadioActionEntry) FieldTooltip() string {
-	argValue := gi.StructFieldGet(radioActionEntryStruct, recv.native, "tooltip")
+	argValue := gi.StructFieldGet(radioActionEntryStruct, recv.Native(), "tooltip")
 	value := argValue.String(false)
 	return value
 }
@@ -23675,12 +23950,12 @@ func (recv *RadioActionEntry) FieldTooltip() string {
 func (recv *RadioActionEntry) SetFieldTooltip(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(radioActionEntryStruct, recv.native, "tooltip", argValue)
+	gi.StructFieldSet(radioActionEntryStruct, recv.Native(), "tooltip", argValue)
 }
 
 // FieldValue returns the C field 'value'.
 func (recv *RadioActionEntry) FieldValue() int32 {
-	argValue := gi.StructFieldGet(radioActionEntryStruct, recv.native, "value")
+	argValue := gi.StructFieldGet(radioActionEntryStruct, recv.Native(), "value")
 	value := argValue.Int32()
 	return value
 }
@@ -23689,7 +23964,7 @@ func (recv *RadioActionEntry) FieldValue() int32 {
 func (recv *RadioActionEntry) SetFieldValue(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(radioActionEntryStruct, recv.native, "value", argValue)
+	gi.StructFieldSet(radioActionEntryStruct, recv.Native(), "value", argValue)
 }
 
 // RadioActionEntryStruct creates an uninitialised RadioActionEntry.
@@ -23704,7 +23979,7 @@ func RadioActionEntryStruct() *RadioActionEntry {
 	return structGo
 }
 func finalizeRadioActionEntry(obj *RadioActionEntry) {
-	radioActionEntryStruct.Free(obj.native)
+	radioActionEntryStruct.Free(obj.Native())
 }
 
 var radioActionPrivateStruct *gi.Struct
@@ -23753,7 +24028,7 @@ func RadioActionPrivateStruct() *RadioActionPrivate {
 	return structGo
 }
 func finalizeRadioActionPrivate(obj *RadioActionPrivate) {
-	radioActionPrivateStruct.Free(obj.native)
+	radioActionPrivateStruct.Free(obj.Native())
 }
 
 var radioButtonAccessibleClassStruct *gi.Struct
@@ -23792,7 +24067,7 @@ func (recv *RadioButtonAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RadioButtonAccessibleClass) FieldParentClass() *ToggleButtonAccessibleClass {
-	argValue := gi.StructFieldGet(radioButtonAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(radioButtonAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ToggleButtonAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -23800,8 +24075,8 @@ func (recv *RadioButtonAccessibleClass) FieldParentClass() *ToggleButtonAccessib
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RadioButtonAccessibleClass) SetFieldParentClass(value *ToggleButtonAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(radioButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(radioButtonAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // RadioButtonAccessibleClassStruct creates an uninitialised RadioButtonAccessibleClass.
@@ -23816,7 +24091,7 @@ func RadioButtonAccessibleClassStruct() *RadioButtonAccessibleClass {
 	return structGo
 }
 func finalizeRadioButtonAccessibleClass(obj *RadioButtonAccessibleClass) {
-	radioButtonAccessibleClassStruct.Free(obj.native)
+	radioButtonAccessibleClassStruct.Free(obj.Native())
 }
 
 var radioButtonAccessiblePrivateStruct *gi.Struct
@@ -23865,7 +24140,7 @@ func RadioButtonAccessiblePrivateStruct() *RadioButtonAccessiblePrivate {
 	return structGo
 }
 func finalizeRadioButtonAccessiblePrivate(obj *RadioButtonAccessiblePrivate) {
-	radioButtonAccessiblePrivateStruct.Free(obj.native)
+	radioButtonAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var radioButtonClassStruct *gi.Struct
@@ -23904,7 +24179,7 @@ func (recv *RadioButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RadioButtonClass) FieldParentClass() *CheckButtonClass {
-	argValue := gi.StructFieldGet(radioButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(radioButtonClassStruct, recv.Native(), "parent_class")
 	value := CheckButtonClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -23912,8 +24187,8 @@ func (recv *RadioButtonClass) FieldParentClass() *CheckButtonClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RadioButtonClass) SetFieldParentClass(value *CheckButtonClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(radioButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(radioButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'group_changed' : for field getter : missing Type
@@ -23948,7 +24223,7 @@ func RadioButtonClassStruct() *RadioButtonClass {
 	return structGo
 }
 func finalizeRadioButtonClass(obj *RadioButtonClass) {
-	radioButtonClassStruct.Free(obj.native)
+	radioButtonClassStruct.Free(obj.Native())
 }
 
 var radioButtonPrivateStruct *gi.Struct
@@ -23997,7 +24272,7 @@ func RadioButtonPrivateStruct() *RadioButtonPrivate {
 	return structGo
 }
 func finalizeRadioButtonPrivate(obj *RadioButtonPrivate) {
-	radioButtonPrivateStruct.Free(obj.native)
+	radioButtonPrivateStruct.Free(obj.Native())
 }
 
 var radioMenuItemAccessibleClassStruct *gi.Struct
@@ -24036,7 +24311,7 @@ func (recv *RadioMenuItemAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RadioMenuItemAccessibleClass) FieldParentClass() *CheckMenuItemAccessibleClass {
-	argValue := gi.StructFieldGet(radioMenuItemAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(radioMenuItemAccessibleClassStruct, recv.Native(), "parent_class")
 	value := CheckMenuItemAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -24044,8 +24319,8 @@ func (recv *RadioMenuItemAccessibleClass) FieldParentClass() *CheckMenuItemAcces
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RadioMenuItemAccessibleClass) SetFieldParentClass(value *CheckMenuItemAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(radioMenuItemAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(radioMenuItemAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // RadioMenuItemAccessibleClassStruct creates an uninitialised RadioMenuItemAccessibleClass.
@@ -24060,7 +24335,7 @@ func RadioMenuItemAccessibleClassStruct() *RadioMenuItemAccessibleClass {
 	return structGo
 }
 func finalizeRadioMenuItemAccessibleClass(obj *RadioMenuItemAccessibleClass) {
-	radioMenuItemAccessibleClassStruct.Free(obj.native)
+	radioMenuItemAccessibleClassStruct.Free(obj.Native())
 }
 
 var radioMenuItemAccessiblePrivateStruct *gi.Struct
@@ -24109,7 +24384,7 @@ func RadioMenuItemAccessiblePrivateStruct() *RadioMenuItemAccessiblePrivate {
 	return structGo
 }
 func finalizeRadioMenuItemAccessiblePrivate(obj *RadioMenuItemAccessiblePrivate) {
-	radioMenuItemAccessiblePrivateStruct.Free(obj.native)
+	radioMenuItemAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var radioMenuItemClassStruct *gi.Struct
@@ -24148,7 +24423,7 @@ func (recv *RadioMenuItemClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RadioMenuItemClass) FieldParentClass() *CheckMenuItemClass {
-	argValue := gi.StructFieldGet(radioMenuItemClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(radioMenuItemClassStruct, recv.Native(), "parent_class")
 	value := CheckMenuItemClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -24156,8 +24431,8 @@ func (recv *RadioMenuItemClass) FieldParentClass() *CheckMenuItemClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RadioMenuItemClass) SetFieldParentClass(value *CheckMenuItemClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(radioMenuItemClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(radioMenuItemClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'group_changed' : for field getter : missing Type
@@ -24192,7 +24467,7 @@ func RadioMenuItemClassStruct() *RadioMenuItemClass {
 	return structGo
 }
 func finalizeRadioMenuItemClass(obj *RadioMenuItemClass) {
-	radioMenuItemClassStruct.Free(obj.native)
+	radioMenuItemClassStruct.Free(obj.Native())
 }
 
 var radioMenuItemPrivateStruct *gi.Struct
@@ -24241,7 +24516,7 @@ func RadioMenuItemPrivateStruct() *RadioMenuItemPrivate {
 	return structGo
 }
 func finalizeRadioMenuItemPrivate(obj *RadioMenuItemPrivate) {
-	radioMenuItemPrivateStruct.Free(obj.native)
+	radioMenuItemPrivateStruct.Free(obj.Native())
 }
 
 var radioToolButtonClassStruct *gi.Struct
@@ -24280,7 +24555,7 @@ func (recv *RadioToolButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RadioToolButtonClass) FieldParentClass() *ToggleToolButtonClass {
-	argValue := gi.StructFieldGet(radioToolButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(radioToolButtonClassStruct, recv.Native(), "parent_class")
 	value := ToggleToolButtonClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -24288,8 +24563,8 @@ func (recv *RadioToolButtonClass) FieldParentClass() *ToggleToolButtonClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RadioToolButtonClass) SetFieldParentClass(value *ToggleToolButtonClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(radioToolButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(radioToolButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -24320,7 +24595,7 @@ func RadioToolButtonClassStruct() *RadioToolButtonClass {
 	return structGo
 }
 func finalizeRadioToolButtonClass(obj *RadioToolButtonClass) {
-	radioToolButtonClassStruct.Free(obj.native)
+	radioToolButtonClassStruct.Free(obj.Native())
 }
 
 var rangeAccessibleClassStruct *gi.Struct
@@ -24359,7 +24634,7 @@ func (recv *RangeAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RangeAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
-	argValue := gi.StructFieldGet(rangeAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(rangeAccessibleClassStruct, recv.Native(), "parent_class")
 	value := WidgetAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -24367,8 +24642,8 @@ func (recv *RangeAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RangeAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(rangeAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(rangeAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // RangeAccessibleClassStruct creates an uninitialised RangeAccessibleClass.
@@ -24383,7 +24658,7 @@ func RangeAccessibleClassStruct() *RangeAccessibleClass {
 	return structGo
 }
 func finalizeRangeAccessibleClass(obj *RangeAccessibleClass) {
-	rangeAccessibleClassStruct.Free(obj.native)
+	rangeAccessibleClassStruct.Free(obj.Native())
 }
 
 var rangeAccessiblePrivateStruct *gi.Struct
@@ -24432,7 +24707,7 @@ func RangeAccessiblePrivateStruct() *RangeAccessiblePrivate {
 	return structGo
 }
 func finalizeRangeAccessiblePrivate(obj *RangeAccessiblePrivate) {
-	rangeAccessiblePrivateStruct.Free(obj.native)
+	rangeAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var rangeClassStruct *gi.Struct
@@ -24471,7 +24746,7 @@ func (recv *RangeClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RangeClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(rangeClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(rangeClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -24479,13 +24754,13 @@ func (recv *RangeClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RangeClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(rangeClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(rangeClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // FieldSliderDetail returns the C field 'slider_detail'.
 func (recv *RangeClass) FieldSliderDetail() string {
-	argValue := gi.StructFieldGet(rangeClassStruct, recv.native, "slider_detail")
+	argValue := gi.StructFieldGet(rangeClassStruct, recv.Native(), "slider_detail")
 	value := argValue.String(false)
 	return value
 }
@@ -24494,12 +24769,12 @@ func (recv *RangeClass) FieldSliderDetail() string {
 func (recv *RangeClass) SetFieldSliderDetail(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(rangeClassStruct, recv.native, "slider_detail", argValue)
+	gi.StructFieldSet(rangeClassStruct, recv.Native(), "slider_detail", argValue)
 }
 
 // FieldStepperDetail returns the C field 'stepper_detail'.
 func (recv *RangeClass) FieldStepperDetail() string {
-	argValue := gi.StructFieldGet(rangeClassStruct, recv.native, "stepper_detail")
+	argValue := gi.StructFieldGet(rangeClassStruct, recv.Native(), "stepper_detail")
 	value := argValue.String(false)
 	return value
 }
@@ -24508,7 +24783,7 @@ func (recv *RangeClass) FieldStepperDetail() string {
 func (recv *RangeClass) SetFieldStepperDetail(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(rangeClassStruct, recv.native, "stepper_detail", argValue)
+	gi.StructFieldSet(rangeClassStruct, recv.Native(), "stepper_detail", argValue)
 }
 
 // UNSUPPORTED : C value 'value_changed' : for field getter : missing Type
@@ -24559,7 +24834,7 @@ func RangeClassStruct() *RangeClass {
 	return structGo
 }
 func finalizeRangeClass(obj *RangeClass) {
-	rangeClassStruct.Free(obj.native)
+	rangeClassStruct.Free(obj.Native())
 }
 
 var rangePrivateStruct *gi.Struct
@@ -24608,7 +24883,7 @@ func RangePrivateStruct() *RangePrivate {
 	return structGo
 }
 func finalizeRangePrivate(obj *RangePrivate) {
-	rangePrivateStruct.Free(obj.native)
+	rangePrivateStruct.Free(obj.Native())
 }
 
 var rcContextStruct *gi.Struct
@@ -24657,7 +24932,7 @@ func RcContextStruct() *RcContext {
 	return structGo
 }
 func finalizeRcContext(obj *RcContext) {
-	rcContextStruct.Free(obj.native)
+	rcContextStruct.Free(obj.Native())
 }
 
 var rcPropertyStruct *gi.Struct
@@ -24696,7 +24971,7 @@ func (recv *RcProperty) Native() unsafe.Pointer {
 
 // FieldTypeName returns the C field 'type_name'.
 func (recv *RcProperty) FieldTypeName() glib.Quark {
-	argValue := gi.StructFieldGet(rcPropertyStruct, recv.native, "type_name")
+	argValue := gi.StructFieldGet(rcPropertyStruct, recv.Native(), "type_name")
 	value := glib.Quark(argValue.Uint32())
 	return value
 }
@@ -24705,12 +24980,12 @@ func (recv *RcProperty) FieldTypeName() glib.Quark {
 func (recv *RcProperty) SetFieldTypeName(value glib.Quark) {
 	var argValue gi.Argument
 	argValue.SetUint32(uint32(value))
-	gi.StructFieldSet(rcPropertyStruct, recv.native, "type_name", argValue)
+	gi.StructFieldSet(rcPropertyStruct, recv.Native(), "type_name", argValue)
 }
 
 // FieldPropertyName returns the C field 'property_name'.
 func (recv *RcProperty) FieldPropertyName() glib.Quark {
-	argValue := gi.StructFieldGet(rcPropertyStruct, recv.native, "property_name")
+	argValue := gi.StructFieldGet(rcPropertyStruct, recv.Native(), "property_name")
 	value := glib.Quark(argValue.Uint32())
 	return value
 }
@@ -24719,12 +24994,12 @@ func (recv *RcProperty) FieldPropertyName() glib.Quark {
 func (recv *RcProperty) SetFieldPropertyName(value glib.Quark) {
 	var argValue gi.Argument
 	argValue.SetUint32(uint32(value))
-	gi.StructFieldSet(rcPropertyStruct, recv.native, "property_name", argValue)
+	gi.StructFieldSet(rcPropertyStruct, recv.Native(), "property_name", argValue)
 }
 
 // FieldOrigin returns the C field 'origin'.
 func (recv *RcProperty) FieldOrigin() string {
-	argValue := gi.StructFieldGet(rcPropertyStruct, recv.native, "origin")
+	argValue := gi.StructFieldGet(rcPropertyStruct, recv.Native(), "origin")
 	value := argValue.String(false)
 	return value
 }
@@ -24733,7 +25008,7 @@ func (recv *RcProperty) FieldOrigin() string {
 func (recv *RcProperty) SetFieldOrigin(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(rcPropertyStruct, recv.native, "origin", argValue)
+	gi.StructFieldSet(rcPropertyStruct, recv.Native(), "origin", argValue)
 }
 
 // UNSUPPORTED : C value 'value' : for field getter : no Go type for 'GObject.Value'
@@ -24752,7 +25027,7 @@ func RcPropertyStruct() *RcProperty {
 	return structGo
 }
 func finalizeRcProperty(obj *RcProperty) {
-	rcPropertyStruct.Free(obj.native)
+	rcPropertyStruct.Free(obj.Native())
 }
 
 var rcStyleClassStruct *gi.Struct
@@ -24837,7 +25112,7 @@ func RcStyleClassStruct() *RcStyleClass {
 	return structGo
 }
 func finalizeRcStyleClass(obj *RcStyleClass) {
-	rcStyleClassStruct.Free(obj.native)
+	rcStyleClassStruct.Free(obj.Native())
 }
 
 var recentActionClassStruct *gi.Struct
@@ -24876,7 +25151,7 @@ func (recv *RecentActionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RecentActionClass) FieldParentClass() *ActionClass {
-	argValue := gi.StructFieldGet(recentActionClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(recentActionClassStruct, recv.Native(), "parent_class")
 	value := ActionClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -24884,8 +25159,8 @@ func (recv *RecentActionClass) FieldParentClass() *ActionClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RecentActionClass) SetFieldParentClass(value *ActionClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(recentActionClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(recentActionClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -24916,7 +25191,7 @@ func RecentActionClassStruct() *RecentActionClass {
 	return structGo
 }
 func finalizeRecentActionClass(obj *RecentActionClass) {
-	recentActionClassStruct.Free(obj.native)
+	recentActionClassStruct.Free(obj.Native())
 }
 
 var recentActionPrivateStruct *gi.Struct
@@ -24965,7 +25240,7 @@ func RecentActionPrivateStruct() *RecentActionPrivate {
 	return structGo
 }
 func finalizeRecentActionPrivate(obj *RecentActionPrivate) {
-	recentActionPrivateStruct.Free(obj.native)
+	recentActionPrivateStruct.Free(obj.Native())
 }
 
 var recentChooserDialogClassStruct *gi.Struct
@@ -25004,7 +25279,7 @@ func (recv *RecentChooserDialogClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RecentChooserDialogClass) FieldParentClass() *DialogClass {
-	argValue := gi.StructFieldGet(recentChooserDialogClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(recentChooserDialogClassStruct, recv.Native(), "parent_class")
 	value := DialogClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -25012,8 +25287,8 @@ func (recv *RecentChooserDialogClass) FieldParentClass() *DialogClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RecentChooserDialogClass) SetFieldParentClass(value *DialogClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(recentChooserDialogClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(recentChooserDialogClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -25044,7 +25319,7 @@ func RecentChooserDialogClassStruct() *RecentChooserDialogClass {
 	return structGo
 }
 func finalizeRecentChooserDialogClass(obj *RecentChooserDialogClass) {
-	recentChooserDialogClassStruct.Free(obj.native)
+	recentChooserDialogClassStruct.Free(obj.Native())
 }
 
 var recentChooserDialogPrivateStruct *gi.Struct
@@ -25093,7 +25368,7 @@ func RecentChooserDialogPrivateStruct() *RecentChooserDialogPrivate {
 	return structGo
 }
 func finalizeRecentChooserDialogPrivate(obj *RecentChooserDialogPrivate) {
-	recentChooserDialogPrivateStruct.Free(obj.native)
+	recentChooserDialogPrivateStruct.Free(obj.Native())
 }
 
 var recentChooserIfaceStruct *gi.Struct
@@ -25198,7 +25473,7 @@ func RecentChooserIfaceStruct() *RecentChooserIface {
 	return structGo
 }
 func finalizeRecentChooserIface(obj *RecentChooserIface) {
-	recentChooserIfaceStruct.Free(obj.native)
+	recentChooserIfaceStruct.Free(obj.Native())
 }
 
 var recentChooserMenuClassStruct *gi.Struct
@@ -25237,7 +25512,7 @@ func (recv *RecentChooserMenuClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RecentChooserMenuClass) FieldParentClass() *MenuClass {
-	argValue := gi.StructFieldGet(recentChooserMenuClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(recentChooserMenuClassStruct, recv.Native(), "parent_class")
 	value := MenuClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -25245,8 +25520,8 @@ func (recv *RecentChooserMenuClass) FieldParentClass() *MenuClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RecentChooserMenuClass) SetFieldParentClass(value *MenuClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(recentChooserMenuClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(recentChooserMenuClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'gtk_recent1' : for field getter : missing Type
@@ -25277,7 +25552,7 @@ func RecentChooserMenuClassStruct() *RecentChooserMenuClass {
 	return structGo
 }
 func finalizeRecentChooserMenuClass(obj *RecentChooserMenuClass) {
-	recentChooserMenuClassStruct.Free(obj.native)
+	recentChooserMenuClassStruct.Free(obj.Native())
 }
 
 var recentChooserMenuPrivateStruct *gi.Struct
@@ -25326,7 +25601,7 @@ func RecentChooserMenuPrivateStruct() *RecentChooserMenuPrivate {
 	return structGo
 }
 func finalizeRecentChooserMenuPrivate(obj *RecentChooserMenuPrivate) {
-	recentChooserMenuPrivateStruct.Free(obj.native)
+	recentChooserMenuPrivateStruct.Free(obj.Native())
 }
 
 var recentChooserWidgetClassStruct *gi.Struct
@@ -25365,7 +25640,7 @@ func (recv *RecentChooserWidgetClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RecentChooserWidgetClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(recentChooserWidgetClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(recentChooserWidgetClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -25373,8 +25648,8 @@ func (recv *RecentChooserWidgetClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RecentChooserWidgetClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(recentChooserWidgetClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(recentChooserWidgetClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -25405,7 +25680,7 @@ func RecentChooserWidgetClassStruct() *RecentChooserWidgetClass {
 	return structGo
 }
 func finalizeRecentChooserWidgetClass(obj *RecentChooserWidgetClass) {
-	recentChooserWidgetClassStruct.Free(obj.native)
+	recentChooserWidgetClassStruct.Free(obj.Native())
 }
 
 var recentChooserWidgetPrivateStruct *gi.Struct
@@ -25454,7 +25729,7 @@ func RecentChooserWidgetPrivateStruct() *RecentChooserWidgetPrivate {
 	return structGo
 }
 func finalizeRecentChooserWidgetPrivate(obj *RecentChooserWidgetPrivate) {
-	recentChooserWidgetPrivateStruct.Free(obj.native)
+	recentChooserWidgetPrivateStruct.Free(obj.Native())
 }
 
 var recentDataStruct *gi.Struct
@@ -25493,7 +25768,7 @@ func (recv *RecentData) Native() unsafe.Pointer {
 
 // FieldDisplayName returns the C field 'display_name'.
 func (recv *RecentData) FieldDisplayName() string {
-	argValue := gi.StructFieldGet(recentDataStruct, recv.native, "display_name")
+	argValue := gi.StructFieldGet(recentDataStruct, recv.Native(), "display_name")
 	value := argValue.String(false)
 	return value
 }
@@ -25502,12 +25777,12 @@ func (recv *RecentData) FieldDisplayName() string {
 func (recv *RecentData) SetFieldDisplayName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(recentDataStruct, recv.native, "display_name", argValue)
+	gi.StructFieldSet(recentDataStruct, recv.Native(), "display_name", argValue)
 }
 
 // FieldDescription returns the C field 'description'.
 func (recv *RecentData) FieldDescription() string {
-	argValue := gi.StructFieldGet(recentDataStruct, recv.native, "description")
+	argValue := gi.StructFieldGet(recentDataStruct, recv.Native(), "description")
 	value := argValue.String(false)
 	return value
 }
@@ -25516,12 +25791,12 @@ func (recv *RecentData) FieldDescription() string {
 func (recv *RecentData) SetFieldDescription(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(recentDataStruct, recv.native, "description", argValue)
+	gi.StructFieldSet(recentDataStruct, recv.Native(), "description", argValue)
 }
 
 // FieldMimeType returns the C field 'mime_type'.
 func (recv *RecentData) FieldMimeType() string {
-	argValue := gi.StructFieldGet(recentDataStruct, recv.native, "mime_type")
+	argValue := gi.StructFieldGet(recentDataStruct, recv.Native(), "mime_type")
 	value := argValue.String(false)
 	return value
 }
@@ -25530,12 +25805,12 @@ func (recv *RecentData) FieldMimeType() string {
 func (recv *RecentData) SetFieldMimeType(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(recentDataStruct, recv.native, "mime_type", argValue)
+	gi.StructFieldSet(recentDataStruct, recv.Native(), "mime_type", argValue)
 }
 
 // FieldAppName returns the C field 'app_name'.
 func (recv *RecentData) FieldAppName() string {
-	argValue := gi.StructFieldGet(recentDataStruct, recv.native, "app_name")
+	argValue := gi.StructFieldGet(recentDataStruct, recv.Native(), "app_name")
 	value := argValue.String(false)
 	return value
 }
@@ -25544,12 +25819,12 @@ func (recv *RecentData) FieldAppName() string {
 func (recv *RecentData) SetFieldAppName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(recentDataStruct, recv.native, "app_name", argValue)
+	gi.StructFieldSet(recentDataStruct, recv.Native(), "app_name", argValue)
 }
 
 // FieldAppExec returns the C field 'app_exec'.
 func (recv *RecentData) FieldAppExec() string {
-	argValue := gi.StructFieldGet(recentDataStruct, recv.native, "app_exec")
+	argValue := gi.StructFieldGet(recentDataStruct, recv.Native(), "app_exec")
 	value := argValue.String(false)
 	return value
 }
@@ -25558,7 +25833,7 @@ func (recv *RecentData) FieldAppExec() string {
 func (recv *RecentData) SetFieldAppExec(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(recentDataStruct, recv.native, "app_exec", argValue)
+	gi.StructFieldSet(recentDataStruct, recv.Native(), "app_exec", argValue)
 }
 
 // UNSUPPORTED : C value 'groups' : for field getter : missing Type
@@ -25567,7 +25842,7 @@ func (recv *RecentData) SetFieldAppExec(value string) {
 
 // FieldIsPrivate returns the C field 'is_private'.
 func (recv *RecentData) FieldIsPrivate() bool {
-	argValue := gi.StructFieldGet(recentDataStruct, recv.native, "is_private")
+	argValue := gi.StructFieldGet(recentDataStruct, recv.Native(), "is_private")
 	value := argValue.Boolean()
 	return value
 }
@@ -25576,7 +25851,7 @@ func (recv *RecentData) FieldIsPrivate() bool {
 func (recv *RecentData) SetFieldIsPrivate(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.StructFieldSet(recentDataStruct, recv.native, "is_private", argValue)
+	gi.StructFieldSet(recentDataStruct, recv.Native(), "is_private", argValue)
 }
 
 // RecentDataStruct creates an uninitialised RecentData.
@@ -25591,7 +25866,7 @@ func RecentDataStruct() *RecentData {
 	return structGo
 }
 func finalizeRecentData(obj *RecentData) {
-	recentDataStruct.Free(obj.native)
+	recentDataStruct.Free(obj.Native())
 }
 
 var recentFilterInfoStruct *gi.Struct
@@ -25634,7 +25909,7 @@ func (recv *RecentFilterInfo) Native() unsafe.Pointer {
 
 // FieldUri returns the C field 'uri'.
 func (recv *RecentFilterInfo) FieldUri() string {
-	argValue := gi.StructFieldGet(recentFilterInfoStruct, recv.native, "uri")
+	argValue := gi.StructFieldGet(recentFilterInfoStruct, recv.Native(), "uri")
 	value := argValue.String(false)
 	return value
 }
@@ -25643,12 +25918,12 @@ func (recv *RecentFilterInfo) FieldUri() string {
 func (recv *RecentFilterInfo) SetFieldUri(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(recentFilterInfoStruct, recv.native, "uri", argValue)
+	gi.StructFieldSet(recentFilterInfoStruct, recv.Native(), "uri", argValue)
 }
 
 // FieldDisplayName returns the C field 'display_name'.
 func (recv *RecentFilterInfo) FieldDisplayName() string {
-	argValue := gi.StructFieldGet(recentFilterInfoStruct, recv.native, "display_name")
+	argValue := gi.StructFieldGet(recentFilterInfoStruct, recv.Native(), "display_name")
 	value := argValue.String(false)
 	return value
 }
@@ -25657,12 +25932,12 @@ func (recv *RecentFilterInfo) FieldDisplayName() string {
 func (recv *RecentFilterInfo) SetFieldDisplayName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(recentFilterInfoStruct, recv.native, "display_name", argValue)
+	gi.StructFieldSet(recentFilterInfoStruct, recv.Native(), "display_name", argValue)
 }
 
 // FieldMimeType returns the C field 'mime_type'.
 func (recv *RecentFilterInfo) FieldMimeType() string {
-	argValue := gi.StructFieldGet(recentFilterInfoStruct, recv.native, "mime_type")
+	argValue := gi.StructFieldGet(recentFilterInfoStruct, recv.Native(), "mime_type")
 	value := argValue.String(false)
 	return value
 }
@@ -25671,7 +25946,7 @@ func (recv *RecentFilterInfo) FieldMimeType() string {
 func (recv *RecentFilterInfo) SetFieldMimeType(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(recentFilterInfoStruct, recv.native, "mime_type", argValue)
+	gi.StructFieldSet(recentFilterInfoStruct, recv.Native(), "mime_type", argValue)
 }
 
 // UNSUPPORTED : C value 'applications' : for field getter : missing Type
@@ -25684,7 +25959,7 @@ func (recv *RecentFilterInfo) SetFieldMimeType(value string) {
 
 // FieldAge returns the C field 'age'.
 func (recv *RecentFilterInfo) FieldAge() int32 {
-	argValue := gi.StructFieldGet(recentFilterInfoStruct, recv.native, "age")
+	argValue := gi.StructFieldGet(recentFilterInfoStruct, recv.Native(), "age")
 	value := argValue.Int32()
 	return value
 }
@@ -25693,7 +25968,7 @@ func (recv *RecentFilterInfo) FieldAge() int32 {
 func (recv *RecentFilterInfo) SetFieldAge(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(recentFilterInfoStruct, recv.native, "age", argValue)
+	gi.StructFieldSet(recentFilterInfoStruct, recv.Native(), "age", argValue)
 }
 
 // RecentFilterInfoStruct creates an uninitialised RecentFilterInfo.
@@ -25708,7 +25983,7 @@ func RecentFilterInfoStruct() *RecentFilterInfo {
 	return structGo
 }
 func finalizeRecentFilterInfo(obj *RecentFilterInfo) {
-	recentFilterInfoStruct.Free(obj.native)
+	recentFilterInfoStruct.Free(obj.Native())
 }
 
 var recentInfoStruct *gi.Struct
@@ -25765,7 +26040,7 @@ func recentInfoExistsFunction_Set() error {
 // Exists is a representation of the C type gtk_recent_info_exists.
 func (recv *RecentInfo) Exists() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -25797,7 +26072,7 @@ func recentInfoGetAddedFunction_Set() error {
 // GetAdded is a representation of the C type gtk_recent_info_get_added.
 func (recv *RecentInfo) GetAdded() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -25829,7 +26104,7 @@ func recentInfoGetAgeFunction_Set() error {
 // GetAge is a representation of the C type gtk_recent_info_get_age.
 func (recv *RecentInfo) GetAge() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -25861,7 +26136,7 @@ func recentInfoGetApplicationInfoFunction_Set() error {
 // GetApplicationInfo is a representation of the C type gtk_recent_info_get_application_info.
 func (recv *RecentInfo) GetApplicationInfo(appName string) (bool, string, uint32, int64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(appName)
 
 	var outArgs [3]gi.Argument
@@ -25898,7 +26173,7 @@ func recentInfoGetApplicationsFunction_Set() error {
 // GetApplications is a representation of the C type gtk_recent_info_get_applications.
 func (recv *RecentInfo) GetApplications() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -25930,7 +26205,7 @@ func recentInfoGetDescriptionFunction_Set() error {
 // GetDescription is a representation of the C type gtk_recent_info_get_description.
 func (recv *RecentInfo) GetDescription() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -25962,7 +26237,7 @@ func recentInfoGetDisplayNameFunction_Set() error {
 // GetDisplayName is a representation of the C type gtk_recent_info_get_display_name.
 func (recv *RecentInfo) GetDisplayName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -25996,7 +26271,7 @@ func recentInfoGetGroupsFunction_Set() error {
 // GetGroups is a representation of the C type gtk_recent_info_get_groups.
 func (recv *RecentInfo) GetGroups() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -26010,7 +26285,38 @@ func (recv *RecentInfo) GetGroups() uint64 {
 	return out0
 }
 
-// UNSUPPORTED : C value 'gtk_recent_info_get_icon' : return type 'GdkPixbuf.Pixbuf' not supported
+var recentInfoGetIconFunction *gi.Function
+var recentInfoGetIconFunction_Once sync.Once
+
+func recentInfoGetIconFunction_Set() error {
+	var err error
+	recentInfoGetIconFunction_Once.Do(func() {
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetIconFunction, err = recentInfoStruct.InvokerNew("get_icon")
+	})
+	return err
+}
+
+// GetIcon is a representation of the C type gtk_recent_info_get_icon.
+func (recv *RecentInfo) GetIcon(size int32) *gdkpixbuf.Pixbuf {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(size)
+
+	var ret gi.Argument
+
+	err := recentInfoGetIconFunction_Set()
+	if err == nil {
+		ret = recentInfoGetIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdkpixbuf.PixbufNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var recentInfoGetMimeTypeFunction *gi.Function
 var recentInfoGetMimeTypeFunction_Once sync.Once
@@ -26030,7 +26336,7 @@ func recentInfoGetMimeTypeFunction_Set() error {
 // GetMimeType is a representation of the C type gtk_recent_info_get_mime_type.
 func (recv *RecentInfo) GetMimeType() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -26062,7 +26368,7 @@ func recentInfoGetModifiedFunction_Set() error {
 // GetModified is a representation of the C type gtk_recent_info_get_modified.
 func (recv *RecentInfo) GetModified() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -26094,7 +26400,7 @@ func recentInfoGetPrivateHintFunction_Set() error {
 // GetPrivateHint is a representation of the C type gtk_recent_info_get_private_hint.
 func (recv *RecentInfo) GetPrivateHint() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -26126,7 +26432,7 @@ func recentInfoGetShortNameFunction_Set() error {
 // GetShortName is a representation of the C type gtk_recent_info_get_short_name.
 func (recv *RecentInfo) GetShortName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -26158,7 +26464,7 @@ func recentInfoGetUriFunction_Set() error {
 // GetUri is a representation of the C type gtk_recent_info_get_uri.
 func (recv *RecentInfo) GetUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -26190,7 +26496,7 @@ func recentInfoGetUriDisplayFunction_Set() error {
 // GetUriDisplay is a representation of the C type gtk_recent_info_get_uri_display.
 func (recv *RecentInfo) GetUriDisplay() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -26222,7 +26528,7 @@ func recentInfoGetVisitedFunction_Set() error {
 // GetVisited is a representation of the C type gtk_recent_info_get_visited.
 func (recv *RecentInfo) GetVisited() int64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -26254,7 +26560,7 @@ func recentInfoHasApplicationFunction_Set() error {
 // HasApplication is a representation of the C type gtk_recent_info_has_application.
 func (recv *RecentInfo) HasApplication(appName string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(appName)
 
 	var ret gi.Argument
@@ -26287,7 +26593,7 @@ func recentInfoHasGroupFunction_Set() error {
 // HasGroup is a representation of the C type gtk_recent_info_has_group.
 func (recv *RecentInfo) HasGroup(groupName string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(groupName)
 
 	var ret gi.Argument
@@ -26320,7 +26626,7 @@ func recentInfoIsLocalFunction_Set() error {
 // IsLocal is a representation of the C type gtk_recent_info_is_local.
 func (recv *RecentInfo) IsLocal() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -26352,7 +26658,7 @@ func recentInfoLastApplicationFunction_Set() error {
 // LastApplication is a representation of the C type gtk_recent_info_last_application.
 func (recv *RecentInfo) LastApplication() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -26384,8 +26690,8 @@ func recentInfoMatchFunction_Set() error {
 // Match is a representation of the C type gtk_recent_info_match.
 func (recv *RecentInfo) Match(infoB *RecentInfo) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(infoB.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(infoB.Native())
 
 	var ret gi.Argument
 
@@ -26417,7 +26723,7 @@ func recentInfoRefFunction_Set() error {
 // Ref is a representation of the C type gtk_recent_info_ref.
 func (recv *RecentInfo) Ref() *RecentInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -26449,7 +26755,7 @@ func recentInfoUnrefFunction_Set() error {
 // Unref is a representation of the C type gtk_recent_info_unref.
 func (recv *RecentInfo) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := recentInfoUnrefFunction_Set()
 	if err == nil {
@@ -26471,7 +26777,7 @@ func RecentInfoStruct() *RecentInfo {
 	return structGo
 }
 func finalizeRecentInfo(obj *RecentInfo) {
-	recentInfoStruct.Free(obj.native)
+	recentInfoStruct.Free(obj.Native())
 }
 
 var recentManagerClassStruct *gi.Struct
@@ -26540,7 +26846,7 @@ func RecentManagerClassStruct() *RecentManagerClass {
 	return structGo
 }
 func finalizeRecentManagerClass(obj *RecentManagerClass) {
-	recentManagerClassStruct.Free(obj.native)
+	recentManagerClassStruct.Free(obj.Native())
 }
 
 var recentManagerPrivateStruct *gi.Struct
@@ -26589,7 +26895,7 @@ func RecentManagerPrivateStruct() *RecentManagerPrivate {
 	return structGo
 }
 func finalizeRecentManagerPrivate(obj *RecentManagerPrivate) {
-	recentManagerPrivateStruct.Free(obj.native)
+	recentManagerPrivateStruct.Free(obj.Native())
 }
 
 var rendererCellAccessibleClassStruct *gi.Struct
@@ -26628,7 +26934,7 @@ func (recv *RendererCellAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RendererCellAccessibleClass) FieldParentClass() *CellAccessibleClass {
-	argValue := gi.StructFieldGet(rendererCellAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(rendererCellAccessibleClassStruct, recv.Native(), "parent_class")
 	value := CellAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -26636,8 +26942,8 @@ func (recv *RendererCellAccessibleClass) FieldParentClass() *CellAccessibleClass
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RendererCellAccessibleClass) SetFieldParentClass(value *CellAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(rendererCellAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(rendererCellAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // RendererCellAccessibleClassStruct creates an uninitialised RendererCellAccessibleClass.
@@ -26652,7 +26958,7 @@ func RendererCellAccessibleClassStruct() *RendererCellAccessibleClass {
 	return structGo
 }
 func finalizeRendererCellAccessibleClass(obj *RendererCellAccessibleClass) {
-	rendererCellAccessibleClassStruct.Free(obj.native)
+	rendererCellAccessibleClassStruct.Free(obj.Native())
 }
 
 var rendererCellAccessiblePrivateStruct *gi.Struct
@@ -26701,7 +27007,7 @@ func RendererCellAccessiblePrivateStruct() *RendererCellAccessiblePrivate {
 	return structGo
 }
 func finalizeRendererCellAccessiblePrivate(obj *RendererCellAccessiblePrivate) {
-	rendererCellAccessiblePrivateStruct.Free(obj.native)
+	rendererCellAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var requestedSizeStruct *gi.Struct
@@ -26744,7 +27050,7 @@ func (recv *RequestedSize) Native() unsafe.Pointer {
 
 // FieldMinimumSize returns the C field 'minimum_size'.
 func (recv *RequestedSize) FieldMinimumSize() int32 {
-	argValue := gi.StructFieldGet(requestedSizeStruct, recv.native, "minimum_size")
+	argValue := gi.StructFieldGet(requestedSizeStruct, recv.Native(), "minimum_size")
 	value := argValue.Int32()
 	return value
 }
@@ -26753,12 +27059,12 @@ func (recv *RequestedSize) FieldMinimumSize() int32 {
 func (recv *RequestedSize) SetFieldMinimumSize(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(requestedSizeStruct, recv.native, "minimum_size", argValue)
+	gi.StructFieldSet(requestedSizeStruct, recv.Native(), "minimum_size", argValue)
 }
 
 // FieldNaturalSize returns the C field 'natural_size'.
 func (recv *RequestedSize) FieldNaturalSize() int32 {
-	argValue := gi.StructFieldGet(requestedSizeStruct, recv.native, "natural_size")
+	argValue := gi.StructFieldGet(requestedSizeStruct, recv.Native(), "natural_size")
 	value := argValue.Int32()
 	return value
 }
@@ -26767,7 +27073,7 @@ func (recv *RequestedSize) FieldNaturalSize() int32 {
 func (recv *RequestedSize) SetFieldNaturalSize(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(requestedSizeStruct, recv.native, "natural_size", argValue)
+	gi.StructFieldSet(requestedSizeStruct, recv.Native(), "natural_size", argValue)
 }
 
 // RequestedSizeStruct creates an uninitialised RequestedSize.
@@ -26782,7 +27088,7 @@ func RequestedSizeStruct() *RequestedSize {
 	return structGo
 }
 func finalizeRequestedSize(obj *RequestedSize) {
-	requestedSizeStruct.Free(obj.native)
+	requestedSizeStruct.Free(obj.Native())
 }
 
 var requisitionStruct *gi.Struct
@@ -26821,7 +27127,7 @@ func (recv *Requisition) Native() unsafe.Pointer {
 
 // FieldWidth returns the C field 'width'.
 func (recv *Requisition) FieldWidth() int32 {
-	argValue := gi.StructFieldGet(requisitionStruct, recv.native, "width")
+	argValue := gi.StructFieldGet(requisitionStruct, recv.Native(), "width")
 	value := argValue.Int32()
 	return value
 }
@@ -26830,12 +27136,12 @@ func (recv *Requisition) FieldWidth() int32 {
 func (recv *Requisition) SetFieldWidth(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(requisitionStruct, recv.native, "width", argValue)
+	gi.StructFieldSet(requisitionStruct, recv.Native(), "width", argValue)
 }
 
 // FieldHeight returns the C field 'height'.
 func (recv *Requisition) FieldHeight() int32 {
-	argValue := gi.StructFieldGet(requisitionStruct, recv.native, "height")
+	argValue := gi.StructFieldGet(requisitionStruct, recv.Native(), "height")
 	value := argValue.Int32()
 	return value
 }
@@ -26844,7 +27150,7 @@ func (recv *Requisition) FieldHeight() int32 {
 func (recv *Requisition) SetFieldHeight(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(requisitionStruct, recv.native, "height", argValue)
+	gi.StructFieldSet(requisitionStruct, recv.Native(), "height", argValue)
 }
 
 var requisitionNewFunction *gi.Function
@@ -26895,7 +27201,7 @@ func requisitionCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_requisition_copy.
 func (recv *Requisition) Copy() *Requisition {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -26927,7 +27233,7 @@ func requisitionFreeFunction_Set() error {
 // Free is a representation of the C type gtk_requisition_free.
 func (recv *Requisition) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := requisitionFreeFunction_Set()
 	if err == nil {
@@ -26973,7 +27279,7 @@ func (recv *RevealerClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RevealerClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(revealerClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(revealerClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -26981,8 +27287,8 @@ func (recv *RevealerClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RevealerClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(revealerClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(revealerClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // RevealerClassStruct creates an uninitialised RevealerClass.
@@ -26997,7 +27303,7 @@ func RevealerClassStruct() *RevealerClass {
 	return structGo
 }
 func finalizeRevealerClass(obj *RevealerClass) {
-	revealerClassStruct.Free(obj.native)
+	revealerClassStruct.Free(obj.Native())
 }
 
 var scaleAccessibleClassStruct *gi.Struct
@@ -27036,7 +27342,7 @@ func (recv *ScaleAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ScaleAccessibleClass) FieldParentClass() *RangeAccessibleClass {
-	argValue := gi.StructFieldGet(scaleAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(scaleAccessibleClassStruct, recv.Native(), "parent_class")
 	value := RangeAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -27044,8 +27350,8 @@ func (recv *ScaleAccessibleClass) FieldParentClass() *RangeAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ScaleAccessibleClass) SetFieldParentClass(value *RangeAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(scaleAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(scaleAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ScaleAccessibleClassStruct creates an uninitialised ScaleAccessibleClass.
@@ -27060,7 +27366,7 @@ func ScaleAccessibleClassStruct() *ScaleAccessibleClass {
 	return structGo
 }
 func finalizeScaleAccessibleClass(obj *ScaleAccessibleClass) {
-	scaleAccessibleClassStruct.Free(obj.native)
+	scaleAccessibleClassStruct.Free(obj.Native())
 }
 
 var scaleAccessiblePrivateStruct *gi.Struct
@@ -27109,7 +27415,7 @@ func ScaleAccessiblePrivateStruct() *ScaleAccessiblePrivate {
 	return structGo
 }
 func finalizeScaleAccessiblePrivate(obj *ScaleAccessiblePrivate) {
-	scaleAccessiblePrivateStruct.Free(obj.native)
+	scaleAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var scaleButtonAccessibleClassStruct *gi.Struct
@@ -27148,7 +27454,7 @@ func (recv *ScaleButtonAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ScaleButtonAccessibleClass) FieldParentClass() *ButtonAccessibleClass {
-	argValue := gi.StructFieldGet(scaleButtonAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(scaleButtonAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ButtonAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -27156,8 +27462,8 @@ func (recv *ScaleButtonAccessibleClass) FieldParentClass() *ButtonAccessibleClas
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ScaleButtonAccessibleClass) SetFieldParentClass(value *ButtonAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(scaleButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(scaleButtonAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ScaleButtonAccessibleClassStruct creates an uninitialised ScaleButtonAccessibleClass.
@@ -27172,7 +27478,7 @@ func ScaleButtonAccessibleClassStruct() *ScaleButtonAccessibleClass {
 	return structGo
 }
 func finalizeScaleButtonAccessibleClass(obj *ScaleButtonAccessibleClass) {
-	scaleButtonAccessibleClassStruct.Free(obj.native)
+	scaleButtonAccessibleClassStruct.Free(obj.Native())
 }
 
 var scaleButtonAccessiblePrivateStruct *gi.Struct
@@ -27221,7 +27527,7 @@ func ScaleButtonAccessiblePrivateStruct() *ScaleButtonAccessiblePrivate {
 	return structGo
 }
 func finalizeScaleButtonAccessiblePrivate(obj *ScaleButtonAccessiblePrivate) {
-	scaleButtonAccessiblePrivateStruct.Free(obj.native)
+	scaleButtonAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var scaleButtonClassStruct *gi.Struct
@@ -27260,7 +27566,7 @@ func (recv *ScaleButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ScaleButtonClass) FieldParentClass() *ButtonClass {
-	argValue := gi.StructFieldGet(scaleButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(scaleButtonClassStruct, recv.Native(), "parent_class")
 	value := ButtonClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -27268,8 +27574,8 @@ func (recv *ScaleButtonClass) FieldParentClass() *ButtonClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ScaleButtonClass) SetFieldParentClass(value *ButtonClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(scaleButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(scaleButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'value_changed' : for field getter : missing Type
@@ -27304,7 +27610,7 @@ func ScaleButtonClassStruct() *ScaleButtonClass {
 	return structGo
 }
 func finalizeScaleButtonClass(obj *ScaleButtonClass) {
-	scaleButtonClassStruct.Free(obj.native)
+	scaleButtonClassStruct.Free(obj.Native())
 }
 
 var scaleButtonPrivateStruct *gi.Struct
@@ -27353,7 +27659,7 @@ func ScaleButtonPrivateStruct() *ScaleButtonPrivate {
 	return structGo
 }
 func finalizeScaleButtonPrivate(obj *ScaleButtonPrivate) {
-	scaleButtonPrivateStruct.Free(obj.native)
+	scaleButtonPrivateStruct.Free(obj.Native())
 }
 
 var scaleClassStruct *gi.Struct
@@ -27392,7 +27698,7 @@ func (recv *ScaleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ScaleClass) FieldParentClass() *RangeClass {
-	argValue := gi.StructFieldGet(scaleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(scaleClassStruct, recv.Native(), "parent_class")
 	value := RangeClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -27400,8 +27706,8 @@ func (recv *ScaleClass) FieldParentClass() *RangeClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ScaleClass) SetFieldParentClass(value *RangeClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(scaleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(scaleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'format_value' : for field getter : missing Type
@@ -27444,7 +27750,7 @@ func ScaleClassStruct() *ScaleClass {
 	return structGo
 }
 func finalizeScaleClass(obj *ScaleClass) {
-	scaleClassStruct.Free(obj.native)
+	scaleClassStruct.Free(obj.Native())
 }
 
 var scalePrivateStruct *gi.Struct
@@ -27493,7 +27799,7 @@ func ScalePrivateStruct() *ScalePrivate {
 	return structGo
 }
 func finalizeScalePrivate(obj *ScalePrivate) {
-	scalePrivateStruct.Free(obj.native)
+	scalePrivateStruct.Free(obj.Native())
 }
 
 var scrollableInterfaceStruct *gi.Struct
@@ -27550,7 +27856,7 @@ func ScrollableInterfaceStruct() *ScrollableInterface {
 	return structGo
 }
 func finalizeScrollableInterface(obj *ScrollableInterface) {
-	scrollableInterfaceStruct.Free(obj.native)
+	scrollableInterfaceStruct.Free(obj.Native())
 }
 
 var scrollbarClassStruct *gi.Struct
@@ -27589,7 +27895,7 @@ func (recv *ScrollbarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ScrollbarClass) FieldParentClass() *RangeClass {
-	argValue := gi.StructFieldGet(scrollbarClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(scrollbarClassStruct, recv.Native(), "parent_class")
 	value := RangeClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -27597,8 +27903,8 @@ func (recv *ScrollbarClass) FieldParentClass() *RangeClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ScrollbarClass) SetFieldParentClass(value *RangeClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(scrollbarClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(scrollbarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -27629,7 +27935,7 @@ func ScrollbarClassStruct() *ScrollbarClass {
 	return structGo
 }
 func finalizeScrollbarClass(obj *ScrollbarClass) {
-	scrollbarClassStruct.Free(obj.native)
+	scrollbarClassStruct.Free(obj.Native())
 }
 
 var scrolledWindowAccessibleClassStruct *gi.Struct
@@ -27668,7 +27974,7 @@ func (recv *ScrolledWindowAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ScrolledWindowAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(scrolledWindowAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(scrolledWindowAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -27676,8 +27982,8 @@ func (recv *ScrolledWindowAccessibleClass) FieldParentClass() *ContainerAccessib
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ScrolledWindowAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(scrolledWindowAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(scrolledWindowAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ScrolledWindowAccessibleClassStruct creates an uninitialised ScrolledWindowAccessibleClass.
@@ -27692,7 +27998,7 @@ func ScrolledWindowAccessibleClassStruct() *ScrolledWindowAccessibleClass {
 	return structGo
 }
 func finalizeScrolledWindowAccessibleClass(obj *ScrolledWindowAccessibleClass) {
-	scrolledWindowAccessibleClassStruct.Free(obj.native)
+	scrolledWindowAccessibleClassStruct.Free(obj.Native())
 }
 
 var scrolledWindowAccessiblePrivateStruct *gi.Struct
@@ -27741,7 +28047,7 @@ func ScrolledWindowAccessiblePrivateStruct() *ScrolledWindowAccessiblePrivate {
 	return structGo
 }
 func finalizeScrolledWindowAccessiblePrivate(obj *ScrolledWindowAccessiblePrivate) {
-	scrolledWindowAccessiblePrivateStruct.Free(obj.native)
+	scrolledWindowAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var scrolledWindowClassStruct *gi.Struct
@@ -27780,7 +28086,7 @@ func (recv *ScrolledWindowClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ScrolledWindowClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(scrolledWindowClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(scrolledWindowClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -27788,13 +28094,13 @@ func (recv *ScrolledWindowClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ScrolledWindowClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(scrolledWindowClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(scrolledWindowClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // FieldScrollbarSpacing returns the C field 'scrollbar_spacing'.
 func (recv *ScrolledWindowClass) FieldScrollbarSpacing() int32 {
-	argValue := gi.StructFieldGet(scrolledWindowClassStruct, recv.native, "scrollbar_spacing")
+	argValue := gi.StructFieldGet(scrolledWindowClassStruct, recv.Native(), "scrollbar_spacing")
 	value := argValue.Int32()
 	return value
 }
@@ -27803,7 +28109,7 @@ func (recv *ScrolledWindowClass) FieldScrollbarSpacing() int32 {
 func (recv *ScrolledWindowClass) SetFieldScrollbarSpacing(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(scrolledWindowClassStruct, recv.native, "scrollbar_spacing", argValue)
+	gi.StructFieldSet(scrolledWindowClassStruct, recv.Native(), "scrollbar_spacing", argValue)
 }
 
 // UNSUPPORTED : C value 'scroll_child' : for field getter : missing Type
@@ -27842,7 +28148,7 @@ func ScrolledWindowClassStruct() *ScrolledWindowClass {
 	return structGo
 }
 func finalizeScrolledWindowClass(obj *ScrolledWindowClass) {
-	scrolledWindowClassStruct.Free(obj.native)
+	scrolledWindowClassStruct.Free(obj.Native())
 }
 
 var scrolledWindowPrivateStruct *gi.Struct
@@ -27891,7 +28197,7 @@ func ScrolledWindowPrivateStruct() *ScrolledWindowPrivate {
 	return structGo
 }
 func finalizeScrolledWindowPrivate(obj *ScrolledWindowPrivate) {
-	scrolledWindowPrivateStruct.Free(obj.native)
+	scrolledWindowPrivateStruct.Free(obj.Native())
 }
 
 var searchBarClassStruct *gi.Struct
@@ -27930,7 +28236,7 @@ func (recv *SearchBarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SearchBarClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(searchBarClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(searchBarClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -27938,8 +28244,8 @@ func (recv *SearchBarClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SearchBarClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(searchBarClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(searchBarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -27970,7 +28276,7 @@ func SearchBarClassStruct() *SearchBarClass {
 	return structGo
 }
 func finalizeSearchBarClass(obj *SearchBarClass) {
-	searchBarClassStruct.Free(obj.native)
+	searchBarClassStruct.Free(obj.Native())
 }
 
 var searchEntryClassStruct *gi.Struct
@@ -28009,7 +28315,7 @@ func (recv *SearchEntryClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SearchEntryClass) FieldParentClass() *EntryClass {
-	argValue := gi.StructFieldGet(searchEntryClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(searchEntryClassStruct, recv.Native(), "parent_class")
 	value := EntryClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -28017,8 +28323,8 @@ func (recv *SearchEntryClass) FieldParentClass() *EntryClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SearchEntryClass) SetFieldParentClass(value *EntryClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(searchEntryClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(searchEntryClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'search_changed' : for field getter : missing Type
@@ -28049,7 +28355,7 @@ func SearchEntryClassStruct() *SearchEntryClass {
 	return structGo
 }
 func finalizeSearchEntryClass(obj *SearchEntryClass) {
-	searchEntryClassStruct.Free(obj.native)
+	searchEntryClassStruct.Free(obj.Native())
 }
 
 var selectionDataStruct *gi.Struct
@@ -28104,7 +28410,7 @@ func selectionDataCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_selection_data_copy.
 func (recv *SelectionData) Copy() *SelectionData {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -28136,7 +28442,7 @@ func selectionDataFreeFunction_Set() error {
 // Free is a representation of the C type gtk_selection_data_free.
 func (recv *SelectionData) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := selectionDataFreeFunction_Set()
 	if err == nil {
@@ -28164,7 +28470,7 @@ func selectionDataGetDataFunction_Set() error {
 // GetData is a representation of the C type gtk_selection_data_get_data.
 func (recv *SelectionData) GetData() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := selectionDataGetDataFunction_Set()
 	if err == nil {
@@ -28194,7 +28500,7 @@ func selectionDataGetDataWithLengthFunction_Set() error {
 // GetDataWithLength is a representation of the C type gtk_selection_data_get_data_with_length.
 func (recv *SelectionData) GetDataWithLength() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -28208,7 +28514,37 @@ func (recv *SelectionData) GetDataWithLength() int32 {
 	return out0
 }
 
-// UNSUPPORTED : C value 'gtk_selection_data_get_display' : return type 'Gdk.Display' not supported
+var selectionDataGetDisplayFunction *gi.Function
+var selectionDataGetDisplayFunction_Once sync.Once
+
+func selectionDataGetDisplayFunction_Set() error {
+	var err error
+	selectionDataGetDisplayFunction_Once.Do(func() {
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataGetDisplayFunction, err = selectionDataStruct.InvokerNew("get_display")
+	})
+	return err
+}
+
+// GetDisplay is a representation of the C type gtk_selection_data_get_display.
+func (recv *SelectionData) GetDisplay() *gdk.Display {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := selectionDataGetDisplayFunction_Set()
+	if err == nil {
+		ret = selectionDataGetDisplayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdk.DisplayNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var selectionDataGetFormatFunction *gi.Function
 var selectionDataGetFormatFunction_Once sync.Once
@@ -28228,7 +28564,7 @@ func selectionDataGetFormatFunction_Set() error {
 // GetFormat is a representation of the C type gtk_selection_data_get_format.
 func (recv *SelectionData) GetFormat() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -28260,7 +28596,7 @@ func selectionDataGetLengthFunction_Set() error {
 // GetLength is a representation of the C type gtk_selection_data_get_length.
 func (recv *SelectionData) GetLength() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -28274,7 +28610,37 @@ func (recv *SelectionData) GetLength() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_selection_data_get_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
+var selectionDataGetPixbufFunction *gi.Function
+var selectionDataGetPixbufFunction_Once sync.Once
+
+func selectionDataGetPixbufFunction_Set() error {
+	var err error
+	selectionDataGetPixbufFunction_Once.Do(func() {
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataGetPixbufFunction, err = selectionDataStruct.InvokerNew("get_pixbuf")
+	})
+	return err
+}
+
+// GetPixbuf is a representation of the C type gtk_selection_data_get_pixbuf.
+func (recv *SelectionData) GetPixbuf() *gdkpixbuf.Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := selectionDataGetPixbufFunction_Set()
+	if err == nil {
+		ret = selectionDataGetPixbufFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdkpixbuf.PixbufNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_selection_data_get_selection' : return type 'Gdk.Atom' not supported
 
@@ -28300,7 +28666,7 @@ func selectionDataGetTextFunction_Set() error {
 // GetText is a representation of the C type gtk_selection_data_get_text.
 func (recv *SelectionData) GetText() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -28332,7 +28698,7 @@ func selectionDataGetUrisFunction_Set() error {
 // GetUris is a representation of the C type gtk_selection_data_get_uris.
 func (recv *SelectionData) GetUris() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := selectionDataGetUrisFunction_Set()
 	if err == nil {
@@ -28344,7 +28710,38 @@ func (recv *SelectionData) GetUris() {
 
 // UNSUPPORTED : C value 'gtk_selection_data_set' : parameter 'type' of type 'Gdk.Atom' not supported
 
-// UNSUPPORTED : C value 'gtk_selection_data_set_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
+var selectionDataSetPixbufFunction *gi.Function
+var selectionDataSetPixbufFunction_Once sync.Once
+
+func selectionDataSetPixbufFunction_Set() error {
+	var err error
+	selectionDataSetPixbufFunction_Once.Do(func() {
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataSetPixbufFunction, err = selectionDataStruct.InvokerNew("set_pixbuf")
+	})
+	return err
+}
+
+// SetPixbuf is a representation of the C type gtk_selection_data_set_pixbuf.
+func (recv *SelectionData) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(pixbuf.Native())
+
+	var ret gi.Argument
+
+	err := selectionDataSetPixbufFunction_Set()
+	if err == nil {
+		ret = selectionDataSetPixbufFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var selectionDataSetTextFunction *gi.Function
 var selectionDataSetTextFunction_Once sync.Once
@@ -28364,7 +28761,7 @@ func selectionDataSetTextFunction_Set() error {
 // SetText is a representation of the C type gtk_selection_data_set_text.
 func (recv *SelectionData) SetText(str string, len int32) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(str)
 	inArgs[2].SetInt32(len)
 
@@ -28400,7 +28797,7 @@ func selectionDataTargetsIncludeImageFunction_Set() error {
 // TargetsIncludeImage is a representation of the C type gtk_selection_data_targets_include_image.
 func (recv *SelectionData) TargetsIncludeImage(writable bool) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(writable)
 
 	var ret gi.Argument
@@ -28433,8 +28830,8 @@ func selectionDataTargetsIncludeRichTextFunction_Set() error {
 // TargetsIncludeRichText is a representation of the C type gtk_selection_data_targets_include_rich_text.
 func (recv *SelectionData) TargetsIncludeRichText(buffer *TextBuffer) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(buffer.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(buffer.Native())
 
 	var ret gi.Argument
 
@@ -28466,7 +28863,7 @@ func selectionDataTargetsIncludeTextFunction_Set() error {
 // TargetsIncludeText is a representation of the C type gtk_selection_data_targets_include_text.
 func (recv *SelectionData) TargetsIncludeText() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -28498,7 +28895,7 @@ func selectionDataTargetsIncludeUriFunction_Set() error {
 // TargetsIncludeUri is a representation of the C type gtk_selection_data_targets_include_uri.
 func (recv *SelectionData) TargetsIncludeUri() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -28524,7 +28921,7 @@ func SelectionDataStruct() *SelectionData {
 	return structGo
 }
 func finalizeSelectionData(obj *SelectionData) {
-	selectionDataStruct.Free(obj.native)
+	selectionDataStruct.Free(obj.Native())
 }
 
 var separatorClassStruct *gi.Struct
@@ -28563,7 +28960,7 @@ func (recv *SeparatorClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SeparatorClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(separatorClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(separatorClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -28571,8 +28968,8 @@ func (recv *SeparatorClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SeparatorClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(separatorClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(separatorClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -28603,7 +29000,7 @@ func SeparatorClassStruct() *SeparatorClass {
 	return structGo
 }
 func finalizeSeparatorClass(obj *SeparatorClass) {
-	separatorClassStruct.Free(obj.native)
+	separatorClassStruct.Free(obj.Native())
 }
 
 var separatorMenuItemClassStruct *gi.Struct
@@ -28642,7 +29039,7 @@ func (recv *SeparatorMenuItemClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SeparatorMenuItemClass) FieldParentClass() *MenuItemClass {
-	argValue := gi.StructFieldGet(separatorMenuItemClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(separatorMenuItemClassStruct, recv.Native(), "parent_class")
 	value := MenuItemClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -28650,8 +29047,8 @@ func (recv *SeparatorMenuItemClass) FieldParentClass() *MenuItemClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SeparatorMenuItemClass) SetFieldParentClass(value *MenuItemClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(separatorMenuItemClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(separatorMenuItemClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -28682,7 +29079,7 @@ func SeparatorMenuItemClassStruct() *SeparatorMenuItemClass {
 	return structGo
 }
 func finalizeSeparatorMenuItemClass(obj *SeparatorMenuItemClass) {
-	separatorMenuItemClassStruct.Free(obj.native)
+	separatorMenuItemClassStruct.Free(obj.Native())
 }
 
 var separatorPrivateStruct *gi.Struct
@@ -28731,7 +29128,7 @@ func SeparatorPrivateStruct() *SeparatorPrivate {
 	return structGo
 }
 func finalizeSeparatorPrivate(obj *SeparatorPrivate) {
-	separatorPrivateStruct.Free(obj.native)
+	separatorPrivateStruct.Free(obj.Native())
 }
 
 var separatorToolItemClassStruct *gi.Struct
@@ -28770,7 +29167,7 @@ func (recv *SeparatorToolItemClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SeparatorToolItemClass) FieldParentClass() *ToolItemClass {
-	argValue := gi.StructFieldGet(separatorToolItemClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(separatorToolItemClassStruct, recv.Native(), "parent_class")
 	value := ToolItemClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -28778,8 +29175,8 @@ func (recv *SeparatorToolItemClass) FieldParentClass() *ToolItemClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SeparatorToolItemClass) SetFieldParentClass(value *ToolItemClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(separatorToolItemClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(separatorToolItemClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -28810,7 +29207,7 @@ func SeparatorToolItemClassStruct() *SeparatorToolItemClass {
 	return structGo
 }
 func finalizeSeparatorToolItemClass(obj *SeparatorToolItemClass) {
-	separatorToolItemClassStruct.Free(obj.native)
+	separatorToolItemClassStruct.Free(obj.Native())
 }
 
 var separatorToolItemPrivateStruct *gi.Struct
@@ -28859,7 +29256,7 @@ func SeparatorToolItemPrivateStruct() *SeparatorToolItemPrivate {
 	return structGo
 }
 func finalizeSeparatorToolItemPrivate(obj *SeparatorToolItemPrivate) {
-	separatorToolItemPrivateStruct.Free(obj.native)
+	separatorToolItemPrivateStruct.Free(obj.Native())
 }
 
 var settingsClassStruct *gi.Struct
@@ -28928,7 +29325,7 @@ func SettingsClassStruct() *SettingsClass {
 	return structGo
 }
 func finalizeSettingsClass(obj *SettingsClass) {
-	settingsClassStruct.Free(obj.native)
+	settingsClassStruct.Free(obj.Native())
 }
 
 var settingsPrivateStruct *gi.Struct
@@ -28977,7 +29374,7 @@ func SettingsPrivateStruct() *SettingsPrivate {
 	return structGo
 }
 func finalizeSettingsPrivate(obj *SettingsPrivate) {
-	settingsPrivateStruct.Free(obj.native)
+	settingsPrivateStruct.Free(obj.Native())
 }
 
 var settingsValueStruct *gi.Struct
@@ -29016,7 +29413,7 @@ func (recv *SettingsValue) Native() unsafe.Pointer {
 
 // FieldOrigin returns the C field 'origin'.
 func (recv *SettingsValue) FieldOrigin() string {
-	argValue := gi.StructFieldGet(settingsValueStruct, recv.native, "origin")
+	argValue := gi.StructFieldGet(settingsValueStruct, recv.Native(), "origin")
 	value := argValue.String(false)
 	return value
 }
@@ -29025,7 +29422,7 @@ func (recv *SettingsValue) FieldOrigin() string {
 func (recv *SettingsValue) SetFieldOrigin(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(settingsValueStruct, recv.native, "origin", argValue)
+	gi.StructFieldSet(settingsValueStruct, recv.Native(), "origin", argValue)
 }
 
 // UNSUPPORTED : C value 'value' : for field getter : no Go type for 'GObject.Value'
@@ -29044,7 +29441,7 @@ func SettingsValueStruct() *SettingsValue {
 	return structGo
 }
 func finalizeSettingsValue(obj *SettingsValue) {
-	settingsValueStruct.Free(obj.native)
+	settingsValueStruct.Free(obj.Native())
 }
 
 var shortcutLabelClassStruct *gi.Struct
@@ -29093,7 +29490,7 @@ func ShortcutLabelClassStruct() *ShortcutLabelClass {
 	return structGo
 }
 func finalizeShortcutLabelClass(obj *ShortcutLabelClass) {
-	shortcutLabelClassStruct.Free(obj.native)
+	shortcutLabelClassStruct.Free(obj.Native())
 }
 
 var shortcutsGroupClassStruct *gi.Struct
@@ -29142,7 +29539,7 @@ func ShortcutsGroupClassStruct() *ShortcutsGroupClass {
 	return structGo
 }
 func finalizeShortcutsGroupClass(obj *ShortcutsGroupClass) {
-	shortcutsGroupClassStruct.Free(obj.native)
+	shortcutsGroupClassStruct.Free(obj.Native())
 }
 
 var shortcutsSectionClassStruct *gi.Struct
@@ -29191,7 +29588,7 @@ func ShortcutsSectionClassStruct() *ShortcutsSectionClass {
 	return structGo
 }
 func finalizeShortcutsSectionClass(obj *ShortcutsSectionClass) {
-	shortcutsSectionClassStruct.Free(obj.native)
+	shortcutsSectionClassStruct.Free(obj.Native())
 }
 
 var shortcutsShortcutClassStruct *gi.Struct
@@ -29240,7 +29637,7 @@ func ShortcutsShortcutClassStruct() *ShortcutsShortcutClass {
 	return structGo
 }
 func finalizeShortcutsShortcutClass(obj *ShortcutsShortcutClass) {
-	shortcutsShortcutClassStruct.Free(obj.native)
+	shortcutsShortcutClassStruct.Free(obj.Native())
 }
 
 var shortcutsWindowClassStruct *gi.Struct
@@ -29279,7 +29676,7 @@ func (recv *ShortcutsWindowClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ShortcutsWindowClass) FieldParentClass() *WindowClass {
-	argValue := gi.StructFieldGet(shortcutsWindowClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(shortcutsWindowClassStruct, recv.Native(), "parent_class")
 	value := WindowClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -29287,8 +29684,8 @@ func (recv *ShortcutsWindowClass) FieldParentClass() *WindowClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ShortcutsWindowClass) SetFieldParentClass(value *WindowClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(shortcutsWindowClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(shortcutsWindowClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'close' : for field getter : missing Type
@@ -29311,7 +29708,7 @@ func ShortcutsWindowClassStruct() *ShortcutsWindowClass {
 	return structGo
 }
 func finalizeShortcutsWindowClass(obj *ShortcutsWindowClass) {
-	shortcutsWindowClassStruct.Free(obj.native)
+	shortcutsWindowClassStruct.Free(obj.Native())
 }
 
 var sizeGroupClassStruct *gi.Struct
@@ -29380,7 +29777,7 @@ func SizeGroupClassStruct() *SizeGroupClass {
 	return structGo
 }
 func finalizeSizeGroupClass(obj *SizeGroupClass) {
-	sizeGroupClassStruct.Free(obj.native)
+	sizeGroupClassStruct.Free(obj.Native())
 }
 
 var sizeGroupPrivateStruct *gi.Struct
@@ -29429,7 +29826,7 @@ func SizeGroupPrivateStruct() *SizeGroupPrivate {
 	return structGo
 }
 func finalizeSizeGroupPrivate(obj *SizeGroupPrivate) {
-	sizeGroupPrivateStruct.Free(obj.native)
+	sizeGroupPrivateStruct.Free(obj.Native())
 }
 
 var socketClassStruct *gi.Struct
@@ -29468,7 +29865,7 @@ func (recv *SocketClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SocketClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(socketClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(socketClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -29476,8 +29873,8 @@ func (recv *SocketClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SocketClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(socketClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(socketClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'plug_added' : for field getter : missing Type
@@ -29516,7 +29913,7 @@ func SocketClassStruct() *SocketClass {
 	return structGo
 }
 func finalizeSocketClass(obj *SocketClass) {
-	socketClassStruct.Free(obj.native)
+	socketClassStruct.Free(obj.Native())
 }
 
 var socketPrivateStruct *gi.Struct
@@ -29565,7 +29962,7 @@ func SocketPrivateStruct() *SocketPrivate {
 	return structGo
 }
 func finalizeSocketPrivate(obj *SocketPrivate) {
-	socketPrivateStruct.Free(obj.native)
+	socketPrivateStruct.Free(obj.Native())
 }
 
 var spinButtonAccessibleClassStruct *gi.Struct
@@ -29604,7 +30001,7 @@ func (recv *SpinButtonAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SpinButtonAccessibleClass) FieldParentClass() *EntryAccessibleClass {
-	argValue := gi.StructFieldGet(spinButtonAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(spinButtonAccessibleClassStruct, recv.Native(), "parent_class")
 	value := EntryAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -29612,8 +30009,8 @@ func (recv *SpinButtonAccessibleClass) FieldParentClass() *EntryAccessibleClass 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SpinButtonAccessibleClass) SetFieldParentClass(value *EntryAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(spinButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(spinButtonAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // SpinButtonAccessibleClassStruct creates an uninitialised SpinButtonAccessibleClass.
@@ -29628,7 +30025,7 @@ func SpinButtonAccessibleClassStruct() *SpinButtonAccessibleClass {
 	return structGo
 }
 func finalizeSpinButtonAccessibleClass(obj *SpinButtonAccessibleClass) {
-	spinButtonAccessibleClassStruct.Free(obj.native)
+	spinButtonAccessibleClassStruct.Free(obj.Native())
 }
 
 var spinButtonAccessiblePrivateStruct *gi.Struct
@@ -29677,7 +30074,7 @@ func SpinButtonAccessiblePrivateStruct() *SpinButtonAccessiblePrivate {
 	return structGo
 }
 func finalizeSpinButtonAccessiblePrivate(obj *SpinButtonAccessiblePrivate) {
-	spinButtonAccessiblePrivateStruct.Free(obj.native)
+	spinButtonAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var spinButtonClassStruct *gi.Struct
@@ -29716,7 +30113,7 @@ func (recv *SpinButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SpinButtonClass) FieldParentClass() *EntryClass {
-	argValue := gi.StructFieldGet(spinButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(spinButtonClassStruct, recv.Native(), "parent_class")
 	value := EntryClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -29724,8 +30121,8 @@ func (recv *SpinButtonClass) FieldParentClass() *EntryClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SpinButtonClass) SetFieldParentClass(value *EntryClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(spinButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(spinButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'input' : for field getter : missing Type
@@ -29776,7 +30173,7 @@ func SpinButtonClassStruct() *SpinButtonClass {
 	return structGo
 }
 func finalizeSpinButtonClass(obj *SpinButtonClass) {
-	spinButtonClassStruct.Free(obj.native)
+	spinButtonClassStruct.Free(obj.Native())
 }
 
 var spinButtonPrivateStruct *gi.Struct
@@ -29825,7 +30222,7 @@ func SpinButtonPrivateStruct() *SpinButtonPrivate {
 	return structGo
 }
 func finalizeSpinButtonPrivate(obj *SpinButtonPrivate) {
-	spinButtonPrivateStruct.Free(obj.native)
+	spinButtonPrivateStruct.Free(obj.Native())
 }
 
 var spinnerAccessibleClassStruct *gi.Struct
@@ -29864,7 +30261,7 @@ func (recv *SpinnerAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SpinnerAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
-	argValue := gi.StructFieldGet(spinnerAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(spinnerAccessibleClassStruct, recv.Native(), "parent_class")
 	value := WidgetAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -29872,8 +30269,8 @@ func (recv *SpinnerAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SpinnerAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(spinnerAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(spinnerAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // SpinnerAccessibleClassStruct creates an uninitialised SpinnerAccessibleClass.
@@ -29888,7 +30285,7 @@ func SpinnerAccessibleClassStruct() *SpinnerAccessibleClass {
 	return structGo
 }
 func finalizeSpinnerAccessibleClass(obj *SpinnerAccessibleClass) {
-	spinnerAccessibleClassStruct.Free(obj.native)
+	spinnerAccessibleClassStruct.Free(obj.Native())
 }
 
 var spinnerAccessiblePrivateStruct *gi.Struct
@@ -29937,7 +30334,7 @@ func SpinnerAccessiblePrivateStruct() *SpinnerAccessiblePrivate {
 	return structGo
 }
 func finalizeSpinnerAccessiblePrivate(obj *SpinnerAccessiblePrivate) {
-	spinnerAccessiblePrivateStruct.Free(obj.native)
+	spinnerAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var spinnerClassStruct *gi.Struct
@@ -29976,7 +30373,7 @@ func (recv *SpinnerClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SpinnerClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(spinnerClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(spinnerClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -29984,8 +30381,8 @@ func (recv *SpinnerClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SpinnerClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(spinnerClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(spinnerClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -30016,7 +30413,7 @@ func SpinnerClassStruct() *SpinnerClass {
 	return structGo
 }
 func finalizeSpinnerClass(obj *SpinnerClass) {
-	spinnerClassStruct.Free(obj.native)
+	spinnerClassStruct.Free(obj.Native())
 }
 
 var spinnerPrivateStruct *gi.Struct
@@ -30065,7 +30462,7 @@ func SpinnerPrivateStruct() *SpinnerPrivate {
 	return structGo
 }
 func finalizeSpinnerPrivate(obj *SpinnerPrivate) {
-	spinnerPrivateStruct.Free(obj.native)
+	spinnerPrivateStruct.Free(obj.Native())
 }
 
 var stackAccessibleClassStruct *gi.Struct
@@ -30104,7 +30501,7 @@ func (recv *StackAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *StackAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(stackAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(stackAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -30112,8 +30509,8 @@ func (recv *StackAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *StackAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(stackAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(stackAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // StackAccessibleClassStruct creates an uninitialised StackAccessibleClass.
@@ -30128,7 +30525,7 @@ func StackAccessibleClassStruct() *StackAccessibleClass {
 	return structGo
 }
 func finalizeStackAccessibleClass(obj *StackAccessibleClass) {
-	stackAccessibleClassStruct.Free(obj.native)
+	stackAccessibleClassStruct.Free(obj.Native())
 }
 
 var stackClassStruct *gi.Struct
@@ -30167,7 +30564,7 @@ func (recv *StackClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *StackClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(stackClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(stackClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -30175,8 +30572,8 @@ func (recv *StackClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *StackClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(stackClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(stackClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // StackClassStruct creates an uninitialised StackClass.
@@ -30191,7 +30588,7 @@ func StackClassStruct() *StackClass {
 	return structGo
 }
 func finalizeStackClass(obj *StackClass) {
-	stackClassStruct.Free(obj.native)
+	stackClassStruct.Free(obj.Native())
 }
 
 var stackSidebarClassStruct *gi.Struct
@@ -30230,7 +30627,7 @@ func (recv *StackSidebarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *StackSidebarClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(stackSidebarClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(stackSidebarClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -30238,8 +30635,8 @@ func (recv *StackSidebarClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *StackSidebarClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(stackSidebarClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(stackSidebarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -30270,7 +30667,7 @@ func StackSidebarClassStruct() *StackSidebarClass {
 	return structGo
 }
 func finalizeStackSidebarClass(obj *StackSidebarClass) {
-	stackSidebarClassStruct.Free(obj.native)
+	stackSidebarClassStruct.Free(obj.Native())
 }
 
 var stackSidebarPrivateStruct *gi.Struct
@@ -30319,7 +30716,7 @@ func StackSidebarPrivateStruct() *StackSidebarPrivate {
 	return structGo
 }
 func finalizeStackSidebarPrivate(obj *StackSidebarPrivate) {
-	stackSidebarPrivateStruct.Free(obj.native)
+	stackSidebarPrivateStruct.Free(obj.Native())
 }
 
 var stackSwitcherClassStruct *gi.Struct
@@ -30358,7 +30755,7 @@ func (recv *StackSwitcherClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *StackSwitcherClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(stackSwitcherClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(stackSwitcherClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -30366,8 +30763,8 @@ func (recv *StackSwitcherClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *StackSwitcherClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(stackSwitcherClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(stackSwitcherClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -30398,7 +30795,7 @@ func StackSwitcherClassStruct() *StackSwitcherClass {
 	return structGo
 }
 func finalizeStackSwitcherClass(obj *StackSwitcherClass) {
-	stackSwitcherClassStruct.Free(obj.native)
+	stackSwitcherClassStruct.Free(obj.Native())
 }
 
 var statusIconClassStruct *gi.Struct
@@ -30495,7 +30892,7 @@ func StatusIconClassStruct() *StatusIconClass {
 	return structGo
 }
 func finalizeStatusIconClass(obj *StatusIconClass) {
-	statusIconClassStruct.Free(obj.native)
+	statusIconClassStruct.Free(obj.Native())
 }
 
 var statusIconPrivateStruct *gi.Struct
@@ -30544,7 +30941,7 @@ func StatusIconPrivateStruct() *StatusIconPrivate {
 	return structGo
 }
 func finalizeStatusIconPrivate(obj *StatusIconPrivate) {
-	statusIconPrivateStruct.Free(obj.native)
+	statusIconPrivateStruct.Free(obj.Native())
 }
 
 var statusbarAccessibleClassStruct *gi.Struct
@@ -30583,7 +30980,7 @@ func (recv *StatusbarAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *StatusbarAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(statusbarAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(statusbarAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -30591,8 +30988,8 @@ func (recv *StatusbarAccessibleClass) FieldParentClass() *ContainerAccessibleCla
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *StatusbarAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(statusbarAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(statusbarAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // StatusbarAccessibleClassStruct creates an uninitialised StatusbarAccessibleClass.
@@ -30607,7 +31004,7 @@ func StatusbarAccessibleClassStruct() *StatusbarAccessibleClass {
 	return structGo
 }
 func finalizeStatusbarAccessibleClass(obj *StatusbarAccessibleClass) {
-	statusbarAccessibleClassStruct.Free(obj.native)
+	statusbarAccessibleClassStruct.Free(obj.Native())
 }
 
 var statusbarAccessiblePrivateStruct *gi.Struct
@@ -30656,7 +31053,7 @@ func StatusbarAccessiblePrivateStruct() *StatusbarAccessiblePrivate {
 	return structGo
 }
 func finalizeStatusbarAccessiblePrivate(obj *StatusbarAccessiblePrivate) {
-	statusbarAccessiblePrivateStruct.Free(obj.native)
+	statusbarAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var statusbarClassStruct *gi.Struct
@@ -30695,7 +31092,7 @@ func (recv *StatusbarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *StatusbarClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(statusbarClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(statusbarClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -30703,8 +31100,8 @@ func (recv *StatusbarClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *StatusbarClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(statusbarClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(statusbarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'reserved' : for field getter : no Go type for 'gpointer'
@@ -30747,7 +31144,7 @@ func StatusbarClassStruct() *StatusbarClass {
 	return structGo
 }
 func finalizeStatusbarClass(obj *StatusbarClass) {
-	statusbarClassStruct.Free(obj.native)
+	statusbarClassStruct.Free(obj.Native())
 }
 
 var statusbarPrivateStruct *gi.Struct
@@ -30796,7 +31193,7 @@ func StatusbarPrivateStruct() *StatusbarPrivate {
 	return structGo
 }
 func finalizeStatusbarPrivate(obj *StatusbarPrivate) {
-	statusbarPrivateStruct.Free(obj.native)
+	statusbarPrivateStruct.Free(obj.Native())
 }
 
 var stockItemStruct *gi.Struct
@@ -30835,7 +31232,7 @@ func (recv *StockItem) Native() unsafe.Pointer {
 
 // FieldStockId returns the C field 'stock_id'.
 func (recv *StockItem) FieldStockId() string {
-	argValue := gi.StructFieldGet(stockItemStruct, recv.native, "stock_id")
+	argValue := gi.StructFieldGet(stockItemStruct, recv.Native(), "stock_id")
 	value := argValue.String(false)
 	return value
 }
@@ -30844,12 +31241,12 @@ func (recv *StockItem) FieldStockId() string {
 func (recv *StockItem) SetFieldStockId(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(stockItemStruct, recv.native, "stock_id", argValue)
+	gi.StructFieldSet(stockItemStruct, recv.Native(), "stock_id", argValue)
 }
 
 // FieldLabel returns the C field 'label'.
 func (recv *StockItem) FieldLabel() string {
-	argValue := gi.StructFieldGet(stockItemStruct, recv.native, "label")
+	argValue := gi.StructFieldGet(stockItemStruct, recv.Native(), "label")
 	value := argValue.String(false)
 	return value
 }
@@ -30858,7 +31255,7 @@ func (recv *StockItem) FieldLabel() string {
 func (recv *StockItem) SetFieldLabel(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(stockItemStruct, recv.native, "label", argValue)
+	gi.StructFieldSet(stockItemStruct, recv.Native(), "label", argValue)
 }
 
 // UNSUPPORTED : C value 'modifier' : for field getter : no Go type for 'Gdk.ModifierType'
@@ -30867,7 +31264,7 @@ func (recv *StockItem) SetFieldLabel(value string) {
 
 // FieldKeyval returns the C field 'keyval'.
 func (recv *StockItem) FieldKeyval() uint32 {
-	argValue := gi.StructFieldGet(stockItemStruct, recv.native, "keyval")
+	argValue := gi.StructFieldGet(stockItemStruct, recv.Native(), "keyval")
 	value := argValue.Uint32()
 	return value
 }
@@ -30876,12 +31273,12 @@ func (recv *StockItem) FieldKeyval() uint32 {
 func (recv *StockItem) SetFieldKeyval(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(stockItemStruct, recv.native, "keyval", argValue)
+	gi.StructFieldSet(stockItemStruct, recv.Native(), "keyval", argValue)
 }
 
 // FieldTranslationDomain returns the C field 'translation_domain'.
 func (recv *StockItem) FieldTranslationDomain() string {
-	argValue := gi.StructFieldGet(stockItemStruct, recv.native, "translation_domain")
+	argValue := gi.StructFieldGet(stockItemStruct, recv.Native(), "translation_domain")
 	value := argValue.String(false)
 	return value
 }
@@ -30890,7 +31287,7 @@ func (recv *StockItem) FieldTranslationDomain() string {
 func (recv *StockItem) SetFieldTranslationDomain(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(stockItemStruct, recv.native, "translation_domain", argValue)
+	gi.StructFieldSet(stockItemStruct, recv.Native(), "translation_domain", argValue)
 }
 
 var stockItemCopyFunction *gi.Function
@@ -30911,7 +31308,7 @@ func stockItemCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_stock_item_copy.
 func (recv *StockItem) Copy() *StockItem {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -30943,7 +31340,7 @@ func stockItemFreeFunction_Set() error {
 // Free is a representation of the C type gtk_stock_item_free.
 func (recv *StockItem) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := stockItemFreeFunction_Set()
 	if err == nil {
@@ -30965,7 +31362,7 @@ func StockItemStruct() *StockItem {
 	return structGo
 }
 func finalizeStockItem(obj *StockItem) {
-	stockItemStruct.Free(obj.native)
+	stockItemStruct.Free(obj.Native())
 }
 
 var styleClassStruct *gi.Struct
@@ -31170,7 +31567,7 @@ func StyleClassStruct() *StyleClass {
 	return structGo
 }
 func finalizeStyleClass(obj *StyleClass) {
-	styleClassStruct.Free(obj.native)
+	styleClassStruct.Free(obj.Native())
 }
 
 var styleContextClassStruct *gi.Struct
@@ -31243,7 +31640,7 @@ func StyleContextClassStruct() *StyleContextClass {
 	return structGo
 }
 func finalizeStyleContextClass(obj *StyleContextClass) {
-	styleContextClassStruct.Free(obj.native)
+	styleContextClassStruct.Free(obj.Native())
 }
 
 var styleContextPrivateStruct *gi.Struct
@@ -31292,7 +31689,7 @@ func StyleContextPrivateStruct() *StyleContextPrivate {
 	return structGo
 }
 func finalizeStyleContextPrivate(obj *StyleContextPrivate) {
-	styleContextPrivateStruct.Free(obj.native)
+	styleContextPrivateStruct.Free(obj.Native())
 }
 
 var stylePropertiesClassStruct *gi.Struct
@@ -31357,7 +31754,7 @@ func StylePropertiesClassStruct() *StylePropertiesClass {
 	return structGo
 }
 func finalizeStylePropertiesClass(obj *StylePropertiesClass) {
-	stylePropertiesClassStruct.Free(obj.native)
+	stylePropertiesClassStruct.Free(obj.Native())
 }
 
 var stylePropertiesPrivateStruct *gi.Struct
@@ -31406,7 +31803,7 @@ func StylePropertiesPrivateStruct() *StylePropertiesPrivate {
 	return structGo
 }
 func finalizeStylePropertiesPrivate(obj *StylePropertiesPrivate) {
-	stylePropertiesPrivateStruct.Free(obj.native)
+	stylePropertiesPrivateStruct.Free(obj.Native())
 }
 
 var styleProviderIfaceStruct *gi.Struct
@@ -31467,7 +31864,7 @@ func StyleProviderIfaceStruct() *StyleProviderIface {
 	return structGo
 }
 func finalizeStyleProviderIface(obj *StyleProviderIface) {
-	styleProviderIfaceStruct.Free(obj.native)
+	styleProviderIfaceStruct.Free(obj.Native())
 }
 
 var switchAccessibleClassStruct *gi.Struct
@@ -31506,7 +31903,7 @@ func (recv *SwitchAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SwitchAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
-	argValue := gi.StructFieldGet(switchAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(switchAccessibleClassStruct, recv.Native(), "parent_class")
 	value := WidgetAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -31514,8 +31911,8 @@ func (recv *SwitchAccessibleClass) FieldParentClass() *WidgetAccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SwitchAccessibleClass) SetFieldParentClass(value *WidgetAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(switchAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(switchAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // SwitchAccessibleClassStruct creates an uninitialised SwitchAccessibleClass.
@@ -31530,7 +31927,7 @@ func SwitchAccessibleClassStruct() *SwitchAccessibleClass {
 	return structGo
 }
 func finalizeSwitchAccessibleClass(obj *SwitchAccessibleClass) {
-	switchAccessibleClassStruct.Free(obj.native)
+	switchAccessibleClassStruct.Free(obj.Native())
 }
 
 var switchAccessiblePrivateStruct *gi.Struct
@@ -31579,7 +31976,7 @@ func SwitchAccessiblePrivateStruct() *SwitchAccessiblePrivate {
 	return structGo
 }
 func finalizeSwitchAccessiblePrivate(obj *SwitchAccessiblePrivate) {
-	switchAccessiblePrivateStruct.Free(obj.native)
+	switchAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var switchClassStruct *gi.Struct
@@ -31618,7 +32015,7 @@ func (recv *SwitchClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SwitchClass) FieldParentClass() *WidgetClass {
-	argValue := gi.StructFieldGet(switchClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(switchClassStruct, recv.Native(), "parent_class")
 	value := WidgetClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -31626,8 +32023,8 @@ func (recv *SwitchClass) FieldParentClass() *WidgetClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SwitchClass) SetFieldParentClass(value *WidgetClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(switchClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(switchClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'activate' : for field getter : missing Type
@@ -31670,7 +32067,7 @@ func SwitchClassStruct() *SwitchClass {
 	return structGo
 }
 func finalizeSwitchClass(obj *SwitchClass) {
-	switchClassStruct.Free(obj.native)
+	switchClassStruct.Free(obj.Native())
 }
 
 var switchPrivateStruct *gi.Struct
@@ -31719,7 +32116,7 @@ func SwitchPrivateStruct() *SwitchPrivate {
 	return structGo
 }
 func finalizeSwitchPrivate(obj *SwitchPrivate) {
-	switchPrivateStruct.Free(obj.native)
+	switchPrivateStruct.Free(obj.Native())
 }
 
 var symbolicColorStruct *gi.Struct
@@ -31774,7 +32171,7 @@ func symbolicColorNewAlphaFunction_Set() error {
 // SymbolicColorNewAlpha is a representation of the C type gtk_symbolic_color_new_alpha.
 func SymbolicColorNewAlpha(color *SymbolicColor, factor float64) *SymbolicColor {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(color.native)
+	inArgs[0].SetPointer(color.Native())
 	inArgs[1].SetFloat64(factor)
 
 	var ret gi.Argument
@@ -31809,8 +32206,8 @@ func symbolicColorNewMixFunction_Set() error {
 // SymbolicColorNewMix is a representation of the C type gtk_symbolic_color_new_mix.
 func SymbolicColorNewMix(color1 *SymbolicColor, color2 *SymbolicColor, factor float64) *SymbolicColor {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(color1.native)
-	inArgs[1].SetPointer(color2.native)
+	inArgs[0].SetPointer(color1.Native())
+	inArgs[1].SetPointer(color2.Native())
 	inArgs[2].SetFloat64(factor)
 
 	var ret gi.Argument
@@ -31875,7 +32272,7 @@ func symbolicColorNewShadeFunction_Set() error {
 // SymbolicColorNewShade is a representation of the C type gtk_symbolic_color_new_shade.
 func SymbolicColorNewShade(color *SymbolicColor, factor float64) *SymbolicColor {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(color.native)
+	inArgs[0].SetPointer(color.Native())
 	inArgs[1].SetFloat64(factor)
 
 	var ret gi.Argument
@@ -31941,7 +32338,7 @@ func symbolicColorRefFunction_Set() error {
 // Ref is a representation of the C type gtk_symbolic_color_ref.
 func (recv *SymbolicColor) Ref() *SymbolicColor {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -31975,7 +32372,7 @@ func symbolicColorToStringFunction_Set() error {
 // ToString is a representation of the C type gtk_symbolic_color_to_string.
 func (recv *SymbolicColor) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -32007,7 +32404,7 @@ func symbolicColorUnrefFunction_Set() error {
 // Unref is a representation of the C type gtk_symbolic_color_unref.
 func (recv *SymbolicColor) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := symbolicColorUnrefFunction_Set()
 	if err == nil {
@@ -32053,7 +32450,7 @@ func (recv *TableChild) Native() unsafe.Pointer {
 
 // FieldWidget returns the C field 'widget'.
 func (recv *TableChild) FieldWidget() *Widget {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "widget")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "widget")
 	value := WidgetNewFromNative(argValue.Pointer())
 	return value
 }
@@ -32061,13 +32458,13 @@ func (recv *TableChild) FieldWidget() *Widget {
 // SetFieldWidget sets the value of the C field 'widget'.
 func (recv *TableChild) SetFieldWidget(value *Widget) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(tableChildStruct, recv.native, "widget", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "widget", argValue)
 }
 
 // FieldLeftAttach returns the C field 'left_attach'.
 func (recv *TableChild) FieldLeftAttach() uint16 {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "left_attach")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "left_attach")
 	value := argValue.Uint16()
 	return value
 }
@@ -32076,12 +32473,12 @@ func (recv *TableChild) FieldLeftAttach() uint16 {
 func (recv *TableChild) SetFieldLeftAttach(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(tableChildStruct, recv.native, "left_attach", argValue)
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "left_attach", argValue)
 }
 
 // FieldRightAttach returns the C field 'right_attach'.
 func (recv *TableChild) FieldRightAttach() uint16 {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "right_attach")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "right_attach")
 	value := argValue.Uint16()
 	return value
 }
@@ -32090,12 +32487,12 @@ func (recv *TableChild) FieldRightAttach() uint16 {
 func (recv *TableChild) SetFieldRightAttach(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(tableChildStruct, recv.native, "right_attach", argValue)
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "right_attach", argValue)
 }
 
 // FieldTopAttach returns the C field 'top_attach'.
 func (recv *TableChild) FieldTopAttach() uint16 {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "top_attach")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "top_attach")
 	value := argValue.Uint16()
 	return value
 }
@@ -32104,12 +32501,12 @@ func (recv *TableChild) FieldTopAttach() uint16 {
 func (recv *TableChild) SetFieldTopAttach(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(tableChildStruct, recv.native, "top_attach", argValue)
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "top_attach", argValue)
 }
 
 // FieldBottomAttach returns the C field 'bottom_attach'.
 func (recv *TableChild) FieldBottomAttach() uint16 {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "bottom_attach")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "bottom_attach")
 	value := argValue.Uint16()
 	return value
 }
@@ -32118,12 +32515,12 @@ func (recv *TableChild) FieldBottomAttach() uint16 {
 func (recv *TableChild) SetFieldBottomAttach(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(tableChildStruct, recv.native, "bottom_attach", argValue)
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "bottom_attach", argValue)
 }
 
 // FieldXpadding returns the C field 'xpadding'.
 func (recv *TableChild) FieldXpadding() uint16 {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "xpadding")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "xpadding")
 	value := argValue.Uint16()
 	return value
 }
@@ -32132,12 +32529,12 @@ func (recv *TableChild) FieldXpadding() uint16 {
 func (recv *TableChild) SetFieldXpadding(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(tableChildStruct, recv.native, "xpadding", argValue)
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "xpadding", argValue)
 }
 
 // FieldYpadding returns the C field 'ypadding'.
 func (recv *TableChild) FieldYpadding() uint16 {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "ypadding")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "ypadding")
 	value := argValue.Uint16()
 	return value
 }
@@ -32146,12 +32543,12 @@ func (recv *TableChild) FieldYpadding() uint16 {
 func (recv *TableChild) SetFieldYpadding(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(tableChildStruct, recv.native, "ypadding", argValue)
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "ypadding", argValue)
 }
 
 // FieldXexpand returns the C field 'xexpand'.
 func (recv *TableChild) FieldXexpand() uint32 {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "xexpand")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "xexpand")
 	value := argValue.Uint32()
 	return value
 }
@@ -32160,12 +32557,12 @@ func (recv *TableChild) FieldXexpand() uint32 {
 func (recv *TableChild) SetFieldXexpand(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(tableChildStruct, recv.native, "xexpand", argValue)
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "xexpand", argValue)
 }
 
 // FieldYexpand returns the C field 'yexpand'.
 func (recv *TableChild) FieldYexpand() uint32 {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "yexpand")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "yexpand")
 	value := argValue.Uint32()
 	return value
 }
@@ -32174,12 +32571,12 @@ func (recv *TableChild) FieldYexpand() uint32 {
 func (recv *TableChild) SetFieldYexpand(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(tableChildStruct, recv.native, "yexpand", argValue)
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "yexpand", argValue)
 }
 
 // FieldXshrink returns the C field 'xshrink'.
 func (recv *TableChild) FieldXshrink() uint32 {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "xshrink")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "xshrink")
 	value := argValue.Uint32()
 	return value
 }
@@ -32188,12 +32585,12 @@ func (recv *TableChild) FieldXshrink() uint32 {
 func (recv *TableChild) SetFieldXshrink(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(tableChildStruct, recv.native, "xshrink", argValue)
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "xshrink", argValue)
 }
 
 // FieldYshrink returns the C field 'yshrink'.
 func (recv *TableChild) FieldYshrink() uint32 {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "yshrink")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "yshrink")
 	value := argValue.Uint32()
 	return value
 }
@@ -32202,12 +32599,12 @@ func (recv *TableChild) FieldYshrink() uint32 {
 func (recv *TableChild) SetFieldYshrink(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(tableChildStruct, recv.native, "yshrink", argValue)
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "yshrink", argValue)
 }
 
 // FieldXfill returns the C field 'xfill'.
 func (recv *TableChild) FieldXfill() uint32 {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "xfill")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "xfill")
 	value := argValue.Uint32()
 	return value
 }
@@ -32216,12 +32613,12 @@ func (recv *TableChild) FieldXfill() uint32 {
 func (recv *TableChild) SetFieldXfill(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(tableChildStruct, recv.native, "xfill", argValue)
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "xfill", argValue)
 }
 
 // FieldYfill returns the C field 'yfill'.
 func (recv *TableChild) FieldYfill() uint32 {
-	argValue := gi.StructFieldGet(tableChildStruct, recv.native, "yfill")
+	argValue := gi.StructFieldGet(tableChildStruct, recv.Native(), "yfill")
 	value := argValue.Uint32()
 	return value
 }
@@ -32230,7 +32627,7 @@ func (recv *TableChild) FieldYfill() uint32 {
 func (recv *TableChild) SetFieldYfill(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(tableChildStruct, recv.native, "yfill", argValue)
+	gi.StructFieldSet(tableChildStruct, recv.Native(), "yfill", argValue)
 }
 
 // TableChildStruct creates an uninitialised TableChild.
@@ -32245,7 +32642,7 @@ func TableChildStruct() *TableChild {
 	return structGo
 }
 func finalizeTableChild(obj *TableChild) {
-	tableChildStruct.Free(obj.native)
+	tableChildStruct.Free(obj.Native())
 }
 
 var tableClassStruct *gi.Struct
@@ -32284,7 +32681,7 @@ func (recv *TableClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *TableClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(tableClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(tableClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -32292,8 +32689,8 @@ func (recv *TableClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *TableClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(tableClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(tableClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -32324,7 +32721,7 @@ func TableClassStruct() *TableClass {
 	return structGo
 }
 func finalizeTableClass(obj *TableClass) {
-	tableClassStruct.Free(obj.native)
+	tableClassStruct.Free(obj.Native())
 }
 
 var tablePrivateStruct *gi.Struct
@@ -32373,7 +32770,7 @@ func TablePrivateStruct() *TablePrivate {
 	return structGo
 }
 func finalizeTablePrivate(obj *TablePrivate) {
-	tablePrivateStruct.Free(obj.native)
+	tablePrivateStruct.Free(obj.Native())
 }
 
 var tableRowColStruct *gi.Struct
@@ -32412,7 +32809,7 @@ func (recv *TableRowCol) Native() unsafe.Pointer {
 
 // FieldRequisition returns the C field 'requisition'.
 func (recv *TableRowCol) FieldRequisition() uint16 {
-	argValue := gi.StructFieldGet(tableRowColStruct, recv.native, "requisition")
+	argValue := gi.StructFieldGet(tableRowColStruct, recv.Native(), "requisition")
 	value := argValue.Uint16()
 	return value
 }
@@ -32421,12 +32818,12 @@ func (recv *TableRowCol) FieldRequisition() uint16 {
 func (recv *TableRowCol) SetFieldRequisition(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(tableRowColStruct, recv.native, "requisition", argValue)
+	gi.StructFieldSet(tableRowColStruct, recv.Native(), "requisition", argValue)
 }
 
 // FieldAllocation returns the C field 'allocation'.
 func (recv *TableRowCol) FieldAllocation() uint16 {
-	argValue := gi.StructFieldGet(tableRowColStruct, recv.native, "allocation")
+	argValue := gi.StructFieldGet(tableRowColStruct, recv.Native(), "allocation")
 	value := argValue.Uint16()
 	return value
 }
@@ -32435,12 +32832,12 @@ func (recv *TableRowCol) FieldAllocation() uint16 {
 func (recv *TableRowCol) SetFieldAllocation(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(tableRowColStruct, recv.native, "allocation", argValue)
+	gi.StructFieldSet(tableRowColStruct, recv.Native(), "allocation", argValue)
 }
 
 // FieldSpacing returns the C field 'spacing'.
 func (recv *TableRowCol) FieldSpacing() uint16 {
-	argValue := gi.StructFieldGet(tableRowColStruct, recv.native, "spacing")
+	argValue := gi.StructFieldGet(tableRowColStruct, recv.Native(), "spacing")
 	value := argValue.Uint16()
 	return value
 }
@@ -32449,12 +32846,12 @@ func (recv *TableRowCol) FieldSpacing() uint16 {
 func (recv *TableRowCol) SetFieldSpacing(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(tableRowColStruct, recv.native, "spacing", argValue)
+	gi.StructFieldSet(tableRowColStruct, recv.Native(), "spacing", argValue)
 }
 
 // FieldNeedExpand returns the C field 'need_expand'.
 func (recv *TableRowCol) FieldNeedExpand() uint32 {
-	argValue := gi.StructFieldGet(tableRowColStruct, recv.native, "need_expand")
+	argValue := gi.StructFieldGet(tableRowColStruct, recv.Native(), "need_expand")
 	value := argValue.Uint32()
 	return value
 }
@@ -32463,12 +32860,12 @@ func (recv *TableRowCol) FieldNeedExpand() uint32 {
 func (recv *TableRowCol) SetFieldNeedExpand(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(tableRowColStruct, recv.native, "need_expand", argValue)
+	gi.StructFieldSet(tableRowColStruct, recv.Native(), "need_expand", argValue)
 }
 
 // FieldNeedShrink returns the C field 'need_shrink'.
 func (recv *TableRowCol) FieldNeedShrink() uint32 {
-	argValue := gi.StructFieldGet(tableRowColStruct, recv.native, "need_shrink")
+	argValue := gi.StructFieldGet(tableRowColStruct, recv.Native(), "need_shrink")
 	value := argValue.Uint32()
 	return value
 }
@@ -32477,12 +32874,12 @@ func (recv *TableRowCol) FieldNeedShrink() uint32 {
 func (recv *TableRowCol) SetFieldNeedShrink(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(tableRowColStruct, recv.native, "need_shrink", argValue)
+	gi.StructFieldSet(tableRowColStruct, recv.Native(), "need_shrink", argValue)
 }
 
 // FieldExpand returns the C field 'expand'.
 func (recv *TableRowCol) FieldExpand() uint32 {
-	argValue := gi.StructFieldGet(tableRowColStruct, recv.native, "expand")
+	argValue := gi.StructFieldGet(tableRowColStruct, recv.Native(), "expand")
 	value := argValue.Uint32()
 	return value
 }
@@ -32491,12 +32888,12 @@ func (recv *TableRowCol) FieldExpand() uint32 {
 func (recv *TableRowCol) SetFieldExpand(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(tableRowColStruct, recv.native, "expand", argValue)
+	gi.StructFieldSet(tableRowColStruct, recv.Native(), "expand", argValue)
 }
 
 // FieldShrink returns the C field 'shrink'.
 func (recv *TableRowCol) FieldShrink() uint32 {
-	argValue := gi.StructFieldGet(tableRowColStruct, recv.native, "shrink")
+	argValue := gi.StructFieldGet(tableRowColStruct, recv.Native(), "shrink")
 	value := argValue.Uint32()
 	return value
 }
@@ -32505,12 +32902,12 @@ func (recv *TableRowCol) FieldShrink() uint32 {
 func (recv *TableRowCol) SetFieldShrink(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(tableRowColStruct, recv.native, "shrink", argValue)
+	gi.StructFieldSet(tableRowColStruct, recv.Native(), "shrink", argValue)
 }
 
 // FieldEmpty returns the C field 'empty'.
 func (recv *TableRowCol) FieldEmpty() uint32 {
-	argValue := gi.StructFieldGet(tableRowColStruct, recv.native, "empty")
+	argValue := gi.StructFieldGet(tableRowColStruct, recv.Native(), "empty")
 	value := argValue.Uint32()
 	return value
 }
@@ -32519,7 +32916,7 @@ func (recv *TableRowCol) FieldEmpty() uint32 {
 func (recv *TableRowCol) SetFieldEmpty(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(tableRowColStruct, recv.native, "empty", argValue)
+	gi.StructFieldSet(tableRowColStruct, recv.Native(), "empty", argValue)
 }
 
 // TableRowColStruct creates an uninitialised TableRowCol.
@@ -32534,7 +32931,7 @@ func TableRowColStruct() *TableRowCol {
 	return structGo
 }
 func finalizeTableRowCol(obj *TableRowCol) {
-	tableRowColStruct.Free(obj.native)
+	tableRowColStruct.Free(obj.Native())
 }
 
 var targetEntryStruct *gi.Struct
@@ -32573,7 +32970,7 @@ func (recv *TargetEntry) Native() unsafe.Pointer {
 
 // FieldTarget returns the C field 'target'.
 func (recv *TargetEntry) FieldTarget() string {
-	argValue := gi.StructFieldGet(targetEntryStruct, recv.native, "target")
+	argValue := gi.StructFieldGet(targetEntryStruct, recv.Native(), "target")
 	value := argValue.String(false)
 	return value
 }
@@ -32582,12 +32979,12 @@ func (recv *TargetEntry) FieldTarget() string {
 func (recv *TargetEntry) SetFieldTarget(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(targetEntryStruct, recv.native, "target", argValue)
+	gi.StructFieldSet(targetEntryStruct, recv.Native(), "target", argValue)
 }
 
 // FieldFlags returns the C field 'flags'.
 func (recv *TargetEntry) FieldFlags() uint32 {
-	argValue := gi.StructFieldGet(targetEntryStruct, recv.native, "flags")
+	argValue := gi.StructFieldGet(targetEntryStruct, recv.Native(), "flags")
 	value := argValue.Uint32()
 	return value
 }
@@ -32596,12 +32993,12 @@ func (recv *TargetEntry) FieldFlags() uint32 {
 func (recv *TargetEntry) SetFieldFlags(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(targetEntryStruct, recv.native, "flags", argValue)
+	gi.StructFieldSet(targetEntryStruct, recv.Native(), "flags", argValue)
 }
 
 // FieldInfo returns the C field 'info'.
 func (recv *TargetEntry) FieldInfo() uint32 {
-	argValue := gi.StructFieldGet(targetEntryStruct, recv.native, "info")
+	argValue := gi.StructFieldGet(targetEntryStruct, recv.Native(), "info")
 	value := argValue.Uint32()
 	return value
 }
@@ -32610,7 +33007,7 @@ func (recv *TargetEntry) FieldInfo() uint32 {
 func (recv *TargetEntry) SetFieldInfo(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(targetEntryStruct, recv.native, "info", argValue)
+	gi.StructFieldSet(targetEntryStruct, recv.Native(), "info", argValue)
 }
 
 var targetEntryNewFunction *gi.Function
@@ -32665,7 +33062,7 @@ func targetEntryCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_target_entry_copy.
 func (recv *TargetEntry) Copy() *TargetEntry {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -32697,7 +33094,7 @@ func targetEntryFreeFunction_Set() error {
 // Free is a representation of the C type gtk_target_entry_free.
 func (recv *TargetEntry) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := targetEntryFreeFunction_Set()
 	if err == nil {
@@ -32763,7 +33160,7 @@ func targetListAddImageTargetsFunction_Set() error {
 // AddImageTargets is a representation of the C type gtk_target_list_add_image_targets.
 func (recv *TargetList) AddImageTargets(info uint32, writable bool) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(info)
 	inArgs[2].SetBoolean(writable)
 
@@ -32793,10 +33190,10 @@ func targetListAddRichTextTargetsFunction_Set() error {
 // AddRichTextTargets is a representation of the C type gtk_target_list_add_rich_text_targets.
 func (recv *TargetList) AddRichTextTargets(info uint32, deserializable bool, buffer *TextBuffer) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(info)
 	inArgs[2].SetBoolean(deserializable)
-	inArgs[3].SetPointer(buffer.native)
+	inArgs[3].SetPointer(buffer.Native())
 
 	err := targetListAddRichTextTargetsFunction_Set()
 	if err == nil {
@@ -32826,7 +33223,7 @@ func targetListAddTextTargetsFunction_Set() error {
 // AddTextTargets is a representation of the C type gtk_target_list_add_text_targets.
 func (recv *TargetList) AddTextTargets(info uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(info)
 
 	err := targetListAddTextTargetsFunction_Set()
@@ -32855,7 +33252,7 @@ func targetListAddUriTargetsFunction_Set() error {
 // AddUriTargets is a representation of the C type gtk_target_list_add_uri_targets.
 func (recv *TargetList) AddUriTargets(info uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(info)
 
 	err := targetListAddUriTargetsFunction_Set()
@@ -32886,7 +33283,7 @@ func targetListRefFunction_Set() error {
 // Ref is a representation of the C type gtk_target_list_ref.
 func (recv *TargetList) Ref() *TargetList {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -32920,7 +33317,7 @@ func targetListUnrefFunction_Set() error {
 // Unref is a representation of the C type gtk_target_list_unref.
 func (recv *TargetList) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := targetListUnrefFunction_Set()
 	if err == nil {
@@ -32970,7 +33367,7 @@ func (recv *TargetPair) Native() unsafe.Pointer {
 
 // FieldFlags returns the C field 'flags'.
 func (recv *TargetPair) FieldFlags() uint32 {
-	argValue := gi.StructFieldGet(targetPairStruct, recv.native, "flags")
+	argValue := gi.StructFieldGet(targetPairStruct, recv.Native(), "flags")
 	value := argValue.Uint32()
 	return value
 }
@@ -32979,12 +33376,12 @@ func (recv *TargetPair) FieldFlags() uint32 {
 func (recv *TargetPair) SetFieldFlags(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(targetPairStruct, recv.native, "flags", argValue)
+	gi.StructFieldSet(targetPairStruct, recv.Native(), "flags", argValue)
 }
 
 // FieldInfo returns the C field 'info'.
 func (recv *TargetPair) FieldInfo() uint32 {
-	argValue := gi.StructFieldGet(targetPairStruct, recv.native, "info")
+	argValue := gi.StructFieldGet(targetPairStruct, recv.Native(), "info")
 	value := argValue.Uint32()
 	return value
 }
@@ -32993,7 +33390,7 @@ func (recv *TargetPair) FieldInfo() uint32 {
 func (recv *TargetPair) SetFieldInfo(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(targetPairStruct, recv.native, "info", argValue)
+	gi.StructFieldSet(targetPairStruct, recv.Native(), "info", argValue)
 }
 
 // TargetPairStruct creates an uninitialised TargetPair.
@@ -33008,7 +33405,7 @@ func TargetPairStruct() *TargetPair {
 	return structGo
 }
 func finalizeTargetPair(obj *TargetPair) {
-	targetPairStruct.Free(obj.native)
+	targetPairStruct.Free(obj.Native())
 }
 
 var tearoffMenuItemClassStruct *gi.Struct
@@ -33047,7 +33444,7 @@ func (recv *TearoffMenuItemClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *TearoffMenuItemClass) FieldParentClass() *MenuItemClass {
-	argValue := gi.StructFieldGet(tearoffMenuItemClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(tearoffMenuItemClassStruct, recv.Native(), "parent_class")
 	value := MenuItemClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -33055,8 +33452,8 @@ func (recv *TearoffMenuItemClass) FieldParentClass() *MenuItemClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *TearoffMenuItemClass) SetFieldParentClass(value *MenuItemClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(tearoffMenuItemClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(tearoffMenuItemClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -33087,7 +33484,7 @@ func TearoffMenuItemClassStruct() *TearoffMenuItemClass {
 	return structGo
 }
 func finalizeTearoffMenuItemClass(obj *TearoffMenuItemClass) {
-	tearoffMenuItemClassStruct.Free(obj.native)
+	tearoffMenuItemClassStruct.Free(obj.Native())
 }
 
 var tearoffMenuItemPrivateStruct *gi.Struct
@@ -33136,7 +33533,7 @@ func TearoffMenuItemPrivateStruct() *TearoffMenuItemPrivate {
 	return structGo
 }
 func finalizeTearoffMenuItemPrivate(obj *TearoffMenuItemPrivate) {
-	tearoffMenuItemPrivateStruct.Free(obj.native)
+	tearoffMenuItemPrivateStruct.Free(obj.Native())
 }
 
 var textAppearanceStruct *gi.Struct
@@ -33183,7 +33580,7 @@ func (recv *TextAppearance) Native() unsafe.Pointer {
 
 // FieldRise returns the C field 'rise'.
 func (recv *TextAppearance) FieldRise() int32 {
-	argValue := gi.StructFieldGet(textAppearanceStruct, recv.native, "rise")
+	argValue := gi.StructFieldGet(textAppearanceStruct, recv.Native(), "rise")
 	value := argValue.Int32()
 	return value
 }
@@ -33192,12 +33589,12 @@ func (recv *TextAppearance) FieldRise() int32 {
 func (recv *TextAppearance) SetFieldRise(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(textAppearanceStruct, recv.native, "rise", argValue)
+	gi.StructFieldSet(textAppearanceStruct, recv.Native(), "rise", argValue)
 }
 
 // FieldUnderline returns the C field 'underline'.
 func (recv *TextAppearance) FieldUnderline() uint32 {
-	argValue := gi.StructFieldGet(textAppearanceStruct, recv.native, "underline")
+	argValue := gi.StructFieldGet(textAppearanceStruct, recv.Native(), "underline")
 	value := argValue.Uint32()
 	return value
 }
@@ -33206,12 +33603,12 @@ func (recv *TextAppearance) FieldUnderline() uint32 {
 func (recv *TextAppearance) SetFieldUnderline(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(textAppearanceStruct, recv.native, "underline", argValue)
+	gi.StructFieldSet(textAppearanceStruct, recv.Native(), "underline", argValue)
 }
 
 // FieldStrikethrough returns the C field 'strikethrough'.
 func (recv *TextAppearance) FieldStrikethrough() uint32 {
-	argValue := gi.StructFieldGet(textAppearanceStruct, recv.native, "strikethrough")
+	argValue := gi.StructFieldGet(textAppearanceStruct, recv.Native(), "strikethrough")
 	value := argValue.Uint32()
 	return value
 }
@@ -33220,12 +33617,12 @@ func (recv *TextAppearance) FieldStrikethrough() uint32 {
 func (recv *TextAppearance) SetFieldStrikethrough(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(textAppearanceStruct, recv.native, "strikethrough", argValue)
+	gi.StructFieldSet(textAppearanceStruct, recv.Native(), "strikethrough", argValue)
 }
 
 // FieldDrawBg returns the C field 'draw_bg'.
 func (recv *TextAppearance) FieldDrawBg() uint32 {
-	argValue := gi.StructFieldGet(textAppearanceStruct, recv.native, "draw_bg")
+	argValue := gi.StructFieldGet(textAppearanceStruct, recv.Native(), "draw_bg")
 	value := argValue.Uint32()
 	return value
 }
@@ -33234,12 +33631,12 @@ func (recv *TextAppearance) FieldDrawBg() uint32 {
 func (recv *TextAppearance) SetFieldDrawBg(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(textAppearanceStruct, recv.native, "draw_bg", argValue)
+	gi.StructFieldSet(textAppearanceStruct, recv.Native(), "draw_bg", argValue)
 }
 
 // FieldInsideSelection returns the C field 'inside_selection'.
 func (recv *TextAppearance) FieldInsideSelection() uint32 {
-	argValue := gi.StructFieldGet(textAppearanceStruct, recv.native, "inside_selection")
+	argValue := gi.StructFieldGet(textAppearanceStruct, recv.Native(), "inside_selection")
 	value := argValue.Uint32()
 	return value
 }
@@ -33248,12 +33645,12 @@ func (recv *TextAppearance) FieldInsideSelection() uint32 {
 func (recv *TextAppearance) SetFieldInsideSelection(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(textAppearanceStruct, recv.native, "inside_selection", argValue)
+	gi.StructFieldSet(textAppearanceStruct, recv.Native(), "inside_selection", argValue)
 }
 
 // FieldIsText returns the C field 'is_text'.
 func (recv *TextAppearance) FieldIsText() uint32 {
-	argValue := gi.StructFieldGet(textAppearanceStruct, recv.native, "is_text")
+	argValue := gi.StructFieldGet(textAppearanceStruct, recv.Native(), "is_text")
 	value := argValue.Uint32()
 	return value
 }
@@ -33262,7 +33659,7 @@ func (recv *TextAppearance) FieldIsText() uint32 {
 func (recv *TextAppearance) SetFieldIsText(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(textAppearanceStruct, recv.native, "is_text", argValue)
+	gi.StructFieldSet(textAppearanceStruct, recv.Native(), "is_text", argValue)
 }
 
 // TextAppearanceStruct creates an uninitialised TextAppearance.
@@ -33277,7 +33674,7 @@ func TextAppearanceStruct() *TextAppearance {
 	return structGo
 }
 func finalizeTextAppearance(obj *TextAppearance) {
-	textAppearanceStruct.Free(obj.native)
+	textAppearanceStruct.Free(obj.Native())
 }
 
 var textAttributesStruct *gi.Struct
@@ -33316,7 +33713,7 @@ func (recv *TextAttributes) Native() unsafe.Pointer {
 
 // FieldAppearance returns the C field 'appearance'.
 func (recv *TextAttributes) FieldAppearance() *TextAppearance {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "appearance")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "appearance")
 	value := TextAppearanceNewFromNative(argValue.Pointer())
 	return value
 }
@@ -33324,13 +33721,13 @@ func (recv *TextAttributes) FieldAppearance() *TextAppearance {
 // SetFieldAppearance sets the value of the C field 'appearance'.
 func (recv *TextAttributes) SetFieldAppearance(value *TextAppearance) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "appearance", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "appearance", argValue)
 }
 
 // FieldJustification returns the C field 'justification'.
 func (recv *TextAttributes) FieldJustification() Justification {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "justification")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "justification")
 	value := Justification(argValue.Int32())
 	return value
 }
@@ -33339,12 +33736,12 @@ func (recv *TextAttributes) FieldJustification() Justification {
 func (recv *TextAttributes) SetFieldJustification(value Justification) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(textAttributesStruct, recv.native, "justification", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "justification", argValue)
 }
 
 // FieldDirection returns the C field 'direction'.
 func (recv *TextAttributes) FieldDirection() TextDirection {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "direction")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "direction")
 	value := TextDirection(argValue.Int32())
 	return value
 }
@@ -33353,7 +33750,7 @@ func (recv *TextAttributes) FieldDirection() TextDirection {
 func (recv *TextAttributes) SetFieldDirection(value TextDirection) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(textAttributesStruct, recv.native, "direction", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "direction", argValue)
 }
 
 // UNSUPPORTED : C value 'font' : for field getter : no Go type for 'Pango.FontDescription'
@@ -33362,7 +33759,7 @@ func (recv *TextAttributes) SetFieldDirection(value TextDirection) {
 
 // FieldFontScale returns the C field 'font_scale'.
 func (recv *TextAttributes) FieldFontScale() float64 {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "font_scale")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "font_scale")
 	value := argValue.Float64()
 	return value
 }
@@ -33371,12 +33768,12 @@ func (recv *TextAttributes) FieldFontScale() float64 {
 func (recv *TextAttributes) SetFieldFontScale(value float64) {
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "font_scale", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "font_scale", argValue)
 }
 
 // FieldLeftMargin returns the C field 'left_margin'.
 func (recv *TextAttributes) FieldLeftMargin() int32 {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "left_margin")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "left_margin")
 	value := argValue.Int32()
 	return value
 }
@@ -33385,12 +33782,12 @@ func (recv *TextAttributes) FieldLeftMargin() int32 {
 func (recv *TextAttributes) SetFieldLeftMargin(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "left_margin", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "left_margin", argValue)
 }
 
 // FieldRightMargin returns the C field 'right_margin'.
 func (recv *TextAttributes) FieldRightMargin() int32 {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "right_margin")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "right_margin")
 	value := argValue.Int32()
 	return value
 }
@@ -33399,12 +33796,12 @@ func (recv *TextAttributes) FieldRightMargin() int32 {
 func (recv *TextAttributes) SetFieldRightMargin(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "right_margin", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "right_margin", argValue)
 }
 
 // FieldIndent returns the C field 'indent'.
 func (recv *TextAttributes) FieldIndent() int32 {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "indent")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "indent")
 	value := argValue.Int32()
 	return value
 }
@@ -33413,12 +33810,12 @@ func (recv *TextAttributes) FieldIndent() int32 {
 func (recv *TextAttributes) SetFieldIndent(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "indent", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "indent", argValue)
 }
 
 // FieldPixelsAboveLines returns the C field 'pixels_above_lines'.
 func (recv *TextAttributes) FieldPixelsAboveLines() int32 {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "pixels_above_lines")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "pixels_above_lines")
 	value := argValue.Int32()
 	return value
 }
@@ -33427,12 +33824,12 @@ func (recv *TextAttributes) FieldPixelsAboveLines() int32 {
 func (recv *TextAttributes) SetFieldPixelsAboveLines(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "pixels_above_lines", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "pixels_above_lines", argValue)
 }
 
 // FieldPixelsBelowLines returns the C field 'pixels_below_lines'.
 func (recv *TextAttributes) FieldPixelsBelowLines() int32 {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "pixels_below_lines")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "pixels_below_lines")
 	value := argValue.Int32()
 	return value
 }
@@ -33441,12 +33838,12 @@ func (recv *TextAttributes) FieldPixelsBelowLines() int32 {
 func (recv *TextAttributes) SetFieldPixelsBelowLines(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "pixels_below_lines", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "pixels_below_lines", argValue)
 }
 
 // FieldPixelsInsideWrap returns the C field 'pixels_inside_wrap'.
 func (recv *TextAttributes) FieldPixelsInsideWrap() int32 {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "pixels_inside_wrap")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "pixels_inside_wrap")
 	value := argValue.Int32()
 	return value
 }
@@ -33455,7 +33852,7 @@ func (recv *TextAttributes) FieldPixelsInsideWrap() int32 {
 func (recv *TextAttributes) SetFieldPixelsInsideWrap(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "pixels_inside_wrap", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "pixels_inside_wrap", argValue)
 }
 
 // UNSUPPORTED : C value 'tabs' : for field getter : no Go type for 'Pango.TabArray'
@@ -33464,7 +33861,7 @@ func (recv *TextAttributes) SetFieldPixelsInsideWrap(value int32) {
 
 // FieldWrapMode returns the C field 'wrap_mode'.
 func (recv *TextAttributes) FieldWrapMode() WrapMode {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "wrap_mode")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "wrap_mode")
 	value := WrapMode(argValue.Int32())
 	return value
 }
@@ -33473,7 +33870,7 @@ func (recv *TextAttributes) FieldWrapMode() WrapMode {
 func (recv *TextAttributes) SetFieldWrapMode(value WrapMode) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(textAttributesStruct, recv.native, "wrap_mode", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "wrap_mode", argValue)
 }
 
 // UNSUPPORTED : C value 'language' : for field getter : no Go type for 'Pango.Language'
@@ -33482,7 +33879,7 @@ func (recv *TextAttributes) SetFieldWrapMode(value WrapMode) {
 
 // FieldInvisible returns the C field 'invisible'.
 func (recv *TextAttributes) FieldInvisible() uint32 {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "invisible")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "invisible")
 	value := argValue.Uint32()
 	return value
 }
@@ -33491,12 +33888,12 @@ func (recv *TextAttributes) FieldInvisible() uint32 {
 func (recv *TextAttributes) SetFieldInvisible(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "invisible", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "invisible", argValue)
 }
 
 // FieldBgFullHeight returns the C field 'bg_full_height'.
 func (recv *TextAttributes) FieldBgFullHeight() uint32 {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "bg_full_height")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "bg_full_height")
 	value := argValue.Uint32()
 	return value
 }
@@ -33505,12 +33902,12 @@ func (recv *TextAttributes) FieldBgFullHeight() uint32 {
 func (recv *TextAttributes) SetFieldBgFullHeight(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "bg_full_height", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "bg_full_height", argValue)
 }
 
 // FieldEditable returns the C field 'editable'.
 func (recv *TextAttributes) FieldEditable() uint32 {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "editable")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "editable")
 	value := argValue.Uint32()
 	return value
 }
@@ -33519,12 +33916,12 @@ func (recv *TextAttributes) FieldEditable() uint32 {
 func (recv *TextAttributes) SetFieldEditable(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "editable", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "editable", argValue)
 }
 
 // FieldNoFallback returns the C field 'no_fallback'.
 func (recv *TextAttributes) FieldNoFallback() uint32 {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "no_fallback")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "no_fallback")
 	value := argValue.Uint32()
 	return value
 }
@@ -33533,12 +33930,12 @@ func (recv *TextAttributes) FieldNoFallback() uint32 {
 func (recv *TextAttributes) SetFieldNoFallback(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "no_fallback", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "no_fallback", argValue)
 }
 
 // FieldLetterSpacing returns the C field 'letter_spacing'.
 func (recv *TextAttributes) FieldLetterSpacing() int32 {
-	argValue := gi.StructFieldGet(textAttributesStruct, recv.native, "letter_spacing")
+	argValue := gi.StructFieldGet(textAttributesStruct, recv.Native(), "letter_spacing")
 	value := argValue.Int32()
 	return value
 }
@@ -33547,7 +33944,7 @@ func (recv *TextAttributes) FieldLetterSpacing() int32 {
 func (recv *TextAttributes) SetFieldLetterSpacing(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(textAttributesStruct, recv.native, "letter_spacing", argValue)
+	gi.StructFieldSet(textAttributesStruct, recv.Native(), "letter_spacing", argValue)
 }
 
 var textAttributesNewFunction *gi.Function
@@ -33598,7 +33995,7 @@ func textAttributesCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_text_attributes_copy.
 func (recv *TextAttributes) Copy() *TextAttributes {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -33630,8 +34027,8 @@ func textAttributesCopyValuesFunction_Set() error {
 // CopyValues is a representation of the C type gtk_text_attributes_copy_values.
 func (recv *TextAttributes) CopyValues(dest *TextAttributes) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(dest.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(dest.Native())
 
 	err := textAttributesCopyValuesFunction_Set()
 	if err == nil {
@@ -33659,7 +34056,7 @@ func textAttributesRefFunction_Set() error {
 // Ref is a representation of the C type gtk_text_attributes_ref.
 func (recv *TextAttributes) Ref() *TextAttributes {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -33691,7 +34088,7 @@ func textAttributesUnrefFunction_Set() error {
 // Unref is a representation of the C type gtk_text_attributes_unref.
 func (recv *TextAttributes) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := textAttributesUnrefFunction_Set()
 	if err == nil {
@@ -33747,7 +34144,7 @@ func TextBTreeStruct() *TextBTree {
 	return structGo
 }
 func finalizeTextBTree(obj *TextBTree) {
-	textBTreeStruct.Free(obj.native)
+	textBTreeStruct.Free(obj.Native())
 }
 
 var textBufferClassStruct *gi.Struct
@@ -33868,7 +34265,7 @@ func TextBufferClassStruct() *TextBufferClass {
 	return structGo
 }
 func finalizeTextBufferClass(obj *TextBufferClass) {
-	textBufferClassStruct.Free(obj.native)
+	textBufferClassStruct.Free(obj.Native())
 }
 
 var textBufferPrivateStruct *gi.Struct
@@ -33917,7 +34314,7 @@ func TextBufferPrivateStruct() *TextBufferPrivate {
 	return structGo
 }
 func finalizeTextBufferPrivate(obj *TextBufferPrivate) {
-	textBufferPrivateStruct.Free(obj.native)
+	textBufferPrivateStruct.Free(obj.Native())
 }
 
 var textCellAccessibleClassStruct *gi.Struct
@@ -33956,7 +34353,7 @@ func (recv *TextCellAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *TextCellAccessibleClass) FieldParentClass() *RendererCellAccessibleClass {
-	argValue := gi.StructFieldGet(textCellAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(textCellAccessibleClassStruct, recv.Native(), "parent_class")
 	value := RendererCellAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -33964,8 +34361,8 @@ func (recv *TextCellAccessibleClass) FieldParentClass() *RendererCellAccessibleC
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *TextCellAccessibleClass) SetFieldParentClass(value *RendererCellAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(textCellAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(textCellAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // TextCellAccessibleClassStruct creates an uninitialised TextCellAccessibleClass.
@@ -33980,7 +34377,7 @@ func TextCellAccessibleClassStruct() *TextCellAccessibleClass {
 	return structGo
 }
 func finalizeTextCellAccessibleClass(obj *TextCellAccessibleClass) {
-	textCellAccessibleClassStruct.Free(obj.native)
+	textCellAccessibleClassStruct.Free(obj.Native())
 }
 
 var textCellAccessiblePrivateStruct *gi.Struct
@@ -34029,7 +34426,7 @@ func TextCellAccessiblePrivateStruct() *TextCellAccessiblePrivate {
 	return structGo
 }
 func finalizeTextCellAccessiblePrivate(obj *TextCellAccessiblePrivate) {
-	textCellAccessiblePrivateStruct.Free(obj.native)
+	textCellAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var textChildAnchorClassStruct *gi.Struct
@@ -34098,7 +34495,7 @@ func TextChildAnchorClassStruct() *TextChildAnchorClass {
 	return structGo
 }
 func finalizeTextChildAnchorClass(obj *TextChildAnchorClass) {
-	textChildAnchorClassStruct.Free(obj.native)
+	textChildAnchorClassStruct.Free(obj.Native())
 }
 
 var textIterStruct *gi.Struct
@@ -34153,8 +34550,8 @@ func textIterAssignFunction_Set() error {
 // Assign is a representation of the C type gtk_text_iter_assign.
 func (recv *TextIter) Assign(other *TextIter) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(other.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(other.Native())
 
 	err := textIterAssignFunction_Set()
 	if err == nil {
@@ -34182,7 +34579,7 @@ func textIterBackwardCharFunction_Set() error {
 // BackwardChar is a representation of the C type gtk_text_iter_backward_char.
 func (recv *TextIter) BackwardChar() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -34214,7 +34611,7 @@ func textIterBackwardCharsFunction_Set() error {
 // BackwardChars is a representation of the C type gtk_text_iter_backward_chars.
 func (recv *TextIter) BackwardChars(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -34247,7 +34644,7 @@ func textIterBackwardCursorPositionFunction_Set() error {
 // BackwardCursorPosition is a representation of the C type gtk_text_iter_backward_cursor_position.
 func (recv *TextIter) BackwardCursorPosition() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -34279,7 +34676,7 @@ func textIterBackwardCursorPositionsFunction_Set() error {
 // BackwardCursorPositions is a representation of the C type gtk_text_iter_backward_cursor_positions.
 func (recv *TextIter) BackwardCursorPositions(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -34314,7 +34711,7 @@ func textIterBackwardLineFunction_Set() error {
 // BackwardLine is a representation of the C type gtk_text_iter_backward_line.
 func (recv *TextIter) BackwardLine() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -34346,7 +34743,7 @@ func textIterBackwardLinesFunction_Set() error {
 // BackwardLines is a representation of the C type gtk_text_iter_backward_lines.
 func (recv *TextIter) BackwardLines(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -34381,7 +34778,7 @@ func textIterBackwardSentenceStartFunction_Set() error {
 // BackwardSentenceStart is a representation of the C type gtk_text_iter_backward_sentence_start.
 func (recv *TextIter) BackwardSentenceStart() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -34413,7 +34810,7 @@ func textIterBackwardSentenceStartsFunction_Set() error {
 // BackwardSentenceStarts is a representation of the C type gtk_text_iter_backward_sentence_starts.
 func (recv *TextIter) BackwardSentenceStarts(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -34446,8 +34843,8 @@ func textIterBackwardToTagToggleFunction_Set() error {
 // BackwardToTagToggle is a representation of the C type gtk_text_iter_backward_to_tag_toggle.
 func (recv *TextIter) BackwardToTagToggle(tag *TextTag) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(tag.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tag.Native())
 
 	var ret gi.Argument
 
@@ -34479,7 +34876,7 @@ func textIterBackwardVisibleCursorPositionFunction_Set() error {
 // BackwardVisibleCursorPosition is a representation of the C type gtk_text_iter_backward_visible_cursor_position.
 func (recv *TextIter) BackwardVisibleCursorPosition() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -34511,7 +34908,7 @@ func textIterBackwardVisibleCursorPositionsFunction_Set() error {
 // BackwardVisibleCursorPositions is a representation of the C type gtk_text_iter_backward_visible_cursor_positions.
 func (recv *TextIter) BackwardVisibleCursorPositions(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -34544,7 +34941,7 @@ func textIterBackwardVisibleLineFunction_Set() error {
 // BackwardVisibleLine is a representation of the C type gtk_text_iter_backward_visible_line.
 func (recv *TextIter) BackwardVisibleLine() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -34576,7 +34973,7 @@ func textIterBackwardVisibleLinesFunction_Set() error {
 // BackwardVisibleLines is a representation of the C type gtk_text_iter_backward_visible_lines.
 func (recv *TextIter) BackwardVisibleLines(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -34609,7 +35006,7 @@ func textIterBackwardVisibleWordStartFunction_Set() error {
 // BackwardVisibleWordStart is a representation of the C type gtk_text_iter_backward_visible_word_start.
 func (recv *TextIter) BackwardVisibleWordStart() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -34641,7 +35038,7 @@ func textIterBackwardVisibleWordStartsFunction_Set() error {
 // BackwardVisibleWordStarts is a representation of the C type gtk_text_iter_backward_visible_word_starts.
 func (recv *TextIter) BackwardVisibleWordStarts(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -34674,7 +35071,7 @@ func textIterBackwardWordStartFunction_Set() error {
 // BackwardWordStart is a representation of the C type gtk_text_iter_backward_word_start.
 func (recv *TextIter) BackwardWordStart() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -34706,7 +35103,7 @@ func textIterBackwardWordStartsFunction_Set() error {
 // BackwardWordStarts is a representation of the C type gtk_text_iter_backward_word_starts.
 func (recv *TextIter) BackwardWordStarts(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -34739,8 +35136,8 @@ func textIterBeginsTagFunction_Set() error {
 // BeginsTag is a representation of the C type gtk_text_iter_begins_tag.
 func (recv *TextIter) BeginsTag(tag *TextTag) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(tag.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tag.Native())
 
 	var ret gi.Argument
 
@@ -34772,7 +35169,7 @@ func textIterCanInsertFunction_Set() error {
 // CanInsert is a representation of the C type gtk_text_iter_can_insert.
 func (recv *TextIter) CanInsert(defaultEditability bool) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(defaultEditability)
 
 	var ret gi.Argument
@@ -34805,8 +35202,8 @@ func textIterCompareFunction_Set() error {
 // Compare is a representation of the C type gtk_text_iter_compare.
 func (recv *TextIter) Compare(rhs *TextIter) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(rhs.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rhs.Native())
 
 	var ret gi.Argument
 
@@ -34838,7 +35235,7 @@ func textIterCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_text_iter_copy.
 func (recv *TextIter) Copy() *TextIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -34870,7 +35267,7 @@ func textIterEditableFunction_Set() error {
 // Editable is a representation of the C type gtk_text_iter_editable.
 func (recv *TextIter) Editable(defaultSetting bool) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(defaultSetting)
 
 	var ret gi.Argument
@@ -34903,7 +35300,7 @@ func textIterEndsLineFunction_Set() error {
 // EndsLine is a representation of the C type gtk_text_iter_ends_line.
 func (recv *TextIter) EndsLine() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -34935,7 +35332,7 @@ func textIterEndsSentenceFunction_Set() error {
 // EndsSentence is a representation of the C type gtk_text_iter_ends_sentence.
 func (recv *TextIter) EndsSentence() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -34967,8 +35364,8 @@ func textIterEndsTagFunction_Set() error {
 // EndsTag is a representation of the C type gtk_text_iter_ends_tag.
 func (recv *TextIter) EndsTag(tag *TextTag) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(tag.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tag.Native())
 
 	var ret gi.Argument
 
@@ -35000,7 +35397,7 @@ func textIterEndsWordFunction_Set() error {
 // EndsWord is a representation of the C type gtk_text_iter_ends_word.
 func (recv *TextIter) EndsWord() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35032,8 +35429,8 @@ func textIterEqualFunction_Set() error {
 // Equal is a representation of the C type gtk_text_iter_equal.
 func (recv *TextIter) Equal(rhs *TextIter) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(rhs.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rhs.Native())
 
 	var ret gi.Argument
 
@@ -35065,7 +35462,7 @@ func textIterForwardCharFunction_Set() error {
 // ForwardChar is a representation of the C type gtk_text_iter_forward_char.
 func (recv *TextIter) ForwardChar() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35097,7 +35494,7 @@ func textIterForwardCharsFunction_Set() error {
 // ForwardChars is a representation of the C type gtk_text_iter_forward_chars.
 func (recv *TextIter) ForwardChars(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -35130,7 +35527,7 @@ func textIterForwardCursorPositionFunction_Set() error {
 // ForwardCursorPosition is a representation of the C type gtk_text_iter_forward_cursor_position.
 func (recv *TextIter) ForwardCursorPosition() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35162,7 +35559,7 @@ func textIterForwardCursorPositionsFunction_Set() error {
 // ForwardCursorPositions is a representation of the C type gtk_text_iter_forward_cursor_positions.
 func (recv *TextIter) ForwardCursorPositions(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -35197,7 +35594,7 @@ func textIterForwardLineFunction_Set() error {
 // ForwardLine is a representation of the C type gtk_text_iter_forward_line.
 func (recv *TextIter) ForwardLine() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35229,7 +35626,7 @@ func textIterForwardLinesFunction_Set() error {
 // ForwardLines is a representation of the C type gtk_text_iter_forward_lines.
 func (recv *TextIter) ForwardLines(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -35264,7 +35661,7 @@ func textIterForwardSentenceEndFunction_Set() error {
 // ForwardSentenceEnd is a representation of the C type gtk_text_iter_forward_sentence_end.
 func (recv *TextIter) ForwardSentenceEnd() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35296,7 +35693,7 @@ func textIterForwardSentenceEndsFunction_Set() error {
 // ForwardSentenceEnds is a representation of the C type gtk_text_iter_forward_sentence_ends.
 func (recv *TextIter) ForwardSentenceEnds(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -35329,7 +35726,7 @@ func textIterForwardToEndFunction_Set() error {
 // ForwardToEnd is a representation of the C type gtk_text_iter_forward_to_end.
 func (recv *TextIter) ForwardToEnd() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := textIterForwardToEndFunction_Set()
 	if err == nil {
@@ -35357,7 +35754,7 @@ func textIterForwardToLineEndFunction_Set() error {
 // ForwardToLineEnd is a representation of the C type gtk_text_iter_forward_to_line_end.
 func (recv *TextIter) ForwardToLineEnd() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35389,8 +35786,8 @@ func textIterForwardToTagToggleFunction_Set() error {
 // ForwardToTagToggle is a representation of the C type gtk_text_iter_forward_to_tag_toggle.
 func (recv *TextIter) ForwardToTagToggle(tag *TextTag) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(tag.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tag.Native())
 
 	var ret gi.Argument
 
@@ -35422,7 +35819,7 @@ func textIterForwardVisibleCursorPositionFunction_Set() error {
 // ForwardVisibleCursorPosition is a representation of the C type gtk_text_iter_forward_visible_cursor_position.
 func (recv *TextIter) ForwardVisibleCursorPosition() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35454,7 +35851,7 @@ func textIterForwardVisibleCursorPositionsFunction_Set() error {
 // ForwardVisibleCursorPositions is a representation of the C type gtk_text_iter_forward_visible_cursor_positions.
 func (recv *TextIter) ForwardVisibleCursorPositions(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -35487,7 +35884,7 @@ func textIterForwardVisibleLineFunction_Set() error {
 // ForwardVisibleLine is a representation of the C type gtk_text_iter_forward_visible_line.
 func (recv *TextIter) ForwardVisibleLine() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35519,7 +35916,7 @@ func textIterForwardVisibleLinesFunction_Set() error {
 // ForwardVisibleLines is a representation of the C type gtk_text_iter_forward_visible_lines.
 func (recv *TextIter) ForwardVisibleLines(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -35552,7 +35949,7 @@ func textIterForwardVisibleWordEndFunction_Set() error {
 // ForwardVisibleWordEnd is a representation of the C type gtk_text_iter_forward_visible_word_end.
 func (recv *TextIter) ForwardVisibleWordEnd() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35584,7 +35981,7 @@ func textIterForwardVisibleWordEndsFunction_Set() error {
 // ForwardVisibleWordEnds is a representation of the C type gtk_text_iter_forward_visible_word_ends.
 func (recv *TextIter) ForwardVisibleWordEnds(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -35617,7 +36014,7 @@ func textIterForwardWordEndFunction_Set() error {
 // ForwardWordEnd is a representation of the C type gtk_text_iter_forward_word_end.
 func (recv *TextIter) ForwardWordEnd() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35649,7 +36046,7 @@ func textIterForwardWordEndsFunction_Set() error {
 // ForwardWordEnds is a representation of the C type gtk_text_iter_forward_word_ends.
 func (recv *TextIter) ForwardWordEnds(count int32) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(count)
 
 	var ret gi.Argument
@@ -35682,7 +36079,7 @@ func textIterFreeFunction_Set() error {
 // Free is a representation of the C type gtk_text_iter_free.
 func (recv *TextIter) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := textIterFreeFunction_Set()
 	if err == nil {
@@ -35710,7 +36107,7 @@ func textIterGetAttributesFunction_Set() error {
 // GetAttributes is a representation of the C type gtk_text_iter_get_attributes.
 func (recv *TextIter) GetAttributes() (bool, *TextAttributes) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
 	var ret gi.Argument
@@ -35744,7 +36141,7 @@ func textIterGetBufferFunction_Set() error {
 // GetBuffer is a representation of the C type gtk_text_iter_get_buffer.
 func (recv *TextIter) GetBuffer() *TextBuffer {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35776,7 +36173,7 @@ func textIterGetBytesInLineFunction_Set() error {
 // GetBytesInLine is a representation of the C type gtk_text_iter_get_bytes_in_line.
 func (recv *TextIter) GetBytesInLine() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35810,7 +36207,7 @@ func textIterGetCharsInLineFunction_Set() error {
 // GetCharsInLine is a representation of the C type gtk_text_iter_get_chars_in_line.
 func (recv *TextIter) GetCharsInLine() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35842,7 +36239,7 @@ func textIterGetChildAnchorFunction_Set() error {
 // GetChildAnchor is a representation of the C type gtk_text_iter_get_child_anchor.
 func (recv *TextIter) GetChildAnchor() *TextChildAnchor {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35876,7 +36273,7 @@ func textIterGetLineFunction_Set() error {
 // GetLine is a representation of the C type gtk_text_iter_get_line.
 func (recv *TextIter) GetLine() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35908,7 +36305,7 @@ func textIterGetLineIndexFunction_Set() error {
 // GetLineIndex is a representation of the C type gtk_text_iter_get_line_index.
 func (recv *TextIter) GetLineIndex() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35940,7 +36337,7 @@ func textIterGetLineOffsetFunction_Set() error {
 // GetLineOffset is a representation of the C type gtk_text_iter_get_line_offset.
 func (recv *TextIter) GetLineOffset() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35974,7 +36371,7 @@ func textIterGetOffsetFunction_Set() error {
 // GetOffset is a representation of the C type gtk_text_iter_get_offset.
 func (recv *TextIter) GetOffset() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -35988,7 +36385,37 @@ func (recv *TextIter) GetOffset() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_get_pixbuf' : return type 'GdkPixbuf.Pixbuf' not supported
+var textIterGetPixbufFunction *gi.Function
+var textIterGetPixbufFunction_Once sync.Once
+
+func textIterGetPixbufFunction_Set() error {
+	var err error
+	textIterGetPixbufFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterGetPixbufFunction, err = textIterStruct.InvokerNew("get_pixbuf")
+	})
+	return err
+}
+
+// GetPixbuf is a representation of the C type gtk_text_iter_get_pixbuf.
+func (recv *TextIter) GetPixbuf() *gdkpixbuf.Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := textIterGetPixbufFunction_Set()
+	if err == nil {
+		ret = textIterGetPixbufFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdkpixbuf.PixbufNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var textIterGetSliceFunction *gi.Function
 var textIterGetSliceFunction_Once sync.Once
@@ -36008,8 +36435,8 @@ func textIterGetSliceFunction_Set() error {
 // GetSlice is a representation of the C type gtk_text_iter_get_slice.
 func (recv *TextIter) GetSlice(end *TextIter) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(end.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(end.Native())
 
 	var ret gi.Argument
 
@@ -36043,8 +36470,8 @@ func textIterGetTextFunction_Set() error {
 // GetText is a representation of the C type gtk_text_iter_get_text.
 func (recv *TextIter) GetText(end *TextIter) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(end.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(end.Native())
 
 	var ret gi.Argument
 
@@ -36078,7 +36505,7 @@ func textIterGetVisibleLineIndexFunction_Set() error {
 // GetVisibleLineIndex is a representation of the C type gtk_text_iter_get_visible_line_index.
 func (recv *TextIter) GetVisibleLineIndex() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -36110,7 +36537,7 @@ func textIterGetVisibleLineOffsetFunction_Set() error {
 // GetVisibleLineOffset is a representation of the C type gtk_text_iter_get_visible_line_offset.
 func (recv *TextIter) GetVisibleLineOffset() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -36142,8 +36569,8 @@ func textIterGetVisibleSliceFunction_Set() error {
 // GetVisibleSlice is a representation of the C type gtk_text_iter_get_visible_slice.
 func (recv *TextIter) GetVisibleSlice(end *TextIter) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(end.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(end.Native())
 
 	var ret gi.Argument
 
@@ -36175,8 +36602,8 @@ func textIterGetVisibleTextFunction_Set() error {
 // GetVisibleText is a representation of the C type gtk_text_iter_get_visible_text.
 func (recv *TextIter) GetVisibleText(end *TextIter) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(end.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(end.Native())
 
 	var ret gi.Argument
 
@@ -36208,8 +36635,8 @@ func textIterHasTagFunction_Set() error {
 // HasTag is a representation of the C type gtk_text_iter_has_tag.
 func (recv *TextIter) HasTag(tag *TextTag) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(tag.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tag.Native())
 
 	var ret gi.Argument
 
@@ -36241,9 +36668,9 @@ func textIterInRangeFunction_Set() error {
 // InRange is a representation of the C type gtk_text_iter_in_range.
 func (recv *TextIter) InRange(start *TextIter, end *TextIter) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(start.native)
-	inArgs[2].SetPointer(end.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(start.Native())
+	inArgs[2].SetPointer(end.Native())
 
 	var ret gi.Argument
 
@@ -36275,7 +36702,7 @@ func textIterInsideSentenceFunction_Set() error {
 // InsideSentence is a representation of the C type gtk_text_iter_inside_sentence.
 func (recv *TextIter) InsideSentence() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -36307,7 +36734,7 @@ func textIterInsideWordFunction_Set() error {
 // InsideWord is a representation of the C type gtk_text_iter_inside_word.
 func (recv *TextIter) InsideWord() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -36339,7 +36766,7 @@ func textIterIsCursorPositionFunction_Set() error {
 // IsCursorPosition is a representation of the C type gtk_text_iter_is_cursor_position.
 func (recv *TextIter) IsCursorPosition() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -36371,7 +36798,7 @@ func textIterIsEndFunction_Set() error {
 // IsEnd is a representation of the C type gtk_text_iter_is_end.
 func (recv *TextIter) IsEnd() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -36403,7 +36830,7 @@ func textIterIsStartFunction_Set() error {
 // IsStart is a representation of the C type gtk_text_iter_is_start.
 func (recv *TextIter) IsStart() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -36435,8 +36862,8 @@ func textIterOrderFunction_Set() error {
 // Order is a representation of the C type gtk_text_iter_order.
 func (recv *TextIter) Order(second *TextIter) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(second.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(second.Native())
 
 	err := textIterOrderFunction_Set()
 	if err == nil {
@@ -36464,7 +36891,7 @@ func textIterSetLineFunction_Set() error {
 // SetLine is a representation of the C type gtk_text_iter_set_line.
 func (recv *TextIter) SetLine(lineNumber int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(lineNumber)
 
 	err := textIterSetLineFunction_Set()
@@ -36493,7 +36920,7 @@ func textIterSetLineIndexFunction_Set() error {
 // SetLineIndex is a representation of the C type gtk_text_iter_set_line_index.
 func (recv *TextIter) SetLineIndex(byteOnLine int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(byteOnLine)
 
 	err := textIterSetLineIndexFunction_Set()
@@ -36522,7 +36949,7 @@ func textIterSetLineOffsetFunction_Set() error {
 // SetLineOffset is a representation of the C type gtk_text_iter_set_line_offset.
 func (recv *TextIter) SetLineOffset(charOnLine int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(charOnLine)
 
 	err := textIterSetLineOffsetFunction_Set()
@@ -36551,7 +36978,7 @@ func textIterSetOffsetFunction_Set() error {
 // SetOffset is a representation of the C type gtk_text_iter_set_offset.
 func (recv *TextIter) SetOffset(charOffset int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(charOffset)
 
 	err := textIterSetOffsetFunction_Set()
@@ -36580,7 +37007,7 @@ func textIterSetVisibleLineIndexFunction_Set() error {
 // SetVisibleLineIndex is a representation of the C type gtk_text_iter_set_visible_line_index.
 func (recv *TextIter) SetVisibleLineIndex(byteOnLine int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(byteOnLine)
 
 	err := textIterSetVisibleLineIndexFunction_Set()
@@ -36609,7 +37036,7 @@ func textIterSetVisibleLineOffsetFunction_Set() error {
 // SetVisibleLineOffset is a representation of the C type gtk_text_iter_set_visible_line_offset.
 func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(charOnLine)
 
 	err := textIterSetVisibleLineOffsetFunction_Set()
@@ -36638,7 +37065,7 @@ func textIterStartsLineFunction_Set() error {
 // StartsLine is a representation of the C type gtk_text_iter_starts_line.
 func (recv *TextIter) StartsLine() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -36670,7 +37097,7 @@ func textIterStartsSentenceFunction_Set() error {
 // StartsSentence is a representation of the C type gtk_text_iter_starts_sentence.
 func (recv *TextIter) StartsSentence() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -36702,8 +37129,8 @@ func textIterStartsTagFunction_Set() error {
 // StartsTag is a representation of the C type gtk_text_iter_starts_tag.
 func (recv *TextIter) StartsTag(tag *TextTag) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(tag.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tag.Native())
 
 	var ret gi.Argument
 
@@ -36735,7 +37162,7 @@ func textIterStartsWordFunction_Set() error {
 // StartsWord is a representation of the C type gtk_text_iter_starts_word.
 func (recv *TextIter) StartsWord() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -36767,8 +37194,8 @@ func textIterTogglesTagFunction_Set() error {
 // TogglesTag is a representation of the C type gtk_text_iter_toggles_tag.
 func (recv *TextIter) TogglesTag(tag *TextTag) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(tag.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tag.Native())
 
 	var ret gi.Argument
 
@@ -36794,7 +37221,7 @@ func TextIterStruct() *TextIter {
 	return structGo
 }
 func finalizeTextIter(obj *TextIter) {
-	textIterStruct.Free(obj.native)
+	textIterStruct.Free(obj.Native())
 }
 
 var textMarkClassStruct *gi.Struct
@@ -36863,7 +37290,7 @@ func TextMarkClassStruct() *TextMarkClass {
 	return structGo
 }
 func finalizeTextMarkClass(obj *TextMarkClass) {
-	textMarkClassStruct.Free(obj.native)
+	textMarkClassStruct.Free(obj.Native())
 }
 
 var textTagClassStruct *gi.Struct
@@ -36936,7 +37363,7 @@ func TextTagClassStruct() *TextTagClass {
 	return structGo
 }
 func finalizeTextTagClass(obj *TextTagClass) {
-	textTagClassStruct.Free(obj.native)
+	textTagClassStruct.Free(obj.Native())
 }
 
 var textTagPrivateStruct *gi.Struct
@@ -36985,7 +37412,7 @@ func TextTagPrivateStruct() *TextTagPrivate {
 	return structGo
 }
 func finalizeTextTagPrivate(obj *TextTagPrivate) {
-	textTagPrivateStruct.Free(obj.native)
+	textTagPrivateStruct.Free(obj.Native())
 }
 
 var textTagTableClassStruct *gi.Struct
@@ -37066,7 +37493,7 @@ func TextTagTableClassStruct() *TextTagTableClass {
 	return structGo
 }
 func finalizeTextTagTableClass(obj *TextTagTableClass) {
-	textTagTableClassStruct.Free(obj.native)
+	textTagTableClassStruct.Free(obj.Native())
 }
 
 var textTagTablePrivateStruct *gi.Struct
@@ -37115,7 +37542,7 @@ func TextTagTablePrivateStruct() *TextTagTablePrivate {
 	return structGo
 }
 func finalizeTextTagTablePrivate(obj *TextTagTablePrivate) {
-	textTagTablePrivateStruct.Free(obj.native)
+	textTagTablePrivateStruct.Free(obj.Native())
 }
 
 var textViewAccessibleClassStruct *gi.Struct
@@ -37154,7 +37581,7 @@ func (recv *TextViewAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *TextViewAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(textViewAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(textViewAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -37162,8 +37589,8 @@ func (recv *TextViewAccessibleClass) FieldParentClass() *ContainerAccessibleClas
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *TextViewAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(textViewAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(textViewAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // TextViewAccessibleClassStruct creates an uninitialised TextViewAccessibleClass.
@@ -37178,7 +37605,7 @@ func TextViewAccessibleClassStruct() *TextViewAccessibleClass {
 	return structGo
 }
 func finalizeTextViewAccessibleClass(obj *TextViewAccessibleClass) {
-	textViewAccessibleClassStruct.Free(obj.native)
+	textViewAccessibleClassStruct.Free(obj.Native())
 }
 
 var textViewAccessiblePrivateStruct *gi.Struct
@@ -37227,7 +37654,7 @@ func TextViewAccessiblePrivateStruct() *TextViewAccessiblePrivate {
 	return structGo
 }
 func finalizeTextViewAccessiblePrivate(obj *TextViewAccessiblePrivate) {
-	textViewAccessiblePrivateStruct.Free(obj.native)
+	textViewAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var textViewClassStruct *gi.Struct
@@ -37266,7 +37693,7 @@ func (recv *TextViewClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *TextViewClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(textViewClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(textViewClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -37274,8 +37701,8 @@ func (recv *TextViewClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *TextViewClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(textViewClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(textViewClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'populate_popup' : for field getter : missing Type
@@ -37362,7 +37789,7 @@ func TextViewClassStruct() *TextViewClass {
 	return structGo
 }
 func finalizeTextViewClass(obj *TextViewClass) {
-	textViewClassStruct.Free(obj.native)
+	textViewClassStruct.Free(obj.Native())
 }
 
 var textViewPrivateStruct *gi.Struct
@@ -37411,7 +37838,7 @@ func TextViewPrivateStruct() *TextViewPrivate {
 	return structGo
 }
 func finalizeTextViewPrivate(obj *TextViewPrivate) {
-	textViewPrivateStruct.Free(obj.native)
+	textViewPrivateStruct.Free(obj.Native())
 }
 
 var themeEngineStruct *gi.Struct
@@ -37460,7 +37887,7 @@ func ThemeEngineStruct() *ThemeEngine {
 	return structGo
 }
 func finalizeThemeEngine(obj *ThemeEngine) {
-	themeEngineStruct.Free(obj.native)
+	themeEngineStruct.Free(obj.Native())
 }
 
 var themingEngineClassStruct *gi.Struct
@@ -37581,7 +38008,7 @@ func ThemingEngineClassStruct() *ThemingEngineClass {
 	return structGo
 }
 func finalizeThemingEngineClass(obj *ThemingEngineClass) {
-	themingEngineClassStruct.Free(obj.native)
+	themingEngineClassStruct.Free(obj.Native())
 }
 
 var themingEnginePrivateStruct *gi.Struct
@@ -37630,7 +38057,7 @@ func ThemingEnginePrivateStruct() *ThemingEnginePrivate {
 	return structGo
 }
 func finalizeThemingEnginePrivate(obj *ThemingEnginePrivate) {
-	themingEnginePrivateStruct.Free(obj.native)
+	themingEnginePrivateStruct.Free(obj.Native())
 }
 
 var toggleActionClassStruct *gi.Struct
@@ -37669,7 +38096,7 @@ func (recv *ToggleActionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ToggleActionClass) FieldParentClass() *ActionClass {
-	argValue := gi.StructFieldGet(toggleActionClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(toggleActionClassStruct, recv.Native(), "parent_class")
 	value := ActionClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -37677,8 +38104,8 @@ func (recv *ToggleActionClass) FieldParentClass() *ActionClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ToggleActionClass) SetFieldParentClass(value *ActionClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(toggleActionClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(toggleActionClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'toggled' : for field getter : missing Type
@@ -37713,7 +38140,7 @@ func ToggleActionClassStruct() *ToggleActionClass {
 	return structGo
 }
 func finalizeToggleActionClass(obj *ToggleActionClass) {
-	toggleActionClassStruct.Free(obj.native)
+	toggleActionClassStruct.Free(obj.Native())
 }
 
 var toggleActionEntryStruct *gi.Struct
@@ -37752,7 +38179,7 @@ func (recv *ToggleActionEntry) Native() unsafe.Pointer {
 
 // FieldName returns the C field 'name'.
 func (recv *ToggleActionEntry) FieldName() string {
-	argValue := gi.StructFieldGet(toggleActionEntryStruct, recv.native, "name")
+	argValue := gi.StructFieldGet(toggleActionEntryStruct, recv.Native(), "name")
 	value := argValue.String(false)
 	return value
 }
@@ -37761,12 +38188,12 @@ func (recv *ToggleActionEntry) FieldName() string {
 func (recv *ToggleActionEntry) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(toggleActionEntryStruct, recv.native, "name", argValue)
+	gi.StructFieldSet(toggleActionEntryStruct, recv.Native(), "name", argValue)
 }
 
 // FieldStockId returns the C field 'stock_id'.
 func (recv *ToggleActionEntry) FieldStockId() string {
-	argValue := gi.StructFieldGet(toggleActionEntryStruct, recv.native, "stock_id")
+	argValue := gi.StructFieldGet(toggleActionEntryStruct, recv.Native(), "stock_id")
 	value := argValue.String(false)
 	return value
 }
@@ -37775,12 +38202,12 @@ func (recv *ToggleActionEntry) FieldStockId() string {
 func (recv *ToggleActionEntry) SetFieldStockId(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(toggleActionEntryStruct, recv.native, "stock_id", argValue)
+	gi.StructFieldSet(toggleActionEntryStruct, recv.Native(), "stock_id", argValue)
 }
 
 // FieldLabel returns the C field 'label'.
 func (recv *ToggleActionEntry) FieldLabel() string {
-	argValue := gi.StructFieldGet(toggleActionEntryStruct, recv.native, "label")
+	argValue := gi.StructFieldGet(toggleActionEntryStruct, recv.Native(), "label")
 	value := argValue.String(false)
 	return value
 }
@@ -37789,12 +38216,12 @@ func (recv *ToggleActionEntry) FieldLabel() string {
 func (recv *ToggleActionEntry) SetFieldLabel(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(toggleActionEntryStruct, recv.native, "label", argValue)
+	gi.StructFieldSet(toggleActionEntryStruct, recv.Native(), "label", argValue)
 }
 
 // FieldAccelerator returns the C field 'accelerator'.
 func (recv *ToggleActionEntry) FieldAccelerator() string {
-	argValue := gi.StructFieldGet(toggleActionEntryStruct, recv.native, "accelerator")
+	argValue := gi.StructFieldGet(toggleActionEntryStruct, recv.Native(), "accelerator")
 	value := argValue.String(false)
 	return value
 }
@@ -37803,12 +38230,12 @@ func (recv *ToggleActionEntry) FieldAccelerator() string {
 func (recv *ToggleActionEntry) SetFieldAccelerator(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(toggleActionEntryStruct, recv.native, "accelerator", argValue)
+	gi.StructFieldSet(toggleActionEntryStruct, recv.Native(), "accelerator", argValue)
 }
 
 // FieldTooltip returns the C field 'tooltip'.
 func (recv *ToggleActionEntry) FieldTooltip() string {
-	argValue := gi.StructFieldGet(toggleActionEntryStruct, recv.native, "tooltip")
+	argValue := gi.StructFieldGet(toggleActionEntryStruct, recv.Native(), "tooltip")
 	value := argValue.String(false)
 	return value
 }
@@ -37817,7 +38244,7 @@ func (recv *ToggleActionEntry) FieldTooltip() string {
 func (recv *ToggleActionEntry) SetFieldTooltip(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(toggleActionEntryStruct, recv.native, "tooltip", argValue)
+	gi.StructFieldSet(toggleActionEntryStruct, recv.Native(), "tooltip", argValue)
 }
 
 // UNSUPPORTED : C value 'callback' : for field getter : no Go type for 'GObject.Callback'
@@ -37826,7 +38253,7 @@ func (recv *ToggleActionEntry) SetFieldTooltip(value string) {
 
 // FieldIsActive returns the C field 'is_active'.
 func (recv *ToggleActionEntry) FieldIsActive() bool {
-	argValue := gi.StructFieldGet(toggleActionEntryStruct, recv.native, "is_active")
+	argValue := gi.StructFieldGet(toggleActionEntryStruct, recv.Native(), "is_active")
 	value := argValue.Boolean()
 	return value
 }
@@ -37835,7 +38262,7 @@ func (recv *ToggleActionEntry) FieldIsActive() bool {
 func (recv *ToggleActionEntry) SetFieldIsActive(value bool) {
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
-	gi.StructFieldSet(toggleActionEntryStruct, recv.native, "is_active", argValue)
+	gi.StructFieldSet(toggleActionEntryStruct, recv.Native(), "is_active", argValue)
 }
 
 // ToggleActionEntryStruct creates an uninitialised ToggleActionEntry.
@@ -37850,7 +38277,7 @@ func ToggleActionEntryStruct() *ToggleActionEntry {
 	return structGo
 }
 func finalizeToggleActionEntry(obj *ToggleActionEntry) {
-	toggleActionEntryStruct.Free(obj.native)
+	toggleActionEntryStruct.Free(obj.Native())
 }
 
 var toggleActionPrivateStruct *gi.Struct
@@ -37899,7 +38326,7 @@ func ToggleActionPrivateStruct() *ToggleActionPrivate {
 	return structGo
 }
 func finalizeToggleActionPrivate(obj *ToggleActionPrivate) {
-	toggleActionPrivateStruct.Free(obj.native)
+	toggleActionPrivateStruct.Free(obj.Native())
 }
 
 var toggleButtonAccessibleClassStruct *gi.Struct
@@ -37938,7 +38365,7 @@ func (recv *ToggleButtonAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ToggleButtonAccessibleClass) FieldParentClass() *ButtonAccessibleClass {
-	argValue := gi.StructFieldGet(toggleButtonAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(toggleButtonAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ButtonAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -37946,8 +38373,8 @@ func (recv *ToggleButtonAccessibleClass) FieldParentClass() *ButtonAccessibleCla
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ToggleButtonAccessibleClass) SetFieldParentClass(value *ButtonAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(toggleButtonAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(toggleButtonAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // ToggleButtonAccessibleClassStruct creates an uninitialised ToggleButtonAccessibleClass.
@@ -37962,7 +38389,7 @@ func ToggleButtonAccessibleClassStruct() *ToggleButtonAccessibleClass {
 	return structGo
 }
 func finalizeToggleButtonAccessibleClass(obj *ToggleButtonAccessibleClass) {
-	toggleButtonAccessibleClassStruct.Free(obj.native)
+	toggleButtonAccessibleClassStruct.Free(obj.Native())
 }
 
 var toggleButtonAccessiblePrivateStruct *gi.Struct
@@ -38011,7 +38438,7 @@ func ToggleButtonAccessiblePrivateStruct() *ToggleButtonAccessiblePrivate {
 	return structGo
 }
 func finalizeToggleButtonAccessiblePrivate(obj *ToggleButtonAccessiblePrivate) {
-	toggleButtonAccessiblePrivateStruct.Free(obj.native)
+	toggleButtonAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var toggleButtonClassStruct *gi.Struct
@@ -38050,7 +38477,7 @@ func (recv *ToggleButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ToggleButtonClass) FieldParentClass() *ButtonClass {
-	argValue := gi.StructFieldGet(toggleButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(toggleButtonClassStruct, recv.Native(), "parent_class")
 	value := ButtonClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -38058,8 +38485,8 @@ func (recv *ToggleButtonClass) FieldParentClass() *ButtonClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ToggleButtonClass) SetFieldParentClass(value *ButtonClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(toggleButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(toggleButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'toggled' : for field getter : missing Type
@@ -38094,7 +38521,7 @@ func ToggleButtonClassStruct() *ToggleButtonClass {
 	return structGo
 }
 func finalizeToggleButtonClass(obj *ToggleButtonClass) {
-	toggleButtonClassStruct.Free(obj.native)
+	toggleButtonClassStruct.Free(obj.Native())
 }
 
 var toggleButtonPrivateStruct *gi.Struct
@@ -38143,7 +38570,7 @@ func ToggleButtonPrivateStruct() *ToggleButtonPrivate {
 	return structGo
 }
 func finalizeToggleButtonPrivate(obj *ToggleButtonPrivate) {
-	toggleButtonPrivateStruct.Free(obj.native)
+	toggleButtonPrivateStruct.Free(obj.Native())
 }
 
 var toggleToolButtonClassStruct *gi.Struct
@@ -38182,7 +38609,7 @@ func (recv *ToggleToolButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ToggleToolButtonClass) FieldParentClass() *ToolButtonClass {
-	argValue := gi.StructFieldGet(toggleToolButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(toggleToolButtonClassStruct, recv.Native(), "parent_class")
 	value := ToolButtonClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -38190,8 +38617,8 @@ func (recv *ToggleToolButtonClass) FieldParentClass() *ToolButtonClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ToggleToolButtonClass) SetFieldParentClass(value *ToolButtonClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(toggleToolButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(toggleToolButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'toggled' : for field getter : missing Type
@@ -38226,7 +38653,7 @@ func ToggleToolButtonClassStruct() *ToggleToolButtonClass {
 	return structGo
 }
 func finalizeToggleToolButtonClass(obj *ToggleToolButtonClass) {
-	toggleToolButtonClassStruct.Free(obj.native)
+	toggleToolButtonClassStruct.Free(obj.Native())
 }
 
 var toggleToolButtonPrivateStruct *gi.Struct
@@ -38275,7 +38702,7 @@ func ToggleToolButtonPrivateStruct() *ToggleToolButtonPrivate {
 	return structGo
 }
 func finalizeToggleToolButtonPrivate(obj *ToggleToolButtonPrivate) {
-	toggleToolButtonPrivateStruct.Free(obj.native)
+	toggleToolButtonPrivateStruct.Free(obj.Native())
 }
 
 var toolButtonClassStruct *gi.Struct
@@ -38314,7 +38741,7 @@ func (recv *ToolButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ToolButtonClass) FieldParentClass() *ToolItemClass {
-	argValue := gi.StructFieldGet(toolButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(toolButtonClassStruct, recv.Native(), "parent_class")
 	value := ToolItemClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -38322,8 +38749,8 @@ func (recv *ToolButtonClass) FieldParentClass() *ToolItemClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ToolButtonClass) SetFieldParentClass(value *ToolItemClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(toolButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(toolButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'button_type' : for field getter : no Go type for 'GType'
@@ -38362,7 +38789,7 @@ func ToolButtonClassStruct() *ToolButtonClass {
 	return structGo
 }
 func finalizeToolButtonClass(obj *ToolButtonClass) {
-	toolButtonClassStruct.Free(obj.native)
+	toolButtonClassStruct.Free(obj.Native())
 }
 
 var toolButtonPrivateStruct *gi.Struct
@@ -38411,7 +38838,7 @@ func ToolButtonPrivateStruct() *ToolButtonPrivate {
 	return structGo
 }
 func finalizeToolButtonPrivate(obj *ToolButtonPrivate) {
-	toolButtonPrivateStruct.Free(obj.native)
+	toolButtonPrivateStruct.Free(obj.Native())
 }
 
 var toolItemClassStruct *gi.Struct
@@ -38450,7 +38877,7 @@ func (recv *ToolItemClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ToolItemClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(toolItemClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(toolItemClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -38458,8 +38885,8 @@ func (recv *ToolItemClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ToolItemClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(toolItemClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(toolItemClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'create_menu_proxy' : for field getter : missing Type
@@ -38498,7 +38925,7 @@ func ToolItemClassStruct() *ToolItemClass {
 	return structGo
 }
 func finalizeToolItemClass(obj *ToolItemClass) {
-	toolItemClassStruct.Free(obj.native)
+	toolItemClassStruct.Free(obj.Native())
 }
 
 var toolItemGroupClassStruct *gi.Struct
@@ -38537,7 +38964,7 @@ func (recv *ToolItemGroupClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ToolItemGroupClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(toolItemGroupClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(toolItemGroupClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -38545,8 +38972,8 @@ func (recv *ToolItemGroupClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ToolItemGroupClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(toolItemGroupClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(toolItemGroupClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -38577,7 +39004,7 @@ func ToolItemGroupClassStruct() *ToolItemGroupClass {
 	return structGo
 }
 func finalizeToolItemGroupClass(obj *ToolItemGroupClass) {
-	toolItemGroupClassStruct.Free(obj.native)
+	toolItemGroupClassStruct.Free(obj.Native())
 }
 
 var toolItemGroupPrivateStruct *gi.Struct
@@ -38626,7 +39053,7 @@ func ToolItemGroupPrivateStruct() *ToolItemGroupPrivate {
 	return structGo
 }
 func finalizeToolItemGroupPrivate(obj *ToolItemGroupPrivate) {
-	toolItemGroupPrivateStruct.Free(obj.native)
+	toolItemGroupPrivateStruct.Free(obj.Native())
 }
 
 var toolItemPrivateStruct *gi.Struct
@@ -38675,7 +39102,7 @@ func ToolItemPrivateStruct() *ToolItemPrivate {
 	return structGo
 }
 func finalizeToolItemPrivate(obj *ToolItemPrivate) {
-	toolItemPrivateStruct.Free(obj.native)
+	toolItemPrivateStruct.Free(obj.Native())
 }
 
 var toolPaletteClassStruct *gi.Struct
@@ -38714,7 +39141,7 @@ func (recv *ToolPaletteClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ToolPaletteClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(toolPaletteClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(toolPaletteClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -38722,8 +39149,8 @@ func (recv *ToolPaletteClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ToolPaletteClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(toolPaletteClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(toolPaletteClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -38754,7 +39181,7 @@ func ToolPaletteClassStruct() *ToolPaletteClass {
 	return structGo
 }
 func finalizeToolPaletteClass(obj *ToolPaletteClass) {
-	toolPaletteClassStruct.Free(obj.native)
+	toolPaletteClassStruct.Free(obj.Native())
 }
 
 var toolPalettePrivateStruct *gi.Struct
@@ -38803,7 +39230,7 @@ func ToolPalettePrivateStruct() *ToolPalettePrivate {
 	return structGo
 }
 func finalizeToolPalettePrivate(obj *ToolPalettePrivate) {
-	toolPalettePrivateStruct.Free(obj.native)
+	toolPalettePrivateStruct.Free(obj.Native())
 }
 
 var toolShellIfaceStruct *gi.Struct
@@ -38888,7 +39315,7 @@ func ToolShellIfaceStruct() *ToolShellIface {
 	return structGo
 }
 func finalizeToolShellIface(obj *ToolShellIface) {
-	toolShellIfaceStruct.Free(obj.native)
+	toolShellIfaceStruct.Free(obj.Native())
 }
 
 var toolbarClassStruct *gi.Struct
@@ -38927,7 +39354,7 @@ func (recv *ToolbarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ToolbarClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(toolbarClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(toolbarClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -38935,8 +39362,8 @@ func (recv *ToolbarClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ToolbarClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(toolbarClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(toolbarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'orientation_changed' : for field getter : missing Type
@@ -38979,7 +39406,7 @@ func ToolbarClassStruct() *ToolbarClass {
 	return structGo
 }
 func finalizeToolbarClass(obj *ToolbarClass) {
-	toolbarClassStruct.Free(obj.native)
+	toolbarClassStruct.Free(obj.Native())
 }
 
 var toolbarPrivateStruct *gi.Struct
@@ -39028,7 +39455,7 @@ func ToolbarPrivateStruct() *ToolbarPrivate {
 	return structGo
 }
 func finalizeToolbarPrivate(obj *ToolbarPrivate) {
-	toolbarPrivateStruct.Free(obj.native)
+	toolbarPrivateStruct.Free(obj.Native())
 }
 
 var toplevelAccessibleClassStruct *gi.Struct
@@ -39081,7 +39508,7 @@ func ToplevelAccessibleClassStruct() *ToplevelAccessibleClass {
 	return structGo
 }
 func finalizeToplevelAccessibleClass(obj *ToplevelAccessibleClass) {
-	toplevelAccessibleClassStruct.Free(obj.native)
+	toplevelAccessibleClassStruct.Free(obj.Native())
 }
 
 var toplevelAccessiblePrivateStruct *gi.Struct
@@ -39130,7 +39557,7 @@ func ToplevelAccessiblePrivateStruct() *ToplevelAccessiblePrivate {
 	return structGo
 }
 func finalizeToplevelAccessiblePrivate(obj *ToplevelAccessiblePrivate) {
-	toplevelAccessiblePrivateStruct.Free(obj.native)
+	toplevelAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var treeDragDestIfaceStruct *gi.Struct
@@ -39187,7 +39614,7 @@ func TreeDragDestIfaceStruct() *TreeDragDestIface {
 	return structGo
 }
 func finalizeTreeDragDestIface(obj *TreeDragDestIface) {
-	treeDragDestIfaceStruct.Free(obj.native)
+	treeDragDestIfaceStruct.Free(obj.Native())
 }
 
 var treeDragSourceIfaceStruct *gi.Struct
@@ -39248,7 +39675,7 @@ func TreeDragSourceIfaceStruct() *TreeDragSourceIface {
 	return structGo
 }
 func finalizeTreeDragSourceIface(obj *TreeDragSourceIface) {
-	treeDragSourceIfaceStruct.Free(obj.native)
+	treeDragSourceIfaceStruct.Free(obj.Native())
 }
 
 var treeIterStruct *gi.Struct
@@ -39287,7 +39714,7 @@ func (recv *TreeIter) Native() unsafe.Pointer {
 
 // FieldStamp returns the C field 'stamp'.
 func (recv *TreeIter) FieldStamp() int32 {
-	argValue := gi.StructFieldGet(treeIterStruct, recv.native, "stamp")
+	argValue := gi.StructFieldGet(treeIterStruct, recv.Native(), "stamp")
 	value := argValue.Int32()
 	return value
 }
@@ -39296,7 +39723,7 @@ func (recv *TreeIter) FieldStamp() int32 {
 func (recv *TreeIter) SetFieldStamp(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(treeIterStruct, recv.native, "stamp", argValue)
+	gi.StructFieldSet(treeIterStruct, recv.Native(), "stamp", argValue)
 }
 
 // UNSUPPORTED : C value 'user_data' : for field getter : no Go type for 'gpointer'
@@ -39329,7 +39756,7 @@ func treeIterCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_tree_iter_copy.
 func (recv *TreeIter) Copy() *TreeIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -39361,7 +39788,7 @@ func treeIterFreeFunction_Set() error {
 // Free is a representation of the C type gtk_tree_iter_free.
 func (recv *TreeIter) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := treeIterFreeFunction_Set()
 	if err == nil {
@@ -39383,7 +39810,7 @@ func TreeIterStruct() *TreeIter {
 	return structGo
 }
 func finalizeTreeIter(obj *TreeIter) {
-	treeIterStruct.Free(obj.native)
+	treeIterStruct.Free(obj.Native())
 }
 
 var treeModelFilterClassStruct *gi.Struct
@@ -39460,7 +39887,7 @@ func TreeModelFilterClassStruct() *TreeModelFilterClass {
 	return structGo
 }
 func finalizeTreeModelFilterClass(obj *TreeModelFilterClass) {
-	treeModelFilterClassStruct.Free(obj.native)
+	treeModelFilterClassStruct.Free(obj.Native())
 }
 
 var treeModelFilterPrivateStruct *gi.Struct
@@ -39509,7 +39936,7 @@ func TreeModelFilterPrivateStruct() *TreeModelFilterPrivate {
 	return structGo
 }
 func finalizeTreeModelFilterPrivate(obj *TreeModelFilterPrivate) {
-	treeModelFilterPrivateStruct.Free(obj.native)
+	treeModelFilterPrivateStruct.Free(obj.Native())
 }
 
 var treeModelIfaceStruct *gi.Struct
@@ -39638,7 +40065,7 @@ func TreeModelIfaceStruct() *TreeModelIface {
 	return structGo
 }
 func finalizeTreeModelIface(obj *TreeModelIface) {
-	treeModelIfaceStruct.Free(obj.native)
+	treeModelIfaceStruct.Free(obj.Native())
 }
 
 var treeModelSortClassStruct *gi.Struct
@@ -39707,7 +40134,7 @@ func TreeModelSortClassStruct() *TreeModelSortClass {
 	return structGo
 }
 func finalizeTreeModelSortClass(obj *TreeModelSortClass) {
-	treeModelSortClassStruct.Free(obj.native)
+	treeModelSortClassStruct.Free(obj.Native())
 }
 
 var treeModelSortPrivateStruct *gi.Struct
@@ -39756,7 +40183,7 @@ func TreeModelSortPrivateStruct() *TreeModelSortPrivate {
 	return structGo
 }
 func finalizeTreeModelSortPrivate(obj *TreeModelSortPrivate) {
-	treeModelSortPrivateStruct.Free(obj.native)
+	treeModelSortPrivateStruct.Free(obj.Native())
 }
 
 var treePathStruct *gi.Struct
@@ -39907,7 +40334,7 @@ func treePathAppendIndexFunction_Set() error {
 // AppendIndex is a representation of the C type gtk_tree_path_append_index.
 func (recv *TreePath) AppendIndex(index int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(index)
 
 	err := treePathAppendIndexFunction_Set()
@@ -39936,8 +40363,8 @@ func treePathCompareFunction_Set() error {
 // Compare is a representation of the C type gtk_tree_path_compare.
 func (recv *TreePath) Compare(b *TreePath) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(b.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(b.Native())
 
 	var ret gi.Argument
 
@@ -39969,7 +40396,7 @@ func treePathCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_tree_path_copy.
 func (recv *TreePath) Copy() *TreePath {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -40001,7 +40428,7 @@ func treePathDownFunction_Set() error {
 // Down is a representation of the C type gtk_tree_path_down.
 func (recv *TreePath) Down() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := treePathDownFunction_Set()
 	if err == nil {
@@ -40029,7 +40456,7 @@ func treePathFreeFunction_Set() error {
 // Free is a representation of the C type gtk_tree_path_free.
 func (recv *TreePath) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := treePathFreeFunction_Set()
 	if err == nil {
@@ -40057,7 +40484,7 @@ func treePathGetDepthFunction_Set() error {
 // GetDepth is a representation of the C type gtk_tree_path_get_depth.
 func (recv *TreePath) GetDepth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -40089,7 +40516,7 @@ func treePathGetIndicesFunction_Set() error {
 // GetIndices is a representation of the C type gtk_tree_path_get_indices.
 func (recv *TreePath) GetIndices() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -40121,7 +40548,7 @@ func treePathGetIndicesWithDepthFunction_Set() error {
 // GetIndicesWithDepth is a representation of the C type gtk_tree_path_get_indices_with_depth.
 func (recv *TreePath) GetIndicesWithDepth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -40153,8 +40580,8 @@ func treePathIsAncestorFunction_Set() error {
 // IsAncestor is a representation of the C type gtk_tree_path_is_ancestor.
 func (recv *TreePath) IsAncestor(descendant *TreePath) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(descendant.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(descendant.Native())
 
 	var ret gi.Argument
 
@@ -40186,8 +40613,8 @@ func treePathIsDescendantFunction_Set() error {
 // IsDescendant is a representation of the C type gtk_tree_path_is_descendant.
 func (recv *TreePath) IsDescendant(ancestor *TreePath) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(ancestor.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(ancestor.Native())
 
 	var ret gi.Argument
 
@@ -40219,7 +40646,7 @@ func treePathNextFunction_Set() error {
 // Next is a representation of the C type gtk_tree_path_next.
 func (recv *TreePath) Next() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := treePathNextFunction_Set()
 	if err == nil {
@@ -40247,7 +40674,7 @@ func treePathPrependIndexFunction_Set() error {
 // PrependIndex is a representation of the C type gtk_tree_path_prepend_index.
 func (recv *TreePath) PrependIndex(index int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(index)
 
 	err := treePathPrependIndexFunction_Set()
@@ -40276,7 +40703,7 @@ func treePathPrevFunction_Set() error {
 // Prev is a representation of the C type gtk_tree_path_prev.
 func (recv *TreePath) Prev() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -40308,7 +40735,7 @@ func treePathToStringFunction_Set() error {
 // ToString is a representation of the C type gtk_tree_path_to_string.
 func (recv *TreePath) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -40340,7 +40767,7 @@ func treePathUpFunction_Set() error {
 // Up is a representation of the C type gtk_tree_path_up.
 func (recv *TreePath) Up() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -40390,7 +40817,7 @@ func (recv *TreeRowReference) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'gtk_tree_row_reference_new' : parameter 'model' of type 'TreeModel' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_row_reference_new_proxy' : parameter 'proxy' of type 'GObject.Object' not supported
+// UNSUPPORTED : C value 'gtk_tree_row_reference_new_proxy' : parameter 'model' of type 'TreeModel' not supported
 
 var treeRowReferenceCopyFunction *gi.Function
 var treeRowReferenceCopyFunction_Once sync.Once
@@ -40410,7 +40837,7 @@ func treeRowReferenceCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_tree_row_reference_copy.
 func (recv *TreeRowReference) Copy() *TreeRowReference {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -40442,7 +40869,7 @@ func treeRowReferenceFreeFunction_Set() error {
 // Free is a representation of the C type gtk_tree_row_reference_free.
 func (recv *TreeRowReference) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := treeRowReferenceFreeFunction_Set()
 	if err == nil {
@@ -40472,7 +40899,7 @@ func treeRowReferenceGetPathFunction_Set() error {
 // GetPath is a representation of the C type gtk_tree_row_reference_get_path.
 func (recv *TreeRowReference) GetPath() *TreePath {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -40504,7 +40931,7 @@ func treeRowReferenceValidFunction_Set() error {
 // Valid is a representation of the C type gtk_tree_row_reference_valid.
 func (recv *TreeRowReference) Valid() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -40588,7 +41015,7 @@ func TreeSelectionClassStruct() *TreeSelectionClass {
 	return structGo
 }
 func finalizeTreeSelectionClass(obj *TreeSelectionClass) {
-	treeSelectionClassStruct.Free(obj.native)
+	treeSelectionClassStruct.Free(obj.Native())
 }
 
 var treeSelectionPrivateStruct *gi.Struct
@@ -40637,7 +41064,7 @@ func TreeSelectionPrivateStruct() *TreeSelectionPrivate {
 	return structGo
 }
 func finalizeTreeSelectionPrivate(obj *TreeSelectionPrivate) {
-	treeSelectionPrivateStruct.Free(obj.native)
+	treeSelectionPrivateStruct.Free(obj.Native())
 }
 
 var treeSortableIfaceStruct *gi.Struct
@@ -40710,7 +41137,7 @@ func TreeSortableIfaceStruct() *TreeSortableIface {
 	return structGo
 }
 func finalizeTreeSortableIface(obj *TreeSortableIface) {
-	treeSortableIfaceStruct.Free(obj.native)
+	treeSortableIfaceStruct.Free(obj.Native())
 }
 
 var treeStoreClassStruct *gi.Struct
@@ -40779,7 +41206,7 @@ func TreeStoreClassStruct() *TreeStoreClass {
 	return structGo
 }
 func finalizeTreeStoreClass(obj *TreeStoreClass) {
-	treeStoreClassStruct.Free(obj.native)
+	treeStoreClassStruct.Free(obj.Native())
 }
 
 var treeStorePrivateStruct *gi.Struct
@@ -40828,7 +41255,7 @@ func TreeStorePrivateStruct() *TreeStorePrivate {
 	return structGo
 }
 func finalizeTreeStorePrivate(obj *TreeStorePrivate) {
-	treeStorePrivateStruct.Free(obj.native)
+	treeStorePrivateStruct.Free(obj.Native())
 }
 
 var treeViewAccessibleClassStruct *gi.Struct
@@ -40867,7 +41294,7 @@ func (recv *TreeViewAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *TreeViewAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(treeViewAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(treeViewAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -40875,8 +41302,8 @@ func (recv *TreeViewAccessibleClass) FieldParentClass() *ContainerAccessibleClas
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *TreeViewAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(treeViewAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(treeViewAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // TreeViewAccessibleClassStruct creates an uninitialised TreeViewAccessibleClass.
@@ -40891,7 +41318,7 @@ func TreeViewAccessibleClassStruct() *TreeViewAccessibleClass {
 	return structGo
 }
 func finalizeTreeViewAccessibleClass(obj *TreeViewAccessibleClass) {
-	treeViewAccessibleClassStruct.Free(obj.native)
+	treeViewAccessibleClassStruct.Free(obj.Native())
 }
 
 var treeViewAccessiblePrivateStruct *gi.Struct
@@ -40940,7 +41367,7 @@ func TreeViewAccessiblePrivateStruct() *TreeViewAccessiblePrivate {
 	return structGo
 }
 func finalizeTreeViewAccessiblePrivate(obj *TreeViewAccessiblePrivate) {
-	treeViewAccessiblePrivateStruct.Free(obj.native)
+	treeViewAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var treeViewClassStruct *gi.Struct
@@ -40979,7 +41406,7 @@ func (recv *TreeViewClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *TreeViewClass) FieldParentClass() *ContainerClass {
-	argValue := gi.StructFieldGet(treeViewClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(treeViewClassStruct, recv.Native(), "parent_class")
 	value := ContainerClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -40987,8 +41414,8 @@ func (recv *TreeViewClass) FieldParentClass() *ContainerClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *TreeViewClass) SetFieldParentClass(value *ContainerClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(treeViewClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(treeViewClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'row_activated' : for field getter : missing Type
@@ -41095,7 +41522,7 @@ func TreeViewClassStruct() *TreeViewClass {
 	return structGo
 }
 func finalizeTreeViewClass(obj *TreeViewClass) {
-	treeViewClassStruct.Free(obj.native)
+	treeViewClassStruct.Free(obj.Native())
 }
 
 var treeViewColumnClassStruct *gi.Struct
@@ -41168,7 +41595,7 @@ func TreeViewColumnClassStruct() *TreeViewColumnClass {
 	return structGo
 }
 func finalizeTreeViewColumnClass(obj *TreeViewColumnClass) {
-	treeViewColumnClassStruct.Free(obj.native)
+	treeViewColumnClassStruct.Free(obj.Native())
 }
 
 var treeViewColumnPrivateStruct *gi.Struct
@@ -41217,7 +41644,7 @@ func TreeViewColumnPrivateStruct() *TreeViewColumnPrivate {
 	return structGo
 }
 func finalizeTreeViewColumnPrivate(obj *TreeViewColumnPrivate) {
-	treeViewColumnPrivateStruct.Free(obj.native)
+	treeViewColumnPrivateStruct.Free(obj.Native())
 }
 
 var treeViewPrivateStruct *gi.Struct
@@ -41266,7 +41693,7 @@ func TreeViewPrivateStruct() *TreeViewPrivate {
 	return structGo
 }
 func finalizeTreeViewPrivate(obj *TreeViewPrivate) {
-	treeViewPrivateStruct.Free(obj.native)
+	treeViewPrivateStruct.Free(obj.Native())
 }
 
 var uIManagerClassStruct *gi.Struct
@@ -41367,7 +41794,7 @@ func UIManagerClassStruct() *UIManagerClass {
 	return structGo
 }
 func finalizeUIManagerClass(obj *UIManagerClass) {
-	uIManagerClassStruct.Free(obj.native)
+	uIManagerClassStruct.Free(obj.Native())
 }
 
 var uIManagerPrivateStruct *gi.Struct
@@ -41416,7 +41843,7 @@ func UIManagerPrivateStruct() *UIManagerPrivate {
 	return structGo
 }
 func finalizeUIManagerPrivate(obj *UIManagerPrivate) {
-	uIManagerPrivateStruct.Free(obj.native)
+	uIManagerPrivateStruct.Free(obj.Native())
 }
 
 var vBoxClassStruct *gi.Struct
@@ -41455,7 +41882,7 @@ func (recv *VBoxClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *VBoxClass) FieldParentClass() *BoxClass {
-	argValue := gi.StructFieldGet(vBoxClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(vBoxClassStruct, recv.Native(), "parent_class")
 	value := BoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -41463,8 +41890,8 @@ func (recv *VBoxClass) FieldParentClass() *BoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *VBoxClass) SetFieldParentClass(value *BoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(vBoxClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(vBoxClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // VBoxClassStruct creates an uninitialised VBoxClass.
@@ -41479,7 +41906,7 @@ func VBoxClassStruct() *VBoxClass {
 	return structGo
 }
 func finalizeVBoxClass(obj *VBoxClass) {
-	vBoxClassStruct.Free(obj.native)
+	vBoxClassStruct.Free(obj.Native())
 }
 
 var vButtonBoxClassStruct *gi.Struct
@@ -41518,7 +41945,7 @@ func (recv *VButtonBoxClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *VButtonBoxClass) FieldParentClass() *ButtonBoxClass {
-	argValue := gi.StructFieldGet(vButtonBoxClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(vButtonBoxClassStruct, recv.Native(), "parent_class")
 	value := ButtonBoxClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -41526,8 +41953,8 @@ func (recv *VButtonBoxClass) FieldParentClass() *ButtonBoxClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *VButtonBoxClass) SetFieldParentClass(value *ButtonBoxClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(vButtonBoxClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(vButtonBoxClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // VButtonBoxClassStruct creates an uninitialised VButtonBoxClass.
@@ -41542,7 +41969,7 @@ func VButtonBoxClassStruct() *VButtonBoxClass {
 	return structGo
 }
 func finalizeVButtonBoxClass(obj *VButtonBoxClass) {
-	vButtonBoxClassStruct.Free(obj.native)
+	vButtonBoxClassStruct.Free(obj.Native())
 }
 
 var vPanedClassStruct *gi.Struct
@@ -41581,7 +42008,7 @@ func (recv *VPanedClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *VPanedClass) FieldParentClass() *PanedClass {
-	argValue := gi.StructFieldGet(vPanedClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(vPanedClassStruct, recv.Native(), "parent_class")
 	value := PanedClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -41589,8 +42016,8 @@ func (recv *VPanedClass) FieldParentClass() *PanedClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *VPanedClass) SetFieldParentClass(value *PanedClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(vPanedClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(vPanedClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // VPanedClassStruct creates an uninitialised VPanedClass.
@@ -41605,7 +42032,7 @@ func VPanedClassStruct() *VPanedClass {
 	return structGo
 }
 func finalizeVPanedClass(obj *VPanedClass) {
-	vPanedClassStruct.Free(obj.native)
+	vPanedClassStruct.Free(obj.Native())
 }
 
 var vScaleClassStruct *gi.Struct
@@ -41644,7 +42071,7 @@ func (recv *VScaleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *VScaleClass) FieldParentClass() *ScaleClass {
-	argValue := gi.StructFieldGet(vScaleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(vScaleClassStruct, recv.Native(), "parent_class")
 	value := ScaleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -41652,8 +42079,8 @@ func (recv *VScaleClass) FieldParentClass() *ScaleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *VScaleClass) SetFieldParentClass(value *ScaleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(vScaleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(vScaleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // VScaleClassStruct creates an uninitialised VScaleClass.
@@ -41668,7 +42095,7 @@ func VScaleClassStruct() *VScaleClass {
 	return structGo
 }
 func finalizeVScaleClass(obj *VScaleClass) {
-	vScaleClassStruct.Free(obj.native)
+	vScaleClassStruct.Free(obj.Native())
 }
 
 var vScrollbarClassStruct *gi.Struct
@@ -41707,7 +42134,7 @@ func (recv *VScrollbarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *VScrollbarClass) FieldParentClass() *ScrollbarClass {
-	argValue := gi.StructFieldGet(vScrollbarClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(vScrollbarClassStruct, recv.Native(), "parent_class")
 	value := ScrollbarClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -41715,8 +42142,8 @@ func (recv *VScrollbarClass) FieldParentClass() *ScrollbarClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *VScrollbarClass) SetFieldParentClass(value *ScrollbarClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(vScrollbarClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(vScrollbarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // VScrollbarClassStruct creates an uninitialised VScrollbarClass.
@@ -41731,7 +42158,7 @@ func VScrollbarClassStruct() *VScrollbarClass {
 	return structGo
 }
 func finalizeVScrollbarClass(obj *VScrollbarClass) {
-	vScrollbarClassStruct.Free(obj.native)
+	vScrollbarClassStruct.Free(obj.Native())
 }
 
 var vSeparatorClassStruct *gi.Struct
@@ -41770,7 +42197,7 @@ func (recv *VSeparatorClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *VSeparatorClass) FieldParentClass() *SeparatorClass {
-	argValue := gi.StructFieldGet(vSeparatorClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(vSeparatorClassStruct, recv.Native(), "parent_class")
 	value := SeparatorClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -41778,8 +42205,8 @@ func (recv *VSeparatorClass) FieldParentClass() *SeparatorClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *VSeparatorClass) SetFieldParentClass(value *SeparatorClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(vSeparatorClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(vSeparatorClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // VSeparatorClassStruct creates an uninitialised VSeparatorClass.
@@ -41794,7 +42221,7 @@ func VSeparatorClassStruct() *VSeparatorClass {
 	return structGo
 }
 func finalizeVSeparatorClass(obj *VSeparatorClass) {
-	vSeparatorClassStruct.Free(obj.native)
+	vSeparatorClassStruct.Free(obj.Native())
 }
 
 var viewportClassStruct *gi.Struct
@@ -41833,7 +42260,7 @@ func (recv *ViewportClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ViewportClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(viewportClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(viewportClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -41841,8 +42268,8 @@ func (recv *ViewportClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ViewportClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(viewportClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(viewportClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -41873,7 +42300,7 @@ func ViewportClassStruct() *ViewportClass {
 	return structGo
 }
 func finalizeViewportClass(obj *ViewportClass) {
-	viewportClassStruct.Free(obj.native)
+	viewportClassStruct.Free(obj.Native())
 }
 
 var viewportPrivateStruct *gi.Struct
@@ -41922,7 +42349,7 @@ func ViewportPrivateStruct() *ViewportPrivate {
 	return structGo
 }
 func finalizeViewportPrivate(obj *ViewportPrivate) {
-	viewportPrivateStruct.Free(obj.native)
+	viewportPrivateStruct.Free(obj.Native())
 }
 
 var volumeButtonClassStruct *gi.Struct
@@ -41961,7 +42388,7 @@ func (recv *VolumeButtonClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *VolumeButtonClass) FieldParentClass() *ScaleButtonClass {
-	argValue := gi.StructFieldGet(volumeButtonClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(volumeButtonClassStruct, recv.Native(), "parent_class")
 	value := ScaleButtonClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -41969,8 +42396,8 @@ func (recv *VolumeButtonClass) FieldParentClass() *ScaleButtonClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *VolumeButtonClass) SetFieldParentClass(value *ScaleButtonClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(volumeButtonClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(volumeButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_gtk_reserved1' : for field getter : missing Type
@@ -42001,7 +42428,7 @@ func VolumeButtonClassStruct() *VolumeButtonClass {
 	return structGo
 }
 func finalizeVolumeButtonClass(obj *VolumeButtonClass) {
-	volumeButtonClassStruct.Free(obj.native)
+	volumeButtonClassStruct.Free(obj.Native())
 }
 
 var widgetAccessibleClassStruct *gi.Struct
@@ -42040,7 +42467,7 @@ func (recv *WidgetAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *WidgetAccessibleClass) FieldParentClass() *AccessibleClass {
-	argValue := gi.StructFieldGet(widgetAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(widgetAccessibleClassStruct, recv.Native(), "parent_class")
 	value := AccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -42048,8 +42475,8 @@ func (recv *WidgetAccessibleClass) FieldParentClass() *AccessibleClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *WidgetAccessibleClass) SetFieldParentClass(value *AccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(widgetAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(widgetAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'notify_gtk' : for field getter : missing Type
@@ -42068,7 +42495,7 @@ func WidgetAccessibleClassStruct() *WidgetAccessibleClass {
 	return structGo
 }
 func finalizeWidgetAccessibleClass(obj *WidgetAccessibleClass) {
-	widgetAccessibleClassStruct.Free(obj.native)
+	widgetAccessibleClassStruct.Free(obj.Native())
 }
 
 var widgetAccessiblePrivateStruct *gi.Struct
@@ -42117,7 +42544,7 @@ func WidgetAccessiblePrivateStruct() *WidgetAccessiblePrivate {
 	return structGo
 }
 func finalizeWidgetAccessiblePrivate(obj *WidgetAccessiblePrivate) {
-	widgetAccessiblePrivateStruct.Free(obj.native)
+	widgetAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var widgetClassStruct *gi.Struct
@@ -42160,7 +42587,7 @@ func (recv *WidgetClass) Native() unsafe.Pointer {
 
 // FieldActivateSignal returns the C field 'activate_signal'.
 func (recv *WidgetClass) FieldActivateSignal() uint32 {
-	argValue := gi.StructFieldGet(widgetClassStruct, recv.native, "activate_signal")
+	argValue := gi.StructFieldGet(widgetClassStruct, recv.Native(), "activate_signal")
 	value := argValue.Uint32()
 	return value
 }
@@ -42169,7 +42596,7 @@ func (recv *WidgetClass) FieldActivateSignal() uint32 {
 func (recv *WidgetClass) SetFieldActivateSignal(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(widgetClassStruct, recv.native, "activate_signal", argValue)
+	gi.StructFieldSet(widgetClassStruct, recv.Native(), "activate_signal", argValue)
 }
 
 // UNSUPPORTED : C value 'dispatch_child_properties_changed' : for field getter : missing Type
@@ -42528,7 +42955,7 @@ func widgetClassBindTemplateChildFullFunction_Set() error {
 // BindTemplateChildFull is a representation of the C type gtk_widget_class_bind_template_child_full.
 func (recv *WidgetClass) BindTemplateChildFull(name string, internalChild bool, structOffset int32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(name)
 	inArgs[2].SetBoolean(internalChild)
 	inArgs[3].SetInt32(structOffset)
@@ -42541,7 +42968,38 @@ func (recv *WidgetClass) BindTemplateChildFull(name string, internalChild bool, 
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_class_find_style_property' : return type 'GObject.ParamSpec' not supported
+var widgetClassFindStylePropertyFunction *gi.Function
+var widgetClassFindStylePropertyFunction_Once sync.Once
+
+func widgetClassFindStylePropertyFunction_Set() error {
+	var err error
+	widgetClassFindStylePropertyFunction_Once.Do(func() {
+		err = widgetClassStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetClassFindStylePropertyFunction, err = widgetClassStruct.InvokerNew("find_style_property")
+	})
+	return err
+}
+
+// FindStyleProperty is a representation of the C type gtk_widget_class_find_style_property.
+func (recv *WidgetClass) FindStyleProperty(propertyName string) *gobject.ParamSpec {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(propertyName)
+
+	var ret gi.Argument
+
+	err := widgetClassFindStylePropertyFunction_Set()
+	if err == nil {
+		ret = widgetClassFindStylePropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gobject.ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var widgetClassGetCssNameFunction *gi.Function
 var widgetClassGetCssNameFunction_Once sync.Once
@@ -42561,7 +43019,7 @@ func widgetClassGetCssNameFunction_Set() error {
 // GetCssName is a representation of the C type gtk_widget_class_get_css_name.
 func (recv *WidgetClass) GetCssName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -42575,9 +43033,36 @@ func (recv *WidgetClass) GetCssName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_class_install_style_property' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
+var widgetClassInstallStylePropertyFunction *gi.Function
+var widgetClassInstallStylePropertyFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_widget_class_install_style_property_parser' : parameter 'pspec' of type 'GObject.ParamSpec' not supported
+func widgetClassInstallStylePropertyFunction_Set() error {
+	var err error
+	widgetClassInstallStylePropertyFunction_Once.Do(func() {
+		err = widgetClassStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetClassInstallStylePropertyFunction, err = widgetClassStruct.InvokerNew("install_style_property")
+	})
+	return err
+}
+
+// InstallStyleProperty is a representation of the C type gtk_widget_class_install_style_property.
+func (recv *WidgetClass) InstallStyleProperty(pspec *gobject.ParamSpec) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(pspec.Native())
+
+	err := widgetClassInstallStylePropertyFunction_Set()
+	if err == nil {
+		widgetClassInstallStylePropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'gtk_widget_class_install_style_property_parser' : parameter 'parser' of type 'RcPropertyParser' not supported
 
 var widgetClassListStylePropertiesFunction *gi.Function
 var widgetClassListStylePropertiesFunction_Once sync.Once
@@ -42597,7 +43082,7 @@ func widgetClassListStylePropertiesFunction_Set() error {
 // ListStyleProperties is a representation of the C type gtk_widget_class_list_style_properties.
 func (recv *WidgetClass) ListStyleProperties() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -42635,7 +43120,7 @@ func widgetClassSetCssNameFunction_Set() error {
 // SetCssName is a representation of the C type gtk_widget_class_set_css_name.
 func (recv *WidgetClass) SetCssName(name string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(name)
 
 	err := widgetClassSetCssNameFunction_Set()
@@ -42666,7 +43151,7 @@ func widgetClassSetTemplateFromResourceFunction_Set() error {
 // SetTemplateFromResource is a representation of the C type gtk_widget_class_set_template_from_resource.
 func (recv *WidgetClass) SetTemplateFromResource(resourceName string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(resourceName)
 
 	err := widgetClassSetTemplateFromResourceFunction_Set()
@@ -42689,7 +43174,7 @@ func WidgetClassStruct() *WidgetClass {
 	return structGo
 }
 func finalizeWidgetClass(obj *WidgetClass) {
-	widgetClassStruct.Free(obj.native)
+	widgetClassStruct.Free(obj.Native())
 }
 
 var widgetClassPrivateStruct *gi.Struct
@@ -42738,7 +43223,7 @@ func WidgetClassPrivateStruct() *WidgetClassPrivate {
 	return structGo
 }
 func finalizeWidgetClassPrivate(obj *WidgetClassPrivate) {
-	widgetClassPrivateStruct.Free(obj.native)
+	widgetClassPrivateStruct.Free(obj.Native())
 }
 
 var widgetPathStruct *gi.Struct
@@ -42823,8 +43308,8 @@ func widgetPathAppendForWidgetFunction_Set() error {
 // AppendForWidget is a representation of the C type gtk_widget_path_append_for_widget.
 func (recv *WidgetPath) AppendForWidget(widget *Widget) int32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(widget.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(widget.Native())
 
 	var ret gi.Argument
 
@@ -42858,8 +43343,8 @@ func widgetPathAppendWithSiblingsFunction_Set() error {
 // AppendWithSiblings is a representation of the C type gtk_widget_path_append_with_siblings.
 func (recv *WidgetPath) AppendWithSiblings(siblings *WidgetPath, siblingIndex uint32) int32 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(siblings.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(siblings.Native())
 	inArgs[2].SetUint32(siblingIndex)
 
 	var ret gi.Argument
@@ -42892,7 +43377,7 @@ func widgetPathCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_widget_path_copy.
 func (recv *WidgetPath) Copy() *WidgetPath {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -42924,7 +43409,7 @@ func widgetPathFreeFunction_Set() error {
 // Free is a representation of the C type gtk_widget_path_free.
 func (recv *WidgetPath) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := widgetPathFreeFunction_Set()
 	if err == nil {
@@ -42958,7 +43443,7 @@ func widgetPathIterAddClassFunction_Set() error {
 // IterAddClass is a representation of the C type gtk_widget_path_iter_add_class.
 func (recv *WidgetPath) IterAddClass(pos int32, name string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(name)
 
@@ -42990,7 +43475,7 @@ func widgetPathIterClearClassesFunction_Set() error {
 // IterClearClasses is a representation of the C type gtk_widget_path_iter_clear_classes.
 func (recv *WidgetPath) IterClearClasses(pos int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 
 	err := widgetPathIterClearClassesFunction_Set()
@@ -43019,7 +43504,7 @@ func widgetPathIterClearRegionsFunction_Set() error {
 // IterClearRegions is a representation of the C type gtk_widget_path_iter_clear_regions.
 func (recv *WidgetPath) IterClearRegions(pos int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 
 	err := widgetPathIterClearRegionsFunction_Set()
@@ -43048,7 +43533,7 @@ func widgetPathIterGetNameFunction_Set() error {
 // IterGetName is a representation of the C type gtk_widget_path_iter_get_name.
 func (recv *WidgetPath) IterGetName(pos int32) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 
 	var ret gi.Argument
@@ -43081,7 +43566,7 @@ func widgetPathIterGetObjectNameFunction_Set() error {
 // IterGetObjectName is a representation of the C type gtk_widget_path_iter_get_object_name.
 func (recv *WidgetPath) IterGetObjectName(pos int32) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 
 	var ret gi.Argument
@@ -43116,7 +43601,7 @@ func widgetPathIterGetSiblingIndexFunction_Set() error {
 // IterGetSiblingIndex is a representation of the C type gtk_widget_path_iter_get_sibling_index.
 func (recv *WidgetPath) IterGetSiblingIndex(pos int32) uint32 {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 
 	var ret gi.Argument
@@ -43149,7 +43634,7 @@ func widgetPathIterGetSiblingsFunction_Set() error {
 // IterGetSiblings is a representation of the C type gtk_widget_path_iter_get_siblings.
 func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 
 	var ret gi.Argument
@@ -43184,7 +43669,7 @@ func widgetPathIterHasClassFunction_Set() error {
 // IterHasClass is a representation of the C type gtk_widget_path_iter_has_class.
 func (recv *WidgetPath) IterHasClass(pos int32, name string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(name)
 
@@ -43218,7 +43703,7 @@ func widgetPathIterHasNameFunction_Set() error {
 // IterHasName is a representation of the C type gtk_widget_path_iter_has_name.
 func (recv *WidgetPath) IterHasName(pos int32, name string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(name)
 
@@ -43252,7 +43737,7 @@ func widgetPathIterHasQclassFunction_Set() error {
 // IterHasQclass is a representation of the C type gtk_widget_path_iter_has_qclass.
 func (recv *WidgetPath) IterHasQclass(pos int32, qname glib.Quark) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetUint32(uint32(qname))
 
@@ -43286,7 +43771,7 @@ func widgetPathIterHasQnameFunction_Set() error {
 // IterHasQname is a representation of the C type gtk_widget_path_iter_has_qname.
 func (recv *WidgetPath) IterHasQname(pos int32, qname glib.Quark) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetUint32(uint32(qname))
 
@@ -43328,7 +43813,7 @@ func widgetPathIterRemoveClassFunction_Set() error {
 // IterRemoveClass is a representation of the C type gtk_widget_path_iter_remove_class.
 func (recv *WidgetPath) IterRemoveClass(pos int32, name string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(name)
 
@@ -43358,7 +43843,7 @@ func widgetPathIterRemoveRegionFunction_Set() error {
 // IterRemoveRegion is a representation of the C type gtk_widget_path_iter_remove_region.
 func (recv *WidgetPath) IterRemoveRegion(pos int32, name string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(name)
 
@@ -43388,7 +43873,7 @@ func widgetPathIterSetNameFunction_Set() error {
 // IterSetName is a representation of the C type gtk_widget_path_iter_set_name.
 func (recv *WidgetPath) IterSetName(pos int32, name string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(name)
 
@@ -43418,7 +43903,7 @@ func widgetPathIterSetObjectNameFunction_Set() error {
 // IterSetObjectName is a representation of the C type gtk_widget_path_iter_set_object_name.
 func (recv *WidgetPath) IterSetObjectName(pos int32, name string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(pos)
 	inArgs[2].SetString(name)
 
@@ -43452,7 +43937,7 @@ func widgetPathLengthFunction_Set() error {
 // Length is a representation of the C type gtk_widget_path_length.
 func (recv *WidgetPath) Length() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -43486,7 +43971,7 @@ func widgetPathRefFunction_Set() error {
 // Ref is a representation of the C type gtk_widget_path_ref.
 func (recv *WidgetPath) Ref() *WidgetPath {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -43518,7 +44003,7 @@ func widgetPathToStringFunction_Set() error {
 // ToString is a representation of the C type gtk_widget_path_to_string.
 func (recv *WidgetPath) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -43550,7 +44035,7 @@ func widgetPathUnrefFunction_Set() error {
 // Unref is a representation of the C type gtk_widget_path_unref.
 func (recv *WidgetPath) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := widgetPathUnrefFunction_Set()
 	if err == nil {
@@ -43606,7 +44091,7 @@ func WidgetPrivateStruct() *WidgetPrivate {
 	return structGo
 }
 func finalizeWidgetPrivate(obj *WidgetPrivate) {
-	widgetPrivateStruct.Free(obj.native)
+	widgetPrivateStruct.Free(obj.Native())
 }
 
 var windowAccessibleClassStruct *gi.Struct
@@ -43645,7 +44130,7 @@ func (recv *WindowAccessibleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *WindowAccessibleClass) FieldParentClass() *ContainerAccessibleClass {
-	argValue := gi.StructFieldGet(windowAccessibleClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(windowAccessibleClassStruct, recv.Native(), "parent_class")
 	value := ContainerAccessibleClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -43653,8 +44138,8 @@ func (recv *WindowAccessibleClass) FieldParentClass() *ContainerAccessibleClass 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *WindowAccessibleClass) SetFieldParentClass(value *ContainerAccessibleClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(windowAccessibleClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(windowAccessibleClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // WindowAccessibleClassStruct creates an uninitialised WindowAccessibleClass.
@@ -43669,7 +44154,7 @@ func WindowAccessibleClassStruct() *WindowAccessibleClass {
 	return structGo
 }
 func finalizeWindowAccessibleClass(obj *WindowAccessibleClass) {
-	windowAccessibleClassStruct.Free(obj.native)
+	windowAccessibleClassStruct.Free(obj.Native())
 }
 
 var windowAccessiblePrivateStruct *gi.Struct
@@ -43718,7 +44203,7 @@ func WindowAccessiblePrivateStruct() *WindowAccessiblePrivate {
 	return structGo
 }
 func finalizeWindowAccessiblePrivate(obj *WindowAccessiblePrivate) {
-	windowAccessiblePrivateStruct.Free(obj.native)
+	windowAccessiblePrivateStruct.Free(obj.Native())
 }
 
 var windowClassStruct *gi.Struct
@@ -43757,7 +44242,7 @@ func (recv *WindowClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *WindowClass) FieldParentClass() *BinClass {
-	argValue := gi.StructFieldGet(windowClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(windowClassStruct, recv.Native(), "parent_class")
 	value := BinClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -43765,8 +44250,8 @@ func (recv *WindowClass) FieldParentClass() *BinClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *WindowClass) SetFieldParentClass(value *BinClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(windowClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(windowClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'set_focus' : for field getter : missing Type
@@ -43813,7 +44298,7 @@ func WindowClassStruct() *WindowClass {
 	return structGo
 }
 func finalizeWindowClass(obj *WindowClass) {
-	windowClassStruct.Free(obj.native)
+	windowClassStruct.Free(obj.Native())
 }
 
 var windowGeometryInfoStruct *gi.Struct
@@ -43862,7 +44347,7 @@ func WindowGeometryInfoStruct() *WindowGeometryInfo {
 	return structGo
 }
 func finalizeWindowGeometryInfo(obj *WindowGeometryInfo) {
-	windowGeometryInfoStruct.Free(obj.native)
+	windowGeometryInfoStruct.Free(obj.Native())
 }
 
 var windowGroupClassStruct *gi.Struct
@@ -43931,7 +44416,7 @@ func WindowGroupClassStruct() *WindowGroupClass {
 	return structGo
 }
 func finalizeWindowGroupClass(obj *WindowGroupClass) {
-	windowGroupClassStruct.Free(obj.native)
+	windowGroupClassStruct.Free(obj.Native())
 }
 
 var windowGroupPrivateStruct *gi.Struct
@@ -43980,7 +44465,7 @@ func WindowGroupPrivateStruct() *WindowGroupPrivate {
 	return structGo
 }
 func finalizeWindowGroupPrivate(obj *WindowGroupPrivate) {
-	windowGroupPrivateStruct.Free(obj.native)
+	windowGroupPrivateStruct.Free(obj.Native())
 }
 
 var windowPrivateStruct *gi.Struct
@@ -44029,5 +44514,5 @@ func WindowPrivateStruct() *WindowPrivate {
 	return structGo
 }
 func finalizeWindowPrivate(obj *WindowPrivate) {
-	windowPrivateStruct.Free(obj.native)
+	windowPrivateStruct.Free(obj.Native())
 }

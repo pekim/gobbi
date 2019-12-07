@@ -84,7 +84,7 @@ func BufferClassStruct() *BufferClass {
 	return structGo
 }
 func finalizeBufferClass(obj *BufferClass) {
-	bufferClassStruct.Free(obj.native)
+	bufferClassStruct.Free(obj.Native())
 }
 
 var bufferPrivateStruct *gi.Struct
@@ -133,7 +133,7 @@ func BufferPrivateStruct() *BufferPrivate {
 	return structGo
 }
 func finalizeBufferPrivate(obj *BufferPrivate) {
-	bufferPrivateStruct.Free(obj.native)
+	bufferPrivateStruct.Free(obj.Native())
 }
 
 var completionClassStruct *gi.Struct
@@ -214,7 +214,7 @@ func CompletionClassStruct() *CompletionClass {
 	return structGo
 }
 func finalizeCompletionClass(obj *CompletionClass) {
-	completionClassStruct.Free(obj.native)
+	completionClassStruct.Free(obj.Native())
 }
 
 var completionContextClassStruct *gi.Struct
@@ -283,7 +283,7 @@ func CompletionContextClassStruct() *CompletionContextClass {
 	return structGo
 }
 func finalizeCompletionContextClass(obj *CompletionContextClass) {
-	completionContextClassStruct.Free(obj.native)
+	completionContextClassStruct.Free(obj.Native())
 }
 
 var completionContextPrivateStruct *gi.Struct
@@ -332,7 +332,7 @@ func CompletionContextPrivateStruct() *CompletionContextPrivate {
 	return structGo
 }
 func finalizeCompletionContextPrivate(obj *CompletionContextPrivate) {
-	completionContextPrivateStruct.Free(obj.native)
+	completionContextPrivateStruct.Free(obj.Native())
 }
 
 var completionInfoClassStruct *gi.Struct
@@ -389,7 +389,7 @@ func CompletionInfoClassStruct() *CompletionInfoClass {
 	return structGo
 }
 func finalizeCompletionInfoClass(obj *CompletionInfoClass) {
-	completionInfoClassStruct.Free(obj.native)
+	completionInfoClassStruct.Free(obj.Native())
 }
 
 var completionInfoPrivateStruct *gi.Struct
@@ -438,7 +438,7 @@ func CompletionInfoPrivateStruct() *CompletionInfoPrivate {
 	return structGo
 }
 func finalizeCompletionInfoPrivate(obj *CompletionInfoPrivate) {
-	completionInfoPrivateStruct.Free(obj.native)
+	completionInfoPrivateStruct.Free(obj.Native())
 }
 
 var completionItemClassStruct *gi.Struct
@@ -491,7 +491,7 @@ func CompletionItemClassStruct() *CompletionItemClass {
 	return structGo
 }
 func finalizeCompletionItemClass(obj *CompletionItemClass) {
-	completionItemClassStruct.Free(obj.native)
+	completionItemClassStruct.Free(obj.Native())
 }
 
 var completionItemPrivateStruct *gi.Struct
@@ -540,7 +540,7 @@ func CompletionItemPrivateStruct() *CompletionItemPrivate {
 	return structGo
 }
 func finalizeCompletionItemPrivate(obj *CompletionItemPrivate) {
-	completionItemPrivateStruct.Free(obj.native)
+	completionItemPrivateStruct.Free(obj.Native())
 }
 
 var completionPrivateStruct *gi.Struct
@@ -589,7 +589,7 @@ func CompletionPrivateStruct() *CompletionPrivate {
 	return structGo
 }
 func finalizeCompletionPrivate(obj *CompletionPrivate) {
-	completionPrivateStruct.Free(obj.native)
+	completionPrivateStruct.Free(obj.Native())
 }
 
 var completionProposalIfaceStruct *gi.Struct
@@ -682,7 +682,7 @@ func CompletionProposalIfaceStruct() *CompletionProposalIface {
 	return structGo
 }
 func finalizeCompletionProposalIface(obj *CompletionProposalIface) {
-	completionProposalIfaceStruct.Free(obj.native)
+	completionProposalIfaceStruct.Free(obj.Native())
 }
 
 var completionProviderIfaceStruct *gi.Struct
@@ -787,7 +787,7 @@ func CompletionProviderIfaceStruct() *CompletionProviderIface {
 	return structGo
 }
 func finalizeCompletionProviderIface(obj *CompletionProviderIface) {
-	completionProviderIfaceStruct.Free(obj.native)
+	completionProviderIfaceStruct.Free(obj.Native())
 }
 
 var completionWordsClassStruct *gi.Struct
@@ -840,7 +840,7 @@ func CompletionWordsClassStruct() *CompletionWordsClass {
 	return structGo
 }
 func finalizeCompletionWordsClass(obj *CompletionWordsClass) {
-	completionWordsClassStruct.Free(obj.native)
+	completionWordsClassStruct.Free(obj.Native())
 }
 
 var completionWordsPrivateStruct *gi.Struct
@@ -889,7 +889,7 @@ func CompletionWordsPrivateStruct() *CompletionWordsPrivate {
 	return structGo
 }
 func finalizeCompletionWordsPrivate(obj *CompletionWordsPrivate) {
-	completionWordsPrivateStruct.Free(obj.native)
+	completionWordsPrivateStruct.Free(obj.Native())
 }
 
 var encodingStruct *gi.Struct
@@ -944,7 +944,7 @@ func encodingCopyFunction_Set() error {
 // Copy is a representation of the C type gtk_source_encoding_copy.
 func (recv *Encoding) Copy() *Encoding {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -976,7 +976,7 @@ func encodingFreeFunction_Set() error {
 // Free is a representation of the C type gtk_source_encoding_free.
 func (recv *Encoding) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := encodingFreeFunction_Set()
 	if err == nil {
@@ -1004,7 +1004,7 @@ func encodingGetCharsetFunction_Set() error {
 // GetCharset is a representation of the C type gtk_source_encoding_get_charset.
 func (recv *Encoding) GetCharset() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1036,7 +1036,7 @@ func encodingGetNameFunction_Set() error {
 // GetName is a representation of the C type gtk_source_encoding_get_name.
 func (recv *Encoding) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1068,7 +1068,7 @@ func encodingToStringFunction_Set() error {
 // ToString is a representation of the C type gtk_source_encoding_to_string.
 func (recv *Encoding) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1094,7 +1094,7 @@ func EncodingStruct() *Encoding {
 	return structGo
 }
 func finalizeEncoding(obj *Encoding) {
-	encodingStruct.Free(obj.native)
+	encodingStruct.Free(obj.Native())
 }
 
 var fileClassStruct *gi.Struct
@@ -1151,7 +1151,7 @@ func FileClassStruct() *FileClass {
 	return structGo
 }
 func finalizeFileClass(obj *FileClass) {
-	fileClassStruct.Free(obj.native)
+	fileClassStruct.Free(obj.Native())
 }
 
 var fileLoaderClassStruct *gi.Struct
@@ -1208,7 +1208,7 @@ func FileLoaderClassStruct() *FileLoaderClass {
 	return structGo
 }
 func finalizeFileLoaderClass(obj *FileLoaderClass) {
-	fileLoaderClassStruct.Free(obj.native)
+	fileLoaderClassStruct.Free(obj.Native())
 }
 
 var fileLoaderPrivateStruct *gi.Struct
@@ -1257,7 +1257,7 @@ func FileLoaderPrivateStruct() *FileLoaderPrivate {
 	return structGo
 }
 func finalizeFileLoaderPrivate(obj *FileLoaderPrivate) {
-	fileLoaderPrivateStruct.Free(obj.native)
+	fileLoaderPrivateStruct.Free(obj.Native())
 }
 
 var filePrivateStruct *gi.Struct
@@ -1306,7 +1306,7 @@ func FilePrivateStruct() *FilePrivate {
 	return structGo
 }
 func finalizeFilePrivate(obj *FilePrivate) {
-	filePrivateStruct.Free(obj.native)
+	filePrivateStruct.Free(obj.Native())
 }
 
 var fileSaverClassStruct *gi.Struct
@@ -1363,7 +1363,7 @@ func FileSaverClassStruct() *FileSaverClass {
 	return structGo
 }
 func finalizeFileSaverClass(obj *FileSaverClass) {
-	fileSaverClassStruct.Free(obj.native)
+	fileSaverClassStruct.Free(obj.Native())
 }
 
 var fileSaverPrivateStruct *gi.Struct
@@ -1412,7 +1412,7 @@ func FileSaverPrivateStruct() *FileSaverPrivate {
 	return structGo
 }
 func finalizeFileSaverPrivate(obj *FileSaverPrivate) {
-	fileSaverPrivateStruct.Free(obj.native)
+	fileSaverPrivateStruct.Free(obj.Native())
 }
 
 var gutterClassStruct *gi.Struct
@@ -1465,7 +1465,7 @@ func GutterClassStruct() *GutterClass {
 	return structGo
 }
 func finalizeGutterClass(obj *GutterClass) {
-	gutterClassStruct.Free(obj.native)
+	gutterClassStruct.Free(obj.Native())
 }
 
 var gutterPrivateStruct *gi.Struct
@@ -1514,7 +1514,7 @@ func GutterPrivateStruct() *GutterPrivate {
 	return structGo
 }
 func finalizeGutterPrivate(obj *GutterPrivate) {
-	gutterPrivateStruct.Free(obj.native)
+	gutterPrivateStruct.Free(obj.Native())
 }
 
 var gutterRendererClassStruct *gi.Struct
@@ -1607,7 +1607,7 @@ func GutterRendererClassStruct() *GutterRendererClass {
 	return structGo
 }
 func finalizeGutterRendererClass(obj *GutterRendererClass) {
-	gutterRendererClassStruct.Free(obj.native)
+	gutterRendererClassStruct.Free(obj.Native())
 }
 
 var gutterRendererPixbufClassStruct *gi.Struct
@@ -1656,7 +1656,7 @@ func GutterRendererPixbufClassStruct() *GutterRendererPixbufClass {
 	return structGo
 }
 func finalizeGutterRendererPixbufClass(obj *GutterRendererPixbufClass) {
-	gutterRendererPixbufClassStruct.Free(obj.native)
+	gutterRendererPixbufClassStruct.Free(obj.Native())
 }
 
 var gutterRendererPixbufPrivateStruct *gi.Struct
@@ -1705,7 +1705,7 @@ func GutterRendererPixbufPrivateStruct() *GutterRendererPixbufPrivate {
 	return structGo
 }
 func finalizeGutterRendererPixbufPrivate(obj *GutterRendererPixbufPrivate) {
-	gutterRendererPixbufPrivateStruct.Free(obj.native)
+	gutterRendererPixbufPrivateStruct.Free(obj.Native())
 }
 
 var gutterRendererPrivateStruct *gi.Struct
@@ -1754,7 +1754,7 @@ func GutterRendererPrivateStruct() *GutterRendererPrivate {
 	return structGo
 }
 func finalizeGutterRendererPrivate(obj *GutterRendererPrivate) {
-	gutterRendererPrivateStruct.Free(obj.native)
+	gutterRendererPrivateStruct.Free(obj.Native())
 }
 
 var gutterRendererTextClassStruct *gi.Struct
@@ -1803,7 +1803,7 @@ func GutterRendererTextClassStruct() *GutterRendererTextClass {
 	return structGo
 }
 func finalizeGutterRendererTextClass(obj *GutterRendererTextClass) {
-	gutterRendererTextClassStruct.Free(obj.native)
+	gutterRendererTextClassStruct.Free(obj.Native())
 }
 
 var gutterRendererTextPrivateStruct *gi.Struct
@@ -1852,7 +1852,7 @@ func GutterRendererTextPrivateStruct() *GutterRendererTextPrivate {
 	return structGo
 }
 func finalizeGutterRendererTextPrivate(obj *GutterRendererTextPrivate) {
-	gutterRendererTextPrivateStruct.Free(obj.native)
+	gutterRendererTextPrivateStruct.Free(obj.Native())
 }
 
 var languageClassStruct *gi.Struct
@@ -1913,7 +1913,7 @@ func LanguageClassStruct() *LanguageClass {
 	return structGo
 }
 func finalizeLanguageClass(obj *LanguageClass) {
-	languageClassStruct.Free(obj.native)
+	languageClassStruct.Free(obj.Native())
 }
 
 var languageManagerClassStruct *gi.Struct
@@ -1982,7 +1982,7 @@ func LanguageManagerClassStruct() *LanguageManagerClass {
 	return structGo
 }
 func finalizeLanguageManagerClass(obj *LanguageManagerClass) {
-	languageManagerClassStruct.Free(obj.native)
+	languageManagerClassStruct.Free(obj.Native())
 }
 
 var languageManagerPrivateStruct *gi.Struct
@@ -2031,7 +2031,7 @@ func LanguageManagerPrivateStruct() *LanguageManagerPrivate {
 	return structGo
 }
 func finalizeLanguageManagerPrivate(obj *LanguageManagerPrivate) {
-	languageManagerPrivateStruct.Free(obj.native)
+	languageManagerPrivateStruct.Free(obj.Native())
 }
 
 var languagePrivateStruct *gi.Struct
@@ -2080,7 +2080,7 @@ func LanguagePrivateStruct() *LanguagePrivate {
 	return structGo
 }
 func finalizeLanguagePrivate(obj *LanguagePrivate) {
-	languagePrivateStruct.Free(obj.native)
+	languagePrivateStruct.Free(obj.Native())
 }
 
 var mapClassStruct *gi.Struct
@@ -2119,7 +2119,7 @@ func (recv *MapClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MapClass) FieldParentClass() *ViewClass {
-	argValue := gi.StructFieldGet(mapClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(mapClassStruct, recv.Native(), "parent_class")
 	value := ViewClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -2127,8 +2127,8 @@ func (recv *MapClass) FieldParentClass() *ViewClass {
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MapClass) SetFieldParentClass(value *ViewClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(mapClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(mapClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
@@ -2147,7 +2147,7 @@ func MapClassStruct() *MapClass {
 	return structGo
 }
 func finalizeMapClass(obj *MapClass) {
-	mapClassStruct.Free(obj.native)
+	mapClassStruct.Free(obj.Native())
 }
 
 var markAttributesClassStruct *gi.Struct
@@ -2196,7 +2196,7 @@ func MarkAttributesClassStruct() *MarkAttributesClass {
 	return structGo
 }
 func finalizeMarkAttributesClass(obj *MarkAttributesClass) {
-	markAttributesClassStruct.Free(obj.native)
+	markAttributesClassStruct.Free(obj.Native())
 }
 
 var markAttributesPrivateStruct *gi.Struct
@@ -2245,7 +2245,7 @@ func MarkAttributesPrivateStruct() *MarkAttributesPrivate {
 	return structGo
 }
 func finalizeMarkAttributesPrivate(obj *MarkAttributesPrivate) {
-	markAttributesPrivateStruct.Free(obj.native)
+	markAttributesPrivateStruct.Free(obj.Native())
 }
 
 var markClassStruct *gi.Struct
@@ -2306,7 +2306,7 @@ func MarkClassStruct() *MarkClass {
 	return structGo
 }
 func finalizeMarkClass(obj *MarkClass) {
-	markClassStruct.Free(obj.native)
+	markClassStruct.Free(obj.Native())
 }
 
 var markPrivateStruct *gi.Struct
@@ -2355,7 +2355,7 @@ func MarkPrivateStruct() *MarkPrivate {
 	return structGo
 }
 func finalizeMarkPrivate(obj *MarkPrivate) {
-	markPrivateStruct.Free(obj.native)
+	markPrivateStruct.Free(obj.Native())
 }
 
 var printCompositorClassStruct *gi.Struct
@@ -2416,7 +2416,7 @@ func PrintCompositorClassStruct() *PrintCompositorClass {
 	return structGo
 }
 func finalizePrintCompositorClass(obj *PrintCompositorClass) {
-	printCompositorClassStruct.Free(obj.native)
+	printCompositorClassStruct.Free(obj.Native())
 }
 
 var printCompositorPrivateStruct *gi.Struct
@@ -2465,7 +2465,7 @@ func PrintCompositorPrivateStruct() *PrintCompositorPrivate {
 	return structGo
 }
 func finalizePrintCompositorPrivate(obj *PrintCompositorPrivate) {
-	printCompositorPrivateStruct.Free(obj.native)
+	printCompositorPrivateStruct.Free(obj.Native())
 }
 
 var regionClassStruct *gi.Struct
@@ -2522,7 +2522,7 @@ func RegionClassStruct() *RegionClass {
 	return structGo
 }
 func finalizeRegionClass(obj *RegionClass) {
-	regionClassStruct.Free(obj.native)
+	regionClassStruct.Free(obj.Native())
 }
 
 var regionIterStruct *gi.Struct
@@ -2579,7 +2579,7 @@ func regionIterIsEndFunction_Set() error {
 // IsEnd is a representation of the C type gtk_source_region_iter_is_end.
 func (recv *RegionIter) IsEnd() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2611,7 +2611,7 @@ func regionIterNextFunction_Set() error {
 // Next is a representation of the C type gtk_source_region_iter_next.
 func (recv *RegionIter) Next() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2637,7 +2637,7 @@ func RegionIterStruct() *RegionIter {
 	return structGo
 }
 func finalizeRegionIter(obj *RegionIter) {
-	regionIterStruct.Free(obj.native)
+	regionIterStruct.Free(obj.Native())
 }
 
 var searchContextClassStruct *gi.Struct
@@ -2694,7 +2694,7 @@ func SearchContextClassStruct() *SearchContextClass {
 	return structGo
 }
 func finalizeSearchContextClass(obj *SearchContextClass) {
-	searchContextClassStruct.Free(obj.native)
+	searchContextClassStruct.Free(obj.Native())
 }
 
 var searchContextPrivateStruct *gi.Struct
@@ -2743,7 +2743,7 @@ func SearchContextPrivateStruct() *SearchContextPrivate {
 	return structGo
 }
 func finalizeSearchContextPrivate(obj *SearchContextPrivate) {
-	searchContextPrivateStruct.Free(obj.native)
+	searchContextPrivateStruct.Free(obj.Native())
 }
 
 var searchSettingsClassStruct *gi.Struct
@@ -2800,7 +2800,7 @@ func SearchSettingsClassStruct() *SearchSettingsClass {
 	return structGo
 }
 func finalizeSearchSettingsClass(obj *SearchSettingsClass) {
-	searchSettingsClassStruct.Free(obj.native)
+	searchSettingsClassStruct.Free(obj.Native())
 }
 
 var searchSettingsPrivateStruct *gi.Struct
@@ -2849,7 +2849,7 @@ func SearchSettingsPrivateStruct() *SearchSettingsPrivate {
 	return structGo
 }
 func finalizeSearchSettingsPrivate(obj *SearchSettingsPrivate) {
-	searchSettingsPrivateStruct.Free(obj.native)
+	searchSettingsPrivateStruct.Free(obj.Native())
 }
 
 var spaceDrawerClassStruct *gi.Struct
@@ -2906,7 +2906,7 @@ func SpaceDrawerClassStruct() *SpaceDrawerClass {
 	return structGo
 }
 func finalizeSpaceDrawerClass(obj *SpaceDrawerClass) {
-	spaceDrawerClassStruct.Free(obj.native)
+	spaceDrawerClassStruct.Free(obj.Native())
 }
 
 var spaceDrawerPrivateStruct *gi.Struct
@@ -2955,7 +2955,7 @@ func SpaceDrawerPrivateStruct() *SpaceDrawerPrivate {
 	return structGo
 }
 func finalizeSpaceDrawerPrivate(obj *SpaceDrawerPrivate) {
-	spaceDrawerPrivateStruct.Free(obj.native)
+	spaceDrawerPrivateStruct.Free(obj.Native())
 }
 
 var styleClassStruct *gi.Struct
@@ -3004,7 +3004,7 @@ func StyleClassStruct() *StyleClass {
 	return structGo
 }
 func finalizeStyleClass(obj *StyleClass) {
-	styleClassStruct.Free(obj.native)
+	styleClassStruct.Free(obj.Native())
 }
 
 var styleSchemeChooserButtonClassStruct *gi.Struct
@@ -3057,7 +3057,7 @@ func StyleSchemeChooserButtonClassStruct() *StyleSchemeChooserButtonClass {
 	return structGo
 }
 func finalizeStyleSchemeChooserButtonClass(obj *StyleSchemeChooserButtonClass) {
-	styleSchemeChooserButtonClassStruct.Free(obj.native)
+	styleSchemeChooserButtonClassStruct.Free(obj.Native())
 }
 
 var styleSchemeChooserInterfaceStruct *gi.Struct
@@ -3122,7 +3122,7 @@ func StyleSchemeChooserInterfaceStruct() *StyleSchemeChooserInterface {
 	return structGo
 }
 func finalizeStyleSchemeChooserInterface(obj *StyleSchemeChooserInterface) {
-	styleSchemeChooserInterfaceStruct.Free(obj.native)
+	styleSchemeChooserInterfaceStruct.Free(obj.Native())
 }
 
 var styleSchemeChooserWidgetClassStruct *gi.Struct
@@ -3175,7 +3175,7 @@ func StyleSchemeChooserWidgetClassStruct() *StyleSchemeChooserWidgetClass {
 	return structGo
 }
 func finalizeStyleSchemeChooserWidgetClass(obj *StyleSchemeChooserWidgetClass) {
-	styleSchemeChooserWidgetClassStruct.Free(obj.native)
+	styleSchemeChooserWidgetClassStruct.Free(obj.Native())
 }
 
 var styleSchemeClassStruct *gi.Struct
@@ -3236,7 +3236,7 @@ func StyleSchemeClassStruct() *StyleSchemeClass {
 	return structGo
 }
 func finalizeStyleSchemeClass(obj *StyleSchemeClass) {
-	styleSchemeClassStruct.Free(obj.native)
+	styleSchemeClassStruct.Free(obj.Native())
 }
 
 var styleSchemeManagerClassStruct *gi.Struct
@@ -3305,7 +3305,7 @@ func StyleSchemeManagerClassStruct() *StyleSchemeManagerClass {
 	return structGo
 }
 func finalizeStyleSchemeManagerClass(obj *StyleSchemeManagerClass) {
-	styleSchemeManagerClassStruct.Free(obj.native)
+	styleSchemeManagerClassStruct.Free(obj.Native())
 }
 
 var styleSchemeManagerPrivateStruct *gi.Struct
@@ -3354,7 +3354,7 @@ func StyleSchemeManagerPrivateStruct() *StyleSchemeManagerPrivate {
 	return structGo
 }
 func finalizeStyleSchemeManagerPrivate(obj *StyleSchemeManagerPrivate) {
-	styleSchemeManagerPrivateStruct.Free(obj.native)
+	styleSchemeManagerPrivateStruct.Free(obj.Native())
 }
 
 var styleSchemePrivateStruct *gi.Struct
@@ -3403,7 +3403,7 @@ func StyleSchemePrivateStruct() *StyleSchemePrivate {
 	return structGo
 }
 func finalizeStyleSchemePrivate(obj *StyleSchemePrivate) {
-	styleSchemePrivateStruct.Free(obj.native)
+	styleSchemePrivateStruct.Free(obj.Native())
 }
 
 var tagClassStruct *gi.Struct
@@ -3460,7 +3460,7 @@ func TagClassStruct() *TagClass {
 	return structGo
 }
 func finalizeTagClass(obj *TagClass) {
-	tagClassStruct.Free(obj.native)
+	tagClassStruct.Free(obj.Native())
 }
 
 var undoManagerIfaceStruct *gi.Struct
@@ -3545,7 +3545,7 @@ func UndoManagerIfaceStruct() *UndoManagerIface {
 	return structGo
 }
 func finalizeUndoManagerIface(obj *UndoManagerIface) {
-	undoManagerIfaceStruct.Free(obj.native)
+	undoManagerIfaceStruct.Free(obj.Native())
 }
 
 var viewClassStruct *gi.Struct
@@ -3622,7 +3622,7 @@ func ViewClassStruct() *ViewClass {
 	return structGo
 }
 func finalizeViewClass(obj *ViewClass) {
-	viewClassStruct.Free(obj.native)
+	viewClassStruct.Free(obj.Native())
 }
 
 var viewPrivateStruct *gi.Struct
@@ -3671,5 +3671,5 @@ func ViewPrivateStruct() *ViewPrivate {
 	return structGo
 }
 func finalizeViewPrivate(obj *ViewPrivate) {
-	viewPrivateStruct.Free(obj.native)
+	viewPrivateStruct.Free(obj.Native())
 }

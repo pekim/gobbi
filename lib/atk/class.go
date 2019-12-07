@@ -44,12 +44,12 @@ func GObjectAccessibleNewFromNative(native unsafe.Pointer) *GObjectAccessible {
 
 // ObjectAtk upcasts to *ObjectAtk
 func (recv *GObjectAccessible) ObjectAtk() *Object {
-	return ObjectNewFromNative(recv.native)
+	return ObjectNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *GObjectAccessible) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -67,7 +67,7 @@ func (recv *GObjectAccessible) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *GObjectAccessible) FieldParent() *Object {
-	argValue := gi.ObjectFieldGet(gObjectAccessibleObject, recv.native, "parent")
+	argValue := gi.ObjectFieldGet(gObjectAccessibleObject, recv.Native(), "parent")
 	value := ObjectNewFromNative(argValue.Pointer())
 	return value
 }
@@ -75,11 +75,41 @@ func (recv *GObjectAccessible) FieldParent() *Object {
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *GObjectAccessible) SetFieldParent(value *Object) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(gObjectAccessibleObject, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(gObjectAccessibleObject, recv.Native(), "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'atk_gobject_accessible_get_object' : return type 'GObject.Object' not supported
+var gObjectAccessibleGetObjectFunction *gi.Function
+var gObjectAccessibleGetObjectFunction_Once sync.Once
+
+func gObjectAccessibleGetObjectFunction_Set() error {
+	var err error
+	gObjectAccessibleGetObjectFunction_Once.Do(func() {
+		err = gObjectAccessibleObject_Set()
+		if err != nil {
+			return
+		}
+		gObjectAccessibleGetObjectFunction, err = gObjectAccessibleObject.InvokerNew("get_object")
+	})
+	return err
+}
+
+// GetObject is a representation of the C type atk_gobject_accessible_get_object.
+func (recv *GObjectAccessible) GetObject() *gobject.Object {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := gObjectAccessibleGetObjectFunction_Set()
+	if err == nil {
+		ret = gObjectAccessibleGetObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gobject.ObjectNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var hyperlinkObject *gi.Object
 var hyperlinkObject_Once sync.Once
@@ -115,7 +145,7 @@ func HyperlinkNewFromNative(native unsafe.Pointer) *Hyperlink {
 
 // Object upcasts to *Object
 func (recv *Hyperlink) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -131,9 +161,19 @@ func (recv *Hyperlink) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *Hyperlink) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(hyperlinkObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *Hyperlink) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(hyperlinkObject, recv.Native(), "parent", argValue)
+}
 
 var hyperlinkGetEndIndexFunction *gi.Function
 var hyperlinkGetEndIndexFunction_Once sync.Once
@@ -153,7 +193,7 @@ func hyperlinkGetEndIndexFunction_Set() error {
 // GetEndIndex is a representation of the C type atk_hyperlink_get_end_index.
 func (recv *Hyperlink) GetEndIndex() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -185,7 +225,7 @@ func hyperlinkGetNAnchorsFunction_Set() error {
 // GetNAnchors is a representation of the C type atk_hyperlink_get_n_anchors.
 func (recv *Hyperlink) GetNAnchors() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -217,7 +257,7 @@ func hyperlinkGetObjectFunction_Set() error {
 // GetObject is a representation of the C type atk_hyperlink_get_object.
 func (recv *Hyperlink) GetObject(i int32) *Object {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(i)
 
 	var ret gi.Argument
@@ -250,7 +290,7 @@ func hyperlinkGetStartIndexFunction_Set() error {
 // GetStartIndex is a representation of the C type atk_hyperlink_get_start_index.
 func (recv *Hyperlink) GetStartIndex() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -282,7 +322,7 @@ func hyperlinkGetUriFunction_Set() error {
 // GetUri is a representation of the C type atk_hyperlink_get_uri.
 func (recv *Hyperlink) GetUri(i int32) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(i)
 
 	var ret gi.Argument
@@ -315,7 +355,7 @@ func hyperlinkIsInlineFunction_Set() error {
 // IsInline is a representation of the C type atk_hyperlink_is_inline.
 func (recv *Hyperlink) IsInline() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -347,7 +387,7 @@ func hyperlinkIsSelectedLinkFunction_Set() error {
 // IsSelectedLink is a representation of the C type atk_hyperlink_is_selected_link.
 func (recv *Hyperlink) IsSelectedLink() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -379,7 +419,7 @@ func hyperlinkIsValidFunction_Set() error {
 // IsValid is a representation of the C type atk_hyperlink_is_valid.
 func (recv *Hyperlink) IsValid() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -427,7 +467,7 @@ func MiscNewFromNative(native unsafe.Pointer) *Misc {
 
 // Object upcasts to *Object
 func (recv *Misc) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -443,9 +483,19 @@ func (recv *Misc) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *Misc) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(miscObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *Misc) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(miscObject, recv.Native(), "parent", argValue)
+}
 
 var miscThreadsEnterFunction *gi.Function
 var miscThreadsEnterFunction_Once sync.Once
@@ -465,7 +515,7 @@ func miscThreadsEnterFunction_Set() error {
 // ThreadsEnter is a representation of the C type atk_misc_threads_enter.
 func (recv *Misc) ThreadsEnter() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := miscThreadsEnterFunction_Set()
 	if err == nil {
@@ -493,7 +543,7 @@ func miscThreadsLeaveFunction_Set() error {
 // ThreadsLeave is a representation of the C type atk_misc_threads_leave.
 func (recv *Misc) ThreadsLeave() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := miscThreadsLeaveFunction_Set()
 	if err == nil {
@@ -537,12 +587,12 @@ func NoOpObjectNewFromNative(native unsafe.Pointer) *NoOpObject {
 
 // ObjectAtk upcasts to *ObjectAtk
 func (recv *NoOpObject) ObjectAtk() *Object {
-	return ObjectNewFromNative(recv.native)
+	return ObjectNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *NoOpObject) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -560,7 +610,7 @@ func (recv *NoOpObject) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *NoOpObject) FieldParent() *Object {
-	argValue := gi.ObjectFieldGet(noOpObjectObject, recv.native, "parent")
+	argValue := gi.ObjectFieldGet(noOpObjectObject, recv.Native(), "parent")
 	value := ObjectNewFromNative(argValue.Pointer())
 	return value
 }
@@ -568,11 +618,43 @@ func (recv *NoOpObject) FieldParent() *Object {
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *NoOpObject) SetFieldParent(value *Object) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(noOpObjectObject, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(noOpObjectObject, recv.Native(), "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'atk_no_op_object_new' : parameter 'obj' of type 'GObject.Object' not supported
+var noOpObjectNewFunction *gi.Function
+var noOpObjectNewFunction_Once sync.Once
+
+func noOpObjectNewFunction_Set() error {
+	var err error
+	noOpObjectNewFunction_Once.Do(func() {
+		err = noOpObjectObject_Set()
+		if err != nil {
+			return
+		}
+		noOpObjectNewFunction, err = noOpObjectObject.InvokerNew("new")
+	})
+	return err
+}
+
+// NoOpObjectNew is a representation of the C type atk_no_op_object_new.
+func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(obj.Native())
+
+	var ret gi.Argument
+
+	err := noOpObjectNewFunction_Set()
+	if err == nil {
+		ret = noOpObjectNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := NoOpObjectNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var noOpObjectFactoryObject *gi.Object
 var noOpObjectFactoryObject_Once sync.Once
@@ -608,12 +690,12 @@ func NoOpObjectFactoryNewFromNative(native unsafe.Pointer) *NoOpObjectFactory {
 
 // ObjectFactory upcasts to *ObjectFactory
 func (recv *NoOpObjectFactory) ObjectFactory() *ObjectFactory {
-	return ObjectFactoryNewFromNative(recv.native)
+	return ObjectFactoryNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *NoOpObjectFactory) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -631,7 +713,7 @@ func (recv *NoOpObjectFactory) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *NoOpObjectFactory) FieldParent() *ObjectFactory {
-	argValue := gi.ObjectFieldGet(noOpObjectFactoryObject, recv.native, "parent")
+	argValue := gi.ObjectFieldGet(noOpObjectFactoryObject, recv.Native(), "parent")
 	value := ObjectFactoryNewFromNative(argValue.Pointer())
 	return value
 }
@@ -639,8 +721,8 @@ func (recv *NoOpObjectFactory) FieldParent() *ObjectFactory {
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *NoOpObjectFactory) SetFieldParent(value *ObjectFactory) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(noOpObjectFactoryObject, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(noOpObjectFactoryObject, recv.Native(), "parent", argValue)
 }
 
 var noOpObjectFactoryNewFunction *gi.Function
@@ -709,7 +791,7 @@ func ObjectNewFromNative(native unsafe.Pointer) *Object {
 
 // Object upcasts to *Object
 func (recv *Object) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -725,13 +807,23 @@ func (recv *Object) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *Object) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *Object) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(objectObject, recv.Native(), "parent", argValue)
+}
 
 // FieldDescription returns the C field 'description'.
 func (recv *Object) FieldDescription() string {
-	argValue := gi.ObjectFieldGet(objectObject, recv.native, "description")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "description")
 	value := argValue.String(false)
 	return value
 }
@@ -740,12 +832,12 @@ func (recv *Object) FieldDescription() string {
 func (recv *Object) SetFieldDescription(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.ObjectFieldSet(objectObject, recv.native, "description", argValue)
+	gi.ObjectFieldSet(objectObject, recv.Native(), "description", argValue)
 }
 
 // FieldName returns the C field 'name'.
 func (recv *Object) FieldName() string {
-	argValue := gi.ObjectFieldGet(objectObject, recv.native, "name")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "name")
 	value := argValue.String(false)
 	return value
 }
@@ -754,12 +846,12 @@ func (recv *Object) FieldName() string {
 func (recv *Object) SetFieldName(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.ObjectFieldSet(objectObject, recv.native, "name", argValue)
+	gi.ObjectFieldSet(objectObject, recv.Native(), "name", argValue)
 }
 
 // FieldAccessibleParent returns the C field 'accessible_parent'.
 func (recv *Object) FieldAccessibleParent() *Object {
-	argValue := gi.ObjectFieldGet(objectObject, recv.native, "accessible_parent")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "accessible_parent")
 	value := ObjectNewFromNative(argValue.Pointer())
 	return value
 }
@@ -767,13 +859,13 @@ func (recv *Object) FieldAccessibleParent() *Object {
 // SetFieldAccessibleParent sets the value of the C field 'accessible_parent'.
 func (recv *Object) SetFieldAccessibleParent(value *Object) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(objectObject, recv.native, "accessible_parent", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(objectObject, recv.Native(), "accessible_parent", argValue)
 }
 
 // FieldRole returns the C field 'role'.
 func (recv *Object) FieldRole() Role {
-	argValue := gi.ObjectFieldGet(objectObject, recv.native, "role")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "role")
 	value := Role(argValue.Int32())
 	return value
 }
@@ -782,12 +874,12 @@ func (recv *Object) FieldRole() Role {
 func (recv *Object) SetFieldRole(value Role) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.ObjectFieldSet(objectObject, recv.native, "role", argValue)
+	gi.ObjectFieldSet(objectObject, recv.Native(), "role", argValue)
 }
 
 // FieldRelationSet returns the C field 'relation_set'.
 func (recv *Object) FieldRelationSet() *RelationSet {
-	argValue := gi.ObjectFieldGet(objectObject, recv.native, "relation_set")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "relation_set")
 	value := RelationSetNewFromNative(argValue.Pointer())
 	return value
 }
@@ -795,13 +887,13 @@ func (recv *Object) FieldRelationSet() *RelationSet {
 // SetFieldRelationSet sets the value of the C field 'relation_set'.
 func (recv *Object) SetFieldRelationSet(value *RelationSet) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(objectObject, recv.native, "relation_set", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(objectObject, recv.Native(), "relation_set", argValue)
 }
 
 // FieldLayer returns the C field 'layer'.
 func (recv *Object) FieldLayer() Layer {
-	argValue := gi.ObjectFieldGet(objectObject, recv.native, "layer")
+	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "layer")
 	value := Layer(argValue.Int32())
 	return value
 }
@@ -810,7 +902,7 @@ func (recv *Object) FieldLayer() Layer {
 func (recv *Object) SetFieldLayer(value Layer) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.ObjectFieldSet(objectObject, recv.native, "layer", argValue)
+	gi.ObjectFieldSet(objectObject, recv.Native(), "layer", argValue)
 }
 
 var objectAddRelationshipFunction *gi.Function
@@ -831,9 +923,9 @@ func objectAddRelationshipFunction_Set() error {
 // AddRelationship is a representation of the C type atk_object_add_relationship.
 func (recv *Object) AddRelationship(relationship RelationType, target *Object) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(relationship))
-	inArgs[2].SetPointer(target.native)
+	inArgs[2].SetPointer(target.Native())
 
 	var ret gi.Argument
 
@@ -867,7 +959,7 @@ func objectGetAccessibleIdFunction_Set() error {
 // GetAccessibleId is a representation of the C type atk_object_get_accessible_id.
 func (recv *Object) GetAccessibleId() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -901,7 +993,7 @@ func objectGetDescriptionFunction_Set() error {
 // GetDescription is a representation of the C type atk_object_get_description.
 func (recv *Object) GetDescription() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -933,7 +1025,7 @@ func objectGetIndexInParentFunction_Set() error {
 // GetIndexInParent is a representation of the C type atk_object_get_index_in_parent.
 func (recv *Object) GetIndexInParent() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -965,7 +1057,7 @@ func objectGetLayerFunction_Set() error {
 // GetLayer is a representation of the C type atk_object_get_layer.
 func (recv *Object) GetLayer() Layer {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -997,7 +1089,7 @@ func objectGetMdiZorderFunction_Set() error {
 // GetMdiZorder is a representation of the C type atk_object_get_mdi_zorder.
 func (recv *Object) GetMdiZorder() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1029,7 +1121,7 @@ func objectGetNAccessibleChildrenFunction_Set() error {
 // GetNAccessibleChildren is a representation of the C type atk_object_get_n_accessible_children.
 func (recv *Object) GetNAccessibleChildren() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1061,7 +1153,7 @@ func objectGetNameFunction_Set() error {
 // GetName is a representation of the C type atk_object_get_name.
 func (recv *Object) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1093,7 +1185,7 @@ func objectGetObjectLocaleFunction_Set() error {
 // GetObjectLocale is a representation of the C type atk_object_get_object_locale.
 func (recv *Object) GetObjectLocale() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1125,7 +1217,7 @@ func objectGetParentFunction_Set() error {
 // GetParent is a representation of the C type atk_object_get_parent.
 func (recv *Object) GetParent() *Object {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1157,7 +1249,7 @@ func objectGetRoleFunction_Set() error {
 // GetRole is a representation of the C type atk_object_get_role.
 func (recv *Object) GetRole() Role {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1191,7 +1283,7 @@ func objectNotifyStateChangeFunction_Set() error {
 // NotifyStateChange is a representation of the C type atk_object_notify_state_change.
 func (recv *Object) NotifyStateChange(state State, value bool) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint64(uint64(state))
 	inArgs[2].SetBoolean(value)
 
@@ -1221,7 +1313,7 @@ func objectPeekParentFunction_Set() error {
 // PeekParent is a representation of the C type atk_object_peek_parent.
 func (recv *Object) PeekParent() *Object {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1253,7 +1345,7 @@ func objectRefAccessibleChildFunction_Set() error {
 // RefAccessibleChild is a representation of the C type atk_object_ref_accessible_child.
 func (recv *Object) RefAccessibleChild(i int32) *Object {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(i)
 
 	var ret gi.Argument
@@ -1286,7 +1378,7 @@ func objectRefRelationSetFunction_Set() error {
 // RefRelationSet is a representation of the C type atk_object_ref_relation_set.
 func (recv *Object) RefRelationSet() *RelationSet {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1318,7 +1410,7 @@ func objectRefStateSetFunction_Set() error {
 // RefStateSet is a representation of the C type atk_object_ref_state_set.
 func (recv *Object) RefStateSet() *StateSet {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1350,7 +1442,7 @@ func objectRemovePropertyChangeHandlerFunction_Set() error {
 // RemovePropertyChangeHandler is a representation of the C type atk_object_remove_property_change_handler.
 func (recv *Object) RemovePropertyChangeHandler(handlerId uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(handlerId)
 
 	err := objectRemovePropertyChangeHandlerFunction_Set()
@@ -1379,9 +1471,9 @@ func objectRemoveRelationshipFunction_Set() error {
 // RemoveRelationship is a representation of the C type atk_object_remove_relationship.
 func (recv *Object) RemoveRelationship(relationship RelationType, target *Object) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(relationship))
-	inArgs[2].SetPointer(target.native)
+	inArgs[2].SetPointer(target.Native())
 
 	var ret gi.Argument
 
@@ -1413,7 +1505,7 @@ func objectSetAccessibleIdFunction_Set() error {
 // SetAccessibleId is a representation of the C type atk_object_set_accessible_id.
 func (recv *Object) SetAccessibleId(name string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(name)
 
 	err := objectSetAccessibleIdFunction_Set()
@@ -1442,7 +1534,7 @@ func objectSetDescriptionFunction_Set() error {
 // SetDescription is a representation of the C type atk_object_set_description.
 func (recv *Object) SetDescription(description string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(description)
 
 	err := objectSetDescriptionFunction_Set()
@@ -1471,7 +1563,7 @@ func objectSetNameFunction_Set() error {
 // SetName is a representation of the C type atk_object_set_name.
 func (recv *Object) SetName(name string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(name)
 
 	err := objectSetNameFunction_Set()
@@ -1500,8 +1592,8 @@ func objectSetParentFunction_Set() error {
 // SetParent is a representation of the C type atk_object_set_parent.
 func (recv *Object) SetParent(parent *Object) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(parent.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(parent.Native())
 
 	err := objectSetParentFunction_Set()
 	if err == nil {
@@ -1529,7 +1621,7 @@ func objectSetRoleFunction_Set() error {
 // SetRole is a representation of the C type atk_object_set_role.
 func (recv *Object) SetRole(role Role) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(role))
 
 	err := objectSetRoleFunction_Set()
@@ -1574,7 +1666,7 @@ func ObjectFactoryNewFromNative(native unsafe.Pointer) *ObjectFactory {
 
 // Object upcasts to *Object
 func (recv *ObjectFactory) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -1590,11 +1682,52 @@ func (recv *ObjectFactory) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *ObjectFactory) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(objectFactoryObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *ObjectFactory) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(objectFactoryObject, recv.Native(), "parent", argValue)
+}
 
-// UNSUPPORTED : C value 'atk_object_factory_create_accessible' : parameter 'obj' of type 'GObject.Object' not supported
+var objectFactoryCreateAccessibleFunction *gi.Function
+var objectFactoryCreateAccessibleFunction_Once sync.Once
+
+func objectFactoryCreateAccessibleFunction_Set() error {
+	var err error
+	objectFactoryCreateAccessibleFunction_Once.Do(func() {
+		err = objectFactoryObject_Set()
+		if err != nil {
+			return
+		}
+		objectFactoryCreateAccessibleFunction, err = objectFactoryObject.InvokerNew("create_accessible")
+	})
+	return err
+}
+
+// CreateAccessible is a representation of the C type atk_object_factory_create_accessible.
+func (recv *ObjectFactory) CreateAccessible(obj *gobject.Object) *Object {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(obj.Native())
+
+	var ret gi.Argument
+
+	err := objectFactoryCreateAccessibleFunction_Set()
+	if err == nil {
+		ret = objectFactoryCreateAccessibleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ObjectNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'atk_object_factory_get_accessible_type' : return type 'GType' not supported
 
@@ -1616,7 +1749,7 @@ func objectFactoryInvalidateFunction_Set() error {
 // Invalidate is a representation of the C type atk_object_factory_invalidate.
 func (recv *ObjectFactory) Invalidate() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := objectFactoryInvalidateFunction_Set()
 	if err == nil {
@@ -1660,12 +1793,12 @@ func PlugNewFromNative(native unsafe.Pointer) *Plug {
 
 // ObjectAtk upcasts to *ObjectAtk
 func (recv *Plug) ObjectAtk() *Object {
-	return ObjectNewFromNative(recv.native)
+	return ObjectNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *Plug) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -1683,7 +1816,7 @@ func (recv *Plug) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Plug) FieldParent() *Object {
-	argValue := gi.ObjectFieldGet(plugObject, recv.native, "parent")
+	argValue := gi.ObjectFieldGet(plugObject, recv.Native(), "parent")
 	value := ObjectNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1691,8 +1824,8 @@ func (recv *Plug) FieldParent() *Object {
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Plug) SetFieldParent(value *Object) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(plugObject, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(plugObject, recv.Native(), "parent", argValue)
 }
 
 var plugNewFunction *gi.Function
@@ -1745,7 +1878,7 @@ func plugGetIdFunction_Set() error {
 // GetId is a representation of the C type atk_plug_get_id.
 func (recv *Plug) GetId() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1793,7 +1926,7 @@ func RegistryNewFromNative(native unsafe.Pointer) *Registry {
 
 // Object upcasts to *Object
 func (recv *Registry) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -1809,9 +1942,19 @@ func (recv *Registry) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *Registry) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(registryObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *Registry) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(registryObject, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'factory_type_registry' : for field getter : no Go type for 'GLib.HashTable'
 
@@ -1861,7 +2004,7 @@ func RelationNewFromNative(native unsafe.Pointer) *Relation {
 
 // Object upcasts to *Object
 func (recv *Relation) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -1877,9 +2020,19 @@ func (recv *Relation) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *Relation) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(relationObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *Relation) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(relationObject, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'target' : for field getter : missing Type
 
@@ -1887,7 +2040,7 @@ func (recv *Relation) Native() unsafe.Pointer {
 
 // FieldRelationship returns the C field 'relationship'.
 func (recv *Relation) FieldRelationship() RelationType {
-	argValue := gi.ObjectFieldGet(relationObject, recv.native, "relationship")
+	argValue := gi.ObjectFieldGet(relationObject, recv.Native(), "relationship")
 	value := RelationType(argValue.Int32())
 	return value
 }
@@ -1896,7 +2049,7 @@ func (recv *Relation) FieldRelationship() RelationType {
 func (recv *Relation) SetFieldRelationship(value RelationType) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.ObjectFieldSet(relationObject, recv.native, "relationship", argValue)
+	gi.ObjectFieldSet(relationObject, recv.Native(), "relationship", argValue)
 }
 
 // UNSUPPORTED : C value 'atk_relation_new' : parameter 'targets' of type 'nil' not supported
@@ -1919,8 +2072,8 @@ func relationAddTargetFunction_Set() error {
 // AddTarget is a representation of the C type atk_relation_add_target.
 func (recv *Relation) AddTarget(target *Object) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(target.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(target.Native())
 
 	err := relationAddTargetFunction_Set()
 	if err == nil {
@@ -1948,7 +2101,7 @@ func relationGetRelationTypeFunction_Set() error {
 // GetRelationType is a representation of the C type atk_relation_get_relation_type.
 func (recv *Relation) GetRelationType() RelationType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1980,7 +2133,7 @@ func relationGetTargetFunction_Set() error {
 // GetTarget is a representation of the C type atk_relation_get_target.
 func (recv *Relation) GetTarget() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := relationGetTargetFunction_Set()
 	if err == nil {
@@ -2008,8 +2161,8 @@ func relationRemoveTargetFunction_Set() error {
 // RemoveTarget is a representation of the C type atk_relation_remove_target.
 func (recv *Relation) RemoveTarget(target *Object) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(target.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(target.Native())
 
 	var ret gi.Argument
 
@@ -2057,7 +2210,7 @@ func RelationSetNewFromNative(native unsafe.Pointer) *RelationSet {
 
 // Object upcasts to *Object
 func (recv *RelationSet) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -2073,9 +2226,19 @@ func (recv *RelationSet) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *RelationSet) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(relationSetObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *RelationSet) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(relationSetObject, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'relations' : for field getter : missing Type
 
@@ -2131,8 +2294,8 @@ func relationSetAddFunction_Set() error {
 // Add is a representation of the C type atk_relation_set_add.
 func (recv *RelationSet) Add(relation *Relation) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(relation.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(relation.Native())
 
 	err := relationSetAddFunction_Set()
 	if err == nil {
@@ -2160,9 +2323,9 @@ func relationSetAddRelationByTypeFunction_Set() error {
 // AddRelationByType is a representation of the C type atk_relation_set_add_relation_by_type.
 func (recv *RelationSet) AddRelationByType(relationship RelationType, target *Object) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(relationship))
-	inArgs[2].SetPointer(target.native)
+	inArgs[2].SetPointer(target.Native())
 
 	err := relationSetAddRelationByTypeFunction_Set()
 	if err == nil {
@@ -2190,7 +2353,7 @@ func relationSetContainsFunction_Set() error {
 // Contains is a representation of the C type atk_relation_set_contains.
 func (recv *RelationSet) Contains(relationship RelationType) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(relationship))
 
 	var ret gi.Argument
@@ -2223,9 +2386,9 @@ func relationSetContainsTargetFunction_Set() error {
 // ContainsTarget is a representation of the C type atk_relation_set_contains_target.
 func (recv *RelationSet) ContainsTarget(relationship RelationType, target *Object) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(relationship))
-	inArgs[2].SetPointer(target.native)
+	inArgs[2].SetPointer(target.Native())
 
 	var ret gi.Argument
 
@@ -2257,7 +2420,7 @@ func relationSetGetNRelationsFunction_Set() error {
 // GetNRelations is a representation of the C type atk_relation_set_get_n_relations.
 func (recv *RelationSet) GetNRelations() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2289,7 +2452,7 @@ func relationSetGetRelationFunction_Set() error {
 // GetRelation is a representation of the C type atk_relation_set_get_relation.
 func (recv *RelationSet) GetRelation(i int32) *Relation {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(i)
 
 	var ret gi.Argument
@@ -2322,7 +2485,7 @@ func relationSetGetRelationByTypeFunction_Set() error {
 // GetRelationByType is a representation of the C type atk_relation_set_get_relation_by_type.
 func (recv *RelationSet) GetRelationByType(relationship RelationType) *Relation {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(relationship))
 
 	var ret gi.Argument
@@ -2355,8 +2518,8 @@ func relationSetRemoveFunction_Set() error {
 // Remove is a representation of the C type atk_relation_set_remove.
 func (recv *RelationSet) Remove(relation *Relation) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(relation.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(relation.Native())
 
 	err := relationSetRemoveFunction_Set()
 	if err == nil {
@@ -2400,12 +2563,12 @@ func SocketNewFromNative(native unsafe.Pointer) *Socket {
 
 // ObjectAtk upcasts to *ObjectAtk
 func (recv *Socket) ObjectAtk() *Object {
-	return ObjectNewFromNative(recv.native)
+	return ObjectNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *Socket) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -2423,7 +2586,7 @@ func (recv *Socket) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Socket) FieldParent() *Object {
-	argValue := gi.ObjectFieldGet(socketObject, recv.native, "parent")
+	argValue := gi.ObjectFieldGet(socketObject, recv.Native(), "parent")
 	value := ObjectNewFromNative(argValue.Pointer())
 	return value
 }
@@ -2431,8 +2594,8 @@ func (recv *Socket) FieldParent() *Object {
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Socket) SetFieldParent(value *Object) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(socketObject, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(socketObject, recv.Native(), "parent", argValue)
 }
 
 var socketNewFunction *gi.Function
@@ -2485,7 +2648,7 @@ func socketEmbedFunction_Set() error {
 // Embed is a representation of the C type atk_socket_embed.
 func (recv *Socket) Embed(plugId string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(plugId)
 
 	err := socketEmbedFunction_Set()
@@ -2514,7 +2677,7 @@ func socketIsOccupiedFunction_Set() error {
 // IsOccupied is a representation of the C type atk_socket_is_occupied.
 func (recv *Socket) IsOccupied() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2562,7 +2725,7 @@ func StateSetNewFromNative(native unsafe.Pointer) *StateSet {
 
 // Object upcasts to *Object
 func (recv *StateSet) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -2578,9 +2741,19 @@ func (recv *StateSet) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *StateSet) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(stateSetObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *StateSet) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(stateSetObject, recv.Native(), "parent", argValue)
+}
 
 var stateSetNewFunction *gi.Function
 var stateSetNewFunction_Once sync.Once
@@ -2632,7 +2805,7 @@ func stateSetAddStateFunction_Set() error {
 // AddState is a representation of the C type atk_state_set_add_state.
 func (recv *StateSet) AddState(type_ StateType) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(type_))
 
 	var ret gi.Argument
@@ -2667,8 +2840,8 @@ func stateSetAndSetsFunction_Set() error {
 // AndSets is a representation of the C type atk_state_set_and_sets.
 func (recv *StateSet) AndSets(compareSet *StateSet) *StateSet {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(compareSet.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(compareSet.Native())
 
 	var ret gi.Argument
 
@@ -2700,7 +2873,7 @@ func stateSetClearStatesFunction_Set() error {
 // ClearStates is a representation of the C type atk_state_set_clear_states.
 func (recv *StateSet) ClearStates() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := stateSetClearStatesFunction_Set()
 	if err == nil {
@@ -2728,7 +2901,7 @@ func stateSetContainsStateFunction_Set() error {
 // ContainsState is a representation of the C type atk_state_set_contains_state.
 func (recv *StateSet) ContainsState(type_ StateType) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(type_))
 
 	var ret gi.Argument
@@ -2763,7 +2936,7 @@ func stateSetIsEmptyFunction_Set() error {
 // IsEmpty is a representation of the C type atk_state_set_is_empty.
 func (recv *StateSet) IsEmpty() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2795,8 +2968,8 @@ func stateSetOrSetsFunction_Set() error {
 // OrSets is a representation of the C type atk_state_set_or_sets.
 func (recv *StateSet) OrSets(compareSet *StateSet) *StateSet {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(compareSet.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(compareSet.Native())
 
 	var ret gi.Argument
 
@@ -2828,7 +3001,7 @@ func stateSetRemoveStateFunction_Set() error {
 // RemoveState is a representation of the C type atk_state_set_remove_state.
 func (recv *StateSet) RemoveState(type_ StateType) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(type_))
 
 	var ret gi.Argument
@@ -2861,8 +3034,8 @@ func stateSetXorSetsFunction_Set() error {
 // XorSets is a representation of the C type atk_state_set_xor_sets.
 func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(compareSet.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(compareSet.Native())
 
 	var ret gi.Argument
 
@@ -2910,7 +3083,7 @@ func UtilNewFromNative(native unsafe.Pointer) *Util {
 
 // Object upcasts to *Object
 func (recv *Util) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -2926,6 +3099,16 @@ func (recv *Util) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *Util) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(utilObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *Util) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(utilObject, recv.Native(), "parent", argValue)
+}

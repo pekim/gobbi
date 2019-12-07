@@ -19,7 +19,11 @@ type Parameter struct {
 
 func (p *Parameter) init(ns *Namespace) {
 	p.namespace = ns
+
 	p.goVarName = makeUnexportedGoName(p.Name)
+	if p.goVarName == "object" {
+		p.goVarName += "_"
+	}
 
 	if p.Direction == "" {
 		p.Direction = "in"
@@ -82,7 +86,7 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 	}
 
 	if p.Type.isRecord() {
-		goVar = goVar.Dot(fieldNameNative)
+		goVar = goVar.Dot(nativeAccessorName).Call()
 	}
 
 	value := p.Type.createFromInArgument(goVar)

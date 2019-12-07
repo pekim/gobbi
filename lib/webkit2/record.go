@@ -5,6 +5,7 @@ package webkit2
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	javascriptcore "github.com/pekim/gobbi/lib/javascriptcore"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -92,7 +93,7 @@ func applicationInfoGetNameFunction_Set() error {
 // GetName is a representation of the C type webkit_application_info_get_name.
 func (recv *ApplicationInfo) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -124,7 +125,7 @@ func applicationInfoGetVersionFunction_Set() error {
 // GetVersion is a representation of the C type webkit_application_info_get_version.
 func (recv *ApplicationInfo) GetVersion() (uint64, uint64, uint64) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [3]gi.Argument
 
@@ -158,7 +159,7 @@ func applicationInfoRefFunction_Set() error {
 // Ref is a representation of the C type webkit_application_info_ref.
 func (recv *ApplicationInfo) Ref() *ApplicationInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -190,7 +191,7 @@ func applicationInfoSetNameFunction_Set() error {
 // SetName is a representation of the C type webkit_application_info_set_name.
 func (recv *ApplicationInfo) SetName(name string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(name)
 
 	err := applicationInfoSetNameFunction_Set()
@@ -219,7 +220,7 @@ func applicationInfoSetVersionFunction_Set() error {
 // SetVersion is a representation of the C type webkit_application_info_set_version.
 func (recv *ApplicationInfo) SetVersion(major uint64, minor uint64, micro uint64) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint64(major)
 	inArgs[2].SetUint64(minor)
 	inArgs[3].SetUint64(micro)
@@ -250,7 +251,7 @@ func applicationInfoUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_application_info_unref.
 func (recv *ApplicationInfo) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := applicationInfoUnrefFunction_Set()
 	if err == nil {
@@ -326,7 +327,7 @@ func AuthenticationRequestClassStruct() *AuthenticationRequestClass {
 	return structGo
 }
 func finalizeAuthenticationRequestClass(obj *AuthenticationRequestClass) {
-	authenticationRequestClassStruct.Free(obj.native)
+	authenticationRequestClassStruct.Free(obj.Native())
 }
 
 var authenticationRequestPrivateStruct *gi.Struct
@@ -375,7 +376,7 @@ func AuthenticationRequestPrivateStruct() *AuthenticationRequestPrivate {
 	return structGo
 }
 func finalizeAuthenticationRequestPrivate(obj *AuthenticationRequestPrivate) {
-	authenticationRequestPrivateStruct.Free(obj.native)
+	authenticationRequestPrivateStruct.Free(obj.Native())
 }
 
 var automationSessionClassStruct *gi.Struct
@@ -444,7 +445,7 @@ func AutomationSessionClassStruct() *AutomationSessionClass {
 	return structGo
 }
 func finalizeAutomationSessionClass(obj *AutomationSessionClass) {
-	automationSessionClassStruct.Free(obj.native)
+	automationSessionClassStruct.Free(obj.Native())
 }
 
 var automationSessionPrivateStruct *gi.Struct
@@ -493,7 +494,7 @@ func AutomationSessionPrivateStruct() *AutomationSessionPrivate {
 	return structGo
 }
 func finalizeAutomationSessionPrivate(obj *AutomationSessionPrivate) {
-	automationSessionPrivateStruct.Free(obj.native)
+	automationSessionPrivateStruct.Free(obj.Native())
 }
 
 var backForwardListClassStruct *gi.Struct
@@ -562,7 +563,7 @@ func BackForwardListClassStruct() *BackForwardListClass {
 	return structGo
 }
 func finalizeBackForwardListClass(obj *BackForwardListClass) {
-	backForwardListClassStruct.Free(obj.native)
+	backForwardListClassStruct.Free(obj.Native())
 }
 
 var backForwardListItemClassStruct *gi.Struct
@@ -631,7 +632,7 @@ func BackForwardListItemClassStruct() *BackForwardListItemClass {
 	return structGo
 }
 func finalizeBackForwardListItemClass(obj *BackForwardListItemClass) {
-	backForwardListItemClassStruct.Free(obj.native)
+	backForwardListItemClassStruct.Free(obj.Native())
 }
 
 var backForwardListItemPrivateStruct *gi.Struct
@@ -680,7 +681,7 @@ func BackForwardListItemPrivateStruct() *BackForwardListItemPrivate {
 	return structGo
 }
 func finalizeBackForwardListItemPrivate(obj *BackForwardListItemPrivate) {
-	backForwardListItemPrivateStruct.Free(obj.native)
+	backForwardListItemPrivateStruct.Free(obj.Native())
 }
 
 var backForwardListPrivateStruct *gi.Struct
@@ -729,7 +730,7 @@ func BackForwardListPrivateStruct() *BackForwardListPrivate {
 	return structGo
 }
 func finalizeBackForwardListPrivate(obj *BackForwardListPrivate) {
-	backForwardListPrivateStruct.Free(obj.native)
+	backForwardListPrivateStruct.Free(obj.Native())
 }
 
 var colorChooserRequestClassStruct *gi.Struct
@@ -782,7 +783,7 @@ func ColorChooserRequestClassStruct() *ColorChooserRequestClass {
 	return structGo
 }
 func finalizeColorChooserRequestClass(obj *ColorChooserRequestClass) {
-	colorChooserRequestClassStruct.Free(obj.native)
+	colorChooserRequestClassStruct.Free(obj.Native())
 }
 
 var colorChooserRequestPrivateStruct *gi.Struct
@@ -831,7 +832,7 @@ func ColorChooserRequestPrivateStruct() *ColorChooserRequestPrivate {
 	return structGo
 }
 func finalizeColorChooserRequestPrivate(obj *ColorChooserRequestPrivate) {
-	colorChooserRequestPrivateStruct.Free(obj.native)
+	colorChooserRequestPrivateStruct.Free(obj.Native())
 }
 
 var contextMenuClassStruct *gi.Struct
@@ -900,7 +901,7 @@ func ContextMenuClassStruct() *ContextMenuClass {
 	return structGo
 }
 func finalizeContextMenuClass(obj *ContextMenuClass) {
-	contextMenuClassStruct.Free(obj.native)
+	contextMenuClassStruct.Free(obj.Native())
 }
 
 var contextMenuItemClassStruct *gi.Struct
@@ -969,7 +970,7 @@ func ContextMenuItemClassStruct() *ContextMenuItemClass {
 	return structGo
 }
 func finalizeContextMenuItemClass(obj *ContextMenuItemClass) {
-	contextMenuItemClassStruct.Free(obj.native)
+	contextMenuItemClassStruct.Free(obj.Native())
 }
 
 var contextMenuItemPrivateStruct *gi.Struct
@@ -1018,7 +1019,7 @@ func ContextMenuItemPrivateStruct() *ContextMenuItemPrivate {
 	return structGo
 }
 func finalizeContextMenuItemPrivate(obj *ContextMenuItemPrivate) {
-	contextMenuItemPrivateStruct.Free(obj.native)
+	contextMenuItemPrivateStruct.Free(obj.Native())
 }
 
 var contextMenuPrivateStruct *gi.Struct
@@ -1067,7 +1068,7 @@ func ContextMenuPrivateStruct() *ContextMenuPrivate {
 	return structGo
 }
 func finalizeContextMenuPrivate(obj *ContextMenuPrivate) {
-	contextMenuPrivateStruct.Free(obj.native)
+	contextMenuPrivateStruct.Free(obj.Native())
 }
 
 var cookieManagerClassStruct *gi.Struct
@@ -1136,7 +1137,7 @@ func CookieManagerClassStruct() *CookieManagerClass {
 	return structGo
 }
 func finalizeCookieManagerClass(obj *CookieManagerClass) {
-	cookieManagerClassStruct.Free(obj.native)
+	cookieManagerClassStruct.Free(obj.Native())
 }
 
 var cookieManagerPrivateStruct *gi.Struct
@@ -1185,7 +1186,7 @@ func CookieManagerPrivateStruct() *CookieManagerPrivate {
 	return structGo
 }
 func finalizeCookieManagerPrivate(obj *CookieManagerPrivate) {
-	cookieManagerPrivateStruct.Free(obj.native)
+	cookieManagerPrivateStruct.Free(obj.Native())
 }
 
 var credentialStruct *gi.Struct
@@ -1274,7 +1275,7 @@ func credentialCopyFunction_Set() error {
 // Copy is a representation of the C type webkit_credential_copy.
 func (recv *Credential) Copy() *Credential {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1306,7 +1307,7 @@ func credentialFreeFunction_Set() error {
 // Free is a representation of the C type webkit_credential_free.
 func (recv *Credential) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := credentialFreeFunction_Set()
 	if err == nil {
@@ -1334,7 +1335,7 @@ func credentialGetPasswordFunction_Set() error {
 // GetPassword is a representation of the C type webkit_credential_get_password.
 func (recv *Credential) GetPassword() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1366,7 +1367,7 @@ func credentialGetPersistenceFunction_Set() error {
 // GetPersistence is a representation of the C type webkit_credential_get_persistence.
 func (recv *Credential) GetPersistence() CredentialPersistence {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1398,7 +1399,7 @@ func credentialGetUsernameFunction_Set() error {
 // GetUsername is a representation of the C type webkit_credential_get_username.
 func (recv *Credential) GetUsername() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1430,7 +1431,7 @@ func credentialHasPasswordFunction_Set() error {
 // HasPassword is a representation of the C type webkit_credential_has_password.
 func (recv *Credential) HasPassword() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1510,7 +1511,7 @@ func DeviceInfoPermissionRequestClassStruct() *DeviceInfoPermissionRequestClass 
 	return structGo
 }
 func finalizeDeviceInfoPermissionRequestClass(obj *DeviceInfoPermissionRequestClass) {
-	deviceInfoPermissionRequestClassStruct.Free(obj.native)
+	deviceInfoPermissionRequestClassStruct.Free(obj.Native())
 }
 
 var deviceInfoPermissionRequestPrivateStruct *gi.Struct
@@ -1559,7 +1560,7 @@ func DeviceInfoPermissionRequestPrivateStruct() *DeviceInfoPermissionRequestPriv
 	return structGo
 }
 func finalizeDeviceInfoPermissionRequestPrivate(obj *DeviceInfoPermissionRequestPrivate) {
-	deviceInfoPermissionRequestPrivateStruct.Free(obj.native)
+	deviceInfoPermissionRequestPrivateStruct.Free(obj.Native())
 }
 
 var downloadClassStruct *gi.Struct
@@ -1632,7 +1633,7 @@ func DownloadClassStruct() *DownloadClass {
 	return structGo
 }
 func finalizeDownloadClass(obj *DownloadClass) {
-	downloadClassStruct.Free(obj.native)
+	downloadClassStruct.Free(obj.Native())
 }
 
 var downloadPrivateStruct *gi.Struct
@@ -1681,7 +1682,7 @@ func DownloadPrivateStruct() *DownloadPrivate {
 	return structGo
 }
 func finalizeDownloadPrivate(obj *DownloadPrivate) {
-	downloadPrivateStruct.Free(obj.native)
+	downloadPrivateStruct.Free(obj.Native())
 }
 
 var editorStateClassStruct *gi.Struct
@@ -1750,7 +1751,7 @@ func EditorStateClassStruct() *EditorStateClass {
 	return structGo
 }
 func finalizeEditorStateClass(obj *EditorStateClass) {
-	editorStateClassStruct.Free(obj.native)
+	editorStateClassStruct.Free(obj.Native())
 }
 
 var editorStatePrivateStruct *gi.Struct
@@ -1799,7 +1800,7 @@ func EditorStatePrivateStruct() *EditorStatePrivate {
 	return structGo
 }
 func finalizeEditorStatePrivate(obj *EditorStatePrivate) {
-	editorStatePrivateStruct.Free(obj.native)
+	editorStatePrivateStruct.Free(obj.Native())
 }
 
 var faviconDatabaseClassStruct *gi.Struct
@@ -1868,7 +1869,7 @@ func FaviconDatabaseClassStruct() *FaviconDatabaseClass {
 	return structGo
 }
 func finalizeFaviconDatabaseClass(obj *FaviconDatabaseClass) {
-	faviconDatabaseClassStruct.Free(obj.native)
+	faviconDatabaseClassStruct.Free(obj.Native())
 }
 
 var faviconDatabasePrivateStruct *gi.Struct
@@ -1917,7 +1918,7 @@ func FaviconDatabasePrivateStruct() *FaviconDatabasePrivate {
 	return structGo
 }
 func finalizeFaviconDatabasePrivate(obj *FaviconDatabasePrivate) {
-	faviconDatabasePrivateStruct.Free(obj.native)
+	faviconDatabasePrivateStruct.Free(obj.Native())
 }
 
 var fileChooserRequestClassStruct *gi.Struct
@@ -1986,7 +1987,7 @@ func FileChooserRequestClassStruct() *FileChooserRequestClass {
 	return structGo
 }
 func finalizeFileChooserRequestClass(obj *FileChooserRequestClass) {
-	fileChooserRequestClassStruct.Free(obj.native)
+	fileChooserRequestClassStruct.Free(obj.Native())
 }
 
 var fileChooserRequestPrivateStruct *gi.Struct
@@ -2035,7 +2036,7 @@ func FileChooserRequestPrivateStruct() *FileChooserRequestPrivate {
 	return structGo
 }
 func finalizeFileChooserRequestPrivate(obj *FileChooserRequestPrivate) {
-	fileChooserRequestPrivateStruct.Free(obj.native)
+	fileChooserRequestPrivateStruct.Free(obj.Native())
 }
 
 var findControllerClassStruct *gi.Struct
@@ -2104,7 +2105,7 @@ func FindControllerClassStruct() *FindControllerClass {
 	return structGo
 }
 func finalizeFindControllerClass(obj *FindControllerClass) {
-	findControllerClassStruct.Free(obj.native)
+	findControllerClassStruct.Free(obj.Native())
 }
 
 var findControllerPrivateStruct *gi.Struct
@@ -2153,7 +2154,7 @@ func FindControllerPrivateStruct() *FindControllerPrivate {
 	return structGo
 }
 func finalizeFindControllerPrivate(obj *FindControllerPrivate) {
-	findControllerPrivateStruct.Free(obj.native)
+	findControllerPrivateStruct.Free(obj.Native())
 }
 
 var formSubmissionRequestClassStruct *gi.Struct
@@ -2222,7 +2223,7 @@ func FormSubmissionRequestClassStruct() *FormSubmissionRequestClass {
 	return structGo
 }
 func finalizeFormSubmissionRequestClass(obj *FormSubmissionRequestClass) {
-	formSubmissionRequestClassStruct.Free(obj.native)
+	formSubmissionRequestClassStruct.Free(obj.Native())
 }
 
 var formSubmissionRequestPrivateStruct *gi.Struct
@@ -2271,7 +2272,7 @@ func FormSubmissionRequestPrivateStruct() *FormSubmissionRequestPrivate {
 	return structGo
 }
 func finalizeFormSubmissionRequestPrivate(obj *FormSubmissionRequestPrivate) {
-	formSubmissionRequestPrivateStruct.Free(obj.native)
+	formSubmissionRequestPrivateStruct.Free(obj.Native())
 }
 
 var geolocationManagerClassStruct *gi.Struct
@@ -2340,7 +2341,7 @@ func GeolocationManagerClassStruct() *GeolocationManagerClass {
 	return structGo
 }
 func finalizeGeolocationManagerClass(obj *GeolocationManagerClass) {
-	geolocationManagerClassStruct.Free(obj.native)
+	geolocationManagerClassStruct.Free(obj.Native())
 }
 
 var geolocationManagerPrivateStruct *gi.Struct
@@ -2389,7 +2390,7 @@ func GeolocationManagerPrivateStruct() *GeolocationManagerPrivate {
 	return structGo
 }
 func finalizeGeolocationManagerPrivate(obj *GeolocationManagerPrivate) {
-	geolocationManagerPrivateStruct.Free(obj.native)
+	geolocationManagerPrivateStruct.Free(obj.Native())
 }
 
 var geolocationPermissionRequestClassStruct *gi.Struct
@@ -2458,7 +2459,7 @@ func GeolocationPermissionRequestClassStruct() *GeolocationPermissionRequestClas
 	return structGo
 }
 func finalizeGeolocationPermissionRequestClass(obj *GeolocationPermissionRequestClass) {
-	geolocationPermissionRequestClassStruct.Free(obj.native)
+	geolocationPermissionRequestClassStruct.Free(obj.Native())
 }
 
 var geolocationPermissionRequestPrivateStruct *gi.Struct
@@ -2507,7 +2508,7 @@ func GeolocationPermissionRequestPrivateStruct() *GeolocationPermissionRequestPr
 	return structGo
 }
 func finalizeGeolocationPermissionRequestPrivate(obj *GeolocationPermissionRequestPrivate) {
-	geolocationPermissionRequestPrivateStruct.Free(obj.native)
+	geolocationPermissionRequestPrivateStruct.Free(obj.Native())
 }
 
 var geolocationPositionStruct *gi.Struct
@@ -2596,7 +2597,7 @@ func geolocationPositionCopyFunction_Set() error {
 // Copy is a representation of the C type webkit_geolocation_position_copy.
 func (recv *GeolocationPosition) Copy() *GeolocationPosition {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2628,7 +2629,7 @@ func geolocationPositionFreeFunction_Set() error {
 // Free is a representation of the C type webkit_geolocation_position_free.
 func (recv *GeolocationPosition) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := geolocationPositionFreeFunction_Set()
 	if err == nil {
@@ -2656,7 +2657,7 @@ func geolocationPositionSetAltitudeFunction_Set() error {
 // SetAltitude is a representation of the C type webkit_geolocation_position_set_altitude.
 func (recv *GeolocationPosition) SetAltitude(altitude float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(altitude)
 
 	err := geolocationPositionSetAltitudeFunction_Set()
@@ -2685,7 +2686,7 @@ func geolocationPositionSetAltitudeAccuracyFunction_Set() error {
 // SetAltitudeAccuracy is a representation of the C type webkit_geolocation_position_set_altitude_accuracy.
 func (recv *GeolocationPosition) SetAltitudeAccuracy(altitudeAccuracy float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(altitudeAccuracy)
 
 	err := geolocationPositionSetAltitudeAccuracyFunction_Set()
@@ -2714,7 +2715,7 @@ func geolocationPositionSetHeadingFunction_Set() error {
 // SetHeading is a representation of the C type webkit_geolocation_position_set_heading.
 func (recv *GeolocationPosition) SetHeading(heading float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(heading)
 
 	err := geolocationPositionSetHeadingFunction_Set()
@@ -2743,7 +2744,7 @@ func geolocationPositionSetSpeedFunction_Set() error {
 // SetSpeed is a representation of the C type webkit_geolocation_position_set_speed.
 func (recv *GeolocationPosition) SetSpeed(speed float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(speed)
 
 	err := geolocationPositionSetSpeedFunction_Set()
@@ -2772,7 +2773,7 @@ func geolocationPositionSetTimestampFunction_Set() error {
 // SetTimestamp is a representation of the C type webkit_geolocation_position_set_timestamp.
 func (recv *GeolocationPosition) SetTimestamp(timestamp uint64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint64(timestamp)
 
 	err := geolocationPositionSetTimestampFunction_Set()
@@ -2849,7 +2850,7 @@ func HitTestResultClassStruct() *HitTestResultClass {
 	return structGo
 }
 func finalizeHitTestResultClass(obj *HitTestResultClass) {
-	hitTestResultClassStruct.Free(obj.native)
+	hitTestResultClassStruct.Free(obj.Native())
 }
 
 var hitTestResultPrivateStruct *gi.Struct
@@ -2898,7 +2899,7 @@ func HitTestResultPrivateStruct() *HitTestResultPrivate {
 	return structGo
 }
 func finalizeHitTestResultPrivate(obj *HitTestResultPrivate) {
-	hitTestResultPrivateStruct.Free(obj.native)
+	hitTestResultPrivateStruct.Free(obj.Native())
 }
 
 var installMissingMediaPluginsPermissionRequestClassStruct *gi.Struct
@@ -2967,7 +2968,7 @@ func InstallMissingMediaPluginsPermissionRequestClassStruct() *InstallMissingMed
 	return structGo
 }
 func finalizeInstallMissingMediaPluginsPermissionRequestClass(obj *InstallMissingMediaPluginsPermissionRequestClass) {
-	installMissingMediaPluginsPermissionRequestClassStruct.Free(obj.native)
+	installMissingMediaPluginsPermissionRequestClassStruct.Free(obj.Native())
 }
 
 var installMissingMediaPluginsPermissionRequestPrivateStruct *gi.Struct
@@ -3016,7 +3017,7 @@ func InstallMissingMediaPluginsPermissionRequestPrivateStruct() *InstallMissingM
 	return structGo
 }
 func finalizeInstallMissingMediaPluginsPermissionRequestPrivate(obj *InstallMissingMediaPluginsPermissionRequestPrivate) {
-	installMissingMediaPluginsPermissionRequestPrivateStruct.Free(obj.native)
+	installMissingMediaPluginsPermissionRequestPrivateStruct.Free(obj.Native())
 }
 
 var javascriptResultStruct *gi.Struct
@@ -3055,7 +3056,37 @@ func (recv *JavascriptResult) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'webkit_javascript_result_get_global_context' : return type 'JavaScriptCore.GlobalContextRef' not supported
 
-// UNSUPPORTED : C value 'webkit_javascript_result_get_js_value' : return type 'JavaScriptCore.Value' not supported
+var javascriptResultGetJsValueFunction *gi.Function
+var javascriptResultGetJsValueFunction_Once sync.Once
+
+func javascriptResultGetJsValueFunction_Set() error {
+	var err error
+	javascriptResultGetJsValueFunction_Once.Do(func() {
+		err = javascriptResultStruct_Set()
+		if err != nil {
+			return
+		}
+		javascriptResultGetJsValueFunction, err = javascriptResultStruct.InvokerNew("get_js_value")
+	})
+	return err
+}
+
+// GetJsValue is a representation of the C type webkit_javascript_result_get_js_value.
+func (recv *JavascriptResult) GetJsValue() *javascriptcore.Value {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := javascriptResultGetJsValueFunction_Set()
+	if err == nil {
+		ret = javascriptResultGetJsValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := javascriptcore.ValueNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_javascript_result_get_value' : return type 'JavaScriptCore.ValueRef' not supported
 
@@ -3077,7 +3108,7 @@ func javascriptResultRefFunction_Set() error {
 // Ref is a representation of the C type webkit_javascript_result_ref.
 func (recv *JavascriptResult) Ref() *JavascriptResult {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3109,7 +3140,7 @@ func javascriptResultUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_javascript_result_unref.
 func (recv *JavascriptResult) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := javascriptResultUnrefFunction_Set()
 	if err == nil {
@@ -3131,7 +3162,7 @@ func JavascriptResultStruct() *JavascriptResult {
 	return structGo
 }
 func finalizeJavascriptResult(obj *JavascriptResult) {
-	javascriptResultStruct.Free(obj.native)
+	javascriptResultStruct.Free(obj.Native())
 }
 
 var mimeInfoStruct *gi.Struct
@@ -3186,7 +3217,7 @@ func mimeInfoGetDescriptionFunction_Set() error {
 // GetDescription is a representation of the C type webkit_mime_info_get_description.
 func (recv *MimeInfo) GetDescription() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3218,7 +3249,7 @@ func mimeInfoGetExtensionsFunction_Set() error {
 // GetExtensions is a representation of the C type webkit_mime_info_get_extensions.
 func (recv *MimeInfo) GetExtensions() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := mimeInfoGetExtensionsFunction_Set()
 	if err == nil {
@@ -3246,7 +3277,7 @@ func mimeInfoGetMimeTypeFunction_Set() error {
 // GetMimeType is a representation of the C type webkit_mime_info_get_mime_type.
 func (recv *MimeInfo) GetMimeType() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3278,7 +3309,7 @@ func mimeInfoRefFunction_Set() error {
 // Ref is a representation of the C type webkit_mime_info_ref.
 func (recv *MimeInfo) Ref() *MimeInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3310,7 +3341,7 @@ func mimeInfoUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_mime_info_unref.
 func (recv *MimeInfo) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := mimeInfoUnrefFunction_Set()
 	if err == nil {
@@ -3332,7 +3363,7 @@ func MimeInfoStruct() *MimeInfo {
 	return structGo
 }
 func finalizeMimeInfo(obj *MimeInfo) {
-	mimeInfoStruct.Free(obj.native)
+	mimeInfoStruct.Free(obj.Native())
 }
 
 var navigationActionStruct *gi.Struct
@@ -3387,7 +3418,7 @@ func navigationActionCopyFunction_Set() error {
 // Copy is a representation of the C type webkit_navigation_action_copy.
 func (recv *NavigationAction) Copy() *NavigationAction {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3419,7 +3450,7 @@ func navigationActionFreeFunction_Set() error {
 // Free is a representation of the C type webkit_navigation_action_free.
 func (recv *NavigationAction) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := navigationActionFreeFunction_Set()
 	if err == nil {
@@ -3447,7 +3478,7 @@ func navigationActionGetModifiersFunction_Set() error {
 // GetModifiers is a representation of the C type webkit_navigation_action_get_modifiers.
 func (recv *NavigationAction) GetModifiers() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3479,7 +3510,7 @@ func navigationActionGetMouseButtonFunction_Set() error {
 // GetMouseButton is a representation of the C type webkit_navigation_action_get_mouse_button.
 func (recv *NavigationAction) GetMouseButton() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3511,7 +3542,7 @@ func navigationActionGetNavigationTypeFunction_Set() error {
 // GetNavigationType is a representation of the C type webkit_navigation_action_get_navigation_type.
 func (recv *NavigationAction) GetNavigationType() NavigationType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3543,7 +3574,7 @@ func navigationActionGetRequestFunction_Set() error {
 // GetRequest is a representation of the C type webkit_navigation_action_get_request.
 func (recv *NavigationAction) GetRequest() *URIRequest {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3575,7 +3606,7 @@ func navigationActionIsRedirectFunction_Set() error {
 // IsRedirect is a representation of the C type webkit_navigation_action_is_redirect.
 func (recv *NavigationAction) IsRedirect() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3607,7 +3638,7 @@ func navigationActionIsUserGestureFunction_Set() error {
 // IsUserGesture is a representation of the C type webkit_navigation_action_is_user_gesture.
 func (recv *NavigationAction) IsUserGesture() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3633,7 +3664,7 @@ func NavigationActionStruct() *NavigationAction {
 	return structGo
 }
 func finalizeNavigationAction(obj *NavigationAction) {
-	navigationActionStruct.Free(obj.native)
+	navigationActionStruct.Free(obj.Native())
 }
 
 var navigationPolicyDecisionClassStruct *gi.Struct
@@ -3672,7 +3703,7 @@ func (recv *NavigationPolicyDecisionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *NavigationPolicyDecisionClass) FieldParentClass() *PolicyDecisionClass {
-	argValue := gi.StructFieldGet(navigationPolicyDecisionClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(navigationPolicyDecisionClassStruct, recv.Native(), "parent_class")
 	value := PolicyDecisionClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -3680,8 +3711,8 @@ func (recv *NavigationPolicyDecisionClass) FieldParentClass() *PolicyDecisionCla
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *NavigationPolicyDecisionClass) SetFieldParentClass(value *PolicyDecisionClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(navigationPolicyDecisionClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(navigationPolicyDecisionClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
@@ -3712,7 +3743,7 @@ func NavigationPolicyDecisionClassStruct() *NavigationPolicyDecisionClass {
 	return structGo
 }
 func finalizeNavigationPolicyDecisionClass(obj *NavigationPolicyDecisionClass) {
-	navigationPolicyDecisionClassStruct.Free(obj.native)
+	navigationPolicyDecisionClassStruct.Free(obj.Native())
 }
 
 var navigationPolicyDecisionPrivateStruct *gi.Struct
@@ -3761,7 +3792,7 @@ func NavigationPolicyDecisionPrivateStruct() *NavigationPolicyDecisionPrivate {
 	return structGo
 }
 func finalizeNavigationPolicyDecisionPrivate(obj *NavigationPolicyDecisionPrivate) {
-	navigationPolicyDecisionPrivateStruct.Free(obj.native)
+	navigationPolicyDecisionPrivateStruct.Free(obj.Native())
 }
 
 var networkProxySettingsStruct *gi.Struct
@@ -3818,7 +3849,7 @@ func networkProxySettingsAddProxyForSchemeFunction_Set() error {
 // AddProxyForScheme is a representation of the C type webkit_network_proxy_settings_add_proxy_for_scheme.
 func (recv *NetworkProxySettings) AddProxyForScheme(scheme string, proxyUri string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 	inArgs[2].SetString(proxyUri)
 
@@ -3848,7 +3879,7 @@ func networkProxySettingsCopyFunction_Set() error {
 // Copy is a representation of the C type webkit_network_proxy_settings_copy.
 func (recv *NetworkProxySettings) Copy() *NetworkProxySettings {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3880,7 +3911,7 @@ func networkProxySettingsFreeFunction_Set() error {
 // Free is a representation of the C type webkit_network_proxy_settings_free.
 func (recv *NetworkProxySettings) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := networkProxySettingsFreeFunction_Set()
 	if err == nil {
@@ -3964,7 +3995,7 @@ func NotificationClassStruct() *NotificationClass {
 	return structGo
 }
 func finalizeNotificationClass(obj *NotificationClass) {
-	notificationClassStruct.Free(obj.native)
+	notificationClassStruct.Free(obj.Native())
 }
 
 var notificationPermissionRequestClassStruct *gi.Struct
@@ -4017,7 +4048,7 @@ func NotificationPermissionRequestClassStruct() *NotificationPermissionRequestCl
 	return structGo
 }
 func finalizeNotificationPermissionRequestClass(obj *NotificationPermissionRequestClass) {
-	notificationPermissionRequestClassStruct.Free(obj.native)
+	notificationPermissionRequestClassStruct.Free(obj.Native())
 }
 
 var notificationPermissionRequestPrivateStruct *gi.Struct
@@ -4066,7 +4097,7 @@ func NotificationPermissionRequestPrivateStruct() *NotificationPermissionRequest
 	return structGo
 }
 func finalizeNotificationPermissionRequestPrivate(obj *NotificationPermissionRequestPrivate) {
-	notificationPermissionRequestPrivateStruct.Free(obj.native)
+	notificationPermissionRequestPrivateStruct.Free(obj.Native())
 }
 
 var notificationPrivateStruct *gi.Struct
@@ -4115,7 +4146,7 @@ func NotificationPrivateStruct() *NotificationPrivate {
 	return structGo
 }
 func finalizeNotificationPrivate(obj *NotificationPrivate) {
-	notificationPrivateStruct.Free(obj.native)
+	notificationPrivateStruct.Free(obj.Native())
 }
 
 var optionMenuClassStruct *gi.Struct
@@ -4184,7 +4215,7 @@ func OptionMenuClassStruct() *OptionMenuClass {
 	return structGo
 }
 func finalizeOptionMenuClass(obj *OptionMenuClass) {
-	optionMenuClassStruct.Free(obj.native)
+	optionMenuClassStruct.Free(obj.Native())
 }
 
 var optionMenuItemStruct *gi.Struct
@@ -4239,7 +4270,7 @@ func optionMenuItemCopyFunction_Set() error {
 // Copy is a representation of the C type webkit_option_menu_item_copy.
 func (recv *OptionMenuItem) Copy() *OptionMenuItem {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4271,7 +4302,7 @@ func optionMenuItemFreeFunction_Set() error {
 // Free is a representation of the C type webkit_option_menu_item_free.
 func (recv *OptionMenuItem) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := optionMenuItemFreeFunction_Set()
 	if err == nil {
@@ -4299,7 +4330,7 @@ func optionMenuItemGetLabelFunction_Set() error {
 // GetLabel is a representation of the C type webkit_option_menu_item_get_label.
 func (recv *OptionMenuItem) GetLabel() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4331,7 +4362,7 @@ func optionMenuItemGetTooltipFunction_Set() error {
 // GetTooltip is a representation of the C type webkit_option_menu_item_get_tooltip.
 func (recv *OptionMenuItem) GetTooltip() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4363,7 +4394,7 @@ func optionMenuItemIsEnabledFunction_Set() error {
 // IsEnabled is a representation of the C type webkit_option_menu_item_is_enabled.
 func (recv *OptionMenuItem) IsEnabled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4395,7 +4426,7 @@ func optionMenuItemIsGroupChildFunction_Set() error {
 // IsGroupChild is a representation of the C type webkit_option_menu_item_is_group_child.
 func (recv *OptionMenuItem) IsGroupChild() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4427,7 +4458,7 @@ func optionMenuItemIsGroupLabelFunction_Set() error {
 // IsGroupLabel is a representation of the C type webkit_option_menu_item_is_group_label.
 func (recv *OptionMenuItem) IsGroupLabel() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4459,7 +4490,7 @@ func optionMenuItemIsSelectedFunction_Set() error {
 // IsSelected is a representation of the C type webkit_option_menu_item_is_selected.
 func (recv *OptionMenuItem) IsSelected() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4485,7 +4516,7 @@ func OptionMenuItemStruct() *OptionMenuItem {
 	return structGo
 }
 func finalizeOptionMenuItem(obj *OptionMenuItem) {
-	optionMenuItemStruct.Free(obj.native)
+	optionMenuItemStruct.Free(obj.Native())
 }
 
 var optionMenuPrivateStruct *gi.Struct
@@ -4534,7 +4565,7 @@ func OptionMenuPrivateStruct() *OptionMenuPrivate {
 	return structGo
 }
 func finalizeOptionMenuPrivate(obj *OptionMenuPrivate) {
-	optionMenuPrivateStruct.Free(obj.native)
+	optionMenuPrivateStruct.Free(obj.Native())
 }
 
 var permissionRequestIfaceStruct *gi.Struct
@@ -4595,7 +4626,7 @@ func PermissionRequestIfaceStruct() *PermissionRequestIface {
 	return structGo
 }
 func finalizePermissionRequestIface(obj *PermissionRequestIface) {
-	permissionRequestIfaceStruct.Free(obj.native)
+	permissionRequestIfaceStruct.Free(obj.Native())
 }
 
 var pluginClassStruct *gi.Struct
@@ -4664,7 +4695,7 @@ func PluginClassStruct() *PluginClass {
 	return structGo
 }
 func finalizePluginClass(obj *PluginClass) {
-	pluginClassStruct.Free(obj.native)
+	pluginClassStruct.Free(obj.Native())
 }
 
 var pluginPrivateStruct *gi.Struct
@@ -4713,7 +4744,7 @@ func PluginPrivateStruct() *PluginPrivate {
 	return structGo
 }
 func finalizePluginPrivate(obj *PluginPrivate) {
-	pluginPrivateStruct.Free(obj.native)
+	pluginPrivateStruct.Free(obj.Native())
 }
 
 var policyDecisionClassStruct *gi.Struct
@@ -4782,7 +4813,7 @@ func PolicyDecisionClassStruct() *PolicyDecisionClass {
 	return structGo
 }
 func finalizePolicyDecisionClass(obj *PolicyDecisionClass) {
-	policyDecisionClassStruct.Free(obj.native)
+	policyDecisionClassStruct.Free(obj.Native())
 }
 
 var policyDecisionPrivateStruct *gi.Struct
@@ -4831,7 +4862,7 @@ func PolicyDecisionPrivateStruct() *PolicyDecisionPrivate {
 	return structGo
 }
 func finalizePolicyDecisionPrivate(obj *PolicyDecisionPrivate) {
-	policyDecisionPrivateStruct.Free(obj.native)
+	policyDecisionPrivateStruct.Free(obj.Native())
 }
 
 var printCustomWidgetClassStruct *gi.Struct
@@ -4908,7 +4939,7 @@ func PrintCustomWidgetClassStruct() *PrintCustomWidgetClass {
 	return structGo
 }
 func finalizePrintCustomWidgetClass(obj *PrintCustomWidgetClass) {
-	printCustomWidgetClassStruct.Free(obj.native)
+	printCustomWidgetClassStruct.Free(obj.Native())
 }
 
 var printCustomWidgetPrivateStruct *gi.Struct
@@ -4957,7 +4988,7 @@ func PrintCustomWidgetPrivateStruct() *PrintCustomWidgetPrivate {
 	return structGo
 }
 func finalizePrintCustomWidgetPrivate(obj *PrintCustomWidgetPrivate) {
-	printCustomWidgetPrivateStruct.Free(obj.native)
+	printCustomWidgetPrivateStruct.Free(obj.Native())
 }
 
 var printOperationClassStruct *gi.Struct
@@ -5026,7 +5057,7 @@ func PrintOperationClassStruct() *PrintOperationClass {
 	return structGo
 }
 func finalizePrintOperationClass(obj *PrintOperationClass) {
-	printOperationClassStruct.Free(obj.native)
+	printOperationClassStruct.Free(obj.Native())
 }
 
 var printOperationPrivateStruct *gi.Struct
@@ -5075,7 +5106,7 @@ func PrintOperationPrivateStruct() *PrintOperationPrivate {
 	return structGo
 }
 func finalizePrintOperationPrivate(obj *PrintOperationPrivate) {
-	printOperationPrivateStruct.Free(obj.native)
+	printOperationPrivateStruct.Free(obj.Native())
 }
 
 var responsePolicyDecisionClassStruct *gi.Struct
@@ -5114,7 +5145,7 @@ func (recv *ResponsePolicyDecisionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ResponsePolicyDecisionClass) FieldParentClass() *PolicyDecisionClass {
-	argValue := gi.StructFieldGet(responsePolicyDecisionClassStruct, recv.native, "parent_class")
+	argValue := gi.StructFieldGet(responsePolicyDecisionClassStruct, recv.Native(), "parent_class")
 	value := PolicyDecisionClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -5122,8 +5153,8 @@ func (recv *ResponsePolicyDecisionClass) FieldParentClass() *PolicyDecisionClass
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ResponsePolicyDecisionClass) SetFieldParentClass(value *PolicyDecisionClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(responsePolicyDecisionClassStruct, recv.native, "parent_class", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(responsePolicyDecisionClassStruct, recv.Native(), "parent_class", argValue)
 }
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
@@ -5154,7 +5185,7 @@ func ResponsePolicyDecisionClassStruct() *ResponsePolicyDecisionClass {
 	return structGo
 }
 func finalizeResponsePolicyDecisionClass(obj *ResponsePolicyDecisionClass) {
-	responsePolicyDecisionClassStruct.Free(obj.native)
+	responsePolicyDecisionClassStruct.Free(obj.Native())
 }
 
 var responsePolicyDecisionPrivateStruct *gi.Struct
@@ -5203,7 +5234,7 @@ func ResponsePolicyDecisionPrivateStruct() *ResponsePolicyDecisionPrivate {
 	return structGo
 }
 func finalizeResponsePolicyDecisionPrivate(obj *ResponsePolicyDecisionPrivate) {
-	responsePolicyDecisionPrivateStruct.Free(obj.native)
+	responsePolicyDecisionPrivateStruct.Free(obj.Native())
 }
 
 var scriptDialogStruct *gi.Struct
@@ -5258,7 +5289,7 @@ func scriptDialogCloseFunction_Set() error {
 // Close is a representation of the C type webkit_script_dialog_close.
 func (recv *ScriptDialog) Close() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := scriptDialogCloseFunction_Set()
 	if err == nil {
@@ -5286,7 +5317,7 @@ func scriptDialogConfirmSetConfirmedFunction_Set() error {
 // ConfirmSetConfirmed is a representation of the C type webkit_script_dialog_confirm_set_confirmed.
 func (recv *ScriptDialog) ConfirmSetConfirmed(confirmed bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(confirmed)
 
 	err := scriptDialogConfirmSetConfirmedFunction_Set()
@@ -5315,7 +5346,7 @@ func scriptDialogGetDialogTypeFunction_Set() error {
 // GetDialogType is a representation of the C type webkit_script_dialog_get_dialog_type.
 func (recv *ScriptDialog) GetDialogType() ScriptDialogType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5347,7 +5378,7 @@ func scriptDialogGetMessageFunction_Set() error {
 // GetMessage is a representation of the C type webkit_script_dialog_get_message.
 func (recv *ScriptDialog) GetMessage() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5379,7 +5410,7 @@ func scriptDialogPromptGetDefaultTextFunction_Set() error {
 // PromptGetDefaultText is a representation of the C type webkit_script_dialog_prompt_get_default_text.
 func (recv *ScriptDialog) PromptGetDefaultText() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5411,7 +5442,7 @@ func scriptDialogPromptSetTextFunction_Set() error {
 // PromptSetText is a representation of the C type webkit_script_dialog_prompt_set_text.
 func (recv *ScriptDialog) PromptSetText(text string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(text)
 
 	err := scriptDialogPromptSetTextFunction_Set()
@@ -5440,7 +5471,7 @@ func scriptDialogRefFunction_Set() error {
 // Ref is a representation of the C type webkit_script_dialog_ref.
 func (recv *ScriptDialog) Ref() *ScriptDialog {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5472,7 +5503,7 @@ func scriptDialogUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_script_dialog_unref.
 func (recv *ScriptDialog) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := scriptDialogUnrefFunction_Set()
 	if err == nil {
@@ -5494,7 +5525,7 @@ func ScriptDialogStruct() *ScriptDialog {
 	return structGo
 }
 func finalizeScriptDialog(obj *ScriptDialog) {
-	scriptDialogStruct.Free(obj.native)
+	scriptDialogStruct.Free(obj.Native())
 }
 
 var securityManagerClassStruct *gi.Struct
@@ -5563,7 +5594,7 @@ func SecurityManagerClassStruct() *SecurityManagerClass {
 	return structGo
 }
 func finalizeSecurityManagerClass(obj *SecurityManagerClass) {
-	securityManagerClassStruct.Free(obj.native)
+	securityManagerClassStruct.Free(obj.Native())
 }
 
 var securityManagerPrivateStruct *gi.Struct
@@ -5612,7 +5643,7 @@ func SecurityManagerPrivateStruct() *SecurityManagerPrivate {
 	return structGo
 }
 func finalizeSecurityManagerPrivate(obj *SecurityManagerPrivate) {
-	securityManagerPrivateStruct.Free(obj.native)
+	securityManagerPrivateStruct.Free(obj.Native())
 }
 
 var securityOriginStruct *gi.Struct
@@ -5733,7 +5764,7 @@ func securityOriginGetHostFunction_Set() error {
 // GetHost is a representation of the C type webkit_security_origin_get_host.
 func (recv *SecurityOrigin) GetHost() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5765,7 +5796,7 @@ func securityOriginGetPortFunction_Set() error {
 // GetPort is a representation of the C type webkit_security_origin_get_port.
 func (recv *SecurityOrigin) GetPort() uint16 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5797,7 +5828,7 @@ func securityOriginGetProtocolFunction_Set() error {
 // GetProtocol is a representation of the C type webkit_security_origin_get_protocol.
 func (recv *SecurityOrigin) GetProtocol() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5829,7 +5860,7 @@ func securityOriginIsOpaqueFunction_Set() error {
 // IsOpaque is a representation of the C type webkit_security_origin_is_opaque.
 func (recv *SecurityOrigin) IsOpaque() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5861,7 +5892,7 @@ func securityOriginRefFunction_Set() error {
 // Ref is a representation of the C type webkit_security_origin_ref.
 func (recv *SecurityOrigin) Ref() *SecurityOrigin {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5893,7 +5924,7 @@ func securityOriginToStringFunction_Set() error {
 // ToString is a representation of the C type webkit_security_origin_to_string.
 func (recv *SecurityOrigin) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5925,7 +5956,7 @@ func securityOriginUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_security_origin_unref.
 func (recv *SecurityOrigin) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := securityOriginUnrefFunction_Set()
 	if err == nil {
@@ -6001,7 +6032,7 @@ func SettingsClassStruct() *SettingsClass {
 	return structGo
 }
 func finalizeSettingsClass(obj *SettingsClass) {
-	settingsClassStruct.Free(obj.native)
+	settingsClassStruct.Free(obj.Native())
 }
 
 var settingsPrivateStruct *gi.Struct
@@ -6050,7 +6081,7 @@ func SettingsPrivateStruct() *SettingsPrivate {
 	return structGo
 }
 func finalizeSettingsPrivate(obj *SettingsPrivate) {
-	settingsPrivateStruct.Free(obj.native)
+	settingsPrivateStruct.Free(obj.Native())
 }
 
 var uRIRequestClassStruct *gi.Struct
@@ -6119,7 +6150,7 @@ func URIRequestClassStruct() *URIRequestClass {
 	return structGo
 }
 func finalizeURIRequestClass(obj *URIRequestClass) {
-	uRIRequestClassStruct.Free(obj.native)
+	uRIRequestClassStruct.Free(obj.Native())
 }
 
 var uRIRequestPrivateStruct *gi.Struct
@@ -6168,7 +6199,7 @@ func URIRequestPrivateStruct() *URIRequestPrivate {
 	return structGo
 }
 func finalizeURIRequestPrivate(obj *URIRequestPrivate) {
-	uRIRequestPrivateStruct.Free(obj.native)
+	uRIRequestPrivateStruct.Free(obj.Native())
 }
 
 var uRIResponseClassStruct *gi.Struct
@@ -6237,7 +6268,7 @@ func URIResponseClassStruct() *URIResponseClass {
 	return structGo
 }
 func finalizeURIResponseClass(obj *URIResponseClass) {
-	uRIResponseClassStruct.Free(obj.native)
+	uRIResponseClassStruct.Free(obj.Native())
 }
 
 var uRIResponsePrivateStruct *gi.Struct
@@ -6286,7 +6317,7 @@ func URIResponsePrivateStruct() *URIResponsePrivate {
 	return structGo
 }
 func finalizeURIResponsePrivate(obj *URIResponsePrivate) {
-	uRIResponsePrivateStruct.Free(obj.native)
+	uRIResponsePrivateStruct.Free(obj.Native())
 }
 
 var uRISchemeRequestClassStruct *gi.Struct
@@ -6355,7 +6386,7 @@ func URISchemeRequestClassStruct() *URISchemeRequestClass {
 	return structGo
 }
 func finalizeURISchemeRequestClass(obj *URISchemeRequestClass) {
-	uRISchemeRequestClassStruct.Free(obj.native)
+	uRISchemeRequestClassStruct.Free(obj.Native())
 }
 
 var uRISchemeRequestPrivateStruct *gi.Struct
@@ -6404,7 +6435,7 @@ func URISchemeRequestPrivateStruct() *URISchemeRequestPrivate {
 	return structGo
 }
 func finalizeURISchemeRequestPrivate(obj *URISchemeRequestPrivate) {
-	uRISchemeRequestPrivateStruct.Free(obj.native)
+	uRISchemeRequestPrivateStruct.Free(obj.Native())
 }
 
 var userContentFilterStruct *gi.Struct
@@ -6459,7 +6490,7 @@ func userContentFilterGetIdentifierFunction_Set() error {
 // GetIdentifier is a representation of the C type webkit_user_content_filter_get_identifier.
 func (recv *UserContentFilter) GetIdentifier() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6491,7 +6522,7 @@ func userContentFilterRefFunction_Set() error {
 // Ref is a representation of the C type webkit_user_content_filter_ref.
 func (recv *UserContentFilter) Ref() *UserContentFilter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6523,7 +6554,7 @@ func userContentFilterUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_user_content_filter_unref.
 func (recv *UserContentFilter) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := userContentFilterUnrefFunction_Set()
 	if err == nil {
@@ -6545,7 +6576,7 @@ func UserContentFilterStruct() *UserContentFilter {
 	return structGo
 }
 func finalizeUserContentFilter(obj *UserContentFilter) {
-	userContentFilterStruct.Free(obj.native)
+	userContentFilterStruct.Free(obj.Native())
 }
 
 var userContentFilterStoreClassStruct *gi.Struct
@@ -6614,7 +6645,7 @@ func UserContentFilterStoreClassStruct() *UserContentFilterStoreClass {
 	return structGo
 }
 func finalizeUserContentFilterStoreClass(obj *UserContentFilterStoreClass) {
-	userContentFilterStoreClassStruct.Free(obj.native)
+	userContentFilterStoreClassStruct.Free(obj.Native())
 }
 
 var userContentFilterStorePrivateStruct *gi.Struct
@@ -6663,7 +6694,7 @@ func UserContentFilterStorePrivateStruct() *UserContentFilterStorePrivate {
 	return structGo
 }
 func finalizeUserContentFilterStorePrivate(obj *UserContentFilterStorePrivate) {
-	userContentFilterStorePrivateStruct.Free(obj.native)
+	userContentFilterStorePrivateStruct.Free(obj.Native())
 }
 
 var userContentManagerClassStruct *gi.Struct
@@ -6732,7 +6763,7 @@ func UserContentManagerClassStruct() *UserContentManagerClass {
 	return structGo
 }
 func finalizeUserContentManagerClass(obj *UserContentManagerClass) {
-	userContentManagerClassStruct.Free(obj.native)
+	userContentManagerClassStruct.Free(obj.Native())
 }
 
 var userContentManagerPrivateStruct *gi.Struct
@@ -6781,7 +6812,7 @@ func UserContentManagerPrivateStruct() *UserContentManagerPrivate {
 	return structGo
 }
 func finalizeUserContentManagerPrivate(obj *UserContentManagerPrivate) {
-	userContentManagerPrivateStruct.Free(obj.native)
+	userContentManagerPrivateStruct.Free(obj.Native())
 }
 
 var userMediaPermissionRequestClassStruct *gi.Struct
@@ -6850,7 +6881,7 @@ func UserMediaPermissionRequestClassStruct() *UserMediaPermissionRequestClass {
 	return structGo
 }
 func finalizeUserMediaPermissionRequestClass(obj *UserMediaPermissionRequestClass) {
-	userMediaPermissionRequestClassStruct.Free(obj.native)
+	userMediaPermissionRequestClassStruct.Free(obj.Native())
 }
 
 var userMediaPermissionRequestPrivateStruct *gi.Struct
@@ -6899,7 +6930,7 @@ func UserMediaPermissionRequestPrivateStruct() *UserMediaPermissionRequestPrivat
 	return structGo
 }
 func finalizeUserMediaPermissionRequestPrivate(obj *UserMediaPermissionRequestPrivate) {
-	userMediaPermissionRequestPrivateStruct.Free(obj.native)
+	userMediaPermissionRequestPrivateStruct.Free(obj.Native())
 }
 
 var userScriptStruct *gi.Struct
@@ -6958,7 +6989,7 @@ func userScriptRefFunction_Set() error {
 // Ref is a representation of the C type webkit_user_script_ref.
 func (recv *UserScript) Ref() *UserScript {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6990,7 +7021,7 @@ func userScriptUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_user_script_unref.
 func (recv *UserScript) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := userScriptUnrefFunction_Set()
 	if err == nil {
@@ -7056,7 +7087,7 @@ func userStyleSheetRefFunction_Set() error {
 // Ref is a representation of the C type webkit_user_style_sheet_ref.
 func (recv *UserStyleSheet) Ref() *UserStyleSheet {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7088,7 +7119,7 @@ func userStyleSheetUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_user_style_sheet_unref.
 func (recv *UserStyleSheet) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := userStyleSheetUnrefFunction_Set()
 	if err == nil {
@@ -7180,7 +7211,7 @@ func WebContextClassStruct() *WebContextClass {
 	return structGo
 }
 func finalizeWebContextClass(obj *WebContextClass) {
-	webContextClassStruct.Free(obj.native)
+	webContextClassStruct.Free(obj.Native())
 }
 
 var webContextPrivateStruct *gi.Struct
@@ -7229,7 +7260,7 @@ func WebContextPrivateStruct() *WebContextPrivate {
 	return structGo
 }
 func finalizeWebContextPrivate(obj *WebContextPrivate) {
-	webContextPrivateStruct.Free(obj.native)
+	webContextPrivateStruct.Free(obj.Native())
 }
 
 var webInspectorClassStruct *gi.Struct
@@ -7298,7 +7329,7 @@ func WebInspectorClassStruct() *WebInspectorClass {
 	return structGo
 }
 func finalizeWebInspectorClass(obj *WebInspectorClass) {
-	webInspectorClassStruct.Free(obj.native)
+	webInspectorClassStruct.Free(obj.Native())
 }
 
 var webInspectorPrivateStruct *gi.Struct
@@ -7347,7 +7378,7 @@ func WebInspectorPrivateStruct() *WebInspectorPrivate {
 	return structGo
 }
 func finalizeWebInspectorPrivate(obj *WebInspectorPrivate) {
-	webInspectorPrivateStruct.Free(obj.native)
+	webInspectorPrivateStruct.Free(obj.Native())
 }
 
 var webResourceClassStruct *gi.Struct
@@ -7416,7 +7447,7 @@ func WebResourceClassStruct() *WebResourceClass {
 	return structGo
 }
 func finalizeWebResourceClass(obj *WebResourceClass) {
-	webResourceClassStruct.Free(obj.native)
+	webResourceClassStruct.Free(obj.Native())
 }
 
 var webResourcePrivateStruct *gi.Struct
@@ -7465,7 +7496,7 @@ func WebResourcePrivateStruct() *WebResourcePrivate {
 	return structGo
 }
 func finalizeWebResourcePrivate(obj *WebResourcePrivate) {
-	webResourcePrivateStruct.Free(obj.native)
+	webResourcePrivateStruct.Free(obj.Native())
 }
 
 var webViewBaseClassStruct *gi.Struct
@@ -7534,7 +7565,7 @@ func WebViewBaseClassStruct() *WebViewBaseClass {
 	return structGo
 }
 func finalizeWebViewBaseClass(obj *WebViewBaseClass) {
-	webViewBaseClassStruct.Free(obj.native)
+	webViewBaseClassStruct.Free(obj.Native())
 }
 
 var webViewBasePrivateStruct *gi.Struct
@@ -7583,7 +7614,7 @@ func WebViewBasePrivateStruct() *WebViewBasePrivate {
 	return structGo
 }
 func finalizeWebViewBasePrivate(obj *WebViewBasePrivate) {
-	webViewBasePrivateStruct.Free(obj.native)
+	webViewBasePrivateStruct.Free(obj.Native())
 }
 
 var webViewClassStruct *gi.Struct
@@ -7622,7 +7653,7 @@ func (recv *WebViewClass) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *WebViewClass) FieldParent() *WebViewBaseClass {
-	argValue := gi.StructFieldGet(webViewClassStruct, recv.native, "parent")
+	argValue := gi.StructFieldGet(webViewClassStruct, recv.Native(), "parent")
 	value := WebViewBaseClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -7630,8 +7661,8 @@ func (recv *WebViewClass) FieldParent() *WebViewBaseClass {
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *WebViewClass) SetFieldParent(value *WebViewBaseClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(webViewClassStruct, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(webViewClassStruct, recv.Native(), "parent", argValue)
 }
 
 // UNSUPPORTED : C value 'load_changed' : for field getter : missing Type
@@ -7758,7 +7789,7 @@ func WebViewClassStruct() *WebViewClass {
 	return structGo
 }
 func finalizeWebViewClass(obj *WebViewClass) {
-	webViewClassStruct.Free(obj.native)
+	webViewClassStruct.Free(obj.Native())
 }
 
 var webViewPrivateStruct *gi.Struct
@@ -7807,7 +7838,7 @@ func WebViewPrivateStruct() *WebViewPrivate {
 	return structGo
 }
 func finalizeWebViewPrivate(obj *WebViewPrivate) {
-	webViewPrivateStruct.Free(obj.native)
+	webViewPrivateStruct.Free(obj.Native())
 }
 
 var webViewSessionStateStruct *gi.Struct
@@ -7864,7 +7895,7 @@ func webViewSessionStateRefFunction_Set() error {
 // Ref is a representation of the C type webkit_web_view_session_state_ref.
 func (recv *WebViewSessionState) Ref() *WebViewSessionState {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7898,7 +7929,7 @@ func webViewSessionStateUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_web_view_session_state_unref.
 func (recv *WebViewSessionState) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webViewSessionStateUnrefFunction_Set()
 	if err == nil {
@@ -7960,7 +7991,7 @@ func websiteDataGetNameFunction_Set() error {
 // GetName is a representation of the C type webkit_website_data_get_name.
 func (recv *WebsiteData) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7996,7 +8027,7 @@ func websiteDataRefFunction_Set() error {
 // Ref is a representation of the C type webkit_website_data_ref.
 func (recv *WebsiteData) Ref() *WebsiteData {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -8028,7 +8059,7 @@ func websiteDataUnrefFunction_Set() error {
 // Unref is a representation of the C type webkit_website_data_unref.
 func (recv *WebsiteData) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := websiteDataUnrefFunction_Set()
 	if err == nil {
@@ -8050,7 +8081,7 @@ func WebsiteDataStruct() *WebsiteData {
 	return structGo
 }
 func finalizeWebsiteData(obj *WebsiteData) {
-	websiteDataStruct.Free(obj.native)
+	websiteDataStruct.Free(obj.Native())
 }
 
 var websiteDataManagerClassStruct *gi.Struct
@@ -8119,7 +8150,7 @@ func WebsiteDataManagerClassStruct() *WebsiteDataManagerClass {
 	return structGo
 }
 func finalizeWebsiteDataManagerClass(obj *WebsiteDataManagerClass) {
-	websiteDataManagerClassStruct.Free(obj.native)
+	websiteDataManagerClassStruct.Free(obj.Native())
 }
 
 var websiteDataManagerPrivateStruct *gi.Struct
@@ -8168,7 +8199,7 @@ func WebsiteDataManagerPrivateStruct() *WebsiteDataManagerPrivate {
 	return structGo
 }
 func finalizeWebsiteDataManagerPrivate(obj *WebsiteDataManagerPrivate) {
-	websiteDataManagerPrivateStruct.Free(obj.native)
+	websiteDataManagerPrivateStruct.Free(obj.Native())
 }
 
 var windowPropertiesClassStruct *gi.Struct
@@ -8237,7 +8268,7 @@ func WindowPropertiesClassStruct() *WindowPropertiesClass {
 	return structGo
 }
 func finalizeWindowPropertiesClass(obj *WindowPropertiesClass) {
-	windowPropertiesClassStruct.Free(obj.native)
+	windowPropertiesClassStruct.Free(obj.Native())
 }
 
 var windowPropertiesPrivateStruct *gi.Struct
@@ -8286,5 +8317,5 @@ func WindowPropertiesPrivateStruct() *WindowPropertiesPrivate {
 	return structGo
 }
 func finalizeWindowPropertiesPrivate(obj *WindowPropertiesPrivate) {
-	windowPropertiesPrivateStruct.Free(obj.native)
+	windowPropertiesPrivateStruct.Free(obj.Native())
 }

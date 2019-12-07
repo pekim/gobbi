@@ -45,12 +45,12 @@ func FontMapNewFromNative(native unsafe.Pointer) *FontMap {
 
 // FontMap upcasts to *FontMap
 func (recv *FontMap) FontMap() *pango.FontMap {
-	return pango.FontMapNewFromNative(recv.native)
+	return pango.FontMapNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *FontMap) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -98,7 +98,37 @@ func FontMapNew() *FontMap {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_ft2_font_map_create_context' : return type 'Pango.Context' not supported
+var fontMapCreateContextFunction *gi.Function
+var fontMapCreateContextFunction_Once sync.Once
+
+func fontMapCreateContextFunction_Set() error {
+	var err error
+	fontMapCreateContextFunction_Once.Do(func() {
+		err = fontMapObject_Set()
+		if err != nil {
+			return
+		}
+		fontMapCreateContextFunction, err = fontMapObject.InvokerNew("create_context")
+	})
+	return err
+}
+
+// CreateContext is a representation of the C type pango_ft2_font_map_create_context.
+func (recv *FontMap) CreateContext() *pango.Context {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fontMapCreateContextFunction_Set()
+	if err == nil {
+		ret = fontMapCreateContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := pango.ContextNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'pango_ft2_font_map_set_default_substitute' : parameter 'func' of type 'SubstituteFunc' not supported
 
@@ -120,7 +150,7 @@ func fontMapSetResolutionFunction_Set() error {
 // SetResolution is a representation of the C type pango_ft2_font_map_set_resolution.
 func (recv *FontMap) SetResolution(dpiX float64, dpiY float64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(dpiX)
 	inArgs[2].SetFloat64(dpiY)
 
@@ -150,7 +180,7 @@ func fontMapSubstituteChangedFunction_Set() error {
 // SubstituteChanged is a representation of the C type pango_ft2_font_map_substitute_changed.
 func (recv *FontMap) SubstituteChanged() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := fontMapSubstituteChangedFunction_Set()
 	if err == nil {

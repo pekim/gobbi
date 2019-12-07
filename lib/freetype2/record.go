@@ -56,7 +56,7 @@ func BitmapStruct() *Bitmap {
 	return structGo
 }
 func finalizeBitmap(obj *Bitmap) {
-	bitmapStruct.Free(obj.native)
+	bitmapStruct.Free(obj.Native())
 }
 
 var faceStruct *gi.Struct
@@ -105,7 +105,7 @@ func FaceStruct() *Face {
 	return structGo
 }
 func finalizeFace(obj *Face) {
-	faceStruct.Free(obj.native)
+	faceStruct.Free(obj.Native())
 }
 
 var libraryStruct *gi.Struct
@@ -154,5 +154,5 @@ func LibraryStruct() *Library {
 	return structGo
 }
 func finalizeLibrary(obj *Library) {
-	libraryStruct.Free(obj.native)
+	libraryStruct.Free(obj.Native())
 }

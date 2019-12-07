@@ -56,7 +56,7 @@ func DisplayStruct() *Display {
 	return structGo
 }
 func finalizeDisplay(obj *Display) {
-	displayStruct.Free(obj.native)
+	displayStruct.Free(obj.Native())
 }
 
 var screenStruct *gi.Struct
@@ -105,7 +105,7 @@ func ScreenStruct() *Screen {
 	return structGo
 }
 func finalizeScreen(obj *Screen) {
-	screenStruct.Free(obj.native)
+	screenStruct.Free(obj.Native())
 }
 
 var visualStruct *gi.Struct
@@ -154,7 +154,7 @@ func VisualStruct() *Visual {
 	return structGo
 }
 func finalizeVisual(obj *Visual) {
-	visualStruct.Free(obj.native)
+	visualStruct.Free(obj.Native())
 }
 
 var xConfigureEventStruct *gi.Struct
@@ -203,7 +203,7 @@ func XConfigureEventStruct() *XConfigureEvent {
 	return structGo
 }
 func finalizeXConfigureEvent(obj *XConfigureEvent) {
-	xConfigureEventStruct.Free(obj.native)
+	xConfigureEventStruct.Free(obj.Native())
 }
 
 var xImageStruct *gi.Struct
@@ -252,7 +252,7 @@ func XImageStruct() *XImage {
 	return structGo
 }
 func finalizeXImage(obj *XImage) {
-	xImageStruct.Free(obj.native)
+	xImageStruct.Free(obj.Native())
 }
 
 var xFontStructStruct *gi.Struct
@@ -301,7 +301,7 @@ func XFontStructStruct() *XFontStruct {
 	return structGo
 }
 func finalizeXFontStruct(obj *XFontStruct) {
-	xFontStructStruct.Free(obj.native)
+	xFontStructStruct.Free(obj.Native())
 }
 
 var xTrapezoidStruct *gi.Struct
@@ -350,7 +350,7 @@ func XTrapezoidStruct() *XTrapezoid {
 	return structGo
 }
 func finalizeXTrapezoid(obj *XTrapezoid) {
-	xTrapezoidStruct.Free(obj.native)
+	xTrapezoidStruct.Free(obj.Native())
 }
 
 var xVisualInfoStruct *gi.Struct
@@ -399,7 +399,7 @@ func XVisualInfoStruct() *XVisualInfo {
 	return structGo
 }
 func finalizeXVisualInfo(obj *XVisualInfo) {
-	xVisualInfoStruct.Free(obj.native)
+	xVisualInfoStruct.Free(obj.Native())
 }
 
 var xWindowAttributesStruct *gi.Struct
@@ -448,5 +448,5 @@ func XWindowAttributesStruct() *XWindowAttributes {
 	return structGo
 }
 func finalizeXWindowAttributes(obj *XWindowAttributes) {
-	xWindowAttributesStruct.Free(obj.native)
+	xWindowAttributesStruct.Free(obj.Native())
 }

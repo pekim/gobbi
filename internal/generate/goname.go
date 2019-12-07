@@ -7,7 +7,8 @@ import (
 )
 
 const (
-	fieldNameNative = "native"
+	fieldNameNative    = "native"
+	nativeAccessorName = "Native"
 )
 
 var goNameReservedWords = map[string]bool{

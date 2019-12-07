@@ -61,7 +61,7 @@ func cookieParseFunction_Set() error {
 func CookieParse(header string, origin *URI) *Cookie {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(header)
-	inArgs[1].SetPointer(origin.native)
+	inArgs[1].SetPointer(origin.Native())
 
 	var ret gi.Argument
 
@@ -120,7 +120,7 @@ func formRequestNewFromMultipartFunction_Set() error {
 func FormRequestNewFromMultipart(uri string, multipart *Multipart) *Message {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(uri)
-	inArgs[1].SetPointer(multipart.native)
+	inArgs[1].SetPointer(multipart.Native())
 
 	var ret gi.Argument
 
@@ -277,7 +277,7 @@ func HeadersParse(str string, len int32, dest *MessageHeaders) bool {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
-	inArgs[2].SetPointer(dest.native)
+	inArgs[2].SetPointer(dest.Native())
 
 	var ret gi.Argument
 
@@ -307,7 +307,7 @@ func HeadersParseRequest(str string, len int32, reqHeaders *MessageHeaders) (uin
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
-	inArgs[2].SetPointer(reqHeaders.native)
+	inArgs[2].SetPointer(reqHeaders.Native())
 
 	var outArgs [3]gi.Argument
 	var ret gi.Argument
@@ -341,7 +341,7 @@ func HeadersParseResponse(str string, len int32, headers *MessageHeaders) (bool,
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(len)
-	inArgs[2].SetPointer(headers.native)
+	inArgs[2].SetPointer(headers.Native())
 
 	var outArgs [3]gi.Argument
 	var ret gi.Argument
@@ -431,7 +431,7 @@ func messageHeadersIterInitFunction_Set() error {
 // MessageHeadersIterInit is a representation of the C type soup_message_headers_iter_init.
 func MessageHeadersIterInit(hdrs *MessageHeaders) *MessageHeadersIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(hdrs.native)
+	inArgs[0].SetPointer(hdrs.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -773,7 +773,7 @@ func websocketClientVerifyHandshakeFunction_Set() error {
 // WebsocketClientVerifyHandshake is a representation of the C type soup_websocket_client_verify_handshake.
 func WebsocketClientVerifyHandshake(msg *Message) bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(msg.native)
+	inArgs[0].SetPointer(msg.Native())
 
 	var ret gi.Argument
 

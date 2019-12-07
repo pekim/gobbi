@@ -46,7 +46,7 @@ func (recv *Analysis) Native() unsafe.Pointer {
 
 // FieldShapeEngine returns the C field 'shape_engine'.
 func (recv *Analysis) FieldShapeEngine() *EngineShape {
-	argValue := gi.StructFieldGet(analysisStruct, recv.native, "shape_engine")
+	argValue := gi.StructFieldGet(analysisStruct, recv.Native(), "shape_engine")
 	value := EngineShapeNewFromNative(argValue.Pointer())
 	return value
 }
@@ -54,13 +54,13 @@ func (recv *Analysis) FieldShapeEngine() *EngineShape {
 // SetFieldShapeEngine sets the value of the C field 'shape_engine'.
 func (recv *Analysis) SetFieldShapeEngine(value *EngineShape) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(analysisStruct, recv.native, "shape_engine", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(analysisStruct, recv.Native(), "shape_engine", argValue)
 }
 
 // FieldLangEngine returns the C field 'lang_engine'.
 func (recv *Analysis) FieldLangEngine() *EngineLang {
-	argValue := gi.StructFieldGet(analysisStruct, recv.native, "lang_engine")
+	argValue := gi.StructFieldGet(analysisStruct, recv.Native(), "lang_engine")
 	value := EngineLangNewFromNative(argValue.Pointer())
 	return value
 }
@@ -68,13 +68,13 @@ func (recv *Analysis) FieldLangEngine() *EngineLang {
 // SetFieldLangEngine sets the value of the C field 'lang_engine'.
 func (recv *Analysis) SetFieldLangEngine(value *EngineLang) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(analysisStruct, recv.native, "lang_engine", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(analysisStruct, recv.Native(), "lang_engine", argValue)
 }
 
 // FieldFont returns the C field 'font'.
 func (recv *Analysis) FieldFont() *Font {
-	argValue := gi.StructFieldGet(analysisStruct, recv.native, "font")
+	argValue := gi.StructFieldGet(analysisStruct, recv.Native(), "font")
 	value := FontNewFromNative(argValue.Pointer())
 	return value
 }
@@ -82,13 +82,13 @@ func (recv *Analysis) FieldFont() *Font {
 // SetFieldFont sets the value of the C field 'font'.
 func (recv *Analysis) SetFieldFont(value *Font) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(analysisStruct, recv.native, "font", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(analysisStruct, recv.Native(), "font", argValue)
 }
 
 // FieldLevel returns the C field 'level'.
 func (recv *Analysis) FieldLevel() uint8 {
-	argValue := gi.StructFieldGet(analysisStruct, recv.native, "level")
+	argValue := gi.StructFieldGet(analysisStruct, recv.Native(), "level")
 	value := argValue.Uint8()
 	return value
 }
@@ -97,12 +97,12 @@ func (recv *Analysis) FieldLevel() uint8 {
 func (recv *Analysis) SetFieldLevel(value uint8) {
 	var argValue gi.Argument
 	argValue.SetUint8(value)
-	gi.StructFieldSet(analysisStruct, recv.native, "level", argValue)
+	gi.StructFieldSet(analysisStruct, recv.Native(), "level", argValue)
 }
 
 // FieldGravity returns the C field 'gravity'.
 func (recv *Analysis) FieldGravity() uint8 {
-	argValue := gi.StructFieldGet(analysisStruct, recv.native, "gravity")
+	argValue := gi.StructFieldGet(analysisStruct, recv.Native(), "gravity")
 	value := argValue.Uint8()
 	return value
 }
@@ -111,12 +111,12 @@ func (recv *Analysis) FieldGravity() uint8 {
 func (recv *Analysis) SetFieldGravity(value uint8) {
 	var argValue gi.Argument
 	argValue.SetUint8(value)
-	gi.StructFieldSet(analysisStruct, recv.native, "gravity", argValue)
+	gi.StructFieldSet(analysisStruct, recv.Native(), "gravity", argValue)
 }
 
 // FieldFlags returns the C field 'flags'.
 func (recv *Analysis) FieldFlags() uint8 {
-	argValue := gi.StructFieldGet(analysisStruct, recv.native, "flags")
+	argValue := gi.StructFieldGet(analysisStruct, recv.Native(), "flags")
 	value := argValue.Uint8()
 	return value
 }
@@ -125,12 +125,12 @@ func (recv *Analysis) FieldFlags() uint8 {
 func (recv *Analysis) SetFieldFlags(value uint8) {
 	var argValue gi.Argument
 	argValue.SetUint8(value)
-	gi.StructFieldSet(analysisStruct, recv.native, "flags", argValue)
+	gi.StructFieldSet(analysisStruct, recv.Native(), "flags", argValue)
 }
 
 // FieldScript returns the C field 'script'.
 func (recv *Analysis) FieldScript() uint8 {
-	argValue := gi.StructFieldGet(analysisStruct, recv.native, "script")
+	argValue := gi.StructFieldGet(analysisStruct, recv.Native(), "script")
 	value := argValue.Uint8()
 	return value
 }
@@ -139,12 +139,12 @@ func (recv *Analysis) FieldScript() uint8 {
 func (recv *Analysis) SetFieldScript(value uint8) {
 	var argValue gi.Argument
 	argValue.SetUint8(value)
-	gi.StructFieldSet(analysisStruct, recv.native, "script", argValue)
+	gi.StructFieldSet(analysisStruct, recv.Native(), "script", argValue)
 }
 
 // FieldLanguage returns the C field 'language'.
 func (recv *Analysis) FieldLanguage() *Language {
-	argValue := gi.StructFieldGet(analysisStruct, recv.native, "language")
+	argValue := gi.StructFieldGet(analysisStruct, recv.Native(), "language")
 	value := LanguageNewFromNative(argValue.Pointer())
 	return value
 }
@@ -152,8 +152,8 @@ func (recv *Analysis) FieldLanguage() *Language {
 // SetFieldLanguage sets the value of the C field 'language'.
 func (recv *Analysis) SetFieldLanguage(value *Language) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(analysisStruct, recv.native, "language", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(analysisStruct, recv.Native(), "language", argValue)
 }
 
 // UNSUPPORTED : C value 'extra_attrs' : for field getter : no Go type for 'GLib.SList'
@@ -172,7 +172,7 @@ func AnalysisStruct() *Analysis {
 	return structGo
 }
 func finalizeAnalysis(obj *Analysis) {
-	analysisStruct.Free(obj.native)
+	analysisStruct.Free(obj.Native())
 }
 
 var attrClassStruct *gi.Struct
@@ -211,7 +211,7 @@ func (recv *AttrClass) Native() unsafe.Pointer {
 
 // FieldType returns the C field 'type'.
 func (recv *AttrClass) FieldType() AttrType {
-	argValue := gi.StructFieldGet(attrClassStruct, recv.native, "type")
+	argValue := gi.StructFieldGet(attrClassStruct, recv.Native(), "type")
 	value := AttrType(argValue.Int32())
 	return value
 }
@@ -220,7 +220,7 @@ func (recv *AttrClass) FieldType() AttrType {
 func (recv *AttrClass) SetFieldType(value AttrType) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(attrClassStruct, recv.native, "type", argValue)
+	gi.StructFieldSet(attrClassStruct, recv.Native(), "type", argValue)
 }
 
 // UNSUPPORTED : C value 'copy' : for field getter : missing Type
@@ -247,7 +247,7 @@ func AttrClassStruct() *AttrClass {
 	return structGo
 }
 func finalizeAttrClass(obj *AttrClass) {
-	attrClassStruct.Free(obj.native)
+	attrClassStruct.Free(obj.Native())
 }
 
 var attrColorStruct *gi.Struct
@@ -286,7 +286,7 @@ func (recv *AttrColor) Native() unsafe.Pointer {
 
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrColor) FieldAttr() *Attribute {
-	argValue := gi.StructFieldGet(attrColorStruct, recv.native, "attr")
+	argValue := gi.StructFieldGet(attrColorStruct, recv.Native(), "attr")
 	value := AttributeNewFromNative(argValue.Pointer())
 	return value
 }
@@ -294,13 +294,13 @@ func (recv *AttrColor) FieldAttr() *Attribute {
 // SetFieldAttr sets the value of the C field 'attr'.
 func (recv *AttrColor) SetFieldAttr(value *Attribute) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrColorStruct, recv.native, "attr", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrColorStruct, recv.Native(), "attr", argValue)
 }
 
 // FieldColor returns the C field 'color'.
 func (recv *AttrColor) FieldColor() *Color {
-	argValue := gi.StructFieldGet(attrColorStruct, recv.native, "color")
+	argValue := gi.StructFieldGet(attrColorStruct, recv.Native(), "color")
 	value := ColorNewFromNative(argValue.Pointer())
 	return value
 }
@@ -308,8 +308,8 @@ func (recv *AttrColor) FieldColor() *Color {
 // SetFieldColor sets the value of the C field 'color'.
 func (recv *AttrColor) SetFieldColor(value *Color) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrColorStruct, recv.native, "color", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrColorStruct, recv.Native(), "color", argValue)
 }
 
 // AttrColorStruct creates an uninitialised AttrColor.
@@ -324,7 +324,7 @@ func AttrColorStruct() *AttrColor {
 	return structGo
 }
 func finalizeAttrColor(obj *AttrColor) {
-	attrColorStruct.Free(obj.native)
+	attrColorStruct.Free(obj.Native())
 }
 
 var attrFloatStruct *gi.Struct
@@ -363,7 +363,7 @@ func (recv *AttrFloat) Native() unsafe.Pointer {
 
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrFloat) FieldAttr() *Attribute {
-	argValue := gi.StructFieldGet(attrFloatStruct, recv.native, "attr")
+	argValue := gi.StructFieldGet(attrFloatStruct, recv.Native(), "attr")
 	value := AttributeNewFromNative(argValue.Pointer())
 	return value
 }
@@ -371,13 +371,13 @@ func (recv *AttrFloat) FieldAttr() *Attribute {
 // SetFieldAttr sets the value of the C field 'attr'.
 func (recv *AttrFloat) SetFieldAttr(value *Attribute) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrFloatStruct, recv.native, "attr", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrFloatStruct, recv.Native(), "attr", argValue)
 }
 
 // FieldValue returns the C field 'value'.
 func (recv *AttrFloat) FieldValue() float64 {
-	argValue := gi.StructFieldGet(attrFloatStruct, recv.native, "value")
+	argValue := gi.StructFieldGet(attrFloatStruct, recv.Native(), "value")
 	value := argValue.Float64()
 	return value
 }
@@ -386,7 +386,7 @@ func (recv *AttrFloat) FieldValue() float64 {
 func (recv *AttrFloat) SetFieldValue(value float64) {
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
-	gi.StructFieldSet(attrFloatStruct, recv.native, "value", argValue)
+	gi.StructFieldSet(attrFloatStruct, recv.Native(), "value", argValue)
 }
 
 // AttrFloatStruct creates an uninitialised AttrFloat.
@@ -401,7 +401,7 @@ func AttrFloatStruct() *AttrFloat {
 	return structGo
 }
 func finalizeAttrFloat(obj *AttrFloat) {
-	attrFloatStruct.Free(obj.native)
+	attrFloatStruct.Free(obj.Native())
 }
 
 var attrFontDescStruct *gi.Struct
@@ -440,7 +440,7 @@ func (recv *AttrFontDesc) Native() unsafe.Pointer {
 
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrFontDesc) FieldAttr() *Attribute {
-	argValue := gi.StructFieldGet(attrFontDescStruct, recv.native, "attr")
+	argValue := gi.StructFieldGet(attrFontDescStruct, recv.Native(), "attr")
 	value := AttributeNewFromNative(argValue.Pointer())
 	return value
 }
@@ -448,13 +448,13 @@ func (recv *AttrFontDesc) FieldAttr() *Attribute {
 // SetFieldAttr sets the value of the C field 'attr'.
 func (recv *AttrFontDesc) SetFieldAttr(value *Attribute) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrFontDescStruct, recv.native, "attr", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrFontDescStruct, recv.Native(), "attr", argValue)
 }
 
 // FieldDesc returns the C field 'desc'.
 func (recv *AttrFontDesc) FieldDesc() *FontDescription {
-	argValue := gi.StructFieldGet(attrFontDescStruct, recv.native, "desc")
+	argValue := gi.StructFieldGet(attrFontDescStruct, recv.Native(), "desc")
 	value := FontDescriptionNewFromNative(argValue.Pointer())
 	return value
 }
@@ -462,8 +462,8 @@ func (recv *AttrFontDesc) FieldDesc() *FontDescription {
 // SetFieldDesc sets the value of the C field 'desc'.
 func (recv *AttrFontDesc) SetFieldDesc(value *FontDescription) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrFontDescStruct, recv.native, "desc", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrFontDescStruct, recv.Native(), "desc", argValue)
 }
 
 // AttrFontDescStruct creates an uninitialised AttrFontDesc.
@@ -478,7 +478,7 @@ func AttrFontDescStruct() *AttrFontDesc {
 	return structGo
 }
 func finalizeAttrFontDesc(obj *AttrFontDesc) {
-	attrFontDescStruct.Free(obj.native)
+	attrFontDescStruct.Free(obj.Native())
 }
 
 var attrFontFeaturesStruct *gi.Struct
@@ -517,7 +517,7 @@ func (recv *AttrFontFeatures) Native() unsafe.Pointer {
 
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrFontFeatures) FieldAttr() *Attribute {
-	argValue := gi.StructFieldGet(attrFontFeaturesStruct, recv.native, "attr")
+	argValue := gi.StructFieldGet(attrFontFeaturesStruct, recv.Native(), "attr")
 	value := AttributeNewFromNative(argValue.Pointer())
 	return value
 }
@@ -525,13 +525,13 @@ func (recv *AttrFontFeatures) FieldAttr() *Attribute {
 // SetFieldAttr sets the value of the C field 'attr'.
 func (recv *AttrFontFeatures) SetFieldAttr(value *Attribute) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrFontFeaturesStruct, recv.native, "attr", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrFontFeaturesStruct, recv.Native(), "attr", argValue)
 }
 
 // FieldFeatures returns the C field 'features'.
 func (recv *AttrFontFeatures) FieldFeatures() string {
-	argValue := gi.StructFieldGet(attrFontFeaturesStruct, recv.native, "features")
+	argValue := gi.StructFieldGet(attrFontFeaturesStruct, recv.Native(), "features")
 	value := argValue.String(false)
 	return value
 }
@@ -540,7 +540,7 @@ func (recv *AttrFontFeatures) FieldFeatures() string {
 func (recv *AttrFontFeatures) SetFieldFeatures(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(attrFontFeaturesStruct, recv.native, "features", argValue)
+	gi.StructFieldSet(attrFontFeaturesStruct, recv.Native(), "features", argValue)
 }
 
 // AttrFontFeaturesStruct creates an uninitialised AttrFontFeatures.
@@ -555,7 +555,7 @@ func AttrFontFeaturesStruct() *AttrFontFeatures {
 	return structGo
 }
 func finalizeAttrFontFeatures(obj *AttrFontFeatures) {
-	attrFontFeaturesStruct.Free(obj.native)
+	attrFontFeaturesStruct.Free(obj.Native())
 }
 
 var attrIntStruct *gi.Struct
@@ -594,7 +594,7 @@ func (recv *AttrInt) Native() unsafe.Pointer {
 
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrInt) FieldAttr() *Attribute {
-	argValue := gi.StructFieldGet(attrIntStruct, recv.native, "attr")
+	argValue := gi.StructFieldGet(attrIntStruct, recv.Native(), "attr")
 	value := AttributeNewFromNative(argValue.Pointer())
 	return value
 }
@@ -602,13 +602,13 @@ func (recv *AttrInt) FieldAttr() *Attribute {
 // SetFieldAttr sets the value of the C field 'attr'.
 func (recv *AttrInt) SetFieldAttr(value *Attribute) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrIntStruct, recv.native, "attr", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrIntStruct, recv.Native(), "attr", argValue)
 }
 
 // FieldValue returns the C field 'value'.
 func (recv *AttrInt) FieldValue() int32 {
-	argValue := gi.StructFieldGet(attrIntStruct, recv.native, "value")
+	argValue := gi.StructFieldGet(attrIntStruct, recv.Native(), "value")
 	value := argValue.Int32()
 	return value
 }
@@ -617,7 +617,7 @@ func (recv *AttrInt) FieldValue() int32 {
 func (recv *AttrInt) SetFieldValue(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(attrIntStruct, recv.native, "value", argValue)
+	gi.StructFieldSet(attrIntStruct, recv.Native(), "value", argValue)
 }
 
 // AttrIntStruct creates an uninitialised AttrInt.
@@ -632,7 +632,7 @@ func AttrIntStruct() *AttrInt {
 	return structGo
 }
 func finalizeAttrInt(obj *AttrInt) {
-	attrIntStruct.Free(obj.native)
+	attrIntStruct.Free(obj.Native())
 }
 
 var attrIteratorStruct *gi.Struct
@@ -687,7 +687,7 @@ func attrIteratorCopyFunction_Set() error {
 // Copy is a representation of the C type pango_attr_iterator_copy.
 func (recv *AttrIterator) Copy() *AttrIterator {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -719,7 +719,7 @@ func attrIteratorDestroyFunction_Set() error {
 // Destroy is a representation of the C type pango_attr_iterator_destroy.
 func (recv *AttrIterator) Destroy() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := attrIteratorDestroyFunction_Set()
 	if err == nil {
@@ -747,7 +747,7 @@ func attrIteratorGetFunction_Set() error {
 // Get is a representation of the C type pango_attr_iterator_get.
 func (recv *AttrIterator) Get(type_ AttrType) *Attribute {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(type_))
 
 	var ret gi.Argument
@@ -784,7 +784,7 @@ func attrIteratorNextFunction_Set() error {
 // Next is a representation of the C type pango_attr_iterator_next.
 func (recv *AttrIterator) Next() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -816,7 +816,7 @@ func attrIteratorRangeFunction_Set() error {
 // Range is a representation of the C type pango_attr_iterator_range.
 func (recv *AttrIterator) Range() (int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [2]gi.Argument
 
@@ -843,7 +843,7 @@ func AttrIteratorStruct() *AttrIterator {
 	return structGo
 }
 func finalizeAttrIterator(obj *AttrIterator) {
-	attrIteratorStruct.Free(obj.native)
+	attrIteratorStruct.Free(obj.Native())
 }
 
 var attrLanguageStruct *gi.Struct
@@ -882,7 +882,7 @@ func (recv *AttrLanguage) Native() unsafe.Pointer {
 
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrLanguage) FieldAttr() *Attribute {
-	argValue := gi.StructFieldGet(attrLanguageStruct, recv.native, "attr")
+	argValue := gi.StructFieldGet(attrLanguageStruct, recv.Native(), "attr")
 	value := AttributeNewFromNative(argValue.Pointer())
 	return value
 }
@@ -890,13 +890,13 @@ func (recv *AttrLanguage) FieldAttr() *Attribute {
 // SetFieldAttr sets the value of the C field 'attr'.
 func (recv *AttrLanguage) SetFieldAttr(value *Attribute) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrLanguageStruct, recv.native, "attr", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrLanguageStruct, recv.Native(), "attr", argValue)
 }
 
 // FieldValue returns the C field 'value'.
 func (recv *AttrLanguage) FieldValue() *Language {
-	argValue := gi.StructFieldGet(attrLanguageStruct, recv.native, "value")
+	argValue := gi.StructFieldGet(attrLanguageStruct, recv.Native(), "value")
 	value := LanguageNewFromNative(argValue.Pointer())
 	return value
 }
@@ -904,8 +904,8 @@ func (recv *AttrLanguage) FieldValue() *Language {
 // SetFieldValue sets the value of the C field 'value'.
 func (recv *AttrLanguage) SetFieldValue(value *Language) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrLanguageStruct, recv.native, "value", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrLanguageStruct, recv.Native(), "value", argValue)
 }
 
 // AttrLanguageStruct creates an uninitialised AttrLanguage.
@@ -920,7 +920,7 @@ func AttrLanguageStruct() *AttrLanguage {
 	return structGo
 }
 func finalizeAttrLanguage(obj *AttrLanguage) {
-	attrLanguageStruct.Free(obj.native)
+	attrLanguageStruct.Free(obj.Native())
 }
 
 var attrListStruct *gi.Struct
@@ -1005,8 +1005,8 @@ func attrListChangeFunction_Set() error {
 // Change is a representation of the C type pango_attr_list_change.
 func (recv *AttrList) Change(attr *Attribute) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(attr.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(attr.Native())
 
 	err := attrListChangeFunction_Set()
 	if err == nil {
@@ -1034,7 +1034,7 @@ func attrListCopyFunction_Set() error {
 // Copy is a representation of the C type pango_attr_list_copy.
 func (recv *AttrList) Copy() *AttrList {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1068,7 +1068,7 @@ func attrListGetIteratorFunction_Set() error {
 // GetIterator is a representation of the C type pango_attr_list_get_iterator.
 func (recv *AttrList) GetIterator() *AttrIterator {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1100,8 +1100,8 @@ func attrListInsertFunction_Set() error {
 // Insert is a representation of the C type pango_attr_list_insert.
 func (recv *AttrList) Insert(attr *Attribute) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(attr.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(attr.Native())
 
 	err := attrListInsertFunction_Set()
 	if err == nil {
@@ -1129,8 +1129,8 @@ func attrListInsertBeforeFunction_Set() error {
 // InsertBefore is a representation of the C type pango_attr_list_insert_before.
 func (recv *AttrList) InsertBefore(attr *Attribute) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(attr.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(attr.Native())
 
 	err := attrListInsertBeforeFunction_Set()
 	if err == nil {
@@ -1158,7 +1158,7 @@ func attrListRefFunction_Set() error {
 // Ref is a representation of the C type pango_attr_list_ref.
 func (recv *AttrList) Ref() *AttrList {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1190,8 +1190,8 @@ func attrListSpliceFunction_Set() error {
 // Splice is a representation of the C type pango_attr_list_splice.
 func (recv *AttrList) Splice(other *AttrList, pos int32, len int32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(other.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(other.Native())
 	inArgs[2].SetInt32(pos)
 	inArgs[3].SetInt32(len)
 
@@ -1221,7 +1221,7 @@ func attrListUnrefFunction_Set() error {
 // Unref is a representation of the C type pango_attr_list_unref.
 func (recv *AttrList) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := attrListUnrefFunction_Set()
 	if err == nil {
@@ -1267,7 +1267,7 @@ func (recv *AttrShape) Native() unsafe.Pointer {
 
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrShape) FieldAttr() *Attribute {
-	argValue := gi.StructFieldGet(attrShapeStruct, recv.native, "attr")
+	argValue := gi.StructFieldGet(attrShapeStruct, recv.Native(), "attr")
 	value := AttributeNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1275,13 +1275,13 @@ func (recv *AttrShape) FieldAttr() *Attribute {
 // SetFieldAttr sets the value of the C field 'attr'.
 func (recv *AttrShape) SetFieldAttr(value *Attribute) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrShapeStruct, recv.native, "attr", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrShapeStruct, recv.Native(), "attr", argValue)
 }
 
 // FieldInkRect returns the C field 'ink_rect'.
 func (recv *AttrShape) FieldInkRect() *Rectangle {
-	argValue := gi.StructFieldGet(attrShapeStruct, recv.native, "ink_rect")
+	argValue := gi.StructFieldGet(attrShapeStruct, recv.Native(), "ink_rect")
 	value := RectangleNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1289,13 +1289,13 @@ func (recv *AttrShape) FieldInkRect() *Rectangle {
 // SetFieldInkRect sets the value of the C field 'ink_rect'.
 func (recv *AttrShape) SetFieldInkRect(value *Rectangle) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrShapeStruct, recv.native, "ink_rect", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrShapeStruct, recv.Native(), "ink_rect", argValue)
 }
 
 // FieldLogicalRect returns the C field 'logical_rect'.
 func (recv *AttrShape) FieldLogicalRect() *Rectangle {
-	argValue := gi.StructFieldGet(attrShapeStruct, recv.native, "logical_rect")
+	argValue := gi.StructFieldGet(attrShapeStruct, recv.Native(), "logical_rect")
 	value := RectangleNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1303,8 +1303,8 @@ func (recv *AttrShape) FieldLogicalRect() *Rectangle {
 // SetFieldLogicalRect sets the value of the C field 'logical_rect'.
 func (recv *AttrShape) SetFieldLogicalRect(value *Rectangle) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrShapeStruct, recv.native, "logical_rect", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrShapeStruct, recv.Native(), "logical_rect", argValue)
 }
 
 // UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
@@ -1331,7 +1331,7 @@ func AttrShapeStruct() *AttrShape {
 	return structGo
 }
 func finalizeAttrShape(obj *AttrShape) {
-	attrShapeStruct.Free(obj.native)
+	attrShapeStruct.Free(obj.Native())
 }
 
 var attrSizeStruct *gi.Struct
@@ -1370,7 +1370,7 @@ func (recv *AttrSize) Native() unsafe.Pointer {
 
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrSize) FieldAttr() *Attribute {
-	argValue := gi.StructFieldGet(attrSizeStruct, recv.native, "attr")
+	argValue := gi.StructFieldGet(attrSizeStruct, recv.Native(), "attr")
 	value := AttributeNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1378,13 +1378,13 @@ func (recv *AttrSize) FieldAttr() *Attribute {
 // SetFieldAttr sets the value of the C field 'attr'.
 func (recv *AttrSize) SetFieldAttr(value *Attribute) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrSizeStruct, recv.native, "attr", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrSizeStruct, recv.Native(), "attr", argValue)
 }
 
 // FieldSize returns the C field 'size'.
 func (recv *AttrSize) FieldSize() int32 {
-	argValue := gi.StructFieldGet(attrSizeStruct, recv.native, "size")
+	argValue := gi.StructFieldGet(attrSizeStruct, recv.Native(), "size")
 	value := argValue.Int32()
 	return value
 }
@@ -1393,12 +1393,12 @@ func (recv *AttrSize) FieldSize() int32 {
 func (recv *AttrSize) SetFieldSize(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(attrSizeStruct, recv.native, "size", argValue)
+	gi.StructFieldSet(attrSizeStruct, recv.Native(), "size", argValue)
 }
 
 // FieldAbsolute returns the C field 'absolute'.
 func (recv *AttrSize) FieldAbsolute() uint32 {
-	argValue := gi.StructFieldGet(attrSizeStruct, recv.native, "absolute")
+	argValue := gi.StructFieldGet(attrSizeStruct, recv.Native(), "absolute")
 	value := argValue.Uint32()
 	return value
 }
@@ -1407,7 +1407,7 @@ func (recv *AttrSize) FieldAbsolute() uint32 {
 func (recv *AttrSize) SetFieldAbsolute(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(attrSizeStruct, recv.native, "absolute", argValue)
+	gi.StructFieldSet(attrSizeStruct, recv.Native(), "absolute", argValue)
 }
 
 // AttrSizeStruct creates an uninitialised AttrSize.
@@ -1422,7 +1422,7 @@ func AttrSizeStruct() *AttrSize {
 	return structGo
 }
 func finalizeAttrSize(obj *AttrSize) {
-	attrSizeStruct.Free(obj.native)
+	attrSizeStruct.Free(obj.Native())
 }
 
 var attrStringStruct *gi.Struct
@@ -1461,7 +1461,7 @@ func (recv *AttrString) Native() unsafe.Pointer {
 
 // FieldAttr returns the C field 'attr'.
 func (recv *AttrString) FieldAttr() *Attribute {
-	argValue := gi.StructFieldGet(attrStringStruct, recv.native, "attr")
+	argValue := gi.StructFieldGet(attrStringStruct, recv.Native(), "attr")
 	value := AttributeNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1469,13 +1469,13 @@ func (recv *AttrString) FieldAttr() *Attribute {
 // SetFieldAttr sets the value of the C field 'attr'.
 func (recv *AttrString) SetFieldAttr(value *Attribute) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attrStringStruct, recv.native, "attr", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attrStringStruct, recv.Native(), "attr", argValue)
 }
 
 // FieldValue returns the C field 'value'.
 func (recv *AttrString) FieldValue() string {
-	argValue := gi.StructFieldGet(attrStringStruct, recv.native, "value")
+	argValue := gi.StructFieldGet(attrStringStruct, recv.Native(), "value")
 	value := argValue.String(false)
 	return value
 }
@@ -1484,7 +1484,7 @@ func (recv *AttrString) FieldValue() string {
 func (recv *AttrString) SetFieldValue(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(attrStringStruct, recv.native, "value", argValue)
+	gi.StructFieldSet(attrStringStruct, recv.Native(), "value", argValue)
 }
 
 // AttrStringStruct creates an uninitialised AttrString.
@@ -1499,7 +1499,7 @@ func AttrStringStruct() *AttrString {
 	return structGo
 }
 func finalizeAttrString(obj *AttrString) {
-	attrStringStruct.Free(obj.native)
+	attrStringStruct.Free(obj.Native())
 }
 
 var attributeStruct *gi.Struct
@@ -1538,7 +1538,7 @@ func (recv *Attribute) Native() unsafe.Pointer {
 
 // FieldKlass returns the C field 'klass'.
 func (recv *Attribute) FieldKlass() *AttrClass {
-	argValue := gi.StructFieldGet(attributeStruct, recv.native, "klass")
+	argValue := gi.StructFieldGet(attributeStruct, recv.Native(), "klass")
 	value := AttrClassNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1546,13 +1546,13 @@ func (recv *Attribute) FieldKlass() *AttrClass {
 // SetFieldKlass sets the value of the C field 'klass'.
 func (recv *Attribute) SetFieldKlass(value *AttrClass) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(attributeStruct, recv.native, "klass", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(attributeStruct, recv.Native(), "klass", argValue)
 }
 
 // FieldStartIndex returns the C field 'start_index'.
 func (recv *Attribute) FieldStartIndex() uint32 {
-	argValue := gi.StructFieldGet(attributeStruct, recv.native, "start_index")
+	argValue := gi.StructFieldGet(attributeStruct, recv.Native(), "start_index")
 	value := argValue.Uint32()
 	return value
 }
@@ -1561,12 +1561,12 @@ func (recv *Attribute) FieldStartIndex() uint32 {
 func (recv *Attribute) SetFieldStartIndex(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(attributeStruct, recv.native, "start_index", argValue)
+	gi.StructFieldSet(attributeStruct, recv.Native(), "start_index", argValue)
 }
 
 // FieldEndIndex returns the C field 'end_index'.
 func (recv *Attribute) FieldEndIndex() uint32 {
-	argValue := gi.StructFieldGet(attributeStruct, recv.native, "end_index")
+	argValue := gi.StructFieldGet(attributeStruct, recv.Native(), "end_index")
 	value := argValue.Uint32()
 	return value
 }
@@ -1575,7 +1575,7 @@ func (recv *Attribute) FieldEndIndex() uint32 {
 func (recv *Attribute) SetFieldEndIndex(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(attributeStruct, recv.native, "end_index", argValue)
+	gi.StructFieldSet(attributeStruct, recv.Native(), "end_index", argValue)
 }
 
 var attributeCopyFunction *gi.Function
@@ -1596,7 +1596,7 @@ func attributeCopyFunction_Set() error {
 // Copy is a representation of the C type pango_attribute_copy.
 func (recv *Attribute) Copy() *Attribute {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1628,7 +1628,7 @@ func attributeDestroyFunction_Set() error {
 // Destroy is a representation of the C type pango_attribute_destroy.
 func (recv *Attribute) Destroy() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := attributeDestroyFunction_Set()
 	if err == nil {
@@ -1656,8 +1656,8 @@ func attributeEqualFunction_Set() error {
 // Equal is a representation of the C type pango_attribute_equal.
 func (recv *Attribute) Equal(attr2 *Attribute) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(attr2.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(attr2.Native())
 
 	var ret gi.Argument
 
@@ -1689,8 +1689,8 @@ func attributeInitFunction_Set() error {
 // Init is a representation of the C type pango_attribute_init.
 func (recv *Attribute) Init(klass *AttrClass) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(klass.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(klass.Native())
 
 	err := attributeInitFunction_Set()
 	if err == nil {
@@ -1712,7 +1712,7 @@ func AttributeStruct() *Attribute {
 	return structGo
 }
 func finalizeAttribute(obj *Attribute) {
-	attributeStruct.Free(obj.native)
+	attributeStruct.Free(obj.Native())
 }
 
 var colorStruct *gi.Struct
@@ -1751,7 +1751,7 @@ func (recv *Color) Native() unsafe.Pointer {
 
 // FieldRed returns the C field 'red'.
 func (recv *Color) FieldRed() uint16 {
-	argValue := gi.StructFieldGet(colorStruct, recv.native, "red")
+	argValue := gi.StructFieldGet(colorStruct, recv.Native(), "red")
 	value := argValue.Uint16()
 	return value
 }
@@ -1760,12 +1760,12 @@ func (recv *Color) FieldRed() uint16 {
 func (recv *Color) SetFieldRed(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(colorStruct, recv.native, "red", argValue)
+	gi.StructFieldSet(colorStruct, recv.Native(), "red", argValue)
 }
 
 // FieldGreen returns the C field 'green'.
 func (recv *Color) FieldGreen() uint16 {
-	argValue := gi.StructFieldGet(colorStruct, recv.native, "green")
+	argValue := gi.StructFieldGet(colorStruct, recv.Native(), "green")
 	value := argValue.Uint16()
 	return value
 }
@@ -1774,12 +1774,12 @@ func (recv *Color) FieldGreen() uint16 {
 func (recv *Color) SetFieldGreen(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(colorStruct, recv.native, "green", argValue)
+	gi.StructFieldSet(colorStruct, recv.Native(), "green", argValue)
 }
 
 // FieldBlue returns the C field 'blue'.
 func (recv *Color) FieldBlue() uint16 {
-	argValue := gi.StructFieldGet(colorStruct, recv.native, "blue")
+	argValue := gi.StructFieldGet(colorStruct, recv.Native(), "blue")
 	value := argValue.Uint16()
 	return value
 }
@@ -1788,7 +1788,7 @@ func (recv *Color) FieldBlue() uint16 {
 func (recv *Color) SetFieldBlue(value uint16) {
 	var argValue gi.Argument
 	argValue.SetUint16(value)
-	gi.StructFieldSet(colorStruct, recv.native, "blue", argValue)
+	gi.StructFieldSet(colorStruct, recv.Native(), "blue", argValue)
 }
 
 var colorCopyFunction *gi.Function
@@ -1809,7 +1809,7 @@ func colorCopyFunction_Set() error {
 // Copy is a representation of the C type pango_color_copy.
 func (recv *Color) Copy() *Color {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1841,7 +1841,7 @@ func colorFreeFunction_Set() error {
 // Free is a representation of the C type pango_color_free.
 func (recv *Color) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := colorFreeFunction_Set()
 	if err == nil {
@@ -1869,7 +1869,7 @@ func colorParseFunction_Set() error {
 // Parse is a representation of the C type pango_color_parse.
 func (recv *Color) Parse(spec string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(spec)
 
 	var ret gi.Argument
@@ -1902,7 +1902,7 @@ func colorToStringFunction_Set() error {
 // ToString is a representation of the C type pango_color_to_string.
 func (recv *Color) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1928,7 +1928,7 @@ func ColorStruct() *Color {
 	return structGo
 }
 func finalizeColor(obj *Color) {
-	colorStruct.Free(obj.native)
+	colorStruct.Free(obj.Native())
 }
 
 var contextClassStruct *gi.Struct
@@ -1977,7 +1977,7 @@ func ContextClassStruct() *ContextClass {
 	return structGo
 }
 func finalizeContextClass(obj *ContextClass) {
-	contextClassStruct.Free(obj.native)
+	contextClassStruct.Free(obj.Native())
 }
 
 var coverageStruct *gi.Struct
@@ -2032,7 +2032,7 @@ func coverageCopyFunction_Set() error {
 // Copy is a representation of the C type pango_coverage_copy.
 func (recv *Coverage) Copy() *Coverage {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2064,7 +2064,7 @@ func coverageGetFunction_Set() error {
 // Get is a representation of the C type pango_coverage_get.
 func (recv *Coverage) Get(index int32) CoverageLevel {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(index)
 
 	var ret gi.Argument
@@ -2097,8 +2097,8 @@ func coverageMaxFunction_Set() error {
 // Max is a representation of the C type pango_coverage_max.
 func (recv *Coverage) Max(other *Coverage) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(other.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(other.Native())
 
 	err := coverageMaxFunction_Set()
 	if err == nil {
@@ -2126,7 +2126,7 @@ func coverageRefFunction_Set() error {
 // Ref is a representation of the C type pango_coverage_ref.
 func (recv *Coverage) Ref() *Coverage {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2158,7 +2158,7 @@ func coverageSetFunction_Set() error {
 // Set is a representation of the C type pango_coverage_set.
 func (recv *Coverage) Set(index int32, level CoverageLevel) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(index)
 	inArgs[2].SetInt32(int32(level))
 
@@ -2190,7 +2190,7 @@ func coverageUnrefFunction_Set() error {
 // Unref is a representation of the C type pango_coverage_unref.
 func (recv *Coverage) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := coverageUnrefFunction_Set()
 	if err == nil {
@@ -2212,7 +2212,7 @@ func CoverageStruct() *Coverage {
 	return structGo
 }
 func finalizeCoverage(obj *Coverage) {
-	coverageStruct.Free(obj.native)
+	coverageStruct.Free(obj.Native())
 }
 
 var engineClassStruct *gi.Struct
@@ -2261,7 +2261,7 @@ func EngineClassStruct() *EngineClass {
 	return structGo
 }
 func finalizeEngineClass(obj *EngineClass) {
-	engineClassStruct.Free(obj.native)
+	engineClassStruct.Free(obj.Native())
 }
 
 var engineInfoStruct *gi.Struct
@@ -2300,7 +2300,7 @@ func (recv *EngineInfo) Native() unsafe.Pointer {
 
 // FieldId returns the C field 'id'.
 func (recv *EngineInfo) FieldId() string {
-	argValue := gi.StructFieldGet(engineInfoStruct, recv.native, "id")
+	argValue := gi.StructFieldGet(engineInfoStruct, recv.Native(), "id")
 	value := argValue.String(false)
 	return value
 }
@@ -2309,12 +2309,12 @@ func (recv *EngineInfo) FieldId() string {
 func (recv *EngineInfo) SetFieldId(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(engineInfoStruct, recv.native, "id", argValue)
+	gi.StructFieldSet(engineInfoStruct, recv.Native(), "id", argValue)
 }
 
 // FieldEngineType returns the C field 'engine_type'.
 func (recv *EngineInfo) FieldEngineType() string {
-	argValue := gi.StructFieldGet(engineInfoStruct, recv.native, "engine_type")
+	argValue := gi.StructFieldGet(engineInfoStruct, recv.Native(), "engine_type")
 	value := argValue.String(false)
 	return value
 }
@@ -2323,12 +2323,12 @@ func (recv *EngineInfo) FieldEngineType() string {
 func (recv *EngineInfo) SetFieldEngineType(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(engineInfoStruct, recv.native, "engine_type", argValue)
+	gi.StructFieldSet(engineInfoStruct, recv.Native(), "engine_type", argValue)
 }
 
 // FieldRenderType returns the C field 'render_type'.
 func (recv *EngineInfo) FieldRenderType() string {
-	argValue := gi.StructFieldGet(engineInfoStruct, recv.native, "render_type")
+	argValue := gi.StructFieldGet(engineInfoStruct, recv.Native(), "render_type")
 	value := argValue.String(false)
 	return value
 }
@@ -2337,12 +2337,12 @@ func (recv *EngineInfo) FieldRenderType() string {
 func (recv *EngineInfo) SetFieldRenderType(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(engineInfoStruct, recv.native, "render_type", argValue)
+	gi.StructFieldSet(engineInfoStruct, recv.Native(), "render_type", argValue)
 }
 
 // FieldScripts returns the C field 'scripts'.
 func (recv *EngineInfo) FieldScripts() *EngineScriptInfo {
-	argValue := gi.StructFieldGet(engineInfoStruct, recv.native, "scripts")
+	argValue := gi.StructFieldGet(engineInfoStruct, recv.Native(), "scripts")
 	value := EngineScriptInfoNewFromNative(argValue.Pointer())
 	return value
 }
@@ -2350,13 +2350,13 @@ func (recv *EngineInfo) FieldScripts() *EngineScriptInfo {
 // SetFieldScripts sets the value of the C field 'scripts'.
 func (recv *EngineInfo) SetFieldScripts(value *EngineScriptInfo) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(engineInfoStruct, recv.native, "scripts", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(engineInfoStruct, recv.Native(), "scripts", argValue)
 }
 
 // FieldNScripts returns the C field 'n_scripts'.
 func (recv *EngineInfo) FieldNScripts() int32 {
-	argValue := gi.StructFieldGet(engineInfoStruct, recv.native, "n_scripts")
+	argValue := gi.StructFieldGet(engineInfoStruct, recv.Native(), "n_scripts")
 	value := argValue.Int32()
 	return value
 }
@@ -2365,7 +2365,7 @@ func (recv *EngineInfo) FieldNScripts() int32 {
 func (recv *EngineInfo) SetFieldNScripts(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(engineInfoStruct, recv.native, "n_scripts", argValue)
+	gi.StructFieldSet(engineInfoStruct, recv.Native(), "n_scripts", argValue)
 }
 
 // EngineInfoStruct creates an uninitialised EngineInfo.
@@ -2380,7 +2380,7 @@ func EngineInfoStruct() *EngineInfo {
 	return structGo
 }
 func finalizeEngineInfo(obj *EngineInfo) {
-	engineInfoStruct.Free(obj.native)
+	engineInfoStruct.Free(obj.Native())
 }
 
 var engineLangClassStruct *gi.Struct
@@ -2433,7 +2433,7 @@ func EngineLangClassStruct() *EngineLangClass {
 	return structGo
 }
 func finalizeEngineLangClass(obj *EngineLangClass) {
-	engineLangClassStruct.Free(obj.native)
+	engineLangClassStruct.Free(obj.Native())
 }
 
 var engineScriptInfoStruct *gi.Struct
@@ -2472,7 +2472,7 @@ func (recv *EngineScriptInfo) Native() unsafe.Pointer {
 
 // FieldScript returns the C field 'script'.
 func (recv *EngineScriptInfo) FieldScript() Script {
-	argValue := gi.StructFieldGet(engineScriptInfoStruct, recv.native, "script")
+	argValue := gi.StructFieldGet(engineScriptInfoStruct, recv.Native(), "script")
 	value := Script(argValue.Int32())
 	return value
 }
@@ -2481,12 +2481,12 @@ func (recv *EngineScriptInfo) FieldScript() Script {
 func (recv *EngineScriptInfo) SetFieldScript(value Script) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(engineScriptInfoStruct, recv.native, "script", argValue)
+	gi.StructFieldSet(engineScriptInfoStruct, recv.Native(), "script", argValue)
 }
 
 // FieldLangs returns the C field 'langs'.
 func (recv *EngineScriptInfo) FieldLangs() string {
-	argValue := gi.StructFieldGet(engineScriptInfoStruct, recv.native, "langs")
+	argValue := gi.StructFieldGet(engineScriptInfoStruct, recv.Native(), "langs")
 	value := argValue.String(false)
 	return value
 }
@@ -2495,7 +2495,7 @@ func (recv *EngineScriptInfo) FieldLangs() string {
 func (recv *EngineScriptInfo) SetFieldLangs(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(engineScriptInfoStruct, recv.native, "langs", argValue)
+	gi.StructFieldSet(engineScriptInfoStruct, recv.Native(), "langs", argValue)
 }
 
 // EngineScriptInfoStruct creates an uninitialised EngineScriptInfo.
@@ -2510,7 +2510,7 @@ func EngineScriptInfoStruct() *EngineScriptInfo {
 	return structGo
 }
 func finalizeEngineScriptInfo(obj *EngineScriptInfo) {
-	engineScriptInfoStruct.Free(obj.native)
+	engineScriptInfoStruct.Free(obj.Native())
 }
 
 var engineShapeClassStruct *gi.Struct
@@ -2567,7 +2567,7 @@ func EngineShapeClassStruct() *EngineShapeClass {
 	return structGo
 }
 func finalizeEngineShapeClass(obj *EngineShapeClass) {
-	engineShapeClassStruct.Free(obj.native)
+	engineShapeClassStruct.Free(obj.Native())
 }
 
 var fontClassStruct *gi.Struct
@@ -2656,7 +2656,7 @@ func FontClassStruct() *FontClass {
 	return structGo
 }
 func finalizeFontClass(obj *FontClass) {
-	fontClassStruct.Free(obj.native)
+	fontClassStruct.Free(obj.Native())
 }
 
 var fontDescriptionStruct *gi.Struct
@@ -2741,9 +2741,9 @@ func fontDescriptionBetterMatchFunction_Set() error {
 // BetterMatch is a representation of the C type pango_font_description_better_match.
 func (recv *FontDescription) BetterMatch(oldMatch *FontDescription, newMatch *FontDescription) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(oldMatch.native)
-	inArgs[2].SetPointer(newMatch.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(oldMatch.Native())
+	inArgs[2].SetPointer(newMatch.Native())
 
 	var ret gi.Argument
 
@@ -2775,7 +2775,7 @@ func fontDescriptionCopyFunction_Set() error {
 // Copy is a representation of the C type pango_font_description_copy.
 func (recv *FontDescription) Copy() *FontDescription {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2807,7 +2807,7 @@ func fontDescriptionCopyStaticFunction_Set() error {
 // CopyStatic is a representation of the C type pango_font_description_copy_static.
 func (recv *FontDescription) CopyStatic() *FontDescription {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2839,8 +2839,8 @@ func fontDescriptionEqualFunction_Set() error {
 // Equal is a representation of the C type pango_font_description_equal.
 func (recv *FontDescription) Equal(desc2 *FontDescription) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(desc2.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(desc2.Native())
 
 	var ret gi.Argument
 
@@ -2872,7 +2872,7 @@ func fontDescriptionFreeFunction_Set() error {
 // Free is a representation of the C type pango_font_description_free.
 func (recv *FontDescription) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := fontDescriptionFreeFunction_Set()
 	if err == nil {
@@ -2900,7 +2900,7 @@ func fontDescriptionGetFamilyFunction_Set() error {
 // GetFamily is a representation of the C type pango_font_description_get_family.
 func (recv *FontDescription) GetFamily() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2932,7 +2932,7 @@ func fontDescriptionGetGravityFunction_Set() error {
 // GetGravity is a representation of the C type pango_font_description_get_gravity.
 func (recv *FontDescription) GetGravity() Gravity {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2966,7 +2966,7 @@ func fontDescriptionGetSizeFunction_Set() error {
 // GetSize is a representation of the C type pango_font_description_get_size.
 func (recv *FontDescription) GetSize() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2998,7 +2998,7 @@ func fontDescriptionGetSizeIsAbsoluteFunction_Set() error {
 // GetSizeIsAbsolute is a representation of the C type pango_font_description_get_size_is_absolute.
 func (recv *FontDescription) GetSizeIsAbsolute() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3030,7 +3030,7 @@ func fontDescriptionGetStretchFunction_Set() error {
 // GetStretch is a representation of the C type pango_font_description_get_stretch.
 func (recv *FontDescription) GetStretch() Stretch {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3062,7 +3062,7 @@ func fontDescriptionGetStyleFunction_Set() error {
 // GetStyle is a representation of the C type pango_font_description_get_style.
 func (recv *FontDescription) GetStyle() Style {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3094,7 +3094,7 @@ func fontDescriptionGetVariantFunction_Set() error {
 // GetVariant is a representation of the C type pango_font_description_get_variant.
 func (recv *FontDescription) GetVariant() Variant {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3126,7 +3126,7 @@ func fontDescriptionGetVariationsFunction_Set() error {
 // GetVariations is a representation of the C type pango_font_description_get_variations.
 func (recv *FontDescription) GetVariations() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3158,7 +3158,7 @@ func fontDescriptionGetWeightFunction_Set() error {
 // GetWeight is a representation of the C type pango_font_description_get_weight.
 func (recv *FontDescription) GetWeight() Weight {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3190,7 +3190,7 @@ func fontDescriptionHashFunction_Set() error {
 // Hash is a representation of the C type pango_font_description_hash.
 func (recv *FontDescription) Hash() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3222,8 +3222,8 @@ func fontDescriptionMergeFunction_Set() error {
 // Merge is a representation of the C type pango_font_description_merge.
 func (recv *FontDescription) Merge(descToMerge *FontDescription, replaceExisting bool) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(descToMerge.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(descToMerge.Native())
 	inArgs[2].SetBoolean(replaceExisting)
 
 	err := fontDescriptionMergeFunction_Set()
@@ -3252,8 +3252,8 @@ func fontDescriptionMergeStaticFunction_Set() error {
 // MergeStatic is a representation of the C type pango_font_description_merge_static.
 func (recv *FontDescription) MergeStatic(descToMerge *FontDescription, replaceExisting bool) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(descToMerge.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(descToMerge.Native())
 	inArgs[2].SetBoolean(replaceExisting)
 
 	err := fontDescriptionMergeStaticFunction_Set()
@@ -3282,7 +3282,7 @@ func fontDescriptionSetAbsoluteSizeFunction_Set() error {
 // SetAbsoluteSize is a representation of the C type pango_font_description_set_absolute_size.
 func (recv *FontDescription) SetAbsoluteSize(size float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(size)
 
 	err := fontDescriptionSetAbsoluteSizeFunction_Set()
@@ -3311,7 +3311,7 @@ func fontDescriptionSetFamilyFunction_Set() error {
 // SetFamily is a representation of the C type pango_font_description_set_family.
 func (recv *FontDescription) SetFamily(family string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(family)
 
 	err := fontDescriptionSetFamilyFunction_Set()
@@ -3340,7 +3340,7 @@ func fontDescriptionSetFamilyStaticFunction_Set() error {
 // SetFamilyStatic is a representation of the C type pango_font_description_set_family_static.
 func (recv *FontDescription) SetFamilyStatic(family string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(family)
 
 	err := fontDescriptionSetFamilyStaticFunction_Set()
@@ -3369,7 +3369,7 @@ func fontDescriptionSetGravityFunction_Set() error {
 // SetGravity is a representation of the C type pango_font_description_set_gravity.
 func (recv *FontDescription) SetGravity(gravity Gravity) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(gravity))
 
 	err := fontDescriptionSetGravityFunction_Set()
@@ -3398,7 +3398,7 @@ func fontDescriptionSetSizeFunction_Set() error {
 // SetSize is a representation of the C type pango_font_description_set_size.
 func (recv *FontDescription) SetSize(size int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(size)
 
 	err := fontDescriptionSetSizeFunction_Set()
@@ -3427,7 +3427,7 @@ func fontDescriptionSetStretchFunction_Set() error {
 // SetStretch is a representation of the C type pango_font_description_set_stretch.
 func (recv *FontDescription) SetStretch(stretch Stretch) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(stretch))
 
 	err := fontDescriptionSetStretchFunction_Set()
@@ -3456,7 +3456,7 @@ func fontDescriptionSetStyleFunction_Set() error {
 // SetStyle is a representation of the C type pango_font_description_set_style.
 func (recv *FontDescription) SetStyle(style Style) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(style))
 
 	err := fontDescriptionSetStyleFunction_Set()
@@ -3485,7 +3485,7 @@ func fontDescriptionSetVariantFunction_Set() error {
 // SetVariant is a representation of the C type pango_font_description_set_variant.
 func (recv *FontDescription) SetVariant(variant Variant) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(variant))
 
 	err := fontDescriptionSetVariantFunction_Set()
@@ -3514,7 +3514,7 @@ func fontDescriptionSetVariationsFunction_Set() error {
 // SetVariations is a representation of the C type pango_font_description_set_variations.
 func (recv *FontDescription) SetVariations(settings string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(settings)
 
 	err := fontDescriptionSetVariationsFunction_Set()
@@ -3543,7 +3543,7 @@ func fontDescriptionSetVariationsStaticFunction_Set() error {
 // SetVariationsStatic is a representation of the C type pango_font_description_set_variations_static.
 func (recv *FontDescription) SetVariationsStatic(settings string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(settings)
 
 	err := fontDescriptionSetVariationsStaticFunction_Set()
@@ -3572,7 +3572,7 @@ func fontDescriptionSetWeightFunction_Set() error {
 // SetWeight is a representation of the C type pango_font_description_set_weight.
 func (recv *FontDescription) SetWeight(weight Weight) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(weight))
 
 	err := fontDescriptionSetWeightFunction_Set()
@@ -3601,7 +3601,7 @@ func fontDescriptionToFilenameFunction_Set() error {
 // ToFilename is a representation of the C type pango_font_description_to_filename.
 func (recv *FontDescription) ToFilename() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3633,7 +3633,7 @@ func fontDescriptionToStringFunction_Set() error {
 // ToString is a representation of the C type pango_font_description_to_string.
 func (recv *FontDescription) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3723,7 +3723,7 @@ func FontFaceClassStruct() *FontFaceClass {
 	return structGo
 }
 func finalizeFontFaceClass(obj *FontFaceClass) {
-	fontFaceClassStruct.Free(obj.native)
+	fontFaceClassStruct.Free(obj.Native())
 }
 
 var fontFamilyClassStruct *gi.Struct
@@ -3800,7 +3800,7 @@ func FontFamilyClassStruct() *FontFamilyClass {
 	return structGo
 }
 func finalizeFontFamilyClass(obj *FontFamilyClass) {
-	fontFamilyClassStruct.Free(obj.native)
+	fontFamilyClassStruct.Free(obj.Native())
 }
 
 var fontMapClassStruct *gi.Struct
@@ -3855,7 +3855,7 @@ func (recv *FontMapClass) Native() unsafe.Pointer {
 
 // FieldShapeEngineType returns the C field 'shape_engine_type'.
 func (recv *FontMapClass) FieldShapeEngineType() string {
-	argValue := gi.StructFieldGet(fontMapClassStruct, recv.native, "shape_engine_type")
+	argValue := gi.StructFieldGet(fontMapClassStruct, recv.Native(), "shape_engine_type")
 	value := argValue.String(false)
 	return value
 }
@@ -3864,7 +3864,7 @@ func (recv *FontMapClass) FieldShapeEngineType() string {
 func (recv *FontMapClass) SetFieldShapeEngineType(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(fontMapClassStruct, recv.native, "shape_engine_type", argValue)
+	gi.StructFieldSet(fontMapClassStruct, recv.Native(), "shape_engine_type", argValue)
 }
 
 // UNSUPPORTED : C value 'get_serial' : for field getter : missing Type
@@ -3895,7 +3895,7 @@ func FontMapClassStruct() *FontMapClass {
 	return structGo
 }
 func finalizeFontMapClass(obj *FontMapClass) {
-	fontMapClassStruct.Free(obj.native)
+	fontMapClassStruct.Free(obj.Native())
 }
 
 var fontMetricsStruct *gi.Struct
@@ -3980,7 +3980,7 @@ func fontMetricsGetApproximateCharWidthFunction_Set() error {
 // GetApproximateCharWidth is a representation of the C type pango_font_metrics_get_approximate_char_width.
 func (recv *FontMetrics) GetApproximateCharWidth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4012,7 +4012,7 @@ func fontMetricsGetApproximateDigitWidthFunction_Set() error {
 // GetApproximateDigitWidth is a representation of the C type pango_font_metrics_get_approximate_digit_width.
 func (recv *FontMetrics) GetApproximateDigitWidth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4044,7 +4044,7 @@ func fontMetricsGetAscentFunction_Set() error {
 // GetAscent is a representation of the C type pango_font_metrics_get_ascent.
 func (recv *FontMetrics) GetAscent() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4076,7 +4076,7 @@ func fontMetricsGetDescentFunction_Set() error {
 // GetDescent is a representation of the C type pango_font_metrics_get_descent.
 func (recv *FontMetrics) GetDescent() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4108,7 +4108,7 @@ func fontMetricsGetStrikethroughPositionFunction_Set() error {
 // GetStrikethroughPosition is a representation of the C type pango_font_metrics_get_strikethrough_position.
 func (recv *FontMetrics) GetStrikethroughPosition() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4140,7 +4140,7 @@ func fontMetricsGetStrikethroughThicknessFunction_Set() error {
 // GetStrikethroughThickness is a representation of the C type pango_font_metrics_get_strikethrough_thickness.
 func (recv *FontMetrics) GetStrikethroughThickness() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4172,7 +4172,7 @@ func fontMetricsGetUnderlinePositionFunction_Set() error {
 // GetUnderlinePosition is a representation of the C type pango_font_metrics_get_underline_position.
 func (recv *FontMetrics) GetUnderlinePosition() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4204,7 +4204,7 @@ func fontMetricsGetUnderlineThicknessFunction_Set() error {
 // GetUnderlineThickness is a representation of the C type pango_font_metrics_get_underline_thickness.
 func (recv *FontMetrics) GetUnderlineThickness() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4236,7 +4236,7 @@ func fontMetricsRefFunction_Set() error {
 // Ref is a representation of the C type pango_font_metrics_ref.
 func (recv *FontMetrics) Ref() *FontMetrics {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4268,7 +4268,7 @@ func fontMetricsUnrefFunction_Set() error {
 // Unref is a representation of the C type pango_font_metrics_unref.
 func (recv *FontMetrics) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := fontMetricsUnrefFunction_Set()
 	if err == nil {
@@ -4360,7 +4360,7 @@ func FontsetClassStruct() *FontsetClass {
 	return structGo
 }
 func finalizeFontsetClass(obj *FontsetClass) {
-	fontsetClassStruct.Free(obj.native)
+	fontsetClassStruct.Free(obj.Native())
 }
 
 var fontsetSimpleClassStruct *gi.Struct
@@ -4409,7 +4409,7 @@ func FontsetSimpleClassStruct() *FontsetSimpleClass {
 	return structGo
 }
 func finalizeFontsetSimpleClass(obj *FontsetSimpleClass) {
-	fontsetSimpleClassStruct.Free(obj.native)
+	fontsetSimpleClassStruct.Free(obj.Native())
 }
 
 var glyphGeometryStruct *gi.Struct
@@ -4448,7 +4448,7 @@ func (recv *GlyphGeometry) Native() unsafe.Pointer {
 
 // FieldWidth returns the C field 'width'.
 func (recv *GlyphGeometry) FieldWidth() GlyphUnit {
-	argValue := gi.StructFieldGet(glyphGeometryStruct, recv.native, "width")
+	argValue := gi.StructFieldGet(glyphGeometryStruct, recv.Native(), "width")
 	value := GlyphUnit(argValue.Int32())
 	return value
 }
@@ -4457,12 +4457,12 @@ func (recv *GlyphGeometry) FieldWidth() GlyphUnit {
 func (recv *GlyphGeometry) SetFieldWidth(value GlyphUnit) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(glyphGeometryStruct, recv.native, "width", argValue)
+	gi.StructFieldSet(glyphGeometryStruct, recv.Native(), "width", argValue)
 }
 
 // FieldXOffset returns the C field 'x_offset'.
 func (recv *GlyphGeometry) FieldXOffset() GlyphUnit {
-	argValue := gi.StructFieldGet(glyphGeometryStruct, recv.native, "x_offset")
+	argValue := gi.StructFieldGet(glyphGeometryStruct, recv.Native(), "x_offset")
 	value := GlyphUnit(argValue.Int32())
 	return value
 }
@@ -4471,12 +4471,12 @@ func (recv *GlyphGeometry) FieldXOffset() GlyphUnit {
 func (recv *GlyphGeometry) SetFieldXOffset(value GlyphUnit) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(glyphGeometryStruct, recv.native, "x_offset", argValue)
+	gi.StructFieldSet(glyphGeometryStruct, recv.Native(), "x_offset", argValue)
 }
 
 // FieldYOffset returns the C field 'y_offset'.
 func (recv *GlyphGeometry) FieldYOffset() GlyphUnit {
-	argValue := gi.StructFieldGet(glyphGeometryStruct, recv.native, "y_offset")
+	argValue := gi.StructFieldGet(glyphGeometryStruct, recv.Native(), "y_offset")
 	value := GlyphUnit(argValue.Int32())
 	return value
 }
@@ -4485,7 +4485,7 @@ func (recv *GlyphGeometry) FieldYOffset() GlyphUnit {
 func (recv *GlyphGeometry) SetFieldYOffset(value GlyphUnit) {
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(glyphGeometryStruct, recv.native, "y_offset", argValue)
+	gi.StructFieldSet(glyphGeometryStruct, recv.Native(), "y_offset", argValue)
 }
 
 // GlyphGeometryStruct creates an uninitialised GlyphGeometry.
@@ -4500,7 +4500,7 @@ func GlyphGeometryStruct() *GlyphGeometry {
 	return structGo
 }
 func finalizeGlyphGeometry(obj *GlyphGeometry) {
-	glyphGeometryStruct.Free(obj.native)
+	glyphGeometryStruct.Free(obj.Native())
 }
 
 var glyphInfoStruct *gi.Struct
@@ -4539,7 +4539,7 @@ func (recv *GlyphInfo) Native() unsafe.Pointer {
 
 // FieldGlyph returns the C field 'glyph'.
 func (recv *GlyphInfo) FieldGlyph() Glyph {
-	argValue := gi.StructFieldGet(glyphInfoStruct, recv.native, "glyph")
+	argValue := gi.StructFieldGet(glyphInfoStruct, recv.Native(), "glyph")
 	value := Glyph(argValue.Uint32())
 	return value
 }
@@ -4548,12 +4548,12 @@ func (recv *GlyphInfo) FieldGlyph() Glyph {
 func (recv *GlyphInfo) SetFieldGlyph(value Glyph) {
 	var argValue gi.Argument
 	argValue.SetUint32(uint32(value))
-	gi.StructFieldSet(glyphInfoStruct, recv.native, "glyph", argValue)
+	gi.StructFieldSet(glyphInfoStruct, recv.Native(), "glyph", argValue)
 }
 
 // FieldGeometry returns the C field 'geometry'.
 func (recv *GlyphInfo) FieldGeometry() *GlyphGeometry {
-	argValue := gi.StructFieldGet(glyphInfoStruct, recv.native, "geometry")
+	argValue := gi.StructFieldGet(glyphInfoStruct, recv.Native(), "geometry")
 	value := GlyphGeometryNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4561,13 +4561,13 @@ func (recv *GlyphInfo) FieldGeometry() *GlyphGeometry {
 // SetFieldGeometry sets the value of the C field 'geometry'.
 func (recv *GlyphInfo) SetFieldGeometry(value *GlyphGeometry) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(glyphInfoStruct, recv.native, "geometry", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(glyphInfoStruct, recv.Native(), "geometry", argValue)
 }
 
 // FieldAttr returns the C field 'attr'.
 func (recv *GlyphInfo) FieldAttr() *GlyphVisAttr {
-	argValue := gi.StructFieldGet(glyphInfoStruct, recv.native, "attr")
+	argValue := gi.StructFieldGet(glyphInfoStruct, recv.Native(), "attr")
 	value := GlyphVisAttrNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4575,8 +4575,8 @@ func (recv *GlyphInfo) FieldAttr() *GlyphVisAttr {
 // SetFieldAttr sets the value of the C field 'attr'.
 func (recv *GlyphInfo) SetFieldAttr(value *GlyphVisAttr) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(glyphInfoStruct, recv.native, "attr", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(glyphInfoStruct, recv.Native(), "attr", argValue)
 }
 
 // GlyphInfoStruct creates an uninitialised GlyphInfo.
@@ -4591,7 +4591,7 @@ func GlyphInfoStruct() *GlyphInfo {
 	return structGo
 }
 func finalizeGlyphInfo(obj *GlyphInfo) {
-	glyphInfoStruct.Free(obj.native)
+	glyphInfoStruct.Free(obj.Native())
 }
 
 var glyphItemStruct *gi.Struct
@@ -4630,7 +4630,7 @@ func (recv *GlyphItem) Native() unsafe.Pointer {
 
 // FieldItem returns the C field 'item'.
 func (recv *GlyphItem) FieldItem() *Item {
-	argValue := gi.StructFieldGet(glyphItemStruct, recv.native, "item")
+	argValue := gi.StructFieldGet(glyphItemStruct, recv.Native(), "item")
 	value := ItemNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4638,13 +4638,13 @@ func (recv *GlyphItem) FieldItem() *Item {
 // SetFieldItem sets the value of the C field 'item'.
 func (recv *GlyphItem) SetFieldItem(value *Item) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(glyphItemStruct, recv.native, "item", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(glyphItemStruct, recv.Native(), "item", argValue)
 }
 
 // FieldGlyphs returns the C field 'glyphs'.
 func (recv *GlyphItem) FieldGlyphs() *GlyphString {
-	argValue := gi.StructFieldGet(glyphItemStruct, recv.native, "glyphs")
+	argValue := gi.StructFieldGet(glyphItemStruct, recv.Native(), "glyphs")
 	value := GlyphStringNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4652,8 +4652,8 @@ func (recv *GlyphItem) FieldGlyphs() *GlyphString {
 // SetFieldGlyphs sets the value of the C field 'glyphs'.
 func (recv *GlyphItem) SetFieldGlyphs(value *GlyphString) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(glyphItemStruct, recv.native, "glyphs", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(glyphItemStruct, recv.Native(), "glyphs", argValue)
 }
 
 // UNSUPPORTED : C value 'pango_glyph_item_apply_attrs' : return type 'GLib.SList' not supported
@@ -4676,7 +4676,7 @@ func glyphItemCopyFunction_Set() error {
 // Copy is a representation of the C type pango_glyph_item_copy.
 func (recv *GlyphItem) Copy() *GlyphItem {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4708,7 +4708,7 @@ func glyphItemFreeFunction_Set() error {
 // Free is a representation of the C type pango_glyph_item_free.
 func (recv *GlyphItem) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := glyphItemFreeFunction_Set()
 	if err == nil {
@@ -4740,7 +4740,7 @@ func glyphItemSplitFunction_Set() error {
 // Split is a representation of the C type pango_glyph_item_split.
 func (recv *GlyphItem) Split(text string, splitIndex int32) *GlyphItem {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(text)
 	inArgs[2].SetInt32(splitIndex)
 
@@ -4768,7 +4768,7 @@ func GlyphItemStruct() *GlyphItem {
 	return structGo
 }
 func finalizeGlyphItem(obj *GlyphItem) {
-	glyphItemStruct.Free(obj.native)
+	glyphItemStruct.Free(obj.Native())
 }
 
 var glyphItemIterStruct *gi.Struct
@@ -4807,7 +4807,7 @@ func (recv *GlyphItemIter) Native() unsafe.Pointer {
 
 // FieldGlyphItem returns the C field 'glyph_item'.
 func (recv *GlyphItemIter) FieldGlyphItem() *GlyphItem {
-	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.native, "glyph_item")
+	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.Native(), "glyph_item")
 	value := GlyphItemNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4815,13 +4815,13 @@ func (recv *GlyphItemIter) FieldGlyphItem() *GlyphItem {
 // SetFieldGlyphItem sets the value of the C field 'glyph_item'.
 func (recv *GlyphItemIter) SetFieldGlyphItem(value *GlyphItem) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(glyphItemIterStruct, recv.native, "glyph_item", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(glyphItemIterStruct, recv.Native(), "glyph_item", argValue)
 }
 
 // FieldText returns the C field 'text'.
 func (recv *GlyphItemIter) FieldText() string {
-	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.native, "text")
+	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.Native(), "text")
 	value := argValue.String(false)
 	return value
 }
@@ -4830,12 +4830,12 @@ func (recv *GlyphItemIter) FieldText() string {
 func (recv *GlyphItemIter) SetFieldText(value string) {
 	var argValue gi.Argument
 	argValue.SetString(value)
-	gi.StructFieldSet(glyphItemIterStruct, recv.native, "text", argValue)
+	gi.StructFieldSet(glyphItemIterStruct, recv.Native(), "text", argValue)
 }
 
 // FieldStartGlyph returns the C field 'start_glyph'.
 func (recv *GlyphItemIter) FieldStartGlyph() int32 {
-	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.native, "start_glyph")
+	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.Native(), "start_glyph")
 	value := argValue.Int32()
 	return value
 }
@@ -4844,12 +4844,12 @@ func (recv *GlyphItemIter) FieldStartGlyph() int32 {
 func (recv *GlyphItemIter) SetFieldStartGlyph(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(glyphItemIterStruct, recv.native, "start_glyph", argValue)
+	gi.StructFieldSet(glyphItemIterStruct, recv.Native(), "start_glyph", argValue)
 }
 
 // FieldStartIndex returns the C field 'start_index'.
 func (recv *GlyphItemIter) FieldStartIndex() int32 {
-	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.native, "start_index")
+	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.Native(), "start_index")
 	value := argValue.Int32()
 	return value
 }
@@ -4858,12 +4858,12 @@ func (recv *GlyphItemIter) FieldStartIndex() int32 {
 func (recv *GlyphItemIter) SetFieldStartIndex(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(glyphItemIterStruct, recv.native, "start_index", argValue)
+	gi.StructFieldSet(glyphItemIterStruct, recv.Native(), "start_index", argValue)
 }
 
 // FieldStartChar returns the C field 'start_char'.
 func (recv *GlyphItemIter) FieldStartChar() int32 {
-	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.native, "start_char")
+	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.Native(), "start_char")
 	value := argValue.Int32()
 	return value
 }
@@ -4872,12 +4872,12 @@ func (recv *GlyphItemIter) FieldStartChar() int32 {
 func (recv *GlyphItemIter) SetFieldStartChar(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(glyphItemIterStruct, recv.native, "start_char", argValue)
+	gi.StructFieldSet(glyphItemIterStruct, recv.Native(), "start_char", argValue)
 }
 
 // FieldEndGlyph returns the C field 'end_glyph'.
 func (recv *GlyphItemIter) FieldEndGlyph() int32 {
-	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.native, "end_glyph")
+	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.Native(), "end_glyph")
 	value := argValue.Int32()
 	return value
 }
@@ -4886,12 +4886,12 @@ func (recv *GlyphItemIter) FieldEndGlyph() int32 {
 func (recv *GlyphItemIter) SetFieldEndGlyph(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(glyphItemIterStruct, recv.native, "end_glyph", argValue)
+	gi.StructFieldSet(glyphItemIterStruct, recv.Native(), "end_glyph", argValue)
 }
 
 // FieldEndIndex returns the C field 'end_index'.
 func (recv *GlyphItemIter) FieldEndIndex() int32 {
-	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.native, "end_index")
+	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.Native(), "end_index")
 	value := argValue.Int32()
 	return value
 }
@@ -4900,12 +4900,12 @@ func (recv *GlyphItemIter) FieldEndIndex() int32 {
 func (recv *GlyphItemIter) SetFieldEndIndex(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(glyphItemIterStruct, recv.native, "end_index", argValue)
+	gi.StructFieldSet(glyphItemIterStruct, recv.Native(), "end_index", argValue)
 }
 
 // FieldEndChar returns the C field 'end_char'.
 func (recv *GlyphItemIter) FieldEndChar() int32 {
-	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.native, "end_char")
+	argValue := gi.StructFieldGet(glyphItemIterStruct, recv.Native(), "end_char")
 	value := argValue.Int32()
 	return value
 }
@@ -4914,7 +4914,7 @@ func (recv *GlyphItemIter) FieldEndChar() int32 {
 func (recv *GlyphItemIter) SetFieldEndChar(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(glyphItemIterStruct, recv.native, "end_char", argValue)
+	gi.StructFieldSet(glyphItemIterStruct, recv.Native(), "end_char", argValue)
 }
 
 var glyphItemIterCopyFunction *gi.Function
@@ -4935,7 +4935,7 @@ func glyphItemIterCopyFunction_Set() error {
 // Copy is a representation of the C type pango_glyph_item_iter_copy.
 func (recv *GlyphItemIter) Copy() *GlyphItemIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4967,7 +4967,7 @@ func glyphItemIterFreeFunction_Set() error {
 // Free is a representation of the C type pango_glyph_item_iter_free.
 func (recv *GlyphItemIter) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := glyphItemIterFreeFunction_Set()
 	if err == nil {
@@ -4995,8 +4995,8 @@ func glyphItemIterInitEndFunction_Set() error {
 // InitEnd is a representation of the C type pango_glyph_item_iter_init_end.
 func (recv *GlyphItemIter) InitEnd(glyphItem *GlyphItem, text string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(glyphItem.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(glyphItem.Native())
 	inArgs[2].SetString(text)
 
 	var ret gi.Argument
@@ -5029,8 +5029,8 @@ func glyphItemIterInitStartFunction_Set() error {
 // InitStart is a representation of the C type pango_glyph_item_iter_init_start.
 func (recv *GlyphItemIter) InitStart(glyphItem *GlyphItem, text string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(glyphItem.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(glyphItem.Native())
 	inArgs[2].SetString(text)
 
 	var ret gi.Argument
@@ -5063,7 +5063,7 @@ func glyphItemIterNextClusterFunction_Set() error {
 // NextCluster is a representation of the C type pango_glyph_item_iter_next_cluster.
 func (recv *GlyphItemIter) NextCluster() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5095,7 +5095,7 @@ func glyphItemIterPrevClusterFunction_Set() error {
 // PrevCluster is a representation of the C type pango_glyph_item_iter_prev_cluster.
 func (recv *GlyphItemIter) PrevCluster() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5121,7 +5121,7 @@ func GlyphItemIterStruct() *GlyphItemIter {
 	return structGo
 }
 func finalizeGlyphItemIter(obj *GlyphItemIter) {
-	glyphItemIterStruct.Free(obj.native)
+	glyphItemIterStruct.Free(obj.Native())
 }
 
 var glyphStringStruct *gi.Struct
@@ -5160,7 +5160,7 @@ func (recv *GlyphString) Native() unsafe.Pointer {
 
 // FieldNumGlyphs returns the C field 'num_glyphs'.
 func (recv *GlyphString) FieldNumGlyphs() int32 {
-	argValue := gi.StructFieldGet(glyphStringStruct, recv.native, "num_glyphs")
+	argValue := gi.StructFieldGet(glyphStringStruct, recv.Native(), "num_glyphs")
 	value := argValue.Int32()
 	return value
 }
@@ -5169,7 +5169,7 @@ func (recv *GlyphString) FieldNumGlyphs() int32 {
 func (recv *GlyphString) SetFieldNumGlyphs(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(glyphStringStruct, recv.native, "num_glyphs", argValue)
+	gi.StructFieldSet(glyphStringStruct, recv.Native(), "num_glyphs", argValue)
 }
 
 // UNSUPPORTED : C value 'glyphs' : for field getter : missing Type
@@ -5178,7 +5178,7 @@ func (recv *GlyphString) SetFieldNumGlyphs(value int32) {
 
 // FieldLogClusters returns the C field 'log_clusters'.
 func (recv *GlyphString) FieldLogClusters() int32 {
-	argValue := gi.StructFieldGet(glyphStringStruct, recv.native, "log_clusters")
+	argValue := gi.StructFieldGet(glyphStringStruct, recv.Native(), "log_clusters")
 	value := argValue.Int32()
 	return value
 }
@@ -5187,7 +5187,7 @@ func (recv *GlyphString) FieldLogClusters() int32 {
 func (recv *GlyphString) SetFieldLogClusters(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(glyphStringStruct, recv.native, "log_clusters", argValue)
+	gi.StructFieldSet(glyphStringStruct, recv.Native(), "log_clusters", argValue)
 }
 
 var glyphStringNewFunction *gi.Function
@@ -5238,7 +5238,7 @@ func glyphStringCopyFunction_Set() error {
 // Copy is a representation of the C type pango_glyph_string_copy.
 func (recv *GlyphString) Copy() *GlyphString {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5270,8 +5270,8 @@ func glyphStringExtentsFunction_Set() error {
 // Extents is a representation of the C type pango_glyph_string_extents.
 func (recv *GlyphString) Extents(font *Font) (*Rectangle, *Rectangle) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(font.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(font.Native())
 
 	var outArgs [2]gi.Argument
 
@@ -5304,10 +5304,10 @@ func glyphStringExtentsRangeFunction_Set() error {
 // ExtentsRange is a representation of the C type pango_glyph_string_extents_range.
 func (recv *GlyphString) ExtentsRange(start int32, end int32, font *Font) (*Rectangle, *Rectangle) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(start)
 	inArgs[2].SetInt32(end)
-	inArgs[3].SetPointer(font.native)
+	inArgs[3].SetPointer(font.Native())
 
 	var outArgs [2]gi.Argument
 
@@ -5340,7 +5340,7 @@ func glyphStringFreeFunction_Set() error {
 // Free is a representation of the C type pango_glyph_string_free.
 func (recv *GlyphString) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := glyphStringFreeFunction_Set()
 	if err == nil {
@@ -5370,7 +5370,7 @@ func glyphStringGetWidthFunction_Set() error {
 // GetWidth is a representation of the C type pango_glyph_string_get_width.
 func (recv *GlyphString) GetWidth() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5402,10 +5402,10 @@ func glyphStringIndexToXFunction_Set() error {
 // IndexToX is a representation of the C type pango_glyph_string_index_to_x.
 func (recv *GlyphString) IndexToX(text string, length int32, analysis *Analysis, index int32, trailing bool) int32 {
 	var inArgs [6]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(text)
 	inArgs[2].SetInt32(length)
-	inArgs[3].SetPointer(analysis.native)
+	inArgs[3].SetPointer(analysis.Native())
 	inArgs[4].SetInt32(index)
 	inArgs[5].SetBoolean(trailing)
 
@@ -5439,7 +5439,7 @@ func glyphStringSetSizeFunction_Set() error {
 // SetSize is a representation of the C type pango_glyph_string_set_size.
 func (recv *GlyphString) SetSize(newLen int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(newLen)
 
 	err := glyphStringSetSizeFunction_Set()
@@ -5468,10 +5468,10 @@ func glyphStringXToIndexFunction_Set() error {
 // XToIndex is a representation of the C type pango_glyph_string_x_to_index.
 func (recv *GlyphString) XToIndex(text string, length int32, analysis *Analysis, xPos int32) (int32, int32) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(text)
 	inArgs[2].SetInt32(length)
-	inArgs[3].SetPointer(analysis.native)
+	inArgs[3].SetPointer(analysis.Native())
 	inArgs[4].SetInt32(xPos)
 
 	var outArgs [2]gi.Argument
@@ -5523,7 +5523,7 @@ func (recv *GlyphVisAttr) Native() unsafe.Pointer {
 
 // FieldIsClusterStart returns the C field 'is_cluster_start'.
 func (recv *GlyphVisAttr) FieldIsClusterStart() uint32 {
-	argValue := gi.StructFieldGet(glyphVisAttrStruct, recv.native, "is_cluster_start")
+	argValue := gi.StructFieldGet(glyphVisAttrStruct, recv.Native(), "is_cluster_start")
 	value := argValue.Uint32()
 	return value
 }
@@ -5532,7 +5532,7 @@ func (recv *GlyphVisAttr) FieldIsClusterStart() uint32 {
 func (recv *GlyphVisAttr) SetFieldIsClusterStart(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(glyphVisAttrStruct, recv.native, "is_cluster_start", argValue)
+	gi.StructFieldSet(glyphVisAttrStruct, recv.Native(), "is_cluster_start", argValue)
 }
 
 // GlyphVisAttrStruct creates an uninitialised GlyphVisAttr.
@@ -5547,7 +5547,7 @@ func GlyphVisAttrStruct() *GlyphVisAttr {
 	return structGo
 }
 func finalizeGlyphVisAttr(obj *GlyphVisAttr) {
-	glyphVisAttrStruct.Free(obj.native)
+	glyphVisAttrStruct.Free(obj.Native())
 }
 
 var includedModuleStruct *gi.Struct
@@ -5612,7 +5612,7 @@ func IncludedModuleStruct() *IncludedModule {
 	return structGo
 }
 func finalizeIncludedModule(obj *IncludedModule) {
-	includedModuleStruct.Free(obj.native)
+	includedModuleStruct.Free(obj.Native())
 }
 
 var itemStruct *gi.Struct
@@ -5651,7 +5651,7 @@ func (recv *Item) Native() unsafe.Pointer {
 
 // FieldOffset returns the C field 'offset'.
 func (recv *Item) FieldOffset() int32 {
-	argValue := gi.StructFieldGet(itemStruct, recv.native, "offset")
+	argValue := gi.StructFieldGet(itemStruct, recv.Native(), "offset")
 	value := argValue.Int32()
 	return value
 }
@@ -5660,12 +5660,12 @@ func (recv *Item) FieldOffset() int32 {
 func (recv *Item) SetFieldOffset(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(itemStruct, recv.native, "offset", argValue)
+	gi.StructFieldSet(itemStruct, recv.Native(), "offset", argValue)
 }
 
 // FieldLength returns the C field 'length'.
 func (recv *Item) FieldLength() int32 {
-	argValue := gi.StructFieldGet(itemStruct, recv.native, "length")
+	argValue := gi.StructFieldGet(itemStruct, recv.Native(), "length")
 	value := argValue.Int32()
 	return value
 }
@@ -5674,12 +5674,12 @@ func (recv *Item) FieldLength() int32 {
 func (recv *Item) SetFieldLength(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(itemStruct, recv.native, "length", argValue)
+	gi.StructFieldSet(itemStruct, recv.Native(), "length", argValue)
 }
 
 // FieldNumChars returns the C field 'num_chars'.
 func (recv *Item) FieldNumChars() int32 {
-	argValue := gi.StructFieldGet(itemStruct, recv.native, "num_chars")
+	argValue := gi.StructFieldGet(itemStruct, recv.Native(), "num_chars")
 	value := argValue.Int32()
 	return value
 }
@@ -5688,12 +5688,12 @@ func (recv *Item) FieldNumChars() int32 {
 func (recv *Item) SetFieldNumChars(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(itemStruct, recv.native, "num_chars", argValue)
+	gi.StructFieldSet(itemStruct, recv.Native(), "num_chars", argValue)
 }
 
 // FieldAnalysis returns the C field 'analysis'.
 func (recv *Item) FieldAnalysis() *Analysis {
-	argValue := gi.StructFieldGet(itemStruct, recv.native, "analysis")
+	argValue := gi.StructFieldGet(itemStruct, recv.Native(), "analysis")
 	value := AnalysisNewFromNative(argValue.Pointer())
 	return value
 }
@@ -5701,8 +5701,8 @@ func (recv *Item) FieldAnalysis() *Analysis {
 // SetFieldAnalysis sets the value of the C field 'analysis'.
 func (recv *Item) SetFieldAnalysis(value *Analysis) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(itemStruct, recv.native, "analysis", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(itemStruct, recv.Native(), "analysis", argValue)
 }
 
 var itemNewFunction *gi.Function
@@ -5753,7 +5753,7 @@ func itemCopyFunction_Set() error {
 // Copy is a representation of the C type pango_item_copy.
 func (recv *Item) Copy() *Item {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5785,7 +5785,7 @@ func itemFreeFunction_Set() error {
 // Free is a representation of the C type pango_item_free.
 func (recv *Item) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := itemFreeFunction_Set()
 	if err == nil {
@@ -5813,7 +5813,7 @@ func itemSplitFunction_Set() error {
 // Split is a representation of the C type pango_item_split.
 func (recv *Item) Split(splitIndex int32, splitOffset int32) *Item {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(splitIndex)
 	inArgs[2].SetInt32(splitOffset)
 
@@ -5881,7 +5881,7 @@ func languageGetSampleStringFunction_Set() error {
 // GetSampleString is a representation of the C type pango_language_get_sample_string.
 func (recv *Language) GetSampleString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5913,7 +5913,7 @@ func languageGetScriptsFunction_Set() error {
 // GetScripts is a representation of the C type pango_language_get_scripts.
 func (recv *Language) GetScripts() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -5945,7 +5945,7 @@ func languageIncludesScriptFunction_Set() error {
 // IncludesScript is a representation of the C type pango_language_includes_script.
 func (recv *Language) IncludesScript(script Script) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(script))
 
 	var ret gi.Argument
@@ -5978,7 +5978,7 @@ func languageMatchesFunction_Set() error {
 // Matches is a representation of the C type pango_language_matches.
 func (recv *Language) Matches(rangeList string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(rangeList)
 
 	var ret gi.Argument
@@ -6011,7 +6011,7 @@ func languageToStringFunction_Set() error {
 // ToString is a representation of the C type pango_language_to_string.
 func (recv *Language) ToString() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6037,7 +6037,7 @@ func LanguageStruct() *Language {
 	return structGo
 }
 func finalizeLanguage(obj *Language) {
-	languageStruct.Free(obj.native)
+	languageStruct.Free(obj.Native())
 }
 
 var layoutClassStruct *gi.Struct
@@ -6086,7 +6086,7 @@ func LayoutClassStruct() *LayoutClass {
 	return structGo
 }
 func finalizeLayoutClass(obj *LayoutClass) {
-	layoutClassStruct.Free(obj.native)
+	layoutClassStruct.Free(obj.Native())
 }
 
 var layoutIterStruct *gi.Struct
@@ -6141,7 +6141,7 @@ func layoutIterAtLastLineFunction_Set() error {
 // AtLastLine is a representation of the C type pango_layout_iter_at_last_line.
 func (recv *LayoutIter) AtLastLine() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6173,7 +6173,7 @@ func layoutIterCopyFunction_Set() error {
 // Copy is a representation of the C type pango_layout_iter_copy.
 func (recv *LayoutIter) Copy() *LayoutIter {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6205,7 +6205,7 @@ func layoutIterFreeFunction_Set() error {
 // Free is a representation of the C type pango_layout_iter_free.
 func (recv *LayoutIter) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := layoutIterFreeFunction_Set()
 	if err == nil {
@@ -6233,7 +6233,7 @@ func layoutIterGetBaselineFunction_Set() error {
 // GetBaseline is a representation of the C type pango_layout_iter_get_baseline.
 func (recv *LayoutIter) GetBaseline() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6265,7 +6265,7 @@ func layoutIterGetCharExtentsFunction_Set() error {
 // GetCharExtents is a representation of the C type pango_layout_iter_get_char_extents.
 func (recv *LayoutIter) GetCharExtents() *Rectangle {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -6297,7 +6297,7 @@ func layoutIterGetClusterExtentsFunction_Set() error {
 // GetClusterExtents is a representation of the C type pango_layout_iter_get_cluster_extents.
 func (recv *LayoutIter) GetClusterExtents() (*Rectangle, *Rectangle) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [2]gi.Argument
 
@@ -6330,7 +6330,7 @@ func layoutIterGetIndexFunction_Set() error {
 // GetIndex is a representation of the C type pango_layout_iter_get_index.
 func (recv *LayoutIter) GetIndex() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6362,7 +6362,7 @@ func layoutIterGetLayoutFunction_Set() error {
 // GetLayout is a representation of the C type pango_layout_iter_get_layout.
 func (recv *LayoutIter) GetLayout() *Layout {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6394,7 +6394,7 @@ func layoutIterGetLayoutExtentsFunction_Set() error {
 // GetLayoutExtents is a representation of the C type pango_layout_iter_get_layout_extents.
 func (recv *LayoutIter) GetLayoutExtents() (*Rectangle, *Rectangle) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [2]gi.Argument
 
@@ -6427,7 +6427,7 @@ func layoutIterGetLineFunction_Set() error {
 // GetLine is a representation of the C type pango_layout_iter_get_line.
 func (recv *LayoutIter) GetLine() *LayoutLine {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6459,7 +6459,7 @@ func layoutIterGetLineExtentsFunction_Set() error {
 // GetLineExtents is a representation of the C type pango_layout_iter_get_line_extents.
 func (recv *LayoutIter) GetLineExtents() (*Rectangle, *Rectangle) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [2]gi.Argument
 
@@ -6492,7 +6492,7 @@ func layoutIterGetLineReadonlyFunction_Set() error {
 // GetLineReadonly is a representation of the C type pango_layout_iter_get_line_readonly.
 func (recv *LayoutIter) GetLineReadonly() *LayoutLine {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6524,7 +6524,7 @@ func layoutIterGetLineYrangeFunction_Set() error {
 // GetLineYrange is a representation of the C type pango_layout_iter_get_line_yrange.
 func (recv *LayoutIter) GetLineYrange() (int32, int32) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [2]gi.Argument
 
@@ -6559,7 +6559,7 @@ func layoutIterGetRunExtentsFunction_Set() error {
 // GetRunExtents is a representation of the C type pango_layout_iter_get_run_extents.
 func (recv *LayoutIter) GetRunExtents() (*Rectangle, *Rectangle) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [2]gi.Argument
 
@@ -6594,7 +6594,7 @@ func layoutIterNextCharFunction_Set() error {
 // NextChar is a representation of the C type pango_layout_iter_next_char.
 func (recv *LayoutIter) NextChar() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6626,7 +6626,7 @@ func layoutIterNextClusterFunction_Set() error {
 // NextCluster is a representation of the C type pango_layout_iter_next_cluster.
 func (recv *LayoutIter) NextCluster() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6658,7 +6658,7 @@ func layoutIterNextLineFunction_Set() error {
 // NextLine is a representation of the C type pango_layout_iter_next_line.
 func (recv *LayoutIter) NextLine() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6690,7 +6690,7 @@ func layoutIterNextRunFunction_Set() error {
 // NextRun is a representation of the C type pango_layout_iter_next_run.
 func (recv *LayoutIter) NextRun() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6716,7 +6716,7 @@ func LayoutIterStruct() *LayoutIter {
 	return structGo
 }
 func finalizeLayoutIter(obj *LayoutIter) {
-	layoutIterStruct.Free(obj.native)
+	layoutIterStruct.Free(obj.Native())
 }
 
 var layoutLineStruct *gi.Struct
@@ -6755,7 +6755,7 @@ func (recv *LayoutLine) Native() unsafe.Pointer {
 
 // FieldLayout returns the C field 'layout'.
 func (recv *LayoutLine) FieldLayout() *Layout {
-	argValue := gi.StructFieldGet(layoutLineStruct, recv.native, "layout")
+	argValue := gi.StructFieldGet(layoutLineStruct, recv.Native(), "layout")
 	value := LayoutNewFromNative(argValue.Pointer())
 	return value
 }
@@ -6763,13 +6763,13 @@ func (recv *LayoutLine) FieldLayout() *Layout {
 // SetFieldLayout sets the value of the C field 'layout'.
 func (recv *LayoutLine) SetFieldLayout(value *Layout) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.StructFieldSet(layoutLineStruct, recv.native, "layout", argValue)
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(layoutLineStruct, recv.Native(), "layout", argValue)
 }
 
 // FieldStartIndex returns the C field 'start_index'.
 func (recv *LayoutLine) FieldStartIndex() int32 {
-	argValue := gi.StructFieldGet(layoutLineStruct, recv.native, "start_index")
+	argValue := gi.StructFieldGet(layoutLineStruct, recv.Native(), "start_index")
 	value := argValue.Int32()
 	return value
 }
@@ -6778,12 +6778,12 @@ func (recv *LayoutLine) FieldStartIndex() int32 {
 func (recv *LayoutLine) SetFieldStartIndex(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(layoutLineStruct, recv.native, "start_index", argValue)
+	gi.StructFieldSet(layoutLineStruct, recv.Native(), "start_index", argValue)
 }
 
 // FieldLength returns the C field 'length'.
 func (recv *LayoutLine) FieldLength() int32 {
-	argValue := gi.StructFieldGet(layoutLineStruct, recv.native, "length")
+	argValue := gi.StructFieldGet(layoutLineStruct, recv.Native(), "length")
 	value := argValue.Int32()
 	return value
 }
@@ -6792,7 +6792,7 @@ func (recv *LayoutLine) FieldLength() int32 {
 func (recv *LayoutLine) SetFieldLength(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(layoutLineStruct, recv.native, "length", argValue)
+	gi.StructFieldSet(layoutLineStruct, recv.Native(), "length", argValue)
 }
 
 // UNSUPPORTED : C value 'runs' : for field getter : no Go type for 'GLib.SList'
@@ -6801,7 +6801,7 @@ func (recv *LayoutLine) SetFieldLength(value int32) {
 
 // FieldIsParagraphStart returns the C field 'is_paragraph_start'.
 func (recv *LayoutLine) FieldIsParagraphStart() uint32 {
-	argValue := gi.StructFieldGet(layoutLineStruct, recv.native, "is_paragraph_start")
+	argValue := gi.StructFieldGet(layoutLineStruct, recv.Native(), "is_paragraph_start")
 	value := argValue.Uint32()
 	return value
 }
@@ -6810,12 +6810,12 @@ func (recv *LayoutLine) FieldIsParagraphStart() uint32 {
 func (recv *LayoutLine) SetFieldIsParagraphStart(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(layoutLineStruct, recv.native, "is_paragraph_start", argValue)
+	gi.StructFieldSet(layoutLineStruct, recv.Native(), "is_paragraph_start", argValue)
 }
 
 // FieldResolvedDir returns the C field 'resolved_dir'.
 func (recv *LayoutLine) FieldResolvedDir() uint32 {
-	argValue := gi.StructFieldGet(layoutLineStruct, recv.native, "resolved_dir")
+	argValue := gi.StructFieldGet(layoutLineStruct, recv.Native(), "resolved_dir")
 	value := argValue.Uint32()
 	return value
 }
@@ -6824,7 +6824,7 @@ func (recv *LayoutLine) FieldResolvedDir() uint32 {
 func (recv *LayoutLine) SetFieldResolvedDir(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(layoutLineStruct, recv.native, "resolved_dir", argValue)
+	gi.StructFieldSet(layoutLineStruct, recv.Native(), "resolved_dir", argValue)
 }
 
 var layoutLineGetExtentsFunction *gi.Function
@@ -6845,7 +6845,7 @@ func layoutLineGetExtentsFunction_Set() error {
 // GetExtents is a representation of the C type pango_layout_line_get_extents.
 func (recv *LayoutLine) GetExtents() (*Rectangle, *Rectangle) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [2]gi.Argument
 
@@ -6878,7 +6878,7 @@ func layoutLineGetPixelExtentsFunction_Set() error {
 // GetPixelExtents is a representation of the C type pango_layout_line_get_pixel_extents.
 func (recv *LayoutLine) GetPixelExtents() (*Rectangle, *Rectangle) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [2]gi.Argument
 
@@ -6913,7 +6913,7 @@ func layoutLineIndexToXFunction_Set() error {
 // IndexToX is a representation of the C type pango_layout_line_index_to_x.
 func (recv *LayoutLine) IndexToX(index int32, trailing bool) int32 {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(index)
 	inArgs[2].SetBoolean(trailing)
 
@@ -6947,7 +6947,7 @@ func layoutLineRefFunction_Set() error {
 // Ref is a representation of the C type pango_layout_line_ref.
 func (recv *LayoutLine) Ref() *LayoutLine {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6979,7 +6979,7 @@ func layoutLineUnrefFunction_Set() error {
 // Unref is a representation of the C type pango_layout_line_unref.
 func (recv *LayoutLine) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := layoutLineUnrefFunction_Set()
 	if err == nil {
@@ -7007,7 +7007,7 @@ func layoutLineXToIndexFunction_Set() error {
 // XToIndex is a representation of the C type pango_layout_line_x_to_index.
 func (recv *LayoutLine) XToIndex(xPos int32) (bool, int32, int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(xPos)
 
 	var outArgs [2]gi.Argument
@@ -7037,7 +7037,7 @@ func LayoutLineStruct() *LayoutLine {
 	return structGo
 }
 func finalizeLayoutLine(obj *LayoutLine) {
-	layoutLineStruct.Free(obj.native)
+	layoutLineStruct.Free(obj.Native())
 }
 
 var logAttrStruct *gi.Struct
@@ -7076,7 +7076,7 @@ func (recv *LogAttr) Native() unsafe.Pointer {
 
 // FieldIsLineBreak returns the C field 'is_line_break'.
 func (recv *LogAttr) FieldIsLineBreak() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_line_break")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "is_line_break")
 	value := argValue.Uint32()
 	return value
 }
@@ -7085,12 +7085,12 @@ func (recv *LogAttr) FieldIsLineBreak() uint32 {
 func (recv *LogAttr) SetFieldIsLineBreak(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "is_line_break", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "is_line_break", argValue)
 }
 
 // FieldIsMandatoryBreak returns the C field 'is_mandatory_break'.
 func (recv *LogAttr) FieldIsMandatoryBreak() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_mandatory_break")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "is_mandatory_break")
 	value := argValue.Uint32()
 	return value
 }
@@ -7099,12 +7099,12 @@ func (recv *LogAttr) FieldIsMandatoryBreak() uint32 {
 func (recv *LogAttr) SetFieldIsMandatoryBreak(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "is_mandatory_break", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "is_mandatory_break", argValue)
 }
 
 // FieldIsCharBreak returns the C field 'is_char_break'.
 func (recv *LogAttr) FieldIsCharBreak() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_char_break")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "is_char_break")
 	value := argValue.Uint32()
 	return value
 }
@@ -7113,12 +7113,12 @@ func (recv *LogAttr) FieldIsCharBreak() uint32 {
 func (recv *LogAttr) SetFieldIsCharBreak(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "is_char_break", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "is_char_break", argValue)
 }
 
 // FieldIsWhite returns the C field 'is_white'.
 func (recv *LogAttr) FieldIsWhite() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_white")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "is_white")
 	value := argValue.Uint32()
 	return value
 }
@@ -7127,12 +7127,12 @@ func (recv *LogAttr) FieldIsWhite() uint32 {
 func (recv *LogAttr) SetFieldIsWhite(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "is_white", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "is_white", argValue)
 }
 
 // FieldIsCursorPosition returns the C field 'is_cursor_position'.
 func (recv *LogAttr) FieldIsCursorPosition() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_cursor_position")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "is_cursor_position")
 	value := argValue.Uint32()
 	return value
 }
@@ -7141,12 +7141,12 @@ func (recv *LogAttr) FieldIsCursorPosition() uint32 {
 func (recv *LogAttr) SetFieldIsCursorPosition(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "is_cursor_position", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "is_cursor_position", argValue)
 }
 
 // FieldIsWordStart returns the C field 'is_word_start'.
 func (recv *LogAttr) FieldIsWordStart() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_word_start")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "is_word_start")
 	value := argValue.Uint32()
 	return value
 }
@@ -7155,12 +7155,12 @@ func (recv *LogAttr) FieldIsWordStart() uint32 {
 func (recv *LogAttr) SetFieldIsWordStart(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "is_word_start", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "is_word_start", argValue)
 }
 
 // FieldIsWordEnd returns the C field 'is_word_end'.
 func (recv *LogAttr) FieldIsWordEnd() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_word_end")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "is_word_end")
 	value := argValue.Uint32()
 	return value
 }
@@ -7169,12 +7169,12 @@ func (recv *LogAttr) FieldIsWordEnd() uint32 {
 func (recv *LogAttr) SetFieldIsWordEnd(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "is_word_end", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "is_word_end", argValue)
 }
 
 // FieldIsSentenceBoundary returns the C field 'is_sentence_boundary'.
 func (recv *LogAttr) FieldIsSentenceBoundary() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_sentence_boundary")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "is_sentence_boundary")
 	value := argValue.Uint32()
 	return value
 }
@@ -7183,12 +7183,12 @@ func (recv *LogAttr) FieldIsSentenceBoundary() uint32 {
 func (recv *LogAttr) SetFieldIsSentenceBoundary(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "is_sentence_boundary", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "is_sentence_boundary", argValue)
 }
 
 // FieldIsSentenceStart returns the C field 'is_sentence_start'.
 func (recv *LogAttr) FieldIsSentenceStart() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_sentence_start")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "is_sentence_start")
 	value := argValue.Uint32()
 	return value
 }
@@ -7197,12 +7197,12 @@ func (recv *LogAttr) FieldIsSentenceStart() uint32 {
 func (recv *LogAttr) SetFieldIsSentenceStart(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "is_sentence_start", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "is_sentence_start", argValue)
 }
 
 // FieldIsSentenceEnd returns the C field 'is_sentence_end'.
 func (recv *LogAttr) FieldIsSentenceEnd() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_sentence_end")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "is_sentence_end")
 	value := argValue.Uint32()
 	return value
 }
@@ -7211,12 +7211,12 @@ func (recv *LogAttr) FieldIsSentenceEnd() uint32 {
 func (recv *LogAttr) SetFieldIsSentenceEnd(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "is_sentence_end", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "is_sentence_end", argValue)
 }
 
 // FieldBackspaceDeletesCharacter returns the C field 'backspace_deletes_character'.
 func (recv *LogAttr) FieldBackspaceDeletesCharacter() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "backspace_deletes_character")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "backspace_deletes_character")
 	value := argValue.Uint32()
 	return value
 }
@@ -7225,12 +7225,12 @@ func (recv *LogAttr) FieldBackspaceDeletesCharacter() uint32 {
 func (recv *LogAttr) SetFieldBackspaceDeletesCharacter(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "backspace_deletes_character", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "backspace_deletes_character", argValue)
 }
 
 // FieldIsExpandableSpace returns the C field 'is_expandable_space'.
 func (recv *LogAttr) FieldIsExpandableSpace() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_expandable_space")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "is_expandable_space")
 	value := argValue.Uint32()
 	return value
 }
@@ -7239,12 +7239,12 @@ func (recv *LogAttr) FieldIsExpandableSpace() uint32 {
 func (recv *LogAttr) SetFieldIsExpandableSpace(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "is_expandable_space", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "is_expandable_space", argValue)
 }
 
 // FieldIsWordBoundary returns the C field 'is_word_boundary'.
 func (recv *LogAttr) FieldIsWordBoundary() uint32 {
-	argValue := gi.StructFieldGet(logAttrStruct, recv.native, "is_word_boundary")
+	argValue := gi.StructFieldGet(logAttrStruct, recv.Native(), "is_word_boundary")
 	value := argValue.Uint32()
 	return value
 }
@@ -7253,7 +7253,7 @@ func (recv *LogAttr) FieldIsWordBoundary() uint32 {
 func (recv *LogAttr) SetFieldIsWordBoundary(value uint32) {
 	var argValue gi.Argument
 	argValue.SetUint32(value)
-	gi.StructFieldSet(logAttrStruct, recv.native, "is_word_boundary", argValue)
+	gi.StructFieldSet(logAttrStruct, recv.Native(), "is_word_boundary", argValue)
 }
 
 // LogAttrStruct creates an uninitialised LogAttr.
@@ -7268,7 +7268,7 @@ func LogAttrStruct() *LogAttr {
 	return structGo
 }
 func finalizeLogAttr(obj *LogAttr) {
-	logAttrStruct.Free(obj.native)
+	logAttrStruct.Free(obj.Native())
 }
 
 var mapStruct *gi.Struct
@@ -7323,7 +7323,7 @@ func mapGetEngineFunction_Set() error {
 // GetEngine is a representation of the C type pango_map_get_engine.
 func (recv *Map) GetEngine(script Script) *Engine {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(script))
 
 	var ret gi.Argument
@@ -7352,7 +7352,7 @@ func MapStruct() *Map {
 	return structGo
 }
 func finalizeMap(obj *Map) {
-	mapStruct.Free(obj.native)
+	mapStruct.Free(obj.Native())
 }
 
 var mapEntryStruct *gi.Struct
@@ -7401,7 +7401,7 @@ func MapEntryStruct() *MapEntry {
 	return structGo
 }
 func finalizeMapEntry(obj *MapEntry) {
-	mapEntryStruct.Free(obj.native)
+	mapEntryStruct.Free(obj.Native())
 }
 
 var matrixStruct *gi.Struct
@@ -7440,7 +7440,7 @@ func (recv *Matrix) Native() unsafe.Pointer {
 
 // FieldXx returns the C field 'xx'.
 func (recv *Matrix) FieldXx() float64 {
-	argValue := gi.StructFieldGet(matrixStruct, recv.native, "xx")
+	argValue := gi.StructFieldGet(matrixStruct, recv.Native(), "xx")
 	value := argValue.Float64()
 	return value
 }
@@ -7449,12 +7449,12 @@ func (recv *Matrix) FieldXx() float64 {
 func (recv *Matrix) SetFieldXx(value float64) {
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
-	gi.StructFieldSet(matrixStruct, recv.native, "xx", argValue)
+	gi.StructFieldSet(matrixStruct, recv.Native(), "xx", argValue)
 }
 
 // FieldXy returns the C field 'xy'.
 func (recv *Matrix) FieldXy() float64 {
-	argValue := gi.StructFieldGet(matrixStruct, recv.native, "xy")
+	argValue := gi.StructFieldGet(matrixStruct, recv.Native(), "xy")
 	value := argValue.Float64()
 	return value
 }
@@ -7463,12 +7463,12 @@ func (recv *Matrix) FieldXy() float64 {
 func (recv *Matrix) SetFieldXy(value float64) {
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
-	gi.StructFieldSet(matrixStruct, recv.native, "xy", argValue)
+	gi.StructFieldSet(matrixStruct, recv.Native(), "xy", argValue)
 }
 
 // FieldYx returns the C field 'yx'.
 func (recv *Matrix) FieldYx() float64 {
-	argValue := gi.StructFieldGet(matrixStruct, recv.native, "yx")
+	argValue := gi.StructFieldGet(matrixStruct, recv.Native(), "yx")
 	value := argValue.Float64()
 	return value
 }
@@ -7477,12 +7477,12 @@ func (recv *Matrix) FieldYx() float64 {
 func (recv *Matrix) SetFieldYx(value float64) {
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
-	gi.StructFieldSet(matrixStruct, recv.native, "yx", argValue)
+	gi.StructFieldSet(matrixStruct, recv.Native(), "yx", argValue)
 }
 
 // FieldYy returns the C field 'yy'.
 func (recv *Matrix) FieldYy() float64 {
-	argValue := gi.StructFieldGet(matrixStruct, recv.native, "yy")
+	argValue := gi.StructFieldGet(matrixStruct, recv.Native(), "yy")
 	value := argValue.Float64()
 	return value
 }
@@ -7491,12 +7491,12 @@ func (recv *Matrix) FieldYy() float64 {
 func (recv *Matrix) SetFieldYy(value float64) {
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
-	gi.StructFieldSet(matrixStruct, recv.native, "yy", argValue)
+	gi.StructFieldSet(matrixStruct, recv.Native(), "yy", argValue)
 }
 
 // FieldX0 returns the C field 'x0'.
 func (recv *Matrix) FieldX0() float64 {
-	argValue := gi.StructFieldGet(matrixStruct, recv.native, "x0")
+	argValue := gi.StructFieldGet(matrixStruct, recv.Native(), "x0")
 	value := argValue.Float64()
 	return value
 }
@@ -7505,12 +7505,12 @@ func (recv *Matrix) FieldX0() float64 {
 func (recv *Matrix) SetFieldX0(value float64) {
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
-	gi.StructFieldSet(matrixStruct, recv.native, "x0", argValue)
+	gi.StructFieldSet(matrixStruct, recv.Native(), "x0", argValue)
 }
 
 // FieldY0 returns the C field 'y0'.
 func (recv *Matrix) FieldY0() float64 {
-	argValue := gi.StructFieldGet(matrixStruct, recv.native, "y0")
+	argValue := gi.StructFieldGet(matrixStruct, recv.Native(), "y0")
 	value := argValue.Float64()
 	return value
 }
@@ -7519,7 +7519,7 @@ func (recv *Matrix) FieldY0() float64 {
 func (recv *Matrix) SetFieldY0(value float64) {
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
-	gi.StructFieldSet(matrixStruct, recv.native, "y0", argValue)
+	gi.StructFieldSet(matrixStruct, recv.Native(), "y0", argValue)
 }
 
 var matrixConcatFunction *gi.Function
@@ -7540,8 +7540,8 @@ func matrixConcatFunction_Set() error {
 // Concat is a representation of the C type pango_matrix_concat.
 func (recv *Matrix) Concat(newMatrix *Matrix) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(newMatrix.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(newMatrix.Native())
 
 	err := matrixConcatFunction_Set()
 	if err == nil {
@@ -7569,7 +7569,7 @@ func matrixCopyFunction_Set() error {
 // Copy is a representation of the C type pango_matrix_copy.
 func (recv *Matrix) Copy() *Matrix {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7601,7 +7601,7 @@ func matrixFreeFunction_Set() error {
 // Free is a representation of the C type pango_matrix_free.
 func (recv *Matrix) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := matrixFreeFunction_Set()
 	if err == nil {
@@ -7629,7 +7629,7 @@ func matrixGetFontScaleFactorFunction_Set() error {
 // GetFontScaleFactor is a representation of the C type pango_matrix_get_font_scale_factor.
 func (recv *Matrix) GetFontScaleFactor() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7661,7 +7661,7 @@ func matrixGetFontScaleFactorsFunction_Set() error {
 // GetFontScaleFactors is a representation of the C type pango_matrix_get_font_scale_factors.
 func (recv *Matrix) GetFontScaleFactors() (float64, float64) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [2]gi.Argument
 
@@ -7694,7 +7694,7 @@ func matrixRotateFunction_Set() error {
 // Rotate is a representation of the C type pango_matrix_rotate.
 func (recv *Matrix) Rotate(degrees float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(degrees)
 
 	err := matrixRotateFunction_Set()
@@ -7723,7 +7723,7 @@ func matrixScaleFunction_Set() error {
 // Scale is a representation of the C type pango_matrix_scale.
 func (recv *Matrix) Scale(scaleX float64, scaleY float64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(scaleX)
 	inArgs[2].SetFloat64(scaleY)
 
@@ -7753,7 +7753,7 @@ func matrixTransformDistanceFunction_Set() error {
 // TransformDistance is a representation of the C type pango_matrix_transform_distance.
 func (recv *Matrix) TransformDistance(dx float64, dy float64) (float64, float64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(dx)
 	inArgs[2].SetFloat64(dy)
 
@@ -7788,8 +7788,8 @@ func matrixTransformPixelRectangleFunction_Set() error {
 // TransformPixelRectangle is a representation of the C type pango_matrix_transform_pixel_rectangle.
 func (recv *Matrix) TransformPixelRectangle(rect *Rectangle) *Rectangle {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(rect.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rect.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -7821,7 +7821,7 @@ func matrixTransformPointFunction_Set() error {
 // TransformPoint is a representation of the C type pango_matrix_transform_point.
 func (recv *Matrix) TransformPoint(x float64, y float64) (float64, float64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(x)
 	inArgs[2].SetFloat64(y)
 
@@ -7856,8 +7856,8 @@ func matrixTransformRectangleFunction_Set() error {
 // TransformRectangle is a representation of the C type pango_matrix_transform_rectangle.
 func (recv *Matrix) TransformRectangle(rect *Rectangle) *Rectangle {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(rect.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rect.Native())
 
 	var outArgs [1]gi.Argument
 
@@ -7889,7 +7889,7 @@ func matrixTranslateFunction_Set() error {
 // Translate is a representation of the C type pango_matrix_translate.
 func (recv *Matrix) Translate(tx float64, ty float64) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(tx)
 	inArgs[2].SetFloat64(ty)
 
@@ -7913,7 +7913,7 @@ func MatrixStruct() *Matrix {
 	return structGo
 }
 func finalizeMatrix(obj *Matrix) {
-	matrixStruct.Free(obj.native)
+	matrixStruct.Free(obj.Native())
 }
 
 var rectangleStruct *gi.Struct
@@ -7952,7 +7952,7 @@ func (recv *Rectangle) Native() unsafe.Pointer {
 
 // FieldX returns the C field 'x'.
 func (recv *Rectangle) FieldX() int32 {
-	argValue := gi.StructFieldGet(rectangleStruct, recv.native, "x")
+	argValue := gi.StructFieldGet(rectangleStruct, recv.Native(), "x")
 	value := argValue.Int32()
 	return value
 }
@@ -7961,12 +7961,12 @@ func (recv *Rectangle) FieldX() int32 {
 func (recv *Rectangle) SetFieldX(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(rectangleStruct, recv.native, "x", argValue)
+	gi.StructFieldSet(rectangleStruct, recv.Native(), "x", argValue)
 }
 
 // FieldY returns the C field 'y'.
 func (recv *Rectangle) FieldY() int32 {
-	argValue := gi.StructFieldGet(rectangleStruct, recv.native, "y")
+	argValue := gi.StructFieldGet(rectangleStruct, recv.Native(), "y")
 	value := argValue.Int32()
 	return value
 }
@@ -7975,12 +7975,12 @@ func (recv *Rectangle) FieldY() int32 {
 func (recv *Rectangle) SetFieldY(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(rectangleStruct, recv.native, "y", argValue)
+	gi.StructFieldSet(rectangleStruct, recv.Native(), "y", argValue)
 }
 
 // FieldWidth returns the C field 'width'.
 func (recv *Rectangle) FieldWidth() int32 {
-	argValue := gi.StructFieldGet(rectangleStruct, recv.native, "width")
+	argValue := gi.StructFieldGet(rectangleStruct, recv.Native(), "width")
 	value := argValue.Int32()
 	return value
 }
@@ -7989,12 +7989,12 @@ func (recv *Rectangle) FieldWidth() int32 {
 func (recv *Rectangle) SetFieldWidth(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(rectangleStruct, recv.native, "width", argValue)
+	gi.StructFieldSet(rectangleStruct, recv.Native(), "width", argValue)
 }
 
 // FieldHeight returns the C field 'height'.
 func (recv *Rectangle) FieldHeight() int32 {
-	argValue := gi.StructFieldGet(rectangleStruct, recv.native, "height")
+	argValue := gi.StructFieldGet(rectangleStruct, recv.Native(), "height")
 	value := argValue.Int32()
 	return value
 }
@@ -8003,7 +8003,7 @@ func (recv *Rectangle) FieldHeight() int32 {
 func (recv *Rectangle) SetFieldHeight(value int32) {
 	var argValue gi.Argument
 	argValue.SetInt32(value)
-	gi.StructFieldSet(rectangleStruct, recv.native, "height", argValue)
+	gi.StructFieldSet(rectangleStruct, recv.Native(), "height", argValue)
 }
 
 // RectangleStruct creates an uninitialised Rectangle.
@@ -8018,7 +8018,7 @@ func RectangleStruct() *Rectangle {
 	return structGo
 }
 func finalizeRectangle(obj *Rectangle) {
-	rectangleStruct.Free(obj.native)
+	rectangleStruct.Free(obj.Native())
 }
 
 var rendererClassStruct *gi.Struct
@@ -8123,7 +8123,7 @@ func RendererClassStruct() *RendererClass {
 	return structGo
 }
 func finalizeRendererClass(obj *RendererClass) {
-	rendererClassStruct.Free(obj.native)
+	rendererClassStruct.Free(obj.Native())
 }
 
 var rendererPrivateStruct *gi.Struct
@@ -8172,7 +8172,7 @@ func RendererPrivateStruct() *RendererPrivate {
 	return structGo
 }
 func finalizeRendererPrivate(obj *RendererPrivate) {
-	rendererPrivateStruct.Free(obj.native)
+	rendererPrivateStruct.Free(obj.Native())
 }
 
 var scriptIterStruct *gi.Struct
@@ -8227,7 +8227,7 @@ func scriptIterFreeFunction_Set() error {
 // Free is a representation of the C type pango_script_iter_free.
 func (recv *ScriptIter) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := scriptIterFreeFunction_Set()
 	if err == nil {
@@ -8255,7 +8255,7 @@ func scriptIterGetRangeFunction_Set() error {
 // GetRange is a representation of the C type pango_script_iter_get_range.
 func (recv *ScriptIter) GetRange() (string, string, Script) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [3]gi.Argument
 
@@ -8289,7 +8289,7 @@ func scriptIterNextFunction_Set() error {
 // Next is a representation of the C type pango_script_iter_next.
 func (recv *ScriptIter) Next() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -8315,7 +8315,7 @@ func ScriptIterStruct() *ScriptIter {
 	return structGo
 }
 func finalizeScriptIter(obj *ScriptIter) {
-	scriptIterStruct.Free(obj.native)
+	scriptIterStruct.Free(obj.Native())
 }
 
 var tabArrayStruct *gi.Struct
@@ -8405,7 +8405,7 @@ func tabArrayCopyFunction_Set() error {
 // Copy is a representation of the C type pango_tab_array_copy.
 func (recv *TabArray) Copy() *TabArray {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -8437,7 +8437,7 @@ func tabArrayFreeFunction_Set() error {
 // Free is a representation of the C type pango_tab_array_free.
 func (recv *TabArray) Free() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := tabArrayFreeFunction_Set()
 	if err == nil {
@@ -8465,7 +8465,7 @@ func tabArrayGetPositionsInPixelsFunction_Set() error {
 // GetPositionsInPixels is a representation of the C type pango_tab_array_get_positions_in_pixels.
 func (recv *TabArray) GetPositionsInPixels() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -8497,7 +8497,7 @@ func tabArrayGetSizeFunction_Set() error {
 // GetSize is a representation of the C type pango_tab_array_get_size.
 func (recv *TabArray) GetSize() int32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -8529,7 +8529,7 @@ func tabArrayGetTabFunction_Set() error {
 // GetTab is a representation of the C type pango_tab_array_get_tab.
 func (recv *TabArray) GetTab(tabIndex int32) (TabAlign, int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(tabIndex)
 
 	var outArgs [2]gi.Argument
@@ -8565,7 +8565,7 @@ func tabArrayResizeFunction_Set() error {
 // Resize is a representation of the C type pango_tab_array_resize.
 func (recv *TabArray) Resize(newSize int32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(newSize)
 
 	err := tabArrayResizeFunction_Set()
@@ -8594,7 +8594,7 @@ func tabArraySetTabFunction_Set() error {
 // SetTab is a representation of the C type pango_tab_array_set_tab.
 func (recv *TabArray) SetTab(tabIndex int32, alignment TabAlign, location int32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(tabIndex)
 	inArgs[2].SetInt32(int32(alignment))
 	inArgs[3].SetInt32(location)

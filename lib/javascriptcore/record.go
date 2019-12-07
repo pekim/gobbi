@@ -62,7 +62,7 @@ func globalContextRefRefFunction_Set() error {
 // Ref is a representation of the C type JSGlobalContextRetain.
 func (recv *GlobalContextRef) Ref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := globalContextRefRefFunction_Set()
 	if err == nil {
@@ -90,7 +90,7 @@ func globalContextRefUnrefFunction_Set() error {
 // Unref is a representation of the C type JSGlobalContextRelease.
 func (recv *GlobalContextRef) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := globalContextRefUnrefFunction_Set()
 	if err == nil {
@@ -112,7 +112,7 @@ func GlobalContextRefStruct() *GlobalContextRef {
 	return structGo
 }
 func finalizeGlobalContextRef(obj *GlobalContextRef) {
-	globalContextRefStruct.Free(obj.native)
+	globalContextRefStruct.Free(obj.Native())
 }
 
 var valueRefStruct *gi.Struct
@@ -161,7 +161,7 @@ func ValueRefStruct() *ValueRef {
 	return structGo
 }
 func finalizeValueRef(obj *ValueRef) {
-	valueRefStruct.Free(obj.native)
+	valueRefStruct.Free(obj.Native())
 }
 
 var stringRefStruct *gi.Struct
@@ -216,7 +216,7 @@ func stringRefRefFunction_Set() error {
 // Ref is a representation of the C type JSStringRetain.
 func (recv *StringRef) Ref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := stringRefRefFunction_Set()
 	if err == nil {
@@ -244,7 +244,7 @@ func stringRefUnrefFunction_Set() error {
 // Unref is a representation of the C type JSStringRelease.
 func (recv *StringRef) Unref() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := stringRefUnrefFunction_Set()
 	if err == nil {
@@ -272,7 +272,7 @@ func stringRefGetMaximumUTF8CStringSizeFunction_Set() error {
 // GetMaximumUTF8CStringSize is a representation of the C type JSStringGetMaximumUTF8CStringSize.
 func (recv *StringRef) GetMaximumUTF8CStringSize() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -304,7 +304,7 @@ func stringRefGetUTF8CStringJSStringGetUTF8CStringFunction_Set() error {
 // GetUTF8CStringJSStringGetUTF8CString is a representation of the C type JSStringGetUTF8CString.
 func (recv *StringRef) GetUTF8CStringJSStringGetUTF8CString(buffer string, bufferSize uint64) (uint64, string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(buffer)
 	inArgs[2].SetUint64(bufferSize)
 
@@ -334,7 +334,7 @@ func StringRefStruct() *StringRef {
 	return structGo
 }
 func finalizeStringRef(obj *StringRef) {
-	stringRefStruct.Free(obj.native)
+	stringRefStruct.Free(obj.Native())
 }
 
 var classClassStruct *gi.Struct
@@ -383,7 +383,7 @@ func ClassClassStruct() *ClassClass {
 	return structGo
 }
 func finalizeClassClass(obj *ClassClass) {
-	classClassStruct.Free(obj.native)
+	classClassStruct.Free(obj.Native())
 }
 
 var classVTableStruct *gi.Struct
@@ -468,7 +468,7 @@ func ClassVTableStruct() *ClassVTable {
 	return structGo
 }
 func finalizeClassVTable(obj *ClassVTable) {
-	classVTableStruct.Free(obj.native)
+	classVTableStruct.Free(obj.Native())
 }
 
 var contextClassStruct *gi.Struct
@@ -537,7 +537,7 @@ func ContextClassStruct() *ContextClass {
 	return structGo
 }
 func finalizeContextClass(obj *ContextClass) {
-	contextClassStruct.Free(obj.native)
+	contextClassStruct.Free(obj.Native())
 }
 
 var contextPrivateStruct *gi.Struct
@@ -586,7 +586,7 @@ func ContextPrivateStruct() *ContextPrivate {
 	return structGo
 }
 func finalizeContextPrivate(obj *ContextPrivate) {
-	contextPrivateStruct.Free(obj.native)
+	contextPrivateStruct.Free(obj.Native())
 }
 
 var exceptionClassStruct *gi.Struct
@@ -655,7 +655,7 @@ func ExceptionClassStruct() *ExceptionClass {
 	return structGo
 }
 func finalizeExceptionClass(obj *ExceptionClass) {
-	exceptionClassStruct.Free(obj.native)
+	exceptionClassStruct.Free(obj.Native())
 }
 
 var exceptionPrivateStruct *gi.Struct
@@ -704,7 +704,7 @@ func ExceptionPrivateStruct() *ExceptionPrivate {
 	return structGo
 }
 func finalizeExceptionPrivate(obj *ExceptionPrivate) {
-	exceptionPrivateStruct.Free(obj.native)
+	exceptionPrivateStruct.Free(obj.Native())
 }
 
 var valueClassStruct *gi.Struct
@@ -773,7 +773,7 @@ func ValueClassStruct() *ValueClass {
 	return structGo
 }
 func finalizeValueClass(obj *ValueClass) {
-	valueClassStruct.Free(obj.native)
+	valueClassStruct.Free(obj.Native())
 }
 
 var valuePrivateStruct *gi.Struct
@@ -822,7 +822,7 @@ func ValuePrivateStruct() *ValuePrivate {
 	return structGo
 }
 func finalizeValuePrivate(obj *ValuePrivate) {
-	valuePrivateStruct.Free(obj.native)
+	valuePrivateStruct.Free(obj.Native())
 }
 
 var virtualMachineClassStruct *gi.Struct
@@ -891,7 +891,7 @@ func VirtualMachineClassStruct() *VirtualMachineClass {
 	return structGo
 }
 func finalizeVirtualMachineClass(obj *VirtualMachineClass) {
-	virtualMachineClassStruct.Free(obj.native)
+	virtualMachineClassStruct.Free(obj.Native())
 }
 
 var virtualMachinePrivateStruct *gi.Struct
@@ -940,7 +940,7 @@ func VirtualMachinePrivateStruct() *VirtualMachinePrivate {
 	return structGo
 }
 func finalizeVirtualMachinePrivate(obj *VirtualMachinePrivate) {
-	virtualMachinePrivateStruct.Free(obj.native)
+	virtualMachinePrivateStruct.Free(obj.Native())
 }
 
 var weakValueClassStruct *gi.Struct
@@ -1009,7 +1009,7 @@ func WeakValueClassStruct() *WeakValueClass {
 	return structGo
 }
 func finalizeWeakValueClass(obj *WeakValueClass) {
-	weakValueClassStruct.Free(obj.native)
+	weakValueClassStruct.Free(obj.Native())
 }
 
 var weakValuePrivateStruct *gi.Struct
@@ -1058,5 +1058,5 @@ func WeakValuePrivateStruct() *WeakValuePrivate {
 	return structGo
 }
 func finalizeWeakValuePrivate(obj *WeakValuePrivate) {
-	weakValuePrivateStruct.Free(obj.native)
+	weakValuePrivateStruct.Free(obj.Native())
 }

@@ -4,6 +4,7 @@ package webkit2
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	gtk "github.com/pekim/gobbi/lib/gtk"
 	"runtime"
@@ -45,7 +46,7 @@ func AuthenticationRequestNewFromNative(native unsafe.Pointer) *AuthenticationRe
 
 // Object upcasts to *Object
 func (recv *AuthenticationRequest) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -61,9 +62,19 @@ func (recv *AuthenticationRequest) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *AuthenticationRequest) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(authenticationRequestObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *AuthenticationRequest) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(authenticationRequestObject, recv.Native(), "parent", argValue)
+}
 
 var authenticationRequestAuthenticateFunction *gi.Function
 var authenticationRequestAuthenticateFunction_Once sync.Once
@@ -83,8 +94,8 @@ func authenticationRequestAuthenticateFunction_Set() error {
 // Authenticate is a representation of the C type webkit_authentication_request_authenticate.
 func (recv *AuthenticationRequest) Authenticate(credential *Credential) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(credential.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(credential.Native())
 
 	err := authenticationRequestAuthenticateFunction_Set()
 	if err == nil {
@@ -112,7 +123,7 @@ func authenticationRequestCanSaveCredentialsFunction_Set() error {
 // CanSaveCredentials is a representation of the C type webkit_authentication_request_can_save_credentials.
 func (recv *AuthenticationRequest) CanSaveCredentials() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -144,7 +155,7 @@ func authenticationRequestCancelFunction_Set() error {
 // Cancel is a representation of the C type webkit_authentication_request_cancel.
 func (recv *AuthenticationRequest) Cancel() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := authenticationRequestCancelFunction_Set()
 	if err == nil {
@@ -172,7 +183,7 @@ func authenticationRequestGetHostFunction_Set() error {
 // GetHost is a representation of the C type webkit_authentication_request_get_host.
 func (recv *AuthenticationRequest) GetHost() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -204,7 +215,7 @@ func authenticationRequestGetPortFunction_Set() error {
 // GetPort is a representation of the C type webkit_authentication_request_get_port.
 func (recv *AuthenticationRequest) GetPort() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -236,7 +247,7 @@ func authenticationRequestGetProposedCredentialFunction_Set() error {
 // GetProposedCredential is a representation of the C type webkit_authentication_request_get_proposed_credential.
 func (recv *AuthenticationRequest) GetProposedCredential() *Credential {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -268,7 +279,7 @@ func authenticationRequestGetRealmFunction_Set() error {
 // GetRealm is a representation of the C type webkit_authentication_request_get_realm.
 func (recv *AuthenticationRequest) GetRealm() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -300,7 +311,7 @@ func authenticationRequestGetSchemeFunction_Set() error {
 // GetScheme is a representation of the C type webkit_authentication_request_get_scheme.
 func (recv *AuthenticationRequest) GetScheme() AuthenticationScheme {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -332,7 +343,7 @@ func authenticationRequestIsForProxyFunction_Set() error {
 // IsForProxy is a representation of the C type webkit_authentication_request_is_for_proxy.
 func (recv *AuthenticationRequest) IsForProxy() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -364,7 +375,7 @@ func authenticationRequestIsRetryFunction_Set() error {
 // IsRetry is a representation of the C type webkit_authentication_request_is_retry.
 func (recv *AuthenticationRequest) IsRetry() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -412,7 +423,7 @@ func AutomationSessionNewFromNative(native unsafe.Pointer) *AutomationSession {
 
 // Object upcasts to *Object
 func (recv *AutomationSession) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -428,13 +439,23 @@ func (recv *AutomationSession) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *AutomationSession) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(automationSessionObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *AutomationSession) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(automationSessionObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *AutomationSession) FieldPriv() *AutomationSessionPrivate {
-	argValue := gi.ObjectFieldGet(automationSessionObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(automationSessionObject, recv.Native(), "priv")
 	value := AutomationSessionPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -442,8 +463,8 @@ func (recv *AutomationSession) FieldPriv() *AutomationSessionPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *AutomationSession) SetFieldPriv(value *AutomationSessionPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(automationSessionObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(automationSessionObject, recv.Native(), "priv", argValue)
 }
 
 var automationSessionGetApplicationInfoFunction *gi.Function
@@ -464,7 +485,7 @@ func automationSessionGetApplicationInfoFunction_Set() error {
 // GetApplicationInfo is a representation of the C type webkit_automation_session_get_application_info.
 func (recv *AutomationSession) GetApplicationInfo() *ApplicationInfo {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -496,7 +517,7 @@ func automationSessionGetIdFunction_Set() error {
 // GetId is a representation of the C type webkit_automation_session_get_id.
 func (recv *AutomationSession) GetId() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -528,8 +549,8 @@ func automationSessionSetApplicationInfoFunction_Set() error {
 // SetApplicationInfo is a representation of the C type webkit_automation_session_set_application_info.
 func (recv *AutomationSession) SetApplicationInfo(info *ApplicationInfo) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(info.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(info.Native())
 
 	err := automationSessionSetApplicationInfoFunction_Set()
 	if err == nil {
@@ -573,7 +594,7 @@ func BackForwardListNewFromNative(native unsafe.Pointer) *BackForwardList {
 
 // Object upcasts to *Object
 func (recv *BackForwardList) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -589,13 +610,23 @@ func (recv *BackForwardList) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *BackForwardList) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(backForwardListObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *BackForwardList) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(backForwardListObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *BackForwardList) FieldPriv() *BackForwardListPrivate {
-	argValue := gi.ObjectFieldGet(backForwardListObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(backForwardListObject, recv.Native(), "priv")
 	value := BackForwardListPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -603,8 +634,8 @@ func (recv *BackForwardList) FieldPriv() *BackForwardListPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *BackForwardList) SetFieldPriv(value *BackForwardListPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(backForwardListObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(backForwardListObject, recv.Native(), "priv", argValue)
 }
 
 var backForwardListGetBackItemFunction *gi.Function
@@ -625,7 +656,7 @@ func backForwardListGetBackItemFunction_Set() error {
 // GetBackItem is a representation of the C type webkit_back_forward_list_get_back_item.
 func (recv *BackForwardList) GetBackItem() *BackForwardListItem {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -661,7 +692,7 @@ func backForwardListGetCurrentItemFunction_Set() error {
 // GetCurrentItem is a representation of the C type webkit_back_forward_list_get_current_item.
 func (recv *BackForwardList) GetCurrentItem() *BackForwardListItem {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -693,7 +724,7 @@ func backForwardListGetForwardItemFunction_Set() error {
 // GetForwardItem is a representation of the C type webkit_back_forward_list_get_forward_item.
 func (recv *BackForwardList) GetForwardItem() *BackForwardListItem {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -729,7 +760,7 @@ func backForwardListGetLengthFunction_Set() error {
 // GetLength is a representation of the C type webkit_back_forward_list_get_length.
 func (recv *BackForwardList) GetLength() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -761,7 +792,7 @@ func backForwardListGetNthItemFunction_Set() error {
 // GetNthItem is a representation of the C type webkit_back_forward_list_get_nth_item.
 func (recv *BackForwardList) GetNthItem(index int32) *BackForwardListItem {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(index)
 
 	var ret gi.Argument
@@ -810,12 +841,12 @@ func BackForwardListItemNewFromNative(native unsafe.Pointer) *BackForwardListIte
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *BackForwardListItem) InitiallyUnowned() *gobject.InitiallyUnowned {
-	return gobject.InitiallyUnownedNewFromNative(recv.native)
+	return gobject.InitiallyUnownedNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *BackForwardListItem) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -831,13 +862,23 @@ func (recv *BackForwardListItem) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.InitiallyUnowned'
+// FieldParent returns the C field 'parent'.
+func (recv *BackForwardListItem) FieldParent() *gobject.InitiallyUnowned {
+	argValue := gi.ObjectFieldGet(backForwardListItemObject, recv.Native(), "parent")
+	value := gobject.InitiallyUnownedNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.InitiallyUnowned'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *BackForwardListItem) SetFieldParent(value *gobject.InitiallyUnowned) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(backForwardListItemObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *BackForwardListItem) FieldPriv() *BackForwardListItemPrivate {
-	argValue := gi.ObjectFieldGet(backForwardListItemObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(backForwardListItemObject, recv.Native(), "priv")
 	value := BackForwardListItemPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -845,8 +886,8 @@ func (recv *BackForwardListItem) FieldPriv() *BackForwardListItemPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *BackForwardListItem) SetFieldPriv(value *BackForwardListItemPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(backForwardListItemObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(backForwardListItemObject, recv.Native(), "priv", argValue)
 }
 
 var backForwardListItemGetOriginalUriFunction *gi.Function
@@ -867,7 +908,7 @@ func backForwardListItemGetOriginalUriFunction_Set() error {
 // GetOriginalUri is a representation of the C type webkit_back_forward_list_item_get_original_uri.
 func (recv *BackForwardListItem) GetOriginalUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -899,7 +940,7 @@ func backForwardListItemGetTitleFunction_Set() error {
 // GetTitle is a representation of the C type webkit_back_forward_list_item_get_title.
 func (recv *BackForwardListItem) GetTitle() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -931,7 +972,7 @@ func backForwardListItemGetUriFunction_Set() error {
 // GetUri is a representation of the C type webkit_back_forward_list_item_get_uri.
 func (recv *BackForwardListItem) GetUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -979,7 +1020,7 @@ func ColorChooserRequestNewFromNative(native unsafe.Pointer) *ColorChooserReques
 
 // Object upcasts to *Object
 func (recv *ColorChooserRequest) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -995,9 +1036,19 @@ func (recv *ColorChooserRequest) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *ColorChooserRequest) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(colorChooserRequestObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *ColorChooserRequest) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(colorChooserRequestObject, recv.Native(), "parent", argValue)
+}
 
 var colorChooserRequestCancelFunction *gi.Function
 var colorChooserRequestCancelFunction_Once sync.Once
@@ -1017,7 +1068,7 @@ func colorChooserRequestCancelFunction_Set() error {
 // Cancel is a representation of the C type webkit_color_chooser_request_cancel.
 func (recv *ColorChooserRequest) Cancel() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := colorChooserRequestCancelFunction_Set()
 	if err == nil {
@@ -1045,7 +1096,7 @@ func colorChooserRequestFinishFunction_Set() error {
 // Finish is a representation of the C type webkit_color_chooser_request_finish.
 func (recv *ColorChooserRequest) Finish() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := colorChooserRequestFinishFunction_Set()
 	if err == nil {
@@ -1095,7 +1146,7 @@ func ContextMenuNewFromNative(native unsafe.Pointer) *ContextMenu {
 
 // Object upcasts to *Object
 func (recv *ContextMenu) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -1111,13 +1162,23 @@ func (recv *ContextMenu) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *ContextMenu) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(contextMenuObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *ContextMenu) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(contextMenuObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *ContextMenu) FieldPriv() *ContextMenuPrivate {
-	argValue := gi.ObjectFieldGet(contextMenuObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(contextMenuObject, recv.Native(), "priv")
 	value := ContextMenuPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1125,8 +1186,8 @@ func (recv *ContextMenu) FieldPriv() *ContextMenuPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *ContextMenu) SetFieldPriv(value *ContextMenuPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(contextMenuObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(contextMenuObject, recv.Native(), "priv", argValue)
 }
 
 var contextMenuNewFunction *gi.Function
@@ -1181,8 +1242,8 @@ func contextMenuAppendFunction_Set() error {
 // Append is a representation of the C type webkit_context_menu_append.
 func (recv *ContextMenu) Append(item *ContextMenuItem) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(item.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(item.Native())
 
 	err := contextMenuAppendFunction_Set()
 	if err == nil {
@@ -1210,7 +1271,7 @@ func contextMenuFirstFunction_Set() error {
 // First is a representation of the C type webkit_context_menu_first.
 func (recv *ContextMenu) First() *ContextMenuItem {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1242,7 +1303,7 @@ func contextMenuGetItemAtPositionFunction_Set() error {
 // GetItemAtPosition is a representation of the C type webkit_context_menu_get_item_at_position.
 func (recv *ContextMenu) GetItemAtPosition(position uint32) *ContextMenuItem {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(position)
 
 	var ret gi.Argument
@@ -1277,7 +1338,7 @@ func contextMenuGetNItemsFunction_Set() error {
 // GetNItems is a representation of the C type webkit_context_menu_get_n_items.
 func (recv *ContextMenu) GetNItems() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1311,8 +1372,8 @@ func contextMenuInsertFunction_Set() error {
 // Insert is a representation of the C type webkit_context_menu_insert.
 func (recv *ContextMenu) Insert(item *ContextMenuItem, position int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(item.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(item.Native())
 	inArgs[2].SetInt32(position)
 
 	err := contextMenuInsertFunction_Set()
@@ -1341,7 +1402,7 @@ func contextMenuLastFunction_Set() error {
 // Last is a representation of the C type webkit_context_menu_last.
 func (recv *ContextMenu) Last() *ContextMenuItem {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1373,8 +1434,8 @@ func contextMenuMoveItemFunction_Set() error {
 // MoveItem is a representation of the C type webkit_context_menu_move_item.
 func (recv *ContextMenu) MoveItem(item *ContextMenuItem, position int32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(item.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(item.Native())
 	inArgs[2].SetInt32(position)
 
 	err := contextMenuMoveItemFunction_Set()
@@ -1403,8 +1464,8 @@ func contextMenuPrependFunction_Set() error {
 // Prepend is a representation of the C type webkit_context_menu_prepend.
 func (recv *ContextMenu) Prepend(item *ContextMenuItem) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(item.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(item.Native())
 
 	err := contextMenuPrependFunction_Set()
 	if err == nil {
@@ -1432,8 +1493,8 @@ func contextMenuRemoveFunction_Set() error {
 // Remove is a representation of the C type webkit_context_menu_remove.
 func (recv *ContextMenu) Remove(item *ContextMenuItem) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(item.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(item.Native())
 
 	err := contextMenuRemoveFunction_Set()
 	if err == nil {
@@ -1461,7 +1522,7 @@ func contextMenuRemoveAllFunction_Set() error {
 // RemoveAll is a representation of the C type webkit_context_menu_remove_all.
 func (recv *ContextMenu) RemoveAll() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := contextMenuRemoveAllFunction_Set()
 	if err == nil {
@@ -1507,12 +1568,12 @@ func ContextMenuItemNewFromNative(native unsafe.Pointer) *ContextMenuItem {
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *ContextMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
-	return gobject.InitiallyUnownedNewFromNative(recv.native)
+	return gobject.InitiallyUnownedNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *ContextMenuItem) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -1528,13 +1589,23 @@ func (recv *ContextMenuItem) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.InitiallyUnowned'
+// FieldParent returns the C field 'parent'.
+func (recv *ContextMenuItem) FieldParent() *gobject.InitiallyUnowned {
+	argValue := gi.ObjectFieldGet(contextMenuItemObject, recv.Native(), "parent")
+	value := gobject.InitiallyUnownedNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.InitiallyUnowned'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *ContextMenuItem) SetFieldParent(value *gobject.InitiallyUnowned) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(contextMenuItemObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *ContextMenuItem) FieldPriv() *ContextMenuItemPrivate {
-	argValue := gi.ObjectFieldGet(contextMenuItemObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(contextMenuItemObject, recv.Native(), "priv")
 	value := ContextMenuItemPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1542,11 +1613,41 @@ func (recv *ContextMenuItem) FieldPriv() *ContextMenuItemPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *ContextMenuItem) SetFieldPriv(value *ContextMenuItemPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(contextMenuItemObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(contextMenuItemObject, recv.Native(), "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'webkit_context_menu_item_new' : parameter 'action' of type 'Gtk.Action' not supported
+var contextMenuItemNewFunction *gi.Function
+var contextMenuItemNewFunction_Once sync.Once
+
+func contextMenuItemNewFunction_Set() error {
+	var err error
+	contextMenuItemNewFunction_Once.Do(func() {
+		err = contextMenuItemObject_Set()
+		if err != nil {
+			return
+		}
+		contextMenuItemNewFunction, err = contextMenuItemObject.InvokerNew("new")
+	})
+	return err
+}
+
+// ContextMenuItemNew is a representation of the C type webkit_context_menu_item_new.
+func ContextMenuItemNew(action *gtk.Action) *ContextMenuItem {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(action.Native())
+
+	var ret gi.Argument
+
+	err := contextMenuItemNewFunction_Set()
+	if err == nil {
+		ret = contextMenuItemNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ContextMenuItemNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_context_menu_item_new_from_gaction' : parameter 'action' of type 'Gio.Action' not supported
 
@@ -1664,7 +1765,7 @@ func contextMenuItemNewWithSubmenuFunction_Set() error {
 func ContextMenuItemNewWithSubmenu(label string, submenu *ContextMenu) *ContextMenuItem {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(label)
-	inArgs[1].SetPointer(submenu.native)
+	inArgs[1].SetPointer(submenu.Native())
 
 	var ret gi.Argument
 
@@ -1678,7 +1779,37 @@ func ContextMenuItemNewWithSubmenu(label string, submenu *ContextMenu) *ContextM
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_context_menu_item_get_action' : return type 'Gtk.Action' not supported
+var contextMenuItemGetActionFunction *gi.Function
+var contextMenuItemGetActionFunction_Once sync.Once
+
+func contextMenuItemGetActionFunction_Set() error {
+	var err error
+	contextMenuItemGetActionFunction_Once.Do(func() {
+		err = contextMenuItemObject_Set()
+		if err != nil {
+			return
+		}
+		contextMenuItemGetActionFunction, err = contextMenuItemObject.InvokerNew("get_action")
+	})
+	return err
+}
+
+// GetAction is a representation of the C type webkit_context_menu_item_get_action.
+func (recv *ContextMenuItem) GetAction() *gtk.Action {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := contextMenuItemGetActionFunction_Set()
+	if err == nil {
+		ret = contextMenuItemGetActionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gtk.ActionNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_context_menu_item_get_gaction' : return type 'Gio.Action' not supported
 
@@ -1700,7 +1831,7 @@ func contextMenuItemGetStockActionFunction_Set() error {
 // GetStockAction is a representation of the C type webkit_context_menu_item_get_stock_action.
 func (recv *ContextMenuItem) GetStockAction() ContextMenuAction {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1732,7 +1863,7 @@ func contextMenuItemGetSubmenuFunction_Set() error {
 // GetSubmenu is a representation of the C type webkit_context_menu_item_get_submenu.
 func (recv *ContextMenuItem) GetSubmenu() *ContextMenu {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1764,7 +1895,7 @@ func contextMenuItemIsSeparatorFunction_Set() error {
 // IsSeparator is a representation of the C type webkit_context_menu_item_is_separator.
 func (recv *ContextMenuItem) IsSeparator() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -1796,8 +1927,8 @@ func contextMenuItemSetSubmenuFunction_Set() error {
 // SetSubmenu is a representation of the C type webkit_context_menu_item_set_submenu.
 func (recv *ContextMenuItem) SetSubmenu(submenu *ContextMenu) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(submenu.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(submenu.Native())
 
 	err := contextMenuItemSetSubmenuFunction_Set()
 	if err == nil {
@@ -1841,7 +1972,7 @@ func CookieManagerNewFromNative(native unsafe.Pointer) *CookieManager {
 
 // Object upcasts to *Object
 func (recv *CookieManager) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -1857,13 +1988,23 @@ func (recv *CookieManager) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *CookieManager) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(cookieManagerObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *CookieManager) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(cookieManagerObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CookieManager) FieldPriv() *CookieManagerPrivate {
-	argValue := gi.ObjectFieldGet(cookieManagerObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(cookieManagerObject, recv.Native(), "priv")
 	value := CookieManagerPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -1871,8 +2012,8 @@ func (recv *CookieManager) FieldPriv() *CookieManagerPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *CookieManager) SetFieldPriv(value *CookieManagerPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(cookieManagerObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(cookieManagerObject, recv.Native(), "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_add_cookie' : parameter 'cookie' of type 'Soup.Cookie' not supported
@@ -1897,7 +2038,7 @@ func cookieManagerDeleteAllCookiesFunction_Set() error {
 // DeleteAllCookies is a representation of the C type webkit_cookie_manager_delete_all_cookies.
 func (recv *CookieManager) DeleteAllCookies() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := cookieManagerDeleteAllCookiesFunction_Set()
 	if err == nil {
@@ -1929,7 +2070,7 @@ func cookieManagerDeleteCookiesForDomainFunction_Set() error {
 // DeleteCookiesForDomain is a representation of the C type webkit_cookie_manager_delete_cookies_for_domain.
 func (recv *CookieManager) DeleteCookiesForDomain(domain string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(domain)
 
 	err := cookieManagerDeleteCookiesForDomainFunction_Set()
@@ -1940,15 +2081,15 @@ func (recv *CookieManager) DeleteCookiesForDomain(domain string) {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_cookie_manager_get_accept_policy' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_cookie_manager_get_accept_policy' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_get_accept_policy_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_cookie_manager_get_cookies' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_cookie_manager_get_cookies' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_get_cookies_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_cookie_manager_get_domains_with_cookies' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_cookie_manager_get_domains_with_cookies' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_get_domains_with_cookies_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -1970,7 +2111,7 @@ func cookieManagerSetAcceptPolicyFunction_Set() error {
 // SetAcceptPolicy is a representation of the C type webkit_cookie_manager_set_accept_policy.
 func (recv *CookieManager) SetAcceptPolicy(policy CookieAcceptPolicy) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(policy))
 
 	err := cookieManagerSetAcceptPolicyFunction_Set()
@@ -1999,7 +2140,7 @@ func cookieManagerSetPersistentStorageFunction_Set() error {
 // SetPersistentStorage is a representation of the C type webkit_cookie_manager_set_persistent_storage.
 func (recv *CookieManager) SetPersistentStorage(filename string, storage CookiePersistentStorage) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(filename)
 	inArgs[2].SetInt32(int32(storage))
 
@@ -2045,7 +2186,7 @@ func DeviceInfoPermissionRequestNewFromNative(native unsafe.Pointer) *DeviceInfo
 
 // Object upcasts to *Object
 func (recv *DeviceInfoPermissionRequest) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -2061,9 +2202,19 @@ func (recv *DeviceInfoPermissionRequest) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *DeviceInfoPermissionRequest) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(deviceInfoPermissionRequestObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *DeviceInfoPermissionRequest) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(deviceInfoPermissionRequestObject, recv.Native(), "parent", argValue)
+}
 
 var downloadObject *gi.Object
 var downloadObject_Once sync.Once
@@ -2099,7 +2250,7 @@ func DownloadNewFromNative(native unsafe.Pointer) *Download {
 
 // Object upcasts to *Object
 func (recv *Download) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -2115,13 +2266,23 @@ func (recv *Download) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *Download) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(downloadObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *Download) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(downloadObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Download) FieldPriv() *DownloadPrivate {
-	argValue := gi.ObjectFieldGet(downloadObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(downloadObject, recv.Native(), "priv")
 	value := DownloadPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -2129,8 +2290,8 @@ func (recv *Download) FieldPriv() *DownloadPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Download) SetFieldPriv(value *DownloadPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(downloadObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(downloadObject, recv.Native(), "priv", argValue)
 }
 
 var downloadCancelFunction *gi.Function
@@ -2151,7 +2312,7 @@ func downloadCancelFunction_Set() error {
 // Cancel is a representation of the C type webkit_download_cancel.
 func (recv *Download) Cancel() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := downloadCancelFunction_Set()
 	if err == nil {
@@ -2179,7 +2340,7 @@ func downloadGetAllowOverwriteFunction_Set() error {
 // GetAllowOverwrite is a representation of the C type webkit_download_get_allow_overwrite.
 func (recv *Download) GetAllowOverwrite() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2211,7 +2372,7 @@ func downloadGetDestinationFunction_Set() error {
 // GetDestination is a representation of the C type webkit_download_get_destination.
 func (recv *Download) GetDestination() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2243,7 +2404,7 @@ func downloadGetElapsedTimeFunction_Set() error {
 // GetElapsedTime is a representation of the C type webkit_download_get_elapsed_time.
 func (recv *Download) GetElapsedTime() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2275,7 +2436,7 @@ func downloadGetEstimatedProgressFunction_Set() error {
 // GetEstimatedProgress is a representation of the C type webkit_download_get_estimated_progress.
 func (recv *Download) GetEstimatedProgress() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2307,7 +2468,7 @@ func downloadGetReceivedDataLengthFunction_Set() error {
 // GetReceivedDataLength is a representation of the C type webkit_download_get_received_data_length.
 func (recv *Download) GetReceivedDataLength() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2339,7 +2500,7 @@ func downloadGetRequestFunction_Set() error {
 // GetRequest is a representation of the C type webkit_download_get_request.
 func (recv *Download) GetRequest() *URIRequest {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2371,7 +2532,7 @@ func downloadGetResponseFunction_Set() error {
 // GetResponse is a representation of the C type webkit_download_get_response.
 func (recv *Download) GetResponse() *URIResponse {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2403,7 +2564,7 @@ func downloadGetWebViewFunction_Set() error {
 // GetWebView is a representation of the C type webkit_download_get_web_view.
 func (recv *Download) GetWebView() *WebView {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2435,7 +2596,7 @@ func downloadSetAllowOverwriteFunction_Set() error {
 // SetAllowOverwrite is a representation of the C type webkit_download_set_allow_overwrite.
 func (recv *Download) SetAllowOverwrite(allowed bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(allowed)
 
 	err := downloadSetAllowOverwriteFunction_Set()
@@ -2464,7 +2625,7 @@ func downloadSetDestinationFunction_Set() error {
 // SetDestination is a representation of the C type webkit_download_set_destination.
 func (recv *Download) SetDestination(uri string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(uri)
 
 	err := downloadSetDestinationFunction_Set()
@@ -2509,7 +2670,7 @@ func EditorStateNewFromNative(native unsafe.Pointer) *EditorState {
 
 // Object upcasts to *Object
 func (recv *EditorState) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -2525,13 +2686,23 @@ func (recv *EditorState) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *EditorState) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(editorStateObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *EditorState) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(editorStateObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *EditorState) FieldPriv() *EditorStatePrivate {
-	argValue := gi.ObjectFieldGet(editorStateObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(editorStateObject, recv.Native(), "priv")
 	value := EditorStatePrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -2539,8 +2710,8 @@ func (recv *EditorState) FieldPriv() *EditorStatePrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *EditorState) SetFieldPriv(value *EditorStatePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(editorStateObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(editorStateObject, recv.Native(), "priv", argValue)
 }
 
 var editorStateGetTypingAttributesFunction *gi.Function
@@ -2561,7 +2732,7 @@ func editorStateGetTypingAttributesFunction_Set() error {
 // GetTypingAttributes is a representation of the C type webkit_editor_state_get_typing_attributes.
 func (recv *EditorState) GetTypingAttributes() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2593,7 +2764,7 @@ func editorStateIsCopyAvailableFunction_Set() error {
 // IsCopyAvailable is a representation of the C type webkit_editor_state_is_copy_available.
 func (recv *EditorState) IsCopyAvailable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2625,7 +2796,7 @@ func editorStateIsCutAvailableFunction_Set() error {
 // IsCutAvailable is a representation of the C type webkit_editor_state_is_cut_available.
 func (recv *EditorState) IsCutAvailable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2657,7 +2828,7 @@ func editorStateIsPasteAvailableFunction_Set() error {
 // IsPasteAvailable is a representation of the C type webkit_editor_state_is_paste_available.
 func (recv *EditorState) IsPasteAvailable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2689,7 +2860,7 @@ func editorStateIsRedoAvailableFunction_Set() error {
 // IsRedoAvailable is a representation of the C type webkit_editor_state_is_redo_available.
 func (recv *EditorState) IsRedoAvailable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2721,7 +2892,7 @@ func editorStateIsUndoAvailableFunction_Set() error {
 // IsUndoAvailable is a representation of the C type webkit_editor_state_is_undo_available.
 func (recv *EditorState) IsUndoAvailable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -2769,7 +2940,7 @@ func FaviconDatabaseNewFromNative(native unsafe.Pointer) *FaviconDatabase {
 
 // Object upcasts to *Object
 func (recv *FaviconDatabase) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -2785,13 +2956,23 @@ func (recv *FaviconDatabase) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *FaviconDatabase) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(faviconDatabaseObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *FaviconDatabase) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(faviconDatabaseObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *FaviconDatabase) FieldPriv() *FaviconDatabasePrivate {
-	argValue := gi.ObjectFieldGet(faviconDatabaseObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(faviconDatabaseObject, recv.Native(), "priv")
 	value := FaviconDatabasePrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -2799,8 +2980,8 @@ func (recv *FaviconDatabase) FieldPriv() *FaviconDatabasePrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *FaviconDatabase) SetFieldPriv(value *FaviconDatabasePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(faviconDatabaseObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(faviconDatabaseObject, recv.Native(), "priv", argValue)
 }
 
 var faviconDatabaseClearFunction *gi.Function
@@ -2821,7 +3002,7 @@ func faviconDatabaseClearFunction_Set() error {
 // Clear is a representation of the C type webkit_favicon_database_clear.
 func (recv *FaviconDatabase) Clear() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := faviconDatabaseClearFunction_Set()
 	if err == nil {
@@ -2831,7 +3012,7 @@ func (recv *FaviconDatabase) Clear() {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_favicon_database_get_favicon' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_favicon_database_get_favicon' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_favicon_database_get_favicon_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -2853,7 +3034,7 @@ func faviconDatabaseGetFaviconUriFunction_Set() error {
 // GetFaviconUri is a representation of the C type webkit_favicon_database_get_favicon_uri.
 func (recv *FaviconDatabase) GetFaviconUri(pageUri string) string {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(pageUri)
 
 	var ret gi.Argument
@@ -2902,7 +3083,7 @@ func FileChooserRequestNewFromNative(native unsafe.Pointer) *FileChooserRequest 
 
 // Object upcasts to *Object
 func (recv *FileChooserRequest) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -2918,9 +3099,19 @@ func (recv *FileChooserRequest) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *FileChooserRequest) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(fileChooserRequestObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *FileChooserRequest) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(fileChooserRequestObject, recv.Native(), "parent", argValue)
+}
 
 var fileChooserRequestCancelFunction *gi.Function
 var fileChooserRequestCancelFunction_Once sync.Once
@@ -2940,7 +3131,7 @@ func fileChooserRequestCancelFunction_Set() error {
 // Cancel is a representation of the C type webkit_file_chooser_request_cancel.
 func (recv *FileChooserRequest) Cancel() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := fileChooserRequestCancelFunction_Set()
 	if err == nil {
@@ -2968,7 +3159,7 @@ func fileChooserRequestGetMimeTypesFunction_Set() error {
 // GetMimeTypes is a representation of the C type webkit_file_chooser_request_get_mime_types.
 func (recv *FileChooserRequest) GetMimeTypes() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := fileChooserRequestGetMimeTypesFunction_Set()
 	if err == nil {
@@ -2978,7 +3169,37 @@ func (recv *FileChooserRequest) GetMimeTypes() {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_file_chooser_request_get_mime_types_filter' : return type 'Gtk.FileFilter' not supported
+var fileChooserRequestGetMimeTypesFilterFunction *gi.Function
+var fileChooserRequestGetMimeTypesFilterFunction_Once sync.Once
+
+func fileChooserRequestGetMimeTypesFilterFunction_Set() error {
+	var err error
+	fileChooserRequestGetMimeTypesFilterFunction_Once.Do(func() {
+		err = fileChooserRequestObject_Set()
+		if err != nil {
+			return
+		}
+		fileChooserRequestGetMimeTypesFilterFunction, err = fileChooserRequestObject.InvokerNew("get_mime_types_filter")
+	})
+	return err
+}
+
+// GetMimeTypesFilter is a representation of the C type webkit_file_chooser_request_get_mime_types_filter.
+func (recv *FileChooserRequest) GetMimeTypesFilter() *gtk.FileFilter {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserRequestGetMimeTypesFilterFunction_Set()
+	if err == nil {
+		ret = fileChooserRequestGetMimeTypesFilterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gtk.FileFilterNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileChooserRequestGetSelectMultipleFunction *gi.Function
 var fileChooserRequestGetSelectMultipleFunction_Once sync.Once
@@ -2998,7 +3219,7 @@ func fileChooserRequestGetSelectMultipleFunction_Set() error {
 // GetSelectMultiple is a representation of the C type webkit_file_chooser_request_get_select_multiple.
 func (recv *FileChooserRequest) GetSelectMultiple() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3030,7 +3251,7 @@ func fileChooserRequestGetSelectedFilesFunction_Set() error {
 // GetSelectedFiles is a representation of the C type webkit_file_chooser_request_get_selected_files.
 func (recv *FileChooserRequest) GetSelectedFiles() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := fileChooserRequestGetSelectedFilesFunction_Set()
 	if err == nil {
@@ -3076,7 +3297,7 @@ func FindControllerNewFromNative(native unsafe.Pointer) *FindController {
 
 // Object upcasts to *Object
 func (recv *FindController) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -3092,9 +3313,19 @@ func (recv *FindController) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *FindController) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(findControllerObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *FindController) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(findControllerObject, recv.Native(), "parent", argValue)
+}
 
 var findControllerCountMatchesFunction *gi.Function
 var findControllerCountMatchesFunction_Once sync.Once
@@ -3114,7 +3345,7 @@ func findControllerCountMatchesFunction_Set() error {
 // CountMatches is a representation of the C type webkit_find_controller_count_matches.
 func (recv *FindController) CountMatches(searchText string, findOptions uint32, maxMatchCount uint32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(searchText)
 	inArgs[2].SetUint32(findOptions)
 	inArgs[3].SetUint32(maxMatchCount)
@@ -3145,7 +3376,7 @@ func findControllerGetMaxMatchCountFunction_Set() error {
 // GetMaxMatchCount is a representation of the C type webkit_find_controller_get_max_match_count.
 func (recv *FindController) GetMaxMatchCount() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3177,7 +3408,7 @@ func findControllerGetOptionsFunction_Set() error {
 // GetOptions is a representation of the C type webkit_find_controller_get_options.
 func (recv *FindController) GetOptions() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3209,7 +3440,7 @@ func findControllerGetSearchTextFunction_Set() error {
 // GetSearchText is a representation of the C type webkit_find_controller_get_search_text.
 func (recv *FindController) GetSearchText() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3241,7 +3472,7 @@ func findControllerGetWebViewFunction_Set() error {
 // GetWebView is a representation of the C type webkit_find_controller_get_web_view.
 func (recv *FindController) GetWebView() *WebView {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3273,7 +3504,7 @@ func findControllerSearchFunction_Set() error {
 // Search is a representation of the C type webkit_find_controller_search.
 func (recv *FindController) Search(searchText string, findOptions uint32, maxMatchCount uint32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(searchText)
 	inArgs[2].SetUint32(findOptions)
 	inArgs[3].SetUint32(maxMatchCount)
@@ -3304,7 +3535,7 @@ func findControllerSearchFinishFunction_Set() error {
 // SearchFinish is a representation of the C type webkit_find_controller_search_finish.
 func (recv *FindController) SearchFinish() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := findControllerSearchFinishFunction_Set()
 	if err == nil {
@@ -3332,7 +3563,7 @@ func findControllerSearchNextFunction_Set() error {
 // SearchNext is a representation of the C type webkit_find_controller_search_next.
 func (recv *FindController) SearchNext() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := findControllerSearchNextFunction_Set()
 	if err == nil {
@@ -3360,7 +3591,7 @@ func findControllerSearchPreviousFunction_Set() error {
 // SearchPrevious is a representation of the C type webkit_find_controller_search_previous.
 func (recv *FindController) SearchPrevious() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := findControllerSearchPreviousFunction_Set()
 	if err == nil {
@@ -3404,7 +3635,7 @@ func FormSubmissionRequestNewFromNative(native unsafe.Pointer) *FormSubmissionRe
 
 // Object upcasts to *Object
 func (recv *FormSubmissionRequest) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -3420,9 +3651,19 @@ func (recv *FormSubmissionRequest) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *FormSubmissionRequest) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(formSubmissionRequestObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *FormSubmissionRequest) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(formSubmissionRequestObject, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'webkit_form_submission_request_get_text_fields' : return type 'GLib.HashTable' not supported
 
@@ -3446,7 +3687,7 @@ func formSubmissionRequestSubmitFunction_Set() error {
 // Submit is a representation of the C type webkit_form_submission_request_submit.
 func (recv *FormSubmissionRequest) Submit() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := formSubmissionRequestSubmitFunction_Set()
 	if err == nil {
@@ -3490,7 +3731,7 @@ func GeolocationManagerNewFromNative(native unsafe.Pointer) *GeolocationManager 
 
 // Object upcasts to *Object
 func (recv *GeolocationManager) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -3506,9 +3747,19 @@ func (recv *GeolocationManager) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *GeolocationManager) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(geolocationManagerObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *GeolocationManager) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(geolocationManagerObject, recv.Native(), "parent", argValue)
+}
 
 var geolocationManagerFailedFunction *gi.Function
 var geolocationManagerFailedFunction_Once sync.Once
@@ -3528,7 +3779,7 @@ func geolocationManagerFailedFunction_Set() error {
 // Failed is a representation of the C type webkit_geolocation_manager_failed.
 func (recv *GeolocationManager) Failed(errorMessage string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(errorMessage)
 
 	err := geolocationManagerFailedFunction_Set()
@@ -3557,7 +3808,7 @@ func geolocationManagerGetEnableHighAccuracyFunction_Set() error {
 // GetEnableHighAccuracy is a representation of the C type webkit_geolocation_manager_get_enable_high_accuracy.
 func (recv *GeolocationManager) GetEnableHighAccuracy() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3589,8 +3840,8 @@ func geolocationManagerUpdatePositionFunction_Set() error {
 // UpdatePosition is a representation of the C type webkit_geolocation_manager_update_position.
 func (recv *GeolocationManager) UpdatePosition(position *GeolocationPosition) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(position.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(position.Native())
 
 	err := geolocationManagerUpdatePositionFunction_Set()
 	if err == nil {
@@ -3634,7 +3885,7 @@ func GeolocationPermissionRequestNewFromNative(native unsafe.Pointer) *Geolocati
 
 // Object upcasts to *Object
 func (recv *GeolocationPermissionRequest) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -3650,9 +3901,19 @@ func (recv *GeolocationPermissionRequest) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *GeolocationPermissionRequest) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(geolocationPermissionRequestObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *GeolocationPermissionRequest) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(geolocationPermissionRequestObject, recv.Native(), "parent", argValue)
+}
 
 var hitTestResultObject *gi.Object
 var hitTestResultObject_Once sync.Once
@@ -3688,7 +3949,7 @@ func HitTestResultNewFromNative(native unsafe.Pointer) *HitTestResult {
 
 // Object upcasts to *Object
 func (recv *HitTestResult) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -3704,13 +3965,23 @@ func (recv *HitTestResult) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *HitTestResult) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(hitTestResultObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *HitTestResult) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(hitTestResultObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *HitTestResult) FieldPriv() *HitTestResultPrivate {
-	argValue := gi.ObjectFieldGet(hitTestResultObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(hitTestResultObject, recv.Native(), "priv")
 	value := HitTestResultPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -3718,8 +3989,8 @@ func (recv *HitTestResult) FieldPriv() *HitTestResultPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *HitTestResult) SetFieldPriv(value *HitTestResultPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(hitTestResultObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(hitTestResultObject, recv.Native(), "priv", argValue)
 }
 
 var hitTestResultContextIsEditableFunction *gi.Function
@@ -3740,7 +4011,7 @@ func hitTestResultContextIsEditableFunction_Set() error {
 // ContextIsEditable is a representation of the C type webkit_hit_test_result_context_is_editable.
 func (recv *HitTestResult) ContextIsEditable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3772,7 +4043,7 @@ func hitTestResultContextIsImageFunction_Set() error {
 // ContextIsImage is a representation of the C type webkit_hit_test_result_context_is_image.
 func (recv *HitTestResult) ContextIsImage() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3804,7 +4075,7 @@ func hitTestResultContextIsLinkFunction_Set() error {
 // ContextIsLink is a representation of the C type webkit_hit_test_result_context_is_link.
 func (recv *HitTestResult) ContextIsLink() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3836,7 +4107,7 @@ func hitTestResultContextIsMediaFunction_Set() error {
 // ContextIsMedia is a representation of the C type webkit_hit_test_result_context_is_media.
 func (recv *HitTestResult) ContextIsMedia() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3868,7 +4139,7 @@ func hitTestResultContextIsScrollbarFunction_Set() error {
 // ContextIsScrollbar is a representation of the C type webkit_hit_test_result_context_is_scrollbar.
 func (recv *HitTestResult) ContextIsScrollbar() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3900,7 +4171,7 @@ func hitTestResultContextIsSelectionFunction_Set() error {
 // ContextIsSelection is a representation of the C type webkit_hit_test_result_context_is_selection.
 func (recv *HitTestResult) ContextIsSelection() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3932,7 +4203,7 @@ func hitTestResultGetContextFunction_Set() error {
 // GetContext is a representation of the C type webkit_hit_test_result_get_context.
 func (recv *HitTestResult) GetContext() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3964,7 +4235,7 @@ func hitTestResultGetImageUriFunction_Set() error {
 // GetImageUri is a representation of the C type webkit_hit_test_result_get_image_uri.
 func (recv *HitTestResult) GetImageUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -3996,7 +4267,7 @@ func hitTestResultGetLinkLabelFunction_Set() error {
 // GetLinkLabel is a representation of the C type webkit_hit_test_result_get_link_label.
 func (recv *HitTestResult) GetLinkLabel() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4028,7 +4299,7 @@ func hitTestResultGetLinkTitleFunction_Set() error {
 // GetLinkTitle is a representation of the C type webkit_hit_test_result_get_link_title.
 func (recv *HitTestResult) GetLinkTitle() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4060,7 +4331,7 @@ func hitTestResultGetLinkUriFunction_Set() error {
 // GetLinkUri is a representation of the C type webkit_hit_test_result_get_link_uri.
 func (recv *HitTestResult) GetLinkUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4092,7 +4363,7 @@ func hitTestResultGetMediaUriFunction_Set() error {
 // GetMediaUri is a representation of the C type webkit_hit_test_result_get_media_uri.
 func (recv *HitTestResult) GetMediaUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4140,7 +4411,7 @@ func InstallMissingMediaPluginsPermissionRequestNewFromNative(native unsafe.Poin
 
 // Object upcasts to *Object
 func (recv *InstallMissingMediaPluginsPermissionRequest) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -4156,13 +4427,23 @@ func (recv *InstallMissingMediaPluginsPermissionRequest) Native() unsafe.Pointer
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *InstallMissingMediaPluginsPermissionRequest) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(installMissingMediaPluginsPermissionRequestObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *InstallMissingMediaPluginsPermissionRequest) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(installMissingMediaPluginsPermissionRequestObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *InstallMissingMediaPluginsPermissionRequest) FieldPriv() *InstallMissingMediaPluginsPermissionRequestPrivate {
-	argValue := gi.ObjectFieldGet(installMissingMediaPluginsPermissionRequestObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(installMissingMediaPluginsPermissionRequestObject, recv.Native(), "priv")
 	value := InstallMissingMediaPluginsPermissionRequestPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4170,8 +4451,8 @@ func (recv *InstallMissingMediaPluginsPermissionRequest) FieldPriv() *InstallMis
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *InstallMissingMediaPluginsPermissionRequest) SetFieldPriv(value *InstallMissingMediaPluginsPermissionRequestPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(installMissingMediaPluginsPermissionRequestObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(installMissingMediaPluginsPermissionRequestObject, recv.Native(), "priv", argValue)
 }
 
 var installMissingMediaPluginsPermissionRequestGetDescriptionFunction *gi.Function
@@ -4192,7 +4473,7 @@ func installMissingMediaPluginsPermissionRequestGetDescriptionFunction_Set() err
 // GetDescription is a representation of the C type webkit_install_missing_media_plugins_permission_request_get_description.
 func (recv *InstallMissingMediaPluginsPermissionRequest) GetDescription() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4240,12 +4521,12 @@ func NavigationPolicyDecisionNewFromNative(native unsafe.Pointer) *NavigationPol
 
 // PolicyDecision upcasts to *PolicyDecision
 func (recv *NavigationPolicyDecision) PolicyDecision() *PolicyDecision {
-	return PolicyDecisionNewFromNative(recv.native)
+	return PolicyDecisionNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *NavigationPolicyDecision) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -4263,7 +4544,7 @@ func (recv *NavigationPolicyDecision) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *NavigationPolicyDecision) FieldParent() *PolicyDecision {
-	argValue := gi.ObjectFieldGet(navigationPolicyDecisionObject, recv.native, "parent")
+	argValue := gi.ObjectFieldGet(navigationPolicyDecisionObject, recv.Native(), "parent")
 	value := PolicyDecisionNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4271,8 +4552,8 @@ func (recv *NavigationPolicyDecision) FieldParent() *PolicyDecision {
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *NavigationPolicyDecision) SetFieldParent(value *PolicyDecision) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(navigationPolicyDecisionObject, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(navigationPolicyDecisionObject, recv.Native(), "parent", argValue)
 }
 
 var navigationPolicyDecisionGetFrameNameFunction *gi.Function
@@ -4293,7 +4574,7 @@ func navigationPolicyDecisionGetFrameNameFunction_Set() error {
 // GetFrameName is a representation of the C type webkit_navigation_policy_decision_get_frame_name.
 func (recv *NavigationPolicyDecision) GetFrameName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4325,7 +4606,7 @@ func navigationPolicyDecisionGetModifiersFunction_Set() error {
 // GetModifiers is a representation of the C type webkit_navigation_policy_decision_get_modifiers.
 func (recv *NavigationPolicyDecision) GetModifiers() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4357,7 +4638,7 @@ func navigationPolicyDecisionGetMouseButtonFunction_Set() error {
 // GetMouseButton is a representation of the C type webkit_navigation_policy_decision_get_mouse_button.
 func (recv *NavigationPolicyDecision) GetMouseButton() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4389,7 +4670,7 @@ func navigationPolicyDecisionGetNavigationActionFunction_Set() error {
 // GetNavigationAction is a representation of the C type webkit_navigation_policy_decision_get_navigation_action.
 func (recv *NavigationPolicyDecision) GetNavigationAction() *NavigationAction {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4421,7 +4702,7 @@ func navigationPolicyDecisionGetNavigationTypeFunction_Set() error {
 // GetNavigationType is a representation of the C type webkit_navigation_policy_decision_get_navigation_type.
 func (recv *NavigationPolicyDecision) GetNavigationType() NavigationType {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4453,7 +4734,7 @@ func navigationPolicyDecisionGetRequestFunction_Set() error {
 // GetRequest is a representation of the C type webkit_navigation_policy_decision_get_request.
 func (recv *NavigationPolicyDecision) GetRequest() *URIRequest {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4501,7 +4782,7 @@ func NotificationNewFromNative(native unsafe.Pointer) *Notification {
 
 // Object upcasts to *Object
 func (recv *Notification) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -4517,13 +4798,23 @@ func (recv *Notification) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *Notification) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(notificationObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *Notification) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(notificationObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Notification) FieldPriv() *NotificationPrivate {
-	argValue := gi.ObjectFieldGet(notificationObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(notificationObject, recv.Native(), "priv")
 	value := NotificationPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4531,8 +4822,8 @@ func (recv *Notification) FieldPriv() *NotificationPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Notification) SetFieldPriv(value *NotificationPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(notificationObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(notificationObject, recv.Native(), "priv", argValue)
 }
 
 var notificationClickedFunction *gi.Function
@@ -4553,7 +4844,7 @@ func notificationClickedFunction_Set() error {
 // Clicked is a representation of the C type webkit_notification_clicked.
 func (recv *Notification) Clicked() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := notificationClickedFunction_Set()
 	if err == nil {
@@ -4581,7 +4872,7 @@ func notificationCloseFunction_Set() error {
 // Close is a representation of the C type webkit_notification_close.
 func (recv *Notification) Close() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := notificationCloseFunction_Set()
 	if err == nil {
@@ -4609,7 +4900,7 @@ func notificationGetBodyFunction_Set() error {
 // GetBody is a representation of the C type webkit_notification_get_body.
 func (recv *Notification) GetBody() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4641,7 +4932,7 @@ func notificationGetIdFunction_Set() error {
 // GetId is a representation of the C type webkit_notification_get_id.
 func (recv *Notification) GetId() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4673,7 +4964,7 @@ func notificationGetTagFunction_Set() error {
 // GetTag is a representation of the C type webkit_notification_get_tag.
 func (recv *Notification) GetTag() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4705,7 +4996,7 @@ func notificationGetTitleFunction_Set() error {
 // GetTitle is a representation of the C type webkit_notification_get_title.
 func (recv *Notification) GetTitle() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4753,7 +5044,7 @@ func NotificationPermissionRequestNewFromNative(native unsafe.Pointer) *Notifica
 
 // Object upcasts to *Object
 func (recv *NotificationPermissionRequest) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -4769,9 +5060,19 @@ func (recv *NotificationPermissionRequest) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *NotificationPermissionRequest) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(notificationPermissionRequestObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *NotificationPermissionRequest) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(notificationPermissionRequestObject, recv.Native(), "parent", argValue)
+}
 
 var optionMenuObject *gi.Object
 var optionMenuObject_Once sync.Once
@@ -4807,7 +5108,7 @@ func OptionMenuNewFromNative(native unsafe.Pointer) *OptionMenu {
 
 // Object upcasts to *Object
 func (recv *OptionMenu) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -4823,13 +5124,23 @@ func (recv *OptionMenu) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *OptionMenu) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(optionMenuObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *OptionMenu) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(optionMenuObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *OptionMenu) FieldPriv() *OptionMenuPrivate {
-	argValue := gi.ObjectFieldGet(optionMenuObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(optionMenuObject, recv.Native(), "priv")
 	value := OptionMenuPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -4837,8 +5148,8 @@ func (recv *OptionMenu) FieldPriv() *OptionMenuPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *OptionMenu) SetFieldPriv(value *OptionMenuPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(optionMenuObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(optionMenuObject, recv.Native(), "priv", argValue)
 }
 
 var optionMenuActivateItemFunction *gi.Function
@@ -4859,7 +5170,7 @@ func optionMenuActivateItemFunction_Set() error {
 // ActivateItem is a representation of the C type webkit_option_menu_activate_item.
 func (recv *OptionMenu) ActivateItem(index uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(index)
 
 	err := optionMenuActivateItemFunction_Set()
@@ -4888,7 +5199,7 @@ func optionMenuCloseFunction_Set() error {
 // Close is a representation of the C type webkit_option_menu_close.
 func (recv *OptionMenu) Close() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := optionMenuCloseFunction_Set()
 	if err == nil {
@@ -4916,7 +5227,7 @@ func optionMenuGetItemFunction_Set() error {
 // GetItem is a representation of the C type webkit_option_menu_get_item.
 func (recv *OptionMenu) GetItem(index uint32) *OptionMenuItem {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(index)
 
 	var ret gi.Argument
@@ -4949,7 +5260,7 @@ func optionMenuGetNItemsFunction_Set() error {
 // GetNItems is a representation of the C type webkit_option_menu_get_n_items.
 func (recv *OptionMenu) GetNItems() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -4981,7 +5292,7 @@ func optionMenuSelectItemFunction_Set() error {
 // SelectItem is a representation of the C type webkit_option_menu_select_item.
 func (recv *OptionMenu) SelectItem(index uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(index)
 
 	err := optionMenuSelectItemFunction_Set()
@@ -5026,7 +5337,7 @@ func PluginNewFromNative(native unsafe.Pointer) *Plugin {
 
 // Object upcasts to *Object
 func (recv *Plugin) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -5042,13 +5353,23 @@ func (recv *Plugin) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *Plugin) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(pluginObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *Plugin) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(pluginObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Plugin) FieldPriv() *PluginPrivate {
-	argValue := gi.ObjectFieldGet(pluginObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(pluginObject, recv.Native(), "priv")
 	value := PluginPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -5056,8 +5377,8 @@ func (recv *Plugin) FieldPriv() *PluginPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Plugin) SetFieldPriv(value *PluginPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(pluginObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(pluginObject, recv.Native(), "priv", argValue)
 }
 
 var pluginGetDescriptionFunction *gi.Function
@@ -5078,7 +5399,7 @@ func pluginGetDescriptionFunction_Set() error {
 // GetDescription is a representation of the C type webkit_plugin_get_description.
 func (recv *Plugin) GetDescription() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5112,7 +5433,7 @@ func pluginGetNameFunction_Set() error {
 // GetName is a representation of the C type webkit_plugin_get_name.
 func (recv *Plugin) GetName() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5144,7 +5465,7 @@ func pluginGetPathFunction_Set() error {
 // GetPath is a representation of the C type webkit_plugin_get_path.
 func (recv *Plugin) GetPath() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5192,7 +5513,7 @@ func PolicyDecisionNewFromNative(native unsafe.Pointer) *PolicyDecision {
 
 // Object upcasts to *Object
 func (recv *PolicyDecision) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -5208,9 +5529,19 @@ func (recv *PolicyDecision) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *PolicyDecision) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(policyDecisionObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *PolicyDecision) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(policyDecisionObject, recv.Native(), "parent", argValue)
+}
 
 var policyDecisionDownloadFunction *gi.Function
 var policyDecisionDownloadFunction_Once sync.Once
@@ -5230,7 +5561,7 @@ func policyDecisionDownloadFunction_Set() error {
 // Download is a representation of the C type webkit_policy_decision_download.
 func (recv *PolicyDecision) Download() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := policyDecisionDownloadFunction_Set()
 	if err == nil {
@@ -5258,7 +5589,7 @@ func policyDecisionIgnoreFunction_Set() error {
 // Ignore is a representation of the C type webkit_policy_decision_ignore.
 func (recv *PolicyDecision) Ignore() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := policyDecisionIgnoreFunction_Set()
 	if err == nil {
@@ -5286,7 +5617,7 @@ func policyDecisionUseFunction_Set() error {
 // Use is a representation of the C type webkit_policy_decision_use.
 func (recv *PolicyDecision) Use() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := policyDecisionUseFunction_Set()
 	if err == nil {
@@ -5330,7 +5661,7 @@ func PrintCustomWidgetNewFromNative(native unsafe.Pointer) *PrintCustomWidget {
 
 // Object upcasts to *Object
 func (recv *PrintCustomWidget) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -5346,13 +5677,23 @@ func (recv *PrintCustomWidget) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *PrintCustomWidget) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(printCustomWidgetObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *PrintCustomWidget) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(printCustomWidgetObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *PrintCustomWidget) FieldPriv() *PrintCustomWidgetPrivate {
-	argValue := gi.ObjectFieldGet(printCustomWidgetObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(printCustomWidgetObject, recv.Native(), "priv")
 	value := PrintCustomWidgetPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -5360,11 +5701,44 @@ func (recv *PrintCustomWidget) FieldPriv() *PrintCustomWidgetPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *PrintCustomWidget) SetFieldPriv(value *PrintCustomWidgetPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(printCustomWidgetObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(printCustomWidgetObject, recv.Native(), "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'webkit_print_custom_widget_new' : parameter 'widget' of type 'Gtk.Widget' not supported
+var printCustomWidgetNewFunction *gi.Function
+var printCustomWidgetNewFunction_Once sync.Once
+
+func printCustomWidgetNewFunction_Set() error {
+	var err error
+	printCustomWidgetNewFunction_Once.Do(func() {
+		err = printCustomWidgetObject_Set()
+		if err != nil {
+			return
+		}
+		printCustomWidgetNewFunction, err = printCustomWidgetObject.InvokerNew("new")
+	})
+	return err
+}
+
+// PrintCustomWidgetNew is a representation of the C type webkit_print_custom_widget_new.
+func PrintCustomWidgetNew(widget *gtk.Widget, title string) *PrintCustomWidget {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(widget.Native())
+	inArgs[1].SetString(title)
+
+	var ret gi.Argument
+
+	err := printCustomWidgetNewFunction_Set()
+	if err == nil {
+		ret = printCustomWidgetNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PrintCustomWidgetNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var printCustomWidgetGetTitleFunction *gi.Function
 var printCustomWidgetGetTitleFunction_Once sync.Once
@@ -5384,7 +5758,7 @@ func printCustomWidgetGetTitleFunction_Set() error {
 // GetTitle is a representation of the C type webkit_print_custom_widget_get_title.
 func (recv *PrintCustomWidget) GetTitle() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5398,7 +5772,37 @@ func (recv *PrintCustomWidget) GetTitle() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_print_custom_widget_get_widget' : return type 'Gtk.Widget' not supported
+var printCustomWidgetGetWidgetFunction *gi.Function
+var printCustomWidgetGetWidgetFunction_Once sync.Once
+
+func printCustomWidgetGetWidgetFunction_Set() error {
+	var err error
+	printCustomWidgetGetWidgetFunction_Once.Do(func() {
+		err = printCustomWidgetObject_Set()
+		if err != nil {
+			return
+		}
+		printCustomWidgetGetWidgetFunction, err = printCustomWidgetObject.InvokerNew("get_widget")
+	})
+	return err
+}
+
+// GetWidget is a representation of the C type webkit_print_custom_widget_get_widget.
+func (recv *PrintCustomWidget) GetWidget() *gtk.Widget {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := printCustomWidgetGetWidgetFunction_Set()
+	if err == nil {
+		ret = printCustomWidgetGetWidgetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gtk.WidgetNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var printOperationObject *gi.Object
 var printOperationObject_Once sync.Once
@@ -5434,7 +5838,7 @@ func PrintOperationNewFromNative(native unsafe.Pointer) *PrintOperation {
 
 // Object upcasts to *Object
 func (recv *PrintOperation) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -5450,13 +5854,23 @@ func (recv *PrintOperation) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *PrintOperation) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(printOperationObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *PrintOperation) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(printOperationObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *PrintOperation) FieldPriv() *PrintOperationPrivate {
-	argValue := gi.ObjectFieldGet(printOperationObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(printOperationObject, recv.Native(), "priv")
 	value := PrintOperationPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -5464,8 +5878,8 @@ func (recv *PrintOperation) FieldPriv() *PrintOperationPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *PrintOperation) SetFieldPriv(value *PrintOperationPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(printOperationObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(printOperationObject, recv.Native(), "priv", argValue)
 }
 
 var printOperationNewFunction *gi.Function
@@ -5486,7 +5900,7 @@ func printOperationNewFunction_Set() error {
 // PrintOperationNew is a representation of the C type webkit_print_operation_new.
 func PrintOperationNew(webView *WebView) *PrintOperation {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(webView.native)
+	inArgs[0].SetPointer(webView.Native())
 
 	var ret gi.Argument
 
@@ -5502,9 +5916,69 @@ func PrintOperationNew(webView *WebView) *PrintOperation {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_print_operation_get_page_setup' : return type 'Gtk.PageSetup' not supported
+var printOperationGetPageSetupFunction *gi.Function
+var printOperationGetPageSetupFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_print_operation_get_print_settings' : return type 'Gtk.PrintSettings' not supported
+func printOperationGetPageSetupFunction_Set() error {
+	var err error
+	printOperationGetPageSetupFunction_Once.Do(func() {
+		err = printOperationObject_Set()
+		if err != nil {
+			return
+		}
+		printOperationGetPageSetupFunction, err = printOperationObject.InvokerNew("get_page_setup")
+	})
+	return err
+}
+
+// GetPageSetup is a representation of the C type webkit_print_operation_get_page_setup.
+func (recv *PrintOperation) GetPageSetup() *gtk.PageSetup {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := printOperationGetPageSetupFunction_Set()
+	if err == nil {
+		ret = printOperationGetPageSetupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gtk.PageSetupNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var printOperationGetPrintSettingsFunction *gi.Function
+var printOperationGetPrintSettingsFunction_Once sync.Once
+
+func printOperationGetPrintSettingsFunction_Set() error {
+	var err error
+	printOperationGetPrintSettingsFunction_Once.Do(func() {
+		err = printOperationObject_Set()
+		if err != nil {
+			return
+		}
+		printOperationGetPrintSettingsFunction, err = printOperationObject.InvokerNew("get_print_settings")
+	})
+	return err
+}
+
+// GetPrintSettings is a representation of the C type webkit_print_operation_get_print_settings.
+func (recv *PrintOperation) GetPrintSettings() *gtk.PrintSettings {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := printOperationGetPrintSettingsFunction_Set()
+	if err == nil {
+		ret = printOperationGetPrintSettingsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gtk.PrintSettingsNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var printOperationPrintFunction *gi.Function
 var printOperationPrintFunction_Once sync.Once
@@ -5524,7 +5998,7 @@ func printOperationPrintFunction_Set() error {
 // Print is a representation of the C type webkit_print_operation_print.
 func (recv *PrintOperation) Print() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := printOperationPrintFunction_Set()
 	if err == nil {
@@ -5534,11 +6008,96 @@ func (recv *PrintOperation) Print() {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_print_operation_run_dialog' : parameter 'parent' of type 'Gtk.Window' not supported
+var printOperationRunDialogFunction *gi.Function
+var printOperationRunDialogFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_print_operation_set_page_setup' : parameter 'page_setup' of type 'Gtk.PageSetup' not supported
+func printOperationRunDialogFunction_Set() error {
+	var err error
+	printOperationRunDialogFunction_Once.Do(func() {
+		err = printOperationObject_Set()
+		if err != nil {
+			return
+		}
+		printOperationRunDialogFunction, err = printOperationObject.InvokerNew("run_dialog")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'webkit_print_operation_set_print_settings' : parameter 'print_settings' of type 'Gtk.PrintSettings' not supported
+// RunDialog is a representation of the C type webkit_print_operation_run_dialog.
+func (recv *PrintOperation) RunDialog(parent *gtk.Window) PrintOperationResponse {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(parent.Native())
+
+	var ret gi.Argument
+
+	err := printOperationRunDialogFunction_Set()
+	if err == nil {
+		ret = printOperationRunDialogFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PrintOperationResponse(ret.Int32())
+
+	return retGo
+}
+
+var printOperationSetPageSetupFunction *gi.Function
+var printOperationSetPageSetupFunction_Once sync.Once
+
+func printOperationSetPageSetupFunction_Set() error {
+	var err error
+	printOperationSetPageSetupFunction_Once.Do(func() {
+		err = printOperationObject_Set()
+		if err != nil {
+			return
+		}
+		printOperationSetPageSetupFunction, err = printOperationObject.InvokerNew("set_page_setup")
+	})
+	return err
+}
+
+// SetPageSetup is a representation of the C type webkit_print_operation_set_page_setup.
+func (recv *PrintOperation) SetPageSetup(pageSetup *gtk.PageSetup) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(pageSetup.Native())
+
+	err := printOperationSetPageSetupFunction_Set()
+	if err == nil {
+		printOperationSetPageSetupFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var printOperationSetPrintSettingsFunction *gi.Function
+var printOperationSetPrintSettingsFunction_Once sync.Once
+
+func printOperationSetPrintSettingsFunction_Set() error {
+	var err error
+	printOperationSetPrintSettingsFunction_Once.Do(func() {
+		err = printOperationObject_Set()
+		if err != nil {
+			return
+		}
+		printOperationSetPrintSettingsFunction, err = printOperationObject.InvokerNew("set_print_settings")
+	})
+	return err
+}
+
+// SetPrintSettings is a representation of the C type webkit_print_operation_set_print_settings.
+func (recv *PrintOperation) SetPrintSettings(printSettings *gtk.PrintSettings) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(printSettings.Native())
+
+	err := printOperationSetPrintSettingsFunction_Set()
+	if err == nil {
+		printOperationSetPrintSettingsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var responsePolicyDecisionObject *gi.Object
 var responsePolicyDecisionObject_Once sync.Once
@@ -5574,12 +6133,12 @@ func ResponsePolicyDecisionNewFromNative(native unsafe.Pointer) *ResponsePolicyD
 
 // PolicyDecision upcasts to *PolicyDecision
 func (recv *ResponsePolicyDecision) PolicyDecision() *PolicyDecision {
-	return PolicyDecisionNewFromNative(recv.native)
+	return PolicyDecisionNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *ResponsePolicyDecision) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -5597,7 +6156,7 @@ func (recv *ResponsePolicyDecision) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *ResponsePolicyDecision) FieldParent() *PolicyDecision {
-	argValue := gi.ObjectFieldGet(responsePolicyDecisionObject, recv.native, "parent")
+	argValue := gi.ObjectFieldGet(responsePolicyDecisionObject, recv.Native(), "parent")
 	value := PolicyDecisionNewFromNative(argValue.Pointer())
 	return value
 }
@@ -5605,8 +6164,8 @@ func (recv *ResponsePolicyDecision) FieldParent() *PolicyDecision {
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *ResponsePolicyDecision) SetFieldParent(value *PolicyDecision) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(responsePolicyDecisionObject, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(responsePolicyDecisionObject, recv.Native(), "parent", argValue)
 }
 
 var responsePolicyDecisionGetRequestFunction *gi.Function
@@ -5627,7 +6186,7 @@ func responsePolicyDecisionGetRequestFunction_Set() error {
 // GetRequest is a representation of the C type webkit_response_policy_decision_get_request.
 func (recv *ResponsePolicyDecision) GetRequest() *URIRequest {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5659,7 +6218,7 @@ func responsePolicyDecisionGetResponseFunction_Set() error {
 // GetResponse is a representation of the C type webkit_response_policy_decision_get_response.
 func (recv *ResponsePolicyDecision) GetResponse() *URIResponse {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5691,7 +6250,7 @@ func responsePolicyDecisionIsMimeTypeSupportedFunction_Set() error {
 // IsMimeTypeSupported is a representation of the C type webkit_response_policy_decision_is_mime_type_supported.
 func (recv *ResponsePolicyDecision) IsMimeTypeSupported() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -5739,7 +6298,7 @@ func SecurityManagerNewFromNative(native unsafe.Pointer) *SecurityManager {
 
 // Object upcasts to *Object
 func (recv *SecurityManager) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -5755,13 +6314,23 @@ func (recv *SecurityManager) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *SecurityManager) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(securityManagerObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *SecurityManager) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(securityManagerObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SecurityManager) FieldPriv() *SecurityManagerPrivate {
-	argValue := gi.ObjectFieldGet(securityManagerObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(securityManagerObject, recv.Native(), "priv")
 	value := SecurityManagerPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -5769,8 +6338,8 @@ func (recv *SecurityManager) FieldPriv() *SecurityManagerPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SecurityManager) SetFieldPriv(value *SecurityManagerPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(securityManagerObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(securityManagerObject, recv.Native(), "priv", argValue)
 }
 
 var securityManagerRegisterUriSchemeAsCorsEnabledFunction *gi.Function
@@ -5791,7 +6360,7 @@ func securityManagerRegisterUriSchemeAsCorsEnabledFunction_Set() error {
 // RegisterUriSchemeAsCorsEnabled is a representation of the C type webkit_security_manager_register_uri_scheme_as_cors_enabled.
 func (recv *SecurityManager) RegisterUriSchemeAsCorsEnabled(scheme string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 
 	err := securityManagerRegisterUriSchemeAsCorsEnabledFunction_Set()
@@ -5820,7 +6389,7 @@ func securityManagerRegisterUriSchemeAsDisplayIsolatedFunction_Set() error {
 // RegisterUriSchemeAsDisplayIsolated is a representation of the C type webkit_security_manager_register_uri_scheme_as_display_isolated.
 func (recv *SecurityManager) RegisterUriSchemeAsDisplayIsolated(scheme string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 
 	err := securityManagerRegisterUriSchemeAsDisplayIsolatedFunction_Set()
@@ -5849,7 +6418,7 @@ func securityManagerRegisterUriSchemeAsEmptyDocumentFunction_Set() error {
 // RegisterUriSchemeAsEmptyDocument is a representation of the C type webkit_security_manager_register_uri_scheme_as_empty_document.
 func (recv *SecurityManager) RegisterUriSchemeAsEmptyDocument(scheme string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 
 	err := securityManagerRegisterUriSchemeAsEmptyDocumentFunction_Set()
@@ -5878,7 +6447,7 @@ func securityManagerRegisterUriSchemeAsLocalFunction_Set() error {
 // RegisterUriSchemeAsLocal is a representation of the C type webkit_security_manager_register_uri_scheme_as_local.
 func (recv *SecurityManager) RegisterUriSchemeAsLocal(scheme string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 
 	err := securityManagerRegisterUriSchemeAsLocalFunction_Set()
@@ -5907,7 +6476,7 @@ func securityManagerRegisterUriSchemeAsNoAccessFunction_Set() error {
 // RegisterUriSchemeAsNoAccess is a representation of the C type webkit_security_manager_register_uri_scheme_as_no_access.
 func (recv *SecurityManager) RegisterUriSchemeAsNoAccess(scheme string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 
 	err := securityManagerRegisterUriSchemeAsNoAccessFunction_Set()
@@ -5936,7 +6505,7 @@ func securityManagerRegisterUriSchemeAsSecureFunction_Set() error {
 // RegisterUriSchemeAsSecure is a representation of the C type webkit_security_manager_register_uri_scheme_as_secure.
 func (recv *SecurityManager) RegisterUriSchemeAsSecure(scheme string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 
 	err := securityManagerRegisterUriSchemeAsSecureFunction_Set()
@@ -5965,7 +6534,7 @@ func securityManagerUriSchemeIsCorsEnabledFunction_Set() error {
 // UriSchemeIsCorsEnabled is a representation of the C type webkit_security_manager_uri_scheme_is_cors_enabled.
 func (recv *SecurityManager) UriSchemeIsCorsEnabled(scheme string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 
 	var ret gi.Argument
@@ -5998,7 +6567,7 @@ func securityManagerUriSchemeIsDisplayIsolatedFunction_Set() error {
 // UriSchemeIsDisplayIsolated is a representation of the C type webkit_security_manager_uri_scheme_is_display_isolated.
 func (recv *SecurityManager) UriSchemeIsDisplayIsolated(scheme string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 
 	var ret gi.Argument
@@ -6031,7 +6600,7 @@ func securityManagerUriSchemeIsEmptyDocumentFunction_Set() error {
 // UriSchemeIsEmptyDocument is a representation of the C type webkit_security_manager_uri_scheme_is_empty_document.
 func (recv *SecurityManager) UriSchemeIsEmptyDocument(scheme string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 
 	var ret gi.Argument
@@ -6064,7 +6633,7 @@ func securityManagerUriSchemeIsLocalFunction_Set() error {
 // UriSchemeIsLocal is a representation of the C type webkit_security_manager_uri_scheme_is_local.
 func (recv *SecurityManager) UriSchemeIsLocal(scheme string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 
 	var ret gi.Argument
@@ -6097,7 +6666,7 @@ func securityManagerUriSchemeIsNoAccessFunction_Set() error {
 // UriSchemeIsNoAccess is a representation of the C type webkit_security_manager_uri_scheme_is_no_access.
 func (recv *SecurityManager) UriSchemeIsNoAccess(scheme string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 
 	var ret gi.Argument
@@ -6130,7 +6699,7 @@ func securityManagerUriSchemeIsSecureFunction_Set() error {
 // UriSchemeIsSecure is a representation of the C type webkit_security_manager_uri_scheme_is_secure.
 func (recv *SecurityManager) UriSchemeIsSecure(scheme string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(scheme)
 
 	var ret gi.Argument
@@ -6179,7 +6748,7 @@ func SettingsNewFromNative(native unsafe.Pointer) *Settings {
 
 // Object upcasts to *Object
 func (recv *Settings) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -6195,13 +6764,23 @@ func (recv *Settings) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_instance' : for field getter : no Go type for 'GObject.Object'
+// FieldParentInstance returns the C field 'parent_instance'.
+func (recv *Settings) FieldParentInstance() *gobject.Object {
+	argValue := gi.ObjectFieldGet(settingsObject, recv.Native(), "parent_instance")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_instance' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParentInstance sets the value of the C field 'parent_instance'.
+func (recv *Settings) SetFieldParentInstance(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(settingsObject, recv.Native(), "parent_instance", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Settings) FieldPriv() *SettingsPrivate {
-	argValue := gi.ObjectFieldGet(settingsObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(settingsObject, recv.Native(), "priv")
 	value := SettingsPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -6209,8 +6788,8 @@ func (recv *Settings) FieldPriv() *SettingsPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Settings) SetFieldPriv(value *SettingsPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(settingsObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(settingsObject, recv.Native(), "priv", argValue)
 }
 
 var settingsNewFunction *gi.Function
@@ -6265,7 +6844,7 @@ func settingsGetAllowFileAccessFromFileUrlsFunction_Set() error {
 // GetAllowFileAccessFromFileUrls is a representation of the C type webkit_settings_get_allow_file_access_from_file_urls.
 func (recv *Settings) GetAllowFileAccessFromFileUrls() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6297,7 +6876,7 @@ func settingsGetAllowModalDialogsFunction_Set() error {
 // GetAllowModalDialogs is a representation of the C type webkit_settings_get_allow_modal_dialogs.
 func (recv *Settings) GetAllowModalDialogs() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6329,7 +6908,7 @@ func settingsGetAllowUniversalAccessFromFileUrlsFunction_Set() error {
 // GetAllowUniversalAccessFromFileUrls is a representation of the C type webkit_settings_get_allow_universal_access_from_file_urls.
 func (recv *Settings) GetAllowUniversalAccessFromFileUrls() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6361,7 +6940,7 @@ func settingsGetAutoLoadImagesFunction_Set() error {
 // GetAutoLoadImages is a representation of the C type webkit_settings_get_auto_load_images.
 func (recv *Settings) GetAutoLoadImages() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6393,7 +6972,7 @@ func settingsGetCursiveFontFamilyFunction_Set() error {
 // GetCursiveFontFamily is a representation of the C type webkit_settings_get_cursive_font_family.
 func (recv *Settings) GetCursiveFontFamily() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6425,7 +7004,7 @@ func settingsGetDefaultCharsetFunction_Set() error {
 // GetDefaultCharset is a representation of the C type webkit_settings_get_default_charset.
 func (recv *Settings) GetDefaultCharset() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6457,7 +7036,7 @@ func settingsGetDefaultFontFamilyFunction_Set() error {
 // GetDefaultFontFamily is a representation of the C type webkit_settings_get_default_font_family.
 func (recv *Settings) GetDefaultFontFamily() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6489,7 +7068,7 @@ func settingsGetDefaultFontSizeFunction_Set() error {
 // GetDefaultFontSize is a representation of the C type webkit_settings_get_default_font_size.
 func (recv *Settings) GetDefaultFontSize() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6521,7 +7100,7 @@ func settingsGetDefaultMonospaceFontSizeFunction_Set() error {
 // GetDefaultMonospaceFontSize is a representation of the C type webkit_settings_get_default_monospace_font_size.
 func (recv *Settings) GetDefaultMonospaceFontSize() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6553,7 +7132,7 @@ func settingsGetDrawCompositingIndicatorsFunction_Set() error {
 // GetDrawCompositingIndicators is a representation of the C type webkit_settings_get_draw_compositing_indicators.
 func (recv *Settings) GetDrawCompositingIndicators() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6585,7 +7164,7 @@ func settingsGetEnableAccelerated2dCanvasFunction_Set() error {
 // GetEnableAccelerated2dCanvas is a representation of the C type webkit_settings_get_enable_accelerated_2d_canvas.
 func (recv *Settings) GetEnableAccelerated2dCanvas() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6617,7 +7196,7 @@ func settingsGetEnableBackForwardNavigationGesturesFunction_Set() error {
 // GetEnableBackForwardNavigationGestures is a representation of the C type webkit_settings_get_enable_back_forward_navigation_gestures.
 func (recv *Settings) GetEnableBackForwardNavigationGestures() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6649,7 +7228,7 @@ func settingsGetEnableCaretBrowsingFunction_Set() error {
 // GetEnableCaretBrowsing is a representation of the C type webkit_settings_get_enable_caret_browsing.
 func (recv *Settings) GetEnableCaretBrowsing() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6681,7 +7260,7 @@ func settingsGetEnableDeveloperExtrasFunction_Set() error {
 // GetEnableDeveloperExtras is a representation of the C type webkit_settings_get_enable_developer_extras.
 func (recv *Settings) GetEnableDeveloperExtras() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6713,7 +7292,7 @@ func settingsGetEnableDnsPrefetchingFunction_Set() error {
 // GetEnableDnsPrefetching is a representation of the C type webkit_settings_get_enable_dns_prefetching.
 func (recv *Settings) GetEnableDnsPrefetching() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6745,7 +7324,7 @@ func settingsGetEnableEncryptedMediaFunction_Set() error {
 // GetEnableEncryptedMedia is a representation of the C type webkit_settings_get_enable_encrypted_media.
 func (recv *Settings) GetEnableEncryptedMedia() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6777,7 +7356,7 @@ func settingsGetEnableFrameFlatteningFunction_Set() error {
 // GetEnableFrameFlattening is a representation of the C type webkit_settings_get_enable_frame_flattening.
 func (recv *Settings) GetEnableFrameFlattening() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6809,7 +7388,7 @@ func settingsGetEnableFullscreenFunction_Set() error {
 // GetEnableFullscreen is a representation of the C type webkit_settings_get_enable_fullscreen.
 func (recv *Settings) GetEnableFullscreen() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6841,7 +7420,7 @@ func settingsGetEnableHtml5DatabaseFunction_Set() error {
 // GetEnableHtml5Database is a representation of the C type webkit_settings_get_enable_html5_database.
 func (recv *Settings) GetEnableHtml5Database() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6873,7 +7452,7 @@ func settingsGetEnableHtml5LocalStorageFunction_Set() error {
 // GetEnableHtml5LocalStorage is a representation of the C type webkit_settings_get_enable_html5_local_storage.
 func (recv *Settings) GetEnableHtml5LocalStorage() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6905,7 +7484,7 @@ func settingsGetEnableHyperlinkAuditingFunction_Set() error {
 // GetEnableHyperlinkAuditing is a representation of the C type webkit_settings_get_enable_hyperlink_auditing.
 func (recv *Settings) GetEnableHyperlinkAuditing() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6937,7 +7516,7 @@ func settingsGetEnableJavaFunction_Set() error {
 // GetEnableJava is a representation of the C type webkit_settings_get_enable_java.
 func (recv *Settings) GetEnableJava() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -6969,7 +7548,7 @@ func settingsGetEnableJavascriptFunction_Set() error {
 // GetEnableJavascript is a representation of the C type webkit_settings_get_enable_javascript.
 func (recv *Settings) GetEnableJavascript() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7001,7 +7580,7 @@ func settingsGetEnableJavascriptMarkupFunction_Set() error {
 // GetEnableJavascriptMarkup is a representation of the C type webkit_settings_get_enable_javascript_markup.
 func (recv *Settings) GetEnableJavascriptMarkup() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7033,7 +7612,7 @@ func settingsGetEnableMediaFunction_Set() error {
 // GetEnableMedia is a representation of the C type webkit_settings_get_enable_media.
 func (recv *Settings) GetEnableMedia() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7065,7 +7644,7 @@ func settingsGetEnableMediaCapabilitiesFunction_Set() error {
 // GetEnableMediaCapabilities is a representation of the C type webkit_settings_get_enable_media_capabilities.
 func (recv *Settings) GetEnableMediaCapabilities() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7097,7 +7676,7 @@ func settingsGetEnableMediaStreamFunction_Set() error {
 // GetEnableMediaStream is a representation of the C type webkit_settings_get_enable_media_stream.
 func (recv *Settings) GetEnableMediaStream() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7129,7 +7708,7 @@ func settingsGetEnableMediasourceFunction_Set() error {
 // GetEnableMediasource is a representation of the C type webkit_settings_get_enable_mediasource.
 func (recv *Settings) GetEnableMediasource() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7161,7 +7740,7 @@ func settingsGetEnableMockCaptureDevicesFunction_Set() error {
 // GetEnableMockCaptureDevices is a representation of the C type webkit_settings_get_enable_mock_capture_devices.
 func (recv *Settings) GetEnableMockCaptureDevices() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7193,7 +7772,7 @@ func settingsGetEnableOfflineWebApplicationCacheFunction_Set() error {
 // GetEnableOfflineWebApplicationCache is a representation of the C type webkit_settings_get_enable_offline_web_application_cache.
 func (recv *Settings) GetEnableOfflineWebApplicationCache() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7225,7 +7804,7 @@ func settingsGetEnablePageCacheFunction_Set() error {
 // GetEnablePageCache is a representation of the C type webkit_settings_get_enable_page_cache.
 func (recv *Settings) GetEnablePageCache() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7257,7 +7836,7 @@ func settingsGetEnablePluginsFunction_Set() error {
 // GetEnablePlugins is a representation of the C type webkit_settings_get_enable_plugins.
 func (recv *Settings) GetEnablePlugins() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7289,7 +7868,7 @@ func settingsGetEnablePrivateBrowsingFunction_Set() error {
 // GetEnablePrivateBrowsing is a representation of the C type webkit_settings_get_enable_private_browsing.
 func (recv *Settings) GetEnablePrivateBrowsing() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7321,7 +7900,7 @@ func settingsGetEnableResizableTextAreasFunction_Set() error {
 // GetEnableResizableTextAreas is a representation of the C type webkit_settings_get_enable_resizable_text_areas.
 func (recv *Settings) GetEnableResizableTextAreas() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7353,7 +7932,7 @@ func settingsGetEnableSiteSpecificQuirksFunction_Set() error {
 // GetEnableSiteSpecificQuirks is a representation of the C type webkit_settings_get_enable_site_specific_quirks.
 func (recv *Settings) GetEnableSiteSpecificQuirks() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7385,7 +7964,7 @@ func settingsGetEnableSmoothScrollingFunction_Set() error {
 // GetEnableSmoothScrolling is a representation of the C type webkit_settings_get_enable_smooth_scrolling.
 func (recv *Settings) GetEnableSmoothScrolling() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7417,7 +7996,7 @@ func settingsGetEnableSpatialNavigationFunction_Set() error {
 // GetEnableSpatialNavigation is a representation of the C type webkit_settings_get_enable_spatial_navigation.
 func (recv *Settings) GetEnableSpatialNavigation() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7449,7 +8028,7 @@ func settingsGetEnableTabsToLinksFunction_Set() error {
 // GetEnableTabsToLinks is a representation of the C type webkit_settings_get_enable_tabs_to_links.
 func (recv *Settings) GetEnableTabsToLinks() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7481,7 +8060,7 @@ func settingsGetEnableWebaudioFunction_Set() error {
 // GetEnableWebaudio is a representation of the C type webkit_settings_get_enable_webaudio.
 func (recv *Settings) GetEnableWebaudio() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7513,7 +8092,7 @@ func settingsGetEnableWebglFunction_Set() error {
 // GetEnableWebgl is a representation of the C type webkit_settings_get_enable_webgl.
 func (recv *Settings) GetEnableWebgl() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7545,7 +8124,7 @@ func settingsGetEnableWriteConsoleMessagesToStdoutFunction_Set() error {
 // GetEnableWriteConsoleMessagesToStdout is a representation of the C type webkit_settings_get_enable_write_console_messages_to_stdout.
 func (recv *Settings) GetEnableWriteConsoleMessagesToStdout() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7577,7 +8156,7 @@ func settingsGetEnableXssAuditorFunction_Set() error {
 // GetEnableXssAuditor is a representation of the C type webkit_settings_get_enable_xss_auditor.
 func (recv *Settings) GetEnableXssAuditor() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7609,7 +8188,7 @@ func settingsGetFantasyFontFamilyFunction_Set() error {
 // GetFantasyFontFamily is a representation of the C type webkit_settings_get_fantasy_font_family.
 func (recv *Settings) GetFantasyFontFamily() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7641,7 +8220,7 @@ func settingsGetHardwareAccelerationPolicyFunction_Set() error {
 // GetHardwareAccelerationPolicy is a representation of the C type webkit_settings_get_hardware_acceleration_policy.
 func (recv *Settings) GetHardwareAccelerationPolicy() HardwareAccelerationPolicy {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7673,7 +8252,7 @@ func settingsGetJavascriptCanAccessClipboardFunction_Set() error {
 // GetJavascriptCanAccessClipboard is a representation of the C type webkit_settings_get_javascript_can_access_clipboard.
 func (recv *Settings) GetJavascriptCanAccessClipboard() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7705,7 +8284,7 @@ func settingsGetJavascriptCanOpenWindowsAutomaticallyFunction_Set() error {
 // GetJavascriptCanOpenWindowsAutomatically is a representation of the C type webkit_settings_get_javascript_can_open_windows_automatically.
 func (recv *Settings) GetJavascriptCanOpenWindowsAutomatically() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7737,7 +8316,7 @@ func settingsGetLoadIconsIgnoringImageLoadSettingFunction_Set() error {
 // GetLoadIconsIgnoringImageLoadSetting is a representation of the C type webkit_settings_get_load_icons_ignoring_image_load_setting.
 func (recv *Settings) GetLoadIconsIgnoringImageLoadSetting() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7769,7 +8348,7 @@ func settingsGetMediaPlaybackAllowsInlineFunction_Set() error {
 // GetMediaPlaybackAllowsInline is a representation of the C type webkit_settings_get_media_playback_allows_inline.
 func (recv *Settings) GetMediaPlaybackAllowsInline() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7801,7 +8380,7 @@ func settingsGetMediaPlaybackRequiresUserGestureFunction_Set() error {
 // GetMediaPlaybackRequiresUserGesture is a representation of the C type webkit_settings_get_media_playback_requires_user_gesture.
 func (recv *Settings) GetMediaPlaybackRequiresUserGesture() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7833,7 +8412,7 @@ func settingsGetMinimumFontSizeFunction_Set() error {
 // GetMinimumFontSize is a representation of the C type webkit_settings_get_minimum_font_size.
 func (recv *Settings) GetMinimumFontSize() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7865,7 +8444,7 @@ func settingsGetMonospaceFontFamilyFunction_Set() error {
 // GetMonospaceFontFamily is a representation of the C type webkit_settings_get_monospace_font_family.
 func (recv *Settings) GetMonospaceFontFamily() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7897,7 +8476,7 @@ func settingsGetPictographFontFamilyFunction_Set() error {
 // GetPictographFontFamily is a representation of the C type webkit_settings_get_pictograph_font_family.
 func (recv *Settings) GetPictographFontFamily() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7929,7 +8508,7 @@ func settingsGetPrintBackgroundsFunction_Set() error {
 // GetPrintBackgrounds is a representation of the C type webkit_settings_get_print_backgrounds.
 func (recv *Settings) GetPrintBackgrounds() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7961,7 +8540,7 @@ func settingsGetSansSerifFontFamilyFunction_Set() error {
 // GetSansSerifFontFamily is a representation of the C type webkit_settings_get_sans_serif_font_family.
 func (recv *Settings) GetSansSerifFontFamily() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -7993,7 +8572,7 @@ func settingsGetSerifFontFamilyFunction_Set() error {
 // GetSerifFontFamily is a representation of the C type webkit_settings_get_serif_font_family.
 func (recv *Settings) GetSerifFontFamily() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -8025,7 +8604,7 @@ func settingsGetUserAgentFunction_Set() error {
 // GetUserAgent is a representation of the C type webkit_settings_get_user_agent.
 func (recv *Settings) GetUserAgent() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -8057,7 +8636,7 @@ func settingsGetZoomTextOnlyFunction_Set() error {
 // GetZoomTextOnly is a representation of the C type webkit_settings_get_zoom_text_only.
 func (recv *Settings) GetZoomTextOnly() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -8089,7 +8668,7 @@ func settingsSetAllowFileAccessFromFileUrlsFunction_Set() error {
 // SetAllowFileAccessFromFileUrls is a representation of the C type webkit_settings_set_allow_file_access_from_file_urls.
 func (recv *Settings) SetAllowFileAccessFromFileUrls(allowed bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(allowed)
 
 	err := settingsSetAllowFileAccessFromFileUrlsFunction_Set()
@@ -8118,7 +8697,7 @@ func settingsSetAllowModalDialogsFunction_Set() error {
 // SetAllowModalDialogs is a representation of the C type webkit_settings_set_allow_modal_dialogs.
 func (recv *Settings) SetAllowModalDialogs(allowed bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(allowed)
 
 	err := settingsSetAllowModalDialogsFunction_Set()
@@ -8147,7 +8726,7 @@ func settingsSetAllowUniversalAccessFromFileUrlsFunction_Set() error {
 // SetAllowUniversalAccessFromFileUrls is a representation of the C type webkit_settings_set_allow_universal_access_from_file_urls.
 func (recv *Settings) SetAllowUniversalAccessFromFileUrls(allowed bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(allowed)
 
 	err := settingsSetAllowUniversalAccessFromFileUrlsFunction_Set()
@@ -8176,7 +8755,7 @@ func settingsSetAutoLoadImagesFunction_Set() error {
 // SetAutoLoadImages is a representation of the C type webkit_settings_set_auto_load_images.
 func (recv *Settings) SetAutoLoadImages(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetAutoLoadImagesFunction_Set()
@@ -8205,7 +8784,7 @@ func settingsSetCursiveFontFamilyFunction_Set() error {
 // SetCursiveFontFamily is a representation of the C type webkit_settings_set_cursive_font_family.
 func (recv *Settings) SetCursiveFontFamily(cursiveFontFamily string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(cursiveFontFamily)
 
 	err := settingsSetCursiveFontFamilyFunction_Set()
@@ -8234,7 +8813,7 @@ func settingsSetDefaultCharsetFunction_Set() error {
 // SetDefaultCharset is a representation of the C type webkit_settings_set_default_charset.
 func (recv *Settings) SetDefaultCharset(defaultCharset string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(defaultCharset)
 
 	err := settingsSetDefaultCharsetFunction_Set()
@@ -8263,7 +8842,7 @@ func settingsSetDefaultFontFamilyFunction_Set() error {
 // SetDefaultFontFamily is a representation of the C type webkit_settings_set_default_font_family.
 func (recv *Settings) SetDefaultFontFamily(defaultFontFamily string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(defaultFontFamily)
 
 	err := settingsSetDefaultFontFamilyFunction_Set()
@@ -8292,7 +8871,7 @@ func settingsSetDefaultFontSizeFunction_Set() error {
 // SetDefaultFontSize is a representation of the C type webkit_settings_set_default_font_size.
 func (recv *Settings) SetDefaultFontSize(fontSize uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(fontSize)
 
 	err := settingsSetDefaultFontSizeFunction_Set()
@@ -8321,7 +8900,7 @@ func settingsSetDefaultMonospaceFontSizeFunction_Set() error {
 // SetDefaultMonospaceFontSize is a representation of the C type webkit_settings_set_default_monospace_font_size.
 func (recv *Settings) SetDefaultMonospaceFontSize(fontSize uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(fontSize)
 
 	err := settingsSetDefaultMonospaceFontSizeFunction_Set()
@@ -8350,7 +8929,7 @@ func settingsSetDrawCompositingIndicatorsFunction_Set() error {
 // SetDrawCompositingIndicators is a representation of the C type webkit_settings_set_draw_compositing_indicators.
 func (recv *Settings) SetDrawCompositingIndicators(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetDrawCompositingIndicatorsFunction_Set()
@@ -8379,7 +8958,7 @@ func settingsSetEnableAccelerated2dCanvasFunction_Set() error {
 // SetEnableAccelerated2dCanvas is a representation of the C type webkit_settings_set_enable_accelerated_2d_canvas.
 func (recv *Settings) SetEnableAccelerated2dCanvas(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableAccelerated2dCanvasFunction_Set()
@@ -8408,7 +8987,7 @@ func settingsSetEnableBackForwardNavigationGesturesFunction_Set() error {
 // SetEnableBackForwardNavigationGestures is a representation of the C type webkit_settings_set_enable_back_forward_navigation_gestures.
 func (recv *Settings) SetEnableBackForwardNavigationGestures(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableBackForwardNavigationGesturesFunction_Set()
@@ -8437,7 +9016,7 @@ func settingsSetEnableCaretBrowsingFunction_Set() error {
 // SetEnableCaretBrowsing is a representation of the C type webkit_settings_set_enable_caret_browsing.
 func (recv *Settings) SetEnableCaretBrowsing(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableCaretBrowsingFunction_Set()
@@ -8466,7 +9045,7 @@ func settingsSetEnableDeveloperExtrasFunction_Set() error {
 // SetEnableDeveloperExtras is a representation of the C type webkit_settings_set_enable_developer_extras.
 func (recv *Settings) SetEnableDeveloperExtras(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableDeveloperExtrasFunction_Set()
@@ -8495,7 +9074,7 @@ func settingsSetEnableDnsPrefetchingFunction_Set() error {
 // SetEnableDnsPrefetching is a representation of the C type webkit_settings_set_enable_dns_prefetching.
 func (recv *Settings) SetEnableDnsPrefetching(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableDnsPrefetchingFunction_Set()
@@ -8524,7 +9103,7 @@ func settingsSetEnableEncryptedMediaFunction_Set() error {
 // SetEnableEncryptedMedia is a representation of the C type webkit_settings_set_enable_encrypted_media.
 func (recv *Settings) SetEnableEncryptedMedia(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableEncryptedMediaFunction_Set()
@@ -8553,7 +9132,7 @@ func settingsSetEnableFrameFlatteningFunction_Set() error {
 // SetEnableFrameFlattening is a representation of the C type webkit_settings_set_enable_frame_flattening.
 func (recv *Settings) SetEnableFrameFlattening(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableFrameFlatteningFunction_Set()
@@ -8582,7 +9161,7 @@ func settingsSetEnableFullscreenFunction_Set() error {
 // SetEnableFullscreen is a representation of the C type webkit_settings_set_enable_fullscreen.
 func (recv *Settings) SetEnableFullscreen(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableFullscreenFunction_Set()
@@ -8611,7 +9190,7 @@ func settingsSetEnableHtml5DatabaseFunction_Set() error {
 // SetEnableHtml5Database is a representation of the C type webkit_settings_set_enable_html5_database.
 func (recv *Settings) SetEnableHtml5Database(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableHtml5DatabaseFunction_Set()
@@ -8640,7 +9219,7 @@ func settingsSetEnableHtml5LocalStorageFunction_Set() error {
 // SetEnableHtml5LocalStorage is a representation of the C type webkit_settings_set_enable_html5_local_storage.
 func (recv *Settings) SetEnableHtml5LocalStorage(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableHtml5LocalStorageFunction_Set()
@@ -8669,7 +9248,7 @@ func settingsSetEnableHyperlinkAuditingFunction_Set() error {
 // SetEnableHyperlinkAuditing is a representation of the C type webkit_settings_set_enable_hyperlink_auditing.
 func (recv *Settings) SetEnableHyperlinkAuditing(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableHyperlinkAuditingFunction_Set()
@@ -8698,7 +9277,7 @@ func settingsSetEnableJavaFunction_Set() error {
 // SetEnableJava is a representation of the C type webkit_settings_set_enable_java.
 func (recv *Settings) SetEnableJava(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableJavaFunction_Set()
@@ -8727,7 +9306,7 @@ func settingsSetEnableJavascriptFunction_Set() error {
 // SetEnableJavascript is a representation of the C type webkit_settings_set_enable_javascript.
 func (recv *Settings) SetEnableJavascript(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableJavascriptFunction_Set()
@@ -8756,7 +9335,7 @@ func settingsSetEnableJavascriptMarkupFunction_Set() error {
 // SetEnableJavascriptMarkup is a representation of the C type webkit_settings_set_enable_javascript_markup.
 func (recv *Settings) SetEnableJavascriptMarkup(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableJavascriptMarkupFunction_Set()
@@ -8785,7 +9364,7 @@ func settingsSetEnableMediaFunction_Set() error {
 // SetEnableMedia is a representation of the C type webkit_settings_set_enable_media.
 func (recv *Settings) SetEnableMedia(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableMediaFunction_Set()
@@ -8814,7 +9393,7 @@ func settingsSetEnableMediaCapabilitiesFunction_Set() error {
 // SetEnableMediaCapabilities is a representation of the C type webkit_settings_set_enable_media_capabilities.
 func (recv *Settings) SetEnableMediaCapabilities(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableMediaCapabilitiesFunction_Set()
@@ -8843,7 +9422,7 @@ func settingsSetEnableMediaStreamFunction_Set() error {
 // SetEnableMediaStream is a representation of the C type webkit_settings_set_enable_media_stream.
 func (recv *Settings) SetEnableMediaStream(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableMediaStreamFunction_Set()
@@ -8872,7 +9451,7 @@ func settingsSetEnableMediasourceFunction_Set() error {
 // SetEnableMediasource is a representation of the C type webkit_settings_set_enable_mediasource.
 func (recv *Settings) SetEnableMediasource(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableMediasourceFunction_Set()
@@ -8901,7 +9480,7 @@ func settingsSetEnableMockCaptureDevicesFunction_Set() error {
 // SetEnableMockCaptureDevices is a representation of the C type webkit_settings_set_enable_mock_capture_devices.
 func (recv *Settings) SetEnableMockCaptureDevices(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableMockCaptureDevicesFunction_Set()
@@ -8930,7 +9509,7 @@ func settingsSetEnableOfflineWebApplicationCacheFunction_Set() error {
 // SetEnableOfflineWebApplicationCache is a representation of the C type webkit_settings_set_enable_offline_web_application_cache.
 func (recv *Settings) SetEnableOfflineWebApplicationCache(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableOfflineWebApplicationCacheFunction_Set()
@@ -8959,7 +9538,7 @@ func settingsSetEnablePageCacheFunction_Set() error {
 // SetEnablePageCache is a representation of the C type webkit_settings_set_enable_page_cache.
 func (recv *Settings) SetEnablePageCache(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnablePageCacheFunction_Set()
@@ -8988,7 +9567,7 @@ func settingsSetEnablePluginsFunction_Set() error {
 // SetEnablePlugins is a representation of the C type webkit_settings_set_enable_plugins.
 func (recv *Settings) SetEnablePlugins(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnablePluginsFunction_Set()
@@ -9017,7 +9596,7 @@ func settingsSetEnablePrivateBrowsingFunction_Set() error {
 // SetEnablePrivateBrowsing is a representation of the C type webkit_settings_set_enable_private_browsing.
 func (recv *Settings) SetEnablePrivateBrowsing(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnablePrivateBrowsingFunction_Set()
@@ -9046,7 +9625,7 @@ func settingsSetEnableResizableTextAreasFunction_Set() error {
 // SetEnableResizableTextAreas is a representation of the C type webkit_settings_set_enable_resizable_text_areas.
 func (recv *Settings) SetEnableResizableTextAreas(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableResizableTextAreasFunction_Set()
@@ -9075,7 +9654,7 @@ func settingsSetEnableSiteSpecificQuirksFunction_Set() error {
 // SetEnableSiteSpecificQuirks is a representation of the C type webkit_settings_set_enable_site_specific_quirks.
 func (recv *Settings) SetEnableSiteSpecificQuirks(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableSiteSpecificQuirksFunction_Set()
@@ -9104,7 +9683,7 @@ func settingsSetEnableSmoothScrollingFunction_Set() error {
 // SetEnableSmoothScrolling is a representation of the C type webkit_settings_set_enable_smooth_scrolling.
 func (recv *Settings) SetEnableSmoothScrolling(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableSmoothScrollingFunction_Set()
@@ -9133,7 +9712,7 @@ func settingsSetEnableSpatialNavigationFunction_Set() error {
 // SetEnableSpatialNavigation is a representation of the C type webkit_settings_set_enable_spatial_navigation.
 func (recv *Settings) SetEnableSpatialNavigation(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableSpatialNavigationFunction_Set()
@@ -9162,7 +9741,7 @@ func settingsSetEnableTabsToLinksFunction_Set() error {
 // SetEnableTabsToLinks is a representation of the C type webkit_settings_set_enable_tabs_to_links.
 func (recv *Settings) SetEnableTabsToLinks(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableTabsToLinksFunction_Set()
@@ -9191,7 +9770,7 @@ func settingsSetEnableWebaudioFunction_Set() error {
 // SetEnableWebaudio is a representation of the C type webkit_settings_set_enable_webaudio.
 func (recv *Settings) SetEnableWebaudio(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableWebaudioFunction_Set()
@@ -9220,7 +9799,7 @@ func settingsSetEnableWebglFunction_Set() error {
 // SetEnableWebgl is a representation of the C type webkit_settings_set_enable_webgl.
 func (recv *Settings) SetEnableWebgl(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableWebglFunction_Set()
@@ -9249,7 +9828,7 @@ func settingsSetEnableWriteConsoleMessagesToStdoutFunction_Set() error {
 // SetEnableWriteConsoleMessagesToStdout is a representation of the C type webkit_settings_set_enable_write_console_messages_to_stdout.
 func (recv *Settings) SetEnableWriteConsoleMessagesToStdout(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableWriteConsoleMessagesToStdoutFunction_Set()
@@ -9278,7 +9857,7 @@ func settingsSetEnableXssAuditorFunction_Set() error {
 // SetEnableXssAuditor is a representation of the C type webkit_settings_set_enable_xss_auditor.
 func (recv *Settings) SetEnableXssAuditor(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetEnableXssAuditorFunction_Set()
@@ -9307,7 +9886,7 @@ func settingsSetFantasyFontFamilyFunction_Set() error {
 // SetFantasyFontFamily is a representation of the C type webkit_settings_set_fantasy_font_family.
 func (recv *Settings) SetFantasyFontFamily(fantasyFontFamily string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(fantasyFontFamily)
 
 	err := settingsSetFantasyFontFamilyFunction_Set()
@@ -9336,7 +9915,7 @@ func settingsSetHardwareAccelerationPolicyFunction_Set() error {
 // SetHardwareAccelerationPolicy is a representation of the C type webkit_settings_set_hardware_acceleration_policy.
 func (recv *Settings) SetHardwareAccelerationPolicy(policy HardwareAccelerationPolicy) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(policy))
 
 	err := settingsSetHardwareAccelerationPolicyFunction_Set()
@@ -9365,7 +9944,7 @@ func settingsSetJavascriptCanAccessClipboardFunction_Set() error {
 // SetJavascriptCanAccessClipboard is a representation of the C type webkit_settings_set_javascript_can_access_clipboard.
 func (recv *Settings) SetJavascriptCanAccessClipboard(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetJavascriptCanAccessClipboardFunction_Set()
@@ -9394,7 +9973,7 @@ func settingsSetJavascriptCanOpenWindowsAutomaticallyFunction_Set() error {
 // SetJavascriptCanOpenWindowsAutomatically is a representation of the C type webkit_settings_set_javascript_can_open_windows_automatically.
 func (recv *Settings) SetJavascriptCanOpenWindowsAutomatically(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetJavascriptCanOpenWindowsAutomaticallyFunction_Set()
@@ -9423,7 +10002,7 @@ func settingsSetLoadIconsIgnoringImageLoadSettingFunction_Set() error {
 // SetLoadIconsIgnoringImageLoadSetting is a representation of the C type webkit_settings_set_load_icons_ignoring_image_load_setting.
 func (recv *Settings) SetLoadIconsIgnoringImageLoadSetting(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetLoadIconsIgnoringImageLoadSettingFunction_Set()
@@ -9452,7 +10031,7 @@ func settingsSetMediaPlaybackAllowsInlineFunction_Set() error {
 // SetMediaPlaybackAllowsInline is a representation of the C type webkit_settings_set_media_playback_allows_inline.
 func (recv *Settings) SetMediaPlaybackAllowsInline(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetMediaPlaybackAllowsInlineFunction_Set()
@@ -9481,7 +10060,7 @@ func settingsSetMediaPlaybackRequiresUserGestureFunction_Set() error {
 // SetMediaPlaybackRequiresUserGesture is a representation of the C type webkit_settings_set_media_playback_requires_user_gesture.
 func (recv *Settings) SetMediaPlaybackRequiresUserGesture(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := settingsSetMediaPlaybackRequiresUserGestureFunction_Set()
@@ -9510,7 +10089,7 @@ func settingsSetMinimumFontSizeFunction_Set() error {
 // SetMinimumFontSize is a representation of the C type webkit_settings_set_minimum_font_size.
 func (recv *Settings) SetMinimumFontSize(fontSize uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(fontSize)
 
 	err := settingsSetMinimumFontSizeFunction_Set()
@@ -9539,7 +10118,7 @@ func settingsSetMonospaceFontFamilyFunction_Set() error {
 // SetMonospaceFontFamily is a representation of the C type webkit_settings_set_monospace_font_family.
 func (recv *Settings) SetMonospaceFontFamily(monospaceFontFamily string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(monospaceFontFamily)
 
 	err := settingsSetMonospaceFontFamilyFunction_Set()
@@ -9568,7 +10147,7 @@ func settingsSetPictographFontFamilyFunction_Set() error {
 // SetPictographFontFamily is a representation of the C type webkit_settings_set_pictograph_font_family.
 func (recv *Settings) SetPictographFontFamily(pictographFontFamily string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(pictographFontFamily)
 
 	err := settingsSetPictographFontFamilyFunction_Set()
@@ -9597,7 +10176,7 @@ func settingsSetPrintBackgroundsFunction_Set() error {
 // SetPrintBackgrounds is a representation of the C type webkit_settings_set_print_backgrounds.
 func (recv *Settings) SetPrintBackgrounds(printBackgrounds bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(printBackgrounds)
 
 	err := settingsSetPrintBackgroundsFunction_Set()
@@ -9626,7 +10205,7 @@ func settingsSetSansSerifFontFamilyFunction_Set() error {
 // SetSansSerifFontFamily is a representation of the C type webkit_settings_set_sans_serif_font_family.
 func (recv *Settings) SetSansSerifFontFamily(sansSerifFontFamily string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(sansSerifFontFamily)
 
 	err := settingsSetSansSerifFontFamilyFunction_Set()
@@ -9655,7 +10234,7 @@ func settingsSetSerifFontFamilyFunction_Set() error {
 // SetSerifFontFamily is a representation of the C type webkit_settings_set_serif_font_family.
 func (recv *Settings) SetSerifFontFamily(serifFontFamily string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(serifFontFamily)
 
 	err := settingsSetSerifFontFamilyFunction_Set()
@@ -9684,7 +10263,7 @@ func settingsSetUserAgentFunction_Set() error {
 // SetUserAgent is a representation of the C type webkit_settings_set_user_agent.
 func (recv *Settings) SetUserAgent(userAgent string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(userAgent)
 
 	err := settingsSetUserAgentFunction_Set()
@@ -9713,7 +10292,7 @@ func settingsSetUserAgentWithApplicationDetailsFunction_Set() error {
 // SetUserAgentWithApplicationDetails is a representation of the C type webkit_settings_set_user_agent_with_application_details.
 func (recv *Settings) SetUserAgentWithApplicationDetails(applicationName string, applicationVersion string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(applicationName)
 	inArgs[2].SetString(applicationVersion)
 
@@ -9743,7 +10322,7 @@ func settingsSetZoomTextOnlyFunction_Set() error {
 // SetZoomTextOnly is a representation of the C type webkit_settings_set_zoom_text_only.
 func (recv *Settings) SetZoomTextOnly(zoomTextOnly bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(zoomTextOnly)
 
 	err := settingsSetZoomTextOnlyFunction_Set()
@@ -9788,7 +10367,7 @@ func URIRequestNewFromNative(native unsafe.Pointer) *URIRequest {
 
 // Object upcasts to *Object
 func (recv *URIRequest) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -9804,9 +10383,19 @@ func (recv *URIRequest) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *URIRequest) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(uRIRequestObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *URIRequest) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(uRIRequestObject, recv.Native(), "parent", argValue)
+}
 
 var uRIRequestNewFunction *gi.Function
 var uRIRequestNewFunction_Once sync.Once
@@ -9862,7 +10451,7 @@ func uRIRequestGetHttpMethodFunction_Set() error {
 // GetHttpMethod is a representation of the C type webkit_uri_request_get_http_method.
 func (recv *URIRequest) GetHttpMethod() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -9894,7 +10483,7 @@ func uRIRequestGetUriFunction_Set() error {
 // GetUri is a representation of the C type webkit_uri_request_get_uri.
 func (recv *URIRequest) GetUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -9926,7 +10515,7 @@ func uRIRequestSetUriFunction_Set() error {
 // SetUri is a representation of the C type webkit_uri_request_set_uri.
 func (recv *URIRequest) SetUri(uri string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(uri)
 
 	err := uRIRequestSetUriFunction_Set()
@@ -9971,7 +10560,7 @@ func URIResponseNewFromNative(native unsafe.Pointer) *URIResponse {
 
 // Object upcasts to *Object
 func (recv *URIResponse) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -9987,9 +10576,19 @@ func (recv *URIResponse) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *URIResponse) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(uRIResponseObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *URIResponse) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(uRIResponseObject, recv.Native(), "parent", argValue)
+}
 
 var uRIResponseGetContentLengthFunction *gi.Function
 var uRIResponseGetContentLengthFunction_Once sync.Once
@@ -10009,7 +10608,7 @@ func uRIResponseGetContentLengthFunction_Set() error {
 // GetContentLength is a representation of the C type webkit_uri_response_get_content_length.
 func (recv *URIResponse) GetContentLength() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -10043,7 +10642,7 @@ func uRIResponseGetMimeTypeFunction_Set() error {
 // GetMimeType is a representation of the C type webkit_uri_response_get_mime_type.
 func (recv *URIResponse) GetMimeType() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -10075,7 +10674,7 @@ func uRIResponseGetStatusCodeFunction_Set() error {
 // GetStatusCode is a representation of the C type webkit_uri_response_get_status_code.
 func (recv *URIResponse) GetStatusCode() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -10107,7 +10706,7 @@ func uRIResponseGetSuggestedFilenameFunction_Set() error {
 // GetSuggestedFilename is a representation of the C type webkit_uri_response_get_suggested_filename.
 func (recv *URIResponse) GetSuggestedFilename() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -10139,7 +10738,7 @@ func uRIResponseGetUriFunction_Set() error {
 // GetUri is a representation of the C type webkit_uri_response_get_uri.
 func (recv *URIResponse) GetUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -10187,7 +10786,7 @@ func URISchemeRequestNewFromNative(native unsafe.Pointer) *URISchemeRequest {
 
 // Object upcasts to *Object
 func (recv *URISchemeRequest) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -10203,13 +10802,23 @@ func (recv *URISchemeRequest) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *URISchemeRequest) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(uRISchemeRequestObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *URISchemeRequest) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(uRISchemeRequestObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *URISchemeRequest) FieldPriv() *URISchemeRequestPrivate {
-	argValue := gi.ObjectFieldGet(uRISchemeRequestObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(uRISchemeRequestObject, recv.Native(), "priv")
 	value := URISchemeRequestPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -10217,11 +10826,40 @@ func (recv *URISchemeRequest) FieldPriv() *URISchemeRequestPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *URISchemeRequest) SetFieldPriv(value *URISchemeRequestPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(uRISchemeRequestObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(uRISchemeRequestObject, recv.Native(), "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'webkit_uri_scheme_request_finish' : parameter 'stream' of type 'Gio.InputStream' not supported
+var uRISchemeRequestFinishFunction *gi.Function
+var uRISchemeRequestFinishFunction_Once sync.Once
+
+func uRISchemeRequestFinishFunction_Set() error {
+	var err error
+	uRISchemeRequestFinishFunction_Once.Do(func() {
+		err = uRISchemeRequestObject_Set()
+		if err != nil {
+			return
+		}
+		uRISchemeRequestFinishFunction, err = uRISchemeRequestObject.InvokerNew("finish")
+	})
+	return err
+}
+
+// Finish is a representation of the C type webkit_uri_scheme_request_finish.
+func (recv *URISchemeRequest) Finish(stream *gio.InputStream, streamLength int64, mimeType string) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(stream.Native())
+	inArgs[2].SetInt64(streamLength)
+	inArgs[3].SetString(mimeType)
+
+	err := uRISchemeRequestFinishFunction_Set()
+	if err == nil {
+		uRISchemeRequestFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'webkit_uri_scheme_request_finish_error' : parameter 'error' of type 'GLib.Error' not supported
 
@@ -10243,7 +10881,7 @@ func uRISchemeRequestGetPathFunction_Set() error {
 // GetPath is a representation of the C type webkit_uri_scheme_request_get_path.
 func (recv *URISchemeRequest) GetPath() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -10275,7 +10913,7 @@ func uRISchemeRequestGetSchemeFunction_Set() error {
 // GetScheme is a representation of the C type webkit_uri_scheme_request_get_scheme.
 func (recv *URISchemeRequest) GetScheme() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -10307,7 +10945,7 @@ func uRISchemeRequestGetUriFunction_Set() error {
 // GetUri is a representation of the C type webkit_uri_scheme_request_get_uri.
 func (recv *URISchemeRequest) GetUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -10339,7 +10977,7 @@ func uRISchemeRequestGetWebViewFunction_Set() error {
 // GetWebView is a representation of the C type webkit_uri_scheme_request_get_web_view.
 func (recv *URISchemeRequest) GetWebView() *WebView {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -10387,7 +11025,7 @@ func UserContentFilterStoreNewFromNative(native unsafe.Pointer) *UserContentFilt
 
 // Object upcasts to *Object
 func (recv *UserContentFilterStore) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -10403,9 +11041,19 @@ func (recv *UserContentFilterStore) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *UserContentFilterStore) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(userContentFilterStoreObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *UserContentFilterStore) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(userContentFilterStoreObject, recv.Native(), "parent", argValue)
+}
 
 var userContentFilterStoreNewFunction *gi.Function
 var userContentFilterStoreNewFunction_Once sync.Once
@@ -10441,7 +11089,7 @@ func UserContentFilterStoreNew(storagePath string) *UserContentFilterStore {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_user_content_filter_store_fetch_identifiers' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_user_content_filter_store_fetch_identifiers' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_store_fetch_identifiers_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -10463,7 +11111,7 @@ func userContentFilterStoreGetPathFunction_Set() error {
 // GetPath is a representation of the C type webkit_user_content_filter_store_get_path.
 func (recv *UserContentFilterStore) GetPath() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -10477,11 +11125,11 @@ func (recv *UserContentFilterStore) GetPath() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_user_content_filter_store_load' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_user_content_filter_store_load' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_store_load_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_user_content_filter_store_remove' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_user_content_filter_store_remove' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_store_remove_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -10527,7 +11175,7 @@ func UserContentManagerNewFromNative(native unsafe.Pointer) *UserContentManager 
 
 // Object upcasts to *Object
 func (recv *UserContentManager) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -10543,9 +11191,19 @@ func (recv *UserContentManager) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *UserContentManager) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(userContentManagerObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *UserContentManager) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(userContentManagerObject, recv.Native(), "parent", argValue)
+}
 
 var userContentManagerNewFunction *gi.Function
 var userContentManagerNewFunction_Once sync.Once
@@ -10597,8 +11255,8 @@ func userContentManagerAddFilterFunction_Set() error {
 // AddFilter is a representation of the C type webkit_user_content_manager_add_filter.
 func (recv *UserContentManager) AddFilter(filter *UserContentFilter) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(filter.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(filter.Native())
 
 	err := userContentManagerAddFilterFunction_Set()
 	if err == nil {
@@ -10626,8 +11284,8 @@ func userContentManagerAddScriptFunction_Set() error {
 // AddScript is a representation of the C type webkit_user_content_manager_add_script.
 func (recv *UserContentManager) AddScript(script *UserScript) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(script.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(script.Native())
 
 	err := userContentManagerAddScriptFunction_Set()
 	if err == nil {
@@ -10655,8 +11313,8 @@ func userContentManagerAddStyleSheetFunction_Set() error {
 // AddStyleSheet is a representation of the C type webkit_user_content_manager_add_style_sheet.
 func (recv *UserContentManager) AddStyleSheet(stylesheet *UserStyleSheet) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(stylesheet.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(stylesheet.Native())
 
 	err := userContentManagerAddStyleSheetFunction_Set()
 	if err == nil {
@@ -10684,7 +11342,7 @@ func userContentManagerRegisterScriptMessageHandlerFunction_Set() error {
 // RegisterScriptMessageHandler is a representation of the C type webkit_user_content_manager_register_script_message_handler.
 func (recv *UserContentManager) RegisterScriptMessageHandler(name string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(name)
 
 	var ret gi.Argument
@@ -10717,7 +11375,7 @@ func userContentManagerRegisterScriptMessageHandlerInWorldFunction_Set() error {
 // RegisterScriptMessageHandlerInWorld is a representation of the C type webkit_user_content_manager_register_script_message_handler_in_world.
 func (recv *UserContentManager) RegisterScriptMessageHandlerInWorld(name string, worldName string) bool {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(name)
 	inArgs[2].SetString(worldName)
 
@@ -10751,7 +11409,7 @@ func userContentManagerRemoveAllFiltersFunction_Set() error {
 // RemoveAllFilters is a representation of the C type webkit_user_content_manager_remove_all_filters.
 func (recv *UserContentManager) RemoveAllFilters() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := userContentManagerRemoveAllFiltersFunction_Set()
 	if err == nil {
@@ -10779,7 +11437,7 @@ func userContentManagerRemoveAllScriptsFunction_Set() error {
 // RemoveAllScripts is a representation of the C type webkit_user_content_manager_remove_all_scripts.
 func (recv *UserContentManager) RemoveAllScripts() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := userContentManagerRemoveAllScriptsFunction_Set()
 	if err == nil {
@@ -10807,7 +11465,7 @@ func userContentManagerRemoveAllStyleSheetsFunction_Set() error {
 // RemoveAllStyleSheets is a representation of the C type webkit_user_content_manager_remove_all_style_sheets.
 func (recv *UserContentManager) RemoveAllStyleSheets() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := userContentManagerRemoveAllStyleSheetsFunction_Set()
 	if err == nil {
@@ -10835,8 +11493,8 @@ func userContentManagerRemoveFilterFunction_Set() error {
 // RemoveFilter is a representation of the C type webkit_user_content_manager_remove_filter.
 func (recv *UserContentManager) RemoveFilter(filter *UserContentFilter) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(filter.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(filter.Native())
 
 	err := userContentManagerRemoveFilterFunction_Set()
 	if err == nil {
@@ -10864,7 +11522,7 @@ func userContentManagerRemoveFilterByIdFunction_Set() error {
 // RemoveFilterById is a representation of the C type webkit_user_content_manager_remove_filter_by_id.
 func (recv *UserContentManager) RemoveFilterById(filterId string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(filterId)
 
 	err := userContentManagerRemoveFilterByIdFunction_Set()
@@ -10893,7 +11551,7 @@ func userContentManagerUnregisterScriptMessageHandlerFunction_Set() error {
 // UnregisterScriptMessageHandler is a representation of the C type webkit_user_content_manager_unregister_script_message_handler.
 func (recv *UserContentManager) UnregisterScriptMessageHandler(name string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(name)
 
 	err := userContentManagerUnregisterScriptMessageHandlerFunction_Set()
@@ -10922,7 +11580,7 @@ func userContentManagerUnregisterScriptMessageHandlerInWorldFunction_Set() error
 // UnregisterScriptMessageHandlerInWorld is a representation of the C type webkit_user_content_manager_unregister_script_message_handler_in_world.
 func (recv *UserContentManager) UnregisterScriptMessageHandlerInWorld(name string, worldName string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(name)
 	inArgs[2].SetString(worldName)
 
@@ -10968,7 +11626,7 @@ func UserMediaPermissionRequestNewFromNative(native unsafe.Pointer) *UserMediaPe
 
 // Object upcasts to *Object
 func (recv *UserMediaPermissionRequest) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -10984,9 +11642,19 @@ func (recv *UserMediaPermissionRequest) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *UserMediaPermissionRequest) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(userMediaPermissionRequestObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *UserMediaPermissionRequest) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(userMediaPermissionRequestObject, recv.Native(), "parent", argValue)
+}
 
 var webContextObject *gi.Object
 var webContextObject_Once sync.Once
@@ -11022,7 +11690,7 @@ func WebContextNewFromNative(native unsafe.Pointer) *WebContext {
 
 // Object upcasts to *Object
 func (recv *WebContext) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -11038,9 +11706,19 @@ func (recv *WebContext) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *WebContext) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(webContextObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *WebContext) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(webContextObject, recv.Native(), "parent", argValue)
+}
 
 var webContextNewFunction *gi.Function
 var webContextNewFunction_Once sync.Once
@@ -11124,7 +11802,7 @@ func webContextNewWithWebsiteDataManagerFunction_Set() error {
 // WebContextNewWithWebsiteDataManager is a representation of the C type webkit_web_context_new_with_website_data_manager.
 func WebContextNewWithWebsiteDataManager(manager *WebsiteDataManager) *WebContext {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(manager.native)
+	inArgs[0].SetPointer(manager.Native())
 
 	var ret gi.Argument
 
@@ -11158,7 +11836,7 @@ func webContextAddPathToSandboxFunction_Set() error {
 // AddPathToSandbox is a representation of the C type webkit_web_context_add_path_to_sandbox.
 func (recv *WebContext) AddPathToSandbox(path string, readOnly bool) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(path)
 	inArgs[2].SetBoolean(readOnly)
 
@@ -11170,7 +11848,35 @@ func (recv *WebContext) AddPathToSandbox(path string, readOnly bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_allow_tls_certificate_for_host' : parameter 'certificate' of type 'Gio.TlsCertificate' not supported
+var webContextAllowTlsCertificateForHostFunction *gi.Function
+var webContextAllowTlsCertificateForHostFunction_Once sync.Once
+
+func webContextAllowTlsCertificateForHostFunction_Set() error {
+	var err error
+	webContextAllowTlsCertificateForHostFunction_Once.Do(func() {
+		err = webContextObject_Set()
+		if err != nil {
+			return
+		}
+		webContextAllowTlsCertificateForHostFunction, err = webContextObject.InvokerNew("allow_tls_certificate_for_host")
+	})
+	return err
+}
+
+// AllowTlsCertificateForHost is a representation of the C type webkit_web_context_allow_tls_certificate_for_host.
+func (recv *WebContext) AllowTlsCertificateForHost(certificate *gio.TlsCertificate, host string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(certificate.Native())
+	inArgs[2].SetString(host)
+
+	err := webContextAllowTlsCertificateForHostFunction_Set()
+	if err == nil {
+		webContextAllowTlsCertificateForHostFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webContextClearCacheFunction *gi.Function
 var webContextClearCacheFunction_Once sync.Once
@@ -11190,7 +11896,7 @@ func webContextClearCacheFunction_Set() error {
 // ClearCache is a representation of the C type webkit_web_context_clear_cache.
 func (recv *WebContext) ClearCache() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webContextClearCacheFunction_Set()
 	if err == nil {
@@ -11218,7 +11924,7 @@ func webContextDownloadUriFunction_Set() error {
 // DownloadUri is a representation of the C type webkit_web_context_download_uri.
 func (recv *WebContext) DownloadUri(uri string) *Download {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(uri)
 
 	var ret gi.Argument
@@ -11251,7 +11957,7 @@ func webContextGetCacheModelFunction_Set() error {
 // GetCacheModel is a representation of the C type webkit_web_context_get_cache_model.
 func (recv *WebContext) GetCacheModel() CacheModel {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11283,7 +11989,7 @@ func webContextGetCookieManagerFunction_Set() error {
 // GetCookieManager is a representation of the C type webkit_web_context_get_cookie_manager.
 func (recv *WebContext) GetCookieManager() *CookieManager {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11315,7 +12021,7 @@ func webContextGetFaviconDatabaseFunction_Set() error {
 // GetFaviconDatabase is a representation of the C type webkit_web_context_get_favicon_database.
 func (recv *WebContext) GetFaviconDatabase() *FaviconDatabase {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11347,7 +12053,7 @@ func webContextGetFaviconDatabaseDirectoryFunction_Set() error {
 // GetFaviconDatabaseDirectory is a representation of the C type webkit_web_context_get_favicon_database_directory.
 func (recv *WebContext) GetFaviconDatabaseDirectory() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11379,7 +12085,7 @@ func webContextGetGeolocationManagerFunction_Set() error {
 // GetGeolocationManager is a representation of the C type webkit_web_context_get_geolocation_manager.
 func (recv *WebContext) GetGeolocationManager() *GeolocationManager {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11393,7 +12099,7 @@ func (recv *WebContext) GetGeolocationManager() *GeolocationManager {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_get_plugins' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_web_context_get_plugins' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_web_context_get_plugins_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -11415,7 +12121,7 @@ func webContextGetProcessModelFunction_Set() error {
 // GetProcessModel is a representation of the C type webkit_web_context_get_process_model.
 func (recv *WebContext) GetProcessModel() ProcessModel {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11447,7 +12153,7 @@ func webContextGetSandboxEnabledFunction_Set() error {
 // GetSandboxEnabled is a representation of the C type webkit_web_context_get_sandbox_enabled.
 func (recv *WebContext) GetSandboxEnabled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11479,7 +12185,7 @@ func webContextGetSecurityManagerFunction_Set() error {
 // GetSecurityManager is a representation of the C type webkit_web_context_get_security_manager.
 func (recv *WebContext) GetSecurityManager() *SecurityManager {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11511,7 +12217,7 @@ func webContextGetSpellCheckingEnabledFunction_Set() error {
 // GetSpellCheckingEnabled is a representation of the C type webkit_web_context_get_spell_checking_enabled.
 func (recv *WebContext) GetSpellCheckingEnabled() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11543,7 +12249,7 @@ func webContextGetSpellCheckingLanguagesFunction_Set() error {
 // GetSpellCheckingLanguages is a representation of the C type webkit_web_context_get_spell_checking_languages.
 func (recv *WebContext) GetSpellCheckingLanguages() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webContextGetSpellCheckingLanguagesFunction_Set()
 	if err == nil {
@@ -11571,7 +12277,7 @@ func webContextGetTlsErrorsPolicyFunction_Set() error {
 // GetTlsErrorsPolicy is a representation of the C type webkit_web_context_get_tls_errors_policy.
 func (recv *WebContext) GetTlsErrorsPolicy() TLSErrorsPolicy {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11603,7 +12309,7 @@ func webContextGetWebProcessCountLimitFunction_Set() error {
 // GetWebProcessCountLimit is a representation of the C type webkit_web_context_get_web_process_count_limit.
 func (recv *WebContext) GetWebProcessCountLimit() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11635,7 +12341,7 @@ func webContextGetWebsiteDataManagerFunction_Set() error {
 // GetWebsiteDataManager is a representation of the C type webkit_web_context_get_website_data_manager.
 func (recv *WebContext) GetWebsiteDataManager() *WebsiteDataManager {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11669,7 +12375,7 @@ func webContextIsAutomationAllowedFunction_Set() error {
 // IsAutomationAllowed is a representation of the C type webkit_web_context_is_automation_allowed.
 func (recv *WebContext) IsAutomationAllowed() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11701,7 +12407,7 @@ func webContextIsEphemeralFunction_Set() error {
 // IsEphemeral is a representation of the C type webkit_web_context_is_ephemeral.
 func (recv *WebContext) IsEphemeral() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -11733,7 +12439,7 @@ func webContextPrefetchDnsFunction_Set() error {
 // PrefetchDns is a representation of the C type webkit_web_context_prefetch_dns.
 func (recv *WebContext) PrefetchDns(hostname string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(hostname)
 
 	err := webContextPrefetchDnsFunction_Set()
@@ -11764,7 +12470,7 @@ func webContextSetAdditionalPluginsDirectoryFunction_Set() error {
 // SetAdditionalPluginsDirectory is a representation of the C type webkit_web_context_set_additional_plugins_directory.
 func (recv *WebContext) SetAdditionalPluginsDirectory(directory string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(directory)
 
 	err := webContextSetAdditionalPluginsDirectoryFunction_Set()
@@ -11793,7 +12499,7 @@ func webContextSetAutomationAllowedFunction_Set() error {
 // SetAutomationAllowed is a representation of the C type webkit_web_context_set_automation_allowed.
 func (recv *WebContext) SetAutomationAllowed(allowed bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(allowed)
 
 	err := webContextSetAutomationAllowedFunction_Set()
@@ -11822,7 +12528,7 @@ func webContextSetCacheModelFunction_Set() error {
 // SetCacheModel is a representation of the C type webkit_web_context_set_cache_model.
 func (recv *WebContext) SetCacheModel(cacheModel CacheModel) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(cacheModel))
 
 	err := webContextSetCacheModelFunction_Set()
@@ -11851,7 +12557,7 @@ func webContextSetDiskCacheDirectoryFunction_Set() error {
 // SetDiskCacheDirectory is a representation of the C type webkit_web_context_set_disk_cache_directory.
 func (recv *WebContext) SetDiskCacheDirectory(directory string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(directory)
 
 	err := webContextSetDiskCacheDirectoryFunction_Set()
@@ -11880,7 +12586,7 @@ func webContextSetFaviconDatabaseDirectoryFunction_Set() error {
 // SetFaviconDatabaseDirectory is a representation of the C type webkit_web_context_set_favicon_database_directory.
 func (recv *WebContext) SetFaviconDatabaseDirectory(path string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(path)
 
 	err := webContextSetFaviconDatabaseDirectoryFunction_Set()
@@ -11909,9 +12615,9 @@ func webContextSetNetworkProxySettingsFunction_Set() error {
 // SetNetworkProxySettings is a representation of the C type webkit_web_context_set_network_proxy_settings.
 func (recv *WebContext) SetNetworkProxySettings(proxyMode NetworkProxyMode, proxySettings *NetworkProxySettings) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(proxyMode))
-	inArgs[2].SetPointer(proxySettings.native)
+	inArgs[2].SetPointer(proxySettings.Native())
 
 	err := webContextSetNetworkProxySettingsFunction_Set()
 	if err == nil {
@@ -11941,7 +12647,7 @@ func webContextSetProcessModelFunction_Set() error {
 // SetProcessModel is a representation of the C type webkit_web_context_set_process_model.
 func (recv *WebContext) SetProcessModel(processModel ProcessModel) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(processModel))
 
 	err := webContextSetProcessModelFunction_Set()
@@ -11970,7 +12676,7 @@ func webContextSetSandboxEnabledFunction_Set() error {
 // SetSandboxEnabled is a representation of the C type webkit_web_context_set_sandbox_enabled.
 func (recv *WebContext) SetSandboxEnabled(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := webContextSetSandboxEnabledFunction_Set()
@@ -11999,7 +12705,7 @@ func webContextSetSpellCheckingEnabledFunction_Set() error {
 // SetSpellCheckingEnabled is a representation of the C type webkit_web_context_set_spell_checking_enabled.
 func (recv *WebContext) SetSpellCheckingEnabled(enabled bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(enabled)
 
 	err := webContextSetSpellCheckingEnabledFunction_Set()
@@ -12030,7 +12736,7 @@ func webContextSetTlsErrorsPolicyFunction_Set() error {
 // SetTlsErrorsPolicy is a representation of the C type webkit_web_context_set_tls_errors_policy.
 func (recv *WebContext) SetTlsErrorsPolicy(policy TLSErrorsPolicy) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(policy))
 
 	err := webContextSetTlsErrorsPolicyFunction_Set()
@@ -12059,7 +12765,7 @@ func webContextSetWebExtensionsDirectoryFunction_Set() error {
 // SetWebExtensionsDirectory is a representation of the C type webkit_web_context_set_web_extensions_directory.
 func (recv *WebContext) SetWebExtensionsDirectory(directory string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(directory)
 
 	err := webContextSetWebExtensionsDirectoryFunction_Set()
@@ -12090,7 +12796,7 @@ func webContextSetWebProcessCountLimitFunction_Set() error {
 // SetWebProcessCountLimit is a representation of the C type webkit_web_context_set_web_process_count_limit.
 func (recv *WebContext) SetWebProcessCountLimit(limit uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetUint32(limit)
 
 	err := webContextSetWebProcessCountLimitFunction_Set()
@@ -12135,7 +12841,7 @@ func WebInspectorNewFromNative(native unsafe.Pointer) *WebInspector {
 
 // Object upcasts to *Object
 func (recv *WebInspector) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -12151,13 +12857,23 @@ func (recv *WebInspector) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *WebInspector) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(webInspectorObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *WebInspector) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(webInspectorObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *WebInspector) FieldPriv() *WebInspectorPrivate {
-	argValue := gi.ObjectFieldGet(webInspectorObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(webInspectorObject, recv.Native(), "priv")
 	value := WebInspectorPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -12165,8 +12881,8 @@ func (recv *WebInspector) FieldPriv() *WebInspectorPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *WebInspector) SetFieldPriv(value *WebInspectorPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(webInspectorObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(webInspectorObject, recv.Native(), "priv", argValue)
 }
 
 var webInspectorAttachFunction *gi.Function
@@ -12187,7 +12903,7 @@ func webInspectorAttachFunction_Set() error {
 // Attach is a representation of the C type webkit_web_inspector_attach.
 func (recv *WebInspector) Attach() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webInspectorAttachFunction_Set()
 	if err == nil {
@@ -12215,7 +12931,7 @@ func webInspectorCloseFunction_Set() error {
 // Close is a representation of the C type webkit_web_inspector_close.
 func (recv *WebInspector) Close() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webInspectorCloseFunction_Set()
 	if err == nil {
@@ -12243,7 +12959,7 @@ func webInspectorDetachFunction_Set() error {
 // Detach is a representation of the C type webkit_web_inspector_detach.
 func (recv *WebInspector) Detach() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webInspectorDetachFunction_Set()
 	if err == nil {
@@ -12271,7 +12987,7 @@ func webInspectorGetAttachedHeightFunction_Set() error {
 // GetAttachedHeight is a representation of the C type webkit_web_inspector_get_attached_height.
 func (recv *WebInspector) GetAttachedHeight() uint32 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -12303,7 +13019,7 @@ func webInspectorGetCanAttachFunction_Set() error {
 // GetCanAttach is a representation of the C type webkit_web_inspector_get_can_attach.
 func (recv *WebInspector) GetCanAttach() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -12335,7 +13051,7 @@ func webInspectorGetInspectedUriFunction_Set() error {
 // GetInspectedUri is a representation of the C type webkit_web_inspector_get_inspected_uri.
 func (recv *WebInspector) GetInspectedUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -12367,7 +13083,7 @@ func webInspectorGetWebViewFunction_Set() error {
 // GetWebView is a representation of the C type webkit_web_inspector_get_web_view.
 func (recv *WebInspector) GetWebView() *WebViewBase {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -12399,7 +13115,7 @@ func webInspectorIsAttachedFunction_Set() error {
 // IsAttached is a representation of the C type webkit_web_inspector_is_attached.
 func (recv *WebInspector) IsAttached() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -12431,7 +13147,7 @@ func webInspectorShowFunction_Set() error {
 // Show is a representation of the C type webkit_web_inspector_show.
 func (recv *WebInspector) Show() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webInspectorShowFunction_Set()
 	if err == nil {
@@ -12475,7 +13191,7 @@ func WebResourceNewFromNative(native unsafe.Pointer) *WebResource {
 
 // Object upcasts to *Object
 func (recv *WebResource) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -12491,13 +13207,23 @@ func (recv *WebResource) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *WebResource) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(webResourceObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *WebResource) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(webResourceObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *WebResource) FieldPriv() *WebResourcePrivate {
-	argValue := gi.ObjectFieldGet(webResourceObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(webResourceObject, recv.Native(), "priv")
 	value := WebResourcePrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -12505,11 +13231,11 @@ func (recv *WebResource) FieldPriv() *WebResourcePrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *WebResource) SetFieldPriv(value *WebResourcePrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(webResourceObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(webResourceObject, recv.Native(), "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'webkit_web_resource_get_data' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_web_resource_get_data' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_web_resource_get_data_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -12531,7 +13257,7 @@ func webResourceGetResponseFunction_Set() error {
 // GetResponse is a representation of the C type webkit_web_resource_get_response.
 func (recv *WebResource) GetResponse() *URIResponse {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -12563,7 +13289,7 @@ func webResourceGetUriFunction_Set() error {
 // GetUri is a representation of the C type webkit_web_resource_get_uri.
 func (recv *WebResource) GetUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -12611,27 +13337,27 @@ func WebViewNewFromNative(native unsafe.Pointer) *WebView {
 
 // WebViewBase upcasts to *WebViewBase
 func (recv *WebView) WebViewBase() *WebViewBase {
-	return WebViewBaseNewFromNative(recv.native)
+	return WebViewBaseNewFromNative(recv.Native())
 }
 
 // Container upcasts to *Container
 func (recv *WebView) Container() *gtk.Container {
-	return gtk.ContainerNewFromNative(recv.native)
+	return gtk.ContainerNewFromNative(recv.Native())
 }
 
 // Widget upcasts to *Widget
 func (recv *WebView) Widget() *gtk.Widget {
-	return gtk.WidgetNewFromNative(recv.native)
+	return gtk.WidgetNewFromNative(recv.Native())
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *WebView) InitiallyUnowned() *gobject.InitiallyUnowned {
-	return gobject.InitiallyUnownedNewFromNative(recv.native)
+	return gobject.InitiallyUnownedNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *WebView) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -12649,7 +13375,7 @@ func (recv *WebView) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *WebView) FieldParent() *WebViewBase {
-	argValue := gi.ObjectFieldGet(webViewObject, recv.native, "parent")
+	argValue := gi.ObjectFieldGet(webViewObject, recv.Native(), "parent")
 	value := WebViewBaseNewFromNative(argValue.Pointer())
 	return value
 }
@@ -12657,8 +13383,8 @@ func (recv *WebView) FieldParent() *WebViewBase {
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *WebView) SetFieldParent(value *WebViewBase) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(webViewObject, recv.native, "parent", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(webViewObject, recv.Native(), "parent", argValue)
 }
 
 var webViewNewFunction *gi.Function
@@ -12709,7 +13435,7 @@ func webViewNewWithContextFunction_Set() error {
 // WebViewNewWithContext is a representation of the C type webkit_web_view_new_with_context.
 func WebViewNewWithContext(context *WebContext) *WebView {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native())
 
 	var ret gi.Argument
 
@@ -12741,7 +13467,7 @@ func webViewNewWithRelatedViewFunction_Set() error {
 // WebViewNewWithRelatedView is a representation of the C type webkit_web_view_new_with_related_view.
 func WebViewNewWithRelatedView(webView *WebView) *WebView {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(webView.native)
+	inArgs[0].SetPointer(webView.Native())
 
 	var ret gi.Argument
 
@@ -12773,7 +13499,7 @@ func webViewNewWithSettingsFunction_Set() error {
 // WebViewNewWithSettings is a representation of the C type webkit_web_view_new_with_settings.
 func WebViewNewWithSettings(settings *Settings) *WebView {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(settings.native)
+	inArgs[0].SetPointer(settings.Native())
 
 	var ret gi.Argument
 
@@ -12805,7 +13531,7 @@ func webViewNewWithUserContentManagerFunction_Set() error {
 // WebViewNewWithUserContentManager is a representation of the C type webkit_web_view_new_with_user_content_manager.
 func WebViewNewWithUserContentManager(userContentManager *UserContentManager) *WebView {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(userContentManager.native)
+	inArgs[0].SetPointer(userContentManager.Native())
 
 	var ret gi.Argument
 
@@ -12819,7 +13545,7 @@ func WebViewNewWithUserContentManager(userContentManager *UserContentManager) *W
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_can_execute_editing_command' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_web_view_can_execute_editing_command' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_web_view_can_execute_editing_command_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -12841,7 +13567,7 @@ func webViewCanGoBackFunction_Set() error {
 // CanGoBack is a representation of the C type webkit_web_view_can_go_back.
 func (recv *WebView) CanGoBack() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -12873,7 +13599,7 @@ func webViewCanGoForwardFunction_Set() error {
 // CanGoForward is a representation of the C type webkit_web_view_can_go_forward.
 func (recv *WebView) CanGoForward() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -12905,7 +13631,7 @@ func webViewCanShowMimeTypeFunction_Set() error {
 // CanShowMimeType is a representation of the C type webkit_web_view_can_show_mime_type.
 func (recv *WebView) CanShowMimeType(mimeType string) bool {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(mimeType)
 
 	var ret gi.Argument
@@ -12938,7 +13664,7 @@ func webViewDownloadUriFunction_Set() error {
 // DownloadUri is a representation of the C type webkit_web_view_download_uri.
 func (recv *WebView) DownloadUri(uri string) *Download {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(uri)
 
 	var ret gi.Argument
@@ -12971,7 +13697,7 @@ func webViewExecuteEditingCommandFunction_Set() error {
 // ExecuteEditingCommand is a representation of the C type webkit_web_view_execute_editing_command.
 func (recv *WebView) ExecuteEditingCommand(command string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(command)
 
 	err := webViewExecuteEditingCommandFunction_Set()
@@ -13000,7 +13726,7 @@ func webViewExecuteEditingCommandWithArgumentFunction_Set() error {
 // ExecuteEditingCommandWithArgument is a representation of the C type webkit_web_view_execute_editing_command_with_argument.
 func (recv *WebView) ExecuteEditingCommandWithArgument(command string, argument string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(command)
 	inArgs[2].SetString(argument)
 
@@ -13030,7 +13756,7 @@ func webViewGetBackForwardListFunction_Set() error {
 // GetBackForwardList is a representation of the C type webkit_web_view_get_back_forward_list.
 func (recv *WebView) GetBackForwardList() *BackForwardList {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13064,7 +13790,7 @@ func webViewGetContextFunction_Set() error {
 // GetContext is a representation of the C type webkit_web_view_get_context.
 func (recv *WebView) GetContext() *WebContext {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13096,7 +13822,7 @@ func webViewGetCustomCharsetFunction_Set() error {
 // GetCustomCharset is a representation of the C type webkit_web_view_get_custom_charset.
 func (recv *WebView) GetCustomCharset() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13128,7 +13854,7 @@ func webViewGetEditorStateFunction_Set() error {
 // GetEditorState is a representation of the C type webkit_web_view_get_editor_state.
 func (recv *WebView) GetEditorState() *EditorState {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13160,7 +13886,7 @@ func webViewGetEstimatedLoadProgressFunction_Set() error {
 // GetEstimatedLoadProgress is a representation of the C type webkit_web_view_get_estimated_load_progress.
 func (recv *WebView) GetEstimatedLoadProgress() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13194,7 +13920,7 @@ func webViewGetFindControllerFunction_Set() error {
 // GetFindController is a representation of the C type webkit_web_view_get_find_controller.
 func (recv *WebView) GetFindController() *FindController {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13226,7 +13952,7 @@ func webViewGetInspectorFunction_Set() error {
 // GetInspector is a representation of the C type webkit_web_view_get_inspector.
 func (recv *WebView) GetInspector() *WebInspector {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13260,7 +13986,7 @@ func webViewGetMainResourceFunction_Set() error {
 // GetMainResource is a representation of the C type webkit_web_view_get_main_resource.
 func (recv *WebView) GetMainResource() *WebResource {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13292,7 +14018,7 @@ func webViewGetPageIdFunction_Set() error {
 // GetPageId is a representation of the C type webkit_web_view_get_page_id.
 func (recv *WebView) GetPageId() uint64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13324,7 +14050,7 @@ func webViewGetSessionStateFunction_Set() error {
 // GetSessionState is a representation of the C type webkit_web_view_get_session_state.
 func (recv *WebView) GetSessionState() *WebViewSessionState {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13356,7 +14082,7 @@ func webViewGetSettingsFunction_Set() error {
 // GetSettings is a representation of the C type webkit_web_view_get_settings.
 func (recv *WebView) GetSettings() *Settings {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13392,7 +14118,7 @@ func webViewGetTitleFunction_Set() error {
 // GetTitle is a representation of the C type webkit_web_view_get_title.
 func (recv *WebView) GetTitle() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13406,7 +14132,7 @@ func (recv *WebView) GetTitle() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_get_tls_info' : parameter 'certificate' of type 'Gio.TlsCertificate' not supported
+// UNSUPPORTED : C value 'webkit_web_view_get_tls_info' : parameter 'errors' of type 'Gio.TlsCertificateFlags' not supported
 
 var webViewGetUriFunction *gi.Function
 var webViewGetUriFunction_Once sync.Once
@@ -13426,7 +14152,7 @@ func webViewGetUriFunction_Set() error {
 // GetUri is a representation of the C type webkit_web_view_get_uri.
 func (recv *WebView) GetUri() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13458,7 +14184,7 @@ func webViewGetUserContentManagerFunction_Set() error {
 // GetUserContentManager is a representation of the C type webkit_web_view_get_user_content_manager.
 func (recv *WebView) GetUserContentManager() *UserContentManager {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13490,7 +14216,7 @@ func webViewGetWebsiteDataManagerFunction_Set() error {
 // GetWebsiteDataManager is a representation of the C type webkit_web_view_get_website_data_manager.
 func (recv *WebView) GetWebsiteDataManager() *WebsiteDataManager {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13522,7 +14248,7 @@ func webViewGetWindowPropertiesFunction_Set() error {
 // GetWindowProperties is a representation of the C type webkit_web_view_get_window_properties.
 func (recv *WebView) GetWindowProperties() *WindowProperties {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13554,7 +14280,7 @@ func webViewGetZoomLevelFunction_Set() error {
 // GetZoomLevel is a representation of the C type webkit_web_view_get_zoom_level.
 func (recv *WebView) GetZoomLevel() float64 {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13586,7 +14312,7 @@ func webViewGoBackFunction_Set() error {
 // GoBack is a representation of the C type webkit_web_view_go_back.
 func (recv *WebView) GoBack() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webViewGoBackFunction_Set()
 	if err == nil {
@@ -13614,7 +14340,7 @@ func webViewGoForwardFunction_Set() error {
 // GoForward is a representation of the C type webkit_web_view_go_forward.
 func (recv *WebView) GoForward() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webViewGoForwardFunction_Set()
 	if err == nil {
@@ -13642,8 +14368,8 @@ func webViewGoToBackForwardListItemFunction_Set() error {
 // GoToBackForwardListItem is a representation of the C type webkit_web_view_go_to_back_forward_list_item.
 func (recv *WebView) GoToBackForwardListItem(listItem *BackForwardListItem) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(listItem.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(listItem.Native())
 
 	err := webViewGoToBackForwardListItemFunction_Set()
 	if err == nil {
@@ -13671,7 +14397,7 @@ func webViewIsControlledByAutomationFunction_Set() error {
 // IsControlledByAutomation is a representation of the C type webkit_web_view_is_controlled_by_automation.
 func (recv *WebView) IsControlledByAutomation() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13703,7 +14429,7 @@ func webViewIsEditableFunction_Set() error {
 // IsEditable is a representation of the C type webkit_web_view_is_editable.
 func (recv *WebView) IsEditable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13735,7 +14461,7 @@ func webViewIsEphemeralFunction_Set() error {
 // IsEphemeral is a representation of the C type webkit_web_view_is_ephemeral.
 func (recv *WebView) IsEphemeral() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13767,7 +14493,7 @@ func webViewIsLoadingFunction_Set() error {
 // IsLoading is a representation of the C type webkit_web_view_is_loading.
 func (recv *WebView) IsLoading() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13799,7 +14525,7 @@ func webViewIsPlayingAudioFunction_Set() error {
 // IsPlayingAudio is a representation of the C type webkit_web_view_is_playing_audio.
 func (recv *WebView) IsPlayingAudio() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -13831,7 +14557,7 @@ func webViewLoadAlternateHtmlFunction_Set() error {
 // LoadAlternateHtml is a representation of the C type webkit_web_view_load_alternate_html.
 func (recv *WebView) LoadAlternateHtml(content string, contentUri string, baseUri string) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(content)
 	inArgs[2].SetString(contentUri)
 	inArgs[3].SetString(baseUri)
@@ -13864,7 +14590,7 @@ func webViewLoadHtmlFunction_Set() error {
 // LoadHtml is a representation of the C type webkit_web_view_load_html.
 func (recv *WebView) LoadHtml(content string, baseUri string) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(content)
 	inArgs[2].SetString(baseUri)
 
@@ -13894,7 +14620,7 @@ func webViewLoadPlainTextFunction_Set() error {
 // LoadPlainText is a representation of the C type webkit_web_view_load_plain_text.
 func (recv *WebView) LoadPlainText(plainText string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(plainText)
 
 	err := webViewLoadPlainTextFunction_Set()
@@ -13923,8 +14649,8 @@ func webViewLoadRequestFunction_Set() error {
 // LoadRequest is a representation of the C type webkit_web_view_load_request.
 func (recv *WebView) LoadRequest(request *URIRequest) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(request.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(request.Native())
 
 	err := webViewLoadRequestFunction_Set()
 	if err == nil {
@@ -13952,7 +14678,7 @@ func webViewLoadUriFunction_Set() error {
 // LoadUri is a representation of the C type webkit_web_view_load_uri.
 func (recv *WebView) LoadUri(uri string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(uri)
 
 	err := webViewLoadUriFunction_Set()
@@ -13981,7 +14707,7 @@ func webViewReloadFunction_Set() error {
 // Reload is a representation of the C type webkit_web_view_reload.
 func (recv *WebView) Reload() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webViewReloadFunction_Set()
 	if err == nil {
@@ -14009,7 +14735,7 @@ func webViewReloadBypassCacheFunction_Set() error {
 // ReloadBypassCache is a representation of the C type webkit_web_view_reload_bypass_cache.
 func (recv *WebView) ReloadBypassCache() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webViewReloadBypassCacheFunction_Set()
 	if err == nil {
@@ -14037,8 +14763,8 @@ func webViewRestoreSessionStateFunction_Set() error {
 // RestoreSessionState is a representation of the C type webkit_web_view_restore_session_state.
 func (recv *WebView) RestoreSessionState(state *WebViewSessionState) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(state.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(state.Native())
 
 	err := webViewRestoreSessionStateFunction_Set()
 	if err == nil {
@@ -14048,19 +14774,19 @@ func (recv *WebView) RestoreSessionState(state *WebViewSessionState) {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_run_javascript' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_web_view_run_javascript' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_web_view_run_javascript_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_run_javascript_from_gresource' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_web_view_run_javascript_from_gresource' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_web_view_run_javascript_from_gresource_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_run_javascript_in_world' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_web_view_run_javascript_in_world' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_web_view_run_javascript_in_world_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_save' : parameter 'cancellable' of type 'Gio.Cancellable' not supported
+// UNSUPPORTED : C value 'webkit_web_view_save' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_web_view_save_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -14088,7 +14814,7 @@ func webViewSetCustomCharsetFunction_Set() error {
 // SetCustomCharset is a representation of the C type webkit_web_view_set_custom_charset.
 func (recv *WebView) SetCustomCharset(charset string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(charset)
 
 	err := webViewSetCustomCharsetFunction_Set()
@@ -14117,7 +14843,7 @@ func webViewSetEditableFunction_Set() error {
 // SetEditable is a representation of the C type webkit_web_view_set_editable.
 func (recv *WebView) SetEditable(editable bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(editable)
 
 	err := webViewSetEditableFunction_Set()
@@ -14146,8 +14872,8 @@ func webViewSetSettingsFunction_Set() error {
 // SetSettings is a representation of the C type webkit_web_view_set_settings.
 func (recv *WebView) SetSettings(settings *Settings) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
-	inArgs[1].SetPointer(settings.native)
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(settings.Native())
 
 	err := webViewSetSettingsFunction_Set()
 	if err == nil {
@@ -14175,7 +14901,7 @@ func webViewSetZoomLevelFunction_Set() error {
 // SetZoomLevel is a representation of the C type webkit_web_view_set_zoom_level.
 func (recv *WebView) SetZoomLevel(zoomLevel float64) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetFloat64(zoomLevel)
 
 	err := webViewSetZoomLevelFunction_Set()
@@ -14204,7 +14930,7 @@ func webViewStopLoadingFunction_Set() error {
 // StopLoading is a representation of the C type webkit_web_view_stop_loading.
 func (recv *WebView) StopLoading() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webViewStopLoadingFunction_Set()
 	if err == nil {
@@ -14232,7 +14958,7 @@ func webViewTryCloseFunction_Set() error {
 // TryClose is a representation of the C type webkit_web_view_try_close.
 func (recv *WebView) TryClose() {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	err := webViewTryCloseFunction_Set()
 	if err == nil {
@@ -14276,22 +15002,22 @@ func WebViewBaseNewFromNative(native unsafe.Pointer) *WebViewBase {
 
 // Container upcasts to *Container
 func (recv *WebViewBase) Container() *gtk.Container {
-	return gtk.ContainerNewFromNative(recv.native)
+	return gtk.ContainerNewFromNative(recv.Native())
 }
 
 // Widget upcasts to *Widget
 func (recv *WebViewBase) Widget() *gtk.Widget {
-	return gtk.WidgetNewFromNative(recv.native)
+	return gtk.WidgetNewFromNative(recv.Native())
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *WebViewBase) InitiallyUnowned() *gobject.InitiallyUnowned {
-	return gobject.InitiallyUnownedNewFromNative(recv.native)
+	return gobject.InitiallyUnownedNewFromNative(recv.Native())
 }
 
 // Object upcasts to *Object
 func (recv *WebViewBase) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -14307,9 +15033,19 @@ func (recv *WebViewBase) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parentInstance' : for field getter : no Go type for 'Gtk.Container'
+// FieldParentInstance returns the C field 'parentInstance'.
+func (recv *WebViewBase) FieldParentInstance() *gtk.Container {
+	argValue := gi.ObjectFieldGet(webViewBaseObject, recv.Native(), "parentInstance")
+	value := gtk.ContainerNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parentInstance' : for field setter : no Go type for 'Gtk.Container'
+// SetFieldParentInstance sets the value of the C field 'parentInstance'.
+func (recv *WebViewBase) SetFieldParentInstance(value *gtk.Container) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(webViewBaseObject, recv.Native(), "parentInstance", argValue)
+}
 
 var websiteDataManagerObject *gi.Object
 var websiteDataManagerObject_Once sync.Once
@@ -14345,7 +15081,7 @@ func WebsiteDataManagerNewFromNative(native unsafe.Pointer) *WebsiteDataManager 
 
 // Object upcasts to *Object
 func (recv *WebsiteDataManager) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -14361,13 +15097,23 @@ func (recv *WebsiteDataManager) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *WebsiteDataManager) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(websiteDataManagerObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *WebsiteDataManager) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(websiteDataManagerObject, recv.Native(), "parent", argValue)
+}
 
 // FieldPriv returns the C field 'priv'.
 func (recv *WebsiteDataManager) FieldPriv() *WebsiteDataManagerPrivate {
-	argValue := gi.ObjectFieldGet(websiteDataManagerObject, recv.native, "priv")
+	argValue := gi.ObjectFieldGet(websiteDataManagerObject, recv.Native(), "priv")
 	value := WebsiteDataManagerPrivateNewFromNative(argValue.Pointer())
 	return value
 }
@@ -14375,8 +15121,8 @@ func (recv *WebsiteDataManager) FieldPriv() *WebsiteDataManagerPrivate {
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *WebsiteDataManager) SetFieldPriv(value *WebsiteDataManagerPrivate) {
 	var argValue gi.Argument
-	argValue.SetPointer(value.native)
-	gi.ObjectFieldSet(websiteDataManagerObject, recv.native, "priv", argValue)
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(websiteDataManagerObject, recv.Native(), "priv", argValue)
 }
 
 // UNSUPPORTED : C value 'webkit_website_data_manager_new' : parameter '...' of type 'nil' not supported
@@ -14439,7 +15185,7 @@ func websiteDataManagerGetBaseCacheDirectoryFunction_Set() error {
 // GetBaseCacheDirectory is a representation of the C type webkit_website_data_manager_get_base_cache_directory.
 func (recv *WebsiteDataManager) GetBaseCacheDirectory() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14471,7 +15217,7 @@ func websiteDataManagerGetBaseDataDirectoryFunction_Set() error {
 // GetBaseDataDirectory is a representation of the C type webkit_website_data_manager_get_base_data_directory.
 func (recv *WebsiteDataManager) GetBaseDataDirectory() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14503,7 +15249,7 @@ func websiteDataManagerGetCookieManagerFunction_Set() error {
 // GetCookieManager is a representation of the C type webkit_website_data_manager_get_cookie_manager.
 func (recv *WebsiteDataManager) GetCookieManager() *CookieManager {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14535,7 +15281,7 @@ func websiteDataManagerGetDiskCacheDirectoryFunction_Set() error {
 // GetDiskCacheDirectory is a representation of the C type webkit_website_data_manager_get_disk_cache_directory.
 func (recv *WebsiteDataManager) GetDiskCacheDirectory() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14567,7 +15313,7 @@ func websiteDataManagerGetHstsCacheDirectoryFunction_Set() error {
 // GetHstsCacheDirectory is a representation of the C type webkit_website_data_manager_get_hsts_cache_directory.
 func (recv *WebsiteDataManager) GetHstsCacheDirectory() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14599,7 +15345,7 @@ func websiteDataManagerGetIndexeddbDirectoryFunction_Set() error {
 // GetIndexeddbDirectory is a representation of the C type webkit_website_data_manager_get_indexeddb_directory.
 func (recv *WebsiteDataManager) GetIndexeddbDirectory() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14631,7 +15377,7 @@ func websiteDataManagerGetLocalStorageDirectoryFunction_Set() error {
 // GetLocalStorageDirectory is a representation of the C type webkit_website_data_manager_get_local_storage_directory.
 func (recv *WebsiteDataManager) GetLocalStorageDirectory() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14663,7 +15409,7 @@ func websiteDataManagerGetOfflineApplicationCacheDirectoryFunction_Set() error {
 // GetOfflineApplicationCacheDirectory is a representation of the C type webkit_website_data_manager_get_offline_application_cache_directory.
 func (recv *WebsiteDataManager) GetOfflineApplicationCacheDirectory() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14695,7 +15441,7 @@ func websiteDataManagerGetWebsqlDirectoryFunction_Set() error {
 // GetWebsqlDirectory is a representation of the C type webkit_website_data_manager_get_websql_directory.
 func (recv *WebsiteDataManager) GetWebsqlDirectory() string {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14727,7 +15473,7 @@ func websiteDataManagerIsEphemeralFunction_Set() error {
 // IsEphemeral is a representation of the C type webkit_website_data_manager_is_ephemeral.
 func (recv *WebsiteDataManager) IsEphemeral() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14779,7 +15525,7 @@ func WindowPropertiesNewFromNative(native unsafe.Pointer) *WindowProperties {
 
 // Object upcasts to *Object
 func (recv *WindowProperties) Object() *gobject.Object {
-	return gobject.ObjectNewFromNative(recv.native)
+	return gobject.ObjectNewFromNative(recv.Native())
 }
 
 /*
@@ -14795,9 +15541,19 @@ func (recv *WindowProperties) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.Object'
+// FieldParent returns the C field 'parent'.
+func (recv *WindowProperties) FieldParent() *gobject.Object {
+	argValue := gi.ObjectFieldGet(windowPropertiesObject, recv.Native(), "parent")
+	value := gobject.ObjectNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.Object'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *WindowProperties) SetFieldParent(value *gobject.Object) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(windowPropertiesObject, recv.Native(), "parent", argValue)
+}
 
 var windowPropertiesGetFullscreenFunction *gi.Function
 var windowPropertiesGetFullscreenFunction_Once sync.Once
@@ -14817,7 +15573,7 @@ func windowPropertiesGetFullscreenFunction_Set() error {
 // GetFullscreen is a representation of the C type webkit_window_properties_get_fullscreen.
 func (recv *WindowProperties) GetFullscreen() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14851,7 +15607,7 @@ func windowPropertiesGetLocationbarVisibleFunction_Set() error {
 // GetLocationbarVisible is a representation of the C type webkit_window_properties_get_locationbar_visible.
 func (recv *WindowProperties) GetLocationbarVisible() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14883,7 +15639,7 @@ func windowPropertiesGetMenubarVisibleFunction_Set() error {
 // GetMenubarVisible is a representation of the C type webkit_window_properties_get_menubar_visible.
 func (recv *WindowProperties) GetMenubarVisible() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14915,7 +15671,7 @@ func windowPropertiesGetResizableFunction_Set() error {
 // GetResizable is a representation of the C type webkit_window_properties_get_resizable.
 func (recv *WindowProperties) GetResizable() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14947,7 +15703,7 @@ func windowPropertiesGetScrollbarsVisibleFunction_Set() error {
 // GetScrollbarsVisible is a representation of the C type webkit_window_properties_get_scrollbars_visible.
 func (recv *WindowProperties) GetScrollbarsVisible() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -14979,7 +15735,7 @@ func windowPropertiesGetStatusbarVisibleFunction_Set() error {
 // GetStatusbarVisible is a representation of the C type webkit_window_properties_get_statusbar_visible.
 func (recv *WindowProperties) GetStatusbarVisible() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 
@@ -15011,7 +15767,7 @@ func windowPropertiesGetToolbarVisibleFunction_Set() error {
 // GetToolbarVisible is a representation of the C type webkit_window_properties_get_toolbar_visible.
 func (recv *WindowProperties) GetToolbarVisible() bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.native)
+	inArgs[0].SetPointer(recv.Native())
 
 	var ret gi.Argument
 

@@ -4,7 +4,9 @@ package gdk
 
 import (
 	gi "github.com/pekim/gobbi/internal/gi"
+	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
+	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
 )
 
@@ -111,7 +113,7 @@ func Beep() {
 
 // UNSUPPORTED : C value 'gdk_cairo_set_source_window' : parameter 'cr' of type 'cairo.Context' not supported
 
-// UNSUPPORTED : C value 'gdk_cairo_surface_create_from_pixbuf' : parameter 'pixbuf' of type 'GdkPixbuf.Pixbuf' not supported
+// UNSUPPORTED : C value 'gdk_cairo_surface_create_from_pixbuf' : return type 'cairo.Surface' not supported
 
 var colorParseFunction *gi.Function
 var colorParseFunction_Once sync.Once
@@ -179,7 +181,7 @@ func dragAbortFunction_Set() error {
 // DragAbort is a representation of the C type gdk_drag_abort.
 func DragAbort(context *DragContext, time uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native())
 	inArgs[1].SetUint32(time)
 
 	err := dragAbortFunction_Set()
@@ -210,7 +212,7 @@ func dragDropFunction_Set() error {
 // DragDrop is a representation of the C type gdk_drag_drop.
 func DragDrop(context *DragContext, time uint32) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native())
 	inArgs[1].SetUint32(time)
 
 	err := dragDropFunction_Set()
@@ -235,7 +237,7 @@ func dragDropDoneFunction_Set() error {
 // DragDropDone is a representation of the C type gdk_drag_drop_done.
 func DragDropDone(context *DragContext, success bool) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native())
 	inArgs[1].SetBoolean(success)
 
 	err := dragDropDoneFunction_Set()
@@ -260,7 +262,7 @@ func dragDropSucceededFunction_Set() error {
 // DragDropSucceeded is a representation of the C type gdk_drag_drop_succeeded.
 func DragDropSucceeded(context *DragContext) bool {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native())
 
 	var ret gi.Argument
 
@@ -288,9 +290,9 @@ func dragFindWindowForScreenFunction_Set() error {
 // DragFindWindowForScreen is a representation of the C type gdk_drag_find_window_for_screen.
 func DragFindWindowForScreen(context *DragContext, dragWindow *Window, screen *Screen, xRoot int32, yRoot int32) (*Window, DragProtocol) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(context.native)
-	inArgs[1].SetPointer(dragWindow.native)
-	inArgs[2].SetPointer(screen.native)
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(dragWindow.Native())
+	inArgs[2].SetPointer(screen.Native())
 	inArgs[3].SetInt32(xRoot)
 	inArgs[4].SetInt32(yRoot)
 
@@ -321,7 +323,7 @@ func dragGetSelectionFunction_Set() error {
 // DragGetSelection is a representation of the C type gdk_drag_get_selection.
 func DragGetSelection(context *DragContext) *Atom {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native())
 
 	var ret gi.Argument
 
@@ -353,7 +355,7 @@ func dropFinishFunction_Set() error {
 // DropFinish is a representation of the C type gdk_drop_finish.
 func DropFinish(context *DragContext, success bool, time uint32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native())
 	inArgs[1].SetBoolean(success)
 	inArgs[2].SetUint32(time)
 
@@ -379,7 +381,7 @@ func dropReplyFunction_Set() error {
 // DropReply is a representation of the C type gdk_drop_reply.
 func DropReply(context *DragContext, accepted bool, time uint32) {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(context.native)
+	inArgs[0].SetPointer(context.Native())
 	inArgs[1].SetBoolean(accepted)
 	inArgs[2].SetUint32(time)
 
@@ -481,7 +483,7 @@ func eventRequestMotionsFunction_Set() error {
 // EventRequestMotions is a representation of the C type gdk_event_request_motions.
 func EventRequestMotions(event *EventMotion) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(event.native)
+	inArgs[0].SetPointer(event.Native())
 
 	err := eventRequestMotionsFunction_Set()
 	if err == nil {
@@ -719,7 +721,7 @@ func keyboardGrabFunction_Set() error {
 // KeyboardGrab is a representation of the C type gdk_keyboard_grab.
 func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(window.native)
+	inArgs[0].SetPointer(window.Native())
 	inArgs[1].SetBoolean(ownerEvents)
 	inArgs[2].SetUint32(time)
 
@@ -1046,7 +1048,7 @@ func offscreenWindowGetEmbedderFunction_Set() error {
 // OffscreenWindowGetEmbedder is a representation of the C type gdk_offscreen_window_get_embedder.
 func OffscreenWindowGetEmbedder(window *Window) *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(window.native)
+	inArgs[0].SetPointer(window.Native())
 
 	var ret gi.Argument
 
@@ -1076,8 +1078,8 @@ func offscreenWindowSetEmbedderFunction_Set() error {
 // OffscreenWindowSetEmbedder is a representation of the C type gdk_offscreen_window_set_embedder.
 func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(window.native)
-	inArgs[1].SetPointer(embedder.native)
+	inArgs[0].SetPointer(window.Native())
+	inArgs[1].SetPointer(embedder.Native())
 
 	err := offscreenWindowSetEmbedderFunction_Set()
 	if err == nil {
@@ -1087,13 +1089,89 @@ func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_pango_context_get' : return type 'Pango.Context' not supported
+var pangoContextGetFunction *gi.Function
+var pangoContextGetFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pango_context_get_for_display' : return type 'Pango.Context' not supported
+func pangoContextGetFunction_Set() error {
+	var err error
+	pangoContextGetFunction_Once.Do(func() {
+		pangoContextGetFunction, err = gi.FunctionInvokerNew("Gdk", "pango_context_get")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_pango_context_get_for_screen' : return type 'Pango.Context' not supported
+// PangoContextGet is a representation of the C type gdk_pango_context_get.
+func PangoContextGet() *pango.Context {
 
-// UNSUPPORTED : C value 'gdk_pango_layout_get_clip_region' : parameter 'layout' of type 'Pango.Layout' not supported
+	var ret gi.Argument
+
+	err := pangoContextGetFunction_Set()
+	if err == nil {
+		ret = pangoContextGetFunction.Invoke(nil, nil)
+	}
+
+	retGo := pango.ContextNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var pangoContextGetForDisplayFunction *gi.Function
+var pangoContextGetForDisplayFunction_Once sync.Once
+
+func pangoContextGetForDisplayFunction_Set() error {
+	var err error
+	pangoContextGetForDisplayFunction_Once.Do(func() {
+		pangoContextGetForDisplayFunction, err = gi.FunctionInvokerNew("Gdk", "pango_context_get_for_display")
+	})
+	return err
+}
+
+// PangoContextGetForDisplay is a representation of the C type gdk_pango_context_get_for_display.
+func PangoContextGetForDisplay(display *Display) *pango.Context {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(display.Native())
+
+	var ret gi.Argument
+
+	err := pangoContextGetForDisplayFunction_Set()
+	if err == nil {
+		ret = pangoContextGetForDisplayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := pango.ContextNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var pangoContextGetForScreenFunction *gi.Function
+var pangoContextGetForScreenFunction_Once sync.Once
+
+func pangoContextGetForScreenFunction_Set() error {
+	var err error
+	pangoContextGetForScreenFunction_Once.Do(func() {
+		pangoContextGetForScreenFunction, err = gi.FunctionInvokerNew("Gdk", "pango_context_get_for_screen")
+	})
+	return err
+}
+
+// PangoContextGetForScreen is a representation of the C type gdk_pango_context_get_for_screen.
+func PangoContextGetForScreen(screen *Screen) *pango.Context {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(screen.Native())
+
+	var ret gi.Argument
+
+	err := pangoContextGetForScreenFunction_Set()
+	if err == nil {
+		ret = pangoContextGetForScreenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := pango.ContextNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gdk_pango_layout_get_clip_region' : return type 'cairo.Region' not supported
 
 // UNSUPPORTED : C value 'gdk_pango_layout_line_get_clip_region' : parameter 'line' of type 'Pango.LayoutLine' not supported
 
@@ -1101,7 +1179,37 @@ func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
 
 // UNSUPPORTED : C value 'gdk_pixbuf_get_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_get_from_window' : return type 'GdkPixbuf.Pixbuf' not supported
+var pixbufGetFromWindowFunction *gi.Function
+var pixbufGetFromWindowFunction_Once sync.Once
+
+func pixbufGetFromWindowFunction_Set() error {
+	var err error
+	pixbufGetFromWindowFunction_Once.Do(func() {
+		pixbufGetFromWindowFunction, err = gi.FunctionInvokerNew("Gdk", "pixbuf_get_from_window")
+	})
+	return err
+}
+
+// PixbufGetFromWindow is a representation of the C type gdk_pixbuf_get_from_window.
+func PixbufGetFromWindow(window *Window, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(window.Native())
+	inArgs[1].SetInt32(srcX)
+	inArgs[2].SetInt32(srcY)
+	inArgs[3].SetInt32(width)
+	inArgs[4].SetInt32(height)
+
+	var ret gi.Argument
+
+	err := pixbufGetFromWindowFunction_Set()
+	if err == nil {
+		ret = pixbufGetFromWindowFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdkpixbuf.PixbufNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_pointer_grab' : parameter 'event_mask' of type 'EventMask' not supported
 
@@ -1191,9 +1299,9 @@ func propertyChangeFunction_Set() error {
 // PropertyChange is a representation of the C type gdk_property_change.
 func PropertyChange(window *Window, property *Atom, type_ *Atom, format int32, mode PropMode, data uint8, nelements int32) {
 	var inArgs [7]gi.Argument
-	inArgs[0].SetPointer(window.native)
-	inArgs[1].SetPointer(property.native)
-	inArgs[2].SetPointer(type_.native)
+	inArgs[0].SetPointer(window.Native())
+	inArgs[1].SetPointer(property.Native())
+	inArgs[2].SetPointer(type_.Native())
 	inArgs[3].SetInt32(format)
 	inArgs[4].SetInt32(int32(mode))
 	inArgs[5].SetUint8(data)
@@ -1221,8 +1329,8 @@ func propertyDeleteFunction_Set() error {
 // PropertyDelete is a representation of the C type gdk_property_delete.
 func PropertyDelete(window *Window, property *Atom) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(window.native)
-	inArgs[1].SetPointer(property.native)
+	inArgs[0].SetPointer(window.Native())
+	inArgs[1].SetPointer(property.Native())
 
 	err := propertyDeleteFunction_Set()
 	if err == nil {
@@ -1252,9 +1360,9 @@ func selectionConvertFunction_Set() error {
 // SelectionConvert is a representation of the C type gdk_selection_convert.
 func SelectionConvert(requestor *Window, selection *Atom, target *Atom, time uint32) {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(requestor.native)
-	inArgs[1].SetPointer(selection.native)
-	inArgs[2].SetPointer(target.native)
+	inArgs[0].SetPointer(requestor.Native())
+	inArgs[1].SetPointer(selection.Native())
+	inArgs[2].SetPointer(target.Native())
 	inArgs[3].SetUint32(time)
 
 	err := selectionConvertFunction_Set()
@@ -1279,7 +1387,7 @@ func selectionOwnerGetFunction_Set() error {
 // SelectionOwnerGet is a representation of the C type gdk_selection_owner_get.
 func SelectionOwnerGet(selection *Atom) *Window {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(selection.native)
+	inArgs[0].SetPointer(selection.Native())
 
 	var ret gi.Argument
 
@@ -1307,8 +1415,8 @@ func selectionOwnerGetForDisplayFunction_Set() error {
 // SelectionOwnerGetForDisplay is a representation of the C type gdk_selection_owner_get_for_display.
 func SelectionOwnerGetForDisplay(display *Display, selection *Atom) *Window {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(display.native)
-	inArgs[1].SetPointer(selection.native)
+	inArgs[0].SetPointer(display.Native())
+	inArgs[1].SetPointer(selection.Native())
 
 	var ret gi.Argument
 
@@ -1336,8 +1444,8 @@ func selectionOwnerSetFunction_Set() error {
 // SelectionOwnerSet is a representation of the C type gdk_selection_owner_set.
 func SelectionOwnerSet(owner *Window, selection *Atom, time uint32, sendEvent bool) bool {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(owner.native)
-	inArgs[1].SetPointer(selection.native)
+	inArgs[0].SetPointer(owner.Native())
+	inArgs[1].SetPointer(selection.Native())
 	inArgs[2].SetUint32(time)
 	inArgs[3].SetBoolean(sendEvent)
 
@@ -1367,9 +1475,9 @@ func selectionOwnerSetForDisplayFunction_Set() error {
 // SelectionOwnerSetForDisplay is a representation of the C type gdk_selection_owner_set_for_display.
 func SelectionOwnerSetForDisplay(display *Display, owner *Window, selection *Atom, time uint32, sendEvent bool) bool {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(display.native)
-	inArgs[1].SetPointer(owner.native)
-	inArgs[2].SetPointer(selection.native)
+	inArgs[0].SetPointer(display.Native())
+	inArgs[1].SetPointer(owner.Native())
+	inArgs[2].SetPointer(selection.Native())
 	inArgs[3].SetUint32(time)
 	inArgs[4].SetBoolean(sendEvent)
 
@@ -1399,9 +1507,9 @@ func selectionPropertyGetFunction_Set() error {
 // SelectionPropertyGet is a representation of the C type gdk_selection_property_get.
 func SelectionPropertyGet(requestor *Window, data uint8, propType *Atom, propFormat int32) int32 {
 	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(requestor.native)
+	inArgs[0].SetPointer(requestor.Native())
 	inArgs[1].SetUint8(data)
-	inArgs[2].SetPointer(propType.native)
+	inArgs[2].SetPointer(propType.Native())
 	inArgs[3].SetInt32(propFormat)
 
 	var ret gi.Argument
@@ -1430,10 +1538,10 @@ func selectionSendNotifyFunction_Set() error {
 // SelectionSendNotify is a representation of the C type gdk_selection_send_notify.
 func SelectionSendNotify(requestor *Window, selection *Atom, target *Atom, property *Atom, time uint32) {
 	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(requestor.native)
-	inArgs[1].SetPointer(selection.native)
-	inArgs[2].SetPointer(target.native)
-	inArgs[3].SetPointer(property.native)
+	inArgs[0].SetPointer(requestor.Native())
+	inArgs[1].SetPointer(selection.Native())
+	inArgs[2].SetPointer(target.Native())
+	inArgs[3].SetPointer(property.Native())
 	inArgs[4].SetUint32(time)
 
 	err := selectionSendNotifyFunction_Set()
@@ -1458,11 +1566,11 @@ func selectionSendNotifyForDisplayFunction_Set() error {
 // SelectionSendNotifyForDisplay is a representation of the C type gdk_selection_send_notify_for_display.
 func SelectionSendNotifyForDisplay(display *Display, requestor *Window, selection *Atom, target *Atom, property *Atom, time uint32) {
 	var inArgs [6]gi.Argument
-	inArgs[0].SetPointer(display.native)
-	inArgs[1].SetPointer(requestor.native)
-	inArgs[2].SetPointer(selection.native)
-	inArgs[3].SetPointer(target.native)
-	inArgs[4].SetPointer(property.native)
+	inArgs[0].SetPointer(display.Native())
+	inArgs[1].SetPointer(requestor.Native())
+	inArgs[2].SetPointer(selection.Native())
+	inArgs[3].SetPointer(target.Native())
+	inArgs[4].SetPointer(property.Native())
 	inArgs[5].SetUint32(time)
 
 	err := selectionSendNotifyForDisplayFunction_Set()
@@ -1587,7 +1695,7 @@ func testRenderSyncFunction_Set() error {
 // TestRenderSync is a representation of the C type gdk_test_render_sync.
 func TestRenderSync(window *Window) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(window.native)
+	inArgs[0].SetPointer(window.Native())
 
 	err := testRenderSyncFunction_Set()
 	if err == nil {

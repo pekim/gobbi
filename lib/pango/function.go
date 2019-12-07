@@ -679,8 +679,8 @@ func DefaultBreak(text string, length int32, analysis *Analysis, attrs *LogAttr,
 	var inArgs [5]gi.Argument
 	inArgs[0].SetString(text)
 	inArgs[1].SetInt32(length)
-	inArgs[2].SetPointer(analysis.native)
-	inArgs[3].SetPointer(attrs.native)
+	inArgs[2].SetPointer(analysis.Native())
+	inArgs[3].SetPointer(attrs.Native())
 	inArgs[4].SetInt32(attrsLen)
 
 	err := defaultBreakFunction_Set()
@@ -705,8 +705,8 @@ func extentsToPixelsFunction_Set() error {
 // ExtentsToPixels is a representation of the C type pango_extents_to_pixels.
 func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(inclusive.native)
-	inArgs[1].SetPointer(nearest.native)
+	inArgs[0].SetPointer(inclusive.Native())
+	inArgs[1].SetPointer(nearest.Native())
 
 	err := extentsToPixelsFunction_Set()
 	if err == nil {
@@ -759,7 +759,7 @@ func findMapFunction_Set() error {
 // FindMap is a representation of the C type pango_find_map.
 func FindMap(language *Language, engineTypeId uint32, renderTypeId uint32) *Map {
 	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(language.native)
+	inArgs[0].SetPointer(language.Native())
 	inArgs[1].SetUint32(engineTypeId)
 	inArgs[2].SetUint32(renderTypeId)
 
@@ -903,7 +903,7 @@ func gravityGetForMatrixFunction_Set() error {
 // GravityGetForMatrix is a representation of the C type pango_gravity_get_for_matrix.
 func GravityGetForMatrix(matrix *Matrix) Gravity {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(matrix.native)
+	inArgs[0].SetPointer(matrix.Native())
 
 	var ret gi.Argument
 
@@ -1116,7 +1116,7 @@ func moduleRegisterFunction_Set() error {
 // ModuleRegister is a representation of the C type pango_module_register.
 func ModuleRegister(module *IncludedModule) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(module.native)
+	inArgs[0].SetPointer(module.Native())
 
 	err := moduleRegisterFunction_Set()
 	if err == nil {
@@ -1369,8 +1369,8 @@ func Shape(text string, length int32, analysis *Analysis, glyphs *GlyphString) {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetString(text)
 	inArgs[1].SetInt32(length)
-	inArgs[2].SetPointer(analysis.native)
-	inArgs[3].SetPointer(glyphs.native)
+	inArgs[2].SetPointer(analysis.Native())
+	inArgs[3].SetPointer(glyphs.Native())
 
 	err := shapeFunction_Set()
 	if err == nil {
@@ -1398,8 +1398,8 @@ func ShapeFull(itemText string, itemLength int32, paragraphText string, paragrap
 	inArgs[1].SetInt32(itemLength)
 	inArgs[2].SetString(paragraphText)
 	inArgs[3].SetInt32(paragraphLength)
-	inArgs[4].SetPointer(analysis.native)
-	inArgs[5].SetPointer(glyphs.native)
+	inArgs[4].SetPointer(analysis.Native())
+	inArgs[5].SetPointer(glyphs.Native())
 
 	err := shapeFullFunction_Set()
 	if err == nil {

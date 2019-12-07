@@ -116,6 +116,11 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 	}
 
 	if t.isClass() {
+		if t.isQualifiedName() {
+			class, _ := t.foreignNamespace.Classes.byName(t.foreignName)
+			return jen.Op("*").Qual(t.foreignNamespace.goFullPackageName, class.goName), nil
+		}
+
 		class, _ := t.namespace.Classes.byName(t.Name)
 		return jen.Op("*").Id(class.goName), nil
 	}
@@ -257,15 +262,20 @@ func (t *Type) argumentValueSetFunctionName() string {
 
 func (t *Type) createFromOutArgument(g *jen.Group, argName *jen.Statement, argValue *jen.Statement) {
 	if t.isClass() {
-		class, _ := t.namespace.Classes.byName(t.Name)
-		class.createFromArgument(g, argName, argValue)
+		if t.isQualifiedName() {
+			class, _ := t.foreignNamespace.Classes.byName(t.foreignName)
+			class.createFromArgument(g, t.foreignNamespace, argName, argValue)
+		} else {
+			class, _ := t.namespace.Classes.byName(t.Name)
+			class.createFromArgument(g, nil, argName, argValue)
+		}
 
 		return
 	}
 
 	if t.isRecord() {
 		record, _ := t.namespace.Records.byName(t.Name)
-		record.createFromArgument(g, argName, argValue)
+		record.createFromArgument(g, nil, argName, argValue)
 
 		return
 	}
@@ -351,6 +361,11 @@ func (t *Type) isEnumeration() bool {
 }
 
 func (t *Type) isClass() bool {
+	if t.isQualifiedName() {
+		_, found := t.foreignNamespace.Classes.byName(t.foreignName)
+		return found
+	}
+
 	_, found := t.namespace.Classes.byName(t.Name)
 	return found
 }
