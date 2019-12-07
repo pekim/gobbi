@@ -36,7 +36,7 @@ CastToGlobalContextRef down casts any arbitrary Object to GlobalContextRef.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GlobalContextRef.
 */
-func (recv *GlobalContextRef) CastToGlobalContextRef(object *gobject.Object) *GlobalContextRef {
+func CastToGlobalContextRef(object *gobject.Object) *GlobalContextRef {
 	return GlobalContextRefNewFromNative(object.Native())
 }
 
@@ -141,7 +141,7 @@ CastToValueRef down casts any arbitrary Object to ValueRef.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ValueRef.
 */
-func (recv *ValueRef) CastToValueRef(object *gobject.Object) *ValueRef {
+func CastToValueRef(object *gobject.Object) *ValueRef {
 	return ValueRefNewFromNative(object.Native())
 }
 
@@ -190,7 +190,7 @@ CastToStringRef down casts any arbitrary Object to StringRef.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StringRef.
 */
-func (recv *StringRef) CastToStringRef(object *gobject.Object) *StringRef {
+func CastToStringRef(object *gobject.Object) *StringRef {
 	return StringRefNewFromNative(object.Native())
 }
 
@@ -363,7 +363,7 @@ CastToClassClass down casts any arbitrary Object to ClassClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ClassClass.
 */
-func (recv *ClassClass) CastToClassClass(object *gobject.Object) *ClassClass {
+func CastToClassClass(object *gobject.Object) *ClassClass {
 	return ClassClassNewFromNative(object.Native())
 }
 
@@ -412,7 +412,7 @@ CastToClassVTable down casts any arbitrary Object to ClassVTable.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ClassVTable.
 */
-func (recv *ClassVTable) CastToClassVTable(object *gobject.Object) *ClassVTable {
+func CastToClassVTable(object *gobject.Object) *ClassVTable {
 	return ClassVTableNewFromNative(object.Native())
 }
 
@@ -497,7 +497,7 @@ CastToContextClass down casts any arbitrary Object to ContextClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ContextClass.
 */
-func (recv *ContextClass) CastToContextClass(object *gobject.Object) *ContextClass {
+func CastToContextClass(object *gobject.Object) *ContextClass {
 	return ContextClassNewFromNative(object.Native())
 }
 
@@ -566,7 +566,7 @@ CastToContextPrivate down casts any arbitrary Object to ContextPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ContextPrivate.
 */
-func (recv *ContextPrivate) CastToContextPrivate(object *gobject.Object) *ContextPrivate {
+func CastToContextPrivate(object *gobject.Object) *ContextPrivate {
 	return ContextPrivateNewFromNative(object.Native())
 }
 
@@ -615,7 +615,7 @@ CastToExceptionClass down casts any arbitrary Object to ExceptionClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ExceptionClass.
 */
-func (recv *ExceptionClass) CastToExceptionClass(object *gobject.Object) *ExceptionClass {
+func CastToExceptionClass(object *gobject.Object) *ExceptionClass {
 	return ExceptionClassNewFromNative(object.Native())
 }
 
@@ -684,7 +684,7 @@ CastToExceptionPrivate down casts any arbitrary Object to ExceptionPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ExceptionPrivate.
 */
-func (recv *ExceptionPrivate) CastToExceptionPrivate(object *gobject.Object) *ExceptionPrivate {
+func CastToExceptionPrivate(object *gobject.Object) *ExceptionPrivate {
 	return ExceptionPrivateNewFromNative(object.Native())
 }
 
@@ -733,7 +733,7 @@ CastToValueClass down casts any arbitrary Object to ValueClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ValueClass.
 */
-func (recv *ValueClass) CastToValueClass(object *gobject.Object) *ValueClass {
+func CastToValueClass(object *gobject.Object) *ValueClass {
 	return ValueClassNewFromNative(object.Native())
 }
 
@@ -802,7 +802,7 @@ CastToValuePrivate down casts any arbitrary Object to ValuePrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ValuePrivate.
 */
-func (recv *ValuePrivate) CastToValuePrivate(object *gobject.Object) *ValuePrivate {
+func CastToValuePrivate(object *gobject.Object) *ValuePrivate {
 	return ValuePrivateNewFromNative(object.Native())
 }
 
@@ -851,7 +851,7 @@ CastToVirtualMachineClass down casts any arbitrary Object to VirtualMachineClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VirtualMachineClass.
 */
-func (recv *VirtualMachineClass) CastToVirtualMachineClass(object *gobject.Object) *VirtualMachineClass {
+func CastToVirtualMachineClass(object *gobject.Object) *VirtualMachineClass {
 	return VirtualMachineClassNewFromNative(object.Native())
 }
 
@@ -920,7 +920,7 @@ CastToVirtualMachinePrivate down casts any arbitrary Object to VirtualMachinePri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VirtualMachinePrivate.
 */
-func (recv *VirtualMachinePrivate) CastToVirtualMachinePrivate(object *gobject.Object) *VirtualMachinePrivate {
+func CastToVirtualMachinePrivate(object *gobject.Object) *VirtualMachinePrivate {
 	return VirtualMachinePrivateNewFromNative(object.Native())
 }
 
@@ -969,7 +969,7 @@ CastToWeakValueClass down casts any arbitrary Object to WeakValueClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WeakValueClass.
 */
-func (recv *WeakValueClass) CastToWeakValueClass(object *gobject.Object) *WeakValueClass {
+func CastToWeakValueClass(object *gobject.Object) *WeakValueClass {
 	return WeakValueClassNewFromNative(object.Native())
 }
 
@@ -1038,7 +1038,7 @@ CastToWeakValuePrivate down casts any arbitrary Object to WeakValuePrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WeakValuePrivate.
 */
-func (recv *WeakValuePrivate) CastToWeakValuePrivate(object *gobject.Object) *WeakValuePrivate {
+func CastToWeakValuePrivate(object *gobject.Object) *WeakValuePrivate {
 	return WeakValuePrivateNewFromNative(object.Native())
 }
 

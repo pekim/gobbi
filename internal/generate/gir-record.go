@@ -287,18 +287,17 @@ func (r *Record) generateDownCast(f *file) {
 		return
 	}
 
-	methodName := "CastTo" + r.goName
+	funcName := "CastTo" + r.goName
 	gobjectNs, _ := r.namespace.namespaces.byName("GObject")
 
 	f.Commentf(`%s down casts any arbitrary Object to %s.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a %s.`,
-		methodName, r.goName, r.goName)
+		funcName, r.goName, r.goName)
 
 	f.
 		Func().
-		Params(jen.Id(receiverName).Op("*").Id(r.goName)).
-		Id(methodName).
+		Id(funcName).
 		Params(jen.
 			Id("object").
 			Op("*").Qual(gobjectNs.goFullPackageName, "Object")).

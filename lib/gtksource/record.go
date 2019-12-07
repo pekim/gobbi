@@ -36,7 +36,7 @@ CastToBufferClass down casts any arbitrary Object to BufferClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a BufferClass.
 */
-func (recv *BufferClass) CastToBufferClass(object *gobject.Object) *BufferClass {
+func CastToBufferClass(object *gobject.Object) *BufferClass {
 	return BufferClassNewFromNative(object.Native())
 }
 
@@ -113,7 +113,7 @@ CastToBufferPrivate down casts any arbitrary Object to BufferPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a BufferPrivate.
 */
-func (recv *BufferPrivate) CastToBufferPrivate(object *gobject.Object) *BufferPrivate {
+func CastToBufferPrivate(object *gobject.Object) *BufferPrivate {
 	return BufferPrivateNewFromNative(object.Native())
 }
 
@@ -162,7 +162,7 @@ CastToCompletionClass down casts any arbitrary Object to CompletionClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CompletionClass.
 */
-func (recv *CompletionClass) CastToCompletionClass(object *gobject.Object) *CompletionClass {
+func CastToCompletionClass(object *gobject.Object) *CompletionClass {
 	return CompletionClassNewFromNative(object.Native())
 }
 
@@ -243,7 +243,7 @@ CastToCompletionContextClass down casts any arbitrary Object to CompletionContex
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CompletionContextClass.
 */
-func (recv *CompletionContextClass) CastToCompletionContextClass(object *gobject.Object) *CompletionContextClass {
+func CastToCompletionContextClass(object *gobject.Object) *CompletionContextClass {
 	return CompletionContextClassNewFromNative(object.Native())
 }
 
@@ -312,7 +312,7 @@ CastToCompletionContextPrivate down casts any arbitrary Object to CompletionCont
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CompletionContextPrivate.
 */
-func (recv *CompletionContextPrivate) CastToCompletionContextPrivate(object *gobject.Object) *CompletionContextPrivate {
+func CastToCompletionContextPrivate(object *gobject.Object) *CompletionContextPrivate {
 	return CompletionContextPrivateNewFromNative(object.Native())
 }
 
@@ -361,7 +361,7 @@ CastToCompletionInfoClass down casts any arbitrary Object to CompletionInfoClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CompletionInfoClass.
 */
-func (recv *CompletionInfoClass) CastToCompletionInfoClass(object *gobject.Object) *CompletionInfoClass {
+func CastToCompletionInfoClass(object *gobject.Object) *CompletionInfoClass {
 	return CompletionInfoClassNewFromNative(object.Native())
 }
 
@@ -418,7 +418,7 @@ CastToCompletionInfoPrivate down casts any arbitrary Object to CompletionInfoPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CompletionInfoPrivate.
 */
-func (recv *CompletionInfoPrivate) CastToCompletionInfoPrivate(object *gobject.Object) *CompletionInfoPrivate {
+func CastToCompletionInfoPrivate(object *gobject.Object) *CompletionInfoPrivate {
 	return CompletionInfoPrivateNewFromNative(object.Native())
 }
 
@@ -467,7 +467,7 @@ CastToCompletionItemClass down casts any arbitrary Object to CompletionItemClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CompletionItemClass.
 */
-func (recv *CompletionItemClass) CastToCompletionItemClass(object *gobject.Object) *CompletionItemClass {
+func CastToCompletionItemClass(object *gobject.Object) *CompletionItemClass {
 	return CompletionItemClassNewFromNative(object.Native())
 }
 
@@ -520,7 +520,7 @@ CastToCompletionItemPrivate down casts any arbitrary Object to CompletionItemPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CompletionItemPrivate.
 */
-func (recv *CompletionItemPrivate) CastToCompletionItemPrivate(object *gobject.Object) *CompletionItemPrivate {
+func CastToCompletionItemPrivate(object *gobject.Object) *CompletionItemPrivate {
 	return CompletionItemPrivateNewFromNative(object.Native())
 }
 
@@ -569,7 +569,7 @@ CastToCompletionPrivate down casts any arbitrary Object to CompletionPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CompletionPrivate.
 */
-func (recv *CompletionPrivate) CastToCompletionPrivate(object *gobject.Object) *CompletionPrivate {
+func CastToCompletionPrivate(object *gobject.Object) *CompletionPrivate {
 	return CompletionPrivateNewFromNative(object.Native())
 }
 
@@ -618,7 +618,7 @@ CastToCompletionProposalIface down casts any arbitrary Object to CompletionPropo
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CompletionProposalIface.
 */
-func (recv *CompletionProposalIface) CastToCompletionProposalIface(object *gobject.Object) *CompletionProposalIface {
+func CastToCompletionProposalIface(object *gobject.Object) *CompletionProposalIface {
 	return CompletionProposalIfaceNewFromNative(object.Native())
 }
 
@@ -711,7 +711,7 @@ CastToCompletionProviderIface down casts any arbitrary Object to CompletionProvi
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CompletionProviderIface.
 */
-func (recv *CompletionProviderIface) CastToCompletionProviderIface(object *gobject.Object) *CompletionProviderIface {
+func CastToCompletionProviderIface(object *gobject.Object) *CompletionProviderIface {
 	return CompletionProviderIfaceNewFromNative(object.Native())
 }
 
@@ -816,7 +816,7 @@ CastToCompletionWordsClass down casts any arbitrary Object to CompletionWordsCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CompletionWordsClass.
 */
-func (recv *CompletionWordsClass) CastToCompletionWordsClass(object *gobject.Object) *CompletionWordsClass {
+func CastToCompletionWordsClass(object *gobject.Object) *CompletionWordsClass {
 	return CompletionWordsClassNewFromNative(object.Native())
 }
 
@@ -869,7 +869,7 @@ CastToCompletionWordsPrivate down casts any arbitrary Object to CompletionWordsP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CompletionWordsPrivate.
 */
-func (recv *CompletionWordsPrivate) CastToCompletionWordsPrivate(object *gobject.Object) *CompletionWordsPrivate {
+func CastToCompletionWordsPrivate(object *gobject.Object) *CompletionWordsPrivate {
 	return CompletionWordsPrivateNewFromNative(object.Native())
 }
 
@@ -918,7 +918,7 @@ CastToEncoding down casts any arbitrary Object to Encoding.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Encoding.
 */
-func (recv *Encoding) CastToEncoding(object *gobject.Object) *Encoding {
+func CastToEncoding(object *gobject.Object) *Encoding {
 	return EncodingNewFromNative(object.Native())
 }
 
@@ -1123,7 +1123,7 @@ CastToFileClass down casts any arbitrary Object to FileClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileClass.
 */
-func (recv *FileClass) CastToFileClass(object *gobject.Object) *FileClass {
+func CastToFileClass(object *gobject.Object) *FileClass {
 	return FileClassNewFromNative(object.Native())
 }
 
@@ -1180,7 +1180,7 @@ CastToFileLoaderClass down casts any arbitrary Object to FileLoaderClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileLoaderClass.
 */
-func (recv *FileLoaderClass) CastToFileLoaderClass(object *gobject.Object) *FileLoaderClass {
+func CastToFileLoaderClass(object *gobject.Object) *FileLoaderClass {
 	return FileLoaderClassNewFromNative(object.Native())
 }
 
@@ -1237,7 +1237,7 @@ CastToFileLoaderPrivate down casts any arbitrary Object to FileLoaderPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileLoaderPrivate.
 */
-func (recv *FileLoaderPrivate) CastToFileLoaderPrivate(object *gobject.Object) *FileLoaderPrivate {
+func CastToFileLoaderPrivate(object *gobject.Object) *FileLoaderPrivate {
 	return FileLoaderPrivateNewFromNative(object.Native())
 }
 
@@ -1286,7 +1286,7 @@ CastToFilePrivate down casts any arbitrary Object to FilePrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FilePrivate.
 */
-func (recv *FilePrivate) CastToFilePrivate(object *gobject.Object) *FilePrivate {
+func CastToFilePrivate(object *gobject.Object) *FilePrivate {
 	return FilePrivateNewFromNative(object.Native())
 }
 
@@ -1335,7 +1335,7 @@ CastToFileSaverClass down casts any arbitrary Object to FileSaverClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileSaverClass.
 */
-func (recv *FileSaverClass) CastToFileSaverClass(object *gobject.Object) *FileSaverClass {
+func CastToFileSaverClass(object *gobject.Object) *FileSaverClass {
 	return FileSaverClassNewFromNative(object.Native())
 }
 
@@ -1392,7 +1392,7 @@ CastToFileSaverPrivate down casts any arbitrary Object to FileSaverPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileSaverPrivate.
 */
-func (recv *FileSaverPrivate) CastToFileSaverPrivate(object *gobject.Object) *FileSaverPrivate {
+func CastToFileSaverPrivate(object *gobject.Object) *FileSaverPrivate {
 	return FileSaverPrivateNewFromNative(object.Native())
 }
 
@@ -1441,7 +1441,7 @@ CastToGutterClass down casts any arbitrary Object to GutterClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GutterClass.
 */
-func (recv *GutterClass) CastToGutterClass(object *gobject.Object) *GutterClass {
+func CastToGutterClass(object *gobject.Object) *GutterClass {
 	return GutterClassNewFromNative(object.Native())
 }
 
@@ -1494,7 +1494,7 @@ CastToGutterPrivate down casts any arbitrary Object to GutterPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GutterPrivate.
 */
-func (recv *GutterPrivate) CastToGutterPrivate(object *gobject.Object) *GutterPrivate {
+func CastToGutterPrivate(object *gobject.Object) *GutterPrivate {
 	return GutterPrivateNewFromNative(object.Native())
 }
 
@@ -1543,7 +1543,7 @@ CastToGutterRendererClass down casts any arbitrary Object to GutterRendererClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GutterRendererClass.
 */
-func (recv *GutterRendererClass) CastToGutterRendererClass(object *gobject.Object) *GutterRendererClass {
+func CastToGutterRendererClass(object *gobject.Object) *GutterRendererClass {
 	return GutterRendererClassNewFromNative(object.Native())
 }
 
@@ -1636,7 +1636,7 @@ CastToGutterRendererPixbufClass down casts any arbitrary Object to GutterRendere
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GutterRendererPixbufClass.
 */
-func (recv *GutterRendererPixbufClass) CastToGutterRendererPixbufClass(object *gobject.Object) *GutterRendererPixbufClass {
+func CastToGutterRendererPixbufClass(object *gobject.Object) *GutterRendererPixbufClass {
 	return GutterRendererPixbufClassNewFromNative(object.Native())
 }
 
@@ -1685,7 +1685,7 @@ CastToGutterRendererPixbufPrivate down casts any arbitrary Object to GutterRende
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GutterRendererPixbufPrivate.
 */
-func (recv *GutterRendererPixbufPrivate) CastToGutterRendererPixbufPrivate(object *gobject.Object) *GutterRendererPixbufPrivate {
+func CastToGutterRendererPixbufPrivate(object *gobject.Object) *GutterRendererPixbufPrivate {
 	return GutterRendererPixbufPrivateNewFromNative(object.Native())
 }
 
@@ -1734,7 +1734,7 @@ CastToGutterRendererPrivate down casts any arbitrary Object to GutterRendererPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GutterRendererPrivate.
 */
-func (recv *GutterRendererPrivate) CastToGutterRendererPrivate(object *gobject.Object) *GutterRendererPrivate {
+func CastToGutterRendererPrivate(object *gobject.Object) *GutterRendererPrivate {
 	return GutterRendererPrivateNewFromNative(object.Native())
 }
 
@@ -1783,7 +1783,7 @@ CastToGutterRendererTextClass down casts any arbitrary Object to GutterRendererT
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GutterRendererTextClass.
 */
-func (recv *GutterRendererTextClass) CastToGutterRendererTextClass(object *gobject.Object) *GutterRendererTextClass {
+func CastToGutterRendererTextClass(object *gobject.Object) *GutterRendererTextClass {
 	return GutterRendererTextClassNewFromNative(object.Native())
 }
 
@@ -1832,7 +1832,7 @@ CastToGutterRendererTextPrivate down casts any arbitrary Object to GutterRendere
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GutterRendererTextPrivate.
 */
-func (recv *GutterRendererTextPrivate) CastToGutterRendererTextPrivate(object *gobject.Object) *GutterRendererTextPrivate {
+func CastToGutterRendererTextPrivate(object *gobject.Object) *GutterRendererTextPrivate {
 	return GutterRendererTextPrivateNewFromNative(object.Native())
 }
 
@@ -1881,7 +1881,7 @@ CastToLanguageClass down casts any arbitrary Object to LanguageClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a LanguageClass.
 */
-func (recv *LanguageClass) CastToLanguageClass(object *gobject.Object) *LanguageClass {
+func CastToLanguageClass(object *gobject.Object) *LanguageClass {
 	return LanguageClassNewFromNative(object.Native())
 }
 
@@ -1942,7 +1942,7 @@ CastToLanguageManagerClass down casts any arbitrary Object to LanguageManagerCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a LanguageManagerClass.
 */
-func (recv *LanguageManagerClass) CastToLanguageManagerClass(object *gobject.Object) *LanguageManagerClass {
+func CastToLanguageManagerClass(object *gobject.Object) *LanguageManagerClass {
 	return LanguageManagerClassNewFromNative(object.Native())
 }
 
@@ -2011,7 +2011,7 @@ CastToLanguageManagerPrivate down casts any arbitrary Object to LanguageManagerP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a LanguageManagerPrivate.
 */
-func (recv *LanguageManagerPrivate) CastToLanguageManagerPrivate(object *gobject.Object) *LanguageManagerPrivate {
+func CastToLanguageManagerPrivate(object *gobject.Object) *LanguageManagerPrivate {
 	return LanguageManagerPrivateNewFromNative(object.Native())
 }
 
@@ -2060,7 +2060,7 @@ CastToLanguagePrivate down casts any arbitrary Object to LanguagePrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a LanguagePrivate.
 */
-func (recv *LanguagePrivate) CastToLanguagePrivate(object *gobject.Object) *LanguagePrivate {
+func CastToLanguagePrivate(object *gobject.Object) *LanguagePrivate {
 	return LanguagePrivateNewFromNative(object.Native())
 }
 
@@ -2109,7 +2109,7 @@ CastToMapClass down casts any arbitrary Object to MapClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MapClass.
 */
-func (recv *MapClass) CastToMapClass(object *gobject.Object) *MapClass {
+func CastToMapClass(object *gobject.Object) *MapClass {
 	return MapClassNewFromNative(object.Native())
 }
 
@@ -2176,7 +2176,7 @@ CastToMarkAttributesClass down casts any arbitrary Object to MarkAttributesClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MarkAttributesClass.
 */
-func (recv *MarkAttributesClass) CastToMarkAttributesClass(object *gobject.Object) *MarkAttributesClass {
+func CastToMarkAttributesClass(object *gobject.Object) *MarkAttributesClass {
 	return MarkAttributesClassNewFromNative(object.Native())
 }
 
@@ -2225,7 +2225,7 @@ CastToMarkAttributesPrivate down casts any arbitrary Object to MarkAttributesPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MarkAttributesPrivate.
 */
-func (recv *MarkAttributesPrivate) CastToMarkAttributesPrivate(object *gobject.Object) *MarkAttributesPrivate {
+func CastToMarkAttributesPrivate(object *gobject.Object) *MarkAttributesPrivate {
 	return MarkAttributesPrivateNewFromNative(object.Native())
 }
 
@@ -2274,7 +2274,7 @@ CastToMarkClass down casts any arbitrary Object to MarkClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MarkClass.
 */
-func (recv *MarkClass) CastToMarkClass(object *gobject.Object) *MarkClass {
+func CastToMarkClass(object *gobject.Object) *MarkClass {
 	return MarkClassNewFromNative(object.Native())
 }
 
@@ -2335,7 +2335,7 @@ CastToMarkPrivate down casts any arbitrary Object to MarkPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MarkPrivate.
 */
-func (recv *MarkPrivate) CastToMarkPrivate(object *gobject.Object) *MarkPrivate {
+func CastToMarkPrivate(object *gobject.Object) *MarkPrivate {
 	return MarkPrivateNewFromNative(object.Native())
 }
 
@@ -2384,7 +2384,7 @@ CastToPrintCompositorClass down casts any arbitrary Object to PrintCompositorCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PrintCompositorClass.
 */
-func (recv *PrintCompositorClass) CastToPrintCompositorClass(object *gobject.Object) *PrintCompositorClass {
+func CastToPrintCompositorClass(object *gobject.Object) *PrintCompositorClass {
 	return PrintCompositorClassNewFromNative(object.Native())
 }
 
@@ -2445,7 +2445,7 @@ CastToPrintCompositorPrivate down casts any arbitrary Object to PrintCompositorP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PrintCompositorPrivate.
 */
-func (recv *PrintCompositorPrivate) CastToPrintCompositorPrivate(object *gobject.Object) *PrintCompositorPrivate {
+func CastToPrintCompositorPrivate(object *gobject.Object) *PrintCompositorPrivate {
 	return PrintCompositorPrivateNewFromNative(object.Native())
 }
 
@@ -2494,7 +2494,7 @@ CastToRegionClass down casts any arbitrary Object to RegionClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RegionClass.
 */
-func (recv *RegionClass) CastToRegionClass(object *gobject.Object) *RegionClass {
+func CastToRegionClass(object *gobject.Object) *RegionClass {
 	return RegionClassNewFromNative(object.Native())
 }
 
@@ -2551,7 +2551,7 @@ CastToRegionIter down casts any arbitrary Object to RegionIter.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RegionIter.
 */
-func (recv *RegionIter) CastToRegionIter(object *gobject.Object) *RegionIter {
+func CastToRegionIter(object *gobject.Object) *RegionIter {
 	return RegionIterNewFromNative(object.Native())
 }
 
@@ -2666,7 +2666,7 @@ CastToSearchContextClass down casts any arbitrary Object to SearchContextClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SearchContextClass.
 */
-func (recv *SearchContextClass) CastToSearchContextClass(object *gobject.Object) *SearchContextClass {
+func CastToSearchContextClass(object *gobject.Object) *SearchContextClass {
 	return SearchContextClassNewFromNative(object.Native())
 }
 
@@ -2723,7 +2723,7 @@ CastToSearchContextPrivate down casts any arbitrary Object to SearchContextPriva
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SearchContextPrivate.
 */
-func (recv *SearchContextPrivate) CastToSearchContextPrivate(object *gobject.Object) *SearchContextPrivate {
+func CastToSearchContextPrivate(object *gobject.Object) *SearchContextPrivate {
 	return SearchContextPrivateNewFromNative(object.Native())
 }
 
@@ -2772,7 +2772,7 @@ CastToSearchSettingsClass down casts any arbitrary Object to SearchSettingsClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SearchSettingsClass.
 */
-func (recv *SearchSettingsClass) CastToSearchSettingsClass(object *gobject.Object) *SearchSettingsClass {
+func CastToSearchSettingsClass(object *gobject.Object) *SearchSettingsClass {
 	return SearchSettingsClassNewFromNative(object.Native())
 }
 
@@ -2829,7 +2829,7 @@ CastToSearchSettingsPrivate down casts any arbitrary Object to SearchSettingsPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SearchSettingsPrivate.
 */
-func (recv *SearchSettingsPrivate) CastToSearchSettingsPrivate(object *gobject.Object) *SearchSettingsPrivate {
+func CastToSearchSettingsPrivate(object *gobject.Object) *SearchSettingsPrivate {
 	return SearchSettingsPrivateNewFromNative(object.Native())
 }
 
@@ -2878,7 +2878,7 @@ CastToSpaceDrawerClass down casts any arbitrary Object to SpaceDrawerClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SpaceDrawerClass.
 */
-func (recv *SpaceDrawerClass) CastToSpaceDrawerClass(object *gobject.Object) *SpaceDrawerClass {
+func CastToSpaceDrawerClass(object *gobject.Object) *SpaceDrawerClass {
 	return SpaceDrawerClassNewFromNative(object.Native())
 }
 
@@ -2935,7 +2935,7 @@ CastToSpaceDrawerPrivate down casts any arbitrary Object to SpaceDrawerPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SpaceDrawerPrivate.
 */
-func (recv *SpaceDrawerPrivate) CastToSpaceDrawerPrivate(object *gobject.Object) *SpaceDrawerPrivate {
+func CastToSpaceDrawerPrivate(object *gobject.Object) *SpaceDrawerPrivate {
 	return SpaceDrawerPrivateNewFromNative(object.Native())
 }
 
@@ -2984,7 +2984,7 @@ CastToStyleClass down casts any arbitrary Object to StyleClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StyleClass.
 */
-func (recv *StyleClass) CastToStyleClass(object *gobject.Object) *StyleClass {
+func CastToStyleClass(object *gobject.Object) *StyleClass {
 	return StyleClassNewFromNative(object.Native())
 }
 
@@ -3033,7 +3033,7 @@ CastToStyleSchemeChooserButtonClass down casts any arbitrary Object to StyleSche
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StyleSchemeChooserButtonClass.
 */
-func (recv *StyleSchemeChooserButtonClass) CastToStyleSchemeChooserButtonClass(object *gobject.Object) *StyleSchemeChooserButtonClass {
+func CastToStyleSchemeChooserButtonClass(object *gobject.Object) *StyleSchemeChooserButtonClass {
 	return StyleSchemeChooserButtonClassNewFromNative(object.Native())
 }
 
@@ -3086,7 +3086,7 @@ CastToStyleSchemeChooserInterface down casts any arbitrary Object to StyleScheme
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StyleSchemeChooserInterface.
 */
-func (recv *StyleSchemeChooserInterface) CastToStyleSchemeChooserInterface(object *gobject.Object) *StyleSchemeChooserInterface {
+func CastToStyleSchemeChooserInterface(object *gobject.Object) *StyleSchemeChooserInterface {
 	return StyleSchemeChooserInterfaceNewFromNative(object.Native())
 }
 
@@ -3151,7 +3151,7 @@ CastToStyleSchemeChooserWidgetClass down casts any arbitrary Object to StyleSche
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StyleSchemeChooserWidgetClass.
 */
-func (recv *StyleSchemeChooserWidgetClass) CastToStyleSchemeChooserWidgetClass(object *gobject.Object) *StyleSchemeChooserWidgetClass {
+func CastToStyleSchemeChooserWidgetClass(object *gobject.Object) *StyleSchemeChooserWidgetClass {
 	return StyleSchemeChooserWidgetClassNewFromNative(object.Native())
 }
 
@@ -3204,7 +3204,7 @@ CastToStyleSchemeClass down casts any arbitrary Object to StyleSchemeClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StyleSchemeClass.
 */
-func (recv *StyleSchemeClass) CastToStyleSchemeClass(object *gobject.Object) *StyleSchemeClass {
+func CastToStyleSchemeClass(object *gobject.Object) *StyleSchemeClass {
 	return StyleSchemeClassNewFromNative(object.Native())
 }
 
@@ -3265,7 +3265,7 @@ CastToStyleSchemeManagerClass down casts any arbitrary Object to StyleSchemeMana
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StyleSchemeManagerClass.
 */
-func (recv *StyleSchemeManagerClass) CastToStyleSchemeManagerClass(object *gobject.Object) *StyleSchemeManagerClass {
+func CastToStyleSchemeManagerClass(object *gobject.Object) *StyleSchemeManagerClass {
 	return StyleSchemeManagerClassNewFromNative(object.Native())
 }
 
@@ -3334,7 +3334,7 @@ CastToStyleSchemeManagerPrivate down casts any arbitrary Object to StyleSchemeMa
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StyleSchemeManagerPrivate.
 */
-func (recv *StyleSchemeManagerPrivate) CastToStyleSchemeManagerPrivate(object *gobject.Object) *StyleSchemeManagerPrivate {
+func CastToStyleSchemeManagerPrivate(object *gobject.Object) *StyleSchemeManagerPrivate {
 	return StyleSchemeManagerPrivateNewFromNative(object.Native())
 }
 
@@ -3383,7 +3383,7 @@ CastToStyleSchemePrivate down casts any arbitrary Object to StyleSchemePrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StyleSchemePrivate.
 */
-func (recv *StyleSchemePrivate) CastToStyleSchemePrivate(object *gobject.Object) *StyleSchemePrivate {
+func CastToStyleSchemePrivate(object *gobject.Object) *StyleSchemePrivate {
 	return StyleSchemePrivateNewFromNative(object.Native())
 }
 
@@ -3432,7 +3432,7 @@ CastToTagClass down casts any arbitrary Object to TagClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TagClass.
 */
-func (recv *TagClass) CastToTagClass(object *gobject.Object) *TagClass {
+func CastToTagClass(object *gobject.Object) *TagClass {
 	return TagClassNewFromNative(object.Native())
 }
 
@@ -3489,7 +3489,7 @@ CastToUndoManagerIface down casts any arbitrary Object to UndoManagerIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UndoManagerIface.
 */
-func (recv *UndoManagerIface) CastToUndoManagerIface(object *gobject.Object) *UndoManagerIface {
+func CastToUndoManagerIface(object *gobject.Object) *UndoManagerIface {
 	return UndoManagerIfaceNewFromNative(object.Native())
 }
 
@@ -3574,7 +3574,7 @@ CastToViewClass down casts any arbitrary Object to ViewClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ViewClass.
 */
-func (recv *ViewClass) CastToViewClass(object *gobject.Object) *ViewClass {
+func CastToViewClass(object *gobject.Object) *ViewClass {
 	return ViewClassNewFromNative(object.Native())
 }
 
@@ -3651,7 +3651,7 @@ CastToViewPrivate down casts any arbitrary Object to ViewPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ViewPrivate.
 */
-func (recv *ViewPrivate) CastToViewPrivate(object *gobject.Object) *ViewPrivate {
+func CastToViewPrivate(object *gobject.Object) *ViewPrivate {
 	return ViewPrivateNewFromNative(object.Native())
 }
 

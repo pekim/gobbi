@@ -36,7 +36,7 @@ CastToActionIface down casts any arbitrary Object to ActionIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ActionIface.
 */
-func (recv *ActionIface) CastToActionIface(object *gobject.Object) *ActionIface {
+func CastToActionIface(object *gobject.Object) *ActionIface {
 	return ActionIfaceNewFromNative(object.Native())
 }
 
@@ -113,7 +113,7 @@ CastToAttribute down casts any arbitrary Object to Attribute.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Attribute.
 */
-func (recv *Attribute) CastToAttribute(object *gobject.Object) *Attribute {
+func CastToAttribute(object *gobject.Object) *Attribute {
 	return AttributeNewFromNative(object.Native())
 }
 
@@ -190,7 +190,7 @@ CastToComponentIface down casts any arbitrary Object to ComponentIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ComponentIface.
 */
-func (recv *ComponentIface) CastToComponentIface(object *gobject.Object) *ComponentIface {
+func CastToComponentIface(object *gobject.Object) *ComponentIface {
 	return ComponentIfaceNewFromNative(object.Native())
 }
 
@@ -307,7 +307,7 @@ CastToDocumentIface down casts any arbitrary Object to DocumentIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DocumentIface.
 */
-func (recv *DocumentIface) CastToDocumentIface(object *gobject.Object) *DocumentIface {
+func CastToDocumentIface(object *gobject.Object) *DocumentIface {
 	return DocumentIfaceNewFromNative(object.Native())
 }
 
@@ -392,7 +392,7 @@ CastToEditableTextIface down casts any arbitrary Object to EditableTextIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EditableTextIface.
 */
-func (recv *EditableTextIface) CastToEditableTextIface(object *gobject.Object) *EditableTextIface {
+func CastToEditableTextIface(object *gobject.Object) *EditableTextIface {
 	return EditableTextIfaceNewFromNative(object.Native())
 }
 
@@ -473,7 +473,7 @@ CastToGObjectAccessibleClass down casts any arbitrary Object to GObjectAccessibl
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GObjectAccessibleClass.
 */
-func (recv *GObjectAccessibleClass) CastToGObjectAccessibleClass(object *gobject.Object) *GObjectAccessibleClass {
+func CastToGObjectAccessibleClass(object *gobject.Object) *GObjectAccessibleClass {
 	return GObjectAccessibleClassNewFromNative(object.Native())
 }
 
@@ -544,7 +544,7 @@ CastToHyperlinkClass down casts any arbitrary Object to HyperlinkClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HyperlinkClass.
 */
-func (recv *HyperlinkClass) CastToHyperlinkClass(object *gobject.Object) *HyperlinkClass {
+func CastToHyperlinkClass(object *gobject.Object) *HyperlinkClass {
 	return HyperlinkClassNewFromNative(object.Native())
 }
 
@@ -637,7 +637,7 @@ CastToHyperlinkImplIface down casts any arbitrary Object to HyperlinkImplIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HyperlinkImplIface.
 */
-func (recv *HyperlinkImplIface) CastToHyperlinkImplIface(object *gobject.Object) *HyperlinkImplIface {
+func CastToHyperlinkImplIface(object *gobject.Object) *HyperlinkImplIface {
 	return HyperlinkImplIfaceNewFromNative(object.Native())
 }
 
@@ -694,7 +694,7 @@ CastToHypertextIface down casts any arbitrary Object to HypertextIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HypertextIface.
 */
-func (recv *HypertextIface) CastToHypertextIface(object *gobject.Object) *HypertextIface {
+func CastToHypertextIface(object *gobject.Object) *HypertextIface {
 	return HypertextIfaceNewFromNative(object.Native())
 }
 
@@ -763,7 +763,7 @@ CastToImageIface down casts any arbitrary Object to ImageIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ImageIface.
 */
-func (recv *ImageIface) CastToImageIface(object *gobject.Object) *ImageIface {
+func CastToImageIface(object *gobject.Object) *ImageIface {
 	return ImageIfaceNewFromNative(object.Native())
 }
 
@@ -836,7 +836,7 @@ CastToImplementor down casts any arbitrary Object to Implementor.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Implementor.
 */
-func (recv *Implementor) CastToImplementor(object *gobject.Object) *Implementor {
+func CastToImplementor(object *gobject.Object) *Implementor {
 	return ImplementorNewFromNative(object.Native())
 }
 
@@ -917,7 +917,7 @@ CastToKeyEventStruct down casts any arbitrary Object to KeyEventStruct.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a KeyEventStruct.
 */
-func (recv *KeyEventStruct) CastToKeyEventStruct(object *gobject.Object) *KeyEventStruct {
+func CastToKeyEventStruct(object *gobject.Object) *KeyEventStruct {
 	return KeyEventStructNewFromNative(object.Native())
 }
 
@@ -1064,7 +1064,7 @@ CastToMiscClass down casts any arbitrary Object to MiscClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MiscClass.
 */
-func (recv *MiscClass) CastToMiscClass(object *gobject.Object) *MiscClass {
+func CastToMiscClass(object *gobject.Object) *MiscClass {
 	return MiscClassNewFromNative(object.Native())
 }
 
@@ -1129,7 +1129,7 @@ CastToNoOpObjectClass down casts any arbitrary Object to NoOpObjectClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NoOpObjectClass.
 */
-func (recv *NoOpObjectClass) CastToNoOpObjectClass(object *gobject.Object) *NoOpObjectClass {
+func CastToNoOpObjectClass(object *gobject.Object) *NoOpObjectClass {
 	return NoOpObjectClassNewFromNative(object.Native())
 }
 
@@ -1192,7 +1192,7 @@ CastToNoOpObjectFactoryClass down casts any arbitrary Object to NoOpObjectFactor
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NoOpObjectFactoryClass.
 */
-func (recv *NoOpObjectFactoryClass) CastToNoOpObjectFactoryClass(object *gobject.Object) *NoOpObjectFactoryClass {
+func CastToNoOpObjectFactoryClass(object *gobject.Object) *NoOpObjectFactoryClass {
 	return NoOpObjectFactoryClassNewFromNative(object.Native())
 }
 
@@ -1255,7 +1255,7 @@ CastToObjectClass down casts any arbitrary Object to ObjectClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ObjectClass.
 */
-func (recv *ObjectClass) CastToObjectClass(object *gobject.Object) *ObjectClass {
+func CastToObjectClass(object *gobject.Object) *ObjectClass {
 	return ObjectClassNewFromNative(object.Native())
 }
 
@@ -1416,7 +1416,7 @@ CastToObjectFactoryClass down casts any arbitrary Object to ObjectFactoryClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ObjectFactoryClass.
 */
-func (recv *ObjectFactoryClass) CastToObjectFactoryClass(object *gobject.Object) *ObjectFactoryClass {
+func CastToObjectFactoryClass(object *gobject.Object) *ObjectFactoryClass {
 	return ObjectFactoryClassNewFromNative(object.Native())
 }
 
@@ -1489,7 +1489,7 @@ CastToPlugClass down casts any arbitrary Object to PlugClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PlugClass.
 */
-func (recv *PlugClass) CastToPlugClass(object *gobject.Object) *PlugClass {
+func CastToPlugClass(object *gobject.Object) *PlugClass {
 	return PlugClassNewFromNative(object.Native())
 }
 
@@ -1556,7 +1556,7 @@ CastToPropertyValues down casts any arbitrary Object to PropertyValues.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PropertyValues.
 */
-func (recv *PropertyValues) CastToPropertyValues(object *gobject.Object) *PropertyValues {
+func CastToPropertyValues(object *gobject.Object) *PropertyValues {
 	return PropertyValuesNewFromNative(object.Native())
 }
 
@@ -1627,7 +1627,7 @@ CastToRange down casts any arbitrary Object to Range.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Range.
 */
-func (recv *Range) CastToRange(object *gobject.Object) *Range {
+func CastToRange(object *gobject.Object) *Range {
 	return RangeNewFromNative(object.Native())
 }
 
@@ -1851,7 +1851,7 @@ CastToRectangle down casts any arbitrary Object to Rectangle.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Rectangle.
 */
-func (recv *Rectangle) CastToRectangle(object *gobject.Object) *Rectangle {
+func CastToRectangle(object *gobject.Object) *Rectangle {
 	return RectangleNewFromNative(object.Native())
 }
 
@@ -1956,7 +1956,7 @@ CastToRegistryClass down casts any arbitrary Object to RegistryClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RegistryClass.
 */
-func (recv *RegistryClass) CastToRegistryClass(object *gobject.Object) *RegistryClass {
+func CastToRegistryClass(object *gobject.Object) *RegistryClass {
 	return RegistryClassNewFromNative(object.Native())
 }
 
@@ -2009,7 +2009,7 @@ CastToRelationClass down casts any arbitrary Object to RelationClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RelationClass.
 */
-func (recv *RelationClass) CastToRelationClass(object *gobject.Object) *RelationClass {
+func CastToRelationClass(object *gobject.Object) *RelationClass {
 	return RelationClassNewFromNative(object.Native())
 }
 
@@ -2062,7 +2062,7 @@ CastToRelationSetClass down casts any arbitrary Object to RelationSetClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RelationSetClass.
 */
-func (recv *RelationSetClass) CastToRelationSetClass(object *gobject.Object) *RelationSetClass {
+func CastToRelationSetClass(object *gobject.Object) *RelationSetClass {
 	return RelationSetClassNewFromNative(object.Native())
 }
 
@@ -2123,7 +2123,7 @@ CastToSelectionIface down casts any arbitrary Object to SelectionIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SelectionIface.
 */
-func (recv *SelectionIface) CastToSelectionIface(object *gobject.Object) *SelectionIface {
+func CastToSelectionIface(object *gobject.Object) *SelectionIface {
 	return SelectionIfaceNewFromNative(object.Native())
 }
 
@@ -2208,7 +2208,7 @@ CastToSocketClass down casts any arbitrary Object to SocketClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketClass.
 */
-func (recv *SocketClass) CastToSocketClass(object *gobject.Object) *SocketClass {
+func CastToSocketClass(object *gobject.Object) *SocketClass {
 	return SocketClassNewFromNative(object.Native())
 }
 
@@ -2275,7 +2275,7 @@ CastToStateSetClass down casts any arbitrary Object to StateSetClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StateSetClass.
 */
-func (recv *StateSetClass) CastToStateSetClass(object *gobject.Object) *StateSetClass {
+func CastToStateSetClass(object *gobject.Object) *StateSetClass {
 	return StateSetClassNewFromNative(object.Native())
 }
 
@@ -2328,7 +2328,7 @@ CastToStreamableContentIface down casts any arbitrary Object to StreamableConten
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StreamableContentIface.
 */
-func (recv *StreamableContentIface) CastToStreamableContentIface(object *gobject.Object) *StreamableContentIface {
+func CastToStreamableContentIface(object *gobject.Object) *StreamableContentIface {
 	return StreamableContentIfaceNewFromNative(object.Native())
 }
 
@@ -2409,7 +2409,7 @@ CastToTableCellIface down casts any arbitrary Object to TableCellIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TableCellIface.
 */
-func (recv *TableCellIface) CastToTableCellIface(object *gobject.Object) *TableCellIface {
+func CastToTableCellIface(object *gobject.Object) *TableCellIface {
 	return TableCellIfaceNewFromNative(object.Native())
 }
 
@@ -2486,7 +2486,7 @@ CastToTableIface down casts any arbitrary Object to TableIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TableIface.
 */
-func (recv *TableIface) CastToTableIface(object *gobject.Object) *TableIface {
+func CastToTableIface(object *gobject.Object) *TableIface {
 	return TableIfaceNewFromNative(object.Native())
 }
 
@@ -2683,7 +2683,7 @@ CastToTextIface down casts any arbitrary Object to TextIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TextIface.
 */
-func (recv *TextIface) CastToTextIface(object *gobject.Object) *TextIface {
+func CastToTextIface(object *gobject.Object) *TextIface {
 	return TextIfaceNewFromNative(object.Native())
 }
 
@@ -2840,7 +2840,7 @@ CastToTextRange down casts any arbitrary Object to TextRange.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TextRange.
 */
-func (recv *TextRange) CastToTextRange(object *gobject.Object) *TextRange {
+func CastToTextRange(object *gobject.Object) *TextRange {
 	return TextRangeNewFromNative(object.Native())
 }
 
@@ -2945,7 +2945,7 @@ CastToTextRectangle down casts any arbitrary Object to TextRectangle.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TextRectangle.
 */
-func (recv *TextRectangle) CastToTextRectangle(object *gobject.Object) *TextRectangle {
+func CastToTextRectangle(object *gobject.Object) *TextRectangle {
 	return TextRectangleNewFromNative(object.Native())
 }
 
@@ -3050,7 +3050,7 @@ CastToUtilClass down casts any arbitrary Object to UtilClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UtilClass.
 */
-func (recv *UtilClass) CastToUtilClass(object *gobject.Object) *UtilClass {
+func CastToUtilClass(object *gobject.Object) *UtilClass {
 	return UtilClassNewFromNative(object.Native())
 }
 
@@ -3131,7 +3131,7 @@ CastToValueIface down casts any arbitrary Object to ValueIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ValueIface.
 */
-func (recv *ValueIface) CastToValueIface(object *gobject.Object) *ValueIface {
+func CastToValueIface(object *gobject.Object) *ValueIface {
 	return ValueIfaceNewFromNative(object.Native())
 }
 
@@ -3224,7 +3224,7 @@ CastToWindowIface down casts any arbitrary Object to WindowIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WindowIface.
 */
-func (recv *WindowIface) CastToWindowIface(object *gobject.Object) *WindowIface {
+func CastToWindowIface(object *gobject.Object) *WindowIface {
 	return WindowIfaceNewFromNative(object.Native())
 }
 

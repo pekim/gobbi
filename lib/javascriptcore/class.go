@@ -52,7 +52,7 @@ CastToClass down casts any arbitrary Object to Class.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Class.
 */
-func (recv *Class) CastToClass(object *gobject.Object) *Class {
+func CastToClass(object *gobject.Object) *Class {
 	return ClassNewFromNative(object.Native())
 }
 
@@ -180,7 +180,7 @@ CastToContext down casts any arbitrary Object to Context.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Context.
 */
-func (recv *Context) CastToContext(object *gobject.Object) *Context {
+func CastToContext(object *gobject.Object) *Context {
 	return ContextNewFromNative(object.Native())
 }
 
@@ -732,7 +732,7 @@ CastToException down casts any arbitrary Object to Exception.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Exception.
 */
-func (recv *Exception) CastToException(object *gobject.Object) *Exception {
+func CastToException(object *gobject.Object) *Exception {
 	return ExceptionNewFromNative(object.Native())
 }
 
@@ -1131,7 +1131,7 @@ CastToValue down casts any arbitrary Object to Value.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Value.
 */
-func (recv *Value) CastToValue(object *gobject.Object) *Value {
+func CastToValue(object *gobject.Object) *Value {
 	return ValueNewFromNative(object.Native())
 }
 
@@ -2103,7 +2103,7 @@ CastToVirtualMachine down casts any arbitrary Object to VirtualMachine.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VirtualMachine.
 */
-func (recv *VirtualMachine) CastToVirtualMachine(object *gobject.Object) *VirtualMachine {
+func CastToVirtualMachine(object *gobject.Object) *VirtualMachine {
 	return VirtualMachineNewFromNative(object.Native())
 }
 
@@ -2199,7 +2199,7 @@ CastToWeakValue down casts any arbitrary Object to WeakValue.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WeakValue.
 */
-func (recv *WeakValue) CastToWeakValue(object *gobject.Object) *WeakValue {
+func CastToWeakValue(object *gobject.Object) *WeakValue {
 	return WeakValueNewFromNative(object.Native())
 }
 

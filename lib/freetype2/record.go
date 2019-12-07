@@ -36,7 +36,7 @@ CastToBitmap down casts any arbitrary Object to Bitmap.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Bitmap.
 */
-func (recv *Bitmap) CastToBitmap(object *gobject.Object) *Bitmap {
+func CastToBitmap(object *gobject.Object) *Bitmap {
 	return BitmapNewFromNative(object.Native())
 }
 
@@ -85,7 +85,7 @@ CastToFace down casts any arbitrary Object to Face.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Face.
 */
-func (recv *Face) CastToFace(object *gobject.Object) *Face {
+func CastToFace(object *gobject.Object) *Face {
 	return FaceNewFromNative(object.Native())
 }
 
@@ -134,7 +134,7 @@ CastToLibrary down casts any arbitrary Object to Library.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Library.
 */
-func (recv *Library) CastToLibrary(object *gobject.Object) *Library {
+func CastToLibrary(object *gobject.Object) *Library {
 	return LibraryNewFromNative(object.Native())
 }
 

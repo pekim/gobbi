@@ -88,7 +88,7 @@ CastToAboutDialog down casts any arbitrary Object to AboutDialog.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AboutDialog.
 */
-func (recv *AboutDialog) CastToAboutDialog(object *gobject.Object) *AboutDialog {
+func CastToAboutDialog(object *gobject.Object) *AboutDialog {
 	return AboutDialogNewFromNative(object.Native())
 }
 
@@ -1006,7 +1006,7 @@ CastToAccelGroup down casts any arbitrary Object to AccelGroup.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AccelGroup.
 */
-func (recv *AccelGroup) CastToAccelGroup(object *gobject.Object) *AccelGroup {
+func CastToAccelGroup(object *gobject.Object) *AccelGroup {
 	return AccelGroupNewFromNative(object.Native())
 }
 
@@ -1240,7 +1240,7 @@ CastToAccelLabel down casts any arbitrary Object to AccelLabel.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AccelLabel.
 */
-func (recv *AccelLabel) CastToAccelLabel(object *gobject.Object) *AccelLabel {
+func CastToAccelLabel(object *gobject.Object) *AccelLabel {
 	return AccelLabelNewFromNative(object.Native())
 }
 
@@ -1481,7 +1481,7 @@ CastToAccelMap down casts any arbitrary Object to AccelMap.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AccelMap.
 */
-func (recv *AccelMap) CastToAccelMap(object *gobject.Object) *AccelMap {
+func CastToAccelMap(object *gobject.Object) *AccelMap {
 	return AccelMapNewFromNative(object.Native())
 }
 
@@ -1536,7 +1536,7 @@ CastToAccessible down casts any arbitrary Object to Accessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Accessible.
 */
-func (recv *Accessible) CastToAccessible(object *gobject.Object) *Accessible {
+func CastToAccessible(object *gobject.Object) *Accessible {
 	return AccessibleNewFromNative(object.Native())
 }
 
@@ -1689,7 +1689,7 @@ CastToAction down casts any arbitrary Object to Action.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Action.
 */
-func (recv *Action) CastToAction(object *gobject.Object) *Action {
+func CastToAction(object *gobject.Object) *Action {
 	return ActionNewFromNative(object.Native())
 }
 
@@ -2944,7 +2944,7 @@ CastToActionBar down casts any arbitrary Object to ActionBar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ActionBar.
 */
-func (recv *ActionBar) CastToActionBar(object *gobject.Object) *ActionBar {
+func CastToActionBar(object *gobject.Object) *ActionBar {
 	return ActionBarNewFromNative(object.Native())
 }
 
@@ -3143,7 +3143,7 @@ CastToActionGroup down casts any arbitrary Object to ActionGroup.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ActionGroup.
 */
-func (recv *ActionGroup) CastToActionGroup(object *gobject.Object) *ActionGroup {
+func CastToActionGroup(object *gobject.Object) *ActionGroup {
 	return ActionGroupNewFromNative(object.Native())
 }
 
@@ -3660,7 +3660,7 @@ CastToAdjustment down casts any arbitrary Object to Adjustment.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Adjustment.
 */
-func (recv *Adjustment) CastToAdjustment(object *gobject.Object) *Adjustment {
+func CastToAdjustment(object *gobject.Object) *Adjustment {
 	return AdjustmentNewFromNative(object.Native())
 }
 
@@ -4313,7 +4313,7 @@ CastToAlignment down casts any arbitrary Object to Alignment.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Alignment.
 */
-func (recv *Alignment) CastToAlignment(object *gobject.Object) *Alignment {
+func CastToAlignment(object *gobject.Object) *Alignment {
 	return AlignmentNewFromNative(object.Native())
 }
 
@@ -4536,7 +4536,7 @@ CastToAppChooserButton down casts any arbitrary Object to AppChooserButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AppChooserButton.
 */
-func (recv *AppChooserButton) CastToAppChooserButton(object *gobject.Object) *AppChooserButton {
+func CastToAppChooserButton(object *gobject.Object) *AppChooserButton {
 	return AppChooserButtonNewFromNative(object.Native())
 }
 
@@ -4904,7 +4904,7 @@ CastToAppChooserDialog down casts any arbitrary Object to AppChooserDialog.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AppChooserDialog.
 */
-func (recv *AppChooserDialog) CastToAppChooserDialog(object *gobject.Object) *AppChooserDialog {
+func CastToAppChooserDialog(object *gobject.Object) *AppChooserDialog {
 	return AppChooserDialogNewFromNative(object.Native())
 }
 
@@ -5085,7 +5085,7 @@ CastToAppChooserWidget down casts any arbitrary Object to AppChooserWidget.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AppChooserWidget.
 */
-func (recv *AppChooserWidget) CastToAppChooserWidget(object *gobject.Object) *AppChooserWidget {
+func CastToAppChooserWidget(object *gobject.Object) *AppChooserWidget {
 	return AppChooserWidgetNewFromNative(object.Native())
 }
 
@@ -5552,7 +5552,7 @@ CastToApplication down casts any arbitrary Object to Application.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Application.
 */
-func (recv *Application) CastToApplication(object *gobject.Object) *Application {
+func CastToApplication(object *gobject.Object) *Application {
 	return ApplicationNewFromNative(object.Native())
 }
 
@@ -6080,7 +6080,7 @@ CastToApplicationWindow down casts any arbitrary Object to ApplicationWindow.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ApplicationWindow.
 */
-func (recv *ApplicationWindow) CastToApplicationWindow(object *gobject.Object) *ApplicationWindow {
+func CastToApplicationWindow(object *gobject.Object) *ApplicationWindow {
 	return ApplicationWindowNewFromNative(object.Native())
 }
 
@@ -6345,7 +6345,7 @@ CastToArrow down casts any arbitrary Object to Arrow.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Arrow.
 */
-func (recv *Arrow) CastToArrow(object *gobject.Object) *Arrow {
+func CastToArrow(object *gobject.Object) *Arrow {
 	return ArrowNewFromNative(object.Native())
 }
 
@@ -6487,7 +6487,7 @@ CastToArrowAccessible down casts any arbitrary Object to ArrowAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ArrowAccessible.
 */
-func (recv *ArrowAccessible) CastToArrowAccessible(object *gobject.Object) *ArrowAccessible {
+func CastToArrowAccessible(object *gobject.Object) *ArrowAccessible {
 	return ArrowAccessibleNewFromNative(object.Native())
 }
 
@@ -6590,7 +6590,7 @@ CastToAspectFrame down casts any arbitrary Object to AspectFrame.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AspectFrame.
 */
-func (recv *AspectFrame) CastToAspectFrame(object *gobject.Object) *AspectFrame {
+func CastToAspectFrame(object *gobject.Object) *AspectFrame {
 	return AspectFrameNewFromNative(object.Native())
 }
 
@@ -6747,7 +6747,7 @@ CastToAssistant down casts any arbitrary Object to Assistant.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Assistant.
 */
-func (recv *Assistant) CastToAssistant(object *gobject.Object) *Assistant {
+func CastToAssistant(object *gobject.Object) *Assistant {
 	return AssistantNewFromNative(object.Native())
 }
 
@@ -7661,7 +7661,7 @@ CastToBin down casts any arbitrary Object to Bin.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Bin.
 */
-func (recv *Bin) CastToBin(object *gobject.Object) *Bin {
+func CastToBin(object *gobject.Object) *Bin {
 	return BinNewFromNative(object.Native())
 }
 
@@ -7777,7 +7777,7 @@ CastToBooleanCellAccessible down casts any arbitrary Object to BooleanCellAccess
 Exercise care, as this is a potentially dangerous function
 if the Object is not a BooleanCellAccessible.
 */
-func (recv *BooleanCellAccessible) CastToBooleanCellAccessible(object *gobject.Object) *BooleanCellAccessible {
+func CastToBooleanCellAccessible(object *gobject.Object) *BooleanCellAccessible {
 	return BooleanCellAccessibleNewFromNative(object.Native())
 }
 
@@ -7870,7 +7870,7 @@ CastToBox down casts any arbitrary Object to Box.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Box.
 */
-func (recv *Box) CastToBox(object *gobject.Object) *Box {
+func CastToBox(object *gobject.Object) *Box {
 	return BoxNewFromNative(object.Native())
 }
 
@@ -8374,7 +8374,7 @@ CastToBuilder down casts any arbitrary Object to Builder.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Builder.
 */
-func (recv *Builder) CastToBuilder(object *gobject.Object) *Builder {
+func CastToBuilder(object *gobject.Object) *Builder {
 	return BuilderNewFromNative(object.Native())
 }
 
@@ -8918,7 +8918,7 @@ CastToButton down casts any arbitrary Object to Button.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Button.
 */
-func (recv *Button) CastToButton(object *gobject.Object) *Button {
+func CastToButton(object *gobject.Object) *Button {
 	return ButtonNewFromNative(object.Native())
 }
 
@@ -9870,7 +9870,7 @@ CastToButtonAccessible down casts any arbitrary Object to ButtonAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ButtonAccessible.
 */
-func (recv *ButtonAccessible) CastToButtonAccessible(object *gobject.Object) *ButtonAccessible {
+func CastToButtonAccessible(object *gobject.Object) *ButtonAccessible {
 	return ButtonAccessibleNewFromNative(object.Native())
 }
 
@@ -9968,7 +9968,7 @@ CastToButtonBox down casts any arbitrary Object to ButtonBox.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ButtonBox.
 */
-func (recv *ButtonBox) CastToButtonBox(object *gobject.Object) *ButtonBox {
+func CastToButtonBox(object *gobject.Object) *ButtonBox {
 	return ButtonBoxNewFromNative(object.Native())
 }
 
@@ -10261,7 +10261,7 @@ CastToCalendar down casts any arbitrary Object to Calendar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Calendar.
 */
-func (recv *Calendar) CastToCalendar(object *gobject.Object) *Calendar {
+func CastToCalendar(object *gobject.Object) *Calendar {
 	return CalendarNewFromNative(object.Native())
 }
 
@@ -10719,7 +10719,7 @@ CastToCellAccessible down casts any arbitrary Object to CellAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellAccessible.
 */
-func (recv *CellAccessible) CastToCellAccessible(object *gobject.Object) *CellAccessible {
+func CastToCellAccessible(object *gobject.Object) *CellAccessible {
 	return CellAccessibleNewFromNative(object.Native())
 }
 
@@ -10802,7 +10802,7 @@ CastToCellArea down casts any arbitrary Object to CellArea.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellArea.
 */
-func (recv *CellArea) CastToCellArea(object *gobject.Object) *CellArea {
+func CastToCellArea(object *gobject.Object) *CellArea {
 	return CellAreaNewFromNative(object.Native())
 }
 
@@ -11708,7 +11708,7 @@ CastToCellAreaBox down casts any arbitrary Object to CellAreaBox.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellAreaBox.
 */
-func (recv *CellAreaBox) CastToCellAreaBox(object *gobject.Object) *CellAreaBox {
+func CastToCellAreaBox(object *gobject.Object) *CellAreaBox {
 	return CellAreaBoxNewFromNative(object.Native())
 }
 
@@ -11913,7 +11913,7 @@ CastToCellAreaContext down casts any arbitrary Object to CellAreaContext.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellAreaContext.
 */
-func (recv *CellAreaContext) CastToCellAreaContext(object *gobject.Object) *CellAreaContext {
+func CastToCellAreaContext(object *gobject.Object) *CellAreaContext {
 	return CellAreaContextNewFromNative(object.Native())
 }
 
@@ -12285,7 +12285,7 @@ CastToCellRenderer down casts any arbitrary Object to CellRenderer.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellRenderer.
 */
-func (recv *CellRenderer) CastToCellRenderer(object *gobject.Object) *CellRenderer {
+func CastToCellRenderer(object *gobject.Object) *CellRenderer {
 	return CellRendererNewFromNative(object.Native())
 }
 
@@ -12952,7 +12952,7 @@ CastToCellRendererAccel down casts any arbitrary Object to CellRendererAccel.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellRendererAccel.
 */
-func (recv *CellRendererAccel) CastToCellRendererAccel(object *gobject.Object) *CellRendererAccel {
+func CastToCellRendererAccel(object *gobject.Object) *CellRendererAccel {
 	return CellRendererAccelNewFromNative(object.Native())
 }
 
@@ -13061,7 +13061,7 @@ CastToCellRendererCombo down casts any arbitrary Object to CellRendererCombo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellRendererCombo.
 */
-func (recv *CellRendererCombo) CastToCellRendererCombo(object *gobject.Object) *CellRendererCombo {
+func CastToCellRendererCombo(object *gobject.Object) *CellRendererCombo {
 	return CellRendererComboNewFromNative(object.Native())
 }
 
@@ -13165,7 +13165,7 @@ CastToCellRendererPixbuf down casts any arbitrary Object to CellRendererPixbuf.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellRendererPixbuf.
 */
-func (recv *CellRendererPixbuf) CastToCellRendererPixbuf(object *gobject.Object) *CellRendererPixbuf {
+func CastToCellRendererPixbuf(object *gobject.Object) *CellRendererPixbuf {
 	return CellRendererPixbufNewFromNative(object.Native())
 }
 
@@ -13269,7 +13269,7 @@ CastToCellRendererProgress down casts any arbitrary Object to CellRendererProgre
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellRendererProgress.
 */
-func (recv *CellRendererProgress) CastToCellRendererProgress(object *gobject.Object) *CellRendererProgress {
+func CastToCellRendererProgress(object *gobject.Object) *CellRendererProgress {
 	return CellRendererProgressNewFromNative(object.Native())
 }
 
@@ -13378,7 +13378,7 @@ CastToCellRendererSpin down casts any arbitrary Object to CellRendererSpin.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellRendererSpin.
 */
-func (recv *CellRendererSpin) CastToCellRendererSpin(object *gobject.Object) *CellRendererSpin {
+func CastToCellRendererSpin(object *gobject.Object) *CellRendererSpin {
 	return CellRendererSpinNewFromNative(object.Native())
 }
 
@@ -13482,7 +13482,7 @@ CastToCellRendererSpinner down casts any arbitrary Object to CellRendererSpinner
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellRendererSpinner.
 */
-func (recv *CellRendererSpinner) CastToCellRendererSpinner(object *gobject.Object) *CellRendererSpinner {
+func CastToCellRendererSpinner(object *gobject.Object) *CellRendererSpinner {
 	return CellRendererSpinnerNewFromNative(object.Native())
 }
 
@@ -13586,7 +13586,7 @@ CastToCellRendererText down casts any arbitrary Object to CellRendererText.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellRendererText.
 */
-func (recv *CellRendererText) CastToCellRendererText(object *gobject.Object) *CellRendererText {
+func CastToCellRendererText(object *gobject.Object) *CellRendererText {
 	return CellRendererTextNewFromNative(object.Native())
 }
 
@@ -13719,7 +13719,7 @@ CastToCellRendererToggle down casts any arbitrary Object to CellRendererToggle.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellRendererToggle.
 */
-func (recv *CellRendererToggle) CastToCellRendererToggle(object *gobject.Object) *CellRendererToggle {
+func CastToCellRendererToggle(object *gobject.Object) *CellRendererToggle {
 	return CellRendererToggleNewFromNative(object.Native())
 }
 
@@ -14006,7 +14006,7 @@ CastToCellView down casts any arbitrary Object to CellView.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CellView.
 */
-func (recv *CellView) CastToCellView(object *gobject.Object) *CellView {
+func CastToCellView(object *gobject.Object) *CellView {
 	return CellViewNewFromNative(object.Native())
 }
 
@@ -14485,7 +14485,7 @@ CastToCheckButton down casts any arbitrary Object to CheckButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CheckButton.
 */
-func (recv *CheckButton) CastToCheckButton(object *gobject.Object) *CheckButton {
+func CastToCheckButton(object *gobject.Object) *CheckButton {
 	return CheckButtonNewFromNative(object.Native())
 }
 
@@ -14668,7 +14668,7 @@ CastToCheckMenuItem down casts any arbitrary Object to CheckMenuItem.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CheckMenuItem.
 */
-func (recv *CheckMenuItem) CastToCheckMenuItem(object *gobject.Object) *CheckMenuItem {
+func CastToCheckMenuItem(object *gobject.Object) *CheckMenuItem {
 	return CheckMenuItemNewFromNative(object.Native())
 }
 
@@ -15062,7 +15062,7 @@ CastToCheckMenuItemAccessible down casts any arbitrary Object to CheckMenuItemAc
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CheckMenuItemAccessible.
 */
-func (recv *CheckMenuItemAccessible) CastToCheckMenuItemAccessible(object *gobject.Object) *CheckMenuItemAccessible {
+func CastToCheckMenuItemAccessible(object *gobject.Object) *CheckMenuItemAccessible {
 	return CheckMenuItemAccessibleNewFromNative(object.Native())
 }
 
@@ -15140,7 +15140,7 @@ CastToClipboard down casts any arbitrary Object to Clipboard.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Clipboard.
 */
-func (recv *Clipboard) CastToClipboard(object *gobject.Object) *Clipboard {
+func CastToClipboard(object *gobject.Object) *Clipboard {
 	return ClipboardNewFromNative(object.Native())
 }
 
@@ -15643,7 +15643,7 @@ CastToColorButton down casts any arbitrary Object to ColorButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ColorButton.
 */
-func (recv *ColorButton) CastToColorButton(object *gobject.Object) *ColorButton {
+func CastToColorButton(object *gobject.Object) *ColorButton {
 	return ColorButtonNewFromNative(object.Native())
 }
 
@@ -15962,7 +15962,7 @@ CastToColorChooserDialog down casts any arbitrary Object to ColorChooserDialog.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ColorChooserDialog.
 */
-func (recv *ColorChooserDialog) CastToColorChooserDialog(object *gobject.Object) *ColorChooserDialog {
+func CastToColorChooserDialog(object *gobject.Object) *ColorChooserDialog {
 	return ColorChooserDialogNewFromNative(object.Native())
 }
 
@@ -16079,7 +16079,7 @@ CastToColorChooserWidget down casts any arbitrary Object to ColorChooserWidget.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ColorChooserWidget.
 */
-func (recv *ColorChooserWidget) CastToColorChooserWidget(object *gobject.Object) *ColorChooserWidget {
+func CastToColorChooserWidget(object *gobject.Object) *ColorChooserWidget {
 	return ColorChooserWidgetNewFromNative(object.Native())
 }
 
@@ -16193,7 +16193,7 @@ CastToColorSelection down casts any arbitrary Object to ColorSelection.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ColorSelection.
 */
-func (recv *ColorSelection) CastToColorSelection(object *gobject.Object) *ColorSelection {
+func CastToColorSelection(object *gobject.Object) *ColorSelection {
 	return ColorSelectionNewFromNative(object.Native())
 }
 
@@ -16609,7 +16609,7 @@ CastToColorSelectionDialog down casts any arbitrary Object to ColorSelectionDial
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ColorSelectionDialog.
 */
-func (recv *ColorSelectionDialog) CastToColorSelectionDialog(object *gobject.Object) *ColorSelectionDialog {
+func CastToColorSelectionDialog(object *gobject.Object) *ColorSelectionDialog {
 	return ColorSelectionDialogNewFromNative(object.Native())
 }
 
@@ -16757,7 +16757,7 @@ CastToComboBox down casts any arbitrary Object to ComboBox.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ComboBox.
 */
-func (recv *ComboBox) CastToComboBox(object *gobject.Object) *ComboBox {
+func CastToComboBox(object *gobject.Object) *ComboBox {
 	return ComboBoxNewFromNative(object.Native())
 }
 
@@ -17925,7 +17925,7 @@ CastToComboBoxAccessible down casts any arbitrary Object to ComboBoxAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ComboBoxAccessible.
 */
-func (recv *ComboBoxAccessible) CastToComboBoxAccessible(object *gobject.Object) *ComboBoxAccessible {
+func CastToComboBoxAccessible(object *gobject.Object) *ComboBoxAccessible {
 	return ComboBoxAccessibleNewFromNative(object.Native())
 }
 
@@ -18028,7 +18028,7 @@ CastToComboBoxText down casts any arbitrary Object to ComboBoxText.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ComboBoxText.
 */
-func (recv *ComboBoxText) CastToComboBoxText(object *gobject.Object) *ComboBoxText {
+func CastToComboBoxText(object *gobject.Object) *ComboBoxText {
 	return ComboBoxTextNewFromNative(object.Native())
 }
 
@@ -18416,7 +18416,7 @@ CastToContainer down casts any arbitrary Object to Container.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Container.
 */
-func (recv *Container) CastToContainer(object *gobject.Object) *Container {
+func CastToContainer(object *gobject.Object) *Container {
 	return ContainerNewFromNative(object.Native())
 }
 
@@ -19092,7 +19092,7 @@ CastToContainerAccessible down casts any arbitrary Object to ContainerAccessible
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ContainerAccessible.
 */
-func (recv *ContainerAccessible) CastToContainerAccessible(object *gobject.Object) *ContainerAccessible {
+func CastToContainerAccessible(object *gobject.Object) *ContainerAccessible {
 	return ContainerAccessibleNewFromNative(object.Native())
 }
 
@@ -19185,7 +19185,7 @@ CastToContainerCellAccessible down casts any arbitrary Object to ContainerCellAc
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ContainerCellAccessible.
 */
-func (recv *ContainerCellAccessible) CastToContainerCellAccessible(object *gobject.Object) *ContainerCellAccessible {
+func CastToContainerCellAccessible(object *gobject.Object) *ContainerCellAccessible {
 	return ContainerCellAccessibleNewFromNative(object.Native())
 }
 
@@ -19355,7 +19355,7 @@ CastToCssProvider down casts any arbitrary Object to CssProvider.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CssProvider.
 */
-func (recv *CssProvider) CastToCssProvider(object *gobject.Object) *CssProvider {
+func CastToCssProvider(object *gobject.Object) *CssProvider {
 	return CssProviderNewFromNative(object.Native())
 }
 
@@ -19588,7 +19588,7 @@ CastToDialog down casts any arbitrary Object to Dialog.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Dialog.
 */
-func (recv *Dialog) CastToDialog(object *gobject.Object) *Dialog {
+func CastToDialog(object *gobject.Object) *Dialog {
 	return DialogNewFromNative(object.Native())
 }
 
@@ -20046,7 +20046,7 @@ CastToDrawingArea down casts any arbitrary Object to DrawingArea.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DrawingArea.
 */
-func (recv *DrawingArea) CastToDrawingArea(object *gobject.Object) *DrawingArea {
+func CastToDrawingArea(object *gobject.Object) *DrawingArea {
 	return DrawingAreaNewFromNative(object.Native())
 }
 
@@ -20150,7 +20150,7 @@ CastToEntry down casts any arbitrary Object to Entry.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Entry.
 */
-func (recv *Entry) CastToEntry(object *gobject.Object) *Entry {
+func CastToEntry(object *gobject.Object) *Entry {
 	return EntryNewFromNative(object.Native())
 }
 
@@ -22157,7 +22157,7 @@ CastToEntryAccessible down casts any arbitrary Object to EntryAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EntryAccessible.
 */
-func (recv *EntryAccessible) CastToEntryAccessible(object *gobject.Object) *EntryAccessible {
+func CastToEntryAccessible(object *gobject.Object) *EntryAccessible {
 	return EntryAccessibleNewFromNative(object.Native())
 }
 
@@ -22235,7 +22235,7 @@ CastToEntryBuffer down casts any arbitrary Object to EntryBuffer.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EntryBuffer.
 */
-func (recv *EntryBuffer) CastToEntryBuffer(object *gobject.Object) *EntryBuffer {
+func CastToEntryBuffer(object *gobject.Object) *EntryBuffer {
 	return EntryBufferNewFromNative(object.Native())
 }
 
@@ -22651,7 +22651,7 @@ CastToEntryCompletion down casts any arbitrary Object to EntryCompletion.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EntryCompletion.
 */
-func (recv *EntryCompletion) CastToEntryCompletion(object *gobject.Object) *EntryCompletion {
+func CastToEntryCompletion(object *gobject.Object) *EntryCompletion {
 	return EntryCompletionNewFromNative(object.Native())
 }
 
@@ -23461,7 +23461,7 @@ CastToEntryIconAccessible down casts any arbitrary Object to EntryIconAccessible
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EntryIconAccessible.
 */
-func (recv *EntryIconAccessible) CastToEntryIconAccessible(object *gobject.Object) *EntryIconAccessible {
+func CastToEntryIconAccessible(object *gobject.Object) *EntryIconAccessible {
 	return EntryIconAccessibleNewFromNative(object.Native())
 }
 
@@ -23531,7 +23531,7 @@ CastToEventBox down casts any arbitrary Object to EventBox.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EventBox.
 */
-func (recv *EventBox) CastToEventBox(object *gobject.Object) *EventBox {
+func CastToEventBox(object *gobject.Object) *EventBox {
 	return EventBoxNewFromNative(object.Native())
 }
 
@@ -23747,7 +23747,7 @@ CastToEventController down casts any arbitrary Object to EventController.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EventController.
 */
-func (recv *EventController) CastToEventController(object *gobject.Object) *EventController {
+func CastToEventController(object *gobject.Object) *EventController {
 	return EventControllerNewFromNative(object.Native())
 }
 
@@ -23925,7 +23925,7 @@ CastToEventControllerKey down casts any arbitrary Object to EventControllerKey.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EventControllerKey.
 */
-func (recv *EventControllerKey) CastToEventControllerKey(object *gobject.Object) *EventControllerKey {
+func CastToEventControllerKey(object *gobject.Object) *EventControllerKey {
 	return EventControllerKeyNewFromNative(object.Native())
 }
 
@@ -24140,7 +24140,7 @@ CastToEventControllerMotion down casts any arbitrary Object to EventControllerMo
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EventControllerMotion.
 */
-func (recv *EventControllerMotion) CastToEventControllerMotion(object *gobject.Object) *EventControllerMotion {
+func CastToEventControllerMotion(object *gobject.Object) *EventControllerMotion {
 	return EventControllerMotionNewFromNative(object.Native())
 }
 
@@ -24229,7 +24229,7 @@ CastToEventControllerScroll down casts any arbitrary Object to EventControllerSc
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EventControllerScroll.
 */
-func (recv *EventControllerScroll) CastToEventControllerScroll(object *gobject.Object) *EventControllerScroll {
+func CastToEventControllerScroll(object *gobject.Object) *EventControllerScroll {
 	return EventControllerScrollNewFromNative(object.Native())
 }
 
@@ -24305,7 +24305,7 @@ CastToExpander down casts any arbitrary Object to Expander.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Expander.
 */
-func (recv *Expander) CastToExpander(object *gobject.Object) *Expander {
+func CastToExpander(object *gobject.Object) *Expander {
 	return ExpanderNewFromNative(object.Native())
 }
 
@@ -24955,7 +24955,7 @@ CastToExpanderAccessible down casts any arbitrary Object to ExpanderAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ExpanderAccessible.
 */
-func (recv *ExpanderAccessible) CastToExpanderAccessible(object *gobject.Object) *ExpanderAccessible {
+func CastToExpanderAccessible(object *gobject.Object) *ExpanderAccessible {
 	return ExpanderAccessibleNewFromNative(object.Native())
 }
 
@@ -25053,7 +25053,7 @@ CastToFileChooserButton down casts any arbitrary Object to FileChooserButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileChooserButton.
 */
-func (recv *FileChooserButton) CastToFileChooserButton(object *gobject.Object) *FileChooserButton {
+func CastToFileChooserButton(object *gobject.Object) *FileChooserButton {
 	return FileChooserButtonNewFromNative(object.Native())
 }
 
@@ -25395,7 +25395,7 @@ CastToFileChooserDialog down casts any arbitrary Object to FileChooserDialog.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileChooserDialog.
 */
-func (recv *FileChooserDialog) CastToFileChooserDialog(object *gobject.Object) *FileChooserDialog {
+func CastToFileChooserDialog(object *gobject.Object) *FileChooserDialog {
 	return FileChooserDialogNewFromNative(object.Native())
 }
 
@@ -25480,7 +25480,7 @@ CastToFileChooserNative down casts any arbitrary Object to FileChooserNative.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileChooserNative.
 */
-func (recv *FileChooserNative) CastToFileChooserNative(object *gobject.Object) *FileChooserNative {
+func CastToFileChooserNative(object *gobject.Object) *FileChooserNative {
 	return FileChooserNativeNewFromNative(object.Native())
 }
 
@@ -25710,7 +25710,7 @@ CastToFileChooserWidget down casts any arbitrary Object to FileChooserWidget.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileChooserWidget.
 */
-func (recv *FileChooserWidget) CastToFileChooserWidget(object *gobject.Object) *FileChooserWidget {
+func CastToFileChooserWidget(object *gobject.Object) *FileChooserWidget {
 	return FileChooserWidgetNewFromNative(object.Native())
 }
 
@@ -25825,7 +25825,7 @@ CastToFileFilter down casts any arbitrary Object to FileFilter.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileFilter.
 */
-func (recv *FileFilter) CastToFileFilter(object *gobject.Object) *FileFilter {
+func CastToFileFilter(object *gobject.Object) *FileFilter {
 	return FileFilterNewFromNative(object.Native())
 }
 
@@ -26108,7 +26108,7 @@ CastToFixed down casts any arbitrary Object to Fixed.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Fixed.
 */
-func (recv *Fixed) CastToFixed(object *gobject.Object) *Fixed {
+func CastToFixed(object *gobject.Object) *Fixed {
 	return FixedNewFromNative(object.Native())
 }
 
@@ -26279,7 +26279,7 @@ CastToFlowBox down casts any arbitrary Object to FlowBox.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FlowBox.
 */
-func (recv *FlowBox) CastToFlowBox(object *gobject.Object) *FlowBox {
+func CastToFlowBox(object *gobject.Object) *FlowBox {
 	return FlowBoxNewFromNative(object.Native())
 }
 
@@ -27155,7 +27155,7 @@ CastToFlowBoxAccessible down casts any arbitrary Object to FlowBoxAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FlowBoxAccessible.
 */
-func (recv *FlowBoxAccessible) CastToFlowBoxAccessible(object *gobject.Object) *FlowBoxAccessible {
+func CastToFlowBoxAccessible(object *gobject.Object) *FlowBoxAccessible {
 	return FlowBoxAccessibleNewFromNative(object.Native())
 }
 
@@ -27253,7 +27253,7 @@ CastToFlowBoxChild down casts any arbitrary Object to FlowBoxChild.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FlowBoxChild.
 */
-func (recv *FlowBoxChild) CastToFlowBoxChild(object *gobject.Object) *FlowBoxChild {
+func CastToFlowBoxChild(object *gobject.Object) *FlowBoxChild {
 	return FlowBoxChildNewFromNative(object.Native())
 }
 
@@ -27459,7 +27459,7 @@ CastToFlowBoxChildAccessible down casts any arbitrary Object to FlowBoxChildAcce
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FlowBoxChildAccessible.
 */
-func (recv *FlowBoxChildAccessible) CastToFlowBoxChildAccessible(object *gobject.Object) *FlowBoxChildAccessible {
+func CastToFlowBoxChildAccessible(object *gobject.Object) *FlowBoxChildAccessible {
 	return FlowBoxChildAccessibleNewFromNative(object.Native())
 }
 
@@ -27548,7 +27548,7 @@ CastToFontButton down casts any arbitrary Object to FontButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FontButton.
 */
-func (recv *FontButton) CastToFontButton(object *gobject.Object) *FontButton {
+func CastToFontButton(object *gobject.Object) *FontButton {
 	return FontButtonNewFromNative(object.Native())
 }
 
@@ -28074,7 +28074,7 @@ CastToFontChooserDialog down casts any arbitrary Object to FontChooserDialog.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FontChooserDialog.
 */
-func (recv *FontChooserDialog) CastToFontChooserDialog(object *gobject.Object) *FontChooserDialog {
+func CastToFontChooserDialog(object *gobject.Object) *FontChooserDialog {
 	return FontChooserDialogNewFromNative(object.Native())
 }
 
@@ -28191,7 +28191,7 @@ CastToFontChooserWidget down casts any arbitrary Object to FontChooserWidget.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FontChooserWidget.
 */
-func (recv *FontChooserWidget) CastToFontChooserWidget(object *gobject.Object) *FontChooserWidget {
+func CastToFontChooserWidget(object *gobject.Object) *FontChooserWidget {
 	return FontChooserWidgetNewFromNative(object.Native())
 }
 
@@ -28305,7 +28305,7 @@ CastToFontSelection down casts any arbitrary Object to FontSelection.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FontSelection.
 */
-func (recv *FontSelection) CastToFontSelection(object *gobject.Object) *FontSelection {
+func CastToFontSelection(object *gobject.Object) *FontSelection {
 	return FontSelectionNewFromNative(object.Native())
 }
 
@@ -28811,7 +28811,7 @@ CastToFontSelectionDialog down casts any arbitrary Object to FontSelectionDialog
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FontSelectionDialog.
 */
-func (recv *FontSelectionDialog) CastToFontSelectionDialog(object *gobject.Object) *FontSelectionDialog {
+func CastToFontSelectionDialog(object *gobject.Object) *FontSelectionDialog {
 	return FontSelectionDialogNewFromNative(object.Native())
 }
 
@@ -29149,7 +29149,7 @@ CastToFrame down casts any arbitrary Object to Frame.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Frame.
 */
-func (recv *Frame) CastToFrame(object *gobject.Object) *Frame {
+func CastToFrame(object *gobject.Object) *Frame {
 	return FrameNewFromNative(object.Native())
 }
 
@@ -29511,7 +29511,7 @@ CastToFrameAccessible down casts any arbitrary Object to FrameAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FrameAccessible.
 */
-func (recv *FrameAccessible) CastToFrameAccessible(object *gobject.Object) *FrameAccessible {
+func CastToFrameAccessible(object *gobject.Object) *FrameAccessible {
 	return FrameAccessibleNewFromNative(object.Native())
 }
 
@@ -29599,7 +29599,7 @@ CastToGLArea down casts any arbitrary Object to GLArea.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GLArea.
 */
-func (recv *GLArea) CastToGLArea(object *gobject.Object) *GLArea {
+func CastToGLArea(object *gobject.Object) *GLArea {
 	return GLAreaNewFromNative(object.Native())
 }
 
@@ -30172,7 +30172,7 @@ CastToGesture down casts any arbitrary Object to Gesture.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Gesture.
 */
-func (recv *Gesture) CastToGesture(object *gobject.Object) *Gesture {
+func CastToGesture(object *gobject.Object) *Gesture {
 	return GestureNewFromNative(object.Native())
 }
 
@@ -30570,7 +30570,7 @@ CastToGestureDrag down casts any arbitrary Object to GestureDrag.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GestureDrag.
 */
-func (recv *GestureDrag) CastToGestureDrag(object *gobject.Object) *GestureDrag {
+func CastToGestureDrag(object *gobject.Object) *GestureDrag {
 	return GestureDragNewFromNative(object.Native())
 }
 
@@ -30739,7 +30739,7 @@ CastToGestureLongPress down casts any arbitrary Object to GestureLongPress.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GestureLongPress.
 */
-func (recv *GestureLongPress) CastToGestureLongPress(object *gobject.Object) *GestureLongPress {
+func CastToGestureLongPress(object *gobject.Object) *GestureLongPress {
 	return GestureLongPressNewFromNative(object.Native())
 }
 
@@ -30838,7 +30838,7 @@ CastToGestureMultiPress down casts any arbitrary Object to GestureMultiPress.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GestureMultiPress.
 */
-func (recv *GestureMultiPress) CastToGestureMultiPress(object *gobject.Object) *GestureMultiPress {
+func CastToGestureMultiPress(object *gobject.Object) *GestureMultiPress {
 	return GestureMultiPressNewFromNative(object.Native())
 }
 
@@ -30946,7 +30946,7 @@ CastToGesturePan down casts any arbitrary Object to GesturePan.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GesturePan.
 */
-func (recv *GesturePan) CastToGesturePan(object *gobject.Object) *GesturePan {
+func CastToGesturePan(object *gobject.Object) *GesturePan {
 	return GesturePanNewFromNative(object.Native())
 }
 
@@ -31102,7 +31102,7 @@ CastToGestureRotate down casts any arbitrary Object to GestureRotate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GestureRotate.
 */
-func (recv *GestureRotate) CastToGestureRotate(object *gobject.Object) *GestureRotate {
+func CastToGestureRotate(object *gobject.Object) *GestureRotate {
 	return GestureRotateNewFromNative(object.Native())
 }
 
@@ -31228,7 +31228,7 @@ CastToGestureSingle down casts any arbitrary Object to GestureSingle.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GestureSingle.
 */
-func (recv *GestureSingle) CastToGestureSingle(object *gobject.Object) *GestureSingle {
+func CastToGestureSingle(object *gobject.Object) *GestureSingle {
 	return GestureSingleNewFromNative(object.Native())
 }
 
@@ -31510,7 +31510,7 @@ CastToGestureStylus down casts any arbitrary Object to GestureStylus.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GestureStylus.
 */
-func (recv *GestureStylus) CastToGestureStylus(object *gobject.Object) *GestureStylus {
+func CastToGestureStylus(object *gobject.Object) *GestureStylus {
 	return GestureStylusNewFromNative(object.Native())
 }
 
@@ -31645,7 +31645,7 @@ CastToGestureSwipe down casts any arbitrary Object to GestureSwipe.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GestureSwipe.
 */
-func (recv *GestureSwipe) CastToGestureSwipe(object *gobject.Object) *GestureSwipe {
+func CastToGestureSwipe(object *gobject.Object) *GestureSwipe {
 	return GestureSwipeNewFromNative(object.Native())
 }
 
@@ -31774,7 +31774,7 @@ CastToGestureZoom down casts any arbitrary Object to GestureZoom.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GestureZoom.
 */
-func (recv *GestureZoom) CastToGestureZoom(object *gobject.Object) *GestureZoom {
+func CastToGestureZoom(object *gobject.Object) *GestureZoom {
 	return GestureZoomNewFromNative(object.Native())
 }
 
@@ -31905,7 +31905,7 @@ CastToGrid down casts any arbitrary Object to Grid.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Grid.
 */
-func (recv *Grid) CastToGrid(object *gobject.Object) *Grid {
+func CastToGrid(object *gobject.Object) *Grid {
 	return GridNewFromNative(object.Native())
 }
 
@@ -32619,7 +32619,7 @@ CastToHBox down casts any arbitrary Object to HBox.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HBox.
 */
-func (recv *HBox) CastToHBox(object *gobject.Object) *HBox {
+func CastToHBox(object *gobject.Object) *HBox {
 	return HBoxNewFromNative(object.Native())
 }
 
@@ -32741,7 +32741,7 @@ CastToHButtonBox down casts any arbitrary Object to HButtonBox.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HButtonBox.
 */
-func (recv *HButtonBox) CastToHButtonBox(object *gobject.Object) *HButtonBox {
+func CastToHButtonBox(object *gobject.Object) *HButtonBox {
 	return HButtonBoxNewFromNative(object.Native())
 }
 
@@ -32855,7 +32855,7 @@ CastToHPaned down casts any arbitrary Object to HPaned.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HPaned.
 */
-func (recv *HPaned) CastToHPaned(object *gobject.Object) *HPaned {
+func CastToHPaned(object *gobject.Object) *HPaned {
 	return HPanedNewFromNative(object.Native())
 }
 
@@ -32959,7 +32959,7 @@ CastToHSV down casts any arbitrary Object to HSV.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HSV.
 */
-func (recv *HSV) CastToHSV(object *gobject.Object) *HSV {
+func CastToHSV(object *gobject.Object) *HSV {
 	return HSVNewFromNative(object.Native())
 }
 
@@ -33233,7 +33233,7 @@ CastToHScale down casts any arbitrary Object to HScale.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HScale.
 */
-func (recv *HScale) CastToHScale(object *gobject.Object) *HScale {
+func CastToHScale(object *gobject.Object) *HScale {
 	return HScaleNewFromNative(object.Native())
 }
 
@@ -33383,7 +33383,7 @@ CastToHScrollbar down casts any arbitrary Object to HScrollbar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HScrollbar.
 */
-func (recv *HScrollbar) CastToHScrollbar(object *gobject.Object) *HScrollbar {
+func CastToHScrollbar(object *gobject.Object) *HScrollbar {
 	return HScrollbarNewFromNative(object.Native())
 }
 
@@ -33494,7 +33494,7 @@ CastToHSeparator down casts any arbitrary Object to HSeparator.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HSeparator.
 */
-func (recv *HSeparator) CastToHSeparator(object *gobject.Object) *HSeparator {
+func CastToHSeparator(object *gobject.Object) *HSeparator {
 	return HSeparatorNewFromNative(object.Native())
 }
 
@@ -33608,7 +33608,7 @@ CastToHandleBox down casts any arbitrary Object to HandleBox.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HandleBox.
 */
-func (recv *HandleBox) CastToHandleBox(object *gobject.Object) *HandleBox {
+func CastToHandleBox(object *gobject.Object) *HandleBox {
 	return HandleBoxNewFromNative(object.Native())
 }
 
@@ -33932,7 +33932,7 @@ CastToHeaderBar down casts any arbitrary Object to HeaderBar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HeaderBar.
 */
-func (recv *HeaderBar) CastToHeaderBar(object *gobject.Object) *HeaderBar {
+func CastToHeaderBar(object *gobject.Object) *HeaderBar {
 	return HeaderBarNewFromNative(object.Native())
 }
 
@@ -34470,7 +34470,7 @@ CastToHeaderBarAccessible down casts any arbitrary Object to HeaderBarAccessible
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HeaderBarAccessible.
 */
-func (recv *HeaderBarAccessible) CastToHeaderBarAccessible(object *gobject.Object) *HeaderBarAccessible {
+func CastToHeaderBarAccessible(object *gobject.Object) *HeaderBarAccessible {
 	return HeaderBarAccessibleNewFromNative(object.Native())
 }
 
@@ -34534,7 +34534,7 @@ CastToIMContext down casts any arbitrary Object to IMContext.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IMContext.
 */
-func (recv *IMContext) CastToIMContext(object *gobject.Object) *IMContext {
+func CastToIMContext(object *gobject.Object) *IMContext {
 	return IMContextNewFromNative(object.Native())
 }
 
@@ -34851,7 +34851,7 @@ CastToIMContextSimple down casts any arbitrary Object to IMContextSimple.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IMContextSimple.
 */
-func (recv *IMContextSimple) CastToIMContextSimple(object *gobject.Object) *IMContextSimple {
+func CastToIMContextSimple(object *gobject.Object) *IMContextSimple {
 	return IMContextSimpleNewFromNative(object.Native())
 }
 
@@ -34983,7 +34983,7 @@ CastToIMMulticontext down casts any arbitrary Object to IMMulticontext.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IMMulticontext.
 */
-func (recv *IMMulticontext) CastToIMMulticontext(object *gobject.Object) *IMMulticontext {
+func CastToIMMulticontext(object *gobject.Object) *IMMulticontext {
 	return IMMulticontextNewFromNative(object.Native())
 }
 
@@ -35169,7 +35169,7 @@ CastToIconFactory down casts any arbitrary Object to IconFactory.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IconFactory.
 */
-func (recv *IconFactory) CastToIconFactory(object *gobject.Object) *IconFactory {
+func CastToIconFactory(object *gobject.Object) *IconFactory {
 	return IconFactoryNewFromNative(object.Native())
 }
 
@@ -35384,7 +35384,7 @@ CastToIconInfo down casts any arbitrary Object to IconInfo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IconInfo.
 */
-func (recv *IconInfo) CastToIconInfo(object *gobject.Object) *IconInfo {
+func CastToIconInfo(object *gobject.Object) *IconInfo {
 	return IconInfoNewFromNative(object.Native())
 }
 
@@ -35873,7 +35873,7 @@ CastToIconTheme down casts any arbitrary Object to IconTheme.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IconTheme.
 */
-func (recv *IconTheme) CastToIconTheme(object *gobject.Object) *IconTheme {
+func CastToIconTheme(object *gobject.Object) *IconTheme {
 	return IconThemeNewFromNative(object.Native())
 }
 
@@ -36267,7 +36267,7 @@ CastToIconView down casts any arbitrary Object to IconView.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IconView.
 */
-func (recv *IconView) CastToIconView(object *gobject.Object) *IconView {
+func CastToIconView(object *gobject.Object) *IconView {
 	return IconViewNewFromNative(object.Native())
 }
 
@@ -38046,7 +38046,7 @@ CastToIconViewAccessible down casts any arbitrary Object to IconViewAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IconViewAccessible.
 */
-func (recv *IconViewAccessible) CastToIconViewAccessible(object *gobject.Object) *IconViewAccessible {
+func CastToIconViewAccessible(object *gobject.Object) *IconViewAccessible {
 	return IconViewAccessibleNewFromNative(object.Native())
 }
 
@@ -38139,7 +38139,7 @@ CastToImage down casts any arbitrary Object to Image.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Image.
 */
-func (recv *Image) CastToImage(object *gobject.Object) *Image {
+func CastToImage(object *gobject.Object) *Image {
 	return ImageNewFromNative(object.Native())
 }
 
@@ -38975,7 +38975,7 @@ CastToImageAccessible down casts any arbitrary Object to ImageAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ImageAccessible.
 */
-func (recv *ImageAccessible) CastToImageAccessible(object *gobject.Object) *ImageAccessible {
+func CastToImageAccessible(object *gobject.Object) *ImageAccessible {
 	return ImageAccessibleNewFromNative(object.Native())
 }
 
@@ -39073,7 +39073,7 @@ CastToImageCellAccessible down casts any arbitrary Object to ImageCellAccessible
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ImageCellAccessible.
 */
-func (recv *ImageCellAccessible) CastToImageCellAccessible(object *gobject.Object) *ImageCellAccessible {
+func CastToImageCellAccessible(object *gobject.Object) *ImageCellAccessible {
 	return ImageCellAccessibleNewFromNative(object.Native())
 }
 
@@ -39176,7 +39176,7 @@ CastToImageMenuItem down casts any arbitrary Object to ImageMenuItem.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ImageMenuItem.
 */
-func (recv *ImageMenuItem) CastToImageMenuItem(object *gobject.Object) *ImageMenuItem {
+func CastToImageMenuItem(object *gobject.Object) *ImageMenuItem {
 	return ImageMenuItemNewFromNative(object.Native())
 }
 
@@ -39599,7 +39599,7 @@ CastToInfoBar down casts any arbitrary Object to InfoBar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InfoBar.
 */
-func (recv *InfoBar) CastToInfoBar(object *gobject.Object) *InfoBar {
+func CastToInfoBar(object *gobject.Object) *InfoBar {
 	return InfoBarNewFromNative(object.Native())
 }
 
@@ -40106,7 +40106,7 @@ CastToInvisible down casts any arbitrary Object to Invisible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Invisible.
 */
-func (recv *Invisible) CastToInvisible(object *gobject.Object) *Invisible {
+func CastToInvisible(object *gobject.Object) *Invisible {
 	return InvisibleNewFromNative(object.Native())
 }
 
@@ -40308,7 +40308,7 @@ CastToLabel down casts any arbitrary Object to Label.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Label.
 */
-func (recv *Label) CastToLabel(object *gobject.Object) *Label {
+func CastToLabel(object *gobject.Object) *Label {
 	return LabelNewFromNative(object.Native())
 }
 
@@ -41749,7 +41749,7 @@ CastToLabelAccessible down casts any arbitrary Object to LabelAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a LabelAccessible.
 */
-func (recv *LabelAccessible) CastToLabelAccessible(object *gobject.Object) *LabelAccessible {
+func CastToLabelAccessible(object *gobject.Object) *LabelAccessible {
 	return LabelAccessibleNewFromNative(object.Native())
 }
 
@@ -41842,7 +41842,7 @@ CastToLayout down casts any arbitrary Object to Layout.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Layout.
 */
-func (recv *Layout) CastToLayout(object *gobject.Object) *Layout {
+func CastToLayout(object *gobject.Object) *Layout {
 	return LayoutNewFromNative(object.Native())
 }
 
@@ -42228,7 +42228,7 @@ CastToLevelBar down casts any arbitrary Object to LevelBar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a LevelBar.
 */
-func (recv *LevelBar) CastToLevelBar(object *gobject.Object) *LevelBar {
+func CastToLevelBar(object *gobject.Object) *LevelBar {
 	return LevelBarNewFromNative(object.Native())
 }
 
@@ -42755,7 +42755,7 @@ CastToLevelBarAccessible down casts any arbitrary Object to LevelBarAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a LevelBarAccessible.
 */
-func (recv *LevelBarAccessible) CastToLevelBarAccessible(object *gobject.Object) *LevelBarAccessible {
+func CastToLevelBarAccessible(object *gobject.Object) *LevelBarAccessible {
 	return LevelBarAccessibleNewFromNative(object.Native())
 }
 
@@ -42858,7 +42858,7 @@ CastToLinkButton down casts any arbitrary Object to LinkButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a LinkButton.
 */
-func (recv *LinkButton) CastToLinkButton(object *gobject.Object) *LinkButton {
+func CastToLinkButton(object *gobject.Object) *LinkButton {
 	return LinkButtonNewFromNative(object.Native())
 }
 
@@ -43120,7 +43120,7 @@ CastToLinkButtonAccessible down casts any arbitrary Object to LinkButtonAccessib
 Exercise care, as this is a potentially dangerous function
 if the Object is not a LinkButtonAccessible.
 */
-func (recv *LinkButtonAccessible) CastToLinkButtonAccessible(object *gobject.Object) *LinkButtonAccessible {
+func CastToLinkButtonAccessible(object *gobject.Object) *LinkButtonAccessible {
 	return LinkButtonAccessibleNewFromNative(object.Native())
 }
 
@@ -43213,7 +43213,7 @@ CastToListBox down casts any arbitrary Object to ListBox.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ListBox.
 */
-func (recv *ListBox) CastToListBox(object *gobject.Object) *ListBox {
+func CastToListBox(object *gobject.Object) *ListBox {
 	return ListBoxNewFromNative(object.Native())
 }
 
@@ -43963,7 +43963,7 @@ CastToListBoxAccessible down casts any arbitrary Object to ListBoxAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ListBoxAccessible.
 */
-func (recv *ListBoxAccessible) CastToListBoxAccessible(object *gobject.Object) *ListBoxAccessible {
+func CastToListBoxAccessible(object *gobject.Object) *ListBoxAccessible {
 	return ListBoxAccessibleNewFromNative(object.Native())
 }
 
@@ -44061,7 +44061,7 @@ CastToListBoxRow down casts any arbitrary Object to ListBoxRow.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ListBoxRow.
 */
-func (recv *ListBoxRow) CastToListBoxRow(object *gobject.Object) *ListBoxRow {
+func CastToListBoxRow(object *gobject.Object) *ListBoxRow {
 	return ListBoxRowNewFromNative(object.Native())
 }
 
@@ -44450,7 +44450,7 @@ CastToListBoxRowAccessible down casts any arbitrary Object to ListBoxRowAccessib
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ListBoxRowAccessible.
 */
-func (recv *ListBoxRowAccessible) CastToListBoxRowAccessible(object *gobject.Object) *ListBoxRowAccessible {
+func CastToListBoxRowAccessible(object *gobject.Object) *ListBoxRowAccessible {
 	return ListBoxRowAccessibleNewFromNative(object.Native())
 }
 
@@ -44514,7 +44514,7 @@ CastToListStore down casts any arbitrary Object to ListStore.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ListStore.
 */
-func (recv *ListStore) CastToListStore(object *gobject.Object) *ListStore {
+func CastToListStore(object *gobject.Object) *ListStore {
 	return ListStoreNewFromNative(object.Native())
 }
 
@@ -44970,7 +44970,7 @@ CastToLockButton down casts any arbitrary Object to LockButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a LockButton.
 */
-func (recv *LockButton) CastToLockButton(object *gobject.Object) *LockButton {
+func CastToLockButton(object *gobject.Object) *LockButton {
 	return LockButtonNewFromNative(object.Native())
 }
 
@@ -45166,7 +45166,7 @@ CastToLockButtonAccessible down casts any arbitrary Object to LockButtonAccessib
 Exercise care, as this is a potentially dangerous function
 if the Object is not a LockButtonAccessible.
 */
-func (recv *LockButtonAccessible) CastToLockButtonAccessible(object *gobject.Object) *LockButtonAccessible {
+func CastToLockButtonAccessible(object *gobject.Object) *LockButtonAccessible {
 	return LockButtonAccessibleNewFromNative(object.Native())
 }
 
@@ -45264,7 +45264,7 @@ CastToMenu down casts any arbitrary Object to Menu.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Menu.
 */
-func (recv *Menu) CastToMenu(object *gobject.Object) *Menu {
+func CastToMenu(object *gobject.Object) *Menu {
 	return MenuNewFromNative(object.Native())
 }
 
@@ -46091,7 +46091,7 @@ CastToMenuAccessible down casts any arbitrary Object to MenuAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuAccessible.
 */
-func (recv *MenuAccessible) CastToMenuAccessible(object *gobject.Object) *MenuAccessible {
+func CastToMenuAccessible(object *gobject.Object) *MenuAccessible {
 	return MenuAccessibleNewFromNative(object.Native())
 }
 
@@ -46189,7 +46189,7 @@ CastToMenuBar down casts any arbitrary Object to MenuBar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuBar.
 */
-func (recv *MenuBar) CastToMenuBar(object *gobject.Object) *MenuBar {
+func CastToMenuBar(object *gobject.Object) *MenuBar {
 	return MenuBarNewFromNative(object.Native())
 }
 
@@ -46467,7 +46467,7 @@ CastToMenuButton down casts any arbitrary Object to MenuButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuButton.
 */
-func (recv *MenuButton) CastToMenuButton(object *gobject.Object) *MenuButton {
+func CastToMenuButton(object *gobject.Object) *MenuButton {
 	return MenuButtonNewFromNative(object.Native())
 }
 
@@ -46957,7 +46957,7 @@ CastToMenuButtonAccessible down casts any arbitrary Object to MenuButtonAccessib
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuButtonAccessible.
 */
-func (recv *MenuButtonAccessible) CastToMenuButtonAccessible(object *gobject.Object) *MenuButtonAccessible {
+func CastToMenuButtonAccessible(object *gobject.Object) *MenuButtonAccessible {
 	return MenuButtonAccessibleNewFromNative(object.Native())
 }
 
@@ -47055,7 +47055,7 @@ CastToMenuItem down casts any arbitrary Object to MenuItem.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuItem.
 */
-func (recv *MenuItem) CastToMenuItem(object *gobject.Object) *MenuItem {
+func CastToMenuItem(object *gobject.Object) *MenuItem {
 	return MenuItemNewFromNative(object.Native())
 }
 
@@ -47745,7 +47745,7 @@ CastToMenuItemAccessible down casts any arbitrary Object to MenuItemAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuItemAccessible.
 */
-func (recv *MenuItemAccessible) CastToMenuItemAccessible(object *gobject.Object) *MenuItemAccessible {
+func CastToMenuItemAccessible(object *gobject.Object) *MenuItemAccessible {
 	return MenuItemAccessibleNewFromNative(object.Native())
 }
 
@@ -47838,7 +47838,7 @@ CastToMenuShell down casts any arbitrary Object to MenuShell.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuShell.
 */
-func (recv *MenuShell) CastToMenuShell(object *gobject.Object) *MenuShell {
+func CastToMenuShell(object *gobject.Object) *MenuShell {
 	return MenuShellNewFromNative(object.Native())
 }
 
@@ -48338,7 +48338,7 @@ CastToMenuShellAccessible down casts any arbitrary Object to MenuShellAccessible
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuShellAccessible.
 */
-func (recv *MenuShellAccessible) CastToMenuShellAccessible(object *gobject.Object) *MenuShellAccessible {
+func CastToMenuShellAccessible(object *gobject.Object) *MenuShellAccessible {
 	return MenuShellAccessibleNewFromNative(object.Native())
 }
 
@@ -48446,7 +48446,7 @@ CastToMenuToolButton down casts any arbitrary Object to MenuToolButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuToolButton.
 */
-func (recv *MenuToolButton) CastToMenuToolButton(object *gobject.Object) *MenuToolButton {
+func CastToMenuToolButton(object *gobject.Object) *MenuToolButton {
 	return MenuToolButtonNewFromNative(object.Native())
 }
 
@@ -48724,7 +48724,7 @@ CastToMessageDialog down casts any arbitrary Object to MessageDialog.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MessageDialog.
 */
-func (recv *MessageDialog) CastToMessageDialog(object *gobject.Object) *MessageDialog {
+func CastToMessageDialog(object *gobject.Object) *MessageDialog {
 	return MessageDialogNewFromNative(object.Native())
 }
 
@@ -48928,7 +48928,7 @@ CastToMisc down casts any arbitrary Object to Misc.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Misc.
 */
-func (recv *Misc) CastToMisc(object *gobject.Object) *Misc {
+func CastToMisc(object *gobject.Object) *Misc {
 	return MiscNewFromNative(object.Native())
 }
 
@@ -49143,7 +49143,7 @@ CastToModelButton down casts any arbitrary Object to ModelButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ModelButton.
 */
-func (recv *ModelButton) CastToModelButton(object *gobject.Object) *ModelButton {
+func CastToModelButton(object *gobject.Object) *ModelButton {
 	return ModelButtonNewFromNative(object.Native())
 }
 
@@ -49228,7 +49228,7 @@ CastToMountOperation down casts any arbitrary Object to MountOperation.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MountOperation.
 */
-func (recv *MountOperation) CastToMountOperation(object *gobject.Object) *MountOperation {
+func CastToMountOperation(object *gobject.Object) *MountOperation {
 	return MountOperationNewFromNative(object.Native())
 }
 
@@ -49494,7 +49494,7 @@ CastToNativeDialog down casts any arbitrary Object to NativeDialog.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NativeDialog.
 */
-func (recv *NativeDialog) CastToNativeDialog(object *gobject.Object) *NativeDialog {
+func CastToNativeDialog(object *gobject.Object) *NativeDialog {
 	return NativeDialogNewFromNative(object.Native())
 }
 
@@ -49904,7 +49904,7 @@ CastToNotebook down casts any arbitrary Object to Notebook.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Notebook.
 */
-func (recv *Notebook) CastToNotebook(object *gobject.Object) *Notebook {
+func CastToNotebook(object *gobject.Object) *Notebook {
 	return NotebookNewFromNative(object.Native())
 }
 
@@ -51382,7 +51382,7 @@ CastToNotebookAccessible down casts any arbitrary Object to NotebookAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NotebookAccessible.
 */
-func (recv *NotebookAccessible) CastToNotebookAccessible(object *gobject.Object) *NotebookAccessible {
+func CastToNotebookAccessible(object *gobject.Object) *NotebookAccessible {
 	return NotebookAccessibleNewFromNative(object.Native())
 }
 
@@ -51465,7 +51465,7 @@ CastToNotebookPageAccessible down casts any arbitrary Object to NotebookPageAcce
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NotebookPageAccessible.
 */
-func (recv *NotebookPageAccessible) CastToNotebookPageAccessible(object *gobject.Object) *NotebookPageAccessible {
+func CastToNotebookPageAccessible(object *gobject.Object) *NotebookPageAccessible {
 	return NotebookPageAccessibleNewFromNative(object.Native())
 }
 
@@ -51611,7 +51611,7 @@ CastToNumerableIcon down casts any arbitrary Object to NumerableIcon.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NumerableIcon.
 */
-func (recv *NumerableIcon) CastToNumerableIcon(object *gobject.Object) *NumerableIcon {
+func CastToNumerableIcon(object *gobject.Object) *NumerableIcon {
 	return NumerableIconNewFromNative(object.Native())
 }
 
@@ -51948,7 +51948,7 @@ CastToOffscreenWindow down casts any arbitrary Object to OffscreenWindow.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a OffscreenWindow.
 */
-func (recv *OffscreenWindow) CastToOffscreenWindow(object *gobject.Object) *OffscreenWindow {
+func CastToOffscreenWindow(object *gobject.Object) *OffscreenWindow {
 	return OffscreenWindowNewFromNative(object.Native())
 }
 
@@ -52096,7 +52096,7 @@ CastToOverlay down casts any arbitrary Object to Overlay.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Overlay.
 */
-func (recv *Overlay) CastToOverlay(object *gobject.Object) *Overlay {
+func CastToOverlay(object *gobject.Object) *Overlay {
 	return OverlayNewFromNative(object.Native())
 }
 
@@ -52331,7 +52331,7 @@ CastToPadController down casts any arbitrary Object to PadController.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PadController.
 */
-func (recv *PadController) CastToPadController(object *gobject.Object) *PadController {
+func CastToPadController(object *gobject.Object) *PadController {
 	return PadControllerNewFromNative(object.Native())
 }
 
@@ -52418,7 +52418,7 @@ CastToPageSetup down casts any arbitrary Object to PageSetup.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PageSetup.
 */
-func (recv *PageSetup) CastToPageSetup(object *gobject.Object) *PageSetup {
+func CastToPageSetup(object *gobject.Object) *PageSetup {
 	return PageSetupNewFromNative(object.Native())
 }
 
@@ -53192,7 +53192,7 @@ CastToPaned down casts any arbitrary Object to Paned.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Paned.
 */
-func (recv *Paned) CastToPaned(object *gobject.Object) *Paned {
+func CastToPaned(object *gobject.Object) *Paned {
 	return PanedNewFromNative(object.Native())
 }
 
@@ -53646,7 +53646,7 @@ CastToPanedAccessible down casts any arbitrary Object to PanedAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PanedAccessible.
 */
-func (recv *PanedAccessible) CastToPanedAccessible(object *gobject.Object) *PanedAccessible {
+func CastToPanedAccessible(object *gobject.Object) *PanedAccessible {
 	return PanedAccessibleNewFromNative(object.Native())
 }
 
@@ -53749,7 +53749,7 @@ CastToPlacesSidebar down casts any arbitrary Object to PlacesSidebar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PlacesSidebar.
 */
-func (recv *PlacesSidebar) CastToPlacesSidebar(object *gobject.Object) *PlacesSidebar {
+func CastToPlacesSidebar(object *gobject.Object) *PlacesSidebar {
 	return PlacesSidebarNewFromNative(object.Native())
 }
 
@@ -54388,7 +54388,7 @@ CastToPlug down casts any arbitrary Object to Plug.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Plug.
 */
-func (recv *Plug) CastToPlug(object *gobject.Object) *Plug {
+func CastToPlug(object *gobject.Object) *Plug {
 	return PlugNewFromNative(object.Native())
 }
 
@@ -54706,7 +54706,7 @@ CastToPopover down casts any arbitrary Object to Popover.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Popover.
 */
-func (recv *Popover) CastToPopover(object *gobject.Object) *Popover {
+func CastToPopover(object *gobject.Object) *Popover {
 	return PopoverNewFromNative(object.Native())
 }
 
@@ -55311,7 +55311,7 @@ CastToPopoverAccessible down casts any arbitrary Object to PopoverAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PopoverAccessible.
 */
-func (recv *PopoverAccessible) CastToPopoverAccessible(object *gobject.Object) *PopoverAccessible {
+func CastToPopoverAccessible(object *gobject.Object) *PopoverAccessible {
 	return PopoverAccessibleNewFromNative(object.Native())
 }
 
@@ -55400,7 +55400,7 @@ CastToPopoverMenu down casts any arbitrary Object to PopoverMenu.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PopoverMenu.
 */
-func (recv *PopoverMenu) CastToPopoverMenu(object *gobject.Object) *PopoverMenu {
+func CastToPopoverMenu(object *gobject.Object) *PopoverMenu {
 	return PopoverMenuNewFromNative(object.Native())
 }
 
@@ -55509,7 +55509,7 @@ CastToPrintContext down casts any arbitrary Object to PrintContext.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PrintContext.
 */
-func (recv *PrintContext) CastToPrintContext(object *gobject.Object) *PrintContext {
+func CastToPrintContext(object *gobject.Object) *PrintContext {
 	return PrintContextNewFromNative(object.Native())
 }
 
@@ -55856,7 +55856,7 @@ CastToPrintOperation down casts any arbitrary Object to PrintOperation.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PrintOperation.
 */
-func (recv *PrintOperation) CastToPrintOperation(object *gobject.Object) *PrintOperation {
+func CastToPrintOperation(object *gobject.Object) *PrintOperation {
 	return PrintOperationNewFromNative(object.Native())
 }
 
@@ -56821,7 +56821,7 @@ CastToPrintSettings down casts any arbitrary Object to PrintSettings.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PrintSettings.
 */
-func (recv *PrintSettings) CastToPrintSettings(object *gobject.Object) *PrintSettings {
+func CastToPrintSettings(object *gobject.Object) *PrintSettings {
 	return PrintSettingsNewFromNative(object.Native())
 }
 
@@ -59039,7 +59039,7 @@ CastToProgressBar down casts any arbitrary Object to ProgressBar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ProgressBar.
 */
-func (recv *ProgressBar) CastToProgressBar(object *gobject.Object) *ProgressBar {
+func CastToProgressBar(object *gobject.Object) *ProgressBar {
 	return ProgressBarNewFromNative(object.Native())
 }
 
@@ -59485,7 +59485,7 @@ CastToProgressBarAccessible down casts any arbitrary Object to ProgressBarAccess
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ProgressBarAccessible.
 */
-func (recv *ProgressBarAccessible) CastToProgressBarAccessible(object *gobject.Object) *ProgressBarAccessible {
+func CastToProgressBarAccessible(object *gobject.Object) *ProgressBarAccessible {
 	return ProgressBarAccessibleNewFromNative(object.Native())
 }
 
@@ -59573,7 +59573,7 @@ CastToRadioAction down casts any arbitrary Object to RadioAction.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RadioAction.
 */
-func (recv *RadioAction) CastToRadioAction(object *gobject.Object) *RadioAction {
+func CastToRadioAction(object *gobject.Object) *RadioAction {
 	return RadioActionNewFromNative(object.Native())
 }
 
@@ -59804,7 +59804,7 @@ CastToRadioButton down casts any arbitrary Object to RadioButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RadioButton.
 */
-func (recv *RadioButton) CastToRadioButton(object *gobject.Object) *RadioButton {
+func CastToRadioButton(object *gobject.Object) *RadioButton {
 	return RadioButtonNewFromNative(object.Native())
 }
 
@@ -60035,7 +60035,7 @@ CastToRadioButtonAccessible down casts any arbitrary Object to RadioButtonAccess
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RadioButtonAccessible.
 */
-func (recv *RadioButtonAccessible) CastToRadioButtonAccessible(object *gobject.Object) *RadioButtonAccessible {
+func CastToRadioButtonAccessible(object *gobject.Object) *RadioButtonAccessible {
 	return RadioButtonAccessibleNewFromNative(object.Native())
 }
 
@@ -60143,7 +60143,7 @@ CastToRadioMenuItem down casts any arbitrary Object to RadioMenuItem.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RadioMenuItem.
 */
-func (recv *RadioMenuItem) CastToRadioMenuItem(object *gobject.Object) *RadioMenuItem {
+func CastToRadioMenuItem(object *gobject.Object) *RadioMenuItem {
 	return RadioMenuItemNewFromNative(object.Native())
 }
 
@@ -60374,7 +60374,7 @@ CastToRadioMenuItemAccessible down casts any arbitrary Object to RadioMenuItemAc
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RadioMenuItemAccessible.
 */
-func (recv *RadioMenuItemAccessible) CastToRadioMenuItemAccessible(object *gobject.Object) *RadioMenuItemAccessible {
+func CastToRadioMenuItemAccessible(object *gobject.Object) *RadioMenuItemAccessible {
 	return RadioMenuItemAccessibleNewFromNative(object.Native())
 }
 
@@ -60487,7 +60487,7 @@ CastToRadioToolButton down casts any arbitrary Object to RadioToolButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RadioToolButton.
 */
-func (recv *RadioToolButton) CastToRadioToolButton(object *gobject.Object) *RadioToolButton {
+func CastToRadioToolButton(object *gobject.Object) *RadioToolButton {
 	return RadioToolButtonNewFromNative(object.Native())
 }
 
@@ -60634,7 +60634,7 @@ CastToRange down casts any arbitrary Object to Range.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Range.
 */
-func (recv *Range) CastToRange(object *gobject.Object) *Range {
+func CastToRange(object *gobject.Object) *Range {
 	return RangeNewFromNative(object.Native())
 }
 
@@ -61554,7 +61554,7 @@ CastToRangeAccessible down casts any arbitrary Object to RangeAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RangeAccessible.
 */
-func (recv *RangeAccessible) CastToRangeAccessible(object *gobject.Object) *RangeAccessible {
+func CastToRangeAccessible(object *gobject.Object) *RangeAccessible {
 	return RangeAccessibleNewFromNative(object.Native())
 }
 
@@ -61632,7 +61632,7 @@ CastToRcStyle down casts any arbitrary Object to RcStyle.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RcStyle.
 */
-func (recv *RcStyle) CastToRcStyle(object *gobject.Object) *RcStyle {
+func CastToRcStyle(object *gobject.Object) *RcStyle {
 	return RcStyleNewFromNative(object.Native())
 }
 
@@ -61835,7 +61835,7 @@ CastToRecentAction down casts any arbitrary Object to RecentAction.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RecentAction.
 */
-func (recv *RecentAction) CastToRecentAction(object *gobject.Object) *RecentAction {
+func CastToRecentAction(object *gobject.Object) *RecentAction {
 	return RecentActionNewFromNative(object.Native())
 }
 
@@ -62065,7 +62065,7 @@ CastToRecentChooserDialog down casts any arbitrary Object to RecentChooserDialog
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RecentChooserDialog.
 */
-func (recv *RecentChooserDialog) CastToRecentChooserDialog(object *gobject.Object) *RecentChooserDialog {
+func CastToRecentChooserDialog(object *gobject.Object) *RecentChooserDialog {
 	return RecentChooserDialogNewFromNative(object.Native())
 }
 
@@ -62158,7 +62158,7 @@ CastToRecentChooserMenu down casts any arbitrary Object to RecentChooserMenu.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RecentChooserMenu.
 */
-func (recv *RecentChooserMenu) CastToRecentChooserMenu(object *gobject.Object) *RecentChooserMenu {
+func CastToRecentChooserMenu(object *gobject.Object) *RecentChooserMenu {
 	return RecentChooserMenuNewFromNative(object.Native())
 }
 
@@ -62365,7 +62365,7 @@ CastToRecentChooserWidget down casts any arbitrary Object to RecentChooserWidget
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RecentChooserWidget.
 */
-func (recv *RecentChooserWidget) CastToRecentChooserWidget(object *gobject.Object) *RecentChooserWidget {
+func CastToRecentChooserWidget(object *gobject.Object) *RecentChooserWidget {
 	return RecentChooserWidgetNewFromNative(object.Native())
 }
 
@@ -62496,7 +62496,7 @@ CastToRecentFilter down casts any arbitrary Object to RecentFilter.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RecentFilter.
 */
-func (recv *RecentFilter) CastToRecentFilter(object *gobject.Object) *RecentFilter {
+func CastToRecentFilter(object *gobject.Object) *RecentFilter {
 	return RecentFilterNewFromNative(object.Native())
 }
 
@@ -62847,7 +62847,7 @@ CastToRecentManager down casts any arbitrary Object to RecentManager.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RecentManager.
 */
-func (recv *RecentManager) CastToRecentManager(object *gobject.Object) *RecentManager {
+func CastToRecentManager(object *gobject.Object) *RecentManager {
 	return RecentManagerNewFromNative(object.Native())
 }
 
@@ -63178,7 +63178,7 @@ CastToRendererCellAccessible down casts any arbitrary Object to RendererCellAcce
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RendererCellAccessible.
 */
-func (recv *RendererCellAccessible) CastToRendererCellAccessible(object *gobject.Object) *RendererCellAccessible {
+func CastToRendererCellAccessible(object *gobject.Object) *RendererCellAccessible {
 	return RendererCellAccessibleNewFromNative(object.Native())
 }
 
@@ -63310,7 +63310,7 @@ CastToRevealer down casts any arbitrary Object to Revealer.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Revealer.
 */
-func (recv *Revealer) CastToRevealer(object *gobject.Object) *Revealer {
+func CastToRevealer(object *gobject.Object) *Revealer {
 	return RevealerNewFromNative(object.Native())
 }
 
@@ -63634,7 +63634,7 @@ CastToScale down casts any arbitrary Object to Scale.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Scale.
 */
-func (recv *Scale) CastToScale(object *gobject.Object) *Scale {
+func CastToScale(object *gobject.Object) *Scale {
 	return ScaleNewFromNative(object.Native())
 }
 
@@ -64154,7 +64154,7 @@ CastToScaleAccessible down casts any arbitrary Object to ScaleAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ScaleAccessible.
 */
-func (recv *ScaleAccessible) CastToScaleAccessible(object *gobject.Object) *ScaleAccessible {
+func CastToScaleAccessible(object *gobject.Object) *ScaleAccessible {
 	return ScaleAccessibleNewFromNative(object.Native())
 }
 
@@ -64257,7 +64257,7 @@ CastToScaleButton down casts any arbitrary Object to ScaleButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ScaleButton.
 */
-func (recv *ScaleButton) CastToScaleButton(object *gobject.Object) *ScaleButton {
+func CastToScaleButton(object *gobject.Object) *ScaleButton {
 	return ScaleButtonNewFromNative(object.Native())
 }
 
@@ -64568,7 +64568,7 @@ CastToScaleButtonAccessible down casts any arbitrary Object to ScaleButtonAccess
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ScaleButtonAccessible.
 */
-func (recv *ScaleButtonAccessible) CastToScaleButtonAccessible(object *gobject.Object) *ScaleButtonAccessible {
+func CastToScaleButtonAccessible(object *gobject.Object) *ScaleButtonAccessible {
 	return ScaleButtonAccessibleNewFromNative(object.Native())
 }
 
@@ -64661,7 +64661,7 @@ CastToScrollbar down casts any arbitrary Object to Scrollbar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Scrollbar.
 */
-func (recv *Scrollbar) CastToScrollbar(object *gobject.Object) *Scrollbar {
+func CastToScrollbar(object *gobject.Object) *Scrollbar {
 	return ScrollbarNewFromNative(object.Native())
 }
 
@@ -64778,7 +64778,7 @@ CastToScrolledWindow down casts any arbitrary Object to ScrolledWindow.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ScrolledWindow.
 */
-func (recv *ScrolledWindow) CastToScrolledWindow(object *gobject.Object) *ScrolledWindow {
+func CastToScrolledWindow(object *gobject.Object) *ScrolledWindow {
 	return ScrolledWindowNewFromNative(object.Native())
 }
 
@@ -65886,7 +65886,7 @@ CastToScrolledWindowAccessible down casts any arbitrary Object to ScrolledWindow
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ScrolledWindowAccessible.
 */
-func (recv *ScrolledWindowAccessible) CastToScrolledWindowAccessible(object *gobject.Object) *ScrolledWindowAccessible {
+func CastToScrolledWindowAccessible(object *gobject.Object) *ScrolledWindowAccessible {
 	return ScrolledWindowAccessibleNewFromNative(object.Native())
 }
 
@@ -65984,7 +65984,7 @@ CastToSearchBar down casts any arbitrary Object to SearchBar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SearchBar.
 */
-func (recv *SearchBar) CastToSearchBar(object *gobject.Object) *SearchBar {
+func CastToSearchBar(object *gobject.Object) *SearchBar {
 	return SearchBarNewFromNative(object.Native())
 }
 
@@ -66232,7 +66232,7 @@ CastToSearchEntry down casts any arbitrary Object to SearchEntry.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SearchEntry.
 */
-func (recv *SearchEntry) CastToSearchEntry(object *gobject.Object) *SearchEntry {
+func CastToSearchEntry(object *gobject.Object) *SearchEntry {
 	return SearchEntryNewFromNative(object.Native())
 }
 
@@ -66338,7 +66338,7 @@ CastToSeparator down casts any arbitrary Object to Separator.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Separator.
 */
-func (recv *Separator) CastToSeparator(object *gobject.Object) *Separator {
+func CastToSeparator(object *gobject.Object) *Separator {
 	return SeparatorNewFromNative(object.Native())
 }
 
@@ -66473,7 +66473,7 @@ CastToSeparatorMenuItem down casts any arbitrary Object to SeparatorMenuItem.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SeparatorMenuItem.
 */
-func (recv *SeparatorMenuItem) CastToSeparatorMenuItem(object *gobject.Object) *SeparatorMenuItem {
+func CastToSeparatorMenuItem(object *gobject.Object) *SeparatorMenuItem {
 	return SeparatorMenuItemNewFromNative(object.Native())
 }
 
@@ -66592,7 +66592,7 @@ CastToSeparatorToolItem down casts any arbitrary Object to SeparatorToolItem.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SeparatorToolItem.
 */
-func (recv *SeparatorToolItem) CastToSeparatorToolItem(object *gobject.Object) *SeparatorToolItem {
+func CastToSeparatorToolItem(object *gobject.Object) *SeparatorToolItem {
 	return SeparatorToolItemNewFromNative(object.Native())
 }
 
@@ -66747,7 +66747,7 @@ CastToSettings down casts any arbitrary Object to Settings.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Settings.
 */
-func (recv *Settings) CastToSettings(object *gobject.Object) *Settings {
+func CastToSettings(object *gobject.Object) *Settings {
 	return SettingsNewFromNative(object.Native())
 }
 
@@ -66983,7 +66983,7 @@ CastToShortcutLabel down casts any arbitrary Object to ShortcutLabel.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ShortcutLabel.
 */
-func (recv *ShortcutLabel) CastToShortcutLabel(object *gobject.Object) *ShortcutLabel {
+func CastToShortcutLabel(object *gobject.Object) *ShortcutLabel {
 	return ShortcutLabelNewFromNative(object.Native())
 }
 
@@ -67207,7 +67207,7 @@ CastToShortcutsGroup down casts any arbitrary Object to ShortcutsGroup.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ShortcutsGroup.
 */
-func (recv *ShortcutsGroup) CastToShortcutsGroup(object *gobject.Object) *ShortcutsGroup {
+func CastToShortcutsGroup(object *gobject.Object) *ShortcutsGroup {
 	return ShortcutsGroupNewFromNative(object.Native())
 }
 
@@ -67277,7 +67277,7 @@ CastToShortcutsSection down casts any arbitrary Object to ShortcutsSection.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ShortcutsSection.
 */
-func (recv *ShortcutsSection) CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
+func CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
 	return ShortcutsSectionNewFromNative(object.Native())
 }
 
@@ -67347,7 +67347,7 @@ CastToShortcutsShortcut down casts any arbitrary Object to ShortcutsShortcut.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ShortcutsShortcut.
 */
-func (recv *ShortcutsShortcut) CastToShortcutsShortcut(object *gobject.Object) *ShortcutsShortcut {
+func CastToShortcutsShortcut(object *gobject.Object) *ShortcutsShortcut {
 	return ShortcutsShortcutNewFromNative(object.Native())
 }
 
@@ -67422,7 +67422,7 @@ CastToShortcutsWindow down casts any arbitrary Object to ShortcutsWindow.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ShortcutsWindow.
 */
-func (recv *ShortcutsWindow) CastToShortcutsWindow(object *gobject.Object) *ShortcutsWindow {
+func CastToShortcutsWindow(object *gobject.Object) *ShortcutsWindow {
 	return ShortcutsWindowNewFromNative(object.Native())
 }
 
@@ -67486,7 +67486,7 @@ CastToSizeGroup down casts any arbitrary Object to SizeGroup.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SizeGroup.
 */
-func (recv *SizeGroup) CastToSizeGroup(object *gobject.Object) *SizeGroup {
+func CastToSizeGroup(object *gobject.Object) *SizeGroup {
 	return SizeGroupNewFromNative(object.Native())
 }
 
@@ -67781,7 +67781,7 @@ CastToSocket down casts any arbitrary Object to Socket.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Socket.
 */
-func (recv *Socket) CastToSocket(object *gobject.Object) *Socket {
+func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromNative(object.Native())
 }
 
@@ -67997,7 +67997,7 @@ CastToSpinButton down casts any arbitrary Object to SpinButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SpinButton.
 */
-func (recv *SpinButton) CastToSpinButton(object *gobject.Object) *SpinButton {
+func CastToSpinButton(object *gobject.Object) *SpinButton {
 	return SpinButtonNewFromNative(object.Native())
 }
 
@@ -68823,7 +68823,7 @@ CastToSpinButtonAccessible down casts any arbitrary Object to SpinButtonAccessib
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SpinButtonAccessible.
 */
-func (recv *SpinButtonAccessible) CastToSpinButtonAccessible(object *gobject.Object) *SpinButtonAccessible {
+func CastToSpinButtonAccessible(object *gobject.Object) *SpinButtonAccessible {
 	return SpinButtonAccessibleNewFromNative(object.Native())
 }
 
@@ -68911,7 +68911,7 @@ CastToSpinner down casts any arbitrary Object to Spinner.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Spinner.
 */
-func (recv *Spinner) CastToSpinner(object *gobject.Object) *Spinner {
+func CastToSpinner(object *gobject.Object) *Spinner {
 	return SpinnerNewFromNative(object.Native())
 }
 
@@ -69076,7 +69076,7 @@ CastToSpinnerAccessible down casts any arbitrary Object to SpinnerAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SpinnerAccessible.
 */
-func (recv *SpinnerAccessible) CastToSpinnerAccessible(object *gobject.Object) *SpinnerAccessible {
+func CastToSpinnerAccessible(object *gobject.Object) *SpinnerAccessible {
 	return SpinnerAccessibleNewFromNative(object.Native())
 }
 
@@ -69169,7 +69169,7 @@ CastToStack down casts any arbitrary Object to Stack.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Stack.
 */
-func (recv *Stack) CastToStack(object *gobject.Object) *Stack {
+func CastToStack(object *gobject.Object) *Stack {
 	return StackNewFromNative(object.Native())
 }
 
@@ -69927,7 +69927,7 @@ CastToStackAccessible down casts any arbitrary Object to StackAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StackAccessible.
 */
-func (recv *StackAccessible) CastToStackAccessible(object *gobject.Object) *StackAccessible {
+func CastToStackAccessible(object *gobject.Object) *StackAccessible {
 	return StackAccessibleNewFromNative(object.Native())
 }
 
@@ -70011,7 +70011,7 @@ CastToStackSidebar down casts any arbitrary Object to StackSidebar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StackSidebar.
 */
-func (recv *StackSidebar) CastToStackSidebar(object *gobject.Object) *StackSidebar {
+func CastToStackSidebar(object *gobject.Object) *StackSidebar {
 	return StackSidebarNewFromNative(object.Native())
 }
 
@@ -70186,7 +70186,7 @@ CastToStackSwitcher down casts any arbitrary Object to StackSwitcher.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StackSwitcher.
 */
-func (recv *StackSwitcher) CastToStackSwitcher(object *gobject.Object) *StackSwitcher {
+func CastToStackSwitcher(object *gobject.Object) *StackSwitcher {
 	return StackSwitcherNewFromNative(object.Native())
 }
 
@@ -70341,7 +70341,7 @@ CastToStatusIcon down casts any arbitrary Object to StatusIcon.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StatusIcon.
 */
-func (recv *StatusIcon) CastToStatusIcon(object *gobject.Object) *StatusIcon {
+func CastToStatusIcon(object *gobject.Object) *StatusIcon {
 	return StatusIconNewFromNative(object.Native())
 }
 
@@ -71350,7 +71350,7 @@ CastToStatusbar down casts any arbitrary Object to Statusbar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Statusbar.
 */
-func (recv *Statusbar) CastToStatusbar(object *gobject.Object) *Statusbar {
+func CastToStatusbar(object *gobject.Object) *Statusbar {
 	return StatusbarNewFromNative(object.Native())
 }
 
@@ -71651,7 +71651,7 @@ CastToStatusbarAccessible down casts any arbitrary Object to StatusbarAccessible
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StatusbarAccessible.
 */
-func (recv *StatusbarAccessible) CastToStatusbarAccessible(object *gobject.Object) *StatusbarAccessible {
+func CastToStatusbarAccessible(object *gobject.Object) *StatusbarAccessible {
 	return StatusbarAccessibleNewFromNative(object.Native())
 }
 
@@ -71729,7 +71729,7 @@ CastToStyle down casts any arbitrary Object to Style.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Style.
 */
-func (recv *Style) CastToStyle(object *gobject.Object) *Style {
+func CastToStyle(object *gobject.Object) *Style {
 	return StyleNewFromNative(object.Native())
 }
 
@@ -72123,7 +72123,7 @@ CastToStyleContext down casts any arbitrary Object to StyleContext.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StyleContext.
 */
-func (recv *StyleContext) CastToStyleContext(object *gobject.Object) *StyleContext {
+func CastToStyleContext(object *gobject.Object) *StyleContext {
 	return StyleContextNewFromNative(object.Native())
 }
 
@@ -73048,7 +73048,7 @@ CastToStyleProperties down casts any arbitrary Object to StyleProperties.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StyleProperties.
 */
-func (recv *StyleProperties) CastToStyleProperties(object *gobject.Object) *StyleProperties {
+func CastToStyleProperties(object *gobject.Object) *StyleProperties {
 	return StylePropertiesNewFromNative(object.Native())
 }
 
@@ -73275,7 +73275,7 @@ CastToSwitch down casts any arbitrary Object to Switch.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Switch.
 */
-func (recv *Switch) CastToSwitch(object *gobject.Object) *Switch {
+func CastToSwitch(object *gobject.Object) *Switch {
 	return SwitchNewFromNative(object.Native())
 }
 
@@ -73492,7 +73492,7 @@ CastToSwitchAccessible down casts any arbitrary Object to SwitchAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SwitchAccessible.
 */
-func (recv *SwitchAccessible) CastToSwitchAccessible(object *gobject.Object) *SwitchAccessible {
+func CastToSwitchAccessible(object *gobject.Object) *SwitchAccessible {
 	return SwitchAccessibleNewFromNative(object.Native())
 }
 
@@ -73585,7 +73585,7 @@ CastToTable down casts any arbitrary Object to Table.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Table.
 */
-func (recv *Table) CastToTable(object *gobject.Object) *Table {
+func CastToTable(object *gobject.Object) *Table {
 	return TableNewFromNative(object.Native())
 }
 
@@ -74115,7 +74115,7 @@ CastToTearoffMenuItem down casts any arbitrary Object to TearoffMenuItem.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TearoffMenuItem.
 */
-func (recv *TearoffMenuItem) CastToTearoffMenuItem(object *gobject.Object) *TearoffMenuItem {
+func CastToTearoffMenuItem(object *gobject.Object) *TearoffMenuItem {
 	return TearoffMenuItemNewFromNative(object.Native())
 }
 
@@ -74209,7 +74209,7 @@ CastToTextBuffer down casts any arbitrary Object to TextBuffer.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TextBuffer.
 */
-func (recv *TextBuffer) CastToTextBuffer(object *gobject.Object) *TextBuffer {
+func CastToTextBuffer(object *gobject.Object) *TextBuffer {
 	return TextBufferNewFromNative(object.Native())
 }
 
@@ -76270,7 +76270,7 @@ CastToTextCellAccessible down casts any arbitrary Object to TextCellAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TextCellAccessible.
 */
-func (recv *TextCellAccessible) CastToTextCellAccessible(object *gobject.Object) *TextCellAccessible {
+func CastToTextCellAccessible(object *gobject.Object) *TextCellAccessible {
 	return TextCellAccessibleNewFromNative(object.Native())
 }
 
@@ -76348,7 +76348,7 @@ CastToTextChildAnchor down casts any arbitrary Object to TextChildAnchor.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TextChildAnchor.
 */
-func (recv *TextChildAnchor) CastToTextChildAnchor(object *gobject.Object) *TextChildAnchor {
+func CastToTextChildAnchor(object *gobject.Object) *TextChildAnchor {
 	return TextChildAnchorNewFromNative(object.Native())
 }
 
@@ -76478,7 +76478,7 @@ CastToTextMark down casts any arbitrary Object to TextMark.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TextMark.
 */
-func (recv *TextMark) CastToTextMark(object *gobject.Object) *TextMark {
+func CastToTextMark(object *gobject.Object) *TextMark {
 	return TextMarkNewFromNative(object.Native())
 }
 
@@ -76766,7 +76766,7 @@ CastToTextTag down casts any arbitrary Object to TextTag.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TextTag.
 */
-func (recv *TextTag) CastToTextTag(object *gobject.Object) *TextTag {
+func CastToTextTag(object *gobject.Object) *TextTag {
 	return TextTagNewFromNative(object.Native())
 }
 
@@ -76970,7 +76970,7 @@ CastToTextTagTable down casts any arbitrary Object to TextTagTable.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TextTagTable.
 */
-func (recv *TextTagTable) CastToTextTagTable(object *gobject.Object) *TextTagTable {
+func CastToTextTagTable(object *gobject.Object) *TextTagTable {
 	return TextTagTableNewFromNative(object.Native())
 }
 
@@ -77224,7 +77224,7 @@ CastToTextView down casts any arbitrary Object to TextView.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TextView.
 */
-func (recv *TextView) CastToTextView(object *gobject.Object) *TextView {
+func CastToTextView(object *gobject.Object) *TextView {
 	return TextViewNewFromNative(object.Native())
 }
 
@@ -79373,7 +79373,7 @@ CastToTextViewAccessible down casts any arbitrary Object to TextViewAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TextViewAccessible.
 */
-func (recv *TextViewAccessible) CastToTextViewAccessible(object *gobject.Object) *TextViewAccessible {
+func CastToTextViewAccessible(object *gobject.Object) *TextViewAccessible {
 	return TextViewAccessibleNewFromNative(object.Native())
 }
 
@@ -79451,7 +79451,7 @@ CastToThemingEngine down casts any arbitrary Object to ThemingEngine.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ThemingEngine.
 */
-func (recv *ThemingEngine) CastToThemingEngine(object *gobject.Object) *ThemingEngine {
+func CastToThemingEngine(object *gobject.Object) *ThemingEngine {
 	return ThemingEngineNewFromNative(object.Native())
 }
 
@@ -79732,7 +79732,7 @@ CastToToggleAction down casts any arbitrary Object to ToggleAction.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ToggleAction.
 */
-func (recv *ToggleAction) CastToToggleAction(object *gobject.Object) *ToggleAction {
+func CastToToggleAction(object *gobject.Object) *ToggleAction {
 	return ToggleActionNewFromNative(object.Native())
 }
 
@@ -80008,7 +80008,7 @@ CastToToggleButton down casts any arbitrary Object to ToggleButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ToggleButton.
 */
-func (recv *ToggleButton) CastToToggleButton(object *gobject.Object) *ToggleButton {
+func CastToToggleButton(object *gobject.Object) *ToggleButton {
 	return ToggleButtonNewFromNative(object.Native())
 }
 
@@ -80388,7 +80388,7 @@ CastToToggleButtonAccessible down casts any arbitrary Object to ToggleButtonAcce
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ToggleButtonAccessible.
 */
-func (recv *ToggleButtonAccessible) CastToToggleButtonAccessible(object *gobject.Object) *ToggleButtonAccessible {
+func CastToToggleButtonAccessible(object *gobject.Object) *ToggleButtonAccessible {
 	return ToggleButtonAccessibleNewFromNative(object.Native())
 }
 
@@ -80496,7 +80496,7 @@ CastToToggleToolButton down casts any arbitrary Object to ToggleToolButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ToggleToolButton.
 */
-func (recv *ToggleToolButton) CastToToggleToolButton(object *gobject.Object) *ToggleToolButton {
+func CastToToggleToolButton(object *gobject.Object) *ToggleToolButton {
 	return ToggleToolButtonNewFromNative(object.Native())
 }
 
@@ -80708,7 +80708,7 @@ CastToToolButton down casts any arbitrary Object to ToolButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ToolButton.
 */
-func (recv *ToolButton) CastToToolButton(object *gobject.Object) *ToolButton {
+func CastToToolButton(object *gobject.Object) *ToolButton {
 	return ToolButtonNewFromNative(object.Native())
 }
 
@@ -81223,7 +81223,7 @@ CastToToolItem down casts any arbitrary Object to ToolItem.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ToolItem.
 */
-func (recv *ToolItem) CastToToolItem(object *gobject.Object) *ToolItem {
+func CastToToolItem(object *gobject.Object) *ToolItem {
 	return ToolItemNewFromNative(object.Native())
 }
 
@@ -82133,7 +82133,7 @@ CastToToolItemGroup down casts any arbitrary Object to ToolItemGroup.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ToolItemGroup.
 */
-func (recv *ToolItemGroup) CastToToolItemGroup(object *gobject.Object) *ToolItemGroup {
+func CastToToolItemGroup(object *gobject.Object) *ToolItemGroup {
 	return ToolItemGroupNewFromNative(object.Native())
 }
 
@@ -82698,7 +82698,7 @@ CastToToolPalette down casts any arbitrary Object to ToolPalette.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ToolPalette.
 */
-func (recv *ToolPalette) CastToToolPalette(object *gobject.Object) *ToolPalette {
+func CastToToolPalette(object *gobject.Object) *ToolPalette {
 	return ToolPaletteNewFromNative(object.Native())
 }
 
@@ -83357,7 +83357,7 @@ CastToToolbar down casts any arbitrary Object to Toolbar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Toolbar.
 */
-func (recv *Toolbar) CastToToolbar(object *gobject.Object) *Toolbar {
+func CastToToolbar(object *gobject.Object) *Toolbar {
 	return ToolbarNewFromNative(object.Native())
 }
 
@@ -83928,7 +83928,7 @@ CastToTooltip down casts any arbitrary Object to Tooltip.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Tooltip.
 */
-func (recv *Tooltip) CastToTooltip(object *gobject.Object) *Tooltip {
+func CastToTooltip(object *gobject.Object) *Tooltip {
 	return TooltipNewFromNative(object.Native())
 }
 
@@ -84163,7 +84163,7 @@ CastToToplevelAccessible down casts any arbitrary Object to ToplevelAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ToplevelAccessible.
 */
-func (recv *ToplevelAccessible) CastToToplevelAccessible(object *gobject.Object) *ToplevelAccessible {
+func CastToToplevelAccessible(object *gobject.Object) *ToplevelAccessible {
 	return ToplevelAccessibleNewFromNative(object.Native())
 }
 
@@ -84243,7 +84243,7 @@ CastToTreeModelFilter down casts any arbitrary Object to TreeModelFilter.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TreeModelFilter.
 */
-func (recv *TreeModelFilter) CastToTreeModelFilter(object *gobject.Object) *TreeModelFilter {
+func CastToTreeModelFilter(object *gobject.Object) *TreeModelFilter {
 	return TreeModelFilterNewFromNative(object.Native())
 }
 
@@ -84532,7 +84532,7 @@ CastToTreeModelSort down casts any arbitrary Object to TreeModelSort.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TreeModelSort.
 */
-func (recv *TreeModelSort) CastToTreeModelSort(object *gobject.Object) *TreeModelSort {
+func CastToTreeModelSort(object *gobject.Object) *TreeModelSort {
 	return TreeModelSortNewFromNative(object.Native())
 }
 
@@ -84821,7 +84821,7 @@ CastToTreeSelection down casts any arbitrary Object to TreeSelection.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TreeSelection.
 */
-func (recv *TreeSelection) CastToTreeSelection(object *gobject.Object) *TreeSelection {
+func CastToTreeSelection(object *gobject.Object) *TreeSelection {
 	return TreeSelectionNewFromNative(object.Native())
 }
 
@@ -85306,7 +85306,7 @@ CastToTreeStore down casts any arbitrary Object to TreeStore.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TreeStore.
 */
-func (recv *TreeStore) CastToTreeStore(object *gobject.Object) *TreeStore {
+func CastToTreeStore(object *gobject.Object) *TreeStore {
 	return TreeStoreNewFromNative(object.Native())
 }
 
@@ -85838,7 +85838,7 @@ CastToTreeView down casts any arbitrary Object to TreeView.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TreeView.
 */
-func (recv *TreeView) CastToTreeView(object *gobject.Object) *TreeView {
+func CastToTreeView(object *gobject.Object) *TreeView {
 	return TreeViewNewFromNative(object.Native())
 }
 
@@ -88450,7 +88450,7 @@ CastToTreeViewAccessible down casts any arbitrary Object to TreeViewAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TreeViewAccessible.
 */
-func (recv *TreeViewAccessible) CastToTreeViewAccessible(object *gobject.Object) *TreeViewAccessible {
+func CastToTreeViewAccessible(object *gobject.Object) *TreeViewAccessible {
 	return TreeViewAccessibleNewFromNative(object.Native())
 }
 
@@ -88533,7 +88533,7 @@ CastToTreeViewColumn down casts any arbitrary Object to TreeViewColumn.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TreeViewColumn.
 */
-func (recv *TreeViewColumn) CastToTreeViewColumn(object *gobject.Object) *TreeViewColumn {
+func CastToTreeViewColumn(object *gobject.Object) *TreeViewColumn {
 	return TreeViewColumnNewFromNative(object.Native())
 }
 
@@ -90088,7 +90088,7 @@ CastToUIManager down casts any arbitrary Object to UIManager.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UIManager.
 */
-func (recv *UIManager) CastToUIManager(object *gobject.Object) *UIManager {
+func CastToUIManager(object *gobject.Object) *UIManager {
 	return UIManagerNewFromNative(object.Native())
 }
 
@@ -90649,7 +90649,7 @@ CastToVBox down casts any arbitrary Object to VBox.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VBox.
 */
-func (recv *VBox) CastToVBox(object *gobject.Object) *VBox {
+func CastToVBox(object *gobject.Object) *VBox {
 	return VBoxNewFromNative(object.Native())
 }
 
@@ -90771,7 +90771,7 @@ CastToVButtonBox down casts any arbitrary Object to VButtonBox.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VButtonBox.
 */
-func (recv *VButtonBox) CastToVButtonBox(object *gobject.Object) *VButtonBox {
+func CastToVButtonBox(object *gobject.Object) *VButtonBox {
 	return VButtonBoxNewFromNative(object.Native())
 }
 
@@ -90885,7 +90885,7 @@ CastToVPaned down casts any arbitrary Object to VPaned.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VPaned.
 */
-func (recv *VPaned) CastToVPaned(object *gobject.Object) *VPaned {
+func CastToVPaned(object *gobject.Object) *VPaned {
 	return VPanedNewFromNative(object.Native())
 }
 
@@ -90999,7 +90999,7 @@ CastToVScale down casts any arbitrary Object to VScale.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VScale.
 */
-func (recv *VScale) CastToVScale(object *gobject.Object) *VScale {
+func CastToVScale(object *gobject.Object) *VScale {
 	return VScaleNewFromNative(object.Native())
 }
 
@@ -91149,7 +91149,7 @@ CastToVScrollbar down casts any arbitrary Object to VScrollbar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VScrollbar.
 */
-func (recv *VScrollbar) CastToVScrollbar(object *gobject.Object) *VScrollbar {
+func CastToVScrollbar(object *gobject.Object) *VScrollbar {
 	return VScrollbarNewFromNative(object.Native())
 }
 
@@ -91260,7 +91260,7 @@ CastToVSeparator down casts any arbitrary Object to VSeparator.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VSeparator.
 */
-func (recv *VSeparator) CastToVSeparator(object *gobject.Object) *VSeparator {
+func CastToVSeparator(object *gobject.Object) *VSeparator {
 	return VSeparatorNewFromNative(object.Native())
 }
 
@@ -91374,7 +91374,7 @@ CastToViewport down casts any arbitrary Object to Viewport.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Viewport.
 */
-func (recv *Viewport) CastToViewport(object *gobject.Object) *Viewport {
+func CastToViewport(object *gobject.Object) *Viewport {
 	return ViewportNewFromNative(object.Native())
 }
 
@@ -91748,7 +91748,7 @@ CastToVolumeButton down casts any arbitrary Object to VolumeButton.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VolumeButton.
 */
-func (recv *VolumeButton) CastToVolumeButton(object *gobject.Object) *VolumeButton {
+func CastToVolumeButton(object *gobject.Object) *VolumeButton {
 	return VolumeButtonNewFromNative(object.Native())
 }
 
@@ -91847,7 +91847,7 @@ CastToWidget down casts any arbitrary Object to Widget.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Widget.
 */
-func (recv *Widget) CastToWidget(object *gobject.Object) *Widget {
+func CastToWidget(object *gobject.Object) *Widget {
 	return WidgetNewFromNative(object.Native())
 }
 
@@ -98335,7 +98335,7 @@ CastToWidgetAccessible down casts any arbitrary Object to WidgetAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WidgetAccessible.
 */
-func (recv *WidgetAccessible) CastToWidgetAccessible(object *gobject.Object) *WidgetAccessible {
+func CastToWidgetAccessible(object *gobject.Object) *WidgetAccessible {
 	return WidgetAccessibleNewFromNative(object.Native())
 }
 
@@ -98433,7 +98433,7 @@ CastToWindow down casts any arbitrary Object to Window.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Window.
 */
-func (recv *Window) CastToWindow(object *gobject.Object) *Window {
+func CastToWindow(object *gobject.Object) *Window {
 	return WindowNewFromNative(object.Native())
 }
 
@@ -101472,7 +101472,7 @@ CastToWindowAccessible down casts any arbitrary Object to WindowAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WindowAccessible.
 */
-func (recv *WindowAccessible) CastToWindowAccessible(object *gobject.Object) *WindowAccessible {
+func CastToWindowAccessible(object *gobject.Object) *WindowAccessible {
 	return WindowAccessibleNewFromNative(object.Native())
 }
 
@@ -101550,7 +101550,7 @@ CastToWindowGroup down casts any arbitrary Object to WindowGroup.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WindowGroup.
 */
-func (recv *WindowGroup) CastToWindowGroup(object *gobject.Object) *WindowGroup {
+func CastToWindowGroup(object *gobject.Object) *WindowGroup {
 	return WindowGroupNewFromNative(object.Native())
 }
 

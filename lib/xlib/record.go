@@ -36,7 +36,7 @@ CastToDisplay down casts any arbitrary Object to Display.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Display.
 */
-func (recv *Display) CastToDisplay(object *gobject.Object) *Display {
+func CastToDisplay(object *gobject.Object) *Display {
 	return DisplayNewFromNative(object.Native())
 }
 
@@ -85,7 +85,7 @@ CastToScreen down casts any arbitrary Object to Screen.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Screen.
 */
-func (recv *Screen) CastToScreen(object *gobject.Object) *Screen {
+func CastToScreen(object *gobject.Object) *Screen {
 	return ScreenNewFromNative(object.Native())
 }
 
@@ -134,7 +134,7 @@ CastToVisual down casts any arbitrary Object to Visual.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Visual.
 */
-func (recv *Visual) CastToVisual(object *gobject.Object) *Visual {
+func CastToVisual(object *gobject.Object) *Visual {
 	return VisualNewFromNative(object.Native())
 }
 
@@ -183,7 +183,7 @@ CastToXConfigureEvent down casts any arbitrary Object to XConfigureEvent.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a XConfigureEvent.
 */
-func (recv *XConfigureEvent) CastToXConfigureEvent(object *gobject.Object) *XConfigureEvent {
+func CastToXConfigureEvent(object *gobject.Object) *XConfigureEvent {
 	return XConfigureEventNewFromNative(object.Native())
 }
 
@@ -232,7 +232,7 @@ CastToXImage down casts any arbitrary Object to XImage.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a XImage.
 */
-func (recv *XImage) CastToXImage(object *gobject.Object) *XImage {
+func CastToXImage(object *gobject.Object) *XImage {
 	return XImageNewFromNative(object.Native())
 }
 
@@ -281,7 +281,7 @@ CastToXFontStruct down casts any arbitrary Object to XFontStruct.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a XFontStruct.
 */
-func (recv *XFontStruct) CastToXFontStruct(object *gobject.Object) *XFontStruct {
+func CastToXFontStruct(object *gobject.Object) *XFontStruct {
 	return XFontStructNewFromNative(object.Native())
 }
 
@@ -330,7 +330,7 @@ CastToXTrapezoid down casts any arbitrary Object to XTrapezoid.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a XTrapezoid.
 */
-func (recv *XTrapezoid) CastToXTrapezoid(object *gobject.Object) *XTrapezoid {
+func CastToXTrapezoid(object *gobject.Object) *XTrapezoid {
 	return XTrapezoidNewFromNative(object.Native())
 }
 
@@ -379,7 +379,7 @@ CastToXVisualInfo down casts any arbitrary Object to XVisualInfo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a XVisualInfo.
 */
-func (recv *XVisualInfo) CastToXVisualInfo(object *gobject.Object) *XVisualInfo {
+func CastToXVisualInfo(object *gobject.Object) *XVisualInfo {
 	return XVisualInfoNewFromNative(object.Native())
 }
 
@@ -428,7 +428,7 @@ CastToXWindowAttributes down casts any arbitrary Object to XWindowAttributes.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a XWindowAttributes.
 */
-func (recv *XWindowAttributes) CastToXWindowAttributes(object *gobject.Object) *XWindowAttributes {
+func CastToXWindowAttributes(object *gobject.Object) *XWindowAttributes {
 	return XWindowAttributesNewFromNative(object.Native())
 }
 

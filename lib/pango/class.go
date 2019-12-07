@@ -52,7 +52,7 @@ CastToContext down casts any arbitrary Object to Context.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Context.
 */
-func (recv *Context) CastToContext(object *gobject.Object) *Context {
+func CastToContext(object *gobject.Object) *Context {
 	return ContextNewFromNative(object.Native())
 }
 
@@ -756,7 +756,7 @@ CastToEngine down casts any arbitrary Object to Engine.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Engine.
 */
-func (recv *Engine) CastToEngine(object *gobject.Object) *Engine {
+func CastToEngine(object *gobject.Object) *Engine {
 	return EngineNewFromNative(object.Native())
 }
 
@@ -811,7 +811,7 @@ CastToEngineLang down casts any arbitrary Object to EngineLang.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EngineLang.
 */
-func (recv *EngineLang) CastToEngineLang(object *gobject.Object) *EngineLang {
+func CastToEngineLang(object *gobject.Object) *EngineLang {
 	return EngineLangNewFromNative(object.Native())
 }
 
@@ -866,7 +866,7 @@ CastToEngineShape down casts any arbitrary Object to EngineShape.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EngineShape.
 */
-func (recv *EngineShape) CastToEngineShape(object *gobject.Object) *EngineShape {
+func CastToEngineShape(object *gobject.Object) *EngineShape {
 	return EngineShapeNewFromNative(object.Native())
 }
 
@@ -930,7 +930,7 @@ CastToFont down casts any arbitrary Object to Font.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Font.
 */
-func (recv *Font) CastToFont(object *gobject.Object) *Font {
+func CastToFont(object *gobject.Object) *Font {
 	return FontNewFromNative(object.Native())
 }
 
@@ -1224,7 +1224,7 @@ CastToFontFace down casts any arbitrary Object to FontFace.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FontFace.
 */
-func (recv *FontFace) CastToFontFace(object *gobject.Object) *FontFace {
+func CastToFontFace(object *gobject.Object) *FontFace {
 	return FontFaceNewFromNative(object.Native())
 }
 
@@ -1386,7 +1386,7 @@ CastToFontFamily down casts any arbitrary Object to FontFamily.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FontFamily.
 */
-func (recv *FontFamily) CastToFontFamily(object *gobject.Object) *FontFamily {
+func CastToFontFamily(object *gobject.Object) *FontFamily {
 	return FontFamilyNewFromNative(object.Native())
 }
 
@@ -1516,7 +1516,7 @@ CastToFontMap down casts any arbitrary Object to FontMap.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FontMap.
 */
-func (recv *FontMap) CastToFontMap(object *gobject.Object) *FontMap {
+func CastToFontMap(object *gobject.Object) *FontMap {
 	return FontMapNewFromNative(object.Native())
 }
 
@@ -1775,7 +1775,7 @@ CastToFontset down casts any arbitrary Object to Fontset.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Fontset.
 */
-func (recv *Fontset) CastToFontset(object *gobject.Object) *Fontset {
+func CastToFontset(object *gobject.Object) *Fontset {
 	return FontsetNewFromNative(object.Native())
 }
 
@@ -1911,7 +1911,7 @@ CastToFontsetSimple down casts any arbitrary Object to FontsetSimple.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FontsetSimple.
 */
-func (recv *FontsetSimple) CastToFontsetSimple(object *gobject.Object) *FontsetSimple {
+func CastToFontsetSimple(object *gobject.Object) *FontsetSimple {
 	return FontsetSimpleNewFromNative(object.Native())
 }
 
@@ -2056,7 +2056,7 @@ CastToLayout down casts any arbitrary Object to Layout.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Layout.
 */
-func (recv *Layout) CastToLayout(object *gobject.Object) *Layout {
+func CastToLayout(object *gobject.Object) *Layout {
 	return LayoutNewFromNative(object.Native())
 }
 
@@ -3787,7 +3787,7 @@ CastToRenderer down casts any arbitrary Object to Renderer.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Renderer.
 */
-func (recv *Renderer) CastToRenderer(object *gobject.Object) *Renderer {
+func CastToRenderer(object *gobject.Object) *Renderer {
 	return RendererNewFromNative(object.Native())
 }
 

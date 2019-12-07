@@ -59,7 +59,7 @@ CastToAppLaunchContext down casts any arbitrary Object to AppLaunchContext.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AppLaunchContext.
 */
-func (recv *AppLaunchContext) CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
+func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromNative(object.Native())
 }
 
@@ -288,7 +288,7 @@ CastToCursor down casts any arbitrary Object to Cursor.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Cursor.
 */
-func (recv *Cursor) CastToCursor(object *gobject.Object) *Cursor {
+func CastToCursor(object *gobject.Object) *Cursor {
 	return CursorNewFromNative(object.Native())
 }
 
@@ -639,7 +639,7 @@ CastToDevice down casts any arbitrary Object to Device.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Device.
 */
-func (recv *Device) CastToDevice(object *gobject.Object) *Device {
+func CastToDevice(object *gobject.Object) *Device {
 	return DeviceNewFromNative(object.Native())
 }
 
@@ -1419,7 +1419,7 @@ CastToDeviceManager down casts any arbitrary Object to DeviceManager.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DeviceManager.
 */
-func (recv *DeviceManager) CastToDeviceManager(object *gobject.Object) *DeviceManager {
+func CastToDeviceManager(object *gobject.Object) *DeviceManager {
 	return DeviceManagerNewFromNative(object.Native())
 }
 
@@ -1535,7 +1535,7 @@ CastToDeviceTool down casts any arbitrary Object to DeviceTool.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DeviceTool.
 */
-func (recv *DeviceTool) CastToDeviceTool(object *gobject.Object) *DeviceTool {
+func CastToDeviceTool(object *gobject.Object) *DeviceTool {
 	return DeviceToolNewFromNative(object.Native())
 }
 
@@ -1681,7 +1681,7 @@ CastToDisplay down casts any arbitrary Object to Display.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Display.
 */
-func (recv *Display) CastToDisplay(object *gobject.Object) *Display {
+func CastToDisplay(object *gobject.Object) *Display {
 	return DisplayNewFromNative(object.Native())
 }
 
@@ -2940,7 +2940,7 @@ CastToDisplayManager down casts any arbitrary Object to DisplayManager.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DisplayManager.
 */
-func (recv *DisplayManager) CastToDisplayManager(object *gobject.Object) *DisplayManager {
+func CastToDisplayManager(object *gobject.Object) *DisplayManager {
 	return DisplayManagerNewFromNative(object.Native())
 }
 
@@ -3086,7 +3086,7 @@ CastToDragContext down casts any arbitrary Object to DragContext.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DragContext.
 */
-func (recv *DragContext) CastToDragContext(object *gobject.Object) *DragContext {
+func CastToDragContext(object *gobject.Object) *DragContext {
 	return DragContextNewFromNative(object.Native())
 }
 
@@ -3365,7 +3365,7 @@ CastToDrawingContext down casts any arbitrary Object to DrawingContext.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DrawingContext.
 */
-func (recv *DrawingContext) CastToDrawingContext(object *gobject.Object) *DrawingContext {
+func CastToDrawingContext(object *gobject.Object) *DrawingContext {
 	return DrawingContextNewFromNative(object.Native())
 }
 
@@ -3483,7 +3483,7 @@ CastToFrameClock down casts any arbitrary Object to FrameClock.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FrameClock.
 */
-func (recv *FrameClock) CastToFrameClock(object *gobject.Object) *FrameClock {
+func CastToFrameClock(object *gobject.Object) *FrameClock {
 	return FrameClockNewFromNative(object.Native())
 }
 
@@ -3786,7 +3786,7 @@ CastToGLContext down casts any arbitrary Object to GLContext.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GLContext.
 */
-func (recv *GLContext) CastToGLContext(object *gobject.Object) *GLContext {
+func CastToGLContext(object *gobject.Object) *GLContext {
 	return GLContextNewFromNative(object.Native())
 }
 
@@ -4303,7 +4303,7 @@ CastToKeymap down casts any arbitrary Object to Keymap.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Keymap.
 */
-func (recv *Keymap) CastToKeymap(object *gobject.Object) *Keymap {
+func CastToKeymap(object *gobject.Object) *Keymap {
 	return KeymapNewFromNative(object.Native())
 }
 
@@ -4560,7 +4560,7 @@ CastToMonitor down casts any arbitrary Object to Monitor.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Monitor.
 */
-func (recv *Monitor) CastToMonitor(object *gobject.Object) *Monitor {
+func CastToMonitor(object *gobject.Object) *Monitor {
 	return MonitorNewFromNative(object.Native())
 }
 
@@ -4962,7 +4962,7 @@ CastToScreen down casts any arbitrary Object to Screen.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Screen.
 */
-func (recv *Screen) CastToScreen(object *gobject.Object) *Screen {
+func CastToScreen(object *gobject.Object) *Screen {
 	return ScreenNewFromNative(object.Native())
 }
 
@@ -5798,7 +5798,7 @@ CastToSeat down casts any arbitrary Object to Seat.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Seat.
 */
-func (recv *Seat) CastToSeat(object *gobject.Object) *Seat {
+func CastToSeat(object *gobject.Object) *Seat {
 	return SeatNewFromNative(object.Native())
 }
 
@@ -5992,7 +5992,7 @@ CastToVisual down casts any arbitrary Object to Visual.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Visual.
 */
-func (recv *Visual) CastToVisual(object *gobject.Object) *Visual {
+func CastToVisual(object *gobject.Object) *Visual {
 	return VisualNewFromNative(object.Native())
 }
 
@@ -6336,7 +6336,7 @@ CastToWindow down casts any arbitrary Object to Window.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Window.
 */
-func (recv *Window) CastToWindow(object *gobject.Object) *Window {
+func CastToWindow(object *gobject.Object) *Window {
 	return WindowNewFromNative(object.Native())
 }
 

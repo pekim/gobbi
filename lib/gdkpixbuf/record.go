@@ -36,7 +36,7 @@ CastToPixbufFormat down casts any arbitrary Object to PixbufFormat.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PixbufFormat.
 */
-func (recv *PixbufFormat) CastToPixbufFormat(object *gobject.Object) *PixbufFormat {
+func CastToPixbufFormat(object *gobject.Object) *PixbufFormat {
 	return PixbufFormatNewFromNative(object.Native())
 }
 
@@ -455,7 +455,7 @@ CastToPixbufLoaderClass down casts any arbitrary Object to PixbufLoaderClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PixbufLoaderClass.
 */
-func (recv *PixbufLoaderClass) CastToPixbufLoaderClass(object *gobject.Object) *PixbufLoaderClass {
+func CastToPixbufLoaderClass(object *gobject.Object) *PixbufLoaderClass {
 	return PixbufLoaderClassNewFromNative(object.Native())
 }
 
@@ -524,7 +524,7 @@ CastToPixbufSimpleAnimClass down casts any arbitrary Object to PixbufSimpleAnimC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PixbufSimpleAnimClass.
 */
-func (recv *PixbufSimpleAnimClass) CastToPixbufSimpleAnimClass(object *gobject.Object) *PixbufSimpleAnimClass {
+func CastToPixbufSimpleAnimClass(object *gobject.Object) *PixbufSimpleAnimClass {
 	return PixbufSimpleAnimClassNewFromNative(object.Native())
 }
 

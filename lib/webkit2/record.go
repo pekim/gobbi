@@ -37,7 +37,7 @@ CastToApplicationInfo down casts any arbitrary Object to ApplicationInfo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ApplicationInfo.
 */
-func (recv *ApplicationInfo) CastToApplicationInfo(object *gobject.Object) *ApplicationInfo {
+func CastToApplicationInfo(object *gobject.Object) *ApplicationInfo {
 	return ApplicationInfoNewFromNative(object.Native())
 }
 
@@ -287,7 +287,7 @@ CastToAuthenticationRequestClass down casts any arbitrary Object to Authenticati
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AuthenticationRequestClass.
 */
-func (recv *AuthenticationRequestClass) CastToAuthenticationRequestClass(object *gobject.Object) *AuthenticationRequestClass {
+func CastToAuthenticationRequestClass(object *gobject.Object) *AuthenticationRequestClass {
 	return AuthenticationRequestClassNewFromNative(object.Native())
 }
 
@@ -356,7 +356,7 @@ CastToAuthenticationRequestPrivate down casts any arbitrary Object to Authentica
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AuthenticationRequestPrivate.
 */
-func (recv *AuthenticationRequestPrivate) CastToAuthenticationRequestPrivate(object *gobject.Object) *AuthenticationRequestPrivate {
+func CastToAuthenticationRequestPrivate(object *gobject.Object) *AuthenticationRequestPrivate {
 	return AuthenticationRequestPrivateNewFromNative(object.Native())
 }
 
@@ -405,7 +405,7 @@ CastToAutomationSessionClass down casts any arbitrary Object to AutomationSessio
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AutomationSessionClass.
 */
-func (recv *AutomationSessionClass) CastToAutomationSessionClass(object *gobject.Object) *AutomationSessionClass {
+func CastToAutomationSessionClass(object *gobject.Object) *AutomationSessionClass {
 	return AutomationSessionClassNewFromNative(object.Native())
 }
 
@@ -474,7 +474,7 @@ CastToAutomationSessionPrivate down casts any arbitrary Object to AutomationSess
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AutomationSessionPrivate.
 */
-func (recv *AutomationSessionPrivate) CastToAutomationSessionPrivate(object *gobject.Object) *AutomationSessionPrivate {
+func CastToAutomationSessionPrivate(object *gobject.Object) *AutomationSessionPrivate {
 	return AutomationSessionPrivateNewFromNative(object.Native())
 }
 
@@ -523,7 +523,7 @@ CastToBackForwardListClass down casts any arbitrary Object to BackForwardListCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a BackForwardListClass.
 */
-func (recv *BackForwardListClass) CastToBackForwardListClass(object *gobject.Object) *BackForwardListClass {
+func CastToBackForwardListClass(object *gobject.Object) *BackForwardListClass {
 	return BackForwardListClassNewFromNative(object.Native())
 }
 
@@ -592,7 +592,7 @@ CastToBackForwardListItemClass down casts any arbitrary Object to BackForwardLis
 Exercise care, as this is a potentially dangerous function
 if the Object is not a BackForwardListItemClass.
 */
-func (recv *BackForwardListItemClass) CastToBackForwardListItemClass(object *gobject.Object) *BackForwardListItemClass {
+func CastToBackForwardListItemClass(object *gobject.Object) *BackForwardListItemClass {
 	return BackForwardListItemClassNewFromNative(object.Native())
 }
 
@@ -661,7 +661,7 @@ CastToBackForwardListItemPrivate down casts any arbitrary Object to BackForwardL
 Exercise care, as this is a potentially dangerous function
 if the Object is not a BackForwardListItemPrivate.
 */
-func (recv *BackForwardListItemPrivate) CastToBackForwardListItemPrivate(object *gobject.Object) *BackForwardListItemPrivate {
+func CastToBackForwardListItemPrivate(object *gobject.Object) *BackForwardListItemPrivate {
 	return BackForwardListItemPrivateNewFromNative(object.Native())
 }
 
@@ -710,7 +710,7 @@ CastToBackForwardListPrivate down casts any arbitrary Object to BackForwardListP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a BackForwardListPrivate.
 */
-func (recv *BackForwardListPrivate) CastToBackForwardListPrivate(object *gobject.Object) *BackForwardListPrivate {
+func CastToBackForwardListPrivate(object *gobject.Object) *BackForwardListPrivate {
 	return BackForwardListPrivateNewFromNative(object.Native())
 }
 
@@ -759,7 +759,7 @@ CastToColorChooserRequestClass down casts any arbitrary Object to ColorChooserRe
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ColorChooserRequestClass.
 */
-func (recv *ColorChooserRequestClass) CastToColorChooserRequestClass(object *gobject.Object) *ColorChooserRequestClass {
+func CastToColorChooserRequestClass(object *gobject.Object) *ColorChooserRequestClass {
 	return ColorChooserRequestClassNewFromNative(object.Native())
 }
 
@@ -812,7 +812,7 @@ CastToColorChooserRequestPrivate down casts any arbitrary Object to ColorChooser
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ColorChooserRequestPrivate.
 */
-func (recv *ColorChooserRequestPrivate) CastToColorChooserRequestPrivate(object *gobject.Object) *ColorChooserRequestPrivate {
+func CastToColorChooserRequestPrivate(object *gobject.Object) *ColorChooserRequestPrivate {
 	return ColorChooserRequestPrivateNewFromNative(object.Native())
 }
 
@@ -861,7 +861,7 @@ CastToContextMenuClass down casts any arbitrary Object to ContextMenuClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ContextMenuClass.
 */
-func (recv *ContextMenuClass) CastToContextMenuClass(object *gobject.Object) *ContextMenuClass {
+func CastToContextMenuClass(object *gobject.Object) *ContextMenuClass {
 	return ContextMenuClassNewFromNative(object.Native())
 }
 
@@ -930,7 +930,7 @@ CastToContextMenuItemClass down casts any arbitrary Object to ContextMenuItemCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ContextMenuItemClass.
 */
-func (recv *ContextMenuItemClass) CastToContextMenuItemClass(object *gobject.Object) *ContextMenuItemClass {
+func CastToContextMenuItemClass(object *gobject.Object) *ContextMenuItemClass {
 	return ContextMenuItemClassNewFromNative(object.Native())
 }
 
@@ -999,7 +999,7 @@ CastToContextMenuItemPrivate down casts any arbitrary Object to ContextMenuItemP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ContextMenuItemPrivate.
 */
-func (recv *ContextMenuItemPrivate) CastToContextMenuItemPrivate(object *gobject.Object) *ContextMenuItemPrivate {
+func CastToContextMenuItemPrivate(object *gobject.Object) *ContextMenuItemPrivate {
 	return ContextMenuItemPrivateNewFromNative(object.Native())
 }
 
@@ -1048,7 +1048,7 @@ CastToContextMenuPrivate down casts any arbitrary Object to ContextMenuPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ContextMenuPrivate.
 */
-func (recv *ContextMenuPrivate) CastToContextMenuPrivate(object *gobject.Object) *ContextMenuPrivate {
+func CastToContextMenuPrivate(object *gobject.Object) *ContextMenuPrivate {
 	return ContextMenuPrivateNewFromNative(object.Native())
 }
 
@@ -1097,7 +1097,7 @@ CastToCookieManagerClass down casts any arbitrary Object to CookieManagerClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CookieManagerClass.
 */
-func (recv *CookieManagerClass) CastToCookieManagerClass(object *gobject.Object) *CookieManagerClass {
+func CastToCookieManagerClass(object *gobject.Object) *CookieManagerClass {
 	return CookieManagerClassNewFromNative(object.Native())
 }
 
@@ -1166,7 +1166,7 @@ CastToCookieManagerPrivate down casts any arbitrary Object to CookieManagerPriva
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CookieManagerPrivate.
 */
-func (recv *CookieManagerPrivate) CastToCookieManagerPrivate(object *gobject.Object) *CookieManagerPrivate {
+func CastToCookieManagerPrivate(object *gobject.Object) *CookieManagerPrivate {
 	return CookieManagerPrivateNewFromNative(object.Native())
 }
 
@@ -1215,7 +1215,7 @@ CastToCredential down casts any arbitrary Object to Credential.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Credential.
 */
-func (recv *Credential) CastToCredential(object *gobject.Object) *Credential {
+func CastToCredential(object *gobject.Object) *Credential {
 	return CredentialNewFromNative(object.Native())
 }
 
@@ -1471,7 +1471,7 @@ CastToDeviceInfoPermissionRequestClass down casts any arbitrary Object to Device
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DeviceInfoPermissionRequestClass.
 */
-func (recv *DeviceInfoPermissionRequestClass) CastToDeviceInfoPermissionRequestClass(object *gobject.Object) *DeviceInfoPermissionRequestClass {
+func CastToDeviceInfoPermissionRequestClass(object *gobject.Object) *DeviceInfoPermissionRequestClass {
 	return DeviceInfoPermissionRequestClassNewFromNative(object.Native())
 }
 
@@ -1540,7 +1540,7 @@ CastToDeviceInfoPermissionRequestPrivate down casts any arbitrary Object to Devi
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DeviceInfoPermissionRequestPrivate.
 */
-func (recv *DeviceInfoPermissionRequestPrivate) CastToDeviceInfoPermissionRequestPrivate(object *gobject.Object) *DeviceInfoPermissionRequestPrivate {
+func CastToDeviceInfoPermissionRequestPrivate(object *gobject.Object) *DeviceInfoPermissionRequestPrivate {
 	return DeviceInfoPermissionRequestPrivateNewFromNative(object.Native())
 }
 
@@ -1589,7 +1589,7 @@ CastToDownloadClass down casts any arbitrary Object to DownloadClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DownloadClass.
 */
-func (recv *DownloadClass) CastToDownloadClass(object *gobject.Object) *DownloadClass {
+func CastToDownloadClass(object *gobject.Object) *DownloadClass {
 	return DownloadClassNewFromNative(object.Native())
 }
 
@@ -1662,7 +1662,7 @@ CastToDownloadPrivate down casts any arbitrary Object to DownloadPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DownloadPrivate.
 */
-func (recv *DownloadPrivate) CastToDownloadPrivate(object *gobject.Object) *DownloadPrivate {
+func CastToDownloadPrivate(object *gobject.Object) *DownloadPrivate {
 	return DownloadPrivateNewFromNative(object.Native())
 }
 
@@ -1711,7 +1711,7 @@ CastToEditorStateClass down casts any arbitrary Object to EditorStateClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EditorStateClass.
 */
-func (recv *EditorStateClass) CastToEditorStateClass(object *gobject.Object) *EditorStateClass {
+func CastToEditorStateClass(object *gobject.Object) *EditorStateClass {
 	return EditorStateClassNewFromNative(object.Native())
 }
 
@@ -1780,7 +1780,7 @@ CastToEditorStatePrivate down casts any arbitrary Object to EditorStatePrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EditorStatePrivate.
 */
-func (recv *EditorStatePrivate) CastToEditorStatePrivate(object *gobject.Object) *EditorStatePrivate {
+func CastToEditorStatePrivate(object *gobject.Object) *EditorStatePrivate {
 	return EditorStatePrivateNewFromNative(object.Native())
 }
 
@@ -1829,7 +1829,7 @@ CastToFaviconDatabaseClass down casts any arbitrary Object to FaviconDatabaseCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FaviconDatabaseClass.
 */
-func (recv *FaviconDatabaseClass) CastToFaviconDatabaseClass(object *gobject.Object) *FaviconDatabaseClass {
+func CastToFaviconDatabaseClass(object *gobject.Object) *FaviconDatabaseClass {
 	return FaviconDatabaseClassNewFromNative(object.Native())
 }
 
@@ -1898,7 +1898,7 @@ CastToFaviconDatabasePrivate down casts any arbitrary Object to FaviconDatabaseP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FaviconDatabasePrivate.
 */
-func (recv *FaviconDatabasePrivate) CastToFaviconDatabasePrivate(object *gobject.Object) *FaviconDatabasePrivate {
+func CastToFaviconDatabasePrivate(object *gobject.Object) *FaviconDatabasePrivate {
 	return FaviconDatabasePrivateNewFromNative(object.Native())
 }
 
@@ -1947,7 +1947,7 @@ CastToFileChooserRequestClass down casts any arbitrary Object to FileChooserRequ
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileChooserRequestClass.
 */
-func (recv *FileChooserRequestClass) CastToFileChooserRequestClass(object *gobject.Object) *FileChooserRequestClass {
+func CastToFileChooserRequestClass(object *gobject.Object) *FileChooserRequestClass {
 	return FileChooserRequestClassNewFromNative(object.Native())
 }
 
@@ -2016,7 +2016,7 @@ CastToFileChooserRequestPrivate down casts any arbitrary Object to FileChooserRe
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileChooserRequestPrivate.
 */
-func (recv *FileChooserRequestPrivate) CastToFileChooserRequestPrivate(object *gobject.Object) *FileChooserRequestPrivate {
+func CastToFileChooserRequestPrivate(object *gobject.Object) *FileChooserRequestPrivate {
 	return FileChooserRequestPrivateNewFromNative(object.Native())
 }
 
@@ -2065,7 +2065,7 @@ CastToFindControllerClass down casts any arbitrary Object to FindControllerClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FindControllerClass.
 */
-func (recv *FindControllerClass) CastToFindControllerClass(object *gobject.Object) *FindControllerClass {
+func CastToFindControllerClass(object *gobject.Object) *FindControllerClass {
 	return FindControllerClassNewFromNative(object.Native())
 }
 
@@ -2134,7 +2134,7 @@ CastToFindControllerPrivate down casts any arbitrary Object to FindControllerPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FindControllerPrivate.
 */
-func (recv *FindControllerPrivate) CastToFindControllerPrivate(object *gobject.Object) *FindControllerPrivate {
+func CastToFindControllerPrivate(object *gobject.Object) *FindControllerPrivate {
 	return FindControllerPrivateNewFromNative(object.Native())
 }
 
@@ -2183,7 +2183,7 @@ CastToFormSubmissionRequestClass down casts any arbitrary Object to FormSubmissi
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FormSubmissionRequestClass.
 */
-func (recv *FormSubmissionRequestClass) CastToFormSubmissionRequestClass(object *gobject.Object) *FormSubmissionRequestClass {
+func CastToFormSubmissionRequestClass(object *gobject.Object) *FormSubmissionRequestClass {
 	return FormSubmissionRequestClassNewFromNative(object.Native())
 }
 
@@ -2252,7 +2252,7 @@ CastToFormSubmissionRequestPrivate down casts any arbitrary Object to FormSubmis
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FormSubmissionRequestPrivate.
 */
-func (recv *FormSubmissionRequestPrivate) CastToFormSubmissionRequestPrivate(object *gobject.Object) *FormSubmissionRequestPrivate {
+func CastToFormSubmissionRequestPrivate(object *gobject.Object) *FormSubmissionRequestPrivate {
 	return FormSubmissionRequestPrivateNewFromNative(object.Native())
 }
 
@@ -2301,7 +2301,7 @@ CastToGeolocationManagerClass down casts any arbitrary Object to GeolocationMana
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GeolocationManagerClass.
 */
-func (recv *GeolocationManagerClass) CastToGeolocationManagerClass(object *gobject.Object) *GeolocationManagerClass {
+func CastToGeolocationManagerClass(object *gobject.Object) *GeolocationManagerClass {
 	return GeolocationManagerClassNewFromNative(object.Native())
 }
 
@@ -2370,7 +2370,7 @@ CastToGeolocationManagerPrivate down casts any arbitrary Object to GeolocationMa
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GeolocationManagerPrivate.
 */
-func (recv *GeolocationManagerPrivate) CastToGeolocationManagerPrivate(object *gobject.Object) *GeolocationManagerPrivate {
+func CastToGeolocationManagerPrivate(object *gobject.Object) *GeolocationManagerPrivate {
 	return GeolocationManagerPrivateNewFromNative(object.Native())
 }
 
@@ -2419,7 +2419,7 @@ CastToGeolocationPermissionRequestClass down casts any arbitrary Object to Geolo
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GeolocationPermissionRequestClass.
 */
-func (recv *GeolocationPermissionRequestClass) CastToGeolocationPermissionRequestClass(object *gobject.Object) *GeolocationPermissionRequestClass {
+func CastToGeolocationPermissionRequestClass(object *gobject.Object) *GeolocationPermissionRequestClass {
 	return GeolocationPermissionRequestClassNewFromNative(object.Native())
 }
 
@@ -2488,7 +2488,7 @@ CastToGeolocationPermissionRequestPrivate down casts any arbitrary Object to Geo
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GeolocationPermissionRequestPrivate.
 */
-func (recv *GeolocationPermissionRequestPrivate) CastToGeolocationPermissionRequestPrivate(object *gobject.Object) *GeolocationPermissionRequestPrivate {
+func CastToGeolocationPermissionRequestPrivate(object *gobject.Object) *GeolocationPermissionRequestPrivate {
 	return GeolocationPermissionRequestPrivateNewFromNative(object.Native())
 }
 
@@ -2537,7 +2537,7 @@ CastToGeolocationPosition down casts any arbitrary Object to GeolocationPosition
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GeolocationPosition.
 */
-func (recv *GeolocationPosition) CastToGeolocationPosition(object *gobject.Object) *GeolocationPosition {
+func CastToGeolocationPosition(object *gobject.Object) *GeolocationPosition {
 	return GeolocationPositionNewFromNative(object.Native())
 }
 
@@ -2810,7 +2810,7 @@ CastToHitTestResultClass down casts any arbitrary Object to HitTestResultClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HitTestResultClass.
 */
-func (recv *HitTestResultClass) CastToHitTestResultClass(object *gobject.Object) *HitTestResultClass {
+func CastToHitTestResultClass(object *gobject.Object) *HitTestResultClass {
 	return HitTestResultClassNewFromNative(object.Native())
 }
 
@@ -2879,7 +2879,7 @@ CastToHitTestResultPrivate down casts any arbitrary Object to HitTestResultPriva
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HitTestResultPrivate.
 */
-func (recv *HitTestResultPrivate) CastToHitTestResultPrivate(object *gobject.Object) *HitTestResultPrivate {
+func CastToHitTestResultPrivate(object *gobject.Object) *HitTestResultPrivate {
 	return HitTestResultPrivateNewFromNative(object.Native())
 }
 
@@ -2928,7 +2928,7 @@ CastToInstallMissingMediaPluginsPermissionRequestClass down casts any arbitrary 
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InstallMissingMediaPluginsPermissionRequestClass.
 */
-func (recv *InstallMissingMediaPluginsPermissionRequestClass) CastToInstallMissingMediaPluginsPermissionRequestClass(object *gobject.Object) *InstallMissingMediaPluginsPermissionRequestClass {
+func CastToInstallMissingMediaPluginsPermissionRequestClass(object *gobject.Object) *InstallMissingMediaPluginsPermissionRequestClass {
 	return InstallMissingMediaPluginsPermissionRequestClassNewFromNative(object.Native())
 }
 
@@ -2997,7 +2997,7 @@ CastToInstallMissingMediaPluginsPermissionRequestPrivate down casts any arbitrar
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InstallMissingMediaPluginsPermissionRequestPrivate.
 */
-func (recv *InstallMissingMediaPluginsPermissionRequestPrivate) CastToInstallMissingMediaPluginsPermissionRequestPrivate(object *gobject.Object) *InstallMissingMediaPluginsPermissionRequestPrivate {
+func CastToInstallMissingMediaPluginsPermissionRequestPrivate(object *gobject.Object) *InstallMissingMediaPluginsPermissionRequestPrivate {
 	return InstallMissingMediaPluginsPermissionRequestPrivateNewFromNative(object.Native())
 }
 
@@ -3046,7 +3046,7 @@ CastToJavascriptResult down casts any arbitrary Object to JavascriptResult.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a JavascriptResult.
 */
-func (recv *JavascriptResult) CastToJavascriptResult(object *gobject.Object) *JavascriptResult {
+func CastToJavascriptResult(object *gobject.Object) *JavascriptResult {
 	return JavascriptResultNewFromNative(object.Native())
 }
 
@@ -3191,7 +3191,7 @@ CastToMimeInfo down casts any arbitrary Object to MimeInfo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MimeInfo.
 */
-func (recv *MimeInfo) CastToMimeInfo(object *gobject.Object) *MimeInfo {
+func CastToMimeInfo(object *gobject.Object) *MimeInfo {
 	return MimeInfoNewFromNative(object.Native())
 }
 
@@ -3392,7 +3392,7 @@ CastToNavigationAction down casts any arbitrary Object to NavigationAction.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NavigationAction.
 */
-func (recv *NavigationAction) CastToNavigationAction(object *gobject.Object) *NavigationAction {
+func CastToNavigationAction(object *gobject.Object) *NavigationAction {
 	return NavigationActionNewFromNative(object.Native())
 }
 
@@ -3693,7 +3693,7 @@ CastToNavigationPolicyDecisionClass down casts any arbitrary Object to Navigatio
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NavigationPolicyDecisionClass.
 */
-func (recv *NavigationPolicyDecisionClass) CastToNavigationPolicyDecisionClass(object *gobject.Object) *NavigationPolicyDecisionClass {
+func CastToNavigationPolicyDecisionClass(object *gobject.Object) *NavigationPolicyDecisionClass {
 	return NavigationPolicyDecisionClassNewFromNative(object.Native())
 }
 
@@ -3772,7 +3772,7 @@ CastToNavigationPolicyDecisionPrivate down casts any arbitrary Object to Navigat
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NavigationPolicyDecisionPrivate.
 */
-func (recv *NavigationPolicyDecisionPrivate) CastToNavigationPolicyDecisionPrivate(object *gobject.Object) *NavigationPolicyDecisionPrivate {
+func CastToNavigationPolicyDecisionPrivate(object *gobject.Object) *NavigationPolicyDecisionPrivate {
 	return NavigationPolicyDecisionPrivateNewFromNative(object.Native())
 }
 
@@ -3821,7 +3821,7 @@ CastToNetworkProxySettings down casts any arbitrary Object to NetworkProxySettin
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NetworkProxySettings.
 */
-func (recv *NetworkProxySettings) CastToNetworkProxySettings(object *gobject.Object) *NetworkProxySettings {
+func CastToNetworkProxySettings(object *gobject.Object) *NetworkProxySettings {
 	return NetworkProxySettingsNewFromNative(object.Native())
 }
 
@@ -3947,7 +3947,7 @@ CastToNotificationClass down casts any arbitrary Object to NotificationClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NotificationClass.
 */
-func (recv *NotificationClass) CastToNotificationClass(object *gobject.Object) *NotificationClass {
+func CastToNotificationClass(object *gobject.Object) *NotificationClass {
 	return NotificationClassNewFromNative(object.Native())
 }
 
@@ -4024,7 +4024,7 @@ CastToNotificationPermissionRequestClass down casts any arbitrary Object to Noti
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NotificationPermissionRequestClass.
 */
-func (recv *NotificationPermissionRequestClass) CastToNotificationPermissionRequestClass(object *gobject.Object) *NotificationPermissionRequestClass {
+func CastToNotificationPermissionRequestClass(object *gobject.Object) *NotificationPermissionRequestClass {
 	return NotificationPermissionRequestClassNewFromNative(object.Native())
 }
 
@@ -4077,7 +4077,7 @@ CastToNotificationPermissionRequestPrivate down casts any arbitrary Object to No
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NotificationPermissionRequestPrivate.
 */
-func (recv *NotificationPermissionRequestPrivate) CastToNotificationPermissionRequestPrivate(object *gobject.Object) *NotificationPermissionRequestPrivate {
+func CastToNotificationPermissionRequestPrivate(object *gobject.Object) *NotificationPermissionRequestPrivate {
 	return NotificationPermissionRequestPrivateNewFromNative(object.Native())
 }
 
@@ -4126,7 +4126,7 @@ CastToNotificationPrivate down casts any arbitrary Object to NotificationPrivate
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NotificationPrivate.
 */
-func (recv *NotificationPrivate) CastToNotificationPrivate(object *gobject.Object) *NotificationPrivate {
+func CastToNotificationPrivate(object *gobject.Object) *NotificationPrivate {
 	return NotificationPrivateNewFromNative(object.Native())
 }
 
@@ -4175,7 +4175,7 @@ CastToOptionMenuClass down casts any arbitrary Object to OptionMenuClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a OptionMenuClass.
 */
-func (recv *OptionMenuClass) CastToOptionMenuClass(object *gobject.Object) *OptionMenuClass {
+func CastToOptionMenuClass(object *gobject.Object) *OptionMenuClass {
 	return OptionMenuClassNewFromNative(object.Native())
 }
 
@@ -4244,7 +4244,7 @@ CastToOptionMenuItem down casts any arbitrary Object to OptionMenuItem.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a OptionMenuItem.
 */
-func (recv *OptionMenuItem) CastToOptionMenuItem(object *gobject.Object) *OptionMenuItem {
+func CastToOptionMenuItem(object *gobject.Object) *OptionMenuItem {
 	return OptionMenuItemNewFromNative(object.Native())
 }
 
@@ -4545,7 +4545,7 @@ CastToOptionMenuPrivate down casts any arbitrary Object to OptionMenuPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a OptionMenuPrivate.
 */
-func (recv *OptionMenuPrivate) CastToOptionMenuPrivate(object *gobject.Object) *OptionMenuPrivate {
+func CastToOptionMenuPrivate(object *gobject.Object) *OptionMenuPrivate {
 	return OptionMenuPrivateNewFromNative(object.Native())
 }
 
@@ -4594,7 +4594,7 @@ CastToPermissionRequestIface down casts any arbitrary Object to PermissionReques
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PermissionRequestIface.
 */
-func (recv *PermissionRequestIface) CastToPermissionRequestIface(object *gobject.Object) *PermissionRequestIface {
+func CastToPermissionRequestIface(object *gobject.Object) *PermissionRequestIface {
 	return PermissionRequestIfaceNewFromNative(object.Native())
 }
 
@@ -4655,7 +4655,7 @@ CastToPluginClass down casts any arbitrary Object to PluginClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PluginClass.
 */
-func (recv *PluginClass) CastToPluginClass(object *gobject.Object) *PluginClass {
+func CastToPluginClass(object *gobject.Object) *PluginClass {
 	return PluginClassNewFromNative(object.Native())
 }
 
@@ -4724,7 +4724,7 @@ CastToPluginPrivate down casts any arbitrary Object to PluginPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PluginPrivate.
 */
-func (recv *PluginPrivate) CastToPluginPrivate(object *gobject.Object) *PluginPrivate {
+func CastToPluginPrivate(object *gobject.Object) *PluginPrivate {
 	return PluginPrivateNewFromNative(object.Native())
 }
 
@@ -4773,7 +4773,7 @@ CastToPolicyDecisionClass down casts any arbitrary Object to PolicyDecisionClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PolicyDecisionClass.
 */
-func (recv *PolicyDecisionClass) CastToPolicyDecisionClass(object *gobject.Object) *PolicyDecisionClass {
+func CastToPolicyDecisionClass(object *gobject.Object) *PolicyDecisionClass {
 	return PolicyDecisionClassNewFromNative(object.Native())
 }
 
@@ -4842,7 +4842,7 @@ CastToPolicyDecisionPrivate down casts any arbitrary Object to PolicyDecisionPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PolicyDecisionPrivate.
 */
-func (recv *PolicyDecisionPrivate) CastToPolicyDecisionPrivate(object *gobject.Object) *PolicyDecisionPrivate {
+func CastToPolicyDecisionPrivate(object *gobject.Object) *PolicyDecisionPrivate {
 	return PolicyDecisionPrivateNewFromNative(object.Native())
 }
 
@@ -4891,7 +4891,7 @@ CastToPrintCustomWidgetClass down casts any arbitrary Object to PrintCustomWidge
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PrintCustomWidgetClass.
 */
-func (recv *PrintCustomWidgetClass) CastToPrintCustomWidgetClass(object *gobject.Object) *PrintCustomWidgetClass {
+func CastToPrintCustomWidgetClass(object *gobject.Object) *PrintCustomWidgetClass {
 	return PrintCustomWidgetClassNewFromNative(object.Native())
 }
 
@@ -4968,7 +4968,7 @@ CastToPrintCustomWidgetPrivate down casts any arbitrary Object to PrintCustomWid
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PrintCustomWidgetPrivate.
 */
-func (recv *PrintCustomWidgetPrivate) CastToPrintCustomWidgetPrivate(object *gobject.Object) *PrintCustomWidgetPrivate {
+func CastToPrintCustomWidgetPrivate(object *gobject.Object) *PrintCustomWidgetPrivate {
 	return PrintCustomWidgetPrivateNewFromNative(object.Native())
 }
 
@@ -5017,7 +5017,7 @@ CastToPrintOperationClass down casts any arbitrary Object to PrintOperationClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PrintOperationClass.
 */
-func (recv *PrintOperationClass) CastToPrintOperationClass(object *gobject.Object) *PrintOperationClass {
+func CastToPrintOperationClass(object *gobject.Object) *PrintOperationClass {
 	return PrintOperationClassNewFromNative(object.Native())
 }
 
@@ -5086,7 +5086,7 @@ CastToPrintOperationPrivate down casts any arbitrary Object to PrintOperationPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PrintOperationPrivate.
 */
-func (recv *PrintOperationPrivate) CastToPrintOperationPrivate(object *gobject.Object) *PrintOperationPrivate {
+func CastToPrintOperationPrivate(object *gobject.Object) *PrintOperationPrivate {
 	return PrintOperationPrivateNewFromNative(object.Native())
 }
 
@@ -5135,7 +5135,7 @@ CastToResponsePolicyDecisionClass down casts any arbitrary Object to ResponsePol
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ResponsePolicyDecisionClass.
 */
-func (recv *ResponsePolicyDecisionClass) CastToResponsePolicyDecisionClass(object *gobject.Object) *ResponsePolicyDecisionClass {
+func CastToResponsePolicyDecisionClass(object *gobject.Object) *ResponsePolicyDecisionClass {
 	return ResponsePolicyDecisionClassNewFromNative(object.Native())
 }
 
@@ -5214,7 +5214,7 @@ CastToResponsePolicyDecisionPrivate down casts any arbitrary Object to ResponseP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ResponsePolicyDecisionPrivate.
 */
-func (recv *ResponsePolicyDecisionPrivate) CastToResponsePolicyDecisionPrivate(object *gobject.Object) *ResponsePolicyDecisionPrivate {
+func CastToResponsePolicyDecisionPrivate(object *gobject.Object) *ResponsePolicyDecisionPrivate {
 	return ResponsePolicyDecisionPrivateNewFromNative(object.Native())
 }
 
@@ -5263,7 +5263,7 @@ CastToScriptDialog down casts any arbitrary Object to ScriptDialog.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ScriptDialog.
 */
-func (recv *ScriptDialog) CastToScriptDialog(object *gobject.Object) *ScriptDialog {
+func CastToScriptDialog(object *gobject.Object) *ScriptDialog {
 	return ScriptDialogNewFromNative(object.Native())
 }
 
@@ -5554,7 +5554,7 @@ CastToSecurityManagerClass down casts any arbitrary Object to SecurityManagerCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SecurityManagerClass.
 */
-func (recv *SecurityManagerClass) CastToSecurityManagerClass(object *gobject.Object) *SecurityManagerClass {
+func CastToSecurityManagerClass(object *gobject.Object) *SecurityManagerClass {
 	return SecurityManagerClassNewFromNative(object.Native())
 }
 
@@ -5623,7 +5623,7 @@ CastToSecurityManagerPrivate down casts any arbitrary Object to SecurityManagerP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SecurityManagerPrivate.
 */
-func (recv *SecurityManagerPrivate) CastToSecurityManagerPrivate(object *gobject.Object) *SecurityManagerPrivate {
+func CastToSecurityManagerPrivate(object *gobject.Object) *SecurityManagerPrivate {
 	return SecurityManagerPrivateNewFromNative(object.Native())
 }
 
@@ -5672,7 +5672,7 @@ CastToSecurityOrigin down casts any arbitrary Object to SecurityOrigin.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SecurityOrigin.
 */
-func (recv *SecurityOrigin) CastToSecurityOrigin(object *gobject.Object) *SecurityOrigin {
+func CastToSecurityOrigin(object *gobject.Object) *SecurityOrigin {
 	return SecurityOriginNewFromNative(object.Native())
 }
 
@@ -5992,7 +5992,7 @@ CastToSettingsClass down casts any arbitrary Object to SettingsClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SettingsClass.
 */
-func (recv *SettingsClass) CastToSettingsClass(object *gobject.Object) *SettingsClass {
+func CastToSettingsClass(object *gobject.Object) *SettingsClass {
 	return SettingsClassNewFromNative(object.Native())
 }
 
@@ -6061,7 +6061,7 @@ CastToSettingsPrivate down casts any arbitrary Object to SettingsPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SettingsPrivate.
 */
-func (recv *SettingsPrivate) CastToSettingsPrivate(object *gobject.Object) *SettingsPrivate {
+func CastToSettingsPrivate(object *gobject.Object) *SettingsPrivate {
 	return SettingsPrivateNewFromNative(object.Native())
 }
 
@@ -6110,7 +6110,7 @@ CastToURIRequestClass down casts any arbitrary Object to URIRequestClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a URIRequestClass.
 */
-func (recv *URIRequestClass) CastToURIRequestClass(object *gobject.Object) *URIRequestClass {
+func CastToURIRequestClass(object *gobject.Object) *URIRequestClass {
 	return URIRequestClassNewFromNative(object.Native())
 }
 
@@ -6179,7 +6179,7 @@ CastToURIRequestPrivate down casts any arbitrary Object to URIRequestPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a URIRequestPrivate.
 */
-func (recv *URIRequestPrivate) CastToURIRequestPrivate(object *gobject.Object) *URIRequestPrivate {
+func CastToURIRequestPrivate(object *gobject.Object) *URIRequestPrivate {
 	return URIRequestPrivateNewFromNative(object.Native())
 }
 
@@ -6228,7 +6228,7 @@ CastToURIResponseClass down casts any arbitrary Object to URIResponseClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a URIResponseClass.
 */
-func (recv *URIResponseClass) CastToURIResponseClass(object *gobject.Object) *URIResponseClass {
+func CastToURIResponseClass(object *gobject.Object) *URIResponseClass {
 	return URIResponseClassNewFromNative(object.Native())
 }
 
@@ -6297,7 +6297,7 @@ CastToURIResponsePrivate down casts any arbitrary Object to URIResponsePrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a URIResponsePrivate.
 */
-func (recv *URIResponsePrivate) CastToURIResponsePrivate(object *gobject.Object) *URIResponsePrivate {
+func CastToURIResponsePrivate(object *gobject.Object) *URIResponsePrivate {
 	return URIResponsePrivateNewFromNative(object.Native())
 }
 
@@ -6346,7 +6346,7 @@ CastToURISchemeRequestClass down casts any arbitrary Object to URISchemeRequestC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a URISchemeRequestClass.
 */
-func (recv *URISchemeRequestClass) CastToURISchemeRequestClass(object *gobject.Object) *URISchemeRequestClass {
+func CastToURISchemeRequestClass(object *gobject.Object) *URISchemeRequestClass {
 	return URISchemeRequestClassNewFromNative(object.Native())
 }
 
@@ -6415,7 +6415,7 @@ CastToURISchemeRequestPrivate down casts any arbitrary Object to URISchemeReques
 Exercise care, as this is a potentially dangerous function
 if the Object is not a URISchemeRequestPrivate.
 */
-func (recv *URISchemeRequestPrivate) CastToURISchemeRequestPrivate(object *gobject.Object) *URISchemeRequestPrivate {
+func CastToURISchemeRequestPrivate(object *gobject.Object) *URISchemeRequestPrivate {
 	return URISchemeRequestPrivateNewFromNative(object.Native())
 }
 
@@ -6464,7 +6464,7 @@ CastToUserContentFilter down casts any arbitrary Object to UserContentFilter.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UserContentFilter.
 */
-func (recv *UserContentFilter) CastToUserContentFilter(object *gobject.Object) *UserContentFilter {
+func CastToUserContentFilter(object *gobject.Object) *UserContentFilter {
 	return UserContentFilterNewFromNative(object.Native())
 }
 
@@ -6605,7 +6605,7 @@ CastToUserContentFilterStoreClass down casts any arbitrary Object to UserContent
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UserContentFilterStoreClass.
 */
-func (recv *UserContentFilterStoreClass) CastToUserContentFilterStoreClass(object *gobject.Object) *UserContentFilterStoreClass {
+func CastToUserContentFilterStoreClass(object *gobject.Object) *UserContentFilterStoreClass {
 	return UserContentFilterStoreClassNewFromNative(object.Native())
 }
 
@@ -6674,7 +6674,7 @@ CastToUserContentFilterStorePrivate down casts any arbitrary Object to UserConte
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UserContentFilterStorePrivate.
 */
-func (recv *UserContentFilterStorePrivate) CastToUserContentFilterStorePrivate(object *gobject.Object) *UserContentFilterStorePrivate {
+func CastToUserContentFilterStorePrivate(object *gobject.Object) *UserContentFilterStorePrivate {
 	return UserContentFilterStorePrivateNewFromNative(object.Native())
 }
 
@@ -6723,7 +6723,7 @@ CastToUserContentManagerClass down casts any arbitrary Object to UserContentMana
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UserContentManagerClass.
 */
-func (recv *UserContentManagerClass) CastToUserContentManagerClass(object *gobject.Object) *UserContentManagerClass {
+func CastToUserContentManagerClass(object *gobject.Object) *UserContentManagerClass {
 	return UserContentManagerClassNewFromNative(object.Native())
 }
 
@@ -6792,7 +6792,7 @@ CastToUserContentManagerPrivate down casts any arbitrary Object to UserContentMa
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UserContentManagerPrivate.
 */
-func (recv *UserContentManagerPrivate) CastToUserContentManagerPrivate(object *gobject.Object) *UserContentManagerPrivate {
+func CastToUserContentManagerPrivate(object *gobject.Object) *UserContentManagerPrivate {
 	return UserContentManagerPrivateNewFromNative(object.Native())
 }
 
@@ -6841,7 +6841,7 @@ CastToUserMediaPermissionRequestClass down casts any arbitrary Object to UserMed
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UserMediaPermissionRequestClass.
 */
-func (recv *UserMediaPermissionRequestClass) CastToUserMediaPermissionRequestClass(object *gobject.Object) *UserMediaPermissionRequestClass {
+func CastToUserMediaPermissionRequestClass(object *gobject.Object) *UserMediaPermissionRequestClass {
 	return UserMediaPermissionRequestClassNewFromNative(object.Native())
 }
 
@@ -6910,7 +6910,7 @@ CastToUserMediaPermissionRequestPrivate down casts any arbitrary Object to UserM
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UserMediaPermissionRequestPrivate.
 */
-func (recv *UserMediaPermissionRequestPrivate) CastToUserMediaPermissionRequestPrivate(object *gobject.Object) *UserMediaPermissionRequestPrivate {
+func CastToUserMediaPermissionRequestPrivate(object *gobject.Object) *UserMediaPermissionRequestPrivate {
 	return UserMediaPermissionRequestPrivateNewFromNative(object.Native())
 }
 
@@ -6959,7 +6959,7 @@ CastToUserScript down casts any arbitrary Object to UserScript.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UserScript.
 */
-func (recv *UserScript) CastToUserScript(object *gobject.Object) *UserScript {
+func CastToUserScript(object *gobject.Object) *UserScript {
 	return UserScriptNewFromNative(object.Native())
 }
 
@@ -7057,7 +7057,7 @@ CastToUserStyleSheet down casts any arbitrary Object to UserStyleSheet.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UserStyleSheet.
 */
-func (recv *UserStyleSheet) CastToUserStyleSheet(object *gobject.Object) *UserStyleSheet {
+func CastToUserStyleSheet(object *gobject.Object) *UserStyleSheet {
 	return UserStyleSheetNewFromNative(object.Native())
 }
 
@@ -7155,7 +7155,7 @@ CastToWebContextClass down casts any arbitrary Object to WebContextClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebContextClass.
 */
-func (recv *WebContextClass) CastToWebContextClass(object *gobject.Object) *WebContextClass {
+func CastToWebContextClass(object *gobject.Object) *WebContextClass {
 	return WebContextClassNewFromNative(object.Native())
 }
 
@@ -7240,7 +7240,7 @@ CastToWebContextPrivate down casts any arbitrary Object to WebContextPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebContextPrivate.
 */
-func (recv *WebContextPrivate) CastToWebContextPrivate(object *gobject.Object) *WebContextPrivate {
+func CastToWebContextPrivate(object *gobject.Object) *WebContextPrivate {
 	return WebContextPrivateNewFromNative(object.Native())
 }
 
@@ -7289,7 +7289,7 @@ CastToWebInspectorClass down casts any arbitrary Object to WebInspectorClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebInspectorClass.
 */
-func (recv *WebInspectorClass) CastToWebInspectorClass(object *gobject.Object) *WebInspectorClass {
+func CastToWebInspectorClass(object *gobject.Object) *WebInspectorClass {
 	return WebInspectorClassNewFromNative(object.Native())
 }
 
@@ -7358,7 +7358,7 @@ CastToWebInspectorPrivate down casts any arbitrary Object to WebInspectorPrivate
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebInspectorPrivate.
 */
-func (recv *WebInspectorPrivate) CastToWebInspectorPrivate(object *gobject.Object) *WebInspectorPrivate {
+func CastToWebInspectorPrivate(object *gobject.Object) *WebInspectorPrivate {
 	return WebInspectorPrivateNewFromNative(object.Native())
 }
 
@@ -7407,7 +7407,7 @@ CastToWebResourceClass down casts any arbitrary Object to WebResourceClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebResourceClass.
 */
-func (recv *WebResourceClass) CastToWebResourceClass(object *gobject.Object) *WebResourceClass {
+func CastToWebResourceClass(object *gobject.Object) *WebResourceClass {
 	return WebResourceClassNewFromNative(object.Native())
 }
 
@@ -7476,7 +7476,7 @@ CastToWebResourcePrivate down casts any arbitrary Object to WebResourcePrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebResourcePrivate.
 */
-func (recv *WebResourcePrivate) CastToWebResourcePrivate(object *gobject.Object) *WebResourcePrivate {
+func CastToWebResourcePrivate(object *gobject.Object) *WebResourcePrivate {
 	return WebResourcePrivateNewFromNative(object.Native())
 }
 
@@ -7525,7 +7525,7 @@ CastToWebViewBaseClass down casts any arbitrary Object to WebViewBaseClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebViewBaseClass.
 */
-func (recv *WebViewBaseClass) CastToWebViewBaseClass(object *gobject.Object) *WebViewBaseClass {
+func CastToWebViewBaseClass(object *gobject.Object) *WebViewBaseClass {
 	return WebViewBaseClassNewFromNative(object.Native())
 }
 
@@ -7594,7 +7594,7 @@ CastToWebViewBasePrivate down casts any arbitrary Object to WebViewBasePrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebViewBasePrivate.
 */
-func (recv *WebViewBasePrivate) CastToWebViewBasePrivate(object *gobject.Object) *WebViewBasePrivate {
+func CastToWebViewBasePrivate(object *gobject.Object) *WebViewBasePrivate {
 	return WebViewBasePrivateNewFromNative(object.Native())
 }
 
@@ -7643,7 +7643,7 @@ CastToWebViewClass down casts any arbitrary Object to WebViewClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebViewClass.
 */
-func (recv *WebViewClass) CastToWebViewClass(object *gobject.Object) *WebViewClass {
+func CastToWebViewClass(object *gobject.Object) *WebViewClass {
 	return WebViewClassNewFromNative(object.Native())
 }
 
@@ -7818,7 +7818,7 @@ CastToWebViewPrivate down casts any arbitrary Object to WebViewPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebViewPrivate.
 */
-func (recv *WebViewPrivate) CastToWebViewPrivate(object *gobject.Object) *WebViewPrivate {
+func CastToWebViewPrivate(object *gobject.Object) *WebViewPrivate {
 	return WebViewPrivateNewFromNative(object.Native())
 }
 
@@ -7867,7 +7867,7 @@ CastToWebViewSessionState down casts any arbitrary Object to WebViewSessionState
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebViewSessionState.
 */
-func (recv *WebViewSessionState) CastToWebViewSessionState(object *gobject.Object) *WebViewSessionState {
+func CastToWebViewSessionState(object *gobject.Object) *WebViewSessionState {
 	return WebViewSessionStateNewFromNative(object.Native())
 }
 
@@ -7965,7 +7965,7 @@ CastToWebsiteData down casts any arbitrary Object to WebsiteData.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebsiteData.
 */
-func (recv *WebsiteData) CastToWebsiteData(object *gobject.Object) *WebsiteData {
+func CastToWebsiteData(object *gobject.Object) *WebsiteData {
 	return WebsiteDataNewFromNative(object.Native())
 }
 
@@ -8110,7 +8110,7 @@ CastToWebsiteDataManagerClass down casts any arbitrary Object to WebsiteDataMana
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebsiteDataManagerClass.
 */
-func (recv *WebsiteDataManagerClass) CastToWebsiteDataManagerClass(object *gobject.Object) *WebsiteDataManagerClass {
+func CastToWebsiteDataManagerClass(object *gobject.Object) *WebsiteDataManagerClass {
 	return WebsiteDataManagerClassNewFromNative(object.Native())
 }
 
@@ -8179,7 +8179,7 @@ CastToWebsiteDataManagerPrivate down casts any arbitrary Object to WebsiteDataMa
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebsiteDataManagerPrivate.
 */
-func (recv *WebsiteDataManagerPrivate) CastToWebsiteDataManagerPrivate(object *gobject.Object) *WebsiteDataManagerPrivate {
+func CastToWebsiteDataManagerPrivate(object *gobject.Object) *WebsiteDataManagerPrivate {
 	return WebsiteDataManagerPrivateNewFromNative(object.Native())
 }
 
@@ -8228,7 +8228,7 @@ CastToWindowPropertiesClass down casts any arbitrary Object to WindowPropertiesC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WindowPropertiesClass.
 */
-func (recv *WindowPropertiesClass) CastToWindowPropertiesClass(object *gobject.Object) *WindowPropertiesClass {
+func CastToWindowPropertiesClass(object *gobject.Object) *WindowPropertiesClass {
 	return WindowPropertiesClassNewFromNative(object.Native())
 }
 
@@ -8297,7 +8297,7 @@ CastToWindowPropertiesPrivate down casts any arbitrary Object to WindowPropertie
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WindowPropertiesPrivate.
 */
-func (recv *WindowPropertiesPrivate) CastToWindowPropertiesPrivate(object *gobject.Object) *WindowPropertiesPrivate {
+func CastToWindowPropertiesPrivate(object *gobject.Object) *WindowPropertiesPrivate {
 	return WindowPropertiesPrivateNewFromNative(object.Native())
 }
 

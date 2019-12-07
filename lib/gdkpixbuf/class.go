@@ -53,7 +53,7 @@ CastToPixbuf down casts any arbitrary Object to Pixbuf.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Pixbuf.
 */
-func (recv *Pixbuf) CastToPixbuf(object *gobject.Object) *Pixbuf {
+func CastToPixbuf(object *gobject.Object) *Pixbuf {
 	return PixbufNewFromNative(object.Native())
 }
 
@@ -1459,7 +1459,7 @@ CastToPixbufAnimation down casts any arbitrary Object to PixbufAnimation.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PixbufAnimation.
 */
-func (recv *PixbufAnimation) CastToPixbufAnimation(object *gobject.Object) *PixbufAnimation {
+func CastToPixbufAnimation(object *gobject.Object) *PixbufAnimation {
 	return PixbufAnimationNewFromNative(object.Native())
 }
 
@@ -1804,7 +1804,7 @@ CastToPixbufAnimationIter down casts any arbitrary Object to PixbufAnimationIter
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PixbufAnimationIter.
 */
-func (recv *PixbufAnimationIter) CastToPixbufAnimationIter(object *gobject.Object) *PixbufAnimationIter {
+func CastToPixbufAnimationIter(object *gobject.Object) *PixbufAnimationIter {
 	return PixbufAnimationIterNewFromNative(object.Native())
 }
 
@@ -1952,7 +1952,7 @@ CastToPixbufLoader down casts any arbitrary Object to PixbufLoader.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PixbufLoader.
 */
-func (recv *PixbufLoader) CastToPixbufLoader(object *gobject.Object) *PixbufLoader {
+func CastToPixbufLoader(object *gobject.Object) *PixbufLoader {
 	return PixbufLoaderNewFromNative(object.Native())
 }
 
@@ -2283,7 +2283,7 @@ CastToPixbufSimpleAnim down casts any arbitrary Object to PixbufSimpleAnim.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PixbufSimpleAnim.
 */
-func (recv *PixbufSimpleAnim) CastToPixbufSimpleAnim(object *gobject.Object) *PixbufSimpleAnim {
+func CastToPixbufSimpleAnim(object *gobject.Object) *PixbufSimpleAnim {
 	return PixbufSimpleAnimNewFromNative(object.Native())
 }
 
@@ -2464,7 +2464,7 @@ CastToPixbufSimpleAnimIter down casts any arbitrary Object to PixbufSimpleAnimIt
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PixbufSimpleAnimIter.
 */
-func (recv *PixbufSimpleAnimIter) CastToPixbufSimpleAnimIter(object *gobject.Object) *PixbufSimpleAnimIter {
+func CastToPixbufSimpleAnimIter(object *gobject.Object) *PixbufSimpleAnimIter {
 	return PixbufSimpleAnimIterNewFromNative(object.Native())
 }
 

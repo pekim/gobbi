@@ -53,7 +53,7 @@ CastToAddress down casts any arbitrary Object to Address.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Address.
 */
-func (recv *Address) CastToAddress(object *gobject.Object) *Address {
+func CastToAddress(object *gobject.Object) *Address {
 	return AddressNewFromNative(object.Native())
 }
 
@@ -516,7 +516,7 @@ CastToAuth down casts any arbitrary Object to Auth.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Auth.
 */
-func (recv *Auth) CastToAuth(object *gobject.Object) *Auth {
+func CastToAuth(object *gobject.Object) *Auth {
 	return AuthNewFromNative(object.Native())
 }
 
@@ -1054,7 +1054,7 @@ CastToAuthBasic down casts any arbitrary Object to AuthBasic.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AuthBasic.
 */
-func (recv *AuthBasic) CastToAuthBasic(object *gobject.Object) *AuthBasic {
+func CastToAuthBasic(object *gobject.Object) *AuthBasic {
 	return AuthBasicNewFromNative(object.Native())
 }
 
@@ -1109,7 +1109,7 @@ CastToAuthDigest down casts any arbitrary Object to AuthDigest.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AuthDigest.
 */
-func (recv *AuthDigest) CastToAuthDigest(object *gobject.Object) *AuthDigest {
+func CastToAuthDigest(object *gobject.Object) *AuthDigest {
 	return AuthDigestNewFromNative(object.Native())
 }
 
@@ -1159,7 +1159,7 @@ CastToAuthDomain down casts any arbitrary Object to AuthDomain.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AuthDomain.
 */
-func (recv *AuthDomain) CastToAuthDomain(object *gobject.Object) *AuthDomain {
+func CastToAuthDomain(object *gobject.Object) *AuthDomain {
 	return AuthDomainNewFromNative(object.Native())
 }
 
@@ -1486,7 +1486,7 @@ CastToAuthDomainBasic down casts any arbitrary Object to AuthDomainBasic.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AuthDomainBasic.
 */
-func (recv *AuthDomainBasic) CastToAuthDomainBasic(object *gobject.Object) *AuthDomainBasic {
+func CastToAuthDomainBasic(object *gobject.Object) *AuthDomainBasic {
 	return AuthDomainBasicNewFromNative(object.Native())
 }
 
@@ -1559,7 +1559,7 @@ CastToAuthDomainDigest down casts any arbitrary Object to AuthDomainDigest.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AuthDomainDigest.
 */
-func (recv *AuthDomainDigest) CastToAuthDomainDigest(object *gobject.Object) *AuthDomainDigest {
+func CastToAuthDomainDigest(object *gobject.Object) *AuthDomainDigest {
 	return AuthDomainDigestNewFromNative(object.Native())
 }
 
@@ -1627,7 +1627,7 @@ CastToAuthManager down casts any arbitrary Object to AuthManager.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AuthManager.
 */
-func (recv *AuthManager) CastToAuthManager(object *gobject.Object) *AuthManager {
+func CastToAuthManager(object *gobject.Object) *AuthManager {
 	return AuthManagerNewFromNative(object.Native())
 }
 
@@ -1768,7 +1768,7 @@ CastToAuthNTLM down casts any arbitrary Object to AuthNTLM.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AuthNTLM.
 */
-func (recv *AuthNTLM) CastToAuthNTLM(object *gobject.Object) *AuthNTLM {
+func CastToAuthNTLM(object *gobject.Object) *AuthNTLM {
 	return AuthNTLMNewFromNative(object.Native())
 }
 
@@ -1823,7 +1823,7 @@ CastToAuthNegotiate down casts any arbitrary Object to AuthNegotiate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AuthNegotiate.
 */
-func (recv *AuthNegotiate) CastToAuthNegotiate(object *gobject.Object) *AuthNegotiate {
+func CastToAuthNegotiate(object *gobject.Object) *AuthNegotiate {
 	return AuthNegotiateNewFromNative(object.Native())
 }
 
@@ -1873,7 +1873,7 @@ CastToCache down casts any arbitrary Object to Cache.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Cache.
 */
-func (recv *Cache) CastToCache(object *gobject.Object) *Cache {
+func CastToCache(object *gobject.Object) *Cache {
 	return CacheNewFromNative(object.Native())
 }
 
@@ -2159,7 +2159,7 @@ CastToContentDecoder down casts any arbitrary Object to ContentDecoder.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ContentDecoder.
 */
-func (recv *ContentDecoder) CastToContentDecoder(object *gobject.Object) *ContentDecoder {
+func CastToContentDecoder(object *gobject.Object) *ContentDecoder {
 	return ContentDecoderNewFromNative(object.Native())
 }
 
@@ -2237,7 +2237,7 @@ CastToContentSniffer down casts any arbitrary Object to ContentSniffer.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ContentSniffer.
 */
-func (recv *ContentSniffer) CastToContentSniffer(object *gobject.Object) *ContentSniffer {
+func CastToContentSniffer(object *gobject.Object) *ContentSniffer {
 	return ContentSnifferNewFromNative(object.Native())
 }
 
@@ -2381,7 +2381,7 @@ CastToCookieJar down casts any arbitrary Object to CookieJar.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CookieJar.
 */
-func (recv *CookieJar) CastToCookieJar(object *gobject.Object) *CookieJar {
+func CastToCookieJar(object *gobject.Object) *CookieJar {
 	return CookieJarNewFromNative(object.Native())
 }
 
@@ -2821,7 +2821,7 @@ CastToCookieJarDB down casts any arbitrary Object to CookieJarDB.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CookieJarDB.
 */
-func (recv *CookieJarDB) CastToCookieJarDB(object *gobject.Object) *CookieJarDB {
+func CastToCookieJarDB(object *gobject.Object) *CookieJarDB {
 	return CookieJarDBNewFromNative(object.Native())
 }
 
@@ -2925,7 +2925,7 @@ CastToCookieJarText down casts any arbitrary Object to CookieJarText.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CookieJarText.
 */
-func (recv *CookieJarText) CastToCookieJarText(object *gobject.Object) *CookieJarText {
+func CastToCookieJarText(object *gobject.Object) *CookieJarText {
 	return CookieJarTextNewFromNative(object.Native())
 }
 
@@ -3024,7 +3024,7 @@ CastToHSTSEnforcer down casts any arbitrary Object to HSTSEnforcer.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HSTSEnforcer.
 */
-func (recv *HSTSEnforcer) CastToHSTSEnforcer(object *gobject.Object) *HSTSEnforcer {
+func CastToHSTSEnforcer(object *gobject.Object) *HSTSEnforcer {
 	return HSTSEnforcerNewFromNative(object.Native())
 }
 
@@ -3267,7 +3267,7 @@ CastToHSTSEnforcerDB down casts any arbitrary Object to HSTSEnforcerDB.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a HSTSEnforcerDB.
 */
-func (recv *HSTSEnforcerDB) CastToHSTSEnforcerDB(object *gobject.Object) *HSTSEnforcerDB {
+func CastToHSTSEnforcerDB(object *gobject.Object) *HSTSEnforcerDB {
 	return HSTSEnforcerDBNewFromNative(object.Native())
 }
 
@@ -3379,7 +3379,7 @@ CastToLogger down casts any arbitrary Object to Logger.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Logger.
 */
-func (recv *Logger) CastToLogger(object *gobject.Object) *Logger {
+func CastToLogger(object *gobject.Object) *Logger {
 	return LoggerNewFromNative(object.Native())
 }
 
@@ -3542,7 +3542,7 @@ CastToMessage down casts any arbitrary Object to Message.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Message.
 */
-func (recv *Message) CastToMessage(object *gobject.Object) *Message {
+func CastToMessage(object *gobject.Object) *Message {
 	return MessageNewFromNative(object.Native())
 }
 
@@ -4571,7 +4571,7 @@ CastToMultipartInputStream down casts any arbitrary Object to MultipartInputStre
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MultipartInputStream.
 */
-func (recv *MultipartInputStream) CastToMultipartInputStream(object *gobject.Object) *MultipartInputStream {
+func CastToMultipartInputStream(object *gobject.Object) *MultipartInputStream {
 	return MultipartInputStreamNewFromNative(object.Native())
 }
 
@@ -4739,7 +4739,7 @@ CastToProxyResolverDefault down casts any arbitrary Object to ProxyResolverDefau
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ProxyResolverDefault.
 */
-func (recv *ProxyResolverDefault) CastToProxyResolverDefault(object *gobject.Object) *ProxyResolverDefault {
+func CastToProxyResolverDefault(object *gobject.Object) *ProxyResolverDefault {
 	return ProxyResolverDefaultNewFromNative(object.Native())
 }
 
@@ -4803,7 +4803,7 @@ CastToRequest down casts any arbitrary Object to Request.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Request.
 */
-func (recv *Request) CastToRequest(object *gobject.Object) *Request {
+func CastToRequest(object *gobject.Object) *Request {
 	return RequestNewFromNative(object.Native())
 }
 
@@ -5051,7 +5051,7 @@ CastToRequestData down casts any arbitrary Object to RequestData.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RequestData.
 */
-func (recv *RequestData) CastToRequestData(object *gobject.Object) *RequestData {
+func CastToRequestData(object *gobject.Object) *RequestData {
 	return RequestDataNewFromNative(object.Native())
 }
 
@@ -5134,7 +5134,7 @@ CastToRequestFile down casts any arbitrary Object to RequestFile.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RequestFile.
 */
-func (recv *RequestFile) CastToRequestFile(object *gobject.Object) *RequestFile {
+func CastToRequestFile(object *gobject.Object) *RequestFile {
 	return RequestFileNewFromNative(object.Native())
 }
 
@@ -5219,7 +5219,7 @@ CastToRequestHTTP down casts any arbitrary Object to RequestHTTP.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RequestHTTP.
 */
-func (recv *RequestHTTP) CastToRequestHTTP(object *gobject.Object) *RequestHTTP {
+func CastToRequestHTTP(object *gobject.Object) *RequestHTTP {
 	return RequestHTTPNewFromNative(object.Native())
 }
 
@@ -5329,7 +5329,7 @@ CastToRequester down casts any arbitrary Object to Requester.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Requester.
 */
-func (recv *Requester) CastToRequester(object *gobject.Object) *Requester {
+func CastToRequester(object *gobject.Object) *Requester {
 	return RequesterNewFromNative(object.Native())
 }
 
@@ -5505,7 +5505,7 @@ CastToServer down casts any arbitrary Object to Server.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Server.
 */
-func (recv *Server) CastToServer(object *gobject.Object) *Server {
+func CastToServer(object *gobject.Object) *Server {
 	return ServerNewFromNative(object.Native())
 }
 
@@ -6019,7 +6019,7 @@ CastToSession down casts any arbitrary Object to Session.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Session.
 */
-func (recv *Session) CastToSession(object *gobject.Object) *Session {
+func CastToSession(object *gobject.Object) *Session {
 	return SessionNewFromNative(object.Native())
 }
 
@@ -6630,7 +6630,7 @@ CastToSessionAsync down casts any arbitrary Object to SessionAsync.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SessionAsync.
 */
-func (recv *SessionAsync) CastToSessionAsync(object *gobject.Object) *SessionAsync {
+func CastToSessionAsync(object *gobject.Object) *SessionAsync {
 	return SessionAsyncNewFromNative(object.Native())
 }
 
@@ -6733,7 +6733,7 @@ CastToSessionSync down casts any arbitrary Object to SessionSync.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SessionSync.
 */
-func (recv *SessionSync) CastToSessionSync(object *gobject.Object) *SessionSync {
+func CastToSessionSync(object *gobject.Object) *SessionSync {
 	return SessionSyncNewFromNative(object.Native())
 }
 
@@ -6831,7 +6831,7 @@ CastToSocket down casts any arbitrary Object to Socket.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Socket.
 */
-func (recv *Socket) CastToSocket(object *gobject.Object) *Socket {
+func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromNative(object.Native())
 }
 
@@ -7225,7 +7225,7 @@ CastToWebsocketConnection down casts any arbitrary Object to WebsocketConnection
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebsocketConnection.
 */
-func (recv *WebsocketConnection) CastToWebsocketConnection(object *gobject.Object) *WebsocketConnection {
+func CastToWebsocketConnection(object *gobject.Object) *WebsocketConnection {
 	return WebsocketConnectionNewFromNative(object.Native())
 }
 
@@ -7772,7 +7772,7 @@ CastToWebsocketExtension down casts any arbitrary Object to WebsocketExtension.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebsocketExtension.
 */
-func (recv *WebsocketExtension) CastToWebsocketExtension(object *gobject.Object) *WebsocketExtension {
+func CastToWebsocketExtension(object *gobject.Object) *WebsocketExtension {
 	return WebsocketExtensionNewFromNative(object.Native())
 }
 
@@ -7911,7 +7911,7 @@ CastToWebsocketExtensionDeflate down casts any arbitrary Object to WebsocketExte
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebsocketExtensionDeflate.
 */
-func (recv *WebsocketExtensionDeflate) CastToWebsocketExtensionDeflate(object *gobject.Object) *WebsocketExtensionDeflate {
+func CastToWebsocketExtensionDeflate(object *gobject.Object) *WebsocketExtensionDeflate {
 	return WebsocketExtensionDeflateNewFromNative(object.Native())
 }
 
@@ -7975,7 +7975,7 @@ CastToWebsocketExtensionManager down casts any arbitrary Object to WebsocketExte
 Exercise care, as this is a potentially dangerous function
 if the Object is not a WebsocketExtensionManager.
 */
-func (recv *WebsocketExtensionManager) CastToWebsocketExtensionManager(object *gobject.Object) *WebsocketExtensionManager {
+func CastToWebsocketExtensionManager(object *gobject.Object) *WebsocketExtensionManager {
 	return WebsocketExtensionManagerNewFromNative(object.Native())
 }
 

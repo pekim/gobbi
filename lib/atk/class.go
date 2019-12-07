@@ -57,7 +57,7 @@ CastToGObjectAccessible down casts any arbitrary Object to GObjectAccessible.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a GObjectAccessible.
 */
-func (recv *GObjectAccessible) CastToGObjectAccessible(object *gobject.Object) *GObjectAccessible {
+func CastToGObjectAccessible(object *gobject.Object) *GObjectAccessible {
 	return GObjectAccessibleNewFromNative(object.Native())
 }
 
@@ -153,7 +153,7 @@ CastToHyperlink down casts any arbitrary Object to Hyperlink.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Hyperlink.
 */
-func (recv *Hyperlink) CastToHyperlink(object *gobject.Object) *Hyperlink {
+func CastToHyperlink(object *gobject.Object) *Hyperlink {
 	return HyperlinkNewFromNative(object.Native())
 }
 
@@ -475,7 +475,7 @@ CastToMisc down casts any arbitrary Object to Misc.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Misc.
 */
-func (recv *Misc) CastToMisc(object *gobject.Object) *Misc {
+func CastToMisc(object *gobject.Object) *Misc {
 	return MiscNewFromNative(object.Native())
 }
 
@@ -600,7 +600,7 @@ CastToNoOpObject down casts any arbitrary Object to NoOpObject.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NoOpObject.
 */
-func (recv *NoOpObject) CastToNoOpObject(object *gobject.Object) *NoOpObject {
+func CastToNoOpObject(object *gobject.Object) *NoOpObject {
 	return NoOpObjectNewFromNative(object.Native())
 }
 
@@ -703,7 +703,7 @@ CastToNoOpObjectFactory down casts any arbitrary Object to NoOpObjectFactory.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NoOpObjectFactory.
 */
-func (recv *NoOpObjectFactory) CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
+func CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
 	return NoOpObjectFactoryNewFromNative(object.Native())
 }
 
@@ -799,7 +799,7 @@ CastToObject down casts any arbitrary Object to Object.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Object.
 */
-func (recv *Object) CastToObject(object *gobject.Object) *Object {
+func CastToObject(object *gobject.Object) *Object {
 	return ObjectNewFromNative(object.Native())
 }
 
@@ -1674,7 +1674,7 @@ CastToObjectFactory down casts any arbitrary Object to ObjectFactory.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ObjectFactory.
 */
-func (recv *ObjectFactory) CastToObjectFactory(object *gobject.Object) *ObjectFactory {
+func CastToObjectFactory(object *gobject.Object) *ObjectFactory {
 	return ObjectFactoryNewFromNative(object.Native())
 }
 
@@ -1806,7 +1806,7 @@ CastToPlug down casts any arbitrary Object to Plug.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Plug.
 */
-func (recv *Plug) CastToPlug(object *gobject.Object) *Plug {
+func CastToPlug(object *gobject.Object) *Plug {
 	return PlugNewFromNative(object.Native())
 }
 
@@ -1934,7 +1934,7 @@ CastToRegistry down casts any arbitrary Object to Registry.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Registry.
 */
-func (recv *Registry) CastToRegistry(object *gobject.Object) *Registry {
+func CastToRegistry(object *gobject.Object) *Registry {
 	return RegistryNewFromNative(object.Native())
 }
 
@@ -2012,7 +2012,7 @@ CastToRelation down casts any arbitrary Object to Relation.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Relation.
 */
-func (recv *Relation) CastToRelation(object *gobject.Object) *Relation {
+func CastToRelation(object *gobject.Object) *Relation {
 	return RelationNewFromNative(object.Native())
 }
 
@@ -2218,7 +2218,7 @@ CastToRelationSet down casts any arbitrary Object to RelationSet.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RelationSet.
 */
-func (recv *RelationSet) CastToRelationSet(object *gobject.Object) *RelationSet {
+func CastToRelationSet(object *gobject.Object) *RelationSet {
 	return RelationSetNewFromNative(object.Native())
 }
 
@@ -2576,7 +2576,7 @@ CastToSocket down casts any arbitrary Object to Socket.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Socket.
 */
-func (recv *Socket) CastToSocket(object *gobject.Object) *Socket {
+func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromNative(object.Native())
 }
 
@@ -2733,7 +2733,7 @@ CastToStateSet down casts any arbitrary Object to StateSet.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StateSet.
 */
-func (recv *StateSet) CastToStateSet(object *gobject.Object) *StateSet {
+func CastToStateSet(object *gobject.Object) *StateSet {
 	return StateSetNewFromNative(object.Native())
 }
 
@@ -3091,7 +3091,7 @@ CastToUtil down casts any arbitrary Object to Util.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Util.
 */
-func (recv *Util) CastToUtil(object *gobject.Object) *Util {
+func CastToUtil(object *gobject.Object) *Util {
 	return UtilNewFromNative(object.Native())
 }
 

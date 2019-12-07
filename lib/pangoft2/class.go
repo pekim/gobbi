@@ -58,7 +58,7 @@ CastToFontMap down casts any arbitrary Object to FontMap.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FontMap.
 */
-func (recv *FontMap) CastToFontMap(object *gobject.Object) *FontMap {
+func CastToFontMap(object *gobject.Object) *FontMap {
 	return FontMapNewFromNative(object.Native())
 }
 

@@ -36,7 +36,7 @@ CastToContext down casts any arbitrary Object to Context.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Context.
 */
-func (recv *Context) CastToContext(object *gobject.Object) *Context {
+func CastToContext(object *gobject.Object) *Context {
 	return ContextNewFromNative(object.Native())
 }
 
@@ -85,7 +85,7 @@ CastToDevice down casts any arbitrary Object to Device.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Device.
 */
-func (recv *Device) CastToDevice(object *gobject.Object) *Device {
+func CastToDevice(object *gobject.Object) *Device {
 	return DeviceNewFromNative(object.Native())
 }
 
@@ -134,7 +134,7 @@ CastToSurface down casts any arbitrary Object to Surface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Surface.
 */
-func (recv *Surface) CastToSurface(object *gobject.Object) *Surface {
+func CastToSurface(object *gobject.Object) *Surface {
 	return SurfaceNewFromNative(object.Native())
 }
 
@@ -183,7 +183,7 @@ CastToMatrix down casts any arbitrary Object to Matrix.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Matrix.
 */
-func (recv *Matrix) CastToMatrix(object *gobject.Object) *Matrix {
+func CastToMatrix(object *gobject.Object) *Matrix {
 	return MatrixNewFromNative(object.Native())
 }
 
@@ -232,7 +232,7 @@ CastToPattern down casts any arbitrary Object to Pattern.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Pattern.
 */
-func (recv *Pattern) CastToPattern(object *gobject.Object) *Pattern {
+func CastToPattern(object *gobject.Object) *Pattern {
 	return PatternNewFromNative(object.Native())
 }
 
@@ -281,7 +281,7 @@ CastToRegion down casts any arbitrary Object to Region.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Region.
 */
-func (recv *Region) CastToRegion(object *gobject.Object) *Region {
+func CastToRegion(object *gobject.Object) *Region {
 	return RegionNewFromNative(object.Native())
 }
 
@@ -330,7 +330,7 @@ CastToFontOptions down casts any arbitrary Object to FontOptions.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FontOptions.
 */
-func (recv *FontOptions) CastToFontOptions(object *gobject.Object) *FontOptions {
+func CastToFontOptions(object *gobject.Object) *FontOptions {
 	return FontOptionsNewFromNative(object.Native())
 }
 
@@ -379,7 +379,7 @@ CastToFontFace down casts any arbitrary Object to FontFace.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FontFace.
 */
-func (recv *FontFace) CastToFontFace(object *gobject.Object) *FontFace {
+func CastToFontFace(object *gobject.Object) *FontFace {
 	return FontFaceNewFromNative(object.Native())
 }
 
@@ -428,7 +428,7 @@ CastToScaledFont down casts any arbitrary Object to ScaledFont.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ScaledFont.
 */
-func (recv *ScaledFont) CastToScaledFont(object *gobject.Object) *ScaledFont {
+func CastToScaledFont(object *gobject.Object) *ScaledFont {
 	return ScaledFontNewFromNative(object.Native())
 }
 
@@ -477,7 +477,7 @@ CastToPath down casts any arbitrary Object to Path.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Path.
 */
-func (recv *Path) CastToPath(object *gobject.Object) *Path {
+func CastToPath(object *gobject.Object) *Path {
 	return PathNewFromNative(object.Native())
 }
 
@@ -526,7 +526,7 @@ CastToRectangle down casts any arbitrary Object to Rectangle.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Rectangle.
 */
-func (recv *Rectangle) CastToRectangle(object *gobject.Object) *Rectangle {
+func CastToRectangle(object *gobject.Object) *Rectangle {
 	return RectangleNewFromNative(object.Native())
 }
 
@@ -631,7 +631,7 @@ CastToRectangleInt down casts any arbitrary Object to RectangleInt.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RectangleInt.
 */
-func (recv *RectangleInt) CastToRectangleInt(object *gobject.Object) *RectangleInt {
+func CastToRectangleInt(object *gobject.Object) *RectangleInt {
 	return RectangleIntNewFromNative(object.Native())
 }
 

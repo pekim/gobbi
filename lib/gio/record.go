@@ -36,7 +36,7 @@ CastToActionEntry down casts any arbitrary Object to ActionEntry.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ActionEntry.
 */
-func (recv *ActionEntry) CastToActionEntry(object *gobject.Object) *ActionEntry {
+func CastToActionEntry(object *gobject.Object) *ActionEntry {
 	return ActionEntryNewFromNative(object.Native())
 }
 
@@ -135,7 +135,7 @@ CastToActionGroupInterface down casts any arbitrary Object to ActionGroupInterfa
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ActionGroupInterface.
 */
-func (recv *ActionGroupInterface) CastToActionGroupInterface(object *gobject.Object) *ActionGroupInterface {
+func CastToActionGroupInterface(object *gobject.Object) *ActionGroupInterface {
 	return ActionGroupInterfaceNewFromNative(object.Native())
 }
 
@@ -244,7 +244,7 @@ CastToActionInterface down casts any arbitrary Object to ActionInterface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ActionInterface.
 */
-func (recv *ActionInterface) CastToActionInterface(object *gobject.Object) *ActionInterface {
+func CastToActionInterface(object *gobject.Object) *ActionInterface {
 	return ActionInterfaceNewFromNative(object.Native())
 }
 
@@ -329,7 +329,7 @@ CastToActionMapInterface down casts any arbitrary Object to ActionMapInterface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ActionMapInterface.
 */
-func (recv *ActionMapInterface) CastToActionMapInterface(object *gobject.Object) *ActionMapInterface {
+func CastToActionMapInterface(object *gobject.Object) *ActionMapInterface {
 	return ActionMapInterfaceNewFromNative(object.Native())
 }
 
@@ -394,7 +394,7 @@ CastToAppInfoIface down casts any arbitrary Object to AppInfoIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AppInfoIface.
 */
-func (recv *AppInfoIface) CastToAppInfoIface(object *gobject.Object) *AppInfoIface {
+func CastToAppInfoIface(object *gobject.Object) *AppInfoIface {
 	return AppInfoIfaceNewFromNative(object.Native())
 }
 
@@ -547,7 +547,7 @@ CastToAppLaunchContextClass down casts any arbitrary Object to AppLaunchContextC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AppLaunchContextClass.
 */
-func (recv *AppLaunchContextClass) CastToAppLaunchContextClass(object *gobject.Object) *AppLaunchContextClass {
+func CastToAppLaunchContextClass(object *gobject.Object) *AppLaunchContextClass {
 	return AppLaunchContextClassNewFromNative(object.Native())
 }
 
@@ -632,7 +632,7 @@ CastToAppLaunchContextPrivate down casts any arbitrary Object to AppLaunchContex
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AppLaunchContextPrivate.
 */
-func (recv *AppLaunchContextPrivate) CastToAppLaunchContextPrivate(object *gobject.Object) *AppLaunchContextPrivate {
+func CastToAppLaunchContextPrivate(object *gobject.Object) *AppLaunchContextPrivate {
 	return AppLaunchContextPrivateNewFromNative(object.Native())
 }
 
@@ -681,7 +681,7 @@ CastToApplicationClass down casts any arbitrary Object to ApplicationClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ApplicationClass.
 */
-func (recv *ApplicationClass) CastToApplicationClass(object *gobject.Object) *ApplicationClass {
+func CastToApplicationClass(object *gobject.Object) *ApplicationClass {
 	return ApplicationClassNewFromNative(object.Native())
 }
 
@@ -790,7 +790,7 @@ CastToApplicationCommandLineClass down casts any arbitrary Object to Application
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ApplicationCommandLineClass.
 */
-func (recv *ApplicationCommandLineClass) CastToApplicationCommandLineClass(object *gobject.Object) *ApplicationCommandLineClass {
+func CastToApplicationCommandLineClass(object *gobject.Object) *ApplicationCommandLineClass {
 	return ApplicationCommandLineClassNewFromNative(object.Native())
 }
 
@@ -851,7 +851,7 @@ CastToApplicationCommandLinePrivate down casts any arbitrary Object to Applicati
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ApplicationCommandLinePrivate.
 */
-func (recv *ApplicationCommandLinePrivate) CastToApplicationCommandLinePrivate(object *gobject.Object) *ApplicationCommandLinePrivate {
+func CastToApplicationCommandLinePrivate(object *gobject.Object) *ApplicationCommandLinePrivate {
 	return ApplicationCommandLinePrivateNewFromNative(object.Native())
 }
 
@@ -900,7 +900,7 @@ CastToApplicationPrivate down casts any arbitrary Object to ApplicationPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ApplicationPrivate.
 */
-func (recv *ApplicationPrivate) CastToApplicationPrivate(object *gobject.Object) *ApplicationPrivate {
+func CastToApplicationPrivate(object *gobject.Object) *ApplicationPrivate {
 	return ApplicationPrivateNewFromNative(object.Native())
 }
 
@@ -949,7 +949,7 @@ CastToAsyncInitableIface down casts any arbitrary Object to AsyncInitableIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AsyncInitableIface.
 */
-func (recv *AsyncInitableIface) CastToAsyncInitableIface(object *gobject.Object) *AsyncInitableIface {
+func CastToAsyncInitableIface(object *gobject.Object) *AsyncInitableIface {
 	return AsyncInitableIfaceNewFromNative(object.Native())
 }
 
@@ -1010,7 +1010,7 @@ CastToAsyncResultIface down casts any arbitrary Object to AsyncResultIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a AsyncResultIface.
 */
-func (recv *AsyncResultIface) CastToAsyncResultIface(object *gobject.Object) *AsyncResultIface {
+func CastToAsyncResultIface(object *gobject.Object) *AsyncResultIface {
 	return AsyncResultIfaceNewFromNative(object.Native())
 }
 
@@ -1075,7 +1075,7 @@ CastToBufferedInputStreamClass down casts any arbitrary Object to BufferedInputS
 Exercise care, as this is a potentially dangerous function
 if the Object is not a BufferedInputStreamClass.
 */
-func (recv *BufferedInputStreamClass) CastToBufferedInputStreamClass(object *gobject.Object) *BufferedInputStreamClass {
+func CastToBufferedInputStreamClass(object *gobject.Object) *BufferedInputStreamClass {
 	return BufferedInputStreamClassNewFromNative(object.Native())
 }
 
@@ -1170,7 +1170,7 @@ CastToBufferedInputStreamPrivate down casts any arbitrary Object to BufferedInpu
 Exercise care, as this is a potentially dangerous function
 if the Object is not a BufferedInputStreamPrivate.
 */
-func (recv *BufferedInputStreamPrivate) CastToBufferedInputStreamPrivate(object *gobject.Object) *BufferedInputStreamPrivate {
+func CastToBufferedInputStreamPrivate(object *gobject.Object) *BufferedInputStreamPrivate {
 	return BufferedInputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -1219,7 +1219,7 @@ CastToBufferedOutputStreamClass down casts any arbitrary Object to BufferedOutpu
 Exercise care, as this is a potentially dangerous function
 if the Object is not a BufferedOutputStreamClass.
 */
-func (recv *BufferedOutputStreamClass) CastToBufferedOutputStreamClass(object *gobject.Object) *BufferedOutputStreamClass {
+func CastToBufferedOutputStreamClass(object *gobject.Object) *BufferedOutputStreamClass {
 	return BufferedOutputStreamClassNewFromNative(object.Native())
 }
 
@@ -1290,7 +1290,7 @@ CastToBufferedOutputStreamPrivate down casts any arbitrary Object to BufferedOut
 Exercise care, as this is a potentially dangerous function
 if the Object is not a BufferedOutputStreamPrivate.
 */
-func (recv *BufferedOutputStreamPrivate) CastToBufferedOutputStreamPrivate(object *gobject.Object) *BufferedOutputStreamPrivate {
+func CastToBufferedOutputStreamPrivate(object *gobject.Object) *BufferedOutputStreamPrivate {
 	return BufferedOutputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -1339,7 +1339,7 @@ CastToCancellableClass down casts any arbitrary Object to CancellableClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CancellableClass.
 */
-func (recv *CancellableClass) CastToCancellableClass(object *gobject.Object) *CancellableClass {
+func CastToCancellableClass(object *gobject.Object) *CancellableClass {
 	return CancellableClassNewFromNative(object.Native())
 }
 
@@ -1416,7 +1416,7 @@ CastToCancellablePrivate down casts any arbitrary Object to CancellablePrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CancellablePrivate.
 */
-func (recv *CancellablePrivate) CastToCancellablePrivate(object *gobject.Object) *CancellablePrivate {
+func CastToCancellablePrivate(object *gobject.Object) *CancellablePrivate {
 	return CancellablePrivateNewFromNative(object.Native())
 }
 
@@ -1465,7 +1465,7 @@ CastToCharsetConverterClass down casts any arbitrary Object to CharsetConverterC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CharsetConverterClass.
 */
-func (recv *CharsetConverterClass) CastToCharsetConverterClass(object *gobject.Object) *CharsetConverterClass {
+func CastToCharsetConverterClass(object *gobject.Object) *CharsetConverterClass {
 	return CharsetConverterClassNewFromNative(object.Native())
 }
 
@@ -1518,7 +1518,7 @@ CastToConverterIface down casts any arbitrary Object to ConverterIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ConverterIface.
 */
-func (recv *ConverterIface) CastToConverterIface(object *gobject.Object) *ConverterIface {
+func CastToConverterIface(object *gobject.Object) *ConverterIface {
 	return ConverterIfaceNewFromNative(object.Native())
 }
 
@@ -1579,7 +1579,7 @@ CastToConverterInputStreamClass down casts any arbitrary Object to ConverterInpu
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ConverterInputStreamClass.
 */
-func (recv *ConverterInputStreamClass) CastToConverterInputStreamClass(object *gobject.Object) *ConverterInputStreamClass {
+func CastToConverterInputStreamClass(object *gobject.Object) *ConverterInputStreamClass {
 	return ConverterInputStreamClassNewFromNative(object.Native())
 }
 
@@ -1662,7 +1662,7 @@ CastToConverterInputStreamPrivate down casts any arbitrary Object to ConverterIn
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ConverterInputStreamPrivate.
 */
-func (recv *ConverterInputStreamPrivate) CastToConverterInputStreamPrivate(object *gobject.Object) *ConverterInputStreamPrivate {
+func CastToConverterInputStreamPrivate(object *gobject.Object) *ConverterInputStreamPrivate {
 	return ConverterInputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -1711,7 +1711,7 @@ CastToConverterOutputStreamClass down casts any arbitrary Object to ConverterOut
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ConverterOutputStreamClass.
 */
-func (recv *ConverterOutputStreamClass) CastToConverterOutputStreamClass(object *gobject.Object) *ConverterOutputStreamClass {
+func CastToConverterOutputStreamClass(object *gobject.Object) *ConverterOutputStreamClass {
 	return ConverterOutputStreamClassNewFromNative(object.Native())
 }
 
@@ -1794,7 +1794,7 @@ CastToConverterOutputStreamPrivate down casts any arbitrary Object to ConverterO
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ConverterOutputStreamPrivate.
 */
-func (recv *ConverterOutputStreamPrivate) CastToConverterOutputStreamPrivate(object *gobject.Object) *ConverterOutputStreamPrivate {
+func CastToConverterOutputStreamPrivate(object *gobject.Object) *ConverterOutputStreamPrivate {
 	return ConverterOutputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -1843,7 +1843,7 @@ CastToCredentialsClass down casts any arbitrary Object to CredentialsClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a CredentialsClass.
 */
-func (recv *CredentialsClass) CastToCredentialsClass(object *gobject.Object) *CredentialsClass {
+func CastToCredentialsClass(object *gobject.Object) *CredentialsClass {
 	return CredentialsClassNewFromNative(object.Native())
 }
 
@@ -1892,7 +1892,7 @@ CastToDBusAnnotationInfo down casts any arbitrary Object to DBusAnnotationInfo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusAnnotationInfo.
 */
-func (recv *DBusAnnotationInfo) CastToDBusAnnotationInfo(object *gobject.Object) *DBusAnnotationInfo {
+func CastToDBusAnnotationInfo(object *gobject.Object) *DBusAnnotationInfo {
 	return DBusAnnotationInfoNewFromNative(object.Native())
 }
 
@@ -2047,7 +2047,7 @@ CastToDBusArgInfo down casts any arbitrary Object to DBusArgInfo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusArgInfo.
 */
-func (recv *DBusArgInfo) CastToDBusArgInfo(object *gobject.Object) *DBusArgInfo {
+func CastToDBusArgInfo(object *gobject.Object) *DBusArgInfo {
 	return DBusArgInfoNewFromNative(object.Native())
 }
 
@@ -2202,7 +2202,7 @@ CastToDBusErrorEntry down casts any arbitrary Object to DBusErrorEntry.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusErrorEntry.
 */
-func (recv *DBusErrorEntry) CastToDBusErrorEntry(object *gobject.Object) *DBusErrorEntry {
+func CastToDBusErrorEntry(object *gobject.Object) *DBusErrorEntry {
 	return DBusErrorEntryNewFromNative(object.Native())
 }
 
@@ -2279,7 +2279,7 @@ CastToDBusInterfaceIface down casts any arbitrary Object to DBusInterfaceIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusInterfaceIface.
 */
-func (recv *DBusInterfaceIface) CastToDBusInterfaceIface(object *gobject.Object) *DBusInterfaceIface {
+func CastToDBusInterfaceIface(object *gobject.Object) *DBusInterfaceIface {
 	return DBusInterfaceIfaceNewFromNative(object.Native())
 }
 
@@ -2348,7 +2348,7 @@ CastToDBusInterfaceInfo down casts any arbitrary Object to DBusInterfaceInfo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusInterfaceInfo.
 */
-func (recv *DBusInterfaceInfo) CastToDBusInterfaceInfo(object *gobject.Object) *DBusInterfaceInfo {
+func CastToDBusInterfaceInfo(object *gobject.Object) *DBusInterfaceInfo {
 	return DBusInterfaceInfoNewFromNative(object.Native())
 }
 
@@ -2658,7 +2658,7 @@ CastToDBusInterfaceSkeletonClass down casts any arbitrary Object to DBusInterfac
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusInterfaceSkeletonClass.
 */
-func (recv *DBusInterfaceSkeletonClass) CastToDBusInterfaceSkeletonClass(object *gobject.Object) *DBusInterfaceSkeletonClass {
+func CastToDBusInterfaceSkeletonClass(object *gobject.Object) *DBusInterfaceSkeletonClass {
 	return DBusInterfaceSkeletonClassNewFromNative(object.Native())
 }
 
@@ -2731,7 +2731,7 @@ CastToDBusInterfaceSkeletonPrivate down casts any arbitrary Object to DBusInterf
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusInterfaceSkeletonPrivate.
 */
-func (recv *DBusInterfaceSkeletonPrivate) CastToDBusInterfaceSkeletonPrivate(object *gobject.Object) *DBusInterfaceSkeletonPrivate {
+func CastToDBusInterfaceSkeletonPrivate(object *gobject.Object) *DBusInterfaceSkeletonPrivate {
 	return DBusInterfaceSkeletonPrivateNewFromNative(object.Native())
 }
 
@@ -2780,7 +2780,7 @@ CastToDBusInterfaceVTable down casts any arbitrary Object to DBusInterfaceVTable
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusInterfaceVTable.
 */
-func (recv *DBusInterfaceVTable) CastToDBusInterfaceVTable(object *gobject.Object) *DBusInterfaceVTable {
+func CastToDBusInterfaceVTable(object *gobject.Object) *DBusInterfaceVTable {
 	return DBusInterfaceVTableNewFromNative(object.Native())
 }
 
@@ -2841,7 +2841,7 @@ CastToDBusMethodInfo down casts any arbitrary Object to DBusMethodInfo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusMethodInfo.
 */
-func (recv *DBusMethodInfo) CastToDBusMethodInfo(object *gobject.Object) *DBusMethodInfo {
+func CastToDBusMethodInfo(object *gobject.Object) *DBusMethodInfo {
 	return DBusMethodInfoNewFromNative(object.Native())
 }
 
@@ -2990,7 +2990,7 @@ CastToDBusNodeInfo down casts any arbitrary Object to DBusNodeInfo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusNodeInfo.
 */
-func (recv *DBusNodeInfo) CastToDBusNodeInfo(object *gobject.Object) *DBusNodeInfo {
+func CastToDBusNodeInfo(object *gobject.Object) *DBusNodeInfo {
 	return DBusNodeInfoNewFromNative(object.Native())
 }
 
@@ -3191,7 +3191,7 @@ CastToDBusObjectIface down casts any arbitrary Object to DBusObjectIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusObjectIface.
 */
-func (recv *DBusObjectIface) CastToDBusObjectIface(object *gobject.Object) *DBusObjectIface {
+func CastToDBusObjectIface(object *gobject.Object) *DBusObjectIface {
 	return DBusObjectIfaceNewFromNative(object.Native())
 }
 
@@ -3264,7 +3264,7 @@ CastToDBusObjectManagerClientClass down casts any arbitrary Object to DBusObject
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusObjectManagerClientClass.
 */
-func (recv *DBusObjectManagerClientClass) CastToDBusObjectManagerClientClass(object *gobject.Object) *DBusObjectManagerClientClass {
+func CastToDBusObjectManagerClientClass(object *gobject.Object) *DBusObjectManagerClientClass {
 	return DBusObjectManagerClientClassNewFromNative(object.Native())
 }
 
@@ -3325,7 +3325,7 @@ CastToDBusObjectManagerClientPrivate down casts any arbitrary Object to DBusObje
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusObjectManagerClientPrivate.
 */
-func (recv *DBusObjectManagerClientPrivate) CastToDBusObjectManagerClientPrivate(object *gobject.Object) *DBusObjectManagerClientPrivate {
+func CastToDBusObjectManagerClientPrivate(object *gobject.Object) *DBusObjectManagerClientPrivate {
 	return DBusObjectManagerClientPrivateNewFromNative(object.Native())
 }
 
@@ -3374,7 +3374,7 @@ CastToDBusObjectManagerIface down casts any arbitrary Object to DBusObjectManage
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusObjectManagerIface.
 */
-func (recv *DBusObjectManagerIface) CastToDBusObjectManagerIface(object *gobject.Object) *DBusObjectManagerIface {
+func CastToDBusObjectManagerIface(object *gobject.Object) *DBusObjectManagerIface {
 	return DBusObjectManagerIfaceNewFromNative(object.Native())
 }
 
@@ -3459,7 +3459,7 @@ CastToDBusObjectManagerServerClass down casts any arbitrary Object to DBusObject
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusObjectManagerServerClass.
 */
-func (recv *DBusObjectManagerServerClass) CastToDBusObjectManagerServerClass(object *gobject.Object) *DBusObjectManagerServerClass {
+func CastToDBusObjectManagerServerClass(object *gobject.Object) *DBusObjectManagerServerClass {
 	return DBusObjectManagerServerClassNewFromNative(object.Native())
 }
 
@@ -3512,7 +3512,7 @@ CastToDBusObjectManagerServerPrivate down casts any arbitrary Object to DBusObje
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusObjectManagerServerPrivate.
 */
-func (recv *DBusObjectManagerServerPrivate) CastToDBusObjectManagerServerPrivate(object *gobject.Object) *DBusObjectManagerServerPrivate {
+func CastToDBusObjectManagerServerPrivate(object *gobject.Object) *DBusObjectManagerServerPrivate {
 	return DBusObjectManagerServerPrivateNewFromNative(object.Native())
 }
 
@@ -3561,7 +3561,7 @@ CastToDBusObjectProxyClass down casts any arbitrary Object to DBusObjectProxyCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusObjectProxyClass.
 */
-func (recv *DBusObjectProxyClass) CastToDBusObjectProxyClass(object *gobject.Object) *DBusObjectProxyClass {
+func CastToDBusObjectProxyClass(object *gobject.Object) *DBusObjectProxyClass {
 	return DBusObjectProxyClassNewFromNative(object.Native())
 }
 
@@ -3614,7 +3614,7 @@ CastToDBusObjectProxyPrivate down casts any arbitrary Object to DBusObjectProxyP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusObjectProxyPrivate.
 */
-func (recv *DBusObjectProxyPrivate) CastToDBusObjectProxyPrivate(object *gobject.Object) *DBusObjectProxyPrivate {
+func CastToDBusObjectProxyPrivate(object *gobject.Object) *DBusObjectProxyPrivate {
 	return DBusObjectProxyPrivateNewFromNative(object.Native())
 }
 
@@ -3663,7 +3663,7 @@ CastToDBusObjectSkeletonClass down casts any arbitrary Object to DBusObjectSkele
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusObjectSkeletonClass.
 */
-func (recv *DBusObjectSkeletonClass) CastToDBusObjectSkeletonClass(object *gobject.Object) *DBusObjectSkeletonClass {
+func CastToDBusObjectSkeletonClass(object *gobject.Object) *DBusObjectSkeletonClass {
 	return DBusObjectSkeletonClassNewFromNative(object.Native())
 }
 
@@ -3720,7 +3720,7 @@ CastToDBusObjectSkeletonPrivate down casts any arbitrary Object to DBusObjectSke
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusObjectSkeletonPrivate.
 */
-func (recv *DBusObjectSkeletonPrivate) CastToDBusObjectSkeletonPrivate(object *gobject.Object) *DBusObjectSkeletonPrivate {
+func CastToDBusObjectSkeletonPrivate(object *gobject.Object) *DBusObjectSkeletonPrivate {
 	return DBusObjectSkeletonPrivateNewFromNative(object.Native())
 }
 
@@ -3769,7 +3769,7 @@ CastToDBusPropertyInfo down casts any arbitrary Object to DBusPropertyInfo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusPropertyInfo.
 */
-func (recv *DBusPropertyInfo) CastToDBusPropertyInfo(object *gobject.Object) *DBusPropertyInfo {
+func CastToDBusPropertyInfo(object *gobject.Object) *DBusPropertyInfo {
 	return DBusPropertyInfoNewFromNative(object.Native())
 }
 
@@ -3928,7 +3928,7 @@ CastToDBusProxyClass down casts any arbitrary Object to DBusProxyClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusProxyClass.
 */
-func (recv *DBusProxyClass) CastToDBusProxyClass(object *gobject.Object) *DBusProxyClass {
+func CastToDBusProxyClass(object *gobject.Object) *DBusProxyClass {
 	return DBusProxyClassNewFromNative(object.Native())
 }
 
@@ -3985,7 +3985,7 @@ CastToDBusProxyPrivate down casts any arbitrary Object to DBusProxyPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusProxyPrivate.
 */
-func (recv *DBusProxyPrivate) CastToDBusProxyPrivate(object *gobject.Object) *DBusProxyPrivate {
+func CastToDBusProxyPrivate(object *gobject.Object) *DBusProxyPrivate {
 	return DBusProxyPrivateNewFromNative(object.Native())
 }
 
@@ -4034,7 +4034,7 @@ CastToDBusSignalInfo down casts any arbitrary Object to DBusSignalInfo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusSignalInfo.
 */
-func (recv *DBusSignalInfo) CastToDBusSignalInfo(object *gobject.Object) *DBusSignalInfo {
+func CastToDBusSignalInfo(object *gobject.Object) *DBusSignalInfo {
 	return DBusSignalInfoNewFromNative(object.Native())
 }
 
@@ -4179,7 +4179,7 @@ CastToDBusSubtreeVTable down casts any arbitrary Object to DBusSubtreeVTable.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DBusSubtreeVTable.
 */
-func (recv *DBusSubtreeVTable) CastToDBusSubtreeVTable(object *gobject.Object) *DBusSubtreeVTable {
+func CastToDBusSubtreeVTable(object *gobject.Object) *DBusSubtreeVTable {
 	return DBusSubtreeVTableNewFromNative(object.Native())
 }
 
@@ -4240,7 +4240,7 @@ CastToDataInputStreamClass down casts any arbitrary Object to DataInputStreamCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DataInputStreamClass.
 */
-func (recv *DataInputStreamClass) CastToDataInputStreamClass(object *gobject.Object) *DataInputStreamClass {
+func CastToDataInputStreamClass(object *gobject.Object) *DataInputStreamClass {
 	return DataInputStreamClassNewFromNative(object.Native())
 }
 
@@ -4323,7 +4323,7 @@ CastToDataInputStreamPrivate down casts any arbitrary Object to DataInputStreamP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DataInputStreamPrivate.
 */
-func (recv *DataInputStreamPrivate) CastToDataInputStreamPrivate(object *gobject.Object) *DataInputStreamPrivate {
+func CastToDataInputStreamPrivate(object *gobject.Object) *DataInputStreamPrivate {
 	return DataInputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -4372,7 +4372,7 @@ CastToDataOutputStreamClass down casts any arbitrary Object to DataOutputStreamC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DataOutputStreamClass.
 */
-func (recv *DataOutputStreamClass) CastToDataOutputStreamClass(object *gobject.Object) *DataOutputStreamClass {
+func CastToDataOutputStreamClass(object *gobject.Object) *DataOutputStreamClass {
 	return DataOutputStreamClassNewFromNative(object.Native())
 }
 
@@ -4455,7 +4455,7 @@ CastToDataOutputStreamPrivate down casts any arbitrary Object to DataOutputStrea
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DataOutputStreamPrivate.
 */
-func (recv *DataOutputStreamPrivate) CastToDataOutputStreamPrivate(object *gobject.Object) *DataOutputStreamPrivate {
+func CastToDataOutputStreamPrivate(object *gobject.Object) *DataOutputStreamPrivate {
 	return DataOutputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -4504,7 +4504,7 @@ CastToDatagramBasedInterface down casts any arbitrary Object to DatagramBasedInt
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DatagramBasedInterface.
 */
-func (recv *DatagramBasedInterface) CastToDatagramBasedInterface(object *gobject.Object) *DatagramBasedInterface {
+func CastToDatagramBasedInterface(object *gobject.Object) *DatagramBasedInterface {
 	return DatagramBasedInterfaceNewFromNative(object.Native())
 }
 
@@ -4577,7 +4577,7 @@ CastToDesktopAppInfoClass down casts any arbitrary Object to DesktopAppInfoClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DesktopAppInfoClass.
 */
-func (recv *DesktopAppInfoClass) CastToDesktopAppInfoClass(object *gobject.Object) *DesktopAppInfoClass {
+func CastToDesktopAppInfoClass(object *gobject.Object) *DesktopAppInfoClass {
 	return DesktopAppInfoClassNewFromNative(object.Native())
 }
 
@@ -4630,7 +4630,7 @@ CastToDesktopAppInfoLookupIface down casts any arbitrary Object to DesktopAppInf
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DesktopAppInfoLookupIface.
 */
-func (recv *DesktopAppInfoLookupIface) CastToDesktopAppInfoLookupIface(object *gobject.Object) *DesktopAppInfoLookupIface {
+func CastToDesktopAppInfoLookupIface(object *gobject.Object) *DesktopAppInfoLookupIface {
 	return DesktopAppInfoLookupIfaceNewFromNative(object.Native())
 }
 
@@ -4687,7 +4687,7 @@ CastToDriveIface down casts any arbitrary Object to DriveIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DriveIface.
 */
-func (recv *DriveIface) CastToDriveIface(object *gobject.Object) *DriveIface {
+func CastToDriveIface(object *gobject.Object) *DriveIface {
 	return DriveIfaceNewFromNative(object.Native())
 }
 
@@ -4868,7 +4868,7 @@ CastToDtlsClientConnectionInterface down casts any arbitrary Object to DtlsClien
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DtlsClientConnectionInterface.
 */
-func (recv *DtlsClientConnectionInterface) CastToDtlsClientConnectionInterface(object *gobject.Object) *DtlsClientConnectionInterface {
+func CastToDtlsClientConnectionInterface(object *gobject.Object) *DtlsClientConnectionInterface {
 	return DtlsClientConnectionInterfaceNewFromNative(object.Native())
 }
 
@@ -4921,7 +4921,7 @@ CastToDtlsConnectionInterface down casts any arbitrary Object to DtlsConnectionI
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DtlsConnectionInterface.
 */
-func (recv *DtlsConnectionInterface) CastToDtlsConnectionInterface(object *gobject.Object) *DtlsConnectionInterface {
+func CastToDtlsConnectionInterface(object *gobject.Object) *DtlsConnectionInterface {
 	return DtlsConnectionInterfaceNewFromNative(object.Native())
 }
 
@@ -5010,7 +5010,7 @@ CastToDtlsServerConnectionInterface down casts any arbitrary Object to DtlsServe
 Exercise care, as this is a potentially dangerous function
 if the Object is not a DtlsServerConnectionInterface.
 */
-func (recv *DtlsServerConnectionInterface) CastToDtlsServerConnectionInterface(object *gobject.Object) *DtlsServerConnectionInterface {
+func CastToDtlsServerConnectionInterface(object *gobject.Object) *DtlsServerConnectionInterface {
 	return DtlsServerConnectionInterfaceNewFromNative(object.Native())
 }
 
@@ -5063,7 +5063,7 @@ CastToEmblemClass down casts any arbitrary Object to EmblemClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EmblemClass.
 */
-func (recv *EmblemClass) CastToEmblemClass(object *gobject.Object) *EmblemClass {
+func CastToEmblemClass(object *gobject.Object) *EmblemClass {
 	return EmblemClassNewFromNative(object.Native())
 }
 
@@ -5112,7 +5112,7 @@ CastToEmblemedIconClass down casts any arbitrary Object to EmblemedIconClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EmblemedIconClass.
 */
-func (recv *EmblemedIconClass) CastToEmblemedIconClass(object *gobject.Object) *EmblemedIconClass {
+func CastToEmblemedIconClass(object *gobject.Object) *EmblemedIconClass {
 	return EmblemedIconClassNewFromNative(object.Native())
 }
 
@@ -5165,7 +5165,7 @@ CastToEmblemedIconPrivate down casts any arbitrary Object to EmblemedIconPrivate
 Exercise care, as this is a potentially dangerous function
 if the Object is not a EmblemedIconPrivate.
 */
-func (recv *EmblemedIconPrivate) CastToEmblemedIconPrivate(object *gobject.Object) *EmblemedIconPrivate {
+func CastToEmblemedIconPrivate(object *gobject.Object) *EmblemedIconPrivate {
 	return EmblemedIconPrivateNewFromNative(object.Native())
 }
 
@@ -5214,7 +5214,7 @@ CastToFileAttributeInfo down casts any arbitrary Object to FileAttributeInfo.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileAttributeInfo.
 */
-func (recv *FileAttributeInfo) CastToFileAttributeInfo(object *gobject.Object) *FileAttributeInfo {
+func CastToFileAttributeInfo(object *gobject.Object) *FileAttributeInfo {
 	return FileAttributeInfoNewFromNative(object.Native())
 }
 
@@ -5295,7 +5295,7 @@ CastToFileAttributeInfoList down casts any arbitrary Object to FileAttributeInfo
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileAttributeInfoList.
 */
-func (recv *FileAttributeInfoList) CastToFileAttributeInfoList(object *gobject.Object) *FileAttributeInfoList {
+func CastToFileAttributeInfoList(object *gobject.Object) *FileAttributeInfoList {
 	return FileAttributeInfoListNewFromNative(object.Native())
 }
 
@@ -5514,7 +5514,7 @@ CastToFileAttributeMatcher down casts any arbitrary Object to FileAttributeMatch
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileAttributeMatcher.
 */
-func (recv *FileAttributeMatcher) CastToFileAttributeMatcher(object *gobject.Object) *FileAttributeMatcher {
+func CastToFileAttributeMatcher(object *gobject.Object) *FileAttributeMatcher {
 	return FileAttributeMatcherNewFromNative(object.Native())
 }
 
@@ -5836,7 +5836,7 @@ CastToFileDescriptorBasedIface down casts any arbitrary Object to FileDescriptor
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileDescriptorBasedIface.
 */
-func (recv *FileDescriptorBasedIface) CastToFileDescriptorBasedIface(object *gobject.Object) *FileDescriptorBasedIface {
+func CastToFileDescriptorBasedIface(object *gobject.Object) *FileDescriptorBasedIface {
 	return FileDescriptorBasedIfaceNewFromNative(object.Native())
 }
 
@@ -5893,7 +5893,7 @@ CastToFileEnumeratorClass down casts any arbitrary Object to FileEnumeratorClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileEnumeratorClass.
 */
-func (recv *FileEnumeratorClass) CastToFileEnumeratorClass(object *gobject.Object) *FileEnumeratorClass {
+func CastToFileEnumeratorClass(object *gobject.Object) *FileEnumeratorClass {
 	return FileEnumeratorClassNewFromNative(object.Native())
 }
 
@@ -5998,7 +5998,7 @@ CastToFileEnumeratorPrivate down casts any arbitrary Object to FileEnumeratorPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileEnumeratorPrivate.
 */
-func (recv *FileEnumeratorPrivate) CastToFileEnumeratorPrivate(object *gobject.Object) *FileEnumeratorPrivate {
+func CastToFileEnumeratorPrivate(object *gobject.Object) *FileEnumeratorPrivate {
 	return FileEnumeratorPrivateNewFromNative(object.Native())
 }
 
@@ -6047,7 +6047,7 @@ CastToFileIOStreamClass down casts any arbitrary Object to FileIOStreamClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileIOStreamClass.
 */
-func (recv *FileIOStreamClass) CastToFileIOStreamClass(object *gobject.Object) *FileIOStreamClass {
+func CastToFileIOStreamClass(object *gobject.Object) *FileIOStreamClass {
 	return FileIOStreamClassNewFromNative(object.Native())
 }
 
@@ -6166,7 +6166,7 @@ CastToFileIOStreamPrivate down casts any arbitrary Object to FileIOStreamPrivate
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileIOStreamPrivate.
 */
-func (recv *FileIOStreamPrivate) CastToFileIOStreamPrivate(object *gobject.Object) *FileIOStreamPrivate {
+func CastToFileIOStreamPrivate(object *gobject.Object) *FileIOStreamPrivate {
 	return FileIOStreamPrivateNewFromNative(object.Native())
 }
 
@@ -6215,7 +6215,7 @@ CastToFileIconClass down casts any arbitrary Object to FileIconClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileIconClass.
 */
-func (recv *FileIconClass) CastToFileIconClass(object *gobject.Object) *FileIconClass {
+func CastToFileIconClass(object *gobject.Object) *FileIconClass {
 	return FileIconClassNewFromNative(object.Native())
 }
 
@@ -6264,7 +6264,7 @@ CastToFileIface down casts any arbitrary Object to FileIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileIface.
 */
-func (recv *FileIface) CastToFileIface(object *gobject.Object) *FileIface {
+func CastToFileIface(object *gobject.Object) *FileIface {
 	return FileIfaceNewFromNative(object.Native())
 }
 
@@ -6739,7 +6739,7 @@ CastToFileInfoClass down casts any arbitrary Object to FileInfoClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileInfoClass.
 */
-func (recv *FileInfoClass) CastToFileInfoClass(object *gobject.Object) *FileInfoClass {
+func CastToFileInfoClass(object *gobject.Object) *FileInfoClass {
 	return FileInfoClassNewFromNative(object.Native())
 }
 
@@ -6788,7 +6788,7 @@ CastToFileInputStreamClass down casts any arbitrary Object to FileInputStreamCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileInputStreamClass.
 */
-func (recv *FileInputStreamClass) CastToFileInputStreamClass(object *gobject.Object) *FileInputStreamClass {
+func CastToFileInputStreamClass(object *gobject.Object) *FileInputStreamClass {
 	return FileInputStreamClassNewFromNative(object.Native())
 }
 
@@ -6895,7 +6895,7 @@ CastToFileInputStreamPrivate down casts any arbitrary Object to FileInputStreamP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileInputStreamPrivate.
 */
-func (recv *FileInputStreamPrivate) CastToFileInputStreamPrivate(object *gobject.Object) *FileInputStreamPrivate {
+func CastToFileInputStreamPrivate(object *gobject.Object) *FileInputStreamPrivate {
 	return FileInputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -6944,7 +6944,7 @@ CastToFileMonitorClass down casts any arbitrary Object to FileMonitorClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileMonitorClass.
 */
-func (recv *FileMonitorClass) CastToFileMonitorClass(object *gobject.Object) *FileMonitorClass {
+func CastToFileMonitorClass(object *gobject.Object) *FileMonitorClass {
 	return FileMonitorClassNewFromNative(object.Native())
 }
 
@@ -7025,7 +7025,7 @@ CastToFileMonitorPrivate down casts any arbitrary Object to FileMonitorPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileMonitorPrivate.
 */
-func (recv *FileMonitorPrivate) CastToFileMonitorPrivate(object *gobject.Object) *FileMonitorPrivate {
+func CastToFileMonitorPrivate(object *gobject.Object) *FileMonitorPrivate {
 	return FileMonitorPrivateNewFromNative(object.Native())
 }
 
@@ -7074,7 +7074,7 @@ CastToFileOutputStreamClass down casts any arbitrary Object to FileOutputStreamC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileOutputStreamClass.
 */
-func (recv *FileOutputStreamClass) CastToFileOutputStreamClass(object *gobject.Object) *FileOutputStreamClass {
+func CastToFileOutputStreamClass(object *gobject.Object) *FileOutputStreamClass {
 	return FileOutputStreamClassNewFromNative(object.Native())
 }
 
@@ -7193,7 +7193,7 @@ CastToFileOutputStreamPrivate down casts any arbitrary Object to FileOutputStrea
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FileOutputStreamPrivate.
 */
-func (recv *FileOutputStreamPrivate) CastToFileOutputStreamPrivate(object *gobject.Object) *FileOutputStreamPrivate {
+func CastToFileOutputStreamPrivate(object *gobject.Object) *FileOutputStreamPrivate {
 	return FileOutputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -7242,7 +7242,7 @@ CastToFilenameCompleterClass down casts any arbitrary Object to FilenameComplete
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FilenameCompleterClass.
 */
-func (recv *FilenameCompleterClass) CastToFilenameCompleterClass(object *gobject.Object) *FilenameCompleterClass {
+func CastToFilenameCompleterClass(object *gobject.Object) *FilenameCompleterClass {
 	return FilenameCompleterClassNewFromNative(object.Native())
 }
 
@@ -7311,7 +7311,7 @@ CastToFilterInputStreamClass down casts any arbitrary Object to FilterInputStrea
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FilterInputStreamClass.
 */
-func (recv *FilterInputStreamClass) CastToFilterInputStreamClass(object *gobject.Object) *FilterInputStreamClass {
+func CastToFilterInputStreamClass(object *gobject.Object) *FilterInputStreamClass {
 	return FilterInputStreamClassNewFromNative(object.Native())
 }
 
@@ -7386,7 +7386,7 @@ CastToFilterOutputStreamClass down casts any arbitrary Object to FilterOutputStr
 Exercise care, as this is a potentially dangerous function
 if the Object is not a FilterOutputStreamClass.
 */
-func (recv *FilterOutputStreamClass) CastToFilterOutputStreamClass(object *gobject.Object) *FilterOutputStreamClass {
+func CastToFilterOutputStreamClass(object *gobject.Object) *FilterOutputStreamClass {
 	return FilterOutputStreamClassNewFromNative(object.Native())
 }
 
@@ -7461,7 +7461,7 @@ CastToIOExtension down casts any arbitrary Object to IOExtension.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IOExtension.
 */
-func (recv *IOExtension) CastToIOExtension(object *gobject.Object) *IOExtension {
+func CastToIOExtension(object *gobject.Object) *IOExtension {
 	return IOExtensionNewFromNative(object.Native())
 }
 
@@ -7578,7 +7578,7 @@ CastToIOExtensionPoint down casts any arbitrary Object to IOExtensionPoint.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IOExtensionPoint.
 */
-func (recv *IOExtensionPoint) CastToIOExtensionPoint(object *gobject.Object) *IOExtensionPoint {
+func CastToIOExtensionPoint(object *gobject.Object) *IOExtensionPoint {
 	return IOExtensionPointNewFromNative(object.Native())
 }
 
@@ -7666,7 +7666,7 @@ CastToIOModuleClass down casts any arbitrary Object to IOModuleClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IOModuleClass.
 */
-func (recv *IOModuleClass) CastToIOModuleClass(object *gobject.Object) *IOModuleClass {
+func CastToIOModuleClass(object *gobject.Object) *IOModuleClass {
 	return IOModuleClassNewFromNative(object.Native())
 }
 
@@ -7715,7 +7715,7 @@ CastToIOModuleScope down casts any arbitrary Object to IOModuleScope.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IOModuleScope.
 */
-func (recv *IOModuleScope) CastToIOModuleScope(object *gobject.Object) *IOModuleScope {
+func CastToIOModuleScope(object *gobject.Object) *IOModuleScope {
 	return IOModuleScopeNewFromNative(object.Native())
 }
 
@@ -7821,7 +7821,7 @@ CastToIOSchedulerJob down casts any arbitrary Object to IOSchedulerJob.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IOSchedulerJob.
 */
-func (recv *IOSchedulerJob) CastToIOSchedulerJob(object *gobject.Object) *IOSchedulerJob {
+func CastToIOSchedulerJob(object *gobject.Object) *IOSchedulerJob {
 	return IOSchedulerJobNewFromNative(object.Native())
 }
 
@@ -7874,7 +7874,7 @@ CastToIOStreamAdapter down casts any arbitrary Object to IOStreamAdapter.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IOStreamAdapter.
 */
-func (recv *IOStreamAdapter) CastToIOStreamAdapter(object *gobject.Object) *IOStreamAdapter {
+func CastToIOStreamAdapter(object *gobject.Object) *IOStreamAdapter {
 	return IOStreamAdapterNewFromNative(object.Native())
 }
 
@@ -7923,7 +7923,7 @@ CastToIOStreamClass down casts any arbitrary Object to IOStreamClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IOStreamClass.
 */
-func (recv *IOStreamClass) CastToIOStreamClass(object *gobject.Object) *IOStreamClass {
+func CastToIOStreamClass(object *gobject.Object) *IOStreamClass {
 	return IOStreamClassNewFromNative(object.Native())
 }
 
@@ -8036,7 +8036,7 @@ CastToIOStreamPrivate down casts any arbitrary Object to IOStreamPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IOStreamPrivate.
 */
-func (recv *IOStreamPrivate) CastToIOStreamPrivate(object *gobject.Object) *IOStreamPrivate {
+func CastToIOStreamPrivate(object *gobject.Object) *IOStreamPrivate {
 	return IOStreamPrivateNewFromNative(object.Native())
 }
 
@@ -8085,7 +8085,7 @@ CastToIconIface down casts any arbitrary Object to IconIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a IconIface.
 */
-func (recv *IconIface) CastToIconIface(object *gobject.Object) *IconIface {
+func CastToIconIface(object *gobject.Object) *IconIface {
 	return IconIfaceNewFromNative(object.Native())
 }
 
@@ -8158,7 +8158,7 @@ CastToInetAddressClass down casts any arbitrary Object to InetAddressClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InetAddressClass.
 */
-func (recv *InetAddressClass) CastToInetAddressClass(object *gobject.Object) *InetAddressClass {
+func CastToInetAddressClass(object *gobject.Object) *InetAddressClass {
 	return InetAddressClassNewFromNative(object.Native())
 }
 
@@ -8219,7 +8219,7 @@ CastToInetAddressMaskClass down casts any arbitrary Object to InetAddressMaskCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InetAddressMaskClass.
 */
-func (recv *InetAddressMaskClass) CastToInetAddressMaskClass(object *gobject.Object) *InetAddressMaskClass {
+func CastToInetAddressMaskClass(object *gobject.Object) *InetAddressMaskClass {
 	return InetAddressMaskClassNewFromNative(object.Native())
 }
 
@@ -8272,7 +8272,7 @@ CastToInetAddressMaskPrivate down casts any arbitrary Object to InetAddressMaskP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InetAddressMaskPrivate.
 */
-func (recv *InetAddressMaskPrivate) CastToInetAddressMaskPrivate(object *gobject.Object) *InetAddressMaskPrivate {
+func CastToInetAddressMaskPrivate(object *gobject.Object) *InetAddressMaskPrivate {
 	return InetAddressMaskPrivateNewFromNative(object.Native())
 }
 
@@ -8321,7 +8321,7 @@ CastToInetAddressPrivate down casts any arbitrary Object to InetAddressPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InetAddressPrivate.
 */
-func (recv *InetAddressPrivate) CastToInetAddressPrivate(object *gobject.Object) *InetAddressPrivate {
+func CastToInetAddressPrivate(object *gobject.Object) *InetAddressPrivate {
 	return InetAddressPrivateNewFromNative(object.Native())
 }
 
@@ -8370,7 +8370,7 @@ CastToInetSocketAddressClass down casts any arbitrary Object to InetSocketAddres
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InetSocketAddressClass.
 */
-func (recv *InetSocketAddressClass) CastToInetSocketAddressClass(object *gobject.Object) *InetSocketAddressClass {
+func CastToInetSocketAddressClass(object *gobject.Object) *InetSocketAddressClass {
 	return InetSocketAddressClassNewFromNative(object.Native())
 }
 
@@ -8433,7 +8433,7 @@ CastToInetSocketAddressPrivate down casts any arbitrary Object to InetSocketAddr
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InetSocketAddressPrivate.
 */
-func (recv *InetSocketAddressPrivate) CastToInetSocketAddressPrivate(object *gobject.Object) *InetSocketAddressPrivate {
+func CastToInetSocketAddressPrivate(object *gobject.Object) *InetSocketAddressPrivate {
 	return InetSocketAddressPrivateNewFromNative(object.Native())
 }
 
@@ -8482,7 +8482,7 @@ CastToInitableIface down casts any arbitrary Object to InitableIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InitableIface.
 */
-func (recv *InitableIface) CastToInitableIface(object *gobject.Object) *InitableIface {
+func CastToInitableIface(object *gobject.Object) *InitableIface {
 	return InitableIfaceNewFromNative(object.Native())
 }
 
@@ -8539,7 +8539,7 @@ CastToInputMessage down casts any arbitrary Object to InputMessage.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InputMessage.
 */
-func (recv *InputMessage) CastToInputMessage(object *gobject.Object) *InputMessage {
+func CastToInputMessage(object *gobject.Object) *InputMessage {
 	return InputMessageNewFromNative(object.Native())
 }
 
@@ -8666,7 +8666,7 @@ CastToInputStreamClass down casts any arbitrary Object to InputStreamClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InputStreamClass.
 */
-func (recv *InputStreamClass) CastToInputStreamClass(object *gobject.Object) *InputStreamClass {
+func CastToInputStreamClass(object *gobject.Object) *InputStreamClass {
 	return InputStreamClassNewFromNative(object.Native())
 }
 
@@ -8775,7 +8775,7 @@ CastToInputStreamPrivate down casts any arbitrary Object to InputStreamPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InputStreamPrivate.
 */
-func (recv *InputStreamPrivate) CastToInputStreamPrivate(object *gobject.Object) *InputStreamPrivate {
+func CastToInputStreamPrivate(object *gobject.Object) *InputStreamPrivate {
 	return InputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -8824,7 +8824,7 @@ CastToInputVector down casts any arbitrary Object to InputVector.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a InputVector.
 */
-func (recv *InputVector) CastToInputVector(object *gobject.Object) *InputVector {
+func CastToInputVector(object *gobject.Object) *InputVector {
 	return InputVectorNewFromNative(object.Native())
 }
 
@@ -8891,7 +8891,7 @@ CastToListModelInterface down casts any arbitrary Object to ListModelInterface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ListModelInterface.
 */
-func (recv *ListModelInterface) CastToListModelInterface(object *gobject.Object) *ListModelInterface {
+func CastToListModelInterface(object *gobject.Object) *ListModelInterface {
 	return ListModelInterfaceNewFromNative(object.Native())
 }
 
@@ -8956,7 +8956,7 @@ CastToListStoreClass down casts any arbitrary Object to ListStoreClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ListStoreClass.
 */
-func (recv *ListStoreClass) CastToListStoreClass(object *gobject.Object) *ListStoreClass {
+func CastToListStoreClass(object *gobject.Object) *ListStoreClass {
 	return ListStoreClassNewFromNative(object.Native())
 }
 
@@ -9009,7 +9009,7 @@ CastToLoadableIconIface down casts any arbitrary Object to LoadableIconIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a LoadableIconIface.
 */
-func (recv *LoadableIconIface) CastToLoadableIconIface(object *gobject.Object) *LoadableIconIface {
+func CastToLoadableIconIface(object *gobject.Object) *LoadableIconIface {
 	return LoadableIconIfaceNewFromNative(object.Native())
 }
 
@@ -9074,7 +9074,7 @@ CastToMemoryInputStreamClass down casts any arbitrary Object to MemoryInputStrea
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MemoryInputStreamClass.
 */
-func (recv *MemoryInputStreamClass) CastToMemoryInputStreamClass(object *gobject.Object) *MemoryInputStreamClass {
+func CastToMemoryInputStreamClass(object *gobject.Object) *MemoryInputStreamClass {
 	return MemoryInputStreamClassNewFromNative(object.Native())
 }
 
@@ -9157,7 +9157,7 @@ CastToMemoryInputStreamPrivate down casts any arbitrary Object to MemoryInputStr
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MemoryInputStreamPrivate.
 */
-func (recv *MemoryInputStreamPrivate) CastToMemoryInputStreamPrivate(object *gobject.Object) *MemoryInputStreamPrivate {
+func CastToMemoryInputStreamPrivate(object *gobject.Object) *MemoryInputStreamPrivate {
 	return MemoryInputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -9206,7 +9206,7 @@ CastToMemoryOutputStreamClass down casts any arbitrary Object to MemoryOutputStr
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MemoryOutputStreamClass.
 */
-func (recv *MemoryOutputStreamClass) CastToMemoryOutputStreamClass(object *gobject.Object) *MemoryOutputStreamClass {
+func CastToMemoryOutputStreamClass(object *gobject.Object) *MemoryOutputStreamClass {
 	return MemoryOutputStreamClassNewFromNative(object.Native())
 }
 
@@ -9289,7 +9289,7 @@ CastToMemoryOutputStreamPrivate down casts any arbitrary Object to MemoryOutputS
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MemoryOutputStreamPrivate.
 */
-func (recv *MemoryOutputStreamPrivate) CastToMemoryOutputStreamPrivate(object *gobject.Object) *MemoryOutputStreamPrivate {
+func CastToMemoryOutputStreamPrivate(object *gobject.Object) *MemoryOutputStreamPrivate {
 	return MemoryOutputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -9338,7 +9338,7 @@ CastToMenuAttributeIterClass down casts any arbitrary Object to MenuAttributeIte
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuAttributeIterClass.
 */
-func (recv *MenuAttributeIterClass) CastToMenuAttributeIterClass(object *gobject.Object) *MenuAttributeIterClass {
+func CastToMenuAttributeIterClass(object *gobject.Object) *MenuAttributeIterClass {
 	return MenuAttributeIterClassNewFromNative(object.Native())
 }
 
@@ -9395,7 +9395,7 @@ CastToMenuAttributeIterPrivate down casts any arbitrary Object to MenuAttributeI
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuAttributeIterPrivate.
 */
-func (recv *MenuAttributeIterPrivate) CastToMenuAttributeIterPrivate(object *gobject.Object) *MenuAttributeIterPrivate {
+func CastToMenuAttributeIterPrivate(object *gobject.Object) *MenuAttributeIterPrivate {
 	return MenuAttributeIterPrivateNewFromNative(object.Native())
 }
 
@@ -9444,7 +9444,7 @@ CastToMenuLinkIterClass down casts any arbitrary Object to MenuLinkIterClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuLinkIterClass.
 */
-func (recv *MenuLinkIterClass) CastToMenuLinkIterClass(object *gobject.Object) *MenuLinkIterClass {
+func CastToMenuLinkIterClass(object *gobject.Object) *MenuLinkIterClass {
 	return MenuLinkIterClassNewFromNative(object.Native())
 }
 
@@ -9501,7 +9501,7 @@ CastToMenuLinkIterPrivate down casts any arbitrary Object to MenuLinkIterPrivate
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuLinkIterPrivate.
 */
-func (recv *MenuLinkIterPrivate) CastToMenuLinkIterPrivate(object *gobject.Object) *MenuLinkIterPrivate {
+func CastToMenuLinkIterPrivate(object *gobject.Object) *MenuLinkIterPrivate {
 	return MenuLinkIterPrivateNewFromNative(object.Native())
 }
 
@@ -9550,7 +9550,7 @@ CastToMenuModelClass down casts any arbitrary Object to MenuModelClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuModelClass.
 */
-func (recv *MenuModelClass) CastToMenuModelClass(object *gobject.Object) *MenuModelClass {
+func CastToMenuModelClass(object *gobject.Object) *MenuModelClass {
 	return MenuModelClassNewFromNative(object.Native())
 }
 
@@ -9635,7 +9635,7 @@ CastToMenuModelPrivate down casts any arbitrary Object to MenuModelPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MenuModelPrivate.
 */
-func (recv *MenuModelPrivate) CastToMenuModelPrivate(object *gobject.Object) *MenuModelPrivate {
+func CastToMenuModelPrivate(object *gobject.Object) *MenuModelPrivate {
 	return MenuModelPrivateNewFromNative(object.Native())
 }
 
@@ -9684,7 +9684,7 @@ CastToMountIface down casts any arbitrary Object to MountIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MountIface.
 */
-func (recv *MountIface) CastToMountIface(object *gobject.Object) *MountIface {
+func CastToMountIface(object *gobject.Object) *MountIface {
 	return MountIfaceNewFromNative(object.Native())
 }
 
@@ -9845,7 +9845,7 @@ CastToMountOperationClass down casts any arbitrary Object to MountOperationClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MountOperationClass.
 */
-func (recv *MountOperationClass) CastToMountOperationClass(object *gobject.Object) *MountOperationClass {
+func CastToMountOperationClass(object *gobject.Object) *MountOperationClass {
 	return MountOperationClassNewFromNative(object.Native())
 }
 
@@ -9958,7 +9958,7 @@ CastToMountOperationPrivate down casts any arbitrary Object to MountOperationPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a MountOperationPrivate.
 */
-func (recv *MountOperationPrivate) CastToMountOperationPrivate(object *gobject.Object) *MountOperationPrivate {
+func CastToMountOperationPrivate(object *gobject.Object) *MountOperationPrivate {
 	return MountOperationPrivateNewFromNative(object.Native())
 }
 
@@ -10007,7 +10007,7 @@ CastToNativeSocketAddressClass down casts any arbitrary Object to NativeSocketAd
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NativeSocketAddressClass.
 */
-func (recv *NativeSocketAddressClass) CastToNativeSocketAddressClass(object *gobject.Object) *NativeSocketAddressClass {
+func CastToNativeSocketAddressClass(object *gobject.Object) *NativeSocketAddressClass {
 	return NativeSocketAddressClassNewFromNative(object.Native())
 }
 
@@ -10070,7 +10070,7 @@ CastToNativeSocketAddressPrivate down casts any arbitrary Object to NativeSocket
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NativeSocketAddressPrivate.
 */
-func (recv *NativeSocketAddressPrivate) CastToNativeSocketAddressPrivate(object *gobject.Object) *NativeSocketAddressPrivate {
+func CastToNativeSocketAddressPrivate(object *gobject.Object) *NativeSocketAddressPrivate {
 	return NativeSocketAddressPrivateNewFromNative(object.Native())
 }
 
@@ -10119,7 +10119,7 @@ CastToNativeVolumeMonitorClass down casts any arbitrary Object to NativeVolumeMo
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NativeVolumeMonitorClass.
 */
-func (recv *NativeVolumeMonitorClass) CastToNativeVolumeMonitorClass(object *gobject.Object) *NativeVolumeMonitorClass {
+func CastToNativeVolumeMonitorClass(object *gobject.Object) *NativeVolumeMonitorClass {
 	return NativeVolumeMonitorClassNewFromNative(object.Native())
 }
 
@@ -10186,7 +10186,7 @@ CastToNetworkAddressClass down casts any arbitrary Object to NetworkAddressClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NetworkAddressClass.
 */
-func (recv *NetworkAddressClass) CastToNetworkAddressClass(object *gobject.Object) *NetworkAddressClass {
+func CastToNetworkAddressClass(object *gobject.Object) *NetworkAddressClass {
 	return NetworkAddressClassNewFromNative(object.Native())
 }
 
@@ -10239,7 +10239,7 @@ CastToNetworkAddressPrivate down casts any arbitrary Object to NetworkAddressPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NetworkAddressPrivate.
 */
-func (recv *NetworkAddressPrivate) CastToNetworkAddressPrivate(object *gobject.Object) *NetworkAddressPrivate {
+func CastToNetworkAddressPrivate(object *gobject.Object) *NetworkAddressPrivate {
 	return NetworkAddressPrivateNewFromNative(object.Native())
 }
 
@@ -10288,7 +10288,7 @@ CastToNetworkMonitorInterface down casts any arbitrary Object to NetworkMonitorI
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NetworkMonitorInterface.
 */
-func (recv *NetworkMonitorInterface) CastToNetworkMonitorInterface(object *gobject.Object) *NetworkMonitorInterface {
+func CastToNetworkMonitorInterface(object *gobject.Object) *NetworkMonitorInterface {
 	return NetworkMonitorInterfaceNewFromNative(object.Native())
 }
 
@@ -10357,7 +10357,7 @@ CastToNetworkServiceClass down casts any arbitrary Object to NetworkServiceClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NetworkServiceClass.
 */
-func (recv *NetworkServiceClass) CastToNetworkServiceClass(object *gobject.Object) *NetworkServiceClass {
+func CastToNetworkServiceClass(object *gobject.Object) *NetworkServiceClass {
 	return NetworkServiceClassNewFromNative(object.Native())
 }
 
@@ -10410,7 +10410,7 @@ CastToNetworkServicePrivate down casts any arbitrary Object to NetworkServicePri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a NetworkServicePrivate.
 */
-func (recv *NetworkServicePrivate) CastToNetworkServicePrivate(object *gobject.Object) *NetworkServicePrivate {
+func CastToNetworkServicePrivate(object *gobject.Object) *NetworkServicePrivate {
 	return NetworkServicePrivateNewFromNative(object.Native())
 }
 
@@ -10459,7 +10459,7 @@ CastToOutputMessage down casts any arbitrary Object to OutputMessage.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a OutputMessage.
 */
-func (recv *OutputMessage) CastToOutputMessage(object *gobject.Object) *OutputMessage {
+func CastToOutputMessage(object *gobject.Object) *OutputMessage {
 	return OutputMessageNewFromNative(object.Native())
 }
 
@@ -10582,7 +10582,7 @@ CastToOutputStreamClass down casts any arbitrary Object to OutputStreamClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a OutputStreamClass.
 */
-func (recv *OutputStreamClass) CastToOutputStreamClass(object *gobject.Object) *OutputStreamClass {
+func CastToOutputStreamClass(object *gobject.Object) *OutputStreamClass {
 	return OutputStreamClassNewFromNative(object.Native())
 }
 
@@ -10715,7 +10715,7 @@ CastToOutputStreamPrivate down casts any arbitrary Object to OutputStreamPrivate
 Exercise care, as this is a potentially dangerous function
 if the Object is not a OutputStreamPrivate.
 */
-func (recv *OutputStreamPrivate) CastToOutputStreamPrivate(object *gobject.Object) *OutputStreamPrivate {
+func CastToOutputStreamPrivate(object *gobject.Object) *OutputStreamPrivate {
 	return OutputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -10764,7 +10764,7 @@ CastToOutputVector down casts any arbitrary Object to OutputVector.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a OutputVector.
 */
-func (recv *OutputVector) CastToOutputVector(object *gobject.Object) *OutputVector {
+func CastToOutputVector(object *gobject.Object) *OutputVector {
 	return OutputVectorNewFromNative(object.Native())
 }
 
@@ -10831,7 +10831,7 @@ CastToPermissionClass down casts any arbitrary Object to PermissionClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PermissionClass.
 */
-func (recv *PermissionClass) CastToPermissionClass(object *gobject.Object) *PermissionClass {
+func CastToPermissionClass(object *gobject.Object) *PermissionClass {
 	return PermissionClassNewFromNative(object.Native())
 }
 
@@ -10912,7 +10912,7 @@ CastToPermissionPrivate down casts any arbitrary Object to PermissionPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PermissionPrivate.
 */
-func (recv *PermissionPrivate) CastToPermissionPrivate(object *gobject.Object) *PermissionPrivate {
+func CastToPermissionPrivate(object *gobject.Object) *PermissionPrivate {
 	return PermissionPrivateNewFromNative(object.Native())
 }
 
@@ -10961,7 +10961,7 @@ CastToPollableInputStreamInterface down casts any arbitrary Object to PollableIn
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PollableInputStreamInterface.
 */
-func (recv *PollableInputStreamInterface) CastToPollableInputStreamInterface(object *gobject.Object) *PollableInputStreamInterface {
+func CastToPollableInputStreamInterface(object *gobject.Object) *PollableInputStreamInterface {
 	return PollableInputStreamInterfaceNewFromNative(object.Native())
 }
 
@@ -11030,7 +11030,7 @@ CastToPollableOutputStreamInterface down casts any arbitrary Object to PollableO
 Exercise care, as this is a potentially dangerous function
 if the Object is not a PollableOutputStreamInterface.
 */
-func (recv *PollableOutputStreamInterface) CastToPollableOutputStreamInterface(object *gobject.Object) *PollableOutputStreamInterface {
+func CastToPollableOutputStreamInterface(object *gobject.Object) *PollableOutputStreamInterface {
 	return PollableOutputStreamInterfaceNewFromNative(object.Native())
 }
 
@@ -11103,7 +11103,7 @@ CastToProxyAddressClass down casts any arbitrary Object to ProxyAddressClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ProxyAddressClass.
 */
-func (recv *ProxyAddressClass) CastToProxyAddressClass(object *gobject.Object) *ProxyAddressClass {
+func CastToProxyAddressClass(object *gobject.Object) *ProxyAddressClass {
 	return ProxyAddressClassNewFromNative(object.Native())
 }
 
@@ -11166,7 +11166,7 @@ CastToProxyAddressEnumeratorClass down casts any arbitrary Object to ProxyAddres
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ProxyAddressEnumeratorClass.
 */
-func (recv *ProxyAddressEnumeratorClass) CastToProxyAddressEnumeratorClass(object *gobject.Object) *ProxyAddressEnumeratorClass {
+func CastToProxyAddressEnumeratorClass(object *gobject.Object) *ProxyAddressEnumeratorClass {
 	return ProxyAddressEnumeratorClassNewFromNative(object.Native())
 }
 
@@ -11243,7 +11243,7 @@ CastToProxyAddressEnumeratorPrivate down casts any arbitrary Object to ProxyAddr
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ProxyAddressEnumeratorPrivate.
 */
-func (recv *ProxyAddressEnumeratorPrivate) CastToProxyAddressEnumeratorPrivate(object *gobject.Object) *ProxyAddressEnumeratorPrivate {
+func CastToProxyAddressEnumeratorPrivate(object *gobject.Object) *ProxyAddressEnumeratorPrivate {
 	return ProxyAddressEnumeratorPrivateNewFromNative(object.Native())
 }
 
@@ -11292,7 +11292,7 @@ CastToProxyAddressPrivate down casts any arbitrary Object to ProxyAddressPrivate
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ProxyAddressPrivate.
 */
-func (recv *ProxyAddressPrivate) CastToProxyAddressPrivate(object *gobject.Object) *ProxyAddressPrivate {
+func CastToProxyAddressPrivate(object *gobject.Object) *ProxyAddressPrivate {
 	return ProxyAddressPrivateNewFromNative(object.Native())
 }
 
@@ -11341,7 +11341,7 @@ CastToProxyInterface down casts any arbitrary Object to ProxyInterface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ProxyInterface.
 */
-func (recv *ProxyInterface) CastToProxyInterface(object *gobject.Object) *ProxyInterface {
+func CastToProxyInterface(object *gobject.Object) *ProxyInterface {
 	return ProxyInterfaceNewFromNative(object.Native())
 }
 
@@ -11410,7 +11410,7 @@ CastToProxyResolverInterface down casts any arbitrary Object to ProxyResolverInt
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ProxyResolverInterface.
 */
-func (recv *ProxyResolverInterface) CastToProxyResolverInterface(object *gobject.Object) *ProxyResolverInterface {
+func CastToProxyResolverInterface(object *gobject.Object) *ProxyResolverInterface {
 	return ProxyResolverInterfaceNewFromNative(object.Native())
 }
 
@@ -11479,7 +11479,7 @@ CastToRemoteActionGroupInterface down casts any arbitrary Object to RemoteAction
 Exercise care, as this is a potentially dangerous function
 if the Object is not a RemoteActionGroupInterface.
 */
-func (recv *RemoteActionGroupInterface) CastToRemoteActionGroupInterface(object *gobject.Object) *RemoteActionGroupInterface {
+func CastToRemoteActionGroupInterface(object *gobject.Object) *RemoteActionGroupInterface {
 	return RemoteActionGroupInterfaceNewFromNative(object.Native())
 }
 
@@ -11540,7 +11540,7 @@ CastToResolverClass down casts any arbitrary Object to ResolverClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ResolverClass.
 */
-func (recv *ResolverClass) CastToResolverClass(object *gobject.Object) *ResolverClass {
+func CastToResolverClass(object *gobject.Object) *ResolverClass {
 	return ResolverClassNewFromNative(object.Native())
 }
 
@@ -11657,7 +11657,7 @@ CastToResolverPrivate down casts any arbitrary Object to ResolverPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ResolverPrivate.
 */
-func (recv *ResolverPrivate) CastToResolverPrivate(object *gobject.Object) *ResolverPrivate {
+func CastToResolverPrivate(object *gobject.Object) *ResolverPrivate {
 	return ResolverPrivateNewFromNative(object.Native())
 }
 
@@ -11706,7 +11706,7 @@ CastToResource down casts any arbitrary Object to Resource.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a Resource.
 */
-func (recv *Resource) CastToResource(object *gobject.Object) *Resource {
+func CastToResource(object *gobject.Object) *Resource {
 	return ResourceNewFromNative(object.Native())
 }
 
@@ -11866,7 +11866,7 @@ CastToSeekableIface down casts any arbitrary Object to SeekableIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SeekableIface.
 */
-func (recv *SeekableIface) CastToSeekableIface(object *gobject.Object) *SeekableIface {
+func CastToSeekableIface(object *gobject.Object) *SeekableIface {
 	return SeekableIfaceNewFromNative(object.Native())
 }
 
@@ -11939,7 +11939,7 @@ CastToSettingsBackendClass down casts any arbitrary Object to SettingsBackendCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SettingsBackendClass.
 */
-func (recv *SettingsBackendClass) CastToSettingsBackendClass(object *gobject.Object) *SettingsBackendClass {
+func CastToSettingsBackendClass(object *gobject.Object) *SettingsBackendClass {
 	return SettingsBackendClassNewFromNative(object.Native())
 }
 
@@ -12032,7 +12032,7 @@ CastToSettingsBackendPrivate down casts any arbitrary Object to SettingsBackendP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SettingsBackendPrivate.
 */
-func (recv *SettingsBackendPrivate) CastToSettingsBackendPrivate(object *gobject.Object) *SettingsBackendPrivate {
+func CastToSettingsBackendPrivate(object *gobject.Object) *SettingsBackendPrivate {
 	return SettingsBackendPrivateNewFromNative(object.Native())
 }
 
@@ -12081,7 +12081,7 @@ CastToSettingsClass down casts any arbitrary Object to SettingsClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SettingsClass.
 */
-func (recv *SettingsClass) CastToSettingsClass(object *gobject.Object) *SettingsClass {
+func CastToSettingsClass(object *gobject.Object) *SettingsClass {
 	return SettingsClassNewFromNative(object.Native())
 }
 
@@ -12154,7 +12154,7 @@ CastToSettingsPrivate down casts any arbitrary Object to SettingsPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SettingsPrivate.
 */
-func (recv *SettingsPrivate) CastToSettingsPrivate(object *gobject.Object) *SettingsPrivate {
+func CastToSettingsPrivate(object *gobject.Object) *SettingsPrivate {
 	return SettingsPrivateNewFromNative(object.Native())
 }
 
@@ -12203,7 +12203,7 @@ CastToSettingsSchema down casts any arbitrary Object to SettingsSchema.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SettingsSchema.
 */
-func (recv *SettingsSchema) CastToSettingsSchema(object *gobject.Object) *SettingsSchema {
+func CastToSettingsSchema(object *gobject.Object) *SettingsSchema {
 	return SettingsSchemaNewFromNative(object.Native())
 }
 
@@ -12498,7 +12498,7 @@ CastToSettingsSchemaKey down casts any arbitrary Object to SettingsSchemaKey.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SettingsSchemaKey.
 */
-func (recv *SettingsSchemaKey) CastToSettingsSchemaKey(object *gobject.Object) *SettingsSchemaKey {
+func CastToSettingsSchemaKey(object *gobject.Object) *SettingsSchemaKey {
 	return SettingsSchemaKeyNewFromNative(object.Native())
 }
 
@@ -12711,7 +12711,7 @@ CastToSettingsSchemaSource down casts any arbitrary Object to SettingsSchemaSour
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SettingsSchemaSource.
 */
-func (recv *SettingsSchemaSource) CastToSettingsSchemaSource(object *gobject.Object) *SettingsSchemaSource {
+func CastToSettingsSchemaSource(object *gobject.Object) *SettingsSchemaSource {
 	return SettingsSchemaSourceNewFromNative(object.Native())
 }
 
@@ -12875,7 +12875,7 @@ CastToSimpleActionGroupClass down casts any arbitrary Object to SimpleActionGrou
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SimpleActionGroupClass.
 */
-func (recv *SimpleActionGroupClass) CastToSimpleActionGroupClass(object *gobject.Object) *SimpleActionGroupClass {
+func CastToSimpleActionGroupClass(object *gobject.Object) *SimpleActionGroupClass {
 	return SimpleActionGroupClassNewFromNative(object.Native())
 }
 
@@ -12924,7 +12924,7 @@ CastToSimpleActionGroupPrivate down casts any arbitrary Object to SimpleActionGr
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SimpleActionGroupPrivate.
 */
-func (recv *SimpleActionGroupPrivate) CastToSimpleActionGroupPrivate(object *gobject.Object) *SimpleActionGroupPrivate {
+func CastToSimpleActionGroupPrivate(object *gobject.Object) *SimpleActionGroupPrivate {
 	return SimpleActionGroupPrivateNewFromNative(object.Native())
 }
 
@@ -12973,7 +12973,7 @@ CastToSimpleAsyncResultClass down casts any arbitrary Object to SimpleAsyncResul
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SimpleAsyncResultClass.
 */
-func (recv *SimpleAsyncResultClass) CastToSimpleAsyncResultClass(object *gobject.Object) *SimpleAsyncResultClass {
+func CastToSimpleAsyncResultClass(object *gobject.Object) *SimpleAsyncResultClass {
 	return SimpleAsyncResultClassNewFromNative(object.Native())
 }
 
@@ -13022,7 +13022,7 @@ CastToSimpleProxyResolverClass down casts any arbitrary Object to SimpleProxyRes
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SimpleProxyResolverClass.
 */
-func (recv *SimpleProxyResolverClass) CastToSimpleProxyResolverClass(object *gobject.Object) *SimpleProxyResolverClass {
+func CastToSimpleProxyResolverClass(object *gobject.Object) *SimpleProxyResolverClass {
 	return SimpleProxyResolverClassNewFromNative(object.Native())
 }
 
@@ -13095,7 +13095,7 @@ CastToSimpleProxyResolverPrivate down casts any arbitrary Object to SimpleProxyR
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SimpleProxyResolverPrivate.
 */
-func (recv *SimpleProxyResolverPrivate) CastToSimpleProxyResolverPrivate(object *gobject.Object) *SimpleProxyResolverPrivate {
+func CastToSimpleProxyResolverPrivate(object *gobject.Object) *SimpleProxyResolverPrivate {
 	return SimpleProxyResolverPrivateNewFromNative(object.Native())
 }
 
@@ -13144,7 +13144,7 @@ CastToSocketAddressClass down casts any arbitrary Object to SocketAddressClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketAddressClass.
 */
-func (recv *SocketAddressClass) CastToSocketAddressClass(object *gobject.Object) *SocketAddressClass {
+func CastToSocketAddressClass(object *gobject.Object) *SocketAddressClass {
 	return SocketAddressClassNewFromNative(object.Native())
 }
 
@@ -13209,7 +13209,7 @@ CastToSocketAddressEnumeratorClass down casts any arbitrary Object to SocketAddr
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketAddressEnumeratorClass.
 */
-func (recv *SocketAddressEnumeratorClass) CastToSocketAddressEnumeratorClass(object *gobject.Object) *SocketAddressEnumeratorClass {
+func CastToSocketAddressEnumeratorClass(object *gobject.Object) *SocketAddressEnumeratorClass {
 	return SocketAddressEnumeratorClassNewFromNative(object.Native())
 }
 
@@ -13270,7 +13270,7 @@ CastToSocketClass down casts any arbitrary Object to SocketClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketClass.
 */
-func (recv *SocketClass) CastToSocketClass(object *gobject.Object) *SocketClass {
+func CastToSocketClass(object *gobject.Object) *SocketClass {
 	return SocketClassNewFromNative(object.Native())
 }
 
@@ -13363,7 +13363,7 @@ CastToSocketClientClass down casts any arbitrary Object to SocketClientClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketClientClass.
 */
-func (recv *SocketClientClass) CastToSocketClientClass(object *gobject.Object) *SocketClientClass {
+func CastToSocketClientClass(object *gobject.Object) *SocketClientClass {
 	return SocketClientClassNewFromNative(object.Native())
 }
 
@@ -13436,7 +13436,7 @@ CastToSocketClientPrivate down casts any arbitrary Object to SocketClientPrivate
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketClientPrivate.
 */
-func (recv *SocketClientPrivate) CastToSocketClientPrivate(object *gobject.Object) *SocketClientPrivate {
+func CastToSocketClientPrivate(object *gobject.Object) *SocketClientPrivate {
 	return SocketClientPrivateNewFromNative(object.Native())
 }
 
@@ -13485,7 +13485,7 @@ CastToSocketConnectableIface down casts any arbitrary Object to SocketConnectabl
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketConnectableIface.
 */
-func (recv *SocketConnectableIface) CastToSocketConnectableIface(object *gobject.Object) *SocketConnectableIface {
+func CastToSocketConnectableIface(object *gobject.Object) *SocketConnectableIface {
 	return SocketConnectableIfaceNewFromNative(object.Native())
 }
 
@@ -13550,7 +13550,7 @@ CastToSocketConnectionClass down casts any arbitrary Object to SocketConnectionC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketConnectionClass.
 */
-func (recv *SocketConnectionClass) CastToSocketConnectionClass(object *gobject.Object) *SocketConnectionClass {
+func CastToSocketConnectionClass(object *gobject.Object) *SocketConnectionClass {
 	return SocketConnectionClassNewFromNative(object.Native())
 }
 
@@ -13637,7 +13637,7 @@ CastToSocketConnectionPrivate down casts any arbitrary Object to SocketConnectio
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketConnectionPrivate.
 */
-func (recv *SocketConnectionPrivate) CastToSocketConnectionPrivate(object *gobject.Object) *SocketConnectionPrivate {
+func CastToSocketConnectionPrivate(object *gobject.Object) *SocketConnectionPrivate {
 	return SocketConnectionPrivateNewFromNative(object.Native())
 }
 
@@ -13686,7 +13686,7 @@ CastToSocketControlMessageClass down casts any arbitrary Object to SocketControl
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketControlMessageClass.
 */
-func (recv *SocketControlMessageClass) CastToSocketControlMessageClass(object *gobject.Object) *SocketControlMessageClass {
+func CastToSocketControlMessageClass(object *gobject.Object) *SocketControlMessageClass {
 	return SocketControlMessageClassNewFromNative(object.Native())
 }
 
@@ -13779,7 +13779,7 @@ CastToSocketControlMessagePrivate down casts any arbitrary Object to SocketContr
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketControlMessagePrivate.
 */
-func (recv *SocketControlMessagePrivate) CastToSocketControlMessagePrivate(object *gobject.Object) *SocketControlMessagePrivate {
+func CastToSocketControlMessagePrivate(object *gobject.Object) *SocketControlMessagePrivate {
 	return SocketControlMessagePrivateNewFromNative(object.Native())
 }
 
@@ -13828,7 +13828,7 @@ CastToSocketListenerClass down casts any arbitrary Object to SocketListenerClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketListenerClass.
 */
-func (recv *SocketListenerClass) CastToSocketListenerClass(object *gobject.Object) *SocketListenerClass {
+func CastToSocketListenerClass(object *gobject.Object) *SocketListenerClass {
 	return SocketListenerClassNewFromNative(object.Native())
 }
 
@@ -13909,7 +13909,7 @@ CastToSocketListenerPrivate down casts any arbitrary Object to SocketListenerPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketListenerPrivate.
 */
-func (recv *SocketListenerPrivate) CastToSocketListenerPrivate(object *gobject.Object) *SocketListenerPrivate {
+func CastToSocketListenerPrivate(object *gobject.Object) *SocketListenerPrivate {
 	return SocketListenerPrivateNewFromNative(object.Native())
 }
 
@@ -13958,7 +13958,7 @@ CastToSocketPrivate down casts any arbitrary Object to SocketPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketPrivate.
 */
-func (recv *SocketPrivate) CastToSocketPrivate(object *gobject.Object) *SocketPrivate {
+func CastToSocketPrivate(object *gobject.Object) *SocketPrivate {
 	return SocketPrivateNewFromNative(object.Native())
 }
 
@@ -14007,7 +14007,7 @@ CastToSocketServiceClass down casts any arbitrary Object to SocketServiceClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketServiceClass.
 */
-func (recv *SocketServiceClass) CastToSocketServiceClass(object *gobject.Object) *SocketServiceClass {
+func CastToSocketServiceClass(object *gobject.Object) *SocketServiceClass {
 	return SocketServiceClassNewFromNative(object.Native())
 }
 
@@ -14098,7 +14098,7 @@ CastToSocketServicePrivate down casts any arbitrary Object to SocketServicePriva
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SocketServicePrivate.
 */
-func (recv *SocketServicePrivate) CastToSocketServicePrivate(object *gobject.Object) *SocketServicePrivate {
+func CastToSocketServicePrivate(object *gobject.Object) *SocketServicePrivate {
 	return SocketServicePrivateNewFromNative(object.Native())
 }
 
@@ -14147,7 +14147,7 @@ CastToSrvTarget down casts any arbitrary Object to SrvTarget.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a SrvTarget.
 */
-func (recv *SrvTarget) CastToSrvTarget(object *gobject.Object) *SrvTarget {
+func CastToSrvTarget(object *gobject.Object) *SrvTarget {
 	return SrvTargetNewFromNative(object.Native())
 }
 
@@ -14404,7 +14404,7 @@ CastToStaticResource down casts any arbitrary Object to StaticResource.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a StaticResource.
 */
-func (recv *StaticResource) CastToStaticResource(object *gobject.Object) *StaticResource {
+func CastToStaticResource(object *gobject.Object) *StaticResource {
 	return StaticResourceNewFromNative(object.Native())
 }
 
@@ -14541,7 +14541,7 @@ CastToTaskClass down casts any arbitrary Object to TaskClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TaskClass.
 */
-func (recv *TaskClass) CastToTaskClass(object *gobject.Object) *TaskClass {
+func CastToTaskClass(object *gobject.Object) *TaskClass {
 	return TaskClassNewFromNative(object.Native())
 }
 
@@ -14590,7 +14590,7 @@ CastToTcpConnectionClass down casts any arbitrary Object to TcpConnectionClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TcpConnectionClass.
 */
-func (recv *TcpConnectionClass) CastToTcpConnectionClass(object *gobject.Object) *TcpConnectionClass {
+func CastToTcpConnectionClass(object *gobject.Object) *TcpConnectionClass {
 	return TcpConnectionClassNewFromNative(object.Native())
 }
 
@@ -14653,7 +14653,7 @@ CastToTcpConnectionPrivate down casts any arbitrary Object to TcpConnectionPriva
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TcpConnectionPrivate.
 */
-func (recv *TcpConnectionPrivate) CastToTcpConnectionPrivate(object *gobject.Object) *TcpConnectionPrivate {
+func CastToTcpConnectionPrivate(object *gobject.Object) *TcpConnectionPrivate {
 	return TcpConnectionPrivateNewFromNative(object.Native())
 }
 
@@ -14702,7 +14702,7 @@ CastToTcpWrapperConnectionClass down casts any arbitrary Object to TcpWrapperCon
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TcpWrapperConnectionClass.
 */
-func (recv *TcpWrapperConnectionClass) CastToTcpWrapperConnectionClass(object *gobject.Object) *TcpWrapperConnectionClass {
+func CastToTcpWrapperConnectionClass(object *gobject.Object) *TcpWrapperConnectionClass {
 	return TcpWrapperConnectionClassNewFromNative(object.Native())
 }
 
@@ -14765,7 +14765,7 @@ CastToTcpWrapperConnectionPrivate down casts any arbitrary Object to TcpWrapperC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TcpWrapperConnectionPrivate.
 */
-func (recv *TcpWrapperConnectionPrivate) CastToTcpWrapperConnectionPrivate(object *gobject.Object) *TcpWrapperConnectionPrivate {
+func CastToTcpWrapperConnectionPrivate(object *gobject.Object) *TcpWrapperConnectionPrivate {
 	return TcpWrapperConnectionPrivateNewFromNative(object.Native())
 }
 
@@ -14814,7 +14814,7 @@ CastToThemedIconClass down casts any arbitrary Object to ThemedIconClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ThemedIconClass.
 */
-func (recv *ThemedIconClass) CastToThemedIconClass(object *gobject.Object) *ThemedIconClass {
+func CastToThemedIconClass(object *gobject.Object) *ThemedIconClass {
 	return ThemedIconClassNewFromNative(object.Native())
 }
 
@@ -14863,7 +14863,7 @@ CastToThreadedSocketServiceClass down casts any arbitrary Object to ThreadedSock
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ThreadedSocketServiceClass.
 */
-func (recv *ThreadedSocketServiceClass) CastToThreadedSocketServiceClass(object *gobject.Object) *ThreadedSocketServiceClass {
+func CastToThreadedSocketServiceClass(object *gobject.Object) *ThreadedSocketServiceClass {
 	return ThreadedSocketServiceClassNewFromNative(object.Native())
 }
 
@@ -14950,7 +14950,7 @@ CastToThreadedSocketServicePrivate down casts any arbitrary Object to ThreadedSo
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ThreadedSocketServicePrivate.
 */
-func (recv *ThreadedSocketServicePrivate) CastToThreadedSocketServicePrivate(object *gobject.Object) *ThreadedSocketServicePrivate {
+func CastToThreadedSocketServicePrivate(object *gobject.Object) *ThreadedSocketServicePrivate {
 	return ThreadedSocketServicePrivateNewFromNative(object.Native())
 }
 
@@ -14999,7 +14999,7 @@ CastToTlsBackendInterface down casts any arbitrary Object to TlsBackendInterface
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsBackendInterface.
 */
-func (recv *TlsBackendInterface) CastToTlsBackendInterface(object *gobject.Object) *TlsBackendInterface {
+func CastToTlsBackendInterface(object *gobject.Object) *TlsBackendInterface {
 	return TlsBackendInterfaceNewFromNative(object.Native())
 }
 
@@ -15088,7 +15088,7 @@ CastToTlsCertificateClass down casts any arbitrary Object to TlsCertificateClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsCertificateClass.
 */
-func (recv *TlsCertificateClass) CastToTlsCertificateClass(object *gobject.Object) *TlsCertificateClass {
+func CastToTlsCertificateClass(object *gobject.Object) *TlsCertificateClass {
 	return TlsCertificateClassNewFromNative(object.Native())
 }
 
@@ -15145,7 +15145,7 @@ CastToTlsCertificatePrivate down casts any arbitrary Object to TlsCertificatePri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsCertificatePrivate.
 */
-func (recv *TlsCertificatePrivate) CastToTlsCertificatePrivate(object *gobject.Object) *TlsCertificatePrivate {
+func CastToTlsCertificatePrivate(object *gobject.Object) *TlsCertificatePrivate {
 	return TlsCertificatePrivateNewFromNative(object.Native())
 }
 
@@ -15194,7 +15194,7 @@ CastToTlsClientConnectionInterface down casts any arbitrary Object to TlsClientC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsClientConnectionInterface.
 */
-func (recv *TlsClientConnectionInterface) CastToTlsClientConnectionInterface(object *gobject.Object) *TlsClientConnectionInterface {
+func CastToTlsClientConnectionInterface(object *gobject.Object) *TlsClientConnectionInterface {
 	return TlsClientConnectionInterfaceNewFromNative(object.Native())
 }
 
@@ -15251,7 +15251,7 @@ CastToTlsConnectionClass down casts any arbitrary Object to TlsConnectionClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsConnectionClass.
 */
-func (recv *TlsConnectionClass) CastToTlsConnectionClass(object *gobject.Object) *TlsConnectionClass {
+func CastToTlsConnectionClass(object *gobject.Object) *TlsConnectionClass {
 	return TlsConnectionClassNewFromNative(object.Native())
 }
 
@@ -15330,7 +15330,7 @@ CastToTlsConnectionPrivate down casts any arbitrary Object to TlsConnectionPriva
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsConnectionPrivate.
 */
-func (recv *TlsConnectionPrivate) CastToTlsConnectionPrivate(object *gobject.Object) *TlsConnectionPrivate {
+func CastToTlsConnectionPrivate(object *gobject.Object) *TlsConnectionPrivate {
 	return TlsConnectionPrivateNewFromNative(object.Native())
 }
 
@@ -15379,7 +15379,7 @@ CastToTlsDatabaseClass down casts any arbitrary Object to TlsDatabaseClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsDatabaseClass.
 */
-func (recv *TlsDatabaseClass) CastToTlsDatabaseClass(object *gobject.Object) *TlsDatabaseClass {
+func CastToTlsDatabaseClass(object *gobject.Object) *TlsDatabaseClass {
 	return TlsDatabaseClassNewFromNative(object.Native())
 }
 
@@ -15484,7 +15484,7 @@ CastToTlsDatabasePrivate down casts any arbitrary Object to TlsDatabasePrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsDatabasePrivate.
 */
-func (recv *TlsDatabasePrivate) CastToTlsDatabasePrivate(object *gobject.Object) *TlsDatabasePrivate {
+func CastToTlsDatabasePrivate(object *gobject.Object) *TlsDatabasePrivate {
 	return TlsDatabasePrivateNewFromNative(object.Native())
 }
 
@@ -15533,7 +15533,7 @@ CastToTlsFileDatabaseInterface down casts any arbitrary Object to TlsFileDatabas
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsFileDatabaseInterface.
 */
-func (recv *TlsFileDatabaseInterface) CastToTlsFileDatabaseInterface(object *gobject.Object) *TlsFileDatabaseInterface {
+func CastToTlsFileDatabaseInterface(object *gobject.Object) *TlsFileDatabaseInterface {
 	return TlsFileDatabaseInterfaceNewFromNative(object.Native())
 }
 
@@ -15586,7 +15586,7 @@ CastToTlsInteractionClass down casts any arbitrary Object to TlsInteractionClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsInteractionClass.
 */
-func (recv *TlsInteractionClass) CastToTlsInteractionClass(object *gobject.Object) *TlsInteractionClass {
+func CastToTlsInteractionClass(object *gobject.Object) *TlsInteractionClass {
 	return TlsInteractionClassNewFromNative(object.Native())
 }
 
@@ -15659,7 +15659,7 @@ CastToTlsInteractionPrivate down casts any arbitrary Object to TlsInteractionPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsInteractionPrivate.
 */
-func (recv *TlsInteractionPrivate) CastToTlsInteractionPrivate(object *gobject.Object) *TlsInteractionPrivate {
+func CastToTlsInteractionPrivate(object *gobject.Object) *TlsInteractionPrivate {
 	return TlsInteractionPrivateNewFromNative(object.Native())
 }
 
@@ -15708,7 +15708,7 @@ CastToTlsPasswordClass down casts any arbitrary Object to TlsPasswordClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsPasswordClass.
 */
-func (recv *TlsPasswordClass) CastToTlsPasswordClass(object *gobject.Object) *TlsPasswordClass {
+func CastToTlsPasswordClass(object *gobject.Object) *TlsPasswordClass {
 	return TlsPasswordClassNewFromNative(object.Native())
 }
 
@@ -15773,7 +15773,7 @@ CastToTlsPasswordPrivate down casts any arbitrary Object to TlsPasswordPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsPasswordPrivate.
 */
-func (recv *TlsPasswordPrivate) CastToTlsPasswordPrivate(object *gobject.Object) *TlsPasswordPrivate {
+func CastToTlsPasswordPrivate(object *gobject.Object) *TlsPasswordPrivate {
 	return TlsPasswordPrivateNewFromNative(object.Native())
 }
 
@@ -15822,7 +15822,7 @@ CastToTlsServerConnectionInterface down casts any arbitrary Object to TlsServerC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a TlsServerConnectionInterface.
 */
-func (recv *TlsServerConnectionInterface) CastToTlsServerConnectionInterface(object *gobject.Object) *TlsServerConnectionInterface {
+func CastToTlsServerConnectionInterface(object *gobject.Object) *TlsServerConnectionInterface {
 	return TlsServerConnectionInterfaceNewFromNative(object.Native())
 }
 
@@ -15875,7 +15875,7 @@ CastToUnixConnectionClass down casts any arbitrary Object to UnixConnectionClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixConnectionClass.
 */
-func (recv *UnixConnectionClass) CastToUnixConnectionClass(object *gobject.Object) *UnixConnectionClass {
+func CastToUnixConnectionClass(object *gobject.Object) *UnixConnectionClass {
 	return UnixConnectionClassNewFromNative(object.Native())
 }
 
@@ -15938,7 +15938,7 @@ CastToUnixConnectionPrivate down casts any arbitrary Object to UnixConnectionPri
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixConnectionPrivate.
 */
-func (recv *UnixConnectionPrivate) CastToUnixConnectionPrivate(object *gobject.Object) *UnixConnectionPrivate {
+func CastToUnixConnectionPrivate(object *gobject.Object) *UnixConnectionPrivate {
 	return UnixConnectionPrivateNewFromNative(object.Native())
 }
 
@@ -15987,7 +15987,7 @@ CastToUnixCredentialsMessageClass down casts any arbitrary Object to UnixCredent
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixCredentialsMessageClass.
 */
-func (recv *UnixCredentialsMessageClass) CastToUnixCredentialsMessageClass(object *gobject.Object) *UnixCredentialsMessageClass {
+func CastToUnixCredentialsMessageClass(object *gobject.Object) *UnixCredentialsMessageClass {
 	return UnixCredentialsMessageClassNewFromNative(object.Native())
 }
 
@@ -16058,7 +16058,7 @@ CastToUnixCredentialsMessagePrivate down casts any arbitrary Object to UnixCrede
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixCredentialsMessagePrivate.
 */
-func (recv *UnixCredentialsMessagePrivate) CastToUnixCredentialsMessagePrivate(object *gobject.Object) *UnixCredentialsMessagePrivate {
+func CastToUnixCredentialsMessagePrivate(object *gobject.Object) *UnixCredentialsMessagePrivate {
 	return UnixCredentialsMessagePrivateNewFromNative(object.Native())
 }
 
@@ -16107,7 +16107,7 @@ CastToUnixFDListClass down casts any arbitrary Object to UnixFDListClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixFDListClass.
 */
-func (recv *UnixFDListClass) CastToUnixFDListClass(object *gobject.Object) *UnixFDListClass {
+func CastToUnixFDListClass(object *gobject.Object) *UnixFDListClass {
 	return UnixFDListClassNewFromNative(object.Native())
 }
 
@@ -16180,7 +16180,7 @@ CastToUnixFDListPrivate down casts any arbitrary Object to UnixFDListPrivate.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixFDListPrivate.
 */
-func (recv *UnixFDListPrivate) CastToUnixFDListPrivate(object *gobject.Object) *UnixFDListPrivate {
+func CastToUnixFDListPrivate(object *gobject.Object) *UnixFDListPrivate {
 	return UnixFDListPrivateNewFromNative(object.Native())
 }
 
@@ -16229,7 +16229,7 @@ CastToUnixFDMessageClass down casts any arbitrary Object to UnixFDMessageClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixFDMessageClass.
 */
-func (recv *UnixFDMessageClass) CastToUnixFDMessageClass(object *gobject.Object) *UnixFDMessageClass {
+func CastToUnixFDMessageClass(object *gobject.Object) *UnixFDMessageClass {
 	return UnixFDMessageClassNewFromNative(object.Native())
 }
 
@@ -16300,7 +16300,7 @@ CastToUnixFDMessagePrivate down casts any arbitrary Object to UnixFDMessagePriva
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixFDMessagePrivate.
 */
-func (recv *UnixFDMessagePrivate) CastToUnixFDMessagePrivate(object *gobject.Object) *UnixFDMessagePrivate {
+func CastToUnixFDMessagePrivate(object *gobject.Object) *UnixFDMessagePrivate {
 	return UnixFDMessagePrivateNewFromNative(object.Native())
 }
 
@@ -16349,7 +16349,7 @@ CastToUnixInputStreamClass down casts any arbitrary Object to UnixInputStreamCla
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixInputStreamClass.
 */
-func (recv *UnixInputStreamClass) CastToUnixInputStreamClass(object *gobject.Object) *UnixInputStreamClass {
+func CastToUnixInputStreamClass(object *gobject.Object) *UnixInputStreamClass {
 	return UnixInputStreamClassNewFromNative(object.Native())
 }
 
@@ -16432,7 +16432,7 @@ CastToUnixInputStreamPrivate down casts any arbitrary Object to UnixInputStreamP
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixInputStreamPrivate.
 */
-func (recv *UnixInputStreamPrivate) CastToUnixInputStreamPrivate(object *gobject.Object) *UnixInputStreamPrivate {
+func CastToUnixInputStreamPrivate(object *gobject.Object) *UnixInputStreamPrivate {
 	return UnixInputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -16481,7 +16481,7 @@ CastToUnixMountEntry down casts any arbitrary Object to UnixMountEntry.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixMountEntry.
 */
-func (recv *UnixMountEntry) CastToUnixMountEntry(object *gobject.Object) *UnixMountEntry {
+func CastToUnixMountEntry(object *gobject.Object) *UnixMountEntry {
 	return UnixMountEntryNewFromNative(object.Native())
 }
 
@@ -16530,7 +16530,7 @@ CastToUnixMountMonitorClass down casts any arbitrary Object to UnixMountMonitorC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixMountMonitorClass.
 */
-func (recv *UnixMountMonitorClass) CastToUnixMountMonitorClass(object *gobject.Object) *UnixMountMonitorClass {
+func CastToUnixMountMonitorClass(object *gobject.Object) *UnixMountMonitorClass {
 	return UnixMountMonitorClassNewFromNative(object.Native())
 }
 
@@ -16579,7 +16579,7 @@ CastToUnixMountPoint down casts any arbitrary Object to UnixMountPoint.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixMountPoint.
 */
-func (recv *UnixMountPoint) CastToUnixMountPoint(object *gobject.Object) *UnixMountPoint {
+func CastToUnixMountPoint(object *gobject.Object) *UnixMountPoint {
 	return UnixMountPointNewFromNative(object.Native())
 }
 
@@ -17013,7 +17013,7 @@ CastToUnixOutputStreamClass down casts any arbitrary Object to UnixOutputStreamC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixOutputStreamClass.
 */
-func (recv *UnixOutputStreamClass) CastToUnixOutputStreamClass(object *gobject.Object) *UnixOutputStreamClass {
+func CastToUnixOutputStreamClass(object *gobject.Object) *UnixOutputStreamClass {
 	return UnixOutputStreamClassNewFromNative(object.Native())
 }
 
@@ -17096,7 +17096,7 @@ CastToUnixOutputStreamPrivate down casts any arbitrary Object to UnixOutputStrea
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixOutputStreamPrivate.
 */
-func (recv *UnixOutputStreamPrivate) CastToUnixOutputStreamPrivate(object *gobject.Object) *UnixOutputStreamPrivate {
+func CastToUnixOutputStreamPrivate(object *gobject.Object) *UnixOutputStreamPrivate {
 	return UnixOutputStreamPrivateNewFromNative(object.Native())
 }
 
@@ -17145,7 +17145,7 @@ CastToUnixSocketAddressClass down casts any arbitrary Object to UnixSocketAddres
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixSocketAddressClass.
 */
-func (recv *UnixSocketAddressClass) CastToUnixSocketAddressClass(object *gobject.Object) *UnixSocketAddressClass {
+func CastToUnixSocketAddressClass(object *gobject.Object) *UnixSocketAddressClass {
 	return UnixSocketAddressClassNewFromNative(object.Native())
 }
 
@@ -17208,7 +17208,7 @@ CastToUnixSocketAddressPrivate down casts any arbitrary Object to UnixSocketAddr
 Exercise care, as this is a potentially dangerous function
 if the Object is not a UnixSocketAddressPrivate.
 */
-func (recv *UnixSocketAddressPrivate) CastToUnixSocketAddressPrivate(object *gobject.Object) *UnixSocketAddressPrivate {
+func CastToUnixSocketAddressPrivate(object *gobject.Object) *UnixSocketAddressPrivate {
 	return UnixSocketAddressPrivateNewFromNative(object.Native())
 }
 
@@ -17257,7 +17257,7 @@ CastToVfsClass down casts any arbitrary Object to VfsClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VfsClass.
 */
-func (recv *VfsClass) CastToVfsClass(object *gobject.Object) *VfsClass {
+func CastToVfsClass(object *gobject.Object) *VfsClass {
 	return VfsClassNewFromNative(object.Native())
 }
 
@@ -17378,7 +17378,7 @@ CastToVolumeIface down casts any arbitrary Object to VolumeIface.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VolumeIface.
 */
-func (recv *VolumeIface) CastToVolumeIface(object *gobject.Object) *VolumeIface {
+func CastToVolumeIface(object *gobject.Object) *VolumeIface {
 	return VolumeIfaceNewFromNative(object.Native())
 }
 
@@ -17515,7 +17515,7 @@ CastToVolumeMonitorClass down casts any arbitrary Object to VolumeMonitorClass.
 Exercise care, as this is a potentially dangerous function
 if the Object is not a VolumeMonitorClass.
 */
-func (recv *VolumeMonitorClass) CastToVolumeMonitorClass(object *gobject.Object) *VolumeMonitorClass {
+func CastToVolumeMonitorClass(object *gobject.Object) *VolumeMonitorClass {
 	return VolumeMonitorClassNewFromNative(object.Native())
 }
 
@@ -17668,7 +17668,7 @@ CastToZlibCompressorClass down casts any arbitrary Object to ZlibCompressorClass
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ZlibCompressorClass.
 */
-func (recv *ZlibCompressorClass) CastToZlibCompressorClass(object *gobject.Object) *ZlibCompressorClass {
+func CastToZlibCompressorClass(object *gobject.Object) *ZlibCompressorClass {
 	return ZlibCompressorClassNewFromNative(object.Native())
 }
 
@@ -17721,7 +17721,7 @@ CastToZlibDecompressorClass down casts any arbitrary Object to ZlibDecompressorC
 Exercise care, as this is a potentially dangerous function
 if the Object is not a ZlibDecompressorClass.
 */
-func (recv *ZlibDecompressorClass) CastToZlibDecompressorClass(object *gobject.Object) *ZlibDecompressorClass {
+func CastToZlibDecompressorClass(object *gobject.Object) *ZlibDecompressorClass {
 	return ZlibDecompressorClassNewFromNative(object.Native())
 }
 
