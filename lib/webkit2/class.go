@@ -58,6 +58,11 @@ func CastToAuthenticationRequest(object *gobject.Object) *AuthenticationRequest 
 	return AuthenticationRequestNewFromNative(object.Native())
 }
 
+// Equals compares this AuthenticationRequest with another AuthenticationRequest, and returns true if they represent the same GObject.
+func (recv *AuthenticationRequest) Equals(other *AuthenticationRequest) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *AuthenticationRequest) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -435,6 +440,11 @@ func CastToAutomationSession(object *gobject.Object) *AutomationSession {
 	return AutomationSessionNewFromNative(object.Native())
 }
 
+// Equals compares this AutomationSession with another AutomationSession, and returns true if they represent the same GObject.
+func (recv *AutomationSession) Equals(other *AutomationSession) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *AutomationSession) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -604,6 +614,11 @@ if the Object is not a BackForwardList.
 */
 func CastToBackForwardList(object *gobject.Object) *BackForwardList {
 	return BackForwardListNewFromNative(object.Native())
+}
+
+// Equals compares this BackForwardList with another BackForwardList, and returns true if they represent the same GObject.
+func (recv *BackForwardList) Equals(other *BackForwardList) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *BackForwardList) Native() unsafe.Pointer {
@@ -858,6 +873,11 @@ func CastToBackForwardListItem(object *gobject.Object) *BackForwardListItem {
 	return BackForwardListItemNewFromNative(object.Native())
 }
 
+// Equals compares this BackForwardListItem with another BackForwardListItem, and returns true if they represent the same GObject.
+func (recv *BackForwardListItem) Equals(other *BackForwardListItem) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *BackForwardListItem) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1032,6 +1052,11 @@ func CastToColorChooserRequest(object *gobject.Object) *ColorChooserRequest {
 	return ColorChooserRequestNewFromNative(object.Native())
 }
 
+// Equals compares this ColorChooserRequest with another ColorChooserRequest, and returns true if they represent the same GObject.
+func (recv *ColorChooserRequest) Equals(other *ColorChooserRequest) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ColorChooserRequest) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1156,6 +1181,11 @@ if the Object is not a ContextMenu.
 */
 func CastToContextMenu(object *gobject.Object) *ContextMenu {
 	return ContextMenuNewFromNative(object.Native())
+}
+
+// Equals compares this ContextMenu with another ContextMenu, and returns true if they represent the same GObject.
+func (recv *ContextMenu) Equals(other *ContextMenu) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ContextMenu) Native() unsafe.Pointer {
@@ -1585,6 +1615,11 @@ func CastToContextMenuItem(object *gobject.Object) *ContextMenuItem {
 	return ContextMenuItemNewFromNative(object.Native())
 }
 
+// Equals compares this ContextMenuItem with another ContextMenuItem, and returns true if they represent the same GObject.
+func (recv *ContextMenuItem) Equals(other *ContextMenuItem) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ContextMenuItem) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1984,6 +2019,11 @@ func CastToCookieManager(object *gobject.Object) *CookieManager {
 	return CookieManagerNewFromNative(object.Native())
 }
 
+// Equals compares this CookieManager with another CookieManager, and returns true if they represent the same GObject.
+func (recv *CookieManager) Equals(other *CookieManager) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *CookieManager) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2198,6 +2238,11 @@ func CastToDeviceInfoPermissionRequest(object *gobject.Object) *DeviceInfoPermis
 	return DeviceInfoPermissionRequestNewFromNative(object.Native())
 }
 
+// Equals compares this DeviceInfoPermissionRequest with another DeviceInfoPermissionRequest, and returns true if they represent the same GObject.
+func (recv *DeviceInfoPermissionRequest) Equals(other *DeviceInfoPermissionRequest) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *DeviceInfoPermissionRequest) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2260,6 +2305,11 @@ if the Object is not a Download.
 */
 func CastToDownload(object *gobject.Object) *Download {
 	return DownloadNewFromNative(object.Native())
+}
+
+// Equals compares this Download with another Download, and returns true if they represent the same GObject.
+func (recv *Download) Equals(other *Download) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Download) Native() unsafe.Pointer {
@@ -2682,6 +2732,11 @@ func CastToEditorState(object *gobject.Object) *EditorState {
 	return EditorStateNewFromNative(object.Native())
 }
 
+// Equals compares this EditorState with another EditorState, and returns true if they represent the same GObject.
+func (recv *EditorState) Equals(other *EditorState) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *EditorState) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2952,6 +3007,11 @@ func CastToFaviconDatabase(object *gobject.Object) *FaviconDatabase {
 	return FaviconDatabaseNewFromNative(object.Native())
 }
 
+// Equals compares this FaviconDatabase with another FaviconDatabase, and returns true if they represent the same GObject.
+func (recv *FaviconDatabase) Equals(other *FaviconDatabase) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FaviconDatabase) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -3093,6 +3153,11 @@ if the Object is not a FileChooserRequest.
 */
 func CastToFileChooserRequest(object *gobject.Object) *FileChooserRequest {
 	return FileChooserRequestNewFromNative(object.Native())
+}
+
+// Equals compares this FileChooserRequest with another FileChooserRequest, and returns true if they represent the same GObject.
+func (recv *FileChooserRequest) Equals(other *FileChooserRequest) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FileChooserRequest) Native() unsafe.Pointer {
@@ -3307,6 +3372,11 @@ if the Object is not a FindController.
 */
 func CastToFindController(object *gobject.Object) *FindController {
 	return FindControllerNewFromNative(object.Native())
+}
+
+// Equals compares this FindController with another FindController, and returns true if they represent the same GObject.
+func (recv *FindController) Equals(other *FindController) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FindController) Native() unsafe.Pointer {
@@ -3647,6 +3717,11 @@ func CastToFormSubmissionRequest(object *gobject.Object) *FormSubmissionRequest 
 	return FormSubmissionRequestNewFromNative(object.Native())
 }
 
+// Equals compares this FormSubmissionRequest with another FormSubmissionRequest, and returns true if they represent the same GObject.
+func (recv *FormSubmissionRequest) Equals(other *FormSubmissionRequest) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FormSubmissionRequest) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -3741,6 +3816,11 @@ if the Object is not a GeolocationManager.
 */
 func CastToGeolocationManager(object *gobject.Object) *GeolocationManager {
 	return GeolocationManagerNewFromNative(object.Native())
+}
+
+// Equals compares this GeolocationManager with another GeolocationManager, and returns true if they represent the same GObject.
+func (recv *GeolocationManager) Equals(other *GeolocationManager) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *GeolocationManager) Native() unsafe.Pointer {
@@ -3897,6 +3977,11 @@ func CastToGeolocationPermissionRequest(object *gobject.Object) *GeolocationPerm
 	return GeolocationPermissionRequestNewFromNative(object.Native())
 }
 
+// Equals compares this GeolocationPermissionRequest with another GeolocationPermissionRequest, and returns true if they represent the same GObject.
+func (recv *GeolocationPermissionRequest) Equals(other *GeolocationPermissionRequest) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *GeolocationPermissionRequest) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -3959,6 +4044,11 @@ if the Object is not a HitTestResult.
 */
 func CastToHitTestResult(object *gobject.Object) *HitTestResult {
 	return HitTestResultNewFromNative(object.Native())
+}
+
+// Equals compares this HitTestResult with another HitTestResult, and returns true if they represent the same GObject.
+func (recv *HitTestResult) Equals(other *HitTestResult) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *HitTestResult) Native() unsafe.Pointer {
@@ -4423,6 +4513,11 @@ func CastToInstallMissingMediaPluginsPermissionRequest(object *gobject.Object) *
 	return InstallMissingMediaPluginsPermissionRequestNewFromNative(object.Native())
 }
 
+// Equals compares this InstallMissingMediaPluginsPermissionRequest with another InstallMissingMediaPluginsPermissionRequest, and returns true if they represent the same GObject.
+func (recv *InstallMissingMediaPluginsPermissionRequest) Equals(other *InstallMissingMediaPluginsPermissionRequest) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *InstallMissingMediaPluginsPermissionRequest) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -4536,6 +4631,11 @@ if the Object is not a NavigationPolicyDecision.
 */
 func CastToNavigationPolicyDecision(object *gobject.Object) *NavigationPolicyDecision {
 	return NavigationPolicyDecisionNewFromNative(object.Native())
+}
+
+// Equals compares this NavigationPolicyDecision with another NavigationPolicyDecision, and returns true if they represent the same GObject.
+func (recv *NavigationPolicyDecision) Equals(other *NavigationPolicyDecision) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *NavigationPolicyDecision) Native() unsafe.Pointer {
@@ -4792,6 +4892,11 @@ if the Object is not a Notification.
 */
 func CastToNotification(object *gobject.Object) *Notification {
 	return NotificationNewFromNative(object.Native())
+}
+
+// Equals compares this Notification with another Notification, and returns true if they represent the same GObject.
+func (recv *Notification) Equals(other *Notification) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Notification) Native() unsafe.Pointer {
@@ -5056,6 +5161,11 @@ func CastToNotificationPermissionRequest(object *gobject.Object) *NotificationPe
 	return NotificationPermissionRequestNewFromNative(object.Native())
 }
 
+// Equals compares this NotificationPermissionRequest with another NotificationPermissionRequest, and returns true if they represent the same GObject.
+func (recv *NotificationPermissionRequest) Equals(other *NotificationPermissionRequest) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *NotificationPermissionRequest) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -5118,6 +5228,11 @@ if the Object is not a OptionMenu.
 */
 func CastToOptionMenu(object *gobject.Object) *OptionMenu {
 	return OptionMenuNewFromNative(object.Native())
+}
+
+// Equals compares this OptionMenu with another OptionMenu, and returns true if they represent the same GObject.
+func (recv *OptionMenu) Equals(other *OptionMenu) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *OptionMenu) Native() unsafe.Pointer {
@@ -5349,6 +5464,11 @@ func CastToPlugin(object *gobject.Object) *Plugin {
 	return PluginNewFromNative(object.Native())
 }
 
+// Equals compares this Plugin with another Plugin, and returns true if they represent the same GObject.
+func (recv *Plugin) Equals(other *Plugin) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Plugin) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -5525,6 +5645,11 @@ func CastToPolicyDecision(object *gobject.Object) *PolicyDecision {
 	return PolicyDecisionNewFromNative(object.Native())
 }
 
+// Equals compares this PolicyDecision with another PolicyDecision, and returns true if they represent the same GObject.
+func (recv *PolicyDecision) Equals(other *PolicyDecision) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *PolicyDecision) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -5671,6 +5796,11 @@ if the Object is not a PrintCustomWidget.
 */
 func CastToPrintCustomWidget(object *gobject.Object) *PrintCustomWidget {
 	return PrintCustomWidgetNewFromNative(object.Native())
+}
+
+// Equals compares this PrintCustomWidget with another PrintCustomWidget, and returns true if they represent the same GObject.
+func (recv *PrintCustomWidget) Equals(other *PrintCustomWidget) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *PrintCustomWidget) Native() unsafe.Pointer {
@@ -5848,6 +5978,11 @@ if the Object is not a PrintOperation.
 */
 func CastToPrintOperation(object *gobject.Object) *PrintOperation {
 	return PrintOperationNewFromNative(object.Native())
+}
+
+// Equals compares this PrintOperation with another PrintOperation, and returns true if they represent the same GObject.
+func (recv *PrintOperation) Equals(other *PrintOperation) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *PrintOperation) Native() unsafe.Pointer {
@@ -6150,6 +6285,11 @@ func CastToResponsePolicyDecision(object *gobject.Object) *ResponsePolicyDecisio
 	return ResponsePolicyDecisionNewFromNative(object.Native())
 }
 
+// Equals compares this ResponsePolicyDecision with another ResponsePolicyDecision, and returns true if they represent the same GObject.
+func (recv *ResponsePolicyDecision) Equals(other *ResponsePolicyDecision) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ResponsePolicyDecision) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -6308,6 +6448,11 @@ if the Object is not a SecurityManager.
 */
 func CastToSecurityManager(object *gobject.Object) *SecurityManager {
 	return SecurityManagerNewFromNative(object.Native())
+}
+
+// Equals compares this SecurityManager with another SecurityManager, and returns true if they represent the same GObject.
+func (recv *SecurityManager) Equals(other *SecurityManager) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SecurityManager) Native() unsafe.Pointer {
@@ -6758,6 +6903,11 @@ if the Object is not a Settings.
 */
 func CastToSettings(object *gobject.Object) *Settings {
 	return SettingsNewFromNative(object.Native())
+}
+
+// Equals compares this Settings with another Settings, and returns true if they represent the same GObject.
+func (recv *Settings) Equals(other *Settings) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Settings) Native() unsafe.Pointer {
@@ -10379,6 +10529,11 @@ func CastToURIRequest(object *gobject.Object) *URIRequest {
 	return URIRequestNewFromNative(object.Native())
 }
 
+// Equals compares this URIRequest with another URIRequest, and returns true if they represent the same GObject.
+func (recv *URIRequest) Equals(other *URIRequest) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *URIRequest) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -10570,6 +10725,11 @@ if the Object is not a URIResponse.
 */
 func CastToURIResponse(object *gobject.Object) *URIResponse {
 	return URIResponseNewFromNative(object.Native())
+}
+
+// Equals compares this URIResponse with another URIResponse, and returns true if they represent the same GObject.
+func (recv *URIResponse) Equals(other *URIResponse) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *URIResponse) Native() unsafe.Pointer {
@@ -10796,6 +10956,11 @@ if the Object is not a URISchemeRequest.
 */
 func CastToURISchemeRequest(object *gobject.Object) *URISchemeRequest {
 	return URISchemeRequestNewFromNative(object.Native())
+}
+
+// Equals compares this URISchemeRequest with another URISchemeRequest, and returns true if they represent the same GObject.
+func (recv *URISchemeRequest) Equals(other *URISchemeRequest) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *URISchemeRequest) Native() unsafe.Pointer {
@@ -11037,6 +11202,11 @@ func CastToUserContentFilterStore(object *gobject.Object) *UserContentFilterStor
 	return UserContentFilterStoreNewFromNative(object.Native())
 }
 
+// Equals compares this UserContentFilterStore with another UserContentFilterStore, and returns true if they represent the same GObject.
+func (recv *UserContentFilterStore) Equals(other *UserContentFilterStore) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *UserContentFilterStore) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -11185,6 +11355,11 @@ if the Object is not a UserContentManager.
 */
 func CastToUserContentManager(object *gobject.Object) *UserContentManager {
 	return UserContentManagerNewFromNative(object.Native())
+}
+
+// Equals compares this UserContentManager with another UserContentManager, and returns true if they represent the same GObject.
+func (recv *UserContentManager) Equals(other *UserContentManager) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *UserContentManager) Native() unsafe.Pointer {
@@ -11638,6 +11813,11 @@ func CastToUserMediaPermissionRequest(object *gobject.Object) *UserMediaPermissi
 	return UserMediaPermissionRequestNewFromNative(object.Native())
 }
 
+// Equals compares this UserMediaPermissionRequest with another UserMediaPermissionRequest, and returns true if they represent the same GObject.
+func (recv *UserMediaPermissionRequest) Equals(other *UserMediaPermissionRequest) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *UserMediaPermissionRequest) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -11700,6 +11880,11 @@ if the Object is not a WebContext.
 */
 func CastToWebContext(object *gobject.Object) *WebContext {
 	return WebContextNewFromNative(object.Native())
+}
+
+// Equals compares this WebContext with another WebContext, and returns true if they represent the same GObject.
+func (recv *WebContext) Equals(other *WebContext) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *WebContext) Native() unsafe.Pointer {
@@ -12853,6 +13038,11 @@ func CastToWebInspector(object *gobject.Object) *WebInspector {
 	return WebInspectorNewFromNative(object.Native())
 }
 
+// Equals compares this WebInspector with another WebInspector, and returns true if they represent the same GObject.
+func (recv *WebInspector) Equals(other *WebInspector) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *WebInspector) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -13203,6 +13393,11 @@ func CastToWebResource(object *gobject.Object) *WebResource {
 	return WebResourceNewFromNative(object.Native())
 }
 
+// Equals compares this WebResource with another WebResource, and returns true if they represent the same GObject.
+func (recv *WebResource) Equals(other *WebResource) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *WebResource) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -13367,6 +13562,11 @@ if the Object is not a WebView.
 */
 func CastToWebView(object *gobject.Object) *WebView {
 	return WebViewNewFromNative(object.Native())
+}
+
+// Equals compares this WebView with another WebView, and returns true if they represent the same GObject.
+func (recv *WebView) Equals(other *WebView) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *WebView) Native() unsafe.Pointer {
@@ -15029,6 +15229,11 @@ func CastToWebViewBase(object *gobject.Object) *WebViewBase {
 	return WebViewBaseNewFromNative(object.Native())
 }
 
+// Equals compares this WebViewBase with another WebViewBase, and returns true if they represent the same GObject.
+func (recv *WebViewBase) Equals(other *WebViewBase) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *WebViewBase) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -15091,6 +15296,11 @@ if the Object is not a WebsiteDataManager.
 */
 func CastToWebsiteDataManager(object *gobject.Object) *WebsiteDataManager {
 	return WebsiteDataManagerNewFromNative(object.Native())
+}
+
+// Equals compares this WebsiteDataManager with another WebsiteDataManager, and returns true if they represent the same GObject.
+func (recv *WebsiteDataManager) Equals(other *WebsiteDataManager) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *WebsiteDataManager) Native() unsafe.Pointer {
@@ -15535,6 +15745,11 @@ if the Object is not a WindowProperties.
 */
 func CastToWindowProperties(object *gobject.Object) *WindowProperties {
 	return WindowPropertiesNewFromNative(object.Native())
+}
+
+// Equals compares this WindowProperties with another WindowProperties, and returns true if they represent the same GObject.
+func (recv *WindowProperties) Equals(other *WindowProperties) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *WindowProperties) Native() unsafe.Pointer {

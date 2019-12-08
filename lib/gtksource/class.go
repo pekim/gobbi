@@ -65,6 +65,11 @@ func CastToBuffer(object *gobject.Object) *Buffer {
 	return BufferNewFromNative(object.Native())
 }
 
+// Equals compares this Buffer with another Buffer, and returns true if they represent the same GObject.
+func (recv *Buffer) Equals(other *Buffer) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Buffer) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -787,6 +792,11 @@ func CastToCompletion(object *gobject.Object) *Completion {
 	return CompletionNewFromNative(object.Native())
 }
 
+// Equals compares this Completion with another Completion, and returns true if they represent the same GObject.
+func (recv *Completion) Equals(other *Completion) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Completion) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1030,6 +1040,11 @@ func CastToCompletionContext(object *gobject.Object) *CompletionContext {
 	return CompletionContextNewFromNative(object.Native())
 }
 
+// Equals compares this CompletionContext with another CompletionContext, and returns true if they represent the same GObject.
+func (recv *CompletionContext) Equals(other *CompletionContext) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *CompletionContext) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1137,6 +1152,11 @@ if the Object is not a CompletionInfo.
 */
 func CastToCompletionInfo(object *gobject.Object) *CompletionInfo {
 	return CompletionInfoNewFromNative(object.Native())
+}
+
+// Equals compares this CompletionInfo with another CompletionInfo, and returns true if they represent the same GObject.
+func (recv *CompletionInfo) Equals(other *CompletionInfo) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *CompletionInfo) Native() unsafe.Pointer {
@@ -1308,6 +1328,11 @@ if the Object is not a CompletionItem.
 */
 func CastToCompletionItem(object *gobject.Object) *CompletionItem {
 	return CompletionItemNewFromNative(object.Native())
+}
+
+// Equals compares this CompletionItem with another CompletionItem, and returns true if they represent the same GObject.
+func (recv *CompletionItem) Equals(other *CompletionItem) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *CompletionItem) Native() unsafe.Pointer {
@@ -1675,6 +1700,11 @@ func CastToCompletionWords(object *gobject.Object) *CompletionWords {
 	return CompletionWordsNewFromNative(object.Native())
 }
 
+// Equals compares this CompletionWords with another CompletionWords, and returns true if they represent the same GObject.
+func (recv *CompletionWords) Equals(other *CompletionWords) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *CompletionWords) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1844,6 +1874,11 @@ if the Object is not a File.
 */
 func CastToFile(object *gobject.Object) *File {
 	return FileNewFromNative(object.Native())
+}
+
+// Equals compares this File with another File, and returns true if they represent the same GObject.
+func (recv *File) Equals(other *File) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *File) Native() unsafe.Pointer {
@@ -2214,6 +2249,11 @@ func CastToFileLoader(object *gobject.Object) *FileLoader {
 	return FileLoaderNewFromNative(object.Native())
 }
 
+// Equals compares this FileLoader with another FileLoader, and returns true if they represent the same GObject.
+func (recv *FileLoader) Equals(other *FileLoader) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FileLoader) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2561,6 +2601,11 @@ if the Object is not a FileSaver.
 */
 func CastToFileSaver(object *gobject.Object) *FileSaver {
 	return FileSaverNewFromNative(object.Native())
+}
+
+// Equals compares this FileSaver with another FileSaver, and returns true if they represent the same GObject.
+func (recv *FileSaver) Equals(other *FileSaver) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FileSaver) Native() unsafe.Pointer {
@@ -2935,6 +2980,11 @@ func CastToGutter(object *gobject.Object) *Gutter {
 	return GutterNewFromNative(object.Native())
 }
 
+// Equals compares this Gutter with another Gutter, and returns true if they represent the same GObject.
+func (recv *Gutter) Equals(other *Gutter) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Gutter) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -3297,6 +3347,11 @@ if the Object is not a GutterRenderer.
 */
 func CastToGutterRenderer(object *gobject.Object) *GutterRenderer {
 	return GutterRendererNewFromNative(object.Native())
+}
+
+// Equals compares this GutterRenderer with another GutterRenderer, and returns true if they represent the same GObject.
+func (recv *GutterRenderer) Equals(other *GutterRenderer) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *GutterRenderer) Native() unsafe.Pointer {
@@ -3788,6 +3843,11 @@ func CastToGutterRendererPixbuf(object *gobject.Object) *GutterRendererPixbuf {
 	return GutterRendererPixbufNewFromNative(object.Native())
 }
 
+// Equals compares this GutterRendererPixbuf with another GutterRendererPixbuf, and returns true if they represent the same GObject.
+func (recv *GutterRendererPixbuf) Equals(other *GutterRendererPixbuf) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *GutterRendererPixbuf) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -4065,6 +4125,11 @@ func CastToGutterRendererText(object *gobject.Object) *GutterRendererText {
 	return GutterRendererTextNewFromNative(object.Native())
 }
 
+// Equals compares this GutterRendererText with another GutterRendererText, and returns true if they represent the same GObject.
+func (recv *GutterRendererText) Equals(other *GutterRendererText) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *GutterRendererText) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -4271,6 +4336,11 @@ if the Object is not a Language.
 */
 func CastToLanguage(object *gobject.Object) *Language {
 	return LanguageNewFromNative(object.Native())
+}
+
+// Equals compares this Language with another Language, and returns true if they represent the same GObject.
+func (recv *Language) Equals(other *Language) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Language) Native() unsafe.Pointer {
@@ -4662,6 +4732,11 @@ func CastToLanguageManager(object *gobject.Object) *LanguageManager {
 	return LanguageManagerNewFromNative(object.Native())
 }
 
+// Equals compares this LanguageManager with another LanguageManager, and returns true if they represent the same GObject.
+func (recv *LanguageManager) Equals(other *LanguageManager) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *LanguageManager) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -4922,6 +4997,11 @@ func CastToMap(object *gobject.Object) *Map {
 	return MapNewFromNative(object.Native())
 }
 
+// Equals compares this Map with another Map, and returns true if they represent the same GObject.
+func (recv *Map) Equals(other *Map) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Map) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -5080,6 +5160,11 @@ if the Object is not a Mark.
 */
 func CastToMark(object *gobject.Object) *Mark {
 	return MarkNewFromNative(object.Native())
+}
+
+// Equals compares this Mark with another Mark, and returns true if they represent the same GObject.
+func (recv *Mark) Equals(other *Mark) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Mark) Native() unsafe.Pointer {
@@ -5291,6 +5376,11 @@ if the Object is not a MarkAttributes.
 */
 func CastToMarkAttributes(object *gobject.Object) *MarkAttributes {
 	return MarkAttributesNewFromNative(object.Native())
+}
+
+// Equals compares this MarkAttributes with another MarkAttributes, and returns true if they represent the same GObject.
+func (recv *MarkAttributes) Equals(other *MarkAttributes) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *MarkAttributes) Native() unsafe.Pointer {
@@ -5664,6 +5754,11 @@ if the Object is not a PrintCompositor.
 */
 func CastToPrintCompositor(object *gobject.Object) *PrintCompositor {
 	return PrintCompositorNewFromNative(object.Native())
+}
+
+// Equals compares this PrintCompositor with another PrintCompositor, and returns true if they represent the same GObject.
+func (recv *PrintCompositor) Equals(other *PrintCompositor) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *PrintCompositor) Native() unsafe.Pointer {
@@ -6604,6 +6699,11 @@ func CastToRegion(object *gobject.Object) *Region {
 	return RegionNewFromNative(object.Native())
 }
 
+// Equals compares this Region with another Region, and returns true if they represent the same GObject.
+func (recv *Region) Equals(other *Region) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Region) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -6927,6 +7027,11 @@ if the Object is not a SearchContext.
 */
 func CastToSearchContext(object *gobject.Object) *SearchContext {
 	return SearchContextNewFromNative(object.Native())
+}
+
+// Equals compares this SearchContext with another SearchContext, and returns true if they represent the same GObject.
+func (recv *SearchContext) Equals(other *SearchContext) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SearchContext) Native() unsafe.Pointer {
@@ -7351,6 +7456,11 @@ func CastToSearchSettings(object *gobject.Object) *SearchSettings {
 	return SearchSettingsNewFromNative(object.Native())
 }
 
+// Equals compares this SearchSettings with another SearchSettings, and returns true if they represent the same GObject.
+func (recv *SearchSettings) Equals(other *SearchSettings) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SearchSettings) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -7766,6 +7876,11 @@ func CastToSpaceDrawer(object *gobject.Object) *SpaceDrawer {
 	return SpaceDrawerNewFromNative(object.Native())
 }
 
+// Equals compares this SpaceDrawer with another SpaceDrawer, and returns true if they represent the same GObject.
+func (recv *SpaceDrawer) Equals(other *SpaceDrawer) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SpaceDrawer) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -7947,6 +8062,11 @@ func CastToStyle(object *gobject.Object) *Style {
 	return StyleNewFromNative(object.Native())
 }
 
+// Equals compares this Style with another Style, and returns true if they represent the same GObject.
+func (recv *Style) Equals(other *Style) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Style) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -8056,6 +8176,11 @@ if the Object is not a StyleScheme.
 */
 func CastToStyleScheme(object *gobject.Object) *StyleScheme {
 	return StyleSchemeNewFromNative(object.Native())
+}
+
+// Equals compares this StyleScheme with another StyleScheme, and returns true if they represent the same GObject.
+func (recv *StyleScheme) Equals(other *StyleScheme) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *StyleScheme) Native() unsafe.Pointer {
@@ -8350,6 +8475,11 @@ func CastToStyleSchemeChooserButton(object *gobject.Object) *StyleSchemeChooserB
 	return StyleSchemeChooserButtonNewFromNative(object.Native())
 }
 
+// Equals compares this StyleSchemeChooserButton with another StyleSchemeChooserButton, and returns true if they represent the same GObject.
+func (recv *StyleSchemeChooserButton) Equals(other *StyleSchemeChooserButton) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *StyleSchemeChooserButton) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -8464,6 +8594,11 @@ func CastToStyleSchemeChooserWidget(object *gobject.Object) *StyleSchemeChooserW
 	return StyleSchemeChooserWidgetNewFromNative(object.Native())
 }
 
+// Equals compares this StyleSchemeChooserWidget with another StyleSchemeChooserWidget, and returns true if they represent the same GObject.
+func (recv *StyleSchemeChooserWidget) Equals(other *StyleSchemeChooserWidget) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *StyleSchemeChooserWidget) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -8556,6 +8691,11 @@ if the Object is not a StyleSchemeManager.
 */
 func CastToStyleSchemeManager(object *gobject.Object) *StyleSchemeManager {
 	return StyleSchemeManagerNewFromNative(object.Native())
+}
+
+// Equals compares this StyleSchemeManager with another StyleSchemeManager, and returns true if they represent the same GObject.
+func (recv *StyleSchemeManager) Equals(other *StyleSchemeManager) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *StyleSchemeManager) Native() unsafe.Pointer {
@@ -8850,6 +8990,11 @@ func CastToTag(object *gobject.Object) *Tag {
 	return TagNewFromNative(object.Native())
 }
 
+// Equals compares this Tag with another Tag, and returns true if they represent the same GObject.
+func (recv *Tag) Equals(other *Tag) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Tag) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -8966,6 +9111,11 @@ if the Object is not a View.
 */
 func CastToView(object *gobject.Object) *View {
 	return ViewNewFromNative(object.Native())
+}
+
+// Equals compares this View with another View, and returns true if they represent the same GObject.
+func (recv *View) Equals(other *View) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *View) Native() unsafe.Pointer {

@@ -56,6 +56,11 @@ func CastToClass(object *gobject.Object) *Class {
 	return ClassNewFromNative(object.Native())
 }
 
+// Equals compares this Class with another Class, and returns true if they represent the same GObject.
+func (recv *Class) Equals(other *Class) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Class) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -182,6 +187,11 @@ if the Object is not a Context.
 */
 func CastToContext(object *gobject.Object) *Context {
 	return ContextNewFromNative(object.Native())
+}
+
+// Equals compares this Context with another Context, and returns true if they represent the same GObject.
+func (recv *Context) Equals(other *Context) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Context) Native() unsafe.Pointer {
@@ -736,6 +746,11 @@ func CastToException(object *gobject.Object) *Exception {
 	return ExceptionNewFromNative(object.Native())
 }
 
+// Equals compares this Exception with another Exception, and returns true if they represent the same GObject.
+func (recv *Exception) Equals(other *Exception) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Exception) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1133,6 +1148,11 @@ if the Object is not a Value.
 */
 func CastToValue(object *gobject.Object) *Value {
 	return ValueNewFromNative(object.Native())
+}
+
+// Equals compares this Value with another Value, and returns true if they represent the same GObject.
+func (recv *Value) Equals(other *Value) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Value) Native() unsafe.Pointer {
@@ -2107,6 +2127,11 @@ func CastToVirtualMachine(object *gobject.Object) *VirtualMachine {
 	return VirtualMachineNewFromNative(object.Native())
 }
 
+// Equals compares this VirtualMachine with another VirtualMachine, and returns true if they represent the same GObject.
+func (recv *VirtualMachine) Equals(other *VirtualMachine) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *VirtualMachine) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2201,6 +2226,11 @@ if the Object is not a WeakValue.
 */
 func CastToWeakValue(object *gobject.Object) *WeakValue {
 	return WeakValueNewFromNative(object.Native())
+}
+
+// Equals compares this WeakValue with another WeakValue, and returns true if they represent the same GObject.
+func (recv *WeakValue) Equals(other *WeakValue) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *WeakValue) Native() unsafe.Pointer {

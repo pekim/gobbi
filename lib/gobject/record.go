@@ -31,6 +31,11 @@ func CClosureNewFromNative(native unsafe.Pointer) *CClosure {
 	return instance
 }
 
+// Equals compares this CClosure with another CClosure, and returns true if they represent the same GObject.
+func (recv *CClosure) Equals(other *CClosure) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *CClosure) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -87,6 +92,11 @@ func ClosureNewFromNative(native unsafe.Pointer) *Closure {
 	instance := &Closure{native: native}
 
 	return instance
+}
+
+// Equals compares this Closure with another Closure, and returns true if they represent the same GObject.
+func (recv *Closure) Equals(other *Closure) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Closure) Native() unsafe.Pointer {
@@ -313,6 +323,11 @@ func ClosureNotifyDataNewFromNative(native unsafe.Pointer) *ClosureNotifyData {
 	return instance
 }
 
+// Equals compares this ClosureNotifyData with another ClosureNotifyData, and returns true if they represent the same GObject.
+func (recv *ClosureNotifyData) Equals(other *ClosureNotifyData) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ClosureNotifyData) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -359,6 +374,11 @@ func EnumClassNewFromNative(native unsafe.Pointer) *EnumClass {
 	instance := &EnumClass{native: native}
 
 	return instance
+}
+
+// Equals compares this EnumClass with another EnumClass, and returns true if they represent the same GObject.
+func (recv *EnumClass) Equals(other *EnumClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *EnumClass) Native() unsafe.Pointer {
@@ -471,6 +491,11 @@ func EnumValueNewFromNative(native unsafe.Pointer) *EnumValue {
 	return instance
 }
 
+// Equals compares this EnumValue with another EnumValue, and returns true if they represent the same GObject.
+func (recv *EnumValue) Equals(other *EnumValue) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *EnumValue) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -551,6 +576,11 @@ func FlagsClassNewFromNative(native unsafe.Pointer) *FlagsClass {
 	instance := &FlagsClass{native: native}
 
 	return instance
+}
+
+// Equals compares this FlagsClass with another FlagsClass, and returns true if they represent the same GObject.
+func (recv *FlagsClass) Equals(other *FlagsClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FlagsClass) Native() unsafe.Pointer {
@@ -649,6 +679,11 @@ func FlagsValueNewFromNative(native unsafe.Pointer) *FlagsValue {
 	return instance
 }
 
+// Equals compares this FlagsValue with another FlagsValue, and returns true if they represent the same GObject.
+func (recv *FlagsValue) Equals(other *FlagsValue) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FlagsValue) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -729,6 +764,11 @@ func InitiallyUnownedClassNewFromNative(native unsafe.Pointer) *InitiallyUnowned
 	instance := &InitiallyUnownedClass{native: native}
 
 	return instance
+}
+
+// Equals compares this InitiallyUnownedClass with another InitiallyUnownedClass, and returns true if they represent the same GObject.
+func (recv *InitiallyUnownedClass) Equals(other *InitiallyUnownedClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *InitiallyUnownedClass) Native() unsafe.Pointer {
@@ -817,6 +857,11 @@ func InterfaceInfoNewFromNative(native unsafe.Pointer) *InterfaceInfo {
 	return instance
 }
 
+// Equals compares this InterfaceInfo with another InterfaceInfo, and returns true if they represent the same GObject.
+func (recv *InterfaceInfo) Equals(other *InterfaceInfo) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *InterfaceInfo) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -867,6 +912,11 @@ func ObjectClassNewFromNative(native unsafe.Pointer) *ObjectClass {
 	instance := &ObjectClass{native: native}
 
 	return instance
+}
+
+// Equals compares this ObjectClass with another ObjectClass, and returns true if they represent the same GObject.
+func (recv *ObjectClass) Equals(other *ObjectClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ObjectClass) Native() unsafe.Pointer {
@@ -1082,6 +1132,11 @@ func ObjectConstructParamNewFromNative(native unsafe.Pointer) *ObjectConstructPa
 	return instance
 }
 
+// Equals compares this ObjectConstructParam with another ObjectConstructParam, and returns true if they represent the same GObject.
+func (recv *ObjectConstructParam) Equals(other *ObjectConstructParam) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ObjectConstructParam) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1148,6 +1203,11 @@ func ParamSpecClassNewFromNative(native unsafe.Pointer) *ParamSpecClass {
 	instance := &ParamSpecClass{native: native}
 
 	return instance
+}
+
+// Equals compares this ParamSpecClass with another ParamSpecClass, and returns true if they represent the same GObject.
+func (recv *ParamSpecClass) Equals(other *ParamSpecClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ParamSpecClass) Native() unsafe.Pointer {
@@ -1222,6 +1282,11 @@ func ParamSpecPoolNewFromNative(native unsafe.Pointer) *ParamSpecPool {
 	instance := &ParamSpecPool{native: native}
 
 	return instance
+}
+
+// Equals compares this ParamSpecPool with another ParamSpecPool, and returns true if they represent the same GObject.
+func (recv *ParamSpecPool) Equals(other *ParamSpecPool) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ParamSpecPool) Native() unsafe.Pointer {
@@ -1299,6 +1364,11 @@ func ParamSpecTypeInfoNewFromNative(native unsafe.Pointer) *ParamSpecTypeInfo {
 	instance := &ParamSpecTypeInfo{native: native}
 
 	return instance
+}
+
+// Equals compares this ParamSpecTypeInfo with another ParamSpecTypeInfo, and returns true if they represent the same GObject.
+func (recv *ParamSpecTypeInfo) Equals(other *ParamSpecTypeInfo) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ParamSpecTypeInfo) Native() unsafe.Pointer {
@@ -1393,6 +1463,11 @@ func ParameterNewFromNative(native unsafe.Pointer) *Parameter {
 	return instance
 }
 
+// Equals compares this Parameter with another Parameter, and returns true if they represent the same GObject.
+func (recv *Parameter) Equals(other *Parameter) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Parameter) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1459,6 +1534,11 @@ func SignalInvocationHintNewFromNative(native unsafe.Pointer) *SignalInvocationH
 	instance := &SignalInvocationHint{native: native}
 
 	return instance
+}
+
+// Equals compares this SignalInvocationHint with another SignalInvocationHint, and returns true if they represent the same GObject.
+func (recv *SignalInvocationHint) Equals(other *SignalInvocationHint) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SignalInvocationHint) Native() unsafe.Pointer {
@@ -1531,6 +1611,11 @@ func SignalQuery_NewFromNative(native unsafe.Pointer) *SignalQuery_ {
 	instance := &SignalQuery_{native: native}
 
 	return instance
+}
+
+// Equals compares this SignalQuery_ with another SignalQuery_, and returns true if they represent the same GObject.
+func (recv *SignalQuery_) Equals(other *SignalQuery_) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SignalQuery_) Native() unsafe.Pointer {
@@ -1629,6 +1714,11 @@ func TypeClassNewFromNative(native unsafe.Pointer) *TypeClass {
 	instance := &TypeClass{native: native}
 
 	return instance
+}
+
+// Equals compares this TypeClass with another TypeClass, and returns true if they represent the same GObject.
+func (recv *TypeClass) Equals(other *TypeClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TypeClass) Native() unsafe.Pointer {
@@ -1822,6 +1912,11 @@ func TypeFundamentalInfoNewFromNative(native unsafe.Pointer) *TypeFundamentalInf
 	return instance
 }
 
+// Equals compares this TypeFundamentalInfo with another TypeFundamentalInfo, and returns true if they represent the same GObject.
+func (recv *TypeFundamentalInfo) Equals(other *TypeFundamentalInfo) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TypeFundamentalInfo) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1864,6 +1959,11 @@ func TypeInfoNewFromNative(native unsafe.Pointer) *TypeInfo {
 	instance := &TypeInfo{native: native}
 
 	return instance
+}
+
+// Equals compares this TypeInfo with another TypeInfo, and returns true if they represent the same GObject.
+func (recv *TypeInfo) Equals(other *TypeInfo) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TypeInfo) Native() unsafe.Pointer {
@@ -1986,6 +2086,11 @@ func TypeInstanceNewFromNative(native unsafe.Pointer) *TypeInstance {
 	return instance
 }
 
+// Equals compares this TypeInstance with another TypeInstance, and returns true if they represent the same GObject.
+func (recv *TypeInstance) Equals(other *TypeInstance) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TypeInstance) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2026,6 +2131,11 @@ func TypeInterfaceNewFromNative(native unsafe.Pointer) *TypeInterface {
 	instance := &TypeInterface{native: native}
 
 	return instance
+}
+
+// Equals compares this TypeInterface with another TypeInterface, and returns true if they represent the same GObject.
+func (recv *TypeInterface) Equals(other *TypeInterface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TypeInterface) Native() unsafe.Pointer {
@@ -2098,6 +2208,11 @@ func TypeModuleClassNewFromNative(native unsafe.Pointer) *TypeModuleClass {
 	instance := &TypeModuleClass{native: native}
 
 	return instance
+}
+
+// Equals compares this TypeModuleClass with another TypeModuleClass, and returns true if they represent the same GObject.
+func (recv *TypeModuleClass) Equals(other *TypeModuleClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TypeModuleClass) Native() unsafe.Pointer {
@@ -2178,6 +2293,11 @@ func TypePluginClassNewFromNative(native unsafe.Pointer) *TypePluginClass {
 	return instance
 }
 
+// Equals compares this TypePluginClass with another TypePluginClass, and returns true if they represent the same GObject.
+func (recv *TypePluginClass) Equals(other *TypePluginClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TypePluginClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2232,6 +2352,11 @@ func TypeQueryNewFromNative(native unsafe.Pointer) *TypeQuery {
 	instance := &TypeQuery{native: native}
 
 	return instance
+}
+
+// Equals compares this TypeQuery with another TypeQuery, and returns true if they represent the same GObject.
+func (recv *TypeQuery) Equals(other *TypeQuery) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TypeQuery) Native() unsafe.Pointer {
@@ -2318,6 +2443,11 @@ func TypeValueTableNewFromNative(native unsafe.Pointer) *TypeValueTable {
 	instance := &TypeValueTable{native: native}
 
 	return instance
+}
+
+// Equals compares this TypeValueTable with another TypeValueTable, and returns true if they represent the same GObject.
+func (recv *TypeValueTable) Equals(other *TypeValueTable) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TypeValueTable) Native() unsafe.Pointer {
@@ -2410,6 +2540,11 @@ func ValueNewFromNative(native unsafe.Pointer) *Value {
 	instance := &Value{native: native}
 
 	return instance
+}
+
+// Equals compares this Value with another Value, and returns true if they represent the same GObject.
+func (recv *Value) Equals(other *Value) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Value) Native() unsafe.Pointer {
@@ -3955,6 +4090,11 @@ func ValueArrayNewFromNative(native unsafe.Pointer) *ValueArray {
 	return instance
 }
 
+// Equals compares this ValueArray with another ValueArray, and returns true if they represent the same GObject.
+func (recv *ValueArray) Equals(other *ValueArray) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ValueArray) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -4268,6 +4408,11 @@ func WeakRefNewFromNative(native unsafe.Pointer) *WeakRef {
 	instance := &WeakRef{native: native}
 
 	return instance
+}
+
+// Equals compares this WeakRef with another WeakRef, and returns true if they represent the same GObject.
+func (recv *WeakRef) Equals(other *WeakRef) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *WeakRef) Native() unsafe.Pointer {

@@ -57,6 +57,11 @@ func CastToPixbuf(object *gobject.Object) *Pixbuf {
 	return PixbufNewFromNative(object.Native())
 }
 
+// Equals compares this Pixbuf with another Pixbuf, and returns true if they represent the same GObject.
+func (recv *Pixbuf) Equals(other *Pixbuf) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Pixbuf) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1463,6 +1468,11 @@ func CastToPixbufAnimation(object *gobject.Object) *PixbufAnimation {
 	return PixbufAnimationNewFromNative(object.Native())
 }
 
+// Equals compares this PixbufAnimation with another PixbufAnimation, and returns true if they represent the same GObject.
+func (recv *PixbufAnimation) Equals(other *PixbufAnimation) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *PixbufAnimation) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1808,6 +1818,11 @@ func CastToPixbufAnimationIter(object *gobject.Object) *PixbufAnimationIter {
 	return PixbufAnimationIterNewFromNative(object.Native())
 }
 
+// Equals compares this PixbufAnimationIter with another PixbufAnimationIter, and returns true if they represent the same GObject.
+func (recv *PixbufAnimationIter) Equals(other *PixbufAnimationIter) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *PixbufAnimationIter) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1954,6 +1969,11 @@ if the Object is not a PixbufLoader.
 */
 func CastToPixbufLoader(object *gobject.Object) *PixbufLoader {
 	return PixbufLoaderNewFromNative(object.Native())
+}
+
+// Equals compares this PixbufLoader with another PixbufLoader, and returns true if they represent the same GObject.
+func (recv *PixbufLoader) Equals(other *PixbufLoader) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *PixbufLoader) Native() unsafe.Pointer {
@@ -2287,6 +2307,11 @@ func CastToPixbufSimpleAnim(object *gobject.Object) *PixbufSimpleAnim {
 	return PixbufSimpleAnimNewFromNative(object.Native())
 }
 
+// Equals compares this PixbufSimpleAnim with another PixbufSimpleAnim, and returns true if they represent the same GObject.
+func (recv *PixbufSimpleAnim) Equals(other *PixbufSimpleAnim) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *PixbufSimpleAnim) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2466,6 +2491,11 @@ if the Object is not a PixbufSimpleAnimIter.
 */
 func CastToPixbufSimpleAnimIter(object *gobject.Object) *PixbufSimpleAnimIter {
 	return PixbufSimpleAnimIterNewFromNative(object.Native())
+}
+
+// Equals compares this PixbufSimpleAnimIter with another PixbufSimpleAnimIter, and returns true if they represent the same GObject.
+func (recv *PixbufSimpleAnimIter) Equals(other *PixbufSimpleAnimIter) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *PixbufSimpleAnimIter) Native() unsafe.Pointer {

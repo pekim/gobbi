@@ -36,7 +36,7 @@ func TestSignalConnect(t *testing.T) {
 	button := ButtonNew()
 	button.SetLabel("qaz")
 	button.Widget().ConnectShow(func(widget *Widget) {
-		//	assert.True(t, widget.Object().Equals(button.Object()))
+		assert.True(t, widget.Object().Equals(button.Object()))
 		callbackCalled = true
 	})
 

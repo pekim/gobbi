@@ -40,6 +40,11 @@ func CastToBitmap(object *gobject.Object) *Bitmap {
 	return BitmapNewFromNative(object.Native())
 }
 
+// Equals compares this Bitmap with another Bitmap, and returns true if they represent the same GObject.
+func (recv *Bitmap) Equals(other *Bitmap) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Bitmap) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -89,6 +94,11 @@ func CastToFace(object *gobject.Object) *Face {
 	return FaceNewFromNative(object.Native())
 }
 
+// Equals compares this Face with another Face, and returns true if they represent the same GObject.
+func (recv *Face) Equals(other *Face) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Face) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -136,6 +146,11 @@ if the Object is not a Library.
 */
 func CastToLibrary(object *gobject.Object) *Library {
 	return LibraryNewFromNative(object.Native())
+}
+
+// Equals compares this Library with another Library, and returns true if they represent the same GObject.
+func (recv *Library) Equals(other *Library) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Library) Native() unsafe.Pointer {

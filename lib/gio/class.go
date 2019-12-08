@@ -57,6 +57,11 @@ func CastToAppInfoMonitor(object *gobject.Object) *AppInfoMonitor {
 	return AppInfoMonitorNewFromNative(object.Native())
 }
 
+// Equals compares this AppInfoMonitor with another AppInfoMonitor, and returns true if they represent the same GObject.
+func (recv *AppInfoMonitor) Equals(other *AppInfoMonitor) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *AppInfoMonitor) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -105,6 +110,11 @@ if the Object is not a AppLaunchContext.
 */
 func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromNative(object.Native())
+}
+
+// Equals compares this AppLaunchContext with another AppLaunchContext, and returns true if they represent the same GObject.
+func (recv *AppLaunchContext) Equals(other *AppLaunchContext) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *AppLaunchContext) Native() unsafe.Pointer {
@@ -321,6 +331,11 @@ if the Object is not a Application.
 */
 func CastToApplication(object *gobject.Object) *Application {
 	return ApplicationNewFromNative(object.Native())
+}
+
+// Equals compares this Application with another Application, and returns true if they represent the same GObject.
+func (recv *Application) Equals(other *Application) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Application) Native() unsafe.Pointer {
@@ -1169,6 +1184,11 @@ func CastToApplicationCommandLine(object *gobject.Object) *ApplicationCommandLin
 	return ApplicationCommandLineNewFromNative(object.Native())
 }
 
+// Equals compares this ApplicationCommandLine with another ApplicationCommandLine, and returns true if they represent the same GObject.
+func (recv *ApplicationCommandLine) Equals(other *ApplicationCommandLine) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ApplicationCommandLine) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1487,6 +1507,11 @@ if the Object is not a BufferedInputStream.
 */
 func CastToBufferedInputStream(object *gobject.Object) *BufferedInputStream {
 	return BufferedInputStreamNewFromNative(object.Native())
+}
+
+// Equals compares this BufferedInputStream with another BufferedInputStream, and returns true if they represent the same GObject.
+func (recv *BufferedInputStream) Equals(other *BufferedInputStream) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *BufferedInputStream) Native() unsafe.Pointer {
@@ -1830,6 +1855,11 @@ func CastToBufferedOutputStream(object *gobject.Object) *BufferedOutputStream {
 	return BufferedOutputStreamNewFromNative(object.Native())
 }
 
+// Equals compares this BufferedOutputStream with another BufferedOutputStream, and returns true if they represent the same GObject.
+func (recv *BufferedOutputStream) Equals(other *BufferedOutputStream) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *BufferedOutputStream) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2099,6 +2129,11 @@ func CastToBytesIcon(object *gobject.Object) *BytesIcon {
 	return BytesIconNewFromNative(object.Native())
 }
 
+// Equals compares this BytesIcon with another BytesIcon, and returns true if they represent the same GObject.
+func (recv *BytesIcon) Equals(other *BytesIcon) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *BytesIcon) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2151,6 +2186,11 @@ if the Object is not a Cancellable.
 */
 func CastToCancellable(object *gobject.Object) *Cancellable {
 	return CancellableNewFromNative(object.Native())
+}
+
+// Equals compares this Cancellable with another Cancellable, and returns true if they represent the same GObject.
+func (recv *Cancellable) Equals(other *Cancellable) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Cancellable) Native() unsafe.Pointer {
@@ -2520,6 +2560,11 @@ func CastToCharsetConverter(object *gobject.Object) *CharsetConverter {
 	return CharsetConverterNewFromNative(object.Native())
 }
 
+// Equals compares this CharsetConverter with another CharsetConverter, and returns true if they represent the same GObject.
+func (recv *CharsetConverter) Equals(other *CharsetConverter) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *CharsetConverter) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2708,6 +2753,11 @@ func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
 	return ConverterInputStreamNewFromNative(object.Native())
 }
 
+// Equals compares this ConverterInputStream with another ConverterInputStream, and returns true if they represent the same GObject.
+func (recv *ConverterInputStream) Equals(other *ConverterInputStream) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ConverterInputStream) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2786,6 +2836,11 @@ func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream 
 	return ConverterOutputStreamNewFromNative(object.Native())
 }
 
+// Equals compares this ConverterOutputStream with another ConverterOutputStream, and returns true if they represent the same GObject.
+func (recv *ConverterOutputStream) Equals(other *ConverterOutputStream) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ConverterOutputStream) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2852,6 +2907,11 @@ if the Object is not a Credentials.
 */
 func CastToCredentials(object *gobject.Object) *Credentials {
 	return CredentialsNewFromNative(object.Native())
+}
+
+// Equals compares this Credentials with another Credentials, and returns true if they represent the same GObject.
+func (recv *Credentials) Equals(other *Credentials) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Credentials) Native() unsafe.Pointer {
@@ -3102,6 +3162,11 @@ func CastToDBusActionGroup(object *gobject.Object) *DBusActionGroup {
 	return DBusActionGroupNewFromNative(object.Native())
 }
 
+// Equals compares this DBusActionGroup with another DBusActionGroup, and returns true if they represent the same GObject.
+func (recv *DBusActionGroup) Equals(other *DBusActionGroup) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *DBusActionGroup) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -3150,6 +3215,11 @@ if the Object is not a DBusAuthObserver.
 */
 func CastToDBusAuthObserver(object *gobject.Object) *DBusAuthObserver {
 	return DBusAuthObserverNewFromNative(object.Native())
+}
+
+// Equals compares this DBusAuthObserver with another DBusAuthObserver, and returns true if they represent the same GObject.
+func (recv *DBusAuthObserver) Equals(other *DBusAuthObserver) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *DBusAuthObserver) Native() unsafe.Pointer {
@@ -3299,6 +3369,11 @@ if the Object is not a DBusConnection.
 */
 func CastToDBusConnection(object *gobject.Object) *DBusConnection {
 	return DBusConnectionNewFromNative(object.Native())
+}
+
+// Equals compares this DBusConnection with another DBusConnection, and returns true if they represent the same GObject.
+func (recv *DBusConnection) Equals(other *DBusConnection) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *DBusConnection) Native() unsafe.Pointer {
@@ -3968,6 +4043,11 @@ func CastToDBusInterfaceSkeleton(object *gobject.Object) *DBusInterfaceSkeleton 
 	return DBusInterfaceSkeletonNewFromNative(object.Native())
 }
 
+// Equals compares this DBusInterfaceSkeleton with another DBusInterfaceSkeleton, and returns true if they represent the same GObject.
+func (recv *DBusInterfaceSkeleton) Equals(other *DBusInterfaceSkeleton) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *DBusInterfaceSkeleton) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -4311,6 +4391,11 @@ func CastToDBusMenuModel(object *gobject.Object) *DBusMenuModel {
 	return DBusMenuModelNewFromNative(object.Native())
 }
 
+// Equals compares this DBusMenuModel with another DBusMenuModel, and returns true if they represent the same GObject.
+func (recv *DBusMenuModel) Equals(other *DBusMenuModel) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *DBusMenuModel) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -4359,6 +4444,11 @@ if the Object is not a DBusMessage.
 */
 func CastToDBusMessage(object *gobject.Object) *DBusMessage {
 	return DBusMessageNewFromNative(object.Native())
+}
+
+// Equals compares this DBusMessage with another DBusMessage, and returns true if they represent the same GObject.
+func (recv *DBusMessage) Equals(other *DBusMessage) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *DBusMessage) Native() unsafe.Pointer {
@@ -5612,6 +5702,11 @@ func CastToDBusMethodInvocation(object *gobject.Object) *DBusMethodInvocation {
 	return DBusMethodInvocationNewFromNative(object.Native())
 }
 
+// Equals compares this DBusMethodInvocation with another DBusMethodInvocation, and returns true if they represent the same GObject.
+func (recv *DBusMethodInvocation) Equals(other *DBusMethodInvocation) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *DBusMethodInvocation) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -5995,6 +6090,11 @@ func CastToDBusObjectManagerClient(object *gobject.Object) *DBusObjectManagerCli
 	return DBusObjectManagerClientNewFromNative(object.Native())
 }
 
+// Equals compares this DBusObjectManagerClient with another DBusObjectManagerClient, and returns true if they represent the same GObject.
+func (recv *DBusObjectManagerClient) Equals(other *DBusObjectManagerClient) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *DBusObjectManagerClient) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -6149,6 +6249,11 @@ if the Object is not a DBusObjectManagerServer.
 */
 func CastToDBusObjectManagerServer(object *gobject.Object) *DBusObjectManagerServer {
 	return DBusObjectManagerServerNewFromNative(object.Native())
+}
+
+// Equals compares this DBusObjectManagerServer with another DBusObjectManagerServer, and returns true if they represent the same GObject.
+func (recv *DBusObjectManagerServer) Equals(other *DBusObjectManagerServer) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *DBusObjectManagerServer) Native() unsafe.Pointer {
@@ -6420,6 +6525,11 @@ func CastToDBusObjectProxy(object *gobject.Object) *DBusObjectProxy {
 	return DBusObjectProxyNewFromNative(object.Native())
 }
 
+// Equals compares this DBusObjectProxy with another DBusObjectProxy, and returns true if they represent the same GObject.
+func (recv *DBusObjectProxy) Equals(other *DBusObjectProxy) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *DBusObjectProxy) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -6535,6 +6645,11 @@ if the Object is not a DBusObjectSkeleton.
 */
 func CastToDBusObjectSkeleton(object *gobject.Object) *DBusObjectSkeleton {
 	return DBusObjectSkeletonNewFromNative(object.Native())
+}
+
+// Equals compares this DBusObjectSkeleton with another DBusObjectSkeleton, and returns true if they represent the same GObject.
+func (recv *DBusObjectSkeleton) Equals(other *DBusObjectSkeleton) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *DBusObjectSkeleton) Native() unsafe.Pointer {
@@ -6763,6 +6878,11 @@ if the Object is not a DBusProxy.
 */
 func CastToDBusProxy(object *gobject.Object) *DBusProxy {
 	return DBusProxyNewFromNative(object.Native())
+}
+
+// Equals compares this DBusProxy with another DBusProxy, and returns true if they represent the same GObject.
+func (recv *DBusProxy) Equals(other *DBusProxy) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *DBusProxy) Native() unsafe.Pointer {
@@ -7151,6 +7271,11 @@ func CastToDBusServer(object *gobject.Object) *DBusServer {
 	return DBusServerNewFromNative(object.Native())
 }
 
+// Equals compares this DBusServer with another DBusServer, and returns true if they represent the same GObject.
+func (recv *DBusServer) Equals(other *DBusServer) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *DBusServer) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -7370,6 +7495,11 @@ if the Object is not a DataInputStream.
 */
 func CastToDataInputStream(object *gobject.Object) *DataInputStream {
 	return DataInputStreamNewFromNative(object.Native())
+}
+
+// Equals compares this DataInputStream with another DataInputStream, and returns true if they represent the same GObject.
+func (recv *DataInputStream) Equals(other *DataInputStream) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *DataInputStream) Native() unsafe.Pointer {
@@ -7988,6 +8118,11 @@ func CastToDataOutputStream(object *gobject.Object) *DataOutputStream {
 	return DataOutputStreamNewFromNative(object.Native())
 }
 
+// Equals compares this DataOutputStream with another DataOutputStream, and returns true if they represent the same GObject.
+func (recv *DataOutputStream) Equals(other *DataOutputStream) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *DataOutputStream) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -8417,6 +8552,11 @@ if the Object is not a DesktopAppInfo.
 */
 func CastToDesktopAppInfo(object *gobject.Object) *DesktopAppInfo {
 	return DesktopAppInfoNewFromNative(object.Native())
+}
+
+// Equals compares this DesktopAppInfo with another DesktopAppInfo, and returns true if they represent the same GObject.
+func (recv *DesktopAppInfo) Equals(other *DesktopAppInfo) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *DesktopAppInfo) Native() unsafe.Pointer {
@@ -9052,6 +9192,11 @@ func CastToEmblem(object *gobject.Object) *Emblem {
 	return EmblemNewFromNative(object.Native())
 }
 
+// Equals compares this Emblem with another Emblem, and returns true if they represent the same GObject.
+func (recv *Emblem) Equals(other *Emblem) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Emblem) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -9138,6 +9283,11 @@ if the Object is not a EmblemedIcon.
 */
 func CastToEmblemedIcon(object *gobject.Object) *EmblemedIcon {
 	return EmblemedIconNewFromNative(object.Native())
+}
+
+// Equals compares this EmblemedIcon with another EmblemedIcon, and returns true if they represent the same GObject.
+func (recv *EmblemedIcon) Equals(other *EmblemedIcon) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *EmblemedIcon) Native() unsafe.Pointer {
@@ -9265,6 +9415,11 @@ if the Object is not a FileEnumerator.
 */
 func CastToFileEnumerator(object *gobject.Object) *FileEnumerator {
 	return FileEnumeratorNewFromNative(object.Native())
+}
+
+// Equals compares this FileEnumerator with another FileEnumerator, and returns true if they represent the same GObject.
+func (recv *FileEnumerator) Equals(other *FileEnumerator) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FileEnumerator) Native() unsafe.Pointer {
@@ -9509,6 +9664,11 @@ func CastToFileIOStream(object *gobject.Object) *FileIOStream {
 	return FileIOStreamNewFromNative(object.Native())
 }
 
+// Equals compares this FileIOStream with another FileIOStream, and returns true if they represent the same GObject.
+func (recv *FileIOStream) Equals(other *FileIOStream) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FileIOStream) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -9643,6 +9803,11 @@ func CastToFileIcon(object *gobject.Object) *FileIcon {
 	return FileIconNewFromNative(object.Native())
 }
 
+// Equals compares this FileIcon with another FileIcon, and returns true if they represent the same GObject.
+func (recv *FileIcon) Equals(other *FileIcon) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FileIcon) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -9695,6 +9860,11 @@ if the Object is not a FileInfo.
 */
 func CastToFileInfo(object *gobject.Object) *FileInfo {
 	return FileInfoNewFromNative(object.Native())
+}
+
+// Equals compares this FileInfo with another FileInfo, and returns true if they represent the same GObject.
+func (recv *FileInfo) Equals(other *FileInfo) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FileInfo) Native() unsafe.Pointer {
@@ -11418,6 +11588,11 @@ func CastToFileInputStream(object *gobject.Object) *FileInputStream {
 	return FileInputStreamNewFromNative(object.Native())
 }
 
+// Equals compares this FileInputStream with another FileInputStream, and returns true if they represent the same GObject.
+func (recv *FileInputStream) Equals(other *FileInputStream) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FileInputStream) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -11518,6 +11693,11 @@ if the Object is not a FileMonitor.
 */
 func CastToFileMonitor(object *gobject.Object) *FileMonitor {
 	return FileMonitorNewFromNative(object.Native())
+}
+
+// Equals compares this FileMonitor with another FileMonitor, and returns true if they represent the same GObject.
+func (recv *FileMonitor) Equals(other *FileMonitor) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FileMonitor) Native() unsafe.Pointer {
@@ -11684,6 +11864,11 @@ func CastToFileOutputStream(object *gobject.Object) *FileOutputStream {
 	return FileOutputStreamNewFromNative(object.Native())
 }
 
+// Equals compares this FileOutputStream with another FileOutputStream, and returns true if they represent the same GObject.
+func (recv *FileOutputStream) Equals(other *FileOutputStream) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FileOutputStream) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -11816,6 +12001,11 @@ if the Object is not a FilenameCompleter.
 */
 func CastToFilenameCompleter(object *gobject.Object) *FilenameCompleter {
 	return FilenameCompleterNewFromNative(object.Native())
+}
+
+// Equals compares this FilenameCompleter with another FilenameCompleter, and returns true if they represent the same GObject.
+func (recv *FilenameCompleter) Equals(other *FilenameCompleter) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FilenameCompleter) Native() unsafe.Pointer {
@@ -11996,6 +12186,11 @@ func CastToFilterInputStream(object *gobject.Object) *FilterInputStream {
 	return FilterInputStreamNewFromNative(object.Native())
 }
 
+// Equals compares this FilterInputStream with another FilterInputStream, and returns true if they represent the same GObject.
+func (recv *FilterInputStream) Equals(other *FilterInputStream) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FilterInputStream) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -12170,6 +12365,11 @@ if the Object is not a FilterOutputStream.
 */
 func CastToFilterOutputStream(object *gobject.Object) *FilterOutputStream {
 	return FilterOutputStreamNewFromNative(object.Native())
+}
+
+// Equals compares this FilterOutputStream with another FilterOutputStream, and returns true if they represent the same GObject.
+func (recv *FilterOutputStream) Equals(other *FilterOutputStream) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FilterOutputStream) Native() unsafe.Pointer {
@@ -12348,6 +12548,11 @@ func CastToIOModule(object *gobject.Object) *IOModule {
 	return IOModuleNewFromNative(object.Native())
 }
 
+// Equals compares this IOModule with another IOModule, and returns true if they represent the same GObject.
+func (recv *IOModule) Equals(other *IOModule) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *IOModule) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -12486,6 +12691,11 @@ if the Object is not a IOStream.
 */
 func CastToIOStream(object *gobject.Object) *IOStream {
 	return IOStreamNewFromNative(object.Native())
+}
+
+// Equals compares this IOStream with another IOStream, and returns true if they represent the same GObject.
+func (recv *IOStream) Equals(other *IOStream) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *IOStream) Native() unsafe.Pointer {
@@ -12777,6 +12987,11 @@ if the Object is not a InetAddress.
 */
 func CastToInetAddress(object *gobject.Object) *InetAddress {
 	return InetAddressNewFromNative(object.Native())
+}
+
+// Equals compares this InetAddress with another InetAddress, and returns true if they represent the same GObject.
+func (recv *InetAddress) Equals(other *InetAddress) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *InetAddress) Native() unsafe.Pointer {
@@ -13428,6 +13643,11 @@ func CastToInetAddressMask(object *gobject.Object) *InetAddressMask {
 	return InetAddressMaskNewFromNative(object.Native())
 }
 
+// Equals compares this InetAddressMask with another InetAddressMask, and returns true if they represent the same GObject.
+func (recv *InetAddressMask) Equals(other *InetAddressMask) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *InetAddressMask) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -13760,6 +13980,11 @@ func CastToInetSocketAddress(object *gobject.Object) *InetSocketAddress {
 	return InetSocketAddressNewFromNative(object.Native())
 }
 
+// Equals compares this InetSocketAddress with another InetSocketAddress, and returns true if they represent the same GObject.
+func (recv *InetSocketAddress) Equals(other *InetSocketAddress) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *InetSocketAddress) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -14020,6 +14245,11 @@ if the Object is not a InputStream.
 */
 func CastToInputStream(object *gobject.Object) *InputStream {
 	return InputStreamNewFromNative(object.Native())
+}
+
+// Equals compares this InputStream with another InputStream, and returns true if they represent the same GObject.
+func (recv *InputStream) Equals(other *InputStream) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *InputStream) Native() unsafe.Pointer {
@@ -14303,6 +14533,11 @@ func CastToListStore(object *gobject.Object) *ListStore {
 	return ListStoreNewFromNative(object.Native())
 }
 
+// Equals compares this ListStore with another ListStore, and returns true if they represent the same GObject.
+func (recv *ListStore) Equals(other *ListStore) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ListStore) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -14482,6 +14717,11 @@ func CastToMemoryInputStream(object *gobject.Object) *MemoryInputStream {
 	return MemoryInputStreamNewFromNative(object.Native())
 }
 
+// Equals compares this MemoryInputStream with another MemoryInputStream, and returns true if they represent the same GObject.
+func (recv *MemoryInputStream) Equals(other *MemoryInputStream) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *MemoryInputStream) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -14589,6 +14829,11 @@ if the Object is not a MemoryOutputStream.
 */
 func CastToMemoryOutputStream(object *gobject.Object) *MemoryOutputStream {
 	return MemoryOutputStreamNewFromNative(object.Native())
+}
+
+// Equals compares this MemoryOutputStream with another MemoryOutputStream, and returns true if they represent the same GObject.
+func (recv *MemoryOutputStream) Equals(other *MemoryOutputStream) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *MemoryOutputStream) Native() unsafe.Pointer {
@@ -14762,6 +15007,11 @@ if the Object is not a Menu.
 */
 func CastToMenu(object *gobject.Object) *Menu {
 	return MenuNewFromNative(object.Native())
+}
+
+// Equals compares this Menu with another Menu, and returns true if they represent the same GObject.
+func (recv *Menu) Equals(other *Menu) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Menu) Native() unsafe.Pointer {
@@ -15292,6 +15542,11 @@ func CastToMenuAttributeIter(object *gobject.Object) *MenuAttributeIter {
 	return MenuAttributeIterNewFromNative(object.Native())
 }
 
+// Equals compares this MenuAttributeIter with another MenuAttributeIter, and returns true if they represent the same GObject.
+func (recv *MenuAttributeIter) Equals(other *MenuAttributeIter) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *MenuAttributeIter) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -15436,6 +15691,11 @@ if the Object is not a MenuItem.
 */
 func CastToMenuItem(object *gobject.Object) *MenuItem {
 	return MenuItemNewFromNative(object.Native())
+}
+
+// Equals compares this MenuItem with another MenuItem, and returns true if they represent the same GObject.
+func (recv *MenuItem) Equals(other *MenuItem) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *MenuItem) Native() unsafe.Pointer {
@@ -15821,6 +16081,11 @@ func CastToMenuLinkIter(object *gobject.Object) *MenuLinkIter {
 	return MenuLinkIterNewFromNative(object.Native())
 }
 
+// Equals compares this MenuLinkIter with another MenuLinkIter, and returns true if they represent the same GObject.
+func (recv *MenuLinkIter) Equals(other *MenuLinkIter) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *MenuLinkIter) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -16028,6 +16293,11 @@ if the Object is not a MenuModel.
 */
 func CastToMenuModel(object *gobject.Object) *MenuModel {
 	return MenuModelNewFromNative(object.Native())
+}
+
+// Equals compares this MenuModel with another MenuModel, and returns true if they represent the same GObject.
+func (recv *MenuModel) Equals(other *MenuModel) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *MenuModel) Native() unsafe.Pointer {
@@ -16305,6 +16575,11 @@ if the Object is not a MountOperation.
 */
 func CastToMountOperation(object *gobject.Object) *MountOperation {
 	return MountOperationNewFromNative(object.Native())
+}
+
+// Equals compares this MountOperation with another MountOperation, and returns true if they represent the same GObject.
+func (recv *MountOperation) Equals(other *MountOperation) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *MountOperation) Native() unsafe.Pointer {
@@ -17000,6 +17275,11 @@ func CastToNativeSocketAddress(object *gobject.Object) *NativeSocketAddress {
 	return NativeSocketAddressNewFromNative(object.Native())
 }
 
+// Equals compares this NativeSocketAddress with another NativeSocketAddress, and returns true if they represent the same GObject.
+func (recv *NativeSocketAddress) Equals(other *NativeSocketAddress) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *NativeSocketAddress) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -17071,6 +17351,11 @@ func CastToNativeVolumeMonitor(object *gobject.Object) *NativeVolumeMonitor {
 	return NativeVolumeMonitorNewFromNative(object.Native())
 }
 
+// Equals compares this NativeVolumeMonitor with another NativeVolumeMonitor, and returns true if they represent the same GObject.
+func (recv *NativeVolumeMonitor) Equals(other *NativeVolumeMonitor) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *NativeVolumeMonitor) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -17133,6 +17418,11 @@ if the Object is not a NetworkAddress.
 */
 func CastToNetworkAddress(object *gobject.Object) *NetworkAddress {
 	return NetworkAddressNewFromNative(object.Native())
+}
+
+// Equals compares this NetworkAddress with another NetworkAddress, and returns true if they represent the same GObject.
+func (recv *NetworkAddress) Equals(other *NetworkAddress) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *NetworkAddress) Native() unsafe.Pointer {
@@ -17362,6 +17652,11 @@ if the Object is not a NetworkService.
 */
 func CastToNetworkService(object *gobject.Object) *NetworkService {
 	return NetworkServiceNewFromNative(object.Native())
+}
+
+// Equals compares this NetworkService with another NetworkService, and returns true if they represent the same GObject.
+func (recv *NetworkService) Equals(other *NetworkService) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *NetworkService) Native() unsafe.Pointer {
@@ -17619,6 +17914,11 @@ if the Object is not a Notification.
 */
 func CastToNotification(object *gobject.Object) *Notification {
 	return NotificationNewFromNative(object.Native())
+}
+
+// Equals compares this Notification with another Notification, and returns true if they represent the same GObject.
+func (recv *Notification) Equals(other *Notification) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Notification) Native() unsafe.Pointer {
@@ -17888,6 +18188,11 @@ if the Object is not a OutputStream.
 */
 func CastToOutputStream(object *gobject.Object) *OutputStream {
 	return OutputStreamNewFromNative(object.Native())
+}
+
+// Equals compares this OutputStream with another OutputStream, and returns true if they represent the same GObject.
+func (recv *OutputStream) Equals(other *OutputStream) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *OutputStream) Native() unsafe.Pointer {
@@ -18224,6 +18529,11 @@ func CastToPermission(object *gobject.Object) *Permission {
 	return PermissionNewFromNative(object.Native())
 }
 
+// Equals compares this Permission with another Permission, and returns true if they represent the same GObject.
+func (recv *Permission) Equals(other *Permission) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Permission) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -18489,6 +18799,11 @@ func CastToPropertyAction(object *gobject.Object) *PropertyAction {
 	return PropertyActionNewFromNative(object.Native())
 }
 
+// Equals compares this PropertyAction with another PropertyAction, and returns true if they represent the same GObject.
+func (recv *PropertyAction) Equals(other *PropertyAction) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *PropertyAction) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -18583,6 +18898,11 @@ if the Object is not a ProxyAddress.
 */
 func CastToProxyAddress(object *gobject.Object) *ProxyAddress {
 	return ProxyAddressNewFromNative(object.Native())
+}
+
+// Equals compares this ProxyAddress with another ProxyAddress, and returns true if they represent the same GObject.
+func (recv *ProxyAddress) Equals(other *ProxyAddress) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ProxyAddress) Native() unsafe.Pointer {
@@ -18918,6 +19238,11 @@ func CastToProxyAddressEnumerator(object *gobject.Object) *ProxyAddressEnumerato
 	return ProxyAddressEnumeratorNewFromNative(object.Native())
 }
 
+// Equals compares this ProxyAddressEnumerator with another ProxyAddressEnumerator, and returns true if they represent the same GObject.
+func (recv *ProxyAddressEnumerator) Equals(other *ProxyAddressEnumerator) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ProxyAddressEnumerator) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -18966,6 +19291,11 @@ if the Object is not a Resolver.
 */
 func CastToResolver(object *gobject.Object) *Resolver {
 	return ResolverNewFromNative(object.Native())
+}
+
+// Equals compares this Resolver with another Resolver, and returns true if they represent the same GObject.
+func (recv *Resolver) Equals(other *Resolver) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Resolver) Native() unsafe.Pointer {
@@ -19134,6 +19464,11 @@ if the Object is not a Settings.
 */
 func CastToSettings(object *gobject.Object) *Settings {
 	return SettingsNewFromNative(object.Native())
+}
+
+// Equals compares this Settings with another Settings, and returns true if they represent the same GObject.
+func (recv *Settings) Equals(other *Settings) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Settings) Native() unsafe.Pointer {
@@ -20347,6 +20682,11 @@ func CastToSettingsBackend(object *gobject.Object) *SettingsBackend {
 	return SettingsBackendNewFromNative(object.Native())
 }
 
+// Equals compares this SettingsBackend with another SettingsBackend, and returns true if they represent the same GObject.
+func (recv *SettingsBackend) Equals(other *SettingsBackend) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SettingsBackend) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -20477,6 +20817,11 @@ func CastToSimpleAction(object *gobject.Object) *SimpleAction {
 	return SimpleActionNewFromNative(object.Native())
 }
 
+// Equals compares this SimpleAction with another SimpleAction, and returns true if they represent the same GObject.
+func (recv *SimpleAction) Equals(other *SimpleAction) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SimpleAction) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -20562,6 +20907,11 @@ if the Object is not a SimpleActionGroup.
 */
 func CastToSimpleActionGroup(object *gobject.Object) *SimpleActionGroup {
 	return SimpleActionGroupNewFromNative(object.Native())
+}
+
+// Equals compares this SimpleActionGroup with another SimpleActionGroup, and returns true if they represent the same GObject.
+func (recv *SimpleActionGroup) Equals(other *SimpleActionGroup) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SimpleActionGroup) Native() unsafe.Pointer {
@@ -20679,6 +21029,11 @@ if the Object is not a SimpleAsyncResult.
 */
 func CastToSimpleAsyncResult(object *gobject.Object) *SimpleAsyncResult {
 	return SimpleAsyncResultNewFromNative(object.Native())
+}
+
+// Equals compares this SimpleAsyncResult with another SimpleAsyncResult, and returns true if they represent the same GObject.
+func (recv *SimpleAsyncResult) Equals(other *SimpleAsyncResult) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SimpleAsyncResult) Native() unsafe.Pointer {
@@ -21028,6 +21383,11 @@ func CastToSimpleIOStream(object *gobject.Object) *SimpleIOStream {
 	return SimpleIOStreamNewFromNative(object.Native())
 }
 
+// Equals compares this SimpleIOStream with another SimpleIOStream, and returns true if they represent the same GObject.
+func (recv *SimpleIOStream) Equals(other *SimpleIOStream) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SimpleIOStream) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -21118,6 +21478,11 @@ func CastToSimplePermission(object *gobject.Object) *SimplePermission {
 	return SimplePermissionNewFromNative(object.Native())
 }
 
+// Equals compares this SimplePermission with another SimplePermission, and returns true if they represent the same GObject.
+func (recv *SimplePermission) Equals(other *SimplePermission) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SimplePermission) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -21200,6 +21565,11 @@ if the Object is not a SimpleProxyResolver.
 */
 func CastToSimpleProxyResolver(object *gobject.Object) *SimpleProxyResolver {
 	return SimpleProxyResolverNewFromNative(object.Native())
+}
+
+// Equals compares this SimpleProxyResolver with another SimpleProxyResolver, and returns true if they represent the same GObject.
+func (recv *SimpleProxyResolver) Equals(other *SimpleProxyResolver) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SimpleProxyResolver) Native() unsafe.Pointer {
@@ -21352,6 +21722,11 @@ if the Object is not a Socket.
 */
 func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromNative(object.Native())
+}
+
+// Equals compares this Socket with another Socket, and returns true if they represent the same GObject.
+func (recv *Socket) Equals(other *Socket) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Socket) Native() unsafe.Pointer {
@@ -22846,6 +23221,11 @@ func CastToSocketAddress(object *gobject.Object) *SocketAddress {
 	return SocketAddressNewFromNative(object.Native())
 }
 
+// Equals compares this SocketAddress with another SocketAddress, and returns true if they represent the same GObject.
+func (recv *SocketAddress) Equals(other *SocketAddress) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SocketAddress) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -22978,6 +23358,11 @@ func CastToSocketAddressEnumerator(object *gobject.Object) *SocketAddressEnumera
 	return SocketAddressEnumeratorNewFromNative(object.Native())
 }
 
+// Equals compares this SocketAddressEnumerator with another SocketAddressEnumerator, and returns true if they represent the same GObject.
+func (recv *SocketAddressEnumerator) Equals(other *SocketAddressEnumerator) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SocketAddressEnumerator) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -23063,6 +23448,11 @@ if the Object is not a SocketClient.
 */
 func CastToSocketClient(object *gobject.Object) *SocketClient {
 	return SocketClientNewFromNative(object.Native())
+}
+
+// Equals compares this SocketClient with another SocketClient, and returns true if they represent the same GObject.
+func (recv *SocketClient) Equals(other *SocketClient) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SocketClient) Native() unsafe.Pointer {
@@ -23767,6 +24157,11 @@ func CastToSocketConnection(object *gobject.Object) *SocketConnection {
 	return SocketConnectionNewFromNative(object.Native())
 }
 
+// Equals compares this SocketConnection with another SocketConnection, and returns true if they represent the same GObject.
+func (recv *SocketConnection) Equals(other *SocketConnection) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SocketConnection) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -24011,6 +24406,11 @@ func CastToSocketControlMessage(object *gobject.Object) *SocketControlMessage {
 	return SocketControlMessageNewFromNative(object.Native())
 }
 
+// Equals compares this SocketControlMessage with another SocketControlMessage, and returns true if they represent the same GObject.
+func (recv *SocketControlMessage) Equals(other *SocketControlMessage) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SocketControlMessage) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -24185,6 +24585,11 @@ if the Object is not a SocketListener.
 */
 func CastToSocketListener(object *gobject.Object) *SocketListener {
 	return SocketListenerNewFromNative(object.Native())
+}
+
+// Equals compares this SocketListener with another SocketListener, and returns true if they represent the same GObject.
+func (recv *SocketListener) Equals(other *SocketListener) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SocketListener) Native() unsafe.Pointer {
@@ -24576,6 +24981,11 @@ func CastToSocketService(object *gobject.Object) *SocketService {
 	return SocketServiceNewFromNative(object.Native())
 }
 
+// Equals compares this SocketService with another SocketService, and returns true if they represent the same GObject.
+func (recv *SocketService) Equals(other *SocketService) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SocketService) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -24772,6 +25182,11 @@ if the Object is not a Subprocess.
 */
 func CastToSubprocess(object *gobject.Object) *Subprocess {
 	return SubprocessNewFromNative(object.Native())
+}
+
+// Equals compares this Subprocess with another Subprocess, and returns true if they represent the same GObject.
+func (recv *Subprocess) Equals(other *Subprocess) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Subprocess) Native() unsafe.Pointer {
@@ -25326,6 +25741,11 @@ func CastToSubprocessLauncher(object *gobject.Object) *SubprocessLauncher {
 	return SubprocessLauncherNewFromNative(object.Native())
 }
 
+// Equals compares this SubprocessLauncher with another SubprocessLauncher, and returns true if they represent the same GObject.
+func (recv *SubprocessLauncher) Equals(other *SubprocessLauncher) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SubprocessLauncher) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -25712,6 +26132,11 @@ if the Object is not a Task.
 */
 func CastToTask(object *gobject.Object) *Task {
 	return TaskNewFromNative(object.Native())
+}
+
+// Equals compares this Task with another Task, and returns true if they represent the same GObject.
+func (recv *Task) Equals(other *Task) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Task) Native() unsafe.Pointer {
@@ -26330,6 +26755,11 @@ func CastToTcpConnection(object *gobject.Object) *TcpConnection {
 	return TcpConnectionNewFromNative(object.Native())
 }
 
+// Equals compares this TcpConnection with another TcpConnection, and returns true if they represent the same GObject.
+func (recv *TcpConnection) Equals(other *TcpConnection) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TcpConnection) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -26484,6 +26914,11 @@ func CastToTcpWrapperConnection(object *gobject.Object) *TcpWrapperConnection {
 	return TcpWrapperConnectionNewFromNative(object.Native())
 }
 
+// Equals compares this TcpWrapperConnection with another TcpWrapperConnection, and returns true if they represent the same GObject.
+func (recv *TcpWrapperConnection) Equals(other *TcpWrapperConnection) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TcpWrapperConnection) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -26627,6 +27062,11 @@ if the Object is not a TestDBus.
 */
 func CastToTestDBus(object *gobject.Object) *TestDBus {
 	return TestDBusNewFromNative(object.Native())
+}
+
+// Equals compares this TestDBus with another TestDBus, and returns true if they represent the same GObject.
+func (recv *TestDBus) Equals(other *TestDBus) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TestDBus) Native() unsafe.Pointer {
@@ -26826,6 +27266,11 @@ if the Object is not a ThemedIcon.
 */
 func CastToThemedIcon(object *gobject.Object) *ThemedIcon {
 	return ThemedIconNewFromNative(object.Native())
+}
+
+// Equals compares this ThemedIcon with another ThemedIcon, and returns true if they represent the same GObject.
+func (recv *ThemedIcon) Equals(other *ThemedIcon) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ThemedIcon) Native() unsafe.Pointer {
@@ -27044,6 +27489,11 @@ func CastToThreadedSocketService(object *gobject.Object) *ThreadedSocketService 
 	return ThreadedSocketServiceNewFromNative(object.Native())
 }
 
+// Equals compares this ThreadedSocketService with another ThreadedSocketService, and returns true if they represent the same GObject.
+func (recv *ThreadedSocketService) Equals(other *ThreadedSocketService) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ThreadedSocketService) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -27154,6 +27604,11 @@ if the Object is not a TlsCertificate.
 */
 func CastToTlsCertificate(object *gobject.Object) *TlsCertificate {
 	return TlsCertificateNewFromNative(object.Native())
+}
+
+// Equals compares this TlsCertificate with another TlsCertificate, and returns true if they represent the same GObject.
+func (recv *TlsCertificate) Equals(other *TlsCertificate) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TlsCertificate) Native() unsafe.Pointer {
@@ -27408,6 +27863,11 @@ if the Object is not a TlsConnection.
 */
 func CastToTlsConnection(object *gobject.Object) *TlsConnection {
 	return TlsConnectionNewFromNative(object.Native())
+}
+
+// Equals compares this TlsConnection with another TlsConnection, and returns true if they represent the same GObject.
+func (recv *TlsConnection) Equals(other *TlsConnection) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TlsConnection) Native() unsafe.Pointer {
@@ -27961,6 +28421,11 @@ func CastToTlsDatabase(object *gobject.Object) *TlsDatabase {
 	return TlsDatabaseNewFromNative(object.Native())
 }
 
+// Equals compares this TlsDatabase with another TlsDatabase, and returns true if they represent the same GObject.
+func (recv *TlsDatabase) Equals(other *TlsDatabase) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TlsDatabase) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -28164,6 +28629,11 @@ func CastToTlsInteraction(object *gobject.Object) *TlsInteraction {
 	return TlsInteractionNewFromNative(object.Native())
 }
 
+// Equals compares this TlsInteraction with another TlsInteraction, and returns true if they represent the same GObject.
+func (recv *TlsInteraction) Equals(other *TlsInteraction) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TlsInteraction) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -28358,6 +28828,11 @@ if the Object is not a TlsPassword.
 */
 func CastToTlsPassword(object *gobject.Object) *TlsPassword {
 	return TlsPasswordNewFromNative(object.Native())
+}
+
+// Equals compares this TlsPassword with another TlsPassword, and returns true if they represent the same GObject.
+func (recv *TlsPassword) Equals(other *TlsPassword) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TlsPassword) Native() unsafe.Pointer {
@@ -28613,6 +29088,11 @@ func CastToUnixConnection(object *gobject.Object) *UnixConnection {
 	return UnixConnectionNewFromNative(object.Native())
 }
 
+// Equals compares this UnixConnection with another UnixConnection, and returns true if they represent the same GObject.
+func (recv *UnixConnection) Equals(other *UnixConnection) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *UnixConnection) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -28837,6 +29317,11 @@ func CastToUnixCredentialsMessage(object *gobject.Object) *UnixCredentialsMessag
 	return UnixCredentialsMessageNewFromNative(object.Native())
 }
 
+// Equals compares this UnixCredentialsMessage with another UnixCredentialsMessage, and returns true if they represent the same GObject.
+func (recv *UnixCredentialsMessage) Equals(other *UnixCredentialsMessage) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *UnixCredentialsMessage) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -29011,6 +29496,11 @@ if the Object is not a UnixFDList.
 */
 func CastToUnixFDList(object *gobject.Object) *UnixFDList {
 	return UnixFDListNewFromNative(object.Native())
+}
+
+// Equals compares this UnixFDList with another UnixFDList, and returns true if they represent the same GObject.
+func (recv *UnixFDList) Equals(other *UnixFDList) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *UnixFDList) Native() unsafe.Pointer {
@@ -29292,6 +29782,11 @@ func CastToUnixFDMessage(object *gobject.Object) *UnixFDMessage {
 	return UnixFDMessageNewFromNative(object.Native())
 }
 
+// Equals compares this UnixFDMessage with another UnixFDMessage, and returns true if they represent the same GObject.
+func (recv *UnixFDMessage) Equals(other *UnixFDMessage) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *UnixFDMessage) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -29538,6 +30033,11 @@ func CastToUnixInputStream(object *gobject.Object) *UnixInputStream {
 	return UnixInputStreamNewFromNative(object.Native())
 }
 
+// Equals compares this UnixInputStream with another UnixInputStream, and returns true if they represent the same GObject.
+func (recv *UnixInputStream) Equals(other *UnixInputStream) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *UnixInputStream) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -29730,6 +30230,11 @@ func CastToUnixMountMonitor(object *gobject.Object) *UnixMountMonitor {
 	return UnixMountMonitorNewFromNative(object.Native())
 }
 
+// Equals compares this UnixMountMonitor with another UnixMountMonitor, and returns true if they represent the same GObject.
+func (recv *UnixMountMonitor) Equals(other *UnixMountMonitor) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *UnixMountMonitor) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -29844,6 +30349,11 @@ if the Object is not a UnixOutputStream.
 */
 func CastToUnixOutputStream(object *gobject.Object) *UnixOutputStream {
 	return UnixOutputStreamNewFromNative(object.Native())
+}
+
+// Equals compares this UnixOutputStream with another UnixOutputStream, and returns true if they represent the same GObject.
+func (recv *UnixOutputStream) Equals(other *UnixOutputStream) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *UnixOutputStream) Native() unsafe.Pointer {
@@ -30041,6 +30551,11 @@ if the Object is not a UnixSocketAddress.
 */
 func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 	return UnixSocketAddressNewFromNative(object.Native())
+}
+
+// Equals compares this UnixSocketAddress with another UnixSocketAddress, and returns true if they represent the same GObject.
+func (recv *UnixSocketAddress) Equals(other *UnixSocketAddress) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *UnixSocketAddress) Native() unsafe.Pointer {
@@ -30273,6 +30788,11 @@ func CastToVfs(object *gobject.Object) *Vfs {
 	return VfsNewFromNative(object.Native())
 }
 
+// Equals compares this Vfs with another Vfs, and returns true if they represent the same GObject.
+func (recv *Vfs) Equals(other *Vfs) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Vfs) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -30438,6 +30958,11 @@ func CastToVolumeMonitor(object *gobject.Object) *VolumeMonitor {
 	return VolumeMonitorNewFromNative(object.Native())
 }
 
+// Equals compares this VolumeMonitor with another VolumeMonitor, and returns true if they represent the same GObject.
+func (recv *VolumeMonitor) Equals(other *VolumeMonitor) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *VolumeMonitor) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -30510,6 +31035,11 @@ if the Object is not a ZlibCompressor.
 */
 func CastToZlibCompressor(object *gobject.Object) *ZlibCompressor {
 	return ZlibCompressorNewFromNative(object.Native())
+}
+
+// Equals compares this ZlibCompressor with another ZlibCompressor, and returns true if they represent the same GObject.
+func (recv *ZlibCompressor) Equals(other *ZlibCompressor) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ZlibCompressor) Native() unsafe.Pointer {
@@ -30656,6 +31186,11 @@ if the Object is not a ZlibDecompressor.
 */
 func CastToZlibDecompressor(object *gobject.Object) *ZlibDecompressor {
 	return ZlibDecompressorNewFromNative(object.Native())
+}
+
+// Equals compares this ZlibDecompressor with another ZlibDecompressor, and returns true if they represent the same GObject.
+func (recv *ZlibDecompressor) Equals(other *ZlibDecompressor) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ZlibDecompressor) Native() unsafe.Pointer {

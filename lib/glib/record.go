@@ -30,6 +30,11 @@ func ArrayNewFromNative(native unsafe.Pointer) *Array {
 	return instance
 }
 
+// Equals compares this Array with another Array, and returns true if they represent the same GObject.
+func (recv *Array) Equals(other *Array) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Array) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -96,6 +101,11 @@ func AsyncQueueNewFromNative(native unsafe.Pointer) *AsyncQueue {
 	instance := &AsyncQueue{native: native}
 
 	return instance
+}
+
+// Equals compares this AsyncQueue with another AsyncQueue, and returns true if they represent the same GObject.
+func (recv *AsyncQueue) Equals(other *AsyncQueue) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *AsyncQueue) Native() unsafe.Pointer {
@@ -408,6 +418,11 @@ func BookmarkFileNewFromNative(native unsafe.Pointer) *BookmarkFile {
 	instance := &BookmarkFile{native: native}
 
 	return instance
+}
+
+// Equals compares this BookmarkFile with another BookmarkFile, and returns true if they represent the same GObject.
+func (recv *BookmarkFile) Equals(other *BookmarkFile) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *BookmarkFile) Native() unsafe.Pointer {
@@ -1625,6 +1640,11 @@ func ByteArrayNewFromNative(native unsafe.Pointer) *ByteArray {
 	return instance
 }
 
+// Equals compares this ByteArray with another ByteArray, and returns true if they represent the same GObject.
+func (recv *ByteArray) Equals(other *ByteArray) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ByteArray) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1691,6 +1711,11 @@ func BytesNewFromNative(native unsafe.Pointer) *Bytes {
 	instance := &Bytes{native: native}
 
 	return instance
+}
+
+// Equals compares this Bytes with another Bytes, and returns true if they represent the same GObject.
+func (recv *Bytes) Equals(other *Bytes) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Bytes) Native() unsafe.Pointer {
@@ -2042,6 +2067,11 @@ func ChecksumNewFromNative(native unsafe.Pointer) *Checksum {
 	return instance
 }
 
+// Equals compares this Checksum with another Checksum, and returns true if they represent the same GObject.
+func (recv *Checksum) Equals(other *Checksum) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Checksum) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2223,6 +2253,11 @@ func CondNewFromNative(native unsafe.Pointer) *Cond {
 	return instance
 }
 
+// Equals compares this Cond with another Cond, and returns true if they represent the same GObject.
+func (recv *Cond) Equals(other *Cond) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Cond) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2379,6 +2414,11 @@ func DataNewFromNative(native unsafe.Pointer) *Data {
 	return instance
 }
 
+// Equals compares this Data with another Data, and returns true if they represent the same GObject.
+func (recv *Data) Equals(other *Data) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Data) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2417,6 +2457,11 @@ func DateNewFromNative(native unsafe.Pointer) *Date {
 	instance := &Date{native: native}
 
 	return instance
+}
+
+// Equals compares this Date with another Date, and returns true if they represent the same GObject.
+func (recv *Date) Equals(other *Date) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Date) Native() unsafe.Pointer {
@@ -3659,6 +3704,11 @@ func DateTimeNewFromNative(native unsafe.Pointer) *DateTime {
 	instance := &DateTime{native: native}
 
 	return instance
+}
+
+// Equals compares this DateTime with another DateTime, and returns true if they represent the same GObject.
+func (recv *DateTime) Equals(other *DateTime) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *DateTime) Native() unsafe.Pointer {
@@ -5219,6 +5269,11 @@ func DebugKeyNewFromNative(native unsafe.Pointer) *DebugKey {
 	return instance
 }
 
+// Equals compares this DebugKey with another DebugKey, and returns true if they represent the same GObject.
+func (recv *DebugKey) Equals(other *DebugKey) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *DebugKey) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -5285,6 +5340,11 @@ func DirNewFromNative(native unsafe.Pointer) *Dir {
 	instance := &Dir{native: native}
 
 	return instance
+}
+
+// Equals compares this Dir with another Dir, and returns true if they represent the same GObject.
+func (recv *Dir) Equals(other *Dir) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Dir) Native() unsafe.Pointer {
@@ -5413,6 +5473,11 @@ func ErrorNewFromNative(native unsafe.Pointer) *Error {
 	instance := &Error{native: native}
 
 	return instance
+}
+
+// Equals compares this Error with another Error, and returns true if they represent the same GObject.
+func (recv *Error) Equals(other *Error) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Error) Native() unsafe.Pointer {
@@ -5614,6 +5679,11 @@ func HashTableNewFromNative(native unsafe.Pointer) *HashTable {
 	return instance
 }
 
+// Equals compares this HashTable with another HashTable, and returns true if they represent the same GObject.
+func (recv *HashTable) Equals(other *HashTable) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *HashTable) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -5652,6 +5722,11 @@ func HashTableIterNewFromNative(native unsafe.Pointer) *HashTableIter {
 	instance := &HashTableIter{native: native}
 
 	return instance
+}
+
+// Equals compares this HashTableIter with another HashTableIter, and returns true if they represent the same GObject.
+func (recv *HashTableIter) Equals(other *HashTableIter) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *HashTableIter) Native() unsafe.Pointer {
@@ -5756,6 +5831,11 @@ func HmacNewFromNative(native unsafe.Pointer) *Hmac {
 	instance := &Hmac{native: native}
 
 	return instance
+}
+
+// Equals compares this Hmac with another Hmac, and returns true if they represent the same GObject.
+func (recv *Hmac) Equals(other *Hmac) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Hmac) Native() unsafe.Pointer {
@@ -5926,6 +6006,11 @@ func HookNewFromNative(native unsafe.Pointer) *Hook {
 	return instance
 }
 
+// Equals compares this Hook with another Hook, and returns true if they represent the same GObject.
+func (recv *Hook) Equals(other *Hook) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Hook) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -6079,6 +6164,11 @@ func HookListNewFromNative(native unsafe.Pointer) *HookList {
 	instance := &HookList{native: native}
 
 	return instance
+}
+
+// Equals compares this HookList with another HookList, and returns true if they represent the same GObject.
+func (recv *HookList) Equals(other *HookList) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *HookList) Native() unsafe.Pointer {
@@ -6308,6 +6398,11 @@ func IConvNewFromNative(native unsafe.Pointer) *IConv {
 	return instance
 }
 
+// Equals compares this IConv with another IConv, and returns true if they represent the same GObject.
+func (recv *IConv) Equals(other *IConv) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *IConv) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -6380,6 +6475,11 @@ func IOChannelNewFromNative(native unsafe.Pointer) *IOChannel {
 	instance := &IOChannel{native: native}
 
 	return instance
+}
+
+// Equals compares this IOChannel with another IOChannel, and returns true if they represent the same GObject.
+func (recv *IOChannel) Equals(other *IOChannel) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *IOChannel) Native() unsafe.Pointer {
@@ -7220,6 +7320,11 @@ func IOFuncsNewFromNative(native unsafe.Pointer) *IOFuncs {
 	return instance
 }
 
+// Equals compares this IOFuncs with another IOFuncs, and returns true if they represent the same GObject.
+func (recv *IOFuncs) Equals(other *IOFuncs) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *IOFuncs) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -7290,6 +7395,11 @@ func KeyFileNewFromNative(native unsafe.Pointer) *KeyFile {
 	instance := &KeyFile{native: native}
 
 	return instance
+}
+
+// Equals compares this KeyFile with another KeyFile, and returns true if they represent the same GObject.
+func (recv *KeyFile) Equals(other *KeyFile) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *KeyFile) Native() unsafe.Pointer {
@@ -8613,6 +8723,11 @@ func ListNewFromNative(native unsafe.Pointer) *List {
 	return instance
 }
 
+// Equals compares this List with another List, and returns true if they represent the same GObject.
+func (recv *List) Equals(other *List) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *List) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -8663,6 +8778,11 @@ func LogFieldNewFromNative(native unsafe.Pointer) *LogField {
 	instance := &LogField{native: native}
 
 	return instance
+}
+
+// Equals compares this LogField with another LogField, and returns true if they represent the same GObject.
+func (recv *LogField) Equals(other *LogField) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *LogField) Native() unsafe.Pointer {
@@ -8735,6 +8855,11 @@ func MainContextNewFromNative(native unsafe.Pointer) *MainContext {
 	instance := &MainContext{native: native}
 
 	return instance
+}
+
+// Equals compares this MainContext with another MainContext, and returns true if they represent the same GObject.
+func (recv *MainContext) Equals(other *MainContext) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *MainContext) Native() unsafe.Pointer {
@@ -9265,6 +9390,11 @@ func MainLoopNewFromNative(native unsafe.Pointer) *MainLoop {
 	return instance
 }
 
+// Equals compares this MainLoop with another MainLoop, and returns true if they represent the same GObject.
+func (recv *MainLoop) Equals(other *MainLoop) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *MainLoop) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -9501,6 +9631,11 @@ func MappedFileNewFromNative(native unsafe.Pointer) *MappedFile {
 	instance := &MappedFile{native: native}
 
 	return instance
+}
+
+// Equals compares this MappedFile with another MappedFile, and returns true if they represent the same GObject.
+func (recv *MappedFile) Equals(other *MappedFile) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *MappedFile) Native() unsafe.Pointer {
@@ -9778,6 +9913,11 @@ func MarkupParseContextNewFromNative(native unsafe.Pointer) *MarkupParseContext 
 	return instance
 }
 
+// Equals compares this MarkupParseContext with another MarkupParseContext, and returns true if they represent the same GObject.
+func (recv *MarkupParseContext) Equals(other *MarkupParseContext) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *MarkupParseContext) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -10029,6 +10169,11 @@ func MarkupParserNewFromNative(native unsafe.Pointer) *MarkupParser {
 	return instance
 }
 
+// Equals compares this MarkupParser with another MarkupParser, and returns true if they represent the same GObject.
+func (recv *MarkupParser) Equals(other *MarkupParser) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *MarkupParser) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -10087,6 +10232,11 @@ func MatchInfoNewFromNative(native unsafe.Pointer) *MatchInfo {
 	instance := &MatchInfo{native: native}
 
 	return instance
+}
+
+// Equals compares this MatchInfo with another MatchInfo, and returns true if they represent the same GObject.
+func (recv *MatchInfo) Equals(other *MatchInfo) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *MatchInfo) Native() unsafe.Pointer {
@@ -10608,6 +10758,11 @@ func MemVTableNewFromNative(native unsafe.Pointer) *MemVTable {
 	return instance
 }
 
+// Equals compares this MemVTable with another MemVTable, and returns true if they represent the same GObject.
+func (recv *MemVTable) Equals(other *MemVTable) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *MemVTable) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -10670,6 +10825,11 @@ func NodeNewFromNative(native unsafe.Pointer) *Node {
 	instance := &Node{native: native}
 
 	return instance
+}
+
+// Equals compares this Node with another Node, and returns true if they represent the same GObject.
+func (recv *Node) Equals(other *Node) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Node) Native() unsafe.Pointer {
@@ -11360,6 +11520,11 @@ func OnceNewFromNative(native unsafe.Pointer) *Once {
 	return instance
 }
 
+// Equals compares this Once with another Once, and returns true if they represent the same GObject.
+func (recv *Once) Equals(other *Once) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Once) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -11418,6 +11583,11 @@ func OptionContextNewFromNative(native unsafe.Pointer) *OptionContext {
 	instance := &OptionContext{native: native}
 
 	return instance
+}
+
+// Equals compares this OptionContext with another OptionContext, and returns true if they represent the same GObject.
+func (recv *OptionContext) Equals(other *OptionContext) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *OptionContext) Native() unsafe.Pointer {
@@ -11982,6 +12152,11 @@ func OptionEntryNewFromNative(native unsafe.Pointer) *OptionEntry {
 	return instance
 }
 
+// Equals compares this OptionEntry with another OptionEntry, and returns true if they represent the same GObject.
+func (recv *OptionEntry) Equals(other *OptionEntry) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *OptionEntry) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -12108,6 +12283,11 @@ func OptionGroupNewFromNative(native unsafe.Pointer) *OptionGroup {
 	instance := &OptionGroup{native: native}
 
 	return instance
+}
+
+// Equals compares this OptionGroup with another OptionGroup, and returns true if they represent the same GObject.
+func (recv *OptionGroup) Equals(other *OptionGroup) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *OptionGroup) Native() unsafe.Pointer {
@@ -12289,6 +12469,11 @@ func PatternSpecNewFromNative(native unsafe.Pointer) *PatternSpec {
 	return instance
 }
 
+// Equals compares this PatternSpec with another PatternSpec, and returns true if they represent the same GObject.
+func (recv *PatternSpec) Equals(other *PatternSpec) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *PatternSpec) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -12390,6 +12575,11 @@ func PollFDNewFromNative(native unsafe.Pointer) *PollFD {
 	return instance
 }
 
+// Equals compares this PollFD with another PollFD, and returns true if they represent the same GObject.
+func (recv *PollFD) Equals(other *PollFD) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *PollFD) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -12472,6 +12662,11 @@ func PrivateNewFromNative(native unsafe.Pointer) *Private {
 	return instance
 }
 
+// Equals compares this Private with another Private, and returns true if they represent the same GObject.
+func (recv *Private) Equals(other *Private) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Private) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -12516,6 +12711,11 @@ func PtrArrayNewFromNative(native unsafe.Pointer) *PtrArray {
 	instance := &PtrArray{native: native}
 
 	return instance
+}
+
+// Equals compares this PtrArray with another PtrArray, and returns true if they represent the same GObject.
+func (recv *PtrArray) Equals(other *PtrArray) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *PtrArray) Native() unsafe.Pointer {
@@ -12574,6 +12774,11 @@ func QueueNewFromNative(native unsafe.Pointer) *Queue {
 	instance := &Queue{native: native}
 
 	return instance
+}
+
+// Equals compares this Queue with another Queue, and returns true if they represent the same GObject.
+func (recv *Queue) Equals(other *Queue) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Queue) Native() unsafe.Pointer {
@@ -12916,6 +13121,11 @@ func RWLockNewFromNative(native unsafe.Pointer) *RWLock {
 	return instance
 }
 
+// Equals compares this RWLock with another RWLock, and returns true if they represent the same GObject.
+func (recv *RWLock) Equals(other *RWLock) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *RWLock) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -13186,6 +13396,11 @@ func RandNewFromNative(native unsafe.Pointer) *Rand {
 	instance := &Rand{native: native}
 
 	return instance
+}
+
+// Equals compares this Rand with another Rand, and returns true if they represent the same GObject.
+func (recv *Rand) Equals(other *Rand) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Rand) Native() unsafe.Pointer {
@@ -13479,6 +13694,11 @@ func RecMutexNewFromNative(native unsafe.Pointer) *RecMutex {
 	return instance
 }
 
+// Equals compares this RecMutex with another RecMutex, and returns true if they represent the same GObject.
+func (recv *RecMutex) Equals(other *RecMutex) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *RecMutex) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -13661,6 +13881,11 @@ func RegexNewFromNative(native unsafe.Pointer) *Regex {
 	instance := &Regex{native: native}
 
 	return instance
+}
+
+// Equals compares this Regex with another Regex, and returns true if they represent the same GObject.
+func (recv *Regex) Equals(other *Regex) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Regex) Native() unsafe.Pointer {
@@ -13965,6 +14190,11 @@ func SListNewFromNative(native unsafe.Pointer) *SList {
 	return instance
 }
 
+// Equals compares this SList with another SList, and returns true if they represent the same GObject.
+func (recv *SList) Equals(other *SList) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SList) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -14011,6 +14241,11 @@ func ScannerNewFromNative(native unsafe.Pointer) *Scanner {
 	instance := &Scanner{native: native}
 
 	return instance
+}
+
+// Equals compares this Scanner with another Scanner, and returns true if they represent the same GObject.
+func (recv *Scanner) Equals(other *Scanner) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Scanner) Native() unsafe.Pointer {
@@ -14641,6 +14876,11 @@ func ScannerConfigNewFromNative(native unsafe.Pointer) *ScannerConfig {
 	return instance
 }
 
+// Equals compares this ScannerConfig with another ScannerConfig, and returns true if they represent the same GObject.
+func (recv *ScannerConfig) Equals(other *ScannerConfig) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ScannerConfig) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -15045,6 +15285,11 @@ func SequenceNewFromNative(native unsafe.Pointer) *Sequence {
 	return instance
 }
 
+// Equals compares this Sequence with another Sequence, and returns true if they represent the same GObject.
+func (recv *Sequence) Equals(other *Sequence) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Sequence) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -15294,6 +15539,11 @@ func SequenceIterNewFromNative(native unsafe.Pointer) *SequenceIter {
 	instance := &SequenceIter{native: native}
 
 	return instance
+}
+
+// Equals compares this SequenceIter with another SequenceIter, and returns true if they represent the same GObject.
+func (recv *SequenceIter) Equals(other *SequenceIter) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SequenceIter) Native() unsafe.Pointer {
@@ -15592,6 +15842,11 @@ func SourceNewFromNative(native unsafe.Pointer) *Source {
 	instance := &Source{native: native}
 
 	return instance
+}
+
+// Equals compares this Source with another Source, and returns true if they represent the same GObject.
+func (recv *Source) Equals(other *Source) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Source) Native() unsafe.Pointer {
@@ -16331,6 +16586,11 @@ func SourceCallbackFuncsNewFromNative(native unsafe.Pointer) *SourceCallbackFunc
 	return instance
 }
 
+// Equals compares this SourceCallbackFuncs with another SourceCallbackFuncs, and returns true if they represent the same GObject.
+func (recv *SourceCallbackFuncs) Equals(other *SourceCallbackFuncs) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SourceCallbackFuncs) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -16381,6 +16641,11 @@ func SourceFuncsNewFromNative(native unsafe.Pointer) *SourceFuncs {
 	instance := &SourceFuncs{native: native}
 
 	return instance
+}
+
+// Equals compares this SourceFuncs with another SourceFuncs, and returns true if they represent the same GObject.
+func (recv *SourceFuncs) Equals(other *SourceFuncs) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SourceFuncs) Native() unsafe.Pointer {
@@ -16439,6 +16704,11 @@ func SourcePrivateNewFromNative(native unsafe.Pointer) *SourcePrivate {
 	return instance
 }
 
+// Equals compares this SourcePrivate with another SourcePrivate, and returns true if they represent the same GObject.
+func (recv *SourcePrivate) Equals(other *SourcePrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SourcePrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -16479,6 +16749,11 @@ func StatBufNewFromNative(native unsafe.Pointer) *StatBuf {
 	return instance
 }
 
+// Equals compares this StatBuf with another StatBuf, and returns true if they represent the same GObject.
+func (recv *StatBuf) Equals(other *StatBuf) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *StatBuf) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -16517,6 +16792,11 @@ func StringNewFromNative(native unsafe.Pointer) *String {
 	instance := &String{native: native}
 
 	return instance
+}
+
+// Equals compares this String with another String, and returns true if they represent the same GObject.
+func (recv *String) Equals(other *String) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *String) Native() unsafe.Pointer {
@@ -17413,6 +17693,11 @@ func StringChunkNewFromNative(native unsafe.Pointer) *StringChunk {
 	return instance
 }
 
+// Equals compares this StringChunk with another StringChunk, and returns true if they represent the same GObject.
+func (recv *StringChunk) Equals(other *StringChunk) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *StringChunk) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -17609,6 +17894,11 @@ func TestCaseNewFromNative(native unsafe.Pointer) *TestCase {
 	return instance
 }
 
+// Equals compares this TestCase with another TestCase, and returns true if they represent the same GObject.
+func (recv *TestCase) Equals(other *TestCase) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TestCase) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -17647,6 +17937,11 @@ func TestConfigNewFromNative(native unsafe.Pointer) *TestConfig {
 	instance := &TestConfig{native: native}
 
 	return instance
+}
+
+// Equals compares this TestConfig with another TestConfig, and returns true if they represent the same GObject.
+func (recv *TestConfig) Equals(other *TestConfig) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TestConfig) Native() unsafe.Pointer {
@@ -17771,6 +18066,11 @@ func TestLogBufferNewFromNative(native unsafe.Pointer) *TestLogBuffer {
 	instance := &TestLogBuffer{native: native}
 
 	return instance
+}
+
+// Equals compares this TestLogBuffer with another TestLogBuffer, and returns true if they represent the same GObject.
+func (recv *TestLogBuffer) Equals(other *TestLogBuffer) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TestLogBuffer) Native() unsafe.Pointer {
@@ -17903,6 +18203,11 @@ func TestLogMsgNewFromNative(native unsafe.Pointer) *TestLogMsg {
 	return instance
 }
 
+// Equals compares this TestLogMsg with another TestLogMsg, and returns true if they represent the same GObject.
+func (recv *TestLogMsg) Equals(other *TestLogMsg) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TestLogMsg) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -18031,6 +18336,11 @@ func TestSuiteNewFromNative(native unsafe.Pointer) *TestSuite {
 	return instance
 }
 
+// Equals compares this TestSuite with another TestSuite, and returns true if they represent the same GObject.
+func (recv *TestSuite) Equals(other *TestSuite) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TestSuite) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -18129,6 +18439,11 @@ func ThreadNewFromNative(native unsafe.Pointer) *Thread {
 	return instance
 }
 
+// Equals compares this Thread with another Thread, and returns true if they represent the same GObject.
+func (recv *Thread) Equals(other *Thread) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Thread) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -18218,6 +18533,11 @@ func ThreadPoolNewFromNative(native unsafe.Pointer) *ThreadPool {
 	instance := &ThreadPool{native: native}
 
 	return instance
+}
+
+// Equals compares this ThreadPool with another ThreadPool, and returns true if they represent the same GObject.
+func (recv *ThreadPool) Equals(other *ThreadPool) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ThreadPool) Native() unsafe.Pointer {
@@ -18447,6 +18767,11 @@ func TimeValNewFromNative(native unsafe.Pointer) *TimeVal {
 	return instance
 }
 
+// Equals compares this TimeVal with another TimeVal, and returns true if they represent the same GObject.
+func (recv *TimeVal) Equals(other *TimeVal) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TimeVal) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -18574,6 +18899,11 @@ func TimeZoneNewFromNative(native unsafe.Pointer) *TimeZone {
 	instance := &TimeZone{native: native}
 
 	return instance
+}
+
+// Equals compares this TimeZone with another TimeZone, and returns true if they represent the same GObject.
+func (recv *TimeZone) Equals(other *TimeZone) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TimeZone) Native() unsafe.Pointer {
@@ -18984,6 +19314,11 @@ func TimerNewFromNative(native unsafe.Pointer) *Timer {
 	return instance
 }
 
+// Equals compares this Timer with another Timer, and returns true if they represent the same GObject.
+func (recv *Timer) Equals(other *Timer) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Timer) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -19229,6 +19564,11 @@ func TrashStackNewFromNative(native unsafe.Pointer) *TrashStack {
 	return instance
 }
 
+// Equals compares this TrashStack with another TrashStack, and returns true if they represent the same GObject.
+func (recv *TrashStack) Equals(other *TrashStack) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TrashStack) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -19281,6 +19621,11 @@ func TreeNewFromNative(native unsafe.Pointer) *Tree {
 	instance := &Tree{native: native}
 
 	return instance
+}
+
+// Equals compares this Tree with another Tree, and returns true if they represent the same GObject.
+func (recv *Tree) Equals(other *Tree) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Tree) Native() unsafe.Pointer {
@@ -19491,6 +19836,11 @@ func VariantNewFromNative(native unsafe.Pointer) *Variant {
 	instance := &Variant{native: native}
 
 	return instance
+}
+
+// Equals compares this Variant with another Variant, and returns true if they represent the same GObject.
+func (recv *Variant) Equals(other *Variant) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Variant) Native() unsafe.Pointer {
@@ -21680,6 +22030,11 @@ func VariantBuilderNewFromNative(native unsafe.Pointer) *VariantBuilder {
 	return instance
 }
 
+// Equals compares this VariantBuilder with another VariantBuilder, and returns true if they represent the same GObject.
+func (recv *VariantBuilder) Equals(other *VariantBuilder) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *VariantBuilder) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -21974,6 +22329,11 @@ func VariantDictNewFromNative(native unsafe.Pointer) *VariantDict {
 	instance := &VariantDict{native: native}
 
 	return instance
+}
+
+// Equals compares this VariantDict with another VariantDict, and returns true if they represent the same GObject.
+func (recv *VariantDict) Equals(other *VariantDict) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *VariantDict) Native() unsafe.Pointer {
@@ -22316,6 +22676,11 @@ func VariantIterNewFromNative(native unsafe.Pointer) *VariantIter {
 	return instance
 }
 
+// Equals compares this VariantIter with another VariantIter, and returns true if they represent the same GObject.
+func (recv *VariantIter) Equals(other *VariantIter) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *VariantIter) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -22515,6 +22880,11 @@ func VariantTypeNewFromNative(native unsafe.Pointer) *VariantType {
 	instance := &VariantType{native: native}
 
 	return instance
+}
+
+// Equals compares this VariantType with another VariantType, and returns true if they represent the same GObject.
+func (recv *VariantType) Equals(other *VariantType) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *VariantType) Native() unsafe.Pointer {

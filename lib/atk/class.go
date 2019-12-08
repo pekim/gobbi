@@ -61,6 +61,11 @@ func CastToGObjectAccessible(object *gobject.Object) *GObjectAccessible {
 	return GObjectAccessibleNewFromNative(object.Native())
 }
 
+// Equals compares this GObjectAccessible with another GObjectAccessible, and returns true if they represent the same GObject.
+func (recv *GObjectAccessible) Equals(other *GObjectAccessible) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *GObjectAccessible) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -155,6 +160,11 @@ if the Object is not a Hyperlink.
 */
 func CastToHyperlink(object *gobject.Object) *Hyperlink {
 	return HyperlinkNewFromNative(object.Native())
+}
+
+// Equals compares this Hyperlink with another Hyperlink, and returns true if they represent the same GObject.
+func (recv *Hyperlink) Equals(other *Hyperlink) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Hyperlink) Native() unsafe.Pointer {
@@ -479,6 +489,11 @@ func CastToMisc(object *gobject.Object) *Misc {
 	return MiscNewFromNative(object.Native())
 }
 
+// Equals compares this Misc with another Misc, and returns true if they represent the same GObject.
+func (recv *Misc) Equals(other *Misc) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Misc) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -604,6 +619,11 @@ func CastToNoOpObject(object *gobject.Object) *NoOpObject {
 	return NoOpObjectNewFromNative(object.Native())
 }
 
+// Equals compares this NoOpObject with another NoOpObject, and returns true if they represent the same GObject.
+func (recv *NoOpObject) Equals(other *NoOpObject) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *NoOpObject) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -707,6 +727,11 @@ func CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
 	return NoOpObjectFactoryNewFromNative(object.Native())
 }
 
+// Equals compares this NoOpObjectFactory with another NoOpObjectFactory, and returns true if they represent the same GObject.
+func (recv *NoOpObjectFactory) Equals(other *NoOpObjectFactory) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *NoOpObjectFactory) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -801,6 +826,11 @@ if the Object is not a Object.
 */
 func CastToObject(object *gobject.Object) *Object {
 	return ObjectNewFromNative(object.Native())
+}
+
+// Equals compares this Object with another Object, and returns true if they represent the same GObject.
+func (recv *Object) Equals(other *Object) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Object) Native() unsafe.Pointer {
@@ -1678,6 +1708,11 @@ func CastToObjectFactory(object *gobject.Object) *ObjectFactory {
 	return ObjectFactoryNewFromNative(object.Native())
 }
 
+// Equals compares this ObjectFactory with another ObjectFactory, and returns true if they represent the same GObject.
+func (recv *ObjectFactory) Equals(other *ObjectFactory) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ObjectFactory) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1810,6 +1845,11 @@ func CastToPlug(object *gobject.Object) *Plug {
 	return PlugNewFromNative(object.Native())
 }
 
+// Equals compares this Plug with another Plug, and returns true if they represent the same GObject.
+func (recv *Plug) Equals(other *Plug) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Plug) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1938,6 +1978,11 @@ func CastToRegistry(object *gobject.Object) *Registry {
 	return RegistryNewFromNative(object.Native())
 }
 
+// Equals compares this Registry with another Registry, and returns true if they represent the same GObject.
+func (recv *Registry) Equals(other *Registry) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Registry) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2014,6 +2059,11 @@ if the Object is not a Relation.
 */
 func CastToRelation(object *gobject.Object) *Relation {
 	return RelationNewFromNative(object.Native())
+}
+
+// Equals compares this Relation with another Relation, and returns true if they represent the same GObject.
+func (recv *Relation) Equals(other *Relation) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Relation) Native() unsafe.Pointer {
@@ -2220,6 +2270,11 @@ if the Object is not a RelationSet.
 */
 func CastToRelationSet(object *gobject.Object) *RelationSet {
 	return RelationSetNewFromNative(object.Native())
+}
+
+// Equals compares this RelationSet with another RelationSet, and returns true if they represent the same GObject.
+func (recv *RelationSet) Equals(other *RelationSet) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *RelationSet) Native() unsafe.Pointer {
@@ -2580,6 +2635,11 @@ func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromNative(object.Native())
 }
 
+// Equals compares this Socket with another Socket, and returns true if they represent the same GObject.
+func (recv *Socket) Equals(other *Socket) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Socket) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2735,6 +2795,11 @@ if the Object is not a StateSet.
 */
 func CastToStateSet(object *gobject.Object) *StateSet {
 	return StateSetNewFromNative(object.Native())
+}
+
+// Equals compares this StateSet with another StateSet, and returns true if they represent the same GObject.
+func (recv *StateSet) Equals(other *StateSet) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *StateSet) Native() unsafe.Pointer {
@@ -3093,6 +3158,11 @@ if the Object is not a Util.
 */
 func CastToUtil(object *gobject.Object) *Util {
 	return UtilNewFromNative(object.Native())
+}
+
+// Equals compares this Util with another Util, and returns true if they represent the same GObject.
+func (recv *Util) Equals(other *Util) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Util) Native() unsafe.Pointer {

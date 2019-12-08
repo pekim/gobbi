@@ -40,6 +40,11 @@ func CastToBufferClass(object *gobject.Object) *BufferClass {
 	return BufferClassNewFromNative(object.Native())
 }
 
+// Equals compares this BufferClass with another BufferClass, and returns true if they represent the same GObject.
+func (recv *BufferClass) Equals(other *BufferClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *BufferClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -117,6 +122,11 @@ func CastToBufferPrivate(object *gobject.Object) *BufferPrivate {
 	return BufferPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this BufferPrivate with another BufferPrivate, and returns true if they represent the same GObject.
+func (recv *BufferPrivate) Equals(other *BufferPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *BufferPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -164,6 +174,11 @@ if the Object is not a CompletionClass.
 */
 func CastToCompletionClass(object *gobject.Object) *CompletionClass {
 	return CompletionClassNewFromNative(object.Native())
+}
+
+// Equals compares this CompletionClass with another CompletionClass, and returns true if they represent the same GObject.
+func (recv *CompletionClass) Equals(other *CompletionClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *CompletionClass) Native() unsafe.Pointer {
@@ -247,6 +262,11 @@ func CastToCompletionContextClass(object *gobject.Object) *CompletionContextClas
 	return CompletionContextClassNewFromNative(object.Native())
 }
 
+// Equals compares this CompletionContextClass with another CompletionContextClass, and returns true if they represent the same GObject.
+func (recv *CompletionContextClass) Equals(other *CompletionContextClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *CompletionContextClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -316,6 +336,11 @@ func CastToCompletionContextPrivate(object *gobject.Object) *CompletionContextPr
 	return CompletionContextPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this CompletionContextPrivate with another CompletionContextPrivate, and returns true if they represent the same GObject.
+func (recv *CompletionContextPrivate) Equals(other *CompletionContextPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *CompletionContextPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -363,6 +388,11 @@ if the Object is not a CompletionInfoClass.
 */
 func CastToCompletionInfoClass(object *gobject.Object) *CompletionInfoClass {
 	return CompletionInfoClassNewFromNative(object.Native())
+}
+
+// Equals compares this CompletionInfoClass with another CompletionInfoClass, and returns true if they represent the same GObject.
+func (recv *CompletionInfoClass) Equals(other *CompletionInfoClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *CompletionInfoClass) Native() unsafe.Pointer {
@@ -422,6 +452,11 @@ func CastToCompletionInfoPrivate(object *gobject.Object) *CompletionInfoPrivate 
 	return CompletionInfoPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this CompletionInfoPrivate with another CompletionInfoPrivate, and returns true if they represent the same GObject.
+func (recv *CompletionInfoPrivate) Equals(other *CompletionInfoPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *CompletionInfoPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -469,6 +504,11 @@ if the Object is not a CompletionItemClass.
 */
 func CastToCompletionItemClass(object *gobject.Object) *CompletionItemClass {
 	return CompletionItemClassNewFromNative(object.Native())
+}
+
+// Equals compares this CompletionItemClass with another CompletionItemClass, and returns true if they represent the same GObject.
+func (recv *CompletionItemClass) Equals(other *CompletionItemClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *CompletionItemClass) Native() unsafe.Pointer {
@@ -524,6 +564,11 @@ func CastToCompletionItemPrivate(object *gobject.Object) *CompletionItemPrivate 
 	return CompletionItemPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this CompletionItemPrivate with another CompletionItemPrivate, and returns true if they represent the same GObject.
+func (recv *CompletionItemPrivate) Equals(other *CompletionItemPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *CompletionItemPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -573,6 +618,11 @@ func CastToCompletionPrivate(object *gobject.Object) *CompletionPrivate {
 	return CompletionPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this CompletionPrivate with another CompletionPrivate, and returns true if they represent the same GObject.
+func (recv *CompletionPrivate) Equals(other *CompletionPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *CompletionPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -620,6 +670,11 @@ if the Object is not a CompletionProposalIface.
 */
 func CastToCompletionProposalIface(object *gobject.Object) *CompletionProposalIface {
 	return CompletionProposalIfaceNewFromNative(object.Native())
+}
+
+// Equals compares this CompletionProposalIface with another CompletionProposalIface, and returns true if they represent the same GObject.
+func (recv *CompletionProposalIface) Equals(other *CompletionProposalIface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *CompletionProposalIface) Native() unsafe.Pointer {
@@ -713,6 +768,11 @@ if the Object is not a CompletionProviderIface.
 */
 func CastToCompletionProviderIface(object *gobject.Object) *CompletionProviderIface {
 	return CompletionProviderIfaceNewFromNative(object.Native())
+}
+
+// Equals compares this CompletionProviderIface with another CompletionProviderIface, and returns true if they represent the same GObject.
+func (recv *CompletionProviderIface) Equals(other *CompletionProviderIface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *CompletionProviderIface) Native() unsafe.Pointer {
@@ -820,6 +880,11 @@ func CastToCompletionWordsClass(object *gobject.Object) *CompletionWordsClass {
 	return CompletionWordsClassNewFromNative(object.Native())
 }
 
+// Equals compares this CompletionWordsClass with another CompletionWordsClass, and returns true if they represent the same GObject.
+func (recv *CompletionWordsClass) Equals(other *CompletionWordsClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *CompletionWordsClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -873,6 +938,11 @@ func CastToCompletionWordsPrivate(object *gobject.Object) *CompletionWordsPrivat
 	return CompletionWordsPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this CompletionWordsPrivate with another CompletionWordsPrivate, and returns true if they represent the same GObject.
+func (recv *CompletionWordsPrivate) Equals(other *CompletionWordsPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *CompletionWordsPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -920,6 +990,11 @@ if the Object is not a Encoding.
 */
 func CastToEncoding(object *gobject.Object) *Encoding {
 	return EncodingNewFromNative(object.Native())
+}
+
+// Equals compares this Encoding with another Encoding, and returns true if they represent the same GObject.
+func (recv *Encoding) Equals(other *Encoding) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Encoding) Native() unsafe.Pointer {
@@ -1127,6 +1202,11 @@ func CastToFileClass(object *gobject.Object) *FileClass {
 	return FileClassNewFromNative(object.Native())
 }
 
+// Equals compares this FileClass with another FileClass, and returns true if they represent the same GObject.
+func (recv *FileClass) Equals(other *FileClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FileClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1182,6 +1262,11 @@ if the Object is not a FileLoaderClass.
 */
 func CastToFileLoaderClass(object *gobject.Object) *FileLoaderClass {
 	return FileLoaderClassNewFromNative(object.Native())
+}
+
+// Equals compares this FileLoaderClass with another FileLoaderClass, and returns true if they represent the same GObject.
+func (recv *FileLoaderClass) Equals(other *FileLoaderClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FileLoaderClass) Native() unsafe.Pointer {
@@ -1241,6 +1326,11 @@ func CastToFileLoaderPrivate(object *gobject.Object) *FileLoaderPrivate {
 	return FileLoaderPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this FileLoaderPrivate with another FileLoaderPrivate, and returns true if they represent the same GObject.
+func (recv *FileLoaderPrivate) Equals(other *FileLoaderPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FileLoaderPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1290,6 +1380,11 @@ func CastToFilePrivate(object *gobject.Object) *FilePrivate {
 	return FilePrivateNewFromNative(object.Native())
 }
 
+// Equals compares this FilePrivate with another FilePrivate, and returns true if they represent the same GObject.
+func (recv *FilePrivate) Equals(other *FilePrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FilePrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1337,6 +1432,11 @@ if the Object is not a FileSaverClass.
 */
 func CastToFileSaverClass(object *gobject.Object) *FileSaverClass {
 	return FileSaverClassNewFromNative(object.Native())
+}
+
+// Equals compares this FileSaverClass with another FileSaverClass, and returns true if they represent the same GObject.
+func (recv *FileSaverClass) Equals(other *FileSaverClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FileSaverClass) Native() unsafe.Pointer {
@@ -1396,6 +1496,11 @@ func CastToFileSaverPrivate(object *gobject.Object) *FileSaverPrivate {
 	return FileSaverPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this FileSaverPrivate with another FileSaverPrivate, and returns true if they represent the same GObject.
+func (recv *FileSaverPrivate) Equals(other *FileSaverPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FileSaverPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1443,6 +1548,11 @@ if the Object is not a GutterClass.
 */
 func CastToGutterClass(object *gobject.Object) *GutterClass {
 	return GutterClassNewFromNative(object.Native())
+}
+
+// Equals compares this GutterClass with another GutterClass, and returns true if they represent the same GObject.
+func (recv *GutterClass) Equals(other *GutterClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *GutterClass) Native() unsafe.Pointer {
@@ -1498,6 +1608,11 @@ func CastToGutterPrivate(object *gobject.Object) *GutterPrivate {
 	return GutterPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this GutterPrivate with another GutterPrivate, and returns true if they represent the same GObject.
+func (recv *GutterPrivate) Equals(other *GutterPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *GutterPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1545,6 +1660,11 @@ if the Object is not a GutterRendererClass.
 */
 func CastToGutterRendererClass(object *gobject.Object) *GutterRendererClass {
 	return GutterRendererClassNewFromNative(object.Native())
+}
+
+// Equals compares this GutterRendererClass with another GutterRendererClass, and returns true if they represent the same GObject.
+func (recv *GutterRendererClass) Equals(other *GutterRendererClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *GutterRendererClass) Native() unsafe.Pointer {
@@ -1640,6 +1760,11 @@ func CastToGutterRendererPixbufClass(object *gobject.Object) *GutterRendererPixb
 	return GutterRendererPixbufClassNewFromNative(object.Native())
 }
 
+// Equals compares this GutterRendererPixbufClass with another GutterRendererPixbufClass, and returns true if they represent the same GObject.
+func (recv *GutterRendererPixbufClass) Equals(other *GutterRendererPixbufClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *GutterRendererPixbufClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1687,6 +1812,11 @@ if the Object is not a GutterRendererPixbufPrivate.
 */
 func CastToGutterRendererPixbufPrivate(object *gobject.Object) *GutterRendererPixbufPrivate {
 	return GutterRendererPixbufPrivateNewFromNative(object.Native())
+}
+
+// Equals compares this GutterRendererPixbufPrivate with another GutterRendererPixbufPrivate, and returns true if they represent the same GObject.
+func (recv *GutterRendererPixbufPrivate) Equals(other *GutterRendererPixbufPrivate) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *GutterRendererPixbufPrivate) Native() unsafe.Pointer {
@@ -1738,6 +1868,11 @@ func CastToGutterRendererPrivate(object *gobject.Object) *GutterRendererPrivate 
 	return GutterRendererPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this GutterRendererPrivate with another GutterRendererPrivate, and returns true if they represent the same GObject.
+func (recv *GutterRendererPrivate) Equals(other *GutterRendererPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *GutterRendererPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1785,6 +1920,11 @@ if the Object is not a GutterRendererTextClass.
 */
 func CastToGutterRendererTextClass(object *gobject.Object) *GutterRendererTextClass {
 	return GutterRendererTextClassNewFromNative(object.Native())
+}
+
+// Equals compares this GutterRendererTextClass with another GutterRendererTextClass, and returns true if they represent the same GObject.
+func (recv *GutterRendererTextClass) Equals(other *GutterRendererTextClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *GutterRendererTextClass) Native() unsafe.Pointer {
@@ -1836,6 +1976,11 @@ func CastToGutterRendererTextPrivate(object *gobject.Object) *GutterRendererText
 	return GutterRendererTextPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this GutterRendererTextPrivate with another GutterRendererTextPrivate, and returns true if they represent the same GObject.
+func (recv *GutterRendererTextPrivate) Equals(other *GutterRendererTextPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *GutterRendererTextPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1883,6 +2028,11 @@ if the Object is not a LanguageClass.
 */
 func CastToLanguageClass(object *gobject.Object) *LanguageClass {
 	return LanguageClassNewFromNative(object.Native())
+}
+
+// Equals compares this LanguageClass with another LanguageClass, and returns true if they represent the same GObject.
+func (recv *LanguageClass) Equals(other *LanguageClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *LanguageClass) Native() unsafe.Pointer {
@@ -1944,6 +2094,11 @@ if the Object is not a LanguageManagerClass.
 */
 func CastToLanguageManagerClass(object *gobject.Object) *LanguageManagerClass {
 	return LanguageManagerClassNewFromNative(object.Native())
+}
+
+// Equals compares this LanguageManagerClass with another LanguageManagerClass, and returns true if they represent the same GObject.
+func (recv *LanguageManagerClass) Equals(other *LanguageManagerClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *LanguageManagerClass) Native() unsafe.Pointer {
@@ -2015,6 +2170,11 @@ func CastToLanguageManagerPrivate(object *gobject.Object) *LanguageManagerPrivat
 	return LanguageManagerPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this LanguageManagerPrivate with another LanguageManagerPrivate, and returns true if they represent the same GObject.
+func (recv *LanguageManagerPrivate) Equals(other *LanguageManagerPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *LanguageManagerPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2064,6 +2224,11 @@ func CastToLanguagePrivate(object *gobject.Object) *LanguagePrivate {
 	return LanguagePrivateNewFromNative(object.Native())
 }
 
+// Equals compares this LanguagePrivate with another LanguagePrivate, and returns true if they represent the same GObject.
+func (recv *LanguagePrivate) Equals(other *LanguagePrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *LanguagePrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2111,6 +2276,11 @@ if the Object is not a MapClass.
 */
 func CastToMapClass(object *gobject.Object) *MapClass {
 	return MapClassNewFromNative(object.Native())
+}
+
+// Equals compares this MapClass with another MapClass, and returns true if they represent the same GObject.
+func (recv *MapClass) Equals(other *MapClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *MapClass) Native() unsafe.Pointer {
@@ -2180,6 +2350,11 @@ func CastToMarkAttributesClass(object *gobject.Object) *MarkAttributesClass {
 	return MarkAttributesClassNewFromNative(object.Native())
 }
 
+// Equals compares this MarkAttributesClass with another MarkAttributesClass, and returns true if they represent the same GObject.
+func (recv *MarkAttributesClass) Equals(other *MarkAttributesClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *MarkAttributesClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2229,6 +2404,11 @@ func CastToMarkAttributesPrivate(object *gobject.Object) *MarkAttributesPrivate 
 	return MarkAttributesPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this MarkAttributesPrivate with another MarkAttributesPrivate, and returns true if they represent the same GObject.
+func (recv *MarkAttributesPrivate) Equals(other *MarkAttributesPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *MarkAttributesPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2276,6 +2456,11 @@ if the Object is not a MarkClass.
 */
 func CastToMarkClass(object *gobject.Object) *MarkClass {
 	return MarkClassNewFromNative(object.Native())
+}
+
+// Equals compares this MarkClass with another MarkClass, and returns true if they represent the same GObject.
+func (recv *MarkClass) Equals(other *MarkClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *MarkClass) Native() unsafe.Pointer {
@@ -2339,6 +2524,11 @@ func CastToMarkPrivate(object *gobject.Object) *MarkPrivate {
 	return MarkPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this MarkPrivate with another MarkPrivate, and returns true if they represent the same GObject.
+func (recv *MarkPrivate) Equals(other *MarkPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *MarkPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2386,6 +2576,11 @@ if the Object is not a PrintCompositorClass.
 */
 func CastToPrintCompositorClass(object *gobject.Object) *PrintCompositorClass {
 	return PrintCompositorClassNewFromNative(object.Native())
+}
+
+// Equals compares this PrintCompositorClass with another PrintCompositorClass, and returns true if they represent the same GObject.
+func (recv *PrintCompositorClass) Equals(other *PrintCompositorClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *PrintCompositorClass) Native() unsafe.Pointer {
@@ -2449,6 +2644,11 @@ func CastToPrintCompositorPrivate(object *gobject.Object) *PrintCompositorPrivat
 	return PrintCompositorPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this PrintCompositorPrivate with another PrintCompositorPrivate, and returns true if they represent the same GObject.
+func (recv *PrintCompositorPrivate) Equals(other *PrintCompositorPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *PrintCompositorPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2496,6 +2696,11 @@ if the Object is not a RegionClass.
 */
 func CastToRegionClass(object *gobject.Object) *RegionClass {
 	return RegionClassNewFromNative(object.Native())
+}
+
+// Equals compares this RegionClass with another RegionClass, and returns true if they represent the same GObject.
+func (recv *RegionClass) Equals(other *RegionClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *RegionClass) Native() unsafe.Pointer {
@@ -2553,6 +2758,11 @@ if the Object is not a RegionIter.
 */
 func CastToRegionIter(object *gobject.Object) *RegionIter {
 	return RegionIterNewFromNative(object.Native())
+}
+
+// Equals compares this RegionIter with another RegionIter, and returns true if they represent the same GObject.
+func (recv *RegionIter) Equals(other *RegionIter) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *RegionIter) Native() unsafe.Pointer {
@@ -2670,6 +2880,11 @@ func CastToSearchContextClass(object *gobject.Object) *SearchContextClass {
 	return SearchContextClassNewFromNative(object.Native())
 }
 
+// Equals compares this SearchContextClass with another SearchContextClass, and returns true if they represent the same GObject.
+func (recv *SearchContextClass) Equals(other *SearchContextClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SearchContextClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2727,6 +2942,11 @@ func CastToSearchContextPrivate(object *gobject.Object) *SearchContextPrivate {
 	return SearchContextPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this SearchContextPrivate with another SearchContextPrivate, and returns true if they represent the same GObject.
+func (recv *SearchContextPrivate) Equals(other *SearchContextPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SearchContextPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2774,6 +2994,11 @@ if the Object is not a SearchSettingsClass.
 */
 func CastToSearchSettingsClass(object *gobject.Object) *SearchSettingsClass {
 	return SearchSettingsClassNewFromNative(object.Native())
+}
+
+// Equals compares this SearchSettingsClass with another SearchSettingsClass, and returns true if they represent the same GObject.
+func (recv *SearchSettingsClass) Equals(other *SearchSettingsClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SearchSettingsClass) Native() unsafe.Pointer {
@@ -2833,6 +3058,11 @@ func CastToSearchSettingsPrivate(object *gobject.Object) *SearchSettingsPrivate 
 	return SearchSettingsPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this SearchSettingsPrivate with another SearchSettingsPrivate, and returns true if they represent the same GObject.
+func (recv *SearchSettingsPrivate) Equals(other *SearchSettingsPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SearchSettingsPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2880,6 +3110,11 @@ if the Object is not a SpaceDrawerClass.
 */
 func CastToSpaceDrawerClass(object *gobject.Object) *SpaceDrawerClass {
 	return SpaceDrawerClassNewFromNative(object.Native())
+}
+
+// Equals compares this SpaceDrawerClass with another SpaceDrawerClass, and returns true if they represent the same GObject.
+func (recv *SpaceDrawerClass) Equals(other *SpaceDrawerClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SpaceDrawerClass) Native() unsafe.Pointer {
@@ -2939,6 +3174,11 @@ func CastToSpaceDrawerPrivate(object *gobject.Object) *SpaceDrawerPrivate {
 	return SpaceDrawerPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this SpaceDrawerPrivate with another SpaceDrawerPrivate, and returns true if they represent the same GObject.
+func (recv *SpaceDrawerPrivate) Equals(other *SpaceDrawerPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SpaceDrawerPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2988,6 +3228,11 @@ func CastToStyleClass(object *gobject.Object) *StyleClass {
 	return StyleClassNewFromNative(object.Native())
 }
 
+// Equals compares this StyleClass with another StyleClass, and returns true if they represent the same GObject.
+func (recv *StyleClass) Equals(other *StyleClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *StyleClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -3035,6 +3280,11 @@ if the Object is not a StyleSchemeChooserButtonClass.
 */
 func CastToStyleSchemeChooserButtonClass(object *gobject.Object) *StyleSchemeChooserButtonClass {
 	return StyleSchemeChooserButtonClassNewFromNative(object.Native())
+}
+
+// Equals compares this StyleSchemeChooserButtonClass with another StyleSchemeChooserButtonClass, and returns true if they represent the same GObject.
+func (recv *StyleSchemeChooserButtonClass) Equals(other *StyleSchemeChooserButtonClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *StyleSchemeChooserButtonClass) Native() unsafe.Pointer {
@@ -3088,6 +3338,11 @@ if the Object is not a StyleSchemeChooserInterface.
 */
 func CastToStyleSchemeChooserInterface(object *gobject.Object) *StyleSchemeChooserInterface {
 	return StyleSchemeChooserInterfaceNewFromNative(object.Native())
+}
+
+// Equals compares this StyleSchemeChooserInterface with another StyleSchemeChooserInterface, and returns true if they represent the same GObject.
+func (recv *StyleSchemeChooserInterface) Equals(other *StyleSchemeChooserInterface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *StyleSchemeChooserInterface) Native() unsafe.Pointer {
@@ -3155,6 +3410,11 @@ func CastToStyleSchemeChooserWidgetClass(object *gobject.Object) *StyleSchemeCho
 	return StyleSchemeChooserWidgetClassNewFromNative(object.Native())
 }
 
+// Equals compares this StyleSchemeChooserWidgetClass with another StyleSchemeChooserWidgetClass, and returns true if they represent the same GObject.
+func (recv *StyleSchemeChooserWidgetClass) Equals(other *StyleSchemeChooserWidgetClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *StyleSchemeChooserWidgetClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -3206,6 +3466,11 @@ if the Object is not a StyleSchemeClass.
 */
 func CastToStyleSchemeClass(object *gobject.Object) *StyleSchemeClass {
 	return StyleSchemeClassNewFromNative(object.Native())
+}
+
+// Equals compares this StyleSchemeClass with another StyleSchemeClass, and returns true if they represent the same GObject.
+func (recv *StyleSchemeClass) Equals(other *StyleSchemeClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *StyleSchemeClass) Native() unsafe.Pointer {
@@ -3267,6 +3532,11 @@ if the Object is not a StyleSchemeManagerClass.
 */
 func CastToStyleSchemeManagerClass(object *gobject.Object) *StyleSchemeManagerClass {
 	return StyleSchemeManagerClassNewFromNative(object.Native())
+}
+
+// Equals compares this StyleSchemeManagerClass with another StyleSchemeManagerClass, and returns true if they represent the same GObject.
+func (recv *StyleSchemeManagerClass) Equals(other *StyleSchemeManagerClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *StyleSchemeManagerClass) Native() unsafe.Pointer {
@@ -3338,6 +3608,11 @@ func CastToStyleSchemeManagerPrivate(object *gobject.Object) *StyleSchemeManager
 	return StyleSchemeManagerPrivateNewFromNative(object.Native())
 }
 
+// Equals compares this StyleSchemeManagerPrivate with another StyleSchemeManagerPrivate, and returns true if they represent the same GObject.
+func (recv *StyleSchemeManagerPrivate) Equals(other *StyleSchemeManagerPrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *StyleSchemeManagerPrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -3387,6 +3662,11 @@ func CastToStyleSchemePrivate(object *gobject.Object) *StyleSchemePrivate {
 	return StyleSchemePrivateNewFromNative(object.Native())
 }
 
+// Equals compares this StyleSchemePrivate with another StyleSchemePrivate, and returns true if they represent the same GObject.
+func (recv *StyleSchemePrivate) Equals(other *StyleSchemePrivate) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *StyleSchemePrivate) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -3434,6 +3714,11 @@ if the Object is not a TagClass.
 */
 func CastToTagClass(object *gobject.Object) *TagClass {
 	return TagClassNewFromNative(object.Native())
+}
+
+// Equals compares this TagClass with another TagClass, and returns true if they represent the same GObject.
+func (recv *TagClass) Equals(other *TagClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TagClass) Native() unsafe.Pointer {
@@ -3491,6 +3776,11 @@ if the Object is not a UndoManagerIface.
 */
 func CastToUndoManagerIface(object *gobject.Object) *UndoManagerIface {
 	return UndoManagerIfaceNewFromNative(object.Native())
+}
+
+// Equals compares this UndoManagerIface with another UndoManagerIface, and returns true if they represent the same GObject.
+func (recv *UndoManagerIface) Equals(other *UndoManagerIface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *UndoManagerIface) Native() unsafe.Pointer {
@@ -3578,6 +3868,11 @@ func CastToViewClass(object *gobject.Object) *ViewClass {
 	return ViewClassNewFromNative(object.Native())
 }
 
+// Equals compares this ViewClass with another ViewClass, and returns true if they represent the same GObject.
+func (recv *ViewClass) Equals(other *ViewClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ViewClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -3653,6 +3948,11 @@ if the Object is not a ViewPrivate.
 */
 func CastToViewPrivate(object *gobject.Object) *ViewPrivate {
 	return ViewPrivateNewFromNative(object.Native())
+}
+
+// Equals compares this ViewPrivate with another ViewPrivate, and returns true if they represent the same GObject.
+func (recv *ViewPrivate) Equals(other *ViewPrivate) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ViewPrivate) Native() unsafe.Pointer {

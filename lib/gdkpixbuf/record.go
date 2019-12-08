@@ -40,6 +40,11 @@ func CastToPixbufFormat(object *gobject.Object) *PixbufFormat {
 	return PixbufFormatNewFromNative(object.Native())
 }
 
+// Equals compares this PixbufFormat with another PixbufFormat, and returns true if they represent the same GObject.
+func (recv *PixbufFormat) Equals(other *PixbufFormat) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *PixbufFormat) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -459,6 +464,11 @@ func CastToPixbufLoaderClass(object *gobject.Object) *PixbufLoaderClass {
 	return PixbufLoaderClassNewFromNative(object.Native())
 }
 
+// Equals compares this PixbufLoaderClass with another PixbufLoaderClass, and returns true if they represent the same GObject.
+func (recv *PixbufLoaderClass) Equals(other *PixbufLoaderClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *PixbufLoaderClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -526,6 +536,11 @@ if the Object is not a PixbufSimpleAnimClass.
 */
 func CastToPixbufSimpleAnimClass(object *gobject.Object) *PixbufSimpleAnimClass {
 	return PixbufSimpleAnimClassNewFromNative(object.Native())
+}
+
+// Equals compares this PixbufSimpleAnimClass with another PixbufSimpleAnimClass, and returns true if they represent the same GObject.
+func (recv *PixbufSimpleAnimClass) Equals(other *PixbufSimpleAnimClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *PixbufSimpleAnimClass) Native() unsafe.Pointer {

@@ -56,6 +56,11 @@ func CastToContext(object *gobject.Object) *Context {
 	return ContextNewFromNative(object.Native())
 }
 
+// Equals compares this Context with another Context, and returns true if they represent the same GObject.
+func (recv *Context) Equals(other *Context) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Context) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -760,6 +765,11 @@ func CastToEngine(object *gobject.Object) *Engine {
 	return EngineNewFromNative(object.Native())
 }
 
+// Equals compares this Engine with another Engine, and returns true if they represent the same GObject.
+func (recv *Engine) Equals(other *Engine) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Engine) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -815,6 +825,11 @@ func CastToEngineLang(object *gobject.Object) *EngineLang {
 	return EngineLangNewFromNative(object.Native())
 }
 
+// Equals compares this EngineLang with another EngineLang, and returns true if they represent the same GObject.
+func (recv *EngineLang) Equals(other *EngineLang) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *EngineLang) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -868,6 +883,11 @@ if the Object is not a EngineShape.
 */
 func CastToEngineShape(object *gobject.Object) *EngineShape {
 	return EngineShapeNewFromNative(object.Native())
+}
+
+// Equals compares this EngineShape with another EngineShape, and returns true if they represent the same GObject.
+func (recv *EngineShape) Equals(other *EngineShape) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *EngineShape) Native() unsafe.Pointer {
@@ -932,6 +952,11 @@ if the Object is not a Font.
 */
 func CastToFont(object *gobject.Object) *Font {
 	return FontNewFromNative(object.Native())
+}
+
+// Equals compares this Font with another Font, and returns true if they represent the same GObject.
+func (recv *Font) Equals(other *Font) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Font) Native() unsafe.Pointer {
@@ -1228,6 +1253,11 @@ func CastToFontFace(object *gobject.Object) *FontFace {
 	return FontFaceNewFromNative(object.Native())
 }
 
+// Equals compares this FontFace with another FontFace, and returns true if they represent the same GObject.
+func (recv *FontFace) Equals(other *FontFace) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FontFace) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1390,6 +1420,11 @@ func CastToFontFamily(object *gobject.Object) *FontFamily {
 	return FontFamilyNewFromNative(object.Native())
 }
 
+// Equals compares this FontFamily with another FontFamily, and returns true if they represent the same GObject.
+func (recv *FontFamily) Equals(other *FontFamily) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *FontFamily) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1518,6 +1553,11 @@ if the Object is not a FontMap.
 */
 func CastToFontMap(object *gobject.Object) *FontMap {
 	return FontMapNewFromNative(object.Native())
+}
+
+// Equals compares this FontMap with another FontMap, and returns true if they represent the same GObject.
+func (recv *FontMap) Equals(other *FontMap) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FontMap) Native() unsafe.Pointer {
@@ -1779,6 +1819,11 @@ func CastToFontset(object *gobject.Object) *Fontset {
 	return FontsetNewFromNative(object.Native())
 }
 
+// Equals compares this Fontset with another Fontset, and returns true if they represent the same GObject.
+func (recv *Fontset) Equals(other *Fontset) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Fontset) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1913,6 +1958,11 @@ if the Object is not a FontsetSimple.
 */
 func CastToFontsetSimple(object *gobject.Object) *FontsetSimple {
 	return FontsetSimpleNewFromNative(object.Native())
+}
+
+// Equals compares this FontsetSimple with another FontsetSimple, and returns true if they represent the same GObject.
+func (recv *FontsetSimple) Equals(other *FontsetSimple) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *FontsetSimple) Native() unsafe.Pointer {
@@ -2058,6 +2108,11 @@ if the Object is not a Layout.
 */
 func CastToLayout(object *gobject.Object) *Layout {
 	return LayoutNewFromNative(object.Native())
+}
+
+// Equals compares this Layout with another Layout, and returns true if they represent the same GObject.
+func (recv *Layout) Equals(other *Layout) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Layout) Native() unsafe.Pointer {
@@ -3789,6 +3844,11 @@ if the Object is not a Renderer.
 */
 func CastToRenderer(object *gobject.Object) *Renderer {
 	return RendererNewFromNative(object.Native())
+}
+
+// Equals compares this Renderer with another Renderer, and returns true if they represent the same GObject.
+func (recv *Renderer) Equals(other *Renderer) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Renderer) Native() unsafe.Pointer {

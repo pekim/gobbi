@@ -63,6 +63,7 @@ func (r *Record) generate(f *file) {
 	r.generateNewFromNative(f)
 	r.generateAncestorAccessors(f)
 	r.generateDownCast(f)
+	r.generateEquals(f)
 	r.generateNativeAccessor(f)
 	r.Fields.generate(f)
 	r.Constructors.generate(f)
@@ -399,4 +400,25 @@ func (r *Record) generateStructConstructor(f *file) {
 			// GEN: return structGo
 			g.Return(jen.Id("structGo"))
 		})
+}
+
+func (r *Record) generateEquals(f *file) {
+	f.Commentf("Equals compares this %s with another %s, and returns true if they represent the same GObject.",
+		r.goName, r.goName)
+
+	// GEN: func (recv *Cursor) Equals(other *Cursor) bool {...}
+	f.
+		Func().
+		Params(jen.Id(receiverName).Op("*").Id(r.goName)).
+		Id("Equals").
+		Params(jen.Id("other").Op("*").Id(r.goName)).
+		Params(jen.Bool()).
+		Block(
+			// GEN: return other.Native() == recv.Native()
+			jen.Return(jen.
+				Id("other").Dot(nativeAccessorName).Call().
+				Op("==").
+				Id(receiverName).Dot(nativeAccessorName).Call()))
+
+	f.Line()
 }

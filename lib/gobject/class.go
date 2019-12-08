@@ -34,6 +34,12 @@ func BindingNewFromNative(native unsafe.Pointer) *Binding {
 func (recv *Binding) Object() *Object {
 	return ObjectNewFromNative(recv.Native())
 }
+
+// Equals compares this Binding with another Binding, and returns true if they represent the same GObject.
+func (recv *Binding) Equals(other *Binding) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Binding) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -221,6 +227,12 @@ func InitiallyUnownedNewFromNative(native unsafe.Pointer) *InitiallyUnowned {
 func (recv *InitiallyUnowned) Object() *Object {
 	return ObjectNewFromNative(recv.Native())
 }
+
+// Equals compares this InitiallyUnowned with another InitiallyUnowned, and returns true if they represent the same GObject.
+func (recv *InitiallyUnowned) Equals(other *InitiallyUnowned) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *InitiallyUnowned) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -258,6 +270,11 @@ func ObjectNewFromNative(native unsafe.Pointer) *Object {
 	instance := &Object{native: native}
 
 	return instance
+}
+
+// Equals compares this Object with another Object, and returns true if they represent the same GObject.
+func (recv *Object) Equals(other *Object) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Object) Native() unsafe.Pointer {
@@ -748,6 +765,11 @@ func ParamSpecNewFromNative(native unsafe.Pointer) *ParamSpec {
 	return instance
 }
 
+// Equals compares this ParamSpec with another ParamSpec, and returns true if they represent the same GObject.
+func (recv *ParamSpec) Equals(other *ParamSpec) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpec) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1137,6 +1159,12 @@ func ParamSpecBooleanNewFromNative(native unsafe.Pointer) *ParamSpecBoolean {
 func (recv *ParamSpecBoolean) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecBoolean with another ParamSpecBoolean, and returns true if they represent the same GObject.
+func (recv *ParamSpecBoolean) Equals(other *ParamSpecBoolean) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecBoolean) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1194,6 +1222,12 @@ func ParamSpecBoxedNewFromNative(native unsafe.Pointer) *ParamSpecBoxed {
 func (recv *ParamSpecBoxed) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecBoxed with another ParamSpecBoxed, and returns true if they represent the same GObject.
+func (recv *ParamSpecBoxed) Equals(other *ParamSpecBoxed) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecBoxed) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1237,6 +1271,12 @@ func ParamSpecCharNewFromNative(native unsafe.Pointer) *ParamSpecChar {
 func (recv *ParamSpecChar) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecChar with another ParamSpecChar, and returns true if they represent the same GObject.
+func (recv *ParamSpecChar) Equals(other *ParamSpecChar) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecChar) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1322,6 +1362,12 @@ func ParamSpecDoubleNewFromNative(native unsafe.Pointer) *ParamSpecDouble {
 func (recv *ParamSpecDouble) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecDouble with another ParamSpecDouble, and returns true if they represent the same GObject.
+func (recv *ParamSpecDouble) Equals(other *ParamSpecDouble) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecDouble) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1421,6 +1467,12 @@ func ParamSpecEnumNewFromNative(native unsafe.Pointer) *ParamSpecEnum {
 func (recv *ParamSpecEnum) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecEnum with another ParamSpecEnum, and returns true if they represent the same GObject.
+func (recv *ParamSpecEnum) Equals(other *ParamSpecEnum) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecEnum) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1492,6 +1544,12 @@ func ParamSpecFlagsNewFromNative(native unsafe.Pointer) *ParamSpecFlags {
 func (recv *ParamSpecFlags) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecFlags with another ParamSpecFlags, and returns true if they represent the same GObject.
+func (recv *ParamSpecFlags) Equals(other *ParamSpecFlags) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecFlags) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1563,6 +1621,12 @@ func ParamSpecFloatNewFromNative(native unsafe.Pointer) *ParamSpecFloat {
 func (recv *ParamSpecFloat) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecFloat with another ParamSpecFloat, and returns true if they represent the same GObject.
+func (recv *ParamSpecFloat) Equals(other *ParamSpecFloat) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecFloat) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1662,6 +1726,12 @@ func ParamSpecGTypeNewFromNative(native unsafe.Pointer) *ParamSpecGType {
 func (recv *ParamSpecGType) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecGType with another ParamSpecGType, and returns true if they represent the same GObject.
+func (recv *ParamSpecGType) Equals(other *ParamSpecGType) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecGType) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1709,6 +1779,12 @@ func ParamSpecIntNewFromNative(native unsafe.Pointer) *ParamSpecInt {
 func (recv *ParamSpecInt) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecInt with another ParamSpecInt, and returns true if they represent the same GObject.
+func (recv *ParamSpecInt) Equals(other *ParamSpecInt) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecInt) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1794,6 +1870,12 @@ func ParamSpecInt64NewFromNative(native unsafe.Pointer) *ParamSpecInt64 {
 func (recv *ParamSpecInt64) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecInt64 with another ParamSpecInt64, and returns true if they represent the same GObject.
+func (recv *ParamSpecInt64) Equals(other *ParamSpecInt64) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecInt64) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1879,6 +1961,12 @@ func ParamSpecLongNewFromNative(native unsafe.Pointer) *ParamSpecLong {
 func (recv *ParamSpecLong) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecLong with another ParamSpecLong, and returns true if they represent the same GObject.
+func (recv *ParamSpecLong) Equals(other *ParamSpecLong) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecLong) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1964,6 +2052,12 @@ func ParamSpecObjectNewFromNative(native unsafe.Pointer) *ParamSpecObject {
 func (recv *ParamSpecObject) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecObject with another ParamSpecObject, and returns true if they represent the same GObject.
+func (recv *ParamSpecObject) Equals(other *ParamSpecObject) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecObject) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2007,6 +2101,12 @@ func ParamSpecOverrideNewFromNative(native unsafe.Pointer) *ParamSpecOverride {
 func (recv *ParamSpecOverride) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecOverride with another ParamSpecOverride, and returns true if they represent the same GObject.
+func (recv *ParamSpecOverride) Equals(other *ParamSpecOverride) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecOverride) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2036,6 +2136,12 @@ func ParamSpecParamNewFromNative(native unsafe.Pointer) *ParamSpecParam {
 func (recv *ParamSpecParam) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecParam with another ParamSpecParam, and returns true if they represent the same GObject.
+func (recv *ParamSpecParam) Equals(other *ParamSpecParam) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecParam) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2079,6 +2185,12 @@ func ParamSpecPointerNewFromNative(native unsafe.Pointer) *ParamSpecPointer {
 func (recv *ParamSpecPointer) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecPointer with another ParamSpecPointer, and returns true if they represent the same GObject.
+func (recv *ParamSpecPointer) Equals(other *ParamSpecPointer) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecPointer) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2122,6 +2234,12 @@ func ParamSpecStringNewFromNative(native unsafe.Pointer) *ParamSpecString {
 func (recv *ParamSpecString) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecString with another ParamSpecString, and returns true if they represent the same GObject.
+func (recv *ParamSpecString) Equals(other *ParamSpecString) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecString) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2249,6 +2367,12 @@ func ParamSpecUCharNewFromNative(native unsafe.Pointer) *ParamSpecUChar {
 func (recv *ParamSpecUChar) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecUChar with another ParamSpecUChar, and returns true if they represent the same GObject.
+func (recv *ParamSpecUChar) Equals(other *ParamSpecUChar) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecUChar) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2334,6 +2458,12 @@ func ParamSpecUIntNewFromNative(native unsafe.Pointer) *ParamSpecUInt {
 func (recv *ParamSpecUInt) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecUInt with another ParamSpecUInt, and returns true if they represent the same GObject.
+func (recv *ParamSpecUInt) Equals(other *ParamSpecUInt) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecUInt) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2419,6 +2549,12 @@ func ParamSpecUInt64NewFromNative(native unsafe.Pointer) *ParamSpecUInt64 {
 func (recv *ParamSpecUInt64) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecUInt64 with another ParamSpecUInt64, and returns true if they represent the same GObject.
+func (recv *ParamSpecUInt64) Equals(other *ParamSpecUInt64) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecUInt64) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2504,6 +2640,12 @@ func ParamSpecULongNewFromNative(native unsafe.Pointer) *ParamSpecULong {
 func (recv *ParamSpecULong) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecULong with another ParamSpecULong, and returns true if they represent the same GObject.
+func (recv *ParamSpecULong) Equals(other *ParamSpecULong) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecULong) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2589,6 +2731,12 @@ func ParamSpecUnicharNewFromNative(native unsafe.Pointer) *ParamSpecUnichar {
 func (recv *ParamSpecUnichar) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecUnichar with another ParamSpecUnichar, and returns true if they represent the same GObject.
+func (recv *ParamSpecUnichar) Equals(other *ParamSpecUnichar) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecUnichar) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2636,6 +2784,12 @@ func ParamSpecValueArrayNewFromNative(native unsafe.Pointer) *ParamSpecValueArra
 func (recv *ParamSpecValueArray) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecValueArray with another ParamSpecValueArray, and returns true if they represent the same GObject.
+func (recv *ParamSpecValueArray) Equals(other *ParamSpecValueArray) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecValueArray) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2707,6 +2861,12 @@ func ParamSpecVariantNewFromNative(native unsafe.Pointer) *ParamSpecVariant {
 func (recv *ParamSpecVariant) ParamSpec() *ParamSpec {
 	return ParamSpecNewFromNative(recv.Native())
 }
+
+// Equals compares this ParamSpecVariant with another ParamSpecVariant, and returns true if they represent the same GObject.
+func (recv *ParamSpecVariant) Equals(other *ParamSpecVariant) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ParamSpecVariant) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2758,6 +2918,12 @@ func TypeModuleNewFromNative(native unsafe.Pointer) *TypeModule {
 func (recv *TypeModule) Object() *Object {
 	return ObjectNewFromNative(recv.Native())
 }
+
+// Equals compares this TypeModule with another TypeModule, and returns true if they represent the same GObject.
+func (recv *TypeModule) Equals(other *TypeModule) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TypeModule) Native() unsafe.Pointer {
 	return recv.native
 }

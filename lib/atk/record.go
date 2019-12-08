@@ -40,6 +40,11 @@ func CastToActionIface(object *gobject.Object) *ActionIface {
 	return ActionIfaceNewFromNative(object.Native())
 }
 
+// Equals compares this ActionIface with another ActionIface, and returns true if they represent the same GObject.
+func (recv *ActionIface) Equals(other *ActionIface) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ActionIface) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -117,6 +122,11 @@ func CastToAttribute(object *gobject.Object) *Attribute {
 	return AttributeNewFromNative(object.Native())
 }
 
+// Equals compares this Attribute with another Attribute, and returns true if they represent the same GObject.
+func (recv *Attribute) Equals(other *Attribute) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Attribute) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -192,6 +202,11 @@ if the Object is not a ComponentIface.
 */
 func CastToComponentIface(object *gobject.Object) *ComponentIface {
 	return ComponentIfaceNewFromNative(object.Native())
+}
+
+// Equals compares this ComponentIface with another ComponentIface, and returns true if they represent the same GObject.
+func (recv *ComponentIface) Equals(other *ComponentIface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ComponentIface) Native() unsafe.Pointer {
@@ -311,6 +326,11 @@ func CastToDocumentIface(object *gobject.Object) *DocumentIface {
 	return DocumentIfaceNewFromNative(object.Native())
 }
 
+// Equals compares this DocumentIface with another DocumentIface, and returns true if they represent the same GObject.
+func (recv *DocumentIface) Equals(other *DocumentIface) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *DocumentIface) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -396,6 +416,11 @@ func CastToEditableTextIface(object *gobject.Object) *EditableTextIface {
 	return EditableTextIfaceNewFromNative(object.Native())
 }
 
+// Equals compares this EditableTextIface with another EditableTextIface, and returns true if they represent the same GObject.
+func (recv *EditableTextIface) Equals(other *EditableTextIface) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *EditableTextIface) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -477,6 +502,11 @@ func CastToGObjectAccessibleClass(object *gobject.Object) *GObjectAccessibleClas
 	return GObjectAccessibleClassNewFromNative(object.Native())
 }
 
+// Equals compares this GObjectAccessibleClass with another GObjectAccessibleClass, and returns true if they represent the same GObject.
+func (recv *GObjectAccessibleClass) Equals(other *GObjectAccessibleClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *GObjectAccessibleClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -546,6 +576,11 @@ if the Object is not a HyperlinkClass.
 */
 func CastToHyperlinkClass(object *gobject.Object) *HyperlinkClass {
 	return HyperlinkClassNewFromNative(object.Native())
+}
+
+// Equals compares this HyperlinkClass with another HyperlinkClass, and returns true if they represent the same GObject.
+func (recv *HyperlinkClass) Equals(other *HyperlinkClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *HyperlinkClass) Native() unsafe.Pointer {
@@ -641,6 +676,11 @@ func CastToHyperlinkImplIface(object *gobject.Object) *HyperlinkImplIface {
 	return HyperlinkImplIfaceNewFromNative(object.Native())
 }
 
+// Equals compares this HyperlinkImplIface with another HyperlinkImplIface, and returns true if they represent the same GObject.
+func (recv *HyperlinkImplIface) Equals(other *HyperlinkImplIface) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *HyperlinkImplIface) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -696,6 +736,11 @@ if the Object is not a HypertextIface.
 */
 func CastToHypertextIface(object *gobject.Object) *HypertextIface {
 	return HypertextIfaceNewFromNative(object.Native())
+}
+
+// Equals compares this HypertextIface with another HypertextIface, and returns true if they represent the same GObject.
+func (recv *HypertextIface) Equals(other *HypertextIface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *HypertextIface) Native() unsafe.Pointer {
@@ -765,6 +810,11 @@ if the Object is not a ImageIface.
 */
 func CastToImageIface(object *gobject.Object) *ImageIface {
 	return ImageIfaceNewFromNative(object.Native())
+}
+
+// Equals compares this ImageIface with another ImageIface, and returns true if they represent the same GObject.
+func (recv *ImageIface) Equals(other *ImageIface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ImageIface) Native() unsafe.Pointer {
@@ -838,6 +888,11 @@ if the Object is not a Implementor.
 */
 func CastToImplementor(object *gobject.Object) *Implementor {
 	return ImplementorNewFromNative(object.Native())
+}
+
+// Equals compares this Implementor with another Implementor, and returns true if they represent the same GObject.
+func (recv *Implementor) Equals(other *Implementor) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Implementor) Native() unsafe.Pointer {
@@ -919,6 +974,11 @@ if the Object is not a KeyEventStruct.
 */
 func CastToKeyEventStruct(object *gobject.Object) *KeyEventStruct {
 	return KeyEventStructNewFromNative(object.Native())
+}
+
+// Equals compares this KeyEventStruct with another KeyEventStruct, and returns true if they represent the same GObject.
+func (recv *KeyEventStruct) Equals(other *KeyEventStruct) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *KeyEventStruct) Native() unsafe.Pointer {
@@ -1068,6 +1128,11 @@ func CastToMiscClass(object *gobject.Object) *MiscClass {
 	return MiscClassNewFromNative(object.Native())
 }
 
+// Equals compares this MiscClass with another MiscClass, and returns true if they represent the same GObject.
+func (recv *MiscClass) Equals(other *MiscClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *MiscClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1133,6 +1198,11 @@ func CastToNoOpObjectClass(object *gobject.Object) *NoOpObjectClass {
 	return NoOpObjectClassNewFromNative(object.Native())
 }
 
+// Equals compares this NoOpObjectClass with another NoOpObjectClass, and returns true if they represent the same GObject.
+func (recv *NoOpObjectClass) Equals(other *NoOpObjectClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *NoOpObjectClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1196,6 +1266,11 @@ func CastToNoOpObjectFactoryClass(object *gobject.Object) *NoOpObjectFactoryClas
 	return NoOpObjectFactoryClassNewFromNative(object.Native())
 }
 
+// Equals compares this NoOpObjectFactoryClass with another NoOpObjectFactoryClass, and returns true if they represent the same GObject.
+func (recv *NoOpObjectFactoryClass) Equals(other *NoOpObjectFactoryClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *NoOpObjectFactoryClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1257,6 +1332,11 @@ if the Object is not a ObjectClass.
 */
 func CastToObjectClass(object *gobject.Object) *ObjectClass {
 	return ObjectClassNewFromNative(object.Native())
+}
+
+// Equals compares this ObjectClass with another ObjectClass, and returns true if they represent the same GObject.
+func (recv *ObjectClass) Equals(other *ObjectClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ObjectClass) Native() unsafe.Pointer {
@@ -1420,6 +1500,11 @@ func CastToObjectFactoryClass(object *gobject.Object) *ObjectFactoryClass {
 	return ObjectFactoryClassNewFromNative(object.Native())
 }
 
+// Equals compares this ObjectFactoryClass with another ObjectFactoryClass, and returns true if they represent the same GObject.
+func (recv *ObjectFactoryClass) Equals(other *ObjectFactoryClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *ObjectFactoryClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1493,6 +1578,11 @@ func CastToPlugClass(object *gobject.Object) *PlugClass {
 	return PlugClassNewFromNative(object.Native())
 }
 
+// Equals compares this PlugClass with another PlugClass, and returns true if they represent the same GObject.
+func (recv *PlugClass) Equals(other *PlugClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *PlugClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1558,6 +1648,11 @@ if the Object is not a PropertyValues.
 */
 func CastToPropertyValues(object *gobject.Object) *PropertyValues {
 	return PropertyValuesNewFromNative(object.Native())
+}
+
+// Equals compares this PropertyValues with another PropertyValues, and returns true if they represent the same GObject.
+func (recv *PropertyValues) Equals(other *PropertyValues) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *PropertyValues) Native() unsafe.Pointer {
@@ -1629,6 +1724,11 @@ if the Object is not a Range.
 */
 func CastToRange(object *gobject.Object) *Range {
 	return RangeNewFromNative(object.Native())
+}
+
+// Equals compares this Range with another Range, and returns true if they represent the same GObject.
+func (recv *Range) Equals(other *Range) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *Range) Native() unsafe.Pointer {
@@ -1855,6 +1955,11 @@ func CastToRectangle(object *gobject.Object) *Rectangle {
 	return RectangleNewFromNative(object.Native())
 }
 
+// Equals compares this Rectangle with another Rectangle, and returns true if they represent the same GObject.
+func (recv *Rectangle) Equals(other *Rectangle) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *Rectangle) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -1960,6 +2065,11 @@ func CastToRegistryClass(object *gobject.Object) *RegistryClass {
 	return RegistryClassNewFromNative(object.Native())
 }
 
+// Equals compares this RegistryClass with another RegistryClass, and returns true if they represent the same GObject.
+func (recv *RegistryClass) Equals(other *RegistryClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *RegistryClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2013,6 +2123,11 @@ func CastToRelationClass(object *gobject.Object) *RelationClass {
 	return RelationClassNewFromNative(object.Native())
 }
 
+// Equals compares this RelationClass with another RelationClass, and returns true if they represent the same GObject.
+func (recv *RelationClass) Equals(other *RelationClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *RelationClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2064,6 +2179,11 @@ if the Object is not a RelationSetClass.
 */
 func CastToRelationSetClass(object *gobject.Object) *RelationSetClass {
 	return RelationSetClassNewFromNative(object.Native())
+}
+
+// Equals compares this RelationSetClass with another RelationSetClass, and returns true if they represent the same GObject.
+func (recv *RelationSetClass) Equals(other *RelationSetClass) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *RelationSetClass) Native() unsafe.Pointer {
@@ -2125,6 +2245,11 @@ if the Object is not a SelectionIface.
 */
 func CastToSelectionIface(object *gobject.Object) *SelectionIface {
 	return SelectionIfaceNewFromNative(object.Native())
+}
+
+// Equals compares this SelectionIface with another SelectionIface, and returns true if they represent the same GObject.
+func (recv *SelectionIface) Equals(other *SelectionIface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *SelectionIface) Native() unsafe.Pointer {
@@ -2212,6 +2337,11 @@ func CastToSocketClass(object *gobject.Object) *SocketClass {
 	return SocketClassNewFromNative(object.Native())
 }
 
+// Equals compares this SocketClass with another SocketClass, and returns true if they represent the same GObject.
+func (recv *SocketClass) Equals(other *SocketClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *SocketClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2279,6 +2409,11 @@ func CastToStateSetClass(object *gobject.Object) *StateSetClass {
 	return StateSetClassNewFromNative(object.Native())
 }
 
+// Equals compares this StateSetClass with another StateSetClass, and returns true if they represent the same GObject.
+func (recv *StateSetClass) Equals(other *StateSetClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *StateSetClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2330,6 +2465,11 @@ if the Object is not a StreamableContentIface.
 */
 func CastToStreamableContentIface(object *gobject.Object) *StreamableContentIface {
 	return StreamableContentIfaceNewFromNative(object.Native())
+}
+
+// Equals compares this StreamableContentIface with another StreamableContentIface, and returns true if they represent the same GObject.
+func (recv *StreamableContentIface) Equals(other *StreamableContentIface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *StreamableContentIface) Native() unsafe.Pointer {
@@ -2413,6 +2553,11 @@ func CastToTableCellIface(object *gobject.Object) *TableCellIface {
 	return TableCellIfaceNewFromNative(object.Native())
 }
 
+// Equals compares this TableCellIface with another TableCellIface, and returns true if they represent the same GObject.
+func (recv *TableCellIface) Equals(other *TableCellIface) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TableCellIface) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2488,6 +2633,11 @@ if the Object is not a TableIface.
 */
 func CastToTableIface(object *gobject.Object) *TableIface {
 	return TableIfaceNewFromNative(object.Native())
+}
+
+// Equals compares this TableIface with another TableIface, and returns true if they represent the same GObject.
+func (recv *TableIface) Equals(other *TableIface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TableIface) Native() unsafe.Pointer {
@@ -2687,6 +2837,11 @@ func CastToTextIface(object *gobject.Object) *TextIface {
 	return TextIfaceNewFromNative(object.Native())
 }
 
+// Equals compares this TextIface with another TextIface, and returns true if they represent the same GObject.
+func (recv *TextIface) Equals(other *TextIface) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TextIface) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2844,6 +2999,11 @@ func CastToTextRange(object *gobject.Object) *TextRange {
 	return TextRangeNewFromNative(object.Native())
 }
 
+// Equals compares this TextRange with another TextRange, and returns true if they represent the same GObject.
+func (recv *TextRange) Equals(other *TextRange) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *TextRange) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -2947,6 +3107,11 @@ if the Object is not a TextRectangle.
 */
 func CastToTextRectangle(object *gobject.Object) *TextRectangle {
 	return TextRectangleNewFromNative(object.Native())
+}
+
+// Equals compares this TextRectangle with another TextRectangle, and returns true if they represent the same GObject.
+func (recv *TextRectangle) Equals(other *TextRectangle) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *TextRectangle) Native() unsafe.Pointer {
@@ -3054,6 +3219,11 @@ func CastToUtilClass(object *gobject.Object) *UtilClass {
 	return UtilClassNewFromNative(object.Native())
 }
 
+// Equals compares this UtilClass with another UtilClass, and returns true if they represent the same GObject.
+func (recv *UtilClass) Equals(other *UtilClass) bool {
+	return other.Native() == recv.Native()
+}
+
 func (recv *UtilClass) Native() unsafe.Pointer {
 	return recv.native
 }
@@ -3133,6 +3303,11 @@ if the Object is not a ValueIface.
 */
 func CastToValueIface(object *gobject.Object) *ValueIface {
 	return ValueIfaceNewFromNative(object.Native())
+}
+
+// Equals compares this ValueIface with another ValueIface, and returns true if they represent the same GObject.
+func (recv *ValueIface) Equals(other *ValueIface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *ValueIface) Native() unsafe.Pointer {
@@ -3226,6 +3401,11 @@ if the Object is not a WindowIface.
 */
 func CastToWindowIface(object *gobject.Object) *WindowIface {
 	return WindowIfaceNewFromNative(object.Native())
+}
+
+// Equals compares this WindowIface with another WindowIface, and returns true if they represent the same GObject.
+func (recv *WindowIface) Equals(other *WindowIface) bool {
+	return other.Native() == recv.Native()
 }
 
 func (recv *WindowIface) Native() unsafe.Pointer {
