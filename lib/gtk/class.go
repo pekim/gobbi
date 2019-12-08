@@ -3,7 +3,7 @@
 package gtk
 
 import (
-	gi "github.com/pekim/gobbi/internal/gi"
+	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	atk "github.com/pekim/gobbi/lib/atk"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"

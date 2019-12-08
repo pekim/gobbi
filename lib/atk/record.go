@@ -3,7 +3,7 @@
 package atk
 
 import (
-	gi "github.com/pekim/gobbi/internal/gi"
+	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"

@@ -1,7 +1,7 @@
 package gtk
 
 import (
-	"github.com/pekim/gobbi/internal/callback"
+	"github.com/pekim/gobbi/internal/cgo/callback"
 	"github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )

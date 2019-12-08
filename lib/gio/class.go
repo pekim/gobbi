@@ -3,7 +3,7 @@
 package gio
 
 import (
-	gi "github.com/pekim/gobbi/internal/gi"
+	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"

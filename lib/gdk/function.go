@@ -3,7 +3,7 @@
 package gdk
 
 import (
-	gi "github.com/pekim/gobbi/internal/gi"
+	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"

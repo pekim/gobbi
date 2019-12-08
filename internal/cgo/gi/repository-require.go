@@ -9,7 +9,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
-const PackageName = "github.com/pekim/gobbi/internal/gi"
+const PackageName = "github.com/pekim/gobbi/internal/cgo/gi"
 
 func Require(name string, version string) {
 	cName := C.CString(name)

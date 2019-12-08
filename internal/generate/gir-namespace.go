@@ -3,7 +3,7 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
-	"github.com/pekim/gobbi/internal/gi"
+	"github.com/pekim/gobbi/internal/cgo/gi"
 	"io/ioutil"
 	"os"
 	"path"

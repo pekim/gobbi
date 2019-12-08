@@ -1,6 +1,6 @@
 package gobbi
 
-import "github.com/pekim/gobbi/internal/gi"
+import "github.com/pekim/gobbi/internal/cgo/gi"
 
 /*
 	SetTraceHandler sets a handler function that will be called

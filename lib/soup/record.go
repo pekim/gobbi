@@ -3,7 +3,7 @@
 package soup
 
 import (
-	gi "github.com/pekim/gobbi/internal/gi"
+	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
