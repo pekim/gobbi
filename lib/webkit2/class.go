@@ -3,6 +3,7 @@
 package webkit2
 
 import (
+	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
@@ -394,6 +395,15 @@ func (recv *AuthenticationRequest) IsRetry() bool {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *AuthenticationRequest) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var automationSessionObject *gi.Object
 var automationSessionObject_Once sync.Once
 
@@ -568,6 +578,15 @@ func (recv *AutomationSession) SetApplicationInfo(info *ApplicationInfo) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *AutomationSession) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var backForwardListObject *gi.Object
@@ -820,6 +839,15 @@ func (recv *BackForwardList) GetNthItem(index int32) *BackForwardListItem {
 	retGo := BackForwardListItemNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *BackForwardList) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var backForwardListItemObject *gi.Object
@@ -1136,6 +1164,15 @@ func (recv *ColorChooserRequest) Finish() {
 // UNSUPPORTED : C value 'webkit_color_chooser_request_get_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
 
 // UNSUPPORTED : C value 'webkit_color_chooser_request_set_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ColorChooserRequest) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var contextMenuObject *gi.Object
 var contextMenuObject_Once sync.Once
@@ -2192,6 +2229,15 @@ func (recv *CookieManager) SetPersistentStorage(filename string, storage CookieP
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *CookieManager) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var deviceInfoPermissionRequestObject *gi.Object
 var deviceInfoPermissionRequestObject_Once sync.Once
 
@@ -2686,6 +2732,15 @@ func (recv *Download) SetDestination(uri string) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Download) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var editorStateObject *gi.Object
 var editorStateObject_Once sync.Once
 
@@ -3107,6 +3162,15 @@ func (recv *FaviconDatabase) GetFaviconUri(pageUri string) string {
 	retGo := ret.String(true)
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *FaviconDatabase) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var fileChooserRequestObject *gi.Object
@@ -3671,6 +3735,15 @@ func (recv *FindController) SearchPrevious() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *FindController) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var formSubmissionRequestObject *gi.Object
 var formSubmissionRequestObject_Once sync.Once
 
@@ -3929,6 +4002,15 @@ func (recv *GeolocationManager) UpdatePosition(position *GeolocationPosition) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *GeolocationManager) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var geolocationPermissionRequestObject *gi.Object
@@ -5115,6 +5197,15 @@ func (recv *Notification) GetTitle() string {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Notification) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var notificationPermissionRequestObject *gi.Object
 var notificationPermissionRequestObject_Once sync.Once
 
@@ -5416,6 +5507,15 @@ func (recv *OptionMenu) SelectItem(index uint32) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *OptionMenu) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var pluginObject *gi.Object
@@ -5934,6 +6034,15 @@ func (recv *PrintCustomWidget) GetWidget() *gtk.Widget {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *PrintCustomWidget) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var printOperationObject *gi.Object
 var printOperationObject_Once sync.Once
 
@@ -6232,6 +6341,15 @@ func (recv *PrintOperation) SetPrintSettings(printSettings *gtk.PrintSettings) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *PrintOperation) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var responsePolicyDecisionObject *gi.Object
@@ -11767,6 +11885,15 @@ func (recv *UserContentManager) UnregisterScriptMessageHandlerInWorld(name strin
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *UserContentManager) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var userMediaPermissionRequestObject *gi.Object
 var userMediaPermissionRequestObject_Once sync.Once
 
@@ -12992,6 +13119,15 @@ func (recv *WebContext) SetWebProcessCountLimit(limit uint32) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *WebContext) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var webInspectorObject *gi.Object
 var webInspectorObject_Once sync.Once
 
@@ -13347,6 +13483,15 @@ func (recv *WebInspector) Show() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *WebInspector) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var webResourceObject *gi.Object
 var webResourceObject_Once sync.Once
 
@@ -13496,6 +13641,15 @@ func (recv *WebResource) GetUri() string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *WebResource) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var webViewObject *gi.Object
@@ -15166,6 +15320,15 @@ func (recv *WebView) TryClose() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *WebView) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var webViewBaseObject *gi.Object

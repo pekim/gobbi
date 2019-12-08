@@ -3,6 +3,7 @@
 package gobject
 
 import (
+	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
@@ -743,6 +744,15 @@ func (recv *Object) WatchClosure(closure *Closure) {
 // UNSUPPORTED : C value 'g_object_weak_ref' : parameter 'notify' of type 'WeakNotify' not supported
 
 // UNSUPPORTED : C value 'g_object_weak_unref' : parameter 'notify' of type 'WeakNotify' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Object) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var paramSpecObject *gi.Object
 var paramSpecObject_Once sync.Once

@@ -3,6 +3,7 @@
 package gdk
 
 import (
+	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	gio "github.com/pekim/gobbi/lib/gio"
@@ -1392,6 +1393,15 @@ func (recv *Device) Warp(screen *Screen, x int32, y int32) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Device) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var deviceManagerObject *gi.Object
 var deviceManagerObject_Once sync.Once
 
@@ -1512,6 +1522,15 @@ func (recv *DeviceManager) GetDisplay() *Display {
 }
 
 // UNSUPPORTED : C value 'gdk_device_manager_list_devices' : return type 'GLib.List' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *DeviceManager) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var deviceToolObject *gi.Object
 var deviceToolObject_Once sync.Once
@@ -2928,6 +2947,15 @@ func (recv *Display) WarpPointer(screen *Screen, x int32, y int32) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Display) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var displayManagerObject *gi.Object
 var displayManagerObject_Once sync.Once
 
@@ -3077,6 +3105,15 @@ func (recv *DisplayManager) SetDefaultDisplay(display *Display) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *DisplayManager) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var dragContextObject *gi.Object
@@ -3361,6 +3398,15 @@ func (recv *DragContext) SetHotspot(hotX int32, hotY int32) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *DragContext) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var drawingContextObject *gi.Object
@@ -3793,6 +3839,15 @@ func (recv *FrameClock) GetTimings(frameCounter int64) *FrameTimings {
 }
 
 // UNSUPPORTED : C value 'gdk_frame_clock_request_phase' : parameter 'phase' of type 'FrameClockPhase' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *FrameClock) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var gLContextObject *gi.Object
 var gLContextObject_Once sync.Once
@@ -4578,6 +4633,15 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 
 // UNSUPPORTED : C value 'gdk_keymap_translate_keyboard_state' : parameter 'state' of type 'ModifierType' not supported
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Keymap) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var monitorObject *gi.Object
 var monitorObject_Once sync.Once
 
@@ -4983,6 +5047,15 @@ func (recv *Monitor) IsPrimary() bool {
 	retGo := ret.Boolean()
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Monitor) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var screenObject *gi.Object
@@ -5826,6 +5899,15 @@ func (recv *Screen) SetResolution(dpi float64) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Screen) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var seatObject *gi.Object
 var seatObject_Once sync.Once
 
@@ -6023,6 +6105,15 @@ func (recv *Seat) Ungrab() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Seat) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var visualObject *gi.Object
@@ -10048,4 +10139,13 @@ func (recv *Window) Withdraw() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Window) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }

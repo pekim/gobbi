@@ -3,6 +3,7 @@
 package gio
 
 import (
+	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
@@ -64,6 +65,15 @@ func (recv *AppInfoMonitor) Equals(other *AppInfoMonitor) bool {
 
 func (recv *AppInfoMonitor) Native() unsafe.Pointer {
 	return recv.native
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *AppInfoMonitor) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var appLaunchContextObject *gi.Object
@@ -285,6 +295,15 @@ func (recv *AppLaunchContext) Unsetenv(variable string) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *AppLaunchContext) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var applicationObject *gi.Object
@@ -1136,6 +1155,15 @@ func (recv *Application) WithdrawNotification(id string) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Application) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var applicationCommandLineObject *gi.Object
@@ -2514,6 +2542,15 @@ func (recv *Cancellable) SetErrorIfCancelled() bool {
 
 // UNSUPPORTED : C value 'g_cancellable_source_new' : return type 'GLib.Source' not supported
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Cancellable) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var charsetConverterObject *gi.Object
 var charsetConverterObject_Once sync.Once
 
@@ -3325,6 +3362,15 @@ func (recv *DBusAuthObserver) AuthorizeAuthenticatedPeer(stream *IOStream, crede
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *DBusAuthObserver) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var dBusConnectionObject *gi.Object
 var dBusConnectionObject_Once sync.Once
 
@@ -3997,6 +4043,15 @@ func (recv *DBusConnection) UnregisterSubtree(registrationId uint32) bool {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *DBusConnection) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var dBusInterfaceSkeletonObject *gi.Object
 var dBusInterfaceSkeletonObject_Once sync.Once
 
@@ -4338,6 +4393,15 @@ func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnec
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *DBusInterfaceSkeleton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var dBusMenuModelObject *gi.Object
@@ -6205,6 +6269,15 @@ func (recv *DBusObjectManagerClient) GetNameOwner() string {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *DBusObjectManagerClient) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var dBusObjectManagerServerObject *gi.Object
 var dBusObjectManagerServerObject_Once sync.Once
 
@@ -6834,6 +6907,15 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *DBusObjectSkeleton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var dBusProxyObject *gi.Object
 var dBusProxyObject_Once sync.Once
 
@@ -7225,6 +7307,15 @@ func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *DBusProxy) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var dBusServerObject *gi.Object
 var dBusServerObject_Once sync.Once
 
@@ -7434,6 +7525,15 @@ func (recv *DBusServer) Stop() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *DBusServer) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var dataInputStreamObject *gi.Object
@@ -11813,6 +11913,15 @@ func (recv *FileMonitor) SetRateLimit(limitMsecs int32) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *FileMonitor) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var fileOutputStreamObject *gi.Object
 var fileOutputStreamObject_Once sync.Once
 
@@ -12133,6 +12242,15 @@ func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *FilenameCompleter) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var filterInputStreamObject *gi.Object
@@ -16531,6 +16649,15 @@ func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *MenuModel) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var mountOperationObject *gi.Object
 var mountOperationObject_Once sync.Once
 
@@ -17222,6 +17349,15 @@ func (recv *MountOperation) SetUsername(username string) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *MountOperation) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var nativeSocketAddressObject *gi.Object
@@ -19420,6 +19556,15 @@ func (recv *Resolver) SetDefault() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Resolver) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var settingsObject *gi.Object
 var settingsObject_Once sync.Once
 
@@ -20636,6 +20781,15 @@ func (recv *Settings) SetUint64(key string, value uint64) bool {
 
 // UNSUPPORTED : C value 'g_settings_set_value' : parameter 'value' of type 'GLib.Variant' not supported
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Settings) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var settingsBackendObject *gi.Object
 var settingsBackendObject_Once sync.Once
 
@@ -20862,6 +21016,15 @@ func (recv *SimpleAction) SetEnabled(enabled bool) {
 // UNSUPPORTED : C value 'g_simple_action_set_state' : parameter 'value' of type 'GLib.Variant' not supported
 
 // UNSUPPORTED : C value 'g_simple_action_set_state_hint' : parameter 'state_hint' of type 'GLib.Variant' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *SimpleAction) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var simpleActionGroupObject *gi.Object
 var simpleActionGroupObject_Once sync.Once
@@ -24106,6 +24269,15 @@ func (recv *SocketClient) SetTls(tls bool) {
 
 // UNSUPPORTED : C value 'g_socket_client_set_tls_validation_flags' : parameter 'flags' of type 'TlsCertificateFlags' not supported
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *SocketClient) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var socketConnectionObject *gi.Object
 var socketConnectionObject_Once sync.Once
 
@@ -24930,6 +25102,15 @@ func (recv *SocketListener) SetBacklog(listenBacklog int32) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *SocketListener) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var socketServiceObject *gi.Object
 var socketServiceObject_Once sync.Once
 
@@ -25136,6 +25317,15 @@ func (recv *SocketService) Stop() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *SocketService) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var subprocessObject *gi.Object
@@ -27560,6 +27750,15 @@ func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ThreadedSocketService) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var tlsCertificateObject *gi.Object
 var tlsCertificateObject_Once sync.Once
 
@@ -28373,6 +28572,15 @@ func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *TlsConnection) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var tlsDatabaseObject *gi.Object
@@ -30300,6 +30508,15 @@ func (recv *UnixMountMonitor) SetRateLimit(limitMsec int32) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *UnixMountMonitor) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var unixOutputStreamObject *gi.Object
 var unixOutputStreamObject_Once sync.Once
 
@@ -30990,6 +31207,15 @@ func (recv *VolumeMonitor) SetFieldParentInstance(value *gobject.Object) {
 // UNSUPPORTED : C value 'g_volume_monitor_get_volume_for_uuid' : return type 'Volume' not supported
 
 // UNSUPPORTED : C value 'g_volume_monitor_get_volumes' : return type 'GLib.List' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *VolumeMonitor) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var zlibCompressorObject *gi.Object
 var zlibCompressorObject_Once sync.Once

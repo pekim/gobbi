@@ -3,6 +3,7 @@
 package javascriptcore
 
 import (
+	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
@@ -2315,4 +2316,13 @@ func (recv *WeakValue) GetValue() *Value {
 	retGo := ValueNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *WeakValue) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }

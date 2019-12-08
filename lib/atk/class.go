@@ -3,6 +3,7 @@
 package atk
 
 import (
+	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
@@ -441,6 +442,15 @@ func (recv *Hyperlink) IsValid() bool {
 	retGo := ret.Boolean()
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Hyperlink) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var miscObject *gi.Object
@@ -1660,6 +1670,15 @@ func (recv *Object) SetRole(role Role) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Object) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var objectFactoryObject *gi.Object

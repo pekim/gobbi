@@ -3,6 +3,7 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
+	"github.com/pekim/gobbi/internal/cgo/callback"
 	"github.com/pekim/gobbi/internal/cgo/gi"
 )
 
@@ -20,7 +21,7 @@ type Record struct {
 	Constructors   Constructors `xml:"constructor"`
 	Functions      Functions    `xml:"function"`
 	Methods        Methods      `xml:"method"`
-	//Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
+	Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
 
 	goName            string
 	newFromNativeName string
@@ -68,6 +69,8 @@ func (r *Record) generate(f *file) {
 	r.Fields.generate(f)
 	r.Constructors.generate(f)
 	r.Methods.generate(f)
+	r.Signals.generate(f)
+	r.generateSignalDisconnect(f)
 
 	if r.giInfotype == "Struct" && len(r.Constructors) == 0 {
 		r.generateStructConstructor(f)
@@ -253,10 +256,7 @@ func (r *Record) generateAncestorAccessors(f *file) {
 		f.Commentf("%s upcasts to *%s", accessorName, accessorName)
 
 		// GEN: func (recv *SomeClass) AncestorName() *AncestorName {...}
-		f.
-			Func().
-			Params(jen.Id(receiverName).Op("*").Id(r.goName)).
-			Id(accessorName).
+		r.receiverFunc(f, accessorName).
 			Params().
 			Params(parentType).
 			BlockFunc(func(g *jen.Group) {
@@ -312,10 +312,7 @@ if the Object is not a %s.`,
 }
 
 func (r *Record) generateNativeAccessor(f *file) {
-	f.
-		Func().
-		Params(jen.Id(receiverName).Op("*").Id(r.goName)).
-		Id(nativeAccessorName).
+	r.receiverFunc(f, nativeAccessorName).
 		Params().
 		Params(jen.Qual("unsafe", "Pointer")).
 		Block(jen.
@@ -402,15 +399,19 @@ func (r *Record) generateStructConstructor(f *file) {
 		})
 }
 
+func (r *Record) receiverFunc(f *file, methodName string) *jen.Statement {
+	return f.
+		Func().
+		Params(jen.Id(receiverName).Op("*").Id(r.goName)).
+		Id(methodName)
+}
+
 func (r *Record) generateEquals(f *file) {
 	f.Commentf("Equals compares this %s with another %s, and returns true if they represent the same GObject.",
 		r.goName, r.goName)
 
 	// GEN: func (recv *Cursor) Equals(other *Cursor) bool {...}
-	f.
-		Func().
-		Params(jen.Id(receiverName).Op("*").Id(r.goName)).
-		Id("Equals").
+	r.receiverFunc(f, "Equals").
 		Params(jen.Id("other").Op("*").Id(r.goName)).
 		Params(jen.Bool()).
 		Block(
@@ -421,4 +422,27 @@ func (r *Record) generateEquals(f *file) {
 				Id(receiverName).Dot(nativeAccessorName).Call()))
 
 	f.Line()
+}
+
+func (r *Record) generateSignalDisconnect(f *file) {
+	if len(r.Signals) == 0 {
+		// If there are no signals there is no point in generating
+		// a Disconnect method.
+		return
+	}
+
+	id := "connectionID"
+
+	f.Commentf(`Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The %s should be a value returned from a call to a Connect...() method.`,
+		id)
+
+	// GEN: func (recv *Device) DisconnectSignal(connectionId int) {...}
+	r.receiverFunc(f, "DisconnectSignal").
+		Params(jen.Id(id).Int()).
+		Block(jen.
+			// GEN: callback.DisconnectSignal(connectionId)
+			Qual(callback.PackageName, "DisconnectSignal").Call(jen.Id(id)))
+
 }

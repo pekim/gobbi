@@ -3,6 +3,7 @@
 package gtk
 
 import (
+	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	atk "github.com/pekim/gobbi/lib/atk"
 	gdk "github.com/pekim/gobbi/lib/gdk"
@@ -969,6 +970,15 @@ func (recv *AboutDialog) SetWrapLicense(wrapLicense bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *AboutDialog) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var accelGroupObject *gi.Object
 var accelGroupObject_Once sync.Once
 
@@ -1186,6 +1196,15 @@ func (recv *AccelGroup) Unlock() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *AccelGroup) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var accelLabelObject *gi.Object
@@ -1507,6 +1526,15 @@ func (recv *AccelMap) Equals(other *AccelMap) bool {
 
 func (recv *AccelMap) Native() unsafe.Pointer {
 	return recv.native
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *AccelMap) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var accessibleObject *gi.Object
@@ -2912,6 +2940,15 @@ func (recv *Action) UnblockActivate() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Action) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var actionBarObject *gi.Object
 var actionBarObject_Once sync.Once
 
@@ -3653,6 +3690,15 @@ func (recv *ActionGroup) TranslateString(string_ string) string {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ActionGroup) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var adjustmentObject *gi.Object
 var adjustmentObject_Once sync.Once
 
@@ -4296,6 +4342,15 @@ func (recv *Adjustment) ValueChanged() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Adjustment) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var alignmentObject *gi.Object
 var alignmentObject_Once sync.Once
 
@@ -4885,6 +4940,15 @@ func (recv *AppChooserButton) SetShowDialogItem(setting bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *AppChooserButton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var appChooserDialogObject *gi.Object
@@ -5570,6 +5634,15 @@ func (recv *AppChooserWidget) SetShowRecommended(setting bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *AppChooserWidget) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var applicationObject *gi.Object
 var applicationObject_Once sync.Once
 
@@ -6081,6 +6154,15 @@ func (recv *Application) Uninhibit(cookie uint32) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Application) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var applicationWindowObject *gi.Object
@@ -7697,6 +7779,15 @@ func (recv *Assistant) UpdateButtonsState() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Assistant) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var binObject *gi.Object
@@ -9928,6 +10019,15 @@ func (recv *Button) SetUseUnderline(useUnderline bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Button) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var buttonAccessibleObject *gi.Object
 var buttonAccessibleObject_Once sync.Once
 
@@ -10800,6 +10900,15 @@ func (recv *Calendar) UnmarkDay(day uint32) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Calendar) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var cellAccessibleObject *gi.Object
@@ -11799,6 +11908,15 @@ func (recv *CellArea) StopEditing(canceled bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *CellArea) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var cellAreaBoxObject *gi.Object
@@ -13055,6 +13173,15 @@ func (recv *CellRenderer) StopEditing(canceled bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *CellRenderer) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var cellRendererAccelObject *gi.Object
 var cellRendererAccelObject_Once sync.Once
 
@@ -13169,6 +13296,15 @@ func CellRendererAccelNew() *CellRendererAccel {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *CellRendererAccel) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var cellRendererComboObject *gi.Object
 var cellRendererComboObject_Once sync.Once
 
@@ -13281,6 +13417,15 @@ func CellRendererComboNew() *CellRendererCombo {
 	retGo := CellRendererComboNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *CellRendererCombo) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var cellRendererPixbufObject *gi.Object
@@ -13862,6 +14007,15 @@ func (recv *CellRendererText) SetFixedHeightFromFont(numberOfRows int32) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *CellRendererText) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var cellRendererToggleObject *gi.Object
 var cellRendererToggleObject_Once sync.Once
 
@@ -14152,6 +14306,15 @@ func (recv *CellRendererToggle) SetRadio(radio bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *CellRendererToggle) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var cellViewObject *gi.Object
@@ -15210,6 +15373,15 @@ func (recv *CheckMenuItem) Toggled() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *CheckMenuItem) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var checkMenuItemAccessibleObject *gi.Object
 var checkMenuItemAccessibleObject_Once sync.Once
 
@@ -15801,6 +15973,15 @@ func (recv *Clipboard) WaitIsUrisAvailable() bool {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Clipboard) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var colorButtonObject *gi.Object
 var colorButtonObject_Once sync.Once
 
@@ -16118,6 +16299,15 @@ func (recv *ColorButton) SetUseAlpha(useAlpha bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ColorButton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var colorChooserDialogObject *gi.Object
@@ -16781,6 +16971,15 @@ func (recv *ColorSelection) SetPreviousAlpha(alpha uint16) {
 // UNSUPPORTED : C value 'gtk_color_selection_set_previous_color' : parameter 'color' of type 'Gdk.Color' not supported
 
 // UNSUPPORTED : C value 'gtk_color_selection_set_previous_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ColorSelection) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var colorSelectionDialogObject *gi.Object
 var colorSelectionDialogObject_Once sync.Once
@@ -18118,6 +18317,15 @@ func (recv *ComboBox) SetWrapWidth(width int32) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ComboBox) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var comboBoxAccessibleObject *gi.Object
 var comboBoxAccessibleObject_Once sync.Once
 
@@ -19305,6 +19513,15 @@ func (recv *Container) UnsetFocusChain() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Container) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var containerAccessibleObject *gi.Object
 var containerAccessibleObject_Once sync.Once
 
@@ -19806,6 +20023,15 @@ func (recv *CssProvider) ToString() string {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *CssProvider) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var dialogObject *gi.Object
 var dialogObject_Once sync.Once
 
@@ -20282,6 +20508,15 @@ func (recv *Dialog) SetResponseSensitive(responseId ResponseType, setting bool) 
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Dialog) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var drawingAreaObject *gi.Object
@@ -22400,6 +22635,15 @@ func (recv *Entry) UnsetInvisibleChar() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Entry) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var entryAccessibleObject *gi.Object
 var entryAccessibleObject_Once sync.Once
 
@@ -22917,6 +23161,15 @@ func (recv *EntryBuffer) SetText(chars string, nChars int32) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *EntryBuffer) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var entryCompletionObject *gi.Object
@@ -23729,6 +23982,15 @@ func (recv *EntryCompletion) SetTextColumn(column int32) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *EntryCompletion) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var entryIconAccessibleObject *gi.Object
 var entryIconAccessibleObject_Once sync.Once
 
@@ -24428,6 +24690,15 @@ func (recv *EventControllerKey) SetImContext(imContext *IMContext) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *EventControllerKey) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var eventControllerMotionObject *gi.Object
 var eventControllerMotionObject_Once sync.Once
 
@@ -24522,6 +24793,15 @@ func EventControllerMotionNew(widget *Widget) *EventControllerMotion {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *EventControllerMotion) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var eventControllerScrollObject *gi.Object
 var eventControllerScrollObject_Once sync.Once
 
@@ -24587,6 +24867,15 @@ func (recv *EventControllerScroll) Native() unsafe.Pointer {
 // UNSUPPORTED : C value 'gtk_event_controller_scroll_get_flags' : return type 'EventControllerScrollFlags' not supported
 
 // UNSUPPORTED : C value 'gtk_event_controller_scroll_set_flags' : parameter 'flags' of type 'EventControllerScrollFlags' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *EventControllerScroll) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var expanderObject *gi.Object
 var expanderObject_Once sync.Once
@@ -25243,6 +25532,15 @@ func (recv *Expander) SetUseUnderline(useUnderline bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Expander) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var expanderAccessibleObject *gi.Object
 var expanderAccessibleObject_Once sync.Once
 
@@ -25681,6 +25979,15 @@ func (recv *FileChooserButton) SetWidthChars(nChars int32) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *FileChooserButton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var fileChooserDialogObject *gi.Object
@@ -26151,6 +26458,15 @@ func FileChooserWidgetNew(action FileChooserAction) *FileChooserWidget {
 	retGo := FileChooserWidgetNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *FileChooserWidget) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var fileFilterObject *gi.Object
@@ -27483,6 +27799,15 @@ func (recv *FlowBox) UnselectChild(child *FlowBoxChild) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *FlowBox) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var flowBoxAccessibleObject *gi.Object
 var flowBoxAccessibleObject_Once sync.Once
 
@@ -27795,6 +28120,15 @@ func (recv *FlowBoxChild) IsSelected() bool {
 	retGo := ret.Boolean()
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *FlowBoxChild) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var flowBoxChildAccessibleObject *gi.Object
@@ -28410,6 +28744,15 @@ func (recv *FontButton) SetUseSize(useSize bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *FontButton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var fontChooserDialogObject *gi.Object
@@ -30570,6 +30913,15 @@ func (recv *GLArea) SetUseEs(useEs bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *GLArea) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var gestureObject *gi.Object
 var gestureObject_Once sync.Once
 
@@ -30963,6 +31315,15 @@ func (recv *Gesture) Ungroup() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Gesture) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var gestureDragObject *gi.Object
 var gestureDragObject_Once sync.Once
 
@@ -31137,6 +31498,15 @@ func (recv *GestureDrag) GetStartPoint() (bool, float64, float64) {
 	return retGo, out0, out1
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *GestureDrag) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var gestureLongPressObject *gi.Object
 var gestureLongPressObject_Once sync.Once
 
@@ -31239,6 +31609,15 @@ func GestureLongPressNew(widget *Widget) *GestureLongPress {
 	object.RefSink()
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *GestureLongPress) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var gestureMultiPressObject *gi.Object
@@ -31348,6 +31727,15 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 // UNSUPPORTED : C value 'gtk_gesture_multi_press_get_area' : parameter 'rect' of type 'Gdk.Rectangle' not supported
 
 // UNSUPPORTED : C value 'gtk_gesture_multi_press_set_area' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *GestureMultiPress) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var gesturePanObject *gi.Object
 var gesturePanObject_Once sync.Once
@@ -31520,6 +31908,15 @@ func (recv *GesturePan) SetOrientation(orientation Orientation) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *GesturePan) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var gestureRotateObject *gi.Object
 var gestureRotateObject_Once sync.Once
 
@@ -31649,6 +32046,15 @@ func (recv *GestureRotate) GetAngleDelta() float64 {
 	retGo := ret.Float64()
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *GestureRotate) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var gestureSingleObject *gi.Object
@@ -32073,6 +32479,15 @@ func (recv *GestureStylus) GetDeviceTool() *gdk.DeviceTool {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *GestureStylus) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var gestureSwipeObject *gi.Object
 var gestureSwipeObject_Once sync.Once
 
@@ -32212,6 +32627,15 @@ func (recv *GestureSwipe) GetVelocity() (bool, float64, float64) {
 	return retGo, out0, out1
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *GestureSwipe) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var gestureZoomObject *gi.Object
 var gestureZoomObject_Once sync.Once
 
@@ -32341,6 +32765,15 @@ func (recv *GestureZoom) GetScaleDelta() float64 {
 	retGo := ret.Float64()
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *GestureZoom) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var gridObject *gi.Object
@@ -33691,6 +34124,15 @@ func (recv *HSV) SetMetrics(size int32, ringWidth int32) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *HSV) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var hScaleObject *gi.Object
 var hScaleObject_Once sync.Once
 
@@ -34413,6 +34855,15 @@ func (recv *HandleBox) SetSnapEdge(edge PositionType) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *HandleBox) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var headerBarObject *gi.Object
@@ -35357,6 +35808,15 @@ func (recv *IMContext) SetUsePreedit(usePreedit bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *IMContext) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var iMContextSimpleObject *gi.Object
@@ -36789,6 +37249,15 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 }
 
 // UNSUPPORTED : C value 'gtk_icon_theme_set_search_path' : parameter 'path' of type 'nil' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *IconTheme) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var iconViewObject *gi.Object
 var iconViewObject_Once sync.Once
@@ -38567,6 +39036,15 @@ func (recv *IconView) UnsetModelDragSource() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *IconView) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var iconViewAccessibleObject *gi.Object
@@ -40669,6 +41147,15 @@ func (recv *InfoBar) SetShowCloseButton(setting bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *InfoBar) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var invisibleObject *gi.Object
 var invisibleObject_Once sync.Once
 
@@ -42317,6 +42804,15 @@ func (recv *Label) SetYalign(yalign float32) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Label) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var labelAccessibleObject *gi.Object
 var labelAccessibleObject_Once sync.Once
 
@@ -43338,6 +43834,15 @@ func (recv *LevelBar) SetValue(value float64) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *LevelBar) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var levelBarAccessibleObject *gi.Object
 var levelBarAccessibleObject_Once sync.Once
 
@@ -43701,6 +44206,15 @@ func (recv *LinkButton) SetVisited(visited bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *LinkButton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var linkButtonAccessibleObject *gi.Object
@@ -44561,6 +45075,15 @@ func (recv *ListBox) UnselectRow(row *ListBoxRow) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ListBox) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var listBoxAccessibleObject *gi.Object
 var listBoxAccessibleObject_Once sync.Once
 
@@ -45056,6 +45579,15 @@ func (recv *ListBoxRow) SetSelectable(selectable bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ListBoxRow) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var listBoxRowAccessibleObject *gi.Object
@@ -46717,6 +47249,15 @@ func (recv *Menu) SetTitle(title string) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Menu) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var menuAccessibleObject *gi.Object
@@ -48403,6 +48944,15 @@ func (recv *MenuItem) ToggleSizeRequest(requisition int32) int32 {
 	return out0
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *MenuItem) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var menuItemAccessibleObject *gi.Object
 var menuItemAccessibleObject_Once sync.Once
 
@@ -49006,6 +49556,15 @@ func (recv *MenuShell) SetTakeFocus(takeFocus bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *MenuShell) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var menuShellAccessibleObject *gi.Object
 var menuShellAccessibleObject_Once sync.Once
 
@@ -49390,6 +49949,15 @@ func (recv *MenuToolButton) SetMenu(menu *Widget) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *MenuToolButton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var messageDialogObject *gi.Object
@@ -50610,6 +51178,15 @@ func (recv *NativeDialog) Show() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *NativeDialog) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var notebookObject *gi.Object
@@ -52090,6 +52667,15 @@ func (recv *Notebook) SetTabReorderable(child *Widget, reorderable bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Notebook) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var notebookAccessibleObject *gi.Object
 var notebookAccessibleObject_Once sync.Once
 
@@ -53077,6 +53663,15 @@ func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Overlay) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var padControllerObject *gi.Object
@@ -54394,6 +54989,15 @@ func (recv *Paned) SetWideHandle(wide bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Paned) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var panedAccessibleObject *gi.Object
 var panedAccessibleObject_Once sync.Once
 
@@ -55141,6 +55745,15 @@ func (recv *PlacesSidebar) SetShowTrash(showTrash bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *PlacesSidebar) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var plugObject *gi.Object
 var plugObject_Once sync.Once
 
@@ -55467,6 +56080,15 @@ func (recv *Plug) GetSocketWindow() *gdk.Window {
 	retGo := gdk.WindowNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Plug) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var popoverObject *gi.Object
@@ -56077,6 +56699,15 @@ func (recv *Popover) SetTransitionsEnabled(transitionsEnabled bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Popover) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var popoverAccessibleObject *gi.Object
@@ -57627,6 +58258,15 @@ func (recv *PrintOperation) SetUseFullPage(fullPage bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *PrintOperation) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var printSettingsObject *gi.Object
@@ -60597,6 +61237,15 @@ func (recv *RadioAction) SetCurrentValue(currentValue int32) {
 
 // UNSUPPORTED : C value 'gtk_radio_action_set_group' : parameter 'group' of type 'GLib.SList' not supported
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *RadioAction) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var radioButtonObject *gi.Object
 var radioButtonObject_Once sync.Once
 
@@ -60837,6 +61486,15 @@ func (recv *RadioButton) JoinGroup(groupSource *RadioButton) {
 }
 
 // UNSUPPORTED : C value 'gtk_radio_button_set_group' : parameter 'group' of type 'GLib.SList' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *RadioButton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var radioButtonAccessibleObject *gi.Object
 var radioButtonAccessibleObject_Once sync.Once
@@ -61186,6 +61844,15 @@ func (recv *RadioMenuItem) JoinGroup(groupSource *RadioMenuItem) {
 }
 
 // UNSUPPORTED : C value 'gtk_radio_menu_item_set_group' : parameter 'group' of type 'GLib.SList' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *RadioMenuItem) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var radioMenuItemAccessibleObject *gi.Object
 var radioMenuItemAccessibleObject_Once sync.Once
@@ -62395,6 +63062,15 @@ func (recv *Range) SetValue(value float64) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Range) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var rangeAccessibleObject *gi.Object
@@ -64061,6 +64737,15 @@ func (recv *RecentManager) RemoveItem(uri string) bool {
 	return retGo
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *RecentManager) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var rendererCellAccessibleObject *gi.Object
 var rendererCellAccessibleObject_Once sync.Once
 
@@ -65047,6 +65732,15 @@ func (recv *Scale) SetValuePos(pos PositionType) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Scale) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var scaleAccessibleObject *gi.Object
 var scaleAccessibleObject_Once sync.Once
 
@@ -65464,6 +66158,15 @@ func (recv *ScaleButton) SetValue(value float64) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ScaleButton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var scaleButtonAccessibleObject *gi.Object
@@ -66804,6 +67507,15 @@ func (recv *ScrolledWindow) UnsetPlacement() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ScrolledWindow) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var scrolledWindowAccessibleObject *gi.Object
 var scrolledWindowAccessibleObject_Once sync.Once
 
@@ -67280,6 +67992,15 @@ func SearchEntryNew() *SearchEntry {
 }
 
 // UNSUPPORTED : C value 'gtk_search_entry_handle_event' : parameter 'event' of type 'Gdk.Event' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *SearchEntry) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var separatorObject *gi.Object
 var separatorObject_Once sync.Once
@@ -68315,6 +69036,15 @@ func (recv *ShortcutsSection) Native() unsafe.Pointer {
 	return recv.native
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ShortcutsSection) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var shortcutsShortcutObject *gi.Object
 var shortcutsShortcutObject_Once sync.Once
 
@@ -68482,6 +69212,15 @@ func (recv *ShortcutsWindow) SetFieldWindow(value *Window) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(shortcutsWindowObject, recv.Native(), "window", argValue)
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ShortcutsWindow) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var sizeGroupObject *gi.Object
@@ -68988,6 +69727,15 @@ func (recv *Socket) GetPlugWindow() *gdk.Window {
 	retGo := gdk.WindowNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Socket) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var spinButtonObject *gi.Object
@@ -69814,6 +70562,15 @@ func (recv *SpinButton) Update() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *SpinButton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var spinButtonAccessibleObject *gi.Object
@@ -72383,6 +73140,15 @@ func (recv *StatusIcon) SetVisible(visible bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *StatusIcon) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var statusbarObject *gi.Object
 var statusbarObject_Once sync.Once
 
@@ -72687,6 +73453,15 @@ func (recv *Statusbar) RemoveAll(contextId uint32) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Statusbar) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var statusbarAccessibleObject *gi.Object
@@ -73189,6 +73964,15 @@ func (recv *Style) SetBackground(window *gdk.Window, stateType StateType) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Style) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var styleContextObject *gi.Object
@@ -74121,6 +74905,15 @@ func (recv *StyleContext) StateIsRunning(state StateType) (bool, float64) {
 
 // UNSUPPORTED : C value 'gtk_style_context_to_string' : parameter 'flags' of type 'StyleContextPrintFlags' not supported
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *StyleContext) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var stylePropertiesObject *gi.Object
 var stylePropertiesObject_Once sync.Once
 
@@ -74558,6 +75351,15 @@ func (recv *Switch) SetState(state bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Switch) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var switchAccessibleObject *gi.Object
@@ -77353,6 +78155,15 @@ func (recv *TextBuffer) SetText(text string, len int32) {
 
 // UNSUPPORTED : C value 'gtk_text_buffer_unregister_serialize_format' : parameter 'format' of type 'Gdk.Atom' not supported
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *TextBuffer) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var textCellAccessibleObject *gi.Object
 var textCellAccessibleObject_Once sync.Once
 
@@ -78093,6 +78904,15 @@ func (recv *TextTag) SetPriority(priority int32) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *TextTag) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var textTagTableObject *gi.Object
 var textTagTableObject_Once sync.Once
 
@@ -78335,6 +79155,15 @@ func (recv *TextTagTable) Remove(tag *TextTag) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *TextTagTable) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var textViewObject *gi.Object
@@ -80486,6 +81315,15 @@ func (recv *TextView) WindowToBufferCoords(win TextWindowType, windowX int32, wi
 	return out0, out1
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *TextView) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var textViewAccessibleObject *gi.Object
 var textViewAccessibleObject_Once sync.Once
 
@@ -81131,6 +81969,15 @@ func (recv *ToggleAction) Toggled() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ToggleAction) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var toggleButtonObject *gi.Object
 var toggleButtonObject_Once sync.Once
 
@@ -81516,6 +82363,15 @@ func (recv *ToggleButton) Toggled() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ToggleButton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var toggleButtonAccessibleObject *gi.Object
 var toggleButtonAccessibleObject_Once sync.Once
 
@@ -81844,6 +82700,15 @@ func (recv *ToggleToolButton) SetActive(isActive bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ToggleToolButton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var toolButtonObject *gi.Object
@@ -82369,6 +83234,15 @@ func (recv *ToolButton) SetUseUnderline(useUnderline bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ToolButton) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var toolItemObject *gi.Object
@@ -83289,6 +84163,15 @@ func (recv *ToolItem) ToolbarReconfigured() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *ToolItem) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var toolItemGroupObject *gi.Object
@@ -85116,6 +85999,15 @@ func (recv *Toolbar) UnsetStyle() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Toolbar) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var tooltipObject *gi.Object
 var tooltipObject_Once sync.Once
 
@@ -86517,6 +87409,15 @@ func (recv *TreeSelection) UnselectRange(startPath *TreePath, endPath *TreePath)
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *TreeSelection) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var treeStoreObject *gi.Object
@@ -89653,6 +90554,15 @@ func (recv *TreeView) UnsetRowsDragSource() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *TreeView) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var treeViewAccessibleObject *gi.Object
 var treeViewAccessibleObject_Once sync.Once
 
@@ -91321,6 +92231,15 @@ func (recv *TreeViewColumn) SetWidget(widget *Widget) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *TreeViewColumn) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var uIManagerObject *gi.Object
 var uIManagerObject_Once sync.Once
 
@@ -91865,6 +92784,15 @@ func (recv *UIManager) SetAddTearoffs(addTearoffs bool) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *UIManager) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var vBoxObject *gi.Object
@@ -99608,6 +100536,15 @@ func (recv *Widget) UnregisterWindow(window *gdk.Window) {
 
 // UNSUPPORTED : C value 'gtk_widget_unset_state_flags' : parameter 'flags' of type 'StateFlags' not supported
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Widget) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var widgetAccessibleObject *gi.Object
 var widgetAccessibleObject_Once sync.Once
 
@@ -102743,6 +103680,15 @@ func (recv *Window) Unstick() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Window) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var windowAccessibleObject *gi.Object

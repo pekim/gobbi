@@ -3,6 +3,7 @@
 package gdkpixbuf
 
 import (
+	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
@@ -2255,6 +2256,15 @@ func (recv *PixbufLoader) SetSize(width int32, height int32) {
 // UNSUPPORTED : C value 'gdk_pixbuf_loader_write' : parameter 'buf' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gdk_pixbuf_loader_write_bytes' : parameter 'buffer' of type 'GLib.Bytes' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *PixbufLoader) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var pixbufSimpleAnimObject *gi.Object
 var pixbufSimpleAnimObject_Once sync.Once

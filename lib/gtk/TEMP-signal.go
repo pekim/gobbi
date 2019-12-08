@@ -16,7 +16,3 @@ func (recv *Widget) ConnectShow(handler func(widget *Widget)) int {
 		},
 	)
 }
-
-func (recv *Widget) DisconnectSignal(id int) {
-	callback.DisconnectSignal(id)
-}

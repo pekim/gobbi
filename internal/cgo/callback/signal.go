@@ -11,6 +11,8 @@ import (
 	"unsafe"
 )
 
+const PackageName = "github.com/pekim/gobbi/internal/cgo/callback"
+
 type Value C.GValue
 
 type Handler func(return_value *Value, paramValues []Value)

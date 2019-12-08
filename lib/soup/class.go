@@ -3,6 +3,7 @@
 package soup
 
 import (
+	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
@@ -1761,6 +1762,15 @@ func (recv *AuthManager) UseAuth(uri *URI, auth *Auth) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *AuthManager) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var authNTLMObject *gi.Object
 var authNTLMObject_Once sync.Once
 
@@ -2844,6 +2854,15 @@ func (recv *CookieJar) SetCookieWithFirstParty(uri *URI, firstParty *URI, cookie
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *CookieJar) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var cookieJarDBObject *gi.Object
 var cookieJarDBObject_Once sync.Once
 
@@ -3303,6 +3322,15 @@ func (recv *HSTSEnforcer) SetSessionPolicy(domain string, includeSubdomains bool
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *HSTSEnforcer) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var hSTSEnforcerDBObject *gi.Object
@@ -4617,6 +4645,15 @@ func (recv *Message) WroteInformational() {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Message) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var multipartInputStreamObject *gi.Object
@@ -6117,6 +6154,15 @@ func (recv *Server) UnpauseMessage(msg *Message) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Server) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var sessionObject *gi.Object
 var sessionObject_Once sync.Once
 
@@ -6726,6 +6772,15 @@ func (recv *Session) WouldRedirect(msg *Message) bool {
 	retGo := ret.Boolean()
 
 	return retGo
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Session) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var sessionAsyncObject *gi.Object
@@ -7343,6 +7398,15 @@ func (recv *Socket) StartSsl(cancellable *gio.Cancellable) bool {
 
 // UNSUPPORTED : C value 'soup_socket_write' : parameter 'buffer' of type 'nil' not supported
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Socket) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var websocketConnectionObject *gi.Object
 var websocketConnectionObject_Once sync.Once
 
@@ -7893,6 +7957,15 @@ func (recv *WebsocketConnection) SetMaxIncomingPayloadSize(maxIncomingPayloadSiz
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *WebsocketConnection) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var websocketExtensionObject *gi.Object

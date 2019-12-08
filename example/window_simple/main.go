@@ -26,6 +26,8 @@ func main() {
 	window := gtk.WindowNew(gtk.WindowType_Toplevel)
 	window.SetTitle("gobbi")
 	window.SetDefaultSize(400, 300)
+	//window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
+
 	window.Widget().ShowAll()
 
 	gtk.Main()

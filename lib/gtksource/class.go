@@ -3,6 +3,7 @@
 package gtksource
 
 import (
+	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -746,6 +747,15 @@ func (recv *Buffer) Undo() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Buffer) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var completionObject *gi.Object
 var completionObject_Once sync.Once
 
@@ -989,6 +999,15 @@ func (recv *Completion) UnblockInteractive() {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *Completion) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var completionContextObject *gi.Object
 var completionContextObject_Once sync.Once
 
@@ -1082,6 +1101,15 @@ func (recv *CompletionContext) SetFieldPriv(value *CompletionContextPrivate) {
 // UNSUPPORTED : C value 'gtk_source_completion_context_get_activation' : return type 'CompletionActivation' not supported
 
 // UNSUPPORTED : C value 'gtk_source_completion_context_get_iter' : parameter 'iter' of type 'Gtk.TextIter' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *CompletionContext) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
 
 var completionInfoObject *gi.Object
 var completionInfoObject_Once sync.Once
@@ -1282,6 +1310,15 @@ func (recv *CompletionInfo) SetWidget(widget *gtk.Widget) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *CompletionInfo) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var completionItemObject *gi.Object
@@ -3787,6 +3824,15 @@ func (recv *GutterRenderer) SetVisible(visible bool) {
 	return
 }
 
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *GutterRenderer) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
+
 var gutterRendererPixbufObject *gi.Object
 var gutterRendererPixbufObject_Once sync.Once
 
@@ -5708,6 +5754,15 @@ func (recv *MarkAttributes) SetStockId(stockId string) {
 	}
 
 	return
+}
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *MarkAttributes) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
 }
 
 var printCompositorObject *gi.Object
@@ -10145,3 +10200,12 @@ func (recv *View) SetTabWidth(width uint32) {
 }
 
 // UNSUPPORTED : C value 'gtk_source_view_unindent_lines' : parameter 'start' of type 'Gtk.TextIter' not supported
+
+/*
+Disconnect disconnects a callback previously registered with a Connect...() method.
+
+The connectionID should be a value returned from a call to a Connect...() method.
+*/
+func (recv *View) DisconnectSignal(connectionID int) {
+	callback.DisconnectSignal(connectionID)
+}
