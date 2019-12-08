@@ -13,11 +13,8 @@ import (
 )
 
 type Namespace struct {
-	//Blacklist bool   `xml:"blacklist,attr"`
-	Name    string `xml:"name,attr"`
-	Version string `xml:"version,attr"`
-	//SharedLibrary       string `xml:"shared-library,attr"`
-	//CDocPath            string `xml:"c-doc-path,attr"`
+	Name                string       `xml:"name,attr"`
+	Version             string       `xml:"version,attr"`
 	CIdentifierPrefixes string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
 	CSymbolPrefixes     string       `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
 	Aliases             Aliases      `xml:"alias"`

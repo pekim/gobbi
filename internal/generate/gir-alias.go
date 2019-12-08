@@ -1,8 +1,7 @@
 package generate
 
 type Alias struct {
-	Name string `xml:"name,attr"`
-	//Blacklist bool   `xml:"blacklist,attr"`
+	Name  string `xml:"name,attr"`
 	CType string `xml:"type,attr"`
 	Type  *Type  `xml:"type"`
 	Doc   *Doc   `xml:"doc"`

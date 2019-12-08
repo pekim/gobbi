@@ -1,8 +1,7 @@
 package generate
 
 type Constant struct {
-	Name string `xml:"name,attr"`
-	//Blacklist bool   `xml:"blacklist,attr"`
+	Name    string `xml:"name,attr"`
 	Value   string `xml:"value,attr"`
 	Version string `xml:"version,attr"`
 	CType   string `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`

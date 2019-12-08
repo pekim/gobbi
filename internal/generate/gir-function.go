@@ -10,7 +10,6 @@ const receiverName = "recv"
 
 type Function struct {
 	Name              string `xml:"name,attr"`
-	Blacklist         bool   `xml:"blacklist,attr"`
 	Version           string `xml:"version,attr"`
 	MovedTo           string `xml:"moved-to,attr"`
 	CIdentifier       string `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
