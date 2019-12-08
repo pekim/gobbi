@@ -60,7 +60,7 @@ func CastToAuthenticationRequest(object *gobject.Object) *AuthenticationRequest 
 	return AuthenticationRequestNewFromNative(object.Native())
 }
 
-// Equals compares this AuthenticationRequest with another AuthenticationRequest, and returns true if they represent the same GObject.
+// Equals compares this AuthenticationRequest with another AuthenticationRequest, and returns true if they represent the same Object.
 func (recv *AuthenticationRequest) Equals(other *AuthenticationRequest) bool {
 	return other.Native() == recv.Native()
 }
@@ -451,7 +451,7 @@ func CastToAutomationSession(object *gobject.Object) *AutomationSession {
 	return AutomationSessionNewFromNative(object.Native())
 }
 
-// Equals compares this AutomationSession with another AutomationSession, and returns true if they represent the same GObject.
+// Equals compares this AutomationSession with another AutomationSession, and returns true if they represent the same Object.
 func (recv *AutomationSession) Equals(other *AutomationSession) bool {
 	return other.Native() == recv.Native()
 }
@@ -636,7 +636,7 @@ func CastToBackForwardList(object *gobject.Object) *BackForwardList {
 	return BackForwardListNewFromNative(object.Native())
 }
 
-// Equals compares this BackForwardList with another BackForwardList, and returns true if they represent the same GObject.
+// Equals compares this BackForwardList with another BackForwardList, and returns true if they represent the same Object.
 func (recv *BackForwardList) Equals(other *BackForwardList) bool {
 	return other.Native() == recv.Native()
 }
@@ -902,7 +902,7 @@ func CastToBackForwardListItem(object *gobject.Object) *BackForwardListItem {
 	return BackForwardListItemNewFromNative(object.Native())
 }
 
-// Equals compares this BackForwardListItem with another BackForwardListItem, and returns true if they represent the same GObject.
+// Equals compares this BackForwardListItem with another BackForwardListItem, and returns true if they represent the same Object.
 func (recv *BackForwardListItem) Equals(other *BackForwardListItem) bool {
 	return other.Native() == recv.Native()
 }
@@ -1081,7 +1081,7 @@ func CastToColorChooserRequest(object *gobject.Object) *ColorChooserRequest {
 	return ColorChooserRequestNewFromNative(object.Native())
 }
 
-// Equals compares this ColorChooserRequest with another ColorChooserRequest, and returns true if they represent the same GObject.
+// Equals compares this ColorChooserRequest with another ColorChooserRequest, and returns true if they represent the same Object.
 func (recv *ColorChooserRequest) Equals(other *ColorChooserRequest) bool {
 	return other.Native() == recv.Native()
 }
@@ -1221,7 +1221,7 @@ func CastToContextMenu(object *gobject.Object) *ContextMenu {
 	return ContextMenuNewFromNative(object.Native())
 }
 
-// Equals compares this ContextMenu with another ContextMenu, and returns true if they represent the same GObject.
+// Equals compares this ContextMenu with another ContextMenu, and returns true if they represent the same Object.
 func (recv *ContextMenu) Equals(other *ContextMenu) bool {
 	return other.Native() == recv.Native()
 }
@@ -1653,7 +1653,7 @@ func CastToContextMenuItem(object *gobject.Object) *ContextMenuItem {
 	return ContextMenuItemNewFromNative(object.Native())
 }
 
-// Equals compares this ContextMenuItem with another ContextMenuItem, and returns true if they represent the same GObject.
+// Equals compares this ContextMenuItem with another ContextMenuItem, and returns true if they represent the same Object.
 func (recv *ContextMenuItem) Equals(other *ContextMenuItem) bool {
 	return other.Native() == recv.Native()
 }
@@ -2057,7 +2057,7 @@ func CastToCookieManager(object *gobject.Object) *CookieManager {
 	return CookieManagerNewFromNative(object.Native())
 }
 
-// Equals compares this CookieManager with another CookieManager, and returns true if they represent the same GObject.
+// Equals compares this CookieManager with another CookieManager, and returns true if they represent the same Object.
 func (recv *CookieManager) Equals(other *CookieManager) bool {
 	return other.Native() == recv.Native()
 }
@@ -2285,7 +2285,7 @@ func CastToDeviceInfoPermissionRequest(object *gobject.Object) *DeviceInfoPermis
 	return DeviceInfoPermissionRequestNewFromNative(object.Native())
 }
 
-// Equals compares this DeviceInfoPermissionRequest with another DeviceInfoPermissionRequest, and returns true if they represent the same GObject.
+// Equals compares this DeviceInfoPermissionRequest with another DeviceInfoPermissionRequest, and returns true if they represent the same Object.
 func (recv *DeviceInfoPermissionRequest) Equals(other *DeviceInfoPermissionRequest) bool {
 	return other.Native() == recv.Native()
 }
@@ -2359,7 +2359,7 @@ func CastToDownload(object *gobject.Object) *Download {
 	return DownloadNewFromNative(object.Native())
 }
 
-// Equals compares this Download with another Download, and returns true if they represent the same GObject.
+// Equals compares this Download with another Download, and returns true if they represent the same Object.
 func (recv *Download) Equals(other *Download) bool {
 	return other.Native() == recv.Native()
 }
@@ -2793,7 +2793,7 @@ func CastToEditorState(object *gobject.Object) *EditorState {
 	return EditorStateNewFromNative(object.Native())
 }
 
-// Equals compares this EditorState with another EditorState, and returns true if they represent the same GObject.
+// Equals compares this EditorState with another EditorState, and returns true if they represent the same Object.
 func (recv *EditorState) Equals(other *EditorState) bool {
 	return other.Native() == recv.Native()
 }
@@ -3068,7 +3068,7 @@ func CastToFaviconDatabase(object *gobject.Object) *FaviconDatabase {
 	return FaviconDatabaseNewFromNative(object.Native())
 }
 
-// Equals compares this FaviconDatabase with another FaviconDatabase, and returns true if they represent the same GObject.
+// Equals compares this FaviconDatabase with another FaviconDatabase, and returns true if they represent the same Object.
 func (recv *FaviconDatabase) Equals(other *FaviconDatabase) bool {
 	return other.Native() == recv.Native()
 }
@@ -3225,7 +3225,7 @@ func CastToFileChooserRequest(object *gobject.Object) *FileChooserRequest {
 	return FileChooserRequestNewFromNative(object.Native())
 }
 
-// Equals compares this FileChooserRequest with another FileChooserRequest, and returns true if they represent the same GObject.
+// Equals compares this FileChooserRequest with another FileChooserRequest, and returns true if they represent the same Object.
 func (recv *FileChooserRequest) Equals(other *FileChooserRequest) bool {
 	return other.Native() == recv.Native()
 }
@@ -3444,7 +3444,7 @@ func CastToFindController(object *gobject.Object) *FindController {
 	return FindControllerNewFromNative(object.Native())
 }
 
-// Equals compares this FindController with another FindController, and returns true if they represent the same GObject.
+// Equals compares this FindController with another FindController, and returns true if they represent the same Object.
 func (recv *FindController) Equals(other *FindController) bool {
 	return other.Native() == recv.Native()
 }
@@ -3796,7 +3796,7 @@ func CastToFormSubmissionRequest(object *gobject.Object) *FormSubmissionRequest 
 	return FormSubmissionRequestNewFromNative(object.Native())
 }
 
-// Equals compares this FormSubmissionRequest with another FormSubmissionRequest, and returns true if they represent the same GObject.
+// Equals compares this FormSubmissionRequest with another FormSubmissionRequest, and returns true if they represent the same Object.
 func (recv *FormSubmissionRequest) Equals(other *FormSubmissionRequest) bool {
 	return other.Native() == recv.Native()
 }
@@ -3897,7 +3897,7 @@ func CastToGeolocationManager(object *gobject.Object) *GeolocationManager {
 	return GeolocationManagerNewFromNative(object.Native())
 }
 
-// Equals compares this GeolocationManager with another GeolocationManager, and returns true if they represent the same GObject.
+// Equals compares this GeolocationManager with another GeolocationManager, and returns true if they represent the same Object.
 func (recv *GeolocationManager) Equals(other *GeolocationManager) bool {
 	return other.Native() == recv.Native()
 }
@@ -4065,7 +4065,7 @@ func CastToGeolocationPermissionRequest(object *gobject.Object) *GeolocationPerm
 	return GeolocationPermissionRequestNewFromNative(object.Native())
 }
 
-// Equals compares this GeolocationPermissionRequest with another GeolocationPermissionRequest, and returns true if they represent the same GObject.
+// Equals compares this GeolocationPermissionRequest with another GeolocationPermissionRequest, and returns true if they represent the same Object.
 func (recv *GeolocationPermissionRequest) Equals(other *GeolocationPermissionRequest) bool {
 	return other.Native() == recv.Native()
 }
@@ -4139,7 +4139,7 @@ func CastToHitTestResult(object *gobject.Object) *HitTestResult {
 	return HitTestResultNewFromNative(object.Native())
 }
 
-// Equals compares this HitTestResult with another HitTestResult, and returns true if they represent the same GObject.
+// Equals compares this HitTestResult with another HitTestResult, and returns true if they represent the same Object.
 func (recv *HitTestResult) Equals(other *HitTestResult) bool {
 	return other.Native() == recv.Native()
 }
@@ -4606,7 +4606,7 @@ func CastToInstallMissingMediaPluginsPermissionRequest(object *gobject.Object) *
 	return InstallMissingMediaPluginsPermissionRequestNewFromNative(object.Native())
 }
 
-// Equals compares this InstallMissingMediaPluginsPermissionRequest with another InstallMissingMediaPluginsPermissionRequest, and returns true if they represent the same GObject.
+// Equals compares this InstallMissingMediaPluginsPermissionRequest with another InstallMissingMediaPluginsPermissionRequest, and returns true if they represent the same Object.
 func (recv *InstallMissingMediaPluginsPermissionRequest) Equals(other *InstallMissingMediaPluginsPermissionRequest) bool {
 	return other.Native() == recv.Native()
 }
@@ -4731,7 +4731,7 @@ func CastToNavigationPolicyDecision(object *gobject.Object) *NavigationPolicyDec
 	return NavigationPolicyDecisionNewFromNative(object.Native())
 }
 
-// Equals compares this NavigationPolicyDecision with another NavigationPolicyDecision, and returns true if they represent the same GObject.
+// Equals compares this NavigationPolicyDecision with another NavigationPolicyDecision, and returns true if they represent the same Object.
 func (recv *NavigationPolicyDecision) Equals(other *NavigationPolicyDecision) bool {
 	return other.Native() == recv.Native()
 }
@@ -4992,7 +4992,7 @@ func CastToNotification(object *gobject.Object) *Notification {
 	return NotificationNewFromNative(object.Native())
 }
 
-// Equals compares this Notification with another Notification, and returns true if they represent the same GObject.
+// Equals compares this Notification with another Notification, and returns true if they represent the same Object.
 func (recv *Notification) Equals(other *Notification) bool {
 	return other.Native() == recv.Native()
 }
@@ -5268,7 +5268,7 @@ func CastToNotificationPermissionRequest(object *gobject.Object) *NotificationPe
 	return NotificationPermissionRequestNewFromNative(object.Native())
 }
 
-// Equals compares this NotificationPermissionRequest with another NotificationPermissionRequest, and returns true if they represent the same GObject.
+// Equals compares this NotificationPermissionRequest with another NotificationPermissionRequest, and returns true if they represent the same Object.
 func (recv *NotificationPermissionRequest) Equals(other *NotificationPermissionRequest) bool {
 	return other.Native() == recv.Native()
 }
@@ -5342,7 +5342,7 @@ func CastToOptionMenu(object *gobject.Object) *OptionMenu {
 	return OptionMenuNewFromNative(object.Native())
 }
 
-// Equals compares this OptionMenu with another OptionMenu, and returns true if they represent the same GObject.
+// Equals compares this OptionMenu with another OptionMenu, and returns true if they represent the same Object.
 func (recv *OptionMenu) Equals(other *OptionMenu) bool {
 	return other.Native() == recv.Native()
 }
@@ -5585,7 +5585,7 @@ func CastToPlugin(object *gobject.Object) *Plugin {
 	return PluginNewFromNative(object.Native())
 }
 
-// Equals compares this Plugin with another Plugin, and returns true if they represent the same GObject.
+// Equals compares this Plugin with another Plugin, and returns true if they represent the same Object.
 func (recv *Plugin) Equals(other *Plugin) bool {
 	return other.Native() == recv.Native()
 }
@@ -5766,7 +5766,7 @@ func CastToPolicyDecision(object *gobject.Object) *PolicyDecision {
 	return PolicyDecisionNewFromNative(object.Native())
 }
 
-// Equals compares this PolicyDecision with another PolicyDecision, and returns true if they represent the same GObject.
+// Equals compares this PolicyDecision with another PolicyDecision, and returns true if they represent the same Object.
 func (recv *PolicyDecision) Equals(other *PolicyDecision) bool {
 	return other.Native() == recv.Native()
 }
@@ -5919,7 +5919,7 @@ func CastToPrintCustomWidget(object *gobject.Object) *PrintCustomWidget {
 	return PrintCustomWidgetNewFromNative(object.Native())
 }
 
-// Equals compares this PrintCustomWidget with another PrintCustomWidget, and returns true if they represent the same GObject.
+// Equals compares this PrintCustomWidget with another PrintCustomWidget, and returns true if they represent the same Object.
 func (recv *PrintCustomWidget) Equals(other *PrintCustomWidget) bool {
 	return other.Native() == recv.Native()
 }
@@ -6110,7 +6110,7 @@ func CastToPrintOperation(object *gobject.Object) *PrintOperation {
 	return PrintOperationNewFromNative(object.Native())
 }
 
-// Equals compares this PrintOperation with another PrintOperation, and returns true if they represent the same GObject.
+// Equals compares this PrintOperation with another PrintOperation, and returns true if they represent the same Object.
 func (recv *PrintOperation) Equals(other *PrintOperation) bool {
 	return other.Native() == recv.Native()
 }
@@ -6424,7 +6424,7 @@ func CastToResponsePolicyDecision(object *gobject.Object) *ResponsePolicyDecisio
 	return ResponsePolicyDecisionNewFromNative(object.Native())
 }
 
-// Equals compares this ResponsePolicyDecision with another ResponsePolicyDecision, and returns true if they represent the same GObject.
+// Equals compares this ResponsePolicyDecision with another ResponsePolicyDecision, and returns true if they represent the same Object.
 func (recv *ResponsePolicyDecision) Equals(other *ResponsePolicyDecision) bool {
 	return other.Native() == recv.Native()
 }
@@ -6589,7 +6589,7 @@ func CastToSecurityManager(object *gobject.Object) *SecurityManager {
 	return SecurityManagerNewFromNative(object.Native())
 }
 
-// Equals compares this SecurityManager with another SecurityManager, and returns true if they represent the same GObject.
+// Equals compares this SecurityManager with another SecurityManager, and returns true if they represent the same Object.
 func (recv *SecurityManager) Equals(other *SecurityManager) bool {
 	return other.Native() == recv.Native()
 }
@@ -7044,7 +7044,7 @@ func CastToSettings(object *gobject.Object) *Settings {
 	return SettingsNewFromNative(object.Native())
 }
 
-// Equals compares this Settings with another Settings, and returns true if they represent the same GObject.
+// Equals compares this Settings with another Settings, and returns true if they represent the same Object.
 func (recv *Settings) Equals(other *Settings) bool {
 	return other.Native() == recv.Native()
 }
@@ -10668,7 +10668,7 @@ func CastToURIRequest(object *gobject.Object) *URIRequest {
 	return URIRequestNewFromNative(object.Native())
 }
 
-// Equals compares this URIRequest with another URIRequest, and returns true if they represent the same GObject.
+// Equals compares this URIRequest with another URIRequest, and returns true if they represent the same Object.
 func (recv *URIRequest) Equals(other *URIRequest) bool {
 	return other.Native() == recv.Native()
 }
@@ -10866,7 +10866,7 @@ func CastToURIResponse(object *gobject.Object) *URIResponse {
 	return URIResponseNewFromNative(object.Native())
 }
 
-// Equals compares this URIResponse with another URIResponse, and returns true if they represent the same GObject.
+// Equals compares this URIResponse with another URIResponse, and returns true if they represent the same Object.
 func (recv *URIResponse) Equals(other *URIResponse) bool {
 	return other.Native() == recv.Native()
 }
@@ -11097,7 +11097,7 @@ func CastToURISchemeRequest(object *gobject.Object) *URISchemeRequest {
 	return URISchemeRequestNewFromNative(object.Native())
 }
 
-// Equals compares this URISchemeRequest with another URISchemeRequest, and returns true if they represent the same GObject.
+// Equals compares this URISchemeRequest with another URISchemeRequest, and returns true if they represent the same Object.
 func (recv *URISchemeRequest) Equals(other *URISchemeRequest) bool {
 	return other.Native() == recv.Native()
 }
@@ -11341,7 +11341,7 @@ func CastToUserContentFilterStore(object *gobject.Object) *UserContentFilterStor
 	return UserContentFilterStoreNewFromNative(object.Native())
 }
 
-// Equals compares this UserContentFilterStore with another UserContentFilterStore, and returns true if they represent the same GObject.
+// Equals compares this UserContentFilterStore with another UserContentFilterStore, and returns true if they represent the same Object.
 func (recv *UserContentFilterStore) Equals(other *UserContentFilterStore) bool {
 	return other.Native() == recv.Native()
 }
@@ -11496,7 +11496,7 @@ func CastToUserContentManager(object *gobject.Object) *UserContentManager {
 	return UserContentManagerNewFromNative(object.Native())
 }
 
-// Equals compares this UserContentManager with another UserContentManager, and returns true if they represent the same GObject.
+// Equals compares this UserContentManager with another UserContentManager, and returns true if they represent the same Object.
 func (recv *UserContentManager) Equals(other *UserContentManager) bool {
 	return other.Native() == recv.Native()
 }
@@ -11961,7 +11961,7 @@ func CastToUserMediaPermissionRequest(object *gobject.Object) *UserMediaPermissi
 	return UserMediaPermissionRequestNewFromNative(object.Native())
 }
 
-// Equals compares this UserMediaPermissionRequest with another UserMediaPermissionRequest, and returns true if they represent the same GObject.
+// Equals compares this UserMediaPermissionRequest with another UserMediaPermissionRequest, and returns true if they represent the same Object.
 func (recv *UserMediaPermissionRequest) Equals(other *UserMediaPermissionRequest) bool {
 	return other.Native() == recv.Native()
 }
@@ -12035,7 +12035,7 @@ func CastToWebContext(object *gobject.Object) *WebContext {
 	return WebContextNewFromNative(object.Native())
 }
 
-// Equals compares this WebContext with another WebContext, and returns true if they represent the same GObject.
+// Equals compares this WebContext with another WebContext, and returns true if they represent the same Object.
 func (recv *WebContext) Equals(other *WebContext) bool {
 	return other.Native() == recv.Native()
 }
@@ -13200,7 +13200,7 @@ func CastToWebInspector(object *gobject.Object) *WebInspector {
 	return WebInspectorNewFromNative(object.Native())
 }
 
-// Equals compares this WebInspector with another WebInspector, and returns true if they represent the same GObject.
+// Equals compares this WebInspector with another WebInspector, and returns true if they represent the same Object.
 func (recv *WebInspector) Equals(other *WebInspector) bool {
 	return other.Native() == recv.Native()
 }
@@ -13564,7 +13564,7 @@ func CastToWebResource(object *gobject.Object) *WebResource {
 	return WebResourceNewFromNative(object.Native())
 }
 
-// Equals compares this WebResource with another WebResource, and returns true if they represent the same GObject.
+// Equals compares this WebResource with another WebResource, and returns true if they represent the same Object.
 func (recv *WebResource) Equals(other *WebResource) bool {
 	return other.Native() == recv.Native()
 }
@@ -13744,7 +13744,7 @@ func CastToWebView(object *gobject.Object) *WebView {
 	return WebViewNewFromNative(object.Native())
 }
 
-// Equals compares this WebView with another WebView, and returns true if they represent the same GObject.
+// Equals compares this WebView with another WebView, and returns true if they represent the same Object.
 func (recv *WebView) Equals(other *WebView) bool {
 	return other.Native() == recv.Native()
 }
@@ -15428,7 +15428,7 @@ func CastToWebViewBase(object *gobject.Object) *WebViewBase {
 	return WebViewBaseNewFromNative(object.Native())
 }
 
-// Equals compares this WebViewBase with another WebViewBase, and returns true if they represent the same GObject.
+// Equals compares this WebViewBase with another WebViewBase, and returns true if they represent the same Object.
 func (recv *WebViewBase) Equals(other *WebViewBase) bool {
 	return other.Native() == recv.Native()
 }
@@ -15507,7 +15507,7 @@ func CastToWebsiteDataManager(object *gobject.Object) *WebsiteDataManager {
 	return WebsiteDataManagerNewFromNative(object.Native())
 }
 
-// Equals compares this WebsiteDataManager with another WebsiteDataManager, and returns true if they represent the same GObject.
+// Equals compares this WebsiteDataManager with another WebsiteDataManager, and returns true if they represent the same Object.
 func (recv *WebsiteDataManager) Equals(other *WebsiteDataManager) bool {
 	return other.Native() == recv.Native()
 }
@@ -15956,7 +15956,7 @@ func CastToWindowProperties(object *gobject.Object) *WindowProperties {
 	return WindowPropertiesNewFromNative(object.Native())
 }
 
-// Equals compares this WindowProperties with another WindowProperties, and returns true if they represent the same GObject.
+// Equals compares this WindowProperties with another WindowProperties, and returns true if they represent the same Object.
 func (recv *WindowProperties) Equals(other *WindowProperties) bool {
 	return other.Native() == recv.Native()
 }

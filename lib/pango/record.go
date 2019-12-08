@@ -40,7 +40,7 @@ func CastToAnalysis(object *gobject.Object) *Analysis {
 	return AnalysisNewFromNative(object.Native())
 }
 
-// Equals compares this Analysis with another Analysis, and returns true if they represent the same GObject.
+// Equals compares this Analysis with another Analysis, and returns true if they represent the same Object.
 func (recv *Analysis) Equals(other *Analysis) bool {
 	return other.Native() == recv.Native()
 }
@@ -210,7 +210,7 @@ func CastToAttrClass(object *gobject.Object) *AttrClass {
 	return AttrClassNewFromNative(object.Native())
 }
 
-// Equals compares this AttrClass with another AttrClass, and returns true if they represent the same GObject.
+// Equals compares this AttrClass with another AttrClass, and returns true if they represent the same Object.
 func (recv *AttrClass) Equals(other *AttrClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -290,7 +290,7 @@ func CastToAttrColor(object *gobject.Object) *AttrColor {
 	return AttrColorNewFromNative(object.Native())
 }
 
-// Equals compares this AttrColor with another AttrColor, and returns true if they represent the same GObject.
+// Equals compares this AttrColor with another AttrColor, and returns true if they represent the same Object.
 func (recv *AttrColor) Equals(other *AttrColor) bool {
 	return other.Native() == recv.Native()
 }
@@ -372,7 +372,7 @@ func CastToAttrFloat(object *gobject.Object) *AttrFloat {
 	return AttrFloatNewFromNative(object.Native())
 }
 
-// Equals compares this AttrFloat with another AttrFloat, and returns true if they represent the same GObject.
+// Equals compares this AttrFloat with another AttrFloat, and returns true if they represent the same Object.
 func (recv *AttrFloat) Equals(other *AttrFloat) bool {
 	return other.Native() == recv.Native()
 }
@@ -454,7 +454,7 @@ func CastToAttrFontDesc(object *gobject.Object) *AttrFontDesc {
 	return AttrFontDescNewFromNative(object.Native())
 }
 
-// Equals compares this AttrFontDesc with another AttrFontDesc, and returns true if they represent the same GObject.
+// Equals compares this AttrFontDesc with another AttrFontDesc, and returns true if they represent the same Object.
 func (recv *AttrFontDesc) Equals(other *AttrFontDesc) bool {
 	return other.Native() == recv.Native()
 }
@@ -536,7 +536,7 @@ func CastToAttrFontFeatures(object *gobject.Object) *AttrFontFeatures {
 	return AttrFontFeaturesNewFromNative(object.Native())
 }
 
-// Equals compares this AttrFontFeatures with another AttrFontFeatures, and returns true if they represent the same GObject.
+// Equals compares this AttrFontFeatures with another AttrFontFeatures, and returns true if they represent the same Object.
 func (recv *AttrFontFeatures) Equals(other *AttrFontFeatures) bool {
 	return other.Native() == recv.Native()
 }
@@ -618,7 +618,7 @@ func CastToAttrInt(object *gobject.Object) *AttrInt {
 	return AttrIntNewFromNative(object.Native())
 }
 
-// Equals compares this AttrInt with another AttrInt, and returns true if they represent the same GObject.
+// Equals compares this AttrInt with another AttrInt, and returns true if they represent the same Object.
 func (recv *AttrInt) Equals(other *AttrInt) bool {
 	return other.Native() == recv.Native()
 }
@@ -700,7 +700,7 @@ func CastToAttrIterator(object *gobject.Object) *AttrIterator {
 	return AttrIteratorNewFromNative(object.Native())
 }
 
-// Equals compares this AttrIterator with another AttrIterator, and returns true if they represent the same GObject.
+// Equals compares this AttrIterator with another AttrIterator, and returns true if they represent the same Object.
 func (recv *AttrIterator) Equals(other *AttrIterator) bool {
 	return other.Native() == recv.Native()
 }
@@ -916,7 +916,7 @@ func CastToAttrLanguage(object *gobject.Object) *AttrLanguage {
 	return AttrLanguageNewFromNative(object.Native())
 }
 
-// Equals compares this AttrLanguage with another AttrLanguage, and returns true if they represent the same GObject.
+// Equals compares this AttrLanguage with another AttrLanguage, and returns true if they represent the same Object.
 func (recv *AttrLanguage) Equals(other *AttrLanguage) bool {
 	return other.Native() == recv.Native()
 }
@@ -998,7 +998,7 @@ func CastToAttrList(object *gobject.Object) *AttrList {
 	return AttrListNewFromNative(object.Native())
 }
 
-// Equals compares this AttrList with another AttrList, and returns true if they represent the same GObject.
+// Equals compares this AttrList with another AttrList, and returns true if they represent the same Object.
 func (recv *AttrList) Equals(other *AttrList) bool {
 	return other.Native() == recv.Native()
 }
@@ -1311,7 +1311,7 @@ func CastToAttrShape(object *gobject.Object) *AttrShape {
 	return AttrShapeNewFromNative(object.Native())
 }
 
-// Equals compares this AttrShape with another AttrShape, and returns true if they represent the same GObject.
+// Equals compares this AttrShape with another AttrShape, and returns true if they represent the same Object.
 func (recv *AttrShape) Equals(other *AttrShape) bool {
 	return other.Native() == recv.Native()
 }
@@ -1419,7 +1419,7 @@ func CastToAttrSize(object *gobject.Object) *AttrSize {
 	return AttrSizeNewFromNative(object.Native())
 }
 
-// Equals compares this AttrSize with another AttrSize, and returns true if they represent the same GObject.
+// Equals compares this AttrSize with another AttrSize, and returns true if they represent the same Object.
 func (recv *AttrSize) Equals(other *AttrSize) bool {
 	return other.Native() == recv.Native()
 }
@@ -1515,7 +1515,7 @@ func CastToAttrString(object *gobject.Object) *AttrString {
 	return AttrStringNewFromNative(object.Native())
 }
 
-// Equals compares this AttrString with another AttrString, and returns true if they represent the same GObject.
+// Equals compares this AttrString with another AttrString, and returns true if they represent the same Object.
 func (recv *AttrString) Equals(other *AttrString) bool {
 	return other.Native() == recv.Native()
 }
@@ -1597,7 +1597,7 @@ func CastToAttribute(object *gobject.Object) *Attribute {
 	return AttributeNewFromNative(object.Native())
 }
 
-// Equals compares this Attribute with another Attribute, and returns true if they represent the same GObject.
+// Equals compares this Attribute with another Attribute, and returns true if they represent the same Object.
 func (recv *Attribute) Equals(other *Attribute) bool {
 	return other.Native() == recv.Native()
 }
@@ -1815,7 +1815,7 @@ func CastToColor(object *gobject.Object) *Color {
 	return ColorNewFromNative(object.Native())
 }
 
-// Equals compares this Color with another Color, and returns true if they represent the same GObject.
+// Equals compares this Color with another Color, and returns true if they represent the same Object.
 func (recv *Color) Equals(other *Color) bool {
 	return other.Native() == recv.Native()
 }
@@ -2036,7 +2036,7 @@ func CastToContextClass(object *gobject.Object) *ContextClass {
 	return ContextClassNewFromNative(object.Native())
 }
 
-// Equals compares this ContextClass with another ContextClass, and returns true if they represent the same GObject.
+// Equals compares this ContextClass with another ContextClass, and returns true if they represent the same Object.
 func (recv *ContextClass) Equals(other *ContextClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -2090,7 +2090,7 @@ func CastToCoverage(object *gobject.Object) *Coverage {
 	return CoverageNewFromNative(object.Native())
 }
 
-// Equals compares this Coverage with another Coverage, and returns true if they represent the same GObject.
+// Equals compares this Coverage with another Coverage, and returns true if they represent the same Object.
 func (recv *Coverage) Equals(other *Coverage) bool {
 	return other.Native() == recv.Native()
 }
@@ -2330,7 +2330,7 @@ func CastToEngineClass(object *gobject.Object) *EngineClass {
 	return EngineClassNewFromNative(object.Native())
 }
 
-// Equals compares this EngineClass with another EngineClass, and returns true if they represent the same GObject.
+// Equals compares this EngineClass with another EngineClass, and returns true if they represent the same Object.
 func (recv *EngineClass) Equals(other *EngineClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -2384,7 +2384,7 @@ func CastToEngineInfo(object *gobject.Object) *EngineInfo {
 	return EngineInfoNewFromNative(object.Native())
 }
 
-// Equals compares this EngineInfo with another EngineInfo, and returns true if they represent the same GObject.
+// Equals compares this EngineInfo with another EngineInfo, and returns true if they represent the same Object.
 func (recv *EngineInfo) Equals(other *EngineInfo) bool {
 	return other.Native() == recv.Native()
 }
@@ -2508,7 +2508,7 @@ func CastToEngineLangClass(object *gobject.Object) *EngineLangClass {
 	return EngineLangClassNewFromNative(object.Native())
 }
 
-// Equals compares this EngineLangClass with another EngineLangClass, and returns true if they represent the same GObject.
+// Equals compares this EngineLangClass with another EngineLangClass, and returns true if they represent the same Object.
 func (recv *EngineLangClass) Equals(other *EngineLangClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -2566,7 +2566,7 @@ func CastToEngineScriptInfo(object *gobject.Object) *EngineScriptInfo {
 	return EngineScriptInfoNewFromNative(object.Native())
 }
 
-// Equals compares this EngineScriptInfo with another EngineScriptInfo, and returns true if they represent the same GObject.
+// Equals compares this EngineScriptInfo with another EngineScriptInfo, and returns true if they represent the same Object.
 func (recv *EngineScriptInfo) Equals(other *EngineScriptInfo) bool {
 	return other.Native() == recv.Native()
 }
@@ -2648,7 +2648,7 @@ func CastToEngineShapeClass(object *gobject.Object) *EngineShapeClass {
 	return EngineShapeClassNewFromNative(object.Native())
 }
 
-// Equals compares this EngineShapeClass with another EngineShapeClass, and returns true if they represent the same GObject.
+// Equals compares this EngineShapeClass with another EngineShapeClass, and returns true if they represent the same Object.
 func (recv *EngineShapeClass) Equals(other *EngineShapeClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -2710,7 +2710,7 @@ func CastToFontClass(object *gobject.Object) *FontClass {
 	return FontClassNewFromNative(object.Native())
 }
 
-// Equals compares this FontClass with another FontClass, and returns true if they represent the same GObject.
+// Equals compares this FontClass with another FontClass, and returns true if they represent the same Object.
 func (recv *FontClass) Equals(other *FontClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -2804,7 +2804,7 @@ func CastToFontDescription(object *gobject.Object) *FontDescription {
 	return FontDescriptionNewFromNative(object.Native())
 }
 
-// Equals compares this FontDescription with another FontDescription, and returns true if they represent the same GObject.
+// Equals compares this FontDescription with another FontDescription, and returns true if they represent the same Object.
 func (recv *FontDescription) Equals(other *FontDescription) bool {
 	return other.Native() == recv.Native()
 }
@@ -3799,7 +3799,7 @@ func CastToFontFaceClass(object *gobject.Object) *FontFaceClass {
 	return FontFaceClassNewFromNative(object.Native())
 }
 
-// Equals compares this FontFaceClass with another FontFaceClass, and returns true if they represent the same GObject.
+// Equals compares this FontFaceClass with another FontFaceClass, and returns true if they represent the same Object.
 func (recv *FontFaceClass) Equals(other *FontFaceClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -3881,7 +3881,7 @@ func CastToFontFamilyClass(object *gobject.Object) *FontFamilyClass {
 	return FontFamilyClassNewFromNative(object.Native())
 }
 
-// Equals compares this FontFamilyClass with another FontFamilyClass, and returns true if they represent the same GObject.
+// Equals compares this FontFamilyClass with another FontFamilyClass, and returns true if they represent the same Object.
 func (recv *FontFamilyClass) Equals(other *FontFamilyClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -3963,7 +3963,7 @@ func CastToFontMapClass(object *gobject.Object) *FontMapClass {
 	return FontMapClassNewFromNative(object.Native())
 }
 
-// Equals compares this FontMapClass with another FontMapClass, and returns true if they represent the same GObject.
+// Equals compares this FontMapClass with another FontMapClass, and returns true if they represent the same Object.
 func (recv *FontMapClass) Equals(other *FontMapClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -4063,7 +4063,7 @@ func CastToFontMetrics(object *gobject.Object) *FontMetrics {
 	return FontMetricsNewFromNative(object.Native())
 }
 
-// Equals compares this FontMetrics with another FontMetrics, and returns true if they represent the same GObject.
+// Equals compares this FontMetrics with another FontMetrics, and returns true if they represent the same Object.
 func (recv *FontMetrics) Equals(other *FontMetrics) bool {
 	return other.Native() == recv.Native()
 }
@@ -4448,7 +4448,7 @@ func CastToFontsetClass(object *gobject.Object) *FontsetClass {
 	return FontsetClassNewFromNative(object.Native())
 }
 
-// Equals compares this FontsetClass with another FontsetClass, and returns true if they represent the same GObject.
+// Equals compares this FontsetClass with another FontsetClass, and returns true if they represent the same Object.
 func (recv *FontsetClass) Equals(other *FontsetClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -4538,7 +4538,7 @@ func CastToFontsetSimpleClass(object *gobject.Object) *FontsetSimpleClass {
 	return FontsetSimpleClassNewFromNative(object.Native())
 }
 
-// Equals compares this FontsetSimpleClass with another FontsetSimpleClass, and returns true if they represent the same GObject.
+// Equals compares this FontsetSimpleClass with another FontsetSimpleClass, and returns true if they represent the same Object.
 func (recv *FontsetSimpleClass) Equals(other *FontsetSimpleClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -4592,7 +4592,7 @@ func CastToGlyphGeometry(object *gobject.Object) *GlyphGeometry {
 	return GlyphGeometryNewFromNative(object.Native())
 }
 
-// Equals compares this GlyphGeometry with another GlyphGeometry, and returns true if they represent the same GObject.
+// Equals compares this GlyphGeometry with another GlyphGeometry, and returns true if they represent the same Object.
 func (recv *GlyphGeometry) Equals(other *GlyphGeometry) bool {
 	return other.Native() == recv.Native()
 }
@@ -4688,7 +4688,7 @@ func CastToGlyphInfo(object *gobject.Object) *GlyphInfo {
 	return GlyphInfoNewFromNative(object.Native())
 }
 
-// Equals compares this GlyphInfo with another GlyphInfo, and returns true if they represent the same GObject.
+// Equals compares this GlyphInfo with another GlyphInfo, and returns true if they represent the same Object.
 func (recv *GlyphInfo) Equals(other *GlyphInfo) bool {
 	return other.Native() == recv.Native()
 }
@@ -4784,7 +4784,7 @@ func CastToGlyphItem(object *gobject.Object) *GlyphItem {
 	return GlyphItemNewFromNative(object.Native())
 }
 
-// Equals compares this GlyphItem with another GlyphItem, and returns true if they represent the same GObject.
+// Equals compares this GlyphItem with another GlyphItem, and returns true if they represent the same Object.
 func (recv *GlyphItem) Equals(other *GlyphItem) bool {
 	return other.Native() == recv.Native()
 }
@@ -4966,7 +4966,7 @@ func CastToGlyphItemIter(object *gobject.Object) *GlyphItemIter {
 	return GlyphItemIterNewFromNative(object.Native())
 }
 
-// Equals compares this GlyphItemIter with another GlyphItemIter, and returns true if they represent the same GObject.
+// Equals compares this GlyphItemIter with another GlyphItemIter, and returns true if they represent the same Object.
 func (recv *GlyphItemIter) Equals(other *GlyphItemIter) bool {
 	return other.Native() == recv.Native()
 }
@@ -5324,7 +5324,7 @@ func CastToGlyphString(object *gobject.Object) *GlyphString {
 	return GlyphStringNewFromNative(object.Native())
 }
 
-// Equals compares this GlyphString with another GlyphString, and returns true if they represent the same GObject.
+// Equals compares this GlyphString with another GlyphString, and returns true if they represent the same Object.
 func (recv *GlyphString) Equals(other *GlyphString) bool {
 	return other.Native() == recv.Native()
 }
@@ -5692,7 +5692,7 @@ func CastToGlyphVisAttr(object *gobject.Object) *GlyphVisAttr {
 	return GlyphVisAttrNewFromNative(object.Native())
 }
 
-// Equals compares this GlyphVisAttr with another GlyphVisAttr, and returns true if they represent the same GObject.
+// Equals compares this GlyphVisAttr with another GlyphVisAttr, and returns true if they represent the same Object.
 func (recv *GlyphVisAttr) Equals(other *GlyphVisAttr) bool {
 	return other.Native() == recv.Native()
 }
@@ -5760,7 +5760,7 @@ func CastToIncludedModule(object *gobject.Object) *IncludedModule {
 	return IncludedModuleNewFromNative(object.Native())
 }
 
-// Equals compares this IncludedModule with another IncludedModule, and returns true if they represent the same GObject.
+// Equals compares this IncludedModule with another IncludedModule, and returns true if they represent the same Object.
 func (recv *IncludedModule) Equals(other *IncludedModule) bool {
 	return other.Native() == recv.Native()
 }
@@ -5830,7 +5830,7 @@ func CastToItem(object *gobject.Object) *Item {
 	return ItemNewFromNative(object.Native())
 }
 
-// Equals compares this Item with another Item, and returns true if they represent the same GObject.
+// Equals compares this Item with another Item, and returns true if they represent the same Object.
 func (recv *Item) Equals(other *Item) bool {
 	return other.Native() == recv.Native()
 }
@@ -6049,7 +6049,7 @@ func CastToLanguage(object *gobject.Object) *Language {
 	return LanguageNewFromNative(object.Native())
 }
 
-// Equals compares this Language with another Language, and returns true if they represent the same GObject.
+// Equals compares this Language with another Language, and returns true if they represent the same Object.
 func (recv *Language) Equals(other *Language) bool {
 	return other.Native() == recv.Native()
 }
@@ -6265,7 +6265,7 @@ func CastToLayoutClass(object *gobject.Object) *LayoutClass {
 	return LayoutClassNewFromNative(object.Native())
 }
 
-// Equals compares this LayoutClass with another LayoutClass, and returns true if they represent the same GObject.
+// Equals compares this LayoutClass with another LayoutClass, and returns true if they represent the same Object.
 func (recv *LayoutClass) Equals(other *LayoutClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -6319,7 +6319,7 @@ func CastToLayoutIter(object *gobject.Object) *LayoutIter {
 	return LayoutIterNewFromNative(object.Native())
 }
 
-// Equals compares this LayoutIter with another LayoutIter, and returns true if they represent the same GObject.
+// Equals compares this LayoutIter with another LayoutIter, and returns true if they represent the same Object.
 func (recv *LayoutIter) Equals(other *LayoutIter) bool {
 	return other.Native() == recv.Native()
 }
@@ -6954,7 +6954,7 @@ func CastToLayoutLine(object *gobject.Object) *LayoutLine {
 	return LayoutLineNewFromNative(object.Native())
 }
 
-// Equals compares this LayoutLine with another LayoutLine, and returns true if they represent the same GObject.
+// Equals compares this LayoutLine with another LayoutLine, and returns true if they represent the same Object.
 func (recv *LayoutLine) Equals(other *LayoutLine) bool {
 	return other.Native() == recv.Native()
 }
@@ -7280,7 +7280,7 @@ func CastToLogAttr(object *gobject.Object) *LogAttr {
 	return LogAttrNewFromNative(object.Native())
 }
 
-// Equals compares this LogAttr with another LogAttr, and returns true if they represent the same GObject.
+// Equals compares this LogAttr with another LogAttr, and returns true if they represent the same Object.
 func (recv *LogAttr) Equals(other *LogAttr) bool {
 	return other.Native() == recv.Native()
 }
@@ -7516,7 +7516,7 @@ func CastToMap(object *gobject.Object) *Map {
 	return MapNewFromNative(object.Native())
 }
 
-// Equals compares this Map with another Map, and returns true if they represent the same GObject.
+// Equals compares this Map with another Map, and returns true if they represent the same Object.
 func (recv *Map) Equals(other *Map) bool {
 	return other.Native() == recv.Native()
 }
@@ -7605,7 +7605,7 @@ func CastToMapEntry(object *gobject.Object) *MapEntry {
 	return MapEntryNewFromNative(object.Native())
 }
 
-// Equals compares this MapEntry with another MapEntry, and returns true if they represent the same GObject.
+// Equals compares this MapEntry with another MapEntry, and returns true if they represent the same Object.
 func (recv *MapEntry) Equals(other *MapEntry) bool {
 	return other.Native() == recv.Native()
 }
@@ -7659,7 +7659,7 @@ func CastToMatrix(object *gobject.Object) *Matrix {
 	return MatrixNewFromNative(object.Native())
 }
 
-// Equals compares this Matrix with another Matrix, and returns true if they represent the same GObject.
+// Equals compares this Matrix with another Matrix, and returns true if they represent the same Object.
 func (recv *Matrix) Equals(other *Matrix) bool {
 	return other.Native() == recv.Native()
 }
@@ -8176,7 +8176,7 @@ func CastToRectangle(object *gobject.Object) *Rectangle {
 	return RectangleNewFromNative(object.Native())
 }
 
-// Equals compares this Rectangle with another Rectangle, and returns true if they represent the same GObject.
+// Equals compares this Rectangle with another Rectangle, and returns true if they represent the same Object.
 func (recv *Rectangle) Equals(other *Rectangle) bool {
 	return other.Native() == recv.Native()
 }
@@ -8286,7 +8286,7 @@ func CastToRendererClass(object *gobject.Object) *RendererClass {
 	return RendererClassNewFromNative(object.Native())
 }
 
-// Equals compares this RendererClass with another RendererClass, and returns true if they represent the same GObject.
+// Equals compares this RendererClass with another RendererClass, and returns true if they represent the same Object.
 func (recv *RendererClass) Equals(other *RendererClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -8396,7 +8396,7 @@ func CastToRendererPrivate(object *gobject.Object) *RendererPrivate {
 	return RendererPrivateNewFromNative(object.Native())
 }
 
-// Equals compares this RendererPrivate with another RendererPrivate, and returns true if they represent the same GObject.
+// Equals compares this RendererPrivate with another RendererPrivate, and returns true if they represent the same Object.
 func (recv *RendererPrivate) Equals(other *RendererPrivate) bool {
 	return other.Native() == recv.Native()
 }
@@ -8450,7 +8450,7 @@ func CastToScriptIter(object *gobject.Object) *ScriptIter {
 	return ScriptIterNewFromNative(object.Native())
 }
 
-// Equals compares this ScriptIter with another ScriptIter, and returns true if they represent the same GObject.
+// Equals compares this ScriptIter with another ScriptIter, and returns true if they represent the same Object.
 func (recv *ScriptIter) Equals(other *ScriptIter) bool {
 	return other.Native() == recv.Native()
 }
@@ -8598,7 +8598,7 @@ func CastToTabArray(object *gobject.Object) *TabArray {
 	return TabArrayNewFromNative(object.Native())
 }
 
-// Equals compares this TabArray with another TabArray, and returns true if they represent the same GObject.
+// Equals compares this TabArray with another TabArray, and returns true if they represent the same Object.
 func (recv *TabArray) Equals(other *TabArray) bool {
 	return other.Native() == recv.Native()
 }

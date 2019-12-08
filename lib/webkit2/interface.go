@@ -39,7 +39,7 @@ func CastToPermissionRequest(object *gobject.Object) *PermissionRequest {
 	return PermissionRequestNewFromNative(object.Native())
 }
 
-// Equals compares this PermissionRequest with another PermissionRequest, and returns true if they represent the same GObject.
+// Equals compares this PermissionRequest with another PermissionRequest, and returns true if they represent the same Object.
 func (recv *PermissionRequest) Equals(other *PermissionRequest) bool {
 	return other.Native() == recv.Native()
 }

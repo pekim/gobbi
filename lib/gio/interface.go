@@ -40,7 +40,7 @@ func CastToAction(object *gobject.Object) *Action {
 	return ActionNewFromNative(object.Native())
 }
 
-// Equals compares this Action with another Action, and returns true if they represent the same GObject.
+// Equals compares this Action with another Action, and returns true if they represent the same Object.
 func (recv *Action) Equals(other *Action) bool {
 	return other.Native() == recv.Native()
 }
@@ -155,7 +155,7 @@ func CastToActionGroup(object *gobject.Object) *ActionGroup {
 	return ActionGroupNewFromNative(object.Native())
 }
 
-// Equals compares this ActionGroup with another ActionGroup, and returns true if they represent the same GObject.
+// Equals compares this ActionGroup with another ActionGroup, and returns true if they represent the same Object.
 func (recv *ActionGroup) Equals(other *ActionGroup) bool {
 	return other.Native() == recv.Native()
 }
@@ -401,7 +401,7 @@ func CastToActionMap(object *gobject.Object) *ActionMap {
 	return ActionMapNewFromNative(object.Native())
 }
 
-// Equals compares this ActionMap with another ActionMap, and returns true if they represent the same GObject.
+// Equals compares this ActionMap with another ActionMap, and returns true if they represent the same Object.
 func (recv *ActionMap) Equals(other *ActionMap) bool {
 	return other.Native() == recv.Native()
 }
@@ -475,7 +475,7 @@ func CastToAppInfo(object *gobject.Object) *AppInfo {
 	return AppInfoNewFromNative(object.Native())
 }
 
-// Equals compares this AppInfo with another AppInfo, and returns true if they represent the same GObject.
+// Equals compares this AppInfo with another AppInfo, and returns true if they represent the same Object.
 func (recv *AppInfo) Equals(other *AppInfo) bool {
 	return other.Native() == recv.Native()
 }
@@ -1105,7 +1105,7 @@ func CastToAsyncInitable(object *gobject.Object) *AsyncInitable {
 	return AsyncInitableNewFromNative(object.Native())
 }
 
-// Equals compares this AsyncInitable with another AsyncInitable, and returns true if they represent the same GObject.
+// Equals compares this AsyncInitable with another AsyncInitable, and returns true if they represent the same Object.
 func (recv *AsyncInitable) Equals(other *AsyncInitable) bool {
 	return other.Native() == recv.Native()
 }
@@ -1150,7 +1150,7 @@ func CastToAsyncResult(object *gobject.Object) *AsyncResult {
 	return AsyncResultNewFromNative(object.Native())
 }
 
-// Equals compares this AsyncResult with another AsyncResult, and returns true if they represent the same GObject.
+// Equals compares this AsyncResult with another AsyncResult, and returns true if they represent the same Object.
 func (recv *AsyncResult) Equals(other *AsyncResult) bool {
 	return other.Native() == recv.Native()
 }
@@ -1257,7 +1257,7 @@ func CastToConverter(object *gobject.Object) *Converter {
 	return ConverterNewFromNative(object.Native())
 }
 
-// Equals compares this Converter with another Converter, and returns true if they represent the same GObject.
+// Equals compares this Converter with another Converter, and returns true if they represent the same Object.
 func (recv *Converter) Equals(other *Converter) bool {
 	return other.Native() == recv.Native()
 }
@@ -1326,7 +1326,7 @@ func CastToDBusInterface(object *gobject.Object) *DBusInterface {
 	return DBusInterfaceNewFromNative(object.Native())
 }
 
-// Equals compares this DBusInterface with another DBusInterface, and returns true if they represent the same GObject.
+// Equals compares this DBusInterface with another DBusInterface, and returns true if they represent the same Object.
 func (recv *DBusInterface) Equals(other *DBusInterface) bool {
 	return other.Native() == recv.Native()
 }
@@ -1403,7 +1403,7 @@ func CastToDBusObject(object *gobject.Object) *DBusObject {
 	return DBusObjectNewFromNative(object.Native())
 }
 
-// Equals compares this DBusObject with another DBusObject, and returns true if they represent the same GObject.
+// Equals compares this DBusObject with another DBusObject, and returns true if they represent the same Object.
 func (recv *DBusObject) Equals(other *DBusObject) bool {
 	return other.Native() == recv.Native()
 }
@@ -1487,7 +1487,7 @@ func CastToDBusObjectManager(object *gobject.Object) *DBusObjectManager {
 	return DBusObjectManagerNewFromNative(object.Native())
 }
 
-// Equals compares this DBusObjectManager with another DBusObjectManager, and returns true if they represent the same GObject.
+// Equals compares this DBusObjectManager with another DBusObjectManager, and returns true if they represent the same Object.
 func (recv *DBusObjectManager) Equals(other *DBusObjectManager) bool {
 	return other.Native() == recv.Native()
 }
@@ -1573,7 +1573,7 @@ func CastToDatagramBased(object *gobject.Object) *DatagramBased {
 	return DatagramBasedNewFromNative(object.Native())
 }
 
-// Equals compares this DatagramBased with another DatagramBased, and returns true if they represent the same GObject.
+// Equals compares this DatagramBased with another DatagramBased, and returns true if they represent the same Object.
 func (recv *DatagramBased) Equals(other *DatagramBased) bool {
 	return other.Native() == recv.Native()
 }
@@ -1622,7 +1622,7 @@ func CastToDesktopAppInfoLookup(object *gobject.Object) *DesktopAppInfoLookup {
 	return DesktopAppInfoLookupNewFromNative(object.Native())
 }
 
-// Equals compares this DesktopAppInfoLookup with another DesktopAppInfoLookup, and returns true if they represent the same GObject.
+// Equals compares this DesktopAppInfoLookup with another DesktopAppInfoLookup, and returns true if they represent the same Object.
 func (recv *DesktopAppInfoLookup) Equals(other *DesktopAppInfoLookup) bool {
 	return other.Native() == recv.Native()
 }
@@ -1663,7 +1663,7 @@ func CastToDrive(object *gobject.Object) *Drive {
 	return DriveNewFromNative(object.Native())
 }
 
-// Equals compares this Drive with another Drive, and returns true if they represent the same GObject.
+// Equals compares this Drive with another Drive, and returns true if they represent the same Object.
 func (recv *Drive) Equals(other *Drive) bool {
 	return other.Native() == recv.Native()
 }
@@ -2214,7 +2214,7 @@ func CastToDtlsClientConnection(object *gobject.Object) *DtlsClientConnection {
 	return DtlsClientConnectionNewFromNative(object.Native())
 }
 
-// Equals compares this DtlsClientConnection with another DtlsClientConnection, and returns true if they represent the same GObject.
+// Equals compares this DtlsClientConnection with another DtlsClientConnection, and returns true if they represent the same Object.
 func (recv *DtlsClientConnection) Equals(other *DtlsClientConnection) bool {
 	return other.Native() == recv.Native()
 }
@@ -2263,7 +2263,7 @@ func CastToDtlsConnection(object *gobject.Object) *DtlsConnection {
 	return DtlsConnectionNewFromNative(object.Native())
 }
 
-// Equals compares this DtlsConnection with another DtlsConnection, and returns true if they represent the same GObject.
+// Equals compares this DtlsConnection with another DtlsConnection, and returns true if they represent the same Object.
 func (recv *DtlsConnection) Equals(other *DtlsConnection) bool {
 	return other.Native() == recv.Native()
 }
@@ -2799,7 +2799,7 @@ func CastToDtlsServerConnection(object *gobject.Object) *DtlsServerConnection {
 	return DtlsServerConnectionNewFromNative(object.Native())
 }
 
-// Equals compares this DtlsServerConnection with another DtlsServerConnection, and returns true if they represent the same GObject.
+// Equals compares this DtlsServerConnection with another DtlsServerConnection, and returns true if they represent the same Object.
 func (recv *DtlsServerConnection) Equals(other *DtlsServerConnection) bool {
 	return other.Native() == recv.Native()
 }
@@ -2838,7 +2838,7 @@ func CastToFile(object *gobject.Object) *File {
 	return FileNewFromNative(object.Native())
 }
 
-// Equals compares this File with another File, and returns true if they represent the same GObject.
+// Equals compares this File with another File, and returns true if they represent the same Object.
 func (recv *File) Equals(other *File) bool {
 	return other.Native() == recv.Native()
 }
@@ -3769,7 +3769,7 @@ func CastToFileDescriptorBased(object *gobject.Object) *FileDescriptorBased {
 	return FileDescriptorBasedNewFromNative(object.Native())
 }
 
-// Equals compares this FileDescriptorBased with another FileDescriptorBased, and returns true if they represent the same GObject.
+// Equals compares this FileDescriptorBased with another FileDescriptorBased, and returns true if they represent the same Object.
 func (recv *FileDescriptorBased) Equals(other *FileDescriptorBased) bool {
 	return other.Native() == recv.Native()
 }
@@ -3840,7 +3840,7 @@ func CastToIcon(object *gobject.Object) *Icon {
 	return IconNewFromNative(object.Native())
 }
 
-// Equals compares this Icon with another Icon, and returns true if they represent the same GObject.
+// Equals compares this Icon with another Icon, and returns true if they represent the same Object.
 func (recv *Icon) Equals(other *Icon) bool {
 	return other.Native() == recv.Native()
 }
@@ -3915,7 +3915,7 @@ func CastToInitable(object *gobject.Object) *Initable {
 	return InitableNewFromNative(object.Native())
 }
 
-// Equals compares this Initable with another Initable, and returns true if they represent the same GObject.
+// Equals compares this Initable with another Initable, and returns true if they represent the same Object.
 func (recv *Initable) Equals(other *Initable) bool {
 	return other.Native() == recv.Native()
 }
@@ -3987,7 +3987,7 @@ func CastToListModel(object *gobject.Object) *ListModel {
 	return ListModelNewFromNative(object.Native())
 }
 
-// Equals compares this ListModel with another ListModel, and returns true if they represent the same GObject.
+// Equals compares this ListModel with another ListModel, and returns true if they represent the same Object.
 func (recv *ListModel) Equals(other *ListModel) bool {
 	return other.Native() == recv.Native()
 }
@@ -4135,7 +4135,7 @@ func CastToLoadableIcon(object *gobject.Object) *LoadableIcon {
 	return LoadableIconNewFromNative(object.Native())
 }
 
-// Equals compares this LoadableIcon with another LoadableIcon, and returns true if they represent the same GObject.
+// Equals compares this LoadableIcon with another LoadableIcon, and returns true if they represent the same Object.
 func (recv *LoadableIcon) Equals(other *LoadableIcon) bool {
 	return other.Native() == recv.Native()
 }
@@ -4214,7 +4214,7 @@ func CastToMount(object *gobject.Object) *Mount {
 	return MountNewFromNative(object.Native())
 }
 
-// Equals compares this Mount with another Mount, and returns true if they represent the same GObject.
+// Equals compares this Mount with another Mount, and returns true if they represent the same Object.
 func (recv *Mount) Equals(other *Mount) bool {
 	return other.Native() == recv.Native()
 }
@@ -4576,7 +4576,7 @@ func CastToNetworkMonitor(object *gobject.Object) *NetworkMonitor {
 	return NetworkMonitorNewFromNative(object.Native())
 }
 
-// Equals compares this NetworkMonitor with another NetworkMonitor, and returns true if they represent the same GObject.
+// Equals compares this NetworkMonitor with another NetworkMonitor, and returns true if they represent the same Object.
 func (recv *NetworkMonitor) Equals(other *NetworkMonitor) bool {
 	return other.Native() == recv.Native()
 }
@@ -4726,7 +4726,7 @@ func CastToPollableInputStream(object *gobject.Object) *PollableInputStream {
 	return PollableInputStreamNewFromNative(object.Native())
 }
 
-// Equals compares this PollableInputStream with another PollableInputStream, and returns true if they represent the same GObject.
+// Equals compares this PollableInputStream with another PollableInputStream, and returns true if they represent the same Object.
 func (recv *PollableInputStream) Equals(other *PollableInputStream) bool {
 	return other.Native() == recv.Native()
 }
@@ -4833,7 +4833,7 @@ func CastToPollableOutputStream(object *gobject.Object) *PollableOutputStream {
 	return PollableOutputStreamNewFromNative(object.Native())
 }
 
-// Equals compares this PollableOutputStream with another PollableOutputStream, and returns true if they represent the same GObject.
+// Equals compares this PollableOutputStream with another PollableOutputStream, and returns true if they represent the same Object.
 func (recv *PollableOutputStream) Equals(other *PollableOutputStream) bool {
 	return other.Native() == recv.Native()
 }
@@ -4942,7 +4942,7 @@ func CastToProxy(object *gobject.Object) *Proxy {
 	return ProxyNewFromNative(object.Native())
 }
 
-// Equals compares this Proxy with another Proxy, and returns true if they represent the same GObject.
+// Equals compares this Proxy with another Proxy, and returns true if they represent the same Object.
 func (recv *Proxy) Equals(other *Proxy) bool {
 	return other.Native() == recv.Native()
 }
@@ -5052,7 +5052,7 @@ func CastToProxyResolver(object *gobject.Object) *ProxyResolver {
 	return ProxyResolverNewFromNative(object.Native())
 }
 
-// Equals compares this ProxyResolver with another ProxyResolver, and returns true if they represent the same GObject.
+// Equals compares this ProxyResolver with another ProxyResolver, and returns true if they represent the same Object.
 func (recv *ProxyResolver) Equals(other *ProxyResolver) bool {
 	return other.Native() == recv.Native()
 }
@@ -5157,7 +5157,7 @@ func CastToRemoteActionGroup(object *gobject.Object) *RemoteActionGroup {
 	return RemoteActionGroupNewFromNative(object.Native())
 }
 
-// Equals compares this RemoteActionGroup with another RemoteActionGroup, and returns true if they represent the same GObject.
+// Equals compares this RemoteActionGroup with another RemoteActionGroup, and returns true if they represent the same Object.
 func (recv *RemoteActionGroup) Equals(other *RemoteActionGroup) bool {
 	return other.Native() == recv.Native()
 }
@@ -5200,7 +5200,7 @@ func CastToSeekable(object *gobject.Object) *Seekable {
 	return SeekableNewFromNative(object.Native())
 }
 
-// Equals compares this Seekable with another Seekable, and returns true if they represent the same GObject.
+// Equals compares this Seekable with another Seekable, and returns true if they represent the same Object.
 func (recv *Seekable) Equals(other *Seekable) bool {
 	return other.Native() == recv.Native()
 }
@@ -5371,7 +5371,7 @@ func CastToSocketConnectable(object *gobject.Object) *SocketConnectable {
 	return SocketConnectableNewFromNative(object.Native())
 }
 
-// Equals compares this SocketConnectable with another SocketConnectable, and returns true if they represent the same GObject.
+// Equals compares this SocketConnectable with another SocketConnectable, and returns true if they represent the same Object.
 func (recv *SocketConnectable) Equals(other *SocketConnectable) bool {
 	return other.Native() == recv.Native()
 }
@@ -5506,7 +5506,7 @@ func CastToTlsBackend(object *gobject.Object) *TlsBackend {
 	return TlsBackendNewFromNative(object.Native())
 }
 
-// Equals compares this TlsBackend with another TlsBackend, and returns true if they represent the same GObject.
+// Equals compares this TlsBackend with another TlsBackend, and returns true if they represent the same Object.
 func (recv *TlsBackend) Equals(other *TlsBackend) bool {
 	return other.Native() == recv.Native()
 }
@@ -5682,7 +5682,7 @@ func CastToTlsClientConnection(object *gobject.Object) *TlsClientConnection {
 	return TlsClientConnectionNewFromNative(object.Native())
 }
 
-// Equals compares this TlsClientConnection with another TlsClientConnection, and returns true if they represent the same GObject.
+// Equals compares this TlsClientConnection with another TlsClientConnection, and returns true if they represent the same Object.
 func (recv *TlsClientConnection) Equals(other *TlsClientConnection) bool {
 	return other.Native() == recv.Native()
 }
@@ -5794,7 +5794,7 @@ func CastToTlsFileDatabase(object *gobject.Object) *TlsFileDatabase {
 	return TlsFileDatabaseNewFromNative(object.Native())
 }
 
-// Equals compares this TlsFileDatabase with another TlsFileDatabase, and returns true if they represent the same GObject.
+// Equals compares this TlsFileDatabase with another TlsFileDatabase, and returns true if they represent the same Object.
 func (recv *TlsFileDatabase) Equals(other *TlsFileDatabase) bool {
 	return other.Native() == recv.Native()
 }
@@ -5833,7 +5833,7 @@ func CastToTlsServerConnection(object *gobject.Object) *TlsServerConnection {
 	return TlsServerConnectionNewFromNative(object.Native())
 }
 
-// Equals compares this TlsServerConnection with another TlsServerConnection, and returns true if they represent the same GObject.
+// Equals compares this TlsServerConnection with another TlsServerConnection, and returns true if they represent the same Object.
 func (recv *TlsServerConnection) Equals(other *TlsServerConnection) bool {
 	return other.Native() == recv.Native()
 }
@@ -5872,7 +5872,7 @@ func CastToVolume(object *gobject.Object) *Volume {
 	return VolumeNewFromNative(object.Native())
 }
 
-// Equals compares this Volume with another Volume, and returns true if they represent the same GObject.
+// Equals compares this Volume with another Volume, and returns true if they represent the same Object.
 func (recv *Volume) Equals(other *Volume) bool {
 	return other.Native() == recv.Native()
 }

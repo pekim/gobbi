@@ -29,7 +29,7 @@ func TypePluginNewFromNative(native unsafe.Pointer) *TypePlugin {
 	return instance
 }
 
-// Equals compares this TypePlugin with another TypePlugin, and returns true if they represent the same GObject.
+// Equals compares this TypePlugin with another TypePlugin, and returns true if they represent the same Object.
 func (recv *TypePlugin) Equals(other *TypePlugin) bool {
 	return other.Native() == recv.Native()
 }

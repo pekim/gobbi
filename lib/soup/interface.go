@@ -40,7 +40,7 @@ func CastToPasswordManager(object *gobject.Object) *PasswordManager {
 	return PasswordManagerNewFromNative(object.Native())
 }
 
-// Equals compares this PasswordManager with another PasswordManager, and returns true if they represent the same GObject.
+// Equals compares this PasswordManager with another PasswordManager, and returns true if they represent the same Object.
 func (recv *PasswordManager) Equals(other *PasswordManager) bool {
 	return other.Native() == recv.Native()
 }
@@ -112,7 +112,7 @@ func CastToProxyResolver(object *gobject.Object) *ProxyResolver {
 	return ProxyResolverNewFromNative(object.Native())
 }
 
-// Equals compares this ProxyResolver with another ProxyResolver, and returns true if they represent the same GObject.
+// Equals compares this ProxyResolver with another ProxyResolver, and returns true if they represent the same Object.
 func (recv *ProxyResolver) Equals(other *ProxyResolver) bool {
 	return other.Native() == recv.Native()
 }
@@ -189,7 +189,7 @@ func CastToProxyURIResolver(object *gobject.Object) *ProxyURIResolver {
 	return ProxyURIResolverNewFromNative(object.Native())
 }
 
-// Equals compares this ProxyURIResolver with another ProxyURIResolver, and returns true if they represent the same GObject.
+// Equals compares this ProxyURIResolver with another ProxyURIResolver, and returns true if they represent the same Object.
 func (recv *ProxyURIResolver) Equals(other *ProxyURIResolver) bool {
 	return other.Native() == recv.Native()
 }
@@ -266,7 +266,7 @@ func CastToSessionFeature(object *gobject.Object) *SessionFeature {
 	return SessionFeatureNewFromNative(object.Native())
 }
 
-// Equals compares this SessionFeature with another SessionFeature, and returns true if they represent the same GObject.
+// Equals compares this SessionFeature with another SessionFeature, and returns true if they represent the same Object.
 func (recv *SessionFeature) Equals(other *SessionFeature) bool {
 	return other.Native() == recv.Native()
 }

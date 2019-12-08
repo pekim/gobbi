@@ -64,7 +64,7 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromNative(object.Native())
 }
 
-// Equals compares this AppLaunchContext with another AppLaunchContext, and returns true if they represent the same GObject.
+// Equals compares this AppLaunchContext with another AppLaunchContext, and returns true if they represent the same Object.
 func (recv *AppLaunchContext) Equals(other *AppLaunchContext) bool {
 	return other.Native() == recv.Native()
 }
@@ -298,7 +298,7 @@ func CastToCursor(object *gobject.Object) *Cursor {
 	return CursorNewFromNative(object.Native())
 }
 
-// Equals compares this Cursor with another Cursor, and returns true if they represent the same GObject.
+// Equals compares this Cursor with another Cursor, and returns true if they represent the same Object.
 func (recv *Cursor) Equals(other *Cursor) bool {
 	return other.Native() == recv.Native()
 }
@@ -654,7 +654,7 @@ func CastToDevice(object *gobject.Object) *Device {
 	return DeviceNewFromNative(object.Native())
 }
 
-// Equals compares this Device with another Device, and returns true if they represent the same GObject.
+// Equals compares this Device with another Device, and returns true if they represent the same Object.
 func (recv *Device) Equals(other *Device) bool {
 	return other.Native() == recv.Native()
 }
@@ -1448,7 +1448,7 @@ func CastToDeviceManager(object *gobject.Object) *DeviceManager {
 	return DeviceManagerNewFromNative(object.Native())
 }
 
-// Equals compares this DeviceManager with another DeviceManager, and returns true if they represent the same GObject.
+// Equals compares this DeviceManager with another DeviceManager, and returns true if they represent the same Object.
 func (recv *DeviceManager) Equals(other *DeviceManager) bool {
 	return other.Native() == recv.Native()
 }
@@ -1578,7 +1578,7 @@ func CastToDeviceTool(object *gobject.Object) *DeviceTool {
 	return DeviceToolNewFromNative(object.Native())
 }
 
-// Equals compares this DeviceTool with another DeviceTool, and returns true if they represent the same GObject.
+// Equals compares this DeviceTool with another DeviceTool, and returns true if they represent the same Object.
 func (recv *DeviceTool) Equals(other *DeviceTool) bool {
 	return other.Native() == recv.Native()
 }
@@ -1729,7 +1729,7 @@ func CastToDisplay(object *gobject.Object) *Display {
 	return DisplayNewFromNative(object.Native())
 }
 
-// Equals compares this Display with another Display, and returns true if they represent the same GObject.
+// Equals compares this Display with another Display, and returns true if they represent the same Object.
 func (recv *Display) Equals(other *Display) bool {
 	return other.Native() == recv.Native()
 }
@@ -3002,7 +3002,7 @@ func CastToDisplayManager(object *gobject.Object) *DisplayManager {
 	return DisplayManagerNewFromNative(object.Native())
 }
 
-// Equals compares this DisplayManager with another DisplayManager, and returns true if they represent the same GObject.
+// Equals compares this DisplayManager with another DisplayManager, and returns true if they represent the same Object.
 func (recv *DisplayManager) Equals(other *DisplayManager) bool {
 	return other.Native() == recv.Native()
 }
@@ -3162,7 +3162,7 @@ func CastToDragContext(object *gobject.Object) *DragContext {
 	return DragContextNewFromNative(object.Native())
 }
 
-// Equals compares this DragContext with another DragContext, and returns true if they represent the same GObject.
+// Equals compares this DragContext with another DragContext, and returns true if they represent the same Object.
 func (recv *DragContext) Equals(other *DragContext) bool {
 	return other.Native() == recv.Native()
 }
@@ -3455,7 +3455,7 @@ func CastToDrawingContext(object *gobject.Object) *DrawingContext {
 	return DrawingContextNewFromNative(object.Native())
 }
 
-// Equals compares this DrawingContext with another DrawingContext, and returns true if they represent the same GObject.
+// Equals compares this DrawingContext with another DrawingContext, and returns true if they represent the same Object.
 func (recv *DrawingContext) Equals(other *DrawingContext) bool {
 	return other.Native() == recv.Native()
 }
@@ -3578,7 +3578,7 @@ func CastToFrameClock(object *gobject.Object) *FrameClock {
 	return FrameClockNewFromNative(object.Native())
 }
 
-// Equals compares this FrameClock with another FrameClock, and returns true if they represent the same GObject.
+// Equals compares this FrameClock with another FrameClock, and returns true if they represent the same Object.
 func (recv *FrameClock) Equals(other *FrameClock) bool {
 	return other.Native() == recv.Native()
 }
@@ -3895,7 +3895,7 @@ func CastToGLContext(object *gobject.Object) *GLContext {
 	return GLContextNewFromNative(object.Native())
 }
 
-// Equals compares this GLContext with another GLContext, and returns true if they represent the same GObject.
+// Equals compares this GLContext with another GLContext, and returns true if they represent the same Object.
 func (recv *GLContext) Equals(other *GLContext) bool {
 	return other.Native() == recv.Native()
 }
@@ -4417,7 +4417,7 @@ func CastToKeymap(object *gobject.Object) *Keymap {
 	return KeymapNewFromNative(object.Native())
 }
 
-// Equals compares this Keymap with another Keymap, and returns true if they represent the same GObject.
+// Equals compares this Keymap with another Keymap, and returns true if they represent the same Object.
 func (recv *Keymap) Equals(other *Keymap) bool {
 	return other.Native() == recv.Native()
 }
@@ -4688,7 +4688,7 @@ func CastToMonitor(object *gobject.Object) *Monitor {
 	return MonitorNewFromNative(object.Native())
 }
 
-// Equals compares this Monitor with another Monitor, and returns true if they represent the same GObject.
+// Equals compares this Monitor with another Monitor, and returns true if they represent the same Object.
 func (recv *Monitor) Equals(other *Monitor) bool {
 	return other.Native() == recv.Native()
 }
@@ -5104,7 +5104,7 @@ func CastToScreen(object *gobject.Object) *Screen {
 	return ScreenNewFromNative(object.Native())
 }
 
-// Equals compares this Screen with another Screen, and returns true if they represent the same GObject.
+// Equals compares this Screen with another Screen, and returns true if they represent the same Object.
 func (recv *Screen) Equals(other *Screen) bool {
 	return other.Native() == recv.Native()
 }
@@ -5954,7 +5954,7 @@ func CastToSeat(object *gobject.Object) *Seat {
 	return SeatNewFromNative(object.Native())
 }
 
-// Equals compares this Seat with another Seat, and returns true if they represent the same GObject.
+// Equals compares this Seat with another Seat, and returns true if they represent the same Object.
 func (recv *Seat) Equals(other *Seat) bool {
 	return other.Native() == recv.Native()
 }
@@ -6162,7 +6162,7 @@ func CastToVisual(object *gobject.Object) *Visual {
 	return VisualNewFromNative(object.Native())
 }
 
-// Equals compares this Visual with another Visual, and returns true if they represent the same GObject.
+// Equals compares this Visual with another Visual, and returns true if they represent the same Object.
 func (recv *Visual) Equals(other *Visual) bool {
 	return other.Native() == recv.Native()
 }
@@ -6511,7 +6511,7 @@ func CastToWindow(object *gobject.Object) *Window {
 	return WindowNewFromNative(object.Native())
 }
 
-// Equals compares this Window with another Window, and returns true if they represent the same GObject.
+// Equals compares this Window with another Window, and returns true if they represent the same Object.
 func (recv *Window) Equals(other *Window) bool {
 	return other.Native() == recv.Native()
 }

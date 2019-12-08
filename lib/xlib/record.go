@@ -40,7 +40,7 @@ func CastToDisplay(object *gobject.Object) *Display {
 	return DisplayNewFromNative(object.Native())
 }
 
-// Equals compares this Display with another Display, and returns true if they represent the same GObject.
+// Equals compares this Display with another Display, and returns true if they represent the same Object.
 func (recv *Display) Equals(other *Display) bool {
 	return other.Native() == recv.Native()
 }
@@ -94,7 +94,7 @@ func CastToScreen(object *gobject.Object) *Screen {
 	return ScreenNewFromNative(object.Native())
 }
 
-// Equals compares this Screen with another Screen, and returns true if they represent the same GObject.
+// Equals compares this Screen with another Screen, and returns true if they represent the same Object.
 func (recv *Screen) Equals(other *Screen) bool {
 	return other.Native() == recv.Native()
 }
@@ -148,7 +148,7 @@ func CastToVisual(object *gobject.Object) *Visual {
 	return VisualNewFromNative(object.Native())
 }
 
-// Equals compares this Visual with another Visual, and returns true if they represent the same GObject.
+// Equals compares this Visual with another Visual, and returns true if they represent the same Object.
 func (recv *Visual) Equals(other *Visual) bool {
 	return other.Native() == recv.Native()
 }
@@ -202,7 +202,7 @@ func CastToXConfigureEvent(object *gobject.Object) *XConfigureEvent {
 	return XConfigureEventNewFromNative(object.Native())
 }
 
-// Equals compares this XConfigureEvent with another XConfigureEvent, and returns true if they represent the same GObject.
+// Equals compares this XConfigureEvent with another XConfigureEvent, and returns true if they represent the same Object.
 func (recv *XConfigureEvent) Equals(other *XConfigureEvent) bool {
 	return other.Native() == recv.Native()
 }
@@ -256,7 +256,7 @@ func CastToXImage(object *gobject.Object) *XImage {
 	return XImageNewFromNative(object.Native())
 }
 
-// Equals compares this XImage with another XImage, and returns true if they represent the same GObject.
+// Equals compares this XImage with another XImage, and returns true if they represent the same Object.
 func (recv *XImage) Equals(other *XImage) bool {
 	return other.Native() == recv.Native()
 }
@@ -310,7 +310,7 @@ func CastToXFontStruct(object *gobject.Object) *XFontStruct {
 	return XFontStructNewFromNative(object.Native())
 }
 
-// Equals compares this XFontStruct with another XFontStruct, and returns true if they represent the same GObject.
+// Equals compares this XFontStruct with another XFontStruct, and returns true if they represent the same Object.
 func (recv *XFontStruct) Equals(other *XFontStruct) bool {
 	return other.Native() == recv.Native()
 }
@@ -364,7 +364,7 @@ func CastToXTrapezoid(object *gobject.Object) *XTrapezoid {
 	return XTrapezoidNewFromNative(object.Native())
 }
 
-// Equals compares this XTrapezoid with another XTrapezoid, and returns true if they represent the same GObject.
+// Equals compares this XTrapezoid with another XTrapezoid, and returns true if they represent the same Object.
 func (recv *XTrapezoid) Equals(other *XTrapezoid) bool {
 	return other.Native() == recv.Native()
 }
@@ -418,7 +418,7 @@ func CastToXVisualInfo(object *gobject.Object) *XVisualInfo {
 	return XVisualInfoNewFromNative(object.Native())
 }
 
-// Equals compares this XVisualInfo with another XVisualInfo, and returns true if they represent the same GObject.
+// Equals compares this XVisualInfo with another XVisualInfo, and returns true if they represent the same Object.
 func (recv *XVisualInfo) Equals(other *XVisualInfo) bool {
 	return other.Native() == recv.Native()
 }
@@ -472,7 +472,7 @@ func CastToXWindowAttributes(object *gobject.Object) *XWindowAttributes {
 	return XWindowAttributesNewFromNative(object.Native())
 }
 
-// Equals compares this XWindowAttributes with another XWindowAttributes, and returns true if they represent the same GObject.
+// Equals compares this XWindowAttributes with another XWindowAttributes, and returns true if they represent the same Object.
 func (recv *XWindowAttributes) Equals(other *XWindowAttributes) bool {
 	return other.Native() == recv.Native()
 }

@@ -40,7 +40,7 @@ func CastToGlobalContextRef(object *gobject.Object) *GlobalContextRef {
 	return GlobalContextRefNewFromNative(object.Native())
 }
 
-// Equals compares this GlobalContextRef with another GlobalContextRef, and returns true if they represent the same GObject.
+// Equals compares this GlobalContextRef with another GlobalContextRef, and returns true if they represent the same Object.
 func (recv *GlobalContextRef) Equals(other *GlobalContextRef) bool {
 	return other.Native() == recv.Native()
 }
@@ -150,7 +150,7 @@ func CastToValueRef(object *gobject.Object) *ValueRef {
 	return ValueRefNewFromNative(object.Native())
 }
 
-// Equals compares this ValueRef with another ValueRef, and returns true if they represent the same GObject.
+// Equals compares this ValueRef with another ValueRef, and returns true if they represent the same Object.
 func (recv *ValueRef) Equals(other *ValueRef) bool {
 	return other.Native() == recv.Native()
 }
@@ -204,7 +204,7 @@ func CastToStringRef(object *gobject.Object) *StringRef {
 	return StringRefNewFromNative(object.Native())
 }
 
-// Equals compares this StringRef with another StringRef, and returns true if they represent the same GObject.
+// Equals compares this StringRef with another StringRef, and returns true if they represent the same Object.
 func (recv *StringRef) Equals(other *StringRef) bool {
 	return other.Native() == recv.Native()
 }
@@ -382,7 +382,7 @@ func CastToClassClass(object *gobject.Object) *ClassClass {
 	return ClassClassNewFromNative(object.Native())
 }
 
-// Equals compares this ClassClass with another ClassClass, and returns true if they represent the same GObject.
+// Equals compares this ClassClass with another ClassClass, and returns true if they represent the same Object.
 func (recv *ClassClass) Equals(other *ClassClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -436,7 +436,7 @@ func CastToClassVTable(object *gobject.Object) *ClassVTable {
 	return ClassVTableNewFromNative(object.Native())
 }
 
-// Equals compares this ClassVTable with another ClassVTable, and returns true if they represent the same GObject.
+// Equals compares this ClassVTable with another ClassVTable, and returns true if they represent the same Object.
 func (recv *ClassVTable) Equals(other *ClassVTable) bool {
 	return other.Native() == recv.Native()
 }
@@ -526,7 +526,7 @@ func CastToContextClass(object *gobject.Object) *ContextClass {
 	return ContextClassNewFromNative(object.Native())
 }
 
-// Equals compares this ContextClass with another ContextClass, and returns true if they represent the same GObject.
+// Equals compares this ContextClass with another ContextClass, and returns true if they represent the same Object.
 func (recv *ContextClass) Equals(other *ContextClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -600,7 +600,7 @@ func CastToContextPrivate(object *gobject.Object) *ContextPrivate {
 	return ContextPrivateNewFromNative(object.Native())
 }
 
-// Equals compares this ContextPrivate with another ContextPrivate, and returns true if they represent the same GObject.
+// Equals compares this ContextPrivate with another ContextPrivate, and returns true if they represent the same Object.
 func (recv *ContextPrivate) Equals(other *ContextPrivate) bool {
 	return other.Native() == recv.Native()
 }
@@ -654,7 +654,7 @@ func CastToExceptionClass(object *gobject.Object) *ExceptionClass {
 	return ExceptionClassNewFromNative(object.Native())
 }
 
-// Equals compares this ExceptionClass with another ExceptionClass, and returns true if they represent the same GObject.
+// Equals compares this ExceptionClass with another ExceptionClass, and returns true if they represent the same Object.
 func (recv *ExceptionClass) Equals(other *ExceptionClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -728,7 +728,7 @@ func CastToExceptionPrivate(object *gobject.Object) *ExceptionPrivate {
 	return ExceptionPrivateNewFromNative(object.Native())
 }
 
-// Equals compares this ExceptionPrivate with another ExceptionPrivate, and returns true if they represent the same GObject.
+// Equals compares this ExceptionPrivate with another ExceptionPrivate, and returns true if they represent the same Object.
 func (recv *ExceptionPrivate) Equals(other *ExceptionPrivate) bool {
 	return other.Native() == recv.Native()
 }
@@ -782,7 +782,7 @@ func CastToValueClass(object *gobject.Object) *ValueClass {
 	return ValueClassNewFromNative(object.Native())
 }
 
-// Equals compares this ValueClass with another ValueClass, and returns true if they represent the same GObject.
+// Equals compares this ValueClass with another ValueClass, and returns true if they represent the same Object.
 func (recv *ValueClass) Equals(other *ValueClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -856,7 +856,7 @@ func CastToValuePrivate(object *gobject.Object) *ValuePrivate {
 	return ValuePrivateNewFromNative(object.Native())
 }
 
-// Equals compares this ValuePrivate with another ValuePrivate, and returns true if they represent the same GObject.
+// Equals compares this ValuePrivate with another ValuePrivate, and returns true if they represent the same Object.
 func (recv *ValuePrivate) Equals(other *ValuePrivate) bool {
 	return other.Native() == recv.Native()
 }
@@ -910,7 +910,7 @@ func CastToVirtualMachineClass(object *gobject.Object) *VirtualMachineClass {
 	return VirtualMachineClassNewFromNative(object.Native())
 }
 
-// Equals compares this VirtualMachineClass with another VirtualMachineClass, and returns true if they represent the same GObject.
+// Equals compares this VirtualMachineClass with another VirtualMachineClass, and returns true if they represent the same Object.
 func (recv *VirtualMachineClass) Equals(other *VirtualMachineClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -984,7 +984,7 @@ func CastToVirtualMachinePrivate(object *gobject.Object) *VirtualMachinePrivate 
 	return VirtualMachinePrivateNewFromNative(object.Native())
 }
 
-// Equals compares this VirtualMachinePrivate with another VirtualMachinePrivate, and returns true if they represent the same GObject.
+// Equals compares this VirtualMachinePrivate with another VirtualMachinePrivate, and returns true if they represent the same Object.
 func (recv *VirtualMachinePrivate) Equals(other *VirtualMachinePrivate) bool {
 	return other.Native() == recv.Native()
 }
@@ -1038,7 +1038,7 @@ func CastToWeakValueClass(object *gobject.Object) *WeakValueClass {
 	return WeakValueClassNewFromNative(object.Native())
 }
 
-// Equals compares this WeakValueClass with another WeakValueClass, and returns true if they represent the same GObject.
+// Equals compares this WeakValueClass with another WeakValueClass, and returns true if they represent the same Object.
 func (recv *WeakValueClass) Equals(other *WeakValueClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -1112,7 +1112,7 @@ func CastToWeakValuePrivate(object *gobject.Object) *WeakValuePrivate {
 	return WeakValuePrivateNewFromNative(object.Native())
 }
 
-// Equals compares this WeakValuePrivate with another WeakValuePrivate, and returns true if they represent the same GObject.
+// Equals compares this WeakValuePrivate with another WeakValuePrivate, and returns true if they represent the same Object.
 func (recv *WeakValuePrivate) Equals(other *WeakValuePrivate) bool {
 	return other.Native() == recv.Native()
 }

@@ -41,7 +41,7 @@ func CastToCompletionProposal(object *gobject.Object) *CompletionProposal {
 	return CompletionProposalNewFromNative(object.Native())
 }
 
-// Equals compares this CompletionProposal with another CompletionProposal, and returns true if they represent the same GObject.
+// Equals compares this CompletionProposal with another CompletionProposal, and returns true if they represent the same Object.
 func (recv *CompletionProposal) Equals(other *CompletionProposal) bool {
 	return other.Native() == recv.Native()
 }
@@ -345,7 +345,7 @@ func CastToCompletionProvider(object *gobject.Object) *CompletionProvider {
 	return CompletionProviderNewFromNative(object.Native())
 }
 
-// Equals compares this CompletionProvider with another CompletionProvider, and returns true if they represent the same GObject.
+// Equals compares this CompletionProvider with another CompletionProvider, and returns true if they represent the same Object.
 func (recv *CompletionProvider) Equals(other *CompletionProvider) bool {
 	return other.Native() == recv.Native()
 }
@@ -618,7 +618,7 @@ func CastToStyleSchemeChooser(object *gobject.Object) *StyleSchemeChooser {
 	return StyleSchemeChooserNewFromNative(object.Native())
 }
 
-// Equals compares this StyleSchemeChooser with another StyleSchemeChooser, and returns true if they represent the same GObject.
+// Equals compares this StyleSchemeChooser with another StyleSchemeChooser, and returns true if they represent the same Object.
 func (recv *StyleSchemeChooser) Equals(other *StyleSchemeChooser) bool {
 	return other.Native() == recv.Native()
 }
@@ -718,7 +718,7 @@ func CastToUndoManager(object *gobject.Object) *UndoManager {
 	return UndoManagerNewFromNative(object.Native())
 }
 
-// Equals compares this UndoManager with another UndoManager, and returns true if they represent the same GObject.
+// Equals compares this UndoManager with another UndoManager, and returns true if they represent the same Object.
 func (recv *UndoManager) Equals(other *UndoManager) bool {
 	return other.Native() == recv.Native()
 }

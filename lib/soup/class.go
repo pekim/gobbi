@@ -58,7 +58,7 @@ func CastToAddress(object *gobject.Object) *Address {
 	return AddressNewFromNative(object.Native())
 }
 
-// Equals compares this Address with another Address, and returns true if they represent the same GObject.
+// Equals compares this Address with another Address, and returns true if they represent the same Object.
 func (recv *Address) Equals(other *Address) bool {
 	return other.Native() == recv.Native()
 }
@@ -531,7 +531,7 @@ func CastToAuth(object *gobject.Object) *Auth {
 	return AuthNewFromNative(object.Native())
 }
 
-// Equals compares this Auth with another Auth, and returns true if they represent the same GObject.
+// Equals compares this Auth with another Auth, and returns true if they represent the same Object.
 func (recv *Auth) Equals(other *Auth) bool {
 	return other.Native() == recv.Native()
 }
@@ -1074,7 +1074,7 @@ func CastToAuthBasic(object *gobject.Object) *AuthBasic {
 	return AuthBasicNewFromNative(object.Native())
 }
 
-// Equals compares this AuthBasic with another AuthBasic, and returns true if they represent the same GObject.
+// Equals compares this AuthBasic with another AuthBasic, and returns true if they represent the same Object.
 func (recv *AuthBasic) Equals(other *AuthBasic) bool {
 	return other.Native() == recv.Native()
 }
@@ -1134,7 +1134,7 @@ func CastToAuthDigest(object *gobject.Object) *AuthDigest {
 	return AuthDigestNewFromNative(object.Native())
 }
 
-// Equals compares this AuthDigest with another AuthDigest, and returns true if they represent the same GObject.
+// Equals compares this AuthDigest with another AuthDigest, and returns true if they represent the same Object.
 func (recv *AuthDigest) Equals(other *AuthDigest) bool {
 	return other.Native() == recv.Native()
 }
@@ -1189,7 +1189,7 @@ func CastToAuthDomain(object *gobject.Object) *AuthDomain {
 	return AuthDomainNewFromNative(object.Native())
 }
 
-// Equals compares this AuthDomain with another AuthDomain, and returns true if they represent the same GObject.
+// Equals compares this AuthDomain with another AuthDomain, and returns true if they represent the same Object.
 func (recv *AuthDomain) Equals(other *AuthDomain) bool {
 	return other.Native() == recv.Native()
 }
@@ -1521,7 +1521,7 @@ func CastToAuthDomainBasic(object *gobject.Object) *AuthDomainBasic {
 	return AuthDomainBasicNewFromNative(object.Native())
 }
 
-// Equals compares this AuthDomainBasic with another AuthDomainBasic, and returns true if they represent the same GObject.
+// Equals compares this AuthDomainBasic with another AuthDomainBasic, and returns true if they represent the same Object.
 func (recv *AuthDomainBasic) Equals(other *AuthDomainBasic) bool {
 	return other.Native() == recv.Native()
 }
@@ -1599,7 +1599,7 @@ func CastToAuthDomainDigest(object *gobject.Object) *AuthDomainDigest {
 	return AuthDomainDigestNewFromNative(object.Native())
 }
 
-// Equals compares this AuthDomainDigest with another AuthDomainDigest, and returns true if they represent the same GObject.
+// Equals compares this AuthDomainDigest with another AuthDomainDigest, and returns true if they represent the same Object.
 func (recv *AuthDomainDigest) Equals(other *AuthDomainDigest) bool {
 	return other.Native() == recv.Native()
 }
@@ -1672,7 +1672,7 @@ func CastToAuthManager(object *gobject.Object) *AuthManager {
 	return AuthManagerNewFromNative(object.Native())
 }
 
-// Equals compares this AuthManager with another AuthManager, and returns true if they represent the same GObject.
+// Equals compares this AuthManager with another AuthManager, and returns true if they represent the same Object.
 func (recv *AuthManager) Equals(other *AuthManager) bool {
 	return other.Native() == recv.Native()
 }
@@ -1832,7 +1832,7 @@ func CastToAuthNTLM(object *gobject.Object) *AuthNTLM {
 	return AuthNTLMNewFromNative(object.Native())
 }
 
-// Equals compares this AuthNTLM with another AuthNTLM, and returns true if they represent the same GObject.
+// Equals compares this AuthNTLM with another AuthNTLM, and returns true if they represent the same Object.
 func (recv *AuthNTLM) Equals(other *AuthNTLM) bool {
 	return other.Native() == recv.Native()
 }
@@ -1892,7 +1892,7 @@ func CastToAuthNegotiate(object *gobject.Object) *AuthNegotiate {
 	return AuthNegotiateNewFromNative(object.Native())
 }
 
-// Equals compares this AuthNegotiate with another AuthNegotiate, and returns true if they represent the same GObject.
+// Equals compares this AuthNegotiate with another AuthNegotiate, and returns true if they represent the same Object.
 func (recv *AuthNegotiate) Equals(other *AuthNegotiate) bool {
 	return other.Native() == recv.Native()
 }
@@ -1947,7 +1947,7 @@ func CastToCache(object *gobject.Object) *Cache {
 	return CacheNewFromNative(object.Native())
 }
 
-// Equals compares this Cache with another Cache, and returns true if they represent the same GObject.
+// Equals compares this Cache with another Cache, and returns true if they represent the same Object.
 func (recv *Cache) Equals(other *Cache) bool {
 	return other.Native() == recv.Native()
 }
@@ -2243,7 +2243,7 @@ func CastToContentDecoder(object *gobject.Object) *ContentDecoder {
 	return ContentDecoderNewFromNative(object.Native())
 }
 
-// Equals compares this ContentDecoder with another ContentDecoder, and returns true if they represent the same GObject.
+// Equals compares this ContentDecoder with another ContentDecoder, and returns true if they represent the same Object.
 func (recv *ContentDecoder) Equals(other *ContentDecoder) bool {
 	return other.Native() == recv.Native()
 }
@@ -2331,7 +2331,7 @@ func CastToContentSniffer(object *gobject.Object) *ContentSniffer {
 	return ContentSnifferNewFromNative(object.Native())
 }
 
-// Equals compares this ContentSniffer with another ContentSniffer, and returns true if they represent the same GObject.
+// Equals compares this ContentSniffer with another ContentSniffer, and returns true if they represent the same Object.
 func (recv *ContentSniffer) Equals(other *ContentSniffer) bool {
 	return other.Native() == recv.Native()
 }
@@ -2485,7 +2485,7 @@ func CastToCookieJar(object *gobject.Object) *CookieJar {
 	return CookieJarNewFromNative(object.Native())
 }
 
-// Equals compares this CookieJar with another CookieJar, and returns true if they represent the same GObject.
+// Equals compares this CookieJar with another CookieJar, and returns true if they represent the same Object.
 func (recv *CookieJar) Equals(other *CookieJar) bool {
 	return other.Native() == recv.Native()
 }
@@ -2944,7 +2944,7 @@ func CastToCookieJarDB(object *gobject.Object) *CookieJarDB {
 	return CookieJarDBNewFromNative(object.Native())
 }
 
-// Equals compares this CookieJarDB with another CookieJarDB, and returns true if they represent the same GObject.
+// Equals compares this CookieJarDB with another CookieJarDB, and returns true if they represent the same Object.
 func (recv *CookieJarDB) Equals(other *CookieJarDB) bool {
 	return other.Native() == recv.Native()
 }
@@ -3058,7 +3058,7 @@ func CastToCookieJarText(object *gobject.Object) *CookieJarText {
 	return CookieJarTextNewFromNative(object.Native())
 }
 
-// Equals compares this CookieJarText with another CookieJarText, and returns true if they represent the same GObject.
+// Equals compares this CookieJarText with another CookieJarText, and returns true if they represent the same Object.
 func (recv *CookieJarText) Equals(other *CookieJarText) bool {
 	return other.Native() == recv.Native()
 }
@@ -3167,7 +3167,7 @@ func CastToHSTSEnforcer(object *gobject.Object) *HSTSEnforcer {
 	return HSTSEnforcerNewFromNative(object.Native())
 }
 
-// Equals compares this HSTSEnforcer with another HSTSEnforcer, and returns true if they represent the same GObject.
+// Equals compares this HSTSEnforcer with another HSTSEnforcer, and returns true if they represent the same Object.
 func (recv *HSTSEnforcer) Equals(other *HSTSEnforcer) bool {
 	return other.Native() == recv.Native()
 }
@@ -3429,7 +3429,7 @@ func CastToHSTSEnforcerDB(object *gobject.Object) *HSTSEnforcerDB {
 	return HSTSEnforcerDBNewFromNative(object.Native())
 }
 
-// Equals compares this HSTSEnforcerDB with another HSTSEnforcerDB, and returns true if they represent the same GObject.
+// Equals compares this HSTSEnforcerDB with another HSTSEnforcerDB, and returns true if they represent the same Object.
 func (recv *HSTSEnforcerDB) Equals(other *HSTSEnforcerDB) bool {
 	return other.Native() == recv.Native()
 }
@@ -3551,7 +3551,7 @@ func CastToLogger(object *gobject.Object) *Logger {
 	return LoggerNewFromNative(object.Native())
 }
 
-// Equals compares this Logger with another Logger, and returns true if they represent the same GObject.
+// Equals compares this Logger with another Logger, and returns true if they represent the same Object.
 func (recv *Logger) Equals(other *Logger) bool {
 	return other.Native() == recv.Native()
 }
@@ -3724,7 +3724,7 @@ func CastToMessage(object *gobject.Object) *Message {
 	return MessageNewFromNative(object.Native())
 }
 
-// Equals compares this Message with another Message, and returns true if they represent the same GObject.
+// Equals compares this Message with another Message, and returns true if they represent the same Object.
 func (recv *Message) Equals(other *Message) bool {
 	return other.Native() == recv.Native()
 }
@@ -4767,7 +4767,7 @@ func CastToMultipartInputStream(object *gobject.Object) *MultipartInputStream {
 	return MultipartInputStreamNewFromNative(object.Native())
 }
 
-// Equals compares this MultipartInputStream with another MultipartInputStream, and returns true if they represent the same GObject.
+// Equals compares this MultipartInputStream with another MultipartInputStream, and returns true if they represent the same Object.
 func (recv *MultipartInputStream) Equals(other *MultipartInputStream) bool {
 	return other.Native() == recv.Native()
 }
@@ -4945,7 +4945,7 @@ func CastToProxyResolverDefault(object *gobject.Object) *ProxyResolverDefault {
 	return ProxyResolverDefaultNewFromNative(object.Native())
 }
 
-// Equals compares this ProxyResolverDefault with another ProxyResolverDefault, and returns true if they represent the same GObject.
+// Equals compares this ProxyResolverDefault with another ProxyResolverDefault, and returns true if they represent the same Object.
 func (recv *ProxyResolverDefault) Equals(other *ProxyResolverDefault) bool {
 	return other.Native() == recv.Native()
 }
@@ -5024,7 +5024,7 @@ func CastToRequest(object *gobject.Object) *Request {
 	return RequestNewFromNative(object.Native())
 }
 
-// Equals compares this Request with another Request, and returns true if they represent the same GObject.
+// Equals compares this Request with another Request, and returns true if they represent the same Object.
 func (recv *Request) Equals(other *Request) bool {
 	return other.Native() == recv.Native()
 }
@@ -5282,7 +5282,7 @@ func CastToRequestData(object *gobject.Object) *RequestData {
 	return RequestDataNewFromNative(object.Native())
 }
 
-// Equals compares this RequestData with another RequestData, and returns true if they represent the same GObject.
+// Equals compares this RequestData with another RequestData, and returns true if they represent the same Object.
 func (recv *RequestData) Equals(other *RequestData) bool {
 	return other.Native() == recv.Native()
 }
@@ -5375,7 +5375,7 @@ func CastToRequestFile(object *gobject.Object) *RequestFile {
 	return RequestFileNewFromNative(object.Native())
 }
 
-// Equals compares this RequestFile with another RequestFile, and returns true if they represent the same GObject.
+// Equals compares this RequestFile with another RequestFile, and returns true if they represent the same Object.
 func (recv *RequestFile) Equals(other *RequestFile) bool {
 	return other.Native() == recv.Native()
 }
@@ -5470,7 +5470,7 @@ func CastToRequestHTTP(object *gobject.Object) *RequestHTTP {
 	return RequestHTTPNewFromNative(object.Native())
 }
 
-// Equals compares this RequestHTTP with another RequestHTTP, and returns true if they represent the same GObject.
+// Equals compares this RequestHTTP with another RequestHTTP, and returns true if they represent the same Object.
 func (recv *RequestHTTP) Equals(other *RequestHTTP) bool {
 	return other.Native() == recv.Native()
 }
@@ -5590,7 +5590,7 @@ func CastToRequester(object *gobject.Object) *Requester {
 	return RequesterNewFromNative(object.Native())
 }
 
-// Equals compares this Requester with another Requester, and returns true if they represent the same GObject.
+// Equals compares this Requester with another Requester, and returns true if they represent the same Object.
 func (recv *Requester) Equals(other *Requester) bool {
 	return other.Native() == recv.Native()
 }
@@ -5776,7 +5776,7 @@ func CastToServer(object *gobject.Object) *Server {
 	return ServerNewFromNative(object.Native())
 }
 
-// Equals compares this Server with another Server, and returns true if they represent the same GObject.
+// Equals compares this Server with another Server, and returns true if they represent the same Object.
 func (recv *Server) Equals(other *Server) bool {
 	return other.Native() == recv.Native()
 }
@@ -6304,7 +6304,7 @@ func CastToSession(object *gobject.Object) *Session {
 	return SessionNewFromNative(object.Native())
 }
 
-// Equals compares this Session with another Session, and returns true if they represent the same GObject.
+// Equals compares this Session with another Session, and returns true if they represent the same Object.
 func (recv *Session) Equals(other *Session) bool {
 	return other.Native() == recv.Native()
 }
@@ -6929,7 +6929,7 @@ func CastToSessionAsync(object *gobject.Object) *SessionAsync {
 	return SessionAsyncNewFromNative(object.Native())
 }
 
-// Equals compares this SessionAsync with another SessionAsync, and returns true if they represent the same GObject.
+// Equals compares this SessionAsync with another SessionAsync, and returns true if they represent the same Object.
 func (recv *SessionAsync) Equals(other *SessionAsync) bool {
 	return other.Native() == recv.Native()
 }
@@ -7037,7 +7037,7 @@ func CastToSessionSync(object *gobject.Object) *SessionSync {
 	return SessionSyncNewFromNative(object.Native())
 }
 
-// Equals compares this SessionSync with another SessionSync, and returns true if they represent the same GObject.
+// Equals compares this SessionSync with another SessionSync, and returns true if they represent the same Object.
 func (recv *SessionSync) Equals(other *SessionSync) bool {
 	return other.Native() == recv.Native()
 }
@@ -7140,7 +7140,7 @@ func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromNative(object.Native())
 }
 
-// Equals compares this Socket with another Socket, and returns true if they represent the same GObject.
+// Equals compares this Socket with another Socket, and returns true if they represent the same Object.
 func (recv *Socket) Equals(other *Socket) bool {
 	return other.Native() == recv.Native()
 }
@@ -7553,7 +7553,7 @@ func CastToWebsocketConnection(object *gobject.Object) *WebsocketConnection {
 	return WebsocketConnectionNewFromNative(object.Native())
 }
 
-// Equals compares this WebsocketConnection with another WebsocketConnection, and returns true if they represent the same GObject.
+// Equals compares this WebsocketConnection with another WebsocketConnection, and returns true if they represent the same Object.
 func (recv *WebsocketConnection) Equals(other *WebsocketConnection) bool {
 	return other.Native() == recv.Native()
 }
@@ -8114,7 +8114,7 @@ func CastToWebsocketExtension(object *gobject.Object) *WebsocketExtension {
 	return WebsocketExtensionNewFromNative(object.Native())
 }
 
-// Equals compares this WebsocketExtension with another WebsocketExtension, and returns true if they represent the same GObject.
+// Equals compares this WebsocketExtension with another WebsocketExtension, and returns true if they represent the same Object.
 func (recv *WebsocketExtension) Equals(other *WebsocketExtension) bool {
 	return other.Native() == recv.Native()
 }
@@ -8258,7 +8258,7 @@ func CastToWebsocketExtensionDeflate(object *gobject.Object) *WebsocketExtension
 	return WebsocketExtensionDeflateNewFromNative(object.Native())
 }
 
-// Equals compares this WebsocketExtensionDeflate with another WebsocketExtensionDeflate, and returns true if they represent the same GObject.
+// Equals compares this WebsocketExtensionDeflate with another WebsocketExtensionDeflate, and returns true if they represent the same Object.
 func (recv *WebsocketExtensionDeflate) Equals(other *WebsocketExtensionDeflate) bool {
 	return other.Native() == recv.Native()
 }
@@ -8327,7 +8327,7 @@ func CastToWebsocketExtensionManager(object *gobject.Object) *WebsocketExtension
 	return WebsocketExtensionManagerNewFromNative(object.Native())
 }
 
-// Equals compares this WebsocketExtensionManager with another WebsocketExtensionManager, and returns true if they represent the same GObject.
+// Equals compares this WebsocketExtensionManager with another WebsocketExtensionManager, and returns true if they represent the same Object.
 func (recv *WebsocketExtensionManager) Equals(other *WebsocketExtensionManager) bool {
 	return other.Native() == recv.Native()
 }

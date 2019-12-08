@@ -39,7 +39,7 @@ func CastToDevicePad(object *gobject.Object) *DevicePad {
 	return DevicePadNewFromNative(object.Native())
 }
 
-// Equals compares this DevicePad with another DevicePad, and returns true if they represent the same GObject.
+// Equals compares this DevicePad with another DevicePad, and returns true if they represent the same Object.
 func (recv *DevicePad) Equals(other *DevicePad) bool {
 	return other.Native() == recv.Native()
 }

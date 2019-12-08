@@ -407,7 +407,7 @@ func (r *Record) receiverFunc(f *file, methodName string) *jen.Statement {
 }
 
 func (r *Record) generateEquals(f *file) {
-	f.Commentf("Equals compares this %s with another %s, and returns true if they represent the same GObject.",
+	f.Commentf("Equals compares this %s with another %s, and returns true if they represent the same Object.",
 		r.goName, r.goName)
 
 	// GEN: func (recv *Cursor) Equals(other *Cursor) bool {...}

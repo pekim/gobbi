@@ -40,7 +40,7 @@ func CastToAtom(object *gobject.Object) *Atom {
 	return AtomNewFromNative(object.Native())
 }
 
-// Equals compares this Atom with another Atom, and returns true if they represent the same GObject.
+// Equals compares this Atom with another Atom, and returns true if they represent the same Object.
 func (recv *Atom) Equals(other *Atom) bool {
 	return other.Native() == recv.Native()
 }
@@ -126,7 +126,7 @@ func CastToColor(object *gobject.Object) *Color {
 	return ColorNewFromNative(object.Native())
 }
 
-// Equals compares this Color with another Color, and returns true if they represent the same GObject.
+// Equals compares this Color with another Color, and returns true if they represent the same Object.
 func (recv *Color) Equals(other *Color) bool {
 	return other.Native() == recv.Native()
 }
@@ -393,7 +393,7 @@ func CastToDevicePadInterface(object *gobject.Object) *DevicePadInterface {
 	return DevicePadInterfaceNewFromNative(object.Native())
 }
 
-// Equals compares this DevicePadInterface with another DevicePadInterface, and returns true if they represent the same GObject.
+// Equals compares this DevicePadInterface with another DevicePadInterface, and returns true if they represent the same Object.
 func (recv *DevicePadInterface) Equals(other *DevicePadInterface) bool {
 	return other.Native() == recv.Native()
 }
@@ -447,7 +447,7 @@ func CastToDrawingContextClass(object *gobject.Object) *DrawingContextClass {
 	return DrawingContextClassNewFromNative(object.Native())
 }
 
-// Equals compares this DrawingContextClass with another DrawingContextClass, and returns true if they represent the same GObject.
+// Equals compares this DrawingContextClass with another DrawingContextClass, and returns true if they represent the same Object.
 func (recv *DrawingContextClass) Equals(other *DrawingContextClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -501,7 +501,7 @@ func CastToEventAny(object *gobject.Object) *EventAny {
 	return EventAnyNewFromNative(object.Native())
 }
 
-// Equals compares this EventAny with another EventAny, and returns true if they represent the same GObject.
+// Equals compares this EventAny with another EventAny, and returns true if they represent the same Object.
 func (recv *EventAny) Equals(other *EventAny) bool {
 	return other.Native() == recv.Native()
 }
@@ -597,7 +597,7 @@ func CastToEventButton(object *gobject.Object) *EventButton {
 	return EventButtonNewFromNative(object.Native())
 }
 
-// Equals compares this EventButton with another EventButton, and returns true if they represent the same GObject.
+// Equals compares this EventButton with another EventButton, and returns true if they represent the same Object.
 func (recv *EventButton) Equals(other *EventButton) bool {
 	return other.Native() == recv.Native()
 }
@@ -809,7 +809,7 @@ func CastToEventConfigure(object *gobject.Object) *EventConfigure {
 	return EventConfigureNewFromNative(object.Native())
 }
 
-// Equals compares this EventConfigure with another EventConfigure, and returns true if they represent the same GObject.
+// Equals compares this EventConfigure with another EventConfigure, and returns true if they represent the same Object.
 func (recv *EventConfigure) Equals(other *EventConfigure) bool {
 	return other.Native() == recv.Native()
 }
@@ -961,7 +961,7 @@ func CastToEventCrossing(object *gobject.Object) *EventCrossing {
 	return EventCrossingNewFromNative(object.Native())
 }
 
-// Equals compares this EventCrossing with another EventCrossing, and returns true if they represent the same GObject.
+// Equals compares this EventCrossing with another EventCrossing, and returns true if they represent the same Object.
 func (recv *EventCrossing) Equals(other *EventCrossing) bool {
 	return other.Native() == recv.Native()
 }
@@ -1187,7 +1187,7 @@ func CastToEventDND(object *gobject.Object) *EventDND {
 	return EventDNDNewFromNative(object.Native())
 }
 
-// Equals compares this EventDND with another EventDND, and returns true if they represent the same GObject.
+// Equals compares this EventDND with another EventDND, and returns true if they represent the same Object.
 func (recv *EventDND) Equals(other *EventDND) bool {
 	return other.Native() == recv.Native()
 }
@@ -1339,7 +1339,7 @@ func CastToEventExpose(object *gobject.Object) *EventExpose {
 	return EventExposeNewFromNative(object.Native())
 }
 
-// Equals compares this EventExpose with another EventExpose, and returns true if they represent the same GObject.
+// Equals compares this EventExpose with another EventExpose, and returns true if they represent the same Object.
 func (recv *EventExpose) Equals(other *EventExpose) bool {
 	return other.Native() == recv.Native()
 }
@@ -1467,7 +1467,7 @@ func CastToEventFocus(object *gobject.Object) *EventFocus {
 	return EventFocusNewFromNative(object.Native())
 }
 
-// Equals compares this EventFocus with another EventFocus, and returns true if they represent the same GObject.
+// Equals compares this EventFocus with another EventFocus, and returns true if they represent the same Object.
 func (recv *EventFocus) Equals(other *EventFocus) bool {
 	return other.Native() == recv.Native()
 }
@@ -1577,7 +1577,7 @@ func CastToEventGrabBroken(object *gobject.Object) *EventGrabBroken {
 	return EventGrabBrokenNewFromNative(object.Native())
 }
 
-// Equals compares this EventGrabBroken with another EventGrabBroken, and returns true if they represent the same GObject.
+// Equals compares this EventGrabBroken with another EventGrabBroken, and returns true if they represent the same Object.
 func (recv *EventGrabBroken) Equals(other *EventGrabBroken) bool {
 	return other.Native() == recv.Native()
 }
@@ -1715,7 +1715,7 @@ func CastToEventKey(object *gobject.Object) *EventKey {
 	return EventKeyNewFromNative(object.Native())
 }
 
-// Equals compares this EventKey with another EventKey, and returns true if they represent the same GObject.
+// Equals compares this EventKey with another EventKey, and returns true if they represent the same Object.
 func (recv *EventKey) Equals(other *EventKey) bool {
 	return other.Native() == recv.Native()
 }
@@ -1913,7 +1913,7 @@ func CastToEventMotion(object *gobject.Object) *EventMotion {
 	return EventMotionNewFromNative(object.Native())
 }
 
-// Equals compares this EventMotion with another EventMotion, and returns true if they represent the same GObject.
+// Equals compares this EventMotion with another EventMotion, and returns true if they represent the same Object.
 func (recv *EventMotion) Equals(other *EventMotion) bool {
 	return other.Native() == recv.Native()
 }
@@ -2125,7 +2125,7 @@ func CastToEventOwnerChange(object *gobject.Object) *EventOwnerChange {
 	return EventOwnerChangeNewFromNative(object.Native())
 }
 
-// Equals compares this EventOwnerChange with another EventOwnerChange, and returns true if they represent the same GObject.
+// Equals compares this EventOwnerChange with another EventOwnerChange, and returns true if they represent the same Object.
 func (recv *EventOwnerChange) Equals(other *EventOwnerChange) bool {
 	return other.Native() == recv.Native()
 }
@@ -2291,7 +2291,7 @@ func CastToEventPadAxis(object *gobject.Object) *EventPadAxis {
 	return EventPadAxisNewFromNative(object.Native())
 }
 
-// Equals compares this EventPadAxis with another EventPadAxis, and returns true if they represent the same GObject.
+// Equals compares this EventPadAxis with another EventPadAxis, and returns true if they represent the same Object.
 func (recv *EventPadAxis) Equals(other *EventPadAxis) bool {
 	return other.Native() == recv.Native()
 }
@@ -2457,7 +2457,7 @@ func CastToEventPadButton(object *gobject.Object) *EventPadButton {
 	return EventPadButtonNewFromNative(object.Native())
 }
 
-// Equals compares this EventPadButton with another EventPadButton, and returns true if they represent the same GObject.
+// Equals compares this EventPadButton with another EventPadButton, and returns true if they represent the same Object.
 func (recv *EventPadButton) Equals(other *EventPadButton) bool {
 	return other.Native() == recv.Native()
 }
@@ -2609,7 +2609,7 @@ func CastToEventPadGroupMode(object *gobject.Object) *EventPadGroupMode {
 	return EventPadGroupModeNewFromNative(object.Native())
 }
 
-// Equals compares this EventPadGroupMode with another EventPadGroupMode, and returns true if they represent the same GObject.
+// Equals compares this EventPadGroupMode with another EventPadGroupMode, and returns true if they represent the same Object.
 func (recv *EventPadGroupMode) Equals(other *EventPadGroupMode) bool {
 	return other.Native() == recv.Native()
 }
@@ -2747,7 +2747,7 @@ func CastToEventProperty(object *gobject.Object) *EventProperty {
 	return EventPropertyNewFromNative(object.Native())
 }
 
-// Equals compares this EventProperty with another EventProperty, and returns true if they represent the same GObject.
+// Equals compares this EventProperty with another EventProperty, and returns true if they represent the same Object.
 func (recv *EventProperty) Equals(other *EventProperty) bool {
 	return other.Native() == recv.Native()
 }
@@ -2885,7 +2885,7 @@ func CastToEventProximity(object *gobject.Object) *EventProximity {
 	return EventProximityNewFromNative(object.Native())
 }
 
-// Equals compares this EventProximity with another EventProximity, and returns true if they represent the same GObject.
+// Equals compares this EventProximity with another EventProximity, and returns true if they represent the same Object.
 func (recv *EventProximity) Equals(other *EventProximity) bool {
 	return other.Native() == recv.Native()
 }
@@ -3009,7 +3009,7 @@ func CastToEventScroll(object *gobject.Object) *EventScroll {
 	return EventScrollNewFromNative(object.Native())
 }
 
-// Equals compares this EventScroll with another EventScroll, and returns true if they represent the same GObject.
+// Equals compares this EventScroll with another EventScroll, and returns true if they represent the same Object.
 func (recv *EventScroll) Equals(other *EventScroll) bool {
 	return other.Native() == recv.Native()
 }
@@ -3249,7 +3249,7 @@ func CastToEventSelection(object *gobject.Object) *EventSelection {
 	return EventSelectionNewFromNative(object.Native())
 }
 
-// Equals compares this EventSelection with another EventSelection, and returns true if they represent the same GObject.
+// Equals compares this EventSelection with another EventSelection, and returns true if they represent the same Object.
 func (recv *EventSelection) Equals(other *EventSelection) bool {
 	return other.Native() == recv.Native()
 }
@@ -3415,7 +3415,7 @@ func CastToEventSequence(object *gobject.Object) *EventSequence {
 	return EventSequenceNewFromNative(object.Native())
 }
 
-// Equals compares this EventSequence with another EventSequence, and returns true if they represent the same GObject.
+// Equals compares this EventSequence with another EventSequence, and returns true if they represent the same Object.
 func (recv *EventSequence) Equals(other *EventSequence) bool {
 	return other.Native() == recv.Native()
 }
@@ -3469,7 +3469,7 @@ func CastToEventSetting(object *gobject.Object) *EventSetting {
 	return EventSettingNewFromNative(object.Native())
 }
 
-// Equals compares this EventSetting with another EventSetting, and returns true if they represent the same GObject.
+// Equals compares this EventSetting with another EventSetting, and returns true if they represent the same Object.
 func (recv *EventSetting) Equals(other *EventSetting) bool {
 	return other.Native() == recv.Native()
 }
@@ -3593,7 +3593,7 @@ func CastToEventTouch(object *gobject.Object) *EventTouch {
 	return EventTouchNewFromNative(object.Native())
 }
 
-// Equals compares this EventTouch with another EventTouch, and returns true if they represent the same GObject.
+// Equals compares this EventTouch with another EventTouch, and returns true if they represent the same Object.
 func (recv *EventTouch) Equals(other *EventTouch) bool {
 	return other.Native() == recv.Native()
 }
@@ -3819,7 +3819,7 @@ func CastToEventTouchpadPinch(object *gobject.Object) *EventTouchpadPinch {
 	return EventTouchpadPinchNewFromNative(object.Native())
 }
 
-// Equals compares this EventTouchpadPinch with another EventTouchpadPinch, and returns true if they represent the same GObject.
+// Equals compares this EventTouchpadPinch with another EventTouchpadPinch, and returns true if they represent the same Object.
 func (recv *EventTouchpadPinch) Equals(other *EventTouchpadPinch) bool {
 	return other.Native() == recv.Native()
 }
@@ -4073,7 +4073,7 @@ func CastToEventTouchpadSwipe(object *gobject.Object) *EventTouchpadSwipe {
 	return EventTouchpadSwipeNewFromNative(object.Native())
 }
 
-// Equals compares this EventTouchpadSwipe with another EventTouchpadSwipe, and returns true if they represent the same GObject.
+// Equals compares this EventTouchpadSwipe with another EventTouchpadSwipe, and returns true if they represent the same Object.
 func (recv *EventTouchpadSwipe) Equals(other *EventTouchpadSwipe) bool {
 	return other.Native() == recv.Native()
 }
@@ -4299,7 +4299,7 @@ func CastToEventVisibility(object *gobject.Object) *EventVisibility {
 	return EventVisibilityNewFromNative(object.Native())
 }
 
-// Equals compares this EventVisibility with another EventVisibility, and returns true if they represent the same GObject.
+// Equals compares this EventVisibility with another EventVisibility, and returns true if they represent the same Object.
 func (recv *EventVisibility) Equals(other *EventVisibility) bool {
 	return other.Native() == recv.Native()
 }
@@ -4409,7 +4409,7 @@ func CastToEventWindowState(object *gobject.Object) *EventWindowState {
 	return EventWindowStateNewFromNative(object.Native())
 }
 
-// Equals compares this EventWindowState with another EventWindowState, and returns true if they represent the same GObject.
+// Equals compares this EventWindowState with another EventWindowState, and returns true if they represent the same Object.
 func (recv *EventWindowState) Equals(other *EventWindowState) bool {
 	return other.Native() == recv.Native()
 }
@@ -4513,7 +4513,7 @@ func CastToFrameClockClass(object *gobject.Object) *FrameClockClass {
 	return FrameClockClassNewFromNative(object.Native())
 }
 
-// Equals compares this FrameClockClass with another FrameClockClass, and returns true if they represent the same GObject.
+// Equals compares this FrameClockClass with another FrameClockClass, and returns true if they represent the same Object.
 func (recv *FrameClockClass) Equals(other *FrameClockClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -4567,7 +4567,7 @@ func CastToFrameClockPrivate(object *gobject.Object) *FrameClockPrivate {
 	return FrameClockPrivateNewFromNative(object.Native())
 }
 
-// Equals compares this FrameClockPrivate with another FrameClockPrivate, and returns true if they represent the same GObject.
+// Equals compares this FrameClockPrivate with another FrameClockPrivate, and returns true if they represent the same Object.
 func (recv *FrameClockPrivate) Equals(other *FrameClockPrivate) bool {
 	return other.Native() == recv.Native()
 }
@@ -4621,7 +4621,7 @@ func CastToFrameTimings(object *gobject.Object) *FrameTimings {
 	return FrameTimingsNewFromNative(object.Native())
 }
 
-// Equals compares this FrameTimings with another FrameTimings, and returns true if they represent the same GObject.
+// Equals compares this FrameTimings with another FrameTimings, and returns true if they represent the same Object.
 func (recv *FrameTimings) Equals(other *FrameTimings) bool {
 	return other.Native() == recv.Native()
 }
@@ -4927,7 +4927,7 @@ func CastToGeometry(object *gobject.Object) *Geometry {
 	return GeometryNewFromNative(object.Native())
 }
 
-// Equals compares this Geometry with another Geometry, and returns true if they represent the same GObject.
+// Equals compares this Geometry with another Geometry, and returns true if they represent the same Object.
 func (recv *Geometry) Equals(other *Geometry) bool {
 	return other.Native() == recv.Native()
 }
@@ -5135,7 +5135,7 @@ func CastToKeymapKey(object *gobject.Object) *KeymapKey {
 	return KeymapKeyNewFromNative(object.Native())
 }
 
-// Equals compares this KeymapKey with another KeymapKey, and returns true if they represent the same GObject.
+// Equals compares this KeymapKey with another KeymapKey, and returns true if they represent the same Object.
 func (recv *KeymapKey) Equals(other *KeymapKey) bool {
 	return other.Native() == recv.Native()
 }
@@ -5231,7 +5231,7 @@ func CastToMonitorClass(object *gobject.Object) *MonitorClass {
 	return MonitorClassNewFromNative(object.Native())
 }
 
-// Equals compares this MonitorClass with another MonitorClass, and returns true if they represent the same GObject.
+// Equals compares this MonitorClass with another MonitorClass, and returns true if they represent the same Object.
 func (recv *MonitorClass) Equals(other *MonitorClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -5285,7 +5285,7 @@ func CastToPoint(object *gobject.Object) *Point {
 	return PointNewFromNative(object.Native())
 }
 
-// Equals compares this Point with another Point, and returns true if they represent the same GObject.
+// Equals compares this Point with another Point, and returns true if they represent the same Object.
 func (recv *Point) Equals(other *Point) bool {
 	return other.Native() == recv.Native()
 }
@@ -5367,7 +5367,7 @@ func CastToRGBA(object *gobject.Object) *RGBA {
 	return RGBANewFromNative(object.Native())
 }
 
-// Equals compares this RGBA with another RGBA, and returns true if they represent the same GObject.
+// Equals compares this RGBA with another RGBA, and returns true if they represent the same Object.
 func (recv *RGBA) Equals(other *RGBA) bool {
 	return other.Native() == recv.Native()
 }
@@ -5667,7 +5667,7 @@ func CastToRectangle(object *gobject.Object) *Rectangle {
 	return RectangleNewFromNative(object.Native())
 }
 
-// Equals compares this Rectangle with another Rectangle, and returns true if they represent the same GObject.
+// Equals compares this Rectangle with another Rectangle, and returns true if they represent the same Object.
 func (recv *Rectangle) Equals(other *Rectangle) bool {
 	return other.Native() == recv.Native()
 }
@@ -5878,7 +5878,7 @@ func CastToTimeCoord(object *gobject.Object) *TimeCoord {
 	return TimeCoordNewFromNative(object.Native())
 }
 
-// Equals compares this TimeCoord with another TimeCoord, and returns true if they represent the same GObject.
+// Equals compares this TimeCoord with another TimeCoord, and returns true if they represent the same Object.
 func (recv *TimeCoord) Equals(other *TimeCoord) bool {
 	return other.Native() == recv.Native()
 }
@@ -5950,7 +5950,7 @@ func CastToWindowAttr(object *gobject.Object) *WindowAttr {
 	return WindowAttrNewFromNative(object.Native())
 }
 
-// Equals compares this WindowAttr with another WindowAttr, and returns true if they represent the same GObject.
+// Equals compares this WindowAttr with another WindowAttr, and returns true if they represent the same Object.
 func (recv *WindowAttr) Equals(other *WindowAttr) bool {
 	return other.Native() == recv.Native()
 }
@@ -6200,7 +6200,7 @@ func CastToWindowClass(object *gobject.Object) *WindowClass {
 	return WindowClassNewFromNative(object.Native())
 }
 
-// Equals compares this WindowClass with another WindowClass, and returns true if they represent the same GObject.
+// Equals compares this WindowClass with another WindowClass, and returns true if they represent the same Object.
 func (recv *WindowClass) Equals(other *WindowClass) bool {
 	return other.Native() == recv.Native()
 }
@@ -6306,7 +6306,7 @@ func CastToWindowRedirect(object *gobject.Object) *WindowRedirect {
 	return WindowRedirectNewFromNative(object.Native())
 }
 
-// Equals compares this WindowRedirect with another WindowRedirect, and returns true if they represent the same GObject.
+// Equals compares this WindowRedirect with another WindowRedirect, and returns true if they represent the same Object.
 func (recv *WindowRedirect) Equals(other *WindowRedirect) bool {
 	return other.Native() == recv.Native()
 }

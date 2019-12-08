@@ -62,7 +62,7 @@ func CastToFontMap(object *gobject.Object) *FontMap {
 	return FontMapNewFromNative(object.Native())
 }
 
-// Equals compares this FontMap with another FontMap, and returns true if they represent the same GObject.
+// Equals compares this FontMap with another FontMap, and returns true if they represent the same Object.
 func (recv *FontMap) Equals(other *FontMap) bool {
 	return other.Native() == recv.Native()
 }

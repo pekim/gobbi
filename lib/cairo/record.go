@@ -40,7 +40,7 @@ func CastToContext(object *gobject.Object) *Context {
 	return ContextNewFromNative(object.Native())
 }
 
-// Equals compares this Context with another Context, and returns true if they represent the same GObject.
+// Equals compares this Context with another Context, and returns true if they represent the same Object.
 func (recv *Context) Equals(other *Context) bool {
 	return other.Native() == recv.Native()
 }
@@ -94,7 +94,7 @@ func CastToDevice(object *gobject.Object) *Device {
 	return DeviceNewFromNative(object.Native())
 }
 
-// Equals compares this Device with another Device, and returns true if they represent the same GObject.
+// Equals compares this Device with another Device, and returns true if they represent the same Object.
 func (recv *Device) Equals(other *Device) bool {
 	return other.Native() == recv.Native()
 }
@@ -148,7 +148,7 @@ func CastToSurface(object *gobject.Object) *Surface {
 	return SurfaceNewFromNative(object.Native())
 }
 
-// Equals compares this Surface with another Surface, and returns true if they represent the same GObject.
+// Equals compares this Surface with another Surface, and returns true if they represent the same Object.
 func (recv *Surface) Equals(other *Surface) bool {
 	return other.Native() == recv.Native()
 }
@@ -202,7 +202,7 @@ func CastToMatrix(object *gobject.Object) *Matrix {
 	return MatrixNewFromNative(object.Native())
 }
 
-// Equals compares this Matrix with another Matrix, and returns true if they represent the same GObject.
+// Equals compares this Matrix with another Matrix, and returns true if they represent the same Object.
 func (recv *Matrix) Equals(other *Matrix) bool {
 	return other.Native() == recv.Native()
 }
@@ -256,7 +256,7 @@ func CastToPattern(object *gobject.Object) *Pattern {
 	return PatternNewFromNative(object.Native())
 }
 
-// Equals compares this Pattern with another Pattern, and returns true if they represent the same GObject.
+// Equals compares this Pattern with another Pattern, and returns true if they represent the same Object.
 func (recv *Pattern) Equals(other *Pattern) bool {
 	return other.Native() == recv.Native()
 }
@@ -310,7 +310,7 @@ func CastToRegion(object *gobject.Object) *Region {
 	return RegionNewFromNative(object.Native())
 }
 
-// Equals compares this Region with another Region, and returns true if they represent the same GObject.
+// Equals compares this Region with another Region, and returns true if they represent the same Object.
 func (recv *Region) Equals(other *Region) bool {
 	return other.Native() == recv.Native()
 }
@@ -364,7 +364,7 @@ func CastToFontOptions(object *gobject.Object) *FontOptions {
 	return FontOptionsNewFromNative(object.Native())
 }
 
-// Equals compares this FontOptions with another FontOptions, and returns true if they represent the same GObject.
+// Equals compares this FontOptions with another FontOptions, and returns true if they represent the same Object.
 func (recv *FontOptions) Equals(other *FontOptions) bool {
 	return other.Native() == recv.Native()
 }
@@ -418,7 +418,7 @@ func CastToFontFace(object *gobject.Object) *FontFace {
 	return FontFaceNewFromNative(object.Native())
 }
 
-// Equals compares this FontFace with another FontFace, and returns true if they represent the same GObject.
+// Equals compares this FontFace with another FontFace, and returns true if they represent the same Object.
 func (recv *FontFace) Equals(other *FontFace) bool {
 	return other.Native() == recv.Native()
 }
@@ -472,7 +472,7 @@ func CastToScaledFont(object *gobject.Object) *ScaledFont {
 	return ScaledFontNewFromNative(object.Native())
 }
 
-// Equals compares this ScaledFont with another ScaledFont, and returns true if they represent the same GObject.
+// Equals compares this ScaledFont with another ScaledFont, and returns true if they represent the same Object.
 func (recv *ScaledFont) Equals(other *ScaledFont) bool {
 	return other.Native() == recv.Native()
 }
@@ -526,7 +526,7 @@ func CastToPath(object *gobject.Object) *Path {
 	return PathNewFromNative(object.Native())
 }
 
-// Equals compares this Path with another Path, and returns true if they represent the same GObject.
+// Equals compares this Path with another Path, and returns true if they represent the same Object.
 func (recv *Path) Equals(other *Path) bool {
 	return other.Native() == recv.Native()
 }
@@ -580,7 +580,7 @@ func CastToRectangle(object *gobject.Object) *Rectangle {
 	return RectangleNewFromNative(object.Native())
 }
 
-// Equals compares this Rectangle with another Rectangle, and returns true if they represent the same GObject.
+// Equals compares this Rectangle with another Rectangle, and returns true if they represent the same Object.
 func (recv *Rectangle) Equals(other *Rectangle) bool {
 	return other.Native() == recv.Native()
 }
@@ -690,7 +690,7 @@ func CastToRectangleInt(object *gobject.Object) *RectangleInt {
 	return RectangleIntNewFromNative(object.Native())
 }
 
-// Equals compares this RectangleInt with another RectangleInt, and returns true if they represent the same GObject.
+// Equals compares this RectangleInt with another RectangleInt, and returns true if they represent the same Object.
 func (recv *RectangleInt) Equals(other *RectangleInt) bool {
 	return other.Native() == recv.Native()
 }
