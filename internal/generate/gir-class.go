@@ -2,12 +2,11 @@ package generate
 
 import (
 	"fmt"
-	"github.com/dave/jennifer/jen"
 )
 
 type Class struct {
 	*Record
-	//Implements Implementss `xml:"implements"`
+	Implements Implementss `xml:"implements"`
 }
 
 func (c *Class) init(ns *Namespace) {
@@ -40,14 +39,14 @@ func (c *Class) setParent() {
 
 func (c *Class) generate(f *file) {
 	c.Record.generate(f)
-	//c.generateImplementss(f)
+	c.generateImplementss(f)
 }
 
-func (c *Class) generateImplementss(g *jen.Group) {
-	//for _, implements := range c.Implements {
-	//		c.generateImplements(g, implements)
-	//}
+func (c *Class) generateImplementss(f *file) {
+	for _, implements := range c.Implements {
+		c.generateImplements(f, implements)
+	}
 }
 
-//func (c *Class) generateImplements(g *jen.Group, implements *Implements) {
-//}
+func (c *Class) generateImplements(f *file, implements *Implements) {
+}
