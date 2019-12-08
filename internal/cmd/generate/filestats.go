@@ -16,13 +16,21 @@ func outputFileStats() {
 	var allFiles processor.FileJob
 
 	err := filepath.Walk("../lib", func(path string, info os.FileInfo, err error) error {
-		if !info.IsDir() && strings.HasSuffix(path, ".go") {
-			c(path, &allFiles)
-			fileCount++
+		if info.IsDir() || !strings.HasSuffix(path, ".go") {
+			return nil
 		}
+
+		content, _ := ioutil.ReadFile(path)
+		if !strings.Contains(string(content), "// Code generated - DO NOT EDIT") {
+			return nil
+		}
+
+		c(content, &allFiles)
+		fileCount++
 
 		return nil
 	})
+
 	if err != nil {
 		panic(err)
 	}
@@ -32,8 +40,7 @@ func outputFileStats() {
 	fmt.Println()
 }
 
-func c(path string, allFiles *processor.FileJob) {
-	content, _ := ioutil.ReadFile(path)
+func c(content []byte, allFiles *processor.FileJob) {
 	filejob := processor.FileJob{
 		Language: "Go",
 		Content:  content,
