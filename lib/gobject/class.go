@@ -3084,3 +3084,8 @@ func (recv *TypeModule) Use() bool {
 
 	return retGo
 }
+
+// TypePlugin returns the TypePlugin interface implemented by TypeModule
+func (recv *TypeModule) TypePlugin() *TypePlugin {
+	return TypePluginNewFromNative(recv.Native())
+}

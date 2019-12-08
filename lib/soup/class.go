@@ -480,6 +480,11 @@ func (recv *Address) ResolveSync(cancellable *gio.Cancellable) uint32 {
 	return retGo
 }
 
+// GioSocketConnectable returns the Gio.SocketConnectable interface implemented by Address
+func (recv *Address) GioSocketConnectable() *gio.SocketConnectable {
+	return gio.SocketConnectableNewFromNative(recv.Native())
+}
+
 var authObject *gi.Object
 var authObject_Once sync.Once
 
@@ -1771,6 +1776,11 @@ func (recv *AuthManager) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// SessionFeature returns the SessionFeature interface implemented by AuthManager
+func (recv *AuthManager) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
+}
+
 var authNTLMObject *gi.Object
 var authNTLMObject_Once sync.Once
 
@@ -2182,6 +2192,11 @@ func (recv *Cache) SetMaxSize(maxSize uint32) {
 	return
 }
 
+// SessionFeature returns the SessionFeature interface implemented by Cache
+func (recv *Cache) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
+}
+
 var contentDecoderObject *gi.Object
 var contentDecoderObject_Once sync.Once
 
@@ -2263,6 +2278,11 @@ func (recv *ContentDecoder) SetFieldPriv(value *ContentDecoderPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(contentDecoderObject, recv.Native(), "priv", argValue)
+}
+
+// SessionFeature returns the SessionFeature interface implemented by ContentDecoder
+func (recv *ContentDecoder) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
 }
 
 var contentSnifferObject *gi.Object
@@ -2413,6 +2433,11 @@ func (recv *ContentSniffer) GetBufferSize() uint64 {
 }
 
 // UNSUPPORTED : C value 'soup_content_sniffer_sniff' : parameter 'params' of type 'GLib.HashTable' not supported
+
+// SessionFeature returns the SessionFeature interface implemented by ContentSniffer
+func (recv *ContentSniffer) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
+}
 
 var cookieJarObject *gi.Object
 var cookieJarObject_Once sync.Once
@@ -2863,6 +2888,11 @@ func (recv *CookieJar) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// SessionFeature returns the SessionFeature interface implemented by CookieJar
+func (recv *CookieJar) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
+}
+
 var cookieJarDBObject *gi.Object
 var cookieJarDBObject_Once sync.Once
 
@@ -2972,6 +3002,11 @@ func CookieJarDBNew(filename string, readOnly bool) *CookieJarDB {
 	return retGo
 }
 
+// SessionFeature returns the SessionFeature interface implemented by CookieJarDB
+func (recv *CookieJarDB) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
+}
+
 var cookieJarTextObject *gi.Object
 var cookieJarTextObject_Once sync.Once
 
@@ -3079,6 +3114,11 @@ func CookieJarTextNew(filename string, readOnly bool) *CookieJarText {
 	object.RefSink()
 
 	return retGo
+}
+
+// SessionFeature returns the SessionFeature interface implemented by CookieJarText
+func (recv *CookieJarText) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
 }
 
 var hSTSEnforcerObject *gi.Object
@@ -3333,6 +3373,11 @@ func (recv *HSTSEnforcer) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// SessionFeature returns the SessionFeature interface implemented by HSTSEnforcer
+func (recv *HSTSEnforcer) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
+}
+
 var hSTSEnforcerDBObject *gi.Object
 var hSTSEnforcerDBObject_Once sync.Once
 
@@ -3453,6 +3498,11 @@ func HSTSEnforcerDBNew(filename string) *HSTSEnforcerDB {
 	object.RefSink()
 
 	return retGo
+}
+
+// SessionFeature returns the SessionFeature interface implemented by HSTSEnforcerDB
+func (recv *HSTSEnforcerDB) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
 }
 
 var loggerObject *gi.Object
@@ -3622,6 +3672,11 @@ func (recv *Logger) Detach(session *Session) {
 // UNSUPPORTED : C value 'soup_logger_set_request_filter' : parameter 'request_filter' of type 'LoggerFilter' not supported
 
 // UNSUPPORTED : C value 'soup_logger_set_response_filter' : parameter 'response_filter' of type 'LoggerFilter' not supported
+
+// SessionFeature returns the SessionFeature interface implemented by Logger
+func (recv *Logger) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
+}
 
 var messageObject *gi.Object
 var messageObject_Once sync.Once
@@ -4839,6 +4894,11 @@ func (recv *MultipartInputStream) NextPart(cancellable *gio.Cancellable) *gio.In
 
 // UNSUPPORTED : C value 'soup_multipart_input_stream_next_part_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
+// GioPollableInputStream returns the Gio.PollableInputStream interface implemented by MultipartInputStream
+func (recv *MultipartInputStream) GioPollableInputStream() *gio.PollableInputStream {
+	return gio.PollableInputStreamNewFromNative(recv.Native())
+}
+
 var proxyResolverDefaultObject *gi.Object
 var proxyResolverDefaultObject_Once sync.Once
 
@@ -4906,6 +4966,16 @@ func (recv *ProxyResolverDefault) SetFieldParent(value *gobject.Object) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(proxyResolverDefaultObject, recv.Native(), "parent", argValue)
+}
+
+// ProxyURIResolver returns the ProxyURIResolver interface implemented by ProxyResolverDefault
+func (recv *ProxyResolverDefault) ProxyURIResolver() *ProxyURIResolver {
+	return ProxyURIResolverNewFromNative(recv.Native())
+}
+
+// SessionFeature returns the SessionFeature interface implemented by ProxyResolverDefault
+func (recv *ProxyResolverDefault) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
 }
 
 var requestObject *gi.Object
@@ -5156,6 +5226,11 @@ func (recv *Request) Send(cancellable *gio.Cancellable) *gio.InputStream {
 
 // UNSUPPORTED : C value 'soup_request_send_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
+// GioInitable returns the Gio.Initable interface implemented by Request
+func (recv *Request) GioInitable() *gio.Initable {
+	return gio.InitableNewFromNative(recv.Native())
+}
+
 var requestDataObject *gi.Object
 var requestDataObject_Once sync.Once
 
@@ -5242,6 +5317,11 @@ func (recv *RequestData) SetFieldPriv(value *RequestDataPrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(requestDataObject, recv.Native(), "priv", argValue)
+}
+
+// GioInitable returns the Gio.Initable interface implemented by RequestData
+func (recv *RequestData) GioInitable() *gio.Initable {
+	return gio.InitableNewFromNative(recv.Native())
 }
 
 var requestFileObject *gi.Object
@@ -5333,6 +5413,11 @@ func (recv *RequestFile) SetFieldPriv(value *RequestFilePrivate) {
 }
 
 // UNSUPPORTED : C value 'soup_request_file_get_file' : return type 'Gio.File' not supported
+
+// GioInitable returns the Gio.Initable interface implemented by RequestFile
+func (recv *RequestFile) GioInitable() *gio.Initable {
+	return gio.InitableNewFromNative(recv.Native())
+}
 
 var requestHTTPObject *gi.Object
 var requestHTTPObject_Once sync.Once
@@ -5452,6 +5537,11 @@ func (recv *RequestHTTP) GetMessage() *Message {
 	retGo := MessageNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// GioInitable returns the Gio.Initable interface implemented by RequestHTTP
+func (recv *RequestHTTP) GioInitable() *gio.Initable {
+	return gio.InitableNewFromNative(recv.Native())
 }
 
 var requesterObject *gi.Object
@@ -5633,6 +5723,11 @@ func (recv *Requester) RequestUri(uri *URI) *Request {
 	retGo := RequestNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// SessionFeature returns the SessionFeature interface implemented by Requester
+func (recv *Requester) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
 }
 
 var serverObject *gi.Object
@@ -7407,6 +7502,11 @@ func (recv *Socket) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// GioInitable returns the Gio.Initable interface implemented by Socket
+func (recv *Socket) GioInitable() *gio.Initable {
+	return gio.InitableNewFromNative(recv.Native())
+}
+
 var websocketConnectionObject *gi.Object
 var websocketConnectionObject_Once sync.Once
 
@@ -8248,4 +8348,9 @@ func (recv *WebsocketExtensionManager) SetFieldParent(value *gobject.Object) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(websocketExtensionManagerObject, recv.Native(), "parent", argValue)
+}
+
+// SessionFeature returns the SessionFeature interface implemented by WebsocketExtensionManager
+func (recv *WebsocketExtensionManager) SessionFeature() *SessionFeature {
+	return SessionFeatureNewFromNative(recv.Native())
 }

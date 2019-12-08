@@ -1423,6 +1423,16 @@ func (recv *Pixbuf) Unref() {
 	return
 }
 
+// GioIcon returns the Gio.Icon interface implemented by Pixbuf
+func (recv *Pixbuf) GioIcon() *gio.Icon {
+	return gio.IconNewFromNative(recv.Native())
+}
+
+// GioLoadableIcon returns the Gio.LoadableIcon interface implemented by Pixbuf
+func (recv *Pixbuf) GioLoadableIcon() *gio.LoadableIcon {
+	return gio.LoadableIconNewFromNative(recv.Native())
+}
+
 var pixbufAnimationObject *gi.Object
 var pixbufAnimationObject_Once sync.Once
 

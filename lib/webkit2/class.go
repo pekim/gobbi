@@ -5,6 +5,7 @@ package webkit2
 import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	atk "github.com/pekim/gobbi/lib/atk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	gtk "github.com/pekim/gobbi/lib/gtk"
@@ -2307,6 +2308,11 @@ func (recv *DeviceInfoPermissionRequest) SetFieldParent(value *gobject.Object) {
 	gi.ObjectFieldSet(deviceInfoPermissionRequestObject, recv.Native(), "parent", argValue)
 }
 
+// PermissionRequest returns the PermissionRequest interface implemented by DeviceInfoPermissionRequest
+func (recv *DeviceInfoPermissionRequest) PermissionRequest() *PermissionRequest {
+	return PermissionRequestNewFromNative(recv.Native())
+}
+
 var downloadObject *gi.Object
 var downloadObject_Once sync.Once
 
@@ -4082,6 +4088,11 @@ func (recv *GeolocationPermissionRequest) SetFieldParent(value *gobject.Object) 
 	gi.ObjectFieldSet(geolocationPermissionRequestObject, recv.Native(), "parent", argValue)
 }
 
+// PermissionRequest returns the PermissionRequest interface implemented by GeolocationPermissionRequest
+func (recv *GeolocationPermissionRequest) PermissionRequest() *PermissionRequest {
+	return PermissionRequestNewFromNative(recv.Native())
+}
+
 var hitTestResultObject *gi.Object
 var hitTestResultObject_Once sync.Once
 
@@ -4662,6 +4673,11 @@ func (recv *InstallMissingMediaPluginsPermissionRequest) GetDescription() string
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+// PermissionRequest returns the PermissionRequest interface implemented by InstallMissingMediaPluginsPermissionRequest
+func (recv *InstallMissingMediaPluginsPermissionRequest) PermissionRequest() *PermissionRequest {
+	return PermissionRequestNewFromNative(recv.Native())
 }
 
 var navigationPolicyDecisionObject *gi.Object
@@ -5273,6 +5289,11 @@ func (recv *NotificationPermissionRequest) SetFieldParent(value *gobject.Object)
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(notificationPermissionRequestObject, recv.Native(), "parent", argValue)
+}
+
+// PermissionRequest returns the PermissionRequest interface implemented by NotificationPermissionRequest
+func (recv *NotificationPermissionRequest) PermissionRequest() *PermissionRequest {
+	return PermissionRequestNewFromNative(recv.Native())
 }
 
 var optionMenuObject *gi.Object
@@ -11963,6 +11984,11 @@ func (recv *UserMediaPermissionRequest) SetFieldParent(value *gobject.Object) {
 	gi.ObjectFieldSet(userMediaPermissionRequestObject, recv.Native(), "parent", argValue)
 }
 
+// PermissionRequest returns the PermissionRequest interface implemented by UserMediaPermissionRequest
+func (recv *UserMediaPermissionRequest) PermissionRequest() *PermissionRequest {
+	return PermissionRequestNewFromNative(recv.Native())
+}
+
 var webContextObject *gi.Object
 var webContextObject_Once sync.Once
 
@@ -15331,6 +15357,16 @@ func (recv *WebView) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by WebView
+func (recv *WebView) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// GtkBuildable returns the Gtk.Buildable interface implemented by WebView
+func (recv *WebView) GtkBuildable() *gtk.Buildable {
+	return gtk.BuildableNewFromNative(recv.Native())
+}
+
 var webViewBaseObject *gi.Object
 var webViewBaseObject_Once sync.Once
 
@@ -15413,6 +15449,16 @@ func (recv *WebViewBase) SetFieldParentInstance(value *gtk.Container) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(webViewBaseObject, recv.Native(), "parentInstance", argValue)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by WebViewBase
+func (recv *WebViewBase) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// GtkBuildable returns the Gtk.Buildable interface implemented by WebViewBase
+func (recv *WebViewBase) GtkBuildable() *gtk.Buildable {
+	return gtk.BuildableNewFromNative(recv.Native())
 }
 
 var websiteDataManagerObject *gi.Object

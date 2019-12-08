@@ -5,6 +5,7 @@ package gtksource
 import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	atk "github.com/pekim/gobbi/lib/atk"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	gio "github.com/pekim/gobbi/lib/gio"
@@ -1008,6 +1009,11 @@ func (recv *Completion) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// GtkBuildable returns the Gtk.Buildable interface implemented by Completion
+func (recv *Completion) GtkBuildable() *gtk.Buildable {
+	return gtk.BuildableNewFromNative(recv.Native())
+}
+
 var completionContextObject *gi.Object
 var completionContextObject_Once sync.Once
 
@@ -1319,6 +1325,16 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *CompletionInfo) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by CompletionInfo
+func (recv *CompletionInfo) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// GtkBuildable returns the Gtk.Buildable interface implemented by CompletionInfo
+func (recv *CompletionInfo) GtkBuildable() *gtk.Buildable {
+	return gtk.BuildableNewFromNative(recv.Native())
 }
 
 var completionItemObject *gi.Object
@@ -1691,6 +1707,11 @@ func (recv *CompletionItem) SetText(text string) {
 	return
 }
 
+// CompletionProposal returns the CompletionProposal interface implemented by CompletionItem
+func (recv *CompletionItem) CompletionProposal() *CompletionProposal {
+	return CompletionProposalNewFromNative(recv.Native())
+}
+
 var completionWordsObject *gi.Object
 var completionWordsObject_Once sync.Once
 
@@ -1865,6 +1886,11 @@ func (recv *CompletionWords) Unregister(buffer *gtk.TextBuffer) {
 	}
 
 	return
+}
+
+// CompletionProvider returns the CompletionProvider interface implemented by CompletionWords
+func (recv *CompletionWords) CompletionProvider() *CompletionProvider {
+	return CompletionProviderNewFromNative(recv.Native())
 }
 
 var fileObject *gi.Object
@@ -5155,6 +5181,21 @@ func (recv *Map) SetView(view *View) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Map
+func (recv *Map) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// GtkBuildable returns the Gtk.Buildable interface implemented by Map
+func (recv *Map) GtkBuildable() *gtk.Buildable {
+	return gtk.BuildableNewFromNative(recv.Native())
+}
+
+// GtkScrollable returns the Gtk.Scrollable interface implemented by Map
+func (recv *Map) GtkScrollable() *gtk.Scrollable {
+	return gtk.ScrollableNewFromNative(recv.Native())
 }
 
 var markObject *gi.Object
@@ -8583,6 +8624,31 @@ func StyleSchemeChooserButtonNew() *StyleSchemeChooserButton {
 	return retGo
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by StyleSchemeChooserButton
+func (recv *StyleSchemeChooserButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// GtkActionable returns the Gtk.Actionable interface implemented by StyleSchemeChooserButton
+func (recv *StyleSchemeChooserButton) GtkActionable() *gtk.Actionable {
+	return gtk.ActionableNewFromNative(recv.Native())
+}
+
+// GtkActivatable returns the Gtk.Activatable interface implemented by StyleSchemeChooserButton
+func (recv *StyleSchemeChooserButton) GtkActivatable() *gtk.Activatable {
+	return gtk.ActivatableNewFromNative(recv.Native())
+}
+
+// GtkBuildable returns the Gtk.Buildable interface implemented by StyleSchemeChooserButton
+func (recv *StyleSchemeChooserButton) GtkBuildable() *gtk.Buildable {
+	return gtk.BuildableNewFromNative(recv.Native())
+}
+
+// StyleSchemeChooser returns the StyleSchemeChooser interface implemented by StyleSchemeChooserButton
+func (recv *StyleSchemeChooserButton) StyleSchemeChooser() *StyleSchemeChooser {
+	return StyleSchemeChooserNewFromNative(recv.Native())
+}
+
 var styleSchemeChooserWidgetObject *gi.Object
 var styleSchemeChooserWidgetObject_Once sync.Once
 
@@ -8700,6 +8766,21 @@ func StyleSchemeChooserWidgetNew() *StyleSchemeChooserWidget {
 	retGo := StyleSchemeChooserWidgetNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by StyleSchemeChooserWidget
+func (recv *StyleSchemeChooserWidget) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// GtkBuildable returns the Gtk.Buildable interface implemented by StyleSchemeChooserWidget
+func (recv *StyleSchemeChooserWidget) GtkBuildable() *gtk.Buildable {
+	return gtk.BuildableNewFromNative(recv.Native())
+}
+
+// StyleSchemeChooser returns the StyleSchemeChooser interface implemented by StyleSchemeChooserWidget
+func (recv *StyleSchemeChooserWidget) StyleSchemeChooser() *StyleSchemeChooser {
+	return StyleSchemeChooserNewFromNative(recv.Native())
 }
 
 var styleSchemeManagerObject *gi.Object
@@ -10208,4 +10289,19 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *View) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by View
+func (recv *View) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// GtkBuildable returns the Gtk.Buildable interface implemented by View
+func (recv *View) GtkBuildable() *gtk.Buildable {
+	return gtk.BuildableNewFromNative(recv.Native())
+}
+
+// GtkScrollable returns the Gtk.Scrollable interface implemented by View
+func (recv *View) GtkScrollable() *gtk.Scrollable {
+	return gtk.ScrollableNewFromNative(recv.Native())
 }

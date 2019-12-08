@@ -1166,6 +1166,16 @@ func (recv *Application) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// ActionGroup returns the ActionGroup interface implemented by Application
+func (recv *Application) ActionGroup() *ActionGroup {
+	return ActionGroupNewFromNative(recv.Native())
+}
+
+// ActionMap returns the ActionMap interface implemented by Application
+func (recv *Application) ActionMap() *ActionMap {
+	return ActionMapNewFromNative(recv.Native())
+}
+
 var applicationCommandLineObject *gi.Object
 var applicationCommandLineObject_Once sync.Once
 
@@ -1827,6 +1837,11 @@ func (recv *BufferedInputStream) SetBufferSize(size uint64) {
 	return
 }
 
+// Seekable returns the Seekable interface implemented by BufferedInputStream
+func (recv *BufferedInputStream) Seekable() *Seekable {
+	return SeekableNewFromNative(recv.Native())
+}
+
 var bufferedOutputStreamObject *gi.Object
 var bufferedOutputStreamObject_Once sync.Once
 
@@ -2111,6 +2126,11 @@ func (recv *BufferedOutputStream) SetBufferSize(size uint64) {
 	return
 }
 
+// Seekable returns the Seekable interface implemented by BufferedOutputStream
+func (recv *BufferedOutputStream) Seekable() *Seekable {
+	return SeekableNewFromNative(recv.Native())
+}
+
 var bytesIconObject *gi.Object
 var bytesIconObject_Once sync.Once
 
@@ -2169,6 +2189,16 @@ func (recv *BytesIcon) Native() unsafe.Pointer {
 // UNSUPPORTED : C value 'g_bytes_icon_new' : parameter 'bytes' of type 'GLib.Bytes' not supported
 
 // UNSUPPORTED : C value 'g_bytes_icon_get_bytes' : return type 'GLib.Bytes' not supported
+
+// Icon returns the Icon interface implemented by BytesIcon
+func (recv *BytesIcon) Icon() *Icon {
+	return IconNewFromNative(recv.Native())
+}
+
+// LoadableIcon returns the LoadableIcon interface implemented by BytesIcon
+func (recv *BytesIcon) LoadableIcon() *LoadableIcon {
+	return LoadableIconNewFromNative(recv.Native())
+}
 
 var cancellableObject *gi.Object
 var cancellableObject_Once sync.Once
@@ -2734,6 +2764,16 @@ func (recv *CharsetConverter) SetUseFallback(useFallback bool) {
 	return
 }
 
+// Converter returns the Converter interface implemented by CharsetConverter
+func (recv *CharsetConverter) Converter() *Converter {
+	return ConverterNewFromNative(recv.Native())
+}
+
+// Initable returns the Initable interface implemented by CharsetConverter
+func (recv *CharsetConverter) Initable() *Initable {
+	return InitableNewFromNative(recv.Native())
+}
+
 var converterInputStreamObject *gi.Object
 var converterInputStreamObject_Once sync.Once
 
@@ -2817,6 +2857,11 @@ func (recv *ConverterInputStream) SetFieldParentInstance(value *FilterInputStrea
 
 // UNSUPPORTED : C value 'g_converter_input_stream_get_converter' : return type 'Converter' not supported
 
+// PollableInputStream returns the PollableInputStream interface implemented by ConverterInputStream
+func (recv *ConverterInputStream) PollableInputStream() *PollableInputStream {
+	return PollableInputStreamNewFromNative(recv.Native())
+}
+
 var converterOutputStreamObject *gi.Object
 var converterOutputStreamObject_Once sync.Once
 
@@ -2899,6 +2944,11 @@ func (recv *ConverterOutputStream) SetFieldParentInstance(value *FilterOutputStr
 // UNSUPPORTED : C value 'g_converter_output_stream_new' : parameter 'converter' of type 'Converter' not supported
 
 // UNSUPPORTED : C value 'g_converter_output_stream_get_converter' : return type 'Converter' not supported
+
+// PollableOutputStream returns the PollableOutputStream interface implemented by ConverterOutputStream
+func (recv *ConverterOutputStream) PollableOutputStream() *PollableOutputStream {
+	return PollableOutputStreamNewFromNative(recv.Native())
+}
 
 var credentialsObject *gi.Object
 var credentialsObject_Once sync.Once
@@ -3206,6 +3256,16 @@ func (recv *DBusActionGroup) Equals(other *DBusActionGroup) bool {
 
 func (recv *DBusActionGroup) Native() unsafe.Pointer {
 	return recv.native
+}
+
+// ActionGroup returns the ActionGroup interface implemented by DBusActionGroup
+func (recv *DBusActionGroup) ActionGroup() *ActionGroup {
+	return ActionGroupNewFromNative(recv.Native())
+}
+
+// RemoteActionGroup returns the RemoteActionGroup interface implemented by DBusActionGroup
+func (recv *DBusActionGroup) RemoteActionGroup() *RemoteActionGroup {
+	return RemoteActionGroupNewFromNative(recv.Native())
 }
 
 var dBusAuthObserverObject *gi.Object
@@ -4052,6 +4112,16 @@ func (recv *DBusConnection) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AsyncInitable returns the AsyncInitable interface implemented by DBusConnection
+func (recv *DBusConnection) AsyncInitable() *AsyncInitable {
+	return AsyncInitableNewFromNative(recv.Native())
+}
+
+// Initable returns the Initable interface implemented by DBusConnection
+func (recv *DBusConnection) Initable() *Initable {
+	return InitableNewFromNative(recv.Native())
+}
+
 var dBusInterfaceSkeletonObject *gi.Object
 var dBusInterfaceSkeletonObject_Once sync.Once
 
@@ -4402,6 +4472,11 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *DBusInterfaceSkeleton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// DBusInterface returns the DBusInterface interface implemented by DBusInterfaceSkeleton
+func (recv *DBusInterfaceSkeleton) DBusInterface() *DBusInterface {
+	return DBusInterfaceNewFromNative(recv.Native())
 }
 
 var dBusMenuModelObject *gi.Object
@@ -6278,6 +6353,21 @@ func (recv *DBusObjectManagerClient) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AsyncInitable returns the AsyncInitable interface implemented by DBusObjectManagerClient
+func (recv *DBusObjectManagerClient) AsyncInitable() *AsyncInitable {
+	return AsyncInitableNewFromNative(recv.Native())
+}
+
+// DBusObjectManager returns the DBusObjectManager interface implemented by DBusObjectManagerClient
+func (recv *DBusObjectManagerClient) DBusObjectManager() *DBusObjectManager {
+	return DBusObjectManagerNewFromNative(recv.Native())
+}
+
+// Initable returns the Initable interface implemented by DBusObjectManagerClient
+func (recv *DBusObjectManagerClient) Initable() *Initable {
+	return InitableNewFromNative(recv.Native())
+}
+
 var dBusObjectManagerServerObject *gi.Object
 var dBusObjectManagerServerObject_Once sync.Once
 
@@ -6552,6 +6642,11 @@ func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
 	return retGo
 }
 
+// DBusObjectManager returns the DBusObjectManager interface implemented by DBusObjectManagerServer
+func (recv *DBusObjectManagerServer) DBusObjectManager() *DBusObjectManager {
+	return DBusObjectManagerNewFromNative(recv.Native())
+}
+
 var dBusObjectProxyObject *gi.Object
 var dBusObjectProxyObject_Once sync.Once
 
@@ -6672,6 +6767,11 @@ func (recv *DBusObjectProxy) GetConnection() *DBusConnection {
 	retGo := DBusConnectionNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// DBusObject returns the DBusObject interface implemented by DBusObjectProxy
+func (recv *DBusObjectProxy) DBusObject() *DBusObject {
+	return DBusObjectNewFromNative(recv.Native())
 }
 
 var dBusObjectSkeletonObject *gi.Object
@@ -6914,6 +7014,11 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *DBusObjectSkeleton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// DBusObject returns the DBusObject interface implemented by DBusObjectSkeleton
+func (recv *DBusObjectSkeleton) DBusObject() *DBusObject {
+	return DBusObjectNewFromNative(recv.Native())
 }
 
 var dBusProxyObject *gi.Object
@@ -7316,6 +7421,21 @@ func (recv *DBusProxy) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AsyncInitable returns the AsyncInitable interface implemented by DBusProxy
+func (recv *DBusProxy) AsyncInitable() *AsyncInitable {
+	return AsyncInitableNewFromNative(recv.Native())
+}
+
+// DBusInterface returns the DBusInterface interface implemented by DBusProxy
+func (recv *DBusProxy) DBusInterface() *DBusInterface {
+	return DBusInterfaceNewFromNative(recv.Native())
+}
+
+// Initable returns the Initable interface implemented by DBusProxy
+func (recv *DBusProxy) Initable() *Initable {
+	return InitableNewFromNative(recv.Native())
+}
+
 var dBusServerObject *gi.Object
 var dBusServerObject_Once sync.Once
 
@@ -7534,6 +7654,11 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *DBusServer) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// Initable returns the Initable interface implemented by DBusServer
+func (recv *DBusServer) Initable() *Initable {
+	return InitableNewFromNative(recv.Native())
 }
 
 var dataInputStreamObject *gi.Object
@@ -8162,6 +8287,11 @@ func (recv *DataInputStream) SetNewlineType(type_ DataStreamNewlineType) {
 	return
 }
 
+// Seekable returns the Seekable interface implemented by DataInputStream
+func (recv *DataInputStream) Seekable() *Seekable {
+	return SeekableNewFromNative(recv.Native())
+}
+
 var dataOutputStreamObject *gi.Object
 var dataOutputStreamObject_Once sync.Once
 
@@ -8606,6 +8736,11 @@ func (recv *DataOutputStream) SetByteOrder(order DataStreamByteOrder) {
 	}
 
 	return
+}
+
+// Seekable returns the Seekable interface implemented by DataOutputStream
+func (recv *DataOutputStream) Seekable() *Seekable {
+	return SeekableNewFromNative(recv.Native())
 }
 
 var desktopAppInfoObject *gi.Object
@@ -9246,6 +9381,11 @@ func (recv *DesktopAppInfo) ListActions() {
 	return
 }
 
+// AppInfo returns the AppInfo interface implemented by DesktopAppInfo
+func (recv *DesktopAppInfo) AppInfo() *AppInfo {
+	return AppInfoNewFromNative(recv.Native())
+}
+
 var emblemObject *gi.Object
 var emblemObject_Once sync.Once
 
@@ -9337,6 +9477,11 @@ func (recv *Emblem) GetOrigin() EmblemOrigin {
 	retGo := EmblemOrigin(ret.Int32())
 
 	return retGo
+}
+
+// Icon returns the Icon interface implemented by Emblem
+func (recv *Emblem) Icon() *Icon {
+	return IconNewFromNative(recv.Native())
 }
 
 var emblemedIconObject *gi.Object
@@ -9470,6 +9615,11 @@ func (recv *EmblemedIcon) ClearEmblems() {
 // UNSUPPORTED : C value 'g_emblemed_icon_get_emblems' : return type 'GLib.List' not supported
 
 // UNSUPPORTED : C value 'g_emblemed_icon_get_icon' : return type 'Icon' not supported
+
+// Icon returns the Icon interface implemented by EmblemedIcon
+func (recv *EmblemedIcon) Icon() *Icon {
+	return IconNewFromNative(recv.Native())
+}
 
 var fileEnumeratorObject *gi.Object
 var fileEnumeratorObject_Once sync.Once
@@ -9857,6 +10007,11 @@ func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable)
 
 // UNSUPPORTED : C value 'g_file_io_stream_query_info_finish' : parameter 'result' of type 'AsyncResult' not supported
 
+// Seekable returns the Seekable interface implemented by FileIOStream
+func (recv *FileIOStream) Seekable() *Seekable {
+	return SeekableNewFromNative(recv.Native())
+}
+
 var fileIconObject *gi.Object
 var fileIconObject_Once sync.Once
 
@@ -9915,6 +10070,16 @@ func (recv *FileIcon) Native() unsafe.Pointer {
 // UNSUPPORTED : C value 'g_file_icon_new' : parameter 'file' of type 'File' not supported
 
 // UNSUPPORTED : C value 'g_file_icon_get_file' : return type 'File' not supported
+
+// Icon returns the Icon interface implemented by FileIcon
+func (recv *FileIcon) Icon() *Icon {
+	return IconNewFromNative(recv.Native())
+}
+
+// LoadableIcon returns the LoadableIcon interface implemented by FileIcon
+func (recv *FileIcon) LoadableIcon() *LoadableIcon {
+	return LoadableIconNewFromNative(recv.Native())
+}
 
 var fileInfoObject *gi.Object
 var fileInfoObject_Once sync.Once
@@ -11749,6 +11914,11 @@ func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellab
 
 // UNSUPPORTED : C value 'g_file_input_stream_query_info_finish' : parameter 'result' of type 'AsyncResult' not supported
 
+// Seekable returns the Seekable interface implemented by FileInputStream
+func (recv *FileInputStream) Seekable() *Seekable {
+	return SeekableNewFromNative(recv.Native())
+}
+
 var fileMonitorObject *gi.Object
 var fileMonitorObject_Once sync.Once
 
@@ -12065,6 +12235,11 @@ func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancella
 // UNSUPPORTED : C value 'g_file_output_stream_query_info_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_output_stream_query_info_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// Seekable returns the Seekable interface implemented by FileOutputStream
+func (recv *FileOutputStream) Seekable() *Seekable {
+	return SeekableNewFromNative(recv.Native())
+}
 
 var filenameCompleterObject *gi.Object
 var filenameCompleterObject_Once sync.Once
@@ -12763,6 +12938,11 @@ func (recv *IOModule) Unload() {
 	}
 
 	return
+}
+
+// GObjectTypePlugin returns the GObject.TypePlugin interface implemented by IOModule
+func (recv *IOModule) GObjectTypePlugin() *gobject.TypePlugin {
+	return gobject.TypePluginNewFromNative(recv.Native())
 }
 
 var iOStreamObject *gi.Object
@@ -14047,6 +14227,11 @@ func (recv *InetAddressMask) ToString() string {
 	return retGo
 }
 
+// Initable returns the Initable interface implemented by InetAddressMask
+func (recv *InetAddressMask) Initable() *Initable {
+	return InitableNewFromNative(recv.Native())
+}
+
 var inetSocketAddressObject *gi.Object
 var inetSocketAddressObject_Once sync.Once
 
@@ -14317,6 +14502,11 @@ func (recv *InetSocketAddress) GetScopeId() uint32 {
 	retGo := ret.Uint32()
 
 	return retGo
+}
+
+// SocketConnectable returns the SocketConnectable interface implemented by InetSocketAddress
+func (recv *InetSocketAddress) SocketConnectable() *SocketConnectable {
+	return SocketConnectableNewFromNative(recv.Native())
 }
 
 var inputStreamObject *gi.Object
@@ -14784,6 +14974,11 @@ func (recv *ListStore) RemoveAll() {
 
 // UNSUPPORTED : C value 'g_list_store_splice' : parameter 'additions' of type 'nil' not supported
 
+// ListModel returns the ListModel interface implemented by ListStore
+func (recv *ListStore) ListModel() *ListModel {
+	return ListModelNewFromNative(recv.Native())
+}
+
 var memoryInputStreamObject *gi.Object
 var memoryInputStreamObject_Once sync.Once
 
@@ -14897,6 +15092,16 @@ func MemoryInputStreamNew() *MemoryInputStream {
 // UNSUPPORTED : C value 'g_memory_input_stream_add_bytes' : parameter 'bytes' of type 'GLib.Bytes' not supported
 
 // UNSUPPORTED : C value 'g_memory_input_stream_add_data' : parameter 'data' of type 'nil' not supported
+
+// PollableInputStream returns the PollableInputStream interface implemented by MemoryInputStream
+func (recv *MemoryInputStream) PollableInputStream() *PollableInputStream {
+	return PollableInputStreamNewFromNative(recv.Native())
+}
+
+// Seekable returns the Seekable interface implemented by MemoryInputStream
+func (recv *MemoryInputStream) Seekable() *Seekable {
+	return SeekableNewFromNative(recv.Native())
+}
 
 var memoryOutputStreamObject *gi.Object
 var memoryOutputStreamObject_Once sync.Once
@@ -15075,6 +15280,16 @@ func (recv *MemoryOutputStream) GetSize() uint64 {
 // UNSUPPORTED : C value 'g_memory_output_stream_steal_as_bytes' : return type 'GLib.Bytes' not supported
 
 // UNSUPPORTED : C value 'g_memory_output_stream_steal_data' : return type 'gpointer' not supported
+
+// PollableOutputStream returns the PollableOutputStream interface implemented by MemoryOutputStream
+func (recv *MemoryOutputStream) PollableOutputStream() *PollableOutputStream {
+	return PollableOutputStreamNewFromNative(recv.Native())
+}
+
+// Seekable returns the Seekable interface implemented by MemoryOutputStream
+func (recv *MemoryOutputStream) Seekable() *Seekable {
+	return SeekableNewFromNative(recv.Native())
+}
 
 var menuObject *gi.Object
 var menuObject_Once sync.Once
@@ -17436,6 +17651,11 @@ func (recv *NativeSocketAddress) SetFieldParentInstance(value *SocketAddress) {
 
 // UNSUPPORTED : C value 'g_native_socket_address_new' : parameter 'native' of type 'gpointer' not supported
 
+// SocketConnectable returns the SocketConnectable interface implemented by NativeSocketAddress
+func (recv *NativeSocketAddress) SocketConnectable() *SocketConnectable {
+	return SocketConnectableNewFromNative(recv.Native())
+}
+
 var nativeVolumeMonitorObject *gi.Object
 var nativeVolumeMonitorObject_Once sync.Once
 
@@ -17744,6 +17964,11 @@ func (recv *NetworkAddress) GetScheme() string {
 	return retGo
 }
 
+// SocketConnectable returns the SocketConnectable interface implemented by NetworkAddress
+func (recv *NetworkAddress) SocketConnectable() *SocketConnectable {
+	return SocketConnectableNewFromNative(recv.Native())
+}
+
 var networkServiceObject *gi.Object
 var networkServiceObject_Once sync.Once
 
@@ -18004,6 +18229,11 @@ func (recv *NetworkService) SetScheme(scheme string) {
 	}
 
 	return
+}
+
+// SocketConnectable returns the SocketConnectable interface implemented by NetworkService
+func (recv *NetworkService) SocketConnectable() *SocketConnectable {
+	return SocketConnectableNewFromNative(recv.Native())
 }
 
 var notificationObject *gi.Object
@@ -18980,6 +19210,11 @@ func PropertyActionNew(name string, object_ *gobject.Object, propertyName string
 	return retGo
 }
 
+// Action returns the Action interface implemented by PropertyAction
+func (recv *PropertyAction) Action() *Action {
+	return ActionNewFromNative(recv.Native())
+}
+
 var proxyAddressObject *gi.Object
 var proxyAddressObject_Once sync.Once
 
@@ -19321,6 +19556,11 @@ func (recv *ProxyAddress) GetUsername() string {
 	retGo := ret.String(false)
 
 	return retGo
+}
+
+// SocketConnectable returns the SocketConnectable interface implemented by ProxyAddress
+func (recv *ProxyAddress) SocketConnectable() *SocketConnectable {
+	return SocketConnectableNewFromNative(recv.Native())
 }
 
 var proxyAddressEnumeratorObject *gi.Object
@@ -21026,6 +21266,11 @@ func (recv *SimpleAction) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// Action returns the Action interface implemented by SimpleAction
+func (recv *SimpleAction) Action() *Action {
+	return ActionNewFromNative(recv.Native())
+}
+
 var simpleActionGroupObject *gi.Object
 var simpleActionGroupObject_Once sync.Once
 
@@ -21146,6 +21391,16 @@ func (recv *SimpleActionGroup) Remove(actionName string) {
 	}
 
 	return
+}
+
+// ActionGroup returns the ActionGroup interface implemented by SimpleActionGroup
+func (recv *SimpleActionGroup) ActionGroup() *ActionGroup {
+	return ActionGroupNewFromNative(recv.Native())
+}
+
+// ActionMap returns the ActionMap interface implemented by SimpleActionGroup
+func (recv *SimpleActionGroup) ActionMap() *ActionMap {
+	return ActionMapNewFromNative(recv.Native())
 }
 
 var simpleAsyncResultObject *gi.Object
@@ -21495,6 +21750,11 @@ func (recv *SimpleAsyncResult) SetOpResGssize(opRes int32) {
 
 // UNSUPPORTED : C value 'g_simple_async_result_take_error' : parameter 'error' of type 'GLib.Error' not supported
 
+// AsyncResult returns the AsyncResult interface implemented by SimpleAsyncResult
+func (recv *SimpleAsyncResult) AsyncResult() *AsyncResult {
+	return AsyncResultNewFromNative(recv.Native())
+}
+
 var simpleIOStreamObject *gi.Object
 var simpleIOStreamObject_Once sync.Once
 
@@ -21839,6 +22099,11 @@ func (recv *SimpleProxyResolver) SetUriProxy(uriScheme string, proxy string) {
 	}
 
 	return
+}
+
+// ProxyResolver returns the ProxyResolver interface implemented by SimpleProxyResolver
+func (recv *SimpleProxyResolver) ProxyResolver() *ProxyResolver {
+	return ProxyResolverNewFromNative(recv.Native())
 }
 
 var socketObject *gi.Object
@@ -23338,6 +23603,16 @@ func (recv *Socket) SpeaksIpv4() bool {
 	return retGo
 }
 
+// DatagramBased returns the DatagramBased interface implemented by Socket
+func (recv *Socket) DatagramBased() *DatagramBased {
+	return DatagramBasedNewFromNative(recv.Native())
+}
+
+// Initable returns the Initable interface implemented by Socket
+func (recv *Socket) Initable() *Initable {
+	return InitableNewFromNative(recv.Native())
+}
+
 var socketAddressObject *gi.Object
 var socketAddressObject_Once sync.Once
 
@@ -23474,6 +23749,11 @@ func (recv *SocketAddress) GetNativeSize() int32 {
 }
 
 // UNSUPPORTED : C value 'g_socket_address_to_native' : parameter 'dest' of type 'gpointer' not supported
+
+// SocketConnectable returns the SocketConnectable interface implemented by SocketAddress
+func (recv *SocketAddress) SocketConnectable() *SocketConnectable {
+	return SocketConnectableNewFromNative(recv.Native())
+}
 
 var socketAddressEnumeratorObject *gi.Object
 var socketAddressEnumeratorObject_Once sync.Once
@@ -25885,6 +26165,11 @@ func (recv *Subprocess) WaitCheck(cancellable *Cancellable) bool {
 
 // UNSUPPORTED : C value 'g_subprocess_wait_finish' : parameter 'result' of type 'AsyncResult' not supported
 
+// Initable returns the Initable interface implemented by Subprocess
+func (recv *Subprocess) Initable() *Initable {
+	return InitableNewFromNative(recv.Native())
+}
+
 var subprocessLauncherObject *gi.Object
 var subprocessLauncherObject_Once sync.Once
 
@@ -26889,6 +27174,11 @@ func (recv *Task) SetReturnOnCancel(returnOnCancel bool) bool {
 
 // UNSUPPORTED : C value 'g_task_set_task_data' : parameter 'task_data' of type 'gpointer' not supported
 
+// AsyncResult returns the AsyncResult interface implemented by Task
+func (recv *Task) AsyncResult() *AsyncResult {
+	return AsyncResultNewFromNative(recv.Native())
+}
+
 var tcpConnectionObject *gi.Object
 var tcpConnectionObject_Once sync.Once
 
@@ -27621,6 +27911,11 @@ func (recv *ThemedIcon) PrependName(iconname string) {
 	}
 
 	return
+}
+
+// Icon returns the Icon interface implemented by ThemedIcon
+func (recv *ThemedIcon) Icon() *Icon {
+	return IconNewFromNative(recv.Native())
 }
 
 var threadedSocketServiceObject *gi.Object
@@ -30392,6 +30687,16 @@ func (recv *UnixInputStream) SetCloseFd(closeFd bool) {
 	return
 }
 
+// FileDescriptorBased returns the FileDescriptorBased interface implemented by UnixInputStream
+func (recv *UnixInputStream) FileDescriptorBased() *FileDescriptorBased {
+	return FileDescriptorBasedNewFromNative(recv.Native())
+}
+
+// PollableInputStream returns the PollableInputStream interface implemented by UnixInputStream
+func (recv *UnixInputStream) PollableInputStream() *PollableInputStream {
+	return PollableInputStreamNewFromNative(recv.Native())
+}
+
 var unixMountMonitorObject *gi.Object
 var unixMountMonitorObject_Once sync.Once
 
@@ -30719,6 +31024,16 @@ func (recv *UnixOutputStream) SetCloseFd(closeFd bool) {
 	return
 }
 
+// FileDescriptorBased returns the FileDescriptorBased interface implemented by UnixOutputStream
+func (recv *UnixOutputStream) FileDescriptorBased() *FileDescriptorBased {
+	return FileDescriptorBasedNewFromNative(recv.Native())
+}
+
+// PollableOutputStream returns the PollableOutputStream interface implemented by UnixOutputStream
+func (recv *UnixOutputStream) PollableOutputStream() *PollableOutputStream {
+	return PollableOutputStreamNewFromNative(recv.Native())
+}
+
 var unixSocketAddressObject *gi.Object
 var unixSocketAddressObject_Once sync.Once
 
@@ -30957,6 +31272,11 @@ func (recv *UnixSocketAddress) GetPathLen() uint64 {
 	retGo := ret.Uint64()
 
 	return retGo
+}
+
+// SocketConnectable returns the SocketConnectable interface implemented by UnixSocketAddress
+func (recv *UnixSocketAddress) SocketConnectable() *SocketConnectable {
+	return SocketConnectableNewFromNative(recv.Native())
 }
 
 var vfsObject *gi.Object
@@ -31368,6 +31688,11 @@ func (recv *ZlibCompressor) SetFileInfo(fileInfo *FileInfo) {
 	return
 }
 
+// Converter returns the Converter interface implemented by ZlibCompressor
+func (recv *ZlibCompressor) Converter() *Converter {
+	return ConverterNewFromNative(recv.Native())
+}
+
 var zlibDecompressorObject *gi.Object
 var zlibDecompressorObject_Once sync.Once
 
@@ -31487,4 +31812,9 @@ func (recv *ZlibDecompressor) GetFileInfo() *FileInfo {
 	retGo := FileInfoNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// Converter returns the Converter interface implemented by ZlibDecompressor
+func (recv *ZlibDecompressor) Converter() *Converter {
+	return ConverterNewFromNative(recv.Native())
 }

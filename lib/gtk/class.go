@@ -979,6 +979,16 @@ func (recv *AboutDialog) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by AboutDialog
+func (recv *AboutDialog) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by AboutDialog
+func (recv *AboutDialog) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var accelGroupObject *gi.Object
 var accelGroupObject_Once sync.Once
 
@@ -1471,6 +1481,16 @@ func (recv *AccelLabel) SetAccelWidget(accelWidget *Widget) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by AccelLabel
+func (recv *AccelLabel) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by AccelLabel
+func (recv *AccelLabel) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var accelMapObject *gi.Object
@@ -2949,6 +2969,11 @@ func (recv *Action) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// Buildable returns the Buildable interface implemented by Action
+func (recv *Action) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var actionBarObject *gi.Object
 var actionBarObject_Once sync.Once
 
@@ -3171,6 +3196,16 @@ func (recv *ActionBar) SetCenterWidget(centerWidget *Widget) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ActionBar
+func (recv *ActionBar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ActionBar
+func (recv *ActionBar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var actionGroupObject *gi.Object
@@ -3697,6 +3732,11 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *ActionGroup) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// Buildable returns the Buildable interface implemented by ActionGroup
+func (recv *ActionGroup) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var adjustmentObject *gi.Object
@@ -4574,6 +4614,16 @@ func (recv *Alignment) SetPadding(paddingTop uint32, paddingBottom uint32, paddi
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Alignment
+func (recv *Alignment) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Alignment
+func (recv *Alignment) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var appChooserButtonObject *gi.Object
 var appChooserButtonObject_Once sync.Once
 
@@ -4951,6 +5001,31 @@ func (recv *AppChooserButton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by AppChooserButton
+func (recv *AppChooserButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// AppChooser returns the AppChooser interface implemented by AppChooserButton
+func (recv *AppChooserButton) AppChooser() *AppChooser {
+	return AppChooserNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by AppChooserButton
+func (recv *AppChooserButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// CellEditable returns the CellEditable interface implemented by AppChooserButton
+func (recv *AppChooserButton) CellEditable() *CellEditable {
+	return CellEditableNewFromNative(recv.Native())
+}
+
+// CellLayout returns the CellLayout interface implemented by AppChooserButton
+func (recv *AppChooserButton) CellLayout() *CellLayout {
+	return CellLayoutNewFromNative(recv.Native())
+}
+
 var appChooserDialogObject *gi.Object
 var appChooserDialogObject_Once sync.Once
 
@@ -5145,6 +5220,21 @@ func (recv *AppChooserDialog) SetHeading(heading string) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by AppChooserDialog
+func (recv *AppChooserDialog) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// AppChooser returns the AppChooser interface implemented by AppChooserDialog
+func (recv *AppChooserDialog) AppChooser() *AppChooser {
+	return AppChooserNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by AppChooserDialog
+func (recv *AppChooserDialog) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var appChooserWidgetObject *gi.Object
@@ -5641,6 +5731,26 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *AppChooserWidget) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by AppChooserWidget
+func (recv *AppChooserWidget) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// AppChooser returns the AppChooser interface implemented by AppChooserWidget
+func (recv *AppChooserWidget) AppChooser() *AppChooser {
+	return AppChooserNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by AppChooserWidget
+func (recv *AppChooserWidget) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by AppChooserWidget
+func (recv *AppChooserWidget) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var applicationObject *gi.Object
@@ -6165,6 +6275,16 @@ func (recv *Application) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// GioActionGroup returns the Gio.ActionGroup interface implemented by Application
+func (recv *Application) GioActionGroup() *gio.ActionGroup {
+	return gio.ActionGroupNewFromNative(recv.Native())
+}
+
+// GioActionMap returns the Gio.ActionMap interface implemented by Application
+func (recv *Application) GioActionMap() *gio.ActionMap {
+	return gio.ActionMapNewFromNative(recv.Native())
+}
+
 var applicationWindowObject *gi.Object
 var applicationWindowObject_Once sync.Once
 
@@ -6445,6 +6565,26 @@ func (recv *ApplicationWindow) SetShowMenubar(showMenubar bool) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ApplicationWindow
+func (recv *ApplicationWindow) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// GioActionGroup returns the Gio.ActionGroup interface implemented by ApplicationWindow
+func (recv *ApplicationWindow) GioActionGroup() *gio.ActionGroup {
+	return gio.ActionGroupNewFromNative(recv.Native())
+}
+
+// GioActionMap returns the Gio.ActionMap interface implemented by ApplicationWindow
+func (recv *ApplicationWindow) GioActionMap() *gio.ActionMap {
+	return gio.ActionMapNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ApplicationWindow
+func (recv *ApplicationWindow) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var arrowObject *gi.Object
 var arrowObject_Once sync.Once
 
@@ -6592,6 +6732,16 @@ func (recv *Arrow) Set(arrowType ArrowType, shadowType ShadowType) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Arrow
+func (recv *Arrow) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Arrow
+func (recv *Arrow) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var arrowAccessibleObject *gi.Object
 var arrowAccessibleObject_Once sync.Once
 
@@ -6688,6 +6838,16 @@ func (recv *ArrowAccessible) SetFieldPriv(value *ArrowAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(arrowAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ArrowAccessible
+func (recv *ArrowAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkImage returns the Atk.Image interface implemented by ArrowAccessible
+func (recv *ArrowAccessible) AtkImage() *atk.Image {
+	return atk.ImageNewFromNative(recv.Native())
 }
 
 var aspectFrameObject *gi.Object
@@ -6850,6 +7010,16 @@ func (recv *AspectFrame) Set(xalign float32, yalign float32, ratio float32, obey
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by AspectFrame
+func (recv *AspectFrame) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by AspectFrame
+func (recv *AspectFrame) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var assistantObject *gi.Object
@@ -7790,6 +7960,16 @@ func (recv *Assistant) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Assistant
+func (recv *Assistant) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Assistant
+func (recv *Assistant) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var binObject *gi.Object
 var binObject_Once sync.Once
 
@@ -7906,6 +8086,16 @@ func (recv *Bin) GetChild() *Widget {
 	return retGo
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Bin
+func (recv *Bin) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Bin
+func (recv *Bin) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var booleanCellAccessibleObject *gi.Object
 var booleanCellAccessibleObject_Once sync.Once
 
@@ -8007,6 +8197,21 @@ func (recv *BooleanCellAccessible) SetFieldPriv(value *BooleanCellAccessiblePriv
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(booleanCellAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by BooleanCellAccessible
+func (recv *BooleanCellAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by BooleanCellAccessible
+func (recv *BooleanCellAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkTableCell returns the Atk.TableCell interface implemented by BooleanCellAccessible
+func (recv *BooleanCellAccessible) AtkTableCell() *atk.TableCell {
+	return atk.TableCellNewFromNative(recv.Native())
 }
 
 var boxObject *gi.Object
@@ -8531,6 +8736,21 @@ func (recv *Box) SetSpacing(spacing int32) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Box
+func (recv *Box) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Box
+func (recv *Box) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by Box
+func (recv *Box) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var builderObject *gi.Object
@@ -10028,6 +10248,26 @@ func (recv *Button) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Button
+func (recv *Button) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by Button
+func (recv *Button) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by Button
+func (recv *Button) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Button
+func (recv *Button) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var buttonAccessibleObject *gi.Object
 var buttonAccessibleObject_Once sync.Once
 
@@ -10129,6 +10369,21 @@ func (recv *ButtonAccessible) SetFieldPriv(value *ButtonAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(buttonAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by ButtonAccessible
+func (recv *ButtonAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ButtonAccessible
+func (recv *ButtonAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkImage returns the Atk.Image interface implemented by ButtonAccessible
+func (recv *ButtonAccessible) AtkImage() *atk.Image {
+	return atk.ImageNewFromNative(recv.Native())
 }
 
 var buttonBoxObject *gi.Object
@@ -10437,6 +10692,21 @@ func (recv *ButtonBox) SetLayout(layoutStyle ButtonBoxStyle) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ButtonBox
+func (recv *ButtonBox) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ButtonBox
+func (recv *ButtonBox) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by ButtonBox
+func (recv *ButtonBox) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var calendarObject *gi.Object
@@ -10911,6 +11181,16 @@ func (recv *Calendar) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Calendar
+func (recv *Calendar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Calendar
+func (recv *Calendar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var cellAccessibleObject *gi.Object
 var cellAccessibleObject_Once sync.Once
 
@@ -11002,6 +11282,21 @@ func (recv *CellAccessible) SetFieldPriv(value *CellAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(cellAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by CellAccessible
+func (recv *CellAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by CellAccessible
+func (recv *CellAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkTableCell returns the Atk.TableCell interface implemented by CellAccessible
+func (recv *CellAccessible) AtkTableCell() *atk.TableCell {
+	return atk.TableCellNewFromNative(recv.Native())
 }
 
 var cellAreaObject *gi.Object
@@ -11919,6 +12214,16 @@ func (recv *CellArea) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// Buildable returns the Buildable interface implemented by CellArea
+func (recv *CellArea) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// CellLayout returns the CellLayout interface implemented by CellArea
+func (recv *CellArea) CellLayout() *CellLayout {
+	return CellLayoutNewFromNative(recv.Native())
+}
+
 var cellAreaBoxObject *gi.Object
 var cellAreaBoxObject_Once sync.Once
 
@@ -12137,6 +12442,21 @@ func (recv *CellAreaBox) SetSpacing(spacing int32) {
 	}
 
 	return
+}
+
+// Buildable returns the Buildable interface implemented by CellAreaBox
+func (recv *CellAreaBox) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// CellLayout returns the CellLayout interface implemented by CellAreaBox
+func (recv *CellAreaBox) CellLayout() *CellLayout {
+	return CellLayoutNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by CellAreaBox
+func (recv *CellAreaBox) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var cellAreaContextObject *gi.Object
@@ -13646,6 +13966,11 @@ func CellRendererProgressNew() *CellRendererProgress {
 	return retGo
 }
 
+// Orientable returns the Orientable interface implemented by CellRendererProgress
+func (recv *CellRendererProgress) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var cellRendererSpinObject *gi.Object
 var cellRendererSpinObject_Once sync.Once
 
@@ -14781,6 +15106,26 @@ func (recv *CellView) SetFitModel(fitModel bool) {
 
 // UNSUPPORTED : C value 'gtk_cell_view_set_model' : parameter 'model' of type 'TreeModel' not supported
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by CellView
+func (recv *CellView) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by CellView
+func (recv *CellView) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// CellLayout returns the CellLayout interface implemented by CellView
+func (recv *CellView) CellLayout() *CellLayout {
+	return CellLayoutNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by CellView
+func (recv *CellView) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var checkButtonObject *gi.Object
 var checkButtonObject_Once sync.Once
 
@@ -14972,6 +15317,26 @@ func CheckButtonNewWithMnemonic(label string) *CheckButton {
 	retGo := CheckButtonNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by CheckButton
+func (recv *CheckButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by CheckButton
+func (recv *CheckButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by CheckButton
+func (recv *CheckButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by CheckButton
+func (recv *CheckButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var checkMenuItemObject *gi.Object
@@ -15382,6 +15747,26 @@ func (recv *CheckMenuItem) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by CheckMenuItem
+func (recv *CheckMenuItem) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by CheckMenuItem
+func (recv *CheckMenuItem) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by CheckMenuItem
+func (recv *CheckMenuItem) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by CheckMenuItem
+func (recv *CheckMenuItem) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var checkMenuItemAccessibleObject *gi.Object
 var checkMenuItemAccessibleObject_Once sync.Once
 
@@ -15488,6 +15873,21 @@ func (recv *CheckMenuItemAccessible) SetFieldPriv(value *CheckMenuItemAccessible
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(checkMenuItemAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by CheckMenuItemAccessible
+func (recv *CheckMenuItemAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by CheckMenuItemAccessible
+func (recv *CheckMenuItemAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkSelection returns the Atk.Selection interface implemented by CheckMenuItemAccessible
+func (recv *CheckMenuItemAccessible) AtkSelection() *atk.Selection {
+	return atk.SelectionNewFromNative(recv.Native())
 }
 
 var clipboardObject *gi.Object
@@ -16310,6 +16710,31 @@ func (recv *ColorButton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ColorButton
+func (recv *ColorButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by ColorButton
+func (recv *ColorButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by ColorButton
+func (recv *ColorButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ColorButton
+func (recv *ColorButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// ColorChooser returns the ColorChooser interface implemented by ColorButton
+func (recv *ColorButton) ColorChooser() *ColorChooser {
+	return ColorChooserNewFromNative(recv.Native())
+}
+
 var colorChooserDialogObject *gi.Object
 var colorChooserDialogObject_Once sync.Once
 
@@ -16442,6 +16867,21 @@ func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {
 	return retGo
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ColorChooserDialog
+func (recv *ColorChooserDialog) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ColorChooserDialog
+func (recv *ColorChooserDialog) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// ColorChooser returns the ColorChooser interface implemented by ColorChooserDialog
+func (recv *ColorChooserDialog) ColorChooser() *ColorChooser {
+	return ColorChooserNewFromNative(recv.Native())
+}
+
 var colorChooserWidgetObject *gi.Object
 var colorChooserWidgetObject_Once sync.Once
 
@@ -16559,6 +16999,26 @@ func ColorChooserWidgetNew() *ColorChooserWidget {
 	retGo := ColorChooserWidgetNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ColorChooserWidget
+func (recv *ColorChooserWidget) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ColorChooserWidget
+func (recv *ColorChooserWidget) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// ColorChooser returns the ColorChooser interface implemented by ColorChooserWidget
+func (recv *ColorChooserWidget) ColorChooser() *ColorChooser {
+	return ColorChooserNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by ColorChooserWidget
+func (recv *ColorChooserWidget) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var colorSelectionObject *gi.Object
@@ -16981,6 +17441,21 @@ func (recv *ColorSelection) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ColorSelection
+func (recv *ColorSelection) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ColorSelection
+func (recv *ColorSelection) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by ColorSelection
+func (recv *ColorSelection) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var colorSelectionDialogObject *gi.Object
 var colorSelectionDialogObject_Once sync.Once
 
@@ -17142,6 +17617,16 @@ func (recv *ColorSelectionDialog) GetColorSelection() *Widget {
 	retGo := WidgetNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ColorSelectionDialog
+func (recv *ColorSelectionDialog) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ColorSelectionDialog
+func (recv *ColorSelectionDialog) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var comboBoxObject *gi.Object
@@ -18326,6 +18811,26 @@ func (recv *ComboBox) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ComboBox
+func (recv *ComboBox) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ComboBox
+func (recv *ComboBox) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// CellEditable returns the CellEditable interface implemented by ComboBox
+func (recv *ComboBox) CellEditable() *CellEditable {
+	return CellEditableNewFromNative(recv.Native())
+}
+
+// CellLayout returns the CellLayout interface implemented by ComboBox
+func (recv *ComboBox) CellLayout() *CellLayout {
+	return CellLayoutNewFromNative(recv.Native())
+}
+
 var comboBoxAccessibleObject *gi.Object
 var comboBoxAccessibleObject_Once sync.Once
 
@@ -18427,6 +18932,21 @@ func (recv *ComboBoxAccessible) SetFieldPriv(value *ComboBoxAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(comboBoxAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by ComboBoxAccessible
+func (recv *ComboBoxAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ComboBoxAccessible
+func (recv *ComboBoxAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkSelection returns the Atk.Selection interface implemented by ComboBoxAccessible
+func (recv *ComboBoxAccessible) AtkSelection() *atk.Selection {
+	return atk.SelectionNewFromNative(recv.Native())
 }
 
 var comboBoxTextObject *gi.Object
@@ -18835,6 +19355,26 @@ func (recv *ComboBoxText) RemoveAll() {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ComboBoxText
+func (recv *ComboBoxText) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ComboBoxText
+func (recv *ComboBoxText) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// CellEditable returns the CellEditable interface implemented by ComboBoxText
+func (recv *ComboBoxText) CellEditable() *CellEditable {
+	return CellEditableNewFromNative(recv.Native())
+}
+
+// CellLayout returns the CellLayout interface implemented by ComboBoxText
+func (recv *ComboBoxText) CellLayout() *CellLayout {
+	return CellLayoutNewFromNative(recv.Native())
 }
 
 var containerObject *gi.Object
@@ -19522,6 +20062,16 @@ func (recv *Container) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Container
+func (recv *Container) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Container
+func (recv *Container) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var containerAccessibleObject *gi.Object
 var containerAccessibleObject_Once sync.Once
 
@@ -19618,6 +20168,11 @@ func (recv *ContainerAccessible) SetFieldPriv(value *ContainerAccessiblePrivate)
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(containerAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ContainerAccessible
+func (recv *ContainerAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var containerCellAccessibleObject *gi.Object
@@ -19808,6 +20363,21 @@ func (recv *ContainerCellAccessible) RemoveChild(child *CellAccessible) {
 	}
 
 	return
+}
+
+// AtkAction returns the Atk.Action interface implemented by ContainerCellAccessible
+func (recv *ContainerCellAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ContainerCellAccessible
+func (recv *ContainerCellAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkTableCell returns the Atk.TableCell interface implemented by ContainerCellAccessible
+func (recv *ContainerCellAccessible) AtkTableCell() *atk.TableCell {
+	return atk.TableCellNewFromNative(recv.Native())
 }
 
 var cssProviderObject *gi.Object
@@ -20030,6 +20600,11 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *CssProvider) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// StyleProvider returns the StyleProvider interface implemented by CssProvider
+func (recv *CssProvider) StyleProvider() *StyleProvider {
+	return StyleProviderNewFromNative(recv.Native())
 }
 
 var dialogObject *gi.Object
@@ -20519,6 +21094,16 @@ func (recv *Dialog) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Dialog
+func (recv *Dialog) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Dialog
+func (recv *Dialog) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var drawingAreaObject *gi.Object
 var drawingAreaObject_Once sync.Once
 
@@ -20626,6 +21211,16 @@ func DrawingAreaNew() *DrawingArea {
 	retGo := DrawingAreaNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by DrawingArea
+func (recv *DrawingArea) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by DrawingArea
+func (recv *DrawingArea) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var entryObject *gi.Object
@@ -22644,6 +23239,26 @@ func (recv *Entry) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Entry
+func (recv *Entry) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Entry
+func (recv *Entry) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// CellEditable returns the CellEditable interface implemented by Entry
+func (recv *Entry) CellEditable() *CellEditable {
+	return CellEditableNewFromNative(recv.Native())
+}
+
+// Editable returns the Editable interface implemented by Entry
+func (recv *Entry) Editable() *Editable {
+	return EditableNewFromNative(recv.Native())
+}
+
 var entryAccessibleObject *gi.Object
 var entryAccessibleObject_Once sync.Once
 
@@ -22740,6 +23355,26 @@ func (recv *EntryAccessible) SetFieldPriv(value *EntryAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(entryAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by EntryAccessible
+func (recv *EntryAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by EntryAccessible
+func (recv *EntryAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkEditableText returns the Atk.EditableText interface implemented by EntryAccessible
+func (recv *EntryAccessible) AtkEditableText() *atk.EditableText {
+	return atk.EditableTextNewFromNative(recv.Native())
+}
+
+// AtkText returns the Atk.Text interface implemented by EntryAccessible
+func (recv *EntryAccessible) AtkText() *atk.Text {
+	return atk.TextNewFromNative(recv.Native())
 }
 
 var entryBufferObject *gi.Object
@@ -23991,6 +24626,16 @@ func (recv *EntryCompletion) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// Buildable returns the Buildable interface implemented by EntryCompletion
+func (recv *EntryCompletion) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// CellLayout returns the CellLayout interface implemented by EntryCompletion
+func (recv *EntryCompletion) CellLayout() *CellLayout {
+	return CellLayoutNewFromNative(recv.Native())
+}
+
 var entryIconAccessibleObject *gi.Object
 var entryIconAccessibleObject_Once sync.Once
 
@@ -24049,6 +24694,16 @@ func (recv *EntryIconAccessible) Equals(other *EntryIconAccessible) bool {
 
 func (recv *EntryIconAccessible) Native() unsafe.Pointer {
 	return recv.native
+}
+
+// AtkAction returns the Atk.Action interface implemented by EntryIconAccessible
+func (recv *EntryIconAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by EntryIconAccessible
+func (recv *EntryIconAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var eventBoxObject *gi.Object
@@ -24290,6 +24945,16 @@ func (recv *EventBox) SetVisibleWindow(visibleWindow bool) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by EventBox
+func (recv *EventBox) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by EventBox
+func (recv *EventBox) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var eventControllerObject *gi.Object
@@ -25541,6 +26206,16 @@ func (recv *Expander) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Expander
+func (recv *Expander) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Expander
+func (recv *Expander) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var expanderAccessibleObject *gi.Object
 var expanderAccessibleObject_Once sync.Once
 
@@ -25642,6 +26317,16 @@ func (recv *ExpanderAccessible) SetFieldPriv(value *ExpanderAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(expanderAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by ExpanderAccessible
+func (recv *ExpanderAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ExpanderAccessible
+func (recv *ExpanderAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var fileChooserButtonObject *gi.Object
@@ -25990,6 +26675,26 @@ func (recv *FileChooserButton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by FileChooserButton
+func (recv *FileChooserButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by FileChooserButton
+func (recv *FileChooserButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// FileChooser returns the FileChooser interface implemented by FileChooserButton
+func (recv *FileChooserButton) FileChooser() *FileChooser {
+	return FileChooserNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by FileChooserButton
+func (recv *FileChooserButton) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var fileChooserDialogObject *gi.Object
 var fileChooserDialogObject_Once sync.Once
 
@@ -26104,6 +26809,21 @@ func (recv *FileChooserDialog) SetFieldPriv(value *FileChooserDialogPrivate) {
 }
 
 // UNSUPPORTED : C value 'gtk_file_chooser_dialog_new' : parameter '...' of type 'nil' not supported
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by FileChooserDialog
+func (recv *FileChooserDialog) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by FileChooserDialog
+func (recv *FileChooserDialog) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// FileChooser returns the FileChooser interface implemented by FileChooserDialog
+func (recv *FileChooserDialog) FileChooser() *FileChooser {
+	return FileChooserNewFromNative(recv.Native())
+}
 
 var fileChooserNativeObject *gi.Object
 var fileChooserNativeObject_Once sync.Once
@@ -26325,6 +27045,11 @@ func (recv *FileChooserNative) SetCancelLabel(cancelLabel string) {
 	return
 }
 
+// FileChooser returns the FileChooser interface implemented by FileChooserNative
+func (recv *FileChooserNative) FileChooser() *FileChooser {
+	return FileChooserNewFromNative(recv.Native())
+}
+
 var fileChooserWidgetObject *gi.Object
 var fileChooserWidgetObject_Once sync.Once
 
@@ -26467,6 +27192,26 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *FileChooserWidget) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by FileChooserWidget
+func (recv *FileChooserWidget) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by FileChooserWidget
+func (recv *FileChooserWidget) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// FileChooser returns the FileChooser interface implemented by FileChooserWidget
+func (recv *FileChooserWidget) FileChooser() *FileChooser {
+	return FileChooserNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by FileChooserWidget
+func (recv *FileChooserWidget) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var fileFilterObject *gi.Object
@@ -26747,6 +27492,11 @@ func (recv *FileFilter) SetName(name string) {
 
 // UNSUPPORTED : C value 'gtk_file_filter_to_gvariant' : return type 'GLib.Variant' not supported
 
+// Buildable returns the Buildable interface implemented by FileFilter
+func (recv *FileFilter) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var fixedObject *gi.Object
 var fixedObject_Once sync.Once
 
@@ -26921,6 +27671,16 @@ func (recv *Fixed) Put(widget *Widget, x int32, y int32) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Fixed
+func (recv *Fixed) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Fixed
+func (recv *Fixed) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var flowBoxObject *gi.Object
@@ -27808,6 +28568,21 @@ func (recv *FlowBox) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by FlowBox
+func (recv *FlowBox) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by FlowBox
+func (recv *FlowBox) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by FlowBox
+func (recv *FlowBox) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var flowBoxAccessibleObject *gi.Object
 var flowBoxAccessibleObject_Once sync.Once
 
@@ -27909,6 +28684,16 @@ func (recv *FlowBoxAccessible) SetFieldPriv(value *FlowBoxAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(flowBoxAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by FlowBoxAccessible
+func (recv *FlowBoxAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkSelection returns the Atk.Selection interface implemented by FlowBoxAccessible
+func (recv *FlowBoxAccessible) AtkSelection() *atk.Selection {
+	return atk.SelectionNewFromNative(recv.Native())
 }
 
 var flowBoxChildObject *gi.Object
@@ -28131,6 +28916,16 @@ func (recv *FlowBoxChild) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by FlowBoxChild
+func (recv *FlowBoxChild) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by FlowBoxChild
+func (recv *FlowBoxChild) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var flowBoxChildAccessibleObject *gi.Object
 var flowBoxChildAccessibleObject_Once sync.Once
 
@@ -28218,6 +29013,11 @@ func (recv *FlowBoxChildAccessible) SetFieldParent(value *ContainerAccessible) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(flowBoxChildAccessibleObject, recv.Native(), "parent", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by FlowBoxChildAccessible
+func (recv *FlowBoxChildAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var fontButtonObject *gi.Object
@@ -28755,6 +29555,31 @@ func (recv *FontButton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by FontButton
+func (recv *FontButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by FontButton
+func (recv *FontButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by FontButton
+func (recv *FontButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by FontButton
+func (recv *FontButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// FontChooser returns the FontChooser interface implemented by FontButton
+func (recv *FontButton) FontChooser() *FontChooser {
+	return FontChooserNewFromNative(recv.Native())
+}
+
 var fontChooserDialogObject *gi.Object
 var fontChooserDialogObject_Once sync.Once
 
@@ -28887,6 +29712,21 @@ func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
 	return retGo
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by FontChooserDialog
+func (recv *FontChooserDialog) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by FontChooserDialog
+func (recv *FontChooserDialog) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// FontChooser returns the FontChooser interface implemented by FontChooserDialog
+func (recv *FontChooserDialog) FontChooser() *FontChooser {
+	return FontChooserNewFromNative(recv.Native())
+}
+
 var fontChooserWidgetObject *gi.Object
 var fontChooserWidgetObject_Once sync.Once
 
@@ -29004,6 +29844,26 @@ func FontChooserWidgetNew() *FontChooserWidget {
 	retGo := FontChooserWidgetNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by FontChooserWidget
+func (recv *FontChooserWidget) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by FontChooserWidget
+func (recv *FontChooserWidget) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// FontChooser returns the FontChooser interface implemented by FontChooserWidget
+func (recv *FontChooserWidget) FontChooser() *FontChooser {
+	return FontChooserNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by FontChooserWidget
+func (recv *FontChooserWidget) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var fontSelectionObject *gi.Object
@@ -29507,6 +30367,21 @@ func (recv *FontSelection) SetPreviewText(text string) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by FontSelection
+func (recv *FontSelection) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by FontSelection
+func (recv *FontSelection) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by FontSelection
+func (recv *FontSelection) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var fontSelectionDialogObject *gi.Object
 var fontSelectionDialogObject_Once sync.Once
 
@@ -29858,6 +30733,16 @@ func (recv *FontSelectionDialog) SetPreviewText(text string) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by FontSelectionDialog
+func (recv *FontSelectionDialog) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by FontSelectionDialog
+func (recv *FontSelectionDialog) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var frameObject *gi.Object
@@ -30227,6 +31112,16 @@ func (recv *Frame) SetShadowType(type_ ShadowType) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Frame
+func (recv *Frame) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Frame
+func (recv *Frame) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var frameAccessibleObject *gi.Object
 var frameAccessibleObject_Once sync.Once
 
@@ -30328,6 +31223,11 @@ func (recv *FrameAccessible) SetFieldPriv(value *FrameAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(frameAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by FrameAccessible
+func (recv *FrameAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var gLAreaObject *gi.Object
@@ -30920,6 +31820,16 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *GLArea) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by GLArea
+func (recv *GLArea) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by GLArea
+func (recv *GLArea) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var gestureObject *gi.Object
@@ -33490,6 +34400,21 @@ func (recv *Grid) SetRowSpacing(spacing uint32) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Grid
+func (recv *Grid) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Grid
+func (recv *Grid) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by Grid
+func (recv *Grid) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var hBoxObject *gi.Object
 var hBoxObject_Once sync.Once
 
@@ -33610,6 +34535,21 @@ func HBoxNew(homogeneous bool, spacing int32) *HBox {
 	retGo := HBoxNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by HBox
+func (recv *HBox) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by HBox
+func (recv *HBox) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by HBox
+func (recv *HBox) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var hButtonBoxObject *gi.Object
@@ -33736,6 +34676,21 @@ func HButtonBoxNew() *HButtonBox {
 	return retGo
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by HButtonBox
+func (recv *HButtonBox) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by HButtonBox
+func (recv *HButtonBox) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by HButtonBox
+func (recv *HButtonBox) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var hPanedObject *gi.Object
 var hPanedObject_Once sync.Once
 
@@ -33853,6 +34808,21 @@ func HPanedNew() *HPaned {
 	retGo := HPanedNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by HPaned
+func (recv *HPaned) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by HPaned
+func (recv *HPaned) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by HPaned
+func (recv *HPaned) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var hSVObject *gi.Object
@@ -34133,6 +35103,16 @@ func (recv *HSV) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by HSV
+func (recv *HSV) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by HSV
+func (recv *HSV) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var hScaleObject *gi.Object
 var hScaleObject_Once sync.Once
 
@@ -34288,6 +35268,21 @@ func HScaleNewWithRange(min float64, max float64, step float64) *HScale {
 	return retGo
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by HScale
+func (recv *HScale) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by HScale
+func (recv *HScale) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by HScale
+func (recv *HScale) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var hScrollbarObject *gi.Object
 var hScrollbarObject_Once sync.Once
 
@@ -34409,6 +35404,21 @@ func HScrollbarNew(adjustment *Adjustment) *HScrollbar {
 	return retGo
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by HScrollbar
+func (recv *HScrollbar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by HScrollbar
+func (recv *HScrollbar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by HScrollbar
+func (recv *HScrollbar) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var hSeparatorObject *gi.Object
 var hSeparatorObject_Once sync.Once
 
@@ -34521,6 +35531,21 @@ func HSeparatorNew() *HSeparator {
 	retGo := HSeparatorNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by HSeparator
+func (recv *HSeparator) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by HSeparator
+func (recv *HSeparator) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by HSeparator
+func (recv *HSeparator) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var handleBoxObject *gi.Object
@@ -34864,6 +35889,16 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *HandleBox) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by HandleBox
+func (recv *HandleBox) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by HandleBox
+func (recv *HandleBox) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var headerBarObject *gi.Object
@@ -35404,6 +36439,16 @@ func (recv *HeaderBar) SetTitle(title string) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by HeaderBar
+func (recv *HeaderBar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by HeaderBar
+func (recv *HeaderBar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var headerBarAccessibleObject *gi.Object
 var headerBarAccessibleObject_Once sync.Once
 
@@ -35491,6 +36536,11 @@ func (recv *HeaderBarAccessible) SetFieldParent(value *ContainerAccessible) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(headerBarAccessibleObject, recv.Native(), "parent", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by HeaderBarAccessible
+func (recv *HeaderBarAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var iMContextObject *gi.Object
@@ -36370,6 +37420,11 @@ func (recv *IconFactory) RemoveDefault() {
 	}
 
 	return
+}
+
+// Buildable returns the Buildable interface implemented by IconFactory
+func (recv *IconFactory) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var iconInfoObject *gi.Object
@@ -39047,6 +40102,26 @@ func (recv *IconView) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by IconView
+func (recv *IconView) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by IconView
+func (recv *IconView) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// CellLayout returns the CellLayout interface implemented by IconView
+func (recv *IconView) CellLayout() *CellLayout {
+	return CellLayoutNewFromNative(recv.Native())
+}
+
+// Scrollable returns the Scrollable interface implemented by IconView
+func (recv *IconView) Scrollable() *Scrollable {
+	return ScrollableNewFromNative(recv.Native())
+}
+
 var iconViewAccessibleObject *gi.Object
 var iconViewAccessibleObject_Once sync.Once
 
@@ -39148,6 +40223,16 @@ func (recv *IconViewAccessible) SetFieldPriv(value *IconViewAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(iconViewAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by IconViewAccessible
+func (recv *IconViewAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkSelection returns the Atk.Selection interface implemented by IconViewAccessible
+func (recv *IconViewAccessible) AtkSelection() *atk.Selection {
+	return atk.SelectionNewFromNative(recv.Native())
 }
 
 var imageObject *gi.Object
@@ -39991,6 +41076,16 @@ func (recv *Image) SetPixelSize(pixelSize int32) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Image
+func (recv *Image) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Image
+func (recv *Image) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var imageAccessibleObject *gi.Object
 var imageAccessibleObject_Once sync.Once
 
@@ -40087,6 +41182,16 @@ func (recv *ImageAccessible) SetFieldPriv(value *ImageAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(imageAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ImageAccessible
+func (recv *ImageAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkImage returns the Atk.Image interface implemented by ImageAccessible
+func (recv *ImageAccessible) AtkImage() *atk.Image {
+	return atk.ImageNewFromNative(recv.Native())
 }
 
 var imageCellAccessibleObject *gi.Object
@@ -40190,6 +41295,26 @@ func (recv *ImageCellAccessible) SetFieldPriv(value *ImageCellAccessiblePrivate)
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(imageCellAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by ImageCellAccessible
+func (recv *ImageCellAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ImageCellAccessible
+func (recv *ImageCellAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkImage returns the Atk.Image interface implemented by ImageCellAccessible
+func (recv *ImageCellAccessible) AtkImage() *atk.Image {
+	return atk.ImageNewFromNative(recv.Native())
+}
+
+// AtkTableCell returns the Atk.TableCell interface implemented by ImageCellAccessible
+func (recv *ImageCellAccessible) AtkTableCell() *atk.TableCell {
+	return atk.TableCellNewFromNative(recv.Native())
 }
 
 var imageMenuItemObject *gi.Object
@@ -40623,6 +41748,26 @@ func (recv *ImageMenuItem) SetUseStock(useStock bool) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ImageMenuItem
+func (recv *ImageMenuItem) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by ImageMenuItem
+func (recv *ImageMenuItem) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by ImageMenuItem
+func (recv *ImageMenuItem) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ImageMenuItem
+func (recv *ImageMenuItem) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var infoBarObject *gi.Object
@@ -41156,6 +42301,21 @@ func (recv *InfoBar) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by InfoBar
+func (recv *InfoBar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by InfoBar
+func (recv *InfoBar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by InfoBar
+func (recv *InfoBar) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var invisibleObject *gi.Object
 var invisibleObject_Once sync.Once
 
@@ -41356,6 +42516,16 @@ func (recv *Invisible) SetScreen(screen *gdk.Screen) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Invisible
+func (recv *Invisible) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Invisible
+func (recv *Invisible) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var labelObject *gi.Object
@@ -42813,6 +43983,16 @@ func (recv *Label) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Label
+func (recv *Label) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Label
+func (recv *Label) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var labelAccessibleObject *gi.Object
 var labelAccessibleObject_Once sync.Once
 
@@ -42909,6 +44089,21 @@ func (recv *LabelAccessible) SetFieldPriv(value *LabelAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(labelAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by LabelAccessible
+func (recv *LabelAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkHypertext returns the Atk.Hypertext interface implemented by LabelAccessible
+func (recv *LabelAccessible) AtkHypertext() *atk.Hypertext {
+	return atk.HypertextNewFromNative(recv.Native())
+}
+
+// AtkText returns the Atk.Text interface implemented by LabelAccessible
+func (recv *LabelAccessible) AtkText() *atk.Text {
+	return atk.TextNewFromNative(recv.Native())
 }
 
 var layoutObject *gi.Object
@@ -43305,6 +44500,21 @@ func (recv *Layout) SetVadjustment(adjustment *Adjustment) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Layout
+func (recv *Layout) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Layout
+func (recv *Layout) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Scrollable returns the Scrollable interface implemented by Layout
+func (recv *Layout) Scrollable() *Scrollable {
+	return ScrollableNewFromNative(recv.Native())
 }
 
 var levelBarObject *gi.Object
@@ -43843,6 +45053,21 @@ func (recv *LevelBar) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by LevelBar
+func (recv *LevelBar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by LevelBar
+func (recv *LevelBar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by LevelBar
+func (recv *LevelBar) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var levelBarAccessibleObject *gi.Object
 var levelBarAccessibleObject_Once sync.Once
 
@@ -43939,6 +45164,16 @@ func (recv *LevelBarAccessible) SetFieldPriv(value *LevelBarAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(levelBarAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by LevelBarAccessible
+func (recv *LevelBarAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkValue returns the Atk.Value interface implemented by LevelBarAccessible
+func (recv *LevelBarAccessible) AtkValue() *atk.Value {
+	return atk.ValueNewFromNative(recv.Native())
 }
 
 var linkButtonObject *gi.Object
@@ -44217,6 +45452,26 @@ func (recv *LinkButton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by LinkButton
+func (recv *LinkButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by LinkButton
+func (recv *LinkButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by LinkButton
+func (recv *LinkButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by LinkButton
+func (recv *LinkButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var linkButtonAccessibleObject *gi.Object
 var linkButtonAccessibleObject_Once sync.Once
 
@@ -44323,6 +45578,26 @@ func (recv *LinkButtonAccessible) SetFieldPriv(value *LinkButtonAccessiblePrivat
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(linkButtonAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by LinkButtonAccessible
+func (recv *LinkButtonAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by LinkButtonAccessible
+func (recv *LinkButtonAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkHyperlinkImpl returns the Atk.HyperlinkImpl interface implemented by LinkButtonAccessible
+func (recv *LinkButtonAccessible) AtkHyperlinkImpl() *atk.HyperlinkImpl {
+	return atk.HyperlinkImplNewFromNative(recv.Native())
+}
+
+// AtkImage returns the Atk.Image interface implemented by LinkButtonAccessible
+func (recv *LinkButtonAccessible) AtkImage() *atk.Image {
+	return atk.ImageNewFromNative(recv.Native())
 }
 
 var listBoxObject *gi.Object
@@ -45084,6 +46359,16 @@ func (recv *ListBox) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ListBox
+func (recv *ListBox) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ListBox
+func (recv *ListBox) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var listBoxAccessibleObject *gi.Object
 var listBoxAccessibleObject_Once sync.Once
 
@@ -45185,6 +46470,16 @@ func (recv *ListBoxAccessible) SetFieldPriv(value *ListBoxAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(listBoxAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ListBoxAccessible
+func (recv *ListBoxAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkSelection returns the Atk.Selection interface implemented by ListBoxAccessible
+func (recv *ListBoxAccessible) AtkSelection() *atk.Selection {
+	return atk.SelectionNewFromNative(recv.Native())
 }
 
 var listBoxRowObject *gi.Object
@@ -45590,6 +46885,21 @@ func (recv *ListBoxRow) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ListBoxRow
+func (recv *ListBoxRow) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by ListBoxRow
+func (recv *ListBoxRow) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ListBoxRow
+func (recv *ListBoxRow) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var listBoxRowAccessibleObject *gi.Object
 var listBoxRowAccessibleObject_Once sync.Once
 
@@ -45677,6 +46987,11 @@ func (recv *ListBoxRowAccessible) SetFieldParent(value *ContainerAccessible) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(listBoxRowAccessibleObject, recv.Native(), "parent", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ListBoxRowAccessible
+func (recv *ListBoxRowAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var listStoreObject *gi.Object
@@ -46115,6 +47430,31 @@ func (recv *ListStore) Swap(a *TreeIter, b *TreeIter) {
 	return
 }
 
+// Buildable returns the Buildable interface implemented by ListStore
+func (recv *ListStore) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// TreeDragDest returns the TreeDragDest interface implemented by ListStore
+func (recv *ListStore) TreeDragDest() *TreeDragDest {
+	return TreeDragDestNewFromNative(recv.Native())
+}
+
+// TreeDragSource returns the TreeDragSource interface implemented by ListStore
+func (recv *ListStore) TreeDragSource() *TreeDragSource {
+	return TreeDragSourceNewFromNative(recv.Native())
+}
+
+// TreeModel returns the TreeModel interface implemented by ListStore
+func (recv *ListStore) TreeModel() *TreeModel {
+	return TreeModelNewFromNative(recv.Native())
+}
+
+// TreeSortable returns the TreeSortable interface implemented by ListStore
+func (recv *ListStore) TreeSortable() *TreeSortable {
+	return TreeSortableNewFromNative(recv.Native())
+}
+
 var lockButtonObject *gi.Object
 var lockButtonObject_Once sync.Once
 
@@ -46316,6 +47656,26 @@ func (recv *LockButton) SetPermission(permission *gio.Permission) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by LockButton
+func (recv *LockButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by LockButton
+func (recv *LockButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by LockButton
+func (recv *LockButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by LockButton
+func (recv *LockButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var lockButtonAccessibleObject *gi.Object
 var lockButtonAccessibleObject_Once sync.Once
 
@@ -46422,6 +47782,21 @@ func (recv *LockButtonAccessible) SetFieldPriv(value *LockButtonAccessiblePrivat
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(lockButtonAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by LockButtonAccessible
+func (recv *LockButtonAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by LockButtonAccessible
+func (recv *LockButtonAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkImage returns the Atk.Image interface implemented by LockButtonAccessible
+func (recv *LockButtonAccessible) AtkImage() *atk.Image {
+	return atk.ImageNewFromNative(recv.Native())
 }
 
 var menuObject *gi.Object
@@ -47260,6 +48635,16 @@ func (recv *Menu) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Menu
+func (recv *Menu) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Menu
+func (recv *Menu) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var menuAccessibleObject *gi.Object
 var menuAccessibleObject_Once sync.Once
 
@@ -47366,6 +48751,16 @@ func (recv *MenuAccessible) SetFieldPriv(value *MenuAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(menuAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by MenuAccessible
+func (recv *MenuAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkSelection returns the Atk.Selection interface implemented by MenuAccessible
+func (recv *MenuAccessible) AtkSelection() *atk.Selection {
+	return atk.SelectionNewFromNative(recv.Native())
 }
 
 var menuBarObject *gi.Object
@@ -47639,6 +49034,16 @@ func (recv *MenuBar) SetPackDirection(packDir PackDirection) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by MenuBar
+func (recv *MenuBar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by MenuBar
+func (recv *MenuBar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var menuButtonObject *gi.Object
@@ -48136,6 +49541,26 @@ func (recv *MenuButton) SetUsePopover(usePopover bool) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by MenuButton
+func (recv *MenuButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by MenuButton
+func (recv *MenuButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by MenuButton
+func (recv *MenuButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by MenuButton
+func (recv *MenuButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var menuButtonAccessibleObject *gi.Object
 var menuButtonAccessibleObject_Once sync.Once
 
@@ -48247,6 +49672,21 @@ func (recv *MenuButtonAccessible) SetFieldPriv(value *MenuButtonAccessiblePrivat
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(menuButtonAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by MenuButtonAccessible
+func (recv *MenuButtonAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by MenuButtonAccessible
+func (recv *MenuButtonAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkImage returns the Atk.Image interface implemented by MenuButtonAccessible
+func (recv *MenuButtonAccessible) AtkImage() *atk.Image {
+	return atk.ImageNewFromNative(recv.Native())
 }
 
 var menuItemObject *gi.Object
@@ -48953,6 +50393,26 @@ func (recv *MenuItem) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by MenuItem
+func (recv *MenuItem) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by MenuItem
+func (recv *MenuItem) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by MenuItem
+func (recv *MenuItem) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by MenuItem
+func (recv *MenuItem) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var menuItemAccessibleObject *gi.Object
 var menuItemAccessibleObject_Once sync.Once
 
@@ -49054,6 +50514,21 @@ func (recv *MenuItemAccessible) SetFieldPriv(value *MenuItemAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(menuItemAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by MenuItemAccessible
+func (recv *MenuItemAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by MenuItemAccessible
+func (recv *MenuItemAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkSelection returns the Atk.Selection interface implemented by MenuItemAccessible
+func (recv *MenuItemAccessible) AtkSelection() *atk.Selection {
+	return atk.SelectionNewFromNative(recv.Native())
 }
 
 var menuShellObject *gi.Object
@@ -49565,6 +51040,16 @@ func (recv *MenuShell) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by MenuShell
+func (recv *MenuShell) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by MenuShell
+func (recv *MenuShell) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var menuShellAccessibleObject *gi.Object
 var menuShellAccessibleObject_Once sync.Once
 
@@ -49666,6 +51151,16 @@ func (recv *MenuShellAccessible) SetFieldPriv(value *MenuShellAccessiblePrivate)
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(menuShellAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by MenuShellAccessible
+func (recv *MenuShellAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkSelection returns the Atk.Selection interface implemented by MenuShellAccessible
+func (recv *MenuShellAccessible) AtkSelection() *atk.Selection {
+	return atk.SelectionNewFromNative(recv.Native())
 }
 
 var menuToolButtonObject *gi.Object
@@ -49960,6 +51455,26 @@ func (recv *MenuToolButton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by MenuToolButton
+func (recv *MenuToolButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by MenuToolButton
+func (recv *MenuToolButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by MenuToolButton
+func (recv *MenuToolButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by MenuToolButton
+func (recv *MenuToolButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var messageDialogObject *gi.Object
 var messageDialogObject_Once sync.Once
 
@@ -50189,6 +51704,16 @@ func (recv *MessageDialog) SetMarkup(str string) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by MessageDialog
+func (recv *MessageDialog) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by MessageDialog
+func (recv *MessageDialog) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var miscObject *gi.Object
 var miscObject_Once sync.Once
 
@@ -50394,6 +51919,16 @@ func (recv *Misc) SetPadding(xpad int32, ypad int32) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Misc
+func (recv *Misc) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Misc
+func (recv *Misc) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var modelButtonObject *gi.Object
 var modelButtonObject_Once sync.Once
 
@@ -50502,6 +52037,26 @@ func ModelButtonNew() *ModelButton {
 	retGo := ModelButtonNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ModelButton
+func (recv *ModelButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by ModelButton
+func (recv *ModelButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by ModelButton
+func (recv *ModelButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ModelButton
+func (recv *ModelButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var mountOperationObject *gi.Object
@@ -52676,6 +54231,16 @@ func (recv *Notebook) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Notebook
+func (recv *Notebook) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Notebook
+func (recv *Notebook) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var notebookAccessibleObject *gi.Object
 var notebookAccessibleObject_Once sync.Once
 
@@ -52777,6 +54342,16 @@ func (recv *NotebookAccessible) SetFieldPriv(value *NotebookAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(notebookAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by NotebookAccessible
+func (recv *NotebookAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkSelection returns the Atk.Selection interface implemented by NotebookAccessible
+func (recv *NotebookAccessible) AtkSelection() *atk.Selection {
+	return atk.SelectionNewFromNative(recv.Native())
 }
 
 var notebookPageAccessibleObject *gi.Object
@@ -52928,6 +54503,11 @@ func (recv *NotebookPageAccessible) Invalidate() {
 	}
 
 	return
+}
+
+// AtkComponent returns the Atk.Component interface implemented by NotebookPageAccessible
+func (recv *NotebookPageAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var numerableIconObject *gi.Object
@@ -53252,6 +54832,11 @@ func (recv *NumerableIcon) SetStyleContext(style *StyleContext) {
 	return
 }
 
+// GioIcon returns the Gio.Icon interface implemented by NumerableIcon
+func (recv *NumerableIcon) GioIcon() *gio.Icon {
+	return gio.IconNewFromNative(recv.Native())
+}
+
 var offscreenWindowObject *gi.Object
 var offscreenWindowObject_Once sync.Once
 
@@ -53409,6 +54994,16 @@ func (recv *OffscreenWindow) GetPixbuf() *gdkpixbuf.Pixbuf {
 }
 
 // UNSUPPORTED : C value 'gtk_offscreen_window_get_surface' : return type 'cairo.Surface' not supported
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by OffscreenWindow
+func (recv *OffscreenWindow) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by OffscreenWindow
+func (recv *OffscreenWindow) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
 
 var overlayObject *gi.Object
 var overlayObject_Once sync.Once
@@ -53672,6 +55267,16 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *Overlay) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Overlay
+func (recv *Overlay) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Overlay
+func (recv *Overlay) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var padControllerObject *gi.Object
@@ -54998,6 +56603,21 @@ func (recv *Paned) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Paned
+func (recv *Paned) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Paned
+func (recv *Paned) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by Paned
+func (recv *Paned) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var panedAccessibleObject *gi.Object
 var panedAccessibleObject_Once sync.Once
 
@@ -55099,6 +56719,16 @@ func (recv *PanedAccessible) SetFieldPriv(value *PanedAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(panedAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by PanedAccessible
+func (recv *PanedAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkValue returns the Atk.Value interface implemented by PanedAccessible
+func (recv *PanedAccessible) AtkValue() *atk.Value {
+	return atk.ValueNewFromNative(recv.Native())
 }
 
 var placesSidebarObject *gi.Object
@@ -55754,6 +57384,16 @@ func (recv *PlacesSidebar) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by PlacesSidebar
+func (recv *PlacesSidebar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by PlacesSidebar
+func (recv *PlacesSidebar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var plugObject *gi.Object
 var plugObject_Once sync.Once
 
@@ -56089,6 +57729,16 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *Plug) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Plug
+func (recv *Plug) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Plug
+func (recv *Plug) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var popoverObject *gi.Object
@@ -56710,6 +58360,16 @@ func (recv *Popover) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Popover
+func (recv *Popover) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Popover
+func (recv *Popover) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var popoverAccessibleObject *gi.Object
 var popoverAccessibleObject_Once sync.Once
 
@@ -56797,6 +58457,11 @@ func (recv *PopoverAccessible) SetFieldParent(value *ContainerAccessible) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(popoverAccessibleObject, recv.Native(), "parent", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by PopoverAccessible
+func (recv *PopoverAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var popoverMenuObject *gi.Object
@@ -56936,6 +58601,16 @@ func (recv *PopoverMenu) OpenSubmenu(name string) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by PopoverMenu
+func (recv *PopoverMenu) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by PopoverMenu
+func (recv *PopoverMenu) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var printContextObject *gi.Object
@@ -58267,6 +59942,11 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *PrintOperation) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// PrintOperationPreview returns the PrintOperationPreview interface implemented by PrintOperation
+func (recv *PrintOperation) PrintOperationPreview() *PrintOperationPreview {
+	return PrintOperationPreviewNewFromNative(recv.Native())
 }
 
 var printSettingsObject *gi.Object
@@ -60928,6 +62608,21 @@ func (recv *ProgressBar) SetText(text string) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ProgressBar
+func (recv *ProgressBar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ProgressBar
+func (recv *ProgressBar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by ProgressBar
+func (recv *ProgressBar) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var progressBarAccessibleObject *gi.Object
 var progressBarAccessibleObject_Once sync.Once
 
@@ -61024,6 +62719,16 @@ func (recv *ProgressBarAccessible) SetFieldPriv(value *ProgressBarAccessiblePriv
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(progressBarAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ProgressBarAccessible
+func (recv *ProgressBarAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkValue returns the Atk.Value interface implemented by ProgressBarAccessible
+func (recv *ProgressBarAccessible) AtkValue() *atk.Value {
+	return atk.ValueNewFromNative(recv.Native())
 }
 
 var radioActionObject *gi.Object
@@ -61244,6 +62949,11 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *RadioAction) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// Buildable returns the Buildable interface implemented by RadioAction
+func (recv *RadioAction) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var radioButtonObject *gi.Object
@@ -61496,6 +63206,26 @@ func (recv *RadioButton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by RadioButton
+func (recv *RadioButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by RadioButton
+func (recv *RadioButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by RadioButton
+func (recv *RadioButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by RadioButton
+func (recv *RadioButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var radioButtonAccessibleObject *gi.Object
 var radioButtonAccessibleObject_Once sync.Once
 
@@ -61607,6 +63337,21 @@ func (recv *RadioButtonAccessible) SetFieldPriv(value *RadioButtonAccessiblePriv
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(radioButtonAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by RadioButtonAccessible
+func (recv *RadioButtonAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by RadioButtonAccessible
+func (recv *RadioButtonAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkImage returns the Atk.Image interface implemented by RadioButtonAccessible
+func (recv *RadioButtonAccessible) AtkImage() *atk.Image {
+	return atk.ImageNewFromNative(recv.Native())
 }
 
 var radioMenuItemObject *gi.Object
@@ -61854,6 +63599,26 @@ func (recv *RadioMenuItem) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by RadioMenuItem
+func (recv *RadioMenuItem) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by RadioMenuItem
+func (recv *RadioMenuItem) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by RadioMenuItem
+func (recv *RadioMenuItem) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by RadioMenuItem
+func (recv *RadioMenuItem) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var radioMenuItemAccessibleObject *gi.Object
 var radioMenuItemAccessibleObject_Once sync.Once
 
@@ -61965,6 +63730,21 @@ func (recv *RadioMenuItemAccessible) SetFieldPriv(value *RadioMenuItemAccessible
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(radioMenuItemAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by RadioMenuItemAccessible
+func (recv *RadioMenuItemAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by RadioMenuItemAccessible
+func (recv *RadioMenuItemAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkSelection returns the Atk.Selection interface implemented by RadioMenuItemAccessible
+func (recv *RadioMenuItemAccessible) AtkSelection() *atk.Selection {
+	return atk.SelectionNewFromNative(recv.Native())
 }
 
 var radioToolButtonObject *gi.Object
@@ -62143,6 +63923,26 @@ func RadioToolButtonNewWithStockFromWidget(group *RadioToolButton, stockId strin
 // UNSUPPORTED : C value 'gtk_radio_tool_button_get_group' : return type 'GLib.SList' not supported
 
 // UNSUPPORTED : C value 'gtk_radio_tool_button_set_group' : parameter 'group' of type 'GLib.SList' not supported
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by RadioToolButton
+func (recv *RadioToolButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by RadioToolButton
+func (recv *RadioToolButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by RadioToolButton
+func (recv *RadioToolButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by RadioToolButton
+func (recv *RadioToolButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
 
 var rangeObject *gi.Object
 var rangeObject_Once sync.Once
@@ -63073,6 +64873,21 @@ func (recv *Range) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Range
+func (recv *Range) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Range
+func (recv *Range) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by Range
+func (recv *Range) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var rangeAccessibleObject *gi.Object
 var rangeAccessibleObject_Once sync.Once
 
@@ -63169,6 +64984,16 @@ func (recv *RangeAccessible) SetFieldPriv(value *RangeAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(rangeAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by RangeAccessible
+func (recv *RangeAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkValue returns the Atk.Value interface implemented by RangeAccessible
+func (recv *RangeAccessible) AtkValue() *atk.Value {
+	return atk.ValueNewFromNative(recv.Native())
 }
 
 var rcStyleObject *gi.Object
@@ -63584,6 +65409,16 @@ func (recv *RecentAction) SetShowNumbers(showNumbers bool) {
 	return
 }
 
+// Buildable returns the Buildable interface implemented by RecentAction
+func (recv *RecentAction) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// RecentChooser returns the RecentChooser interface implemented by RecentAction
+func (recv *RecentAction) RecentChooser() *RecentChooser {
+	return RecentChooserNewFromNative(recv.Native())
+}
+
 var recentChooserDialogObject *gi.Object
 var recentChooserDialogObject_Once sync.Once
 
@@ -63686,6 +65521,21 @@ func (recv *RecentChooserDialog) SetFieldParentInstance(value *Dialog) {
 // UNSUPPORTED : C value 'gtk_recent_chooser_dialog_new' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gtk_recent_chooser_dialog_new_for_manager' : parameter '...' of type 'nil' not supported
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by RecentChooserDialog
+func (recv *RecentChooserDialog) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by RecentChooserDialog
+func (recv *RecentChooserDialog) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// RecentChooser returns the RecentChooser interface implemented by RecentChooserDialog
+func (recv *RecentChooserDialog) RecentChooser() *RecentChooser {
+	return RecentChooserNewFromNative(recv.Native())
+}
 
 var recentChooserMenuObject *gi.Object
 var recentChooserMenuObject_Once sync.Once
@@ -63904,6 +65754,26 @@ func (recv *RecentChooserMenu) SetShowNumbers(showNumbers bool) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by RecentChooserMenu
+func (recv *RecentChooserMenu) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by RecentChooserMenu
+func (recv *RecentChooserMenu) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by RecentChooserMenu
+func (recv *RecentChooserMenu) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// RecentChooser returns the RecentChooser interface implemented by RecentChooserMenu
+func (recv *RecentChooserMenu) RecentChooser() *RecentChooser {
+	return RecentChooserNewFromNative(recv.Native())
+}
+
 var recentChooserWidgetObject *gi.Object
 var recentChooserWidgetObject_Once sync.Once
 
@@ -64053,6 +65923,26 @@ func RecentChooserWidgetNewForManager(manager *RecentManager) *RecentChooserWidg
 	retGo := RecentChooserWidgetNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by RecentChooserWidget
+func (recv *RecentChooserWidget) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by RecentChooserWidget
+func (recv *RecentChooserWidget) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by RecentChooserWidget
+func (recv *RecentChooserWidget) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
+// RecentChooser returns the RecentChooser interface implemented by RecentChooserWidget
+func (recv *RecentChooserWidget) RecentChooser() *RecentChooser {
+	return RecentChooserNewFromNative(recv.Native())
 }
 
 var recentFilterObject *gi.Object
@@ -64414,6 +66304,11 @@ func (recv *RecentFilter) SetName(name string) {
 	}
 
 	return
+}
+
+// Buildable returns the Buildable interface implemented by RecentFilter
+func (recv *RecentFilter) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var recentManagerObject *gi.Object
@@ -64878,6 +66773,21 @@ func RendererCellAccessibleNew(renderer *CellRenderer) *RendererCellAccessible {
 	return retGo
 }
 
+// AtkAction returns the Atk.Action interface implemented by RendererCellAccessible
+func (recv *RendererCellAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by RendererCellAccessible
+func (recv *RendererCellAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkTableCell returns the Atk.TableCell interface implemented by RendererCellAccessible
+func (recv *RendererCellAccessible) AtkTableCell() *atk.TableCell {
+	return atk.TableCellNewFromNative(recv.Native())
+}
+
 var revealerObject *gi.Object
 var revealerObject_Once sync.Once
 
@@ -65210,6 +67120,16 @@ func (recv *Revealer) SetTransitionType(transition RevealerTransitionType) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Revealer
+func (recv *Revealer) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Revealer
+func (recv *Revealer) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var scaleObject *gi.Object
@@ -65741,6 +67661,21 @@ func (recv *Scale) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Scale
+func (recv *Scale) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Scale
+func (recv *Scale) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by Scale
+func (recv *Scale) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var scaleAccessibleObject *gi.Object
 var scaleAccessibleObject_Once sync.Once
 
@@ -65842,6 +67777,16 @@ func (recv *ScaleAccessible) SetFieldPriv(value *ScaleAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(scaleAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ScaleAccessible
+func (recv *ScaleAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkValue returns the Atk.Value interface implemented by ScaleAccessible
+func (recv *ScaleAccessible) AtkValue() *atk.Value {
+	return atk.ValueNewFromNative(recv.Native())
 }
 
 var scaleButtonObject *gi.Object
@@ -66169,6 +68114,31 @@ func (recv *ScaleButton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ScaleButton
+func (recv *ScaleButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by ScaleButton
+func (recv *ScaleButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by ScaleButton
+func (recv *ScaleButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ScaleButton
+func (recv *ScaleButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by ScaleButton
+func (recv *ScaleButton) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var scaleButtonAccessibleObject *gi.Object
 var scaleButtonAccessibleObject_Once sync.Once
 
@@ -66275,6 +68245,26 @@ func (recv *ScaleButtonAccessible) SetFieldPriv(value *ScaleButtonAccessiblePriv
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(scaleButtonAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by ScaleButtonAccessible
+func (recv *ScaleButtonAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ScaleButtonAccessible
+func (recv *ScaleButtonAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkImage returns the Atk.Image interface implemented by ScaleButtonAccessible
+func (recv *ScaleButtonAccessible) AtkImage() *atk.Image {
+	return atk.ImageNewFromNative(recv.Native())
+}
+
+// AtkValue returns the Atk.Value interface implemented by ScaleButtonAccessible
+func (recv *ScaleButtonAccessible) AtkValue() *atk.Value {
+	return atk.ValueNewFromNative(recv.Native())
 }
 
 var scrollbarObject *gi.Object
@@ -66392,6 +68382,21 @@ func ScrollbarNew(orientation Orientation, adjustment *Adjustment) *Scrollbar {
 	retGo := ScrollbarNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Scrollbar
+func (recv *Scrollbar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Scrollbar
+func (recv *Scrollbar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by Scrollbar
+func (recv *Scrollbar) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var scrolledWindowObject *gi.Object
@@ -67516,6 +69521,16 @@ func (recv *ScrolledWindow) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ScrolledWindow
+func (recv *ScrolledWindow) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ScrolledWindow
+func (recv *ScrolledWindow) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var scrolledWindowAccessibleObject *gi.Object
 var scrolledWindowAccessibleObject_Once sync.Once
 
@@ -67617,6 +69632,11 @@ func (recv *ScrolledWindowAccessible) SetFieldPriv(value *ScrolledWindowAccessib
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(scrolledWindowAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ScrolledWindowAccessible
+func (recv *ScrolledWindowAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var searchBarObject *gi.Object
@@ -67877,6 +69897,16 @@ func (recv *SearchBar) SetShowCloseButton(visible bool) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by SearchBar
+func (recv *SearchBar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by SearchBar
+func (recv *SearchBar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var searchEntryObject *gi.Object
 var searchEntryObject_Once sync.Once
 
@@ -68000,6 +70030,26 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *SearchEntry) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by SearchEntry
+func (recv *SearchEntry) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by SearchEntry
+func (recv *SearchEntry) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// CellEditable returns the CellEditable interface implemented by SearchEntry
+func (recv *SearchEntry) CellEditable() *CellEditable {
+	return CellEditableNewFromNative(recv.Native())
+}
+
+// Editable returns the Editable interface implemented by SearchEntry
+func (recv *SearchEntry) Editable() *Editable {
+	return EditableNewFromNative(recv.Native())
 }
 
 var separatorObject *gi.Object
@@ -68127,6 +70177,21 @@ func SeparatorNew(orientation Orientation) *Separator {
 	return retGo
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Separator
+func (recv *Separator) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Separator
+func (recv *Separator) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by Separator
+func (recv *Separator) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var separatorMenuItemObject *gi.Object
 var separatorMenuItemObject_Once sync.Once
 
@@ -68249,6 +70314,26 @@ func SeparatorMenuItemNew() *SeparatorMenuItem {
 	retGo := SeparatorMenuItemNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by SeparatorMenuItem
+func (recv *SeparatorMenuItem) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by SeparatorMenuItem
+func (recv *SeparatorMenuItem) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by SeparatorMenuItem
+func (recv *SeparatorMenuItem) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by SeparatorMenuItem
+func (recv *SeparatorMenuItem) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var separatorToolItemObject *gi.Object
@@ -68434,6 +70519,21 @@ func (recv *SeparatorToolItem) SetDraw(draw bool) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by SeparatorToolItem
+func (recv *SeparatorToolItem) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by SeparatorToolItem
+func (recv *SeparatorToolItem) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by SeparatorToolItem
+func (recv *SeparatorToolItem) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var settingsObject *gi.Object
@@ -68655,6 +70755,11 @@ func (recv *Settings) SetStringProperty(name string, vString string, origin stri
 	}
 
 	return
+}
+
+// StyleProvider returns the StyleProvider interface implemented by Settings
+func (recv *Settings) StyleProvider() *StyleProvider {
+	return StyleProviderNewFromNative(recv.Native())
 }
 
 var shortcutLabelObject *gi.Object
@@ -68886,6 +70991,21 @@ func (recv *ShortcutLabel) SetDisabledText(disabledText string) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ShortcutLabel
+func (recv *ShortcutLabel) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ShortcutLabel
+func (recv *ShortcutLabel) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by ShortcutLabel
+func (recv *ShortcutLabel) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var shortcutsGroupObject *gi.Object
 var shortcutsGroupObject_Once sync.Once
 
@@ -68959,6 +71079,21 @@ func (recv *ShortcutsGroup) Equals(other *ShortcutsGroup) bool {
 
 func (recv *ShortcutsGroup) Native() unsafe.Pointer {
 	return recv.native
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ShortcutsGroup
+func (recv *ShortcutsGroup) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ShortcutsGroup
+func (recv *ShortcutsGroup) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by ShortcutsGroup
+func (recv *ShortcutsGroup) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var shortcutsSectionObject *gi.Object
@@ -69045,6 +71180,21 @@ func (recv *ShortcutsSection) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ShortcutsSection
+func (recv *ShortcutsSection) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ShortcutsSection
+func (recv *ShortcutsSection) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by ShortcutsSection
+func (recv *ShortcutsSection) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var shortcutsShortcutObject *gi.Object
 var shortcutsShortcutObject_Once sync.Once
 
@@ -69118,6 +71268,21 @@ func (recv *ShortcutsShortcut) Equals(other *ShortcutsShortcut) bool {
 
 func (recv *ShortcutsShortcut) Native() unsafe.Pointer {
 	return recv.native
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ShortcutsShortcut
+func (recv *ShortcutsShortcut) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ShortcutsShortcut
+func (recv *ShortcutsShortcut) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by ShortcutsShortcut
+func (recv *ShortcutsShortcut) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var shortcutsWindowObject *gi.Object
@@ -69221,6 +71386,16 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *ShortcutsWindow) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ShortcutsWindow
+func (recv *ShortcutsWindow) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ShortcutsWindow
+func (recv *ShortcutsWindow) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var sizeGroupObject *gi.Object
@@ -69508,6 +71683,11 @@ func (recv *SizeGroup) SetMode(mode SizeGroupMode) {
 	return
 }
 
+// Buildable returns the Buildable interface implemented by SizeGroup
+func (recv *SizeGroup) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var socketObject *gi.Object
 var socketObject_Once sync.Once
 
@@ -69736,6 +71916,16 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *Socket) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Socket
+func (recv *Socket) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Socket
+func (recv *Socket) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var spinButtonObject *gi.Object
@@ -70573,6 +72763,31 @@ func (recv *SpinButton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by SpinButton
+func (recv *SpinButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by SpinButton
+func (recv *SpinButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// CellEditable returns the CellEditable interface implemented by SpinButton
+func (recv *SpinButton) CellEditable() *CellEditable {
+	return CellEditableNewFromNative(recv.Native())
+}
+
+// Editable returns the Editable interface implemented by SpinButton
+func (recv *SpinButton) Editable() *Editable {
+	return EditableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by SpinButton
+func (recv *SpinButton) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var spinButtonAccessibleObject *gi.Object
 var spinButtonAccessibleObject_Once sync.Once
 
@@ -70674,6 +72889,31 @@ func (recv *SpinButtonAccessible) SetFieldPriv(value *SpinButtonAccessiblePrivat
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(spinButtonAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by SpinButtonAccessible
+func (recv *SpinButtonAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by SpinButtonAccessible
+func (recv *SpinButtonAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkEditableText returns the Atk.EditableText interface implemented by SpinButtonAccessible
+func (recv *SpinButtonAccessible) AtkEditableText() *atk.EditableText {
+	return atk.EditableTextNewFromNative(recv.Native())
+}
+
+// AtkText returns the Atk.Text interface implemented by SpinButtonAccessible
+func (recv *SpinButtonAccessible) AtkText() *atk.Text {
+	return atk.TextNewFromNative(recv.Native())
+}
+
+// AtkValue returns the Atk.Value interface implemented by SpinButtonAccessible
+func (recv *SpinButtonAccessible) AtkValue() *atk.Value {
+	return atk.ValueNewFromNative(recv.Native())
 }
 
 var spinnerObject *gi.Object
@@ -70841,6 +73081,16 @@ func (recv *Spinner) Stop() {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Spinner
+func (recv *Spinner) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Spinner
+func (recv *Spinner) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var spinnerAccessibleObject *gi.Object
 var spinnerAccessibleObject_Once sync.Once
 
@@ -70937,6 +73187,16 @@ func (recv *SpinnerAccessible) SetFieldPriv(value *SpinnerAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(spinnerAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by SpinnerAccessible
+func (recv *SpinnerAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkImage returns the Atk.Image interface implemented by SpinnerAccessible
+func (recv *SpinnerAccessible) AtkImage() *atk.Image {
+	return atk.ImageNewFromNative(recv.Native())
 }
 
 var stackObject *gi.Object
@@ -71697,6 +73957,16 @@ func (recv *Stack) SetVisibleChildName(name string) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Stack
+func (recv *Stack) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Stack
+func (recv *Stack) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var stackAccessibleObject *gi.Object
 var stackAccessibleObject_Once sync.Once
 
@@ -71784,6 +74054,11 @@ func (recv *StackAccessible) SetFieldParent(value *ContainerAccessible) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(stackAccessibleObject, recv.Native(), "parent", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by StackAccessible
+func (recv *StackAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var stackSidebarObject *gi.Object
@@ -71966,6 +74241,16 @@ func (recv *StackSidebar) SetStack(stack *Stack) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by StackSidebar
+func (recv *StackSidebar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by StackSidebar
+func (recv *StackSidebar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var stackSwitcherObject *gi.Object
 var stackSwitcherObject_Once sync.Once
 
@@ -72144,6 +74429,21 @@ func (recv *StackSwitcher) SetStack(stack *Stack) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by StackSwitcher
+func (recv *StackSwitcher) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by StackSwitcher
+func (recv *StackSwitcher) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by StackSwitcher
+func (recv *StackSwitcher) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var statusIconObject *gi.Object
@@ -73464,6 +75764,21 @@ func (recv *Statusbar) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Statusbar
+func (recv *Statusbar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Statusbar
+func (recv *Statusbar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by Statusbar
+func (recv *Statusbar) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var statusbarAccessibleObject *gi.Object
 var statusbarAccessibleObject_Once sync.Once
 
@@ -73565,6 +75880,11 @@ func (recv *StatusbarAccessible) SetFieldPriv(value *StatusbarAccessiblePrivate)
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(statusbarAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by StatusbarAccessible
+func (recv *StatusbarAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var styleObject *gi.Object
@@ -75136,6 +77456,11 @@ func (recv *StyleProperties) Merge(propsToMerge *StyleProperties, replace bool) 
 
 // UNSUPPORTED : C value 'gtk_style_properties_unset_property' : parameter 'state' of type 'StateFlags' not supported
 
+// StyleProvider returns the StyleProvider interface implemented by StyleProperties
+func (recv *StyleProperties) StyleProvider() *StyleProvider {
+	return StyleProviderNewFromNative(recv.Native())
+}
+
 var switchObject *gi.Object
 var switchObject_Once sync.Once
 
@@ -75362,6 +77687,26 @@ func (recv *Switch) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Switch
+func (recv *Switch) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by Switch
+func (recv *Switch) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by Switch
+func (recv *Switch) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Switch
+func (recv *Switch) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var switchAccessibleObject *gi.Object
 var switchAccessibleObject_Once sync.Once
 
@@ -75458,6 +77803,16 @@ func (recv *SwitchAccessible) SetFieldPriv(value *SwitchAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(switchAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by SwitchAccessible
+func (recv *SwitchAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by SwitchAccessible
+func (recv *SwitchAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var tableObject *gi.Object
@@ -75985,6 +78340,16 @@ func (recv *Table) SetRowSpacings(spacing uint32) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Table
+func (recv *Table) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Table
+func (recv *Table) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var tearoffMenuItemObject *gi.Object
 var tearoffMenuItemObject_Once sync.Once
 
@@ -76107,6 +78472,26 @@ func TearoffMenuItemNew() *TearoffMenuItem {
 	retGo := TearoffMenuItemNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by TearoffMenuItem
+func (recv *TearoffMenuItem) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by TearoffMenuItem
+func (recv *TearoffMenuItem) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by TearoffMenuItem
+func (recv *TearoffMenuItem) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by TearoffMenuItem
+func (recv *TearoffMenuItem) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var textBufferObject *gi.Object
@@ -78267,6 +80652,26 @@ func (recv *TextCellAccessible) SetFieldPriv(value *TextCellAccessiblePrivate) {
 	gi.ObjectFieldSet(textCellAccessibleObject, recv.Native(), "priv", argValue)
 }
 
+// AtkAction returns the Atk.Action interface implemented by TextCellAccessible
+func (recv *TextCellAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by TextCellAccessible
+func (recv *TextCellAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkTableCell returns the Atk.TableCell interface implemented by TextCellAccessible
+func (recv *TextCellAccessible) AtkTableCell() *atk.TableCell {
+	return atk.TableCellNewFromNative(recv.Native())
+}
+
+// AtkText returns the Atk.Text interface implemented by TextCellAccessible
+func (recv *TextCellAccessible) AtkText() *atk.Text {
+	return atk.TextNewFromNative(recv.Native())
+}
+
 var textChildAnchorObject *gi.Object
 var textChildAnchorObject_Once sync.Once
 
@@ -79164,6 +81569,11 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *TextTagTable) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// Buildable returns the Buildable interface implemented by TextTagTable
+func (recv *TextTagTable) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var textViewObject *gi.Object
@@ -81324,6 +83734,21 @@ func (recv *TextView) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by TextView
+func (recv *TextView) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by TextView
+func (recv *TextView) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Scrollable returns the Scrollable interface implemented by TextView
+func (recv *TextView) Scrollable() *Scrollable {
+	return ScrollableNewFromNative(recv.Native())
+}
+
 var textViewAccessibleObject *gi.Object
 var textViewAccessibleObject_Once sync.Once
 
@@ -81425,6 +83850,26 @@ func (recv *TextViewAccessible) SetFieldPriv(value *TextViewAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(textViewAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by TextViewAccessible
+func (recv *TextViewAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkEditableText returns the Atk.EditableText interface implemented by TextViewAccessible
+func (recv *TextViewAccessible) AtkEditableText() *atk.EditableText {
+	return atk.EditableTextNewFromNative(recv.Native())
+}
+
+// AtkStreamableContent returns the Atk.StreamableContent interface implemented by TextViewAccessible
+func (recv *TextViewAccessible) AtkStreamableContent() *atk.StreamableContent {
+	return atk.StreamableContentNewFromNative(recv.Native())
+}
+
+// AtkText returns the Atk.Text interface implemented by TextViewAccessible
+func (recv *TextViewAccessible) AtkText() *atk.Text {
+	return atk.TextNewFromNative(recv.Native())
 }
 
 var themingEngineObject *gi.Object
@@ -81978,6 +84423,11 @@ func (recv *ToggleAction) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// Buildable returns the Buildable interface implemented by ToggleAction
+func (recv *ToggleAction) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var toggleButtonObject *gi.Object
 var toggleButtonObject_Once sync.Once
 
@@ -82372,6 +84822,26 @@ func (recv *ToggleButton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ToggleButton
+func (recv *ToggleButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by ToggleButton
+func (recv *ToggleButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by ToggleButton
+func (recv *ToggleButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ToggleButton
+func (recv *ToggleButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var toggleButtonAccessibleObject *gi.Object
 var toggleButtonAccessibleObject_Once sync.Once
 
@@ -82478,6 +84948,21 @@ func (recv *ToggleButtonAccessible) SetFieldPriv(value *ToggleButtonAccessiblePr
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(toggleButtonAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkAction returns the Atk.Action interface implemented by ToggleButtonAccessible
+func (recv *ToggleButtonAccessible) AtkAction() *atk.Action {
+	return atk.ActionNewFromNative(recv.Native())
+}
+
+// AtkComponent returns the Atk.Component interface implemented by ToggleButtonAccessible
+func (recv *ToggleButtonAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkImage returns the Atk.Image interface implemented by ToggleButtonAccessible
+func (recv *ToggleButtonAccessible) AtkImage() *atk.Image {
+	return atk.ImageNewFromNative(recv.Native())
 }
 
 var toggleToolButtonObject *gi.Object
@@ -82709,6 +85194,26 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *ToggleToolButton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ToggleToolButton
+func (recv *ToggleToolButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by ToggleToolButton
+func (recv *ToggleToolButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by ToggleToolButton
+func (recv *ToggleToolButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ToggleToolButton
+func (recv *ToggleToolButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var toolButtonObject *gi.Object
@@ -83243,6 +85748,26 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *ToolButton) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ToolButton
+func (recv *ToolButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by ToolButton
+func (recv *ToolButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by ToolButton
+func (recv *ToolButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ToolButton
+func (recv *ToolButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
 }
 
 var toolItemObject *gi.Object
@@ -84174,6 +86699,21 @@ func (recv *ToolItem) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ToolItem
+func (recv *ToolItem) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by ToolItem
+func (recv *ToolItem) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ToolItem
+func (recv *ToolItem) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var toolItemGroupObject *gi.Object
 var toolItemGroupObject_Once sync.Once
 
@@ -84742,6 +87282,21 @@ func (recv *ToolItemGroup) SetLabelWidget(labelWidget *Widget) {
 	}
 
 	return
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ToolItemGroup
+func (recv *ToolItemGroup) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ToolItemGroup
+func (recv *ToolItemGroup) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// ToolShell returns the ToolShell interface implemented by ToolItemGroup
+func (recv *ToolItemGroup) ToolShell() *ToolShell {
+	return ToolShellNewFromNative(recv.Native())
 }
 
 var toolPaletteObject *gi.Object
@@ -85408,6 +87963,26 @@ func (recv *ToolPalette) UnsetStyle() {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by ToolPalette
+func (recv *ToolPalette) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by ToolPalette
+func (recv *ToolPalette) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by ToolPalette
+func (recv *ToolPalette) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
+// Scrollable returns the Scrollable interface implemented by ToolPalette
+func (recv *ToolPalette) Scrollable() *Scrollable {
+	return ScrollableNewFromNative(recv.Native())
+}
+
 var toolbarObject *gi.Object
 var toolbarObject_Once sync.Once
 
@@ -86006,6 +88581,26 @@ The connectionID should be a value returned from a call to a Connect...() method
 */
 func (recv *Toolbar) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Toolbar
+func (recv *Toolbar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Toolbar
+func (recv *Toolbar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by Toolbar
+func (recv *Toolbar) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
+// ToolShell returns the ToolShell interface implemented by Toolbar
+func (recv *Toolbar) ToolShell() *ToolShell {
+	return ToolShellNewFromNative(recv.Native())
 }
 
 var tooltipObject *gi.Object
@@ -86627,6 +89222,16 @@ func (recv *TreeModelFilter) SetVisibleColumn(column int32) {
 
 // UNSUPPORTED : C value 'gtk_tree_model_filter_set_visible_func' : parameter 'func' of type 'TreeModelFilterVisibleFunc' not supported
 
+// TreeDragSource returns the TreeDragSource interface implemented by TreeModelFilter
+func (recv *TreeModelFilter) TreeDragSource() *TreeDragSource {
+	return TreeDragSourceNewFromNative(recv.Native())
+}
+
+// TreeModel returns the TreeModel interface implemented by TreeModelFilter
+func (recv *TreeModelFilter) TreeModel() *TreeModel {
+	return TreeModelNewFromNative(recv.Native())
+}
+
 var treeModelSortObject *gi.Object
 var treeModelSortObject_Once sync.Once
 
@@ -86919,6 +89524,21 @@ func (recv *TreeModelSort) ResetDefaultSortFunc() {
 	}
 
 	return
+}
+
+// TreeDragSource returns the TreeDragSource interface implemented by TreeModelSort
+func (recv *TreeModelSort) TreeDragSource() *TreeDragSource {
+	return TreeDragSourceNewFromNative(recv.Native())
+}
+
+// TreeModel returns the TreeModel interface implemented by TreeModelSort
+func (recv *TreeModelSort) TreeModel() *TreeModel {
+	return TreeModelNewFromNative(recv.Native())
+}
+
+// TreeSortable returns the TreeSortable interface implemented by TreeModelSort
+func (recv *TreeModelSort) TreeSortable() *TreeSortable {
+	return TreeSortableNewFromNative(recv.Native())
 }
 
 var treeSelectionObject *gi.Object
@@ -87940,6 +90560,31 @@ func (recv *TreeStore) Swap(a *TreeIter, b *TreeIter) {
 	}
 
 	return
+}
+
+// Buildable returns the Buildable interface implemented by TreeStore
+func (recv *TreeStore) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// TreeDragDest returns the TreeDragDest interface implemented by TreeStore
+func (recv *TreeStore) TreeDragDest() *TreeDragDest {
+	return TreeDragDestNewFromNative(recv.Native())
+}
+
+// TreeDragSource returns the TreeDragSource interface implemented by TreeStore
+func (recv *TreeStore) TreeDragSource() *TreeDragSource {
+	return TreeDragSourceNewFromNative(recv.Native())
+}
+
+// TreeModel returns the TreeModel interface implemented by TreeStore
+func (recv *TreeStore) TreeModel() *TreeModel {
+	return TreeModelNewFromNative(recv.Native())
+}
+
+// TreeSortable returns the TreeSortable interface implemented by TreeStore
+func (recv *TreeStore) TreeSortable() *TreeSortable {
+	return TreeSortableNewFromNative(recv.Native())
 }
 
 var treeViewObject *gi.Object
@@ -90563,6 +93208,21 @@ func (recv *TreeView) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by TreeView
+func (recv *TreeView) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by TreeView
+func (recv *TreeView) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Scrollable returns the Scrollable interface implemented by TreeView
+func (recv *TreeView) Scrollable() *Scrollable {
+	return ScrollableNewFromNative(recv.Native())
+}
+
 var treeViewAccessibleObject *gi.Object
 var treeViewAccessibleObject_Once sync.Once
 
@@ -90664,6 +93324,26 @@ func (recv *TreeViewAccessible) SetFieldPriv(value *TreeViewAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(treeViewAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by TreeViewAccessible
+func (recv *TreeViewAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkSelection returns the Atk.Selection interface implemented by TreeViewAccessible
+func (recv *TreeViewAccessible) AtkSelection() *atk.Selection {
+	return atk.SelectionNewFromNative(recv.Native())
+}
+
+// AtkTable returns the Atk.Table interface implemented by TreeViewAccessible
+func (recv *TreeViewAccessible) AtkTable() *atk.Table {
+	return atk.TableNewFromNative(recv.Native())
+}
+
+// CellAccessibleParent returns the CellAccessibleParent interface implemented by TreeViewAccessible
+func (recv *TreeViewAccessible) CellAccessibleParent() *CellAccessibleParent {
+	return CellAccessibleParentNewFromNative(recv.Native())
 }
 
 var treeViewColumnObject *gi.Object
@@ -92240,6 +94920,16 @@ func (recv *TreeViewColumn) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// Buildable returns the Buildable interface implemented by TreeViewColumn
+func (recv *TreeViewColumn) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// CellLayout returns the CellLayout interface implemented by TreeViewColumn
+func (recv *TreeViewColumn) CellLayout() *CellLayout {
+	return CellLayoutNewFromNative(recv.Native())
+}
+
 var uIManagerObject *gi.Object
 var uIManagerObject_Once sync.Once
 
@@ -92795,6 +95485,11 @@ func (recv *UIManager) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// Buildable returns the Buildable interface implemented by UIManager
+func (recv *UIManager) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var vBoxObject *gi.Object
 var vBoxObject_Once sync.Once
 
@@ -92915,6 +95610,21 @@ func VBoxNew(homogeneous bool, spacing int32) *VBox {
 	retGo := VBoxNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by VBox
+func (recv *VBox) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by VBox
+func (recv *VBox) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by VBox
+func (recv *VBox) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var vButtonBoxObject *gi.Object
@@ -93041,6 +95751,21 @@ func VButtonBoxNew() *VButtonBox {
 	return retGo
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by VButtonBox
+func (recv *VButtonBox) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by VButtonBox
+func (recv *VButtonBox) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by VButtonBox
+func (recv *VButtonBox) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var vPanedObject *gi.Object
 var vPanedObject_Once sync.Once
 
@@ -93158,6 +95883,21 @@ func VPanedNew() *VPaned {
 	retGo := VPanedNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by VPaned
+func (recv *VPaned) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by VPaned
+func (recv *VPaned) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by VPaned
+func (recv *VPaned) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var vScaleObject *gi.Object
@@ -93315,6 +96055,21 @@ func VScaleNewWithRange(min float64, max float64, step float64) *VScale {
 	return retGo
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by VScale
+func (recv *VScale) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by VScale
+func (recv *VScale) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by VScale
+func (recv *VScale) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var vScrollbarObject *gi.Object
 var vScrollbarObject_Once sync.Once
 
@@ -93436,6 +96191,21 @@ func VScrollbarNew(adjustment *Adjustment) *VScrollbar {
 	return retGo
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by VScrollbar
+func (recv *VScrollbar) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by VScrollbar
+func (recv *VScrollbar) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by VScrollbar
+func (recv *VScrollbar) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
+}
+
 var vSeparatorObject *gi.Object
 var vSeparatorObject_Once sync.Once
 
@@ -93548,6 +96318,21 @@ func VSeparatorNew() *VSeparator {
 	retGo := VSeparatorNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by VSeparator
+func (recv *VSeparator) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by VSeparator
+func (recv *VSeparator) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by VSeparator
+func (recv *VSeparator) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var viewportObject *gi.Object
@@ -93919,6 +96704,21 @@ func (recv *Viewport) SetVadjustment(adjustment *Adjustment) {
 	return
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Viewport
+func (recv *Viewport) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Viewport
+func (recv *Viewport) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Scrollable returns the Scrollable interface implemented by Viewport
+func (recv *Viewport) Scrollable() *Scrollable {
+	return ScrollableNewFromNative(recv.Native())
+}
+
 var volumeButtonObject *gi.Object
 var volumeButtonObject_Once sync.Once
 
@@ -94046,6 +96846,31 @@ func VolumeButtonNew() *VolumeButton {
 	retGo := VolumeButtonNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by VolumeButton
+func (recv *VolumeButton) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Actionable returns the Actionable interface implemented by VolumeButton
+func (recv *VolumeButton) Actionable() *Actionable {
+	return ActionableNewFromNative(recv.Native())
+}
+
+// Activatable returns the Activatable interface implemented by VolumeButton
+func (recv *VolumeButton) Activatable() *Activatable {
+	return ActivatableNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by VolumeButton
+func (recv *VolumeButton) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
+// Orientable returns the Orientable interface implemented by VolumeButton
+func (recv *VolumeButton) Orientable() *Orientable {
+	return OrientableNewFromNative(recv.Native())
 }
 
 var widgetObject *gi.Object
@@ -100545,6 +103370,16 @@ func (recv *Widget) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Widget
+func (recv *Widget) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Widget
+func (recv *Widget) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var widgetAccessibleObject *gi.Object
 var widgetAccessibleObject_Once sync.Once
 
@@ -100636,6 +103471,11 @@ func (recv *WidgetAccessible) SetFieldPriv(value *WidgetAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(widgetAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by WidgetAccessible
+func (recv *WidgetAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
 }
 
 var windowObject *gi.Object
@@ -103691,6 +106531,16 @@ func (recv *Window) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// AtkImplementorIface returns the Atk.ImplementorIface interface implemented by Window
+func (recv *Window) AtkImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromNative(recv.Native())
+}
+
+// Buildable returns the Buildable interface implemented by Window
+func (recv *Window) Buildable() *Buildable {
+	return BuildableNewFromNative(recv.Native())
+}
+
 var windowAccessibleObject *gi.Object
 var windowAccessibleObject_Once sync.Once
 
@@ -103792,6 +106642,16 @@ func (recv *WindowAccessible) SetFieldPriv(value *WindowAccessiblePrivate) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(windowAccessibleObject, recv.Native(), "priv", argValue)
+}
+
+// AtkComponent returns the Atk.Component interface implemented by WindowAccessible
+func (recv *WindowAccessible) AtkComponent() *atk.Component {
+	return atk.ComponentNewFromNative(recv.Native())
+}
+
+// AtkWindow returns the Atk.Window interface implemented by WindowAccessible
+func (recv *WindowAccessible) AtkWindow() *atk.Window {
+	return atk.WindowNewFromNative(recv.Native())
 }
 
 var windowGroupObject *gi.Object

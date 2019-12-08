@@ -453,6 +453,11 @@ func (recv *Hyperlink) DisconnectSignal(connectionID int) {
 	callback.DisconnectSignal(connectionID)
 }
 
+// Action returns the Action interface implemented by Hyperlink
+func (recv *Hyperlink) Action() *Action {
+	return ActionNewFromNative(recv.Native())
+}
+
 var miscObject *gi.Object
 var miscObject_Once sync.Once
 
@@ -684,6 +689,66 @@ func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	object.RefSink()
 
 	return retGo
+}
+
+// Action returns the Action interface implemented by NoOpObject
+func (recv *NoOpObject) Action() *Action {
+	return ActionNewFromNative(recv.Native())
+}
+
+// Component returns the Component interface implemented by NoOpObject
+func (recv *NoOpObject) Component() *Component {
+	return ComponentNewFromNative(recv.Native())
+}
+
+// Document returns the Document interface implemented by NoOpObject
+func (recv *NoOpObject) Document() *Document {
+	return DocumentNewFromNative(recv.Native())
+}
+
+// EditableText returns the EditableText interface implemented by NoOpObject
+func (recv *NoOpObject) EditableText() *EditableText {
+	return EditableTextNewFromNative(recv.Native())
+}
+
+// Hypertext returns the Hypertext interface implemented by NoOpObject
+func (recv *NoOpObject) Hypertext() *Hypertext {
+	return HypertextNewFromNative(recv.Native())
+}
+
+// Image returns the Image interface implemented by NoOpObject
+func (recv *NoOpObject) Image() *Image {
+	return ImageNewFromNative(recv.Native())
+}
+
+// Selection returns the Selection interface implemented by NoOpObject
+func (recv *NoOpObject) Selection() *Selection {
+	return SelectionNewFromNative(recv.Native())
+}
+
+// Table returns the Table interface implemented by NoOpObject
+func (recv *NoOpObject) Table() *Table {
+	return TableNewFromNative(recv.Native())
+}
+
+// TableCell returns the TableCell interface implemented by NoOpObject
+func (recv *NoOpObject) TableCell() *TableCell {
+	return TableCellNewFromNative(recv.Native())
+}
+
+// Text returns the Text interface implemented by NoOpObject
+func (recv *NoOpObject) Text() *Text {
+	return TextNewFromNative(recv.Native())
+}
+
+// Value returns the Value interface implemented by NoOpObject
+func (recv *NoOpObject) Value() *Value {
+	return ValueNewFromNative(recv.Native())
+}
+
+// Window returns the Window interface implemented by NoOpObject
+func (recv *NoOpObject) Window() *Window {
+	return WindowNewFromNative(recv.Native())
 }
 
 var noOpObjectFactoryObject *gi.Object
@@ -1951,6 +2016,11 @@ func (recv *Plug) GetId() string {
 	return retGo
 }
 
+// Component returns the Component interface implemented by Plug
+func (recv *Plug) Component() *Component {
+	return ComponentNewFromNative(recv.Native())
+}
+
 var registryObject *gi.Object
 var registryObject_Once sync.Once
 
@@ -2768,6 +2838,11 @@ func (recv *Socket) IsOccupied() bool {
 	retGo := ret.Boolean()
 
 	return retGo
+}
+
+// Component returns the Component interface implemented by Socket
+func (recv *Socket) Component() *Component {
+	return ComponentNewFromNative(recv.Native())
 }
 
 var stateSetObject *gi.Object
