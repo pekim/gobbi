@@ -4,6 +4,7 @@ package pango
 
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
@@ -2762,9 +2763,69 @@ func (recv *Layout) GetLineReadonly(line int32) *LayoutLine {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_layout_get_lines' : return type 'GLib.SList' not supported
+var layoutGetLinesFunction *gi.Function
+var layoutGetLinesFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_layout_get_lines_readonly' : return type 'GLib.SList' not supported
+func layoutGetLinesFunction_Set() error {
+	var err error
+	layoutGetLinesFunction_Once.Do(func() {
+		err = layoutObject_Set()
+		if err != nil {
+			return
+		}
+		layoutGetLinesFunction, err = layoutObject.InvokerNew("get_lines")
+	})
+	return err
+}
+
+// GetLines is a representation of the C type pango_layout_get_lines.
+func (recv *Layout) GetLines() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := layoutGetLinesFunction_Set()
+	if err == nil {
+		ret = layoutGetLinesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var layoutGetLinesReadonlyFunction *gi.Function
+var layoutGetLinesReadonlyFunction_Once sync.Once
+
+func layoutGetLinesReadonlyFunction_Set() error {
+	var err error
+	layoutGetLinesReadonlyFunction_Once.Do(func() {
+		err = layoutObject_Set()
+		if err != nil {
+			return
+		}
+		layoutGetLinesReadonlyFunction, err = layoutObject.InvokerNew("get_lines_readonly")
+	})
+	return err
+}
+
+// GetLinesReadonly is a representation of the C type pango_layout_get_lines_readonly.
+func (recv *Layout) GetLinesReadonly() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := layoutGetLinesReadonlyFunction_Set()
+	if err == nil {
+		ret = layoutGetLinesReadonlyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'pango_layout_get_log_attrs' : parameter 'attrs' of type 'nil' not supported
 

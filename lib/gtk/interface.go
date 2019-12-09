@@ -6,6 +6,8 @@ import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	atk "github.com/pekim/gobbi/lib/atk"
+	gdk "github.com/pekim/gobbi/lib/gdk"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
@@ -83,7 +85,37 @@ func (recv *Actionable) GetActionName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_actionable_get_action_target_value' : return type 'GLib.Variant' not supported
+var actionableGetActionTargetValueFunction *gi.Function
+var actionableGetActionTargetValueFunction_Once sync.Once
+
+func actionableGetActionTargetValueFunction_Set() error {
+	var err error
+	actionableGetActionTargetValueFunction_Once.Do(func() {
+		err = actionableInterface_Set()
+		if err != nil {
+			return
+		}
+		actionableGetActionTargetValueFunction, err = actionableInterface.InvokerNew("get_action_target_value")
+	})
+	return err
+}
+
+// GetActionTargetValue is a representation of the C type gtk_actionable_get_action_target_value.
+func (recv *Actionable) GetActionTargetValue() *glib.Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := actionableGetActionTargetValueFunction_Set()
+	if err == nil {
+		ret = actionableGetActionTargetValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var actionableSetActionNameFunction *gi.Function
 var actionableSetActionNameFunction_Once sync.Once
@@ -116,7 +148,34 @@ func (recv *Actionable) SetActionName(actionName string) {
 
 // UNSUPPORTED : C value 'gtk_actionable_set_action_target' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_actionable_set_action_target_value' : parameter 'target_value' of type 'GLib.Variant' not supported
+var actionableSetActionTargetValueFunction *gi.Function
+var actionableSetActionTargetValueFunction_Once sync.Once
+
+func actionableSetActionTargetValueFunction_Set() error {
+	var err error
+	actionableSetActionTargetValueFunction_Once.Do(func() {
+		err = actionableInterface_Set()
+		if err != nil {
+			return
+		}
+		actionableSetActionTargetValueFunction, err = actionableInterface.InvokerNew("set_action_target_value")
+	})
+	return err
+}
+
+// SetActionTargetValue is a representation of the C type gtk_actionable_set_action_target_value.
+func (recv *Actionable) SetActionTargetValue(targetValue *glib.Variant) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(targetValue.Native())
+
+	err := actionableSetActionTargetValueFunction_Set()
+	if err == nil {
+		actionableSetActionTargetValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var actionableSetDetailedActionNameFunction *gi.Function
 var actionableSetDetailedActionNameFunction_Once sync.Once
@@ -575,7 +634,7 @@ func (recv *Buildable) ConstructChild(builder *Builder, name string) *gobject.Ob
 
 // UNSUPPORTED : C value 'gtk_buildable_custom_tag_end' : parameter 'data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'gtk_buildable_custom_tag_start' : parameter 'parser' of type 'GLib.MarkupParser' not supported
+// UNSUPPORTED : C value 'gtk_buildable_custom_tag_start' : parameter 'data' of type 'gpointer' not supported
 
 var buildableGetInternalChildFunction *gi.Function
 var buildableGetInternalChildFunction_Once sync.Once
@@ -672,7 +731,36 @@ func (recv *Buildable) ParserFinished(builder *Builder) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_buildable_set_buildable_property' : parameter 'value' of type 'GObject.Value' not supported
+var buildableSetBuildablePropertyFunction *gi.Function
+var buildableSetBuildablePropertyFunction_Once sync.Once
+
+func buildableSetBuildablePropertyFunction_Set() error {
+	var err error
+	buildableSetBuildablePropertyFunction_Once.Do(func() {
+		err = buildableInterface_Set()
+		if err != nil {
+			return
+		}
+		buildableSetBuildablePropertyFunction, err = buildableInterface.InvokerNew("set_buildable_property")
+	})
+	return err
+}
+
+// SetBuildableProperty is a representation of the C type gtk_buildable_set_buildable_property.
+func (recv *Buildable) SetBuildableProperty(builder *Builder, name string, value *gobject.Value) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(builder.Native())
+	inArgs[2].SetString(name)
+	inArgs[3].SetPointer(value.Native())
+
+	err := buildableSetBuildablePropertyFunction_Set()
+	if err == nil {
+		buildableSetBuildablePropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var buildableSetNameFunction *gi.Function
 var buildableSetNameFunction_Once sync.Once
@@ -829,7 +917,38 @@ func (recv *CellAccessibleParent) ExpandCollapse(cell *CellAccessible) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_cell_accessible_parent_get_cell_area' : parameter 'cell_rect' of type 'Gdk.Rectangle' not supported
+var cellAccessibleParentGetCellAreaFunction *gi.Function
+var cellAccessibleParentGetCellAreaFunction_Once sync.Once
+
+func cellAccessibleParentGetCellAreaFunction_Set() error {
+	var err error
+	cellAccessibleParentGetCellAreaFunction_Once.Do(func() {
+		err = cellAccessibleParentInterface_Set()
+		if err != nil {
+			return
+		}
+		cellAccessibleParentGetCellAreaFunction, err = cellAccessibleParentInterface.InvokerNew("get_cell_area")
+	})
+	return err
+}
+
+// GetCellArea is a representation of the C type gtk_cell_accessible_parent_get_cell_area.
+func (recv *CellAccessibleParent) GetCellArea(cell *CellAccessible) *gdk.Rectangle {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cell.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := cellAccessibleParentGetCellAreaFunction_Set()
+	if err == nil {
+		cellAccessibleParentGetCellAreaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 // UNSUPPORTED : C value 'gtk_cell_accessible_parent_get_cell_extents' : parameter 'coord_type' of type 'Atk.CoordType' not supported
 
@@ -1310,7 +1429,37 @@ func (recv *CellLayout) GetArea() *CellArea {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_cell_layout_get_cells' : return type 'GLib.List' not supported
+var cellLayoutGetCellsFunction *gi.Function
+var cellLayoutGetCellsFunction_Once sync.Once
+
+func cellLayoutGetCellsFunction_Set() error {
+	var err error
+	cellLayoutGetCellsFunction_Once.Do(func() {
+		err = cellLayoutInterface_Set()
+		if err != nil {
+			return
+		}
+		cellLayoutGetCellsFunction, err = cellLayoutInterface.InvokerNew("get_cells")
+	})
+	return err
+}
+
+// GetCells is a representation of the C type gtk_cell_layout_get_cells.
+func (recv *CellLayout) GetCells() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := cellLayoutGetCellsFunction_Set()
+	if err == nil {
+		ret = cellLayoutGetCellsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var cellLayoutPackEndFunction *gi.Function
 var cellLayoutPackEndFunction_Once sync.Once
@@ -1447,7 +1596,37 @@ func (recv *ColorChooser) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'gtk_color_chooser_add_palette' : parameter 'colors' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_color_chooser_get_rgba' : parameter 'color' of type 'Gdk.RGBA' not supported
+var colorChooserGetRgbaFunction *gi.Function
+var colorChooserGetRgbaFunction_Once sync.Once
+
+func colorChooserGetRgbaFunction_Set() error {
+	var err error
+	colorChooserGetRgbaFunction_Once.Do(func() {
+		err = colorChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		colorChooserGetRgbaFunction, err = colorChooserInterface.InvokerNew("get_rgba")
+	})
+	return err
+}
+
+// GetRgba is a representation of the C type gtk_color_chooser_get_rgba.
+func (recv *ColorChooser) GetRgba() *gdk.RGBA {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := colorChooserGetRgbaFunction_Set()
+	if err == nil {
+		colorChooserGetRgbaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RGBANewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var colorChooserGetUseAlphaFunction *gi.Function
 var colorChooserGetUseAlphaFunction_Once sync.Once
@@ -1481,7 +1660,34 @@ func (recv *ColorChooser) GetUseAlpha() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_color_chooser_set_rgba' : parameter 'color' of type 'Gdk.RGBA' not supported
+var colorChooserSetRgbaFunction *gi.Function
+var colorChooserSetRgbaFunction_Once sync.Once
+
+func colorChooserSetRgbaFunction_Set() error {
+	var err error
+	colorChooserSetRgbaFunction_Once.Do(func() {
+		err = colorChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		colorChooserSetRgbaFunction, err = colorChooserInterface.InvokerNew("set_rgba")
+	})
+	return err
+}
+
+// SetRgba is a representation of the C type gtk_color_chooser_set_rgba.
+func (recv *ColorChooser) SetRgba(color *gdk.RGBA) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(color.Native())
+
+	err := colorChooserSetRgbaFunction_Set()
+	if err == nil {
+		colorChooserSetRgbaFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var colorChooserSetUseAlphaFunction *gi.Function
 var colorChooserSetUseAlphaFunction_Once sync.Once
@@ -1512,7 +1718,16 @@ func (recv *ColorChooser) SetUseAlpha(useAlpha bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'color-activated' : parameter 'color' of type 'Gdk.RGBA' not supported
+/*
+ConnectColorActivated connects a callback to the 'color-activated' signal of the ColorChooser.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ColorChooser) ConnectColorActivated(handler func(instance *ColorChooser, color *gdk.RGBA)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "color-activated", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -2431,9 +2646,69 @@ func (recv *FileChooser) GetFilename() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_get_filenames' : return type 'GLib.SList' not supported
+var fileChooserGetFilenamesFunction *gi.Function
+var fileChooserGetFilenamesFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_file_chooser_get_files' : return type 'GLib.SList' not supported
+func fileChooserGetFilenamesFunction_Set() error {
+	var err error
+	fileChooserGetFilenamesFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserGetFilenamesFunction, err = fileChooserInterface.InvokerNew("get_filenames")
+	})
+	return err
+}
+
+// GetFilenames is a representation of the C type gtk_file_chooser_get_filenames.
+func (recv *FileChooser) GetFilenames() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserGetFilenamesFunction_Set()
+	if err == nil {
+		ret = fileChooserGetFilenamesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileChooserGetFilesFunction *gi.Function
+var fileChooserGetFilesFunction_Once sync.Once
+
+func fileChooserGetFilesFunction_Set() error {
+	var err error
+	fileChooserGetFilesFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserGetFilesFunction, err = fileChooserInterface.InvokerNew("get_files")
+	})
+	return err
+}
+
+// GetFiles is a representation of the C type gtk_file_chooser_get_files.
+func (recv *FileChooser) GetFiles() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserGetFilesFunction_Set()
+	if err == nil {
+		ret = fileChooserGetFilesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileChooserGetFilterFunction *gi.Function
 var fileChooserGetFilterFunction_Once sync.Once
@@ -2725,7 +3000,37 @@ func (recv *FileChooser) GetUri() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_get_uris' : return type 'GLib.SList' not supported
+var fileChooserGetUrisFunction *gi.Function
+var fileChooserGetUrisFunction_Once sync.Once
+
+func fileChooserGetUrisFunction_Set() error {
+	var err error
+	fileChooserGetUrisFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserGetUrisFunction, err = fileChooserInterface.InvokerNew("get_uris")
+	})
+	return err
+}
+
+// GetUris is a representation of the C type gtk_file_chooser_get_uris.
+func (recv *FileChooser) GetUris() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserGetUrisFunction_Set()
+	if err == nil {
+		ret = fileChooserGetUrisFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileChooserGetUsePreviewLabelFunction *gi.Function
 var fileChooserGetUsePreviewLabelFunction_Once sync.Once
@@ -2759,11 +3064,101 @@ func (recv *FileChooser) GetUsePreviewLabel() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_list_filters' : return type 'GLib.SList' not supported
+var fileChooserListFiltersFunction *gi.Function
+var fileChooserListFiltersFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_file_chooser_list_shortcut_folder_uris' : return type 'GLib.SList' not supported
+func fileChooserListFiltersFunction_Set() error {
+	var err error
+	fileChooserListFiltersFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserListFiltersFunction, err = fileChooserInterface.InvokerNew("list_filters")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_file_chooser_list_shortcut_folders' : return type 'GLib.SList' not supported
+// ListFilters is a representation of the C type gtk_file_chooser_list_filters.
+func (recv *FileChooser) ListFilters() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserListFiltersFunction_Set()
+	if err == nil {
+		ret = fileChooserListFiltersFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileChooserListShortcutFolderUrisFunction *gi.Function
+var fileChooserListShortcutFolderUrisFunction_Once sync.Once
+
+func fileChooserListShortcutFolderUrisFunction_Set() error {
+	var err error
+	fileChooserListShortcutFolderUrisFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserListShortcutFolderUrisFunction, err = fileChooserInterface.InvokerNew("list_shortcut_folder_uris")
+	})
+	return err
+}
+
+// ListShortcutFolderUris is a representation of the C type gtk_file_chooser_list_shortcut_folder_uris.
+func (recv *FileChooser) ListShortcutFolderUris() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserListShortcutFolderUrisFunction_Set()
+	if err == nil {
+		ret = fileChooserListShortcutFolderUrisFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileChooserListShortcutFoldersFunction *gi.Function
+var fileChooserListShortcutFoldersFunction_Once sync.Once
+
+func fileChooserListShortcutFoldersFunction_Set() error {
+	var err error
+	fileChooserListShortcutFoldersFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserListShortcutFoldersFunction, err = fileChooserInterface.InvokerNew("list_shortcut_folders")
+	})
+	return err
+}
+
+// ListShortcutFolders is a representation of the C type gtk_file_chooser_list_shortcut_folders.
+func (recv *FileChooser) ListShortcutFolders() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserListShortcutFoldersFunction_Set()
+	if err == nil {
+		ret = fileChooserListShortcutFoldersFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileChooserRemoveChoiceFunction *gi.Function
 var fileChooserRemoveChoiceFunction_Once sync.Once
@@ -3722,7 +4117,37 @@ func (recv *FontChooser) GetFont() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_font_chooser_get_font_desc' : return type 'Pango.FontDescription' not supported
+var fontChooserGetFontDescFunction *gi.Function
+var fontChooserGetFontDescFunction_Once sync.Once
+
+func fontChooserGetFontDescFunction_Set() error {
+	var err error
+	fontChooserGetFontDescFunction_Once.Do(func() {
+		err = fontChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fontChooserGetFontDescFunction, err = fontChooserInterface.InvokerNew("get_font_desc")
+	})
+	return err
+}
+
+// GetFontDesc is a representation of the C type gtk_font_chooser_get_font_desc.
+func (recv *FontChooser) GetFontDesc() *pango.FontDescription {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fontChooserGetFontDescFunction_Set()
+	if err == nil {
+		ret = fontChooserGetFontDescFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := pango.FontDescriptionNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fontChooserGetFontFaceFunction *gi.Function
 var fontChooserGetFontFaceFunction_Once sync.Once
@@ -4013,7 +4438,34 @@ func (recv *FontChooser) SetFont(fontname string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_font_chooser_set_font_desc' : parameter 'font_desc' of type 'Pango.FontDescription' not supported
+var fontChooserSetFontDescFunction *gi.Function
+var fontChooserSetFontDescFunction_Once sync.Once
+
+func fontChooserSetFontDescFunction_Set() error {
+	var err error
+	fontChooserSetFontDescFunction_Once.Do(func() {
+		err = fontChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fontChooserSetFontDescFunction, err = fontChooserInterface.InvokerNew("set_font_desc")
+	})
+	return err
+}
+
+// SetFontDesc is a representation of the C type gtk_font_chooser_set_font_desc.
+func (recv *FontChooser) SetFontDesc(fontDesc *pango.FontDescription) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(fontDesc.Native())
+
+	err := fontChooserSetFontDescFunction_Set()
+	if err == nil {
+		fontChooserSetFontDescFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fontChooserSetFontMapFunction *gi.Function
 var fontChooserSetFontMapFunction_Once sync.Once
@@ -4577,7 +5029,37 @@ func (recv *RecentChooser) GetFilter() *RecentFilter {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_recent_chooser_get_items' : return type 'GLib.List' not supported
+var recentChooserGetItemsFunction *gi.Function
+var recentChooserGetItemsFunction_Once sync.Once
+
+func recentChooserGetItemsFunction_Set() error {
+	var err error
+	recentChooserGetItemsFunction_Once.Do(func() {
+		err = recentChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		recentChooserGetItemsFunction, err = recentChooserInterface.InvokerNew("get_items")
+	})
+	return err
+}
+
+// GetItems is a representation of the C type gtk_recent_chooser_get_items.
+func (recv *RecentChooser) GetItems() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := recentChooserGetItemsFunction_Set()
+	if err == nil {
+		ret = recentChooserGetItemsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var recentChooserGetLimitFunction *gi.Function
 var recentChooserGetLimitFunction_Once sync.Once
@@ -4867,7 +5349,37 @@ func (recv *RecentChooser) GetUris() uint64 {
 	return out0
 }
 
-// UNSUPPORTED : C value 'gtk_recent_chooser_list_filters' : return type 'GLib.SList' not supported
+var recentChooserListFiltersFunction *gi.Function
+var recentChooserListFiltersFunction_Once sync.Once
+
+func recentChooserListFiltersFunction_Set() error {
+	var err error
+	recentChooserListFiltersFunction_Once.Do(func() {
+		err = recentChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		recentChooserListFiltersFunction, err = recentChooserInterface.InvokerNew("list_filters")
+	})
+	return err
+}
+
+// ListFilters is a representation of the C type gtk_recent_chooser_list_filters.
+func (recv *RecentChooser) ListFilters() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := recentChooserListFiltersFunction_Set()
+	if err == nil {
+		ret = recentChooserListFiltersFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var recentChooserRemoveFilterFunction *gi.Function
 var recentChooserRemoveFilterFunction_Once sync.Once
@@ -6559,7 +7071,39 @@ func (recv *TreeModel) GetStringFromIter(iter *TreeIter) string {
 
 // UNSUPPORTED : C value 'gtk_tree_model_get_valist' : parameter 'var_args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_model_get_value' : parameter 'value' of type 'GObject.Value' not supported
+var treeModelGetValueFunction *gi.Function
+var treeModelGetValueFunction_Once sync.Once
+
+func treeModelGetValueFunction_Set() error {
+	var err error
+	treeModelGetValueFunction_Once.Do(func() {
+		err = treeModelInterface_Set()
+		if err != nil {
+			return
+		}
+		treeModelGetValueFunction, err = treeModelInterface.InvokerNew("get_value")
+	})
+	return err
+}
+
+// GetValue is a representation of the C type gtk_tree_model_get_value.
+func (recv *TreeModel) GetValue(iter *TreeIter, column int32) *gobject.Value {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+	inArgs[2].SetInt32(column)
+
+	var outArgs [1]gi.Argument
+
+	err := treeModelGetValueFunction_Set()
+	if err == nil {
+		treeModelGetValueFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gobject.ValueNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var treeModelIterChildrenFunction *gi.Function
 var treeModelIterChildrenFunction_Once sync.Once

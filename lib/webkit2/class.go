@@ -6,9 +6,14 @@ import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	atk "github.com/pekim/gobbi/lib/atk"
+	cairo "github.com/pekim/gobbi/lib/cairo"
+	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	gtk "github.com/pekim/gobbi/lib/gtk"
+	javascriptcore "github.com/pekim/gobbi/lib/javascriptcore"
+	soup "github.com/pekim/gobbi/lib/soup"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -727,9 +732,70 @@ func (recv *BackForwardList) GetBackItem() *BackForwardListItem {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_back_forward_list_get_back_list' : return type 'GLib.List' not supported
+var backForwardListGetBackListFunction *gi.Function
+var backForwardListGetBackListFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_back_forward_list_get_back_list_with_limit' : return type 'GLib.List' not supported
+func backForwardListGetBackListFunction_Set() error {
+	var err error
+	backForwardListGetBackListFunction_Once.Do(func() {
+		err = backForwardListObject_Set()
+		if err != nil {
+			return
+		}
+		backForwardListGetBackListFunction, err = backForwardListObject.InvokerNew("get_back_list")
+	})
+	return err
+}
+
+// GetBackList is a representation of the C type webkit_back_forward_list_get_back_list.
+func (recv *BackForwardList) GetBackList() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := backForwardListGetBackListFunction_Set()
+	if err == nil {
+		ret = backForwardListGetBackListFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var backForwardListGetBackListWithLimitFunction *gi.Function
+var backForwardListGetBackListWithLimitFunction_Once sync.Once
+
+func backForwardListGetBackListWithLimitFunction_Set() error {
+	var err error
+	backForwardListGetBackListWithLimitFunction_Once.Do(func() {
+		err = backForwardListObject_Set()
+		if err != nil {
+			return
+		}
+		backForwardListGetBackListWithLimitFunction, err = backForwardListObject.InvokerNew("get_back_list_with_limit")
+	})
+	return err
+}
+
+// GetBackListWithLimit is a representation of the C type webkit_back_forward_list_get_back_list_with_limit.
+func (recv *BackForwardList) GetBackListWithLimit(limit uint32) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(limit)
+
+	var ret gi.Argument
+
+	err := backForwardListGetBackListWithLimitFunction_Set()
+	if err == nil {
+		ret = backForwardListGetBackListWithLimitFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var backForwardListGetCurrentItemFunction *gi.Function
 var backForwardListGetCurrentItemFunction_Once sync.Once
@@ -795,9 +861,70 @@ func (recv *BackForwardList) GetForwardItem() *BackForwardListItem {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_back_forward_list_get_forward_list' : return type 'GLib.List' not supported
+var backForwardListGetForwardListFunction *gi.Function
+var backForwardListGetForwardListFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_back_forward_list_get_forward_list_with_limit' : return type 'GLib.List' not supported
+func backForwardListGetForwardListFunction_Set() error {
+	var err error
+	backForwardListGetForwardListFunction_Once.Do(func() {
+		err = backForwardListObject_Set()
+		if err != nil {
+			return
+		}
+		backForwardListGetForwardListFunction, err = backForwardListObject.InvokerNew("get_forward_list")
+	})
+	return err
+}
+
+// GetForwardList is a representation of the C type webkit_back_forward_list_get_forward_list.
+func (recv *BackForwardList) GetForwardList() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := backForwardListGetForwardListFunction_Set()
+	if err == nil {
+		ret = backForwardListGetForwardListFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var backForwardListGetForwardListWithLimitFunction *gi.Function
+var backForwardListGetForwardListWithLimitFunction_Once sync.Once
+
+func backForwardListGetForwardListWithLimitFunction_Set() error {
+	var err error
+	backForwardListGetForwardListWithLimitFunction_Once.Do(func() {
+		err = backForwardListObject_Set()
+		if err != nil {
+			return
+		}
+		backForwardListGetForwardListWithLimitFunction, err = backForwardListObject.InvokerNew("get_forward_list_with_limit")
+	})
+	return err
+}
+
+// GetForwardListWithLimit is a representation of the C type webkit_back_forward_list_get_forward_list_with_limit.
+func (recv *BackForwardList) GetForwardListWithLimit(limit uint32) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(limit)
+
+	var ret gi.Argument
+
+	err := backForwardListGetForwardListWithLimitFunction_Set()
+	if err == nil {
+		ret = backForwardListGetForwardListWithLimitFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var backForwardListGetLengthFunction *gi.Function
 var backForwardListGetLengthFunction_Once sync.Once
@@ -1184,11 +1311,98 @@ func (recv *ColorChooserRequest) Finish() {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_color_chooser_request_get_element_rectangle' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+var colorChooserRequestGetElementRectangleFunction *gi.Function
+var colorChooserRequestGetElementRectangleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_color_chooser_request_get_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+func colorChooserRequestGetElementRectangleFunction_Set() error {
+	var err error
+	colorChooserRequestGetElementRectangleFunction_Once.Do(func() {
+		err = colorChooserRequestObject_Set()
+		if err != nil {
+			return
+		}
+		colorChooserRequestGetElementRectangleFunction, err = colorChooserRequestObject.InvokerNew("get_element_rectangle")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'webkit_color_chooser_request_set_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+// GetElementRectangle is a representation of the C type webkit_color_chooser_request_get_element_rectangle.
+func (recv *ColorChooserRequest) GetElementRectangle() *gdk.Rectangle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := colorChooserRequestGetElementRectangleFunction_Set()
+	if err == nil {
+		colorChooserRequestGetElementRectangleFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
+
+var colorChooserRequestGetRgbaFunction *gi.Function
+var colorChooserRequestGetRgbaFunction_Once sync.Once
+
+func colorChooserRequestGetRgbaFunction_Set() error {
+	var err error
+	colorChooserRequestGetRgbaFunction_Once.Do(func() {
+		err = colorChooserRequestObject_Set()
+		if err != nil {
+			return
+		}
+		colorChooserRequestGetRgbaFunction, err = colorChooserRequestObject.InvokerNew("get_rgba")
+	})
+	return err
+}
+
+// GetRgba is a representation of the C type webkit_color_chooser_request_get_rgba.
+func (recv *ColorChooserRequest) GetRgba() *gdk.RGBA {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := colorChooserRequestGetRgbaFunction_Set()
+	if err == nil {
+		colorChooserRequestGetRgbaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RGBANewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
+
+var colorChooserRequestSetRgbaFunction *gi.Function
+var colorChooserRequestSetRgbaFunction_Once sync.Once
+
+func colorChooserRequestSetRgbaFunction_Set() error {
+	var err error
+	colorChooserRequestSetRgbaFunction_Once.Do(func() {
+		err = colorChooserRequestObject_Set()
+		if err != nil {
+			return
+		}
+		colorChooserRequestSetRgbaFunction, err = colorChooserRequestObject.InvokerNew("set_rgba")
+	})
+	return err
+}
+
+// SetRgba is a representation of the C type webkit_color_chooser_request_set_rgba.
+func (recv *ColorChooserRequest) SetRgba(rgba *gdk.RGBA) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rgba.Native())
+
+	err := colorChooserRequestSetRgbaFunction_Set()
+	if err == nil {
+		colorChooserRequestSetRgbaFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 /*
 ConnectFinished connects a callback to the 'finished' signal of the ColorChooserRequest.
@@ -1325,7 +1539,39 @@ func ContextMenuNew() *ContextMenu {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_context_menu_new_with_items' : parameter 'items' of type 'GLib.List' not supported
+var contextMenuNewWithItemsFunction *gi.Function
+var contextMenuNewWithItemsFunction_Once sync.Once
+
+func contextMenuNewWithItemsFunction_Set() error {
+	var err error
+	contextMenuNewWithItemsFunction_Once.Do(func() {
+		err = contextMenuObject_Set()
+		if err != nil {
+			return
+		}
+		contextMenuNewWithItemsFunction, err = contextMenuObject.InvokerNew("new_with_items")
+	})
+	return err
+}
+
+// ContextMenuNewWithItems is a representation of the C type webkit_context_menu_new_with_items.
+func ContextMenuNewWithItems(items *glib.List) *ContextMenu {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(items.Native())
+
+	var ret gi.Argument
+
+	err := contextMenuNewWithItemsFunction_Set()
+	if err == nil {
+		ret = contextMenuNewWithItemsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ContextMenuNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var contextMenuAppendFunction *gi.Function
 var contextMenuAppendFunction_Once sync.Once
@@ -1421,7 +1667,37 @@ func (recv *ContextMenu) GetItemAtPosition(position uint32) *ContextMenuItem {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_context_menu_get_items' : return type 'GLib.List' not supported
+var contextMenuGetItemsFunction *gi.Function
+var contextMenuGetItemsFunction_Once sync.Once
+
+func contextMenuGetItemsFunction_Set() error {
+	var err error
+	contextMenuGetItemsFunction_Once.Do(func() {
+		err = contextMenuObject_Set()
+		if err != nil {
+			return
+		}
+		contextMenuGetItemsFunction, err = contextMenuObject.InvokerNew("get_items")
+	})
+	return err
+}
+
+// GetItems is a representation of the C type webkit_context_menu_get_items.
+func (recv *ContextMenu) GetItems() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := contextMenuGetItemsFunction_Set()
+	if err == nil {
+		ret = contextMenuGetItemsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var contextMenuGetNItemsFunction *gi.Function
 var contextMenuGetNItemsFunction_Once sync.Once
@@ -1455,7 +1731,37 @@ func (recv *ContextMenu) GetNItems() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_context_menu_get_user_data' : return type 'GLib.Variant' not supported
+var contextMenuGetUserDataFunction *gi.Function
+var contextMenuGetUserDataFunction_Once sync.Once
+
+func contextMenuGetUserDataFunction_Set() error {
+	var err error
+	contextMenuGetUserDataFunction_Once.Do(func() {
+		err = contextMenuObject_Set()
+		if err != nil {
+			return
+		}
+		contextMenuGetUserDataFunction, err = contextMenuObject.InvokerNew("get_user_data")
+	})
+	return err
+}
+
+// GetUserData is a representation of the C type webkit_context_menu_get_user_data.
+func (recv *ContextMenu) GetUserData() *glib.Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := contextMenuGetUserDataFunction_Set()
+	if err == nil {
+		ret = contextMenuGetUserDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var contextMenuInsertFunction *gi.Function
 var contextMenuInsertFunction_Once sync.Once
@@ -1635,7 +1941,34 @@ func (recv *ContextMenu) RemoveAll() {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_context_menu_set_user_data' : parameter 'user_data' of type 'GLib.Variant' not supported
+var contextMenuSetUserDataFunction *gi.Function
+var contextMenuSetUserDataFunction_Once sync.Once
+
+func contextMenuSetUserDataFunction_Set() error {
+	var err error
+	contextMenuSetUserDataFunction_Once.Do(func() {
+		err = contextMenuObject_Set()
+		if err != nil {
+			return
+		}
+		contextMenuSetUserDataFunction, err = contextMenuObject.InvokerNew("set_user_data")
+	})
+	return err
+}
+
+// SetUserData is a representation of the C type webkit_context_menu_set_user_data.
+func (recv *ContextMenu) SetUserData(userData *glib.Variant) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(userData.Native())
+
+	err := contextMenuSetUserDataFunction_Set()
+	if err == nil {
+		contextMenuSetUserDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var contextMenuItemObject *gi.Object
 var contextMenuItemObject_Once sync.Once
@@ -2129,7 +2462,7 @@ func (recv *CookieManager) SetFieldPriv(value *CookieManagerPrivate) {
 	gi.ObjectFieldSet(cookieManagerObject, recv.Native(), "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'webkit_cookie_manager_add_cookie' : parameter 'cookie' of type 'Soup.Cookie' not supported
+// UNSUPPORTED : C value 'webkit_cookie_manager_add_cookie' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_add_cookie_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -2161,7 +2494,7 @@ func (recv *CookieManager) DeleteAllCookies() {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_cookie_manager_delete_cookie' : parameter 'cookie' of type 'Soup.Cookie' not supported
+// UNSUPPORTED : C value 'webkit_cookie_manager_delete_cookie' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_delete_cookie_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -2806,7 +3139,16 @@ func (recv *Download) ConnectDecideDestination(handler func(instance *Download, 
 	return callback.ConnectSignal(recv.Native(), "decide-destination", marshal)
 }
 
-// UNSUPPORTED : C value 'failed' : parameter 'error' of type 'GLib.Error' not supported
+/*
+ConnectFailed connects a callback to the 'failed' signal of the Download.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Download) ConnectFailed(handler func(instance *Download, error *glib.Error)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "failed", marshal)
+}
 
 /*
 ConnectFinished connects a callback to the 'finished' signal of the Download.
@@ -3955,7 +4297,37 @@ func (recv *FormSubmissionRequest) SetFieldParent(value *gobject.Object) {
 	gi.ObjectFieldSet(formSubmissionRequestObject, recv.Native(), "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'webkit_form_submission_request_get_text_fields' : return type 'GLib.HashTable' not supported
+var formSubmissionRequestGetTextFieldsFunction *gi.Function
+var formSubmissionRequestGetTextFieldsFunction_Once sync.Once
+
+func formSubmissionRequestGetTextFieldsFunction_Set() error {
+	var err error
+	formSubmissionRequestGetTextFieldsFunction_Once.Do(func() {
+		err = formSubmissionRequestObject_Set()
+		if err != nil {
+			return
+		}
+		formSubmissionRequestGetTextFieldsFunction, err = formSubmissionRequestObject.InvokerNew("get_text_fields")
+	})
+	return err
+}
+
+// GetTextFields is a representation of the C type webkit_form_submission_request_get_text_fields.
+func (recv *FormSubmissionRequest) GetTextFields() *glib.HashTable {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := formSubmissionRequestGetTextFieldsFunction_Set()
+	if err == nil {
+		ret = formSubmissionRequestGetTextFieldsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.HashTableNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_form_submission_request_list_text_fields' : parameter 'field_names' of type 'nil' not supported
 
@@ -5845,7 +6217,37 @@ func (recv *Plugin) GetDescription() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_plugin_get_mime_info_list' : return type 'GLib.List' not supported
+var pluginGetMimeInfoListFunction *gi.Function
+var pluginGetMimeInfoListFunction_Once sync.Once
+
+func pluginGetMimeInfoListFunction_Set() error {
+	var err error
+	pluginGetMimeInfoListFunction_Once.Do(func() {
+		err = pluginObject_Set()
+		if err != nil {
+			return
+		}
+		pluginGetMimeInfoListFunction, err = pluginObject.InvokerNew("get_mime_info_list")
+	})
+	return err
+}
+
+// GetMimeInfoList is a representation of the C type webkit_plugin_get_mime_info_list.
+func (recv *Plugin) GetMimeInfoList() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := pluginGetMimeInfoListFunction_Set()
+	if err == nil {
+		ret = pluginGetMimeInfoListFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var pluginGetNameFunction *gi.Function
 var pluginGetNameFunction_Once sync.Once
@@ -6588,7 +6990,16 @@ func (recv *PrintOperation) ConnectCreateCustomWidget(handler func(instance *Pri
 	return callback.ConnectSignal(recv.Native(), "create-custom-widget", marshal)
 }
 
-// UNSUPPORTED : C value 'failed' : parameter 'error' of type 'GLib.Error' not supported
+/*
+ConnectFailed connects a callback to the 'failed' signal of the PrintOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PrintOperation) ConnectFailed(handler func(instance *PrintOperation, error *glib.Error)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "failed", marshal)
+}
 
 /*
 ConnectFinished connects a callback to the 'finished' signal of the PrintOperation.
@@ -10962,7 +11373,37 @@ func URIRequestNew(uri string) *URIRequest {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_uri_request_get_http_headers' : return type 'Soup.MessageHeaders' not supported
+var uRIRequestGetHttpHeadersFunction *gi.Function
+var uRIRequestGetHttpHeadersFunction_Once sync.Once
+
+func uRIRequestGetHttpHeadersFunction_Set() error {
+	var err error
+	uRIRequestGetHttpHeadersFunction_Once.Do(func() {
+		err = uRIRequestObject_Set()
+		if err != nil {
+			return
+		}
+		uRIRequestGetHttpHeadersFunction, err = uRIRequestObject.InvokerNew("get_http_headers")
+	})
+	return err
+}
+
+// GetHttpHeaders is a representation of the C type webkit_uri_request_get_http_headers.
+func (recv *URIRequest) GetHttpHeaders() *soup.MessageHeaders {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := uRIRequestGetHttpHeadersFunction_Set()
+	if err == nil {
+		ret = uRIRequestGetHttpHeadersFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := soup.MessageHeadersNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var uRIRequestGetHttpMethodFunction *gi.Function
 var uRIRequestGetHttpMethodFunction_Once sync.Once
@@ -11158,7 +11599,37 @@ func (recv *URIResponse) GetContentLength() uint64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_uri_response_get_http_headers' : return type 'Soup.MessageHeaders' not supported
+var uRIResponseGetHttpHeadersFunction *gi.Function
+var uRIResponseGetHttpHeadersFunction_Once sync.Once
+
+func uRIResponseGetHttpHeadersFunction_Set() error {
+	var err error
+	uRIResponseGetHttpHeadersFunction_Once.Do(func() {
+		err = uRIResponseObject_Set()
+		if err != nil {
+			return
+		}
+		uRIResponseGetHttpHeadersFunction, err = uRIResponseObject.InvokerNew("get_http_headers")
+	})
+	return err
+}
+
+// GetHttpHeaders is a representation of the C type webkit_uri_response_get_http_headers.
+func (recv *URIResponse) GetHttpHeaders() *soup.MessageHeaders {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := uRIResponseGetHttpHeadersFunction_Set()
+	if err == nil {
+		ret = uRIResponseGetHttpHeadersFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := soup.MessageHeadersNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var uRIResponseGetMimeTypeFunction *gi.Function
 var uRIResponseGetMimeTypeFunction_Once sync.Once
@@ -11402,7 +11873,34 @@ func (recv *URISchemeRequest) Finish(stream *gio.InputStream, streamLength int64
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_uri_scheme_request_finish_error' : parameter 'error' of type 'GLib.Error' not supported
+var uRISchemeRequestFinishErrorFunction *gi.Function
+var uRISchemeRequestFinishErrorFunction_Once sync.Once
+
+func uRISchemeRequestFinishErrorFunction_Set() error {
+	var err error
+	uRISchemeRequestFinishErrorFunction_Once.Do(func() {
+		err = uRISchemeRequestObject_Set()
+		if err != nil {
+			return
+		}
+		uRISchemeRequestFinishErrorFunction, err = uRISchemeRequestObject.InvokerNew("finish_error")
+	})
+	return err
+}
+
+// FinishError is a representation of the C type webkit_uri_scheme_request_finish_error.
+func (recv *URISchemeRequest) FinishError(error *glib.Error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(error.Native())
+
+	err := uRISchemeRequestFinishErrorFunction_Set()
+	if err == nil {
+		uRISchemeRequestFinishErrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var uRISchemeRequestGetPathFunction *gi.Function
 var uRISchemeRequestGetPathFunction_Once sync.Once
@@ -11679,7 +12177,7 @@ func (recv *UserContentFilterStore) GetPath() string {
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_store_remove_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_user_content_filter_store_save' : parameter 'source' of type 'GLib.Bytes' not supported
+// UNSUPPORTED : C value 'webkit_user_content_filter_store_save' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_store_save_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -12941,7 +13439,35 @@ func (recv *WebContext) GetWebsiteDataManager() *WebsiteDataManager {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_initialize_notification_permissions' : parameter 'allowed_origins' of type 'GLib.List' not supported
+var webContextInitializeNotificationPermissionsFunction *gi.Function
+var webContextInitializeNotificationPermissionsFunction_Once sync.Once
+
+func webContextInitializeNotificationPermissionsFunction_Set() error {
+	var err error
+	webContextInitializeNotificationPermissionsFunction_Once.Do(func() {
+		err = webContextObject_Set()
+		if err != nil {
+			return
+		}
+		webContextInitializeNotificationPermissionsFunction, err = webContextObject.InvokerNew("initialize_notification_permissions")
+	})
+	return err
+}
+
+// InitializeNotificationPermissions is a representation of the C type webkit_web_context_initialize_notification_permissions.
+func (recv *WebContext) InitializeNotificationPermissions(allowedOrigins *glib.List, disallowedOrigins *glib.List) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(allowedOrigins.Native())
+	inArgs[2].SetPointer(disallowedOrigins.Native())
+
+	err := webContextInitializeNotificationPermissionsFunction_Set()
+	if err == nil {
+		webContextInitializeNotificationPermissionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webContextIsAutomationAllowedFunction *gi.Function
 var webContextIsAutomationAllowedFunction_Once sync.Once
@@ -13362,7 +13888,34 @@ func (recv *WebContext) SetWebExtensionsDirectory(directory string) {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_set_web_extensions_initialization_user_data' : parameter 'user_data' of type 'GLib.Variant' not supported
+var webContextSetWebExtensionsInitializationUserDataFunction *gi.Function
+var webContextSetWebExtensionsInitializationUserDataFunction_Once sync.Once
+
+func webContextSetWebExtensionsInitializationUserDataFunction_Set() error {
+	var err error
+	webContextSetWebExtensionsInitializationUserDataFunction_Once.Do(func() {
+		err = webContextObject_Set()
+		if err != nil {
+			return
+		}
+		webContextSetWebExtensionsInitializationUserDataFunction, err = webContextObject.InvokerNew("set_web_extensions_initialization_user_data")
+	})
+	return err
+}
+
+// SetWebExtensionsInitializationUserData is a representation of the C type webkit_web_context_set_web_extensions_initialization_user_data.
+func (recv *WebContext) SetWebExtensionsInitializationUserData(userData *glib.Variant) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(userData.Native())
+
+	err := webContextSetWebExtensionsInitializationUserDataFunction_Set()
+	if err == nil {
+		webContextSetWebExtensionsInitializationUserDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webContextSetWebProcessCountLimitFunction *gi.Function
 var webContextSetWebProcessCountLimitFunction_Once sync.Once
@@ -14016,7 +14569,16 @@ func (recv *WebResource) GetUri() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'failed' : parameter 'error' of type 'GLib.Error' not supported
+/*
+ConnectFailed connects a callback to the 'failed' signal of the WebResource.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *WebResource) ConnectFailed(handler func(instance *WebResource, error *glib.Error)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "failed", marshal)
+}
 
 // UNSUPPORTED : C value 'failed-with-tls-errors' : parameter 'errors' of type 'Gio.TlsCertificateFlags' not supported
 
@@ -14534,7 +15096,37 @@ func (recv *WebView) GetBackForwardList() *BackForwardList {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_get_background_color' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+var webViewGetBackgroundColorFunction *gi.Function
+var webViewGetBackgroundColorFunction_Once sync.Once
+
+func webViewGetBackgroundColorFunction_Set() error {
+	var err error
+	webViewGetBackgroundColorFunction_Once.Do(func() {
+		err = webViewObject_Set()
+		if err != nil {
+			return
+		}
+		webViewGetBackgroundColorFunction, err = webViewObject.InvokerNew("get_background_color")
+	})
+	return err
+}
+
+// GetBackgroundColor is a representation of the C type webkit_web_view_get_background_color.
+func (recv *WebView) GetBackgroundColor() *gdk.RGBA {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := webViewGetBackgroundColorFunction_Set()
+	if err == nil {
+		webViewGetBackgroundColorFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RGBANewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var webViewGetContextFunction *gi.Function
 var webViewGetContextFunction_Once sync.Once
@@ -14664,7 +15256,37 @@ func (recv *WebView) GetEstimatedLoadProgress() float64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_get_favicon' : return type 'cairo.Surface' not supported
+var webViewGetFaviconFunction *gi.Function
+var webViewGetFaviconFunction_Once sync.Once
+
+func webViewGetFaviconFunction_Set() error {
+	var err error
+	webViewGetFaviconFunction_Once.Do(func() {
+		err = webViewObject_Set()
+		if err != nil {
+			return
+		}
+		webViewGetFaviconFunction, err = webViewObject.InvokerNew("get_favicon")
+	})
+	return err
+}
+
+// GetFavicon is a representation of the C type webkit_web_view_get_favicon.
+func (recv *WebView) GetFavicon() *cairo.Surface {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := webViewGetFaviconFunction_Set()
+	if err == nil {
+		ret = webViewGetFaviconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.SurfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var webViewGetFindControllerFunction *gi.Function
 var webViewGetFindControllerFunction_Once sync.Once
@@ -14730,7 +15352,37 @@ func (recv *WebView) GetInspector() *WebInspector {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_get_javascript_global_context' : return type 'JavaScriptCore.GlobalContextRef' not supported
+var webViewGetJavascriptGlobalContextFunction *gi.Function
+var webViewGetJavascriptGlobalContextFunction_Once sync.Once
+
+func webViewGetJavascriptGlobalContextFunction_Set() error {
+	var err error
+	webViewGetJavascriptGlobalContextFunction_Once.Do(func() {
+		err = webViewObject_Set()
+		if err != nil {
+			return
+		}
+		webViewGetJavascriptGlobalContextFunction, err = webViewObject.InvokerNew("get_javascript_global_context")
+	})
+	return err
+}
+
+// GetJavascriptGlobalContext is a representation of the C type webkit_web_view_get_javascript_global_context.
+func (recv *WebView) GetJavascriptGlobalContext() *javascriptcore.GlobalContextRef {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := webViewGetJavascriptGlobalContextFunction_Set()
+	if err == nil {
+		ret = webViewGetJavascriptGlobalContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := javascriptcore.GlobalContextRefNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var webViewGetMainResourceFunction *gi.Function
 var webViewGetMainResourceFunction_Once sync.Once
@@ -15334,7 +15986,37 @@ func (recv *WebView) LoadAlternateHtml(content string, contentUri string, baseUr
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_load_bytes' : parameter 'bytes' of type 'GLib.Bytes' not supported
+var webViewLoadBytesFunction *gi.Function
+var webViewLoadBytesFunction_Once sync.Once
+
+func webViewLoadBytesFunction_Set() error {
+	var err error
+	webViewLoadBytesFunction_Once.Do(func() {
+		err = webViewObject_Set()
+		if err != nil {
+			return
+		}
+		webViewLoadBytesFunction, err = webViewObject.InvokerNew("load_bytes")
+	})
+	return err
+}
+
+// LoadBytes is a representation of the C type webkit_web_view_load_bytes.
+func (recv *WebView) LoadBytes(bytes *glib.Bytes, mimeType string, encoding string, baseUri string) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(bytes.Native())
+	inArgs[2].SetString(mimeType)
+	inArgs[3].SetString(encoding)
+	inArgs[4].SetString(baseUri)
+
+	err := webViewLoadBytesFunction_Set()
+	if err == nil {
+		webViewLoadBytesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webViewLoadHtmlFunction *gi.Function
 var webViewLoadHtmlFunction_Once sync.Once
@@ -15558,7 +16240,34 @@ func (recv *WebView) RestoreSessionState(state *WebViewSessionState) {
 
 // UNSUPPORTED : C value 'webkit_web_view_save_to_file_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_set_background_color' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+var webViewSetBackgroundColorFunction *gi.Function
+var webViewSetBackgroundColorFunction_Once sync.Once
+
+func webViewSetBackgroundColorFunction_Set() error {
+	var err error
+	webViewSetBackgroundColorFunction_Once.Do(func() {
+		err = webViewObject_Set()
+		if err != nil {
+			return
+		}
+		webViewSetBackgroundColorFunction, err = webViewObject.InvokerNew("set_background_color")
+	})
+	return err
+}
+
+// SetBackgroundColor is a representation of the C type webkit_web_view_set_background_color.
+func (recv *WebView) SetBackgroundColor(rgba *gdk.RGBA) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rgba.Native())
+
+	err := webViewSetBackgroundColorFunction_Set()
+	if err == nil {
+		webViewSetBackgroundColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webViewSetCustomCharsetFunction *gi.Function
 var webViewSetCustomCharsetFunction_Once sync.Once
@@ -15833,7 +16542,16 @@ func (recv *WebView) ConnectLoadChanged(handler func(instance *WebView, loadEven
 	return callback.ConnectSignal(recv.Native(), "load-changed", marshal)
 }
 
-// UNSUPPORTED : C value 'load-failed' : parameter 'error' of type 'GLib.Error' not supported
+/*
+ConnectLoadFailed connects a callback to the 'load-failed' signal of the WebView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *WebView) ConnectLoadFailed(handler func(instance *WebView, loadEvent LoadEvent, failingUri string, error *glib.Error) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "load-failed", marshal)
+}
 
 // UNSUPPORTED : C value 'load-failed-with-tls-errors' : parameter 'errors' of type 'Gio.TlsCertificateFlags' not supported
 
@@ -16636,7 +17354,37 @@ func (recv *WindowProperties) GetFullscreen() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_window_properties_get_geometry' : parameter 'geometry' of type 'Gdk.Rectangle' not supported
+var windowPropertiesGetGeometryFunction *gi.Function
+var windowPropertiesGetGeometryFunction_Once sync.Once
+
+func windowPropertiesGetGeometryFunction_Set() error {
+	var err error
+	windowPropertiesGetGeometryFunction_Once.Do(func() {
+		err = windowPropertiesObject_Set()
+		if err != nil {
+			return
+		}
+		windowPropertiesGetGeometryFunction, err = windowPropertiesObject.InvokerNew("get_geometry")
+	})
+	return err
+}
+
+// GetGeometry is a representation of the C type webkit_window_properties_get_geometry.
+func (recv *WindowProperties) GetGeometry() *gdk.Rectangle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := windowPropertiesGetGeometryFunction_Set()
+	if err == nil {
+		windowPropertiesGetGeometryFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var windowPropertiesGetLocationbarVisibleFunction *gi.Function
 var windowPropertiesGetLocationbarVisibleFunction_Once sync.Once

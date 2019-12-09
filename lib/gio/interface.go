@@ -5,6 +5,7 @@ package gio
 import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
@@ -49,9 +50,63 @@ func (recv *Action) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_action_activate' : parameter 'parameter' of type 'GLib.Variant' not supported
+var actionActivateFunction *gi.Function
+var actionActivateFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_action_change_state' : parameter 'value' of type 'GLib.Variant' not supported
+func actionActivateFunction_Set() error {
+	var err error
+	actionActivateFunction_Once.Do(func() {
+		err = actionInterface_Set()
+		if err != nil {
+			return
+		}
+		actionActivateFunction, err = actionInterface.InvokerNew("activate")
+	})
+	return err
+}
+
+// Activate is a representation of the C type g_action_activate.
+func (recv *Action) Activate(parameter *glib.Variant) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(parameter.Native())
+
+	err := actionActivateFunction_Set()
+	if err == nil {
+		actionActivateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var actionChangeStateFunction *gi.Function
+var actionChangeStateFunction_Once sync.Once
+
+func actionChangeStateFunction_Set() error {
+	var err error
+	actionChangeStateFunction_Once.Do(func() {
+		err = actionInterface_Set()
+		if err != nil {
+			return
+		}
+		actionChangeStateFunction, err = actionInterface.InvokerNew("change_state")
+	})
+	return err
+}
+
+// ChangeState is a representation of the C type g_action_change_state.
+func (recv *Action) ChangeState(value *glib.Variant) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(value.Native())
+
+	err := actionChangeStateFunction_Set()
+	if err == nil {
+		actionChangeStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var actionGetEnabledFunction *gi.Function
 var actionGetEnabledFunction_Once sync.Once
@@ -117,13 +172,133 @@ func (recv *Action) GetName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_action_get_parameter_type' : return type 'GLib.VariantType' not supported
+var actionGetParameterTypeFunction *gi.Function
+var actionGetParameterTypeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_action_get_state' : return type 'GLib.Variant' not supported
+func actionGetParameterTypeFunction_Set() error {
+	var err error
+	actionGetParameterTypeFunction_Once.Do(func() {
+		err = actionInterface_Set()
+		if err != nil {
+			return
+		}
+		actionGetParameterTypeFunction, err = actionInterface.InvokerNew("get_parameter_type")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_action_get_state_hint' : return type 'GLib.Variant' not supported
+// GetParameterType is a representation of the C type g_action_get_parameter_type.
+func (recv *Action) GetParameterType() *glib.VariantType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
 
-// UNSUPPORTED : C value 'g_action_get_state_type' : return type 'GLib.VariantType' not supported
+	var ret gi.Argument
+
+	err := actionGetParameterTypeFunction_Set()
+	if err == nil {
+		ret = actionGetParameterTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantTypeNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var actionGetStateFunction *gi.Function
+var actionGetStateFunction_Once sync.Once
+
+func actionGetStateFunction_Set() error {
+	var err error
+	actionGetStateFunction_Once.Do(func() {
+		err = actionInterface_Set()
+		if err != nil {
+			return
+		}
+		actionGetStateFunction, err = actionInterface.InvokerNew("get_state")
+	})
+	return err
+}
+
+// GetState is a representation of the C type g_action_get_state.
+func (recv *Action) GetState() *glib.Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := actionGetStateFunction_Set()
+	if err == nil {
+		ret = actionGetStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var actionGetStateHintFunction *gi.Function
+var actionGetStateHintFunction_Once sync.Once
+
+func actionGetStateHintFunction_Set() error {
+	var err error
+	actionGetStateHintFunction_Once.Do(func() {
+		err = actionInterface_Set()
+		if err != nil {
+			return
+		}
+		actionGetStateHintFunction, err = actionInterface.InvokerNew("get_state_hint")
+	})
+	return err
+}
+
+// GetStateHint is a representation of the C type g_action_get_state_hint.
+func (recv *Action) GetStateHint() *glib.Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := actionGetStateHintFunction_Set()
+	if err == nil {
+		ret = actionGetStateHintFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var actionGetStateTypeFunction *gi.Function
+var actionGetStateTypeFunction_Once sync.Once
+
+func actionGetStateTypeFunction_Set() error {
+	var err error
+	actionGetStateTypeFunction_Once.Do(func() {
+		err = actionInterface_Set()
+		if err != nil {
+			return
+		}
+		actionGetStateTypeFunction, err = actionInterface.InvokerNew("get_state_type")
+	})
+	return err
+}
+
+// GetStateType is a representation of the C type g_action_get_state_type.
+func (recv *Action) GetStateType() *glib.VariantType {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := actionGetStateTypeFunction_Set()
+	if err == nil {
+		ret = actionGetStateTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantTypeNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var actionGroupInterface *gi.Interface
 var actionGroupInterface_Once sync.Once
@@ -252,11 +427,95 @@ func (recv *ActionGroup) ActionRemoved(actionName string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_action_group_action_state_changed' : parameter 'state' of type 'GLib.Variant' not supported
+var actionGroupActionStateChangedFunction *gi.Function
+var actionGroupActionStateChangedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_action_group_activate_action' : parameter 'parameter' of type 'GLib.Variant' not supported
+func actionGroupActionStateChangedFunction_Set() error {
+	var err error
+	actionGroupActionStateChangedFunction_Once.Do(func() {
+		err = actionGroupInterface_Set()
+		if err != nil {
+			return
+		}
+		actionGroupActionStateChangedFunction, err = actionGroupInterface.InvokerNew("action_state_changed")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_action_group_change_action_state' : parameter 'value' of type 'GLib.Variant' not supported
+// ActionStateChanged is a representation of the C type g_action_group_action_state_changed.
+func (recv *ActionGroup) ActionStateChanged(actionName string, state *glib.Variant) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(actionName)
+	inArgs[2].SetPointer(state.Native())
+
+	err := actionGroupActionStateChangedFunction_Set()
+	if err == nil {
+		actionGroupActionStateChangedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var actionGroupActivateActionFunction *gi.Function
+var actionGroupActivateActionFunction_Once sync.Once
+
+func actionGroupActivateActionFunction_Set() error {
+	var err error
+	actionGroupActivateActionFunction_Once.Do(func() {
+		err = actionGroupInterface_Set()
+		if err != nil {
+			return
+		}
+		actionGroupActivateActionFunction, err = actionGroupInterface.InvokerNew("activate_action")
+	})
+	return err
+}
+
+// ActivateAction is a representation of the C type g_action_group_activate_action.
+func (recv *ActionGroup) ActivateAction(actionName string, parameter *glib.Variant) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(actionName)
+	inArgs[2].SetPointer(parameter.Native())
+
+	err := actionGroupActivateActionFunction_Set()
+	if err == nil {
+		actionGroupActivateActionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var actionGroupChangeActionStateFunction *gi.Function
+var actionGroupChangeActionStateFunction_Once sync.Once
+
+func actionGroupChangeActionStateFunction_Set() error {
+	var err error
+	actionGroupChangeActionStateFunction_Once.Do(func() {
+		err = actionGroupInterface_Set()
+		if err != nil {
+			return
+		}
+		actionGroupChangeActionStateFunction, err = actionGroupInterface.InvokerNew("change_action_state")
+	})
+	return err
+}
+
+// ChangeActionState is a representation of the C type g_action_group_change_action_state.
+func (recv *ActionGroup) ChangeActionState(actionName string, value *glib.Variant) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(actionName)
+	inArgs[2].SetPointer(value.Native())
+
+	err := actionGroupChangeActionStateFunction_Set()
+	if err == nil {
+		actionGroupChangeActionStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var actionGroupGetActionEnabledFunction *gi.Function
 var actionGroupGetActionEnabledFunction_Once sync.Once
@@ -291,13 +550,137 @@ func (recv *ActionGroup) GetActionEnabled(actionName string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_action_group_get_action_parameter_type' : return type 'GLib.VariantType' not supported
+var actionGroupGetActionParameterTypeFunction *gi.Function
+var actionGroupGetActionParameterTypeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_action_group_get_action_state' : return type 'GLib.Variant' not supported
+func actionGroupGetActionParameterTypeFunction_Set() error {
+	var err error
+	actionGroupGetActionParameterTypeFunction_Once.Do(func() {
+		err = actionGroupInterface_Set()
+		if err != nil {
+			return
+		}
+		actionGroupGetActionParameterTypeFunction, err = actionGroupInterface.InvokerNew("get_action_parameter_type")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_action_group_get_action_state_hint' : return type 'GLib.Variant' not supported
+// GetActionParameterType is a representation of the C type g_action_group_get_action_parameter_type.
+func (recv *ActionGroup) GetActionParameterType(actionName string) *glib.VariantType {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(actionName)
 
-// UNSUPPORTED : C value 'g_action_group_get_action_state_type' : return type 'GLib.VariantType' not supported
+	var ret gi.Argument
+
+	err := actionGroupGetActionParameterTypeFunction_Set()
+	if err == nil {
+		ret = actionGroupGetActionParameterTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantTypeNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var actionGroupGetActionStateFunction *gi.Function
+var actionGroupGetActionStateFunction_Once sync.Once
+
+func actionGroupGetActionStateFunction_Set() error {
+	var err error
+	actionGroupGetActionStateFunction_Once.Do(func() {
+		err = actionGroupInterface_Set()
+		if err != nil {
+			return
+		}
+		actionGroupGetActionStateFunction, err = actionGroupInterface.InvokerNew("get_action_state")
+	})
+	return err
+}
+
+// GetActionState is a representation of the C type g_action_group_get_action_state.
+func (recv *ActionGroup) GetActionState(actionName string) *glib.Variant {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(actionName)
+
+	var ret gi.Argument
+
+	err := actionGroupGetActionStateFunction_Set()
+	if err == nil {
+		ret = actionGroupGetActionStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var actionGroupGetActionStateHintFunction *gi.Function
+var actionGroupGetActionStateHintFunction_Once sync.Once
+
+func actionGroupGetActionStateHintFunction_Set() error {
+	var err error
+	actionGroupGetActionStateHintFunction_Once.Do(func() {
+		err = actionGroupInterface_Set()
+		if err != nil {
+			return
+		}
+		actionGroupGetActionStateHintFunction, err = actionGroupInterface.InvokerNew("get_action_state_hint")
+	})
+	return err
+}
+
+// GetActionStateHint is a representation of the C type g_action_group_get_action_state_hint.
+func (recv *ActionGroup) GetActionStateHint(actionName string) *glib.Variant {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(actionName)
+
+	var ret gi.Argument
+
+	err := actionGroupGetActionStateHintFunction_Set()
+	if err == nil {
+		ret = actionGroupGetActionStateHintFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var actionGroupGetActionStateTypeFunction *gi.Function
+var actionGroupGetActionStateTypeFunction_Once sync.Once
+
+func actionGroupGetActionStateTypeFunction_Set() error {
+	var err error
+	actionGroupGetActionStateTypeFunction_Once.Do(func() {
+		err = actionGroupInterface_Set()
+		if err != nil {
+			return
+		}
+		actionGroupGetActionStateTypeFunction, err = actionGroupInterface.InvokerNew("get_action_state_type")
+	})
+	return err
+}
+
+// GetActionStateType is a representation of the C type g_action_group_get_action_state_type.
+func (recv *ActionGroup) GetActionStateType(actionName string) *glib.VariantType {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(actionName)
+
+	var ret gi.Argument
+
+	err := actionGroupGetActionStateTypeFunction_Set()
+	if err == nil {
+		ret = actionGroupGetActionStateTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantTypeNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var actionGroupHasActionFunction *gi.Function
 var actionGroupHasActionFunction_Once sync.Once
@@ -360,7 +743,44 @@ func (recv *ActionGroup) ListActions() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_action_group_query_action' : parameter 'parameter_type' of type 'GLib.VariantType' not supported
+var actionGroupQueryActionFunction *gi.Function
+var actionGroupQueryActionFunction_Once sync.Once
+
+func actionGroupQueryActionFunction_Set() error {
+	var err error
+	actionGroupQueryActionFunction_Once.Do(func() {
+		err = actionGroupInterface_Set()
+		if err != nil {
+			return
+		}
+		actionGroupQueryActionFunction, err = actionGroupInterface.InvokerNew("query_action")
+	})
+	return err
+}
+
+// QueryAction is a representation of the C type g_action_group_query_action.
+func (recv *ActionGroup) QueryAction(actionName string) (bool, bool, *glib.VariantType, *glib.VariantType, *glib.Variant, *glib.Variant) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(actionName)
+
+	var outArgs [5]gi.Argument
+	var ret gi.Argument
+
+	err := actionGroupQueryActionFunction_Set()
+	if err == nil {
+		ret = actionGroupQueryActionFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Boolean()
+	out1 := glib.VariantTypeNewFromNative(outArgs[1].Pointer())
+	out2 := glib.VariantTypeNewFromNative(outArgs[2].Pointer())
+	out3 := glib.VariantNewFromNative(outArgs[3].Pointer())
+	out4 := glib.VariantNewFromNative(outArgs[4].Pointer())
+
+	return retGo, out0, out1, out2, out3, out4
+}
 
 /*
 ConnectActionAdded connects a callback to the 'action-added' signal of the ActionGroup.
@@ -395,7 +815,16 @@ func (recv *ActionGroup) ConnectActionRemoved(handler func(instance *ActionGroup
 	return callback.ConnectSignal(recv.Native(), "action-removed", marshal)
 }
 
-// UNSUPPORTED : C value 'action-state-changed' : parameter 'value' of type 'GLib.Variant' not supported
+/*
+ConnectActionStateChanged connects a callback to the 'action-state-changed' signal of the ActionGroup.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ActionGroup) ConnectActionStateChanged(handler func(instance *ActionGroup, actionName string, value *glib.Variant)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "action-state-changed", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -874,11 +1303,75 @@ func (recv *AppInfo) GetSupportedTypes() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_app_info_launch' : parameter 'files' of type 'GLib.List' not supported
+var appInfoLaunchFunction *gi.Function
+var appInfoLaunchFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_app_info_launch_uris' : parameter 'uris' of type 'GLib.List' not supported
+func appInfoLaunchFunction_Set() error {
+	var err error
+	appInfoLaunchFunction_Once.Do(func() {
+		err = appInfoInterface_Set()
+		if err != nil {
+			return
+		}
+		appInfoLaunchFunction, err = appInfoInterface.InvokerNew("launch")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_app_info_launch_uris_async' : parameter 'uris' of type 'GLib.List' not supported
+// Launch is a representation of the C type g_app_info_launch.
+func (recv *AppInfo) Launch(files *glib.List, context *AppLaunchContext) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(files.Native())
+	inArgs[2].SetPointer(context.Native())
+
+	var ret gi.Argument
+
+	err := appInfoLaunchFunction_Set()
+	if err == nil {
+		ret = appInfoLaunchFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var appInfoLaunchUrisFunction *gi.Function
+var appInfoLaunchUrisFunction_Once sync.Once
+
+func appInfoLaunchUrisFunction_Set() error {
+	var err error
+	appInfoLaunchUrisFunction_Once.Do(func() {
+		err = appInfoInterface_Set()
+		if err != nil {
+			return
+		}
+		appInfoLaunchUrisFunction, err = appInfoInterface.InvokerNew("launch_uris")
+	})
+	return err
+}
+
+// LaunchUris is a representation of the C type g_app_info_launch_uris.
+func (recv *AppInfo) LaunchUris(uris *glib.List, context *AppLaunchContext) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(uris.Native())
+	inArgs[2].SetPointer(context.Native())
+
+	var ret gi.Argument
+
+	err := appInfoLaunchUrisFunction_Set()
+	if err == nil {
+		ret = appInfoLaunchUrisFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_app_info_launch_uris_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_app_info_launch_uris_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -1449,7 +1942,37 @@ func (recv *DBusObject) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_dbus_object_get_interface' : return type 'DBusInterface' not supported
 
-// UNSUPPORTED : C value 'g_dbus_object_get_interfaces' : return type 'GLib.List' not supported
+var dBusObjectGetInterfacesFunction *gi.Function
+var dBusObjectGetInterfacesFunction_Once sync.Once
+
+func dBusObjectGetInterfacesFunction_Set() error {
+	var err error
+	dBusObjectGetInterfacesFunction_Once.Do(func() {
+		err = dBusObjectInterface_Set()
+		if err != nil {
+			return
+		}
+		dBusObjectGetInterfacesFunction, err = dBusObjectInterface.InvokerNew("get_interfaces")
+	})
+	return err
+}
+
+// GetInterfaces is a representation of the C type g_dbus_object_get_interfaces.
+func (recv *DBusObject) GetInterfaces() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dBusObjectGetInterfacesFunction_Set()
+	if err == nil {
+		ret = dBusObjectGetInterfacesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var dBusObjectGetObjectPathFunction *gi.Function
 var dBusObjectGetObjectPathFunction_Once sync.Once
@@ -1571,7 +2094,37 @@ func (recv *DBusObjectManager) GetObjectPath() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_object_manager_get_objects' : return type 'GLib.List' not supported
+var dBusObjectManagerGetObjectsFunction *gi.Function
+var dBusObjectManagerGetObjectsFunction_Once sync.Once
+
+func dBusObjectManagerGetObjectsFunction_Set() error {
+	var err error
+	dBusObjectManagerGetObjectsFunction_Once.Do(func() {
+		err = dBusObjectManagerInterface_Set()
+		if err != nil {
+			return
+		}
+		dBusObjectManagerGetObjectsFunction, err = dBusObjectManagerInterface.InvokerNew("get_objects")
+	})
+	return err
+}
+
+// GetObjects is a representation of the C type g_dbus_object_manager_get_objects.
+func (recv *DBusObjectManager) GetObjects() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dBusObjectManagerGetObjectsFunction_Set()
+	if err == nil {
+		ret = dBusObjectManagerGetObjectsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'interface-added' : parameter 'object' of type 'DBusObject' not supported
 
@@ -2048,7 +2601,37 @@ func (recv *Drive) GetStartStopType() DriveStartStopType {
 
 // UNSUPPORTED : C value 'g_drive_get_symbolic_icon' : return type 'Icon' not supported
 
-// UNSUPPORTED : C value 'g_drive_get_volumes' : return type 'GLib.List' not supported
+var driveGetVolumesFunction *gi.Function
+var driveGetVolumesFunction_Once sync.Once
+
+func driveGetVolumesFunction_Set() error {
+	var err error
+	driveGetVolumesFunction_Once.Do(func() {
+		err = driveInterface_Set()
+		if err != nil {
+			return
+		}
+		driveGetVolumesFunction, err = driveInterface.InvokerNew("get_volumes")
+	})
+	return err
+}
+
+// GetVolumes is a representation of the C type g_drive_get_volumes.
+func (recv *Drive) GetVolumes() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := driveGetVolumesFunction_Set()
+	if err == nil {
+		ret = driveGetVolumesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var driveHasMediaFunction *gi.Function
 var driveHasMediaFunction_Once sync.Once
@@ -2314,7 +2897,37 @@ func (recv *DtlsClientConnection) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_dtls_client_connection_get_accepted_cas' : return type 'GLib.List' not supported
+var dtlsClientConnectionGetAcceptedCasFunction *gi.Function
+var dtlsClientConnectionGetAcceptedCasFunction_Once sync.Once
+
+func dtlsClientConnectionGetAcceptedCasFunction_Set() error {
+	var err error
+	dtlsClientConnectionGetAcceptedCasFunction_Once.Do(func() {
+		err = dtlsClientConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		dtlsClientConnectionGetAcceptedCasFunction, err = dtlsClientConnectionInterface.InvokerNew("get_accepted_cas")
+	})
+	return err
+}
+
+// GetAcceptedCas is a representation of the C type g_dtls_client_connection_get_accepted_cas.
+func (recv *DtlsClientConnection) GetAcceptedCas() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dtlsClientConnectionGetAcceptedCasFunction_Set()
+	if err == nil {
+		ret = dtlsClientConnectionGetAcceptedCasFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_dtls_client_connection_get_server_identity' : return type 'SocketConnectable' not supported
 
@@ -3296,7 +3909,40 @@ func (recv *File) IsNative() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_load_bytes' : return type 'GLib.Bytes' not supported
+var fileLoadBytesFunction *gi.Function
+var fileLoadBytesFunction_Once sync.Once
+
+func fileLoadBytesFunction_Set() error {
+	var err error
+	fileLoadBytesFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileLoadBytesFunction, err = fileInterface.InvokerNew("load_bytes")
+	})
+	return err
+}
+
+// LoadBytes is a representation of the C type g_file_load_bytes.
+func (recv *File) LoadBytes(cancellable *Cancellable) (*glib.Bytes, string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cancellable.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := fileLoadBytesFunction_Set()
+	if err == nil {
+		ret = fileLoadBytesFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := glib.BytesNewFromNative(ret.Pointer())
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0
+}
 
 // UNSUPPORTED : C value 'g_file_load_bytes_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
@@ -3707,7 +4353,7 @@ func (recv *File) Read(cancellable *Cancellable) *FileInputStream {
 
 // UNSUPPORTED : C value 'g_file_replace_contents_async' : parameter 'contents' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_file_replace_contents_bytes_async' : parameter 'contents' of type 'GLib.Bytes' not supported
+// UNSUPPORTED : C value 'g_file_replace_contents_bytes_async' : parameter 'flags' of type 'FileCreateFlags' not supported
 
 // UNSUPPORTED : C value 'g_file_replace_contents_finish' : parameter 'res' of type 'AsyncResult' not supported
 
@@ -3944,7 +4590,37 @@ func (recv *Icon) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_icon_equal' : parameter 'icon2' of type 'Icon' not supported
 
-// UNSUPPORTED : C value 'g_icon_serialize' : return type 'GLib.Variant' not supported
+var iconSerializeFunction *gi.Function
+var iconSerializeFunction_Once sync.Once
+
+func iconSerializeFunction_Set() error {
+	var err error
+	iconSerializeFunction_Once.Do(func() {
+		err = iconInterface_Set()
+		if err != nil {
+			return
+		}
+		iconSerializeFunction, err = iconInterface.InvokerNew("serialize")
+	})
+	return err
+}
+
+// Serialize is a representation of the C type g_icon_serialize.
+func (recv *Icon) Serialize() *glib.Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := iconSerializeFunction_Set()
+	if err == nil {
+		ret = iconSerializeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var iconToStringFunction *gi.Function
 var iconToStringFunction_Once sync.Once
@@ -4915,7 +5591,38 @@ func (recv *PollableInputStream) CanPoll() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_pollable_input_stream_create_source' : return type 'GLib.Source' not supported
+var pollableInputStreamCreateSourceFunction *gi.Function
+var pollableInputStreamCreateSourceFunction_Once sync.Once
+
+func pollableInputStreamCreateSourceFunction_Set() error {
+	var err error
+	pollableInputStreamCreateSourceFunction_Once.Do(func() {
+		err = pollableInputStreamInterface_Set()
+		if err != nil {
+			return
+		}
+		pollableInputStreamCreateSourceFunction, err = pollableInputStreamInterface.InvokerNew("create_source")
+	})
+	return err
+}
+
+// CreateSource is a representation of the C type g_pollable_input_stream_create_source.
+func (recv *PollableInputStream) CreateSource(cancellable *Cancellable) *glib.Source {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := pollableInputStreamCreateSourceFunction_Set()
+	if err == nil {
+		ret = pollableInputStreamCreateSourceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SourceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var pollableInputStreamIsReadableFunction *gi.Function
 var pollableInputStreamIsReadableFunction_Once sync.Once
@@ -5022,7 +5729,38 @@ func (recv *PollableOutputStream) CanPoll() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_pollable_output_stream_create_source' : return type 'GLib.Source' not supported
+var pollableOutputStreamCreateSourceFunction *gi.Function
+var pollableOutputStreamCreateSourceFunction_Once sync.Once
+
+func pollableOutputStreamCreateSourceFunction_Set() error {
+	var err error
+	pollableOutputStreamCreateSourceFunction_Once.Do(func() {
+		err = pollableOutputStreamInterface_Set()
+		if err != nil {
+			return
+		}
+		pollableOutputStreamCreateSourceFunction, err = pollableOutputStreamInterface.InvokerNew("create_source")
+	})
+	return err
+}
+
+// CreateSource is a representation of the C type g_pollable_output_stream_create_source.
+func (recv *PollableOutputStream) CreateSource(cancellable *Cancellable) *glib.Source {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := pollableOutputStreamCreateSourceFunction_Set()
+	if err == nil {
+		ret = pollableOutputStreamCreateSourceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SourceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var pollableOutputStreamIsWritableFunction *gi.Function
 var pollableOutputStreamIsWritableFunction_Once sync.Once
@@ -5314,9 +6052,67 @@ func (recv *RemoteActionGroup) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_remote_action_group_activate_action_full' : parameter 'parameter' of type 'GLib.Variant' not supported
+var remoteActionGroupActivateActionFullFunction *gi.Function
+var remoteActionGroupActivateActionFullFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_remote_action_group_change_action_state_full' : parameter 'value' of type 'GLib.Variant' not supported
+func remoteActionGroupActivateActionFullFunction_Set() error {
+	var err error
+	remoteActionGroupActivateActionFullFunction_Once.Do(func() {
+		err = remoteActionGroupInterface_Set()
+		if err != nil {
+			return
+		}
+		remoteActionGroupActivateActionFullFunction, err = remoteActionGroupInterface.InvokerNew("activate_action_full")
+	})
+	return err
+}
+
+// ActivateActionFull is a representation of the C type g_remote_action_group_activate_action_full.
+func (recv *RemoteActionGroup) ActivateActionFull(actionName string, parameter *glib.Variant, platformData *glib.Variant) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(actionName)
+	inArgs[2].SetPointer(parameter.Native())
+	inArgs[3].SetPointer(platformData.Native())
+
+	err := remoteActionGroupActivateActionFullFunction_Set()
+	if err == nil {
+		remoteActionGroupActivateActionFullFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var remoteActionGroupChangeActionStateFullFunction *gi.Function
+var remoteActionGroupChangeActionStateFullFunction_Once sync.Once
+
+func remoteActionGroupChangeActionStateFullFunction_Set() error {
+	var err error
+	remoteActionGroupChangeActionStateFullFunction_Once.Do(func() {
+		err = remoteActionGroupInterface_Set()
+		if err != nil {
+			return
+		}
+		remoteActionGroupChangeActionStateFullFunction, err = remoteActionGroupInterface.InvokerNew("change_action_state_full")
+	})
+	return err
+}
+
+// ChangeActionStateFull is a representation of the C type g_remote_action_group_change_action_state_full.
+func (recv *RemoteActionGroup) ChangeActionStateFull(actionName string, value *glib.Variant, platformData *glib.Variant) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(actionName)
+	inArgs[2].SetPointer(value.Native())
+	inArgs[3].SetPointer(platformData.Native())
+
+	err := remoteActionGroupChangeActionStateFullFunction_Set()
+	if err == nil {
+		remoteActionGroupChangeActionStateFullFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var seekableInterface *gi.Interface
 var seekableInterface_Once sync.Once
@@ -5841,7 +6637,37 @@ func (recv *TlsClientConnection) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_tls_client_connection_copy_session_state' : parameter 'source' of type 'TlsClientConnection' not supported
 
-// UNSUPPORTED : C value 'g_tls_client_connection_get_accepted_cas' : return type 'GLib.List' not supported
+var tlsClientConnectionGetAcceptedCasFunction *gi.Function
+var tlsClientConnectionGetAcceptedCasFunction_Once sync.Once
+
+func tlsClientConnectionGetAcceptedCasFunction_Set() error {
+	var err error
+	tlsClientConnectionGetAcceptedCasFunction_Once.Do(func() {
+		err = tlsClientConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		tlsClientConnectionGetAcceptedCasFunction, err = tlsClientConnectionInterface.InvokerNew("get_accepted_cas")
+	})
+	return err
+}
+
+// GetAcceptedCas is a representation of the C type g_tls_client_connection_get_accepted_cas.
+func (recv *TlsClientConnection) GetAcceptedCas() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := tlsClientConnectionGetAcceptedCasFunction_Set()
+	if err == nil {
+		ret = tlsClientConnectionGetAcceptedCasFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_tls_client_connection_get_server_identity' : return type 'SocketConnectable' not supported
 

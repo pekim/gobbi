@@ -4,7 +4,9 @@ package webkit2
 
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	gtk "github.com/pekim/gobbi/lib/gtk"
 	javascriptcore "github.com/pekim/gobbi/lib/javascriptcore"
 	"runtime"
 	"sync"
@@ -305,9 +307,19 @@ func (recv *AuthenticationRequestClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *AuthenticationRequestClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(authenticationRequestClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *AuthenticationRequestClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(authenticationRequestClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -433,9 +445,19 @@ func (recv *AutomationSessionClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *AutomationSessionClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(automationSessionClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *AutomationSessionClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(automationSessionClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -561,9 +583,19 @@ func (recv *BackForwardListClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *BackForwardListClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(backForwardListClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *BackForwardListClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(backForwardListClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -635,9 +667,19 @@ func (recv *BackForwardListItemClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *BackForwardListItemClass) FieldParentClass() *gobject.InitiallyUnownedClass {
+	argValue := gi.StructFieldGet(backForwardListItemClassStruct, recv.Native(), "parent_class")
+	value := gobject.InitiallyUnownedClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.InitiallyUnownedClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *BackForwardListItemClass) SetFieldParentClass(value *gobject.InitiallyUnownedClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(backForwardListItemClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -817,9 +859,19 @@ func (recv *ColorChooserRequestClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *ColorChooserRequestClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(colorChooserRequestClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *ColorChooserRequestClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(colorChooserRequestClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // ColorChooserRequestClassStruct creates an uninitialised ColorChooserRequestClass.
 func ColorChooserRequestClassStruct() *ColorChooserRequestClass {
@@ -929,9 +981,19 @@ func (recv *ContextMenuClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *ContextMenuClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(contextMenuClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *ContextMenuClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(contextMenuClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -1003,9 +1065,19 @@ func (recv *ContextMenuItemClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *ContextMenuItemClass) FieldParentClass() *gobject.InitiallyUnownedClass {
+	argValue := gi.StructFieldGet(contextMenuItemClassStruct, recv.Native(), "parent_class")
+	value := gobject.InitiallyUnownedClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.InitiallyUnownedClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *ContextMenuItemClass) SetFieldParentClass(value *gobject.InitiallyUnownedClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(contextMenuItemClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -1185,9 +1257,19 @@ func (recv *CookieManagerClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *CookieManagerClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(cookieManagerClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *CookieManagerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(cookieManagerClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -1574,9 +1656,19 @@ func (recv *DeviceInfoPermissionRequestClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *DeviceInfoPermissionRequestClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(deviceInfoPermissionRequestClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *DeviceInfoPermissionRequestClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(deviceInfoPermissionRequestClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -1702,9 +1794,19 @@ func (recv *DownloadClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *DownloadClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(downloadClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *DownloadClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(downloadClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'decide_destination' : for field getter : missing Type
 
@@ -1834,9 +1936,19 @@ func (recv *EditorStateClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *EditorStateClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(editorStateClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *EditorStateClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(editorStateClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -1962,9 +2074,19 @@ func (recv *FaviconDatabaseClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *FaviconDatabaseClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(faviconDatabaseClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *FaviconDatabaseClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(faviconDatabaseClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -2090,9 +2212,19 @@ func (recv *FileChooserRequestClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *FileChooserRequestClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(fileChooserRequestClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *FileChooserRequestClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fileChooserRequestClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -2218,9 +2350,19 @@ func (recv *FindControllerClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *FindControllerClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(findControllerClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *FindControllerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(findControllerClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -2346,9 +2488,19 @@ func (recv *FormSubmissionRequestClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *FormSubmissionRequestClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(formSubmissionRequestClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *FormSubmissionRequestClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(formSubmissionRequestClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -2474,9 +2626,19 @@ func (recv *GeolocationManagerClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *GeolocationManagerClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(geolocationManagerClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *GeolocationManagerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(geolocationManagerClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -2602,9 +2764,19 @@ func (recv *GeolocationPermissionRequestClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *GeolocationPermissionRequestClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(geolocationPermissionRequestClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *GeolocationPermissionRequestClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(geolocationPermissionRequestClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -3008,9 +3180,19 @@ func (recv *HitTestResultClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *HitTestResultClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(hitTestResultClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *HitTestResultClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(hitTestResultClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -3136,9 +3318,19 @@ func (recv *InstallMissingMediaPluginsPermissionRequestClass) Native() unsafe.Po
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *InstallMissingMediaPluginsPermissionRequestClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(installMissingMediaPluginsPermissionRequestClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *InstallMissingMediaPluginsPermissionRequestClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(installMissingMediaPluginsPermissionRequestClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -3264,7 +3456,37 @@ func (recv *JavascriptResult) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'webkit_javascript_result_get_global_context' : return type 'JavaScriptCore.GlobalContextRef' not supported
+var javascriptResultGetGlobalContextFunction *gi.Function
+var javascriptResultGetGlobalContextFunction_Once sync.Once
+
+func javascriptResultGetGlobalContextFunction_Set() error {
+	var err error
+	javascriptResultGetGlobalContextFunction_Once.Do(func() {
+		err = javascriptResultStruct_Set()
+		if err != nil {
+			return
+		}
+		javascriptResultGetGlobalContextFunction, err = javascriptResultStruct.InvokerNew("get_global_context")
+	})
+	return err
+}
+
+// GetGlobalContext is a representation of the C type webkit_javascript_result_get_global_context.
+func (recv *JavascriptResult) GetGlobalContext() *javascriptcore.GlobalContextRef {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := javascriptResultGetGlobalContextFunction_Set()
+	if err == nil {
+		ret = javascriptResultGetGlobalContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := javascriptcore.GlobalContextRefNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var javascriptResultGetJsValueFunction *gi.Function
 var javascriptResultGetJsValueFunction_Once sync.Once
@@ -3298,7 +3520,37 @@ func (recv *JavascriptResult) GetJsValue() *javascriptcore.Value {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_javascript_result_get_value' : return type 'JavaScriptCore.ValueRef' not supported
+var javascriptResultGetValueFunction *gi.Function
+var javascriptResultGetValueFunction_Once sync.Once
+
+func javascriptResultGetValueFunction_Set() error {
+	var err error
+	javascriptResultGetValueFunction_Once.Do(func() {
+		err = javascriptResultStruct_Set()
+		if err != nil {
+			return
+		}
+		javascriptResultGetValueFunction, err = javascriptResultStruct.InvokerNew("get_value")
+	})
+	return err
+}
+
+// GetValue is a representation of the C type webkit_javascript_result_get_value.
+func (recv *JavascriptResult) GetValue() *javascriptcore.ValueRef {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := javascriptResultGetValueFunction_Set()
+	if err == nil {
+		ret = javascriptResultGetValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := javascriptcore.ValueRefNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var javascriptResultRefFunction *gi.Function
 var javascriptResultRefFunction_Once sync.Once
@@ -4195,9 +4447,19 @@ func (recv *NotificationClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *NotificationClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(notificationClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *NotificationClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(notificationClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -4277,9 +4539,19 @@ func (recv *NotificationPermissionRequestClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *NotificationPermissionRequestClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(notificationPermissionRequestClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *NotificationPermissionRequestClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(notificationPermissionRequestClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // NotificationPermissionRequestClassStruct creates an uninitialised NotificationPermissionRequestClass.
 func NotificationPermissionRequestClassStruct() *NotificationPermissionRequestClass {
@@ -4443,9 +4715,19 @@ func (recv *OptionMenuClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *OptionMenuClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(optionMenuClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *OptionMenuClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(optionMenuClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -4877,9 +5159,19 @@ func (recv *PermissionRequestIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_interface' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParentInterface returns the C field 'parent_interface'.
+func (recv *PermissionRequestIface) FieldParentInterface() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(permissionRequestIfaceStruct, recv.Native(), "parent_interface")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_interface' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParentInterface sets the value of the C field 'parent_interface'.
+func (recv *PermissionRequestIface) SetFieldParentInterface(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(permissionRequestIfaceStruct, recv.Native(), "parent_interface", argValue)
+}
 
 // UNSUPPORTED : C value 'allow' : for field getter : missing Type
 
@@ -4943,9 +5235,19 @@ func (recv *PluginClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *PluginClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(pluginClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *PluginClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(pluginClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -5071,9 +5373,19 @@ func (recv *PolicyDecisionClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *PolicyDecisionClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(policyDecisionClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *PolicyDecisionClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(policyDecisionClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -5199,9 +5511,19 @@ func (recv *PrintCustomWidgetClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *PrintCustomWidgetClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(printCustomWidgetClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *PrintCustomWidgetClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(printCustomWidgetClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'apply' : for field getter : missing Type
 
@@ -5335,9 +5657,19 @@ func (recv *PrintOperationClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *PrintOperationClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(printOperationClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *PrintOperationClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(printOperationClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -5897,9 +6229,19 @@ func (recv *SecurityManagerClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *SecurityManagerClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(securityManagerClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *SecurityManagerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(securityManagerClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -6350,9 +6692,19 @@ func (recv *SettingsClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *SettingsClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(settingsClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *SettingsClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(settingsClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -6478,9 +6830,19 @@ func (recv *URIRequestClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *URIRequestClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(uRIRequestClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *URIRequestClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(uRIRequestClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -6606,9 +6968,19 @@ func (recv *URIResponseClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *URIResponseClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(uRIResponseClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *URIResponseClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(uRIResponseClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -6734,9 +7106,19 @@ func (recv *URISchemeRequestClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *URISchemeRequestClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(uRISchemeRequestClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *URISchemeRequestClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(uRISchemeRequestClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -7008,9 +7390,19 @@ func (recv *UserContentFilterStoreClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *UserContentFilterStoreClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(userContentFilterStoreClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *UserContentFilterStoreClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(userContentFilterStoreClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -7136,9 +7528,19 @@ func (recv *UserContentManagerClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *UserContentManagerClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(userContentManagerClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *UserContentManagerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(userContentManagerClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -7264,9 +7666,19 @@ func (recv *UserMediaPermissionRequestClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *UserMediaPermissionRequestClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(userMediaPermissionRequestClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *UserMediaPermissionRequestClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(userMediaPermissionRequestClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -7598,9 +8010,19 @@ func (recv *WebContextClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParent returns the C field 'parent'.
+func (recv *WebContextClass) FieldParent() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(webContextClassStruct, recv.Native(), "parent")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *WebContextClass) SetFieldParent(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(webContextClassStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'download_started' : for field getter : missing Type
 
@@ -7742,9 +8164,19 @@ func (recv *WebInspectorClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *WebInspectorClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(webInspectorClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *WebInspectorClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(webInspectorClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -7870,9 +8302,19 @@ func (recv *WebResourceClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *WebResourceClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(webResourceClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *WebResourceClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(webResourceClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -7998,9 +8440,19 @@ func (recv *WebViewBaseClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parentClass' : for field getter : no Go type for 'Gtk.ContainerClass'
+// FieldParentClass returns the C field 'parentClass'.
+func (recv *WebViewBaseClass) FieldParentClass() *gtk.ContainerClass {
+	argValue := gi.StructFieldGet(webViewBaseClassStruct, recv.Native(), "parentClass")
+	value := gtk.ContainerClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parentClass' : for field setter : no Go type for 'Gtk.ContainerClass'
+// SetFieldParentClass sets the value of the C field 'parentClass'.
+func (recv *WebViewBaseClass) SetFieldParentClass(value *gtk.ContainerClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(webViewBaseClassStruct, recv.Native(), "parentClass", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -8360,7 +8812,37 @@ func (recv *WebViewSessionState) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_session_state_new' : parameter 'data' of type 'GLib.Bytes' not supported
+var webViewSessionStateNewFunction *gi.Function
+var webViewSessionStateNewFunction_Once sync.Once
+
+func webViewSessionStateNewFunction_Set() error {
+	var err error
+	webViewSessionStateNewFunction_Once.Do(func() {
+		err = webViewSessionStateStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewSessionStateNewFunction, err = webViewSessionStateStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// WebViewSessionStateNew is a representation of the C type webkit_web_view_session_state_new.
+func WebViewSessionStateNew(data *glib.Bytes) *WebViewSessionState {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(data.Native())
+
+	var ret gi.Argument
+
+	err := webViewSessionStateNewFunction_Set()
+	if err == nil {
+		ret = webViewSessionStateNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WebViewSessionStateNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var webViewSessionStateRefFunction *gi.Function
 var webViewSessionStateRefFunction_Once sync.Once
@@ -8394,7 +8876,37 @@ func (recv *WebViewSessionState) Ref() *WebViewSessionState {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_session_state_serialize' : return type 'GLib.Bytes' not supported
+var webViewSessionStateSerializeFunction *gi.Function
+var webViewSessionStateSerializeFunction_Once sync.Once
+
+func webViewSessionStateSerializeFunction_Set() error {
+	var err error
+	webViewSessionStateSerializeFunction_Once.Do(func() {
+		err = webViewSessionStateStruct_Set()
+		if err != nil {
+			return
+		}
+		webViewSessionStateSerializeFunction, err = webViewSessionStateStruct.InvokerNew("serialize")
+	})
+	return err
+}
+
+// Serialize is a representation of the C type webkit_web_view_session_state_serialize.
+func (recv *WebViewSessionState) Serialize() *glib.Bytes {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := webViewSessionStateSerializeFunction_Set()
+	if err == nil {
+		ret = webViewSessionStateSerializeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.BytesNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var webViewSessionStateUnrefFunction *gi.Function
 var webViewSessionStateUnrefFunction_Once sync.Once
@@ -8613,9 +9125,19 @@ func (recv *WebsiteDataManagerClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *WebsiteDataManagerClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(websiteDataManagerClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *WebsiteDataManagerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(websiteDataManagerClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 
@@ -8741,9 +9263,19 @@ func (recv *WindowPropertiesClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *WindowPropertiesClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(windowPropertiesClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *WindowPropertiesClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(windowPropertiesClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_webkit_reserved0' : for field getter : missing Type
 

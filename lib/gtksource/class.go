@@ -6,9 +6,11 @@ import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	atk "github.com/pekim/gobbi/lib/atk"
+	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	gio "github.com/pekim/gobbi/lib/gio"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	gtk "github.com/pekim/gobbi/lib/gtk"
 	"runtime"
@@ -172,7 +174,39 @@ func BufferNewWithLanguage(language *Language) *Buffer {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_buffer_backward_iter_to_source_mark' : parameter 'iter' of type 'Gtk.TextIter' not supported
+var bufferBackwardIterToSourceMarkFunction *gi.Function
+var bufferBackwardIterToSourceMarkFunction_Once sync.Once
+
+func bufferBackwardIterToSourceMarkFunction_Set() error {
+	var err error
+	bufferBackwardIterToSourceMarkFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferBackwardIterToSourceMarkFunction, err = bufferObject.InvokerNew("backward_iter_to_source_mark")
+	})
+	return err
+}
+
+// BackwardIterToSourceMark is a representation of the C type gtk_source_buffer_backward_iter_to_source_mark.
+func (recv *Buffer) BackwardIterToSourceMark(iter *gtk.TextIter, category string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+	inArgs[2].SetString(category)
+
+	var ret gi.Argument
+
+	err := bufferBackwardIterToSourceMarkFunction_Set()
+	if err == nil {
+		ret = bufferBackwardIterToSourceMarkFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var bufferBeginNotUndoableActionFunction *gi.Function
 var bufferBeginNotUndoableActionFunction_Once sync.Once
@@ -266,9 +300,71 @@ func (recv *Buffer) CanUndo() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_buffer_change_case' : parameter 'start' of type 'Gtk.TextIter' not supported
+var bufferChangeCaseFunction *gi.Function
+var bufferChangeCaseFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_buffer_create_source_mark' : parameter 'where' of type 'Gtk.TextIter' not supported
+func bufferChangeCaseFunction_Set() error {
+	var err error
+	bufferChangeCaseFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferChangeCaseFunction, err = bufferObject.InvokerNew("change_case")
+	})
+	return err
+}
+
+// ChangeCase is a representation of the C type gtk_source_buffer_change_case.
+func (recv *Buffer) ChangeCase(caseType ChangeCaseType, start *gtk.TextIter, end *gtk.TextIter) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(caseType))
+	inArgs[2].SetPointer(start.Native())
+	inArgs[3].SetPointer(end.Native())
+
+	err := bufferChangeCaseFunction_Set()
+	if err == nil {
+		bufferChangeCaseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var bufferCreateSourceMarkFunction *gi.Function
+var bufferCreateSourceMarkFunction_Once sync.Once
+
+func bufferCreateSourceMarkFunction_Set() error {
+	var err error
+	bufferCreateSourceMarkFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferCreateSourceMarkFunction, err = bufferObject.InvokerNew("create_source_mark")
+	})
+	return err
+}
+
+// CreateSourceMark is a representation of the C type gtk_source_buffer_create_source_mark.
+func (recv *Buffer) CreateSourceMark(name string, category string, where *gtk.TextIter) *Mark {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(name)
+	inArgs[2].SetString(category)
+	inArgs[3].SetPointer(where.Native())
+
+	var ret gi.Argument
+
+	err := bufferCreateSourceMarkFunction_Set()
+	if err == nil {
+		ret = bufferCreateSourceMarkFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := MarkNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_buffer_create_source_tag' : parameter '...' of type 'nil' not supported
 
@@ -300,11 +396,98 @@ func (recv *Buffer) EndNotUndoableAction() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_buffer_ensure_highlight' : parameter 'start' of type 'Gtk.TextIter' not supported
+var bufferEnsureHighlightFunction *gi.Function
+var bufferEnsureHighlightFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_buffer_forward_iter_to_source_mark' : parameter 'iter' of type 'Gtk.TextIter' not supported
+func bufferEnsureHighlightFunction_Set() error {
+	var err error
+	bufferEnsureHighlightFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferEnsureHighlightFunction, err = bufferObject.InvokerNew("ensure_highlight")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_source_buffer_get_context_classes_at_iter' : parameter 'iter' of type 'Gtk.TextIter' not supported
+// EnsureHighlight is a representation of the C type gtk_source_buffer_ensure_highlight.
+func (recv *Buffer) EnsureHighlight(start *gtk.TextIter, end *gtk.TextIter) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(start.Native())
+	inArgs[2].SetPointer(end.Native())
+
+	err := bufferEnsureHighlightFunction_Set()
+	if err == nil {
+		bufferEnsureHighlightFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var bufferForwardIterToSourceMarkFunction *gi.Function
+var bufferForwardIterToSourceMarkFunction_Once sync.Once
+
+func bufferForwardIterToSourceMarkFunction_Set() error {
+	var err error
+	bufferForwardIterToSourceMarkFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferForwardIterToSourceMarkFunction, err = bufferObject.InvokerNew("forward_iter_to_source_mark")
+	})
+	return err
+}
+
+// ForwardIterToSourceMark is a representation of the C type gtk_source_buffer_forward_iter_to_source_mark.
+func (recv *Buffer) ForwardIterToSourceMark(iter *gtk.TextIter, category string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+	inArgs[2].SetString(category)
+
+	var ret gi.Argument
+
+	err := bufferForwardIterToSourceMarkFunction_Set()
+	if err == nil {
+		ret = bufferForwardIterToSourceMarkFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var bufferGetContextClassesAtIterFunction *gi.Function
+var bufferGetContextClassesAtIterFunction_Once sync.Once
+
+func bufferGetContextClassesAtIterFunction_Set() error {
+	var err error
+	bufferGetContextClassesAtIterFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferGetContextClassesAtIterFunction, err = bufferObject.InvokerNew("get_context_classes_at_iter")
+	})
+	return err
+}
+
+// GetContextClassesAtIter is a representation of the C type gtk_source_buffer_get_context_classes_at_iter.
+func (recv *Buffer) GetContextClassesAtIter(iter *gtk.TextIter) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+
+	err := bufferGetContextClassesAtIterFunction_Set()
+	if err == nil {
+		bufferGetContextClassesAtIterFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var bufferGetHighlightMatchingBracketsFunction *gi.Function
 var bufferGetHighlightMatchingBracketsFunction_Once sync.Once
@@ -466,9 +649,73 @@ func (recv *Buffer) GetMaxUndoLevels() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_buffer_get_source_marks_at_iter' : parameter 'iter' of type 'Gtk.TextIter' not supported
+var bufferGetSourceMarksAtIterFunction *gi.Function
+var bufferGetSourceMarksAtIterFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_buffer_get_source_marks_at_line' : return type 'GLib.SList' not supported
+func bufferGetSourceMarksAtIterFunction_Set() error {
+	var err error
+	bufferGetSourceMarksAtIterFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferGetSourceMarksAtIterFunction, err = bufferObject.InvokerNew("get_source_marks_at_iter")
+	})
+	return err
+}
+
+// GetSourceMarksAtIter is a representation of the C type gtk_source_buffer_get_source_marks_at_iter.
+func (recv *Buffer) GetSourceMarksAtIter(iter *gtk.TextIter, category string) *glib.SList {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+	inArgs[2].SetString(category)
+
+	var ret gi.Argument
+
+	err := bufferGetSourceMarksAtIterFunction_Set()
+	if err == nil {
+		ret = bufferGetSourceMarksAtIterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var bufferGetSourceMarksAtLineFunction *gi.Function
+var bufferGetSourceMarksAtLineFunction_Once sync.Once
+
+func bufferGetSourceMarksAtLineFunction_Set() error {
+	var err error
+	bufferGetSourceMarksAtLineFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferGetSourceMarksAtLineFunction, err = bufferObject.InvokerNew("get_source_marks_at_line")
+	})
+	return err
+}
+
+// GetSourceMarksAtLine is a representation of the C type gtk_source_buffer_get_source_marks_at_line.
+func (recv *Buffer) GetSourceMarksAtLine(line int32, category string) *glib.SList {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(line)
+	inArgs[2].SetString(category)
+
+	var ret gi.Argument
+
+	err := bufferGetSourceMarksAtLineFunction_Set()
+	if err == nil {
+		ret = bufferGetSourceMarksAtLineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var bufferGetStyleSchemeFunction *gi.Function
 var bufferGetStyleSchemeFunction_Once sync.Once
@@ -504,13 +751,137 @@ func (recv *Buffer) GetStyleScheme() *StyleScheme {
 
 // UNSUPPORTED : C value 'gtk_source_buffer_get_undo_manager' : return type 'UndoManager' not supported
 
-// UNSUPPORTED : C value 'gtk_source_buffer_iter_backward_to_context_class_toggle' : parameter 'iter' of type 'Gtk.TextIter' not supported
+var bufferIterBackwardToContextClassToggleFunction *gi.Function
+var bufferIterBackwardToContextClassToggleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_buffer_iter_forward_to_context_class_toggle' : parameter 'iter' of type 'Gtk.TextIter' not supported
+func bufferIterBackwardToContextClassToggleFunction_Set() error {
+	var err error
+	bufferIterBackwardToContextClassToggleFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferIterBackwardToContextClassToggleFunction, err = bufferObject.InvokerNew("iter_backward_to_context_class_toggle")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_source_buffer_iter_has_context_class' : parameter 'iter' of type 'Gtk.TextIter' not supported
+// IterBackwardToContextClassToggle is a representation of the C type gtk_source_buffer_iter_backward_to_context_class_toggle.
+func (recv *Buffer) IterBackwardToContextClassToggle(iter *gtk.TextIter, contextClass string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+	inArgs[2].SetString(contextClass)
 
-// UNSUPPORTED : C value 'gtk_source_buffer_join_lines' : parameter 'start' of type 'Gtk.TextIter' not supported
+	var ret gi.Argument
+
+	err := bufferIterBackwardToContextClassToggleFunction_Set()
+	if err == nil {
+		ret = bufferIterBackwardToContextClassToggleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var bufferIterForwardToContextClassToggleFunction *gi.Function
+var bufferIterForwardToContextClassToggleFunction_Once sync.Once
+
+func bufferIterForwardToContextClassToggleFunction_Set() error {
+	var err error
+	bufferIterForwardToContextClassToggleFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferIterForwardToContextClassToggleFunction, err = bufferObject.InvokerNew("iter_forward_to_context_class_toggle")
+	})
+	return err
+}
+
+// IterForwardToContextClassToggle is a representation of the C type gtk_source_buffer_iter_forward_to_context_class_toggle.
+func (recv *Buffer) IterForwardToContextClassToggle(iter *gtk.TextIter, contextClass string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+	inArgs[2].SetString(contextClass)
+
+	var ret gi.Argument
+
+	err := bufferIterForwardToContextClassToggleFunction_Set()
+	if err == nil {
+		ret = bufferIterForwardToContextClassToggleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var bufferIterHasContextClassFunction *gi.Function
+var bufferIterHasContextClassFunction_Once sync.Once
+
+func bufferIterHasContextClassFunction_Set() error {
+	var err error
+	bufferIterHasContextClassFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferIterHasContextClassFunction, err = bufferObject.InvokerNew("iter_has_context_class")
+	})
+	return err
+}
+
+// IterHasContextClass is a representation of the C type gtk_source_buffer_iter_has_context_class.
+func (recv *Buffer) IterHasContextClass(iter *gtk.TextIter, contextClass string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+	inArgs[2].SetString(contextClass)
+
+	var ret gi.Argument
+
+	err := bufferIterHasContextClassFunction_Set()
+	if err == nil {
+		ret = bufferIterHasContextClassFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var bufferJoinLinesFunction *gi.Function
+var bufferJoinLinesFunction_Once sync.Once
+
+func bufferJoinLinesFunction_Set() error {
+	var err error
+	bufferJoinLinesFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferJoinLinesFunction, err = bufferObject.InvokerNew("join_lines")
+	})
+	return err
+}
+
+// JoinLines is a representation of the C type gtk_source_buffer_join_lines.
+func (recv *Buffer) JoinLines(start *gtk.TextIter, end *gtk.TextIter) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(start.Native())
+	inArgs[2].SetPointer(end.Native())
+
+	err := bufferJoinLinesFunction_Set()
+	if err == nil {
+		bufferJoinLinesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var bufferRedoFunction *gi.Function
 var bufferRedoFunction_Once sync.Once
@@ -540,7 +911,36 @@ func (recv *Buffer) Redo() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_buffer_remove_source_marks' : parameter 'start' of type 'Gtk.TextIter' not supported
+var bufferRemoveSourceMarksFunction *gi.Function
+var bufferRemoveSourceMarksFunction_Once sync.Once
+
+func bufferRemoveSourceMarksFunction_Set() error {
+	var err error
+	bufferRemoveSourceMarksFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferRemoveSourceMarksFunction, err = bufferObject.InvokerNew("remove_source_marks")
+	})
+	return err
+}
+
+// RemoveSourceMarks is a representation of the C type gtk_source_buffer_remove_source_marks.
+func (recv *Buffer) RemoveSourceMarks(start *gtk.TextIter, end *gtk.TextIter, category string) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(start.Native())
+	inArgs[2].SetPointer(end.Native())
+	inArgs[3].SetString(category)
+
+	err := bufferRemoveSourceMarksFunction_Set()
+	if err == nil {
+		bufferRemoveSourceMarksFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var bufferSetHighlightMatchingBracketsFunction *gi.Function
 var bufferSetHighlightMatchingBracketsFunction_Once sync.Once
@@ -718,7 +1118,7 @@ func (recv *Buffer) SetStyleScheme(scheme *StyleScheme) {
 
 // UNSUPPORTED : C value 'gtk_source_buffer_set_undo_manager' : parameter 'manager' of type 'UndoManager' not supported
 
-// UNSUPPORTED : C value 'gtk_source_buffer_sort_lines' : parameter 'start' of type 'Gtk.TextIter' not supported
+// UNSUPPORTED : C value 'gtk_source_buffer_sort_lines' : parameter 'flags' of type 'SortFlags' not supported
 
 var bufferUndoFunction *gi.Function
 var bufferUndoFunction_Once sync.Once
@@ -748,9 +1148,27 @@ func (recv *Buffer) Undo() {
 	return
 }
 
-// UNSUPPORTED : C value 'bracket-matched' : parameter 'iter' of type 'Gtk.TextIter' not supported
+/*
+ConnectBracketMatched connects a callback to the 'bracket-matched' signal of the Buffer.
 
-// UNSUPPORTED : C value 'highlight-updated' : parameter 'start' of type 'Gtk.TextIter' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Buffer) ConnectBracketMatched(handler func(instance *Buffer, iter *gtk.TextIter, state BracketMatchType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "bracket-matched", marshal)
+}
+
+/*
+ConnectHighlightUpdated connects a callback to the 'highlight-updated' signal of the Buffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Buffer) ConnectHighlightUpdated(handler func(instance *Buffer, start *gtk.TextIter, end *gtk.TextIter)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "highlight-updated", marshal)
+}
 
 /*
 ConnectRedo connects a callback to the 'redo' signal of the Buffer.
@@ -907,7 +1325,38 @@ func (recv *Completion) BlockInteractive() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_create_context' : parameter 'position' of type 'Gtk.TextIter' not supported
+var completionCreateContextFunction *gi.Function
+var completionCreateContextFunction_Once sync.Once
+
+func completionCreateContextFunction_Set() error {
+	var err error
+	completionCreateContextFunction_Once.Do(func() {
+		err = completionObject_Set()
+		if err != nil {
+			return
+		}
+		completionCreateContextFunction, err = completionObject.InvokerNew("create_context")
+	})
+	return err
+}
+
+// CreateContext is a representation of the C type gtk_source_completion_create_context.
+func (recv *Completion) CreateContext(position *gtk.TextIter) *CompletionContext {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(position.Native())
+
+	var ret gi.Argument
+
+	err := completionCreateContextFunction_Set()
+	if err == nil {
+		ret = completionCreateContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CompletionContextNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var completionGetInfoWindowFunction *gi.Function
 var completionGetInfoWindowFunction_Once sync.Once
@@ -941,7 +1390,37 @@ func (recv *Completion) GetInfoWindow() *CompletionInfo {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_get_providers' : return type 'GLib.List' not supported
+var completionGetProvidersFunction *gi.Function
+var completionGetProvidersFunction_Once sync.Once
+
+func completionGetProvidersFunction_Set() error {
+	var err error
+	completionGetProvidersFunction_Once.Do(func() {
+		err = completionObject_Set()
+		if err != nil {
+			return
+		}
+		completionGetProvidersFunction, err = completionObject.InvokerNew("get_providers")
+	})
+	return err
+}
+
+// GetProviders is a representation of the C type gtk_source_completion_get_providers.
+func (recv *Completion) GetProviders() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := completionGetProvidersFunction_Set()
+	if err == nil {
+		ret = completionGetProvidersFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var completionGetViewFunction *gi.Function
 var completionGetViewFunction_Once sync.Once
@@ -1003,11 +1482,70 @@ func (recv *Completion) Hide() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_move_window' : parameter 'iter' of type 'Gtk.TextIter' not supported
+var completionMoveWindowFunction *gi.Function
+var completionMoveWindowFunction_Once sync.Once
+
+func completionMoveWindowFunction_Set() error {
+	var err error
+	completionMoveWindowFunction_Once.Do(func() {
+		err = completionObject_Set()
+		if err != nil {
+			return
+		}
+		completionMoveWindowFunction, err = completionObject.InvokerNew("move_window")
+	})
+	return err
+}
+
+// MoveWindow is a representation of the C type gtk_source_completion_move_window.
+func (recv *Completion) MoveWindow(iter *gtk.TextIter) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+
+	err := completionMoveWindowFunction_Set()
+	if err == nil {
+		completionMoveWindowFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_source_completion_remove_provider' : parameter 'provider' of type 'CompletionProvider' not supported
 
-// UNSUPPORTED : C value 'gtk_source_completion_show' : parameter 'providers' of type 'GLib.List' not supported
+var completionShowFunction *gi.Function
+var completionShowFunction_Once sync.Once
+
+func completionShowFunction_Set() error {
+	var err error
+	completionShowFunction_Once.Do(func() {
+		err = completionObject_Set()
+		if err != nil {
+			return
+		}
+		completionShowFunction, err = completionObject.InvokerNew("show")
+	})
+	return err
+}
+
+// Show is a representation of the C type gtk_source_completion_show.
+func (recv *Completion) Show(providers *glib.List, context *CompletionContext) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(providers.Native())
+	inArgs[2].SetPointer(context.Native())
+
+	var ret gi.Argument
+
+	err := completionShowFunction_Set()
+	if err == nil {
+		ret = completionShowFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var completionUnblockInteractiveFunction *gi.Function
 var completionUnblockInteractiveFunction_Once sync.Once
@@ -1191,7 +1729,39 @@ func (recv *CompletionContext) SetFieldPriv(value *CompletionContextPrivate) {
 
 // UNSUPPORTED : C value 'gtk_source_completion_context_get_activation' : return type 'CompletionActivation' not supported
 
-// UNSUPPORTED : C value 'gtk_source_completion_context_get_iter' : parameter 'iter' of type 'Gtk.TextIter' not supported
+var completionContextGetIterFunction *gi.Function
+var completionContextGetIterFunction_Once sync.Once
+
+func completionContextGetIterFunction_Set() error {
+	var err error
+	completionContextGetIterFunction_Once.Do(func() {
+		err = completionContextObject_Set()
+		if err != nil {
+			return
+		}
+		completionContextGetIterFunction, err = completionContextObject.InvokerNew("get_iter")
+	})
+	return err
+}
+
+// GetIter is a representation of the C type gtk_source_completion_context_get_iter.
+func (recv *CompletionContext) GetIter() (bool, *gtk.TextIter) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := completionContextGetIterFunction_Set()
+	if err == nil {
+		ret = completionContextGetIterFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gtk.TextIterNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 /*
 ConnectCancelled connects a callback to the 'cancelled' signal of the CompletionContext.
@@ -1383,7 +1953,35 @@ func (recv *CompletionInfo) GetWidget() *gtk.Widget {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_info_move_to_iter' : parameter 'iter' of type 'Gtk.TextIter' not supported
+var completionInfoMoveToIterFunction *gi.Function
+var completionInfoMoveToIterFunction_Once sync.Once
+
+func completionInfoMoveToIterFunction_Set() error {
+	var err error
+	completionInfoMoveToIterFunction_Once.Do(func() {
+		err = completionInfoObject_Set()
+		if err != nil {
+			return
+		}
+		completionInfoMoveToIterFunction, err = completionInfoObject.InvokerNew("move_to_iter")
+	})
+	return err
+}
+
+// MoveToIter is a representation of the C type gtk_source_completion_info_move_to_iter.
+func (recv *CompletionInfo) MoveToIter(view *gtk.TextView, iter *gtk.TextIter) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(view.Native())
+	inArgs[2].SetPointer(iter.Native())
+
+	err := completionInfoMoveToIterFunction_Set()
+	if err == nil {
+		completionInfoMoveToIterFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var completionInfoSetWidgetFunction *gi.Function
 var completionInfoSetWidgetFunction_Once sync.Once
@@ -2725,7 +3323,34 @@ func (recv *FileLoader) GetNewlineType() NewlineType {
 
 // UNSUPPORTED : C value 'gtk_source_file_loader_load_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'gtk_source_file_loader_set_candidate_encodings' : parameter 'candidate_encodings' of type 'GLib.SList' not supported
+var fileLoaderSetCandidateEncodingsFunction *gi.Function
+var fileLoaderSetCandidateEncodingsFunction_Once sync.Once
+
+func fileLoaderSetCandidateEncodingsFunction_Set() error {
+	var err error
+	fileLoaderSetCandidateEncodingsFunction_Once.Do(func() {
+		err = fileLoaderObject_Set()
+		if err != nil {
+			return
+		}
+		fileLoaderSetCandidateEncodingsFunction, err = fileLoaderObject.InvokerNew("set_candidate_encodings")
+	})
+	return err
+}
+
+// SetCandidateEncodings is a representation of the C type gtk_source_file_loader_set_candidate_encodings.
+func (recv *FileLoader) SetCandidateEncodings(candidateEncodings *glib.SList) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(candidateEncodings.Native())
+
+	err := fileLoaderSetCandidateEncodingsFunction_Set()
+	if err == nil {
+		fileLoaderSetCandidateEncodingsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fileSaverObject *gi.Object
 var fileSaverObject_Once sync.Once
@@ -3542,11 +4167,42 @@ func (recv *GutterRenderer) SetFieldParent(value *gobject.InitiallyUnowned) {
 	gi.ObjectFieldSet(gutterRendererObject, recv.Native(), "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_activate' : parameter 'iter' of type 'Gtk.TextIter' not supported
+// UNSUPPORTED : C value 'gtk_source_gutter_renderer_activate' : parameter 'event' of type 'Gdk.Event' not supported
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_begin' : parameter 'cr' of type 'cairo.Context' not supported
+var gutterRendererBeginFunction *gi.Function
+var gutterRendererBeginFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_draw' : parameter 'cr' of type 'cairo.Context' not supported
+func gutterRendererBeginFunction_Set() error {
+	var err error
+	gutterRendererBeginFunction_Once.Do(func() {
+		err = gutterRendererObject_Set()
+		if err != nil {
+			return
+		}
+		gutterRendererBeginFunction, err = gutterRendererObject.InvokerNew("begin")
+	})
+	return err
+}
+
+// Begin is a representation of the C type gtk_source_gutter_renderer_begin.
+func (recv *GutterRenderer) Begin(cr *cairo.Context, backgroundArea *gdk.Rectangle, cellArea *gdk.Rectangle, start *gtk.TextIter, end *gtk.TextIter) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetPointer(backgroundArea.Native())
+	inArgs[3].SetPointer(cellArea.Native())
+	inArgs[4].SetPointer(start.Native())
+	inArgs[5].SetPointer(end.Native())
+
+	err := gutterRendererBeginFunction_Set()
+	if err == nil {
+		gutterRendererBeginFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'gtk_source_gutter_renderer_draw' : parameter 'state' of type 'GutterRendererState' not supported
 
 var gutterRendererEndFunction *gi.Function
 var gutterRendererEndFunction_Once sync.Once
@@ -3641,7 +4297,39 @@ func (recv *GutterRenderer) GetAlignmentMode() GutterRendererAlignmentMode {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_get_background' : parameter 'color' of type 'Gdk.RGBA' not supported
+var gutterRendererGetBackgroundFunction *gi.Function
+var gutterRendererGetBackgroundFunction_Once sync.Once
+
+func gutterRendererGetBackgroundFunction_Set() error {
+	var err error
+	gutterRendererGetBackgroundFunction_Once.Do(func() {
+		err = gutterRendererObject_Set()
+		if err != nil {
+			return
+		}
+		gutterRendererGetBackgroundFunction, err = gutterRendererObject.InvokerNew("get_background")
+	})
+	return err
+}
+
+// GetBackground is a representation of the C type gtk_source_gutter_renderer_get_background.
+func (recv *GutterRenderer) GetBackground() (bool, *gdk.RGBA) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := gutterRendererGetBackgroundFunction_Set()
+	if err == nil {
+		ret = gutterRendererGetBackgroundFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.RGBANewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var gutterRendererGetPaddingFunction *gi.Function
 var gutterRendererGetPaddingFunction_Once sync.Once
@@ -3774,11 +4462,46 @@ func (recv *GutterRenderer) GetVisible() bool {
 
 // UNSUPPORTED : C value 'gtk_source_gutter_renderer_get_window_type' : return type 'Gtk.TextWindowType' not supported
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_query_activatable' : parameter 'iter' of type 'Gtk.TextIter' not supported
+// UNSUPPORTED : C value 'gtk_source_gutter_renderer_query_activatable' : parameter 'event' of type 'Gdk.Event' not supported
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_query_data' : parameter 'start' of type 'Gtk.TextIter' not supported
+// UNSUPPORTED : C value 'gtk_source_gutter_renderer_query_data' : parameter 'state' of type 'GutterRendererState' not supported
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_query_tooltip' : parameter 'iter' of type 'Gtk.TextIter' not supported
+var gutterRendererQueryTooltipFunction *gi.Function
+var gutterRendererQueryTooltipFunction_Once sync.Once
+
+func gutterRendererQueryTooltipFunction_Set() error {
+	var err error
+	gutterRendererQueryTooltipFunction_Once.Do(func() {
+		err = gutterRendererObject_Set()
+		if err != nil {
+			return
+		}
+		gutterRendererQueryTooltipFunction, err = gutterRendererObject.InvokerNew("query_tooltip")
+	})
+	return err
+}
+
+// QueryTooltip is a representation of the C type gtk_source_gutter_renderer_query_tooltip.
+func (recv *GutterRenderer) QueryTooltip(iter *gtk.TextIter, area *gdk.Rectangle, x int32, y int32, tooltip *gtk.Tooltip) bool {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+	inArgs[2].SetPointer(area.Native())
+	inArgs[3].SetInt32(x)
+	inArgs[4].SetInt32(y)
+	inArgs[5].SetPointer(tooltip.Native())
+
+	var ret gi.Argument
+
+	err := gutterRendererQueryTooltipFunction_Set()
+	if err == nil {
+		ret = gutterRendererQueryTooltipFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var gutterRendererQueueDrawFunction *gi.Function
 var gutterRendererQueueDrawFunction_Once sync.Once
@@ -3867,7 +4590,34 @@ func (recv *GutterRenderer) SetAlignmentMode(mode GutterRendererAlignmentMode) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_set_background' : parameter 'color' of type 'Gdk.RGBA' not supported
+var gutterRendererSetBackgroundFunction *gi.Function
+var gutterRendererSetBackgroundFunction_Once sync.Once
+
+func gutterRendererSetBackgroundFunction_Set() error {
+	var err error
+	gutterRendererSetBackgroundFunction_Once.Do(func() {
+		err = gutterRendererObject_Set()
+		if err != nil {
+			return
+		}
+		gutterRendererSetBackgroundFunction, err = gutterRendererObject.InvokerNew("set_background")
+	})
+	return err
+}
+
+// SetBackground is a representation of the C type gtk_source_gutter_renderer_set_background.
+func (recv *GutterRenderer) SetBackground(color *gdk.RGBA) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(color.Native())
+
+	err := gutterRendererSetBackgroundFunction_Set()
+	if err == nil {
+		gutterRendererSetBackgroundFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var gutterRendererSetPaddingFunction *gi.Function
 var gutterRendererSetPaddingFunction_Once sync.Once
@@ -3957,13 +4707,22 @@ func (recv *GutterRenderer) SetVisible(visible bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'activate' : parameter 'iter' of type 'Gtk.TextIter' not supported
+// UNSUPPORTED : C value 'activate' : parameter 'event' of type 'Gdk.Event' not supported
 
-// UNSUPPORTED : C value 'query-activatable' : parameter 'iter' of type 'Gtk.TextIter' not supported
+// UNSUPPORTED : C value 'query-activatable' : parameter 'event' of type 'Gdk.Event' not supported
 
-// UNSUPPORTED : C value 'query-data' : parameter 'start' of type 'Gtk.TextIter' not supported
+// UNSUPPORTED : C value 'query-data' : parameter 'state' of type 'GutterRendererState' not supported
 
-// UNSUPPORTED : C value 'query-tooltip' : parameter 'iter' of type 'Gtk.TextIter' not supported
+/*
+ConnectQueryTooltip connects a callback to the 'query-tooltip' signal of the GutterRenderer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GutterRenderer) ConnectQueryTooltip(handler func(instance *GutterRenderer, iter *gtk.TextIter, area *gdk.Rectangle, x int32, y int32, tooltip *gtk.Tooltip) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "query-tooltip", marshal)
+}
 
 /*
 ConnectQueueDraw connects a callback to the 'queue-draw' signal of the GutterRenderer.
@@ -5632,7 +6391,39 @@ func MarkAttributesNew() *MarkAttributes {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_mark_attributes_get_background' : parameter 'background' of type 'Gdk.RGBA' not supported
+var markAttributesGetBackgroundFunction *gi.Function
+var markAttributesGetBackgroundFunction_Once sync.Once
+
+func markAttributesGetBackgroundFunction_Set() error {
+	var err error
+	markAttributesGetBackgroundFunction_Once.Do(func() {
+		err = markAttributesObject_Set()
+		if err != nil {
+			return
+		}
+		markAttributesGetBackgroundFunction, err = markAttributesObject.InvokerNew("get_background")
+	})
+	return err
+}
+
+// GetBackground is a representation of the C type gtk_source_mark_attributes_get_background.
+func (recv *MarkAttributes) GetBackground() (bool, *gdk.RGBA) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := markAttributesGetBackgroundFunction_Set()
+	if err == nil {
+		ret = markAttributesGetBackgroundFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.RGBANewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 // UNSUPPORTED : C value 'gtk_source_mark_attributes_get_gicon' : return type 'Gio.Icon' not supported
 
@@ -5832,7 +6623,34 @@ func (recv *MarkAttributes) RenderIcon(widget *gtk.Widget, size int32) *gdkpixbu
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_mark_attributes_set_background' : parameter 'background' of type 'Gdk.RGBA' not supported
+var markAttributesSetBackgroundFunction *gi.Function
+var markAttributesSetBackgroundFunction_Once sync.Once
+
+func markAttributesSetBackgroundFunction_Set() error {
+	var err error
+	markAttributesSetBackgroundFunction_Once.Do(func() {
+		err = markAttributesObject_Set()
+		if err != nil {
+			return
+		}
+		markAttributesSetBackgroundFunction, err = markAttributesObject.InvokerNew("set_background")
+	})
+	return err
+}
+
+// SetBackground is a representation of the C type gtk_source_mark_attributes_set_background.
+func (recv *MarkAttributes) SetBackground(background *gdk.RGBA) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(background.Native())
+
+	err := markAttributesSetBackgroundFunction_Set()
+	if err == nil {
+		markAttributesSetBackgroundFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_source_mark_attributes_set_gicon' : parameter 'gicon' of type 'Gio.Icon' not supported
 
@@ -7029,9 +7847,70 @@ func (recv *Region) AddRegion(regionToAdd *Region) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_region_add_subregion' : parameter '_start' of type 'Gtk.TextIter' not supported
+var regionAddSubregionFunction *gi.Function
+var regionAddSubregionFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_region_get_bounds' : parameter 'start' of type 'Gtk.TextIter' not supported
+func regionAddSubregionFunction_Set() error {
+	var err error
+	regionAddSubregionFunction_Once.Do(func() {
+		err = regionObject_Set()
+		if err != nil {
+			return
+		}
+		regionAddSubregionFunction, err = regionObject.InvokerNew("add_subregion")
+	})
+	return err
+}
+
+// AddSubregion is a representation of the C type gtk_source_region_add_subregion.
+func (recv *Region) AddSubregion(start *gtk.TextIter, end *gtk.TextIter) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(start.Native())
+	inArgs[2].SetPointer(end.Native())
+
+	err := regionAddSubregionFunction_Set()
+	if err == nil {
+		regionAddSubregionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var regionGetBoundsFunction *gi.Function
+var regionGetBoundsFunction_Once sync.Once
+
+func regionGetBoundsFunction_Set() error {
+	var err error
+	regionGetBoundsFunction_Once.Do(func() {
+		err = regionObject_Set()
+		if err != nil {
+			return
+		}
+		regionGetBoundsFunction, err = regionObject.InvokerNew("get_bounds")
+	})
+	return err
+}
+
+// GetBounds is a representation of the C type gtk_source_region_get_bounds.
+func (recv *Region) GetBounds() (bool, *gtk.TextIter, *gtk.TextIter) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := regionGetBoundsFunction_Set()
+	if err == nil {
+		ret = regionGetBoundsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gtk.TextIterNewFromNative(outArgs[0].Pointer())
+	out1 := gtk.TextIterNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
 
 var regionGetBufferFunction *gi.Function
 var regionGetBufferFunction_Once sync.Once
@@ -7130,7 +8009,39 @@ func (recv *Region) IntersectRegion(region2 *Region) *Region {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_region_intersect_subregion' : parameter '_start' of type 'Gtk.TextIter' not supported
+var regionIntersectSubregionFunction *gi.Function
+var regionIntersectSubregionFunction_Once sync.Once
+
+func regionIntersectSubregionFunction_Set() error {
+	var err error
+	regionIntersectSubregionFunction_Once.Do(func() {
+		err = regionObject_Set()
+		if err != nil {
+			return
+		}
+		regionIntersectSubregionFunction, err = regionObject.InvokerNew("intersect_subregion")
+	})
+	return err
+}
+
+// IntersectSubregion is a representation of the C type gtk_source_region_intersect_subregion.
+func (recv *Region) IntersectSubregion(start *gtk.TextIter, end *gtk.TextIter) *Region {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(start.Native())
+	inArgs[2].SetPointer(end.Native())
+
+	var ret gi.Argument
+
+	err := regionIntersectSubregionFunction_Set()
+	if err == nil {
+		ret = regionIntersectSubregionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RegionNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var regionIsEmptyFunction *gi.Function
 var regionIsEmptyFunction_Once sync.Once
@@ -7193,7 +8104,35 @@ func (recv *Region) SubtractRegion(regionToSubtract *Region) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_region_subtract_subregion' : parameter '_start' of type 'Gtk.TextIter' not supported
+var regionSubtractSubregionFunction *gi.Function
+var regionSubtractSubregionFunction_Once sync.Once
+
+func regionSubtractSubregionFunction_Set() error {
+	var err error
+	regionSubtractSubregionFunction_Once.Do(func() {
+		err = regionObject_Set()
+		if err != nil {
+			return
+		}
+		regionSubtractSubregionFunction, err = regionObject.InvokerNew("subtract_subregion")
+	})
+	return err
+}
+
+// SubtractSubregion is a representation of the C type gtk_source_region_subtract_subregion.
+func (recv *Region) SubtractSubregion(start *gtk.TextIter, end *gtk.TextIter) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(start.Native())
+	inArgs[2].SetPointer(end.Native())
+
+	err := regionSubtractSubregionFunction_Set()
+	if err == nil {
+		regionSubtractSubregionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var regionToStringFunction *gi.Function
 var regionToStringFunction_Once sync.Once
@@ -7345,21 +8284,159 @@ func SearchContextNew(buffer *Buffer, settings *SearchSettings) *SearchContext {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_search_context_backward' : parameter 'iter' of type 'Gtk.TextIter' not supported
+var searchContextBackwardFunction *gi.Function
+var searchContextBackwardFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_search_context_backward2' : parameter 'iter' of type 'Gtk.TextIter' not supported
+func searchContextBackwardFunction_Set() error {
+	var err error
+	searchContextBackwardFunction_Once.Do(func() {
+		err = searchContextObject_Set()
+		if err != nil {
+			return
+		}
+		searchContextBackwardFunction, err = searchContextObject.InvokerNew("backward")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_source_search_context_backward_async' : parameter 'iter' of type 'Gtk.TextIter' not supported
+// Backward is a representation of the C type gtk_source_search_context_backward.
+func (recv *SearchContext) Backward(iter *gtk.TextIter) (bool, *gtk.TextIter, *gtk.TextIter) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := searchContextBackwardFunction_Set()
+	if err == nil {
+		ret = searchContextBackwardFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gtk.TextIterNewFromNative(outArgs[0].Pointer())
+	out1 := gtk.TextIterNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
+
+var searchContextBackward2Function *gi.Function
+var searchContextBackward2Function_Once sync.Once
+
+func searchContextBackward2Function_Set() error {
+	var err error
+	searchContextBackward2Function_Once.Do(func() {
+		err = searchContextObject_Set()
+		if err != nil {
+			return
+		}
+		searchContextBackward2Function, err = searchContextObject.InvokerNew("backward2")
+	})
+	return err
+}
+
+// Backward2 is a representation of the C type gtk_source_search_context_backward2.
+func (recv *SearchContext) Backward2(iter *gtk.TextIter) (bool, *gtk.TextIter, *gtk.TextIter, bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := searchContextBackward2Function_Set()
+	if err == nil {
+		ret = searchContextBackward2Function.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gtk.TextIterNewFromNative(outArgs[0].Pointer())
+	out1 := gtk.TextIterNewFromNative(outArgs[1].Pointer())
+	out2 := outArgs[2].Boolean()
+
+	return retGo, out0, out1, out2
+}
+
+// UNSUPPORTED : C value 'gtk_source_search_context_backward_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'gtk_source_search_context_backward_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
 // UNSUPPORTED : C value 'gtk_source_search_context_backward_finish2' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'gtk_source_search_context_forward' : parameter 'iter' of type 'Gtk.TextIter' not supported
+var searchContextForwardFunction *gi.Function
+var searchContextForwardFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_search_context_forward2' : parameter 'iter' of type 'Gtk.TextIter' not supported
+func searchContextForwardFunction_Set() error {
+	var err error
+	searchContextForwardFunction_Once.Do(func() {
+		err = searchContextObject_Set()
+		if err != nil {
+			return
+		}
+		searchContextForwardFunction, err = searchContextObject.InvokerNew("forward")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_source_search_context_forward_async' : parameter 'iter' of type 'Gtk.TextIter' not supported
+// Forward is a representation of the C type gtk_source_search_context_forward.
+func (recv *SearchContext) Forward(iter *gtk.TextIter) (bool, *gtk.TextIter, *gtk.TextIter) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := searchContextForwardFunction_Set()
+	if err == nil {
+		ret = searchContextForwardFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gtk.TextIterNewFromNative(outArgs[0].Pointer())
+	out1 := gtk.TextIterNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
+
+var searchContextForward2Function *gi.Function
+var searchContextForward2Function_Once sync.Once
+
+func searchContextForward2Function_Set() error {
+	var err error
+	searchContextForward2Function_Once.Do(func() {
+		err = searchContextObject_Set()
+		if err != nil {
+			return
+		}
+		searchContextForward2Function, err = searchContextObject.InvokerNew("forward2")
+	})
+	return err
+}
+
+// Forward2 is a representation of the C type gtk_source_search_context_forward2.
+func (recv *SearchContext) Forward2(iter *gtk.TextIter) (bool, *gtk.TextIter, *gtk.TextIter, bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := searchContextForward2Function_Set()
+	if err == nil {
+		ret = searchContextForward2Function.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gtk.TextIterNewFromNative(outArgs[0].Pointer())
+	out1 := gtk.TextIterNewFromNative(outArgs[1].Pointer())
+	out2 := outArgs[2].Boolean()
+
+	return retGo, out0, out1, out2
+}
+
+// UNSUPPORTED : C value 'gtk_source_search_context_forward_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'gtk_source_search_context_forward_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -7461,7 +8538,39 @@ func (recv *SearchContext) GetMatchStyle() *Style {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_search_context_get_occurrence_position' : parameter 'match_start' of type 'Gtk.TextIter' not supported
+var searchContextGetOccurrencePositionFunction *gi.Function
+var searchContextGetOccurrencePositionFunction_Once sync.Once
+
+func searchContextGetOccurrencePositionFunction_Set() error {
+	var err error
+	searchContextGetOccurrencePositionFunction_Once.Do(func() {
+		err = searchContextObject_Set()
+		if err != nil {
+			return
+		}
+		searchContextGetOccurrencePositionFunction, err = searchContextObject.InvokerNew("get_occurrence_position")
+	})
+	return err
+}
+
+// GetOccurrencePosition is a representation of the C type gtk_source_search_context_get_occurrence_position.
+func (recv *SearchContext) GetOccurrencePosition(matchStart *gtk.TextIter, matchEnd *gtk.TextIter) int32 {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(matchStart.Native())
+	inArgs[2].SetPointer(matchEnd.Native())
+
+	var ret gi.Argument
+
+	err := searchContextGetOccurrencePositionFunction_Set()
+	if err == nil {
+		ret = searchContextGetOccurrencePositionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
 
 var searchContextGetOccurrencesCountFunction *gi.Function
 var searchContextGetOccurrencesCountFunction_Once sync.Once
@@ -7495,7 +8604,37 @@ func (recv *SearchContext) GetOccurrencesCount() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_search_context_get_regex_error' : return type 'GLib.Error' not supported
+var searchContextGetRegexErrorFunction *gi.Function
+var searchContextGetRegexErrorFunction_Once sync.Once
+
+func searchContextGetRegexErrorFunction_Set() error {
+	var err error
+	searchContextGetRegexErrorFunction_Once.Do(func() {
+		err = searchContextObject_Set()
+		if err != nil {
+			return
+		}
+		searchContextGetRegexErrorFunction, err = searchContextObject.InvokerNew("get_regex_error")
+	})
+	return err
+}
+
+// GetRegexError is a representation of the C type gtk_source_search_context_get_regex_error.
+func (recv *SearchContext) GetRegexError() *glib.Error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := searchContextGetRegexErrorFunction_Set()
+	if err == nil {
+		ret = searchContextGetRegexErrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ErrorNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var searchContextGetSettingsFunction *gi.Function
 var searchContextGetSettingsFunction_Once sync.Once
@@ -7529,9 +8668,77 @@ func (recv *SearchContext) GetSettings() *SearchSettings {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_search_context_replace' : parameter 'match_start' of type 'Gtk.TextIter' not supported
+var searchContextReplaceFunction *gi.Function
+var searchContextReplaceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_search_context_replace2' : parameter 'match_start' of type 'Gtk.TextIter' not supported
+func searchContextReplaceFunction_Set() error {
+	var err error
+	searchContextReplaceFunction_Once.Do(func() {
+		err = searchContextObject_Set()
+		if err != nil {
+			return
+		}
+		searchContextReplaceFunction, err = searchContextObject.InvokerNew("replace")
+	})
+	return err
+}
+
+// Replace is a representation of the C type gtk_source_search_context_replace.
+func (recv *SearchContext) Replace(matchStart *gtk.TextIter, matchEnd *gtk.TextIter, replace string, replaceLength int32) bool {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(matchStart.Native())
+	inArgs[2].SetPointer(matchEnd.Native())
+	inArgs[3].SetString(replace)
+	inArgs[4].SetInt32(replaceLength)
+
+	var ret gi.Argument
+
+	err := searchContextReplaceFunction_Set()
+	if err == nil {
+		ret = searchContextReplaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var searchContextReplace2Function *gi.Function
+var searchContextReplace2Function_Once sync.Once
+
+func searchContextReplace2Function_Set() error {
+	var err error
+	searchContextReplace2Function_Once.Do(func() {
+		err = searchContextObject_Set()
+		if err != nil {
+			return
+		}
+		searchContextReplace2Function, err = searchContextObject.InvokerNew("replace2")
+	})
+	return err
+}
+
+// Replace2 is a representation of the C type gtk_source_search_context_replace2.
+func (recv *SearchContext) Replace2(matchStart *gtk.TextIter, matchEnd *gtk.TextIter, replace string, replaceLength int32) bool {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(matchStart.Native())
+	inArgs[2].SetPointer(matchEnd.Native())
+	inArgs[3].SetString(replace)
+	inArgs[4].SetInt32(replaceLength)
+
+	var ret gi.Argument
+
+	err := searchContextReplace2Function_Set()
+	if err == nil {
+		ret = searchContextReplace2Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var searchContextReplaceAllFunction *gi.Function
 var searchContextReplaceAllFunction_Once sync.Once
@@ -8223,7 +9430,37 @@ func (recv *SpaceDrawer) GetEnableMatrix() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_space_drawer_get_matrix' : return type 'GLib.Variant' not supported
+var spaceDrawerGetMatrixFunction *gi.Function
+var spaceDrawerGetMatrixFunction_Once sync.Once
+
+func spaceDrawerGetMatrixFunction_Set() error {
+	var err error
+	spaceDrawerGetMatrixFunction_Once.Do(func() {
+		err = spaceDrawerObject_Set()
+		if err != nil {
+			return
+		}
+		spaceDrawerGetMatrixFunction, err = spaceDrawerObject.InvokerNew("get_matrix")
+	})
+	return err
+}
+
+// GetMatrix is a representation of the C type gtk_source_space_drawer_get_matrix.
+func (recv *SpaceDrawer) GetMatrix() *glib.Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := spaceDrawerGetMatrixFunction_Set()
+	if err == nil {
+		ret = spaceDrawerGetMatrixFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_space_drawer_get_types_for_locations' : parameter 'locations' of type 'SpaceLocationFlags' not supported
 
@@ -8256,7 +9493,34 @@ func (recv *SpaceDrawer) SetEnableMatrix(enableMatrix bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_space_drawer_set_matrix' : parameter 'matrix' of type 'GLib.Variant' not supported
+var spaceDrawerSetMatrixFunction *gi.Function
+var spaceDrawerSetMatrixFunction_Once sync.Once
+
+func spaceDrawerSetMatrixFunction_Set() error {
+	var err error
+	spaceDrawerSetMatrixFunction_Once.Do(func() {
+		err = spaceDrawerObject_Set()
+		if err != nil {
+			return
+		}
+		spaceDrawerSetMatrixFunction, err = spaceDrawerObject.InvokerNew("set_matrix")
+	})
+	return err
+}
+
+// SetMatrix is a representation of the C type gtk_source_space_drawer_set_matrix.
+func (recv *SpaceDrawer) SetMatrix(matrix *glib.Variant) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(matrix.Native())
+
+	err := spaceDrawerSetMatrixFunction_Set()
+	if err == nil {
+		spaceDrawerSetMatrixFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_source_space_drawer_set_types_for_locations' : parameter 'locations' of type 'SpaceLocationFlags' not supported
 
@@ -10014,9 +11278,68 @@ func (recv *View) GetTabWidth() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_view_get_visual_column' : parameter 'iter' of type 'Gtk.TextIter' not supported
+var viewGetVisualColumnFunction *gi.Function
+var viewGetVisualColumnFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_view_indent_lines' : parameter 'start' of type 'Gtk.TextIter' not supported
+func viewGetVisualColumnFunction_Set() error {
+	var err error
+	viewGetVisualColumnFunction_Once.Do(func() {
+		err = viewObject_Set()
+		if err != nil {
+			return
+		}
+		viewGetVisualColumnFunction, err = viewObject.InvokerNew("get_visual_column")
+	})
+	return err
+}
+
+// GetVisualColumn is a representation of the C type gtk_source_view_get_visual_column.
+func (recv *View) GetVisualColumn(iter *gtk.TextIter) uint32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+
+	var ret gi.Argument
+
+	err := viewGetVisualColumnFunction_Set()
+	if err == nil {
+		ret = viewGetVisualColumnFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var viewIndentLinesFunction *gi.Function
+var viewIndentLinesFunction_Once sync.Once
+
+func viewIndentLinesFunction_Set() error {
+	var err error
+	viewIndentLinesFunction_Once.Do(func() {
+		err = viewObject_Set()
+		if err != nil {
+			return
+		}
+		viewIndentLinesFunction, err = viewObject.InvokerNew("indent_lines")
+	})
+	return err
+}
+
+// IndentLines is a representation of the C type gtk_source_view_indent_lines.
+func (recv *View) IndentLines(start *gtk.TextIter, end *gtk.TextIter) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(start.Native())
+	inArgs[2].SetPointer(end.Native())
+
+	err := viewIndentLinesFunction_Set()
+	if err == nil {
+		viewIndentLinesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var viewSetAutoIndentFunction *gi.Function
 var viewSetAutoIndentFunction_Once sync.Once
@@ -10428,7 +11751,35 @@ func (recv *View) SetTabWidth(width uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_view_unindent_lines' : parameter 'start' of type 'Gtk.TextIter' not supported
+var viewUnindentLinesFunction *gi.Function
+var viewUnindentLinesFunction_Once sync.Once
+
+func viewUnindentLinesFunction_Set() error {
+	var err error
+	viewUnindentLinesFunction_Once.Do(func() {
+		err = viewObject_Set()
+		if err != nil {
+			return
+		}
+		viewUnindentLinesFunction, err = viewObject.InvokerNew("unindent_lines")
+	})
+	return err
+}
+
+// UnindentLines is a representation of the C type gtk_source_view_unindent_lines.
+func (recv *View) UnindentLines(start *gtk.TextIter, end *gtk.TextIter) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(start.Native())
+	inArgs[2].SetPointer(end.Native())
+
+	err := viewUnindentLinesFunction_Set()
+	if err == nil {
+		viewUnindentLinesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 /*
 ConnectChangeCase connects a callback to the 'change-case' signal of the View.
@@ -10463,7 +11814,7 @@ func (recv *View) ConnectJoinLines(handler func(instance *View)) int {
 	return callback.ConnectSignal(recv.Native(), "join-lines", marshal)
 }
 
-// UNSUPPORTED : C value 'line-mark-activated' : parameter 'iter' of type 'Gtk.TextIter' not supported
+// UNSUPPORTED : C value 'line-mark-activated' : parameter 'event' of type 'Gdk.Event' not supported
 
 /*
 ConnectMoveLines connects a callback to the 'move-lines' signal of the View.
@@ -10520,7 +11871,16 @@ func (recv *View) ConnectShowCompletion(handler func(instance *View)) int {
 	return callback.ConnectSignal(recv.Native(), "show-completion", marshal)
 }
 
-// UNSUPPORTED : C value 'smart-home-end' : parameter 'iter' of type 'Gtk.TextIter' not supported
+/*
+ConnectSmartHomeEnd connects a callback to the 'smart-home-end' signal of the View.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *View) ConnectSmartHomeEnd(handler func(instance *View, iter *gtk.TextIter, count int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "smart-home-end", marshal)
+}
 
 /*
 ConnectUndo connects a callback to the 'undo' signal of the View.

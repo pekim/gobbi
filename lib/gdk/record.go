@@ -4,6 +4,7 @@ package gdk
 
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	cairo "github.com/pekim/gobbi/lib/cairo"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
@@ -1404,9 +1405,19 @@ func (recv *EventExpose) SetFieldArea(value *Rectangle) {
 	gi.StructFieldSet(eventExposeStruct, recv.Native(), "area", argValue)
 }
 
-// UNSUPPORTED : C value 'region' : for field getter : no Go type for 'cairo.Region'
+// FieldRegion returns the C field 'region'.
+func (recv *EventExpose) FieldRegion() *cairo.Region {
+	argValue := gi.StructFieldGet(eventExposeStruct, recv.Native(), "region")
+	value := cairo.RegionNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'region' : for field setter : no Go type for 'cairo.Region'
+// SetFieldRegion sets the value of the C field 'region'.
+func (recv *EventExpose) SetFieldRegion(value *cairo.Region) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(eventExposeStruct, recv.Native(), "region", argValue)
+}
 
 // FieldCount returns the C field 'count'.
 func (recv *EventExpose) FieldCount() int32 {
@@ -6209,9 +6220,19 @@ func (recv *WindowClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *WindowClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(windowClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *WindowClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(windowClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'pick_embedded_child' : for field getter : missing Type
 

@@ -4,6 +4,7 @@ package javascriptcore
 
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 )
 
@@ -177,7 +178,31 @@ func OptionsGetInt(option string) (bool, int32) {
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'jsc_options_get_option_group' : return type 'GLib.OptionGroup' not supported
+var optionsGetOptionGroupFunction *gi.Function
+var optionsGetOptionGroupFunction_Once sync.Once
+
+func optionsGetOptionGroupFunction_Set() error {
+	var err error
+	optionsGetOptionGroupFunction_Once.Do(func() {
+		optionsGetOptionGroupFunction, err = gi.FunctionInvokerNew("JavaScriptCore", "options_get_option_group")
+	})
+	return err
+}
+
+// OptionsGetOptionGroup is a representation of the C type jsc_options_get_option_group.
+func OptionsGetOptionGroup() *glib.OptionGroup {
+
+	var ret gi.Argument
+
+	err := optionsGetOptionGroupFunction_Set()
+	if err == nil {
+		ret = optionsGetOptionGroupFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.OptionGroupNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var optionsGetRangeStringFunction *gi.Function
 var optionsGetRangeStringFunction_Once sync.Once

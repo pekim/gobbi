@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
 	"strconv"
+	"strings"
 )
 
 var jenGoTypes = map[string]*jen.Statement{
@@ -72,10 +73,15 @@ func (t *Type) analyseName() {
 }
 
 func (t *Type) isQualifiedName() bool {
-	return t.foreignNamespace != nil
+	return t.foreignNamespace != nil && t.foreignNamespace != t.namespace
 }
 
 func (t *Type) isValid() bool {
+	// Pointer aliases are a bit fiddly to support, so don't for now.
+	if t != nil && t.isAlias() && strings.HasSuffix(t.CType, "*") {
+		return false
+	}
+
 	return t != nil && t.Name != ""
 }
 
@@ -126,10 +132,10 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 	}
 
 	if t.isRecord() {
-		//if t.isQualifiedName() {
-		//	record, _ := t.foreignNamespace.Records.byName(t.foreignName)
-		//	return jen.Op("*").Qual(t.foreignNamespace.goFullPackageName, record.goName), nil
-		//}
+		if t.isQualifiedName() {
+			record, _ := t.foreignNamespace.Records.byName(t.foreignName)
+			return jen.Op("*").Qual(t.foreignNamespace.goFullPackageName, record.goName), nil
+		}
 
 		record, _ := t.namespace.Records.byName(t.Name)
 		return jen.Op("*").Id(record.goName), nil
@@ -240,9 +246,9 @@ func (t *Type) resolvedType() *Type {
 }
 
 func (t *Type) argumentValueSetFunctionName() string {
-	name := t.resolvedType().Name
+	resolvedType := t.resolvedType()
 
-	if setFunctionName, ok := argumentSetFunctionNames[name]; ok {
+	if setFunctionName, ok := argumentSetFunctionNames[resolvedType.Name]; ok {
 		return setFunctionName
 	}
 
@@ -250,21 +256,22 @@ func (t *Type) argumentValueSetFunctionName() string {
 		return argumentSetFunctionNames["int"]
 	}
 
-	//if alias, ok := t.namespace.Aliases.byName(t.Name); ok {
-	//	if setFunctionName, ok := argumentSetFunctionNames[alias.Type.Name]; ok {
-	//		return setFunctionName
-	//	}
-	//}
-	//
-	if t.isQualifiedName() {
-		if alias, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
+	if alias, ok := t.namespace.Aliases.byName(resolvedType.Name); ok {
+		fmt.Println(alias)
+		if setFunctionName, ok := argumentSetFunctionNames[alias.Type.Name]; ok {
+			return setFunctionName
+		}
+	}
+
+	if resolvedType.isQualifiedName() {
+		if alias, ok := resolvedType.foreignNamespace.Aliases.byName(resolvedType.foreignName); ok {
 			if setFunctionName, ok := argumentSetFunctionNames[alias.Type.Name]; ok {
 				return setFunctionName
 			}
 		}
 	}
 
-	if t.isRecord() {
+	if resolvedType.isRecord() {
 		return "SetPointer"
 	}
 
@@ -391,10 +398,10 @@ func (t *Type) isRecord() bool {
 		return true
 	}
 
-	//if t.isQualifiedName() {
-	//	_, found := t.foreignNamespace.Records.byName(t.foreignName)
-	//	return found
-	//}
+	if t.isQualifiedName() {
+		_, found := t.foreignNamespace.Records.byName(t.foreignName)
+		return found
+	}
 
 	_, found := t.namespace.Records.byName(t.Name)
 	return found

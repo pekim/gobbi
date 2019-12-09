@@ -473,9 +473,19 @@ func (recv *PixbufLoaderClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *PixbufLoaderClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(pixbufLoaderClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *PixbufLoaderClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(pixbufLoaderClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'size_prepared' : for field getter : missing Type
 

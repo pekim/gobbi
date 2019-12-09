@@ -5,6 +5,7 @@ package gtksource
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	gtk "github.com/pekim/gobbi/lib/gtk"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -49,9 +50,19 @@ func (recv *BufferClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextBufferClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *BufferClass) FieldParentClass() *gtk.TextBufferClass {
+	argValue := gi.StructFieldGet(bufferClassStruct, recv.Native(), "parent_class")
+	value := gtk.TextBufferClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gtk.TextBufferClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *BufferClass) SetFieldParentClass(value *gtk.TextBufferClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(bufferClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'undo' : for field getter : missing Type
 
@@ -185,9 +196,19 @@ func (recv *CompletionClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *CompletionClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(completionClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *CompletionClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(completionClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'proposal_activated' : for field getter : missing Type
 
@@ -271,9 +292,19 @@ func (recv *CompletionContextClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *CompletionContextClass) FieldParentClass() *gobject.InitiallyUnownedClass {
+	argValue := gi.StructFieldGet(completionContextClassStruct, recv.Native(), "parent_class")
+	value := gobject.InitiallyUnownedClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.InitiallyUnownedClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *CompletionContextClass) SetFieldParentClass(value *gobject.InitiallyUnownedClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(completionContextClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'cancelled' : for field getter : missing Type
 
@@ -399,9 +430,19 @@ func (recv *CompletionInfoClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.WindowClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *CompletionInfoClass) FieldParentClass() *gtk.WindowClass {
+	argValue := gi.StructFieldGet(completionInfoClassStruct, recv.Native(), "parent_class")
+	value := gtk.WindowClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gtk.WindowClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *CompletionInfoClass) SetFieldParentClass(value *gtk.WindowClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(completionInfoClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'before_show' : for field getter : missing Type
 
@@ -515,9 +556,19 @@ func (recv *CompletionItemClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *CompletionItemClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(completionItemClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *CompletionItemClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(completionItemClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // CompletionItemClassStruct creates an uninitialised CompletionItemClass.
 func CompletionItemClassStruct() *CompletionItemClass {
@@ -681,9 +732,19 @@ func (recv *CompletionProposalIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParent returns the C field 'parent'.
+func (recv *CompletionProposalIface) FieldParent() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(completionProposalIfaceStruct, recv.Native(), "parent")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *CompletionProposalIface) SetFieldParent(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(completionProposalIfaceStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'get_label' : for field getter : missing Type
 
@@ -779,9 +840,19 @@ func (recv *CompletionProviderIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_iface' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldGIface returns the C field 'g_iface'.
+func (recv *CompletionProviderIface) FieldGIface() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(completionProviderIfaceStruct, recv.Native(), "g_iface")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'g_iface' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldGIface sets the value of the C field 'g_iface'.
+func (recv *CompletionProviderIface) SetFieldGIface(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(completionProviderIfaceStruct, recv.Native(), "g_iface", argValue)
+}
 
 // UNSUPPORTED : C value 'get_name' : for field getter : missing Type
 
@@ -889,9 +960,19 @@ func (recv *CompletionWordsClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *CompletionWordsClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(completionWordsClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *CompletionWordsClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(completionWordsClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // CompletionWordsClassStruct creates an uninitialised CompletionWordsClass.
 func CompletionWordsClassStruct() *CompletionWordsClass {
@@ -1211,9 +1292,19 @@ func (recv *FileClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *FileClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(fileClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *FileClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fileClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
 
@@ -1273,9 +1364,19 @@ func (recv *FileLoaderClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *FileLoaderClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(fileLoaderClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *FileLoaderClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fileLoaderClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
 
@@ -1443,9 +1544,19 @@ func (recv *FileSaverClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *FileSaverClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(fileSaverClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *FileSaverClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fileSaverClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
 
@@ -1559,9 +1670,19 @@ func (recv *GutterClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *GutterClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(gutterClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *GutterClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(gutterClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // GutterClassStruct creates an uninitialised GutterClass.
 func GutterClassStruct() *GutterClass {
@@ -1671,9 +1792,19 @@ func (recv *GutterRendererClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.InitiallyUnownedClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *GutterRendererClass) FieldParentClass() *gobject.InitiallyUnownedClass {
+	argValue := gi.StructFieldGet(gutterRendererClassStruct, recv.Native(), "parent_class")
+	value := gobject.InitiallyUnownedClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.InitiallyUnownedClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *GutterRendererClass) SetFieldParentClass(value *gobject.InitiallyUnownedClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(gutterRendererClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'begin' : for field getter : missing Type
 
@@ -2039,9 +2170,19 @@ func (recv *LanguageClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *LanguageClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(languageClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *LanguageClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(languageClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
 
@@ -2105,9 +2246,19 @@ func (recv *LanguageManagerClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *LanguageManagerClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(languageManagerClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *LanguageManagerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(languageManagerClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
 
@@ -2467,9 +2618,19 @@ func (recv *MarkClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextMarkClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *MarkClass) FieldParentClass() *gtk.TextMarkClass {
+	argValue := gi.StructFieldGet(markClassStruct, recv.Native(), "parent_class")
+	value := gtk.TextMarkClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gtk.TextMarkClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *MarkClass) SetFieldParentClass(value *gtk.TextMarkClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(markClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
 
@@ -2587,9 +2748,19 @@ func (recv *PrintCompositorClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *PrintCompositorClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(printCompositorClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *PrintCompositorClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(printCompositorClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
 
@@ -2707,9 +2878,19 @@ func (recv *RegionClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *RegionClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(regionClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *RegionClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(regionClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
 
@@ -2769,7 +2950,40 @@ func (recv *RegionIter) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_source_region_iter_get_subregion' : parameter 'start' of type 'Gtk.TextIter' not supported
+var regionIterGetSubregionFunction *gi.Function
+var regionIterGetSubregionFunction_Once sync.Once
+
+func regionIterGetSubregionFunction_Set() error {
+	var err error
+	regionIterGetSubregionFunction_Once.Do(func() {
+		err = regionIterStruct_Set()
+		if err != nil {
+			return
+		}
+		regionIterGetSubregionFunction, err = regionIterStruct.InvokerNew("get_subregion")
+	})
+	return err
+}
+
+// GetSubregion is a representation of the C type gtk_source_region_iter_get_subregion.
+func (recv *RegionIter) GetSubregion() (bool, *gtk.TextIter, *gtk.TextIter) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := regionIterGetSubregionFunction_Set()
+	if err == nil {
+		ret = regionIterGetSubregionFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gtk.TextIterNewFromNative(outArgs[0].Pointer())
+	out1 := gtk.TextIterNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
 
 var regionIterIsEndFunction *gi.Function
 var regionIterIsEndFunction_Once sync.Once
@@ -2889,9 +3103,19 @@ func (recv *SearchContextClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *SearchContextClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(searchContextClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *SearchContextClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(searchContextClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
 
@@ -3005,9 +3229,19 @@ func (recv *SearchSettingsClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *SearchSettingsClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(searchSettingsClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *SearchSettingsClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(searchSettingsClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
 
@@ -3121,9 +3355,19 @@ func (recv *SpaceDrawerClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *SpaceDrawerClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(spaceDrawerClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *SpaceDrawerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(spaceDrawerClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
 
@@ -3291,9 +3535,19 @@ func (recv *StyleSchemeChooserButtonClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.ButtonClass'
+// FieldParent returns the C field 'parent'.
+func (recv *StyleSchemeChooserButtonClass) FieldParent() *gtk.ButtonClass {
+	argValue := gi.StructFieldGet(styleSchemeChooserButtonClassStruct, recv.Native(), "parent")
+	value := gtk.ButtonClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Gtk.ButtonClass'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *StyleSchemeChooserButtonClass) SetFieldParent(value *gtk.ButtonClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(styleSchemeChooserButtonClassStruct, recv.Native(), "parent", argValue)
+}
 
 // StyleSchemeChooserButtonClassStruct creates an uninitialised StyleSchemeChooserButtonClass.
 func StyleSchemeChooserButtonClassStruct() *StyleSchemeChooserButtonClass {
@@ -3349,9 +3603,19 @@ func (recv *StyleSchemeChooserInterface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'base_interface' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldBaseInterface returns the C field 'base_interface'.
+func (recv *StyleSchemeChooserInterface) FieldBaseInterface() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(styleSchemeChooserInterfaceStruct, recv.Native(), "base_interface")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'base_interface' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldBaseInterface sets the value of the C field 'base_interface'.
+func (recv *StyleSchemeChooserInterface) SetFieldBaseInterface(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(styleSchemeChooserInterfaceStruct, recv.Native(), "base_interface", argValue)
+}
 
 // UNSUPPORTED : C value 'get_style_scheme' : for field getter : missing Type
 
@@ -3419,9 +3683,19 @@ func (recv *StyleSchemeChooserWidgetClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'Gtk.BinClass'
+// FieldParent returns the C field 'parent'.
+func (recv *StyleSchemeChooserWidgetClass) FieldParent() *gtk.BinClass {
+	argValue := gi.StructFieldGet(styleSchemeChooserWidgetClassStruct, recv.Native(), "parent")
+	value := gtk.BinClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'Gtk.BinClass'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *StyleSchemeChooserWidgetClass) SetFieldParent(value *gtk.BinClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(styleSchemeChooserWidgetClassStruct, recv.Native(), "parent", argValue)
+}
 
 // StyleSchemeChooserWidgetClassStruct creates an uninitialised StyleSchemeChooserWidgetClass.
 func StyleSchemeChooserWidgetClassStruct() *StyleSchemeChooserWidgetClass {
@@ -3477,9 +3751,19 @@ func (recv *StyleSchemeClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'base_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldBaseClass returns the C field 'base_class'.
+func (recv *StyleSchemeClass) FieldBaseClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(styleSchemeClassStruct, recv.Native(), "base_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'base_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldBaseClass sets the value of the C field 'base_class'.
+func (recv *StyleSchemeClass) SetFieldBaseClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(styleSchemeClassStruct, recv.Native(), "base_class", argValue)
+}
 
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
 
@@ -3543,9 +3827,19 @@ func (recv *StyleSchemeManagerClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *StyleSchemeManagerClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(styleSchemeManagerClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *StyleSchemeManagerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(styleSchemeManagerClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value '_gtk_source_reserved1' : for field getter : missing Type
 
@@ -3725,9 +4019,19 @@ func (recv *TagClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextTagClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *TagClass) FieldParentClass() *gtk.TextTagClass {
+	argValue := gi.StructFieldGet(tagClassStruct, recv.Native(), "parent_class")
+	value := gtk.TextTagClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gtk.TextTagClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *TagClass) SetFieldParentClass(value *gtk.TextTagClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(tagClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'padding' : for field getter : missing Type
 
@@ -3787,9 +4091,19 @@ func (recv *UndoManagerIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParent returns the C field 'parent'.
+func (recv *UndoManagerIface) FieldParent() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(undoManagerIfaceStruct, recv.Native(), "parent")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *UndoManagerIface) SetFieldParent(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(undoManagerIfaceStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'can_undo' : for field getter : missing Type
 
@@ -3877,9 +4191,19 @@ func (recv *ViewClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'Gtk.TextViewClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *ViewClass) FieldParentClass() *gtk.TextViewClass {
+	argValue := gi.StructFieldGet(viewClassStruct, recv.Native(), "parent_class")
+	value := gtk.TextViewClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'Gtk.TextViewClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *ViewClass) SetFieldParentClass(value *gtk.TextViewClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(viewClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'undo' : for field getter : missing Type
 

@@ -6,9 +6,11 @@ import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	atk "github.com/pekim/gobbi/lib/atk"
+	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	gio "github.com/pekim/gobbi/lib/gio"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	xlib "github.com/pekim/gobbi/lib/xlib"
@@ -1119,9 +1121,68 @@ func AccelGroupNew() *AccelGroup {
 
 // UNSUPPORTED : C value 'gtk_accel_group_connect' : parameter 'accel_mods' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_accel_group_connect_by_path' : parameter 'closure' of type 'GObject.Closure' not supported
+var accelGroupConnectByPathFunction *gi.Function
+var accelGroupConnectByPathFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_accel_group_disconnect' : parameter 'closure' of type 'GObject.Closure' not supported
+func accelGroupConnectByPathFunction_Set() error {
+	var err error
+	accelGroupConnectByPathFunction_Once.Do(func() {
+		err = accelGroupObject_Set()
+		if err != nil {
+			return
+		}
+		accelGroupConnectByPathFunction, err = accelGroupObject.InvokerNew("connect_by_path")
+	})
+	return err
+}
+
+// ConnectByPath is a representation of the C type gtk_accel_group_connect_by_path.
+func (recv *AccelGroup) ConnectByPath(accelPath string, closure *gobject.Closure) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(accelPath)
+	inArgs[2].SetPointer(closure.Native())
+
+	err := accelGroupConnectByPathFunction_Set()
+	if err == nil {
+		accelGroupConnectByPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var accelGroupDisconnectFunction *gi.Function
+var accelGroupDisconnectFunction_Once sync.Once
+
+func accelGroupDisconnectFunction_Set() error {
+	var err error
+	accelGroupDisconnectFunction_Once.Do(func() {
+		err = accelGroupObject_Set()
+		if err != nil {
+			return
+		}
+		accelGroupDisconnectFunction, err = accelGroupObject.InvokerNew("disconnect")
+	})
+	return err
+}
+
+// Disconnect is a representation of the C type gtk_accel_group_disconnect.
+func (recv *AccelGroup) Disconnect(closure *gobject.Closure) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(closure.Native())
+
+	var ret gi.Argument
+
+	err := accelGroupDisconnectFunction_Set()
+	if err == nil {
+		ret = accelGroupDisconnectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_accel_group_disconnect_key' : parameter 'accel_mods' of type 'Gdk.ModifierType' not supported
 
@@ -1467,7 +1528,34 @@ func (recv *AccelLabel) Refetch() bool {
 
 // UNSUPPORTED : C value 'gtk_accel_label_set_accel' : parameter 'accelerator_mods' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_accel_label_set_accel_closure' : parameter 'accel_closure' of type 'GObject.Closure' not supported
+var accelLabelSetAccelClosureFunction *gi.Function
+var accelLabelSetAccelClosureFunction_Once sync.Once
+
+func accelLabelSetAccelClosureFunction_Set() error {
+	var err error
+	accelLabelSetAccelClosureFunction_Once.Do(func() {
+		err = accelLabelObject_Set()
+		if err != nil {
+			return
+		}
+		accelLabelSetAccelClosureFunction, err = accelLabelObject.InvokerNew("set_accel_closure")
+	})
+	return err
+}
+
+// SetAccelClosure is a representation of the C type gtk_accel_label_set_accel_closure.
+func (recv *AccelLabel) SetAccelClosure(accelClosure *gobject.Closure) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(accelClosure.Native())
+
+	err := accelLabelSetAccelClosureFunction_Set()
+	if err == nil {
+		accelLabelSetAccelClosureFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var accelLabelSetAccelWidgetFunction *gi.Function
 var accelLabelSetAccelWidgetFunction_Once sync.Once
@@ -2084,7 +2172,37 @@ func (recv *Action) DisconnectAccelerator() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_action_get_accel_closure' : return type 'GObject.Closure' not supported
+var actionGetAccelClosureFunction *gi.Function
+var actionGetAccelClosureFunction_Once sync.Once
+
+func actionGetAccelClosureFunction_Set() error {
+	var err error
+	actionGetAccelClosureFunction_Once.Do(func() {
+		err = actionObject_Set()
+		if err != nil {
+			return
+		}
+		actionGetAccelClosureFunction, err = actionObject.InvokerNew("get_accel_closure")
+	})
+	return err
+}
+
+// GetAccelClosure is a representation of the C type gtk_action_get_accel_closure.
+func (recv *Action) GetAccelClosure() *gobject.Closure {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := actionGetAccelClosureFunction_Set()
+	if err == nil {
+		ret = actionGetAccelClosureFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gobject.ClosureNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var actionGetAccelPathFunction *gi.Function
 var actionGetAccelPathFunction_Once sync.Once
@@ -2280,7 +2398,37 @@ func (recv *Action) GetName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_action_get_proxies' : return type 'GLib.SList' not supported
+var actionGetProxiesFunction *gi.Function
+var actionGetProxiesFunction_Once sync.Once
+
+func actionGetProxiesFunction_Set() error {
+	var err error
+	actionGetProxiesFunction_Once.Do(func() {
+		err = actionObject_Set()
+		if err != nil {
+			return
+		}
+		actionGetProxiesFunction, err = actionObject.InvokerNew("get_proxies")
+	})
+	return err
+}
+
+// GetProxies is a representation of the C type gtk_action_get_proxies.
+func (recv *Action) GetProxies() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := actionGetProxiesFunction_Set()
+	if err == nil {
+		ret = actionGetProxiesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var actionGetSensitiveFunction *gi.Function
 var actionGetSensitiveFunction_Once sync.Once
@@ -3571,7 +3719,37 @@ func (recv *ActionGroup) GetVisible() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_action_group_list_actions' : return type 'GLib.List' not supported
+var actionGroupListActionsFunction *gi.Function
+var actionGroupListActionsFunction_Once sync.Once
+
+func actionGroupListActionsFunction_Set() error {
+	var err error
+	actionGroupListActionsFunction_Once.Do(func() {
+		err = actionGroupObject_Set()
+		if err != nil {
+			return
+		}
+		actionGroupListActionsFunction, err = actionGroupObject.InvokerNew("list_actions")
+	})
+	return err
+}
+
+// ListActions is a representation of the C type gtk_action_group_list_actions.
+func (recv *ActionGroup) ListActions() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := actionGroupListActionsFunction_Set()
+	if err == nil {
+		ret = actionGroupListActionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var actionGroupRemoveActionFunction *gi.Function
 var actionGroupRemoveActionFunction_Once sync.Once
@@ -5940,7 +6118,36 @@ func (recv *Application) SetFieldParent(value *gio.Application) {
 
 // UNSUPPORTED : C value 'gtk_application_new' : parameter 'flags' of type 'Gio.ApplicationFlags' not supported
 
-// UNSUPPORTED : C value 'gtk_application_add_accelerator' : parameter 'parameter' of type 'GLib.Variant' not supported
+var applicationAddAcceleratorFunction *gi.Function
+var applicationAddAcceleratorFunction_Once sync.Once
+
+func applicationAddAcceleratorFunction_Set() error {
+	var err error
+	applicationAddAcceleratorFunction_Once.Do(func() {
+		err = applicationObject_Set()
+		if err != nil {
+			return
+		}
+		applicationAddAcceleratorFunction, err = applicationObject.InvokerNew("add_accelerator")
+	})
+	return err
+}
+
+// AddAccelerator is a representation of the C type gtk_application_add_accelerator.
+func (recv *Application) AddAccelerator(accelerator string, actionName string, parameter *glib.Variant) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(accelerator)
+	inArgs[2].SetString(actionName)
+	inArgs[3].SetPointer(parameter.Native())
+
+	err := applicationAddAcceleratorFunction_Set()
+	if err == nil {
+		applicationAddAcceleratorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var applicationAddWindowFunction *gi.Function
 var applicationAddWindowFunction_Once sync.Once
@@ -6191,7 +6398,37 @@ func (recv *Application) GetWindowById(id uint32) *Window {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_application_get_windows' : return type 'GLib.List' not supported
+var applicationGetWindowsFunction *gi.Function
+var applicationGetWindowsFunction_Once sync.Once
+
+func applicationGetWindowsFunction_Set() error {
+	var err error
+	applicationGetWindowsFunction_Once.Do(func() {
+		err = applicationObject_Set()
+		if err != nil {
+			return
+		}
+		applicationGetWindowsFunction, err = applicationObject.InvokerNew("get_windows")
+	})
+	return err
+}
+
+// GetWindows is a representation of the C type gtk_application_get_windows.
+func (recv *Application) GetWindows() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := applicationGetWindowsFunction_Set()
+	if err == nil {
+		ret = applicationGetWindowsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_application_inhibit' : parameter 'flags' of type 'ApplicationInhibitFlags' not supported
 
@@ -6257,7 +6494,35 @@ func (recv *Application) PrefersAppMenu() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_application_remove_accelerator' : parameter 'parameter' of type 'GLib.Variant' not supported
+var applicationRemoveAcceleratorFunction *gi.Function
+var applicationRemoveAcceleratorFunction_Once sync.Once
+
+func applicationRemoveAcceleratorFunction_Set() error {
+	var err error
+	applicationRemoveAcceleratorFunction_Once.Do(func() {
+		err = applicationObject_Set()
+		if err != nil {
+			return
+		}
+		applicationRemoveAcceleratorFunction, err = applicationObject.InvokerNew("remove_accelerator")
+	})
+	return err
+}
+
+// RemoveAccelerator is a representation of the C type gtk_application_remove_accelerator.
+func (recv *Application) RemoveAccelerator(actionName string, parameter *glib.Variant) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(actionName)
+	inArgs[2].SetPointer(parameter.Native())
+
+	err := applicationRemoveAcceleratorFunction_Set()
+	if err == nil {
+		applicationRemoveAcceleratorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var applicationRemoveWindowFunction *gi.Function
 var applicationRemoveWindowFunction_Once sync.Once
@@ -9381,7 +9646,37 @@ func (recv *Builder) GetObject(name string) *gobject.Object {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_builder_get_objects' : return type 'GLib.SList' not supported
+var builderGetObjectsFunction *gi.Function
+var builderGetObjectsFunction_Once sync.Once
+
+func builderGetObjectsFunction_Set() error {
+	var err error
+	builderGetObjectsFunction_Once.Do(func() {
+		err = builderObject_Set()
+		if err != nil {
+			return
+		}
+		builderGetObjectsFunction, err = builderObject.InvokerNew("get_objects")
+	})
+	return err
+}
+
+// GetObjects is a representation of the C type gtk_builder_get_objects.
+func (recv *Builder) GetObjects() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := builderGetObjectsFunction_Set()
+	if err == nil {
+		ret = builderGetObjectsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var builderGetTranslationDomainFunction *gi.Function
 var builderGetTranslationDomainFunction_Once sync.Once
@@ -9477,7 +9772,41 @@ func (recv *Builder) SetTranslationDomain(domain string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_builder_value_from_string' : parameter 'value' of type 'GObject.Value' not supported
+var builderValueFromStringFunction *gi.Function
+var builderValueFromStringFunction_Once sync.Once
+
+func builderValueFromStringFunction_Set() error {
+	var err error
+	builderValueFromStringFunction_Once.Do(func() {
+		err = builderObject_Set()
+		if err != nil {
+			return
+		}
+		builderValueFromStringFunction, err = builderObject.InvokerNew("value_from_string")
+	})
+	return err
+}
+
+// ValueFromString is a representation of the C type gtk_builder_value_from_string.
+func (recv *Builder) ValueFromString(pspec *gobject.ParamSpec, string_ string) (bool, *gobject.Value) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(pspec.Native())
+	inArgs[2].SetString(string_)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := builderValueFromStringFunction_Set()
+	if err == nil {
+		ret = builderValueFromStringFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gobject.ValueNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 // UNSUPPORTED : C value 'gtk_builder_value_from_string_type' : parameter 'type' of type 'GType' not supported
 
@@ -11701,7 +12030,7 @@ func (recv *CellArea) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_cell_area_activate' : parameter 'cell_area' of type 'Gdk.Rectangle' not supported
+// UNSUPPORTED : C value 'gtk_cell_area_activate' : parameter 'flags' of type 'CellRendererState' not supported
 
 // UNSUPPORTED : C value 'gtk_cell_area_activate_cell' : parameter 'event' of type 'Gdk.Event' not supported
 
@@ -11865,13 +12194,71 @@ func (recv *CellArea) AttributeGetColumn(renderer *CellRenderer, attribute strin
 
 // UNSUPPORTED : C value 'gtk_cell_area_cell_get' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_cell_area_cell_get_property' : parameter 'value' of type 'GObject.Value' not supported
+var cellAreaCellGetPropertyFunction *gi.Function
+var cellAreaCellGetPropertyFunction_Once sync.Once
+
+func cellAreaCellGetPropertyFunction_Set() error {
+	var err error
+	cellAreaCellGetPropertyFunction_Once.Do(func() {
+		err = cellAreaObject_Set()
+		if err != nil {
+			return
+		}
+		cellAreaCellGetPropertyFunction, err = cellAreaObject.InvokerNew("cell_get_property")
+	})
+	return err
+}
+
+// CellGetProperty is a representation of the C type gtk_cell_area_cell_get_property.
+func (recv *CellArea) CellGetProperty(renderer *CellRenderer, propertyName string, value *gobject.Value) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(renderer.Native())
+	inArgs[2].SetString(propertyName)
+	inArgs[3].SetPointer(value.Native())
+
+	err := cellAreaCellGetPropertyFunction_Set()
+	if err == nil {
+		cellAreaCellGetPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_cell_area_cell_get_valist' : parameter 'var_args' of type 'va_list' not supported
 
 // UNSUPPORTED : C value 'gtk_cell_area_cell_set' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_cell_area_cell_set_property' : parameter 'value' of type 'GObject.Value' not supported
+var cellAreaCellSetPropertyFunction *gi.Function
+var cellAreaCellSetPropertyFunction_Once sync.Once
+
+func cellAreaCellSetPropertyFunction_Set() error {
+	var err error
+	cellAreaCellSetPropertyFunction_Once.Do(func() {
+		err = cellAreaObject_Set()
+		if err != nil {
+			return
+		}
+		cellAreaCellSetPropertyFunction, err = cellAreaObject.InvokerNew("cell_set_property")
+	})
+	return err
+}
+
+// CellSetProperty is a representation of the C type gtk_cell_area_cell_set_property.
+func (recv *CellArea) CellSetProperty(renderer *CellRenderer, propertyName string, value *gobject.Value) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(renderer.Native())
+	inArgs[2].SetString(propertyName)
+	inArgs[3].SetPointer(value.Native())
+
+	err := cellAreaCellSetPropertyFunction_Set()
+	if err == nil {
+		cellAreaCellSetPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_cell_area_cell_set_valist' : parameter 'var_args' of type 'va_list' not supported
 
@@ -11977,11 +12364,82 @@ func (recv *CellArea) Focus(direction DirectionType) bool {
 
 // UNSUPPORTED : C value 'gtk_cell_area_foreach' : parameter 'callback' of type 'CellCallback' not supported
 
-// UNSUPPORTED : C value 'gtk_cell_area_foreach_alloc' : parameter 'cell_area' of type 'Gdk.Rectangle' not supported
+// UNSUPPORTED : C value 'gtk_cell_area_foreach_alloc' : parameter 'callback' of type 'CellAllocCallback' not supported
 
-// UNSUPPORTED : C value 'gtk_cell_area_get_cell_allocation' : parameter 'cell_area' of type 'Gdk.Rectangle' not supported
+var cellAreaGetCellAllocationFunction *gi.Function
+var cellAreaGetCellAllocationFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_cell_area_get_cell_at_position' : parameter 'cell_area' of type 'Gdk.Rectangle' not supported
+func cellAreaGetCellAllocationFunction_Set() error {
+	var err error
+	cellAreaGetCellAllocationFunction_Once.Do(func() {
+		err = cellAreaObject_Set()
+		if err != nil {
+			return
+		}
+		cellAreaGetCellAllocationFunction, err = cellAreaObject.InvokerNew("get_cell_allocation")
+	})
+	return err
+}
+
+// GetCellAllocation is a representation of the C type gtk_cell_area_get_cell_allocation.
+func (recv *CellArea) GetCellAllocation(context *CellAreaContext, widget *Widget, renderer *CellRenderer, cellArea *gdk.Rectangle) *gdk.Rectangle {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(context.Native())
+	inArgs[2].SetPointer(widget.Native())
+	inArgs[3].SetPointer(renderer.Native())
+	inArgs[4].SetPointer(cellArea.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := cellAreaGetCellAllocationFunction_Set()
+	if err == nil {
+		cellAreaGetCellAllocationFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
+
+var cellAreaGetCellAtPositionFunction *gi.Function
+var cellAreaGetCellAtPositionFunction_Once sync.Once
+
+func cellAreaGetCellAtPositionFunction_Set() error {
+	var err error
+	cellAreaGetCellAtPositionFunction_Once.Do(func() {
+		err = cellAreaObject_Set()
+		if err != nil {
+			return
+		}
+		cellAreaGetCellAtPositionFunction, err = cellAreaObject.InvokerNew("get_cell_at_position")
+	})
+	return err
+}
+
+// GetCellAtPosition is a representation of the C type gtk_cell_area_get_cell_at_position.
+func (recv *CellArea) GetCellAtPosition(context *CellAreaContext, widget *Widget, cellArea *gdk.Rectangle, x int32, y int32) (*CellRenderer, *gdk.Rectangle) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(context.Native())
+	inArgs[2].SetPointer(widget.Native())
+	inArgs[3].SetPointer(cellArea.Native())
+	inArgs[4].SetInt32(x)
+	inArgs[5].SetInt32(y)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := cellAreaGetCellAtPositionFunction_Set()
+	if err == nil {
+		ret = cellAreaGetCellAtPositionFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := CellRendererNewFromNative(ret.Pointer())
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var cellAreaGetCurrentPathStringFunction *gi.Function
 var cellAreaGetCurrentPathStringFunction_Once sync.Once
@@ -12114,7 +12572,38 @@ func (recv *CellArea) GetFocusFromSibling(renderer *CellRenderer) *CellRenderer 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_cell_area_get_focus_siblings' : return type 'GLib.List' not supported
+var cellAreaGetFocusSiblingsFunction *gi.Function
+var cellAreaGetFocusSiblingsFunction_Once sync.Once
+
+func cellAreaGetFocusSiblingsFunction_Set() error {
+	var err error
+	cellAreaGetFocusSiblingsFunction_Once.Do(func() {
+		err = cellAreaObject_Set()
+		if err != nil {
+			return
+		}
+		cellAreaGetFocusSiblingsFunction, err = cellAreaObject.InvokerNew("get_focus_siblings")
+	})
+	return err
+}
+
+// GetFocusSiblings is a representation of the C type gtk_cell_area_get_focus_siblings.
+func (recv *CellArea) GetFocusSiblings(renderer *CellRenderer) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(renderer.Native())
+
+	var ret gi.Argument
+
+	err := cellAreaGetFocusSiblingsFunction_Set()
+	if err == nil {
+		ret = cellAreaGetFocusSiblingsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var cellAreaGetPreferredHeightFunction *gi.Function
 var cellAreaGetPreferredHeightFunction_Once sync.Once
@@ -12323,7 +12812,39 @@ func (recv *CellArea) HasRenderer(renderer *CellRenderer) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_cell_area_inner_cell_area' : parameter 'cell_area' of type 'Gdk.Rectangle' not supported
+var cellAreaInnerCellAreaFunction *gi.Function
+var cellAreaInnerCellAreaFunction_Once sync.Once
+
+func cellAreaInnerCellAreaFunction_Set() error {
+	var err error
+	cellAreaInnerCellAreaFunction_Once.Do(func() {
+		err = cellAreaObject_Set()
+		if err != nil {
+			return
+		}
+		cellAreaInnerCellAreaFunction, err = cellAreaObject.InvokerNew("inner_cell_area")
+	})
+	return err
+}
+
+// InnerCellArea is a representation of the C type gtk_cell_area_inner_cell_area.
+func (recv *CellArea) InnerCellArea(widget *Widget, cellArea *gdk.Rectangle) *gdk.Rectangle {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(widget.Native())
+	inArgs[2].SetPointer(cellArea.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := cellAreaInnerCellAreaFunction_Set()
+	if err == nil {
+		cellAreaInnerCellAreaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var cellAreaIsActivatableFunction *gi.Function
 var cellAreaIsActivatableFunction_Once sync.Once
@@ -12450,7 +12971,7 @@ func (recv *CellArea) RemoveFocusSibling(renderer *CellRenderer, sibling *CellRe
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_cell_area_render' : parameter 'cr' of type 'cairo.Context' not supported
+// UNSUPPORTED : C value 'gtk_cell_area_render' : parameter 'flags' of type 'CellRendererState' not supported
 
 var cellAreaRequestRendererFunction *gi.Function
 var cellAreaRequestRendererFunction_Once sync.Once
@@ -13603,7 +14124,42 @@ func (recv *CellRenderer) GetSensitive() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_cell_renderer_get_size' : parameter 'cell_area' of type 'Gdk.Rectangle' not supported
+var cellRendererGetSizeFunction *gi.Function
+var cellRendererGetSizeFunction_Once sync.Once
+
+func cellRendererGetSizeFunction_Set() error {
+	var err error
+	cellRendererGetSizeFunction_Once.Do(func() {
+		err = cellRendererObject_Set()
+		if err != nil {
+			return
+		}
+		cellRendererGetSizeFunction, err = cellRendererObject.InvokerNew("get_size")
+	})
+	return err
+}
+
+// GetSize is a representation of the C type gtk_cell_renderer_get_size.
+func (recv *CellRenderer) GetSize(widget *Widget, cellArea *gdk.Rectangle) (int32, int32, int32, int32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(widget.Native())
+	inArgs[2].SetPointer(cellArea.Native())
+
+	var outArgs [4]gi.Argument
+
+	err := cellRendererGetSizeFunction_Set()
+	if err == nil {
+		cellRendererGetSizeFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+	out2 := outArgs[2].Int32()
+	out3 := outArgs[3].Int32()
+
+	return out0, out1, out2, out3
+}
 
 // UNSUPPORTED : C value 'gtk_cell_renderer_get_state' : parameter 'cell_state' of type 'CellRendererState' not supported
 
@@ -13671,7 +14227,7 @@ func (recv *CellRenderer) IsActivatable() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_cell_renderer_render' : parameter 'cr' of type 'cairo.Context' not supported
+// UNSUPPORTED : C value 'gtk_cell_renderer_render' : parameter 'flags' of type 'CellRendererState' not supported
 
 var cellRendererSetAlignmentFunction *gi.Function
 var cellRendererSetAlignmentFunction_Once sync.Once
@@ -15431,9 +15987,63 @@ func (recv *CellView) GetSizeOfRow(path *TreePath) (bool, *Requisition) {
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'gtk_cell_view_set_background_color' : parameter 'color' of type 'Gdk.Color' not supported
+var cellViewSetBackgroundColorFunction *gi.Function
+var cellViewSetBackgroundColorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_cell_view_set_background_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+func cellViewSetBackgroundColorFunction_Set() error {
+	var err error
+	cellViewSetBackgroundColorFunction_Once.Do(func() {
+		err = cellViewObject_Set()
+		if err != nil {
+			return
+		}
+		cellViewSetBackgroundColorFunction, err = cellViewObject.InvokerNew("set_background_color")
+	})
+	return err
+}
+
+// SetBackgroundColor is a representation of the C type gtk_cell_view_set_background_color.
+func (recv *CellView) SetBackgroundColor(color *gdk.Color) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(color.Native())
+
+	err := cellViewSetBackgroundColorFunction_Set()
+	if err == nil {
+		cellViewSetBackgroundColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cellViewSetBackgroundRgbaFunction *gi.Function
+var cellViewSetBackgroundRgbaFunction_Once sync.Once
+
+func cellViewSetBackgroundRgbaFunction_Set() error {
+	var err error
+	cellViewSetBackgroundRgbaFunction_Once.Do(func() {
+		err = cellViewObject_Set()
+		if err != nil {
+			return
+		}
+		cellViewSetBackgroundRgbaFunction, err = cellViewObject.InvokerNew("set_background_rgba")
+	})
+	return err
+}
+
+// SetBackgroundRgba is a representation of the C type gtk_cell_view_set_background_rgba.
+func (recv *CellView) SetBackgroundRgba(rgba *gdk.RGBA) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rgba.Native())
+
+	err := cellViewSetBackgroundRgbaFunction_Set()
+	if err == nil {
+		cellViewSetBackgroundRgbaFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var cellViewSetDisplayedRowFunction *gi.Function
 var cellViewSetDisplayedRowFunction_Once sync.Once
@@ -16466,9 +17076,39 @@ func (recv *Clipboard) GetOwner() *gobject.Object {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_clipboard_get_selection' : return type 'Gdk.Atom' not supported
+var clipboardGetSelectionFunction *gi.Function
+var clipboardGetSelectionFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_clipboard_request_contents' : parameter 'target' of type 'Gdk.Atom' not supported
+func clipboardGetSelectionFunction_Set() error {
+	var err error
+	clipboardGetSelectionFunction_Once.Do(func() {
+		err = clipboardObject_Set()
+		if err != nil {
+			return
+		}
+		clipboardGetSelectionFunction, err = clipboardObject.InvokerNew("get_selection")
+	})
+	return err
+}
+
+// GetSelection is a representation of the C type gtk_clipboard_get_selection.
+func (recv *Clipboard) GetSelection() *gdk.Atom {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := clipboardGetSelectionFunction_Set()
+	if err == nil {
+		ret = clipboardGetSelectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdk.AtomNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_clipboard_request_contents' : parameter 'callback' of type 'ClipboardReceivedFunc' not supported
 
 // UNSUPPORTED : C value 'gtk_clipboard_request_image' : parameter 'callback' of type 'ClipboardImageReceivedFunc' not supported
 
@@ -16573,7 +17213,38 @@ func (recv *Clipboard) Store() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_clipboard_wait_for_contents' : parameter 'target' of type 'Gdk.Atom' not supported
+var clipboardWaitForContentsFunction *gi.Function
+var clipboardWaitForContentsFunction_Once sync.Once
+
+func clipboardWaitForContentsFunction_Set() error {
+	var err error
+	clipboardWaitForContentsFunction_Once.Do(func() {
+		err = clipboardObject_Set()
+		if err != nil {
+			return
+		}
+		clipboardWaitForContentsFunction, err = clipboardObject.InvokerNew("wait_for_contents")
+	})
+	return err
+}
+
+// WaitForContents is a representation of the C type gtk_clipboard_wait_for_contents.
+func (recv *Clipboard) WaitForContents(target *gdk.Atom) *SelectionData {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(target.Native())
+
+	var ret gi.Argument
+
+	err := clipboardWaitForContentsFunction_Set()
+	if err == nil {
+		ret = clipboardWaitForContentsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SelectionDataNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var clipboardWaitForImageFunction *gi.Function
 var clipboardWaitForImageFunction_Once sync.Once
@@ -16607,7 +17278,39 @@ func (recv *Clipboard) WaitForImage() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_clipboard_wait_for_rich_text' : parameter 'format' of type 'Gdk.Atom' not supported
+var clipboardWaitForRichTextFunction *gi.Function
+var clipboardWaitForRichTextFunction_Once sync.Once
+
+func clipboardWaitForRichTextFunction_Set() error {
+	var err error
+	clipboardWaitForRichTextFunction_Once.Do(func() {
+		err = clipboardObject_Set()
+		if err != nil {
+			return
+		}
+		clipboardWaitForRichTextFunction, err = clipboardObject.InvokerNew("wait_for_rich_text")
+	})
+	return err
+}
+
+// WaitForRichText is a representation of the C type gtk_clipboard_wait_for_rich_text.
+func (recv *Clipboard) WaitForRichText(buffer *TextBuffer) (*gdk.Atom, uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(buffer.Native())
+
+	var outArgs [2]gi.Argument
+
+	err := clipboardWaitForRichTextFunction_Set()
+	if err == nil {
+		clipboardWaitForRichTextFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.AtomNewFromNative(outArgs[0].Pointer())
+	out1 := outArgs[1].Uint64()
+
+	return out0, out1
+}
 
 // UNSUPPORTED : C value 'gtk_clipboard_wait_for_targets' : parameter 'targets' of type 'nil' not supported
 
@@ -16736,7 +17439,38 @@ func (recv *Clipboard) WaitIsRichTextAvailable(buffer *TextBuffer) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_clipboard_wait_is_target_available' : parameter 'target' of type 'Gdk.Atom' not supported
+var clipboardWaitIsTargetAvailableFunction *gi.Function
+var clipboardWaitIsTargetAvailableFunction_Once sync.Once
+
+func clipboardWaitIsTargetAvailableFunction_Set() error {
+	var err error
+	clipboardWaitIsTargetAvailableFunction_Once.Do(func() {
+		err = clipboardObject_Set()
+		if err != nil {
+			return
+		}
+		clipboardWaitIsTargetAvailableFunction, err = clipboardObject.InvokerNew("wait_is_target_available")
+	})
+	return err
+}
+
+// WaitIsTargetAvailable is a representation of the C type gtk_clipboard_wait_is_target_available.
+func (recv *Clipboard) WaitIsTargetAvailable(target *gdk.Atom) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(target.Native())
+
+	var ret gi.Argument
+
+	err := clipboardWaitIsTargetAvailableFunction_Set()
+	if err == nil {
+		ret = clipboardWaitIsTargetAvailableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var clipboardWaitIsTextAvailableFunction *gi.Function
 var clipboardWaitIsTextAvailableFunction_Once sync.Once
@@ -16802,7 +17536,16 @@ func (recv *Clipboard) WaitIsUrisAvailable() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'owner-change' : parameter 'event' of type 'Gdk.EventOwnerChange' not supported
+/*
+ConnectOwnerChange connects a callback to the 'owner-change' signal of the Clipboard.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Clipboard) ConnectOwnerChange(handler func(instance *Clipboard, event *gdk.EventOwnerChange)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "owner-change", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -16937,9 +17680,69 @@ func ColorButtonNew() *ColorButton {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_color_button_new_with_color' : parameter 'color' of type 'Gdk.Color' not supported
+var colorButtonNewWithColorFunction *gi.Function
+var colorButtonNewWithColorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_color_button_new_with_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+func colorButtonNewWithColorFunction_Set() error {
+	var err error
+	colorButtonNewWithColorFunction_Once.Do(func() {
+		err = colorButtonObject_Set()
+		if err != nil {
+			return
+		}
+		colorButtonNewWithColorFunction, err = colorButtonObject.InvokerNew("new_with_color")
+	})
+	return err
+}
+
+// ColorButtonNewWithColor is a representation of the C type gtk_color_button_new_with_color.
+func ColorButtonNewWithColor(color *gdk.Color) *ColorButton {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(color.Native())
+
+	var ret gi.Argument
+
+	err := colorButtonNewWithColorFunction_Set()
+	if err == nil {
+		ret = colorButtonNewWithColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ColorButtonNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var colorButtonNewWithRgbaFunction *gi.Function
+var colorButtonNewWithRgbaFunction_Once sync.Once
+
+func colorButtonNewWithRgbaFunction_Set() error {
+	var err error
+	colorButtonNewWithRgbaFunction_Once.Do(func() {
+		err = colorButtonObject_Set()
+		if err != nil {
+			return
+		}
+		colorButtonNewWithRgbaFunction, err = colorButtonObject.InvokerNew("new_with_rgba")
+	})
+	return err
+}
+
+// ColorButtonNewWithRgba is a representation of the C type gtk_color_button_new_with_rgba.
+func ColorButtonNewWithRgba(rgba *gdk.RGBA) *ColorButton {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(rgba.Native())
+
+	var ret gi.Argument
+
+	err := colorButtonNewWithRgbaFunction_Set()
+	if err == nil {
+		ret = colorButtonNewWithRgbaFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ColorButtonNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var colorButtonGetAlphaFunction *gi.Function
 var colorButtonGetAlphaFunction_Once sync.Once
@@ -16973,9 +17776,69 @@ func (recv *ColorButton) GetAlpha() uint16 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_color_button_get_color' : parameter 'color' of type 'Gdk.Color' not supported
+var colorButtonGetColorFunction *gi.Function
+var colorButtonGetColorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_color_button_get_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+func colorButtonGetColorFunction_Set() error {
+	var err error
+	colorButtonGetColorFunction_Once.Do(func() {
+		err = colorButtonObject_Set()
+		if err != nil {
+			return
+		}
+		colorButtonGetColorFunction, err = colorButtonObject.InvokerNew("get_color")
+	})
+	return err
+}
+
+// GetColor is a representation of the C type gtk_color_button_get_color.
+func (recv *ColorButton) GetColor() *gdk.Color {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := colorButtonGetColorFunction_Set()
+	if err == nil {
+		colorButtonGetColorFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.ColorNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
+
+var colorButtonGetRgbaFunction *gi.Function
+var colorButtonGetRgbaFunction_Once sync.Once
+
+func colorButtonGetRgbaFunction_Set() error {
+	var err error
+	colorButtonGetRgbaFunction_Once.Do(func() {
+		err = colorButtonObject_Set()
+		if err != nil {
+			return
+		}
+		colorButtonGetRgbaFunction, err = colorButtonObject.InvokerNew("get_rgba")
+	})
+	return err
+}
+
+// GetRgba is a representation of the C type gtk_color_button_get_rgba.
+func (recv *ColorButton) GetRgba() *gdk.RGBA {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := colorButtonGetRgbaFunction_Set()
+	if err == nil {
+		colorButtonGetRgbaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RGBANewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var colorButtonGetTitleFunction *gi.Function
 var colorButtonGetTitleFunction_Once sync.Once
@@ -17070,9 +17933,63 @@ func (recv *ColorButton) SetAlpha(alpha uint16) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_color_button_set_color' : parameter 'color' of type 'Gdk.Color' not supported
+var colorButtonSetColorFunction *gi.Function
+var colorButtonSetColorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_color_button_set_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+func colorButtonSetColorFunction_Set() error {
+	var err error
+	colorButtonSetColorFunction_Once.Do(func() {
+		err = colorButtonObject_Set()
+		if err != nil {
+			return
+		}
+		colorButtonSetColorFunction, err = colorButtonObject.InvokerNew("set_color")
+	})
+	return err
+}
+
+// SetColor is a representation of the C type gtk_color_button_set_color.
+func (recv *ColorButton) SetColor(color *gdk.Color) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(color.Native())
+
+	err := colorButtonSetColorFunction_Set()
+	if err == nil {
+		colorButtonSetColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var colorButtonSetRgbaFunction *gi.Function
+var colorButtonSetRgbaFunction_Once sync.Once
+
+func colorButtonSetRgbaFunction_Set() error {
+	var err error
+	colorButtonSetRgbaFunction_Once.Do(func() {
+		err = colorButtonObject_Set()
+		if err != nil {
+			return
+		}
+		colorButtonSetRgbaFunction, err = colorButtonObject.InvokerNew("set_rgba")
+	})
+	return err
+}
+
+// SetRgba is a representation of the C type gtk_color_button_set_rgba.
+func (recv *ColorButton) SetRgba(rgba *gdk.RGBA) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rgba.Native())
+
+	err := colorButtonSetRgbaFunction_Set()
+	if err == nil {
+		colorButtonSetRgbaFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var colorButtonSetTitleFunction *gi.Function
 var colorButtonSetTitleFunction_Once sync.Once
@@ -17614,9 +18531,69 @@ func (recv *ColorSelection) GetCurrentAlpha() uint16 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_color_selection_get_current_color' : parameter 'color' of type 'Gdk.Color' not supported
+var colorSelectionGetCurrentColorFunction *gi.Function
+var colorSelectionGetCurrentColorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_color_selection_get_current_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+func colorSelectionGetCurrentColorFunction_Set() error {
+	var err error
+	colorSelectionGetCurrentColorFunction_Once.Do(func() {
+		err = colorSelectionObject_Set()
+		if err != nil {
+			return
+		}
+		colorSelectionGetCurrentColorFunction, err = colorSelectionObject.InvokerNew("get_current_color")
+	})
+	return err
+}
+
+// GetCurrentColor is a representation of the C type gtk_color_selection_get_current_color.
+func (recv *ColorSelection) GetCurrentColor() *gdk.Color {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := colorSelectionGetCurrentColorFunction_Set()
+	if err == nil {
+		colorSelectionGetCurrentColorFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.ColorNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
+
+var colorSelectionGetCurrentRgbaFunction *gi.Function
+var colorSelectionGetCurrentRgbaFunction_Once sync.Once
+
+func colorSelectionGetCurrentRgbaFunction_Set() error {
+	var err error
+	colorSelectionGetCurrentRgbaFunction_Once.Do(func() {
+		err = colorSelectionObject_Set()
+		if err != nil {
+			return
+		}
+		colorSelectionGetCurrentRgbaFunction, err = colorSelectionObject.InvokerNew("get_current_rgba")
+	})
+	return err
+}
+
+// GetCurrentRgba is a representation of the C type gtk_color_selection_get_current_rgba.
+func (recv *ColorSelection) GetCurrentRgba() *gdk.RGBA {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := colorSelectionGetCurrentRgbaFunction_Set()
+	if err == nil {
+		colorSelectionGetCurrentRgbaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RGBANewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var colorSelectionGetHasOpacityControlFunction *gi.Function
 var colorSelectionGetHasOpacityControlFunction_Once sync.Once
@@ -17714,9 +18691,69 @@ func (recv *ColorSelection) GetPreviousAlpha() uint16 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_color_selection_get_previous_color' : parameter 'color' of type 'Gdk.Color' not supported
+var colorSelectionGetPreviousColorFunction *gi.Function
+var colorSelectionGetPreviousColorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_color_selection_get_previous_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+func colorSelectionGetPreviousColorFunction_Set() error {
+	var err error
+	colorSelectionGetPreviousColorFunction_Once.Do(func() {
+		err = colorSelectionObject_Set()
+		if err != nil {
+			return
+		}
+		colorSelectionGetPreviousColorFunction, err = colorSelectionObject.InvokerNew("get_previous_color")
+	})
+	return err
+}
+
+// GetPreviousColor is a representation of the C type gtk_color_selection_get_previous_color.
+func (recv *ColorSelection) GetPreviousColor() *gdk.Color {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := colorSelectionGetPreviousColorFunction_Set()
+	if err == nil {
+		colorSelectionGetPreviousColorFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.ColorNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
+
+var colorSelectionGetPreviousRgbaFunction *gi.Function
+var colorSelectionGetPreviousRgbaFunction_Once sync.Once
+
+func colorSelectionGetPreviousRgbaFunction_Set() error {
+	var err error
+	colorSelectionGetPreviousRgbaFunction_Once.Do(func() {
+		err = colorSelectionObject_Set()
+		if err != nil {
+			return
+		}
+		colorSelectionGetPreviousRgbaFunction, err = colorSelectionObject.InvokerNew("get_previous_rgba")
+	})
+	return err
+}
+
+// GetPreviousRgba is a representation of the C type gtk_color_selection_get_previous_rgba.
+func (recv *ColorSelection) GetPreviousRgba() *gdk.RGBA {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := colorSelectionGetPreviousRgbaFunction_Set()
+	if err == nil {
+		colorSelectionGetPreviousRgbaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RGBANewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var colorSelectionIsAdjustingFunction *gi.Function
 var colorSelectionIsAdjustingFunction_Once sync.Once
@@ -17779,9 +18816,63 @@ func (recv *ColorSelection) SetCurrentAlpha(alpha uint16) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_color_selection_set_current_color' : parameter 'color' of type 'Gdk.Color' not supported
+var colorSelectionSetCurrentColorFunction *gi.Function
+var colorSelectionSetCurrentColorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_color_selection_set_current_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+func colorSelectionSetCurrentColorFunction_Set() error {
+	var err error
+	colorSelectionSetCurrentColorFunction_Once.Do(func() {
+		err = colorSelectionObject_Set()
+		if err != nil {
+			return
+		}
+		colorSelectionSetCurrentColorFunction, err = colorSelectionObject.InvokerNew("set_current_color")
+	})
+	return err
+}
+
+// SetCurrentColor is a representation of the C type gtk_color_selection_set_current_color.
+func (recv *ColorSelection) SetCurrentColor(color *gdk.Color) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(color.Native())
+
+	err := colorSelectionSetCurrentColorFunction_Set()
+	if err == nil {
+		colorSelectionSetCurrentColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var colorSelectionSetCurrentRgbaFunction *gi.Function
+var colorSelectionSetCurrentRgbaFunction_Once sync.Once
+
+func colorSelectionSetCurrentRgbaFunction_Set() error {
+	var err error
+	colorSelectionSetCurrentRgbaFunction_Once.Do(func() {
+		err = colorSelectionObject_Set()
+		if err != nil {
+			return
+		}
+		colorSelectionSetCurrentRgbaFunction, err = colorSelectionObject.InvokerNew("set_current_rgba")
+	})
+	return err
+}
+
+// SetCurrentRgba is a representation of the C type gtk_color_selection_set_current_rgba.
+func (recv *ColorSelection) SetCurrentRgba(rgba *gdk.RGBA) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rgba.Native())
+
+	err := colorSelectionSetCurrentRgbaFunction_Set()
+	if err == nil {
+		colorSelectionSetCurrentRgbaFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var colorSelectionSetHasOpacityControlFunction *gi.Function
 var colorSelectionSetHasOpacityControlFunction_Once sync.Once
@@ -17870,9 +18961,63 @@ func (recv *ColorSelection) SetPreviousAlpha(alpha uint16) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_color_selection_set_previous_color' : parameter 'color' of type 'Gdk.Color' not supported
+var colorSelectionSetPreviousColorFunction *gi.Function
+var colorSelectionSetPreviousColorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_color_selection_set_previous_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+func colorSelectionSetPreviousColorFunction_Set() error {
+	var err error
+	colorSelectionSetPreviousColorFunction_Once.Do(func() {
+		err = colorSelectionObject_Set()
+		if err != nil {
+			return
+		}
+		colorSelectionSetPreviousColorFunction, err = colorSelectionObject.InvokerNew("set_previous_color")
+	})
+	return err
+}
+
+// SetPreviousColor is a representation of the C type gtk_color_selection_set_previous_color.
+func (recv *ColorSelection) SetPreviousColor(color *gdk.Color) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(color.Native())
+
+	err := colorSelectionSetPreviousColorFunction_Set()
+	if err == nil {
+		colorSelectionSetPreviousColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var colorSelectionSetPreviousRgbaFunction *gi.Function
+var colorSelectionSetPreviousRgbaFunction_Once sync.Once
+
+func colorSelectionSetPreviousRgbaFunction_Set() error {
+	var err error
+	colorSelectionSetPreviousRgbaFunction_Once.Do(func() {
+		err = colorSelectionObject_Set()
+		if err != nil {
+			return
+		}
+		colorSelectionSetPreviousRgbaFunction, err = colorSelectionObject.InvokerNew("set_previous_rgba")
+	})
+	return err
+}
+
+// SetPreviousRgba is a representation of the C type gtk_color_selection_set_previous_rgba.
+func (recv *ColorSelection) SetPreviousRgba(rgba *gdk.RGBA) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rgba.Native())
+
+	err := colorSelectionSetPreviousRgbaFunction_Set()
+	if err == nil {
+		colorSelectionSetPreviousRgbaFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 /*
 ConnectColorChanged connects a callback to the 'color-changed' signal of the ColorSelection.
@@ -20025,7 +21170,36 @@ func (recv *Container) CheckResize() {
 
 // UNSUPPORTED : C value 'gtk_container_child_get' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_container_child_get_property' : parameter 'value' of type 'GObject.Value' not supported
+var containerChildGetPropertyFunction *gi.Function
+var containerChildGetPropertyFunction_Once sync.Once
+
+func containerChildGetPropertyFunction_Set() error {
+	var err error
+	containerChildGetPropertyFunction_Once.Do(func() {
+		err = containerObject_Set()
+		if err != nil {
+			return
+		}
+		containerChildGetPropertyFunction, err = containerObject.InvokerNew("child_get_property")
+	})
+	return err
+}
+
+// ChildGetProperty is a representation of the C type gtk_container_child_get_property.
+func (recv *Container) ChildGetProperty(child *Widget, propertyName string, value *gobject.Value) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(child.Native())
+	inArgs[2].SetString(propertyName)
+	inArgs[3].SetPointer(value.Native())
+
+	err := containerChildGetPropertyFunction_Set()
+	if err == nil {
+		containerChildGetPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_container_child_get_valist' : parameter 'var_args' of type 'va_list' not supported
 
@@ -20091,7 +21265,36 @@ func (recv *Container) ChildNotifyByPspec(child *Widget, pspec *gobject.ParamSpe
 
 // UNSUPPORTED : C value 'gtk_container_child_set' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_container_child_set_property' : parameter 'value' of type 'GObject.Value' not supported
+var containerChildSetPropertyFunction *gi.Function
+var containerChildSetPropertyFunction_Once sync.Once
+
+func containerChildSetPropertyFunction_Set() error {
+	var err error
+	containerChildSetPropertyFunction_Once.Do(func() {
+		err = containerObject_Set()
+		if err != nil {
+			return
+		}
+		containerChildSetPropertyFunction, err = containerObject.InvokerNew("child_set_property")
+	})
+	return err
+}
+
+// ChildSetProperty is a representation of the C type gtk_container_child_set_property.
+func (recv *Container) ChildSetProperty(child *Widget, propertyName string, value *gobject.Value) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(child.Native())
+	inArgs[2].SetString(propertyName)
+	inArgs[3].SetPointer(value.Native())
+
+	err := containerChildSetPropertyFunction_Set()
+	if err == nil {
+		containerChildSetPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_container_child_set_valist' : parameter 'var_args' of type 'va_list' not supported
 
@@ -20133,9 +21336,71 @@ func (recv *Container) GetBorderWidth() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_container_get_children' : return type 'GLib.List' not supported
+var containerGetChildrenFunction *gi.Function
+var containerGetChildrenFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_container_get_focus_chain' : parameter 'focusable_widgets' of type 'GLib.List' not supported
+func containerGetChildrenFunction_Set() error {
+	var err error
+	containerGetChildrenFunction_Once.Do(func() {
+		err = containerObject_Set()
+		if err != nil {
+			return
+		}
+		containerGetChildrenFunction, err = containerObject.InvokerNew("get_children")
+	})
+	return err
+}
+
+// GetChildren is a representation of the C type gtk_container_get_children.
+func (recv *Container) GetChildren() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := containerGetChildrenFunction_Set()
+	if err == nil {
+		ret = containerGetChildrenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var containerGetFocusChainFunction *gi.Function
+var containerGetFocusChainFunction_Once sync.Once
+
+func containerGetFocusChainFunction_Set() error {
+	var err error
+	containerGetFocusChainFunction_Once.Do(func() {
+		err = containerObject_Set()
+		if err != nil {
+			return
+		}
+		containerGetFocusChainFunction, err = containerObject.InvokerNew("get_focus_chain")
+	})
+	return err
+}
+
+// GetFocusChain is a representation of the C type gtk_container_get_focus_chain.
+func (recv *Container) GetFocusChain() (bool, *glib.List) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := containerGetFocusChainFunction_Set()
+	if err == nil {
+		ret = containerGetFocusChainFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := glib.ListNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var containerGetFocusChildFunction *gi.Function
 var containerGetFocusChildFunction_Once sync.Once
@@ -20298,7 +21563,35 @@ func (recv *Container) GetResizeMode() ResizeMode {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_container_propagate_draw' : parameter 'cr' of type 'cairo.Context' not supported
+var containerPropagateDrawFunction *gi.Function
+var containerPropagateDrawFunction_Once sync.Once
+
+func containerPropagateDrawFunction_Set() error {
+	var err error
+	containerPropagateDrawFunction_Once.Do(func() {
+		err = containerObject_Set()
+		if err != nil {
+			return
+		}
+		containerPropagateDrawFunction, err = containerObject.InvokerNew("propagate_draw")
+	})
+	return err
+}
+
+// PropagateDraw is a representation of the C type gtk_container_propagate_draw.
+func (recv *Container) PropagateDraw(child *Widget, cr *cairo.Context) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(child.Native())
+	inArgs[2].SetPointer(cr.Native())
+
+	err := containerPropagateDrawFunction_Set()
+	if err == nil {
+		containerPropagateDrawFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var containerRemoveFunction *gi.Function
 var containerRemoveFunction_Once sync.Once
@@ -20386,7 +21679,34 @@ func (recv *Container) SetBorderWidth(borderWidth uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_container_set_focus_chain' : parameter 'focusable_widgets' of type 'GLib.List' not supported
+var containerSetFocusChainFunction *gi.Function
+var containerSetFocusChainFunction_Once sync.Once
+
+func containerSetFocusChainFunction_Set() error {
+	var err error
+	containerSetFocusChainFunction_Once.Do(func() {
+		err = containerObject_Set()
+		if err != nil {
+			return
+		}
+		containerSetFocusChainFunction, err = containerObject.InvokerNew("set_focus_chain")
+	})
+	return err
+}
+
+// SetFocusChain is a representation of the C type gtk_container_set_focus_chain.
+func (recv *Container) SetFocusChain(focusableWidgets *glib.List) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(focusableWidgets.Native())
+
+	err := containerSetFocusChainFunction_Set()
+	if err == nil {
+		containerSetFocusChainFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var containerSetFocusChildFunction *gi.Function
 var containerSetFocusChildFunction_Once sync.Once
@@ -20886,7 +22206,37 @@ func (recv *ContainerCellAccessible) AddChild(child *CellAccessible) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_container_cell_accessible_get_children' : return type 'GLib.List' not supported
+var containerCellAccessibleGetChildrenFunction *gi.Function
+var containerCellAccessibleGetChildrenFunction_Once sync.Once
+
+func containerCellAccessibleGetChildrenFunction_Set() error {
+	var err error
+	containerCellAccessibleGetChildrenFunction_Once.Do(func() {
+		err = containerCellAccessibleObject_Set()
+		if err != nil {
+			return
+		}
+		containerCellAccessibleGetChildrenFunction, err = containerCellAccessibleObject.InvokerNew("get_children")
+	})
+	return err
+}
+
+// GetChildren is a representation of the C type gtk_container_cell_accessible_get_children.
+func (recv *ContainerCellAccessible) GetChildren() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := containerCellAccessibleGetChildrenFunction_Set()
+	if err == nil {
+		ret = containerCellAccessibleGetChildrenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var containerCellAccessibleRemoveChildFunction *gi.Function
 var containerCellAccessibleRemoveChildFunction_Once sync.Once
@@ -21145,7 +22495,16 @@ func (recv *CssProvider) ToString() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'parsing-error' : parameter 'error' of type 'GLib.Error' not supported
+/*
+ConnectParsingError connects a callback to the 'parsing-error' signal of the CssProvider.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CssProvider) ConnectParsingError(handler func(instance *CssProvider, section *CssSection, error *glib.Error)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "parsing-error", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -21990,7 +23349,37 @@ func (recv *Entry) GetAlignment() float32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_entry_get_attributes' : return type 'Pango.AttrList' not supported
+var entryGetAttributesFunction *gi.Function
+var entryGetAttributesFunction_Once sync.Once
+
+func entryGetAttributesFunction_Set() error {
+	var err error
+	entryGetAttributesFunction_Once.Do(func() {
+		err = entryObject_Set()
+		if err != nil {
+			return
+		}
+		entryGetAttributesFunction, err = entryObject.InvokerNew("get_attributes")
+	})
+	return err
+}
+
+// GetAttributes is a representation of the C type gtk_entry_get_attributes.
+func (recv *Entry) GetAttributes() *pango.AttrList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := entryGetAttributesFunction_Set()
+	if err == nil {
+		ret = entryGetAttributesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := pango.AttrListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var entryGetBufferFunction *gi.Function
 var entryGetBufferFunction_Once sync.Once
@@ -22185,7 +23574,38 @@ func (recv *Entry) GetIconActivatable(iconPos EntryIconPosition) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_entry_get_icon_area' : parameter 'icon_area' of type 'Gdk.Rectangle' not supported
+var entryGetIconAreaFunction *gi.Function
+var entryGetIconAreaFunction_Once sync.Once
+
+func entryGetIconAreaFunction_Set() error {
+	var err error
+	entryGetIconAreaFunction_Once.Do(func() {
+		err = entryObject_Set()
+		if err != nil {
+			return
+		}
+		entryGetIconAreaFunction, err = entryObject.InvokerNew("get_icon_area")
+	})
+	return err
+}
+
+// GetIconArea is a representation of the C type gtk_entry_get_icon_area.
+func (recv *Entry) GetIconArea(iconPos EntryIconPosition) *gdk.Rectangle {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(iconPos))
+
+	var outArgs [1]gi.Argument
+
+	err := entryGetIconAreaFunction_Set()
+	if err == nil {
+		entryGetIconAreaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var entryGetIconAtPosFunction *gi.Function
 var entryGetIconAtPosFunction_Once sync.Once
@@ -22779,7 +24199,37 @@ func (recv *Entry) GetProgressPulseStep() float64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_entry_get_tabs' : return type 'Pango.TabArray' not supported
+var entryGetTabsFunction *gi.Function
+var entryGetTabsFunction_Once sync.Once
+
+func entryGetTabsFunction_Set() error {
+	var err error
+	entryGetTabsFunction_Once.Do(func() {
+		err = entryObject_Set()
+		if err != nil {
+			return
+		}
+		entryGetTabsFunction, err = entryObject.InvokerNew("get_tabs")
+	})
+	return err
+}
+
+// GetTabs is a representation of the C type gtk_entry_get_tabs.
+func (recv *Entry) GetTabs() *pango.TabArray {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := entryGetTabsFunction_Set()
+	if err == nil {
+		ret = entryGetTabsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := pango.TabArrayNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var entryGetTextFunction *gi.Function
 var entryGetTextFunction_Once sync.Once
@@ -22813,7 +24263,37 @@ func (recv *Entry) GetText() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_entry_get_text_area' : parameter 'text_area' of type 'Gdk.Rectangle' not supported
+var entryGetTextAreaFunction *gi.Function
+var entryGetTextAreaFunction_Once sync.Once
+
+func entryGetTextAreaFunction_Set() error {
+	var err error
+	entryGetTextAreaFunction_Once.Do(func() {
+		err = entryObject_Set()
+		if err != nil {
+			return
+		}
+		entryGetTextAreaFunction, err = entryObject.InvokerNew("get_text_area")
+	})
+	return err
+}
+
+// GetTextArea is a representation of the C type gtk_entry_get_text_area.
+func (recv *Entry) GetTextArea() *gdk.Rectangle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := entryGetTextAreaFunction_Set()
+	if err == nil {
+		entryGetTextAreaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var entryGetTextLengthFunction *gi.Function
 var entryGetTextLengthFunction_Once sync.Once
@@ -22939,7 +24419,38 @@ func (recv *Entry) GrabFocusWithoutSelecting() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_entry_im_context_filter_keypress' : parameter 'event' of type 'Gdk.EventKey' not supported
+var entryImContextFilterKeypressFunction *gi.Function
+var entryImContextFilterKeypressFunction_Once sync.Once
+
+func entryImContextFilterKeypressFunction_Set() error {
+	var err error
+	entryImContextFilterKeypressFunction_Once.Do(func() {
+		err = entryObject_Set()
+		if err != nil {
+			return
+		}
+		entryImContextFilterKeypressFunction, err = entryObject.InvokerNew("im_context_filter_keypress")
+	})
+	return err
+}
+
+// ImContextFilterKeypress is a representation of the C type gtk_entry_im_context_filter_keypress.
+func (recv *Entry) ImContextFilterKeypress(event *gdk.EventKey) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(event.Native())
+
+	var ret gi.Argument
+
+	err := entryImContextFilterKeypressFunction_Set()
+	if err == nil {
+		ret = entryImContextFilterKeypressFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var entryLayoutIndexToTextIndexFunction *gi.Function
 var entryLayoutIndexToTextIndexFunction_Once sync.Once
@@ -23088,7 +24599,34 @@ func (recv *Entry) SetAlignment(xalign float32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_entry_set_attributes' : parameter 'attrs' of type 'Pango.AttrList' not supported
+var entrySetAttributesFunction *gi.Function
+var entrySetAttributesFunction_Once sync.Once
+
+func entrySetAttributesFunction_Set() error {
+	var err error
+	entrySetAttributesFunction_Once.Do(func() {
+		err = entryObject_Set()
+		if err != nil {
+			return
+		}
+		entrySetAttributesFunction, err = entryObject.InvokerNew("set_attributes")
+	})
+	return err
+}
+
+// SetAttributes is a representation of the C type gtk_entry_set_attributes.
+func (recv *Entry) SetAttributes(attrs *pango.AttrList) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(attrs.Native())
+
+	err := entrySetAttributesFunction_Set()
+	if err == nil {
+		entrySetAttributesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var entrySetBufferFunction *gi.Function
 var entrySetBufferFunction_Once sync.Once
@@ -23656,7 +25194,34 @@ func (recv *Entry) SetProgressPulseStep(fraction float64) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_entry_set_tabs' : parameter 'tabs' of type 'Pango.TabArray' not supported
+var entrySetTabsFunction *gi.Function
+var entrySetTabsFunction_Once sync.Once
+
+func entrySetTabsFunction_Set() error {
+	var err error
+	entrySetTabsFunction_Once.Do(func() {
+		err = entryObject_Set()
+		if err != nil {
+			return
+		}
+		entrySetTabsFunction, err = entryObject.InvokerNew("set_tabs")
+	})
+	return err
+}
+
+// SetTabs is a representation of the C type gtk_entry_set_tabs.
+func (recv *Entry) SetTabs(tabs *pango.TabArray) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tabs.Native())
+
+	err := entrySetTabsFunction_Set()
+	if err == nil {
+		entrySetTabsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var entrySetTextFunction *gi.Function
 var entrySetTextFunction_Once sync.Once
@@ -23861,9 +25426,27 @@ func (recv *Entry) ConnectDeleteFromCursor(handler func(instance *Entry, type_ D
 	return callback.ConnectSignal(recv.Native(), "delete-from-cursor", marshal)
 }
 
-// UNSUPPORTED : C value 'icon-press' : parameter 'event' of type 'Gdk.EventButton' not supported
+/*
+ConnectIconPress connects a callback to the 'icon-press' signal of the Entry.
 
-// UNSUPPORTED : C value 'icon-release' : parameter 'event' of type 'Gdk.EventButton' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectIconPress(handler func(instance *Entry, iconPos EntryIconPosition, event *gdk.EventButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "icon-press", marshal)
+}
+
+/*
+ConnectIconRelease connects a callback to the 'icon-release' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectIconRelease(handler func(instance *Entry, iconPos EntryIconPosition, event *gdk.EventButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "icon-release", marshal)
+}
 
 /*
 ConnectInsertAtCursor connects a callback to the 'insert-at-cursor' signal of the Entry.
@@ -28345,7 +29928,37 @@ func FileFilterNew() *FileFilter {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_file_filter_new_from_gvariant' : parameter 'variant' of type 'GLib.Variant' not supported
+var fileFilterNewFromGvariantFunction *gi.Function
+var fileFilterNewFromGvariantFunction_Once sync.Once
+
+func fileFilterNewFromGvariantFunction_Set() error {
+	var err error
+	fileFilterNewFromGvariantFunction_Once.Do(func() {
+		err = fileFilterObject_Set()
+		if err != nil {
+			return
+		}
+		fileFilterNewFromGvariantFunction, err = fileFilterObject.InvokerNew("new_from_gvariant")
+	})
+	return err
+}
+
+// FileFilterNewFromGvariant is a representation of the C type gtk_file_filter_new_from_gvariant.
+func FileFilterNewFromGvariant(variant *glib.Variant) *FileFilter {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(variant.Native())
+
+	var ret gi.Argument
+
+	err := fileFilterNewFromGvariantFunction_Set()
+	if err == nil {
+		ret = fileFilterNewFromGvariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileFilterNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_file_filter_add_custom' : parameter 'needed' of type 'FileFilterFlags' not supported
 
@@ -28531,7 +30144,37 @@ func (recv *FileFilter) SetName(name string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_file_filter_to_gvariant' : return type 'GLib.Variant' not supported
+var fileFilterToGvariantFunction *gi.Function
+var fileFilterToGvariantFunction_Once sync.Once
+
+func fileFilterToGvariantFunction_Set() error {
+	var err error
+	fileFilterToGvariantFunction_Once.Do(func() {
+		err = fileFilterObject_Set()
+		if err != nil {
+			return
+		}
+		fileFilterToGvariantFunction, err = fileFilterObject.InvokerNew("to_gvariant")
+	})
+	return err
+}
+
+// ToGvariant is a representation of the C type gtk_file_filter_to_gvariant.
+func (recv *FileFilter) ToGvariant() *glib.Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileFilterToGvariantFunction_Set()
+	if err == nil {
+		ret = fileFilterToGvariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // Buildable returns the Buildable interface implemented by FileFilter
 func (recv *FileFilter) Buildable() *Buildable {
@@ -29099,7 +30742,37 @@ func (recv *FlowBox) GetRowSpacing() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_flow_box_get_selected_children' : return type 'GLib.List' not supported
+var flowBoxGetSelectedChildrenFunction *gi.Function
+var flowBoxGetSelectedChildrenFunction_Once sync.Once
+
+func flowBoxGetSelectedChildrenFunction_Set() error {
+	var err error
+	flowBoxGetSelectedChildrenFunction_Once.Do(func() {
+		err = flowBoxObject_Set()
+		if err != nil {
+			return
+		}
+		flowBoxGetSelectedChildrenFunction, err = flowBoxObject.InvokerNew("get_selected_children")
+	})
+	return err
+}
+
+// GetSelectedChildren is a representation of the C type gtk_flow_box_get_selected_children.
+func (recv *FlowBox) GetSelectedChildren() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := flowBoxGetSelectedChildrenFunction_Set()
+	if err == nil {
+		ret = flowBoxGetSelectedChildrenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var flowBoxGetSelectionModeFunction *gi.Function
 var flowBoxGetSelectionModeFunction_Once sync.Once
@@ -32557,7 +34230,37 @@ func (recv *GLArea) GetContext() *gdk.GLContext {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_gl_area_get_error' : return type 'GLib.Error' not supported
+var gLAreaGetErrorFunction *gi.Function
+var gLAreaGetErrorFunction_Once sync.Once
+
+func gLAreaGetErrorFunction_Set() error {
+	var err error
+	gLAreaGetErrorFunction_Once.Do(func() {
+		err = gLAreaObject_Set()
+		if err != nil {
+			return
+		}
+		gLAreaGetErrorFunction, err = gLAreaObject.InvokerNew("get_error")
+	})
+	return err
+}
+
+// GetError is a representation of the C type gtk_gl_area_get_error.
+func (recv *GLArea) GetError() *glib.Error {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := gLAreaGetErrorFunction_Set()
+	if err == nil {
+		ret = gLAreaGetErrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ErrorNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var gLAreaGetHasAlphaFunction *gi.Function
 var gLAreaGetHasAlphaFunction_Once sync.Once
@@ -32805,7 +34508,34 @@ func (recv *GLArea) SetAutoRender(autoRender bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_gl_area_set_error' : parameter 'error' of type 'GLib.Error' not supported
+var gLAreaSetErrorFunction *gi.Function
+var gLAreaSetErrorFunction_Once sync.Once
+
+func gLAreaSetErrorFunction_Set() error {
+	var err error
+	gLAreaSetErrorFunction_Once.Do(func() {
+		err = gLAreaObject_Set()
+		if err != nil {
+			return
+		}
+		gLAreaSetErrorFunction, err = gLAreaObject.InvokerNew("set_error")
+	})
+	return err
+}
+
+// SetError is a representation of the C type gtk_gl_area_set_error.
+func (recv *GLArea) SetError(error *glib.Error) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(error.Native())
+
+	err := gLAreaSetErrorFunction_Set()
+	if err == nil {
+		gLAreaSetErrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var gLAreaSetHasAlphaFunction *gi.Function
 var gLAreaSetHasAlphaFunction_Once sync.Once
@@ -33065,7 +34795,39 @@ func (recv *Gesture) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_gesture_get_bounding_box' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+var gestureGetBoundingBoxFunction *gi.Function
+var gestureGetBoundingBoxFunction_Once sync.Once
+
+func gestureGetBoundingBoxFunction_Set() error {
+	var err error
+	gestureGetBoundingBoxFunction_Once.Do(func() {
+		err = gestureObject_Set()
+		if err != nil {
+			return
+		}
+		gestureGetBoundingBoxFunction, err = gestureObject.InvokerNew("get_bounding_box")
+	})
+	return err
+}
+
+// GetBoundingBox is a representation of the C type gtk_gesture_get_bounding_box.
+func (recv *Gesture) GetBoundingBox() (bool, *gdk.Rectangle) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := gestureGetBoundingBoxFunction_Set()
+	if err == nil {
+		ret = gestureGetBoundingBoxFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var gestureGetBoundingBoxCenterFunction *gi.Function
 var gestureGetBoundingBoxCenterFunction_Once sync.Once
@@ -33134,17 +34896,172 @@ func (recv *Gesture) GetDevice() *gdk.Device {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_gesture_get_group' : return type 'GLib.List' not supported
+var gestureGetGroupFunction *gi.Function
+var gestureGetGroupFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_gesture_get_last_event' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+func gestureGetGroupFunction_Set() error {
+	var err error
+	gestureGetGroupFunction_Once.Do(func() {
+		err = gestureObject_Set()
+		if err != nil {
+			return
+		}
+		gestureGetGroupFunction, err = gestureObject.InvokerNew("get_group")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_gesture_get_last_updated_sequence' : return type 'Gdk.EventSequence' not supported
+// GetGroup is a representation of the C type gtk_gesture_get_group.
+func (recv *Gesture) GetGroup() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
 
-// UNSUPPORTED : C value 'gtk_gesture_get_point' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'gtk_gesture_get_sequence_state' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+	err := gestureGetGroupFunction_Set()
+	if err == nil {
+		ret = gestureGetGroupFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_gesture_get_sequences' : return type 'GLib.List' not supported
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gtk_gesture_get_last_event' : return type 'Gdk.Event' not supported
+
+var gestureGetLastUpdatedSequenceFunction *gi.Function
+var gestureGetLastUpdatedSequenceFunction_Once sync.Once
+
+func gestureGetLastUpdatedSequenceFunction_Set() error {
+	var err error
+	gestureGetLastUpdatedSequenceFunction_Once.Do(func() {
+		err = gestureObject_Set()
+		if err != nil {
+			return
+		}
+		gestureGetLastUpdatedSequenceFunction, err = gestureObject.InvokerNew("get_last_updated_sequence")
+	})
+	return err
+}
+
+// GetLastUpdatedSequence is a representation of the C type gtk_gesture_get_last_updated_sequence.
+func (recv *Gesture) GetLastUpdatedSequence() *gdk.EventSequence {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := gestureGetLastUpdatedSequenceFunction_Set()
+	if err == nil {
+		ret = gestureGetLastUpdatedSequenceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdk.EventSequenceNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var gestureGetPointFunction *gi.Function
+var gestureGetPointFunction_Once sync.Once
+
+func gestureGetPointFunction_Set() error {
+	var err error
+	gestureGetPointFunction_Once.Do(func() {
+		err = gestureObject_Set()
+		if err != nil {
+			return
+		}
+		gestureGetPointFunction, err = gestureObject.InvokerNew("get_point")
+	})
+	return err
+}
+
+// GetPoint is a representation of the C type gtk_gesture_get_point.
+func (recv *Gesture) GetPoint(sequence *gdk.EventSequence) (bool, float64, float64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(sequence.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := gestureGetPointFunction_Set()
+	if err == nil {
+		ret = gestureGetPointFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Float64()
+	out1 := outArgs[1].Float64()
+
+	return retGo, out0, out1
+}
+
+var gestureGetSequenceStateFunction *gi.Function
+var gestureGetSequenceStateFunction_Once sync.Once
+
+func gestureGetSequenceStateFunction_Set() error {
+	var err error
+	gestureGetSequenceStateFunction_Once.Do(func() {
+		err = gestureObject_Set()
+		if err != nil {
+			return
+		}
+		gestureGetSequenceStateFunction, err = gestureObject.InvokerNew("get_sequence_state")
+	})
+	return err
+}
+
+// GetSequenceState is a representation of the C type gtk_gesture_get_sequence_state.
+func (recv *Gesture) GetSequenceState(sequence *gdk.EventSequence) EventSequenceState {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(sequence.Native())
+
+	var ret gi.Argument
+
+	err := gestureGetSequenceStateFunction_Set()
+	if err == nil {
+		ret = gestureGetSequenceStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := EventSequenceState(ret.Int32())
+
+	return retGo
+}
+
+var gestureGetSequencesFunction *gi.Function
+var gestureGetSequencesFunction_Once sync.Once
+
+func gestureGetSequencesFunction_Set() error {
+	var err error
+	gestureGetSequencesFunction_Once.Do(func() {
+		err = gestureObject_Set()
+		if err != nil {
+			return
+		}
+		gestureGetSequencesFunction, err = gestureObject.InvokerNew("get_sequences")
+	})
+	return err
+}
+
+// GetSequences is a representation of the C type gtk_gesture_get_sequences.
+func (recv *Gesture) GetSequences() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := gestureGetSequencesFunction_Set()
+	if err == nil {
+		ret = gestureGetSequencesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var gestureGetWindowFunction *gi.Function
 var gestureGetWindowFunction_Once sync.Once
@@ -33207,7 +35124,38 @@ func (recv *Gesture) Group(gesture *Gesture) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_gesture_handles_sequence' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+var gestureHandlesSequenceFunction *gi.Function
+var gestureHandlesSequenceFunction_Once sync.Once
+
+func gestureHandlesSequenceFunction_Set() error {
+	var err error
+	gestureHandlesSequenceFunction_Once.Do(func() {
+		err = gestureObject_Set()
+		if err != nil {
+			return
+		}
+		gestureHandlesSequenceFunction, err = gestureObject.InvokerNew("handles_sequence")
+	})
+	return err
+}
+
+// HandlesSequence is a representation of the C type gtk_gesture_handles_sequence.
+func (recv *Gesture) HandlesSequence(sequence *gdk.EventSequence) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(sequence.Native())
+
+	var ret gi.Argument
+
+	err := gestureHandlesSequenceFunction_Set()
+	if err == nil {
+		ret = gestureHandlesSequenceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var gestureIsActiveFunction *gi.Function
 var gestureIsActiveFunction_Once sync.Once
@@ -33306,7 +35254,39 @@ func (recv *Gesture) IsRecognized() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_gesture_set_sequence_state' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+var gestureSetSequenceStateFunction *gi.Function
+var gestureSetSequenceStateFunction_Once sync.Once
+
+func gestureSetSequenceStateFunction_Set() error {
+	var err error
+	gestureSetSequenceStateFunction_Once.Do(func() {
+		err = gestureObject_Set()
+		if err != nil {
+			return
+		}
+		gestureSetSequenceStateFunction, err = gestureObject.InvokerNew("set_sequence_state")
+	})
+	return err
+}
+
+// SetSequenceState is a representation of the C type gtk_gesture_set_sequence_state.
+func (recv *Gesture) SetSequenceState(sequence *gdk.EventSequence, state EventSequenceState) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(sequence.Native())
+	inArgs[2].SetInt32(int32(state))
+
+	var ret gi.Argument
+
+	err := gestureSetSequenceStateFunction_Set()
+	if err == nil {
+		ret = gestureSetSequenceStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var gestureSetStateFunction *gi.Function
 var gestureSetStateFunction_Once sync.Once
@@ -33398,15 +35378,60 @@ func (recv *Gesture) Ungroup() {
 	return
 }
 
-// UNSUPPORTED : C value 'begin' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+/*
+ConnectBegin connects a callback to the 'begin' signal of the Gesture.
 
-// UNSUPPORTED : C value 'cancel' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Gesture) ConnectBegin(handler func(instance *Gesture, sequence *gdk.EventSequence)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
 
-// UNSUPPORTED : C value 'end' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+	return callback.ConnectSignal(recv.Native(), "begin", marshal)
+}
 
-// UNSUPPORTED : C value 'sequence-state-changed' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+/*
+ConnectCancel connects a callback to the 'cancel' signal of the Gesture.
 
-// UNSUPPORTED : C value 'update' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Gesture) ConnectCancel(handler func(instance *Gesture, sequence *gdk.EventSequence)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cancel", marshal)
+}
+
+/*
+ConnectEnd connects a callback to the 'end' signal of the Gesture.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Gesture) ConnectEnd(handler func(instance *Gesture, sequence *gdk.EventSequence)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "end", marshal)
+}
+
+/*
+ConnectSequenceStateChanged connects a callback to the 'sequence-state-changed' signal of the Gesture.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Gesture) ConnectSequenceStateChanged(handler func(instance *Gesture, sequence *gdk.EventSequence, state EventSequenceState)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "sequence-state-changed", marshal)
+}
+
+/*
+ConnectUpdate connects a callback to the 'update' signal of the Gesture.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Gesture) ConnectUpdate(handler func(instance *Gesture, sequence *gdk.EventSequence)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "update", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -33872,9 +35897,68 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_gesture_multi_press_get_area' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+var gestureMultiPressGetAreaFunction *gi.Function
+var gestureMultiPressGetAreaFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_gesture_multi_press_set_area' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+func gestureMultiPressGetAreaFunction_Set() error {
+	var err error
+	gestureMultiPressGetAreaFunction_Once.Do(func() {
+		err = gestureMultiPressObject_Set()
+		if err != nil {
+			return
+		}
+		gestureMultiPressGetAreaFunction, err = gestureMultiPressObject.InvokerNew("get_area")
+	})
+	return err
+}
+
+// GetArea is a representation of the C type gtk_gesture_multi_press_get_area.
+func (recv *GestureMultiPress) GetArea() (bool, *gdk.Rectangle) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := gestureMultiPressGetAreaFunction_Set()
+	if err == nil {
+		ret = gestureMultiPressGetAreaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
+
+var gestureMultiPressSetAreaFunction *gi.Function
+var gestureMultiPressSetAreaFunction_Once sync.Once
+
+func gestureMultiPressSetAreaFunction_Set() error {
+	var err error
+	gestureMultiPressSetAreaFunction_Once.Do(func() {
+		err = gestureMultiPressObject_Set()
+		if err != nil {
+			return
+		}
+		gestureMultiPressSetAreaFunction, err = gestureMultiPressObject.InvokerNew("set_area")
+	})
+	return err
+}
+
+// SetArea is a representation of the C type gtk_gesture_multi_press_set_area.
+func (recv *GestureMultiPress) SetArea(rect *gdk.Rectangle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rect.Native())
+
+	err := gestureMultiPressSetAreaFunction_Set()
+	if err == nil {
+		gestureMultiPressSetAreaFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 /*
 ConnectPressed connects a callback to the 'pressed' signal of the GestureMultiPress.
@@ -34389,7 +36473,37 @@ func (recv *GestureSingle) GetCurrentButton() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_gesture_single_get_current_sequence' : return type 'Gdk.EventSequence' not supported
+var gestureSingleGetCurrentSequenceFunction *gi.Function
+var gestureSingleGetCurrentSequenceFunction_Once sync.Once
+
+func gestureSingleGetCurrentSequenceFunction_Set() error {
+	var err error
+	gestureSingleGetCurrentSequenceFunction_Once.Do(func() {
+		err = gestureSingleObject_Set()
+		if err != nil {
+			return
+		}
+		gestureSingleGetCurrentSequenceFunction, err = gestureSingleObject.InvokerNew("get_current_sequence")
+	})
+	return err
+}
+
+// GetCurrentSequence is a representation of the C type gtk_gesture_single_get_current_sequence.
+func (recv *GestureSingle) GetCurrentSequence() *gdk.EventSequence {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := gestureSingleGetCurrentSequenceFunction_Set()
+	if err == nil {
+		ret = gestureSingleGetCurrentSequenceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdk.EventSequenceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var gestureSingleGetExclusiveFunction *gi.Function
 var gestureSingleGetExclusiveFunction_Once sync.Once
@@ -38049,7 +40163,38 @@ func (recv *IMContext) DeleteSurrounding(offset int32, nChars int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_im_context_filter_keypress' : parameter 'event' of type 'Gdk.EventKey' not supported
+var iMContextFilterKeypressFunction *gi.Function
+var iMContextFilterKeypressFunction_Once sync.Once
+
+func iMContextFilterKeypressFunction_Set() error {
+	var err error
+	iMContextFilterKeypressFunction_Once.Do(func() {
+		err = iMContextObject_Set()
+		if err != nil {
+			return
+		}
+		iMContextFilterKeypressFunction, err = iMContextObject.InvokerNew("filter_keypress")
+	})
+	return err
+}
+
+// FilterKeypress is a representation of the C type gtk_im_context_filter_keypress.
+func (recv *IMContext) FilterKeypress(event *gdk.EventKey) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(event.Native())
+
+	var ret gi.Argument
+
+	err := iMContextFilterKeypressFunction_Set()
+	if err == nil {
+		ret = iMContextFilterKeypressFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var iMContextFocusInFunction *gi.Function
 var iMContextFocusInFunction_Once sync.Once
@@ -38107,7 +40252,39 @@ func (recv *IMContext) FocusOut() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_im_context_get_preedit_string' : parameter 'attrs' of type 'Pango.AttrList' not supported
+var iMContextGetPreeditStringFunction *gi.Function
+var iMContextGetPreeditStringFunction_Once sync.Once
+
+func iMContextGetPreeditStringFunction_Set() error {
+	var err error
+	iMContextGetPreeditStringFunction_Once.Do(func() {
+		err = iMContextObject_Set()
+		if err != nil {
+			return
+		}
+		iMContextGetPreeditStringFunction, err = iMContextObject.InvokerNew("get_preedit_string")
+	})
+	return err
+}
+
+// GetPreeditString is a representation of the C type gtk_im_context_get_preedit_string.
+func (recv *IMContext) GetPreeditString() (string, *pango.AttrList, int32) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [3]gi.Argument
+
+	err := iMContextGetPreeditStringFunction_Set()
+	if err == nil {
+		iMContextGetPreeditStringFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].String(true)
+	out1 := pango.AttrListNewFromNative(outArgs[1].Pointer())
+	out2 := outArgs[2].Int32()
+
+	return out0, out1, out2
+}
 
 var iMContextGetSurroundingFunction *gi.Function
 var iMContextGetSurroundingFunction_Once sync.Once
@@ -38201,7 +40378,34 @@ func (recv *IMContext) SetClientWindow(window *gdk.Window) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_im_context_set_cursor_location' : parameter 'area' of type 'Gdk.Rectangle' not supported
+var iMContextSetCursorLocationFunction *gi.Function
+var iMContextSetCursorLocationFunction_Once sync.Once
+
+func iMContextSetCursorLocationFunction_Set() error {
+	var err error
+	iMContextSetCursorLocationFunction_Once.Do(func() {
+		err = iMContextObject_Set()
+		if err != nil {
+			return
+		}
+		iMContextSetCursorLocationFunction, err = iMContextObject.InvokerNew("set_cursor_location")
+	})
+	return err
+}
+
+// SetCursorLocation is a representation of the C type gtk_im_context_set_cursor_location.
+func (recv *IMContext) SetCursorLocation(area *gdk.Rectangle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(area.Native())
+
+	err := iMContextSetCursorLocationFunction_Set()
+	if err == nil {
+		iMContextSetCursorLocationFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var iMContextSetSurroundingFunction *gi.Function
 var iMContextSetSurroundingFunction_Once sync.Once
@@ -39176,7 +41380,39 @@ func (recv *IconInfo) GetDisplayName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_info_get_embedded_rect' : parameter 'rectangle' of type 'Gdk.Rectangle' not supported
+var iconInfoGetEmbeddedRectFunction *gi.Function
+var iconInfoGetEmbeddedRectFunction_Once sync.Once
+
+func iconInfoGetEmbeddedRectFunction_Set() error {
+	var err error
+	iconInfoGetEmbeddedRectFunction_Once.Do(func() {
+		err = iconInfoObject_Set()
+		if err != nil {
+			return
+		}
+		iconInfoGetEmbeddedRectFunction, err = iconInfoObject.InvokerNew("get_embedded_rect")
+	})
+	return err
+}
+
+// GetEmbeddedRect is a representation of the C type gtk_icon_info_get_embedded_rect.
+func (recv *IconInfo) GetEmbeddedRect() (bool, *gdk.Rectangle) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := iconInfoGetEmbeddedRectFunction_Set()
+	if err == nil {
+		ret = iconInfoGetEmbeddedRectFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var iconInfoGetFilenameFunction *gi.Function
 var iconInfoGetFilenameFunction_Once sync.Once
@@ -39278,11 +41514,78 @@ func (recv *IconInfo) LoadIcon() *gdkpixbuf.Pixbuf {
 
 // UNSUPPORTED : C value 'gtk_icon_info_load_icon_finish' : parameter 'res' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_info_load_surface' : return type 'cairo.Surface' not supported
+var iconInfoLoadSurfaceFunction *gi.Function
+var iconInfoLoadSurfaceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_icon_info_load_symbolic' : parameter 'fg' of type 'Gdk.RGBA' not supported
+func iconInfoLoadSurfaceFunction_Set() error {
+	var err error
+	iconInfoLoadSurfaceFunction_Once.Do(func() {
+		err = iconInfoObject_Set()
+		if err != nil {
+			return
+		}
+		iconInfoLoadSurfaceFunction, err = iconInfoObject.InvokerNew("load_surface")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_icon_info_load_symbolic_async' : parameter 'fg' of type 'Gdk.RGBA' not supported
+// LoadSurface is a representation of the C type gtk_icon_info_load_surface.
+func (recv *IconInfo) LoadSurface(forWindow *gdk.Window) *cairo.Surface {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(forWindow.Native())
+
+	var ret gi.Argument
+
+	err := iconInfoLoadSurfaceFunction_Set()
+	if err == nil {
+		ret = iconInfoLoadSurfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.SurfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var iconInfoLoadSymbolicFunction *gi.Function
+var iconInfoLoadSymbolicFunction_Once sync.Once
+
+func iconInfoLoadSymbolicFunction_Set() error {
+	var err error
+	iconInfoLoadSymbolicFunction_Once.Do(func() {
+		err = iconInfoObject_Set()
+		if err != nil {
+			return
+		}
+		iconInfoLoadSymbolicFunction, err = iconInfoObject.InvokerNew("load_symbolic")
+	})
+	return err
+}
+
+// LoadSymbolic is a representation of the C type gtk_icon_info_load_symbolic.
+func (recv *IconInfo) LoadSymbolic(fg *gdk.RGBA, successColor *gdk.RGBA, warningColor *gdk.RGBA, errorColor *gdk.RGBA) (*gdkpixbuf.Pixbuf, bool) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(fg.Native())
+	inArgs[2].SetPointer(successColor.Native())
+	inArgs[3].SetPointer(warningColor.Native())
+	inArgs[4].SetPointer(errorColor.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := iconInfoLoadSymbolicFunction_Set()
+	if err == nil {
+		ret = iconInfoLoadSymbolicFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := gdkpixbuf.PixbufNewFromNative(ret.Pointer())
+	out0 := outArgs[0].Boolean()
+
+	return retGo, out0
+}
+
+// UNSUPPORTED : C value 'gtk_icon_info_load_symbolic_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'gtk_icon_info_load_symbolic_finish' : parameter 'res' of type 'Gio.AsyncResult' not supported
 
@@ -39635,9 +41938,70 @@ func (recv *IconTheme) HasIcon(iconName string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_theme_list_contexts' : return type 'GLib.List' not supported
+var iconThemeListContextsFunction *gi.Function
+var iconThemeListContextsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_icon_theme_list_icons' : return type 'GLib.List' not supported
+func iconThemeListContextsFunction_Set() error {
+	var err error
+	iconThemeListContextsFunction_Once.Do(func() {
+		err = iconThemeObject_Set()
+		if err != nil {
+			return
+		}
+		iconThemeListContextsFunction, err = iconThemeObject.InvokerNew("list_contexts")
+	})
+	return err
+}
+
+// ListContexts is a representation of the C type gtk_icon_theme_list_contexts.
+func (recv *IconTheme) ListContexts() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := iconThemeListContextsFunction_Set()
+	if err == nil {
+		ret = iconThemeListContextsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var iconThemeListIconsFunction *gi.Function
+var iconThemeListIconsFunction_Once sync.Once
+
+func iconThemeListIconsFunction_Set() error {
+	var err error
+	iconThemeListIconsFunction_Once.Do(func() {
+		err = iconThemeObject_Set()
+		if err != nil {
+			return
+		}
+		iconThemeListIconsFunction, err = iconThemeObject.InvokerNew("list_icons")
+	})
+	return err
+}
+
+// ListIcons is a representation of the C type gtk_icon_theme_list_icons.
+func (recv *IconTheme) ListIcons(context string) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(context)
+
+	var ret gi.Argument
+
+	err := iconThemeListIconsFunction_Set()
+	if err == nil {
+		ret = iconThemeListIconsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_icon_theme_load_icon' : parameter 'flags' of type 'IconLookupFlags' not supported
 
@@ -39977,7 +42341,38 @@ func (recv *IconView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (int32,
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_icon_view_create_drag_icon' : return type 'cairo.Surface' not supported
+var iconViewCreateDragIconFunction *gi.Function
+var iconViewCreateDragIconFunction_Once sync.Once
+
+func iconViewCreateDragIconFunction_Set() error {
+	var err error
+	iconViewCreateDragIconFunction_Once.Do(func() {
+		err = iconViewObject_Set()
+		if err != nil {
+			return
+		}
+		iconViewCreateDragIconFunction, err = iconViewObject.InvokerNew("create_drag_icon")
+	})
+	return err
+}
+
+// CreateDragIcon is a representation of the C type gtk_icon_view_create_drag_icon.
+func (recv *IconView) CreateDragIcon(path *TreePath) *cairo.Surface {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(path.Native())
+
+	var ret gi.Argument
+
+	err := iconViewCreateDragIconFunction_Set()
+	if err == nil {
+		ret = iconViewCreateDragIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.SurfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_icon_view_enable_model_drag_dest' : parameter 'targets' of type 'nil' not supported
 
@@ -40015,7 +42410,41 @@ func (recv *IconView) GetActivateOnSingleClick() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_view_get_cell_rect' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+var iconViewGetCellRectFunction *gi.Function
+var iconViewGetCellRectFunction_Once sync.Once
+
+func iconViewGetCellRectFunction_Set() error {
+	var err error
+	iconViewGetCellRectFunction_Once.Do(func() {
+		err = iconViewObject_Set()
+		if err != nil {
+			return
+		}
+		iconViewGetCellRectFunction, err = iconViewObject.InvokerNew("get_cell_rect")
+	})
+	return err
+}
+
+// GetCellRect is a representation of the C type gtk_icon_view_get_cell_rect.
+func (recv *IconView) GetCellRect(path *TreePath, cell *CellRenderer) (bool, *gdk.Rectangle) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(path.Native())
+	inArgs[2].SetPointer(cell.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := iconViewGetCellRectFunction_Set()
+	if err == nil {
+		ret = iconViewGetCellRectFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var iconViewGetColumnSpacingFunction *gi.Function
 var iconViewGetColumnSpacingFunction_Once sync.Once
@@ -40581,7 +43010,37 @@ func (recv *IconView) GetRowSpacing() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_view_get_selected_items' : return type 'GLib.List' not supported
+var iconViewGetSelectedItemsFunction *gi.Function
+var iconViewGetSelectedItemsFunction_Once sync.Once
+
+func iconViewGetSelectedItemsFunction_Set() error {
+	var err error
+	iconViewGetSelectedItemsFunction_Once.Do(func() {
+		err = iconViewObject_Set()
+		if err != nil {
+			return
+		}
+		iconViewGetSelectedItemsFunction, err = iconViewObject.InvokerNew("get_selected_items")
+	})
+	return err
+}
+
+// GetSelectedItems is a representation of the C type gtk_icon_view_get_selected_items.
+func (recv *IconView) GetSelectedItems() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := iconViewGetSelectedItemsFunction_Set()
+	if err == nil {
+		ret = iconViewGetSelectedItemsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var iconViewGetSelectionModeFunction *gi.Function
 var iconViewGetSelectionModeFunction_Once sync.Once
@@ -42146,7 +44605,37 @@ func ImageNewFromStock(stockId string, size IconSize) *Image {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_image_new_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
+var imageNewFromSurfaceFunction *gi.Function
+var imageNewFromSurfaceFunction_Once sync.Once
+
+func imageNewFromSurfaceFunction_Set() error {
+	var err error
+	imageNewFromSurfaceFunction_Once.Do(func() {
+		err = imageObject_Set()
+		if err != nil {
+			return
+		}
+		imageNewFromSurfaceFunction, err = imageObject.InvokerNew("new_from_surface")
+	})
+	return err
+}
+
+// ImageNewFromSurface is a representation of the C type gtk_image_new_from_surface.
+func ImageNewFromSurface(surface *cairo.Surface) *Image {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(surface.Native())
+
+	var ret gi.Argument
+
+	err := imageNewFromSurfaceFunction_Set()
+	if err == nil {
+		ret = imageNewFromSurfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ImageNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var imageClearFunction *gi.Function
 var imageClearFunction_Once sync.Once
@@ -42613,7 +45102,34 @@ func (recv *Image) SetFromStock(stockId string, size IconSize) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_image_set_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
+var imageSetFromSurfaceFunction *gi.Function
+var imageSetFromSurfaceFunction_Once sync.Once
+
+func imageSetFromSurfaceFunction_Set() error {
+	var err error
+	imageSetFromSurfaceFunction_Once.Do(func() {
+		err = imageObject_Set()
+		if err != nil {
+			return
+		}
+		imageSetFromSurfaceFunction, err = imageObject.InvokerNew("set_from_surface")
+	})
+	return err
+}
+
+// SetFromSurface is a representation of the C type gtk_image_set_from_surface.
+func (recv *Image) SetFromSurface(surface *cairo.Surface) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(surface.Native())
+
+	err := imageSetFromSurfaceFunction_Set()
+	if err == nil {
+		imageSetFromSurfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var imageSetPixelSizeFunction *gi.Function
 var imageSetPixelSizeFunction_Once sync.Once
@@ -44298,7 +46814,37 @@ func (recv *Label) GetAngle() float64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_label_get_attributes' : return type 'Pango.AttrList' not supported
+var labelGetAttributesFunction *gi.Function
+var labelGetAttributesFunction_Once sync.Once
+
+func labelGetAttributesFunction_Set() error {
+	var err error
+	labelGetAttributesFunction_Once.Do(func() {
+		err = labelObject_Set()
+		if err != nil {
+			return
+		}
+		labelGetAttributesFunction, err = labelObject.InvokerNew("get_attributes")
+	})
+	return err
+}
+
+// GetAttributes is a representation of the C type gtk_label_get_attributes.
+func (recv *Label) GetAttributes() *pango.AttrList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := labelGetAttributesFunction_Set()
+	if err == nil {
+		ret = labelGetAttributesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := pango.AttrListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var labelGetCurrentUriFunction *gi.Function
 var labelGetCurrentUriFunction_Once sync.Once
@@ -45007,7 +47553,34 @@ func (recv *Label) SetAngle(angle float64) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_label_set_attributes' : parameter 'attrs' of type 'Pango.AttrList' not supported
+var labelSetAttributesFunction *gi.Function
+var labelSetAttributesFunction_Once sync.Once
+
+func labelSetAttributesFunction_Set() error {
+	var err error
+	labelSetAttributesFunction_Once.Do(func() {
+		err = labelObject_Set()
+		if err != nil {
+			return
+		}
+		labelSetAttributesFunction, err = labelObject.InvokerNew("set_attributes")
+	})
+	return err
+}
+
+// SetAttributes is a representation of the C type gtk_label_set_attributes.
+func (recv *Label) SetAttributes(attrs *pango.AttrList) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(attrs.Native())
+
+	err := labelSetAttributesFunction_Set()
+	if err == nil {
+		labelSetAttributesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_label_set_ellipsize' : parameter 'mode' of type 'Pango.EllipsizeMode' not supported
 
@@ -47602,7 +50175,37 @@ func (recv *ListBox) GetSelectedRow() *ListBoxRow {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_list_box_get_selected_rows' : return type 'GLib.List' not supported
+var listBoxGetSelectedRowsFunction *gi.Function
+var listBoxGetSelectedRowsFunction_Once sync.Once
+
+func listBoxGetSelectedRowsFunction_Set() error {
+	var err error
+	listBoxGetSelectedRowsFunction_Once.Do(func() {
+		err = listBoxObject_Set()
+		if err != nil {
+			return
+		}
+		listBoxGetSelectedRowsFunction, err = listBoxObject.InvokerNew("get_selected_rows")
+	})
+	return err
+}
+
+// GetSelectedRows is a representation of the C type gtk_list_box_get_selected_rows.
+func (recv *ListBox) GetSelectedRows() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := listBoxGetSelectedRowsFunction_Set()
+	if err == nil {
+		ret = listBoxGetSelectedRowsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var listBoxGetSelectionModeFunction *gi.Function
 var listBoxGetSelectionModeFunction_Once sync.Once
@@ -49162,7 +51765,36 @@ func (recv *ListStore) Remove(iter *TreeIter) bool {
 
 // UNSUPPORTED : C value 'gtk_list_store_set_valist' : parameter 'var_args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'gtk_list_store_set_value' : parameter 'value' of type 'GObject.Value' not supported
+var listStoreSetValueFunction *gi.Function
+var listStoreSetValueFunction_Once sync.Once
+
+func listStoreSetValueFunction_Set() error {
+	var err error
+	listStoreSetValueFunction_Once.Do(func() {
+		err = listStoreObject_Set()
+		if err != nil {
+			return
+		}
+		listStoreSetValueFunction, err = listStoreObject.InvokerNew("set_value")
+	})
+	return err
+}
+
+// SetValue is a representation of the C type gtk_list_store_set_value.
+func (recv *ListStore) SetValue(iter *TreeIter, column int32, value *gobject.Value) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+	inArgs[2].SetInt32(column)
+	inArgs[3].SetPointer(value.Native())
+
+	err := listStoreSetValueFunction_Set()
+	if err == nil {
+		listStoreSetValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_list_store_set_valuesv' : parameter 'columns' of type 'nil' not supported
 
@@ -50096,7 +52728,7 @@ func (recv *Menu) Popdown() {
 
 // UNSUPPORTED : C value 'gtk_menu_popup_at_pointer' : parameter 'trigger_event' of type 'Gdk.Event' not supported
 
-// UNSUPPORTED : C value 'gtk_menu_popup_at_rect' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+// UNSUPPORTED : C value 'gtk_menu_popup_at_rect' : parameter 'rect_anchor' of type 'Gdk.Gravity' not supported
 
 // UNSUPPORTED : C value 'gtk_menu_popup_at_widget' : parameter 'widget_anchor' of type 'Gdk.Gravity' not supported
 
@@ -57049,7 +59681,37 @@ func (recv *OffscreenWindow) GetPixbuf() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_offscreen_window_get_surface' : return type 'cairo.Surface' not supported
+var offscreenWindowGetSurfaceFunction *gi.Function
+var offscreenWindowGetSurfaceFunction_Once sync.Once
+
+func offscreenWindowGetSurfaceFunction_Set() error {
+	var err error
+	offscreenWindowGetSurfaceFunction_Once.Do(func() {
+		err = offscreenWindowObject_Set()
+		if err != nil {
+			return
+		}
+		offscreenWindowGetSurfaceFunction, err = offscreenWindowObject.InvokerNew("get_surface")
+	})
+	return err
+}
+
+// GetSurface is a representation of the C type gtk_offscreen_window_get_surface.
+func (recv *OffscreenWindow) GetSurface() *cairo.Surface {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := offscreenWindowGetSurfaceFunction_Set()
+	if err == nil {
+		ret = offscreenWindowGetSurfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.SurfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // AtkImplementorIface returns the Atk.ImplementorIface interface implemented by OffscreenWindow
 func (recv *OffscreenWindow) AtkImplementorIface() *atk.ImplementorIface {
@@ -57316,7 +59978,16 @@ func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'get-child-position' : parameter 'allocation' of type 'Gdk.Rectangle' not supported
+/*
+ConnectGetChildPosition connects a callback to the 'get-child-position' signal of the Overlay.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Overlay) ConnectGetChildPosition(handler func(instance *Overlay, widget *Widget) (bool, *gdk.Rectangle)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "get-child-position", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -57555,9 +60226,74 @@ func PageSetupNewFromFile(fileName string) *PageSetup {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_page_setup_new_from_gvariant' : parameter 'variant' of type 'GLib.Variant' not supported
+var pageSetupNewFromGvariantFunction *gi.Function
+var pageSetupNewFromGvariantFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_page_setup_new_from_key_file' : parameter 'key_file' of type 'GLib.KeyFile' not supported
+func pageSetupNewFromGvariantFunction_Set() error {
+	var err error
+	pageSetupNewFromGvariantFunction_Once.Do(func() {
+		err = pageSetupObject_Set()
+		if err != nil {
+			return
+		}
+		pageSetupNewFromGvariantFunction, err = pageSetupObject.InvokerNew("new_from_gvariant")
+	})
+	return err
+}
+
+// PageSetupNewFromGvariant is a representation of the C type gtk_page_setup_new_from_gvariant.
+func PageSetupNewFromGvariant(variant *glib.Variant) *PageSetup {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(variant.Native())
+
+	var ret gi.Argument
+
+	err := pageSetupNewFromGvariantFunction_Set()
+	if err == nil {
+		ret = pageSetupNewFromGvariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PageSetupNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
+
+var pageSetupNewFromKeyFileFunction *gi.Function
+var pageSetupNewFromKeyFileFunction_Once sync.Once
+
+func pageSetupNewFromKeyFileFunction_Set() error {
+	var err error
+	pageSetupNewFromKeyFileFunction_Once.Do(func() {
+		err = pageSetupObject_Set()
+		if err != nil {
+			return
+		}
+		pageSetupNewFromKeyFileFunction, err = pageSetupObject.InvokerNew("new_from_key_file")
+	})
+	return err
+}
+
+// PageSetupNewFromKeyFile is a representation of the C type gtk_page_setup_new_from_key_file.
+func PageSetupNewFromKeyFile(keyFile *glib.KeyFile, groupName string) *PageSetup {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(keyFile.Native())
+	inArgs[1].SetString(groupName)
+
+	var ret gi.Argument
+
+	err := pageSetupNewFromKeyFileFunction_Set()
+	if err == nil {
+		ret = pageSetupNewFromKeyFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PageSetupNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var pageSetupCopyFunction *gi.Function
 var pageSetupCopyFunction_Once sync.Once
@@ -57952,7 +60688,39 @@ func (recv *PageSetup) LoadFile(fileName string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_page_setup_load_key_file' : parameter 'key_file' of type 'GLib.KeyFile' not supported
+var pageSetupLoadKeyFileFunction *gi.Function
+var pageSetupLoadKeyFileFunction_Once sync.Once
+
+func pageSetupLoadKeyFileFunction_Set() error {
+	var err error
+	pageSetupLoadKeyFileFunction_Once.Do(func() {
+		err = pageSetupObject_Set()
+		if err != nil {
+			return
+		}
+		pageSetupLoadKeyFileFunction, err = pageSetupObject.InvokerNew("load_key_file")
+	})
+	return err
+}
+
+// LoadKeyFile is a representation of the C type gtk_page_setup_load_key_file.
+func (recv *PageSetup) LoadKeyFile(keyFile *glib.KeyFile, groupName string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(keyFile.Native())
+	inArgs[2].SetString(groupName)
+
+	var ret gi.Argument
+
+	err := pageSetupLoadKeyFileFunction_Set()
+	if err == nil {
+		ret = pageSetupLoadKeyFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var pageSetupSetBottomMarginFunction *gi.Function
 var pageSetupSetBottomMarginFunction_Once sync.Once
@@ -58194,9 +60962,67 @@ func (recv *PageSetup) ToFile(fileName string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_page_setup_to_gvariant' : return type 'GLib.Variant' not supported
+var pageSetupToGvariantFunction *gi.Function
+var pageSetupToGvariantFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_page_setup_to_key_file' : parameter 'key_file' of type 'GLib.KeyFile' not supported
+func pageSetupToGvariantFunction_Set() error {
+	var err error
+	pageSetupToGvariantFunction_Once.Do(func() {
+		err = pageSetupObject_Set()
+		if err != nil {
+			return
+		}
+		pageSetupToGvariantFunction, err = pageSetupObject.InvokerNew("to_gvariant")
+	})
+	return err
+}
+
+// ToGvariant is a representation of the C type gtk_page_setup_to_gvariant.
+func (recv *PageSetup) ToGvariant() *glib.Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := pageSetupToGvariantFunction_Set()
+	if err == nil {
+		ret = pageSetupToGvariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var pageSetupToKeyFileFunction *gi.Function
+var pageSetupToKeyFileFunction_Once sync.Once
+
+func pageSetupToKeyFileFunction_Set() error {
+	var err error
+	pageSetupToKeyFileFunction_Once.Do(func() {
+		err = pageSetupObject_Set()
+		if err != nil {
+			return
+		}
+		pageSetupToKeyFileFunction, err = pageSetupObject.InvokerNew("to_key_file")
+	})
+	return err
+}
+
+// ToKeyFile is a representation of the C type gtk_page_setup_to_key_file.
+func (recv *PageSetup) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(keyFile.Native())
+	inArgs[2].SetString(groupName)
+
+	err := pageSetupToKeyFileFunction_Set()
+	if err == nil {
+		pageSetupToKeyFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var panedObject *gi.Object
 var panedObject_Once sync.Once
@@ -59229,7 +62055,37 @@ func (recv *PlacesSidebar) GetShowTrash() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_places_sidebar_list_shortcuts' : return type 'GLib.SList' not supported
+var placesSidebarListShortcutsFunction *gi.Function
+var placesSidebarListShortcutsFunction_Once sync.Once
+
+func placesSidebarListShortcutsFunction_Set() error {
+	var err error
+	placesSidebarListShortcutsFunction_Once.Do(func() {
+		err = placesSidebarObject_Set()
+		if err != nil {
+			return
+		}
+		placesSidebarListShortcutsFunction, err = placesSidebarObject.InvokerNew("list_shortcuts")
+	})
+	return err
+}
+
+// ListShortcuts is a representation of the C type gtk_places_sidebar_list_shortcuts.
+func (recv *PlacesSidebar) ListShortcuts() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := placesSidebarListShortcutsFunction_Set()
+	if err == nil {
+		ret = placesSidebarListShortcutsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_places_sidebar_remove_shortcut' : parameter 'location' of type 'Gio.File' not supported
 
@@ -60245,7 +63101,39 @@ func (recv *Popover) GetModal() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_popover_get_pointing_to' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+var popoverGetPointingToFunction *gi.Function
+var popoverGetPointingToFunction_Once sync.Once
+
+func popoverGetPointingToFunction_Set() error {
+	var err error
+	popoverGetPointingToFunction_Once.Do(func() {
+		err = popoverObject_Set()
+		if err != nil {
+			return
+		}
+		popoverGetPointingToFunction, err = popoverObject.InvokerNew("get_pointing_to")
+	})
+	return err
+}
+
+// GetPointingTo is a representation of the C type gtk_popover_get_pointing_to.
+func (recv *Popover) GetPointingTo() (bool, *gdk.Rectangle) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := popoverGetPointingToFunction_Set()
+	if err == nil {
+		ret = popoverGetPointingToFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var popoverGetPositionFunction *gi.Function
 var popoverGetPositionFunction_Once sync.Once
@@ -60486,7 +63374,34 @@ func (recv *Popover) SetModal(modal bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_popover_set_pointing_to' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+var popoverSetPointingToFunction *gi.Function
+var popoverSetPointingToFunction_Once sync.Once
+
+func popoverSetPointingToFunction_Set() error {
+	var err error
+	popoverSetPointingToFunction_Once.Do(func() {
+		err = popoverObject_Set()
+		if err != nil {
+			return
+		}
+		popoverSetPointingToFunction, err = popoverObject.InvokerNew("set_pointing_to")
+	})
+	return err
+}
+
+// SetPointingTo is a representation of the C type gtk_popover_set_pointing_to.
+func (recv *Popover) SetPointingTo(rect *gdk.Rectangle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rect.Native())
+
+	err := popoverSetPointingToFunction_Set()
+	if err == nil {
+		popoverSetPointingToFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var popoverSetPositionFunction *gi.Function
 var popoverSetPositionFunction_Once sync.Once
@@ -60967,7 +63882,37 @@ func (recv *PrintContext) CreatePangoLayout() *pango.Layout {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_context_get_cairo_context' : return type 'cairo.Context' not supported
+var printContextGetCairoContextFunction *gi.Function
+var printContextGetCairoContextFunction_Once sync.Once
+
+func printContextGetCairoContextFunction_Set() error {
+	var err error
+	printContextGetCairoContextFunction_Once.Do(func() {
+		err = printContextObject_Set()
+		if err != nil {
+			return
+		}
+		printContextGetCairoContextFunction, err = printContextObject.InvokerNew("get_cairo_context")
+	})
+	return err
+}
+
+// GetCairoContext is a representation of the C type gtk_print_context_get_cairo_context.
+func (recv *PrintContext) GetCairoContext() *cairo.Context {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := printContextGetCairoContextFunction_Set()
+	if err == nil {
+		ret = printContextGetCairoContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.ContextNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var printContextGetDpiXFunction *gi.Function
 var printContextGetDpiXFunction_Once sync.Once
@@ -61198,7 +64143,36 @@ func (recv *PrintContext) GetWidth() float64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_context_set_cairo_context' : parameter 'cr' of type 'cairo.Context' not supported
+var printContextSetCairoContextFunction *gi.Function
+var printContextSetCairoContextFunction_Once sync.Once
+
+func printContextSetCairoContextFunction_Set() error {
+	var err error
+	printContextSetCairoContextFunction_Once.Do(func() {
+		err = printContextObject_Set()
+		if err != nil {
+			return
+		}
+		printContextSetCairoContextFunction, err = printContextObject.InvokerNew("set_cairo_context")
+	})
+	return err
+}
+
+// SetCairoContext is a representation of the C type gtk_print_context_set_cairo_context.
+func (recv *PrintContext) SetCairoContext(cr *cairo.Context, dpiX float64, dpiY float64) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(dpiX)
+	inArgs[3].SetFloat64(dpiY)
+
+	err := printContextSetCairoContextFunction_Set()
+	if err == nil {
+		printContextSetCairoContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var printOperationObject *gi.Object
 var printOperationObject_Once sync.Once
@@ -62417,9 +65391,74 @@ func PrintSettingsNewFromFile(fileName string) *PrintSettings {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_new_from_gvariant' : parameter 'variant' of type 'GLib.Variant' not supported
+var printSettingsNewFromGvariantFunction *gi.Function
+var printSettingsNewFromGvariantFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_print_settings_new_from_key_file' : parameter 'key_file' of type 'GLib.KeyFile' not supported
+func printSettingsNewFromGvariantFunction_Set() error {
+	var err error
+	printSettingsNewFromGvariantFunction_Once.Do(func() {
+		err = printSettingsObject_Set()
+		if err != nil {
+			return
+		}
+		printSettingsNewFromGvariantFunction, err = printSettingsObject.InvokerNew("new_from_gvariant")
+	})
+	return err
+}
+
+// PrintSettingsNewFromGvariant is a representation of the C type gtk_print_settings_new_from_gvariant.
+func PrintSettingsNewFromGvariant(variant *glib.Variant) *PrintSettings {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(variant.Native())
+
+	var ret gi.Argument
+
+	err := printSettingsNewFromGvariantFunction_Set()
+	if err == nil {
+		ret = printSettingsNewFromGvariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PrintSettingsNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
+
+var printSettingsNewFromKeyFileFunction *gi.Function
+var printSettingsNewFromKeyFileFunction_Once sync.Once
+
+func printSettingsNewFromKeyFileFunction_Set() error {
+	var err error
+	printSettingsNewFromKeyFileFunction_Once.Do(func() {
+		err = printSettingsObject_Set()
+		if err != nil {
+			return
+		}
+		printSettingsNewFromKeyFileFunction, err = printSettingsObject.InvokerNew("new_from_key_file")
+	})
+	return err
+}
+
+// PrintSettingsNewFromKeyFile is a representation of the C type gtk_print_settings_new_from_key_file.
+func PrintSettingsNewFromKeyFile(keyFile *glib.KeyFile, groupName string) *PrintSettings {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(keyFile.Native())
+	inArgs[1].SetString(groupName)
+
+	var ret gi.Argument
+
+	err := printSettingsNewFromKeyFileFunction_Set()
+	if err == nil {
+		ret = printSettingsNewFromKeyFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PrintSettingsNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var printSettingsCopyFunction *gi.Function
 var printSettingsCopyFunction_Once sync.Once
@@ -63589,7 +66628,39 @@ func (recv *PrintSettings) LoadFile(fileName string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_load_key_file' : parameter 'key_file' of type 'GLib.KeyFile' not supported
+var printSettingsLoadKeyFileFunction *gi.Function
+var printSettingsLoadKeyFileFunction_Once sync.Once
+
+func printSettingsLoadKeyFileFunction_Set() error {
+	var err error
+	printSettingsLoadKeyFileFunction_Once.Do(func() {
+		err = printSettingsObject_Set()
+		if err != nil {
+			return
+		}
+		printSettingsLoadKeyFileFunction, err = printSettingsObject.InvokerNew("load_key_file")
+	})
+	return err
+}
+
+// LoadKeyFile is a representation of the C type gtk_print_settings_load_key_file.
+func (recv *PrintSettings) LoadKeyFile(keyFile *glib.KeyFile, groupName string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(keyFile.Native())
+	inArgs[2].SetString(groupName)
+
+	var ret gi.Argument
+
+	err := printSettingsLoadKeyFileFunction_Set()
+	if err == nil {
+		ret = printSettingsLoadKeyFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var printSettingsSetFunction *gi.Function
 var printSettingsSetFunction_Once sync.Once
@@ -64476,9 +67547,67 @@ func (recv *PrintSettings) ToFile(fileName string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_to_gvariant' : return type 'GLib.Variant' not supported
+var printSettingsToGvariantFunction *gi.Function
+var printSettingsToGvariantFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_print_settings_to_key_file' : parameter 'key_file' of type 'GLib.KeyFile' not supported
+func printSettingsToGvariantFunction_Set() error {
+	var err error
+	printSettingsToGvariantFunction_Once.Do(func() {
+		err = printSettingsObject_Set()
+		if err != nil {
+			return
+		}
+		printSettingsToGvariantFunction, err = printSettingsObject.InvokerNew("to_gvariant")
+	})
+	return err
+}
+
+// ToGvariant is a representation of the C type gtk_print_settings_to_gvariant.
+func (recv *PrintSettings) ToGvariant() *glib.Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := printSettingsToGvariantFunction_Set()
+	if err == nil {
+		ret = printSettingsToGvariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var printSettingsToKeyFileFunction *gi.Function
+var printSettingsToKeyFileFunction_Once sync.Once
+
+func printSettingsToKeyFileFunction_Set() error {
+	var err error
+	printSettingsToKeyFileFunction_Once.Do(func() {
+		err = printSettingsObject_Set()
+		if err != nil {
+			return
+		}
+		printSettingsToKeyFileFunction, err = printSettingsObject.InvokerNew("to_key_file")
+	})
+	return err
+}
+
+// ToKeyFile is a representation of the C type gtk_print_settings_to_key_file.
+func (recv *PrintSettings) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(keyFile.Native())
+	inArgs[2].SetString(groupName)
+
+	err := printSettingsToKeyFileFunction_Set()
+	if err == nil {
+		printSettingsToKeyFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var printSettingsUnsetFunction *gi.Function
 var printSettingsUnsetFunction_Once sync.Once
@@ -65227,7 +68356,37 @@ func (recv *RadioAction) GetCurrentValue() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_radio_action_get_group' : return type 'GLib.SList' not supported
+var radioActionGetGroupFunction *gi.Function
+var radioActionGetGroupFunction_Once sync.Once
+
+func radioActionGetGroupFunction_Set() error {
+	var err error
+	radioActionGetGroupFunction_Once.Do(func() {
+		err = radioActionObject_Set()
+		if err != nil {
+			return
+		}
+		radioActionGetGroupFunction, err = radioActionObject.InvokerNew("get_group")
+	})
+	return err
+}
+
+// GetGroup is a representation of the C type gtk_radio_action_get_group.
+func (recv *RadioAction) GetGroup() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := radioActionGetGroupFunction_Set()
+	if err == nil {
+		ret = radioActionGetGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var radioActionJoinGroupFunction *gi.Function
 var radioActionJoinGroupFunction_Once sync.Once
@@ -65287,7 +68446,34 @@ func (recv *RadioAction) SetCurrentValue(currentValue int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_radio_action_set_group' : parameter 'group' of type 'GLib.SList' not supported
+var radioActionSetGroupFunction *gi.Function
+var radioActionSetGroupFunction_Once sync.Once
+
+func radioActionSetGroupFunction_Set() error {
+	var err error
+	radioActionSetGroupFunction_Once.Do(func() {
+		err = radioActionObject_Set()
+		if err != nil {
+			return
+		}
+		radioActionSetGroupFunction, err = radioActionObject.InvokerNew("set_group")
+	})
+	return err
+}
+
+// SetGroup is a representation of the C type gtk_radio_action_set_group.
+func (recv *RadioAction) SetGroup(group *glib.SList) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(group.Native())
+
+	err := radioActionSetGroupFunction_Set()
+	if err == nil {
+		radioActionSetGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 /*
 ConnectChanged connects a callback to the 'changed' signal of the RadioAction.
@@ -65418,7 +68604,37 @@ func (recv *RadioButton) SetFieldCheckButton(value *CheckButton) {
 	gi.ObjectFieldSet(radioButtonObject, recv.Native(), "check_button", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_radio_button_new' : parameter 'group' of type 'GLib.SList' not supported
+var radioButtonNewFunction *gi.Function
+var radioButtonNewFunction_Once sync.Once
+
+func radioButtonNewFunction_Set() error {
+	var err error
+	radioButtonNewFunction_Once.Do(func() {
+		err = radioButtonObject_Set()
+		if err != nil {
+			return
+		}
+		radioButtonNewFunction, err = radioButtonObject.InvokerNew("new")
+	})
+	return err
+}
+
+// RadioButtonNew is a representation of the C type gtk_radio_button_new.
+func RadioButtonNew(group *glib.SList) *RadioButton {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(group.Native())
+
+	var ret gi.Argument
+
+	err := radioButtonNewFunction_Set()
+	if err == nil {
+		ret = radioButtonNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RadioButtonNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var radioButtonNewFromWidgetFunction *gi.Function
 var radioButtonNewFromWidgetFunction_Once sync.Once
@@ -65452,7 +68668,38 @@ func RadioButtonNewFromWidget(radioGroupMember *RadioButton) *RadioButton {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_radio_button_new_with_label' : parameter 'group' of type 'GLib.SList' not supported
+var radioButtonNewWithLabelFunction *gi.Function
+var radioButtonNewWithLabelFunction_Once sync.Once
+
+func radioButtonNewWithLabelFunction_Set() error {
+	var err error
+	radioButtonNewWithLabelFunction_Once.Do(func() {
+		err = radioButtonObject_Set()
+		if err != nil {
+			return
+		}
+		radioButtonNewWithLabelFunction, err = radioButtonObject.InvokerNew("new_with_label")
+	})
+	return err
+}
+
+// RadioButtonNewWithLabel is a representation of the C type gtk_radio_button_new_with_label.
+func RadioButtonNewWithLabel(group *glib.SList, label string) *RadioButton {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(group.Native())
+	inArgs[1].SetString(label)
+
+	var ret gi.Argument
+
+	err := radioButtonNewWithLabelFunction_Set()
+	if err == nil {
+		ret = radioButtonNewWithLabelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RadioButtonNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var radioButtonNewWithLabelFromWidgetFunction *gi.Function
 var radioButtonNewWithLabelFromWidgetFunction_Once sync.Once
@@ -65487,7 +68734,38 @@ func RadioButtonNewWithLabelFromWidget(radioGroupMember *RadioButton, label stri
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_radio_button_new_with_mnemonic' : parameter 'group' of type 'GLib.SList' not supported
+var radioButtonNewWithMnemonicFunction *gi.Function
+var radioButtonNewWithMnemonicFunction_Once sync.Once
+
+func radioButtonNewWithMnemonicFunction_Set() error {
+	var err error
+	radioButtonNewWithMnemonicFunction_Once.Do(func() {
+		err = radioButtonObject_Set()
+		if err != nil {
+			return
+		}
+		radioButtonNewWithMnemonicFunction, err = radioButtonObject.InvokerNew("new_with_mnemonic")
+	})
+	return err
+}
+
+// RadioButtonNewWithMnemonic is a representation of the C type gtk_radio_button_new_with_mnemonic.
+func RadioButtonNewWithMnemonic(group *glib.SList, label string) *RadioButton {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(group.Native())
+	inArgs[1].SetString(label)
+
+	var ret gi.Argument
+
+	err := radioButtonNewWithMnemonicFunction_Set()
+	if err == nil {
+		ret = radioButtonNewWithMnemonicFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RadioButtonNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var radioButtonNewWithMnemonicFromWidgetFunction *gi.Function
 var radioButtonNewWithMnemonicFromWidgetFunction_Once sync.Once
@@ -65522,7 +68800,37 @@ func RadioButtonNewWithMnemonicFromWidget(radioGroupMember *RadioButton, label s
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_radio_button_get_group' : return type 'GLib.SList' not supported
+var radioButtonGetGroupFunction *gi.Function
+var radioButtonGetGroupFunction_Once sync.Once
+
+func radioButtonGetGroupFunction_Set() error {
+	var err error
+	radioButtonGetGroupFunction_Once.Do(func() {
+		err = radioButtonObject_Set()
+		if err != nil {
+			return
+		}
+		radioButtonGetGroupFunction, err = radioButtonObject.InvokerNew("get_group")
+	})
+	return err
+}
+
+// GetGroup is a representation of the C type gtk_radio_button_get_group.
+func (recv *RadioButton) GetGroup() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := radioButtonGetGroupFunction_Set()
+	if err == nil {
+		ret = radioButtonGetGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var radioButtonJoinGroupFunction *gi.Function
 var radioButtonJoinGroupFunction_Once sync.Once
@@ -65553,7 +68861,34 @@ func (recv *RadioButton) JoinGroup(groupSource *RadioButton) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_radio_button_set_group' : parameter 'group' of type 'GLib.SList' not supported
+var radioButtonSetGroupFunction *gi.Function
+var radioButtonSetGroupFunction_Once sync.Once
+
+func radioButtonSetGroupFunction_Set() error {
+	var err error
+	radioButtonSetGroupFunction_Once.Do(func() {
+		err = radioButtonObject_Set()
+		if err != nil {
+			return
+		}
+		radioButtonSetGroupFunction, err = radioButtonObject.InvokerNew("set_group")
+	})
+	return err
+}
+
+// SetGroup is a representation of the C type gtk_radio_button_set_group.
+func (recv *RadioButton) SetGroup(group *glib.SList) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(group.Native())
+
+	err := radioButtonSetGroupFunction_Set()
+	if err == nil {
+		radioButtonSetGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 /*
 ConnectGroupChanged connects a callback to the 'group-changed' signal of the RadioButton.
@@ -65822,7 +69157,37 @@ func (recv *RadioMenuItem) SetFieldCheckMenuItem(value *CheckMenuItem) {
 	gi.ObjectFieldSet(radioMenuItemObject, recv.Native(), "check_menu_item", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_radio_menu_item_new' : parameter 'group' of type 'GLib.SList' not supported
+var radioMenuItemNewFunction *gi.Function
+var radioMenuItemNewFunction_Once sync.Once
+
+func radioMenuItemNewFunction_Set() error {
+	var err error
+	radioMenuItemNewFunction_Once.Do(func() {
+		err = radioMenuItemObject_Set()
+		if err != nil {
+			return
+		}
+		radioMenuItemNewFunction, err = radioMenuItemObject.InvokerNew("new")
+	})
+	return err
+}
+
+// RadioMenuItemNew is a representation of the C type gtk_radio_menu_item_new.
+func RadioMenuItemNew(group *glib.SList) *RadioMenuItem {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(group.Native())
+
+	var ret gi.Argument
+
+	err := radioMenuItemNewFunction_Set()
+	if err == nil {
+		ret = radioMenuItemNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RadioMenuItemNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var radioMenuItemNewFromWidgetFunction *gi.Function
 var radioMenuItemNewFromWidgetFunction_Once sync.Once
@@ -65856,7 +69221,38 @@ func RadioMenuItemNewFromWidget(group *RadioMenuItem) *RadioMenuItem {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_radio_menu_item_new_with_label' : parameter 'group' of type 'GLib.SList' not supported
+var radioMenuItemNewWithLabelFunction *gi.Function
+var radioMenuItemNewWithLabelFunction_Once sync.Once
+
+func radioMenuItemNewWithLabelFunction_Set() error {
+	var err error
+	radioMenuItemNewWithLabelFunction_Once.Do(func() {
+		err = radioMenuItemObject_Set()
+		if err != nil {
+			return
+		}
+		radioMenuItemNewWithLabelFunction, err = radioMenuItemObject.InvokerNew("new_with_label")
+	})
+	return err
+}
+
+// RadioMenuItemNewWithLabel is a representation of the C type gtk_radio_menu_item_new_with_label.
+func RadioMenuItemNewWithLabel(group *glib.SList, label string) *RadioMenuItem {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(group.Native())
+	inArgs[1].SetString(label)
+
+	var ret gi.Argument
+
+	err := radioMenuItemNewWithLabelFunction_Set()
+	if err == nil {
+		ret = radioMenuItemNewWithLabelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RadioMenuItemNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var radioMenuItemNewWithLabelFromWidgetFunction *gi.Function
 var radioMenuItemNewWithLabelFromWidgetFunction_Once sync.Once
@@ -65891,7 +69287,38 @@ func RadioMenuItemNewWithLabelFromWidget(group *RadioMenuItem, label string) *Ra
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_radio_menu_item_new_with_mnemonic' : parameter 'group' of type 'GLib.SList' not supported
+var radioMenuItemNewWithMnemonicFunction *gi.Function
+var radioMenuItemNewWithMnemonicFunction_Once sync.Once
+
+func radioMenuItemNewWithMnemonicFunction_Set() error {
+	var err error
+	radioMenuItemNewWithMnemonicFunction_Once.Do(func() {
+		err = radioMenuItemObject_Set()
+		if err != nil {
+			return
+		}
+		radioMenuItemNewWithMnemonicFunction, err = radioMenuItemObject.InvokerNew("new_with_mnemonic")
+	})
+	return err
+}
+
+// RadioMenuItemNewWithMnemonic is a representation of the C type gtk_radio_menu_item_new_with_mnemonic.
+func RadioMenuItemNewWithMnemonic(group *glib.SList, label string) *RadioMenuItem {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(group.Native())
+	inArgs[1].SetString(label)
+
+	var ret gi.Argument
+
+	err := radioMenuItemNewWithMnemonicFunction_Set()
+	if err == nil {
+		ret = radioMenuItemNewWithMnemonicFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RadioMenuItemNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var radioMenuItemNewWithMnemonicFromWidgetFunction *gi.Function
 var radioMenuItemNewWithMnemonicFromWidgetFunction_Once sync.Once
@@ -65926,7 +69353,37 @@ func RadioMenuItemNewWithMnemonicFromWidget(group *RadioMenuItem, label string) 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_radio_menu_item_get_group' : return type 'GLib.SList' not supported
+var radioMenuItemGetGroupFunction *gi.Function
+var radioMenuItemGetGroupFunction_Once sync.Once
+
+func radioMenuItemGetGroupFunction_Set() error {
+	var err error
+	radioMenuItemGetGroupFunction_Once.Do(func() {
+		err = radioMenuItemObject_Set()
+		if err != nil {
+			return
+		}
+		radioMenuItemGetGroupFunction, err = radioMenuItemObject.InvokerNew("get_group")
+	})
+	return err
+}
+
+// GetGroup is a representation of the C type gtk_radio_menu_item_get_group.
+func (recv *RadioMenuItem) GetGroup() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := radioMenuItemGetGroupFunction_Set()
+	if err == nil {
+		ret = radioMenuItemGetGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var radioMenuItemJoinGroupFunction *gi.Function
 var radioMenuItemJoinGroupFunction_Once sync.Once
@@ -65957,7 +69414,34 @@ func (recv *RadioMenuItem) JoinGroup(groupSource *RadioMenuItem) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_radio_menu_item_set_group' : parameter 'group' of type 'GLib.SList' not supported
+var radioMenuItemSetGroupFunction *gi.Function
+var radioMenuItemSetGroupFunction_Once sync.Once
+
+func radioMenuItemSetGroupFunction_Set() error {
+	var err error
+	radioMenuItemSetGroupFunction_Once.Do(func() {
+		err = radioMenuItemObject_Set()
+		if err != nil {
+			return
+		}
+		radioMenuItemSetGroupFunction, err = radioMenuItemObject.InvokerNew("set_group")
+	})
+	return err
+}
+
+// SetGroup is a representation of the C type gtk_radio_menu_item_set_group.
+func (recv *RadioMenuItem) SetGroup(group *glib.SList) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(group.Native())
+
+	err := radioMenuItemSetGroupFunction_Set()
+	if err == nil {
+		radioMenuItemSetGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 /*
 ConnectGroupChanged connects a callback to the 'group-changed' signal of the RadioMenuItem.
@@ -66231,9 +69715,70 @@ func (recv *RadioToolButton) SetFieldParent(value *ToggleToolButton) {
 	gi.ObjectFieldSet(radioToolButtonObject, recv.Native(), "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_radio_tool_button_new' : parameter 'group' of type 'GLib.SList' not supported
+var radioToolButtonNewFunction *gi.Function
+var radioToolButtonNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_radio_tool_button_new_from_stock' : parameter 'group' of type 'GLib.SList' not supported
+func radioToolButtonNewFunction_Set() error {
+	var err error
+	radioToolButtonNewFunction_Once.Do(func() {
+		err = radioToolButtonObject_Set()
+		if err != nil {
+			return
+		}
+		radioToolButtonNewFunction, err = radioToolButtonObject.InvokerNew("new")
+	})
+	return err
+}
+
+// RadioToolButtonNew is a representation of the C type gtk_radio_tool_button_new.
+func RadioToolButtonNew(group *glib.SList) *RadioToolButton {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(group.Native())
+
+	var ret gi.Argument
+
+	err := radioToolButtonNewFunction_Set()
+	if err == nil {
+		ret = radioToolButtonNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RadioToolButtonNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var radioToolButtonNewFromStockFunction *gi.Function
+var radioToolButtonNewFromStockFunction_Once sync.Once
+
+func radioToolButtonNewFromStockFunction_Set() error {
+	var err error
+	radioToolButtonNewFromStockFunction_Once.Do(func() {
+		err = radioToolButtonObject_Set()
+		if err != nil {
+			return
+		}
+		radioToolButtonNewFromStockFunction, err = radioToolButtonObject.InvokerNew("new_from_stock")
+	})
+	return err
+}
+
+// RadioToolButtonNewFromStock is a representation of the C type gtk_radio_tool_button_new_from_stock.
+func RadioToolButtonNewFromStock(group *glib.SList, stockId string) *RadioToolButton {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(group.Native())
+	inArgs[1].SetString(stockId)
+
+	var ret gi.Argument
+
+	err := radioToolButtonNewFromStockFunction_Set()
+	if err == nil {
+		ret = radioToolButtonNewFromStockFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RadioToolButtonNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var radioToolButtonNewFromWidgetFunction *gi.Function
 var radioToolButtonNewFromWidgetFunction_Once sync.Once
@@ -66300,9 +69845,66 @@ func RadioToolButtonNewWithStockFromWidget(group *RadioToolButton, stockId strin
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_radio_tool_button_get_group' : return type 'GLib.SList' not supported
+var radioToolButtonGetGroupFunction *gi.Function
+var radioToolButtonGetGroupFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_radio_tool_button_set_group' : parameter 'group' of type 'GLib.SList' not supported
+func radioToolButtonGetGroupFunction_Set() error {
+	var err error
+	radioToolButtonGetGroupFunction_Once.Do(func() {
+		err = radioToolButtonObject_Set()
+		if err != nil {
+			return
+		}
+		radioToolButtonGetGroupFunction, err = radioToolButtonObject.InvokerNew("get_group")
+	})
+	return err
+}
+
+// GetGroup is a representation of the C type gtk_radio_tool_button_get_group.
+func (recv *RadioToolButton) GetGroup() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := radioToolButtonGetGroupFunction_Set()
+	if err == nil {
+		ret = radioToolButtonGetGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var radioToolButtonSetGroupFunction *gi.Function
+var radioToolButtonSetGroupFunction_Once sync.Once
+
+func radioToolButtonSetGroupFunction_Set() error {
+	var err error
+	radioToolButtonSetGroupFunction_Once.Do(func() {
+		err = radioToolButtonObject_Set()
+		if err != nil {
+			return
+		}
+		radioToolButtonSetGroupFunction, err = radioToolButtonObject.InvokerNew("set_group")
+	})
+	return err
+}
+
+// SetGroup is a representation of the C type gtk_radio_tool_button_set_group.
+func (recv *RadioToolButton) SetGroup(group *glib.SList) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(group.Native())
+
+	err := radioToolButtonSetGroupFunction_Set()
+	if err == nil {
+		radioToolButtonSetGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // AtkImplementorIface returns the Atk.ImplementorIface interface implemented by RadioToolButton
 func (recv *RadioToolButton) AtkImplementorIface() *atk.ImplementorIface {
@@ -66609,7 +70211,37 @@ func (recv *Range) GetMinSliderSize() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_range_get_range_rect' : parameter 'range_rect' of type 'Gdk.Rectangle' not supported
+var rangeGetRangeRectFunction *gi.Function
+var rangeGetRangeRectFunction_Once sync.Once
+
+func rangeGetRangeRectFunction_Set() error {
+	var err error
+	rangeGetRangeRectFunction_Once.Do(func() {
+		err = rangeObject_Set()
+		if err != nil {
+			return
+		}
+		rangeGetRangeRectFunction, err = rangeObject.InvokerNew("get_range_rect")
+	})
+	return err
+}
+
+// GetRangeRect is a representation of the C type gtk_range_get_range_rect.
+func (recv *Range) GetRangeRect() *gdk.Rectangle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := rangeGetRangeRectFunction_Set()
+	if err == nil {
+		rangeGetRangeRectFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var rangeGetRestrictToFillLevelFunction *gi.Function
 var rangeGetRestrictToFillLevelFunction_Once sync.Once
@@ -67507,9 +71139,19 @@ func (recv *RcStyle) SetFieldName(value string) {
 
 // UNSUPPORTED : C value 'bg_pixmap_name' : for field setter : missing Type
 
-// UNSUPPORTED : C value 'font_desc' : for field getter : no Go type for 'Pango.FontDescription'
+// FieldFontDesc returns the C field 'font_desc'.
+func (recv *RcStyle) FieldFontDesc() *pango.FontDescription {
+	argValue := gi.ObjectFieldGet(rcStyleObject, recv.Native(), "font_desc")
+	value := pango.FontDescriptionNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'font_desc' : for field setter : no Go type for 'Pango.FontDescription'
+// SetFieldFontDesc sets the value of the C field 'font_desc'.
+func (recv *RcStyle) SetFieldFontDesc(value *pango.FontDescription) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(rcStyleObject, recv.Native(), "font_desc", argValue)
+}
 
 // UNSUPPORTED : C value 'color_flags' : for field getter : missing Type
 
@@ -68889,7 +72531,37 @@ func (recv *RecentManager) AddItem(uri string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_recent_manager_get_items' : return type 'GLib.List' not supported
+var recentManagerGetItemsFunction *gi.Function
+var recentManagerGetItemsFunction_Once sync.Once
+
+func recentManagerGetItemsFunction_Set() error {
+	var err error
+	recentManagerGetItemsFunction_Once.Do(func() {
+		err = recentManagerObject_Set()
+		if err != nil {
+			return
+		}
+		recentManagerGetItemsFunction, err = recentManagerObject.InvokerNew("get_items")
+	})
+	return err
+}
+
+// GetItems is a representation of the C type gtk_recent_manager_get_items.
+func (recv *RecentManager) GetItems() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := recentManagerGetItemsFunction_Set()
+	if err == nil {
+		ret = recentManagerGetItemsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var recentManagerHasItemFunction *gi.Function
 var recentManagerHasItemFunction_Once sync.Once
@@ -74194,7 +77866,37 @@ func (recv *SizeGroup) GetMode() SizeGroupMode {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_size_group_get_widgets' : return type 'GLib.SList' not supported
+var sizeGroupGetWidgetsFunction *gi.Function
+var sizeGroupGetWidgetsFunction_Once sync.Once
+
+func sizeGroupGetWidgetsFunction_Set() error {
+	var err error
+	sizeGroupGetWidgetsFunction_Once.Do(func() {
+		err = sizeGroupObject_Set()
+		if err != nil {
+			return
+		}
+		sizeGroupGetWidgetsFunction, err = sizeGroupObject.InvokerNew("get_widgets")
+	})
+	return err
+}
+
+// GetWidgets is a representation of the C type gtk_size_group_get_widgets.
+func (recv *SizeGroup) GetWidgets() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := sizeGroupGetWidgetsFunction_Set()
+	if err == nil {
+		ret = sizeGroupGetWidgetsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var sizeGroupRemoveWidgetFunction *gi.Function
 var sizeGroupRemoveWidgetFunction_Once sync.Once
@@ -77376,7 +81078,41 @@ func StatusIconNewFromStock(stockId string) *StatusIcon {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_status_icon_get_geometry' : parameter 'area' of type 'Gdk.Rectangle' not supported
+var statusIconGetGeometryFunction *gi.Function
+var statusIconGetGeometryFunction_Once sync.Once
+
+func statusIconGetGeometryFunction_Set() error {
+	var err error
+	statusIconGetGeometryFunction_Once.Do(func() {
+		err = statusIconObject_Set()
+		if err != nil {
+			return
+		}
+		statusIconGetGeometryFunction, err = statusIconObject.InvokerNew("get_geometry")
+	})
+	return err
+}
+
+// GetGeometry is a representation of the C type gtk_status_icon_get_geometry.
+func (recv *StatusIcon) GetGeometry() (bool, *gdk.Screen, *gdk.Rectangle, Orientation) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := statusIconGetGeometryFunction_Set()
+	if err == nil {
+		ret = statusIconGetGeometryFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.ScreenNewFromNative(outArgs[0].Pointer())
+	out1 := gdk.RectangleNewFromNative(outArgs[1].Pointer())
+	out2 := Orientation(outArgs[2].Int32())
+
+	return retGo, out0, out1, out2
+}
 
 // UNSUPPORTED : C value 'gtk_status_icon_get_gicon' : return type 'Gio.Icon' not supported
 
@@ -78128,9 +81864,27 @@ func (recv *StatusIcon) ConnectActivate(handler func(instance *StatusIcon)) int 
 	return callback.ConnectSignal(recv.Native(), "activate", marshal)
 }
 
-// UNSUPPORTED : C value 'button-press-event' : parameter 'event' of type 'Gdk.EventButton' not supported
+/*
+ConnectButtonPressEvent connects a callback to the 'button-press-event' signal of the StatusIcon.
 
-// UNSUPPORTED : C value 'button-release-event' : parameter 'event' of type 'Gdk.EventButton' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *StatusIcon) ConnectButtonPressEvent(handler func(instance *StatusIcon, event *gdk.EventButton) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "button-press-event", marshal)
+}
+
+/*
+ConnectButtonReleaseEvent connects a callback to the 'button-release-event' signal of the StatusIcon.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *StatusIcon) ConnectButtonReleaseEvent(handler func(instance *StatusIcon, event *gdk.EventButton) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "button-release-event", marshal)
+}
 
 /*
 ConnectPopupMenu connects a callback to the 'popup-menu' signal of the StatusIcon.
@@ -78154,7 +81908,16 @@ func (recv *StatusIcon) ConnectQueryTooltip(handler func(instance *StatusIcon, x
 	return callback.ConnectSignal(recv.Native(), "query-tooltip", marshal)
 }
 
-// UNSUPPORTED : C value 'scroll-event' : parameter 'event' of type 'Gdk.EventScroll' not supported
+/*
+ConnectScrollEvent connects a callback to the 'scroll-event' signal of the StatusIcon.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *StatusIcon) ConnectScrollEvent(handler func(instance *StatusIcon, event *gdk.EventScroll) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "scroll-event", marshal)
+}
 
 /*
 ConnectSizeChanged connects a callback to the 'size-changed' signal of the StatusIcon.
@@ -78723,17 +82486,47 @@ func (recv *Style) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'text_aa' : for field setter : missing Type
 
-// UNSUPPORTED : C value 'black' : for field getter : no Go type for 'Gdk.Color'
+// FieldBlack returns the C field 'black'.
+func (recv *Style) FieldBlack() *gdk.Color {
+	argValue := gi.ObjectFieldGet(styleObject, recv.Native(), "black")
+	value := gdk.ColorNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'black' : for field setter : no Go type for 'Gdk.Color'
+// SetFieldBlack sets the value of the C field 'black'.
+func (recv *Style) SetFieldBlack(value *gdk.Color) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(styleObject, recv.Native(), "black", argValue)
+}
 
-// UNSUPPORTED : C value 'white' : for field getter : no Go type for 'Gdk.Color'
+// FieldWhite returns the C field 'white'.
+func (recv *Style) FieldWhite() *gdk.Color {
+	argValue := gi.ObjectFieldGet(styleObject, recv.Native(), "white")
+	value := gdk.ColorNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'white' : for field setter : no Go type for 'Gdk.Color'
+// SetFieldWhite sets the value of the C field 'white'.
+func (recv *Style) SetFieldWhite(value *gdk.Color) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(styleObject, recv.Native(), "white", argValue)
+}
 
-// UNSUPPORTED : C value 'font_desc' : for field getter : no Go type for 'Pango.FontDescription'
+// FieldFontDesc returns the C field 'font_desc'.
+func (recv *Style) FieldFontDesc() *pango.FontDescription {
+	argValue := gi.ObjectFieldGet(styleObject, recv.Native(), "font_desc")
+	value := pango.FontDescriptionNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'font_desc' : for field setter : no Go type for 'Pango.FontDescription'
+// SetFieldFontDesc sets the value of the C field 'font_desc'.
+func (recv *Style) SetFieldFontDesc(value *pango.FontDescription) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(styleObject, recv.Native(), "font_desc", argValue)
+}
 
 // FieldXthickness returns the C field 'xthickness'.
 func (recv *Style) FieldXthickness() int32 {
@@ -78799,7 +82592,40 @@ func StyleNew() *Style {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_style_apply_default_background' : parameter 'cr' of type 'cairo.Context' not supported
+var styleApplyDefaultBackgroundFunction *gi.Function
+var styleApplyDefaultBackgroundFunction_Once sync.Once
+
+func styleApplyDefaultBackgroundFunction_Set() error {
+	var err error
+	styleApplyDefaultBackgroundFunction_Once.Do(func() {
+		err = styleObject_Set()
+		if err != nil {
+			return
+		}
+		styleApplyDefaultBackgroundFunction, err = styleObject.InvokerNew("apply_default_background")
+	})
+	return err
+}
+
+// ApplyDefaultBackground is a representation of the C type gtk_style_apply_default_background.
+func (recv *Style) ApplyDefaultBackground(cr *cairo.Context, window *gdk.Window, stateType StateType, x int32, y int32, width int32, height int32) {
+	var inArgs [8]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetPointer(window.Native())
+	inArgs[3].SetInt32(int32(stateType))
+	inArgs[4].SetInt32(x)
+	inArgs[5].SetInt32(y)
+	inArgs[6].SetInt32(width)
+	inArgs[7].SetInt32(height)
+
+	err := styleApplyDefaultBackgroundFunction_Set()
+	if err == nil {
+		styleApplyDefaultBackgroundFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var styleAttachFunction *gi.Function
 var styleAttachFunction_Once sync.Once
@@ -78932,7 +82758,40 @@ func (recv *Style) HasContext() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_style_lookup_color' : parameter 'color' of type 'Gdk.Color' not supported
+var styleLookupColorFunction *gi.Function
+var styleLookupColorFunction_Once sync.Once
+
+func styleLookupColorFunction_Set() error {
+	var err error
+	styleLookupColorFunction_Once.Do(func() {
+		err = styleObject_Set()
+		if err != nil {
+			return
+		}
+		styleLookupColorFunction, err = styleObject.InvokerNew("lookup_color")
+	})
+	return err
+}
+
+// LookupColor is a representation of the C type gtk_style_lookup_color.
+func (recv *Style) LookupColor(colorName string) (bool, *gdk.Color) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(colorName)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := styleLookupColorFunction_Set()
+	if err == nil {
+		ret = styleLookupColorFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.ColorNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var styleLookupIconSetFunction *gi.Function
 var styleLookupIconSetFunction_Once sync.Once
@@ -79465,7 +83324,35 @@ func (recv *StyleContext) GetSection(property string) *CssSection {
 
 // UNSUPPORTED : C value 'gtk_style_context_get_style' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_style_context_get_style_property' : parameter 'value' of type 'GObject.Value' not supported
+var styleContextGetStylePropertyFunction *gi.Function
+var styleContextGetStylePropertyFunction_Once sync.Once
+
+func styleContextGetStylePropertyFunction_Set() error {
+	var err error
+	styleContextGetStylePropertyFunction_Once.Do(func() {
+		err = styleContextObject_Set()
+		if err != nil {
+			return
+		}
+		styleContextGetStylePropertyFunction, err = styleContextObject.InvokerNew("get_style_property")
+	})
+	return err
+}
+
+// GetStyleProperty is a representation of the C type gtk_style_context_get_style_property.
+func (recv *StyleContext) GetStyleProperty(propertyName string, value *gobject.Value) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(propertyName)
+	inArgs[2].SetPointer(value.Native())
+
+	err := styleContextGetStylePropertyFunction_Set()
+	if err == nil {
+		styleContextGetStylePropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_style_context_get_style_valist' : parameter 'args' of type 'va_list' not supported
 
@@ -79534,11 +83421,104 @@ func (recv *StyleContext) Invalidate() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_style_context_list_classes' : return type 'GLib.List' not supported
+var styleContextListClassesFunction *gi.Function
+var styleContextListClassesFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_style_context_list_regions' : return type 'GLib.List' not supported
+func styleContextListClassesFunction_Set() error {
+	var err error
+	styleContextListClassesFunction_Once.Do(func() {
+		err = styleContextObject_Set()
+		if err != nil {
+			return
+		}
+		styleContextListClassesFunction, err = styleContextObject.InvokerNew("list_classes")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_style_context_lookup_color' : parameter 'color' of type 'Gdk.RGBA' not supported
+// ListClasses is a representation of the C type gtk_style_context_list_classes.
+func (recv *StyleContext) ListClasses() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := styleContextListClassesFunction_Set()
+	if err == nil {
+		ret = styleContextListClassesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var styleContextListRegionsFunction *gi.Function
+var styleContextListRegionsFunction_Once sync.Once
+
+func styleContextListRegionsFunction_Set() error {
+	var err error
+	styleContextListRegionsFunction_Once.Do(func() {
+		err = styleContextObject_Set()
+		if err != nil {
+			return
+		}
+		styleContextListRegionsFunction, err = styleContextObject.InvokerNew("list_regions")
+	})
+	return err
+}
+
+// ListRegions is a representation of the C type gtk_style_context_list_regions.
+func (recv *StyleContext) ListRegions() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := styleContextListRegionsFunction_Set()
+	if err == nil {
+		ret = styleContextListRegionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var styleContextLookupColorFunction *gi.Function
+var styleContextLookupColorFunction_Once sync.Once
+
+func styleContextLookupColorFunction_Set() error {
+	var err error
+	styleContextLookupColorFunction_Once.Do(func() {
+		err = styleContextObject_Set()
+		if err != nil {
+			return
+		}
+		styleContextLookupColorFunction, err = styleContextObject.InvokerNew("lookup_color")
+	})
+	return err
+}
+
+// LookupColor is a representation of the C type gtk_style_context_lookup_color.
+func (recv *StyleContext) LookupColor(colorName string) (bool, *gdk.RGBA) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(colorName)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := styleContextLookupColorFunction_Set()
+	if err == nil {
+		ret = styleContextLookupColorFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.RGBANewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var styleContextLookupIconSetFunction *gi.Function
 var styleContextLookupIconSetFunction_Once sync.Once
@@ -81885,11 +85865,70 @@ func (recv *TextBuffer) DeleteSelection(interactive bool, defaultEditable bool) 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_buffer_deserialize' : parameter 'format' of type 'Gdk.Atom' not supported
+// UNSUPPORTED : C value 'gtk_text_buffer_deserialize' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_text_buffer_deserialize_get_can_create_tags' : parameter 'format' of type 'Gdk.Atom' not supported
+var textBufferDeserializeGetCanCreateTagsFunction *gi.Function
+var textBufferDeserializeGetCanCreateTagsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_buffer_deserialize_set_can_create_tags' : parameter 'format' of type 'Gdk.Atom' not supported
+func textBufferDeserializeGetCanCreateTagsFunction_Set() error {
+	var err error
+	textBufferDeserializeGetCanCreateTagsFunction_Once.Do(func() {
+		err = textBufferObject_Set()
+		if err != nil {
+			return
+		}
+		textBufferDeserializeGetCanCreateTagsFunction, err = textBufferObject.InvokerNew("deserialize_get_can_create_tags")
+	})
+	return err
+}
+
+// DeserializeGetCanCreateTags is a representation of the C type gtk_text_buffer_deserialize_get_can_create_tags.
+func (recv *TextBuffer) DeserializeGetCanCreateTags(format *gdk.Atom) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(format.Native())
+
+	var ret gi.Argument
+
+	err := textBufferDeserializeGetCanCreateTagsFunction_Set()
+	if err == nil {
+		ret = textBufferDeserializeGetCanCreateTagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var textBufferDeserializeSetCanCreateTagsFunction *gi.Function
+var textBufferDeserializeSetCanCreateTagsFunction_Once sync.Once
+
+func textBufferDeserializeSetCanCreateTagsFunction_Set() error {
+	var err error
+	textBufferDeserializeSetCanCreateTagsFunction_Once.Do(func() {
+		err = textBufferObject_Set()
+		if err != nil {
+			return
+		}
+		textBufferDeserializeSetCanCreateTagsFunction, err = textBufferObject.InvokerNew("deserialize_set_can_create_tags")
+	})
+	return err
+}
+
+// DeserializeSetCanCreateTags is a representation of the C type gtk_text_buffer_deserialize_set_can_create_tags.
+func (recv *TextBuffer) DeserializeSetCanCreateTags(format *gdk.Atom, canCreateTags bool) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(format.Native())
+	inArgs[2].SetBoolean(canCreateTags)
+
+	err := textBufferDeserializeSetCanCreateTagsFunction_Set()
+	if err == nil {
+		textBufferDeserializeSetCanCreateTagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var textBufferEndUserActionFunction *gi.Function
 var textBufferEndUserActionFunction_Once sync.Once
@@ -83122,11 +87161,73 @@ func (recv *TextBuffer) PlaceCursor(where *TextIter) {
 
 // UNSUPPORTED : C value 'gtk_text_buffer_register_deserialize_format' : parameter 'function' of type 'TextBufferDeserializeFunc' not supported
 
-// UNSUPPORTED : C value 'gtk_text_buffer_register_deserialize_tagset' : return type 'Gdk.Atom' not supported
+var textBufferRegisterDeserializeTagsetFunction *gi.Function
+var textBufferRegisterDeserializeTagsetFunction_Once sync.Once
+
+func textBufferRegisterDeserializeTagsetFunction_Set() error {
+	var err error
+	textBufferRegisterDeserializeTagsetFunction_Once.Do(func() {
+		err = textBufferObject_Set()
+		if err != nil {
+			return
+		}
+		textBufferRegisterDeserializeTagsetFunction, err = textBufferObject.InvokerNew("register_deserialize_tagset")
+	})
+	return err
+}
+
+// RegisterDeserializeTagset is a representation of the C type gtk_text_buffer_register_deserialize_tagset.
+func (recv *TextBuffer) RegisterDeserializeTagset(tagsetName string) *gdk.Atom {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(tagsetName)
+
+	var ret gi.Argument
+
+	err := textBufferRegisterDeserializeTagsetFunction_Set()
+	if err == nil {
+		ret = textBufferRegisterDeserializeTagsetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdk.AtomNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_text_buffer_register_serialize_format' : parameter 'function' of type 'TextBufferSerializeFunc' not supported
 
-// UNSUPPORTED : C value 'gtk_text_buffer_register_serialize_tagset' : return type 'Gdk.Atom' not supported
+var textBufferRegisterSerializeTagsetFunction *gi.Function
+var textBufferRegisterSerializeTagsetFunction_Once sync.Once
+
+func textBufferRegisterSerializeTagsetFunction_Set() error {
+	var err error
+	textBufferRegisterSerializeTagsetFunction_Once.Do(func() {
+		err = textBufferObject_Set()
+		if err != nil {
+			return
+		}
+		textBufferRegisterSerializeTagsetFunction, err = textBufferObject.InvokerNew("register_serialize_tagset")
+	})
+	return err
+}
+
+// RegisterSerializeTagset is a representation of the C type gtk_text_buffer_register_serialize_tagset.
+func (recv *TextBuffer) RegisterSerializeTagset(tagsetName string) *gdk.Atom {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(tagsetName)
+
+	var ret gi.Argument
+
+	err := textBufferRegisterSerializeTagsetFunction_Set()
+	if err == nil {
+		ret = textBufferRegisterSerializeTagsetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdk.AtomNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var textBufferRemoveAllTagsFunction *gi.Function
 var textBufferRemoveAllTagsFunction_Once sync.Once
@@ -83279,7 +87380,41 @@ func (recv *TextBuffer) SelectRange(ins *TextIter, bound *TextIter) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_text_buffer_serialize' : parameter 'format' of type 'Gdk.Atom' not supported
+var textBufferSerializeFunction *gi.Function
+var textBufferSerializeFunction_Once sync.Once
+
+func textBufferSerializeFunction_Set() error {
+	var err error
+	textBufferSerializeFunction_Once.Do(func() {
+		err = textBufferObject_Set()
+		if err != nil {
+			return
+		}
+		textBufferSerializeFunction, err = textBufferObject.InvokerNew("serialize")
+	})
+	return err
+}
+
+// Serialize is a representation of the C type gtk_text_buffer_serialize.
+func (recv *TextBuffer) Serialize(contentBuffer *TextBuffer, format *gdk.Atom, start *TextIter, end *TextIter) uint64 {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(contentBuffer.Native())
+	inArgs[2].SetPointer(format.Native())
+	inArgs[3].SetPointer(start.Native())
+	inArgs[4].SetPointer(end.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := textBufferSerializeFunction_Set()
+	if err == nil {
+		textBufferSerializeFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0
+}
 
 var textBufferSetModifiedFunction *gi.Function
 var textBufferSetModifiedFunction_Once sync.Once
@@ -83340,9 +87475,63 @@ func (recv *TextBuffer) SetText(text string, len int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_text_buffer_unregister_deserialize_format' : parameter 'format' of type 'Gdk.Atom' not supported
+var textBufferUnregisterDeserializeFormatFunction *gi.Function
+var textBufferUnregisterDeserializeFormatFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_text_buffer_unregister_serialize_format' : parameter 'format' of type 'Gdk.Atom' not supported
+func textBufferUnregisterDeserializeFormatFunction_Set() error {
+	var err error
+	textBufferUnregisterDeserializeFormatFunction_Once.Do(func() {
+		err = textBufferObject_Set()
+		if err != nil {
+			return
+		}
+		textBufferUnregisterDeserializeFormatFunction, err = textBufferObject.InvokerNew("unregister_deserialize_format")
+	})
+	return err
+}
+
+// UnregisterDeserializeFormat is a representation of the C type gtk_text_buffer_unregister_deserialize_format.
+func (recv *TextBuffer) UnregisterDeserializeFormat(format *gdk.Atom) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(format.Native())
+
+	err := textBufferUnregisterDeserializeFormatFunction_Set()
+	if err == nil {
+		textBufferUnregisterDeserializeFormatFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var textBufferUnregisterSerializeFormatFunction *gi.Function
+var textBufferUnregisterSerializeFormatFunction_Once sync.Once
+
+func textBufferUnregisterSerializeFormatFunction_Set() error {
+	var err error
+	textBufferUnregisterSerializeFormatFunction_Once.Do(func() {
+		err = textBufferObject_Set()
+		if err != nil {
+			return
+		}
+		textBufferUnregisterSerializeFormatFunction, err = textBufferObject.InvokerNew("unregister_serialize_format")
+	})
+	return err
+}
+
+// UnregisterSerializeFormat is a representation of the C type gtk_text_buffer_unregister_serialize_format.
+func (recv *TextBuffer) UnregisterSerializeFormat(format *gdk.Atom) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(format.Native())
+
+	err := textBufferUnregisterSerializeFormatFunction_Set()
+	if err == nil {
+		textBufferUnregisterSerializeFormatFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 /*
 ConnectApplyTag connects a callback to the 'apply-tag' signal of the TextBuffer.
@@ -83752,7 +87941,37 @@ func (recv *TextChildAnchor) GetDeleted() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_child_anchor_get_widgets' : return type 'GLib.List' not supported
+var textChildAnchorGetWidgetsFunction *gi.Function
+var textChildAnchorGetWidgetsFunction_Once sync.Once
+
+func textChildAnchorGetWidgetsFunction_Set() error {
+	var err error
+	textChildAnchorGetWidgetsFunction_Once.Do(func() {
+		err = textChildAnchorObject_Set()
+		if err != nil {
+			return
+		}
+		textChildAnchorGetWidgetsFunction, err = textChildAnchorObject.InvokerNew("get_widgets")
+	})
+	return err
+}
+
+// GetWidgets is a representation of the C type gtk_text_child_anchor_get_widgets.
+func (recv *TextChildAnchor) GetWidgets() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := textChildAnchorGetWidgetsFunction_Set()
+	if err == nil {
+		ret = textChildAnchorGetWidgetsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var textMarkObject *gi.Object
 var textMarkObject_Once sync.Once
@@ -85063,7 +89282,39 @@ func (recv *TextView) GetBuffer() *TextBuffer {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_view_get_cursor_locations' : parameter 'strong' of type 'Gdk.Rectangle' not supported
+var textViewGetCursorLocationsFunction *gi.Function
+var textViewGetCursorLocationsFunction_Once sync.Once
+
+func textViewGetCursorLocationsFunction_Set() error {
+	var err error
+	textViewGetCursorLocationsFunction_Once.Do(func() {
+		err = textViewObject_Set()
+		if err != nil {
+			return
+		}
+		textViewGetCursorLocationsFunction, err = textViewObject.InvokerNew("get_cursor_locations")
+	})
+	return err
+}
+
+// GetCursorLocations is a representation of the C type gtk_text_view_get_cursor_locations.
+func (recv *TextView) GetCursorLocations(iter *TextIter) (*gdk.Rectangle, *gdk.Rectangle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+
+	var outArgs [2]gi.Argument
+
+	err := textViewGetCursorLocationsFunction_Set()
+	if err == nil {
+		textViewGetCursorLocationsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+	out1 := gdk.RectangleNewFromNative(outArgs[1].Pointer())
+
+	return out0, out1
+}
 
 var textViewGetCursorVisibleFunction *gi.Function
 var textViewGetCursorVisibleFunction_Once sync.Once
@@ -85332,7 +89583,38 @@ func (recv *TextView) GetIterAtPosition(x int32, y int32) (bool, *TextIter, int3
 	return retGo, out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_text_view_get_iter_location' : parameter 'location' of type 'Gdk.Rectangle' not supported
+var textViewGetIterLocationFunction *gi.Function
+var textViewGetIterLocationFunction_Once sync.Once
+
+func textViewGetIterLocationFunction_Set() error {
+	var err error
+	textViewGetIterLocationFunction_Once.Do(func() {
+		err = textViewObject_Set()
+		if err != nil {
+			return
+		}
+		textViewGetIterLocationFunction, err = textViewObject.InvokerNew("get_iter_location")
+	})
+	return err
+}
+
+// GetIterLocation is a representation of the C type gtk_text_view_get_iter_location.
+func (recv *TextView) GetIterLocation(iter *TextIter) *gdk.Rectangle {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := textViewGetIterLocationFunction_Set()
+	if err == nil {
+		textViewGetIterLocationFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var textViewGetJustificationFunction *gi.Function
 var textViewGetJustificationFunction_Once sync.Once
@@ -85658,7 +89940,37 @@ func (recv *TextView) GetRightMargin() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_view_get_tabs' : return type 'Pango.TabArray' not supported
+var textViewGetTabsFunction *gi.Function
+var textViewGetTabsFunction_Once sync.Once
+
+func textViewGetTabsFunction_Set() error {
+	var err error
+	textViewGetTabsFunction_Once.Do(func() {
+		err = textViewObject_Set()
+		if err != nil {
+			return
+		}
+		textViewGetTabsFunction, err = textViewObject.InvokerNew("get_tabs")
+	})
+	return err
+}
+
+// GetTabs is a representation of the C type gtk_text_view_get_tabs.
+func (recv *TextView) GetTabs() *pango.TabArray {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := textViewGetTabsFunction_Set()
+	if err == nil {
+		ret = textViewGetTabsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := pango.TabArrayNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var textViewGetTopMarginFunction *gi.Function
 var textViewGetTopMarginFunction_Once sync.Once
@@ -85724,7 +90036,37 @@ func (recv *TextView) GetVadjustment() *Adjustment {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_view_get_visible_rect' : parameter 'visible_rect' of type 'Gdk.Rectangle' not supported
+var textViewGetVisibleRectFunction *gi.Function
+var textViewGetVisibleRectFunction_Once sync.Once
+
+func textViewGetVisibleRectFunction_Set() error {
+	var err error
+	textViewGetVisibleRectFunction_Once.Do(func() {
+		err = textViewObject_Set()
+		if err != nil {
+			return
+		}
+		textViewGetVisibleRectFunction, err = textViewObject.InvokerNew("get_visible_rect")
+	})
+	return err
+}
+
+// GetVisibleRect is a representation of the C type gtk_text_view_get_visible_rect.
+func (recv *TextView) GetVisibleRect() *gdk.Rectangle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := textViewGetVisibleRectFunction_Set()
+	if err == nil {
+		textViewGetVisibleRectFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var textViewGetWindowFunction *gi.Function
 var textViewGetWindowFunction_Once sync.Once
@@ -85824,7 +90166,38 @@ func (recv *TextView) GetWrapMode() WrapMode {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_view_im_context_filter_keypress' : parameter 'event' of type 'Gdk.EventKey' not supported
+var textViewImContextFilterKeypressFunction *gi.Function
+var textViewImContextFilterKeypressFunction_Once sync.Once
+
+func textViewImContextFilterKeypressFunction_Set() error {
+	var err error
+	textViewImContextFilterKeypressFunction_Once.Do(func() {
+		err = textViewObject_Set()
+		if err != nil {
+			return
+		}
+		textViewImContextFilterKeypressFunction, err = textViewObject.InvokerNew("im_context_filter_keypress")
+	})
+	return err
+}
+
+// ImContextFilterKeypress is a representation of the C type gtk_text_view_im_context_filter_keypress.
+func (recv *TextView) ImContextFilterKeypress(event *gdk.EventKey) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(event.Native())
+
+	var ret gi.Argument
+
+	err := textViewImContextFilterKeypressFunction_Set()
+	if err == nil {
+		ret = textViewImContextFilterKeypressFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var textViewMoveChildFunction *gi.Function
 var textViewMoveChildFunction_Once sync.Once
@@ -86578,7 +90951,34 @@ func (recv *TextView) SetRightMargin(rightMargin int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_text_view_set_tabs' : parameter 'tabs' of type 'Pango.TabArray' not supported
+var textViewSetTabsFunction *gi.Function
+var textViewSetTabsFunction_Once sync.Once
+
+func textViewSetTabsFunction_Set() error {
+	var err error
+	textViewSetTabsFunction_Once.Do(func() {
+		err = textViewObject_Set()
+		if err != nil {
+			return
+		}
+		textViewSetTabsFunction, err = textViewObject.InvokerNew("set_tabs")
+	})
+	return err
+}
+
+// SetTabs is a representation of the C type gtk_text_view_set_tabs.
+func (recv *TextView) SetTabs(tabs *pango.TabArray) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tabs.Native())
+
+	err := textViewSetTabsFunction_Set()
+	if err == nil {
+		textViewSetTabsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var textViewSetTopMarginFunction *gi.Function
 var textViewSetTopMarginFunction_Once sync.Once
@@ -87233,7 +91633,38 @@ func (recv *ThemingEngine) GetScreen() *gdk.Screen {
 
 // UNSUPPORTED : C value 'gtk_theming_engine_get_style' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_theming_engine_get_style_property' : parameter 'value' of type 'GObject.Value' not supported
+var themingEngineGetStylePropertyFunction *gi.Function
+var themingEngineGetStylePropertyFunction_Once sync.Once
+
+func themingEngineGetStylePropertyFunction_Set() error {
+	var err error
+	themingEngineGetStylePropertyFunction_Once.Do(func() {
+		err = themingEngineObject_Set()
+		if err != nil {
+			return
+		}
+		themingEngineGetStylePropertyFunction, err = themingEngineObject.InvokerNew("get_style_property")
+	})
+	return err
+}
+
+// GetStyleProperty is a representation of the C type gtk_theming_engine_get_style_property.
+func (recv *ThemingEngine) GetStyleProperty(propertyName string) *gobject.Value {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(propertyName)
+
+	var outArgs [1]gi.Argument
+
+	err := themingEngineGetStylePropertyFunction_Set()
+	if err == nil {
+		themingEngineGetStylePropertyFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gobject.ValueNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 // UNSUPPORTED : C value 'gtk_theming_engine_get_style_valist' : parameter 'args' of type 'va_list' not supported
 
@@ -87274,7 +91705,40 @@ func (recv *ThemingEngine) HasClass(styleClass string) bool {
 
 // UNSUPPORTED : C value 'gtk_theming_engine_has_region' : parameter 'flags' of type 'RegionFlags' not supported
 
-// UNSUPPORTED : C value 'gtk_theming_engine_lookup_color' : parameter 'color' of type 'Gdk.RGBA' not supported
+var themingEngineLookupColorFunction *gi.Function
+var themingEngineLookupColorFunction_Once sync.Once
+
+func themingEngineLookupColorFunction_Set() error {
+	var err error
+	themingEngineLookupColorFunction_Once.Do(func() {
+		err = themingEngineObject_Set()
+		if err != nil {
+			return
+		}
+		themingEngineLookupColorFunction, err = themingEngineObject.InvokerNew("lookup_color")
+	})
+	return err
+}
+
+// LookupColor is a representation of the C type gtk_theming_engine_lookup_color.
+func (recv *ThemingEngine) LookupColor(colorName string) (bool, *gdk.RGBA) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(colorName)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := themingEngineLookupColorFunction_Set()
+	if err == nil {
+		ret = themingEngineLookupColorFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.RGBANewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var themingEngineStateIsRunningFunction *gi.Function
 var themingEngineStateIsRunningFunction_Once sync.Once
@@ -92104,7 +96568,34 @@ func (recv *Tooltip) SetText(text string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tooltip_set_tip_area' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+var tooltipSetTipAreaFunction *gi.Function
+var tooltipSetTipAreaFunction_Once sync.Once
+
+func tooltipSetTipAreaFunction_Set() error {
+	var err error
+	tooltipSetTipAreaFunction_Once.Do(func() {
+		err = tooltipObject_Set()
+		if err != nil {
+			return
+		}
+		tooltipSetTipAreaFunction, err = tooltipObject.InvokerNew("set_tip_area")
+	})
+	return err
+}
+
+// SetTipArea is a representation of the C type gtk_tooltip_set_tip_area.
+func (recv *Tooltip) SetTipArea(rect *gdk.Rectangle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rect.Native())
+
+	err := tooltipSetTipAreaFunction_Set()
+	if err == nil {
+		tooltipSetTipAreaFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var toplevelAccessibleObject *gi.Object
 var toplevelAccessibleObject_Once sync.Once
@@ -92194,7 +96685,37 @@ func (recv *ToplevelAccessible) SetFieldPriv(value *ToplevelAccessiblePrivate) {
 	gi.ObjectFieldSet(toplevelAccessibleObject, recv.Native(), "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_toplevel_accessible_get_children' : return type 'GLib.List' not supported
+var toplevelAccessibleGetChildrenFunction *gi.Function
+var toplevelAccessibleGetChildrenFunction_Once sync.Once
+
+func toplevelAccessibleGetChildrenFunction_Set() error {
+	var err error
+	toplevelAccessibleGetChildrenFunction_Once.Do(func() {
+		err = toplevelAccessibleObject_Set()
+		if err != nil {
+			return
+		}
+		toplevelAccessibleGetChildrenFunction, err = toplevelAccessibleObject.InvokerNew("get_children")
+	})
+	return err
+}
+
+// GetChildren is a representation of the C type gtk_toplevel_accessible_get_children.
+func (recv *ToplevelAccessible) GetChildren() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := toplevelAccessibleGetChildrenFunction_Set()
+	if err == nil {
+		ret = toplevelAccessibleGetChildrenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var treeModelFilterObject *gi.Object
 var treeModelFilterObject_Once sync.Once
@@ -93807,7 +98328,36 @@ func (recv *TreeStore) Remove(iter *TreeIter) bool {
 
 // UNSUPPORTED : C value 'gtk_tree_store_set_valist' : parameter 'var_args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_store_set_value' : parameter 'value' of type 'GObject.Value' not supported
+var treeStoreSetValueFunction *gi.Function
+var treeStoreSetValueFunction_Once sync.Once
+
+func treeStoreSetValueFunction_Set() error {
+	var err error
+	treeStoreSetValueFunction_Once.Do(func() {
+		err = treeStoreObject_Set()
+		if err != nil {
+			return
+		}
+		treeStoreSetValueFunction, err = treeStoreObject.InvokerNew("set_value")
+	})
+	return err
+}
+
+// SetValue is a representation of the C type gtk_tree_store_set_value.
+func (recv *TreeStore) SetValue(iter *TreeIter, column int32, value *gobject.Value) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(iter.Native())
+	inArgs[2].SetInt32(column)
+	inArgs[3].SetPointer(value.Native())
+
+	err := treeStoreSetValueFunction_Set()
+	if err == nil {
+		treeStoreSetValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_tree_store_set_valuesv' : parameter 'columns' of type 'nil' not supported
 
@@ -94314,7 +98864,38 @@ func (recv *TreeView) ConvertWidgetToTreeCoords(wx int32, wy int32) (int32, int3
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_create_row_drag_icon' : return type 'cairo.Surface' not supported
+var treeViewCreateRowDragIconFunction *gi.Function
+var treeViewCreateRowDragIconFunction_Once sync.Once
+
+func treeViewCreateRowDragIconFunction_Set() error {
+	var err error
+	treeViewCreateRowDragIconFunction_Once.Do(func() {
+		err = treeViewObject_Set()
+		if err != nil {
+			return
+		}
+		treeViewCreateRowDragIconFunction, err = treeViewObject.InvokerNew("create_row_drag_icon")
+	})
+	return err
+}
+
+// CreateRowDragIcon is a representation of the C type gtk_tree_view_create_row_drag_icon.
+func (recv *TreeView) CreateRowDragIcon(path *TreePath) *cairo.Surface {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(path.Native())
+
+	var ret gi.Argument
+
+	err := treeViewCreateRowDragIconFunction_Set()
+	if err == nil {
+		ret = treeViewCreateRowDragIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.SurfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_tree_view_enable_model_drag_dest' : parameter 'targets' of type 'nil' not supported
 
@@ -94443,7 +99024,39 @@ func (recv *TreeView) GetActivateOnSingleClick() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_get_background_area' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+var treeViewGetBackgroundAreaFunction *gi.Function
+var treeViewGetBackgroundAreaFunction_Once sync.Once
+
+func treeViewGetBackgroundAreaFunction_Set() error {
+	var err error
+	treeViewGetBackgroundAreaFunction_Once.Do(func() {
+		err = treeViewObject_Set()
+		if err != nil {
+			return
+		}
+		treeViewGetBackgroundAreaFunction, err = treeViewObject.InvokerNew("get_background_area")
+	})
+	return err
+}
+
+// GetBackgroundArea is a representation of the C type gtk_tree_view_get_background_area.
+func (recv *TreeView) GetBackgroundArea(path *TreePath, column *TreeViewColumn) *gdk.Rectangle {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(path.Native())
+	inArgs[2].SetPointer(column.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := treeViewGetBackgroundAreaFunction_Set()
+	if err == nil {
+		treeViewGetBackgroundAreaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var treeViewGetBinWindowFunction *gi.Function
 var treeViewGetBinWindowFunction_Once sync.Once
@@ -94477,7 +99090,39 @@ func (recv *TreeView) GetBinWindow() *gdk.Window {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_get_cell_area' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+var treeViewGetCellAreaFunction *gi.Function
+var treeViewGetCellAreaFunction_Once sync.Once
+
+func treeViewGetCellAreaFunction_Set() error {
+	var err error
+	treeViewGetCellAreaFunction_Once.Do(func() {
+		err = treeViewObject_Set()
+		if err != nil {
+			return
+		}
+		treeViewGetCellAreaFunction, err = treeViewObject.InvokerNew("get_cell_area")
+	})
+	return err
+}
+
+// GetCellArea is a representation of the C type gtk_tree_view_get_cell_area.
+func (recv *TreeView) GetCellArea(path *TreePath, column *TreeViewColumn) *gdk.Rectangle {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(path.Native())
+	inArgs[2].SetPointer(column.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := treeViewGetCellAreaFunction_Set()
+	if err == nil {
+		treeViewGetCellAreaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var treeViewGetColumnFunction *gi.Function
 var treeViewGetColumnFunction_Once sync.Once
@@ -94512,7 +99157,37 @@ func (recv *TreeView) GetColumn(n int32) *TreeViewColumn {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_get_columns' : return type 'GLib.List' not supported
+var treeViewGetColumnsFunction *gi.Function
+var treeViewGetColumnsFunction_Once sync.Once
+
+func treeViewGetColumnsFunction_Set() error {
+	var err error
+	treeViewGetColumnsFunction_Once.Do(func() {
+		err = treeViewObject_Set()
+		if err != nil {
+			return
+		}
+		treeViewGetColumnsFunction, err = treeViewObject.InvokerNew("get_columns")
+	})
+	return err
+}
+
+// GetColumns is a representation of the C type gtk_tree_view_get_columns.
+func (recv *TreeView) GetColumns() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := treeViewGetColumnsFunction_Set()
+	if err == nil {
+		ret = treeViewGetColumnsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var treeViewGetCursorFunction *gi.Function
 var treeViewGetCursorFunction_Once sync.Once
@@ -95373,7 +100048,37 @@ func (recv *TreeView) GetVisibleRange() (bool, *TreePath, *TreePath) {
 	return retGo, out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_get_visible_rect' : parameter 'visible_rect' of type 'Gdk.Rectangle' not supported
+var treeViewGetVisibleRectFunction *gi.Function
+var treeViewGetVisibleRectFunction_Once sync.Once
+
+func treeViewGetVisibleRectFunction_Set() error {
+	var err error
+	treeViewGetVisibleRectFunction_Once.Do(func() {
+		err = treeViewObject_Set()
+		if err != nil {
+			return
+		}
+		treeViewGetVisibleRectFunction, err = treeViewObject.InvokerNew("get_visible_rect")
+	})
+	return err
+}
+
+// GetVisibleRect is a representation of the C type gtk_tree_view_get_visible_rect.
+func (recv *TreeView) GetVisibleRect() *gdk.Rectangle {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := treeViewGetVisibleRectFunction_Set()
+	if err == nil {
+		treeViewGetVisibleRectFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var treeViewInsertColumnFunction *gi.Function
 var treeViewInsertColumnFunction_Once sync.Once
@@ -97009,7 +101714,41 @@ func (recv *TreeViewColumn) CellGetPosition(cellRenderer *CellRenderer) (bool, i
 	return retGo, out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_column_cell_get_size' : parameter 'cell_area' of type 'Gdk.Rectangle' not supported
+var treeViewColumnCellGetSizeFunction *gi.Function
+var treeViewColumnCellGetSizeFunction_Once sync.Once
+
+func treeViewColumnCellGetSizeFunction_Set() error {
+	var err error
+	treeViewColumnCellGetSizeFunction_Once.Do(func() {
+		err = treeViewColumnObject_Set()
+		if err != nil {
+			return
+		}
+		treeViewColumnCellGetSizeFunction, err = treeViewColumnObject.InvokerNew("cell_get_size")
+	})
+	return err
+}
+
+// CellGetSize is a representation of the C type gtk_tree_view_column_cell_get_size.
+func (recv *TreeViewColumn) CellGetSize(cellArea *gdk.Rectangle) (int32, int32, int32, int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cellArea.Native())
+
+	var outArgs [4]gi.Argument
+
+	err := treeViewColumnCellGetSizeFunction_Set()
+	if err == nil {
+		treeViewColumnCellGetSizeFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+	out2 := outArgs[2].Int32()
+	out3 := outArgs[3].Int32()
+
+	return out0, out1, out2, out3
+}
 
 var treeViewColumnCellIsVisibleFunction *gi.Function
 var treeViewColumnCellIsVisibleFunction_Once sync.Once
@@ -98681,7 +103420,37 @@ func (recv *UIManager) GetAction(path string) *Action {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_ui_manager_get_action_groups' : return type 'GLib.List' not supported
+var uIManagerGetActionGroupsFunction *gi.Function
+var uIManagerGetActionGroupsFunction_Once sync.Once
+
+func uIManagerGetActionGroupsFunction_Set() error {
+	var err error
+	uIManagerGetActionGroupsFunction_Once.Do(func() {
+		err = uIManagerObject_Set()
+		if err != nil {
+			return
+		}
+		uIManagerGetActionGroupsFunction, err = uIManagerObject.InvokerNew("get_action_groups")
+	})
+	return err
+}
+
+// GetActionGroups is a representation of the C type gtk_ui_manager_get_action_groups.
+func (recv *UIManager) GetActionGroups() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := uIManagerGetActionGroupsFunction_Set()
+	if err == nil {
+		ret = uIManagerGetActionGroupsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var uIManagerGetAddTearoffsFunction *gi.Function
 var uIManagerGetAddTearoffsFunction_Once sync.Once
@@ -101011,7 +105780,39 @@ func (recv *Widget) DragDestAddUriTargets() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_drag_dest_find_target' : return type 'Gdk.Atom' not supported
+var widgetDragDestFindTargetFunction *gi.Function
+var widgetDragDestFindTargetFunction_Once sync.Once
+
+func widgetDragDestFindTargetFunction_Set() error {
+	var err error
+	widgetDragDestFindTargetFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetDragDestFindTargetFunction, err = widgetObject.InvokerNew("drag_dest_find_target")
+	})
+	return err
+}
+
+// DragDestFindTarget is a representation of the C type gtk_drag_dest_find_target.
+func (recv *Widget) DragDestFindTarget(context *gdk.DragContext, targetList *TargetList) *gdk.Atom {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(context.Native())
+	inArgs[2].SetPointer(targetList.Native())
+
+	var ret gi.Argument
+
+	err := widgetDragDestFindTargetFunction_Set()
+	if err == nil {
+		ret = widgetDragDestFindTargetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdk.AtomNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var widgetDragDestGetTargetListFunction *gi.Function
 var widgetDragDestGetTargetListFunction_Once sync.Once
@@ -101167,7 +105968,36 @@ func (recv *Widget) DragDestUnset() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_drag_get_data' : parameter 'target' of type 'Gdk.Atom' not supported
+var widgetDragGetDataFunction *gi.Function
+var widgetDragGetDataFunction_Once sync.Once
+
+func widgetDragGetDataFunction_Set() error {
+	var err error
+	widgetDragGetDataFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetDragGetDataFunction, err = widgetObject.InvokerNew("drag_get_data")
+	})
+	return err
+}
+
+// DragGetData is a representation of the C type gtk_drag_get_data.
+func (recv *Widget) DragGetData(context *gdk.DragContext, target *gdk.Atom, time uint32) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(context.Native())
+	inArgs[2].SetPointer(target.Native())
+	inArgs[3].SetUint32(time)
+
+	err := widgetDragGetDataFunction_Set()
+	if err == nil {
+		widgetDragGetDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetDragHighlightFunction *gi.Function
 var widgetDragHighlightFunction_Once sync.Once
@@ -101489,7 +106319,34 @@ func (recv *Widget) DragUnhighlight() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_draw' : parameter 'cr' of type 'cairo.Context' not supported
+var widgetDrawFunction *gi.Function
+var widgetDrawFunction_Once sync.Once
+
+func widgetDrawFunction_Set() error {
+	var err error
+	widgetDrawFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetDrawFunction, err = widgetObject.InvokerNew("draw")
+	})
+	return err
+}
+
+// Draw is a representation of the C type gtk_widget_draw.
+func (recv *Widget) Draw(cr *cairo.Context) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cr.Native())
+
+	err := widgetDrawFunction_Set()
+	if err == nil {
+		widgetDrawFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetEnsureStyleFunction *gi.Function
 var widgetEnsureStyleFunction_Once sync.Once
@@ -101875,7 +106732,38 @@ func (recv *Widget) GetChildVisible() bool {
 
 // UNSUPPORTED : C value 'gtk_widget_get_clip' : parameter 'clip' of type 'Allocation' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_get_clipboard' : parameter 'selection' of type 'Gdk.Atom' not supported
+var widgetGetClipboardFunction *gi.Function
+var widgetGetClipboardFunction_Once sync.Once
+
+func widgetGetClipboardFunction_Set() error {
+	var err error
+	widgetGetClipboardFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetGetClipboardFunction, err = widgetObject.InvokerNew("get_clipboard")
+	})
+	return err
+}
+
+// GetClipboard is a representation of the C type gtk_widget_get_clipboard.
+func (recv *Widget) GetClipboard(selection *gdk.Atom) *Clipboard {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(selection.Native())
+
+	var ret gi.Argument
+
+	err := widgetGetClipboardFunction_Set()
+	if err == nil {
+		ret = widgetGetClipboardFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ClipboardNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var widgetGetCompositeNameFunction *gi.Function
 var widgetGetCompositeNameFunction_Once sync.Once
@@ -102136,7 +107024,37 @@ func (recv *Widget) GetFontMap() *pango.FontMap {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_get_font_options' : return type 'cairo.FontOptions' not supported
+var widgetGetFontOptionsFunction *gi.Function
+var widgetGetFontOptionsFunction_Once sync.Once
+
+func widgetGetFontOptionsFunction_Set() error {
+	var err error
+	widgetGetFontOptionsFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetGetFontOptionsFunction, err = widgetObject.InvokerNew("get_font_options")
+	})
+	return err
+}
+
+// GetFontOptions is a representation of the C type gtk_widget_get_font_options.
+func (recv *Widget) GetFontOptions() *cairo.FontOptions {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := widgetGetFontOptionsFunction_Set()
+	if err == nil {
+		ret = widgetGetFontOptionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.FontOptionsNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var widgetGetFrameClockFunction *gi.Function
 var widgetGetFrameClockFunction_Once sync.Once
@@ -104277,11 +109195,71 @@ func (recv *Widget) InitTemplate() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_input_shape_combine_region' : parameter 'region' of type 'cairo.Region' not supported
+var widgetInputShapeCombineRegionFunction *gi.Function
+var widgetInputShapeCombineRegionFunction_Once sync.Once
+
+func widgetInputShapeCombineRegionFunction_Set() error {
+	var err error
+	widgetInputShapeCombineRegionFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetInputShapeCombineRegionFunction, err = widgetObject.InvokerNew("input_shape_combine_region")
+	})
+	return err
+}
+
+// InputShapeCombineRegion is a representation of the C type gtk_widget_input_shape_combine_region.
+func (recv *Widget) InputShapeCombineRegion(region *cairo.Region) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(region.Native())
+
+	err := widgetInputShapeCombineRegionFunction_Set()
+	if err == nil {
+		widgetInputShapeCombineRegionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_widget_insert_action_group' : parameter 'group' of type 'Gio.ActionGroup' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_intersect' : parameter 'area' of type 'Gdk.Rectangle' not supported
+var widgetIntersectFunction *gi.Function
+var widgetIntersectFunction_Once sync.Once
+
+func widgetIntersectFunction_Set() error {
+	var err error
+	widgetIntersectFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetIntersectFunction, err = widgetObject.InvokerNew("intersect")
+	})
+	return err
+}
+
+// Intersect is a representation of the C type gtk_widget_intersect.
+func (recv *Widget) Intersect(area *gdk.Rectangle) (bool, *gdk.Rectangle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(area.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := widgetIntersectFunction_Set()
+	if err == nil {
+		ret = widgetIntersectFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var widgetIsAncestorFunction *gi.Function
 var widgetIsAncestorFunction_Once sync.Once
@@ -104541,7 +109519,37 @@ func (recv *Widget) KeynavFailed(direction DirectionType) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_list_accel_closures' : return type 'GLib.List' not supported
+var widgetListAccelClosuresFunction *gi.Function
+var widgetListAccelClosuresFunction_Once sync.Once
+
+func widgetListAccelClosuresFunction_Set() error {
+	var err error
+	widgetListAccelClosuresFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetListAccelClosuresFunction, err = widgetObject.InvokerNew("list_accel_closures")
+	})
+	return err
+}
+
+// ListAccelClosures is a representation of the C type gtk_widget_list_accel_closures.
+func (recv *Widget) ListAccelClosures() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := widgetListAccelClosuresFunction_Set()
+	if err == nil {
+		ret = widgetListAccelClosuresFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var widgetListActionPrefixesFunction *gi.Function
 var widgetListActionPrefixesFunction_Once sync.Once
@@ -104571,7 +109579,37 @@ func (recv *Widget) ListActionPrefixes() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_list_mnemonic_labels' : return type 'GLib.List' not supported
+var widgetListMnemonicLabelsFunction *gi.Function
+var widgetListMnemonicLabelsFunction_Once sync.Once
+
+func widgetListMnemonicLabelsFunction_Set() error {
+	var err error
+	widgetListMnemonicLabelsFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetListMnemonicLabelsFunction, err = widgetObject.InvokerNew("list_mnemonic_labels")
+	})
+	return err
+}
+
+// ListMnemonicLabels is a representation of the C type gtk_widget_list_mnemonic_labels.
+func (recv *Widget) ListMnemonicLabels() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := widgetListMnemonicLabelsFunction_Set()
+	if err == nil {
+		ret = widgetListMnemonicLabelsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var widgetMapFunction *gi.Function
 var widgetMapFunction_Once sync.Once
@@ -104634,15 +109672,154 @@ func (recv *Widget) MnemonicActivate(groupCycling bool) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_modify_base' : parameter 'color' of type 'Gdk.Color' not supported
+var widgetModifyBaseFunction *gi.Function
+var widgetModifyBaseFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_widget_modify_bg' : parameter 'color' of type 'Gdk.Color' not supported
+func widgetModifyBaseFunction_Set() error {
+	var err error
+	widgetModifyBaseFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetModifyBaseFunction, err = widgetObject.InvokerNew("modify_base")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_widget_modify_cursor' : parameter 'primary' of type 'Gdk.Color' not supported
+// ModifyBase is a representation of the C type gtk_widget_modify_base.
+func (recv *Widget) ModifyBase(state StateType, color *gdk.Color) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(state))
+	inArgs[2].SetPointer(color.Native())
 
-// UNSUPPORTED : C value 'gtk_widget_modify_fg' : parameter 'color' of type 'Gdk.Color' not supported
+	err := widgetModifyBaseFunction_Set()
+	if err == nil {
+		widgetModifyBaseFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_widget_modify_font' : parameter 'font_desc' of type 'Pango.FontDescription' not supported
+	return
+}
+
+var widgetModifyBgFunction *gi.Function
+var widgetModifyBgFunction_Once sync.Once
+
+func widgetModifyBgFunction_Set() error {
+	var err error
+	widgetModifyBgFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetModifyBgFunction, err = widgetObject.InvokerNew("modify_bg")
+	})
+	return err
+}
+
+// ModifyBg is a representation of the C type gtk_widget_modify_bg.
+func (recv *Widget) ModifyBg(state StateType, color *gdk.Color) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(state))
+	inArgs[2].SetPointer(color.Native())
+
+	err := widgetModifyBgFunction_Set()
+	if err == nil {
+		widgetModifyBgFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var widgetModifyCursorFunction *gi.Function
+var widgetModifyCursorFunction_Once sync.Once
+
+func widgetModifyCursorFunction_Set() error {
+	var err error
+	widgetModifyCursorFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetModifyCursorFunction, err = widgetObject.InvokerNew("modify_cursor")
+	})
+	return err
+}
+
+// ModifyCursor is a representation of the C type gtk_widget_modify_cursor.
+func (recv *Widget) ModifyCursor(primary *gdk.Color, secondary *gdk.Color) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(primary.Native())
+	inArgs[2].SetPointer(secondary.Native())
+
+	err := widgetModifyCursorFunction_Set()
+	if err == nil {
+		widgetModifyCursorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var widgetModifyFgFunction *gi.Function
+var widgetModifyFgFunction_Once sync.Once
+
+func widgetModifyFgFunction_Set() error {
+	var err error
+	widgetModifyFgFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetModifyFgFunction, err = widgetObject.InvokerNew("modify_fg")
+	})
+	return err
+}
+
+// ModifyFg is a representation of the C type gtk_widget_modify_fg.
+func (recv *Widget) ModifyFg(state StateType, color *gdk.Color) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(state))
+	inArgs[2].SetPointer(color.Native())
+
+	err := widgetModifyFgFunction_Set()
+	if err == nil {
+		widgetModifyFgFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var widgetModifyFontFunction *gi.Function
+var widgetModifyFontFunction_Once sync.Once
+
+func widgetModifyFontFunction_Set() error {
+	var err error
+	widgetModifyFontFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetModifyFontFunction, err = widgetObject.InvokerNew("modify_font")
+	})
+	return err
+}
+
+// ModifyFont is a representation of the C type gtk_widget_modify_font.
+func (recv *Widget) ModifyFont(fontDesc *pango.FontDescription) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(fontDesc.Native())
+
+	err := widgetModifyFontFunction_Set()
+	if err == nil {
+		widgetModifyFontFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetModifyStyleFunction *gi.Function
 var widgetModifyStyleFunction_Once sync.Once
@@ -104673,17 +109850,128 @@ func (recv *Widget) ModifyStyle(style *RcStyle) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_modify_text' : parameter 'color' of type 'Gdk.Color' not supported
+var widgetModifyTextFunction *gi.Function
+var widgetModifyTextFunction_Once sync.Once
+
+func widgetModifyTextFunction_Set() error {
+	var err error
+	widgetModifyTextFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetModifyTextFunction, err = widgetObject.InvokerNew("modify_text")
+	})
+	return err
+}
+
+// ModifyText is a representation of the C type gtk_widget_modify_text.
+func (recv *Widget) ModifyText(state StateType, color *gdk.Color) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(state))
+	inArgs[2].SetPointer(color.Native())
+
+	err := widgetModifyTextFunction_Set()
+	if err == nil {
+		widgetModifyTextFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_widget_override_background_color' : parameter 'state' of type 'StateFlags' not supported
 
 // UNSUPPORTED : C value 'gtk_widget_override_color' : parameter 'state' of type 'StateFlags' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_override_cursor' : parameter 'cursor' of type 'Gdk.RGBA' not supported
+var widgetOverrideCursorFunction *gi.Function
+var widgetOverrideCursorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_widget_override_font' : parameter 'font_desc' of type 'Pango.FontDescription' not supported
+func widgetOverrideCursorFunction_Set() error {
+	var err error
+	widgetOverrideCursorFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetOverrideCursorFunction, err = widgetObject.InvokerNew("override_cursor")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_widget_override_symbolic_color' : parameter 'color' of type 'Gdk.RGBA' not supported
+// OverrideCursor is a representation of the C type gtk_widget_override_cursor.
+func (recv *Widget) OverrideCursor(cursor *gdk.RGBA, secondaryCursor *gdk.RGBA) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cursor.Native())
+	inArgs[2].SetPointer(secondaryCursor.Native())
+
+	err := widgetOverrideCursorFunction_Set()
+	if err == nil {
+		widgetOverrideCursorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var widgetOverrideFontFunction *gi.Function
+var widgetOverrideFontFunction_Once sync.Once
+
+func widgetOverrideFontFunction_Set() error {
+	var err error
+	widgetOverrideFontFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetOverrideFontFunction, err = widgetObject.InvokerNew("override_font")
+	})
+	return err
+}
+
+// OverrideFont is a representation of the C type gtk_widget_override_font.
+func (recv *Widget) OverrideFont(fontDesc *pango.FontDescription) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(fontDesc.Native())
+
+	err := widgetOverrideFontFunction_Set()
+	if err == nil {
+		widgetOverrideFontFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var widgetOverrideSymbolicColorFunction *gi.Function
+var widgetOverrideSymbolicColorFunction_Once sync.Once
+
+func widgetOverrideSymbolicColorFunction_Set() error {
+	var err error
+	widgetOverrideSymbolicColorFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetOverrideSymbolicColorFunction, err = widgetObject.InvokerNew("override_symbolic_color")
+	})
+	return err
+}
+
+// OverrideSymbolicColor is a representation of the C type gtk_widget_override_symbolic_color.
+func (recv *Widget) OverrideSymbolicColor(name string, color *gdk.RGBA) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(name)
+	inArgs[2].SetPointer(color.Native())
+
+	err := widgetOverrideSymbolicColorFunction_Set()
+	if err == nil {
+		widgetOverrideSymbolicColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetPathFunction *gi.Function
 var widgetPathFunction_Once sync.Once
@@ -104835,7 +110123,34 @@ func (recv *Widget) QueueDrawArea(x int32, y int32, width int32, height int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_queue_draw_region' : parameter 'region' of type 'cairo.Region' not supported
+var widgetQueueDrawRegionFunction *gi.Function
+var widgetQueueDrawRegionFunction_Once sync.Once
+
+func widgetQueueDrawRegionFunction_Set() error {
+	var err error
+	widgetQueueDrawRegionFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetQueueDrawRegionFunction, err = widgetObject.InvokerNew("queue_draw_region")
+	})
+	return err
+}
+
+// QueueDrawRegion is a representation of the C type gtk_widget_queue_draw_region.
+func (recv *Widget) QueueDrawRegion(region *cairo.Region) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(region.Native())
+
+	err := widgetQueueDrawRegionFunction_Set()
+	if err == nil {
+		widgetQueueDrawRegionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetQueueResizeFunction *gi.Function
 var widgetQueueResizeFunction_Once sync.Once
@@ -104921,7 +110236,38 @@ func (recv *Widget) Realize() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_region_intersect' : parameter 'region' of type 'cairo.Region' not supported
+var widgetRegionIntersectFunction *gi.Function
+var widgetRegionIntersectFunction_Once sync.Once
+
+func widgetRegionIntersectFunction_Set() error {
+	var err error
+	widgetRegionIntersectFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetRegionIntersectFunction, err = widgetObject.InvokerNew("region_intersect")
+	})
+	return err
+}
+
+// RegionIntersect is a representation of the C type gtk_widget_region_intersect.
+func (recv *Widget) RegionIntersect(region *cairo.Region) *cairo.Region {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(region.Native())
+
+	var ret gi.Argument
+
+	err := widgetRegionIntersectFunction_Set()
+	if err == nil {
+		ret = widgetRegionIntersectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.RegionNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var widgetRegisterWindowFunction *gi.Function
 var widgetRegisterWindowFunction_Once sync.Once
@@ -105526,7 +110872,34 @@ func (recv *Widget) SetFontMap(fontMap *pango.FontMap) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_set_font_options' : parameter 'options' of type 'cairo.FontOptions' not supported
+var widgetSetFontOptionsFunction *gi.Function
+var widgetSetFontOptionsFunction_Once sync.Once
+
+func widgetSetFontOptionsFunction_Set() error {
+	var err error
+	widgetSetFontOptionsFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetSetFontOptionsFunction, err = widgetObject.InvokerNew("set_font_options")
+	})
+	return err
+}
+
+// SetFontOptions is a representation of the C type gtk_widget_set_font_options.
+func (recv *Widget) SetFontOptions(options *cairo.FontOptions) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(options.Native())
+
+	err := widgetSetFontOptionsFunction_Set()
+	if err == nil {
+		widgetSetFontOptionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetSetHalignFunction *gi.Function
 var widgetSetHalignFunction_Once sync.Once
@@ -106517,7 +111890,34 @@ func (recv *Widget) SetWindow(window *gdk.Window) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_shape_combine_region' : parameter 'region' of type 'cairo.Region' not supported
+var widgetShapeCombineRegionFunction *gi.Function
+var widgetShapeCombineRegionFunction_Once sync.Once
+
+func widgetShapeCombineRegionFunction_Set() error {
+	var err error
+	widgetShapeCombineRegionFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetShapeCombineRegionFunction, err = widgetObject.InvokerNew("shape_combine_region")
+	})
+	return err
+}
+
+// ShapeCombineRegion is a representation of the C type gtk_widget_shape_combine_region.
+func (recv *Widget) ShapeCombineRegion(region *cairo.Region) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(region.Native())
+
+	err := widgetShapeCombineRegionFunction_Set()
+	if err == nil {
+		widgetShapeCombineRegionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetShowFunction *gi.Function
 var widgetShowFunction_Once sync.Once
@@ -106669,7 +112069,35 @@ func (recv *Widget) StyleAttach() {
 
 // UNSUPPORTED : C value 'gtk_widget_style_get' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_style_get_property' : parameter 'value' of type 'GObject.Value' not supported
+var widgetStyleGetPropertyFunction *gi.Function
+var widgetStyleGetPropertyFunction_Once sync.Once
+
+func widgetStyleGetPropertyFunction_Set() error {
+	var err error
+	widgetStyleGetPropertyFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetStyleGetPropertyFunction, err = widgetObject.InvokerNew("style_get_property")
+	})
+	return err
+}
+
+// StyleGetProperty is a representation of the C type gtk_widget_style_get_property.
+func (recv *Widget) StyleGetProperty(propertyName string, value *gobject.Value) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(propertyName)
+	inArgs[2].SetPointer(value.Native())
+
+	err := widgetStyleGetPropertyFunction_Set()
+	if err == nil {
+		widgetStyleGetPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_widget_style_get_valist' : parameter 'var_args' of type 'va_list' not supported
 
@@ -106893,9 +112321,27 @@ func (recv *Widget) ConnectAccelClosuresChanged(handler func(instance *Widget)) 
 	return callback.ConnectSignal(recv.Native(), "accel-closures-changed", marshal)
 }
 
-// UNSUPPORTED : C value 'button-press-event' : parameter 'event' of type 'Gdk.EventButton' not supported
+/*
+ConnectButtonPressEvent connects a callback to the 'button-press-event' signal of the Widget.
 
-// UNSUPPORTED : C value 'button-release-event' : parameter 'event' of type 'Gdk.EventButton' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectButtonPressEvent(handler func(instance *Widget, event *gdk.EventButton) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "button-press-event", marshal)
+}
+
+/*
+ConnectButtonReleaseEvent connects a callback to the 'button-release-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectButtonReleaseEvent(handler func(instance *Widget, event *gdk.EventButton) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "button-release-event", marshal)
+}
 
 /*
 ConnectCanActivateAccel connects a callback to the 'can-activate-accel' signal of the Widget.
@@ -106930,9 +112376,27 @@ func (recv *Widget) ConnectCompositedChanged(handler func(instance *Widget)) int
 	return callback.ConnectSignal(recv.Native(), "composited-changed", marshal)
 }
 
-// UNSUPPORTED : C value 'configure-event' : parameter 'event' of type 'Gdk.EventConfigure' not supported
+/*
+ConnectConfigureEvent connects a callback to the 'configure-event' signal of the Widget.
 
-// UNSUPPORTED : C value 'damage-event' : parameter 'event' of type 'Gdk.EventExpose' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectConfigureEvent(handler func(instance *Widget, event *gdk.EventConfigure) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "configure-event", marshal)
+}
+
+/*
+ConnectDamageEvent connects a callback to the 'damage-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDamageEvent(handler func(instance *Widget, event *gdk.EventExpose) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "damage-event", marshal)
+}
 
 // UNSUPPORTED : C value 'delete-event' : parameter 'event' of type 'Gdk.Event' not supported
 
@@ -107059,9 +112523,27 @@ func (recv *Widget) ConnectDragMotion(handler func(instance *Widget, context *gd
 	return callback.ConnectSignal(recv.Native(), "drag-motion", marshal)
 }
 
-// UNSUPPORTED : C value 'draw' : parameter 'cr' of type 'cairo.Context' not supported
+/*
+ConnectDraw connects a callback to the 'draw' signal of the Widget.
 
-// UNSUPPORTED : C value 'enter-notify-event' : parameter 'event' of type 'Gdk.EventCrossing' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDraw(handler func(instance *Widget, cr *cairo.Context) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "draw", marshal)
+}
+
+/*
+ConnectEnterNotifyEvent connects a callback to the 'enter-notify-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectEnterNotifyEvent(handler func(instance *Widget, event *gdk.EventCrossing) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "enter-notify-event", marshal)
+}
 
 // UNSUPPORTED : C value 'event' : parameter 'event' of type 'Gdk.Event' not supported
 
@@ -107078,11 +112560,38 @@ func (recv *Widget) ConnectFocus(handler func(instance *Widget, direction Direct
 	return callback.ConnectSignal(recv.Native(), "focus", marshal)
 }
 
-// UNSUPPORTED : C value 'focus-in-event' : parameter 'event' of type 'Gdk.EventFocus' not supported
+/*
+ConnectFocusInEvent connects a callback to the 'focus-in-event' signal of the Widget.
 
-// UNSUPPORTED : C value 'focus-out-event' : parameter 'event' of type 'Gdk.EventFocus' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectFocusInEvent(handler func(instance *Widget, event *gdk.EventFocus) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
 
-// UNSUPPORTED : C value 'grab-broken-event' : parameter 'event' of type 'Gdk.EventGrabBroken' not supported
+	return callback.ConnectSignal(recv.Native(), "focus-in-event", marshal)
+}
+
+/*
+ConnectFocusOutEvent connects a callback to the 'focus-out-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectFocusOutEvent(handler func(instance *Widget, event *gdk.EventFocus) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "focus-out-event", marshal)
+}
+
+/*
+ConnectGrabBrokenEvent connects a callback to the 'grab-broken-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectGrabBrokenEvent(handler func(instance *Widget, event *gdk.EventGrabBroken) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "grab-broken-event", marshal)
+}
 
 /*
 ConnectGrabFocus connects a callback to the 'grab-focus' signal of the Widget.
@@ -107128,9 +112637,27 @@ func (recv *Widget) ConnectHierarchyChanged(handler func(instance *Widget, previ
 	return callback.ConnectSignal(recv.Native(), "hierarchy-changed", marshal)
 }
 
-// UNSUPPORTED : C value 'key-press-event' : parameter 'event' of type 'Gdk.EventKey' not supported
+/*
+ConnectKeyPressEvent connects a callback to the 'key-press-event' signal of the Widget.
 
-// UNSUPPORTED : C value 'key-release-event' : parameter 'event' of type 'Gdk.EventKey' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectKeyPressEvent(handler func(instance *Widget, event *gdk.EventKey) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "key-press-event", marshal)
+}
+
+/*
+ConnectKeyReleaseEvent connects a callback to the 'key-release-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectKeyReleaseEvent(handler func(instance *Widget, event *gdk.EventKey) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "key-release-event", marshal)
+}
 
 /*
 ConnectKeynavFailed connects a callback to the 'keynav-failed' signal of the Widget.
@@ -107143,7 +112670,16 @@ func (recv *Widget) ConnectKeynavFailed(handler func(instance *Widget, direction
 	return callback.ConnectSignal(recv.Native(), "keynav-failed", marshal)
 }
 
-// UNSUPPORTED : C value 'leave-notify-event' : parameter 'event' of type 'Gdk.EventCrossing' not supported
+/*
+ConnectLeaveNotifyEvent connects a callback to the 'leave-notify-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectLeaveNotifyEvent(handler func(instance *Widget, event *gdk.EventCrossing) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "leave-notify-event", marshal)
+}
 
 /*
 ConnectMap connects a callback to the 'map' signal of the Widget.
@@ -107156,7 +112692,16 @@ func (recv *Widget) ConnectMap(handler func(instance *Widget)) int {
 	return callback.ConnectSignal(recv.Native(), "map", marshal)
 }
 
-// UNSUPPORTED : C value 'map-event' : parameter 'event' of type 'Gdk.EventAny' not supported
+/*
+ConnectMapEvent connects a callback to the 'map-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectMapEvent(handler func(instance *Widget, event *gdk.EventAny) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "map-event", marshal)
+}
 
 /*
 ConnectMnemonicActivate connects a callback to the 'mnemonic-activate' signal of the Widget.
@@ -107169,7 +112714,16 @@ func (recv *Widget) ConnectMnemonicActivate(handler func(instance *Widget, group
 	return callback.ConnectSignal(recv.Native(), "mnemonic-activate", marshal)
 }
 
-// UNSUPPORTED : C value 'motion-notify-event' : parameter 'event' of type 'Gdk.EventMotion' not supported
+/*
+ConnectMotionNotifyEvent connects a callback to the 'motion-notify-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectMotionNotifyEvent(handler func(instance *Widget, event *gdk.EventMotion) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "motion-notify-event", marshal)
+}
 
 /*
 ConnectMoveFocus connects a callback to the 'move-focus' signal of the Widget.
@@ -107204,11 +112758,38 @@ func (recv *Widget) ConnectPopupMenu(handler func(instance *Widget) bool) int {
 	return callback.ConnectSignal(recv.Native(), "popup-menu", marshal)
 }
 
-// UNSUPPORTED : C value 'property-notify-event' : parameter 'event' of type 'Gdk.EventProperty' not supported
+/*
+ConnectPropertyNotifyEvent connects a callback to the 'property-notify-event' signal of the Widget.
 
-// UNSUPPORTED : C value 'proximity-in-event' : parameter 'event' of type 'Gdk.EventProximity' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectPropertyNotifyEvent(handler func(instance *Widget, event *gdk.EventProperty) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
 
-// UNSUPPORTED : C value 'proximity-out-event' : parameter 'event' of type 'Gdk.EventProximity' not supported
+	return callback.ConnectSignal(recv.Native(), "property-notify-event", marshal)
+}
+
+/*
+ConnectProximityInEvent connects a callback to the 'proximity-in-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectProximityInEvent(handler func(instance *Widget, event *gdk.EventProximity) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "proximity-in-event", marshal)
+}
+
+/*
+ConnectProximityOutEvent connects a callback to the 'proximity-out-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectProximityOutEvent(handler func(instance *Widget, event *gdk.EventProximity) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "proximity-out-event", marshal)
+}
 
 /*
 ConnectQueryTooltip connects a callback to the 'query-tooltip' signal of the Widget.
@@ -107243,9 +112824,27 @@ func (recv *Widget) ConnectScreenChanged(handler func(instance *Widget, previous
 	return callback.ConnectSignal(recv.Native(), "screen-changed", marshal)
 }
 
-// UNSUPPORTED : C value 'scroll-event' : parameter 'event' of type 'Gdk.EventScroll' not supported
+/*
+ConnectScrollEvent connects a callback to the 'scroll-event' signal of the Widget.
 
-// UNSUPPORTED : C value 'selection-clear-event' : parameter 'event' of type 'Gdk.EventSelection' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectScrollEvent(handler func(instance *Widget, event *gdk.EventScroll) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "scroll-event", marshal)
+}
+
+/*
+ConnectSelectionClearEvent connects a callback to the 'selection-clear-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectSelectionClearEvent(handler func(instance *Widget, event *gdk.EventSelection) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "selection-clear-event", marshal)
+}
 
 /*
 ConnectSelectionGet connects a callback to the 'selection-get' signal of the Widget.
@@ -107258,7 +112857,16 @@ func (recv *Widget) ConnectSelectionGet(handler func(instance *Widget, data *Sel
 	return callback.ConnectSignal(recv.Native(), "selection-get", marshal)
 }
 
-// UNSUPPORTED : C value 'selection-notify-event' : parameter 'event' of type 'Gdk.EventSelection' not supported
+/*
+ConnectSelectionNotifyEvent connects a callback to the 'selection-notify-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectSelectionNotifyEvent(handler func(instance *Widget, event *gdk.EventSelection) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "selection-notify-event", marshal)
+}
 
 /*
 ConnectSelectionReceived connects a callback to the 'selection-received' signal of the Widget.
@@ -107271,7 +112879,16 @@ func (recv *Widget) ConnectSelectionReceived(handler func(instance *Widget, data
 	return callback.ConnectSignal(recv.Native(), "selection-received", marshal)
 }
 
-// UNSUPPORTED : C value 'selection-request-event' : parameter 'event' of type 'Gdk.EventSelection' not supported
+/*
+ConnectSelectionRequestEvent connects a callback to the 'selection-request-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectSelectionRequestEvent(handler func(instance *Widget, event *gdk.EventSelection) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "selection-request-event", marshal)
+}
 
 /*
 ConnectShow connects a callback to the 'show' signal of the Widget.
@@ -107295,7 +112912,16 @@ func (recv *Widget) ConnectShowHelp(handler func(instance *Widget, helpType Widg
 	return callback.ConnectSignal(recv.Native(), "show-help", marshal)
 }
 
-// UNSUPPORTED : C value 'size-allocate' : parameter 'allocation' of type 'Allocation' not supported
+/*
+ConnectSizeAllocate connects a callback to the 'size-allocate' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectSizeAllocate(handler func(instance *Widget, allocation Allocation)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "size-allocate", marshal)
+}
 
 /*
 ConnectStateChanged connects a callback to the 'state-changed' signal of the Widget.
@@ -107345,7 +112971,16 @@ func (recv *Widget) ConnectUnmap(handler func(instance *Widget)) int {
 	return callback.ConnectSignal(recv.Native(), "unmap", marshal)
 }
 
-// UNSUPPORTED : C value 'unmap-event' : parameter 'event' of type 'Gdk.EventAny' not supported
+/*
+ConnectUnmapEvent connects a callback to the 'unmap-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectUnmapEvent(handler func(instance *Widget, event *gdk.EventAny) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "unmap-event", marshal)
+}
 
 /*
 ConnectUnrealize connects a callback to the 'unrealize' signal of the Widget.
@@ -107358,9 +112993,27 @@ func (recv *Widget) ConnectUnrealize(handler func(instance *Widget)) int {
 	return callback.ConnectSignal(recv.Native(), "unrealize", marshal)
 }
 
-// UNSUPPORTED : C value 'visibility-notify-event' : parameter 'event' of type 'Gdk.EventVisibility' not supported
+/*
+ConnectVisibilityNotifyEvent connects a callback to the 'visibility-notify-event' signal of the Widget.
 
-// UNSUPPORTED : C value 'window-state-event' : parameter 'event' of type 'Gdk.EventWindowState' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectVisibilityNotifyEvent(handler func(instance *Widget, event *gdk.EventVisibility) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "visibility-notify-event", marshal)
+}
+
+/*
+ConnectWindowStateEvent connects a callback to the 'window-state-event' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectWindowStateEvent(handler func(instance *Widget, event *gdk.EventWindowState) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "window-state-event", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -107678,7 +113331,38 @@ func (recv *Window) ActivateFocus() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_window_activate_key' : parameter 'event' of type 'Gdk.EventKey' not supported
+var windowActivateKeyFunction *gi.Function
+var windowActivateKeyFunction_Once sync.Once
+
+func windowActivateKeyFunction_Set() error {
+	var err error
+	windowActivateKeyFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowActivateKeyFunction, err = windowObject.InvokerNew("activate_key")
+	})
+	return err
+}
+
+// ActivateKey is a representation of the C type gtk_window_activate_key.
+func (recv *Window) ActivateKey(event *gdk.EventKey) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(event.Native())
+
+	var ret gi.Argument
+
+	err := windowActivateKeyFunction_Set()
+	if err == nil {
+		ret = windowActivateKeyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var windowAddAccelGroupFunction *gi.Function
 var windowAddAccelGroupFunction_Once sync.Once
@@ -108370,7 +114054,37 @@ func (recv *Window) GetIcon() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_window_get_icon_list' : return type 'GLib.List' not supported
+var windowGetIconListFunction *gi.Function
+var windowGetIconListFunction_Once sync.Once
+
+func windowGetIconListFunction_Set() error {
+	var err error
+	windowGetIconListFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowGetIconListFunction, err = windowObject.InvokerNew("get_icon_list")
+	})
+	return err
+}
+
+// GetIconList is a representation of the C type gtk_window_get_icon_list.
+func (recv *Window) GetIconList() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := windowGetIconListFunction_Set()
+	if err == nil {
+		ret = windowGetIconListFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var windowGetIconNameFunction *gi.Function
 var windowGetIconNameFunction_Once sync.Once
@@ -108567,7 +114281,39 @@ func (recv *Window) GetResizable() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_window_get_resize_grip_area' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+var windowGetResizeGripAreaFunction *gi.Function
+var windowGetResizeGripAreaFunction_Once sync.Once
+
+func windowGetResizeGripAreaFunction_Set() error {
+	var err error
+	windowGetResizeGripAreaFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowGetResizeGripAreaFunction, err = windowObject.InvokerNew("get_resize_grip_area")
+	})
+	return err
+}
+
+// GetResizeGripArea is a representation of the C type gtk_window_get_resize_grip_area.
+func (recv *Window) GetResizeGripArea() (bool, *gdk.Rectangle) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := windowGetResizeGripAreaFunction_Set()
+	if err == nil {
+		ret = windowGetResizeGripAreaFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var windowGetRoleFunction *gi.Function
 var windowGetRoleFunction_Once sync.Once
@@ -109198,7 +114944,38 @@ func (recv *Window) PresentWithTime(timestamp uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_window_propagate_key_event' : parameter 'event' of type 'Gdk.EventKey' not supported
+var windowPropagateKeyEventFunction *gi.Function
+var windowPropagateKeyEventFunction_Once sync.Once
+
+func windowPropagateKeyEventFunction_Set() error {
+	var err error
+	windowPropagateKeyEventFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowPropagateKeyEventFunction, err = windowObject.InvokerNew("propagate_key_event")
+	})
+	return err
+}
+
+// PropagateKeyEvent is a representation of the C type gtk_window_propagate_key_event.
+func (recv *Window) PropagateKeyEvent(event *gdk.EventKey) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(event.Native())
+
+	var ret gi.Argument
+
+	err := windowPropagateKeyEventFunction_Set()
+	if err == nil {
+		ret = windowPropagateKeyEventFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var windowRemoveAccelGroupFunction *gi.Function
 var windowRemoveAccelGroupFunction_Once sync.Once
@@ -109729,7 +115506,7 @@ func (recv *Window) SetFocusVisible(setting bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_window_set_geometry_hints' : parameter 'geometry' of type 'Gdk.Geometry' not supported
+// UNSUPPORTED : C value 'gtk_window_set_geometry_hints' : parameter 'geom_mask' of type 'Gdk.WindowHints' not supported
 
 // UNSUPPORTED : C value 'gtk_window_set_gravity' : parameter 'gravity' of type 'Gdk.Gravity' not supported
 
@@ -109882,7 +115659,34 @@ func (recv *Window) SetIconFromFile(filename string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_window_set_icon_list' : parameter 'list' of type 'GLib.List' not supported
+var windowSetIconListFunction *gi.Function
+var windowSetIconListFunction_Once sync.Once
+
+func windowSetIconListFunction_Set() error {
+	var err error
+	windowSetIconListFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowSetIconListFunction, err = windowObject.InvokerNew("set_icon_list")
+	})
+	return err
+}
+
+// SetIconList is a representation of the C type gtk_window_set_icon_list.
+func (recv *Window) SetIconList(list *glib.List) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(list.Native())
+
+	err := windowSetIconListFunction_Set()
+	if err == nil {
+		windowSetIconListFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var windowSetIconNameFunction *gi.Function
 var windowSetIconNameFunction_Once sync.Once
@@ -110919,7 +116723,37 @@ func (recv *WindowGroup) GetCurrentGrab() *Widget {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_window_group_list_windows' : return type 'GLib.List' not supported
+var windowGroupListWindowsFunction *gi.Function
+var windowGroupListWindowsFunction_Once sync.Once
+
+func windowGroupListWindowsFunction_Set() error {
+	var err error
+	windowGroupListWindowsFunction_Once.Do(func() {
+		err = windowGroupObject_Set()
+		if err != nil {
+			return
+		}
+		windowGroupListWindowsFunction, err = windowGroupObject.InvokerNew("list_windows")
+	})
+	return err
+}
+
+// ListWindows is a representation of the C type gtk_window_group_list_windows.
+func (recv *WindowGroup) ListWindows() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := windowGroupListWindowsFunction_Set()
+	if err == nil {
+		ret = windowGroupListWindowsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var windowGroupRemoveWindowFunction *gi.Function
 var windowGroupRemoveWindowFunction_Once sync.Once

@@ -49,7 +49,7 @@ func (recv *PasswordManager) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'soup_password_manager_get_passwords_async' : parameter 'async_context' of type 'GLib.MainContext' not supported
+// UNSUPPORTED : C value 'soup_password_manager_get_passwords_async' : parameter 'callback' of type 'PasswordManagerCallback' not supported
 
 var passwordManagerGetPasswordsSyncFunction *gi.Function
 var passwordManagerGetPasswordsSyncFunction_Once sync.Once
@@ -121,7 +121,7 @@ func (recv *ProxyResolver) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'soup_proxy_resolver_get_proxy_async' : parameter 'async_context' of type 'GLib.MainContext' not supported
+// UNSUPPORTED : C value 'soup_proxy_resolver_get_proxy_async' : parameter 'callback' of type 'ProxyResolverCallback' not supported
 
 var proxyResolverGetProxySyncFunction *gi.Function
 var proxyResolverGetProxySyncFunction_Once sync.Once
@@ -198,7 +198,7 @@ func (recv *ProxyURIResolver) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'soup_proxy_uri_resolver_get_proxy_uri_async' : parameter 'async_context' of type 'GLib.MainContext' not supported
+// UNSUPPORTED : C value 'soup_proxy_uri_resolver_get_proxy_uri_async' : parameter 'callback' of type 'ProxyURIResolverCallback' not supported
 
 var proxyURIResolverGetProxyUriSyncFunction *gi.Function
 var proxyURIResolverGetProxyUriSyncFunction_Once sync.Once

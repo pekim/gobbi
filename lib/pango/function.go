@@ -4,6 +4,7 @@ package pango
 
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 )
 
@@ -1008,9 +1009,72 @@ func GravityToRotation(gravity Gravity) float64 {
 
 // UNSUPPORTED : C value 'pango_is_zero_width' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'pango_itemize' : return type 'GLib.List' not supported
+var itemizeFunction *gi.Function
+var itemizeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_itemize_with_base_dir' : return type 'GLib.List' not supported
+func itemizeFunction_Set() error {
+	var err error
+	itemizeFunction_Once.Do(func() {
+		itemizeFunction, err = gi.FunctionInvokerNew("Pango", "itemize")
+	})
+	return err
+}
+
+// Itemize is a representation of the C type pango_itemize.
+func Itemize(context *Context, text string, startIndex int32, length int32, attrs *AttrList, cachedIter *AttrIterator) *glib.List {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetString(text)
+	inArgs[2].SetInt32(startIndex)
+	inArgs[3].SetInt32(length)
+	inArgs[4].SetPointer(attrs.Native())
+	inArgs[5].SetPointer(cachedIter.Native())
+
+	var ret gi.Argument
+
+	err := itemizeFunction_Set()
+	if err == nil {
+		ret = itemizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var itemizeWithBaseDirFunction *gi.Function
+var itemizeWithBaseDirFunction_Once sync.Once
+
+func itemizeWithBaseDirFunction_Set() error {
+	var err error
+	itemizeWithBaseDirFunction_Once.Do(func() {
+		itemizeWithBaseDirFunction, err = gi.FunctionInvokerNew("Pango", "itemize_with_base_dir")
+	})
+	return err
+}
+
+// ItemizeWithBaseDir is a representation of the C type pango_itemize_with_base_dir.
+func ItemizeWithBaseDir(context *Context, baseDir Direction, text string, startIndex int32, length int32, attrs *AttrList, cachedIter *AttrIterator) *glib.List {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetInt32(int32(baseDir))
+	inArgs[2].SetString(text)
+	inArgs[3].SetInt32(startIndex)
+	inArgs[4].SetInt32(length)
+	inArgs[5].SetPointer(attrs.Native())
+	inArgs[6].SetPointer(cachedIter.Native())
+
+	var ret gi.Argument
+
+	err := itemizeWithBaseDirFunction_Set()
+	if err == nil {
+		ret = itemizeWithBaseDirFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var languageFromStringFunction *gi.Function
 var languageFromStringFunction_Once sync.Once
@@ -1098,7 +1162,7 @@ func Log2visGetEmbeddingLevels(text string, length int32, pbaseDir Direction) ui
 
 // UNSUPPORTED : C value 'pango_lookup_aliases' : parameter 'families' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'pango_markup_parser_finish' : parameter 'context' of type 'GLib.MarkupParseContext' not supported
+// UNSUPPORTED : C value 'pango_markup_parser_finish' : parameter 'accel_char' of type 'gunichar' not supported
 
 // UNSUPPORTED : C value 'pango_markup_parser_new' : parameter 'accel_marker' of type 'gunichar' not supported
 
@@ -1286,7 +1350,33 @@ func QuantizeLineGeometry(thickness int32, position int32) (int32, int32) {
 
 // UNSUPPORTED : C value 'pango_read_line' : parameter 'stream' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'pango_reorder_items' : parameter 'logical_items' of type 'GLib.List' not supported
+var reorderItemsFunction *gi.Function
+var reorderItemsFunction_Once sync.Once
+
+func reorderItemsFunction_Set() error {
+	var err error
+	reorderItemsFunction_Once.Do(func() {
+		reorderItemsFunction, err = gi.FunctionInvokerNew("Pango", "reorder_items")
+	})
+	return err
+}
+
+// ReorderItems is a representation of the C type pango_reorder_items.
+func ReorderItems(logicalItems *glib.List) *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(logicalItems.Native())
+
+	var ret gi.Argument
+
+	err := reorderItemsFunction_Set()
+	if err == nil {
+		ret = reorderItemsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var scanIntFunction *gi.Function
 var scanIntFunction_Once sync.Once
@@ -1319,9 +1409,67 @@ func ScanInt(pos string) (bool, string, int32) {
 	return retGo, out0, out1
 }
 
-// UNSUPPORTED : C value 'pango_scan_string' : parameter 'out' of type 'GLib.String' not supported
+var scanStringFunction *gi.Function
+var scanStringFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_scan_word' : parameter 'out' of type 'GLib.String' not supported
+func scanStringFunction_Set() error {
+	var err error
+	scanStringFunction_Once.Do(func() {
+		scanStringFunction, err = gi.FunctionInvokerNew("Pango", "scan_string")
+	})
+	return err
+}
+
+// ScanString is a representation of the C type pango_scan_string.
+func ScanString(pos string) (bool, string, *glib.String) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(pos)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := scanStringFunction_Set()
+	if err == nil {
+		ret = scanStringFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+	out1 := glib.StringNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
+
+var scanWordFunction *gi.Function
+var scanWordFunction_Once sync.Once
+
+func scanWordFunction_Set() error {
+	var err error
+	scanWordFunction_Once.Do(func() {
+		scanWordFunction, err = gi.FunctionInvokerNew("Pango", "scan_word")
+	})
+	return err
+}
+
+// ScanWord is a representation of the C type pango_scan_word.
+func ScanWord(pos string) (bool, string, *glib.String) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(pos)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := scanWordFunction_Set()
+	if err == nil {
+		ret = scanWordFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+	out1 := glib.StringNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
 
 // UNSUPPORTED : C value 'pango_script_for_unichar' : parameter 'ch' of type 'gunichar' not supported
 

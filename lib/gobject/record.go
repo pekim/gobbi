@@ -2682,7 +2682,37 @@ func (recv *Value) DupString() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_value_dup_variant' : return type 'GLib.Variant' not supported
+var valueDupVariantFunction *gi.Function
+var valueDupVariantFunction_Once sync.Once
+
+func valueDupVariantFunction_Set() error {
+	var err error
+	valueDupVariantFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueDupVariantFunction, err = valueStruct.InvokerNew("dup_variant")
+	})
+	return err
+}
+
+// DupVariant is a representation of the C type g_value_dup_variant.
+func (recv *Value) DupVariant() *glib.Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := valueDupVariantFunction_Set()
+	if err == nil {
+		ret = valueDupVariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var valueFitsPointerFunction *gi.Function
 var valueFitsPointerFunction_Once sync.Once
@@ -3266,7 +3296,37 @@ func (recv *Value) GetUlong() uint64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_value_get_variant' : return type 'GLib.Variant' not supported
+var valueGetVariantFunction *gi.Function
+var valueGetVariantFunction_Once sync.Once
+
+func valueGetVariantFunction_Set() error {
+	var err error
+	valueGetVariantFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueGetVariantFunction, err = valueStruct.InvokerNew("get_variant")
+	})
+	return err
+}
+
+// GetVariant is a representation of the C type g_value_get_variant.
+func (recv *Value) GetVariant() *glib.Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := valueGetVariantFunction_Set()
+	if err == nil {
+		ret = valueGetVariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_value_init' : parameter 'g_type' of type 'GType' not supported
 
@@ -3927,7 +3987,34 @@ func (recv *Value) SetUlong(vUlong uint64) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_value_set_variant' : parameter 'variant' of type 'GLib.Variant' not supported
+var valueSetVariantFunction *gi.Function
+var valueSetVariantFunction_Once sync.Once
+
+func valueSetVariantFunction_Set() error {
+	var err error
+	valueSetVariantFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetVariantFunction, err = valueStruct.InvokerNew("set_variant")
+	})
+	return err
+}
+
+// SetVariant is a representation of the C type g_value_set_variant.
+func (recv *Value) SetVariant(variant *glib.Variant) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(variant.Native())
+
+	err := valueSetVariantFunction_Set()
+	if err == nil {
+		valueSetVariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_value_take_boxed' : parameter 'v_boxed' of type 'gpointer' not supported
 
@@ -3991,7 +4078,34 @@ func (recv *Value) TakeString(vString string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_value_take_variant' : parameter 'variant' of type 'GLib.Variant' not supported
+var valueTakeVariantFunction *gi.Function
+var valueTakeVariantFunction_Once sync.Once
+
+func valueTakeVariantFunction_Set() error {
+	var err error
+	valueTakeVariantFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueTakeVariantFunction, err = valueStruct.InvokerNew("take_variant")
+	})
+	return err
+}
+
+// TakeVariant is a representation of the C type g_value_take_variant.
+func (recv *Value) TakeVariant(variant *glib.Variant) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(variant.Native())
+
+	err := valueTakeVariantFunction_Set()
+	if err == nil {
+		valueTakeVariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var valueTransformFunction *gi.Function
 var valueTransformFunction_Once sync.Once

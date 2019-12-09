@@ -6,6 +6,7 @@ import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gio "github.com/pekim/gobbi/lib/gio"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
@@ -445,7 +446,7 @@ func (recv *Address) IsResolved() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_address_resolve_async' : parameter 'async_context' of type 'GLib.MainContext' not supported
+// UNSUPPORTED : C value 'soup_address_resolve_async' : parameter 'callback' of type 'AddressCallback' not supported
 
 var addressResolveSyncFunction *gi.Function
 var addressResolveSyncFunction_Once sync.Once
@@ -632,7 +633,34 @@ func (recv *Auth) CanAuthenticate() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_auth_free_protection_space' : parameter 'space' of type 'GLib.SList' not supported
+var authFreeProtectionSpaceFunction *gi.Function
+var authFreeProtectionSpaceFunction_Once sync.Once
+
+func authFreeProtectionSpaceFunction_Set() error {
+	var err error
+	authFreeProtectionSpaceFunction_Once.Do(func() {
+		err = authObject_Set()
+		if err != nil {
+			return
+		}
+		authFreeProtectionSpaceFunction, err = authObject.InvokerNew("free_protection_space")
+	})
+	return err
+}
+
+// FreeProtectionSpace is a representation of the C type soup_auth_free_protection_space.
+func (recv *Auth) FreeProtectionSpace(space *glib.SList) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(space.Native())
+
+	err := authFreeProtectionSpaceFunction_Set()
+	if err == nil {
+		authFreeProtectionSpaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var authGetAuthorizationFunction *gi.Function
 var authGetAuthorizationFunction_Once sync.Once
@@ -731,7 +759,38 @@ func (recv *Auth) GetInfo() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_auth_get_protection_space' : return type 'GLib.SList' not supported
+var authGetProtectionSpaceFunction *gi.Function
+var authGetProtectionSpaceFunction_Once sync.Once
+
+func authGetProtectionSpaceFunction_Set() error {
+	var err error
+	authGetProtectionSpaceFunction_Once.Do(func() {
+		err = authObject_Set()
+		if err != nil {
+			return
+		}
+		authGetProtectionSpaceFunction, err = authObject.InvokerNew("get_protection_space")
+	})
+	return err
+}
+
+// GetProtectionSpace is a representation of the C type soup_auth_get_protection_space.
+func (recv *Auth) GetProtectionSpace(sourceUri *URI) *glib.SList {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(sourceUri.Native())
+
+	var ret gi.Argument
+
+	err := authGetProtectionSpaceFunction_Set()
+	if err == nil {
+		ret = authGetProtectionSpaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var authGetRealmFunction *gi.Function
 var authGetRealmFunction_Once sync.Once
@@ -798,7 +857,37 @@ func (recv *Auth) GetSavedPassword(user string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_auth_get_saved_users' : return type 'GLib.SList' not supported
+var authGetSavedUsersFunction *gi.Function
+var authGetSavedUsersFunction_Once sync.Once
+
+func authGetSavedUsersFunction_Set() error {
+	var err error
+	authGetSavedUsersFunction_Once.Do(func() {
+		err = authObject_Set()
+		if err != nil {
+			return
+		}
+		authGetSavedUsersFunction, err = authObject.InvokerNew("get_saved_users")
+	})
+	return err
+}
+
+// GetSavedUsers is a representation of the C type soup_auth_get_saved_users.
+func (recv *Auth) GetSavedUsers() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := authGetSavedUsersFunction_Set()
+	if err == nil {
+		ret = authGetSavedUsersFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var authGetSchemeNameFunction *gi.Function
 var authGetSchemeNameFunction_Once sync.Once
@@ -2443,7 +2532,41 @@ func (recv *ContentSniffer) GetBufferSize() uint64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_content_sniffer_sniff' : parameter 'params' of type 'GLib.HashTable' not supported
+var contentSnifferSniffFunction *gi.Function
+var contentSnifferSniffFunction_Once sync.Once
+
+func contentSnifferSniffFunction_Set() error {
+	var err error
+	contentSnifferSniffFunction_Once.Do(func() {
+		err = contentSnifferObject_Set()
+		if err != nil {
+			return
+		}
+		contentSnifferSniffFunction, err = contentSnifferObject.InvokerNew("sniff")
+	})
+	return err
+}
+
+// Sniff is a representation of the C type soup_content_sniffer_sniff.
+func (recv *ContentSniffer) Sniff(msg *Message, buffer *Buffer) (string, *glib.HashTable) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(msg.Native())
+	inArgs[2].SetPointer(buffer.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := contentSnifferSniffFunction_Set()
+	if err == nil {
+		ret = contentSnifferSniffFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.String(true)
+	out0 := glib.HashTableNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 // SessionFeature returns the SessionFeature interface implemented by ContentSniffer
 func (recv *ContentSniffer) SessionFeature() *SessionFeature {
@@ -2641,7 +2764,37 @@ func (recv *CookieJar) AddCookieWithFirstParty(firstParty *URI, cookie *Cookie) 
 	return
 }
 
-// UNSUPPORTED : C value 'soup_cookie_jar_all_cookies' : return type 'GLib.SList' not supported
+var cookieJarAllCookiesFunction *gi.Function
+var cookieJarAllCookiesFunction_Once sync.Once
+
+func cookieJarAllCookiesFunction_Set() error {
+	var err error
+	cookieJarAllCookiesFunction_Once.Do(func() {
+		err = cookieJarObject_Set()
+		if err != nil {
+			return
+		}
+		cookieJarAllCookiesFunction, err = cookieJarObject.InvokerNew("all_cookies")
+	})
+	return err
+}
+
+// AllCookies is a representation of the C type soup_cookie_jar_all_cookies.
+func (recv *CookieJar) AllCookies() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := cookieJarAllCookiesFunction_Set()
+	if err == nil {
+		ret = cookieJarAllCookiesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var cookieJarDeleteCookieFunction *gi.Function
 var cookieJarDeleteCookieFunction_Once sync.Once
@@ -2704,7 +2857,39 @@ func (recv *CookieJar) GetAcceptPolicy() CookieJarAcceptPolicy {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_cookie_jar_get_cookie_list' : return type 'GLib.SList' not supported
+var cookieJarGetCookieListFunction *gi.Function
+var cookieJarGetCookieListFunction_Once sync.Once
+
+func cookieJarGetCookieListFunction_Set() error {
+	var err error
+	cookieJarGetCookieListFunction_Once.Do(func() {
+		err = cookieJarObject_Set()
+		if err != nil {
+			return
+		}
+		cookieJarGetCookieListFunction, err = cookieJarObject.InvokerNew("get_cookie_list")
+	})
+	return err
+}
+
+// GetCookieList is a representation of the C type soup_cookie_jar_get_cookie_list.
+func (recv *CookieJar) GetCookieList(uri *URI, forHttp bool) *glib.SList {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(uri.Native())
+	inArgs[2].SetBoolean(forHttp)
+
+	var ret gi.Argument
+
+	err := cookieJarGetCookieListFunction_Set()
+	if err == nil {
+		ret = cookieJarGetCookieListFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var cookieJarGetCookiesFunction *gi.Function
 var cookieJarGetCookiesFunction_Once sync.Once
@@ -3258,9 +3443,71 @@ func HSTSEnforcerNew() *HSTSEnforcer {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_hsts_enforcer_get_domains' : return type 'GLib.List' not supported
+var hSTSEnforcerGetDomainsFunction *gi.Function
+var hSTSEnforcerGetDomainsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_hsts_enforcer_get_policies' : return type 'GLib.List' not supported
+func hSTSEnforcerGetDomainsFunction_Set() error {
+	var err error
+	hSTSEnforcerGetDomainsFunction_Once.Do(func() {
+		err = hSTSEnforcerObject_Set()
+		if err != nil {
+			return
+		}
+		hSTSEnforcerGetDomainsFunction, err = hSTSEnforcerObject.InvokerNew("get_domains")
+	})
+	return err
+}
+
+// GetDomains is a representation of the C type soup_hsts_enforcer_get_domains.
+func (recv *HSTSEnforcer) GetDomains(sessionPolicies bool) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetBoolean(sessionPolicies)
+
+	var ret gi.Argument
+
+	err := hSTSEnforcerGetDomainsFunction_Set()
+	if err == nil {
+		ret = hSTSEnforcerGetDomainsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var hSTSEnforcerGetPoliciesFunction *gi.Function
+var hSTSEnforcerGetPoliciesFunction_Once sync.Once
+
+func hSTSEnforcerGetPoliciesFunction_Set() error {
+	var err error
+	hSTSEnforcerGetPoliciesFunction_Once.Do(func() {
+		err = hSTSEnforcerObject_Set()
+		if err != nil {
+			return
+		}
+		hSTSEnforcerGetPoliciesFunction, err = hSTSEnforcerObject.InvokerNew("get_policies")
+	})
+	return err
+}
+
+// GetPolicies is a representation of the C type soup_hsts_enforcer_get_policies.
+func (recv *HSTSEnforcer) GetPolicies(sessionPolicies bool) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetBoolean(sessionPolicies)
+
+	var ret gi.Argument
+
+	err := hSTSEnforcerGetPoliciesFunction_Set()
+	if err == nil {
+		ret = hSTSEnforcerGetPoliciesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var hSTSEnforcerHasValidPolicyFunction *gi.Function
 var hSTSEnforcerHasValidPolicyFunction_Once sync.Once
@@ -3963,7 +4210,35 @@ func MessageNewFromUri(method string, uri *URI) *Message {
 
 // UNSUPPORTED : C value 'soup_message_add_status_code_handler' : parameter 'callback' of type 'GObject.Callback' not supported
 
-// UNSUPPORTED : C value 'soup_message_content_sniffed' : parameter 'params' of type 'GLib.HashTable' not supported
+var messageContentSniffedFunction *gi.Function
+var messageContentSniffedFunction_Once sync.Once
+
+func messageContentSniffedFunction_Set() error {
+	var err error
+	messageContentSniffedFunction_Once.Do(func() {
+		err = messageObject_Set()
+		if err != nil {
+			return
+		}
+		messageContentSniffedFunction, err = messageObject.InvokerNew("content_sniffed")
+	})
+	return err
+}
+
+// ContentSniffed is a representation of the C type soup_message_content_sniffed.
+func (recv *Message) ContentSniffed(contentType string, params *glib.HashTable) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(contentType)
+	inArgs[2].SetPointer(params.Native())
+
+	err := messageContentSniffedFunction_Set()
+	if err == nil {
+		messageContentSniffedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'soup_message_disable_feature' : parameter 'feature_type' of type 'GType' not supported
 
@@ -4746,7 +5021,16 @@ func (recv *Message) WroteInformational() {
 	return
 }
 
-// UNSUPPORTED : C value 'content-sniffed' : parameter 'params' of type 'GLib.HashTable' not supported
+/*
+ConnectContentSniffed connects a callback to the 'content-sniffed' signal of the Message.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Message) ConnectContentSniffed(handler func(instance *Message, type_ string, params *glib.HashTable)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "content-sniffed", marshal)
+}
 
 /*
 ConnectFinished connects a callback to the 'finished' signal of the Message.
@@ -6081,7 +6365,37 @@ func (recv *Server) Disconnect() {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_server_get_async_context' : return type 'GLib.MainContext' not supported
+var serverGetAsyncContextFunction *gi.Function
+var serverGetAsyncContextFunction_Once sync.Once
+
+func serverGetAsyncContextFunction_Set() error {
+	var err error
+	serverGetAsyncContextFunction_Once.Do(func() {
+		err = serverObject_Set()
+		if err != nil {
+			return
+		}
+		serverGetAsyncContextFunction, err = serverObject.InvokerNew("get_async_context")
+	})
+	return err
+}
+
+// GetAsyncContext is a representation of the C type soup_server_get_async_context.
+func (recv *Server) GetAsyncContext() *glib.MainContext {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := serverGetAsyncContextFunction_Set()
+	if err == nil {
+		ret = serverGetAsyncContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.MainContextNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var serverGetListenerFunction *gi.Function
 var serverGetListenerFunction_Once sync.Once
@@ -6115,7 +6429,37 @@ func (recv *Server) GetListener() *Socket {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_server_get_listeners' : return type 'GLib.SList' not supported
+var serverGetListenersFunction *gi.Function
+var serverGetListenersFunction_Once sync.Once
+
+func serverGetListenersFunction_Set() error {
+	var err error
+	serverGetListenersFunction_Once.Do(func() {
+		err = serverObject_Set()
+		if err != nil {
+			return
+		}
+		serverGetListenersFunction, err = serverObject.InvokerNew("get_listeners")
+	})
+	return err
+}
+
+// GetListeners is a representation of the C type soup_server_get_listeners.
+func (recv *Server) GetListeners() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := serverGetListenersFunction_Set()
+	if err == nil {
+		ret = serverGetListenersFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var serverGetPortFunction *gi.Function
 var serverGetPortFunction_Once sync.Once
@@ -6149,7 +6493,37 @@ func (recv *Server) GetPort() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_server_get_uris' : return type 'GLib.SList' not supported
+var serverGetUrisFunction *gi.Function
+var serverGetUrisFunction_Once sync.Once
+
+func serverGetUrisFunction_Set() error {
+	var err error
+	serverGetUrisFunction_Once.Do(func() {
+		err = serverObject_Set()
+		if err != nil {
+			return
+		}
+		serverGetUrisFunction, err = serverObject.InvokerNew("get_uris")
+	})
+	return err
+}
+
+// GetUris is a representation of the C type soup_server_get_uris.
+func (recv *Server) GetUris() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := serverGetUrisFunction_Set()
+	if err == nil {
+		ret = serverGetUrisFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var serverIsHttpsFunction *gi.Function
 var serverIsHttpsFunction_Once sync.Once
@@ -6651,7 +7025,37 @@ func (recv *Session) CancelMessage(msg *Message, statusCode uint32) {
 
 // UNSUPPORTED : C value 'soup_session_connect_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'soup_session_get_async_context' : return type 'GLib.MainContext' not supported
+var sessionGetAsyncContextFunction *gi.Function
+var sessionGetAsyncContextFunction_Once sync.Once
+
+func sessionGetAsyncContextFunction_Set() error {
+	var err error
+	sessionGetAsyncContextFunction_Once.Do(func() {
+		err = sessionObject_Set()
+		if err != nil {
+			return
+		}
+		sessionGetAsyncContextFunction, err = sessionObject.InvokerNew("get_async_context")
+	})
+	return err
+}
+
+// GetAsyncContext is a representation of the C type soup_session_get_async_context.
+func (recv *Session) GetAsyncContext() *glib.MainContext {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := sessionGetAsyncContextFunction_Set()
+	if err == nil {
+		ret = sessionGetAsyncContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.MainContextNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_session_get_feature' : parameter 'feature_type' of type 'GType' not supported
 
@@ -7950,7 +8354,44 @@ func WebsocketConnectionNew(stream *gio.IOStream, uri *URI, type_ WebsocketConne
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_websocket_connection_new_with_extensions' : parameter 'extensions' of type 'GLib.List' not supported
+var websocketConnectionNewWithExtensionsFunction *gi.Function
+var websocketConnectionNewWithExtensionsFunction_Once sync.Once
+
+func websocketConnectionNewWithExtensionsFunction_Set() error {
+	var err error
+	websocketConnectionNewWithExtensionsFunction_Once.Do(func() {
+		err = websocketConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		websocketConnectionNewWithExtensionsFunction, err = websocketConnectionObject.InvokerNew("new_with_extensions")
+	})
+	return err
+}
+
+// WebsocketConnectionNewWithExtensions is a representation of the C type soup_websocket_connection_new_with_extensions.
+func WebsocketConnectionNewWithExtensions(stream *gio.IOStream, uri *URI, type_ WebsocketConnectionType, origin string, protocol string, extensions *glib.List) *WebsocketConnection {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(stream.Native())
+	inArgs[1].SetPointer(uri.Native())
+	inArgs[2].SetInt32(int32(type_))
+	inArgs[3].SetString(origin)
+	inArgs[4].SetString(protocol)
+	inArgs[5].SetPointer(extensions.Native())
+
+	var ret gi.Argument
+
+	err := websocketConnectionNewWithExtensionsFunction_Set()
+	if err == nil {
+		ret = websocketConnectionNewWithExtensionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WebsocketConnectionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var websocketConnectionCloseFunction *gi.Function
 var websocketConnectionCloseFunction_Once sync.Once
@@ -8078,7 +8519,37 @@ func (recv *WebsocketConnection) GetConnectionType() WebsocketConnectionType {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_websocket_connection_get_extensions' : return type 'GLib.List' not supported
+var websocketConnectionGetExtensionsFunction *gi.Function
+var websocketConnectionGetExtensionsFunction_Once sync.Once
+
+func websocketConnectionGetExtensionsFunction_Set() error {
+	var err error
+	websocketConnectionGetExtensionsFunction_Once.Do(func() {
+		err = websocketConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		websocketConnectionGetExtensionsFunction, err = websocketConnectionObject.InvokerNew("get_extensions")
+	})
+	return err
+}
+
+// GetExtensions is a representation of the C type soup_websocket_connection_get_extensions.
+func (recv *WebsocketConnection) GetExtensions() *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := websocketConnectionGetExtensionsFunction_Set()
+	if err == nil {
+		ret = websocketConnectionGetExtensionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var websocketConnectionGetIoStreamFunction *gi.Function
 var websocketConnectionGetIoStreamFunction_Once sync.Once
@@ -8306,7 +8777,35 @@ func (recv *WebsocketConnection) GetUri() *URI {
 
 // UNSUPPORTED : C value 'soup_websocket_connection_send_binary' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_websocket_connection_send_message' : parameter 'message' of type 'GLib.Bytes' not supported
+var websocketConnectionSendMessageFunction *gi.Function
+var websocketConnectionSendMessageFunction_Once sync.Once
+
+func websocketConnectionSendMessageFunction_Set() error {
+	var err error
+	websocketConnectionSendMessageFunction_Once.Do(func() {
+		err = websocketConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		websocketConnectionSendMessageFunction, err = websocketConnectionObject.InvokerNew("send_message")
+	})
+	return err
+}
+
+// SendMessage is a representation of the C type soup_websocket_connection_send_message.
+func (recv *WebsocketConnection) SendMessage(type_ WebsocketDataType, message *glib.Bytes) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(type_))
+	inArgs[2].SetPointer(message.Native())
+
+	err := websocketConnectionSendMessageFunction_Set()
+	if err == nil {
+		websocketConnectionSendMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var websocketConnectionSendTextFunction *gi.Function
 var websocketConnectionSendTextFunction_Once sync.Once
@@ -8417,11 +8916,38 @@ func (recv *WebsocketConnection) ConnectClosing(handler func(instance *Websocket
 	return callback.ConnectSignal(recv.Native(), "closing", marshal)
 }
 
-// UNSUPPORTED : C value 'error' : parameter 'error' of type 'GLib.Error' not supported
+/*
+ConnectError connects a callback to the 'error' signal of the WebsocketConnection.
 
-// UNSUPPORTED : C value 'message' : parameter 'message' of type 'GLib.Bytes' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *WebsocketConnection) ConnectError(handler func(instance *WebsocketConnection, error *glib.Error)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
 
-// UNSUPPORTED : C value 'pong' : parameter 'message' of type 'GLib.Bytes' not supported
+	return callback.ConnectSignal(recv.Native(), "error", marshal)
+}
+
+/*
+ConnectMessage connects a callback to the 'message' signal of the WebsocketConnection.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *WebsocketConnection) ConnectMessage(handler func(instance *WebsocketConnection, type_ int32, message *glib.Bytes)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "message", marshal)
+}
+
+/*
+ConnectPong connects a callback to the 'pong' signal of the WebsocketConnection.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *WebsocketConnection) ConnectPong(handler func(instance *WebsocketConnection, message *glib.Bytes)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "pong", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -8501,7 +9027,39 @@ func (recv *WebsocketExtension) SetFieldParent(value *gobject.Object) {
 	gi.ObjectFieldSet(websocketExtensionObject, recv.Native(), "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'soup_websocket_extension_configure' : parameter 'params' of type 'GLib.HashTable' not supported
+var websocketExtensionConfigureFunction *gi.Function
+var websocketExtensionConfigureFunction_Once sync.Once
+
+func websocketExtensionConfigureFunction_Set() error {
+	var err error
+	websocketExtensionConfigureFunction_Once.Do(func() {
+		err = websocketExtensionObject_Set()
+		if err != nil {
+			return
+		}
+		websocketExtensionConfigureFunction, err = websocketExtensionObject.InvokerNew("configure")
+	})
+	return err
+}
+
+// Configure is a representation of the C type soup_websocket_extension_configure.
+func (recv *WebsocketExtension) Configure(connectionType WebsocketConnectionType, params *glib.HashTable) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(connectionType))
+	inArgs[2].SetPointer(params.Native())
+
+	var ret gi.Argument
+
+	err := websocketExtensionConfigureFunction_Set()
+	if err == nil {
+		ret = websocketExtensionConfigureFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var websocketExtensionGetRequestParamsFunction *gi.Function
 var websocketExtensionGetRequestParamsFunction_Once sync.Once
@@ -8567,9 +9125,77 @@ func (recv *WebsocketExtension) GetResponseParams() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_websocket_extension_process_incoming_message' : parameter 'payload' of type 'GLib.Bytes' not supported
+var websocketExtensionProcessIncomingMessageFunction *gi.Function
+var websocketExtensionProcessIncomingMessageFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_websocket_extension_process_outgoing_message' : parameter 'payload' of type 'GLib.Bytes' not supported
+func websocketExtensionProcessIncomingMessageFunction_Set() error {
+	var err error
+	websocketExtensionProcessIncomingMessageFunction_Once.Do(func() {
+		err = websocketExtensionObject_Set()
+		if err != nil {
+			return
+		}
+		websocketExtensionProcessIncomingMessageFunction, err = websocketExtensionObject.InvokerNew("process_incoming_message")
+	})
+	return err
+}
+
+// ProcessIncomingMessage is a representation of the C type soup_websocket_extension_process_incoming_message.
+func (recv *WebsocketExtension) ProcessIncomingMessage(header uint8, payload *glib.Bytes) (*glib.Bytes, uint8) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint8(header)
+	inArgs[2].SetPointer(payload.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := websocketExtensionProcessIncomingMessageFunction_Set()
+	if err == nil {
+		ret = websocketExtensionProcessIncomingMessageFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := glib.BytesNewFromNative(ret.Pointer())
+	out0 := outArgs[0].Uint8()
+
+	return retGo, out0
+}
+
+var websocketExtensionProcessOutgoingMessageFunction *gi.Function
+var websocketExtensionProcessOutgoingMessageFunction_Once sync.Once
+
+func websocketExtensionProcessOutgoingMessageFunction_Set() error {
+	var err error
+	websocketExtensionProcessOutgoingMessageFunction_Once.Do(func() {
+		err = websocketExtensionObject_Set()
+		if err != nil {
+			return
+		}
+		websocketExtensionProcessOutgoingMessageFunction, err = websocketExtensionObject.InvokerNew("process_outgoing_message")
+	})
+	return err
+}
+
+// ProcessOutgoingMessage is a representation of the C type soup_websocket_extension_process_outgoing_message.
+func (recv *WebsocketExtension) ProcessOutgoingMessage(header uint8, payload *glib.Bytes) (*glib.Bytes, uint8) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint8(header)
+	inArgs[2].SetPointer(payload.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := websocketExtensionProcessOutgoingMessageFunction_Set()
+	if err == nil {
+		ret = websocketExtensionProcessOutgoingMessageFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := glib.BytesNewFromNative(ret.Pointer())
+	out0 := outArgs[0].Uint8()
+
+	return retGo, out0
+}
 
 var websocketExtensionDeflateObject *gi.Object
 var websocketExtensionDeflateObject_Once sync.Once

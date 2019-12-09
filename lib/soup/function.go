@@ -5,16 +5,17 @@ package soup
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 )
 
-// UNSUPPORTED : C value 'soup_add_completion' : parameter 'async_context' of type 'GLib.MainContext' not supported
+// UNSUPPORTED : C value 'soup_add_completion' : parameter 'function' of type 'GLib.SourceFunc' not supported
 
-// UNSUPPORTED : C value 'soup_add_idle' : parameter 'async_context' of type 'GLib.MainContext' not supported
+// UNSUPPORTED : C value 'soup_add_idle' : parameter 'function' of type 'GLib.SourceFunc' not supported
 
-// UNSUPPORTED : C value 'soup_add_io_watch' : parameter 'async_context' of type 'GLib.MainContext' not supported
+// UNSUPPORTED : C value 'soup_add_io_watch' : parameter 'condition' of type 'GLib.IOCondition' not supported
 
-// UNSUPPORTED : C value 'soup_add_timeout' : parameter 'async_context' of type 'GLib.MainContext' not supported
+// UNSUPPORTED : C value 'soup_add_timeout' : parameter 'function' of type 'GLib.SourceFunc' not supported
 
 var checkVersionFunction *gi.Function
 var checkVersionFunction_Once sync.Once
@@ -75,35 +76,346 @@ func CookieParse(header string, origin *URI) *Cookie {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_cookies_free' : parameter 'cookies' of type 'GLib.SList' not supported
+var cookiesFreeFunction *gi.Function
+var cookiesFreeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_cookies_from_request' : return type 'GLib.SList' not supported
+func cookiesFreeFunction_Set() error {
+	var err error
+	cookiesFreeFunction_Once.Do(func() {
+		cookiesFreeFunction, err = gi.FunctionInvokerNew("Soup", "cookies_free")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_cookies_from_response' : return type 'GLib.SList' not supported
+// CookiesFree is a representation of the C type soup_cookies_free.
+func CookiesFree(cookies *glib.SList) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(cookies.Native())
 
-// UNSUPPORTED : C value 'soup_cookies_to_cookie_header' : parameter 'cookies' of type 'GLib.SList' not supported
+	err := cookiesFreeFunction_Set()
+	if err == nil {
+		cookiesFreeFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'soup_cookies_to_request' : parameter 'cookies' of type 'GLib.SList' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'soup_cookies_to_response' : parameter 'cookies' of type 'GLib.SList' not supported
+var cookiesFromRequestFunction *gi.Function
+var cookiesFromRequestFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_form_decode' : return type 'GLib.HashTable' not supported
+func cookiesFromRequestFunction_Set() error {
+	var err error
+	cookiesFromRequestFunction_Once.Do(func() {
+		cookiesFromRequestFunction, err = gi.FunctionInvokerNew("Soup", "cookies_from_request")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_form_decode_multipart' : return type 'GLib.HashTable' not supported
+// CookiesFromRequest is a representation of the C type soup_cookies_from_request.
+func CookiesFromRequest(msg *Message) *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(msg.Native())
+
+	var ret gi.Argument
+
+	err := cookiesFromRequestFunction_Set()
+	if err == nil {
+		ret = cookiesFromRequestFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var cookiesFromResponseFunction *gi.Function
+var cookiesFromResponseFunction_Once sync.Once
+
+func cookiesFromResponseFunction_Set() error {
+	var err error
+	cookiesFromResponseFunction_Once.Do(func() {
+		cookiesFromResponseFunction, err = gi.FunctionInvokerNew("Soup", "cookies_from_response")
+	})
+	return err
+}
+
+// CookiesFromResponse is a representation of the C type soup_cookies_from_response.
+func CookiesFromResponse(msg *Message) *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(msg.Native())
+
+	var ret gi.Argument
+
+	err := cookiesFromResponseFunction_Set()
+	if err == nil {
+		ret = cookiesFromResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var cookiesToCookieHeaderFunction *gi.Function
+var cookiesToCookieHeaderFunction_Once sync.Once
+
+func cookiesToCookieHeaderFunction_Set() error {
+	var err error
+	cookiesToCookieHeaderFunction_Once.Do(func() {
+		cookiesToCookieHeaderFunction, err = gi.FunctionInvokerNew("Soup", "cookies_to_cookie_header")
+	})
+	return err
+}
+
+// CookiesToCookieHeader is a representation of the C type soup_cookies_to_cookie_header.
+func CookiesToCookieHeader(cookies *glib.SList) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(cookies.Native())
+
+	var ret gi.Argument
+
+	err := cookiesToCookieHeaderFunction_Set()
+	if err == nil {
+		ret = cookiesToCookieHeaderFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var cookiesToRequestFunction *gi.Function
+var cookiesToRequestFunction_Once sync.Once
+
+func cookiesToRequestFunction_Set() error {
+	var err error
+	cookiesToRequestFunction_Once.Do(func() {
+		cookiesToRequestFunction, err = gi.FunctionInvokerNew("Soup", "cookies_to_request")
+	})
+	return err
+}
+
+// CookiesToRequest is a representation of the C type soup_cookies_to_request.
+func CookiesToRequest(cookies *glib.SList, msg *Message) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(cookies.Native())
+	inArgs[1].SetPointer(msg.Native())
+
+	err := cookiesToRequestFunction_Set()
+	if err == nil {
+		cookiesToRequestFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cookiesToResponseFunction *gi.Function
+var cookiesToResponseFunction_Once sync.Once
+
+func cookiesToResponseFunction_Set() error {
+	var err error
+	cookiesToResponseFunction_Once.Do(func() {
+		cookiesToResponseFunction, err = gi.FunctionInvokerNew("Soup", "cookies_to_response")
+	})
+	return err
+}
+
+// CookiesToResponse is a representation of the C type soup_cookies_to_response.
+func CookiesToResponse(cookies *glib.SList, msg *Message) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(cookies.Native())
+	inArgs[1].SetPointer(msg.Native())
+
+	err := cookiesToResponseFunction_Set()
+	if err == nil {
+		cookiesToResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var formDecodeFunction *gi.Function
+var formDecodeFunction_Once sync.Once
+
+func formDecodeFunction_Set() error {
+	var err error
+	formDecodeFunction_Once.Do(func() {
+		formDecodeFunction, err = gi.FunctionInvokerNew("Soup", "form_decode")
+	})
+	return err
+}
+
+// FormDecode is a representation of the C type soup_form_decode.
+func FormDecode(encodedForm string) *glib.HashTable {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(encodedForm)
+
+	var ret gi.Argument
+
+	err := formDecodeFunction_Set()
+	if err == nil {
+		ret = formDecodeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.HashTableNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var formDecodeMultipartFunction *gi.Function
+var formDecodeMultipartFunction_Once sync.Once
+
+func formDecodeMultipartFunction_Set() error {
+	var err error
+	formDecodeMultipartFunction_Once.Do(func() {
+		formDecodeMultipartFunction, err = gi.FunctionInvokerNew("Soup", "form_decode_multipart")
+	})
+	return err
+}
+
+// FormDecodeMultipart is a representation of the C type soup_form_decode_multipart.
+func FormDecodeMultipart(msg *Message, fileControlName string) (*glib.HashTable, string, string, *Buffer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(msg.Native())
+	inArgs[1].SetString(fileControlName)
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := formDecodeMultipartFunction_Set()
+	if err == nil {
+		ret = formDecodeMultipartFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := glib.HashTableNewFromNative(ret.Pointer())
+	out0 := outArgs[0].String(true)
+	out1 := outArgs[1].String(true)
+	out2 := BufferNewFromNative(outArgs[2].Pointer())
+
+	return retGo, out0, out1, out2
+}
 
 // UNSUPPORTED : C value 'soup_form_encode' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_form_encode_datalist' : parameter 'form_data_set' of type 'GLib.Data' not supported
+var formEncodeDatalistFunction *gi.Function
+var formEncodeDatalistFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_form_encode_hash' : parameter 'form_data_set' of type 'GLib.HashTable' not supported
+func formEncodeDatalistFunction_Set() error {
+	var err error
+	formEncodeDatalistFunction_Once.Do(func() {
+		formEncodeDatalistFunction, err = gi.FunctionInvokerNew("Soup", "form_encode_datalist")
+	})
+	return err
+}
+
+// FormEncodeDatalist is a representation of the C type soup_form_encode_datalist.
+func FormEncodeDatalist(formDataSet *glib.Data) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(formDataSet.Native())
+
+	var ret gi.Argument
+
+	err := formEncodeDatalistFunction_Set()
+	if err == nil {
+		ret = formEncodeDatalistFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var formEncodeHashFunction *gi.Function
+var formEncodeHashFunction_Once sync.Once
+
+func formEncodeHashFunction_Set() error {
+	var err error
+	formEncodeHashFunction_Once.Do(func() {
+		formEncodeHashFunction, err = gi.FunctionInvokerNew("Soup", "form_encode_hash")
+	})
+	return err
+}
+
+// FormEncodeHash is a representation of the C type soup_form_encode_hash.
+func FormEncodeHash(formDataSet *glib.HashTable) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(formDataSet.Native())
+
+	var ret gi.Argument
+
+	err := formEncodeHashFunction_Set()
+	if err == nil {
+		ret = formEncodeHashFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_form_encode_valist' : parameter 'args' of type 'va_list' not supported
 
 // UNSUPPORTED : C value 'soup_form_request_new' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_form_request_new_from_datalist' : parameter 'form_data_set' of type 'GLib.Data' not supported
+var formRequestNewFromDatalistFunction *gi.Function
+var formRequestNewFromDatalistFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_form_request_new_from_hash' : parameter 'form_data_set' of type 'GLib.HashTable' not supported
+func formRequestNewFromDatalistFunction_Set() error {
+	var err error
+	formRequestNewFromDatalistFunction_Once.Do(func() {
+		formRequestNewFromDatalistFunction, err = gi.FunctionInvokerNew("Soup", "form_request_new_from_datalist")
+	})
+	return err
+}
+
+// FormRequestNewFromDatalist is a representation of the C type soup_form_request_new_from_datalist.
+func FormRequestNewFromDatalist(method string, uri string, formDataSet *glib.Data) *Message {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(method)
+	inArgs[1].SetString(uri)
+	inArgs[2].SetPointer(formDataSet.Native())
+
+	var ret gi.Argument
+
+	err := formRequestNewFromDatalistFunction_Set()
+	if err == nil {
+		ret = formRequestNewFromDatalistFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := MessageNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var formRequestNewFromHashFunction *gi.Function
+var formRequestNewFromHashFunction_Once sync.Once
+
+func formRequestNewFromHashFunction_Set() error {
+	var err error
+	formRequestNewFromHashFunction_Once.Do(func() {
+		formRequestNewFromHashFunction, err = gi.FunctionInvokerNew("Soup", "form_request_new_from_hash")
+	})
+	return err
+}
+
+// FormRequestNewFromHash is a representation of the C type soup_form_request_new_from_hash.
+func FormRequestNewFromHash(method string, uri string, formDataSet *glib.HashTable) *Message {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(method)
+	inArgs[1].SetString(uri)
+	inArgs[2].SetPointer(formDataSet.Native())
+
+	var ret gi.Argument
+
+	err := formRequestNewFromHashFunction_Set()
+	if err == nil {
+		ret = formRequestNewFromHashFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := MessageNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var formRequestNewFromMultipartFunction *gi.Function
 var formRequestNewFromMultipartFunction_Once sync.Once
@@ -241,25 +553,275 @@ func HeaderContains(header string, token string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_header_free_list' : parameter 'list' of type 'GLib.SList' not supported
+var headerFreeListFunction *gi.Function
+var headerFreeListFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_header_free_param_list' : parameter 'param_list' of type 'GLib.HashTable' not supported
+func headerFreeListFunction_Set() error {
+	var err error
+	headerFreeListFunction_Once.Do(func() {
+		headerFreeListFunction, err = gi.FunctionInvokerNew("Soup", "header_free_list")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_header_g_string_append_param' : parameter 'string' of type 'GLib.String' not supported
+// HeaderFreeList is a representation of the C type soup_header_free_list.
+func HeaderFreeList(list *glib.SList) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(list.Native())
 
-// UNSUPPORTED : C value 'soup_header_g_string_append_param_quoted' : parameter 'string' of type 'GLib.String' not supported
+	err := headerFreeListFunction_Set()
+	if err == nil {
+		headerFreeListFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'soup_header_parse_list' : return type 'GLib.SList' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'soup_header_parse_param_list' : return type 'GLib.HashTable' not supported
+var headerFreeParamListFunction *gi.Function
+var headerFreeParamListFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_header_parse_param_list_strict' : return type 'GLib.HashTable' not supported
+func headerFreeParamListFunction_Set() error {
+	var err error
+	headerFreeParamListFunction_Once.Do(func() {
+		headerFreeParamListFunction, err = gi.FunctionInvokerNew("Soup", "header_free_param_list")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_header_parse_quality_list' : parameter 'unacceptable' of type 'GLib.SList' not supported
+// HeaderFreeParamList is a representation of the C type soup_header_free_param_list.
+func HeaderFreeParamList(paramList *glib.HashTable) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(paramList.Native())
 
-// UNSUPPORTED : C value 'soup_header_parse_semi_param_list' : return type 'GLib.HashTable' not supported
+	err := headerFreeParamListFunction_Set()
+	if err == nil {
+		headerFreeParamListFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'soup_header_parse_semi_param_list_strict' : return type 'GLib.HashTable' not supported
+	return
+}
+
+var headerGStringAppendParamFunction *gi.Function
+var headerGStringAppendParamFunction_Once sync.Once
+
+func headerGStringAppendParamFunction_Set() error {
+	var err error
+	headerGStringAppendParamFunction_Once.Do(func() {
+		headerGStringAppendParamFunction, err = gi.FunctionInvokerNew("Soup", "header_g_string_append_param")
+	})
+	return err
+}
+
+// HeaderGStringAppendParam is a representation of the C type soup_header_g_string_append_param.
+func HeaderGStringAppendParam(string_ *glib.String, name string, value string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(string_.Native())
+	inArgs[1].SetString(name)
+	inArgs[2].SetString(value)
+
+	err := headerGStringAppendParamFunction_Set()
+	if err == nil {
+		headerGStringAppendParamFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var headerGStringAppendParamQuotedFunction *gi.Function
+var headerGStringAppendParamQuotedFunction_Once sync.Once
+
+func headerGStringAppendParamQuotedFunction_Set() error {
+	var err error
+	headerGStringAppendParamQuotedFunction_Once.Do(func() {
+		headerGStringAppendParamQuotedFunction, err = gi.FunctionInvokerNew("Soup", "header_g_string_append_param_quoted")
+	})
+	return err
+}
+
+// HeaderGStringAppendParamQuoted is a representation of the C type soup_header_g_string_append_param_quoted.
+func HeaderGStringAppendParamQuoted(string_ *glib.String, name string, value string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(string_.Native())
+	inArgs[1].SetString(name)
+	inArgs[2].SetString(value)
+
+	err := headerGStringAppendParamQuotedFunction_Set()
+	if err == nil {
+		headerGStringAppendParamQuotedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var headerParseListFunction *gi.Function
+var headerParseListFunction_Once sync.Once
+
+func headerParseListFunction_Set() error {
+	var err error
+	headerParseListFunction_Once.Do(func() {
+		headerParseListFunction, err = gi.FunctionInvokerNew("Soup", "header_parse_list")
+	})
+	return err
+}
+
+// HeaderParseList is a representation of the C type soup_header_parse_list.
+func HeaderParseList(header string) *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(header)
+
+	var ret gi.Argument
+
+	err := headerParseListFunction_Set()
+	if err == nil {
+		ret = headerParseListFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var headerParseParamListFunction *gi.Function
+var headerParseParamListFunction_Once sync.Once
+
+func headerParseParamListFunction_Set() error {
+	var err error
+	headerParseParamListFunction_Once.Do(func() {
+		headerParseParamListFunction, err = gi.FunctionInvokerNew("Soup", "header_parse_param_list")
+	})
+	return err
+}
+
+// HeaderParseParamList is a representation of the C type soup_header_parse_param_list.
+func HeaderParseParamList(header string) *glib.HashTable {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(header)
+
+	var ret gi.Argument
+
+	err := headerParseParamListFunction_Set()
+	if err == nil {
+		ret = headerParseParamListFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.HashTableNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var headerParseParamListStrictFunction *gi.Function
+var headerParseParamListStrictFunction_Once sync.Once
+
+func headerParseParamListStrictFunction_Set() error {
+	var err error
+	headerParseParamListStrictFunction_Once.Do(func() {
+		headerParseParamListStrictFunction, err = gi.FunctionInvokerNew("Soup", "header_parse_param_list_strict")
+	})
+	return err
+}
+
+// HeaderParseParamListStrict is a representation of the C type soup_header_parse_param_list_strict.
+func HeaderParseParamListStrict(header string) *glib.HashTable {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(header)
+
+	var ret gi.Argument
+
+	err := headerParseParamListStrictFunction_Set()
+	if err == nil {
+		ret = headerParseParamListStrictFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.HashTableNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var headerParseQualityListFunction *gi.Function
+var headerParseQualityListFunction_Once sync.Once
+
+func headerParseQualityListFunction_Set() error {
+	var err error
+	headerParseQualityListFunction_Once.Do(func() {
+		headerParseQualityListFunction, err = gi.FunctionInvokerNew("Soup", "header_parse_quality_list")
+	})
+	return err
+}
+
+// HeaderParseQualityList is a representation of the C type soup_header_parse_quality_list.
+func HeaderParseQualityList(header string) (*glib.SList, *glib.SList) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(header)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := headerParseQualityListFunction_Set()
+	if err == nil {
+		ret = headerParseQualityListFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+	out0 := glib.SListNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
+
+var headerParseSemiParamListFunction *gi.Function
+var headerParseSemiParamListFunction_Once sync.Once
+
+func headerParseSemiParamListFunction_Set() error {
+	var err error
+	headerParseSemiParamListFunction_Once.Do(func() {
+		headerParseSemiParamListFunction, err = gi.FunctionInvokerNew("Soup", "header_parse_semi_param_list")
+	})
+	return err
+}
+
+// HeaderParseSemiParamList is a representation of the C type soup_header_parse_semi_param_list.
+func HeaderParseSemiParamList(header string) *glib.HashTable {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(header)
+
+	var ret gi.Argument
+
+	err := headerParseSemiParamListFunction_Set()
+	if err == nil {
+		ret = headerParseSemiParamListFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.HashTableNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var headerParseSemiParamListStrictFunction *gi.Function
+var headerParseSemiParamListStrictFunction_Once sync.Once
+
+func headerParseSemiParamListStrictFunction_Set() error {
+	var err error
+	headerParseSemiParamListStrictFunction_Once.Do(func() {
+		headerParseSemiParamListStrictFunction, err = gi.FunctionInvokerNew("Soup", "header_parse_semi_param_list_strict")
+	})
+	return err
+}
+
+// HeaderParseSemiParamListStrict is a representation of the C type soup_header_parse_semi_param_list_strict.
+func HeaderParseSemiParamListStrict(header string) *glib.HashTable {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(header)
+
+	var ret gi.Argument
+
+	err := headerParseSemiParamListStrictFunction_Set()
+	if err == nil {
+		ret = headerParseSemiParamListStrictFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.HashTableNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var headersParseFunction *gi.Function
 var headersParseFunction_Once sync.Once
@@ -725,33 +1287,105 @@ func UriNormalize(part string, unescapeExtra string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_value_array_append' : parameter 'array' of type 'GObject.ValueArray' not supported
+// UNSUPPORTED : C value 'soup_value_array_append' : parameter 'type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'soup_value_array_append_vals' : parameter 'array' of type 'GObject.ValueArray' not supported
+// UNSUPPORTED : C value 'soup_value_array_append_vals' : parameter 'first_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'soup_value_array_from_args' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'soup_value_array_get_nth' : parameter 'array' of type 'GObject.ValueArray' not supported
+// UNSUPPORTED : C value 'soup_value_array_get_nth' : parameter 'type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'soup_value_array_insert' : parameter 'array' of type 'GObject.ValueArray' not supported
+// UNSUPPORTED : C value 'soup_value_array_insert' : parameter 'type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'soup_value_array_new' : return type 'GObject.ValueArray' not supported
+var valueArrayNewFunction *gi.Function
+var valueArrayNewFunction_Once sync.Once
+
+func valueArrayNewFunction_Set() error {
+	var err error
+	valueArrayNewFunction_Once.Do(func() {
+		valueArrayNewFunction, err = gi.FunctionInvokerNew("Soup", "value_array_new")
+	})
+	return err
+}
+
+// ValueArrayNew is a representation of the C type soup_value_array_new.
+func ValueArrayNew() *gobject.ValueArray {
+
+	var ret gi.Argument
+
+	err := valueArrayNewFunction_Set()
+	if err == nil {
+		ret = valueArrayNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := gobject.ValueArrayNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_value_array_new_with_vals' : parameter 'first_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'soup_value_array_to_args' : parameter 'array' of type 'GObject.ValueArray' not supported
+// UNSUPPORTED : C value 'soup_value_array_to_args' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'soup_value_hash_insert' : parameter 'hash' of type 'GLib.HashTable' not supported
+// UNSUPPORTED : C value 'soup_value_hash_insert' : parameter 'type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'soup_value_hash_insert_vals' : parameter 'hash' of type 'GLib.HashTable' not supported
+// UNSUPPORTED : C value 'soup_value_hash_insert_vals' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_value_hash_insert_value' : parameter 'hash' of type 'GLib.HashTable' not supported
+var valueHashInsertValueFunction *gi.Function
+var valueHashInsertValueFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_value_hash_lookup' : parameter 'hash' of type 'GLib.HashTable' not supported
+func valueHashInsertValueFunction_Set() error {
+	var err error
+	valueHashInsertValueFunction_Once.Do(func() {
+		valueHashInsertValueFunction, err = gi.FunctionInvokerNew("Soup", "value_hash_insert_value")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_value_hash_lookup_vals' : parameter 'hash' of type 'GLib.HashTable' not supported
+// ValueHashInsertValue is a representation of the C type soup_value_hash_insert_value.
+func ValueHashInsertValue(hash *glib.HashTable, key string, value *gobject.Value) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(hash.Native())
+	inArgs[1].SetString(key)
+	inArgs[2].SetPointer(value.Native())
 
-// UNSUPPORTED : C value 'soup_value_hash_new' : return type 'GLib.HashTable' not supported
+	err := valueHashInsertValueFunction_Set()
+	if err == nil {
+		valueHashInsertValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'soup_value_hash_lookup' : parameter 'type' of type 'GType' not supported
+
+// UNSUPPORTED : C value 'soup_value_hash_lookup_vals' : parameter '...' of type 'nil' not supported
+
+var valueHashNewFunction *gi.Function
+var valueHashNewFunction_Once sync.Once
+
+func valueHashNewFunction_Set() error {
+	var err error
+	valueHashNewFunction_Once.Do(func() {
+		valueHashNewFunction, err = gi.FunctionInvokerNew("Soup", "value_hash_new")
+	})
+	return err
+}
+
+// ValueHashNew is a representation of the C type soup_value_hash_new.
+func ValueHashNew() *glib.HashTable {
+
+	var ret gi.Argument
+
+	err := valueHashNewFunction_Set()
+	if err == nil {
+		ret = valueHashNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.HashTableNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_value_hash_new_with_vals' : parameter '...' of type 'nil' not supported
 
@@ -827,11 +1461,90 @@ func WebsocketErrorGetQuark() glib.Quark {
 
 // UNSUPPORTED : C value 'soup_xmlrpc_build_method_call' : parameter 'params' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_build_method_response' : parameter 'value' of type 'GObject.Value' not supported
+var xmlrpcBuildMethodResponseFunction *gi.Function
+var xmlrpcBuildMethodResponseFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_xmlrpc_build_request' : parameter 'params' of type 'GLib.Variant' not supported
+func xmlrpcBuildMethodResponseFunction_Set() error {
+	var err error
+	xmlrpcBuildMethodResponseFunction_Once.Do(func() {
+		xmlrpcBuildMethodResponseFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_build_method_response")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_xmlrpc_build_response' : parameter 'value' of type 'GLib.Variant' not supported
+// XmlrpcBuildMethodResponse is a representation of the C type soup_xmlrpc_build_method_response.
+func XmlrpcBuildMethodResponse(value *gobject.Value) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(value.Native())
+
+	var ret gi.Argument
+
+	err := xmlrpcBuildMethodResponseFunction_Set()
+	if err == nil {
+		ret = xmlrpcBuildMethodResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var xmlrpcBuildRequestFunction *gi.Function
+var xmlrpcBuildRequestFunction_Once sync.Once
+
+func xmlrpcBuildRequestFunction_Set() error {
+	var err error
+	xmlrpcBuildRequestFunction_Once.Do(func() {
+		xmlrpcBuildRequestFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_build_request")
+	})
+	return err
+}
+
+// XmlrpcBuildRequest is a representation of the C type soup_xmlrpc_build_request.
+func XmlrpcBuildRequest(methodName string, params *glib.Variant) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(methodName)
+	inArgs[1].SetPointer(params.Native())
+
+	var ret gi.Argument
+
+	err := xmlrpcBuildRequestFunction_Set()
+	if err == nil {
+		ret = xmlrpcBuildRequestFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var xmlrpcBuildResponseFunction *gi.Function
+var xmlrpcBuildResponseFunction_Once sync.Once
+
+func xmlrpcBuildResponseFunction_Set() error {
+	var err error
+	xmlrpcBuildResponseFunction_Once.Do(func() {
+		xmlrpcBuildResponseFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_build_response")
+	})
+	return err
+}
+
+// XmlrpcBuildResponse is a representation of the C type soup_xmlrpc_build_response.
+func XmlrpcBuildResponse(value *glib.Variant) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(value.Native())
+
+	var ret gi.Argument
+
+	err := xmlrpcBuildResponseFunction_Set()
+	if err == nil {
+		ret = xmlrpcBuildResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var xmlrpcErrorQuarkFunction *gi.Function
 var xmlrpcErrorQuarkFunction_Once sync.Once
@@ -861,7 +1574,7 @@ func XmlrpcErrorQuark() glib.Quark {
 
 // UNSUPPORTED : C value 'soup_xmlrpc_extract_method_call' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_extract_method_response' : parameter 'error' of type 'GLib.Error' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_extract_method_response' : parameter 'type' of type 'GType' not supported
 
 var xmlrpcFaultQuarkFunction *gi.Function
 var xmlrpcFaultQuarkFunction_Once sync.Once
@@ -889,15 +1602,129 @@ func XmlrpcFaultQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_xmlrpc_message_new' : parameter 'params' of type 'GLib.Variant' not supported
+var xmlrpcMessageNewFunction *gi.Function
+var xmlrpcMessageNewFunction_Once sync.Once
+
+func xmlrpcMessageNewFunction_Set() error {
+	var err error
+	xmlrpcMessageNewFunction_Once.Do(func() {
+		xmlrpcMessageNewFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_message_new")
+	})
+	return err
+}
+
+// XmlrpcMessageNew is a representation of the C type soup_xmlrpc_message_new.
+func XmlrpcMessageNew(uri string, methodName string, params *glib.Variant) *Message {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(uri)
+	inArgs[1].SetString(methodName)
+	inArgs[2].SetPointer(params.Native())
+
+	var ret gi.Argument
+
+	err := xmlrpcMessageNewFunction_Set()
+	if err == nil {
+		ret = xmlrpcMessageNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := MessageNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_xmlrpc_message_set_fault' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_message_set_response' : parameter 'value' of type 'GLib.Variant' not supported
+var xmlrpcMessageSetResponseFunction *gi.Function
+var xmlrpcMessageSetResponseFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_xmlrpc_parse_method_call' : parameter 'params' of type 'GObject.ValueArray' not supported
+func xmlrpcMessageSetResponseFunction_Set() error {
+	var err error
+	xmlrpcMessageSetResponseFunction_Once.Do(func() {
+		xmlrpcMessageSetResponseFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_message_set_response")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_xmlrpc_parse_method_response' : parameter 'value' of type 'GObject.Value' not supported
+// XmlrpcMessageSetResponse is a representation of the C type soup_xmlrpc_message_set_response.
+func XmlrpcMessageSetResponse(msg *Message, value *glib.Variant) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(msg.Native())
+	inArgs[1].SetPointer(value.Native())
+
+	var ret gi.Argument
+
+	err := xmlrpcMessageSetResponseFunction_Set()
+	if err == nil {
+		ret = xmlrpcMessageSetResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var xmlrpcParseMethodCallFunction *gi.Function
+var xmlrpcParseMethodCallFunction_Once sync.Once
+
+func xmlrpcParseMethodCallFunction_Set() error {
+	var err error
+	xmlrpcParseMethodCallFunction_Once.Do(func() {
+		xmlrpcParseMethodCallFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_parse_method_call")
+	})
+	return err
+}
+
+// XmlrpcParseMethodCall is a representation of the C type soup_xmlrpc_parse_method_call.
+func XmlrpcParseMethodCall(methodCall string, length int32) (bool, string, *gobject.ValueArray) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(methodCall)
+	inArgs[1].SetInt32(length)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := xmlrpcParseMethodCallFunction_Set()
+	if err == nil {
+		ret = xmlrpcParseMethodCallFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+	out1 := gobject.ValueArrayNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
+
+var xmlrpcParseMethodResponseFunction *gi.Function
+var xmlrpcParseMethodResponseFunction_Once sync.Once
+
+func xmlrpcParseMethodResponseFunction_Set() error {
+	var err error
+	xmlrpcParseMethodResponseFunction_Once.Do(func() {
+		xmlrpcParseMethodResponseFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_parse_method_response")
+	})
+	return err
+}
+
+// XmlrpcParseMethodResponse is a representation of the C type soup_xmlrpc_parse_method_response.
+func XmlrpcParseMethodResponse(methodResponse string, length int32) (bool, *gobject.Value) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(methodResponse)
+	inArgs[1].SetInt32(length)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := xmlrpcParseMethodResponseFunction_Set()
+	if err == nil {
+		ret = xmlrpcParseMethodResponseFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gobject.ValueNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var xmlrpcParseRequestFunction *gi.Function
 var xmlrpcParseRequestFunction_Once sync.Once
@@ -930,7 +1757,35 @@ func XmlrpcParseRequest(methodCall string, length int32) (string, *XMLRPCParams)
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'soup_xmlrpc_parse_response' : return type 'GLib.Variant' not supported
+var xmlrpcParseResponseFunction *gi.Function
+var xmlrpcParseResponseFunction_Once sync.Once
+
+func xmlrpcParseResponseFunction_Set() error {
+	var err error
+	xmlrpcParseResponseFunction_Once.Do(func() {
+		xmlrpcParseResponseFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_parse_response")
+	})
+	return err
+}
+
+// XmlrpcParseResponse is a representation of the C type soup_xmlrpc_parse_response.
+func XmlrpcParseResponse(methodResponse string, length int32, signature string) *glib.Variant {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(methodResponse)
+	inArgs[1].SetInt32(length)
+	inArgs[2].SetString(signature)
+
+	var ret gi.Argument
+
+	err := xmlrpcParseResponseFunction_Set()
+	if err == nil {
+		ret = xmlrpcParseResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_xmlrpc_request_new' : parameter '...' of type 'nil' not supported
 
@@ -938,6 +1793,58 @@ func XmlrpcParseRequest(methodCall string, length int32) (string, *XMLRPCParams)
 
 // UNSUPPORTED : C value 'soup_xmlrpc_set_response' : parameter 'type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_variant_get_datetime' : parameter 'variant' of type 'GLib.Variant' not supported
+var xmlrpcVariantGetDatetimeFunction *gi.Function
+var xmlrpcVariantGetDatetimeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_xmlrpc_variant_new_datetime' : return type 'GLib.Variant' not supported
+func xmlrpcVariantGetDatetimeFunction_Set() error {
+	var err error
+	xmlrpcVariantGetDatetimeFunction_Once.Do(func() {
+		xmlrpcVariantGetDatetimeFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_variant_get_datetime")
+	})
+	return err
+}
+
+// XmlrpcVariantGetDatetime is a representation of the C type soup_xmlrpc_variant_get_datetime.
+func XmlrpcVariantGetDatetime(variant *glib.Variant) *Date {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(variant.Native())
+
+	var ret gi.Argument
+
+	err := xmlrpcVariantGetDatetimeFunction_Set()
+	if err == nil {
+		ret = xmlrpcVariantGetDatetimeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DateNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var xmlrpcVariantNewDatetimeFunction *gi.Function
+var xmlrpcVariantNewDatetimeFunction_Once sync.Once
+
+func xmlrpcVariantNewDatetimeFunction_Set() error {
+	var err error
+	xmlrpcVariantNewDatetimeFunction_Once.Do(func() {
+		xmlrpcVariantNewDatetimeFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_variant_new_datetime")
+	})
+	return err
+}
+
+// XmlrpcVariantNewDatetime is a representation of the C type soup_xmlrpc_variant_new_datetime.
+func XmlrpcVariantNewDatetime(date *Date) *glib.Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(date.Native())
+
+	var ret gi.Argument
+
+	err := xmlrpcVariantNewDatetimeFunction_Set()
+	if err == nil {
+		ret = xmlrpcVariantNewDatetimeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}

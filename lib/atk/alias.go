@@ -2,7 +2,10 @@
 
 package atk
 
-// UNSUPPORTED : C value 'AttributeSet' : no Go type for 'GLib.SList'
+import glib "github.com/pekim/gobbi/lib/glib"
+
+// AttributeSet is a representation of the C type AttributeSet.
+type AttributeSet *glib.SList
 
 // State is a representation of the C type State.
 type State uint64

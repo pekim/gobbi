@@ -5,6 +5,7 @@ package atk
 import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
@@ -2217,7 +2218,38 @@ func (recv *StreamableContent) GetNMimeTypes() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_streamable_content_get_stream' : return type 'GLib.IOChannel' not supported
+var streamableContentGetStreamFunction *gi.Function
+var streamableContentGetStreamFunction_Once sync.Once
+
+func streamableContentGetStreamFunction_Set() error {
+	var err error
+	streamableContentGetStreamFunction_Once.Do(func() {
+		err = streamableContentInterface_Set()
+		if err != nil {
+			return
+		}
+		streamableContentGetStreamFunction, err = streamableContentInterface.InvokerNew("get_stream")
+	})
+	return err
+}
+
+// GetStream is a representation of the C type atk_streamable_content_get_stream.
+func (recv *StreamableContent) GetStream(mimeType string) *glib.IOChannel {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(mimeType)
+
+	var ret gi.Argument
+
+	err := streamableContentGetStreamFunction_Set()
+	if err == nil {
+		ret = streamableContentGetStreamFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.IOChannelNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var streamableContentGetUriFunction *gi.Function
 var streamableContentGetUriFunction_Once sync.Once
@@ -4397,7 +4429,37 @@ func (recv *Value) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'atk_value_get_current_value' : parameter 'value' of type 'GObject.Value' not supported
+var valueGetCurrentValueFunction *gi.Function
+var valueGetCurrentValueFunction_Once sync.Once
+
+func valueGetCurrentValueFunction_Set() error {
+	var err error
+	valueGetCurrentValueFunction_Once.Do(func() {
+		err = valueInterface_Set()
+		if err != nil {
+			return
+		}
+		valueGetCurrentValueFunction, err = valueInterface.InvokerNew("get_current_value")
+	})
+	return err
+}
+
+// GetCurrentValue is a representation of the C type atk_value_get_current_value.
+func (recv *Value) GetCurrentValue() *gobject.Value {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := valueGetCurrentValueFunction_Set()
+	if err == nil {
+		valueGetCurrentValueFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gobject.ValueNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var valueGetIncrementFunction *gi.Function
 var valueGetIncrementFunction_Once sync.Once
@@ -4431,11 +4493,101 @@ func (recv *Value) GetIncrement() float64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_value_get_maximum_value' : parameter 'value' of type 'GObject.Value' not supported
+var valueGetMaximumValueFunction *gi.Function
+var valueGetMaximumValueFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'atk_value_get_minimum_increment' : parameter 'value' of type 'GObject.Value' not supported
+func valueGetMaximumValueFunction_Set() error {
+	var err error
+	valueGetMaximumValueFunction_Once.Do(func() {
+		err = valueInterface_Set()
+		if err != nil {
+			return
+		}
+		valueGetMaximumValueFunction, err = valueInterface.InvokerNew("get_maximum_value")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'atk_value_get_minimum_value' : parameter 'value' of type 'GObject.Value' not supported
+// GetMaximumValue is a representation of the C type atk_value_get_maximum_value.
+func (recv *Value) GetMaximumValue() *gobject.Value {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := valueGetMaximumValueFunction_Set()
+	if err == nil {
+		valueGetMaximumValueFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gobject.ValueNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
+
+var valueGetMinimumIncrementFunction *gi.Function
+var valueGetMinimumIncrementFunction_Once sync.Once
+
+func valueGetMinimumIncrementFunction_Set() error {
+	var err error
+	valueGetMinimumIncrementFunction_Once.Do(func() {
+		err = valueInterface_Set()
+		if err != nil {
+			return
+		}
+		valueGetMinimumIncrementFunction, err = valueInterface.InvokerNew("get_minimum_increment")
+	})
+	return err
+}
+
+// GetMinimumIncrement is a representation of the C type atk_value_get_minimum_increment.
+func (recv *Value) GetMinimumIncrement() *gobject.Value {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := valueGetMinimumIncrementFunction_Set()
+	if err == nil {
+		valueGetMinimumIncrementFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gobject.ValueNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
+
+var valueGetMinimumValueFunction *gi.Function
+var valueGetMinimumValueFunction_Once sync.Once
+
+func valueGetMinimumValueFunction_Set() error {
+	var err error
+	valueGetMinimumValueFunction_Once.Do(func() {
+		err = valueInterface_Set()
+		if err != nil {
+			return
+		}
+		valueGetMinimumValueFunction, err = valueInterface.InvokerNew("get_minimum_value")
+	})
+	return err
+}
+
+// GetMinimumValue is a representation of the C type atk_value_get_minimum_value.
+func (recv *Value) GetMinimumValue() *gobject.Value {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := valueGetMinimumValueFunction_Set()
+	if err == nil {
+		valueGetMinimumValueFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gobject.ValueNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var valueGetRangeFunction *gi.Function
 var valueGetRangeFunction_Once sync.Once
@@ -4469,7 +4621,37 @@ func (recv *Value) GetRange() *Range {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_value_get_sub_ranges' : return type 'GLib.SList' not supported
+var valueGetSubRangesFunction *gi.Function
+var valueGetSubRangesFunction_Once sync.Once
+
+func valueGetSubRangesFunction_Set() error {
+	var err error
+	valueGetSubRangesFunction_Once.Do(func() {
+		err = valueInterface_Set()
+		if err != nil {
+			return
+		}
+		valueGetSubRangesFunction, err = valueInterface.InvokerNew("get_sub_ranges")
+	})
+	return err
+}
+
+// GetSubRanges is a representation of the C type atk_value_get_sub_ranges.
+func (recv *Value) GetSubRanges() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := valueGetSubRangesFunction_Set()
+	if err == nil {
+		ret = valueGetSubRangesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var valueGetValueAndTextFunction *gi.Function
 var valueGetValueAndTextFunction_Once sync.Once
@@ -4504,7 +4686,38 @@ func (recv *Value) GetValueAndText() (float64, string) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'atk_value_set_current_value' : parameter 'value' of type 'GObject.Value' not supported
+var valueSetCurrentValueFunction *gi.Function
+var valueSetCurrentValueFunction_Once sync.Once
+
+func valueSetCurrentValueFunction_Set() error {
+	var err error
+	valueSetCurrentValueFunction_Once.Do(func() {
+		err = valueInterface_Set()
+		if err != nil {
+			return
+		}
+		valueSetCurrentValueFunction, err = valueInterface.InvokerNew("set_current_value")
+	})
+	return err
+}
+
+// SetCurrentValue is a representation of the C type atk_value_set_current_value.
+func (recv *Value) SetCurrentValue(value *gobject.Value) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(value.Native())
+
+	var ret gi.Argument
+
+	err := valueSetCurrentValueFunction_Set()
+	if err == nil {
+		ret = valueSetCurrentValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var valueSetValueFunction *gi.Function
 var valueSetValueFunction_Once sync.Once

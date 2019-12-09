@@ -6,6 +6,7 @@ import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gio "github.com/pekim/gobbi/lib/gio"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
@@ -105,7 +106,45 @@ func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_bytes' : parameter 'data' of type 'GLib.Bytes' not supported
+var pixbufNewFromBytesFunction *gi.Function
+var pixbufNewFromBytesFunction_Once sync.Once
+
+func pixbufNewFromBytesFunction_Set() error {
+	var err error
+	pixbufNewFromBytesFunction_Once.Do(func() {
+		err = pixbufObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufNewFromBytesFunction, err = pixbufObject.InvokerNew("new_from_bytes")
+	})
+	return err
+}
+
+// PixbufNewFromBytes is a representation of the C type gdk_pixbuf_new_from_bytes.
+func PixbufNewFromBytes(data *glib.Bytes, colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width int32, height int32, rowstride int32) *Pixbuf {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(data.Native())
+	inArgs[1].SetInt32(int32(colorspace))
+	inArgs[2].SetBoolean(hasAlpha)
+	inArgs[3].SetInt32(bitsPerSample)
+	inArgs[4].SetInt32(width)
+	inArgs[5].SetInt32(height)
+	inArgs[6].SetInt32(rowstride)
+
+	var ret gi.Argument
+
+	err := pixbufNewFromBytesFunction_Set()
+	if err == nil {
+		ret = pixbufNewFromBytesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PixbufNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_pixbuf_new_from_data' : parameter 'data' of type 'nil' not supported
 
@@ -943,7 +982,37 @@ func (recv *Pixbuf) GetOption(key string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_get_options' : return type 'GLib.HashTable' not supported
+var pixbufGetOptionsFunction *gi.Function
+var pixbufGetOptionsFunction_Once sync.Once
+
+func pixbufGetOptionsFunction_Set() error {
+	var err error
+	pixbufGetOptionsFunction_Once.Do(func() {
+		err = pixbufObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufGetOptionsFunction, err = pixbufObject.InvokerNew("get_options")
+	})
+	return err
+}
+
+// GetOptions is a representation of the C type gdk_pixbuf_get_options.
+func (recv *Pixbuf) GetOptions() *glib.HashTable {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := pixbufGetOptionsFunction_Set()
+	if err == nil {
+		ret = pixbufGetOptionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.HashTableNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var pixbufGetPixelsFunction *gi.Function
 var pixbufGetPixelsFunction_Once sync.Once
@@ -1105,7 +1174,37 @@ func (recv *Pixbuf) NewSubpixbuf(srcX int32, srcY int32, width int32, height int
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_read_pixel_bytes' : return type 'GLib.Bytes' not supported
+var pixbufReadPixelBytesFunction *gi.Function
+var pixbufReadPixelBytesFunction_Once sync.Once
+
+func pixbufReadPixelBytesFunction_Set() error {
+	var err error
+	pixbufReadPixelBytesFunction_Once.Do(func() {
+		err = pixbufObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufReadPixelBytesFunction, err = pixbufObject.InvokerNew("read_pixel_bytes")
+	})
+	return err
+}
+
+// ReadPixelBytes is a representation of the C type gdk_pixbuf_read_pixel_bytes.
+func (recv *Pixbuf) ReadPixelBytes() *glib.Bytes {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := pixbufReadPixelBytesFunction_Set()
+	if err == nil {
+		ret = pixbufReadPixelBytesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.BytesNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var pixbufReadPixelsFunction *gi.Function
 var pixbufReadPixelsFunction_Once sync.Once
@@ -1268,7 +1367,7 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_save' : parameter 'error' of type 'GLib.Error' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_save' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gdk_pixbuf_save_to_buffer' : parameter 'buffer' of type 'nil' not supported
 
@@ -1278,7 +1377,7 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 
 // UNSUPPORTED : C value 'gdk_pixbuf_save_to_callbackv' : parameter 'save_func' of type 'PixbufSaveFunc' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_save_to_stream' : parameter 'error' of type 'GLib.Error' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_save_to_stream' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gdk_pixbuf_save_to_stream_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
@@ -1625,7 +1724,38 @@ func (recv *PixbufAnimation) GetHeight() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_animation_get_iter' : parameter 'start_time' of type 'GLib.TimeVal' not supported
+var pixbufAnimationGetIterFunction *gi.Function
+var pixbufAnimationGetIterFunction_Once sync.Once
+
+func pixbufAnimationGetIterFunction_Set() error {
+	var err error
+	pixbufAnimationGetIterFunction_Once.Do(func() {
+		err = pixbufAnimationObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufAnimationGetIterFunction, err = pixbufAnimationObject.InvokerNew("get_iter")
+	})
+	return err
+}
+
+// GetIter is a representation of the C type gdk_pixbuf_animation_get_iter.
+func (recv *PixbufAnimation) GetIter(startTime *glib.TimeVal) *PixbufAnimationIter {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(startTime.Native())
+
+	var ret gi.Argument
+
+	err := pixbufAnimationGetIterFunction_Set()
+	if err == nil {
+		ret = pixbufAnimationGetIterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PixbufAnimationIterNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var pixbufAnimationGetStaticImageFunction *gi.Function
 var pixbufAnimationGetStaticImageFunction_Once sync.Once
@@ -1838,7 +1968,38 @@ func (recv *PixbufAnimationIter) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_animation_iter_advance' : parameter 'current_time' of type 'GLib.TimeVal' not supported
+var pixbufAnimationIterAdvanceFunction *gi.Function
+var pixbufAnimationIterAdvanceFunction_Once sync.Once
+
+func pixbufAnimationIterAdvanceFunction_Set() error {
+	var err error
+	pixbufAnimationIterAdvanceFunction_Once.Do(func() {
+		err = pixbufAnimationIterObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufAnimationIterAdvanceFunction, err = pixbufAnimationIterObject.InvokerNew("advance")
+	})
+	return err
+}
+
+// Advance is a representation of the C type gdk_pixbuf_animation_iter_advance.
+func (recv *PixbufAnimationIter) Advance(currentTime *glib.TimeVal) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(currentTime.Native())
+
+	var ret gi.Argument
+
+	err := pixbufAnimationIterAdvanceFunction_Set()
+	if err == nil {
+		ret = pixbufAnimationIterAdvanceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var pixbufAnimationIterGetDelayTimeFunction *gi.Function
 var pixbufAnimationIterGetDelayTimeFunction_Once sync.Once
@@ -2265,7 +2426,38 @@ func (recv *PixbufLoader) SetSize(width int32, height int32) {
 
 // UNSUPPORTED : C value 'gdk_pixbuf_loader_write' : parameter 'buf' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_loader_write_bytes' : parameter 'buffer' of type 'GLib.Bytes' not supported
+var pixbufLoaderWriteBytesFunction *gi.Function
+var pixbufLoaderWriteBytesFunction_Once sync.Once
+
+func pixbufLoaderWriteBytesFunction_Set() error {
+	var err error
+	pixbufLoaderWriteBytesFunction_Once.Do(func() {
+		err = pixbufLoaderObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufLoaderWriteBytesFunction, err = pixbufLoaderObject.InvokerNew("write_bytes")
+	})
+	return err
+}
+
+// WriteBytes is a representation of the C type gdk_pixbuf_loader_write_bytes.
+func (recv *PixbufLoader) WriteBytes(buffer *glib.Bytes) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(buffer.Native())
+
+	var ret gi.Argument
+
+	err := pixbufLoaderWriteBytesFunction_Set()
+	if err == nil {
+		ret = pixbufLoaderWriteBytesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 /*
 ConnectAreaPrepared connects a callback to the 'area-prepared' signal of the PixbufLoader.

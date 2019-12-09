@@ -404,7 +404,7 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 
 // UNSUPPORTED : C value 'g_param_spec_value_array' : parameter 'flags' of type 'ParamFlags' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_variant' : parameter 'type' of type 'GLib.VariantType' not supported
+// UNSUPPORTED : C value 'g_param_spec_variant' : parameter 'flags' of type 'ParamFlags' not supported
 
 // UNSUPPORTED : C value 'g_param_type_register_static' : return type 'GType' not supported
 
@@ -988,9 +988,54 @@ func SignalStopEmissionByName(instance *Object, detailedSignal string) {
 
 // UNSUPPORTED : C value 'g_signal_type_cclosure_new' : parameter 'itype' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_source_set_closure' : parameter 'source' of type 'GLib.Source' not supported
+var sourceSetClosureFunction *gi.Function
+var sourceSetClosureFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_source_set_dummy_callback' : parameter 'source' of type 'GLib.Source' not supported
+func sourceSetClosureFunction_Set() error {
+	var err error
+	sourceSetClosureFunction_Once.Do(func() {
+		sourceSetClosureFunction, err = gi.FunctionInvokerNew("GObject", "source_set_closure")
+	})
+	return err
+}
+
+// SourceSetClosure is a representation of the C type g_source_set_closure.
+func SourceSetClosure(source *glib.Source, closure *Closure) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(source.Native())
+	inArgs[1].SetPointer(closure.Native())
+
+	err := sourceSetClosureFunction_Set()
+	if err == nil {
+		sourceSetClosureFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var sourceSetDummyCallbackFunction *gi.Function
+var sourceSetDummyCallbackFunction_Once sync.Once
+
+func sourceSetDummyCallbackFunction_Set() error {
+	var err error
+	sourceSetDummyCallbackFunction_Once.Do(func() {
+		sourceSetDummyCallbackFunction, err = gi.FunctionInvokerNew("GObject", "source_set_dummy_callback")
+	})
+	return err
+}
+
+// SourceSetDummyCallback is a representation of the C type g_source_set_dummy_callback.
+func SourceSetDummyCallback(source *glib.Source) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(source.Native())
+
+	err := sourceSetDummyCallbackFunction_Set()
+	if err == nil {
+		sourceSetDummyCallbackFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var strdupValueContentsFunction *gi.Function
 var strdupValueContentsFunction_Once sync.Once

@@ -34,7 +34,31 @@ func CompletionErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_encoding_get_all' : return type 'GLib.SList' not supported
+var encodingGetAllFunction *gi.Function
+var encodingGetAllFunction_Once sync.Once
+
+func encodingGetAllFunction_Set() error {
+	var err error
+	encodingGetAllFunction_Once.Do(func() {
+		encodingGetAllFunction, err = gi.FunctionInvokerNew("GtkSource", "encoding_get_all")
+	})
+	return err
+}
+
+// EncodingGetAll is a representation of the C type gtk_source_encoding_get_all.
+func EncodingGetAll() *glib.SList {
+
+	var ret gi.Argument
+
+	err := encodingGetAllFunction_Set()
+	if err == nil {
+		ret = encodingGetAllFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var encodingGetCurrentFunction *gi.Function
 var encodingGetCurrentFunction_Once sync.Once
@@ -62,7 +86,31 @@ func EncodingGetCurrent() *Encoding {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_encoding_get_default_candidates' : return type 'GLib.SList' not supported
+var encodingGetDefaultCandidatesFunction *gi.Function
+var encodingGetDefaultCandidatesFunction_Once sync.Once
+
+func encodingGetDefaultCandidatesFunction_Set() error {
+	var err error
+	encodingGetDefaultCandidatesFunction_Once.Do(func() {
+		encodingGetDefaultCandidatesFunction, err = gi.FunctionInvokerNew("GtkSource", "encoding_get_default_candidates")
+	})
+	return err
+}
+
+// EncodingGetDefaultCandidates is a representation of the C type gtk_source_encoding_get_default_candidates.
+func EncodingGetDefaultCandidates() *glib.SList {
+
+	var ret gi.Argument
+
+	err := encodingGetDefaultCandidatesFunction_Set()
+	if err == nil {
+		ret = encodingGetDefaultCandidatesFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var encodingGetFromCharsetFunction *gi.Function
 var encodingGetFromCharsetFunction_Once sync.Once

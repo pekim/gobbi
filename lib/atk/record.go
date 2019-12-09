@@ -335,9 +335,19 @@ func (recv *DocumentIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParent returns the C field 'parent'.
+func (recv *DocumentIface) FieldParent() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(documentIfaceStruct, recv.Native(), "parent")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *DocumentIface) SetFieldParent(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(documentIfaceStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'get_document_type' : for field getter : missing Type
 
@@ -425,9 +435,19 @@ func (recv *EditableTextIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_interface' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParentInterface returns the C field 'parent_interface'.
+func (recv *EditableTextIface) FieldParentInterface() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(editableTextIfaceStruct, recv.Native(), "parent_interface")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_interface' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParentInterface sets the value of the C field 'parent_interface'.
+func (recv *EditableTextIface) SetFieldParentInterface(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(editableTextIfaceStruct, recv.Native(), "parent_interface", argValue)
+}
 
 // UNSUPPORTED : C value 'set_run_attributes' : for field getter : missing Type
 
@@ -587,9 +607,19 @@ func (recv *HyperlinkClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParent returns the C field 'parent'.
+func (recv *HyperlinkClass) FieldParent() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(hyperlinkClassStruct, recv.Native(), "parent")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *HyperlinkClass) SetFieldParent(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(hyperlinkClassStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'get_uri' : for field getter : missing Type
 
@@ -685,9 +715,19 @@ func (recv *HyperlinkImplIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParent returns the C field 'parent'.
+func (recv *HyperlinkImplIface) FieldParent() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(hyperlinkImplIfaceStruct, recv.Native(), "parent")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *HyperlinkImplIface) SetFieldParent(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(hyperlinkImplIfaceStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'get_hyperlink' : for field getter : missing Type
 
@@ -747,9 +787,19 @@ func (recv *HypertextIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParent returns the C field 'parent'.
+func (recv *HypertextIface) FieldParent() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(hypertextIfaceStruct, recv.Native(), "parent")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *HypertextIface) SetFieldParent(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(hypertextIfaceStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'get_link' : for field getter : missing Type
 
@@ -821,9 +871,19 @@ func (recv *ImageIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParent returns the C field 'parent'.
+func (recv *ImageIface) FieldParent() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(imageIfaceStruct, recv.Native(), "parent")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *ImageIface) SetFieldParent(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(imageIfaceStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'get_image_position' : for field getter : missing Type
 
@@ -1137,9 +1197,19 @@ func (recv *MiscClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParent returns the C field 'parent'.
+func (recv *MiscClass) FieldParent() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(miscClassStruct, recv.Native(), "parent")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *MiscClass) SetFieldParent(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(miscClassStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'threads_enter' : for field getter : missing Type
 
@@ -1343,9 +1413,19 @@ func (recv *ObjectClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParent returns the C field 'parent'.
+func (recv *ObjectClass) FieldParent() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(objectClassStruct, recv.Native(), "parent")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *ObjectClass) SetFieldParent(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(objectClassStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'get_name' : for field getter : missing Type
 
@@ -1509,9 +1589,19 @@ func (recv *ObjectFactoryClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *ObjectFactoryClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(objectFactoryClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *ObjectFactoryClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(objectFactoryClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'create_accessible' : for field getter : missing Type
 
@@ -1673,13 +1763,33 @@ func (recv *PropertyValues) SetFieldPropertyName(value string) {
 	gi.StructFieldSet(propertyValuesStruct, recv.Native(), "property_name", argValue)
 }
 
-// UNSUPPORTED : C value 'old_value' : for field getter : no Go type for 'GObject.Value'
+// FieldOldValue returns the C field 'old_value'.
+func (recv *PropertyValues) FieldOldValue() *gobject.Value {
+	argValue := gi.StructFieldGet(propertyValuesStruct, recv.Native(), "old_value")
+	value := gobject.ValueNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'old_value' : for field setter : no Go type for 'GObject.Value'
+// SetFieldOldValue sets the value of the C field 'old_value'.
+func (recv *PropertyValues) SetFieldOldValue(value *gobject.Value) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(propertyValuesStruct, recv.Native(), "old_value", argValue)
+}
 
-// UNSUPPORTED : C value 'new_value' : for field getter : no Go type for 'GObject.Value'
+// FieldNewValue returns the C field 'new_value'.
+func (recv *PropertyValues) FieldNewValue() *gobject.Value {
+	argValue := gi.StructFieldGet(propertyValuesStruct, recv.Native(), "new_value")
+	value := gobject.ValueNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'new_value' : for field setter : no Go type for 'GObject.Value'
+// SetFieldNewValue sets the value of the C field 'new_value'.
+func (recv *PropertyValues) SetFieldNewValue(value *gobject.Value) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(propertyValuesStruct, recv.Native(), "new_value", argValue)
+}
 
 // PropertyValuesStruct creates an uninitialised PropertyValues.
 func PropertyValuesStruct() *PropertyValues {
@@ -2074,9 +2184,19 @@ func (recv *RegistryClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *RegistryClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(registryClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *RegistryClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(registryClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // RegistryClassStruct creates an uninitialised RegistryClass.
 func RegistryClassStruct() *RegistryClass {
@@ -2132,9 +2252,19 @@ func (recv *RelationClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParent returns the C field 'parent'.
+func (recv *RelationClass) FieldParent() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(relationClassStruct, recv.Native(), "parent")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *RelationClass) SetFieldParent(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(relationClassStruct, recv.Native(), "parent", argValue)
+}
 
 // RelationClassStruct creates an uninitialised RelationClass.
 func RelationClassStruct() *RelationClass {
@@ -2190,9 +2320,19 @@ func (recv *RelationSetClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParent returns the C field 'parent'.
+func (recv *RelationSetClass) FieldParent() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(relationSetClassStruct, recv.Native(), "parent")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *RelationSetClass) SetFieldParent(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(relationSetClassStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'pad1' : for field getter : no Go type for 'Function'
 
@@ -2256,9 +2396,19 @@ func (recv *SelectionIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParent returns the C field 'parent'.
+func (recv *SelectionIface) FieldParent() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(selectionIfaceStruct, recv.Native(), "parent")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *SelectionIface) SetFieldParent(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(selectionIfaceStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'add_selection' : for field getter : missing Type
 
@@ -2418,9 +2568,19 @@ func (recv *StateSetClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParent returns the C field 'parent'.
+func (recv *StateSetClass) FieldParent() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(stateSetClassStruct, recv.Native(), "parent")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *StateSetClass) SetFieldParent(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(stateSetClassStruct, recv.Native(), "parent", argValue)
+}
 
 // StateSetClassStruct creates an uninitialised StateSetClass.
 func StateSetClassStruct() *StateSetClass {
@@ -2476,9 +2636,19 @@ func (recv *StreamableContentIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParent returns the C field 'parent'.
+func (recv *StreamableContentIface) FieldParent() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(streamableContentIfaceStruct, recv.Native(), "parent")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *StreamableContentIface) SetFieldParent(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(streamableContentIfaceStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'get_n_mime_types' : for field getter : missing Type
 
@@ -2644,9 +2814,19 @@ func (recv *TableIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParent returns the C field 'parent'.
+func (recv *TableIface) FieldParent() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(tableIfaceStruct, recv.Native(), "parent")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *TableIface) SetFieldParent(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(tableIfaceStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'ref_at' : for field getter : missing Type
 
@@ -2846,9 +3026,19 @@ func (recv *TextIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParent returns the C field 'parent'.
+func (recv *TextIface) FieldParent() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(textIfaceStruct, recv.Native(), "parent")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *TextIface) SetFieldParent(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(textIfaceStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'get_text' : for field getter : missing Type
 
@@ -3228,9 +3418,19 @@ func (recv *UtilClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParent returns the C field 'parent'.
+func (recv *UtilClass) FieldParent() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(utilClassStruct, recv.Native(), "parent")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *UtilClass) SetFieldParent(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(utilClassStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'add_global_event_listener' : for field getter : missing Type
 
@@ -3314,9 +3514,19 @@ func (recv *ValueIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParent returns the C field 'parent'.
+func (recv *ValueIface) FieldParent() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(valueIfaceStruct, recv.Native(), "parent")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *ValueIface) SetFieldParent(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(valueIfaceStruct, recv.Native(), "parent", argValue)
+}
 
 // UNSUPPORTED : C value 'get_current_value' : for field getter : missing Type
 
@@ -3412,9 +3622,19 @@ func (recv *WindowIface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent' : for field getter : no Go type for 'GObject.TypeInterface'
+// FieldParent returns the C field 'parent'.
+func (recv *WindowIface) FieldParent() *gobject.TypeInterface {
+	argValue := gi.StructFieldGet(windowIfaceStruct, recv.Native(), "parent")
+	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent' : for field setter : no Go type for 'GObject.TypeInterface'
+// SetFieldParent sets the value of the C field 'parent'.
+func (recv *WindowIface) SetFieldParent(value *gobject.TypeInterface) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(windowIfaceStruct, recv.Native(), "parent", argValue)
+}
 
 // WindowIfaceStruct creates an uninitialised WindowIface.
 func WindowIfaceStruct() *WindowIface {

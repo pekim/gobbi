@@ -5,6 +5,7 @@ package atk
 import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
@@ -2167,13 +2168,33 @@ func (recv *Registry) SetFieldParent(value *gobject.Object) {
 	gi.ObjectFieldSet(registryObject, recv.Native(), "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'factory_type_registry' : for field getter : no Go type for 'GLib.HashTable'
+// FieldFactoryTypeRegistry returns the C field 'factory_type_registry'.
+func (recv *Registry) FieldFactoryTypeRegistry() *glib.HashTable {
+	argValue := gi.ObjectFieldGet(registryObject, recv.Native(), "factory_type_registry")
+	value := glib.HashTableNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'factory_type_registry' : for field setter : no Go type for 'GLib.HashTable'
+// SetFieldFactoryTypeRegistry sets the value of the C field 'factory_type_registry'.
+func (recv *Registry) SetFieldFactoryTypeRegistry(value *glib.HashTable) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(registryObject, recv.Native(), "factory_type_registry", argValue)
+}
 
-// UNSUPPORTED : C value 'factory_singleton_cache' : for field getter : no Go type for 'GLib.HashTable'
+// FieldFactorySingletonCache returns the C field 'factory_singleton_cache'.
+func (recv *Registry) FieldFactorySingletonCache() *glib.HashTable {
+	argValue := gi.ObjectFieldGet(registryObject, recv.Native(), "factory_singleton_cache")
+	value := glib.HashTableNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'factory_singleton_cache' : for field setter : no Go type for 'GLib.HashTable'
+// SetFieldFactorySingletonCache sets the value of the C field 'factory_singleton_cache'.
+func (recv *Registry) SetFieldFactorySingletonCache(value *glib.HashTable) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(registryObject, recv.Native(), "factory_singleton_cache", argValue)
+}
 
 // UNSUPPORTED : C value 'atk_registry_get_factory' : parameter 'type' of type 'GType' not supported
 

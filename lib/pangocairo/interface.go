@@ -4,6 +4,7 @@ package pangocairo
 
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	cairo "github.com/pekim/gobbi/lib/cairo"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
@@ -49,7 +50,37 @@ func (recv *Font) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'pango_cairo_font_get_scaled_font' : return type 'cairo.ScaledFont' not supported
+var fontGetScaledFontFunction *gi.Function
+var fontGetScaledFontFunction_Once sync.Once
+
+func fontGetScaledFontFunction_Set() error {
+	var err error
+	fontGetScaledFontFunction_Once.Do(func() {
+		err = fontInterface_Set()
+		if err != nil {
+			return
+		}
+		fontGetScaledFontFunction, err = fontInterface.InvokerNew("get_scaled_font")
+	})
+	return err
+}
+
+// GetScaledFont is a representation of the C type pango_cairo_font_get_scaled_font.
+func (recv *Font) GetScaledFont() *cairo.ScaledFont {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fontGetScaledFontFunction_Set()
+	if err == nil {
+		ret = fontGetScaledFontFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.ScaledFontNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fontMapInterface *gi.Interface
 var fontMapInterface_Once sync.Once

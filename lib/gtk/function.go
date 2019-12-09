@@ -4,16 +4,44 @@ package gtk
 
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
 )
 
 // UNSUPPORTED : C value 'gtk_accel_groups_activate' : parameter 'accel_mods' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_accel_groups_from_object' : return type 'GLib.SList' not supported
+var accelGroupsFromObjectFunction *gi.Function
+var accelGroupsFromObjectFunction_Once sync.Once
+
+func accelGroupsFromObjectFunction_Set() error {
+	var err error
+	accelGroupsFromObjectFunction_Once.Do(func() {
+		accelGroupsFromObjectFunction, err = gi.FunctionInvokerNew("Gtk", "accel_groups_from_object")
+	})
+	return err
+}
+
+// AccelGroupsFromObject is a representation of the C type gtk_accel_groups_from_object.
+func AccelGroupsFromObject(object_ *gobject.Object) *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(object_.Native())
+
+	var ret gi.Argument
+
+	err := accelGroupsFromObjectFunction_Set()
+	if err == nil {
+		ret = accelGroupsFromObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_accelerator_get_default_mod_mask' : return type 'Gdk.ModifierType' not supported
 
@@ -129,7 +157,34 @@ func BindingSetNew(setName string) *BindingSet {
 
 // UNSUPPORTED : C value 'gtk_bindings_activate' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_bindings_activate_event' : parameter 'event' of type 'Gdk.EventKey' not supported
+var bindingsActivateEventFunction *gi.Function
+var bindingsActivateEventFunction_Once sync.Once
+
+func bindingsActivateEventFunction_Set() error {
+	var err error
+	bindingsActivateEventFunction_Once.Do(func() {
+		bindingsActivateEventFunction, err = gi.FunctionInvokerNew("Gtk", "bindings_activate_event")
+	})
+	return err
+}
+
+// BindingsActivateEvent is a representation of the C type gtk_bindings_activate_event.
+func BindingsActivateEvent(object_ *gobject.Object, event *gdk.EventKey) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(object_.Native())
+	inArgs[1].SetPointer(event.Native())
+
+	var ret gi.Argument
+
+	err := bindingsActivateEventFunction_Set()
+	if err == nil {
+		ret = bindingsActivateEventFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var builderErrorQuarkFunction *gi.Function
 var builderErrorQuarkFunction_Once sync.Once
@@ -157,9 +212,60 @@ func BuilderErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_cairo_should_draw_window' : parameter 'cr' of type 'cairo.Context' not supported
+var cairoShouldDrawWindowFunction *gi.Function
+var cairoShouldDrawWindowFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_cairo_transform_to_window' : parameter 'cr' of type 'cairo.Context' not supported
+func cairoShouldDrawWindowFunction_Set() error {
+	var err error
+	cairoShouldDrawWindowFunction_Once.Do(func() {
+		cairoShouldDrawWindowFunction, err = gi.FunctionInvokerNew("Gtk", "cairo_should_draw_window")
+	})
+	return err
+}
+
+// CairoShouldDrawWindow is a representation of the C type gtk_cairo_should_draw_window.
+func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(cr.Native())
+	inArgs[1].SetPointer(window.Native())
+
+	var ret gi.Argument
+
+	err := cairoShouldDrawWindowFunction_Set()
+	if err == nil {
+		ret = cairoShouldDrawWindowFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var cairoTransformToWindowFunction *gi.Function
+var cairoTransformToWindowFunction_Once sync.Once
+
+func cairoTransformToWindowFunction_Set() error {
+	var err error
+	cairoTransformToWindowFunction_Once.Do(func() {
+		cairoTransformToWindowFunction, err = gi.FunctionInvokerNew("Gtk", "cairo_transform_to_window")
+	})
+	return err
+}
+
+// CairoTransformToWindow is a representation of the C type gtk_cairo_transform_to_window.
+func CairoTransformToWindow(cr *cairo.Context, widget *Widget, window *gdk.Window) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(cr.Native())
+	inArgs[1].SetPointer(widget.Native())
+	inArgs[2].SetPointer(window.Native())
+
+	err := cairoTransformToWindowFunction_Set()
+	if err == nil {
+		cairoTransformToWindowFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var checkVersionFunction *gi.Function
 var checkVersionFunction_Once sync.Once
@@ -506,7 +612,30 @@ func DragSetIconStock(context *gdk.DragContext, stockId string, hotX int32, hotY
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_drag_set_icon_surface' : parameter 'surface' of type 'cairo.Surface' not supported
+var dragSetIconSurfaceFunction *gi.Function
+var dragSetIconSurfaceFunction_Once sync.Once
+
+func dragSetIconSurfaceFunction_Set() error {
+	var err error
+	dragSetIconSurfaceFunction_Once.Do(func() {
+		dragSetIconSurfaceFunction, err = gi.FunctionInvokerNew("Gtk", "drag_set_icon_surface")
+	})
+	return err
+}
+
+// DragSetIconSurface is a representation of the C type gtk_drag_set_icon_surface.
+func DragSetIconSurface(context *gdk.DragContext, surface *cairo.Surface) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(surface.Native())
+
+	err := dragSetIconSurfaceFunction_Set()
+	if err == nil {
+		dragSetIconSurfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dragSetIconWidgetFunction *gi.Function
 var dragSetIconWidgetFunction_Once sync.Once
@@ -535,7 +664,34 @@ func DragSetIconWidget(context *gdk.DragContext, widget *Widget, hotX int32, hot
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_draw_insertion_cursor' : parameter 'cr' of type 'cairo.Context' not supported
+var drawInsertionCursorFunction *gi.Function
+var drawInsertionCursorFunction_Once sync.Once
+
+func drawInsertionCursorFunction_Set() error {
+	var err error
+	drawInsertionCursorFunction_Once.Do(func() {
+		drawInsertionCursorFunction, err = gi.FunctionInvokerNew("Gtk", "draw_insertion_cursor")
+	})
+	return err
+}
+
+// DrawInsertionCursor is a representation of the C type gtk_draw_insertion_cursor.
+func DrawInsertionCursor(widget *Widget, cr *cairo.Context, location *gdk.Rectangle, isPrimary bool, direction TextDirection, drawArrow bool) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(widget.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetPointer(location.Native())
+	inArgs[3].SetBoolean(isPrimary)
+	inArgs[4].SetInt32(int32(direction))
+	inArgs[5].SetBoolean(drawArrow)
+
+	err := drawInsertionCursorFunction_Set()
+	if err == nil {
+		drawInsertionCursorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var eventsPendingFunction *gi.Function
 var eventsPendingFunction_Once sync.Once
@@ -723,7 +879,31 @@ func GetDebugFlags() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_get_default_language' : return type 'Pango.Language' not supported
+var getDefaultLanguageFunction *gi.Function
+var getDefaultLanguageFunction_Once sync.Once
+
+func getDefaultLanguageFunction_Set() error {
+	var err error
+	getDefaultLanguageFunction_Once.Do(func() {
+		getDefaultLanguageFunction, err = gi.FunctionInvokerNew("Gtk", "get_default_language")
+	})
+	return err
+}
+
+// GetDefaultLanguage is a representation of the C type gtk_get_default_language.
+func GetDefaultLanguage() *pango.Language {
+
+	var ret gi.Argument
+
+	err := getDefaultLanguageFunction_Set()
+	if err == nil {
+		ret = getDefaultLanguageFunction.Invoke(nil, nil)
+	}
+
+	retGo := pango.LanguageNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_get_event_widget' : parameter 'event' of type 'Gdk.Event' not supported
 
@@ -857,7 +1037,33 @@ func GetMinorVersion() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_get_option_group' : return type 'GLib.OptionGroup' not supported
+var getOptionGroupFunction *gi.Function
+var getOptionGroupFunction_Once sync.Once
+
+func getOptionGroupFunction_Set() error {
+	var err error
+	getOptionGroupFunction_Once.Do(func() {
+		getOptionGroupFunction, err = gi.FunctionInvokerNew("Gtk", "get_option_group")
+	})
+	return err
+}
+
+// GetOptionGroup is a representation of the C type gtk_get_option_group.
+func GetOptionGroup(openDefaultDisplay bool) *glib.OptionGroup {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetBoolean(openDefaultDisplay)
+
+	var ret gi.Argument
+
+	err := getOptionGroupFunction_Set()
+	if err == nil {
+		ret = getOptionGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.OptionGroupNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var grabGetCurrentFunction *gi.Function
 var grabGetCurrentFunction_Once sync.Once
@@ -1243,45 +1449,637 @@ func MainQuit() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_paint_arrow' : parameter 'cr' of type 'cairo.Context' not supported
+var paintArrowFunction *gi.Function
+var paintArrowFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_paint_box' : parameter 'cr' of type 'cairo.Context' not supported
+func paintArrowFunction_Set() error {
+	var err error
+	paintArrowFunction_Once.Do(func() {
+		paintArrowFunction, err = gi.FunctionInvokerNew("Gtk", "paint_arrow")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_paint_box_gap' : parameter 'cr' of type 'cairo.Context' not supported
+// PaintArrow is a representation of the C type gtk_paint_arrow.
+func PaintArrow(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, arrowType ArrowType, fill bool, x int32, y int32, width int32, height int32) {
+	var inArgs [12]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(int32(arrowType))
+	inArgs[7].SetBoolean(fill)
+	inArgs[8].SetInt32(x)
+	inArgs[9].SetInt32(y)
+	inArgs[10].SetInt32(width)
+	inArgs[11].SetInt32(height)
 
-// UNSUPPORTED : C value 'gtk_paint_check' : parameter 'cr' of type 'cairo.Context' not supported
+	err := paintArrowFunction_Set()
+	if err == nil {
+		paintArrowFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_paint_diamond' : parameter 'cr' of type 'cairo.Context' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'gtk_paint_expander' : parameter 'cr' of type 'cairo.Context' not supported
+var paintBoxFunction *gi.Function
+var paintBoxFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_paint_extension' : parameter 'cr' of type 'cairo.Context' not supported
+func paintBoxFunction_Set() error {
+	var err error
+	paintBoxFunction_Once.Do(func() {
+		paintBoxFunction, err = gi.FunctionInvokerNew("Gtk", "paint_box")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_paint_flat_box' : parameter 'cr' of type 'cairo.Context' not supported
+// PaintBox is a representation of the C type gtk_paint_box.
+func PaintBox(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	var inArgs [10]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
 
-// UNSUPPORTED : C value 'gtk_paint_focus' : parameter 'cr' of type 'cairo.Context' not supported
+	err := paintBoxFunction_Set()
+	if err == nil {
+		paintBoxFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_paint_handle' : parameter 'cr' of type 'cairo.Context' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'gtk_paint_hline' : parameter 'cr' of type 'cairo.Context' not supported
+var paintBoxGapFunction *gi.Function
+var paintBoxGapFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_paint_layout' : parameter 'cr' of type 'cairo.Context' not supported
+func paintBoxGapFunction_Set() error {
+	var err error
+	paintBoxGapFunction_Once.Do(func() {
+		paintBoxGapFunction, err = gi.FunctionInvokerNew("Gtk", "paint_box_gap")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_paint_option' : parameter 'cr' of type 'cairo.Context' not supported
+// PaintBoxGap is a representation of the C type gtk_paint_box_gap.
+func PaintBoxGap(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, gapSide PositionType, gapX int32, gapWidth int32) {
+	var inArgs [13]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
+	inArgs[10].SetInt32(int32(gapSide))
+	inArgs[11].SetInt32(gapX)
+	inArgs[12].SetInt32(gapWidth)
 
-// UNSUPPORTED : C value 'gtk_paint_resize_grip' : parameter 'cr' of type 'cairo.Context' not supported
+	err := paintBoxGapFunction_Set()
+	if err == nil {
+		paintBoxGapFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_paint_shadow' : parameter 'cr' of type 'cairo.Context' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'gtk_paint_shadow_gap' : parameter 'cr' of type 'cairo.Context' not supported
+var paintCheckFunction *gi.Function
+var paintCheckFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_paint_slider' : parameter 'cr' of type 'cairo.Context' not supported
+func paintCheckFunction_Set() error {
+	var err error
+	paintCheckFunction_Once.Do(func() {
+		paintCheckFunction, err = gi.FunctionInvokerNew("Gtk", "paint_check")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_paint_spinner' : parameter 'cr' of type 'cairo.Context' not supported
+// PaintCheck is a representation of the C type gtk_paint_check.
+func PaintCheck(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	var inArgs [10]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
 
-// UNSUPPORTED : C value 'gtk_paint_tab' : parameter 'cr' of type 'cairo.Context' not supported
+	err := paintCheckFunction_Set()
+	if err == nil {
+		paintCheckFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_paint_vline' : parameter 'cr' of type 'cairo.Context' not supported
+	return
+}
+
+var paintDiamondFunction *gi.Function
+var paintDiamondFunction_Once sync.Once
+
+func paintDiamondFunction_Set() error {
+	var err error
+	paintDiamondFunction_Once.Do(func() {
+		paintDiamondFunction, err = gi.FunctionInvokerNew("Gtk", "paint_diamond")
+	})
+	return err
+}
+
+// PaintDiamond is a representation of the C type gtk_paint_diamond.
+func PaintDiamond(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	var inArgs [10]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
+
+	err := paintDiamondFunction_Set()
+	if err == nil {
+		paintDiamondFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintExpanderFunction *gi.Function
+var paintExpanderFunction_Once sync.Once
+
+func paintExpanderFunction_Set() error {
+	var err error
+	paintExpanderFunction_Once.Do(func() {
+		paintExpanderFunction, err = gi.FunctionInvokerNew("Gtk", "paint_expander")
+	})
+	return err
+}
+
+// PaintExpander is a representation of the C type gtk_paint_expander.
+func PaintExpander(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x int32, y int32, expanderStyle ExpanderStyle) {
+	var inArgs [8]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetPointer(widget.Native())
+	inArgs[4].SetString(detail)
+	inArgs[5].SetInt32(x)
+	inArgs[6].SetInt32(y)
+	inArgs[7].SetInt32(int32(expanderStyle))
+
+	err := paintExpanderFunction_Set()
+	if err == nil {
+		paintExpanderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintExtensionFunction *gi.Function
+var paintExtensionFunction_Once sync.Once
+
+func paintExtensionFunction_Set() error {
+	var err error
+	paintExtensionFunction_Once.Do(func() {
+		paintExtensionFunction, err = gi.FunctionInvokerNew("Gtk", "paint_extension")
+	})
+	return err
+}
+
+// PaintExtension is a representation of the C type gtk_paint_extension.
+func PaintExtension(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, gapSide PositionType) {
+	var inArgs [11]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
+	inArgs[10].SetInt32(int32(gapSide))
+
+	err := paintExtensionFunction_Set()
+	if err == nil {
+		paintExtensionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintFlatBoxFunction *gi.Function
+var paintFlatBoxFunction_Once sync.Once
+
+func paintFlatBoxFunction_Set() error {
+	var err error
+	paintFlatBoxFunction_Once.Do(func() {
+		paintFlatBoxFunction, err = gi.FunctionInvokerNew("Gtk", "paint_flat_box")
+	})
+	return err
+}
+
+// PaintFlatBox is a representation of the C type gtk_paint_flat_box.
+func PaintFlatBox(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	var inArgs [10]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
+
+	err := paintFlatBoxFunction_Set()
+	if err == nil {
+		paintFlatBoxFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintFocusFunction *gi.Function
+var paintFocusFunction_Once sync.Once
+
+func paintFocusFunction_Set() error {
+	var err error
+	paintFocusFunction_Once.Do(func() {
+		paintFocusFunction, err = gi.FunctionInvokerNew("Gtk", "paint_focus")
+	})
+	return err
+}
+
+// PaintFocus is a representation of the C type gtk_paint_focus.
+func PaintFocus(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	var inArgs [9]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetPointer(widget.Native())
+	inArgs[4].SetString(detail)
+	inArgs[5].SetInt32(x)
+	inArgs[6].SetInt32(y)
+	inArgs[7].SetInt32(width)
+	inArgs[8].SetInt32(height)
+
+	err := paintFocusFunction_Set()
+	if err == nil {
+		paintFocusFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintHandleFunction *gi.Function
+var paintHandleFunction_Once sync.Once
+
+func paintHandleFunction_Set() error {
+	var err error
+	paintHandleFunction_Once.Do(func() {
+		paintHandleFunction, err = gi.FunctionInvokerNew("Gtk", "paint_handle")
+	})
+	return err
+}
+
+// PaintHandle is a representation of the C type gtk_paint_handle.
+func PaintHandle(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, orientation Orientation) {
+	var inArgs [11]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
+	inArgs[10].SetInt32(int32(orientation))
+
+	err := paintHandleFunction_Set()
+	if err == nil {
+		paintHandleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintHlineFunction *gi.Function
+var paintHlineFunction_Once sync.Once
+
+func paintHlineFunction_Set() error {
+	var err error
+	paintHlineFunction_Once.Do(func() {
+		paintHlineFunction, err = gi.FunctionInvokerNew("Gtk", "paint_hline")
+	})
+	return err
+}
+
+// PaintHline is a representation of the C type gtk_paint_hline.
+func PaintHline(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x1 int32, x2 int32, y int32) {
+	var inArgs [8]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetPointer(widget.Native())
+	inArgs[4].SetString(detail)
+	inArgs[5].SetInt32(x1)
+	inArgs[6].SetInt32(x2)
+	inArgs[7].SetInt32(y)
+
+	err := paintHlineFunction_Set()
+	if err == nil {
+		paintHlineFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintLayoutFunction *gi.Function
+var paintLayoutFunction_Once sync.Once
+
+func paintLayoutFunction_Set() error {
+	var err error
+	paintLayoutFunction_Once.Do(func() {
+		paintLayoutFunction, err = gi.FunctionInvokerNew("Gtk", "paint_layout")
+	})
+	return err
+}
+
+// PaintLayout is a representation of the C type gtk_paint_layout.
+func PaintLayout(style *Style, cr *cairo.Context, stateType StateType, useText bool, widget *Widget, detail string, x int32, y int32, layout *pango.Layout) {
+	var inArgs [9]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetBoolean(useText)
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetPointer(layout.Native())
+
+	err := paintLayoutFunction_Set()
+	if err == nil {
+		paintLayoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintOptionFunction *gi.Function
+var paintOptionFunction_Once sync.Once
+
+func paintOptionFunction_Set() error {
+	var err error
+	paintOptionFunction_Once.Do(func() {
+		paintOptionFunction, err = gi.FunctionInvokerNew("Gtk", "paint_option")
+	})
+	return err
+}
+
+// PaintOption is a representation of the C type gtk_paint_option.
+func PaintOption(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	var inArgs [10]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
+
+	err := paintOptionFunction_Set()
+	if err == nil {
+		paintOptionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'gtk_paint_resize_grip' : parameter 'edge' of type 'Gdk.WindowEdge' not supported
+
+var paintShadowFunction *gi.Function
+var paintShadowFunction_Once sync.Once
+
+func paintShadowFunction_Set() error {
+	var err error
+	paintShadowFunction_Once.Do(func() {
+		paintShadowFunction, err = gi.FunctionInvokerNew("Gtk", "paint_shadow")
+	})
+	return err
+}
+
+// PaintShadow is a representation of the C type gtk_paint_shadow.
+func PaintShadow(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	var inArgs [10]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
+
+	err := paintShadowFunction_Set()
+	if err == nil {
+		paintShadowFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintShadowGapFunction *gi.Function
+var paintShadowGapFunction_Once sync.Once
+
+func paintShadowGapFunction_Set() error {
+	var err error
+	paintShadowGapFunction_Once.Do(func() {
+		paintShadowGapFunction, err = gi.FunctionInvokerNew("Gtk", "paint_shadow_gap")
+	})
+	return err
+}
+
+// PaintShadowGap is a representation of the C type gtk_paint_shadow_gap.
+func PaintShadowGap(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, gapSide PositionType, gapX int32, gapWidth int32) {
+	var inArgs [13]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
+	inArgs[10].SetInt32(int32(gapSide))
+	inArgs[11].SetInt32(gapX)
+	inArgs[12].SetInt32(gapWidth)
+
+	err := paintShadowGapFunction_Set()
+	if err == nil {
+		paintShadowGapFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintSliderFunction *gi.Function
+var paintSliderFunction_Once sync.Once
+
+func paintSliderFunction_Set() error {
+	var err error
+	paintSliderFunction_Once.Do(func() {
+		paintSliderFunction, err = gi.FunctionInvokerNew("Gtk", "paint_slider")
+	})
+	return err
+}
+
+// PaintSlider is a representation of the C type gtk_paint_slider.
+func PaintSlider(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, orientation Orientation) {
+	var inArgs [11]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
+	inArgs[10].SetInt32(int32(orientation))
+
+	err := paintSliderFunction_Set()
+	if err == nil {
+		paintSliderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintSpinnerFunction *gi.Function
+var paintSpinnerFunction_Once sync.Once
+
+func paintSpinnerFunction_Set() error {
+	var err error
+	paintSpinnerFunction_Once.Do(func() {
+		paintSpinnerFunction, err = gi.FunctionInvokerNew("Gtk", "paint_spinner")
+	})
+	return err
+}
+
+// PaintSpinner is a representation of the C type gtk_paint_spinner.
+func PaintSpinner(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, step uint32, x int32, y int32, width int32, height int32) {
+	var inArgs [10]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetPointer(widget.Native())
+	inArgs[4].SetString(detail)
+	inArgs[5].SetUint32(step)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
+
+	err := paintSpinnerFunction_Set()
+	if err == nil {
+		paintSpinnerFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintTabFunction *gi.Function
+var paintTabFunction_Once sync.Once
+
+func paintTabFunction_Set() error {
+	var err error
+	paintTabFunction_Once.Do(func() {
+		paintTabFunction, err = gi.FunctionInvokerNew("Gtk", "paint_tab")
+	})
+	return err
+}
+
+// PaintTab is a representation of the C type gtk_paint_tab.
+func PaintTab(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	var inArgs [10]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetInt32(int32(shadowType))
+	inArgs[4].SetPointer(widget.Native())
+	inArgs[5].SetString(detail)
+	inArgs[6].SetInt32(x)
+	inArgs[7].SetInt32(y)
+	inArgs[8].SetInt32(width)
+	inArgs[9].SetInt32(height)
+
+	err := paintTabFunction_Set()
+	if err == nil {
+		paintTabFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paintVlineFunction *gi.Function
+var paintVlineFunction_Once sync.Once
+
+func paintVlineFunction_Set() error {
+	var err error
+	paintVlineFunction_Once.Do(func() {
+		paintVlineFunction, err = gi.FunctionInvokerNew("Gtk", "paint_vline")
+	})
+	return err
+}
+
+// PaintVline is a representation of the C type gtk_paint_vline.
+func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, y1 int32, y2 int32, x int32) {
+	var inArgs [8]gi.Argument
+	inArgs[0].SetPointer(style.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetInt32(int32(stateType))
+	inArgs[3].SetPointer(widget.Native())
+	inArgs[4].SetString(detail)
+	inArgs[5].SetInt32(y1)
+	inArgs[6].SetInt32(y2)
+	inArgs[7].SetInt32(x)
+
+	err := paintVlineFunction_Set()
+	if err == nil {
+		paintVlineFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var paperSizeGetDefaultFunction *gi.Function
 var paperSizeGetDefaultFunction_Once sync.Once
@@ -1309,7 +2107,33 @@ func PaperSizeGetDefault() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_paper_size_get_paper_sizes' : return type 'GLib.List' not supported
+var paperSizeGetPaperSizesFunction *gi.Function
+var paperSizeGetPaperSizesFunction_Once sync.Once
+
+func paperSizeGetPaperSizesFunction_Set() error {
+	var err error
+	paperSizeGetPaperSizesFunction_Once.Do(func() {
+		paperSizeGetPaperSizesFunction, err = gi.FunctionInvokerNew("Gtk", "paper_size_get_paper_sizes")
+	})
+	return err
+}
+
+// PaperSizeGetPaperSizes is a representation of the C type gtk_paper_size_get_paper_sizes.
+func PaperSizeGetPaperSizes(includeCustom bool) *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetBoolean(includeCustom)
+
+	var ret gi.Argument
+
+	err := paperSizeGetPaperSizesFunction_Set()
+	if err == nil {
+		ret = paperSizeGetPaperSizesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_parse_args' : parameter 'argv' of type 'nil' not supported
 
@@ -1425,7 +2249,35 @@ func RcFindModuleInPath(moduleFile string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_rc_find_pixmap_in_path' : parameter 'scanner' of type 'GLib.Scanner' not supported
+var rcFindPixmapInPathFunction *gi.Function
+var rcFindPixmapInPathFunction_Once sync.Once
+
+func rcFindPixmapInPathFunction_Set() error {
+	var err error
+	rcFindPixmapInPathFunction_Once.Do(func() {
+		rcFindPixmapInPathFunction, err = gi.FunctionInvokerNew("Gtk", "rc_find_pixmap_in_path")
+	})
+	return err
+}
+
+// RcFindPixmapInPath is a representation of the C type gtk_rc_find_pixmap_in_path.
+func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile string) string {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(settings.Native())
+	inArgs[1].SetPointer(scanner.Native())
+	inArgs[2].SetString(pixmapFile)
+
+	var ret gi.Argument
+
+	err := rcFindPixmapInPathFunction_Set()
+	if err == nil {
+		ret = rcFindPixmapInPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var rcGetDefaultFilesFunction *gi.Function
 var rcGetDefaultFilesFunction_Once sync.Once
@@ -1607,13 +2459,125 @@ func RcParse(filename string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_rc_parse_color' : parameter 'scanner' of type 'GLib.Scanner' not supported
+var rcParseColorFunction *gi.Function
+var rcParseColorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_rc_parse_color_full' : parameter 'scanner' of type 'GLib.Scanner' not supported
+func rcParseColorFunction_Set() error {
+	var err error
+	rcParseColorFunction_Once.Do(func() {
+		rcParseColorFunction, err = gi.FunctionInvokerNew("Gtk", "rc_parse_color")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_rc_parse_priority' : parameter 'scanner' of type 'GLib.Scanner' not supported
+// RcParseColor is a representation of the C type gtk_rc_parse_color.
+func RcParseColor(scanner *glib.Scanner) (uint32, *gdk.Color) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(scanner.Native())
 
-// UNSUPPORTED : C value 'gtk_rc_parse_state' : parameter 'scanner' of type 'GLib.Scanner' not supported
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := rcParseColorFunction_Set()
+	if err == nil {
+		ret = rcParseColorFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Uint32()
+	out0 := gdk.ColorNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
+
+var rcParseColorFullFunction *gi.Function
+var rcParseColorFullFunction_Once sync.Once
+
+func rcParseColorFullFunction_Set() error {
+	var err error
+	rcParseColorFullFunction_Once.Do(func() {
+		rcParseColorFullFunction, err = gi.FunctionInvokerNew("Gtk", "rc_parse_color_full")
+	})
+	return err
+}
+
+// RcParseColorFull is a representation of the C type gtk_rc_parse_color_full.
+func RcParseColorFull(scanner *glib.Scanner, style *RcStyle) (uint32, *gdk.Color) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(scanner.Native())
+	inArgs[1].SetPointer(style.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := rcParseColorFullFunction_Set()
+	if err == nil {
+		ret = rcParseColorFullFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Uint32()
+	out0 := gdk.ColorNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
+
+var rcParsePriorityFunction *gi.Function
+var rcParsePriorityFunction_Once sync.Once
+
+func rcParsePriorityFunction_Set() error {
+	var err error
+	rcParsePriorityFunction_Once.Do(func() {
+		rcParsePriorityFunction, err = gi.FunctionInvokerNew("Gtk", "rc_parse_priority")
+	})
+	return err
+}
+
+// RcParsePriority is a representation of the C type gtk_rc_parse_priority.
+func RcParsePriority(scanner *glib.Scanner, priority PathPriorityType) uint32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(scanner.Native())
+	inArgs[1].SetInt32(int32(priority))
+
+	var ret gi.Argument
+
+	err := rcParsePriorityFunction_Set()
+	if err == nil {
+		ret = rcParsePriorityFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var rcParseStateFunction *gi.Function
+var rcParseStateFunction_Once sync.Once
+
+func rcParseStateFunction_Set() error {
+	var err error
+	rcParseStateFunction_Once.Do(func() {
+		rcParseStateFunction, err = gi.FunctionInvokerNew("Gtk", "rc_parse_state")
+	})
+	return err
+}
+
+// RcParseState is a representation of the C type gtk_rc_parse_state.
+func RcParseState(scanner *glib.Scanner) (uint32, StateType) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(scanner.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := rcParseStateFunction_Set()
+	if err == nil {
+		ret = rcParseStateFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Uint32()
+	out0 := StateType(outArgs[0].Int32())
+
+	return retGo, out0
+}
 
 var rcParseStringFunction *gi.Function
 var rcParseStringFunction_Once sync.Once
@@ -1639,15 +2603,155 @@ func RcParseString(rcString string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_rc_property_parse_border' : parameter 'gstring' of type 'GLib.String' not supported
+var rcPropertyParseBorderFunction *gi.Function
+var rcPropertyParseBorderFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_rc_property_parse_color' : parameter 'gstring' of type 'GLib.String' not supported
+func rcPropertyParseBorderFunction_Set() error {
+	var err error
+	rcPropertyParseBorderFunction_Once.Do(func() {
+		rcPropertyParseBorderFunction, err = gi.FunctionInvokerNew("Gtk", "rc_property_parse_border")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_rc_property_parse_enum' : parameter 'gstring' of type 'GLib.String' not supported
+// RcPropertyParseBorder is a representation of the C type gtk_rc_property_parse_border.
+func RcPropertyParseBorder(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(pspec.Native())
+	inArgs[1].SetPointer(gstring.Native())
+	inArgs[2].SetPointer(propertyValue.Native())
 
-// UNSUPPORTED : C value 'gtk_rc_property_parse_flags' : parameter 'gstring' of type 'GLib.String' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'gtk_rc_property_parse_requisition' : parameter 'gstring' of type 'GLib.String' not supported
+	err := rcPropertyParseBorderFunction_Set()
+	if err == nil {
+		ret = rcPropertyParseBorderFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var rcPropertyParseColorFunction *gi.Function
+var rcPropertyParseColorFunction_Once sync.Once
+
+func rcPropertyParseColorFunction_Set() error {
+	var err error
+	rcPropertyParseColorFunction_Once.Do(func() {
+		rcPropertyParseColorFunction, err = gi.FunctionInvokerNew("Gtk", "rc_property_parse_color")
+	})
+	return err
+}
+
+// RcPropertyParseColor is a representation of the C type gtk_rc_property_parse_color.
+func RcPropertyParseColor(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(pspec.Native())
+	inArgs[1].SetPointer(gstring.Native())
+	inArgs[2].SetPointer(propertyValue.Native())
+
+	var ret gi.Argument
+
+	err := rcPropertyParseColorFunction_Set()
+	if err == nil {
+		ret = rcPropertyParseColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var rcPropertyParseEnumFunction *gi.Function
+var rcPropertyParseEnumFunction_Once sync.Once
+
+func rcPropertyParseEnumFunction_Set() error {
+	var err error
+	rcPropertyParseEnumFunction_Once.Do(func() {
+		rcPropertyParseEnumFunction, err = gi.FunctionInvokerNew("Gtk", "rc_property_parse_enum")
+	})
+	return err
+}
+
+// RcPropertyParseEnum is a representation of the C type gtk_rc_property_parse_enum.
+func RcPropertyParseEnum(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(pspec.Native())
+	inArgs[1].SetPointer(gstring.Native())
+	inArgs[2].SetPointer(propertyValue.Native())
+
+	var ret gi.Argument
+
+	err := rcPropertyParseEnumFunction_Set()
+	if err == nil {
+		ret = rcPropertyParseEnumFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var rcPropertyParseFlagsFunction *gi.Function
+var rcPropertyParseFlagsFunction_Once sync.Once
+
+func rcPropertyParseFlagsFunction_Set() error {
+	var err error
+	rcPropertyParseFlagsFunction_Once.Do(func() {
+		rcPropertyParseFlagsFunction, err = gi.FunctionInvokerNew("Gtk", "rc_property_parse_flags")
+	})
+	return err
+}
+
+// RcPropertyParseFlags is a representation of the C type gtk_rc_property_parse_flags.
+func RcPropertyParseFlags(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(pspec.Native())
+	inArgs[1].SetPointer(gstring.Native())
+	inArgs[2].SetPointer(propertyValue.Native())
+
+	var ret gi.Argument
+
+	err := rcPropertyParseFlagsFunction_Set()
+	if err == nil {
+		ret = rcPropertyParseFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var rcPropertyParseRequisitionFunction *gi.Function
+var rcPropertyParseRequisitionFunction_Once sync.Once
+
+func rcPropertyParseRequisitionFunction_Set() error {
+	var err error
+	rcPropertyParseRequisitionFunction_Once.Do(func() {
+		rcPropertyParseRequisitionFunction, err = gi.FunctionInvokerNew("Gtk", "rc_property_parse_requisition")
+	})
+	return err
+}
+
+// RcPropertyParseRequisition is a representation of the C type gtk_rc_property_parse_requisition.
+func RcPropertyParseRequisition(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(pspec.Native())
+	inArgs[1].SetPointer(gstring.Native())
+	inArgs[2].SetPointer(propertyValue.Native())
+
+	var ret gi.Argument
+
+	err := rcPropertyParseRequisitionFunction_Set()
+	if err == nil {
+		ret = rcPropertyParseRequisitionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var rcReparseAllFunction *gi.Function
 var rcReparseAllFunction_Once sync.Once
@@ -1728,7 +2832,31 @@ func RcResetStyles(settings *Settings) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_rc_scanner_new' : return type 'GLib.Scanner' not supported
+var rcScannerNewFunction *gi.Function
+var rcScannerNewFunction_Once sync.Once
+
+func rcScannerNewFunction_Set() error {
+	var err error
+	rcScannerNewFunction_Once.Do(func() {
+		rcScannerNewFunction, err = gi.FunctionInvokerNew("Gtk", "rc_scanner_new")
+	})
+	return err
+}
+
+// RcScannerNew is a representation of the C type gtk_rc_scanner_new.
+func RcScannerNew() *glib.Scanner {
+
+	var ret gi.Argument
+
+	err := rcScannerNewFunction_Set()
+	if err == nil {
+		ret = rcScannerNewFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.ScannerNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_rc_set_default_files' : parameter 'filenames' of type 'nil' not supported
 
@@ -1784,29 +2912,359 @@ func RecentManagerErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_render_activity' : parameter 'cr' of type 'cairo.Context' not supported
+var renderActivityFunction *gi.Function
+var renderActivityFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_render_arrow' : parameter 'cr' of type 'cairo.Context' not supported
+func renderActivityFunction_Set() error {
+	var err error
+	renderActivityFunction_Once.Do(func() {
+		renderActivityFunction, err = gi.FunctionInvokerNew("Gtk", "render_activity")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_render_background' : parameter 'cr' of type 'cairo.Context' not supported
+// RenderActivity is a representation of the C type gtk_render_activity.
+func RenderActivity(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+	inArgs[4].SetFloat64(width)
+	inArgs[5].SetFloat64(height)
 
-// UNSUPPORTED : C value 'gtk_render_background_get_clip' : parameter 'out_clip' of type 'Gdk.Rectangle' not supported
+	err := renderActivityFunction_Set()
+	if err == nil {
+		renderActivityFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_render_check' : parameter 'cr' of type 'cairo.Context' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'gtk_render_expander' : parameter 'cr' of type 'cairo.Context' not supported
+var renderArrowFunction *gi.Function
+var renderArrowFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_render_extension' : parameter 'cr' of type 'cairo.Context' not supported
+func renderArrowFunction_Set() error {
+	var err error
+	renderArrowFunction_Once.Do(func() {
+		renderArrowFunction, err = gi.FunctionInvokerNew("Gtk", "render_arrow")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_render_focus' : parameter 'cr' of type 'cairo.Context' not supported
+// RenderArrow is a representation of the C type gtk_render_arrow.
+func RenderArrow(context *StyleContext, cr *cairo.Context, angle float64, x float64, y float64, size float64) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(angle)
+	inArgs[3].SetFloat64(x)
+	inArgs[4].SetFloat64(y)
+	inArgs[5].SetFloat64(size)
 
-// UNSUPPORTED : C value 'gtk_render_frame' : parameter 'cr' of type 'cairo.Context' not supported
+	err := renderArrowFunction_Set()
+	if err == nil {
+		renderArrowFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_render_frame_gap' : parameter 'cr' of type 'cairo.Context' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'gtk_render_handle' : parameter 'cr' of type 'cairo.Context' not supported
+var renderBackgroundFunction *gi.Function
+var renderBackgroundFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_render_icon' : parameter 'cr' of type 'cairo.Context' not supported
+func renderBackgroundFunction_Set() error {
+	var err error
+	renderBackgroundFunction_Once.Do(func() {
+		renderBackgroundFunction, err = gi.FunctionInvokerNew("Gtk", "render_background")
+	})
+	return err
+}
+
+// RenderBackground is a representation of the C type gtk_render_background.
+func RenderBackground(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+	inArgs[4].SetFloat64(width)
+	inArgs[5].SetFloat64(height)
+
+	err := renderBackgroundFunction_Set()
+	if err == nil {
+		renderBackgroundFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var renderBackgroundGetClipFunction *gi.Function
+var renderBackgroundGetClipFunction_Once sync.Once
+
+func renderBackgroundGetClipFunction_Set() error {
+	var err error
+	renderBackgroundGetClipFunction_Once.Do(func() {
+		renderBackgroundGetClipFunction, err = gi.FunctionInvokerNew("Gtk", "render_background_get_clip")
+	})
+	return err
+}
+
+// RenderBackgroundGetClip is a representation of the C type gtk_render_background_get_clip.
+func RenderBackgroundGetClip(context *StyleContext, x float64, y float64, width float64, height float64) *gdk.Rectangle {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetFloat64(x)
+	inArgs[2].SetFloat64(y)
+	inArgs[3].SetFloat64(width)
+	inArgs[4].SetFloat64(height)
+
+	var outArgs [1]gi.Argument
+
+	err := renderBackgroundGetClipFunction_Set()
+	if err == nil {
+		renderBackgroundGetClipFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
+
+var renderCheckFunction *gi.Function
+var renderCheckFunction_Once sync.Once
+
+func renderCheckFunction_Set() error {
+	var err error
+	renderCheckFunction_Once.Do(func() {
+		renderCheckFunction, err = gi.FunctionInvokerNew("Gtk", "render_check")
+	})
+	return err
+}
+
+// RenderCheck is a representation of the C type gtk_render_check.
+func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+	inArgs[4].SetFloat64(width)
+	inArgs[5].SetFloat64(height)
+
+	err := renderCheckFunction_Set()
+	if err == nil {
+		renderCheckFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var renderExpanderFunction *gi.Function
+var renderExpanderFunction_Once sync.Once
+
+func renderExpanderFunction_Set() error {
+	var err error
+	renderExpanderFunction_Once.Do(func() {
+		renderExpanderFunction, err = gi.FunctionInvokerNew("Gtk", "render_expander")
+	})
+	return err
+}
+
+// RenderExpander is a representation of the C type gtk_render_expander.
+func RenderExpander(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+	inArgs[4].SetFloat64(width)
+	inArgs[5].SetFloat64(height)
+
+	err := renderExpanderFunction_Set()
+	if err == nil {
+		renderExpanderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var renderExtensionFunction *gi.Function
+var renderExtensionFunction_Once sync.Once
+
+func renderExtensionFunction_Set() error {
+	var err error
+	renderExtensionFunction_Once.Do(func() {
+		renderExtensionFunction, err = gi.FunctionInvokerNew("Gtk", "render_extension")
+	})
+	return err
+}
+
+// RenderExtension is a representation of the C type gtk_render_extension.
+func RenderExtension(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide PositionType) {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+	inArgs[4].SetFloat64(width)
+	inArgs[5].SetFloat64(height)
+	inArgs[6].SetInt32(int32(gapSide))
+
+	err := renderExtensionFunction_Set()
+	if err == nil {
+		renderExtensionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var renderFocusFunction *gi.Function
+var renderFocusFunction_Once sync.Once
+
+func renderFocusFunction_Set() error {
+	var err error
+	renderFocusFunction_Once.Do(func() {
+		renderFocusFunction, err = gi.FunctionInvokerNew("Gtk", "render_focus")
+	})
+	return err
+}
+
+// RenderFocus is a representation of the C type gtk_render_focus.
+func RenderFocus(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+	inArgs[4].SetFloat64(width)
+	inArgs[5].SetFloat64(height)
+
+	err := renderFocusFunction_Set()
+	if err == nil {
+		renderFocusFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var renderFrameFunction *gi.Function
+var renderFrameFunction_Once sync.Once
+
+func renderFrameFunction_Set() error {
+	var err error
+	renderFrameFunction_Once.Do(func() {
+		renderFrameFunction, err = gi.FunctionInvokerNew("Gtk", "render_frame")
+	})
+	return err
+}
+
+// RenderFrame is a representation of the C type gtk_render_frame.
+func RenderFrame(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+	inArgs[4].SetFloat64(width)
+	inArgs[5].SetFloat64(height)
+
+	err := renderFrameFunction_Set()
+	if err == nil {
+		renderFrameFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var renderFrameGapFunction *gi.Function
+var renderFrameGapFunction_Once sync.Once
+
+func renderFrameGapFunction_Set() error {
+	var err error
+	renderFrameGapFunction_Once.Do(func() {
+		renderFrameGapFunction, err = gi.FunctionInvokerNew("Gtk", "render_frame_gap")
+	})
+	return err
+}
+
+// RenderFrameGap is a representation of the C type gtk_render_frame_gap.
+func RenderFrameGap(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide PositionType, xy0Gap float64, xy1Gap float64) {
+	var inArgs [9]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+	inArgs[4].SetFloat64(width)
+	inArgs[5].SetFloat64(height)
+	inArgs[6].SetInt32(int32(gapSide))
+	inArgs[7].SetFloat64(xy0Gap)
+	inArgs[8].SetFloat64(xy1Gap)
+
+	err := renderFrameGapFunction_Set()
+	if err == nil {
+		renderFrameGapFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var renderHandleFunction *gi.Function
+var renderHandleFunction_Once sync.Once
+
+func renderHandleFunction_Set() error {
+	var err error
+	renderHandleFunction_Once.Do(func() {
+		renderHandleFunction, err = gi.FunctionInvokerNew("Gtk", "render_handle")
+	})
+	return err
+}
+
+// RenderHandle is a representation of the C type gtk_render_handle.
+func RenderHandle(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+	inArgs[4].SetFloat64(width)
+	inArgs[5].SetFloat64(height)
+
+	err := renderHandleFunction_Set()
+	if err == nil {
+		renderHandleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var renderIconFunction *gi.Function
+var renderIconFunction_Once sync.Once
+
+func renderIconFunction_Set() error {
+	var err error
+	renderIconFunction_Once.Do(func() {
+		renderIconFunction, err = gi.FunctionInvokerNew("Gtk", "render_icon")
+	})
+	return err
+}
+
+// RenderIcon is a representation of the C type gtk_render_icon.
+func RenderIcon(context *StyleContext, cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, x float64, y float64) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetPointer(pixbuf.Native())
+	inArgs[3].SetFloat64(x)
+	inArgs[4].SetFloat64(y)
+
+	err := renderIconFunction_Set()
+	if err == nil {
+		renderIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var renderIconPixbufFunction *gi.Function
 var renderIconPixbufFunction_Once sync.Once
@@ -1838,17 +3296,151 @@ func RenderIconPixbuf(context *StyleContext, source *IconSource, size IconSize) 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_render_icon_surface' : parameter 'cr' of type 'cairo.Context' not supported
+var renderIconSurfaceFunction *gi.Function
+var renderIconSurfaceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_render_insertion_cursor' : parameter 'cr' of type 'cairo.Context' not supported
+func renderIconSurfaceFunction_Set() error {
+	var err error
+	renderIconSurfaceFunction_Once.Do(func() {
+		renderIconSurfaceFunction, err = gi.FunctionInvokerNew("Gtk", "render_icon_surface")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_render_layout' : parameter 'cr' of type 'cairo.Context' not supported
+// RenderIconSurface is a representation of the C type gtk_render_icon_surface.
+func RenderIconSurface(context *StyleContext, cr *cairo.Context, surface *cairo.Surface, x float64, y float64) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetPointer(surface.Native())
+	inArgs[3].SetFloat64(x)
+	inArgs[4].SetFloat64(y)
 
-// UNSUPPORTED : C value 'gtk_render_line' : parameter 'cr' of type 'cairo.Context' not supported
+	err := renderIconSurfaceFunction_Set()
+	if err == nil {
+		renderIconSurfaceFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_render_option' : parameter 'cr' of type 'cairo.Context' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'gtk_render_slider' : parameter 'cr' of type 'cairo.Context' not supported
+// UNSUPPORTED : C value 'gtk_render_insertion_cursor' : parameter 'direction' of type 'Pango.Direction' not supported
+
+var renderLayoutFunction *gi.Function
+var renderLayoutFunction_Once sync.Once
+
+func renderLayoutFunction_Set() error {
+	var err error
+	renderLayoutFunction_Once.Do(func() {
+		renderLayoutFunction, err = gi.FunctionInvokerNew("Gtk", "render_layout")
+	})
+	return err
+}
+
+// RenderLayout is a representation of the C type gtk_render_layout.
+func RenderLayout(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+	inArgs[4].SetPointer(layout.Native())
+
+	err := renderLayoutFunction_Set()
+	if err == nil {
+		renderLayoutFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var renderLineFunction *gi.Function
+var renderLineFunction_Once sync.Once
+
+func renderLineFunction_Set() error {
+	var err error
+	renderLineFunction_Once.Do(func() {
+		renderLineFunction, err = gi.FunctionInvokerNew("Gtk", "render_line")
+	})
+	return err
+}
+
+// RenderLine is a representation of the C type gtk_render_line.
+func RenderLine(context *StyleContext, cr *cairo.Context, x0 float64, y0 float64, x1 float64, y1 float64) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x0)
+	inArgs[3].SetFloat64(y0)
+	inArgs[4].SetFloat64(x1)
+	inArgs[5].SetFloat64(y1)
+
+	err := renderLineFunction_Set()
+	if err == nil {
+		renderLineFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var renderOptionFunction *gi.Function
+var renderOptionFunction_Once sync.Once
+
+func renderOptionFunction_Set() error {
+	var err error
+	renderOptionFunction_Once.Do(func() {
+		renderOptionFunction, err = gi.FunctionInvokerNew("Gtk", "render_option")
+	})
+	return err
+}
+
+// RenderOption is a representation of the C type gtk_render_option.
+func RenderOption(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+	inArgs[4].SetFloat64(width)
+	inArgs[5].SetFloat64(height)
+
+	err := renderOptionFunction_Set()
+	if err == nil {
+		renderOptionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var renderSliderFunction *gi.Function
+var renderSliderFunction_Once sync.Once
+
+func renderSliderFunction_Set() error {
+	var err error
+	renderSliderFunction_Once.Do(func() {
+		renderSliderFunction, err = gi.FunctionInvokerNew("Gtk", "render_slider")
+	})
+	return err
+}
+
+// RenderSlider is a representation of the C type gtk_render_slider.
+func RenderSlider(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, orientation Orientation) {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+	inArgs[4].SetFloat64(width)
+	inArgs[5].SetFloat64(height)
+	inArgs[6].SetInt32(int32(orientation))
+
+	err := renderSliderFunction_Set()
+	if err == nil {
+		renderSliderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var rgbToHsvFunction *gi.Function
 var rgbToHsvFunction_Once sync.Once
@@ -1882,17 +3474,151 @@ func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64) {
 	return out0, out1, out2
 }
 
-// UNSUPPORTED : C value 'gtk_selection_add_target' : parameter 'selection' of type 'Gdk.Atom' not supported
+var selectionAddTargetFunction *gi.Function
+var selectionAddTargetFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_selection_add_targets' : parameter 'selection' of type 'Gdk.Atom' not supported
+func selectionAddTargetFunction_Set() error {
+	var err error
+	selectionAddTargetFunction_Once.Do(func() {
+		selectionAddTargetFunction, err = gi.FunctionInvokerNew("Gtk", "selection_add_target")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_selection_clear_targets' : parameter 'selection' of type 'Gdk.Atom' not supported
+// SelectionAddTarget is a representation of the C type gtk_selection_add_target.
+func SelectionAddTarget(widget *Widget, selection *gdk.Atom, target *gdk.Atom, info uint32) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(widget.Native())
+	inArgs[1].SetPointer(selection.Native())
+	inArgs[2].SetPointer(target.Native())
+	inArgs[3].SetUint32(info)
 
-// UNSUPPORTED : C value 'gtk_selection_convert' : parameter 'selection' of type 'Gdk.Atom' not supported
+	err := selectionAddTargetFunction_Set()
+	if err == nil {
+		selectionAddTargetFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gtk_selection_owner_set' : parameter 'selection' of type 'Gdk.Atom' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'gtk_selection_owner_set_for_display' : parameter 'selection' of type 'Gdk.Atom' not supported
+// UNSUPPORTED : C value 'gtk_selection_add_targets' : parameter 'targets' of type 'nil' not supported
+
+var selectionClearTargetsFunction *gi.Function
+var selectionClearTargetsFunction_Once sync.Once
+
+func selectionClearTargetsFunction_Set() error {
+	var err error
+	selectionClearTargetsFunction_Once.Do(func() {
+		selectionClearTargetsFunction, err = gi.FunctionInvokerNew("Gtk", "selection_clear_targets")
+	})
+	return err
+}
+
+// SelectionClearTargets is a representation of the C type gtk_selection_clear_targets.
+func SelectionClearTargets(widget *Widget, selection *gdk.Atom) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(widget.Native())
+	inArgs[1].SetPointer(selection.Native())
+
+	err := selectionClearTargetsFunction_Set()
+	if err == nil {
+		selectionClearTargetsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var selectionConvertFunction *gi.Function
+var selectionConvertFunction_Once sync.Once
+
+func selectionConvertFunction_Set() error {
+	var err error
+	selectionConvertFunction_Once.Do(func() {
+		selectionConvertFunction, err = gi.FunctionInvokerNew("Gtk", "selection_convert")
+	})
+	return err
+}
+
+// SelectionConvert is a representation of the C type gtk_selection_convert.
+func SelectionConvert(widget *Widget, selection *gdk.Atom, target *gdk.Atom, time uint32) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(widget.Native())
+	inArgs[1].SetPointer(selection.Native())
+	inArgs[2].SetPointer(target.Native())
+	inArgs[3].SetUint32(time)
+
+	var ret gi.Argument
+
+	err := selectionConvertFunction_Set()
+	if err == nil {
+		ret = selectionConvertFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var selectionOwnerSetFunction *gi.Function
+var selectionOwnerSetFunction_Once sync.Once
+
+func selectionOwnerSetFunction_Set() error {
+	var err error
+	selectionOwnerSetFunction_Once.Do(func() {
+		selectionOwnerSetFunction, err = gi.FunctionInvokerNew("Gtk", "selection_owner_set")
+	})
+	return err
+}
+
+// SelectionOwnerSet is a representation of the C type gtk_selection_owner_set.
+func SelectionOwnerSet(widget *Widget, selection *gdk.Atom, time uint32) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(widget.Native())
+	inArgs[1].SetPointer(selection.Native())
+	inArgs[2].SetUint32(time)
+
+	var ret gi.Argument
+
+	err := selectionOwnerSetFunction_Set()
+	if err == nil {
+		ret = selectionOwnerSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var selectionOwnerSetForDisplayFunction *gi.Function
+var selectionOwnerSetForDisplayFunction_Once sync.Once
+
+func selectionOwnerSetForDisplayFunction_Set() error {
+	var err error
+	selectionOwnerSetForDisplayFunction_Once.Do(func() {
+		selectionOwnerSetForDisplayFunction, err = gi.FunctionInvokerNew("Gtk", "selection_owner_set_for_display")
+	})
+	return err
+}
+
+// SelectionOwnerSetForDisplay is a representation of the C type gtk_selection_owner_set_for_display.
+func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection *gdk.Atom, time uint32) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(display.Native())
+	inArgs[1].SetPointer(widget.Native())
+	inArgs[2].SetPointer(selection.Native())
+	inArgs[3].SetUint32(time)
+
+	var ret gi.Argument
+
+	err := selectionOwnerSetForDisplayFunction_Set()
+	if err == nil {
+		ret = selectionOwnerSetForDisplayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var selectionRemoveAllFunction *gi.Function
 var selectionRemoveAllFunction_Once sync.Once
@@ -2008,7 +3734,31 @@ func ShowUriOnWindow(parent *Window, uri string, timestamp uint32) bool {
 
 // UNSUPPORTED : C value 'gtk_stock_add_static' : parameter 'items' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_stock_list_ids' : return type 'GLib.SList' not supported
+var stockListIdsFunction *gi.Function
+var stockListIdsFunction_Once sync.Once
+
+func stockListIdsFunction_Set() error {
+	var err error
+	stockListIdsFunction_Once.Do(func() {
+		stockListIdsFunction, err = gi.FunctionInvokerNew("Gtk", "stock_list_ids")
+	})
+	return err
+}
+
+// StockListIds is a representation of the C type gtk_stock_list_ids.
+func StockListIds() *glib.SList {
+
+	var ret gi.Argument
+
+	err := stockListIdsFunction_Set()
+	if err == nil {
+		ret = stockListIdsFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var stockLookupFunction *gi.Function
 var stockLookupFunction_Once sync.Once

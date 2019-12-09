@@ -5,6 +5,7 @@ package javascriptcore
 import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
@@ -1327,7 +1328,40 @@ func ValueNewString(context *Context, string_ string) *Value {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'jsc_value_new_string_from_bytes' : parameter 'bytes' of type 'GLib.Bytes' not supported
+var valueNewStringFromBytesFunction *gi.Function
+var valueNewStringFromBytesFunction_Once sync.Once
+
+func valueNewStringFromBytesFunction_Set() error {
+	var err error
+	valueNewStringFromBytesFunction_Once.Do(func() {
+		err = valueObject_Set()
+		if err != nil {
+			return
+		}
+		valueNewStringFromBytesFunction, err = valueObject.InvokerNew("new_string_from_bytes")
+	})
+	return err
+}
+
+// ValueNewStringFromBytes is a representation of the C type jsc_value_new_string_from_bytes.
+func ValueNewStringFromBytes(context *Context, bytes *glib.Bytes) *Value {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(bytes.Native())
+
+	var ret gi.Argument
+
+	err := valueNewStringFromBytesFunction_Set()
+	if err == nil {
+		ret = valueNewStringFromBytesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ValueNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var valueNewUndefinedFunction *gi.Function
 var valueNewUndefinedFunction_Once sync.Once
@@ -2080,7 +2114,37 @@ func (recv *Value) ToString() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'jsc_value_to_string_as_bytes' : return type 'GLib.Bytes' not supported
+var valueToStringAsBytesFunction *gi.Function
+var valueToStringAsBytesFunction_Once sync.Once
+
+func valueToStringAsBytesFunction_Set() error {
+	var err error
+	valueToStringAsBytesFunction_Once.Do(func() {
+		err = valueObject_Set()
+		if err != nil {
+			return
+		}
+		valueToStringAsBytesFunction, err = valueObject.InvokerNew("to_string_as_bytes")
+	})
+	return err
+}
+
+// ToStringAsBytes is a representation of the C type jsc_value_to_string_as_bytes.
+func (recv *Value) ToStringAsBytes() *glib.Bytes {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := valueToStringAsBytesFunction_Set()
+	if err == nil {
+		ret = valueToStringAsBytesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.BytesNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var virtualMachineObject *gi.Object
 var virtualMachineObject_Once sync.Once

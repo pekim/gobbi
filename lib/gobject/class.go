@@ -2906,13 +2906,33 @@ func (recv *ParamSpecVariant) SetFieldParentInstance(value *ParamSpec) {
 	gi.ObjectFieldSet(paramSpecVariantObject, recv.Native(), "parent_instance", argValue)
 }
 
-// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'GLib.VariantType'
+// FieldType returns the C field 'type'.
+func (recv *ParamSpecVariant) FieldType() *glib.VariantType {
+	argValue := gi.ObjectFieldGet(paramSpecVariantObject, recv.Native(), "type")
+	value := glib.VariantTypeNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'GLib.VariantType'
+// SetFieldType sets the value of the C field 'type'.
+func (recv *ParamSpecVariant) SetFieldType(value *glib.VariantType) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(paramSpecVariantObject, recv.Native(), "type", argValue)
+}
 
-// UNSUPPORTED : C value 'default_value' : for field getter : no Go type for 'GLib.Variant'
+// FieldDefaultValue returns the C field 'default_value'.
+func (recv *ParamSpecVariant) FieldDefaultValue() *glib.Variant {
+	argValue := gi.ObjectFieldGet(paramSpecVariantObject, recv.Native(), "default_value")
+	value := glib.VariantNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'default_value' : for field setter : no Go type for 'GLib.Variant'
+// SetFieldDefaultValue sets the value of the C field 'default_value'.
+func (recv *ParamSpecVariant) SetFieldDefaultValue(value *glib.Variant) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(paramSpecVariantObject, recv.Native(), "default_value", argValue)
+}
 
 var typeModuleObject *gi.Object
 var typeModuleObject_Once sync.Once
@@ -2977,13 +2997,33 @@ func (recv *TypeModule) SetFieldUseCount(value uint32) {
 	gi.ObjectFieldSet(typeModuleObject, recv.Native(), "use_count", argValue)
 }
 
-// UNSUPPORTED : C value 'type_infos' : for field getter : no Go type for 'GLib.SList'
+// FieldTypeInfos returns the C field 'type_infos'.
+func (recv *TypeModule) FieldTypeInfos() *glib.SList {
+	argValue := gi.ObjectFieldGet(typeModuleObject, recv.Native(), "type_infos")
+	value := glib.SListNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'type_infos' : for field setter : no Go type for 'GLib.SList'
+// SetFieldTypeInfos sets the value of the C field 'type_infos'.
+func (recv *TypeModule) SetFieldTypeInfos(value *glib.SList) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(typeModuleObject, recv.Native(), "type_infos", argValue)
+}
 
-// UNSUPPORTED : C value 'interface_infos' : for field getter : no Go type for 'GLib.SList'
+// FieldInterfaceInfos returns the C field 'interface_infos'.
+func (recv *TypeModule) FieldInterfaceInfos() *glib.SList {
+	argValue := gi.ObjectFieldGet(typeModuleObject, recv.Native(), "interface_infos")
+	value := glib.SListNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'interface_infos' : for field setter : no Go type for 'GLib.SList'
+// SetFieldInterfaceInfos sets the value of the C field 'interface_infos'.
+func (recv *TypeModule) SetFieldInterfaceInfos(value *glib.SList) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.ObjectFieldSet(typeModuleObject, recv.Native(), "interface_infos", argValue)
+}
 
 // FieldName returns the C field 'name'.
 func (recv *TypeModule) FieldName() string {

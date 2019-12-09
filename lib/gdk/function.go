@@ -4,13 +4,37 @@ package gdk
 
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
 )
 
-// UNSUPPORTED : C value 'gdk_add_option_entries_libgtk_only' : parameter 'group' of type 'GLib.OptionGroup' not supported
+var addOptionEntriesLibgtkOnlyFunction *gi.Function
+var addOptionEntriesLibgtkOnlyFunction_Once sync.Once
+
+func addOptionEntriesLibgtkOnlyFunction_Set() error {
+	var err error
+	addOptionEntriesLibgtkOnlyFunction_Once.Do(func() {
+		addOptionEntriesLibgtkOnlyFunction, err = gi.FunctionInvokerNew("Gdk", "add_option_entries_libgtk_only")
+	})
+	return err
+}
+
+// AddOptionEntriesLibgtkOnly is a representation of the C type gdk_add_option_entries_libgtk_only.
+func AddOptionEntriesLibgtkOnly(group *glib.OptionGroup) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(group.Native())
+
+	err := addOptionEntriesLibgtkOnlyFunction_Set()
+	if err == nil {
+		addOptionEntriesLibgtkOnlyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var atomInternFunction *gi.Function
 var atomInternFunction_Once sync.Once
@@ -91,29 +115,335 @@ func Beep() {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_cairo_create' : return type 'cairo.Context' not supported
+var cairoCreateFunction *gi.Function
+var cairoCreateFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_cairo_draw_from_gl' : parameter 'cr' of type 'cairo.Context' not supported
+func cairoCreateFunction_Set() error {
+	var err error
+	cairoCreateFunction_Once.Do(func() {
+		cairoCreateFunction, err = gi.FunctionInvokerNew("Gdk", "cairo_create")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_cairo_get_clip_rectangle' : parameter 'cr' of type 'cairo.Context' not supported
+// CairoCreate is a representation of the C type gdk_cairo_create.
+func CairoCreate(window *Window) *cairo.Context {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(window.Native())
 
-// UNSUPPORTED : C value 'gdk_cairo_get_drawing_context' : parameter 'cr' of type 'cairo.Context' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'gdk_cairo_rectangle' : parameter 'cr' of type 'cairo.Context' not supported
+	err := cairoCreateFunction_Set()
+	if err == nil {
+		ret = cairoCreateFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gdk_cairo_region' : parameter 'cr' of type 'cairo.Context' not supported
+	retGo := cairo.ContextNewFromNative(ret.Pointer())
 
-// UNSUPPORTED : C value 'gdk_cairo_region_create_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
+	return retGo
+}
 
-// UNSUPPORTED : C value 'gdk_cairo_set_source_color' : parameter 'cr' of type 'cairo.Context' not supported
+var cairoDrawFromGlFunction *gi.Function
+var cairoDrawFromGlFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_cairo_set_source_pixbuf' : parameter 'cr' of type 'cairo.Context' not supported
+func cairoDrawFromGlFunction_Set() error {
+	var err error
+	cairoDrawFromGlFunction_Once.Do(func() {
+		cairoDrawFromGlFunction, err = gi.FunctionInvokerNew("Gdk", "cairo_draw_from_gl")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_cairo_set_source_rgba' : parameter 'cr' of type 'cairo.Context' not supported
+// CairoDrawFromGl is a representation of the C type gdk_cairo_draw_from_gl.
+func CairoDrawFromGl(cr *cairo.Context, window *Window, source int32, sourceType int32, bufferScale int32, x int32, y int32, width int32, height int32) {
+	var inArgs [9]gi.Argument
+	inArgs[0].SetPointer(cr.Native())
+	inArgs[1].SetPointer(window.Native())
+	inArgs[2].SetInt32(source)
+	inArgs[3].SetInt32(sourceType)
+	inArgs[4].SetInt32(bufferScale)
+	inArgs[5].SetInt32(x)
+	inArgs[6].SetInt32(y)
+	inArgs[7].SetInt32(width)
+	inArgs[8].SetInt32(height)
 
-// UNSUPPORTED : C value 'gdk_cairo_set_source_window' : parameter 'cr' of type 'cairo.Context' not supported
+	err := cairoDrawFromGlFunction_Set()
+	if err == nil {
+		cairoDrawFromGlFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'gdk_cairo_surface_create_from_pixbuf' : return type 'cairo.Surface' not supported
+	return
+}
+
+var cairoGetClipRectangleFunction *gi.Function
+var cairoGetClipRectangleFunction_Once sync.Once
+
+func cairoGetClipRectangleFunction_Set() error {
+	var err error
+	cairoGetClipRectangleFunction_Once.Do(func() {
+		cairoGetClipRectangleFunction, err = gi.FunctionInvokerNew("Gdk", "cairo_get_clip_rectangle")
+	})
+	return err
+}
+
+// CairoGetClipRectangle is a representation of the C type gdk_cairo_get_clip_rectangle.
+func CairoGetClipRectangle(cr *cairo.Context) (bool, *Rectangle) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(cr.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := cairoGetClipRectangleFunction_Set()
+	if err == nil {
+		ret = cairoGetClipRectangleFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := RectangleNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
+
+var cairoGetDrawingContextFunction *gi.Function
+var cairoGetDrawingContextFunction_Once sync.Once
+
+func cairoGetDrawingContextFunction_Set() error {
+	var err error
+	cairoGetDrawingContextFunction_Once.Do(func() {
+		cairoGetDrawingContextFunction, err = gi.FunctionInvokerNew("Gdk", "cairo_get_drawing_context")
+	})
+	return err
+}
+
+// CairoGetDrawingContext is a representation of the C type gdk_cairo_get_drawing_context.
+func CairoGetDrawingContext(cr *cairo.Context) *DrawingContext {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(cr.Native())
+
+	var ret gi.Argument
+
+	err := cairoGetDrawingContextFunction_Set()
+	if err == nil {
+		ret = cairoGetDrawingContextFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DrawingContextNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var cairoRectangleFunction *gi.Function
+var cairoRectangleFunction_Once sync.Once
+
+func cairoRectangleFunction_Set() error {
+	var err error
+	cairoRectangleFunction_Once.Do(func() {
+		cairoRectangleFunction, err = gi.FunctionInvokerNew("Gdk", "cairo_rectangle")
+	})
+	return err
+}
+
+// CairoRectangle is a representation of the C type gdk_cairo_rectangle.
+func CairoRectangle(cr *cairo.Context, rectangle *Rectangle) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(cr.Native())
+	inArgs[1].SetPointer(rectangle.Native())
+
+	err := cairoRectangleFunction_Set()
+	if err == nil {
+		cairoRectangleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cairoRegionFunction *gi.Function
+var cairoRegionFunction_Once sync.Once
+
+func cairoRegionFunction_Set() error {
+	var err error
+	cairoRegionFunction_Once.Do(func() {
+		cairoRegionFunction, err = gi.FunctionInvokerNew("Gdk", "cairo_region")
+	})
+	return err
+}
+
+// CairoRegion is a representation of the C type gdk_cairo_region.
+func CairoRegion(cr *cairo.Context, region *cairo.Region) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(cr.Native())
+	inArgs[1].SetPointer(region.Native())
+
+	err := cairoRegionFunction_Set()
+	if err == nil {
+		cairoRegionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cairoRegionCreateFromSurfaceFunction *gi.Function
+var cairoRegionCreateFromSurfaceFunction_Once sync.Once
+
+func cairoRegionCreateFromSurfaceFunction_Set() error {
+	var err error
+	cairoRegionCreateFromSurfaceFunction_Once.Do(func() {
+		cairoRegionCreateFromSurfaceFunction, err = gi.FunctionInvokerNew("Gdk", "cairo_region_create_from_surface")
+	})
+	return err
+}
+
+// CairoRegionCreateFromSurface is a representation of the C type gdk_cairo_region_create_from_surface.
+func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(surface.Native())
+
+	var ret gi.Argument
+
+	err := cairoRegionCreateFromSurfaceFunction_Set()
+	if err == nil {
+		ret = cairoRegionCreateFromSurfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.RegionNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var cairoSetSourceColorFunction *gi.Function
+var cairoSetSourceColorFunction_Once sync.Once
+
+func cairoSetSourceColorFunction_Set() error {
+	var err error
+	cairoSetSourceColorFunction_Once.Do(func() {
+		cairoSetSourceColorFunction, err = gi.FunctionInvokerNew("Gdk", "cairo_set_source_color")
+	})
+	return err
+}
+
+// CairoSetSourceColor is a representation of the C type gdk_cairo_set_source_color.
+func CairoSetSourceColor(cr *cairo.Context, color *Color) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(cr.Native())
+	inArgs[1].SetPointer(color.Native())
+
+	err := cairoSetSourceColorFunction_Set()
+	if err == nil {
+		cairoSetSourceColorFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cairoSetSourcePixbufFunction *gi.Function
+var cairoSetSourcePixbufFunction_Once sync.Once
+
+func cairoSetSourcePixbufFunction_Set() error {
+	var err error
+	cairoSetSourcePixbufFunction_Once.Do(func() {
+		cairoSetSourcePixbufFunction, err = gi.FunctionInvokerNew("Gdk", "cairo_set_source_pixbuf")
+	})
+	return err
+}
+
+// CairoSetSourcePixbuf is a representation of the C type gdk_cairo_set_source_pixbuf.
+func CairoSetSourcePixbuf(cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, pixbufX float64, pixbufY float64) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(cr.Native())
+	inArgs[1].SetPointer(pixbuf.Native())
+	inArgs[2].SetFloat64(pixbufX)
+	inArgs[3].SetFloat64(pixbufY)
+
+	err := cairoSetSourcePixbufFunction_Set()
+	if err == nil {
+		cairoSetSourcePixbufFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cairoSetSourceRgbaFunction *gi.Function
+var cairoSetSourceRgbaFunction_Once sync.Once
+
+func cairoSetSourceRgbaFunction_Set() error {
+	var err error
+	cairoSetSourceRgbaFunction_Once.Do(func() {
+		cairoSetSourceRgbaFunction, err = gi.FunctionInvokerNew("Gdk", "cairo_set_source_rgba")
+	})
+	return err
+}
+
+// CairoSetSourceRgba is a representation of the C type gdk_cairo_set_source_rgba.
+func CairoSetSourceRgba(cr *cairo.Context, rgba *RGBA) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(cr.Native())
+	inArgs[1].SetPointer(rgba.Native())
+
+	err := cairoSetSourceRgbaFunction_Set()
+	if err == nil {
+		cairoSetSourceRgbaFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cairoSetSourceWindowFunction *gi.Function
+var cairoSetSourceWindowFunction_Once sync.Once
+
+func cairoSetSourceWindowFunction_Set() error {
+	var err error
+	cairoSetSourceWindowFunction_Once.Do(func() {
+		cairoSetSourceWindowFunction, err = gi.FunctionInvokerNew("Gdk", "cairo_set_source_window")
+	})
+	return err
+}
+
+// CairoSetSourceWindow is a representation of the C type gdk_cairo_set_source_window.
+func CairoSetSourceWindow(cr *cairo.Context, window *Window, x float64, y float64) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(cr.Native())
+	inArgs[1].SetPointer(window.Native())
+	inArgs[2].SetFloat64(x)
+	inArgs[3].SetFloat64(y)
+
+	err := cairoSetSourceWindowFunction_Set()
+	if err == nil {
+		cairoSetSourceWindowFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cairoSurfaceCreateFromPixbufFunction *gi.Function
+var cairoSurfaceCreateFromPixbufFunction_Once sync.Once
+
+func cairoSurfaceCreateFromPixbufFunction_Set() error {
+	var err error
+	cairoSurfaceCreateFromPixbufFunction_Once.Do(func() {
+		cairoSurfaceCreateFromPixbufFunction, err = gi.FunctionInvokerNew("Gdk", "cairo_surface_create_from_pixbuf")
+	})
+	return err
+}
+
+// CairoSurfaceCreateFromPixbuf is a representation of the C type gdk_cairo_surface_create_from_pixbuf.
+func CairoSurfaceCreateFromPixbuf(pixbuf *gdkpixbuf.Pixbuf, scale int32, forWindow *Window) *cairo.Surface {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(pixbuf.Native())
+	inArgs[1].SetInt32(scale)
+	inArgs[2].SetPointer(forWindow.Native())
+
+	var ret gi.Argument
+
+	err := cairoSurfaceCreateFromPixbufFunction_Set()
+	if err == nil {
+		ret = cairoSurfaceCreateFromPixbufFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.SurfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var colorParseFunction *gi.Function
 var colorParseFunction_Once sync.Once
@@ -192,11 +522,96 @@ func DragAbort(context *DragContext, time uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_drag_begin' : parameter 'targets' of type 'GLib.List' not supported
+var dragBeginFunction *gi.Function
+var dragBeginFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_drag_begin_for_device' : parameter 'targets' of type 'GLib.List' not supported
+func dragBeginFunction_Set() error {
+	var err error
+	dragBeginFunction_Once.Do(func() {
+		dragBeginFunction, err = gi.FunctionInvokerNew("Gdk", "drag_begin")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_drag_begin_from_point' : parameter 'targets' of type 'GLib.List' not supported
+// DragBegin is a representation of the C type gdk_drag_begin.
+func DragBegin(window *Window, targets *glib.List) *DragContext {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(window.Native())
+	inArgs[1].SetPointer(targets.Native())
+
+	var ret gi.Argument
+
+	err := dragBeginFunction_Set()
+	if err == nil {
+		ret = dragBeginFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DragContextNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var dragBeginForDeviceFunction *gi.Function
+var dragBeginForDeviceFunction_Once sync.Once
+
+func dragBeginForDeviceFunction_Set() error {
+	var err error
+	dragBeginForDeviceFunction_Once.Do(func() {
+		dragBeginForDeviceFunction, err = gi.FunctionInvokerNew("Gdk", "drag_begin_for_device")
+	})
+	return err
+}
+
+// DragBeginForDevice is a representation of the C type gdk_drag_begin_for_device.
+func DragBeginForDevice(window *Window, device *Device, targets *glib.List) *DragContext {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(window.Native())
+	inArgs[1].SetPointer(device.Native())
+	inArgs[2].SetPointer(targets.Native())
+
+	var ret gi.Argument
+
+	err := dragBeginForDeviceFunction_Set()
+	if err == nil {
+		ret = dragBeginForDeviceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DragContextNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var dragBeginFromPointFunction *gi.Function
+var dragBeginFromPointFunction_Once sync.Once
+
+func dragBeginFromPointFunction_Set() error {
+	var err error
+	dragBeginFromPointFunction_Once.Do(func() {
+		dragBeginFromPointFunction, err = gi.FunctionInvokerNew("Gdk", "drag_begin_from_point")
+	})
+	return err
+}
+
+// DragBeginFromPoint is a representation of the C type gdk_drag_begin_from_point.
+func DragBeginFromPoint(window *Window, device *Device, targets *glib.List, xRoot int32, yRoot int32) *DragContext {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(window.Native())
+	inArgs[1].SetPointer(device.Native())
+	inArgs[2].SetPointer(targets.Native())
+	inArgs[3].SetInt32(xRoot)
+	inArgs[4].SetInt32(yRoot)
+
+	var ret gi.Argument
+
+	err := dragBeginFromPointFunction_Set()
+	if err == nil {
+		ret = dragBeginFromPointFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DragContextNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var dragDropFunction *gi.Function
 var dragDropFunction_Once sync.Once
@@ -986,7 +1401,31 @@ func KeyvalToUpper(keyval uint32) uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_list_visuals' : return type 'GLib.List' not supported
+var listVisualsFunction *gi.Function
+var listVisualsFunction_Once sync.Once
+
+func listVisualsFunction_Set() error {
+	var err error
+	listVisualsFunction_Once.Do(func() {
+		listVisualsFunction, err = gi.FunctionInvokerNew("Gdk", "list_visuals")
+	})
+	return err
+}
+
+// ListVisuals is a representation of the C type gdk_list_visuals.
+func ListVisuals() *glib.List {
+
+	var ret gi.Argument
+
+	err := listVisualsFunction_Set()
+	if err == nil {
+		ret = listVisualsFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var notifyStartupCompleteFunction *gi.Function
 var notifyStartupCompleteFunction_Once sync.Once
@@ -1062,7 +1501,33 @@ func OffscreenWindowGetEmbedder(window *Window) *Window {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_offscreen_window_get_surface' : return type 'cairo.Surface' not supported
+var offscreenWindowGetSurfaceFunction *gi.Function
+var offscreenWindowGetSurfaceFunction_Once sync.Once
+
+func offscreenWindowGetSurfaceFunction_Set() error {
+	var err error
+	offscreenWindowGetSurfaceFunction_Once.Do(func() {
+		offscreenWindowGetSurfaceFunction, err = gi.FunctionInvokerNew("Gdk", "offscreen_window_get_surface")
+	})
+	return err
+}
+
+// OffscreenWindowGetSurface is a representation of the C type gdk_offscreen_window_get_surface.
+func OffscreenWindowGetSurface(window *Window) *cairo.Surface {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(window.Native())
+
+	var ret gi.Argument
+
+	err := offscreenWindowGetSurfaceFunction_Set()
+	if err == nil {
+		ret = offscreenWindowGetSurfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.SurfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var offscreenWindowSetEmbedderFunction *gi.Function
 var offscreenWindowSetEmbedderFunction_Once sync.Once
@@ -1171,13 +1636,73 @@ func PangoContextGetForScreen(screen *Screen) *pango.Context {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pango_layout_get_clip_region' : return type 'cairo.Region' not supported
+var pangoLayoutGetClipRegionFunction *gi.Function
+var pangoLayoutGetClipRegionFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pango_layout_line_get_clip_region' : parameter 'line' of type 'Pango.LayoutLine' not supported
+func pangoLayoutGetClipRegionFunction_Set() error {
+	var err error
+	pangoLayoutGetClipRegionFunction_Once.Do(func() {
+		pangoLayoutGetClipRegionFunction, err = gi.FunctionInvokerNew("Gdk", "pango_layout_get_clip_region")
+	})
+	return err
+}
+
+// PangoLayoutGetClipRegion is a representation of the C type gdk_pango_layout_get_clip_region.
+func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32, indexRanges int32, nRanges int32) *cairo.Region {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(layout.Native())
+	inArgs[1].SetInt32(xOrigin)
+	inArgs[2].SetInt32(yOrigin)
+	inArgs[3].SetInt32(indexRanges)
+	inArgs[4].SetInt32(nRanges)
+
+	var ret gi.Argument
+
+	err := pangoLayoutGetClipRegionFunction_Set()
+	if err == nil {
+		ret = pangoLayoutGetClipRegionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.RegionNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gdk_pango_layout_line_get_clip_region' : parameter 'index_ranges' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gdk_parse_args' : parameter 'argv' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_get_from_surface' : parameter 'surface' of type 'cairo.Surface' not supported
+var pixbufGetFromSurfaceFunction *gi.Function
+var pixbufGetFromSurfaceFunction_Once sync.Once
+
+func pixbufGetFromSurfaceFunction_Set() error {
+	var err error
+	pixbufGetFromSurfaceFunction_Once.Do(func() {
+		pixbufGetFromSurfaceFunction, err = gi.FunctionInvokerNew("Gdk", "pixbuf_get_from_surface")
+	})
+	return err
+}
+
+// PixbufGetFromSurface is a representation of the C type gdk_pixbuf_get_from_surface.
+func PixbufGetFromSurface(surface *cairo.Surface, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(surface.Native())
+	inArgs[1].SetInt32(srcX)
+	inArgs[2].SetInt32(srcY)
+	inArgs[3].SetInt32(width)
+	inArgs[4].SetInt32(height)
+
+	var ret gi.Argument
+
+	err := pixbufGetFromSurfaceFunction_Set()
+	if err == nil {
+		ret = pixbufGetFromSurfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdkpixbuf.PixbufNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var pixbufGetFromWindowFunction *gi.Function
 var pixbufGetFromWindowFunction_Once sync.Once
@@ -1677,7 +2202,34 @@ func SetShowEvents(showEvents bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_setting_get' : parameter 'value' of type 'GObject.Value' not supported
+var settingGetFunction *gi.Function
+var settingGetFunction_Once sync.Once
+
+func settingGetFunction_Set() error {
+	var err error
+	settingGetFunction_Once.Do(func() {
+		settingGetFunction, err = gi.FunctionInvokerNew("Gdk", "setting_get")
+	})
+	return err
+}
+
+// SettingGet is a representation of the C type gdk_setting_get.
+func SettingGet(name string, value *gobject.Value) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetPointer(value.Native())
+
+	var ret gi.Argument
+
+	err := settingGetFunction_Set()
+	if err == nil {
+		ret = settingGetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_synthesize_window_state' : parameter 'unset_flags' of type 'WindowState' not supported
 

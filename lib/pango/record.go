@@ -4,6 +4,7 @@ package pango
 
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
 	"sync"
@@ -161,9 +162,19 @@ func (recv *Analysis) SetFieldLanguage(value *Language) {
 	gi.StructFieldSet(analysisStruct, recv.Native(), "language", argValue)
 }
 
-// UNSUPPORTED : C value 'extra_attrs' : for field getter : no Go type for 'GLib.SList'
+// FieldExtraAttrs returns the C field 'extra_attrs'.
+func (recv *Analysis) FieldExtraAttrs() *glib.SList {
+	argValue := gi.StructFieldGet(analysisStruct, recv.Native(), "extra_attrs")
+	value := glib.SListNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'extra_attrs' : for field setter : no Go type for 'GLib.SList'
+// SetFieldExtraAttrs sets the value of the C field 'extra_attrs'.
+func (recv *Analysis) SetFieldExtraAttrs(value *glib.SList) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(analysisStruct, recv.Native(), "extra_attrs", argValue)
+}
 
 // AnalysisStruct creates an uninitialised Analysis.
 func AnalysisStruct() *Analysis {
@@ -802,9 +813,68 @@ func (recv *AttrIterator) Get(type_ AttrType) *Attribute {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_attr_iterator_get_attrs' : return type 'GLib.SList' not supported
+var attrIteratorGetAttrsFunction *gi.Function
+var attrIteratorGetAttrsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'pango_attr_iterator_get_font' : parameter 'extra_attrs' of type 'GLib.SList' not supported
+func attrIteratorGetAttrsFunction_Set() error {
+	var err error
+	attrIteratorGetAttrsFunction_Once.Do(func() {
+		err = attrIteratorStruct_Set()
+		if err != nil {
+			return
+		}
+		attrIteratorGetAttrsFunction, err = attrIteratorStruct.InvokerNew("get_attrs")
+	})
+	return err
+}
+
+// GetAttrs is a representation of the C type pango_attr_iterator_get_attrs.
+func (recv *AttrIterator) GetAttrs() *glib.SList {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := attrIteratorGetAttrsFunction_Set()
+	if err == nil {
+		ret = attrIteratorGetAttrsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var attrIteratorGetFontFunction *gi.Function
+var attrIteratorGetFontFunction_Once sync.Once
+
+func attrIteratorGetFontFunction_Set() error {
+	var err error
+	attrIteratorGetFontFunction_Once.Do(func() {
+		err = attrIteratorStruct_Set()
+		if err != nil {
+			return
+		}
+		attrIteratorGetFontFunction, err = attrIteratorStruct.InvokerNew("get_font")
+	})
+	return err
+}
+
+// GetFont is a representation of the C type pango_attr_iterator_get_font.
+func (recv *AttrIterator) GetFont(desc *FontDescription, language *Language, extraAttrs *glib.SList) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(desc.Native())
+	inArgs[2].SetPointer(language.Native())
+	inArgs[3].SetPointer(extraAttrs.Native())
+
+	err := attrIteratorGetFontFunction_Set()
+	if err == nil {
+		attrIteratorGetFontFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var attrIteratorNextFunction *gi.Function
 var attrIteratorNextFunction_Once sync.Once
@@ -2719,9 +2789,19 @@ func (recv *FontClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *FontClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(fontClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *FontClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fontClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'describe' : for field getter : missing Type
 
@@ -3808,9 +3888,19 @@ func (recv *FontFaceClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *FontFaceClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(fontFaceClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *FontFaceClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fontFaceClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'get_face_name' : for field getter : missing Type
 
@@ -3890,9 +3980,19 @@ func (recv *FontFamilyClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *FontFamilyClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(fontFamilyClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *FontFamilyClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fontFamilyClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'list_faces' : for field getter : missing Type
 
@@ -3972,9 +4072,19 @@ func (recv *FontMapClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *FontMapClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(fontMapClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *FontMapClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fontMapClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'load_font' : for field getter : missing Type
 
@@ -4457,9 +4567,19 @@ func (recv *FontsetClass) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'parent_class' : for field getter : no Go type for 'GObject.ObjectClass'
+// FieldParentClass returns the C field 'parent_class'.
+func (recv *FontsetClass) FieldParentClass() *gobject.ObjectClass {
+	argValue := gi.StructFieldGet(fontsetClassStruct, recv.Native(), "parent_class")
+	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'parent_class' : for field setter : no Go type for 'GObject.ObjectClass'
+// SetFieldParentClass sets the value of the C field 'parent_class'.
+func (recv *FontsetClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(fontsetClassStruct, recv.Native(), "parent_class", argValue)
+}
 
 // UNSUPPORTED : C value 'get_font' : for field getter : missing Type
 
@@ -4821,7 +4941,39 @@ func (recv *GlyphItem) SetFieldGlyphs(value *GlyphString) {
 	gi.StructFieldSet(glyphItemStruct, recv.Native(), "glyphs", argValue)
 }
 
-// UNSUPPORTED : C value 'pango_glyph_item_apply_attrs' : return type 'GLib.SList' not supported
+var glyphItemApplyAttrsFunction *gi.Function
+var glyphItemApplyAttrsFunction_Once sync.Once
+
+func glyphItemApplyAttrsFunction_Set() error {
+	var err error
+	glyphItemApplyAttrsFunction_Once.Do(func() {
+		err = glyphItemStruct_Set()
+		if err != nil {
+			return
+		}
+		glyphItemApplyAttrsFunction, err = glyphItemStruct.InvokerNew("apply_attrs")
+	})
+	return err
+}
+
+// ApplyAttrs is a representation of the C type pango_glyph_item_apply_attrs.
+func (recv *GlyphItem) ApplyAttrs(text string, list *AttrList) *glib.SList {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(text)
+	inArgs[2].SetPointer(list.Native())
+
+	var ret gi.Argument
+
+	err := glyphItemApplyAttrsFunction_Set()
+	if err == nil {
+		ret = glyphItemApplyAttrsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var glyphItemCopyFunction *gi.Function
 var glyphItemCopyFunction_Once sync.Once
@@ -7005,9 +7157,19 @@ func (recv *LayoutLine) SetFieldLength(value int32) {
 	gi.StructFieldSet(layoutLineStruct, recv.Native(), "length", argValue)
 }
 
-// UNSUPPORTED : C value 'runs' : for field getter : no Go type for 'GLib.SList'
+// FieldRuns returns the C field 'runs'.
+func (recv *LayoutLine) FieldRuns() *glib.SList {
+	argValue := gi.StructFieldGet(layoutLineStruct, recv.Native(), "runs")
+	value := glib.SListNewFromNative(argValue.Pointer())
+	return value
+}
 
-// UNSUPPORTED : C value 'runs' : for field setter : no Go type for 'GLib.SList'
+// SetFieldRuns sets the value of the C field 'runs'.
+func (recv *LayoutLine) SetFieldRuns(value *glib.SList) {
+	var argValue gi.Argument
+	argValue.SetPointer(value.Native())
+	gi.StructFieldSet(layoutLineStruct, recv.Native(), "runs", argValue)
+}
 
 // FieldIsParagraphStart returns the C field 'is_paragraph_start'.
 func (recv *LayoutLine) FieldIsParagraphStart() uint32 {
@@ -7558,7 +7720,36 @@ func (recv *Map) GetEngine(script Script) *Engine {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_map_get_engines' : parameter 'exact_engines' of type 'GLib.SList' not supported
+var mapGetEnginesFunction *gi.Function
+var mapGetEnginesFunction_Once sync.Once
+
+func mapGetEnginesFunction_Set() error {
+	var err error
+	mapGetEnginesFunction_Once.Do(func() {
+		err = mapStruct_Set()
+		if err != nil {
+			return
+		}
+		mapGetEnginesFunction, err = mapStruct.InvokerNew("get_engines")
+	})
+	return err
+}
+
+// GetEngines is a representation of the C type pango_map_get_engines.
+func (recv *Map) GetEngines(script Script, exactEngines *glib.SList, fallbackEngines *glib.SList) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(script))
+	inArgs[2].SetPointer(exactEngines.Native())
+	inArgs[3].SetPointer(fallbackEngines.Native())
+
+	err := mapGetEnginesFunction_Set()
+	if err == nil {
+		mapGetEnginesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // MapStruct creates an uninitialised Map.
 func MapStruct() *Map {

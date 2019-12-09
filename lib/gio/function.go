@@ -5,6 +5,7 @@ package gio
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 )
 
@@ -36,23 +37,181 @@ func ActionNameIsValid(actionName string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_action_parse_detailed_name' : parameter 'target_value' of type 'GLib.Variant' not supported
+var actionParseDetailedNameFunction *gi.Function
+var actionParseDetailedNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_action_print_detailed_name' : parameter 'target_value' of type 'GLib.Variant' not supported
+func actionParseDetailedNameFunction_Set() error {
+	var err error
+	actionParseDetailedNameFunction_Once.Do(func() {
+		actionParseDetailedNameFunction, err = gi.FunctionInvokerNew("Gio", "action_parse_detailed_name")
+	})
+	return err
+}
+
+// ActionParseDetailedName is a representation of the C type g_action_parse_detailed_name.
+func ActionParseDetailedName(detailedName string) (bool, string, *glib.Variant) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(detailedName)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := actionParseDetailedNameFunction_Set()
+	if err == nil {
+		ret = actionParseDetailedNameFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+	out1 := glib.VariantNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
+
+var actionPrintDetailedNameFunction *gi.Function
+var actionPrintDetailedNameFunction_Once sync.Once
+
+func actionPrintDetailedNameFunction_Set() error {
+	var err error
+	actionPrintDetailedNameFunction_Once.Do(func() {
+		actionPrintDetailedNameFunction, err = gi.FunctionInvokerNew("Gio", "action_print_detailed_name")
+	})
+	return err
+}
+
+// ActionPrintDetailedName is a representation of the C type g_action_print_detailed_name.
+func ActionPrintDetailedName(actionName string, targetValue *glib.Variant) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(actionName)
+	inArgs[1].SetPointer(targetValue.Native())
+
+	var ret gi.Argument
+
+	err := actionPrintDetailedNameFunction_Set()
+	if err == nil {
+		ret = actionPrintDetailedNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_app_info_create_from_commandline' : parameter 'flags' of type 'AppInfoCreateFlags' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_all' : return type 'GLib.List' not supported
+var appInfoGetAllFunction *gi.Function
+var appInfoGetAllFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_app_info_get_all_for_type' : return type 'GLib.List' not supported
+func appInfoGetAllFunction_Set() error {
+	var err error
+	appInfoGetAllFunction_Once.Do(func() {
+		appInfoGetAllFunction, err = gi.FunctionInvokerNew("Gio", "app_info_get_all")
+	})
+	return err
+}
+
+// AppInfoGetAll is a representation of the C type g_app_info_get_all.
+func AppInfoGetAll() *glib.List {
+
+	var ret gi.Argument
+
+	err := appInfoGetAllFunction_Set()
+	if err == nil {
+		ret = appInfoGetAllFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var appInfoGetAllForTypeFunction *gi.Function
+var appInfoGetAllForTypeFunction_Once sync.Once
+
+func appInfoGetAllForTypeFunction_Set() error {
+	var err error
+	appInfoGetAllForTypeFunction_Once.Do(func() {
+		appInfoGetAllForTypeFunction, err = gi.FunctionInvokerNew("Gio", "app_info_get_all_for_type")
+	})
+	return err
+}
+
+// AppInfoGetAllForType is a representation of the C type g_app_info_get_all_for_type.
+func AppInfoGetAllForType(contentType string) *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(contentType)
+
+	var ret gi.Argument
+
+	err := appInfoGetAllForTypeFunction_Set()
+	if err == nil {
+		ret = appInfoGetAllForTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_app_info_get_default_for_type' : return type 'AppInfo' not supported
 
 // UNSUPPORTED : C value 'g_app_info_get_default_for_uri_scheme' : return type 'AppInfo' not supported
 
-// UNSUPPORTED : C value 'g_app_info_get_fallback_for_type' : return type 'GLib.List' not supported
+var appInfoGetFallbackForTypeFunction *gi.Function
+var appInfoGetFallbackForTypeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_app_info_get_recommended_for_type' : return type 'GLib.List' not supported
+func appInfoGetFallbackForTypeFunction_Set() error {
+	var err error
+	appInfoGetFallbackForTypeFunction_Once.Do(func() {
+		appInfoGetFallbackForTypeFunction, err = gi.FunctionInvokerNew("Gio", "app_info_get_fallback_for_type")
+	})
+	return err
+}
+
+// AppInfoGetFallbackForType is a representation of the C type g_app_info_get_fallback_for_type.
+func AppInfoGetFallbackForType(contentType string) *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(contentType)
+
+	var ret gi.Argument
+
+	err := appInfoGetFallbackForTypeFunction_Set()
+	if err == nil {
+		ret = appInfoGetFallbackForTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var appInfoGetRecommendedForTypeFunction *gi.Function
+var appInfoGetRecommendedForTypeFunction_Once sync.Once
+
+func appInfoGetRecommendedForTypeFunction_Set() error {
+	var err error
+	appInfoGetRecommendedForTypeFunction_Once.Do(func() {
+		appInfoGetRecommendedForTypeFunction, err = gi.FunctionInvokerNew("Gio", "app_info_get_recommended_for_type")
+	})
+	return err
+}
+
+// AppInfoGetRecommendedForType is a representation of the C type g_app_info_get_recommended_for_type.
+func AppInfoGetRecommendedForType(contentType string) *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(contentType)
+
+	var ret gi.Argument
+
+	err := appInfoGetRecommendedForTypeFunction_Set()
+	if err == nil {
+		ret = appInfoGetRecommendedForTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var appInfoLaunchDefaultForUriFunction *gi.Function
 var appInfoLaunchDefaultForUriFunction_Once sync.Once
@@ -497,7 +656,31 @@ func ContentTypeIsUnknown(type_ string) bool {
 
 // UNSUPPORTED : C value 'g_content_type_set_mime_dirs' : parameter 'dirs' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_content_types_get_registered' : return type 'GLib.List' not supported
+var contentTypesGetRegisteredFunction *gi.Function
+var contentTypesGetRegisteredFunction_Once sync.Once
+
+func contentTypesGetRegisteredFunction_Set() error {
+	var err error
+	contentTypesGetRegisteredFunction_Once.Do(func() {
+		contentTypesGetRegisteredFunction, err = gi.FunctionInvokerNew("Gio", "content_types_get_registered")
+	})
+	return err
+}
+
+// ContentTypesGetRegistered is a representation of the C type g_content_types_get_registered.
+func ContentTypesGetRegistered() *glib.List {
+
+	var ret gi.Argument
+
+	err := contentTypesGetRegisteredFunction_Set()
+	if err == nil {
+		ret = contentTypesGetRegisteredFunction.Invoke(nil, nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var dbusAddressEscapeValueFunction *gi.Function
 var dbusAddressEscapeValueFunction_Once sync.Once
@@ -593,13 +776,118 @@ func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStre
 
 // UNSUPPORTED : C value 'g_dbus_annotation_info_lookup' : parameter 'annotations' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_dbus_error_encode_gerror' : parameter 'error' of type 'GLib.Error' not supported
+var dbusErrorEncodeGerrorFunction *gi.Function
+var dbusErrorEncodeGerrorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_dbus_error_get_remote_error' : parameter 'error' of type 'GLib.Error' not supported
+func dbusErrorEncodeGerrorFunction_Set() error {
+	var err error
+	dbusErrorEncodeGerrorFunction_Once.Do(func() {
+		dbusErrorEncodeGerrorFunction, err = gi.FunctionInvokerNew("Gio", "dbus_error_encode_gerror")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_dbus_error_is_remote_error' : parameter 'error' of type 'GLib.Error' not supported
+// DbusErrorEncodeGerror is a representation of the C type g_dbus_error_encode_gerror.
+func DbusErrorEncodeGerror(error *glib.Error) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(error.Native())
 
-// UNSUPPORTED : C value 'g_dbus_error_new_for_dbus_error' : return type 'GLib.Error' not supported
+	var ret gi.Argument
+
+	err := dbusErrorEncodeGerrorFunction_Set()
+	if err == nil {
+		ret = dbusErrorEncodeGerrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var dbusErrorGetRemoteErrorFunction *gi.Function
+var dbusErrorGetRemoteErrorFunction_Once sync.Once
+
+func dbusErrorGetRemoteErrorFunction_Set() error {
+	var err error
+	dbusErrorGetRemoteErrorFunction_Once.Do(func() {
+		dbusErrorGetRemoteErrorFunction, err = gi.FunctionInvokerNew("Gio", "dbus_error_get_remote_error")
+	})
+	return err
+}
+
+// DbusErrorGetRemoteError is a representation of the C type g_dbus_error_get_remote_error.
+func DbusErrorGetRemoteError(error *glib.Error) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(error.Native())
+
+	var ret gi.Argument
+
+	err := dbusErrorGetRemoteErrorFunction_Set()
+	if err == nil {
+		ret = dbusErrorGetRemoteErrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var dbusErrorIsRemoteErrorFunction *gi.Function
+var dbusErrorIsRemoteErrorFunction_Once sync.Once
+
+func dbusErrorIsRemoteErrorFunction_Set() error {
+	var err error
+	dbusErrorIsRemoteErrorFunction_Once.Do(func() {
+		dbusErrorIsRemoteErrorFunction, err = gi.FunctionInvokerNew("Gio", "dbus_error_is_remote_error")
+	})
+	return err
+}
+
+// DbusErrorIsRemoteError is a representation of the C type g_dbus_error_is_remote_error.
+func DbusErrorIsRemoteError(error *glib.Error) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(error.Native())
+
+	var ret gi.Argument
+
+	err := dbusErrorIsRemoteErrorFunction_Set()
+	if err == nil {
+		ret = dbusErrorIsRemoteErrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var dbusErrorNewForDbusErrorFunction *gi.Function
+var dbusErrorNewForDbusErrorFunction_Once sync.Once
+
+func dbusErrorNewForDbusErrorFunction_Set() error {
+	var err error
+	dbusErrorNewForDbusErrorFunction_Once.Do(func() {
+		dbusErrorNewForDbusErrorFunction, err = gi.FunctionInvokerNew("Gio", "dbus_error_new_for_dbus_error")
+	})
+	return err
+}
+
+// DbusErrorNewForDbusError is a representation of the C type g_dbus_error_new_for_dbus_error.
+func DbusErrorNewForDbusError(dbusErrorName string, dbusErrorMessage string) *glib.Error {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(dbusErrorName)
+	inArgs[1].SetString(dbusErrorMessage)
+
+	var ret gi.Argument
+
+	err := dbusErrorNewForDbusErrorFunction_Set()
+	if err == nil {
+		ret = dbusErrorNewForDbusErrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ErrorNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var dbusErrorQuarkFunction *gi.Function
 var dbusErrorQuarkFunction_Once sync.Once
@@ -659,7 +947,33 @@ func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorNa
 
 // UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : parameter 'entries' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_dbus_error_strip_remote_error' : parameter 'error' of type 'GLib.Error' not supported
+var dbusErrorStripRemoteErrorFunction *gi.Function
+var dbusErrorStripRemoteErrorFunction_Once sync.Once
+
+func dbusErrorStripRemoteErrorFunction_Set() error {
+	var err error
+	dbusErrorStripRemoteErrorFunction_Once.Do(func() {
+		dbusErrorStripRemoteErrorFunction, err = gi.FunctionInvokerNew("Gio", "dbus_error_strip_remote_error")
+	})
+	return err
+}
+
+// DbusErrorStripRemoteError is a representation of the C type g_dbus_error_strip_remote_error.
+func DbusErrorStripRemoteError(error *glib.Error) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(error.Native())
+
+	var ret gi.Argument
+
+	err := dbusErrorStripRemoteErrorFunction_Set()
+	if err == nil {
+		ret = dbusErrorStripRemoteErrorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var dbusErrorUnregisterErrorFunction *gi.Function
 var dbusErrorUnregisterErrorFunction_Once sync.Once
@@ -717,9 +1031,62 @@ func DbusGenerateGuid() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_gvalue_to_gvariant' : parameter 'gvalue' of type 'GObject.Value' not supported
+var dbusGvalueToGvariantFunction *gi.Function
+var dbusGvalueToGvariantFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_dbus_gvariant_to_gvalue' : parameter 'value' of type 'GLib.Variant' not supported
+func dbusGvalueToGvariantFunction_Set() error {
+	var err error
+	dbusGvalueToGvariantFunction_Once.Do(func() {
+		dbusGvalueToGvariantFunction, err = gi.FunctionInvokerNew("Gio", "dbus_gvalue_to_gvariant")
+	})
+	return err
+}
+
+// DbusGvalueToGvariant is a representation of the C type g_dbus_gvalue_to_gvariant.
+func DbusGvalueToGvariant(gvalue *gobject.Value, type_ *glib.VariantType) *glib.Variant {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(gvalue.Native())
+	inArgs[1].SetPointer(type_.Native())
+
+	var ret gi.Argument
+
+	err := dbusGvalueToGvariantFunction_Set()
+	if err == nil {
+		ret = dbusGvalueToGvariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var dbusGvariantToGvalueFunction *gi.Function
+var dbusGvariantToGvalueFunction_Once sync.Once
+
+func dbusGvariantToGvalueFunction_Set() error {
+	var err error
+	dbusGvariantToGvalueFunction_Once.Do(func() {
+		dbusGvariantToGvalueFunction, err = gi.FunctionInvokerNew("Gio", "dbus_gvariant_to_gvalue")
+	})
+	return err
+}
+
+// DbusGvariantToGvalue is a representation of the C type g_dbus_gvariant_to_gvalue.
+func DbusGvariantToGvalue(value *glib.Variant) *gobject.Value {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(value.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := dbusGvariantToGvalueFunction_Set()
+	if err == nil {
+		dbusGvariantToGvalueFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gobject.ValueNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var dbusIsAddressFunction *gi.Function
 var dbusIsAddressFunction_Once sync.Once
@@ -933,7 +1300,7 @@ func DbusIsUniqueName(string_ string) bool {
 
 // UNSUPPORTED : C value 'g_file_parse_name' : return type 'File' not supported
 
-// UNSUPPORTED : C value 'g_icon_deserialize' : parameter 'value' of type 'GLib.Variant' not supported
+// UNSUPPORTED : C value 'g_icon_deserialize' : return type 'Icon' not supported
 
 // UNSUPPORTED : C value 'g_icon_hash' : parameter 'icon' of type 'gpointer' not supported
 
@@ -1053,9 +1420,62 @@ func IoExtensionPointRegister(name string) *IOExtensionPoint {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_modules_load_all_in_directory' : return type 'GLib.List' not supported
+var ioModulesLoadAllInDirectoryFunction *gi.Function
+var ioModulesLoadAllInDirectoryFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_io_modules_load_all_in_directory_with_scope' : return type 'GLib.List' not supported
+func ioModulesLoadAllInDirectoryFunction_Set() error {
+	var err error
+	ioModulesLoadAllInDirectoryFunction_Once.Do(func() {
+		ioModulesLoadAllInDirectoryFunction, err = gi.FunctionInvokerNew("Gio", "io_modules_load_all_in_directory")
+	})
+	return err
+}
+
+// IoModulesLoadAllInDirectory is a representation of the C type g_io_modules_load_all_in_directory.
+func IoModulesLoadAllInDirectory(dirname string) *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(dirname)
+
+	var ret gi.Argument
+
+	err := ioModulesLoadAllInDirectoryFunction_Set()
+	if err == nil {
+		ret = ioModulesLoadAllInDirectoryFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var ioModulesLoadAllInDirectoryWithScopeFunction *gi.Function
+var ioModulesLoadAllInDirectoryWithScopeFunction_Once sync.Once
+
+func ioModulesLoadAllInDirectoryWithScopeFunction_Set() error {
+	var err error
+	ioModulesLoadAllInDirectoryWithScopeFunction_Once.Do(func() {
+		ioModulesLoadAllInDirectoryWithScopeFunction, err = gi.FunctionInvokerNew("Gio", "io_modules_load_all_in_directory_with_scope")
+	})
+	return err
+}
+
+// IoModulesLoadAllInDirectoryWithScope is a representation of the C type g_io_modules_load_all_in_directory_with_scope.
+func IoModulesLoadAllInDirectoryWithScope(dirname string, scope *IOModuleScope) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(dirname)
+	inArgs[1].SetPointer(scope.Native())
+
+	var ret gi.Argument
+
+	err := ioModulesLoadAllInDirectoryWithScopeFunction_Set()
+	if err == nil {
+		ret = ioModulesLoadAllInDirectoryWithScopeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var ioModulesScanAllInDirectoryFunction *gi.Function
 var ioModulesScanAllInDirectoryFunction_Once sync.Once
@@ -1236,9 +1656,63 @@ func NullSettingsBackendNew() *SettingsBackend {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_pollable_source_new' : return type 'GLib.Source' not supported
+var pollableSourceNewFunction *gi.Function
+var pollableSourceNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_pollable_source_new_full' : parameter 'child_source' of type 'GLib.Source' not supported
+func pollableSourceNewFunction_Set() error {
+	var err error
+	pollableSourceNewFunction_Once.Do(func() {
+		pollableSourceNewFunction, err = gi.FunctionInvokerNew("Gio", "pollable_source_new")
+	})
+	return err
+}
+
+// PollableSourceNew is a representation of the C type g_pollable_source_new.
+func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(pollableStream.Native())
+
+	var ret gi.Argument
+
+	err := pollableSourceNewFunction_Set()
+	if err == nil {
+		ret = pollableSourceNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SourceNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var pollableSourceNewFullFunction *gi.Function
+var pollableSourceNewFullFunction_Once sync.Once
+
+func pollableSourceNewFullFunction_Set() error {
+	var err error
+	pollableSourceNewFullFunction_Once.Do(func() {
+		pollableSourceNewFullFunction, err = gi.FunctionInvokerNew("Gio", "pollable_source_new_full")
+	})
+	return err
+}
+
+// PollableSourceNewFull is a representation of the C type g_pollable_source_new_full.
+func PollableSourceNewFull(pollableStream *gobject.Object, childSource *glib.Source, cancellable *Cancellable) *glib.Source {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(pollableStream.Native())
+	inArgs[1].SetPointer(childSource.Native())
+	inArgs[2].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := pollableSourceNewFullFunction_Set()
+	if err == nil {
+		ret = pollableSourceNewFullFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SourceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_pollable_stream_read' : parameter 'buffer' of type 'nil' not supported
 
@@ -1418,7 +1892,33 @@ func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
 
 // UNSUPPORTED : C value 'g_simple_async_report_take_gerror_in_idle' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_srv_target_list_sort' : parameter 'targets' of type 'GLib.List' not supported
+var srvTargetListSortFunction *gi.Function
+var srvTargetListSortFunction_Once sync.Once
+
+func srvTargetListSortFunction_Set() error {
+	var err error
+	srvTargetListSortFunction_Once.Do(func() {
+		srvTargetListSortFunction, err = gi.FunctionInvokerNew("Gio", "srv_target_list_sort")
+	})
+	return err
+}
+
+// SrvTargetListSort is a representation of the C type g_srv_target_list_sort.
+func SrvTargetListSort(targets *glib.List) *glib.List {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(targets.Native())
+
+	var ret gi.Argument
+
+	err := srvTargetListSortFunction_Set()
+	if err == nil {
+		ret = srvTargetListSortFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_tls_backend_get_default' : return type 'TlsBackend' not supported
 
@@ -1991,7 +2491,33 @@ func UnixMountPointsChangedSince(time uint64) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_points_get' : return type 'GLib.List' not supported
+var unixMountPointsGetFunction *gi.Function
+var unixMountPointsGetFunction_Once sync.Once
+
+func unixMountPointsGetFunction_Set() error {
+	var err error
+	unixMountPointsGetFunction_Once.Do(func() {
+		unixMountPointsGetFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_points_get")
+	})
+	return err
+}
+
+// UnixMountPointsGet is a representation of the C type g_unix_mount_points_get.
+func UnixMountPointsGet() (*glib.List, uint64) {
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := unixMountPointsGetFunction_Set()
+	if err == nil {
+		ret = unixMountPointsGetFunction.Invoke(nil, outArgs[:])
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+	out0 := outArgs[0].Uint64()
+
+	return retGo, out0
+}
 
 var unixMountsChangedSinceFunction *gi.Function
 var unixMountsChangedSinceFunction_Once sync.Once
@@ -2021,4 +2547,30 @@ func UnixMountsChangedSince(time uint64) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_unix_mounts_get' : return type 'GLib.List' not supported
+var unixMountsGetFunction *gi.Function
+var unixMountsGetFunction_Once sync.Once
+
+func unixMountsGetFunction_Set() error {
+	var err error
+	unixMountsGetFunction_Once.Do(func() {
+		unixMountsGetFunction, err = gi.FunctionInvokerNew("Gio", "unix_mounts_get")
+	})
+	return err
+}
+
+// UnixMountsGet is a representation of the C type g_unix_mounts_get.
+func UnixMountsGet() (*glib.List, uint64) {
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := unixMountsGetFunction_Set()
+	if err == nil {
+		ret = unixMountsGetFunction.Invoke(nil, outArgs[:])
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+	out0 := outArgs[0].Uint64()
+
+	return retGo, out0
+}
