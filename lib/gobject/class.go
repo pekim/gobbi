@@ -751,7 +751,15 @@ ConnectNotify connects a callback to the 'notify' signal of the Object.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Object) ConnectNotify(handler func(instance *Object, pspec *ParamSpec)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ObjectNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := ParamSpecNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "notify", marshal)
 }

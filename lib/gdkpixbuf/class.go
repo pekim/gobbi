@@ -2465,7 +2465,12 @@ ConnectAreaPrepared connects a callback to the 'area-prepared' signal of the Pix
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *PixbufLoader) ConnectAreaPrepared(handler func(instance *PixbufLoader)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PixbufLoaderNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "area-prepared", marshal)
 }
@@ -2476,7 +2481,24 @@ ConnectAreaUpdated connects a callback to the 'area-updated' signal of the Pixbu
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *PixbufLoader) ConnectAreaUpdated(handler func(instance *PixbufLoader, x int32, y int32, width int32, height int32)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PixbufLoaderNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetInt()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetInt()
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := object3.GetInt()
+
+		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
+		arg4 := object4.GetInt()
+
+		handler(argInstance, arg1, arg2, arg3, arg4)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "area-updated", marshal)
 }
@@ -2487,7 +2509,12 @@ ConnectClosed connects a callback to the 'closed' signal of the PixbufLoader.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *PixbufLoader) ConnectClosed(handler func(instance *PixbufLoader)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PixbufLoaderNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "closed", marshal)
 }
@@ -2498,7 +2525,18 @@ ConnectSizePrepared connects a callback to the 'size-prepared' signal of the Pix
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *PixbufLoader) ConnectSizePrepared(handler func(instance *PixbufLoader, width int32, height int32)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PixbufLoaderNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetInt()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetInt()
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "size-prepared", marshal)
 }

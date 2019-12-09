@@ -2388,7 +2388,12 @@ ConnectCleared connects a callback to the 'cleared' signal of the WeakValue.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WeakValue) ConnectCleared(handler func(instance *WeakValue)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WeakValueNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "cleared", marshal)
 }

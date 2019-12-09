@@ -1245,7 +1245,12 @@ ConnectEditingDone connects a callback to the 'editing-done' signal of the CellE
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *CellEditable) ConnectEditingDone(handler func(instance *CellEditable)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CellEditableNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "editing-done", marshal)
 }
@@ -1256,7 +1261,12 @@ ConnectRemoveWidget connects a callback to the 'remove-widget' signal of the Cel
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *CellEditable) ConnectRemoveWidget(handler func(instance *CellEditable)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CellEditableNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "remove-widget", marshal)
 }
@@ -1724,7 +1734,15 @@ ConnectColorActivated connects a callback to the 'color-activated' signal of the
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *ColorChooser) ConnectColorActivated(handler func(instance *ColorChooser, color *gdk.RGBA)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ColorChooserNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := gdk.RGBANewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "color-activated", marshal)
 }
@@ -2181,7 +2199,12 @@ ConnectChanged connects a callback to the 'changed' signal of the Editable.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Editable) ConnectChanged(handler func(instance *Editable)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := EditableNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
 }
@@ -2192,7 +2215,18 @@ ConnectDeleteText connects a callback to the 'delete-text' signal of the Editabl
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Editable) ConnectDeleteText(handler func(instance *Editable, startPos int32, endPos int32)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := EditableNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetInt()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetInt()
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "delete-text", marshal)
 }
@@ -2203,7 +2237,9 @@ ConnectInsertText connects a callback to the 'insert-text' signal of the Editabl
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Editable) ConnectInsertText(handler func(instance *Editable, newText string, newTextLength int32, position int32) int32) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// Has out params
+	}
 
 	return callback.ConnectSignal(recv.Native(), "insert-text", marshal)
 }
@@ -3988,7 +4024,9 @@ ConnectConfirmOverwrite connects a callback to the 'confirm-overwrite' signal of
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *FileChooser) ConnectConfirmOverwrite(handler func(instance *FileChooser) FileChooserConfirmation) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : FileChooserConfirmation
+	}
 
 	return callback.ConnectSignal(recv.Native(), "confirm-overwrite", marshal)
 }
@@ -3999,7 +4037,12 @@ ConnectCurrentFolderChanged connects a callback to the 'current-folder-changed' 
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *FileChooser) ConnectCurrentFolderChanged(handler func(instance *FileChooser)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := FileChooserNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "current-folder-changed", marshal)
 }
@@ -4010,7 +4053,12 @@ ConnectFileActivated connects a callback to the 'file-activated' signal of the F
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *FileChooser) ConnectFileActivated(handler func(instance *FileChooser)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := FileChooserNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "file-activated", marshal)
 }
@@ -4021,7 +4069,12 @@ ConnectSelectionChanged connects a callback to the 'selection-changed' signal of
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *FileChooser) ConnectSelectionChanged(handler func(instance *FileChooser)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := FileChooserNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "selection-changed", marshal)
 }
@@ -4032,7 +4085,12 @@ ConnectUpdatePreview connects a callback to the 'update-preview' signal of the F
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *FileChooser) ConnectUpdatePreview(handler func(instance *FileChooser)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := FileChooserNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "update-preview", marshal)
 }
@@ -4591,7 +4649,15 @@ ConnectFontActivated connects a callback to the 'font-activated' signal of the F
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *FontChooser) ConnectFontActivated(handler func(instance *FontChooser, fontname string)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := FontChooserNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetString()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "font-activated", marshal)
 }
@@ -4840,7 +4906,18 @@ ConnectGotPageSize connects a callback to the 'got-page-size' signal of the Prin
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *PrintOperationPreview) ConnectGotPageSize(handler func(instance *PrintOperationPreview, context *PrintContext, pageSetup *PageSetup)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PrintOperationPreviewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := PrintContextNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := PageSetupNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "got-page-size", marshal)
 }
@@ -4851,7 +4928,15 @@ ConnectReady connects a callback to the 'ready' signal of the PrintOperationPrev
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *PrintOperationPreview) ConnectReady(handler func(instance *PrintOperationPreview, context *PrintContext)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PrintOperationPreviewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := PrintContextNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "ready", marshal)
 }
@@ -5830,7 +5915,12 @@ ConnectItemActivated connects a callback to the 'item-activated' signal of the R
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *RecentChooser) ConnectItemActivated(handler func(instance *RecentChooser)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := RecentChooserNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "item-activated", marshal)
 }
@@ -5841,7 +5931,12 @@ ConnectSelectionChanged connects a callback to the 'selection-changed' signal of
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *RecentChooser) ConnectSelectionChanged(handler func(instance *RecentChooser)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := RecentChooserNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "selection-changed", marshal)
 }
@@ -7561,7 +7656,18 @@ ConnectRowChanged connects a callback to the 'row-changed' signal of the TreeMod
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *TreeModel) ConnectRowChanged(handler func(instance *TreeModel, path *TreePath, iter *TreeIter)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := TreePathNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := TreeIterNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "row-changed", marshal)
 }
@@ -7572,7 +7678,15 @@ ConnectRowDeleted connects a callback to the 'row-deleted' signal of the TreeMod
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *TreeModel) ConnectRowDeleted(handler func(instance *TreeModel, path *TreePath)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := TreePathNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "row-deleted", marshal)
 }
@@ -7583,7 +7697,18 @@ ConnectRowHasChildToggled connects a callback to the 'row-has-child-toggled' sig
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *TreeModel) ConnectRowHasChildToggled(handler func(instance *TreeModel, path *TreePath, iter *TreeIter)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := TreePathNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := TreeIterNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "row-has-child-toggled", marshal)
 }
@@ -7594,7 +7719,18 @@ ConnectRowInserted connects a callback to the 'row-inserted' signal of the TreeM
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *TreeModel) ConnectRowInserted(handler func(instance *TreeModel, path *TreePath, iter *TreeIter)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := TreePathNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := TreeIterNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "row-inserted", marshal)
 }
@@ -7784,7 +7920,12 @@ ConnectSortColumnChanged connects a callback to the 'sort-column-changed' signal
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *TreeSortable) ConnectSortColumnChanged(handler func(instance *TreeSortable)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := TreeSortableNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "sort-column-changed", marshal)
 }

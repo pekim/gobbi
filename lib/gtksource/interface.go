@@ -312,7 +312,12 @@ ConnectChanged connects a callback to the 'changed' signal of the CompletionProp
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *CompletionProposal) ConnectChanged(handler func(instance *CompletionProposal)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CompletionProposalNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
 }
@@ -976,7 +981,12 @@ ConnectCanRedoChanged connects a callback to the 'can-redo-changed' signal of th
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *UndoManager) ConnectCanRedoChanged(handler func(instance *UndoManager)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := UndoManagerNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "can-redo-changed", marshal)
 }
@@ -987,7 +997,12 @@ ConnectCanUndoChanged connects a callback to the 'can-undo-changed' signal of th
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *UndoManager) ConnectCanUndoChanged(handler func(instance *UndoManager)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := UndoManagerNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "can-undo-changed", marshal)
 }

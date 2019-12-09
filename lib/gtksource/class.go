@@ -1154,7 +1154,18 @@ ConnectBracketMatched connects a callback to the 'bracket-matched' signal of the
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Buffer) ConnectBracketMatched(handler func(instance *Buffer, iter *gtk.TextIter, state BracketMatchType)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := BufferNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := gtk.TextIterNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := (BracketMatchType)(object2.GetInt())
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "bracket-matched", marshal)
 }
@@ -1165,7 +1176,18 @@ ConnectHighlightUpdated connects a callback to the 'highlight-updated' signal of
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Buffer) ConnectHighlightUpdated(handler func(instance *Buffer, start *gtk.TextIter, end *gtk.TextIter)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := BufferNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := gtk.TextIterNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := gtk.TextIterNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "highlight-updated", marshal)
 }
@@ -1176,7 +1198,12 @@ ConnectRedo connects a callback to the 'redo' signal of the Buffer.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Buffer) ConnectRedo(handler func(instance *Buffer)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := BufferNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "redo", marshal)
 }
@@ -1187,7 +1214,15 @@ ConnectSourceMarkUpdated connects a callback to the 'source-mark-updated' signal
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Buffer) ConnectSourceMarkUpdated(handler func(instance *Buffer, mark *gtk.TextMark)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := BufferNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := gtk.TextMarkNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "source-mark-updated", marshal)
 }
@@ -1198,7 +1233,12 @@ ConnectUndo connects a callback to the 'undo' signal of the Buffer.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Buffer) ConnectUndo(handler func(instance *Buffer)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := BufferNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "undo", marshal)
 }
@@ -1581,7 +1621,12 @@ ConnectActivateProposal connects a callback to the 'activate-proposal' signal of
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Completion) ConnectActivateProposal(handler func(instance *Completion)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CompletionNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "activate-proposal", marshal)
 }
@@ -1592,7 +1637,12 @@ ConnectHide connects a callback to the 'hide' signal of the Completion.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Completion) ConnectHide(handler func(instance *Completion)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CompletionNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "hide", marshal)
 }
@@ -1607,7 +1657,15 @@ ConnectPopulateContext connects a callback to the 'populate-context' signal of t
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Completion) ConnectPopulateContext(handler func(instance *Completion, context *CompletionContext)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CompletionNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := CompletionContextNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "populate-context", marshal)
 }
@@ -1618,7 +1676,12 @@ ConnectShow connects a callback to the 'show' signal of the Completion.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Completion) ConnectShow(handler func(instance *Completion)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CompletionNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "show", marshal)
 }
@@ -1769,7 +1832,12 @@ ConnectCancelled connects a callback to the 'cancelled' signal of the Completion
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *CompletionContext) ConnectCancelled(handler func(instance *CompletionContext)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CompletionContextNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "cancelled", marshal)
 }
@@ -2018,7 +2086,12 @@ ConnectBeforeShow connects a callback to the 'before-show' signal of the Complet
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *CompletionInfo) ConnectBeforeShow(handler func(instance *CompletionInfo)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CompletionInfoNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "before-show", marshal)
 }
@@ -4719,7 +4792,9 @@ ConnectQueryTooltip connects a callback to the 'query-tooltip' signal of the Gut
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *GutterRenderer) ConnectQueryTooltip(handler func(instance *GutterRenderer, iter *gtk.TextIter, area *gdk.Rectangle, x int32, y int32, tooltip *gtk.Tooltip) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "query-tooltip", marshal)
 }
@@ -4730,7 +4805,12 @@ ConnectQueueDraw connects a callback to the 'queue-draw' signal of the GutterRen
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *GutterRenderer) ConnectQueueDraw(handler func(instance *GutterRenderer)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := GutterRendererNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "queue-draw", marshal)
 }
@@ -6747,7 +6827,9 @@ ConnectQueryTooltipMarkup connects a callback to the 'query-tooltip-markup' sign
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *MarkAttributes) ConnectQueryTooltipMarkup(handler func(instance *MarkAttributes, mark *Mark) string) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : utf8
+	}
 
 	return callback.ConnectSignal(recv.Native(), "query-tooltip-markup", marshal)
 }
@@ -6758,7 +6840,9 @@ ConnectQueryTooltipText connects a callback to the 'query-tooltip-text' signal o
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *MarkAttributes) ConnectQueryTooltipText(handler func(instance *MarkAttributes, mark *Mark) string) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : utf8
+	}
 
 	return callback.ConnectSignal(recv.Native(), "query-tooltip-text", marshal)
 }
@@ -11787,7 +11871,15 @@ ConnectChangeCase connects a callback to the 'change-case' signal of the View.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *View) ConnectChangeCase(handler func(instance *View, caseType ChangeCaseType)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := (ChangeCaseType)(object1.GetInt())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "change-case", marshal)
 }
@@ -11798,7 +11890,15 @@ ConnectChangeNumber connects a callback to the 'change-number' signal of the Vie
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *View) ConnectChangeNumber(handler func(instance *View, count int32)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetInt()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "change-number", marshal)
 }
@@ -11809,7 +11909,12 @@ ConnectJoinLines connects a callback to the 'join-lines' signal of the View.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *View) ConnectJoinLines(handler func(instance *View)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "join-lines", marshal)
 }
@@ -11822,7 +11927,18 @@ ConnectMoveLines connects a callback to the 'move-lines' signal of the View.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *View) ConnectMoveLines(handler func(instance *View, copy bool, count int32)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetBoolean()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetInt()
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "move-lines", marshal)
 }
@@ -11833,7 +11949,15 @@ ConnectMoveToMatchingBracket connects a callback to the 'move-to-matching-bracke
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *View) ConnectMoveToMatchingBracket(handler func(instance *View, extendSelection bool)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetBoolean()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "move-to-matching-bracket", marshal)
 }
@@ -11844,7 +11968,15 @@ ConnectMoveWords connects a callback to the 'move-words' signal of the View.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *View) ConnectMoveWords(handler func(instance *View, count int32)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetInt()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "move-words", marshal)
 }
@@ -11855,7 +11987,12 @@ ConnectRedo connects a callback to the 'redo' signal of the View.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *View) ConnectRedo(handler func(instance *View)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "redo", marshal)
 }
@@ -11866,7 +12003,12 @@ ConnectShowCompletion connects a callback to the 'show-completion' signal of the
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *View) ConnectShowCompletion(handler func(instance *View)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "show-completion", marshal)
 }
@@ -11877,7 +12019,18 @@ ConnectSmartHomeEnd connects a callback to the 'smart-home-end' signal of the Vi
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *View) ConnectSmartHomeEnd(handler func(instance *View, iter *gtk.TextIter, count int32)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := gtk.TextIterNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetInt()
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "smart-home-end", marshal)
 }
@@ -11888,7 +12041,12 @@ ConnectUndo connects a callback to the 'undo' signal of the View.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *View) ConnectUndo(handler func(instance *View)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "undo", marshal)
 }

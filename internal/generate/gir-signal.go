@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"fmt"
 	"github.com/dave/jennifer/jen"
 	"github.com/pekim/gobbi/internal/cgo/callback"
 )
@@ -60,7 +61,7 @@ The returned value represents the connection, and may be passed to the Disconnec
 
 	// GEN: func (recv *Device) ConnectShow() int {...}
 	s.record.methodPrelude(f, methodName).
-		ParamsFunc(s.generateHandlerParam).
+		ParamsFunc(s.generateHandlerParameter).
 		Params(jen.Int()).
 		BlockFunc(func(g *jen.Group) {
 			s.generateMarshalFunc(g, marshalName)
@@ -81,7 +82,7 @@ The returned value represents the connection, and may be passed to the Disconnec
 	f.Line()
 }
 
-func (s *Signal) generateHandlerParam(g *jen.Group) {
+func (s *Signal) generateHandlerParameter(g *jen.Group) {
 	g.
 		Id("handler").
 		Func().
@@ -109,6 +110,101 @@ func (s *Signal) generateMarshalFunc(g *jen.Group, marshalName string) {
 }
 
 func (s *Signal) generateMarshalBody(g *jen.Group) {
+	if s.Parameters.outCount() > 0 {
+		g.Commentf("Has out params")
+		return
+	}
+
+	if s.ReturnValue.Type.Name != "none" {
+		g.Commentf("has return : %s", s.ReturnValue.Type.Name)
+		return
+	}
+
+	s.generateMarshalBodyInstanceParam(g)
+	s.generateMarshalBodyInParams(g)
+	s.generateMarshalBodyCallHandler(g)
+}
+
+func (s *Signal) generateMarshalBodyInstanceParam(g *jen.Group) {
+	objectVarName := "objectInstance"
+
+	gobjectNs, _ := s.Namespace.namespaces.byName("GObject")
+	var valueNewFromNative *jen.Statement
+	if s.Namespace == gobjectNs {
+		valueNewFromNative = jen.Id("ValueNewFromNative")
+	} else {
+		valueNewFromNative = jen.Qual(gobjectNs.goFullPackageName, "ValueNewFromNative")
+	}
+
+	// GEN: value0 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+	g.
+		Id(objectVarName).
+		Op(":=").
+		Add(valueNewFromNative).
+		Call(jen.
+			Qual("unsafe", "Pointer").
+			Call(jen.Op("&").Id("paramValues").Index(jen.Lit(0))),
+		)
+
+	// GEN: WidgetNewFromNative(value0.GetObject().Native())
+	g.
+		Id("argInstance").Op(":=").
+		Id(s.record.newFromNativeName).
+		Call(jen.
+			Id(objectVarName).Dot("GetObject").Call().
+			Dot("Native").Call())
+
+	g.Line()
+}
+
+func (s *Signal) generateMarshalBodyInParams(g *jen.Group) {
+	gobjectNs, _ := s.Namespace.namespaces.byName("GObject")
+	var valueNewFromNative *jen.Statement
+	if s.Namespace == gobjectNs {
+		valueNewFromNative = jen.Id("ValueNewFromNative")
+	} else {
+		valueNewFromNative = jen.Qual(gobjectNs.goFullPackageName, "ValueNewFromNative")
+	}
+
+	for p, param := range s.Parameters {
+		if !param.isIn() {
+			continue
+		}
+
+		objectVarName := fmt.Sprintf("object%d", p+1)
+		argVarName := fmt.Sprintf("arg%d", p+1)
+
+		// GEN: object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		g.
+			Id(objectVarName).
+			Op(":=").
+			Add(valueNewFromNative).
+			Call(jen.
+				Qual("unsafe", "Pointer").
+				Call(jen.Op("&").Id("paramValues").Index(jen.Lit(p + 1))),
+			)
+
+		// GEN: arg1 := ...
+		g.Id(argVarName).Op(":=").Do(func(s *jen.Statement) {
+			param.generateValueFromObject(s, objectVarName)
+		})
+
+		g.Line()
+	}
+}
+
+func (s *Signal) generateMarshalBodyCallHandler(g *jen.Group) {
+	g.Id("handler").CallFunc(func(g *jen.Group) {
+		g.Id("argInstance")
+
+		for p, param := range s.Parameters {
+			if !param.isIn() {
+				continue
+			}
+
+			g.Id(fmt.Sprintf("arg%d", p+1))
+		}
+	})
 }
 
 //func (recv *Widget) ConnectShow(handler func(widget *Widget)) int {

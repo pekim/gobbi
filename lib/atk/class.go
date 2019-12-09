@@ -451,7 +451,12 @@ ConnectLinkActivated connects a callback to the 'link-activated' signal of the H
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Hyperlink) ConnectLinkActivated(handler func(instance *Hyperlink)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := HyperlinkNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "link-activated", marshal)
 }
@@ -1755,7 +1760,15 @@ ConnectActiveDescendantChanged connects a callback to the 'active-descendant-cha
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Object) ConnectActiveDescendantChanged(handler func(instance *Object, arg1 *Object)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ObjectNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := ObjectNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "active-descendant-changed", marshal)
 }
@@ -1766,7 +1779,18 @@ ConnectChildrenChanged connects a callback to the 'children-changed' signal of t
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Object) ConnectChildrenChanged(handler func(instance *Object, arg1 uint32, arg2 *Object)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ObjectNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetUint()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := ObjectNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "children-changed", marshal)
 }
@@ -1777,7 +1801,15 @@ ConnectFocusEvent connects a callback to the 'focus-event' signal of the Object.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Object) ConnectFocusEvent(handler func(instance *Object, arg1 bool)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ObjectNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetBoolean()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "focus-event", marshal)
 }
@@ -1788,7 +1820,15 @@ ConnectPropertyChange connects a callback to the 'property-change' signal of the
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Object) ConnectPropertyChange(handler func(instance *Object, arg1 *PropertyValues)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ObjectNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := PropertyValuesNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "property-change", marshal)
 }
@@ -1799,7 +1839,18 @@ ConnectStateChange connects a callback to the 'state-change' signal of the Objec
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Object) ConnectStateChange(handler func(instance *Object, arg1 string, arg2 bool)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ObjectNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetString()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetBoolean()
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "state-change", marshal)
 }
@@ -1810,7 +1861,12 @@ ConnectVisibleDataChanged connects a callback to the 'visible-data-changed' sign
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Object) ConnectVisibleDataChanged(handler func(instance *Object)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ObjectNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "visible-data-changed", marshal)
 }

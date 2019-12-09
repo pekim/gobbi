@@ -407,7 +407,12 @@ ConnectCancelled connects a callback to the 'cancelled' signal of the Authentica
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *AuthenticationRequest) ConnectCancelled(handler func(instance *AuthenticationRequest)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := AuthenticationRequestNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "cancelled", marshal)
 }
@@ -603,7 +608,9 @@ ConnectCreateWebView connects a callback to the 'create-web-view' signal of the 
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *AutomationSession) ConnectCreateWebView(handler func(instance *AutomationSession) *WebView) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : WebView
+	}
 
 	return callback.ConnectSignal(recv.Native(), "create-web-view", marshal)
 }
@@ -1410,7 +1417,12 @@ ConnectFinished connects a callback to the 'finished' signal of the ColorChooser
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *ColorChooserRequest) ConnectFinished(handler func(instance *ColorChooserRequest)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ColorChooserRequestNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "finished", marshal)
 }
@@ -2604,7 +2616,12 @@ ConnectChanged connects a callback to the 'changed' signal of the CookieManager.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *CookieManager) ConnectChanged(handler func(instance *CookieManager)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CookieManagerNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
 }
@@ -3123,7 +3140,15 @@ ConnectCreatedDestination connects a callback to the 'created-destination' signa
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Download) ConnectCreatedDestination(handler func(instance *Download, destination string)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DownloadNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetString()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "created-destination", marshal)
 }
@@ -3134,7 +3159,9 @@ ConnectDecideDestination connects a callback to the 'decide-destination' signal 
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Download) ConnectDecideDestination(handler func(instance *Download, suggestedFilename string) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "decide-destination", marshal)
 }
@@ -3145,7 +3172,15 @@ ConnectFailed connects a callback to the 'failed' signal of the Download.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Download) ConnectFailed(handler func(instance *Download, error *glib.Error)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DownloadNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := glib.ErrorNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "failed", marshal)
 }
@@ -3156,7 +3191,12 @@ ConnectFinished connects a callback to the 'finished' signal of the Download.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Download) ConnectFinished(handler func(instance *Download)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DownloadNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "finished", marshal)
 }
@@ -3167,7 +3207,15 @@ ConnectReceivedData connects a callback to the 'received-data' signal of the Dow
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Download) ConnectReceivedData(handler func(instance *Download, dataLength uint64)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DownloadNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetUint64()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "received-data", marshal)
 }
@@ -3610,7 +3658,18 @@ ConnectFaviconChanged connects a callback to the 'favicon-changed' signal of the
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *FaviconDatabase) ConnectFaviconChanged(handler func(instance *FaviconDatabase, pageUri string, faviconUri string)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := FaviconDatabaseNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetString()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetString()
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "favicon-changed", marshal)
 }
@@ -4192,7 +4251,15 @@ ConnectCountedMatches connects a callback to the 'counted-matches' signal of the
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *FindController) ConnectCountedMatches(handler func(instance *FindController, matchCount uint32)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := FindControllerNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetUint()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "counted-matches", marshal)
 }
@@ -4203,7 +4270,12 @@ ConnectFailedToFindText connects a callback to the 'failed-to-find-text' signal 
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *FindController) ConnectFailedToFindText(handler func(instance *FindController)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := FindControllerNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "failed-to-find-text", marshal)
 }
@@ -4214,7 +4286,15 @@ ConnectFoundText connects a callback to the 'found-text' signal of the FindContr
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *FindController) ConnectFoundText(handler func(instance *FindController, matchCount uint32)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := FindControllerNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetUint()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "found-text", marshal)
 }
@@ -4524,7 +4604,9 @@ ConnectStart connects a callback to the 'start' signal of the GeolocationManager
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *GeolocationManager) ConnectStart(handler func(instance *GeolocationManager) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "start", marshal)
 }
@@ -4535,7 +4617,12 @@ ConnectStop connects a callback to the 'stop' signal of the GeolocationManager.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *GeolocationManager) ConnectStop(handler func(instance *GeolocationManager)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := GeolocationManagerNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "stop", marshal)
 }
@@ -5749,7 +5836,12 @@ ConnectClicked connects a callback to the 'clicked' signal of the Notification.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Notification) ConnectClicked(handler func(instance *Notification)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := NotificationNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "clicked", marshal)
 }
@@ -5760,7 +5852,12 @@ ConnectClosed connects a callback to the 'closed' signal of the Notification.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Notification) ConnectClosed(handler func(instance *Notification)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := NotificationNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "closed", marshal)
 }
@@ -6088,7 +6185,12 @@ ConnectClose connects a callback to the 'close' signal of the OptionMenu.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *OptionMenu) ConnectClose(handler func(instance *OptionMenu)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := OptionMenuNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "close", marshal)
 }
@@ -6654,7 +6756,12 @@ ConnectApply connects a callback to the 'apply' signal of the PrintCustomWidget.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *PrintCustomWidget) ConnectApply(handler func(instance *PrintCustomWidget)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PrintCustomWidgetNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "apply", marshal)
 }
@@ -6665,7 +6772,18 @@ ConnectUpdate connects a callback to the 'update' signal of the PrintCustomWidge
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *PrintCustomWidget) ConnectUpdate(handler func(instance *PrintCustomWidget, pageSetup *gtk.PageSetup, printSettings *gtk.PrintSettings)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PrintCustomWidgetNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := gtk.PageSetupNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := gtk.PrintSettingsNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "update", marshal)
 }
@@ -6985,7 +7103,9 @@ ConnectCreateCustomWidget connects a callback to the 'create-custom-widget' sign
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *PrintOperation) ConnectCreateCustomWidget(handler func(instance *PrintOperation) *PrintCustomWidget) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : PrintCustomWidget
+	}
 
 	return callback.ConnectSignal(recv.Native(), "create-custom-widget", marshal)
 }
@@ -6996,7 +7116,15 @@ ConnectFailed connects a callback to the 'failed' signal of the PrintOperation.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *PrintOperation) ConnectFailed(handler func(instance *PrintOperation, error *glib.Error)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PrintOperationNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := glib.ErrorNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "failed", marshal)
 }
@@ -7007,7 +7135,12 @@ ConnectFinished connects a callback to the 'finished' signal of the PrintOperati
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *PrintOperation) ConnectFinished(handler func(instance *PrintOperation)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PrintOperationNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "finished", marshal)
 }
@@ -12647,7 +12780,15 @@ ConnectScriptMessageReceived connects a callback to the 'script-message-received
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *UserContentManager) ConnectScriptMessageReceived(handler func(instance *UserContentManager, jsResult *JavascriptResult)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := UserContentManagerNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := JavascriptResultNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "script-message-received", marshal)
 }
@@ -13952,7 +14093,15 @@ ConnectAutomationStarted connects a callback to the 'automation-started' signal 
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebContext) ConnectAutomationStarted(handler func(instance *WebContext, session *AutomationSession)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebContextNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := AutomationSessionNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "automation-started", marshal)
 }
@@ -13963,7 +14112,15 @@ ConnectDownloadStarted connects a callback to the 'download-started' signal of t
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebContext) ConnectDownloadStarted(handler func(instance *WebContext, download *Download)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebContextNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := DownloadNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "download-started", marshal)
 }
@@ -13974,7 +14131,12 @@ ConnectInitializeNotificationPermissions connects a callback to the 'initialize-
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebContext) ConnectInitializeNotificationPermissions(handler func(instance *WebContext)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebContextNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "initialize-notification-permissions", marshal)
 }
@@ -13985,7 +14147,12 @@ ConnectInitializeWebExtensions connects a callback to the 'initialize-web-extens
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebContext) ConnectInitializeWebExtensions(handler func(instance *WebContext)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebContextNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "initialize-web-extensions", marshal)
 }
@@ -14360,7 +14527,9 @@ ConnectAttach connects a callback to the 'attach' signal of the WebInspector.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebInspector) ConnectAttach(handler func(instance *WebInspector) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "attach", marshal)
 }
@@ -14371,7 +14540,9 @@ ConnectBringToFront connects a callback to the 'bring-to-front' signal of the We
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebInspector) ConnectBringToFront(handler func(instance *WebInspector) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "bring-to-front", marshal)
 }
@@ -14382,7 +14553,12 @@ ConnectClosed connects a callback to the 'closed' signal of the WebInspector.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebInspector) ConnectClosed(handler func(instance *WebInspector)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebInspectorNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "closed", marshal)
 }
@@ -14393,7 +14569,9 @@ ConnectDetach connects a callback to the 'detach' signal of the WebInspector.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebInspector) ConnectDetach(handler func(instance *WebInspector) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "detach", marshal)
 }
@@ -14404,7 +14582,9 @@ ConnectOpenWindow connects a callback to the 'open-window' signal of the WebInsp
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebInspector) ConnectOpenWindow(handler func(instance *WebInspector) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "open-window", marshal)
 }
@@ -14575,7 +14755,15 @@ ConnectFailed connects a callback to the 'failed' signal of the WebResource.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebResource) ConnectFailed(handler func(instance *WebResource, error *glib.Error)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebResourceNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := glib.ErrorNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "failed", marshal)
 }
@@ -14588,7 +14776,12 @@ ConnectFinished connects a callback to the 'finished' signal of the WebResource.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebResource) ConnectFinished(handler func(instance *WebResource)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebResourceNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "finished", marshal)
 }
@@ -14599,7 +14792,15 @@ ConnectReceivedData connects a callback to the 'received-data' signal of the Web
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebResource) ConnectReceivedData(handler func(instance *WebResource, dataLength uint64)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebResourceNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetUint64()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "received-data", marshal)
 }
@@ -14610,7 +14811,18 @@ ConnectSentRequest connects a callback to the 'sent-request' signal of the WebRe
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebResource) ConnectSentRequest(handler func(instance *WebResource, request *URIRequest, redirectedResponse *URIResponse)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebResourceNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := URIRequestNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := URIResponseNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "sent-request", marshal)
 }
@@ -16447,7 +16659,9 @@ ConnectAuthenticate connects a callback to the 'authenticate' signal of the WebV
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectAuthenticate(handler func(instance *WebView, request *AuthenticationRequest) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "authenticate", marshal)
 }
@@ -16458,7 +16672,12 @@ ConnectClose connects a callback to the 'close' signal of the WebView.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectClose(handler func(instance *WebView)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "close", marshal)
 }
@@ -16471,7 +16690,12 @@ ConnectContextMenuDismissed connects a callback to the 'context-menu-dismissed' 
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectContextMenuDismissed(handler func(instance *WebView)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "context-menu-dismissed", marshal)
 }
@@ -16482,7 +16706,9 @@ ConnectCreate connects a callback to the 'create' signal of the WebView.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectCreate(handler func(instance *WebView, navigationAction *NavigationAction) *gtk.Widget) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : Gtk.Widget
+	}
 
 	return callback.ConnectSignal(recv.Native(), "create", marshal)
 }
@@ -16493,7 +16719,9 @@ ConnectDecidePolicy connects a callback to the 'decide-policy' signal of the Web
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectDecidePolicy(handler func(instance *WebView, decision *PolicyDecision, decisionType PolicyDecisionType) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "decide-policy", marshal)
 }
@@ -16504,7 +16732,9 @@ ConnectEnterFullscreen connects a callback to the 'enter-fullscreen' signal of t
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectEnterFullscreen(handler func(instance *WebView) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "enter-fullscreen", marshal)
 }
@@ -16515,7 +16745,15 @@ ConnectInsecureContentDetected connects a callback to the 'insecure-content-dete
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectInsecureContentDetected(handler func(instance *WebView, event InsecureContentEvent)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := (InsecureContentEvent)(object1.GetInt())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "insecure-content-detected", marshal)
 }
@@ -16526,7 +16764,9 @@ ConnectLeaveFullscreen connects a callback to the 'leave-fullscreen' signal of t
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectLeaveFullscreen(handler func(instance *WebView) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "leave-fullscreen", marshal)
 }
@@ -16537,7 +16777,15 @@ ConnectLoadChanged connects a callback to the 'load-changed' signal of the WebVi
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectLoadChanged(handler func(instance *WebView, loadEvent LoadEvent)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := (LoadEvent)(object1.GetInt())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "load-changed", marshal)
 }
@@ -16548,7 +16796,9 @@ ConnectLoadFailed connects a callback to the 'load-failed' signal of the WebView
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectLoadFailed(handler func(instance *WebView, loadEvent LoadEvent, failingUri string, error *glib.Error) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "load-failed", marshal)
 }
@@ -16561,7 +16811,18 @@ ConnectMouseTargetChanged connects a callback to the 'mouse-target-changed' sign
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectMouseTargetChanged(handler func(instance *WebView, hitTestResult *HitTestResult, modifiers uint32)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := HitTestResultNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetUint()
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "mouse-target-changed", marshal)
 }
@@ -16574,7 +16835,9 @@ ConnectPrint connects a callback to the 'print' signal of the WebView.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectPrint(handler func(instance *WebView, printOperation *PrintOperation) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "print", marshal)
 }
@@ -16585,7 +16848,12 @@ ConnectReadyToShow connects a callback to the 'ready-to-show' signal of the WebV
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectReadyToShow(handler func(instance *WebView)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "ready-to-show", marshal)
 }
@@ -16596,7 +16864,18 @@ ConnectResourceLoadStarted connects a callback to the 'resource-load-started' si
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectResourceLoadStarted(handler func(instance *WebView, resource *WebResource, request *URIRequest)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := WebResourceNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := URIRequestNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "resource-load-started", marshal)
 }
@@ -16607,7 +16886,12 @@ ConnectRunAsModal connects a callback to the 'run-as-modal' signal of the WebVie
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectRunAsModal(handler func(instance *WebView)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "run-as-modal", marshal)
 }
@@ -16618,7 +16902,9 @@ ConnectRunColorChooser connects a callback to the 'run-color-chooser' signal of 
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectRunColorChooser(handler func(instance *WebView, request *ColorChooserRequest) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "run-color-chooser", marshal)
 }
@@ -16629,7 +16915,9 @@ ConnectRunFileChooser connects a callback to the 'run-file-chooser' signal of th
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectRunFileChooser(handler func(instance *WebView, request *FileChooserRequest) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "run-file-chooser", marshal)
 }
@@ -16640,7 +16928,9 @@ ConnectScriptDialog connects a callback to the 'script-dialog' signal of the Web
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectScriptDialog(handler func(instance *WebView, dialog *ScriptDialog) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "script-dialog", marshal)
 }
@@ -16651,7 +16941,9 @@ ConnectShowNotification connects a callback to the 'show-notification' signal of
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectShowNotification(handler func(instance *WebView, notification *Notification) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "show-notification", marshal)
 }
@@ -16664,7 +16956,15 @@ ConnectSubmitForm connects a callback to the 'submit-form' signal of the WebView
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectSubmitForm(handler func(instance *WebView, request *FormSubmissionRequest)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := FormSubmissionRequestNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "submit-form", marshal)
 }
@@ -16675,7 +16975,9 @@ ConnectWebProcessCrashed connects a callback to the 'web-process-crashed' signal
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectWebProcessCrashed(handler func(instance *WebView) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "web-process-crashed", marshal)
 }
@@ -16686,7 +16988,15 @@ ConnectWebProcessTerminated connects a callback to the 'web-process-terminated' 
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *WebView) ConnectWebProcessTerminated(handler func(instance *WebView, reason WebProcessTerminationReason)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := (WebProcessTerminationReason)(object1.GetInt())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "web-process-terminated", marshal)
 }

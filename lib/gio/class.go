@@ -73,7 +73,12 @@ ConnectChanged connects a callback to the 'changed' signal of the AppInfoMonitor
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *AppInfoMonitor) ConnectChanged(handler func(instance *AppInfoMonitor)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := AppInfoMonitorNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
 }
@@ -314,7 +319,15 @@ ConnectLaunchFailed connects a callback to the 'launch-failed' signal of the App
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *AppLaunchContext) ConnectLaunchFailed(handler func(instance *AppLaunchContext, startupNotifyId string)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := AppLaunchContextNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetString()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "launch-failed", marshal)
 }
@@ -1214,7 +1227,12 @@ ConnectActivate connects a callback to the 'activate' signal of the Application.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Application) ConnectActivate(handler func(instance *Application)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ApplicationNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "activate", marshal)
 }
@@ -1225,7 +1243,9 @@ ConnectCommandLine connects a callback to the 'command-line' signal of the Appli
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Application) ConnectCommandLine(handler func(instance *Application, commandLine *ApplicationCommandLine) int32) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gint
+	}
 
 	return callback.ConnectSignal(recv.Native(), "command-line", marshal)
 }
@@ -1236,7 +1256,9 @@ ConnectHandleLocalOptions connects a callback to the 'handle-local-options' sign
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Application) ConnectHandleLocalOptions(handler func(instance *Application, options *glib.VariantDict) int32) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gint
+	}
 
 	return callback.ConnectSignal(recv.Native(), "handle-local-options", marshal)
 }
@@ -1247,7 +1269,9 @@ ConnectNameLost connects a callback to the 'name-lost' signal of the Application
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Application) ConnectNameLost(handler func(instance *Application) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "name-lost", marshal)
 }
@@ -1260,7 +1284,12 @@ ConnectShutdown connects a callback to the 'shutdown' signal of the Application.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Application) ConnectShutdown(handler func(instance *Application)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ApplicationNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "shutdown", marshal)
 }
@@ -1271,7 +1300,12 @@ ConnectStartup connects a callback to the 'startup' signal of the Application.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Application) ConnectStartup(handler func(instance *Application)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ApplicationNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "startup", marshal)
 }
@@ -2880,7 +2914,12 @@ ConnectCancelled connects a callback to the 'cancelled' signal of the Cancellabl
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Cancellable) ConnectCancelled(handler func(instance *Cancellable)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CancellableNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "cancelled", marshal)
 }
@@ -3741,7 +3780,9 @@ ConnectAllowMechanism connects a callback to the 'allow-mechanism' signal of the
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *DBusAuthObserver) ConnectAllowMechanism(handler func(instance *DBusAuthObserver, mechanism string) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "allow-mechanism", marshal)
 }
@@ -3752,7 +3793,9 @@ ConnectAuthorizeAuthenticatedPeer connects a callback to the 'authorize-authenti
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *DBusAuthObserver) ConnectAuthorizeAuthenticatedPeer(handler func(instance *DBusAuthObserver, stream *IOStream, credentials *Credentials) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "authorize-authenticated-peer", marshal)
 }
@@ -4514,7 +4557,18 @@ ConnectClosed connects a callback to the 'closed' signal of the DBusConnection.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *DBusConnection) ConnectClosed(handler func(instance *DBusConnection, remotePeerVanished bool, error *glib.Error)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusConnectionNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetBoolean()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := glib.ErrorNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "closed", marshal)
 }
@@ -4947,7 +5001,9 @@ ConnectGAuthorizeMethod connects a callback to the 'g-authorize-method' signal o
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *DBusInterfaceSkeleton) ConnectGAuthorizeMethod(handler func(instance *DBusInterfaceSkeleton, invocation *DBusMethodInvocation) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "g-authorize-method", marshal)
 }
@@ -7094,7 +7150,27 @@ ConnectInterfaceProxySignal connects a callback to the 'interface-proxy-signal' 
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *DBusObjectManagerClient) ConnectInterfaceProxySignal(handler func(instance *DBusObjectManagerClient, objectProxy *DBusObjectProxy, interfaceProxy *DBusProxy, senderName string, signalName string, parameters *glib.Variant)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusObjectManagerClientNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := DBusObjectProxyNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := DBusProxyNewFromNative(object2.GetObject().Native())
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := object3.GetString()
+
+		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
+		arg4 := object4.GetString()
+
+		object5 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[5]))
+		arg5 := glib.VariantNewFromNative(object5.GetObject().Native())
+
+		handler(argInstance, arg1, arg2, arg3, arg4, arg5)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "interface-proxy-signal", marshal)
 }
@@ -7768,7 +7844,9 @@ ConnectAuthorizeMethod connects a callback to the 'authorize-method' signal of t
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *DBusObjectSkeleton) ConnectAuthorizeMethod(handler func(instance *DBusObjectSkeleton, interface_ *DBusInterfaceSkeleton, invocation *DBusMethodInvocation) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "authorize-method", marshal)
 }
@@ -8245,7 +8323,21 @@ ConnectGSignal connects a callback to the 'g-signal' signal of the DBusProxy.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *DBusProxy) ConnectGSignal(handler func(instance *DBusProxy, senderName string, signalName string, parameters *glib.Variant)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusProxyNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetString()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetString()
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := glib.VariantNewFromNative(object3.GetObject().Native())
+
+		handler(argInstance, arg1, arg2, arg3)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "g-signal", marshal)
 }
@@ -8491,7 +8583,9 @@ ConnectNewConnection connects a callback to the 'new-connection' signal of the D
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *DBusServer) ConnectNewConnection(handler func(instance *DBusServer, connection *DBusConnection) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "new-connection", marshal)
 }
@@ -13482,7 +13576,12 @@ ConnectGotCompletionData connects a callback to the 'got-completion-data' signal
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *FilenameCompleter) ConnectGotCompletionData(handler func(instance *FilenameCompleter)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := FilenameCompleterNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "got-completion-data", marshal)
 }
@@ -18243,7 +18342,21 @@ ConnectItemsChanged connects a callback to the 'items-changed' signal of the Men
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *MenuModel) ConnectItemsChanged(handler func(instance *MenuModel, position int32, removed int32, added int32)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := MenuModelNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetInt()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetInt()
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := object3.GetInt()
+
+		handler(argInstance, arg1, arg2, arg3)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "items-changed", marshal)
 }
@@ -18956,7 +19069,12 @@ ConnectAborted connects a callback to the 'aborted' signal of the MountOperation
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *MountOperation) ConnectAborted(handler func(instance *MountOperation)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := MountOperationNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "aborted", marshal)
 }
@@ -18971,7 +19089,15 @@ ConnectReply connects a callback to the 'reply' signal of the MountOperation.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *MountOperation) ConnectReply(handler func(instance *MountOperation, result MountOperationResult)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := MountOperationNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := (MountOperationResult)(object1.GetInt())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "reply", marshal)
 }
@@ -18984,7 +19110,21 @@ ConnectShowUnmountProgress connects a callback to the 'show-unmount-progress' si
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *MountOperation) ConnectShowUnmountProgress(handler func(instance *MountOperation, message string, timeLeft int64, bytesLeft int64)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := MountOperationNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetString()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetInt64()
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := object3.GetInt64()
+
+		handler(argInstance, arg1, arg2, arg3)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "show-unmount-progress", marshal)
 }
@@ -21413,7 +21553,12 @@ ConnectReload connects a callback to the 'reload' signal of the Resolver.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Resolver) ConnectReload(handler func(instance *Resolver)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ResolverNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "reload", marshal)
 }
@@ -22839,7 +22984,15 @@ ConnectChanged connects a callback to the 'changed' signal of the Settings.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Settings) ConnectChanged(handler func(instance *Settings, key string)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := SettingsNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetString()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
 }
@@ -22850,7 +23003,9 @@ ConnectWritableChangeEvent connects a callback to the 'writable-change-event' si
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Settings) ConnectWritableChangeEvent(handler func(instance *Settings, key uint32) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "writable-change-event", marshal)
 }
@@ -22861,7 +23016,15 @@ ConnectWritableChanged connects a callback to the 'writable-changed' signal of t
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *Settings) ConnectWritableChanged(handler func(instance *Settings, key string)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := SettingsNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetString()
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "writable-changed", marshal)
 }
@@ -23229,7 +23392,15 @@ ConnectActivate connects a callback to the 'activate' signal of the SimpleAction
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *SimpleAction) ConnectActivate(handler func(instance *SimpleAction, parameter *glib.Variant)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := SimpleActionNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := glib.VariantNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "activate", marshal)
 }
@@ -23240,7 +23411,15 @@ ConnectChangeState connects a callback to the 'change-state' signal of the Simpl
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *SimpleAction) ConnectChangeState(handler func(instance *SimpleAction, value *glib.Variant)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := SimpleActionNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := glib.VariantNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "change-state", marshal)
 }
@@ -27432,7 +27611,18 @@ ConnectEvent connects a callback to the 'event' signal of the SocketListener.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *SocketListener) ConnectEvent(handler func(instance *SocketListener, event SocketListenerEvent, socket *Socket)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := SocketListenerNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := (SocketListenerEvent)(object1.GetInt())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := SocketNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "event", marshal)
 }
@@ -27660,7 +27850,9 @@ ConnectIncoming connects a callback to the 'incoming' signal of the SocketServic
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *SocketService) ConnectIncoming(handler func(instance *SocketService, connection *SocketConnection, sourceObject *gobject.Object) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "incoming", marshal)
 }
@@ -30209,7 +30401,9 @@ ConnectRun connects a callback to the 'run' signal of the ThreadedSocketService.
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *ThreadedSocketService) ConnectRun(handler func(instance *ThreadedSocketService, connection *SocketConnection, sourceObject *gobject.Object) bool) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
 
 	return callback.ConnectSignal(recv.Native(), "run", marshal)
 }
@@ -32990,7 +33184,12 @@ ConnectMountpointsChanged connects a callback to the 'mountpoints-changed' signa
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *UnixMountMonitor) ConnectMountpointsChanged(handler func(instance *UnixMountMonitor)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := UnixMountMonitorNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "mountpoints-changed", marshal)
 }
@@ -33001,7 +33200,12 @@ ConnectMountsChanged connects a callback to the 'mounts-changed' signal of the U
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
 func (recv *UnixMountMonitor) ConnectMountsChanged(handler func(instance *UnixMountMonitor)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := UnixMountMonitorNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
+	}
 
 	return callback.ConnectSignal(recv.Native(), "mounts-changed", marshal)
 }

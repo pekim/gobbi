@@ -28,59 +28,59 @@ func TestClass(t *testing.T) {
 	assert.Equal(t, float32(0.3), label.GetXalign())
 }
 
-//func TestSignalConnect(t *testing.T) {
-//	Init()
-//
-//	callbackCalled := false
-//
-//	button := ButtonNew()
-//	button.SetLabel("qaz")
-//	button.Widget().ConnectShow(func(widget *Widget) {
-//		assert.True(t, widget.Object().Equals(button.Object()))
-//		callbackCalled = true
-//	})
-//
-//	button.Widget().Show()
-//
-//	assert.True(t, callbackCalled)
-//}
-//
-//func TestSignalDisconnect(t *testing.T) {
-//	Init()
-//
-//	calledCount := 0
-//
-//	button := ButtonNew()
-//	var connectShowId int
-//	connectShowId = button.Widget().ConnectShow(func(widget *Widget) {
-//		calledCount++
-//
-//		button.Widget().DisconnectSignal(connectShowId)
-//	})
-//
-//	button.Widget().Show()
-//	button.Widget().Hide()
-//	button.Widget().Show()
-//
-//	assert.Equal(t, 1, calledCount)
-//}
-//
-//func TestSignalMultipleHandlers(t *testing.T) {
-//	Init()
-//
-//	calledCount := 0
-//
-//	button := ButtonNew()
-//
-//	button.Widget().ConnectShow(func(widget *Widget) {
-//		calledCount++
-//	})
-//
-//	button.Widget().ConnectShow(func(widget *Widget) {
-//		calledCount++
-//	})
-//
-//	button.Widget().Show()
-//
-//	assert.Equal(t, 2, calledCount)
-//}
+func TestSignalConnect(t *testing.T) {
+	Init()
+
+	callbackCalled := false
+
+	button := ButtonNew()
+	button.SetLabel("qaz")
+	button.Widget().ConnectShow(func(widget *Widget) {
+		assert.True(t, widget.Object().Equals(button.Object()))
+		callbackCalled = true
+	})
+
+	button.Widget().Show()
+
+	assert.True(t, callbackCalled)
+}
+
+func TestSignalDisconnect(t *testing.T) {
+	Init()
+
+	calledCount := 0
+
+	button := ButtonNew()
+	var connectShowId int
+	connectShowId = button.Widget().ConnectShow(func(widget *Widget) {
+		calledCount++
+
+		button.Widget().DisconnectSignal(connectShowId)
+	})
+
+	button.Widget().Show()
+	button.Widget().Hide()
+	button.Widget().Show()
+
+	assert.Equal(t, 1, calledCount)
+}
+
+func TestSignalMultipleHandlers(t *testing.T) {
+	Init()
+
+	calledCount := 0
+
+	button := ButtonNew()
+
+	button.Widget().ConnectShow(func(widget *Widget) {
+		calledCount++
+	})
+
+	button.Widget().ConnectShow(func(widget *Widget) {
+		calledCount++
+	})
+
+	button.Widget().Show()
+
+	assert.Equal(t, 2, calledCount)
+}
