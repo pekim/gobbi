@@ -971,6 +971,17 @@ func (recv *AboutDialog) SetWrapLicense(wrapLicense bool) {
 }
 
 /*
+ConnectActivateLink connects a callback to the 'activate-link' signal of the AboutDialog.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *AboutDialog) ConnectActivateLink(handler func(instance *AboutDialog, uri string) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate-link", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -1207,6 +1218,10 @@ func (recv *AccelGroup) Unlock() {
 
 	return
 }
+
+// UNSUPPORTED : C value 'accel-activate' : parameter 'modifier' of type 'Gdk.ModifierType' not supported
+
+// UNSUPPORTED : C value 'accel-changed' : parameter 'modifier' of type 'Gdk.ModifierType' not supported
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -1547,6 +1562,8 @@ func (recv *AccelMap) Equals(other *AccelMap) bool {
 func (recv *AccelMap) Native() unsafe.Pointer {
 	return recv.native
 }
+
+// UNSUPPORTED : C value 'changed' : parameter 'accel_mods' of type 'Gdk.ModifierType' not supported
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -2961,6 +2978,17 @@ func (recv *Action) UnblockActivate() {
 }
 
 /*
+ConnectActivate connects a callback to the 'activate' signal of the Action.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Action) ConnectActivate(handler func(instance *Action)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -3726,6 +3754,50 @@ func (recv *ActionGroup) TranslateString(string_ string) string {
 }
 
 /*
+ConnectConnectProxy connects a callback to the 'connect-proxy' signal of the ActionGroup.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ActionGroup) ConnectConnectProxy(handler func(instance *ActionGroup, action *Action, proxy *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "connect-proxy", marshal)
+}
+
+/*
+ConnectDisconnectProxy connects a callback to the 'disconnect-proxy' signal of the ActionGroup.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ActionGroup) ConnectDisconnectProxy(handler func(instance *ActionGroup, action *Action, proxy *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "disconnect-proxy", marshal)
+}
+
+/*
+ConnectPostActivate connects a callback to the 'post-activate' signal of the ActionGroup.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ActionGroup) ConnectPostActivate(handler func(instance *ActionGroup, action *Action)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "post-activate", marshal)
+}
+
+/*
+ConnectPreActivate connects a callback to the 'pre-activate' signal of the ActionGroup.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ActionGroup) ConnectPreActivate(handler func(instance *ActionGroup, action *Action)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "pre-activate", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -4383,6 +4455,28 @@ func (recv *Adjustment) ValueChanged() {
 }
 
 /*
+ConnectChanged connects a callback to the 'changed' signal of the Adjustment.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Adjustment) ConnectChanged(handler func(instance *Adjustment)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
+ConnectValueChanged connects a callback to the 'value-changed' signal of the Adjustment.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Adjustment) ConnectValueChanged(handler func(instance *Adjustment)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "value-changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -4990,6 +5084,17 @@ func (recv *AppChooserButton) SetShowDialogItem(setting bool) {
 	}
 
 	return
+}
+
+/*
+ConnectCustomItemActivated connects a callback to the 'custom-item-activated' signal of the AppChooserButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *AppChooserButton) ConnectCustomItemActivated(handler func(instance *AppChooserButton, itemName string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "custom-item-activated", marshal)
 }
 
 /*
@@ -5724,6 +5829,12 @@ func (recv *AppChooserWidget) SetShowRecommended(setting bool) {
 	return
 }
 
+// UNSUPPORTED : C value 'application-activated' : parameter 'application' of type 'Gio.AppInfo' not supported
+
+// UNSUPPORTED : C value 'application-selected' : parameter 'application' of type 'Gio.AppInfo' not supported
+
+// UNSUPPORTED : C value 'populate-popup' : parameter 'application' of type 'Gio.AppInfo' not supported
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -6264,6 +6375,39 @@ func (recv *Application) Uninhibit(cookie uint32) {
 	}
 
 	return
+}
+
+/*
+ConnectQueryEnd connects a callback to the 'query-end' signal of the Application.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Application) ConnectQueryEnd(handler func(instance *Application)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "query-end", marshal)
+}
+
+/*
+ConnectWindowAdded connects a callback to the 'window-added' signal of the Application.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Application) ConnectWindowAdded(handler func(instance *Application, window *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "window-added", marshal)
+}
+
+/*
+ConnectWindowRemoved connects a callback to the 'window-removed' signal of the Application.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Application) ConnectWindowRemoved(handler func(instance *Application, window *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "window-removed", marshal)
 }
 
 /*
@@ -7949,6 +8093,61 @@ func (recv *Assistant) UpdateButtonsState() {
 	}
 
 	return
+}
+
+/*
+ConnectApply connects a callback to the 'apply' signal of the Assistant.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Assistant) ConnectApply(handler func(instance *Assistant)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "apply", marshal)
+}
+
+/*
+ConnectCancel connects a callback to the 'cancel' signal of the Assistant.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Assistant) ConnectCancel(handler func(instance *Assistant)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cancel", marshal)
+}
+
+/*
+ConnectClose connects a callback to the 'close' signal of the Assistant.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Assistant) ConnectClose(handler func(instance *Assistant)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "close", marshal)
+}
+
+/*
+ConnectEscape connects a callback to the 'escape' signal of the Assistant.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Assistant) ConnectEscape(handler func(instance *Assistant)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "escape", marshal)
+}
+
+/*
+ConnectPrepare connects a callback to the 'prepare' signal of the Assistant.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Assistant) ConnectPrepare(handler func(instance *Assistant, page *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "prepare", marshal)
 }
 
 /*
@@ -10240,6 +10439,72 @@ func (recv *Button) SetUseUnderline(useUnderline bool) {
 }
 
 /*
+ConnectActivate connects a callback to the 'activate' signal of the Button.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Button) ConnectActivate(handler func(instance *Button)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate", marshal)
+}
+
+/*
+ConnectClicked connects a callback to the 'clicked' signal of the Button.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Button) ConnectClicked(handler func(instance *Button)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "clicked", marshal)
+}
+
+/*
+ConnectEnter connects a callback to the 'enter' signal of the Button.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Button) ConnectEnter(handler func(instance *Button)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "enter", marshal)
+}
+
+/*
+ConnectLeave connects a callback to the 'leave' signal of the Button.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Button) ConnectLeave(handler func(instance *Button)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "leave", marshal)
+}
+
+/*
+ConnectPressed connects a callback to the 'pressed' signal of the Button.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Button) ConnectPressed(handler func(instance *Button)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "pressed", marshal)
+}
+
+/*
+ConnectReleased connects a callback to the 'released' signal of the Button.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Button) ConnectReleased(handler func(instance *Button)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "released", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -11170,6 +11435,83 @@ func (recv *Calendar) UnmarkDay(day uint32) {
 	}
 
 	return
+}
+
+/*
+ConnectDaySelected connects a callback to the 'day-selected' signal of the Calendar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Calendar) ConnectDaySelected(handler func(instance *Calendar)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "day-selected", marshal)
+}
+
+/*
+ConnectDaySelectedDoubleClick connects a callback to the 'day-selected-double-click' signal of the Calendar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Calendar) ConnectDaySelectedDoubleClick(handler func(instance *Calendar)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "day-selected-double-click", marshal)
+}
+
+/*
+ConnectMonthChanged connects a callback to the 'month-changed' signal of the Calendar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Calendar) ConnectMonthChanged(handler func(instance *Calendar)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "month-changed", marshal)
+}
+
+/*
+ConnectNextMonth connects a callback to the 'next-month' signal of the Calendar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Calendar) ConnectNextMonth(handler func(instance *Calendar)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "next-month", marshal)
+}
+
+/*
+ConnectNextYear connects a callback to the 'next-year' signal of the Calendar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Calendar) ConnectNextYear(handler func(instance *Calendar)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "next-year", marshal)
+}
+
+/*
+ConnectPrevMonth connects a callback to the 'prev-month' signal of the Calendar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Calendar) ConnectPrevMonth(handler func(instance *Calendar)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "prev-month", marshal)
+}
+
+/*
+ConnectPrevYear connects a callback to the 'prev-year' signal of the Calendar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Calendar) ConnectPrevYear(handler func(instance *Calendar)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "prev-year", marshal)
 }
 
 /*
@@ -12204,6 +12546,23 @@ func (recv *CellArea) StopEditing(canceled bool) {
 
 	return
 }
+
+// UNSUPPORTED : C value 'add-editable' : parameter 'editable' of type 'CellEditable' not supported
+
+// UNSUPPORTED : C value 'apply-attributes' : parameter 'model' of type 'TreeModel' not supported
+
+/*
+ConnectFocusChanged connects a callback to the 'focus-changed' signal of the CellArea.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CellArea) ConnectFocusChanged(handler func(instance *CellArea, renderer *CellRenderer, path string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "focus-changed", marshal)
+}
+
+// UNSUPPORTED : C value 'remove-editable' : parameter 'editable' of type 'CellEditable' not supported
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -13494,6 +13853,19 @@ func (recv *CellRenderer) StopEditing(canceled bool) {
 }
 
 /*
+ConnectEditingCanceled connects a callback to the 'editing-canceled' signal of the CellRenderer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CellRenderer) ConnectEditingCanceled(handler func(instance *CellRenderer)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "editing-canceled", marshal)
+}
+
+// UNSUPPORTED : C value 'editing-started' : parameter 'editable' of type 'CellEditable' not supported
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -13617,6 +13989,19 @@ func CellRendererAccelNew() *CellRendererAccel {
 }
 
 /*
+ConnectAccelCleared connects a callback to the 'accel-cleared' signal of the CellRendererAccel.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CellRendererAccel) ConnectAccelCleared(handler func(instance *CellRendererAccel, pathString string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "accel-cleared", marshal)
+}
+
+// UNSUPPORTED : C value 'accel-edited' : parameter 'accel_mods' of type 'Gdk.ModifierType' not supported
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -13737,6 +14122,17 @@ func CellRendererComboNew() *CellRendererCombo {
 	retGo := CellRendererComboNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+/*
+ConnectChanged connects a callback to the 'changed' signal of the CellRendererCombo.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CellRendererCombo) ConnectChanged(handler func(instance *CellRendererCombo, pathString string, newIter *TreeIter)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
 }
 
 /*
@@ -14333,6 +14729,17 @@ func (recv *CellRendererText) SetFixedHeightFromFont(numberOfRows int32) {
 }
 
 /*
+ConnectEdited connects a callback to the 'edited' signal of the CellRendererText.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CellRendererText) ConnectEdited(handler func(instance *CellRendererText, path string, newText string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "edited", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -14631,6 +15038,17 @@ func (recv *CellRendererToggle) SetRadio(radio bool) {
 	}
 
 	return
+}
+
+/*
+ConnectToggled connects a callback to the 'toggled' signal of the CellRendererToggle.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CellRendererToggle) ConnectToggled(handler func(instance *CellRendererToggle, path string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggled", marshal)
 }
 
 /*
@@ -15739,6 +16157,17 @@ func (recv *CheckMenuItem) Toggled() {
 }
 
 /*
+ConnectToggled connects a callback to the 'toggled' signal of the CheckMenuItem.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CheckMenuItem) ConnectToggled(handler func(instance *CheckMenuItem)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggled", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -16373,6 +16802,8 @@ func (recv *Clipboard) WaitIsUrisAvailable() bool {
 	return retGo
 }
 
+// UNSUPPORTED : C value 'owner-change' : parameter 'event' of type 'Gdk.EventOwnerChange' not supported
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -16699,6 +17130,17 @@ func (recv *ColorButton) SetUseAlpha(useAlpha bool) {
 	}
 
 	return
+}
+
+/*
+ConnectColorSet connects a callback to the 'color-set' signal of the ColorButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ColorButton) ConnectColorSet(handler func(instance *ColorButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "color-set", marshal)
 }
 
 /*
@@ -17431,6 +17873,17 @@ func (recv *ColorSelection) SetPreviousAlpha(alpha uint16) {
 // UNSUPPORTED : C value 'gtk_color_selection_set_previous_color' : parameter 'color' of type 'Gdk.Color' not supported
 
 // UNSUPPORTED : C value 'gtk_color_selection_set_previous_rgba' : parameter 'rgba' of type 'Gdk.RGBA' not supported
+
+/*
+ConnectColorChanged connects a callback to the 'color-changed' signal of the ColorSelection.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ColorSelection) ConnectColorChanged(handler func(instance *ColorSelection)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "color-changed", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -18803,6 +19256,61 @@ func (recv *ComboBox) SetWrapWidth(width int32) {
 }
 
 /*
+ConnectChanged connects a callback to the 'changed' signal of the ComboBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ComboBox) ConnectChanged(handler func(instance *ComboBox)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
+ConnectFormatEntryText connects a callback to the 'format-entry-text' signal of the ComboBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ComboBox) ConnectFormatEntryText(handler func(instance *ComboBox, path string) string) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "format-entry-text", marshal)
+}
+
+/*
+ConnectMoveActive connects a callback to the 'move-active' signal of the ComboBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ComboBox) ConnectMoveActive(handler func(instance *ComboBox, scrollType ScrollType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-active", marshal)
+}
+
+/*
+ConnectPopdown connects a callback to the 'popdown' signal of the ComboBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ComboBox) ConnectPopdown(handler func(instance *ComboBox) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "popdown", marshal)
+}
+
+/*
+ConnectPopup connects a callback to the 'popup' signal of the ComboBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ComboBox) ConnectPopup(handler func(instance *ComboBox)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "popup", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -20054,6 +20562,50 @@ func (recv *Container) UnsetFocusChain() {
 }
 
 /*
+ConnectAdd connects a callback to the 'add' signal of the Container.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Container) ConnectAdd(handler func(instance *Container, object_ *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "add", marshal)
+}
+
+/*
+ConnectCheckResize connects a callback to the 'check-resize' signal of the Container.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Container) ConnectCheckResize(handler func(instance *Container)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "check-resize", marshal)
+}
+
+/*
+ConnectRemove connects a callback to the 'remove' signal of the Container.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Container) ConnectRemove(handler func(instance *Container, object_ *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "remove", marshal)
+}
+
+/*
+ConnectSetFocusChild connects a callback to the 'set-focus-child' signal of the Container.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Container) ConnectSetFocusChild(handler func(instance *Container, object_ *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "set-focus-child", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -20593,6 +21145,8 @@ func (recv *CssProvider) ToString() string {
 	return retGo
 }
 
+// UNSUPPORTED : C value 'parsing-error' : parameter 'error' of type 'GLib.Error' not supported
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -21083,6 +21637,28 @@ func (recv *Dialog) SetResponseSensitive(responseId ResponseType, setting bool) 
 	}
 
 	return
+}
+
+/*
+ConnectClose connects a callback to the 'close' signal of the Dialog.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Dialog) ConnectClose(handler func(instance *Dialog)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "close", marshal)
+}
+
+/*
+ConnectResponse connects a callback to the 'response' signal of the Dialog.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Dialog) ConnectResponse(handler func(instance *Dialog, responseId ResponseType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "response", marshal)
 }
 
 /*
@@ -23231,6 +23807,142 @@ func (recv *Entry) UnsetInvisibleChar() {
 }
 
 /*
+ConnectActivate connects a callback to the 'activate' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectActivate(handler func(instance *Entry)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate", marshal)
+}
+
+/*
+ConnectBackspace connects a callback to the 'backspace' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectBackspace(handler func(instance *Entry)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "backspace", marshal)
+}
+
+/*
+ConnectCopyClipboard connects a callback to the 'copy-clipboard' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectCopyClipboard(handler func(instance *Entry)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "copy-clipboard", marshal)
+}
+
+/*
+ConnectCutClipboard connects a callback to the 'cut-clipboard' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectCutClipboard(handler func(instance *Entry)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cut-clipboard", marshal)
+}
+
+/*
+ConnectDeleteFromCursor connects a callback to the 'delete-from-cursor' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectDeleteFromCursor(handler func(instance *Entry, type_ DeleteType, count int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "delete-from-cursor", marshal)
+}
+
+// UNSUPPORTED : C value 'icon-press' : parameter 'event' of type 'Gdk.EventButton' not supported
+
+// UNSUPPORTED : C value 'icon-release' : parameter 'event' of type 'Gdk.EventButton' not supported
+
+/*
+ConnectInsertAtCursor connects a callback to the 'insert-at-cursor' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectInsertAtCursor(handler func(instance *Entry, string_ string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "insert-at-cursor", marshal)
+}
+
+/*
+ConnectInsertEmoji connects a callback to the 'insert-emoji' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectInsertEmoji(handler func(instance *Entry)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "insert-emoji", marshal)
+}
+
+/*
+ConnectMoveCursor connects a callback to the 'move-cursor' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectMoveCursor(handler func(instance *Entry, step MovementStep, count int32, extendSelection bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-cursor", marshal)
+}
+
+/*
+ConnectPasteClipboard connects a callback to the 'paste-clipboard' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectPasteClipboard(handler func(instance *Entry)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "paste-clipboard", marshal)
+}
+
+/*
+ConnectPopulatePopup connects a callback to the 'populate-popup' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectPopulatePopup(handler func(instance *Entry, widget *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "populate-popup", marshal)
+}
+
+/*
+ConnectPreeditChanged connects a callback to the 'preedit-changed' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectPreeditChanged(handler func(instance *Entry, preedit string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "preedit-changed", marshal)
+}
+
+/*
+ConnectToggleOverwrite connects a callback to the 'toggle-overwrite' signal of the Entry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Entry) ConnectToggleOverwrite(handler func(instance *Entry)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggle-overwrite", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -23796,6 +24508,28 @@ func (recv *EntryBuffer) SetText(chars string, nChars int32) {
 	}
 
 	return
+}
+
+/*
+ConnectDeletedText connects a callback to the 'deleted-text' signal of the EntryBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EntryBuffer) ConnectDeletedText(handler func(instance *EntryBuffer, position uint32, nChars uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "deleted-text", marshal)
+}
+
+/*
+ConnectInsertedText connects a callback to the 'inserted-text' signal of the EntryBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EntryBuffer) ConnectInsertedText(handler func(instance *EntryBuffer, position uint32, chars string, nChars uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "inserted-text", marshal)
 }
 
 /*
@@ -24618,6 +25352,43 @@ func (recv *EntryCompletion) SetTextColumn(column int32) {
 }
 
 /*
+ConnectActionActivated connects a callback to the 'action-activated' signal of the EntryCompletion.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EntryCompletion) ConnectActionActivated(handler func(instance *EntryCompletion, index int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "action-activated", marshal)
+}
+
+// UNSUPPORTED : C value 'cursor-on-match' : parameter 'model' of type 'TreeModel' not supported
+
+/*
+ConnectInsertPrefix connects a callback to the 'insert-prefix' signal of the EntryCompletion.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EntryCompletion) ConnectInsertPrefix(handler func(instance *EntryCompletion, prefix string) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "insert-prefix", marshal)
+}
+
+// UNSUPPORTED : C value 'match-selected' : parameter 'model' of type 'TreeModel' not supported
+
+/*
+ConnectNoMatches connects a callback to the 'no-matches' signal of the EntryCompletion.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EntryCompletion) ConnectNoMatches(handler func(instance *EntryCompletion)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "no-matches", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -25356,6 +26127,45 @@ func (recv *EventControllerKey) SetImContext(imContext *IMContext) {
 }
 
 /*
+ConnectFocusIn connects a callback to the 'focus-in' signal of the EventControllerKey.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EventControllerKey) ConnectFocusIn(handler func(instance *EventControllerKey)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "focus-in", marshal)
+}
+
+/*
+ConnectFocusOut connects a callback to the 'focus-out' signal of the EventControllerKey.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EventControllerKey) ConnectFocusOut(handler func(instance *EventControllerKey)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "focus-out", marshal)
+}
+
+/*
+ConnectImUpdate connects a callback to the 'im-update' signal of the EventControllerKey.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EventControllerKey) ConnectImUpdate(handler func(instance *EventControllerKey)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "im-update", marshal)
+}
+
+// UNSUPPORTED : C value 'key-pressed' : parameter 'state' of type 'Gdk.ModifierType' not supported
+
+// UNSUPPORTED : C value 'key-released' : parameter 'state' of type 'Gdk.ModifierType' not supported
+
+// UNSUPPORTED : C value 'modifiers' : parameter 'object' of type 'Gdk.ModifierType' not supported
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -25459,6 +26269,39 @@ func EventControllerMotionNew(widget *Widget) *EventControllerMotion {
 }
 
 /*
+ConnectEnter connects a callback to the 'enter' signal of the EventControllerMotion.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EventControllerMotion) ConnectEnter(handler func(instance *EventControllerMotion, x float64, y float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "enter", marshal)
+}
+
+/*
+ConnectLeave connects a callback to the 'leave' signal of the EventControllerMotion.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EventControllerMotion) ConnectLeave(handler func(instance *EventControllerMotion)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "leave", marshal)
+}
+
+/*
+ConnectMotion connects a callback to the 'motion' signal of the EventControllerMotion.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EventControllerMotion) ConnectMotion(handler func(instance *EventControllerMotion, x float64, y float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "motion", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -25532,6 +26375,50 @@ func (recv *EventControllerScroll) Native() unsafe.Pointer {
 // UNSUPPORTED : C value 'gtk_event_controller_scroll_get_flags' : return type 'EventControllerScrollFlags' not supported
 
 // UNSUPPORTED : C value 'gtk_event_controller_scroll_set_flags' : parameter 'flags' of type 'EventControllerScrollFlags' not supported
+
+/*
+ConnectDecelerate connects a callback to the 'decelerate' signal of the EventControllerScroll.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EventControllerScroll) ConnectDecelerate(handler func(instance *EventControllerScroll, velX float64, velY float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "decelerate", marshal)
+}
+
+/*
+ConnectScroll connects a callback to the 'scroll' signal of the EventControllerScroll.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EventControllerScroll) ConnectScroll(handler func(instance *EventControllerScroll, dx float64, dy float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "scroll", marshal)
+}
+
+/*
+ConnectScrollBegin connects a callback to the 'scroll-begin' signal of the EventControllerScroll.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EventControllerScroll) ConnectScrollBegin(handler func(instance *EventControllerScroll)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "scroll-begin", marshal)
+}
+
+/*
+ConnectScrollEnd connects a callback to the 'scroll-end' signal of the EventControllerScroll.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EventControllerScroll) ConnectScrollEnd(handler func(instance *EventControllerScroll)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "scroll-end", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -26198,6 +27085,17 @@ func (recv *Expander) SetUseUnderline(useUnderline bool) {
 }
 
 /*
+ConnectActivate connects a callback to the 'activate' signal of the Expander.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Expander) ConnectActivate(handler func(instance *Expander)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -26664,6 +27562,17 @@ func (recv *FileChooserButton) SetWidthChars(nChars int32) {
 	}
 
 	return
+}
+
+/*
+ConnectFileSet connects a callback to the 'file-set' signal of the FileChooserButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserButton) ConnectFileSet(handler func(instance *FileChooserButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "file-set", marshal)
 }
 
 /*
@@ -27183,6 +28092,138 @@ func FileChooserWidgetNew(action FileChooserAction) *FileChooserWidget {
 	retGo := FileChooserWidgetNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+/*
+ConnectDesktopFolder connects a callback to the 'desktop-folder' signal of the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserWidget) ConnectDesktopFolder(handler func(instance *FileChooserWidget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "desktop-folder", marshal)
+}
+
+/*
+ConnectDownFolder connects a callback to the 'down-folder' signal of the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserWidget) ConnectDownFolder(handler func(instance *FileChooserWidget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "down-folder", marshal)
+}
+
+/*
+ConnectHomeFolder connects a callback to the 'home-folder' signal of the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserWidget) ConnectHomeFolder(handler func(instance *FileChooserWidget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "home-folder", marshal)
+}
+
+/*
+ConnectLocationPopup connects a callback to the 'location-popup' signal of the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserWidget) ConnectLocationPopup(handler func(instance *FileChooserWidget, path string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "location-popup", marshal)
+}
+
+/*
+ConnectLocationPopupOnPaste connects a callback to the 'location-popup-on-paste' signal of the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserWidget) ConnectLocationPopupOnPaste(handler func(instance *FileChooserWidget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "location-popup-on-paste", marshal)
+}
+
+/*
+ConnectLocationTogglePopup connects a callback to the 'location-toggle-popup' signal of the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserWidget) ConnectLocationTogglePopup(handler func(instance *FileChooserWidget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "location-toggle-popup", marshal)
+}
+
+/*
+ConnectPlacesShortcut connects a callback to the 'places-shortcut' signal of the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserWidget) ConnectPlacesShortcut(handler func(instance *FileChooserWidget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "places-shortcut", marshal)
+}
+
+/*
+ConnectQuickBookmark connects a callback to the 'quick-bookmark' signal of the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserWidget) ConnectQuickBookmark(handler func(instance *FileChooserWidget, bookmarkIndex int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "quick-bookmark", marshal)
+}
+
+/*
+ConnectRecentShortcut connects a callback to the 'recent-shortcut' signal of the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserWidget) ConnectRecentShortcut(handler func(instance *FileChooserWidget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "recent-shortcut", marshal)
+}
+
+/*
+ConnectSearchShortcut connects a callback to the 'search-shortcut' signal of the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserWidget) ConnectSearchShortcut(handler func(instance *FileChooserWidget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "search-shortcut", marshal)
+}
+
+/*
+ConnectShowHidden connects a callback to the 'show-hidden' signal of the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserWidget) ConnectShowHidden(handler func(instance *FileChooserWidget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "show-hidden", marshal)
+}
+
+/*
+ConnectUpFolder connects a callback to the 'up-folder' signal of the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FileChooserWidget) ConnectUpFolder(handler func(instance *FileChooserWidget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "up-folder", marshal)
 }
 
 /*
@@ -28560,6 +29601,83 @@ func (recv *FlowBox) UnselectChild(child *FlowBoxChild) {
 }
 
 /*
+ConnectActivateCursorChild connects a callback to the 'activate-cursor-child' signal of the FlowBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FlowBox) ConnectActivateCursorChild(handler func(instance *FlowBox)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate-cursor-child", marshal)
+}
+
+/*
+ConnectChildActivated connects a callback to the 'child-activated' signal of the FlowBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FlowBox) ConnectChildActivated(handler func(instance *FlowBox, child *FlowBoxChild)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "child-activated", marshal)
+}
+
+/*
+ConnectMoveCursor connects a callback to the 'move-cursor' signal of the FlowBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FlowBox) ConnectMoveCursor(handler func(instance *FlowBox, step MovementStep, count int32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-cursor", marshal)
+}
+
+/*
+ConnectSelectAll connects a callback to the 'select-all' signal of the FlowBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FlowBox) ConnectSelectAll(handler func(instance *FlowBox)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "select-all", marshal)
+}
+
+/*
+ConnectSelectedChildrenChanged connects a callback to the 'selected-children-changed' signal of the FlowBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FlowBox) ConnectSelectedChildrenChanged(handler func(instance *FlowBox)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "selected-children-changed", marshal)
+}
+
+/*
+ConnectToggleCursorChild connects a callback to the 'toggle-cursor-child' signal of the FlowBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FlowBox) ConnectToggleCursorChild(handler func(instance *FlowBox)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggle-cursor-child", marshal)
+}
+
+/*
+ConnectUnselectAll connects a callback to the 'unselect-all' signal of the FlowBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FlowBox) ConnectUnselectAll(handler func(instance *FlowBox)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "unselect-all", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -28905,6 +30023,17 @@ func (recv *FlowBoxChild) IsSelected() bool {
 	retGo := ret.Boolean()
 
 	return retGo
+}
+
+/*
+ConnectActivate connects a callback to the 'activate' signal of the FlowBoxChild.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FlowBoxChild) ConnectActivate(handler func(instance *FlowBoxChild)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate", marshal)
 }
 
 /*
@@ -29544,6 +30673,17 @@ func (recv *FontButton) SetUseSize(useSize bool) {
 	}
 
 	return
+}
+
+/*
+ConnectFontSet connects a callback to the 'font-set' signal of the FontButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FontButton) ConnectFontSet(handler func(instance *FontButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "font-set", marshal)
 }
 
 /*
@@ -31814,6 +32954,39 @@ func (recv *GLArea) SetUseEs(useEs bool) {
 }
 
 /*
+ConnectCreateContext connects a callback to the 'create-context' signal of the GLArea.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GLArea) ConnectCreateContext(handler func(instance *GLArea) *gdk.GLContext) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "create-context", marshal)
+}
+
+/*
+ConnectRender connects a callback to the 'render' signal of the GLArea.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GLArea) ConnectRender(handler func(instance *GLArea, context *gdk.GLContext) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "render", marshal)
+}
+
+/*
+ConnectResize connects a callback to the 'resize' signal of the GLArea.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GLArea) ConnectResize(handler func(instance *GLArea, width int32, height int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "resize", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -32225,6 +33398,16 @@ func (recv *Gesture) Ungroup() {
 	return
 }
 
+// UNSUPPORTED : C value 'begin' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+
+// UNSUPPORTED : C value 'cancel' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+
+// UNSUPPORTED : C value 'end' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+
+// UNSUPPORTED : C value 'sequence-state-changed' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+
+// UNSUPPORTED : C value 'update' : parameter 'sequence' of type 'Gdk.EventSequence' not supported
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -32409,6 +33592,39 @@ func (recv *GestureDrag) GetStartPoint() (bool, float64, float64) {
 }
 
 /*
+ConnectDragBegin connects a callback to the 'drag-begin' signal of the GestureDrag.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureDrag) ConnectDragBegin(handler func(instance *GestureDrag, startX float64, startY float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-begin", marshal)
+}
+
+/*
+ConnectDragEnd connects a callback to the 'drag-end' signal of the GestureDrag.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureDrag) ConnectDragEnd(handler func(instance *GestureDrag, offsetX float64, offsetY float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-end", marshal)
+}
+
+/*
+ConnectDragUpdate connects a callback to the 'drag-update' signal of the GestureDrag.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureDrag) ConnectDragUpdate(handler func(instance *GestureDrag, offsetX float64, offsetY float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-update", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -32519,6 +33735,28 @@ func GestureLongPressNew(widget *Widget) *GestureLongPress {
 	object.RefSink()
 
 	return retGo
+}
+
+/*
+ConnectCancelled connects a callback to the 'cancelled' signal of the GestureLongPress.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureLongPress) ConnectCancelled(handler func(instance *GestureLongPress)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cancelled", marshal)
+}
+
+/*
+ConnectPressed connects a callback to the 'pressed' signal of the GestureLongPress.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureLongPress) ConnectPressed(handler func(instance *GestureLongPress, x float64, y float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "pressed", marshal)
 }
 
 /*
@@ -32637,6 +33875,39 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 // UNSUPPORTED : C value 'gtk_gesture_multi_press_get_area' : parameter 'rect' of type 'Gdk.Rectangle' not supported
 
 // UNSUPPORTED : C value 'gtk_gesture_multi_press_set_area' : parameter 'rect' of type 'Gdk.Rectangle' not supported
+
+/*
+ConnectPressed connects a callback to the 'pressed' signal of the GestureMultiPress.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureMultiPress) ConnectPressed(handler func(instance *GestureMultiPress, nPress int32, x float64, y float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "pressed", marshal)
+}
+
+/*
+ConnectReleased connects a callback to the 'released' signal of the GestureMultiPress.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureMultiPress) ConnectReleased(handler func(instance *GestureMultiPress, nPress int32, x float64, y float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "released", marshal)
+}
+
+/*
+ConnectStopped connects a callback to the 'stopped' signal of the GestureMultiPress.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureMultiPress) ConnectStopped(handler func(instance *GestureMultiPress)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "stopped", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -32819,6 +34090,17 @@ func (recv *GesturePan) SetOrientation(orientation Orientation) {
 }
 
 /*
+ConnectPan connects a callback to the 'pan' signal of the GesturePan.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GesturePan) ConnectPan(handler func(instance *GesturePan, direction PanDirection, offset float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "pan", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -32956,6 +34238,17 @@ func (recv *GestureRotate) GetAngleDelta() float64 {
 	retGo := ret.Float64()
 
 	return retGo
+}
+
+/*
+ConnectAngleChanged connects a callback to the 'angle-changed' signal of the GestureRotate.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureRotate) ConnectAngleChanged(handler func(instance *GestureRotate, angle float64, angleDelta float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "angle-changed", marshal)
 }
 
 /*
@@ -33390,6 +34683,50 @@ func (recv *GestureStylus) GetDeviceTool() *gdk.DeviceTool {
 }
 
 /*
+ConnectDown connects a callback to the 'down' signal of the GestureStylus.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureStylus) ConnectDown(handler func(instance *GestureStylus, object_ float64, p0 float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "down", marshal)
+}
+
+/*
+ConnectMotion connects a callback to the 'motion' signal of the GestureStylus.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureStylus) ConnectMotion(handler func(instance *GestureStylus, object_ float64, p0 float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "motion", marshal)
+}
+
+/*
+ConnectProximity connects a callback to the 'proximity' signal of the GestureStylus.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureStylus) ConnectProximity(handler func(instance *GestureStylus, object_ float64, p0 float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "proximity", marshal)
+}
+
+/*
+ConnectUp connects a callback to the 'up' signal of the GestureStylus.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureStylus) ConnectUp(handler func(instance *GestureStylus, object_ float64, p0 float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "up", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -33538,6 +34875,17 @@ func (recv *GestureSwipe) GetVelocity() (bool, float64, float64) {
 }
 
 /*
+ConnectSwipe connects a callback to the 'swipe' signal of the GestureSwipe.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureSwipe) ConnectSwipe(handler func(instance *GestureSwipe, velocityX float64, velocityY float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "swipe", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -33675,6 +35023,17 @@ func (recv *GestureZoom) GetScaleDelta() float64 {
 	retGo := ret.Float64()
 
 	return retGo
+}
+
+/*
+ConnectScaleChanged connects a callback to the 'scale-changed' signal of the GestureZoom.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GestureZoom) ConnectScaleChanged(handler func(instance *GestureZoom, scale float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "scale-changed", marshal)
 }
 
 /*
@@ -35095,6 +36454,28 @@ func (recv *HSV) SetMetrics(size int32, ringWidth int32) {
 }
 
 /*
+ConnectChanged connects a callback to the 'changed' signal of the HSV.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *HSV) ConnectChanged(handler func(instance *HSV)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
+ConnectMove connects a callback to the 'move' signal of the HSV.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *HSV) ConnectMove(handler func(instance *HSV, object_ DirectionType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -35880,6 +37261,28 @@ func (recv *HandleBox) SetSnapEdge(edge PositionType) {
 	}
 
 	return
+}
+
+/*
+ConnectChildAttached connects a callback to the 'child-attached' signal of the HandleBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *HandleBox) ConnectChildAttached(handler func(instance *HandleBox, widget *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "child-attached", marshal)
+}
+
+/*
+ConnectChildDetached connects a callback to the 'child-detached' signal of the HandleBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *HandleBox) ConnectChildDetached(handler func(instance *HandleBox, widget *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "child-detached", marshal)
 }
 
 /*
@@ -36858,6 +38261,72 @@ func (recv *IMContext) SetUsePreedit(usePreedit bool) {
 	}
 
 	return
+}
+
+/*
+ConnectCommit connects a callback to the 'commit' signal of the IMContext.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IMContext) ConnectCommit(handler func(instance *IMContext, str string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "commit", marshal)
+}
+
+/*
+ConnectDeleteSurrounding connects a callback to the 'delete-surrounding' signal of the IMContext.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IMContext) ConnectDeleteSurrounding(handler func(instance *IMContext, offset int32, nChars int32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "delete-surrounding", marshal)
+}
+
+/*
+ConnectPreeditChanged connects a callback to the 'preedit-changed' signal of the IMContext.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IMContext) ConnectPreeditChanged(handler func(instance *IMContext)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "preedit-changed", marshal)
+}
+
+/*
+ConnectPreeditEnd connects a callback to the 'preedit-end' signal of the IMContext.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IMContext) ConnectPreeditEnd(handler func(instance *IMContext)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "preedit-end", marshal)
+}
+
+/*
+ConnectPreeditStart connects a callback to the 'preedit-start' signal of the IMContext.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IMContext) ConnectPreeditStart(handler func(instance *IMContext)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "preedit-start", marshal)
+}
+
+/*
+ConnectRetrieveSurrounding connects a callback to the 'retrieve-surrounding' signal of the IMContext.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IMContext) ConnectRetrieveSurrounding(handler func(instance *IMContext) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "retrieve-surrounding", marshal)
 }
 
 /*
@@ -38304,6 +39773,17 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 }
 
 // UNSUPPORTED : C value 'gtk_icon_theme_set_search_path' : parameter 'path' of type 'nil' not supported
+
+/*
+ConnectChanged connects a callback to the 'changed' signal of the IconTheme.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IconTheme) ConnectChanged(handler func(instance *IconTheme)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -40091,6 +41571,94 @@ func (recv *IconView) UnsetModelDragSource() {
 	}
 
 	return
+}
+
+/*
+ConnectActivateCursorItem connects a callback to the 'activate-cursor-item' signal of the IconView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IconView) ConnectActivateCursorItem(handler func(instance *IconView) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate-cursor-item", marshal)
+}
+
+/*
+ConnectItemActivated connects a callback to the 'item-activated' signal of the IconView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IconView) ConnectItemActivated(handler func(instance *IconView, path *TreePath)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "item-activated", marshal)
+}
+
+/*
+ConnectMoveCursor connects a callback to the 'move-cursor' signal of the IconView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IconView) ConnectMoveCursor(handler func(instance *IconView, step MovementStep, count int32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-cursor", marshal)
+}
+
+/*
+ConnectSelectAll connects a callback to the 'select-all' signal of the IconView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IconView) ConnectSelectAll(handler func(instance *IconView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "select-all", marshal)
+}
+
+/*
+ConnectSelectCursorItem connects a callback to the 'select-cursor-item' signal of the IconView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IconView) ConnectSelectCursorItem(handler func(instance *IconView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "select-cursor-item", marshal)
+}
+
+/*
+ConnectSelectionChanged connects a callback to the 'selection-changed' signal of the IconView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IconView) ConnectSelectionChanged(handler func(instance *IconView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "selection-changed", marshal)
+}
+
+/*
+ConnectToggleCursorItem connects a callback to the 'toggle-cursor-item' signal of the IconView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IconView) ConnectToggleCursorItem(handler func(instance *IconView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggle-cursor-item", marshal)
+}
+
+/*
+ConnectUnselectAll connects a callback to the 'unselect-all' signal of the IconView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *IconView) ConnectUnselectAll(handler func(instance *IconView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "unselect-all", marshal)
 }
 
 /*
@@ -42293,6 +43861,28 @@ func (recv *InfoBar) SetShowCloseButton(setting bool) {
 }
 
 /*
+ConnectClose connects a callback to the 'close' signal of the InfoBar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *InfoBar) ConnectClose(handler func(instance *InfoBar)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "close", marshal)
+}
+
+/*
+ConnectResponse connects a callback to the 'response' signal of the InfoBar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *InfoBar) ConnectResponse(handler func(instance *InfoBar, responseId ResponseType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "response", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -43975,6 +45565,61 @@ func (recv *Label) SetYalign(yalign float32) {
 }
 
 /*
+ConnectActivateCurrentLink connects a callback to the 'activate-current-link' signal of the Label.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Label) ConnectActivateCurrentLink(handler func(instance *Label)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate-current-link", marshal)
+}
+
+/*
+ConnectActivateLink connects a callback to the 'activate-link' signal of the Label.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Label) ConnectActivateLink(handler func(instance *Label, uri string) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate-link", marshal)
+}
+
+/*
+ConnectCopyClipboard connects a callback to the 'copy-clipboard' signal of the Label.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Label) ConnectCopyClipboard(handler func(instance *Label)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "copy-clipboard", marshal)
+}
+
+/*
+ConnectMoveCursor connects a callback to the 'move-cursor' signal of the Label.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Label) ConnectMoveCursor(handler func(instance *Label, step MovementStep, count int32, extendSelection bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-cursor", marshal)
+}
+
+/*
+ConnectPopulatePopup connects a callback to the 'populate-popup' signal of the Label.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Label) ConnectPopulatePopup(handler func(instance *Label, menu *Menu)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "populate-popup", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -45045,6 +46690,17 @@ func (recv *LevelBar) SetValue(value float64) {
 }
 
 /*
+ConnectOffsetChanged connects a callback to the 'offset-changed' signal of the LevelBar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *LevelBar) ConnectOffsetChanged(handler func(instance *LevelBar, name string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "offset-changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -45441,6 +47097,17 @@ func (recv *LinkButton) SetVisited(visited bool) {
 	}
 
 	return
+}
+
+/*
+ConnectActivateLink connects a callback to the 'activate-link' signal of the LinkButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *LinkButton) ConnectActivateLink(handler func(instance *LinkButton) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate-link", marshal)
 }
 
 /*
@@ -46351,6 +48018,94 @@ func (recv *ListBox) UnselectRow(row *ListBoxRow) {
 }
 
 /*
+ConnectActivateCursorRow connects a callback to the 'activate-cursor-row' signal of the ListBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ListBox) ConnectActivateCursorRow(handler func(instance *ListBox)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate-cursor-row", marshal)
+}
+
+/*
+ConnectMoveCursor connects a callback to the 'move-cursor' signal of the ListBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ListBox) ConnectMoveCursor(handler func(instance *ListBox, object_ MovementStep, p0 int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-cursor", marshal)
+}
+
+/*
+ConnectRowActivated connects a callback to the 'row-activated' signal of the ListBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ListBox) ConnectRowActivated(handler func(instance *ListBox, row *ListBoxRow)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "row-activated", marshal)
+}
+
+/*
+ConnectRowSelected connects a callback to the 'row-selected' signal of the ListBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ListBox) ConnectRowSelected(handler func(instance *ListBox, row *ListBoxRow)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "row-selected", marshal)
+}
+
+/*
+ConnectSelectAll connects a callback to the 'select-all' signal of the ListBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ListBox) ConnectSelectAll(handler func(instance *ListBox)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "select-all", marshal)
+}
+
+/*
+ConnectSelectedRowsChanged connects a callback to the 'selected-rows-changed' signal of the ListBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ListBox) ConnectSelectedRowsChanged(handler func(instance *ListBox)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "selected-rows-changed", marshal)
+}
+
+/*
+ConnectToggleCursorRow connects a callback to the 'toggle-cursor-row' signal of the ListBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ListBox) ConnectToggleCursorRow(handler func(instance *ListBox)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggle-cursor-row", marshal)
+}
+
+/*
+ConnectUnselectAll connects a callback to the 'unselect-all' signal of the ListBox.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ListBox) ConnectUnselectAll(handler func(instance *ListBox)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "unselect-all", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -46874,6 +48629,17 @@ func (recv *ListBoxRow) SetSelectable(selectable bool) {
 	}
 
 	return
+}
+
+/*
+ConnectActivate connects a callback to the 'activate' signal of the ListBoxRow.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ListBoxRow) ConnectActivate(handler func(instance *ListBoxRow)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate", marshal)
 }
 
 /*
@@ -48625,6 +50391,19 @@ func (recv *Menu) SetTitle(title string) {
 
 	return
 }
+
+/*
+ConnectMoveScroll connects a callback to the 'move-scroll' signal of the Menu.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Menu) ConnectMoveScroll(handler func(instance *Menu, scrollType ScrollType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-scroll", marshal)
+}
+
+// UNSUPPORTED : C value 'popped-up' : parameter 'flipped_rect' of type 'gpointer' not supported
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -50385,6 +52164,63 @@ func (recv *MenuItem) ToggleSizeRequest(requisition int32) int32 {
 }
 
 /*
+ConnectActivate connects a callback to the 'activate' signal of the MenuItem.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuItem) ConnectActivate(handler func(instance *MenuItem)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate", marshal)
+}
+
+/*
+ConnectActivateItem connects a callback to the 'activate-item' signal of the MenuItem.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuItem) ConnectActivateItem(handler func(instance *MenuItem)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate-item", marshal)
+}
+
+/*
+ConnectDeselect connects a callback to the 'deselect' signal of the MenuItem.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuItem) ConnectDeselect(handler func(instance *MenuItem)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "deselect", marshal)
+}
+
+/*
+ConnectSelect connects a callback to the 'select' signal of the MenuItem.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuItem) ConnectSelect(handler func(instance *MenuItem)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "select", marshal)
+}
+
+/*
+ConnectToggleSizeAllocate connects a callback to the 'toggle-size-allocate' signal of the MenuItem.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuItem) ConnectToggleSizeAllocate(handler func(instance *MenuItem, object_ int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggle-size-allocate", marshal)
+}
+
+// UNSUPPORTED : C value 'toggle-size-request' : parameter 'object' of type 'gpointer' not supported
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -51032,6 +52868,94 @@ func (recv *MenuShell) SetTakeFocus(takeFocus bool) {
 }
 
 /*
+ConnectActivateCurrent connects a callback to the 'activate-current' signal of the MenuShell.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuShell) ConnectActivateCurrent(handler func(instance *MenuShell, forceHide bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate-current", marshal)
+}
+
+/*
+ConnectCancel connects a callback to the 'cancel' signal of the MenuShell.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuShell) ConnectCancel(handler func(instance *MenuShell)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cancel", marshal)
+}
+
+/*
+ConnectCycleFocus connects a callback to the 'cycle-focus' signal of the MenuShell.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuShell) ConnectCycleFocus(handler func(instance *MenuShell, direction DirectionType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cycle-focus", marshal)
+}
+
+/*
+ConnectDeactivate connects a callback to the 'deactivate' signal of the MenuShell.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuShell) ConnectDeactivate(handler func(instance *MenuShell)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "deactivate", marshal)
+}
+
+/*
+ConnectInsert connects a callback to the 'insert' signal of the MenuShell.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuShell) ConnectInsert(handler func(instance *MenuShell, child *Widget, position int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "insert", marshal)
+}
+
+/*
+ConnectMoveCurrent connects a callback to the 'move-current' signal of the MenuShell.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuShell) ConnectMoveCurrent(handler func(instance *MenuShell, direction MenuDirectionType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-current", marshal)
+}
+
+/*
+ConnectMoveSelected connects a callback to the 'move-selected' signal of the MenuShell.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuShell) ConnectMoveSelected(handler func(instance *MenuShell, distance int32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-selected", marshal)
+}
+
+/*
+ConnectSelectionDone connects a callback to the 'selection-done' signal of the MenuShell.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuShell) ConnectSelectionDone(handler func(instance *MenuShell)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "selection-done", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -51444,6 +53368,17 @@ func (recv *MenuToolButton) SetMenu(menu *Widget) {
 	}
 
 	return
+}
+
+/*
+ConnectShowMenu connects a callback to the 'show-menu' signal of the MenuToolButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuToolButton) ConnectShowMenu(handler func(instance *MenuToolButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "show-menu", marshal)
 }
 
 /*
@@ -52733,6 +54668,17 @@ func (recv *NativeDialog) Show() {
 	}
 
 	return
+}
+
+/*
+ConnectResponse connects a callback to the 'response' signal of the NativeDialog.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *NativeDialog) ConnectResponse(handler func(instance *NativeDialog, responseId ResponseType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "response", marshal)
 }
 
 /*
@@ -54223,6 +56169,116 @@ func (recv *Notebook) SetTabReorderable(child *Widget, reorderable bool) {
 }
 
 /*
+ConnectChangeCurrentPage connects a callback to the 'change-current-page' signal of the Notebook.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Notebook) ConnectChangeCurrentPage(handler func(instance *Notebook, object_ int32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "change-current-page", marshal)
+}
+
+/*
+ConnectCreateWindow connects a callback to the 'create-window' signal of the Notebook.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Notebook) ConnectCreateWindow(handler func(instance *Notebook, page *Widget, x int32, y int32) *Notebook) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "create-window", marshal)
+}
+
+/*
+ConnectFocusTab connects a callback to the 'focus-tab' signal of the Notebook.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Notebook) ConnectFocusTab(handler func(instance *Notebook, object_ NotebookTab) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "focus-tab", marshal)
+}
+
+/*
+ConnectMoveFocusOut connects a callback to the 'move-focus-out' signal of the Notebook.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Notebook) ConnectMoveFocusOut(handler func(instance *Notebook, object_ DirectionType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-focus-out", marshal)
+}
+
+/*
+ConnectPageAdded connects a callback to the 'page-added' signal of the Notebook.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Notebook) ConnectPageAdded(handler func(instance *Notebook, child *Widget, pageNum uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "page-added", marshal)
+}
+
+/*
+ConnectPageRemoved connects a callback to the 'page-removed' signal of the Notebook.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Notebook) ConnectPageRemoved(handler func(instance *Notebook, child *Widget, pageNum uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "page-removed", marshal)
+}
+
+/*
+ConnectPageReordered connects a callback to the 'page-reordered' signal of the Notebook.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Notebook) ConnectPageReordered(handler func(instance *Notebook, child *Widget, pageNum uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "page-reordered", marshal)
+}
+
+/*
+ConnectReorderTab connects a callback to the 'reorder-tab' signal of the Notebook.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Notebook) ConnectReorderTab(handler func(instance *Notebook, object_ DirectionType, p0 bool) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "reorder-tab", marshal)
+}
+
+/*
+ConnectSelectPage connects a callback to the 'select-page' signal of the Notebook.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Notebook) ConnectSelectPage(handler func(instance *Notebook, object_ bool) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "select-page", marshal)
+}
+
+/*
+ConnectSwitchPage connects a callback to the 'switch-page' signal of the Notebook.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Notebook) ConnectSwitchPage(handler func(instance *Notebook, page *Widget, pageNum uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "switch-page", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -55259,6 +57315,8 @@ func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
 
 	return
 }
+
+// UNSUPPORTED : C value 'get-child-position' : parameter 'allocation' of type 'Gdk.Rectangle' not supported
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -56595,6 +58653,72 @@ func (recv *Paned) SetWideHandle(wide bool) {
 }
 
 /*
+ConnectAcceptPosition connects a callback to the 'accept-position' signal of the Paned.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Paned) ConnectAcceptPosition(handler func(instance *Paned) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "accept-position", marshal)
+}
+
+/*
+ConnectCancelPosition connects a callback to the 'cancel-position' signal of the Paned.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Paned) ConnectCancelPosition(handler func(instance *Paned) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cancel-position", marshal)
+}
+
+/*
+ConnectCycleChildFocus connects a callback to the 'cycle-child-focus' signal of the Paned.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Paned) ConnectCycleChildFocus(handler func(instance *Paned, reversed bool) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cycle-child-focus", marshal)
+}
+
+/*
+ConnectCycleHandleFocus connects a callback to the 'cycle-handle-focus' signal of the Paned.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Paned) ConnectCycleHandleFocus(handler func(instance *Paned, reversed bool) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cycle-handle-focus", marshal)
+}
+
+/*
+ConnectMoveHandle connects a callback to the 'move-handle' signal of the Paned.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Paned) ConnectMoveHandle(handler func(instance *Paned, scrollType ScrollType) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-handle", marshal)
+}
+
+/*
+ConnectToggleHandleFocus connects a callback to the 'toggle-handle-focus' signal of the Paned.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Paned) ConnectToggleHandleFocus(handler func(instance *Paned) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggle-handle-focus", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -57376,6 +59500,95 @@ func (recv *PlacesSidebar) SetShowTrash(showTrash bool) {
 }
 
 /*
+ConnectDragActionAsk connects a callback to the 'drag-action-ask' signal of the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PlacesSidebar) ConnectDragActionAsk(handler func(instance *PlacesSidebar, actions int32) int32) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-action-ask", marshal)
+}
+
+// UNSUPPORTED : C value 'drag-action-requested' : parameter 'dest_file' of type 'Gio.File' not supported
+
+// UNSUPPORTED : C value 'drag-perform-drop' : parameter 'dest_file' of type 'Gio.File' not supported
+
+/*
+ConnectMount connects a callback to the 'mount' signal of the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PlacesSidebar) ConnectMount(handler func(instance *PlacesSidebar, mountOperation *gio.MountOperation)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "mount", marshal)
+}
+
+// UNSUPPORTED : C value 'open-location' : parameter 'location' of type 'Gio.File' not supported
+
+// UNSUPPORTED : C value 'populate-popup' : parameter 'selected_item' of type 'Gio.File' not supported
+
+/*
+ConnectShowConnectToServer connects a callback to the 'show-connect-to-server' signal of the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PlacesSidebar) ConnectShowConnectToServer(handler func(instance *PlacesSidebar)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "show-connect-to-server", marshal)
+}
+
+/*
+ConnectShowEnterLocation connects a callback to the 'show-enter-location' signal of the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PlacesSidebar) ConnectShowEnterLocation(handler func(instance *PlacesSidebar)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "show-enter-location", marshal)
+}
+
+/*
+ConnectShowErrorMessage connects a callback to the 'show-error-message' signal of the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PlacesSidebar) ConnectShowErrorMessage(handler func(instance *PlacesSidebar, primary string, secondary string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "show-error-message", marshal)
+}
+
+/*
+ConnectShowOtherLocations connects a callback to the 'show-other-locations' signal of the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PlacesSidebar) ConnectShowOtherLocations(handler func(instance *PlacesSidebar)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "show-other-locations", marshal)
+}
+
+// UNSUPPORTED : C value 'show-other-locations-with-flags' : parameter 'open_flags' of type 'PlacesOpenFlags' not supported
+
+// UNSUPPORTED : C value 'show-starred-location' : parameter 'open_flags' of type 'PlacesOpenFlags' not supported
+
+/*
+ConnectUnmount connects a callback to the 'unmount' signal of the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PlacesSidebar) ConnectUnmount(handler func(instance *PlacesSidebar, mountOperation *gio.MountOperation)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "unmount", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -57720,6 +59933,17 @@ func (recv *Plug) GetSocketWindow() *gdk.Window {
 	retGo := gdk.WindowNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+/*
+ConnectEmbedded connects a callback to the 'embedded' signal of the Plug.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Plug) ConnectEmbedded(handler func(instance *Plug)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "embedded", marshal)
 }
 
 /*
@@ -58349,6 +60573,17 @@ func (recv *Popover) SetTransitionsEnabled(transitionsEnabled bool) {
 	}
 
 	return
+}
+
+/*
+ConnectClosed connects a callback to the 'closed' signal of the Popover.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Popover) ConnectClosed(handler func(instance *Popover)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "closed", marshal)
 }
 
 /*
@@ -59933,6 +62168,118 @@ func (recv *PrintOperation) SetUseFullPage(fullPage bool) {
 	}
 
 	return
+}
+
+/*
+ConnectBeginPrint connects a callback to the 'begin-print' signal of the PrintOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PrintOperation) ConnectBeginPrint(handler func(instance *PrintOperation, context *PrintContext)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "begin-print", marshal)
+}
+
+/*
+ConnectCreateCustomWidget connects a callback to the 'create-custom-widget' signal of the PrintOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PrintOperation) ConnectCreateCustomWidget(handler func(instance *PrintOperation) *gobject.Object) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "create-custom-widget", marshal)
+}
+
+/*
+ConnectCustomWidgetApply connects a callback to the 'custom-widget-apply' signal of the PrintOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PrintOperation) ConnectCustomWidgetApply(handler func(instance *PrintOperation, widget *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "custom-widget-apply", marshal)
+}
+
+/*
+ConnectDone connects a callback to the 'done' signal of the PrintOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PrintOperation) ConnectDone(handler func(instance *PrintOperation, result PrintOperationResult)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "done", marshal)
+}
+
+/*
+ConnectDrawPage connects a callback to the 'draw-page' signal of the PrintOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PrintOperation) ConnectDrawPage(handler func(instance *PrintOperation, context *PrintContext, pageNr int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "draw-page", marshal)
+}
+
+/*
+ConnectEndPrint connects a callback to the 'end-print' signal of the PrintOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PrintOperation) ConnectEndPrint(handler func(instance *PrintOperation, context *PrintContext)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "end-print", marshal)
+}
+
+/*
+ConnectPaginate connects a callback to the 'paginate' signal of the PrintOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PrintOperation) ConnectPaginate(handler func(instance *PrintOperation, context *PrintContext) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "paginate", marshal)
+}
+
+// UNSUPPORTED : C value 'preview' : parameter 'preview' of type 'PrintOperationPreview' not supported
+
+/*
+ConnectRequestPageSetup connects a callback to the 'request-page-setup' signal of the PrintOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PrintOperation) ConnectRequestPageSetup(handler func(instance *PrintOperation, context *PrintContext, pageNr int32, setup *PageSetup)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "request-page-setup", marshal)
+}
+
+/*
+ConnectStatusChanged connects a callback to the 'status-changed' signal of the PrintOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PrintOperation) ConnectStatusChanged(handler func(instance *PrintOperation)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "status-changed", marshal)
+}
+
+/*
+ConnectUpdateCustomWidget connects a callback to the 'update-custom-widget' signal of the PrintOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PrintOperation) ConnectUpdateCustomWidget(handler func(instance *PrintOperation, widget *Widget, setup *PageSetup, settings *PrintSettings)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "update-custom-widget", marshal)
 }
 
 /*
@@ -62943,6 +65290,17 @@ func (recv *RadioAction) SetCurrentValue(currentValue int32) {
 // UNSUPPORTED : C value 'gtk_radio_action_set_group' : parameter 'group' of type 'GLib.SList' not supported
 
 /*
+ConnectChanged connects a callback to the 'changed' signal of the RadioAction.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *RadioAction) ConnectChanged(handler func(instance *RadioAction, current *RadioAction)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -63196,6 +65554,17 @@ func (recv *RadioButton) JoinGroup(groupSource *RadioButton) {
 }
 
 // UNSUPPORTED : C value 'gtk_radio_button_set_group' : parameter 'group' of type 'GLib.SList' not supported
+
+/*
+ConnectGroupChanged connects a callback to the 'group-changed' signal of the RadioButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *RadioButton) ConnectGroupChanged(handler func(instance *RadioButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "group-changed", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -63589,6 +65958,17 @@ func (recv *RadioMenuItem) JoinGroup(groupSource *RadioMenuItem) {
 }
 
 // UNSUPPORTED : C value 'gtk_radio_menu_item_set_group' : parameter 'group' of type 'GLib.SList' not supported
+
+/*
+ConnectGroupChanged connects a callback to the 'group-changed' signal of the RadioMenuItem.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *RadioMenuItem) ConnectGroupChanged(handler func(instance *RadioMenuItem)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "group-changed", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -64862,6 +67242,50 @@ func (recv *Range) SetValue(value float64) {
 	}
 
 	return
+}
+
+/*
+ConnectAdjustBounds connects a callback to the 'adjust-bounds' signal of the Range.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Range) ConnectAdjustBounds(handler func(instance *Range, value float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "adjust-bounds", marshal)
+}
+
+/*
+ConnectChangeValue connects a callback to the 'change-value' signal of the Range.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Range) ConnectChangeValue(handler func(instance *Range, scroll ScrollType, value float64) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "change-value", marshal)
+}
+
+/*
+ConnectMoveSlider connects a callback to the 'move-slider' signal of the Range.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Range) ConnectMoveSlider(handler func(instance *Range, step ScrollType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-slider", marshal)
+}
+
+/*
+ConnectValueChanged connects a callback to the 'value-changed' signal of the Range.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Range) ConnectValueChanged(handler func(instance *Range)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "value-changed", marshal)
 }
 
 /*
@@ -66633,6 +69057,17 @@ func (recv *RecentManager) RemoveItem(uri string) bool {
 }
 
 /*
+ConnectChanged connects a callback to the 'changed' signal of the RecentManager.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *RecentManager) ConnectChanged(handler func(instance *RecentManager)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -67653,6 +70088,17 @@ func (recv *Scale) SetValuePos(pos PositionType) {
 }
 
 /*
+ConnectFormatValue connects a callback to the 'format-value' signal of the Scale.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Scale) ConnectFormatValue(handler func(instance *Scale, value float64) string) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "format-value", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -68103,6 +70549,39 @@ func (recv *ScaleButton) SetValue(value float64) {
 	}
 
 	return
+}
+
+/*
+ConnectPopdown connects a callback to the 'popdown' signal of the ScaleButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ScaleButton) ConnectPopdown(handler func(instance *ScaleButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "popdown", marshal)
+}
+
+/*
+ConnectPopup connects a callback to the 'popup' signal of the ScaleButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ScaleButton) ConnectPopup(handler func(instance *ScaleButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "popup", marshal)
+}
+
+/*
+ConnectValueChanged connects a callback to the 'value-changed' signal of the ScaleButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ScaleButton) ConnectValueChanged(handler func(instance *ScaleButton, value float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "value-changed", marshal)
 }
 
 /*
@@ -69513,6 +71992,50 @@ func (recv *ScrolledWindow) UnsetPlacement() {
 }
 
 /*
+ConnectEdgeOvershot connects a callback to the 'edge-overshot' signal of the ScrolledWindow.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ScrolledWindow) ConnectEdgeOvershot(handler func(instance *ScrolledWindow, pos PositionType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "edge-overshot", marshal)
+}
+
+/*
+ConnectEdgeReached connects a callback to the 'edge-reached' signal of the ScrolledWindow.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ScrolledWindow) ConnectEdgeReached(handler func(instance *ScrolledWindow, pos PositionType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "edge-reached", marshal)
+}
+
+/*
+ConnectMoveFocusOut connects a callback to the 'move-focus-out' signal of the ScrolledWindow.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ScrolledWindow) ConnectMoveFocusOut(handler func(instance *ScrolledWindow, directionType DirectionType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-focus-out", marshal)
+}
+
+/*
+ConnectScrollChild connects a callback to the 'scroll-child' signal of the ScrolledWindow.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ScrolledWindow) ConnectScrollChild(handler func(instance *ScrolledWindow, scroll ScrollType, horizontal bool) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "scroll-child", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -70022,6 +72545,50 @@ func SearchEntryNew() *SearchEntry {
 }
 
 // UNSUPPORTED : C value 'gtk_search_entry_handle_event' : parameter 'event' of type 'Gdk.Event' not supported
+
+/*
+ConnectNextMatch connects a callback to the 'next-match' signal of the SearchEntry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *SearchEntry) ConnectNextMatch(handler func(instance *SearchEntry)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "next-match", marshal)
+}
+
+/*
+ConnectPreviousMatch connects a callback to the 'previous-match' signal of the SearchEntry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *SearchEntry) ConnectPreviousMatch(handler func(instance *SearchEntry)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "previous-match", marshal)
+}
+
+/*
+ConnectSearchChanged connects a callback to the 'search-changed' signal of the SearchEntry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *SearchEntry) ConnectSearchChanged(handler func(instance *SearchEntry)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "search-changed", marshal)
+}
+
+/*
+ConnectStopSearch connects a callback to the 'stop-search' signal of the SearchEntry.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *SearchEntry) ConnectStopSearch(handler func(instance *SearchEntry)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "stop-search", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -71172,6 +73739,17 @@ func (recv *ShortcutsSection) Native() unsafe.Pointer {
 }
 
 /*
+ConnectChangeCurrentPage connects a callback to the 'change-current-page' signal of the ShortcutsSection.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ShortcutsSection) ConnectChangeCurrentPage(handler func(instance *ShortcutsSection, object_ int32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "change-current-page", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -71377,6 +73955,28 @@ func (recv *ShortcutsWindow) SetFieldWindow(value *Window) {
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(shortcutsWindowObject, recv.Native(), "window", argValue)
+}
+
+/*
+ConnectClose connects a callback to the 'close' signal of the ShortcutsWindow.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ShortcutsWindow) ConnectClose(handler func(instance *ShortcutsWindow)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "close", marshal)
+}
+
+/*
+ConnectSearch connects a callback to the 'search' signal of the ShortcutsWindow.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ShortcutsWindow) ConnectSearch(handler func(instance *ShortcutsWindow)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "search", marshal)
 }
 
 /*
@@ -71907,6 +74507,28 @@ func (recv *Socket) GetPlugWindow() *gdk.Window {
 	retGo := gdk.WindowNewFromNative(ret.Pointer())
 
 	return retGo
+}
+
+/*
+ConnectPlugAdded connects a callback to the 'plug-added' signal of the Socket.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Socket) ConnectPlugAdded(handler func(instance *Socket)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "plug-added", marshal)
+}
+
+/*
+ConnectPlugRemoved connects a callback to the 'plug-removed' signal of the Socket.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Socket) ConnectPlugRemoved(handler func(instance *Socket) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "plug-removed", marshal)
 }
 
 /*
@@ -72752,6 +75374,61 @@ func (recv *SpinButton) Update() {
 	}
 
 	return
+}
+
+/*
+ConnectChangeValue connects a callback to the 'change-value' signal of the SpinButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *SpinButton) ConnectChangeValue(handler func(instance *SpinButton, scroll ScrollType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "change-value", marshal)
+}
+
+/*
+ConnectInput connects a callback to the 'input' signal of the SpinButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *SpinButton) ConnectInput(handler func(instance *SpinButton) (int32, float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "input", marshal)
+}
+
+/*
+ConnectOutput connects a callback to the 'output' signal of the SpinButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *SpinButton) ConnectOutput(handler func(instance *SpinButton) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "output", marshal)
+}
+
+/*
+ConnectValueChanged connects a callback to the 'value-changed' signal of the SpinButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *SpinButton) ConnectValueChanged(handler func(instance *SpinButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "value-changed", marshal)
+}
+
+/*
+ConnectWrapped connects a callback to the 'wrapped' signal of the SpinButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *SpinButton) ConnectWrapped(handler func(instance *SpinButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "wrapped", marshal)
 }
 
 /*
@@ -75441,6 +78118,56 @@ func (recv *StatusIcon) SetVisible(visible bool) {
 }
 
 /*
+ConnectActivate connects a callback to the 'activate' signal of the StatusIcon.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *StatusIcon) ConnectActivate(handler func(instance *StatusIcon)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate", marshal)
+}
+
+// UNSUPPORTED : C value 'button-press-event' : parameter 'event' of type 'Gdk.EventButton' not supported
+
+// UNSUPPORTED : C value 'button-release-event' : parameter 'event' of type 'Gdk.EventButton' not supported
+
+/*
+ConnectPopupMenu connects a callback to the 'popup-menu' signal of the StatusIcon.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *StatusIcon) ConnectPopupMenu(handler func(instance *StatusIcon, button uint32, activateTime uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "popup-menu", marshal)
+}
+
+/*
+ConnectQueryTooltip connects a callback to the 'query-tooltip' signal of the StatusIcon.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *StatusIcon) ConnectQueryTooltip(handler func(instance *StatusIcon, x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "query-tooltip", marshal)
+}
+
+// UNSUPPORTED : C value 'scroll-event' : parameter 'event' of type 'Gdk.EventScroll' not supported
+
+/*
+ConnectSizeChanged connects a callback to the 'size-changed' signal of the StatusIcon.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *StatusIcon) ConnectSizeChanged(handler func(instance *StatusIcon, size int32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "size-changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -75753,6 +78480,28 @@ func (recv *Statusbar) RemoveAll(contextId uint32) {
 	}
 
 	return
+}
+
+/*
+ConnectTextPopped connects a callback to the 'text-popped' signal of the Statusbar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Statusbar) ConnectTextPopped(handler func(instance *Statusbar, contextId uint32, text string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "text-popped", marshal)
+}
+
+/*
+ConnectTextPushed connects a callback to the 'text-pushed' signal of the Statusbar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Statusbar) ConnectTextPushed(handler func(instance *Statusbar, contextId uint32, text string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "text-pushed", marshal)
 }
 
 /*
@@ -76284,6 +79033,28 @@ func (recv *Style) SetBackground(window *gdk.Window, stateType StateType) {
 	}
 
 	return
+}
+
+/*
+ConnectRealize connects a callback to the 'realize' signal of the Style.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Style) ConnectRealize(handler func(instance *Style)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "realize", marshal)
+}
+
+/*
+ConnectUnrealize connects a callback to the 'unrealize' signal of the Style.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Style) ConnectUnrealize(handler func(instance *Style)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "unrealize", marshal)
 }
 
 /*
@@ -77226,6 +79997,17 @@ func (recv *StyleContext) StateIsRunning(state StateType) (bool, float64) {
 // UNSUPPORTED : C value 'gtk_style_context_to_string' : parameter 'flags' of type 'StyleContextPrintFlags' not supported
 
 /*
+ConnectChanged connects a callback to the 'changed' signal of the StyleContext.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *StyleContext) ConnectChanged(handler func(instance *StyleContext)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -77676,6 +80458,28 @@ func (recv *Switch) SetState(state bool) {
 	}
 
 	return
+}
+
+/*
+ConnectActivate connects a callback to the 'activate' signal of the Switch.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Switch) ConnectActivate(handler func(instance *Switch)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate", marshal)
+}
+
+/*
+ConnectStateSet connects a callback to the 'state-set' signal of the Switch.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Switch) ConnectStateSet(handler func(instance *Switch, state bool) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "state-set", marshal)
 }
 
 /*
@@ -80541,6 +83345,149 @@ func (recv *TextBuffer) SetText(text string, len int32) {
 // UNSUPPORTED : C value 'gtk_text_buffer_unregister_serialize_format' : parameter 'format' of type 'Gdk.Atom' not supported
 
 /*
+ConnectApplyTag connects a callback to the 'apply-tag' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectApplyTag(handler func(instance *TextBuffer, tag *TextTag, start *TextIter, end *TextIter)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "apply-tag", marshal)
+}
+
+/*
+ConnectBeginUserAction connects a callback to the 'begin-user-action' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectBeginUserAction(handler func(instance *TextBuffer)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "begin-user-action", marshal)
+}
+
+/*
+ConnectChanged connects a callback to the 'changed' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectChanged(handler func(instance *TextBuffer)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
+ConnectDeleteRange connects a callback to the 'delete-range' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectDeleteRange(handler func(instance *TextBuffer, start *TextIter, end *TextIter)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "delete-range", marshal)
+}
+
+/*
+ConnectEndUserAction connects a callback to the 'end-user-action' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectEndUserAction(handler func(instance *TextBuffer)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "end-user-action", marshal)
+}
+
+/*
+ConnectInsertChildAnchor connects a callback to the 'insert-child-anchor' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectInsertChildAnchor(handler func(instance *TextBuffer, location *TextIter, anchor *TextChildAnchor)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "insert-child-anchor", marshal)
+}
+
+/*
+ConnectInsertPixbuf connects a callback to the 'insert-pixbuf' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectInsertPixbuf(handler func(instance *TextBuffer, location *TextIter, pixbuf *gdkpixbuf.Pixbuf)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "insert-pixbuf", marshal)
+}
+
+/*
+ConnectInsertText connects a callback to the 'insert-text' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectInsertText(handler func(instance *TextBuffer, location *TextIter, text string, len int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "insert-text", marshal)
+}
+
+/*
+ConnectMarkDeleted connects a callback to the 'mark-deleted' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectMarkDeleted(handler func(instance *TextBuffer, mark *TextMark)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "mark-deleted", marshal)
+}
+
+/*
+ConnectMarkSet connects a callback to the 'mark-set' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectMarkSet(handler func(instance *TextBuffer, location *TextIter, mark *TextMark)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "mark-set", marshal)
+}
+
+/*
+ConnectModifiedChanged connects a callback to the 'modified-changed' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectModifiedChanged(handler func(instance *TextBuffer)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "modified-changed", marshal)
+}
+
+/*
+ConnectPasteDone connects a callback to the 'paste-done' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectPasteDone(handler func(instance *TextBuffer, clipboard *Clipboard)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "paste-done", marshal)
+}
+
+/*
+ConnectRemoveTag connects a callback to the 'remove-tag' signal of the TextBuffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextBuffer) ConnectRemoveTag(handler func(instance *TextBuffer, tag *TextTag, start *TextIter, end *TextIter)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "remove-tag", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -81309,6 +84256,8 @@ func (recv *TextTag) SetPriority(priority int32) {
 	return
 }
 
+// UNSUPPORTED : C value 'event' : parameter 'event' of type 'Gdk.Event' not supported
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -81560,6 +84509,39 @@ func (recv *TextTagTable) Remove(tag *TextTag) {
 	}
 
 	return
+}
+
+/*
+ConnectTagAdded connects a callback to the 'tag-added' signal of the TextTagTable.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextTagTable) ConnectTagAdded(handler func(instance *TextTagTable, tag *TextTag)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "tag-added", marshal)
+}
+
+/*
+ConnectTagChanged connects a callback to the 'tag-changed' signal of the TextTagTable.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextTagTable) ConnectTagChanged(handler func(instance *TextTagTable, tag *TextTag, sizeChanged bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "tag-changed", marshal)
+}
+
+/*
+ConnectTagRemoved connects a callback to the 'tag-removed' signal of the TextTagTable.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextTagTable) ConnectTagRemoved(handler func(instance *TextTagTable, tag *TextTag)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "tag-removed", marshal)
 }
 
 /*
@@ -83726,6 +86708,182 @@ func (recv *TextView) WindowToBufferCoords(win TextWindowType, windowX int32, wi
 }
 
 /*
+ConnectBackspace connects a callback to the 'backspace' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectBackspace(handler func(instance *TextView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "backspace", marshal)
+}
+
+/*
+ConnectCopyClipboard connects a callback to the 'copy-clipboard' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectCopyClipboard(handler func(instance *TextView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "copy-clipboard", marshal)
+}
+
+/*
+ConnectCutClipboard connects a callback to the 'cut-clipboard' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectCutClipboard(handler func(instance *TextView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cut-clipboard", marshal)
+}
+
+/*
+ConnectDeleteFromCursor connects a callback to the 'delete-from-cursor' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectDeleteFromCursor(handler func(instance *TextView, type_ DeleteType, count int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "delete-from-cursor", marshal)
+}
+
+/*
+ConnectExtendSelection connects a callback to the 'extend-selection' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectExtendSelection(handler func(instance *TextView, granularity TextExtendSelection, location *TextIter, start *TextIter, end *TextIter) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "extend-selection", marshal)
+}
+
+/*
+ConnectInsertAtCursor connects a callback to the 'insert-at-cursor' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectInsertAtCursor(handler func(instance *TextView, string_ string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "insert-at-cursor", marshal)
+}
+
+/*
+ConnectInsertEmoji connects a callback to the 'insert-emoji' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectInsertEmoji(handler func(instance *TextView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "insert-emoji", marshal)
+}
+
+/*
+ConnectMoveCursor connects a callback to the 'move-cursor' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectMoveCursor(handler func(instance *TextView, step MovementStep, count int32, extendSelection bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-cursor", marshal)
+}
+
+/*
+ConnectMoveViewport connects a callback to the 'move-viewport' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectMoveViewport(handler func(instance *TextView, step ScrollStep, count int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-viewport", marshal)
+}
+
+/*
+ConnectPasteClipboard connects a callback to the 'paste-clipboard' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectPasteClipboard(handler func(instance *TextView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "paste-clipboard", marshal)
+}
+
+/*
+ConnectPopulatePopup connects a callback to the 'populate-popup' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectPopulatePopup(handler func(instance *TextView, popup *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "populate-popup", marshal)
+}
+
+/*
+ConnectPreeditChanged connects a callback to the 'preedit-changed' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectPreeditChanged(handler func(instance *TextView, preedit string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "preedit-changed", marshal)
+}
+
+/*
+ConnectSelectAll connects a callback to the 'select-all' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectSelectAll(handler func(instance *TextView, select_ bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "select-all", marshal)
+}
+
+/*
+ConnectSetAnchor connects a callback to the 'set-anchor' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectSetAnchor(handler func(instance *TextView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "set-anchor", marshal)
+}
+
+/*
+ConnectToggleCursorVisible connects a callback to the 'toggle-cursor-visible' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectToggleCursorVisible(handler func(instance *TextView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggle-cursor-visible", marshal)
+}
+
+/*
+ConnectToggleOverwrite connects a callback to the 'toggle-overwrite' signal of the TextView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TextView) ConnectToggleOverwrite(handler func(instance *TextView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggle-overwrite", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -84415,6 +87573,17 @@ func (recv *ToggleAction) Toggled() {
 }
 
 /*
+ConnectToggled connects a callback to the 'toggled' signal of the ToggleAction.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ToggleAction) ConnectToggled(handler func(instance *ToggleAction)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggled", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -84814,6 +87983,17 @@ func (recv *ToggleButton) Toggled() {
 }
 
 /*
+ConnectToggled connects a callback to the 'toggled' signal of the ToggleButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ToggleButton) ConnectToggled(handler func(instance *ToggleButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggled", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -85185,6 +88365,17 @@ func (recv *ToggleToolButton) SetActive(isActive bool) {
 	}
 
 	return
+}
+
+/*
+ConnectToggled connects a callback to the 'toggled' signal of the ToggleToolButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ToggleToolButton) ConnectToggled(handler func(instance *ToggleToolButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggled", marshal)
 }
 
 /*
@@ -85739,6 +88930,17 @@ func (recv *ToolButton) SetUseUnderline(useUnderline bool) {
 	}
 
 	return
+}
+
+/*
+ConnectClicked connects a callback to the 'clicked' signal of the ToolButton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ToolButton) ConnectClicked(handler func(instance *ToolButton)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "clicked", marshal)
 }
 
 /*
@@ -86688,6 +89890,28 @@ func (recv *ToolItem) ToolbarReconfigured() {
 	}
 
 	return
+}
+
+/*
+ConnectCreateMenuProxy connects a callback to the 'create-menu-proxy' signal of the ToolItem.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ToolItem) ConnectCreateMenuProxy(handler func(instance *ToolItem) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "create-menu-proxy", marshal)
+}
+
+/*
+ConnectToolbarReconfigured connects a callback to the 'toolbar-reconfigured' signal of the ToolItem.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ToolItem) ConnectToolbarReconfigured(handler func(instance *ToolItem)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toolbar-reconfigured", marshal)
 }
 
 /*
@@ -88575,6 +91799,50 @@ func (recv *Toolbar) UnsetStyle() {
 }
 
 /*
+ConnectFocusHomeOrEnd connects a callback to the 'focus-home-or-end' signal of the Toolbar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Toolbar) ConnectFocusHomeOrEnd(handler func(instance *Toolbar, focusHome bool) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "focus-home-or-end", marshal)
+}
+
+/*
+ConnectOrientationChanged connects a callback to the 'orientation-changed' signal of the Toolbar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Toolbar) ConnectOrientationChanged(handler func(instance *Toolbar, orientation Orientation)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "orientation-changed", marshal)
+}
+
+/*
+ConnectPopupContextMenu connects a callback to the 'popup-context-menu' signal of the Toolbar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Toolbar) ConnectPopupContextMenu(handler func(instance *Toolbar, x int32, y int32, button int32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "popup-context-menu", marshal)
+}
+
+/*
+ConnectStyleChanged connects a callback to the 'style-changed' signal of the Toolbar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Toolbar) ConnectStyleChanged(handler func(instance *Toolbar, style ToolbarStyle)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "style-changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -90029,6 +93297,17 @@ func (recv *TreeSelection) UnselectRange(startPath *TreePath, endPath *TreePath)
 	}
 
 	return
+}
+
+/*
+ConnectChanged connects a callback to the 'changed' signal of the TreeSelection.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeSelection) ConnectChanged(handler func(instance *TreeSelection)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
 }
 
 /*
@@ -93200,6 +96479,171 @@ func (recv *TreeView) UnsetRowsDragSource() {
 }
 
 /*
+ConnectColumnsChanged connects a callback to the 'columns-changed' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectColumnsChanged(handler func(instance *TreeView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "columns-changed", marshal)
+}
+
+/*
+ConnectCursorChanged connects a callback to the 'cursor-changed' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectCursorChanged(handler func(instance *TreeView)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cursor-changed", marshal)
+}
+
+/*
+ConnectExpandCollapseCursorRow connects a callback to the 'expand-collapse-cursor-row' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectExpandCollapseCursorRow(handler func(instance *TreeView, object_ bool, p0 bool, p1 bool) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "expand-collapse-cursor-row", marshal)
+}
+
+/*
+ConnectMoveCursor connects a callback to the 'move-cursor' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectMoveCursor(handler func(instance *TreeView, step MovementStep, direction int32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-cursor", marshal)
+}
+
+/*
+ConnectRowActivated connects a callback to the 'row-activated' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectRowActivated(handler func(instance *TreeView, path *TreePath, column *TreeViewColumn)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "row-activated", marshal)
+}
+
+/*
+ConnectRowCollapsed connects a callback to the 'row-collapsed' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectRowCollapsed(handler func(instance *TreeView, iter *TreeIter, path *TreePath)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "row-collapsed", marshal)
+}
+
+/*
+ConnectRowExpanded connects a callback to the 'row-expanded' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectRowExpanded(handler func(instance *TreeView, iter *TreeIter, path *TreePath)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "row-expanded", marshal)
+}
+
+/*
+ConnectSelectAll connects a callback to the 'select-all' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectSelectAll(handler func(instance *TreeView) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "select-all", marshal)
+}
+
+/*
+ConnectSelectCursorParent connects a callback to the 'select-cursor-parent' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectSelectCursorParent(handler func(instance *TreeView) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "select-cursor-parent", marshal)
+}
+
+/*
+ConnectSelectCursorRow connects a callback to the 'select-cursor-row' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectSelectCursorRow(handler func(instance *TreeView, object_ bool) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "select-cursor-row", marshal)
+}
+
+/*
+ConnectStartInteractiveSearch connects a callback to the 'start-interactive-search' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectStartInteractiveSearch(handler func(instance *TreeView) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "start-interactive-search", marshal)
+}
+
+/*
+ConnectTestCollapseRow connects a callback to the 'test-collapse-row' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectTestCollapseRow(handler func(instance *TreeView, iter *TreeIter, path *TreePath) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "test-collapse-row", marshal)
+}
+
+/*
+ConnectTestExpandRow connects a callback to the 'test-expand-row' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectTestExpandRow(handler func(instance *TreeView, iter *TreeIter, path *TreePath) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "test-expand-row", marshal)
+}
+
+/*
+ConnectToggleCursorRow connects a callback to the 'toggle-cursor-row' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectToggleCursorRow(handler func(instance *TreeView) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "toggle-cursor-row", marshal)
+}
+
+/*
+ConnectUnselectAll connects a callback to the 'unselect-all' signal of the TreeView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeView) ConnectUnselectAll(handler func(instance *TreeView) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "unselect-all", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -94912,6 +98356,17 @@ func (recv *TreeViewColumn) SetWidget(widget *Widget) {
 }
 
 /*
+ConnectClicked connects a callback to the 'clicked' signal of the TreeViewColumn.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeViewColumn) ConnectClicked(handler func(instance *TreeViewColumn)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "clicked", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -95474,6 +98929,72 @@ func (recv *UIManager) SetAddTearoffs(addTearoffs bool) {
 	}
 
 	return
+}
+
+/*
+ConnectActionsChanged connects a callback to the 'actions-changed' signal of the UIManager.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *UIManager) ConnectActionsChanged(handler func(instance *UIManager)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "actions-changed", marshal)
+}
+
+/*
+ConnectAddWidget connects a callback to the 'add-widget' signal of the UIManager.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *UIManager) ConnectAddWidget(handler func(instance *UIManager, widget *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "add-widget", marshal)
+}
+
+/*
+ConnectConnectProxy connects a callback to the 'connect-proxy' signal of the UIManager.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *UIManager) ConnectConnectProxy(handler func(instance *UIManager, action *Action, proxy *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "connect-proxy", marshal)
+}
+
+/*
+ConnectDisconnectProxy connects a callback to the 'disconnect-proxy' signal of the UIManager.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *UIManager) ConnectDisconnectProxy(handler func(instance *UIManager, action *Action, proxy *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "disconnect-proxy", marshal)
+}
+
+/*
+ConnectPostActivate connects a callback to the 'post-activate' signal of the UIManager.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *UIManager) ConnectPostActivate(handler func(instance *UIManager, action *Action)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "post-activate", marshal)
+}
+
+/*
+ConnectPreActivate connects a callback to the 'pre-activate' signal of the UIManager.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *UIManager) ConnectPreActivate(handler func(instance *UIManager, action *Action)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "pre-activate", marshal)
 }
 
 /*
@@ -103362,6 +106883,486 @@ func (recv *Widget) UnregisterWindow(window *gdk.Window) {
 // UNSUPPORTED : C value 'gtk_widget_unset_state_flags' : parameter 'flags' of type 'StateFlags' not supported
 
 /*
+ConnectAccelClosuresChanged connects a callback to the 'accel-closures-changed' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectAccelClosuresChanged(handler func(instance *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "accel-closures-changed", marshal)
+}
+
+// UNSUPPORTED : C value 'button-press-event' : parameter 'event' of type 'Gdk.EventButton' not supported
+
+// UNSUPPORTED : C value 'button-release-event' : parameter 'event' of type 'Gdk.EventButton' not supported
+
+/*
+ConnectCanActivateAccel connects a callback to the 'can-activate-accel' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectCanActivateAccel(handler func(instance *Widget, signalId uint32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "can-activate-accel", marshal)
+}
+
+/*
+ConnectChildNotify connects a callback to the 'child-notify' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectChildNotify(handler func(instance *Widget, childProperty *gobject.ParamSpec)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "child-notify", marshal)
+}
+
+/*
+ConnectCompositedChanged connects a callback to the 'composited-changed' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectCompositedChanged(handler func(instance *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "composited-changed", marshal)
+}
+
+// UNSUPPORTED : C value 'configure-event' : parameter 'event' of type 'Gdk.EventConfigure' not supported
+
+// UNSUPPORTED : C value 'damage-event' : parameter 'event' of type 'Gdk.EventExpose' not supported
+
+// UNSUPPORTED : C value 'delete-event' : parameter 'event' of type 'Gdk.Event' not supported
+
+/*
+ConnectDestroy connects a callback to the 'destroy' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDestroy(handler func(instance *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "destroy", marshal)
+}
+
+// UNSUPPORTED : C value 'destroy-event' : parameter 'event' of type 'Gdk.Event' not supported
+
+/*
+ConnectDirectionChanged connects a callback to the 'direction-changed' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDirectionChanged(handler func(instance *Widget, previousDirection TextDirection)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "direction-changed", marshal)
+}
+
+/*
+ConnectDragBegin connects a callback to the 'drag-begin' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDragBegin(handler func(instance *Widget, context *gdk.DragContext)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-begin", marshal)
+}
+
+/*
+ConnectDragDataDelete connects a callback to the 'drag-data-delete' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDragDataDelete(handler func(instance *Widget, context *gdk.DragContext)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-data-delete", marshal)
+}
+
+/*
+ConnectDragDataGet connects a callback to the 'drag-data-get' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDragDataGet(handler func(instance *Widget, context *gdk.DragContext, data *SelectionData, info uint32, time uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-data-get", marshal)
+}
+
+/*
+ConnectDragDataReceived connects a callback to the 'drag-data-received' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDragDataReceived(handler func(instance *Widget, context *gdk.DragContext, x int32, y int32, data *SelectionData, info uint32, time uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-data-received", marshal)
+}
+
+/*
+ConnectDragDrop connects a callback to the 'drag-drop' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDragDrop(handler func(instance *Widget, context *gdk.DragContext, x int32, y int32, time uint32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-drop", marshal)
+}
+
+/*
+ConnectDragEnd connects a callback to the 'drag-end' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDragEnd(handler func(instance *Widget, context *gdk.DragContext)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-end", marshal)
+}
+
+/*
+ConnectDragFailed connects a callback to the 'drag-failed' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDragFailed(handler func(instance *Widget, context *gdk.DragContext, result DragResult) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-failed", marshal)
+}
+
+/*
+ConnectDragLeave connects a callback to the 'drag-leave' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDragLeave(handler func(instance *Widget, context *gdk.DragContext, time uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-leave", marshal)
+}
+
+/*
+ConnectDragMotion connects a callback to the 'drag-motion' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectDragMotion(handler func(instance *Widget, context *gdk.DragContext, x int32, y int32, time uint32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "drag-motion", marshal)
+}
+
+// UNSUPPORTED : C value 'draw' : parameter 'cr' of type 'cairo.Context' not supported
+
+// UNSUPPORTED : C value 'enter-notify-event' : parameter 'event' of type 'Gdk.EventCrossing' not supported
+
+// UNSUPPORTED : C value 'event' : parameter 'event' of type 'Gdk.Event' not supported
+
+// UNSUPPORTED : C value 'event-after' : parameter 'event' of type 'Gdk.Event' not supported
+
+/*
+ConnectFocus connects a callback to the 'focus' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectFocus(handler func(instance *Widget, direction DirectionType) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "focus", marshal)
+}
+
+// UNSUPPORTED : C value 'focus-in-event' : parameter 'event' of type 'Gdk.EventFocus' not supported
+
+// UNSUPPORTED : C value 'focus-out-event' : parameter 'event' of type 'Gdk.EventFocus' not supported
+
+// UNSUPPORTED : C value 'grab-broken-event' : parameter 'event' of type 'Gdk.EventGrabBroken' not supported
+
+/*
+ConnectGrabFocus connects a callback to the 'grab-focus' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectGrabFocus(handler func(instance *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "grab-focus", marshal)
+}
+
+/*
+ConnectGrabNotify connects a callback to the 'grab-notify' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectGrabNotify(handler func(instance *Widget, wasGrabbed bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "grab-notify", marshal)
+}
+
+/*
+ConnectHide connects a callback to the 'hide' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectHide(handler func(instance *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "hide", marshal)
+}
+
+/*
+ConnectHierarchyChanged connects a callback to the 'hierarchy-changed' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectHierarchyChanged(handler func(instance *Widget, previousToplevel *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "hierarchy-changed", marshal)
+}
+
+// UNSUPPORTED : C value 'key-press-event' : parameter 'event' of type 'Gdk.EventKey' not supported
+
+// UNSUPPORTED : C value 'key-release-event' : parameter 'event' of type 'Gdk.EventKey' not supported
+
+/*
+ConnectKeynavFailed connects a callback to the 'keynav-failed' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectKeynavFailed(handler func(instance *Widget, direction DirectionType) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "keynav-failed", marshal)
+}
+
+// UNSUPPORTED : C value 'leave-notify-event' : parameter 'event' of type 'Gdk.EventCrossing' not supported
+
+/*
+ConnectMap connects a callback to the 'map' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectMap(handler func(instance *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "map", marshal)
+}
+
+// UNSUPPORTED : C value 'map-event' : parameter 'event' of type 'Gdk.EventAny' not supported
+
+/*
+ConnectMnemonicActivate connects a callback to the 'mnemonic-activate' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectMnemonicActivate(handler func(instance *Widget, groupCycling bool) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "mnemonic-activate", marshal)
+}
+
+// UNSUPPORTED : C value 'motion-notify-event' : parameter 'event' of type 'Gdk.EventMotion' not supported
+
+/*
+ConnectMoveFocus connects a callback to the 'move-focus' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectMoveFocus(handler func(instance *Widget, direction DirectionType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-focus", marshal)
+}
+
+/*
+ConnectParentSet connects a callback to the 'parent-set' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectParentSet(handler func(instance *Widget, oldParent *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "parent-set", marshal)
+}
+
+/*
+ConnectPopupMenu connects a callback to the 'popup-menu' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectPopupMenu(handler func(instance *Widget) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "popup-menu", marshal)
+}
+
+// UNSUPPORTED : C value 'property-notify-event' : parameter 'event' of type 'Gdk.EventProperty' not supported
+
+// UNSUPPORTED : C value 'proximity-in-event' : parameter 'event' of type 'Gdk.EventProximity' not supported
+
+// UNSUPPORTED : C value 'proximity-out-event' : parameter 'event' of type 'Gdk.EventProximity' not supported
+
+/*
+ConnectQueryTooltip connects a callback to the 'query-tooltip' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectQueryTooltip(handler func(instance *Widget, x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "query-tooltip", marshal)
+}
+
+/*
+ConnectRealize connects a callback to the 'realize' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectRealize(handler func(instance *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "realize", marshal)
+}
+
+/*
+ConnectScreenChanged connects a callback to the 'screen-changed' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectScreenChanged(handler func(instance *Widget, previousScreen *gdk.Screen)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "screen-changed", marshal)
+}
+
+// UNSUPPORTED : C value 'scroll-event' : parameter 'event' of type 'Gdk.EventScroll' not supported
+
+// UNSUPPORTED : C value 'selection-clear-event' : parameter 'event' of type 'Gdk.EventSelection' not supported
+
+/*
+ConnectSelectionGet connects a callback to the 'selection-get' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectSelectionGet(handler func(instance *Widget, data *SelectionData, info uint32, time uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "selection-get", marshal)
+}
+
+// UNSUPPORTED : C value 'selection-notify-event' : parameter 'event' of type 'Gdk.EventSelection' not supported
+
+/*
+ConnectSelectionReceived connects a callback to the 'selection-received' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectSelectionReceived(handler func(instance *Widget, data *SelectionData, time uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "selection-received", marshal)
+}
+
+// UNSUPPORTED : C value 'selection-request-event' : parameter 'event' of type 'Gdk.EventSelection' not supported
+
+/*
+ConnectShow connects a callback to the 'show' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectShow(handler func(instance *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "show", marshal)
+}
+
+/*
+ConnectShowHelp connects a callback to the 'show-help' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectShowHelp(handler func(instance *Widget, helpType WidgetHelpType) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "show-help", marshal)
+}
+
+// UNSUPPORTED : C value 'size-allocate' : parameter 'allocation' of type 'Allocation' not supported
+
+/*
+ConnectStateChanged connects a callback to the 'state-changed' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectStateChanged(handler func(instance *Widget, state StateType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "state-changed", marshal)
+}
+
+// UNSUPPORTED : C value 'state-flags-changed' : parameter 'flags' of type 'StateFlags' not supported
+
+/*
+ConnectStyleSet connects a callback to the 'style-set' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectStyleSet(handler func(instance *Widget, previousStyle *Style)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "style-set", marshal)
+}
+
+/*
+ConnectStyleUpdated connects a callback to the 'style-updated' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectStyleUpdated(handler func(instance *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "style-updated", marshal)
+}
+
+// UNSUPPORTED : C value 'touch-event' : parameter 'object' of type 'Gdk.Event' not supported
+
+/*
+ConnectUnmap connects a callback to the 'unmap' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectUnmap(handler func(instance *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "unmap", marshal)
+}
+
+// UNSUPPORTED : C value 'unmap-event' : parameter 'event' of type 'Gdk.EventAny' not supported
+
+/*
+ConnectUnrealize connects a callback to the 'unrealize' signal of the Widget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Widget) ConnectUnrealize(handler func(instance *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "unrealize", marshal)
+}
+
+// UNSUPPORTED : C value 'visibility-notify-event' : parameter 'event' of type 'Gdk.EventVisibility' not supported
+
+// UNSUPPORTED : C value 'window-state-event' : parameter 'event' of type 'Gdk.EventWindowState' not supported
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -106520,6 +110521,61 @@ func (recv *Window) Unstick() {
 	}
 
 	return
+}
+
+/*
+ConnectActivateDefault connects a callback to the 'activate-default' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectActivateDefault(handler func(instance *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate-default", marshal)
+}
+
+/*
+ConnectActivateFocus connects a callback to the 'activate-focus' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectActivateFocus(handler func(instance *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate-focus", marshal)
+}
+
+/*
+ConnectEnableDebugging connects a callback to the 'enable-debugging' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectEnableDebugging(handler func(instance *Window, toggle bool) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "enable-debugging", marshal)
+}
+
+/*
+ConnectKeysChanged connects a callback to the 'keys-changed' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectKeysChanged(handler func(instance *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "keys-changed", marshal)
+}
+
+/*
+ConnectSetFocus connects a callback to the 'set-focus' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectSetFocus(handler func(instance *Window, object_ *Widget)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "set-focus", marshal)
 }
 
 /*

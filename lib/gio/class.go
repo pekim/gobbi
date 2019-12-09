@@ -68,6 +68,17 @@ func (recv *AppInfoMonitor) Native() unsafe.Pointer {
 }
 
 /*
+ConnectChanged connects a callback to the 'changed' signal of the AppInfoMonitor.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *AppInfoMonitor) ConnectChanged(handler func(instance *AppInfoMonitor)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -296,6 +307,19 @@ func (recv *AppLaunchContext) Unsetenv(variable string) {
 
 	return
 }
+
+/*
+ConnectLaunchFailed connects a callback to the 'launch-failed' signal of the AppLaunchContext.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *AppLaunchContext) ConnectLaunchFailed(handler func(instance *AppLaunchContext, startupNotifyId string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "launch-failed", marshal)
+}
+
+// UNSUPPORTED : C value 'launched' : parameter 'info' of type 'AppInfo' not supported
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -1155,6 +1179,65 @@ func (recv *Application) WithdrawNotification(id string) {
 	}
 
 	return
+}
+
+/*
+ConnectActivate connects a callback to the 'activate' signal of the Application.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Application) ConnectActivate(handler func(instance *Application)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate", marshal)
+}
+
+/*
+ConnectCommandLine connects a callback to the 'command-line' signal of the Application.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Application) ConnectCommandLine(handler func(instance *Application, commandLine *ApplicationCommandLine) int32) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "command-line", marshal)
+}
+
+// UNSUPPORTED : C value 'handle-local-options' : parameter 'options' of type 'GLib.VariantDict' not supported
+
+/*
+ConnectNameLost connects a callback to the 'name-lost' signal of the Application.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Application) ConnectNameLost(handler func(instance *Application) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "name-lost", marshal)
+}
+
+// UNSUPPORTED : C value 'open' : parameter 'files' of type 'nil' not supported
+
+/*
+ConnectShutdown connects a callback to the 'shutdown' signal of the Application.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Application) ConnectShutdown(handler func(instance *Application)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "shutdown", marshal)
+}
+
+/*
+ConnectStartup connects a callback to the 'startup' signal of the Application.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Application) ConnectStartup(handler func(instance *Application)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "startup", marshal)
 }
 
 /*
@@ -2573,6 +2656,17 @@ func (recv *Cancellable) SetErrorIfCancelled() bool {
 // UNSUPPORTED : C value 'g_cancellable_source_new' : return type 'GLib.Source' not supported
 
 /*
+ConnectCancelled connects a callback to the 'cancelled' signal of the Cancellable.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Cancellable) ConnectCancelled(handler func(instance *Cancellable)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cancelled", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -3423,6 +3517,28 @@ func (recv *DBusAuthObserver) AuthorizeAuthenticatedPeer(stream *IOStream, crede
 }
 
 /*
+ConnectAllowMechanism connects a callback to the 'allow-mechanism' signal of the DBusAuthObserver.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DBusAuthObserver) ConnectAllowMechanism(handler func(instance *DBusAuthObserver, mechanism string) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "allow-mechanism", marshal)
+}
+
+/*
+ConnectAuthorizeAuthenticatedPeer connects a callback to the 'authorize-authenticated-peer' signal of the DBusAuthObserver.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DBusAuthObserver) ConnectAuthorizeAuthenticatedPeer(handler func(instance *DBusAuthObserver, stream *IOStream, credentials *Credentials) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "authorize-authenticated-peer", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -4103,6 +4219,8 @@ func (recv *DBusConnection) UnregisterSubtree(registrationId uint32) bool {
 	return retGo
 }
 
+// UNSUPPORTED : C value 'closed' : parameter 'error' of type 'GLib.Error' not supported
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -4463,6 +4581,17 @@ func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnec
 	}
 
 	return
+}
+
+/*
+ConnectGAuthorizeMethod connects a callback to the 'g-authorize-method' signal of the DBusInterfaceSkeleton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DBusInterfaceSkeleton) ConnectGAuthorizeMethod(handler func(instance *DBusInterfaceSkeleton, invocation *DBusMethodInvocation) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "g-authorize-method", marshal)
 }
 
 /*
@@ -6344,6 +6473,10 @@ func (recv *DBusObjectManagerClient) GetNameOwner() string {
 	return retGo
 }
 
+// UNSUPPORTED : C value 'interface-proxy-properties-changed' : parameter 'changed_properties' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'interface-proxy-signal' : parameter 'parameters' of type 'GLib.Variant' not supported
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -7008,6 +7141,17 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 }
 
 /*
+ConnectAuthorizeMethod connects a callback to the 'authorize-method' signal of the DBusObjectSkeleton.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DBusObjectSkeleton) ConnectAuthorizeMethod(handler func(instance *DBusObjectSkeleton, interface_ *DBusInterfaceSkeleton, invocation *DBusMethodInvocation) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "authorize-method", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -7412,6 +7556,10 @@ func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
 	return
 }
 
+// UNSUPPORTED : C value 'g-properties-changed' : parameter 'changed_properties' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'g-signal' : parameter 'parameters' of type 'GLib.Variant' not supported
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -7645,6 +7793,17 @@ func (recv *DBusServer) Stop() {
 	}
 
 	return
+}
+
+/*
+ConnectNewConnection connects a callback to the 'new-connection' signal of the DBusServer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DBusServer) ConnectNewConnection(handler func(instance *DBusServer, connection *DBusConnection) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "new-connection", marshal)
 }
 
 /*
@@ -12083,6 +12242,8 @@ func (recv *FileMonitor) SetRateLimit(limitMsecs int32) {
 	return
 }
 
+// UNSUPPORTED : C value 'changed' : parameter 'file' of type 'File' not supported
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -12417,6 +12578,17 @@ func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
 	}
 
 	return
+}
+
+/*
+ConnectGotCompletionData connects a callback to the 'got-completion-data' signal of the FilenameCompleter.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *FilenameCompleter) ConnectGotCompletionData(handler func(instance *FilenameCompleter)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "got-completion-data", marshal)
 }
 
 /*
@@ -16865,6 +17037,17 @@ func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
 }
 
 /*
+ConnectItemsChanged connects a callback to the 'items-changed' signal of the MenuModel.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuModel) ConnectItemsChanged(handler func(instance *MenuModel, position int32, removed int32, added int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "items-changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -17564,6 +17747,45 @@ func (recv *MountOperation) SetUsername(username string) {
 	}
 
 	return
+}
+
+/*
+ConnectAborted connects a callback to the 'aborted' signal of the MountOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MountOperation) ConnectAborted(handler func(instance *MountOperation)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "aborted", marshal)
+}
+
+// UNSUPPORTED : C value 'ask-password' : parameter 'flags' of type 'AskPasswordFlags' not supported
+
+// UNSUPPORTED : C value 'ask-question' : parameter 'choices' of type 'nil' not supported
+
+/*
+ConnectReply connects a callback to the 'reply' signal of the MountOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MountOperation) ConnectReply(handler func(instance *MountOperation, result MountOperationResult)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "reply", marshal)
+}
+
+// UNSUPPORTED : C value 'show-processes' : parameter 'processes' of type 'nil' not supported
+
+/*
+ConnectShowUnmountProgress connects a callback to the 'show-unmount-progress' signal of the MountOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MountOperation) ConnectShowUnmountProgress(handler func(instance *MountOperation, message string, timeLeft int64, bytesLeft int64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "show-unmount-progress", marshal)
 }
 
 /*
@@ -19797,6 +20019,17 @@ func (recv *Resolver) SetDefault() {
 }
 
 /*
+ConnectReload connects a callback to the 'reload' signal of the Resolver.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Resolver) ConnectReload(handler func(instance *Resolver)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "reload", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -21021,6 +21254,41 @@ func (recv *Settings) SetUint64(key string, value uint64) bool {
 
 // UNSUPPORTED : C value 'g_settings_set_value' : parameter 'value' of type 'GLib.Variant' not supported
 
+// UNSUPPORTED : C value 'change-event' : parameter 'keys' of type 'nil' not supported
+
+/*
+ConnectChanged connects a callback to the 'changed' signal of the Settings.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Settings) ConnectChanged(handler func(instance *Settings, key string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
+ConnectWritableChangeEvent connects a callback to the 'writable-change-event' signal of the Settings.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Settings) ConnectWritableChangeEvent(handler func(instance *Settings, key uint32) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "writable-change-event", marshal)
+}
+
+/*
+ConnectWritableChanged connects a callback to the 'writable-changed' signal of the Settings.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Settings) ConnectWritableChanged(handler func(instance *Settings, key string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "writable-changed", marshal)
+}
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -21256,6 +21524,10 @@ func (recv *SimpleAction) SetEnabled(enabled bool) {
 // UNSUPPORTED : C value 'g_simple_action_set_state' : parameter 'value' of type 'GLib.Variant' not supported
 
 // UNSUPPORTED : C value 'g_simple_action_set_state_hint' : parameter 'state_hint' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'activate' : parameter 'parameter' of type 'GLib.Variant' not supported
+
+// UNSUPPORTED : C value 'change-state' : parameter 'value' of type 'GLib.Variant' not supported
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -24549,6 +24821,8 @@ func (recv *SocketClient) SetTls(tls bool) {
 
 // UNSUPPORTED : C value 'g_socket_client_set_tls_validation_flags' : parameter 'flags' of type 'TlsCertificateFlags' not supported
 
+// UNSUPPORTED : C value 'event' : parameter 'connectable' of type 'SocketConnectable' not supported
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -25383,6 +25657,17 @@ func (recv *SocketListener) SetBacklog(listenBacklog int32) {
 }
 
 /*
+ConnectEvent connects a callback to the 'event' signal of the SocketListener.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *SocketListener) ConnectEvent(handler func(instance *SocketListener, event SocketListenerEvent, socket *Socket)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "event", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -25597,6 +25882,17 @@ func (recv *SocketService) Stop() {
 	}
 
 	return
+}
+
+/*
+ConnectIncoming connects a callback to the 'incoming' signal of the SocketService.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *SocketService) ConnectIncoming(handler func(instance *SocketService, connection *SocketConnection, sourceObject *gobject.Object) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "incoming", marshal)
 }
 
 /*
@@ -28046,6 +28342,17 @@ func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 }
 
 /*
+ConnectRun connects a callback to the 'run' signal of the ThreadedSocketService.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ThreadedSocketService) ConnectRun(handler func(instance *ThreadedSocketService, connection *SocketConnection, sourceObject *gobject.Object) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "run", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -28868,6 +29175,8 @@ func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
 
 	return
 }
+
+// UNSUPPORTED : C value 'accept-certificate' : parameter 'errors' of type 'TlsCertificateFlags' not supported
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -30814,6 +31123,28 @@ func (recv *UnixMountMonitor) SetRateLimit(limitMsec int32) {
 }
 
 /*
+ConnectMountpointsChanged connects a callback to the 'mountpoints-changed' signal of the UnixMountMonitor.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *UnixMountMonitor) ConnectMountpointsChanged(handler func(instance *UnixMountMonitor)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "mountpoints-changed", marshal)
+}
+
+/*
+ConnectMountsChanged connects a callback to the 'mounts-changed' signal of the UnixMountMonitor.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *UnixMountMonitor) ConnectMountsChanged(handler func(instance *UnixMountMonitor)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "mounts-changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -31527,6 +31858,30 @@ func (recv *VolumeMonitor) SetFieldParentInstance(value *gobject.Object) {
 // UNSUPPORTED : C value 'g_volume_monitor_get_volume_for_uuid' : return type 'Volume' not supported
 
 // UNSUPPORTED : C value 'g_volume_monitor_get_volumes' : return type 'GLib.List' not supported
+
+// UNSUPPORTED : C value 'drive-changed' : parameter 'drive' of type 'Drive' not supported
+
+// UNSUPPORTED : C value 'drive-connected' : parameter 'drive' of type 'Drive' not supported
+
+// UNSUPPORTED : C value 'drive-disconnected' : parameter 'drive' of type 'Drive' not supported
+
+// UNSUPPORTED : C value 'drive-eject-button' : parameter 'drive' of type 'Drive' not supported
+
+// UNSUPPORTED : C value 'drive-stop-button' : parameter 'drive' of type 'Drive' not supported
+
+// UNSUPPORTED : C value 'mount-added' : parameter 'mount' of type 'Mount' not supported
+
+// UNSUPPORTED : C value 'mount-changed' : parameter 'mount' of type 'Mount' not supported
+
+// UNSUPPORTED : C value 'mount-pre-unmount' : parameter 'mount' of type 'Mount' not supported
+
+// UNSUPPORTED : C value 'mount-removed' : parameter 'mount' of type 'Mount' not supported
+
+// UNSUPPORTED : C value 'volume-added' : parameter 'volume' of type 'Volume' not supported
+
+// UNSUPPORTED : C value 'volume-changed' : parameter 'volume' of type 'Volume' not supported
+
+// UNSUPPORTED : C value 'volume-removed' : parameter 'volume' of type 'Volume' not supported
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.

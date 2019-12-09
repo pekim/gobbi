@@ -748,6 +748,43 @@ func (recv *Buffer) Undo() {
 	return
 }
 
+// UNSUPPORTED : C value 'bracket-matched' : parameter 'iter' of type 'Gtk.TextIter' not supported
+
+// UNSUPPORTED : C value 'highlight-updated' : parameter 'start' of type 'Gtk.TextIter' not supported
+
+/*
+ConnectRedo connects a callback to the 'redo' signal of the Buffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Buffer) ConnectRedo(handler func(instance *Buffer)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "redo", marshal)
+}
+
+/*
+ConnectSourceMarkUpdated connects a callback to the 'source-mark-updated' signal of the Buffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Buffer) ConnectSourceMarkUpdated(handler func(instance *Buffer, mark *gtk.TextMark)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "source-mark-updated", marshal)
+}
+
+/*
+ConnectUndo connects a callback to the 'undo' signal of the Buffer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Buffer) ConnectUndo(handler func(instance *Buffer)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "undo", marshal)
+}
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -1001,6 +1038,54 @@ func (recv *Completion) UnblockInteractive() {
 }
 
 /*
+ConnectActivateProposal connects a callback to the 'activate-proposal' signal of the Completion.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Completion) ConnectActivateProposal(handler func(instance *Completion)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate-proposal", marshal)
+}
+
+/*
+ConnectHide connects a callback to the 'hide' signal of the Completion.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Completion) ConnectHide(handler func(instance *Completion)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "hide", marshal)
+}
+
+// UNSUPPORTED : C value 'move-cursor' : parameter 'step' of type 'Gtk.ScrollStep' not supported
+
+// UNSUPPORTED : C value 'move-page' : parameter 'step' of type 'Gtk.ScrollStep' not supported
+
+/*
+ConnectPopulateContext connects a callback to the 'populate-context' signal of the Completion.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Completion) ConnectPopulateContext(handler func(instance *Completion, context *CompletionContext)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "populate-context", marshal)
+}
+
+/*
+ConnectShow connects a callback to the 'show' signal of the Completion.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Completion) ConnectShow(handler func(instance *Completion)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "show", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -1107,6 +1192,17 @@ func (recv *CompletionContext) SetFieldPriv(value *CompletionContextPrivate) {
 // UNSUPPORTED : C value 'gtk_source_completion_context_get_activation' : return type 'CompletionActivation' not supported
 
 // UNSUPPORTED : C value 'gtk_source_completion_context_get_iter' : parameter 'iter' of type 'Gtk.TextIter' not supported
+
+/*
+ConnectCancelled connects a callback to the 'cancelled' signal of the CompletionContext.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CompletionContext) ConnectCancelled(handler func(instance *CompletionContext)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cancelled", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -1316,6 +1412,17 @@ func (recv *CompletionInfo) SetWidget(widget *gtk.Widget) {
 	}
 
 	return
+}
+
+/*
+ConnectBeforeShow connects a callback to the 'before-show' signal of the CompletionInfo.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CompletionInfo) ConnectBeforeShow(handler func(instance *CompletionInfo)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "before-show", marshal)
 }
 
 /*
@@ -3850,6 +3957,25 @@ func (recv *GutterRenderer) SetVisible(visible bool) {
 	return
 }
 
+// UNSUPPORTED : C value 'activate' : parameter 'iter' of type 'Gtk.TextIter' not supported
+
+// UNSUPPORTED : C value 'query-activatable' : parameter 'iter' of type 'Gtk.TextIter' not supported
+
+// UNSUPPORTED : C value 'query-data' : parameter 'start' of type 'Gtk.TextIter' not supported
+
+// UNSUPPORTED : C value 'query-tooltip' : parameter 'iter' of type 'Gtk.TextIter' not supported
+
+/*
+ConnectQueueDraw connects a callback to the 'queue-draw' signal of the GutterRenderer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GutterRenderer) ConnectQueueDraw(handler func(instance *GutterRenderer)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "queue-draw", marshal)
+}
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -5795,6 +5921,28 @@ func (recv *MarkAttributes) SetStockId(stockId string) {
 	}
 
 	return
+}
+
+/*
+ConnectQueryTooltipMarkup connects a callback to the 'query-tooltip-markup' signal of the MarkAttributes.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MarkAttributes) ConnectQueryTooltipMarkup(handler func(instance *MarkAttributes, mark *Mark) string) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "query-tooltip-markup", marshal)
+}
+
+/*
+ConnectQueryTooltipText connects a callback to the 'query-tooltip-text' signal of the MarkAttributes.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MarkAttributes) ConnectQueryTooltipText(handler func(instance *MarkAttributes, mark *Mark) string) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "query-tooltip-text", marshal)
 }
 
 /*
@@ -10281,6 +10429,109 @@ func (recv *View) SetTabWidth(width uint32) {
 }
 
 // UNSUPPORTED : C value 'gtk_source_view_unindent_lines' : parameter 'start' of type 'Gtk.TextIter' not supported
+
+/*
+ConnectChangeCase connects a callback to the 'change-case' signal of the View.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *View) ConnectChangeCase(handler func(instance *View, caseType ChangeCaseType)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "change-case", marshal)
+}
+
+/*
+ConnectChangeNumber connects a callback to the 'change-number' signal of the View.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *View) ConnectChangeNumber(handler func(instance *View, count int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "change-number", marshal)
+}
+
+/*
+ConnectJoinLines connects a callback to the 'join-lines' signal of the View.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *View) ConnectJoinLines(handler func(instance *View)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "join-lines", marshal)
+}
+
+// UNSUPPORTED : C value 'line-mark-activated' : parameter 'iter' of type 'Gtk.TextIter' not supported
+
+/*
+ConnectMoveLines connects a callback to the 'move-lines' signal of the View.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *View) ConnectMoveLines(handler func(instance *View, copy bool, count int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-lines", marshal)
+}
+
+/*
+ConnectMoveToMatchingBracket connects a callback to the 'move-to-matching-bracket' signal of the View.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *View) ConnectMoveToMatchingBracket(handler func(instance *View, extendSelection bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-to-matching-bracket", marshal)
+}
+
+/*
+ConnectMoveWords connects a callback to the 'move-words' signal of the View.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *View) ConnectMoveWords(handler func(instance *View, count int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move-words", marshal)
+}
+
+/*
+ConnectRedo connects a callback to the 'redo' signal of the View.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *View) ConnectRedo(handler func(instance *View)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "redo", marshal)
+}
+
+/*
+ConnectShowCompletion connects a callback to the 'show-completion' signal of the View.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *View) ConnectShowCompletion(handler func(instance *View)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "show-completion", marshal)
+}
+
+// UNSUPPORTED : C value 'smart-home-end' : parameter 'iter' of type 'Gtk.TextIter' not supported
+
+/*
+ConnectUndo connects a callback to the 'undo' signal of the View.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *View) ConnectUndo(handler func(instance *View)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "undo", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.

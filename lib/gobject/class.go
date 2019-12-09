@@ -746,6 +746,17 @@ func (recv *Object) WatchClosure(closure *Closure) {
 // UNSUPPORTED : C value 'g_object_weak_unref' : parameter 'notify' of type 'WeakNotify' not supported
 
 /*
+ConnectNotify connects a callback to the 'notify' signal of the Object.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Object) ConnectNotify(handler func(instance *Object, pspec *ParamSpec)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "notify", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.

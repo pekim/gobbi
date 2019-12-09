@@ -363,6 +363,41 @@ func (recv *ActionGroup) ListActions() {
 // UNSUPPORTED : C value 'g_action_group_query_action' : parameter 'parameter_type' of type 'GLib.VariantType' not supported
 
 /*
+ConnectActionAdded connects a callback to the 'action-added' signal of the ActionGroup.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ActionGroup) ConnectActionAdded(handler func(instance *ActionGroup, actionName string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "action-added", marshal)
+}
+
+/*
+ConnectActionEnabledChanged connects a callback to the 'action-enabled-changed' signal of the ActionGroup.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ActionGroup) ConnectActionEnabledChanged(handler func(instance *ActionGroup, actionName string, enabled bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "action-enabled-changed", marshal)
+}
+
+/*
+ConnectActionRemoved connects a callback to the 'action-removed' signal of the ActionGroup.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ActionGroup) ConnectActionRemoved(handler func(instance *ActionGroup, actionName string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "action-removed", marshal)
+}
+
+// UNSUPPORTED : C value 'action-state-changed' : parameter 'value' of type 'GLib.Variant' not supported
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -1448,6 +1483,10 @@ func (recv *DBusObject) GetObjectPath() string {
 	return retGo
 }
 
+// UNSUPPORTED : C value 'interface-added' : parameter 'interface' of type 'DBusInterface' not supported
+
+// UNSUPPORTED : C value 'interface-removed' : parameter 'interface' of type 'DBusInterface' not supported
+
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
@@ -1533,6 +1572,14 @@ func (recv *DBusObjectManager) GetObjectPath() string {
 }
 
 // UNSUPPORTED : C value 'g_dbus_object_manager_get_objects' : return type 'GLib.List' not supported
+
+// UNSUPPORTED : C value 'interface-added' : parameter 'object' of type 'DBusObject' not supported
+
+// UNSUPPORTED : C value 'interface-removed' : parameter 'object' of type 'DBusObject' not supported
+
+// UNSUPPORTED : C value 'object-added' : parameter 'object' of type 'DBusObject' not supported
+
+// UNSUPPORTED : C value 'object-removed' : parameter 'object' of type 'DBusObject' not supported
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -2176,6 +2223,50 @@ func (recv *Drive) IsRemovable() bool {
 // UNSUPPORTED : C value 'g_drive_stop_finish' : parameter 'result' of type 'AsyncResult' not supported
 
 /*
+ConnectChanged connects a callback to the 'changed' signal of the Drive.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Drive) ConnectChanged(handler func(instance *Drive)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
+ConnectDisconnected connects a callback to the 'disconnected' signal of the Drive.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Drive) ConnectDisconnected(handler func(instance *Drive)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "disconnected", marshal)
+}
+
+/*
+ConnectEjectButton connects a callback to the 'eject-button' signal of the Drive.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Drive) ConnectEjectButton(handler func(instance *Drive)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "eject-button", marshal)
+}
+
+/*
+ConnectStopButton connects a callback to the 'stop-button' signal of the Drive.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Drive) ConnectStopButton(handler func(instance *Drive)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "stop-button", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -2759,6 +2850,8 @@ func (recv *DtlsConnection) Shutdown(shutdownRead bool, shutdownWrite bool, canc
 // UNSUPPORTED : C value 'g_dtls_connection_shutdown_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_dtls_connection_shutdown_finish' : parameter 'result' of type 'AsyncResult' not supported
+
+// UNSUPPORTED : C value 'accept-certificate' : parameter 'errors' of type 'TlsCertificateFlags' not supported
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -4097,6 +4190,17 @@ func (recv *ListModel) ItemsChanged(position uint32, removed uint32, added uint3
 }
 
 /*
+ConnectItemsChanged connects a callback to the 'items-changed' signal of the ListModel.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *ListModel) ConnectItemsChanged(handler func(instance *ListModel, position uint32, removed uint32, added uint32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "items-changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -4538,6 +4642,39 @@ func (recv *Mount) Unshadow() {
 }
 
 /*
+ConnectChanged connects a callback to the 'changed' signal of the Mount.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Mount) ConnectChanged(handler func(instance *Mount)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
+ConnectPreUnmount connects a callback to the 'pre-unmount' signal of the Mount.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Mount) ConnectPreUnmount(handler func(instance *Mount)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "pre-unmount", marshal)
+}
+
+/*
+ConnectUnmounted connects a callback to the 'unmounted' signal of the Mount.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Mount) ConnectUnmounted(handler func(instance *Mount)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "unmounted", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -4685,6 +4822,17 @@ func (recv *NetworkMonitor) GetNetworkMetered() bool {
 	retGo := ret.Boolean()
 
 	return retGo
+}
+
+/*
+ConnectNetworkChanged connects a callback to the 'network-changed' signal of the NetworkMonitor.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *NetworkMonitor) ConnectNetworkChanged(handler func(instance *NetworkMonitor, networkAvailable bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "network-changed", marshal)
 }
 
 /*
@@ -6154,6 +6302,28 @@ func (recv *Volume) ShouldAutomount() bool {
 	retGo := ret.Boolean()
 
 	return retGo
+}
+
+/*
+ConnectChanged connects a callback to the 'changed' signal of the Volume.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Volume) ConnectChanged(handler func(instance *Volume)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
+ConnectRemoved connects a callback to the 'removed' signal of the Volume.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Volume) ConnectRemoved(handler func(instance *Volume)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "removed", marshal)
 }
 
 /*

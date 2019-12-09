@@ -126,6 +126,11 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 	}
 
 	if t.isRecord() {
+		//if t.isQualifiedName() {
+		//	record, _ := t.foreignNamespace.Records.byName(t.foreignName)
+		//	return jen.Op("*").Qual(t.foreignNamespace.goFullPackageName, record.goName), nil
+		//}
+
 		record, _ := t.namespace.Records.byName(t.Name)
 		return jen.Op("*").Id(record.goName), nil
 	}
@@ -245,6 +250,12 @@ func (t *Type) argumentValueSetFunctionName() string {
 		return argumentSetFunctionNames["int"]
 	}
 
+	//if alias, ok := t.namespace.Aliases.byName(t.Name); ok {
+	//	if setFunctionName, ok := argumentSetFunctionNames[alias.Type.Name]; ok {
+	//		return setFunctionName
+	//	}
+	//}
+	//
 	if t.isQualifiedName() {
 		if alias, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
 			if setFunctionName, ok := argumentSetFunctionNames[alias.Type.Name]; ok {
@@ -257,7 +268,7 @@ func (t *Type) argumentValueSetFunctionName() string {
 		return "SetPointer"
 	}
 
-	panic(fmt.Sprintf("Cannot determine argumentValueSetFunctionName for %s", t.Name))
+	panic(fmt.Sprintf("Cannot determine argumentValueSetFunctionName for %s %s", t.namespace.Name, t.Name))
 }
 
 func (t *Type) createFromOutArgument(g *jen.Group, argName *jen.Statement, argValue *jen.Statement) {
@@ -274,8 +285,13 @@ func (t *Type) createFromOutArgument(g *jen.Group, argName *jen.Statement, argVa
 	}
 
 	if t.isRecord() {
-		record, _ := t.namespace.Records.byName(t.Name)
-		record.createFromArgument(g, nil, argName, argValue)
+		if t.isQualifiedName() {
+			record, _ := t.foreignNamespace.Records.byName(t.foreignName)
+			record.createFromArgument(g, t.foreignNamespace, argName, argValue)
+		} else {
+			record, _ := t.namespace.Records.byName(t.Name)
+			record.createFromArgument(g, nil, argName, argValue)
+		}
 
 		return
 	}
@@ -374,6 +390,11 @@ func (t *Type) isRecord() bool {
 	if t.isClass() {
 		return true
 	}
+
+	//if t.isQualifiedName() {
+	//	_, found := t.foreignNamespace.Records.byName(t.foreignName)
+	//	return found
+	//}
 
 	_, found := t.namespace.Records.byName(t.Name)
 	return found

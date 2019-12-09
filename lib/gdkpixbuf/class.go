@@ -2268,6 +2268,50 @@ func (recv *PixbufLoader) SetSize(width int32, height int32) {
 // UNSUPPORTED : C value 'gdk_pixbuf_loader_write_bytes' : parameter 'buffer' of type 'GLib.Bytes' not supported
 
 /*
+ConnectAreaPrepared connects a callback to the 'area-prepared' signal of the PixbufLoader.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PixbufLoader) ConnectAreaPrepared(handler func(instance *PixbufLoader)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "area-prepared", marshal)
+}
+
+/*
+ConnectAreaUpdated connects a callback to the 'area-updated' signal of the PixbufLoader.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PixbufLoader) ConnectAreaUpdated(handler func(instance *PixbufLoader, x int32, y int32, width int32, height int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "area-updated", marshal)
+}
+
+/*
+ConnectClosed connects a callback to the 'closed' signal of the PixbufLoader.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PixbufLoader) ConnectClosed(handler func(instance *PixbufLoader)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "closed", marshal)
+}
+
+/*
+ConnectSizePrepared connects a callback to the 'size-prepared' signal of the PixbufLoader.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PixbufLoader) ConnectSizePrepared(handler func(instance *PixbufLoader, width int32, height int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "size-prepared", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.

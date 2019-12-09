@@ -307,6 +307,17 @@ func (recv *CompletionProposal) Hash() uint32 {
 }
 
 /*
+ConnectChanged connects a callback to the 'changed' signal of the CompletionProposal.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CompletionProposal) ConnectChanged(handler func(instance *CompletionProposal)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -957,6 +968,28 @@ func (recv *UndoManager) Undo() {
 	}
 
 	return
+}
+
+/*
+ConnectCanRedoChanged connects a callback to the 'can-redo-changed' signal of the UndoManager.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *UndoManager) ConnectCanRedoChanged(handler func(instance *UndoManager)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "can-redo-changed", marshal)
+}
+
+/*
+ConnectCanUndoChanged connects a callback to the 'can-undo-changed' signal of the UndoManager.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *UndoManager) ConnectCanUndoChanged(handler func(instance *UndoManager)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "can-undo-changed", marshal)
 }
 
 /*

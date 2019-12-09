@@ -826,6 +826,17 @@ func (recv *Component) SetSize(width int32, height int32) bool {
 }
 
 /*
+ConnectBoundsChanged connects a callback to the 'bounds-changed' signal of the Component.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Component) ConnectBoundsChanged(handler func(instance *Component, arg1 *Rectangle)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "bounds-changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -1070,6 +1081,50 @@ func (recv *Document) SetAttributeValue(attributeName string, attributeValue str
 	retGo := ret.Boolean()
 
 	return retGo
+}
+
+/*
+ConnectLoadComplete connects a callback to the 'load-complete' signal of the Document.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Document) ConnectLoadComplete(handler func(instance *Document)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "load-complete", marshal)
+}
+
+/*
+ConnectLoadStopped connects a callback to the 'load-stopped' signal of the Document.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Document) ConnectLoadStopped(handler func(instance *Document)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "load-stopped", marshal)
+}
+
+/*
+ConnectPageChanged connects a callback to the 'page-changed' signal of the Document.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Document) ConnectPageChanged(handler func(instance *Document, pageNumber int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "page-changed", marshal)
+}
+
+/*
+ConnectReload connects a callback to the 'reload' signal of the Document.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Document) ConnectReload(handler func(instance *Document)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "reload", marshal)
 }
 
 /*
@@ -1507,6 +1562,17 @@ func (recv *Hypertext) GetNLinks() int32 {
 	retGo := ret.Int32()
 
 	return retGo
+}
+
+/*
+ConnectLinkSelected connects a callback to the 'link-selected' signal of the Hypertext.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Hypertext) ConnectLinkSelected(handler func(instance *Hypertext, arg1 int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "link-selected", marshal)
 }
 
 /*
@@ -2025,6 +2091,17 @@ func (recv *Selection) SelectAllSelection() bool {
 	retGo := ret.Boolean()
 
 	return retGo
+}
+
+/*
+ConnectSelectionChanged connects a callback to the 'selection-changed' signal of the Selection.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Selection) ConnectSelectionChanged(handler func(instance *Selection)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "selection-changed", marshal)
 }
 
 /*
@@ -3153,6 +3230,83 @@ func (recv *Table) SetSummary(accessible *Object) {
 }
 
 /*
+ConnectColumnDeleted connects a callback to the 'column-deleted' signal of the Table.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Table) ConnectColumnDeleted(handler func(instance *Table, arg1 int32, arg2 int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "column-deleted", marshal)
+}
+
+/*
+ConnectColumnInserted connects a callback to the 'column-inserted' signal of the Table.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Table) ConnectColumnInserted(handler func(instance *Table, arg1 int32, arg2 int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "column-inserted", marshal)
+}
+
+/*
+ConnectColumnReordered connects a callback to the 'column-reordered' signal of the Table.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Table) ConnectColumnReordered(handler func(instance *Table)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "column-reordered", marshal)
+}
+
+/*
+ConnectModelChanged connects a callback to the 'model-changed' signal of the Table.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Table) ConnectModelChanged(handler func(instance *Table)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "model-changed", marshal)
+}
+
+/*
+ConnectRowDeleted connects a callback to the 'row-deleted' signal of the Table.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Table) ConnectRowDeleted(handler func(instance *Table, arg1 int32, arg2 int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "row-deleted", marshal)
+}
+
+/*
+ConnectRowInserted connects a callback to the 'row-inserted' signal of the Table.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Table) ConnectRowInserted(handler func(instance *Table, arg1 int32, arg2 int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "row-inserted", marshal)
+}
+
+/*
+ConnectRowReordered connects a callback to the 'row-reordered' signal of the Table.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Table) ConnectRowReordered(handler func(instance *Table)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "row-reordered", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -4130,6 +4284,72 @@ func (recv *Text) SetSelection(selectionNum int32, startOffset int32, endOffset 
 }
 
 /*
+ConnectTextAttributesChanged connects a callback to the 'text-attributes-changed' signal of the Text.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Text) ConnectTextAttributesChanged(handler func(instance *Text)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "text-attributes-changed", marshal)
+}
+
+/*
+ConnectTextCaretMoved connects a callback to the 'text-caret-moved' signal of the Text.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Text) ConnectTextCaretMoved(handler func(instance *Text, arg1 int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "text-caret-moved", marshal)
+}
+
+/*
+ConnectTextChanged connects a callback to the 'text-changed' signal of the Text.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Text) ConnectTextChanged(handler func(instance *Text, arg1 int32, arg2 int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "text-changed", marshal)
+}
+
+/*
+ConnectTextInsert connects a callback to the 'text-insert' signal of the Text.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Text) ConnectTextInsert(handler func(instance *Text, arg1 int32, arg2 int32, arg3 string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "text-insert", marshal)
+}
+
+/*
+ConnectTextRemove connects a callback to the 'text-remove' signal of the Text.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Text) ConnectTextRemove(handler func(instance *Text, arg1 int32, arg2 int32, arg3 string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "text-remove", marshal)
+}
+
+/*
+ConnectTextSelectionChanged connects a callback to the 'text-selection-changed' signal of the Text.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Text) ConnectTextSelectionChanged(handler func(instance *Text)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "text-selection-changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -4316,6 +4536,17 @@ func (recv *Value) SetValue(newValue float64) {
 }
 
 /*
+ConnectValueChanged connects a callback to the 'value-changed' signal of the Value.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Value) ConnectValueChanged(handler func(instance *Value, value float64, text string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "value-changed", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -4361,6 +4592,105 @@ func (recv *Window) Equals(other *Window) bool {
 
 func (recv *Window) Native() unsafe.Pointer {
 	return recv.native
+}
+
+/*
+ConnectActivate connects a callback to the 'activate' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectActivate(handler func(instance *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "activate", marshal)
+}
+
+/*
+ConnectCreate connects a callback to the 'create' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectCreate(handler func(instance *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "create", marshal)
+}
+
+/*
+ConnectDeactivate connects a callback to the 'deactivate' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectDeactivate(handler func(instance *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "deactivate", marshal)
+}
+
+/*
+ConnectDestroy connects a callback to the 'destroy' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectDestroy(handler func(instance *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "destroy", marshal)
+}
+
+/*
+ConnectMaximize connects a callback to the 'maximize' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectMaximize(handler func(instance *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "maximize", marshal)
+}
+
+/*
+ConnectMinimize connects a callback to the 'minimize' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectMinimize(handler func(instance *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "minimize", marshal)
+}
+
+/*
+ConnectMove connects a callback to the 'move' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectMove(handler func(instance *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "move", marshal)
+}
+
+/*
+ConnectResize connects a callback to the 'resize' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectResize(handler func(instance *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "resize", marshal)
+}
+
+/*
+ConnectRestore connects a callback to the 'restore' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectRestore(handler func(instance *Window)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "restore", marshal)
 }
 
 /*

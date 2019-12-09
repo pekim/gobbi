@@ -72,7 +72,7 @@ func (c *Class) generateImplements(f *file, implements *Implements) {
 		ctor = jen.Id(implements.Name + "NewFromNative")
 	}
 
-	c.receiverFunc(f, methodName).
+	c.methodPrelude(f, methodName).
 		Params().
 		Params(jen.Op("*").Add(interface_)).
 		Block(jen.Return().Add(ctor).Call(jen.Id(receiverName).Dot("Native").Call()))

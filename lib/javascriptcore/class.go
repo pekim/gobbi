@@ -2319,6 +2319,17 @@ func (recv *WeakValue) GetValue() *Value {
 }
 
 /*
+ConnectCleared connects a callback to the 'cleared' signal of the WeakValue.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *WeakValue) ConnectCleared(handler func(instance *WeakValue)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "cleared", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.

@@ -55,7 +55,7 @@ func (r *Record) init(ns *Namespace, giInfoType string) {
 	r.Functions.init(ns /*r.GoName*/)
 	r.Methods.init(ns, r)
 	r.Fields.init(ns, r)
-	//r.Signals.init(ns, r)
+	r.Signals.init(ns, r)
 }
 
 func (r *Record) generate(f *file) {
@@ -256,7 +256,7 @@ func (r *Record) generateAncestorAccessors(f *file) {
 		f.Commentf("%s upcasts to *%s", accessorName, accessorName)
 
 		// GEN: func (recv *SomeClass) AncestorName() *AncestorName {...}
-		r.receiverFunc(f, accessorName).
+		r.methodPrelude(f, accessorName).
 			Params().
 			Params(parentType).
 			BlockFunc(func(g *jen.Group) {
@@ -312,7 +312,7 @@ if the Object is not a %s.`,
 }
 
 func (r *Record) generateNativeAccessor(f *file) {
-	r.receiverFunc(f, nativeAccessorName).
+	r.methodPrelude(f, nativeAccessorName).
 		Params().
 		Params(jen.Qual("unsafe", "Pointer")).
 		Block(jen.
@@ -399,7 +399,7 @@ func (r *Record) generateStructConstructor(f *file) {
 		})
 }
 
-func (r *Record) receiverFunc(f *file, methodName string) *jen.Statement {
+func (r *Record) methodPrelude(f *file, methodName string) *jen.Statement {
 	return f.
 		Func().
 		Params(jen.Id(receiverName).Op("*").Id(r.goName)).
@@ -411,7 +411,7 @@ func (r *Record) generateEquals(f *file) {
 		r.goName, r.goName)
 
 	// GEN: func (recv *Cursor) Equals(other *Cursor) bool {...}
-	r.receiverFunc(f, "Equals").
+	r.methodPrelude(f, "Equals").
 		Params(jen.Id("other").Op("*").Id(r.goName)).
 		Params(jen.Bool()).
 		Block(
@@ -439,7 +439,7 @@ The %s should be a value returned from a call to a Connect...() method.`,
 		id)
 
 	// GEN: func (recv *Device) DisconnectSignal(connectionId int) {...}
-	r.receiverFunc(f, "DisconnectSignal").
+	r.methodPrelude(f, "DisconnectSignal").
 		Params(jen.Id(id).Int()).
 		Block(jen.
 			// GEN: callback.DisconnectSignal(connectionId)

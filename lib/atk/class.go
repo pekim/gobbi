@@ -445,6 +445,17 @@ func (recv *Hyperlink) IsValid() bool {
 }
 
 /*
+ConnectLinkActivated connects a callback to the 'link-activated' signal of the Hyperlink.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Hyperlink) ConnectLinkActivated(handler func(instance *Hyperlink)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "link-activated", marshal)
+}
+
+/*
 Disconnect disconnects a callback previously registered with a Connect...() method.
 
 The connectionID should be a value returned from a call to a Connect...() method.
@@ -1735,6 +1746,72 @@ func (recv *Object) SetRole(role Role) {
 	}
 
 	return
+}
+
+/*
+ConnectActiveDescendantChanged connects a callback to the 'active-descendant-changed' signal of the Object.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Object) ConnectActiveDescendantChanged(handler func(instance *Object, arg1 *Object)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "active-descendant-changed", marshal)
+}
+
+/*
+ConnectChildrenChanged connects a callback to the 'children-changed' signal of the Object.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Object) ConnectChildrenChanged(handler func(instance *Object, arg1 uint32, arg2 *Object)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "children-changed", marshal)
+}
+
+/*
+ConnectFocusEvent connects a callback to the 'focus-event' signal of the Object.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Object) ConnectFocusEvent(handler func(instance *Object, arg1 bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "focus-event", marshal)
+}
+
+/*
+ConnectPropertyChange connects a callback to the 'property-change' signal of the Object.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Object) ConnectPropertyChange(handler func(instance *Object, arg1 *PropertyValues)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "property-change", marshal)
+}
+
+/*
+ConnectStateChange connects a callback to the 'state-change' signal of the Object.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Object) ConnectStateChange(handler func(instance *Object, arg1 string, arg2 bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "state-change", marshal)
+}
+
+/*
+ConnectVisibleDataChanged connects a callback to the 'visible-data-changed' signal of the Object.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Object) ConnectVisibleDataChanged(handler func(instance *Object)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {}
+
+	return callback.ConnectSignal(recv.Native(), "visible-data-changed", marshal)
 }
 
 /*
