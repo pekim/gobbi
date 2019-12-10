@@ -23,3 +23,13 @@ func (ee Enumerations) byName(name string) (*Enumeration, bool) {
 
 	return nil, false
 }
+
+func (ee Enumerations) byGoTypeName(name string) (*Enumeration, bool) {
+	for _, enum := range ee {
+		if enum.goTypeName == name {
+			return enum, true
+		}
+	}
+
+	return nil, false
+}

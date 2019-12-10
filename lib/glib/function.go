@@ -2450,7 +2450,34 @@ func FileReadLink(filename string) string {
 
 // UNSUPPORTED : C value 'g_file_set_contents' : parameter 'contents' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_file_test' : parameter 'test' of type 'FileTest' not supported
+var fileTestFunction *gi.Function
+var fileTestFunction_Once sync.Once
+
+func fileTestFunction_Set() error {
+	var err error
+	fileTestFunction_Once.Do(func() {
+		fileTestFunction, err = gi.FunctionInvokerNew("GLib", "file_test")
+	})
+	return err
+}
+
+// FileTest_ is a representation of the C type g_file_test.
+func FileTest_(filename string, test FileTest) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetInt32(int32(test))
+
+	var ret gi.Argument
+
+	err := fileTestFunction_Set()
+	if err == nil {
+		ret = fileTestFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var filenameDisplayBasenameFunction *gi.Function
 var filenameDisplayBasenameFunction_Once sync.Once
@@ -2715,7 +2742,34 @@ func FormatSizeForDisplay(size int64) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_format_size_full' : parameter 'flags' of type 'FormatSizeFlags' not supported
+var formatSizeFullFunction *gi.Function
+var formatSizeFullFunction_Once sync.Once
+
+func formatSizeFullFunction_Set() error {
+	var err error
+	formatSizeFullFunction_Once.Do(func() {
+		formatSizeFullFunction, err = gi.FunctionInvokerNew("GLib", "format_size_full")
+	})
+	return err
+}
+
+// FormatSizeFull is a representation of the C type g_format_size_full.
+func FormatSizeFull(size uint64, flags FormatSizeFlags) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint64(size)
+	inArgs[1].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := formatSizeFullFunction_Set()
+	if err == nil {
+		ret = formatSizeFullFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_fprintf' : parameter 'file' of type 'gpointer' not supported
 
@@ -3891,9 +3945,9 @@ func InternString(string_ string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_add_watch' : parameter 'condition' of type 'IOCondition' not supported
+// UNSUPPORTED : C value 'g_io_add_watch' : parameter 'func' of type 'IOFunc' not supported
 
-// UNSUPPORTED : C value 'g_io_add_watch_full' : parameter 'condition' of type 'IOCondition' not supported
+// UNSUPPORTED : C value 'g_io_add_watch_full' : parameter 'func' of type 'IOFunc' not supported
 
 var ioChannelErrorFromErrnoFunction *gi.Function
 var ioChannelErrorFromErrnoFunction_Once sync.Once
@@ -3949,7 +4003,34 @@ func IoChannelErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_create_watch' : parameter 'condition' of type 'IOCondition' not supported
+var ioCreateWatchFunction *gi.Function
+var ioCreateWatchFunction_Once sync.Once
+
+func ioCreateWatchFunction_Set() error {
+	var err error
+	ioCreateWatchFunction_Once.Do(func() {
+		ioCreateWatchFunction, err = gi.FunctionInvokerNew("GLib", "io_create_watch")
+	})
+	return err
+}
+
+// IoCreateWatch is a representation of the C type g_io_create_watch.
+func IoCreateWatch(channel *IOChannel, condition IOCondition) *Source {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(channel.Native())
+	inArgs[1].SetInt32(int32(condition))
+
+	var ret gi.Argument
+
+	err := ioCreateWatchFunction_Set()
+	if err == nil {
+		ret = ioCreateWatchFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SourceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var keyFileErrorQuarkFunction *gi.Function
 var keyFileErrorQuarkFunction_Once sync.Once
@@ -4031,9 +4112,9 @@ func LocaleFromUtf8(utf8string string, len int32) (uint64, uint64) {
 
 // UNSUPPORTED : C value 'g_locale_to_utf8' : parameter 'opsysstring' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_log' : parameter 'log_level' of type 'LogLevelFlags' not supported
+// UNSUPPORTED : C value 'g_log' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_log_default_handler' : parameter 'log_level' of type 'LogLevelFlags' not supported
+// UNSUPPORTED : C value 'g_log_default_handler' : parameter 'unused_data' of type 'gpointer' not supported
 
 var logRemoveHandlerFunction *gi.Function
 var logRemoveHandlerFunction_Once sync.Once
@@ -4060,29 +4141,106 @@ func LogRemoveHandler(logDomain string, handlerId uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_log_set_always_fatal' : parameter 'fatal_mask' of type 'LogLevelFlags' not supported
+var logSetAlwaysFatalFunction *gi.Function
+var logSetAlwaysFatalFunction_Once sync.Once
+
+func logSetAlwaysFatalFunction_Set() error {
+	var err error
+	logSetAlwaysFatalFunction_Once.Do(func() {
+		logSetAlwaysFatalFunction, err = gi.FunctionInvokerNew("GLib", "log_set_always_fatal")
+	})
+	return err
+}
+
+// LogSetAlwaysFatal is a representation of the C type g_log_set_always_fatal.
+func LogSetAlwaysFatal(fatalMask LogLevelFlags) LogLevelFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(fatalMask))
+
+	var ret gi.Argument
+
+	err := logSetAlwaysFatalFunction_Set()
+	if err == nil {
+		ret = logSetAlwaysFatalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := LogLevelFlags(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_log_set_default_handler' : parameter 'log_func' of type 'LogFunc' not supported
 
-// UNSUPPORTED : C value 'g_log_set_fatal_mask' : parameter 'fatal_mask' of type 'LogLevelFlags' not supported
+var logSetFatalMaskFunction *gi.Function
+var logSetFatalMaskFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_log_set_handler' : parameter 'log_levels' of type 'LogLevelFlags' not supported
+func logSetFatalMaskFunction_Set() error {
+	var err error
+	logSetFatalMaskFunction_Once.Do(func() {
+		logSetFatalMaskFunction, err = gi.FunctionInvokerNew("GLib", "log_set_fatal_mask")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_log_set_handler_full' : parameter 'log_levels' of type 'LogLevelFlags' not supported
+// LogSetFatalMask is a representation of the C type g_log_set_fatal_mask.
+func LogSetFatalMask(logDomain string, fatalMask LogLevelFlags) LogLevelFlags {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(logDomain)
+	inArgs[1].SetInt32(int32(fatalMask))
+
+	var ret gi.Argument
+
+	err := logSetFatalMaskFunction_Set()
+	if err == nil {
+		ret = logSetFatalMaskFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := LogLevelFlags(ret.Int32())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_log_set_handler' : parameter 'log_func' of type 'LogFunc' not supported
+
+// UNSUPPORTED : C value 'g_log_set_handler_full' : parameter 'log_func' of type 'LogFunc' not supported
 
 // UNSUPPORTED : C value 'g_log_set_writer_func' : parameter 'func' of type 'LogWriterFunc' not supported
 
-// UNSUPPORTED : C value 'g_log_structured' : parameter 'log_level' of type 'LogLevelFlags' not supported
+// UNSUPPORTED : C value 'g_log_structured' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_log_structured_array' : parameter 'log_level' of type 'LogLevelFlags' not supported
+// UNSUPPORTED : C value 'g_log_structured_array' : parameter 'fields' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_log_structured_standard' : parameter 'log_level' of type 'LogLevelFlags' not supported
+// UNSUPPORTED : C value 'g_log_structured_standard' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_log_variant' : parameter 'log_level' of type 'LogLevelFlags' not supported
+var logVariantFunction *gi.Function
+var logVariantFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_log_writer_default' : parameter 'log_level' of type 'LogLevelFlags' not supported
+func logVariantFunction_Set() error {
+	var err error
+	logVariantFunction_Once.Do(func() {
+		logVariantFunction, err = gi.FunctionInvokerNew("GLib", "log_variant")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_log_writer_format_fields' : parameter 'log_level' of type 'LogLevelFlags' not supported
+// LogVariant is a representation of the C type g_log_variant.
+func LogVariant(logDomain string, logLevel LogLevelFlags, fields *Variant) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(logDomain)
+	inArgs[1].SetInt32(int32(logLevel))
+	inArgs[2].SetPointer(fields.Native())
+
+	err := logVariantFunction_Set()
+	if err == nil {
+		logVariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_log_writer_default' : parameter 'fields' of type 'nil' not supported
+
+// UNSUPPORTED : C value 'g_log_writer_format_fields' : parameter 'fields' of type 'nil' not supported
 
 var logWriterIsJournaldFunction *gi.Function
 var logWriterIsJournaldFunction_Once sync.Once
@@ -4112,9 +4270,9 @@ func LogWriterIsJournald(outputFd int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_log_writer_journald' : parameter 'log_level' of type 'LogLevelFlags' not supported
+// UNSUPPORTED : C value 'g_log_writer_journald' : parameter 'fields' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_log_writer_standard_streams' : parameter 'log_level' of type 'LogLevelFlags' not supported
+// UNSUPPORTED : C value 'g_log_writer_standard_streams' : parameter 'fields' of type 'nil' not supported
 
 var logWriterSupportsColorFunction *gi.Function
 var logWriterSupportsColorFunction_Once sync.Once
@@ -4144,7 +4302,7 @@ func LogWriterSupportsColor(outputFd int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_logv' : parameter 'log_level' of type 'LogLevelFlags' not supported
+// UNSUPPORTED : C value 'g_logv' : parameter 'args' of type 'va_list' not supported
 
 var mainContextDefaultFunction *gi.Function
 var mainContextDefaultFunction_Once sync.Once
@@ -4284,7 +4442,7 @@ func MainDepth() int32 {
 
 // UNSUPPORTED : C value 'g_malloc_n' : return type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_markup_collect_attributes' : parameter 'first_type' of type 'MarkupCollectType' not supported
+// UNSUPPORTED : C value 'g_markup_collect_attributes' : parameter '...' of type 'nil' not supported
 
 var markupErrorQuarkFunction *gi.Function
 var markupErrorQuarkFunction_Once sync.Once
@@ -5575,9 +5733,63 @@ func RegexEscapeNul(string_ string, length int32) string {
 
 // UNSUPPORTED : C value 'g_regex_escape_string' : parameter 'string' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_regex_match_simple' : parameter 'compile_options' of type 'RegexCompileFlags' not supported
+var regexMatchSimpleFunction *gi.Function
+var regexMatchSimpleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_regex_split_simple' : parameter 'compile_options' of type 'RegexCompileFlags' not supported
+func regexMatchSimpleFunction_Set() error {
+	var err error
+	regexMatchSimpleFunction_Once.Do(func() {
+		regexMatchSimpleFunction, err = gi.FunctionInvokerNew("GLib", "regex_match_simple")
+	})
+	return err
+}
+
+// RegexMatchSimple is a representation of the C type g_regex_match_simple.
+func RegexMatchSimple(pattern string, string_ string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(pattern)
+	inArgs[1].SetString(string_)
+	inArgs[2].SetInt32(int32(compileOptions))
+	inArgs[3].SetInt32(int32(matchOptions))
+
+	var ret gi.Argument
+
+	err := regexMatchSimpleFunction_Set()
+	if err == nil {
+		ret = regexMatchSimpleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var regexSplitSimpleFunction *gi.Function
+var regexSplitSimpleFunction_Once sync.Once
+
+func regexSplitSimpleFunction_Set() error {
+	var err error
+	regexSplitSimpleFunction_Once.Do(func() {
+		regexSplitSimpleFunction, err = gi.FunctionInvokerNew("GLib", "regex_split_simple")
+	})
+	return err
+}
+
+// RegexSplitSimple is a representation of the C type g_regex_split_simple.
+func RegexSplitSimple(pattern string, string_ string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(pattern)
+	inArgs[1].SetString(string_)
+	inArgs[2].SetInt32(int32(compileOptions))
+	inArgs[3].SetInt32(int32(matchOptions))
+
+	err := regexSplitSimpleFunction_Set()
+	if err == nil {
+		regexSplitSimpleFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var reloadUserSpecialDirsCacheFunction *gi.Function
 var reloadUserSpecialDirsCacheFunction_Once sync.Once
@@ -7637,7 +7849,31 @@ func TestCreateSuite(suiteName string) *TestSuite {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_test_expect_message' : parameter 'log_level' of type 'LogLevelFlags' not supported
+var testExpectMessageFunction *gi.Function
+var testExpectMessageFunction_Once sync.Once
+
+func testExpectMessageFunction_Set() error {
+	var err error
+	testExpectMessageFunction_Once.Do(func() {
+		testExpectMessageFunction, err = gi.FunctionInvokerNew("GLib", "test_expect_message")
+	})
+	return err
+}
+
+// TestExpectMessage is a representation of the C type g_test_expect_message.
+func TestExpectMessage(logDomain string, logLevel LogLevelFlags, pattern string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(logDomain)
+	inArgs[1].SetInt32(int32(logLevel))
+	inArgs[2].SetString(pattern)
+
+	err := testExpectMessageFunction_Set()
+	if err == nil {
+		testExpectMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var testFailFunction *gi.Function
 var testFailFunction_Once sync.Once
@@ -8172,7 +8408,34 @@ func TestTrapAssertions(domain string, file string, line int32, func_ string, as
 	return
 }
 
-// UNSUPPORTED : C value 'g_test_trap_fork' : parameter 'test_trap_flags' of type 'TestTrapFlags' not supported
+var testTrapForkFunction *gi.Function
+var testTrapForkFunction_Once sync.Once
+
+func testTrapForkFunction_Set() error {
+	var err error
+	testTrapForkFunction_Once.Do(func() {
+		testTrapForkFunction, err = gi.FunctionInvokerNew("GLib", "test_trap_fork")
+	})
+	return err
+}
+
+// TestTrapFork is a representation of the C type g_test_trap_fork.
+func TestTrapFork(usecTimeout uint64, testTrapFlags TestTrapFlags) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint64(usecTimeout)
+	inArgs[1].SetInt32(int32(testTrapFlags))
+
+	var ret gi.Argument
+
+	err := testTrapForkFunction_Set()
+	if err == nil {
+		ret = testTrapForkFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var testTrapHasPassedFunction *gi.Function
 var testTrapHasPassedFunction_Once sync.Once
@@ -8226,7 +8489,31 @@ func TestTrapReachedTimeout() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_test_trap_subprocess' : parameter 'test_flags' of type 'TestSubprocessFlags' not supported
+var testTrapSubprocessFunction *gi.Function
+var testTrapSubprocessFunction_Once sync.Once
+
+func testTrapSubprocessFunction_Set() error {
+	var err error
+	testTrapSubprocessFunction_Once.Do(func() {
+		testTrapSubprocessFunction, err = gi.FunctionInvokerNew("GLib", "test_trap_subprocess")
+	})
+	return err
+}
+
+// TestTrapSubprocess is a representation of the C type g_test_trap_subprocess.
+func TestTrapSubprocess(testPath string, usecTimeout uint64, testFlags TestSubprocessFlags) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(testPath)
+	inArgs[1].SetUint64(usecTimeout)
+	inArgs[2].SetInt32(int32(testFlags))
+
+	err := testTrapSubprocessFunction_Set()
+	if err == nil {
+		testTrapSubprocessFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var threadErrorQuarkFunction *gi.Function
 var threadErrorQuarkFunction_Once sync.Once
@@ -8746,11 +9033,38 @@ func UnixErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_unix_fd_add' : parameter 'condition' of type 'IOCondition' not supported
+// UNSUPPORTED : C value 'g_unix_fd_add' : parameter 'function' of type 'UnixFDSourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_unix_fd_add_full' : parameter 'condition' of type 'IOCondition' not supported
+// UNSUPPORTED : C value 'g_unix_fd_add_full' : parameter 'function' of type 'UnixFDSourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_unix_fd_source_new' : parameter 'condition' of type 'IOCondition' not supported
+var unixFdSourceNewFunction *gi.Function
+var unixFdSourceNewFunction_Once sync.Once
+
+func unixFdSourceNewFunction_Set() error {
+	var err error
+	unixFdSourceNewFunction_Once.Do(func() {
+		unixFdSourceNewFunction, err = gi.FunctionInvokerNew("GLib", "unix_fd_source_new")
+	})
+	return err
+}
+
+// UnixFdSourceNew is a representation of the C type g_unix_fd_source_new.
+func UnixFdSourceNew(fd int32, condition IOCondition) *Source {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(fd)
+	inArgs[1].SetInt32(int32(condition))
+
+	var ret gi.Argument
+
+	err := unixFdSourceNewFunction_Set()
+	if err == nil {
+		ret = unixFdSourceNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SourceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var unixOpenPipeFunction *gi.Function
 var unixOpenPipeFunction_Once sync.Once

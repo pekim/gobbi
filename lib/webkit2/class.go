@@ -6499,8 +6499,8 @@ func policyDecisionDownloadFunction_Set() error {
 	return err
 }
 
-// Download is a representation of the C type webkit_policy_decision_download.
-func (recv *PolicyDecision) Download() {
+// Download_ is a representation of the C type webkit_policy_decision_download.
+func (recv *PolicyDecision) Download_() {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
@@ -15724,7 +15724,7 @@ func (recv *WebView) GetSettings() *Settings {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_web_view_get_snapshot' : parameter 'options' of type 'SnapshotOptions' not supported
+// UNSUPPORTED : C value 'webkit_web_view_get_snapshot' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_web_view_get_snapshot_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -17231,11 +17231,11 @@ func WebsiteDataManagerNewEphemeral() *WebsiteDataManager {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_website_data_manager_clear' : parameter 'types' of type 'WebsiteDataTypes' not supported
+// UNSUPPORTED : C value 'webkit_website_data_manager_clear' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_website_data_manager_clear_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
-// UNSUPPORTED : C value 'webkit_website_data_manager_fetch' : parameter 'types' of type 'WebsiteDataTypes' not supported
+// UNSUPPORTED : C value 'webkit_website_data_manager_fetch' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_website_data_manager_fetch_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 
@@ -17559,7 +17559,7 @@ func (recv *WebsiteDataManager) IsEphemeral() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_website_data_manager_remove' : parameter 'types' of type 'WebsiteDataTypes' not supported
+// UNSUPPORTED : C value 'webkit_website_data_manager_remove' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'webkit_website_data_manager_remove_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
 

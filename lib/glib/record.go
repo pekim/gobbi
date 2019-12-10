@@ -6611,7 +6611,37 @@ func (recv *IOChannel) Flush() IOStatus {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_channel_get_buffer_condition' : return type 'IOCondition' not supported
+var iOChannelGetBufferConditionFunction *gi.Function
+var iOChannelGetBufferConditionFunction_Once sync.Once
+
+func iOChannelGetBufferConditionFunction_Set() error {
+	var err error
+	iOChannelGetBufferConditionFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelGetBufferConditionFunction, err = iOChannelStruct.InvokerNew("get_buffer_condition")
+	})
+	return err
+}
+
+// GetBufferCondition is a representation of the C type g_io_channel_get_buffer_condition.
+func (recv *IOChannel) GetBufferCondition() IOCondition {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := iOChannelGetBufferConditionFunction_Set()
+	if err == nil {
+		ret = iOChannelGetBufferConditionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOCondition(ret.Int32())
+
+	return retGo
+}
 
 var iOChannelGetBufferSizeFunction *gi.Function
 var iOChannelGetBufferSizeFunction_Once sync.Once
@@ -6741,7 +6771,37 @@ func (recv *IOChannel) GetEncoding() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_channel_get_flags' : return type 'IOFlags' not supported
+var iOChannelGetFlagsFunction *gi.Function
+var iOChannelGetFlagsFunction_Once sync.Once
+
+func iOChannelGetFlagsFunction_Set() error {
+	var err error
+	iOChannelGetFlagsFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelGetFlagsFunction, err = iOChannelStruct.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type g_io_channel_get_flags.
+func (recv *IOChannel) GetFlags() IOFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := iOChannelGetFlagsFunction_Set()
+	if err == nil {
+		ret = iOChannelGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOFlags(ret.Int32())
+
+	return retGo
+}
 
 var iOChannelGetLineTermFunction *gi.Function
 var iOChannelGetLineTermFunction_Once sync.Once
@@ -7135,7 +7195,38 @@ func (recv *IOChannel) SetEncoding(encoding string) IOStatus {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_channel_set_flags' : parameter 'flags' of type 'IOFlags' not supported
+var iOChannelSetFlagsFunction *gi.Function
+var iOChannelSetFlagsFunction_Once sync.Once
+
+func iOChannelSetFlagsFunction_Set() error {
+	var err error
+	iOChannelSetFlagsFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelSetFlagsFunction, err = iOChannelStruct.InvokerNew("set_flags")
+	})
+	return err
+}
+
+// SetFlags is a representation of the C type g_io_channel_set_flags.
+func (recv *IOChannel) SetFlags(flags IOFlags) IOStatus {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := iOChannelSetFlagsFunction_Set()
+	if err == nil {
+		ret = iOChannelSetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOStatus(ret.Int32())
+
+	return retGo
+}
 
 var iOChannelSetLineTermFunction *gi.Function
 var iOChannelSetLineTermFunction_Once sync.Once
@@ -8141,15 +8232,146 @@ func (recv *KeyFile) HasKey(groupName string, key string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_key_file_load_from_bytes' : parameter 'flags' of type 'KeyFileFlags' not supported
+var keyFileLoadFromBytesFunction *gi.Function
+var keyFileLoadFromBytesFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_key_file_load_from_data' : parameter 'flags' of type 'KeyFileFlags' not supported
+func keyFileLoadFromBytesFunction_Set() error {
+	var err error
+	keyFileLoadFromBytesFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileLoadFromBytesFunction, err = keyFileStruct.InvokerNew("load_from_bytes")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_key_file_load_from_data_dirs' : parameter 'flags' of type 'KeyFileFlags' not supported
+// LoadFromBytes is a representation of the C type g_key_file_load_from_bytes.
+func (recv *KeyFile) LoadFromBytes(bytes *Bytes, flags KeyFileFlags) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(bytes.Native())
+	inArgs[2].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := keyFileLoadFromBytesFunction_Set()
+	if err == nil {
+		ret = keyFileLoadFromBytesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var keyFileLoadFromDataFunction *gi.Function
+var keyFileLoadFromDataFunction_Once sync.Once
+
+func keyFileLoadFromDataFunction_Set() error {
+	var err error
+	keyFileLoadFromDataFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileLoadFromDataFunction, err = keyFileStruct.InvokerNew("load_from_data")
+	})
+	return err
+}
+
+// LoadFromData is a representation of the C type g_key_file_load_from_data.
+func (recv *KeyFile) LoadFromData(data string, length uint64, flags KeyFileFlags) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(data)
+	inArgs[2].SetUint64(length)
+	inArgs[3].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := keyFileLoadFromDataFunction_Set()
+	if err == nil {
+		ret = keyFileLoadFromDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var keyFileLoadFromDataDirsFunction *gi.Function
+var keyFileLoadFromDataDirsFunction_Once sync.Once
+
+func keyFileLoadFromDataDirsFunction_Set() error {
+	var err error
+	keyFileLoadFromDataDirsFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileLoadFromDataDirsFunction, err = keyFileStruct.InvokerNew("load_from_data_dirs")
+	})
+	return err
+}
+
+// LoadFromDataDirs is a representation of the C type g_key_file_load_from_data_dirs.
+func (recv *KeyFile) LoadFromDataDirs(file string, flags KeyFileFlags) (bool, string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(file)
+	inArgs[2].SetInt32(int32(flags))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := keyFileLoadFromDataDirsFunction_Set()
+	if err == nil {
+		ret = keyFileLoadFromDataDirsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0
+}
 
 // UNSUPPORTED : C value 'g_key_file_load_from_dirs' : parameter 'search_dirs' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_key_file_load_from_file' : parameter 'flags' of type 'KeyFileFlags' not supported
+var keyFileLoadFromFileFunction *gi.Function
+var keyFileLoadFromFileFunction_Once sync.Once
+
+func keyFileLoadFromFileFunction_Set() error {
+	var err error
+	keyFileLoadFromFileFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileLoadFromFileFunction, err = keyFileStruct.InvokerNew("load_from_file")
+	})
+	return err
+}
+
+// LoadFromFile is a representation of the C type g_key_file_load_from_file.
+func (recv *KeyFile) LoadFromFile(file string, flags KeyFileFlags) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(file)
+	inArgs[2].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := keyFileLoadFromFileFunction_Set()
+	if err == nil {
+		ret = keyFileLoadFromFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var keyFileRefFunction *gi.Function
 var keyFileRefFunction_Once sync.Once
@@ -9922,7 +10144,7 @@ func (recv *MarkupParseContext) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_markup_parse_context_new' : parameter 'flags' of type 'MarkupParseFlags' not supported
+// UNSUPPORTED : C value 'g_markup_parse_context_new' : parameter 'user_data' of type 'gpointer' not supported
 
 var markupParseContextEndParseFunction *gi.Function
 var markupParseContextEndParseFunction_Once sync.Once
@@ -10931,7 +11153,7 @@ func (recv *Node) ChildPosition(child *Node) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_node_children_foreach' : parameter 'flags' of type 'TraverseFlags' not supported
+// UNSUPPORTED : C value 'g_node_children_foreach' : parameter 'func' of type 'NodeForeachFunc' not supported
 
 var nodeCopyFunction *gi.Function
 var nodeCopyFunction_Once sync.Once
@@ -11027,9 +11249,9 @@ func (recv *Node) Destroy() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_node_find' : parameter 'flags' of type 'TraverseFlags' not supported
+// UNSUPPORTED : C value 'g_node_find' : parameter 'data' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_node_find_child' : parameter 'flags' of type 'TraverseFlags' not supported
+// UNSUPPORTED : C value 'g_node_find_child' : parameter 'data' of type 'gpointer' not supported
 
 var nodeFirstSiblingFunction *gi.Function
 var nodeFirstSiblingFunction_Once sync.Once
@@ -11358,7 +11580,38 @@ func (recv *Node) NChildren() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_node_n_nodes' : parameter 'flags' of type 'TraverseFlags' not supported
+var nodeNNodesFunction *gi.Function
+var nodeNNodesFunction_Once sync.Once
+
+func nodeNNodesFunction_Set() error {
+	var err error
+	nodeNNodesFunction_Once.Do(func() {
+		err = nodeStruct_Set()
+		if err != nil {
+			return
+		}
+		nodeNNodesFunction, err = nodeStruct.InvokerNew("n_nodes")
+	})
+	return err
+}
+
+// NNodes is a representation of the C type g_node_n_nodes.
+func (recv *Node) NNodes(flags TraverseFlags) uint32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := nodeNNodesFunction_Set()
+	if err == nil {
+		ret = nodeNNodesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var nodeNthChildFunction *gi.Function
 var nodeNthChildFunction_Once sync.Once
@@ -11454,7 +11707,7 @@ func (recv *Node) ReverseChildren() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_node_traverse' : parameter 'flags' of type 'TraverseFlags' not supported
+// UNSUPPORTED : C value 'g_node_traverse' : parameter 'func' of type 'NodeTraverseFunc' not supported
 
 var nodeUnlinkFunction *gi.Function
 var nodeUnlinkFunction_Once sync.Once
@@ -13892,7 +14145,39 @@ func (recv *Regex) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_regex_new' : parameter 'compile_options' of type 'RegexCompileFlags' not supported
+var regexNewFunction *gi.Function
+var regexNewFunction_Once sync.Once
+
+func regexNewFunction_Set() error {
+	var err error
+	regexNewFunction_Once.Do(func() {
+		err = regexStruct_Set()
+		if err != nil {
+			return
+		}
+		regexNewFunction, err = regexStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// RegexNew is a representation of the C type g_regex_new.
+func RegexNew(pattern string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) *Regex {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(pattern)
+	inArgs[1].SetInt32(int32(compileOptions))
+	inArgs[2].SetInt32(int32(matchOptions))
+
+	var ret gi.Argument
+
+	err := regexNewFunction_Set()
+	if err == nil {
+		ret = regexNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RegexNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var regexGetCaptureCountFunction *gi.Function
 var regexGetCaptureCountFunction_Once sync.Once
@@ -13926,7 +14211,37 @@ func (recv *Regex) GetCaptureCount() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_regex_get_compile_flags' : return type 'RegexCompileFlags' not supported
+var regexGetCompileFlagsFunction *gi.Function
+var regexGetCompileFlagsFunction_Once sync.Once
+
+func regexGetCompileFlagsFunction_Set() error {
+	var err error
+	regexGetCompileFlagsFunction_Once.Do(func() {
+		err = regexStruct_Set()
+		if err != nil {
+			return
+		}
+		regexGetCompileFlagsFunction, err = regexStruct.InvokerNew("get_compile_flags")
+	})
+	return err
+}
+
+// GetCompileFlags is a representation of the C type g_regex_get_compile_flags.
+func (recv *Regex) GetCompileFlags() RegexCompileFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := regexGetCompileFlagsFunction_Set()
+	if err == nil {
+		ret = regexGetCompileFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RegexCompileFlags(ret.Int32())
+
+	return retGo
+}
 
 var regexGetHasCrOrLfFunction *gi.Function
 var regexGetHasCrOrLfFunction_Once sync.Once
@@ -13960,7 +14275,37 @@ func (recv *Regex) GetHasCrOrLf() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_regex_get_match_flags' : return type 'RegexMatchFlags' not supported
+var regexGetMatchFlagsFunction *gi.Function
+var regexGetMatchFlagsFunction_Once sync.Once
+
+func regexGetMatchFlagsFunction_Set() error {
+	var err error
+	regexGetMatchFlagsFunction_Once.Do(func() {
+		err = regexStruct_Set()
+		if err != nil {
+			return
+		}
+		regexGetMatchFlagsFunction, err = regexStruct.InvokerNew("get_match_flags")
+	})
+	return err
+}
+
+// GetMatchFlags is a representation of the C type g_regex_get_match_flags.
+func (recv *Regex) GetMatchFlags() RegexMatchFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := regexGetMatchFlagsFunction_Set()
+	if err == nil {
+		ret = regexGetMatchFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := RegexMatchFlags(ret.Int32())
+
+	return retGo
+}
 
 var regexGetMaxBackrefFunction *gi.Function
 var regexGetMaxBackrefFunction_Once sync.Once
@@ -14091,9 +14436,77 @@ func (recv *Regex) GetStringNumber(name string) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_regex_match' : parameter 'match_options' of type 'RegexMatchFlags' not supported
+var regexMatchFunction *gi.Function
+var regexMatchFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_regex_match_all' : parameter 'match_options' of type 'RegexMatchFlags' not supported
+func regexMatchFunction_Set() error {
+	var err error
+	regexMatchFunction_Once.Do(func() {
+		err = regexStruct_Set()
+		if err != nil {
+			return
+		}
+		regexMatchFunction, err = regexStruct.InvokerNew("match")
+	})
+	return err
+}
+
+// Match is a representation of the C type g_regex_match.
+func (recv *Regex) Match(string_ string, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(string_)
+	inArgs[2].SetInt32(int32(matchOptions))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := regexMatchFunction_Set()
+	if err == nil {
+		ret = regexMatchFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := MatchInfoNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
+
+var regexMatchAllFunction *gi.Function
+var regexMatchAllFunction_Once sync.Once
+
+func regexMatchAllFunction_Set() error {
+	var err error
+	regexMatchAllFunction_Once.Do(func() {
+		err = regexStruct_Set()
+		if err != nil {
+			return
+		}
+		regexMatchAllFunction, err = regexStruct.InvokerNew("match_all")
+	})
+	return err
+}
+
+// MatchAll is a representation of the C type g_regex_match_all.
+func (recv *Regex) MatchAll(string_ string, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(string_)
+	inArgs[2].SetInt32(int32(matchOptions))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := regexMatchAllFunction_Set()
+	if err == nil {
+		ret = regexMatchAllFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := MatchInfoNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 // UNSUPPORTED : C value 'g_regex_match_all_full' : parameter 'string' of type 'nil' not supported
 
@@ -14137,7 +14550,35 @@ func (recv *Regex) Ref() *Regex {
 
 // UNSUPPORTED : C value 'g_regex_replace_literal' : parameter 'string' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_regex_split' : parameter 'match_options' of type 'RegexMatchFlags' not supported
+var regexSplitFunction *gi.Function
+var regexSplitFunction_Once sync.Once
+
+func regexSplitFunction_Set() error {
+	var err error
+	regexSplitFunction_Once.Do(func() {
+		err = regexStruct_Set()
+		if err != nil {
+			return
+		}
+		regexSplitFunction, err = regexStruct.InvokerNew("split")
+	})
+	return err
+}
+
+// Split is a representation of the C type g_regex_split.
+func (recv *Regex) Split(string_ string, matchOptions RegexMatchFlags) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(string_)
+	inArgs[2].SetInt32(int32(matchOptions))
+
+	err := regexSplitFunction_Set()
+	if err == nil {
+		regexSplitFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_regex_split_full' : parameter 'string' of type 'nil' not supported
 
@@ -15944,7 +16385,7 @@ func (recv *Source) AddPoll(fd *PollFD) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_source_add_unix_fd' : parameter 'events' of type 'IOCondition' not supported
+// UNSUPPORTED : C value 'g_source_add_unix_fd' : return type 'gpointer' not supported
 
 var sourceAttachFunction *gi.Function
 var sourceAttachFunction_Once sync.Once

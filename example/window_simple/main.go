@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/pekim/gobbi"
+	"github.com/pekim/gobbi/lib/gdk"
 	"github.com/pekim/gobbi/lib/gtk"
 	"runtime"
 )
@@ -27,6 +28,12 @@ func main() {
 	window.SetTitle("gobbi")
 	window.SetDefaultSize(400, 300)
 	window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
+
+	window.Widget().GetWindow().SetEvents(gdk.EventMask_KeyPressMask)
+	window.Widget().ConnectKeyPressEvent(func(instance *gtk.Widget, event *gdk.EventKey) bool {
+		fmt.Println(event.FieldKeyval(), event.FieldString())
+		return true
+	})
 
 	window.Widget().ShowAll()
 

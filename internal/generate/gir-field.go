@@ -106,7 +106,7 @@ func (f *Field) generateSetterBody(g *jen.Group) {
 			Parens(jenValue)
 	}
 
-	if f.Type.isEnumeration() {
+	if f.Type.isBitfield() || f.Type.isEnumeration() {
 		jenValue = jen.
 			Add(jenGoTypes["int"]).
 			Parens(jenValue)

@@ -2470,11 +2470,11 @@ func (recv *Drive) CanStop() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_drive_eject' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_drive_eject' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_drive_eject_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_drive_eject_with_operation' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_drive_eject_with_operation' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_drive_eject_with_operation_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -2835,11 +2835,11 @@ func (recv *Drive) IsRemovable() bool {
 
 // UNSUPPORTED : C value 'g_drive_poll_for_media_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_drive_start' : parameter 'flags' of type 'DriveStartFlags' not supported
+// UNSUPPORTED : C value 'g_drive_start' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_drive_start_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_drive_stop' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_drive_stop' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_drive_stop_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -2989,11 +2989,68 @@ func (recv *DtlsClientConnection) GetAcceptedCas() *glib.List {
 
 // UNSUPPORTED : C value 'g_dtls_client_connection_get_server_identity' : return type 'SocketConnectable' not supported
 
-// UNSUPPORTED : C value 'g_dtls_client_connection_get_validation_flags' : return type 'TlsCertificateFlags' not supported
+var dtlsClientConnectionGetValidationFlagsFunction *gi.Function
+var dtlsClientConnectionGetValidationFlagsFunction_Once sync.Once
+
+func dtlsClientConnectionGetValidationFlagsFunction_Set() error {
+	var err error
+	dtlsClientConnectionGetValidationFlagsFunction_Once.Do(func() {
+		err = dtlsClientConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		dtlsClientConnectionGetValidationFlagsFunction, err = dtlsClientConnectionInterface.InvokerNew("get_validation_flags")
+	})
+	return err
+}
+
+// GetValidationFlags is a representation of the C type g_dtls_client_connection_get_validation_flags.
+func (recv *DtlsClientConnection) GetValidationFlags() TlsCertificateFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dtlsClientConnectionGetValidationFlagsFunction_Set()
+	if err == nil {
+		ret = dtlsClientConnectionGetValidationFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsCertificateFlags(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_dtls_client_connection_set_server_identity' : parameter 'identity' of type 'SocketConnectable' not supported
 
-// UNSUPPORTED : C value 'g_dtls_client_connection_set_validation_flags' : parameter 'flags' of type 'TlsCertificateFlags' not supported
+var dtlsClientConnectionSetValidationFlagsFunction *gi.Function
+var dtlsClientConnectionSetValidationFlagsFunction_Once sync.Once
+
+func dtlsClientConnectionSetValidationFlagsFunction_Set() error {
+	var err error
+	dtlsClientConnectionSetValidationFlagsFunction_Once.Do(func() {
+		err = dtlsClientConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		dtlsClientConnectionSetValidationFlagsFunction, err = dtlsClientConnectionInterface.InvokerNew("set_validation_flags")
+	})
+	return err
+}
+
+// SetValidationFlags is a representation of the C type g_dtls_client_connection_set_validation_flags.
+func (recv *DtlsClientConnection) SetValidationFlags(flags TlsCertificateFlags) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	err := dtlsClientConnectionSetValidationFlagsFunction_Set()
+	if err == nil {
+		dtlsClientConnectionSetValidationFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dtlsConnectionInterface *gi.Interface
 var dtlsConnectionInterface_Once sync.Once
@@ -3071,7 +3128,39 @@ func (recv *DtlsConnection) Close(cancellable *Cancellable) bool {
 
 // UNSUPPORTED : C value 'g_dtls_connection_close_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dtls_connection_emit_accept_certificate' : parameter 'errors' of type 'TlsCertificateFlags' not supported
+var dtlsConnectionEmitAcceptCertificateFunction *gi.Function
+var dtlsConnectionEmitAcceptCertificateFunction_Once sync.Once
+
+func dtlsConnectionEmitAcceptCertificateFunction_Set() error {
+	var err error
+	dtlsConnectionEmitAcceptCertificateFunction_Once.Do(func() {
+		err = dtlsConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		dtlsConnectionEmitAcceptCertificateFunction, err = dtlsConnectionInterface.InvokerNew("emit_accept_certificate")
+	})
+	return err
+}
+
+// EmitAcceptCertificate is a representation of the C type g_dtls_connection_emit_accept_certificate.
+func (recv *DtlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(peerCert.Native())
+	inArgs[2].SetInt32(int32(errors))
+
+	var ret gi.Argument
+
+	err := dtlsConnectionEmitAcceptCertificateFunction_Set()
+	if err == nil {
+		ret = dtlsConnectionEmitAcceptCertificateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var dtlsConnectionGetCertificateFunction *gi.Function
 var dtlsConnectionGetCertificateFunction_Once sync.Once
@@ -3233,7 +3322,37 @@ func (recv *DtlsConnection) GetPeerCertificate() *TlsCertificate {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dtls_connection_get_peer_certificate_errors' : return type 'TlsCertificateFlags' not supported
+var dtlsConnectionGetPeerCertificateErrorsFunction *gi.Function
+var dtlsConnectionGetPeerCertificateErrorsFunction_Once sync.Once
+
+func dtlsConnectionGetPeerCertificateErrorsFunction_Set() error {
+	var err error
+	dtlsConnectionGetPeerCertificateErrorsFunction_Once.Do(func() {
+		err = dtlsConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		dtlsConnectionGetPeerCertificateErrorsFunction, err = dtlsConnectionInterface.InvokerNew("get_peer_certificate_errors")
+	})
+	return err
+}
+
+// GetPeerCertificateErrors is a representation of the C type g_dtls_connection_get_peer_certificate_errors.
+func (recv *DtlsConnection) GetPeerCertificateErrors() TlsCertificateFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dtlsConnectionGetPeerCertificateErrorsFunction_Set()
+	if err == nil {
+		ret = dtlsConnectionGetPeerCertificateErrorsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsCertificateFlags(ret.Int32())
+
+	return retGo
+}
 
 var dtlsConnectionGetRehandshakeModeFunction *gi.Function
 var dtlsConnectionGetRehandshakeModeFunction_Once sync.Once
@@ -3522,7 +3641,18 @@ func (recv *DtlsConnection) Shutdown(shutdownRead bool, shutdownWrite bool, canc
 
 // UNSUPPORTED : C value 'g_dtls_connection_shutdown_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'accept-certificate' : parameter 'errors' of type 'TlsCertificateFlags' not supported
+/*
+ConnectAcceptCertificate connects a callback to the 'accept-certificate' signal of the DtlsConnection.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DtlsConnection) ConnectAcceptCertificate(handler func(instance *DtlsConnection, peerCert *TlsCertificate, errors TlsCertificateFlags) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
+
+	return callback.ConnectSignal(recv.Native(), "accept-certificate", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -3611,9 +3741,41 @@ func (recv *File) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_file_append_to' : parameter 'flags' of type 'FileCreateFlags' not supported
+var fileAppendToFunction *gi.Function
+var fileAppendToFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_append_to_async' : parameter 'flags' of type 'FileCreateFlags' not supported
+func fileAppendToFunction_Set() error {
+	var err error
+	fileAppendToFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileAppendToFunction, err = fileInterface.InvokerNew("append_to")
+	})
+	return err
+}
+
+// AppendTo is a representation of the C type g_file_append_to.
+func (recv *File) AppendTo(flags FileCreateFlags, cancellable *Cancellable) *FileOutputStream {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileAppendToFunction_Set()
+	if err == nil {
+		ret = fileAppendToFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileOutputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_append_to_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_append_to_finish' : parameter 'res' of type 'AsyncResult' not supported
 
@@ -3625,15 +3787,79 @@ func (recv *File) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_file_copy_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_create' : parameter 'flags' of type 'FileCreateFlags' not supported
+var fileCreateFunction *gi.Function
+var fileCreateFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_create_async' : parameter 'flags' of type 'FileCreateFlags' not supported
+func fileCreateFunction_Set() error {
+	var err error
+	fileCreateFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileCreateFunction, err = fileInterface.InvokerNew("create")
+	})
+	return err
+}
+
+// Create is a representation of the C type g_file_create.
+func (recv *File) Create(flags FileCreateFlags, cancellable *Cancellable) *FileOutputStream {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileCreateFunction_Set()
+	if err == nil {
+		ret = fileCreateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileOutputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_create_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_create_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_create_readwrite' : parameter 'flags' of type 'FileCreateFlags' not supported
+var fileCreateReadwriteFunction *gi.Function
+var fileCreateReadwriteFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_create_readwrite_async' : parameter 'flags' of type 'FileCreateFlags' not supported
+func fileCreateReadwriteFunction_Set() error {
+	var err error
+	fileCreateReadwriteFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileCreateReadwriteFunction, err = fileInterface.InvokerNew("create_readwrite")
+	})
+	return err
+}
+
+// CreateReadwrite is a representation of the C type g_file_create_readwrite.
+func (recv *File) CreateReadwrite(flags FileCreateFlags, cancellable *Cancellable) *FileIOStream {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileCreateReadwriteFunction_Set()
+	if err == nil {
+		ret = fileCreateReadwriteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileIOStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_create_readwrite_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_create_readwrite_finish' : parameter 'res' of type 'AsyncResult' not supported
 
@@ -3676,17 +3902,50 @@ func (recv *File) Delete(cancellable *Cancellable) bool {
 
 // UNSUPPORTED : C value 'g_file_dup' : return type 'File' not supported
 
-// UNSUPPORTED : C value 'g_file_eject_mountable' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_file_eject_mountable' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_eject_mountable_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_eject_mountable_with_operation' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_file_eject_mountable_with_operation' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_eject_mountable_with_operation_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_enumerate_children' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+var fileEnumerateChildrenFunction *gi.Function
+var fileEnumerateChildrenFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_enumerate_children_async' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+func fileEnumerateChildrenFunction_Set() error {
+	var err error
+	fileEnumerateChildrenFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileEnumerateChildrenFunction, err = fileInterface.InvokerNew("enumerate_children")
+	})
+	return err
+}
+
+// EnumerateChildren is a representation of the C type g_file_enumerate_children.
+func (recv *File) EnumerateChildren(attributes string, flags FileQueryInfoFlags, cancellable *Cancellable) *FileEnumerator {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(attributes)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileEnumerateChildrenFunction_Set()
+	if err == nil {
+		ret = fileEnumerateChildrenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileEnumeratorNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_enumerate_children_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_enumerate_children_finish' : parameter 'res' of type 'AsyncResult' not supported
 
@@ -4120,23 +4379,119 @@ func (recv *File) MakeSymbolicLink(symlinkValue string, cancellable *Cancellable
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_measure_disk_usage' : parameter 'flags' of type 'FileMeasureFlags' not supported
+// UNSUPPORTED : C value 'g_file_measure_disk_usage' : parameter 'progress_callback' of type 'FileMeasureProgressCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_measure_disk_usage_async' : parameter 'flags' of type 'FileMeasureFlags' not supported
+// UNSUPPORTED : C value 'g_file_measure_disk_usage_async' : parameter 'progress_callback' of type 'FileMeasureProgressCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_measure_disk_usage_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_monitor' : parameter 'flags' of type 'FileMonitorFlags' not supported
+var fileMonitorFunction *gi.Function
+var fileMonitorFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_monitor_directory' : parameter 'flags' of type 'FileMonitorFlags' not supported
+func fileMonitorFunction_Set() error {
+	var err error
+	fileMonitorFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileMonitorFunction, err = fileInterface.InvokerNew("monitor")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_file_monitor_file' : parameter 'flags' of type 'FileMonitorFlags' not supported
+// Monitor is a representation of the C type g_file_monitor.
+func (recv *File) Monitor(flags FileMonitorFlags, cancellable *Cancellable) *FileMonitor {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetPointer(cancellable.Native())
 
-// UNSUPPORTED : C value 'g_file_mount_enclosing_volume' : parameter 'flags' of type 'MountMountFlags' not supported
+	var ret gi.Argument
+
+	err := fileMonitorFunction_Set()
+	if err == nil {
+		ret = fileMonitorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileMonitorNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileMonitorDirectoryFunction *gi.Function
+var fileMonitorDirectoryFunction_Once sync.Once
+
+func fileMonitorDirectoryFunction_Set() error {
+	var err error
+	fileMonitorDirectoryFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileMonitorDirectoryFunction, err = fileInterface.InvokerNew("monitor_directory")
+	})
+	return err
+}
+
+// MonitorDirectory is a representation of the C type g_file_monitor_directory.
+func (recv *File) MonitorDirectory(flags FileMonitorFlags, cancellable *Cancellable) *FileMonitor {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileMonitorDirectoryFunction_Set()
+	if err == nil {
+		ret = fileMonitorDirectoryFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileMonitorNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileMonitorFileFunction *gi.Function
+var fileMonitorFileFunction_Once sync.Once
+
+func fileMonitorFileFunction_Set() error {
+	var err error
+	fileMonitorFileFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileMonitorFileFunction, err = fileInterface.InvokerNew("monitor_file")
+	})
+	return err
+}
+
+// MonitorFile is a representation of the C type g_file_monitor_file.
+func (recv *File) MonitorFile(flags FileMonitorFlags, cancellable *Cancellable) *FileMonitor {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileMonitorFileFunction_Set()
+	if err == nil {
+		ret = fileMonitorFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileMonitorNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_mount_enclosing_volume' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_mount_enclosing_volume_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_mount_mountable' : parameter 'flags' of type 'MountMountFlags' not supported
+// UNSUPPORTED : C value 'g_file_mount_mountable' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_mount_mountable_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -4254,7 +4609,39 @@ func (recv *File) QueryExists(cancellable *Cancellable) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_query_file_type' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+var fileQueryFileTypeFunction *gi.Function
+var fileQueryFileTypeFunction_Once sync.Once
+
+func fileQueryFileTypeFunction_Set() error {
+	var err error
+	fileQueryFileTypeFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileQueryFileTypeFunction, err = fileInterface.InvokerNew("query_file_type")
+	})
+	return err
+}
+
+// QueryFileType is a representation of the C type g_file_query_file_type.
+func (recv *File) QueryFileType(flags FileQueryInfoFlags, cancellable *Cancellable) FileType {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileQueryFileTypeFunction_Set()
+	if err == nil {
+		ret = fileQueryFileTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileType(ret.Int32())
+
+	return retGo
+}
 
 var fileQueryFilesystemInfoFunction *gi.Function
 var fileQueryFilesystemInfoFunction_Once sync.Once
@@ -4294,9 +4681,42 @@ func (recv *File) QueryFilesystemInfo(attributes string, cancellable *Cancellabl
 
 // UNSUPPORTED : C value 'g_file_query_filesystem_info_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_query_info' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+var fileQueryInfoFunction *gi.Function
+var fileQueryInfoFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_query_info_async' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+func fileQueryInfoFunction_Set() error {
+	var err error
+	fileQueryInfoFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileQueryInfoFunction, err = fileInterface.InvokerNew("query_info")
+	})
+	return err
+}
+
+// QueryInfo is a representation of the C type g_file_query_info.
+func (recv *File) QueryInfo(attributes string, flags FileQueryInfoFlags, cancellable *Cancellable) *FileInfo {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(attributes)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileQueryInfoFunction_Set()
+	if err == nil {
+		ret = fileQueryInfoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_query_info_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_query_info_finish' : parameter 'res' of type 'AsyncResult' not supported
 
@@ -4403,23 +4823,91 @@ func (recv *File) Read(cancellable *Cancellable) *FileInputStream {
 
 // UNSUPPORTED : C value 'g_file_read_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_replace' : parameter 'flags' of type 'FileCreateFlags' not supported
+var fileReplaceFunction *gi.Function
+var fileReplaceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_replace_async' : parameter 'flags' of type 'FileCreateFlags' not supported
+func fileReplaceFunction_Set() error {
+	var err error
+	fileReplaceFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileReplaceFunction, err = fileInterface.InvokerNew("replace")
+	})
+	return err
+}
+
+// Replace is a representation of the C type g_file_replace.
+func (recv *File) Replace(etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) *FileOutputStream {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(etag)
+	inArgs[2].SetBoolean(makeBackup)
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileReplaceFunction_Set()
+	if err == nil {
+		ret = fileReplaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileOutputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_replace_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_replace_contents' : parameter 'contents' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_file_replace_contents_async' : parameter 'contents' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_file_replace_contents_bytes_async' : parameter 'flags' of type 'FileCreateFlags' not supported
+// UNSUPPORTED : C value 'g_file_replace_contents_bytes_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_replace_contents_finish' : parameter 'res' of type 'AsyncResult' not supported
 
 // UNSUPPORTED : C value 'g_file_replace_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_replace_readwrite' : parameter 'flags' of type 'FileCreateFlags' not supported
+var fileReplaceReadwriteFunction *gi.Function
+var fileReplaceReadwriteFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_replace_readwrite_async' : parameter 'flags' of type 'FileCreateFlags' not supported
+func fileReplaceReadwriteFunction_Set() error {
+	var err error
+	fileReplaceReadwriteFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileReplaceReadwriteFunction, err = fileInterface.InvokerNew("replace_readwrite")
+	})
+	return err
+}
+
+// ReplaceReadwrite is a representation of the C type g_file_replace_readwrite.
+func (recv *File) ReplaceReadwrite(etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) *FileIOStream {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(etag)
+	inArgs[2].SetBoolean(makeBackup)
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileReplaceReadwriteFunction_Set()
+	if err == nil {
+		ret = fileReplaceReadwriteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileIOStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_replace_readwrite_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_replace_readwrite_finish' : parameter 'res' of type 'AsyncResult' not supported
 
@@ -4427,23 +4915,260 @@ func (recv *File) Read(cancellable *Cancellable) *FileInputStream {
 
 // UNSUPPORTED : C value 'g_file_set_attribute' : parameter 'value_p' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_file_set_attribute_byte_string' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+var fileSetAttributeByteStringFunction *gi.Function
+var fileSetAttributeByteStringFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_set_attribute_int32' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+func fileSetAttributeByteStringFunction_Set() error {
+	var err error
+	fileSetAttributeByteStringFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileSetAttributeByteStringFunction, err = fileInterface.InvokerNew("set_attribute_byte_string")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_file_set_attribute_int64' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+// SetAttributeByteString is a representation of the C type g_file_set_attribute_byte_string.
+func (recv *File) SetAttributeByteString(attribute string, value string, flags FileQueryInfoFlags, cancellable *Cancellable) bool {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetString(value)
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetPointer(cancellable.Native())
 
-// UNSUPPORTED : C value 'g_file_set_attribute_string' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_file_set_attribute_uint32' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+	err := fileSetAttributeByteStringFunction_Set()
+	if err == nil {
+		ret = fileSetAttributeByteStringFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_file_set_attribute_uint64' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+	retGo := ret.Boolean()
 
-// UNSUPPORTED : C value 'g_file_set_attributes_async' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+	return retGo
+}
+
+var fileSetAttributeInt32Function *gi.Function
+var fileSetAttributeInt32Function_Once sync.Once
+
+func fileSetAttributeInt32Function_Set() error {
+	var err error
+	fileSetAttributeInt32Function_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileSetAttributeInt32Function, err = fileInterface.InvokerNew("set_attribute_int32")
+	})
+	return err
+}
+
+// SetAttributeInt32 is a representation of the C type g_file_set_attribute_int32.
+func (recv *File) SetAttributeInt32(attribute string, value int32, flags FileQueryInfoFlags, cancellable *Cancellable) bool {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetInt32(value)
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileSetAttributeInt32Function_Set()
+	if err == nil {
+		ret = fileSetAttributeInt32Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileSetAttributeInt64Function *gi.Function
+var fileSetAttributeInt64Function_Once sync.Once
+
+func fileSetAttributeInt64Function_Set() error {
+	var err error
+	fileSetAttributeInt64Function_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileSetAttributeInt64Function, err = fileInterface.InvokerNew("set_attribute_int64")
+	})
+	return err
+}
+
+// SetAttributeInt64 is a representation of the C type g_file_set_attribute_int64.
+func (recv *File) SetAttributeInt64(attribute string, value int64, flags FileQueryInfoFlags, cancellable *Cancellable) bool {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetInt64(value)
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileSetAttributeInt64Function_Set()
+	if err == nil {
+		ret = fileSetAttributeInt64Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileSetAttributeStringFunction *gi.Function
+var fileSetAttributeStringFunction_Once sync.Once
+
+func fileSetAttributeStringFunction_Set() error {
+	var err error
+	fileSetAttributeStringFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileSetAttributeStringFunction, err = fileInterface.InvokerNew("set_attribute_string")
+	})
+	return err
+}
+
+// SetAttributeString is a representation of the C type g_file_set_attribute_string.
+func (recv *File) SetAttributeString(attribute string, value string, flags FileQueryInfoFlags, cancellable *Cancellable) bool {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetString(value)
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileSetAttributeStringFunction_Set()
+	if err == nil {
+		ret = fileSetAttributeStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileSetAttributeUint32Function *gi.Function
+var fileSetAttributeUint32Function_Once sync.Once
+
+func fileSetAttributeUint32Function_Set() error {
+	var err error
+	fileSetAttributeUint32Function_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileSetAttributeUint32Function, err = fileInterface.InvokerNew("set_attribute_uint32")
+	})
+	return err
+}
+
+// SetAttributeUint32 is a representation of the C type g_file_set_attribute_uint32.
+func (recv *File) SetAttributeUint32(attribute string, value uint32, flags FileQueryInfoFlags, cancellable *Cancellable) bool {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetUint32(value)
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileSetAttributeUint32Function_Set()
+	if err == nil {
+		ret = fileSetAttributeUint32Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileSetAttributeUint64Function *gi.Function
+var fileSetAttributeUint64Function_Once sync.Once
+
+func fileSetAttributeUint64Function_Set() error {
+	var err error
+	fileSetAttributeUint64Function_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileSetAttributeUint64Function, err = fileInterface.InvokerNew("set_attribute_uint64")
+	})
+	return err
+}
+
+// SetAttributeUint64 is a representation of the C type g_file_set_attribute_uint64.
+func (recv *File) SetAttributeUint64(attribute string, value uint64, flags FileQueryInfoFlags, cancellable *Cancellable) bool {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetUint64(value)
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileSetAttributeUint64Function_Set()
+	if err == nil {
+		ret = fileSetAttributeUint64Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_set_attributes_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_set_attributes_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_set_attributes_from_info' : parameter 'flags' of type 'FileQueryInfoFlags' not supported
+var fileSetAttributesFromInfoFunction *gi.Function
+var fileSetAttributesFromInfoFunction_Once sync.Once
+
+func fileSetAttributesFromInfoFunction_Set() error {
+	var err error
+	fileSetAttributesFromInfoFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileSetAttributesFromInfoFunction, err = fileInterface.InvokerNew("set_attributes_from_info")
+	})
+	return err
+}
+
+// SetAttributesFromInfo is a representation of the C type g_file_set_attributes_from_info.
+func (recv *File) SetAttributesFromInfo(info *FileInfo, flags FileQueryInfoFlags, cancellable *Cancellable) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(info.Native())
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileSetAttributesFromInfoFunction_Set()
+	if err == nil {
+		ret = fileSetAttributesFromInfoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_file_set_display_name' : return type 'File' not supported
 
@@ -4451,11 +5176,11 @@ func (recv *File) Read(cancellable *Cancellable) *FileInputStream {
 
 // UNSUPPORTED : C value 'g_file_set_display_name_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_start_mountable' : parameter 'flags' of type 'DriveStartFlags' not supported
+// UNSUPPORTED : C value 'g_file_start_mountable' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_start_mountable_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_stop_mountable' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_file_stop_mountable' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_stop_mountable_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -4528,11 +5253,11 @@ func (recv *File) Trash(cancellable *Cancellable) bool {
 
 // UNSUPPORTED : C value 'g_file_trash_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_unmount_mountable' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_file_unmount_mountable' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_unmount_mountable_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_file_unmount_mountable_with_operation' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_file_unmount_mountable_with_operation' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_unmount_mountable_with_operation_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -5139,11 +5864,11 @@ func (recv *Mount) CanUnmount() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_mount_eject' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_mount_eject' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_mount_eject_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_mount_eject_with_operation' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_mount_eject_with_operation' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_mount_eject_with_operation_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -5321,7 +6046,7 @@ func (recv *Mount) IsShadowed() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_mount_remount' : parameter 'flags' of type 'MountMountFlags' not supported
+// UNSUPPORTED : C value 'g_mount_remount' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_mount_remount_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -5353,11 +6078,11 @@ func (recv *Mount) Shadow() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_mount_unmount' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_mount_unmount' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_mount_unmount_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_mount_unmount_with_operation' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_mount_unmount_with_operation' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_mount_unmount_with_operation_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -6798,7 +7523,37 @@ func (recv *TlsClientConnection) GetUseSsl3() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tls_client_connection_get_validation_flags' : return type 'TlsCertificateFlags' not supported
+var tlsClientConnectionGetValidationFlagsFunction *gi.Function
+var tlsClientConnectionGetValidationFlagsFunction_Once sync.Once
+
+func tlsClientConnectionGetValidationFlagsFunction_Set() error {
+	var err error
+	tlsClientConnectionGetValidationFlagsFunction_Once.Do(func() {
+		err = tlsClientConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		tlsClientConnectionGetValidationFlagsFunction, err = tlsClientConnectionInterface.InvokerNew("get_validation_flags")
+	})
+	return err
+}
+
+// GetValidationFlags is a representation of the C type g_tls_client_connection_get_validation_flags.
+func (recv *TlsClientConnection) GetValidationFlags() TlsCertificateFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := tlsClientConnectionGetValidationFlagsFunction_Set()
+	if err == nil {
+		ret = tlsClientConnectionGetValidationFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsCertificateFlags(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_tls_client_connection_set_server_identity' : parameter 'identity' of type 'SocketConnectable' not supported
 
@@ -6831,7 +7586,34 @@ func (recv *TlsClientConnection) SetUseSsl3(useSsl3 bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_tls_client_connection_set_validation_flags' : parameter 'flags' of type 'TlsCertificateFlags' not supported
+var tlsClientConnectionSetValidationFlagsFunction *gi.Function
+var tlsClientConnectionSetValidationFlagsFunction_Once sync.Once
+
+func tlsClientConnectionSetValidationFlagsFunction_Set() error {
+	var err error
+	tlsClientConnectionSetValidationFlagsFunction_Once.Do(func() {
+		err = tlsClientConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		tlsClientConnectionSetValidationFlagsFunction, err = tlsClientConnectionInterface.InvokerNew("set_validation_flags")
+	})
+	return err
+}
+
+// SetValidationFlags is a representation of the C type g_tls_client_connection_set_validation_flags.
+func (recv *TlsClientConnection) SetValidationFlags(flags TlsCertificateFlags) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	err := tlsClientConnectionSetValidationFlagsFunction_Set()
+	if err == nil {
+		tlsClientConnectionSetValidationFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var tlsFileDatabaseInterface *gi.Interface
 var tlsFileDatabaseInterface_Once sync.Once
@@ -7014,11 +7796,11 @@ func (recv *Volume) CanMount() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_volume_eject' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_volume_eject' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_volume_eject_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_volume_eject_with_operation' : parameter 'flags' of type 'MountUnmountFlags' not supported
+// UNSUPPORTED : C value 'g_volume_eject_with_operation' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_volume_eject_with_operation_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -7189,7 +7971,7 @@ func (recv *Volume) GetUuid() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_volume_mount' : parameter 'flags' of type 'MountMountFlags' not supported
+// UNSUPPORTED : C value 'g_volume_mount' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_volume_mount_finish' : parameter 'result' of type 'AsyncResult' not supported
 

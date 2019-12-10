@@ -3146,7 +3146,37 @@ func (recv *FontDescription) GetGravity() Gravity {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_font_description_get_set_fields' : return type 'FontMask' not supported
+var fontDescriptionGetSetFieldsFunction *gi.Function
+var fontDescriptionGetSetFieldsFunction_Once sync.Once
+
+func fontDescriptionGetSetFieldsFunction_Set() error {
+	var err error
+	fontDescriptionGetSetFieldsFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionGetSetFieldsFunction, err = fontDescriptionStruct.InvokerNew("get_set_fields")
+	})
+	return err
+}
+
+// GetSetFields is a representation of the C type pango_font_description_get_set_fields.
+func (recv *FontDescription) GetSetFields() FontMask {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fontDescriptionGetSetFieldsFunction_Set()
+	if err == nil {
+		ret = fontDescriptionGetSetFieldsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FontMask(ret.Int32())
+
+	return retGo
+}
 
 var fontDescriptionGetSizeFunction *gi.Function
 var fontDescriptionGetSizeFunction_Once sync.Once
@@ -3847,7 +3877,34 @@ func (recv *FontDescription) ToString() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_font_description_unset_fields' : parameter 'to_unset' of type 'FontMask' not supported
+var fontDescriptionUnsetFieldsFunction *gi.Function
+var fontDescriptionUnsetFieldsFunction_Once sync.Once
+
+func fontDescriptionUnsetFieldsFunction_Set() error {
+	var err error
+	fontDescriptionUnsetFieldsFunction_Once.Do(func() {
+		err = fontDescriptionStruct_Set()
+		if err != nil {
+			return
+		}
+		fontDescriptionUnsetFieldsFunction, err = fontDescriptionStruct.InvokerNew("unset_fields")
+	})
+	return err
+}
+
+// UnsetFields is a representation of the C type pango_font_description_unset_fields.
+func (recv *FontDescription) UnsetFields(toUnset FontMask) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(toUnset))
+
+	err := fontDescriptionUnsetFieldsFunction_Set()
+	if err == nil {
+		fontDescriptionUnsetFieldsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fontFaceClassStruct *gi.Struct
 var fontFaceClassStruct_Once sync.Once

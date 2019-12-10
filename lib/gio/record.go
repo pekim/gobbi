@@ -4291,9 +4291,19 @@ func (recv *DBusPropertyInfo) SetFieldSignature(value string) {
 	gi.StructFieldSet(dBusPropertyInfoStruct, recv.Native(), "signature", argValue)
 }
 
-// UNSUPPORTED : C value 'flags' : for field getter : no Go type for 'DBusPropertyInfoFlags'
+// FieldFlags returns the C field 'flags'.
+func (recv *DBusPropertyInfo) FieldFlags() DBusPropertyInfoFlags {
+	argValue := gi.StructFieldGet(dBusPropertyInfoStruct, recv.Native(), "flags")
+	value := DBusPropertyInfoFlags(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'flags' : for field setter : no Go type for 'DBusPropertyInfoFlags'
+// SetFieldFlags sets the value of the C field 'flags'.
+func (recv *DBusPropertyInfo) SetFieldFlags(value DBusPropertyInfoFlags) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(dBusPropertyInfoStruct, recv.Native(), "flags", argValue)
+}
 
 // UNSUPPORTED : C value 'annotations' : for field getter : missing Type
 
@@ -5897,9 +5907,19 @@ func (recv *FileAttributeInfo) SetFieldType(value FileAttributeType) {
 	gi.StructFieldSet(fileAttributeInfoStruct, recv.Native(), "type", argValue)
 }
 
-// UNSUPPORTED : C value 'flags' : for field getter : no Go type for 'FileAttributeInfoFlags'
+// FieldFlags returns the C field 'flags'.
+func (recv *FileAttributeInfo) FieldFlags() FileAttributeInfoFlags {
+	argValue := gi.StructFieldGet(fileAttributeInfoStruct, recv.Native(), "flags")
+	value := FileAttributeInfoFlags(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'flags' : for field setter : no Go type for 'FileAttributeInfoFlags'
+// SetFieldFlags sets the value of the C field 'flags'.
+func (recv *FileAttributeInfo) SetFieldFlags(value FileAttributeInfoFlags) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(fileAttributeInfoStruct, recv.Native(), "flags", argValue)
+}
 
 // FileAttributeInfoStruct creates an uninitialised FileAttributeInfo.
 func FileAttributeInfoStruct() *FileAttributeInfo {
@@ -6013,7 +6033,36 @@ func FileAttributeInfoListNew() *FileAttributeInfoList {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_attribute_info_list_add' : parameter 'flags' of type 'FileAttributeInfoFlags' not supported
+var fileAttributeInfoListAddFunction *gi.Function
+var fileAttributeInfoListAddFunction_Once sync.Once
+
+func fileAttributeInfoListAddFunction_Set() error {
+	var err error
+	fileAttributeInfoListAddFunction_Once.Do(func() {
+		err = fileAttributeInfoListStruct_Set()
+		if err != nil {
+			return
+		}
+		fileAttributeInfoListAddFunction, err = fileAttributeInfoListStruct.InvokerNew("add")
+	})
+	return err
+}
+
+// Add is a representation of the C type g_file_attribute_info_list_add.
+func (recv *FileAttributeInfoList) Add(name string, type_ FileAttributeType, flags FileAttributeInfoFlags) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(name)
+	inArgs[2].SetInt32(int32(type_))
+	inArgs[3].SetInt32(int32(flags))
+
+	err := fileAttributeInfoListAddFunction_Set()
+	if err == nil {
+		fileAttributeInfoListAddFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fileAttributeInfoListDupFunction *gi.Function
 var fileAttributeInfoListDupFunction_Once sync.Once
@@ -13214,13 +13263,140 @@ func (recv *Resource) Unregister() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_resource_enumerate_children' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
+var resourceEnumerateChildrenFunction *gi.Function
+var resourceEnumerateChildrenFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_resource_get_info' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
+func resourceEnumerateChildrenFunction_Set() error {
+	var err error
+	resourceEnumerateChildrenFunction_Once.Do(func() {
+		err = resourceStruct_Set()
+		if err != nil {
+			return
+		}
+		resourceEnumerateChildrenFunction, err = resourceStruct.InvokerNew("enumerate_children")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_resource_lookup_data' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
+// EnumerateChildren is a representation of the C type g_resource_enumerate_children.
+func (recv *Resource) EnumerateChildren(path string, lookupFlags ResourceLookupFlags) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(path)
+	inArgs[2].SetInt32(int32(lookupFlags))
 
-// UNSUPPORTED : C value 'g_resource_open_stream' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
+	err := resourceEnumerateChildrenFunction_Set()
+	if err == nil {
+		resourceEnumerateChildrenFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var resourceGetInfoFunction *gi.Function
+var resourceGetInfoFunction_Once sync.Once
+
+func resourceGetInfoFunction_Set() error {
+	var err error
+	resourceGetInfoFunction_Once.Do(func() {
+		err = resourceStruct_Set()
+		if err != nil {
+			return
+		}
+		resourceGetInfoFunction, err = resourceStruct.InvokerNew("get_info")
+	})
+	return err
+}
+
+// GetInfo is a representation of the C type g_resource_get_info.
+func (recv *Resource) GetInfo(path string, lookupFlags ResourceLookupFlags) (bool, uint64, uint32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(path)
+	inArgs[2].SetInt32(int32(lookupFlags))
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := resourceGetInfoFunction_Set()
+	if err == nil {
+		ret = resourceGetInfoFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Uint64()
+	out1 := outArgs[1].Uint32()
+
+	return retGo, out0, out1
+}
+
+var resourceLookupDataFunction *gi.Function
+var resourceLookupDataFunction_Once sync.Once
+
+func resourceLookupDataFunction_Set() error {
+	var err error
+	resourceLookupDataFunction_Once.Do(func() {
+		err = resourceStruct_Set()
+		if err != nil {
+			return
+		}
+		resourceLookupDataFunction, err = resourceStruct.InvokerNew("lookup_data")
+	})
+	return err
+}
+
+// LookupData is a representation of the C type g_resource_lookup_data.
+func (recv *Resource) LookupData(path string, lookupFlags ResourceLookupFlags) *glib.Bytes {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(path)
+	inArgs[2].SetInt32(int32(lookupFlags))
+
+	var ret gi.Argument
+
+	err := resourceLookupDataFunction_Set()
+	if err == nil {
+		ret = resourceLookupDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.BytesNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var resourceOpenStreamFunction *gi.Function
+var resourceOpenStreamFunction_Once sync.Once
+
+func resourceOpenStreamFunction_Set() error {
+	var err error
+	resourceOpenStreamFunction_Once.Do(func() {
+		err = resourceStruct_Set()
+		if err != nil {
+			return
+		}
+		resourceOpenStreamFunction, err = resourceStruct.InvokerNew("open_stream")
+	})
+	return err
+}
+
+// OpenStream is a representation of the C type g_resource_open_stream.
+func (recv *Resource) OpenStream(path string, lookupFlags ResourceLookupFlags) *InputStream {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(path)
+	inArgs[2].SetInt32(int32(lookupFlags))
+
+	var ret gi.Argument
+
+	err := resourceOpenStreamFunction_Set()
+	if err == nil {
+		ret = resourceOpenStreamFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := InputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var resourceRefFunction *gi.Function
 var resourceRefFunction_Once sync.Once

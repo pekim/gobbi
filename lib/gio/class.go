@@ -398,7 +398,40 @@ func (recv *Application) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_application_new' : parameter 'flags' of type 'ApplicationFlags' not supported
+var applicationNewFunction *gi.Function
+var applicationNewFunction_Once sync.Once
+
+func applicationNewFunction_Set() error {
+	var err error
+	applicationNewFunction_Once.Do(func() {
+		err = applicationObject_Set()
+		if err != nil {
+			return
+		}
+		applicationNewFunction, err = applicationObject.InvokerNew("new")
+	})
+	return err
+}
+
+// ApplicationNew is a representation of the C type g_application_new.
+func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(applicationId)
+	inArgs[1].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := applicationNewFunction_Set()
+	if err == nil {
+		ret = applicationNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ApplicationNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var applicationActivateFunction *gi.Function
 var applicationActivateFunction_Once sync.Once
@@ -587,7 +620,37 @@ func (recv *Application) GetDbusObjectPath() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_application_get_flags' : return type 'ApplicationFlags' not supported
+var applicationGetFlagsFunction *gi.Function
+var applicationGetFlagsFunction_Once sync.Once
+
+func applicationGetFlagsFunction_Set() error {
+	var err error
+	applicationGetFlagsFunction_Once.Do(func() {
+		err = applicationObject_Set()
+		if err != nil {
+			return
+		}
+		applicationGetFlagsFunction, err = applicationObject.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type g_application_get_flags.
+func (recv *Application) GetFlags() ApplicationFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := applicationGetFlagsFunction_Set()
+	if err == nil {
+		ret = applicationGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ApplicationFlags(ret.Int32())
+
+	return retGo
+}
 
 var applicationGetInactivityTimeoutFunction *gi.Function
 var applicationGetInactivityTimeoutFunction_Once sync.Once
@@ -987,7 +1050,34 @@ func (recv *Application) SetDefault() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_application_set_flags' : parameter 'flags' of type 'ApplicationFlags' not supported
+var applicationSetFlagsFunction *gi.Function
+var applicationSetFlagsFunction_Once sync.Once
+
+func applicationSetFlagsFunction_Set() error {
+	var err error
+	applicationSetFlagsFunction_Once.Do(func() {
+		err = applicationObject_Set()
+		if err != nil {
+			return
+		}
+		applicationSetFlagsFunction, err = applicationObject.InvokerNew("set_flags")
+	})
+	return err
+}
+
+// SetFlags is a representation of the C type g_application_set_flags.
+func (recv *Application) SetFlags(flags ApplicationFlags) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	err := applicationSetFlagsFunction_Set()
+	if err == nil {
+		applicationSetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var applicationSetInactivityTimeoutFunction *gi.Function
 var applicationSetInactivityTimeoutFunction_Once sync.Once
@@ -3868,23 +3958,175 @@ func (recv *DBusConnection) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_dbus_connection_new_for_address_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_connection_new_for_address_sync' : parameter 'flags' of type 'DBusConnectionFlags' not supported
+var dBusConnectionNewForAddressSyncFunction *gi.Function
+var dBusConnectionNewForAddressSyncFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_dbus_connection_new_sync' : parameter 'flags' of type 'DBusConnectionFlags' not supported
+func dBusConnectionNewForAddressSyncFunction_Set() error {
+	var err error
+	dBusConnectionNewForAddressSyncFunction_Once.Do(func() {
+		err = dBusConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionNewForAddressSyncFunction, err = dBusConnectionObject.InvokerNew("new_for_address_sync")
+	})
+	return err
+}
+
+// DBusConnectionNewForAddressSync is a representation of the C type g_dbus_connection_new_for_address_sync.
+func DBusConnectionNewForAddressSync(address string, flags DBusConnectionFlags, observer *DBusAuthObserver, cancellable *Cancellable) *DBusConnection {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(address)
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetPointer(observer.Native())
+	inArgs[3].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := dBusConnectionNewForAddressSyncFunction_Set()
+	if err == nil {
+		ret = dBusConnectionNewForAddressSyncFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusConnectionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
+
+var dBusConnectionNewSyncFunction *gi.Function
+var dBusConnectionNewSyncFunction_Once sync.Once
+
+func dBusConnectionNewSyncFunction_Set() error {
+	var err error
+	dBusConnectionNewSyncFunction_Once.Do(func() {
+		err = dBusConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionNewSyncFunction, err = dBusConnectionObject.InvokerNew("new_sync")
+	})
+	return err
+}
+
+// DBusConnectionNewSync is a representation of the C type g_dbus_connection_new_sync.
+func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFlags, observer *DBusAuthObserver, cancellable *Cancellable) *DBusConnection {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(stream.Native())
+	inArgs[1].SetString(guid)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(observer.Native())
+	inArgs[4].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := dBusConnectionNewSyncFunction_Set()
+	if err == nil {
+		ret = dBusConnectionNewSyncFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusConnectionNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_dbus_connection_add_filter' : parameter 'filter_function' of type 'DBusMessageFilterFunction' not supported
 
-// UNSUPPORTED : C value 'g_dbus_connection_call' : parameter 'flags' of type 'DBusCallFlags' not supported
+// UNSUPPORTED : C value 'g_dbus_connection_call' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_dbus_connection_call_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_connection_call_sync' : parameter 'flags' of type 'DBusCallFlags' not supported
+var dBusConnectionCallSyncFunction *gi.Function
+var dBusConnectionCallSyncFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_dbus_connection_call_with_unix_fd_list' : parameter 'flags' of type 'DBusCallFlags' not supported
+func dBusConnectionCallSyncFunction_Set() error {
+	var err error
+	dBusConnectionCallSyncFunction_Once.Do(func() {
+		err = dBusConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionCallSyncFunction, err = dBusConnectionObject.InvokerNew("call_sync")
+	})
+	return err
+}
+
+// CallSync is a representation of the C type g_dbus_connection_call_sync.
+func (recv *DBusConnection) CallSync(busName string, objectPath string, interfaceName string, methodName string, parameters *glib.Variant, replyType *glib.VariantType, flags DBusCallFlags, timeoutMsec int32, cancellable *Cancellable) *glib.Variant {
+	var inArgs [10]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(busName)
+	inArgs[2].SetString(objectPath)
+	inArgs[3].SetString(interfaceName)
+	inArgs[4].SetString(methodName)
+	inArgs[5].SetPointer(parameters.Native())
+	inArgs[6].SetPointer(replyType.Native())
+	inArgs[7].SetInt32(int32(flags))
+	inArgs[8].SetInt32(timeoutMsec)
+	inArgs[9].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := dBusConnectionCallSyncFunction_Set()
+	if err == nil {
+		ret = dBusConnectionCallSyncFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_connection_call_with_unix_fd_list' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_dbus_connection_call_with_unix_fd_list_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_connection_call_with_unix_fd_list_sync' : parameter 'flags' of type 'DBusCallFlags' not supported
+var dBusConnectionCallWithUnixFdListSyncFunction *gi.Function
+var dBusConnectionCallWithUnixFdListSyncFunction_Once sync.Once
+
+func dBusConnectionCallWithUnixFdListSyncFunction_Set() error {
+	var err error
+	dBusConnectionCallWithUnixFdListSyncFunction_Once.Do(func() {
+		err = dBusConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionCallWithUnixFdListSyncFunction, err = dBusConnectionObject.InvokerNew("call_with_unix_fd_list_sync")
+	})
+	return err
+}
+
+// CallWithUnixFdListSync is a representation of the C type g_dbus_connection_call_with_unix_fd_list_sync.
+func (recv *DBusConnection) CallWithUnixFdListSync(busName string, objectPath string, interfaceName string, methodName string, parameters *glib.Variant, replyType *glib.VariantType, flags DBusCallFlags, timeoutMsec int32, fdList *UnixFDList, cancellable *Cancellable) (*glib.Variant, *UnixFDList) {
+	var inArgs [11]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(busName)
+	inArgs[2].SetString(objectPath)
+	inArgs[3].SetString(interfaceName)
+	inArgs[4].SetString(methodName)
+	inArgs[5].SetPointer(parameters.Native())
+	inArgs[6].SetPointer(replyType.Native())
+	inArgs[7].SetInt32(int32(flags))
+	inArgs[8].SetInt32(timeoutMsec)
+	inArgs[9].SetPointer(fdList.Native())
+	inArgs[10].SetPointer(cancellable.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := dBusConnectionCallWithUnixFdListSyncFunction_Set()
+	if err == nil {
+		ret = dBusConnectionCallWithUnixFdListSyncFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+	out0 := UnixFDListNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 // UNSUPPORTED : C value 'g_dbus_connection_close' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
@@ -4033,7 +4275,37 @@ func (recv *DBusConnection) FlushSync(cancellable *Cancellable) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_connection_get_capabilities' : return type 'DBusCapabilityFlags' not supported
+var dBusConnectionGetCapabilitiesFunction *gi.Function
+var dBusConnectionGetCapabilitiesFunction_Once sync.Once
+
+func dBusConnectionGetCapabilitiesFunction_Set() error {
+	var err error
+	dBusConnectionGetCapabilitiesFunction_Once.Do(func() {
+		err = dBusConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionGetCapabilitiesFunction, err = dBusConnectionObject.InvokerNew("get_capabilities")
+	})
+	return err
+}
+
+// GetCapabilities is a representation of the C type g_dbus_connection_get_capabilities.
+func (recv *DBusConnection) GetCapabilities() DBusCapabilityFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dBusConnectionGetCapabilitiesFunction_Set()
+	if err == nil {
+		ret = dBusConnectionGetCapabilitiesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusCapabilityFlags(ret.Int32())
+
+	return retGo
+}
 
 var dBusConnectionGetExitOnCloseFunction *gi.Function
 var dBusConnectionGetExitOnCloseFunction_Once sync.Once
@@ -4067,7 +4339,37 @@ func (recv *DBusConnection) GetExitOnClose() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_connection_get_flags' : return type 'DBusConnectionFlags' not supported
+var dBusConnectionGetFlagsFunction *gi.Function
+var dBusConnectionGetFlagsFunction_Once sync.Once
+
+func dBusConnectionGetFlagsFunction_Set() error {
+	var err error
+	dBusConnectionGetFlagsFunction_Once.Do(func() {
+		err = dBusConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionGetFlagsFunction, err = dBusConnectionObject.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type g_dbus_connection_get_flags.
+func (recv *DBusConnection) GetFlags() DBusConnectionFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dBusConnectionGetFlagsFunction_Set()
+	if err == nil {
+		ret = dBusConnectionGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusConnectionFlags(ret.Int32())
+
+	return retGo
+}
 
 var dBusConnectionGetGuidFunction *gi.Function
 var dBusConnectionGetGuidFunction_Once sync.Once
@@ -4300,7 +4602,7 @@ func (recv *DBusConnection) RegisterObjectWithClosures(objectPath string, interf
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_connection_register_subtree' : parameter 'flags' of type 'DBusSubtreeFlags' not supported
+// UNSUPPORTED : C value 'g_dbus_connection_register_subtree' : parameter 'user_data' of type 'gpointer' not supported
 
 var dBusConnectionRemoveFilterFunction *gi.Function
 var dBusConnectionRemoveFilterFunction_Once sync.Once
@@ -4331,13 +4633,83 @@ func (recv *DBusConnection) RemoveFilter(filterId uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_dbus_connection_send_message' : parameter 'flags' of type 'DBusSendMessageFlags' not supported
+var dBusConnectionSendMessageFunction *gi.Function
+var dBusConnectionSendMessageFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_dbus_connection_send_message_with_reply' : parameter 'flags' of type 'DBusSendMessageFlags' not supported
+func dBusConnectionSendMessageFunction_Set() error {
+	var err error
+	dBusConnectionSendMessageFunction_Once.Do(func() {
+		err = dBusConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionSendMessageFunction, err = dBusConnectionObject.InvokerNew("send_message")
+	})
+	return err
+}
+
+// SendMessage is a representation of the C type g_dbus_connection_send_message.
+func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMessageFlags) (bool, uint32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(message.Native())
+	inArgs[2].SetInt32(int32(flags))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := dBusConnectionSendMessageFunction_Set()
+	if err == nil {
+		ret = dBusConnectionSendMessageFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Uint32()
+
+	return retGo, out0
+}
+
+// UNSUPPORTED : C value 'g_dbus_connection_send_message_with_reply' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_dbus_connection_send_message_with_reply_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_connection_send_message_with_reply_sync' : parameter 'flags' of type 'DBusSendMessageFlags' not supported
+var dBusConnectionSendMessageWithReplySyncFunction *gi.Function
+var dBusConnectionSendMessageWithReplySyncFunction_Once sync.Once
+
+func dBusConnectionSendMessageWithReplySyncFunction_Set() error {
+	var err error
+	dBusConnectionSendMessageWithReplySyncFunction_Once.Do(func() {
+		err = dBusConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		dBusConnectionSendMessageWithReplySyncFunction, err = dBusConnectionObject.InvokerNew("send_message_with_reply_sync")
+	})
+	return err
+}
+
+// SendMessageWithReplySync is a representation of the C type g_dbus_connection_send_message_with_reply_sync.
+func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags DBusSendMessageFlags, timeoutMsec int32, cancellable *Cancellable) (*DBusMessage, uint32) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(message.Native())
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetInt32(timeoutMsec)
+	inArgs[4].SetPointer(cancellable.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := dBusConnectionSendMessageWithReplySyncFunction_Set()
+	if err == nil {
+		ret = dBusConnectionSendMessageWithReplySyncFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := DBusMessageNewFromNative(ret.Pointer())
+	out0 := outArgs[0].Uint32()
+
+	return retGo, out0
+}
 
 var dBusConnectionSetExitOnCloseFunction *gi.Function
 var dBusConnectionSetExitOnCloseFunction_Once sync.Once
@@ -4368,7 +4740,7 @@ func (recv *DBusConnection) SetExitOnClose(exitOnClose bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_dbus_connection_signal_subscribe' : parameter 'flags' of type 'DBusSignalFlags' not supported
+// UNSUPPORTED : C value 'g_dbus_connection_signal_subscribe' : parameter 'callback' of type 'DBusSignalCallback' not supported
 
 var dBusConnectionSignalUnsubscribeFunction *gi.Function
 var dBusConnectionSignalUnsubscribeFunction_Once sync.Once
@@ -4773,7 +5145,37 @@ func (recv *DBusInterfaceSkeleton) GetConnections() *glib.List {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_interface_skeleton_get_flags' : return type 'DBusInterfaceSkeletonFlags' not supported
+var dBusInterfaceSkeletonGetFlagsFunction *gi.Function
+var dBusInterfaceSkeletonGetFlagsFunction_Once sync.Once
+
+func dBusInterfaceSkeletonGetFlagsFunction_Set() error {
+	var err error
+	dBusInterfaceSkeletonGetFlagsFunction_Once.Do(func() {
+		err = dBusInterfaceSkeletonObject_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceSkeletonGetFlagsFunction, err = dBusInterfaceSkeletonObject.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type g_dbus_interface_skeleton_get_flags.
+func (recv *DBusInterfaceSkeleton) GetFlags() DBusInterfaceSkeletonFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dBusInterfaceSkeletonGetFlagsFunction_Set()
+	if err == nil {
+		ret = dBusInterfaceSkeletonGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusInterfaceSkeletonFlags(ret.Int32())
+
+	return retGo
+}
 
 var dBusInterfaceSkeletonGetInfoFunction *gi.Function
 var dBusInterfaceSkeletonGetInfoFunction_Once sync.Once
@@ -4936,7 +5338,34 @@ func (recv *DBusInterfaceSkeleton) HasConnection(connection *DBusConnection) boo
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_interface_skeleton_set_flags' : parameter 'flags' of type 'DBusInterfaceSkeletonFlags' not supported
+var dBusInterfaceSkeletonSetFlagsFunction *gi.Function
+var dBusInterfaceSkeletonSetFlagsFunction_Once sync.Once
+
+func dBusInterfaceSkeletonSetFlagsFunction_Set() error {
+	var err error
+	dBusInterfaceSkeletonSetFlagsFunction_Once.Do(func() {
+		err = dBusInterfaceSkeletonObject_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceSkeletonSetFlagsFunction, err = dBusInterfaceSkeletonObject.InvokerNew("set_flags")
+	})
+	return err
+}
+
+// SetFlags is a representation of the C type g_dbus_interface_skeleton_set_flags.
+func (recv *DBusInterfaceSkeleton) SetFlags(flags DBusInterfaceSkeletonFlags) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	err := dBusInterfaceSkeletonSetFlagsFunction_Set()
+	if err == nil {
+		dBusInterfaceSkeletonSetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dBusInterfaceSkeletonUnexportFunction *gi.Function
 var dBusInterfaceSkeletonUnexportFunction_Once sync.Once
@@ -5436,7 +5865,37 @@ func (recv *DBusMessage) GetErrorName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_message_get_flags' : return type 'DBusMessageFlags' not supported
+var dBusMessageGetFlagsFunction *gi.Function
+var dBusMessageGetFlagsFunction_Once sync.Once
+
+func dBusMessageGetFlagsFunction_Set() error {
+	var err error
+	dBusMessageGetFlagsFunction_Once.Do(func() {
+		err = dBusMessageObject_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageGetFlagsFunction, err = dBusMessageObject.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type g_dbus_message_get_flags.
+func (recv *DBusMessage) GetFlags() DBusMessageFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dBusMessageGetFlagsFunction_Set()
+	if err == nil {
+		ret = dBusMessageGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusMessageFlags(ret.Int32())
+
+	return retGo
+}
 
 var dBusMessageGetHeaderFunction *gi.Function
 var dBusMessageGetHeaderFunction_Once sync.Once
@@ -6098,7 +6557,34 @@ func (recv *DBusMessage) SetErrorName(value string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_dbus_message_set_flags' : parameter 'flags' of type 'DBusMessageFlags' not supported
+var dBusMessageSetFlagsFunction *gi.Function
+var dBusMessageSetFlagsFunction_Once sync.Once
+
+func dBusMessageSetFlagsFunction_Set() error {
+	var err error
+	dBusMessageSetFlagsFunction_Once.Do(func() {
+		err = dBusMessageObject_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageSetFlagsFunction, err = dBusMessageObject.InvokerNew("set_flags")
+	})
+	return err
+}
+
+// SetFlags is a representation of the C type g_dbus_message_set_flags.
+func (recv *DBusMessage) SetFlags(flags DBusMessageFlags) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	err := dBusMessageSetFlagsFunction_Set()
+	if err == nil {
+		dBusMessageSetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dBusMessageSetHeaderFunction *gi.Function
 var dBusMessageSetHeaderFunction_Once sync.Once
@@ -6420,7 +6906,38 @@ func (recv *DBusMessage) SetUnixFdList(fdList *UnixFDList) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_dbus_message_to_blob' : parameter 'capabilities' of type 'DBusCapabilityFlags' not supported
+var dBusMessageToBlobFunction *gi.Function
+var dBusMessageToBlobFunction_Once sync.Once
+
+func dBusMessageToBlobFunction_Set() error {
+	var err error
+	dBusMessageToBlobFunction_Once.Do(func() {
+		err = dBusMessageObject_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageToBlobFunction, err = dBusMessageObject.InvokerNew("to_blob")
+	})
+	return err
+}
+
+// ToBlob is a representation of the C type g_dbus_message_to_blob.
+func (recv *DBusMessage) ToBlob(capabilities DBusCapabilityFlags) uint64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(capabilities))
+
+	var outArgs [1]gi.Argument
+
+	err := dBusMessageToBlobFunction_Set()
+	if err == nil {
+		dBusMessageToBlobFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0
+}
 
 var dBusMessageToGerrorFunction *gi.Function
 var dBusMessageToGerrorFunction_Once sync.Once
@@ -7040,9 +7557,9 @@ func (recv *DBusObjectManagerClient) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_dbus_object_manager_client_new_for_bus_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_object_manager_client_new_for_bus_sync' : parameter 'flags' of type 'DBusObjectManagerClientFlags' not supported
+// UNSUPPORTED : C value 'g_dbus_object_manager_client_new_for_bus_sync' : parameter 'get_proxy_type_func' of type 'DBusProxyTypeFunc' not supported
 
-// UNSUPPORTED : C value 'g_dbus_object_manager_client_new_sync' : parameter 'flags' of type 'DBusObjectManagerClientFlags' not supported
+// UNSUPPORTED : C value 'g_dbus_object_manager_client_new_sync' : parameter 'get_proxy_type_func' of type 'DBusProxyTypeFunc' not supported
 
 var dBusObjectManagerClientGetConnectionFunction *gi.Function
 var dBusObjectManagerClientGetConnectionFunction_Once sync.Once
@@ -7076,7 +7593,37 @@ func (recv *DBusObjectManagerClient) GetConnection() *DBusConnection {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_object_manager_client_get_flags' : return type 'DBusObjectManagerClientFlags' not supported
+var dBusObjectManagerClientGetFlagsFunction *gi.Function
+var dBusObjectManagerClientGetFlagsFunction_Once sync.Once
+
+func dBusObjectManagerClientGetFlagsFunction_Set() error {
+	var err error
+	dBusObjectManagerClientGetFlagsFunction_Once.Do(func() {
+		err = dBusObjectManagerClientObject_Set()
+		if err != nil {
+			return
+		}
+		dBusObjectManagerClientGetFlagsFunction, err = dBusObjectManagerClientObject.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type g_dbus_object_manager_client_get_flags.
+func (recv *DBusObjectManagerClient) GetFlags() DBusObjectManagerClientFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dBusObjectManagerClientGetFlagsFunction_Set()
+	if err == nil {
+		ret = dBusObjectManagerClientGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusObjectManagerClientFlags(ret.Int32())
+
+	return retGo
+}
 
 var dBusObjectManagerClientGetNameFunction *gi.Function
 var dBusObjectManagerClientGetNameFunction_Once sync.Once
@@ -7924,21 +8471,170 @@ func (recv *DBusProxy) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_dbus_proxy_new_for_bus_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_proxy_new_for_bus_sync' : parameter 'flags' of type 'DBusProxyFlags' not supported
+var dBusProxyNewForBusSyncFunction *gi.Function
+var dBusProxyNewForBusSyncFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_dbus_proxy_new_sync' : parameter 'flags' of type 'DBusProxyFlags' not supported
+func dBusProxyNewForBusSyncFunction_Set() error {
+	var err error
+	dBusProxyNewForBusSyncFunction_Once.Do(func() {
+		err = dBusProxyObject_Set()
+		if err != nil {
+			return
+		}
+		dBusProxyNewForBusSyncFunction, err = dBusProxyObject.InvokerNew("new_for_bus_sync")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_dbus_proxy_call' : parameter 'flags' of type 'DBusCallFlags' not supported
+// DBusProxyNewForBusSync is a representation of the C type g_dbus_proxy_new_for_bus_sync.
+func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInterfaceInfo, name string, objectPath string, interfaceName string, cancellable *Cancellable) *DBusProxy {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetInt32(int32(busType))
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetPointer(info.Native())
+	inArgs[3].SetString(name)
+	inArgs[4].SetString(objectPath)
+	inArgs[5].SetString(interfaceName)
+	inArgs[6].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := dBusProxyNewForBusSyncFunction_Set()
+	if err == nil {
+		ret = dBusProxyNewForBusSyncFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusProxyNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
+
+var dBusProxyNewSyncFunction *gi.Function
+var dBusProxyNewSyncFunction_Once sync.Once
+
+func dBusProxyNewSyncFunction_Set() error {
+	var err error
+	dBusProxyNewSyncFunction_Once.Do(func() {
+		err = dBusProxyObject_Set()
+		if err != nil {
+			return
+		}
+		dBusProxyNewSyncFunction, err = dBusProxyObject.InvokerNew("new_sync")
+	})
+	return err
+}
+
+// DBusProxyNewSync is a representation of the C type g_dbus_proxy_new_sync.
+func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DBusInterfaceInfo, name string, objectPath string, interfaceName string, cancellable *Cancellable) *DBusProxy {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(connection.Native())
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetPointer(info.Native())
+	inArgs[3].SetString(name)
+	inArgs[4].SetString(objectPath)
+	inArgs[5].SetString(interfaceName)
+	inArgs[6].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := dBusProxyNewSyncFunction_Set()
+	if err == nil {
+		ret = dBusProxyNewSyncFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusProxyNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_proxy_call' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_dbus_proxy_call_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_proxy_call_sync' : parameter 'flags' of type 'DBusCallFlags' not supported
+var dBusProxyCallSyncFunction *gi.Function
+var dBusProxyCallSyncFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_dbus_proxy_call_with_unix_fd_list' : parameter 'flags' of type 'DBusCallFlags' not supported
+func dBusProxyCallSyncFunction_Set() error {
+	var err error
+	dBusProxyCallSyncFunction_Once.Do(func() {
+		err = dBusProxyObject_Set()
+		if err != nil {
+			return
+		}
+		dBusProxyCallSyncFunction, err = dBusProxyObject.InvokerNew("call_sync")
+	})
+	return err
+}
+
+// CallSync is a representation of the C type g_dbus_proxy_call_sync.
+func (recv *DBusProxy) CallSync(methodName string, parameters *glib.Variant, flags DBusCallFlags, timeoutMsec int32, cancellable *Cancellable) *glib.Variant {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(methodName)
+	inArgs[2].SetPointer(parameters.Native())
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetInt32(timeoutMsec)
+	inArgs[5].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := dBusProxyCallSyncFunction_Set()
+	if err == nil {
+		ret = dBusProxyCallSyncFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dbus_proxy_call_with_unix_fd_list' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_dbus_proxy_call_with_unix_fd_list_finish' : parameter 'res' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_dbus_proxy_call_with_unix_fd_list_sync' : parameter 'flags' of type 'DBusCallFlags' not supported
+var dBusProxyCallWithUnixFdListSyncFunction *gi.Function
+var dBusProxyCallWithUnixFdListSyncFunction_Once sync.Once
+
+func dBusProxyCallWithUnixFdListSyncFunction_Set() error {
+	var err error
+	dBusProxyCallWithUnixFdListSyncFunction_Once.Do(func() {
+		err = dBusProxyObject_Set()
+		if err != nil {
+			return
+		}
+		dBusProxyCallWithUnixFdListSyncFunction, err = dBusProxyObject.InvokerNew("call_with_unix_fd_list_sync")
+	})
+	return err
+}
+
+// CallWithUnixFdListSync is a representation of the C type g_dbus_proxy_call_with_unix_fd_list_sync.
+func (recv *DBusProxy) CallWithUnixFdListSync(methodName string, parameters *glib.Variant, flags DBusCallFlags, timeoutMsec int32, fdList *UnixFDList, cancellable *Cancellable) (*glib.Variant, *UnixFDList) {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(methodName)
+	inArgs[2].SetPointer(parameters.Native())
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetInt32(timeoutMsec)
+	inArgs[5].SetPointer(fdList.Native())
+	inArgs[6].SetPointer(cancellable.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := dBusProxyCallWithUnixFdListSyncFunction_Set()
+	if err == nil {
+		ret = dBusProxyCallWithUnixFdListSyncFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := glib.VariantNewFromNative(ret.Pointer())
+	out0 := UnixFDListNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var dBusProxyGetCachedPropertyFunction *gi.Function
 var dBusProxyGetCachedPropertyFunction_Once sync.Once
@@ -8065,7 +8761,37 @@ func (recv *DBusProxy) GetDefaultTimeout() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_proxy_get_flags' : return type 'DBusProxyFlags' not supported
+var dBusProxyGetFlagsFunction *gi.Function
+var dBusProxyGetFlagsFunction_Once sync.Once
+
+func dBusProxyGetFlagsFunction_Set() error {
+	var err error
+	dBusProxyGetFlagsFunction_Once.Do(func() {
+		err = dBusProxyObject_Set()
+		if err != nil {
+			return
+		}
+		dBusProxyGetFlagsFunction, err = dBusProxyObject.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type g_dbus_proxy_get_flags.
+func (recv *DBusProxy) GetFlags() DBusProxyFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dBusProxyGetFlagsFunction_Set()
+	if err == nil {
+		ret = dBusProxyGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusProxyFlags(ret.Int32())
+
+	return retGo
+}
 
 var dBusProxyGetInterfaceInfoFunction *gi.Function
 var dBusProxyGetInterfaceInfoFunction_Once sync.Once
@@ -8421,7 +9147,43 @@ func (recv *DBusServer) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_dbus_server_new_sync' : parameter 'flags' of type 'DBusServerFlags' not supported
+var dBusServerNewSyncFunction *gi.Function
+var dBusServerNewSyncFunction_Once sync.Once
+
+func dBusServerNewSyncFunction_Set() error {
+	var err error
+	dBusServerNewSyncFunction_Once.Do(func() {
+		err = dBusServerObject_Set()
+		if err != nil {
+			return
+		}
+		dBusServerNewSyncFunction, err = dBusServerObject.InvokerNew("new_sync")
+	})
+	return err
+}
+
+// DBusServerNewSync is a representation of the C type g_dbus_server_new_sync.
+func DBusServerNewSync(address string, flags DBusServerFlags, guid string, observer *DBusAuthObserver, cancellable *Cancellable) *DBusServer {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(address)
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetString(guid)
+	inArgs[3].SetPointer(observer.Native())
+	inArgs[4].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := dBusServerNewSyncFunction_Set()
+	if err == nil {
+		ret = dBusServerNewSyncFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusServerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var dBusServerGetClientAddressFunction *gi.Function
 var dBusServerGetClientAddressFunction_Once sync.Once
@@ -8455,7 +9217,37 @@ func (recv *DBusServer) GetClientAddress() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_server_get_flags' : return type 'DBusServerFlags' not supported
+var dBusServerGetFlagsFunction *gi.Function
+var dBusServerGetFlagsFunction_Once sync.Once
+
+func dBusServerGetFlagsFunction_Set() error {
+	var err error
+	dBusServerGetFlagsFunction_Once.Do(func() {
+		err = dBusServerObject_Set()
+		if err != nil {
+			return
+		}
+		dBusServerGetFlagsFunction, err = dBusServerObject.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type g_dbus_server_get_flags.
+func (recv *DBusServer) GetFlags() DBusServerFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dBusServerGetFlagsFunction_Set()
+	if err == nil {
+		ret = dBusServerGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusServerFlags(ret.Int32())
+
+	return retGo
+}
 
 var dBusServerGetGuidFunction *gi.Function
 var dBusServerGetGuidFunction_Once sync.Once
@@ -14406,7 +15198,7 @@ func (recv *IOStream) SetPending() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_stream_splice_async' : parameter 'flags' of type 'IOStreamSpliceFlags' not supported
+// UNSUPPORTED : C value 'g_io_stream_splice_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 var inetAddressObject *gi.Object
 var inetAddressObject_Once sync.Once
@@ -19079,7 +19871,33 @@ func (recv *MountOperation) ConnectAborted(handler func(instance *MountOperation
 	return callback.ConnectSignal(recv.Native(), "aborted", marshal)
 }
 
-// UNSUPPORTED : C value 'ask-password' : parameter 'flags' of type 'AskPasswordFlags' not supported
+/*
+ConnectAskPassword connects a callback to the 'ask-password' signal of the MountOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MountOperation) ConnectAskPassword(handler func(instance *MountOperation, message string, defaultUser string, defaultDomain string, flags AskPasswordFlags)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := MountOperationNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetString()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetString()
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := object3.GetString()
+
+		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
+		arg4 := (AskPasswordFlags)(object4.GetInt())
+
+		handler(argInstance, arg1, arg2, arg3, arg4)
+	}
+
+	return callback.ConnectSignal(recv.Native(), "ask-password", marshal)
+}
 
 // UNSUPPORTED : C value 'ask-question' : parameter 'choices' of type 'nil' not supported
 
@@ -20431,9 +21249,42 @@ func (recv *OutputStream) SetPending() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_output_stream_splice' : parameter 'flags' of type 'OutputStreamSpliceFlags' not supported
+var outputStreamSpliceFunction *gi.Function
+var outputStreamSpliceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_output_stream_splice_async' : parameter 'flags' of type 'OutputStreamSpliceFlags' not supported
+func outputStreamSpliceFunction_Set() error {
+	var err error
+	outputStreamSpliceFunction_Once.Do(func() {
+		err = outputStreamObject_Set()
+		if err != nil {
+			return
+		}
+		outputStreamSpliceFunction, err = outputStreamObject.InvokerNew("splice")
+	})
+	return err
+}
+
+// Splice is a representation of the C type g_output_stream_splice.
+func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFlags, cancellable *Cancellable) int32 {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(source.Native())
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := outputStreamSpliceFunction_Set()
+	if err == nil {
+		ret = outputStreamSpliceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_output_stream_splice_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_output_stream_splice_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -21434,9 +22285,42 @@ func (recv *Resolver) LookupByName(hostname string, cancellable *Cancellable) *g
 
 // UNSUPPORTED : C value 'g_resolver_lookup_by_name_finish' : parameter 'result' of type 'AsyncResult' not supported
 
-// UNSUPPORTED : C value 'g_resolver_lookup_by_name_with_flags' : parameter 'flags' of type 'ResolverNameLookupFlags' not supported
+var resolverLookupByNameWithFlagsFunction *gi.Function
+var resolverLookupByNameWithFlagsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_resolver_lookup_by_name_with_flags_async' : parameter 'flags' of type 'ResolverNameLookupFlags' not supported
+func resolverLookupByNameWithFlagsFunction_Set() error {
+	var err error
+	resolverLookupByNameWithFlagsFunction_Once.Do(func() {
+		err = resolverObject_Set()
+		if err != nil {
+			return
+		}
+		resolverLookupByNameWithFlagsFunction, err = resolverObject.InvokerNew("lookup_by_name_with_flags")
+	})
+	return err
+}
+
+// LookupByNameWithFlags is a representation of the C type g_resolver_lookup_by_name_with_flags.
+func (recv *Resolver) LookupByNameWithFlags(hostname string, flags ResolverNameLookupFlags, cancellable *Cancellable) *glib.List {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(hostname)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := resolverLookupByNameWithFlagsFunction_Set()
+	if err == nil {
+		ret = resolverLookupByNameWithFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_resolver_lookup_by_name_with_flags_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_resolver_lookup_by_name_with_flags_finish' : parameter 'result' of type 'AsyncResult' not supported
 
@@ -21859,9 +22743,39 @@ func (recv *Settings) Apply() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_settings_bind' : parameter 'flags' of type 'SettingsBindFlags' not supported
+var settingsBindFunction *gi.Function
+var settingsBindFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_settings_bind_with_mapping' : parameter 'flags' of type 'SettingsBindFlags' not supported
+func settingsBindFunction_Set() error {
+	var err error
+	settingsBindFunction_Once.Do(func() {
+		err = settingsObject_Set()
+		if err != nil {
+			return
+		}
+		settingsBindFunction, err = settingsObject.InvokerNew("bind")
+	})
+	return err
+}
+
+// Bind is a representation of the C type g_settings_bind.
+func (recv *Settings) Bind(key string, object_ *gobject.Object, property string, flags SettingsBindFlags) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(key)
+	inArgs[2].SetPointer(object_.Native())
+	inArgs[3].SetString(property)
+	inArgs[4].SetInt32(int32(flags))
+
+	err := settingsBindFunction_Set()
+	if err == nil {
+		settingsBindFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_settings_bind_with_mapping' : parameter 'get_mapping' of type 'SettingsBindGetMapping' not supported
 
 var settingsBindWritableFunction *gi.Function
 var settingsBindWritableFunction_Once sync.Once
@@ -26561,7 +27475,37 @@ func (recv *SocketClient) GetTls() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_socket_client_get_tls_validation_flags' : return type 'TlsCertificateFlags' not supported
+var socketClientGetTlsValidationFlagsFunction *gi.Function
+var socketClientGetTlsValidationFlagsFunction_Once sync.Once
+
+func socketClientGetTlsValidationFlagsFunction_Set() error {
+	var err error
+	socketClientGetTlsValidationFlagsFunction_Once.Do(func() {
+		err = socketClientObject_Set()
+		if err != nil {
+			return
+		}
+		socketClientGetTlsValidationFlagsFunction, err = socketClientObject.InvokerNew("get_tls_validation_flags")
+	})
+	return err
+}
+
+// GetTlsValidationFlags is a representation of the C type g_socket_client_get_tls_validation_flags.
+func (recv *SocketClient) GetTlsValidationFlags() TlsCertificateFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := socketClientGetTlsValidationFlagsFunction_Set()
+	if err == nil {
+		ret = socketClientGetTlsValidationFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsCertificateFlags(ret.Int32())
+
+	return retGo
+}
 
 var socketClientSetEnableProxyFunction *gi.Function
 var socketClientSetEnableProxyFunction_Once sync.Once
@@ -26768,7 +27712,34 @@ func (recv *SocketClient) SetTls(tls bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_socket_client_set_tls_validation_flags' : parameter 'flags' of type 'TlsCertificateFlags' not supported
+var socketClientSetTlsValidationFlagsFunction *gi.Function
+var socketClientSetTlsValidationFlagsFunction_Once sync.Once
+
+func socketClientSetTlsValidationFlagsFunction_Set() error {
+	var err error
+	socketClientSetTlsValidationFlagsFunction_Once.Do(func() {
+		err = socketClientObject_Set()
+		if err != nil {
+			return
+		}
+		socketClientSetTlsValidationFlagsFunction, err = socketClientObject.InvokerNew("set_tls_validation_flags")
+	})
+	return err
+}
+
+// SetTlsValidationFlags is a representation of the C type g_socket_client_set_tls_validation_flags.
+func (recv *SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	err := socketClientSetTlsValidationFlagsFunction_Set()
+	if err == nil {
+		socketClientSetTlsValidationFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'event' : parameter 'connectable' of type 'SocketConnectable' not supported
 
@@ -27921,7 +28892,7 @@ func (recv *Subprocess) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_subprocess_new' : parameter 'flags' of type 'SubprocessFlags' not supported
+// UNSUPPORTED : C value 'g_subprocess_new' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_subprocess_newv' : parameter 'argv' of type 'nil' not supported
 
@@ -28518,7 +29489,39 @@ func (recv *SubprocessLauncher) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_subprocess_launcher_new' : parameter 'flags' of type 'SubprocessFlags' not supported
+var subprocessLauncherNewFunction *gi.Function
+var subprocessLauncherNewFunction_Once sync.Once
+
+func subprocessLauncherNewFunction_Set() error {
+	var err error
+	subprocessLauncherNewFunction_Once.Do(func() {
+		err = subprocessLauncherObject_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherNewFunction, err = subprocessLauncherObject.InvokerNew("new")
+	})
+	return err
+}
+
+// SubprocessLauncherNew is a representation of the C type g_subprocess_launcher_new.
+func SubprocessLauncherNew(flags SubprocessFlags) *SubprocessLauncher {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := subprocessLauncherNewFunction_Set()
+	if err == nil {
+		ret = subprocessLauncherNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SubprocessLauncherNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var subprocessLauncherGetenvFunction *gi.Function
 var subprocessLauncherGetenvFunction_Once sync.Once
@@ -28586,7 +29589,34 @@ func (recv *SubprocessLauncher) SetCwd(cwd string) {
 
 // UNSUPPORTED : C value 'g_subprocess_launcher_set_environ' : parameter 'env' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_subprocess_launcher_set_flags' : parameter 'flags' of type 'SubprocessFlags' not supported
+var subprocessLauncherSetFlagsFunction *gi.Function
+var subprocessLauncherSetFlagsFunction_Once sync.Once
+
+func subprocessLauncherSetFlagsFunction_Set() error {
+	var err error
+	subprocessLauncherSetFlagsFunction_Once.Do(func() {
+		err = subprocessLauncherObject_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherSetFlagsFunction, err = subprocessLauncherObject.InvokerNew("set_flags")
+	})
+	return err
+}
+
+// SetFlags is a representation of the C type g_subprocess_launcher_set_flags.
+func (recv *SubprocessLauncher) SetFlags(flags SubprocessFlags) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	err := subprocessLauncherSetFlagsFunction_Set()
+	if err == nil {
+		subprocessLauncherSetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var subprocessLauncherSetStderrFilePathFunction *gi.Function
 var subprocessLauncherSetStderrFilePathFunction_Once sync.Once
@@ -29903,7 +30933,39 @@ func (recv *TestDBus) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_test_dbus_new' : parameter 'flags' of type 'TestDBusFlags' not supported
+var testDBusNewFunction *gi.Function
+var testDBusNewFunction_Once sync.Once
+
+func testDBusNewFunction_Set() error {
+	var err error
+	testDBusNewFunction_Once.Do(func() {
+		err = testDBusObject_Set()
+		if err != nil {
+			return
+		}
+		testDBusNewFunction, err = testDBusObject.InvokerNew("new")
+	})
+	return err
+}
+
+// TestDBusNew is a representation of the C type g_test_dbus_new.
+func TestDBusNew(flags TestDBusFlags) *TestDBus {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := testDBusNewFunction_Set()
+	if err == nil {
+		ret = testDBusNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TestDBusNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var testDBusAddServiceDirFunction *gi.Function
 var testDBusAddServiceDirFunction_Once sync.Once
@@ -29994,7 +31056,37 @@ func (recv *TestDBus) GetBusAddress() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_test_dbus_get_flags' : return type 'TestDBusFlags' not supported
+var testDBusGetFlagsFunction *gi.Function
+var testDBusGetFlagsFunction_Once sync.Once
+
+func testDBusGetFlagsFunction_Set() error {
+	var err error
+	testDBusGetFlagsFunction_Once.Do(func() {
+		err = testDBusObject_Set()
+		if err != nil {
+			return
+		}
+		testDBusGetFlagsFunction, err = testDBusObject.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type g_test_dbus_get_flags.
+func (recv *TestDBus) GetFlags() TestDBusFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := testDBusGetFlagsFunction_Set()
+	if err == nil {
+		ret = testDBusGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TestDBusFlags(ret.Int32())
+
+	return retGo
+}
 
 var testDBusStopFunction *gi.Function
 var testDBusStopFunction_Once sync.Once
@@ -30759,7 +31851,39 @@ func (recv *TlsConnection) SetFieldPriv(value *TlsConnectionPrivate) {
 	gi.ObjectFieldSet(tlsConnectionObject, recv.Native(), "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'g_tls_connection_emit_accept_certificate' : parameter 'errors' of type 'TlsCertificateFlags' not supported
+var tlsConnectionEmitAcceptCertificateFunction *gi.Function
+var tlsConnectionEmitAcceptCertificateFunction_Once sync.Once
+
+func tlsConnectionEmitAcceptCertificateFunction_Set() error {
+	var err error
+	tlsConnectionEmitAcceptCertificateFunction_Once.Do(func() {
+		err = tlsConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		tlsConnectionEmitAcceptCertificateFunction, err = tlsConnectionObject.InvokerNew("emit_accept_certificate")
+	})
+	return err
+}
+
+// EmitAcceptCertificate is a representation of the C type g_tls_connection_emit_accept_certificate.
+func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(peerCert.Native())
+	inArgs[2].SetInt32(int32(errors))
+
+	var ret gi.Argument
+
+	err := tlsConnectionEmitAcceptCertificateFunction_Set()
+	if err == nil {
+		ret = tlsConnectionEmitAcceptCertificateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var tlsConnectionGetCertificateFunction *gi.Function
 var tlsConnectionGetCertificateFunction_Once sync.Once
@@ -30921,7 +32045,37 @@ func (recv *TlsConnection) GetPeerCertificate() *TlsCertificate {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tls_connection_get_peer_certificate_errors' : return type 'TlsCertificateFlags' not supported
+var tlsConnectionGetPeerCertificateErrorsFunction *gi.Function
+var tlsConnectionGetPeerCertificateErrorsFunction_Once sync.Once
+
+func tlsConnectionGetPeerCertificateErrorsFunction_Set() error {
+	var err error
+	tlsConnectionGetPeerCertificateErrorsFunction_Once.Do(func() {
+		err = tlsConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		tlsConnectionGetPeerCertificateErrorsFunction, err = tlsConnectionObject.InvokerNew("get_peer_certificate_errors")
+	})
+	return err
+}
+
+// GetPeerCertificateErrors is a representation of the C type g_tls_connection_get_peer_certificate_errors.
+func (recv *TlsConnection) GetPeerCertificateErrors() TlsCertificateFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := tlsConnectionGetPeerCertificateErrorsFunction_Set()
+	if err == nil {
+		ret = tlsConnectionGetPeerCertificateErrorsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsCertificateFlags(ret.Int32())
+
+	return retGo
+}
 
 var tlsConnectionGetRehandshakeModeFunction *gi.Function
 var tlsConnectionGetRehandshakeModeFunction_Once sync.Once
@@ -31232,7 +32386,18 @@ func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'accept-certificate' : parameter 'errors' of type 'TlsCertificateFlags' not supported
+/*
+ConnectAcceptCertificate connects a callback to the 'accept-certificate' signal of the TlsConnection.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TlsConnection) ConnectAcceptCertificate(handler func(instance *TlsConnection, peerCert *TlsCertificate, errors TlsCertificateFlags) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		// has return : gboolean
+	}
+
+	return callback.ConnectSignal(recv.Native(), "accept-certificate", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -31735,7 +32900,40 @@ func (recv *TlsPassword) SetFieldPriv(value *TlsPasswordPrivate) {
 	gi.ObjectFieldSet(tlsPasswordObject, recv.Native(), "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'g_tls_password_new' : parameter 'flags' of type 'TlsPasswordFlags' not supported
+var tlsPasswordNewFunction *gi.Function
+var tlsPasswordNewFunction_Once sync.Once
+
+func tlsPasswordNewFunction_Set() error {
+	var err error
+	tlsPasswordNewFunction_Once.Do(func() {
+		err = tlsPasswordObject_Set()
+		if err != nil {
+			return
+		}
+		tlsPasswordNewFunction, err = tlsPasswordObject.InvokerNew("new")
+	})
+	return err
+}
+
+// TlsPasswordNew is a representation of the C type g_tls_password_new.
+func TlsPasswordNew(flags TlsPasswordFlags, description string) *TlsPassword {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(flags))
+	inArgs[1].SetString(description)
+
+	var ret gi.Argument
+
+	err := tlsPasswordNewFunction_Set()
+	if err == nil {
+		ret = tlsPasswordNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsPasswordNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var tlsPasswordGetDescriptionFunction *gi.Function
 var tlsPasswordGetDescriptionFunction_Once sync.Once
@@ -31769,7 +32967,37 @@ func (recv *TlsPassword) GetDescription() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tls_password_get_flags' : return type 'TlsPasswordFlags' not supported
+var tlsPasswordGetFlagsFunction *gi.Function
+var tlsPasswordGetFlagsFunction_Once sync.Once
+
+func tlsPasswordGetFlagsFunction_Set() error {
+	var err error
+	tlsPasswordGetFlagsFunction_Once.Do(func() {
+		err = tlsPasswordObject_Set()
+		if err != nil {
+			return
+		}
+		tlsPasswordGetFlagsFunction, err = tlsPasswordObject.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type g_tls_password_get_flags.
+func (recv *TlsPassword) GetFlags() TlsPasswordFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := tlsPasswordGetFlagsFunction_Set()
+	if err == nil {
+		ret = tlsPasswordGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsPasswordFlags(ret.Int32())
+
+	return retGo
+}
 
 var tlsPasswordGetValueFunction *gi.Function
 var tlsPasswordGetValueFunction_Once sync.Once
@@ -31865,7 +33093,34 @@ func (recv *TlsPassword) SetDescription(description string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_tls_password_set_flags' : parameter 'flags' of type 'TlsPasswordFlags' not supported
+var tlsPasswordSetFlagsFunction *gi.Function
+var tlsPasswordSetFlagsFunction_Once sync.Once
+
+func tlsPasswordSetFlagsFunction_Set() error {
+	var err error
+	tlsPasswordSetFlagsFunction_Once.Do(func() {
+		err = tlsPasswordObject_Set()
+		if err != nil {
+			return
+		}
+		tlsPasswordSetFlagsFunction, err = tlsPasswordObject.InvokerNew("set_flags")
+	})
+	return err
+}
+
+// SetFlags is a representation of the C type g_tls_password_set_flags.
+func (recv *TlsPassword) SetFlags(flags TlsPasswordFlags) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	err := tlsPasswordSetFlagsFunction_Set()
+	if err == nil {
+		tlsPasswordSetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_tls_password_set_value' : parameter 'value' of type 'nil' not supported
 

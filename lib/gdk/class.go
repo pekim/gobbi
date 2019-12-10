@@ -765,7 +765,37 @@ func (recv *Device) GetAssociatedDevice() *Device {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_device_get_axes' : return type 'AxisFlags' not supported
+var deviceGetAxesFunction *gi.Function
+var deviceGetAxesFunction_Once sync.Once
+
+func deviceGetAxesFunction_Set() error {
+	var err error
+	deviceGetAxesFunction_Once.Do(func() {
+		err = deviceObject_Set()
+		if err != nil {
+			return
+		}
+		deviceGetAxesFunction, err = deviceObject.InvokerNew("get_axes")
+	})
+	return err
+}
+
+// GetAxes is a representation of the C type gdk_device_get_axes.
+func (recv *Device) GetAxes() AxisFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := deviceGetAxesFunction_Set()
+	if err == nil {
+		ret = deviceGetAxesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AxisFlags(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_device_get_axis' : parameter 'axes' of type 'nil' not supported
 
@@ -902,7 +932,41 @@ func (recv *Device) GetHasCursor() bool {
 
 // UNSUPPORTED : C value 'gdk_device_get_history' : parameter 'events' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_device_get_key' : parameter 'modifiers' of type 'ModifierType' not supported
+var deviceGetKeyFunction *gi.Function
+var deviceGetKeyFunction_Once sync.Once
+
+func deviceGetKeyFunction_Set() error {
+	var err error
+	deviceGetKeyFunction_Once.Do(func() {
+		err = deviceObject_Set()
+		if err != nil {
+			return
+		}
+		deviceGetKeyFunction, err = deviceObject.InvokerNew("get_key")
+	})
+	return err
+}
+
+// GetKey is a representation of the C type gdk_device_get_key.
+func (recv *Device) GetKey(index uint32) (bool, uint32, ModifierType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(index)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := deviceGetKeyFunction_Set()
+	if err == nil {
+		ret = deviceGetKeyFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Uint32()
+	out1 := ModifierType(outArgs[1].Int32())
+
+	return retGo, out0, out1
+}
 
 var deviceGetLastEventWindowFunction *gi.Function
 var deviceGetLastEventWindowFunction_Once sync.Once
@@ -1332,7 +1396,43 @@ func (recv *Device) GetWindowAtPositionDouble() (*Window, float64, float64) {
 	return retGo, out0, out1
 }
 
-// UNSUPPORTED : C value 'gdk_device_grab' : parameter 'event_mask' of type 'EventMask' not supported
+var deviceGrabFunction *gi.Function
+var deviceGrabFunction_Once sync.Once
+
+func deviceGrabFunction_Set() error {
+	var err error
+	deviceGrabFunction_Once.Do(func() {
+		err = deviceObject_Set()
+		if err != nil {
+			return
+		}
+		deviceGrabFunction, err = deviceObject.InvokerNew("grab")
+	})
+	return err
+}
+
+// Grab is a representation of the C type gdk_device_grab.
+func (recv *Device) Grab(window *Window, grabOwnership GrabOwnership, ownerEvents bool, eventMask EventMask, cursor *Cursor, time uint32) GrabStatus {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(window.Native())
+	inArgs[2].SetInt32(int32(grabOwnership))
+	inArgs[3].SetBoolean(ownerEvents)
+	inArgs[4].SetInt32(int32(eventMask))
+	inArgs[5].SetPointer(cursor.Native())
+	inArgs[6].SetUint32(time)
+
+	var ret gi.Argument
+
+	err := deviceGrabFunction_Set()
+	if err == nil {
+		ret = deviceGrabFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := GrabStatus(ret.Int32())
+
+	return retGo
+}
 
 var deviceListAxesFunction *gi.Function
 var deviceListAxesFunction_Once sync.Once
@@ -1428,7 +1528,36 @@ func (recv *Device) SetAxisUse(index uint32, use AxisUse) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_device_set_key' : parameter 'modifiers' of type 'ModifierType' not supported
+var deviceSetKeyFunction *gi.Function
+var deviceSetKeyFunction_Once sync.Once
+
+func deviceSetKeyFunction_Set() error {
+	var err error
+	deviceSetKeyFunction_Once.Do(func() {
+		err = deviceObject_Set()
+		if err != nil {
+			return
+		}
+		deviceSetKeyFunction, err = deviceObject.InvokerNew("set_key")
+	})
+	return err
+}
+
+// SetKey is a representation of the C type gdk_device_set_key.
+func (recv *Device) SetKey(index uint32, keyval uint32, modifiers ModifierType) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(index)
+	inArgs[2].SetUint32(keyval)
+	inArgs[3].SetInt32(int32(modifiers))
+
+	err := deviceSetKeyFunction_Set()
+	if err == nil {
+		deviceSetKeyFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var deviceSetModeFunction *gi.Function
 var deviceSetModeFunction_Once sync.Once
@@ -2531,7 +2660,40 @@ func (recv *Display) GetName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_display_get_pointer' : parameter 'mask' of type 'ModifierType' not supported
+var displayGetPointerFunction *gi.Function
+var displayGetPointerFunction_Once sync.Once
+
+func displayGetPointerFunction_Set() error {
+	var err error
+	displayGetPointerFunction_Once.Do(func() {
+		err = displayObject_Set()
+		if err != nil {
+			return
+		}
+		displayGetPointerFunction, err = displayObject.InvokerNew("get_pointer")
+	})
+	return err
+}
+
+// GetPointer is a representation of the C type gdk_display_get_pointer.
+func (recv *Display) GetPointer() (*Screen, int32, int32, ModifierType) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [4]gi.Argument
+
+	err := displayGetPointerFunction_Set()
+	if err == nil {
+		displayGetPointerFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := ScreenNewFromNative(outArgs[0].Pointer())
+	out1 := outArgs[1].Int32()
+	out2 := outArgs[2].Int32()
+	out3 := ModifierType(outArgs[3].Int32())
+
+	return out0, out1, out2, out3
+}
 
 var displayGetPrimaryMonitorFunction *gi.Function
 var displayGetPrimaryMonitorFunction_Once sync.Once
@@ -3644,7 +3806,37 @@ func (recv *DragContext) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gdk_drag_context_get_actions' : return type 'DragAction' not supported
+var dragContextGetActionsFunction *gi.Function
+var dragContextGetActionsFunction_Once sync.Once
+
+func dragContextGetActionsFunction_Set() error {
+	var err error
+	dragContextGetActionsFunction_Once.Do(func() {
+		err = dragContextObject_Set()
+		if err != nil {
+			return
+		}
+		dragContextGetActionsFunction, err = dragContextObject.InvokerNew("get_actions")
+	})
+	return err
+}
+
+// GetActions is a representation of the C type gdk_drag_context_get_actions.
+func (recv *DragContext) GetActions() DragAction {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dragContextGetActionsFunction_Set()
+	if err == nil {
+		ret = dragContextGetActionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DragAction(ret.Int32())
+
+	return retGo
+}
 
 var dragContextGetDestWindowFunction *gi.Function
 var dragContextGetDestWindowFunction_Once sync.Once
@@ -3774,7 +3966,37 @@ func (recv *DragContext) GetProtocol() DragProtocol {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_drag_context_get_selected_action' : return type 'DragAction' not supported
+var dragContextGetSelectedActionFunction *gi.Function
+var dragContextGetSelectedActionFunction_Once sync.Once
+
+func dragContextGetSelectedActionFunction_Set() error {
+	var err error
+	dragContextGetSelectedActionFunction_Once.Do(func() {
+		err = dragContextObject_Set()
+		if err != nil {
+			return
+		}
+		dragContextGetSelectedActionFunction, err = dragContextObject.InvokerNew("get_selected_action")
+	})
+	return err
+}
+
+// GetSelectedAction is a representation of the C type gdk_drag_context_get_selected_action.
+func (recv *DragContext) GetSelectedAction() DragAction {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dragContextGetSelectedActionFunction_Set()
+	if err == nil {
+		ret = dragContextGetSelectedActionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DragAction(ret.Int32())
+
+	return retGo
+}
 
 var dragContextGetSourceWindowFunction *gi.Function
 var dragContextGetSourceWindowFunction_Once sync.Once
@@ -3808,7 +4030,37 @@ func (recv *DragContext) GetSourceWindow() *Window {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_drag_context_get_suggested_action' : return type 'DragAction' not supported
+var dragContextGetSuggestedActionFunction *gi.Function
+var dragContextGetSuggestedActionFunction_Once sync.Once
+
+func dragContextGetSuggestedActionFunction_Set() error {
+	var err error
+	dragContextGetSuggestedActionFunction_Once.Do(func() {
+		err = dragContextObject_Set()
+		if err != nil {
+			return
+		}
+		dragContextGetSuggestedActionFunction, err = dragContextObject.InvokerNew("get_suggested_action")
+	})
+	return err
+}
+
+// GetSuggestedAction is a representation of the C type gdk_drag_context_get_suggested_action.
+func (recv *DragContext) GetSuggestedAction() DragAction {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dragContextGetSuggestedActionFunction_Set()
+	if err == nil {
+		ret = dragContextGetSuggestedActionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DragAction(ret.Int32())
+
+	return retGo
+}
 
 var dragContextListTargetsFunction *gi.Function
 var dragContextListTargetsFunction_Once sync.Once
@@ -3842,7 +4094,39 @@ func (recv *DragContext) ListTargets() *glib.List {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_drag_context_manage_dnd' : parameter 'actions' of type 'DragAction' not supported
+var dragContextManageDndFunction *gi.Function
+var dragContextManageDndFunction_Once sync.Once
+
+func dragContextManageDndFunction_Set() error {
+	var err error
+	dragContextManageDndFunction_Once.Do(func() {
+		err = dragContextObject_Set()
+		if err != nil {
+			return
+		}
+		dragContextManageDndFunction, err = dragContextObject.InvokerNew("manage_dnd")
+	})
+	return err
+}
+
+// ManageDnd is a representation of the C type gdk_drag_context_manage_dnd.
+func (recv *DragContext) ManageDnd(ipcWindow *Window, actions DragAction) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(ipcWindow.Native())
+	inArgs[2].SetInt32(int32(actions))
+
+	var ret gi.Argument
+
+	err := dragContextManageDndFunction_Set()
+	if err == nil {
+		ret = dragContextManageDndFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var dragContextSetDeviceFunction *gi.Function
 var dragContextSetDeviceFunction_Once sync.Once
@@ -3903,7 +4187,24 @@ func (recv *DragContext) SetHotspot(hotX int32, hotY int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'action-changed' : parameter 'action' of type 'DragAction' not supported
+/*
+ConnectActionChanged connects a callback to the 'action-changed' signal of the DragContext.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DragContext) ConnectActionChanged(handler func(instance *DragContext, action DragAction)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DragContextNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := (DragAction)(object1.GetInt())
+
+		handler(argInstance, arg1)
+	}
+
+	return callback.ConnectSignal(recv.Native(), "action-changed", marshal)
+}
 
 /*
 ConnectCancel connects a callback to the 'cancel' signal of the DragContext.
@@ -4457,7 +4758,34 @@ func (recv *FrameClock) GetTimings(frameCounter int64) *FrameTimings {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_frame_clock_request_phase' : parameter 'phase' of type 'FrameClockPhase' not supported
+var frameClockRequestPhaseFunction *gi.Function
+var frameClockRequestPhaseFunction_Once sync.Once
+
+func frameClockRequestPhaseFunction_Set() error {
+	var err error
+	frameClockRequestPhaseFunction_Once.Do(func() {
+		err = frameClockObject_Set()
+		if err != nil {
+			return
+		}
+		frameClockRequestPhaseFunction, err = frameClockObject.InvokerNew("request_phase")
+	})
+	return err
+}
+
+// RequestPhase is a representation of the C type gdk_frame_clock_request_phase.
+func (recv *FrameClock) RequestPhase(phase FrameClockPhase) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(phase))
+
+	err := frameClockRequestPhaseFunction_Set()
+	if err == nil {
+		frameClockRequestPhaseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 /*
 ConnectAfterPaint connects a callback to the 'after-paint' signal of the FrameClock.
@@ -5157,7 +5485,38 @@ func (recv *Keymap) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gdk_keymap_add_virtual_modifiers' : parameter 'state' of type 'ModifierType' not supported
+var keymapAddVirtualModifiersFunction *gi.Function
+var keymapAddVirtualModifiersFunction_Once sync.Once
+
+func keymapAddVirtualModifiersFunction_Set() error {
+	var err error
+	keymapAddVirtualModifiersFunction_Once.Do(func() {
+		err = keymapObject_Set()
+		if err != nil {
+			return
+		}
+		keymapAddVirtualModifiersFunction, err = keymapObject.InvokerNew("add_virtual_modifiers")
+	})
+	return err
+}
+
+// AddVirtualModifiers is a representation of the C type gdk_keymap_add_virtual_modifiers.
+func (recv *Keymap) AddVirtualModifiers(state ModifierType) ModifierType {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(state))
+
+	var outArgs [1]gi.Argument
+
+	err := keymapAddVirtualModifiersFunction_Set()
+	if err == nil {
+		keymapAddVirtualModifiersFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := ModifierType(outArgs[0].Int32())
+
+	return out0
+}
 
 var keymapGetCapsLockStateFunction *gi.Function
 var keymapGetCapsLockStateFunction_Once sync.Once
@@ -5197,7 +5556,38 @@ func (recv *Keymap) GetCapsLockState() bool {
 
 // UNSUPPORTED : C value 'gdk_keymap_get_entries_for_keyval' : parameter 'keys' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_keymap_get_modifier_mask' : return type 'ModifierType' not supported
+var keymapGetModifierMaskFunction *gi.Function
+var keymapGetModifierMaskFunction_Once sync.Once
+
+func keymapGetModifierMaskFunction_Set() error {
+	var err error
+	keymapGetModifierMaskFunction_Once.Do(func() {
+		err = keymapObject_Set()
+		if err != nil {
+			return
+		}
+		keymapGetModifierMaskFunction, err = keymapObject.InvokerNew("get_modifier_mask")
+	})
+	return err
+}
+
+// GetModifierMask is a representation of the C type gdk_keymap_get_modifier_mask.
+func (recv *Keymap) GetModifierMask(intent ModifierIntent) ModifierType {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(intent))
+
+	var ret gi.Argument
+
+	err := keymapGetModifierMaskFunction_Set()
+	if err == nil {
+		ret = keymapGetModifierMaskFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ModifierType(ret.Int32())
+
+	return retGo
+}
 
 var keymapGetModifierStateFunction *gi.Function
 var keymapGetModifierStateFunction_Once sync.Once
@@ -5360,9 +5750,80 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_keymap_map_virtual_modifiers' : parameter 'state' of type 'ModifierType' not supported
+var keymapMapVirtualModifiersFunction *gi.Function
+var keymapMapVirtualModifiersFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_keymap_translate_keyboard_state' : parameter 'state' of type 'ModifierType' not supported
+func keymapMapVirtualModifiersFunction_Set() error {
+	var err error
+	keymapMapVirtualModifiersFunction_Once.Do(func() {
+		err = keymapObject_Set()
+		if err != nil {
+			return
+		}
+		keymapMapVirtualModifiersFunction, err = keymapObject.InvokerNew("map_virtual_modifiers")
+	})
+	return err
+}
+
+// MapVirtualModifiers is a representation of the C type gdk_keymap_map_virtual_modifiers.
+func (recv *Keymap) MapVirtualModifiers(state ModifierType) (bool, ModifierType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(state))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := keymapMapVirtualModifiersFunction_Set()
+	if err == nil {
+		ret = keymapMapVirtualModifiersFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := ModifierType(outArgs[0].Int32())
+
+	return retGo, out0
+}
+
+var keymapTranslateKeyboardStateFunction *gi.Function
+var keymapTranslateKeyboardStateFunction_Once sync.Once
+
+func keymapTranslateKeyboardStateFunction_Set() error {
+	var err error
+	keymapTranslateKeyboardStateFunction_Once.Do(func() {
+		err = keymapObject_Set()
+		if err != nil {
+			return
+		}
+		keymapTranslateKeyboardStateFunction, err = keymapObject.InvokerNew("translate_keyboard_state")
+	})
+	return err
+}
+
+// TranslateKeyboardState is a representation of the C type gdk_keymap_translate_keyboard_state.
+func (recv *Keymap) TranslateKeyboardState(hardwareKeycode uint32, state ModifierType, group int32) (bool, uint32, int32, int32, ModifierType) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(hardwareKeycode)
+	inArgs[2].SetInt32(int32(state))
+	inArgs[3].SetInt32(group)
+
+	var outArgs [4]gi.Argument
+	var ret gi.Argument
+
+	err := keymapTranslateKeyboardStateFunction_Set()
+	if err == nil {
+		ret = keymapTranslateKeyboardStateFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Uint32()
+	out1 := outArgs[1].Int32()
+	out2 := outArgs[2].Int32()
+	out3 := ModifierType(outArgs[3].Int32())
+
+	return retGo, out0, out1, out2, out3
+}
 
 /*
 ConnectDirectionChanged connects a callback to the 'direction-changed' signal of the Keymap.
@@ -6999,7 +7460,37 @@ func (recv *Seat) SetFieldParentInstance(value *gobject.Object) {
 	gi.ObjectFieldSet(seatObject, recv.Native(), "parent_instance", argValue)
 }
 
-// UNSUPPORTED : C value 'gdk_seat_get_capabilities' : return type 'SeatCapabilities' not supported
+var seatGetCapabilitiesFunction *gi.Function
+var seatGetCapabilitiesFunction_Once sync.Once
+
+func seatGetCapabilitiesFunction_Set() error {
+	var err error
+	seatGetCapabilitiesFunction_Once.Do(func() {
+		err = seatObject_Set()
+		if err != nil {
+			return
+		}
+		seatGetCapabilitiesFunction, err = seatObject.InvokerNew("get_capabilities")
+	})
+	return err
+}
+
+// GetCapabilities is a representation of the C type gdk_seat_get_capabilities.
+func (recv *Seat) GetCapabilities() SeatCapabilities {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := seatGetCapabilitiesFunction_Set()
+	if err == nil {
+		ret = seatGetCapabilitiesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SeatCapabilities(ret.Int32())
+
+	return retGo
+}
 
 var seatGetDisplayFunction *gi.Function
 var seatGetDisplayFunction_Once sync.Once
@@ -7097,9 +7588,40 @@ func (recv *Seat) GetPointer() *Device {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_seat_get_slaves' : parameter 'capabilities' of type 'SeatCapabilities' not supported
+var seatGetSlavesFunction *gi.Function
+var seatGetSlavesFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_seat_grab' : parameter 'capabilities' of type 'SeatCapabilities' not supported
+func seatGetSlavesFunction_Set() error {
+	var err error
+	seatGetSlavesFunction_Once.Do(func() {
+		err = seatObject_Set()
+		if err != nil {
+			return
+		}
+		seatGetSlavesFunction, err = seatObject.InvokerNew("get_slaves")
+	})
+	return err
+}
+
+// GetSlaves is a representation of the C type gdk_seat_get_slaves.
+func (recv *Seat) GetSlaves(capabilities SeatCapabilities) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(capabilities))
+
+	var ret gi.Argument
+
+	err := seatGetSlavesFunction_Set()
+	if err == nil {
+		ret = seatGetSlavesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gdk_seat_grab' : parameter 'event' of type 'Event' not supported
 
 var seatUngrabFunction *gi.Function
 var seatUngrabFunction_Once sync.Once
@@ -7618,7 +8140,41 @@ func (recv *Window) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gdk_window_new' : parameter 'attributes_mask' of type 'WindowAttributesType' not supported
+var windowNewFunction *gi.Function
+var windowNewFunction_Once sync.Once
+
+func windowNewFunction_Set() error {
+	var err error
+	windowNewFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowNewFunction, err = windowObject.InvokerNew("new")
+	})
+	return err
+}
+
+// WindowNew is a representation of the C type gdk_window_new.
+func WindowNew(parent *Window, attributes *WindowAttr, attributesMask WindowAttributesType) *Window {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(parent.Native())
+	inArgs[1].SetPointer(attributes.Native())
+	inArgs[2].SetInt32(int32(attributesMask))
+
+	var ret gi.Argument
+
+	err := windowNewFunction_Set()
+	if err == nil {
+		ret = windowNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WindowNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_window_add_filter' : parameter 'function' of type 'FilterFunc' not supported
 
@@ -8634,7 +9190,39 @@ func (recv *Window) GetCursor() *Cursor {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_window_get_decorations' : parameter 'decorations' of type 'WMDecoration' not supported
+var windowGetDecorationsFunction *gi.Function
+var windowGetDecorationsFunction_Once sync.Once
+
+func windowGetDecorationsFunction_Set() error {
+	var err error
+	windowGetDecorationsFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowGetDecorationsFunction, err = windowObject.InvokerNew("get_decorations")
+	})
+	return err
+}
+
+// GetDecorations is a representation of the C type gdk_window_get_decorations.
+func (recv *Window) GetDecorations() (bool, WMDecoration) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := windowGetDecorationsFunction_Set()
+	if err == nil {
+		ret = windowGetDecorationsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := WMDecoration(outArgs[0].Int32())
+
+	return retGo, out0
+}
 
 var windowGetDeviceCursorFunction *gi.Function
 var windowGetDeviceCursorFunction_Once sync.Once
@@ -8669,11 +9257,112 @@ func (recv *Window) GetDeviceCursor(device *Device) *Cursor {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_window_get_device_events' : return type 'EventMask' not supported
+var windowGetDeviceEventsFunction *gi.Function
+var windowGetDeviceEventsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_window_get_device_position' : parameter 'mask' of type 'ModifierType' not supported
+func windowGetDeviceEventsFunction_Set() error {
+	var err error
+	windowGetDeviceEventsFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowGetDeviceEventsFunction, err = windowObject.InvokerNew("get_device_events")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_window_get_device_position_double' : parameter 'mask' of type 'ModifierType' not supported
+// GetDeviceEvents is a representation of the C type gdk_window_get_device_events.
+func (recv *Window) GetDeviceEvents(device *Device) EventMask {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(device.Native())
+
+	var ret gi.Argument
+
+	err := windowGetDeviceEventsFunction_Set()
+	if err == nil {
+		ret = windowGetDeviceEventsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := EventMask(ret.Int32())
+
+	return retGo
+}
+
+var windowGetDevicePositionFunction *gi.Function
+var windowGetDevicePositionFunction_Once sync.Once
+
+func windowGetDevicePositionFunction_Set() error {
+	var err error
+	windowGetDevicePositionFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowGetDevicePositionFunction, err = windowObject.InvokerNew("get_device_position")
+	})
+	return err
+}
+
+// GetDevicePosition is a representation of the C type gdk_window_get_device_position.
+func (recv *Window) GetDevicePosition(device *Device) (*Window, int32, int32, ModifierType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(device.Native())
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := windowGetDevicePositionFunction_Set()
+	if err == nil {
+		ret = windowGetDevicePositionFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := WindowNewFromNative(ret.Pointer())
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+	out2 := ModifierType(outArgs[2].Int32())
+
+	return retGo, out0, out1, out2
+}
+
+var windowGetDevicePositionDoubleFunction *gi.Function
+var windowGetDevicePositionDoubleFunction_Once sync.Once
+
+func windowGetDevicePositionDoubleFunction_Set() error {
+	var err error
+	windowGetDevicePositionDoubleFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowGetDevicePositionDoubleFunction, err = windowObject.InvokerNew("get_device_position_double")
+	})
+	return err
+}
+
+// GetDevicePositionDouble is a representation of the C type gdk_window_get_device_position_double.
+func (recv *Window) GetDevicePositionDouble(device *Device) (*Window, float64, float64, ModifierType) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(device.Native())
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := windowGetDevicePositionDoubleFunction_Set()
+	if err == nil {
+		ret = windowGetDevicePositionDoubleFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := WindowNewFromNative(ret.Pointer())
+	out0 := outArgs[0].Float64()
+	out1 := outArgs[1].Float64()
+	out2 := ModifierType(outArgs[2].Int32())
+
+	return retGo, out0, out1, out2
+}
 
 var windowGetDisplayFunction *gi.Function
 var windowGetDisplayFunction_Once sync.Once
@@ -8837,7 +9526,37 @@ func (recv *Window) GetEventCompression() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_window_get_events' : return type 'EventMask' not supported
+var windowGetEventsFunction *gi.Function
+var windowGetEventsFunction_Once sync.Once
+
+func windowGetEventsFunction_Set() error {
+	var err error
+	windowGetEventsFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowGetEventsFunction, err = windowObject.InvokerNew("get_events")
+	})
+	return err
+}
+
+// GetEvents is a representation of the C type gdk_window_get_events.
+func (recv *Window) GetEvents() EventMask {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := windowGetEventsFunction_Set()
+	if err == nil {
+		ret = windowGetEventsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := EventMask(ret.Int32())
+
+	return retGo
+}
 
 var windowGetFocusOnMapFunction *gi.Function
 var windowGetFocusOnMapFunction_Once sync.Once
@@ -9197,7 +9916,41 @@ func (recv *Window) GetPassThrough() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_window_get_pointer' : parameter 'mask' of type 'ModifierType' not supported
+var windowGetPointerFunction *gi.Function
+var windowGetPointerFunction_Once sync.Once
+
+func windowGetPointerFunction_Set() error {
+	var err error
+	windowGetPointerFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowGetPointerFunction, err = windowObject.InvokerNew("get_pointer")
+	})
+	return err
+}
+
+// GetPointer is a representation of the C type gdk_window_get_pointer.
+func (recv *Window) GetPointer() (*Window, int32, int32, ModifierType) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := windowGetPointerFunction_Set()
+	if err == nil {
+		ret = windowGetPointerFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := WindowNewFromNative(ret.Pointer())
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+	out2 := ModifierType(outArgs[2].Int32())
+
+	return retGo, out0, out1, out2
+}
 
 var windowGetPositionFunction *gi.Function
 var windowGetPositionFunction_Once sync.Once
@@ -9364,9 +10117,70 @@ func (recv *Window) GetScreen() *Screen {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_window_get_source_events' : return type 'EventMask' not supported
+var windowGetSourceEventsFunction *gi.Function
+var windowGetSourceEventsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_window_get_state' : return type 'WindowState' not supported
+func windowGetSourceEventsFunction_Set() error {
+	var err error
+	windowGetSourceEventsFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowGetSourceEventsFunction, err = windowObject.InvokerNew("get_source_events")
+	})
+	return err
+}
+
+// GetSourceEvents is a representation of the C type gdk_window_get_source_events.
+func (recv *Window) GetSourceEvents(source InputSource) EventMask {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(source))
+
+	var ret gi.Argument
+
+	err := windowGetSourceEventsFunction_Set()
+	if err == nil {
+		ret = windowGetSourceEventsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := EventMask(ret.Int32())
+
+	return retGo
+}
+
+var windowGetStateFunction *gi.Function
+var windowGetStateFunction_Once sync.Once
+
+func windowGetStateFunction_Set() error {
+	var err error
+	windowGetStateFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowGetStateFunction, err = windowObject.InvokerNew("get_state")
+	})
+	return err
+}
+
+// GetState is a representation of the C type gdk_window_get_state.
+func (recv *Window) GetState() WindowState {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := windowGetStateFunction_Set()
+	if err == nil {
+		ret = windowGetStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WindowState(ret.Int32())
+
+	return retGo
+}
 
 var windowGetSupportMultideviceFunction *gi.Function
 var windowGetSupportMultideviceFunction_Once sync.Once
@@ -10201,7 +11015,39 @@ func (recv *Window) MoveResize(x int32, y int32, width int32, height int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_window_move_to_rect' : parameter 'anchor_hints' of type 'AnchorHints' not supported
+var windowMoveToRectFunction *gi.Function
+var windowMoveToRectFunction_Once sync.Once
+
+func windowMoveToRectFunction_Set() error {
+	var err error
+	windowMoveToRectFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowMoveToRectFunction, err = windowObject.InvokerNew("move_to_rect")
+	})
+	return err
+}
+
+// MoveToRect is a representation of the C type gdk_window_move_to_rect.
+func (recv *Window) MoveToRect(rect *Rectangle, rectAnchor Gravity, windowAnchor Gravity, anchorHints AnchorHints, rectAnchorDx int32, rectAnchorDy int32) {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(rect.Native())
+	inArgs[2].SetInt32(int32(rectAnchor))
+	inArgs[3].SetInt32(int32(windowAnchor))
+	inArgs[4].SetInt32(int32(anchorHints))
+	inArgs[5].SetInt32(rectAnchorDx)
+	inArgs[6].SetInt32(rectAnchorDy)
+
+	err := windowMoveToRectFunction_Set()
+	if err == nil {
+		windowMoveToRectFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var windowPeekChildrenFunction *gi.Function
 var windowPeekChildrenFunction_Once sync.Once
@@ -10673,7 +11519,34 @@ func (recv *Window) SetCursor(cursor *Cursor) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_window_set_decorations' : parameter 'decorations' of type 'WMDecoration' not supported
+var windowSetDecorationsFunction *gi.Function
+var windowSetDecorationsFunction_Once sync.Once
+
+func windowSetDecorationsFunction_Set() error {
+	var err error
+	windowSetDecorationsFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowSetDecorationsFunction, err = windowObject.InvokerNew("set_decorations")
+	})
+	return err
+}
+
+// SetDecorations is a representation of the C type gdk_window_set_decorations.
+func (recv *Window) SetDecorations(decorations WMDecoration) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(decorations))
+
+	err := windowSetDecorationsFunction_Set()
+	if err == nil {
+		windowSetDecorationsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var windowSetDeviceCursorFunction *gi.Function
 var windowSetDeviceCursorFunction_Once sync.Once
@@ -10705,7 +11578,35 @@ func (recv *Window) SetDeviceCursor(device *Device, cursor *Cursor) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_window_set_device_events' : parameter 'event_mask' of type 'EventMask' not supported
+var windowSetDeviceEventsFunction *gi.Function
+var windowSetDeviceEventsFunction_Once sync.Once
+
+func windowSetDeviceEventsFunction_Set() error {
+	var err error
+	windowSetDeviceEventsFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowSetDeviceEventsFunction, err = windowObject.InvokerNew("set_device_events")
+	})
+	return err
+}
+
+// SetDeviceEvents is a representation of the C type gdk_window_set_device_events.
+func (recv *Window) SetDeviceEvents(device *Device, eventMask EventMask) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(device.Native())
+	inArgs[2].SetInt32(int32(eventMask))
+
+	err := windowSetDeviceEventsFunction_Set()
+	if err == nil {
+		windowSetDeviceEventsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var windowSetEventCompressionFunction *gi.Function
 var windowSetEventCompressionFunction_Once sync.Once
@@ -10736,7 +11637,34 @@ func (recv *Window) SetEventCompression(eventCompression bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_window_set_events' : parameter 'event_mask' of type 'EventMask' not supported
+var windowSetEventsFunction *gi.Function
+var windowSetEventsFunction_Once sync.Once
+
+func windowSetEventsFunction_Set() error {
+	var err error
+	windowSetEventsFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowSetEventsFunction, err = windowObject.InvokerNew("set_events")
+	})
+	return err
+}
+
+// SetEvents is a representation of the C type gdk_window_set_events.
+func (recv *Window) SetEvents(eventMask EventMask) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(eventMask))
+
+	err := windowSetEventsFunction_Set()
+	if err == nil {
+		windowSetEventsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var windowSetFocusOnMapFunction *gi.Function
 var windowSetFocusOnMapFunction_Once sync.Once
@@ -10796,9 +11724,64 @@ func (recv *Window) SetFullscreenMode(mode FullscreenMode) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_window_set_functions' : parameter 'functions' of type 'WMFunction' not supported
+var windowSetFunctionsFunction *gi.Function
+var windowSetFunctionsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_window_set_geometry_hints' : parameter 'geom_mask' of type 'WindowHints' not supported
+func windowSetFunctionsFunction_Set() error {
+	var err error
+	windowSetFunctionsFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowSetFunctionsFunction, err = windowObject.InvokerNew("set_functions")
+	})
+	return err
+}
+
+// SetFunctions is a representation of the C type gdk_window_set_functions.
+func (recv *Window) SetFunctions(functions WMFunction) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(functions))
+
+	err := windowSetFunctionsFunction_Set()
+	if err == nil {
+		windowSetFunctionsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var windowSetGeometryHintsFunction *gi.Function
+var windowSetGeometryHintsFunction_Once sync.Once
+
+func windowSetGeometryHintsFunction_Set() error {
+	var err error
+	windowSetGeometryHintsFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowSetGeometryHintsFunction, err = windowObject.InvokerNew("set_geometry_hints")
+	})
+	return err
+}
+
+// SetGeometryHints is a representation of the C type gdk_window_set_geometry_hints.
+func (recv *Window) SetGeometryHints(geometry *Geometry, geomMask WindowHints) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(geometry.Native())
+	inArgs[2].SetInt32(int32(geomMask))
+
+	err := windowSetGeometryHintsFunction_Set()
+	if err == nil {
+		windowSetGeometryHintsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var windowSetGroupFunction *gi.Function
 var windowSetGroupFunction_Once sync.Once
@@ -11211,7 +12194,35 @@ func (recv *Window) SetSkipTaskbarHint(skipsTaskbar bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_window_set_source_events' : parameter 'event_mask' of type 'EventMask' not supported
+var windowSetSourceEventsFunction *gi.Function
+var windowSetSourceEventsFunction_Once sync.Once
+
+func windowSetSourceEventsFunction_Set() error {
+	var err error
+	windowSetSourceEventsFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowSetSourceEventsFunction, err = windowObject.InvokerNew("set_source_events")
+	})
+	return err
+}
+
+// SetSourceEvents is a representation of the C type gdk_window_set_source_events.
+func (recv *Window) SetSourceEvents(source InputSource, eventMask EventMask) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(source))
+	inArgs[2].SetInt32(int32(eventMask))
+
+	err := windowSetSourceEventsFunction_Set()
+	if err == nil {
+		windowSetSourceEventsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var windowSetStartupIdFunction *gi.Function
 var windowSetStartupIdFunction_Once sync.Once

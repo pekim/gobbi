@@ -1725,9 +1725,38 @@ func (recv *Value) IsUndefined() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'jsc_value_object_define_property_accessor' : parameter 'flags' of type 'ValuePropertyFlags' not supported
+// UNSUPPORTED : C value 'jsc_value_object_define_property_accessor' : parameter 'property_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'jsc_value_object_define_property_data' : parameter 'flags' of type 'ValuePropertyFlags' not supported
+var valueObjectDefinePropertyDataFunction *gi.Function
+var valueObjectDefinePropertyDataFunction_Once sync.Once
+
+func valueObjectDefinePropertyDataFunction_Set() error {
+	var err error
+	valueObjectDefinePropertyDataFunction_Once.Do(func() {
+		err = valueObject_Set()
+		if err != nil {
+			return
+		}
+		valueObjectDefinePropertyDataFunction, err = valueObject.InvokerNew("object_define_property_data")
+	})
+	return err
+}
+
+// ObjectDefinePropertyData is a representation of the C type jsc_value_object_define_property_data.
+func (recv *Value) ObjectDefinePropertyData(propertyName string, flags ValuePropertyFlags, propertyValue *Value) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(propertyName)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(propertyValue.Native())
+
+	err := valueObjectDefinePropertyDataFunction_Set()
+	if err == nil {
+		valueObjectDefinePropertyDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var valueObjectDeletePropertyFunction *gi.Function
 var valueObjectDeletePropertyFunction_Once sync.Once

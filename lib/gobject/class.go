@@ -45,7 +45,37 @@ func (recv *Binding) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_binding_get_flags' : return type 'BindingFlags' not supported
+var bindingGetFlagsFunction *gi.Function
+var bindingGetFlagsFunction_Once sync.Once
+
+func bindingGetFlagsFunction_Set() error {
+	var err error
+	bindingGetFlagsFunction_Once.Do(func() {
+		err = bindingObject_Set()
+		if err != nil {
+			return
+		}
+		bindingGetFlagsFunction, err = bindingObject.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type g_binding_get_flags.
+func (recv *Binding) GetFlags() BindingFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := bindingGetFlagsFunction_Set()
+	if err == nil {
+		ret = bindingGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := BindingFlags(ret.Int32())
+
+	return retGo
+}
 
 var bindingGetSourceFunction *gi.Function
 var bindingGetSourceFunction_Once sync.Once
@@ -308,11 +338,81 @@ func (recv *Object) SetFieldGTypeInstance(value *TypeInstance) {
 
 // UNSUPPORTED : C value 'g_object_add_weak_pointer' : parameter 'weak_pointer_location' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_object_bind_property' : parameter 'flags' of type 'BindingFlags' not supported
+var objectBindPropertyFunction *gi.Function
+var objectBindPropertyFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_object_bind_property_full' : parameter 'flags' of type 'BindingFlags' not supported
+func objectBindPropertyFunction_Set() error {
+	var err error
+	objectBindPropertyFunction_Once.Do(func() {
+		err = objectObject_Set()
+		if err != nil {
+			return
+		}
+		objectBindPropertyFunction, err = objectObject.InvokerNew("bind_property")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_object_bind_property_with_closures' : parameter 'flags' of type 'BindingFlags' not supported
+// BindProperty is a representation of the C type g_object_bind_property.
+func (recv *Object) BindProperty(sourceProperty string, target *Object, targetProperty string, flags BindingFlags) *Binding {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(sourceProperty)
+	inArgs[2].SetPointer(target.Native())
+	inArgs[3].SetString(targetProperty)
+	inArgs[4].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := objectBindPropertyFunction_Set()
+	if err == nil {
+		ret = objectBindPropertyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := BindingNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_object_bind_property_full' : parameter 'transform_to' of type 'BindingTransformFunc' not supported
+
+var objectBindPropertyWithClosuresFunction *gi.Function
+var objectBindPropertyWithClosuresFunction_Once sync.Once
+
+func objectBindPropertyWithClosuresFunction_Set() error {
+	var err error
+	objectBindPropertyWithClosuresFunction_Once.Do(func() {
+		err = objectObject_Set()
+		if err != nil {
+			return
+		}
+		objectBindPropertyWithClosuresFunction, err = objectObject.InvokerNew("bind_property_with_closures")
+	})
+	return err
+}
+
+// BindPropertyWithClosures is a representation of the C type g_object_bind_property_with_closures.
+func (recv *Object) BindPropertyWithClosures(sourceProperty string, target *Object, targetProperty string, flags BindingFlags, transformTo *Closure, transformFrom *Closure) *Binding {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(sourceProperty)
+	inArgs[2].SetPointer(target.Native())
+	inArgs[3].SetString(targetProperty)
+	inArgs[4].SetInt32(int32(flags))
+	inArgs[5].SetPointer(transformTo.Native())
+	inArgs[6].SetPointer(transformFrom.Native())
+
+	var ret gi.Argument
+
+	err := objectBindPropertyWithClosuresFunction_Set()
+	if err == nil {
+		ret = objectBindPropertyWithClosuresFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := BindingNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_object_connect' : parameter '...' of type 'nil' not supported
 
@@ -831,9 +931,19 @@ func (recv *ParamSpec) SetFieldName(value string) {
 	gi.ObjectFieldSet(paramSpecObject, recv.Native(), "name", argValue)
 }
 
-// UNSUPPORTED : C value 'flags' : for field getter : no Go type for 'ParamFlags'
+// FieldFlags returns the C field 'flags'.
+func (recv *ParamSpec) FieldFlags() ParamFlags {
+	argValue := gi.ObjectFieldGet(paramSpecObject, recv.Native(), "flags")
+	value := ParamFlags(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'flags' : for field setter : no Go type for 'ParamFlags'
+// SetFieldFlags sets the value of the C field 'flags'.
+func (recv *ParamSpec) SetFieldFlags(value ParamFlags) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.ObjectFieldSet(paramSpecObject, recv.Native(), "flags", argValue)
+}
 
 // UNSUPPORTED : C value 'value_type' : for field getter : no Go type for 'GType'
 

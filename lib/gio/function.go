@@ -97,7 +97,7 @@ func ActionPrintDetailedName(actionName string, targetValue *glib.Variant) strin
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_app_info_create_from_commandline' : parameter 'flags' of type 'AppInfoCreateFlags' not supported
+// UNSUPPORTED : C value 'g_app_info_create_from_commandline' : return type 'AppInfo' not supported
 
 var appInfoGetAllFunction *gi.Function
 var appInfoGetAllFunction_Once sync.Once
@@ -305,13 +305,74 @@ func BusGetSync(busType BusType, cancellable *Cancellable) *DBusConnection {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_bus_own_name' : parameter 'flags' of type 'BusNameOwnerFlags' not supported
+// UNSUPPORTED : C value 'g_bus_own_name' : parameter 'bus_acquired_handler' of type 'BusAcquiredCallback' not supported
 
-// UNSUPPORTED : C value 'g_bus_own_name_on_connection' : parameter 'flags' of type 'BusNameOwnerFlags' not supported
+// UNSUPPORTED : C value 'g_bus_own_name_on_connection' : parameter 'name_acquired_handler' of type 'BusNameAcquiredCallback' not supported
 
-// UNSUPPORTED : C value 'g_bus_own_name_on_connection_with_closures' : parameter 'flags' of type 'BusNameOwnerFlags' not supported
+var busOwnNameOnConnectionWithClosuresFunction *gi.Function
+var busOwnNameOnConnectionWithClosuresFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_bus_own_name_with_closures' : parameter 'flags' of type 'BusNameOwnerFlags' not supported
+func busOwnNameOnConnectionWithClosuresFunction_Set() error {
+	var err error
+	busOwnNameOnConnectionWithClosuresFunction_Once.Do(func() {
+		busOwnNameOnConnectionWithClosuresFunction, err = gi.FunctionInvokerNew("Gio", "bus_own_name_on_connection_with_closures")
+	})
+	return err
+}
+
+// BusOwnNameOnConnectionWithClosures is a representation of the C type g_bus_own_name_on_connection_with_closures.
+func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameOwnerFlags, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint32 {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(connection.Native())
+	inArgs[1].SetString(name)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(nameAcquiredClosure.Native())
+	inArgs[4].SetPointer(nameLostClosure.Native())
+
+	var ret gi.Argument
+
+	err := busOwnNameOnConnectionWithClosuresFunction_Set()
+	if err == nil {
+		ret = busOwnNameOnConnectionWithClosuresFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var busOwnNameWithClosuresFunction *gi.Function
+var busOwnNameWithClosuresFunction_Once sync.Once
+
+func busOwnNameWithClosuresFunction_Set() error {
+	var err error
+	busOwnNameWithClosuresFunction_Once.Do(func() {
+		busOwnNameWithClosuresFunction, err = gi.FunctionInvokerNew("Gio", "bus_own_name_with_closures")
+	})
+	return err
+}
+
+// BusOwnNameWithClosures is a representation of the C type g_bus_own_name_with_closures.
+func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlags, busAcquiredClosure *gobject.Closure, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint32 {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetInt32(int32(busType))
+	inArgs[1].SetString(name)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(busAcquiredClosure.Native())
+	inArgs[4].SetPointer(nameAcquiredClosure.Native())
+	inArgs[5].SetPointer(nameLostClosure.Native())
+
+	var ret gi.Argument
+
+	err := busOwnNameWithClosuresFunction_Set()
+	if err == nil {
+		ret = busOwnNameWithClosuresFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var busUnownNameFunction *gi.Function
 var busUnownNameFunction_Once sync.Once
@@ -361,13 +422,73 @@ func BusUnwatchName(watcherId uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_bus_watch_name' : parameter 'flags' of type 'BusNameWatcherFlags' not supported
+// UNSUPPORTED : C value 'g_bus_watch_name' : parameter 'name_appeared_handler' of type 'BusNameAppearedCallback' not supported
 
-// UNSUPPORTED : C value 'g_bus_watch_name_on_connection' : parameter 'flags' of type 'BusNameWatcherFlags' not supported
+// UNSUPPORTED : C value 'g_bus_watch_name_on_connection' : parameter 'name_appeared_handler' of type 'BusNameAppearedCallback' not supported
 
-// UNSUPPORTED : C value 'g_bus_watch_name_on_connection_with_closures' : parameter 'flags' of type 'BusNameWatcherFlags' not supported
+var busWatchNameOnConnectionWithClosuresFunction *gi.Function
+var busWatchNameOnConnectionWithClosuresFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_bus_watch_name_with_closures' : parameter 'flags' of type 'BusNameWatcherFlags' not supported
+func busWatchNameOnConnectionWithClosuresFunction_Set() error {
+	var err error
+	busWatchNameOnConnectionWithClosuresFunction_Once.Do(func() {
+		busWatchNameOnConnectionWithClosuresFunction, err = gi.FunctionInvokerNew("Gio", "bus_watch_name_on_connection_with_closures")
+	})
+	return err
+}
+
+// BusWatchNameOnConnectionWithClosures is a representation of the C type g_bus_watch_name_on_connection_with_closures.
+func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint32 {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(connection.Native())
+	inArgs[1].SetString(name)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(nameAppearedClosure.Native())
+	inArgs[4].SetPointer(nameVanishedClosure.Native())
+
+	var ret gi.Argument
+
+	err := busWatchNameOnConnectionWithClosuresFunction_Set()
+	if err == nil {
+		ret = busWatchNameOnConnectionWithClosuresFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var busWatchNameWithClosuresFunction *gi.Function
+var busWatchNameWithClosuresFunction_Once sync.Once
+
+func busWatchNameWithClosuresFunction_Set() error {
+	var err error
+	busWatchNameWithClosuresFunction_Once.Do(func() {
+		busWatchNameWithClosuresFunction, err = gi.FunctionInvokerNew("Gio", "bus_watch_name_with_closures")
+	})
+	return err
+}
+
+// BusWatchNameWithClosures is a representation of the C type g_bus_watch_name_with_closures.
+func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint32 {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetInt32(int32(busType))
+	inArgs[1].SetString(name)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(nameAppearedClosure.Native())
+	inArgs[4].SetPointer(nameVanishedClosure.Native())
+
+	var ret gi.Argument
+
+	err := busWatchNameWithClosuresFunction_Set()
+	if err == nil {
+		ret = busWatchNameWithClosuresFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var contentTypeCanBeExecutableFunction *gi.Function
 var contentTypeCanBeExecutableFunction_Once sync.Once
@@ -1804,13 +1925,120 @@ func ResourceLoad(filename string) *Resource {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_resources_enumerate_children' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
+var resourcesEnumerateChildrenFunction *gi.Function
+var resourcesEnumerateChildrenFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_resources_get_info' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
+func resourcesEnumerateChildrenFunction_Set() error {
+	var err error
+	resourcesEnumerateChildrenFunction_Once.Do(func() {
+		resourcesEnumerateChildrenFunction, err = gi.FunctionInvokerNew("Gio", "resources_enumerate_children")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_resources_lookup_data' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
+// ResourcesEnumerateChildren is a representation of the C type g_resources_enumerate_children.
+func ResourcesEnumerateChildren(path string, lookupFlags ResourceLookupFlags) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(path)
+	inArgs[1].SetInt32(int32(lookupFlags))
 
-// UNSUPPORTED : C value 'g_resources_open_stream' : parameter 'lookup_flags' of type 'ResourceLookupFlags' not supported
+	err := resourcesEnumerateChildrenFunction_Set()
+	if err == nil {
+		resourcesEnumerateChildrenFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var resourcesGetInfoFunction *gi.Function
+var resourcesGetInfoFunction_Once sync.Once
+
+func resourcesGetInfoFunction_Set() error {
+	var err error
+	resourcesGetInfoFunction_Once.Do(func() {
+		resourcesGetInfoFunction, err = gi.FunctionInvokerNew("Gio", "resources_get_info")
+	})
+	return err
+}
+
+// ResourcesGetInfo is a representation of the C type g_resources_get_info.
+func ResourcesGetInfo(path string, lookupFlags ResourceLookupFlags) (bool, uint64, uint32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(path)
+	inArgs[1].SetInt32(int32(lookupFlags))
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := resourcesGetInfoFunction_Set()
+	if err == nil {
+		ret = resourcesGetInfoFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Uint64()
+	out1 := outArgs[1].Uint32()
+
+	return retGo, out0, out1
+}
+
+var resourcesLookupDataFunction *gi.Function
+var resourcesLookupDataFunction_Once sync.Once
+
+func resourcesLookupDataFunction_Set() error {
+	var err error
+	resourcesLookupDataFunction_Once.Do(func() {
+		resourcesLookupDataFunction, err = gi.FunctionInvokerNew("Gio", "resources_lookup_data")
+	})
+	return err
+}
+
+// ResourcesLookupData is a representation of the C type g_resources_lookup_data.
+func ResourcesLookupData(path string, lookupFlags ResourceLookupFlags) *glib.Bytes {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(path)
+	inArgs[1].SetInt32(int32(lookupFlags))
+
+	var ret gi.Argument
+
+	err := resourcesLookupDataFunction_Set()
+	if err == nil {
+		ret = resourcesLookupDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.BytesNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var resourcesOpenStreamFunction *gi.Function
+var resourcesOpenStreamFunction_Once sync.Once
+
+func resourcesOpenStreamFunction_Set() error {
+	var err error
+	resourcesOpenStreamFunction_Once.Do(func() {
+		resourcesOpenStreamFunction, err = gi.FunctionInvokerNew("Gio", "resources_open_stream")
+	})
+	return err
+}
+
+// ResourcesOpenStream is a representation of the C type g_resources_open_stream.
+func ResourcesOpenStream(path string, lookupFlags ResourceLookupFlags) *InputStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(path)
+	inArgs[1].SetInt32(int32(lookupFlags))
+
+	var ret gi.Argument
+
+	err := resourcesOpenStreamFunction_Set()
+	if err == nil {
+		ret = resourcesOpenStreamFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := InputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var resourcesRegisterFunction *gi.Function
 var resourcesRegisterFunction_Once sync.Once

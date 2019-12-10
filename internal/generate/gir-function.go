@@ -41,8 +41,11 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	f.receiver = receiver
 
 	f.goName = makeExportedGoName(f.Name)
-	if f.namespace.Name == "GObject" && f.goName == "ParamSpecOverride" {
-		// Avoid name clash with a class of the same name.
+	// avoid name clash
+	if _, isClass := f.namespace.Classes.byName(f.goName); isClass {
+		f.goName += "_"
+	}
+	if _, isBitfield := f.namespace.Bitfields.byGoTypeName(f.goName); isBitfield {
 		f.goName += "_"
 	}
 

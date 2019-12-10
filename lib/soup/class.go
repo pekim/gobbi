@@ -4378,7 +4378,37 @@ func (recv *Message) GetFirstParty() *URI {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_message_get_flags' : return type 'MessageFlags' not supported
+var messageGetFlagsFunction *gi.Function
+var messageGetFlagsFunction_Once sync.Once
+
+func messageGetFlagsFunction_Set() error {
+	var err error
+	messageGetFlagsFunction_Once.Do(func() {
+		err = messageObject_Set()
+		if err != nil {
+			return
+		}
+		messageGetFlagsFunction, err = messageObject.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type soup_message_get_flags.
+func (recv *Message) GetFlags() MessageFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := messageGetFlagsFunction_Set()
+	if err == nil {
+		ret = messageGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := MessageFlags(ret.Int32())
+
+	return retGo
+}
 
 var messageGetHttpVersionFunction *gi.Function
 var messageGetHttpVersionFunction_Once sync.Once
@@ -4714,7 +4744,34 @@ func (recv *Message) SetFirstParty(firstParty *URI) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_message_set_flags' : parameter 'flags' of type 'MessageFlags' not supported
+var messageSetFlagsFunction *gi.Function
+var messageSetFlagsFunction_Once sync.Once
+
+func messageSetFlagsFunction_Set() error {
+	var err error
+	messageSetFlagsFunction_Once.Do(func() {
+		err = messageObject_Set()
+		if err != nil {
+			return
+		}
+		messageSetFlagsFunction, err = messageObject.InvokerNew("set_flags")
+	})
+	return err
+}
+
+// SetFlags is a representation of the C type soup_message_set_flags.
+func (recv *Message) SetFlags(flags MessageFlags) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	err := messageSetFlagsFunction_Set()
+	if err == nil {
+		messageSetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var messageSetHttpVersionFunction *gi.Function
 var messageSetHttpVersionFunction_Once sync.Once
@@ -6259,8 +6316,8 @@ func requesterRequestFunction_Set() error {
 	return err
 }
 
-// Request is a representation of the C type soup_requester_request.
-func (recv *Requester) Request(uriString string) *Request {
+// Request_ is a representation of the C type soup_requester_request.
+func (recv *Requester) Request_(uriString string) *Request {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(uriString)
@@ -6678,15 +6735,175 @@ func (recv *Server) IsHttps() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_server_listen' : parameter 'options' of type 'ServerListenOptions' not supported
+var serverListenFunction *gi.Function
+var serverListenFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_server_listen_all' : parameter 'options' of type 'ServerListenOptions' not supported
+func serverListenFunction_Set() error {
+	var err error
+	serverListenFunction_Once.Do(func() {
+		err = serverObject_Set()
+		if err != nil {
+			return
+		}
+		serverListenFunction, err = serverObject.InvokerNew("listen")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_server_listen_fd' : parameter 'options' of type 'ServerListenOptions' not supported
+// Listen is a representation of the C type soup_server_listen.
+func (recv *Server) Listen(address *gio.SocketAddress, options ServerListenOptions) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(address.Native())
+	inArgs[2].SetInt32(int32(options))
 
-// UNSUPPORTED : C value 'soup_server_listen_local' : parameter 'options' of type 'ServerListenOptions' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'soup_server_listen_socket' : parameter 'options' of type 'ServerListenOptions' not supported
+	err := serverListenFunction_Set()
+	if err == nil {
+		ret = serverListenFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var serverListenAllFunction *gi.Function
+var serverListenAllFunction_Once sync.Once
+
+func serverListenAllFunction_Set() error {
+	var err error
+	serverListenAllFunction_Once.Do(func() {
+		err = serverObject_Set()
+		if err != nil {
+			return
+		}
+		serverListenAllFunction, err = serverObject.InvokerNew("listen_all")
+	})
+	return err
+}
+
+// ListenAll is a representation of the C type soup_server_listen_all.
+func (recv *Server) ListenAll(port uint32, options ServerListenOptions) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(port)
+	inArgs[2].SetInt32(int32(options))
+
+	var ret gi.Argument
+
+	err := serverListenAllFunction_Set()
+	if err == nil {
+		ret = serverListenAllFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var serverListenFdFunction *gi.Function
+var serverListenFdFunction_Once sync.Once
+
+func serverListenFdFunction_Set() error {
+	var err error
+	serverListenFdFunction_Once.Do(func() {
+		err = serverObject_Set()
+		if err != nil {
+			return
+		}
+		serverListenFdFunction, err = serverObject.InvokerNew("listen_fd")
+	})
+	return err
+}
+
+// ListenFd is a representation of the C type soup_server_listen_fd.
+func (recv *Server) ListenFd(fd int32, options ServerListenOptions) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(fd)
+	inArgs[2].SetInt32(int32(options))
+
+	var ret gi.Argument
+
+	err := serverListenFdFunction_Set()
+	if err == nil {
+		ret = serverListenFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var serverListenLocalFunction *gi.Function
+var serverListenLocalFunction_Once sync.Once
+
+func serverListenLocalFunction_Set() error {
+	var err error
+	serverListenLocalFunction_Once.Do(func() {
+		err = serverObject_Set()
+		if err != nil {
+			return
+		}
+		serverListenLocalFunction, err = serverObject.InvokerNew("listen_local")
+	})
+	return err
+}
+
+// ListenLocal is a representation of the C type soup_server_listen_local.
+func (recv *Server) ListenLocal(port uint32, options ServerListenOptions) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(port)
+	inArgs[2].SetInt32(int32(options))
+
+	var ret gi.Argument
+
+	err := serverListenLocalFunction_Set()
+	if err == nil {
+		ret = serverListenLocalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var serverListenSocketFunction *gi.Function
+var serverListenSocketFunction_Once sync.Once
+
+func serverListenSocketFunction_Set() error {
+	var err error
+	serverListenSocketFunction_Once.Do(func() {
+		err = serverObject_Set()
+		if err != nil {
+			return
+		}
+		serverListenSocketFunction, err = serverObject.InvokerNew("listen_socket")
+	})
+	return err
+}
+
+// ListenSocket is a representation of the C type soup_server_listen_socket.
+func (recv *Server) ListenSocket(socket *gio.Socket, options ServerListenOptions) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(socket.Native())
+	inArgs[2].SetInt32(int32(options))
+
+	var ret gi.Argument
+
+	err := serverListenSocketFunction_Set()
+	if err == nil {
+		ret = serverListenSocketFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var serverPauseMessageFunction *gi.Function
 var serverPauseMessageFunction_Once sync.Once
@@ -7344,8 +7561,8 @@ func sessionRequestFunction_Set() error {
 	return err
 }
 
-// Request is a representation of the C type soup_session_request.
-func (recv *Session) Request(uriString string) *Request {
+// Request_ is a representation of the C type soup_session_request.
+func (recv *Session) Request_(uriString string) *Request {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(uriString)

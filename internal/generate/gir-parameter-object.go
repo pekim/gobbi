@@ -57,6 +57,14 @@ func (p Parameter) generateValueFromObject(s *jen.Statement, objectVarName strin
 		return
 	}
 
+	if resolvedType.isBitfield() {
+		bitfield, _ := resolvedType.namespace.Bitfields.byName(resolvedType.Name)
+		s.Params(jen.Id(bitfield.goTypeName)).
+			Params(jen.Id(objectVarName).Dot("GetInt").Call())
+
+		return
+	}
+
 	if resolvedType.isEnumeration() {
 		enum, _ := resolvedType.namespace.Enumerations.byName(resolvedType.Name)
 		s.Params(jen.Id(enum.goTypeName)).

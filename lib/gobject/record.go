@@ -1573,9 +1573,19 @@ func (recv *SignalInvocationHint) SetFieldDetail(value glib.Quark) {
 	gi.StructFieldSet(signalInvocationHintStruct, recv.Native(), "detail", argValue)
 }
 
-// UNSUPPORTED : C value 'run_type' : for field getter : no Go type for 'SignalFlags'
+// FieldRunType returns the C field 'run_type'.
+func (recv *SignalInvocationHint) FieldRunType() SignalFlags {
+	argValue := gi.StructFieldGet(signalInvocationHintStruct, recv.Native(), "run_type")
+	value := SignalFlags(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'run_type' : for field setter : no Go type for 'SignalFlags'
+// SetFieldRunType sets the value of the C field 'run_type'.
+func (recv *SignalInvocationHint) SetFieldRunType(value SignalFlags) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(signalInvocationHintStruct, recv.Native(), "run_type", argValue)
+}
 
 // SignalInvocationHintStruct creates an uninitialised SignalInvocationHint.
 func SignalInvocationHintStruct() *SignalInvocationHint {
@@ -1654,9 +1664,19 @@ func (recv *SignalQuery_) SetFieldSignalName(value string) {
 
 // UNSUPPORTED : C value 'itype' : for field setter : no Go type for 'GType'
 
-// UNSUPPORTED : C value 'signal_flags' : for field getter : no Go type for 'SignalFlags'
+// FieldSignalFlags returns the C field 'signal_flags'.
+func (recv *SignalQuery_) FieldSignalFlags() SignalFlags {
+	argValue := gi.StructFieldGet(signalQueryStruct, recv.Native(), "signal_flags")
+	value := SignalFlags(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'signal_flags' : for field setter : no Go type for 'SignalFlags'
+// SetFieldSignalFlags sets the value of the C field 'signal_flags'.
+func (recv *SignalQuery_) SetFieldSignalFlags(value SignalFlags) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(signalQueryStruct, recv.Native(), "signal_flags", argValue)
+}
 
 // UNSUPPORTED : C value 'return_type' : for field getter : no Go type for 'GType'
 
@@ -1921,9 +1941,19 @@ func (recv *TypeFundamentalInfo) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'type_flags' : for field getter : no Go type for 'TypeFundamentalFlags'
+// FieldTypeFlags returns the C field 'type_flags'.
+func (recv *TypeFundamentalInfo) FieldTypeFlags() TypeFundamentalFlags {
+	argValue := gi.StructFieldGet(typeFundamentalInfoStruct, recv.Native(), "type_flags")
+	value := TypeFundamentalFlags(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'type_flags' : for field setter : no Go type for 'TypeFundamentalFlags'
+// SetFieldTypeFlags sets the value of the C field 'type_flags'.
+func (recv *TypeFundamentalInfo) SetFieldTypeFlags(value TypeFundamentalFlags) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(typeFundamentalInfoStruct, recv.Native(), "type_flags", argValue)
+}
 
 // TypeFundamentalInfoStruct creates an uninitialised TypeFundamentalInfo.
 func TypeFundamentalInfoStruct() *TypeFundamentalInfo {

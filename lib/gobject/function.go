@@ -305,27 +305,249 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 
 // UNSUPPORTED : C value 'g_gtype_get_type' : return type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_boolean' : parameter 'flags' of type 'ParamFlags' not supported
+var paramSpecBooleanFunction *gi.Function
+var paramSpecBooleanFunction_Once sync.Once
+
+func paramSpecBooleanFunction_Set() error {
+	var err error
+	paramSpecBooleanFunction_Once.Do(func() {
+		paramSpecBooleanFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_boolean")
+	})
+	return err
+}
+
+// ParamSpecBoolean_ is a representation of the C type g_param_spec_boolean.
+func ParamSpecBoolean_(name string, nick string, blurb string, defaultValue bool, flags ParamFlags) *ParamSpec {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetBoolean(defaultValue)
+	inArgs[4].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecBooleanFunction_Set()
+	if err == nil {
+		ret = paramSpecBooleanFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_param_spec_boxed' : parameter 'boxed_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_char' : parameter 'flags' of type 'ParamFlags' not supported
+var paramSpecCharFunction *gi.Function
+var paramSpecCharFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_param_spec_double' : parameter 'flags' of type 'ParamFlags' not supported
+func paramSpecCharFunction_Set() error {
+	var err error
+	paramSpecCharFunction_Once.Do(func() {
+		paramSpecCharFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_char")
+	})
+	return err
+}
+
+// ParamSpecChar_ is a representation of the C type g_param_spec_char.
+func ParamSpecChar_(name string, nick string, blurb string, minimum int8, maximum int8, defaultValue int8, flags ParamFlags) *ParamSpec {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetInt8(minimum)
+	inArgs[4].SetInt8(maximum)
+	inArgs[5].SetInt8(defaultValue)
+	inArgs[6].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecCharFunction_Set()
+	if err == nil {
+		ret = paramSpecCharFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var paramSpecDoubleFunction *gi.Function
+var paramSpecDoubleFunction_Once sync.Once
+
+func paramSpecDoubleFunction_Set() error {
+	var err error
+	paramSpecDoubleFunction_Once.Do(func() {
+		paramSpecDoubleFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_double")
+	})
+	return err
+}
+
+// ParamSpecDouble_ is a representation of the C type g_param_spec_double.
+func ParamSpecDouble_(name string, nick string, blurb string, minimum float64, maximum float64, defaultValue float64, flags ParamFlags) *ParamSpec {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetFloat64(minimum)
+	inArgs[4].SetFloat64(maximum)
+	inArgs[5].SetFloat64(defaultValue)
+	inArgs[6].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecDoubleFunction_Set()
+	if err == nil {
+		ret = paramSpecDoubleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_param_spec_enum' : parameter 'enum_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_param_spec_flags' : parameter 'flags_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_float' : parameter 'flags' of type 'ParamFlags' not supported
+var paramSpecFloatFunction *gi.Function
+var paramSpecFloatFunction_Once sync.Once
+
+func paramSpecFloatFunction_Set() error {
+	var err error
+	paramSpecFloatFunction_Once.Do(func() {
+		paramSpecFloatFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_float")
+	})
+	return err
+}
+
+// ParamSpecFloat_ is a representation of the C type g_param_spec_float.
+func ParamSpecFloat_(name string, nick string, blurb string, minimum float32, maximum float32, defaultValue float32, flags ParamFlags) *ParamSpec {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetFloat32(minimum)
+	inArgs[4].SetFloat32(maximum)
+	inArgs[5].SetFloat32(defaultValue)
+	inArgs[6].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecFloatFunction_Set()
+	if err == nil {
+		ret = paramSpecFloatFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_param_spec_gtype' : parameter 'is_a_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_int' : parameter 'flags' of type 'ParamFlags' not supported
+var paramSpecIntFunction *gi.Function
+var paramSpecIntFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_param_spec_int64' : parameter 'flags' of type 'ParamFlags' not supported
+func paramSpecIntFunction_Set() error {
+	var err error
+	paramSpecIntFunction_Once.Do(func() {
+		paramSpecIntFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_int")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_param_spec_long' : parameter 'flags' of type 'ParamFlags' not supported
+// ParamSpecInt_ is a representation of the C type g_param_spec_int.
+func ParamSpecInt_(name string, nick string, blurb string, minimum int32, maximum int32, defaultValue int32, flags ParamFlags) *ParamSpec {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetInt32(minimum)
+	inArgs[4].SetInt32(maximum)
+	inArgs[5].SetInt32(defaultValue)
+	inArgs[6].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecIntFunction_Set()
+	if err == nil {
+		ret = paramSpecIntFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var paramSpecInt64Function *gi.Function
+var paramSpecInt64Function_Once sync.Once
+
+func paramSpecInt64Function_Set() error {
+	var err error
+	paramSpecInt64Function_Once.Do(func() {
+		paramSpecInt64Function, err = gi.FunctionInvokerNew("GObject", "param_spec_int64")
+	})
+	return err
+}
+
+// ParamSpecInt64_ is a representation of the C type g_param_spec_int64.
+func ParamSpecInt64_(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags ParamFlags) *ParamSpec {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetInt64(minimum)
+	inArgs[4].SetInt64(maximum)
+	inArgs[5].SetInt64(defaultValue)
+	inArgs[6].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecInt64Function_Set()
+	if err == nil {
+		ret = paramSpecInt64Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var paramSpecLongFunction *gi.Function
+var paramSpecLongFunction_Once sync.Once
+
+func paramSpecLongFunction_Set() error {
+	var err error
+	paramSpecLongFunction_Once.Do(func() {
+		paramSpecLongFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_long")
+	})
+	return err
+}
+
+// ParamSpecLong_ is a representation of the C type g_param_spec_long.
+func ParamSpecLong_(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags ParamFlags) *ParamSpec {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetInt64(minimum)
+	inArgs[4].SetInt64(maximum)
+	inArgs[5].SetInt64(defaultValue)
+	inArgs[6].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecLongFunction_Set()
+	if err == nil {
+		ret = paramSpecLongFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_param_spec_object' : parameter 'object_type' of type 'GType' not supported
 
@@ -360,7 +582,36 @@ func ParamSpecOverride_(name string, overridden *ParamSpec) *ParamSpec {
 
 // UNSUPPORTED : C value 'g_param_spec_param' : parameter 'param_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_pointer' : parameter 'flags' of type 'ParamFlags' not supported
+var paramSpecPointerFunction *gi.Function
+var paramSpecPointerFunction_Once sync.Once
+
+func paramSpecPointerFunction_Set() error {
+	var err error
+	paramSpecPointerFunction_Once.Do(func() {
+		paramSpecPointerFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_pointer")
+	})
+	return err
+}
+
+// ParamSpecPointer_ is a representation of the C type g_param_spec_pointer.
+func ParamSpecPointer_(name string, nick string, blurb string, flags ParamFlags) *ParamSpec {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecPointerFunction_Set()
+	if err == nil {
+		ret = paramSpecPointerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var paramSpecPoolNewFunction *gi.Function
 var paramSpecPoolNewFunction_Once sync.Once
@@ -390,21 +641,240 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_param_spec_string' : parameter 'flags' of type 'ParamFlags' not supported
+var paramSpecStringFunction *gi.Function
+var paramSpecStringFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_param_spec_uchar' : parameter 'flags' of type 'ParamFlags' not supported
+func paramSpecStringFunction_Set() error {
+	var err error
+	paramSpecStringFunction_Once.Do(func() {
+		paramSpecStringFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_string")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_param_spec_uint' : parameter 'flags' of type 'ParamFlags' not supported
+// ParamSpecString_ is a representation of the C type g_param_spec_string.
+func ParamSpecString_(name string, nick string, blurb string, defaultValue string, flags ParamFlags) *ParamSpec {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetString(defaultValue)
+	inArgs[4].SetInt32(int32(flags))
 
-// UNSUPPORTED : C value 'g_param_spec_uint64' : parameter 'flags' of type 'ParamFlags' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_param_spec_ulong' : parameter 'flags' of type 'ParamFlags' not supported
+	err := paramSpecStringFunction_Set()
+	if err == nil {
+		ret = paramSpecStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var paramSpecUcharFunction *gi.Function
+var paramSpecUcharFunction_Once sync.Once
+
+func paramSpecUcharFunction_Set() error {
+	var err error
+	paramSpecUcharFunction_Once.Do(func() {
+		paramSpecUcharFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_uchar")
+	})
+	return err
+}
+
+// ParamSpecUchar is a representation of the C type g_param_spec_uchar.
+func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maximum uint8, defaultValue uint8, flags ParamFlags) *ParamSpec {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetUint8(minimum)
+	inArgs[4].SetUint8(maximum)
+	inArgs[5].SetUint8(defaultValue)
+	inArgs[6].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecUcharFunction_Set()
+	if err == nil {
+		ret = paramSpecUcharFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var paramSpecUintFunction *gi.Function
+var paramSpecUintFunction_Once sync.Once
+
+func paramSpecUintFunction_Set() error {
+	var err error
+	paramSpecUintFunction_Once.Do(func() {
+		paramSpecUintFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_uint")
+	})
+	return err
+}
+
+// ParamSpecUint is a representation of the C type g_param_spec_uint.
+func ParamSpecUint(name string, nick string, blurb string, minimum uint32, maximum uint32, defaultValue uint32, flags ParamFlags) *ParamSpec {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetUint32(minimum)
+	inArgs[4].SetUint32(maximum)
+	inArgs[5].SetUint32(defaultValue)
+	inArgs[6].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecUintFunction_Set()
+	if err == nil {
+		ret = paramSpecUintFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var paramSpecUint64Function *gi.Function
+var paramSpecUint64Function_Once sync.Once
+
+func paramSpecUint64Function_Set() error {
+	var err error
+	paramSpecUint64Function_Once.Do(func() {
+		paramSpecUint64Function, err = gi.FunctionInvokerNew("GObject", "param_spec_uint64")
+	})
+	return err
+}
+
+// ParamSpecUint64 is a representation of the C type g_param_spec_uint64.
+func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags ParamFlags) *ParamSpec {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetUint64(minimum)
+	inArgs[4].SetUint64(maximum)
+	inArgs[5].SetUint64(defaultValue)
+	inArgs[6].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecUint64Function_Set()
+	if err == nil {
+		ret = paramSpecUint64Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var paramSpecUlongFunction *gi.Function
+var paramSpecUlongFunction_Once sync.Once
+
+func paramSpecUlongFunction_Set() error {
+	var err error
+	paramSpecUlongFunction_Once.Do(func() {
+		paramSpecUlongFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_ulong")
+	})
+	return err
+}
+
+// ParamSpecUlong is a representation of the C type g_param_spec_ulong.
+func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags ParamFlags) *ParamSpec {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetUint64(minimum)
+	inArgs[4].SetUint64(maximum)
+	inArgs[5].SetUint64(defaultValue)
+	inArgs[6].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecUlongFunction_Set()
+	if err == nil {
+		ret = paramSpecUlongFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_param_spec_unichar' : parameter 'default_value' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'g_param_spec_value_array' : parameter 'flags' of type 'ParamFlags' not supported
+var paramSpecValueArrayFunction *gi.Function
+var paramSpecValueArrayFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_param_spec_variant' : parameter 'flags' of type 'ParamFlags' not supported
+func paramSpecValueArrayFunction_Set() error {
+	var err error
+	paramSpecValueArrayFunction_Once.Do(func() {
+		paramSpecValueArrayFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_value_array")
+	})
+	return err
+}
+
+// ParamSpecValueArray_ is a representation of the C type g_param_spec_value_array.
+func ParamSpecValueArray_(name string, nick string, blurb string, elementSpec *ParamSpec, flags ParamFlags) *ParamSpec {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetPointer(elementSpec.Native())
+	inArgs[4].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecValueArrayFunction_Set()
+	if err == nil {
+		ret = paramSpecValueArrayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var paramSpecVariantFunction *gi.Function
+var paramSpecVariantFunction_Once sync.Once
+
+func paramSpecVariantFunction_Set() error {
+	var err error
+	paramSpecVariantFunction_Once.Do(func() {
+		paramSpecVariantFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_variant")
+	})
+	return err
+}
+
+// ParamSpecVariant_ is a representation of the C type g_param_spec_variant.
+func ParamSpecVariant_(name string, nick string, blurb string, type_ *glib.VariantType, defaultValue *glib.Variant, flags ParamFlags) *ParamSpec {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetPointer(type_.Native())
+	inArgs[4].SetPointer(defaultValue.Native())
+	inArgs[5].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecVariantFunction_Set()
+	if err == nil {
+		ret = paramSpecVariantFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_param_type_register_static' : return type 'GType' not supported
 
@@ -717,7 +1187,7 @@ func SignalHandlerDisconnect(instance *Object, handlerId uint64) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_signal_handler_find' : parameter 'mask' of type 'SignalMatchType' not supported
+// UNSUPPORTED : C value 'g_signal_handler_find' : parameter 'func' of type 'gpointer' not supported
 
 var signalHandlerIsConnectedFunction *gi.Function
 var signalHandlerIsConnectedFunction_Once sync.Once
@@ -773,7 +1243,7 @@ func SignalHandlerUnblock(instance *Object, handlerId uint64) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_signal_handlers_block_matched' : parameter 'mask' of type 'SignalMatchType' not supported
+// UNSUPPORTED : C value 'g_signal_handlers_block_matched' : parameter 'func' of type 'gpointer' not supported
 
 var signalHandlersDestroyFunction *gi.Function
 var signalHandlersDestroyFunction_Once sync.Once
@@ -799,9 +1269,9 @@ func SignalHandlersDestroy(instance *Object) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_signal_handlers_disconnect_matched' : parameter 'mask' of type 'SignalMatchType' not supported
+// UNSUPPORTED : C value 'g_signal_handlers_disconnect_matched' : parameter 'func' of type 'gpointer' not supported
 
-// UNSUPPORTED : C value 'g_signal_handlers_unblock_matched' : parameter 'mask' of type 'SignalMatchType' not supported
+// UNSUPPORTED : C value 'g_signal_handlers_unblock_matched' : parameter 'func' of type 'gpointer' not supported
 
 var signalHasHandlerPendingFunction *gi.Function
 var signalHasHandlerPendingFunction_Once sync.Once
@@ -1275,7 +1745,29 @@ func TypeInit() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_type_init_with_debug_flags' : parameter 'debug_flags' of type 'TypeDebugFlags' not supported
+var typeInitWithDebugFlagsFunction *gi.Function
+var typeInitWithDebugFlagsFunction_Once sync.Once
+
+func typeInitWithDebugFlagsFunction_Set() error {
+	var err error
+	typeInitWithDebugFlagsFunction_Once.Do(func() {
+		typeInitWithDebugFlagsFunction, err = gi.FunctionInvokerNew("GObject", "type_init_with_debug_flags")
+	})
+	return err
+}
+
+// TypeInitWithDebugFlags is a representation of the C type g_type_init_with_debug_flags.
+func TypeInitWithDebugFlags(debugFlags TypeDebugFlags) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt32(int32(debugFlags))
+
+	err := typeInitWithDebugFlagsFunction_Set()
+	if err == nil {
+		typeInitWithDebugFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_type_interface_add_prerequisite' : parameter 'interface_type' of type 'GType' not supported
 

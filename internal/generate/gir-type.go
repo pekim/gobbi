@@ -141,6 +141,16 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 		return jen.Op("*").Id(record.goName), nil
 	}
 
+	if t.isBitfield() {
+		if t.isQualifiedName() {
+			bitfield, _ := t.foreignNamespace.Bitfields.byName(t.foreignName)
+			return jen.Qual(t.foreignNamespace.goFullPackageName, bitfield.goTypeName), nil
+		}
+
+		bitfield, _ := t.namespace.Bitfields.byName(t.Name)
+		return jen.Id(bitfield.goTypeName), nil
+	}
+
 	return nil, fmt.Errorf("no Go type for '%s'", t.Name)
 }
 
@@ -214,6 +224,10 @@ func (t *Type) argumentValueGetFunctionName() string {
 		return getFunctionName
 	}
 
+	if t.isBitfield() {
+		return argumentGetFunctionNames["int"]
+	}
+
 	if t.isEnumeration() {
 		return argumentGetFunctionNames["int"]
 	}
@@ -250,6 +264,10 @@ func (t *Type) argumentValueSetFunctionName() string {
 
 	if setFunctionName, ok := argumentSetFunctionNames[resolvedType.Name]; ok {
 		return setFunctionName
+	}
+
+	if t.isBitfield() {
+		return argumentSetFunctionNames["int"]
 	}
 
 	if t.isEnumeration() {
@@ -360,6 +378,13 @@ func (t *Type) generateOutArgValue(g *jen.Group,
 			Parens(argValue)
 	}
 
+	if t.isBitfield() {
+		bitfield, _ := t.namespace.Bitfields.byName(t.Name)
+		argValue = jen.
+			Id(bitfield.goTypeName).
+			Parens(argValue)
+	}
+
 	if t.isEnumeration() {
 		argValue = jen.
 			Id(t.Name).
@@ -375,6 +400,11 @@ func (t *Type) isString() bool {
 
 func (t *Type) isAlias() bool {
 	_, found := t.namespace.Aliases.byName(t.Name)
+	return found
+}
+
+func (t *Type) isBitfield() bool {
+	_, found := t.namespace.Bitfields.byName(t.Name)
 	return found
 }
 

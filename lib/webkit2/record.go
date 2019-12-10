@@ -9007,9 +9007,70 @@ func (recv *WebsiteData) GetName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_website_data_get_size' : parameter 'types' of type 'WebsiteDataTypes' not supported
+var websiteDataGetSizeFunction *gi.Function
+var websiteDataGetSizeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_website_data_get_types' : return type 'WebsiteDataTypes' not supported
+func websiteDataGetSizeFunction_Set() error {
+	var err error
+	websiteDataGetSizeFunction_Once.Do(func() {
+		err = websiteDataStruct_Set()
+		if err != nil {
+			return
+		}
+		websiteDataGetSizeFunction, err = websiteDataStruct.InvokerNew("get_size")
+	})
+	return err
+}
+
+// GetSize is a representation of the C type webkit_website_data_get_size.
+func (recv *WebsiteData) GetSize(types WebsiteDataTypes) uint64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(types))
+
+	var ret gi.Argument
+
+	err := websiteDataGetSizeFunction_Set()
+	if err == nil {
+		ret = websiteDataGetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+var websiteDataGetTypesFunction *gi.Function
+var websiteDataGetTypesFunction_Once sync.Once
+
+func websiteDataGetTypesFunction_Set() error {
+	var err error
+	websiteDataGetTypesFunction_Once.Do(func() {
+		err = websiteDataStruct_Set()
+		if err != nil {
+			return
+		}
+		websiteDataGetTypesFunction, err = websiteDataStruct.InvokerNew("get_types")
+	})
+	return err
+}
+
+// GetTypes is a representation of the C type webkit_website_data_get_types.
+func (recv *WebsiteData) GetTypes() WebsiteDataTypes {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := websiteDataGetTypesFunction_Set()
+	if err == nil {
+		ret = websiteDataGetTypesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WebsiteDataTypes(ret.Int32())
+
+	return retGo
+}
 
 var websiteDataRefFunction *gi.Function
 var websiteDataRefFunction_Once sync.Once

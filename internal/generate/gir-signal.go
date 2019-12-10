@@ -206,14 +206,3 @@ func (s *Signal) generateMarshalBodyCallHandler(g *jen.Group) {
 		}
 	})
 }
-
-//func (recv *Widget) ConnectShow(handler func(widget *Widget)) int {
-//	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-//		value0 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
-//		widget := WidgetNewFromNative(value0.GetObject().Native())
-//
-//		handler(widget)
-//	}
-//
-//	return callback.ConnectSignal(recv.Native(), "show", marshal)
-//}

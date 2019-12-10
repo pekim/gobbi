@@ -79,7 +79,7 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 			Parens(goVar)
 	}
 
-	if p.Type.isEnumeration() {
+	if p.Type.isBitfield() || p.Type.isEnumeration() {
 		goVar = jen.
 			Add(jenGoTypes["int"]).
 			Parens(goVar)

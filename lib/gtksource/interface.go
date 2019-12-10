@@ -372,7 +372,37 @@ func (recv *CompletionProvider) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'gtk_source_completion_provider_activate_proposal' : parameter 'proposal' of type 'CompletionProposal' not supported
 
-// UNSUPPORTED : C value 'gtk_source_completion_provider_get_activation' : return type 'CompletionActivation' not supported
+var completionProviderGetActivationFunction *gi.Function
+var completionProviderGetActivationFunction_Once sync.Once
+
+func completionProviderGetActivationFunction_Set() error {
+	var err error
+	completionProviderGetActivationFunction_Once.Do(func() {
+		err = completionProviderInterface_Set()
+		if err != nil {
+			return
+		}
+		completionProviderGetActivationFunction, err = completionProviderInterface.InvokerNew("get_activation")
+	})
+	return err
+}
+
+// GetActivation is a representation of the C type gtk_source_completion_provider_get_activation.
+func (recv *CompletionProvider) GetActivation() CompletionActivation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := completionProviderGetActivationFunction_Set()
+	if err == nil {
+		ret = completionProviderGetActivationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CompletionActivation(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_completion_provider_get_gicon' : return type 'Gio.Icon' not supported
 

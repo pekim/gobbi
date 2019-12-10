@@ -12204,9 +12204,19 @@ func (recv *FileFilterInfo) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'contains' : for field getter : no Go type for 'FileFilterFlags'
+// FieldContains returns the C field 'contains'.
+func (recv *FileFilterInfo) FieldContains() FileFilterFlags {
+	argValue := gi.StructFieldGet(fileFilterInfoStruct, recv.Native(), "contains")
+	value := FileFilterFlags(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'contains' : for field setter : no Go type for 'FileFilterFlags'
+// SetFieldContains sets the value of the C field 'contains'.
+func (recv *FileFilterInfo) SetFieldContains(value FileFilterFlags) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(fileFilterInfoStruct, recv.Native(), "contains", argValue)
+}
 
 // FieldFilename returns the C field 'filename'.
 func (recv *FileFilterInfo) FieldFilename() string {
@@ -28204,9 +28214,19 @@ func (recv *RecentFilterInfo) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'contains' : for field getter : no Go type for 'RecentFilterFlags'
+// FieldContains returns the C field 'contains'.
+func (recv *RecentFilterInfo) FieldContains() RecentFilterFlags {
+	argValue := gi.StructFieldGet(recentFilterInfoStruct, recv.Native(), "contains")
+	value := RecentFilterFlags(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'contains' : for field setter : no Go type for 'RecentFilterFlags'
+// SetFieldContains sets the value of the C field 'contains'.
+func (recv *RecentFilterInfo) SetFieldContains(value RecentFilterFlags) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(recentFilterInfoStruct, recv.Native(), "contains", argValue)
+}
 
 // FieldUri returns the C field 'uri'.
 func (recv *RecentFilterInfo) FieldUri() string {
@@ -37906,7 +37926,43 @@ func (recv *TextIter) BackwardLines(count int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_backward_search' : parameter 'flags' of type 'TextSearchFlags' not supported
+var textIterBackwardSearchFunction *gi.Function
+var textIterBackwardSearchFunction_Once sync.Once
+
+func textIterBackwardSearchFunction_Set() error {
+	var err error
+	textIterBackwardSearchFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterBackwardSearchFunction, err = textIterStruct.InvokerNew("backward_search")
+	})
+	return err
+}
+
+// BackwardSearch is a representation of the C type gtk_text_iter_backward_search.
+func (recv *TextIter) BackwardSearch(str string, flags TextSearchFlags, limit *TextIter) (bool, *TextIter, *TextIter) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(str)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(limit.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := textIterBackwardSearchFunction_Set()
+	if err == nil {
+		ret = textIterBackwardSearchFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := TextIterNewFromNative(outArgs[0].Pointer())
+	out1 := TextIterNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
 
 var textIterBackwardSentenceStartFunction *gi.Function
 var textIterBackwardSentenceStartFunction_Once sync.Once
@@ -38789,7 +38845,43 @@ func (recv *TextIter) ForwardLines(count int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_forward_search' : parameter 'flags' of type 'TextSearchFlags' not supported
+var textIterForwardSearchFunction *gi.Function
+var textIterForwardSearchFunction_Once sync.Once
+
+func textIterForwardSearchFunction_Set() error {
+	var err error
+	textIterForwardSearchFunction_Once.Do(func() {
+		err = textIterStruct_Set()
+		if err != nil {
+			return
+		}
+		textIterForwardSearchFunction, err = textIterStruct.InvokerNew("forward_search")
+	})
+	return err
+}
+
+// ForwardSearch is a representation of the C type gtk_text_iter_forward_search.
+func (recv *TextIter) ForwardSearch(str string, flags TextSearchFlags, limit *TextIter) (bool, *TextIter, *TextIter) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(str)
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(limit.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := textIterForwardSearchFunction_Set()
+	if err == nil {
+		ret = textIterForwardSearchFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := TextIterNewFromNative(outArgs[0].Pointer())
+	out1 := TextIterNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
 
 var textIterForwardSentenceEndFunction *gi.Function
 var textIterForwardSentenceEndFunction_Once sync.Once
@@ -47226,7 +47318,36 @@ func (recv *WidgetPath) IterAddClass(pos int32, name string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_path_iter_add_region' : parameter 'flags' of type 'RegionFlags' not supported
+var widgetPathIterAddRegionFunction *gi.Function
+var widgetPathIterAddRegionFunction_Once sync.Once
+
+func widgetPathIterAddRegionFunction_Set() error {
+	var err error
+	widgetPathIterAddRegionFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterAddRegionFunction, err = widgetPathStruct.InvokerNew("iter_add_region")
+	})
+	return err
+}
+
+// IterAddRegion is a representation of the C type gtk_widget_path_iter_add_region.
+func (recv *WidgetPath) IterAddRegion(pos int32, name string, flags RegionFlags) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetString(name)
+	inArgs[3].SetInt32(int32(flags))
+
+	err := widgetPathIterAddRegionFunction_Set()
+	if err == nil {
+		widgetPathIterAddRegionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetPathIterClearClassesFunction *gi.Function
 var widgetPathIterClearClassesFunction_Once sync.Once
@@ -47420,7 +47541,38 @@ func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_path_iter_get_state' : return type 'StateFlags' not supported
+var widgetPathIterGetStateFunction *gi.Function
+var widgetPathIterGetStateFunction_Once sync.Once
+
+func widgetPathIterGetStateFunction_Set() error {
+	var err error
+	widgetPathIterGetStateFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterGetStateFunction, err = widgetPathStruct.InvokerNew("iter_get_state")
+	})
+	return err
+}
+
+// IterGetState is a representation of the C type gtk_widget_path_iter_get_state.
+func (recv *WidgetPath) IterGetState(pos int32) StateFlags {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(pos)
+
+	var ret gi.Argument
+
+	err := widgetPathIterGetStateFunction_Set()
+	if err == nil {
+		ret = widgetPathIterGetStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := StateFlags(ret.Int32())
+
+	return retGo
+}
 
 var widgetPathIterHasClassFunction *gi.Function
 var widgetPathIterHasClassFunction_Once sync.Once
@@ -47558,9 +47710,77 @@ func (recv *WidgetPath) IterHasQname(pos int32, qname glib.Quark) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_path_iter_has_qregion' : parameter 'flags' of type 'RegionFlags' not supported
+var widgetPathIterHasQregionFunction *gi.Function
+var widgetPathIterHasQregionFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_widget_path_iter_has_region' : parameter 'flags' of type 'RegionFlags' not supported
+func widgetPathIterHasQregionFunction_Set() error {
+	var err error
+	widgetPathIterHasQregionFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterHasQregionFunction, err = widgetPathStruct.InvokerNew("iter_has_qregion")
+	})
+	return err
+}
+
+// IterHasQregion is a representation of the C type gtk_widget_path_iter_has_qregion.
+func (recv *WidgetPath) IterHasQregion(pos int32, qname glib.Quark) (bool, RegionFlags) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetUint32(uint32(qname))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := widgetPathIterHasQregionFunction_Set()
+	if err == nil {
+		ret = widgetPathIterHasQregionFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := RegionFlags(outArgs[0].Int32())
+
+	return retGo, out0
+}
+
+var widgetPathIterHasRegionFunction *gi.Function
+var widgetPathIterHasRegionFunction_Once sync.Once
+
+func widgetPathIterHasRegionFunction_Set() error {
+	var err error
+	widgetPathIterHasRegionFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterHasRegionFunction, err = widgetPathStruct.InvokerNew("iter_has_region")
+	})
+	return err
+}
+
+// IterHasRegion is a representation of the C type gtk_widget_path_iter_has_region.
+func (recv *WidgetPath) IterHasRegion(pos int32, name string) (bool, RegionFlags) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetString(name)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := widgetPathIterHasRegionFunction_Set()
+	if err == nil {
+		ret = widgetPathIterHasRegionFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := RegionFlags(outArgs[0].Int32())
+
+	return retGo, out0
+}
 
 var widgetPathIterListClassesFunction *gi.Function
 var widgetPathIterListClassesFunction_Once sync.Once
@@ -47750,7 +47970,35 @@ func (recv *WidgetPath) IterSetObjectName(pos int32, name string) {
 
 // UNSUPPORTED : C value 'gtk_widget_path_iter_set_object_type' : parameter 'type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_path_iter_set_state' : parameter 'state' of type 'StateFlags' not supported
+var widgetPathIterSetStateFunction *gi.Function
+var widgetPathIterSetStateFunction_Once sync.Once
+
+func widgetPathIterSetStateFunction_Set() error {
+	var err error
+	widgetPathIterSetStateFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterSetStateFunction, err = widgetPathStruct.InvokerNew("iter_set_state")
+	})
+	return err
+}
+
+// IterSetState is a representation of the C type gtk_widget_path_iter_set_state.
+func (recv *WidgetPath) IterSetState(pos int32, state StateFlags) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetInt32(int32(state))
+
+	err := widgetPathIterSetStateFunction_Set()
+	if err == nil {
+		widgetPathIterSetStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetPathLengthFunction *gi.Function
 var widgetPathLengthFunction_Once sync.Once

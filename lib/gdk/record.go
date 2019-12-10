@@ -705,9 +705,19 @@ func (recv *EventButton) SetFieldAxes(value float64) {
 	gi.StructFieldSet(eventButtonStruct, recv.Native(), "axes", argValue)
 }
 
-// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+// FieldState returns the C field 'state'.
+func (recv *EventButton) FieldState() ModifierType {
+	argValue := gi.StructFieldGet(eventButtonStruct, recv.Native(), "state")
+	value := ModifierType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
+// SetFieldState sets the value of the C field 'state'.
+func (recv *EventButton) SetFieldState(value ModifierType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(eventButtonStruct, recv.Native(), "state", argValue)
+}
 
 // FieldButton returns the C field 'button'.
 func (recv *EventButton) FieldButton() uint32 {
@@ -1139,9 +1149,19 @@ func (recv *EventCrossing) SetFieldFocus(value bool) {
 	gi.StructFieldSet(eventCrossingStruct, recv.Native(), "focus", argValue)
 }
 
-// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+// FieldState returns the C field 'state'.
+func (recv *EventCrossing) FieldState() ModifierType {
+	argValue := gi.StructFieldGet(eventCrossingStruct, recv.Native(), "state")
+	value := ModifierType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
+// SetFieldState sets the value of the C field 'state'.
+func (recv *EventCrossing) SetFieldState(value ModifierType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(eventCrossingStruct, recv.Native(), "state", argValue)
+}
 
 // EventCrossingStruct creates an uninitialised EventCrossing.
 func EventCrossingStruct() *EventCrossing {
@@ -1791,9 +1811,19 @@ func (recv *EventKey) SetFieldTime(value uint32) {
 	gi.StructFieldSet(eventKeyStruct, recv.Native(), "time", argValue)
 }
 
-// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+// FieldState returns the C field 'state'.
+func (recv *EventKey) FieldState() ModifierType {
+	argValue := gi.StructFieldGet(eventKeyStruct, recv.Native(), "state")
+	value := ModifierType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
+// SetFieldState sets the value of the C field 'state'.
+func (recv *EventKey) SetFieldState(value ModifierType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(eventKeyStruct, recv.Native(), "state", argValue)
+}
 
 // FieldKeyval returns the C field 'keyval'.
 func (recv *EventKey) FieldKeyval() uint32 {
@@ -2031,9 +2061,19 @@ func (recv *EventMotion) SetFieldAxes(value float64) {
 	gi.StructFieldSet(eventMotionStruct, recv.Native(), "axes", argValue)
 }
 
-// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+// FieldState returns the C field 'state'.
+func (recv *EventMotion) FieldState() ModifierType {
+	argValue := gi.StructFieldGet(eventMotionStruct, recv.Native(), "state")
+	value := ModifierType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
+// SetFieldState sets the value of the C field 'state'.
+func (recv *EventMotion) SetFieldState(value ModifierType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(eventMotionStruct, recv.Native(), "state", argValue)
+}
 
 // FieldIsHint returns the C field 'is_hint'.
 func (recv *EventMotion) FieldIsHint() int16 {
@@ -3113,9 +3153,19 @@ func (recv *EventScroll) SetFieldY(value float64) {
 	gi.StructFieldSet(eventScrollStruct, recv.Native(), "y", argValue)
 }
 
-// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+// FieldState returns the C field 'state'.
+func (recv *EventScroll) FieldState() ModifierType {
+	argValue := gi.StructFieldGet(eventScrollStruct, recv.Native(), "state")
+	value := ModifierType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
+// SetFieldState sets the value of the C field 'state'.
+func (recv *EventScroll) SetFieldState(value ModifierType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(eventScrollStruct, recv.Native(), "state", argValue)
+}
 
 // FieldDirection returns the C field 'direction'.
 func (recv *EventScroll) FieldDirection() ScrollDirection {
@@ -3711,9 +3761,19 @@ func (recv *EventTouch) SetFieldAxes(value float64) {
 	gi.StructFieldSet(eventTouchStruct, recv.Native(), "axes", argValue)
 }
 
-// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+// FieldState returns the C field 'state'.
+func (recv *EventTouch) FieldState() ModifierType {
+	argValue := gi.StructFieldGet(eventTouchStruct, recv.Native(), "state")
+	value := ModifierType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
+// SetFieldState sets the value of the C field 'state'.
+func (recv *EventTouch) SetFieldState(value ModifierType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(eventTouchStruct, recv.Native(), "state", argValue)
+}
 
 // FieldSequence returns the C field 'sequence'.
 func (recv *EventTouch) FieldSequence() *EventSequence {
@@ -4035,9 +4095,19 @@ func (recv *EventTouchpadPinch) SetFieldYRoot(value float64) {
 	gi.StructFieldSet(eventTouchpadPinchStruct, recv.Native(), "y_root", argValue)
 }
 
-// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+// FieldState returns the C field 'state'.
+func (recv *EventTouchpadPinch) FieldState() ModifierType {
+	argValue := gi.StructFieldGet(eventTouchpadPinchStruct, recv.Native(), "state")
+	value := ModifierType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
+// SetFieldState sets the value of the C field 'state'.
+func (recv *EventTouchpadPinch) SetFieldState(value ModifierType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(eventTouchpadPinchStruct, recv.Native(), "state", argValue)
+}
 
 // EventTouchpadPinchStruct creates an uninitialised EventTouchpadPinch.
 func EventTouchpadPinchStruct() *EventTouchpadPinch {
@@ -4261,9 +4331,19 @@ func (recv *EventTouchpadSwipe) SetFieldYRoot(value float64) {
 	gi.StructFieldSet(eventTouchpadSwipeStruct, recv.Native(), "y_root", argValue)
 }
 
-// UNSUPPORTED : C value 'state' : for field getter : no Go type for 'ModifierType'
+// FieldState returns the C field 'state'.
+func (recv *EventTouchpadSwipe) FieldState() ModifierType {
+	argValue := gi.StructFieldGet(eventTouchpadSwipeStruct, recv.Native(), "state")
+	value := ModifierType(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'state' : for field setter : no Go type for 'ModifierType'
+// SetFieldState sets the value of the C field 'state'.
+func (recv *EventTouchpadSwipe) SetFieldState(value ModifierType) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(eventTouchpadSwipeStruct, recv.Native(), "state", argValue)
+}
 
 // EventTouchpadSwipeStruct creates an uninitialised EventTouchpadSwipe.
 func EventTouchpadSwipeStruct() *EventTouchpadSwipe {
@@ -4471,13 +4551,33 @@ func (recv *EventWindowState) SetFieldSendEvent(value int8) {
 	gi.StructFieldSet(eventWindowStateStruct, recv.Native(), "send_event", argValue)
 }
 
-// UNSUPPORTED : C value 'changed_mask' : for field getter : no Go type for 'WindowState'
+// FieldChangedMask returns the C field 'changed_mask'.
+func (recv *EventWindowState) FieldChangedMask() WindowState {
+	argValue := gi.StructFieldGet(eventWindowStateStruct, recv.Native(), "changed_mask")
+	value := WindowState(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'changed_mask' : for field setter : no Go type for 'WindowState'
+// SetFieldChangedMask sets the value of the C field 'changed_mask'.
+func (recv *EventWindowState) SetFieldChangedMask(value WindowState) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(eventWindowStateStruct, recv.Native(), "changed_mask", argValue)
+}
 
-// UNSUPPORTED : C value 'new_window_state' : for field getter : no Go type for 'WindowState'
+// FieldNewWindowState returns the C field 'new_window_state'.
+func (recv *EventWindowState) FieldNewWindowState() WindowState {
+	argValue := gi.StructFieldGet(eventWindowStateStruct, recv.Native(), "new_window_state")
+	value := WindowState(argValue.Int32())
+	return value
+}
 
-// UNSUPPORTED : C value 'new_window_state' : for field setter : no Go type for 'WindowState'
+// SetFieldNewWindowState sets the value of the C field 'new_window_state'.
+func (recv *EventWindowState) SetFieldNewWindowState(value WindowState) {
+	var argValue gi.Argument
+	argValue.SetInt32(int32(value))
+	gi.StructFieldSet(eventWindowStateStruct, recv.Native(), "new_window_state", argValue)
+}
 
 // EventWindowStateStruct creates an uninitialised EventWindowState.
 func EventWindowStateStruct() *EventWindowState {

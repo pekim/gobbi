@@ -5236,7 +5236,37 @@ func (recv *MessageHeaders) GetEncoding() Encoding {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_message_headers_get_expectations' : return type 'Expectation' not supported
+var messageHeadersGetExpectationsFunction *gi.Function
+var messageHeadersGetExpectationsFunction_Once sync.Once
+
+func messageHeadersGetExpectationsFunction_Set() error {
+	var err error
+	messageHeadersGetExpectationsFunction_Once.Do(func() {
+		err = messageHeadersStruct_Set()
+		if err != nil {
+			return
+		}
+		messageHeadersGetExpectationsFunction, err = messageHeadersStruct.InvokerNew("get_expectations")
+	})
+	return err
+}
+
+// GetExpectations is a representation of the C type soup_message_headers_get_expectations.
+func (recv *MessageHeaders) GetExpectations() Expectation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := messageHeadersGetExpectationsFunction_Set()
+	if err == nil {
+		ret = messageHeadersGetExpectationsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := Expectation(ret.Int32())
+
+	return retGo
+}
 
 var messageHeadersGetHeadersTypeFunction *gi.Function
 var messageHeadersGetHeadersTypeFunction_Once sync.Once
@@ -5614,7 +5644,34 @@ func (recv *MessageHeaders) SetEncoding(encoding Encoding) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_message_headers_set_expectations' : parameter 'expectations' of type 'Expectation' not supported
+var messageHeadersSetExpectationsFunction *gi.Function
+var messageHeadersSetExpectationsFunction_Once sync.Once
+
+func messageHeadersSetExpectationsFunction_Set() error {
+	var err error
+	messageHeadersSetExpectationsFunction_Once.Do(func() {
+		err = messageHeadersStruct_Set()
+		if err != nil {
+			return
+		}
+		messageHeadersSetExpectationsFunction, err = messageHeadersStruct.InvokerNew("set_expectations")
+	})
+	return err
+}
+
+// SetExpectations is a representation of the C type soup_message_headers_set_expectations.
+func (recv *MessageHeaders) SetExpectations(expectations Expectation) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(expectations))
+
+	err := messageHeadersSetExpectationsFunction_Set()
+	if err == nil {
+		messageHeadersSetExpectationsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var messageHeadersSetRangeFunction *gi.Function
 var messageHeadersSetRangeFunction_Once sync.Once

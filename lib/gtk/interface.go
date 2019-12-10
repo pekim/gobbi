@@ -1048,7 +1048,38 @@ func (recv *CellAccessibleParent) GetColumnHeaderCells(cell *CellAccessible) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_cell_accessible_parent_get_renderer_state' : return type 'CellRendererState' not supported
+var cellAccessibleParentGetRendererStateFunction *gi.Function
+var cellAccessibleParentGetRendererStateFunction_Once sync.Once
+
+func cellAccessibleParentGetRendererStateFunction_Set() error {
+	var err error
+	cellAccessibleParentGetRendererStateFunction_Once.Do(func() {
+		err = cellAccessibleParentInterface_Set()
+		if err != nil {
+			return
+		}
+		cellAccessibleParentGetRendererStateFunction, err = cellAccessibleParentInterface.InvokerNew("get_renderer_state")
+	})
+	return err
+}
+
+// GetRendererState is a representation of the C type gtk_cell_accessible_parent_get_renderer_state.
+func (recv *CellAccessibleParent) GetRendererState(cell *CellAccessible) CellRendererState {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cell.Native())
+
+	var ret gi.Argument
+
+	err := cellAccessibleParentGetRendererStateFunction_Set()
+	if err == nil {
+		ret = cellAccessibleParentGetRendererStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CellRendererState(ret.Int32())
+
+	return retGo
+}
 
 var cellAccessibleParentGetRowHeaderCellsFunction *gi.Function
 var cellAccessibleParentGetRowHeaderCellsFunction_Once sync.Once
@@ -4399,7 +4430,37 @@ func (recv *FontChooser) GetLanguage() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_font_chooser_get_level' : return type 'FontChooserLevel' not supported
+var fontChooserGetLevelFunction *gi.Function
+var fontChooserGetLevelFunction_Once sync.Once
+
+func fontChooserGetLevelFunction_Set() error {
+	var err error
+	fontChooserGetLevelFunction_Once.Do(func() {
+		err = fontChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fontChooserGetLevelFunction, err = fontChooserInterface.InvokerNew("get_level")
+	})
+	return err
+}
+
+// GetLevel is a representation of the C type gtk_font_chooser_get_level.
+func (recv *FontChooser) GetLevel() FontChooserLevel {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fontChooserGetLevelFunction_Set()
+	if err == nil {
+		ret = fontChooserGetLevelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FontChooserLevel(ret.Int32())
+
+	return retGo
+}
 
 var fontChooserGetPreviewTextFunction *gi.Function
 var fontChooserGetPreviewTextFunction_Once sync.Once
@@ -4583,7 +4644,34 @@ func (recv *FontChooser) SetLanguage(language string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_font_chooser_set_level' : parameter 'level' of type 'FontChooserLevel' not supported
+var fontChooserSetLevelFunction *gi.Function
+var fontChooserSetLevelFunction_Once sync.Once
+
+func fontChooserSetLevelFunction_Set() error {
+	var err error
+	fontChooserSetLevelFunction_Once.Do(func() {
+		err = fontChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fontChooserSetLevelFunction, err = fontChooserInterface.InvokerNew("set_level")
+	})
+	return err
+}
+
+// SetLevel is a representation of the C type gtk_font_chooser_set_level.
+func (recv *FontChooser) SetLevel(level FontChooserLevel) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(level))
+
+	err := fontChooserSetLevelFunction_Set()
+	if err == nil {
+		fontChooserSetLevelFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fontChooserSetPreviewTextFunction *gi.Function
 var fontChooserSetPreviewTextFunction_Once sync.Once
@@ -6372,7 +6460,42 @@ func (recv *StyleProvider) GetStyle(path *WidgetPath) *StyleProperties {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_style_provider_get_style_property' : parameter 'state' of type 'StateFlags' not supported
+var styleProviderGetStylePropertyFunction *gi.Function
+var styleProviderGetStylePropertyFunction_Once sync.Once
+
+func styleProviderGetStylePropertyFunction_Set() error {
+	var err error
+	styleProviderGetStylePropertyFunction_Once.Do(func() {
+		err = styleProviderInterface_Set()
+		if err != nil {
+			return
+		}
+		styleProviderGetStylePropertyFunction, err = styleProviderInterface.InvokerNew("get_style_property")
+	})
+	return err
+}
+
+// GetStyleProperty is a representation of the C type gtk_style_provider_get_style_property.
+func (recv *StyleProvider) GetStyleProperty(path *WidgetPath, state StateFlags, pspec *gobject.ParamSpec) (bool, *gobject.Value) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(path.Native())
+	inArgs[2].SetInt32(int32(state))
+	inArgs[3].SetPointer(pspec.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := styleProviderGetStylePropertyFunction_Set()
+	if err == nil {
+		ret = styleProviderGetStylePropertyFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gobject.ValueNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var toolShellInterface *gi.Interface
 var toolShellInterface_Once sync.Once
@@ -6960,7 +7083,37 @@ func (recv *TreeModel) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'gtk_tree_model_get_column_type' : return type 'GType' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_model_get_flags' : return type 'TreeModelFlags' not supported
+var treeModelGetFlagsFunction *gi.Function
+var treeModelGetFlagsFunction_Once sync.Once
+
+func treeModelGetFlagsFunction_Set() error {
+	var err error
+	treeModelGetFlagsFunction_Once.Do(func() {
+		err = treeModelInterface_Set()
+		if err != nil {
+			return
+		}
+		treeModelGetFlagsFunction, err = treeModelInterface.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type gtk_tree_model_get_flags.
+func (recv *TreeModel) GetFlags() TreeModelFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := treeModelGetFlagsFunction_Set()
+	if err == nil {
+		ret = treeModelGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeModelFlags(ret.Int32())
+
+	return retGo
+}
 
 var treeModelGetIterFunction *gi.Function
 var treeModelGetIterFunction_Once sync.Once

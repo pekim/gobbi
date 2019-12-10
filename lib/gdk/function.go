@@ -752,9 +752,66 @@ func DragGetSelection(context *DragContext) *Atom {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_drag_motion' : parameter 'suggested_action' of type 'DragAction' not supported
+var dragMotionFunction *gi.Function
+var dragMotionFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_drag_status' : parameter 'action' of type 'DragAction' not supported
+func dragMotionFunction_Set() error {
+	var err error
+	dragMotionFunction_Once.Do(func() {
+		dragMotionFunction, err = gi.FunctionInvokerNew("Gdk", "drag_motion")
+	})
+	return err
+}
+
+// DragMotion is a representation of the C type gdk_drag_motion.
+func DragMotion(context *DragContext, destWindow *Window, protocol DragProtocol, xRoot int32, yRoot int32, suggestedAction DragAction, possibleActions DragAction, time uint32) bool {
+	var inArgs [8]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(destWindow.Native())
+	inArgs[2].SetInt32(int32(protocol))
+	inArgs[3].SetInt32(xRoot)
+	inArgs[4].SetInt32(yRoot)
+	inArgs[5].SetInt32(int32(suggestedAction))
+	inArgs[6].SetInt32(int32(possibleActions))
+	inArgs[7].SetUint32(time)
+
+	var ret gi.Argument
+
+	err := dragMotionFunction_Set()
+	if err == nil {
+		ret = dragMotionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var dragStatusFunction *gi.Function
+var dragStatusFunction_Once sync.Once
+
+func dragStatusFunction_Set() error {
+	var err error
+	dragStatusFunction_Once.Do(func() {
+		dragStatusFunction, err = gi.FunctionInvokerNew("Gdk", "drag_status")
+	})
+	return err
+}
+
+// DragStatus is a representation of the C type gdk_drag_status.
+func DragStatus(context *DragContext, action DragAction, time uint32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetInt32(int32(action))
+	inArgs[2].SetUint32(time)
+
+	err := dragStatusFunction_Set()
+	if err == nil {
+		dragStatusFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dropFinishFunction *gi.Function
 var dropFinishFunction_Once sync.Once
@@ -1736,7 +1793,38 @@ func PixbufGetFromWindow(window *Window, srcX int32, srcY int32, width int32, he
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pointer_grab' : parameter 'event_mask' of type 'EventMask' not supported
+var pointerGrabFunction *gi.Function
+var pointerGrabFunction_Once sync.Once
+
+func pointerGrabFunction_Set() error {
+	var err error
+	pointerGrabFunction_Once.Do(func() {
+		pointerGrabFunction, err = gi.FunctionInvokerNew("Gdk", "pointer_grab")
+	})
+	return err
+}
+
+// PointerGrab is a representation of the C type gdk_pointer_grab.
+func PointerGrab(window *Window, ownerEvents bool, eventMask EventMask, confineTo *Window, cursor *Cursor, time uint32) GrabStatus {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(window.Native())
+	inArgs[1].SetBoolean(ownerEvents)
+	inArgs[2].SetInt32(int32(eventMask))
+	inArgs[3].SetPointer(confineTo.Native())
+	inArgs[4].SetPointer(cursor.Native())
+	inArgs[5].SetUint32(time)
+
+	var ret gi.Argument
+
+	err := pointerGrabFunction_Set()
+	if err == nil {
+		ret = pointerGrabFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := GrabStatus(ret.Int32())
+
+	return retGo
+}
 
 var pointerIsGrabbedFunction *gi.Function
 var pointerIsGrabbedFunction_Once sync.Once
@@ -2231,7 +2319,31 @@ func SettingGet(name string, value *gobject.Value) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_synthesize_window_state' : parameter 'unset_flags' of type 'WindowState' not supported
+var synthesizeWindowStateFunction *gi.Function
+var synthesizeWindowStateFunction_Once sync.Once
+
+func synthesizeWindowStateFunction_Set() error {
+	var err error
+	synthesizeWindowStateFunction_Once.Do(func() {
+		synthesizeWindowStateFunction, err = gi.FunctionInvokerNew("Gdk", "synthesize_window_state")
+	})
+	return err
+}
+
+// SynthesizeWindowState is a representation of the C type gdk_synthesize_window_state.
+func SynthesizeWindowState(window *Window, unsetFlags WindowState, setFlags WindowState) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(window.Native())
+	inArgs[1].SetInt32(int32(unsetFlags))
+	inArgs[2].SetInt32(int32(setFlags))
+
+	err := synthesizeWindowStateFunction_Set()
+	if err == nil {
+		synthesizeWindowStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var testRenderSyncFunction *gi.Function
 var testRenderSyncFunction_Once sync.Once
@@ -2257,9 +2369,71 @@ func TestRenderSync(window *Window) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_test_simulate_button' : parameter 'modifiers' of type 'ModifierType' not supported
+var testSimulateButtonFunction *gi.Function
+var testSimulateButtonFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_test_simulate_key' : parameter 'modifiers' of type 'ModifierType' not supported
+func testSimulateButtonFunction_Set() error {
+	var err error
+	testSimulateButtonFunction_Once.Do(func() {
+		testSimulateButtonFunction, err = gi.FunctionInvokerNew("Gdk", "test_simulate_button")
+	})
+	return err
+}
+
+// TestSimulateButton is a representation of the C type gdk_test_simulate_button.
+func TestSimulateButton(window *Window, x int32, y int32, button uint32, modifiers ModifierType, buttonPressrelease EventType) bool {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(window.Native())
+	inArgs[1].SetInt32(x)
+	inArgs[2].SetInt32(y)
+	inArgs[3].SetUint32(button)
+	inArgs[4].SetInt32(int32(modifiers))
+	inArgs[5].SetInt32(int32(buttonPressrelease))
+
+	var ret gi.Argument
+
+	err := testSimulateButtonFunction_Set()
+	if err == nil {
+		ret = testSimulateButtonFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var testSimulateKeyFunction *gi.Function
+var testSimulateKeyFunction_Once sync.Once
+
+func testSimulateKeyFunction_Set() error {
+	var err error
+	testSimulateKeyFunction_Once.Do(func() {
+		testSimulateKeyFunction, err = gi.FunctionInvokerNew("Gdk", "test_simulate_key")
+	})
+	return err
+}
+
+// TestSimulateKey is a representation of the C type gdk_test_simulate_key.
+func TestSimulateKey(window *Window, x int32, y int32, keyval uint32, modifiers ModifierType, keyPressrelease EventType) bool {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(window.Native())
+	inArgs[1].SetInt32(x)
+	inArgs[2].SetInt32(y)
+	inArgs[3].SetUint32(keyval)
+	inArgs[4].SetInt32(int32(modifiers))
+	inArgs[5].SetInt32(int32(keyPressrelease))
+
+	var ret gi.Argument
+
+	err := testSimulateKeyFunction_Set()
+	if err == nil {
+		ret = testSimulateKeyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_text_property_to_utf8_list_for_display' : parameter 'text' of type 'nil' not supported
 

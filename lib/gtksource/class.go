@@ -1118,7 +1118,37 @@ func (recv *Buffer) SetStyleScheme(scheme *StyleScheme) {
 
 // UNSUPPORTED : C value 'gtk_source_buffer_set_undo_manager' : parameter 'manager' of type 'UndoManager' not supported
 
-// UNSUPPORTED : C value 'gtk_source_buffer_sort_lines' : parameter 'flags' of type 'SortFlags' not supported
+var bufferSortLinesFunction *gi.Function
+var bufferSortLinesFunction_Once sync.Once
+
+func bufferSortLinesFunction_Set() error {
+	var err error
+	bufferSortLinesFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferSortLinesFunction, err = bufferObject.InvokerNew("sort_lines")
+	})
+	return err
+}
+
+// SortLines is a representation of the C type gtk_source_buffer_sort_lines.
+func (recv *Buffer) SortLines(start *gtk.TextIter, end *gtk.TextIter, flags SortFlags, column int32) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(start.Native())
+	inArgs[2].SetPointer(end.Native())
+	inArgs[3].SetInt32(int32(flags))
+	inArgs[4].SetInt32(column)
+
+	err := bufferSortLinesFunction_Set()
+	if err == nil {
+		bufferSortLinesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var bufferUndoFunction *gi.Function
 var bufferUndoFunction_Once sync.Once
@@ -1790,7 +1820,37 @@ func (recv *CompletionContext) SetFieldPriv(value *CompletionContextPrivate) {
 
 // UNSUPPORTED : C value 'gtk_source_completion_context_add_proposals' : parameter 'provider' of type 'CompletionProvider' not supported
 
-// UNSUPPORTED : C value 'gtk_source_completion_context_get_activation' : return type 'CompletionActivation' not supported
+var completionContextGetActivationFunction *gi.Function
+var completionContextGetActivationFunction_Once sync.Once
+
+func completionContextGetActivationFunction_Set() error {
+	var err error
+	completionContextGetActivationFunction_Once.Do(func() {
+		err = completionContextObject_Set()
+		if err != nil {
+			return
+		}
+		completionContextGetActivationFunction, err = completionContextObject.InvokerNew("get_activation")
+	})
+	return err
+}
+
+// GetActivation is a representation of the C type gtk_source_completion_context_get_activation.
+func (recv *CompletionContext) GetActivation() CompletionActivation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := completionContextGetActivationFunction_Set()
+	if err == nil {
+		ret = completionContextGetActivationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CompletionActivation(ret.Int32())
+
+	return retGo
+}
 
 var completionContextGetIterFunction *gi.Function
 var completionContextGetIterFunction_Once sync.Once
@@ -3673,7 +3733,37 @@ func (recv *FileSaver) GetFile() *File {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_get_flags' : return type 'FileSaverFlags' not supported
+var fileSaverGetFlagsFunction *gi.Function
+var fileSaverGetFlagsFunction_Once sync.Once
+
+func fileSaverGetFlagsFunction_Set() error {
+	var err error
+	fileSaverGetFlagsFunction_Once.Do(func() {
+		err = fileSaverObject_Set()
+		if err != nil {
+			return
+		}
+		fileSaverGetFlagsFunction, err = fileSaverObject.InvokerNew("get_flags")
+	})
+	return err
+}
+
+// GetFlags is a representation of the C type gtk_source_file_saver_get_flags.
+func (recv *FileSaver) GetFlags() FileSaverFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileSaverGetFlagsFunction_Set()
+	if err == nil {
+		ret = fileSaverGetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileSaverFlags(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_file_saver_get_location' : return type 'Gio.File' not supported
 
@@ -3771,7 +3861,34 @@ func (recv *FileSaver) SetEncoding(encoding *Encoding) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_set_flags' : parameter 'flags' of type 'FileSaverFlags' not supported
+var fileSaverSetFlagsFunction *gi.Function
+var fileSaverSetFlagsFunction_Once sync.Once
+
+func fileSaverSetFlagsFunction_Set() error {
+	var err error
+	fileSaverSetFlagsFunction_Once.Do(func() {
+		err = fileSaverObject_Set()
+		if err != nil {
+			return
+		}
+		fileSaverSetFlagsFunction, err = fileSaverObject.InvokerNew("set_flags")
+	})
+	return err
+}
+
+// SetFlags is a representation of the C type gtk_source_file_saver_set_flags.
+func (recv *FileSaver) SetFlags(flags FileSaverFlags) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	err := fileSaverSetFlagsFunction_Set()
+	if err == nil {
+		fileSaverSetFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fileSaverSetNewlineTypeFunction *gi.Function
 var fileSaverSetNewlineTypeFunction_Once sync.Once
@@ -4275,7 +4392,39 @@ func (recv *GutterRenderer) Begin(cr *cairo.Context, backgroundArea *gdk.Rectang
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_draw' : parameter 'state' of type 'GutterRendererState' not supported
+var gutterRendererDrawFunction *gi.Function
+var gutterRendererDrawFunction_Once sync.Once
+
+func gutterRendererDrawFunction_Set() error {
+	var err error
+	gutterRendererDrawFunction_Once.Do(func() {
+		err = gutterRendererObject_Set()
+		if err != nil {
+			return
+		}
+		gutterRendererDrawFunction, err = gutterRendererObject.InvokerNew("draw")
+	})
+	return err
+}
+
+// Draw is a representation of the C type gtk_source_gutter_renderer_draw.
+func (recv *GutterRenderer) Draw(cr *cairo.Context, backgroundArea *gdk.Rectangle, cellArea *gdk.Rectangle, start *gtk.TextIter, end *gtk.TextIter, state GutterRendererState) {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cr.Native())
+	inArgs[2].SetPointer(backgroundArea.Native())
+	inArgs[3].SetPointer(cellArea.Native())
+	inArgs[4].SetPointer(start.Native())
+	inArgs[5].SetPointer(end.Native())
+	inArgs[6].SetInt32(int32(state))
+
+	err := gutterRendererDrawFunction_Set()
+	if err == nil {
+		gutterRendererDrawFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var gutterRendererEndFunction *gi.Function
 var gutterRendererEndFunction_Once sync.Once
@@ -4537,7 +4686,36 @@ func (recv *GutterRenderer) GetVisible() bool {
 
 // UNSUPPORTED : C value 'gtk_source_gutter_renderer_query_activatable' : parameter 'event' of type 'Gdk.Event' not supported
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_query_data' : parameter 'state' of type 'GutterRendererState' not supported
+var gutterRendererQueryDataFunction *gi.Function
+var gutterRendererQueryDataFunction_Once sync.Once
+
+func gutterRendererQueryDataFunction_Set() error {
+	var err error
+	gutterRendererQueryDataFunction_Once.Do(func() {
+		err = gutterRendererObject_Set()
+		if err != nil {
+			return
+		}
+		gutterRendererQueryDataFunction, err = gutterRendererObject.InvokerNew("query_data")
+	})
+	return err
+}
+
+// QueryData is a representation of the C type gtk_source_gutter_renderer_query_data.
+func (recv *GutterRenderer) QueryData(start *gtk.TextIter, end *gtk.TextIter, state GutterRendererState) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(start.Native())
+	inArgs[2].SetPointer(end.Native())
+	inArgs[3].SetInt32(int32(state))
+
+	err := gutterRendererQueryDataFunction_Set()
+	if err == nil {
+		gutterRendererQueryDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var gutterRendererQueryTooltipFunction *gi.Function
 var gutterRendererQueryTooltipFunction_Once sync.Once
@@ -4784,7 +4962,30 @@ func (recv *GutterRenderer) SetVisible(visible bool) {
 
 // UNSUPPORTED : C value 'query-activatable' : parameter 'event' of type 'Gdk.Event' not supported
 
-// UNSUPPORTED : C value 'query-data' : parameter 'state' of type 'GutterRendererState' not supported
+/*
+ConnectQueryData connects a callback to the 'query-data' signal of the GutterRenderer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *GutterRenderer) ConnectQueryData(handler func(instance *GutterRenderer, start *gtk.TextIter, end *gtk.TextIter, state GutterRendererState)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := GutterRendererNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := gtk.TextIterNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := gtk.TextIterNewFromNative(object2.GetObject().Native())
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := (GutterRendererState)(object3.GetInt())
+
+		handler(argInstance, arg1, arg2, arg3)
+	}
+
+	return callback.ConnectSignal(recv.Native(), "query-data", marshal)
+}
 
 /*
 ConnectQueryTooltip connects a callback to the 'query-tooltip' signal of the GutterRenderer.
@@ -9546,7 +9747,38 @@ func (recv *SpaceDrawer) GetMatrix() *glib.Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_space_drawer_get_types_for_locations' : parameter 'locations' of type 'SpaceLocationFlags' not supported
+var spaceDrawerGetTypesForLocationsFunction *gi.Function
+var spaceDrawerGetTypesForLocationsFunction_Once sync.Once
+
+func spaceDrawerGetTypesForLocationsFunction_Set() error {
+	var err error
+	spaceDrawerGetTypesForLocationsFunction_Once.Do(func() {
+		err = spaceDrawerObject_Set()
+		if err != nil {
+			return
+		}
+		spaceDrawerGetTypesForLocationsFunction, err = spaceDrawerObject.InvokerNew("get_types_for_locations")
+	})
+	return err
+}
+
+// GetTypesForLocations is a representation of the C type gtk_source_space_drawer_get_types_for_locations.
+func (recv *SpaceDrawer) GetTypesForLocations(locations SpaceLocationFlags) SpaceTypeFlags {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(locations))
+
+	var ret gi.Argument
+
+	err := spaceDrawerGetTypesForLocationsFunction_Set()
+	if err == nil {
+		ret = spaceDrawerGetTypesForLocationsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SpaceTypeFlags(ret.Int32())
+
+	return retGo
+}
 
 var spaceDrawerSetEnableMatrixFunction *gi.Function
 var spaceDrawerSetEnableMatrixFunction_Once sync.Once
@@ -9606,7 +9838,35 @@ func (recv *SpaceDrawer) SetMatrix(matrix *glib.Variant) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_space_drawer_set_types_for_locations' : parameter 'locations' of type 'SpaceLocationFlags' not supported
+var spaceDrawerSetTypesForLocationsFunction *gi.Function
+var spaceDrawerSetTypesForLocationsFunction_Once sync.Once
+
+func spaceDrawerSetTypesForLocationsFunction_Set() error {
+	var err error
+	spaceDrawerSetTypesForLocationsFunction_Once.Do(func() {
+		err = spaceDrawerObject_Set()
+		if err != nil {
+			return
+		}
+		spaceDrawerSetTypesForLocationsFunction, err = spaceDrawerObject.InvokerNew("set_types_for_locations")
+	})
+	return err
+}
+
+// SetTypesForLocations is a representation of the C type gtk_source_space_drawer_set_types_for_locations.
+func (recv *SpaceDrawer) SetTypesForLocations(locations SpaceLocationFlags, types SpaceTypeFlags) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(locations))
+	inArgs[2].SetInt32(int32(types))
+
+	err := spaceDrawerSetTypesForLocationsFunction_Set()
+	if err == nil {
+		spaceDrawerSetTypesForLocationsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var styleObject *gi.Object
 var styleObject_Once sync.Once
@@ -10940,7 +11200,37 @@ func (recv *View) GetCompletion() *Completion {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_view_get_draw_spaces' : return type 'DrawSpacesFlags' not supported
+var viewGetDrawSpacesFunction *gi.Function
+var viewGetDrawSpacesFunction_Once sync.Once
+
+func viewGetDrawSpacesFunction_Set() error {
+	var err error
+	viewGetDrawSpacesFunction_Once.Do(func() {
+		err = viewObject_Set()
+		if err != nil {
+			return
+		}
+		viewGetDrawSpacesFunction, err = viewObject.InvokerNew("get_draw_spaces")
+	})
+	return err
+}
+
+// GetDrawSpaces is a representation of the C type gtk_source_view_get_draw_spaces.
+func (recv *View) GetDrawSpaces() DrawSpacesFlags {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := viewGetDrawSpacesFunction_Set()
+	if err == nil {
+		ret = viewGetDrawSpacesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DrawSpacesFlags(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_source_view_get_gutter' : parameter 'window_type' of type 'Gtk.TextWindowType' not supported
 
@@ -11483,7 +11773,34 @@ func (recv *View) SetBackgroundPattern(backgroundPattern BackgroundPatternType) 
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_view_set_draw_spaces' : parameter 'flags' of type 'DrawSpacesFlags' not supported
+var viewSetDrawSpacesFunction *gi.Function
+var viewSetDrawSpacesFunction_Once sync.Once
+
+func viewSetDrawSpacesFunction_Set() error {
+	var err error
+	viewSetDrawSpacesFunction_Once.Do(func() {
+		err = viewObject_Set()
+		if err != nil {
+			return
+		}
+		viewSetDrawSpacesFunction, err = viewObject.InvokerNew("set_draw_spaces")
+	})
+	return err
+}
+
+// SetDrawSpaces is a representation of the C type gtk_source_view_set_draw_spaces.
+func (recv *View) SetDrawSpaces(flags DrawSpacesFlags) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+
+	err := viewSetDrawSpacesFunction_Set()
+	if err == nil {
+		viewSetDrawSpacesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var viewSetHighlightCurrentLineFunction *gi.Function
 var viewSetHighlightCurrentLineFunction_Once sync.Once
