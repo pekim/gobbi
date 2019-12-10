@@ -55,12 +55,15 @@ func (s *Struct) InvokerNew(funcName string) (*Function, error) {
 		return nil, err
 	}
 
-	return &Function{
+	fi := &Function{
 		namespace: s.namespace,
 		ownerName: s.structName,
 		funcName:  funcName,
 		info:      invoker,
-	}, nil
+	}
+	fi.initTracing()
+
+	return fi, nil
 }
 
 func (s *Struct) Alloc() unsafe.Pointer {
