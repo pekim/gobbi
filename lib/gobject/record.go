@@ -42,6 +42,12 @@ func (recv *CClosure) Native() unsafe.Pointer {
 
 // FieldClosure returns the C field 'closure'.
 func (recv *CClosure) FieldClosure() *Closure {
+	var nilValue *Closure
+	err := cClosureStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(cClosureStruct, recv.Native(), "closure")
 	value := ClosureNewFromNative(argValue.Pointer())
 	return value
@@ -49,6 +55,11 @@ func (recv *CClosure) FieldClosure() *Closure {
 
 // SetFieldClosure sets the value of the C field 'closure'.
 func (recv *CClosure) SetFieldClosure(value *Closure) {
+	err := cClosureStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(cClosureStruct, recv.Native(), "closure", argValue)
@@ -105,6 +116,12 @@ func (recv *Closure) Native() unsafe.Pointer {
 
 // FieldInMarshal returns the C field 'in_marshal'.
 func (recv *Closure) FieldInMarshal() uint32 {
+	var nilValue uint32
+	err := closureStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(closureStruct, recv.Native(), "in_marshal")
 	value := argValue.Uint32()
 	return value
@@ -112,6 +129,11 @@ func (recv *Closure) FieldInMarshal() uint32 {
 
 // SetFieldInMarshal sets the value of the C field 'in_marshal'.
 func (recv *Closure) SetFieldInMarshal(value uint32) {
+	err := closureStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(closureStruct, recv.Native(), "in_marshal", argValue)
@@ -119,6 +141,12 @@ func (recv *Closure) SetFieldInMarshal(value uint32) {
 
 // FieldIsInvalid returns the C field 'is_invalid'.
 func (recv *Closure) FieldIsInvalid() uint32 {
+	var nilValue uint32
+	err := closureStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(closureStruct, recv.Native(), "is_invalid")
 	value := argValue.Uint32()
 	return value
@@ -126,6 +154,11 @@ func (recv *Closure) FieldIsInvalid() uint32 {
 
 // SetFieldIsInvalid sets the value of the C field 'is_invalid'.
 func (recv *Closure) SetFieldIsInvalid(value uint32) {
+	err := closureStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(closureStruct, recv.Native(), "is_invalid", argValue)
@@ -387,6 +420,12 @@ func (recv *EnumClass) Native() unsafe.Pointer {
 
 // FieldGTypeClass returns the C field 'g_type_class'.
 func (recv *EnumClass) FieldGTypeClass() *TypeClass {
+	var nilValue *TypeClass
+	err := enumClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(enumClassStruct, recv.Native(), "g_type_class")
 	value := TypeClassNewFromNative(argValue.Pointer())
 	return value
@@ -394,6 +433,11 @@ func (recv *EnumClass) FieldGTypeClass() *TypeClass {
 
 // SetFieldGTypeClass sets the value of the C field 'g_type_class'.
 func (recv *EnumClass) SetFieldGTypeClass(value *TypeClass) {
+	err := enumClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(enumClassStruct, recv.Native(), "g_type_class", argValue)
@@ -401,6 +445,12 @@ func (recv *EnumClass) SetFieldGTypeClass(value *TypeClass) {
 
 // FieldMinimum returns the C field 'minimum'.
 func (recv *EnumClass) FieldMinimum() int32 {
+	var nilValue int32
+	err := enumClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(enumClassStruct, recv.Native(), "minimum")
 	value := argValue.Int32()
 	return value
@@ -408,6 +458,11 @@ func (recv *EnumClass) FieldMinimum() int32 {
 
 // SetFieldMinimum sets the value of the C field 'minimum'.
 func (recv *EnumClass) SetFieldMinimum(value int32) {
+	err := enumClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(enumClassStruct, recv.Native(), "minimum", argValue)
@@ -415,6 +470,12 @@ func (recv *EnumClass) SetFieldMinimum(value int32) {
 
 // FieldMaximum returns the C field 'maximum'.
 func (recv *EnumClass) FieldMaximum() int32 {
+	var nilValue int32
+	err := enumClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(enumClassStruct, recv.Native(), "maximum")
 	value := argValue.Int32()
 	return value
@@ -422,6 +483,11 @@ func (recv *EnumClass) FieldMaximum() int32 {
 
 // SetFieldMaximum sets the value of the C field 'maximum'.
 func (recv *EnumClass) SetFieldMaximum(value int32) {
+	err := enumClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(enumClassStruct, recv.Native(), "maximum", argValue)
@@ -429,6 +495,12 @@ func (recv *EnumClass) SetFieldMaximum(value int32) {
 
 // FieldNValues returns the C field 'n_values'.
 func (recv *EnumClass) FieldNValues() uint32 {
+	var nilValue uint32
+	err := enumClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(enumClassStruct, recv.Native(), "n_values")
 	value := argValue.Uint32()
 	return value
@@ -436,6 +508,11 @@ func (recv *EnumClass) FieldNValues() uint32 {
 
 // SetFieldNValues sets the value of the C field 'n_values'.
 func (recv *EnumClass) SetFieldNValues(value uint32) {
+	err := enumClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(enumClassStruct, recv.Native(), "n_values", argValue)
@@ -443,6 +520,12 @@ func (recv *EnumClass) SetFieldNValues(value uint32) {
 
 // FieldValues returns the C field 'values'.
 func (recv *EnumClass) FieldValues() *EnumValue {
+	var nilValue *EnumValue
+	err := enumClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(enumClassStruct, recv.Native(), "values")
 	value := EnumValueNewFromNative(argValue.Pointer())
 	return value
@@ -450,6 +533,11 @@ func (recv *EnumClass) FieldValues() *EnumValue {
 
 // SetFieldValues sets the value of the C field 'values'.
 func (recv *EnumClass) SetFieldValues(value *EnumValue) {
+	err := enumClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(enumClassStruct, recv.Native(), "values", argValue)
@@ -502,6 +590,12 @@ func (recv *EnumValue) Native() unsafe.Pointer {
 
 // FieldValue returns the C field 'value'.
 func (recv *EnumValue) FieldValue() int32 {
+	var nilValue int32
+	err := enumValueStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(enumValueStruct, recv.Native(), "value")
 	value := argValue.Int32()
 	return value
@@ -509,6 +603,11 @@ func (recv *EnumValue) FieldValue() int32 {
 
 // SetFieldValue sets the value of the C field 'value'.
 func (recv *EnumValue) SetFieldValue(value int32) {
+	err := enumValueStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(enumValueStruct, recv.Native(), "value", argValue)
@@ -516,6 +615,12 @@ func (recv *EnumValue) SetFieldValue(value int32) {
 
 // FieldValueName returns the C field 'value_name'.
 func (recv *EnumValue) FieldValueName() string {
+	var nilValue string
+	err := enumValueStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(enumValueStruct, recv.Native(), "value_name")
 	value := argValue.String(false)
 	return value
@@ -523,6 +628,11 @@ func (recv *EnumValue) FieldValueName() string {
 
 // SetFieldValueName sets the value of the C field 'value_name'.
 func (recv *EnumValue) SetFieldValueName(value string) {
+	err := enumValueStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(enumValueStruct, recv.Native(), "value_name", argValue)
@@ -530,6 +640,12 @@ func (recv *EnumValue) SetFieldValueName(value string) {
 
 // FieldValueNick returns the C field 'value_nick'.
 func (recv *EnumValue) FieldValueNick() string {
+	var nilValue string
+	err := enumValueStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(enumValueStruct, recv.Native(), "value_nick")
 	value := argValue.String(false)
 	return value
@@ -537,6 +653,11 @@ func (recv *EnumValue) FieldValueNick() string {
 
 // SetFieldValueNick sets the value of the C field 'value_nick'.
 func (recv *EnumValue) SetFieldValueNick(value string) {
+	err := enumValueStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(enumValueStruct, recv.Native(), "value_nick", argValue)
@@ -589,6 +710,12 @@ func (recv *FlagsClass) Native() unsafe.Pointer {
 
 // FieldGTypeClass returns the C field 'g_type_class'.
 func (recv *FlagsClass) FieldGTypeClass() *TypeClass {
+	var nilValue *TypeClass
+	err := flagsClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(flagsClassStruct, recv.Native(), "g_type_class")
 	value := TypeClassNewFromNative(argValue.Pointer())
 	return value
@@ -596,6 +723,11 @@ func (recv *FlagsClass) FieldGTypeClass() *TypeClass {
 
 // SetFieldGTypeClass sets the value of the C field 'g_type_class'.
 func (recv *FlagsClass) SetFieldGTypeClass(value *TypeClass) {
+	err := flagsClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(flagsClassStruct, recv.Native(), "g_type_class", argValue)
@@ -603,6 +735,12 @@ func (recv *FlagsClass) SetFieldGTypeClass(value *TypeClass) {
 
 // FieldMask returns the C field 'mask'.
 func (recv *FlagsClass) FieldMask() uint32 {
+	var nilValue uint32
+	err := flagsClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(flagsClassStruct, recv.Native(), "mask")
 	value := argValue.Uint32()
 	return value
@@ -610,6 +748,11 @@ func (recv *FlagsClass) FieldMask() uint32 {
 
 // SetFieldMask sets the value of the C field 'mask'.
 func (recv *FlagsClass) SetFieldMask(value uint32) {
+	err := flagsClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(flagsClassStruct, recv.Native(), "mask", argValue)
@@ -617,6 +760,12 @@ func (recv *FlagsClass) SetFieldMask(value uint32) {
 
 // FieldNValues returns the C field 'n_values'.
 func (recv *FlagsClass) FieldNValues() uint32 {
+	var nilValue uint32
+	err := flagsClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(flagsClassStruct, recv.Native(), "n_values")
 	value := argValue.Uint32()
 	return value
@@ -624,6 +773,11 @@ func (recv *FlagsClass) FieldNValues() uint32 {
 
 // SetFieldNValues sets the value of the C field 'n_values'.
 func (recv *FlagsClass) SetFieldNValues(value uint32) {
+	err := flagsClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(flagsClassStruct, recv.Native(), "n_values", argValue)
@@ -631,6 +785,12 @@ func (recv *FlagsClass) SetFieldNValues(value uint32) {
 
 // FieldValues returns the C field 'values'.
 func (recv *FlagsClass) FieldValues() *FlagsValue {
+	var nilValue *FlagsValue
+	err := flagsClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(flagsClassStruct, recv.Native(), "values")
 	value := FlagsValueNewFromNative(argValue.Pointer())
 	return value
@@ -638,6 +798,11 @@ func (recv *FlagsClass) FieldValues() *FlagsValue {
 
 // SetFieldValues sets the value of the C field 'values'.
 func (recv *FlagsClass) SetFieldValues(value *FlagsValue) {
+	err := flagsClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(flagsClassStruct, recv.Native(), "values", argValue)
@@ -690,6 +855,12 @@ func (recv *FlagsValue) Native() unsafe.Pointer {
 
 // FieldValue returns the C field 'value'.
 func (recv *FlagsValue) FieldValue() uint32 {
+	var nilValue uint32
+	err := flagsValueStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(flagsValueStruct, recv.Native(), "value")
 	value := argValue.Uint32()
 	return value
@@ -697,6 +868,11 @@ func (recv *FlagsValue) FieldValue() uint32 {
 
 // SetFieldValue sets the value of the C field 'value'.
 func (recv *FlagsValue) SetFieldValue(value uint32) {
+	err := flagsValueStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(flagsValueStruct, recv.Native(), "value", argValue)
@@ -704,6 +880,12 @@ func (recv *FlagsValue) SetFieldValue(value uint32) {
 
 // FieldValueName returns the C field 'value_name'.
 func (recv *FlagsValue) FieldValueName() string {
+	var nilValue string
+	err := flagsValueStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(flagsValueStruct, recv.Native(), "value_name")
 	value := argValue.String(false)
 	return value
@@ -711,6 +893,11 @@ func (recv *FlagsValue) FieldValueName() string {
 
 // SetFieldValueName sets the value of the C field 'value_name'.
 func (recv *FlagsValue) SetFieldValueName(value string) {
+	err := flagsValueStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(flagsValueStruct, recv.Native(), "value_name", argValue)
@@ -718,6 +905,12 @@ func (recv *FlagsValue) SetFieldValueName(value string) {
 
 // FieldValueNick returns the C field 'value_nick'.
 func (recv *FlagsValue) FieldValueNick() string {
+	var nilValue string
+	err := flagsValueStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(flagsValueStruct, recv.Native(), "value_nick")
 	value := argValue.String(false)
 	return value
@@ -725,6 +918,11 @@ func (recv *FlagsValue) FieldValueNick() string {
 
 // SetFieldValueNick sets the value of the C field 'value_nick'.
 func (recv *FlagsValue) SetFieldValueNick(value string) {
+	err := flagsValueStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(flagsValueStruct, recv.Native(), "value_nick", argValue)
@@ -777,6 +975,12 @@ func (recv *InitiallyUnownedClass) Native() unsafe.Pointer {
 
 // FieldGTypeClass returns the C field 'g_type_class'.
 func (recv *InitiallyUnownedClass) FieldGTypeClass() *TypeClass {
+	var nilValue *TypeClass
+	err := initiallyUnownedClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(initiallyUnownedClassStruct, recv.Native(), "g_type_class")
 	value := TypeClassNewFromNative(argValue.Pointer())
 	return value
@@ -784,6 +988,11 @@ func (recv *InitiallyUnownedClass) FieldGTypeClass() *TypeClass {
 
 // SetFieldGTypeClass sets the value of the C field 'g_type_class'.
 func (recv *InitiallyUnownedClass) SetFieldGTypeClass(value *TypeClass) {
+	err := initiallyUnownedClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(initiallyUnownedClassStruct, recv.Native(), "g_type_class", argValue)
@@ -925,6 +1134,12 @@ func (recv *ObjectClass) Native() unsafe.Pointer {
 
 // FieldGTypeClass returns the C field 'g_type_class'.
 func (recv *ObjectClass) FieldGTypeClass() *TypeClass {
+	var nilValue *TypeClass
+	err := objectClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(objectClassStruct, recv.Native(), "g_type_class")
 	value := TypeClassNewFromNative(argValue.Pointer())
 	return value
@@ -932,6 +1147,11 @@ func (recv *ObjectClass) FieldGTypeClass() *TypeClass {
 
 // SetFieldGTypeClass sets the value of the C field 'g_type_class'.
 func (recv *ObjectClass) SetFieldGTypeClass(value *TypeClass) {
+	err := objectClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(objectClassStruct, recv.Native(), "g_type_class", argValue)
@@ -1143,6 +1363,12 @@ func (recv *ObjectConstructParam) Native() unsafe.Pointer {
 
 // FieldPspec returns the C field 'pspec'.
 func (recv *ObjectConstructParam) FieldPspec() *ParamSpec {
+	var nilValue *ParamSpec
+	err := objectConstructParamStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(objectConstructParamStruct, recv.Native(), "pspec")
 	value := ParamSpecNewFromNative(argValue.Pointer())
 	return value
@@ -1150,6 +1376,11 @@ func (recv *ObjectConstructParam) FieldPspec() *ParamSpec {
 
 // SetFieldPspec sets the value of the C field 'pspec'.
 func (recv *ObjectConstructParam) SetFieldPspec(value *ParamSpec) {
+	err := objectConstructParamStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(objectConstructParamStruct, recv.Native(), "pspec", argValue)
@@ -1157,6 +1388,12 @@ func (recv *ObjectConstructParam) SetFieldPspec(value *ParamSpec) {
 
 // FieldValue returns the C field 'value'.
 func (recv *ObjectConstructParam) FieldValue() *Value {
+	var nilValue *Value
+	err := objectConstructParamStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(objectConstructParamStruct, recv.Native(), "value")
 	value := ValueNewFromNative(argValue.Pointer())
 	return value
@@ -1164,6 +1401,11 @@ func (recv *ObjectConstructParam) FieldValue() *Value {
 
 // SetFieldValue sets the value of the C field 'value'.
 func (recv *ObjectConstructParam) SetFieldValue(value *Value) {
+	err := objectConstructParamStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(objectConstructParamStruct, recv.Native(), "value", argValue)
@@ -1216,6 +1458,12 @@ func (recv *ParamSpecClass) Native() unsafe.Pointer {
 
 // FieldGTypeClass returns the C field 'g_type_class'.
 func (recv *ParamSpecClass) FieldGTypeClass() *TypeClass {
+	var nilValue *TypeClass
+	err := paramSpecClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(paramSpecClassStruct, recv.Native(), "g_type_class")
 	value := TypeClassNewFromNative(argValue.Pointer())
 	return value
@@ -1223,6 +1471,11 @@ func (recv *ParamSpecClass) FieldGTypeClass() *TypeClass {
 
 // SetFieldGTypeClass sets the value of the C field 'g_type_class'.
 func (recv *ParamSpecClass) SetFieldGTypeClass(value *TypeClass) {
+	err := paramSpecClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(paramSpecClassStruct, recv.Native(), "g_type_class", argValue)
@@ -1377,6 +1630,12 @@ func (recv *ParamSpecTypeInfo) Native() unsafe.Pointer {
 
 // FieldInstanceSize returns the C field 'instance_size'.
 func (recv *ParamSpecTypeInfo) FieldInstanceSize() uint16 {
+	var nilValue uint16
+	err := paramSpecTypeInfoStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(paramSpecTypeInfoStruct, recv.Native(), "instance_size")
 	value := argValue.Uint16()
 	return value
@@ -1384,6 +1643,11 @@ func (recv *ParamSpecTypeInfo) FieldInstanceSize() uint16 {
 
 // SetFieldInstanceSize sets the value of the C field 'instance_size'.
 func (recv *ParamSpecTypeInfo) SetFieldInstanceSize(value uint16) {
+	err := paramSpecTypeInfoStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint16(value)
 	gi.StructFieldSet(paramSpecTypeInfoStruct, recv.Native(), "instance_size", argValue)
@@ -1391,6 +1655,12 @@ func (recv *ParamSpecTypeInfo) SetFieldInstanceSize(value uint16) {
 
 // FieldNPreallocs returns the C field 'n_preallocs'.
 func (recv *ParamSpecTypeInfo) FieldNPreallocs() uint16 {
+	var nilValue uint16
+	err := paramSpecTypeInfoStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(paramSpecTypeInfoStruct, recv.Native(), "n_preallocs")
 	value := argValue.Uint16()
 	return value
@@ -1398,6 +1668,11 @@ func (recv *ParamSpecTypeInfo) FieldNPreallocs() uint16 {
 
 // SetFieldNPreallocs sets the value of the C field 'n_preallocs'.
 func (recv *ParamSpecTypeInfo) SetFieldNPreallocs(value uint16) {
+	err := paramSpecTypeInfoStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint16(value)
 	gi.StructFieldSet(paramSpecTypeInfoStruct, recv.Native(), "n_preallocs", argValue)
@@ -1474,6 +1749,12 @@ func (recv *Parameter) Native() unsafe.Pointer {
 
 // FieldName returns the C field 'name'.
 func (recv *Parameter) FieldName() string {
+	var nilValue string
+	err := parameterStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(parameterStruct, recv.Native(), "name")
 	value := argValue.String(false)
 	return value
@@ -1481,6 +1762,11 @@ func (recv *Parameter) FieldName() string {
 
 // SetFieldName sets the value of the C field 'name'.
 func (recv *Parameter) SetFieldName(value string) {
+	err := parameterStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(parameterStruct, recv.Native(), "name", argValue)
@@ -1488,6 +1774,12 @@ func (recv *Parameter) SetFieldName(value string) {
 
 // FieldValue returns the C field 'value'.
 func (recv *Parameter) FieldValue() *Value {
+	var nilValue *Value
+	err := parameterStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(parameterStruct, recv.Native(), "value")
 	value := ValueNewFromNative(argValue.Pointer())
 	return value
@@ -1495,6 +1787,11 @@ func (recv *Parameter) FieldValue() *Value {
 
 // SetFieldValue sets the value of the C field 'value'.
 func (recv *Parameter) SetFieldValue(value *Value) {
+	err := parameterStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(parameterStruct, recv.Native(), "value", argValue)
@@ -1547,6 +1844,12 @@ func (recv *SignalInvocationHint) Native() unsafe.Pointer {
 
 // FieldSignalId returns the C field 'signal_id'.
 func (recv *SignalInvocationHint) FieldSignalId() uint32 {
+	var nilValue uint32
+	err := signalInvocationHintStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(signalInvocationHintStruct, recv.Native(), "signal_id")
 	value := argValue.Uint32()
 	return value
@@ -1554,6 +1857,11 @@ func (recv *SignalInvocationHint) FieldSignalId() uint32 {
 
 // SetFieldSignalId sets the value of the C field 'signal_id'.
 func (recv *SignalInvocationHint) SetFieldSignalId(value uint32) {
+	err := signalInvocationHintStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(signalInvocationHintStruct, recv.Native(), "signal_id", argValue)
@@ -1561,6 +1869,12 @@ func (recv *SignalInvocationHint) SetFieldSignalId(value uint32) {
 
 // FieldDetail returns the C field 'detail'.
 func (recv *SignalInvocationHint) FieldDetail() glib.Quark {
+	var nilValue glib.Quark
+	err := signalInvocationHintStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(signalInvocationHintStruct, recv.Native(), "detail")
 	value := glib.Quark(argValue.Uint32())
 	return value
@@ -1568,6 +1882,11 @@ func (recv *SignalInvocationHint) FieldDetail() glib.Quark {
 
 // SetFieldDetail sets the value of the C field 'detail'.
 func (recv *SignalInvocationHint) SetFieldDetail(value glib.Quark) {
+	err := signalInvocationHintStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(uint32(value))
 	gi.StructFieldSet(signalInvocationHintStruct, recv.Native(), "detail", argValue)
@@ -1575,6 +1894,12 @@ func (recv *SignalInvocationHint) SetFieldDetail(value glib.Quark) {
 
 // FieldRunType returns the C field 'run_type'.
 func (recv *SignalInvocationHint) FieldRunType() SignalFlags {
+	var nilValue SignalFlags
+	err := signalInvocationHintStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(signalInvocationHintStruct, recv.Native(), "run_type")
 	value := SignalFlags(argValue.Int32())
 	return value
@@ -1582,6 +1907,11 @@ func (recv *SignalInvocationHint) FieldRunType() SignalFlags {
 
 // SetFieldRunType sets the value of the C field 'run_type'.
 func (recv *SignalInvocationHint) SetFieldRunType(value SignalFlags) {
+	err := signalInvocationHintStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
 	gi.StructFieldSet(signalInvocationHintStruct, recv.Native(), "run_type", argValue)
@@ -1634,6 +1964,12 @@ func (recv *SignalQuery_) Native() unsafe.Pointer {
 
 // FieldSignalId returns the C field 'signal_id'.
 func (recv *SignalQuery_) FieldSignalId() uint32 {
+	var nilValue uint32
+	err := signalQueryStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(signalQueryStruct, recv.Native(), "signal_id")
 	value := argValue.Uint32()
 	return value
@@ -1641,6 +1977,11 @@ func (recv *SignalQuery_) FieldSignalId() uint32 {
 
 // SetFieldSignalId sets the value of the C field 'signal_id'.
 func (recv *SignalQuery_) SetFieldSignalId(value uint32) {
+	err := signalQueryStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(signalQueryStruct, recv.Native(), "signal_id", argValue)
@@ -1648,6 +1989,12 @@ func (recv *SignalQuery_) SetFieldSignalId(value uint32) {
 
 // FieldSignalName returns the C field 'signal_name'.
 func (recv *SignalQuery_) FieldSignalName() string {
+	var nilValue string
+	err := signalQueryStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(signalQueryStruct, recv.Native(), "signal_name")
 	value := argValue.String(false)
 	return value
@@ -1655,6 +2002,11 @@ func (recv *SignalQuery_) FieldSignalName() string {
 
 // SetFieldSignalName sets the value of the C field 'signal_name'.
 func (recv *SignalQuery_) SetFieldSignalName(value string) {
+	err := signalQueryStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(signalQueryStruct, recv.Native(), "signal_name", argValue)
@@ -1666,6 +2018,12 @@ func (recv *SignalQuery_) SetFieldSignalName(value string) {
 
 // FieldSignalFlags returns the C field 'signal_flags'.
 func (recv *SignalQuery_) FieldSignalFlags() SignalFlags {
+	var nilValue SignalFlags
+	err := signalQueryStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(signalQueryStruct, recv.Native(), "signal_flags")
 	value := SignalFlags(argValue.Int32())
 	return value
@@ -1673,6 +2031,11 @@ func (recv *SignalQuery_) FieldSignalFlags() SignalFlags {
 
 // SetFieldSignalFlags sets the value of the C field 'signal_flags'.
 func (recv *SignalQuery_) SetFieldSignalFlags(value SignalFlags) {
+	err := signalQueryStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
 	gi.StructFieldSet(signalQueryStruct, recv.Native(), "signal_flags", argValue)
@@ -1684,6 +2047,12 @@ func (recv *SignalQuery_) SetFieldSignalFlags(value SignalFlags) {
 
 // FieldNParams returns the C field 'n_params'.
 func (recv *SignalQuery_) FieldNParams() uint32 {
+	var nilValue uint32
+	err := signalQueryStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(signalQueryStruct, recv.Native(), "n_params")
 	value := argValue.Uint32()
 	return value
@@ -1691,6 +2060,11 @@ func (recv *SignalQuery_) FieldNParams() uint32 {
 
 // SetFieldNParams sets the value of the C field 'n_params'.
 func (recv *SignalQuery_) SetFieldNParams(value uint32) {
+	err := signalQueryStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(signalQueryStruct, recv.Native(), "n_params", argValue)
@@ -1943,6 +2317,12 @@ func (recv *TypeFundamentalInfo) Native() unsafe.Pointer {
 
 // FieldTypeFlags returns the C field 'type_flags'.
 func (recv *TypeFundamentalInfo) FieldTypeFlags() TypeFundamentalFlags {
+	var nilValue TypeFundamentalFlags
+	err := typeFundamentalInfoStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(typeFundamentalInfoStruct, recv.Native(), "type_flags")
 	value := TypeFundamentalFlags(argValue.Int32())
 	return value
@@ -1950,6 +2330,11 @@ func (recv *TypeFundamentalInfo) FieldTypeFlags() TypeFundamentalFlags {
 
 // SetFieldTypeFlags sets the value of the C field 'type_flags'.
 func (recv *TypeFundamentalInfo) SetFieldTypeFlags(value TypeFundamentalFlags) {
+	err := typeFundamentalInfoStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
 	gi.StructFieldSet(typeFundamentalInfoStruct, recv.Native(), "type_flags", argValue)
@@ -2002,6 +2387,12 @@ func (recv *TypeInfo) Native() unsafe.Pointer {
 
 // FieldClassSize returns the C field 'class_size'.
 func (recv *TypeInfo) FieldClassSize() uint16 {
+	var nilValue uint16
+	err := typeInfoStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(typeInfoStruct, recv.Native(), "class_size")
 	value := argValue.Uint16()
 	return value
@@ -2009,6 +2400,11 @@ func (recv *TypeInfo) FieldClassSize() uint16 {
 
 // SetFieldClassSize sets the value of the C field 'class_size'.
 func (recv *TypeInfo) SetFieldClassSize(value uint16) {
+	err := typeInfoStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint16(value)
 	gi.StructFieldSet(typeInfoStruct, recv.Native(), "class_size", argValue)
@@ -2036,6 +2432,12 @@ func (recv *TypeInfo) SetFieldClassSize(value uint16) {
 
 // FieldInstanceSize returns the C field 'instance_size'.
 func (recv *TypeInfo) FieldInstanceSize() uint16 {
+	var nilValue uint16
+	err := typeInfoStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(typeInfoStruct, recv.Native(), "instance_size")
 	value := argValue.Uint16()
 	return value
@@ -2043,6 +2445,11 @@ func (recv *TypeInfo) FieldInstanceSize() uint16 {
 
 // SetFieldInstanceSize sets the value of the C field 'instance_size'.
 func (recv *TypeInfo) SetFieldInstanceSize(value uint16) {
+	err := typeInfoStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint16(value)
 	gi.StructFieldSet(typeInfoStruct, recv.Native(), "instance_size", argValue)
@@ -2050,6 +2457,12 @@ func (recv *TypeInfo) SetFieldInstanceSize(value uint16) {
 
 // FieldNPreallocs returns the C field 'n_preallocs'.
 func (recv *TypeInfo) FieldNPreallocs() uint16 {
+	var nilValue uint16
+	err := typeInfoStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(typeInfoStruct, recv.Native(), "n_preallocs")
 	value := argValue.Uint16()
 	return value
@@ -2057,6 +2470,11 @@ func (recv *TypeInfo) FieldNPreallocs() uint16 {
 
 // SetFieldNPreallocs sets the value of the C field 'n_preallocs'.
 func (recv *TypeInfo) SetFieldNPreallocs(value uint16) {
+	err := typeInfoStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint16(value)
 	gi.StructFieldSet(typeInfoStruct, recv.Native(), "n_preallocs", argValue)
@@ -2068,6 +2486,12 @@ func (recv *TypeInfo) SetFieldNPreallocs(value uint16) {
 
 // FieldValueTable returns the C field 'value_table'.
 func (recv *TypeInfo) FieldValueTable() *TypeValueTable {
+	var nilValue *TypeValueTable
+	err := typeInfoStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(typeInfoStruct, recv.Native(), "value_table")
 	value := TypeValueTableNewFromNative(argValue.Pointer())
 	return value
@@ -2075,6 +2499,11 @@ func (recv *TypeInfo) FieldValueTable() *TypeValueTable {
 
 // SetFieldValueTable sets the value of the C field 'value_table'.
 func (recv *TypeInfo) SetFieldValueTable(value *TypeValueTable) {
+	err := typeInfoStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(typeInfoStruct, recv.Native(), "value_table", argValue)
@@ -2251,6 +2680,12 @@ func (recv *TypeModuleClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *TypeModuleClass) FieldParentClass() *ObjectClass {
+	var nilValue *ObjectClass
+	err := typeModuleClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(typeModuleClassStruct, recv.Native(), "parent_class")
 	value := ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -2258,6 +2693,11 @@ func (recv *TypeModuleClass) FieldParentClass() *ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *TypeModuleClass) SetFieldParentClass(value *ObjectClass) {
+	err := typeModuleClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(typeModuleClassStruct, recv.Native(), "parent_class", argValue)
@@ -2399,6 +2839,12 @@ func (recv *TypeQuery) Native() unsafe.Pointer {
 
 // FieldTypeName returns the C field 'type_name'.
 func (recv *TypeQuery) FieldTypeName() string {
+	var nilValue string
+	err := typeQueryStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(typeQueryStruct, recv.Native(), "type_name")
 	value := argValue.String(false)
 	return value
@@ -2406,6 +2852,11 @@ func (recv *TypeQuery) FieldTypeName() string {
 
 // SetFieldTypeName sets the value of the C field 'type_name'.
 func (recv *TypeQuery) SetFieldTypeName(value string) {
+	err := typeQueryStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(typeQueryStruct, recv.Native(), "type_name", argValue)
@@ -2413,6 +2864,12 @@ func (recv *TypeQuery) SetFieldTypeName(value string) {
 
 // FieldClassSize returns the C field 'class_size'.
 func (recv *TypeQuery) FieldClassSize() uint32 {
+	var nilValue uint32
+	err := typeQueryStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(typeQueryStruct, recv.Native(), "class_size")
 	value := argValue.Uint32()
 	return value
@@ -2420,6 +2877,11 @@ func (recv *TypeQuery) FieldClassSize() uint32 {
 
 // SetFieldClassSize sets the value of the C field 'class_size'.
 func (recv *TypeQuery) SetFieldClassSize(value uint32) {
+	err := typeQueryStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(typeQueryStruct, recv.Native(), "class_size", argValue)
@@ -2427,6 +2889,12 @@ func (recv *TypeQuery) SetFieldClassSize(value uint32) {
 
 // FieldInstanceSize returns the C field 'instance_size'.
 func (recv *TypeQuery) FieldInstanceSize() uint32 {
+	var nilValue uint32
+	err := typeQueryStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(typeQueryStruct, recv.Native(), "instance_size")
 	value := argValue.Uint32()
 	return value
@@ -2434,6 +2902,11 @@ func (recv *TypeQuery) FieldInstanceSize() uint32 {
 
 // SetFieldInstanceSize sets the value of the C field 'instance_size'.
 func (recv *TypeQuery) SetFieldInstanceSize(value uint32) {
+	err := typeQueryStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(typeQueryStruct, recv.Native(), "instance_size", argValue)
@@ -2502,6 +2975,12 @@ func (recv *TypeValueTable) Native() unsafe.Pointer {
 
 // FieldCollectFormat returns the C field 'collect_format'.
 func (recv *TypeValueTable) FieldCollectFormat() string {
+	var nilValue string
+	err := typeValueTableStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(typeValueTableStruct, recv.Native(), "collect_format")
 	value := argValue.String(false)
 	return value
@@ -2509,6 +2988,11 @@ func (recv *TypeValueTable) FieldCollectFormat() string {
 
 // SetFieldCollectFormat sets the value of the C field 'collect_format'.
 func (recv *TypeValueTable) SetFieldCollectFormat(value string) {
+	err := typeValueTableStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(typeValueTableStruct, recv.Native(), "collect_format", argValue)
@@ -2520,6 +3004,12 @@ func (recv *TypeValueTable) SetFieldCollectFormat(value string) {
 
 // FieldLcopyFormat returns the C field 'lcopy_format'.
 func (recv *TypeValueTable) FieldLcopyFormat() string {
+	var nilValue string
+	err := typeValueTableStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(typeValueTableStruct, recv.Native(), "lcopy_format")
 	value := argValue.String(false)
 	return value
@@ -2527,6 +3017,11 @@ func (recv *TypeValueTable) FieldLcopyFormat() string {
 
 // SetFieldLcopyFormat sets the value of the C field 'lcopy_format'.
 func (recv *TypeValueTable) SetFieldLcopyFormat(value string) {
+	err := typeValueTableStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(typeValueTableStruct, recv.Native(), "lcopy_format", argValue)
@@ -4245,6 +4740,12 @@ func (recv *ValueArray) Native() unsafe.Pointer {
 
 // FieldNValues returns the C field 'n_values'.
 func (recv *ValueArray) FieldNValues() uint32 {
+	var nilValue uint32
+	err := valueArrayStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(valueArrayStruct, recv.Native(), "n_values")
 	value := argValue.Uint32()
 	return value
@@ -4252,6 +4753,11 @@ func (recv *ValueArray) FieldNValues() uint32 {
 
 // SetFieldNValues sets the value of the C field 'n_values'.
 func (recv *ValueArray) SetFieldNValues(value uint32) {
+	err := valueArrayStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(valueArrayStruct, recv.Native(), "n_values", argValue)
@@ -4259,6 +4765,12 @@ func (recv *ValueArray) SetFieldNValues(value uint32) {
 
 // FieldValues returns the C field 'values'.
 func (recv *ValueArray) FieldValues() *Value {
+	var nilValue *Value
+	err := valueArrayStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(valueArrayStruct, recv.Native(), "values")
 	value := ValueNewFromNative(argValue.Pointer())
 	return value
@@ -4266,6 +4778,11 @@ func (recv *ValueArray) FieldValues() *Value {
 
 // SetFieldValues sets the value of the C field 'values'.
 func (recv *ValueArray) SetFieldValues(value *Value) {
+	err := valueArrayStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(valueArrayStruct, recv.Native(), "values", argValue)

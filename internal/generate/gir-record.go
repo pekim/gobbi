@@ -351,6 +351,25 @@ func (r *Record) generateStructFinalizer(f *file) {
 		})
 }
 
+func (r *Record) generateStructSetFuncCall(g *jen.Group, zeroValue *jen.Statement) {
+	// GEN: err := someStruct_Set()
+	g.
+		Id("err").
+		Op(":=").
+		Id(r.giInfoSetFuncGoName).
+		Call()
+
+	// GEN:
+	//	if err != nil {
+	//		return nil
+	//	}
+	g.
+		If(jen.Id("err").Op("!=").Nil()).
+		Block(jen.Return().Add(zeroValue))
+
+	g.Line()
+}
+
 func (r *Record) generateStructConstructor(f *file) {
 	f.Line()
 
@@ -363,22 +382,7 @@ func (r *Record) generateStructConstructor(f *file) {
 		Params().
 		Params(jen.Op("*").Id(r.goName)).
 		BlockFunc(func(g *jen.Group) {
-			// GEN: err := someStruct_Set()
-			g.
-				Id("err").
-				Op(":=").
-				Id(r.giInfoSetFuncGoName).
-				Call()
-
-			// GEN:
-			//	if err != nil {
-			//		return nil
-			//	}
-			g.
-				If(jen.Id("err").Op("!=").Nil()).
-				Block(jen.Return().Nil())
-
-			g.Line()
+			r.generateStructSetFuncCall(g, jen.Nil())
 
 			// GEN: structGo := &SomeStruct{native: SomeStruct.Alloc()}
 			struct_ := jen.

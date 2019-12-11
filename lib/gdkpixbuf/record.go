@@ -475,6 +475,12 @@ func (recv *PixbufLoaderClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *PixbufLoaderClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := pixbufLoaderClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(pixbufLoaderClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -482,6 +488,11 @@ func (recv *PixbufLoaderClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *PixbufLoaderClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := pixbufLoaderClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(pixbufLoaderClassStruct, recv.Native(), "parent_class", argValue)

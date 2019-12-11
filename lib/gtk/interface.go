@@ -4056,7 +4056,10 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *FileChooser) ConnectConfirmOverwrite(handler func(instance *FileChooser) FileChooserConfirmation) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : FileChooserConfirmation
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := FileChooserNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "confirm-overwrite", marshal)

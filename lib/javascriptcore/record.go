@@ -537,6 +537,12 @@ func (recv *ContextClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ContextClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := contextClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(contextClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -544,6 +550,11 @@ func (recv *ContextClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ContextClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := contextClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(contextClassStruct, recv.Native(), "parent_class", argValue)
@@ -675,6 +686,12 @@ func (recv *ExceptionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ExceptionClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := exceptionClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(exceptionClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -682,6 +699,11 @@ func (recv *ExceptionClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ExceptionClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := exceptionClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(exceptionClassStruct, recv.Native(), "parent_class", argValue)
@@ -813,6 +835,12 @@ func (recv *ValueClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ValueClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := valueClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(valueClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -820,6 +848,11 @@ func (recv *ValueClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ValueClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := valueClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(valueClassStruct, recv.Native(), "parent_class", argValue)
@@ -951,6 +984,12 @@ func (recv *VirtualMachineClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *VirtualMachineClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := virtualMachineClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(virtualMachineClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -958,6 +997,11 @@ func (recv *VirtualMachineClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *VirtualMachineClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := virtualMachineClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(virtualMachineClassStruct, recv.Native(), "parent_class", argValue)
@@ -1089,6 +1133,12 @@ func (recv *WeakValueClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *WeakValueClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := weakValueClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(weakValueClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -1096,6 +1146,11 @@ func (recv *WeakValueClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *WeakValueClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := weakValueClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(weakValueClassStruct, recv.Native(), "parent_class", argValue)

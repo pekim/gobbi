@@ -7448,6 +7448,12 @@ func (recv *Seat) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Seat) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := seatObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(seatObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -7455,6 +7461,11 @@ func (recv *Seat) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Seat) SetFieldParentInstance(value *gobject.Object) {
+	err := seatObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(seatObject, recv.Native(), "parent_instance", argValue)
@@ -12752,7 +12763,16 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *Window) ConnectCreateSurface(handler func(instance *Window, width int32, height int32) *cairo.Surface) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : cairo.Surface
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetInt()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetInt()
+
+		handler(argInstance, arg1, arg2)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "create-surface", marshal)
@@ -12780,7 +12800,16 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *Window) ConnectPickEmbeddedChild(handler func(instance *Window, x float64, y float64) *Window) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : Window
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetDouble()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetDouble()
+
+		handler(argInstance, arg1, arg2)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "pick-embedded-child", marshal)

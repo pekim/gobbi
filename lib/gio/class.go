@@ -149,6 +149,12 @@ func (recv *AppLaunchContext) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *AppLaunchContext) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := appLaunchContextObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(appLaunchContextObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -156,6 +162,11 @@ func (recv *AppLaunchContext) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *AppLaunchContext) SetFieldParentInstance(value *gobject.Object) {
+	err := appLaunchContextObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(appLaunchContextObject, recv.Native(), "parent_instance", argValue)
@@ -1334,7 +1345,13 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *Application) ConnectCommandLine(handler func(instance *Application, commandLine *ApplicationCommandLine) int32) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gint
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ApplicationNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := ApplicationCommandLineNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "command-line", marshal)
@@ -1347,7 +1364,13 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *Application) ConnectHandleLocalOptions(handler func(instance *Application, options *glib.VariantDict) int32) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gint
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ApplicationNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := glib.VariantDictNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "handle-local-options", marshal)
@@ -1360,7 +1383,10 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *Application) ConnectNameLost(handler func(instance *Application) bool) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gboolean
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ApplicationNewFromNative(objectInstance.GetObject().Native())
+
+		handler(argInstance)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "name-lost", marshal)
@@ -1861,6 +1887,12 @@ func (recv *BufferedInputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *BufferedInputStream) FieldParentInstance() *FilterInputStream {
+	var nilValue *FilterInputStream
+	err := bufferedInputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(bufferedInputStreamObject, recv.Native(), "parent_instance")
 	value := FilterInputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -1868,6 +1900,11 @@ func (recv *BufferedInputStream) FieldParentInstance() *FilterInputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *BufferedInputStream) SetFieldParentInstance(value *FilterInputStream) {
+	err := bufferedInputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(bufferedInputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -2212,6 +2249,12 @@ func (recv *BufferedOutputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *BufferedOutputStream) FieldParentInstance() *FilterOutputStream {
+	var nilValue *FilterOutputStream
+	err := bufferedOutputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(bufferedOutputStreamObject, recv.Native(), "parent_instance")
 	value := FilterOutputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -2219,6 +2262,11 @@ func (recv *BufferedOutputStream) FieldParentInstance() *FilterOutputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *BufferedOutputStream) SetFieldParentInstance(value *FilterOutputStream) {
+	err := bufferedOutputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(bufferedOutputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -2226,6 +2274,12 @@ func (recv *BufferedOutputStream) SetFieldParentInstance(value *FilterOutputStre
 
 // FieldPriv returns the C field 'priv'.
 func (recv *BufferedOutputStream) FieldPriv() *BufferedOutputStreamPrivate {
+	var nilValue *BufferedOutputStreamPrivate
+	err := bufferedOutputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(bufferedOutputStreamObject, recv.Native(), "priv")
 	value := BufferedOutputStreamPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -2233,6 +2287,11 @@ func (recv *BufferedOutputStream) FieldPriv() *BufferedOutputStreamPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *BufferedOutputStream) SetFieldPriv(value *BufferedOutputStreamPrivate) {
+	err := bufferedOutputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(bufferedOutputStreamObject, recv.Native(), "priv", argValue)
@@ -2622,6 +2681,12 @@ func (recv *Cancellable) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Cancellable) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := cancellableObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(cancellableObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2629,6 +2694,11 @@ func (recv *Cancellable) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Cancellable) SetFieldParentInstance(value *gobject.Object) {
+	err := cancellableObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(cancellableObject, recv.Native(), "parent_instance", argValue)
@@ -3283,6 +3353,12 @@ func (recv *ConverterInputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ConverterInputStream) FieldParentInstance() *FilterInputStream {
+	var nilValue *FilterInputStream
+	err := converterInputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(converterInputStreamObject, recv.Native(), "parent_instance")
 	value := FilterInputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -3290,6 +3366,11 @@ func (recv *ConverterInputStream) FieldParentInstance() *FilterInputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *ConverterInputStream) SetFieldParentInstance(value *FilterInputStream) {
+	err := converterInputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(converterInputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -3371,6 +3452,12 @@ func (recv *ConverterOutputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ConverterOutputStream) FieldParentInstance() *FilterOutputStream {
+	var nilValue *FilterOutputStream
+	err := converterOutputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(converterOutputStreamObject, recv.Native(), "parent_instance")
 	value := FilterOutputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -3378,6 +3465,11 @@ func (recv *ConverterOutputStream) FieldParentInstance() *FilterOutputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *ConverterOutputStream) SetFieldParentInstance(value *FilterOutputStream) {
+	err := converterOutputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(converterOutputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -3871,7 +3963,13 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *DBusAuthObserver) ConnectAllowMechanism(handler func(instance *DBusAuthObserver, mechanism string) bool) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gboolean
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusAuthObserverNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetString()
+
+		handler(argInstance, arg1)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "allow-mechanism", marshal)
@@ -3884,7 +3982,16 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *DBusAuthObserver) ConnectAuthorizeAuthenticatedPeer(handler func(instance *DBusAuthObserver, stream *IOStream, credentials *Credentials) bool) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gboolean
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusAuthObserverNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := IOStreamNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := CredentialsNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "authorize-authenticated-peer", marshal)
@@ -5431,7 +5538,13 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *DBusInterfaceSkeleton) ConnectGAuthorizeMethod(handler func(instance *DBusInterfaceSkeleton, invocation *DBusMethodInvocation) bool) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gboolean
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusInterfaceSkeletonNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := DBusMethodInvocationNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "g-authorize-method", marshal)
@@ -8392,7 +8505,16 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *DBusObjectSkeleton) ConnectAuthorizeMethod(handler func(instance *DBusObjectSkeleton, interface_ *DBusInterfaceSkeleton, invocation *DBusMethodInvocation) bool) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gboolean
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusObjectSkeletonNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := DBusInterfaceSkeletonNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := DBusMethodInvocationNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "authorize-method", marshal)
@@ -9376,7 +9498,13 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *DBusServer) ConnectNewConnection(handler func(instance *DBusServer, connection *DBusConnection) bool) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gboolean
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusServerNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := DBusConnectionNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "new-connection", marshal)
@@ -9468,6 +9596,12 @@ func (recv *DataInputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *DataInputStream) FieldParentInstance() *BufferedInputStream {
+	var nilValue *BufferedInputStream
+	err := dataInputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(dataInputStreamObject, recv.Native(), "parent_instance")
 	value := BufferedInputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -9475,6 +9609,11 @@ func (recv *DataInputStream) FieldParentInstance() *BufferedInputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *DataInputStream) SetFieldParentInstance(value *BufferedInputStream) {
+	err := dataInputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(dataInputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -10094,6 +10233,12 @@ func (recv *DataOutputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *DataOutputStream) FieldParentInstance() *FilterOutputStream {
+	var nilValue *FilterOutputStream
+	err := dataOutputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(dataOutputStreamObject, recv.Native(), "parent_instance")
 	value := FilterOutputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -10101,6 +10246,11 @@ func (recv *DataOutputStream) FieldParentInstance() *FilterOutputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *DataOutputStream) SetFieldParentInstance(value *FilterOutputStream) {
+	err := dataOutputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(dataOutputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -11308,6 +11458,12 @@ func (recv *EmblemedIcon) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *EmblemedIcon) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := emblemedIconObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(emblemedIconObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -11315,6 +11471,11 @@ func (recv *EmblemedIcon) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *EmblemedIcon) SetFieldParentInstance(value *gobject.Object) {
+	err := emblemedIconObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(emblemedIconObject, recv.Native(), "parent_instance", argValue)
@@ -11475,6 +11636,12 @@ func (recv *FileEnumerator) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileEnumerator) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := fileEnumeratorObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(fileEnumeratorObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -11482,6 +11649,11 @@ func (recv *FileEnumerator) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FileEnumerator) SetFieldParentInstance(value *gobject.Object) {
+	err := fileEnumeratorObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fileEnumeratorObject, recv.Native(), "parent_instance", argValue)
@@ -11722,6 +11894,12 @@ func (recv *FileIOStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileIOStream) FieldParentInstance() *IOStream {
+	var nilValue *IOStream
+	err := fileIOStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(fileIOStreamObject, recv.Native(), "parent_instance")
 	value := IOStreamNewFromNative(argValue.Pointer())
 	return value
@@ -11729,6 +11907,11 @@ func (recv *FileIOStream) FieldParentInstance() *IOStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FileIOStream) SetFieldParentInstance(value *IOStream) {
+	err := fileIOStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fileIOStreamObject, recv.Native(), "parent_instance", argValue)
@@ -13805,6 +13988,12 @@ func (recv *FileInputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileInputStream) FieldParentInstance() *InputStream {
+	var nilValue *InputStream
+	err := fileInputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(fileInputStreamObject, recv.Native(), "parent_instance")
 	value := InputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -13812,6 +14001,11 @@ func (recv *FileInputStream) FieldParentInstance() *InputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FileInputStream) SetFieldParentInstance(value *InputStream) {
+	err := fileInputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fileInputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -13917,6 +14111,12 @@ func (recv *FileMonitor) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileMonitor) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := fileMonitorObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(fileMonitorObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -13924,6 +14124,11 @@ func (recv *FileMonitor) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FileMonitor) SetFieldParentInstance(value *gobject.Object) {
+	err := fileMonitorObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fileMonitorObject, recv.Native(), "parent_instance", argValue)
@@ -14097,6 +14302,12 @@ func (recv *FileOutputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FileOutputStream) FieldParentInstance() *OutputStream {
+	var nilValue *OutputStream
+	err := fileOutputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(fileOutputStreamObject, recv.Native(), "parent_instance")
 	value := OutputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -14104,6 +14315,11 @@ func (recv *FileOutputStream) FieldParentInstance() *OutputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FileOutputStream) SetFieldParentInstance(value *OutputStream) {
+	err := fileOutputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fileOutputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -14449,6 +14665,12 @@ func (recv *FilterInputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FilterInputStream) FieldParentInstance() *InputStream {
+	var nilValue *InputStream
+	err := filterInputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(filterInputStreamObject, recv.Native(), "parent_instance")
 	value := InputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -14456,6 +14678,11 @@ func (recv *FilterInputStream) FieldParentInstance() *InputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FilterInputStream) SetFieldParentInstance(value *InputStream) {
+	err := filterInputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(filterInputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -14463,6 +14690,12 @@ func (recv *FilterInputStream) SetFieldParentInstance(value *InputStream) {
 
 // FieldBaseStream returns the C field 'base_stream'.
 func (recv *FilterInputStream) FieldBaseStream() *InputStream {
+	var nilValue *InputStream
+	err := filterInputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(filterInputStreamObject, recv.Native(), "base_stream")
 	value := InputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -14470,6 +14703,11 @@ func (recv *FilterInputStream) FieldBaseStream() *InputStream {
 
 // SetFieldBaseStream sets the value of the C field 'base_stream'.
 func (recv *FilterInputStream) SetFieldBaseStream(value *InputStream) {
+	err := filterInputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(filterInputStreamObject, recv.Native(), "base_stream", argValue)
@@ -14630,6 +14868,12 @@ func (recv *FilterOutputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FilterOutputStream) FieldParentInstance() *OutputStream {
+	var nilValue *OutputStream
+	err := filterOutputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(filterOutputStreamObject, recv.Native(), "parent_instance")
 	value := OutputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -14637,6 +14881,11 @@ func (recv *FilterOutputStream) FieldParentInstance() *OutputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FilterOutputStream) SetFieldParentInstance(value *OutputStream) {
+	err := filterOutputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(filterOutputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -14644,6 +14893,12 @@ func (recv *FilterOutputStream) SetFieldParentInstance(value *OutputStream) {
 
 // FieldBaseStream returns the C field 'base_stream'.
 func (recv *FilterOutputStream) FieldBaseStream() *OutputStream {
+	var nilValue *OutputStream
+	err := filterOutputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(filterOutputStreamObject, recv.Native(), "base_stream")
 	value := OutputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -14651,6 +14906,11 @@ func (recv *FilterOutputStream) FieldBaseStream() *OutputStream {
 
 // SetFieldBaseStream sets the value of the C field 'base_stream'.
 func (recv *FilterOutputStream) SetFieldBaseStream(value *OutputStream) {
+	err := filterOutputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(filterOutputStreamObject, recv.Native(), "base_stream", argValue)
@@ -14961,6 +15221,12 @@ func (recv *IOStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *IOStream) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := iOStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(iOStreamObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -14968,6 +15234,11 @@ func (recv *IOStream) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *IOStream) SetFieldParentInstance(value *gobject.Object) {
+	err := iOStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(iOStreamObject, recv.Native(), "parent_instance", argValue)
@@ -15257,6 +15528,12 @@ func (recv *InetAddress) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *InetAddress) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := inetAddressObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(inetAddressObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -15264,6 +15541,11 @@ func (recv *InetAddress) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *InetAddress) SetFieldParentInstance(value *gobject.Object) {
+	err := inetAddressObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(inetAddressObject, recv.Native(), "parent_instance", argValue)
@@ -15911,6 +16193,12 @@ func (recv *InetAddressMask) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *InetAddressMask) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := inetAddressMaskObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(inetAddressMaskObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -15918,6 +16206,11 @@ func (recv *InetAddressMask) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *InetAddressMask) SetFieldParentInstance(value *gobject.Object) {
+	err := inetAddressMaskObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(inetAddressMaskObject, recv.Native(), "parent_instance", argValue)
@@ -16253,6 +16546,12 @@ func (recv *InetSocketAddress) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *InetSocketAddress) FieldParentInstance() *SocketAddress {
+	var nilValue *SocketAddress
+	err := inetSocketAddressObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(inetSocketAddressObject, recv.Native(), "parent_instance")
 	value := SocketAddressNewFromNative(argValue.Pointer())
 	return value
@@ -16260,6 +16559,11 @@ func (recv *InetSocketAddress) FieldParentInstance() *SocketAddress {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *InetSocketAddress) SetFieldParentInstance(value *SocketAddress) {
+	err := inetSocketAddressObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(inetSocketAddressObject, recv.Native(), "parent_instance", argValue)
@@ -16525,6 +16829,12 @@ func (recv *InputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *InputStream) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := inputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(inputStreamObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -16532,6 +16842,11 @@ func (recv *InputStream) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *InputStream) SetFieldParentInstance(value *gobject.Object) {
+	err := inputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(inputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -17032,6 +17347,12 @@ func (recv *MemoryInputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *MemoryInputStream) FieldParentInstance() *InputStream {
+	var nilValue *InputStream
+	err := memoryInputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(memoryInputStreamObject, recv.Native(), "parent_instance")
 	value := InputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -17039,6 +17360,11 @@ func (recv *MemoryInputStream) FieldParentInstance() *InputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *MemoryInputStream) SetFieldParentInstance(value *InputStream) {
+	err := memoryInputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(memoryInputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -17215,6 +17541,12 @@ func (recv *MemoryOutputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *MemoryOutputStream) FieldParentInstance() *OutputStream {
+	var nilValue *OutputStream
+	err := memoryOutputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(memoryOutputStreamObject, recv.Native(), "parent_instance")
 	value := OutputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -17222,6 +17554,11 @@ func (recv *MemoryOutputStream) FieldParentInstance() *OutputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *MemoryOutputStream) SetFieldParentInstance(value *OutputStream) {
+	err := memoryOutputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(memoryOutputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -17966,6 +18303,12 @@ func (recv *MenuAttributeIter) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *MenuAttributeIter) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := menuAttributeIterObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(menuAttributeIterObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -17973,6 +18316,11 @@ func (recv *MenuAttributeIter) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *MenuAttributeIter) SetFieldParentInstance(value *gobject.Object) {
+	err := menuAttributeIterObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(menuAttributeIterObject, recv.Native(), "parent_instance", argValue)
@@ -17980,6 +18328,12 @@ func (recv *MenuAttributeIter) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *MenuAttributeIter) FieldPriv() *MenuAttributeIterPrivate {
+	var nilValue *MenuAttributeIterPrivate
+	err := menuAttributeIterObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(menuAttributeIterObject, recv.Native(), "priv")
 	value := MenuAttributeIterPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -17987,6 +18341,11 @@ func (recv *MenuAttributeIter) FieldPriv() *MenuAttributeIterPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *MenuAttributeIter) SetFieldPriv(value *MenuAttributeIterPrivate) {
+	err := menuAttributeIterObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(menuAttributeIterObject, recv.Native(), "priv", argValue)
@@ -18656,6 +19015,12 @@ func (recv *MenuLinkIter) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *MenuLinkIter) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := menuLinkIterObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(menuLinkIterObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -18663,6 +19028,11 @@ func (recv *MenuLinkIter) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *MenuLinkIter) SetFieldParentInstance(value *gobject.Object) {
+	err := menuLinkIterObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(menuLinkIterObject, recv.Native(), "parent_instance", argValue)
@@ -18670,6 +19040,12 @@ func (recv *MenuLinkIter) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *MenuLinkIter) FieldPriv() *MenuLinkIterPrivate {
+	var nilValue *MenuLinkIterPrivate
+	err := menuLinkIterObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(menuLinkIterObject, recv.Native(), "priv")
 	value := MenuLinkIterPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -18677,6 +19053,11 @@ func (recv *MenuLinkIter) FieldPriv() *MenuLinkIterPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *MenuLinkIter) SetFieldPriv(value *MenuLinkIterPrivate) {
+	err := menuLinkIterObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(menuLinkIterObject, recv.Native(), "priv", argValue)
@@ -18870,6 +19251,12 @@ func (recv *MenuModel) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *MenuModel) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := menuModelObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(menuModelObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -18877,6 +19264,11 @@ func (recv *MenuModel) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *MenuModel) SetFieldParentInstance(value *gobject.Object) {
+	err := menuModelObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(menuModelObject, recv.Native(), "parent_instance", argValue)
@@ -18884,6 +19276,12 @@ func (recv *MenuModel) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *MenuModel) FieldPriv() *MenuModelPrivate {
+	var nilValue *MenuModelPrivate
+	err := menuModelObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(menuModelObject, recv.Native(), "priv")
 	value := MenuModelPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -18891,6 +19289,11 @@ func (recv *MenuModel) FieldPriv() *MenuModelPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *MenuModel) SetFieldPriv(value *MenuModelPrivate) {
+	err := menuModelObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(menuModelObject, recv.Native(), "priv", argValue)
@@ -19219,6 +19622,12 @@ func (recv *MountOperation) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *MountOperation) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := mountOperationObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(mountOperationObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -19226,6 +19635,11 @@ func (recv *MountOperation) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *MountOperation) SetFieldParentInstance(value *gobject.Object) {
+	err := mountOperationObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(mountOperationObject, recv.Native(), "parent_instance", argValue)
@@ -19233,6 +19647,12 @@ func (recv *MountOperation) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *MountOperation) FieldPriv() *MountOperationPrivate {
+	var nilValue *MountOperationPrivate
+	err := mountOperationObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(mountOperationObject, recv.Native(), "priv")
 	value := MountOperationPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -19240,6 +19660,11 @@ func (recv *MountOperation) FieldPriv() *MountOperationPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *MountOperation) SetFieldPriv(value *MountOperationPrivate) {
+	err := mountOperationObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(mountOperationObject, recv.Native(), "priv", argValue)
@@ -20018,6 +20443,12 @@ func (recv *NativeSocketAddress) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *NativeSocketAddress) FieldParentInstance() *SocketAddress {
+	var nilValue *SocketAddress
+	err := nativeSocketAddressObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(nativeSocketAddressObject, recv.Native(), "parent_instance")
 	value := SocketAddressNewFromNative(argValue.Pointer())
 	return value
@@ -20025,6 +20456,11 @@ func (recv *NativeSocketAddress) FieldParentInstance() *SocketAddress {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *NativeSocketAddress) SetFieldParentInstance(value *SocketAddress) {
+	err := nativeSocketAddressObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(nativeSocketAddressObject, recv.Native(), "parent_instance", argValue)
@@ -20099,6 +20535,12 @@ func (recv *NativeVolumeMonitor) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *NativeVolumeMonitor) FieldParentInstance() *VolumeMonitor {
+	var nilValue *VolumeMonitor
+	err := nativeVolumeMonitorObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(nativeVolumeMonitorObject, recv.Native(), "parent_instance")
 	value := VolumeMonitorNewFromNative(argValue.Pointer())
 	return value
@@ -20106,6 +20548,11 @@ func (recv *NativeVolumeMonitor) FieldParentInstance() *VolumeMonitor {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *NativeVolumeMonitor) SetFieldParentInstance(value *VolumeMonitor) {
+	err := nativeVolumeMonitorObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(nativeVolumeMonitorObject, recv.Native(), "parent_instance", argValue)
@@ -20168,6 +20615,12 @@ func (recv *NetworkAddress) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *NetworkAddress) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := networkAddressObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(networkAddressObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -20175,6 +20628,11 @@ func (recv *NetworkAddress) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *NetworkAddress) SetFieldParentInstance(value *gobject.Object) {
+	err := networkAddressObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(networkAddressObject, recv.Native(), "parent_instance", argValue)
@@ -20407,6 +20865,12 @@ func (recv *NetworkService) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *NetworkService) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := networkServiceObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(networkServiceObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -20414,6 +20878,11 @@ func (recv *NetworkService) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *NetworkService) SetFieldParentInstance(value *gobject.Object) {
+	err := networkServiceObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(networkServiceObject, recv.Native(), "parent_instance", argValue)
@@ -21005,6 +21474,12 @@ func (recv *OutputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *OutputStream) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := outputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(outputStreamObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -21012,6 +21487,11 @@ func (recv *OutputStream) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *OutputStream) SetFieldParentInstance(value *gobject.Object) {
+	err := outputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(outputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -21409,6 +21889,12 @@ func (recv *Permission) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Permission) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := permissionObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(permissionObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -21416,6 +21902,11 @@ func (recv *Permission) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Permission) SetFieldParentInstance(value *gobject.Object) {
+	err := permissionObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(permissionObject, recv.Native(), "parent_instance", argValue)
@@ -21785,6 +22276,12 @@ func (recv *ProxyAddress) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ProxyAddress) FieldParentInstance() *InetSocketAddress {
+	var nilValue *InetSocketAddress
+	err := proxyAddressObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(proxyAddressObject, recv.Native(), "parent_instance")
 	value := InetSocketAddressNewFromNative(argValue.Pointer())
 	return value
@@ -21792,6 +22289,11 @@ func (recv *ProxyAddress) FieldParentInstance() *InetSocketAddress {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *ProxyAddress) SetFieldParentInstance(value *InetSocketAddress) {
+	err := proxyAddressObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(proxyAddressObject, recv.Native(), "parent_instance", argValue)
@@ -22183,6 +22685,12 @@ func (recv *Resolver) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Resolver) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := resolverObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(resolverObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -22190,6 +22698,11 @@ func (recv *Resolver) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Resolver) SetFieldParentInstance(value *gobject.Object) {
+	err := resolverObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(resolverObject, recv.Native(), "parent_instance", argValue)
@@ -22197,6 +22710,12 @@ func (recv *Resolver) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Resolver) FieldPriv() *ResolverPrivate {
+	var nilValue *ResolverPrivate
+	err := resolverObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(resolverObject, recv.Native(), "priv")
 	value := ResolverPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -22204,6 +22723,11 @@ func (recv *Resolver) FieldPriv() *ResolverPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Resolver) SetFieldPriv(value *ResolverPrivate) {
+	err := resolverObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(resolverObject, recv.Native(), "priv", argValue)
@@ -22513,6 +23037,12 @@ func (recv *Settings) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Settings) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := settingsObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(settingsObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -22520,6 +23050,11 @@ func (recv *Settings) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Settings) SetFieldParentInstance(value *gobject.Object) {
+	err := settingsObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(settingsObject, recv.Native(), "parent_instance", argValue)
@@ -22527,6 +23062,12 @@ func (recv *Settings) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Settings) FieldPriv() *SettingsPrivate {
+	var nilValue *SettingsPrivate
+	err := settingsObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(settingsObject, recv.Native(), "priv")
 	value := SettingsPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -22534,6 +23075,11 @@ func (recv *Settings) FieldPriv() *SettingsPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Settings) SetFieldPriv(value *SettingsPrivate) {
+	err := settingsObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(settingsObject, recv.Native(), "priv", argValue)
@@ -23918,7 +24464,13 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *Settings) ConnectWritableChangeEvent(handler func(instance *Settings, key uint32) bool) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gboolean
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := SettingsNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetUint()
+
+		handler(argInstance, arg1)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "writable-change-event", marshal)
@@ -24009,6 +24561,12 @@ func (recv *SettingsBackend) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *SettingsBackend) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := settingsBackendObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(settingsBackendObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -24016,6 +24574,11 @@ func (recv *SettingsBackend) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *SettingsBackend) SetFieldParentInstance(value *gobject.Object) {
+	err := settingsBackendObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(settingsBackendObject, recv.Native(), "parent_instance", argValue)
@@ -25136,6 +25699,12 @@ func (recv *SimpleProxyResolver) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *SimpleProxyResolver) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := simpleProxyResolverObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(simpleProxyResolverObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -25143,6 +25712,11 @@ func (recv *SimpleProxyResolver) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *SimpleProxyResolver) SetFieldParentInstance(value *gobject.Object) {
+	err := simpleProxyResolverObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(simpleProxyResolverObject, recv.Native(), "parent_instance", argValue)
@@ -25298,6 +25872,12 @@ func (recv *Socket) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Socket) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := socketObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -25305,6 +25885,11 @@ func (recv *Socket) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Socket) SetFieldParentInstance(value *gobject.Object) {
+	err := socketObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketObject, recv.Native(), "parent_instance", argValue)
@@ -25312,6 +25897,12 @@ func (recv *Socket) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Socket) FieldPriv() *SocketPrivate {
+	var nilValue *SocketPrivate
+	err := socketObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketObject, recv.Native(), "priv")
 	value := SocketPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -25319,6 +25910,11 @@ func (recv *Socket) FieldPriv() *SocketPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Socket) SetFieldPriv(value *SocketPrivate) {
+	err := socketObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketObject, recv.Native(), "priv", argValue)
@@ -26805,6 +27401,12 @@ func (recv *SocketAddress) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *SocketAddress) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := socketAddressObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketAddressObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -26812,6 +27414,11 @@ func (recv *SocketAddress) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *SocketAddress) SetFieldParentInstance(value *gobject.Object) {
+	err := socketAddressObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketAddressObject, recv.Native(), "parent_instance", argValue)
@@ -27039,6 +27646,12 @@ func (recv *SocketClient) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *SocketClient) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := socketClientObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketClientObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -27046,6 +27659,11 @@ func (recv *SocketClient) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *SocketClient) SetFieldParentInstance(value *gobject.Object) {
+	err := socketClientObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketClientObject, recv.Native(), "parent_instance", argValue)
@@ -27053,6 +27671,12 @@ func (recv *SocketClient) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketClient) FieldPriv() *SocketClientPrivate {
+	var nilValue *SocketClientPrivate
+	err := socketClientObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketClientObject, recv.Native(), "priv")
 	value := SocketClientPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -27060,6 +27684,11 @@ func (recv *SocketClient) FieldPriv() *SocketClientPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SocketClient) SetFieldPriv(value *SocketClientPrivate) {
+	err := socketClientObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketClientObject, recv.Native(), "priv", argValue)
@@ -27814,6 +28443,12 @@ func (recv *SocketConnection) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *SocketConnection) FieldParentInstance() *IOStream {
+	var nilValue *IOStream
+	err := socketConnectionObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketConnectionObject, recv.Native(), "parent_instance")
 	value := IOStreamNewFromNative(argValue.Pointer())
 	return value
@@ -27821,6 +28456,11 @@ func (recv *SocketConnection) FieldParentInstance() *IOStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *SocketConnection) SetFieldParentInstance(value *IOStream) {
+	err := socketConnectionObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketConnectionObject, recv.Native(), "parent_instance", argValue)
@@ -27828,6 +28468,12 @@ func (recv *SocketConnection) SetFieldParentInstance(value *IOStream) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketConnection) FieldPriv() *SocketConnectionPrivate {
+	var nilValue *SocketConnectionPrivate
+	err := socketConnectionObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketConnectionObject, recv.Native(), "priv")
 	value := SocketConnectionPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -27835,6 +28481,11 @@ func (recv *SocketConnection) FieldPriv() *SocketConnectionPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SocketConnection) SetFieldPriv(value *SocketConnectionPrivate) {
+	err := socketConnectionObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketConnectionObject, recv.Native(), "priv", argValue)
@@ -28063,6 +28714,12 @@ func (recv *SocketControlMessage) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *SocketControlMessage) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := socketControlMessageObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketControlMessageObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -28070,6 +28727,11 @@ func (recv *SocketControlMessage) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *SocketControlMessage) SetFieldParentInstance(value *gobject.Object) {
+	err := socketControlMessageObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketControlMessageObject, recv.Native(), "parent_instance", argValue)
@@ -28077,6 +28739,12 @@ func (recv *SocketControlMessage) SetFieldParentInstance(value *gobject.Object) 
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketControlMessage) FieldPriv() *SocketControlMessagePrivate {
+	var nilValue *SocketControlMessagePrivate
+	err := socketControlMessageObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketControlMessageObject, recv.Native(), "priv")
 	value := SocketControlMessagePrivateNewFromNative(argValue.Pointer())
 	return value
@@ -28084,6 +28752,11 @@ func (recv *SocketControlMessage) FieldPriv() *SocketControlMessagePrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SocketControlMessage) SetFieldPriv(value *SocketControlMessagePrivate) {
+	err := socketControlMessageObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketControlMessageObject, recv.Native(), "priv", argValue)
@@ -28244,6 +28917,12 @@ func (recv *SocketListener) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *SocketListener) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := socketListenerObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketListenerObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -28251,6 +28930,11 @@ func (recv *SocketListener) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *SocketListener) SetFieldParentInstance(value *gobject.Object) {
+	err := socketListenerObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketListenerObject, recv.Native(), "parent_instance", argValue)
@@ -28258,6 +28942,12 @@ func (recv *SocketListener) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketListener) FieldPriv() *SocketListenerPrivate {
+	var nilValue *SocketListenerPrivate
+	err := socketListenerObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketListenerObject, recv.Native(), "priv")
 	value := SocketListenerPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -28265,6 +28955,11 @@ func (recv *SocketListener) FieldPriv() *SocketListenerPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SocketListener) SetFieldPriv(value *SocketListenerPrivate) {
+	err := socketListenerObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketListenerObject, recv.Native(), "priv", argValue)
@@ -28669,6 +29364,12 @@ func (recv *SocketService) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *SocketService) FieldParentInstance() *SocketListener {
+	var nilValue *SocketListener
+	err := socketServiceObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketServiceObject, recv.Native(), "parent_instance")
 	value := SocketListenerNewFromNative(argValue.Pointer())
 	return value
@@ -28676,6 +29377,11 @@ func (recv *SocketService) FieldParentInstance() *SocketListener {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *SocketService) SetFieldParentInstance(value *SocketListener) {
+	err := socketServiceObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketServiceObject, recv.Native(), "parent_instance", argValue)
@@ -28683,6 +29389,12 @@ func (recv *SocketService) SetFieldParentInstance(value *SocketListener) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SocketService) FieldPriv() *SocketServicePrivate {
+	var nilValue *SocketServicePrivate
+	err := socketServiceObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketServiceObject, recv.Native(), "priv")
 	value := SocketServicePrivateNewFromNative(argValue.Pointer())
 	return value
@@ -28690,6 +29402,11 @@ func (recv *SocketService) FieldPriv() *SocketServicePrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SocketService) SetFieldPriv(value *SocketServicePrivate) {
+	err := socketServiceObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketServiceObject, recv.Native(), "priv", argValue)
@@ -28822,7 +29539,16 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *SocketService) ConnectIncoming(handler func(instance *SocketService, connection *SocketConnection, sourceObject *gobject.Object) bool) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gboolean
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := SocketServiceNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := SocketConnectionNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := gobject.ObjectNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "incoming", marshal)
@@ -30626,6 +31352,12 @@ func (recv *TcpConnection) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TcpConnection) FieldParentInstance() *SocketConnection {
+	var nilValue *SocketConnection
+	err := tcpConnectionObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(tcpConnectionObject, recv.Native(), "parent_instance")
 	value := SocketConnectionNewFromNative(argValue.Pointer())
 	return value
@@ -30633,6 +31365,11 @@ func (recv *TcpConnection) FieldParentInstance() *SocketConnection {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *TcpConnection) SetFieldParentInstance(value *SocketConnection) {
+	err := tcpConnectionObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tcpConnectionObject, recv.Native(), "parent_instance", argValue)
@@ -30640,6 +31377,12 @@ func (recv *TcpConnection) SetFieldParentInstance(value *SocketConnection) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TcpConnection) FieldPriv() *TcpConnectionPrivate {
+	var nilValue *TcpConnectionPrivate
+	err := tcpConnectionObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(tcpConnectionObject, recv.Native(), "priv")
 	value := TcpConnectionPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -30647,6 +31390,11 @@ func (recv *TcpConnection) FieldPriv() *TcpConnectionPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *TcpConnection) SetFieldPriv(value *TcpConnectionPrivate) {
+	err := tcpConnectionObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tcpConnectionObject, recv.Native(), "priv", argValue)
@@ -30785,6 +31533,12 @@ func (recv *TcpWrapperConnection) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TcpWrapperConnection) FieldParentInstance() *TcpConnection {
+	var nilValue *TcpConnection
+	err := tcpWrapperConnectionObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(tcpWrapperConnectionObject, recv.Native(), "parent_instance")
 	value := TcpConnectionNewFromNative(argValue.Pointer())
 	return value
@@ -30792,6 +31546,11 @@ func (recv *TcpWrapperConnection) FieldParentInstance() *TcpConnection {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *TcpWrapperConnection) SetFieldParentInstance(value *TcpConnection) {
+	err := tcpWrapperConnectionObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tcpWrapperConnectionObject, recv.Native(), "parent_instance", argValue)
@@ -30799,6 +31558,12 @@ func (recv *TcpWrapperConnection) SetFieldParentInstance(value *TcpConnection) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TcpWrapperConnection) FieldPriv() *TcpWrapperConnectionPrivate {
+	var nilValue *TcpWrapperConnectionPrivate
+	err := tcpWrapperConnectionObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(tcpWrapperConnectionObject, recv.Native(), "priv")
 	value := TcpWrapperConnectionPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -30806,6 +31571,11 @@ func (recv *TcpWrapperConnection) FieldPriv() *TcpWrapperConnectionPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *TcpWrapperConnection) SetFieldPriv(value *TcpWrapperConnectionPrivate) {
+	err := tcpWrapperConnectionObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tcpWrapperConnectionObject, recv.Native(), "priv", argValue)
@@ -31427,6 +32197,12 @@ func (recv *ThreadedSocketService) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *ThreadedSocketService) FieldParentInstance() *SocketService {
+	var nilValue *SocketService
+	err := threadedSocketServiceObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(threadedSocketServiceObject, recv.Native(), "parent_instance")
 	value := SocketServiceNewFromNative(argValue.Pointer())
 	return value
@@ -31434,6 +32210,11 @@ func (recv *ThreadedSocketService) FieldParentInstance() *SocketService {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *ThreadedSocketService) SetFieldParentInstance(value *SocketService) {
+	err := threadedSocketServiceObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(threadedSocketServiceObject, recv.Native(), "parent_instance", argValue)
@@ -31441,6 +32222,12 @@ func (recv *ThreadedSocketService) SetFieldParentInstance(value *SocketService) 
 
 // FieldPriv returns the C field 'priv'.
 func (recv *ThreadedSocketService) FieldPriv() *ThreadedSocketServicePrivate {
+	var nilValue *ThreadedSocketServicePrivate
+	err := threadedSocketServiceObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(threadedSocketServiceObject, recv.Native(), "priv")
 	value := ThreadedSocketServicePrivateNewFromNative(argValue.Pointer())
 	return value
@@ -31448,6 +32235,11 @@ func (recv *ThreadedSocketService) FieldPriv() *ThreadedSocketServicePrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *ThreadedSocketService) SetFieldPriv(value *ThreadedSocketServicePrivate) {
+	err := threadedSocketServiceObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(threadedSocketServiceObject, recv.Native(), "priv", argValue)
@@ -31494,7 +32286,16 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *ThreadedSocketService) ConnectRun(handler func(instance *ThreadedSocketService, connection *SocketConnection, sourceObject *gobject.Object) bool) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gboolean
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := ThreadedSocketServiceNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := SocketConnectionNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := gobject.ObjectNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "run", marshal)
@@ -31566,6 +32367,12 @@ func (recv *TlsCertificate) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TlsCertificate) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := tlsCertificateObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(tlsCertificateObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -31573,6 +32380,11 @@ func (recv *TlsCertificate) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *TlsCertificate) SetFieldParentInstance(value *gobject.Object) {
+	err := tlsCertificateObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tlsCertificateObject, recv.Native(), "parent_instance", argValue)
@@ -31580,6 +32392,12 @@ func (recv *TlsCertificate) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TlsCertificate) FieldPriv() *TlsCertificatePrivate {
+	var nilValue *TlsCertificatePrivate
+	err := tlsCertificateObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(tlsCertificateObject, recv.Native(), "priv")
 	value := TlsCertificatePrivateNewFromNative(argValue.Pointer())
 	return value
@@ -31587,6 +32405,11 @@ func (recv *TlsCertificate) FieldPriv() *TlsCertificatePrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *TlsCertificate) SetFieldPriv(value *TlsCertificatePrivate) {
+	err := tlsCertificateObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tlsCertificateObject, recv.Native(), "priv", argValue)
@@ -31825,6 +32648,12 @@ func (recv *TlsConnection) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TlsConnection) FieldParentInstance() *IOStream {
+	var nilValue *IOStream
+	err := tlsConnectionObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(tlsConnectionObject, recv.Native(), "parent_instance")
 	value := IOStreamNewFromNative(argValue.Pointer())
 	return value
@@ -31832,6 +32661,11 @@ func (recv *TlsConnection) FieldParentInstance() *IOStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *TlsConnection) SetFieldParentInstance(value *IOStream) {
+	err := tlsConnectionObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tlsConnectionObject, recv.Native(), "parent_instance", argValue)
@@ -31839,6 +32673,12 @@ func (recv *TlsConnection) SetFieldParentInstance(value *IOStream) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TlsConnection) FieldPriv() *TlsConnectionPrivate {
+	var nilValue *TlsConnectionPrivate
+	err := tlsConnectionObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(tlsConnectionObject, recv.Native(), "priv")
 	value := TlsConnectionPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -31846,6 +32686,11 @@ func (recv *TlsConnection) FieldPriv() *TlsConnectionPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *TlsConnection) SetFieldPriv(value *TlsConnectionPrivate) {
+	err := tlsConnectionObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tlsConnectionObject, recv.Native(), "priv", argValue)
@@ -32393,7 +33238,16 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *TlsConnection) ConnectAcceptCertificate(handler func(instance *TlsConnection, peerCert *TlsCertificate, errors TlsCertificateFlags) bool) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gboolean
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := TlsConnectionNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := TlsCertificateNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := (TlsCertificateFlags)(object2.GetInt())
+
+		handler(argInstance, arg1, arg2)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "accept-certificate", marshal)
@@ -32465,6 +33319,12 @@ func (recv *TlsDatabase) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TlsDatabase) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := tlsDatabaseObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(tlsDatabaseObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -32472,6 +33332,11 @@ func (recv *TlsDatabase) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *TlsDatabase) SetFieldParentInstance(value *gobject.Object) {
+	err := tlsDatabaseObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tlsDatabaseObject, recv.Native(), "parent_instance", argValue)
@@ -32479,6 +33344,12 @@ func (recv *TlsDatabase) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TlsDatabase) FieldPriv() *TlsDatabasePrivate {
+	var nilValue *TlsDatabasePrivate
+	err := tlsDatabaseObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(tlsDatabaseObject, recv.Native(), "priv")
 	value := TlsDatabasePrivateNewFromNative(argValue.Pointer())
 	return value
@@ -32486,6 +33357,11 @@ func (recv *TlsDatabase) FieldPriv() *TlsDatabasePrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *TlsDatabase) SetFieldPriv(value *TlsDatabasePrivate) {
+	err := tlsDatabaseObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tlsDatabaseObject, recv.Native(), "priv", argValue)
@@ -32874,6 +33750,12 @@ func (recv *TlsPassword) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *TlsPassword) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := tlsPasswordObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(tlsPasswordObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -32881,6 +33763,11 @@ func (recv *TlsPassword) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *TlsPassword) SetFieldParentInstance(value *gobject.Object) {
+	err := tlsPasswordObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tlsPasswordObject, recv.Native(), "parent_instance", argValue)
@@ -32888,6 +33775,12 @@ func (recv *TlsPassword) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *TlsPassword) FieldPriv() *TlsPasswordPrivate {
+	var nilValue *TlsPasswordPrivate
+	err := tlsPasswordObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(tlsPasswordObject, recv.Native(), "priv")
 	value := TlsPasswordPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -32895,6 +33788,11 @@ func (recv *TlsPassword) FieldPriv() *TlsPasswordPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *TlsPassword) SetFieldPriv(value *TlsPasswordPrivate) {
+	err := tlsPasswordObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tlsPasswordObject, recv.Native(), "priv", argValue)
@@ -33222,6 +34120,12 @@ func (recv *UnixConnection) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixConnection) FieldParentInstance() *SocketConnection {
+	var nilValue *SocketConnection
+	err := unixConnectionObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(unixConnectionObject, recv.Native(), "parent_instance")
 	value := SocketConnectionNewFromNative(argValue.Pointer())
 	return value
@@ -33229,6 +34133,11 @@ func (recv *UnixConnection) FieldParentInstance() *SocketConnection {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixConnection) SetFieldParentInstance(value *SocketConnection) {
+	err := unixConnectionObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(unixConnectionObject, recv.Native(), "parent_instance", argValue)
@@ -33236,6 +34145,12 @@ func (recv *UnixConnection) SetFieldParentInstance(value *SocketConnection) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *UnixConnection) FieldPriv() *UnixConnectionPrivate {
+	var nilValue *UnixConnectionPrivate
+	err := unixConnectionObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(unixConnectionObject, recv.Native(), "priv")
 	value := UnixConnectionPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -33243,6 +34158,11 @@ func (recv *UnixConnection) FieldPriv() *UnixConnectionPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *UnixConnection) SetFieldPriv(value *UnixConnectionPrivate) {
+	err := unixConnectionObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(unixConnectionObject, recv.Native(), "priv", argValue)
@@ -33451,6 +34371,12 @@ func (recv *UnixCredentialsMessage) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixCredentialsMessage) FieldParentInstance() *SocketControlMessage {
+	var nilValue *SocketControlMessage
+	err := unixCredentialsMessageObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(unixCredentialsMessageObject, recv.Native(), "parent_instance")
 	value := SocketControlMessageNewFromNative(argValue.Pointer())
 	return value
@@ -33458,6 +34384,11 @@ func (recv *UnixCredentialsMessage) FieldParentInstance() *SocketControlMessage 
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixCredentialsMessage) SetFieldParentInstance(value *SocketControlMessage) {
+	err := unixCredentialsMessageObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(unixCredentialsMessageObject, recv.Native(), "parent_instance", argValue)
@@ -33465,6 +34396,12 @@ func (recv *UnixCredentialsMessage) SetFieldParentInstance(value *SocketControlM
 
 // FieldPriv returns the C field 'priv'.
 func (recv *UnixCredentialsMessage) FieldPriv() *UnixCredentialsMessagePrivate {
+	var nilValue *UnixCredentialsMessagePrivate
+	err := unixCredentialsMessageObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(unixCredentialsMessageObject, recv.Native(), "priv")
 	value := UnixCredentialsMessagePrivateNewFromNative(argValue.Pointer())
 	return value
@@ -33472,6 +34409,11 @@ func (recv *UnixCredentialsMessage) FieldPriv() *UnixCredentialsMessagePrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *UnixCredentialsMessage) SetFieldPriv(value *UnixCredentialsMessagePrivate) {
+	err := unixCredentialsMessageObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(unixCredentialsMessageObject, recv.Native(), "priv", argValue)
@@ -33632,6 +34574,12 @@ func (recv *UnixFDList) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixFDList) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := unixFDListObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(unixFDListObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -33639,6 +34587,11 @@ func (recv *UnixFDList) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixFDList) SetFieldParentInstance(value *gobject.Object) {
+	err := unixFDListObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(unixFDListObject, recv.Native(), "parent_instance", argValue)
@@ -33646,6 +34599,12 @@ func (recv *UnixFDList) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *UnixFDList) FieldPriv() *UnixFDListPrivate {
+	var nilValue *UnixFDListPrivate
+	err := unixFDListObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(unixFDListObject, recv.Native(), "priv")
 	value := UnixFDListPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -33653,6 +34612,11 @@ func (recv *UnixFDList) FieldPriv() *UnixFDListPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *UnixFDList) SetFieldPriv(value *UnixFDListPrivate) {
+	err := unixFDListObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(unixFDListObject, recv.Native(), "priv", argValue)
@@ -33916,6 +34880,12 @@ func (recv *UnixFDMessage) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixFDMessage) FieldParentInstance() *SocketControlMessage {
+	var nilValue *SocketControlMessage
+	err := unixFDMessageObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(unixFDMessageObject, recv.Native(), "parent_instance")
 	value := SocketControlMessageNewFromNative(argValue.Pointer())
 	return value
@@ -33923,6 +34893,11 @@ func (recv *UnixFDMessage) FieldParentInstance() *SocketControlMessage {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixFDMessage) SetFieldParentInstance(value *SocketControlMessage) {
+	err := unixFDMessageObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(unixFDMessageObject, recv.Native(), "parent_instance", argValue)
@@ -33930,6 +34905,12 @@ func (recv *UnixFDMessage) SetFieldParentInstance(value *SocketControlMessage) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *UnixFDMessage) FieldPriv() *UnixFDMessagePrivate {
+	var nilValue *UnixFDMessagePrivate
+	err := unixFDMessageObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(unixFDMessageObject, recv.Native(), "priv")
 	value := UnixFDMessagePrivateNewFromNative(argValue.Pointer())
 	return value
@@ -33937,6 +34918,11 @@ func (recv *UnixFDMessage) FieldPriv() *UnixFDMessagePrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *UnixFDMessage) SetFieldPriv(value *UnixFDMessagePrivate) {
+	err := unixFDMessageObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(unixFDMessageObject, recv.Native(), "priv", argValue)
@@ -34167,6 +35153,12 @@ func (recv *UnixInputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixInputStream) FieldParentInstance() *InputStream {
+	var nilValue *InputStream
+	err := unixInputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(unixInputStreamObject, recv.Native(), "parent_instance")
 	value := InputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -34174,6 +35166,11 @@ func (recv *UnixInputStream) FieldParentInstance() *InputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixInputStream) SetFieldParentInstance(value *InputStream) {
+	err := unixInputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(unixInputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -34536,6 +35533,12 @@ func (recv *UnixOutputStream) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixOutputStream) FieldParentInstance() *OutputStream {
+	var nilValue *OutputStream
+	err := unixOutputStreamObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(unixOutputStreamObject, recv.Native(), "parent_instance")
 	value := OutputStreamNewFromNative(argValue.Pointer())
 	return value
@@ -34543,6 +35546,11 @@ func (recv *UnixOutputStream) FieldParentInstance() *OutputStream {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixOutputStream) SetFieldParentInstance(value *OutputStream) {
+	err := unixOutputStreamObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(unixOutputStreamObject, recv.Native(), "parent_instance", argValue)
@@ -34748,6 +35756,12 @@ func (recv *UnixSocketAddress) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *UnixSocketAddress) FieldParentInstance() *SocketAddress {
+	var nilValue *SocketAddress
+	err := unixSocketAddressObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(unixSocketAddressObject, recv.Native(), "parent_instance")
 	value := SocketAddressNewFromNative(argValue.Pointer())
 	return value
@@ -34755,6 +35769,11 @@ func (recv *UnixSocketAddress) FieldParentInstance() *SocketAddress {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *UnixSocketAddress) SetFieldParentInstance(value *SocketAddress) {
+	err := unixSocketAddressObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(unixSocketAddressObject, recv.Native(), "parent_instance", argValue)
@@ -34988,6 +36007,12 @@ func (recv *Vfs) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Vfs) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := vfsObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(vfsObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -34995,6 +36020,11 @@ func (recv *Vfs) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Vfs) SetFieldParentInstance(value *gobject.Object) {
+	err := vfsObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(vfsObject, recv.Native(), "parent_instance", argValue)
@@ -35158,6 +36188,12 @@ func (recv *VolumeMonitor) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *VolumeMonitor) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := volumeMonitorObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(volumeMonitorObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -35165,6 +36201,11 @@ func (recv *VolumeMonitor) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *VolumeMonitor) SetFieldParentInstance(value *gobject.Object) {
+	err := volumeMonitorObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(volumeMonitorObject, recv.Native(), "parent_instance", argValue)

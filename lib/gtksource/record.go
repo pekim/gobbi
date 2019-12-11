@@ -52,6 +52,12 @@ func (recv *BufferClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *BufferClass) FieldParentClass() *gtk.TextBufferClass {
+	var nilValue *gtk.TextBufferClass
+	err := bufferClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(bufferClassStruct, recv.Native(), "parent_class")
 	value := gtk.TextBufferClassNewFromNative(argValue.Pointer())
 	return value
@@ -59,6 +65,11 @@ func (recv *BufferClass) FieldParentClass() *gtk.TextBufferClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *BufferClass) SetFieldParentClass(value *gtk.TextBufferClass) {
+	err := bufferClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(bufferClassStruct, recv.Native(), "parent_class", argValue)
@@ -198,6 +209,12 @@ func (recv *CompletionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CompletionClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := completionClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(completionClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -205,6 +222,11 @@ func (recv *CompletionClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CompletionClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := completionClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(completionClassStruct, recv.Native(), "parent_class", argValue)
@@ -294,6 +316,12 @@ func (recv *CompletionContextClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CompletionContextClass) FieldParentClass() *gobject.InitiallyUnownedClass {
+	var nilValue *gobject.InitiallyUnownedClass
+	err := completionContextClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(completionContextClassStruct, recv.Native(), "parent_class")
 	value := gobject.InitiallyUnownedClassNewFromNative(argValue.Pointer())
 	return value
@@ -301,6 +329,11 @@ func (recv *CompletionContextClass) FieldParentClass() *gobject.InitiallyUnowned
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CompletionContextClass) SetFieldParentClass(value *gobject.InitiallyUnownedClass) {
+	err := completionContextClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(completionContextClassStruct, recv.Native(), "parent_class", argValue)
@@ -432,6 +465,12 @@ func (recv *CompletionInfoClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CompletionInfoClass) FieldParentClass() *gtk.WindowClass {
+	var nilValue *gtk.WindowClass
+	err := completionInfoClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(completionInfoClassStruct, recv.Native(), "parent_class")
 	value := gtk.WindowClassNewFromNative(argValue.Pointer())
 	return value
@@ -439,6 +478,11 @@ func (recv *CompletionInfoClass) FieldParentClass() *gtk.WindowClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CompletionInfoClass) SetFieldParentClass(value *gtk.WindowClass) {
+	err := completionInfoClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(completionInfoClassStruct, recv.Native(), "parent_class", argValue)
@@ -558,6 +602,12 @@ func (recv *CompletionItemClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CompletionItemClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := completionItemClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(completionItemClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -565,6 +615,11 @@ func (recv *CompletionItemClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CompletionItemClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := completionItemClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(completionItemClassStruct, recv.Native(), "parent_class", argValue)
@@ -734,6 +789,12 @@ func (recv *CompletionProposalIface) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *CompletionProposalIface) FieldParent() *gobject.TypeInterface {
+	var nilValue *gobject.TypeInterface
+	err := completionProposalIfaceStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(completionProposalIfaceStruct, recv.Native(), "parent")
 	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
 	return value
@@ -741,6 +802,11 @@ func (recv *CompletionProposalIface) FieldParent() *gobject.TypeInterface {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *CompletionProposalIface) SetFieldParent(value *gobject.TypeInterface) {
+	err := completionProposalIfaceStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(completionProposalIfaceStruct, recv.Native(), "parent", argValue)
@@ -842,6 +908,12 @@ func (recv *CompletionProviderIface) Native() unsafe.Pointer {
 
 // FieldGIface returns the C field 'g_iface'.
 func (recv *CompletionProviderIface) FieldGIface() *gobject.TypeInterface {
+	var nilValue *gobject.TypeInterface
+	err := completionProviderIfaceStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(completionProviderIfaceStruct, recv.Native(), "g_iface")
 	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
 	return value
@@ -849,6 +921,11 @@ func (recv *CompletionProviderIface) FieldGIface() *gobject.TypeInterface {
 
 // SetFieldGIface sets the value of the C field 'g_iface'.
 func (recv *CompletionProviderIface) SetFieldGIface(value *gobject.TypeInterface) {
+	err := completionProviderIfaceStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(completionProviderIfaceStruct, recv.Native(), "g_iface", argValue)
@@ -962,6 +1039,12 @@ func (recv *CompletionWordsClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CompletionWordsClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := completionWordsClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(completionWordsClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -969,6 +1052,11 @@ func (recv *CompletionWordsClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CompletionWordsClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := completionWordsClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(completionWordsClassStruct, recv.Native(), "parent_class", argValue)
@@ -1294,6 +1382,12 @@ func (recv *FileClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FileClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := fileClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(fileClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -1301,6 +1395,11 @@ func (recv *FileClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FileClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := fileClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(fileClassStruct, recv.Native(), "parent_class", argValue)
@@ -1366,6 +1465,12 @@ func (recv *FileLoaderClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FileLoaderClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := fileLoaderClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(fileLoaderClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -1373,6 +1478,11 @@ func (recv *FileLoaderClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FileLoaderClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := fileLoaderClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(fileLoaderClassStruct, recv.Native(), "parent_class", argValue)
@@ -1546,6 +1656,12 @@ func (recv *FileSaverClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *FileSaverClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := fileSaverClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(fileSaverClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -1553,6 +1669,11 @@ func (recv *FileSaverClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *FileSaverClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := fileSaverClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(fileSaverClassStruct, recv.Native(), "parent_class", argValue)
@@ -1672,6 +1793,12 @@ func (recv *GutterClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *GutterClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := gutterClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(gutterClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -1679,6 +1806,11 @@ func (recv *GutterClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *GutterClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := gutterClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(gutterClassStruct, recv.Native(), "parent_class", argValue)
@@ -1794,6 +1926,12 @@ func (recv *GutterRendererClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *GutterRendererClass) FieldParentClass() *gobject.InitiallyUnownedClass {
+	var nilValue *gobject.InitiallyUnownedClass
+	err := gutterRendererClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(gutterRendererClassStruct, recv.Native(), "parent_class")
 	value := gobject.InitiallyUnownedClassNewFromNative(argValue.Pointer())
 	return value
@@ -1801,6 +1939,11 @@ func (recv *GutterRendererClass) FieldParentClass() *gobject.InitiallyUnownedCla
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *GutterRendererClass) SetFieldParentClass(value *gobject.InitiallyUnownedClass) {
+	err := gutterRendererClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(gutterRendererClassStruct, recv.Native(), "parent_class", argValue)
@@ -2172,6 +2315,12 @@ func (recv *LanguageClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *LanguageClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := languageClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(languageClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -2179,6 +2328,11 @@ func (recv *LanguageClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *LanguageClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := languageClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(languageClassStruct, recv.Native(), "parent_class", argValue)
@@ -2248,6 +2402,12 @@ func (recv *LanguageManagerClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *LanguageManagerClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := languageManagerClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(languageManagerClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -2255,6 +2415,11 @@ func (recv *LanguageManagerClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *LanguageManagerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := languageManagerClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(languageManagerClassStruct, recv.Native(), "parent_class", argValue)
@@ -2440,6 +2605,12 @@ func (recv *MapClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MapClass) FieldParentClass() *ViewClass {
+	var nilValue *ViewClass
+	err := mapClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(mapClassStruct, recv.Native(), "parent_class")
 	value := ViewClassNewFromNative(argValue.Pointer())
 	return value
@@ -2447,6 +2618,11 @@ func (recv *MapClass) FieldParentClass() *ViewClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MapClass) SetFieldParentClass(value *ViewClass) {
+	err := mapClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(mapClassStruct, recv.Native(), "parent_class", argValue)
@@ -2620,6 +2796,12 @@ func (recv *MarkClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MarkClass) FieldParentClass() *gtk.TextMarkClass {
+	var nilValue *gtk.TextMarkClass
+	err := markClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(markClassStruct, recv.Native(), "parent_class")
 	value := gtk.TextMarkClassNewFromNative(argValue.Pointer())
 	return value
@@ -2627,6 +2809,11 @@ func (recv *MarkClass) FieldParentClass() *gtk.TextMarkClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MarkClass) SetFieldParentClass(value *gtk.TextMarkClass) {
+	err := markClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(markClassStruct, recv.Native(), "parent_class", argValue)
@@ -2750,6 +2937,12 @@ func (recv *PrintCompositorClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *PrintCompositorClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := printCompositorClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(printCompositorClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -2757,6 +2950,11 @@ func (recv *PrintCompositorClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *PrintCompositorClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := printCompositorClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(printCompositorClassStruct, recv.Native(), "parent_class", argValue)
@@ -2880,6 +3078,12 @@ func (recv *RegionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RegionClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := regionClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(regionClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -2887,6 +3091,11 @@ func (recv *RegionClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RegionClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := regionClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(regionClassStruct, recv.Native(), "parent_class", argValue)
@@ -3105,6 +3314,12 @@ func (recv *SearchContextClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SearchContextClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := searchContextClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(searchContextClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -3112,6 +3327,11 @@ func (recv *SearchContextClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SearchContextClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := searchContextClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(searchContextClassStruct, recv.Native(), "parent_class", argValue)
@@ -3231,6 +3451,12 @@ func (recv *SearchSettingsClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SearchSettingsClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := searchSettingsClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(searchSettingsClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -3238,6 +3464,11 @@ func (recv *SearchSettingsClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SearchSettingsClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := searchSettingsClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(searchSettingsClassStruct, recv.Native(), "parent_class", argValue)
@@ -3357,6 +3588,12 @@ func (recv *SpaceDrawerClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SpaceDrawerClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := spaceDrawerClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(spaceDrawerClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -3364,6 +3601,11 @@ func (recv *SpaceDrawerClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SpaceDrawerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := spaceDrawerClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(spaceDrawerClassStruct, recv.Native(), "parent_class", argValue)
@@ -3537,6 +3779,12 @@ func (recv *StyleSchemeChooserButtonClass) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *StyleSchemeChooserButtonClass) FieldParent() *gtk.ButtonClass {
+	var nilValue *gtk.ButtonClass
+	err := styleSchemeChooserButtonClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(styleSchemeChooserButtonClassStruct, recv.Native(), "parent")
 	value := gtk.ButtonClassNewFromNative(argValue.Pointer())
 	return value
@@ -3544,6 +3792,11 @@ func (recv *StyleSchemeChooserButtonClass) FieldParent() *gtk.ButtonClass {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *StyleSchemeChooserButtonClass) SetFieldParent(value *gtk.ButtonClass) {
+	err := styleSchemeChooserButtonClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(styleSchemeChooserButtonClassStruct, recv.Native(), "parent", argValue)
@@ -3605,6 +3858,12 @@ func (recv *StyleSchemeChooserInterface) Native() unsafe.Pointer {
 
 // FieldBaseInterface returns the C field 'base_interface'.
 func (recv *StyleSchemeChooserInterface) FieldBaseInterface() *gobject.TypeInterface {
+	var nilValue *gobject.TypeInterface
+	err := styleSchemeChooserInterfaceStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(styleSchemeChooserInterfaceStruct, recv.Native(), "base_interface")
 	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
 	return value
@@ -3612,6 +3871,11 @@ func (recv *StyleSchemeChooserInterface) FieldBaseInterface() *gobject.TypeInter
 
 // SetFieldBaseInterface sets the value of the C field 'base_interface'.
 func (recv *StyleSchemeChooserInterface) SetFieldBaseInterface(value *gobject.TypeInterface) {
+	err := styleSchemeChooserInterfaceStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(styleSchemeChooserInterfaceStruct, recv.Native(), "base_interface", argValue)
@@ -3685,6 +3949,12 @@ func (recv *StyleSchemeChooserWidgetClass) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *StyleSchemeChooserWidgetClass) FieldParent() *gtk.BinClass {
+	var nilValue *gtk.BinClass
+	err := styleSchemeChooserWidgetClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(styleSchemeChooserWidgetClassStruct, recv.Native(), "parent")
 	value := gtk.BinClassNewFromNative(argValue.Pointer())
 	return value
@@ -3692,6 +3962,11 @@ func (recv *StyleSchemeChooserWidgetClass) FieldParent() *gtk.BinClass {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *StyleSchemeChooserWidgetClass) SetFieldParent(value *gtk.BinClass) {
+	err := styleSchemeChooserWidgetClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(styleSchemeChooserWidgetClassStruct, recv.Native(), "parent", argValue)
@@ -3753,6 +4028,12 @@ func (recv *StyleSchemeClass) Native() unsafe.Pointer {
 
 // FieldBaseClass returns the C field 'base_class'.
 func (recv *StyleSchemeClass) FieldBaseClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := styleSchemeClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(styleSchemeClassStruct, recv.Native(), "base_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -3760,6 +4041,11 @@ func (recv *StyleSchemeClass) FieldBaseClass() *gobject.ObjectClass {
 
 // SetFieldBaseClass sets the value of the C field 'base_class'.
 func (recv *StyleSchemeClass) SetFieldBaseClass(value *gobject.ObjectClass) {
+	err := styleSchemeClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(styleSchemeClassStruct, recv.Native(), "base_class", argValue)
@@ -3829,6 +4115,12 @@ func (recv *StyleSchemeManagerClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *StyleSchemeManagerClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := styleSchemeManagerClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(styleSchemeManagerClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -3836,6 +4128,11 @@ func (recv *StyleSchemeManagerClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *StyleSchemeManagerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := styleSchemeManagerClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(styleSchemeManagerClassStruct, recv.Native(), "parent_class", argValue)
@@ -4021,6 +4318,12 @@ func (recv *TagClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *TagClass) FieldParentClass() *gtk.TextTagClass {
+	var nilValue *gtk.TextTagClass
+	err := tagClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(tagClassStruct, recv.Native(), "parent_class")
 	value := gtk.TextTagClassNewFromNative(argValue.Pointer())
 	return value
@@ -4028,6 +4331,11 @@ func (recv *TagClass) FieldParentClass() *gtk.TextTagClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *TagClass) SetFieldParentClass(value *gtk.TextTagClass) {
+	err := tagClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(tagClassStruct, recv.Native(), "parent_class", argValue)
@@ -4093,6 +4401,12 @@ func (recv *UndoManagerIface) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *UndoManagerIface) FieldParent() *gobject.TypeInterface {
+	var nilValue *gobject.TypeInterface
+	err := undoManagerIfaceStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(undoManagerIfaceStruct, recv.Native(), "parent")
 	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
 	return value
@@ -4100,6 +4414,11 @@ func (recv *UndoManagerIface) FieldParent() *gobject.TypeInterface {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *UndoManagerIface) SetFieldParent(value *gobject.TypeInterface) {
+	err := undoManagerIfaceStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(undoManagerIfaceStruct, recv.Native(), "parent", argValue)
@@ -4193,6 +4512,12 @@ func (recv *ViewClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ViewClass) FieldParentClass() *gtk.TextViewClass {
+	var nilValue *gtk.TextViewClass
+	err := viewClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(viewClassStruct, recv.Native(), "parent_class")
 	value := gtk.TextViewClassNewFromNative(argValue.Pointer())
 	return value
@@ -4200,6 +4525,11 @@ func (recv *ViewClass) FieldParentClass() *gtk.TextViewClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ViewClass) SetFieldParentClass(value *gtk.TextViewClass) {
+	err := viewClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(viewClassStruct, recv.Native(), "parent_class", argValue)

@@ -53,6 +53,12 @@ func (recv *AddressClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AddressClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := addressClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(addressClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -60,6 +66,11 @@ func (recv *AddressClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AddressClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := addressClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(addressClassStruct, recv.Native(), "parent_class", argValue)
@@ -137,6 +148,12 @@ func (recv *AuthClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AuthClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := authClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(authClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -144,6 +161,11 @@ func (recv *AuthClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AuthClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := authClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(authClassStruct, recv.Native(), "parent_class", argValue)
@@ -151,6 +173,12 @@ func (recv *AuthClass) SetFieldParentClass(value *gobject.ObjectClass) {
 
 // FieldSchemeName returns the C field 'scheme_name'.
 func (recv *AuthClass) FieldSchemeName() string {
+	var nilValue string
+	err := authClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(authClassStruct, recv.Native(), "scheme_name")
 	value := argValue.String(false)
 	return value
@@ -158,6 +186,11 @@ func (recv *AuthClass) FieldSchemeName() string {
 
 // SetFieldSchemeName sets the value of the C field 'scheme_name'.
 func (recv *AuthClass) SetFieldSchemeName(value string) {
+	err := authClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(authClassStruct, recv.Native(), "scheme_name", argValue)
@@ -165,6 +198,12 @@ func (recv *AuthClass) SetFieldSchemeName(value string) {
 
 // FieldStrength returns the C field 'strength'.
 func (recv *AuthClass) FieldStrength() uint32 {
+	var nilValue uint32
+	err := authClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(authClassStruct, recv.Native(), "strength")
 	value := argValue.Uint32()
 	return value
@@ -172,6 +211,11 @@ func (recv *AuthClass) FieldStrength() uint32 {
 
 // SetFieldStrength sets the value of the C field 'strength'.
 func (recv *AuthClass) SetFieldStrength(value uint32) {
+	err := authClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(authClassStruct, recv.Native(), "strength", argValue)
@@ -269,6 +313,12 @@ func (recv *AuthDomainBasicClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AuthDomainBasicClass) FieldParentClass() *AuthDomainClass {
+	var nilValue *AuthDomainClass
+	err := authDomainBasicClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(authDomainBasicClassStruct, recv.Native(), "parent_class")
 	value := AuthDomainClassNewFromNative(argValue.Pointer())
 	return value
@@ -276,6 +326,11 @@ func (recv *AuthDomainBasicClass) FieldParentClass() *AuthDomainClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AuthDomainBasicClass) SetFieldParentClass(value *AuthDomainClass) {
+	err := authDomainBasicClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(authDomainBasicClassStruct, recv.Native(), "parent_class", argValue)
@@ -353,6 +408,12 @@ func (recv *AuthDomainClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AuthDomainClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := authDomainClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(authDomainClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -360,6 +421,11 @@ func (recv *AuthDomainClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AuthDomainClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := authDomainClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(authDomainClassStruct, recv.Native(), "parent_class", argValue)
@@ -445,6 +511,12 @@ func (recv *AuthDomainDigestClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AuthDomainDigestClass) FieldParentClass() *AuthDomainClass {
+	var nilValue *AuthDomainClass
+	err := authDomainDigestClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(authDomainDigestClassStruct, recv.Native(), "parent_class")
 	value := AuthDomainClassNewFromNative(argValue.Pointer())
 	return value
@@ -452,6 +524,11 @@ func (recv *AuthDomainDigestClass) FieldParentClass() *AuthDomainClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AuthDomainDigestClass) SetFieldParentClass(value *AuthDomainClass) {
+	err := authDomainDigestClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(authDomainDigestClassStruct, recv.Native(), "parent_class", argValue)
@@ -529,6 +606,12 @@ func (recv *AuthManagerClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *AuthManagerClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := authManagerClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(authManagerClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -536,6 +619,11 @@ func (recv *AuthManagerClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *AuthManagerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := authManagerClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(authManagerClassStruct, recv.Native(), "parent_class", argValue)
@@ -659,6 +747,12 @@ func (recv *Buffer) Native() unsafe.Pointer {
 
 // FieldLength returns the C field 'length'.
 func (recv *Buffer) FieldLength() uint64 {
+	var nilValue uint64
+	err := bufferStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(bufferStruct, recv.Native(), "length")
 	value := argValue.Uint64()
 	return value
@@ -666,6 +760,11 @@ func (recv *Buffer) FieldLength() uint64 {
 
 // SetFieldLength sets the value of the C field 'length'.
 func (recv *Buffer) SetFieldLength(value uint64) {
+	err := bufferStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint64(value)
 	gi.StructFieldSet(bufferStruct, recv.Native(), "length", argValue)
@@ -848,6 +947,12 @@ func (recv *CacheClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CacheClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := cacheClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(cacheClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -855,6 +960,11 @@ func (recv *CacheClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CacheClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := cacheClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(cacheClassStruct, recv.Native(), "parent_class", argValue)
@@ -1382,6 +1492,12 @@ func (recv *ContentDecoderClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ContentDecoderClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := contentDecoderClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(contentDecoderClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -1389,6 +1505,11 @@ func (recv *ContentDecoderClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ContentDecoderClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := contentDecoderClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(contentDecoderClassStruct, recv.Native(), "parent_class", argValue)
@@ -1524,6 +1645,12 @@ func (recv *ContentSnifferClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ContentSnifferClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := contentSnifferClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(contentSnifferClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -1531,6 +1658,11 @@ func (recv *ContentSnifferClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ContentSnifferClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := contentSnifferClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(contentSnifferClassStruct, recv.Native(), "parent_class", argValue)
@@ -1674,6 +1806,12 @@ func (recv *Cookie) Native() unsafe.Pointer {
 
 // FieldName returns the C field 'name'.
 func (recv *Cookie) FieldName() string {
+	var nilValue string
+	err := cookieStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(cookieStruct, recv.Native(), "name")
 	value := argValue.String(false)
 	return value
@@ -1681,6 +1819,11 @@ func (recv *Cookie) FieldName() string {
 
 // SetFieldName sets the value of the C field 'name'.
 func (recv *Cookie) SetFieldName(value string) {
+	err := cookieStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(cookieStruct, recv.Native(), "name", argValue)
@@ -1688,6 +1831,12 @@ func (recv *Cookie) SetFieldName(value string) {
 
 // FieldValue returns the C field 'value'.
 func (recv *Cookie) FieldValue() string {
+	var nilValue string
+	err := cookieStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(cookieStruct, recv.Native(), "value")
 	value := argValue.String(false)
 	return value
@@ -1695,6 +1844,11 @@ func (recv *Cookie) FieldValue() string {
 
 // SetFieldValue sets the value of the C field 'value'.
 func (recv *Cookie) SetFieldValue(value string) {
+	err := cookieStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(cookieStruct, recv.Native(), "value", argValue)
@@ -1702,6 +1856,12 @@ func (recv *Cookie) SetFieldValue(value string) {
 
 // FieldDomain returns the C field 'domain'.
 func (recv *Cookie) FieldDomain() string {
+	var nilValue string
+	err := cookieStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(cookieStruct, recv.Native(), "domain")
 	value := argValue.String(false)
 	return value
@@ -1709,6 +1869,11 @@ func (recv *Cookie) FieldDomain() string {
 
 // SetFieldDomain sets the value of the C field 'domain'.
 func (recv *Cookie) SetFieldDomain(value string) {
+	err := cookieStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(cookieStruct, recv.Native(), "domain", argValue)
@@ -1716,6 +1881,12 @@ func (recv *Cookie) SetFieldDomain(value string) {
 
 // FieldPath returns the C field 'path'.
 func (recv *Cookie) FieldPath() string {
+	var nilValue string
+	err := cookieStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(cookieStruct, recv.Native(), "path")
 	value := argValue.String(false)
 	return value
@@ -1723,6 +1894,11 @@ func (recv *Cookie) FieldPath() string {
 
 // SetFieldPath sets the value of the C field 'path'.
 func (recv *Cookie) SetFieldPath(value string) {
+	err := cookieStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(cookieStruct, recv.Native(), "path", argValue)
@@ -1730,6 +1906,12 @@ func (recv *Cookie) SetFieldPath(value string) {
 
 // FieldExpires returns the C field 'expires'.
 func (recv *Cookie) FieldExpires() *Date {
+	var nilValue *Date
+	err := cookieStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(cookieStruct, recv.Native(), "expires")
 	value := DateNewFromNative(argValue.Pointer())
 	return value
@@ -1737,6 +1919,11 @@ func (recv *Cookie) FieldExpires() *Date {
 
 // SetFieldExpires sets the value of the C field 'expires'.
 func (recv *Cookie) SetFieldExpires(value *Date) {
+	err := cookieStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(cookieStruct, recv.Native(), "expires", argValue)
@@ -1744,6 +1931,12 @@ func (recv *Cookie) SetFieldExpires(value *Date) {
 
 // FieldSecure returns the C field 'secure'.
 func (recv *Cookie) FieldSecure() bool {
+	var nilValue bool
+	err := cookieStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(cookieStruct, recv.Native(), "secure")
 	value := argValue.Boolean()
 	return value
@@ -1751,6 +1944,11 @@ func (recv *Cookie) FieldSecure() bool {
 
 // SetFieldSecure sets the value of the C field 'secure'.
 func (recv *Cookie) SetFieldSecure(value bool) {
+	err := cookieStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
 	gi.StructFieldSet(cookieStruct, recv.Native(), "secure", argValue)
@@ -1758,6 +1956,12 @@ func (recv *Cookie) SetFieldSecure(value bool) {
 
 // FieldHttpOnly returns the C field 'http_only'.
 func (recv *Cookie) FieldHttpOnly() bool {
+	var nilValue bool
+	err := cookieStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(cookieStruct, recv.Native(), "http_only")
 	value := argValue.Boolean()
 	return value
@@ -1765,6 +1969,11 @@ func (recv *Cookie) FieldHttpOnly() bool {
 
 // SetFieldHttpOnly sets the value of the C field 'http_only'.
 func (recv *Cookie) SetFieldHttpOnly(value bool) {
+	err := cookieStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
 	gi.StructFieldSet(cookieStruct, recv.Native(), "http_only", argValue)
@@ -2526,6 +2735,12 @@ func (recv *CookieJarClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CookieJarClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := cookieJarClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(cookieJarClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -2533,6 +2748,11 @@ func (recv *CookieJarClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CookieJarClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := cookieJarClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(cookieJarClassStruct, recv.Native(), "parent_class", argValue)
@@ -2614,6 +2834,12 @@ func (recv *CookieJarDBClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CookieJarDBClass) FieldParentClass() *CookieJarClass {
+	var nilValue *CookieJarClass
+	err := cookieJarDBClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(cookieJarDBClassStruct, recv.Native(), "parent_class")
 	value := CookieJarClassNewFromNative(argValue.Pointer())
 	return value
@@ -2621,6 +2847,11 @@ func (recv *CookieJarDBClass) FieldParentClass() *CookieJarClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CookieJarDBClass) SetFieldParentClass(value *CookieJarClass) {
+	err := cookieJarDBClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(cookieJarDBClassStruct, recv.Native(), "parent_class", argValue)
@@ -2698,6 +2929,12 @@ func (recv *CookieJarTextClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *CookieJarTextClass) FieldParentClass() *CookieJarClass {
+	var nilValue *CookieJarClass
+	err := cookieJarTextClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(cookieJarTextClassStruct, recv.Native(), "parent_class")
 	value := CookieJarClassNewFromNative(argValue.Pointer())
 	return value
@@ -2705,6 +2942,11 @@ func (recv *CookieJarTextClass) FieldParentClass() *CookieJarClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *CookieJarTextClass) SetFieldParentClass(value *CookieJarClass) {
+	err := cookieJarTextClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(cookieJarTextClassStruct, recv.Native(), "parent_class", argValue)
@@ -2782,6 +3024,12 @@ func (recv *Date) Native() unsafe.Pointer {
 
 // FieldYear returns the C field 'year'.
 func (recv *Date) FieldYear() int32 {
+	var nilValue int32
+	err := dateStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(dateStruct, recv.Native(), "year")
 	value := argValue.Int32()
 	return value
@@ -2789,6 +3037,11 @@ func (recv *Date) FieldYear() int32 {
 
 // SetFieldYear sets the value of the C field 'year'.
 func (recv *Date) SetFieldYear(value int32) {
+	err := dateStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(dateStruct, recv.Native(), "year", argValue)
@@ -2796,6 +3049,12 @@ func (recv *Date) SetFieldYear(value int32) {
 
 // FieldMonth returns the C field 'month'.
 func (recv *Date) FieldMonth() int32 {
+	var nilValue int32
+	err := dateStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(dateStruct, recv.Native(), "month")
 	value := argValue.Int32()
 	return value
@@ -2803,6 +3062,11 @@ func (recv *Date) FieldMonth() int32 {
 
 // SetFieldMonth sets the value of the C field 'month'.
 func (recv *Date) SetFieldMonth(value int32) {
+	err := dateStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(dateStruct, recv.Native(), "month", argValue)
@@ -2810,6 +3074,12 @@ func (recv *Date) SetFieldMonth(value int32) {
 
 // FieldDay returns the C field 'day'.
 func (recv *Date) FieldDay() int32 {
+	var nilValue int32
+	err := dateStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(dateStruct, recv.Native(), "day")
 	value := argValue.Int32()
 	return value
@@ -2817,6 +3087,11 @@ func (recv *Date) FieldDay() int32 {
 
 // SetFieldDay sets the value of the C field 'day'.
 func (recv *Date) SetFieldDay(value int32) {
+	err := dateStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(dateStruct, recv.Native(), "day", argValue)
@@ -2824,6 +3099,12 @@ func (recv *Date) SetFieldDay(value int32) {
 
 // FieldHour returns the C field 'hour'.
 func (recv *Date) FieldHour() int32 {
+	var nilValue int32
+	err := dateStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(dateStruct, recv.Native(), "hour")
 	value := argValue.Int32()
 	return value
@@ -2831,6 +3112,11 @@ func (recv *Date) FieldHour() int32 {
 
 // SetFieldHour sets the value of the C field 'hour'.
 func (recv *Date) SetFieldHour(value int32) {
+	err := dateStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(dateStruct, recv.Native(), "hour", argValue)
@@ -2838,6 +3124,12 @@ func (recv *Date) SetFieldHour(value int32) {
 
 // FieldMinute returns the C field 'minute'.
 func (recv *Date) FieldMinute() int32 {
+	var nilValue int32
+	err := dateStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(dateStruct, recv.Native(), "minute")
 	value := argValue.Int32()
 	return value
@@ -2845,6 +3137,11 @@ func (recv *Date) FieldMinute() int32 {
 
 // SetFieldMinute sets the value of the C field 'minute'.
 func (recv *Date) SetFieldMinute(value int32) {
+	err := dateStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(dateStruct, recv.Native(), "minute", argValue)
@@ -2852,6 +3149,12 @@ func (recv *Date) SetFieldMinute(value int32) {
 
 // FieldSecond returns the C field 'second'.
 func (recv *Date) FieldSecond() int32 {
+	var nilValue int32
+	err := dateStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(dateStruct, recv.Native(), "second")
 	value := argValue.Int32()
 	return value
@@ -2859,6 +3162,11 @@ func (recv *Date) FieldSecond() int32 {
 
 // SetFieldSecond sets the value of the C field 'second'.
 func (recv *Date) SetFieldSecond(value int32) {
+	err := dateStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(dateStruct, recv.Native(), "second", argValue)
@@ -2866,6 +3174,12 @@ func (recv *Date) SetFieldSecond(value int32) {
 
 // FieldUtc returns the C field 'utc'.
 func (recv *Date) FieldUtc() bool {
+	var nilValue bool
+	err := dateStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(dateStruct, recv.Native(), "utc")
 	value := argValue.Boolean()
 	return value
@@ -2873,6 +3187,11 @@ func (recv *Date) FieldUtc() bool {
 
 // SetFieldUtc sets the value of the C field 'utc'.
 func (recv *Date) SetFieldUtc(value bool) {
+	err := dateStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
 	gi.StructFieldSet(dateStruct, recv.Native(), "utc", argValue)
@@ -2880,6 +3199,12 @@ func (recv *Date) SetFieldUtc(value bool) {
 
 // FieldOffset returns the C field 'offset'.
 func (recv *Date) FieldOffset() int32 {
+	var nilValue int32
+	err := dateStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(dateStruct, recv.Native(), "offset")
 	value := argValue.Int32()
 	return value
@@ -2887,6 +3212,11 @@ func (recv *Date) FieldOffset() int32 {
 
 // SetFieldOffset sets the value of the C field 'offset'.
 func (recv *Date) SetFieldOffset(value int32) {
+	err := dateStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(dateStruct, recv.Native(), "offset", argValue)
@@ -3511,6 +3841,12 @@ func (recv *HSTSEnforcerClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HSTSEnforcerClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := hSTSEnforcerClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(hSTSEnforcerClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -3518,6 +3854,11 @@ func (recv *HSTSEnforcerClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HSTSEnforcerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := hSTSEnforcerClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(hSTSEnforcerClassStruct, recv.Native(), "parent_class", argValue)
@@ -3611,6 +3952,12 @@ func (recv *HSTSEnforcerDBClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *HSTSEnforcerDBClass) FieldParentClass() *HSTSEnforcerClass {
+	var nilValue *HSTSEnforcerClass
+	err := hSTSEnforcerDBClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(hSTSEnforcerDBClassStruct, recv.Native(), "parent_class")
 	value := HSTSEnforcerClassNewFromNative(argValue.Pointer())
 	return value
@@ -3618,6 +3965,11 @@ func (recv *HSTSEnforcerDBClass) FieldParentClass() *HSTSEnforcerClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *HSTSEnforcerDBClass) SetFieldParentClass(value *HSTSEnforcerClass) {
+	err := hSTSEnforcerDBClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(hSTSEnforcerDBClassStruct, recv.Native(), "parent_class", argValue)
@@ -3803,6 +4155,12 @@ func (recv *HSTSPolicy) Native() unsafe.Pointer {
 
 // FieldDomain returns the C field 'domain'.
 func (recv *HSTSPolicy) FieldDomain() string {
+	var nilValue string
+	err := hSTSPolicyStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(hSTSPolicyStruct, recv.Native(), "domain")
 	value := argValue.String(false)
 	return value
@@ -3810,6 +4168,11 @@ func (recv *HSTSPolicy) FieldDomain() string {
 
 // SetFieldDomain sets the value of the C field 'domain'.
 func (recv *HSTSPolicy) SetFieldDomain(value string) {
+	err := hSTSPolicyStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(hSTSPolicyStruct, recv.Native(), "domain", argValue)
@@ -3817,6 +4180,12 @@ func (recv *HSTSPolicy) SetFieldDomain(value string) {
 
 // FieldMaxAge returns the C field 'max_age'.
 func (recv *HSTSPolicy) FieldMaxAge() uint64 {
+	var nilValue uint64
+	err := hSTSPolicyStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(hSTSPolicyStruct, recv.Native(), "max_age")
 	value := argValue.Uint64()
 	return value
@@ -3824,6 +4193,11 @@ func (recv *HSTSPolicy) FieldMaxAge() uint64 {
 
 // SetFieldMaxAge sets the value of the C field 'max_age'.
 func (recv *HSTSPolicy) SetFieldMaxAge(value uint64) {
+	err := hSTSPolicyStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint64(value)
 	gi.StructFieldSet(hSTSPolicyStruct, recv.Native(), "max_age", argValue)
@@ -3831,6 +4205,12 @@ func (recv *HSTSPolicy) SetFieldMaxAge(value uint64) {
 
 // FieldExpires returns the C field 'expires'.
 func (recv *HSTSPolicy) FieldExpires() *Date {
+	var nilValue *Date
+	err := hSTSPolicyStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(hSTSPolicyStruct, recv.Native(), "expires")
 	value := DateNewFromNative(argValue.Pointer())
 	return value
@@ -3838,6 +4218,11 @@ func (recv *HSTSPolicy) FieldExpires() *Date {
 
 // SetFieldExpires sets the value of the C field 'expires'.
 func (recv *HSTSPolicy) SetFieldExpires(value *Date) {
+	err := hSTSPolicyStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(hSTSPolicyStruct, recv.Native(), "expires", argValue)
@@ -3845,6 +4230,12 @@ func (recv *HSTSPolicy) SetFieldExpires(value *Date) {
 
 // FieldIncludeSubdomains returns the C field 'include_subdomains'.
 func (recv *HSTSPolicy) FieldIncludeSubdomains() bool {
+	var nilValue bool
+	err := hSTSPolicyStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(hSTSPolicyStruct, recv.Native(), "include_subdomains")
 	value := argValue.Boolean()
 	return value
@@ -3852,6 +4243,11 @@ func (recv *HSTSPolicy) FieldIncludeSubdomains() bool {
 
 // SetFieldIncludeSubdomains sets the value of the C field 'include_subdomains'.
 func (recv *HSTSPolicy) SetFieldIncludeSubdomains(value bool) {
+	err := hSTSPolicyStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetBoolean(value)
 	gi.StructFieldSet(hSTSPolicyStruct, recv.Native(), "include_subdomains", argValue)
@@ -4253,6 +4649,12 @@ func (recv *LoggerClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *LoggerClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := loggerClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(loggerClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -4260,6 +4662,11 @@ func (recv *LoggerClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *LoggerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := loggerClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(loggerClassStruct, recv.Native(), "parent_class", argValue)
@@ -4337,6 +4744,12 @@ func (recv *MessageBody) Native() unsafe.Pointer {
 
 // FieldData returns the C field 'data'.
 func (recv *MessageBody) FieldData() string {
+	var nilValue string
+	err := messageBodyStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(messageBodyStruct, recv.Native(), "data")
 	value := argValue.String(false)
 	return value
@@ -4344,6 +4757,11 @@ func (recv *MessageBody) FieldData() string {
 
 // SetFieldData sets the value of the C field 'data'.
 func (recv *MessageBody) SetFieldData(value string) {
+	err := messageBodyStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(messageBodyStruct, recv.Native(), "data", argValue)
@@ -4351,6 +4769,12 @@ func (recv *MessageBody) SetFieldData(value string) {
 
 // FieldLength returns the C field 'length'.
 func (recv *MessageBody) FieldLength() int64 {
+	var nilValue int64
+	err := messageBodyStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(messageBodyStruct, recv.Native(), "length")
 	value := argValue.Int64()
 	return value
@@ -4358,6 +4782,11 @@ func (recv *MessageBody) FieldLength() int64 {
 
 // SetFieldLength sets the value of the C field 'length'.
 func (recv *MessageBody) SetFieldLength(value int64) {
+	err := messageBodyStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt64(value)
 	gi.StructFieldSet(messageBodyStruct, recv.Native(), "length", argValue)
@@ -4735,6 +5164,12 @@ func (recv *MessageClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MessageClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := messageClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(messageClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -4742,6 +5177,11 @@ func (recv *MessageClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MessageClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := messageClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(messageClassStruct, recv.Native(), "parent_class", argValue)
@@ -6293,6 +6733,12 @@ func (recv *MultipartInputStreamClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *MultipartInputStreamClass) FieldParentClass() *gio.FilterInputStreamClass {
+	var nilValue *gio.FilterInputStreamClass
+	err := multipartInputStreamClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(multipartInputStreamClassStruct, recv.Native(), "parent_class")
 	value := gio.FilterInputStreamClassNewFromNative(argValue.Pointer())
 	return value
@@ -6300,6 +6746,11 @@ func (recv *MultipartInputStreamClass) FieldParentClass() *gio.FilterInputStream
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *MultipartInputStreamClass) SetFieldParentClass(value *gio.FilterInputStreamClass) {
+	err := multipartInputStreamClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(multipartInputStreamClassStruct, recv.Native(), "parent_class", argValue)
@@ -6415,6 +6866,12 @@ func (recv *PasswordManagerInterface) Native() unsafe.Pointer {
 
 // FieldBase returns the C field 'base'.
 func (recv *PasswordManagerInterface) FieldBase() *gobject.TypeInterface {
+	var nilValue *gobject.TypeInterface
+	err := passwordManagerInterfaceStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(passwordManagerInterfaceStruct, recv.Native(), "base")
 	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
 	return value
@@ -6422,6 +6879,11 @@ func (recv *PasswordManagerInterface) FieldBase() *gobject.TypeInterface {
 
 // SetFieldBase sets the value of the C field 'base'.
 func (recv *PasswordManagerInterface) SetFieldBase(value *gobject.TypeInterface) {
+	err := passwordManagerInterfaceStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(passwordManagerInterfaceStruct, recv.Native(), "base", argValue)
@@ -6491,6 +6953,12 @@ func (recv *ProxyResolverDefaultClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ProxyResolverDefaultClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := proxyResolverDefaultClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(proxyResolverDefaultClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -6498,6 +6966,11 @@ func (recv *ProxyResolverDefaultClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ProxyResolverDefaultClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := proxyResolverDefaultClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(proxyResolverDefaultClassStruct, recv.Native(), "parent_class", argValue)
@@ -6559,6 +7032,12 @@ func (recv *ProxyResolverInterface) Native() unsafe.Pointer {
 
 // FieldBase returns the C field 'base'.
 func (recv *ProxyResolverInterface) FieldBase() *gobject.TypeInterface {
+	var nilValue *gobject.TypeInterface
+	err := proxyResolverInterfaceStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(proxyResolverInterfaceStruct, recv.Native(), "base")
 	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
 	return value
@@ -6566,6 +7045,11 @@ func (recv *ProxyResolverInterface) FieldBase() *gobject.TypeInterface {
 
 // SetFieldBase sets the value of the C field 'base'.
 func (recv *ProxyResolverInterface) SetFieldBase(value *gobject.TypeInterface) {
+	err := proxyResolverInterfaceStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(proxyResolverInterfaceStruct, recv.Native(), "base", argValue)
@@ -6635,6 +7119,12 @@ func (recv *ProxyURIResolverInterface) Native() unsafe.Pointer {
 
 // FieldBase returns the C field 'base'.
 func (recv *ProxyURIResolverInterface) FieldBase() *gobject.TypeInterface {
+	var nilValue *gobject.TypeInterface
+	err := proxyURIResolverInterfaceStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(proxyURIResolverInterfaceStruct, recv.Native(), "base")
 	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
 	return value
@@ -6642,6 +7132,11 @@ func (recv *ProxyURIResolverInterface) FieldBase() *gobject.TypeInterface {
 
 // SetFieldBase sets the value of the C field 'base'.
 func (recv *ProxyURIResolverInterface) SetFieldBase(value *gobject.TypeInterface) {
+	err := proxyURIResolverInterfaceStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(proxyURIResolverInterfaceStruct, recv.Native(), "base", argValue)
@@ -6727,6 +7222,12 @@ func (recv *Range) Native() unsafe.Pointer {
 
 // FieldStart returns the C field 'start'.
 func (recv *Range) FieldStart() int64 {
+	var nilValue int64
+	err := rangeStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(rangeStruct, recv.Native(), "start")
 	value := argValue.Int64()
 	return value
@@ -6734,6 +7235,11 @@ func (recv *Range) FieldStart() int64 {
 
 // SetFieldStart sets the value of the C field 'start'.
 func (recv *Range) SetFieldStart(value int64) {
+	err := rangeStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt64(value)
 	gi.StructFieldSet(rangeStruct, recv.Native(), "start", argValue)
@@ -6741,6 +7247,12 @@ func (recv *Range) SetFieldStart(value int64) {
 
 // FieldEnd returns the C field 'end'.
 func (recv *Range) FieldEnd() int64 {
+	var nilValue int64
+	err := rangeStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(rangeStruct, recv.Native(), "end")
 	value := argValue.Int64()
 	return value
@@ -6748,6 +7260,11 @@ func (recv *Range) FieldEnd() int64 {
 
 // SetFieldEnd sets the value of the C field 'end'.
 func (recv *Range) SetFieldEnd(value int64) {
+	err := rangeStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt64(value)
 	gi.StructFieldSet(rangeStruct, recv.Native(), "end", argValue)
@@ -6809,6 +7326,12 @@ func (recv *RequestClass) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *RequestClass) FieldParent() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := requestClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(requestClassStruct, recv.Native(), "parent")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -6816,6 +7339,11 @@ func (recv *RequestClass) FieldParent() *gobject.ObjectClass {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *RequestClass) SetFieldParent(value *gobject.ObjectClass) {
+	err := requestClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(requestClassStruct, recv.Native(), "parent", argValue)
@@ -6823,6 +7351,12 @@ func (recv *RequestClass) SetFieldParent(value *gobject.ObjectClass) {
 
 // FieldSchemes returns the C field 'schemes'.
 func (recv *RequestClass) FieldSchemes() string {
+	var nilValue string
+	err := requestClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(requestClassStruct, recv.Native(), "schemes")
 	value := argValue.String(false)
 	return value
@@ -6830,6 +7364,11 @@ func (recv *RequestClass) FieldSchemes() string {
 
 // SetFieldSchemes sets the value of the C field 'schemes'.
 func (recv *RequestClass) SetFieldSchemes(value string) {
+	err := requestClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(requestClassStruct, recv.Native(), "schemes", argValue)
@@ -6915,6 +7454,12 @@ func (recv *RequestDataClass) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *RequestDataClass) FieldParent() *RequestClass {
+	var nilValue *RequestClass
+	err := requestDataClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(requestDataClassStruct, recv.Native(), "parent")
 	value := RequestClassNewFromNative(argValue.Pointer())
 	return value
@@ -6922,6 +7467,11 @@ func (recv *RequestDataClass) FieldParent() *RequestClass {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *RequestDataClass) SetFieldParent(value *RequestClass) {
+	err := requestDataClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(requestDataClassStruct, recv.Native(), "parent", argValue)
@@ -7037,6 +7587,12 @@ func (recv *RequestFileClass) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *RequestFileClass) FieldParent() *RequestClass {
+	var nilValue *RequestClass
+	err := requestFileClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(requestFileClassStruct, recv.Native(), "parent")
 	value := RequestClassNewFromNative(argValue.Pointer())
 	return value
@@ -7044,6 +7600,11 @@ func (recv *RequestFileClass) FieldParent() *RequestClass {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *RequestFileClass) SetFieldParent(value *RequestClass) {
+	err := requestFileClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(requestFileClassStruct, recv.Native(), "parent", argValue)
@@ -7159,6 +7720,12 @@ func (recv *RequestHTTPClass) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *RequestHTTPClass) FieldParent() *RequestClass {
+	var nilValue *RequestClass
+	err := requestHTTPClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(requestHTTPClassStruct, recv.Native(), "parent")
 	value := RequestClassNewFromNative(argValue.Pointer())
 	return value
@@ -7166,6 +7733,11 @@ func (recv *RequestHTTPClass) FieldParent() *RequestClass {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *RequestHTTPClass) SetFieldParent(value *RequestClass) {
+	err := requestHTTPClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(requestHTTPClassStruct, recv.Native(), "parent", argValue)
@@ -7335,6 +7907,12 @@ func (recv *RequesterClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *RequesterClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := requesterClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(requesterClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -7342,6 +7920,11 @@ func (recv *RequesterClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *RequesterClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := requesterClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(requesterClassStruct, recv.Native(), "parent_class", argValue)
@@ -7457,6 +8040,12 @@ func (recv *ServerClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ServerClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := serverClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(serverClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -7464,6 +8053,11 @@ func (recv *ServerClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ServerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := serverClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(serverClassStruct, recv.Native(), "parent_class", argValue)
@@ -7557,6 +8151,12 @@ func (recv *SessionAsyncClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SessionAsyncClass) FieldParentClass() *SessionClass {
+	var nilValue *SessionClass
+	err := sessionAsyncClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(sessionAsyncClassStruct, recv.Native(), "parent_class")
 	value := SessionClassNewFromNative(argValue.Pointer())
 	return value
@@ -7564,6 +8164,11 @@ func (recv *SessionAsyncClass) FieldParentClass() *SessionClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SessionAsyncClass) SetFieldParentClass(value *SessionClass) {
+	err := sessionAsyncClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(sessionAsyncClassStruct, recv.Native(), "parent_class", argValue)
@@ -7641,6 +8246,12 @@ func (recv *SessionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SessionClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := sessionClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(sessionClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -7648,6 +8259,11 @@ func (recv *SessionClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SessionClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := sessionClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(sessionClassStruct, recv.Native(), "parent_class", argValue)
@@ -7749,6 +8365,12 @@ func (recv *SessionFeatureInterface) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *SessionFeatureInterface) FieldParent() *gobject.TypeInterface {
+	var nilValue *gobject.TypeInterface
+	err := sessionFeatureInterfaceStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(sessionFeatureInterfaceStruct, recv.Native(), "parent")
 	value := gobject.TypeInterfaceNewFromNative(argValue.Pointer())
 	return value
@@ -7756,6 +8378,11 @@ func (recv *SessionFeatureInterface) FieldParent() *gobject.TypeInterface {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *SessionFeatureInterface) SetFieldParent(value *gobject.TypeInterface) {
+	err := sessionFeatureInterfaceStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(sessionFeatureInterfaceStruct, recv.Native(), "parent", argValue)
@@ -7849,6 +8476,12 @@ func (recv *SessionSyncClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SessionSyncClass) FieldParentClass() *SessionClass {
+	var nilValue *SessionClass
+	err := sessionSyncClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(sessionSyncClassStruct, recv.Native(), "parent_class")
 	value := SessionClassNewFromNative(argValue.Pointer())
 	return value
@@ -7856,6 +8489,11 @@ func (recv *SessionSyncClass) FieldParentClass() *SessionClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SessionSyncClass) SetFieldParentClass(value *SessionClass) {
+	err := sessionSyncClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(sessionSyncClassStruct, recv.Native(), "parent_class", argValue)
@@ -7933,6 +8571,12 @@ func (recv *SocketClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *SocketClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := socketClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(socketClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -7940,6 +8584,11 @@ func (recv *SocketClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *SocketClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := socketClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(socketClassStruct, recv.Native(), "parent_class", argValue)
@@ -8033,6 +8682,12 @@ func (recv *URI) Native() unsafe.Pointer {
 
 // FieldScheme returns the C field 'scheme'.
 func (recv *URI) FieldScheme() string {
+	var nilValue string
+	err := uRIStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(uRIStruct, recv.Native(), "scheme")
 	value := argValue.String(false)
 	return value
@@ -8040,6 +8695,11 @@ func (recv *URI) FieldScheme() string {
 
 // SetFieldScheme sets the value of the C field 'scheme'.
 func (recv *URI) SetFieldScheme(value string) {
+	err := uRIStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(uRIStruct, recv.Native(), "scheme", argValue)
@@ -8047,6 +8707,12 @@ func (recv *URI) SetFieldScheme(value string) {
 
 // FieldUser returns the C field 'user'.
 func (recv *URI) FieldUser() string {
+	var nilValue string
+	err := uRIStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(uRIStruct, recv.Native(), "user")
 	value := argValue.String(false)
 	return value
@@ -8054,6 +8720,11 @@ func (recv *URI) FieldUser() string {
 
 // SetFieldUser sets the value of the C field 'user'.
 func (recv *URI) SetFieldUser(value string) {
+	err := uRIStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(uRIStruct, recv.Native(), "user", argValue)
@@ -8061,6 +8732,12 @@ func (recv *URI) SetFieldUser(value string) {
 
 // FieldPassword returns the C field 'password'.
 func (recv *URI) FieldPassword() string {
+	var nilValue string
+	err := uRIStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(uRIStruct, recv.Native(), "password")
 	value := argValue.String(false)
 	return value
@@ -8068,6 +8745,11 @@ func (recv *URI) FieldPassword() string {
 
 // SetFieldPassword sets the value of the C field 'password'.
 func (recv *URI) SetFieldPassword(value string) {
+	err := uRIStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(uRIStruct, recv.Native(), "password", argValue)
@@ -8075,6 +8757,12 @@ func (recv *URI) SetFieldPassword(value string) {
 
 // FieldHost returns the C field 'host'.
 func (recv *URI) FieldHost() string {
+	var nilValue string
+	err := uRIStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(uRIStruct, recv.Native(), "host")
 	value := argValue.String(false)
 	return value
@@ -8082,6 +8770,11 @@ func (recv *URI) FieldHost() string {
 
 // SetFieldHost sets the value of the C field 'host'.
 func (recv *URI) SetFieldHost(value string) {
+	err := uRIStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(uRIStruct, recv.Native(), "host", argValue)
@@ -8089,6 +8782,12 @@ func (recv *URI) SetFieldHost(value string) {
 
 // FieldPort returns the C field 'port'.
 func (recv *URI) FieldPort() uint32 {
+	var nilValue uint32
+	err := uRIStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(uRIStruct, recv.Native(), "port")
 	value := argValue.Uint32()
 	return value
@@ -8096,6 +8795,11 @@ func (recv *URI) FieldPort() uint32 {
 
 // SetFieldPort sets the value of the C field 'port'.
 func (recv *URI) SetFieldPort(value uint32) {
+	err := uRIStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetUint32(value)
 	gi.StructFieldSet(uRIStruct, recv.Native(), "port", argValue)
@@ -8103,6 +8807,12 @@ func (recv *URI) SetFieldPort(value uint32) {
 
 // FieldPath returns the C field 'path'.
 func (recv *URI) FieldPath() string {
+	var nilValue string
+	err := uRIStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(uRIStruct, recv.Native(), "path")
 	value := argValue.String(false)
 	return value
@@ -8110,6 +8820,11 @@ func (recv *URI) FieldPath() string {
 
 // SetFieldPath sets the value of the C field 'path'.
 func (recv *URI) SetFieldPath(value string) {
+	err := uRIStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(uRIStruct, recv.Native(), "path", argValue)
@@ -8117,6 +8832,12 @@ func (recv *URI) SetFieldPath(value string) {
 
 // FieldQuery returns the C field 'query'.
 func (recv *URI) FieldQuery() string {
+	var nilValue string
+	err := uRIStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(uRIStruct, recv.Native(), "query")
 	value := argValue.String(false)
 	return value
@@ -8124,6 +8845,11 @@ func (recv *URI) FieldQuery() string {
 
 // SetFieldQuery sets the value of the C field 'query'.
 func (recv *URI) SetFieldQuery(value string) {
+	err := uRIStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(uRIStruct, recv.Native(), "query", argValue)
@@ -8131,6 +8857,12 @@ func (recv *URI) SetFieldQuery(value string) {
 
 // FieldFragment returns the C field 'fragment'.
 func (recv *URI) FieldFragment() string {
+	var nilValue string
+	err := uRIStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(uRIStruct, recv.Native(), "fragment")
 	value := argValue.String(false)
 	return value
@@ -8138,6 +8870,11 @@ func (recv *URI) FieldFragment() string {
 
 // SetFieldFragment sets the value of the C field 'fragment'.
 func (recv *URI) SetFieldFragment(value string) {
+	err := uRIStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(uRIStruct, recv.Native(), "fragment", argValue)
@@ -9023,6 +9760,12 @@ func (recv *WebsocketConnectionClass) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *WebsocketConnectionClass) FieldParent() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := websocketConnectionClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(websocketConnectionClassStruct, recv.Native(), "parent")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -9030,6 +9773,11 @@ func (recv *WebsocketConnectionClass) FieldParent() *gobject.ObjectClass {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *WebsocketConnectionClass) SetFieldParent(value *gobject.ObjectClass) {
+	err := websocketConnectionClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(websocketConnectionClassStruct, recv.Native(), "parent", argValue)
@@ -9165,6 +9913,12 @@ func (recv *WebsocketExtensionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *WebsocketExtensionClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := websocketExtensionClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(websocketExtensionClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -9172,6 +9926,11 @@ func (recv *WebsocketExtensionClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *WebsocketExtensionClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := websocketExtensionClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(websocketExtensionClassStruct, recv.Native(), "parent_class", argValue)
@@ -9179,6 +9938,12 @@ func (recv *WebsocketExtensionClass) SetFieldParentClass(value *gobject.ObjectCl
 
 // FieldName returns the C field 'name'.
 func (recv *WebsocketExtensionClass) FieldName() string {
+	var nilValue string
+	err := websocketExtensionClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(websocketExtensionClassStruct, recv.Native(), "name")
 	value := argValue.String(false)
 	return value
@@ -9186,6 +9951,11 @@ func (recv *WebsocketExtensionClass) FieldName() string {
 
 // SetFieldName sets the value of the C field 'name'.
 func (recv *WebsocketExtensionClass) SetFieldName(value string) {
+	err := websocketExtensionClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.StructFieldSet(websocketExtensionClassStruct, recv.Native(), "name", argValue)
@@ -9283,6 +10053,12 @@ func (recv *WebsocketExtensionDeflateClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *WebsocketExtensionDeflateClass) FieldParentClass() *WebsocketExtensionClass {
+	var nilValue *WebsocketExtensionClass
+	err := websocketExtensionDeflateClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(websocketExtensionDeflateClassStruct, recv.Native(), "parent_class")
 	value := WebsocketExtensionClassNewFromNative(argValue.Pointer())
 	return value
@@ -9290,6 +10066,11 @@ func (recv *WebsocketExtensionDeflateClass) FieldParentClass() *WebsocketExtensi
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *WebsocketExtensionDeflateClass) SetFieldParentClass(value *WebsocketExtensionClass) {
+	err := websocketExtensionDeflateClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(websocketExtensionDeflateClassStruct, recv.Native(), "parent_class", argValue)
@@ -9351,6 +10132,12 @@ func (recv *WebsocketExtensionManagerClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *WebsocketExtensionManagerClass) FieldParentClass() *gobject.ObjectClass {
+	var nilValue *gobject.ObjectClass
+	err := websocketExtensionManagerClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.StructFieldGet(websocketExtensionManagerClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -9358,6 +10145,11 @@ func (recv *WebsocketExtensionManagerClass) FieldParentClass() *gobject.ObjectCl
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *WebsocketExtensionManagerClass) SetFieldParentClass(value *gobject.ObjectClass) {
+	err := websocketExtensionManagerClassStruct_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(websocketExtensionManagerClassStruct, recv.Native(), "parent_class", argValue)

@@ -3648,7 +3648,16 @@ The returned value represents the connection, and may be passed to the Disconnec
 */
 func (recv *DtlsConnection) ConnectAcceptCertificate(handler func(instance *DtlsConnection, peerCert *TlsCertificate, errors TlsCertificateFlags) bool) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// has return : gboolean
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DtlsConnectionNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := TlsCertificateNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := (TlsCertificateFlags)(object2.GetInt())
+
+		handler(argInstance, arg1, arg2)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "accept-certificate", marshal)

@@ -74,6 +74,12 @@ func (recv *GObjectAccessible) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *GObjectAccessible) FieldParent() *Object {
+	var nilValue *Object
+	err := gObjectAccessibleObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(gObjectAccessibleObject, recv.Native(), "parent")
 	value := ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -81,6 +87,11 @@ func (recv *GObjectAccessible) FieldParent() *Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *GObjectAccessible) SetFieldParent(value *Object) {
+	err := gObjectAccessibleObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(gObjectAccessibleObject, recv.Native(), "parent", argValue)
@@ -175,6 +186,12 @@ func (recv *Hyperlink) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Hyperlink) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := hyperlinkObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(hyperlinkObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -182,6 +199,11 @@ func (recv *Hyperlink) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Hyperlink) SetFieldParent(value *gobject.Object) {
+	err := hyperlinkObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(hyperlinkObject, recv.Native(), "parent", argValue)
@@ -532,6 +554,12 @@ func (recv *Misc) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Misc) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := miscObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(miscObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -539,6 +567,11 @@ func (recv *Misc) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Misc) SetFieldParent(value *gobject.Object) {
+	err := miscObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(miscObject, recv.Native(), "parent", argValue)
@@ -662,6 +695,12 @@ func (recv *NoOpObject) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *NoOpObject) FieldParent() *Object {
+	var nilValue *Object
+	err := noOpObjectObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(noOpObjectObject, recv.Native(), "parent")
 	value := ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -669,6 +708,11 @@ func (recv *NoOpObject) FieldParent() *Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *NoOpObject) SetFieldParent(value *Object) {
+	err := noOpObjectObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(noOpObjectObject, recv.Native(), "parent", argValue)
@@ -830,6 +874,12 @@ func (recv *NoOpObjectFactory) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *NoOpObjectFactory) FieldParent() *ObjectFactory {
+	var nilValue *ObjectFactory
+	err := noOpObjectFactoryObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(noOpObjectFactoryObject, recv.Native(), "parent")
 	value := ObjectFactoryNewFromNative(argValue.Pointer())
 	return value
@@ -837,6 +887,11 @@ func (recv *NoOpObjectFactory) FieldParent() *ObjectFactory {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *NoOpObjectFactory) SetFieldParent(value *ObjectFactory) {
+	err := noOpObjectFactoryObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(noOpObjectFactoryObject, recv.Native(), "parent", argValue)
@@ -931,6 +986,12 @@ func (recv *Object) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Object) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := objectObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -938,6 +999,11 @@ func (recv *Object) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Object) SetFieldParent(value *gobject.Object) {
+	err := objectObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(objectObject, recv.Native(), "parent", argValue)
@@ -945,6 +1011,12 @@ func (recv *Object) SetFieldParent(value *gobject.Object) {
 
 // FieldDescription returns the C field 'description'.
 func (recv *Object) FieldDescription() string {
+	var nilValue string
+	err := objectObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "description")
 	value := argValue.String(false)
 	return value
@@ -952,6 +1024,11 @@ func (recv *Object) FieldDescription() string {
 
 // SetFieldDescription sets the value of the C field 'description'.
 func (recv *Object) SetFieldDescription(value string) {
+	err := objectObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.ObjectFieldSet(objectObject, recv.Native(), "description", argValue)
@@ -959,6 +1036,12 @@ func (recv *Object) SetFieldDescription(value string) {
 
 // FieldName returns the C field 'name'.
 func (recv *Object) FieldName() string {
+	var nilValue string
+	err := objectObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "name")
 	value := argValue.String(false)
 	return value
@@ -966,6 +1049,11 @@ func (recv *Object) FieldName() string {
 
 // SetFieldName sets the value of the C field 'name'.
 func (recv *Object) SetFieldName(value string) {
+	err := objectObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetString(value)
 	gi.ObjectFieldSet(objectObject, recv.Native(), "name", argValue)
@@ -973,6 +1061,12 @@ func (recv *Object) SetFieldName(value string) {
 
 // FieldAccessibleParent returns the C field 'accessible_parent'.
 func (recv *Object) FieldAccessibleParent() *Object {
+	var nilValue *Object
+	err := objectObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "accessible_parent")
 	value := ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -980,6 +1074,11 @@ func (recv *Object) FieldAccessibleParent() *Object {
 
 // SetFieldAccessibleParent sets the value of the C field 'accessible_parent'.
 func (recv *Object) SetFieldAccessibleParent(value *Object) {
+	err := objectObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(objectObject, recv.Native(), "accessible_parent", argValue)
@@ -987,6 +1086,12 @@ func (recv *Object) SetFieldAccessibleParent(value *Object) {
 
 // FieldRole returns the C field 'role'.
 func (recv *Object) FieldRole() Role {
+	var nilValue Role
+	err := objectObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "role")
 	value := Role(argValue.Int32())
 	return value
@@ -994,6 +1099,11 @@ func (recv *Object) FieldRole() Role {
 
 // SetFieldRole sets the value of the C field 'role'.
 func (recv *Object) SetFieldRole(value Role) {
+	err := objectObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
 	gi.ObjectFieldSet(objectObject, recv.Native(), "role", argValue)
@@ -1001,6 +1111,12 @@ func (recv *Object) SetFieldRole(value Role) {
 
 // FieldRelationSet returns the C field 'relation_set'.
 func (recv *Object) FieldRelationSet() *RelationSet {
+	var nilValue *RelationSet
+	err := objectObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "relation_set")
 	value := RelationSetNewFromNative(argValue.Pointer())
 	return value
@@ -1008,6 +1124,11 @@ func (recv *Object) FieldRelationSet() *RelationSet {
 
 // SetFieldRelationSet sets the value of the C field 'relation_set'.
 func (recv *Object) SetFieldRelationSet(value *RelationSet) {
+	err := objectObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(objectObject, recv.Native(), "relation_set", argValue)
@@ -1015,6 +1136,12 @@ func (recv *Object) SetFieldRelationSet(value *RelationSet) {
 
 // FieldLayer returns the C field 'layer'.
 func (recv *Object) FieldLayer() Layer {
+	var nilValue Layer
+	err := objectObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(objectObject, recv.Native(), "layer")
 	value := Layer(argValue.Int32())
 	return value
@@ -1022,6 +1149,11 @@ func (recv *Object) FieldLayer() Layer {
 
 // SetFieldLayer sets the value of the C field 'layer'.
 func (recv *Object) SetFieldLayer(value Layer) {
+	err := objectObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
 	gi.ObjectFieldSet(objectObject, recv.Native(), "layer", argValue)
@@ -1937,6 +2069,12 @@ func (recv *ObjectFactory) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *ObjectFactory) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := objectFactoryObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(objectFactoryObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -1944,6 +2082,11 @@ func (recv *ObjectFactory) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *ObjectFactory) SetFieldParent(value *gobject.Object) {
+	err := objectFactoryObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(objectFactoryObject, recv.Native(), "parent", argValue)
@@ -2074,6 +2217,12 @@ func (recv *Plug) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Plug) FieldParent() *Object {
+	var nilValue *Object
+	err := plugObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(plugObject, recv.Native(), "parent")
 	value := ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2081,6 +2230,11 @@ func (recv *Plug) FieldParent() *Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Plug) SetFieldParent(value *Object) {
+	err := plugObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(plugObject, recv.Native(), "parent", argValue)
@@ -2212,6 +2366,12 @@ func (recv *Registry) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Registry) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := registryObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(registryObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2219,6 +2379,11 @@ func (recv *Registry) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Registry) SetFieldParent(value *gobject.Object) {
+	err := registryObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(registryObject, recv.Native(), "parent", argValue)
@@ -2226,6 +2391,12 @@ func (recv *Registry) SetFieldParent(value *gobject.Object) {
 
 // FieldFactoryTypeRegistry returns the C field 'factory_type_registry'.
 func (recv *Registry) FieldFactoryTypeRegistry() *glib.HashTable {
+	var nilValue *glib.HashTable
+	err := registryObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(registryObject, recv.Native(), "factory_type_registry")
 	value := glib.HashTableNewFromNative(argValue.Pointer())
 	return value
@@ -2233,6 +2404,11 @@ func (recv *Registry) FieldFactoryTypeRegistry() *glib.HashTable {
 
 // SetFieldFactoryTypeRegistry sets the value of the C field 'factory_type_registry'.
 func (recv *Registry) SetFieldFactoryTypeRegistry(value *glib.HashTable) {
+	err := registryObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(registryObject, recv.Native(), "factory_type_registry", argValue)
@@ -2240,6 +2416,12 @@ func (recv *Registry) SetFieldFactoryTypeRegistry(value *glib.HashTable) {
 
 // FieldFactorySingletonCache returns the C field 'factory_singleton_cache'.
 func (recv *Registry) FieldFactorySingletonCache() *glib.HashTable {
+	var nilValue *glib.HashTable
+	err := registryObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(registryObject, recv.Native(), "factory_singleton_cache")
 	value := glib.HashTableNewFromNative(argValue.Pointer())
 	return value
@@ -2247,6 +2429,11 @@ func (recv *Registry) FieldFactorySingletonCache() *glib.HashTable {
 
 // SetFieldFactorySingletonCache sets the value of the C field 'factory_singleton_cache'.
 func (recv *Registry) SetFieldFactorySingletonCache(value *glib.HashTable) {
+	err := registryObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(registryObject, recv.Native(), "factory_singleton_cache", argValue)
@@ -2315,6 +2502,12 @@ func (recv *Relation) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Relation) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := relationObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(relationObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2322,6 +2515,11 @@ func (recv *Relation) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Relation) SetFieldParent(value *gobject.Object) {
+	err := relationObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(relationObject, recv.Native(), "parent", argValue)
@@ -2333,6 +2531,12 @@ func (recv *Relation) SetFieldParent(value *gobject.Object) {
 
 // FieldRelationship returns the C field 'relationship'.
 func (recv *Relation) FieldRelationship() RelationType {
+	var nilValue RelationType
+	err := relationObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(relationObject, recv.Native(), "relationship")
 	value := RelationType(argValue.Int32())
 	return value
@@ -2340,6 +2544,11 @@ func (recv *Relation) FieldRelationship() RelationType {
 
 // SetFieldRelationship sets the value of the C field 'relationship'.
 func (recv *Relation) SetFieldRelationship(value RelationType) {
+	err := relationObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetInt32(int32(value))
 	gi.ObjectFieldSet(relationObject, recv.Native(), "relationship", argValue)
@@ -2526,6 +2735,12 @@ func (recv *RelationSet) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *RelationSet) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := relationSetObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(relationSetObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2533,6 +2748,11 @@ func (recv *RelationSet) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *RelationSet) SetFieldParent(value *gobject.Object) {
+	err := relationSetObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(relationSetObject, recv.Native(), "parent", argValue)
@@ -2889,6 +3109,12 @@ func (recv *Socket) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Socket) FieldParent() *Object {
+	var nilValue *Object
+	err := socketObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(socketObject, recv.Native(), "parent")
 	value := ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2896,6 +3122,11 @@ func (recv *Socket) FieldParent() *Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Socket) SetFieldParent(value *Object) {
+	err := socketObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(socketObject, recv.Native(), "parent", argValue)
@@ -3056,6 +3287,12 @@ func (recv *StateSet) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *StateSet) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := stateSetObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(stateSetObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -3063,6 +3300,11 @@ func (recv *StateSet) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *StateSet) SetFieldParent(value *gobject.Object) {
+	err := stateSetObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(stateSetObject, recv.Native(), "parent", argValue)
@@ -3419,6 +3661,12 @@ func (recv *Util) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Util) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := utilObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(utilObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -3426,6 +3674,11 @@ func (recv *Util) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Util) SetFieldParent(value *gobject.Object) {
+	err := utilObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(utilObject, recv.Native(), "parent", argValue)

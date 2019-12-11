@@ -2154,6 +2154,12 @@ func (recv *PixbufLoader) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *PixbufLoader) FieldParentInstance() *gobject.Object {
+	var nilValue *gobject.Object
+	err := pixbufLoaderObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(pixbufLoaderObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2161,6 +2167,11 @@ func (recv *PixbufLoader) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *PixbufLoader) SetFieldParentInstance(value *gobject.Object) {
+	err := pixbufLoaderObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(pixbufLoaderObject, recv.Native(), "parent_instance", argValue)

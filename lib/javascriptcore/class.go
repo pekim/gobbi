@@ -202,6 +202,12 @@ func (recv *Context) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Context) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := contextObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(contextObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -209,6 +215,11 @@ func (recv *Context) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Context) SetFieldParent(value *gobject.Object) {
+	err := contextObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(contextObject, recv.Native(), "parent", argValue)
@@ -759,6 +770,12 @@ func (recv *Exception) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Exception) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := exceptionObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(exceptionObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -766,6 +783,11 @@ func (recv *Exception) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Exception) SetFieldParent(value *gobject.Object) {
+	err := exceptionObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(exceptionObject, recv.Native(), "parent", argValue)
@@ -1163,6 +1185,12 @@ func (recv *Value) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Value) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := valueObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(valueObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -1170,6 +1198,11 @@ func (recv *Value) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Value) SetFieldParent(value *gobject.Object) {
+	err := valueObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(valueObject, recv.Native(), "parent", argValue)
@@ -2232,6 +2265,12 @@ func (recv *VirtualMachine) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *VirtualMachine) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := virtualMachineObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(virtualMachineObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2239,6 +2278,11 @@ func (recv *VirtualMachine) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *VirtualMachine) SetFieldParent(value *gobject.Object) {
+	err := virtualMachineObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(virtualMachineObject, recv.Native(), "parent", argValue)
@@ -2333,6 +2377,12 @@ func (recv *WeakValue) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *WeakValue) FieldParent() *gobject.Object {
+	var nilValue *gobject.Object
+	err := weakValueObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
 	argValue := gi.ObjectFieldGet(weakValueObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2340,6 +2390,11 @@ func (recv *WeakValue) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *WeakValue) SetFieldParent(value *gobject.Object) {
+	err := weakValueObject_Set()
+	if err != nil {
+		return
+	}
+
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(weakValueObject, recv.Native(), "parent", argValue)
