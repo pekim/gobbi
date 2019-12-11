@@ -10056,7 +10056,34 @@ func (recv *Builder) AddFromString(buffer string, length uint64) uint32 {
 
 // UNSUPPORTED : C value 'gtk_builder_add_objects_from_string' : parameter 'object_ids' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_builder_connect_signals' : parameter 'user_data' of type 'gpointer' not supported
+var builderConnectSignalsFunction *gi.Function
+var builderConnectSignalsFunction_Once sync.Once
+
+func builderConnectSignalsFunction_Set() error {
+	var err error
+	builderConnectSignalsFunction_Once.Do(func() {
+		err = builderObject_Set()
+		if err != nil {
+			return
+		}
+		builderConnectSignalsFunction, err = builderObject.InvokerNew("connect_signals")
+	})
+	return err
+}
+
+// ConnectSignals is a representation of the C type gtk_builder_connect_signals.
+func (recv *Builder) ConnectSignals(userData unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(userData)
+
+	err := builderConnectSignalsFunction_Set()
+	if err == nil {
+		builderConnectSignalsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_builder_connect_signals_full' : parameter 'func' of type 'BuilderConnectFunc' not supported
 
@@ -56392,7 +56419,33 @@ func (recv *Menu) ConnectMoveScroll(handler func(instance *Menu, scrollType Scro
 	return callback.ConnectSignal(recv.Native(), "move-scroll", marshal)
 }
 
-// UNSUPPORTED : C value 'popped-up' : parameter 'flipped_rect' of type 'gpointer' not supported
+/*
+ConnectPoppedUp connects a callback to the 'popped-up' signal of the Menu.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Menu) ConnectPoppedUp(handler func(instance *Menu, flippedRect unsafe.Pointer, finalRect unsafe.Pointer, flippedX bool, flippedY bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := MenuNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetPointer()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetPointer()
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := object3.GetBoolean()
+
+		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
+		arg4 := object4.GetBoolean()
+
+		handler(argInstance, arg1, arg2, arg3, arg4)
+	}
+
+	return callback.ConnectSignal(recv.Native(), "popped-up", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -58312,7 +58365,24 @@ func (recv *MenuItem) ConnectToggleSizeAllocate(handler func(instance *MenuItem,
 	return callback.ConnectSignal(recv.Native(), "toggle-size-allocate", marshal)
 }
 
-// UNSUPPORTED : C value 'toggle-size-request' : parameter 'object' of type 'gpointer' not supported
+/*
+ConnectToggleSizeRequest connects a callback to the 'toggle-size-request' signal of the MenuItem.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *MenuItem) ConnectToggleSizeRequest(handler func(instance *MenuItem, object_ unsafe.Pointer)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := MenuItemNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetPointer()
+
+		handler(argInstance, arg1)
+	}
+
+	return callback.ConnectSignal(recv.Native(), "toggle-size-request", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -88399,7 +88469,34 @@ func (recv *StyleContext) AddRegion(regionName string, flags RegionFlags) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_style_context_cancel_animations' : parameter 'region_id' of type 'gpointer' not supported
+var styleContextCancelAnimationsFunction *gi.Function
+var styleContextCancelAnimationsFunction_Once sync.Once
+
+func styleContextCancelAnimationsFunction_Set() error {
+	var err error
+	styleContextCancelAnimationsFunction_Once.Do(func() {
+		err = styleContextObject_Set()
+		if err != nil {
+			return
+		}
+		styleContextCancelAnimationsFunction, err = styleContextObject.InvokerNew("cancel_animations")
+	})
+	return err
+}
+
+// CancelAnimations is a representation of the C type gtk_style_context_cancel_animations.
+func (recv *StyleContext) CancelAnimations(regionId unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(regionId)
+
+	err := styleContextCancelAnimationsFunction_Set()
+	if err == nil {
+		styleContextCancelAnimationsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_style_context_get' : parameter '...' of type 'nil' not supported
 
@@ -89221,7 +89318,37 @@ func (recv *StyleContext) LookupIconSet(stockId string) *IconSet {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_style_context_notify_state_change' : parameter 'region_id' of type 'gpointer' not supported
+var styleContextNotifyStateChangeFunction *gi.Function
+var styleContextNotifyStateChangeFunction_Once sync.Once
+
+func styleContextNotifyStateChangeFunction_Set() error {
+	var err error
+	styleContextNotifyStateChangeFunction_Once.Do(func() {
+		err = styleContextObject_Set()
+		if err != nil {
+			return
+		}
+		styleContextNotifyStateChangeFunction, err = styleContextObject.InvokerNew("notify_state_change")
+	})
+	return err
+}
+
+// NotifyStateChange is a representation of the C type gtk_style_context_notify_state_change.
+func (recv *StyleContext) NotifyStateChange(window *gdk.Window, regionId unsafe.Pointer, state StateType, stateValue bool) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(window.Native())
+	inArgs[2].SetPointer(regionId)
+	inArgs[3].SetInt32(int32(state))
+	inArgs[4].SetBoolean(stateValue)
+
+	err := styleContextNotifyStateChangeFunction_Set()
+	if err == nil {
+		styleContextNotifyStateChangeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var styleContextPopAnimatableRegionFunction *gi.Function
 var styleContextPopAnimatableRegionFunction_Once sync.Once
@@ -89251,7 +89378,34 @@ func (recv *StyleContext) PopAnimatableRegion() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_style_context_push_animatable_region' : parameter 'region_id' of type 'gpointer' not supported
+var styleContextPushAnimatableRegionFunction *gi.Function
+var styleContextPushAnimatableRegionFunction_Once sync.Once
+
+func styleContextPushAnimatableRegionFunction_Set() error {
+	var err error
+	styleContextPushAnimatableRegionFunction_Once.Do(func() {
+		err = styleContextObject_Set()
+		if err != nil {
+			return
+		}
+		styleContextPushAnimatableRegionFunction, err = styleContextObject.InvokerNew("push_animatable_region")
+	})
+	return err
+}
+
+// PushAnimatableRegion is a representation of the C type gtk_style_context_push_animatable_region.
+func (recv *StyleContext) PushAnimatableRegion(regionId unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(regionId)
+
+	err := styleContextPushAnimatableRegionFunction_Set()
+	if err == nil {
+		styleContextPushAnimatableRegionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var styleContextRemoveClassFunction *gi.Function
 var styleContextRemoveClassFunction_Once sync.Once
@@ -104537,7 +104691,37 @@ func (recv *TreeSelection) GetTreeView() *TreeView {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_selection_get_user_data' : return type 'gpointer' not supported
+var treeSelectionGetUserDataFunction *gi.Function
+var treeSelectionGetUserDataFunction_Once sync.Once
+
+func treeSelectionGetUserDataFunction_Set() error {
+	var err error
+	treeSelectionGetUserDataFunction_Once.Do(func() {
+		err = treeSelectionObject_Set()
+		if err != nil {
+			return
+		}
+		treeSelectionGetUserDataFunction, err = treeSelectionObject.InvokerNew("get_user_data")
+	})
+	return err
+}
+
+// GetUserData is a representation of the C type gtk_tree_selection_get_user_data.
+func (recv *TreeSelection) GetUserData() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := treeSelectionGetUserDataFunction_Set()
+	if err == nil {
+		ret = treeSelectionGetUserDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var treeSelectionIterIsSelectedFunction *gi.Function
 var treeSelectionIterIsSelectedFunction_Once sync.Once

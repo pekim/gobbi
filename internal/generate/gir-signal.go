@@ -115,10 +115,10 @@ func (s *Signal) generateMarshalBody(g *jen.Group) {
 		return
 	}
 
-	if s.ReturnValue.Type.Name != "none" {
-		g.Commentf("has return : %s", s.ReturnValue.Type.Name)
-		return
-	}
+	//if s.ReturnValue.Type.Name != "none" {
+	//	g.Commentf("has return : %s", s.ReturnValue.Type.Name)
+	//	return
+	//}
 
 	s.generateMarshalBodyInstanceParam(g)
 	s.generateMarshalBodyInParams(g)

@@ -1,4 +1,4 @@
-package gi
+package cgo
 
 type TraceHandler func(message string)
 
@@ -8,11 +8,11 @@ func SetTraceHandler(handler TraceHandler) {
 	traceHandler = handler
 }
 
-func tracing() bool {
+func Tracing() bool {
 	return traceHandler != nil
 }
 
-func trace(message string) {
+func Trace(message string) {
 	if traceHandler == nil {
 		return
 	}

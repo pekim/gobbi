@@ -741,9 +741,30 @@ func (recv *Buffer) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
+// FieldData returns the C field 'data'.
+func (recv *Buffer) FieldData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := bufferStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(bufferStruct, recv.Native(), "data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldData sets the value of the C field 'data'.
+func (recv *Buffer) SetFieldData(value unsafe.Pointer) {
+	err := bufferStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(bufferStruct, recv.Native(), "data", argValue)
+}
 
 // FieldLength returns the C field 'length'.
 func (recv *Buffer) FieldLength() uint64 {
@@ -870,7 +891,37 @@ func (recv *Buffer) GetAsBytes() *glib.Bytes {
 
 // UNSUPPORTED : C value 'soup_buffer_get_data' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_buffer_get_owner' : return type 'gpointer' not supported
+var bufferGetOwnerFunction *gi.Function
+var bufferGetOwnerFunction_Once sync.Once
+
+func bufferGetOwnerFunction_Set() error {
+	var err error
+	bufferGetOwnerFunction_Once.Do(func() {
+		err = bufferStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferGetOwnerFunction, err = bufferStruct.InvokerNew("get_owner")
+	})
+	return err
+}
+
+// GetOwner is a representation of the C type soup_buffer_get_owner.
+func (recv *Buffer) GetOwner() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := bufferGetOwnerFunction_Set()
+	if err == nil {
+		ret = bufferGetOwnerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var bufferNewSubbufferFunction *gi.Function
 var bufferNewSubbufferFunction_Once sync.Once

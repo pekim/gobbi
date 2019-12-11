@@ -11,6 +11,7 @@ import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
+	"unsafe"
 )
 
 // UNSUPPORTED : C value 'gtk_accel_groups_activate' : parameter 'accel_mods' of type 'Gdk.ModifierType' not supported
@@ -97,7 +98,33 @@ func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
 
 // UNSUPPORTED : C value 'gtk_binding_entry_skip' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_binding_set_by_class' : parameter 'object_class' of type 'gpointer' not supported
+var bindingSetByClassFunction *gi.Function
+var bindingSetByClassFunction_Once sync.Once
+
+func bindingSetByClassFunction_Set() error {
+	var err error
+	bindingSetByClassFunction_Once.Do(func() {
+		bindingSetByClassFunction, err = gi.FunctionInvokerNew("Gtk", "binding_set_by_class")
+	})
+	return err
+}
+
+// BindingSetByClass is a representation of the C type gtk_binding_set_by_class.
+func BindingSetByClass(objectClass unsafe.Pointer) *BindingSet {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(objectClass)
+
+	var ret gi.Argument
+
+	err := bindingSetByClassFunction_Set()
+	if err == nil {
+		ret = bindingSetByClassFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := BindingSetNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var bindingSetFindFunction *gi.Function
 var bindingSetFindFunction_Once sync.Once

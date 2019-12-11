@@ -65,7 +65,7 @@ func ContextGetResolution(context *pango.Context) float64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_cairo_context_get_shape_renderer' : parameter 'data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'pango_cairo_context_get_shape_renderer' : return type 'ShapeRendererFunc' not supported
 
 var contextSetFontOptionsFunction *gi.Function
 var contextSetFontOptionsFunction_Once sync.Once

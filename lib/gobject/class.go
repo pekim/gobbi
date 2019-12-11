@@ -358,7 +358,38 @@ func (recv *Object) SetFieldGTypeInstance(value *TypeInstance) {
 
 // UNSUPPORTED : C value 'g_object_add_toggle_ref' : parameter 'notify' of type 'ToggleNotify' not supported
 
-// UNSUPPORTED : C value 'g_object_add_weak_pointer' : parameter 'weak_pointer_location' of type 'gpointer' not supported
+var objectAddWeakPointerFunction *gi.Function
+var objectAddWeakPointerFunction_Once sync.Once
+
+func objectAddWeakPointerFunction_Set() error {
+	var err error
+	objectAddWeakPointerFunction_Once.Do(func() {
+		err = objectObject_Set()
+		if err != nil {
+			return
+		}
+		objectAddWeakPointerFunction, err = objectObject.InvokerNew("add_weak_pointer")
+	})
+	return err
+}
+
+// AddWeakPointer is a representation of the C type g_object_add_weak_pointer.
+func (recv *Object) AddWeakPointer(weakPointerLocation unsafe.Pointer) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(weakPointerLocation)
+
+	var outArgs [1]gi.Argument
+
+	err := objectAddWeakPointerFunction_Set()
+	if err == nil {
+		objectAddWeakPointerFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Pointer()
+
+	return out0
+}
 
 var objectBindPropertyFunction *gi.Function
 var objectBindPropertyFunction_Once sync.Once
@@ -502,7 +533,38 @@ func (recv *Object) FreezeNotify() {
 
 // UNSUPPORTED : C value 'g_object_get' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_object_get_data' : return type 'gpointer' not supported
+var objectGetDataFunction *gi.Function
+var objectGetDataFunction_Once sync.Once
+
+func objectGetDataFunction_Set() error {
+	var err error
+	objectGetDataFunction_Once.Do(func() {
+		err = objectObject_Set()
+		if err != nil {
+			return
+		}
+		objectGetDataFunction, err = objectObject.InvokerNew("get_data")
+	})
+	return err
+}
+
+// GetData is a representation of the C type g_object_get_data.
+func (recv *Object) GetData(key string) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := objectGetDataFunction_Set()
+	if err == nil {
+		ret = objectGetDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var objectGetPropertyFunction *gi.Function
 var objectGetPropertyFunction_Once sync.Once
@@ -534,7 +596,38 @@ func (recv *Object) GetProperty(propertyName string, value *Value) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_object_get_qdata' : return type 'gpointer' not supported
+var objectGetQdataFunction *gi.Function
+var objectGetQdataFunction_Once sync.Once
+
+func objectGetQdataFunction_Set() error {
+	var err error
+	objectGetQdataFunction_Once.Do(func() {
+		err = objectObject_Set()
+		if err != nil {
+			return
+		}
+		objectGetQdataFunction, err = objectObject.InvokerNew("get_qdata")
+	})
+	return err
+}
+
+// GetQdata is a representation of the C type g_object_get_qdata.
+func (recv *Object) GetQdata(quark glib.Quark) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(uint32(quark))
+
+	var ret gi.Argument
+
+	err := objectGetQdataFunction_Set()
+	if err == nil {
+		ret = objectGetQdataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_object_get_valist' : parameter 'var_args' of type 'va_list' not supported
 
@@ -696,11 +789,42 @@ func (recv *Object) RefSink() *Object {
 
 // UNSUPPORTED : C value 'g_object_remove_toggle_ref' : parameter 'notify' of type 'ToggleNotify' not supported
 
-// UNSUPPORTED : C value 'g_object_remove_weak_pointer' : parameter 'weak_pointer_location' of type 'gpointer' not supported
+var objectRemoveWeakPointerFunction *gi.Function
+var objectRemoveWeakPointerFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_object_replace_data' : parameter 'oldval' of type 'gpointer' not supported
+func objectRemoveWeakPointerFunction_Set() error {
+	var err error
+	objectRemoveWeakPointerFunction_Once.Do(func() {
+		err = objectObject_Set()
+		if err != nil {
+			return
+		}
+		objectRemoveWeakPointerFunction, err = objectObject.InvokerNew("remove_weak_pointer")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_object_replace_qdata' : parameter 'oldval' of type 'gpointer' not supported
+// RemoveWeakPointer is a representation of the C type g_object_remove_weak_pointer.
+func (recv *Object) RemoveWeakPointer(weakPointerLocation unsafe.Pointer) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(weakPointerLocation)
+
+	var outArgs [1]gi.Argument
+
+	err := objectRemoveWeakPointerFunction_Set()
+	if err == nil {
+		objectRemoveWeakPointerFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Pointer()
+
+	return out0
+}
+
+// UNSUPPORTED : C value 'g_object_replace_data' : parameter 'destroy' of type 'GLib.DestroyNotify' not supported
+
+// UNSUPPORTED : C value 'g_object_replace_qdata' : parameter 'destroy' of type 'GLib.DestroyNotify' not supported
 
 var objectRunDisposeFunction *gi.Function
 var objectRunDisposeFunction_Once sync.Once
@@ -732,9 +856,37 @@ func (recv *Object) RunDispose() {
 
 // UNSUPPORTED : C value 'g_object_set' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_object_set_data' : parameter 'data' of type 'gpointer' not supported
+var objectSetDataFunction *gi.Function
+var objectSetDataFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_object_set_data_full' : parameter 'data' of type 'gpointer' not supported
+func objectSetDataFunction_Set() error {
+	var err error
+	objectSetDataFunction_Once.Do(func() {
+		err = objectObject_Set()
+		if err != nil {
+			return
+		}
+		objectSetDataFunction, err = objectObject.InvokerNew("set_data")
+	})
+	return err
+}
+
+// SetData is a representation of the C type g_object_set_data.
+func (recv *Object) SetData(key string, data unsafe.Pointer) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(key)
+	inArgs[2].SetPointer(data)
+
+	err := objectSetDataFunction_Set()
+	if err == nil {
+		objectSetDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_object_set_data_full' : parameter 'destroy' of type 'GLib.DestroyNotify' not supported
 
 var objectSetPropertyFunction *gi.Function
 var objectSetPropertyFunction_Once sync.Once
@@ -766,17 +918,107 @@ func (recv *Object) SetProperty(propertyName string, value *Value) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_object_set_qdata' : parameter 'data' of type 'gpointer' not supported
+var objectSetQdataFunction *gi.Function
+var objectSetQdataFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_object_set_qdata_full' : parameter 'data' of type 'gpointer' not supported
+func objectSetQdataFunction_Set() error {
+	var err error
+	objectSetQdataFunction_Once.Do(func() {
+		err = objectObject_Set()
+		if err != nil {
+			return
+		}
+		objectSetQdataFunction, err = objectObject.InvokerNew("set_qdata")
+	})
+	return err
+}
+
+// SetQdata is a representation of the C type g_object_set_qdata.
+func (recv *Object) SetQdata(quark glib.Quark, data unsafe.Pointer) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(uint32(quark))
+	inArgs[2].SetPointer(data)
+
+	err := objectSetQdataFunction_Set()
+	if err == nil {
+		objectSetQdataFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_object_set_qdata_full' : parameter 'destroy' of type 'GLib.DestroyNotify' not supported
 
 // UNSUPPORTED : C value 'g_object_set_valist' : parameter 'var_args' of type 'va_list' not supported
 
 // UNSUPPORTED : C value 'g_object_setv' : parameter 'names' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_object_steal_data' : return type 'gpointer' not supported
+var objectStealDataFunction *gi.Function
+var objectStealDataFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_object_steal_qdata' : return type 'gpointer' not supported
+func objectStealDataFunction_Set() error {
+	var err error
+	objectStealDataFunction_Once.Do(func() {
+		err = objectObject_Set()
+		if err != nil {
+			return
+		}
+		objectStealDataFunction, err = objectObject.InvokerNew("steal_data")
+	})
+	return err
+}
+
+// StealData is a representation of the C type g_object_steal_data.
+func (recv *Object) StealData(key string) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := objectStealDataFunction_Set()
+	if err == nil {
+		ret = objectStealDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var objectStealQdataFunction *gi.Function
+var objectStealQdataFunction_Once sync.Once
+
+func objectStealQdataFunction_Set() error {
+	var err error
+	objectStealQdataFunction_Once.Do(func() {
+		err = objectObject_Set()
+		if err != nil {
+			return
+		}
+		objectStealQdataFunction, err = objectObject.InvokerNew("steal_qdata")
+	})
+	return err
+}
+
+// StealQdata is a representation of the C type g_object_steal_qdata.
+func (recv *Object) StealQdata(quark glib.Quark) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(uint32(quark))
+
+	var ret gi.Argument
+
+	err := objectStealQdataFunction_Set()
+	if err == nil {
+		ret = objectStealQdataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var objectThawNotifyFunction *gi.Function
 var objectThawNotifyFunction_Once sync.Once
@@ -1168,7 +1410,38 @@ func (recv *ParamSpec) GetNick() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_param_spec_get_qdata' : return type 'gpointer' not supported
+var paramSpecGetQdataFunction *gi.Function
+var paramSpecGetQdataFunction_Once sync.Once
+
+func paramSpecGetQdataFunction_Set() error {
+	var err error
+	paramSpecGetQdataFunction_Once.Do(func() {
+		err = paramSpecObject_Set()
+		if err != nil {
+			return
+		}
+		paramSpecGetQdataFunction, err = paramSpecObject.InvokerNew("get_qdata")
+	})
+	return err
+}
+
+// GetQdata is a representation of the C type g_param_spec_get_qdata.
+func (recv *ParamSpec) GetQdata(quark glib.Quark) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(uint32(quark))
+
+	var ret gi.Argument
+
+	err := paramSpecGetQdataFunction_Set()
+	if err == nil {
+		ret = paramSpecGetQdataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var paramSpecGetRedirectTargetFunction *gi.Function
 var paramSpecGetRedirectTargetFunction_Once sync.Once
@@ -1266,9 +1539,37 @@ func (recv *ParamSpec) RefSink() *ParamSpec {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_param_spec_set_qdata' : parameter 'data' of type 'gpointer' not supported
+var paramSpecSetQdataFunction *gi.Function
+var paramSpecSetQdataFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_param_spec_set_qdata_full' : parameter 'data' of type 'gpointer' not supported
+func paramSpecSetQdataFunction_Set() error {
+	var err error
+	paramSpecSetQdataFunction_Once.Do(func() {
+		err = paramSpecObject_Set()
+		if err != nil {
+			return
+		}
+		paramSpecSetQdataFunction, err = paramSpecObject.InvokerNew("set_qdata")
+	})
+	return err
+}
+
+// SetQdata is a representation of the C type g_param_spec_set_qdata.
+func (recv *ParamSpec) SetQdata(quark glib.Quark, data unsafe.Pointer) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(uint32(quark))
+	inArgs[2].SetPointer(data)
+
+	err := paramSpecSetQdataFunction_Set()
+	if err == nil {
+		paramSpecSetQdataFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_param_spec_set_qdata_full' : parameter 'destroy' of type 'GLib.DestroyNotify' not supported
 
 var paramSpecSinkFunction *gi.Function
 var paramSpecSinkFunction_Once sync.Once
@@ -1298,7 +1599,38 @@ func (recv *ParamSpec) Sink() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_param_spec_steal_qdata' : return type 'gpointer' not supported
+var paramSpecStealQdataFunction *gi.Function
+var paramSpecStealQdataFunction_Once sync.Once
+
+func paramSpecStealQdataFunction_Set() error {
+	var err error
+	paramSpecStealQdataFunction_Once.Do(func() {
+		err = paramSpecObject_Set()
+		if err != nil {
+			return
+		}
+		paramSpecStealQdataFunction, err = paramSpecObject.InvokerNew("steal_qdata")
+	})
+	return err
+}
+
+// StealQdata is a representation of the C type g_param_spec_steal_qdata.
+func (recv *ParamSpec) StealQdata(quark glib.Quark) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(uint32(quark))
+
+	var ret gi.Argument
+
+	err := paramSpecStealQdataFunction_Set()
+	if err == nil {
+		ret = paramSpecStealQdataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var paramSpecUnrefFunction *gi.Function
 var paramSpecUnrefFunction_Once sync.Once

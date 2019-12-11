@@ -65,9 +65,30 @@ func (recv *CClosure) SetFieldClosure(value *Closure) {
 	gi.StructFieldSet(cClosureStruct, recv.Native(), "closure", argValue)
 }
 
-// UNSUPPORTED : C value 'callback' : for field getter : no Go type for 'gpointer'
+// FieldCallback returns the C field 'callback'.
+func (recv *CClosure) FieldCallback() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := cClosureStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'callback' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(cClosureStruct, recv.Native(), "callback")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldCallback sets the value of the C field 'callback'.
+func (recv *CClosure) SetFieldCallback(value unsafe.Pointer) {
+	err := cClosureStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(cClosureStruct, recv.Native(), "callback", argValue)
+}
 
 // CClosureStruct creates an uninitialised CClosure.
 func CClosureStruct() *CClosure {
@@ -201,13 +222,44 @@ func ClosureNewObject(sizeofClosure uint32, object_ *Object) *Closure {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_closure_new_simple' : parameter 'data' of type 'gpointer' not supported
+var closureNewSimpleFunction *gi.Function
+var closureNewSimpleFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_closure_add_finalize_notifier' : parameter 'notify_data' of type 'gpointer' not supported
+func closureNewSimpleFunction_Set() error {
+	var err error
+	closureNewSimpleFunction_Once.Do(func() {
+		err = closureStruct_Set()
+		if err != nil {
+			return
+		}
+		closureNewSimpleFunction, err = closureStruct.InvokerNew("new_simple")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_closure_add_invalidate_notifier' : parameter 'notify_data' of type 'gpointer' not supported
+// ClosureNewSimple is a representation of the C type g_closure_new_simple.
+func ClosureNewSimple(sizeofClosure uint32, data unsafe.Pointer) *Closure {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint32(sizeofClosure)
+	inArgs[1].SetPointer(data)
 
-// UNSUPPORTED : C value 'g_closure_add_marshal_guards' : parameter 'pre_marshal_data' of type 'gpointer' not supported
+	var ret gi.Argument
+
+	err := closureNewSimpleFunction_Set()
+	if err == nil {
+		ret = closureNewSimpleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ClosureNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_closure_add_finalize_notifier' : parameter 'notify_func' of type 'ClosureNotify' not supported
+
+// UNSUPPORTED : C value 'g_closure_add_invalidate_notifier' : parameter 'notify_func' of type 'ClosureNotify' not supported
+
+// UNSUPPORTED : C value 'g_closure_add_marshal_guards' : parameter 'pre_marshal_notify' of type 'ClosureNotify' not supported
 
 var closureInvalidateFunction *gi.Function
 var closureInvalidateFunction_Once sync.Once
@@ -271,13 +323,13 @@ func (recv *Closure) Ref() *Closure {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_closure_remove_finalize_notifier' : parameter 'notify_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_closure_remove_finalize_notifier' : parameter 'notify_func' of type 'ClosureNotify' not supported
 
-// UNSUPPORTED : C value 'g_closure_remove_invalidate_notifier' : parameter 'notify_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_closure_remove_invalidate_notifier' : parameter 'notify_func' of type 'ClosureNotify' not supported
 
 // UNSUPPORTED : C value 'g_closure_set_marshal' : parameter 'marshal' of type 'ClosureMarshal' not supported
 
-// UNSUPPORTED : C value 'g_closure_set_meta_marshal' : parameter 'marshal_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_closure_set_meta_marshal' : parameter 'meta_marshal' of type 'ClosureMarshal' not supported
 
 var closureSinkFunction *gi.Function
 var closureSinkFunction_Once sync.Once
@@ -365,9 +417,30 @@ func (recv *ClosureNotifyData) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
+// FieldData returns the C field 'data'.
+func (recv *ClosureNotifyData) FieldData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := closureNotifyDataStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(closureNotifyDataStruct, recv.Native(), "data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldData sets the value of the C field 'data'.
+func (recv *ClosureNotifyData) SetFieldData(value unsafe.Pointer) {
+	err := closureNotifyDataStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(closureNotifyDataStruct, recv.Native(), "data", argValue)
+}
 
 // UNSUPPORTED : C value 'notify' : for field getter : no Go type for 'ClosureNotify'
 
@@ -1083,9 +1156,30 @@ func (recv *InterfaceInfo) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'interface_finalize' : for field setter : no Go type for 'InterfaceFinalizeFunc'
 
-// UNSUPPORTED : C value 'interface_data' : for field getter : no Go type for 'gpointer'
+// FieldInterfaceData returns the C field 'interface_data'.
+func (recv *InterfaceInfo) FieldInterfaceData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := interfaceInfoStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'interface_data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(interfaceInfoStruct, recv.Native(), "interface_data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldInterfaceData sets the value of the C field 'interface_data'.
+func (recv *InterfaceInfo) SetFieldInterfaceData(value unsafe.Pointer) {
+	err := interfaceInfoStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(interfaceInfoStruct, recv.Native(), "interface_data", argValue)
+}
 
 // InterfaceInfoStruct creates an uninitialised InterfaceInfo.
 func InterfaceInfoStruct() *InterfaceInfo {
@@ -2426,9 +2520,30 @@ func (recv *TypeInfo) SetFieldClassSize(value uint16) {
 
 // UNSUPPORTED : C value 'class_finalize' : for field setter : no Go type for 'ClassFinalizeFunc'
 
-// UNSUPPORTED : C value 'class_data' : for field getter : no Go type for 'gpointer'
+// FieldClassData returns the C field 'class_data'.
+func (recv *TypeInfo) FieldClassData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := typeInfoStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'class_data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(typeInfoStruct, recv.Native(), "class_data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldClassData sets the value of the C field 'class_data'.
+func (recv *TypeInfo) SetFieldClassData(value unsafe.Pointer) {
+	err := typeInfoStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(typeInfoStruct, recv.Native(), "class_data", argValue)
+}
 
 // FieldInstanceSize returns the C field 'instance_size'.
 func (recv *TypeInfo) FieldInstanceSize() uint16 {
@@ -3109,7 +3224,37 @@ func (recv *Value) Copy(destValue *Value) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_value_dup_boxed' : return type 'gpointer' not supported
+var valueDupBoxedFunction *gi.Function
+var valueDupBoxedFunction_Once sync.Once
+
+func valueDupBoxedFunction_Set() error {
+	var err error
+	valueDupBoxedFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueDupBoxedFunction, err = valueStruct.InvokerNew("dup_boxed")
+	})
+	return err
+}
+
+// DupBoxed is a representation of the C type g_value_dup_boxed.
+func (recv *Value) DupBoxed() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := valueDupBoxedFunction_Set()
+	if err == nil {
+		ret = valueDupBoxedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var valueDupObjectFunction *gi.Function
 var valueDupObjectFunction_Once sync.Once
@@ -3303,7 +3448,37 @@ func (recv *Value) GetBoolean() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_value_get_boxed' : return type 'gpointer' not supported
+var valueGetBoxedFunction *gi.Function
+var valueGetBoxedFunction_Once sync.Once
+
+func valueGetBoxedFunction_Set() error {
+	var err error
+	valueGetBoxedFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueGetBoxedFunction, err = valueStruct.InvokerNew("get_boxed")
+	})
+	return err
+}
+
+// GetBoxed is a representation of the C type g_value_get_boxed.
+func (recv *Value) GetBoxed() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := valueGetBoxedFunction_Set()
+	if err == nil {
+		ret = valueGetBoxedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var valueGetCharFunction *gi.Function
 var valueGetCharFunction_Once sync.Once
@@ -3627,7 +3802,37 @@ func (recv *Value) GetParam() *ParamSpec {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_value_get_pointer' : return type 'gpointer' not supported
+var valueGetPointerFunction *gi.Function
+var valueGetPointerFunction_Once sync.Once
+
+func valueGetPointerFunction_Set() error {
+	var err error
+	valueGetPointerFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueGetPointerFunction, err = valueStruct.InvokerNew("get_pointer")
+	})
+	return err
+}
+
+// GetPointer is a representation of the C type g_value_get_pointer.
+func (recv *Value) GetPointer() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := valueGetPointerFunction_Set()
+	if err == nil {
+		ret = valueGetPointerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var valueGetScharFunction *gi.Function
 var valueGetScharFunction_Once sync.Once
@@ -3884,7 +4089,37 @@ func (recv *Value) InitFromInstance(instance *TypeInstance) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_value_peek_pointer' : return type 'gpointer' not supported
+var valuePeekPointerFunction *gi.Function
+var valuePeekPointerFunction_Once sync.Once
+
+func valuePeekPointerFunction_Set() error {
+	var err error
+	valuePeekPointerFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valuePeekPointerFunction, err = valueStruct.InvokerNew("peek_pointer")
+	})
+	return err
+}
+
+// PeekPointer is a representation of the C type g_value_peek_pointer.
+func (recv *Value) PeekPointer() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := valuePeekPointerFunction_Set()
+	if err == nil {
+		ret = valuePeekPointerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var valueResetFunction *gi.Function
 var valueResetFunction_Once sync.Once
@@ -3947,9 +4182,63 @@ func (recv *Value) SetBoolean(vBoolean bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_value_set_boxed' : parameter 'v_boxed' of type 'gpointer' not supported
+var valueSetBoxedFunction *gi.Function
+var valueSetBoxedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_value_set_boxed_take_ownership' : parameter 'v_boxed' of type 'gpointer' not supported
+func valueSetBoxedFunction_Set() error {
+	var err error
+	valueSetBoxedFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetBoxedFunction, err = valueStruct.InvokerNew("set_boxed")
+	})
+	return err
+}
+
+// SetBoxed is a representation of the C type g_value_set_boxed.
+func (recv *Value) SetBoxed(vBoxed unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(vBoxed)
+
+	err := valueSetBoxedFunction_Set()
+	if err == nil {
+		valueSetBoxedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var valueSetBoxedTakeOwnershipFunction *gi.Function
+var valueSetBoxedTakeOwnershipFunction_Once sync.Once
+
+func valueSetBoxedTakeOwnershipFunction_Set() error {
+	var err error
+	valueSetBoxedTakeOwnershipFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetBoxedTakeOwnershipFunction, err = valueStruct.InvokerNew("set_boxed_take_ownership")
+	})
+	return err
+}
+
+// SetBoxedTakeOwnership is a representation of the C type g_value_set_boxed_take_ownership.
+func (recv *Value) SetBoxedTakeOwnership(vBoxed unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(vBoxed)
+
+	err := valueSetBoxedTakeOwnershipFunction_Set()
+	if err == nil {
+		valueSetBoxedTakeOwnershipFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var valueSetCharFunction *gi.Function
 var valueSetCharFunction_Once sync.Once
@@ -4098,7 +4387,34 @@ func (recv *Value) SetFloat(vFloat float32) {
 
 // UNSUPPORTED : C value 'g_value_set_gtype' : parameter 'v_gtype' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_value_set_instance' : parameter 'instance' of type 'gpointer' not supported
+var valueSetInstanceFunction *gi.Function
+var valueSetInstanceFunction_Once sync.Once
+
+func valueSetInstanceFunction_Set() error {
+	var err error
+	valueSetInstanceFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetInstanceFunction, err = valueStruct.InvokerNew("set_instance")
+	})
+	return err
+}
+
+// SetInstance is a representation of the C type g_value_set_instance.
+func (recv *Value) SetInstance(instance unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(instance)
+
+	err := valueSetInstanceFunction_Set()
+	if err == nil {
+		valueSetInstanceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var valueSetIntFunction *gi.Function
 var valueSetIntFunction_Once sync.Once
@@ -4216,7 +4532,34 @@ func (recv *Value) SetObject(vObject *Object) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_value_set_object_take_ownership' : parameter 'v_object' of type 'gpointer' not supported
+var valueSetObjectTakeOwnershipFunction *gi.Function
+var valueSetObjectTakeOwnershipFunction_Once sync.Once
+
+func valueSetObjectTakeOwnershipFunction_Set() error {
+	var err error
+	valueSetObjectTakeOwnershipFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetObjectTakeOwnershipFunction, err = valueStruct.InvokerNew("set_object_take_ownership")
+	})
+	return err
+}
+
+// SetObjectTakeOwnership is a representation of the C type g_value_set_object_take_ownership.
+func (recv *Value) SetObjectTakeOwnership(vObject unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(vObject)
+
+	err := valueSetObjectTakeOwnershipFunction_Set()
+	if err == nil {
+		valueSetObjectTakeOwnershipFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var valueSetParamFunction *gi.Function
 var valueSetParamFunction_Once sync.Once
@@ -4276,7 +4619,34 @@ func (recv *Value) SetParamTakeOwnership(param *ParamSpec) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_value_set_pointer' : parameter 'v_pointer' of type 'gpointer' not supported
+var valueSetPointerFunction *gi.Function
+var valueSetPointerFunction_Once sync.Once
+
+func valueSetPointerFunction_Set() error {
+	var err error
+	valueSetPointerFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetPointerFunction, err = valueStruct.InvokerNew("set_pointer")
+	})
+	return err
+}
+
+// SetPointer is a representation of the C type g_value_set_pointer.
+func (recv *Value) SetPointer(vPointer unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(vPointer)
+
+	err := valueSetPointerFunction_Set()
+	if err == nil {
+		valueSetPointerFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var valueSetScharFunction *gi.Function
 var valueSetScharFunction_Once sync.Once
@@ -4307,7 +4677,34 @@ func (recv *Value) SetSchar(vChar int8) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_value_set_static_boxed' : parameter 'v_boxed' of type 'gpointer' not supported
+var valueSetStaticBoxedFunction *gi.Function
+var valueSetStaticBoxedFunction_Once sync.Once
+
+func valueSetStaticBoxedFunction_Set() error {
+	var err error
+	valueSetStaticBoxedFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetStaticBoxedFunction, err = valueStruct.InvokerNew("set_static_boxed")
+	})
+	return err
+}
+
+// SetStaticBoxed is a representation of the C type g_value_set_static_boxed.
+func (recv *Value) SetStaticBoxed(vBoxed unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(vBoxed)
+
+	err := valueSetStaticBoxedFunction_Set()
+	if err == nil {
+		valueSetStaticBoxedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var valueSetStaticStringFunction *gi.Function
 var valueSetStaticStringFunction_Once sync.Once
@@ -4541,9 +4938,63 @@ func (recv *Value) SetVariant(variant *glib.Variant) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_value_take_boxed' : parameter 'v_boxed' of type 'gpointer' not supported
+var valueTakeBoxedFunction *gi.Function
+var valueTakeBoxedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_value_take_object' : parameter 'v_object' of type 'gpointer' not supported
+func valueTakeBoxedFunction_Set() error {
+	var err error
+	valueTakeBoxedFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueTakeBoxedFunction, err = valueStruct.InvokerNew("take_boxed")
+	})
+	return err
+}
+
+// TakeBoxed is a representation of the C type g_value_take_boxed.
+func (recv *Value) TakeBoxed(vBoxed unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(vBoxed)
+
+	err := valueTakeBoxedFunction_Set()
+	if err == nil {
+		valueTakeBoxedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var valueTakeObjectFunction *gi.Function
+var valueTakeObjectFunction_Once sync.Once
+
+func valueTakeObjectFunction_Set() error {
+	var err error
+	valueTakeObjectFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueTakeObjectFunction, err = valueStruct.InvokerNew("take_object")
+	})
+	return err
+}
+
+// TakeObject is a representation of the C type g_value_take_object.
+func (recv *Value) TakeObject(vObject unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(vObject)
+
+	err := valueTakeObjectFunction_Set()
+	if err == nil {
+		valueTakeObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var valueTakeParamFunction *gi.Function
 var valueTakeParamFunction_Once sync.Once

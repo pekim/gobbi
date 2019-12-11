@@ -7,6 +7,7 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 var actionNameIsValidFunction *gi.Function
@@ -1423,7 +1424,33 @@ func DbusIsUniqueName(string_ string) bool {
 
 // UNSUPPORTED : C value 'g_icon_deserialize' : return type 'Icon' not supported
 
-// UNSUPPORTED : C value 'g_icon_hash' : parameter 'icon' of type 'gpointer' not supported
+var iconHashFunction *gi.Function
+var iconHashFunction_Once sync.Once
+
+func iconHashFunction_Set() error {
+	var err error
+	iconHashFunction_Once.Do(func() {
+		iconHashFunction, err = gi.FunctionInvokerNew("Gio", "icon_hash")
+	})
+	return err
+}
+
+// IconHash is a representation of the C type g_icon_hash.
+func IconHash(icon unsafe.Pointer) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(icon)
+
+	var ret gi.Argument
+
+	err := iconHashFunction_Set()
+	if err == nil {
+		ret = iconHashFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_icon_new_for_string' : return type 'Icon' not supported
 

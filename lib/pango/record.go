@@ -1707,9 +1707,30 @@ func (recv *AttrShape) SetFieldLogicalRect(value *Rectangle) {
 	gi.StructFieldSet(attrShapeStruct, recv.Native(), "logical_rect", argValue)
 }
 
-// UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
+// FieldData returns the C field 'data'.
+func (recv *AttrShape) FieldData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := attrShapeStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(attrShapeStruct, recv.Native(), "data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldData sets the value of the C field 'data'.
+func (recv *AttrShape) SetFieldData(value unsafe.Pointer) {
+	err := attrShapeStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(attrShapeStruct, recv.Native(), "data", argValue)
+}
 
 // UNSUPPORTED : C value 'copy_func' : for field getter : no Go type for 'AttrDataCopyFunc'
 

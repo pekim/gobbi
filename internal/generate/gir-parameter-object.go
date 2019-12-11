@@ -78,6 +78,11 @@ func (p Parameter) generateValueFromObject(s *jen.Statement, objectVarName strin
 		return
 	}
 
+	if resolvedType.Name == "gpointer" {
+		s.Id(objectVarName).Dot("GetPointer()")
+		return
+	}
+
 	fmt.Println(resolvedType.Name)
 	s.Lit(42)
 }

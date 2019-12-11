@@ -1,6 +1,8 @@
 package gobbi
 
-import "github.com/pekim/gobbi/internal/cgo/gi"
+import (
+	"github.com/pekim/gobbi/internal/cgo"
+)
 
 /*
 	SetTraceHandler sets a handler function that will be called
@@ -9,6 +11,6 @@ import "github.com/pekim/gobbi/internal/cgo/gi"
 
 	Pass nil to remove a previous set handler.
 */
-func SetTraceHandler(handler gi.TraceHandler) {
-	gi.SetTraceHandler(handler)
+func SetTraceHandler(handler cgo.TraceHandler) {
+	cgo.SetTraceHandler(handler)
 }

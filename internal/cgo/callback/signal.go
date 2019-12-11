@@ -7,6 +7,8 @@ package callback
 import "C"
 
 import (
+	"fmt"
+	"github.com/pekim/gobbi/internal/cgo"
 	"sync"
 	"unsafe"
 )
@@ -65,6 +67,10 @@ func gobbiCSignalHandler(cReturnValue *C.GValue, nParamValues C.guint, cParamVal
 
 	returnValue := (*Value)(cReturnValue)
 	paramValues := (*[1 << 30]Value)(unsafe.Pointer(cParamValues))[:nParamValues:nParamValues]
+
+	if cgo.Tracing() {
+		cgo.Trace(fmt.Sprintf("Signal : %v\n", paramValues))
+	}
 
 	connection.handler(returnValue, paramValues)
 }

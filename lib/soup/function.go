@@ -7,6 +7,7 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
+	"unsafe"
 )
 
 // UNSUPPORTED : C value 'soup_add_completion' : parameter 'function' of type 'GLib.SourceFunc' not supported
@@ -1115,9 +1116,62 @@ func StatusProxify(statusCode uint32) uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_str_case_equal' : parameter 'v1' of type 'gpointer' not supported
+var strCaseEqualFunction *gi.Function
+var strCaseEqualFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_str_case_hash' : parameter 'key' of type 'gpointer' not supported
+func strCaseEqualFunction_Set() error {
+	var err error
+	strCaseEqualFunction_Once.Do(func() {
+		strCaseEqualFunction, err = gi.FunctionInvokerNew("Soup", "str_case_equal")
+	})
+	return err
+}
+
+// StrCaseEqual is a representation of the C type soup_str_case_equal.
+func StrCaseEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(v1)
+	inArgs[1].SetPointer(v2)
+
+	var ret gi.Argument
+
+	err := strCaseEqualFunction_Set()
+	if err == nil {
+		ret = strCaseEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var strCaseHashFunction *gi.Function
+var strCaseHashFunction_Once sync.Once
+
+func strCaseHashFunction_Set() error {
+	var err error
+	strCaseHashFunction_Once.Do(func() {
+		strCaseHashFunction, err = gi.FunctionInvokerNew("Soup", "str_case_hash")
+	})
+	return err
+}
+
+// StrCaseHash is a representation of the C type soup_str_case_hash.
+func StrCaseHash(key unsafe.Pointer) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(key)
+
+	var ret gi.Argument
+
+	err := strCaseHashFunction_Set()
+	if err == nil {
+		ret = strCaseHashFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var tldDomainIsPublicSuffixFunction *gi.Function
 var tldDomainIsPublicSuffixFunction_Once sync.Once

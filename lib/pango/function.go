@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
+	"unsafe"
 )
 
 var attrBackgroundAlphaNewFunction *gi.Function
@@ -1348,7 +1349,35 @@ func QuantizeLineGeometry(thickness int32, position int32) (int32, int32) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'pango_read_line' : parameter 'stream' of type 'gpointer' not supported
+var readLineFunction *gi.Function
+var readLineFunction_Once sync.Once
+
+func readLineFunction_Set() error {
+	var err error
+	readLineFunction_Once.Do(func() {
+		readLineFunction, err = gi.FunctionInvokerNew("Pango", "read_line")
+	})
+	return err
+}
+
+// ReadLine is a representation of the C type pango_read_line.
+func ReadLine(stream unsafe.Pointer) (int32, *glib.String) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(stream)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := readLineFunction_Set()
+	if err == nil {
+		ret = readLineFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Int32()
+	out0 := glib.StringNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var reorderItemsFunction *gi.Function
 var reorderItemsFunction_Once sync.Once

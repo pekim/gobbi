@@ -6,6 +6,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
+	"unsafe"
 )
 
 // UNSUPPORTED : C value 'g_boxed_copy' : parameter 'boxed_type' of type 'GType' not supported
@@ -14,51 +15,672 @@ import (
 
 // UNSUPPORTED : C value 'g_boxed_type_register_static' : parameter 'boxed_copy' of type 'BoxedCopyFunc' not supported
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_BOOLEAN__BOXED_BOXED' : parameter 'invocation_hint' of type 'gpointer' not supported
+var cclosureMarshalBOOLEANBOXEDBOXEDFunction *gi.Function
+var cclosureMarshalBOOLEANBOXEDBOXEDFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_BOOLEAN__FLAGS' : parameter 'invocation_hint' of type 'gpointer' not supported
+func cclosureMarshalBOOLEANBOXEDBOXEDFunction_Set() error {
+	var err error
+	cclosureMarshalBOOLEANBOXEDBOXEDFunction_Once.Do(func() {
+		cclosureMarshalBOOLEANBOXEDBOXEDFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_BOOLEAN__BOXED_BOXED")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_STRING__OBJECT_POINTER' : parameter 'invocation_hint' of type 'gpointer' not supported
+// CclosureMarshalBOOLEANBOXEDBOXED is a representation of the C type g_cclosure_marshal_BOOLEAN__BOXED_BOXED.
+func CclosureMarshalBOOLEANBOXEDBOXED(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__BOOLEAN' : parameter 'invocation_hint' of type 'gpointer' not supported
+	err := cclosureMarshalBOOLEANBOXEDBOXEDFunction_Set()
+	if err == nil {
+		cclosureMarshalBOOLEANBOXEDBOXEDFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__BOXED' : parameter 'invocation_hint' of type 'gpointer' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__CHAR' : parameter 'invocation_hint' of type 'gpointer' not supported
+var cclosureMarshalBOOLEANFLAGSFunction *gi.Function
+var cclosureMarshalBOOLEANFLAGSFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__DOUBLE' : parameter 'invocation_hint' of type 'gpointer' not supported
+func cclosureMarshalBOOLEANFLAGSFunction_Set() error {
+	var err error
+	cclosureMarshalBOOLEANFLAGSFunction_Once.Do(func() {
+		cclosureMarshalBOOLEANFLAGSFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_BOOLEAN__FLAGS")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__ENUM' : parameter 'invocation_hint' of type 'gpointer' not supported
+// CclosureMarshalBOOLEANFLAGS is a representation of the C type g_cclosure_marshal_BOOLEAN__FLAGS.
+func CclosureMarshalBOOLEANFLAGS(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__FLAGS' : parameter 'invocation_hint' of type 'gpointer' not supported
+	err := cclosureMarshalBOOLEANFLAGSFunction_Set()
+	if err == nil {
+		cclosureMarshalBOOLEANFLAGSFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__FLOAT' : parameter 'invocation_hint' of type 'gpointer' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__INT' : parameter 'invocation_hint' of type 'gpointer' not supported
+var cclosureMarshalSTRINGOBJECTPOINTERFunction *gi.Function
+var cclosureMarshalSTRINGOBJECTPOINTERFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__LONG' : parameter 'invocation_hint' of type 'gpointer' not supported
+func cclosureMarshalSTRINGOBJECTPOINTERFunction_Set() error {
+	var err error
+	cclosureMarshalSTRINGOBJECTPOINTERFunction_Once.Do(func() {
+		cclosureMarshalSTRINGOBJECTPOINTERFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_STRING__OBJECT_POINTER")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__OBJECT' : parameter 'invocation_hint' of type 'gpointer' not supported
+// CclosureMarshalSTRINGOBJECTPOINTER is a representation of the C type g_cclosure_marshal_STRING__OBJECT_POINTER.
+func CclosureMarshalSTRINGOBJECTPOINTER(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__PARAM' : parameter 'invocation_hint' of type 'gpointer' not supported
+	err := cclosureMarshalSTRINGOBJECTPOINTERFunction_Set()
+	if err == nil {
+		cclosureMarshalSTRINGOBJECTPOINTERFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__POINTER' : parameter 'invocation_hint' of type 'gpointer' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__STRING' : parameter 'invocation_hint' of type 'gpointer' not supported
+var cclosureMarshalVOIDBOOLEANFunction *gi.Function
+var cclosureMarshalVOIDBOOLEANFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__UCHAR' : parameter 'invocation_hint' of type 'gpointer' not supported
+func cclosureMarshalVOIDBOOLEANFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDBOOLEANFunction_Once.Do(func() {
+		cclosureMarshalVOIDBOOLEANFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__BOOLEAN")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__UINT' : parameter 'invocation_hint' of type 'gpointer' not supported
+// CclosureMarshalVOIDBOOLEAN is a representation of the C type g_cclosure_marshal_VOID__BOOLEAN.
+func CclosureMarshalVOIDBOOLEAN(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__UINT_POINTER' : parameter 'invocation_hint' of type 'gpointer' not supported
+	err := cclosureMarshalVOIDBOOLEANFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDBOOLEANFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__ULONG' : parameter 'invocation_hint' of type 'gpointer' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__VARIANT' : parameter 'invocation_hint' of type 'gpointer' not supported
+var cclosureMarshalVOIDBOXEDFunction *gi.Function
+var cclosureMarshalVOIDBOXEDFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_VOID__VOID' : parameter 'invocation_hint' of type 'gpointer' not supported
+func cclosureMarshalVOIDBOXEDFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDBOXEDFunction_Once.Do(func() {
+		cclosureMarshalVOIDBOXEDFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__BOXED")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_cclosure_marshal_generic' : parameter 'invocation_hint' of type 'gpointer' not supported
+// CclosureMarshalVOIDBOXED is a representation of the C type g_cclosure_marshal_VOID__BOXED.
+func CclosureMarshalVOIDBOXED(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDBOXEDFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDBOXEDFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDCHARFunction *gi.Function
+var cclosureMarshalVOIDCHARFunction_Once sync.Once
+
+func cclosureMarshalVOIDCHARFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDCHARFunction_Once.Do(func() {
+		cclosureMarshalVOIDCHARFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__CHAR")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDCHAR is a representation of the C type g_cclosure_marshal_VOID__CHAR.
+func CclosureMarshalVOIDCHAR(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDCHARFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDCHARFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDDOUBLEFunction *gi.Function
+var cclosureMarshalVOIDDOUBLEFunction_Once sync.Once
+
+func cclosureMarshalVOIDDOUBLEFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDDOUBLEFunction_Once.Do(func() {
+		cclosureMarshalVOIDDOUBLEFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__DOUBLE")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDDOUBLE is a representation of the C type g_cclosure_marshal_VOID__DOUBLE.
+func CclosureMarshalVOIDDOUBLE(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDDOUBLEFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDDOUBLEFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDENUMFunction *gi.Function
+var cclosureMarshalVOIDENUMFunction_Once sync.Once
+
+func cclosureMarshalVOIDENUMFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDENUMFunction_Once.Do(func() {
+		cclosureMarshalVOIDENUMFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__ENUM")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDENUM is a representation of the C type g_cclosure_marshal_VOID__ENUM.
+func CclosureMarshalVOIDENUM(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDENUMFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDENUMFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDFLAGSFunction *gi.Function
+var cclosureMarshalVOIDFLAGSFunction_Once sync.Once
+
+func cclosureMarshalVOIDFLAGSFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDFLAGSFunction_Once.Do(func() {
+		cclosureMarshalVOIDFLAGSFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__FLAGS")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDFLAGS is a representation of the C type g_cclosure_marshal_VOID__FLAGS.
+func CclosureMarshalVOIDFLAGS(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDFLAGSFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDFLAGSFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDFLOATFunction *gi.Function
+var cclosureMarshalVOIDFLOATFunction_Once sync.Once
+
+func cclosureMarshalVOIDFLOATFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDFLOATFunction_Once.Do(func() {
+		cclosureMarshalVOIDFLOATFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__FLOAT")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDFLOAT is a representation of the C type g_cclosure_marshal_VOID__FLOAT.
+func CclosureMarshalVOIDFLOAT(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDFLOATFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDFLOATFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDINTFunction *gi.Function
+var cclosureMarshalVOIDINTFunction_Once sync.Once
+
+func cclosureMarshalVOIDINTFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDINTFunction_Once.Do(func() {
+		cclosureMarshalVOIDINTFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__INT")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDINT is a representation of the C type g_cclosure_marshal_VOID__INT.
+func CclosureMarshalVOIDINT(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDINTFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDINTFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDLONGFunction *gi.Function
+var cclosureMarshalVOIDLONGFunction_Once sync.Once
+
+func cclosureMarshalVOIDLONGFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDLONGFunction_Once.Do(func() {
+		cclosureMarshalVOIDLONGFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__LONG")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDLONG is a representation of the C type g_cclosure_marshal_VOID__LONG.
+func CclosureMarshalVOIDLONG(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDLONGFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDLONGFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDOBJECTFunction *gi.Function
+var cclosureMarshalVOIDOBJECTFunction_Once sync.Once
+
+func cclosureMarshalVOIDOBJECTFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDOBJECTFunction_Once.Do(func() {
+		cclosureMarshalVOIDOBJECTFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__OBJECT")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDOBJECT is a representation of the C type g_cclosure_marshal_VOID__OBJECT.
+func CclosureMarshalVOIDOBJECT(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDOBJECTFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDOBJECTFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDPARAMFunction *gi.Function
+var cclosureMarshalVOIDPARAMFunction_Once sync.Once
+
+func cclosureMarshalVOIDPARAMFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDPARAMFunction_Once.Do(func() {
+		cclosureMarshalVOIDPARAMFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__PARAM")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDPARAM is a representation of the C type g_cclosure_marshal_VOID__PARAM.
+func CclosureMarshalVOIDPARAM(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDPARAMFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDPARAMFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDPOINTERFunction *gi.Function
+var cclosureMarshalVOIDPOINTERFunction_Once sync.Once
+
+func cclosureMarshalVOIDPOINTERFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDPOINTERFunction_Once.Do(func() {
+		cclosureMarshalVOIDPOINTERFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__POINTER")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDPOINTER is a representation of the C type g_cclosure_marshal_VOID__POINTER.
+func CclosureMarshalVOIDPOINTER(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDPOINTERFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDPOINTERFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDSTRINGFunction *gi.Function
+var cclosureMarshalVOIDSTRINGFunction_Once sync.Once
+
+func cclosureMarshalVOIDSTRINGFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDSTRINGFunction_Once.Do(func() {
+		cclosureMarshalVOIDSTRINGFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__STRING")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDSTRING is a representation of the C type g_cclosure_marshal_VOID__STRING.
+func CclosureMarshalVOIDSTRING(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDSTRINGFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDSTRINGFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDUCHARFunction *gi.Function
+var cclosureMarshalVOIDUCHARFunction_Once sync.Once
+
+func cclosureMarshalVOIDUCHARFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDUCHARFunction_Once.Do(func() {
+		cclosureMarshalVOIDUCHARFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__UCHAR")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDUCHAR is a representation of the C type g_cclosure_marshal_VOID__UCHAR.
+func CclosureMarshalVOIDUCHAR(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDUCHARFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDUCHARFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDUINTFunction *gi.Function
+var cclosureMarshalVOIDUINTFunction_Once sync.Once
+
+func cclosureMarshalVOIDUINTFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDUINTFunction_Once.Do(func() {
+		cclosureMarshalVOIDUINTFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__UINT")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDUINT is a representation of the C type g_cclosure_marshal_VOID__UINT.
+func CclosureMarshalVOIDUINT(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDUINTFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDUINTFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDUINTPOINTERFunction *gi.Function
+var cclosureMarshalVOIDUINTPOINTERFunction_Once sync.Once
+
+func cclosureMarshalVOIDUINTPOINTERFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDUINTPOINTERFunction_Once.Do(func() {
+		cclosureMarshalVOIDUINTPOINTERFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__UINT_POINTER")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDUINTPOINTER is a representation of the C type g_cclosure_marshal_VOID__UINT_POINTER.
+func CclosureMarshalVOIDUINTPOINTER(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDUINTPOINTERFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDUINTPOINTERFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDULONGFunction *gi.Function
+var cclosureMarshalVOIDULONGFunction_Once sync.Once
+
+func cclosureMarshalVOIDULONGFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDULONGFunction_Once.Do(func() {
+		cclosureMarshalVOIDULONGFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__ULONG")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDULONG is a representation of the C type g_cclosure_marshal_VOID__ULONG.
+func CclosureMarshalVOIDULONG(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDULONGFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDULONGFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDVARIANTFunction *gi.Function
+var cclosureMarshalVOIDVARIANTFunction_Once sync.Once
+
+func cclosureMarshalVOIDVARIANTFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDVARIANTFunction_Once.Do(func() {
+		cclosureMarshalVOIDVARIANTFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__VARIANT")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDVARIANT is a representation of the C type g_cclosure_marshal_VOID__VARIANT.
+func CclosureMarshalVOIDVARIANT(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDVARIANTFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDVARIANTFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalVOIDVOIDFunction *gi.Function
+var cclosureMarshalVOIDVOIDFunction_Once sync.Once
+
+func cclosureMarshalVOIDVOIDFunction_Set() error {
+	var err error
+	cclosureMarshalVOIDVOIDFunction_Once.Do(func() {
+		cclosureMarshalVOIDVOIDFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_VOID__VOID")
+	})
+	return err
+}
+
+// CclosureMarshalVOIDVOID is a representation of the C type g_cclosure_marshal_VOID__VOID.
+func CclosureMarshalVOIDVOID(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnValue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalVOIDVOIDFunction_Set()
+	if err == nil {
+		cclosureMarshalVOIDVOIDFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var cclosureMarshalGenericFunction *gi.Function
+var cclosureMarshalGenericFunction_Once sync.Once
+
+func cclosureMarshalGenericFunction_Set() error {
+	var err error
+	cclosureMarshalGenericFunction_Once.Do(func() {
+		cclosureMarshalGenericFunction, err = gi.FunctionInvokerNew("GObject", "cclosure_marshal_generic")
+	})
+	return err
+}
+
+// CclosureMarshalGeneric is a representation of the C type g_cclosure_marshal_generic.
+func CclosureMarshalGeneric(closure *Closure, returnGvalue *Value, nParamValues uint32, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(closure.Native())
+	inArgs[1].SetPointer(returnGvalue.Native())
+	inArgs[2].SetUint32(nParamValues)
+	inArgs[3].SetPointer(paramValues.Native())
+	inArgs[4].SetPointer(invocationHint)
+	inArgs[5].SetPointer(marshalData)
+
+	err := cclosureMarshalGenericFunction_Set()
+	if err == nil {
+		cclosureMarshalGenericFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_cclosure_new' : parameter 'callback_func' of type 'Callback' not supported
 
@@ -1024,9 +1646,67 @@ func ParamValuesCmp(pspec *ParamSpec, value1 *Value, value2 *Value) int32 {
 
 // UNSUPPORTED : C value 'g_pointer_type_register_static' : return type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_signal_accumulator_first_wins' : parameter 'dummy' of type 'gpointer' not supported
+var signalAccumulatorFirstWinsFunction *gi.Function
+var signalAccumulatorFirstWinsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_signal_accumulator_true_handled' : parameter 'dummy' of type 'gpointer' not supported
+func signalAccumulatorFirstWinsFunction_Set() error {
+	var err error
+	signalAccumulatorFirstWinsFunction_Once.Do(func() {
+		signalAccumulatorFirstWinsFunction, err = gi.FunctionInvokerNew("GObject", "signal_accumulator_first_wins")
+	})
+	return err
+}
+
+// SignalAccumulatorFirstWins is a representation of the C type g_signal_accumulator_first_wins.
+func SignalAccumulatorFirstWins(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy unsafe.Pointer) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(ihint.Native())
+	inArgs[1].SetPointer(returnAccu.Native())
+	inArgs[2].SetPointer(handlerReturn.Native())
+	inArgs[3].SetPointer(dummy)
+
+	var ret gi.Argument
+
+	err := signalAccumulatorFirstWinsFunction_Set()
+	if err == nil {
+		ret = signalAccumulatorFirstWinsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var signalAccumulatorTrueHandledFunction *gi.Function
+var signalAccumulatorTrueHandledFunction_Once sync.Once
+
+func signalAccumulatorTrueHandledFunction_Set() error {
+	var err error
+	signalAccumulatorTrueHandledFunction_Once.Do(func() {
+		signalAccumulatorTrueHandledFunction, err = gi.FunctionInvokerNew("GObject", "signal_accumulator_true_handled")
+	})
+	return err
+}
+
+// SignalAccumulatorTrueHandled is a representation of the C type g_signal_accumulator_true_handled.
+func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy unsafe.Pointer) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(ihint.Native())
+	inArgs[1].SetPointer(returnAccu.Native())
+	inArgs[2].SetPointer(handlerReturn.Native())
+	inArgs[3].SetPointer(dummy)
+
+	var ret gi.Argument
+
+	err := signalAccumulatorTrueHandledFunction_Set()
+	if err == nil {
+		ret = signalAccumulatorTrueHandledFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_signal_add_emission_hook' : parameter 'hook_func' of type 'SignalEmissionHook' not supported
 
@@ -1187,7 +1867,39 @@ func SignalHandlerDisconnect(instance *Object, handlerId uint64) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_signal_handler_find' : parameter 'func' of type 'gpointer' not supported
+var signalHandlerFindFunction *gi.Function
+var signalHandlerFindFunction_Once sync.Once
+
+func signalHandlerFindFunction_Set() error {
+	var err error
+	signalHandlerFindFunction_Once.Do(func() {
+		signalHandlerFindFunction, err = gi.FunctionInvokerNew("GObject", "signal_handler_find")
+	})
+	return err
+}
+
+// SignalHandlerFind is a representation of the C type g_signal_handler_find.
+func SignalHandlerFind(instance *Object, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) uint64 {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(instance.Native())
+	inArgs[1].SetInt32(int32(mask))
+	inArgs[2].SetUint32(signalId)
+	inArgs[3].SetUint32(uint32(detail))
+	inArgs[4].SetPointer(closure.Native())
+	inArgs[5].SetPointer(func_)
+	inArgs[6].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := signalHandlerFindFunction_Set()
+	if err == nil {
+		ret = signalHandlerFindFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
 
 var signalHandlerIsConnectedFunction *gi.Function
 var signalHandlerIsConnectedFunction_Once sync.Once
@@ -1243,7 +1955,39 @@ func SignalHandlerUnblock(instance *Object, handlerId uint64) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_signal_handlers_block_matched' : parameter 'func' of type 'gpointer' not supported
+var signalHandlersBlockMatchedFunction *gi.Function
+var signalHandlersBlockMatchedFunction_Once sync.Once
+
+func signalHandlersBlockMatchedFunction_Set() error {
+	var err error
+	signalHandlersBlockMatchedFunction_Once.Do(func() {
+		signalHandlersBlockMatchedFunction, err = gi.FunctionInvokerNew("GObject", "signal_handlers_block_matched")
+	})
+	return err
+}
+
+// SignalHandlersBlockMatched is a representation of the C type g_signal_handlers_block_matched.
+func SignalHandlersBlockMatched(instance *Object, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) uint32 {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(instance.Native())
+	inArgs[1].SetInt32(int32(mask))
+	inArgs[2].SetUint32(signalId)
+	inArgs[3].SetUint32(uint32(detail))
+	inArgs[4].SetPointer(closure.Native())
+	inArgs[5].SetPointer(func_)
+	inArgs[6].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := signalHandlersBlockMatchedFunction_Set()
+	if err == nil {
+		ret = signalHandlersBlockMatchedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var signalHandlersDestroyFunction *gi.Function
 var signalHandlersDestroyFunction_Once sync.Once
@@ -1269,9 +2013,73 @@ func SignalHandlersDestroy(instance *Object) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_signal_handlers_disconnect_matched' : parameter 'func' of type 'gpointer' not supported
+var signalHandlersDisconnectMatchedFunction *gi.Function
+var signalHandlersDisconnectMatchedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_signal_handlers_unblock_matched' : parameter 'func' of type 'gpointer' not supported
+func signalHandlersDisconnectMatchedFunction_Set() error {
+	var err error
+	signalHandlersDisconnectMatchedFunction_Once.Do(func() {
+		signalHandlersDisconnectMatchedFunction, err = gi.FunctionInvokerNew("GObject", "signal_handlers_disconnect_matched")
+	})
+	return err
+}
+
+// SignalHandlersDisconnectMatched is a representation of the C type g_signal_handlers_disconnect_matched.
+func SignalHandlersDisconnectMatched(instance *Object, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) uint32 {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(instance.Native())
+	inArgs[1].SetInt32(int32(mask))
+	inArgs[2].SetUint32(signalId)
+	inArgs[3].SetUint32(uint32(detail))
+	inArgs[4].SetPointer(closure.Native())
+	inArgs[5].SetPointer(func_)
+	inArgs[6].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := signalHandlersDisconnectMatchedFunction_Set()
+	if err == nil {
+		ret = signalHandlersDisconnectMatchedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var signalHandlersUnblockMatchedFunction *gi.Function
+var signalHandlersUnblockMatchedFunction_Once sync.Once
+
+func signalHandlersUnblockMatchedFunction_Set() error {
+	var err error
+	signalHandlersUnblockMatchedFunction_Once.Do(func() {
+		signalHandlersUnblockMatchedFunction, err = gi.FunctionInvokerNew("GObject", "signal_handlers_unblock_matched")
+	})
+	return err
+}
+
+// SignalHandlersUnblockMatched is a representation of the C type g_signal_handlers_unblock_matched.
+func SignalHandlersUnblockMatched(instance *Object, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) uint32 {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(instance.Native())
+	inArgs[1].SetInt32(int32(mask))
+	inArgs[2].SetUint32(signalId)
+	inArgs[3].SetUint32(uint32(detail))
+	inArgs[4].SetPointer(closure.Native())
+	inArgs[5].SetPointer(func_)
+	inArgs[6].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := signalHandlersUnblockMatchedFunction_Set()
+	if err == nil {
+		ret = signalHandlersUnblockMatchedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var signalHasHandlerPendingFunction *gi.Function
 var signalHasHandlerPendingFunction_Once sync.Once
@@ -1535,13 +2343,13 @@ func StrdupValueContents(value *Value) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_type_add_class_cache_func' : parameter 'cache_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_type_add_class_cache_func' : parameter 'cache_func' of type 'TypeClassCacheFunc' not supported
 
 // UNSUPPORTED : C value 'g_type_add_class_private' : parameter 'class_type' of type 'GType' not supported
 
 // UNSUPPORTED : C value 'g_type_add_instance_private' : parameter 'class_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_type_add_interface_check' : parameter 'check_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_type_add_interface_check' : parameter 'check_func' of type 'TypeInterfaceCheckFunc' not supported
 
 // UNSUPPORTED : C value 'g_type_add_interface_dynamic' : parameter 'instance_type' of type 'GType' not supported
 
@@ -1619,7 +2427,30 @@ func TypeCheckValue(value *Value) bool {
 
 // UNSUPPORTED : C value 'g_type_children' : parameter 'type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_type_class_adjust_private_offset' : parameter 'g_class' of type 'gpointer' not supported
+var typeClassAdjustPrivateOffsetFunction *gi.Function
+var typeClassAdjustPrivateOffsetFunction_Once sync.Once
+
+func typeClassAdjustPrivateOffsetFunction_Set() error {
+	var err error
+	typeClassAdjustPrivateOffsetFunction_Once.Do(func() {
+		typeClassAdjustPrivateOffsetFunction, err = gi.FunctionInvokerNew("GObject", "type_class_adjust_private_offset")
+	})
+	return err
+}
+
+// TypeClassAdjustPrivateOffset is a representation of the C type g_type_class_adjust_private_offset.
+func TypeClassAdjustPrivateOffset(gClass unsafe.Pointer, privateSizeOrOffset int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(gClass)
+	inArgs[1].SetInt32(privateSizeOrOffset)
+
+	err := typeClassAdjustPrivateOffsetFunction_Set()
+	if err == nil {
+		typeClassAdjustPrivateOffsetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_type_class_peek' : parameter 'type' of type 'GType' not supported
 
@@ -1855,9 +2686,9 @@ func TypeNameFromInstance(instance *TypeInstance) string {
 
 // UNSUPPORTED : C value 'g_type_register_static_simple' : parameter 'parent_type' of type 'GType' not supported
 
-// UNSUPPORTED : C value 'g_type_remove_class_cache_func' : parameter 'cache_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_type_remove_class_cache_func' : parameter 'cache_func' of type 'TypeClassCacheFunc' not supported
 
-// UNSUPPORTED : C value 'g_type_remove_interface_check' : parameter 'check_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_type_remove_interface_check' : parameter 'check_func' of type 'TypeInterfaceCheckFunc' not supported
 
 // UNSUPPORTED : C value 'g_type_set_qdata' : parameter 'type' of type 'GType' not supported
 

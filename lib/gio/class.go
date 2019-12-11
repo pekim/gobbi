@@ -3571,7 +3571,38 @@ func CredentialsNew() *Credentials {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_credentials_get_native' : return type 'gpointer' not supported
+var credentialsGetNativeFunction *gi.Function
+var credentialsGetNativeFunction_Once sync.Once
+
+func credentialsGetNativeFunction_Set() error {
+	var err error
+	credentialsGetNativeFunction_Once.Do(func() {
+		err = credentialsObject_Set()
+		if err != nil {
+			return
+		}
+		credentialsGetNativeFunction, err = credentialsObject.InvokerNew("get_native")
+	})
+	return err
+}
+
+// GetNative is a representation of the C type g_credentials_get_native.
+func (recv *Credentials) GetNative(nativeType CredentialsType) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(nativeType))
+
+	var ret gi.Argument
+
+	err := credentialsGetNativeFunction_Set()
+	if err == nil {
+		ret = credentialsGetNativeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var credentialsGetUnixPidFunction *gi.Function
 var credentialsGetUnixPidFunction_Once sync.Once
@@ -3670,7 +3701,35 @@ func (recv *Credentials) IsSameUser(otherCredentials *Credentials) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_credentials_set_native' : parameter 'native' of type 'gpointer' not supported
+var credentialsSetNativeFunction *gi.Function
+var credentialsSetNativeFunction_Once sync.Once
+
+func credentialsSetNativeFunction_Set() error {
+	var err error
+	credentialsSetNativeFunction_Once.Do(func() {
+		err = credentialsObject_Set()
+		if err != nil {
+			return
+		}
+		credentialsSetNativeFunction, err = credentialsObject.InvokerNew("set_native")
+	})
+	return err
+}
+
+// SetNative is a representation of the C type g_credentials_set_native.
+func (recv *Credentials) SetNative(nativeType CredentialsType, native unsafe.Pointer) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(nativeType))
+	inArgs[2].SetPointer(native)
+
+	err := credentialsSetNativeFunction_Set()
+	if err == nil {
+		credentialsSetNativeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var credentialsSetUnixUserFunction *gi.Function
 var credentialsSetUnixUserFunction_Once sync.Once
@@ -4670,7 +4729,7 @@ func (recv *DBusConnection) IsClosed() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_connection_register_object' : parameter 'user_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_dbus_connection_register_object' : parameter 'user_data_free_func' of type 'GLib.DestroyNotify' not supported
 
 var dBusConnectionRegisterObjectWithClosuresFunction *gi.Function
 var dBusConnectionRegisterObjectWithClosuresFunction_Once sync.Once
@@ -4709,7 +4768,7 @@ func (recv *DBusConnection) RegisterObjectWithClosures(objectPath string, interf
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_connection_register_subtree' : parameter 'user_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_dbus_connection_register_subtree' : parameter 'user_data_free_func' of type 'GLib.DestroyNotify' not supported
 
 var dBusConnectionRemoveFilterFunction *gi.Function
 var dBusConnectionRemoveFilterFunction_Once sync.Once
@@ -7427,7 +7486,37 @@ func (recv *DBusMethodInvocation) GetSender() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_method_invocation_get_user_data' : return type 'gpointer' not supported
+var dBusMethodInvocationGetUserDataFunction *gi.Function
+var dBusMethodInvocationGetUserDataFunction_Once sync.Once
+
+func dBusMethodInvocationGetUserDataFunction_Set() error {
+	var err error
+	dBusMethodInvocationGetUserDataFunction_Once.Do(func() {
+		err = dBusMethodInvocationObject_Set()
+		if err != nil {
+			return
+		}
+		dBusMethodInvocationGetUserDataFunction, err = dBusMethodInvocationObject.InvokerNew("get_user_data")
+	})
+	return err
+}
+
+// GetUserData is a representation of the C type g_dbus_method_invocation_get_user_data.
+func (recv *DBusMethodInvocation) GetUserData() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dBusMethodInvocationGetUserDataFunction_Set()
+	if err == nil {
+		ret = dBusMethodInvocationGetUserDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var dBusMethodInvocationReturnDbusErrorFunction *gi.Function
 var dBusMethodInvocationReturnDbusErrorFunction_Once sync.Once
@@ -12336,7 +12425,42 @@ func (recv *FileInfo) GetAttributeByteString(attribute string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_info_get_attribute_data' : parameter 'value_pp' of type 'gpointer' not supported
+var fileInfoGetAttributeDataFunction *gi.Function
+var fileInfoGetAttributeDataFunction_Once sync.Once
+
+func fileInfoGetAttributeDataFunction_Set() error {
+	var err error
+	fileInfoGetAttributeDataFunction_Once.Do(func() {
+		err = fileInfoObject_Set()
+		if err != nil {
+			return
+		}
+		fileInfoGetAttributeDataFunction, err = fileInfoObject.InvokerNew("get_attribute_data")
+	})
+	return err
+}
+
+// GetAttributeData is a representation of the C type g_file_info_get_attribute_data.
+func (recv *FileInfo) GetAttributeData(attribute string) (bool, FileAttributeType, unsafe.Pointer, FileAttributeStatus) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(attribute)
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := fileInfoGetAttributeDataFunction_Set()
+	if err == nil {
+		ret = fileInfoGetAttributeDataFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := FileAttributeType(outArgs[0].Int32())
+	out1 := outArgs[1].Pointer()
+	out2 := FileAttributeStatus(outArgs[2].Int32())
+
+	return retGo, out0, out1, out2
+}
 
 var fileInfoGetAttributeInt32Function *gi.Function
 var fileInfoGetAttributeInt32Function_Once sync.Once
@@ -13239,7 +13363,36 @@ func (recv *FileInfo) RemoveAttribute(attribute string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_file_info_set_attribute' : parameter 'value_p' of type 'gpointer' not supported
+var fileInfoSetAttributeFunction *gi.Function
+var fileInfoSetAttributeFunction_Once sync.Once
+
+func fileInfoSetAttributeFunction_Set() error {
+	var err error
+	fileInfoSetAttributeFunction_Once.Do(func() {
+		err = fileInfoObject_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetAttributeFunction, err = fileInfoObject.InvokerNew("set_attribute")
+	})
+	return err
+}
+
+// SetAttribute is a representation of the C type g_file_info_set_attribute.
+func (recv *FileInfo) SetAttribute(attribute string, type_ FileAttributeType, valueP unsafe.Pointer) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetInt32(int32(type_))
+	inArgs[3].SetPointer(valueP)
+
+	err := fileInfoSetAttributeFunction_Set()
+	if err == nil {
+		fileInfoSetAttributeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fileInfoSetAttributeBooleanFunction *gi.Function
 var fileInfoSetAttributeBooleanFunction_Once sync.Once
@@ -17564,7 +17717,7 @@ func (recv *MemoryOutputStream) SetFieldParentInstance(value *OutputStream) {
 	gi.ObjectFieldSet(memoryOutputStreamObject, recv.Native(), "parent_instance", argValue)
 }
 
-// UNSUPPORTED : C value 'g_memory_output_stream_new' : parameter 'data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_memory_output_stream_new' : parameter 'realloc_function' of type 'ReallocFunc' not supported
 
 var memoryOutputStreamNewResizableFunction *gi.Function
 var memoryOutputStreamNewResizableFunction_Once sync.Once
@@ -17598,7 +17751,37 @@ func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_memory_output_stream_get_data' : return type 'gpointer' not supported
+var memoryOutputStreamGetDataFunction *gi.Function
+var memoryOutputStreamGetDataFunction_Once sync.Once
+
+func memoryOutputStreamGetDataFunction_Set() error {
+	var err error
+	memoryOutputStreamGetDataFunction_Once.Do(func() {
+		err = memoryOutputStreamObject_Set()
+		if err != nil {
+			return
+		}
+		memoryOutputStreamGetDataFunction, err = memoryOutputStreamObject.InvokerNew("get_data")
+	})
+	return err
+}
+
+// GetData is a representation of the C type g_memory_output_stream_get_data.
+func (recv *MemoryOutputStream) GetData() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := memoryOutputStreamGetDataFunction_Set()
+	if err == nil {
+		ret = memoryOutputStreamGetDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var memoryOutputStreamGetDataSizeFunction *gi.Function
 var memoryOutputStreamGetDataSizeFunction_Once sync.Once
@@ -17696,7 +17879,37 @@ func (recv *MemoryOutputStream) StealAsBytes() *glib.Bytes {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_memory_output_stream_steal_data' : return type 'gpointer' not supported
+var memoryOutputStreamStealDataFunction *gi.Function
+var memoryOutputStreamStealDataFunction_Once sync.Once
+
+func memoryOutputStreamStealDataFunction_Set() error {
+	var err error
+	memoryOutputStreamStealDataFunction_Once.Do(func() {
+		err = memoryOutputStreamObject_Set()
+		if err != nil {
+			return
+		}
+		memoryOutputStreamStealDataFunction, err = memoryOutputStreamObject.InvokerNew("steal_data")
+	})
+	return err
+}
+
+// StealData is a representation of the C type g_memory_output_stream_steal_data.
+func (recv *MemoryOutputStream) StealData() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := memoryOutputStreamStealDataFunction_Set()
+	if err == nil {
+		ret = memoryOutputStreamStealDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 // PollableOutputStream returns the PollableOutputStream interface implemented by MemoryOutputStream
 func (recv *MemoryOutputStream) PollableOutputStream() *PollableOutputStream {
@@ -20466,7 +20679,40 @@ func (recv *NativeSocketAddress) SetFieldParentInstance(value *SocketAddress) {
 	gi.ObjectFieldSet(nativeSocketAddressObject, recv.Native(), "parent_instance", argValue)
 }
 
-// UNSUPPORTED : C value 'g_native_socket_address_new' : parameter 'native' of type 'gpointer' not supported
+var nativeSocketAddressNewFunction *gi.Function
+var nativeSocketAddressNewFunction_Once sync.Once
+
+func nativeSocketAddressNewFunction_Set() error {
+	var err error
+	nativeSocketAddressNewFunction_Once.Do(func() {
+		err = nativeSocketAddressObject_Set()
+		if err != nil {
+			return
+		}
+		nativeSocketAddressNewFunction, err = nativeSocketAddressObject.InvokerNew("new")
+	})
+	return err
+}
+
+// NativeSocketAddressNew is a representation of the C type g_native_socket_address_new.
+func NativeSocketAddressNew(native unsafe.Pointer, len uint64) *NativeSocketAddress {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(native)
+	inArgs[1].SetUint64(len)
+
+	var ret gi.Argument
+
+	err := nativeSocketAddressNewFunction_Set()
+	if err == nil {
+		ret = nativeSocketAddressNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := NativeSocketAddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 // SocketConnectable returns the SocketConnectable interface implemented by NativeSocketAddress
 func (recv *NativeSocketAddress) SocketConnectable() *SocketConnectable {
@@ -24584,13 +24830,97 @@ func (recv *SettingsBackend) SetFieldParentInstance(value *gobject.Object) {
 	gi.ObjectFieldSet(settingsBackendObject, recv.Native(), "parent_instance", argValue)
 }
 
-// UNSUPPORTED : C value 'g_settings_backend_changed' : parameter 'origin_tag' of type 'gpointer' not supported
+var settingsBackendChangedFunction *gi.Function
+var settingsBackendChangedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_settings_backend_changed_tree' : parameter 'origin_tag' of type 'gpointer' not supported
+func settingsBackendChangedFunction_Set() error {
+	var err error
+	settingsBackendChangedFunction_Once.Do(func() {
+		err = settingsBackendObject_Set()
+		if err != nil {
+			return
+		}
+		settingsBackendChangedFunction, err = settingsBackendObject.InvokerNew("changed")
+	})
+	return err
+}
+
+// Changed is a representation of the C type g_settings_backend_changed.
+func (recv *SettingsBackend) Changed(key string, originTag unsafe.Pointer) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(key)
+	inArgs[2].SetPointer(originTag)
+
+	err := settingsBackendChangedFunction_Set()
+	if err == nil {
+		settingsBackendChangedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var settingsBackendChangedTreeFunction *gi.Function
+var settingsBackendChangedTreeFunction_Once sync.Once
+
+func settingsBackendChangedTreeFunction_Set() error {
+	var err error
+	settingsBackendChangedTreeFunction_Once.Do(func() {
+		err = settingsBackendObject_Set()
+		if err != nil {
+			return
+		}
+		settingsBackendChangedTreeFunction, err = settingsBackendObject.InvokerNew("changed_tree")
+	})
+	return err
+}
+
+// ChangedTree is a representation of the C type g_settings_backend_changed_tree.
+func (recv *SettingsBackend) ChangedTree(tree *glib.Tree, originTag unsafe.Pointer) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tree.Native())
+	inArgs[2].SetPointer(originTag)
+
+	err := settingsBackendChangedTreeFunction_Set()
+	if err == nil {
+		settingsBackendChangedTreeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_settings_backend_keys_changed' : parameter 'items' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_settings_backend_path_changed' : parameter 'origin_tag' of type 'gpointer' not supported
+var settingsBackendPathChangedFunction *gi.Function
+var settingsBackendPathChangedFunction_Once sync.Once
+
+func settingsBackendPathChangedFunction_Set() error {
+	var err error
+	settingsBackendPathChangedFunction_Once.Do(func() {
+		err = settingsBackendObject_Set()
+		if err != nil {
+			return
+		}
+		settingsBackendPathChangedFunction, err = settingsBackendObject.InvokerNew("path_changed")
+	})
+	return err
+}
+
+// PathChanged is a representation of the C type g_settings_backend_path_changed.
+func (recv *SettingsBackend) PathChanged(path string, originTag unsafe.Pointer) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(path)
+	inArgs[2].SetPointer(originTag)
+
+	err := settingsBackendPathChangedFunction_Set()
+	if err == nil {
+		settingsBackendPathChangedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var settingsBackendPathWritableChangedFunction *gi.Function
 var settingsBackendPathWritableChangedFunction_Once sync.Once
@@ -25198,7 +25528,37 @@ func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_simple_async_result_get_op_res_gpointer' : return type 'gpointer' not supported
+var simpleAsyncResultGetOpResGpointerFunction *gi.Function
+var simpleAsyncResultGetOpResGpointerFunction_Once sync.Once
+
+func simpleAsyncResultGetOpResGpointerFunction_Set() error {
+	var err error
+	simpleAsyncResultGetOpResGpointerFunction_Once.Do(func() {
+		err = simpleAsyncResultObject_Set()
+		if err != nil {
+			return
+		}
+		simpleAsyncResultGetOpResGpointerFunction, err = simpleAsyncResultObject.InvokerNew("get_op_res_gpointer")
+	})
+	return err
+}
+
+// GetOpResGpointer is a representation of the C type g_simple_async_result_get_op_res_gpointer.
+func (recv *SimpleAsyncResult) GetOpResGpointer() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := simpleAsyncResultGetOpResGpointerFunction_Set()
+	if err == nil {
+		ret = simpleAsyncResultGetOpResGpointerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var simpleAsyncResultGetOpResGssizeFunction *gi.Function
 var simpleAsyncResultGetOpResGssizeFunction_Once sync.Once
@@ -25232,7 +25592,37 @@ func (recv *SimpleAsyncResult) GetOpResGssize() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_simple_async_result_get_source_tag' : return type 'gpointer' not supported
+var simpleAsyncResultGetSourceTagFunction *gi.Function
+var simpleAsyncResultGetSourceTagFunction_Once sync.Once
+
+func simpleAsyncResultGetSourceTagFunction_Set() error {
+	var err error
+	simpleAsyncResultGetSourceTagFunction_Once.Do(func() {
+		err = simpleAsyncResultObject_Set()
+		if err != nil {
+			return
+		}
+		simpleAsyncResultGetSourceTagFunction, err = simpleAsyncResultObject.InvokerNew("get_source_tag")
+	})
+	return err
+}
+
+// GetSourceTag is a representation of the C type g_simple_async_result_get_source_tag.
+func (recv *SimpleAsyncResult) GetSourceTag() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := simpleAsyncResultGetSourceTagFunction_Set()
+	if err == nil {
+		ret = simpleAsyncResultGetSourceTagFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var simpleAsyncResultPropagateErrorFunction *gi.Function
 var simpleAsyncResultPropagateErrorFunction_Once sync.Once
@@ -25388,7 +25778,7 @@ func (recv *SimpleAsyncResult) SetOpResGboolean(opRes bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_simple_async_result_set_op_res_gpointer' : parameter 'op_res' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_simple_async_result_set_op_res_gpointer' : parameter 'destroy_op_res' of type 'GLib.DestroyNotify' not supported
 
 var simpleAsyncResultSetOpResGssizeFunction *gi.Function
 var simpleAsyncResultSetOpResGssizeFunction_Once sync.Once
@@ -27424,7 +27814,40 @@ func (recv *SocketAddress) SetFieldParentInstance(value *gobject.Object) {
 	gi.ObjectFieldSet(socketAddressObject, recv.Native(), "parent_instance", argValue)
 }
 
-// UNSUPPORTED : C value 'g_socket_address_new_from_native' : parameter 'native' of type 'gpointer' not supported
+var socketAddressNewFromNativeFunction *gi.Function
+var socketAddressNewFromNativeFunction_Once sync.Once
+
+func socketAddressNewFromNativeFunction_Set() error {
+	var err error
+	socketAddressNewFromNativeFunction_Once.Do(func() {
+		err = socketAddressObject_Set()
+		if err != nil {
+			return
+		}
+		socketAddressNewFromNativeFunction, err = socketAddressObject.InvokerNew("new_from_native")
+	})
+	return err
+}
+
+// SocketAddressNewFromNative_ is a representation of the C type g_socket_address_new_from_native.
+func SocketAddressNewFromNative_(native unsafe.Pointer, len uint64) *SocketAddress {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(native)
+	inArgs[1].SetUint64(len)
+
+	var ret gi.Argument
+
+	err := socketAddressNewFromNativeFunction_Set()
+	if err == nil {
+		ret = socketAddressNewFromNativeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SocketAddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var socketAddressGetFamilyFunction *gi.Function
 var socketAddressGetFamilyFunction_Once sync.Once
@@ -27490,7 +27913,39 @@ func (recv *SocketAddress) GetNativeSize() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_socket_address_to_native' : parameter 'dest' of type 'gpointer' not supported
+var socketAddressToNativeFunction *gi.Function
+var socketAddressToNativeFunction_Once sync.Once
+
+func socketAddressToNativeFunction_Set() error {
+	var err error
+	socketAddressToNativeFunction_Once.Do(func() {
+		err = socketAddressObject_Set()
+		if err != nil {
+			return
+		}
+		socketAddressToNativeFunction, err = socketAddressObject.InvokerNew("to_native")
+	})
+	return err
+}
+
+// ToNative is a representation of the C type g_socket_address_to_native.
+func (recv *SocketAddress) ToNative(dest unsafe.Pointer, destlen uint64) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(dest)
+	inArgs[2].SetUint64(destlen)
+
+	var ret gi.Argument
+
+	err := socketAddressToNativeFunction_Set()
+	if err == nil {
+		ret = socketAddressToNativeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // SocketConnectable returns the SocketConnectable interface implemented by SocketAddress
 func (recv *SocketAddress) SocketConnectable() *SocketConnectable {
@@ -28858,7 +29313,34 @@ func (recv *SocketControlMessage) GetSize() uint64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_socket_control_message_serialize' : parameter 'data' of type 'gpointer' not supported
+var socketControlMessageSerializeFunction *gi.Function
+var socketControlMessageSerializeFunction_Once sync.Once
+
+func socketControlMessageSerializeFunction_Set() error {
+	var err error
+	socketControlMessageSerializeFunction_Once.Do(func() {
+		err = socketControlMessageObject_Set()
+		if err != nil {
+			return
+		}
+		socketControlMessageSerializeFunction, err = socketControlMessageObject.InvokerNew("serialize")
+	})
+	return err
+}
+
+// Serialize is a representation of the C type g_socket_control_message_serialize.
+func (recv *SocketControlMessage) Serialize(data unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	err := socketControlMessageSerializeFunction_Set()
+	if err == nil {
+		socketControlMessageSerializeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var socketListenerObject *gi.Object
 var socketListenerObject_Once sync.Once
@@ -30927,9 +31409,69 @@ func (recv *Task) GetSourceObject() *gobject.Object {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_task_get_source_tag' : return type 'gpointer' not supported
+var taskGetSourceTagFunction *gi.Function
+var taskGetSourceTagFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_task_get_task_data' : return type 'gpointer' not supported
+func taskGetSourceTagFunction_Set() error {
+	var err error
+	taskGetSourceTagFunction_Once.Do(func() {
+		err = taskObject_Set()
+		if err != nil {
+			return
+		}
+		taskGetSourceTagFunction, err = taskObject.InvokerNew("get_source_tag")
+	})
+	return err
+}
+
+// GetSourceTag is a representation of the C type g_task_get_source_tag.
+func (recv *Task) GetSourceTag() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := taskGetSourceTagFunction_Set()
+	if err == nil {
+		ret = taskGetSourceTagFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var taskGetTaskDataFunction *gi.Function
+var taskGetTaskDataFunction_Once sync.Once
+
+func taskGetTaskDataFunction_Set() error {
+	var err error
+	taskGetTaskDataFunction_Once.Do(func() {
+		err = taskObject_Set()
+		if err != nil {
+			return
+		}
+		taskGetTaskDataFunction, err = taskObject.InvokerNew("get_task_data")
+	})
+	return err
+}
+
+// GetTaskData is a representation of the C type g_task_get_task_data.
+func (recv *Task) GetTaskData() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := taskGetTaskDataFunction_Set()
+	if err == nil {
+		ret = taskGetTaskDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var taskHadErrorFunction *gi.Function
 var taskHadErrorFunction_Once sync.Once
@@ -31027,7 +31569,37 @@ func (recv *Task) PropagateInt() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_task_propagate_pointer' : return type 'gpointer' not supported
+var taskPropagatePointerFunction *gi.Function
+var taskPropagatePointerFunction_Once sync.Once
+
+func taskPropagatePointerFunction_Set() error {
+	var err error
+	taskPropagatePointerFunction_Once.Do(func() {
+		err = taskObject_Set()
+		if err != nil {
+			return
+		}
+		taskPropagatePointerFunction, err = taskObject.InvokerNew("propagate_pointer")
+	})
+	return err
+}
+
+// PropagatePointer is a representation of the C type g_task_propagate_pointer.
+func (recv *Task) PropagatePointer() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := taskPropagatePointerFunction_Set()
+	if err == nil {
+		ret = taskPropagatePointerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var taskReturnBooleanFunction *gi.Function
 var taskReturnBooleanFunction_Once sync.Once
@@ -31150,7 +31722,7 @@ func (recv *Task) ReturnInt(result int32) {
 
 // UNSUPPORTED : C value 'g_task_return_new_error' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_task_return_pointer' : parameter 'result' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_task_return_pointer' : parameter 'result_destroy' of type 'GLib.DestroyNotify' not supported
 
 // UNSUPPORTED : C value 'g_task_run_in_thread' : parameter 'task_func' of type 'TaskThreadFunc' not supported
 
@@ -31276,9 +31848,36 @@ func (recv *Task) SetReturnOnCancel(returnOnCancel bool) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_task_set_source_tag' : parameter 'source_tag' of type 'gpointer' not supported
+var taskSetSourceTagFunction *gi.Function
+var taskSetSourceTagFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_task_set_task_data' : parameter 'task_data' of type 'gpointer' not supported
+func taskSetSourceTagFunction_Set() error {
+	var err error
+	taskSetSourceTagFunction_Once.Do(func() {
+		err = taskObject_Set()
+		if err != nil {
+			return
+		}
+		taskSetSourceTagFunction, err = taskObject.InvokerNew("set_source_tag")
+	})
+	return err
+}
+
+// SetSourceTag is a representation of the C type g_task_set_source_tag.
+func (recv *Task) SetSourceTag(sourceTag unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(sourceTag)
+
+	err := taskSetSourceTagFunction_Set()
+	if err == nil {
+		taskSetSourceTagFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_task_set_task_data' : parameter 'task_data_destroy' of type 'GLib.DestroyNotify' not supported
 
 // AsyncResult returns the AsyncResult interface implemented by Task
 func (recv *Task) AsyncResult() *AsyncResult {

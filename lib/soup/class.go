@@ -163,7 +163,40 @@ func AddressNewAny(family AddressFamily, port uint32) *Address {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_address_new_from_sockaddr' : parameter 'sa' of type 'gpointer' not supported
+var addressNewFromSockaddrFunction *gi.Function
+var addressNewFromSockaddrFunction_Once sync.Once
+
+func addressNewFromSockaddrFunction_Set() error {
+	var err error
+	addressNewFromSockaddrFunction_Once.Do(func() {
+		err = addressObject_Set()
+		if err != nil {
+			return
+		}
+		addressNewFromSockaddrFunction, err = addressObject.InvokerNew("new_from_sockaddr")
+	})
+	return err
+}
+
+// AddressNewFromSockaddr is a representation of the C type soup_address_new_from_sockaddr.
+func AddressNewFromSockaddr(sa unsafe.Pointer, len int32) *Address {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(sa)
+	inArgs[1].SetInt32(len)
+
+	var ret gi.Argument
+
+	err := addressNewFromSockaddrFunction_Set()
+	if err == nil {
+		ret = addressNewFromSockaddrFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AddressNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var addressEqualByIpFunction *gi.Function
 var addressEqualByIpFunction_Once sync.Once
@@ -359,7 +392,38 @@ func (recv *Address) GetPort() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_address_get_sockaddr' : return type 'gpointer' not supported
+var addressGetSockaddrFunction *gi.Function
+var addressGetSockaddrFunction_Once sync.Once
+
+func addressGetSockaddrFunction_Set() error {
+	var err error
+	addressGetSockaddrFunction_Once.Do(func() {
+		err = addressObject_Set()
+		if err != nil {
+			return
+		}
+		addressGetSockaddrFunction, err = addressObject.InvokerNew("get_sockaddr")
+	})
+	return err
+}
+
+// GetSockaddr is a representation of the C type soup_address_get_sockaddr.
+func (recv *Address) GetSockaddr(len int32) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(len)
+
+	var ret gi.Argument
+
+	err := addressGetSockaddrFunction_Set()
+	if err == nil {
+		ret = addressGetSockaddrFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var addressHashByIpFunction *gi.Function
 var addressHashByIpFunction_Once sync.Once

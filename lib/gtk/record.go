@@ -32079,9 +32079,30 @@ func (recv *RequestedSize) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
+// FieldData returns the C field 'data'.
+func (recv *RequestedSize) FieldData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := requestedSizeStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(requestedSizeStruct, recv.Native(), "data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldData sets the value of the C field 'data'.
+func (recv *RequestedSize) SetFieldData(value unsafe.Pointer) {
+	err := requestedSizeStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(requestedSizeStruct, recv.Native(), "data", argValue)
+}
 
 // FieldMinimumSize returns the C field 'minimum_size'.
 func (recv *RequestedSize) FieldMinimumSize() int32 {
@@ -36945,9 +36966,30 @@ func (recv *StatusbarClass) SetFieldParentClass(value *BoxClass) {
 	gi.StructFieldSet(statusbarClassStruct, recv.Native(), "parent_class", argValue)
 }
 
-// UNSUPPORTED : C value 'reserved' : for field getter : no Go type for 'gpointer'
+// FieldReserved returns the C field 'reserved'.
+func (recv *StatusbarClass) FieldReserved() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := statusbarClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'reserved' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(statusbarClassStruct, recv.Native(), "reserved")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldReserved sets the value of the C field 'reserved'.
+func (recv *StatusbarClass) SetFieldReserved(value unsafe.Pointer) {
+	err := statusbarClassStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(statusbarClassStruct, recv.Native(), "reserved", argValue)
+}
 
 // UNSUPPORTED : C value 'text_pushed' : for field getter : missing Type
 
@@ -47392,17 +47434,80 @@ func (recv *TreeIter) SetFieldStamp(value int32) {
 	gi.StructFieldSet(treeIterStruct, recv.Native(), "stamp", argValue)
 }
 
-// UNSUPPORTED : C value 'user_data' : for field getter : no Go type for 'gpointer'
+// FieldUserData returns the C field 'user_data'.
+func (recv *TreeIter) FieldUserData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := treeIterStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'user_data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(treeIterStruct, recv.Native(), "user_data")
+	value := argValue.Pointer()
+	return value
+}
 
-// UNSUPPORTED : C value 'user_data2' : for field getter : no Go type for 'gpointer'
+// SetFieldUserData sets the value of the C field 'user_data'.
+func (recv *TreeIter) SetFieldUserData(value unsafe.Pointer) {
+	err := treeIterStruct_Set()
+	if err != nil {
+		return
+	}
 
-// UNSUPPORTED : C value 'user_data2' : for field setter : no Go type for 'gpointer'
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(treeIterStruct, recv.Native(), "user_data", argValue)
+}
 
-// UNSUPPORTED : C value 'user_data3' : for field getter : no Go type for 'gpointer'
+// FieldUserData2 returns the C field 'user_data2'.
+func (recv *TreeIter) FieldUserData2() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := treeIterStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'user_data3' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(treeIterStruct, recv.Native(), "user_data2")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldUserData2 sets the value of the C field 'user_data2'.
+func (recv *TreeIter) SetFieldUserData2(value unsafe.Pointer) {
+	err := treeIterStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(treeIterStruct, recv.Native(), "user_data2", argValue)
+}
+
+// FieldUserData3 returns the C field 'user_data3'.
+func (recv *TreeIter) FieldUserData3() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := treeIterStruct_Set()
+	if err != nil {
+		return nilValue
+	}
+
+	argValue := gi.StructFieldGet(treeIterStruct, recv.Native(), "user_data3")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldUserData3 sets the value of the C field 'user_data3'.
+func (recv *TreeIter) SetFieldUserData3(value unsafe.Pointer) {
+	err := treeIterStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(treeIterStruct, recv.Native(), "user_data3", argValue)
+}
 
 var treeIterCopyFunction *gi.Function
 var treeIterCopyFunction_Once sync.Once

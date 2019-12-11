@@ -1056,7 +1056,27 @@ func (recv *BackForwardList) GetNthItem(index int32) *BackForwardListItem {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'changed' : parameter 'items_removed' of type 'gpointer' not supported
+/*
+ConnectChanged connects a callback to the 'changed' signal of the BackForwardList.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *BackForwardList) ConnectChanged(handler func(instance *BackForwardList, itemAdded *BackForwardListItem, itemsRemoved unsafe.Pointer)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := BackForwardListNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := BackForwardListItemNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetPointer()
+
+		handler(argInstance, arg1, arg2)
+	}
+
+	return callback.ConnectSignal(recv.Native(), "changed", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.

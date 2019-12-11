@@ -116,6 +116,10 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 		return jenType, nil
 	}
 
+	if t.Name == "gpointer" {
+		return jen.Qual("unsafe", "Pointer"), nil
+	}
+
 	goType, ok := t.jenGoTypeForTypeName()
 	if ok {
 		return goType, nil
@@ -224,6 +228,10 @@ func (t *Type) argumentValueGetFunctionName() string {
 		return getFunctionName
 	}
 
+	if t.Name == "gpointer" {
+		return "Pointer"
+	}
+
 	if t.isBitfield() {
 		return argumentGetFunctionNames["int"]
 	}
@@ -264,6 +272,10 @@ func (t *Type) argumentValueSetFunctionName() string {
 
 	if setFunctionName, ok := argumentSetFunctionNames[resolvedType.Name]; ok {
 		return setFunctionName
+	}
+
+	if resolvedType.Name == "gpointer" {
+		return "SetPointer"
 	}
 
 	if t.isBitfield() {

@@ -392,7 +392,45 @@ func (recv *Context) Evaluate(code string, length int32) *Value {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'jsc_context_evaluate_in_object' : parameter 'object_instance' of type 'gpointer' not supported
+var contextEvaluateInObjectFunction *gi.Function
+var contextEvaluateInObjectFunction_Once sync.Once
+
+func contextEvaluateInObjectFunction_Set() error {
+	var err error
+	contextEvaluateInObjectFunction_Once.Do(func() {
+		err = contextObject_Set()
+		if err != nil {
+			return
+		}
+		contextEvaluateInObjectFunction, err = contextObject.InvokerNew("evaluate_in_object")
+	})
+	return err
+}
+
+// EvaluateInObject is a representation of the C type jsc_context_evaluate_in_object.
+func (recv *Context) EvaluateInObject(code string, length int32, objectInstance unsafe.Pointer, objectClass *Class, uri string, lineNumber uint32) (*Value, *Value) {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(code)
+	inArgs[2].SetInt32(length)
+	inArgs[3].SetPointer(objectInstance)
+	inArgs[4].SetPointer(objectClass.Native())
+	inArgs[5].SetString(uri)
+	inArgs[6].SetUint32(lineNumber)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := contextEvaluateInObjectFunction_Set()
+	if err == nil {
+		ret = contextEvaluateInObjectFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ValueNewFromNative(ret.Pointer())
+	out0 := ValueNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var contextEvaluateWithSourceUriFunction *gi.Function
 var contextEvaluateWithSourceUriFunction_Once sync.Once
@@ -1324,7 +1362,41 @@ func ValueNewNumber(context *Context, number float64) *Value {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'jsc_value_new_object' : parameter 'instance' of type 'gpointer' not supported
+var valueNewObjectFunction *gi.Function
+var valueNewObjectFunction_Once sync.Once
+
+func valueNewObjectFunction_Set() error {
+	var err error
+	valueNewObjectFunction_Once.Do(func() {
+		err = valueObject_Set()
+		if err != nil {
+			return
+		}
+		valueNewObjectFunction, err = valueObject.InvokerNew("new_object")
+	})
+	return err
+}
+
+// ValueNewObject is a representation of the C type jsc_value_new_object.
+func ValueNewObject(context *Context, instance unsafe.Pointer, jscClass *Class) *Value {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(instance)
+	inArgs[2].SetPointer(jscClass.Native())
+
+	var ret gi.Argument
+
+	err := valueNewObjectFunction_Set()
+	if err == nil {
+		ret = valueNewObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ValueNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var valueNewStringFunction *gi.Function
 var valueNewStringFunction_Once sync.Once

@@ -630,11 +630,107 @@ func (recv *Buildable) ConstructChild(builder *Builder, name string) *gobject.Ob
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_buildable_custom_finished' : parameter 'data' of type 'gpointer' not supported
+var buildableCustomFinishedFunction *gi.Function
+var buildableCustomFinishedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_buildable_custom_tag_end' : parameter 'data' of type 'gpointer' not supported
+func buildableCustomFinishedFunction_Set() error {
+	var err error
+	buildableCustomFinishedFunction_Once.Do(func() {
+		err = buildableInterface_Set()
+		if err != nil {
+			return
+		}
+		buildableCustomFinishedFunction, err = buildableInterface.InvokerNew("custom_finished")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_buildable_custom_tag_start' : parameter 'data' of type 'gpointer' not supported
+// CustomFinished is a representation of the C type gtk_buildable_custom_finished.
+func (recv *Buildable) CustomFinished(builder *Builder, child *gobject.Object, tagname string, data unsafe.Pointer) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(builder.Native())
+	inArgs[2].SetPointer(child.Native())
+	inArgs[3].SetString(tagname)
+	inArgs[4].SetPointer(data)
+
+	err := buildableCustomFinishedFunction_Set()
+	if err == nil {
+		buildableCustomFinishedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var buildableCustomTagEndFunction *gi.Function
+var buildableCustomTagEndFunction_Once sync.Once
+
+func buildableCustomTagEndFunction_Set() error {
+	var err error
+	buildableCustomTagEndFunction_Once.Do(func() {
+		err = buildableInterface_Set()
+		if err != nil {
+			return
+		}
+		buildableCustomTagEndFunction, err = buildableInterface.InvokerNew("custom_tag_end")
+	})
+	return err
+}
+
+// CustomTagEnd is a representation of the C type gtk_buildable_custom_tag_end.
+func (recv *Buildable) CustomTagEnd(builder *Builder, child *gobject.Object, tagname string, data unsafe.Pointer) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(builder.Native())
+	inArgs[2].SetPointer(child.Native())
+	inArgs[3].SetString(tagname)
+	inArgs[4].SetPointer(data)
+
+	err := buildableCustomTagEndFunction_Set()
+	if err == nil {
+		buildableCustomTagEndFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var buildableCustomTagStartFunction *gi.Function
+var buildableCustomTagStartFunction_Once sync.Once
+
+func buildableCustomTagStartFunction_Set() error {
+	var err error
+	buildableCustomTagStartFunction_Once.Do(func() {
+		err = buildableInterface_Set()
+		if err != nil {
+			return
+		}
+		buildableCustomTagStartFunction, err = buildableInterface.InvokerNew("custom_tag_start")
+	})
+	return err
+}
+
+// CustomTagStart is a representation of the C type gtk_buildable_custom_tag_start.
+func (recv *Buildable) CustomTagStart(builder *Builder, child *gobject.Object, tagname string) (bool, *glib.MarkupParser, unsafe.Pointer) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(builder.Native())
+	inArgs[2].SetPointer(child.Native())
+	inArgs[3].SetString(tagname)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := buildableCustomTagStartFunction_Set()
+	if err == nil {
+		ret = buildableCustomTagStartFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := glib.MarkupParserNewFromNative(outArgs[0].Pointer())
+	out1 := outArgs[1].Pointer()
+
+	return retGo, out0, out1
+}
 
 var buildableGetInternalChildFunction *gi.Function
 var buildableGetInternalChildFunction_Once sync.Once
@@ -7891,7 +7987,30 @@ func (recv *TreeModel) ConnectRowInserted(handler func(instance *TreeModel, path
 	return callback.ConnectSignal(recv.Native(), "row-inserted", marshal)
 }
 
-// UNSUPPORTED : C value 'rows-reordered' : parameter 'new_order' of type 'gpointer' not supported
+/*
+ConnectRowsReordered connects a callback to the 'rows-reordered' signal of the TreeModel.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *TreeModel) ConnectRowsReordered(handler func(instance *TreeModel, path *TreePath, iter *TreeIter, newOrder unsafe.Pointer)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := TreePathNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := TreeIterNewFromNative(object2.GetObject().Native())
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := object3.GetPointer()
+
+		handler(argInstance, arg1, arg2, arg3)
+	}
+
+	return callback.ConnectSignal(recv.Native(), "rows-reordered", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.

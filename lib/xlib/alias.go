@@ -2,6 +2,8 @@
 
 package xlib
 
+import "unsafe"
+
 // Atom is a representation of the C type Atom.
 type Atom uint64
 
@@ -14,7 +16,8 @@ type Cursor uint64
 // Drawable is a representation of the C type Drawable.
 type Drawable uint64
 
-// UNSUPPORTED : C value 'GC' : no Go type for 'gpointer'
+// GC is a representation of the C type GC.
+type GC unsafe.Pointer
 
 // KeyCode is a representation of the C type KeyCode.
 type KeyCode uint8

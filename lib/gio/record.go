@@ -10806,9 +10806,30 @@ func (recv *InputVector) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'buffer' : for field getter : no Go type for 'gpointer'
+// FieldBuffer returns the C field 'buffer'.
+func (recv *InputVector) FieldBuffer() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := inputVectorStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'buffer' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(inputVectorStruct, recv.Native(), "buffer")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldBuffer sets the value of the C field 'buffer'.
+func (recv *InputVector) SetFieldBuffer(value unsafe.Pointer) {
+	err := inputVectorStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(inputVectorStruct, recv.Native(), "buffer", argValue)
+}
 
 // FieldSize returns the C field 'size'.
 func (recv *InputVector) FieldSize() uint64 {
@@ -13248,9 +13269,30 @@ func (recv *OutputVector) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'buffer' : for field getter : no Go type for 'gpointer'
+// FieldBuffer returns the C field 'buffer'.
+func (recv *OutputVector) FieldBuffer() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := outputVectorStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'buffer' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(outputVectorStruct, recv.Native(), "buffer")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldBuffer sets the value of the C field 'buffer'.
+func (recv *OutputVector) SetFieldBuffer(value unsafe.Pointer) {
+	err := outputVectorStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(outputVectorStruct, recv.Native(), "buffer", argValue)
+}
 
 // FieldSize returns the C field 'size'.
 func (recv *OutputVector) FieldSize() uint64 {

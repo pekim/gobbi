@@ -1,5 +1,9 @@
 package generate
 
+import (
+	"strings"
+)
+
 type Constructor struct {
 	*Function
 }
@@ -13,8 +17,12 @@ func (c *Constructor) init(ns *Namespace, record *Record) {
 	c.ReturnValue.Type.Name = record.Name
 
 	c.Function.init(ns, record, false)
-	c.goName = record.goName + makeExportedGoName(c.Name)
 	c.Function.ctorRecord = record
+
+	c.goName = record.goName + makeExportedGoName(c.Name)
+	if strings.HasSuffix(c.goName, "NewFromNative") {
+		c.goName += "_"
+	}
 
 	if record.Version != "" && c.Version == "" {
 		c.Version = record.Version

@@ -1517,7 +1517,34 @@ func (recv *Object) GetRole() Role {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_object_initialize' : parameter 'data' of type 'gpointer' not supported
+var objectInitializeFunction *gi.Function
+var objectInitializeFunction_Once sync.Once
+
+func objectInitializeFunction_Set() error {
+	var err error
+	objectInitializeFunction_Once.Do(func() {
+		err = objectObject_Set()
+		if err != nil {
+			return
+		}
+		objectInitializeFunction, err = objectObject.InvokerNew("initialize")
+	})
+	return err
+}
+
+// Initialize is a representation of the C type atk_object_initialize.
+func (recv *Object) Initialize(data unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	err := objectInitializeFunction_Set()
+	if err == nil {
+		objectInitializeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var objectNotifyStateChangeFunction *gi.Function
 var objectNotifyStateChangeFunction_Once sync.Once

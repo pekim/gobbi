@@ -5,6 +5,7 @@ package glib
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	"sync"
+	"unsafe"
 )
 
 var accessFunction *gi.Function
@@ -914,33 +915,371 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_atomic_pointer_add' : parameter 'atomic' of type 'gpointer' not supported
+var atomicPointerAddFunction *gi.Function
+var atomicPointerAddFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_atomic_pointer_and' : parameter 'atomic' of type 'gpointer' not supported
+func atomicPointerAddFunction_Set() error {
+	var err error
+	atomicPointerAddFunction_Once.Do(func() {
+		atomicPointerAddFunction, err = gi.FunctionInvokerNew("GLib", "atomic_pointer_add")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_atomic_pointer_compare_and_exchange' : parameter 'atomic' of type 'gpointer' not supported
+// AtomicPointerAdd is a representation of the C type g_atomic_pointer_add.
+func AtomicPointerAdd(atomic unsafe.Pointer, val int32) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(atomic)
+	inArgs[1].SetInt32(val)
 
-// UNSUPPORTED : C value 'g_atomic_pointer_get' : parameter 'atomic' of type 'gpointer' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_atomic_pointer_or' : parameter 'atomic' of type 'gpointer' not supported
+	err := atomicPointerAddFunction_Set()
+	if err == nil {
+		ret = atomicPointerAddFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_atomic_pointer_set' : parameter 'atomic' of type 'gpointer' not supported
+	retGo := ret.Int32()
 
-// UNSUPPORTED : C value 'g_atomic_pointer_xor' : parameter 'atomic' of type 'gpointer' not supported
+	return retGo
+}
 
-// UNSUPPORTED : C value 'g_atomic_rc_box_acquire' : parameter 'mem_block' of type 'gpointer' not supported
+var atomicPointerAndFunction *gi.Function
+var atomicPointerAndFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_atomic_rc_box_alloc' : return type 'gpointer' not supported
+func atomicPointerAndFunction_Set() error {
+	var err error
+	atomicPointerAndFunction_Once.Do(func() {
+		atomicPointerAndFunction, err = gi.FunctionInvokerNew("GLib", "atomic_pointer_and")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_atomic_rc_box_alloc0' : return type 'gpointer' not supported
+// AtomicPointerAnd is a representation of the C type g_atomic_pointer_and.
+func AtomicPointerAnd(atomic unsafe.Pointer, val uint64) uint64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(atomic)
+	inArgs[1].SetUint64(val)
 
-// UNSUPPORTED : C value 'g_atomic_rc_box_dup' : parameter 'mem_block' of type 'gpointer' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_atomic_rc_box_get_size' : parameter 'mem_block' of type 'gpointer' not supported
+	err := atomicPointerAndFunction_Set()
+	if err == nil {
+		ret = atomicPointerAndFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_atomic_rc_box_release' : parameter 'mem_block' of type 'gpointer' not supported
+	retGo := ret.Uint64()
 
-// UNSUPPORTED : C value 'g_atomic_rc_box_release_full' : parameter 'mem_block' of type 'gpointer' not supported
+	return retGo
+}
+
+var atomicPointerCompareAndExchangeFunction *gi.Function
+var atomicPointerCompareAndExchangeFunction_Once sync.Once
+
+func atomicPointerCompareAndExchangeFunction_Set() error {
+	var err error
+	atomicPointerCompareAndExchangeFunction_Once.Do(func() {
+		atomicPointerCompareAndExchangeFunction, err = gi.FunctionInvokerNew("GLib", "atomic_pointer_compare_and_exchange")
+	})
+	return err
+}
+
+// AtomicPointerCompareAndExchange is a representation of the C type g_atomic_pointer_compare_and_exchange.
+func AtomicPointerCompareAndExchange(atomic unsafe.Pointer, oldval unsafe.Pointer, newval unsafe.Pointer) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(atomic)
+	inArgs[1].SetPointer(oldval)
+	inArgs[2].SetPointer(newval)
+
+	var ret gi.Argument
+
+	err := atomicPointerCompareAndExchangeFunction_Set()
+	if err == nil {
+		ret = atomicPointerCompareAndExchangeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var atomicPointerGetFunction *gi.Function
+var atomicPointerGetFunction_Once sync.Once
+
+func atomicPointerGetFunction_Set() error {
+	var err error
+	atomicPointerGetFunction_Once.Do(func() {
+		atomicPointerGetFunction, err = gi.FunctionInvokerNew("GLib", "atomic_pointer_get")
+	})
+	return err
+}
+
+// AtomicPointerGet is a representation of the C type g_atomic_pointer_get.
+func AtomicPointerGet(atomic unsafe.Pointer) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(atomic)
+
+	var ret gi.Argument
+
+	err := atomicPointerGetFunction_Set()
+	if err == nil {
+		ret = atomicPointerGetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var atomicPointerOrFunction *gi.Function
+var atomicPointerOrFunction_Once sync.Once
+
+func atomicPointerOrFunction_Set() error {
+	var err error
+	atomicPointerOrFunction_Once.Do(func() {
+		atomicPointerOrFunction, err = gi.FunctionInvokerNew("GLib", "atomic_pointer_or")
+	})
+	return err
+}
+
+// AtomicPointerOr is a representation of the C type g_atomic_pointer_or.
+func AtomicPointerOr(atomic unsafe.Pointer, val uint64) uint64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(atomic)
+	inArgs[1].SetUint64(val)
+
+	var ret gi.Argument
+
+	err := atomicPointerOrFunction_Set()
+	if err == nil {
+		ret = atomicPointerOrFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+var atomicPointerSetFunction *gi.Function
+var atomicPointerSetFunction_Once sync.Once
+
+func atomicPointerSetFunction_Set() error {
+	var err error
+	atomicPointerSetFunction_Once.Do(func() {
+		atomicPointerSetFunction, err = gi.FunctionInvokerNew("GLib", "atomic_pointer_set")
+	})
+	return err
+}
+
+// AtomicPointerSet is a representation of the C type g_atomic_pointer_set.
+func AtomicPointerSet(atomic unsafe.Pointer, newval unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(atomic)
+	inArgs[1].SetPointer(newval)
+
+	err := atomicPointerSetFunction_Set()
+	if err == nil {
+		atomicPointerSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var atomicPointerXorFunction *gi.Function
+var atomicPointerXorFunction_Once sync.Once
+
+func atomicPointerXorFunction_Set() error {
+	var err error
+	atomicPointerXorFunction_Once.Do(func() {
+		atomicPointerXorFunction, err = gi.FunctionInvokerNew("GLib", "atomic_pointer_xor")
+	})
+	return err
+}
+
+// AtomicPointerXor is a representation of the C type g_atomic_pointer_xor.
+func AtomicPointerXor(atomic unsafe.Pointer, val uint64) uint64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(atomic)
+	inArgs[1].SetUint64(val)
+
+	var ret gi.Argument
+
+	err := atomicPointerXorFunction_Set()
+	if err == nil {
+		ret = atomicPointerXorFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+var atomicRcBoxAcquireFunction *gi.Function
+var atomicRcBoxAcquireFunction_Once sync.Once
+
+func atomicRcBoxAcquireFunction_Set() error {
+	var err error
+	atomicRcBoxAcquireFunction_Once.Do(func() {
+		atomicRcBoxAcquireFunction, err = gi.FunctionInvokerNew("GLib", "atomic_rc_box_acquire")
+	})
+	return err
+}
+
+// AtomicRcBoxAcquire is a representation of the C type g_atomic_rc_box_acquire.
+func AtomicRcBoxAcquire(memBlock unsafe.Pointer) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(memBlock)
+
+	var ret gi.Argument
+
+	err := atomicRcBoxAcquireFunction_Set()
+	if err == nil {
+		ret = atomicRcBoxAcquireFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var atomicRcBoxAllocFunction *gi.Function
+var atomicRcBoxAllocFunction_Once sync.Once
+
+func atomicRcBoxAllocFunction_Set() error {
+	var err error
+	atomicRcBoxAllocFunction_Once.Do(func() {
+		atomicRcBoxAllocFunction, err = gi.FunctionInvokerNew("GLib", "atomic_rc_box_alloc")
+	})
+	return err
+}
+
+// AtomicRcBoxAlloc is a representation of the C type g_atomic_rc_box_alloc.
+func AtomicRcBoxAlloc(blockSize uint64) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(blockSize)
+
+	var ret gi.Argument
+
+	err := atomicRcBoxAllocFunction_Set()
+	if err == nil {
+		ret = atomicRcBoxAllocFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var atomicRcBoxAlloc0Function *gi.Function
+var atomicRcBoxAlloc0Function_Once sync.Once
+
+func atomicRcBoxAlloc0Function_Set() error {
+	var err error
+	atomicRcBoxAlloc0Function_Once.Do(func() {
+		atomicRcBoxAlloc0Function, err = gi.FunctionInvokerNew("GLib", "atomic_rc_box_alloc0")
+	})
+	return err
+}
+
+// AtomicRcBoxAlloc0 is a representation of the C type g_atomic_rc_box_alloc0.
+func AtomicRcBoxAlloc0(blockSize uint64) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(blockSize)
+
+	var ret gi.Argument
+
+	err := atomicRcBoxAlloc0Function_Set()
+	if err == nil {
+		ret = atomicRcBoxAlloc0Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var atomicRcBoxDupFunction *gi.Function
+var atomicRcBoxDupFunction_Once sync.Once
+
+func atomicRcBoxDupFunction_Set() error {
+	var err error
+	atomicRcBoxDupFunction_Once.Do(func() {
+		atomicRcBoxDupFunction, err = gi.FunctionInvokerNew("GLib", "atomic_rc_box_dup")
+	})
+	return err
+}
+
+// AtomicRcBoxDup is a representation of the C type g_atomic_rc_box_dup.
+func AtomicRcBoxDup(blockSize uint64, memBlock unsafe.Pointer) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint64(blockSize)
+	inArgs[1].SetPointer(memBlock)
+
+	var ret gi.Argument
+
+	err := atomicRcBoxDupFunction_Set()
+	if err == nil {
+		ret = atomicRcBoxDupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var atomicRcBoxGetSizeFunction *gi.Function
+var atomicRcBoxGetSizeFunction_Once sync.Once
+
+func atomicRcBoxGetSizeFunction_Set() error {
+	var err error
+	atomicRcBoxGetSizeFunction_Once.Do(func() {
+		atomicRcBoxGetSizeFunction, err = gi.FunctionInvokerNew("GLib", "atomic_rc_box_get_size")
+	})
+	return err
+}
+
+// AtomicRcBoxGetSize is a representation of the C type g_atomic_rc_box_get_size.
+func AtomicRcBoxGetSize(memBlock unsafe.Pointer) uint64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(memBlock)
+
+	var ret gi.Argument
+
+	err := atomicRcBoxGetSizeFunction_Set()
+	if err == nil {
+		ret = atomicRcBoxGetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+var atomicRcBoxReleaseFunction *gi.Function
+var atomicRcBoxReleaseFunction_Once sync.Once
+
+func atomicRcBoxReleaseFunction_Set() error {
+	var err error
+	atomicRcBoxReleaseFunction_Once.Do(func() {
+		atomicRcBoxReleaseFunction, err = gi.FunctionInvokerNew("GLib", "atomic_rc_box_release")
+	})
+	return err
+}
+
+// AtomicRcBoxRelease is a representation of the C type g_atomic_rc_box_release.
+func AtomicRcBoxRelease(memBlock unsafe.Pointer) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(memBlock)
+
+	err := atomicRcBoxReleaseFunction_Set()
+	if err == nil {
+		atomicRcBoxReleaseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_atomic_rc_box_release_full' : parameter 'clear_func' of type 'DestroyNotify' not supported
 
 var atomicRefCountCompareFunction *gi.Function
 var atomicRefCountCompareFunction_Once sync.Once
@@ -1515,7 +1854,7 @@ func ClearError() {
 
 // UNSUPPORTED : C value 'g_clear_handle_id' : parameter 'clear_func' of type 'ClearHandleFunc' not supported
 
-// UNSUPPORTED : C value 'g_clear_pointer' : parameter 'pp' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_clear_pointer' : parameter 'destroy' of type 'DestroyNotify' not supported
 
 var closeFunction *gi.Function
 var closeFunction_Once sync.Once
@@ -1698,7 +2037,34 @@ func DatalistClear(datalist *Data) {
 
 // UNSUPPORTED : C value 'g_datalist_foreach' : parameter 'func' of type 'DataForeachFunc' not supported
 
-// UNSUPPORTED : C value 'g_datalist_get_data' : return type 'gpointer' not supported
+var datalistGetDataFunction *gi.Function
+var datalistGetDataFunction_Once sync.Once
+
+func datalistGetDataFunction_Set() error {
+	var err error
+	datalistGetDataFunction_Once.Do(func() {
+		datalistGetDataFunction, err = gi.FunctionInvokerNew("GLib", "datalist_get_data")
+	})
+	return err
+}
+
+// DatalistGetData is a representation of the C type g_datalist_get_data.
+func DatalistGetData(datalist *Data, key string) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(datalist.Native())
+	inArgs[1].SetString(key)
+
+	var ret gi.Argument
+
+	err := datalistGetDataFunction_Set()
+	if err == nil {
+		ret = datalistGetDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var datalistGetFlagsFunction *gi.Function
 var datalistGetFlagsFunction_Once sync.Once
@@ -1730,13 +2096,67 @@ func DatalistGetFlags(datalist *Data) uint32 {
 
 // UNSUPPORTED : C value 'g_datalist_id_dup_data' : parameter 'dup_func' of type 'DuplicateFunc' not supported
 
-// UNSUPPORTED : C value 'g_datalist_id_get_data' : return type 'gpointer' not supported
+var datalistIdGetDataFunction *gi.Function
+var datalistIdGetDataFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_datalist_id_remove_no_notify' : return type 'gpointer' not supported
+func datalistIdGetDataFunction_Set() error {
+	var err error
+	datalistIdGetDataFunction_Once.Do(func() {
+		datalistIdGetDataFunction, err = gi.FunctionInvokerNew("GLib", "datalist_id_get_data")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_datalist_id_replace_data' : parameter 'oldval' of type 'gpointer' not supported
+// DatalistIdGetData is a representation of the C type g_datalist_id_get_data.
+func DatalistIdGetData(datalist *Data, keyId Quark) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(datalist.Native())
+	inArgs[1].SetUint32(uint32(keyId))
 
-// UNSUPPORTED : C value 'g_datalist_id_set_data_full' : parameter 'data' of type 'gpointer' not supported
+	var ret gi.Argument
+
+	err := datalistIdGetDataFunction_Set()
+	if err == nil {
+		ret = datalistIdGetDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var datalistIdRemoveNoNotifyFunction *gi.Function
+var datalistIdRemoveNoNotifyFunction_Once sync.Once
+
+func datalistIdRemoveNoNotifyFunction_Set() error {
+	var err error
+	datalistIdRemoveNoNotifyFunction_Once.Do(func() {
+		datalistIdRemoveNoNotifyFunction, err = gi.FunctionInvokerNew("GLib", "datalist_id_remove_no_notify")
+	})
+	return err
+}
+
+// DatalistIdRemoveNoNotify is a representation of the C type g_datalist_id_remove_no_notify.
+func DatalistIdRemoveNoNotify(datalist *Data, keyId Quark) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(datalist.Native())
+	inArgs[1].SetUint32(uint32(keyId))
+
+	var ret gi.Argument
+
+	err := datalistIdRemoveNoNotifyFunction_Set()
+	if err == nil {
+		ret = datalistIdRemoveNoNotifyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_datalist_id_replace_data' : parameter 'destroy' of type 'DestroyNotify' not supported
+
+// UNSUPPORTED : C value 'g_datalist_id_set_data_full' : parameter 'destroy_func' of type 'DestroyNotify' not supported
 
 var datalistInitFunction *gi.Function
 var datalistInitFunction_Once sync.Once
@@ -1812,15 +2232,91 @@ func DatalistUnsetFlags(datalist *Data, flags uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_dataset_destroy' : parameter 'dataset_location' of type 'gpointer' not supported
+var datasetDestroyFunction *gi.Function
+var datasetDestroyFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_dataset_foreach' : parameter 'dataset_location' of type 'gpointer' not supported
+func datasetDestroyFunction_Set() error {
+	var err error
+	datasetDestroyFunction_Once.Do(func() {
+		datasetDestroyFunction, err = gi.FunctionInvokerNew("GLib", "dataset_destroy")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_dataset_id_get_data' : parameter 'dataset_location' of type 'gpointer' not supported
+// DatasetDestroy is a representation of the C type g_dataset_destroy.
+func DatasetDestroy(datasetLocation unsafe.Pointer) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(datasetLocation)
 
-// UNSUPPORTED : C value 'g_dataset_id_remove_no_notify' : parameter 'dataset_location' of type 'gpointer' not supported
+	err := datasetDestroyFunction_Set()
+	if err == nil {
+		datasetDestroyFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_dataset_id_set_data_full' : parameter 'dataset_location' of type 'gpointer' not supported
+	return
+}
+
+// UNSUPPORTED : C value 'g_dataset_foreach' : parameter 'func' of type 'DataForeachFunc' not supported
+
+var datasetIdGetDataFunction *gi.Function
+var datasetIdGetDataFunction_Once sync.Once
+
+func datasetIdGetDataFunction_Set() error {
+	var err error
+	datasetIdGetDataFunction_Once.Do(func() {
+		datasetIdGetDataFunction, err = gi.FunctionInvokerNew("GLib", "dataset_id_get_data")
+	})
+	return err
+}
+
+// DatasetIdGetData is a representation of the C type g_dataset_id_get_data.
+func DatasetIdGetData(datasetLocation unsafe.Pointer, keyId Quark) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(datasetLocation)
+	inArgs[1].SetUint32(uint32(keyId))
+
+	var ret gi.Argument
+
+	err := datasetIdGetDataFunction_Set()
+	if err == nil {
+		ret = datasetIdGetDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var datasetIdRemoveNoNotifyFunction *gi.Function
+var datasetIdRemoveNoNotifyFunction_Once sync.Once
+
+func datasetIdRemoveNoNotifyFunction_Set() error {
+	var err error
+	datasetIdRemoveNoNotifyFunction_Once.Do(func() {
+		datasetIdRemoveNoNotifyFunction, err = gi.FunctionInvokerNew("GLib", "dataset_id_remove_no_notify")
+	})
+	return err
+}
+
+// DatasetIdRemoveNoNotify is a representation of the C type g_dataset_id_remove_no_notify.
+func DatasetIdRemoveNoNotify(datasetLocation unsafe.Pointer, keyId Quark) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(datasetLocation)
+	inArgs[1].SetUint32(uint32(keyId))
+
+	var ret gi.Argument
+
+	err := datasetIdRemoveNoNotifyFunction_Set()
+	if err == nil {
+		ret = datasetIdRemoveNoNotifyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_dataset_id_set_data_full' : parameter 'destroy_func' of type 'DestroyNotify' not supported
 
 var dateGetDaysInMonthFunction *gi.Function
 var dateGetDaysInMonthFunction_Once sync.Once
@@ -1966,11 +2462,91 @@ func DateStrftime(s string, slen uint64, format string, date *Date) uint64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_date_time_compare' : parameter 'dt1' of type 'gpointer' not supported
+var dateTimeCompareFunction *gi.Function
+var dateTimeCompareFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_date_time_equal' : parameter 'dt1' of type 'gpointer' not supported
+func dateTimeCompareFunction_Set() error {
+	var err error
+	dateTimeCompareFunction_Once.Do(func() {
+		dateTimeCompareFunction, err = gi.FunctionInvokerNew("GLib", "date_time_compare")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_date_time_hash' : parameter 'datetime' of type 'gpointer' not supported
+// DateTimeCompare is a representation of the C type g_date_time_compare.
+func DateTimeCompare(dt1 unsafe.Pointer, dt2 unsafe.Pointer) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(dt1)
+	inArgs[1].SetPointer(dt2)
+
+	var ret gi.Argument
+
+	err := dateTimeCompareFunction_Set()
+	if err == nil {
+		ret = dateTimeCompareFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+var dateTimeEqualFunction *gi.Function
+var dateTimeEqualFunction_Once sync.Once
+
+func dateTimeEqualFunction_Set() error {
+	var err error
+	dateTimeEqualFunction_Once.Do(func() {
+		dateTimeEqualFunction, err = gi.FunctionInvokerNew("GLib", "date_time_equal")
+	})
+	return err
+}
+
+// DateTimeEqual is a representation of the C type g_date_time_equal.
+func DateTimeEqual(dt1 unsafe.Pointer, dt2 unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(dt1)
+	inArgs[1].SetPointer(dt2)
+
+	var ret gi.Argument
+
+	err := dateTimeEqualFunction_Set()
+	if err == nil {
+		ret = dateTimeEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var dateTimeHashFunction *gi.Function
+var dateTimeHashFunction_Once sync.Once
+
+func dateTimeHashFunction_Set() error {
+	var err error
+	dateTimeHashFunction_Once.Do(func() {
+		dateTimeHashFunction, err = gi.FunctionInvokerNew("GLib", "date_time_hash")
+	})
+	return err
+}
+
+// DateTimeHash is a representation of the C type g_date_time_hash.
+func DateTimeHash(datetime unsafe.Pointer) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(datetime)
+
+	var ret gi.Argument
+
+	err := dateTimeHashFunction_Set()
+	if err == nil {
+		ret = dateTimeHashFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var dateValidDayFunction *gi.Function
 var dateValidDayFunction_Once sync.Once
@@ -2229,9 +2805,62 @@ func DirMakeTmp(tmpl string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_direct_equal' : parameter 'v1' of type 'gpointer' not supported
+var directEqualFunction *gi.Function
+var directEqualFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_direct_hash' : parameter 'v' of type 'gpointer' not supported
+func directEqualFunction_Set() error {
+	var err error
+	directEqualFunction_Once.Do(func() {
+		directEqualFunction, err = gi.FunctionInvokerNew("GLib", "direct_equal")
+	})
+	return err
+}
+
+// DirectEqual is a representation of the C type g_direct_equal.
+func DirectEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(v1)
+	inArgs[1].SetPointer(v2)
+
+	var ret gi.Argument
+
+	err := directEqualFunction_Set()
+	if err == nil {
+		ret = directEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var directHashFunction *gi.Function
+var directHashFunction_Once sync.Once
+
+func directHashFunction_Set() error {
+	var err error
+	directHashFunction_Once.Do(func() {
+		directHashFunction, err = gi.FunctionInvokerNew("GLib", "direct_hash")
+	})
+	return err
+}
+
+// DirectHash is a representation of the C type g_direct_hash.
+func DirectHash(v unsafe.Pointer) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(v)
+
+	var ret gi.Argument
+
+	err := directHashFunction_Set()
+	if err == nil {
+		ret = directHashFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var dngettextFunction *gi.Function
 var dngettextFunction_Once sync.Once
@@ -2264,9 +2893,62 @@ func Dngettext(domain string, msgid string, msgidPlural string, n uint64) string
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_double_equal' : parameter 'v1' of type 'gpointer' not supported
+var doubleEqualFunction *gi.Function
+var doubleEqualFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_double_hash' : parameter 'v' of type 'gpointer' not supported
+func doubleEqualFunction_Set() error {
+	var err error
+	doubleEqualFunction_Once.Do(func() {
+		doubleEqualFunction, err = gi.FunctionInvokerNew("GLib", "double_equal")
+	})
+	return err
+}
+
+// DoubleEqual is a representation of the C type g_double_equal.
+func DoubleEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(v1)
+	inArgs[1].SetPointer(v2)
+
+	var ret gi.Argument
+
+	err := doubleEqualFunction_Set()
+	if err == nil {
+		ret = doubleEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var doubleHashFunction *gi.Function
+var doubleHashFunction_Once sync.Once
+
+func doubleHashFunction_Set() error {
+	var err error
+	doubleHashFunction_Once.Do(func() {
+		doubleHashFunction, err = gi.FunctionInvokerNew("GLib", "double_hash")
+	})
+	return err
+}
+
+// DoubleHash is a representation of the C type g_double_hash.
+func DoubleHash(v unsafe.Pointer) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(v)
+
+	var ret gi.Argument
+
+	err := doubleHashFunction_Set()
+	if err == nil {
+		ret = doubleHashFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var dpgettextFunction *gi.Function
 var dpgettextFunction_Once sync.Once
@@ -2771,9 +3453,31 @@ func FormatSizeFull(size uint64, flags FormatSizeFlags) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_fprintf' : parameter 'file' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_fprintf' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_free' : parameter 'mem' of type 'gpointer' not supported
+var freeFunction *gi.Function
+var freeFunction_Once sync.Once
+
+func freeFunction_Set() error {
+	var err error
+	freeFunction_Once.Do(func() {
+		freeFunction, err = gi.FunctionInvokerNew("GLib", "free")
+	})
+	return err
+}
+
+// Free is a representation of the C type g_free.
+func Free(mem unsafe.Pointer) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mem)
+
+	err := freeFunction_Set()
+	if err == nil {
+		freeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var getApplicationNameFunction *gi.Function
 var getApplicationNameFunction_Once sync.Once
@@ -3853,7 +4557,33 @@ func IconvOpen(toCodeset string, fromCodeset string) *IConv {
 
 // UNSUPPORTED : C value 'g_idle_add_full' : parameter 'function' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_idle_remove_by_data' : parameter 'data' of type 'gpointer' not supported
+var idleRemoveByDataFunction *gi.Function
+var idleRemoveByDataFunction_Once sync.Once
+
+func idleRemoveByDataFunction_Set() error {
+	var err error
+	idleRemoveByDataFunction_Once.Do(func() {
+		idleRemoveByDataFunction, err = gi.FunctionInvokerNew("GLib", "idle_remove_by_data")
+	})
+	return err
+}
+
+// IdleRemoveByData is a representation of the C type g_idle_remove_by_data.
+func IdleRemoveByData(data unsafe.Pointer) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := idleRemoveByDataFunction_Set()
+	if err == nil {
+		ret = idleRemoveByDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var idleSourceNewFunction *gi.Function
 var idleSourceNewFunction_Once sync.Once
@@ -3881,13 +4611,119 @@ func IdleSourceNew() *Source {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_int64_equal' : parameter 'v1' of type 'gpointer' not supported
+var int64EqualFunction *gi.Function
+var int64EqualFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_int64_hash' : parameter 'v' of type 'gpointer' not supported
+func int64EqualFunction_Set() error {
+	var err error
+	int64EqualFunction_Once.Do(func() {
+		int64EqualFunction, err = gi.FunctionInvokerNew("GLib", "int64_equal")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_int_equal' : parameter 'v1' of type 'gpointer' not supported
+// Int64Equal is a representation of the C type g_int64_equal.
+func Int64Equal(v1 unsafe.Pointer, v2 unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(v1)
+	inArgs[1].SetPointer(v2)
 
-// UNSUPPORTED : C value 'g_int_hash' : parameter 'v' of type 'gpointer' not supported
+	var ret gi.Argument
+
+	err := int64EqualFunction_Set()
+	if err == nil {
+		ret = int64EqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var int64HashFunction *gi.Function
+var int64HashFunction_Once sync.Once
+
+func int64HashFunction_Set() error {
+	var err error
+	int64HashFunction_Once.Do(func() {
+		int64HashFunction, err = gi.FunctionInvokerNew("GLib", "int64_hash")
+	})
+	return err
+}
+
+// Int64Hash is a representation of the C type g_int64_hash.
+func Int64Hash(v unsafe.Pointer) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(v)
+
+	var ret gi.Argument
+
+	err := int64HashFunction_Set()
+	if err == nil {
+		ret = int64HashFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var intEqualFunction *gi.Function
+var intEqualFunction_Once sync.Once
+
+func intEqualFunction_Set() error {
+	var err error
+	intEqualFunction_Once.Do(func() {
+		intEqualFunction, err = gi.FunctionInvokerNew("GLib", "int_equal")
+	})
+	return err
+}
+
+// IntEqual is a representation of the C type g_int_equal.
+func IntEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(v1)
+	inArgs[1].SetPointer(v2)
+
+	var ret gi.Argument
+
+	err := intEqualFunction_Set()
+	if err == nil {
+		ret = intEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var intHashFunction *gi.Function
+var intHashFunction_Once sync.Once
+
+func intHashFunction_Set() error {
+	var err error
+	intHashFunction_Once.Do(func() {
+		intHashFunction, err = gi.FunctionInvokerNew("GLib", "int_hash")
+	})
+	return err
+}
+
+// IntHash is a representation of the C type g_int_hash.
+func IntHash(v unsafe.Pointer) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(v)
+
+	var ret gi.Argument
+
+	err := intHashFunction_Set()
+	if err == nil {
+		ret = intHashFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var internStaticStringFunction *gi.Function
 var internStaticStringFunction_Once sync.Once
@@ -4114,7 +4950,32 @@ func LocaleFromUtf8(utf8string string, len int32) (uint64, uint64) {
 
 // UNSUPPORTED : C value 'g_log' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_log_default_handler' : parameter 'unused_data' of type 'gpointer' not supported
+var logDefaultHandlerFunction *gi.Function
+var logDefaultHandlerFunction_Once sync.Once
+
+func logDefaultHandlerFunction_Set() error {
+	var err error
+	logDefaultHandlerFunction_Once.Do(func() {
+		logDefaultHandlerFunction, err = gi.FunctionInvokerNew("GLib", "log_default_handler")
+	})
+	return err
+}
+
+// LogDefaultHandler is a representation of the C type g_log_default_handler.
+func LogDefaultHandler(logDomain string, logLevel LogLevelFlags, message string, unusedData unsafe.Pointer) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(logDomain)
+	inArgs[1].SetInt32(int32(logLevel))
+	inArgs[2].SetString(message)
+	inArgs[3].SetPointer(unusedData)
+
+	err := logDefaultHandlerFunction_Set()
+	if err == nil {
+		logDefaultHandlerFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var logRemoveHandlerFunction *gi.Function
 var logRemoveHandlerFunction_Once sync.Once
@@ -4434,13 +5295,119 @@ func MainDepth() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_malloc' : return type 'gpointer' not supported
+var mallocFunction *gi.Function
+var mallocFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_malloc0' : return type 'gpointer' not supported
+func mallocFunction_Set() error {
+	var err error
+	mallocFunction_Once.Do(func() {
+		mallocFunction, err = gi.FunctionInvokerNew("GLib", "malloc")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_malloc0_n' : return type 'gpointer' not supported
+// Malloc is a representation of the C type g_malloc.
+func Malloc(nBytes uint64) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(nBytes)
 
-// UNSUPPORTED : C value 'g_malloc_n' : return type 'gpointer' not supported
+	var ret gi.Argument
+
+	err := mallocFunction_Set()
+	if err == nil {
+		ret = mallocFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var malloc0Function *gi.Function
+var malloc0Function_Once sync.Once
+
+func malloc0Function_Set() error {
+	var err error
+	malloc0Function_Once.Do(func() {
+		malloc0Function, err = gi.FunctionInvokerNew("GLib", "malloc0")
+	})
+	return err
+}
+
+// Malloc0 is a representation of the C type g_malloc0.
+func Malloc0(nBytes uint64) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(nBytes)
+
+	var ret gi.Argument
+
+	err := malloc0Function_Set()
+	if err == nil {
+		ret = malloc0Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var malloc0NFunction *gi.Function
+var malloc0NFunction_Once sync.Once
+
+func malloc0NFunction_Set() error {
+	var err error
+	malloc0NFunction_Once.Do(func() {
+		malloc0NFunction, err = gi.FunctionInvokerNew("GLib", "malloc0_n")
+	})
+	return err
+}
+
+// Malloc0N is a representation of the C type g_malloc0_n.
+func Malloc0N(nBlocks uint64, nBlockBytes uint64) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint64(nBlocks)
+	inArgs[1].SetUint64(nBlockBytes)
+
+	var ret gi.Argument
+
+	err := malloc0NFunction_Set()
+	if err == nil {
+		ret = malloc0NFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var mallocNFunction *gi.Function
+var mallocNFunction_Once sync.Once
+
+func mallocNFunction_Set() error {
+	var err error
+	mallocNFunction_Once.Do(func() {
+		mallocNFunction, err = gi.FunctionInvokerNew("GLib", "malloc_n")
+	})
+	return err
+}
+
+// MallocN is a representation of the C type g_malloc_n.
+func MallocN(nBlocks uint64, nBlockBytes uint64) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint64(nBlocks)
+	inArgs[1].SetUint64(nBlockBytes)
+
+	var ret gi.Argument
+
+	err := mallocNFunction_Set()
+	if err == nil {
+		ret = mallocNFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_markup_collect_attributes' : parameter '...' of type 'nil' not supported
 
@@ -4575,7 +5542,34 @@ func MemSetVtable(vtable *MemVTable) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_memdup' : parameter 'mem' of type 'gpointer' not supported
+var memdupFunction *gi.Function
+var memdupFunction_Once sync.Once
+
+func memdupFunction_Set() error {
+	var err error
+	memdupFunction_Once.Do(func() {
+		memdupFunction, err = gi.FunctionInvokerNew("GLib", "memdup")
+	})
+	return err
+}
+
+// Memdup is a representation of the C type g_memdup.
+func Memdup(mem unsafe.Pointer, byteSize uint32) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(mem)
+	inArgs[1].SetUint32(byteSize)
+
+	var ret gi.Argument
+
+	err := memdupFunction_Set()
+	if err == nil {
+		ret = memdupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var mkdirWithParentsFunction *gi.Function
 var mkdirWithParentsFunction_Once sync.Once
@@ -4721,7 +5715,29 @@ func MkstempFull(tmpl string, flags int32, mode int32) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_nullify_pointer' : parameter 'nullify_location' of type 'gpointer' not supported
+var nullifyPointerFunction *gi.Function
+var nullifyPointerFunction_Once sync.Once
+
+func nullifyPointerFunction_Set() error {
+	var err error
+	nullifyPointerFunction_Once.Do(func() {
+		nullifyPointerFunction, err = gi.FunctionInvokerNew("GLib", "nullify_pointer")
+	})
+	return err
+}
+
+// NullifyPointer is a representation of the C type g_nullify_pointer.
+func NullifyPointer(nullifyLocation unsafe.Pointer) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(nullifyLocation)
+
+	err := nullifyPointerFunction_Set()
+	if err == nil {
+		nullifyPointerFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var numberParserErrorQuarkFunction *gi.Function
 var numberParserErrorQuarkFunction_Once sync.Once
@@ -4797,9 +5813,58 @@ func OnErrorStackTrace(prgName string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_once_init_enter' : parameter 'location' of type 'gpointer' not supported
+var onceInitEnterFunction *gi.Function
+var onceInitEnterFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_once_init_leave' : parameter 'location' of type 'gpointer' not supported
+func onceInitEnterFunction_Set() error {
+	var err error
+	onceInitEnterFunction_Once.Do(func() {
+		onceInitEnterFunction, err = gi.FunctionInvokerNew("GLib", "once_init_enter")
+	})
+	return err
+}
+
+// OnceInitEnter is a representation of the C type g_once_init_enter.
+func OnceInitEnter(location unsafe.Pointer) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(location)
+
+	var ret gi.Argument
+
+	err := onceInitEnterFunction_Set()
+	if err == nil {
+		ret = onceInitEnterFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var onceInitLeaveFunction *gi.Function
+var onceInitLeaveFunction_Once sync.Once
+
+func onceInitLeaveFunction_Set() error {
+	var err error
+	onceInitLeaveFunction_Once.Do(func() {
+		onceInitLeaveFunction, err = gi.FunctionInvokerNew("GLib", "once_init_leave")
+	})
+	return err
+}
+
+// OnceInitLeave is a representation of the C type g_once_init_leave.
+func OnceInitLeave(location unsafe.Pointer, result uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(location)
+	inArgs[1].SetUint64(result)
+
+	err := onceInitLeaveFunction_Set()
+	if err == nil {
+		onceInitLeaveFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var optionErrorQuarkFunction *gi.Function
 var optionErrorQuarkFunction_Once sync.Once
@@ -5030,11 +6095,84 @@ func PatternMatchString(pspec *PatternSpec, string_ string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_pointer_bit_lock' : parameter 'address' of type 'gpointer' not supported
+var pointerBitLockFunction *gi.Function
+var pointerBitLockFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_pointer_bit_trylock' : parameter 'address' of type 'gpointer' not supported
+func pointerBitLockFunction_Set() error {
+	var err error
+	pointerBitLockFunction_Once.Do(func() {
+		pointerBitLockFunction, err = gi.FunctionInvokerNew("GLib", "pointer_bit_lock")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_pointer_bit_unlock' : parameter 'address' of type 'gpointer' not supported
+// PointerBitLock is a representation of the C type g_pointer_bit_lock.
+func PointerBitLock(address unsafe.Pointer, lockBit int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(address)
+	inArgs[1].SetInt32(lockBit)
+
+	err := pointerBitLockFunction_Set()
+	if err == nil {
+		pointerBitLockFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var pointerBitTrylockFunction *gi.Function
+var pointerBitTrylockFunction_Once sync.Once
+
+func pointerBitTrylockFunction_Set() error {
+	var err error
+	pointerBitTrylockFunction_Once.Do(func() {
+		pointerBitTrylockFunction, err = gi.FunctionInvokerNew("GLib", "pointer_bit_trylock")
+	})
+	return err
+}
+
+// PointerBitTrylock is a representation of the C type g_pointer_bit_trylock.
+func PointerBitTrylock(address unsafe.Pointer, lockBit int32) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(address)
+	inArgs[1].SetInt32(lockBit)
+
+	var ret gi.Argument
+
+	err := pointerBitTrylockFunction_Set()
+	if err == nil {
+		ret = pointerBitTrylockFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var pointerBitUnlockFunction *gi.Function
+var pointerBitUnlockFunction_Once sync.Once
+
+func pointerBitUnlockFunction_Set() error {
+	var err error
+	pointerBitUnlockFunction_Once.Do(func() {
+		pointerBitUnlockFunction, err = gi.FunctionInvokerNew("GLib", "pointer_bit_unlock")
+	})
+	return err
+}
+
+// PointerBitUnlock is a representation of the C type g_pointer_bit_unlock.
+func PointerBitUnlock(address unsafe.Pointer, lockBit int32) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(address)
+	inArgs[1].SetInt32(lockBit)
+
+	err := pointerBitUnlockFunction_Set()
+	if err == nil {
+		pointerBitUnlockFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var pollFunction *gi.Function
 var pollFunction_Once sync.Once
@@ -5110,7 +6248,7 @@ func PropagateError(src *Error) *Error {
 
 // UNSUPPORTED : C value 'g_ptr_array_find_with_equal_func' : parameter 'haystack' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_qsort_with_data' : parameter 'pbase' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_qsort_with_data' : parameter 'compare_func' of type 'CompareDataFunc' not supported
 
 var quarkFromStaticStringFunction *gi.Function
 var quarkFromStaticStringFunction_Once sync.Once
@@ -5358,23 +6496,231 @@ func RandomSetSeed(seed uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_rc_box_acquire' : parameter 'mem_block' of type 'gpointer' not supported
+var rcBoxAcquireFunction *gi.Function
+var rcBoxAcquireFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_rc_box_alloc' : return type 'gpointer' not supported
+func rcBoxAcquireFunction_Set() error {
+	var err error
+	rcBoxAcquireFunction_Once.Do(func() {
+		rcBoxAcquireFunction, err = gi.FunctionInvokerNew("GLib", "rc_box_acquire")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_rc_box_alloc0' : return type 'gpointer' not supported
+// RcBoxAcquire is a representation of the C type g_rc_box_acquire.
+func RcBoxAcquire(memBlock unsafe.Pointer) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(memBlock)
 
-// UNSUPPORTED : C value 'g_rc_box_dup' : parameter 'mem_block' of type 'gpointer' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_rc_box_get_size' : parameter 'mem_block' of type 'gpointer' not supported
+	err := rcBoxAcquireFunction_Set()
+	if err == nil {
+		ret = rcBoxAcquireFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_rc_box_release' : parameter 'mem_block' of type 'gpointer' not supported
+	retGo := ret.Pointer()
 
-// UNSUPPORTED : C value 'g_rc_box_release_full' : parameter 'mem_block' of type 'gpointer' not supported
+	return retGo
+}
 
-// UNSUPPORTED : C value 'g_realloc' : parameter 'mem' of type 'gpointer' not supported
+var rcBoxAllocFunction *gi.Function
+var rcBoxAllocFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_realloc_n' : parameter 'mem' of type 'gpointer' not supported
+func rcBoxAllocFunction_Set() error {
+	var err error
+	rcBoxAllocFunction_Once.Do(func() {
+		rcBoxAllocFunction, err = gi.FunctionInvokerNew("GLib", "rc_box_alloc")
+	})
+	return err
+}
+
+// RcBoxAlloc is a representation of the C type g_rc_box_alloc.
+func RcBoxAlloc(blockSize uint64) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(blockSize)
+
+	var ret gi.Argument
+
+	err := rcBoxAllocFunction_Set()
+	if err == nil {
+		ret = rcBoxAllocFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var rcBoxAlloc0Function *gi.Function
+var rcBoxAlloc0Function_Once sync.Once
+
+func rcBoxAlloc0Function_Set() error {
+	var err error
+	rcBoxAlloc0Function_Once.Do(func() {
+		rcBoxAlloc0Function, err = gi.FunctionInvokerNew("GLib", "rc_box_alloc0")
+	})
+	return err
+}
+
+// RcBoxAlloc0 is a representation of the C type g_rc_box_alloc0.
+func RcBoxAlloc0(blockSize uint64) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(blockSize)
+
+	var ret gi.Argument
+
+	err := rcBoxAlloc0Function_Set()
+	if err == nil {
+		ret = rcBoxAlloc0Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var rcBoxDupFunction *gi.Function
+var rcBoxDupFunction_Once sync.Once
+
+func rcBoxDupFunction_Set() error {
+	var err error
+	rcBoxDupFunction_Once.Do(func() {
+		rcBoxDupFunction, err = gi.FunctionInvokerNew("GLib", "rc_box_dup")
+	})
+	return err
+}
+
+// RcBoxDup is a representation of the C type g_rc_box_dup.
+func RcBoxDup(blockSize uint64, memBlock unsafe.Pointer) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint64(blockSize)
+	inArgs[1].SetPointer(memBlock)
+
+	var ret gi.Argument
+
+	err := rcBoxDupFunction_Set()
+	if err == nil {
+		ret = rcBoxDupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var rcBoxGetSizeFunction *gi.Function
+var rcBoxGetSizeFunction_Once sync.Once
+
+func rcBoxGetSizeFunction_Set() error {
+	var err error
+	rcBoxGetSizeFunction_Once.Do(func() {
+		rcBoxGetSizeFunction, err = gi.FunctionInvokerNew("GLib", "rc_box_get_size")
+	})
+	return err
+}
+
+// RcBoxGetSize is a representation of the C type g_rc_box_get_size.
+func RcBoxGetSize(memBlock unsafe.Pointer) uint64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(memBlock)
+
+	var ret gi.Argument
+
+	err := rcBoxGetSizeFunction_Set()
+	if err == nil {
+		ret = rcBoxGetSizeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint64()
+
+	return retGo
+}
+
+var rcBoxReleaseFunction *gi.Function
+var rcBoxReleaseFunction_Once sync.Once
+
+func rcBoxReleaseFunction_Set() error {
+	var err error
+	rcBoxReleaseFunction_Once.Do(func() {
+		rcBoxReleaseFunction, err = gi.FunctionInvokerNew("GLib", "rc_box_release")
+	})
+	return err
+}
+
+// RcBoxRelease is a representation of the C type g_rc_box_release.
+func RcBoxRelease(memBlock unsafe.Pointer) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(memBlock)
+
+	err := rcBoxReleaseFunction_Set()
+	if err == nil {
+		rcBoxReleaseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_rc_box_release_full' : parameter 'clear_func' of type 'DestroyNotify' not supported
+
+var reallocFunction *gi.Function
+var reallocFunction_Once sync.Once
+
+func reallocFunction_Set() error {
+	var err error
+	reallocFunction_Once.Do(func() {
+		reallocFunction, err = gi.FunctionInvokerNew("GLib", "realloc")
+	})
+	return err
+}
+
+// Realloc is a representation of the C type g_realloc.
+func Realloc(mem unsafe.Pointer, nBytes uint64) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(mem)
+	inArgs[1].SetUint64(nBytes)
+
+	var ret gi.Argument
+
+	err := reallocFunction_Set()
+	if err == nil {
+		ret = reallocFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var reallocNFunction *gi.Function
+var reallocNFunction_Once sync.Once
+
+func reallocNFunction_Set() error {
+	var err error
+	reallocNFunction_Once.Do(func() {
+		reallocNFunction, err = gi.FunctionInvokerNew("GLib", "realloc_n")
+	})
+	return err
+}
+
+// ReallocN is a representation of the C type g_realloc_n.
+func ReallocN(mem unsafe.Pointer, nBlocks uint64, nBlockBytes uint64) unsafe.Pointer {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(mem)
+	inArgs[1].SetUint64(nBlocks)
+	inArgs[2].SetUint64(nBlockBytes)
+
+	var ret gi.Argument
+
+	err := reallocNFunction_Set()
+	if err == nil {
+		ret = reallocNFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var refCountCompareFunction *gi.Function
 var refCountCompareFunction_Once sync.Once
@@ -5867,9 +7213,62 @@ func Rmdir(filename string) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_sequence_get' : return type 'gpointer' not supported
+var sequenceGetFunction *gi.Function
+var sequenceGetFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_sequence_insert_before' : parameter 'data' of type 'gpointer' not supported
+func sequenceGetFunction_Set() error {
+	var err error
+	sequenceGetFunction_Once.Do(func() {
+		sequenceGetFunction, err = gi.FunctionInvokerNew("GLib", "sequence_get")
+	})
+	return err
+}
+
+// SequenceGet is a representation of the C type g_sequence_get.
+func SequenceGet(iter *SequenceIter) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(iter.Native())
+
+	var ret gi.Argument
+
+	err := sequenceGetFunction_Set()
+	if err == nil {
+		ret = sequenceGetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var sequenceInsertBeforeFunction *gi.Function
+var sequenceInsertBeforeFunction_Once sync.Once
+
+func sequenceInsertBeforeFunction_Set() error {
+	var err error
+	sequenceInsertBeforeFunction_Once.Do(func() {
+		sequenceInsertBeforeFunction, err = gi.FunctionInvokerNew("GLib", "sequence_insert_before")
+	})
+	return err
+}
+
+// SequenceInsertBefore is a representation of the C type g_sequence_insert_before.
+func SequenceInsertBefore(iter *SequenceIter, data unsafe.Pointer) *SequenceIter {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(iter.Native())
+	inArgs[1].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := sequenceInsertBeforeFunction_Set()
+	if err == nil {
+		ret = sequenceInsertBeforeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SequenceIterNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var sequenceMoveFunction *gi.Function
 var sequenceMoveFunction_Once sync.Once
@@ -6000,7 +7399,30 @@ func SequenceRemoveRange(begin *SequenceIter, end *SequenceIter) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_sequence_set' : parameter 'data' of type 'gpointer' not supported
+var sequenceSetFunction *gi.Function
+var sequenceSetFunction_Once sync.Once
+
+func sequenceSetFunction_Set() error {
+	var err error
+	sequenceSetFunction_Once.Do(func() {
+		sequenceSetFunction, err = gi.FunctionInvokerNew("GLib", "sequence_set")
+	})
+	return err
+}
+
+// SequenceSet is a representation of the C type g_sequence_set.
+func SequenceSet(iter *SequenceIter, data unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(iter.Native())
+	inArgs[1].SetPointer(data)
+
+	err := sequenceSetFunction_Set()
+	if err == nil {
+		sequenceSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var sequenceSwapFunction *gi.Function
 var sequenceSwapFunction_Once sync.Once
@@ -6225,15 +7647,141 @@ func ShellUnquote(quotedString string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_slice_alloc' : return type 'gpointer' not supported
+var sliceAllocFunction *gi.Function
+var sliceAllocFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_slice_alloc0' : return type 'gpointer' not supported
+func sliceAllocFunction_Set() error {
+	var err error
+	sliceAllocFunction_Once.Do(func() {
+		sliceAllocFunction, err = gi.FunctionInvokerNew("GLib", "slice_alloc")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_slice_copy' : parameter 'mem_block' of type 'gpointer' not supported
+// SliceAlloc is a representation of the C type g_slice_alloc.
+func SliceAlloc(blockSize uint64) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(blockSize)
 
-// UNSUPPORTED : C value 'g_slice_free1' : parameter 'mem_block' of type 'gpointer' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_slice_free_chain_with_offset' : parameter 'mem_chain' of type 'gpointer' not supported
+	err := sliceAllocFunction_Set()
+	if err == nil {
+		ret = sliceAllocFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var sliceAlloc0Function *gi.Function
+var sliceAlloc0Function_Once sync.Once
+
+func sliceAlloc0Function_Set() error {
+	var err error
+	sliceAlloc0Function_Once.Do(func() {
+		sliceAlloc0Function, err = gi.FunctionInvokerNew("GLib", "slice_alloc0")
+	})
+	return err
+}
+
+// SliceAlloc0 is a representation of the C type g_slice_alloc0.
+func SliceAlloc0(blockSize uint64) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(blockSize)
+
+	var ret gi.Argument
+
+	err := sliceAlloc0Function_Set()
+	if err == nil {
+		ret = sliceAlloc0Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var sliceCopyFunction *gi.Function
+var sliceCopyFunction_Once sync.Once
+
+func sliceCopyFunction_Set() error {
+	var err error
+	sliceCopyFunction_Once.Do(func() {
+		sliceCopyFunction, err = gi.FunctionInvokerNew("GLib", "slice_copy")
+	})
+	return err
+}
+
+// SliceCopy is a representation of the C type g_slice_copy.
+func SliceCopy(blockSize uint64, memBlock unsafe.Pointer) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint64(blockSize)
+	inArgs[1].SetPointer(memBlock)
+
+	var ret gi.Argument
+
+	err := sliceCopyFunction_Set()
+	if err == nil {
+		ret = sliceCopyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var sliceFree1Function *gi.Function
+var sliceFree1Function_Once sync.Once
+
+func sliceFree1Function_Set() error {
+	var err error
+	sliceFree1Function_Once.Do(func() {
+		sliceFree1Function, err = gi.FunctionInvokerNew("GLib", "slice_free1")
+	})
+	return err
+}
+
+// SliceFree1 is a representation of the C type g_slice_free1.
+func SliceFree1(blockSize uint64, memBlock unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint64(blockSize)
+	inArgs[1].SetPointer(memBlock)
+
+	err := sliceFree1Function_Set()
+	if err == nil {
+		sliceFree1Function.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var sliceFreeChainWithOffsetFunction *gi.Function
+var sliceFreeChainWithOffsetFunction_Once sync.Once
+
+func sliceFreeChainWithOffsetFunction_Set() error {
+	var err error
+	sliceFreeChainWithOffsetFunction_Once.Do(func() {
+		sliceFreeChainWithOffsetFunction, err = gi.FunctionInvokerNew("GLib", "slice_free_chain_with_offset")
+	})
+	return err
+}
+
+// SliceFreeChainWithOffset is a representation of the C type g_slice_free_chain_with_offset.
+func SliceFreeChainWithOffset(blockSize uint64, memChain unsafe.Pointer, nextOffset uint64) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetUint64(blockSize)
+	inArgs[1].SetPointer(memChain)
+	inArgs[2].SetUint64(nextOffset)
+
+	err := sliceFreeChainWithOffsetFunction_Set()
+	if err == nil {
+		sliceFreeChainWithOffsetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var sliceGetConfigFunction *gi.Function
 var sliceGetConfigFunction_Once sync.Once
@@ -6348,9 +7896,62 @@ func SourceRemove(tag uint32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_source_remove_by_funcs_user_data' : parameter 'user_data' of type 'gpointer' not supported
+var sourceRemoveByFuncsUserDataFunction *gi.Function
+var sourceRemoveByFuncsUserDataFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_source_remove_by_user_data' : parameter 'user_data' of type 'gpointer' not supported
+func sourceRemoveByFuncsUserDataFunction_Set() error {
+	var err error
+	sourceRemoveByFuncsUserDataFunction_Once.Do(func() {
+		sourceRemoveByFuncsUserDataFunction, err = gi.FunctionInvokerNew("GLib", "source_remove_by_funcs_user_data")
+	})
+	return err
+}
+
+// SourceRemoveByFuncsUserData is a representation of the C type g_source_remove_by_funcs_user_data.
+func SourceRemoveByFuncsUserData(funcs *SourceFuncs, userData unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(funcs.Native())
+	inArgs[1].SetPointer(userData)
+
+	var ret gi.Argument
+
+	err := sourceRemoveByFuncsUserDataFunction_Set()
+	if err == nil {
+		ret = sourceRemoveByFuncsUserDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var sourceRemoveByUserDataFunction *gi.Function
+var sourceRemoveByUserDataFunction_Once sync.Once
+
+func sourceRemoveByUserDataFunction_Set() error {
+	var err error
+	sourceRemoveByUserDataFunction_Once.Do(func() {
+		sourceRemoveByUserDataFunction, err = gi.FunctionInvokerNew("GLib", "source_remove_by_user_data")
+	})
+	return err
+}
+
+// SourceRemoveByUserData is a representation of the C type g_source_remove_by_user_data.
+func SourceRemoveByUserData(userData unsafe.Pointer) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(userData)
+
+	var ret gi.Argument
+
+	err := sourceRemoveByUserDataFunction_Set()
+	if err == nil {
+		ret = sourceRemoveByUserDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var sourceSetNameByIdFunction *gi.Function
 var sourceSetNameByIdFunction_Once sync.Once
@@ -6578,7 +8179,34 @@ func Stpcpy(dest string, src string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_str_equal' : parameter 'v1' of type 'gpointer' not supported
+var strEqualFunction *gi.Function
+var strEqualFunction_Once sync.Once
+
+func strEqualFunction_Set() error {
+	var err error
+	strEqualFunction_Once.Do(func() {
+		strEqualFunction, err = gi.FunctionInvokerNew("GLib", "str_equal")
+	})
+	return err
+}
+
+// StrEqual is a representation of the C type g_str_equal.
+func StrEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(v1)
+	inArgs[1].SetPointer(v2)
+
+	var ret gi.Argument
+
+	err := strEqualFunction_Set()
+	if err == nil {
+		ret = strEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var strHasPrefixFunction *gi.Function
 var strHasPrefixFunction_Once sync.Once
@@ -6638,7 +8266,33 @@ func StrHasSuffix(str string, suffix string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_str_hash' : parameter 'v' of type 'gpointer' not supported
+var strHashFunction *gi.Function
+var strHashFunction_Once sync.Once
+
+func strHashFunction_Set() error {
+	var err error
+	strHashFunction_Once.Do(func() {
+		strHashFunction, err = gi.FunctionInvokerNew("GLib", "str_hash")
+	})
+	return err
+}
+
+// StrHash is a representation of the C type g_str_hash.
+func StrHash(v unsafe.Pointer) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(v)
+
+	var ret gi.Argument
+
+	err := strHashFunction_Set()
+	if err == nil {
+		ret = strHashFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var strIsAsciiFunction *gi.Function
 var strIsAsciiFunction_Once sync.Once
@@ -7734,13 +9388,13 @@ func StrvLength(strArray string) uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_test_add_data_func' : parameter 'test_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_test_add_data_func' : parameter 'test_func' of type 'TestDataFunc' not supported
 
-// UNSUPPORTED : C value 'g_test_add_data_func_full' : parameter 'test_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_test_add_data_func_full' : parameter 'test_func' of type 'TestDataFunc' not supported
 
 // UNSUPPORTED : C value 'g_test_add_func' : parameter 'test_func' of type 'TestFunc' not supported
 
-// UNSUPPORTED : C value 'g_test_add_vtable' : parameter 'test_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_test_add_vtable' : parameter 'data_setup' of type 'TestFixtureFunc' not supported
 
 var testAssertExpectedMessagesInternalFunction *gi.Function
 var testAssertExpectedMessagesInternalFunction_Once sync.Once
@@ -7819,7 +9473,7 @@ func TestBugBase(uriPattern string) {
 
 // UNSUPPORTED : C value 'g_test_build_filename' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_test_create_case' : parameter 'test_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_test_create_case' : parameter 'data_setup' of type 'TestFixtureFunc' not supported
 
 var testCreateSuiteFunction *gi.Function
 var testCreateSuiteFunction_Once sync.Once
@@ -8043,7 +9697,29 @@ func TestLogTypeName(logType TestLogType) string {
 
 // UNSUPPORTED : C value 'g_test_queue_destroy' : parameter 'destroy_func' of type 'DestroyNotify' not supported
 
-// UNSUPPORTED : C value 'g_test_queue_free' : parameter 'gfree_pointer' of type 'gpointer' not supported
+var testQueueFreeFunction *gi.Function
+var testQueueFreeFunction_Once sync.Once
+
+func testQueueFreeFunction_Set() error {
+	var err error
+	testQueueFreeFunction_Once.Do(func() {
+		testQueueFreeFunction, err = gi.FunctionInvokerNew("GLib", "test_queue_free")
+	})
+	return err
+}
+
+// TestQueueFree is a representation of the C type g_test_queue_free.
+func TestQueueFree(gfreePointer unsafe.Pointer) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(gfreePointer)
+
+	err := testQueueFreeFunction_Set()
+	if err == nil {
+		testQueueFreeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var testRandDoubleFunction *gi.Function
 var testRandDoubleFunction_Once sync.Once
@@ -8541,7 +10217,29 @@ func ThreadErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_thread_exit' : parameter 'retval' of type 'gpointer' not supported
+var threadExitFunction *gi.Function
+var threadExitFunction_Once sync.Once
+
+func threadExitFunction_Set() error {
+	var err error
+	threadExitFunction_Once.Do(func() {
+		threadExitFunction, err = gi.FunctionInvokerNew("GLib", "thread_exit")
+	})
+	return err
+}
+
+// ThreadExit is a representation of the C type g_thread_exit.
+func ThreadExit(retval unsafe.Pointer) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(retval)
+
+	err := threadExitFunction_Set()
+	if err == nil {
+		threadExitFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var threadPoolGetMaxIdleTimeFunction *gi.Function
 var threadPoolGetMaxIdleTimeFunction_Once sync.Once
@@ -8861,23 +10559,259 @@ func TrashStackHeight(stackP *TrashStack) uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_trash_stack_peek' : return type 'gpointer' not supported
+var trashStackPeekFunction *gi.Function
+var trashStackPeekFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_trash_stack_pop' : return type 'gpointer' not supported
+func trashStackPeekFunction_Set() error {
+	var err error
+	trashStackPeekFunction_Once.Do(func() {
+		trashStackPeekFunction, err = gi.FunctionInvokerNew("GLib", "trash_stack_peek")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_trash_stack_push' : parameter 'data_p' of type 'gpointer' not supported
+// TrashStackPeek is a representation of the C type g_trash_stack_peek.
+func TrashStackPeek(stackP *TrashStack) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(stackP.Native())
 
-// UNSUPPORTED : C value 'g_try_malloc' : return type 'gpointer' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_try_malloc0' : return type 'gpointer' not supported
+	err := trashStackPeekFunction_Set()
+	if err == nil {
+		ret = trashStackPeekFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_try_malloc0_n' : return type 'gpointer' not supported
+	retGo := ret.Pointer()
 
-// UNSUPPORTED : C value 'g_try_malloc_n' : return type 'gpointer' not supported
+	return retGo
+}
 
-// UNSUPPORTED : C value 'g_try_realloc' : parameter 'mem' of type 'gpointer' not supported
+var trashStackPopFunction *gi.Function
+var trashStackPopFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_try_realloc_n' : parameter 'mem' of type 'gpointer' not supported
+func trashStackPopFunction_Set() error {
+	var err error
+	trashStackPopFunction_Once.Do(func() {
+		trashStackPopFunction, err = gi.FunctionInvokerNew("GLib", "trash_stack_pop")
+	})
+	return err
+}
+
+// TrashStackPop is a representation of the C type g_trash_stack_pop.
+func TrashStackPop(stackP *TrashStack) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(stackP.Native())
+
+	var ret gi.Argument
+
+	err := trashStackPopFunction_Set()
+	if err == nil {
+		ret = trashStackPopFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var trashStackPushFunction *gi.Function
+var trashStackPushFunction_Once sync.Once
+
+func trashStackPushFunction_Set() error {
+	var err error
+	trashStackPushFunction_Once.Do(func() {
+		trashStackPushFunction, err = gi.FunctionInvokerNew("GLib", "trash_stack_push")
+	})
+	return err
+}
+
+// TrashStackPush is a representation of the C type g_trash_stack_push.
+func TrashStackPush(stackP *TrashStack, dataP unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(stackP.Native())
+	inArgs[1].SetPointer(dataP)
+
+	err := trashStackPushFunction_Set()
+	if err == nil {
+		trashStackPushFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var tryMallocFunction *gi.Function
+var tryMallocFunction_Once sync.Once
+
+func tryMallocFunction_Set() error {
+	var err error
+	tryMallocFunction_Once.Do(func() {
+		tryMallocFunction, err = gi.FunctionInvokerNew("GLib", "try_malloc")
+	})
+	return err
+}
+
+// TryMalloc is a representation of the C type g_try_malloc.
+func TryMalloc(nBytes uint64) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(nBytes)
+
+	var ret gi.Argument
+
+	err := tryMallocFunction_Set()
+	if err == nil {
+		ret = tryMallocFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var tryMalloc0Function *gi.Function
+var tryMalloc0Function_Once sync.Once
+
+func tryMalloc0Function_Set() error {
+	var err error
+	tryMalloc0Function_Once.Do(func() {
+		tryMalloc0Function, err = gi.FunctionInvokerNew("GLib", "try_malloc0")
+	})
+	return err
+}
+
+// TryMalloc0 is a representation of the C type g_try_malloc0.
+func TryMalloc0(nBytes uint64) unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetUint64(nBytes)
+
+	var ret gi.Argument
+
+	err := tryMalloc0Function_Set()
+	if err == nil {
+		ret = tryMalloc0Function.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var tryMalloc0NFunction *gi.Function
+var tryMalloc0NFunction_Once sync.Once
+
+func tryMalloc0NFunction_Set() error {
+	var err error
+	tryMalloc0NFunction_Once.Do(func() {
+		tryMalloc0NFunction, err = gi.FunctionInvokerNew("GLib", "try_malloc0_n")
+	})
+	return err
+}
+
+// TryMalloc0N is a representation of the C type g_try_malloc0_n.
+func TryMalloc0N(nBlocks uint64, nBlockBytes uint64) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint64(nBlocks)
+	inArgs[1].SetUint64(nBlockBytes)
+
+	var ret gi.Argument
+
+	err := tryMalloc0NFunction_Set()
+	if err == nil {
+		ret = tryMalloc0NFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var tryMallocNFunction *gi.Function
+var tryMallocNFunction_Once sync.Once
+
+func tryMallocNFunction_Set() error {
+	var err error
+	tryMallocNFunction_Once.Do(func() {
+		tryMallocNFunction, err = gi.FunctionInvokerNew("GLib", "try_malloc_n")
+	})
+	return err
+}
+
+// TryMallocN is a representation of the C type g_try_malloc_n.
+func TryMallocN(nBlocks uint64, nBlockBytes uint64) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetUint64(nBlocks)
+	inArgs[1].SetUint64(nBlockBytes)
+
+	var ret gi.Argument
+
+	err := tryMallocNFunction_Set()
+	if err == nil {
+		ret = tryMallocNFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var tryReallocFunction *gi.Function
+var tryReallocFunction_Once sync.Once
+
+func tryReallocFunction_Set() error {
+	var err error
+	tryReallocFunction_Once.Do(func() {
+		tryReallocFunction, err = gi.FunctionInvokerNew("GLib", "try_realloc")
+	})
+	return err
+}
+
+// TryRealloc is a representation of the C type g_try_realloc.
+func TryRealloc(mem unsafe.Pointer, nBytes uint64) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(mem)
+	inArgs[1].SetUint64(nBytes)
+
+	var ret gi.Argument
+
+	err := tryReallocFunction_Set()
+	if err == nil {
+		ret = tryReallocFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var tryReallocNFunction *gi.Function
+var tryReallocNFunction_Once sync.Once
+
+func tryReallocNFunction_Set() error {
+	var err error
+	tryReallocNFunction_Once.Do(func() {
+		tryReallocNFunction, err = gi.FunctionInvokerNew("GLib", "try_realloc_n")
+	})
+	return err
+}
+
+// TryReallocN is a representation of the C type g_try_realloc_n.
+func TryReallocN(mem unsafe.Pointer, nBlocks uint64, nBlockBytes uint64) unsafe.Pointer {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(mem)
+	inArgs[1].SetUint64(nBlocks)
+	inArgs[2].SetUint64(nBlockBytes)
+
+	var ret gi.Argument
+
+	err := tryReallocNFunction_Set()
+	if err == nil {
+		ret = tryReallocNFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_ucs4_to_utf16' : parameter 'str' of type 'gunichar' not supported
 
@@ -10291,7 +12225,7 @@ func VariantTypeStringScan(string_ string, limit string) (bool, string) {
 
 // UNSUPPORTED : C value 'g_vasprintf' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_vfprintf' : parameter 'file' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_vfprintf' : parameter 'args' of type 'va_list' not supported
 
 // UNSUPPORTED : C value 'g_vprintf' : parameter 'args' of type 'va_list' not supported
 

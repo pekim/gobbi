@@ -9103,7 +9103,38 @@ func (recv *Window) GetChildren() *glib.List {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_window_get_children_with_user_data' : parameter 'user_data' of type 'gpointer' not supported
+var windowGetChildrenWithUserDataFunction *gi.Function
+var windowGetChildrenWithUserDataFunction_Once sync.Once
+
+func windowGetChildrenWithUserDataFunction_Set() error {
+	var err error
+	windowGetChildrenWithUserDataFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowGetChildrenWithUserDataFunction, err = windowObject.InvokerNew("get_children_with_user_data")
+	})
+	return err
+}
+
+// GetChildrenWithUserData is a representation of the C type gdk_window_get_children_with_user_data.
+func (recv *Window) GetChildrenWithUserData(userData unsafe.Pointer) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(userData)
+
+	var ret gi.Argument
+
+	err := windowGetChildrenWithUserDataFunction_Set()
+	if err == nil {
+		ret = windowGetChildrenWithUserDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var windowGetClipRegionFunction *gi.Function
 var windowGetClipRegionFunction_Once sync.Once
@@ -10321,7 +10352,37 @@ func (recv *Window) GetUpdateArea() *cairo.Region {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_window_get_user_data' : parameter 'data' of type 'gpointer' not supported
+var windowGetUserDataFunction *gi.Function
+var windowGetUserDataFunction_Once sync.Once
+
+func windowGetUserDataFunction_Set() error {
+	var err error
+	windowGetUserDataFunction_Once.Do(func() {
+		err = windowObject_Set()
+		if err != nil {
+			return
+		}
+		windowGetUserDataFunction, err = windowObject.InvokerNew("get_user_data")
+	})
+	return err
+}
+
+// GetUserData is a representation of the C type gdk_window_get_user_data.
+func (recv *Window) GetUserData() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := windowGetUserDataFunction_Set()
+	if err == nil {
+		windowGetUserDataFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Pointer()
+
+	return out0
+}
 
 var windowGetVisibleRegionFunction *gi.Function
 var windowGetVisibleRegionFunction_Once sync.Once
@@ -12791,7 +12852,33 @@ func (recv *Window) ConnectFromEmbedder(handler func(instance *Window, embedderX
 	return callback.ConnectSignal(recv.Native(), "from-embedder", marshal)
 }
 
-// UNSUPPORTED : C value 'moved-to-rect' : parameter 'flipped_rect' of type 'gpointer' not supported
+/*
+ConnectMovedToRect connects a callback to the 'moved-to-rect' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectMovedToRect(handler func(instance *Window, flippedRect unsafe.Pointer, finalRect unsafe.Pointer, flippedX bool, flippedY bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetPointer()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetPointer()
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := object3.GetBoolean()
+
+		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
+		arg4 := object4.GetBoolean()
+
+		handler(argInstance, arg1, arg2, arg3, arg4)
+	}
+
+	return callback.ConnectSignal(recv.Native(), "moved-to-rect", marshal)
+}
 
 /*
 ConnectPickEmbeddedChild connects a callback to the 'pick-embedded-child' signal of the Window.

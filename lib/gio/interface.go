@@ -1757,9 +1757,70 @@ func (recv *AsyncResult) GetSourceObject() *gobject.Object {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_async_result_get_user_data' : return type 'gpointer' not supported
+var asyncResultGetUserDataFunction *gi.Function
+var asyncResultGetUserDataFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_async_result_is_tagged' : parameter 'source_tag' of type 'gpointer' not supported
+func asyncResultGetUserDataFunction_Set() error {
+	var err error
+	asyncResultGetUserDataFunction_Once.Do(func() {
+		err = asyncResultInterface_Set()
+		if err != nil {
+			return
+		}
+		asyncResultGetUserDataFunction, err = asyncResultInterface.InvokerNew("get_user_data")
+	})
+	return err
+}
+
+// GetUserData is a representation of the C type g_async_result_get_user_data.
+func (recv *AsyncResult) GetUserData() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := asyncResultGetUserDataFunction_Set()
+	if err == nil {
+		ret = asyncResultGetUserDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var asyncResultIsTaggedFunction *gi.Function
+var asyncResultIsTaggedFunction_Once sync.Once
+
+func asyncResultIsTaggedFunction_Set() error {
+	var err error
+	asyncResultIsTaggedFunction_Once.Do(func() {
+		err = asyncResultInterface_Set()
+		if err != nil {
+			return
+		}
+		asyncResultIsTaggedFunction, err = asyncResultInterface.InvokerNew("is_tagged")
+	})
+	return err
+}
+
+// IsTagged is a representation of the C type g_async_result_is_tagged.
+func (recv *AsyncResult) IsTagged(sourceTag unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(sourceTag)
+
+	var ret gi.Argument
+
+	err := asyncResultIsTaggedFunction_Set()
+	if err == nil {
+		ret = asyncResultIsTaggedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var asyncResultLegacyPropagateErrorFunction *gi.Function
 var asyncResultLegacyPropagateErrorFunction_Once sync.Once
@@ -4922,7 +4983,42 @@ func (recv *File) ReplaceReadwrite(etag string, makeBackup bool, flags FileCreat
 
 // UNSUPPORTED : C value 'g_file_resolve_relative_path' : return type 'File' not supported
 
-// UNSUPPORTED : C value 'g_file_set_attribute' : parameter 'value_p' of type 'gpointer' not supported
+var fileSetAttributeFunction *gi.Function
+var fileSetAttributeFunction_Once sync.Once
+
+func fileSetAttributeFunction_Set() error {
+	var err error
+	fileSetAttributeFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileSetAttributeFunction, err = fileInterface.InvokerNew("set_attribute")
+	})
+	return err
+}
+
+// SetAttribute is a representation of the C type g_file_set_attribute.
+func (recv *File) SetAttribute(attribute string, type_ FileAttributeType, valueP unsafe.Pointer, flags FileQueryInfoFlags, cancellable *Cancellable) bool {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetInt32(int32(type_))
+	inArgs[3].SetPointer(valueP)
+	inArgs[4].SetInt32(int32(flags))
+	inArgs[5].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileSetAttributeFunction_Set()
+	if err == nil {
+		ret = fileSetAttributeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileSetAttributeByteStringFunction *gi.Function
 var fileSetAttributeByteStringFunction_Once sync.Once
@@ -5557,7 +5653,38 @@ func (recv *ListModel) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_list_model_get_item' : return type 'gpointer' not supported
+var listModelGetItemFunction *gi.Function
+var listModelGetItemFunction_Once sync.Once
+
+func listModelGetItemFunction_Set() error {
+	var err error
+	listModelGetItemFunction_Once.Do(func() {
+		err = listModelInterface_Set()
+		if err != nil {
+			return
+		}
+		listModelGetItemFunction, err = listModelInterface.InvokerNew("get_item")
+	})
+	return err
+}
+
+// GetItem is a representation of the C type g_list_model_get_item.
+func (recv *ListModel) GetItem(position uint32) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(position)
+
+	var ret gi.Argument
+
+	err := listModelGetItemFunction_Set()
+	if err == nil {
+		ret = listModelGetItemFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_list_model_get_item_type' : return type 'GType' not supported
 

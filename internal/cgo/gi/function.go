@@ -6,6 +6,7 @@ import "C"
 
 import (
 	"fmt"
+	"github.com/pekim/gobbi/internal/cgo"
 	"unsafe"
 )
 
@@ -88,7 +89,7 @@ func (fi *Function) Invoke(in []Argument, out []Argument) Argument {
 		&err,
 	) == C.TRUE
 
-	if tracing() {
+	if cgo.Tracing() {
 		fi.trace(in, out, returnValue)
 	}
 
@@ -107,7 +108,7 @@ func (fi *Function) Invoke(in []Argument, out []Argument) Argument {
 }
 
 func (fi *Function) trace(in []Argument, out []Argument, returnValue Argument) {
-	trace(fmt.Sprintf("%s\n%s%s%s\n",
+	cgo.Trace(fmt.Sprintf("%s\n%s%s%s\n",
 		fi.fullName,
 		fi.formatTraceData(in, "in", len(in) > 0),
 		fi.formatTraceData(out, "out", len(out) > 0),

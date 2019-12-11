@@ -960,7 +960,37 @@ func (recv *Document) GetCurrentPageNumber() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_document_get_document' : return type 'gpointer' not supported
+var documentGetDocumentFunction *gi.Function
+var documentGetDocumentFunction_Once sync.Once
+
+func documentGetDocumentFunction_Set() error {
+	var err error
+	documentGetDocumentFunction_Once.Do(func() {
+		err = documentInterface_Set()
+		if err != nil {
+			return
+		}
+		documentGetDocumentFunction, err = documentInterface.InvokerNew("get_document")
+	})
+	return err
+}
+
+// GetDocument is a representation of the C type atk_document_get_document.
+func (recv *Document) GetDocument() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := documentGetDocumentFunction_Set()
+	if err == nil {
+		ret = documentGetDocumentFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var documentGetDocumentTypeFunction *gi.Function
 var documentGetDocumentTypeFunction_Once sync.Once

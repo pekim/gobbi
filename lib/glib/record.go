@@ -226,21 +226,189 @@ func (recv *AsyncQueue) Lock() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_async_queue_pop' : return type 'gpointer' not supported
+var asyncQueuePopFunction *gi.Function
+var asyncQueuePopFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_async_queue_pop_unlocked' : return type 'gpointer' not supported
+func asyncQueuePopFunction_Set() error {
+	var err error
+	asyncQueuePopFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueuePopFunction, err = asyncQueueStruct.InvokerNew("pop")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_async_queue_push' : parameter 'data' of type 'gpointer' not supported
+// Pop is a representation of the C type g_async_queue_pop.
+func (recv *AsyncQueue) Pop() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
 
-// UNSUPPORTED : C value 'g_async_queue_push_front' : parameter 'item' of type 'gpointer' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_async_queue_push_front_unlocked' : parameter 'item' of type 'gpointer' not supported
+	err := asyncQueuePopFunction_Set()
+	if err == nil {
+		ret = asyncQueuePopFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_async_queue_push_sorted' : parameter 'data' of type 'gpointer' not supported
+	retGo := ret.Pointer()
 
-// UNSUPPORTED : C value 'g_async_queue_push_sorted_unlocked' : parameter 'data' of type 'gpointer' not supported
+	return retGo
+}
 
-// UNSUPPORTED : C value 'g_async_queue_push_unlocked' : parameter 'data' of type 'gpointer' not supported
+var asyncQueuePopUnlockedFunction *gi.Function
+var asyncQueuePopUnlockedFunction_Once sync.Once
+
+func asyncQueuePopUnlockedFunction_Set() error {
+	var err error
+	asyncQueuePopUnlockedFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueuePopUnlockedFunction, err = asyncQueueStruct.InvokerNew("pop_unlocked")
+	})
+	return err
+}
+
+// PopUnlocked is a representation of the C type g_async_queue_pop_unlocked.
+func (recv *AsyncQueue) PopUnlocked() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := asyncQueuePopUnlockedFunction_Set()
+	if err == nil {
+		ret = asyncQueuePopUnlockedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var asyncQueuePushFunction *gi.Function
+var asyncQueuePushFunction_Once sync.Once
+
+func asyncQueuePushFunction_Set() error {
+	var err error
+	asyncQueuePushFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueuePushFunction, err = asyncQueueStruct.InvokerNew("push")
+	})
+	return err
+}
+
+// Push is a representation of the C type g_async_queue_push.
+func (recv *AsyncQueue) Push(data unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	err := asyncQueuePushFunction_Set()
+	if err == nil {
+		asyncQueuePushFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var asyncQueuePushFrontFunction *gi.Function
+var asyncQueuePushFrontFunction_Once sync.Once
+
+func asyncQueuePushFrontFunction_Set() error {
+	var err error
+	asyncQueuePushFrontFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueuePushFrontFunction, err = asyncQueueStruct.InvokerNew("push_front")
+	})
+	return err
+}
+
+// PushFront is a representation of the C type g_async_queue_push_front.
+func (recv *AsyncQueue) PushFront(item unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(item)
+
+	err := asyncQueuePushFrontFunction_Set()
+	if err == nil {
+		asyncQueuePushFrontFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var asyncQueuePushFrontUnlockedFunction *gi.Function
+var asyncQueuePushFrontUnlockedFunction_Once sync.Once
+
+func asyncQueuePushFrontUnlockedFunction_Set() error {
+	var err error
+	asyncQueuePushFrontUnlockedFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueuePushFrontUnlockedFunction, err = asyncQueueStruct.InvokerNew("push_front_unlocked")
+	})
+	return err
+}
+
+// PushFrontUnlocked is a representation of the C type g_async_queue_push_front_unlocked.
+func (recv *AsyncQueue) PushFrontUnlocked(item unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(item)
+
+	err := asyncQueuePushFrontUnlockedFunction_Set()
+	if err == nil {
+		asyncQueuePushFrontUnlockedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_async_queue_push_sorted' : parameter 'func' of type 'CompareDataFunc' not supported
+
+// UNSUPPORTED : C value 'g_async_queue_push_sorted_unlocked' : parameter 'func' of type 'CompareDataFunc' not supported
+
+var asyncQueuePushUnlockedFunction *gi.Function
+var asyncQueuePushUnlockedFunction_Once sync.Once
+
+func asyncQueuePushUnlockedFunction_Set() error {
+	var err error
+	asyncQueuePushUnlockedFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueuePushUnlockedFunction, err = asyncQueueStruct.InvokerNew("push_unlocked")
+	})
+	return err
+}
+
+// PushUnlocked is a representation of the C type g_async_queue_push_unlocked.
+func (recv *AsyncQueue) PushUnlocked(data unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	err := asyncQueuePushUnlockedFunction_Set()
+	if err == nil {
+		asyncQueuePushUnlockedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var asyncQueueRefFunction *gi.Function
 var asyncQueueRefFunction_Once sync.Once
@@ -302,25 +470,271 @@ func (recv *AsyncQueue) RefUnlocked() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_async_queue_remove' : parameter 'item' of type 'gpointer' not supported
+var asyncQueueRemoveFunction *gi.Function
+var asyncQueueRemoveFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_async_queue_remove_unlocked' : parameter 'item' of type 'gpointer' not supported
+func asyncQueueRemoveFunction_Set() error {
+	var err error
+	asyncQueueRemoveFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueueRemoveFunction, err = asyncQueueStruct.InvokerNew("remove")
+	})
+	return err
+}
+
+// Remove is a representation of the C type g_async_queue_remove.
+func (recv *AsyncQueue) Remove(item unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(item)
+
+	var ret gi.Argument
+
+	err := asyncQueueRemoveFunction_Set()
+	if err == nil {
+		ret = asyncQueueRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var asyncQueueRemoveUnlockedFunction *gi.Function
+var asyncQueueRemoveUnlockedFunction_Once sync.Once
+
+func asyncQueueRemoveUnlockedFunction_Set() error {
+	var err error
+	asyncQueueRemoveUnlockedFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueueRemoveUnlockedFunction, err = asyncQueueStruct.InvokerNew("remove_unlocked")
+	})
+	return err
+}
+
+// RemoveUnlocked is a representation of the C type g_async_queue_remove_unlocked.
+func (recv *AsyncQueue) RemoveUnlocked(item unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(item)
+
+	var ret gi.Argument
+
+	err := asyncQueueRemoveUnlockedFunction_Set()
+	if err == nil {
+		ret = asyncQueueRemoveUnlockedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_async_queue_sort' : parameter 'func' of type 'CompareDataFunc' not supported
 
 // UNSUPPORTED : C value 'g_async_queue_sort_unlocked' : parameter 'func' of type 'CompareDataFunc' not supported
 
-// UNSUPPORTED : C value 'g_async_queue_timed_pop' : return type 'gpointer' not supported
+var asyncQueueTimedPopFunction *gi.Function
+var asyncQueueTimedPopFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_async_queue_timed_pop_unlocked' : return type 'gpointer' not supported
+func asyncQueueTimedPopFunction_Set() error {
+	var err error
+	asyncQueueTimedPopFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueueTimedPopFunction, err = asyncQueueStruct.InvokerNew("timed_pop")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_async_queue_timeout_pop' : return type 'gpointer' not supported
+// TimedPop is a representation of the C type g_async_queue_timed_pop.
+func (recv *AsyncQueue) TimedPop(endTime *TimeVal) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(endTime.Native())
 
-// UNSUPPORTED : C value 'g_async_queue_timeout_pop_unlocked' : return type 'gpointer' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_async_queue_try_pop' : return type 'gpointer' not supported
+	err := asyncQueueTimedPopFunction_Set()
+	if err == nil {
+		ret = asyncQueueTimedPopFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_async_queue_try_pop_unlocked' : return type 'gpointer' not supported
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var asyncQueueTimedPopUnlockedFunction *gi.Function
+var asyncQueueTimedPopUnlockedFunction_Once sync.Once
+
+func asyncQueueTimedPopUnlockedFunction_Set() error {
+	var err error
+	asyncQueueTimedPopUnlockedFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueueTimedPopUnlockedFunction, err = asyncQueueStruct.InvokerNew("timed_pop_unlocked")
+	})
+	return err
+}
+
+// TimedPopUnlocked is a representation of the C type g_async_queue_timed_pop_unlocked.
+func (recv *AsyncQueue) TimedPopUnlocked(endTime *TimeVal) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(endTime.Native())
+
+	var ret gi.Argument
+
+	err := asyncQueueTimedPopUnlockedFunction_Set()
+	if err == nil {
+		ret = asyncQueueTimedPopUnlockedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var asyncQueueTimeoutPopFunction *gi.Function
+var asyncQueueTimeoutPopFunction_Once sync.Once
+
+func asyncQueueTimeoutPopFunction_Set() error {
+	var err error
+	asyncQueueTimeoutPopFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueueTimeoutPopFunction, err = asyncQueueStruct.InvokerNew("timeout_pop")
+	})
+	return err
+}
+
+// TimeoutPop is a representation of the C type g_async_queue_timeout_pop.
+func (recv *AsyncQueue) TimeoutPop(timeout uint64) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint64(timeout)
+
+	var ret gi.Argument
+
+	err := asyncQueueTimeoutPopFunction_Set()
+	if err == nil {
+		ret = asyncQueueTimeoutPopFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var asyncQueueTimeoutPopUnlockedFunction *gi.Function
+var asyncQueueTimeoutPopUnlockedFunction_Once sync.Once
+
+func asyncQueueTimeoutPopUnlockedFunction_Set() error {
+	var err error
+	asyncQueueTimeoutPopUnlockedFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueueTimeoutPopUnlockedFunction, err = asyncQueueStruct.InvokerNew("timeout_pop_unlocked")
+	})
+	return err
+}
+
+// TimeoutPopUnlocked is a representation of the C type g_async_queue_timeout_pop_unlocked.
+func (recv *AsyncQueue) TimeoutPopUnlocked(timeout uint64) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint64(timeout)
+
+	var ret gi.Argument
+
+	err := asyncQueueTimeoutPopUnlockedFunction_Set()
+	if err == nil {
+		ret = asyncQueueTimeoutPopUnlockedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var asyncQueueTryPopFunction *gi.Function
+var asyncQueueTryPopFunction_Once sync.Once
+
+func asyncQueueTryPopFunction_Set() error {
+	var err error
+	asyncQueueTryPopFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueueTryPopFunction, err = asyncQueueStruct.InvokerNew("try_pop")
+	})
+	return err
+}
+
+// TryPop is a representation of the C type g_async_queue_try_pop.
+func (recv *AsyncQueue) TryPop() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := asyncQueueTryPopFunction_Set()
+	if err == nil {
+		ret = asyncQueueTryPopFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var asyncQueueTryPopUnlockedFunction *gi.Function
+var asyncQueueTryPopUnlockedFunction_Once sync.Once
+
+func asyncQueueTryPopUnlockedFunction_Set() error {
+	var err error
+	asyncQueueTryPopUnlockedFunction_Once.Do(func() {
+		err = asyncQueueStruct_Set()
+		if err != nil {
+			return
+		}
+		asyncQueueTryPopUnlockedFunction, err = asyncQueueStruct.InvokerNew("try_pop_unlocked")
+	})
+	return err
+}
+
+// TryPopUnlocked is a representation of the C type g_async_queue_try_pop_unlocked.
+func (recv *AsyncQueue) TryPopUnlocked() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := asyncQueueTryPopUnlockedFunction_Set()
+	if err == nil {
+		ret = asyncQueueTryPopUnlockedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var asyncQueueUnlockFunction *gi.Function
 var asyncQueueUnlockFunction_Once sync.Once
@@ -3761,7 +4175,34 @@ func (recv *Date) SubtractYears(nYears uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_date_to_struct_tm' : parameter 'tm' of type 'gpointer' not supported
+var dateToStructTmFunction *gi.Function
+var dateToStructTmFunction_Once sync.Once
+
+func dateToStructTmFunction_Set() error {
+	var err error
+	dateToStructTmFunction_Once.Do(func() {
+		err = dateStruct_Set()
+		if err != nil {
+			return
+		}
+		dateToStructTmFunction, err = dateStruct.InvokerNew("to_struct_tm")
+	})
+	return err
+}
+
+// ToStructTm is a representation of the C type g_date_to_struct_tm.
+func (recv *Date) ToStructTm(tm unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tm)
+
+	err := dateToStructTmFunction_Set()
+	if err == nil {
+		dateToStructTmFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dateValidFunction *gi.Function
 var dateValidFunction_Once sync.Once
@@ -5902,7 +6343,40 @@ func (recv *HashTableIter) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_hash_table_iter_init' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
-// UNSUPPORTED : C value 'g_hash_table_iter_next' : parameter 'key' of type 'gpointer' not supported
+var hashTableIterNextFunction *gi.Function
+var hashTableIterNextFunction_Once sync.Once
+
+func hashTableIterNextFunction_Set() error {
+	var err error
+	hashTableIterNextFunction_Once.Do(func() {
+		err = hashTableIterStruct_Set()
+		if err != nil {
+			return
+		}
+		hashTableIterNextFunction, err = hashTableIterStruct.InvokerNew("next")
+	})
+	return err
+}
+
+// Next is a representation of the C type g_hash_table_iter_next.
+func (recv *HashTableIter) Next() (bool, unsafe.Pointer, unsafe.Pointer) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := hashTableIterNextFunction_Set()
+	if err == nil {
+		ret = hashTableIterNextFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Pointer()
+	out1 := outArgs[1].Pointer()
+
+	return retGo, out0, out1
+}
 
 var hashTableIterRemoveFunction *gi.Function
 var hashTableIterRemoveFunction_Once sync.Once
@@ -5932,7 +6406,34 @@ func (recv *HashTableIter) Remove() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_hash_table_iter_replace' : parameter 'value' of type 'gpointer' not supported
+var hashTableIterReplaceFunction *gi.Function
+var hashTableIterReplaceFunction_Once sync.Once
+
+func hashTableIterReplaceFunction_Set() error {
+	var err error
+	hashTableIterReplaceFunction_Once.Do(func() {
+		err = hashTableIterStruct_Set()
+		if err != nil {
+			return
+		}
+		hashTableIterReplaceFunction, err = hashTableIterStruct.InvokerNew("replace")
+	})
+	return err
+}
+
+// Replace is a representation of the C type g_hash_table_iter_replace.
+func (recv *HashTableIter) Replace(value unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(value)
+
+	err := hashTableIterReplaceFunction_Set()
+	if err == nil {
+		hashTableIterReplaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var hashTableIterStealFunction *gi.Function
 var hashTableIterStealFunction_Once sync.Once
@@ -6180,9 +6681,30 @@ func (recv *Hook) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
+// FieldData returns the C field 'data'.
+func (recv *Hook) FieldData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := hookStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(hookStruct, recv.Native(), "data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldData sets the value of the C field 'data'.
+func (recv *Hook) SetFieldData(value unsafe.Pointer) {
+	err := hookStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(hookStruct, recv.Native(), "data", argValue)
+}
 
 // FieldNext returns the C field 'next'.
 func (recv *Hook) FieldNext() *Hook {
@@ -6309,9 +6831,30 @@ func (recv *Hook) SetFieldFlags(value uint32) {
 	gi.StructFieldSet(hookStruct, recv.Native(), "flags", argValue)
 }
 
-// UNSUPPORTED : C value 'func' : for field getter : no Go type for 'gpointer'
+// FieldFunc returns the C field 'func'.
+func (recv *Hook) FieldFunc() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := hookStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'func' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(hookStruct, recv.Native(), "func")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldFunc sets the value of the C field 'func'.
+func (recv *Hook) SetFieldFunc(value unsafe.Pointer) {
+	err := hookStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(hookStruct, recv.Native(), "func", argValue)
+}
 
 // UNSUPPORTED : C value 'destroy' : for field getter : no Go type for 'DestroyNotify'
 
@@ -6495,9 +7038,30 @@ func (recv *HookList) SetFieldHooks(value *Hook) {
 	gi.StructFieldSet(hookListStruct, recv.Native(), "hooks", argValue)
 }
 
-// UNSUPPORTED : C value 'dummy3' : for field getter : no Go type for 'gpointer'
+// FieldDummy3 returns the C field 'dummy3'.
+func (recv *HookList) FieldDummy3() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := hookListStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'dummy3' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(hookListStruct, recv.Native(), "dummy3")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldDummy3 sets the value of the C field 'dummy3'.
+func (recv *HookList) SetFieldDummy3(value unsafe.Pointer) {
+	err := hookListStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(hookListStruct, recv.Native(), "dummy3", argValue)
+}
 
 // UNSUPPORTED : C value 'finalize_hook' : for field getter : no Go type for 'HookFinalizeFunc'
 
@@ -9218,9 +9782,30 @@ func (recv *List) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
+// FieldData returns the C field 'data'.
+func (recv *List) FieldData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := listStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(listStruct, recv.Native(), "data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldData sets the value of the C field 'data'.
+func (recv *List) SetFieldData(value unsafe.Pointer) {
+	err := listStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(listStruct, recv.Native(), "data", argValue)
+}
 
 // UNSUPPORTED : C value 'next' : for field getter : no Go type for 'GLib.List'
 
@@ -9300,9 +9885,30 @@ func (recv *LogField) SetFieldKey(value string) {
 	gi.StructFieldSet(logFieldStruct, recv.Native(), "key", argValue)
 }
 
-// UNSUPPORTED : C value 'value' : for field getter : no Go type for 'gpointer'
+// FieldValue returns the C field 'value'.
+func (recv *LogField) FieldValue() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := logFieldStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'value' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(logFieldStruct, recv.Native(), "value")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldValue sets the value of the C field 'value'.
+func (recv *LogField) SetFieldValue(value unsafe.Pointer) {
+	err := logFieldStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(logFieldStruct, recv.Native(), "value", argValue)
+}
 
 // FieldLength returns the C field 'length'.
 func (recv *LogField) FieldLength() int32 {
@@ -9496,7 +10102,39 @@ func (recv *MainContext) Dispatch() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_main_context_find_source_by_funcs_user_data' : parameter 'user_data' of type 'gpointer' not supported
+var mainContextFindSourceByFuncsUserDataFunction *gi.Function
+var mainContextFindSourceByFuncsUserDataFunction_Once sync.Once
+
+func mainContextFindSourceByFuncsUserDataFunction_Set() error {
+	var err error
+	mainContextFindSourceByFuncsUserDataFunction_Once.Do(func() {
+		err = mainContextStruct_Set()
+		if err != nil {
+			return
+		}
+		mainContextFindSourceByFuncsUserDataFunction, err = mainContextStruct.InvokerNew("find_source_by_funcs_user_data")
+	})
+	return err
+}
+
+// FindSourceByFuncsUserData is a representation of the C type g_main_context_find_source_by_funcs_user_data.
+func (recv *MainContext) FindSourceByFuncsUserData(funcs *SourceFuncs, userData unsafe.Pointer) *Source {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(funcs.Native())
+	inArgs[2].SetPointer(userData)
+
+	var ret gi.Argument
+
+	err := mainContextFindSourceByFuncsUserDataFunction_Set()
+	if err == nil {
+		ret = mainContextFindSourceByFuncsUserDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SourceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var mainContextFindSourceByIdFunction *gi.Function
 var mainContextFindSourceByIdFunction_Once sync.Once
@@ -9531,7 +10169,38 @@ func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_main_context_find_source_by_user_data' : parameter 'user_data' of type 'gpointer' not supported
+var mainContextFindSourceByUserDataFunction *gi.Function
+var mainContextFindSourceByUserDataFunction_Once sync.Once
+
+func mainContextFindSourceByUserDataFunction_Set() error {
+	var err error
+	mainContextFindSourceByUserDataFunction_Once.Do(func() {
+		err = mainContextStruct_Set()
+		if err != nil {
+			return
+		}
+		mainContextFindSourceByUserDataFunction, err = mainContextStruct.InvokerNew("find_source_by_user_data")
+	})
+	return err
+}
+
+// FindSourceByUserData is a representation of the C type g_main_context_find_source_by_user_data.
+func (recv *MainContext) FindSourceByUserData(userData unsafe.Pointer) *Source {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(userData)
+
+	var ret gi.Argument
+
+	err := mainContextFindSourceByUserDataFunction_Set()
+	if err == nil {
+		ret = mainContextFindSourceByUserDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SourceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_main_context_get_poll_func' : return type 'PollFunc' not supported
 
@@ -10430,7 +11099,7 @@ func (recv *MarkupParseContext) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_markup_parse_context_new' : parameter 'user_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_markup_parse_context_new' : parameter 'user_data_dnotify' of type 'DestroyNotify' not supported
 
 var markupParseContextEndParseFunction *gi.Function
 var markupParseContextEndParseFunction_Once sync.Once
@@ -10556,7 +11225,37 @@ func (recv *MarkupParseContext) GetPosition(lineNumber int32, charNumber int32) 
 	return
 }
 
-// UNSUPPORTED : C value 'g_markup_parse_context_get_user_data' : return type 'gpointer' not supported
+var markupParseContextGetUserDataFunction *gi.Function
+var markupParseContextGetUserDataFunction_Once sync.Once
+
+func markupParseContextGetUserDataFunction_Set() error {
+	var err error
+	markupParseContextGetUserDataFunction_Once.Do(func() {
+		err = markupParseContextStruct_Set()
+		if err != nil {
+			return
+		}
+		markupParseContextGetUserDataFunction, err = markupParseContextStruct.InvokerNew("get_user_data")
+	})
+	return err
+}
+
+// GetUserData is a representation of the C type g_markup_parse_context_get_user_data.
+func (recv *MarkupParseContext) GetUserData() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := markupParseContextGetUserDataFunction_Set()
+	if err == nil {
+		ret = markupParseContextGetUserDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var markupParseContextParseFunction *gi.Function
 var markupParseContextParseFunction_Once sync.Once
@@ -10592,9 +11291,67 @@ func (recv *MarkupParseContext) Parse(text string, textLen int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_markup_parse_context_pop' : return type 'gpointer' not supported
+var markupParseContextPopFunction *gi.Function
+var markupParseContextPopFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_markup_parse_context_push' : parameter 'user_data' of type 'gpointer' not supported
+func markupParseContextPopFunction_Set() error {
+	var err error
+	markupParseContextPopFunction_Once.Do(func() {
+		err = markupParseContextStruct_Set()
+		if err != nil {
+			return
+		}
+		markupParseContextPopFunction, err = markupParseContextStruct.InvokerNew("pop")
+	})
+	return err
+}
+
+// Pop is a representation of the C type g_markup_parse_context_pop.
+func (recv *MarkupParseContext) Pop() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := markupParseContextPopFunction_Set()
+	if err == nil {
+		ret = markupParseContextPopFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var markupParseContextPushFunction *gi.Function
+var markupParseContextPushFunction_Once sync.Once
+
+func markupParseContextPushFunction_Set() error {
+	var err error
+	markupParseContextPushFunction_Once.Do(func() {
+		err = markupParseContextStruct_Set()
+		if err != nil {
+			return
+		}
+		markupParseContextPushFunction, err = markupParseContextStruct.InvokerNew("push")
+	})
+	return err
+}
+
+// Push is a representation of the C type g_markup_parse_context_push.
+func (recv *MarkupParseContext) Push(parser *MarkupParser, userData unsafe.Pointer) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(parser.Native())
+	inArgs[2].SetPointer(userData)
+
+	err := markupParseContextPushFunction_Set()
+	if err == nil {
+		markupParseContextPushFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var markupParseContextRefFunction *gi.Function
 var markupParseContextRefFunction_Once sync.Once
@@ -11344,9 +12101,30 @@ func (recv *Node) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
+// FieldData returns the C field 'data'.
+func (recv *Node) FieldData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := nodeStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(nodeStruct, recv.Native(), "data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldData sets the value of the C field 'data'.
+func (recv *Node) SetFieldData(value unsafe.Pointer) {
+	err := nodeStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(nodeStruct, recv.Native(), "data", argValue)
+}
 
 // FieldNext returns the C field 'next'.
 func (recv *Node) FieldNext() *Node {
@@ -11448,7 +12226,38 @@ func (recv *Node) SetFieldChildren(value *Node) {
 	gi.StructFieldSet(nodeStruct, recv.Native(), "children", argValue)
 }
 
-// UNSUPPORTED : C value 'g_node_child_index' : parameter 'data' of type 'gpointer' not supported
+var nodeChildIndexFunction *gi.Function
+var nodeChildIndexFunction_Once sync.Once
+
+func nodeChildIndexFunction_Set() error {
+	var err error
+	nodeChildIndexFunction_Once.Do(func() {
+		err = nodeStruct_Set()
+		if err != nil {
+			return
+		}
+		nodeChildIndexFunction, err = nodeStruct.InvokerNew("child_index")
+	})
+	return err
+}
+
+// ChildIndex is a representation of the C type g_node_child_index.
+func (recv *Node) ChildIndex(data unsafe.Pointer) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := nodeChildIndexFunction_Set()
+	if err == nil {
+		ret = nodeChildIndexFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
 
 var nodeChildPositionFunction *gi.Function
 var nodeChildPositionFunction_Once sync.Once
@@ -11579,9 +12388,74 @@ func (recv *Node) Destroy() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_node_find' : parameter 'data' of type 'gpointer' not supported
+var nodeFindFunction *gi.Function
+var nodeFindFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_node_find_child' : parameter 'data' of type 'gpointer' not supported
+func nodeFindFunction_Set() error {
+	var err error
+	nodeFindFunction_Once.Do(func() {
+		err = nodeStruct_Set()
+		if err != nil {
+			return
+		}
+		nodeFindFunction, err = nodeStruct.InvokerNew("find")
+	})
+	return err
+}
+
+// Find is a representation of the C type g_node_find.
+func (recv *Node) Find(order TraverseType, flags TraverseFlags, data unsafe.Pointer) *Node {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(order))
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := nodeFindFunction_Set()
+	if err == nil {
+		ret = nodeFindFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := NodeNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var nodeFindChildFunction *gi.Function
+var nodeFindChildFunction_Once sync.Once
+
+func nodeFindChildFunction_Set() error {
+	var err error
+	nodeFindChildFunction_Once.Do(func() {
+		err = nodeStruct_Set()
+		if err != nil {
+			return
+		}
+		nodeFindChildFunction, err = nodeStruct.InvokerNew("find_child")
+	})
+	return err
+}
+
+// FindChild is a representation of the C type g_node_find_child.
+func (recv *Node) FindChild(flags TraverseFlags, data unsafe.Pointer) *Node {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := nodeFindChildFunction_Set()
+	if err == nil {
+		ret = nodeFindChildFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := NodeNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var nodeFirstSiblingFunction *gi.Function
 var nodeFirstSiblingFunction_Once sync.Once
@@ -12137,9 +13011,30 @@ func (recv *Once) SetFieldStatus(value OnceStatus) {
 	gi.StructFieldSet(onceStruct, recv.Native(), "status", argValue)
 }
 
-// UNSUPPORTED : C value 'retval' : for field getter : no Go type for 'gpointer'
+// FieldRetval returns the C field 'retval'.
+func (recv *Once) FieldRetval() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := onceStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'retval' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(onceStruct, recv.Native(), "retval")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldRetval sets the value of the C field 'retval'.
+func (recv *Once) SetFieldRetval(value unsafe.Pointer) {
+	err := onceStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(onceStruct, recv.Native(), "retval", argValue)
+}
 
 // UNSUPPORTED : C value 'g_once_impl' : parameter 'func' of type 'ThreadFunc' not supported
 
@@ -12855,9 +13750,30 @@ func (recv *OptionEntry) SetFieldArg(value OptionArg) {
 	gi.StructFieldSet(optionEntryStruct, recv.Native(), "arg", argValue)
 }
 
-// UNSUPPORTED : C value 'arg_data' : for field getter : no Go type for 'gpointer'
+// FieldArgData returns the C field 'arg_data'.
+func (recv *OptionEntry) FieldArgData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := optionEntryStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'arg_data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(optionEntryStruct, recv.Native(), "arg_data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldArgData sets the value of the C field 'arg_data'.
+func (recv *OptionEntry) SetFieldArgData(value unsafe.Pointer) {
+	err := optionEntryStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(optionEntryStruct, recv.Native(), "arg_data", argValue)
+}
 
 // FieldDescription returns the C field 'description'.
 func (recv *OptionEntry) FieldDescription() string {
@@ -12954,7 +13870,7 @@ func (recv *OptionGroup) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_option_group_new' : parameter 'user_data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_option_group_new' : parameter 'destroy' of type 'DestroyNotify' not supported
 
 var optionGroupAddEntriesFunction *gi.Function
 var optionGroupAddEntriesFunction_Once sync.Once
@@ -13364,11 +14280,95 @@ func (recv *Private) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_private_get' : return type 'gpointer' not supported
+var privateGetFunction *gi.Function
+var privateGetFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_private_replace' : parameter 'value' of type 'gpointer' not supported
+func privateGetFunction_Set() error {
+	var err error
+	privateGetFunction_Once.Do(func() {
+		err = privateStruct_Set()
+		if err != nil {
+			return
+		}
+		privateGetFunction, err = privateStruct.InvokerNew("get")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_private_set' : parameter 'value' of type 'gpointer' not supported
+// Get is a representation of the C type g_private_get.
+func (recv *Private) Get() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := privateGetFunction_Set()
+	if err == nil {
+		ret = privateGetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var privateReplaceFunction *gi.Function
+var privateReplaceFunction_Once sync.Once
+
+func privateReplaceFunction_Set() error {
+	var err error
+	privateReplaceFunction_Once.Do(func() {
+		err = privateStruct_Set()
+		if err != nil {
+			return
+		}
+		privateReplaceFunction, err = privateStruct.InvokerNew("replace")
+	})
+	return err
+}
+
+// Replace is a representation of the C type g_private_replace.
+func (recv *Private) Replace(value unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(value)
+
+	err := privateReplaceFunction_Set()
+	if err == nil {
+		privateReplaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var privateSetFunction *gi.Function
+var privateSetFunction_Once sync.Once
+
+func privateSetFunction_Set() error {
+	var err error
+	privateSetFunction_Once.Do(func() {
+		err = privateStruct_Set()
+		if err != nil {
+			return
+		}
+		privateSetFunction, err = privateStruct.InvokerNew("set")
+	})
+	return err
+}
+
+// Set is a representation of the C type g_private_set.
+func (recv *Private) Set(value unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(value)
+
+	err := privateSetFunction_Set()
+	if err == nil {
+		privateSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // PrivateStruct creates an uninitialised Private.
 func PrivateStruct() *Private {
@@ -13415,9 +14415,30 @@ func (recv *PtrArray) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'pdata' : for field getter : no Go type for 'gpointer'
+// FieldPdata returns the C field 'pdata'.
+func (recv *PtrArray) FieldPdata() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := ptrArrayStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'pdata' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(ptrArrayStruct, recv.Native(), "pdata")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldPdata sets the value of the C field 'pdata'.
+func (recv *PtrArray) SetFieldPdata(value unsafe.Pointer) {
+	err := ptrArrayStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(ptrArrayStruct, recv.Native(), "pdata", argValue)
+}
 
 // FieldLen returns the C field 'len'.
 func (recv *PtrArray) FieldLen() uint32 {
@@ -13586,9 +14607,9 @@ func (recv *Queue) Copy() *Queue {
 
 // UNSUPPORTED : C value 'g_queue_delete_link' : parameter 'link_' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_find' : parameter 'data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_queue_find' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_find_custom' : parameter 'data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_queue_find_custom' : parameter 'func' of type 'CompareFunc' not supported
 
 // UNSUPPORTED : C value 'g_queue_foreach' : parameter 'func' of type 'Func' not supported
 
@@ -13654,7 +14675,38 @@ func (recv *Queue) GetLength() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_queue_index' : parameter 'data' of type 'gpointer' not supported
+var queueIndexFunction *gi.Function
+var queueIndexFunction_Once sync.Once
+
+func queueIndexFunction_Set() error {
+	var err error
+	queueIndexFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queueIndexFunction, err = queueStruct.InvokerNew("index")
+	})
+	return err
+}
+
+// Index is a representation of the C type g_queue_index.
+func (recv *Queue) Index(data unsafe.Pointer) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := queueIndexFunction_Set()
+	if err == nil {
+		ret = queueIndexFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
 
 var queueInitFunction *gi.Function
 var queueInitFunction_Once sync.Once
@@ -13692,7 +14744,7 @@ func (recv *Queue) Init() {
 
 // UNSUPPORTED : C value 'g_queue_insert_before_link' : parameter 'sibling' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_insert_sorted' : parameter 'data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_queue_insert_sorted' : parameter 'func' of type 'CompareDataFunc' not supported
 
 var queueIsEmptyFunction *gi.Function
 var queueIsEmptyFunction_Once sync.Once
@@ -13728,45 +14780,371 @@ func (recv *Queue) IsEmpty() bool {
 
 // UNSUPPORTED : C value 'g_queue_link_index' : parameter 'link_' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_peek_head' : return type 'gpointer' not supported
+var queuePeekHeadFunction *gi.Function
+var queuePeekHeadFunction_Once sync.Once
+
+func queuePeekHeadFunction_Set() error {
+	var err error
+	queuePeekHeadFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queuePeekHeadFunction, err = queueStruct.InvokerNew("peek_head")
+	})
+	return err
+}
+
+// PeekHead is a representation of the C type g_queue_peek_head.
+func (recv *Queue) PeekHead() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := queuePeekHeadFunction_Set()
+	if err == nil {
+		ret = queuePeekHeadFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_queue_peek_head_link' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_peek_nth' : return type 'gpointer' not supported
+var queuePeekNthFunction *gi.Function
+var queuePeekNthFunction_Once sync.Once
+
+func queuePeekNthFunction_Set() error {
+	var err error
+	queuePeekNthFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queuePeekNthFunction, err = queueStruct.InvokerNew("peek_nth")
+	})
+	return err
+}
+
+// PeekNth is a representation of the C type g_queue_peek_nth.
+func (recv *Queue) PeekNth(n uint32) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(n)
+
+	var ret gi.Argument
+
+	err := queuePeekNthFunction_Set()
+	if err == nil {
+		ret = queuePeekNthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_queue_peek_nth_link' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_peek_tail' : return type 'gpointer' not supported
+var queuePeekTailFunction *gi.Function
+var queuePeekTailFunction_Once sync.Once
+
+func queuePeekTailFunction_Set() error {
+	var err error
+	queuePeekTailFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queuePeekTailFunction, err = queueStruct.InvokerNew("peek_tail")
+	})
+	return err
+}
+
+// PeekTail is a representation of the C type g_queue_peek_tail.
+func (recv *Queue) PeekTail() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := queuePeekTailFunction_Set()
+	if err == nil {
+		ret = queuePeekTailFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_queue_peek_tail_link' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_pop_head' : return type 'gpointer' not supported
+var queuePopHeadFunction *gi.Function
+var queuePopHeadFunction_Once sync.Once
+
+func queuePopHeadFunction_Set() error {
+	var err error
+	queuePopHeadFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queuePopHeadFunction, err = queueStruct.InvokerNew("pop_head")
+	})
+	return err
+}
+
+// PopHead is a representation of the C type g_queue_pop_head.
+func (recv *Queue) PopHead() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := queuePopHeadFunction_Set()
+	if err == nil {
+		ret = queuePopHeadFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_queue_pop_head_link' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_pop_nth' : return type 'gpointer' not supported
+var queuePopNthFunction *gi.Function
+var queuePopNthFunction_Once sync.Once
+
+func queuePopNthFunction_Set() error {
+	var err error
+	queuePopNthFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queuePopNthFunction, err = queueStruct.InvokerNew("pop_nth")
+	})
+	return err
+}
+
+// PopNth is a representation of the C type g_queue_pop_nth.
+func (recv *Queue) PopNth(n uint32) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(n)
+
+	var ret gi.Argument
+
+	err := queuePopNthFunction_Set()
+	if err == nil {
+		ret = queuePopNthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_queue_pop_nth_link' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_pop_tail' : return type 'gpointer' not supported
+var queuePopTailFunction *gi.Function
+var queuePopTailFunction_Once sync.Once
+
+func queuePopTailFunction_Set() error {
+	var err error
+	queuePopTailFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queuePopTailFunction, err = queueStruct.InvokerNew("pop_tail")
+	})
+	return err
+}
+
+// PopTail is a representation of the C type g_queue_pop_tail.
+func (recv *Queue) PopTail() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := queuePopTailFunction_Set()
+	if err == nil {
+		ret = queuePopTailFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_queue_pop_tail_link' : return type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_push_head' : parameter 'data' of type 'gpointer' not supported
+var queuePushHeadFunction *gi.Function
+var queuePushHeadFunction_Once sync.Once
+
+func queuePushHeadFunction_Set() error {
+	var err error
+	queuePushHeadFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queuePushHeadFunction, err = queueStruct.InvokerNew("push_head")
+	})
+	return err
+}
+
+// PushHead is a representation of the C type g_queue_push_head.
+func (recv *Queue) PushHead(data unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	err := queuePushHeadFunction_Set()
+	if err == nil {
+		queuePushHeadFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_queue_push_head_link' : parameter 'link_' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_push_nth' : parameter 'data' of type 'gpointer' not supported
+var queuePushNthFunction *gi.Function
+var queuePushNthFunction_Once sync.Once
+
+func queuePushNthFunction_Set() error {
+	var err error
+	queuePushNthFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queuePushNthFunction, err = queueStruct.InvokerNew("push_nth")
+	})
+	return err
+}
+
+// PushNth is a representation of the C type g_queue_push_nth.
+func (recv *Queue) PushNth(data unsafe.Pointer, n int32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+	inArgs[2].SetInt32(n)
+
+	err := queuePushNthFunction_Set()
+	if err == nil {
+		queuePushNthFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_queue_push_nth_link' : parameter 'link_' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_push_tail' : parameter 'data' of type 'gpointer' not supported
+var queuePushTailFunction *gi.Function
+var queuePushTailFunction_Once sync.Once
+
+func queuePushTailFunction_Set() error {
+	var err error
+	queuePushTailFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queuePushTailFunction, err = queueStruct.InvokerNew("push_tail")
+	})
+	return err
+}
+
+// PushTail is a representation of the C type g_queue_push_tail.
+func (recv *Queue) PushTail(data unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	err := queuePushTailFunction_Set()
+	if err == nil {
+		queuePushTailFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_queue_push_tail_link' : parameter 'link_' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_remove' : parameter 'data' of type 'gpointer' not supported
+var queueRemoveFunction *gi.Function
+var queueRemoveFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_queue_remove_all' : parameter 'data' of type 'gpointer' not supported
+func queueRemoveFunction_Set() error {
+	var err error
+	queueRemoveFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queueRemoveFunction, err = queueStruct.InvokerNew("remove")
+	})
+	return err
+}
+
+// Remove is a representation of the C type g_queue_remove.
+func (recv *Queue) Remove(data unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := queueRemoveFunction_Set()
+	if err == nil {
+		ret = queueRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var queueRemoveAllFunction *gi.Function
+var queueRemoveAllFunction_Once sync.Once
+
+func queueRemoveAllFunction_Set() error {
+	var err error
+	queueRemoveAllFunction_Once.Do(func() {
+		err = queueStruct_Set()
+		if err != nil {
+			return
+		}
+		queueRemoveAllFunction, err = queueStruct.InvokerNew("remove_all")
+	})
+	return err
+}
+
+// RemoveAll is a representation of the C type g_queue_remove_all.
+func (recv *Queue) RemoveAll(data unsafe.Pointer) uint32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := queueRemoveAllFunction_Set()
+	if err == nil {
+		ret = queueRemoveAllFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var queueReverseFunction *gi.Function
 var queueReverseFunction_Once sync.Once
@@ -15102,9 +16480,30 @@ func (recv *SList) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'data' : for field getter : no Go type for 'gpointer'
+// FieldData returns the C field 'data'.
+func (recv *SList) FieldData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := sListStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(sListStruct, recv.Native(), "data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldData sets the value of the C field 'data'.
+func (recv *SList) SetFieldData(value unsafe.Pointer) {
+	err := sListStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(sListStruct, recv.Native(), "data", argValue)
+}
 
 // UNSUPPORTED : C value 'next' : for field getter : no Go type for 'GLib.SList'
 
@@ -15155,9 +16554,30 @@ func (recv *Scanner) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'user_data' : for field getter : no Go type for 'gpointer'
+// FieldUserData returns the C field 'user_data'.
+func (recv *Scanner) FieldUserData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := scannerStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'user_data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(scannerStruct, recv.Native(), "user_data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldUserData sets the value of the C field 'user_data'.
+func (recv *Scanner) SetFieldUserData(value unsafe.Pointer) {
+	err := scannerStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(scannerStruct, recv.Native(), "user_data", argValue)
+}
 
 // FieldMaxParseErrors returns the C field 'max_parse_errors'.
 func (recv *Scanner) FieldMaxParseErrors() uint32 {
@@ -15697,7 +17117,38 @@ func (recv *Scanner) InputText(text string, textLen uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_scanner_lookup_symbol' : return type 'gpointer' not supported
+var scannerLookupSymbolFunction *gi.Function
+var scannerLookupSymbolFunction_Once sync.Once
+
+func scannerLookupSymbolFunction_Set() error {
+	var err error
+	scannerLookupSymbolFunction_Once.Do(func() {
+		err = scannerStruct_Set()
+		if err != nil {
+			return
+		}
+		scannerLookupSymbolFunction, err = scannerStruct.InvokerNew("lookup_symbol")
+	})
+	return err
+}
+
+// LookupSymbol is a representation of the C type g_scanner_lookup_symbol.
+func (recv *Scanner) LookupSymbol(symbol string) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(symbol)
+
+	var ret gi.Argument
+
+	err := scannerLookupSymbolFunction_Set()
+	if err == nil {
+		ret = scannerLookupSymbolFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var scannerPeekNextTokenFunction *gi.Function
 var scannerPeekNextTokenFunction_Once sync.Once
@@ -15731,11 +17182,72 @@ func (recv *Scanner) PeekNextToken() TokenType {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_scanner_scope_add_symbol' : parameter 'value' of type 'gpointer' not supported
+var scannerScopeAddSymbolFunction *gi.Function
+var scannerScopeAddSymbolFunction_Once sync.Once
+
+func scannerScopeAddSymbolFunction_Set() error {
+	var err error
+	scannerScopeAddSymbolFunction_Once.Do(func() {
+		err = scannerStruct_Set()
+		if err != nil {
+			return
+		}
+		scannerScopeAddSymbolFunction, err = scannerStruct.InvokerNew("scope_add_symbol")
+	})
+	return err
+}
+
+// ScopeAddSymbol is a representation of the C type g_scanner_scope_add_symbol.
+func (recv *Scanner) ScopeAddSymbol(scopeId uint32, symbol string, value unsafe.Pointer) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(scopeId)
+	inArgs[2].SetString(symbol)
+	inArgs[3].SetPointer(value)
+
+	err := scannerScopeAddSymbolFunction_Set()
+	if err == nil {
+		scannerScopeAddSymbolFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_scanner_scope_foreach_symbol' : parameter 'func' of type 'HFunc' not supported
 
-// UNSUPPORTED : C value 'g_scanner_scope_lookup_symbol' : return type 'gpointer' not supported
+var scannerScopeLookupSymbolFunction *gi.Function
+var scannerScopeLookupSymbolFunction_Once sync.Once
+
+func scannerScopeLookupSymbolFunction_Set() error {
+	var err error
+	scannerScopeLookupSymbolFunction_Once.Do(func() {
+		err = scannerStruct_Set()
+		if err != nil {
+			return
+		}
+		scannerScopeLookupSymbolFunction, err = scannerStruct.InvokerNew("scope_lookup_symbol")
+	})
+	return err
+}
+
+// ScopeLookupSymbol is a representation of the C type g_scanner_scope_lookup_symbol.
+func (recv *Scanner) ScopeLookupSymbol(scopeId uint32, symbol string) unsafe.Pointer {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint32(scopeId)
+	inArgs[2].SetString(symbol)
+
+	var ret gi.Argument
+
+	err := scannerScopeLookupSymbolFunction_Set()
+	if err == nil {
+		ret = scannerScopeLookupSymbolFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var scannerScopeRemoveSymbolFunction *gi.Function
 var scannerScopeRemoveSymbolFunction_Once sync.Once
@@ -16604,7 +18116,38 @@ func (recv *Sequence) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_sequence_append' : parameter 'data' of type 'gpointer' not supported
+var sequenceAppendFunction *gi.Function
+var sequenceAppendFunction_Once sync.Once
+
+func sequenceAppendFunction_Set() error {
+	var err error
+	sequenceAppendFunction_Once.Do(func() {
+		err = sequenceStruct_Set()
+		if err != nil {
+			return
+		}
+		sequenceAppendFunction, err = sequenceStruct.InvokerNew("append")
+	})
+	return err
+}
+
+// Append is a representation of the C type g_sequence_append.
+func (recv *Sequence) Append(data unsafe.Pointer) *SequenceIter {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := sequenceAppendFunction_Set()
+	if err == nil {
+		ret = sequenceAppendFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SequenceIterNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_sequence_foreach' : parameter 'func' of type 'Func' not supported
 
@@ -16765,9 +18308,9 @@ func (recv *Sequence) GetLength() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_sequence_insert_sorted' : parameter 'data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_sequence_insert_sorted' : parameter 'cmp_func' of type 'CompareDataFunc' not supported
 
-// UNSUPPORTED : C value 'g_sequence_insert_sorted_iter' : parameter 'data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_sequence_insert_sorted_iter' : parameter 'iter_cmp' of type 'SequenceIterCompareFunc' not supported
 
 var sequenceIsEmptyFunction *gi.Function
 var sequenceIsEmptyFunction_Once sync.Once
@@ -16801,15 +18344,46 @@ func (recv *Sequence) IsEmpty() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_sequence_lookup' : parameter 'data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_sequence_lookup' : parameter 'cmp_func' of type 'CompareDataFunc' not supported
 
-// UNSUPPORTED : C value 'g_sequence_lookup_iter' : parameter 'data' of type 'gpointer' not supported
+// UNSUPPORTED : C value 'g_sequence_lookup_iter' : parameter 'iter_cmp' of type 'SequenceIterCompareFunc' not supported
 
-// UNSUPPORTED : C value 'g_sequence_prepend' : parameter 'data' of type 'gpointer' not supported
+var sequencePrependFunction *gi.Function
+var sequencePrependFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_sequence_search' : parameter 'data' of type 'gpointer' not supported
+func sequencePrependFunction_Set() error {
+	var err error
+	sequencePrependFunction_Once.Do(func() {
+		err = sequenceStruct_Set()
+		if err != nil {
+			return
+		}
+		sequencePrependFunction, err = sequenceStruct.InvokerNew("prepend")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_sequence_search_iter' : parameter 'data' of type 'gpointer' not supported
+// Prepend is a representation of the C type g_sequence_prepend.
+func (recv *Sequence) Prepend(data unsafe.Pointer) *SequenceIter {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := sequencePrependFunction_Set()
+	if err == nil {
+		ret = sequencePrependFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SequenceIterNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_sequence_search' : parameter 'cmp_func' of type 'CompareDataFunc' not supported
+
+// UNSUPPORTED : C value 'g_sequence_search_iter' : parameter 'iter_cmp' of type 'SequenceIterCompareFunc' not supported
 
 // UNSUPPORTED : C value 'g_sequence_sort' : parameter 'cmp_func' of type 'CompareDataFunc' not supported
 
@@ -17254,7 +18828,39 @@ func (recv *Source) AddPoll(fd *PollFD) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_source_add_unix_fd' : return type 'gpointer' not supported
+var sourceAddUnixFdFunction *gi.Function
+var sourceAddUnixFdFunction_Once sync.Once
+
+func sourceAddUnixFdFunction_Set() error {
+	var err error
+	sourceAddUnixFdFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceAddUnixFdFunction, err = sourceStruct.InvokerNew("add_unix_fd")
+	})
+	return err
+}
+
+// AddUnixFd is a representation of the C type g_source_add_unix_fd.
+func (recv *Source) AddUnixFd(fd int32, events IOCondition) unsafe.Pointer {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(fd)
+	inArgs[2].SetInt32(int32(events))
+
+	var ret gi.Argument
+
+	err := sourceAddUnixFdFunction_Set()
+	if err == nil {
+		ret = sourceAddUnixFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var sourceAttachFunction *gi.Function
 var sourceAttachFunction_Once sync.Once
@@ -17602,9 +19208,68 @@ func (recv *Source) IsDestroyed() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_source_modify_unix_fd' : parameter 'tag' of type 'gpointer' not supported
+var sourceModifyUnixFdFunction *gi.Function
+var sourceModifyUnixFdFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_source_query_unix_fd' : parameter 'tag' of type 'gpointer' not supported
+func sourceModifyUnixFdFunction_Set() error {
+	var err error
+	sourceModifyUnixFdFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceModifyUnixFdFunction, err = sourceStruct.InvokerNew("modify_unix_fd")
+	})
+	return err
+}
+
+// ModifyUnixFd is a representation of the C type g_source_modify_unix_fd.
+func (recv *Source) ModifyUnixFd(tag unsafe.Pointer, newEvents IOCondition) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tag)
+	inArgs[2].SetInt32(int32(newEvents))
+
+	err := sourceModifyUnixFdFunction_Set()
+	if err == nil {
+		sourceModifyUnixFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var sourceQueryUnixFdFunction *gi.Function
+var sourceQueryUnixFdFunction_Once sync.Once
+
+func sourceQueryUnixFdFunction_Set() error {
+	var err error
+	sourceQueryUnixFdFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceQueryUnixFdFunction, err = sourceStruct.InvokerNew("query_unix_fd")
+	})
+	return err
+}
+
+// QueryUnixFd is a representation of the C type g_source_query_unix_fd.
+func (recv *Source) QueryUnixFd(tag unsafe.Pointer) IOCondition {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tag)
+
+	var ret gi.Argument
+
+	err := sourceQueryUnixFdFunction_Set()
+	if err == nil {
+		ret = sourceQueryUnixFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOCondition(ret.Int32())
+
+	return retGo
+}
 
 var sourceRefFunction *gi.Function
 var sourceRefFunction_Once sync.Once
@@ -17696,11 +19361,66 @@ func (recv *Source) RemovePoll(fd *PollFD) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_source_remove_unix_fd' : parameter 'tag' of type 'gpointer' not supported
+var sourceRemoveUnixFdFunction *gi.Function
+var sourceRemoveUnixFdFunction_Once sync.Once
+
+func sourceRemoveUnixFdFunction_Set() error {
+	var err error
+	sourceRemoveUnixFdFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceRemoveUnixFdFunction, err = sourceStruct.InvokerNew("remove_unix_fd")
+	})
+	return err
+}
+
+// RemoveUnixFd is a representation of the C type g_source_remove_unix_fd.
+func (recv *Source) RemoveUnixFd(tag unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(tag)
+
+	err := sourceRemoveUnixFdFunction_Set()
+	if err == nil {
+		sourceRemoveUnixFdFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_source_set_callback' : parameter 'func' of type 'SourceFunc' not supported
 
-// UNSUPPORTED : C value 'g_source_set_callback_indirect' : parameter 'callback_data' of type 'gpointer' not supported
+var sourceSetCallbackIndirectFunction *gi.Function
+var sourceSetCallbackIndirectFunction_Once sync.Once
+
+func sourceSetCallbackIndirectFunction_Set() error {
+	var err error
+	sourceSetCallbackIndirectFunction_Once.Do(func() {
+		err = sourceStruct_Set()
+		if err != nil {
+			return
+		}
+		sourceSetCallbackIndirectFunction, err = sourceStruct.InvokerNew("set_callback_indirect")
+	})
+	return err
+}
+
+// SetCallbackIndirect is a representation of the C type g_source_set_callback_indirect.
+func (recv *Source) SetCallbackIndirect(callbackData unsafe.Pointer, callbackFuncs *SourceCallbackFuncs) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(callbackData)
+	inArgs[2].SetPointer(callbackFuncs.Native())
+
+	err := sourceSetCallbackIndirectFunction_Set()
+	if err == nil {
+		sourceSetCallbackIndirectFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var sourceSetCanRecurseFunction *gi.Function
 var sourceSetCanRecurseFunction_Once sync.Once
@@ -19905,7 +21625,37 @@ func (recv *Thread) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_thread_try_new' : parameter 'func' of type 'ThreadFunc' not supported
 
-// UNSUPPORTED : C value 'g_thread_join' : return type 'gpointer' not supported
+var threadJoinFunction *gi.Function
+var threadJoinFunction_Once sync.Once
+
+func threadJoinFunction_Set() error {
+	var err error
+	threadJoinFunction_Once.Do(func() {
+		err = threadStruct_Set()
+		if err != nil {
+			return
+		}
+		threadJoinFunction, err = threadStruct.InvokerNew("join")
+	})
+	return err
+}
+
+// Join is a representation of the C type g_thread_join.
+func (recv *Thread) Join() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := threadJoinFunction_Set()
+	if err == nil {
+		ret = threadJoinFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var threadRefFunction *gi.Function
 var threadRefFunction_Once sync.Once
@@ -20001,9 +21751,30 @@ func (recv *ThreadPool) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'func' : for field setter : no Go type for 'Func'
 
-// UNSUPPORTED : C value 'user_data' : for field getter : no Go type for 'gpointer'
+// FieldUserData returns the C field 'user_data'.
+func (recv *ThreadPool) FieldUserData() unsafe.Pointer {
+	var nilValue unsafe.Pointer
+	err := threadPoolStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'user_data' : for field setter : no Go type for 'gpointer'
+	argValue := gi.StructFieldGet(threadPoolStruct, recv.Native(), "user_data")
+	value := argValue.Pointer()
+	return value
+}
+
+// SetFieldUserData sets the value of the C field 'user_data'.
+func (recv *ThreadPool) SetFieldUserData(value unsafe.Pointer) {
+	err := threadPoolStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetPointer(value)
+	gi.StructFieldSet(threadPoolStruct, recv.Native(), "user_data", argValue)
+}
 
 // FieldExclusive returns the C field 'exclusive'.
 func (recv *ThreadPool) FieldExclusive() bool {
@@ -20124,9 +21895,71 @@ func (recv *ThreadPool) GetNumThreads() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_thread_pool_move_to_front' : parameter 'data' of type 'gpointer' not supported
+var threadPoolMoveToFrontFunction *gi.Function
+var threadPoolMoveToFrontFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_thread_pool_push' : parameter 'data' of type 'gpointer' not supported
+func threadPoolMoveToFrontFunction_Set() error {
+	var err error
+	threadPoolMoveToFrontFunction_Once.Do(func() {
+		err = threadPoolStruct_Set()
+		if err != nil {
+			return
+		}
+		threadPoolMoveToFrontFunction, err = threadPoolStruct.InvokerNew("move_to_front")
+	})
+	return err
+}
+
+// MoveToFront is a representation of the C type g_thread_pool_move_to_front.
+func (recv *ThreadPool) MoveToFront(data unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := threadPoolMoveToFrontFunction_Set()
+	if err == nil {
+		ret = threadPoolMoveToFrontFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var threadPoolPushFunction *gi.Function
+var threadPoolPushFunction_Once sync.Once
+
+func threadPoolPushFunction_Set() error {
+	var err error
+	threadPoolPushFunction_Once.Do(func() {
+		err = threadPoolStruct_Set()
+		if err != nil {
+			return
+		}
+		threadPoolPushFunction, err = threadPoolStruct.InvokerNew("push")
+	})
+	return err
+}
+
+// Push is a representation of the C type g_thread_pool_push.
+func (recv *ThreadPool) Push(data unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	var ret gi.Argument
+
+	err := threadPoolPushFunction_Set()
+	if err == nil {
+		ret = threadPoolPushFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var threadPoolSetMaxThreadsFunction *gi.Function
 var threadPoolSetMaxThreadsFunction_Once sync.Once
@@ -21191,11 +23024,104 @@ func (recv *Tree) Height() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tree_insert' : parameter 'key' of type 'gpointer' not supported
+var treeInsertFunction *gi.Function
+var treeInsertFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_tree_lookup' : parameter 'key' of type 'gpointer' not supported
+func treeInsertFunction_Set() error {
+	var err error
+	treeInsertFunction_Once.Do(func() {
+		err = treeStruct_Set()
+		if err != nil {
+			return
+		}
+		treeInsertFunction, err = treeStruct.InvokerNew("insert")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_tree_lookup_extended' : parameter 'lookup_key' of type 'gpointer' not supported
+// Insert is a representation of the C type g_tree_insert.
+func (recv *Tree) Insert(key unsafe.Pointer, value unsafe.Pointer) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(key)
+	inArgs[2].SetPointer(value)
+
+	err := treeInsertFunction_Set()
+	if err == nil {
+		treeInsertFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var treeLookupFunction *gi.Function
+var treeLookupFunction_Once sync.Once
+
+func treeLookupFunction_Set() error {
+	var err error
+	treeLookupFunction_Once.Do(func() {
+		err = treeStruct_Set()
+		if err != nil {
+			return
+		}
+		treeLookupFunction, err = treeStruct.InvokerNew("lookup")
+	})
+	return err
+}
+
+// Lookup is a representation of the C type g_tree_lookup.
+func (recv *Tree) Lookup(key unsafe.Pointer) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(key)
+
+	var ret gi.Argument
+
+	err := treeLookupFunction_Set()
+	if err == nil {
+		ret = treeLookupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var treeLookupExtendedFunction *gi.Function
+var treeLookupExtendedFunction_Once sync.Once
+
+func treeLookupExtendedFunction_Set() error {
+	var err error
+	treeLookupExtendedFunction_Once.Do(func() {
+		err = treeStruct_Set()
+		if err != nil {
+			return
+		}
+		treeLookupExtendedFunction, err = treeStruct.InvokerNew("lookup_extended")
+	})
+	return err
+}
+
+// LookupExtended is a representation of the C type g_tree_lookup_extended.
+func (recv *Tree) LookupExtended(lookupKey unsafe.Pointer) (bool, unsafe.Pointer, unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(lookupKey)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := treeLookupExtendedFunction_Set()
+	if err == nil {
+		ret = treeLookupExtendedFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Pointer()
+	out1 := outArgs[1].Pointer()
+
+	return retGo, out0, out1
+}
 
 var treeNnodesFunction *gi.Function
 var treeNnodesFunction_Once sync.Once
@@ -21261,13 +23187,103 @@ func (recv *Tree) Ref() *Tree {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tree_remove' : parameter 'key' of type 'gpointer' not supported
+var treeRemoveFunction *gi.Function
+var treeRemoveFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_tree_replace' : parameter 'key' of type 'gpointer' not supported
+func treeRemoveFunction_Set() error {
+	var err error
+	treeRemoveFunction_Once.Do(func() {
+		err = treeStruct_Set()
+		if err != nil {
+			return
+		}
+		treeRemoveFunction, err = treeStruct.InvokerNew("remove")
+	})
+	return err
+}
+
+// Remove is a representation of the C type g_tree_remove.
+func (recv *Tree) Remove(key unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(key)
+
+	var ret gi.Argument
+
+	err := treeRemoveFunction_Set()
+	if err == nil {
+		ret = treeRemoveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var treeReplaceFunction *gi.Function
+var treeReplaceFunction_Once sync.Once
+
+func treeReplaceFunction_Set() error {
+	var err error
+	treeReplaceFunction_Once.Do(func() {
+		err = treeStruct_Set()
+		if err != nil {
+			return
+		}
+		treeReplaceFunction, err = treeStruct.InvokerNew("replace")
+	})
+	return err
+}
+
+// Replace is a representation of the C type g_tree_replace.
+func (recv *Tree) Replace(key unsafe.Pointer, value unsafe.Pointer) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(key)
+	inArgs[2].SetPointer(value)
+
+	err := treeReplaceFunction_Set()
+	if err == nil {
+		treeReplaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_tree_search' : parameter 'search_func' of type 'CompareFunc' not supported
 
-// UNSUPPORTED : C value 'g_tree_steal' : parameter 'key' of type 'gpointer' not supported
+var treeStealFunction *gi.Function
+var treeStealFunction_Once sync.Once
+
+func treeStealFunction_Set() error {
+	var err error
+	treeStealFunction_Once.Do(func() {
+		err = treeStruct_Set()
+		if err != nil {
+			return
+		}
+		treeStealFunction, err = treeStruct.InvokerNew("steal")
+	})
+	return err
+}
+
+// Steal is a representation of the C type g_tree_steal.
+func (recv *Tree) Steal(key unsafe.Pointer) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(key)
+
+	var ret gi.Argument
+
+	err := treeStealFunction_Set()
+	if err == nil {
+		ret = treeStealFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_tree_traverse' : parameter 'traverse_func' of type 'TraverseFunc' not supported
 
@@ -21481,7 +23497,40 @@ func VariantNewDouble(value float64) *Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_new_fixed_array' : parameter 'elements' of type 'gpointer' not supported
+var variantNewFixedArrayFunction *gi.Function
+var variantNewFixedArrayFunction_Once sync.Once
+
+func variantNewFixedArrayFunction_Set() error {
+	var err error
+	variantNewFixedArrayFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantNewFixedArrayFunction, err = variantStruct.InvokerNew("new_fixed_array")
+	})
+	return err
+}
+
+// VariantNewFixedArray is a representation of the C type g_variant_new_fixed_array.
+func VariantNewFixedArray(elementType *VariantType, elements unsafe.Pointer, nElements uint64, elementSize uint64) *Variant {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(elementType.Native())
+	inArgs[1].SetPointer(elements)
+	inArgs[2].SetUint64(nElements)
+	inArgs[3].SetUint64(elementSize)
+
+	var ret gi.Argument
+
+	err := variantNewFixedArrayFunction_Set()
+	if err == nil {
+		ret = variantNewFixedArrayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var variantNewFromBytesFunction *gi.Function
 var variantNewFromBytesFunction_Once sync.Once
@@ -22437,7 +24486,37 @@ func (recv *Variant) GetChildValue(index uint64) *Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_get_data' : return type 'gpointer' not supported
+var variantGetDataFunction *gi.Function
+var variantGetDataFunction_Once sync.Once
+
+func variantGetDataFunction_Set() error {
+	var err error
+	variantGetDataFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantGetDataFunction, err = variantStruct.InvokerNew("get_data")
+	})
+	return err
+}
+
+// GetData is a representation of the C type g_variant_get_data.
+func (recv *Variant) GetData() unsafe.Pointer {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := variantGetDataFunction_Set()
+	if err == nil {
+		ret = variantGetDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var variantGetDataAsBytesFunction *gi.Function
 var variantGetDataAsBytesFunction_Once sync.Once
@@ -23444,7 +25523,34 @@ func (recv *Variant) RefSink() *Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_store' : parameter 'data' of type 'gpointer' not supported
+var variantStoreFunction *gi.Function
+var variantStoreFunction_Once sync.Once
+
+func variantStoreFunction_Set() error {
+	var err error
+	variantStoreFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantStoreFunction, err = variantStruct.InvokerNew("store")
+	})
+	return err
+}
+
+// Store is a representation of the C type g_variant_store.
+func (recv *Variant) Store(data unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(data)
+
+	err := variantStoreFunction_Set()
+	if err == nil {
+		variantStoreFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var variantTakeRefFunction *gi.Function
 var variantTakeRefFunction_Once sync.Once
