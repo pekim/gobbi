@@ -1984,7 +1984,7 @@ func (recv *Object) ConnectPropertyChange(handler func(instance *Object, arg1 *P
 		argInstance := ObjectNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := PropertyValuesNewFromNative(object1.GetObject().Native())
+		arg1 := PropertyValuesNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -2152,7 +2152,37 @@ func (recv *ObjectFactory) CreateAccessible(obj *gobject.Object) *Object {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_object_factory_get_accessible_type' : return type 'GType' not supported
+var objectFactoryGetAccessibleTypeFunction *gi.Function
+var objectFactoryGetAccessibleTypeFunction_Once sync.Once
+
+func objectFactoryGetAccessibleTypeFunction_Set() error {
+	var err error
+	objectFactoryGetAccessibleTypeFunction_Once.Do(func() {
+		err = objectFactoryObject_Set()
+		if err != nil {
+			return
+		}
+		objectFactoryGetAccessibleTypeFunction, err = objectFactoryObject.InvokerNew("get_accessible_type")
+	})
+	return err
+}
+
+// GetAccessibleType is a representation of the C type atk_object_factory_get_accessible_type.
+func (recv *ObjectFactory) GetAccessibleType() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := objectFactoryGetAccessibleTypeFunction_Set()
+	if err == nil {
+		ret = objectFactoryGetAccessibleTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var objectFactoryInvalidateFunction *gi.Function
 var objectFactoryInvalidateFunction_Once sync.Once
@@ -2466,11 +2496,101 @@ func (recv *Registry) SetFieldFactorySingletonCache(value *glib.HashTable) {
 	gi.ObjectFieldSet(registryObject, recv.Native(), "factory_singleton_cache", argValue)
 }
 
-// UNSUPPORTED : C value 'atk_registry_get_factory' : parameter 'type' of type 'GType' not supported
+var registryGetFactoryFunction *gi.Function
+var registryGetFactoryFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'atk_registry_get_factory_type' : parameter 'type' of type 'GType' not supported
+func registryGetFactoryFunction_Set() error {
+	var err error
+	registryGetFactoryFunction_Once.Do(func() {
+		err = registryObject_Set()
+		if err != nil {
+			return
+		}
+		registryGetFactoryFunction, err = registryObject.InvokerNew("get_factory")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'atk_registry_set_factory_type' : parameter 'type' of type 'GType' not supported
+// GetFactory is a representation of the C type atk_registry_get_factory.
+func (recv *Registry) GetFactory(type_ int64) *ObjectFactory {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := registryGetFactoryFunction_Set()
+	if err == nil {
+		ret = registryGetFactoryFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ObjectFactoryNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var registryGetFactoryTypeFunction *gi.Function
+var registryGetFactoryTypeFunction_Once sync.Once
+
+func registryGetFactoryTypeFunction_Set() error {
+	var err error
+	registryGetFactoryTypeFunction_Once.Do(func() {
+		err = registryObject_Set()
+		if err != nil {
+			return
+		}
+		registryGetFactoryTypeFunction, err = registryObject.InvokerNew("get_factory_type")
+	})
+	return err
+}
+
+// GetFactoryType is a representation of the C type atk_registry_get_factory_type.
+func (recv *Registry) GetFactoryType(type_ int64) int64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := registryGetFactoryTypeFunction_Set()
+	if err == nil {
+		ret = registryGetFactoryTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var registrySetFactoryTypeFunction *gi.Function
+var registrySetFactoryTypeFunction_Once sync.Once
+
+func registrySetFactoryTypeFunction_Set() error {
+	var err error
+	registrySetFactoryTypeFunction_Once.Do(func() {
+		err = registryObject_Set()
+		if err != nil {
+			return
+		}
+		registrySetFactoryTypeFunction, err = registryObject.InvokerNew("set_factory_type")
+	})
+	return err
+}
+
+// SetFactoryType is a representation of the C type atk_registry_set_factory_type.
+func (recv *Registry) SetFactoryType(type_ int64, factoryType int64) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+	inArgs[2].SetInt64(factoryType)
+
+	err := registrySetFactoryTypeFunction_Set()
+	if err == nil {
+		registrySetFactoryTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var relationObject *gi.Object
 var relationObject_Once sync.Once

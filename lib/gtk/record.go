@@ -3614,9 +3614,30 @@ func (recv *BindingArg) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'arg_type' : for field getter : no Go type for 'GType'
+// FieldArgType returns the C field 'arg_type'.
+func (recv *BindingArg) FieldArgType() int64 {
+	var nilValue int64
+	err := bindingArgStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'arg_type' : for field setter : no Go type for 'GType'
+	argValue := gi.StructFieldGet(bindingArgStruct, recv.Native(), "arg_type")
+	value := argValue.Int64()
+	return value
+}
+
+// SetFieldArgType sets the value of the C field 'arg_type'.
+func (recv *BindingArg) SetFieldArgType(value int64) {
+	err := bindingArgStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.StructFieldSet(bindingArgStruct, recv.Native(), "arg_type", argValue)
+}
 
 // BindingArgStruct creates an uninitialised BindingArg.
 func BindingArgStruct() *BindingArg {
@@ -7005,7 +7026,34 @@ func (recv *CellRendererClass) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value '_gtk_reserved4' : for field setter : missing Type
 
-// UNSUPPORTED : C value 'gtk_cell_renderer_class_set_accessible_type' : parameter 'type' of type 'GType' not supported
+var cellRendererClassSetAccessibleTypeFunction *gi.Function
+var cellRendererClassSetAccessibleTypeFunction_Once sync.Once
+
+func cellRendererClassSetAccessibleTypeFunction_Set() error {
+	var err error
+	cellRendererClassSetAccessibleTypeFunction_Once.Do(func() {
+		err = cellRendererClassStruct_Set()
+		if err != nil {
+			return
+		}
+		cellRendererClassSetAccessibleTypeFunction, err = cellRendererClassStruct.InvokerNew("set_accessible_type")
+	})
+	return err
+}
+
+// SetAccessibleType is a representation of the C type gtk_cell_renderer_class_set_accessible_type.
+func (recv *CellRendererClass) SetAccessibleType(type_ int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+
+	err := cellRendererClassSetAccessibleTypeFunction_Set()
+	if err == nil {
+		cellRendererClassSetAccessibleTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // CellRendererClassStruct creates an uninitialised CellRendererClass.
 func CellRendererClassStruct() *CellRendererClass {
@@ -46310,9 +46358,30 @@ func (recv *ToolButtonClass) SetFieldParentClass(value *ToolItemClass) {
 	gi.StructFieldSet(toolButtonClassStruct, recv.Native(), "parent_class", argValue)
 }
 
-// UNSUPPORTED : C value 'button_type' : for field getter : no Go type for 'GType'
+// FieldButtonType returns the C field 'button_type'.
+func (recv *ToolButtonClass) FieldButtonType() int64 {
+	var nilValue int64
+	err := toolButtonClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'button_type' : for field setter : no Go type for 'GType'
+	argValue := gi.StructFieldGet(toolButtonClassStruct, recv.Native(), "button_type")
+	value := argValue.Int64()
+	return value
+}
+
+// SetFieldButtonType sets the value of the C field 'button_type'.
+func (recv *ToolButtonClass) SetFieldButtonType(value int64) {
+	err := toolButtonClassStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.StructFieldSet(toolButtonClassStruct, recv.Native(), "button_type", argValue)
+}
 
 // UNSUPPORTED : C value 'clicked' : for field getter : missing Type
 
@@ -51308,7 +51377,34 @@ func (recv *WidgetClass) ListStyleProperties() uint32 {
 
 // UNSUPPORTED : C value 'gtk_widget_class_set_accessible_role' : parameter 'role' of type 'Atk.Role' not supported
 
-// UNSUPPORTED : C value 'gtk_widget_class_set_accessible_type' : parameter 'type' of type 'GType' not supported
+var widgetClassSetAccessibleTypeFunction *gi.Function
+var widgetClassSetAccessibleTypeFunction_Once sync.Once
+
+func widgetClassSetAccessibleTypeFunction_Set() error {
+	var err error
+	widgetClassSetAccessibleTypeFunction_Once.Do(func() {
+		err = widgetClassStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetClassSetAccessibleTypeFunction, err = widgetClassStruct.InvokerNew("set_accessible_type")
+	})
+	return err
+}
+
+// SetAccessibleType is a representation of the C type gtk_widget_class_set_accessible_type.
+func (recv *WidgetClass) SetAccessibleType(type_ int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+
+	err := widgetClassSetAccessibleTypeFunction_Set()
+	if err == nil {
+		widgetClassSetAccessibleTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_widget_class_set_connect_func' : parameter 'connect_func' of type 'BuilderConnectFunc' not supported
 
@@ -51570,7 +51666,38 @@ func (recv *WidgetPath) AppendForWidget(widget *Widget) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_path_append_type' : parameter 'type' of type 'GType' not supported
+var widgetPathAppendTypeFunction *gi.Function
+var widgetPathAppendTypeFunction_Once sync.Once
+
+func widgetPathAppendTypeFunction_Set() error {
+	var err error
+	widgetPathAppendTypeFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathAppendTypeFunction, err = widgetPathStruct.InvokerNew("append_type")
+	})
+	return err
+}
+
+// AppendType is a representation of the C type gtk_widget_path_append_type.
+func (recv *WidgetPath) AppendType(type_ int64) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := widgetPathAppendTypeFunction_Set()
+	if err == nil {
+		ret = widgetPathAppendTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
 
 var widgetPathAppendWithSiblingsFunction *gi.Function
 var widgetPathAppendWithSiblingsFunction_Once sync.Once
@@ -51666,11 +51793,103 @@ func (recv *WidgetPath) Free() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_path_get_object_type' : return type 'GType' not supported
+var widgetPathGetObjectTypeFunction *gi.Function
+var widgetPathGetObjectTypeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_widget_path_has_parent' : parameter 'type' of type 'GType' not supported
+func widgetPathGetObjectTypeFunction_Set() error {
+	var err error
+	widgetPathGetObjectTypeFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathGetObjectTypeFunction, err = widgetPathStruct.InvokerNew("get_object_type")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_widget_path_is_type' : parameter 'type' of type 'GType' not supported
+// GetObjectType is a representation of the C type gtk_widget_path_get_object_type.
+func (recv *WidgetPath) GetObjectType() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := widgetPathGetObjectTypeFunction_Set()
+	if err == nil {
+		ret = widgetPathGetObjectTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var widgetPathHasParentFunction *gi.Function
+var widgetPathHasParentFunction_Once sync.Once
+
+func widgetPathHasParentFunction_Set() error {
+	var err error
+	widgetPathHasParentFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathHasParentFunction, err = widgetPathStruct.InvokerNew("has_parent")
+	})
+	return err
+}
+
+// HasParent is a representation of the C type gtk_widget_path_has_parent.
+func (recv *WidgetPath) HasParent(type_ int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := widgetPathHasParentFunction_Set()
+	if err == nil {
+		ret = widgetPathHasParentFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var widgetPathIsTypeFunction *gi.Function
+var widgetPathIsTypeFunction_Once sync.Once
+
+func widgetPathIsTypeFunction_Set() error {
+	var err error
+	widgetPathIsTypeFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIsTypeFunction, err = widgetPathStruct.InvokerNew("is_type")
+	})
+	return err
+}
+
+// IsType is a representation of the C type gtk_widget_path_is_type.
+func (recv *WidgetPath) IsType(type_ int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := widgetPathIsTypeFunction_Set()
+	if err == nil {
+		ret = widgetPathIsTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var widgetPathIterAddClassFunction *gi.Function
 var widgetPathIterAddClassFunction_Once sync.Once
@@ -51857,7 +52076,38 @@ func (recv *WidgetPath) IterGetObjectName(pos int32) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_path_iter_get_object_type' : return type 'GType' not supported
+var widgetPathIterGetObjectTypeFunction *gi.Function
+var widgetPathIterGetObjectTypeFunction_Once sync.Once
+
+func widgetPathIterGetObjectTypeFunction_Set() error {
+	var err error
+	widgetPathIterGetObjectTypeFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterGetObjectTypeFunction, err = widgetPathStruct.InvokerNew("iter_get_object_type")
+	})
+	return err
+}
+
+// IterGetObjectType is a representation of the C type gtk_widget_path_iter_get_object_type.
+func (recv *WidgetPath) IterGetObjectType(pos int32) int64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(pos)
+
+	var ret gi.Argument
+
+	err := widgetPathIterGetObjectTypeFunction_Set()
+	if err == nil {
+		ret = widgetPathIterGetObjectTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var widgetPathIterGetSiblingIndexFunction *gi.Function
 var widgetPathIterGetSiblingIndexFunction_Once sync.Once
@@ -52352,7 +52602,35 @@ func (recv *WidgetPath) IterSetObjectName(pos int32, name string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_path_iter_set_object_type' : parameter 'type' of type 'GType' not supported
+var widgetPathIterSetObjectTypeFunction *gi.Function
+var widgetPathIterSetObjectTypeFunction_Once sync.Once
+
+func widgetPathIterSetObjectTypeFunction_Set() error {
+	var err error
+	widgetPathIterSetObjectTypeFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathIterSetObjectTypeFunction, err = widgetPathStruct.InvokerNew("iter_set_object_type")
+	})
+	return err
+}
+
+// IterSetObjectType is a representation of the C type gtk_widget_path_iter_set_object_type.
+func (recv *WidgetPath) IterSetObjectType(pos int32, type_ int64) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(pos)
+	inArgs[2].SetInt64(type_)
+
+	err := widgetPathIterSetObjectTypeFunction_Set()
+	if err == nil {
+		widgetPathIterSetObjectTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetPathIterSetStateFunction *gi.Function
 var widgetPathIterSetStateFunction_Once sync.Once
@@ -52416,7 +52694,34 @@ func (recv *WidgetPath) Length() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_path_prepend_type' : parameter 'type' of type 'GType' not supported
+var widgetPathPrependTypeFunction *gi.Function
+var widgetPathPrependTypeFunction_Once sync.Once
+
+func widgetPathPrependTypeFunction_Set() error {
+	var err error
+	widgetPathPrependTypeFunction_Once.Do(func() {
+		err = widgetPathStruct_Set()
+		if err != nil {
+			return
+		}
+		widgetPathPrependTypeFunction, err = widgetPathStruct.InvokerNew("prepend_type")
+	})
+	return err
+}
+
+// PrependType is a representation of the C type gtk_widget_path_prepend_type.
+func (recv *WidgetPath) PrependType(type_ int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+
+	err := widgetPathPrependTypeFunction_Set()
+	if err == nil {
+		widgetPathPrependTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetPathRefFunction *gi.Function
 var widgetPathRefFunction_Once sync.Once

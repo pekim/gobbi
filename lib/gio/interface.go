@@ -856,7 +856,7 @@ func (recv *ActionGroup) ConnectActionStateChanged(handler func(instance *Action
 		arg1 := object1.GetString()
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := glib.VariantNewFromNative(object2.GetObject().Native())
+		arg2 := glib.VariantNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -5686,7 +5686,37 @@ func (recv *ListModel) GetItem(position uint32) unsafe.Pointer {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_list_model_get_item_type' : return type 'GType' not supported
+var listModelGetItemTypeFunction *gi.Function
+var listModelGetItemTypeFunction_Once sync.Once
+
+func listModelGetItemTypeFunction_Set() error {
+	var err error
+	listModelGetItemTypeFunction_Once.Do(func() {
+		err = listModelInterface_Set()
+		if err != nil {
+			return
+		}
+		listModelGetItemTypeFunction, err = listModelInterface.InvokerNew("get_item_type")
+	})
+	return err
+}
+
+// GetItemType is a representation of the C type g_list_model_get_item_type.
+func (recv *ListModel) GetItemType() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := listModelGetItemTypeFunction_Set()
+	if err == nil {
+		ret = listModelGetItemTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var listModelGetNItemsFunction *gi.Function
 var listModelGetNItemsFunction_Once sync.Once
@@ -7415,9 +7445,69 @@ func (recv *TlsBackend) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_tls_backend_get_certificate_type' : return type 'GType' not supported
+var tlsBackendGetCertificateTypeFunction *gi.Function
+var tlsBackendGetCertificateTypeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_tls_backend_get_client_connection_type' : return type 'GType' not supported
+func tlsBackendGetCertificateTypeFunction_Set() error {
+	var err error
+	tlsBackendGetCertificateTypeFunction_Once.Do(func() {
+		err = tlsBackendInterface_Set()
+		if err != nil {
+			return
+		}
+		tlsBackendGetCertificateTypeFunction, err = tlsBackendInterface.InvokerNew("get_certificate_type")
+	})
+	return err
+}
+
+// GetCertificateType is a representation of the C type g_tls_backend_get_certificate_type.
+func (recv *TlsBackend) GetCertificateType() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := tlsBackendGetCertificateTypeFunction_Set()
+	if err == nil {
+		ret = tlsBackendGetCertificateTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var tlsBackendGetClientConnectionTypeFunction *gi.Function
+var tlsBackendGetClientConnectionTypeFunction_Once sync.Once
+
+func tlsBackendGetClientConnectionTypeFunction_Set() error {
+	var err error
+	tlsBackendGetClientConnectionTypeFunction_Once.Do(func() {
+		err = tlsBackendInterface_Set()
+		if err != nil {
+			return
+		}
+		tlsBackendGetClientConnectionTypeFunction, err = tlsBackendInterface.InvokerNew("get_client_connection_type")
+	})
+	return err
+}
+
+// GetClientConnectionType is a representation of the C type g_tls_backend_get_client_connection_type.
+func (recv *TlsBackend) GetClientConnectionType() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := tlsBackendGetClientConnectionTypeFunction_Set()
+	if err == nil {
+		ret = tlsBackendGetClientConnectionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var tlsBackendGetDefaultDatabaseFunction *gi.Function
 var tlsBackendGetDefaultDatabaseFunction_Once sync.Once
@@ -7451,13 +7541,133 @@ func (recv *TlsBackend) GetDefaultDatabase() *TlsDatabase {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tls_backend_get_dtls_client_connection_type' : return type 'GType' not supported
+var tlsBackendGetDtlsClientConnectionTypeFunction *gi.Function
+var tlsBackendGetDtlsClientConnectionTypeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_tls_backend_get_dtls_server_connection_type' : return type 'GType' not supported
+func tlsBackendGetDtlsClientConnectionTypeFunction_Set() error {
+	var err error
+	tlsBackendGetDtlsClientConnectionTypeFunction_Once.Do(func() {
+		err = tlsBackendInterface_Set()
+		if err != nil {
+			return
+		}
+		tlsBackendGetDtlsClientConnectionTypeFunction, err = tlsBackendInterface.InvokerNew("get_dtls_client_connection_type")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_tls_backend_get_file_database_type' : return type 'GType' not supported
+// GetDtlsClientConnectionType is a representation of the C type g_tls_backend_get_dtls_client_connection_type.
+func (recv *TlsBackend) GetDtlsClientConnectionType() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
 
-// UNSUPPORTED : C value 'g_tls_backend_get_server_connection_type' : return type 'GType' not supported
+	var ret gi.Argument
+
+	err := tlsBackendGetDtlsClientConnectionTypeFunction_Set()
+	if err == nil {
+		ret = tlsBackendGetDtlsClientConnectionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var tlsBackendGetDtlsServerConnectionTypeFunction *gi.Function
+var tlsBackendGetDtlsServerConnectionTypeFunction_Once sync.Once
+
+func tlsBackendGetDtlsServerConnectionTypeFunction_Set() error {
+	var err error
+	tlsBackendGetDtlsServerConnectionTypeFunction_Once.Do(func() {
+		err = tlsBackendInterface_Set()
+		if err != nil {
+			return
+		}
+		tlsBackendGetDtlsServerConnectionTypeFunction, err = tlsBackendInterface.InvokerNew("get_dtls_server_connection_type")
+	})
+	return err
+}
+
+// GetDtlsServerConnectionType is a representation of the C type g_tls_backend_get_dtls_server_connection_type.
+func (recv *TlsBackend) GetDtlsServerConnectionType() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := tlsBackendGetDtlsServerConnectionTypeFunction_Set()
+	if err == nil {
+		ret = tlsBackendGetDtlsServerConnectionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var tlsBackendGetFileDatabaseTypeFunction *gi.Function
+var tlsBackendGetFileDatabaseTypeFunction_Once sync.Once
+
+func tlsBackendGetFileDatabaseTypeFunction_Set() error {
+	var err error
+	tlsBackendGetFileDatabaseTypeFunction_Once.Do(func() {
+		err = tlsBackendInterface_Set()
+		if err != nil {
+			return
+		}
+		tlsBackendGetFileDatabaseTypeFunction, err = tlsBackendInterface.InvokerNew("get_file_database_type")
+	})
+	return err
+}
+
+// GetFileDatabaseType is a representation of the C type g_tls_backend_get_file_database_type.
+func (recv *TlsBackend) GetFileDatabaseType() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := tlsBackendGetFileDatabaseTypeFunction_Set()
+	if err == nil {
+		ret = tlsBackendGetFileDatabaseTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var tlsBackendGetServerConnectionTypeFunction *gi.Function
+var tlsBackendGetServerConnectionTypeFunction_Once sync.Once
+
+func tlsBackendGetServerConnectionTypeFunction_Set() error {
+	var err error
+	tlsBackendGetServerConnectionTypeFunction_Once.Do(func() {
+		err = tlsBackendInterface_Set()
+		if err != nil {
+			return
+		}
+		tlsBackendGetServerConnectionTypeFunction, err = tlsBackendInterface.InvokerNew("get_server_connection_type")
+	})
+	return err
+}
+
+// GetServerConnectionType is a representation of the C type g_tls_backend_get_server_connection_type.
+func (recv *TlsBackend) GetServerConnectionType() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := tlsBackendGetServerConnectionTypeFunction_Set()
+	if err == nil {
+		ret = tlsBackendGetServerConnectionTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var tlsBackendSetDefaultDatabaseFunction *gi.Function
 var tlsBackendSetDefaultDatabaseFunction_Once sync.Once

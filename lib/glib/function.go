@@ -9358,7 +9358,31 @@ func StrvEqual(strv1 string, strv2 string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_strv_get_type' : return type 'GType' not supported
+var strvGetTypeFunction *gi.Function
+var strvGetTypeFunction_Once sync.Once
+
+func strvGetTypeFunction_Set() error {
+	var err error
+	strvGetTypeFunction_Once.Do(func() {
+		strvGetTypeFunction, err = gi.FunctionInvokerNew("GLib", "strv_get_type")
+	})
+	return err
+}
+
+// StrvGetType is a representation of the C type g_strv_get_type.
+func StrvGetType() int64 {
+
+	var ret gi.Argument
+
+	err := strvGetTypeFunction_Set()
+	if err == nil {
+		ret = strvGetTypeFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var strvLengthFunction *gi.Function
 var strvLengthFunction_Once sync.Once
@@ -11938,7 +11962,31 @@ func UuidStringRandom() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_get_gtype' : return type 'GType' not supported
+var variantGetGtypeFunction *gi.Function
+var variantGetGtypeFunction_Once sync.Once
+
+func variantGetGtypeFunction_Set() error {
+	var err error
+	variantGetGtypeFunction_Once.Do(func() {
+		variantGetGtypeFunction, err = gi.FunctionInvokerNew("GLib", "variant_get_gtype")
+	})
+	return err
+}
+
+// VariantGetGtype is a representation of the C type g_variant_get_gtype.
+func VariantGetGtype() int64 {
+
+	var ret gi.Argument
+
+	err := variantGetGtypeFunction_Set()
+	if err == nil {
+		ret = variantGetGtypeFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var variantIsObjectPathFunction *gi.Function
 var variantIsObjectPathFunction_Once sync.Once

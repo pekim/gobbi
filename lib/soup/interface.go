@@ -275,7 +275,38 @@ func (recv *SessionFeature) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'soup_session_feature_add_feature' : parameter 'type' of type 'GType' not supported
+var sessionFeatureAddFeatureFunction *gi.Function
+var sessionFeatureAddFeatureFunction_Once sync.Once
+
+func sessionFeatureAddFeatureFunction_Set() error {
+	var err error
+	sessionFeatureAddFeatureFunction_Once.Do(func() {
+		err = sessionFeatureInterface_Set()
+		if err != nil {
+			return
+		}
+		sessionFeatureAddFeatureFunction, err = sessionFeatureInterface.InvokerNew("add_feature")
+	})
+	return err
+}
+
+// AddFeature is a representation of the C type soup_session_feature_add_feature.
+func (recv *SessionFeature) AddFeature(type_ int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := sessionFeatureAddFeatureFunction_Set()
+	if err == nil {
+		ret = sessionFeatureAddFeatureFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var sessionFeatureAttachFunction *gi.Function
 var sessionFeatureAttachFunction_Once sync.Once
@@ -335,6 +366,68 @@ func (recv *SessionFeature) Detach(session *Session) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_session_feature_has_feature' : parameter 'type' of type 'GType' not supported
+var sessionFeatureHasFeatureFunction *gi.Function
+var sessionFeatureHasFeatureFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_session_feature_remove_feature' : parameter 'type' of type 'GType' not supported
+func sessionFeatureHasFeatureFunction_Set() error {
+	var err error
+	sessionFeatureHasFeatureFunction_Once.Do(func() {
+		err = sessionFeatureInterface_Set()
+		if err != nil {
+			return
+		}
+		sessionFeatureHasFeatureFunction, err = sessionFeatureInterface.InvokerNew("has_feature")
+	})
+	return err
+}
+
+// HasFeature is a representation of the C type soup_session_feature_has_feature.
+func (recv *SessionFeature) HasFeature(type_ int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := sessionFeatureHasFeatureFunction_Set()
+	if err == nil {
+		ret = sessionFeatureHasFeatureFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var sessionFeatureRemoveFeatureFunction *gi.Function
+var sessionFeatureRemoveFeatureFunction_Once sync.Once
+
+func sessionFeatureRemoveFeatureFunction_Set() error {
+	var err error
+	sessionFeatureRemoveFeatureFunction_Once.Do(func() {
+		err = sessionFeatureInterface_Set()
+		if err != nil {
+			return
+		}
+		sessionFeatureRemoveFeatureFunction, err = sessionFeatureInterface.InvokerNew("remove_feature")
+	})
+	return err
+}
+
+// RemoveFeature is a representation of the C type soup_session_feature_remove_feature.
+func (recv *SessionFeature) RemoveFeature(type_ int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := sessionFeatureRemoveFeatureFunction_Set()
+	if err == nil {
+		ret = sessionFeatureRemoveFeatureFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}

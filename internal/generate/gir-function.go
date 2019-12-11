@@ -45,6 +45,9 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	if _, isClass := f.namespace.Classes.byName(f.goName); isClass {
 		f.goName += "_"
 	}
+	if _, isRecord := f.namespace.Records.byName(f.goName); isRecord {
+		f.goName += "__"
+	}
 	if _, isBitfield := f.namespace.Bitfields.byGoTypeName(f.goName); isBitfield {
 		f.goName += "_"
 	}

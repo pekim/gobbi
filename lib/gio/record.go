@@ -9160,7 +9160,37 @@ func (recv *IOExtension) GetPriority() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_extension_get_type' : return type 'GType' not supported
+var iOExtensionGetTypeFunction *gi.Function
+var iOExtensionGetTypeFunction_Once sync.Once
+
+func iOExtensionGetTypeFunction_Set() error {
+	var err error
+	iOExtensionGetTypeFunction_Once.Do(func() {
+		err = iOExtensionStruct_Set()
+		if err != nil {
+			return
+		}
+		iOExtensionGetTypeFunction, err = iOExtensionStruct.InvokerNew("get_type")
+	})
+	return err
+}
+
+// GetType is a representation of the C type g_io_extension_get_type.
+func (recv *IOExtension) GetType() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := iOExtensionGetTypeFunction_Set()
+	if err == nil {
+		ret = iOExtensionGetTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var iOExtensionRefClassFunction *gi.Function
 var iOExtensionRefClassFunction_Once sync.Once
@@ -9313,9 +9343,66 @@ func (recv *IOExtensionPoint) GetExtensions() *glib.List {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_extension_point_get_required_type' : return type 'GType' not supported
+var iOExtensionPointGetRequiredTypeFunction *gi.Function
+var iOExtensionPointGetRequiredTypeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_io_extension_point_set_required_type' : parameter 'type' of type 'GType' not supported
+func iOExtensionPointGetRequiredTypeFunction_Set() error {
+	var err error
+	iOExtensionPointGetRequiredTypeFunction_Once.Do(func() {
+		err = iOExtensionPointStruct_Set()
+		if err != nil {
+			return
+		}
+		iOExtensionPointGetRequiredTypeFunction, err = iOExtensionPointStruct.InvokerNew("get_required_type")
+	})
+	return err
+}
+
+// GetRequiredType is a representation of the C type g_io_extension_point_get_required_type.
+func (recv *IOExtensionPoint) GetRequiredType() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := iOExtensionPointGetRequiredTypeFunction_Set()
+	if err == nil {
+		ret = iOExtensionPointGetRequiredTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var iOExtensionPointSetRequiredTypeFunction *gi.Function
+var iOExtensionPointSetRequiredTypeFunction_Once sync.Once
+
+func iOExtensionPointSetRequiredTypeFunction_Set() error {
+	var err error
+	iOExtensionPointSetRequiredTypeFunction_Once.Do(func() {
+		err = iOExtensionPointStruct_Set()
+		if err != nil {
+			return
+		}
+		iOExtensionPointSetRequiredTypeFunction, err = iOExtensionPointStruct.InvokerNew("set_required_type")
+	})
+	return err
+}
+
+// SetRequiredType is a representation of the C type g_io_extension_point_set_required_type.
+func (recv *IOExtensionPoint) SetRequiredType(type_ int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(type_)
+
+	err := iOExtensionPointSetRequiredTypeFunction_Set()
+	if err == nil {
+		iOExtensionPointSetRequiredTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // IOExtensionPointStruct creates an uninitialised IOExtensionPoint.
 func IOExtensionPointStruct() *IOExtensionPoint {

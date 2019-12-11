@@ -1368,7 +1368,7 @@ func (recv *Application) ConnectHandleLocalOptions(handler func(instance *Applic
 		argInstance := ApplicationNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.VariantDictNewFromNative(object1.GetObject().Native())
+		arg1 := glib.VariantDictNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -5103,7 +5103,7 @@ func (recv *DBusConnection) ConnectClosed(handler func(instance *DBusConnection,
 		arg1 := object1.GetBoolean()
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := glib.ErrorNewFromNative(object2.GetObject().Native())
+		arg2 := glib.ErrorNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7916,7 +7916,7 @@ func (recv *DBusObjectManagerClient) ConnectInterfaceProxySignal(handler func(in
 		arg4 := object4.GetString()
 
 		object5 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[5]))
-		arg5 := glib.VariantNewFromNative(object5.GetObject().Native())
+		arg5 := glib.VariantNewFromNative(object5.GetPointer())
 
 		handler(argInstance, arg1, arg2, arg3, arg4, arg5)
 	}
@@ -9271,7 +9271,7 @@ func (recv *DBusProxy) ConnectGSignal(handler func(instance *DBusProxy, senderNa
 		arg2 := object2.GetString()
 
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
-		arg3 := glib.VariantNewFromNative(object3.GetObject().Native())
+		arg3 := glib.VariantNewFromNative(object3.GetPointer())
 
 		handler(argInstance, arg1, arg2, arg3)
 	}
@@ -17309,7 +17309,39 @@ func (recv *ListStore) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_list_store_new' : parameter 'item_type' of type 'GType' not supported
+var listStoreNewFunction *gi.Function
+var listStoreNewFunction_Once sync.Once
+
+func listStoreNewFunction_Set() error {
+	var err error
+	listStoreNewFunction_Once.Do(func() {
+		err = listStoreObject_Set()
+		if err != nil {
+			return
+		}
+		listStoreNewFunction, err = listStoreObject.InvokerNew("new")
+	})
+	return err
+}
+
+// ListStoreNew is a representation of the C type g_list_store_new.
+func ListStoreNew(itemType int64) *ListStore {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(itemType)
+
+	var ret gi.Argument
+
+	err := listStoreNewFunction_Set()
+	if err == nil {
+		ret = listStoreNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ListStoreNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var listStoreAppendFunction *gi.Function
 var listStoreAppendFunction_Once sync.Once
@@ -25204,7 +25236,7 @@ func (recv *SimpleAction) ConnectActivate(handler func(instance *SimpleAction, p
 		argInstance := SimpleActionNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.VariantNewFromNative(object1.GetObject().Native())
+		arg1 := glib.VariantNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -25223,7 +25255,7 @@ func (recv *SimpleAction) ConnectChangeState(handler func(instance *SimpleAction
 		argInstance := SimpleActionNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.VariantNewFromNative(object1.GetObject().Native())
+		arg1 := glib.VariantNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}

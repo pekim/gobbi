@@ -2434,7 +2434,36 @@ func RcGetStyle(widget *Widget) *Style {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_rc_get_style_by_paths' : parameter 'type' of type 'GType' not supported
+var rcGetStyleByPathsFunction *gi.Function
+var rcGetStyleByPathsFunction_Once sync.Once
+
+func rcGetStyleByPathsFunction_Set() error {
+	var err error
+	rcGetStyleByPathsFunction_Once.Do(func() {
+		rcGetStyleByPathsFunction, err = gi.FunctionInvokerNew("Gtk", "rc_get_style_by_paths")
+	})
+	return err
+}
+
+// RcGetStyleByPaths is a representation of the C type gtk_rc_get_style_by_paths.
+func RcGetStyleByPaths(settings *Settings, widgetPath string, classPath string, type_ int64) *Style {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(settings.Native())
+	inArgs[1].SetString(widgetPath)
+	inArgs[2].SetString(classPath)
+	inArgs[3].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := rcGetStyleByPathsFunction_Set()
+	if err == nil {
+		ret = rcGetStyleByPathsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := StyleNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var rcGetThemeDirFunction *gi.Function
 var rcGetThemeDirFunction_Once sync.Once
@@ -3886,7 +3915,7 @@ func TestCreateSimpleWindow(windowTitle string, dialogText string) *Widget {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_test_create_widget' : parameter 'widget_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'gtk_test_create_widget' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gtk_test_display_button_window' : parameter '...' of type 'nil' not supported
 
@@ -3919,9 +3948,64 @@ func TestFindLabel(widget *Widget, labelPattern string) *Widget {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_test_find_sibling' : parameter 'widget_type' of type 'GType' not supported
+var testFindSiblingFunction *gi.Function
+var testFindSiblingFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_test_find_widget' : parameter 'widget_type' of type 'GType' not supported
+func testFindSiblingFunction_Set() error {
+	var err error
+	testFindSiblingFunction_Once.Do(func() {
+		testFindSiblingFunction, err = gi.FunctionInvokerNew("Gtk", "test_find_sibling")
+	})
+	return err
+}
+
+// TestFindSibling is a representation of the C type gtk_test_find_sibling.
+func TestFindSibling(baseWidget *Widget, widgetType int64) *Widget {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(baseWidget.Native())
+	inArgs[1].SetInt64(widgetType)
+
+	var ret gi.Argument
+
+	err := testFindSiblingFunction_Set()
+	if err == nil {
+		ret = testFindSiblingFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WidgetNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var testFindWidgetFunction *gi.Function
+var testFindWidgetFunction_Once sync.Once
+
+func testFindWidgetFunction_Set() error {
+	var err error
+	testFindWidgetFunction_Once.Do(func() {
+		testFindWidgetFunction, err = gi.FunctionInvokerNew("Gtk", "test_find_widget")
+	})
+	return err
+}
+
+// TestFindWidget is a representation of the C type gtk_test_find_widget.
+func TestFindWidget(widget *Widget, labelPattern string, widgetType int64) *Widget {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(widget.Native())
+	inArgs[1].SetString(labelPattern)
+	inArgs[2].SetInt64(widgetType)
+
+	var ret gi.Argument
+
+	err := testFindWidgetFunction_Set()
+	if err == nil {
+		ret = testFindWidgetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WidgetNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_test_init' : parameter 'argvp' of type 'nil' not supported
 

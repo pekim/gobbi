@@ -40,6 +40,7 @@ var jenGoTypes = map[string]*jen.Statement{
 	"gboolean": jen.Bool(),
 	"filename": jen.String(),
 	"utf8":     jen.String(),
+	"GType":    jen.Int64(),
 }
 
 type Type struct {

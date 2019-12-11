@@ -3393,7 +3393,7 @@ func (recv *Download) ConnectFailed(handler func(instance *Download, error *glib
 		argInstance := DownloadNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.ErrorNewFromNative(object1.GetObject().Native())
+		arg1 := glib.ErrorNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -7629,7 +7629,7 @@ func (recv *PrintOperation) ConnectFailed(handler func(instance *PrintOperation,
 		argInstance := PrintOperationNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.ErrorNewFromNative(object1.GetObject().Native())
+		arg1 := glib.ErrorNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -13414,7 +13414,7 @@ func (recv *UserContentManager) ConnectScriptMessageReceived(handler func(instan
 		argInstance := UserContentManagerNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := JavascriptResultNewFromNative(object1.GetObject().Native())
+		arg1 := JavascriptResultNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -15467,7 +15467,7 @@ func (recv *WebResource) ConnectFailed(handler func(instance *WebResource, error
 		argInstance := WebResourceNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.ErrorNewFromNative(object1.GetObject().Native())
+		arg1 := glib.ErrorNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -17435,7 +17435,7 @@ func (recv *WebView) ConnectCreate(handler func(instance *WebView, navigationAct
 		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := NavigationActionNewFromNative(object1.GetObject().Native())
+		arg1 := NavigationActionNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -17552,7 +17552,7 @@ func (recv *WebView) ConnectLoadFailed(handler func(instance *WebView, loadEvent
 		arg2 := object2.GetString()
 
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
-		arg3 := glib.ErrorNewFromNative(object3.GetObject().Native())
+		arg3 := glib.ErrorNewFromNative(object3.GetPointer())
 
 		handler(argInstance, arg1, arg2, arg3)
 	}
@@ -17708,7 +17708,7 @@ func (recv *WebView) ConnectScriptDialog(handler func(instance *WebView, dialog 
 		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := ScriptDialogNewFromNative(object1.GetObject().Native())
+		arg1 := ScriptDialogNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}

@@ -9,9 +9,59 @@ import (
 	"unsafe"
 )
 
-// UNSUPPORTED : C value 'g_boxed_copy' : parameter 'boxed_type' of type 'GType' not supported
+var boxedCopyFunction *gi.Function
+var boxedCopyFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_boxed_free' : parameter 'boxed_type' of type 'GType' not supported
+func boxedCopyFunction_Set() error {
+	var err error
+	boxedCopyFunction_Once.Do(func() {
+		boxedCopyFunction, err = gi.FunctionInvokerNew("GObject", "boxed_copy")
+	})
+	return err
+}
+
+// BoxedCopy is a representation of the C type g_boxed_copy.
+func BoxedCopy(boxedType int64, srcBoxed unsafe.Pointer) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(boxedType)
+	inArgs[1].SetPointer(srcBoxed)
+
+	var ret gi.Argument
+
+	err := boxedCopyFunction_Set()
+	if err == nil {
+		ret = boxedCopyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
+
+var boxedFreeFunction *gi.Function
+var boxedFreeFunction_Once sync.Once
+
+func boxedFreeFunction_Set() error {
+	var err error
+	boxedFreeFunction_Once.Do(func() {
+		boxedFreeFunction, err = gi.FunctionInvokerNew("GObject", "boxed_free")
+	})
+	return err
+}
+
+// BoxedFree is a representation of the C type g_boxed_free.
+func BoxedFree(boxedType int64, boxed unsafe.Pointer) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(boxedType)
+	inArgs[1].SetPointer(boxed)
+
+	err := boxedFreeFunction_Set()
+	if err == nil {
+		boxedFreeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_boxed_type_register_static' : parameter 'boxed_copy' of type 'BoxedCopyFunc' not supported
 
@@ -739,7 +789,34 @@ func ClearSignalHandler(handlerIdPtr uint64, instance *Object) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_enum_complete_type_info' : parameter 'g_enum_type' of type 'GType' not supported
+var enumCompleteTypeInfoFunction *gi.Function
+var enumCompleteTypeInfoFunction_Once sync.Once
+
+func enumCompleteTypeInfoFunction_Set() error {
+	var err error
+	enumCompleteTypeInfoFunction_Once.Do(func() {
+		enumCompleteTypeInfoFunction, err = gi.FunctionInvokerNew("GObject", "enum_complete_type_info")
+	})
+	return err
+}
+
+// EnumCompleteTypeInfo is a representation of the C type g_enum_complete_type_info.
+func EnumCompleteTypeInfo(gEnumType int64, constValues *EnumValue) *TypeInfo {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(gEnumType)
+	inArgs[1].SetPointer(constValues.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := enumCompleteTypeInfoFunction_Set()
+	if err == nil {
+		enumCompleteTypeInfoFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := TypeInfoNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var enumGetValueFunction *gi.Function
 var enumGetValueFunction_Once sync.Once
@@ -828,11 +905,92 @@ func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_enum_register_static' : return type 'GType' not supported
+var enumRegisterStaticFunction *gi.Function
+var enumRegisterStaticFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_enum_to_string' : parameter 'g_enum_type' of type 'GType' not supported
+func enumRegisterStaticFunction_Set() error {
+	var err error
+	enumRegisterStaticFunction_Once.Do(func() {
+		enumRegisterStaticFunction, err = gi.FunctionInvokerNew("GObject", "enum_register_static")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_flags_complete_type_info' : parameter 'g_flags_type' of type 'GType' not supported
+// EnumRegisterStatic is a representation of the C type g_enum_register_static.
+func EnumRegisterStatic(name string, constStaticValues *EnumValue) int64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetPointer(constStaticValues.Native())
+
+	var ret gi.Argument
+
+	err := enumRegisterStaticFunction_Set()
+	if err == nil {
+		ret = enumRegisterStaticFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var enumToStringFunction *gi.Function
+var enumToStringFunction_Once sync.Once
+
+func enumToStringFunction_Set() error {
+	var err error
+	enumToStringFunction_Once.Do(func() {
+		enumToStringFunction, err = gi.FunctionInvokerNew("GObject", "enum_to_string")
+	})
+	return err
+}
+
+// EnumToString is a representation of the C type g_enum_to_string.
+func EnumToString(gEnumType int64, value int32) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(gEnumType)
+	inArgs[1].SetInt32(value)
+
+	var ret gi.Argument
+
+	err := enumToStringFunction_Set()
+	if err == nil {
+		ret = enumToStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var flagsCompleteTypeInfoFunction *gi.Function
+var flagsCompleteTypeInfoFunction_Once sync.Once
+
+func flagsCompleteTypeInfoFunction_Set() error {
+	var err error
+	flagsCompleteTypeInfoFunction_Once.Do(func() {
+		flagsCompleteTypeInfoFunction, err = gi.FunctionInvokerNew("GObject", "flags_complete_type_info")
+	})
+	return err
+}
+
+// FlagsCompleteTypeInfo is a representation of the C type g_flags_complete_type_info.
+func FlagsCompleteTypeInfo(gFlagsType int64, constValues *FlagsValue) *TypeInfo {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(gFlagsType)
+	inArgs[1].SetPointer(constValues.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := flagsCompleteTypeInfoFunction_Set()
+	if err == nil {
+		flagsCompleteTypeInfoFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := TypeInfoNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
 
 var flagsGetFirstValueFunction *gi.Function
 var flagsGetFirstValueFunction_Once sync.Once
@@ -921,11 +1079,89 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_flags_register_static' : return type 'GType' not supported
+var flagsRegisterStaticFunction *gi.Function
+var flagsRegisterStaticFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_flags_to_string' : parameter 'flags_type' of type 'GType' not supported
+func flagsRegisterStaticFunction_Set() error {
+	var err error
+	flagsRegisterStaticFunction_Once.Do(func() {
+		flagsRegisterStaticFunction, err = gi.FunctionInvokerNew("GObject", "flags_register_static")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_gtype_get_type' : return type 'GType' not supported
+// FlagsRegisterStatic is a representation of the C type g_flags_register_static.
+func FlagsRegisterStatic(name string, constStaticValues *FlagsValue) int64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetPointer(constStaticValues.Native())
+
+	var ret gi.Argument
+
+	err := flagsRegisterStaticFunction_Set()
+	if err == nil {
+		ret = flagsRegisterStaticFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var flagsToStringFunction *gi.Function
+var flagsToStringFunction_Once sync.Once
+
+func flagsToStringFunction_Set() error {
+	var err error
+	flagsToStringFunction_Once.Do(func() {
+		flagsToStringFunction, err = gi.FunctionInvokerNew("GObject", "flags_to_string")
+	})
+	return err
+}
+
+// FlagsToString is a representation of the C type g_flags_to_string.
+func FlagsToString(flagsType int64, value uint32) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(flagsType)
+	inArgs[1].SetUint32(value)
+
+	var ret gi.Argument
+
+	err := flagsToStringFunction_Set()
+	if err == nil {
+		ret = flagsToStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var gtypeGetTypeFunction *gi.Function
+var gtypeGetTypeFunction_Once sync.Once
+
+func gtypeGetTypeFunction_Set() error {
+	var err error
+	gtypeGetTypeFunction_Once.Do(func() {
+		gtypeGetTypeFunction, err = gi.FunctionInvokerNew("GObject", "gtype_get_type")
+	})
+	return err
+}
+
+// GtypeGetType is a representation of the C type g_gtype_get_type.
+func GtypeGetType() int64 {
+
+	var ret gi.Argument
+
+	err := gtypeGetTypeFunction_Set()
+	if err == nil {
+		ret = gtypeGetTypeFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var paramSpecBooleanFunction *gi.Function
 var paramSpecBooleanFunction_Once sync.Once
@@ -959,7 +1195,37 @@ func ParamSpecBoolean_(name string, nick string, blurb string, defaultValue bool
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_param_spec_boxed' : parameter 'boxed_type' of type 'GType' not supported
+var paramSpecBoxedFunction *gi.Function
+var paramSpecBoxedFunction_Once sync.Once
+
+func paramSpecBoxedFunction_Set() error {
+	var err error
+	paramSpecBoxedFunction_Once.Do(func() {
+		paramSpecBoxedFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_boxed")
+	})
+	return err
+}
+
+// ParamSpecBoxed_ is a representation of the C type g_param_spec_boxed.
+func ParamSpecBoxed_(name string, nick string, blurb string, boxedType int64, flags ParamFlags) *ParamSpec {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetInt64(boxedType)
+	inArgs[4].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecBoxedFunction_Set()
+	if err == nil {
+		ret = paramSpecBoxedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var paramSpecCharFunction *gi.Function
 var paramSpecCharFunction_Once sync.Once
@@ -1029,9 +1295,71 @@ func ParamSpecDouble_(name string, nick string, blurb string, minimum float64, m
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_param_spec_enum' : parameter 'enum_type' of type 'GType' not supported
+var paramSpecEnumFunction *gi.Function
+var paramSpecEnumFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_param_spec_flags' : parameter 'flags_type' of type 'GType' not supported
+func paramSpecEnumFunction_Set() error {
+	var err error
+	paramSpecEnumFunction_Once.Do(func() {
+		paramSpecEnumFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_enum")
+	})
+	return err
+}
+
+// ParamSpecEnum_ is a representation of the C type g_param_spec_enum.
+func ParamSpecEnum_(name string, nick string, blurb string, enumType int64, defaultValue int32, flags ParamFlags) *ParamSpec {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetInt64(enumType)
+	inArgs[4].SetInt32(defaultValue)
+	inArgs[5].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecEnumFunction_Set()
+	if err == nil {
+		ret = paramSpecEnumFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var paramSpecFlagsFunction *gi.Function
+var paramSpecFlagsFunction_Once sync.Once
+
+func paramSpecFlagsFunction_Set() error {
+	var err error
+	paramSpecFlagsFunction_Once.Do(func() {
+		paramSpecFlagsFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_flags")
+	})
+	return err
+}
+
+// ParamSpecFlags_ is a representation of the C type g_param_spec_flags.
+func ParamSpecFlags_(name string, nick string, blurb string, flagsType int64, defaultValue uint32, flags ParamFlags) *ParamSpec {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetInt64(flagsType)
+	inArgs[4].SetUint32(defaultValue)
+	inArgs[5].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecFlagsFunction_Set()
+	if err == nil {
+		ret = paramSpecFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var paramSpecFloatFunction *gi.Function
 var paramSpecFloatFunction_Once sync.Once
@@ -1067,7 +1395,37 @@ func ParamSpecFloat_(name string, nick string, blurb string, minimum float32, ma
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_param_spec_gtype' : parameter 'is_a_type' of type 'GType' not supported
+var paramSpecGtypeFunction *gi.Function
+var paramSpecGtypeFunction_Once sync.Once
+
+func paramSpecGtypeFunction_Set() error {
+	var err error
+	paramSpecGtypeFunction_Once.Do(func() {
+		paramSpecGtypeFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_gtype")
+	})
+	return err
+}
+
+// ParamSpecGtype is a representation of the C type g_param_spec_gtype.
+func ParamSpecGtype(name string, nick string, blurb string, isAType int64, flags ParamFlags) *ParamSpec {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetInt64(isAType)
+	inArgs[4].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecGtypeFunction_Set()
+	if err == nil {
+		ret = paramSpecGtypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var paramSpecIntFunction *gi.Function
 var paramSpecIntFunction_Once sync.Once
@@ -1171,7 +1529,37 @@ func ParamSpecLong_(name string, nick string, blurb string, minimum int64, maxim
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_param_spec_object' : parameter 'object_type' of type 'GType' not supported
+var paramSpecObjectFunction *gi.Function
+var paramSpecObjectFunction_Once sync.Once
+
+func paramSpecObjectFunction_Set() error {
+	var err error
+	paramSpecObjectFunction_Once.Do(func() {
+		paramSpecObjectFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_object")
+	})
+	return err
+}
+
+// ParamSpecObject_ is a representation of the C type g_param_spec_object.
+func ParamSpecObject_(name string, nick string, blurb string, objectType int64, flags ParamFlags) *ParamSpec {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetInt64(objectType)
+	inArgs[4].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecObjectFunction_Set()
+	if err == nil {
+		ret = paramSpecObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var paramSpecOverrideFunction *gi.Function
 var paramSpecOverrideFunction_Once sync.Once
@@ -1202,7 +1590,37 @@ func ParamSpecOverride_(name string, overridden *ParamSpec) *ParamSpec {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_param_spec_param' : parameter 'param_type' of type 'GType' not supported
+var paramSpecParamFunction *gi.Function
+var paramSpecParamFunction_Once sync.Once
+
+func paramSpecParamFunction_Set() error {
+	var err error
+	paramSpecParamFunction_Once.Do(func() {
+		paramSpecParamFunction, err = gi.FunctionInvokerNew("GObject", "param_spec_param")
+	})
+	return err
+}
+
+// ParamSpecParam_ is a representation of the C type g_param_spec_param.
+func ParamSpecParam_(name string, nick string, blurb string, paramType int64, flags ParamFlags) *ParamSpec {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetString(nick)
+	inArgs[2].SetString(blurb)
+	inArgs[3].SetInt64(paramType)
+	inArgs[4].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := paramSpecParamFunction_Set()
+	if err == nil {
+		ret = paramSpecParamFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var paramSpecPointerFunction *gi.Function
 var paramSpecPointerFunction_Once sync.Once
@@ -1498,7 +1916,34 @@ func ParamSpecVariant_(name string, nick string, blurb string, type_ *glib.Varia
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_param_type_register_static' : return type 'GType' not supported
+var paramTypeRegisterStaticFunction *gi.Function
+var paramTypeRegisterStaticFunction_Once sync.Once
+
+func paramTypeRegisterStaticFunction_Set() error {
+	var err error
+	paramTypeRegisterStaticFunction_Once.Do(func() {
+		paramTypeRegisterStaticFunction, err = gi.FunctionInvokerNew("GObject", "param_type_register_static")
+	})
+	return err
+}
+
+// ParamTypeRegisterStatic is a representation of the C type g_param_type_register_static.
+func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) int64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetPointer(pspecInfo.Native())
+
+	var ret gi.Argument
+
+	err := paramTypeRegisterStaticFunction_Set()
+	if err == nil {
+		ret = paramTypeRegisterStaticFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var paramValueConvertFunction *gi.Function
 var paramValueConvertFunction_Once sync.Once
@@ -1644,7 +2089,33 @@ func ParamValuesCmp(pspec *ParamSpec, value1 *Value, value2 *Value) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_pointer_type_register_static' : return type 'GType' not supported
+var pointerTypeRegisterStaticFunction *gi.Function
+var pointerTypeRegisterStaticFunction_Once sync.Once
+
+func pointerTypeRegisterStaticFunction_Set() error {
+	var err error
+	pointerTypeRegisterStaticFunction_Once.Do(func() {
+		pointerTypeRegisterStaticFunction, err = gi.FunctionInvokerNew("GObject", "pointer_type_register_static")
+	})
+	return err
+}
+
+// PointerTypeRegisterStatic is a representation of the C type g_pointer_type_register_static.
+func PointerTypeRegisterStatic(name string) int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
+
+	var ret gi.Argument
+
+	err := pointerTypeRegisterStaticFunction_Set()
+	if err == nil {
+		ret = pointerTypeRegisterStaticFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var signalAccumulatorFirstWinsFunction *gi.Function
 var signalAccumulatorFirstWinsFunction_Once sync.Once
@@ -2112,9 +2583,62 @@ func SignalHasHandlerPending(instance *Object, signalId uint32, detail glib.Quar
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_signal_list_ids' : parameter 'itype' of type 'GType' not supported
+var signalListIdsFunction *gi.Function
+var signalListIdsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_signal_lookup' : parameter 'itype' of type 'GType' not supported
+func signalListIdsFunction_Set() error {
+	var err error
+	signalListIdsFunction_Once.Do(func() {
+		signalListIdsFunction, err = gi.FunctionInvokerNew("GObject", "signal_list_ids")
+	})
+	return err
+}
+
+// SignalListIds is a representation of the C type g_signal_list_ids.
+func SignalListIds(itype int64) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(itype)
+
+	var outArgs [1]gi.Argument
+
+	err := signalListIdsFunction_Set()
+	if err == nil {
+		signalListIdsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint32()
+
+	return out0
+}
+
+var signalLookupFunction *gi.Function
+var signalLookupFunction_Once sync.Once
+
+func signalLookupFunction_Set() error {
+	var err error
+	signalLookupFunction_Once.Do(func() {
+		signalLookupFunction, err = gi.FunctionInvokerNew("GObject", "signal_lookup")
+	})
+	return err
+}
+
+// SignalLookup is a representation of the C type g_signal_lookup.
+func SignalLookup(name string, itype int64) uint32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(name)
+	inArgs[1].SetInt64(itype)
+
+	var ret gi.Argument
+
+	err := signalLookupFunction_Set()
+	if err == nil {
+		ret = signalLookupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var signalNameFunction *gi.Function
 var signalNameFunction_Once sync.Once
@@ -2144,19 +2668,74 @@ func SignalName(signalId uint32) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_signal_new' : parameter 'itype' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_signal_new' : parameter 'accumulator' of type 'SignalAccumulator' not supported
 
-// UNSUPPORTED : C value 'g_signal_new_class_handler' : parameter 'itype' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_signal_new_class_handler' : parameter 'class_handler' of type 'Callback' not supported
 
-// UNSUPPORTED : C value 'g_signal_new_valist' : parameter 'itype' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_signal_new_valist' : parameter 'accumulator' of type 'SignalAccumulator' not supported
 
-// UNSUPPORTED : C value 'g_signal_newv' : parameter 'itype' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_signal_newv' : parameter 'accumulator' of type 'SignalAccumulator' not supported
 
-// UNSUPPORTED : C value 'g_signal_override_class_closure' : parameter 'instance_type' of type 'GType' not supported
+var signalOverrideClassClosureFunction *gi.Function
+var signalOverrideClassClosureFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_signal_override_class_handler' : parameter 'instance_type' of type 'GType' not supported
+func signalOverrideClassClosureFunction_Set() error {
+	var err error
+	signalOverrideClassClosureFunction_Once.Do(func() {
+		signalOverrideClassClosureFunction, err = gi.FunctionInvokerNew("GObject", "signal_override_class_closure")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_signal_parse_name' : parameter 'itype' of type 'GType' not supported
+// SignalOverrideClassClosure is a representation of the C type g_signal_override_class_closure.
+func SignalOverrideClassClosure(signalId uint32, instanceType int64, classClosure *Closure) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetUint32(signalId)
+	inArgs[1].SetInt64(instanceType)
+	inArgs[2].SetPointer(classClosure.Native())
+
+	err := signalOverrideClassClosureFunction_Set()
+	if err == nil {
+		signalOverrideClassClosureFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_signal_override_class_handler' : parameter 'class_handler' of type 'Callback' not supported
+
+var signalParseNameFunction *gi.Function
+var signalParseNameFunction_Once sync.Once
+
+func signalParseNameFunction_Set() error {
+	var err error
+	signalParseNameFunction_Once.Do(func() {
+		signalParseNameFunction, err = gi.FunctionInvokerNew("GObject", "signal_parse_name")
+	})
+	return err
+}
+
+// SignalParseName is a representation of the C type g_signal_parse_name.
+func SignalParseName(detailedSignal string, itype int64, forceDetailQuark bool) (bool, uint32, glib.Quark) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(detailedSignal)
+	inArgs[1].SetInt64(itype)
+	inArgs[2].SetBoolean(forceDetailQuark)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := signalParseNameFunction_Set()
+	if err == nil {
+		ret = signalParseNameFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Uint32()
+	out1 := glib.Quark(outArgs[1].Uint32())
+
+	return retGo, out0, out1
+}
 
 var signalQueryFunction *gi.Function
 var signalQueryFunction_Once sync.Once
@@ -2169,8 +2748,8 @@ func signalQueryFunction_Set() error {
 	return err
 }
 
-// SignalQuery is a representation of the C type g_signal_query.
-func SignalQuery(signalId uint32) *SignalQuery_ {
+// SignalQuery__ is a representation of the C type g_signal_query.
+func SignalQuery__(signalId uint32) *SignalQuery_ {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetUint32(signalId)
 
@@ -2211,7 +2790,7 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_signal_set_va_marshaller' : parameter 'instance_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_signal_set_va_marshaller' : parameter 'va_marshaller' of type 'SignalCVaMarshaller' not supported
 
 var signalStopEmissionFunction *gi.Function
 var signalStopEmissionFunction_Once sync.Once
@@ -2264,7 +2843,34 @@ func SignalStopEmissionByName(instance *Object, detailedSignal string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_signal_type_cclosure_new' : parameter 'itype' of type 'GType' not supported
+var signalTypeCclosureNewFunction *gi.Function
+var signalTypeCclosureNewFunction_Once sync.Once
+
+func signalTypeCclosureNewFunction_Set() error {
+	var err error
+	signalTypeCclosureNewFunction_Once.Do(func() {
+		signalTypeCclosureNewFunction, err = gi.FunctionInvokerNew("GObject", "signal_type_cclosure_new")
+	})
+	return err
+}
+
+// SignalTypeCclosureNew is a representation of the C type g_signal_type_cclosure_new.
+func SignalTypeCclosureNew(itype int64, structOffset uint32) *Closure {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(itype)
+	inArgs[1].SetUint32(structOffset)
+
+	var ret gi.Argument
+
+	err := signalTypeCclosureNewFunction_Set()
+	if err == nil {
+		ret = signalTypeCclosureNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ClosureNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var sourceSetClosureFunction *gi.Function
 var sourceSetClosureFunction_Once sync.Once
@@ -2345,19 +2951,147 @@ func StrdupValueContents(value *Value) string {
 
 // UNSUPPORTED : C value 'g_type_add_class_cache_func' : parameter 'cache_func' of type 'TypeClassCacheFunc' not supported
 
-// UNSUPPORTED : C value 'g_type_add_class_private' : parameter 'class_type' of type 'GType' not supported
+var typeAddClassPrivateFunction *gi.Function
+var typeAddClassPrivateFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_type_add_instance_private' : parameter 'class_type' of type 'GType' not supported
+func typeAddClassPrivateFunction_Set() error {
+	var err error
+	typeAddClassPrivateFunction_Once.Do(func() {
+		typeAddClassPrivateFunction, err = gi.FunctionInvokerNew("GObject", "type_add_class_private")
+	})
+	return err
+}
+
+// TypeAddClassPrivate is a representation of the C type g_type_add_class_private.
+func TypeAddClassPrivate(classType int64, privateSize uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(classType)
+	inArgs[1].SetUint64(privateSize)
+
+	err := typeAddClassPrivateFunction_Set()
+	if err == nil {
+		typeAddClassPrivateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var typeAddInstancePrivateFunction *gi.Function
+var typeAddInstancePrivateFunction_Once sync.Once
+
+func typeAddInstancePrivateFunction_Set() error {
+	var err error
+	typeAddInstancePrivateFunction_Once.Do(func() {
+		typeAddInstancePrivateFunction, err = gi.FunctionInvokerNew("GObject", "type_add_instance_private")
+	})
+	return err
+}
+
+// TypeAddInstancePrivate is a representation of the C type g_type_add_instance_private.
+func TypeAddInstancePrivate(classType int64, privateSize uint64) int32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(classType)
+	inArgs[1].SetUint64(privateSize)
+
+	var ret gi.Argument
+
+	err := typeAddInstancePrivateFunction_Set()
+	if err == nil {
+		ret = typeAddInstancePrivateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_type_add_interface_check' : parameter 'check_func' of type 'TypeInterfaceCheckFunc' not supported
 
-// UNSUPPORTED : C value 'g_type_add_interface_dynamic' : parameter 'instance_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_type_add_interface_dynamic' : parameter 'plugin' of type 'TypePlugin' not supported
 
-// UNSUPPORTED : C value 'g_type_add_interface_static' : parameter 'instance_type' of type 'GType' not supported
+var typeAddInterfaceStaticFunction *gi.Function
+var typeAddInterfaceStaticFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_type_check_class_cast' : parameter 'is_a_type' of type 'GType' not supported
+func typeAddInterfaceStaticFunction_Set() error {
+	var err error
+	typeAddInterfaceStaticFunction_Once.Do(func() {
+		typeAddInterfaceStaticFunction, err = gi.FunctionInvokerNew("GObject", "type_add_interface_static")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_type_check_class_is_a' : parameter 'is_a_type' of type 'GType' not supported
+// TypeAddInterfaceStatic is a representation of the C type g_type_add_interface_static.
+func TypeAddInterfaceStatic(instanceType int64, interfaceType int64, info *InterfaceInfo) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt64(instanceType)
+	inArgs[1].SetInt64(interfaceType)
+	inArgs[2].SetPointer(info.Native())
+
+	err := typeAddInterfaceStaticFunction_Set()
+	if err == nil {
+		typeAddInterfaceStaticFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var typeCheckClassCastFunction *gi.Function
+var typeCheckClassCastFunction_Once sync.Once
+
+func typeCheckClassCastFunction_Set() error {
+	var err error
+	typeCheckClassCastFunction_Once.Do(func() {
+		typeCheckClassCastFunction, err = gi.FunctionInvokerNew("GObject", "type_check_class_cast")
+	})
+	return err
+}
+
+// TypeCheckClassCast is a representation of the C type g_type_check_class_cast.
+func TypeCheckClassCast(gClass *TypeClass, isAType int64) *TypeClass {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(gClass.Native())
+	inArgs[1].SetInt64(isAType)
+
+	var ret gi.Argument
+
+	err := typeCheckClassCastFunction_Set()
+	if err == nil {
+		ret = typeCheckClassCastFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TypeClassNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var typeCheckClassIsAFunction *gi.Function
+var typeCheckClassIsAFunction_Once sync.Once
+
+func typeCheckClassIsAFunction_Set() error {
+	var err error
+	typeCheckClassIsAFunction_Once.Do(func() {
+		typeCheckClassIsAFunction, err = gi.FunctionInvokerNew("GObject", "type_check_class_is_a")
+	})
+	return err
+}
+
+// TypeCheckClassIsA is a representation of the C type g_type_check_class_is_a.
+func TypeCheckClassIsA(gClass *TypeClass, isAType int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(gClass.Native())
+	inArgs[1].SetInt64(isAType)
+
+	var ret gi.Argument
+
+	err := typeCheckClassIsAFunction_Set()
+	if err == nil {
+		ret = typeCheckClassIsAFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var typeCheckInstanceFunction *gi.Function
 var typeCheckInstanceFunction_Once sync.Once
@@ -2387,13 +3121,120 @@ func TypeCheckInstance(instance *TypeInstance) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_type_check_instance_cast' : parameter 'iface_type' of type 'GType' not supported
+var typeCheckInstanceCastFunction *gi.Function
+var typeCheckInstanceCastFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_type_check_instance_is_a' : parameter 'iface_type' of type 'GType' not supported
+func typeCheckInstanceCastFunction_Set() error {
+	var err error
+	typeCheckInstanceCastFunction_Once.Do(func() {
+		typeCheckInstanceCastFunction, err = gi.FunctionInvokerNew("GObject", "type_check_instance_cast")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_type_check_instance_is_fundamentally_a' : parameter 'fundamental_type' of type 'GType' not supported
+// TypeCheckInstanceCast is a representation of the C type g_type_check_instance_cast.
+func TypeCheckInstanceCast(instance *TypeInstance, ifaceType int64) *TypeInstance {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(instance.Native())
+	inArgs[1].SetInt64(ifaceType)
 
-// UNSUPPORTED : C value 'g_type_check_is_value_type' : parameter 'type' of type 'GType' not supported
+	var ret gi.Argument
+
+	err := typeCheckInstanceCastFunction_Set()
+	if err == nil {
+		ret = typeCheckInstanceCastFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TypeInstanceNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var typeCheckInstanceIsAFunction *gi.Function
+var typeCheckInstanceIsAFunction_Once sync.Once
+
+func typeCheckInstanceIsAFunction_Set() error {
+	var err error
+	typeCheckInstanceIsAFunction_Once.Do(func() {
+		typeCheckInstanceIsAFunction, err = gi.FunctionInvokerNew("GObject", "type_check_instance_is_a")
+	})
+	return err
+}
+
+// TypeCheckInstanceIsA is a representation of the C type g_type_check_instance_is_a.
+func TypeCheckInstanceIsA(instance *TypeInstance, ifaceType int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(instance.Native())
+	inArgs[1].SetInt64(ifaceType)
+
+	var ret gi.Argument
+
+	err := typeCheckInstanceIsAFunction_Set()
+	if err == nil {
+		ret = typeCheckInstanceIsAFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var typeCheckInstanceIsFundamentallyAFunction *gi.Function
+var typeCheckInstanceIsFundamentallyAFunction_Once sync.Once
+
+func typeCheckInstanceIsFundamentallyAFunction_Set() error {
+	var err error
+	typeCheckInstanceIsFundamentallyAFunction_Once.Do(func() {
+		typeCheckInstanceIsFundamentallyAFunction, err = gi.FunctionInvokerNew("GObject", "type_check_instance_is_fundamentally_a")
+	})
+	return err
+}
+
+// TypeCheckInstanceIsFundamentallyA is a representation of the C type g_type_check_instance_is_fundamentally_a.
+func TypeCheckInstanceIsFundamentallyA(instance *TypeInstance, fundamentalType int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(instance.Native())
+	inArgs[1].SetInt64(fundamentalType)
+
+	var ret gi.Argument
+
+	err := typeCheckInstanceIsFundamentallyAFunction_Set()
+	if err == nil {
+		ret = typeCheckInstanceIsFundamentallyAFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var typeCheckIsValueTypeFunction *gi.Function
+var typeCheckIsValueTypeFunction_Once sync.Once
+
+func typeCheckIsValueTypeFunction_Set() error {
+	var err error
+	typeCheckIsValueTypeFunction_Once.Do(func() {
+		typeCheckIsValueTypeFunction, err = gi.FunctionInvokerNew("GObject", "type_check_is_value_type")
+	})
+	return err
+}
+
+// TypeCheckIsValueType is a representation of the C type g_type_check_is_value_type.
+func TypeCheckIsValueType(type_ int64) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := typeCheckIsValueTypeFunction_Set()
+	if err == nil {
+		ret = typeCheckIsValueTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var typeCheckValueFunction *gi.Function
 var typeCheckValueFunction_Once sync.Once
@@ -2423,9 +3264,62 @@ func TypeCheckValue(value *Value) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_type_check_value_holds' : parameter 'type' of type 'GType' not supported
+var typeCheckValueHoldsFunction *gi.Function
+var typeCheckValueHoldsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_type_children' : parameter 'type' of type 'GType' not supported
+func typeCheckValueHoldsFunction_Set() error {
+	var err error
+	typeCheckValueHoldsFunction_Once.Do(func() {
+		typeCheckValueHoldsFunction, err = gi.FunctionInvokerNew("GObject", "type_check_value_holds")
+	})
+	return err
+}
+
+// TypeCheckValueHolds is a representation of the C type g_type_check_value_holds.
+func TypeCheckValueHolds(value *Value, type_ int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(value.Native())
+	inArgs[1].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := typeCheckValueHoldsFunction_Set()
+	if err == nil {
+		ret = typeCheckValueHoldsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var typeChildrenFunction *gi.Function
+var typeChildrenFunction_Once sync.Once
+
+func typeChildrenFunction_Set() error {
+	var err error
+	typeChildrenFunction_Once.Do(func() {
+		typeChildrenFunction, err = gi.FunctionInvokerNew("GObject", "type_children")
+	})
+	return err
+}
+
+// TypeChildren is a representation of the C type g_type_children.
+func TypeChildren(type_ int64) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var outArgs [1]gi.Argument
+
+	err := typeChildrenFunction_Set()
+	if err == nil {
+		typeChildrenFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint32()
+
+	return out0
+}
 
 var typeClassAdjustPrivateOffsetFunction *gi.Function
 var typeClassAdjustPrivateOffsetFunction_Once sync.Once
@@ -2452,17 +3346,173 @@ func TypeClassAdjustPrivateOffset(gClass unsafe.Pointer, privateSizeOrOffset int
 	return
 }
 
-// UNSUPPORTED : C value 'g_type_class_peek' : parameter 'type' of type 'GType' not supported
+var typeClassPeekFunction *gi.Function
+var typeClassPeekFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_type_class_peek_static' : parameter 'type' of type 'GType' not supported
+func typeClassPeekFunction_Set() error {
+	var err error
+	typeClassPeekFunction_Once.Do(func() {
+		typeClassPeekFunction, err = gi.FunctionInvokerNew("GObject", "type_class_peek")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_type_class_ref' : parameter 'type' of type 'GType' not supported
+// TypeClassPeek is a representation of the C type g_type_class_peek.
+func TypeClassPeek(type_ int64) *TypeClass {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
 
-// UNSUPPORTED : C value 'g_type_create_instance' : parameter 'type' of type 'GType' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_type_default_interface_peek' : parameter 'g_type' of type 'GType' not supported
+	err := typeClassPeekFunction_Set()
+	if err == nil {
+		ret = typeClassPeekFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_type_default_interface_ref' : parameter 'g_type' of type 'GType' not supported
+	retGo := TypeClassNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var typeClassPeekStaticFunction *gi.Function
+var typeClassPeekStaticFunction_Once sync.Once
+
+func typeClassPeekStaticFunction_Set() error {
+	var err error
+	typeClassPeekStaticFunction_Once.Do(func() {
+		typeClassPeekStaticFunction, err = gi.FunctionInvokerNew("GObject", "type_class_peek_static")
+	})
+	return err
+}
+
+// TypeClassPeekStatic is a representation of the C type g_type_class_peek_static.
+func TypeClassPeekStatic(type_ int64) *TypeClass {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := typeClassPeekStaticFunction_Set()
+	if err == nil {
+		ret = typeClassPeekStaticFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TypeClassNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var typeClassRefFunction *gi.Function
+var typeClassRefFunction_Once sync.Once
+
+func typeClassRefFunction_Set() error {
+	var err error
+	typeClassRefFunction_Once.Do(func() {
+		typeClassRefFunction, err = gi.FunctionInvokerNew("GObject", "type_class_ref")
+	})
+	return err
+}
+
+// TypeClassRef is a representation of the C type g_type_class_ref.
+func TypeClassRef(type_ int64) *TypeClass {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := typeClassRefFunction_Set()
+	if err == nil {
+		ret = typeClassRefFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TypeClassNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var typeCreateInstanceFunction *gi.Function
+var typeCreateInstanceFunction_Once sync.Once
+
+func typeCreateInstanceFunction_Set() error {
+	var err error
+	typeCreateInstanceFunction_Once.Do(func() {
+		typeCreateInstanceFunction, err = gi.FunctionInvokerNew("GObject", "type_create_instance")
+	})
+	return err
+}
+
+// TypeCreateInstance is a representation of the C type g_type_create_instance.
+func TypeCreateInstance(type_ int64) *TypeInstance {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := typeCreateInstanceFunction_Set()
+	if err == nil {
+		ret = typeCreateInstanceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TypeInstanceNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var typeDefaultInterfacePeekFunction *gi.Function
+var typeDefaultInterfacePeekFunction_Once sync.Once
+
+func typeDefaultInterfacePeekFunction_Set() error {
+	var err error
+	typeDefaultInterfacePeekFunction_Once.Do(func() {
+		typeDefaultInterfacePeekFunction, err = gi.FunctionInvokerNew("GObject", "type_default_interface_peek")
+	})
+	return err
+}
+
+// TypeDefaultInterfacePeek is a representation of the C type g_type_default_interface_peek.
+func TypeDefaultInterfacePeek(gType int64) *TypeInterface {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(gType)
+
+	var ret gi.Argument
+
+	err := typeDefaultInterfacePeekFunction_Set()
+	if err == nil {
+		ret = typeDefaultInterfacePeekFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TypeInterfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var typeDefaultInterfaceRefFunction *gi.Function
+var typeDefaultInterfaceRefFunction_Once sync.Once
+
+func typeDefaultInterfaceRefFunction_Set() error {
+	var err error
+	typeDefaultInterfaceRefFunction_Once.Do(func() {
+		typeDefaultInterfaceRefFunction, err = gi.FunctionInvokerNew("GObject", "type_default_interface_ref")
+	})
+	return err
+}
+
+// TypeDefaultInterfaceRef is a representation of the C type g_type_default_interface_ref.
+func TypeDefaultInterfaceRef(gType int64) *TypeInterface {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(gType)
+
+	var ret gi.Argument
+
+	err := typeDefaultInterfaceRefFunction_Set()
+	if err == nil {
+		ret = typeDefaultInterfaceRefFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TypeInterfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var typeDefaultInterfaceUnrefFunction *gi.Function
 var typeDefaultInterfaceUnrefFunction_Once sync.Once
@@ -2488,9 +3538,57 @@ func TypeDefaultInterfaceUnref(gIface *TypeInterface) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_type_depth' : parameter 'type' of type 'GType' not supported
+var typeDepthFunction *gi.Function
+var typeDepthFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_type_ensure' : parameter 'type' of type 'GType' not supported
+func typeDepthFunction_Set() error {
+	var err error
+	typeDepthFunction_Once.Do(func() {
+		typeDepthFunction, err = gi.FunctionInvokerNew("GObject", "type_depth")
+	})
+	return err
+}
+
+// TypeDepth is a representation of the C type g_type_depth.
+func TypeDepth(type_ int64) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := typeDepthFunction_Set()
+	if err == nil {
+		ret = typeDepthFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var typeEnsureFunction *gi.Function
+var typeEnsureFunction_Once sync.Once
+
+func typeEnsureFunction_Set() error {
+	var err error
+	typeEnsureFunction_Once.Do(func() {
+		typeEnsureFunction, err = gi.FunctionInvokerNew("GObject", "type_ensure")
+	})
+	return err
+}
+
+// TypeEnsure is a representation of the C type g_type_ensure.
+func TypeEnsure(type_ int64) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	err := typeEnsureFunction_Set()
+	if err == nil {
+		typeEnsureFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var typeFreeInstanceFunction *gi.Function
 var typeFreeInstanceFunction_Once sync.Once
@@ -2516,17 +3614,146 @@ func TypeFreeInstance(instance *TypeInstance) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_type_from_name' : return type 'GType' not supported
+var typeFromNameFunction *gi.Function
+var typeFromNameFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_type_fundamental' : parameter 'type_id' of type 'GType' not supported
+func typeFromNameFunction_Set() error {
+	var err error
+	typeFromNameFunction_Once.Do(func() {
+		typeFromNameFunction, err = gi.FunctionInvokerNew("GObject", "type_from_name")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_type_fundamental_next' : return type 'GType' not supported
+// TypeFromName is a representation of the C type g_type_from_name.
+func TypeFromName(name string) int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(name)
 
-// UNSUPPORTED : C value 'g_type_get_instance_count' : parameter 'type' of type 'GType' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_type_get_plugin' : parameter 'type' of type 'GType' not supported
+	err := typeFromNameFunction_Set()
+	if err == nil {
+		ret = typeFromNameFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_type_get_qdata' : parameter 'type' of type 'GType' not supported
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var typeFundamentalFunction *gi.Function
+var typeFundamentalFunction_Once sync.Once
+
+func typeFundamentalFunction_Set() error {
+	var err error
+	typeFundamentalFunction_Once.Do(func() {
+		typeFundamentalFunction, err = gi.FunctionInvokerNew("GObject", "type_fundamental")
+	})
+	return err
+}
+
+// TypeFundamental is a representation of the C type g_type_fundamental.
+func TypeFundamental(typeId int64) int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(typeId)
+
+	var ret gi.Argument
+
+	err := typeFundamentalFunction_Set()
+	if err == nil {
+		ret = typeFundamentalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var typeFundamentalNextFunction *gi.Function
+var typeFundamentalNextFunction_Once sync.Once
+
+func typeFundamentalNextFunction_Set() error {
+	var err error
+	typeFundamentalNextFunction_Once.Do(func() {
+		typeFundamentalNextFunction, err = gi.FunctionInvokerNew("GObject", "type_fundamental_next")
+	})
+	return err
+}
+
+// TypeFundamentalNext is a representation of the C type g_type_fundamental_next.
+func TypeFundamentalNext() int64 {
+
+	var ret gi.Argument
+
+	err := typeFundamentalNextFunction_Set()
+	if err == nil {
+		ret = typeFundamentalNextFunction.Invoke(nil, nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var typeGetInstanceCountFunction *gi.Function
+var typeGetInstanceCountFunction_Once sync.Once
+
+func typeGetInstanceCountFunction_Set() error {
+	var err error
+	typeGetInstanceCountFunction_Once.Do(func() {
+		typeGetInstanceCountFunction, err = gi.FunctionInvokerNew("GObject", "type_get_instance_count")
+	})
+	return err
+}
+
+// TypeGetInstanceCount is a representation of the C type g_type_get_instance_count.
+func TypeGetInstanceCount(type_ int64) int32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := typeGetInstanceCountFunction_Set()
+	if err == nil {
+		ret = typeGetInstanceCountFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_type_get_plugin' : return type 'TypePlugin' not supported
+
+var typeGetQdataFunction *gi.Function
+var typeGetQdataFunction_Once sync.Once
+
+func typeGetQdataFunction_Set() error {
+	var err error
+	typeGetQdataFunction_Once.Do(func() {
+		typeGetQdataFunction, err = gi.FunctionInvokerNew("GObject", "type_get_qdata")
+	})
+	return err
+}
+
+// TypeGetQdata is a representation of the C type g_type_get_qdata.
+func TypeGetQdata(type_ int64, quark glib.Quark) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(type_)
+	inArgs[1].SetUint32(uint32(quark))
+
+	var ret gi.Argument
+
+	err := typeGetQdataFunction_Set()
+	if err == nil {
+		ret = typeGetQdataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var typeGetTypeRegistrationSerialFunction *gi.Function
 var typeGetTypeRegistrationSerialFunction_Once sync.Once
@@ -2600,19 +3827,174 @@ func TypeInitWithDebugFlags(debugFlags TypeDebugFlags) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_type_interface_add_prerequisite' : parameter 'interface_type' of type 'GType' not supported
+var typeInterfaceAddPrerequisiteFunction *gi.Function
+var typeInterfaceAddPrerequisiteFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_type_interface_get_plugin' : parameter 'instance_type' of type 'GType' not supported
+func typeInterfaceAddPrerequisiteFunction_Set() error {
+	var err error
+	typeInterfaceAddPrerequisiteFunction_Once.Do(func() {
+		typeInterfaceAddPrerequisiteFunction, err = gi.FunctionInvokerNew("GObject", "type_interface_add_prerequisite")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_type_interface_peek' : parameter 'iface_type' of type 'GType' not supported
+// TypeInterfaceAddPrerequisite is a representation of the C type g_type_interface_add_prerequisite.
+func TypeInterfaceAddPrerequisite(interfaceType int64, prerequisiteType int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(interfaceType)
+	inArgs[1].SetInt64(prerequisiteType)
 
-// UNSUPPORTED : C value 'g_type_interface_prerequisites' : parameter 'interface_type' of type 'GType' not supported
+	err := typeInterfaceAddPrerequisiteFunction_Set()
+	if err == nil {
+		typeInterfaceAddPrerequisiteFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_type_interfaces' : parameter 'type' of type 'GType' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'g_type_is_a' : parameter 'type' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_type_interface_get_plugin' : return type 'TypePlugin' not supported
 
-// UNSUPPORTED : C value 'g_type_name' : parameter 'type' of type 'GType' not supported
+var typeInterfacePeekFunction *gi.Function
+var typeInterfacePeekFunction_Once sync.Once
+
+func typeInterfacePeekFunction_Set() error {
+	var err error
+	typeInterfacePeekFunction_Once.Do(func() {
+		typeInterfacePeekFunction, err = gi.FunctionInvokerNew("GObject", "type_interface_peek")
+	})
+	return err
+}
+
+// TypeInterfacePeek is a representation of the C type g_type_interface_peek.
+func TypeInterfacePeek(instanceClass *TypeClass, ifaceType int64) *TypeInterface {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(instanceClass.Native())
+	inArgs[1].SetInt64(ifaceType)
+
+	var ret gi.Argument
+
+	err := typeInterfacePeekFunction_Set()
+	if err == nil {
+		ret = typeInterfacePeekFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TypeInterfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var typeInterfacePrerequisitesFunction *gi.Function
+var typeInterfacePrerequisitesFunction_Once sync.Once
+
+func typeInterfacePrerequisitesFunction_Set() error {
+	var err error
+	typeInterfacePrerequisitesFunction_Once.Do(func() {
+		typeInterfacePrerequisitesFunction, err = gi.FunctionInvokerNew("GObject", "type_interface_prerequisites")
+	})
+	return err
+}
+
+// TypeInterfacePrerequisites is a representation of the C type g_type_interface_prerequisites.
+func TypeInterfacePrerequisites(interfaceType int64) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(interfaceType)
+
+	var outArgs [1]gi.Argument
+
+	err := typeInterfacePrerequisitesFunction_Set()
+	if err == nil {
+		typeInterfacePrerequisitesFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint32()
+
+	return out0
+}
+
+var typeInterfacesFunction *gi.Function
+var typeInterfacesFunction_Once sync.Once
+
+func typeInterfacesFunction_Set() error {
+	var err error
+	typeInterfacesFunction_Once.Do(func() {
+		typeInterfacesFunction, err = gi.FunctionInvokerNew("GObject", "type_interfaces")
+	})
+	return err
+}
+
+// TypeInterfaces is a representation of the C type g_type_interfaces.
+func TypeInterfaces(type_ int64) uint32 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var outArgs [1]gi.Argument
+
+	err := typeInterfacesFunction_Set()
+	if err == nil {
+		typeInterfacesFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint32()
+
+	return out0
+}
+
+var typeIsAFunction *gi.Function
+var typeIsAFunction_Once sync.Once
+
+func typeIsAFunction_Set() error {
+	var err error
+	typeIsAFunction_Once.Do(func() {
+		typeIsAFunction, err = gi.FunctionInvokerNew("GObject", "type_is_a")
+	})
+	return err
+}
+
+// TypeIsA is a representation of the C type g_type_is_a.
+func TypeIsA(type_ int64, isAType int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(type_)
+	inArgs[1].SetInt64(isAType)
+
+	var ret gi.Argument
+
+	err := typeIsAFunction_Set()
+	if err == nil {
+		ret = typeIsAFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var typeNameFunction *gi.Function
+var typeNameFunction_Once sync.Once
+
+func typeNameFunction_Set() error {
+	var err error
+	typeNameFunction_Once.Do(func() {
+		typeNameFunction, err = gi.FunctionInvokerNew("GObject", "type_name")
+	})
+	return err
+}
+
+// TypeName is a representation of the C type g_type_name.
+func TypeName(type_ int64) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := typeNameFunction_Set()
+	if err == nil {
+		ret = typeNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
 
 var typeNameFromClassFunction *gi.Function
 var typeNameFromClassFunction_Once sync.Once
@@ -2670,37 +4052,332 @@ func TypeNameFromInstance(instance *TypeInstance) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_type_next_base' : parameter 'leaf_type' of type 'GType' not supported
+var typeNextBaseFunction *gi.Function
+var typeNextBaseFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_type_parent' : parameter 'type' of type 'GType' not supported
+func typeNextBaseFunction_Set() error {
+	var err error
+	typeNextBaseFunction_Once.Do(func() {
+		typeNextBaseFunction, err = gi.FunctionInvokerNew("GObject", "type_next_base")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_type_qname' : parameter 'type' of type 'GType' not supported
+// TypeNextBase is a representation of the C type g_type_next_base.
+func TypeNextBase(leafType int64, rootType int64) int64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(leafType)
+	inArgs[1].SetInt64(rootType)
 
-// UNSUPPORTED : C value 'g_type_query' : parameter 'type' of type 'GType' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_type_register_dynamic' : parameter 'parent_type' of type 'GType' not supported
+	err := typeNextBaseFunction_Set()
+	if err == nil {
+		ret = typeNextBaseFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_type_register_fundamental' : parameter 'type_id' of type 'GType' not supported
+	retGo := ret.Int64()
 
-// UNSUPPORTED : C value 'g_type_register_static' : parameter 'parent_type' of type 'GType' not supported
+	return retGo
+}
 
-// UNSUPPORTED : C value 'g_type_register_static_simple' : parameter 'parent_type' of type 'GType' not supported
+var typeParentFunction *gi.Function
+var typeParentFunction_Once sync.Once
+
+func typeParentFunction_Set() error {
+	var err error
+	typeParentFunction_Once.Do(func() {
+		typeParentFunction, err = gi.FunctionInvokerNew("GObject", "type_parent")
+	})
+	return err
+}
+
+// TypeParent is a representation of the C type g_type_parent.
+func TypeParent(type_ int64) int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := typeParentFunction_Set()
+	if err == nil {
+		ret = typeParentFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var typeQnameFunction *gi.Function
+var typeQnameFunction_Once sync.Once
+
+func typeQnameFunction_Set() error {
+	var err error
+	typeQnameFunction_Once.Do(func() {
+		typeQnameFunction, err = gi.FunctionInvokerNew("GObject", "type_qname")
+	})
+	return err
+}
+
+// TypeQname is a representation of the C type g_type_qname.
+func TypeQname(type_ int64) glib.Quark {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := typeQnameFunction_Set()
+	if err == nil {
+		ret = typeQnameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.Quark(ret.Uint32())
+
+	return retGo
+}
+
+var typeQueryFunction *gi.Function
+var typeQueryFunction_Once sync.Once
+
+func typeQueryFunction_Set() error {
+	var err error
+	typeQueryFunction_Once.Do(func() {
+		typeQueryFunction, err = gi.FunctionInvokerNew("GObject", "type_query")
+	})
+	return err
+}
+
+// TypeQuery__ is a representation of the C type g_type_query.
+func TypeQuery__(type_ int64) *TypeQuery {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var outArgs [1]gi.Argument
+
+	err := typeQueryFunction_Set()
+	if err == nil {
+		typeQueryFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := TypeQueryNewFromNative(outArgs[0].Pointer())
+
+	return out0
+}
+
+// UNSUPPORTED : C value 'g_type_register_dynamic' : parameter 'plugin' of type 'TypePlugin' not supported
+
+var typeRegisterFundamentalFunction *gi.Function
+var typeRegisterFundamentalFunction_Once sync.Once
+
+func typeRegisterFundamentalFunction_Set() error {
+	var err error
+	typeRegisterFundamentalFunction_Once.Do(func() {
+		typeRegisterFundamentalFunction, err = gi.FunctionInvokerNew("GObject", "type_register_fundamental")
+	})
+	return err
+}
+
+// TypeRegisterFundamental is a representation of the C type g_type_register_fundamental.
+func TypeRegisterFundamental(typeId int64, typeName string, info *TypeInfo, finfo *TypeFundamentalInfo, flags TypeFlags) int64 {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetInt64(typeId)
+	inArgs[1].SetString(typeName)
+	inArgs[2].SetPointer(info.Native())
+	inArgs[3].SetPointer(finfo.Native())
+	inArgs[4].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := typeRegisterFundamentalFunction_Set()
+	if err == nil {
+		ret = typeRegisterFundamentalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var typeRegisterStaticFunction *gi.Function
+var typeRegisterStaticFunction_Once sync.Once
+
+func typeRegisterStaticFunction_Set() error {
+	var err error
+	typeRegisterStaticFunction_Once.Do(func() {
+		typeRegisterStaticFunction, err = gi.FunctionInvokerNew("GObject", "type_register_static")
+	})
+	return err
+}
+
+// TypeRegisterStatic is a representation of the C type g_type_register_static.
+func TypeRegisterStatic(parentType int64, typeName string, info *TypeInfo, flags TypeFlags) int64 {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetInt64(parentType)
+	inArgs[1].SetString(typeName)
+	inArgs[2].SetPointer(info.Native())
+	inArgs[3].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := typeRegisterStaticFunction_Set()
+	if err == nil {
+		ret = typeRegisterStaticFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_type_register_static_simple' : parameter 'class_init' of type 'ClassInitFunc' not supported
 
 // UNSUPPORTED : C value 'g_type_remove_class_cache_func' : parameter 'cache_func' of type 'TypeClassCacheFunc' not supported
 
 // UNSUPPORTED : C value 'g_type_remove_interface_check' : parameter 'check_func' of type 'TypeInterfaceCheckFunc' not supported
 
-// UNSUPPORTED : C value 'g_type_set_qdata' : parameter 'type' of type 'GType' not supported
+var typeSetQdataFunction *gi.Function
+var typeSetQdataFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_type_test_flags' : parameter 'type' of type 'GType' not supported
+func typeSetQdataFunction_Set() error {
+	var err error
+	typeSetQdataFunction_Once.Do(func() {
+		typeSetQdataFunction, err = gi.FunctionInvokerNew("GObject", "type_set_qdata")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_type_value_table_peek' : parameter 'type' of type 'GType' not supported
+// TypeSetQdata is a representation of the C type g_type_set_qdata.
+func TypeSetQdata(type_ int64, quark glib.Quark, data unsafe.Pointer) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt64(type_)
+	inArgs[1].SetUint32(uint32(quark))
+	inArgs[2].SetPointer(data)
 
-// UNSUPPORTED : C value 'g_value_register_transform_func' : parameter 'src_type' of type 'GType' not supported
+	err := typeSetQdataFunction_Set()
+	if err == nil {
+		typeSetQdataFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_value_type_compatible' : parameter 'src_type' of type 'GType' not supported
+	return
+}
 
-// UNSUPPORTED : C value 'g_value_type_transformable' : parameter 'src_type' of type 'GType' not supported
+var typeTestFlagsFunction *gi.Function
+var typeTestFlagsFunction_Once sync.Once
+
+func typeTestFlagsFunction_Set() error {
+	var err error
+	typeTestFlagsFunction_Once.Do(func() {
+		typeTestFlagsFunction, err = gi.FunctionInvokerNew("GObject", "type_test_flags")
+	})
+	return err
+}
+
+// TypeTestFlags is a representation of the C type g_type_test_flags.
+func TypeTestFlags(type_ int64, flags uint32) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(type_)
+	inArgs[1].SetUint32(flags)
+
+	var ret gi.Argument
+
+	err := typeTestFlagsFunction_Set()
+	if err == nil {
+		ret = typeTestFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var typeValueTablePeekFunction *gi.Function
+var typeValueTablePeekFunction_Once sync.Once
+
+func typeValueTablePeekFunction_Set() error {
+	var err error
+	typeValueTablePeekFunction_Once.Do(func() {
+		typeValueTablePeekFunction, err = gi.FunctionInvokerNew("GObject", "type_value_table_peek")
+	})
+	return err
+}
+
+// TypeValueTablePeek is a representation of the C type g_type_value_table_peek.
+func TypeValueTablePeek(type_ int64) *TypeValueTable {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := typeValueTablePeekFunction_Set()
+	if err == nil {
+		ret = typeValueTablePeekFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TypeValueTableNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_value_register_transform_func' : parameter 'transform_func' of type 'ValueTransform' not supported
+
+var valueTypeCompatibleFunction *gi.Function
+var valueTypeCompatibleFunction_Once sync.Once
+
+func valueTypeCompatibleFunction_Set() error {
+	var err error
+	valueTypeCompatibleFunction_Once.Do(func() {
+		valueTypeCompatibleFunction, err = gi.FunctionInvokerNew("GObject", "value_type_compatible")
+	})
+	return err
+}
+
+// ValueTypeCompatible is a representation of the C type g_value_type_compatible.
+func ValueTypeCompatible(srcType int64, destType int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(srcType)
+	inArgs[1].SetInt64(destType)
+
+	var ret gi.Argument
+
+	err := valueTypeCompatibleFunction_Set()
+	if err == nil {
+		ret = valueTypeCompatibleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var valueTypeTransformableFunction *gi.Function
+var valueTypeTransformableFunction_Once sync.Once
+
+func valueTypeTransformableFunction_Set() error {
+	var err error
+	valueTypeTransformableFunction_Once.Do(func() {
+		valueTypeTransformableFunction, err = gi.FunctionInvokerNew("GObject", "value_type_transformable")
+	})
+	return err
+}
+
+// ValueTypeTransformable is a representation of the C type g_value_type_transformable.
+func ValueTypeTransformable(srcType int64, destType int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(srcType)
+	inArgs[1].SetInt64(destType)
+
+	var ret gi.Argument
+
+	err := valueTypeTransformableFunction_Set()
+	if err == nil {
+		ret = valueTypeTransformableFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var badFunction *gi.Function
 var badFunction_Once sync.Once

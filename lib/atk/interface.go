@@ -837,7 +837,7 @@ func (recv *Component) ConnectBoundsChanged(handler func(instance *Component, ar
 		argInstance := ComponentNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := RectangleNewFromNative(object1.GetObject().Native())
+		arg1 := RectangleNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}

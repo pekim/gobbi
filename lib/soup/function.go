@@ -1341,15 +1341,15 @@ func UriNormalize(part string, unescapeExtra string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_value_array_append' : parameter 'type' of type 'GType' not supported
+// UNSUPPORTED : C value 'soup_value_array_append' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_value_array_append_vals' : parameter 'first_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'soup_value_array_append_vals' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_value_array_from_args' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'soup_value_array_get_nth' : parameter 'type' of type 'GType' not supported
+// UNSUPPORTED : C value 'soup_value_array_get_nth' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_value_array_insert' : parameter 'type' of type 'GType' not supported
+// UNSUPPORTED : C value 'soup_value_array_insert' : parameter '...' of type 'nil' not supported
 
 var valueArrayNewFunction *gi.Function
 var valueArrayNewFunction_Once sync.Once
@@ -1377,11 +1377,11 @@ func ValueArrayNew() *gobject.ValueArray {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_value_array_new_with_vals' : parameter 'first_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'soup_value_array_new_with_vals' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_value_array_to_args' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'soup_value_hash_insert' : parameter 'type' of type 'GType' not supported
+// UNSUPPORTED : C value 'soup_value_hash_insert' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_value_hash_insert_vals' : parameter '...' of type 'nil' not supported
 
@@ -1411,7 +1411,7 @@ func ValueHashInsertValue(hash *glib.HashTable, key string, value *gobject.Value
 	return
 }
 
-// UNSUPPORTED : C value 'soup_value_hash_lookup' : parameter 'type' of type 'GType' not supported
+// UNSUPPORTED : C value 'soup_value_hash_lookup' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_value_hash_lookup_vals' : parameter '...' of type 'nil' not supported
 
@@ -1628,7 +1628,7 @@ func XmlrpcErrorQuark() glib.Quark {
 
 // UNSUPPORTED : C value 'soup_xmlrpc_extract_method_call' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_extract_method_response' : parameter 'type' of type 'GType' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_extract_method_response' : parameter '...' of type 'nil' not supported
 
 var xmlrpcFaultQuarkFunction *gi.Function
 var xmlrpcFaultQuarkFunction_Once sync.Once
@@ -1845,7 +1845,7 @@ func XmlrpcParseResponse(methodResponse string, length int32, signature string) 
 
 // UNSUPPORTED : C value 'soup_xmlrpc_set_fault' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_set_response' : parameter 'type' of type 'GType' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_set_response' : parameter '...' of type 'nil' not supported
 
 var xmlrpcVariantGetDatetimeFunction *gi.Function
 var xmlrpcVariantGetDatetimeFunction_Once sync.Once

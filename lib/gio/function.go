@@ -271,7 +271,7 @@ func AppInfoResetTypeAssociations(contentType string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_async_initable_newv_async' : parameter 'object_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_async_initable_newv_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_bus_get' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
@@ -1454,7 +1454,7 @@ func IconHash(icon unsafe.Pointer) uint32 {
 
 // UNSUPPORTED : C value 'g_icon_new_for_string' : return type 'Icon' not supported
 
-// UNSUPPORTED : C value 'g_initable_newv' : parameter 'object_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_initable_newv' : parameter 'parameters' of type 'nil' not supported
 
 var ioErrorFromErrnoFunction *gi.Function
 var ioErrorFromErrnoFunction_Once sync.Once
@@ -1510,7 +1510,36 @@ func IoErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_extension_point_implement' : parameter 'type' of type 'GType' not supported
+var ioExtensionPointImplementFunction *gi.Function
+var ioExtensionPointImplementFunction_Once sync.Once
+
+func ioExtensionPointImplementFunction_Set() error {
+	var err error
+	ioExtensionPointImplementFunction_Once.Do(func() {
+		ioExtensionPointImplementFunction, err = gi.FunctionInvokerNew("Gio", "io_extension_point_implement")
+	})
+	return err
+}
+
+// IoExtensionPointImplement is a representation of the C type g_io_extension_point_implement.
+func IoExtensionPointImplement(extensionPointName string, type_ int64, extensionName string, priority int32) *IOExtension {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(extensionPointName)
+	inArgs[1].SetInt64(type_)
+	inArgs[2].SetString(extensionName)
+	inArgs[3].SetInt32(priority)
+
+	var ret gi.Argument
+
+	err := ioExtensionPointImplementFunction_Set()
+	if err == nil {
+		ret = ioExtensionPointImplementFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOExtensionNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var ioExtensionPointLookupFunction *gi.Function
 var ioExtensionPointLookupFunction_Once sync.Once

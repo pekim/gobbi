@@ -79,7 +79,7 @@ func (recv *Class) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'jsc_class_add_methodv' : parameter 'callback' of type 'GObject.Callback' not supported
 
-// UNSUPPORTED : C value 'jsc_class_add_property' : parameter 'property_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'jsc_class_add_property' : parameter 'getter' of type 'PropertyGetter' not supported
 
 var classGetNameFunction *gi.Function
 var classGetNameFunction_Once sync.Once
@@ -1246,7 +1246,7 @@ func (recv *Value) SetFieldParent(value *gobject.Object) {
 	gi.ObjectFieldSet(valueObject, recv.Native(), "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'jsc_value_new_array' : parameter 'first_item_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'jsc_value_new_array' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'jsc_value_new_array_from_garray' : parameter 'array' of type 'nil' not supported
 
@@ -1502,11 +1502,11 @@ func ValueNewUndefined(context *Context) *Value {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'jsc_value_constructor_call' : parameter 'first_parameter_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'jsc_value_constructor_call' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'jsc_value_constructor_callv' : parameter 'parameters' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'jsc_value_function_call' : parameter 'first_parameter_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'jsc_value_function_call' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'jsc_value_function_callv' : parameter 'parameters' of type 'nil' not supported
 
@@ -1830,7 +1830,7 @@ func (recv *Value) IsUndefined() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'jsc_value_object_define_property_accessor' : parameter 'property_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'jsc_value_object_define_property_accessor' : parameter 'getter' of type 'Getter' not supported
 
 var valueObjectDefinePropertyDataFunction *gi.Function
 var valueObjectDefinePropertyDataFunction_Once sync.Once
@@ -2023,7 +2023,7 @@ func (recv *Value) ObjectHasProperty(name string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'jsc_value_object_invoke_method' : parameter 'first_parameter_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'jsc_value_object_invoke_method' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'jsc_value_object_invoke_methodv' : parameter 'parameters' of type 'nil' not supported
 

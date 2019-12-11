@@ -1866,7 +1866,7 @@ func (recv *ColorChooser) ConnectColorActivated(handler func(instance *ColorChoo
 		argInstance := ColorChooserNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.RGBANewFromNative(object1.GetObject().Native())
+		arg1 := gdk.RGBANewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -7180,7 +7180,38 @@ func (recv *TreeModel) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'gtk_tree_model_get' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_model_get_column_type' : return type 'GType' not supported
+var treeModelGetColumnTypeFunction *gi.Function
+var treeModelGetColumnTypeFunction_Once sync.Once
+
+func treeModelGetColumnTypeFunction_Set() error {
+	var err error
+	treeModelGetColumnTypeFunction_Once.Do(func() {
+		err = treeModelInterface_Set()
+		if err != nil {
+			return
+		}
+		treeModelGetColumnTypeFunction, err = treeModelInterface.InvokerNew("get_column_type")
+	})
+	return err
+}
+
+// GetColumnType is a representation of the C type gtk_tree_model_get_column_type.
+func (recv *TreeModel) GetColumnType(index int32) int64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(index)
+
+	var ret gi.Argument
+
+	err := treeModelGetColumnTypeFunction_Set()
+	if err == nil {
+		ret = treeModelGetColumnTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var treeModelGetFlagsFunction *gi.Function
 var treeModelGetFlagsFunction_Once sync.Once
@@ -7913,10 +7944,10 @@ func (recv *TreeModel) ConnectRowChanged(handler func(instance *TreeModel, path 
 		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreePathNewFromNative(object1.GetObject().Native())
+		arg1 := TreePathNewFromNative(object1.GetPointer())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreeIterNewFromNative(object2.GetObject().Native())
+		arg2 := TreeIterNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7935,7 +7966,7 @@ func (recv *TreeModel) ConnectRowDeleted(handler func(instance *TreeModel, path 
 		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreePathNewFromNative(object1.GetObject().Native())
+		arg1 := TreePathNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -7954,10 +7985,10 @@ func (recv *TreeModel) ConnectRowHasChildToggled(handler func(instance *TreeMode
 		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreePathNewFromNative(object1.GetObject().Native())
+		arg1 := TreePathNewFromNative(object1.GetPointer())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreeIterNewFromNative(object2.GetObject().Native())
+		arg2 := TreeIterNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7976,10 +8007,10 @@ func (recv *TreeModel) ConnectRowInserted(handler func(instance *TreeModel, path
 		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreePathNewFromNative(object1.GetObject().Native())
+		arg1 := TreePathNewFromNative(object1.GetPointer())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreeIterNewFromNative(object2.GetObject().Native())
+		arg2 := TreeIterNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7998,10 +8029,10 @@ func (recv *TreeModel) ConnectRowsReordered(handler func(instance *TreeModel, pa
 		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreePathNewFromNative(object1.GetObject().Native())
+		arg1 := TreePathNewFromNative(object1.GetPointer())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreeIterNewFromNative(object2.GetObject().Native())
+		arg2 := TreeIterNewFromNative(object2.GetPointer())
 
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
 		arg3 := object3.GetPointer()

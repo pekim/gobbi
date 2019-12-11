@@ -348,13 +348,13 @@ func (recv *Object) SetFieldGTypeInstance(value *TypeInstance) {
 	gi.ObjectFieldSet(objectObject, recv.Native(), "g_type_instance", argValue)
 }
 
-// UNSUPPORTED : C value 'g_object_new' : parameter 'object_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_object_new' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_object_new_valist' : parameter 'object_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_object_new_valist' : parameter 'var_args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_object_new_with_properties' : parameter 'object_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_object_new_with_properties' : parameter 'names' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_object_newv' : parameter 'object_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'g_object_newv' : parameter 'parameters' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_object_add_toggle_ref' : parameter 'notify' of type 'ToggleNotify' not supported
 
@@ -1242,13 +1242,55 @@ func (recv *ParamSpec) SetFieldFlags(value ParamFlags) {
 	gi.ObjectFieldSet(paramSpecObject, recv.Native(), "flags", argValue)
 }
 
-// UNSUPPORTED : C value 'value_type' : for field getter : no Go type for 'GType'
+// FieldValueType returns the C field 'value_type'.
+func (recv *ParamSpec) FieldValueType() int64 {
+	var nilValue int64
+	err := paramSpecObject_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'value_type' : for field setter : no Go type for 'GType'
+	argValue := gi.ObjectFieldGet(paramSpecObject, recv.Native(), "value_type")
+	value := argValue.Int64()
+	return value
+}
 
-// UNSUPPORTED : C value 'owner_type' : for field getter : no Go type for 'GType'
+// SetFieldValueType sets the value of the C field 'value_type'.
+func (recv *ParamSpec) SetFieldValueType(value int64) {
+	err := paramSpecObject_Set()
+	if err != nil {
+		return
+	}
 
-// UNSUPPORTED : C value 'owner_type' : for field setter : no Go type for 'GType'
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.ObjectFieldSet(paramSpecObject, recv.Native(), "value_type", argValue)
+}
+
+// FieldOwnerType returns the C field 'owner_type'.
+func (recv *ParamSpec) FieldOwnerType() int64 {
+	var nilValue int64
+	err := paramSpecObject_Set()
+	if err != nil {
+		return nilValue
+	}
+
+	argValue := gi.ObjectFieldGet(paramSpecObject, recv.Native(), "owner_type")
+	value := argValue.Int64()
+	return value
+}
+
+// SetFieldOwnerType sets the value of the C field 'owner_type'.
+func (recv *ParamSpec) SetFieldOwnerType(value int64) {
+	err := paramSpecObject_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.ObjectFieldSet(paramSpecObject, recv.Native(), "owner_type", argValue)
+}
 
 var paramSpecGetBlurbFunction *gi.Function
 var paramSpecGetBlurbFunction_Once sync.Once
@@ -2540,9 +2582,30 @@ func (recv *ParamSpecGType) SetFieldParentInstance(value *ParamSpec) {
 	gi.ObjectFieldSet(paramSpecGTypeObject, recv.Native(), "parent_instance", argValue)
 }
 
-// UNSUPPORTED : C value 'is_a_type' : for field getter : no Go type for 'GType'
+// FieldIsAType returns the C field 'is_a_type'.
+func (recv *ParamSpecGType) FieldIsAType() int64 {
+	var nilValue int64
+	err := paramSpecGTypeObject_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'is_a_type' : for field setter : no Go type for 'GType'
+	argValue := gi.ObjectFieldGet(paramSpecGTypeObject, recv.Native(), "is_a_type")
+	value := argValue.Int64()
+	return value
+}
+
+// SetFieldIsAType sets the value of the C field 'is_a_type'.
+func (recv *ParamSpecGType) SetFieldIsAType(value int64) {
+	err := paramSpecGTypeObject_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.ObjectFieldSet(paramSpecGTypeObject, recv.Native(), "is_a_type", argValue)
+}
 
 var paramSpecIntObject *gi.Object
 var paramSpecIntObject_Once sync.Once
@@ -4358,13 +4421,140 @@ func (recv *TypeModule) SetFieldName(value string) {
 	gi.ObjectFieldSet(typeModuleObject, recv.Native(), "name", argValue)
 }
 
-// UNSUPPORTED : C value 'g_type_module_add_interface' : parameter 'instance_type' of type 'GType' not supported
+var typeModuleAddInterfaceFunction *gi.Function
+var typeModuleAddInterfaceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_type_module_register_enum' : return type 'GType' not supported
+func typeModuleAddInterfaceFunction_Set() error {
+	var err error
+	typeModuleAddInterfaceFunction_Once.Do(func() {
+		err = typeModuleObject_Set()
+		if err != nil {
+			return
+		}
+		typeModuleAddInterfaceFunction, err = typeModuleObject.InvokerNew("add_interface")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_type_module_register_flags' : return type 'GType' not supported
+// AddInterface is a representation of the C type g_type_module_add_interface.
+func (recv *TypeModule) AddInterface(instanceType int64, interfaceType int64, interfaceInfo *InterfaceInfo) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(instanceType)
+	inArgs[2].SetInt64(interfaceType)
+	inArgs[3].SetPointer(interfaceInfo.Native())
 
-// UNSUPPORTED : C value 'g_type_module_register_type' : parameter 'parent_type' of type 'GType' not supported
+	err := typeModuleAddInterfaceFunction_Set()
+	if err == nil {
+		typeModuleAddInterfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var typeModuleRegisterEnumFunction *gi.Function
+var typeModuleRegisterEnumFunction_Once sync.Once
+
+func typeModuleRegisterEnumFunction_Set() error {
+	var err error
+	typeModuleRegisterEnumFunction_Once.Do(func() {
+		err = typeModuleObject_Set()
+		if err != nil {
+			return
+		}
+		typeModuleRegisterEnumFunction, err = typeModuleObject.InvokerNew("register_enum")
+	})
+	return err
+}
+
+// RegisterEnum is a representation of the C type g_type_module_register_enum.
+func (recv *TypeModule) RegisterEnum(name string, constStaticValues *EnumValue) int64 {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(name)
+	inArgs[2].SetPointer(constStaticValues.Native())
+
+	var ret gi.Argument
+
+	err := typeModuleRegisterEnumFunction_Set()
+	if err == nil {
+		ret = typeModuleRegisterEnumFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var typeModuleRegisterFlagsFunction *gi.Function
+var typeModuleRegisterFlagsFunction_Once sync.Once
+
+func typeModuleRegisterFlagsFunction_Set() error {
+	var err error
+	typeModuleRegisterFlagsFunction_Once.Do(func() {
+		err = typeModuleObject_Set()
+		if err != nil {
+			return
+		}
+		typeModuleRegisterFlagsFunction, err = typeModuleObject.InvokerNew("register_flags")
+	})
+	return err
+}
+
+// RegisterFlags is a representation of the C type g_type_module_register_flags.
+func (recv *TypeModule) RegisterFlags(name string, constStaticValues *FlagsValue) int64 {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(name)
+	inArgs[2].SetPointer(constStaticValues.Native())
+
+	var ret gi.Argument
+
+	err := typeModuleRegisterFlagsFunction_Set()
+	if err == nil {
+		ret = typeModuleRegisterFlagsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
+
+var typeModuleRegisterTypeFunction *gi.Function
+var typeModuleRegisterTypeFunction_Once sync.Once
+
+func typeModuleRegisterTypeFunction_Set() error {
+	var err error
+	typeModuleRegisterTypeFunction_Once.Do(func() {
+		err = typeModuleObject_Set()
+		if err != nil {
+			return
+		}
+		typeModuleRegisterTypeFunction, err = typeModuleObject.InvokerNew("register_type")
+	})
+	return err
+}
+
+// RegisterType is a representation of the C type g_type_module_register_type.
+func (recv *TypeModule) RegisterType(parentType int64, typeName string, typeInfo *TypeInfo, flags TypeFlags) int64 {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(parentType)
+	inArgs[2].SetString(typeName)
+	inArgs[3].SetPointer(typeInfo.Native())
+	inArgs[4].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := typeModuleRegisterTypeFunction_Set()
+	if err == nil {
+		ret = typeModuleRegisterTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var typeModuleSetNameFunction *gi.Function
 var typeModuleSetNameFunction_Once sync.Once

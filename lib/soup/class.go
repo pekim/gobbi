@@ -666,7 +666,41 @@ func (recv *Auth) SetFieldRealm(value string) {
 	gi.ObjectFieldSet(authObject, recv.Native(), "realm", argValue)
 }
 
-// UNSUPPORTED : C value 'soup_auth_new' : parameter 'type' of type 'GType' not supported
+var authNewFunction *gi.Function
+var authNewFunction_Once sync.Once
+
+func authNewFunction_Set() error {
+	var err error
+	authNewFunction_Once.Do(func() {
+		err = authObject_Set()
+		if err != nil {
+			return
+		}
+		authNewFunction, err = authObject.InvokerNew("new")
+	})
+	return err
+}
+
+// AuthNew is a representation of the C type soup_auth_new.
+func AuthNew(type_ int64, msg *Message, authHeader string) *Auth {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt64(type_)
+	inArgs[1].SetPointer(msg.Native())
+	inArgs[2].SetString(authHeader)
+
+	var ret gi.Argument
+
+	err := authNewFunction_Set()
+	if err == nil {
+		ret = authNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AuthNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var authAuthenticateFunction *gi.Function
 var authAuthenticateFunction_Once sync.Once
@@ -3329,10 +3363,10 @@ func (recv *CookieJar) ConnectChanged(handler func(instance *CookieJar, oldCooki
 		argInstance := CookieJarNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := CookieNewFromNative(object1.GetObject().Native())
+		arg1 := CookieNewFromNative(object1.GetPointer())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := CookieNewFromNative(object2.GetObject().Native())
+		arg2 := CookieNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -3942,10 +3976,10 @@ func (recv *HSTSEnforcer) ConnectChanged(handler func(instance *HSTSEnforcer, ol
 		argInstance := HSTSEnforcerNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := HSTSPolicyNewFromNative(object1.GetObject().Native())
+		arg1 := HSTSPolicyNewFromNative(object1.GetPointer())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := HSTSPolicyNewFromNative(object2.GetObject().Native())
+		arg2 := HSTSPolicyNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -4678,7 +4712,34 @@ func (recv *Message) ContentSniffed(contentType string, params *glib.HashTable) 
 	return
 }
 
-// UNSUPPORTED : C value 'soup_message_disable_feature' : parameter 'feature_type' of type 'GType' not supported
+var messageDisableFeatureFunction *gi.Function
+var messageDisableFeatureFunction_Once sync.Once
+
+func messageDisableFeatureFunction_Set() error {
+	var err error
+	messageDisableFeatureFunction_Once.Do(func() {
+		err = messageObject_Set()
+		if err != nil {
+			return
+		}
+		messageDisableFeatureFunction, err = messageObject.InvokerNew("disable_feature")
+	})
+	return err
+}
+
+// DisableFeature is a representation of the C type soup_message_disable_feature.
+func (recv *Message) DisableFeature(featureType int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(featureType)
+
+	err := messageDisableFeatureFunction_Set()
+	if err == nil {
+		messageDisableFeatureFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var messageFinishedFunction *gi.Function
 var messageFinishedFunction_Once sync.Once
@@ -5530,7 +5591,7 @@ func (recv *Message) ConnectContentSniffed(handler func(instance *Message, type_
 		arg1 := object1.GetString()
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := glib.HashTableNewFromNative(object2.GetObject().Native())
+		arg2 := glib.HashTableNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -5581,7 +5642,7 @@ func (recv *Message) ConnectGotChunk(handler func(instance *Message, chunk *Buff
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := BufferNewFromNative(object1.GetObject().Native())
+		arg1 := BufferNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -5682,7 +5743,7 @@ func (recv *Message) ConnectWroteBodyData(handler func(instance *Message, chunk 
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := BufferNewFromNative(object1.GetObject().Native())
+		arg1 := BufferNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -7048,7 +7109,34 @@ func (recv *Server) AddAuthDomain(authDomain *AuthDomain) {
 
 // UNSUPPORTED : C value 'soup_server_add_handler' : parameter 'callback' of type 'ServerCallback' not supported
 
-// UNSUPPORTED : C value 'soup_server_add_websocket_extension' : parameter 'extension_type' of type 'GType' not supported
+var serverAddWebsocketExtensionFunction *gi.Function
+var serverAddWebsocketExtensionFunction_Once sync.Once
+
+func serverAddWebsocketExtensionFunction_Set() error {
+	var err error
+	serverAddWebsocketExtensionFunction_Once.Do(func() {
+		err = serverObject_Set()
+		if err != nil {
+			return
+		}
+		serverAddWebsocketExtensionFunction, err = serverObject.InvokerNew("add_websocket_extension")
+	})
+	return err
+}
+
+// AddWebsocketExtension is a representation of the C type soup_server_add_websocket_extension.
+func (recv *Server) AddWebsocketExtension(extensionType int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(extensionType)
+
+	err := serverAddWebsocketExtensionFunction_Set()
+	if err == nil {
+		serverAddWebsocketExtensionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'soup_server_add_websocket_handler' : parameter 'protocols' of type 'nil' not supported
 
@@ -7557,7 +7645,34 @@ func (recv *Server) RemoveHandler(path string) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_server_remove_websocket_extension' : parameter 'extension_type' of type 'GType' not supported
+var serverRemoveWebsocketExtensionFunction *gi.Function
+var serverRemoveWebsocketExtensionFunction_Once sync.Once
+
+func serverRemoveWebsocketExtensionFunction_Set() error {
+	var err error
+	serverRemoveWebsocketExtensionFunction_Once.Do(func() {
+		err = serverObject_Set()
+		if err != nil {
+			return
+		}
+		serverRemoveWebsocketExtensionFunction, err = serverObject.InvokerNew("remove_websocket_extension")
+	})
+	return err
+}
+
+// RemoveWebsocketExtension is a representation of the C type soup_server_remove_websocket_extension.
+func (recv *Server) RemoveWebsocketExtension(extensionType int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(extensionType)
+
+	err := serverRemoveWebsocketExtensionFunction_Set()
+	if err == nil {
+		serverRemoveWebsocketExtensionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var serverRunFunction *gi.Function
 var serverRunFunction_Once sync.Once
@@ -7692,7 +7807,7 @@ func (recv *Server) ConnectRequestAborted(handler func(instance *Server, message
 		arg1 := MessageNewFromNative(object1.GetObject().Native())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := ClientContextNewFromNative(object2.GetObject().Native())
+		arg2 := ClientContextNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7714,7 +7829,7 @@ func (recv *Server) ConnectRequestFinished(handler func(instance *Server, messag
 		arg1 := MessageNewFromNative(object1.GetObject().Native())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := ClientContextNewFromNative(object2.GetObject().Native())
+		arg2 := ClientContextNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7736,7 +7851,7 @@ func (recv *Server) ConnectRequestRead(handler func(instance *Server, message *M
 		arg1 := MessageNewFromNative(object1.GetObject().Native())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := ClientContextNewFromNative(object2.GetObject().Native())
+		arg2 := ClientContextNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7758,7 +7873,7 @@ func (recv *Server) ConnectRequestStarted(handler func(instance *Server, message
 		arg1 := MessageNewFromNative(object1.GetObject().Native())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := ClientContextNewFromNative(object2.GetObject().Native())
+		arg2 := ClientContextNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7919,7 +8034,34 @@ func (recv *Session) Abort() {
 
 // UNSUPPORTED : C value 'soup_session_add_feature' : parameter 'feature' of type 'SessionFeature' not supported
 
-// UNSUPPORTED : C value 'soup_session_add_feature_by_type' : parameter 'feature_type' of type 'GType' not supported
+var sessionAddFeatureByTypeFunction *gi.Function
+var sessionAddFeatureByTypeFunction_Once sync.Once
+
+func sessionAddFeatureByTypeFunction_Set() error {
+	var err error
+	sessionAddFeatureByTypeFunction_Once.Do(func() {
+		err = sessionObject_Set()
+		if err != nil {
+			return
+		}
+		sessionAddFeatureByTypeFunction, err = sessionObject.InvokerNew("add_feature_by_type")
+	})
+	return err
+}
+
+// AddFeatureByType is a representation of the C type soup_session_add_feature_by_type.
+func (recv *Session) AddFeatureByType(featureType int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(featureType)
+
+	err := sessionAddFeatureByTypeFunction_Set()
+	if err == nil {
+		sessionAddFeatureByTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var sessionCancelMessageFunction *gi.Function
 var sessionCancelMessageFunction_Once sync.Once
@@ -7987,13 +8129,75 @@ func (recv *Session) GetAsyncContext() *glib.MainContext {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_session_get_feature' : parameter 'feature_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'soup_session_get_feature' : return type 'SessionFeature' not supported
 
-// UNSUPPORTED : C value 'soup_session_get_feature_for_message' : parameter 'feature_type' of type 'GType' not supported
+// UNSUPPORTED : C value 'soup_session_get_feature_for_message' : return type 'SessionFeature' not supported
 
-// UNSUPPORTED : C value 'soup_session_get_features' : parameter 'feature_type' of type 'GType' not supported
+var sessionGetFeaturesFunction *gi.Function
+var sessionGetFeaturesFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_session_has_feature' : parameter 'feature_type' of type 'GType' not supported
+func sessionGetFeaturesFunction_Set() error {
+	var err error
+	sessionGetFeaturesFunction_Once.Do(func() {
+		err = sessionObject_Set()
+		if err != nil {
+			return
+		}
+		sessionGetFeaturesFunction, err = sessionObject.InvokerNew("get_features")
+	})
+	return err
+}
+
+// GetFeatures is a representation of the C type soup_session_get_features.
+func (recv *Session) GetFeatures(featureType int64) *glib.SList {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(featureType)
+
+	var ret gi.Argument
+
+	err := sessionGetFeaturesFunction_Set()
+	if err == nil {
+		ret = sessionGetFeaturesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.SListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var sessionHasFeatureFunction *gi.Function
+var sessionHasFeatureFunction_Once sync.Once
+
+func sessionHasFeatureFunction_Set() error {
+	var err error
+	sessionHasFeatureFunction_Once.Do(func() {
+		err = sessionObject_Set()
+		if err != nil {
+			return
+		}
+		sessionHasFeatureFunction, err = sessionObject.InvokerNew("has_feature")
+	})
+	return err
+}
+
+// HasFeature is a representation of the C type soup_session_has_feature.
+func (recv *Session) HasFeature(featureType int64) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(featureType)
+
+	var ret gi.Argument
+
+	err := sessionHasFeatureFunction_Set()
+	if err == nil {
+		ret = sessionHasFeatureFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var sessionPauseMessageFunction *gi.Function
 var sessionPauseMessageFunction_Once sync.Once
@@ -8092,7 +8296,34 @@ func (recv *Session) RedirectMessage(msg *Message) bool {
 
 // UNSUPPORTED : C value 'soup_session_remove_feature' : parameter 'feature' of type 'SessionFeature' not supported
 
-// UNSUPPORTED : C value 'soup_session_remove_feature_by_type' : parameter 'feature_type' of type 'GType' not supported
+var sessionRemoveFeatureByTypeFunction *gi.Function
+var sessionRemoveFeatureByTypeFunction_Once sync.Once
+
+func sessionRemoveFeatureByTypeFunction_Set() error {
+	var err error
+	sessionRemoveFeatureByTypeFunction_Once.Do(func() {
+		err = sessionObject_Set()
+		if err != nil {
+			return
+		}
+		sessionRemoveFeatureByTypeFunction, err = sessionObject.InvokerNew("remove_feature_by_type")
+	})
+	return err
+}
+
+// RemoveFeatureByType is a representation of the C type soup_session_remove_feature_by_type.
+func (recv *Session) RemoveFeatureByType(featureType int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(featureType)
+
+	err := sessionRemoveFeatureByTypeFunction_Set()
+	if err == nil {
+		sessionRemoveFeatureByTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var sessionRequestFunction *gi.Function
 var sessionRequestFunction_Once sync.Once
@@ -9991,7 +10222,7 @@ func (recv *WebsocketConnection) ConnectError(handler func(instance *WebsocketCo
 		argInstance := WebsocketConnectionNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.ErrorNewFromNative(object1.GetObject().Native())
+		arg1 := glib.ErrorNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}
@@ -10013,7 +10244,7 @@ func (recv *WebsocketConnection) ConnectMessage(handler func(instance *Websocket
 		arg1 := object1.GetInt()
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := glib.BytesNewFromNative(object2.GetObject().Native())
+		arg2 := glib.BytesNewFromNative(object2.GetPointer())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -10032,7 +10263,7 @@ func (recv *WebsocketConnection) ConnectPong(handler func(instance *WebsocketCon
 		argInstance := WebsocketConnectionNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.BytesNewFromNative(object1.GetObject().Native())
+		arg1 := glib.BytesNewFromNative(object1.GetPointer())
 
 		handler(argInstance, arg1)
 	}

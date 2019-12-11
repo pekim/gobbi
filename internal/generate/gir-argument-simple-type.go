@@ -28,6 +28,7 @@ var argumentGetFunctionNames = map[string]string{
 	"gboolean": "Boolean",
 	"filename": "String",
 	"utf8":     "String",
+	"GType":    "Int64",
 }
 
 var argumentSetFunctionNames = map[string]string{
@@ -58,4 +59,5 @@ var argumentSetFunctionNames = map[string]string{
 	"gboolean": "SetBoolean",
 	"filename": "SetString",
 	"utf8":     "SetString",
+	"GType":    "SetInt64",
 }

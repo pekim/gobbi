@@ -1191,7 +1191,38 @@ func ModuleRegister(module *IncludedModule) {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_parse_enum' : parameter 'type' of type 'GType' not supported
+var parseEnumFunction *gi.Function
+var parseEnumFunction_Once sync.Once
+
+func parseEnumFunction_Set() error {
+	var err error
+	parseEnumFunction_Once.Do(func() {
+		parseEnumFunction, err = gi.FunctionInvokerNew("Pango", "parse_enum")
+	})
+	return err
+}
+
+// ParseEnum is a representation of the C type pango_parse_enum.
+func ParseEnum(type_ int64, str string, warn bool) (bool, int32, string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt64(type_)
+	inArgs[1].SetString(str)
+	inArgs[2].SetBoolean(warn)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := parseEnumFunction_Set()
+	if err == nil {
+		ret = parseEnumFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].String(true)
+
+	return retGo, out0, out1
+}
 
 // UNSUPPORTED : C value 'pango_parse_markup' : parameter 'accel_marker' of type 'gunichar' not supported
 

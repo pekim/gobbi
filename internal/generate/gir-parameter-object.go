@@ -52,8 +52,7 @@ func (p Parameter) generateValueFromObject(s *jen.Statement, objectVarName strin
 		s.
 			Add(newFromNative).
 			Call(jen.
-				Id(objectVarName).Dot("GetObject").Call().
-				Dot("Native").Call())
+				Id(objectVarName).Dot("GetPointer").Call())
 		return
 	}
 

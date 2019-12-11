@@ -1575,9 +1575,30 @@ func (recv *ParamSpecClass) SetFieldGTypeClass(value *TypeClass) {
 	gi.StructFieldSet(paramSpecClassStruct, recv.Native(), "g_type_class", argValue)
 }
 
-// UNSUPPORTED : C value 'value_type' : for field getter : no Go type for 'GType'
+// FieldValueType returns the C field 'value_type'.
+func (recv *ParamSpecClass) FieldValueType() int64 {
+	var nilValue int64
+	err := paramSpecClassStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'value_type' : for field setter : no Go type for 'GType'
+	argValue := gi.StructFieldGet(paramSpecClassStruct, recv.Native(), "value_type")
+	value := argValue.Int64()
+	return value
+}
+
+// SetFieldValueType sets the value of the C field 'value_type'.
+func (recv *ParamSpecClass) SetFieldValueType(value int64) {
+	err := paramSpecClassStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.StructFieldSet(paramSpecClassStruct, recv.Native(), "value_type", argValue)
+}
 
 // UNSUPPORTED : C value 'finalize' : for field getter : missing Type
 
@@ -1640,13 +1661,136 @@ func (recv *ParamSpecPool) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_param_spec_pool_insert' : parameter 'owner_type' of type 'GType' not supported
+var paramSpecPoolInsertFunction *gi.Function
+var paramSpecPoolInsertFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_param_spec_pool_list' : parameter 'owner_type' of type 'GType' not supported
+func paramSpecPoolInsertFunction_Set() error {
+	var err error
+	paramSpecPoolInsertFunction_Once.Do(func() {
+		err = paramSpecPoolStruct_Set()
+		if err != nil {
+			return
+		}
+		paramSpecPoolInsertFunction, err = paramSpecPoolStruct.InvokerNew("insert")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_param_spec_pool_list_owned' : parameter 'owner_type' of type 'GType' not supported
+// Insert is a representation of the C type g_param_spec_pool_insert.
+func (recv *ParamSpecPool) Insert(pspec *ParamSpec, ownerType int64) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(pspec.Native())
+	inArgs[2].SetInt64(ownerType)
 
-// UNSUPPORTED : C value 'g_param_spec_pool_lookup' : parameter 'owner_type' of type 'GType' not supported
+	err := paramSpecPoolInsertFunction_Set()
+	if err == nil {
+		paramSpecPoolInsertFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var paramSpecPoolListFunction *gi.Function
+var paramSpecPoolListFunction_Once sync.Once
+
+func paramSpecPoolListFunction_Set() error {
+	var err error
+	paramSpecPoolListFunction_Once.Do(func() {
+		err = paramSpecPoolStruct_Set()
+		if err != nil {
+			return
+		}
+		paramSpecPoolListFunction, err = paramSpecPoolStruct.InvokerNew("list")
+	})
+	return err
+}
+
+// List is a representation of the C type g_param_spec_pool_list.
+func (recv *ParamSpecPool) List(ownerType int64) uint32 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(ownerType)
+
+	var outArgs [1]gi.Argument
+
+	err := paramSpecPoolListFunction_Set()
+	if err == nil {
+		paramSpecPoolListFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint32()
+
+	return out0
+}
+
+var paramSpecPoolListOwnedFunction *gi.Function
+var paramSpecPoolListOwnedFunction_Once sync.Once
+
+func paramSpecPoolListOwnedFunction_Set() error {
+	var err error
+	paramSpecPoolListOwnedFunction_Once.Do(func() {
+		err = paramSpecPoolStruct_Set()
+		if err != nil {
+			return
+		}
+		paramSpecPoolListOwnedFunction, err = paramSpecPoolStruct.InvokerNew("list_owned")
+	})
+	return err
+}
+
+// ListOwned is a representation of the C type g_param_spec_pool_list_owned.
+func (recv *ParamSpecPool) ListOwned(ownerType int64) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(ownerType)
+
+	var ret gi.Argument
+
+	err := paramSpecPoolListOwnedFunction_Set()
+	if err == nil {
+		ret = paramSpecPoolListOwnedFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var paramSpecPoolLookupFunction *gi.Function
+var paramSpecPoolLookupFunction_Once sync.Once
+
+func paramSpecPoolLookupFunction_Set() error {
+	var err error
+	paramSpecPoolLookupFunction_Once.Do(func() {
+		err = paramSpecPoolStruct_Set()
+		if err != nil {
+			return
+		}
+		paramSpecPoolLookupFunction, err = paramSpecPoolStruct.InvokerNew("lookup")
+	})
+	return err
+}
+
+// Lookup is a representation of the C type g_param_spec_pool_lookup.
+func (recv *ParamSpecPool) Lookup(paramName string, ownerType int64, walkAncestors bool) *ParamSpec {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(paramName)
+	inArgs[2].SetInt64(ownerType)
+	inArgs[3].SetBoolean(walkAncestors)
+
+	var ret gi.Argument
+
+	err := paramSpecPoolLookupFunction_Set()
+	if err == nil {
+		ret = paramSpecPoolLookupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ParamSpecNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var paramSpecPoolRemoveFunction *gi.Function
 var paramSpecPoolRemoveFunction_Once sync.Once
@@ -1776,9 +1920,30 @@ func (recv *ParamSpecTypeInfo) SetFieldNPreallocs(value uint16) {
 
 // UNSUPPORTED : C value 'instance_init' : for field setter : missing Type
 
-// UNSUPPORTED : C value 'value_type' : for field getter : no Go type for 'GType'
+// FieldValueType returns the C field 'value_type'.
+func (recv *ParamSpecTypeInfo) FieldValueType() int64 {
+	var nilValue int64
+	err := paramSpecTypeInfoStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'value_type' : for field setter : no Go type for 'GType'
+	argValue := gi.StructFieldGet(paramSpecTypeInfoStruct, recv.Native(), "value_type")
+	value := argValue.Int64()
+	return value
+}
+
+// SetFieldValueType sets the value of the C field 'value_type'.
+func (recv *ParamSpecTypeInfo) SetFieldValueType(value int64) {
+	err := paramSpecTypeInfoStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.StructFieldSet(paramSpecTypeInfoStruct, recv.Native(), "value_type", argValue)
+}
 
 // UNSUPPORTED : C value 'finalize' : for field getter : missing Type
 
@@ -2106,9 +2271,30 @@ func (recv *SignalQuery_) SetFieldSignalName(value string) {
 	gi.StructFieldSet(signalQueryStruct, recv.Native(), "signal_name", argValue)
 }
 
-// UNSUPPORTED : C value 'itype' : for field getter : no Go type for 'GType'
+// FieldItype returns the C field 'itype'.
+func (recv *SignalQuery_) FieldItype() int64 {
+	var nilValue int64
+	err := signalQueryStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'itype' : for field setter : no Go type for 'GType'
+	argValue := gi.StructFieldGet(signalQueryStruct, recv.Native(), "itype")
+	value := argValue.Int64()
+	return value
+}
+
+// SetFieldItype sets the value of the C field 'itype'.
+func (recv *SignalQuery_) SetFieldItype(value int64) {
+	err := signalQueryStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.StructFieldSet(signalQueryStruct, recv.Native(), "itype", argValue)
+}
 
 // FieldSignalFlags returns the C field 'signal_flags'.
 func (recv *SignalQuery_) FieldSignalFlags() SignalFlags {
@@ -2135,9 +2321,30 @@ func (recv *SignalQuery_) SetFieldSignalFlags(value SignalFlags) {
 	gi.StructFieldSet(signalQueryStruct, recv.Native(), "signal_flags", argValue)
 }
 
-// UNSUPPORTED : C value 'return_type' : for field getter : no Go type for 'GType'
+// FieldReturnType returns the C field 'return_type'.
+func (recv *SignalQuery_) FieldReturnType() int64 {
+	var nilValue int64
+	err := signalQueryStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'return_type' : for field setter : no Go type for 'GType'
+	argValue := gi.StructFieldGet(signalQueryStruct, recv.Native(), "return_type")
+	value := argValue.Int64()
+	return value
+}
+
+// SetFieldReturnType sets the value of the C field 'return_type'.
+func (recv *SignalQuery_) SetFieldReturnType(value int64) {
+	err := signalQueryStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.StructFieldSet(signalQueryStruct, recv.Native(), "return_type", argValue)
+}
 
 // FieldNParams returns the C field 'n_params'.
 func (recv *SignalQuery_) FieldNParams() uint32 {
@@ -2274,7 +2481,38 @@ func (recv *TypeClass) GetInstancePrivateOffset() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_type_class_get_private' : parameter 'private_type' of type 'GType' not supported
+var typeClassGetPrivateFunction *gi.Function
+var typeClassGetPrivateFunction_Once sync.Once
+
+func typeClassGetPrivateFunction_Set() error {
+	var err error
+	typeClassGetPrivateFunction_Once.Do(func() {
+		err = typeClassStruct_Set()
+		if err != nil {
+			return
+		}
+		typeClassGetPrivateFunction, err = typeClassStruct.InvokerNew("get_private")
+	})
+	return err
+}
+
+// GetPrivate is a representation of the C type g_type_class_get_private.
+func (recv *TypeClass) GetPrivate(privateType int64) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(privateType)
+
+	var ret gi.Argument
+
+	err := typeClassGetPrivateFunction_Set()
+	if err == nil {
+		ret = typeClassGetPrivateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 var typeClassPeekParentFunction *gi.Function
 var typeClassPeekParentFunction_Once sync.Once
@@ -2669,7 +2907,38 @@ func (recv *TypeInstance) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_type_instance_get_private' : parameter 'private_type' of type 'GType' not supported
+var typeInstanceGetPrivateFunction *gi.Function
+var typeInstanceGetPrivateFunction_Once sync.Once
+
+func typeInstanceGetPrivateFunction_Set() error {
+	var err error
+	typeInstanceGetPrivateFunction_Once.Do(func() {
+		err = typeInstanceStruct_Set()
+		if err != nil {
+			return
+		}
+		typeInstanceGetPrivateFunction, err = typeInstanceStruct.InvokerNew("get_private")
+	})
+	return err
+}
+
+// GetPrivate is a representation of the C type g_type_instance_get_private.
+func (recv *TypeInstance) GetPrivate(privateType int64) unsafe.Pointer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(privateType)
+
+	var ret gi.Argument
+
+	err := typeInstanceGetPrivateFunction_Set()
+	if err == nil {
+		ret = typeInstanceGetPrivateFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Pointer()
+
+	return retGo
+}
 
 // TypeInstanceStruct creates an uninitialised TypeInstance.
 func TypeInstanceStruct() *TypeInstance {
@@ -2948,9 +3217,30 @@ func (recv *TypeQuery) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'type' : for field getter : no Go type for 'GType'
+// FieldType returns the C field 'type'.
+func (recv *TypeQuery) FieldType() int64 {
+	var nilValue int64
+	err := typeQueryStruct_Set()
+	if err != nil {
+		return nilValue
+	}
 
-// UNSUPPORTED : C value 'type' : for field setter : no Go type for 'GType'
+	argValue := gi.StructFieldGet(typeQueryStruct, recv.Native(), "type")
+	value := argValue.Int64()
+	return value
+}
+
+// SetFieldType sets the value of the C field 'type'.
+func (recv *TypeQuery) SetFieldType(value int64) {
+	err := typeQueryStruct_Set()
+	if err != nil {
+		return
+	}
+
+	var argValue gi.Argument
+	argValue.SetInt64(value)
+	gi.StructFieldSet(typeQueryStruct, recv.Native(), "type", argValue)
+}
 
 // FieldTypeName returns the C field 'type_name'.
 func (recv *TypeQuery) FieldTypeName() string {
@@ -3640,7 +3930,37 @@ func (recv *Value) GetFloat() float32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_value_get_gtype' : return type 'GType' not supported
+var valueGetGtypeFunction *gi.Function
+var valueGetGtypeFunction_Once sync.Once
+
+func valueGetGtypeFunction_Set() error {
+	var err error
+	valueGetGtypeFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueGetGtypeFunction, err = valueStruct.InvokerNew("get_gtype")
+	})
+	return err
+}
+
+// GetGtype is a representation of the C type g_value_get_gtype.
+func (recv *Value) GetGtype() int64 {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := valueGetGtypeFunction_Set()
+	if err == nil {
+		ret = valueGetGtypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var valueGetIntFunction *gi.Function
 var valueGetIntFunction_Once sync.Once
@@ -4058,7 +4378,38 @@ func (recv *Value) GetVariant() *glib.Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_value_init' : parameter 'g_type' of type 'GType' not supported
+var valueInitFunction *gi.Function
+var valueInitFunction_Once sync.Once
+
+func valueInitFunction_Set() error {
+	var err error
+	valueInitFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueInitFunction, err = valueStruct.InvokerNew("init")
+	})
+	return err
+}
+
+// Init is a representation of the C type g_value_init.
+func (recv *Value) Init(gType int64) *Value {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(gType)
+
+	var ret gi.Argument
+
+	err := valueInitFunction_Set()
+	if err == nil {
+		ret = valueInitFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ValueNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var valueInitFromInstanceFunction *gi.Function
 var valueInitFromInstanceFunction_Once sync.Once
@@ -4385,7 +4736,34 @@ func (recv *Value) SetFloat(vFloat float32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_value_set_gtype' : parameter 'v_gtype' of type 'GType' not supported
+var valueSetGtypeFunction *gi.Function
+var valueSetGtypeFunction_Once sync.Once
+
+func valueSetGtypeFunction_Set() error {
+	var err error
+	valueSetGtypeFunction_Once.Do(func() {
+		err = valueStruct_Set()
+		if err != nil {
+			return
+		}
+		valueSetGtypeFunction, err = valueStruct.InvokerNew("set_gtype")
+	})
+	return err
+}
+
+// SetGtype is a representation of the C type g_value_set_gtype.
+func (recv *Value) SetGtype(vGtype int64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(vGtype)
+
+	err := valueSetGtypeFunction_Set()
+	if err == nil {
+		valueSetGtypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var valueSetInstanceFunction *gi.Function
 var valueSetInstanceFunction_Once sync.Once
