@@ -82,6 +82,5 @@ func (p Parameter) generateValueFromObject(s *jen.Statement, objectVarName strin
 		return
 	}
 
-	fmt.Println(resolvedType.Name)
-	s.Lit(42)
+	panic(fmt.Sprintf("unable to unmarshall %s.%s from Object", resolvedType.namespace.Name, resolvedType.Name))
 }
