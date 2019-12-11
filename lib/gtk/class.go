@@ -15751,7 +15751,7 @@ func (recv *CellRendererCombo) ConnectChanged(handler func(instance *CellRendere
 		arg1 := object1.GetString()
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreeIterNewFromNative(object2.GetPointer())
+		arg2 := TreeIterNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -18760,7 +18760,7 @@ func (recv *Clipboard) ConnectOwnerChange(handler func(instance *Clipboard, even
 		argInstance := ClipboardNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventOwnerChangeNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventOwnerChangeNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -23992,10 +23992,10 @@ func (recv *CssProvider) ConnectParsingError(handler func(instance *CssProvider,
 		argInstance := CssProviderNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := CssSectionNewFromNative(object1.GetPointer())
+		arg1 := CssSectionNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := glib.ErrorNewFromNative(object2.GetPointer())
+		arg2 := glib.ErrorNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -27060,7 +27060,7 @@ func (recv *Entry) ConnectIconPress(handler func(instance *Entry, iconPos EntryI
 		arg1 := (EntryIconPosition)(object1.GetInt())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := gdk.EventButtonNewFromNative(object2.GetPointer())
+		arg2 := gdk.EventButtonNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -27082,7 +27082,7 @@ func (recv *Entry) ConnectIconRelease(handler func(instance *Entry, iconPos Entr
 		arg1 := (EntryIconPosition)(object1.GetInt())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := gdk.EventButtonNewFromNative(object2.GetPointer())
+		arg2 := gdk.EventButtonNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -37786,7 +37786,7 @@ func (recv *Gesture) ConnectBegin(handler func(instance *Gesture, sequence *gdk.
 		argInstance := GestureNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventSequenceNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventSequenceNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -37805,7 +37805,7 @@ func (recv *Gesture) ConnectCancel(handler func(instance *Gesture, sequence *gdk
 		argInstance := GestureNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventSequenceNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventSequenceNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -37824,7 +37824,7 @@ func (recv *Gesture) ConnectEnd(handler func(instance *Gesture, sequence *gdk.Ev
 		argInstance := GestureNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventSequenceNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventSequenceNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -37843,7 +37843,7 @@ func (recv *Gesture) ConnectSequenceStateChanged(handler func(instance *Gesture,
 		argInstance := GestureNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventSequenceNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventSequenceNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := (EventSequenceState)(object2.GetInt())
@@ -37865,7 +37865,7 @@ func (recv *Gesture) ConnectUpdate(handler func(instance *Gesture, sequence *gdk
 		argInstance := GestureNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventSequenceNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventSequenceNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -47073,7 +47073,7 @@ func (recv *IconView) ConnectItemActivated(handler func(instance *IconView, path
 		argInstance := IconViewNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreePathNewFromNative(object1.GetPointer())
+		arg1 := TreePathNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -87170,7 +87170,7 @@ func (recv *StatusIcon) ConnectButtonPressEvent(handler func(instance *StatusIco
 		argInstance := StatusIconNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventButtonNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventButtonNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -87189,7 +87189,7 @@ func (recv *StatusIcon) ConnectButtonReleaseEvent(handler func(instance *StatusI
 		argInstance := StatusIconNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventButtonNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventButtonNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -87258,7 +87258,7 @@ func (recv *StatusIcon) ConnectScrollEvent(handler func(instance *StatusIcon, ev
 		argInstance := StatusIconNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventScrollNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventScrollNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -93825,10 +93825,10 @@ func (recv *TextBuffer) ConnectApplyTag(handler func(instance *TextBuffer, tag *
 		arg1 := TextTagNewFromNative(object1.GetObject().Native())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TextIterNewFromNative(object2.GetPointer())
+		arg2 := TextIterNewFromNative(object2.GetBoxed())
 
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
-		arg3 := TextIterNewFromNative(object3.GetPointer())
+		arg3 := TextIterNewFromNative(object3.GetBoxed())
 
 		handler(argInstance, arg1, arg2, arg3)
 	}
@@ -93879,10 +93879,10 @@ func (recv *TextBuffer) ConnectDeleteRange(handler func(instance *TextBuffer, st
 		argInstance := TextBufferNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TextIterNewFromNative(object1.GetPointer())
+		arg1 := TextIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TextIterNewFromNative(object2.GetPointer())
+		arg2 := TextIterNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -93917,7 +93917,7 @@ func (recv *TextBuffer) ConnectInsertChildAnchor(handler func(instance *TextBuff
 		argInstance := TextBufferNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TextIterNewFromNative(object1.GetPointer())
+		arg1 := TextIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := TextChildAnchorNewFromNative(object2.GetObject().Native())
@@ -93939,7 +93939,7 @@ func (recv *TextBuffer) ConnectInsertPixbuf(handler func(instance *TextBuffer, l
 		argInstance := TextBufferNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TextIterNewFromNative(object1.GetPointer())
+		arg1 := TextIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := gdkpixbuf.PixbufNewFromNative(object2.GetObject().Native())
@@ -93961,7 +93961,7 @@ func (recv *TextBuffer) ConnectInsertText(handler func(instance *TextBuffer, loc
 		argInstance := TextBufferNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TextIterNewFromNative(object1.GetPointer())
+		arg1 := TextIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := object2.GetString()
@@ -94005,7 +94005,7 @@ func (recv *TextBuffer) ConnectMarkSet(handler func(instance *TextBuffer, locati
 		argInstance := TextBufferNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TextIterNewFromNative(object1.GetPointer())
+		arg1 := TextIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := TextMarkNewFromNative(object2.GetObject().Native())
@@ -94065,10 +94065,10 @@ func (recv *TextBuffer) ConnectRemoveTag(handler func(instance *TextBuffer, tag 
 		arg1 := TextTagNewFromNative(object1.GetObject().Native())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TextIterNewFromNative(object2.GetPointer())
+		arg2 := TextIterNewFromNative(object2.GetBoxed())
 
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
-		arg3 := TextIterNewFromNative(object3.GetPointer())
+		arg3 := TextIterNewFromNative(object3.GetBoxed())
 
 		handler(argInstance, arg1, arg2, arg3)
 	}
@@ -97774,13 +97774,13 @@ func (recv *TextView) ConnectExtendSelection(handler func(instance *TextView, gr
 		arg1 := (TextExtendSelection)(object1.GetInt())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TextIterNewFromNative(object2.GetPointer())
+		arg2 := TextIterNewFromNative(object2.GetBoxed())
 
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
-		arg3 := TextIterNewFromNative(object3.GetPointer())
+		arg3 := TextIterNewFromNative(object3.GetBoxed())
 
 		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
-		arg4 := TextIterNewFromNative(object4.GetPointer())
+		arg4 := TextIterNewFromNative(object4.GetBoxed())
 
 		handler(argInstance, arg1, arg2, arg3, arg4)
 	}
@@ -108706,7 +108706,7 @@ func (recv *TreeView) ConnectRowActivated(handler func(instance *TreeView, path 
 		argInstance := TreeViewNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreePathNewFromNative(object1.GetPointer())
+		arg1 := TreePathNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := TreeViewColumnNewFromNative(object2.GetObject().Native())
@@ -108728,10 +108728,10 @@ func (recv *TreeView) ConnectRowCollapsed(handler func(instance *TreeView, iter 
 		argInstance := TreeViewNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreeIterNewFromNative(object1.GetPointer())
+		arg1 := TreeIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreePathNewFromNative(object2.GetPointer())
+		arg2 := TreePathNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -108750,10 +108750,10 @@ func (recv *TreeView) ConnectRowExpanded(handler func(instance *TreeView, iter *
 		argInstance := TreeViewNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreeIterNewFromNative(object1.GetPointer())
+		arg1 := TreeIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreePathNewFromNative(object2.GetPointer())
+		arg2 := TreePathNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -108839,10 +108839,10 @@ func (recv *TreeView) ConnectTestCollapseRow(handler func(instance *TreeView, it
 		argInstance := TreeViewNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreeIterNewFromNative(object1.GetPointer())
+		arg1 := TreeIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreePathNewFromNative(object2.GetPointer())
+		arg2 := TreePathNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -108861,10 +108861,10 @@ func (recv *TreeView) ConnectTestExpandRow(handler func(instance *TreeView, iter
 		argInstance := TreeViewNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreeIterNewFromNative(object1.GetPointer())
+		arg1 := TreeIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreePathNewFromNative(object2.GetPointer())
+		arg2 := TreePathNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -120370,7 +120370,7 @@ func (recv *Widget) ConnectButtonPressEvent(handler func(instance *Widget, event
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventButtonNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventButtonNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -120389,7 +120389,7 @@ func (recv *Widget) ConnectButtonReleaseEvent(handler func(instance *Widget, eve
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventButtonNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventButtonNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -120462,7 +120462,7 @@ func (recv *Widget) ConnectConfigureEvent(handler func(instance *Widget, event *
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventConfigureNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventConfigureNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -120481,7 +120481,7 @@ func (recv *Widget) ConnectDamageEvent(handler func(instance *Widget, event *gdk
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventExposeNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventExposeNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -120580,7 +120580,7 @@ func (recv *Widget) ConnectDragDataGet(handler func(instance *Widget, context *g
 		arg1 := gdk.DragContextNewFromNative(object1.GetObject().Native())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := SelectionDataNewFromNative(object2.GetPointer())
+		arg2 := SelectionDataNewFromNative(object2.GetBoxed())
 
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
 		arg3 := object3.GetUint()
@@ -120614,7 +120614,7 @@ func (recv *Widget) ConnectDragDataReceived(handler func(instance *Widget, conte
 		arg3 := object3.GetInt()
 
 		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
-		arg4 := SelectionDataNewFromNative(object4.GetPointer())
+		arg4 := SelectionDataNewFromNative(object4.GetBoxed())
 
 		object5 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[5]))
 		arg5 := object5.GetUint()
@@ -120758,7 +120758,7 @@ func (recv *Widget) ConnectDraw(handler func(instance *Widget, cr *cairo.Context
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := cairo.ContextNewFromNative(object1.GetPointer())
+		arg1 := cairo.ContextNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -120777,7 +120777,7 @@ func (recv *Widget) ConnectEnterNotifyEvent(handler func(instance *Widget, event
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventCrossingNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventCrossingNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -120819,7 +120819,7 @@ func (recv *Widget) ConnectFocusInEvent(handler func(instance *Widget, event *gd
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventFocusNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventFocusNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -120838,7 +120838,7 @@ func (recv *Widget) ConnectFocusOutEvent(handler func(instance *Widget, event *g
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventFocusNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventFocusNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -120857,7 +120857,7 @@ func (recv *Widget) ConnectGrabBrokenEvent(handler func(instance *Widget, event 
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventGrabBrokenNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventGrabBrokenNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -120946,7 +120946,7 @@ func (recv *Widget) ConnectKeyPressEvent(handler func(instance *Widget, event *g
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventKeyNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventKeyNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -120965,7 +120965,7 @@ func (recv *Widget) ConnectKeyReleaseEvent(handler func(instance *Widget, event 
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventKeyNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventKeyNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121003,7 +121003,7 @@ func (recv *Widget) ConnectLeaveNotifyEvent(handler func(instance *Widget, event
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventCrossingNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventCrossingNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121038,7 +121038,7 @@ func (recv *Widget) ConnectMapEvent(handler func(instance *Widget, event *gdk.Ev
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventAnyNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventAnyNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121076,7 +121076,7 @@ func (recv *Widget) ConnectMotionNotifyEvent(handler func(instance *Widget, even
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventMotionNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventMotionNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121149,7 +121149,7 @@ func (recv *Widget) ConnectPropertyNotifyEvent(handler func(instance *Widget, ev
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventPropertyNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventPropertyNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121168,7 +121168,7 @@ func (recv *Widget) ConnectProximityInEvent(handler func(instance *Widget, event
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventProximityNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventProximityNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121187,7 +121187,7 @@ func (recv *Widget) ConnectProximityOutEvent(handler func(instance *Widget, even
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventProximityNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventProximityNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121269,7 +121269,7 @@ func (recv *Widget) ConnectScrollEvent(handler func(instance *Widget, event *gdk
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventScrollNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventScrollNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121288,7 +121288,7 @@ func (recv *Widget) ConnectSelectionClearEvent(handler func(instance *Widget, ev
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventSelectionNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventSelectionNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121307,7 +121307,7 @@ func (recv *Widget) ConnectSelectionGet(handler func(instance *Widget, data *Sel
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := SelectionDataNewFromNative(object1.GetPointer())
+		arg1 := SelectionDataNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := object2.GetUint()
@@ -121332,7 +121332,7 @@ func (recv *Widget) ConnectSelectionNotifyEvent(handler func(instance *Widget, e
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventSelectionNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventSelectionNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121351,7 +121351,7 @@ func (recv *Widget) ConnectSelectionReceived(handler func(instance *Widget, data
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := SelectionDataNewFromNative(object1.GetPointer())
+		arg1 := SelectionDataNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := object2.GetUint()
@@ -121373,7 +121373,7 @@ func (recv *Widget) ConnectSelectionRequestEvent(handler func(instance *Widget, 
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventSelectionNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventSelectionNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121427,7 +121427,7 @@ func (recv *Widget) ConnectSizeAllocate(handler func(instance *Widget, allocatio
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.RectangleNewFromNative(object1.GetPointer())
+		arg1 := gdk.RectangleNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121537,7 +121537,7 @@ func (recv *Widget) ConnectUnmapEvent(handler func(instance *Widget, event *gdk.
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventAnyNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventAnyNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121572,7 +121572,7 @@ func (recv *Widget) ConnectVisibilityNotifyEvent(handler func(instance *Widget, 
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventVisibilityNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventVisibilityNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -121591,7 +121591,7 @@ func (recv *Widget) ConnectWindowStateEvent(handler func(instance *Widget, event
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.EventWindowStateNewFromNative(object1.GetPointer())
+		arg1 := gdk.EventWindowStateNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}

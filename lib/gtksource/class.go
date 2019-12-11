@@ -1211,7 +1211,7 @@ func (recv *Buffer) ConnectBracketMatched(handler func(instance *Buffer, iter *g
 		argInstance := BufferNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gtk.TextIterNewFromNative(object1.GetPointer())
+		arg1 := gtk.TextIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := (BracketMatchType)(object2.GetInt())
@@ -1233,10 +1233,10 @@ func (recv *Buffer) ConnectHighlightUpdated(handler func(instance *Buffer, start
 		argInstance := BufferNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gtk.TextIterNewFromNative(object1.GetPointer())
+		arg1 := gtk.TextIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := gtk.TextIterNewFromNative(object2.GetPointer())
+		arg2 := gtk.TextIterNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -5204,10 +5204,10 @@ func (recv *GutterRenderer) ConnectQueryData(handler func(instance *GutterRender
 		argInstance := GutterRendererNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gtk.TextIterNewFromNative(object1.GetPointer())
+		arg1 := gtk.TextIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := gtk.TextIterNewFromNative(object2.GetPointer())
+		arg2 := gtk.TextIterNewFromNative(object2.GetBoxed())
 
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
 		arg3 := (GutterRendererState)(object3.GetInt())
@@ -5229,10 +5229,10 @@ func (recv *GutterRenderer) ConnectQueryTooltip(handler func(instance *GutterRen
 		argInstance := GutterRendererNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gtk.TextIterNewFromNative(object1.GetPointer())
+		arg1 := gtk.TextIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := gdk.RectangleNewFromNative(object2.GetPointer())
+		arg2 := gdk.RectangleNewFromNative(object2.GetBoxed())
 
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
 		arg3 := object3.GetInt()
@@ -12877,7 +12877,7 @@ func (recv *View) ConnectSmartHomeEnd(handler func(instance *View, iter *gtk.Tex
 		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gtk.TextIterNewFromNative(object1.GetPointer())
+		arg1 := gtk.TextIterNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := object2.GetInt()

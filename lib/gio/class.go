@@ -1368,7 +1368,7 @@ func (recv *Application) ConnectHandleLocalOptions(handler func(instance *Applic
 		argInstance := ApplicationNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.VariantDictNewFromNative(object1.GetPointer())
+		arg1 := glib.VariantDictNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -5103,7 +5103,7 @@ func (recv *DBusConnection) ConnectClosed(handler func(instance *DBusConnection,
 		arg1 := object1.GetBoolean()
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := glib.ErrorNewFromNative(object2.GetPointer())
+		arg2 := glib.ErrorNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7916,7 +7916,7 @@ func (recv *DBusObjectManagerClient) ConnectInterfaceProxySignal(handler func(in
 		arg4 := object4.GetString()
 
 		object5 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[5]))
-		arg5 := glib.VariantNewFromNative(object5.GetPointer())
+		arg5 := glib.VariantNewFromNative(object5.GetBoxed())
 
 		handler(argInstance, arg1, arg2, arg3, arg4, arg5)
 	}
@@ -9271,7 +9271,7 @@ func (recv *DBusProxy) ConnectGSignal(handler func(instance *DBusProxy, senderNa
 		arg2 := object2.GetString()
 
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
-		arg3 := glib.VariantNewFromNative(object3.GetPointer())
+		arg3 := glib.VariantNewFromNative(object3.GetBoxed())
 
 		handler(argInstance, arg1, arg2, arg3)
 	}
@@ -25236,7 +25236,7 @@ func (recv *SimpleAction) ConnectActivate(handler func(instance *SimpleAction, p
 		argInstance := SimpleActionNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.VariantNewFromNative(object1.GetPointer())
+		arg1 := glib.VariantNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -25255,7 +25255,7 @@ func (recv *SimpleAction) ConnectChangeState(handler func(instance *SimpleAction
 		argInstance := SimpleActionNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.VariantNewFromNative(object1.GetPointer())
+		arg1 := glib.VariantNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}

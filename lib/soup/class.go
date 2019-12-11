@@ -3363,10 +3363,10 @@ func (recv *CookieJar) ConnectChanged(handler func(instance *CookieJar, oldCooki
 		argInstance := CookieJarNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := CookieNewFromNative(object1.GetPointer())
+		arg1 := CookieNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := CookieNewFromNative(object2.GetPointer())
+		arg2 := CookieNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -3976,10 +3976,10 @@ func (recv *HSTSEnforcer) ConnectChanged(handler func(instance *HSTSEnforcer, ol
 		argInstance := HSTSEnforcerNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := HSTSPolicyNewFromNative(object1.GetPointer())
+		arg1 := HSTSPolicyNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := HSTSPolicyNewFromNative(object2.GetPointer())
+		arg2 := HSTSPolicyNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -5591,7 +5591,7 @@ func (recv *Message) ConnectContentSniffed(handler func(instance *Message, type_
 		arg1 := object1.GetString()
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := glib.HashTableNewFromNative(object2.GetPointer())
+		arg2 := glib.HashTableNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -5642,7 +5642,7 @@ func (recv *Message) ConnectGotChunk(handler func(instance *Message, chunk *Buff
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := BufferNewFromNative(object1.GetPointer())
+		arg1 := BufferNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -5743,7 +5743,7 @@ func (recv *Message) ConnectWroteBodyData(handler func(instance *Message, chunk 
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := BufferNewFromNative(object1.GetPointer())
+		arg1 := BufferNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -7807,7 +7807,7 @@ func (recv *Server) ConnectRequestAborted(handler func(instance *Server, message
 		arg1 := MessageNewFromNative(object1.GetObject().Native())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := ClientContextNewFromNative(object2.GetPointer())
+		arg2 := ClientContextNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7829,7 +7829,7 @@ func (recv *Server) ConnectRequestFinished(handler func(instance *Server, messag
 		arg1 := MessageNewFromNative(object1.GetObject().Native())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := ClientContextNewFromNative(object2.GetPointer())
+		arg2 := ClientContextNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7851,7 +7851,7 @@ func (recv *Server) ConnectRequestRead(handler func(instance *Server, message *M
 		arg1 := MessageNewFromNative(object1.GetObject().Native())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := ClientContextNewFromNative(object2.GetPointer())
+		arg2 := ClientContextNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7873,7 +7873,7 @@ func (recv *Server) ConnectRequestStarted(handler func(instance *Server, message
 		arg1 := MessageNewFromNative(object1.GetObject().Native())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := ClientContextNewFromNative(object2.GetPointer())
+		arg2 := ClientContextNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -10222,7 +10222,7 @@ func (recv *WebsocketConnection) ConnectError(handler func(instance *WebsocketCo
 		argInstance := WebsocketConnectionNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.ErrorNewFromNative(object1.GetPointer())
+		arg1 := glib.ErrorNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -10244,7 +10244,7 @@ func (recv *WebsocketConnection) ConnectMessage(handler func(instance *Websocket
 		arg1 := object1.GetInt()
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := glib.BytesNewFromNative(object2.GetPointer())
+		arg2 := glib.BytesNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -10263,7 +10263,7 @@ func (recv *WebsocketConnection) ConnectPong(handler func(instance *WebsocketCon
 		argInstance := WebsocketConnectionNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := glib.BytesNewFromNative(object1.GetPointer())
+		arg1 := glib.BytesNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}

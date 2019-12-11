@@ -48,11 +48,11 @@ func (p Parameter) generateValueFromObject(s *jen.Statement, objectVarName strin
 			newFromNative = jen.Id(record.newFromNativeName)
 		}
 
-		// GEN: WidgetNewFromNative(value0.GetObject().Native())
+		// GEN: WidgetNewFromNative(value0.GetBoxed().Native())
 		s.
 			Add(newFromNative).
 			Call(jen.
-				Id(objectVarName).Dot("GetPointer").Call())
+				Id(objectVarName).Dot("GetBoxed").Call())
 		return
 	}
 

@@ -38,7 +38,7 @@ func main() {
 	label := gtk.LabelNew("or press keys (and check stdout in terminal)")
 	container.Add(label.Widget())
 
-	window.Widget().ConnectKeyPressEvent(func(_ *gtk.Widget, event *gdk.EventKey) bool {
+	window.Widget().ConnectKeyPressEvent(func(w *gtk.Widget, event *gdk.EventKey) bool {
 		message := fmt.Sprintf("key pressed : %s  %d  %d", event.FieldString(), event.FieldKeyval(), event.FieldState())
 		label.SetText(message)
 		fmt.Println(message)

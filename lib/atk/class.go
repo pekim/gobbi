@@ -1984,7 +1984,7 @@ func (recv *Object) ConnectPropertyChange(handler func(instance *Object, arg1 *P
 		argInstance := ObjectNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := PropertyValuesNewFromNative(object1.GetPointer())
+		arg1 := PropertyValuesNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}

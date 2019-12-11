@@ -856,7 +856,7 @@ func (recv *ActionGroup) ConnectActionStateChanged(handler func(instance *Action
 		arg1 := object1.GetString()
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := glib.VariantNewFromNative(object2.GetPointer())
+		arg2 := glib.VariantNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}

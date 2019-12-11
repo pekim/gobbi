@@ -1866,7 +1866,7 @@ func (recv *ColorChooser) ConnectColorActivated(handler func(instance *ColorChoo
 		argInstance := ColorChooserNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := gdk.RGBANewFromNative(object1.GetPointer())
+		arg1 := gdk.RGBANewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -7944,10 +7944,10 @@ func (recv *TreeModel) ConnectRowChanged(handler func(instance *TreeModel, path 
 		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreePathNewFromNative(object1.GetPointer())
+		arg1 := TreePathNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreeIterNewFromNative(object2.GetPointer())
+		arg2 := TreeIterNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -7966,7 +7966,7 @@ func (recv *TreeModel) ConnectRowDeleted(handler func(instance *TreeModel, path 
 		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreePathNewFromNative(object1.GetPointer())
+		arg1 := TreePathNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
 	}
@@ -7985,10 +7985,10 @@ func (recv *TreeModel) ConnectRowHasChildToggled(handler func(instance *TreeMode
 		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreePathNewFromNative(object1.GetPointer())
+		arg1 := TreePathNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreeIterNewFromNative(object2.GetPointer())
+		arg2 := TreeIterNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -8007,10 +8007,10 @@ func (recv *TreeModel) ConnectRowInserted(handler func(instance *TreeModel, path
 		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreePathNewFromNative(object1.GetPointer())
+		arg1 := TreePathNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreeIterNewFromNative(object2.GetPointer())
+		arg2 := TreeIterNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
 	}
@@ -8029,10 +8029,10 @@ func (recv *TreeModel) ConnectRowsReordered(handler func(instance *TreeModel, pa
 		argInstance := TreeModelNewFromNative(objectInstance.GetObject().Native())
 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := TreePathNewFromNative(object1.GetPointer())
+		arg1 := TreePathNewFromNative(object1.GetBoxed())
 
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := TreeIterNewFromNative(object2.GetPointer())
+		arg2 := TreeIterNewFromNative(object2.GetBoxed())
 
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
 		arg3 := object3.GetPointer()
