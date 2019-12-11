@@ -21,6 +21,7 @@ type Handler func(return_value *Value, paramValues []Value)
 
 type signalConnection struct {
 	cConnection C.GobbiSignalConnection
+	signalName  string
 	handler     Handler
 }
 
@@ -42,6 +43,7 @@ func ConnectSignal(instance unsafe.Pointer, signalName string, handler Handler) 
 
 	connection := signalConnection{
 		cConnection: cConnection,
+		signalName:  signalName,
 		handler:     handler,
 	}
 
@@ -69,8 +71,23 @@ func gobbiCSignalHandler(cReturnValue *C.GValue, nParamValues C.guint, cParamVal
 	paramValues := (*[1 << 30]Value)(unsafe.Pointer(cParamValues))[:nParamValues:nParamValues]
 
 	if cgo.Tracing() {
-		cgo.Trace(fmt.Sprintf("Signal : %v\n", paramValues))
+		trace(connection, returnValue, paramValues)
 	}
 
 	connection.handler(returnValue, paramValues)
+}
+
+func trace(connection signalConnection, returnValue *Value, paramValues []Value) {
+	ret := ""
+	if returnValue != nil {
+		ret = fmt.Sprintf("   ret %v\n", *returnValue)
+	}
+
+	args := ""
+	if len(paramValues) > 0 {
+		args = fmt.Sprintf("  args %v\n", paramValues)
+	}
+
+	cgo.Trace(fmt.Sprintf("Signal : %s\n%s%s\n", connection.signalName, ret, args))
+
 }

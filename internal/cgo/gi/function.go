@@ -50,9 +50,9 @@ func FunctionInvokerNew(namespace string, funcName string) (*Function, error) {
 
 func (fi *Function) initTracing() {
 	if fi.ownerName != "" {
-		fi.fullName = fmt.Sprintf("%s  %s  %s", fi.namespace, fi.ownerName, fi.funcName)
+		fi.fullName = fmt.Sprintf("%s : %s.%s", fi.namespace, fi.ownerName, fi.funcName)
 	} else {
-		fi.fullName = fmt.Sprintf("%s  %s", fi.namespace, fi.funcName)
+		fi.fullName = fmt.Sprintf("%s : %s", fi.namespace, fi.funcName)
 	}
 
 	returnTypeInfo := C.g_callable_info_get_return_type(fi.info)

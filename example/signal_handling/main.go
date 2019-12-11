@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/pekim/gobbi"
 	"github.com/pekim/gobbi/lib/gdk"
 	"github.com/pekim/gobbi/lib/gtk"
 	"runtime"
@@ -15,9 +14,9 @@ func init() {
 func main() {
 	gtk.Init()
 
-	gobbi.SetTraceHandler(func(message string) {
-		fmt.Print(message)
-	})
+	//gobbi.SetTraceHandler(func(message string) {
+	//	fmt.Print(message)
+	//})
 
 	window := gtk.WindowNew(gtk.WindowType_Toplevel)
 	window.SetTitle("A window title")
