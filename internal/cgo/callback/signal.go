@@ -71,7 +71,7 @@ func gobbiCSignalHandler(cReturnValue *C.GValue, nParamValues C.guint, cParamVal
 	paramValues := (*[1 << 30]Value)(unsafe.Pointer(cParamValues))[:nParamValues:nParamValues]
 
 	if cgo.Tracing() {
-		traceCall(connection)
+		traceCall(connection, paramValues)
 	}
 
 	connection.handler(returnValue, paramValues)
@@ -81,8 +81,9 @@ func gobbiCSignalHandler(cReturnValue *C.GValue, nParamValues C.guint, cParamVal
 	}
 }
 
-func traceCall(connection signalConnection) {
-	cgo.Trace(fmt.Sprintf("Signal start : %s\n\n", connection.signalName))
+func traceCall(connection signalConnection, paramValues []Value) {
+	args := formatTraceParams(paramValues)
+	cgo.Trace(fmt.Sprintf("Signal start : %s\n%s\n", connection.signalName, args))
 }
 
 // traceReturn includes param values that might be out parameters.
@@ -93,11 +94,16 @@ func traceReturn(connection signalConnection, returnValue *Value, paramValues []
 		ret = fmt.Sprintf("   ret %v\n", *returnValue)
 	}
 
-	args := ""
-	if len(paramValues) > 0 {
-		args = fmt.Sprintf("  args %v\n", paramValues)
-	}
+	args := formatTraceParams(paramValues)
 
 	cgo.Trace(fmt.Sprintf("Signal end : %s\n%s%s\n",
-		connection.signalName, ret, args))
+		connection.signalName, args, ret))
+}
+
+func formatTraceParams(paramValues []Value) string {
+	if len(paramValues) > 0 {
+		return fmt.Sprintf("  args %v\n", paramValues)
+	}
+
+	return ""
 }

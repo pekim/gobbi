@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/pekim/gobbi"
 	"github.com/pekim/gobbi/lib/gtk"
 	"runtime"
@@ -17,9 +16,9 @@ func main() {
 		panic(err)
 	})
 
-	gobbi.SetTraceHandler(func(message string) {
-		fmt.Print(message)
-	})
+	//gobbi.SetTraceHandler(func(message string) {
+	//	fmt.Print(message)
+	//})
 
 	gtk.Init()
 
