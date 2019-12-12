@@ -990,7 +990,9 @@ func (recv *AboutDialog) ConnectActivateLink(handler func(instance *AboutDialog,
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetString()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "activate-link", marshal)
@@ -21387,7 +21389,9 @@ func (recv *ComboBox) ConnectFormatEntryText(handler func(instance *ComboBox, pa
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetString()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetString(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "format-entry-text", marshal)
@@ -21422,7 +21426,9 @@ func (recv *ComboBox) ConnectPopdown(handler func(instance *ComboBox) bool) int 
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := ComboBoxNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "popdown", marshal)
@@ -28288,7 +28294,9 @@ func (recv *EntryCompletion) ConnectInsertPrefix(handler func(instance *EntryCom
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetString()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "insert-prefix", marshal)
@@ -33010,7 +33018,9 @@ func (recv *FlowBox) ConnectMoveCursor(handler func(instance *FlowBox, step Move
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := object2.GetInt()
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "move-cursor", marshal)
@@ -36488,7 +36498,9 @@ func (recv *GLArea) ConnectCreateContext(handler func(instance *GLArea) *gdk.GLC
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := GLAreaNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetObject(retGo.Object())
 	}
 
 	return callback.ConnectSignal(recv.Native(), "create-context", marshal)
@@ -36507,7 +36519,9 @@ func (recv *GLArea) ConnectRender(handler func(instance *GLArea, context *gdk.GL
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.GLContextNewFromNative(object1.GetObject().Native())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "render", marshal)
@@ -42670,7 +42684,9 @@ func (recv *IMContext) ConnectDeleteSurrounding(handler func(instance *IMContext
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := object2.GetInt()
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "delete-surrounding", marshal)
@@ -42734,7 +42750,9 @@ func (recv *IMContext) ConnectRetrieveSurrounding(handler func(instance *IMConte
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := IMContextNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "retrieve-surrounding", marshal)
@@ -46453,7 +46471,9 @@ func (recv *IconView) ConnectActivateCursorItem(handler func(instance *IconView)
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := IconViewNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "activate-cursor-item", marshal)
@@ -46494,7 +46514,9 @@ func (recv *IconView) ConnectMoveCursor(handler func(instance *IconView, step Mo
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := object2.GetInt()
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "move-cursor", marshal)
@@ -50679,7 +50701,9 @@ func (recv *Label) ConnectActivateLink(handler func(instance *Label, uri string)
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetString()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "activate-link", marshal)
@@ -52268,7 +52292,9 @@ func (recv *LinkButton) ConnectActivateLink(handler func(instance *LinkButton) b
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := LinkButtonNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "activate-link", marshal)
@@ -58430,7 +58456,9 @@ func (recv *MenuShell) ConnectMoveSelected(handler func(instance *MenuShell, dis
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetInt()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "move-selected", marshal)
@@ -61731,7 +61759,9 @@ func (recv *Notebook) ConnectChangeCurrentPage(handler func(instance *Notebook, 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetInt()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "change-current-page", marshal)
@@ -61756,7 +61786,9 @@ func (recv *Notebook) ConnectCreateWindow(handler func(instance *Notebook, page 
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
 		arg3 := object3.GetInt()
 
-		handler(argInstance, arg1, arg2, arg3)
+		retGo := handler(argInstance, arg1, arg2, arg3)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetObject(retGo.Object())
 	}
 
 	return callback.ConnectSignal(recv.Native(), "create-window", marshal)
@@ -61775,7 +61807,9 @@ func (recv *Notebook) ConnectFocusTab(handler func(instance *Notebook, object_ N
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := (NotebookTab)(object1.GetInt())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "focus-tab", marshal)
@@ -61882,7 +61916,9 @@ func (recv *Notebook) ConnectReorderTab(handler func(instance *Notebook, object_
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := object2.GetBoolean()
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "reorder-tab", marshal)
@@ -61901,7 +61937,9 @@ func (recv *Notebook) ConnectSelectPage(handler func(instance *Notebook, object_
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetBoolean()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "select-page", marshal)
@@ -63022,18 +63060,7 @@ func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
 	return
 }
 
-/*
-ConnectGetChildPosition connects a callback to the 'get-child-position' signal of the Overlay.
-
-The returned value represents the connection, and may be passed to the Disconnect method to remove it.
-*/
-func (recv *Overlay) ConnectGetChildPosition(handler func(instance *Overlay, widget *Widget) (bool, *gdk.Rectangle)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// Has out params
-	}
-
-	return callback.ConnectSignal(recv.Native(), "get-child-position", marshal)
-}
+// UNSUPPORTED : C value 'get-child-position' : has out params
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -64549,7 +64576,9 @@ func (recv *Paned) ConnectAcceptPosition(handler func(instance *Paned) bool) int
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := PanedNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "accept-position", marshal)
@@ -64565,7 +64594,9 @@ func (recv *Paned) ConnectCancelPosition(handler func(instance *Paned) bool) int
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := PanedNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "cancel-position", marshal)
@@ -64584,7 +64615,9 @@ func (recv *Paned) ConnectCycleChildFocus(handler func(instance *Paned, reversed
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetBoolean()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "cycle-child-focus", marshal)
@@ -64603,7 +64636,9 @@ func (recv *Paned) ConnectCycleHandleFocus(handler func(instance *Paned, reverse
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetBoolean()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "cycle-handle-focus", marshal)
@@ -64622,7 +64657,9 @@ func (recv *Paned) ConnectMoveHandle(handler func(instance *Paned, scrollType Sc
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := (ScrollType)(object1.GetInt())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "move-handle", marshal)
@@ -64638,7 +64675,9 @@ func (recv *Paned) ConnectToggleHandleFocus(handler func(instance *Paned) bool) 
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := PanedNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "toggle-handle-focus", marshal)
@@ -65535,7 +65574,9 @@ func (recv *PlacesSidebar) ConnectDragActionAsk(handler func(instance *PlacesSid
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetInt()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetInt(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "drag-action-ask", marshal)
@@ -68464,7 +68505,9 @@ func (recv *PrintOperation) ConnectCreateCustomWidget(handler func(instance *Pri
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := PrintOperationNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetObject(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "create-custom-widget", marshal)
@@ -68562,7 +68605,9 @@ func (recv *PrintOperation) ConnectPaginate(handler func(instance *PrintOperatio
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := PrintContextNewFromNative(object1.GetObject().Native())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "paginate", marshal)
@@ -74359,7 +74404,9 @@ func (recv *Range) ConnectChangeValue(handler func(instance *Range, scroll Scrol
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := object2.GetDouble()
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "change-value", marshal)
@@ -77342,7 +77389,9 @@ func (recv *Scale) ConnectFormatValue(handler func(instance *Scale, value float6
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetDouble()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetString(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "format-value", marshal)
@@ -79357,7 +79406,9 @@ func (recv *ScrolledWindow) ConnectScrollChild(handler func(instance *ScrolledWi
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := object2.GetBoolean()
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "scroll-child", marshal)
@@ -81149,7 +81200,9 @@ func (recv *ShortcutsSection) ConnectChangeCurrentPage(handler func(instance *Sh
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetInt()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "change-current-page", marshal)
@@ -82001,7 +82054,9 @@ func (recv *Socket) ConnectPlugRemoved(handler func(instance *Socket) bool) int 
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := SocketNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "plug-removed", marshal)
@@ -82876,18 +82931,7 @@ func (recv *SpinButton) ConnectChangeValue(handler func(instance *SpinButton, sc
 	return callback.ConnectSignal(recv.Native(), "change-value", marshal)
 }
 
-/*
-ConnectInput connects a callback to the 'input' signal of the SpinButton.
-
-The returned value represents the connection, and may be passed to the Disconnect method to remove it.
-*/
-func (recv *SpinButton) ConnectInput(handler func(instance *SpinButton) (int32, float64)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// Has out params
-	}
-
-	return callback.ConnectSignal(recv.Native(), "input", marshal)
-}
+// UNSUPPORTED : C value 'input' : has out params
 
 /*
 ConnectOutput connects a callback to the 'output' signal of the SpinButton.
@@ -82899,7 +82943,9 @@ func (recv *SpinButton) ConnectOutput(handler func(instance *SpinButton) bool) i
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := SpinButtonNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "output", marshal)
@@ -85726,7 +85772,9 @@ func (recv *StatusIcon) ConnectButtonPressEvent(handler func(instance *StatusIco
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventButtonNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "button-press-event", marshal)
@@ -85745,7 +85793,9 @@ func (recv *StatusIcon) ConnectButtonReleaseEvent(handler func(instance *StatusI
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventButtonNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "button-release-event", marshal)
@@ -85795,7 +85845,9 @@ func (recv *StatusIcon) ConnectQueryTooltip(handler func(instance *StatusIcon, x
 		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
 		arg4 := TooltipNewFromNative(object4.GetObject().Native())
 
-		handler(argInstance, arg1, arg2, arg3, arg4)
+		retGo := handler(argInstance, arg1, arg2, arg3, arg4)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "query-tooltip", marshal)
@@ -85814,7 +85866,9 @@ func (recv *StatusIcon) ConnectScrollEvent(handler func(instance *StatusIcon, ev
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventScrollNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "scroll-event", marshal)
@@ -85833,7 +85887,9 @@ func (recv *StatusIcon) ConnectSizeChanged(handler func(instance *StatusIcon, si
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetInt()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "size-changed", marshal)
@@ -89107,7 +89163,9 @@ func (recv *Switch) ConnectStateSet(handler func(instance *Switch, state bool) b
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetBoolean()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "state-set", marshal)
@@ -96141,7 +96199,9 @@ func (recv *TextView) ConnectExtendSelection(handler func(instance *TextView, gr
 		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
 		arg4 := TextIterNewFromNative(object4.GetBoxed())
 
-		handler(argInstance, arg1, arg2, arg3, arg4)
+		retGo := handler(argInstance, arg1, arg2, arg3, arg4)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "extend-selection", marshal)
@@ -99835,7 +99895,9 @@ func (recv *ToolItem) ConnectCreateMenuProxy(handler func(instance *ToolItem) bo
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := ToolItemNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "create-menu-proxy", marshal)
@@ -101796,7 +101858,9 @@ func (recv *Toolbar) ConnectFocusHomeOrEnd(handler func(instance *Toolbar, focus
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetBoolean()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "focus-home-or-end", marshal)
@@ -101840,7 +101904,9 @@ func (recv *Toolbar) ConnectPopupContextMenu(handler func(instance *Toolbar, x i
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
 		arg3 := object3.GetInt()
 
-		handler(argInstance, arg1, arg2, arg3)
+		retGo := handler(argInstance, arg1, arg2, arg3)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "popup-context-menu", marshal)
@@ -106863,7 +106929,9 @@ func (recv *TreeView) ConnectExpandCollapseCursorRow(handler func(instance *Tree
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
 		arg3 := object3.GetBoolean()
 
-		handler(argInstance, arg1, arg2, arg3)
+		retGo := handler(argInstance, arg1, arg2, arg3)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "expand-collapse-cursor-row", marshal)
@@ -106885,7 +106953,9 @@ func (recv *TreeView) ConnectMoveCursor(handler func(instance *TreeView, step Mo
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := object2.GetInt()
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "move-cursor", marshal)
@@ -106967,7 +107037,9 @@ func (recv *TreeView) ConnectSelectAll(handler func(instance *TreeView) bool) in
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := TreeViewNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "select-all", marshal)
@@ -106983,7 +107055,9 @@ func (recv *TreeView) ConnectSelectCursorParent(handler func(instance *TreeView)
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := TreeViewNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "select-cursor-parent", marshal)
@@ -107002,7 +107076,9 @@ func (recv *TreeView) ConnectSelectCursorRow(handler func(instance *TreeView, ob
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetBoolean()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "select-cursor-row", marshal)
@@ -107018,7 +107094,9 @@ func (recv *TreeView) ConnectStartInteractiveSearch(handler func(instance *TreeV
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := TreeViewNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "start-interactive-search", marshal)
@@ -107040,7 +107118,9 @@ func (recv *TreeView) ConnectTestCollapseRow(handler func(instance *TreeView, it
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := TreePathNewFromNative(object2.GetBoxed())
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "test-collapse-row", marshal)
@@ -107062,7 +107142,9 @@ func (recv *TreeView) ConnectTestExpandRow(handler func(instance *TreeView, iter
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := TreePathNewFromNative(object2.GetBoxed())
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "test-expand-row", marshal)
@@ -107078,7 +107160,9 @@ func (recv *TreeView) ConnectToggleCursorRow(handler func(instance *TreeView) bo
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := TreeViewNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "toggle-cursor-row", marshal)
@@ -107094,7 +107178,9 @@ func (recv *TreeView) ConnectUnselectAll(handler func(instance *TreeView) bool) 
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := TreeViewNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "unselect-all", marshal)
@@ -118474,7 +118560,9 @@ func (recv *Widget) ConnectButtonPressEvent(handler func(instance *Widget, event
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventButtonNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "button-press-event", marshal)
@@ -118493,7 +118581,9 @@ func (recv *Widget) ConnectButtonReleaseEvent(handler func(instance *Widget, eve
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventButtonNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "button-release-event", marshal)
@@ -118512,7 +118602,9 @@ func (recv *Widget) ConnectCanActivateAccel(handler func(instance *Widget, signa
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetUint()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "can-activate-accel", marshal)
@@ -118566,7 +118658,9 @@ func (recv *Widget) ConnectConfigureEvent(handler func(instance *Widget, event *
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventConfigureNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "configure-event", marshal)
@@ -118585,7 +118679,9 @@ func (recv *Widget) ConnectDamageEvent(handler func(instance *Widget, event *gdk
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventExposeNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "damage-event", marshal)
@@ -118752,7 +118848,9 @@ func (recv *Widget) ConnectDragDrop(handler func(instance *Widget, context *gdk.
 		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
 		arg4 := object4.GetUint()
 
-		handler(argInstance, arg1, arg2, arg3, arg4)
+		retGo := handler(argInstance, arg1, arg2, arg3, arg4)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "drag-drop", marshal)
@@ -118793,7 +118891,9 @@ func (recv *Widget) ConnectDragFailed(handler func(instance *Widget, context *gd
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := (DragResult)(object2.GetInt())
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "drag-failed", marshal)
@@ -118843,7 +118943,9 @@ func (recv *Widget) ConnectDragMotion(handler func(instance *Widget, context *gd
 		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
 		arg4 := object4.GetUint()
 
-		handler(argInstance, arg1, arg2, arg3, arg4)
+		retGo := handler(argInstance, arg1, arg2, arg3, arg4)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "drag-motion", marshal)
@@ -118862,7 +118964,9 @@ func (recv *Widget) ConnectDraw(handler func(instance *Widget, cr *cairo.Context
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := cairo.ContextNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "draw", marshal)
@@ -118881,7 +118985,9 @@ func (recv *Widget) ConnectEnterNotifyEvent(handler func(instance *Widget, event
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventCrossingNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "enter-notify-event", marshal)
@@ -118904,7 +119010,9 @@ func (recv *Widget) ConnectFocus(handler func(instance *Widget, direction Direct
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := (DirectionType)(object1.GetInt())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "focus", marshal)
@@ -118923,7 +119031,9 @@ func (recv *Widget) ConnectFocusInEvent(handler func(instance *Widget, event *gd
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventFocusNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "focus-in-event", marshal)
@@ -118942,7 +119052,9 @@ func (recv *Widget) ConnectFocusOutEvent(handler func(instance *Widget, event *g
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventFocusNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "focus-out-event", marshal)
@@ -118961,7 +119073,9 @@ func (recv *Widget) ConnectGrabBrokenEvent(handler func(instance *Widget, event 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventGrabBrokenNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "grab-broken-event", marshal)
@@ -119050,7 +119164,9 @@ func (recv *Widget) ConnectKeyPressEvent(handler func(instance *Widget, event *g
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventKeyNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "key-press-event", marshal)
@@ -119069,7 +119185,9 @@ func (recv *Widget) ConnectKeyReleaseEvent(handler func(instance *Widget, event 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventKeyNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "key-release-event", marshal)
@@ -119088,7 +119206,9 @@ func (recv *Widget) ConnectKeynavFailed(handler func(instance *Widget, direction
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := (DirectionType)(object1.GetInt())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "keynav-failed", marshal)
@@ -119107,7 +119227,9 @@ func (recv *Widget) ConnectLeaveNotifyEvent(handler func(instance *Widget, event
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventCrossingNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "leave-notify-event", marshal)
@@ -119142,7 +119264,9 @@ func (recv *Widget) ConnectMapEvent(handler func(instance *Widget, event *gdk.Ev
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventAnyNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "map-event", marshal)
@@ -119161,7 +119285,9 @@ func (recv *Widget) ConnectMnemonicActivate(handler func(instance *Widget, group
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetBoolean()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "mnemonic-activate", marshal)
@@ -119180,7 +119306,9 @@ func (recv *Widget) ConnectMotionNotifyEvent(handler func(instance *Widget, even
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventMotionNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "motion-notify-event", marshal)
@@ -119234,7 +119362,9 @@ func (recv *Widget) ConnectPopupMenu(handler func(instance *Widget) bool) int {
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "popup-menu", marshal)
@@ -119253,7 +119383,9 @@ func (recv *Widget) ConnectPropertyNotifyEvent(handler func(instance *Widget, ev
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventPropertyNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "property-notify-event", marshal)
@@ -119272,7 +119404,9 @@ func (recv *Widget) ConnectProximityInEvent(handler func(instance *Widget, event
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventProximityNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "proximity-in-event", marshal)
@@ -119291,7 +119425,9 @@ func (recv *Widget) ConnectProximityOutEvent(handler func(instance *Widget, even
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventProximityNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "proximity-out-event", marshal)
@@ -119319,7 +119455,9 @@ func (recv *Widget) ConnectQueryTooltip(handler func(instance *Widget, x int32, 
 		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
 		arg4 := TooltipNewFromNative(object4.GetObject().Native())
 
-		handler(argInstance, arg1, arg2, arg3, arg4)
+		retGo := handler(argInstance, arg1, arg2, arg3, arg4)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "query-tooltip", marshal)
@@ -119373,7 +119511,9 @@ func (recv *Widget) ConnectScrollEvent(handler func(instance *Widget, event *gdk
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventScrollNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "scroll-event", marshal)
@@ -119392,7 +119532,9 @@ func (recv *Widget) ConnectSelectionClearEvent(handler func(instance *Widget, ev
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventSelectionNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "selection-clear-event", marshal)
@@ -119436,7 +119578,9 @@ func (recv *Widget) ConnectSelectionNotifyEvent(handler func(instance *Widget, e
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventSelectionNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "selection-notify-event", marshal)
@@ -119477,7 +119621,9 @@ func (recv *Widget) ConnectSelectionRequestEvent(handler func(instance *Widget, 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventSelectionNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "selection-request-event", marshal)
@@ -119512,7 +119658,9 @@ func (recv *Widget) ConnectShowHelp(handler func(instance *Widget, helpType Widg
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := (WidgetHelpType)(object1.GetInt())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "show-help", marshal)
@@ -119641,7 +119789,9 @@ func (recv *Widget) ConnectUnmapEvent(handler func(instance *Widget, event *gdk.
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventAnyNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "unmap-event", marshal)
@@ -119676,7 +119826,9 @@ func (recv *Widget) ConnectVisibilityNotifyEvent(handler func(instance *Widget, 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventVisibilityNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "visibility-notify-event", marshal)
@@ -119695,7 +119847,9 @@ func (recv *Widget) ConnectWindowStateEvent(handler func(instance *Widget, event
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := gdk.EventWindowStateNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "window-state-event", marshal)
@@ -123068,7 +123222,9 @@ func (recv *Window) ConnectEnableDebugging(handler func(instance *Window, toggle
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetBoolean()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "enable-debugging", marshal)

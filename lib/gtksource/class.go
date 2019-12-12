@@ -5067,7 +5067,9 @@ func (recv *GutterRenderer) ConnectQueryTooltip(handler func(instance *GutterRen
 		object5 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[5]))
 		arg5 := gtk.TooltipNewFromNative(object5.GetObject().Native())
 
-		handler(argInstance, arg1, arg2, arg3, arg4, arg5)
+		retGo := handler(argInstance, arg1, arg2, arg3, arg4, arg5)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "query-tooltip", marshal)
@@ -7143,7 +7145,9 @@ func (recv *MarkAttributes) ConnectQueryTooltipMarkup(handler func(instance *Mar
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := MarkNewFromNative(object1.GetObject().Native())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetString(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "query-tooltip-markup", marshal)
@@ -7162,7 +7166,9 @@ func (recv *MarkAttributes) ConnectQueryTooltipText(handler func(instance *MarkA
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := MarkNewFromNative(object1.GetObject().Native())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetString(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "query-tooltip-text", marshal)

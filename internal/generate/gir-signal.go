@@ -37,8 +37,16 @@ func (s *Signal) supported() (bool, string) {
 		return false, reason
 	}
 
+	if s.Parameters.outCount() > 0 {
+		return false, "has out params"
+	}
+
 	if supported, reason := s.ReturnValue.supported(); !supported {
 		return false, reason
+	}
+
+	if s.ReturnValue.Type.isQualifiedName() && s.ReturnValue.Type.foreignNamespace.Name == "cairo" {
+		return false, "return value is from package cairo"
 	}
 
 	return true, ""
@@ -110,11 +118,6 @@ func (s *Signal) generateMarshalFunc(g *jen.Group, marshalName string) {
 }
 
 func (s *Signal) generateMarshalBody(g *jen.Group) {
-	if s.Parameters.outCount() > 0 {
-		g.Commentf("Has out params")
-		return
-	}
-
 	//if s.ReturnValue.Type.Name != "none" {
 	//	g.Commentf("has return : %s", s.ReturnValue.Type.Name)
 	//	return
@@ -194,15 +197,44 @@ func (s *Signal) generateMarshalBodyInParams(g *jen.Group) {
 }
 
 func (s *Signal) generateMarshalBodyCallHandler(g *jen.Group) {
-	g.Id("handler").CallFunc(func(g *jen.Group) {
-		g.Id("argInstance")
-
-		for p, param := range s.Parameters {
-			if !param.isIn() {
-				continue
+	g.
+		Do(func(st *jen.Statement) {
+			if s.ReturnValue.Type.Name != "none" {
+				st.Id("retGo").Op(":=")
 			}
+		}).
+		Id("handler").
+		CallFunc(func(g *jen.Group) {
+			g.Id("argInstance")
 
-			g.Id(fmt.Sprintf("arg%d", p+1))
+			for p, param := range s.Parameters {
+				if !param.isIn() {
+					continue
+				}
+
+				g.Id(fmt.Sprintf("arg%d", p+1))
+			}
+		})
+
+	if s.ReturnValue.Type.Name != "none" {
+		gobjectNs, _ := s.Namespace.namespaces.byName("GObject")
+		var valueNewFromNative *jen.Statement
+		if s.Namespace == gobjectNs {
+			valueNewFromNative = jen.Id("ValueNewFromNative")
+		} else {
+			valueNewFromNative = jen.Qual(gobjectNs.goFullPackageName, "ValueNewFromNative")
 		}
-	})
+
+		// GEN: value0 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		g.
+			Id("returnObject").
+			Op(":=").
+			Add(valueNewFromNative).
+			Call(jen.
+				Qual("unsafe", "Pointer").
+				Call(jen.Id("returnValue")),
+			)
+
+		s.ReturnValue.generateObjectFromValue(g, "returnObject", "retGo")
+	}
 }

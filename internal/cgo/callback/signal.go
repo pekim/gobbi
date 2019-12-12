@@ -71,13 +71,23 @@ func gobbiCSignalHandler(cReturnValue *C.GValue, nParamValues C.guint, cParamVal
 	paramValues := (*[1 << 30]Value)(unsafe.Pointer(cParamValues))[:nParamValues:nParamValues]
 
 	if cgo.Tracing() {
-		trace(connection, returnValue, paramValues)
+		traceCall(connection)
 	}
 
 	connection.handler(returnValue, paramValues)
+
+	if cgo.Tracing() {
+		traceReturn(returnValue, paramValues)
+	}
 }
 
-func trace(connection signalConnection, returnValue *Value, paramValues []Value) {
+func traceCall(connection signalConnection) {
+	cgo.Trace(fmt.Sprintf("Signal : %s\n", connection.signalName))
+}
+
+// traceReturn includes param values that might be out parameters.
+// So it must be called after the handler has returned.
+func traceReturn(returnValue *Value, paramValues []Value) {
 	ret := ""
 	if returnValue != nil {
 		ret = fmt.Sprintf("   ret %v\n", *returnValue)
@@ -88,6 +98,5 @@ func trace(connection signalConnection, returnValue *Value, paramValues []Value)
 		args = fmt.Sprintf("  args %v\n", paramValues)
 	}
 
-	cgo.Trace(fmt.Sprintf("Signal : %s\n%s%s\n", connection.signalName, ret, args))
-
+	cgo.Trace(fmt.Sprintf("Signal : %s%s\n", ret, args))
 }

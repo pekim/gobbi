@@ -2403,18 +2403,7 @@ func (recv *Editable) ConnectDeleteText(handler func(instance *Editable, startPo
 	return callback.ConnectSignal(recv.Native(), "delete-text", marshal)
 }
 
-/*
-ConnectInsertText connects a callback to the 'insert-text' signal of the Editable.
-
-The returned value represents the connection, and may be passed to the Disconnect method to remove it.
-*/
-func (recv *Editable) ConnectInsertText(handler func(instance *Editable, newText string, newTextLength int32, position int32) int32) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// Has out params
-	}
-
-	return callback.ConnectSignal(recv.Native(), "insert-text", marshal)
-}
+// UNSUPPORTED : C value 'insert-text' : has out params
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -4205,7 +4194,9 @@ func (recv *FileChooser) ConnectConfirmOverwrite(handler func(instance *FileChoo
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := FileChooserNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetInt(int32(retGo))
 	}
 
 	return callback.ConnectSignal(recv.Native(), "confirm-overwrite", marshal)

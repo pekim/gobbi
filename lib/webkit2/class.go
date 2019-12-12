@@ -622,7 +622,9 @@ func (recv *AutomationSession) ConnectCreateWebView(handler func(instance *Autom
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := AutomationSessionNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetObject(retGo.Object())
 	}
 
 	return callback.ConnectSignal(recv.Native(), "create-web-view", marshal)
@@ -3239,7 +3241,9 @@ func (recv *Download) ConnectDecideDestination(handler func(instance *Download, 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := object1.GetString()
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "decide-destination", marshal)
@@ -4717,7 +4721,9 @@ func (recv *GeolocationManager) ConnectStart(handler func(instance *GeolocationM
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := GeolocationManagerNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "start", marshal)
@@ -7274,7 +7280,9 @@ func (recv *PrintOperation) ConnectCreateCustomWidget(handler func(instance *Pri
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := PrintOperationNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetObject(retGo.Object())
 	}
 
 	return callback.ConnectSignal(recv.Native(), "create-custom-widget", marshal)
@@ -14756,7 +14764,9 @@ func (recv *WebInspector) ConnectAttach(handler func(instance *WebInspector) boo
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := WebInspectorNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "attach", marshal)
@@ -14772,7 +14782,9 @@ func (recv *WebInspector) ConnectBringToFront(handler func(instance *WebInspecto
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := WebInspectorNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "bring-to-front", marshal)
@@ -14804,7 +14816,9 @@ func (recv *WebInspector) ConnectDetach(handler func(instance *WebInspector) boo
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := WebInspectorNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "detach", marshal)
@@ -14820,7 +14834,9 @@ func (recv *WebInspector) ConnectOpenWindow(handler func(instance *WebInspector)
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := WebInspectorNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "open-window", marshal)
@@ -16913,7 +16929,9 @@ func (recv *WebView) ConnectAuthenticate(handler func(instance *WebView, request
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := AuthenticationRequestNewFromNative(object1.GetObject().Native())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "authenticate", marshal)
@@ -16966,7 +16984,9 @@ func (recv *WebView) ConnectCreate(handler func(instance *WebView, navigationAct
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := NavigationActionNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetObject(retGo.Object())
 	}
 
 	return callback.ConnectSignal(recv.Native(), "create", marshal)
@@ -16988,7 +17008,9 @@ func (recv *WebView) ConnectDecidePolicy(handler func(instance *WebView, decisio
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := (PolicyDecisionType)(object2.GetInt())
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "decide-policy", marshal)
@@ -17004,7 +17026,9 @@ func (recv *WebView) ConnectEnterFullscreen(handler func(instance *WebView) bool
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "enter-fullscreen", marshal)
@@ -17039,7 +17063,9 @@ func (recv *WebView) ConnectLeaveFullscreen(handler func(instance *WebView) bool
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "leave-fullscreen", marshal)
@@ -17083,7 +17109,9 @@ func (recv *WebView) ConnectLoadFailed(handler func(instance *WebView, loadEvent
 		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
 		arg3 := glib.ErrorNewFromNative(object3.GetBoxed())
 
-		handler(argInstance, arg1, arg2, arg3)
+		retGo := handler(argInstance, arg1, arg2, arg3)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "load-failed", marshal)
@@ -17128,7 +17156,9 @@ func (recv *WebView) ConnectPrint(handler func(instance *WebView, printOperation
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := PrintOperationNewFromNative(object1.GetObject().Native())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "print", marshal)
@@ -17201,7 +17231,9 @@ func (recv *WebView) ConnectRunColorChooser(handler func(instance *WebView, requ
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := ColorChooserRequestNewFromNative(object1.GetObject().Native())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "run-color-chooser", marshal)
@@ -17220,7 +17252,9 @@ func (recv *WebView) ConnectRunFileChooser(handler func(instance *WebView, reque
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := FileChooserRequestNewFromNative(object1.GetObject().Native())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "run-file-chooser", marshal)
@@ -17239,7 +17273,9 @@ func (recv *WebView) ConnectScriptDialog(handler func(instance *WebView, dialog 
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := ScriptDialogNewFromNative(object1.GetBoxed())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "script-dialog", marshal)
@@ -17258,7 +17294,9 @@ func (recv *WebView) ConnectShowNotification(handler func(instance *WebView, not
 		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
 		arg1 := NotificationNewFromNative(object1.GetObject().Native())
 
-		handler(argInstance, arg1)
+		retGo := handler(argInstance, arg1)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "show-notification", marshal)
@@ -17295,7 +17333,9 @@ func (recv *WebView) ConnectWebProcessCrashed(handler func(instance *WebView) bo
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
 
-		handler(argInstance)
+		retGo := handler(argInstance)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "web-process-crashed", marshal)

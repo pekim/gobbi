@@ -15,8 +15,18 @@ var goTypeValueGetterFunctions = map[string]string{
 	"gboolean": "GetBoolean",
 }
 
-func (p Parameter) generateValueFromObject(s *jen.Statement, objectVarName string) {
-	typ := p.Type
+var goTypeValueSetterFunctions = map[string]string{
+	"gint":     "SetInt",
+	"guint":    "SetUint",
+	"gint64":   "SetInt64",
+	"guint64":  "SetUint64",
+	"gdouble":  "SetDouble",
+	"utf8":     "SetString",
+	"gboolean": "SetBoolean",
+}
+
+func (a Argument) generateValueFromObject(s *jen.Statement, objectVarName string) {
+	typ := a.Type
 	resolvedType := typ.resolvedType()
 
 	if resolvedType.isClass() {
@@ -83,4 +93,33 @@ func (p Parameter) generateValueFromObject(s *jen.Statement, objectVarName strin
 	}
 
 	panic(fmt.Sprintf("unable to unmarshall %s.%s from Object", resolvedType.namespace.Name, resolvedType.Name))
+}
+
+func (a Argument) generateObjectFromValue(g *jen.Group, objectVarName string, valueVarName string) {
+	typ := a.Type
+	resolvedType := typ.resolvedType()
+
+	if funcName, found := goTypeValueSetterFunctions[resolvedType.Name]; found {
+		g.Id(objectVarName).Dot(funcName).Call(jen.Id(valueVarName))
+		return
+	}
+
+	if resolvedType.isRecord() || resolvedType.isClass() {
+		g.Id(objectVarName).Dot("SetObject").CallFunc(func(g *jen.Group) {
+			if a.Type.Name == "Object" || a.Type.foreignName == "Object" {
+				g.Id(valueVarName)
+			} else {
+				g.Id(valueVarName).Dot("Object").Call()
+			}
+		})
+
+		return
+	}
+
+	if resolvedType.isEnumeration() {
+		g.Id(objectVarName).Dot("SetInt").Call(jen.Int32().Params(jen.Id(valueVarName)))
+		return
+	}
+
+	//panic(fmt.Sprintf("unable to unmarshall value to %s.%s Object", resolvedType.namespace.Name, resolvedType.Name))
 }

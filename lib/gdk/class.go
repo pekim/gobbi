@@ -12891,40 +12891,9 @@ func (recv *Window) Withdraw() {
 	return
 }
 
-/*
-ConnectCreateSurface connects a callback to the 'create-surface' signal of the Window.
+// UNSUPPORTED : C value 'create-surface' : return value is from package cairo
 
-The returned value represents the connection, and may be passed to the Disconnect method to remove it.
-*/
-func (recv *Window) ConnectCreateSurface(handler func(instance *Window, width int32, height int32) *cairo.Surface) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
-		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
-
-		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		arg1 := object1.GetInt()
-
-		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
-		arg2 := object2.GetInt()
-
-		handler(argInstance, arg1, arg2)
-	}
-
-	return callback.ConnectSignal(recv.Native(), "create-surface", marshal)
-}
-
-/*
-ConnectFromEmbedder connects a callback to the 'from-embedder' signal of the Window.
-
-The returned value represents the connection, and may be passed to the Disconnect method to remove it.
-*/
-func (recv *Window) ConnectFromEmbedder(handler func(instance *Window, embedderX float64, embedderY float64) (float64, float64)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// Has out params
-	}
-
-	return callback.ConnectSignal(recv.Native(), "from-embedder", marshal)
-}
+// UNSUPPORTED : C value 'from-embedder' : has out params
 
 /*
 ConnectMovedToRect connects a callback to the 'moved-to-rect' signal of the Window.
@@ -12970,24 +12939,15 @@ func (recv *Window) ConnectPickEmbeddedChild(handler func(instance *Window, x fl
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := object2.GetDouble()
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetObject(retGo.Object())
 	}
 
 	return callback.ConnectSignal(recv.Native(), "pick-embedded-child", marshal)
 }
 
-/*
-ConnectToEmbedder connects a callback to the 'to-embedder' signal of the Window.
-
-The returned value represents the connection, and may be passed to the Disconnect method to remove it.
-*/
-func (recv *Window) ConnectToEmbedder(handler func(instance *Window, offscreenX float64, offscreenY float64) (float64, float64)) int {
-	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
-		// Has out params
-	}
-
-	return callback.ConnectSignal(recv.Native(), "to-embedder", marshal)
-}
+// UNSUPPORTED : C value 'to-embedder' : has out params
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.

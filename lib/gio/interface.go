@@ -3793,7 +3793,9 @@ func (recv *DtlsConnection) ConnectAcceptCertificate(handler func(instance *Dtls
 		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
 		arg2 := (TlsCertificateFlags)(object2.GetInt())
 
-		handler(argInstance, arg1, arg2)
+		retGo := handler(argInstance, arg1, arg2)
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
 	}
 
 	return callback.ConnectSignal(recv.Native(), "accept-certificate", marshal)
