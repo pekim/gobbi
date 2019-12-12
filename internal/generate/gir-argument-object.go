@@ -92,7 +92,7 @@ func (a Argument) generateValueFromObject(s *jen.Statement, objectVarName string
 		return
 	}
 
-	panic(fmt.Sprintf("unable to unmarshall %s.%s from Object", resolvedType.namespace.Name, resolvedType.Name))
+	panic(fmt.Sprintf("unable to unmarshal %s.%s from Object", resolvedType.namespace.Name, resolvedType.Name))
 }
 
 func (a Argument) generateObjectFromValue(g *jen.Group, objectVarName string, valueVarName string) {
@@ -121,5 +121,5 @@ func (a Argument) generateObjectFromValue(g *jen.Group, objectVarName string, va
 		return
 	}
 
-	//panic(fmt.Sprintf("unable to unmarshall value to %s.%s Object", resolvedType.namespace.Name, resolvedType.Name))
+	panic(fmt.Sprintf("unable to unmarshal value to %s.%s Object", resolvedType.namespace.Name, resolvedType.Name))
 }
