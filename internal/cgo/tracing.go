@@ -1,21 +1,36 @@
 package cgo
 
+import (
+	"os"
+	"strconv"
+)
+
 type TraceHandler func(message string)
 
 var traceHandler TraceHandler
+
+var traceToStdout bool
+
+func init() {
+	traceToStdout, _ = strconv.ParseBool(os.Getenv("GOBBI_TRACE"))
+}
 
 func SetTraceHandler(handler TraceHandler) {
 	traceHandler = handler
 }
 
 func Tracing() bool {
-	return traceHandler != nil
+	return traceToStdout || traceHandler != nil
 }
 
 func Trace(message string) {
-	if traceHandler == nil {
+	if traceToStdout {
+		os.Stdout.WriteString(message)
 		return
 	}
 
+	if traceHandler == nil {
+		return
+	}
 	traceHandler(message)
 }
