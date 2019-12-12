@@ -27,6 +27,11 @@ type Font struct {
 }
 
 func FontNewFromNative(native unsafe.Pointer) *Font {
+	err := fontInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Font{native: native}
 
 	return instance
@@ -98,6 +103,11 @@ type FontMap struct {
 }
 
 func FontMapNewFromNative(native unsafe.Pointer) *FontMap {
+	err := fontMapInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FontMap{native: native}
 
 	return instance

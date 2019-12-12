@@ -26,6 +26,11 @@ type PasswordManager struct {
 }
 
 func PasswordManagerNewFromNative(native unsafe.Pointer) *PasswordManager {
+	err := passwordManagerInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &PasswordManager{native: native}
 
 	return instance
@@ -98,6 +103,11 @@ type ProxyResolver struct {
 }
 
 func ProxyResolverNewFromNative(native unsafe.Pointer) *ProxyResolver {
+	err := proxyResolverInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ProxyResolver{native: native}
 
 	return instance
@@ -175,6 +185,11 @@ type ProxyURIResolver struct {
 }
 
 func ProxyURIResolverNewFromNative(native unsafe.Pointer) *ProxyURIResolver {
+	err := proxyURIResolverInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ProxyURIResolver{native: native}
 
 	return instance
@@ -252,6 +267,11 @@ type SessionFeature struct {
 }
 
 func SessionFeatureNewFromNative(native unsafe.Pointer) *SessionFeature {
+	err := sessionFeatureInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &SessionFeature{native: native}
 
 	return instance

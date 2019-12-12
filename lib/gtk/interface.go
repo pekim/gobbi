@@ -30,6 +30,11 @@ type Actionable struct {
 }
 
 func ActionableNewFromNative(native unsafe.Pointer) *Actionable {
+	err := actionableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Actionable{native: native}
 
 	return instance
@@ -222,6 +227,11 @@ type Activatable struct {
 }
 
 func ActivatableNewFromNative(native unsafe.Pointer) *Activatable {
+	err := activatableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Activatable{native: native}
 
 	return instance
@@ -441,6 +451,11 @@ type AppChooser struct {
 }
 
 func AppChooserNewFromNative(native unsafe.Pointer) *AppChooser {
+	err := appChooserInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &AppChooser{native: native}
 
 	return instance
@@ -542,6 +557,11 @@ type Buildable struct {
 }
 
 func BuildableNewFromNative(native unsafe.Pointer) *Buildable {
+	err := buildableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Buildable{native: native}
 
 	return instance
@@ -903,6 +923,11 @@ type CellAccessibleParent struct {
 }
 
 func CellAccessibleParentNewFromNative(native unsafe.Pointer) *CellAccessibleParent {
+	err := cellAccessibleParentInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &CellAccessibleParent{native: native}
 
 	return instance
@@ -1285,6 +1310,11 @@ type CellEditable struct {
 }
 
 func CellEditableNewFromNative(native unsafe.Pointer) *CellEditable {
+	err := cellEditableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &CellEditable{native: native}
 
 	return instance
@@ -1423,6 +1453,11 @@ type CellLayout struct {
 }
 
 func CellLayoutNewFromNative(native unsafe.Pointer) *CellLayout {
+	err := cellLayoutInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &CellLayout{native: native}
 
 	return instance
@@ -1708,6 +1743,11 @@ type ColorChooser struct {
 }
 
 func ColorChooserNewFromNative(native unsafe.Pointer) *ColorChooser {
+	err := colorChooserInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ColorChooser{native: native}
 
 	return instance
@@ -1899,6 +1939,11 @@ type Editable struct {
 }
 
 func EditableNewFromNative(native unsafe.Pointer) *Editable {
+	err := editableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Editable{native: native}
 
 	return instance
@@ -2396,6 +2441,11 @@ type FileChooser struct {
 }
 
 func FileChooserNewFromNative(native unsafe.Pointer) *FileChooser {
+	err := fileChooserInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FileChooser{native: native}
 
 	return instance
@@ -4250,6 +4300,11 @@ type FontChooser struct {
 }
 
 func FontChooserNewFromNative(native unsafe.Pointer) *FontChooser {
+	err := fontChooserInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FontChooser{native: native}
 
 	return instance
@@ -4874,6 +4929,11 @@ type Orientable struct {
 }
 
 func OrientableNewFromNative(native unsafe.Pointer) *Orientable {
+	err := orientableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Orientable{native: native}
 
 	return instance
@@ -4974,6 +5034,11 @@ type PrintOperationPreview struct {
 }
 
 func PrintOperationPreviewNewFromNative(native unsafe.Pointer) *PrintOperationPreview {
+	err := printOperationPreviewInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &PrintOperationPreview{native: native}
 
 	return instance
@@ -5153,6 +5218,11 @@ type RecentChooser struct {
 }
 
 func RecentChooserNewFromNative(native unsafe.Pointer) *RecentChooser {
+	err := recentChooserInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &RecentChooser{native: native}
 
 	return instance
@@ -6153,6 +6223,11 @@ type Scrollable struct {
 }
 
 func ScrollableNewFromNative(native unsafe.Pointer) *Scrollable {
+	err := scrollableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Scrollable{native: native}
 
 	return instance
@@ -6470,6 +6545,11 @@ type StyleProvider struct {
 }
 
 func StyleProviderNewFromNative(native unsafe.Pointer) *StyleProvider {
+	err := styleProviderInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &StyleProvider{native: native}
 
 	return instance
@@ -6612,6 +6692,11 @@ type ToolShell struct {
 }
 
 func ToolShellNewFromNative(native unsafe.Pointer) *ToolShell {
+	err := toolShellInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ToolShell{native: native}
 
 	return instance
@@ -6905,6 +6990,11 @@ type TreeDragDest struct {
 }
 
 func TreeDragDestNewFromNative(native unsafe.Pointer) *TreeDragDest {
+	err := treeDragDestInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &TreeDragDest{native: native}
 
 	return instance
@@ -7012,6 +7102,11 @@ type TreeDragSource struct {
 }
 
 func TreeDragSourceNewFromNative(native unsafe.Pointer) *TreeDragSource {
+	err := treeDragSourceInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &TreeDragSource{native: native}
 
 	return instance
@@ -7151,6 +7246,11 @@ type TreeModel struct {
 }
 
 func TreeModelNewFromNative(native unsafe.Pointer) *TreeModel {
+	err := treeModelInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &TreeModel{native: native}
 
 	return instance
@@ -8068,6 +8168,11 @@ type TreeSortable struct {
 }
 
 func TreeSortableNewFromNative(native unsafe.Pointer) *TreeSortable {
+	err := treeSortableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &TreeSortable{native: native}
 
 	return instance

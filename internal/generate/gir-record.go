@@ -152,6 +152,8 @@ func (r *Record) generateNewFromNativeBody(g *jen.Group) {
 	instance := jen.Id("instance")
 	object := jen.Id("object")
 
+	r.generateStructSetFuncCall(g, jen.Nil())
+
 	// GEN: instance := &SomeRecord{native: native}
 	g.
 		Add(instance).

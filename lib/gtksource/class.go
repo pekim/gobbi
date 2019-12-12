@@ -34,6 +34,11 @@ type Buffer struct {
 }
 
 func BufferNewFromNative(native unsafe.Pointer) *Buffer {
+	err := bufferObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Buffer{native: native}
 
 	object := instance.Object()
@@ -80,12 +85,6 @@ func (recv *Buffer) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Buffer) FieldParentInstance() *gtk.TextBuffer {
-	var nilValue *gtk.TextBuffer
-	err := bufferObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(bufferObject, recv.Native(), "parent_instance")
 	value := gtk.TextBufferNewFromNative(argValue.Pointer())
 	return value
@@ -93,11 +92,6 @@ func (recv *Buffer) FieldParentInstance() *gtk.TextBuffer {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Buffer) SetFieldParentInstance(value *gtk.TextBuffer) {
-	err := bufferObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(bufferObject, recv.Native(), "parent_instance", argValue)
@@ -105,12 +99,6 @@ func (recv *Buffer) SetFieldParentInstance(value *gtk.TextBuffer) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Buffer) FieldPriv() *BufferPrivate {
-	var nilValue *BufferPrivate
-	err := bufferObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(bufferObject, recv.Native(), "priv")
 	value := BufferPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -118,11 +106,6 @@ func (recv *Buffer) FieldPriv() *BufferPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Buffer) SetFieldPriv(value *BufferPrivate) {
-	err := bufferObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(bufferObject, recv.Native(), "priv", argValue)
@@ -1320,6 +1303,11 @@ type Completion struct {
 }
 
 func CompletionNewFromNative(native unsafe.Pointer) *Completion {
+	err := completionObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Completion{native: native}
 
 	object := instance.Object()
@@ -1361,12 +1349,6 @@ func (recv *Completion) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Completion) FieldParentInstance() *gobject.Object {
-	var nilValue *gobject.Object
-	err := completionObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(completionObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -1374,11 +1356,6 @@ func (recv *Completion) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Completion) SetFieldParentInstance(value *gobject.Object) {
-	err := completionObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(completionObject, recv.Native(), "parent_instance", argValue)
@@ -1386,12 +1363,6 @@ func (recv *Completion) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Completion) FieldPriv() *CompletionPrivate {
-	var nilValue *CompletionPrivate
-	err := completionObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(completionObject, recv.Native(), "priv")
 	value := CompletionPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -1399,11 +1370,6 @@ func (recv *Completion) FieldPriv() *CompletionPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Completion) SetFieldPriv(value *CompletionPrivate) {
-	err := completionObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(completionObject, recv.Native(), "priv", argValue)
@@ -1790,6 +1756,11 @@ type CompletionContext struct {
 }
 
 func CompletionContextNewFromNative(native unsafe.Pointer) *CompletionContext {
+	err := completionContextObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &CompletionContext{native: native}
 
 	object := instance.Object()
@@ -1836,12 +1807,6 @@ func (recv *CompletionContext) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *CompletionContext) FieldParent() *gobject.InitiallyUnowned {
-	var nilValue *gobject.InitiallyUnowned
-	err := completionContextObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(completionContextObject, recv.Native(), "parent")
 	value := gobject.InitiallyUnownedNewFromNative(argValue.Pointer())
 	return value
@@ -1849,11 +1814,6 @@ func (recv *CompletionContext) FieldParent() *gobject.InitiallyUnowned {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *CompletionContext) SetFieldParent(value *gobject.InitiallyUnowned) {
-	err := completionContextObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(completionContextObject, recv.Native(), "parent", argValue)
@@ -1861,12 +1821,6 @@ func (recv *CompletionContext) SetFieldParent(value *gobject.InitiallyUnowned) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CompletionContext) FieldPriv() *CompletionContextPrivate {
-	var nilValue *CompletionContextPrivate
-	err := completionContextObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(completionContextObject, recv.Native(), "priv")
 	value := CompletionContextPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -1874,11 +1828,6 @@ func (recv *CompletionContext) FieldPriv() *CompletionContextPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *CompletionContext) SetFieldPriv(value *CompletionContextPrivate) {
-	err := completionContextObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(completionContextObject, recv.Native(), "priv", argValue)
@@ -1993,6 +1942,11 @@ type CompletionInfo struct {
 }
 
 func CompletionInfoNewFromNative(native unsafe.Pointer) *CompletionInfo {
+	err := completionInfoObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &CompletionInfo{native: native}
 
 	object := instance.Object()
@@ -2059,12 +2013,6 @@ func (recv *CompletionInfo) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *CompletionInfo) FieldParent() *gtk.Window {
-	var nilValue *gtk.Window
-	err := completionInfoObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(completionInfoObject, recv.Native(), "parent")
 	value := gtk.WindowNewFromNative(argValue.Pointer())
 	return value
@@ -2072,11 +2020,6 @@ func (recv *CompletionInfo) FieldParent() *gtk.Window {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *CompletionInfo) SetFieldParent(value *gtk.Window) {
-	err := completionInfoObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(completionInfoObject, recv.Native(), "parent", argValue)
@@ -2084,12 +2027,6 @@ func (recv *CompletionInfo) SetFieldParent(value *gtk.Window) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CompletionInfo) FieldPriv() *CompletionInfoPrivate {
-	var nilValue *CompletionInfoPrivate
-	err := completionInfoObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(completionInfoObject, recv.Native(), "priv")
 	value := CompletionInfoPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -2097,11 +2034,6 @@ func (recv *CompletionInfo) FieldPriv() *CompletionInfoPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *CompletionInfo) SetFieldPriv(value *CompletionInfoPrivate) {
-	err := completionInfoObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(completionInfoObject, recv.Native(), "priv", argValue)
@@ -2279,6 +2211,11 @@ type CompletionItem struct {
 }
 
 func CompletionItemNewFromNative(native unsafe.Pointer) *CompletionItem {
+	err := completionItemObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &CompletionItem{native: native}
 
 	object := instance.Object()
@@ -2320,12 +2257,6 @@ func (recv *CompletionItem) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *CompletionItem) FieldParent() *gobject.Object {
-	var nilValue *gobject.Object
-	err := completionItemObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(completionItemObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2333,11 +2264,6 @@ func (recv *CompletionItem) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *CompletionItem) SetFieldParent(value *gobject.Object) {
-	err := completionItemObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(completionItemObject, recv.Native(), "parent", argValue)
@@ -2345,12 +2271,6 @@ func (recv *CompletionItem) SetFieldParent(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CompletionItem) FieldPriv() *CompletionItemPrivate {
-	var nilValue *CompletionItemPrivate
-	err := completionItemObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(completionItemObject, recv.Native(), "priv")
 	value := CompletionItemPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -2358,11 +2278,6 @@ func (recv *CompletionItem) FieldPriv() *CompletionItemPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *CompletionItem) SetFieldPriv(value *CompletionItemPrivate) {
-	err := completionItemObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(completionItemObject, recv.Native(), "priv", argValue)
@@ -2676,6 +2591,11 @@ type CompletionWords struct {
 }
 
 func CompletionWordsNewFromNative(native unsafe.Pointer) *CompletionWords {
+	err := completionWordsObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &CompletionWords{native: native}
 
 	object := instance.Object()
@@ -2717,12 +2637,6 @@ func (recv *CompletionWords) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *CompletionWords) FieldParent() *gobject.Object {
-	var nilValue *gobject.Object
-	err := completionWordsObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(completionWordsObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2730,11 +2644,6 @@ func (recv *CompletionWords) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *CompletionWords) SetFieldParent(value *gobject.Object) {
-	err := completionWordsObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(completionWordsObject, recv.Native(), "parent", argValue)
@@ -2742,12 +2651,6 @@ func (recv *CompletionWords) SetFieldParent(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *CompletionWords) FieldPriv() *CompletionWordsPrivate {
-	var nilValue *CompletionWordsPrivate
-	err := completionWordsObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(completionWordsObject, recv.Native(), "priv")
 	value := CompletionWordsPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -2755,11 +2658,6 @@ func (recv *CompletionWords) FieldPriv() *CompletionWordsPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *CompletionWords) SetFieldPriv(value *CompletionWordsPrivate) {
-	err := completionWordsObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(completionWordsObject, recv.Native(), "priv", argValue)
@@ -2879,6 +2777,11 @@ type File struct {
 }
 
 func FileNewFromNative(native unsafe.Pointer) *File {
+	err := fileObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &File{native: native}
 
 	object := instance.Object()
@@ -2920,12 +2823,6 @@ func (recv *File) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *File) FieldParent() *gobject.Object {
-	var nilValue *gobject.Object
-	err := fileObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(fileObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2933,11 +2830,6 @@ func (recv *File) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *File) SetFieldParent(value *gobject.Object) {
-	err := fileObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fileObject, recv.Native(), "parent", argValue)
@@ -2945,12 +2837,6 @@ func (recv *File) SetFieldParent(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *File) FieldPriv() *FilePrivate {
-	var nilValue *FilePrivate
-	err := fileObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(fileObject, recv.Native(), "priv")
 	value := FilePrivateNewFromNative(argValue.Pointer())
 	return value
@@ -2958,11 +2844,6 @@ func (recv *File) FieldPriv() *FilePrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *File) SetFieldPriv(value *FilePrivate) {
-	err := fileObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fileObject, recv.Native(), "priv", argValue)
@@ -3274,6 +3155,11 @@ type FileLoader struct {
 }
 
 func FileLoaderNewFromNative(native unsafe.Pointer) *FileLoader {
+	err := fileLoaderObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FileLoader{native: native}
 
 	object := instance.Object()
@@ -3315,12 +3201,6 @@ func (recv *FileLoader) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *FileLoader) FieldParent() *gobject.Object {
-	var nilValue *gobject.Object
-	err := fileLoaderObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(fileLoaderObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -3328,11 +3208,6 @@ func (recv *FileLoader) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *FileLoader) SetFieldParent(value *gobject.Object) {
-	err := fileLoaderObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fileLoaderObject, recv.Native(), "parent", argValue)
@@ -3340,12 +3215,6 @@ func (recv *FileLoader) SetFieldParent(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *FileLoader) FieldPriv() *FileLoaderPrivate {
-	var nilValue *FileLoaderPrivate
-	err := fileLoaderObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(fileLoaderObject, recv.Native(), "priv")
 	value := FileLoaderPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -3353,11 +3222,6 @@ func (recv *FileLoader) FieldPriv() *FileLoaderPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *FileLoader) SetFieldPriv(value *FileLoaderPrivate) {
-	err := fileLoaderObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fileLoaderObject, recv.Native(), "priv", argValue)
@@ -3677,6 +3541,11 @@ type FileSaver struct {
 }
 
 func FileSaverNewFromNative(native unsafe.Pointer) *FileSaver {
+	err := fileSaverObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FileSaver{native: native}
 
 	object := instance.Object()
@@ -3718,12 +3587,6 @@ func (recv *FileSaver) Native() unsafe.Pointer {
 
 // FieldObject returns the C field 'object'.
 func (recv *FileSaver) FieldObject() *gobject.Object {
-	var nilValue *gobject.Object
-	err := fileSaverObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(fileSaverObject, recv.Native(), "object")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -3731,11 +3594,6 @@ func (recv *FileSaver) FieldObject() *gobject.Object {
 
 // SetFieldObject sets the value of the C field 'object'.
 func (recv *FileSaver) SetFieldObject(value *gobject.Object) {
-	err := fileSaverObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fileSaverObject, recv.Native(), "object", argValue)
@@ -3743,12 +3601,6 @@ func (recv *FileSaver) SetFieldObject(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *FileSaver) FieldPriv() *FileSaverPrivate {
-	var nilValue *FileSaverPrivate
-	err := fileSaverObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(fileSaverObject, recv.Native(), "priv")
 	value := FileSaverPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -3756,11 +3608,6 @@ func (recv *FileSaver) FieldPriv() *FileSaverPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *FileSaver) SetFieldPriv(value *FileSaverPrivate) {
-	err := fileSaverObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fileSaverObject, recv.Native(), "priv", argValue)
@@ -4133,6 +3980,11 @@ type Gutter struct {
 }
 
 func GutterNewFromNative(native unsafe.Pointer) *Gutter {
+	err := gutterObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Gutter{native: native}
 
 	object := instance.Object()
@@ -4174,12 +4026,6 @@ func (recv *Gutter) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *Gutter) FieldParent() *gobject.Object {
-	var nilValue *gobject.Object
-	err := gutterObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(gutterObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -4187,11 +4033,6 @@ func (recv *Gutter) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *Gutter) SetFieldParent(value *gobject.Object) {
-	err := gutterObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(gutterObject, recv.Native(), "parent", argValue)
@@ -4199,12 +4040,6 @@ func (recv *Gutter) SetFieldParent(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Gutter) FieldPriv() *GutterPrivate {
-	var nilValue *GutterPrivate
-	err := gutterObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(gutterObject, recv.Native(), "priv")
 	value := GutterPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -4212,11 +4047,6 @@ func (recv *Gutter) FieldPriv() *GutterPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Gutter) SetFieldPriv(value *GutterPrivate) {
-	err := gutterObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(gutterObject, recv.Native(), "priv", argValue)
@@ -4519,6 +4349,11 @@ type GutterRenderer struct {
 }
 
 func GutterRendererNewFromNative(native unsafe.Pointer) *GutterRenderer {
+	err := gutterRendererObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &GutterRenderer{native: native}
 
 	object := instance.Object()
@@ -4565,12 +4400,6 @@ func (recv *GutterRenderer) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *GutterRenderer) FieldParent() *gobject.InitiallyUnowned {
-	var nilValue *gobject.InitiallyUnowned
-	err := gutterRendererObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(gutterRendererObject, recv.Native(), "parent")
 	value := gobject.InitiallyUnownedNewFromNative(argValue.Pointer())
 	return value
@@ -4578,11 +4407,6 @@ func (recv *GutterRenderer) FieldParent() *gobject.InitiallyUnowned {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *GutterRenderer) SetFieldParent(value *gobject.InitiallyUnowned) {
-	err := gutterRendererObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(gutterRendererObject, recv.Native(), "parent", argValue)
@@ -5290,6 +5114,11 @@ type GutterRendererPixbuf struct {
 }
 
 func GutterRendererPixbufNewFromNative(native unsafe.Pointer) *GutterRendererPixbuf {
+	err := gutterRendererPixbufObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &GutterRendererPixbuf{native: native}
 
 	object := instance.Object()
@@ -5572,6 +5401,11 @@ type GutterRendererText struct {
 }
 
 func GutterRendererTextNewFromNative(native unsafe.Pointer) *GutterRendererText {
+	err := gutterRendererTextObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &GutterRendererText{native: native}
 
 	object := instance.Object()
@@ -5795,6 +5629,11 @@ type Language struct {
 }
 
 func LanguageNewFromNative(native unsafe.Pointer) *Language {
+	err := languageObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Language{native: native}
 
 	object := instance.Object()
@@ -5836,12 +5675,6 @@ func (recv *Language) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Language) FieldParentInstance() *gobject.Object {
-	var nilValue *gobject.Object
-	err := languageObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(languageObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -5849,11 +5682,6 @@ func (recv *Language) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Language) SetFieldParentInstance(value *gobject.Object) {
-	err := languageObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(languageObject, recv.Native(), "parent_instance", argValue)
@@ -5861,12 +5689,6 @@ func (recv *Language) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Language) FieldPriv() *LanguagePrivate {
-	var nilValue *LanguagePrivate
-	err := languageObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(languageObject, recv.Native(), "priv")
 	value := LanguagePrivateNewFromNative(argValue.Pointer())
 	return value
@@ -5874,11 +5696,6 @@ func (recv *Language) FieldPriv() *LanguagePrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Language) SetFieldPriv(value *LanguagePrivate) {
-	err := languageObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(languageObject, recv.Native(), "priv", argValue)
@@ -6211,6 +6028,11 @@ type LanguageManager struct {
 }
 
 func LanguageManagerNewFromNative(native unsafe.Pointer) *LanguageManager {
+	err := languageManagerObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &LanguageManager{native: native}
 
 	object := instance.Object()
@@ -6252,12 +6074,6 @@ func (recv *LanguageManager) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *LanguageManager) FieldParentInstance() *gobject.Object {
-	var nilValue *gobject.Object
-	err := languageManagerObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(languageManagerObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -6265,11 +6081,6 @@ func (recv *LanguageManager) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *LanguageManager) SetFieldParentInstance(value *gobject.Object) {
-	err := languageManagerObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(languageManagerObject, recv.Native(), "parent_instance", argValue)
@@ -6277,12 +6088,6 @@ func (recv *LanguageManager) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *LanguageManager) FieldPriv() *LanguageManagerPrivate {
-	var nilValue *LanguageManagerPrivate
-	err := languageManagerObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(languageManagerObject, recv.Native(), "priv")
 	value := LanguageManagerPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -6290,11 +6095,6 @@ func (recv *LanguageManager) FieldPriv() *LanguageManagerPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *LanguageManager) SetFieldPriv(value *LanguageManagerPrivate) {
-	err := languageManagerObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(languageManagerObject, recv.Native(), "priv", argValue)
@@ -6473,6 +6273,11 @@ type Map struct {
 }
 
 func MapNewFromNative(native unsafe.Pointer) *Map {
+	err := mapObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Map{native: native}
 
 	object := instance.Object()
@@ -6539,12 +6344,6 @@ func (recv *Map) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Map) FieldParentInstance() *View {
-	var nilValue *View
-	err := mapObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(mapObject, recv.Native(), "parent_instance")
 	value := ViewNewFromNative(argValue.Pointer())
 	return value
@@ -6552,11 +6351,6 @@ func (recv *Map) FieldParentInstance() *View {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Map) SetFieldParentInstance(value *View) {
-	err := mapObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(mapObject, recv.Native(), "parent_instance", argValue)
@@ -6684,6 +6478,11 @@ type Mark struct {
 }
 
 func MarkNewFromNative(native unsafe.Pointer) *Mark {
+	err := markObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Mark{native: native}
 
 	object := instance.Object()
@@ -6730,12 +6529,6 @@ func (recv *Mark) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Mark) FieldParentInstance() *gtk.TextMark {
-	var nilValue *gtk.TextMark
-	err := markObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(markObject, recv.Native(), "parent_instance")
 	value := gtk.TextMarkNewFromNative(argValue.Pointer())
 	return value
@@ -6743,11 +6536,6 @@ func (recv *Mark) FieldParentInstance() *gtk.TextMark {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Mark) SetFieldParentInstance(value *gtk.TextMark) {
-	err := markObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(markObject, recv.Native(), "parent_instance", argValue)
@@ -6755,12 +6543,6 @@ func (recv *Mark) SetFieldParentInstance(value *gtk.TextMark) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *Mark) FieldPriv() *MarkPrivate {
-	var nilValue *MarkPrivate
-	err := markObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(markObject, recv.Native(), "priv")
 	value := MarkPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -6768,11 +6550,6 @@ func (recv *Mark) FieldPriv() *MarkPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *Mark) SetFieldPriv(value *MarkPrivate) {
-	err := markObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(markObject, recv.Native(), "priv", argValue)
@@ -6927,6 +6704,11 @@ type MarkAttributes struct {
 }
 
 func MarkAttributesNewFromNative(native unsafe.Pointer) *MarkAttributes {
+	err := markAttributesObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &MarkAttributes{native: native}
 
 	object := instance.Object()
@@ -7411,6 +7193,11 @@ type PrintCompositor struct {
 }
 
 func PrintCompositorNewFromNative(native unsafe.Pointer) *PrintCompositor {
+	err := printCompositorObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &PrintCompositor{native: native}
 
 	object := instance.Object()
@@ -7452,12 +7239,6 @@ func (recv *PrintCompositor) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *PrintCompositor) FieldParentInstance() *gobject.Object {
-	var nilValue *gobject.Object
-	err := printCompositorObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(printCompositorObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -7465,11 +7246,6 @@ func (recv *PrintCompositor) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *PrintCompositor) SetFieldParentInstance(value *gobject.Object) {
-	err := printCompositorObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(printCompositorObject, recv.Native(), "parent_instance", argValue)
@@ -7477,12 +7253,6 @@ func (recv *PrintCompositor) SetFieldParentInstance(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *PrintCompositor) FieldPriv() *PrintCompositorPrivate {
-	var nilValue *PrintCompositorPrivate
-	err := printCompositorObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(printCompositorObject, recv.Native(), "priv")
 	value := PrintCompositorPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -7490,11 +7260,6 @@ func (recv *PrintCompositor) FieldPriv() *PrintCompositorPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *PrintCompositor) SetFieldPriv(value *PrintCompositorPrivate) {
-	err := printCompositorObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(printCompositorObject, recv.Native(), "priv", argValue)
@@ -8376,6 +8141,11 @@ type Region struct {
 }
 
 func RegionNewFromNative(native unsafe.Pointer) *Region {
+	err := regionObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Region{native: native}
 
 	object := instance.Object()
@@ -8417,12 +8187,6 @@ func (recv *Region) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Region) FieldParentInstance() *gobject.Object {
-	var nilValue *gobject.Object
-	err := regionObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(regionObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -8430,11 +8194,6 @@ func (recv *Region) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Region) SetFieldParentInstance(value *gobject.Object) {
-	err := regionObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(regionObject, recv.Native(), "parent_instance", argValue)
@@ -8838,6 +8597,11 @@ type SearchContext struct {
 }
 
 func SearchContextNewFromNative(native unsafe.Pointer) *SearchContext {
+	err := searchContextObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &SearchContext{native: native}
 
 	object := instance.Object()
@@ -8879,12 +8643,6 @@ func (recv *SearchContext) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *SearchContext) FieldParent() *gobject.Object {
-	var nilValue *gobject.Object
-	err := searchContextObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(searchContextObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -8892,11 +8650,6 @@ func (recv *SearchContext) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *SearchContext) SetFieldParent(value *gobject.Object) {
-	err := searchContextObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(searchContextObject, recv.Native(), "parent", argValue)
@@ -8904,12 +8657,6 @@ func (recv *SearchContext) SetFieldParent(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SearchContext) FieldPriv() *SearchContextPrivate {
-	var nilValue *SearchContextPrivate
-	err := searchContextObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(searchContextObject, recv.Native(), "priv")
 	value := SearchContextPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -8917,11 +8664,6 @@ func (recv *SearchContext) FieldPriv() *SearchContextPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SearchContext) SetFieldPriv(value *SearchContextPrivate) {
-	err := searchContextObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(searchContextObject, recv.Native(), "priv", argValue)
@@ -9555,6 +9297,11 @@ type SearchSettings struct {
 }
 
 func SearchSettingsNewFromNative(native unsafe.Pointer) *SearchSettings {
+	err := searchSettingsObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &SearchSettings{native: native}
 
 	object := instance.Object()
@@ -9596,12 +9343,6 @@ func (recv *SearchSettings) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *SearchSettings) FieldParent() *gobject.Object {
-	var nilValue *gobject.Object
-	err := searchSettingsObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(searchSettingsObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -9609,11 +9350,6 @@ func (recv *SearchSettings) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *SearchSettings) SetFieldParent(value *gobject.Object) {
-	err := searchSettingsObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(searchSettingsObject, recv.Native(), "parent", argValue)
@@ -9621,12 +9357,6 @@ func (recv *SearchSettings) SetFieldParent(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SearchSettings) FieldPriv() *SearchSettingsPrivate {
-	var nilValue *SearchSettingsPrivate
-	err := searchSettingsObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(searchSettingsObject, recv.Native(), "priv")
 	value := SearchSettingsPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -9634,11 +9364,6 @@ func (recv *SearchSettings) FieldPriv() *SearchSettingsPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SearchSettings) SetFieldPriv(value *SearchSettingsPrivate) {
-	err := searchSettingsObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(searchSettingsObject, recv.Native(), "priv", argValue)
@@ -9997,6 +9722,11 @@ type SpaceDrawer struct {
 }
 
 func SpaceDrawerNewFromNative(native unsafe.Pointer) *SpaceDrawer {
+	err := spaceDrawerObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &SpaceDrawer{native: native}
 
 	object := instance.Object()
@@ -10038,12 +9768,6 @@ func (recv *SpaceDrawer) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *SpaceDrawer) FieldParent() *gobject.Object {
-	var nilValue *gobject.Object
-	err := spaceDrawerObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(spaceDrawerObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -10051,11 +9775,6 @@ func (recv *SpaceDrawer) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *SpaceDrawer) SetFieldParent(value *gobject.Object) {
-	err := spaceDrawerObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(spaceDrawerObject, recv.Native(), "parent", argValue)
@@ -10063,12 +9782,6 @@ func (recv *SpaceDrawer) SetFieldParent(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *SpaceDrawer) FieldPriv() *SpaceDrawerPrivate {
-	var nilValue *SpaceDrawerPrivate
-	err := spaceDrawerObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(spaceDrawerObject, recv.Native(), "priv")
 	value := SpaceDrawerPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -10076,11 +9789,6 @@ func (recv *SpaceDrawer) FieldPriv() *SpaceDrawerPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *SpaceDrawer) SetFieldPriv(value *SpaceDrawerPrivate) {
-	err := spaceDrawerObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(spaceDrawerObject, recv.Native(), "priv", argValue)
@@ -10321,6 +10029,11 @@ type Style struct {
 }
 
 func StyleNewFromNative(native unsafe.Pointer) *Style {
+	err := styleObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Style{native: native}
 
 	object := instance.Object()
@@ -10437,6 +10150,11 @@ type StyleScheme struct {
 }
 
 func StyleSchemeNewFromNative(native unsafe.Pointer) *StyleScheme {
+	err := styleSchemeObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &StyleScheme{native: native}
 
 	object := instance.Object()
@@ -10478,12 +10196,6 @@ func (recv *StyleScheme) Native() unsafe.Pointer {
 
 // FieldBase returns the C field 'base'.
 func (recv *StyleScheme) FieldBase() *gobject.Object {
-	var nilValue *gobject.Object
-	err := styleSchemeObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(styleSchemeObject, recv.Native(), "base")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -10491,11 +10203,6 @@ func (recv *StyleScheme) FieldBase() *gobject.Object {
 
 // SetFieldBase sets the value of the C field 'base'.
 func (recv *StyleScheme) SetFieldBase(value *gobject.Object) {
-	err := styleSchemeObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(styleSchemeObject, recv.Native(), "base", argValue)
@@ -10503,12 +10210,6 @@ func (recv *StyleScheme) SetFieldBase(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *StyleScheme) FieldPriv() *StyleSchemePrivate {
-	var nilValue *StyleSchemePrivate
-	err := styleSchemeObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(styleSchemeObject, recv.Native(), "priv")
 	value := StyleSchemePrivateNewFromNative(argValue.Pointer())
 	return value
@@ -10516,11 +10217,6 @@ func (recv *StyleScheme) FieldPriv() *StyleSchemePrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *StyleScheme) SetFieldPriv(value *StyleSchemePrivate) {
-	err := styleSchemeObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(styleSchemeObject, recv.Native(), "priv", argValue)
@@ -10731,6 +10427,11 @@ type StyleSchemeChooserButton struct {
 }
 
 func StyleSchemeChooserButtonNewFromNative(native unsafe.Pointer) *StyleSchemeChooserButton {
+	err := styleSchemeChooserButtonObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &StyleSchemeChooserButton{native: native}
 
 	object := instance.Object()
@@ -10797,12 +10498,6 @@ func (recv *StyleSchemeChooserButton) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *StyleSchemeChooserButton) FieldParent() *gtk.Button {
-	var nilValue *gtk.Button
-	err := styleSchemeChooserButtonObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(styleSchemeChooserButtonObject, recv.Native(), "parent")
 	value := gtk.ButtonNewFromNative(argValue.Pointer())
 	return value
@@ -10810,11 +10505,6 @@ func (recv *StyleSchemeChooserButton) FieldParent() *gtk.Button {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *StyleSchemeChooserButton) SetFieldParent(value *gtk.Button) {
-	err := styleSchemeChooserButtonObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(styleSchemeChooserButtonObject, recv.Native(), "parent", argValue)
@@ -10891,6 +10581,11 @@ type StyleSchemeChooserWidget struct {
 }
 
 func StyleSchemeChooserWidgetNewFromNative(native unsafe.Pointer) *StyleSchemeChooserWidget {
+	err := styleSchemeChooserWidgetObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &StyleSchemeChooserWidget{native: native}
 
 	object := instance.Object()
@@ -10952,12 +10647,6 @@ func (recv *StyleSchemeChooserWidget) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *StyleSchemeChooserWidget) FieldParent() *gtk.Bin {
-	var nilValue *gtk.Bin
-	err := styleSchemeChooserWidgetObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(styleSchemeChooserWidgetObject, recv.Native(), "parent")
 	value := gtk.BinNewFromNative(argValue.Pointer())
 	return value
@@ -10965,11 +10654,6 @@ func (recv *StyleSchemeChooserWidget) FieldParent() *gtk.Bin {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *StyleSchemeChooserWidget) SetFieldParent(value *gtk.Bin) {
-	err := styleSchemeChooserWidgetObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(styleSchemeChooserWidgetObject, recv.Native(), "parent", argValue)
@@ -11036,6 +10720,11 @@ type StyleSchemeManager struct {
 }
 
 func StyleSchemeManagerNewFromNative(native unsafe.Pointer) *StyleSchemeManager {
+	err := styleSchemeManagerObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &StyleSchemeManager{native: native}
 
 	object := instance.Object()
@@ -11077,12 +10766,6 @@ func (recv *StyleSchemeManager) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *StyleSchemeManager) FieldParent() *gobject.Object {
-	var nilValue *gobject.Object
-	err := styleSchemeManagerObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(styleSchemeManagerObject, recv.Native(), "parent")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -11090,11 +10773,6 @@ func (recv *StyleSchemeManager) FieldParent() *gobject.Object {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *StyleSchemeManager) SetFieldParent(value *gobject.Object) {
-	err := styleSchemeManagerObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(styleSchemeManagerObject, recv.Native(), "parent", argValue)
@@ -11102,12 +10780,6 @@ func (recv *StyleSchemeManager) SetFieldParent(value *gobject.Object) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *StyleSchemeManager) FieldPriv() *StyleSchemeManagerPrivate {
-	var nilValue *StyleSchemeManagerPrivate
-	err := styleSchemeManagerObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(styleSchemeManagerObject, recv.Native(), "priv")
 	value := StyleSchemeManagerPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -11115,11 +10787,6 @@ func (recv *StyleSchemeManager) FieldPriv() *StyleSchemeManagerPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *StyleSchemeManager) SetFieldPriv(value *StyleSchemeManagerPrivate) {
-	err := styleSchemeManagerObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(styleSchemeManagerObject, recv.Native(), "priv", argValue)
@@ -11350,6 +11017,11 @@ type Tag struct {
 }
 
 func TagNewFromNative(native unsafe.Pointer) *Tag {
+	err := tagObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Tag{native: native}
 
 	object := instance.Object()
@@ -11396,12 +11068,6 @@ func (recv *Tag) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Tag) FieldParentInstance() *gtk.TextTag {
-	var nilValue *gtk.TextTag
-	err := tagObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(tagObject, recv.Native(), "parent_instance")
 	value := gtk.TextTagNewFromNative(argValue.Pointer())
 	return value
@@ -11409,11 +11075,6 @@ func (recv *Tag) FieldParentInstance() *gtk.TextTag {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Tag) SetFieldParentInstance(value *gtk.TextTag) {
-	err := tagObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(tagObject, recv.Native(), "parent_instance", argValue)
@@ -11469,6 +11130,11 @@ type View struct {
 }
 
 func ViewNewFromNative(native unsafe.Pointer) *View {
+	err := viewObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &View{native: native}
 
 	object := instance.Object()
@@ -11530,12 +11196,6 @@ func (recv *View) Native() unsafe.Pointer {
 
 // FieldParent returns the C field 'parent'.
 func (recv *View) FieldParent() *gtk.TextView {
-	var nilValue *gtk.TextView
-	err := viewObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(viewObject, recv.Native(), "parent")
 	value := gtk.TextViewNewFromNative(argValue.Pointer())
 	return value
@@ -11543,11 +11203,6 @@ func (recv *View) FieldParent() *gtk.TextView {
 
 // SetFieldParent sets the value of the C field 'parent'.
 func (recv *View) SetFieldParent(value *gtk.TextView) {
-	err := viewObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(viewObject, recv.Native(), "parent", argValue)
@@ -11555,12 +11210,6 @@ func (recv *View) SetFieldParent(value *gtk.TextView) {
 
 // FieldPriv returns the C field 'priv'.
 func (recv *View) FieldPriv() *ViewPrivate {
-	var nilValue *ViewPrivate
-	err := viewObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(viewObject, recv.Native(), "priv")
 	value := ViewPrivateNewFromNative(argValue.Pointer())
 	return value
@@ -11568,11 +11217,6 @@ func (recv *View) FieldPriv() *ViewPrivate {
 
 // SetFieldPriv sets the value of the C field 'priv'.
 func (recv *View) SetFieldPriv(value *ViewPrivate) {
-	err := viewObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(viewObject, recv.Native(), "priv", argValue)

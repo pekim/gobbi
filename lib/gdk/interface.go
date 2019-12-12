@@ -25,6 +25,11 @@ type DevicePad struct {
 }
 
 func DevicePadNewFromNative(native unsafe.Pointer) *DevicePad {
+	err := devicePadInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DevicePad{native: native}
 
 	return instance

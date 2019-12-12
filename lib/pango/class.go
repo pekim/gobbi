@@ -27,6 +27,11 @@ type Context struct {
 }
 
 func ContextNewFromNative(native unsafe.Pointer) *Context {
+	err := contextObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Context{native: native}
 
 	object := instance.Object()
@@ -736,6 +741,11 @@ type Engine struct {
 }
 
 func EngineNewFromNative(native unsafe.Pointer) *Engine {
+	err := engineObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Engine{native: native}
 
 	object := instance.Object()
@@ -791,6 +801,11 @@ type EngineLang struct {
 }
 
 func EngineLangNewFromNative(native unsafe.Pointer) *EngineLang {
+	err := engineLangObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &EngineLang{native: native}
 
 	object := instance.Object()
@@ -851,6 +866,11 @@ type EngineShape struct {
 }
 
 func EngineShapeNewFromNative(native unsafe.Pointer) *EngineShape {
+	err := engineShapeObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &EngineShape{native: native}
 
 	object := instance.Object()
@@ -897,12 +917,6 @@ func (recv *EngineShape) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *EngineShape) FieldParentInstance() *Engine {
-	var nilValue *Engine
-	err := engineShapeObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(engineShapeObject, recv.Native(), "parent_instance")
 	value := EngineNewFromNative(argValue.Pointer())
 	return value
@@ -910,11 +924,6 @@ func (recv *EngineShape) FieldParentInstance() *Engine {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *EngineShape) SetFieldParentInstance(value *Engine) {
-	err := engineShapeObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(engineShapeObject, recv.Native(), "parent_instance", argValue)
@@ -936,6 +945,11 @@ type Font struct {
 }
 
 func FontNewFromNative(native unsafe.Pointer) *Font {
+	err := fontObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Font{native: native}
 
 	object := instance.Object()
@@ -977,12 +991,6 @@ func (recv *Font) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Font) FieldParentInstance() *gobject.Object {
-	var nilValue *gobject.Object
-	err := fontObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(fontObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -990,11 +998,6 @@ func (recv *Font) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Font) SetFieldParentInstance(value *gobject.Object) {
-	err := fontObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fontObject, recv.Native(), "parent_instance", argValue)
@@ -1246,6 +1249,11 @@ type FontFace struct {
 }
 
 func FontFaceNewFromNative(native unsafe.Pointer) *FontFace {
+	err := fontFaceObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FontFace{native: native}
 
 	object := instance.Object()
@@ -1287,12 +1295,6 @@ func (recv *FontFace) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FontFace) FieldParentInstance() *gobject.Object {
-	var nilValue *gobject.Object
-	err := fontFaceObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(fontFaceObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -1300,11 +1302,6 @@ func (recv *FontFace) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FontFace) SetFieldParentInstance(value *gobject.Object) {
-	err := fontFaceObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fontFaceObject, recv.Native(), "parent_instance", argValue)
@@ -1424,6 +1421,11 @@ type FontFamily struct {
 }
 
 func FontFamilyNewFromNative(native unsafe.Pointer) *FontFamily {
+	err := fontFamilyObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FontFamily{native: native}
 
 	object := instance.Object()
@@ -1465,12 +1467,6 @@ func (recv *FontFamily) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FontFamily) FieldParentInstance() *gobject.Object {
-	var nilValue *gobject.Object
-	err := fontFamilyObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(fontFamilyObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -1478,11 +1474,6 @@ func (recv *FontFamily) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FontFamily) SetFieldParentInstance(value *gobject.Object) {
-	err := fontFamilyObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fontFamilyObject, recv.Native(), "parent_instance", argValue)
@@ -1570,6 +1561,11 @@ type FontMap struct {
 }
 
 func FontMapNewFromNative(native unsafe.Pointer) *FontMap {
+	err := fontMapObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FontMap{native: native}
 
 	object := instance.Object()
@@ -1611,12 +1607,6 @@ func (recv *FontMap) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *FontMap) FieldParentInstance() *gobject.Object {
-	var nilValue *gobject.Object
-	err := fontMapObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(fontMapObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -1624,11 +1614,6 @@ func (recv *FontMap) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *FontMap) SetFieldParentInstance(value *gobject.Object) {
-	err := fontMapObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fontMapObject, recv.Native(), "parent_instance", argValue)
@@ -1845,6 +1830,11 @@ type Fontset struct {
 }
 
 func FontsetNewFromNative(native unsafe.Pointer) *Fontset {
+	err := fontsetObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Fontset{native: native}
 
 	object := instance.Object()
@@ -1886,12 +1876,6 @@ func (recv *Fontset) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Fontset) FieldParentInstance() *gobject.Object {
-	var nilValue *gobject.Object
-	err := fontsetObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(fontsetObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -1899,11 +1883,6 @@ func (recv *Fontset) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Fontset) SetFieldParentInstance(value *gobject.Object) {
-	err := fontsetObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(fontsetObject, recv.Native(), "parent_instance", argValue)
@@ -1992,6 +1971,11 @@ type FontsetSimple struct {
 }
 
 func FontsetSimpleNewFromNative(native unsafe.Pointer) *FontsetSimple {
+	err := fontsetSimpleObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FontsetSimple{native: native}
 
 	object := instance.Object()
@@ -2147,6 +2131,11 @@ type Layout struct {
 }
 
 func LayoutNewFromNative(native unsafe.Pointer) *Layout {
+	err := layoutObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Layout{native: native}
 
 	object := instance.Object()
@@ -3943,6 +3932,11 @@ type Renderer struct {
 }
 
 func RendererNewFromNative(native unsafe.Pointer) *Renderer {
+	err := rendererObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Renderer{native: native}
 
 	object := instance.Object()
@@ -3984,12 +3978,6 @@ func (recv *Renderer) Native() unsafe.Pointer {
 
 // FieldMatrix returns the C field 'matrix'.
 func (recv *Renderer) FieldMatrix() *Matrix {
-	var nilValue *Matrix
-	err := rendererObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(rendererObject, recv.Native(), "matrix")
 	value := MatrixNewFromNative(argValue.Pointer())
 	return value
@@ -3997,11 +3985,6 @@ func (recv *Renderer) FieldMatrix() *Matrix {
 
 // SetFieldMatrix sets the value of the C field 'matrix'.
 func (recv *Renderer) SetFieldMatrix(value *Matrix) {
-	err := rendererObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(rendererObject, recv.Native(), "matrix", argValue)

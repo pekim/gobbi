@@ -24,6 +24,11 @@ type TypePlugin struct {
 }
 
 func TypePluginNewFromNative(native unsafe.Pointer) *TypePlugin {
+	err := typePluginInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &TypePlugin{native: native}
 
 	return instance

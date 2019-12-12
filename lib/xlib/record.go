@@ -26,6 +26,11 @@ type Display struct {
 }
 
 func DisplayNewFromNative(native unsafe.Pointer) *Display {
+	err := displayStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Display{native: native}
 
 	return instance
@@ -80,6 +85,11 @@ type Screen struct {
 }
 
 func ScreenNewFromNative(native unsafe.Pointer) *Screen {
+	err := screenStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Screen{native: native}
 
 	return instance
@@ -134,6 +144,11 @@ type Visual struct {
 }
 
 func VisualNewFromNative(native unsafe.Pointer) *Visual {
+	err := visualStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Visual{native: native}
 
 	return instance
@@ -188,6 +203,11 @@ type XConfigureEvent struct {
 }
 
 func XConfigureEventNewFromNative(native unsafe.Pointer) *XConfigureEvent {
+	err := xConfigureEventStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &XConfigureEvent{native: native}
 
 	return instance
@@ -242,6 +262,11 @@ type XImage struct {
 }
 
 func XImageNewFromNative(native unsafe.Pointer) *XImage {
+	err := xImageStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &XImage{native: native}
 
 	return instance
@@ -296,6 +321,11 @@ type XFontStruct struct {
 }
 
 func XFontStructNewFromNative(native unsafe.Pointer) *XFontStruct {
+	err := xFontStructStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &XFontStruct{native: native}
 
 	return instance
@@ -350,6 +380,11 @@ type XTrapezoid struct {
 }
 
 func XTrapezoidNewFromNative(native unsafe.Pointer) *XTrapezoid {
+	err := xTrapezoidStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &XTrapezoid{native: native}
 
 	return instance
@@ -404,6 +439,11 @@ type XVisualInfo struct {
 }
 
 func XVisualInfoNewFromNative(native unsafe.Pointer) *XVisualInfo {
+	err := xVisualInfoStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &XVisualInfo{native: native}
 
 	return instance
@@ -458,6 +498,11 @@ type XWindowAttributes struct {
 }
 
 func XWindowAttributesNewFromNative(native unsafe.Pointer) *XWindowAttributes {
+	err := xWindowAttributesStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &XWindowAttributes{native: native}
 
 	return instance

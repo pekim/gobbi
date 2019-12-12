@@ -59,10 +59,6 @@ func (f *Field) generateGetter(fi *file) {
 }
 
 func (f *Field) generateGetterBody(g *jen.Group) {
-	goType, _ := f.Type.jenGoType()
-	g.Var().Id("nilValue").Add(goType)
-	f.record.generateStructSetFuncCall(g, jen.Id("nilValue"))
-
 	// GEN: argValue := gi.StructFieldGet(someStruct, recv.native, "field-name")
 	g.
 		Id("argValue").
@@ -100,8 +96,6 @@ func (f *Field) generateSetter(fi *file) {
 }
 
 func (f *Field) generateSetterBody(g *jen.Group) {
-	f.record.generateStructSetFuncCall(g, nil)
-
 	jenValue := jen.Id("value")
 
 	if f.Type.isAlias() {

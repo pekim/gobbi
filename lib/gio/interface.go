@@ -27,6 +27,11 @@ type Action struct {
 }
 
 func ActionNewFromNative(native unsafe.Pointer) *Action {
+	err := actionInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Action{native: native}
 
 	return instance
@@ -316,6 +321,11 @@ type ActionGroup struct {
 }
 
 func ActionGroupNewFromNative(native unsafe.Pointer) *ActionGroup {
+	err := actionGroupInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ActionGroup{native: native}
 
 	return instance
@@ -889,6 +899,11 @@ type ActionMap struct {
 }
 
 func ActionMapNewFromNative(native unsafe.Pointer) *ActionMap {
+	err := actionMapInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ActionMap{native: native}
 
 	return instance
@@ -963,6 +978,11 @@ type AppInfo struct {
 }
 
 func AppInfoNewFromNative(native unsafe.Pointer) *AppInfo {
+	err := appInfoInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &AppInfo{native: native}
 
 	return instance
@@ -1657,6 +1677,11 @@ type AsyncInitable struct {
 }
 
 func AsyncInitableNewFromNative(native unsafe.Pointer) *AsyncInitable {
+	err := asyncInitableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &AsyncInitable{native: native}
 
 	return instance
@@ -1702,6 +1727,11 @@ type AsyncResult struct {
 }
 
 func AsyncResultNewFromNative(native unsafe.Pointer) *AsyncResult {
+	err := asyncResultInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &AsyncResult{native: native}
 
 	return instance
@@ -1870,6 +1900,11 @@ type Converter struct {
 }
 
 func ConverterNewFromNative(native unsafe.Pointer) *Converter {
+	err := converterInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Converter{native: native}
 
 	return instance
@@ -1939,6 +1974,11 @@ type DBusInterface struct {
 }
 
 func DBusInterfaceNewFromNative(native unsafe.Pointer) *DBusInterface {
+	err := dBusInterfaceInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DBusInterface{native: native}
 
 	return instance
@@ -2016,6 +2056,11 @@ type DBusObject struct {
 }
 
 func DBusObjectNewFromNative(native unsafe.Pointer) *DBusObject {
+	err := dBusObjectInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DBusObject{native: native}
 
 	return instance
@@ -2134,6 +2179,11 @@ type DBusObjectManager struct {
 }
 
 func DBusObjectManagerNewFromNative(native unsafe.Pointer) *DBusObjectManager {
+	err := dBusObjectManagerInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DBusObjectManager{native: native}
 
 	return instance
@@ -2258,6 +2308,11 @@ type DatagramBased struct {
 }
 
 func DatagramBasedNewFromNative(native unsafe.Pointer) *DatagramBased {
+	err := datagramBasedInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DatagramBased{native: native}
 
 	return instance
@@ -2307,6 +2362,11 @@ type DesktopAppInfoLookup struct {
 }
 
 func DesktopAppInfoLookupNewFromNative(native unsafe.Pointer) *DesktopAppInfoLookup {
+	err := desktopAppInfoLookupInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DesktopAppInfoLookup{native: native}
 
 	return instance
@@ -2348,6 +2408,11 @@ type Drive struct {
 }
 
 func DriveNewFromNative(native unsafe.Pointer) *Drive {
+	err := driveInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Drive{native: native}
 
 	return instance
@@ -2993,6 +3058,11 @@ type DtlsClientConnection struct {
 }
 
 func DtlsClientConnectionNewFromNative(native unsafe.Pointer) *DtlsClientConnection {
+	err := dtlsClientConnectionInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DtlsClientConnection{native: native}
 
 	return instance
@@ -3129,6 +3199,11 @@ type DtlsConnection struct {
 }
 
 func DtlsConnectionNewFromNative(native unsafe.Pointer) *DtlsConnection {
+	err := dtlsConnectionInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DtlsConnection{native: native}
 
 	return instance
@@ -3749,6 +3824,11 @@ type DtlsServerConnection struct {
 }
 
 func DtlsServerConnectionNewFromNative(native unsafe.Pointer) *DtlsServerConnection {
+	err := dtlsServerConnectionInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DtlsServerConnection{native: native}
 
 	return instance
@@ -3788,6 +3868,11 @@ type File struct {
 }
 
 func FileNewFromNative(native unsafe.Pointer) *File {
+	err := fileInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &File{native: native}
 
 	return instance
@@ -5382,6 +5467,11 @@ type FileDescriptorBased struct {
 }
 
 func FileDescriptorBasedNewFromNative(native unsafe.Pointer) *FileDescriptorBased {
+	err := fileDescriptorBasedInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FileDescriptorBased{native: native}
 
 	return instance
@@ -5453,6 +5543,11 @@ type Icon struct {
 }
 
 func IconNewFromNative(native unsafe.Pointer) *Icon {
+	err := iconInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Icon{native: native}
 
 	return instance
@@ -5558,6 +5653,11 @@ type Initable struct {
 }
 
 func InitableNewFromNative(native unsafe.Pointer) *Initable {
+	err := initableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Initable{native: native}
 
 	return instance
@@ -5630,6 +5730,11 @@ type ListModel struct {
 }
 
 func ListModelNewFromNative(native unsafe.Pointer) *ListModel {
+	err := listModelInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ListModel{native: native}
 
 	return instance
@@ -5864,6 +5969,11 @@ type LoadableIcon struct {
 }
 
 func LoadableIconNewFromNative(native unsafe.Pointer) *LoadableIcon {
+	err := loadableIconInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &LoadableIcon{native: native}
 
 	return instance
@@ -5943,6 +6053,11 @@ type Mount struct {
 }
 
 func MountNewFromNative(native unsafe.Pointer) *Mount {
+	err := mountInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Mount{native: native}
 
 	return instance
@@ -6353,6 +6468,11 @@ type NetworkMonitor struct {
 }
 
 func NetworkMonitorNewFromNative(native unsafe.Pointer) *NetworkMonitor {
+	err := networkMonitorInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &NetworkMonitor{native: native}
 
 	return instance
@@ -6522,6 +6642,11 @@ type PollableInputStream struct {
 }
 
 func PollableInputStreamNewFromNative(native unsafe.Pointer) *PollableInputStream {
+	err := pollableInputStreamInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &PollableInputStream{native: native}
 
 	return instance
@@ -6660,6 +6785,11 @@ type PollableOutputStream struct {
 }
 
 func PollableOutputStreamNewFromNative(native unsafe.Pointer) *PollableOutputStream {
+	err := pollableOutputStreamInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &PollableOutputStream{native: native}
 
 	return instance
@@ -6800,6 +6930,11 @@ type Proxy struct {
 }
 
 func ProxyNewFromNative(native unsafe.Pointer) *Proxy {
+	err := proxyInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Proxy{native: native}
 
 	return instance
@@ -6910,6 +7045,11 @@ type ProxyResolver struct {
 }
 
 func ProxyResolverNewFromNative(native unsafe.Pointer) *ProxyResolver {
+	err := proxyResolverInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ProxyResolver{native: native}
 
 	return instance
@@ -7015,6 +7155,11 @@ type RemoteActionGroup struct {
 }
 
 func RemoteActionGroupNewFromNative(native unsafe.Pointer) *RemoteActionGroup {
+	err := remoteActionGroupInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &RemoteActionGroup{native: native}
 
 	return instance
@@ -7116,6 +7261,11 @@ type Seekable struct {
 }
 
 func SeekableNewFromNative(native unsafe.Pointer) *Seekable {
+	err := seekableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Seekable{native: native}
 
 	return instance
@@ -7287,6 +7437,11 @@ type SocketConnectable struct {
 }
 
 func SocketConnectableNewFromNative(native unsafe.Pointer) *SocketConnectable {
+	err := socketConnectableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &SocketConnectable{native: native}
 
 	return instance
@@ -7422,6 +7577,11 @@ type TlsBackend struct {
 }
 
 func TlsBackendNewFromNative(native unsafe.Pointer) *TlsBackend {
+	err := tlsBackendInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &TlsBackend{native: native}
 
 	return instance
@@ -7778,6 +7938,11 @@ type TlsClientConnection struct {
 }
 
 func TlsClientConnectionNewFromNative(native unsafe.Pointer) *TlsClientConnection {
+	err := tlsClientConnectionInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &TlsClientConnection{native: native}
 
 	return instance
@@ -7977,6 +8142,11 @@ type TlsFileDatabase struct {
 }
 
 func TlsFileDatabaseNewFromNative(native unsafe.Pointer) *TlsFileDatabase {
+	err := tlsFileDatabaseInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &TlsFileDatabase{native: native}
 
 	return instance
@@ -8016,6 +8186,11 @@ type TlsServerConnection struct {
 }
 
 func TlsServerConnectionNewFromNative(native unsafe.Pointer) *TlsServerConnection {
+	err := tlsServerConnectionInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &TlsServerConnection{native: native}
 
 	return instance
@@ -8055,6 +8230,11 @@ type Volume struct {
 }
 
 func VolumeNewFromNative(native unsafe.Pointer) *Volume {
+	err := volumeInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Volume{native: native}
 
 	return instance

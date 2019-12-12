@@ -26,6 +26,11 @@ type Bitmap struct {
 }
 
 func BitmapNewFromNative(native unsafe.Pointer) *Bitmap {
+	err := bitmapStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Bitmap{native: native}
 
 	return instance
@@ -80,6 +85,11 @@ type Face struct {
 }
 
 func FaceNewFromNative(native unsafe.Pointer) *Face {
+	err := faceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Face{native: native}
 
 	return instance
@@ -134,6 +144,11 @@ type Library struct {
 }
 
 func LibraryNewFromNative(native unsafe.Pointer) *Library {
+	err := libraryStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Library{native: native}
 
 	return instance

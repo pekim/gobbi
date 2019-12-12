@@ -29,6 +29,11 @@ type Pixbuf struct {
 }
 
 func PixbufNewFromNative(native unsafe.Pointer) *Pixbuf {
+	err := pixbufObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Pixbuf{native: native}
 
 	object := instance.Object()
@@ -1548,6 +1553,11 @@ type PixbufAnimation struct {
 }
 
 func PixbufAnimationNewFromNative(native unsafe.Pointer) *PixbufAnimation {
+	err := pixbufAnimationObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &PixbufAnimation{native: native}
 
 	object := instance.Object()
@@ -1929,6 +1939,11 @@ type PixbufAnimationIter struct {
 }
 
 func PixbufAnimationIterNewFromNative(native unsafe.Pointer) *PixbufAnimationIter {
+	err := pixbufAnimationIterObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &PixbufAnimationIter{native: native}
 
 	object := instance.Object()
@@ -2113,6 +2128,11 @@ type PixbufLoader struct {
 }
 
 func PixbufLoaderNewFromNative(native unsafe.Pointer) *PixbufLoader {
+	err := pixbufLoaderObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &PixbufLoader{native: native}
 
 	object := instance.Object()
@@ -2154,12 +2174,6 @@ func (recv *PixbufLoader) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *PixbufLoader) FieldParentInstance() *gobject.Object {
-	var nilValue *gobject.Object
-	err := pixbufLoaderObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(pixbufLoaderObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -2167,11 +2181,6 @@ func (recv *PixbufLoader) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *PixbufLoader) SetFieldParentInstance(value *gobject.Object) {
-	err := pixbufLoaderObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(pixbufLoaderObject, recv.Native(), "parent_instance", argValue)
@@ -2577,6 +2586,11 @@ type PixbufSimpleAnim struct {
 }
 
 func PixbufSimpleAnimNewFromNative(native unsafe.Pointer) *PixbufSimpleAnim {
+	err := pixbufSimpleAnimObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &PixbufSimpleAnim{native: native}
 
 	object := instance.Object()
@@ -2763,6 +2777,11 @@ type PixbufSimpleAnimIter struct {
 }
 
 func PixbufSimpleAnimIterNewFromNative(native unsafe.Pointer) *PixbufSimpleAnimIter {
+	err := pixbufSimpleAnimIterObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &PixbufSimpleAnimIter{native: native}
 
 	object := instance.Object()

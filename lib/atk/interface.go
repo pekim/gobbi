@@ -27,6 +27,11 @@ type Action struct {
 }
 
 func ActionNewFromNative(native unsafe.Pointer) *Action {
+	err := actionInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Action{native: native}
 
 	return instance
@@ -297,6 +302,11 @@ type Component struct {
 }
 
 func ComponentNewFromNative(native unsafe.Pointer) *Component {
+	err := componentInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Component{native: native}
 
 	return instance
@@ -870,6 +880,11 @@ type Document struct {
 }
 
 func DocumentNewFromNative(native unsafe.Pointer) *Document {
+	err := documentInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Document{native: native}
 
 	return instance
@@ -1214,6 +1229,11 @@ type EditableText struct {
 }
 
 func EditableTextNewFromNative(native unsafe.Pointer) *EditableText {
+	err := editableTextInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &EditableText{native: native}
 
 	return instance
@@ -1434,6 +1454,11 @@ type HyperlinkImpl struct {
 }
 
 func HyperlinkImplNewFromNative(native unsafe.Pointer) *HyperlinkImpl {
+	err := hyperlinkImplInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &HyperlinkImpl{native: native}
 
 	return instance
@@ -1505,6 +1530,11 @@ type Hypertext struct {
 }
 
 func HypertextNewFromNative(native unsafe.Pointer) *Hypertext {
+	err := hypertextInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Hypertext{native: native}
 
 	return instance
@@ -1670,6 +1700,11 @@ type Image struct {
 }
 
 func ImageNewFromNative(native unsafe.Pointer) *Image {
+	err := imageInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Image{native: native}
 
 	return instance
@@ -1873,6 +1908,11 @@ type ImplementorIface struct {
 }
 
 func ImplementorIfaceNewFromNative(native unsafe.Pointer) *ImplementorIface {
+	err := implementorIfaceInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ImplementorIface{native: native}
 
 	return instance
@@ -1912,6 +1952,11 @@ type Selection struct {
 }
 
 func SelectionNewFromNative(native unsafe.Pointer) *Selection {
+	err := selectionInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Selection{native: native}
 
 	return instance
@@ -2204,6 +2249,11 @@ type StreamableContent struct {
 }
 
 func StreamableContentNewFromNative(native unsafe.Pointer) *StreamableContent {
+	err := streamableContentInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &StreamableContent{native: native}
 
 	return instance
@@ -2374,6 +2424,11 @@ type Table struct {
 }
 
 func TableNewFromNative(native unsafe.Pointer) *Table {
+	err := tableInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Table{native: native}
 
 	return instance
@@ -3496,6 +3551,11 @@ type TableCell struct {
 }
 
 func TableCellNewFromNative(native unsafe.Pointer) *TableCell {
+	err := tableCellInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &TableCell{native: native}
 
 	return instance
@@ -3759,6 +3819,11 @@ type Text struct {
 }
 
 func TextNewFromNative(native unsafe.Pointer) *Text {
+	err := textInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Text{native: native}
 
 	return instance
@@ -4596,6 +4661,11 @@ type Value struct {
 }
 
 func ValueNewFromNative(native unsafe.Pointer) *Value {
+	err := valueInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Value{native: native}
 
 	return instance
@@ -4985,6 +5055,11 @@ type Window struct {
 }
 
 func WindowNewFromNative(native unsafe.Pointer) *Window {
+	err := windowInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Window{native: native}
 
 	return instance

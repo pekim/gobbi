@@ -26,6 +26,11 @@ type GlobalContextRef struct {
 }
 
 func GlobalContextRefNewFromNative(native unsafe.Pointer) *GlobalContextRef {
+	err := globalContextRefStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &GlobalContextRef{native: native}
 
 	return instance
@@ -136,6 +141,11 @@ type ValueRef struct {
 }
 
 func ValueRefNewFromNative(native unsafe.Pointer) *ValueRef {
+	err := valueRefStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ValueRef{native: native}
 
 	return instance
@@ -190,6 +200,11 @@ type StringRef struct {
 }
 
 func StringRefNewFromNative(native unsafe.Pointer) *StringRef {
+	err := stringRefStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &StringRef{native: native}
 
 	return instance
@@ -368,6 +383,11 @@ type ClassClass struct {
 }
 
 func ClassClassNewFromNative(native unsafe.Pointer) *ClassClass {
+	err := classClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ClassClass{native: native}
 
 	return instance
@@ -422,6 +442,11 @@ type ClassVTable struct {
 }
 
 func ClassVTableNewFromNative(native unsafe.Pointer) *ClassVTable {
+	err := classVTableStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ClassVTable{native: native}
 
 	return instance
@@ -512,6 +537,11 @@ type ContextClass struct {
 }
 
 func ContextClassNewFromNative(native unsafe.Pointer) *ContextClass {
+	err := contextClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ContextClass{native: native}
 
 	return instance
@@ -537,12 +567,6 @@ func (recv *ContextClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ContextClass) FieldParentClass() *gobject.ObjectClass {
-	var nilValue *gobject.ObjectClass
-	err := contextClassStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(contextClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -550,11 +574,6 @@ func (recv *ContextClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ContextClass) SetFieldParentClass(value *gobject.ObjectClass) {
-	err := contextClassStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(contextClassStruct, recv.Native(), "parent_class", argValue)
@@ -607,6 +626,11 @@ type ContextPrivate struct {
 }
 
 func ContextPrivateNewFromNative(native unsafe.Pointer) *ContextPrivate {
+	err := contextPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ContextPrivate{native: native}
 
 	return instance
@@ -661,6 +685,11 @@ type ExceptionClass struct {
 }
 
 func ExceptionClassNewFromNative(native unsafe.Pointer) *ExceptionClass {
+	err := exceptionClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ExceptionClass{native: native}
 
 	return instance
@@ -686,12 +715,6 @@ func (recv *ExceptionClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ExceptionClass) FieldParentClass() *gobject.ObjectClass {
-	var nilValue *gobject.ObjectClass
-	err := exceptionClassStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(exceptionClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -699,11 +722,6 @@ func (recv *ExceptionClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ExceptionClass) SetFieldParentClass(value *gobject.ObjectClass) {
-	err := exceptionClassStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(exceptionClassStruct, recv.Native(), "parent_class", argValue)
@@ -756,6 +774,11 @@ type ExceptionPrivate struct {
 }
 
 func ExceptionPrivateNewFromNative(native unsafe.Pointer) *ExceptionPrivate {
+	err := exceptionPrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ExceptionPrivate{native: native}
 
 	return instance
@@ -810,6 +833,11 @@ type ValueClass struct {
 }
 
 func ValueClassNewFromNative(native unsafe.Pointer) *ValueClass {
+	err := valueClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ValueClass{native: native}
 
 	return instance
@@ -835,12 +863,6 @@ func (recv *ValueClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *ValueClass) FieldParentClass() *gobject.ObjectClass {
-	var nilValue *gobject.ObjectClass
-	err := valueClassStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(valueClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -848,11 +870,6 @@ func (recv *ValueClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *ValueClass) SetFieldParentClass(value *gobject.ObjectClass) {
-	err := valueClassStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(valueClassStruct, recv.Native(), "parent_class", argValue)
@@ -905,6 +922,11 @@ type ValuePrivate struct {
 }
 
 func ValuePrivateNewFromNative(native unsafe.Pointer) *ValuePrivate {
+	err := valuePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ValuePrivate{native: native}
 
 	return instance
@@ -959,6 +981,11 @@ type VirtualMachineClass struct {
 }
 
 func VirtualMachineClassNewFromNative(native unsafe.Pointer) *VirtualMachineClass {
+	err := virtualMachineClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &VirtualMachineClass{native: native}
 
 	return instance
@@ -984,12 +1011,6 @@ func (recv *VirtualMachineClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *VirtualMachineClass) FieldParentClass() *gobject.ObjectClass {
-	var nilValue *gobject.ObjectClass
-	err := virtualMachineClassStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(virtualMachineClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -997,11 +1018,6 @@ func (recv *VirtualMachineClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *VirtualMachineClass) SetFieldParentClass(value *gobject.ObjectClass) {
-	err := virtualMachineClassStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(virtualMachineClassStruct, recv.Native(), "parent_class", argValue)
@@ -1054,6 +1070,11 @@ type VirtualMachinePrivate struct {
 }
 
 func VirtualMachinePrivateNewFromNative(native unsafe.Pointer) *VirtualMachinePrivate {
+	err := virtualMachinePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &VirtualMachinePrivate{native: native}
 
 	return instance
@@ -1108,6 +1129,11 @@ type WeakValueClass struct {
 }
 
 func WeakValueClassNewFromNative(native unsafe.Pointer) *WeakValueClass {
+	err := weakValueClassStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &WeakValueClass{native: native}
 
 	return instance
@@ -1133,12 +1159,6 @@ func (recv *WeakValueClass) Native() unsafe.Pointer {
 
 // FieldParentClass returns the C field 'parent_class'.
 func (recv *WeakValueClass) FieldParentClass() *gobject.ObjectClass {
-	var nilValue *gobject.ObjectClass
-	err := weakValueClassStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(weakValueClassStruct, recv.Native(), "parent_class")
 	value := gobject.ObjectClassNewFromNative(argValue.Pointer())
 	return value
@@ -1146,11 +1166,6 @@ func (recv *WeakValueClass) FieldParentClass() *gobject.ObjectClass {
 
 // SetFieldParentClass sets the value of the C field 'parent_class'.
 func (recv *WeakValueClass) SetFieldParentClass(value *gobject.ObjectClass) {
-	err := weakValueClassStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.StructFieldSet(weakValueClassStruct, recv.Native(), "parent_class", argValue)
@@ -1203,6 +1218,11 @@ type WeakValuePrivate struct {
 }
 
 func WeakValuePrivateNewFromNative(native unsafe.Pointer) *WeakValuePrivate {
+	err := weakValuePrivateStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &WeakValuePrivate{native: native}
 
 	return instance

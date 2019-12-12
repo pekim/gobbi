@@ -27,6 +27,11 @@ type CompletionProposal struct {
 }
 
 func CompletionProposalNewFromNative(native unsafe.Pointer) *CompletionProposal {
+	err := completionProposalInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &CompletionProposal{native: native}
 
 	return instance
@@ -347,6 +352,11 @@ type CompletionProvider struct {
 }
 
 func CompletionProviderNewFromNative(native unsafe.Pointer) *CompletionProvider {
+	err := completionProviderInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &CompletionProvider{native: native}
 
 	return instance
@@ -650,6 +660,11 @@ type StyleSchemeChooser struct {
 }
 
 func StyleSchemeChooserNewFromNative(native unsafe.Pointer) *StyleSchemeChooser {
+	err := styleSchemeChooserInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &StyleSchemeChooser{native: native}
 
 	return instance
@@ -750,6 +765,11 @@ type UndoManager struct {
 }
 
 func UndoManagerNewFromNative(native unsafe.Pointer) *UndoManager {
+	err := undoManagerInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &UndoManager{native: native}
 
 	return instance

@@ -25,6 +25,11 @@ type PermissionRequest struct {
 }
 
 func PermissionRequestNewFromNative(native unsafe.Pointer) *PermissionRequest {
+	err := permissionRequestInterface_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &PermissionRequest{native: native}
 
 	return instance

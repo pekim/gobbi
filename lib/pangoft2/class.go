@@ -27,6 +27,11 @@ type FontMap struct {
 }
 
 func FontMapNewFromNative(native unsafe.Pointer) *FontMap {
+	err := fontMapObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FontMap{native: native}
 
 	object := instance.Object()

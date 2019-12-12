@@ -26,6 +26,11 @@ type Context struct {
 }
 
 func ContextNewFromNative(native unsafe.Pointer) *Context {
+	err := contextStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Context{native: native}
 
 	return instance
@@ -80,6 +85,11 @@ type Device struct {
 }
 
 func DeviceNewFromNative(native unsafe.Pointer) *Device {
+	err := deviceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Device{native: native}
 
 	return instance
@@ -134,6 +144,11 @@ type Surface struct {
 }
 
 func SurfaceNewFromNative(native unsafe.Pointer) *Surface {
+	err := surfaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Surface{native: native}
 
 	return instance
@@ -188,6 +203,11 @@ type Matrix struct {
 }
 
 func MatrixNewFromNative(native unsafe.Pointer) *Matrix {
+	err := matrixStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Matrix{native: native}
 
 	return instance
@@ -242,6 +262,11 @@ type Pattern struct {
 }
 
 func PatternNewFromNative(native unsafe.Pointer) *Pattern {
+	err := patternStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Pattern{native: native}
 
 	return instance
@@ -296,6 +321,11 @@ type Region struct {
 }
 
 func RegionNewFromNative(native unsafe.Pointer) *Region {
+	err := regionStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Region{native: native}
 
 	return instance
@@ -350,6 +380,11 @@ type FontOptions struct {
 }
 
 func FontOptionsNewFromNative(native unsafe.Pointer) *FontOptions {
+	err := fontOptionsStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FontOptions{native: native}
 
 	return instance
@@ -404,6 +439,11 @@ type FontFace struct {
 }
 
 func FontFaceNewFromNative(native unsafe.Pointer) *FontFace {
+	err := fontFaceStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FontFace{native: native}
 
 	return instance
@@ -458,6 +498,11 @@ type ScaledFont struct {
 }
 
 func ScaledFontNewFromNative(native unsafe.Pointer) *ScaledFont {
+	err := scaledFontStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &ScaledFont{native: native}
 
 	return instance
@@ -512,6 +557,11 @@ type Path struct {
 }
 
 func PathNewFromNative(native unsafe.Pointer) *Path {
+	err := pathStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Path{native: native}
 
 	return instance
@@ -566,6 +616,11 @@ type Rectangle struct {
 }
 
 func RectangleNewFromNative(native unsafe.Pointer) *Rectangle {
+	err := rectangleStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Rectangle{native: native}
 
 	return instance
@@ -591,12 +646,6 @@ func (recv *Rectangle) Native() unsafe.Pointer {
 
 // FieldX returns the C field 'x'.
 func (recv *Rectangle) FieldX() float64 {
-	var nilValue float64
-	err := rectangleStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(rectangleStruct, recv.Native(), "x")
 	value := argValue.Float64()
 	return value
@@ -604,11 +653,6 @@ func (recv *Rectangle) FieldX() float64 {
 
 // SetFieldX sets the value of the C field 'x'.
 func (recv *Rectangle) SetFieldX(value float64) {
-	err := rectangleStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
 	gi.StructFieldSet(rectangleStruct, recv.Native(), "x", argValue)
@@ -616,12 +660,6 @@ func (recv *Rectangle) SetFieldX(value float64) {
 
 // FieldY returns the C field 'y'.
 func (recv *Rectangle) FieldY() float64 {
-	var nilValue float64
-	err := rectangleStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(rectangleStruct, recv.Native(), "y")
 	value := argValue.Float64()
 	return value
@@ -629,11 +667,6 @@ func (recv *Rectangle) FieldY() float64 {
 
 // SetFieldY sets the value of the C field 'y'.
 func (recv *Rectangle) SetFieldY(value float64) {
-	err := rectangleStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
 	gi.StructFieldSet(rectangleStruct, recv.Native(), "y", argValue)
@@ -641,12 +674,6 @@ func (recv *Rectangle) SetFieldY(value float64) {
 
 // FieldWidth returns the C field 'width'.
 func (recv *Rectangle) FieldWidth() float64 {
-	var nilValue float64
-	err := rectangleStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(rectangleStruct, recv.Native(), "width")
 	value := argValue.Float64()
 	return value
@@ -654,11 +681,6 @@ func (recv *Rectangle) FieldWidth() float64 {
 
 // SetFieldWidth sets the value of the C field 'width'.
 func (recv *Rectangle) SetFieldWidth(value float64) {
-	err := rectangleStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
 	gi.StructFieldSet(rectangleStruct, recv.Native(), "width", argValue)
@@ -666,12 +688,6 @@ func (recv *Rectangle) SetFieldWidth(value float64) {
 
 // FieldHeight returns the C field 'height'.
 func (recv *Rectangle) FieldHeight() float64 {
-	var nilValue float64
-	err := rectangleStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(rectangleStruct, recv.Native(), "height")
 	value := argValue.Float64()
 	return value
@@ -679,11 +695,6 @@ func (recv *Rectangle) FieldHeight() float64 {
 
 // SetFieldHeight sets the value of the C field 'height'.
 func (recv *Rectangle) SetFieldHeight(value float64) {
-	err := rectangleStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetFloat64(value)
 	gi.StructFieldSet(rectangleStruct, recv.Native(), "height", argValue)
@@ -720,6 +731,11 @@ type RectangleInt struct {
 }
 
 func RectangleIntNewFromNative(native unsafe.Pointer) *RectangleInt {
+	err := rectangleIntStruct_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &RectangleInt{native: native}
 
 	return instance
@@ -745,12 +761,6 @@ func (recv *RectangleInt) Native() unsafe.Pointer {
 
 // FieldX returns the C field 'x'.
 func (recv *RectangleInt) FieldX() int32 {
-	var nilValue int32
-	err := rectangleIntStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(rectangleIntStruct, recv.Native(), "x")
 	value := argValue.Int32()
 	return value
@@ -758,11 +768,6 @@ func (recv *RectangleInt) FieldX() int32 {
 
 // SetFieldX sets the value of the C field 'x'.
 func (recv *RectangleInt) SetFieldX(value int32) {
-	err := rectangleIntStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(rectangleIntStruct, recv.Native(), "x", argValue)
@@ -770,12 +775,6 @@ func (recv *RectangleInt) SetFieldX(value int32) {
 
 // FieldY returns the C field 'y'.
 func (recv *RectangleInt) FieldY() int32 {
-	var nilValue int32
-	err := rectangleIntStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(rectangleIntStruct, recv.Native(), "y")
 	value := argValue.Int32()
 	return value
@@ -783,11 +782,6 @@ func (recv *RectangleInt) FieldY() int32 {
 
 // SetFieldY sets the value of the C field 'y'.
 func (recv *RectangleInt) SetFieldY(value int32) {
-	err := rectangleIntStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(rectangleIntStruct, recv.Native(), "y", argValue)
@@ -795,12 +789,6 @@ func (recv *RectangleInt) SetFieldY(value int32) {
 
 // FieldWidth returns the C field 'width'.
 func (recv *RectangleInt) FieldWidth() int32 {
-	var nilValue int32
-	err := rectangleIntStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(rectangleIntStruct, recv.Native(), "width")
 	value := argValue.Int32()
 	return value
@@ -808,11 +796,6 @@ func (recv *RectangleInt) FieldWidth() int32 {
 
 // SetFieldWidth sets the value of the C field 'width'.
 func (recv *RectangleInt) SetFieldWidth(value int32) {
-	err := rectangleIntStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(rectangleIntStruct, recv.Native(), "width", argValue)
@@ -820,12 +803,6 @@ func (recv *RectangleInt) SetFieldWidth(value int32) {
 
 // FieldHeight returns the C field 'height'.
 func (recv *RectangleInt) FieldHeight() int32 {
-	var nilValue int32
-	err := rectangleIntStruct_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.StructFieldGet(rectangleIntStruct, recv.Native(), "height")
 	value := argValue.Int32()
 	return value
@@ -833,11 +810,6 @@ func (recv *RectangleInt) FieldHeight() int32 {
 
 // SetFieldHeight sets the value of the C field 'height'.
 func (recv *RectangleInt) SetFieldHeight(value int32) {
-	err := rectangleIntStruct_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetInt32(value)
 	gi.StructFieldSet(rectangleIntStruct, recv.Native(), "height", argValue)

@@ -31,6 +31,11 @@ type AppLaunchContext struct {
 }
 
 func AppLaunchContextNewFromNative(native unsafe.Pointer) *AppLaunchContext {
+	err := appLaunchContextObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &AppLaunchContext{native: native}
 
 	object := instance.Object()
@@ -270,6 +275,11 @@ type Cursor struct {
 }
 
 func CursorNewFromNative(native unsafe.Pointer) *Cursor {
+	err := cursorObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Cursor{native: native}
 
 	object := instance.Object()
@@ -694,6 +704,11 @@ type Device struct {
 }
 
 func DeviceNewFromNative(native unsafe.Pointer) *Device {
+	err := deviceObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Device{native: native}
 
 	object := instance.Object()
@@ -1712,6 +1727,11 @@ type DeviceManager struct {
 }
 
 func DeviceManagerNewFromNative(native unsafe.Pointer) *DeviceManager {
+	err := deviceManagerObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DeviceManager{native: native}
 
 	object := instance.Object()
@@ -1930,6 +1950,11 @@ type DeviceTool struct {
 }
 
 func DeviceToolNewFromNative(native unsafe.Pointer) *DeviceTool {
+	err := deviceToolObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DeviceTool{native: native}
 
 	object := instance.Object()
@@ -2081,6 +2106,11 @@ type Display struct {
 }
 
 func DisplayNewFromNative(native unsafe.Pointer) *Display {
+	err := displayObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Display{native: native}
 
 	object := instance.Object()
@@ -3558,6 +3588,11 @@ type DisplayManager struct {
 }
 
 func DisplayManagerNewFromNative(native unsafe.Pointer) *DisplayManager {
+	err := displayManagerObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DisplayManager{native: native}
 
 	object := instance.Object()
@@ -3767,6 +3802,11 @@ type DragContext struct {
 }
 
 func DragContextNewFromNative(native unsafe.Pointer) *DragContext {
+	err := dragContextObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DragContext{native: native}
 
 	object := instance.Object()
@@ -4285,6 +4325,11 @@ type DrawingContext struct {
 }
 
 func DrawingContextNewFromNative(native unsafe.Pointer) *DrawingContext {
+	err := drawingContextObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &DrawingContext{native: native}
 
 	object := instance.Object()
@@ -4468,6 +4513,11 @@ type FrameClock struct {
 }
 
 func FrameClockNewFromNative(native unsafe.Pointer) *FrameClock {
+	err := frameClockObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &FrameClock{native: native}
 
 	object := instance.Object()
@@ -4924,6 +4974,11 @@ type GLContext struct {
 }
 
 func GLContextNewFromNative(native unsafe.Pointer) *GLContext {
+	err := gLContextObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &GLContext{native: native}
 
 	object := instance.Object()
@@ -5446,6 +5501,11 @@ type Keymap struct {
 }
 
 func KeymapNewFromNative(native unsafe.Pointer) *Keymap {
+	err := keymapObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Keymap{native: native}
 
 	object := instance.Object()
@@ -5898,6 +5958,11 @@ type Monitor struct {
 }
 
 func MonitorNewFromNative(native unsafe.Pointer) *Monitor {
+	err := monitorObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Monitor{native: native}
 
 	object := instance.Object()
@@ -6330,6 +6395,11 @@ type Screen struct {
 }
 
 func ScreenNewFromNative(native unsafe.Pointer) *Screen {
+	err := screenObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Screen{native: native}
 
 	object := instance.Object()
@@ -7407,6 +7477,11 @@ type Seat struct {
 }
 
 func SeatNewFromNative(native unsafe.Pointer) *Seat {
+	err := seatObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Seat{native: native}
 
 	object := instance.Object()
@@ -7448,12 +7523,6 @@ func (recv *Seat) Native() unsafe.Pointer {
 
 // FieldParentInstance returns the C field 'parent_instance'.
 func (recv *Seat) FieldParentInstance() *gobject.Object {
-	var nilValue *gobject.Object
-	err := seatObject_Set()
-	if err != nil {
-		return nilValue
-	}
-
 	argValue := gi.ObjectFieldGet(seatObject, recv.Native(), "parent_instance")
 	value := gobject.ObjectNewFromNative(argValue.Pointer())
 	return value
@@ -7461,11 +7530,6 @@ func (recv *Seat) FieldParentInstance() *gobject.Object {
 
 // SetFieldParentInstance sets the value of the C field 'parent_instance'.
 func (recv *Seat) SetFieldParentInstance(value *gobject.Object) {
-	err := seatObject_Set()
-	if err != nil {
-		return
-	}
-
 	var argValue gi.Argument
 	argValue.SetPointer(value.Native())
 	gi.ObjectFieldSet(seatObject, recv.Native(), "parent_instance", argValue)
@@ -7763,6 +7827,11 @@ type Visual struct {
 }
 
 func VisualNewFromNative(native unsafe.Pointer) *Visual {
+	err := visualObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Visual{native: native}
 
 	object := instance.Object()
@@ -8112,6 +8181,11 @@ type Window struct {
 }
 
 func WindowNewFromNative(native unsafe.Pointer) *Window {
+	err := windowObject_Set()
+	if err != nil {
+		return nil
+	}
+
 	instance := &Window{native: native}
 
 	object := instance.Object()
