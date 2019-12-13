@@ -118,11 +118,6 @@ func (s *Signal) generateMarshalFunc(g *jen.Group, marshalName string) {
 }
 
 func (s *Signal) generateMarshalBody(g *jen.Group) {
-	//if s.ReturnValue.Type.Name != "none" {
-	//	g.Commentf("has return : %s", s.ReturnValue.Type.Name)
-	//	return
-	//}
-
 	s.generateMarshalBodyInstanceParam(g)
 	s.generateMarshalBodyInParams(g)
 	s.generateMarshalBodyCallHandler(g)
@@ -130,24 +125,9 @@ func (s *Signal) generateMarshalBody(g *jen.Group) {
 
 func (s *Signal) generateMarshalBodyInstanceParam(g *jen.Group) {
 	objectVarName := "objectInstance"
+	value := jen.Op("&").Id("paramValues").Index(jen.Lit(0))
 
-	gobjectNs, _ := s.Namespace.namespaces.byName("GObject")
-	var valueNewFromNative *jen.Statement
-	if s.Namespace == gobjectNs {
-		valueNewFromNative = jen.Id("ValueNewFromNative")
-	} else {
-		valueNewFromNative = jen.Qual(gobjectNs.goFullPackageName, "ValueNewFromNative")
-	}
-
-	// GEN: value0 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
-	g.
-		Id(objectVarName).
-		Op(":=").
-		Add(valueNewFromNative).
-		Call(jen.
-			Qual("unsafe", "Pointer").
-			Call(jen.Op("&").Id("paramValues").Index(jen.Lit(0))),
-		)
+	s.assignValueToObjectVar(g, objectVarName, value)
 
 	// GEN: WidgetNewFromNative(value0.GetObject().Native())
 	g.
@@ -161,13 +141,7 @@ func (s *Signal) generateMarshalBodyInstanceParam(g *jen.Group) {
 }
 
 func (s *Signal) generateMarshalBodyInParams(g *jen.Group) {
-	gobjectNs, _ := s.Namespace.namespaces.byName("GObject")
-	var valueNewFromNative *jen.Statement
-	if s.Namespace == gobjectNs {
-		valueNewFromNative = jen.Id("ValueNewFromNative")
-	} else {
-		valueNewFromNative = jen.Qual(gobjectNs.goFullPackageName, "ValueNewFromNative")
-	}
+	//valueNewFromNative := s.valueNewFromNative()
 
 	for p, param := range s.Parameters {
 		if !param.isIn() {
@@ -176,16 +150,9 @@ func (s *Signal) generateMarshalBodyInParams(g *jen.Group) {
 
 		objectVarName := fmt.Sprintf("object%d", p+1)
 		argVarName := fmt.Sprintf("arg%d", p+1)
+		value := jen.Op("&").Id("paramValues").Index(jen.Lit(p + 1))
 
-		// GEN: object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
-		g.
-			Id(objectVarName).
-			Op(":=").
-			Add(valueNewFromNative).
-			Call(jen.
-				Qual("unsafe", "Pointer").
-				Call(jen.Op("&").Id("paramValues").Index(jen.Lit(p + 1))),
-			)
+		s.assignValueToObjectVar(g, objectVarName, value)
 
 		// GEN: arg1 := ...
 		g.Id(argVarName).Op(":=").Do(func(s *jen.Statement) {
@@ -217,24 +184,35 @@ func (s *Signal) generateMarshalBodyCallHandler(g *jen.Group) {
 		})
 
 	if s.ReturnValue.Type.Name != "none" {
-		gobjectNs, _ := s.Namespace.namespaces.byName("GObject")
-		var valueNewFromNative *jen.Statement
-		if s.Namespace == gobjectNs {
-			valueNewFromNative = jen.Id("ValueNewFromNative")
-		} else {
-			valueNewFromNative = jen.Qual(gobjectNs.goFullPackageName, "ValueNewFromNative")
-		}
-
-		// GEN: value0 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
-		g.
-			Id("returnObject").
-			Op(":=").
-			Add(valueNewFromNative).
-			Call(jen.
-				Qual("unsafe", "Pointer").
-				Call(jen.Id("returnValue")),
-			)
-
+		value := jen.Id("returnValue")
+		s.assignValueToObjectVar(g, "returnObject", value)
 		s.ReturnValue.generateObjectFromValue(g, "returnObject", "retGo")
 	}
+}
+
+func (s *Signal) valueNewFromNative() *jen.Statement {
+	gobjectNs, _ := s.Namespace.namespaces.byName("GObject")
+	var valueNewFromNative *jen.Statement
+	if s.Namespace == gobjectNs {
+		valueNewFromNative = jen.Id("ValueNewFromNative")
+	} else {
+		valueNewFromNative = jen.Qual(gobjectNs.goFullPackageName, "ValueNewFromNative")
+	}
+
+	return valueNewFromNative
+}
+
+func (s *Signal) assignValueToObjectVar(g *jen.Group, objectVarName string, value *jen.Statement) {
+	valueNewFromNative := s.valueNewFromNative()
+
+	// GEN: objectVar := gobject.ValueNewFromNative(someValue)
+	g.
+		Id(objectVarName).
+		Op(":=").
+		Add(valueNewFromNative).
+		Call(jen.
+			Qual("unsafe", "Pointer").
+			Call(value),
+		)
+
 }
