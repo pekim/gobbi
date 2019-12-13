@@ -2014,6 +2014,7 @@ func (recv *AuthManager) ConnectAuthenticate(handler func(instance *AuthManager,
 		arg3 := object3.GetBoolean()
 
 		handler(argInstance, arg1, arg2, arg3)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "authenticate", marshal)
@@ -3274,6 +3275,7 @@ func (recv *CookieJar) ConnectChanged(handler func(instance *CookieJar, oldCooki
 		arg2 := CookieNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
@@ -3858,6 +3860,7 @@ func (recv *HSTSEnforcer) ConnectChanged(handler func(instance *HSTSEnforcer, ol
 		arg2 := HSTSPolicyNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
@@ -3877,6 +3880,7 @@ func (recv *HSTSEnforcer) ConnectHstsEnforced(handler func(instance *HSTSEnforce
 		arg1 := MessageNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "hsts-enforced", marshal)
@@ -5364,6 +5368,7 @@ func (recv *Message) ConnectContentSniffed(handler func(instance *Message, type_
 		arg2 := glib.HashTableNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "content-sniffed", marshal)
@@ -5380,6 +5385,7 @@ func (recv *Message) ConnectFinished(handler func(instance *Message)) int {
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "finished", marshal)
@@ -5396,6 +5402,7 @@ func (recv *Message) ConnectGotBody(handler func(instance *Message)) int {
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "got-body", marshal)
@@ -5415,6 +5422,7 @@ func (recv *Message) ConnectGotChunk(handler func(instance *Message, chunk *Buff
 		arg1 := BufferNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "got-chunk", marshal)
@@ -5431,6 +5439,7 @@ func (recv *Message) ConnectGotHeaders(handler func(instance *Message)) int {
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "got-headers", marshal)
@@ -5447,6 +5456,7 @@ func (recv *Message) ConnectGotInformational(handler func(instance *Message)) in
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "got-informational", marshal)
@@ -5465,6 +5475,7 @@ func (recv *Message) ConnectRestarted(handler func(instance *Message)) int {
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "restarted", marshal)
@@ -5481,6 +5492,7 @@ func (recv *Message) ConnectStarting(handler func(instance *Message)) int {
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "starting", marshal)
@@ -5497,6 +5509,7 @@ func (recv *Message) ConnectWroteBody(handler func(instance *Message)) int {
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "wrote-body", marshal)
@@ -5516,6 +5529,7 @@ func (recv *Message) ConnectWroteBodyData(handler func(instance *Message, chunk 
 		arg1 := BufferNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "wrote-body-data", marshal)
@@ -5532,6 +5546,7 @@ func (recv *Message) ConnectWroteChunk(handler func(instance *Message)) int {
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "wrote-chunk", marshal)
@@ -5548,6 +5563,7 @@ func (recv *Message) ConnectWroteHeaders(handler func(instance *Message)) int {
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "wrote-headers", marshal)
@@ -5564,6 +5580,7 @@ func (recv *Message) ConnectWroteInformational(handler func(instance *Message)) 
 		argInstance := MessageNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "wrote-informational", marshal)
@@ -7477,6 +7494,7 @@ func (recv *Server) ConnectRequestAborted(handler func(instance *Server, message
 		arg2 := ClientContextNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "request-aborted", marshal)
@@ -7499,6 +7517,7 @@ func (recv *Server) ConnectRequestFinished(handler func(instance *Server, messag
 		arg2 := ClientContextNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "request-finished", marshal)
@@ -7521,6 +7540,7 @@ func (recv *Server) ConnectRequestRead(handler func(instance *Server, message *M
 		arg2 := ClientContextNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "request-read", marshal)
@@ -7543,6 +7563,7 @@ func (recv *Server) ConnectRequestStarted(handler func(instance *Server, message
 		arg2 := ClientContextNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "request-started", marshal)
@@ -8339,6 +8360,7 @@ func (recv *Session) ConnectAuthenticate(handler func(instance *Session, msg *Me
 		arg3 := object3.GetBoolean()
 
 		handler(argInstance, arg1, arg2, arg3)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "authenticate", marshal)
@@ -8358,6 +8380,7 @@ func (recv *Session) ConnectConnectionCreated(handler func(instance *Session, co
 		arg1 := gobject.ObjectNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "connection-created", marshal)
@@ -8377,6 +8400,7 @@ func (recv *Session) ConnectRequestQueued(handler func(instance *Session, msg *M
 		arg1 := MessageNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "request-queued", marshal)
@@ -8399,6 +8423,7 @@ func (recv *Session) ConnectRequestStarted(handler func(instance *Session, msg *
 		arg2 := SocketNewFromNative(object2.GetObject().Native())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "request-started", marshal)
@@ -8418,6 +8443,7 @@ func (recv *Session) ConnectRequestUnqueued(handler func(instance *Session, msg 
 		arg1 := MessageNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "request-unqueued", marshal)
@@ -8437,6 +8463,7 @@ func (recv *Session) ConnectTunneling(handler func(instance *Session, connection
 		arg1 := gobject.ObjectNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "tunneling", marshal)
@@ -9092,6 +9119,7 @@ func (recv *Socket) ConnectDisconnected(handler func(instance *Socket)) int {
 		argInstance := SocketNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "disconnected", marshal)
@@ -9113,6 +9141,7 @@ func (recv *Socket) ConnectNewConnection(handler func(instance *Socket, new *Soc
 		arg1 := SocketNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "new-connection", marshal)
@@ -9129,6 +9158,7 @@ func (recv *Socket) ConnectReadable(handler func(instance *Socket)) int {
 		argInstance := SocketNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "readable", marshal)
@@ -9145,6 +9175,7 @@ func (recv *Socket) ConnectWritable(handler func(instance *Socket)) int {
 		argInstance := SocketNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "writable", marshal)
@@ -9827,6 +9858,7 @@ func (recv *WebsocketConnection) ConnectClosed(handler func(instance *WebsocketC
 		argInstance := WebsocketConnectionNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "closed", marshal)
@@ -9843,6 +9875,7 @@ func (recv *WebsocketConnection) ConnectClosing(handler func(instance *Websocket
 		argInstance := WebsocketConnectionNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "closing", marshal)
@@ -9862,6 +9895,7 @@ func (recv *WebsocketConnection) ConnectError(handler func(instance *WebsocketCo
 		arg1 := glib.ErrorNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "error", marshal)
@@ -9884,6 +9918,7 @@ func (recv *WebsocketConnection) ConnectMessage(handler func(instance *Websocket
 		arg2 := glib.BytesNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "message", marshal)
@@ -9903,6 +9938,7 @@ func (recv *WebsocketConnection) ConnectPong(handler func(instance *WebsocketCon
 		arg1 := glib.BytesNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "pong", marshal)

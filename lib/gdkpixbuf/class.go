@@ -2490,6 +2490,7 @@ func (recv *PixbufLoader) ConnectAreaPrepared(handler func(instance *PixbufLoade
 		argInstance := PixbufLoaderNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "area-prepared", marshal)
@@ -2518,6 +2519,7 @@ func (recv *PixbufLoader) ConnectAreaUpdated(handler func(instance *PixbufLoader
 		arg4 := object4.GetInt()
 
 		handler(argInstance, arg1, arg2, arg3, arg4)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "area-updated", marshal)
@@ -2534,6 +2536,7 @@ func (recv *PixbufLoader) ConnectClosed(handler func(instance *PixbufLoader)) in
 		argInstance := PixbufLoaderNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "closed", marshal)
@@ -2556,6 +2559,7 @@ func (recv *PixbufLoader) ConnectSizePrepared(handler func(instance *PixbufLoade
 		arg2 := object2.GetInt()
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "size-prepared", marshal)

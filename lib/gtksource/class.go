@@ -1200,6 +1200,7 @@ func (recv *Buffer) ConnectBracketMatched(handler func(instance *Buffer, iter *g
 		arg2 := (BracketMatchType)(object2.GetInt())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "bracket-matched", marshal)
@@ -1222,6 +1223,7 @@ func (recv *Buffer) ConnectHighlightUpdated(handler func(instance *Buffer, start
 		arg2 := gtk.TextIterNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "highlight-updated", marshal)
@@ -1238,6 +1240,7 @@ func (recv *Buffer) ConnectRedo(handler func(instance *Buffer)) int {
 		argInstance := BufferNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "redo", marshal)
@@ -1257,6 +1260,7 @@ func (recv *Buffer) ConnectSourceMarkUpdated(handler func(instance *Buffer, mark
 		arg1 := gtk.TextMarkNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "source-mark-updated", marshal)
@@ -1273,6 +1277,7 @@ func (recv *Buffer) ConnectUndo(handler func(instance *Buffer)) int {
 		argInstance := BufferNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "undo", marshal)
@@ -1666,6 +1671,7 @@ func (recv *Completion) ConnectActivateProposal(handler func(instance *Completio
 		argInstance := CompletionNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "activate-proposal", marshal)
@@ -1682,6 +1688,7 @@ func (recv *Completion) ConnectHide(handler func(instance *Completion)) int {
 		argInstance := CompletionNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "hide", marshal)
@@ -1705,6 +1712,7 @@ func (recv *Completion) ConnectPopulateContext(handler func(instance *Completion
 		arg1 := CompletionContextNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "populate-context", marshal)
@@ -1721,6 +1729,7 @@ func (recv *Completion) ConnectShow(handler func(instance *Completion)) int {
 		argInstance := CompletionNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "show", marshal)
@@ -1912,6 +1921,7 @@ func (recv *CompletionContext) ConnectCancelled(handler func(instance *Completio
 		argInstance := CompletionContextNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "cancelled", marshal)
@@ -2171,6 +2181,7 @@ func (recv *CompletionInfo) ConnectBeforeShow(handler func(instance *CompletionI
 		argInstance := CompletionInfoNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "before-show", marshal)
@@ -5037,6 +5048,7 @@ func (recv *GutterRenderer) ConnectQueryData(handler func(instance *GutterRender
 		arg3 := (GutterRendererState)(object3.GetInt())
 
 		handler(argInstance, arg1, arg2, arg3)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "query-data", marshal)
@@ -5068,8 +5080,10 @@ func (recv *GutterRenderer) ConnectQueryTooltip(handler func(instance *GutterRen
 		arg5 := gtk.TooltipNewFromNative(object5.GetObject().Native())
 
 		retGo := handler(argInstance, arg1, arg2, arg3, arg4, arg5)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetBoolean(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "query-tooltip", marshal)
@@ -5086,6 +5100,7 @@ func (recv *GutterRenderer) ConnectQueueDraw(handler func(instance *GutterRender
 		argInstance := GutterRendererNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "queue-draw", marshal)
@@ -7146,8 +7161,10 @@ func (recv *MarkAttributes) ConnectQueryTooltipMarkup(handler func(instance *Mar
 		arg1 := MarkNewFromNative(object1.GetObject().Native())
 
 		retGo := handler(argInstance, arg1)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetString(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "query-tooltip-markup", marshal)
@@ -7167,8 +7184,10 @@ func (recv *MarkAttributes) ConnectQueryTooltipText(handler func(instance *MarkA
 		arg1 := MarkNewFromNative(object1.GetObject().Native())
 
 		retGo := handler(argInstance, arg1)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetString(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "query-tooltip-text", marshal)
@@ -12382,6 +12401,7 @@ func (recv *View) ConnectChangeCase(handler func(instance *View, caseType Change
 		arg1 := (ChangeCaseType)(object1.GetInt())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "change-case", marshal)
@@ -12401,6 +12421,7 @@ func (recv *View) ConnectChangeNumber(handler func(instance *View, count int32))
 		arg1 := object1.GetInt()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "change-number", marshal)
@@ -12417,6 +12438,7 @@ func (recv *View) ConnectJoinLines(handler func(instance *View)) int {
 		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "join-lines", marshal)
@@ -12441,6 +12463,7 @@ func (recv *View) ConnectMoveLines(handler func(instance *View, copy bool, count
 		arg2 := object2.GetInt()
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "move-lines", marshal)
@@ -12460,6 +12483,7 @@ func (recv *View) ConnectMoveToMatchingBracket(handler func(instance *View, exte
 		arg1 := object1.GetBoolean()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "move-to-matching-bracket", marshal)
@@ -12479,6 +12503,7 @@ func (recv *View) ConnectMoveWords(handler func(instance *View, count int32)) in
 		arg1 := object1.GetInt()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "move-words", marshal)
@@ -12495,6 +12520,7 @@ func (recv *View) ConnectRedo(handler func(instance *View)) int {
 		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "redo", marshal)
@@ -12511,6 +12537,7 @@ func (recv *View) ConnectShowCompletion(handler func(instance *View)) int {
 		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "show-completion", marshal)
@@ -12533,6 +12560,7 @@ func (recv *View) ConnectSmartHomeEnd(handler func(instance *View, iter *gtk.Tex
 		arg2 := object2.GetInt()
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "smart-home-end", marshal)
@@ -12549,6 +12577,7 @@ func (recv *View) ConnectUndo(handler func(instance *View)) int {
 		argInstance := ViewNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "undo", marshal)

@@ -806,6 +806,7 @@ func (recv *ActionGroup) ConnectActionAdded(handler func(instance *ActionGroup, 
 		arg1 := object1.GetString()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "action-added", marshal)
@@ -828,6 +829,7 @@ func (recv *ActionGroup) ConnectActionEnabledChanged(handler func(instance *Acti
 		arg2 := object2.GetBoolean()
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "action-enabled-changed", marshal)
@@ -847,6 +849,7 @@ func (recv *ActionGroup) ConnectActionRemoved(handler func(instance *ActionGroup
 		arg1 := object1.GetString()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "action-removed", marshal)
@@ -869,6 +872,7 @@ func (recv *ActionGroup) ConnectActionStateChanged(handler func(instance *Action
 		arg2 := glib.VariantNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "action-state-changed", marshal)
@@ -2980,6 +2984,7 @@ func (recv *Drive) ConnectChanged(handler func(instance *Drive)) int {
 		argInstance := DriveNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
@@ -2996,6 +3001,7 @@ func (recv *Drive) ConnectDisconnected(handler func(instance *Drive)) int {
 		argInstance := DriveNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "disconnected", marshal)
@@ -3012,6 +3018,7 @@ func (recv *Drive) ConnectEjectButton(handler func(instance *Drive)) int {
 		argInstance := DriveNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "eject-button", marshal)
@@ -3028,6 +3035,7 @@ func (recv *Drive) ConnectStopButton(handler func(instance *Drive)) int {
 		argInstance := DriveNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "stop-button", marshal)
@@ -3794,8 +3802,10 @@ func (recv *DtlsConnection) ConnectAcceptCertificate(handler func(instance *Dtls
 		arg2 := (TlsCertificateFlags)(object2.GetInt())
 
 		retGo := handler(argInstance, arg1, arg2)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetBoolean(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "accept-certificate", marshal)
@@ -5941,6 +5951,7 @@ func (recv *ListModel) ConnectItemsChanged(handler func(instance *ListModel, pos
 		arg3 := object3.GetUint()
 
 		handler(argInstance, arg1, arg2, arg3)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "items-changed", marshal)
@@ -6408,6 +6419,7 @@ func (recv *Mount) ConnectChanged(handler func(instance *Mount)) int {
 		argInstance := MountNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
@@ -6424,6 +6436,7 @@ func (recv *Mount) ConnectPreUnmount(handler func(instance *Mount)) int {
 		argInstance := MountNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "pre-unmount", marshal)
@@ -6440,6 +6453,7 @@ func (recv *Mount) ConnectUnmounted(handler func(instance *Mount)) int {
 		argInstance := MountNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "unmounted", marshal)
@@ -6614,6 +6628,7 @@ func (recv *NetworkMonitor) ConnectNetworkChanged(handler func(instance *Network
 		arg1 := object1.GetBoolean()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "network-changed", marshal)
@@ -8546,6 +8561,7 @@ func (recv *Volume) ConnectChanged(handler func(instance *Volume)) int {
 		argInstance := VolumeNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
@@ -8562,6 +8578,7 @@ func (recv *Volume) ConnectRemoved(handler func(instance *Volume)) int {
 		argInstance := VolumeNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "removed", marshal)

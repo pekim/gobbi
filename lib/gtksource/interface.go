@@ -322,6 +322,7 @@ func (recv *CompletionProposal) ConnectChanged(handler func(instance *Completion
 		argInstance := CompletionProposalNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
@@ -1036,6 +1037,7 @@ func (recv *UndoManager) ConnectCanRedoChanged(handler func(instance *UndoManage
 		argInstance := UndoManagerNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "can-redo-changed", marshal)
@@ -1052,6 +1054,7 @@ func (recv *UndoManager) ConnectCanUndoChanged(handler func(instance *UndoManage
 		argInstance := UndoManagerNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "can-undo-changed", marshal)

@@ -1678,6 +1678,7 @@ func (recv *Device) ConnectChanged(handler func(instance *Device)) int {
 		argInstance := DeviceNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
@@ -1697,6 +1698,7 @@ func (recv *Device) ConnectToolChanged(handler func(instance *Device, tool *Devi
 		arg1 := DeviceToolNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "tool-changed", marshal)
@@ -1882,6 +1884,7 @@ func (recv *DeviceManager) ConnectDeviceAdded(handler func(instance *DeviceManag
 		arg1 := DeviceNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "device-added", marshal)
@@ -1901,6 +1904,7 @@ func (recv *DeviceManager) ConnectDeviceChanged(handler func(instance *DeviceMan
 		arg1 := DeviceNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "device-changed", marshal)
@@ -1920,6 +1924,7 @@ func (recv *DeviceManager) ConnectDeviceRemoved(handler func(instance *DeviceMan
 		arg1 := DeviceNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "device-removed", marshal)
@@ -3466,6 +3471,7 @@ func (recv *Display) ConnectClosed(handler func(instance *Display, isError bool)
 		arg1 := object1.GetBoolean()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "closed", marshal)
@@ -3485,6 +3491,7 @@ func (recv *Display) ConnectMonitorAdded(handler func(instance *Display, monitor
 		arg1 := MonitorNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "monitor-added", marshal)
@@ -3504,6 +3511,7 @@ func (recv *Display) ConnectMonitorRemoved(handler func(instance *Display, monit
 		arg1 := MonitorNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "monitor-removed", marshal)
@@ -3520,6 +3528,7 @@ func (recv *Display) ConnectOpened(handler func(instance *Display)) int {
 		argInstance := DisplayNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "opened", marshal)
@@ -3539,6 +3548,7 @@ func (recv *Display) ConnectSeatAdded(handler func(instance *Display, seat *Seat
 		arg1 := SeatNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "seat-added", marshal)
@@ -3558,6 +3568,7 @@ func (recv *Display) ConnectSeatRemoved(handler func(instance *Display, seat *Se
 		arg1 := SeatNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "seat-removed", marshal)
@@ -3772,6 +3783,7 @@ func (recv *DisplayManager) ConnectDisplayOpened(handler func(instance *DisplayM
 		arg1 := DisplayNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "display-opened", marshal)
@@ -4241,6 +4253,7 @@ func (recv *DragContext) ConnectActionChanged(handler func(instance *DragContext
 		arg1 := (DragAction)(object1.GetInt())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "action-changed", marshal)
@@ -4260,6 +4273,7 @@ func (recv *DragContext) ConnectCancel(handler func(instance *DragContext, reaso
 		arg1 := (DragCancelReason)(object1.GetInt())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "cancel", marshal)
@@ -4276,6 +4290,7 @@ func (recv *DragContext) ConnectDndFinished(handler func(instance *DragContext))
 		argInstance := DragContextNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "dnd-finished", marshal)
@@ -4295,6 +4310,7 @@ func (recv *DragContext) ConnectDropPerformed(handler func(instance *DragContext
 		arg1 := object1.GetInt()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "drop-performed", marshal)
@@ -4848,6 +4864,7 @@ func (recv *FrameClock) ConnectAfterPaint(handler func(instance *FrameClock)) in
 		argInstance := FrameClockNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "after-paint", marshal)
@@ -4864,6 +4881,7 @@ func (recv *FrameClock) ConnectBeforePaint(handler func(instance *FrameClock)) i
 		argInstance := FrameClockNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "before-paint", marshal)
@@ -4880,6 +4898,7 @@ func (recv *FrameClock) ConnectFlushEvents(handler func(instance *FrameClock)) i
 		argInstance := FrameClockNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "flush-events", marshal)
@@ -4896,6 +4915,7 @@ func (recv *FrameClock) ConnectLayout(handler func(instance *FrameClock)) int {
 		argInstance := FrameClockNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "layout", marshal)
@@ -4912,6 +4932,7 @@ func (recv *FrameClock) ConnectPaint(handler func(instance *FrameClock)) int {
 		argInstance := FrameClockNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "paint", marshal)
@@ -4928,6 +4949,7 @@ func (recv *FrameClock) ConnectResumeEvents(handler func(instance *FrameClock)) 
 		argInstance := FrameClockNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "resume-events", marshal)
@@ -4944,6 +4966,7 @@ func (recv *FrameClock) ConnectUpdate(handler func(instance *FrameClock)) int {
 		argInstance := FrameClockNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "update", marshal)
@@ -5896,6 +5919,7 @@ func (recv *Keymap) ConnectDirectionChanged(handler func(instance *Keymap)) int 
 		argInstance := KeymapNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "direction-changed", marshal)
@@ -5912,6 +5936,7 @@ func (recv *Keymap) ConnectKeysChanged(handler func(instance *Keymap)) int {
 		argInstance := KeymapNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "keys-changed", marshal)
@@ -5928,6 +5953,7 @@ func (recv *Keymap) ConnectStateChanged(handler func(instance *Keymap)) int {
 		argInstance := KeymapNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "state-changed", marshal)
@@ -6365,6 +6391,7 @@ func (recv *Monitor) ConnectInvalidate(handler func(instance *Monitor)) int {
 		argInstance := MonitorNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "invalidate", marshal)
@@ -7415,6 +7442,7 @@ func (recv *Screen) ConnectCompositedChanged(handler func(instance *Screen)) int
 		argInstance := ScreenNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "composited-changed", marshal)
@@ -7431,6 +7459,7 @@ func (recv *Screen) ConnectMonitorsChanged(handler func(instance *Screen)) int {
 		argInstance := ScreenNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "monitors-changed", marshal)
@@ -7447,6 +7476,7 @@ func (recv *Screen) ConnectSizeChanged(handler func(instance *Screen)) int {
 		argInstance := ScreenNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "size-changed", marshal)
@@ -7740,6 +7770,7 @@ func (recv *Seat) ConnectDeviceAdded(handler func(instance *Seat, device *Device
 		arg1 := DeviceNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "device-added", marshal)
@@ -7759,6 +7790,7 @@ func (recv *Seat) ConnectDeviceRemoved(handler func(instance *Seat, device *Devi
 		arg1 := DeviceNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "device-removed", marshal)
@@ -7778,6 +7810,7 @@ func (recv *Seat) ConnectToolAdded(handler func(instance *Seat, tool *DeviceTool
 		arg1 := DeviceToolNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "tool-added", marshal)
@@ -7797,6 +7830,7 @@ func (recv *Seat) ConnectToolRemoved(handler func(instance *Seat, tool *DeviceTo
 		arg1 := DeviceToolNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "tool-removed", marshal)
@@ -12891,9 +12925,60 @@ func (recv *Window) Withdraw() {
 	return
 }
 
-// UNSUPPORTED : C value 'create-surface' : return value is from package cairo
+/*
+ConnectCreateSurface connects a callback to the 'create-surface' signal of the Window.
 
-// UNSUPPORTED : C value 'from-embedder' : has out params
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectCreateSurface(handler func(instance *Window, width int32, height int32) *cairo.Surface) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetInt()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetInt()
+
+		retGo := handler(argInstance, arg1, arg2)
+
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoxed(retGo.Native())
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "create-surface", marshal)
+}
+
+/*
+ConnectFromEmbedder connects a callback to the 'from-embedder' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectFromEmbedder(handler func(instance *Window, embedderX float64, embedderY float64) (float64, float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetDouble()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetDouble()
+
+		out3, out4 := handler(argInstance, arg1, arg2)
+
+		objectOut3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		objectOut3.SetDouble(out3)
+
+		objectOut4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
+		objectOut4.SetDouble(out4)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "from-embedder", marshal)
+}
 
 /*
 ConnectMovedToRect connects a callback to the 'moved-to-rect' signal of the Window.
@@ -12918,6 +13003,7 @@ func (recv *Window) ConnectMovedToRect(handler func(instance *Window, flippedRec
 		arg4 := object4.GetBoolean()
 
 		handler(argInstance, arg1, arg2, arg3, arg4)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "moved-to-rect", marshal)
@@ -12940,14 +13026,43 @@ func (recv *Window) ConnectPickEmbeddedChild(handler func(instance *Window, x fl
 		arg2 := object2.GetDouble()
 
 		retGo := handler(argInstance, arg1, arg2)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetObject(retGo.Object())
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "pick-embedded-child", marshal)
 }
 
-// UNSUPPORTED : C value 'to-embedder' : has out params
+/*
+ConnectToEmbedder connects a callback to the 'to-embedder' signal of the Window.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Window) ConnectToEmbedder(handler func(instance *Window, offscreenX float64, offscreenY float64) (float64, float64)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetDouble()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetDouble()
+
+		out3, out4 := handler(argInstance, arg1, arg2)
+
+		objectOut3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		objectOut3.SetDouble(out3)
+
+		objectOut4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
+		objectOut4.SetDouble(out4)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "to-embedder", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.

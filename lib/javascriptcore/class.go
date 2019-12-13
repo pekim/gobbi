@@ -2524,6 +2524,7 @@ func (recv *WeakValue) ConnectCleared(handler func(instance *WeakValue)) int {
 		argInstance := WeakValueNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "cleared", marshal)

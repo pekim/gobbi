@@ -1407,6 +1407,7 @@ func (recv *CellEditable) ConnectEditingDone(handler func(instance *CellEditable
 		argInstance := CellEditableNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "editing-done", marshal)
@@ -1423,6 +1424,7 @@ func (recv *CellEditable) ConnectRemoveWidget(handler func(instance *CellEditabl
 		argInstance := CellEditableNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "remove-widget", marshal)
@@ -1909,6 +1911,7 @@ func (recv *ColorChooser) ConnectColorActivated(handler func(instance *ColorChoo
 		arg1 := gdk.RGBANewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "color-activated", marshal)
@@ -2376,6 +2379,7 @@ func (recv *Editable) ConnectChanged(handler func(instance *Editable)) int {
 		argInstance := EditableNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
@@ -2398,12 +2402,40 @@ func (recv *Editable) ConnectDeleteText(handler func(instance *Editable, startPo
 		arg2 := object2.GetInt()
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "delete-text", marshal)
 }
 
-// UNSUPPORTED : C value 'insert-text' : has out params
+/*
+ConnectInsertText connects a callback to the 'insert-text' signal of the Editable.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *Editable) ConnectInsertText(handler func(instance *Editable, newText string, newTextLength int32, position int32) int32) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := EditableNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := object1.GetString()
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetInt()
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := object3.GetInt()
+
+		out3 := handler(argInstance, arg1, arg2, arg3)
+
+		objectOut3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		objectOut3.SetInt(out3)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "insert-text", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -4195,8 +4227,10 @@ func (recv *FileChooser) ConnectConfirmOverwrite(handler func(instance *FileChoo
 		argInstance := FileChooserNewFromNative(objectInstance.GetObject().Native())
 
 		retGo := handler(argInstance)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetInt(int32(retGo))
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "confirm-overwrite", marshal)
@@ -4213,6 +4247,7 @@ func (recv *FileChooser) ConnectCurrentFolderChanged(handler func(instance *File
 		argInstance := FileChooserNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "current-folder-changed", marshal)
@@ -4229,6 +4264,7 @@ func (recv *FileChooser) ConnectFileActivated(handler func(instance *FileChooser
 		argInstance := FileChooserNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "file-activated", marshal)
@@ -4245,6 +4281,7 @@ func (recv *FileChooser) ConnectSelectionChanged(handler func(instance *FileChoo
 		argInstance := FileChooserNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "selection-changed", marshal)
@@ -4261,6 +4298,7 @@ func (recv *FileChooser) ConnectUpdatePreview(handler func(instance *FileChooser
 		argInstance := FileChooserNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "update-preview", marshal)
@@ -4890,6 +4928,7 @@ func (recv *FontChooser) ConnectFontActivated(handler func(instance *FontChooser
 		arg1 := object1.GetString()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "font-activated", marshal)
@@ -5160,6 +5199,7 @@ func (recv *PrintOperationPreview) ConnectGotPageSize(handler func(instance *Pri
 		arg2 := PageSetupNewFromNative(object2.GetObject().Native())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "got-page-size", marshal)
@@ -5179,6 +5219,7 @@ func (recv *PrintOperationPreview) ConnectReady(handler func(instance *PrintOper
 		arg1 := PrintContextNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "ready", marshal)
@@ -6168,6 +6209,7 @@ func (recv *RecentChooser) ConnectItemActivated(handler func(instance *RecentCho
 		argInstance := RecentChooserNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "item-activated", marshal)
@@ -6184,6 +6226,7 @@ func (recv *RecentChooser) ConnectSelectionChanged(handler func(instance *Recent
 		argInstance := RecentChooserNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "selection-changed", marshal)
@@ -8041,6 +8084,7 @@ func (recv *TreeModel) ConnectRowChanged(handler func(instance *TreeModel, path 
 		arg2 := TreeIterNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "row-changed", marshal)
@@ -8060,6 +8104,7 @@ func (recv *TreeModel) ConnectRowDeleted(handler func(instance *TreeModel, path 
 		arg1 := TreePathNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "row-deleted", marshal)
@@ -8082,6 +8127,7 @@ func (recv *TreeModel) ConnectRowHasChildToggled(handler func(instance *TreeMode
 		arg2 := TreeIterNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "row-has-child-toggled", marshal)
@@ -8104,6 +8150,7 @@ func (recv *TreeModel) ConnectRowInserted(handler func(instance *TreeModel, path
 		arg2 := TreeIterNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "row-inserted", marshal)
@@ -8129,6 +8176,7 @@ func (recv *TreeModel) ConnectRowsReordered(handler func(instance *TreeModel, pa
 		arg3 := object3.GetPointer()
 
 		handler(argInstance, arg1, arg2, arg3)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "rows-reordered", marshal)
@@ -8327,6 +8375,7 @@ func (recv *TreeSortable) ConnectSortColumnChanged(handler func(instance *TreeSo
 		argInstance := TreeSortableNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "sort-column-changed", marshal)

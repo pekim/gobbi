@@ -83,6 +83,7 @@ func (recv *AppInfoMonitor) ConnectChanged(handler func(instance *AppInfoMonitor
 		argInstance := AppInfoMonitorNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
@@ -337,6 +338,7 @@ func (recv *AppLaunchContext) ConnectLaunchFailed(handler func(instance *AppLaun
 		arg1 := object1.GetString()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "launch-failed", marshal)
@@ -1337,6 +1339,7 @@ func (recv *Application) ConnectActivate(handler func(instance *Application)) in
 		argInstance := ApplicationNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "activate", marshal)
@@ -1356,8 +1359,10 @@ func (recv *Application) ConnectCommandLine(handler func(instance *Application, 
 		arg1 := ApplicationCommandLineNewFromNative(object1.GetObject().Native())
 
 		retGo := handler(argInstance, arg1)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetInt(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "command-line", marshal)
@@ -1377,8 +1382,10 @@ func (recv *Application) ConnectHandleLocalOptions(handler func(instance *Applic
 		arg1 := glib.VariantDictNewFromNative(object1.GetBoxed())
 
 		retGo := handler(argInstance, arg1)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetInt(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "handle-local-options", marshal)
@@ -1395,8 +1402,10 @@ func (recv *Application) ConnectNameLost(handler func(instance *Application) boo
 		argInstance := ApplicationNewFromNative(objectInstance.GetObject().Native())
 
 		retGo := handler(argInstance)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetBoolean(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "name-lost", marshal)
@@ -1415,6 +1424,7 @@ func (recv *Application) ConnectShutdown(handler func(instance *Application)) in
 		argInstance := ApplicationNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "shutdown", marshal)
@@ -1431,6 +1441,7 @@ func (recv *Application) ConnectStartup(handler func(instance *Application)) int
 		argInstance := ApplicationNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "startup", marshal)
@@ -3070,6 +3081,7 @@ func (recv *Cancellable) ConnectCancelled(handler func(instance *Cancellable)) i
 		argInstance := CancellableNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "cancelled", marshal)
@@ -4028,8 +4040,10 @@ func (recv *DBusAuthObserver) ConnectAllowMechanism(handler func(instance *DBusA
 		arg1 := object1.GetString()
 
 		retGo := handler(argInstance, arg1)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetBoolean(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "allow-mechanism", marshal)
@@ -4052,8 +4066,10 @@ func (recv *DBusAuthObserver) ConnectAuthorizeAuthenticatedPeer(handler func(ins
 		arg2 := CredentialsNewFromNative(object2.GetObject().Native())
 
 		retGo := handler(argInstance, arg1, arg2)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetBoolean(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "authorize-authenticated-peer", marshal)
@@ -5114,6 +5130,7 @@ func (recv *DBusConnection) ConnectClosed(handler func(instance *DBusConnection,
 		arg2 := glib.ErrorNewFromNative(object2.GetBoxed())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "closed", marshal)
@@ -5617,8 +5634,10 @@ func (recv *DBusInterfaceSkeleton) ConnectGAuthorizeMethod(handler func(instance
 		arg1 := DBusMethodInvocationNewFromNative(object1.GetObject().Native())
 
 		retGo := handler(argInstance, arg1)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetBoolean(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "g-authorize-method", marshal)
@@ -7954,6 +7973,7 @@ func (recv *DBusObjectManagerClient) ConnectInterfaceProxySignal(handler func(in
 		arg5 := glib.VariantNewFromNative(object5.GetBoxed())
 
 		handler(argInstance, arg1, arg2, arg3, arg4, arg5)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "interface-proxy-signal", marshal)
@@ -8654,8 +8674,10 @@ func (recv *DBusObjectSkeleton) ConnectAuthorizeMethod(handler func(instance *DB
 		arg2 := DBusMethodInvocationNewFromNative(object2.GetObject().Native())
 
 		retGo := handler(argInstance, arg1, arg2)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetBoolean(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "authorize-method", marshal)
@@ -9331,6 +9353,7 @@ func (recv *DBusProxy) ConnectGSignal(handler func(instance *DBusProxy, senderNa
 		arg3 := glib.VariantNewFromNative(object3.GetBoxed())
 
 		handler(argInstance, arg1, arg2, arg3)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "g-signal", marshal)
@@ -9656,8 +9679,10 @@ func (recv *DBusServer) ConnectNewConnection(handler func(instance *DBusServer, 
 		arg1 := DBusConnectionNewFromNative(object1.GetObject().Native())
 
 		retGo := handler(argInstance, arg1)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetBoolean(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "new-connection", marshal)
@@ -14783,6 +14808,7 @@ func (recv *FilenameCompleter) ConnectGotCompletionData(handler func(instance *F
 		argInstance := FilenameCompleterNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "got-completion-data", marshal)
@@ -19730,6 +19756,7 @@ func (recv *MenuModel) ConnectItemsChanged(handler func(instance *MenuModel, pos
 		arg3 := object3.GetInt()
 
 		handler(argInstance, arg1, arg2, arg3)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "items-changed", marshal)
@@ -20453,6 +20480,7 @@ func (recv *MountOperation) ConnectAborted(handler func(instance *MountOperation
 		argInstance := MountOperationNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "aborted", marshal)
@@ -20481,6 +20509,7 @@ func (recv *MountOperation) ConnectAskPassword(handler func(instance *MountOpera
 		arg4 := (AskPasswordFlags)(object4.GetInt())
 
 		handler(argInstance, arg1, arg2, arg3, arg4)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "ask-password", marshal)
@@ -20502,6 +20531,7 @@ func (recv *MountOperation) ConnectReply(handler func(instance *MountOperation, 
 		arg1 := (MountOperationResult)(object1.GetInt())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "reply", marshal)
@@ -20529,6 +20559,7 @@ func (recv *MountOperation) ConnectShowUnmountProgress(handler func(instance *Mo
 		arg3 := object3.GetInt64()
 
 		handler(argInstance, arg1, arg2, arg3)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "show-unmount-progress", marshal)
@@ -23117,6 +23148,7 @@ func (recv *Resolver) ConnectReload(handler func(instance *Resolver)) int {
 		argInstance := ResolverNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "reload", marshal)
@@ -24586,6 +24618,7 @@ func (recv *Settings) ConnectChanged(handler func(instance *Settings, key string
 		arg1 := object1.GetString()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "changed", marshal)
@@ -24605,8 +24638,10 @@ func (recv *Settings) ConnectWritableChangeEvent(handler func(instance *Settings
 		arg1 := object1.GetUint()
 
 		retGo := handler(argInstance, arg1)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetBoolean(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "writable-change-event", marshal)
@@ -24626,6 +24661,7 @@ func (recv *Settings) ConnectWritableChanged(handler func(instance *Settings, ke
 		arg1 := object1.GetString()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "writable-changed", marshal)
@@ -25096,6 +25132,7 @@ func (recv *SimpleAction) ConnectActivate(handler func(instance *SimpleAction, p
 		arg1 := glib.VariantNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "activate", marshal)
@@ -25115,6 +25152,7 @@ func (recv *SimpleAction) ConnectChangeState(handler func(instance *SimpleAction
 		arg1 := glib.VariantNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "change-state", marshal)
@@ -29587,6 +29625,7 @@ func (recv *SocketListener) ConnectEvent(handler func(instance *SocketListener, 
 		arg2 := SocketNewFromNative(object2.GetObject().Native())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "event", marshal)
@@ -29831,8 +29870,10 @@ func (recv *SocketService) ConnectIncoming(handler func(instance *SocketService,
 		arg2 := gobject.ObjectNewFromNative(object2.GetObject().Native())
 
 		retGo := handler(argInstance, arg1, arg2)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetBoolean(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "incoming", marshal)
@@ -32671,8 +32712,10 @@ func (recv *ThreadedSocketService) ConnectRun(handler func(instance *ThreadedSoc
 		arg2 := gobject.ObjectNewFromNative(object2.GetObject().Native())
 
 		retGo := handler(argInstance, arg1, arg2)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetBoolean(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "run", marshal)
@@ -33591,8 +33634,10 @@ func (recv *TlsConnection) ConnectAcceptCertificate(handler func(instance *TlsCo
 		arg2 := (TlsCertificateFlags)(object2.GetInt())
 
 		retGo := handler(argInstance, arg1, arg2)
+
 		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
 		returnObject.SetBoolean(retGo)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "accept-certificate", marshal)
@@ -35688,6 +35733,7 @@ func (recv *UnixMountMonitor) ConnectMountpointsChanged(handler func(instance *U
 		argInstance := UnixMountMonitorNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "mountpoints-changed", marshal)
@@ -35704,6 +35750,7 @@ func (recv *UnixMountMonitor) ConnectMountsChanged(handler func(instance *UnixMo
 		argInstance := UnixMountMonitorNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "mounts-changed", marshal)

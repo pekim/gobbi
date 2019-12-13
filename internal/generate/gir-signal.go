@@ -37,16 +37,8 @@ func (s *Signal) supported() (bool, string) {
 		return false, reason
 	}
 
-	if s.Parameters.outCount() > 0 {
-		return false, "has out params"
-	}
-
 	if supported, reason := s.ReturnValue.supported(); !supported {
 		return false, reason
-	}
-
-	if s.ReturnValue.Type.isQualifiedName() && s.ReturnValue.Type.foreignNamespace.Name == "cairo" {
-		return false, "return value is from package cairo"
 	}
 
 	return true, ""
@@ -121,6 +113,7 @@ func (s *Signal) generateMarshalBody(g *jen.Group) {
 	s.generateMarshalBodyInstanceParam(g)
 	s.generateMarshalBodyInParams(g)
 	s.generateMarshalBodyCallHandler(g)
+	s.generateMarshalBodyOutParams(g)
 }
 
 func (s *Signal) generateMarshalBodyInstanceParam(g *jen.Group) {
@@ -141,8 +134,6 @@ func (s *Signal) generateMarshalBodyInstanceParam(g *jen.Group) {
 }
 
 func (s *Signal) generateMarshalBodyInParams(g *jen.Group) {
-	//valueNewFromNative := s.valueNewFromNative()
-
 	for p, param := range s.Parameters {
 		if !param.isIn() {
 			continue
@@ -163,11 +154,37 @@ func (s *Signal) generateMarshalBodyInParams(g *jen.Group) {
 	}
 }
 
+func (s *Signal) generateMarshalBodyOutParams(g *jen.Group) {
+	for p, param := range s.Parameters {
+		if !param.isOut() {
+			continue
+		}
+
+		outVarName := fmt.Sprintf("out%d", p+1)
+		objectVarName := fmt.Sprintf("objectOut%d", p+1)
+		value := jen.Op("&").Id("paramValues").Index(jen.Lit(p + 1))
+		s.assignValueToObjectVar(g, objectVarName, value)
+		param.generateObjectFromValue(g, objectVarName, outVarName)
+
+		g.Line()
+	}
+}
+
 func (s *Signal) generateMarshalBodyCallHandler(g *jen.Group) {
 	g.
 		Do(func(st *jen.Statement) {
-			if s.ReturnValue.Type.Name != "none" {
-				st.Id("retGo").Op(":=")
+			if s.ReturnValue.Type.Name != "none" || s.Parameters.outCount() > 0 {
+				st.ListFunc(func(g *jen.Group) {
+					if s.ReturnValue.Type.Name != "none" {
+						g.Id("retGo")
+					}
+
+					for p, param := range s.Parameters {
+						if param.isOut() {
+							g.Id(fmt.Sprintf("out%d", p+1))
+						}
+					}
+				}).Op(":=")
 			}
 		}).
 		Id("handler").
@@ -183,10 +200,14 @@ func (s *Signal) generateMarshalBodyCallHandler(g *jen.Group) {
 			}
 		})
 
+	g.Line()
+
 	if s.ReturnValue.Type.Name != "none" {
 		value := jen.Id("returnValue")
 		s.assignValueToObjectVar(g, "returnObject", value)
 		s.ReturnValue.generateObjectFromValue(g, "returnObject", "retGo")
+
+		g.Line()
 	}
 }
 

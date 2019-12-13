@@ -104,7 +104,7 @@ func (a Argument) generateObjectFromValue(g *jen.Group, objectVarName string, va
 		return
 	}
 
-	if resolvedType.isRecord() || resolvedType.isClass() {
+	if resolvedType.isClass() {
 		g.Id(objectVarName).Dot("SetObject").CallFunc(func(g *jen.Group) {
 			if a.Type.Name == "Object" || a.Type.foreignName == "Object" {
 				g.Id(valueVarName)
@@ -113,6 +113,12 @@ func (a Argument) generateObjectFromValue(g *jen.Group, objectVarName string, va
 			}
 		})
 
+		return
+	}
+
+	if resolvedType.isRecord() {
+		g.Id(objectVarName).Dot("SetBoxed").Call(
+			jen.Id(valueVarName).Dot("Native").Call())
 		return
 	}
 

@@ -466,6 +466,7 @@ func (recv *Hyperlink) ConnectLinkActivated(handler func(instance *Hyperlink)) i
 		argInstance := HyperlinkNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "link-activated", marshal)
@@ -1825,6 +1826,7 @@ func (recv *Object) ConnectActiveDescendantChanged(handler func(instance *Object
 		arg1 := ObjectNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "active-descendant-changed", marshal)
@@ -1847,6 +1849,7 @@ func (recv *Object) ConnectChildrenChanged(handler func(instance *Object, arg1 u
 		arg2 := ObjectNewFromNative(object2.GetObject().Native())
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "children-changed", marshal)
@@ -1866,6 +1869,7 @@ func (recv *Object) ConnectFocusEvent(handler func(instance *Object, arg1 bool))
 		arg1 := object1.GetBoolean()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "focus-event", marshal)
@@ -1885,6 +1889,7 @@ func (recv *Object) ConnectPropertyChange(handler func(instance *Object, arg1 *P
 		arg1 := PropertyValuesNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "property-change", marshal)
@@ -1907,6 +1912,7 @@ func (recv *Object) ConnectStateChange(handler func(instance *Object, arg1 strin
 		arg2 := object2.GetBoolean()
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "state-change", marshal)
@@ -1923,6 +1929,7 @@ func (recv *Object) ConnectVisibleDataChanged(handler func(instance *Object)) in
 		argInstance := ObjectNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "visible-data-changed", marshal)

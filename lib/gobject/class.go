@@ -1116,6 +1116,7 @@ func (recv *Object) ConnectNotify(handler func(instance *Object, pspec *ParamSpe
 		arg1 := ParamSpecNewFromNative(object1.GetObject().Native())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "notify", marshal)

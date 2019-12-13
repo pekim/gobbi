@@ -850,6 +850,7 @@ func (recv *Component) ConnectBoundsChanged(handler func(instance *Component, ar
 		arg1 := RectangleNewFromNative(object1.GetBoxed())
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "bounds-changed", marshal)
@@ -1148,6 +1149,7 @@ func (recv *Document) ConnectLoadComplete(handler func(instance *Document)) int 
 		argInstance := DocumentNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "load-complete", marshal)
@@ -1164,6 +1166,7 @@ func (recv *Document) ConnectLoadStopped(handler func(instance *Document)) int {
 		argInstance := DocumentNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "load-stopped", marshal)
@@ -1183,6 +1186,7 @@ func (recv *Document) ConnectPageChanged(handler func(instance *Document, pageNu
 		arg1 := object1.GetInt()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "page-changed", marshal)
@@ -1199,6 +1203,7 @@ func (recv *Document) ConnectReload(handler func(instance *Document)) int {
 		argInstance := DocumentNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "reload", marshal)
@@ -1670,6 +1675,7 @@ func (recv *Hypertext) ConnectLinkSelected(handler func(instance *Hypertext, arg
 		arg1 := object1.GetInt()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "link-selected", marshal)
@@ -2219,6 +2225,7 @@ func (recv *Selection) ConnectSelectionChanged(handler func(instance *Selection)
 		argInstance := SelectionNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "selection-changed", marshal)
@@ -3407,6 +3414,7 @@ func (recv *Table) ConnectColumnDeleted(handler func(instance *Table, arg1 int32
 		arg2 := object2.GetInt()
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "column-deleted", marshal)
@@ -3429,6 +3437,7 @@ func (recv *Table) ConnectColumnInserted(handler func(instance *Table, arg1 int3
 		arg2 := object2.GetInt()
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "column-inserted", marshal)
@@ -3445,6 +3454,7 @@ func (recv *Table) ConnectColumnReordered(handler func(instance *Table)) int {
 		argInstance := TableNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "column-reordered", marshal)
@@ -3461,6 +3471,7 @@ func (recv *Table) ConnectModelChanged(handler func(instance *Table)) int {
 		argInstance := TableNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "model-changed", marshal)
@@ -3483,6 +3494,7 @@ func (recv *Table) ConnectRowDeleted(handler func(instance *Table, arg1 int32, a
 		arg2 := object2.GetInt()
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "row-deleted", marshal)
@@ -3505,6 +3517,7 @@ func (recv *Table) ConnectRowInserted(handler func(instance *Table, arg1 int32, 
 		arg2 := object2.GetInt()
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "row-inserted", marshal)
@@ -3521,6 +3534,7 @@ func (recv *Table) ConnectRowReordered(handler func(instance *Table)) int {
 		argInstance := TableNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "row-reordered", marshal)
@@ -4524,6 +4538,7 @@ func (recv *Text) ConnectTextAttributesChanged(handler func(instance *Text)) int
 		argInstance := TextNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "text-attributes-changed", marshal)
@@ -4543,6 +4558,7 @@ func (recv *Text) ConnectTextCaretMoved(handler func(instance *Text, arg1 int32)
 		arg1 := object1.GetInt()
 
 		handler(argInstance, arg1)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "text-caret-moved", marshal)
@@ -4565,6 +4581,7 @@ func (recv *Text) ConnectTextChanged(handler func(instance *Text, arg1 int32, ar
 		arg2 := object2.GetInt()
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "text-changed", marshal)
@@ -4590,6 +4607,7 @@ func (recv *Text) ConnectTextInsert(handler func(instance *Text, arg1 int32, arg
 		arg3 := object3.GetString()
 
 		handler(argInstance, arg1, arg2, arg3)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "text-insert", marshal)
@@ -4615,6 +4633,7 @@ func (recv *Text) ConnectTextRemove(handler func(instance *Text, arg1 int32, arg
 		arg3 := object3.GetString()
 
 		handler(argInstance, arg1, arg2, arg3)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "text-remove", marshal)
@@ -4631,6 +4650,7 @@ func (recv *Text) ConnectTextSelectionChanged(handler func(instance *Text)) int 
 		argInstance := TextNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "text-selection-changed", marshal)
@@ -5025,6 +5045,7 @@ func (recv *Value) ConnectValueChanged(handler func(instance *Value, value float
 		arg2 := object2.GetString()
 
 		handler(argInstance, arg1, arg2)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "value-changed", marshal)
@@ -5094,6 +5115,7 @@ func (recv *Window) ConnectActivate(handler func(instance *Window)) int {
 		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "activate", marshal)
@@ -5110,6 +5132,7 @@ func (recv *Window) ConnectCreate(handler func(instance *Window)) int {
 		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "create", marshal)
@@ -5126,6 +5149,7 @@ func (recv *Window) ConnectDeactivate(handler func(instance *Window)) int {
 		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "deactivate", marshal)
@@ -5142,6 +5166,7 @@ func (recv *Window) ConnectDestroy(handler func(instance *Window)) int {
 		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "destroy", marshal)
@@ -5158,6 +5183,7 @@ func (recv *Window) ConnectMaximize(handler func(instance *Window)) int {
 		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "maximize", marshal)
@@ -5174,6 +5200,7 @@ func (recv *Window) ConnectMinimize(handler func(instance *Window)) int {
 		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "minimize", marshal)
@@ -5190,6 +5217,7 @@ func (recv *Window) ConnectMove(handler func(instance *Window)) int {
 		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "move", marshal)
@@ -5206,6 +5234,7 @@ func (recv *Window) ConnectResize(handler func(instance *Window)) int {
 		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "resize", marshal)
@@ -5222,6 +5251,7 @@ func (recv *Window) ConnectRestore(handler func(instance *Window)) int {
 		argInstance := WindowNewFromNative(objectInstance.GetObject().Native())
 
 		handler(argInstance)
+
 	}
 
 	return callback.ConnectSignal(recv.Native(), "restore", marshal)
