@@ -23533,7 +23533,39 @@ func CssProviderNew() *CssProvider {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_css_provider_load_from_data' : parameter 'data' of type 'nil' not supported
+var cssProviderLoadFromDataFunction *gi.Function
+var cssProviderLoadFromDataFunction_Once sync.Once
+
+func cssProviderLoadFromDataFunction_Set() error {
+	var err error
+	cssProviderLoadFromDataFunction_Once.Do(func() {
+		err = cssProviderObject_Set()
+		if err != nil {
+			return
+		}
+		cssProviderLoadFromDataFunction, err = cssProviderObject.InvokerNew("load_from_data")
+	})
+	return err
+}
+
+// LoadFromData is a representation of the C type gtk_css_provider_load_from_data.
+func (recv *CssProvider) LoadFromData(data string, length int32) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(data)
+	inArgs[2].SetInt32(length)
+
+	var ret gi.Argument
+
+	err := cssProviderLoadFromDataFunction_Set()
+	if err == nil {
+		ret = cssProviderLoadFromDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_css_provider_load_from_file' : parameter 'file' of type 'Gio.File' not supported
 

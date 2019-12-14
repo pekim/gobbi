@@ -3,6 +3,7 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
+	"strings"
 )
 
 type Parameter struct {
@@ -15,6 +16,9 @@ type Parameter struct {
 
 	goVarName string
 	namespace *Namespace
+
+	lengthParam    *Parameter
+	lengthForParam *Parameter
 }
 
 func (p *Parameter) init(ns *Namespace) {
@@ -58,18 +62,32 @@ func (p *Parameter) isOut() bool {
 }
 
 func (p *Parameter) generateInDeclaration(g *jen.Group) {
+	if p.Array != nil && strings.HasSuffix(p.Array.CType, "gchar*") {
+		g.Id(p.goVarName).String()
+		return
+	}
+
 	goType, err := p.Type.jenGoType()
 	if err != nil {
 		panic(err)
 	}
 
-	g.
-		Id(p.goVarName).
-		Add(goType)
+	g.Id(p.goVarName).Add(goType)
 }
 
 func (p Parameter) generateInArg(g *jen.Group, index int) {
 	goVar := jen.Id(p.goVarName)
+
+	if p.Array != nil && strings.HasSuffix(p.Array.CType, "gchar*") {
+		// inArgs[<index>].Set...(<goVar>)
+		g.
+			Id("inArgs").
+			Index(jen.Lit(index)).
+			Dot("SetString").
+			Call(goVar)
+
+		return
+	}
 
 	if p.Type.isAlias() {
 		typ := p.Type.resolvedType()

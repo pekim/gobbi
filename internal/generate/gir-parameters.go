@@ -13,6 +13,22 @@ func (pp Parameters) init(ns *Namespace) {
 	//pp.fixupFormatArgs()
 
 	for _, param := range pp {
+		if param.Array == nil {
+			continue
+		}
+		array := param.Array
+
+		if array.Length != nil {
+			arrayParam := param
+			lengthParam := pp[*array.Length]
+
+			// Mutually reference the array and length params.
+			lengthParam.lengthForParam = arrayParam
+			arrayParam.lengthParam = lengthParam
+		}
+	}
+
+	for _, param := range pp {
 		param.init(ns)
 
 		//if param.Array != nil {

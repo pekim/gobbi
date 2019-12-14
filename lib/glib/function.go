@@ -1414,13 +1414,77 @@ func Base64Decode(text string) uint64 {
 	return out0
 }
 
-// UNSUPPORTED : C value 'g_base64_decode_inplace' : parameter 'text' of type 'nil' not supported
+var base64DecodeInplaceFunction *gi.Function
+var base64DecodeInplaceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_base64_decode_step' : parameter 'in' of type 'nil' not supported
+func base64DecodeInplaceFunction_Set() error {
+	var err error
+	base64DecodeInplaceFunction_Once.Do(func() {
+		base64DecodeInplaceFunction, err = gi.FunctionInvokerNew("GLib", "base64_decode_inplace")
+	})
+	return err
+}
+
+// Base64DecodeInplace is a representation of the C type g_base64_decode_inplace.
+func Base64DecodeInplace(text string, outLen uint64) (uint8, string, uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(text)
+	inArgs[1].SetUint64(outLen)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := base64DecodeInplaceFunction_Set()
+	if err == nil {
+		ret = base64DecodeInplaceFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Uint8()
+	// what here?
+	out0 := outArgs[0].String(true)
+	out1 := outArgs[1].Uint64()
+
+	return retGo, out0, out1
+}
+
+// UNSUPPORTED : C value 'g_base64_decode_step' : parameter 'out' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_base64_encode' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_base64_encode_close' : parameter 'out' of type 'nil' not supported
+var base64EncodeCloseFunction *gi.Function
+var base64EncodeCloseFunction_Once sync.Once
+
+func base64EncodeCloseFunction_Set() error {
+	var err error
+	base64EncodeCloseFunction_Once.Do(func() {
+		base64EncodeCloseFunction, err = gi.FunctionInvokerNew("GLib", "base64_encode_close")
+	})
+	return err
+}
+
+// Base64EncodeClose is a representation of the C type g_base64_encode_close.
+func Base64EncodeClose(breakLines bool, state int32, save int32) (uint64, string, int32, int32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetBoolean(breakLines)
+	inArgs[1].SetInt32(state)
+	inArgs[2].SetInt32(save)
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := base64EncodeCloseFunction_Set()
+	if err == nil {
+		ret = base64EncodeCloseFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Uint64()
+	// what here?
+	out0 := outArgs[0].String(true)
+	out1 := outArgs[1].Int32()
+	out2 := outArgs[2].Int32()
+
+	return retGo, out0, out1, out2
+}
 
 // UNSUPPORTED : C value 'g_base64_encode_step' : parameter 'in' of type 'nil' not supported
 
@@ -1979,7 +2043,37 @@ func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) strin
 
 // UNSUPPORTED : C value 'g_compute_hmac_for_string' : parameter 'key' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_convert' : parameter 'str' of type 'nil' not supported
+var convertFunction *gi.Function
+var convertFunction_Once sync.Once
+
+func convertFunction_Set() error {
+	var err error
+	convertFunction_Once.Do(func() {
+		convertFunction, err = gi.FunctionInvokerNew("GLib", "convert")
+	})
+	return err
+}
+
+// Convert is a representation of the C type g_convert.
+func Convert(str string, len int32, toCodeset string, fromCodeset string) (uint64, uint64) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+	inArgs[2].SetString(toCodeset)
+	inArgs[3].SetString(fromCodeset)
+
+	var outArgs [2]gi.Argument
+
+	err := convertFunction_Set()
+	if err == nil {
+		convertFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+	out1 := outArgs[1].Uint64()
+
+	return out0, out1
+}
 
 var convertErrorQuarkFunction *gi.Function
 var convertErrorQuarkFunction_Once sync.Once
@@ -2007,9 +2101,69 @@ func ConvertErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_convert_with_fallback' : parameter 'str' of type 'nil' not supported
+var convertWithFallbackFunction *gi.Function
+var convertWithFallbackFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_convert_with_iconv' : parameter 'str' of type 'nil' not supported
+func convertWithFallbackFunction_Set() error {
+	var err error
+	convertWithFallbackFunction_Once.Do(func() {
+		convertWithFallbackFunction, err = gi.FunctionInvokerNew("GLib", "convert_with_fallback")
+	})
+	return err
+}
+
+// ConvertWithFallback is a representation of the C type g_convert_with_fallback.
+func ConvertWithFallback(str string, len int32, toCodeset string, fromCodeset string, fallback string) (uint64, uint64) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+	inArgs[2].SetString(toCodeset)
+	inArgs[3].SetString(fromCodeset)
+	inArgs[4].SetString(fallback)
+
+	var outArgs [2]gi.Argument
+
+	err := convertWithFallbackFunction_Set()
+	if err == nil {
+		convertWithFallbackFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+	out1 := outArgs[1].Uint64()
+
+	return out0, out1
+}
+
+var convertWithIconvFunction *gi.Function
+var convertWithIconvFunction_Once sync.Once
+
+func convertWithIconvFunction_Set() error {
+	var err error
+	convertWithIconvFunction_Once.Do(func() {
+		convertWithIconvFunction, err = gi.FunctionInvokerNew("GLib", "convert_with_iconv")
+	})
+	return err
+}
+
+// ConvertWithIconv is a representation of the C type g_convert_with_iconv.
+func ConvertWithIconv(str string, len int32, converter *IConv) (uint64, uint64) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(len)
+	inArgs[2].SetPointer(converter.Native())
+
+	var outArgs [2]gi.Argument
+
+	err := convertWithIconvFunction_Set()
+	if err == nil {
+		convertWithIconvFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+	out1 := outArgs[1].Uint64()
+
+	return out0, out1
+}
 
 var datalistClearFunction *gi.Function
 var datalistClearFunction_Once sync.Once
@@ -3130,7 +3284,35 @@ func FileReadLink(filename string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_set_contents' : parameter 'contents' of type 'nil' not supported
+var fileSetContentsFunction *gi.Function
+var fileSetContentsFunction_Once sync.Once
+
+func fileSetContentsFunction_Set() error {
+	var err error
+	fileSetContentsFunction_Once.Do(func() {
+		fileSetContentsFunction, err = gi.FunctionInvokerNew("GLib", "file_set_contents")
+	})
+	return err
+}
+
+// FileSetContents is a representation of the C type g_file_set_contents.
+func FileSetContents(filename string, contents string, length int32) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetString(contents)
+	inArgs[2].SetInt32(length)
+
+	var ret gi.Argument
+
+	err := fileSetContentsFunction_Set()
+	if err == nil {
+		ret = fileSetContentsFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileTestFunction *gi.Function
 var fileTestFunction_Once sync.Once
@@ -4946,7 +5128,37 @@ func LocaleFromUtf8(utf8string string, len int32) (uint64, uint64) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'g_locale_to_utf8' : parameter 'opsysstring' of type 'nil' not supported
+var localeToUtf8Function *gi.Function
+var localeToUtf8Function_Once sync.Once
+
+func localeToUtf8Function_Set() error {
+	var err error
+	localeToUtf8Function_Once.Do(func() {
+		localeToUtf8Function, err = gi.FunctionInvokerNew("GLib", "locale_to_utf8")
+	})
+	return err
+}
+
+// LocaleToUtf8 is a representation of the C type g_locale_to_utf8.
+func LocaleToUtf8(opsysstring string, len int32) (string, uint64, uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(opsysstring)
+	inArgs[1].SetInt32(len)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := localeToUtf8Function_Set()
+	if err == nil {
+		ret = localeToUtf8Function.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.String(true)
+	out0 := outArgs[0].Uint64()
+	out1 := outArgs[1].Uint64()
+
+	return retGo, out0, out1
+}
 
 // UNSUPPORTED : C value 'g_log' : parameter '...' of type 'nil' not supported
 
@@ -7077,7 +7289,34 @@ func RegexEscapeNul(string_ string, length int32) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_regex_escape_string' : parameter 'string' of type 'nil' not supported
+var regexEscapeStringFunction *gi.Function
+var regexEscapeStringFunction_Once sync.Once
+
+func regexEscapeStringFunction_Set() error {
+	var err error
+	regexEscapeStringFunction_Once.Do(func() {
+		regexEscapeStringFunction, err = gi.FunctionInvokerNew("GLib", "regex_escape_string")
+	})
+	return err
+}
+
+// RegexEscapeString is a representation of the C type g_regex_escape_string.
+func RegexEscapeString(string_ string, length int32) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(string_)
+	inArgs[1].SetInt32(length)
+
+	var ret gi.Argument
+
+	err := regexEscapeStringFunction_Set()
+	if err == nil {
+		ret = regexEscapeStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var regexMatchSimpleFunction *gi.Function
 var regexMatchSimpleFunction_Once sync.Once
@@ -11904,9 +12143,67 @@ func Utf8ToUtf16(str string, len int64) (uint16, int64, int64) {
 	return retGo, out0, out1
 }
 
-// UNSUPPORTED : C value 'g_utf8_validate' : parameter 'str' of type 'nil' not supported
+var utf8ValidateFunction *gi.Function
+var utf8ValidateFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_utf8_validate_len' : parameter 'str' of type 'nil' not supported
+func utf8ValidateFunction_Set() error {
+	var err error
+	utf8ValidateFunction_Once.Do(func() {
+		utf8ValidateFunction, err = gi.FunctionInvokerNew("GLib", "utf8_validate")
+	})
+	return err
+}
+
+// Utf8Validate is a representation of the C type g_utf8_validate.
+func Utf8Validate(str string, maxLen int32) (bool, string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetInt32(maxLen)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := utf8ValidateFunction_Set()
+	if err == nil {
+		ret = utf8ValidateFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(false)
+
+	return retGo, out0
+}
+
+var utf8ValidateLenFunction *gi.Function
+var utf8ValidateLenFunction_Once sync.Once
+
+func utf8ValidateLenFunction_Set() error {
+	var err error
+	utf8ValidateLenFunction_Once.Do(func() {
+		utf8ValidateLenFunction, err = gi.FunctionInvokerNew("GLib", "utf8_validate_len")
+	})
+	return err
+}
+
+// Utf8ValidateLen is a representation of the C type g_utf8_validate_len.
+func Utf8ValidateLen(str string, maxLen uint64) (bool, string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(str)
+	inArgs[1].SetUint64(maxLen)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := utf8ValidateLenFunction_Set()
+	if err == nil {
+		ret = utf8ValidateLenFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(false)
+
+	return retGo, out0
+}
 
 var uuidStringIsValidFunction *gi.Function
 var uuidStringIsValidFunction_Once sync.Once

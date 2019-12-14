@@ -1483,7 +1483,39 @@ func (recv *BookmarkFile) HasItem(uri string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_load_from_data' : parameter 'data' of type 'nil' not supported
+var bookmarkFileLoadFromDataFunction *gi.Function
+var bookmarkFileLoadFromDataFunction_Once sync.Once
+
+func bookmarkFileLoadFromDataFunction_Set() error {
+	var err error
+	bookmarkFileLoadFromDataFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileLoadFromDataFunction, err = bookmarkFileStruct.InvokerNew("load_from_data")
+	})
+	return err
+}
+
+// LoadFromData is a representation of the C type g_bookmark_file_load_from_data.
+func (recv *BookmarkFile) LoadFromData(data string, length uint64) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(data)
+	inArgs[2].SetUint64(length)
+
+	var ret gi.Argument
+
+	err := bookmarkFileLoadFromDataFunction_Set()
+	if err == nil {
+		ret = bookmarkFileLoadFromDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var bookmarkFileLoadFromDataDirsFunction *gi.Function
 var bookmarkFileLoadFromDataDirsFunction_Once sync.Once
@@ -7530,7 +7562,42 @@ func (recv *IOChannel) Read(buf string, count uint64, bytesRead uint64) IOError 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_channel_read_chars' : parameter 'buf' of type 'nil' not supported
+var iOChannelReadCharsFunction *gi.Function
+var iOChannelReadCharsFunction_Once sync.Once
+
+func iOChannelReadCharsFunction_Set() error {
+	var err error
+	iOChannelReadCharsFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelReadCharsFunction, err = iOChannelStruct.InvokerNew("read_chars")
+	})
+	return err
+}
+
+// ReadChars is a representation of the C type g_io_channel_read_chars.
+func (recv *IOChannel) ReadChars(count uint64) (IOStatus, string, uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetUint64(count)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := iOChannelReadCharsFunction_Set()
+	if err == nil {
+		ret = iOChannelReadCharsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := IOStatus(ret.Int32())
+	// what here?
+	out0 := outArgs[0].String(false)
+	out1 := outArgs[1].Uint64()
+
+	return retGo, out0, out1
+}
 
 var iOChannelReadLineFunction *gi.Function
 var iOChannelReadLineFunction_Once sync.Once
@@ -8017,7 +8084,41 @@ func (recv *IOChannel) Write(buf string, count uint64, bytesWritten uint64) IOEr
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_io_channel_write_chars' : parameter 'buf' of type 'nil' not supported
+var iOChannelWriteCharsFunction *gi.Function
+var iOChannelWriteCharsFunction_Once sync.Once
+
+func iOChannelWriteCharsFunction_Set() error {
+	var err error
+	iOChannelWriteCharsFunction_Once.Do(func() {
+		err = iOChannelStruct_Set()
+		if err != nil {
+			return
+		}
+		iOChannelWriteCharsFunction, err = iOChannelStruct.InvokerNew("write_chars")
+	})
+	return err
+}
+
+// WriteChars is a representation of the C type g_io_channel_write_chars.
+func (recv *IOChannel) WriteChars(buf string, count int32) (IOStatus, uint64) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(buf)
+	inArgs[2].SetInt32(count)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := iOChannelWriteCharsFunction_Set()
+	if err == nil {
+		ret = iOChannelWriteCharsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := IOStatus(ret.Int32())
+	out0 := outArgs[0].Uint64()
+
+	return retGo, out0
+}
 
 // UNSUPPORTED : C value 'g_io_channel_write_unichar' : parameter 'thechar' of type 'gunichar' not supported
 
@@ -16012,9 +16113,81 @@ func (recv *Regex) MatchAll(string_ string, matchOptions RegexMatchFlags) (bool,
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'g_regex_match_all_full' : parameter 'string' of type 'nil' not supported
+var regexMatchAllFullFunction *gi.Function
+var regexMatchAllFullFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_regex_match_full' : parameter 'string' of type 'nil' not supported
+func regexMatchAllFullFunction_Set() error {
+	var err error
+	regexMatchAllFullFunction_Once.Do(func() {
+		err = regexStruct_Set()
+		if err != nil {
+			return
+		}
+		regexMatchAllFullFunction, err = regexStruct.InvokerNew("match_all_full")
+	})
+	return err
+}
+
+// MatchAllFull is a representation of the C type g_regex_match_all_full.
+func (recv *Regex) MatchAllFull(string_ string, stringLen int32, startPosition int32, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(string_)
+	inArgs[2].SetInt32(stringLen)
+	inArgs[3].SetInt32(startPosition)
+	inArgs[4].SetInt32(int32(matchOptions))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := regexMatchAllFullFunction_Set()
+	if err == nil {
+		ret = regexMatchAllFullFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := MatchInfoNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
+
+var regexMatchFullFunction *gi.Function
+var regexMatchFullFunction_Once sync.Once
+
+func regexMatchFullFunction_Set() error {
+	var err error
+	regexMatchFullFunction_Once.Do(func() {
+		err = regexStruct_Set()
+		if err != nil {
+			return
+		}
+		regexMatchFullFunction, err = regexStruct.InvokerNew("match_full")
+	})
+	return err
+}
+
+// MatchFull is a representation of the C type g_regex_match_full.
+func (recv *Regex) MatchFull(string_ string, stringLen int32, startPosition int32, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(string_)
+	inArgs[2].SetInt32(stringLen)
+	inArgs[3].SetInt32(startPosition)
+	inArgs[4].SetInt32(int32(matchOptions))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := regexMatchFullFunction_Set()
+	if err == nil {
+		ret = regexMatchFullFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := MatchInfoNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var regexRefFunction *gi.Function
 var regexRefFunction_Once sync.Once
@@ -16048,11 +16221,81 @@ func (recv *Regex) Ref() *Regex {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_regex_replace' : parameter 'string' of type 'nil' not supported
+var regexReplaceFunction *gi.Function
+var regexReplaceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_regex_replace_eval' : parameter 'string' of type 'nil' not supported
+func regexReplaceFunction_Set() error {
+	var err error
+	regexReplaceFunction_Once.Do(func() {
+		err = regexStruct_Set()
+		if err != nil {
+			return
+		}
+		regexReplaceFunction, err = regexStruct.InvokerNew("replace")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_regex_replace_literal' : parameter 'string' of type 'nil' not supported
+// Replace is a representation of the C type g_regex_replace.
+func (recv *Regex) Replace(string_ string, stringLen int32, startPosition int32, replacement string, matchOptions RegexMatchFlags) string {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(string_)
+	inArgs[2].SetInt32(stringLen)
+	inArgs[3].SetInt32(startPosition)
+	inArgs[4].SetString(replacement)
+	inArgs[5].SetInt32(int32(matchOptions))
+
+	var ret gi.Argument
+
+	err := regexReplaceFunction_Set()
+	if err == nil {
+		ret = regexReplaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_regex_replace_eval' : parameter 'eval' of type 'RegexEvalCallback' not supported
+
+var regexReplaceLiteralFunction *gi.Function
+var regexReplaceLiteralFunction_Once sync.Once
+
+func regexReplaceLiteralFunction_Set() error {
+	var err error
+	regexReplaceLiteralFunction_Once.Do(func() {
+		err = regexStruct_Set()
+		if err != nil {
+			return
+		}
+		regexReplaceLiteralFunction, err = regexStruct.InvokerNew("replace_literal")
+	})
+	return err
+}
+
+// ReplaceLiteral is a representation of the C type g_regex_replace_literal.
+func (recv *Regex) ReplaceLiteral(string_ string, stringLen int32, startPosition int32, replacement string, matchOptions RegexMatchFlags) string {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(string_)
+	inArgs[2].SetInt32(stringLen)
+	inArgs[3].SetInt32(startPosition)
+	inArgs[4].SetString(replacement)
+	inArgs[5].SetInt32(int32(matchOptions))
+
+	var ret gi.Argument
+
+	err := regexReplaceLiteralFunction_Set()
+	if err == nil {
+		ret = regexReplaceLiteralFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var regexSplitFunction *gi.Function
 var regexSplitFunction_Once sync.Once
@@ -16084,7 +16327,38 @@ func (recv *Regex) Split(string_ string, matchOptions RegexMatchFlags) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_regex_split_full' : parameter 'string' of type 'nil' not supported
+var regexSplitFullFunction *gi.Function
+var regexSplitFullFunction_Once sync.Once
+
+func regexSplitFullFunction_Set() error {
+	var err error
+	regexSplitFullFunction_Once.Do(func() {
+		err = regexStruct_Set()
+		if err != nil {
+			return
+		}
+		regexSplitFullFunction, err = regexStruct.InvokerNew("split_full")
+	})
+	return err
+}
+
+// SplitFull is a representation of the C type g_regex_split_full.
+func (recv *Regex) SplitFull(string_ string, stringLen int32, startPosition int32, matchOptions RegexMatchFlags, maxTokens int32) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(string_)
+	inArgs[2].SetInt32(stringLen)
+	inArgs[3].SetInt32(startPosition)
+	inArgs[4].SetInt32(int32(matchOptions))
+	inArgs[5].SetInt32(maxTokens)
+
+	err := regexSplitFullFunction_Set()
+	if err == nil {
+		regexSplitFullFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var regexUnrefFunction *gi.Function
 var regexUnrefFunction_Once sync.Once
@@ -22590,7 +22864,37 @@ func VariantNewByte(value uint8) *Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_new_bytestring' : parameter 'string' of type 'nil' not supported
+var variantNewBytestringFunction *gi.Function
+var variantNewBytestringFunction_Once sync.Once
+
+func variantNewBytestringFunction_Set() error {
+	var err error
+	variantNewBytestringFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantNewBytestringFunction, err = variantStruct.InvokerNew("new_bytestring")
+	})
+	return err
+}
+
+// VariantNewBytestring is a representation of the C type g_variant_new_bytestring.
+func VariantNewBytestring(string_ string) *Variant {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(string_)
+
+	var ret gi.Argument
+
+	err := variantNewBytestringFunction_Set()
+	if err == nil {
+		ret = variantNewBytestringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_variant_new_bytestring_array' : parameter 'strv' of type 'nil' not supported
 
