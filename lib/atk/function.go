@@ -4,6 +4,7 @@ package atk
 
 import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
+	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 )
 
@@ -13,7 +14,29 @@ import (
 
 // UNSUPPORTED : C value 'atk_add_key_event_listener' : parameter 'listener' of type 'KeySnoopFunc' not supported
 
-// UNSUPPORTED : C value 'atk_attribute_set_free' : parameter 'attrib_set' of type 'AttributeSet' not supported
+var attributeSetFreeFunction *gi.Function
+var attributeSetFreeFunction_Once sync.Once
+
+func attributeSetFreeFunction_Set() error {
+	var err error
+	attributeSetFreeFunction_Once.Do(func() {
+		attributeSetFreeFunction, err = gi.FunctionInvokerNew("Atk", "attribute_set_free")
+	})
+	return err
+}
+
+// AttributeSetFree is a representation of the C type atk_attribute_set_free.
+func AttributeSetFree(attribSet AttributeSet) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer((*glib.SList)(attribSet).Native())
+
+	err := attributeSetFreeFunction_Set()
+	if err == nil {
+		attributeSetFreeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'atk_focus_tracker_init' : parameter 'init' of type 'EventListenerInit' not supported
 

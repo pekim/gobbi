@@ -1412,7 +1412,40 @@ func (recv *EditableText) PasteText(position int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'atk_editable_text_set_run_attributes' : parameter 'attrib_set' of type 'AttributeSet' not supported
+var editableTextSetRunAttributesFunction *gi.Function
+var editableTextSetRunAttributesFunction_Once sync.Once
+
+func editableTextSetRunAttributesFunction_Set() error {
+	var err error
+	editableTextSetRunAttributesFunction_Once.Do(func() {
+		err = editableTextInterface_Set()
+		if err != nil {
+			return
+		}
+		editableTextSetRunAttributesFunction, err = editableTextInterface.InvokerNew("set_run_attributes")
+	})
+	return err
+}
+
+// SetRunAttributes is a representation of the C type atk_editable_text_set_run_attributes.
+func (recv *EditableText) SetRunAttributes(attribSet AttributeSet, startOffset int32, endOffset int32) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer((*glib.SList)(attribSet).Native())
+	inArgs[2].SetInt32(startOffset)
+	inArgs[3].SetInt32(endOffset)
+
+	var ret gi.Argument
+
+	err := editableTextSetRunAttributesFunction_Set()
+	if err == nil {
+		ret = editableTextSetRunAttributesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var editableTextSetTextContentsFunction *gi.Function
 var editableTextSetTextContentsFunction_Once sync.Once

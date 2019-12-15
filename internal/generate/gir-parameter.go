@@ -91,10 +91,18 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 
 	if p.Type.isAlias() {
 		typ := p.Type.resolvedType()
+		goType, _ := typ.jenGoType()
 
-		goVar = jen.
-			Add(jenGoTypes[typ.Name]).
-			Parens(goVar)
+		if typ.isRecord() || typ.isInterface() {
+			goVar = jen.
+				Parens(goType).
+				Parens(goVar).
+				Dot(nativeAccessorName).Call()
+		} else {
+			goVar = jen.
+				Add(goType).
+				Parens(goVar)
+		}
 	}
 
 	if p.Type.isBitfield() || p.Type.isEnumeration() {

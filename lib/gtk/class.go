@@ -114955,7 +114955,38 @@ func (recv *Widget) GetAllocatedHeight() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_get_allocated_size' : parameter 'allocation' of type 'Allocation' not supported
+var widgetGetAllocatedSizeFunction *gi.Function
+var widgetGetAllocatedSizeFunction_Once sync.Once
+
+func widgetGetAllocatedSizeFunction_Set() error {
+	var err error
+	widgetGetAllocatedSizeFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetGetAllocatedSizeFunction, err = widgetObject.InvokerNew("get_allocated_size")
+	})
+	return err
+}
+
+// GetAllocatedSize is a representation of the C type gtk_widget_get_allocated_size.
+func (recv *Widget) GetAllocatedSize() (Allocation, int32) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [2]gi.Argument
+
+	err := widgetGetAllocatedSizeFunction_Set()
+	if err == nil {
+		widgetGetAllocatedSizeFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := Allocation(outArgs[0].Pointer())
+	out1 := outArgs[1].Int32()
+
+	return out0, out1
+}
 
 var widgetGetAllocatedWidthFunction *gi.Function
 var widgetGetAllocatedWidthFunction_Once sync.Once
@@ -114989,7 +115020,37 @@ func (recv *Widget) GetAllocatedWidth() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_get_allocation' : parameter 'allocation' of type 'Allocation' not supported
+var widgetGetAllocationFunction *gi.Function
+var widgetGetAllocationFunction_Once sync.Once
+
+func widgetGetAllocationFunction_Set() error {
+	var err error
+	widgetGetAllocationFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetGetAllocationFunction, err = widgetObject.InvokerNew("get_allocation")
+	})
+	return err
+}
+
+// GetAllocation is a representation of the C type gtk_widget_get_allocation.
+func (recv *Widget) GetAllocation() Allocation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := widgetGetAllocationFunction_Set()
+	if err == nil {
+		widgetGetAllocationFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := Allocation(outArgs[0].Pointer())
+
+	return out0
+}
 
 var widgetGetAncestorFunction *gi.Function
 var widgetGetAncestorFunction_Once sync.Once
@@ -115184,7 +115245,37 @@ func (recv *Widget) GetChildVisible() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_get_clip' : parameter 'clip' of type 'Allocation' not supported
+var widgetGetClipFunction *gi.Function
+var widgetGetClipFunction_Once sync.Once
+
+func widgetGetClipFunction_Set() error {
+	var err error
+	widgetGetClipFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetGetClipFunction, err = widgetObject.InvokerNew("get_clip")
+	})
+	return err
+}
+
+// GetClip is a representation of the C type gtk_widget_get_clip.
+func (recv *Widget) GetClip() Allocation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := widgetGetClipFunction_Set()
+	if err == nil {
+		widgetGetClipFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := Allocation(outArgs[0].Pointer())
+
+	return out0
+}
 
 var widgetGetClipboardFunction *gi.Function
 var widgetGetClipboardFunction_Once sync.Once
@@ -119146,7 +119237,34 @@ func (recv *Widget) SetAccelPath(accelPath string, accelGroup *AccelGroup) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_set_allocation' : parameter 'allocation' of type 'Allocation' not supported
+var widgetSetAllocationFunction *gi.Function
+var widgetSetAllocationFunction_Once sync.Once
+
+func widgetSetAllocationFunction_Set() error {
+	var err error
+	widgetSetAllocationFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetSetAllocationFunction, err = widgetObject.InvokerNew("set_allocation")
+	})
+	return err
+}
+
+// SetAllocation is a representation of the C type gtk_widget_set_allocation.
+func (recv *Widget) SetAllocation(allocation Allocation) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer((*gdk.Rectangle)(allocation).Native())
+
+	err := widgetSetAllocationFunction_Set()
+	if err == nil {
+		widgetSetAllocationFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetSetAppPaintableFunction *gi.Function
 var widgetSetAppPaintableFunction_Once sync.Once
@@ -119264,7 +119382,34 @@ func (recv *Widget) SetChildVisible(isVisible bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_set_clip' : parameter 'clip' of type 'Allocation' not supported
+var widgetSetClipFunction *gi.Function
+var widgetSetClipFunction_Once sync.Once
+
+func widgetSetClipFunction_Set() error {
+	var err error
+	widgetSetClipFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetSetClipFunction, err = widgetObject.InvokerNew("set_clip")
+	})
+	return err
+}
+
+// SetClip is a representation of the C type gtk_widget_set_clip.
+func (recv *Widget) SetClip(clip Allocation) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer((*gdk.Rectangle)(clip).Native())
+
+	err := widgetSetClipFunction_Set()
+	if err == nil {
+		widgetSetClipFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetSetCompositeNameFunction *gi.Function
 var widgetSetCompositeNameFunction_Once sync.Once
@@ -120631,9 +120776,64 @@ func (recv *Widget) ShowNow() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_size_allocate' : parameter 'allocation' of type 'Allocation' not supported
+var widgetSizeAllocateFunction *gi.Function
+var widgetSizeAllocateFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_widget_size_allocate_with_baseline' : parameter 'allocation' of type 'Allocation' not supported
+func widgetSizeAllocateFunction_Set() error {
+	var err error
+	widgetSizeAllocateFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetSizeAllocateFunction, err = widgetObject.InvokerNew("size_allocate")
+	})
+	return err
+}
+
+// SizeAllocate is a representation of the C type gtk_widget_size_allocate.
+func (recv *Widget) SizeAllocate(allocation Allocation) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer((*gdk.Rectangle)(allocation).Native())
+
+	err := widgetSizeAllocateFunction_Set()
+	if err == nil {
+		widgetSizeAllocateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var widgetSizeAllocateWithBaselineFunction *gi.Function
+var widgetSizeAllocateWithBaselineFunction_Once sync.Once
+
+func widgetSizeAllocateWithBaselineFunction_Set() error {
+	var err error
+	widgetSizeAllocateWithBaselineFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetSizeAllocateWithBaselineFunction, err = widgetObject.InvokerNew("size_allocate_with_baseline")
+	})
+	return err
+}
+
+// SizeAllocateWithBaseline is a representation of the C type gtk_widget_size_allocate_with_baseline.
+func (recv *Widget) SizeAllocateWithBaseline(allocation Allocation, baseline int32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer((*gdk.Rectangle)(allocation).Native())
+	inArgs[2].SetInt32(baseline)
+
+	err := widgetSizeAllocateWithBaselineFunction_Set()
+	if err == nil {
+		widgetSizeAllocateWithBaselineFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetSizeRequestFunction *gi.Function
 var widgetSizeRequestFunction_Once sync.Once

@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
 	"strconv"
-	"strings"
 )
 
 var jenGoTypes = map[string]*jen.Statement{
@@ -78,11 +77,6 @@ func (t *Type) isQualifiedName() bool {
 }
 
 func (t *Type) isValid() bool {
-	// Pointer aliases are a bit fiddly to support, so don't for now.
-	if t != nil && t.isAlias() && strings.HasSuffix(t.CType, "*") {
-		return false
-	}
-
 	return t != nil && t.Name != ""
 }
 
