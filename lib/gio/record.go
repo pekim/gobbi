@@ -20251,7 +20251,37 @@ func (recv *UnixMountPoint) GuessCanEject() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_point_guess_icon' : return type 'Icon' not supported
+var unixMountPointGuessIconFunction *gi.Function
+var unixMountPointGuessIconFunction_Once sync.Once
+
+func unixMountPointGuessIconFunction_Set() error {
+	var err error
+	unixMountPointGuessIconFunction_Once.Do(func() {
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointGuessIconFunction, err = unixMountPointStruct.InvokerNew("guess_icon")
+	})
+	return err
+}
+
+// GuessIcon is a representation of the C type g_unix_mount_point_guess_icon.
+func (recv *UnixMountPoint) GuessIcon() *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := unixMountPointGuessIconFunction_Set()
+	if err == nil {
+		ret = unixMountPointGuessIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var unixMountPointGuessNameFunction *gi.Function
 var unixMountPointGuessNameFunction_Once sync.Once
@@ -20285,7 +20315,37 @@ func (recv *UnixMountPoint) GuessName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_point_guess_symbolic_icon' : return type 'Icon' not supported
+var unixMountPointGuessSymbolicIconFunction *gi.Function
+var unixMountPointGuessSymbolicIconFunction_Once sync.Once
+
+func unixMountPointGuessSymbolicIconFunction_Set() error {
+	var err error
+	unixMountPointGuessSymbolicIconFunction_Once.Do(func() {
+		err = unixMountPointStruct_Set()
+		if err != nil {
+			return
+		}
+		unixMountPointGuessSymbolicIconFunction, err = unixMountPointStruct.InvokerNew("guess_symbolic_icon")
+	})
+	return err
+}
+
+// GuessSymbolicIcon is a representation of the C type g_unix_mount_point_guess_symbolic_icon.
+func (recv *UnixMountPoint) GuessSymbolicIcon() *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := unixMountPointGuessSymbolicIconFunction_Set()
+	if err == nil {
+		ret = unixMountPointGuessSymbolicIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var unixMountPointIsLoopbackFunction *gi.Function
 var unixMountPointIsLoopbackFunction_Once sync.Once

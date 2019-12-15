@@ -103,7 +103,7 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 			Parens(goVar)
 	}
 
-	if p.Type.isRecord() {
+	if p.Type.isRecord() || p.Type.isInterface() {
 		goVar = goVar.Dot(nativeAccessorName).Call()
 	}
 

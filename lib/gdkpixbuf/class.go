@@ -406,7 +406,39 @@ func PixbufNewFromStreamAtScale(stream *gio.InputStream, width int32, height int
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_stream_finish' : parameter 'async_result' of type 'Gio.AsyncResult' not supported
+var pixbufNewFromStreamFinishFunction *gi.Function
+var pixbufNewFromStreamFinishFunction_Once sync.Once
+
+func pixbufNewFromStreamFinishFunction_Set() error {
+	var err error
+	pixbufNewFromStreamFinishFunction_Once.Do(func() {
+		err = pixbufObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufNewFromStreamFinishFunction, err = pixbufObject.InvokerNew("new_from_stream_finish")
+	})
+	return err
+}
+
+// PixbufNewFromStreamFinish is a representation of the C type gdk_pixbuf_new_from_stream_finish.
+func PixbufNewFromStreamFinish(asyncResult *gio.AsyncResult) *Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(asyncResult.Native())
+
+	var ret gi.Argument
+
+	err := pixbufNewFromStreamFinishFunction_Set()
+	if err == nil {
+		ret = pixbufNewFromStreamFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PixbufNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gdk_pixbuf_new_from_xpm_data' : parameter 'data' of type 'nil' not supported
 
@@ -1700,7 +1732,39 @@ func PixbufAnimationNewFromStream(stream *gio.InputStream, cancellable *gio.Canc
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_animation_new_from_stream_finish' : parameter 'async_result' of type 'Gio.AsyncResult' not supported
+var pixbufAnimationNewFromStreamFinishFunction *gi.Function
+var pixbufAnimationNewFromStreamFinishFunction_Once sync.Once
+
+func pixbufAnimationNewFromStreamFinishFunction_Set() error {
+	var err error
+	pixbufAnimationNewFromStreamFinishFunction_Once.Do(func() {
+		err = pixbufAnimationObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufAnimationNewFromStreamFinishFunction, err = pixbufAnimationObject.InvokerNew("new_from_stream_finish")
+	})
+	return err
+}
+
+// PixbufAnimationNewFromStreamFinish is a representation of the C type gdk_pixbuf_animation_new_from_stream_finish.
+func PixbufAnimationNewFromStreamFinish(asyncResult *gio.AsyncResult) *PixbufAnimation {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(asyncResult.Native())
+
+	var ret gi.Argument
+
+	err := pixbufAnimationNewFromStreamFinishFunction_Set()
+	if err == nil {
+		ret = pixbufAnimationNewFromStreamFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PixbufAnimationNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var pixbufAnimationGetHeightFunction *gi.Function
 var pixbufAnimationGetHeightFunction_Once sync.Once

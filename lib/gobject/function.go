@@ -3007,7 +3007,31 @@ func TypeAddInstancePrivate(classType int64, privateSize uint64) int32 {
 
 // UNSUPPORTED : C value 'g_type_add_interface_check' : parameter 'check_func' of type 'TypeInterfaceCheckFunc' not supported
 
-// UNSUPPORTED : C value 'g_type_add_interface_dynamic' : parameter 'plugin' of type 'TypePlugin' not supported
+var typeAddInterfaceDynamicFunction *gi.Function
+var typeAddInterfaceDynamicFunction_Once sync.Once
+
+func typeAddInterfaceDynamicFunction_Set() error {
+	var err error
+	typeAddInterfaceDynamicFunction_Once.Do(func() {
+		typeAddInterfaceDynamicFunction, err = gi.FunctionInvokerNew("GObject", "type_add_interface_dynamic")
+	})
+	return err
+}
+
+// TypeAddInterfaceDynamic is a representation of the C type g_type_add_interface_dynamic.
+func TypeAddInterfaceDynamic(instanceType int64, interfaceType int64, plugin *TypePlugin) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt64(instanceType)
+	inArgs[1].SetInt64(interfaceType)
+	inArgs[2].SetPointer(plugin.Native())
+
+	err := typeAddInterfaceDynamicFunction_Set()
+	if err == nil {
+		typeAddInterfaceDynamicFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var typeAddInterfaceStaticFunction *gi.Function
 var typeAddInterfaceStaticFunction_Once sync.Once
@@ -3724,7 +3748,33 @@ func TypeGetInstanceCount(type_ int64) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_type_get_plugin' : return type 'TypePlugin' not supported
+var typeGetPluginFunction *gi.Function
+var typeGetPluginFunction_Once sync.Once
+
+func typeGetPluginFunction_Set() error {
+	var err error
+	typeGetPluginFunction_Once.Do(func() {
+		typeGetPluginFunction, err = gi.FunctionInvokerNew("GObject", "type_get_plugin")
+	})
+	return err
+}
+
+// TypeGetPlugin is a representation of the C type g_type_get_plugin.
+func TypeGetPlugin(type_ int64) *TypePlugin {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetInt64(type_)
+
+	var ret gi.Argument
+
+	err := typeGetPluginFunction_Set()
+	if err == nil {
+		ret = typeGetPluginFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TypePluginNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var typeGetQdataFunction *gi.Function
 var typeGetQdataFunction_Once sync.Once
@@ -3852,7 +3902,34 @@ func TypeInterfaceAddPrerequisite(interfaceType int64, prerequisiteType int64) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_type_interface_get_plugin' : return type 'TypePlugin' not supported
+var typeInterfaceGetPluginFunction *gi.Function
+var typeInterfaceGetPluginFunction_Once sync.Once
+
+func typeInterfaceGetPluginFunction_Set() error {
+	var err error
+	typeInterfaceGetPluginFunction_Once.Do(func() {
+		typeInterfaceGetPluginFunction, err = gi.FunctionInvokerNew("GObject", "type_interface_get_plugin")
+	})
+	return err
+}
+
+// TypeInterfaceGetPlugin is a representation of the C type g_type_interface_get_plugin.
+func TypeInterfaceGetPlugin(instanceType int64, interfaceType int64) *TypePlugin {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt64(instanceType)
+	inArgs[1].SetInt64(interfaceType)
+
+	var ret gi.Argument
+
+	err := typeInterfaceGetPluginFunction_Set()
+	if err == nil {
+		ret = typeInterfaceGetPluginFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TypePluginNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var typeInterfacePeekFunction *gi.Function
 var typeInterfacePeekFunction_Once sync.Once
@@ -4165,7 +4242,36 @@ func TypeQuery__(type_ int64) *TypeQuery {
 	return out0
 }
 
-// UNSUPPORTED : C value 'g_type_register_dynamic' : parameter 'plugin' of type 'TypePlugin' not supported
+var typeRegisterDynamicFunction *gi.Function
+var typeRegisterDynamicFunction_Once sync.Once
+
+func typeRegisterDynamicFunction_Set() error {
+	var err error
+	typeRegisterDynamicFunction_Once.Do(func() {
+		typeRegisterDynamicFunction, err = gi.FunctionInvokerNew("GObject", "type_register_dynamic")
+	})
+	return err
+}
+
+// TypeRegisterDynamic is a representation of the C type g_type_register_dynamic.
+func TypeRegisterDynamic(parentType int64, typeName string, plugin *TypePlugin, flags TypeFlags) int64 {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetInt64(parentType)
+	inArgs[1].SetString(typeName)
+	inArgs[2].SetPointer(plugin.Native())
+	inArgs[3].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := typeRegisterDynamicFunction_Set()
+	if err == nil {
+		ret = typeRegisterDynamicFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int64()
+
+	return retGo
+}
 
 var typeRegisterFundamentalFunction *gi.Function
 var typeRegisterFundamentalFunction_Once sync.Once

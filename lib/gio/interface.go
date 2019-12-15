@@ -931,11 +931,69 @@ func (recv *ActionMap) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_action_map_add_action' : parameter 'action' of type 'Action' not supported
+var actionMapAddActionFunction *gi.Function
+var actionMapAddActionFunction_Once sync.Once
+
+func actionMapAddActionFunction_Set() error {
+	var err error
+	actionMapAddActionFunction_Once.Do(func() {
+		err = actionMapInterface_Set()
+		if err != nil {
+			return
+		}
+		actionMapAddActionFunction, err = actionMapInterface.InvokerNew("add_action")
+	})
+	return err
+}
+
+// AddAction is a representation of the C type g_action_map_add_action.
+func (recv *ActionMap) AddAction(action *Action) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(action.Native())
+
+	err := actionMapAddActionFunction_Set()
+	if err == nil {
+		actionMapAddActionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'g_action_map_add_action_entries' : parameter 'entries' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_action_map_lookup_action' : return type 'Action' not supported
+var actionMapLookupActionFunction *gi.Function
+var actionMapLookupActionFunction_Once sync.Once
+
+func actionMapLookupActionFunction_Set() error {
+	var err error
+	actionMapLookupActionFunction_Once.Do(func() {
+		err = actionMapInterface_Set()
+		if err != nil {
+			return
+		}
+		actionMapLookupActionFunction, err = actionMapInterface.InvokerNew("lookup_action")
+	})
+	return err
+}
+
+// LookupAction is a representation of the C type g_action_map_lookup_action.
+func (recv *ActionMap) LookupAction(actionName string) *Action {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(actionName)
+
+	var ret gi.Argument
+
+	err := actionMapLookupActionFunction_Set()
+	if err == nil {
+		ret = actionMapLookupActionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ActionNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var actionMapRemoveActionFunction *gi.Function
 var actionMapRemoveActionFunction_Once sync.Once
@@ -1139,9 +1197,70 @@ func (recv *AppInfo) Delete() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_app_info_dup' : return type 'AppInfo' not supported
+var appInfoDupFunction *gi.Function
+var appInfoDupFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_app_info_equal' : parameter 'appinfo2' of type 'AppInfo' not supported
+func appInfoDupFunction_Set() error {
+	var err error
+	appInfoDupFunction_Once.Do(func() {
+		err = appInfoInterface_Set()
+		if err != nil {
+			return
+		}
+		appInfoDupFunction, err = appInfoInterface.InvokerNew("dup")
+	})
+	return err
+}
+
+// Dup is a representation of the C type g_app_info_dup.
+func (recv *AppInfo) Dup() *AppInfo {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := appInfoDupFunction_Set()
+	if err == nil {
+		ret = appInfoDupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AppInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var appInfoEqualFunction *gi.Function
+var appInfoEqualFunction_Once sync.Once
+
+func appInfoEqualFunction_Set() error {
+	var err error
+	appInfoEqualFunction_Once.Do(func() {
+		err = appInfoInterface_Set()
+		if err != nil {
+			return
+		}
+		appInfoEqualFunction, err = appInfoInterface.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type g_app_info_equal.
+func (recv *AppInfo) Equal(appinfo2 *AppInfo) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(appinfo2.Native())
+
+	var ret gi.Argument
+
+	err := appInfoEqualFunction_Set()
+	if err == nil {
+		ret = appInfoEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var appInfoGetCommandlineFunction *gi.Function
 var appInfoGetCommandlineFunction_Once sync.Once
@@ -1271,7 +1390,37 @@ func (recv *AppInfo) GetExecutable() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_app_info_get_icon' : return type 'Icon' not supported
+var appInfoGetIconFunction *gi.Function
+var appInfoGetIconFunction_Once sync.Once
+
+func appInfoGetIconFunction_Set() error {
+	var err error
+	appInfoGetIconFunction_Once.Do(func() {
+		err = appInfoInterface_Set()
+		if err != nil {
+			return
+		}
+		appInfoGetIconFunction, err = appInfoInterface.InvokerNew("get_icon")
+	})
+	return err
+}
+
+// GetIcon is a representation of the C type g_app_info_get_icon.
+func (recv *AppInfo) GetIcon() *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := appInfoGetIconFunction_Set()
+	if err == nil {
+		ret = appInfoGetIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var appInfoGetIdFunction *gi.Function
 var appInfoGetIdFunction_Once sync.Once
@@ -1435,7 +1584,38 @@ func (recv *AppInfo) LaunchUris(uris *glib.List, context *AppLaunchContext) bool
 
 // UNSUPPORTED : C value 'g_app_info_launch_uris_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_app_info_launch_uris_finish' : parameter 'result' of type 'AsyncResult' not supported
+var appInfoLaunchUrisFinishFunction *gi.Function
+var appInfoLaunchUrisFinishFunction_Once sync.Once
+
+func appInfoLaunchUrisFinishFunction_Set() error {
+	var err error
+	appInfoLaunchUrisFinishFunction_Once.Do(func() {
+		err = appInfoInterface_Set()
+		if err != nil {
+			return
+		}
+		appInfoLaunchUrisFinishFunction, err = appInfoInterface.InvokerNew("launch_uris_finish")
+	})
+	return err
+}
+
+// LaunchUrisFinish is a representation of the C type g_app_info_launch_uris_finish.
+func (recv *AppInfo) LaunchUrisFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := appInfoLaunchUrisFinishFunction_Set()
+	if err == nil {
+		ret = appInfoLaunchUrisFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var appInfoRemoveSupportsTypeFunction *gi.Function
 var appInfoRemoveSupportsTypeFunction_Once sync.Once
@@ -1711,9 +1891,71 @@ func (recv *AsyncInitable) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_async_initable_init_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_async_initable_init_finish' : parameter 'res' of type 'AsyncResult' not supported
+var asyncInitableInitFinishFunction *gi.Function
+var asyncInitableInitFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_async_initable_new_finish' : parameter 'res' of type 'AsyncResult' not supported
+func asyncInitableInitFinishFunction_Set() error {
+	var err error
+	asyncInitableInitFinishFunction_Once.Do(func() {
+		err = asyncInitableInterface_Set()
+		if err != nil {
+			return
+		}
+		asyncInitableInitFinishFunction, err = asyncInitableInterface.InvokerNew("init_finish")
+	})
+	return err
+}
+
+// InitFinish is a representation of the C type g_async_initable_init_finish.
+func (recv *AsyncInitable) InitFinish(res *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := asyncInitableInitFinishFunction_Set()
+	if err == nil {
+		ret = asyncInitableInitFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var asyncInitableNewFinishFunction *gi.Function
+var asyncInitableNewFinishFunction_Once sync.Once
+
+func asyncInitableNewFinishFunction_Set() error {
+	var err error
+	asyncInitableNewFinishFunction_Once.Do(func() {
+		err = asyncInitableInterface_Set()
+		if err != nil {
+			return
+		}
+		asyncInitableNewFinishFunction, err = asyncInitableInterface.InvokerNew("new_finish")
+	})
+	return err
+}
+
+// NewFinish is a representation of the C type g_async_initable_new_finish.
+func (recv *AsyncInitable) NewFinish(res *AsyncResult) *gobject.Object {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := asyncInitableNewFinishFunction_Set()
+	if err == nil {
+		ret = asyncInitableNewFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gobject.ObjectNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var asyncResultInterface *gi.Interface
 var asyncResultInterface_Once sync.Once
@@ -2006,7 +2248,37 @@ func (recv *DBusInterface) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_dbus_interface_dup_object' : return type 'DBusObject' not supported
+var dBusInterfaceDupObjectFunction *gi.Function
+var dBusInterfaceDupObjectFunction_Once sync.Once
+
+func dBusInterfaceDupObjectFunction_Set() error {
+	var err error
+	dBusInterfaceDupObjectFunction_Once.Do(func() {
+		err = dBusInterfaceInterface_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceDupObjectFunction, err = dBusInterfaceInterface.InvokerNew("dup_object")
+	})
+	return err
+}
+
+// DupObject is a representation of the C type g_dbus_interface_dup_object.
+func (recv *DBusInterface) DupObject() *DBusObject {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dBusInterfaceDupObjectFunction_Set()
+	if err == nil {
+		ret = dBusInterfaceDupObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusObjectNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var dBusInterfaceGetInfoFunction *gi.Function
 var dBusInterfaceGetInfoFunction_Once sync.Once
@@ -2040,9 +2312,66 @@ func (recv *DBusInterface) GetInfo() *DBusInterfaceInfo {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_interface_get_object' : return type 'DBusObject' not supported
+var dBusInterfaceGetObjectFunction *gi.Function
+var dBusInterfaceGetObjectFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_dbus_interface_set_object' : parameter 'object' of type 'DBusObject' not supported
+func dBusInterfaceGetObjectFunction_Set() error {
+	var err error
+	dBusInterfaceGetObjectFunction_Once.Do(func() {
+		err = dBusInterfaceInterface_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceGetObjectFunction, err = dBusInterfaceInterface.InvokerNew("get_object")
+	})
+	return err
+}
+
+// GetObject is a representation of the C type g_dbus_interface_get_object.
+func (recv *DBusInterface) GetObject() *DBusObject {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dBusInterfaceGetObjectFunction_Set()
+	if err == nil {
+		ret = dBusInterfaceGetObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusObjectNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var dBusInterfaceSetObjectFunction *gi.Function
+var dBusInterfaceSetObjectFunction_Once sync.Once
+
+func dBusInterfaceSetObjectFunction_Set() error {
+	var err error
+	dBusInterfaceSetObjectFunction_Once.Do(func() {
+		err = dBusInterfaceInterface_Set()
+		if err != nil {
+			return
+		}
+		dBusInterfaceSetObjectFunction, err = dBusInterfaceInterface.InvokerNew("set_object")
+	})
+	return err
+}
+
+// SetObject is a representation of the C type g_dbus_interface_set_object.
+func (recv *DBusInterface) SetObject(object_ *DBusObject) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(object_.Native())
+
+	err := dBusInterfaceSetObjectFunction_Set()
+	if err == nil {
+		dBusInterfaceSetObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dBusObjectInterface *gi.Interface
 var dBusObjectInterface_Once sync.Once
@@ -2088,7 +2417,38 @@ func (recv *DBusObject) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_dbus_object_get_interface' : return type 'DBusInterface' not supported
+var dBusObjectGetInterfaceFunction *gi.Function
+var dBusObjectGetInterfaceFunction_Once sync.Once
+
+func dBusObjectGetInterfaceFunction_Set() error {
+	var err error
+	dBusObjectGetInterfaceFunction_Once.Do(func() {
+		err = dBusObjectInterface_Set()
+		if err != nil {
+			return
+		}
+		dBusObjectGetInterfaceFunction, err = dBusObjectInterface.InvokerNew("get_interface")
+	})
+	return err
+}
+
+// GetInterface is a representation of the C type g_dbus_object_get_interface.
+func (recv *DBusObject) GetInterface(interfaceName string) *DBusInterface {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(interfaceName)
+
+	var ret gi.Argument
+
+	err := dBusObjectGetInterfaceFunction_Set()
+	if err == nil {
+		ret = dBusObjectGetInterfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusInterfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var dBusObjectGetInterfacesFunction *gi.Function
 var dBusObjectGetInterfacesFunction_Once sync.Once
@@ -2154,9 +2514,45 @@ func (recv *DBusObject) GetObjectPath() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'interface-added' : parameter 'interface' of type 'DBusInterface' not supported
+/*
+ConnectInterfaceAdded connects a callback to the 'interface-added' signal of the DBusObject.
 
-// UNSUPPORTED : C value 'interface-removed' : parameter 'interface' of type 'DBusInterface' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DBusObject) ConnectInterfaceAdded(handler func(instance *DBusObject, interface_ *DBusInterface)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusObjectNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := DBusInterfaceNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "interface-added", marshal)
+}
+
+/*
+ConnectInterfaceRemoved connects a callback to the 'interface-removed' signal of the DBusObject.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DBusObject) ConnectInterfaceRemoved(handler func(instance *DBusObject, interface_ *DBusInterface)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusObjectNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := DBusInterfaceNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "interface-removed", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -2211,9 +2607,72 @@ func (recv *DBusObjectManager) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_dbus_object_manager_get_interface' : return type 'DBusInterface' not supported
+var dBusObjectManagerGetInterfaceFunction *gi.Function
+var dBusObjectManagerGetInterfaceFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_dbus_object_manager_get_object' : return type 'DBusObject' not supported
+func dBusObjectManagerGetInterfaceFunction_Set() error {
+	var err error
+	dBusObjectManagerGetInterfaceFunction_Once.Do(func() {
+		err = dBusObjectManagerInterface_Set()
+		if err != nil {
+			return
+		}
+		dBusObjectManagerGetInterfaceFunction, err = dBusObjectManagerInterface.InvokerNew("get_interface")
+	})
+	return err
+}
+
+// GetInterface is a representation of the C type g_dbus_object_manager_get_interface.
+func (recv *DBusObjectManager) GetInterface(objectPath string, interfaceName string) *DBusInterface {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(objectPath)
+	inArgs[2].SetString(interfaceName)
+
+	var ret gi.Argument
+
+	err := dBusObjectManagerGetInterfaceFunction_Set()
+	if err == nil {
+		ret = dBusObjectManagerGetInterfaceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusInterfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var dBusObjectManagerGetObjectFunction *gi.Function
+var dBusObjectManagerGetObjectFunction_Once sync.Once
+
+func dBusObjectManagerGetObjectFunction_Set() error {
+	var err error
+	dBusObjectManagerGetObjectFunction_Once.Do(func() {
+		err = dBusObjectManagerInterface_Set()
+		if err != nil {
+			return
+		}
+		dBusObjectManagerGetObjectFunction, err = dBusObjectManagerInterface.InvokerNew("get_object")
+	})
+	return err
+}
+
+// GetObject is a representation of the C type g_dbus_object_manager_get_object.
+func (recv *DBusObjectManager) GetObject(objectPath string) *DBusObject {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(objectPath)
+
+	var ret gi.Argument
+
+	err := dBusObjectManagerGetObjectFunction_Set()
+	if err == nil {
+		ret = dBusObjectManagerGetObjectFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusObjectNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var dBusObjectManagerGetObjectPathFunction *gi.Function
 var dBusObjectManagerGetObjectPathFunction_Once sync.Once
@@ -2279,13 +2738,91 @@ func (recv *DBusObjectManager) GetObjects() *glib.List {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'interface-added' : parameter 'object' of type 'DBusObject' not supported
+/*
+ConnectInterfaceAdded connects a callback to the 'interface-added' signal of the DBusObjectManager.
 
-// UNSUPPORTED : C value 'interface-removed' : parameter 'object' of type 'DBusObject' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DBusObjectManager) ConnectInterfaceAdded(handler func(instance *DBusObjectManager, object_ *DBusObject, interface_ *DBusInterface)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusObjectManagerNewFromNative(objectInstance.GetObject().Native())
 
-// UNSUPPORTED : C value 'object-added' : parameter 'object' of type 'DBusObject' not supported
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := DBusObjectNewFromNative(object1.GetObject().Native())
 
-// UNSUPPORTED : C value 'object-removed' : parameter 'object' of type 'DBusObject' not supported
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := DBusInterfaceNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "interface-added", marshal)
+}
+
+/*
+ConnectInterfaceRemoved connects a callback to the 'interface-removed' signal of the DBusObjectManager.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DBusObjectManager) ConnectInterfaceRemoved(handler func(instance *DBusObjectManager, object_ *DBusObject, interface_ *DBusInterface)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusObjectManagerNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := DBusObjectNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := DBusInterfaceNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "interface-removed", marshal)
+}
+
+/*
+ConnectObjectAdded connects a callback to the 'object-added' signal of the DBusObjectManager.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DBusObjectManager) ConnectObjectAdded(handler func(instance *DBusObjectManager, object_ *DBusObject)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusObjectManagerNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := DBusObjectNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "object-added", marshal)
+}
+
+/*
+ConnectObjectRemoved connects a callback to the 'object-removed' signal of the DBusObjectManager.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *DBusObjectManager) ConnectObjectRemoved(handler func(instance *DBusObjectManager, object_ *DBusObject)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := DBusObjectManagerNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := DBusObjectNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "object-removed", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -2394,7 +2931,38 @@ func (recv *DesktopAppInfoLookup) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_desktop_app_info_lookup_get_default_for_uri_scheme' : return type 'AppInfo' not supported
+var desktopAppInfoLookupGetDefaultForUriSchemeFunction *gi.Function
+var desktopAppInfoLookupGetDefaultForUriSchemeFunction_Once sync.Once
+
+func desktopAppInfoLookupGetDefaultForUriSchemeFunction_Set() error {
+	var err error
+	desktopAppInfoLookupGetDefaultForUriSchemeFunction_Once.Do(func() {
+		err = desktopAppInfoLookupInterface_Set()
+		if err != nil {
+			return
+		}
+		desktopAppInfoLookupGetDefaultForUriSchemeFunction, err = desktopAppInfoLookupInterface.InvokerNew("get_default_for_uri_scheme")
+	})
+	return err
+}
+
+// GetDefaultForUriScheme is a representation of the C type g_desktop_app_info_lookup_get_default_for_uri_scheme.
+func (recv *DesktopAppInfoLookup) GetDefaultForUriScheme(uriScheme string) *AppInfo {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(uriScheme)
+
+	var ret gi.Argument
+
+	err := desktopAppInfoLookupGetDefaultForUriSchemeFunction_Set()
+	if err == nil {
+		ret = desktopAppInfoLookupGetDefaultForUriSchemeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AppInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var driveInterface *gi.Interface
 var driveInterface_Once sync.Once
@@ -2602,11 +3170,73 @@ func (recv *Drive) CanStop() bool {
 
 // UNSUPPORTED : C value 'g_drive_eject' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_drive_eject_finish' : parameter 'result' of type 'AsyncResult' not supported
+var driveEjectFinishFunction *gi.Function
+var driveEjectFinishFunction_Once sync.Once
+
+func driveEjectFinishFunction_Set() error {
+	var err error
+	driveEjectFinishFunction_Once.Do(func() {
+		err = driveInterface_Set()
+		if err != nil {
+			return
+		}
+		driveEjectFinishFunction, err = driveInterface.InvokerNew("eject_finish")
+	})
+	return err
+}
+
+// EjectFinish is a representation of the C type g_drive_eject_finish.
+func (recv *Drive) EjectFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := driveEjectFinishFunction_Set()
+	if err == nil {
+		ret = driveEjectFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_drive_eject_with_operation' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_drive_eject_with_operation_finish' : parameter 'result' of type 'AsyncResult' not supported
+var driveEjectWithOperationFinishFunction *gi.Function
+var driveEjectWithOperationFinishFunction_Once sync.Once
+
+func driveEjectWithOperationFinishFunction_Set() error {
+	var err error
+	driveEjectWithOperationFinishFunction_Once.Do(func() {
+		err = driveInterface_Set()
+		if err != nil {
+			return
+		}
+		driveEjectWithOperationFinishFunction, err = driveInterface.InvokerNew("eject_with_operation_finish")
+	})
+	return err
+}
+
+// EjectWithOperationFinish is a representation of the C type g_drive_eject_with_operation_finish.
+func (recv *Drive) EjectWithOperationFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := driveEjectWithOperationFinishFunction_Set()
+	if err == nil {
+		ret = driveEjectWithOperationFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var driveEnumerateIdentifiersFunction *gi.Function
 var driveEnumerateIdentifiersFunction_Once sync.Once
@@ -2636,7 +3266,37 @@ func (recv *Drive) EnumerateIdentifiers() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_drive_get_icon' : return type 'Icon' not supported
+var driveGetIconFunction *gi.Function
+var driveGetIconFunction_Once sync.Once
+
+func driveGetIconFunction_Set() error {
+	var err error
+	driveGetIconFunction_Once.Do(func() {
+		err = driveInterface_Set()
+		if err != nil {
+			return
+		}
+		driveGetIconFunction, err = driveInterface.InvokerNew("get_icon")
+	})
+	return err
+}
+
+// GetIcon is a representation of the C type g_drive_get_icon.
+func (recv *Drive) GetIcon() *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := driveGetIconFunction_Set()
+	if err == nil {
+		ret = driveGetIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var driveGetIdentifierFunction *gi.Function
 var driveGetIdentifierFunction_Once sync.Once
@@ -2767,7 +3427,37 @@ func (recv *Drive) GetStartStopType() DriveStartStopType {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_drive_get_symbolic_icon' : return type 'Icon' not supported
+var driveGetSymbolicIconFunction *gi.Function
+var driveGetSymbolicIconFunction_Once sync.Once
+
+func driveGetSymbolicIconFunction_Set() error {
+	var err error
+	driveGetSymbolicIconFunction_Once.Do(func() {
+		err = driveInterface_Set()
+		if err != nil {
+			return
+		}
+		driveGetSymbolicIconFunction, err = driveInterface.InvokerNew("get_symbolic_icon")
+	})
+	return err
+}
+
+// GetSymbolicIcon is a representation of the C type g_drive_get_symbolic_icon.
+func (recv *Drive) GetSymbolicIcon() *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := driveGetSymbolicIconFunction_Set()
+	if err == nil {
+		ret = driveGetSymbolicIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var driveGetVolumesFunction *gi.Function
 var driveGetVolumesFunction_Once sync.Once
@@ -2963,15 +3653,108 @@ func (recv *Drive) IsRemovable() bool {
 
 // UNSUPPORTED : C value 'g_drive_poll_for_media' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_drive_poll_for_media_finish' : parameter 'result' of type 'AsyncResult' not supported
+var drivePollForMediaFinishFunction *gi.Function
+var drivePollForMediaFinishFunction_Once sync.Once
+
+func drivePollForMediaFinishFunction_Set() error {
+	var err error
+	drivePollForMediaFinishFunction_Once.Do(func() {
+		err = driveInterface_Set()
+		if err != nil {
+			return
+		}
+		drivePollForMediaFinishFunction, err = driveInterface.InvokerNew("poll_for_media_finish")
+	})
+	return err
+}
+
+// PollForMediaFinish is a representation of the C type g_drive_poll_for_media_finish.
+func (recv *Drive) PollForMediaFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := drivePollForMediaFinishFunction_Set()
+	if err == nil {
+		ret = drivePollForMediaFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_drive_start' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_drive_start_finish' : parameter 'result' of type 'AsyncResult' not supported
+var driveStartFinishFunction *gi.Function
+var driveStartFinishFunction_Once sync.Once
+
+func driveStartFinishFunction_Set() error {
+	var err error
+	driveStartFinishFunction_Once.Do(func() {
+		err = driveInterface_Set()
+		if err != nil {
+			return
+		}
+		driveStartFinishFunction, err = driveInterface.InvokerNew("start_finish")
+	})
+	return err
+}
+
+// StartFinish is a representation of the C type g_drive_start_finish.
+func (recv *Drive) StartFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := driveStartFinishFunction_Set()
+	if err == nil {
+		ret = driveStartFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_drive_stop' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_drive_stop_finish' : parameter 'result' of type 'AsyncResult' not supported
+var driveStopFinishFunction *gi.Function
+var driveStopFinishFunction_Once sync.Once
+
+func driveStopFinishFunction_Set() error {
+	var err error
+	driveStopFinishFunction_Once.Do(func() {
+		err = driveInterface_Set()
+		if err != nil {
+			return
+		}
+		driveStopFinishFunction, err = driveInterface.InvokerNew("stop_finish")
+	})
+	return err
+}
+
+// StopFinish is a representation of the C type g_drive_stop_finish.
+func (recv *Drive) StopFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := driveStopFinishFunction_Set()
+	if err == nil {
+		ret = driveStopFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 /*
 ConnectChanged connects a callback to the 'changed' signal of the Drive.
@@ -3126,7 +3909,37 @@ func (recv *DtlsClientConnection) GetAcceptedCas() *glib.List {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dtls_client_connection_get_server_identity' : return type 'SocketConnectable' not supported
+var dtlsClientConnectionGetServerIdentityFunction *gi.Function
+var dtlsClientConnectionGetServerIdentityFunction_Once sync.Once
+
+func dtlsClientConnectionGetServerIdentityFunction_Set() error {
+	var err error
+	dtlsClientConnectionGetServerIdentityFunction_Once.Do(func() {
+		err = dtlsClientConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		dtlsClientConnectionGetServerIdentityFunction, err = dtlsClientConnectionInterface.InvokerNew("get_server_identity")
+	})
+	return err
+}
+
+// GetServerIdentity is a representation of the C type g_dtls_client_connection_get_server_identity.
+func (recv *DtlsClientConnection) GetServerIdentity() *SocketConnectable {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := dtlsClientConnectionGetServerIdentityFunction_Set()
+	if err == nil {
+		ret = dtlsClientConnectionGetServerIdentityFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SocketConnectableNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var dtlsClientConnectionGetValidationFlagsFunction *gi.Function
 var dtlsClientConnectionGetValidationFlagsFunction_Once sync.Once
@@ -3160,7 +3973,34 @@ func (recv *DtlsClientConnection) GetValidationFlags() TlsCertificateFlags {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dtls_client_connection_set_server_identity' : parameter 'identity' of type 'SocketConnectable' not supported
+var dtlsClientConnectionSetServerIdentityFunction *gi.Function
+var dtlsClientConnectionSetServerIdentityFunction_Once sync.Once
+
+func dtlsClientConnectionSetServerIdentityFunction_Set() error {
+	var err error
+	dtlsClientConnectionSetServerIdentityFunction_Once.Do(func() {
+		err = dtlsClientConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		dtlsClientConnectionSetServerIdentityFunction, err = dtlsClientConnectionInterface.InvokerNew("set_server_identity")
+	})
+	return err
+}
+
+// SetServerIdentity is a representation of the C type g_dtls_client_connection_set_server_identity.
+func (recv *DtlsClientConnection) SetServerIdentity(identity *SocketConnectable) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(identity.Native())
+
+	err := dtlsClientConnectionSetServerIdentityFunction_Set()
+	if err == nil {
+		dtlsClientConnectionSetServerIdentityFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dtlsClientConnectionSetValidationFlagsFunction *gi.Function
 var dtlsClientConnectionSetValidationFlagsFunction_Once sync.Once
@@ -3270,7 +4110,38 @@ func (recv *DtlsConnection) Close(cancellable *Cancellable) bool {
 
 // UNSUPPORTED : C value 'g_dtls_connection_close_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_dtls_connection_close_finish' : parameter 'result' of type 'AsyncResult' not supported
+var dtlsConnectionCloseFinishFunction *gi.Function
+var dtlsConnectionCloseFinishFunction_Once sync.Once
+
+func dtlsConnectionCloseFinishFunction_Set() error {
+	var err error
+	dtlsConnectionCloseFinishFunction_Once.Do(func() {
+		err = dtlsConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		dtlsConnectionCloseFinishFunction, err = dtlsConnectionInterface.InvokerNew("close_finish")
+	})
+	return err
+}
+
+// CloseFinish is a representation of the C type g_dtls_connection_close_finish.
+func (recv *DtlsConnection) CloseFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := dtlsConnectionCloseFinishFunction_Set()
+	if err == nil {
+		ret = dtlsConnectionCloseFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var dtlsConnectionEmitAcceptCertificateFunction *gi.Function
 var dtlsConnectionEmitAcceptCertificateFunction_Once sync.Once
@@ -3597,7 +4468,38 @@ func (recv *DtlsConnection) Handshake(cancellable *Cancellable) bool {
 
 // UNSUPPORTED : C value 'g_dtls_connection_handshake_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_dtls_connection_handshake_finish' : parameter 'result' of type 'AsyncResult' not supported
+var dtlsConnectionHandshakeFinishFunction *gi.Function
+var dtlsConnectionHandshakeFinishFunction_Once sync.Once
+
+func dtlsConnectionHandshakeFinishFunction_Set() error {
+	var err error
+	dtlsConnectionHandshakeFinishFunction_Once.Do(func() {
+		err = dtlsConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		dtlsConnectionHandshakeFinishFunction, err = dtlsConnectionInterface.InvokerNew("handshake_finish")
+	})
+	return err
+}
+
+// HandshakeFinish is a representation of the C type g_dtls_connection_handshake_finish.
+func (recv *DtlsConnection) HandshakeFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := dtlsConnectionHandshakeFinishFunction_Set()
+	if err == nil {
+		ret = dtlsConnectionHandshakeFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_dtls_connection_set_advertised_protocols' : parameter 'protocols' of type 'nil' not supported
 
@@ -3783,7 +4685,38 @@ func (recv *DtlsConnection) Shutdown(shutdownRead bool, shutdownWrite bool, canc
 
 // UNSUPPORTED : C value 'g_dtls_connection_shutdown_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_dtls_connection_shutdown_finish' : parameter 'result' of type 'AsyncResult' not supported
+var dtlsConnectionShutdownFinishFunction *gi.Function
+var dtlsConnectionShutdownFinishFunction_Once sync.Once
+
+func dtlsConnectionShutdownFinishFunction_Set() error {
+	var err error
+	dtlsConnectionShutdownFinishFunction_Once.Do(func() {
+		err = dtlsConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		dtlsConnectionShutdownFinishFunction, err = dtlsConnectionInterface.InvokerNew("shutdown_finish")
+	})
+	return err
+}
+
+// ShutdownFinish is a representation of the C type g_dtls_connection_shutdown_finish.
+func (recv *DtlsConnection) ShutdownFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := dtlsConnectionShutdownFinishFunction_Set()
+	if err == nil {
+		ret = dtlsConnectionShutdownFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 /*
 ConnectAcceptCertificate connects a callback to the 'accept-certificate' signal of the DtlsConnection.
@@ -3944,15 +4877,110 @@ func (recv *File) AppendTo(flags FileCreateFlags, cancellable *Cancellable) *Fil
 
 // UNSUPPORTED : C value 'g_file_append_to_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_append_to_finish' : parameter 'res' of type 'AsyncResult' not supported
+var fileAppendToFinishFunction *gi.Function
+var fileAppendToFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_copy' : parameter 'destination' of type 'File' not supported
+func fileAppendToFinishFunction_Set() error {
+	var err error
+	fileAppendToFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileAppendToFinishFunction, err = fileInterface.InvokerNew("append_to_finish")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_file_copy_async' : parameter 'destination' of type 'File' not supported
+// AppendToFinish is a representation of the C type g_file_append_to_finish.
+func (recv *File) AppendToFinish(res *AsyncResult) *FileOutputStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
 
-// UNSUPPORTED : C value 'g_file_copy_attributes' : parameter 'destination' of type 'File' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_file_copy_finish' : parameter 'res' of type 'AsyncResult' not supported
+	err := fileAppendToFinishFunction_Set()
+	if err == nil {
+		ret = fileAppendToFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileOutputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_copy' : parameter 'progress_callback' of type 'FileProgressCallback' not supported
+
+// UNSUPPORTED : C value 'g_file_copy_async' : parameter 'progress_callback' of type 'FileProgressCallback' not supported
+
+var fileCopyAttributesFunction *gi.Function
+var fileCopyAttributesFunction_Once sync.Once
+
+func fileCopyAttributesFunction_Set() error {
+	var err error
+	fileCopyAttributesFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileCopyAttributesFunction, err = fileInterface.InvokerNew("copy_attributes")
+	})
+	return err
+}
+
+// CopyAttributes is a representation of the C type g_file_copy_attributes.
+func (recv *File) CopyAttributes(destination *File, flags FileCopyFlags, cancellable *Cancellable) bool {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(destination.Native())
+	inArgs[2].SetInt32(int32(flags))
+	inArgs[3].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileCopyAttributesFunction_Set()
+	if err == nil {
+		ret = fileCopyAttributesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileCopyFinishFunction *gi.Function
+var fileCopyFinishFunction_Once sync.Once
+
+func fileCopyFinishFunction_Set() error {
+	var err error
+	fileCopyFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileCopyFinishFunction, err = fileInterface.InvokerNew("copy_finish")
+	})
+	return err
+}
+
+// CopyFinish is a representation of the C type g_file_copy_finish.
+func (recv *File) CopyFinish(res *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := fileCopyFinishFunction_Set()
+	if err == nil {
+		ret = fileCopyFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileCreateFunction *gi.Function
 var fileCreateFunction_Once sync.Once
@@ -3990,7 +5018,38 @@ func (recv *File) Create(flags FileCreateFlags, cancellable *Cancellable) *FileO
 
 // UNSUPPORTED : C value 'g_file_create_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_create_finish' : parameter 'res' of type 'AsyncResult' not supported
+var fileCreateFinishFunction *gi.Function
+var fileCreateFinishFunction_Once sync.Once
+
+func fileCreateFinishFunction_Set() error {
+	var err error
+	fileCreateFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileCreateFinishFunction, err = fileInterface.InvokerNew("create_finish")
+	})
+	return err
+}
+
+// CreateFinish is a representation of the C type g_file_create_finish.
+func (recv *File) CreateFinish(res *AsyncResult) *FileOutputStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := fileCreateFinishFunction_Set()
+	if err == nil {
+		ret = fileCreateFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileOutputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileCreateReadwriteFunction *gi.Function
 var fileCreateReadwriteFunction_Once sync.Once
@@ -4028,7 +5087,38 @@ func (recv *File) CreateReadwrite(flags FileCreateFlags, cancellable *Cancellabl
 
 // UNSUPPORTED : C value 'g_file_create_readwrite_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_create_readwrite_finish' : parameter 'res' of type 'AsyncResult' not supported
+var fileCreateReadwriteFinishFunction *gi.Function
+var fileCreateReadwriteFinishFunction_Once sync.Once
+
+func fileCreateReadwriteFinishFunction_Set() error {
+	var err error
+	fileCreateReadwriteFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileCreateReadwriteFinishFunction, err = fileInterface.InvokerNew("create_readwrite_finish")
+	})
+	return err
+}
+
+// CreateReadwriteFinish is a representation of the C type g_file_create_readwrite_finish.
+func (recv *File) CreateReadwriteFinish(res *AsyncResult) *FileIOStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := fileCreateReadwriteFinishFunction_Set()
+	if err == nil {
+		ret = fileCreateReadwriteFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileIOStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileDeleteFunction *gi.Function
 var fileDeleteFunction_Once sync.Once
@@ -4065,17 +5155,140 @@ func (recv *File) Delete(cancellable *Cancellable) bool {
 
 // UNSUPPORTED : C value 'g_file_delete_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_delete_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileDeleteFinishFunction *gi.Function
+var fileDeleteFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_dup' : return type 'File' not supported
+func fileDeleteFinishFunction_Set() error {
+	var err error
+	fileDeleteFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileDeleteFinishFunction, err = fileInterface.InvokerNew("delete_finish")
+	})
+	return err
+}
+
+// DeleteFinish is a representation of the C type g_file_delete_finish.
+func (recv *File) DeleteFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileDeleteFinishFunction_Set()
+	if err == nil {
+		ret = fileDeleteFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileDupFunction *gi.Function
+var fileDupFunction_Once sync.Once
+
+func fileDupFunction_Set() error {
+	var err error
+	fileDupFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileDupFunction, err = fileInterface.InvokerNew("dup")
+	})
+	return err
+}
+
+// Dup is a representation of the C type g_file_dup.
+func (recv *File) Dup() *File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileDupFunction_Set()
+	if err == nil {
+		ret = fileDupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_file_eject_mountable' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_eject_mountable_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileEjectMountableFinishFunction *gi.Function
+var fileEjectMountableFinishFunction_Once sync.Once
+
+func fileEjectMountableFinishFunction_Set() error {
+	var err error
+	fileEjectMountableFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileEjectMountableFinishFunction, err = fileInterface.InvokerNew("eject_mountable_finish")
+	})
+	return err
+}
+
+// EjectMountableFinish is a representation of the C type g_file_eject_mountable_finish.
+func (recv *File) EjectMountableFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileEjectMountableFinishFunction_Set()
+	if err == nil {
+		ret = fileEjectMountableFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_file_eject_mountable_with_operation' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_eject_mountable_with_operation_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileEjectMountableWithOperationFinishFunction *gi.Function
+var fileEjectMountableWithOperationFinishFunction_Once sync.Once
+
+func fileEjectMountableWithOperationFinishFunction_Set() error {
+	var err error
+	fileEjectMountableWithOperationFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileEjectMountableWithOperationFinishFunction, err = fileInterface.InvokerNew("eject_mountable_with_operation_finish")
+	})
+	return err
+}
+
+// EjectMountableWithOperationFinish is a representation of the C type g_file_eject_mountable_with_operation_finish.
+func (recv *File) EjectMountableWithOperationFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileEjectMountableWithOperationFinishFunction_Set()
+	if err == nil {
+		ret = fileEjectMountableWithOperationFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileEnumerateChildrenFunction *gi.Function
 var fileEnumerateChildrenFunction_Once sync.Once
@@ -4114,15 +5327,139 @@ func (recv *File) EnumerateChildren(attributes string, flags FileQueryInfoFlags,
 
 // UNSUPPORTED : C value 'g_file_enumerate_children_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_enumerate_children_finish' : parameter 'res' of type 'AsyncResult' not supported
+var fileEnumerateChildrenFinishFunction *gi.Function
+var fileEnumerateChildrenFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_equal' : parameter 'file2' of type 'File' not supported
+func fileEnumerateChildrenFinishFunction_Set() error {
+	var err error
+	fileEnumerateChildrenFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileEnumerateChildrenFinishFunction, err = fileInterface.InvokerNew("enumerate_children_finish")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_file_find_enclosing_mount' : return type 'Mount' not supported
+// EnumerateChildrenFinish is a representation of the C type g_file_enumerate_children_finish.
+func (recv *File) EnumerateChildrenFinish(res *AsyncResult) *FileEnumerator {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := fileEnumerateChildrenFinishFunction_Set()
+	if err == nil {
+		ret = fileEnumerateChildrenFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileEnumeratorNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileEqualFunction *gi.Function
+var fileEqualFunction_Once sync.Once
+
+func fileEqualFunction_Set() error {
+	var err error
+	fileEqualFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileEqualFunction, err = fileInterface.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type g_file_equal.
+func (recv *File) Equal(file2 *File) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(file2.Native())
+
+	var ret gi.Argument
+
+	err := fileEqualFunction_Set()
+	if err == nil {
+		ret = fileEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileFindEnclosingMountFunction *gi.Function
+var fileFindEnclosingMountFunction_Once sync.Once
+
+func fileFindEnclosingMountFunction_Set() error {
+	var err error
+	fileFindEnclosingMountFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileFindEnclosingMountFunction, err = fileInterface.InvokerNew("find_enclosing_mount")
+	})
+	return err
+}
+
+// FindEnclosingMount is a representation of the C type g_file_find_enclosing_mount.
+func (recv *File) FindEnclosingMount(cancellable *Cancellable) *Mount {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileFindEnclosingMountFunction_Set()
+	if err == nil {
+		ret = fileFindEnclosingMountFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := MountNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_file_find_enclosing_mount_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_find_enclosing_mount_finish' : parameter 'res' of type 'AsyncResult' not supported
+var fileFindEnclosingMountFinishFunction *gi.Function
+var fileFindEnclosingMountFinishFunction_Once sync.Once
+
+func fileFindEnclosingMountFinishFunction_Set() error {
+	var err error
+	fileFindEnclosingMountFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileFindEnclosingMountFinishFunction, err = fileInterface.InvokerNew("find_enclosing_mount_finish")
+	})
+	return err
+}
+
+// FindEnclosingMountFinish is a representation of the C type g_file_find_enclosing_mount_finish.
+func (recv *File) FindEnclosingMountFinish(res *AsyncResult) *Mount {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := fileFindEnclosingMountFinishFunction_Set()
+	if err == nil {
+		ret = fileFindEnclosingMountFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := MountNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileGetBasenameFunction *gi.Function
 var fileGetBasenameFunction_Once sync.Once
@@ -4156,11 +5493,103 @@ func (recv *File) GetBasename() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_get_child' : return type 'File' not supported
+var fileGetChildFunction *gi.Function
+var fileGetChildFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_get_child_for_display_name' : return type 'File' not supported
+func fileGetChildFunction_Set() error {
+	var err error
+	fileGetChildFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileGetChildFunction, err = fileInterface.InvokerNew("get_child")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_file_get_parent' : return type 'File' not supported
+// GetChild is a representation of the C type g_file_get_child.
+func (recv *File) GetChild(name string) *File {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(name)
+
+	var ret gi.Argument
+
+	err := fileGetChildFunction_Set()
+	if err == nil {
+		ret = fileGetChildFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileGetChildForDisplayNameFunction *gi.Function
+var fileGetChildForDisplayNameFunction_Once sync.Once
+
+func fileGetChildForDisplayNameFunction_Set() error {
+	var err error
+	fileGetChildForDisplayNameFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileGetChildForDisplayNameFunction, err = fileInterface.InvokerNew("get_child_for_display_name")
+	})
+	return err
+}
+
+// GetChildForDisplayName is a representation of the C type g_file_get_child_for_display_name.
+func (recv *File) GetChildForDisplayName(displayName string) *File {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(displayName)
+
+	var ret gi.Argument
+
+	err := fileGetChildForDisplayNameFunction_Set()
+	if err == nil {
+		ret = fileGetChildForDisplayNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileGetParentFunction *gi.Function
+var fileGetParentFunction_Once sync.Once
+
+func fileGetParentFunction_Set() error {
+	var err error
+	fileGetParentFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileGetParentFunction, err = fileInterface.InvokerNew("get_parent")
+	})
+	return err
+}
+
+// GetParent is a representation of the C type g_file_get_parent.
+func (recv *File) GetParent() *File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileGetParentFunction_Set()
+	if err == nil {
+		ret = fileGetParentFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileGetParseNameFunction *gi.Function
 var fileGetParseNameFunction_Once sync.Once
@@ -4226,7 +5655,38 @@ func (recv *File) GetPath() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_get_relative_path' : parameter 'descendant' of type 'File' not supported
+var fileGetRelativePathFunction *gi.Function
+var fileGetRelativePathFunction_Once sync.Once
+
+func fileGetRelativePathFunction_Set() error {
+	var err error
+	fileGetRelativePathFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileGetRelativePathFunction, err = fileInterface.InvokerNew("get_relative_path")
+	})
+	return err
+}
+
+// GetRelativePath is a representation of the C type g_file_get_relative_path.
+func (recv *File) GetRelativePath(descendant *File) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(descendant.Native())
+
+	var ret gi.Argument
+
+	err := fileGetRelativePathFunction_Set()
+	if err == nil {
+		ret = fileGetRelativePathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var fileGetUriFunction *gi.Function
 var fileGetUriFunction_Once sync.Once
@@ -4292,9 +5752,71 @@ func (recv *File) GetUriScheme() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_has_parent' : parameter 'parent' of type 'File' not supported
+var fileHasParentFunction *gi.Function
+var fileHasParentFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_has_prefix' : parameter 'prefix' of type 'File' not supported
+func fileHasParentFunction_Set() error {
+	var err error
+	fileHasParentFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileHasParentFunction, err = fileInterface.InvokerNew("has_parent")
+	})
+	return err
+}
+
+// HasParent is a representation of the C type g_file_has_parent.
+func (recv *File) HasParent(parent *File) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(parent.Native())
+
+	var ret gi.Argument
+
+	err := fileHasParentFunction_Set()
+	if err == nil {
+		ret = fileHasParentFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileHasPrefixFunction *gi.Function
+var fileHasPrefixFunction_Once sync.Once
+
+func fileHasPrefixFunction_Set() error {
+	var err error
+	fileHasPrefixFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileHasPrefixFunction, err = fileInterface.InvokerNew("has_prefix")
+	})
+	return err
+}
+
+// HasPrefix is a representation of the C type g_file_has_prefix.
+func (recv *File) HasPrefix(prefix *File) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(prefix.Native())
+
+	var ret gi.Argument
+
+	err := fileHasPrefixFunction_Set()
+	if err == nil {
+		ret = fileHasPrefixFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileHasUriSchemeFunction *gi.Function
 var fileHasUriSchemeFunction_Once sync.Once
@@ -4430,17 +5952,50 @@ func (recv *File) LoadBytes(cancellable *Cancellable) (*glib.Bytes, string) {
 
 // UNSUPPORTED : C value 'g_file_load_bytes_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_load_bytes_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileLoadBytesFinishFunction *gi.Function
+var fileLoadBytesFinishFunction_Once sync.Once
+
+func fileLoadBytesFinishFunction_Set() error {
+	var err error
+	fileLoadBytesFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileLoadBytesFinishFunction, err = fileInterface.InvokerNew("load_bytes_finish")
+	})
+	return err
+}
+
+// LoadBytesFinish is a representation of the C type g_file_load_bytes_finish.
+func (recv *File) LoadBytesFinish(result *AsyncResult) (*glib.Bytes, string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := fileLoadBytesFinishFunction_Set()
+	if err == nil {
+		ret = fileLoadBytesFinishFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := glib.BytesNewFromNative(ret.Pointer())
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0
+}
 
 // UNSUPPORTED : C value 'g_file_load_contents' : parameter 'contents' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_file_load_contents_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_load_contents_finish' : parameter 'res' of type 'AsyncResult' not supported
+// UNSUPPORTED : C value 'g_file_load_contents_finish' : parameter 'contents' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_file_load_partial_contents_async' : parameter 'read_more_callback' of type 'FileReadMoreCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_load_partial_contents_finish' : parameter 'res' of type 'AsyncResult' not supported
+// UNSUPPORTED : C value 'g_file_load_partial_contents_finish' : parameter 'contents' of type 'nil' not supported
 
 var fileMakeDirectoryFunction *gi.Function
 var fileMakeDirectoryFunction_Once sync.Once
@@ -4477,7 +6032,38 @@ func (recv *File) MakeDirectory(cancellable *Cancellable) bool {
 
 // UNSUPPORTED : C value 'g_file_make_directory_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_make_directory_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileMakeDirectoryFinishFunction *gi.Function
+var fileMakeDirectoryFinishFunction_Once sync.Once
+
+func fileMakeDirectoryFinishFunction_Set() error {
+	var err error
+	fileMakeDirectoryFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileMakeDirectoryFinishFunction, err = fileInterface.InvokerNew("make_directory_finish")
+	})
+	return err
+}
+
+// MakeDirectoryFinish is a representation of the C type g_file_make_directory_finish.
+func (recv *File) MakeDirectoryFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileMakeDirectoryFinishFunction_Set()
+	if err == nil {
+		ret = fileMakeDirectoryFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileMakeDirectoryWithParentsFunction *gi.Function
 var fileMakeDirectoryWithParentsFunction_Once sync.Once
@@ -4550,7 +6136,42 @@ func (recv *File) MakeSymbolicLink(symlinkValue string, cancellable *Cancellable
 
 // UNSUPPORTED : C value 'g_file_measure_disk_usage_async' : parameter 'progress_callback' of type 'FileMeasureProgressCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_measure_disk_usage_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileMeasureDiskUsageFinishFunction *gi.Function
+var fileMeasureDiskUsageFinishFunction_Once sync.Once
+
+func fileMeasureDiskUsageFinishFunction_Set() error {
+	var err error
+	fileMeasureDiskUsageFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileMeasureDiskUsageFinishFunction, err = fileInterface.InvokerNew("measure_disk_usage_finish")
+	})
+	return err
+}
+
+// MeasureDiskUsageFinish is a representation of the C type g_file_measure_disk_usage_finish.
+func (recv *File) MeasureDiskUsageFinish(result *AsyncResult) (bool, uint64, uint64, uint64) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := fileMeasureDiskUsageFinishFunction_Set()
+	if err == nil {
+		ret = fileMeasureDiskUsageFinishFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Uint64()
+	out1 := outArgs[1].Uint64()
+	out2 := outArgs[2].Uint64()
+
+	return retGo, out0, out1, out2
+}
 
 var fileMonitorFunction *gi.Function
 var fileMonitorFunction_Once sync.Once
@@ -4656,13 +6277,75 @@ func (recv *File) MonitorFile(flags FileMonitorFlags, cancellable *Cancellable) 
 
 // UNSUPPORTED : C value 'g_file_mount_enclosing_volume' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_mount_enclosing_volume_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileMountEnclosingVolumeFinishFunction *gi.Function
+var fileMountEnclosingVolumeFinishFunction_Once sync.Once
+
+func fileMountEnclosingVolumeFinishFunction_Set() error {
+	var err error
+	fileMountEnclosingVolumeFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileMountEnclosingVolumeFinishFunction, err = fileInterface.InvokerNew("mount_enclosing_volume_finish")
+	})
+	return err
+}
+
+// MountEnclosingVolumeFinish is a representation of the C type g_file_mount_enclosing_volume_finish.
+func (recv *File) MountEnclosingVolumeFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileMountEnclosingVolumeFinishFunction_Set()
+	if err == nil {
+		ret = fileMountEnclosingVolumeFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_file_mount_mountable' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_mount_mountable_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileMountMountableFinishFunction *gi.Function
+var fileMountMountableFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_move' : parameter 'destination' of type 'File' not supported
+func fileMountMountableFinishFunction_Set() error {
+	var err error
+	fileMountMountableFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileMountMountableFinishFunction, err = fileInterface.InvokerNew("mount_mountable_finish")
+	})
+	return err
+}
+
+// MountMountableFinish is a representation of the C type g_file_mount_mountable_finish.
+func (recv *File) MountMountableFinish(result *AsyncResult) *File {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileMountMountableFinishFunction_Set()
+	if err == nil {
+		ret = fileMountMountableFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_file_move' : parameter 'progress_callback' of type 'FileProgressCallback' not supported
 
 var fileOpenReadwriteFunction *gi.Function
 var fileOpenReadwriteFunction_Once sync.Once
@@ -4699,7 +6382,38 @@ func (recv *File) OpenReadwrite(cancellable *Cancellable) *FileIOStream {
 
 // UNSUPPORTED : C value 'g_file_open_readwrite_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_open_readwrite_finish' : parameter 'res' of type 'AsyncResult' not supported
+var fileOpenReadwriteFinishFunction *gi.Function
+var fileOpenReadwriteFinishFunction_Once sync.Once
+
+func fileOpenReadwriteFinishFunction_Set() error {
+	var err error
+	fileOpenReadwriteFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileOpenReadwriteFinishFunction, err = fileInterface.InvokerNew("open_readwrite_finish")
+	})
+	return err
+}
+
+// OpenReadwriteFinish is a representation of the C type g_file_open_readwrite_finish.
+func (recv *File) OpenReadwriteFinish(res *AsyncResult) *FileIOStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := fileOpenReadwriteFinishFunction_Set()
+	if err == nil {
+		ret = fileOpenReadwriteFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileIOStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var filePeekPathFunction *gi.Function
 var filePeekPathFunction_Once sync.Once
@@ -4735,13 +6449,106 @@ func (recv *File) PeekPath() string {
 
 // UNSUPPORTED : C value 'g_file_poll_mountable' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_poll_mountable_finish' : parameter 'result' of type 'AsyncResult' not supported
+var filePollMountableFinishFunction *gi.Function
+var filePollMountableFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_query_default_handler' : return type 'AppInfo' not supported
+func filePollMountableFinishFunction_Set() error {
+	var err error
+	filePollMountableFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		filePollMountableFinishFunction, err = fileInterface.InvokerNew("poll_mountable_finish")
+	})
+	return err
+}
+
+// PollMountableFinish is a representation of the C type g_file_poll_mountable_finish.
+func (recv *File) PollMountableFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := filePollMountableFinishFunction_Set()
+	if err == nil {
+		ret = filePollMountableFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var fileQueryDefaultHandlerFunction *gi.Function
+var fileQueryDefaultHandlerFunction_Once sync.Once
+
+func fileQueryDefaultHandlerFunction_Set() error {
+	var err error
+	fileQueryDefaultHandlerFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileQueryDefaultHandlerFunction, err = fileInterface.InvokerNew("query_default_handler")
+	})
+	return err
+}
+
+// QueryDefaultHandler is a representation of the C type g_file_query_default_handler.
+func (recv *File) QueryDefaultHandler(cancellable *Cancellable) *AppInfo {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileQueryDefaultHandlerFunction_Set()
+	if err == nil {
+		ret = fileQueryDefaultHandlerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AppInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_file_query_default_handler_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_query_default_handler_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileQueryDefaultHandlerFinishFunction *gi.Function
+var fileQueryDefaultHandlerFinishFunction_Once sync.Once
+
+func fileQueryDefaultHandlerFinishFunction_Set() error {
+	var err error
+	fileQueryDefaultHandlerFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileQueryDefaultHandlerFinishFunction, err = fileInterface.InvokerNew("query_default_handler_finish")
+	})
+	return err
+}
+
+// QueryDefaultHandlerFinish is a representation of the C type g_file_query_default_handler_finish.
+func (recv *File) QueryDefaultHandlerFinish(result *AsyncResult) *AppInfo {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileQueryDefaultHandlerFinishFunction_Set()
+	if err == nil {
+		ret = fileQueryDefaultHandlerFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AppInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileQueryExistsFunction *gi.Function
 var fileQueryExistsFunction_Once sync.Once
@@ -4846,7 +6653,38 @@ func (recv *File) QueryFilesystemInfo(attributes string, cancellable *Cancellabl
 
 // UNSUPPORTED : C value 'g_file_query_filesystem_info_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_query_filesystem_info_finish' : parameter 'res' of type 'AsyncResult' not supported
+var fileQueryFilesystemInfoFinishFunction *gi.Function
+var fileQueryFilesystemInfoFinishFunction_Once sync.Once
+
+func fileQueryFilesystemInfoFinishFunction_Set() error {
+	var err error
+	fileQueryFilesystemInfoFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileQueryFilesystemInfoFinishFunction, err = fileInterface.InvokerNew("query_filesystem_info_finish")
+	})
+	return err
+}
+
+// QueryFilesystemInfoFinish is a representation of the C type g_file_query_filesystem_info_finish.
+func (recv *File) QueryFilesystemInfoFinish(res *AsyncResult) *FileInfo {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := fileQueryFilesystemInfoFinishFunction_Set()
+	if err == nil {
+		ret = fileQueryFilesystemInfoFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileQueryInfoFunction *gi.Function
 var fileQueryInfoFunction_Once sync.Once
@@ -4885,7 +6723,38 @@ func (recv *File) QueryInfo(attributes string, flags FileQueryInfoFlags, cancell
 
 // UNSUPPORTED : C value 'g_file_query_info_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_query_info_finish' : parameter 'res' of type 'AsyncResult' not supported
+var fileQueryInfoFinishFunction *gi.Function
+var fileQueryInfoFinishFunction_Once sync.Once
+
+func fileQueryInfoFinishFunction_Set() error {
+	var err error
+	fileQueryInfoFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileQueryInfoFinishFunction, err = fileInterface.InvokerNew("query_info_finish")
+	})
+	return err
+}
+
+// QueryInfoFinish is a representation of the C type g_file_query_info_finish.
+func (recv *File) QueryInfoFinish(res *AsyncResult) *FileInfo {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := fileQueryInfoFinishFunction_Set()
+	if err == nil {
+		ret = fileQueryInfoFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileQuerySettableAttributesFunction *gi.Function
 var fileQuerySettableAttributesFunction_Once sync.Once
@@ -4988,7 +6857,38 @@ func (recv *File) Read(cancellable *Cancellable) *FileInputStream {
 
 // UNSUPPORTED : C value 'g_file_read_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_read_finish' : parameter 'res' of type 'AsyncResult' not supported
+var fileReadFinishFunction *gi.Function
+var fileReadFinishFunction_Once sync.Once
+
+func fileReadFinishFunction_Set() error {
+	var err error
+	fileReadFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileReadFinishFunction, err = fileInterface.InvokerNew("read_finish")
+	})
+	return err
+}
+
+// ReadFinish is a representation of the C type g_file_read_finish.
+func (recv *File) ReadFinish(res *AsyncResult) *FileInputStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := fileReadFinishFunction_Set()
+	if err == nil {
+		ret = fileReadFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileInputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileReplaceFunction *gi.Function
 var fileReplaceFunction_Once sync.Once
@@ -5034,9 +6934,73 @@ func (recv *File) Replace(etag string, makeBackup bool, flags FileCreateFlags, c
 
 // UNSUPPORTED : C value 'g_file_replace_contents_bytes_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_replace_contents_finish' : parameter 'res' of type 'AsyncResult' not supported
+var fileReplaceContentsFinishFunction *gi.Function
+var fileReplaceContentsFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_replace_finish' : parameter 'res' of type 'AsyncResult' not supported
+func fileReplaceContentsFinishFunction_Set() error {
+	var err error
+	fileReplaceContentsFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileReplaceContentsFinishFunction, err = fileInterface.InvokerNew("replace_contents_finish")
+	})
+	return err
+}
+
+// ReplaceContentsFinish is a representation of the C type g_file_replace_contents_finish.
+func (recv *File) ReplaceContentsFinish(res *AsyncResult) (bool, string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := fileReplaceContentsFinishFunction_Set()
+	if err == nil {
+		ret = fileReplaceContentsFinishFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0
+}
+
+var fileReplaceFinishFunction *gi.Function
+var fileReplaceFinishFunction_Once sync.Once
+
+func fileReplaceFinishFunction_Set() error {
+	var err error
+	fileReplaceFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileReplaceFinishFunction, err = fileInterface.InvokerNew("replace_finish")
+	})
+	return err
+}
+
+// ReplaceFinish is a representation of the C type g_file_replace_finish.
+func (recv *File) ReplaceFinish(res *AsyncResult) *FileOutputStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := fileReplaceFinishFunction_Set()
+	if err == nil {
+		ret = fileReplaceFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileOutputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileReplaceReadwriteFunction *gi.Function
 var fileReplaceReadwriteFunction_Once sync.Once
@@ -5076,9 +7040,71 @@ func (recv *File) ReplaceReadwrite(etag string, makeBackup bool, flags FileCreat
 
 // UNSUPPORTED : C value 'g_file_replace_readwrite_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_replace_readwrite_finish' : parameter 'res' of type 'AsyncResult' not supported
+var fileReplaceReadwriteFinishFunction *gi.Function
+var fileReplaceReadwriteFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_resolve_relative_path' : return type 'File' not supported
+func fileReplaceReadwriteFinishFunction_Set() error {
+	var err error
+	fileReplaceReadwriteFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileReplaceReadwriteFinishFunction, err = fileInterface.InvokerNew("replace_readwrite_finish")
+	})
+	return err
+}
+
+// ReplaceReadwriteFinish is a representation of the C type g_file_replace_readwrite_finish.
+func (recv *File) ReplaceReadwriteFinish(res *AsyncResult) *FileIOStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := fileReplaceReadwriteFinishFunction_Set()
+	if err == nil {
+		ret = fileReplaceReadwriteFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileIOStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileResolveRelativePathFunction *gi.Function
+var fileResolveRelativePathFunction_Once sync.Once
+
+func fileResolveRelativePathFunction_Set() error {
+	var err error
+	fileResolveRelativePathFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileResolveRelativePathFunction, err = fileInterface.InvokerNew("resolve_relative_path")
+	})
+	return err
+}
+
+// ResolveRelativePath is a representation of the C type g_file_resolve_relative_path.
+func (recv *File) ResolveRelativePath(relativePath string) *File {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(relativePath)
+
+	var ret gi.Argument
+
+	err := fileResolveRelativePathFunction_Set()
+	if err == nil {
+		ret = fileResolveRelativePathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileSetAttributeFunction *gi.Function
 var fileSetAttributeFunction_Once sync.Once
@@ -5335,7 +7361,40 @@ func (recv *File) SetAttributeUint64(attribute string, value uint64, flags FileQ
 
 // UNSUPPORTED : C value 'g_file_set_attributes_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_set_attributes_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileSetAttributesFinishFunction *gi.Function
+var fileSetAttributesFinishFunction_Once sync.Once
+
+func fileSetAttributesFinishFunction_Set() error {
+	var err error
+	fileSetAttributesFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileSetAttributesFinishFunction, err = fileInterface.InvokerNew("set_attributes_finish")
+	})
+	return err
+}
+
+// SetAttributesFinish is a representation of the C type g_file_set_attributes_finish.
+func (recv *File) SetAttributesFinish(result *AsyncResult) (bool, *FileInfo) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := fileSetAttributesFinishFunction_Set()
+	if err == nil {
+		ret = fileSetAttributesFinishFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := FileInfoNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var fileSetAttributesFromInfoFunction *gi.Function
 var fileSetAttributesFromInfoFunction_Once sync.Once
@@ -5372,19 +7431,144 @@ func (recv *File) SetAttributesFromInfo(info *FileInfo, flags FileQueryInfoFlags
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_set_display_name' : return type 'File' not supported
+var fileSetDisplayNameFunction *gi.Function
+var fileSetDisplayNameFunction_Once sync.Once
+
+func fileSetDisplayNameFunction_Set() error {
+	var err error
+	fileSetDisplayNameFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileSetDisplayNameFunction, err = fileInterface.InvokerNew("set_display_name")
+	})
+	return err
+}
+
+// SetDisplayName is a representation of the C type g_file_set_display_name.
+func (recv *File) SetDisplayName(displayName string, cancellable *Cancellable) *File {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(displayName)
+	inArgs[2].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := fileSetDisplayNameFunction_Set()
+	if err == nil {
+		ret = fileSetDisplayNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_file_set_display_name_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_set_display_name_finish' : parameter 'res' of type 'AsyncResult' not supported
+var fileSetDisplayNameFinishFunction *gi.Function
+var fileSetDisplayNameFinishFunction_Once sync.Once
+
+func fileSetDisplayNameFinishFunction_Set() error {
+	var err error
+	fileSetDisplayNameFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileSetDisplayNameFinishFunction, err = fileInterface.InvokerNew("set_display_name_finish")
+	})
+	return err
+}
+
+// SetDisplayNameFinish is a representation of the C type g_file_set_display_name_finish.
+func (recv *File) SetDisplayNameFinish(res *AsyncResult) *File {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := fileSetDisplayNameFinishFunction_Set()
+	if err == nil {
+		ret = fileSetDisplayNameFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_file_start_mountable' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_start_mountable_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileStartMountableFinishFunction *gi.Function
+var fileStartMountableFinishFunction_Once sync.Once
+
+func fileStartMountableFinishFunction_Set() error {
+	var err error
+	fileStartMountableFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileStartMountableFinishFunction, err = fileInterface.InvokerNew("start_mountable_finish")
+	})
+	return err
+}
+
+// StartMountableFinish is a representation of the C type g_file_start_mountable_finish.
+func (recv *File) StartMountableFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileStartMountableFinishFunction_Set()
+	if err == nil {
+		ret = fileStartMountableFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_file_stop_mountable' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_stop_mountable_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileStopMountableFinishFunction *gi.Function
+var fileStopMountableFinishFunction_Once sync.Once
+
+func fileStopMountableFinishFunction_Set() error {
+	var err error
+	fileStopMountableFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileStopMountableFinishFunction, err = fileInterface.InvokerNew("stop_mountable_finish")
+	})
+	return err
+}
+
+// StopMountableFinish is a representation of the C type g_file_stop_mountable_finish.
+func (recv *File) StopMountableFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileStopMountableFinishFunction_Set()
+	if err == nil {
+		ret = fileStopMountableFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileSupportsThreadContextsFunction *gi.Function
 var fileSupportsThreadContextsFunction_Once sync.Once
@@ -5453,15 +7637,108 @@ func (recv *File) Trash(cancellable *Cancellable) bool {
 
 // UNSUPPORTED : C value 'g_file_trash_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_trash_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileTrashFinishFunction *gi.Function
+var fileTrashFinishFunction_Once sync.Once
+
+func fileTrashFinishFunction_Set() error {
+	var err error
+	fileTrashFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileTrashFinishFunction, err = fileInterface.InvokerNew("trash_finish")
+	})
+	return err
+}
+
+// TrashFinish is a representation of the C type g_file_trash_finish.
+func (recv *File) TrashFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileTrashFinishFunction_Set()
+	if err == nil {
+		ret = fileTrashFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_file_unmount_mountable' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_unmount_mountable_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileUnmountMountableFinishFunction *gi.Function
+var fileUnmountMountableFinishFunction_Once sync.Once
+
+func fileUnmountMountableFinishFunction_Set() error {
+	var err error
+	fileUnmountMountableFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileUnmountMountableFinishFunction, err = fileInterface.InvokerNew("unmount_mountable_finish")
+	})
+	return err
+}
+
+// UnmountMountableFinish is a representation of the C type g_file_unmount_mountable_finish.
+func (recv *File) UnmountMountableFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileUnmountMountableFinishFunction_Set()
+	if err == nil {
+		ret = fileUnmountMountableFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_file_unmount_mountable_with_operation' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_unmount_mountable_with_operation_finish' : parameter 'result' of type 'AsyncResult' not supported
+var fileUnmountMountableWithOperationFinishFunction *gi.Function
+var fileUnmountMountableWithOperationFinishFunction_Once sync.Once
+
+func fileUnmountMountableWithOperationFinishFunction_Set() error {
+	var err error
+	fileUnmountMountableWithOperationFinishFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileUnmountMountableWithOperationFinishFunction, err = fileInterface.InvokerNew("unmount_mountable_with_operation_finish")
+	})
+	return err
+}
+
+// UnmountMountableWithOperationFinish is a representation of the C type g_file_unmount_mountable_with_operation_finish.
+func (recv *File) UnmountMountableWithOperationFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileUnmountMountableWithOperationFinishFunction_Set()
+	if err == nil {
+		ret = fileUnmountMountableWithOperationFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileDescriptorBasedInterface *gi.Interface
 var fileDescriptorBasedInterface_Once sync.Once
@@ -5583,7 +7860,38 @@ func (recv *Icon) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_icon_equal' : parameter 'icon2' of type 'Icon' not supported
+var iconEqualFunction *gi.Function
+var iconEqualFunction_Once sync.Once
+
+func iconEqualFunction_Set() error {
+	var err error
+	iconEqualFunction_Once.Do(func() {
+		err = iconInterface_Set()
+		if err != nil {
+			return
+		}
+		iconEqualFunction, err = iconInterface.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type g_icon_equal.
+func (recv *Icon) Equal(icon2 *Icon) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(icon2.Native())
+
+	var ret gi.Argument
+
+	err := iconEqualFunction_Set()
+	if err == nil {
+		ret = iconEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var iconSerializeFunction *gi.Function
 var iconSerializeFunction_Once sync.Once
@@ -6048,7 +8356,40 @@ func (recv *LoadableIcon) Load(size int32, cancellable *Cancellable) (*InputStre
 
 // UNSUPPORTED : C value 'g_loadable_icon_load_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_loadable_icon_load_finish' : parameter 'res' of type 'AsyncResult' not supported
+var loadableIconLoadFinishFunction *gi.Function
+var loadableIconLoadFinishFunction_Once sync.Once
+
+func loadableIconLoadFinishFunction_Set() error {
+	var err error
+	loadableIconLoadFinishFunction_Once.Do(func() {
+		err = loadableIconInterface_Set()
+		if err != nil {
+			return
+		}
+		loadableIconLoadFinishFunction, err = loadableIconInterface.InvokerNew("load_finish")
+	})
+	return err
+}
+
+// LoadFinish is a representation of the C type g_loadable_icon_load_finish.
+func (recv *LoadableIcon) LoadFinish(res *AsyncResult) (*InputStream, string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := loadableIconLoadFinishFunction_Set()
+	if err == nil {
+		ret = loadableIconLoadFinishFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := InputStreamNewFromNative(ret.Pointer())
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0
+}
 
 var mountInterface *gi.Interface
 var mountInterface_Once sync.Once
@@ -6160,17 +8501,169 @@ func (recv *Mount) CanUnmount() bool {
 
 // UNSUPPORTED : C value 'g_mount_eject' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_mount_eject_finish' : parameter 'result' of type 'AsyncResult' not supported
+var mountEjectFinishFunction *gi.Function
+var mountEjectFinishFunction_Once sync.Once
+
+func mountEjectFinishFunction_Set() error {
+	var err error
+	mountEjectFinishFunction_Once.Do(func() {
+		err = mountInterface_Set()
+		if err != nil {
+			return
+		}
+		mountEjectFinishFunction, err = mountInterface.InvokerNew("eject_finish")
+	})
+	return err
+}
+
+// EjectFinish is a representation of the C type g_mount_eject_finish.
+func (recv *Mount) EjectFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := mountEjectFinishFunction_Set()
+	if err == nil {
+		ret = mountEjectFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_mount_eject_with_operation' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_mount_eject_with_operation_finish' : parameter 'result' of type 'AsyncResult' not supported
+var mountEjectWithOperationFinishFunction *gi.Function
+var mountEjectWithOperationFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_mount_get_default_location' : return type 'File' not supported
+func mountEjectWithOperationFinishFunction_Set() error {
+	var err error
+	mountEjectWithOperationFinishFunction_Once.Do(func() {
+		err = mountInterface_Set()
+		if err != nil {
+			return
+		}
+		mountEjectWithOperationFinishFunction, err = mountInterface.InvokerNew("eject_with_operation_finish")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_mount_get_drive' : return type 'Drive' not supported
+// EjectWithOperationFinish is a representation of the C type g_mount_eject_with_operation_finish.
+func (recv *Mount) EjectWithOperationFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
 
-// UNSUPPORTED : C value 'g_mount_get_icon' : return type 'Icon' not supported
+	var ret gi.Argument
+
+	err := mountEjectWithOperationFinishFunction_Set()
+	if err == nil {
+		ret = mountEjectWithOperationFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var mountGetDefaultLocationFunction *gi.Function
+var mountGetDefaultLocationFunction_Once sync.Once
+
+func mountGetDefaultLocationFunction_Set() error {
+	var err error
+	mountGetDefaultLocationFunction_Once.Do(func() {
+		err = mountInterface_Set()
+		if err != nil {
+			return
+		}
+		mountGetDefaultLocationFunction, err = mountInterface.InvokerNew("get_default_location")
+	})
+	return err
+}
+
+// GetDefaultLocation is a representation of the C type g_mount_get_default_location.
+func (recv *Mount) GetDefaultLocation() *File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := mountGetDefaultLocationFunction_Set()
+	if err == nil {
+		ret = mountGetDefaultLocationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var mountGetDriveFunction *gi.Function
+var mountGetDriveFunction_Once sync.Once
+
+func mountGetDriveFunction_Set() error {
+	var err error
+	mountGetDriveFunction_Once.Do(func() {
+		err = mountInterface_Set()
+		if err != nil {
+			return
+		}
+		mountGetDriveFunction, err = mountInterface.InvokerNew("get_drive")
+	})
+	return err
+}
+
+// GetDrive is a representation of the C type g_mount_get_drive.
+func (recv *Mount) GetDrive() *Drive {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := mountGetDriveFunction_Set()
+	if err == nil {
+		ret = mountGetDriveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DriveNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var mountGetIconFunction *gi.Function
+var mountGetIconFunction_Once sync.Once
+
+func mountGetIconFunction_Set() error {
+	var err error
+	mountGetIconFunction_Once.Do(func() {
+		err = mountInterface_Set()
+		if err != nil {
+			return
+		}
+		mountGetIconFunction, err = mountInterface.InvokerNew("get_icon")
+	})
+	return err
+}
+
+// GetIcon is a representation of the C type g_mount_get_icon.
+func (recv *Mount) GetIcon() *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := mountGetIconFunction_Set()
+	if err == nil {
+		ret = mountGetIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var mountGetNameFunction *gi.Function
 var mountGetNameFunction_Once sync.Once
@@ -6204,7 +8697,37 @@ func (recv *Mount) GetName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_mount_get_root' : return type 'File' not supported
+var mountGetRootFunction *gi.Function
+var mountGetRootFunction_Once sync.Once
+
+func mountGetRootFunction_Set() error {
+	var err error
+	mountGetRootFunction_Once.Do(func() {
+		err = mountInterface_Set()
+		if err != nil {
+			return
+		}
+		mountGetRootFunction, err = mountInterface.InvokerNew("get_root")
+	})
+	return err
+}
+
+// GetRoot is a representation of the C type g_mount_get_root.
+func (recv *Mount) GetRoot() *File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := mountGetRootFunction_Set()
+	if err == nil {
+		ret = mountGetRootFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var mountGetSortKeyFunction *gi.Function
 var mountGetSortKeyFunction_Once sync.Once
@@ -6238,7 +8761,37 @@ func (recv *Mount) GetSortKey() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_mount_get_symbolic_icon' : return type 'Icon' not supported
+var mountGetSymbolicIconFunction *gi.Function
+var mountGetSymbolicIconFunction_Once sync.Once
+
+func mountGetSymbolicIconFunction_Set() error {
+	var err error
+	mountGetSymbolicIconFunction_Once.Do(func() {
+		err = mountInterface_Set()
+		if err != nil {
+			return
+		}
+		mountGetSymbolicIconFunction, err = mountInterface.InvokerNew("get_symbolic_icon")
+	})
+	return err
+}
+
+// GetSymbolicIcon is a representation of the C type g_mount_get_symbolic_icon.
+func (recv *Mount) GetSymbolicIcon() *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := mountGetSymbolicIconFunction_Set()
+	if err == nil {
+		ret = mountGetSymbolicIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var mountGetUuidFunction *gi.Function
 var mountGetUuidFunction_Once sync.Once
@@ -6272,11 +8825,68 @@ func (recv *Mount) GetUuid() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_mount_get_volume' : return type 'Volume' not supported
+var mountGetVolumeFunction *gi.Function
+var mountGetVolumeFunction_Once sync.Once
+
+func mountGetVolumeFunction_Set() error {
+	var err error
+	mountGetVolumeFunction_Once.Do(func() {
+		err = mountInterface_Set()
+		if err != nil {
+			return
+		}
+		mountGetVolumeFunction, err = mountInterface.InvokerNew("get_volume")
+	})
+	return err
+}
+
+// GetVolume is a representation of the C type g_mount_get_volume.
+func (recv *Mount) GetVolume() *Volume {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := mountGetVolumeFunction_Set()
+	if err == nil {
+		ret = mountGetVolumeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := VolumeNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_mount_guess_content_type' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_mount_guess_content_type_finish' : parameter 'result' of type 'AsyncResult' not supported
+var mountGuessContentTypeFinishFunction *gi.Function
+var mountGuessContentTypeFinishFunction_Once sync.Once
+
+func mountGuessContentTypeFinishFunction_Set() error {
+	var err error
+	mountGuessContentTypeFinishFunction_Once.Do(func() {
+		err = mountInterface_Set()
+		if err != nil {
+			return
+		}
+		mountGuessContentTypeFinishFunction, err = mountInterface.InvokerNew("guess_content_type_finish")
+	})
+	return err
+}
+
+// GuessContentTypeFinish is a representation of the C type g_mount_guess_content_type_finish.
+func (recv *Mount) GuessContentTypeFinish(result *AsyncResult) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	err := mountGuessContentTypeFinishFunction_Set()
+	if err == nil {
+		mountGuessContentTypeFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var mountGuessContentTypeSyncFunction *gi.Function
 var mountGuessContentTypeSyncFunction_Once sync.Once
@@ -6342,7 +8952,38 @@ func (recv *Mount) IsShadowed() bool {
 
 // UNSUPPORTED : C value 'g_mount_remount' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_mount_remount_finish' : parameter 'result' of type 'AsyncResult' not supported
+var mountRemountFinishFunction *gi.Function
+var mountRemountFinishFunction_Once sync.Once
+
+func mountRemountFinishFunction_Set() error {
+	var err error
+	mountRemountFinishFunction_Once.Do(func() {
+		err = mountInterface_Set()
+		if err != nil {
+			return
+		}
+		mountRemountFinishFunction, err = mountInterface.InvokerNew("remount_finish")
+	})
+	return err
+}
+
+// RemountFinish is a representation of the C type g_mount_remount_finish.
+func (recv *Mount) RemountFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := mountRemountFinishFunction_Set()
+	if err == nil {
+		ret = mountRemountFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var mountShadowFunction *gi.Function
 var mountShadowFunction_Once sync.Once
@@ -6374,11 +9015,73 @@ func (recv *Mount) Shadow() {
 
 // UNSUPPORTED : C value 'g_mount_unmount' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_mount_unmount_finish' : parameter 'result' of type 'AsyncResult' not supported
+var mountUnmountFinishFunction *gi.Function
+var mountUnmountFinishFunction_Once sync.Once
+
+func mountUnmountFinishFunction_Set() error {
+	var err error
+	mountUnmountFinishFunction_Once.Do(func() {
+		err = mountInterface_Set()
+		if err != nil {
+			return
+		}
+		mountUnmountFinishFunction, err = mountInterface.InvokerNew("unmount_finish")
+	})
+	return err
+}
+
+// UnmountFinish is a representation of the C type g_mount_unmount_finish.
+func (recv *Mount) UnmountFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := mountUnmountFinishFunction_Set()
+	if err == nil {
+		ret = mountUnmountFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_mount_unmount_with_operation' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_mount_unmount_with_operation_finish' : parameter 'result' of type 'AsyncResult' not supported
+var mountUnmountWithOperationFinishFunction *gi.Function
+var mountUnmountWithOperationFinishFunction_Once sync.Once
+
+func mountUnmountWithOperationFinishFunction_Set() error {
+	var err error
+	mountUnmountWithOperationFinishFunction_Once.Do(func() {
+		err = mountInterface_Set()
+		if err != nil {
+			return
+		}
+		mountUnmountWithOperationFinishFunction, err = mountInterface.InvokerNew("unmount_with_operation_finish")
+	})
+	return err
+}
+
+// UnmountWithOperationFinish is a representation of the C type g_mount_unmount_with_operation_finish.
+func (recv *Mount) UnmountWithOperationFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := mountUnmountWithOperationFinishFunction_Set()
+	if err == nil {
+		ret = mountUnmountWithOperationFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var mountUnshadowFunction *gi.Function
 var mountUnshadowFunction_Once sync.Once
@@ -6512,11 +9215,74 @@ func (recv *NetworkMonitor) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_network_monitor_can_reach' : parameter 'connectable' of type 'SocketConnectable' not supported
+var networkMonitorCanReachFunction *gi.Function
+var networkMonitorCanReachFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_network_monitor_can_reach_async' : parameter 'connectable' of type 'SocketConnectable' not supported
+func networkMonitorCanReachFunction_Set() error {
+	var err error
+	networkMonitorCanReachFunction_Once.Do(func() {
+		err = networkMonitorInterface_Set()
+		if err != nil {
+			return
+		}
+		networkMonitorCanReachFunction, err = networkMonitorInterface.InvokerNew("can_reach")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_network_monitor_can_reach_finish' : parameter 'result' of type 'AsyncResult' not supported
+// CanReach is a representation of the C type g_network_monitor_can_reach.
+func (recv *NetworkMonitor) CanReach(connectable *SocketConnectable, cancellable *Cancellable) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(connectable.Native())
+	inArgs[2].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := networkMonitorCanReachFunction_Set()
+	if err == nil {
+		ret = networkMonitorCanReachFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'g_network_monitor_can_reach_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
+
+var networkMonitorCanReachFinishFunction *gi.Function
+var networkMonitorCanReachFinishFunction_Once sync.Once
+
+func networkMonitorCanReachFinishFunction_Set() error {
+	var err error
+	networkMonitorCanReachFinishFunction_Once.Do(func() {
+		err = networkMonitorInterface_Set()
+		if err != nil {
+			return
+		}
+		networkMonitorCanReachFinishFunction, err = networkMonitorInterface.InvokerNew("can_reach_finish")
+	})
+	return err
+}
+
+// CanReachFinish is a representation of the C type g_network_monitor_can_reach_finish.
+func (recv *NetworkMonitor) CanReachFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := networkMonitorCanReachFinishFunction_Set()
+	if err == nil {
+		ret = networkMonitorCanReachFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var networkMonitorGetConnectivityFunction *gi.Function
 var networkMonitorGetConnectivityFunction_Once sync.Once
@@ -7012,7 +9778,38 @@ func (recv *Proxy) Connect(connection *IOStream, proxyAddress *ProxyAddress, can
 
 // UNSUPPORTED : C value 'g_proxy_connect_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_proxy_connect_finish' : parameter 'result' of type 'AsyncResult' not supported
+var proxyConnectFinishFunction *gi.Function
+var proxyConnectFinishFunction_Once sync.Once
+
+func proxyConnectFinishFunction_Set() error {
+	var err error
+	proxyConnectFinishFunction_Once.Do(func() {
+		err = proxyInterface_Set()
+		if err != nil {
+			return
+		}
+		proxyConnectFinishFunction, err = proxyInterface.InvokerNew("connect_finish")
+	})
+	return err
+}
+
+// ConnectFinish is a representation of the C type g_proxy_connect_finish.
+func (recv *Proxy) ConnectFinish(result *AsyncResult) *IOStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := proxyConnectFinishFunction_Set()
+	if err == nil {
+		ret = proxyConnectFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IOStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var proxySupportsHostnameFunction *gi.Function
 var proxySupportsHostnameFunction_Once sync.Once
@@ -7154,7 +9951,34 @@ func (recv *ProxyResolver) Lookup(uri string, cancellable *Cancellable) {
 
 // UNSUPPORTED : C value 'g_proxy_resolver_lookup_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_proxy_resolver_lookup_finish' : parameter 'result' of type 'AsyncResult' not supported
+var proxyResolverLookupFinishFunction *gi.Function
+var proxyResolverLookupFinishFunction_Once sync.Once
+
+func proxyResolverLookupFinishFunction_Set() error {
+	var err error
+	proxyResolverLookupFinishFunction_Once.Do(func() {
+		err = proxyResolverInterface_Set()
+		if err != nil {
+			return
+		}
+		proxyResolverLookupFinishFunction, err = proxyResolverInterface.InvokerNew("lookup_finish")
+	})
+	return err
+}
+
+// LookupFinish is a representation of the C type g_proxy_resolver_lookup_finish.
+func (recv *ProxyResolver) LookupFinish(result *AsyncResult) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	err := proxyResolverLookupFinishFunction_Set()
+	if err == nil {
+		proxyResolverLookupFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var remoteActionGroupInterface *gi.Interface
 var remoteActionGroupInterface_Once sync.Once
@@ -7983,7 +10807,34 @@ func (recv *TlsClientConnection) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_tls_client_connection_copy_session_state' : parameter 'source' of type 'TlsClientConnection' not supported
+var tlsClientConnectionCopySessionStateFunction *gi.Function
+var tlsClientConnectionCopySessionStateFunction_Once sync.Once
+
+func tlsClientConnectionCopySessionStateFunction_Set() error {
+	var err error
+	tlsClientConnectionCopySessionStateFunction_Once.Do(func() {
+		err = tlsClientConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		tlsClientConnectionCopySessionStateFunction, err = tlsClientConnectionInterface.InvokerNew("copy_session_state")
+	})
+	return err
+}
+
+// CopySessionState is a representation of the C type g_tls_client_connection_copy_session_state.
+func (recv *TlsClientConnection) CopySessionState(source *TlsClientConnection) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(source.Native())
+
+	err := tlsClientConnectionCopySessionStateFunction_Set()
+	if err == nil {
+		tlsClientConnectionCopySessionStateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var tlsClientConnectionGetAcceptedCasFunction *gi.Function
 var tlsClientConnectionGetAcceptedCasFunction_Once sync.Once
@@ -8017,7 +10868,37 @@ func (recv *TlsClientConnection) GetAcceptedCas() *glib.List {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tls_client_connection_get_server_identity' : return type 'SocketConnectable' not supported
+var tlsClientConnectionGetServerIdentityFunction *gi.Function
+var tlsClientConnectionGetServerIdentityFunction_Once sync.Once
+
+func tlsClientConnectionGetServerIdentityFunction_Set() error {
+	var err error
+	tlsClientConnectionGetServerIdentityFunction_Once.Do(func() {
+		err = tlsClientConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		tlsClientConnectionGetServerIdentityFunction, err = tlsClientConnectionInterface.InvokerNew("get_server_identity")
+	})
+	return err
+}
+
+// GetServerIdentity is a representation of the C type g_tls_client_connection_get_server_identity.
+func (recv *TlsClientConnection) GetServerIdentity() *SocketConnectable {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := tlsClientConnectionGetServerIdentityFunction_Set()
+	if err == nil {
+		ret = tlsClientConnectionGetServerIdentityFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SocketConnectableNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var tlsClientConnectionGetUseSsl3Function *gi.Function
 var tlsClientConnectionGetUseSsl3Function_Once sync.Once
@@ -8083,7 +10964,34 @@ func (recv *TlsClientConnection) GetValidationFlags() TlsCertificateFlags {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tls_client_connection_set_server_identity' : parameter 'identity' of type 'SocketConnectable' not supported
+var tlsClientConnectionSetServerIdentityFunction *gi.Function
+var tlsClientConnectionSetServerIdentityFunction_Once sync.Once
+
+func tlsClientConnectionSetServerIdentityFunction_Set() error {
+	var err error
+	tlsClientConnectionSetServerIdentityFunction_Once.Do(func() {
+		err = tlsClientConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		tlsClientConnectionSetServerIdentityFunction, err = tlsClientConnectionInterface.InvokerNew("set_server_identity")
+	})
+	return err
+}
+
+// SetServerIdentity is a representation of the C type g_tls_client_connection_set_server_identity.
+func (recv *TlsClientConnection) SetServerIdentity(identity *SocketConnectable) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(identity.Native())
+
+	err := tlsClientConnectionSetServerIdentityFunction_Set()
+	if err == nil {
+		tlsClientConnectionSetServerIdentityFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var tlsClientConnectionSetUseSsl3Function *gi.Function
 var tlsClientConnectionSetUseSsl3Function_Once sync.Once
@@ -8341,11 +11249,73 @@ func (recv *Volume) CanMount() bool {
 
 // UNSUPPORTED : C value 'g_volume_eject' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_volume_eject_finish' : parameter 'result' of type 'AsyncResult' not supported
+var volumeEjectFinishFunction *gi.Function
+var volumeEjectFinishFunction_Once sync.Once
+
+func volumeEjectFinishFunction_Set() error {
+	var err error
+	volumeEjectFinishFunction_Once.Do(func() {
+		err = volumeInterface_Set()
+		if err != nil {
+			return
+		}
+		volumeEjectFinishFunction, err = volumeInterface.InvokerNew("eject_finish")
+	})
+	return err
+}
+
+// EjectFinish is a representation of the C type g_volume_eject_finish.
+func (recv *Volume) EjectFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := volumeEjectFinishFunction_Set()
+	if err == nil {
+		ret = volumeEjectFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_volume_eject_with_operation' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_volume_eject_with_operation_finish' : parameter 'result' of type 'AsyncResult' not supported
+var volumeEjectWithOperationFinishFunction *gi.Function
+var volumeEjectWithOperationFinishFunction_Once sync.Once
+
+func volumeEjectWithOperationFinishFunction_Set() error {
+	var err error
+	volumeEjectWithOperationFinishFunction_Once.Do(func() {
+		err = volumeInterface_Set()
+		if err != nil {
+			return
+		}
+		volumeEjectWithOperationFinishFunction, err = volumeInterface.InvokerNew("eject_with_operation_finish")
+	})
+	return err
+}
+
+// EjectWithOperationFinish is a representation of the C type g_volume_eject_with_operation_finish.
+func (recv *Volume) EjectWithOperationFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := volumeEjectWithOperationFinishFunction_Set()
+	if err == nil {
+		ret = volumeEjectWithOperationFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var volumeEnumerateIdentifiersFunction *gi.Function
 var volumeEnumerateIdentifiersFunction_Once sync.Once
@@ -8375,11 +11345,101 @@ func (recv *Volume) EnumerateIdentifiers() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_volume_get_activation_root' : return type 'File' not supported
+var volumeGetActivationRootFunction *gi.Function
+var volumeGetActivationRootFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_volume_get_drive' : return type 'Drive' not supported
+func volumeGetActivationRootFunction_Set() error {
+	var err error
+	volumeGetActivationRootFunction_Once.Do(func() {
+		err = volumeInterface_Set()
+		if err != nil {
+			return
+		}
+		volumeGetActivationRootFunction, err = volumeInterface.InvokerNew("get_activation_root")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_volume_get_icon' : return type 'Icon' not supported
+// GetActivationRoot is a representation of the C type g_volume_get_activation_root.
+func (recv *Volume) GetActivationRoot() *File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := volumeGetActivationRootFunction_Set()
+	if err == nil {
+		ret = volumeGetActivationRootFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var volumeGetDriveFunction *gi.Function
+var volumeGetDriveFunction_Once sync.Once
+
+func volumeGetDriveFunction_Set() error {
+	var err error
+	volumeGetDriveFunction_Once.Do(func() {
+		err = volumeInterface_Set()
+		if err != nil {
+			return
+		}
+		volumeGetDriveFunction, err = volumeInterface.InvokerNew("get_drive")
+	})
+	return err
+}
+
+// GetDrive is a representation of the C type g_volume_get_drive.
+func (recv *Volume) GetDrive() *Drive {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := volumeGetDriveFunction_Set()
+	if err == nil {
+		ret = volumeGetDriveFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DriveNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var volumeGetIconFunction *gi.Function
+var volumeGetIconFunction_Once sync.Once
+
+func volumeGetIconFunction_Set() error {
+	var err error
+	volumeGetIconFunction_Once.Do(func() {
+		err = volumeInterface_Set()
+		if err != nil {
+			return
+		}
+		volumeGetIconFunction, err = volumeInterface.InvokerNew("get_icon")
+	})
+	return err
+}
+
+// GetIcon is a representation of the C type g_volume_get_icon.
+func (recv *Volume) GetIcon() *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := volumeGetIconFunction_Set()
+	if err == nil {
+		ret = volumeGetIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var volumeGetIdentifierFunction *gi.Function
 var volumeGetIdentifierFunction_Once sync.Once
@@ -8414,7 +11474,37 @@ func (recv *Volume) GetIdentifier(kind string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_volume_get_mount' : return type 'Mount' not supported
+var volumeGetMountFunction *gi.Function
+var volumeGetMountFunction_Once sync.Once
+
+func volumeGetMountFunction_Set() error {
+	var err error
+	volumeGetMountFunction_Once.Do(func() {
+		err = volumeInterface_Set()
+		if err != nil {
+			return
+		}
+		volumeGetMountFunction, err = volumeInterface.InvokerNew("get_mount")
+	})
+	return err
+}
+
+// GetMount is a representation of the C type g_volume_get_mount.
+func (recv *Volume) GetMount() *Mount {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := volumeGetMountFunction_Set()
+	if err == nil {
+		ret = volumeGetMountFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := MountNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var volumeGetNameFunction *gi.Function
 var volumeGetNameFunction_Once sync.Once
@@ -8480,7 +11570,37 @@ func (recv *Volume) GetSortKey() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_volume_get_symbolic_icon' : return type 'Icon' not supported
+var volumeGetSymbolicIconFunction *gi.Function
+var volumeGetSymbolicIconFunction_Once sync.Once
+
+func volumeGetSymbolicIconFunction_Set() error {
+	var err error
+	volumeGetSymbolicIconFunction_Once.Do(func() {
+		err = volumeInterface_Set()
+		if err != nil {
+			return
+		}
+		volumeGetSymbolicIconFunction, err = volumeInterface.InvokerNew("get_symbolic_icon")
+	})
+	return err
+}
+
+// GetSymbolicIcon is a representation of the C type g_volume_get_symbolic_icon.
+func (recv *Volume) GetSymbolicIcon() *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := volumeGetSymbolicIconFunction_Set()
+	if err == nil {
+		ret = volumeGetSymbolicIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var volumeGetUuidFunction *gi.Function
 var volumeGetUuidFunction_Once sync.Once
@@ -8516,7 +11636,38 @@ func (recv *Volume) GetUuid() string {
 
 // UNSUPPORTED : C value 'g_volume_mount' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_volume_mount_finish' : parameter 'result' of type 'AsyncResult' not supported
+var volumeMountFinishFunction *gi.Function
+var volumeMountFinishFunction_Once sync.Once
+
+func volumeMountFinishFunction_Set() error {
+	var err error
+	volumeMountFinishFunction_Once.Do(func() {
+		err = volumeInterface_Set()
+		if err != nil {
+			return
+		}
+		volumeMountFinishFunction, err = volumeInterface.InvokerNew("mount_finish")
+	})
+	return err
+}
+
+// MountFinish is a representation of the C type g_volume_mount_finish.
+func (recv *Volume) MountFinish(result *AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := volumeMountFinishFunction_Set()
+	if err == nil {
+		ret = volumeMountFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var volumeShouldAutomountFunction *gi.Function
 var volumeShouldAutomountFunction_Once sync.Once

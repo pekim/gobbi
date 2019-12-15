@@ -2167,7 +2167,39 @@ func ContextMenuItemNew(action *gtk.Action) *ContextMenuItem {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_context_menu_item_new_from_gaction' : parameter 'action' of type 'Gio.Action' not supported
+var contextMenuItemNewFromGactionFunction *gi.Function
+var contextMenuItemNewFromGactionFunction_Once sync.Once
+
+func contextMenuItemNewFromGactionFunction_Set() error {
+	var err error
+	contextMenuItemNewFromGactionFunction_Once.Do(func() {
+		err = contextMenuItemObject_Set()
+		if err != nil {
+			return
+		}
+		contextMenuItemNewFromGactionFunction, err = contextMenuItemObject.InvokerNew("new_from_gaction")
+	})
+	return err
+}
+
+// ContextMenuItemNewFromGaction is a representation of the C type webkit_context_menu_item_new_from_gaction.
+func ContextMenuItemNewFromGaction(action *gio.Action, label string, target *glib.Variant) *ContextMenuItem {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(action.Native())
+	inArgs[1].SetString(label)
+	inArgs[2].SetPointer(target.Native())
+
+	var ret gi.Argument
+
+	err := contextMenuItemNewFromGactionFunction_Set()
+	if err == nil {
+		ret = contextMenuItemNewFromGactionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ContextMenuItemNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var contextMenuItemNewFromStockActionFunction *gi.Function
 var contextMenuItemNewFromStockActionFunction_Once sync.Once
@@ -2329,7 +2361,37 @@ func (recv *ContextMenuItem) GetAction() *gtk.Action {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_context_menu_item_get_gaction' : return type 'Gio.Action' not supported
+var contextMenuItemGetGactionFunction *gi.Function
+var contextMenuItemGetGactionFunction_Once sync.Once
+
+func contextMenuItemGetGactionFunction_Set() error {
+	var err error
+	contextMenuItemGetGactionFunction_Once.Do(func() {
+		err = contextMenuItemObject_Set()
+		if err != nil {
+			return
+		}
+		contextMenuItemGetGactionFunction, err = contextMenuItemObject.InvokerNew("get_gaction")
+	})
+	return err
+}
+
+// GetGaction is a representation of the C type webkit_context_menu_item_get_gaction.
+func (recv *ContextMenuItem) GetGaction() *gio.Action {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := contextMenuItemGetGactionFunction_Set()
+	if err == nil {
+		ret = contextMenuItemGetGactionFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.ActionNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var contextMenuItemGetStockActionFunction *gi.Function
 var contextMenuItemGetStockActionFunction_Once sync.Once
@@ -2546,7 +2608,38 @@ func (recv *CookieManager) SetFieldPriv(value *CookieManagerPrivate) {
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_add_cookie' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_cookie_manager_add_cookie_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var cookieManagerAddCookieFinishFunction *gi.Function
+var cookieManagerAddCookieFinishFunction_Once sync.Once
+
+func cookieManagerAddCookieFinishFunction_Set() error {
+	var err error
+	cookieManagerAddCookieFinishFunction_Once.Do(func() {
+		err = cookieManagerObject_Set()
+		if err != nil {
+			return
+		}
+		cookieManagerAddCookieFinishFunction, err = cookieManagerObject.InvokerNew("add_cookie_finish")
+	})
+	return err
+}
+
+// AddCookieFinish is a representation of the C type webkit_cookie_manager_add_cookie_finish.
+func (recv *CookieManager) AddCookieFinish(result *gio.AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := cookieManagerAddCookieFinishFunction_Set()
+	if err == nil {
+		ret = cookieManagerAddCookieFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var cookieManagerDeleteAllCookiesFunction *gi.Function
 var cookieManagerDeleteAllCookiesFunction_Once sync.Once
@@ -2578,7 +2671,38 @@ func (recv *CookieManager) DeleteAllCookies() {
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_delete_cookie' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_cookie_manager_delete_cookie_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var cookieManagerDeleteCookieFinishFunction *gi.Function
+var cookieManagerDeleteCookieFinishFunction_Once sync.Once
+
+func cookieManagerDeleteCookieFinishFunction_Set() error {
+	var err error
+	cookieManagerDeleteCookieFinishFunction_Once.Do(func() {
+		err = cookieManagerObject_Set()
+		if err != nil {
+			return
+		}
+		cookieManagerDeleteCookieFinishFunction, err = cookieManagerObject.InvokerNew("delete_cookie_finish")
+	})
+	return err
+}
+
+// DeleteCookieFinish is a representation of the C type webkit_cookie_manager_delete_cookie_finish.
+func (recv *CookieManager) DeleteCookieFinish(result *gio.AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := cookieManagerDeleteCookieFinishFunction_Set()
+	if err == nil {
+		ret = cookieManagerDeleteCookieFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var cookieManagerDeleteCookiesForDomainFunction *gi.Function
 var cookieManagerDeleteCookiesForDomainFunction_Once sync.Once
@@ -2611,15 +2735,104 @@ func (recv *CookieManager) DeleteCookiesForDomain(domain string) {
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_get_accept_policy' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_cookie_manager_get_accept_policy_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var cookieManagerGetAcceptPolicyFinishFunction *gi.Function
+var cookieManagerGetAcceptPolicyFinishFunction_Once sync.Once
+
+func cookieManagerGetAcceptPolicyFinishFunction_Set() error {
+	var err error
+	cookieManagerGetAcceptPolicyFinishFunction_Once.Do(func() {
+		err = cookieManagerObject_Set()
+		if err != nil {
+			return
+		}
+		cookieManagerGetAcceptPolicyFinishFunction, err = cookieManagerObject.InvokerNew("get_accept_policy_finish")
+	})
+	return err
+}
+
+// GetAcceptPolicyFinish is a representation of the C type webkit_cookie_manager_get_accept_policy_finish.
+func (recv *CookieManager) GetAcceptPolicyFinish(result *gio.AsyncResult) CookieAcceptPolicy {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := cookieManagerGetAcceptPolicyFinishFunction_Set()
+	if err == nil {
+		ret = cookieManagerGetAcceptPolicyFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CookieAcceptPolicy(ret.Int32())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_get_cookies' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_cookie_manager_get_cookies_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var cookieManagerGetCookiesFinishFunction *gi.Function
+var cookieManagerGetCookiesFinishFunction_Once sync.Once
+
+func cookieManagerGetCookiesFinishFunction_Set() error {
+	var err error
+	cookieManagerGetCookiesFinishFunction_Once.Do(func() {
+		err = cookieManagerObject_Set()
+		if err != nil {
+			return
+		}
+		cookieManagerGetCookiesFinishFunction, err = cookieManagerObject.InvokerNew("get_cookies_finish")
+	})
+	return err
+}
+
+// GetCookiesFinish is a representation of the C type webkit_cookie_manager_get_cookies_finish.
+func (recv *CookieManager) GetCookiesFinish(result *gio.AsyncResult) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := cookieManagerGetCookiesFinishFunction_Set()
+	if err == nil {
+		ret = cookieManagerGetCookiesFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_cookie_manager_get_domains_with_cookies' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_cookie_manager_get_domains_with_cookies_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var cookieManagerGetDomainsWithCookiesFinishFunction *gi.Function
+var cookieManagerGetDomainsWithCookiesFinishFunction_Once sync.Once
+
+func cookieManagerGetDomainsWithCookiesFinishFunction_Set() error {
+	var err error
+	cookieManagerGetDomainsWithCookiesFinishFunction_Once.Do(func() {
+		err = cookieManagerObject_Set()
+		if err != nil {
+			return
+		}
+		cookieManagerGetDomainsWithCookiesFinishFunction, err = cookieManagerObject.InvokerNew("get_domains_with_cookies_finish")
+	})
+	return err
+}
+
+// GetDomainsWithCookiesFinish is a representation of the C type webkit_cookie_manager_get_domains_with_cookies_finish.
+func (recv *CookieManager) GetDomainsWithCookiesFinish(result *gio.AsyncResult) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	err := cookieManagerGetDomainsWithCookiesFinishFunction_Set()
+	if err == nil {
+		cookieManagerGetDomainsWithCookiesFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var cookieManagerSetAcceptPolicyFunction *gi.Function
 var cookieManagerSetAcceptPolicyFunction_Once sync.Once
@@ -3722,7 +3935,38 @@ func (recv *FaviconDatabase) Clear() {
 
 // UNSUPPORTED : C value 'webkit_favicon_database_get_favicon' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_favicon_database_get_favicon_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var faviconDatabaseGetFaviconFinishFunction *gi.Function
+var faviconDatabaseGetFaviconFinishFunction_Once sync.Once
+
+func faviconDatabaseGetFaviconFinishFunction_Set() error {
+	var err error
+	faviconDatabaseGetFaviconFinishFunction_Once.Do(func() {
+		err = faviconDatabaseObject_Set()
+		if err != nil {
+			return
+		}
+		faviconDatabaseGetFaviconFinishFunction, err = faviconDatabaseObject.InvokerNew("get_favicon_finish")
+	})
+	return err
+}
+
+// GetFaviconFinish is a representation of the C type webkit_favicon_database_get_favicon_finish.
+func (recv *FaviconDatabase) GetFaviconFinish(result *gio.AsyncResult) *cairo.Surface {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := faviconDatabaseGetFaviconFinishFunction_Set()
+	if err == nil {
+		ret = faviconDatabaseGetFaviconFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.SurfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var faviconDatabaseGetFaviconUriFunction *gi.Function
 var faviconDatabaseGetFaviconUriFunction_Once sync.Once
@@ -12509,7 +12753,34 @@ func UserContentFilterStoreNew(storagePath string) *UserContentFilterStore {
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_store_fetch_identifiers' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_user_content_filter_store_fetch_identifiers_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var userContentFilterStoreFetchIdentifiersFinishFunction *gi.Function
+var userContentFilterStoreFetchIdentifiersFinishFunction_Once sync.Once
+
+func userContentFilterStoreFetchIdentifiersFinishFunction_Set() error {
+	var err error
+	userContentFilterStoreFetchIdentifiersFinishFunction_Once.Do(func() {
+		err = userContentFilterStoreObject_Set()
+		if err != nil {
+			return
+		}
+		userContentFilterStoreFetchIdentifiersFinishFunction, err = userContentFilterStoreObject.InvokerNew("fetch_identifiers_finish")
+	})
+	return err
+}
+
+// FetchIdentifiersFinish is a representation of the C type webkit_user_content_filter_store_fetch_identifiers_finish.
+func (recv *UserContentFilterStore) FetchIdentifiersFinish(result *gio.AsyncResult) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	err := userContentFilterStoreFetchIdentifiersFinishFunction_Set()
+	if err == nil {
+		userContentFilterStoreFetchIdentifiersFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var userContentFilterStoreGetPathFunction *gi.Function
 var userContentFilterStoreGetPathFunction_Once sync.Once
@@ -12545,19 +12816,143 @@ func (recv *UserContentFilterStore) GetPath() string {
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_store_load' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_user_content_filter_store_load_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var userContentFilterStoreLoadFinishFunction *gi.Function
+var userContentFilterStoreLoadFinishFunction_Once sync.Once
+
+func userContentFilterStoreLoadFinishFunction_Set() error {
+	var err error
+	userContentFilterStoreLoadFinishFunction_Once.Do(func() {
+		err = userContentFilterStoreObject_Set()
+		if err != nil {
+			return
+		}
+		userContentFilterStoreLoadFinishFunction, err = userContentFilterStoreObject.InvokerNew("load_finish")
+	})
+	return err
+}
+
+// LoadFinish is a representation of the C type webkit_user_content_filter_store_load_finish.
+func (recv *UserContentFilterStore) LoadFinish(result *gio.AsyncResult) *UserContentFilter {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := userContentFilterStoreLoadFinishFunction_Set()
+	if err == nil {
+		ret = userContentFilterStoreLoadFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := UserContentFilterNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_store_remove' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_user_content_filter_store_remove_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var userContentFilterStoreRemoveFinishFunction *gi.Function
+var userContentFilterStoreRemoveFinishFunction_Once sync.Once
+
+func userContentFilterStoreRemoveFinishFunction_Set() error {
+	var err error
+	userContentFilterStoreRemoveFinishFunction_Once.Do(func() {
+		err = userContentFilterStoreObject_Set()
+		if err != nil {
+			return
+		}
+		userContentFilterStoreRemoveFinishFunction, err = userContentFilterStoreObject.InvokerNew("remove_finish")
+	})
+	return err
+}
+
+// RemoveFinish is a representation of the C type webkit_user_content_filter_store_remove_finish.
+func (recv *UserContentFilterStore) RemoveFinish(result *gio.AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := userContentFilterStoreRemoveFinishFunction_Set()
+	if err == nil {
+		ret = userContentFilterStoreRemoveFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_user_content_filter_store_save' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_user_content_filter_store_save_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var userContentFilterStoreSaveFinishFunction *gi.Function
+var userContentFilterStoreSaveFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_user_content_filter_store_save_from_file' : parameter 'file' of type 'Gio.File' not supported
+func userContentFilterStoreSaveFinishFunction_Set() error {
+	var err error
+	userContentFilterStoreSaveFinishFunction_Once.Do(func() {
+		err = userContentFilterStoreObject_Set()
+		if err != nil {
+			return
+		}
+		userContentFilterStoreSaveFinishFunction, err = userContentFilterStoreObject.InvokerNew("save_finish")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'webkit_user_content_filter_store_save_from_file_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+// SaveFinish is a representation of the C type webkit_user_content_filter_store_save_finish.
+func (recv *UserContentFilterStore) SaveFinish(result *gio.AsyncResult) *UserContentFilter {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := userContentFilterStoreSaveFinishFunction_Set()
+	if err == nil {
+		ret = userContentFilterStoreSaveFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := UserContentFilterNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'webkit_user_content_filter_store_save_from_file' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
+
+var userContentFilterStoreSaveFromFileFinishFunction *gi.Function
+var userContentFilterStoreSaveFromFileFinishFunction_Once sync.Once
+
+func userContentFilterStoreSaveFromFileFinishFunction_Set() error {
+	var err error
+	userContentFilterStoreSaveFromFileFinishFunction_Once.Do(func() {
+		err = userContentFilterStoreObject_Set()
+		if err != nil {
+			return
+		}
+		userContentFilterStoreSaveFromFileFinishFunction, err = userContentFilterStoreObject.InvokerNew("save_from_file_finish")
+	})
+	return err
+}
+
+// SaveFromFileFinish is a representation of the C type webkit_user_content_filter_store_save_from_file_finish.
+func (recv *UserContentFilterStore) SaveFromFileFinish(result *gio.AsyncResult) *UserContentFilter {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := userContentFilterStoreSaveFromFileFinishFunction_Set()
+	if err == nil {
+		ret = userContentFilterStoreSaveFromFileFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := UserContentFilterNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var userContentManagerObject *gi.Object
 var userContentManagerObject_Once sync.Once
@@ -13583,7 +13978,38 @@ func (recv *WebContext) GetGeolocationManager() *GeolocationManager {
 
 // UNSUPPORTED : C value 'webkit_web_context_get_plugins' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_web_context_get_plugins_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var webContextGetPluginsFinishFunction *gi.Function
+var webContextGetPluginsFinishFunction_Once sync.Once
+
+func webContextGetPluginsFinishFunction_Set() error {
+	var err error
+	webContextGetPluginsFinishFunction_Once.Do(func() {
+		err = webContextObject_Set()
+		if err != nil {
+			return
+		}
+		webContextGetPluginsFinishFunction, err = webContextObject.InvokerNew("get_plugins_finish")
+	})
+	return err
+}
+
+// GetPluginsFinish is a representation of the C type webkit_web_context_get_plugins_finish.
+func (recv *WebContext) GetPluginsFinish(result *gio.AsyncResult) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := webContextGetPluginsFinishFunction_Set()
+	if err == nil {
+		ret = webContextGetPluginsFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var webContextGetProcessModelFunction *gi.Function
 var webContextGetProcessModelFunction_Once sync.Once
@@ -14983,7 +15409,38 @@ func (recv *WebResource) SetFieldPriv(value *WebResourcePrivate) {
 
 // UNSUPPORTED : C value 'webkit_web_resource_get_data' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_web_resource_get_data_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var webResourceGetDataFinishFunction *gi.Function
+var webResourceGetDataFinishFunction_Once sync.Once
+
+func webResourceGetDataFinishFunction_Set() error {
+	var err error
+	webResourceGetDataFinishFunction_Once.Do(func() {
+		err = webResourceObject_Set()
+		if err != nil {
+			return
+		}
+		webResourceGetDataFinishFunction, err = webResourceObject.InvokerNew("get_data_finish")
+	})
+	return err
+}
+
+// GetDataFinish is a representation of the C type webkit_web_resource_get_data_finish.
+func (recv *WebResource) GetDataFinish(result *gio.AsyncResult) uint64 {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var outArgs [1]gi.Argument
+
+	err := webResourceGetDataFinishFunction_Set()
+	if err == nil {
+		webResourceGetDataFinishFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Uint64()
+
+	return out0
+}
 
 var webResourceGetResponseFunction *gi.Function
 var webResourceGetResponseFunction_Once sync.Once
@@ -15394,7 +15851,38 @@ func WebViewNewWithUserContentManager(userContentManager *UserContentManager) *W
 
 // UNSUPPORTED : C value 'webkit_web_view_can_execute_editing_command' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_can_execute_editing_command_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var webViewCanExecuteEditingCommandFinishFunction *gi.Function
+var webViewCanExecuteEditingCommandFinishFunction_Once sync.Once
+
+func webViewCanExecuteEditingCommandFinishFunction_Set() error {
+	var err error
+	webViewCanExecuteEditingCommandFinishFunction_Once.Do(func() {
+		err = webViewObject_Set()
+		if err != nil {
+			return
+		}
+		webViewCanExecuteEditingCommandFinishFunction, err = webViewObject.InvokerNew("can_execute_editing_command_finish")
+	})
+	return err
+}
+
+// CanExecuteEditingCommandFinish is a representation of the C type webkit_web_view_can_execute_editing_command_finish.
+func (recv *WebView) CanExecuteEditingCommandFinish(result *gio.AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := webViewCanExecuteEditingCommandFinishFunction_Set()
+	if err == nil {
+		ret = webViewCanExecuteEditingCommandFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var webViewCanGoBackFunction *gi.Function
 var webViewCanGoBackFunction_Once sync.Once
@@ -16035,7 +16523,38 @@ func (recv *WebView) GetSettings() *Settings {
 
 // UNSUPPORTED : C value 'webkit_web_view_get_snapshot' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_get_snapshot_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var webViewGetSnapshotFinishFunction *gi.Function
+var webViewGetSnapshotFinishFunction_Once sync.Once
+
+func webViewGetSnapshotFinishFunction_Set() error {
+	var err error
+	webViewGetSnapshotFinishFunction_Once.Do(func() {
+		err = webViewObject_Set()
+		if err != nil {
+			return
+		}
+		webViewGetSnapshotFinishFunction, err = webViewObject.InvokerNew("get_snapshot_finish")
+	})
+	return err
+}
+
+// GetSnapshotFinish is a representation of the C type webkit_web_view_get_snapshot_finish.
+func (recv *WebView) GetSnapshotFinish(result *gio.AsyncResult) *cairo.Surface {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := webViewGetSnapshotFinishFunction_Set()
+	if err == nil {
+		ret = webViewGetSnapshotFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := cairo.SurfaceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var webViewGetTitleFunction *gi.Function
 var webViewGetTitleFunction_Once sync.Once
@@ -16743,23 +17262,178 @@ func (recv *WebView) RestoreSessionState(state *WebViewSessionState) {
 
 // UNSUPPORTED : C value 'webkit_web_view_run_javascript' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_run_javascript_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var webViewRunJavascriptFinishFunction *gi.Function
+var webViewRunJavascriptFinishFunction_Once sync.Once
+
+func webViewRunJavascriptFinishFunction_Set() error {
+	var err error
+	webViewRunJavascriptFinishFunction_Once.Do(func() {
+		err = webViewObject_Set()
+		if err != nil {
+			return
+		}
+		webViewRunJavascriptFinishFunction, err = webViewObject.InvokerNew("run_javascript_finish")
+	})
+	return err
+}
+
+// RunJavascriptFinish is a representation of the C type webkit_web_view_run_javascript_finish.
+func (recv *WebView) RunJavascriptFinish(result *gio.AsyncResult) *JavascriptResult {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := webViewRunJavascriptFinishFunction_Set()
+	if err == nil {
+		ret = webViewRunJavascriptFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := JavascriptResultNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_web_view_run_javascript_from_gresource' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_run_javascript_from_gresource_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var webViewRunJavascriptFromGresourceFinishFunction *gi.Function
+var webViewRunJavascriptFromGresourceFinishFunction_Once sync.Once
+
+func webViewRunJavascriptFromGresourceFinishFunction_Set() error {
+	var err error
+	webViewRunJavascriptFromGresourceFinishFunction_Once.Do(func() {
+		err = webViewObject_Set()
+		if err != nil {
+			return
+		}
+		webViewRunJavascriptFromGresourceFinishFunction, err = webViewObject.InvokerNew("run_javascript_from_gresource_finish")
+	})
+	return err
+}
+
+// RunJavascriptFromGresourceFinish is a representation of the C type webkit_web_view_run_javascript_from_gresource_finish.
+func (recv *WebView) RunJavascriptFromGresourceFinish(result *gio.AsyncResult) *JavascriptResult {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := webViewRunJavascriptFromGresourceFinishFunction_Set()
+	if err == nil {
+		ret = webViewRunJavascriptFromGresourceFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := JavascriptResultNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_web_view_run_javascript_in_world' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_run_javascript_in_world_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var webViewRunJavascriptInWorldFinishFunction *gi.Function
+var webViewRunJavascriptInWorldFinishFunction_Once sync.Once
+
+func webViewRunJavascriptInWorldFinishFunction_Set() error {
+	var err error
+	webViewRunJavascriptInWorldFinishFunction_Once.Do(func() {
+		err = webViewObject_Set()
+		if err != nil {
+			return
+		}
+		webViewRunJavascriptInWorldFinishFunction, err = webViewObject.InvokerNew("run_javascript_in_world_finish")
+	})
+	return err
+}
+
+// RunJavascriptInWorldFinish is a representation of the C type webkit_web_view_run_javascript_in_world_finish.
+func (recv *WebView) RunJavascriptInWorldFinish(result *gio.AsyncResult) *JavascriptResult {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := webViewRunJavascriptInWorldFinishFunction_Set()
+	if err == nil {
+		ret = webViewRunJavascriptInWorldFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := JavascriptResultNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_web_view_save' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_web_view_save_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var webViewSaveFinishFunction *gi.Function
+var webViewSaveFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_web_view_save_to_file' : parameter 'file' of type 'Gio.File' not supported
+func webViewSaveFinishFunction_Set() error {
+	var err error
+	webViewSaveFinishFunction_Once.Do(func() {
+		err = webViewObject_Set()
+		if err != nil {
+			return
+		}
+		webViewSaveFinishFunction, err = webViewObject.InvokerNew("save_finish")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'webkit_web_view_save_to_file_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+// SaveFinish is a representation of the C type webkit_web_view_save_finish.
+func (recv *WebView) SaveFinish(result *gio.AsyncResult) *gio.InputStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := webViewSaveFinishFunction_Set()
+	if err == nil {
+		ret = webViewSaveFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.InputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'webkit_web_view_save_to_file' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
+
+var webViewSaveToFileFinishFunction *gi.Function
+var webViewSaveToFileFinishFunction_Once sync.Once
+
+func webViewSaveToFileFinishFunction_Set() error {
+	var err error
+	webViewSaveToFileFinishFunction_Once.Do(func() {
+		err = webViewObject_Set()
+		if err != nil {
+			return
+		}
+		webViewSaveToFileFinishFunction, err = webViewObject.InvokerNew("save_to_file_finish")
+	})
+	return err
+}
+
+// SaveToFileFinish is a representation of the C type webkit_web_view_save_to_file_finish.
+func (recv *WebView) SaveToFileFinish(result *gio.AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := webViewSaveToFileFinishFunction_Set()
+	if err == nil {
+		ret = webViewSaveToFileFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var webViewSetBackgroundColorFunction *gi.Function
 var webViewSetBackgroundColorFunction_Once sync.Once
@@ -17204,7 +17878,28 @@ func (recv *WebView) ConnectMouseTargetChanged(handler func(instance *WebView, h
 	return callback.ConnectSignal(recv.Native(), "mouse-target-changed", marshal)
 }
 
-// UNSUPPORTED : C value 'permission-request' : parameter 'request' of type 'PermissionRequest' not supported
+/*
+ConnectPermissionRequest connects a callback to the 'permission-request' signal of the WebView.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *WebView) ConnectPermissionRequest(handler func(instance *WebView, request *PermissionRequest) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := WebViewNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := PermissionRequestNewFromNative(object1.GetObject().Native())
+
+		retGo := handler(argInstance, arg1)
+
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "permission-request", marshal)
+}
 
 /*
 ConnectPrint connects a callback to the 'print' signal of the WebView.
@@ -17682,11 +18377,73 @@ func WebsiteDataManagerNewEphemeral() *WebsiteDataManager {
 
 // UNSUPPORTED : C value 'webkit_website_data_manager_clear' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_website_data_manager_clear_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var websiteDataManagerClearFinishFunction *gi.Function
+var websiteDataManagerClearFinishFunction_Once sync.Once
+
+func websiteDataManagerClearFinishFunction_Set() error {
+	var err error
+	websiteDataManagerClearFinishFunction_Once.Do(func() {
+		err = websiteDataManagerObject_Set()
+		if err != nil {
+			return
+		}
+		websiteDataManagerClearFinishFunction, err = websiteDataManagerObject.InvokerNew("clear_finish")
+	})
+	return err
+}
+
+// ClearFinish is a representation of the C type webkit_website_data_manager_clear_finish.
+func (recv *WebsiteDataManager) ClearFinish(result *gio.AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := websiteDataManagerClearFinishFunction_Set()
+	if err == nil {
+		ret = websiteDataManagerClearFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'webkit_website_data_manager_fetch' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_website_data_manager_fetch_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var websiteDataManagerFetchFinishFunction *gi.Function
+var websiteDataManagerFetchFinishFunction_Once sync.Once
+
+func websiteDataManagerFetchFinishFunction_Set() error {
+	var err error
+	websiteDataManagerFetchFinishFunction_Once.Do(func() {
+		err = websiteDataManagerObject_Set()
+		if err != nil {
+			return
+		}
+		websiteDataManagerFetchFinishFunction, err = websiteDataManagerObject.InvokerNew("fetch_finish")
+	})
+	return err
+}
+
+// FetchFinish is a representation of the C type webkit_website_data_manager_fetch_finish.
+func (recv *WebsiteDataManager) FetchFinish(result *gio.AsyncResult) *glib.List {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := websiteDataManagerFetchFinishFunction_Set()
+	if err == nil {
+		ret = websiteDataManagerFetchFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var websiteDataManagerGetBaseCacheDirectoryFunction *gi.Function
 var websiteDataManagerGetBaseCacheDirectoryFunction_Once sync.Once
@@ -18010,7 +18767,38 @@ func (recv *WebsiteDataManager) IsEphemeral() bool {
 
 // UNSUPPORTED : C value 'webkit_website_data_manager_remove' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'webkit_website_data_manager_remove_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var websiteDataManagerRemoveFinishFunction *gi.Function
+var websiteDataManagerRemoveFinishFunction_Once sync.Once
+
+func websiteDataManagerRemoveFinishFunction_Set() error {
+	var err error
+	websiteDataManagerRemoveFinishFunction_Once.Do(func() {
+		err = websiteDataManagerObject_Set()
+		if err != nil {
+			return
+		}
+		websiteDataManagerRemoveFinishFunction, err = websiteDataManagerObject.InvokerNew("remove_finish")
+	})
+	return err
+}
+
+// RemoveFinish is a representation of the C type webkit_website_data_manager_remove_finish.
+func (recv *WebsiteDataManager) RemoveFinish(result *gio.AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := websiteDataManagerRemoveFinishFunction_Set()
+	if err == nil {
+		ret = websiteDataManagerRemoveFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var windowPropertiesObject *gi.Object
 var windowPropertiesObject_Once sync.Once

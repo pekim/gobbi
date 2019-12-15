@@ -2310,7 +2310,37 @@ func (recv *Action) GetAlwaysShowImage() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_action_get_gicon' : return type 'Gio.Icon' not supported
+var actionGetGiconFunction *gi.Function
+var actionGetGiconFunction_Once sync.Once
+
+func actionGetGiconFunction_Set() error {
+	var err error
+	actionGetGiconFunction_Once.Do(func() {
+		err = actionObject_Set()
+		if err != nil {
+			return
+		}
+		actionGetGiconFunction, err = actionObject.InvokerNew("get_gicon")
+	})
+	return err
+}
+
+// GetGicon is a representation of the C type gtk_action_get_gicon.
+func (recv *Action) GetGicon() *gio.Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := actionGetGiconFunction_Set()
+	if err == nil {
+		ret = actionGetGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var actionGetIconNameFunction *gi.Function
 var actionGetIconNameFunction_Once sync.Once
@@ -2847,7 +2877,34 @@ func (recv *Action) SetAlwaysShowImage(alwaysShow bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_action_set_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
+var actionSetGiconFunction *gi.Function
+var actionSetGiconFunction_Once sync.Once
+
+func actionSetGiconFunction_Set() error {
+	var err error
+	actionSetGiconFunction_Once.Do(func() {
+		err = actionObject_Set()
+		if err != nil {
+			return
+		}
+		actionSetGiconFunction, err = actionObject.InvokerNew("set_gicon")
+	})
+	return err
+}
+
+// SetGicon is a representation of the C type gtk_action_set_gicon.
+func (recv *Action) SetGicon(icon *gio.Icon) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(icon.Native())
+
+	err := actionSetGiconFunction_Set()
+	if err == nil {
+		actionSetGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var actionSetIconNameFunction *gi.Function
 var actionSetIconNameFunction_Once sync.Once
@@ -5149,7 +5206,36 @@ func AppChooserButtonNew(contentType string) *AppChooserButton {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_app_chooser_button_append_custom_item' : parameter 'icon' of type 'Gio.Icon' not supported
+var appChooserButtonAppendCustomItemFunction *gi.Function
+var appChooserButtonAppendCustomItemFunction_Once sync.Once
+
+func appChooserButtonAppendCustomItemFunction_Set() error {
+	var err error
+	appChooserButtonAppendCustomItemFunction_Once.Do(func() {
+		err = appChooserButtonObject_Set()
+		if err != nil {
+			return
+		}
+		appChooserButtonAppendCustomItemFunction, err = appChooserButtonObject.InvokerNew("append_custom_item")
+	})
+	return err
+}
+
+// AppendCustomItem is a representation of the C type gtk_app_chooser_button_append_custom_item.
+func (recv *AppChooserButton) AppendCustomItem(name string, label string, icon *gio.Icon) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(name)
+	inArgs[2].SetString(label)
+	inArgs[3].SetPointer(icon.Native())
+
+	err := appChooserButtonAppendCustomItemFunction_Set()
+	if err == nil {
+		appChooserButtonAppendCustomItemFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var appChooserButtonAppendSeparatorFunction *gi.Function
 var appChooserButtonAppendSeparatorFunction_Once sync.Once
@@ -5549,7 +5635,39 @@ func (recv *AppChooserDialog) SetFieldParent(value *Dialog) {
 	gi.ObjectFieldSet(appChooserDialogObject, recv.Native(), "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_app_chooser_dialog_new' : parameter 'file' of type 'Gio.File' not supported
+var appChooserDialogNewFunction *gi.Function
+var appChooserDialogNewFunction_Once sync.Once
+
+func appChooserDialogNewFunction_Set() error {
+	var err error
+	appChooserDialogNewFunction_Once.Do(func() {
+		err = appChooserDialogObject_Set()
+		if err != nil {
+			return
+		}
+		appChooserDialogNewFunction, err = appChooserDialogObject.InvokerNew("new")
+	})
+	return err
+}
+
+// AppChooserDialogNew is a representation of the C type gtk_app_chooser_dialog_new.
+func AppChooserDialogNew(parent *Window, flags DialogFlags, file *gio.File) *AppChooserDialog {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(parent.Native())
+	inArgs[1].SetInt32(int32(flags))
+	inArgs[2].SetPointer(file.Native())
+
+	var ret gi.Argument
+
+	err := appChooserDialogNewFunction_Set()
+	if err == nil {
+		ret = appChooserDialogNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AppChooserDialogNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var appChooserDialogNewForContentTypeFunction *gi.Function
 var appChooserDialogNewForContentTypeFunction_Once sync.Once
@@ -6185,11 +6303,68 @@ func (recv *AppChooserWidget) SetShowRecommended(setting bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'application-activated' : parameter 'application' of type 'Gio.AppInfo' not supported
+/*
+ConnectApplicationActivated connects a callback to the 'application-activated' signal of the AppChooserWidget.
 
-// UNSUPPORTED : C value 'application-selected' : parameter 'application' of type 'Gio.AppInfo' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *AppChooserWidget) ConnectApplicationActivated(handler func(instance *AppChooserWidget, application *gio.AppInfo)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := AppChooserWidgetNewFromNative(objectInstance.GetObject().Native())
 
-// UNSUPPORTED : C value 'populate-popup' : parameter 'application' of type 'Gio.AppInfo' not supported
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := gio.AppInfoNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "application-activated", marshal)
+}
+
+/*
+ConnectApplicationSelected connects a callback to the 'application-selected' signal of the AppChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *AppChooserWidget) ConnectApplicationSelected(handler func(instance *AppChooserWidget, application *gio.AppInfo)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := AppChooserWidgetNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := gio.AppInfoNewFromNative(object1.GetObject().Native())
+
+		handler(argInstance, arg1)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "application-selected", marshal)
+}
+
+/*
+ConnectPopulatePopup connects a callback to the 'populate-popup' signal of the AppChooserWidget.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *AppChooserWidget) ConnectPopulatePopup(handler func(instance *AppChooserWidget, menu *Menu, application *gio.AppInfo)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := AppChooserWidgetNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := MenuNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := gio.AppInfoNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "populate-popup", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -12770,7 +12945,37 @@ func (recv *CellArea) AddFocusSibling(renderer *CellRenderer, sibling *CellRende
 
 // UNSUPPORTED : C value 'gtk_cell_area_add_with_properties' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_cell_area_apply_attributes' : parameter 'tree_model' of type 'TreeModel' not supported
+var cellAreaApplyAttributesFunction *gi.Function
+var cellAreaApplyAttributesFunction_Once sync.Once
+
+func cellAreaApplyAttributesFunction_Set() error {
+	var err error
+	cellAreaApplyAttributesFunction_Once.Do(func() {
+		err = cellAreaObject_Set()
+		if err != nil {
+			return
+		}
+		cellAreaApplyAttributesFunction, err = cellAreaObject.InvokerNew("apply_attributes")
+	})
+	return err
+}
+
+// ApplyAttributes is a representation of the C type gtk_cell_area_apply_attributes.
+func (recv *CellArea) ApplyAttributes(treeModel *TreeModel, iter *TreeIter, isExpander bool, isExpanded bool) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(treeModel.Native())
+	inArgs[2].SetPointer(iter.Native())
+	inArgs[3].SetBoolean(isExpander)
+	inArgs[4].SetBoolean(isExpanded)
+
+	err := cellAreaApplyAttributesFunction_Set()
+	if err == nil {
+		cellAreaApplyAttributesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var cellAreaAttributeConnectFunction *gi.Function
 var cellAreaAttributeConnectFunction_Once sync.Once
@@ -13148,7 +13353,37 @@ func (recv *CellArea) GetCurrentPathString() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_cell_area_get_edit_widget' : return type 'CellEditable' not supported
+var cellAreaGetEditWidgetFunction *gi.Function
+var cellAreaGetEditWidgetFunction_Once sync.Once
+
+func cellAreaGetEditWidgetFunction_Set() error {
+	var err error
+	cellAreaGetEditWidgetFunction_Once.Do(func() {
+		err = cellAreaObject_Set()
+		if err != nil {
+			return
+		}
+		cellAreaGetEditWidgetFunction, err = cellAreaObject.InvokerNew("get_edit_widget")
+	})
+	return err
+}
+
+// GetEditWidget is a representation of the C type gtk_cell_area_get_edit_widget.
+func (recv *CellArea) GetEditWidget() *CellEditable {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := cellAreaGetEditWidgetFunction_Set()
+	if err == nil {
+		ret = cellAreaGetEditWidgetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := CellEditableNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var cellAreaGetEditedCellFunction *gi.Function
 var cellAreaGetEditedCellFunction_Once sync.Once
@@ -13776,9 +14011,63 @@ func (recv *CellArea) StopEditing(canceled bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'add-editable' : parameter 'editable' of type 'CellEditable' not supported
+/*
+ConnectAddEditable connects a callback to the 'add-editable' signal of the CellArea.
 
-// UNSUPPORTED : C value 'apply-attributes' : parameter 'model' of type 'TreeModel' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CellArea) ConnectAddEditable(handler func(instance *CellArea, renderer *CellRenderer, editable *CellEditable, cellArea *gdk.Rectangle, path string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CellAreaNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := CellRendererNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := CellEditableNewFromNative(object2.GetObject().Native())
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := gdk.RectangleNewFromNative(object3.GetBoxed())
+
+		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
+		arg4 := object4.GetString()
+
+		handler(argInstance, arg1, arg2, arg3, arg4)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "add-editable", marshal)
+}
+
+/*
+ConnectApplyAttributes connects a callback to the 'apply-attributes' signal of the CellArea.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CellArea) ConnectApplyAttributes(handler func(instance *CellArea, model *TreeModel, iter *TreeIter, isExpander bool, isExpanded bool)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CellAreaNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := TreeModelNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := TreeIterNewFromNative(object2.GetBoxed())
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := object3.GetBoolean()
+
+		object4 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[4]))
+		arg4 := object4.GetBoolean()
+
+		handler(argInstance, arg1, arg2, arg3, arg4)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "apply-attributes", marshal)
+}
 
 /*
 ConnectFocusChanged connects a callback to the 'focus-changed' signal of the CellArea.
@@ -13803,7 +14092,28 @@ func (recv *CellArea) ConnectFocusChanged(handler func(instance *CellArea, rende
 	return callback.ConnectSignal(recv.Native(), "focus-changed", marshal)
 }
 
-// UNSUPPORTED : C value 'remove-editable' : parameter 'editable' of type 'CellEditable' not supported
+/*
+ConnectRemoveEditable connects a callback to the 'remove-editable' signal of the CellArea.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CellArea) ConnectRemoveEditable(handler func(instance *CellArea, renderer *CellRenderer, editable *CellEditable)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CellAreaNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := CellRendererNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := CellEditableNewFromNative(object2.GetObject().Native())
+
+		handler(argInstance, arg1, arg2)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "remove-editable", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -15256,7 +15566,28 @@ func (recv *CellRenderer) ConnectEditingCanceled(handler func(instance *CellRend
 	return callback.ConnectSignal(recv.Native(), "editing-canceled", marshal)
 }
 
-// UNSUPPORTED : C value 'editing-started' : parameter 'editable' of type 'CellEditable' not supported
+/*
+ConnectEditingStarted connects a callback to the 'editing-started' signal of the CellRenderer.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *CellRenderer) ConnectEditingStarted(handler func(instance *CellRenderer, editable *CellEditable, path string)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := CellRendererNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := CellEditableNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := object2.GetString()
+
+		handler(argInstance, arg1, arg2)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "editing-started", marshal)
+}
 
 /*
 Disconnect disconnects a callback previously registered with a Connect...() method.
@@ -16874,7 +17205,37 @@ func (recv *CellView) GetFitModel() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_cell_view_get_model' : return type 'TreeModel' not supported
+var cellViewGetModelFunction *gi.Function
+var cellViewGetModelFunction_Once sync.Once
+
+func cellViewGetModelFunction_Set() error {
+	var err error
+	cellViewGetModelFunction_Once.Do(func() {
+		err = cellViewObject_Set()
+		if err != nil {
+			return
+		}
+		cellViewGetModelFunction, err = cellViewObject.InvokerNew("get_model")
+	})
+	return err
+}
+
+// GetModel is a representation of the C type gtk_cell_view_get_model.
+func (recv *CellView) GetModel() *TreeModel {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := cellViewGetModelFunction_Set()
+	if err == nil {
+		ret = cellViewGetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeModelNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var cellViewGetSizeOfRowFunction *gi.Function
 var cellViewGetSizeOfRowFunction_Once sync.Once
@@ -17056,7 +17417,34 @@ func (recv *CellView) SetFitModel(fitModel bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_cell_view_set_model' : parameter 'model' of type 'TreeModel' not supported
+var cellViewSetModelFunction *gi.Function
+var cellViewSetModelFunction_Once sync.Once
+
+func cellViewSetModelFunction_Set() error {
+	var err error
+	cellViewSetModelFunction_Once.Do(func() {
+		err = cellViewObject_Set()
+		if err != nil {
+			return
+		}
+		cellViewSetModelFunction, err = cellViewObject.InvokerNew("set_model")
+	})
+	return err
+}
+
+// SetModel is a representation of the C type gtk_cell_view_set_model.
+func (recv *CellView) SetModel(model *TreeModel) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(model.Native())
+
+	err := cellViewSetModelFunction_Set()
+	if err == nil {
+		cellViewSetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // AtkImplementorIface returns the Atk.ImplementorIface interface implemented by CellView
 func (recv *CellView) AtkImplementorIface() *atk.ImplementorIface {
@@ -20441,9 +20829,69 @@ func ComboBoxNewWithEntry() *ComboBox {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_combo_box_new_with_model' : parameter 'model' of type 'TreeModel' not supported
+var comboBoxNewWithModelFunction *gi.Function
+var comboBoxNewWithModelFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_combo_box_new_with_model_and_entry' : parameter 'model' of type 'TreeModel' not supported
+func comboBoxNewWithModelFunction_Set() error {
+	var err error
+	comboBoxNewWithModelFunction_Once.Do(func() {
+		err = comboBoxObject_Set()
+		if err != nil {
+			return
+		}
+		comboBoxNewWithModelFunction, err = comboBoxObject.InvokerNew("new_with_model")
+	})
+	return err
+}
+
+// ComboBoxNewWithModel is a representation of the C type gtk_combo_box_new_with_model.
+func ComboBoxNewWithModel(model *TreeModel) *ComboBox {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(model.Native())
+
+	var ret gi.Argument
+
+	err := comboBoxNewWithModelFunction_Set()
+	if err == nil {
+		ret = comboBoxNewWithModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ComboBoxNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var comboBoxNewWithModelAndEntryFunction *gi.Function
+var comboBoxNewWithModelAndEntryFunction_Once sync.Once
+
+func comboBoxNewWithModelAndEntryFunction_Set() error {
+	var err error
+	comboBoxNewWithModelAndEntryFunction_Once.Do(func() {
+		err = comboBoxObject_Set()
+		if err != nil {
+			return
+		}
+		comboBoxNewWithModelAndEntryFunction, err = comboBoxObject.InvokerNew("new_with_model_and_entry")
+	})
+	return err
+}
+
+// ComboBoxNewWithModelAndEntry is a representation of the C type gtk_combo_box_new_with_model_and_entry.
+func ComboBoxNewWithModelAndEntry(model *TreeModel) *ComboBox {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(model.Native())
+
+	var ret gi.Argument
+
+	err := comboBoxNewWithModelAndEntryFunction_Set()
+	if err == nil {
+		ret = comboBoxNewWithModelAndEntryFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ComboBoxNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var comboBoxGetActiveFunction *gi.Function
 var comboBoxGetActiveFunction_Once sync.Once
@@ -20767,7 +21215,37 @@ func (recv *ComboBox) GetIdColumn() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_combo_box_get_model' : return type 'TreeModel' not supported
+var comboBoxGetModelFunction *gi.Function
+var comboBoxGetModelFunction_Once sync.Once
+
+func comboBoxGetModelFunction_Set() error {
+	var err error
+	comboBoxGetModelFunction_Once.Do(func() {
+		err = comboBoxObject_Set()
+		if err != nil {
+			return
+		}
+		comboBoxGetModelFunction, err = comboBoxObject.InvokerNew("get_model")
+	})
+	return err
+}
+
+// GetModel is a representation of the C type gtk_combo_box_get_model.
+func (recv *ComboBox) GetModel() *TreeModel {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := comboBoxGetModelFunction_Set()
+	if err == nil {
+		ret = comboBoxGetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeModelNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var comboBoxGetPopupAccessibleFunction *gi.Function
 var comboBoxGetPopupAccessibleFunction_Once sync.Once
@@ -21281,7 +21759,34 @@ func (recv *ComboBox) SetIdColumn(idColumn int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_combo_box_set_model' : parameter 'model' of type 'TreeModel' not supported
+var comboBoxSetModelFunction *gi.Function
+var comboBoxSetModelFunction_Once sync.Once
+
+func comboBoxSetModelFunction_Set() error {
+	var err error
+	comboBoxSetModelFunction_Once.Do(func() {
+		err = comboBoxObject_Set()
+		if err != nil {
+			return
+		}
+		comboBoxSetModelFunction, err = comboBoxObject.InvokerNew("set_model")
+	})
+	return err
+}
+
+// SetModel is a representation of the C type gtk_combo_box_set_model.
+func (recv *ComboBox) SetModel(model *TreeModel) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(model.Native())
+
+	err := comboBoxSetModelFunction_Set()
+	if err == nil {
+		comboBoxSetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var comboBoxSetPopupFixedWidthFunction *gi.Function
 var comboBoxSetPopupFixedWidthFunction_Once sync.Once
@@ -23567,7 +24072,38 @@ func (recv *CssProvider) LoadFromData(data string, length int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_css_provider_load_from_file' : parameter 'file' of type 'Gio.File' not supported
+var cssProviderLoadFromFileFunction *gi.Function
+var cssProviderLoadFromFileFunction_Once sync.Once
+
+func cssProviderLoadFromFileFunction_Set() error {
+	var err error
+	cssProviderLoadFromFileFunction_Once.Do(func() {
+		err = cssProviderObject_Set()
+		if err != nil {
+			return
+		}
+		cssProviderLoadFromFileFunction, err = cssProviderObject.InvokerNew("load_from_file")
+	})
+	return err
+}
+
+// LoadFromFile is a representation of the C type gtk_css_provider_load_from_file.
+func (recv *CssProvider) LoadFromFile(file *gio.File) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(file.Native())
+
+	var ret gi.Argument
+
+	err := cssProviderLoadFromFileFunction_Set()
+	if err == nil {
+		ret = cssProviderLoadFromFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var cssProviderLoadFromPathFunction *gi.Function
 var cssProviderLoadFromPathFunction_Once sync.Once
@@ -24851,7 +25387,38 @@ func (recv *Entry) GetIconAtPos(x int32, y int32) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_entry_get_icon_gicon' : return type 'Gio.Icon' not supported
+var entryGetIconGiconFunction *gi.Function
+var entryGetIconGiconFunction_Once sync.Once
+
+func entryGetIconGiconFunction_Set() error {
+	var err error
+	entryGetIconGiconFunction_Once.Do(func() {
+		err = entryObject_Set()
+		if err != nil {
+			return
+		}
+		entryGetIconGiconFunction, err = entryObject.InvokerNew("get_icon_gicon")
+	})
+	return err
+}
+
+// GetIconGicon is a representation of the C type gtk_entry_get_icon_gicon.
+func (recv *Entry) GetIconGicon(iconPos EntryIconPosition) *gio.Icon {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(iconPos))
+
+	var ret gi.Argument
+
+	err := entryGetIconGiconFunction_Set()
+	if err == nil {
+		ret = entryGetIconGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var entryGetIconNameFunction *gi.Function
 var entryGetIconNameFunction_Once sync.Once
@@ -26016,7 +26583,35 @@ func (recv *Entry) SetIconActivatable(iconPos EntryIconPosition, activatable boo
 
 // UNSUPPORTED : C value 'gtk_entry_set_icon_drag_source' : parameter 'actions' of type 'Gdk.DragAction' not supported
 
-// UNSUPPORTED : C value 'gtk_entry_set_icon_from_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
+var entrySetIconFromGiconFunction *gi.Function
+var entrySetIconFromGiconFunction_Once sync.Once
+
+func entrySetIconFromGiconFunction_Set() error {
+	var err error
+	entrySetIconFromGiconFunction_Once.Do(func() {
+		err = entryObject_Set()
+		if err != nil {
+			return
+		}
+		entrySetIconFromGiconFunction, err = entryObject.InvokerNew("set_icon_from_gicon")
+	})
+	return err
+}
+
+// SetIconFromGicon is a representation of the C type gtk_entry_set_icon_from_gicon.
+func (recv *Entry) SetIconFromGicon(iconPos EntryIconPosition, icon *gio.Icon) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(iconPos))
+	inArgs[2].SetPointer(icon.Native())
+
+	err := entrySetIconFromGiconFunction_Set()
+	if err == nil {
+		entrySetIconFromGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var entrySetIconFromIconNameFunction *gi.Function
 var entrySetIconFromIconNameFunction_Once sync.Once
@@ -27938,7 +28533,37 @@ func (recv *EntryCompletion) GetMinimumKeyLength() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_entry_completion_get_model' : return type 'TreeModel' not supported
+var entryCompletionGetModelFunction *gi.Function
+var entryCompletionGetModelFunction_Once sync.Once
+
+func entryCompletionGetModelFunction_Set() error {
+	var err error
+	entryCompletionGetModelFunction_Once.Do(func() {
+		err = entryCompletionObject_Set()
+		if err != nil {
+			return
+		}
+		entryCompletionGetModelFunction, err = entryCompletionObject.InvokerNew("get_model")
+	})
+	return err
+}
+
+// GetModel is a representation of the C type gtk_entry_completion_get_model.
+func (recv *EntryCompletion) GetModel() *TreeModel {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := entryCompletionGetModelFunction_Set()
+	if err == nil {
+		ret = entryCompletionGetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeModelNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var entryCompletionGetPopupCompletionFunction *gi.Function
 var entryCompletionGetPopupCompletionFunction_Once sync.Once
@@ -28245,7 +28870,34 @@ func (recv *EntryCompletion) SetMinimumKeyLength(length int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_entry_completion_set_model' : parameter 'model' of type 'TreeModel' not supported
+var entryCompletionSetModelFunction *gi.Function
+var entryCompletionSetModelFunction_Once sync.Once
+
+func entryCompletionSetModelFunction_Set() error {
+	var err error
+	entryCompletionSetModelFunction_Once.Do(func() {
+		err = entryCompletionObject_Set()
+		if err != nil {
+			return
+		}
+		entryCompletionSetModelFunction, err = entryCompletionObject.InvokerNew("set_model")
+	})
+	return err
+}
+
+// SetModel is a representation of the C type gtk_entry_completion_set_model.
+func (recv *EntryCompletion) SetModel(model *TreeModel) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(model.Native())
+
+	err := entryCompletionSetModelFunction_Set()
+	if err == nil {
+		entryCompletionSetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var entryCompletionSetPopupCompletionFunction *gi.Function
 var entryCompletionSetPopupCompletionFunction_Once sync.Once
@@ -28383,7 +29035,31 @@ func (recv *EntryCompletion) ConnectActionActivated(handler func(instance *Entry
 	return callback.ConnectSignal(recv.Native(), "action-activated", marshal)
 }
 
-// UNSUPPORTED : C value 'cursor-on-match' : parameter 'model' of type 'TreeModel' not supported
+/*
+ConnectCursorOnMatch connects a callback to the 'cursor-on-match' signal of the EntryCompletion.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EntryCompletion) ConnectCursorOnMatch(handler func(instance *EntryCompletion, model *TreeModel, iter *TreeIter) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := EntryCompletionNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := TreeModelNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := TreeIterNewFromNative(object2.GetBoxed())
+
+		retGo := handler(argInstance, arg1, arg2)
+
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "cursor-on-match", marshal)
+}
 
 /*
 ConnectInsertPrefix connects a callback to the 'insert-prefix' signal of the EntryCompletion.
@@ -28408,7 +29084,31 @@ func (recv *EntryCompletion) ConnectInsertPrefix(handler func(instance *EntryCom
 	return callback.ConnectSignal(recv.Native(), "insert-prefix", marshal)
 }
 
-// UNSUPPORTED : C value 'match-selected' : parameter 'model' of type 'TreeModel' not supported
+/*
+ConnectMatchSelected connects a callback to the 'match-selected' signal of the EntryCompletion.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *EntryCompletion) ConnectMatchSelected(handler func(instance *EntryCompletion, model *TreeModel, iter *TreeIter) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := EntryCompletionNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := TreeModelNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := TreeIterNewFromNative(object2.GetBoxed())
+
+		retGo := handler(argInstance, arg1, arg2)
+
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "match-selected", marshal)
+}
 
 /*
 ConnectNoMatches connects a callback to the 'no-matches' signal of the EntryCompletion.
@@ -32306,7 +33006,7 @@ func FlowBoxNew() *FlowBox {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_flow_box_bind_model' : parameter 'model' of type 'Gio.ListModel' not supported
+// UNSUPPORTED : C value 'gtk_flow_box_bind_model' : parameter 'create_widget_func' of type 'FlowBoxCreateWidgetFunc' not supported
 
 var flowBoxGetActivateOnSingleClickFunction *gi.Function
 var flowBoxGetActivateOnSingleClickFunction_Once sync.Once
@@ -43936,7 +44636,38 @@ func (recv *IconInfo) LoadIcon() *gdkpixbuf.Pixbuf {
 
 // UNSUPPORTED : C value 'gtk_icon_info_load_icon_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_info_load_icon_finish' : parameter 'res' of type 'Gio.AsyncResult' not supported
+var iconInfoLoadIconFinishFunction *gi.Function
+var iconInfoLoadIconFinishFunction_Once sync.Once
+
+func iconInfoLoadIconFinishFunction_Set() error {
+	var err error
+	iconInfoLoadIconFinishFunction_Once.Do(func() {
+		err = iconInfoObject_Set()
+		if err != nil {
+			return
+		}
+		iconInfoLoadIconFinishFunction, err = iconInfoObject.InvokerNew("load_icon_finish")
+	})
+	return err
+}
+
+// LoadIconFinish is a representation of the C type gtk_icon_info_load_icon_finish.
+func (recv *IconInfo) LoadIconFinish(res *gio.AsyncResult) *gdkpixbuf.Pixbuf {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := iconInfoLoadIconFinishFunction_Set()
+	if err == nil {
+		ret = iconInfoLoadIconFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gdkpixbuf.PixbufNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var iconInfoLoadSurfaceFunction *gi.Function
 var iconInfoLoadSurfaceFunction_Once sync.Once
@@ -44011,7 +44742,40 @@ func (recv *IconInfo) LoadSymbolic(fg *gdk.RGBA, successColor *gdk.RGBA, warning
 
 // UNSUPPORTED : C value 'gtk_icon_info_load_symbolic_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_info_load_symbolic_finish' : parameter 'res' of type 'Gio.AsyncResult' not supported
+var iconInfoLoadSymbolicFinishFunction *gi.Function
+var iconInfoLoadSymbolicFinishFunction_Once sync.Once
+
+func iconInfoLoadSymbolicFinishFunction_Set() error {
+	var err error
+	iconInfoLoadSymbolicFinishFunction_Once.Do(func() {
+		err = iconInfoObject_Set()
+		if err != nil {
+			return
+		}
+		iconInfoLoadSymbolicFinishFunction, err = iconInfoObject.InvokerNew("load_symbolic_finish")
+	})
+	return err
+}
+
+// LoadSymbolicFinish is a representation of the C type gtk_icon_info_load_symbolic_finish.
+func (recv *IconInfo) LoadSymbolicFinish(res *gio.AsyncResult) (*gdkpixbuf.Pixbuf, bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := iconInfoLoadSymbolicFinishFunction_Set()
+	if err == nil {
+		ret = iconInfoLoadSymbolicFinishFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := gdkpixbuf.PixbufNewFromNative(ret.Pointer())
+	out0 := outArgs[0].Boolean()
+
+	return retGo, out0
+}
 
 var iconInfoLoadSymbolicForContextFunction *gi.Function
 var iconInfoLoadSymbolicForContextFunction_Once sync.Once
@@ -44050,7 +44814,40 @@ func (recv *IconInfo) LoadSymbolicForContext(context *StyleContext) (*gdkpixbuf.
 
 // UNSUPPORTED : C value 'gtk_icon_info_load_symbolic_for_context_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'gtk_icon_info_load_symbolic_for_context_finish' : parameter 'res' of type 'Gio.AsyncResult' not supported
+var iconInfoLoadSymbolicForContextFinishFunction *gi.Function
+var iconInfoLoadSymbolicForContextFinishFunction_Once sync.Once
+
+func iconInfoLoadSymbolicForContextFinishFunction_Set() error {
+	var err error
+	iconInfoLoadSymbolicForContextFinishFunction_Once.Do(func() {
+		err = iconInfoObject_Set()
+		if err != nil {
+			return
+		}
+		iconInfoLoadSymbolicForContextFinishFunction, err = iconInfoObject.InvokerNew("load_symbolic_for_context_finish")
+	})
+	return err
+}
+
+// LoadSymbolicForContextFinish is a representation of the C type gtk_icon_info_load_symbolic_for_context_finish.
+func (recv *IconInfo) LoadSymbolicForContextFinish(res *gio.AsyncResult) (*gdkpixbuf.Pixbuf, bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(res.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := iconInfoLoadSymbolicForContextFinishFunction_Set()
+	if err == nil {
+		ret = iconInfoLoadSymbolicForContextFinishFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := gdkpixbuf.PixbufNewFromNative(ret.Pointer())
+	out0 := outArgs[0].Boolean()
+
+	return retGo, out0
+}
 
 var iconInfoLoadSymbolicForStyleFunction *gi.Function
 var iconInfoLoadSymbolicForStyleFunction_Once sync.Once
@@ -44540,9 +45337,76 @@ func (recv *IconTheme) LoadSurface(iconName string, size int32, scale int32, for
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_theme_lookup_by_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
+var iconThemeLookupByGiconFunction *gi.Function
+var iconThemeLookupByGiconFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_icon_theme_lookup_by_gicon_for_scale' : parameter 'icon' of type 'Gio.Icon' not supported
+func iconThemeLookupByGiconFunction_Set() error {
+	var err error
+	iconThemeLookupByGiconFunction_Once.Do(func() {
+		err = iconThemeObject_Set()
+		if err != nil {
+			return
+		}
+		iconThemeLookupByGiconFunction, err = iconThemeObject.InvokerNew("lookup_by_gicon")
+	})
+	return err
+}
+
+// LookupByGicon is a representation of the C type gtk_icon_theme_lookup_by_gicon.
+func (recv *IconTheme) LookupByGicon(icon *gio.Icon, size int32, flags IconLookupFlags) *IconInfo {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(icon.Native())
+	inArgs[2].SetInt32(size)
+	inArgs[3].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := iconThemeLookupByGiconFunction_Set()
+	if err == nil {
+		ret = iconThemeLookupByGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var iconThemeLookupByGiconForScaleFunction *gi.Function
+var iconThemeLookupByGiconForScaleFunction_Once sync.Once
+
+func iconThemeLookupByGiconForScaleFunction_Set() error {
+	var err error
+	iconThemeLookupByGiconForScaleFunction_Once.Do(func() {
+		err = iconThemeObject_Set()
+		if err != nil {
+			return
+		}
+		iconThemeLookupByGiconForScaleFunction, err = iconThemeObject.InvokerNew("lookup_by_gicon_for_scale")
+	})
+	return err
+}
+
+// LookupByGiconForScale is a representation of the C type gtk_icon_theme_lookup_by_gicon_for_scale.
+func (recv *IconTheme) LookupByGiconForScale(icon *gio.Icon, size int32, scale int32, flags IconLookupFlags) *IconInfo {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(icon.Native())
+	inArgs[2].SetInt32(size)
+	inArgs[3].SetInt32(scale)
+	inArgs[4].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := iconThemeLookupByGiconForScaleFunction_Set()
+	if err == nil {
+		ret = iconThemeLookupByGiconForScaleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var iconThemeLookupIconFunction *gi.Function
 var iconThemeLookupIconFunction_Once sync.Once
@@ -44913,7 +45777,37 @@ func IconViewNewWithArea(area *CellArea) *IconView {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_view_new_with_model' : parameter 'model' of type 'TreeModel' not supported
+var iconViewNewWithModelFunction *gi.Function
+var iconViewNewWithModelFunction_Once sync.Once
+
+func iconViewNewWithModelFunction_Set() error {
+	var err error
+	iconViewNewWithModelFunction_Once.Do(func() {
+		err = iconViewObject_Set()
+		if err != nil {
+			return
+		}
+		iconViewNewWithModelFunction, err = iconViewObject.InvokerNew("new_with_model")
+	})
+	return err
+}
+
+// IconViewNewWithModel is a representation of the C type gtk_icon_view_new_with_model.
+func IconViewNewWithModel(model *TreeModel) *IconView {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(model.Native())
+
+	var ret gi.Argument
+
+	err := iconViewNewWithModelFunction_Set()
+	if err == nil {
+		ret = iconViewNewWithModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconViewNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var iconViewConvertWidgetToBinWindowCoordsFunction *gi.Function
 var iconViewConvertWidgetToBinWindowCoordsFunction_Once sync.Once
@@ -45487,7 +46381,37 @@ func (recv *IconView) GetMarkupColumn() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_view_get_model' : return type 'TreeModel' not supported
+var iconViewGetModelFunction *gi.Function
+var iconViewGetModelFunction_Once sync.Once
+
+func iconViewGetModelFunction_Set() error {
+	var err error
+	iconViewGetModelFunction_Once.Do(func() {
+		err = iconViewObject_Set()
+		if err != nil {
+			return
+		}
+		iconViewGetModelFunction, err = iconViewObject.InvokerNew("get_model")
+	})
+	return err
+}
+
+// GetModel is a representation of the C type gtk_icon_view_get_model.
+func (recv *IconView) GetModel() *TreeModel {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := iconViewGetModelFunction_Set()
+	if err == nil {
+		ret = iconViewGetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeModelNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var iconViewGetPathAtPosFunction *gi.Function
 var iconViewGetPathAtPosFunction_Once sync.Once
@@ -45779,7 +46703,46 @@ func (recv *IconView) GetTooltipColumn() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_view_get_tooltip_context' : parameter 'model' of type 'TreeModel' not supported
+var iconViewGetTooltipContextFunction *gi.Function
+var iconViewGetTooltipContextFunction_Once sync.Once
+
+func iconViewGetTooltipContextFunction_Set() error {
+	var err error
+	iconViewGetTooltipContextFunction_Once.Do(func() {
+		err = iconViewObject_Set()
+		if err != nil {
+			return
+		}
+		iconViewGetTooltipContextFunction, err = iconViewObject.InvokerNew("get_tooltip_context")
+	})
+	return err
+}
+
+// GetTooltipContext is a representation of the C type gtk_icon_view_get_tooltip_context.
+func (recv *IconView) GetTooltipContext(x int32, y int32, keyboardTip bool) (bool, int32, int32, *TreeModel, *TreePath, *TreeIter) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(x)
+	inArgs[2].SetInt32(y)
+	inArgs[3].SetBoolean(keyboardTip)
+
+	var outArgs [5]gi.Argument
+	var ret gi.Argument
+
+	err := iconViewGetTooltipContextFunction_Set()
+	if err == nil {
+		ret = iconViewGetTooltipContextFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+	out2 := TreeModelNewFromNative(outArgs[2].Pointer())
+	out3 := TreePathNewFromNative(outArgs[3].Pointer())
+	out4 := TreeIterNewFromNative(outArgs[4].Pointer())
+
+	return retGo, out0, out1, out2, out3, out4
+}
 
 var iconViewGetVisibleRangeFunction *gi.Function
 var iconViewGetVisibleRangeFunction_Once sync.Once
@@ -46262,7 +47225,34 @@ func (recv *IconView) SetMarkupColumn(column int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_view_set_model' : parameter 'model' of type 'TreeModel' not supported
+var iconViewSetModelFunction *gi.Function
+var iconViewSetModelFunction_Once sync.Once
+
+func iconViewSetModelFunction_Set() error {
+	var err error
+	iconViewSetModelFunction_Once.Do(func() {
+		err = iconViewObject_Set()
+		if err != nil {
+			return
+		}
+		iconViewSetModelFunction, err = iconViewObject.InvokerNew("set_model")
+	})
+	return err
+}
+
+// SetModel is a representation of the C type gtk_icon_view_set_model.
+func (recv *IconView) SetModel(model *TreeModel) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(model.Native())
+
+	err := iconViewSetModelFunction_Set()
+	if err == nil {
+		iconViewSetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var iconViewSetPixbufColumnFunction *gi.Function
 var iconViewSetPixbufColumnFunction_Once sync.Once
@@ -47122,7 +48112,38 @@ func ImageNewFromFile(filename string) *Image {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_image_new_from_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
+var imageNewFromGiconFunction *gi.Function
+var imageNewFromGiconFunction_Once sync.Once
+
+func imageNewFromGiconFunction_Set() error {
+	var err error
+	imageNewFromGiconFunction_Once.Do(func() {
+		err = imageObject_Set()
+		if err != nil {
+			return
+		}
+		imageNewFromGiconFunction, err = imageObject.InvokerNew("new_from_gicon")
+	})
+	return err
+}
+
+// ImageNewFromGicon is a representation of the C type gtk_image_new_from_gicon.
+func ImageNewFromGicon(icon *gio.Icon, size IconSize) *Image {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(icon.Native())
+	inArgs[1].SetInt32(int32(size))
+
+	var ret gi.Argument
+
+	err := imageNewFromGiconFunction_Set()
+	if err == nil {
+		ret = imageNewFromGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ImageNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var imageNewFromIconNameFunction *gi.Function
 var imageNewFromIconNameFunction_Once sync.Once
@@ -47379,7 +48400,38 @@ func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_image_get_gicon' : parameter 'gicon' of type 'Gio.Icon' not supported
+var imageGetGiconFunction *gi.Function
+var imageGetGiconFunction_Once sync.Once
+
+func imageGetGiconFunction_Set() error {
+	var err error
+	imageGetGiconFunction_Once.Do(func() {
+		err = imageObject_Set()
+		if err != nil {
+			return
+		}
+		imageGetGiconFunction, err = imageObject.InvokerNew("get_gicon")
+	})
+	return err
+}
+
+// GetGicon is a representation of the C type gtk_image_get_gicon.
+func (recv *Image) GetGicon() (*gio.Icon, IconSize) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [2]gi.Argument
+
+	err := imageGetGiconFunction_Set()
+	if err == nil {
+		imageGetGiconFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := gio.IconNewFromNative(outArgs[0].Pointer())
+	out1 := IconSize(outArgs[1].Int32())
+
+	return out0, out1
+}
 
 var imageGetIconNameFunction *gi.Function
 var imageGetIconNameFunction_Once sync.Once
@@ -47634,7 +48686,35 @@ func (recv *Image) SetFromFile(filename string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_image_set_from_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
+var imageSetFromGiconFunction *gi.Function
+var imageSetFromGiconFunction_Once sync.Once
+
+func imageSetFromGiconFunction_Set() error {
+	var err error
+	imageSetFromGiconFunction_Once.Do(func() {
+		err = imageObject_Set()
+		if err != nil {
+			return
+		}
+		imageSetFromGiconFunction, err = imageObject.InvokerNew("set_from_gicon")
+	})
+	return err
+}
+
+// SetFromGicon is a representation of the C type gtk_image_set_from_gicon.
+func (recv *Image) SetFromGicon(icon *gio.Icon, size IconSize) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(icon.Native())
+	inArgs[2].SetInt32(int32(size))
+
+	err := imageSetFromGiconFunction_Set()
+	if err == nil {
+		imageSetFromGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var imageSetFromIconNameFunction *gi.Function
 var imageSetFromIconNameFunction_Once sync.Once
@@ -52782,7 +53862,7 @@ func ListBoxNew() *ListBox {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_list_box_bind_model' : parameter 'model' of type 'Gio.ListModel' not supported
+// UNSUPPORTED : C value 'gtk_list_box_bind_model' : parameter 'create_widget_func' of type 'ListBoxCreateWidgetFunc' not supported
 
 var listBoxDragHighlightRowFunction *gi.Function
 var listBoxDragHighlightRowFunction_Once sync.Once
@@ -62588,7 +63668,37 @@ func (recv *NumerableIcon) SetFieldParent(value *gio.EmblemedIcon) {
 	gi.ObjectFieldSet(numerableIconObject, recv.Native(), "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_numerable_icon_get_background_gicon' : return type 'Gio.Icon' not supported
+var numerableIconGetBackgroundGiconFunction *gi.Function
+var numerableIconGetBackgroundGiconFunction_Once sync.Once
+
+func numerableIconGetBackgroundGiconFunction_Set() error {
+	var err error
+	numerableIconGetBackgroundGiconFunction_Once.Do(func() {
+		err = numerableIconObject_Set()
+		if err != nil {
+			return
+		}
+		numerableIconGetBackgroundGiconFunction, err = numerableIconObject.InvokerNew("get_background_gicon")
+	})
+	return err
+}
+
+// GetBackgroundGicon is a representation of the C type gtk_numerable_icon_get_background_gicon.
+func (recv *NumerableIcon) GetBackgroundGicon() *gio.Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := numerableIconGetBackgroundGiconFunction_Set()
+	if err == nil {
+		ret = numerableIconGetBackgroundGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var numerableIconGetBackgroundIconNameFunction *gi.Function
 var numerableIconGetBackgroundIconNameFunction_Once sync.Once
@@ -62718,7 +63828,34 @@ func (recv *NumerableIcon) GetStyleContext() *StyleContext {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_numerable_icon_set_background_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
+var numerableIconSetBackgroundGiconFunction *gi.Function
+var numerableIconSetBackgroundGiconFunction_Once sync.Once
+
+func numerableIconSetBackgroundGiconFunction_Set() error {
+	var err error
+	numerableIconSetBackgroundGiconFunction_Once.Do(func() {
+		err = numerableIconObject_Set()
+		if err != nil {
+			return
+		}
+		numerableIconSetBackgroundGiconFunction, err = numerableIconObject.InvokerNew("set_background_gicon")
+	})
+	return err
+}
+
+// SetBackgroundGicon is a representation of the C type gtk_numerable_icon_set_background_gicon.
+func (recv *NumerableIcon) SetBackgroundGicon(icon *gio.Icon) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(icon.Native())
+
+	err := numerableIconSetBackgroundGiconFunction_Set()
+	if err == nil {
+		numerableIconSetBackgroundGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var numerableIconSetBackgroundIconNameFunction *gi.Function
 var numerableIconSetBackgroundIconNameFunction_Once sync.Once
@@ -63414,7 +64551,41 @@ func (recv *PadController) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_pad_controller_new' : parameter 'group' of type 'Gio.ActionGroup' not supported
+var padControllerNewFunction *gi.Function
+var padControllerNewFunction_Once sync.Once
+
+func padControllerNewFunction_Set() error {
+	var err error
+	padControllerNewFunction_Once.Do(func() {
+		err = padControllerObject_Set()
+		if err != nil {
+			return
+		}
+		padControllerNewFunction, err = padControllerObject.InvokerNew("new")
+	})
+	return err
+}
+
+// PadControllerNew is a representation of the C type gtk_pad_controller_new.
+func PadControllerNew(window *Window, group *gio.ActionGroup, pad *gdk.Device) *PadController {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(window.Native())
+	inArgs[1].SetPointer(group.Native())
+	inArgs[2].SetPointer(pad.Native())
+
+	var ret gi.Argument
+
+	err := padControllerNewFunction_Set()
+	if err == nil {
+		ret = padControllerNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PadControllerNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var padControllerSetActionFunction *gi.Function
 var padControllerSetActionFunction_Once sync.Once
@@ -65220,7 +66391,34 @@ func PlacesSidebarNew() *PlacesSidebar {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_places_sidebar_add_shortcut' : parameter 'location' of type 'Gio.File' not supported
+var placesSidebarAddShortcutFunction *gi.Function
+var placesSidebarAddShortcutFunction_Once sync.Once
+
+func placesSidebarAddShortcutFunction_Set() error {
+	var err error
+	placesSidebarAddShortcutFunction_Once.Do(func() {
+		err = placesSidebarObject_Set()
+		if err != nil {
+			return
+		}
+		placesSidebarAddShortcutFunction, err = placesSidebarObject.InvokerNew("add_shortcut")
+	})
+	return err
+}
+
+// AddShortcut is a representation of the C type gtk_places_sidebar_add_shortcut.
+func (recv *PlacesSidebar) AddShortcut(location *gio.File) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(location.Native())
+
+	err := placesSidebarAddShortcutFunction_Set()
+	if err == nil {
+		placesSidebarAddShortcutFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var placesSidebarGetLocalOnlyFunction *gi.Function
 var placesSidebarGetLocalOnlyFunction_Once sync.Once
@@ -65254,9 +66452,70 @@ func (recv *PlacesSidebar) GetLocalOnly() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_places_sidebar_get_location' : return type 'Gio.File' not supported
+var placesSidebarGetLocationFunction *gi.Function
+var placesSidebarGetLocationFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_places_sidebar_get_nth_bookmark' : return type 'Gio.File' not supported
+func placesSidebarGetLocationFunction_Set() error {
+	var err error
+	placesSidebarGetLocationFunction_Once.Do(func() {
+		err = placesSidebarObject_Set()
+		if err != nil {
+			return
+		}
+		placesSidebarGetLocationFunction, err = placesSidebarObject.InvokerNew("get_location")
+	})
+	return err
+}
+
+// GetLocation is a representation of the C type gtk_places_sidebar_get_location.
+func (recv *PlacesSidebar) GetLocation() *gio.File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := placesSidebarGetLocationFunction_Set()
+	if err == nil {
+		ret = placesSidebarGetLocationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var placesSidebarGetNthBookmarkFunction *gi.Function
+var placesSidebarGetNthBookmarkFunction_Once sync.Once
+
+func placesSidebarGetNthBookmarkFunction_Set() error {
+	var err error
+	placesSidebarGetNthBookmarkFunction_Once.Do(func() {
+		err = placesSidebarObject_Set()
+		if err != nil {
+			return
+		}
+		placesSidebarGetNthBookmarkFunction, err = placesSidebarObject.InvokerNew("get_nth_bookmark")
+	})
+	return err
+}
+
+// GetNthBookmark is a representation of the C type gtk_places_sidebar_get_nth_bookmark.
+func (recv *PlacesSidebar) GetNthBookmark(n int32) *gio.File {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(n)
+
+	var ret gi.Argument
+
+	err := placesSidebarGetNthBookmarkFunction_Set()
+	if err == nil {
+		ret = placesSidebarGetNthBookmarkFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var placesSidebarGetOpenFlagsFunction *gi.Function
 var placesSidebarGetOpenFlagsFunction_Once sync.Once
@@ -65546,7 +66805,34 @@ func (recv *PlacesSidebar) ListShortcuts() *glib.SList {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_places_sidebar_remove_shortcut' : parameter 'location' of type 'Gio.File' not supported
+var placesSidebarRemoveShortcutFunction *gi.Function
+var placesSidebarRemoveShortcutFunction_Once sync.Once
+
+func placesSidebarRemoveShortcutFunction_Set() error {
+	var err error
+	placesSidebarRemoveShortcutFunction_Once.Do(func() {
+		err = placesSidebarObject_Set()
+		if err != nil {
+			return
+		}
+		placesSidebarRemoveShortcutFunction, err = placesSidebarObject.InvokerNew("remove_shortcut")
+	})
+	return err
+}
+
+// RemoveShortcut is a representation of the C type gtk_places_sidebar_remove_shortcut.
+func (recv *PlacesSidebar) RemoveShortcut(location *gio.File) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(location.Native())
+
+	err := placesSidebarRemoveShortcutFunction_Set()
+	if err == nil {
+		placesSidebarRemoveShortcutFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var placesSidebarSetDropTargetsVisibleFunction *gi.Function
 var placesSidebarSetDropTargetsVisibleFunction_Once sync.Once
@@ -65607,7 +66893,34 @@ func (recv *PlacesSidebar) SetLocalOnly(localOnly bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_places_sidebar_set_location' : parameter 'location' of type 'Gio.File' not supported
+var placesSidebarSetLocationFunction *gi.Function
+var placesSidebarSetLocationFunction_Once sync.Once
+
+func placesSidebarSetLocationFunction_Set() error {
+	var err error
+	placesSidebarSetLocationFunction_Once.Do(func() {
+		err = placesSidebarObject_Set()
+		if err != nil {
+			return
+		}
+		placesSidebarSetLocationFunction, err = placesSidebarObject.InvokerNew("set_location")
+	})
+	return err
+}
+
+// SetLocation is a representation of the C type gtk_places_sidebar_set_location.
+func (recv *PlacesSidebar) SetLocation(location *gio.File) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(location.Native())
+
+	err := placesSidebarSetLocationFunction_Set()
+	if err == nil {
+		placesSidebarSetLocationFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var placesSidebarSetOpenFlagsFunction *gi.Function
 var placesSidebarSetOpenFlagsFunction_Once sync.Once
@@ -65864,9 +67177,60 @@ func (recv *PlacesSidebar) ConnectDragActionAsk(handler func(instance *PlacesSid
 	return callback.ConnectSignal(recv.Native(), "drag-action-ask", marshal)
 }
 
-// UNSUPPORTED : C value 'drag-action-requested' : parameter 'dest_file' of type 'Gio.File' not supported
+/*
+ConnectDragActionRequested connects a callback to the 'drag-action-requested' signal of the PlacesSidebar.
 
-// UNSUPPORTED : C value 'drag-perform-drop' : parameter 'dest_file' of type 'Gio.File' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PlacesSidebar) ConnectDragActionRequested(handler func(instance *PlacesSidebar, context *gdk.DragContext, destFile *gio.File, sourceFileList *glib.List) int32) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PlacesSidebarNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := gdk.DragContextNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := gio.FileNewFromNative(object2.GetObject().Native())
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := glib.ListNewFromNative(object3.GetBoxed())
+
+		retGo := handler(argInstance, arg1, arg2, arg3)
+
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetInt(retGo)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "drag-action-requested", marshal)
+}
+
+/*
+ConnectDragPerformDrop connects a callback to the 'drag-perform-drop' signal of the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PlacesSidebar) ConnectDragPerformDrop(handler func(instance *PlacesSidebar, destFile *gio.File, sourceFileList *glib.List, action int32)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PlacesSidebarNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := gio.FileNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := glib.ListNewFromNative(object2.GetBoxed())
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := object3.GetInt()
+
+		handler(argInstance, arg1, arg2, arg3)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "drag-perform-drop", marshal)
+}
 
 /*
 ConnectMount connects a callback to the 'mount' signal of the PlacesSidebar.
@@ -65888,9 +67252,54 @@ func (recv *PlacesSidebar) ConnectMount(handler func(instance *PlacesSidebar, mo
 	return callback.ConnectSignal(recv.Native(), "mount", marshal)
 }
 
-// UNSUPPORTED : C value 'open-location' : parameter 'location' of type 'Gio.File' not supported
+/*
+ConnectOpenLocation connects a callback to the 'open-location' signal of the PlacesSidebar.
 
-// UNSUPPORTED : C value 'populate-popup' : parameter 'selected_item' of type 'Gio.File' not supported
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PlacesSidebar) ConnectOpenLocation(handler func(instance *PlacesSidebar, location *gio.File, openFlags PlacesOpenFlags)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PlacesSidebarNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := gio.FileNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := (PlacesOpenFlags)(object2.GetInt())
+
+		handler(argInstance, arg1, arg2)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "open-location", marshal)
+}
+
+/*
+ConnectPopulatePopup connects a callback to the 'populate-popup' signal of the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PlacesSidebar) ConnectPopulatePopup(handler func(instance *PlacesSidebar, container *Widget, selectedItem *gio.File, selectedVolume *gio.Volume)) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PlacesSidebarNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := WidgetNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := gio.FileNewFromNative(object2.GetObject().Native())
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := gio.VolumeNewFromNative(object3.GetObject().Native())
+
+		handler(argInstance, arg1, arg2, arg3)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "populate-popup", marshal)
+}
 
 /*
 ConnectShowConnectToServer connects a callback to the 'show-connect-to-server' signal of the PlacesSidebar.
@@ -68914,7 +70323,34 @@ func (recv *PrintOperation) ConnectPaginate(handler func(instance *PrintOperatio
 	return callback.ConnectSignal(recv.Native(), "paginate", marshal)
 }
 
-// UNSUPPORTED : C value 'preview' : parameter 'preview' of type 'PrintOperationPreview' not supported
+/*
+ConnectPreview connects a callback to the 'preview' signal of the PrintOperation.
+
+The returned value represents the connection, and may be passed to the Disconnect method to remove it.
+*/
+func (recv *PrintOperation) ConnectPreview(handler func(instance *PrintOperation, preview *PrintOperationPreview, context *PrintContext, parent *Window) bool) int {
+	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
+		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
+		argInstance := PrintOperationNewFromNative(objectInstance.GetObject().Native())
+
+		object1 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[1]))
+		arg1 := PrintOperationPreviewNewFromNative(object1.GetObject().Native())
+
+		object2 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[2]))
+		arg2 := PrintContextNewFromNative(object2.GetObject().Native())
+
+		object3 := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[3]))
+		arg3 := WindowNewFromNative(object3.GetObject().Native())
+
+		retGo := handler(argInstance, arg1, arg2, arg3)
+
+		returnObject := gobject.ValueNewFromNative(unsafe.Pointer(returnValue))
+		returnObject.SetBoolean(retGo)
+
+	}
+
+	return callback.ConnectSignal(recv.Native(), "preview", marshal)
+}
 
 /*
 ConnectRequestPageSetup connects a callback to the 'request-page-setup' signal of the PrintOperation.
@@ -85224,7 +86660,39 @@ func StatusIconNewFromFile(filename string) *StatusIcon {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_status_icon_new_from_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
+var statusIconNewFromGiconFunction *gi.Function
+var statusIconNewFromGiconFunction_Once sync.Once
+
+func statusIconNewFromGiconFunction_Set() error {
+	var err error
+	statusIconNewFromGiconFunction_Once.Do(func() {
+		err = statusIconObject_Set()
+		if err != nil {
+			return
+		}
+		statusIconNewFromGiconFunction, err = statusIconObject.InvokerNew("new_from_gicon")
+	})
+	return err
+}
+
+// StatusIconNewFromGicon is a representation of the C type gtk_status_icon_new_from_gicon.
+func StatusIconNewFromGicon(icon *gio.Icon) *StatusIcon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(icon.Native())
+
+	var ret gi.Argument
+
+	err := statusIconNewFromGiconFunction_Set()
+	if err == nil {
+		ret = statusIconNewFromGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := StatusIconNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var statusIconNewFromIconNameFunction *gi.Function
 var statusIconNewFromIconNameFunction_Once sync.Once
@@ -85364,7 +86832,37 @@ func (recv *StatusIcon) GetGeometry() (bool, *gdk.Screen, *gdk.Rectangle, Orient
 	return retGo, out0, out1, out2
 }
 
-// UNSUPPORTED : C value 'gtk_status_icon_get_gicon' : return type 'Gio.Icon' not supported
+var statusIconGetGiconFunction *gi.Function
+var statusIconGetGiconFunction_Once sync.Once
+
+func statusIconGetGiconFunction_Set() error {
+	var err error
+	statusIconGetGiconFunction_Once.Do(func() {
+		err = statusIconObject_Set()
+		if err != nil {
+			return
+		}
+		statusIconGetGiconFunction, err = statusIconObject.InvokerNew("get_gicon")
+	})
+	return err
+}
+
+// GetGicon is a representation of the C type gtk_status_icon_get_gicon.
+func (recv *StatusIcon) GetGicon() *gio.Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := statusIconGetGiconFunction_Set()
+	if err == nil {
+		ret = statusIconGetGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var statusIconGetHasTooltipFunction *gi.Function
 var statusIconGetHasTooltipFunction_Once sync.Once
@@ -85811,7 +87309,34 @@ func (recv *StatusIcon) SetFromFile(filename string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_status_icon_set_from_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
+var statusIconSetFromGiconFunction *gi.Function
+var statusIconSetFromGiconFunction_Once sync.Once
+
+func statusIconSetFromGiconFunction_Set() error {
+	var err error
+	statusIconSetFromGiconFunction_Once.Do(func() {
+		err = statusIconObject_Set()
+		if err != nil {
+			return
+		}
+		statusIconSetFromGiconFunction, err = statusIconObject.InvokerNew("set_from_gicon")
+	})
+	return err
+}
+
+// SetFromGicon is a representation of the C type gtk_status_icon_set_from_gicon.
+func (recv *StatusIcon) SetFromGicon(icon *gio.Icon) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(icon.Native())
+
+	err := statusIconSetFromGiconFunction_Set()
+	if err == nil {
+		statusIconSetFromGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var statusIconSetFromIconNameFunction *gi.Function
 var statusIconSetFromIconNameFunction_Once sync.Once
@@ -87494,7 +89019,35 @@ func (recv *StyleContext) AddClass(className string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_style_context_add_provider' : parameter 'provider' of type 'StyleProvider' not supported
+var styleContextAddProviderFunction *gi.Function
+var styleContextAddProviderFunction_Once sync.Once
+
+func styleContextAddProviderFunction_Set() error {
+	var err error
+	styleContextAddProviderFunction_Once.Do(func() {
+		err = styleContextObject_Set()
+		if err != nil {
+			return
+		}
+		styleContextAddProviderFunction, err = styleContextObject.InvokerNew("add_provider")
+	})
+	return err
+}
+
+// AddProvider is a representation of the C type gtk_style_context_add_provider.
+func (recv *StyleContext) AddProvider(provider *StyleProvider, priority uint32) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(provider.Native())
+	inArgs[2].SetUint32(priority)
+
+	err := styleContextAddProviderFunction_Set()
+	if err == nil {
+		styleContextAddProviderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var styleContextAddRegionFunction *gi.Function
 var styleContextAddRegionFunction_Once sync.Once
@@ -88493,7 +90046,34 @@ func (recv *StyleContext) RemoveClass(className string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_style_context_remove_provider' : parameter 'provider' of type 'StyleProvider' not supported
+var styleContextRemoveProviderFunction *gi.Function
+var styleContextRemoveProviderFunction_Once sync.Once
+
+func styleContextRemoveProviderFunction_Set() error {
+	var err error
+	styleContextRemoveProviderFunction_Once.Do(func() {
+		err = styleContextObject_Set()
+		if err != nil {
+			return
+		}
+		styleContextRemoveProviderFunction, err = styleContextObject.InvokerNew("remove_provider")
+	})
+	return err
+}
+
+// RemoveProvider is a representation of the C type gtk_style_context_remove_provider.
+func (recv *StyleContext) RemoveProvider(provider *StyleProvider) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(provider.Native())
+
+	err := styleContextRemoveProviderFunction_Set()
+	if err == nil {
+		styleContextRemoveProviderFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var styleContextRemoveRegionFunction *gi.Function
 var styleContextRemoveRegionFunction_Once sync.Once
@@ -102504,7 +104084,35 @@ func (recv *Tooltip) SetIcon(pixbuf *gdkpixbuf.Pixbuf) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tooltip_set_icon_from_gicon' : parameter 'gicon' of type 'Gio.Icon' not supported
+var tooltipSetIconFromGiconFunction *gi.Function
+var tooltipSetIconFromGiconFunction_Once sync.Once
+
+func tooltipSetIconFromGiconFunction_Set() error {
+	var err error
+	tooltipSetIconFromGiconFunction_Once.Do(func() {
+		err = tooltipObject_Set()
+		if err != nil {
+			return
+		}
+		tooltipSetIconFromGiconFunction, err = tooltipObject.InvokerNew("set_icon_from_gicon")
+	})
+	return err
+}
+
+// SetIconFromGicon is a representation of the C type gtk_tooltip_set_icon_from_gicon.
+func (recv *Tooltip) SetIconFromGicon(gicon *gio.Icon, size IconSize) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(gicon.Native())
+	inArgs[2].SetInt32(int32(size))
+
+	err := tooltipSetIconFromGiconFunction_Set()
+	if err == nil {
+		tooltipSetIconFromGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var tooltipSetIconFromIconNameFunction *gi.Function
 var tooltipSetIconFromIconNameFunction_Once sync.Once
@@ -103014,7 +104622,37 @@ func (recv *TreeModelFilter) ConvertPathToChildPath(filterPath *TreePath) *TreeP
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_model_filter_get_model' : return type 'TreeModel' not supported
+var treeModelFilterGetModelFunction *gi.Function
+var treeModelFilterGetModelFunction_Once sync.Once
+
+func treeModelFilterGetModelFunction_Set() error {
+	var err error
+	treeModelFilterGetModelFunction_Once.Do(func() {
+		err = treeModelFilterObject_Set()
+		if err != nil {
+			return
+		}
+		treeModelFilterGetModelFunction, err = treeModelFilterObject.InvokerNew("get_model")
+	})
+	return err
+}
+
+// GetModel is a representation of the C type gtk_tree_model_filter_get_model.
+func (recv *TreeModelFilter) GetModel() *TreeModel {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := treeModelFilterGetModelFunction_Set()
+	if err == nil {
+		ret = treeModelFilterGetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeModelNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var treeModelFilterRefilterFunction *gi.Function
 var treeModelFilterRefilterFunction_Once sync.Once
@@ -103323,7 +104961,37 @@ func (recv *TreeModelSort) ConvertPathToChildPath(sortedPath *TreePath) *TreePat
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_model_sort_get_model' : return type 'TreeModel' not supported
+var treeModelSortGetModelFunction *gi.Function
+var treeModelSortGetModelFunction_Once sync.Once
+
+func treeModelSortGetModelFunction_Set() error {
+	var err error
+	treeModelSortGetModelFunction_Once.Do(func() {
+		err = treeModelSortObject_Set()
+		if err != nil {
+			return
+		}
+		treeModelSortGetModelFunction, err = treeModelSortObject.InvokerNew("get_model")
+	})
+	return err
+}
+
+// GetModel is a representation of the C type gtk_tree_model_sort_get_model.
+func (recv *TreeModelSort) GetModel() *TreeModel {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := treeModelSortGetModelFunction_Set()
+	if err == nil {
+		ret = treeModelSortGetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeModelNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var treeModelSortIterIsValidFunction *gi.Function
 var treeModelSortIterIsValidFunction_Once sync.Once
@@ -103527,9 +105195,74 @@ func (recv *TreeSelection) GetMode() SelectionMode {
 
 // UNSUPPORTED : C value 'gtk_tree_selection_get_select_function' : return type 'TreeSelectionFunc' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_selection_get_selected' : parameter 'model' of type 'TreeModel' not supported
+var treeSelectionGetSelectedFunction *gi.Function
+var treeSelectionGetSelectedFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_tree_selection_get_selected_rows' : parameter 'model' of type 'TreeModel' not supported
+func treeSelectionGetSelectedFunction_Set() error {
+	var err error
+	treeSelectionGetSelectedFunction_Once.Do(func() {
+		err = treeSelectionObject_Set()
+		if err != nil {
+			return
+		}
+		treeSelectionGetSelectedFunction, err = treeSelectionObject.InvokerNew("get_selected")
+	})
+	return err
+}
+
+// GetSelected is a representation of the C type gtk_tree_selection_get_selected.
+func (recv *TreeSelection) GetSelected() (bool, *TreeModel, *TreeIter) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := treeSelectionGetSelectedFunction_Set()
+	if err == nil {
+		ret = treeSelectionGetSelectedFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := TreeModelNewFromNative(outArgs[0].Pointer())
+	out1 := TreeIterNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
+
+var treeSelectionGetSelectedRowsFunction *gi.Function
+var treeSelectionGetSelectedRowsFunction_Once sync.Once
+
+func treeSelectionGetSelectedRowsFunction_Set() error {
+	var err error
+	treeSelectionGetSelectedRowsFunction_Once.Do(func() {
+		err = treeSelectionObject_Set()
+		if err != nil {
+			return
+		}
+		treeSelectionGetSelectedRowsFunction, err = treeSelectionObject.InvokerNew("get_selected_rows")
+	})
+	return err
+}
+
+// GetSelectedRows is a representation of the C type gtk_tree_selection_get_selected_rows.
+func (recv *TreeSelection) GetSelectedRows() (*glib.List, *TreeModel) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := treeSelectionGetSelectedRowsFunction_Set()
+	if err == nil {
+		ret = treeSelectionGetSelectedRowsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := glib.ListNewFromNative(ret.Pointer())
+	out0 := TreeModelNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var treeSelectionGetTreeViewFunction *gi.Function
 var treeSelectionGetTreeViewFunction_Once sync.Once
@@ -104652,7 +106385,37 @@ func TreeViewNew() *TreeView {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_new_with_model' : parameter 'model' of type 'TreeModel' not supported
+var treeViewNewWithModelFunction *gi.Function
+var treeViewNewWithModelFunction_Once sync.Once
+
+func treeViewNewWithModelFunction_Set() error {
+	var err error
+	treeViewNewWithModelFunction_Once.Do(func() {
+		err = treeViewObject_Set()
+		if err != nil {
+			return
+		}
+		treeViewNewWithModelFunction, err = treeViewObject.InvokerNew("new_with_model")
+	})
+	return err
+}
+
+// TreeViewNewWithModel is a representation of the C type gtk_tree_view_new_with_model.
+func TreeViewNewWithModel(model *TreeModel) *TreeView {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(model.Native())
+
+	var ret gi.Argument
+
+	err := treeViewNewWithModelFunction_Set()
+	if err == nil {
+		ret = treeViewNewWithModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeViewNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var treeViewAppendColumnFunction *gi.Function
 var treeViewAppendColumnFunction_Once sync.Once
@@ -105766,7 +107529,37 @@ func (recv *TreeView) GetLevelIndentation() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_get_model' : return type 'TreeModel' not supported
+var treeViewGetModelFunction *gi.Function
+var treeViewGetModelFunction_Once sync.Once
+
+func treeViewGetModelFunction_Set() error {
+	var err error
+	treeViewGetModelFunction_Once.Do(func() {
+		err = treeViewObject_Set()
+		if err != nil {
+			return
+		}
+		treeViewGetModelFunction, err = treeViewObject.InvokerNew("get_model")
+	})
+	return err
+}
+
+// GetModel is a representation of the C type gtk_tree_view_get_model.
+func (recv *TreeView) GetModel() *TreeModel {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := treeViewGetModelFunction_Set()
+	if err == nil {
+		ret = treeViewGetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeModelNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var treeViewGetNColumnsFunction *gi.Function
 var treeViewGetNColumnsFunction_Once sync.Once
@@ -106101,7 +107894,46 @@ func (recv *TreeView) GetTooltipColumn() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_get_tooltip_context' : parameter 'model' of type 'TreeModel' not supported
+var treeViewGetTooltipContextFunction *gi.Function
+var treeViewGetTooltipContextFunction_Once sync.Once
+
+func treeViewGetTooltipContextFunction_Set() error {
+	var err error
+	treeViewGetTooltipContextFunction_Once.Do(func() {
+		err = treeViewObject_Set()
+		if err != nil {
+			return
+		}
+		treeViewGetTooltipContextFunction, err = treeViewObject.InvokerNew("get_tooltip_context")
+	})
+	return err
+}
+
+// GetTooltipContext is a representation of the C type gtk_tree_view_get_tooltip_context.
+func (recv *TreeView) GetTooltipContext(x int32, y int32, keyboardTip bool) (bool, int32, int32, *TreeModel, *TreePath, *TreeIter) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(x)
+	inArgs[2].SetInt32(y)
+	inArgs[3].SetBoolean(keyboardTip)
+
+	var outArgs [5]gi.Argument
+	var ret gi.Argument
+
+	err := treeViewGetTooltipContextFunction_Set()
+	if err == nil {
+		ret = treeViewGetTooltipContextFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].Int32()
+	out2 := TreeModelNewFromNative(outArgs[2].Pointer())
+	out3 := TreePathNewFromNative(outArgs[3].Pointer())
+	out4 := TreeIterNewFromNative(outArgs[4].Pointer())
+
+	return retGo, out0, out1, out2, out3, out4
+}
 
 var treeViewGetVadjustmentFunction *gi.Function
 var treeViewGetVadjustmentFunction_Once sync.Once
@@ -106947,7 +108779,34 @@ func (recv *TreeView) SetLevelIndentation(indentation int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_set_model' : parameter 'model' of type 'TreeModel' not supported
+var treeViewSetModelFunction *gi.Function
+var treeViewSetModelFunction_Once sync.Once
+
+func treeViewSetModelFunction_Set() error {
+	var err error
+	treeViewSetModelFunction_Once.Do(func() {
+		err = treeViewObject_Set()
+		if err != nil {
+			return
+		}
+		treeViewSetModelFunction, err = treeViewObject.InvokerNew("set_model")
+	})
+	return err
+}
+
+// SetModel is a representation of the C type gtk_tree_view_set_model.
+func (recv *TreeView) SetModel(model *TreeModel) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(model.Native())
+
+	err := treeViewSetModelFunction_Set()
+	if err == nil {
+		treeViewSetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var treeViewSetReorderableFunction *gi.Function
 var treeViewSetReorderableFunction_Once sync.Once
@@ -108082,7 +109941,37 @@ func (recv *TreeViewColumn) CellIsVisible() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_column_cell_set_cell_data' : parameter 'tree_model' of type 'TreeModel' not supported
+var treeViewColumnCellSetCellDataFunction *gi.Function
+var treeViewColumnCellSetCellDataFunction_Once sync.Once
+
+func treeViewColumnCellSetCellDataFunction_Set() error {
+	var err error
+	treeViewColumnCellSetCellDataFunction_Once.Do(func() {
+		err = treeViewColumnObject_Set()
+		if err != nil {
+			return
+		}
+		treeViewColumnCellSetCellDataFunction, err = treeViewColumnObject.InvokerNew("cell_set_cell_data")
+	})
+	return err
+}
+
+// CellSetCellData is a representation of the C type gtk_tree_view_column_cell_set_cell_data.
+func (recv *TreeViewColumn) CellSetCellData(treeModel *TreeModel, iter *TreeIter, isExpander bool, isExpanded bool) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(treeModel.Native())
+	inArgs[2].SetPointer(iter.Native())
+	inArgs[3].SetBoolean(isExpander)
+	inArgs[4].SetBoolean(isExpanded)
+
+	err := treeViewColumnCellSetCellDataFunction_Set()
+	if err == nil {
+		treeViewColumnCellSetCellDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var treeViewColumnClearFunction *gi.Function
 var treeViewColumnClearFunction_Once sync.Once
@@ -112621,7 +114510,34 @@ func (recv *Widget) DragSourceGetTargetList() *TargetList {
 
 // UNSUPPORTED : C value 'gtk_drag_source_set' : parameter 'start_button_mask' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_drag_source_set_icon_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
+var widgetDragSourceSetIconGiconFunction *gi.Function
+var widgetDragSourceSetIconGiconFunction_Once sync.Once
+
+func widgetDragSourceSetIconGiconFunction_Set() error {
+	var err error
+	widgetDragSourceSetIconGiconFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetDragSourceSetIconGiconFunction, err = widgetObject.InvokerNew("drag_source_set_icon_gicon")
+	})
+	return err
+}
+
+// DragSourceSetIconGicon is a representation of the C type gtk_drag_source_set_icon_gicon.
+func (recv *Widget) DragSourceSetIconGicon(icon *gio.Icon) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(icon.Native())
+
+	err := widgetDragSourceSetIconGiconFunction_Set()
+	if err == nil {
+		widgetDragSourceSetIconGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetDragSourceSetIconNameFunction *gi.Function
 var widgetDragSourceSetIconNameFunction_Once sync.Once
@@ -112942,7 +114858,38 @@ func (recv *Widget) GetAccessible() *atk.Object {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_get_action_group' : return type 'Gio.ActionGroup' not supported
+var widgetGetActionGroupFunction *gi.Function
+var widgetGetActionGroupFunction_Once sync.Once
+
+func widgetGetActionGroupFunction_Set() error {
+	var err error
+	widgetGetActionGroupFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetGetActionGroupFunction, err = widgetObject.InvokerNew("get_action_group")
+	})
+	return err
+}
+
+// GetActionGroup is a representation of the C type gtk_widget_get_action_group.
+func (recv *Widget) GetActionGroup(prefix string) *gio.ActionGroup {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(prefix)
+
+	var ret gi.Argument
+
+	err := widgetGetActionGroupFunction_Set()
+	if err == nil {
+		ret = widgetGetActionGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.ActionGroupNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var widgetGetAllocatedBaselineFunction *gi.Function
 var widgetGetAllocatedBaselineFunction_Once sync.Once
@@ -115793,7 +117740,35 @@ func (recv *Widget) InputShapeCombineRegion(region *cairo.Region) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_widget_insert_action_group' : parameter 'group' of type 'Gio.ActionGroup' not supported
+var widgetInsertActionGroupFunction *gi.Function
+var widgetInsertActionGroupFunction_Once sync.Once
+
+func widgetInsertActionGroupFunction_Set() error {
+	var err error
+	widgetInsertActionGroupFunction_Once.Do(func() {
+		err = widgetObject_Set()
+		if err != nil {
+			return
+		}
+		widgetInsertActionGroupFunction, err = widgetObject.InvokerNew("insert_action_group")
+	})
+	return err
+}
+
+// InsertActionGroup is a representation of the C type gtk_widget_insert_action_group.
+func (recv *Widget) InsertActionGroup(name string, group *gio.ActionGroup) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(name)
+	inArgs[2].SetPointer(group.Native())
+
+	err := widgetInsertActionGroupFunction_Set()
+	if err == nil {
+		widgetInsertActionGroupFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var widgetIntersectFunction *gi.Function
 var widgetIntersectFunction_Once sync.Once

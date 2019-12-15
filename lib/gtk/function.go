@@ -7,6 +7,7 @@ import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
@@ -556,7 +557,32 @@ func DragSetIconDefault(context *gdk.DragContext) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_drag_set_icon_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
+var dragSetIconGiconFunction *gi.Function
+var dragSetIconGiconFunction_Once sync.Once
+
+func dragSetIconGiconFunction_Set() error {
+	var err error
+	dragSetIconGiconFunction_Once.Do(func() {
+		dragSetIconGiconFunction, err = gi.FunctionInvokerNew("Gtk", "drag_set_icon_gicon")
+	})
+	return err
+}
+
+// DragSetIconGicon is a representation of the C type gtk_drag_set_icon_gicon.
+func DragSetIconGicon(context *gdk.DragContext, icon *gio.Icon, hotX int32, hotY int32) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetPointer(icon.Native())
+	inArgs[2].SetInt32(hotX)
+	inArgs[3].SetInt32(hotY)
+
+	err := dragSetIconGiconFunction_Set()
+	if err == nil {
+		dragSetIconGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dragSetIconNameFunction *gi.Function
 var dragSetIconNameFunction_Once sync.Once
@@ -4221,7 +4247,36 @@ func TestWidgetWaitForDraw(widget *Widget) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tree_get_row_drag_data' : parameter 'tree_model' of type 'TreeModel' not supported
+var treeGetRowDragDataFunction *gi.Function
+var treeGetRowDragDataFunction_Once sync.Once
+
+func treeGetRowDragDataFunction_Set() error {
+	var err error
+	treeGetRowDragDataFunction_Once.Do(func() {
+		treeGetRowDragDataFunction, err = gi.FunctionInvokerNew("Gtk", "tree_get_row_drag_data")
+	})
+	return err
+}
+
+// TreeGetRowDragData is a representation of the C type gtk_tree_get_row_drag_data.
+func TreeGetRowDragData(selectionData *SelectionData) (bool, *TreeModel, *TreePath) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(selectionData.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := treeGetRowDragDataFunction_Set()
+	if err == nil {
+		ret = treeGetRowDragDataFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := TreeModelNewFromNative(outArgs[0].Pointer())
+	out1 := TreePathNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
 
 var treeRowReferenceDeletedFunction *gi.Function
 var treeRowReferenceDeletedFunction_Once sync.Once
@@ -4275,7 +4330,35 @@ func TreeRowReferenceInserted(proxy *gobject.Object, path *TreePath) {
 
 // UNSUPPORTED : C value 'gtk_tree_row_reference_reordered' : parameter 'new_order' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_set_row_drag_data' : parameter 'tree_model' of type 'TreeModel' not supported
+var treeSetRowDragDataFunction *gi.Function
+var treeSetRowDragDataFunction_Once sync.Once
+
+func treeSetRowDragDataFunction_Set() error {
+	var err error
+	treeSetRowDragDataFunction_Once.Do(func() {
+		treeSetRowDragDataFunction, err = gi.FunctionInvokerNew("Gtk", "tree_set_row_drag_data")
+	})
+	return err
+}
+
+// TreeSetRowDragData is a representation of the C type gtk_tree_set_row_drag_data.
+func TreeSetRowDragData(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(selectionData.Native())
+	inArgs[1].SetPointer(treeModel.Native())
+	inArgs[2].SetPointer(path.Native())
+
+	var ret gi.Argument
+
+	err := treeSetRowDragDataFunction_Set()
+	if err == nil {
+		ret = treeSetRowDragDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var trueFunction *gi.Function
 var trueFunction_Once sync.Once

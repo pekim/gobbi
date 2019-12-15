@@ -7592,7 +7592,6 @@ func (recv *IOChannel) ReadChars(count uint64) (IOStatus, string, uint64) {
 	}
 
 	retGo := IOStatus(ret.Int32())
-	// what here?
 	out0 := outArgs[0].String(false)
 	out1 := outArgs[1].Uint64()
 

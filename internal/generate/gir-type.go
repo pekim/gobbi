@@ -146,6 +146,16 @@ func (t *Type) jenGoType() (*jen.Statement, error) {
 		return jen.Op("*").Id(record.goName), nil
 	}
 
+	if t.isInterface() {
+		if t.isQualifiedName() {
+			iface, _ := t.foreignNamespace.Interfaces.byName(t.foreignName)
+			return jen.Op("*").Qual(t.foreignNamespace.goFullPackageName, iface.goName), nil
+		}
+
+		iface, _ := t.namespace.Interfaces.byName(t.Name)
+		return jen.Op("*").Id(iface.goName), nil
+	}
+
 	if t.isBitfield() {
 		if t.isQualifiedName() {
 			bitfield, _ := t.foreignNamespace.Bitfields.byName(t.foreignName)
@@ -249,7 +259,7 @@ func (t *Type) argumentValueGetFunctionName() string {
 		}
 	}
 
-	if t.isRecord() {
+	if t.isRecord() || t.isInterface() {
 		return "Pointer"
 	}
 
@@ -302,7 +312,7 @@ func (t *Type) argumentValueSetFunctionName() string {
 		}
 	}
 
-	if resolvedType.isRecord() {
+	if resolvedType.isRecord() || resolvedType.isInterface() {
 		return "SetPointer"
 	}
 
@@ -329,6 +339,18 @@ func (t *Type) createFromOutArgument(g *jen.Group, argName *jen.Statement, argVa
 		} else {
 			record, _ := t.namespace.Records.byName(t.Name)
 			record.createFromArgument(g, nil, argName, argValue)
+		}
+
+		return
+	}
+
+	if t.isInterface() {
+		if t.isQualifiedName() {
+			iface, _ := t.foreignNamespace.Interfaces.byName(t.foreignName)
+			iface.createFromArgument(g, t.foreignNamespace, argName, argValue)
+		} else {
+			iface, _ := t.namespace.Interfaces.byName(t.Name)
+			iface.createFromArgument(g, nil, argName, argValue)
 		}
 
 		return
@@ -407,6 +429,41 @@ func (t *Type) generateOutArgValue(g *jen.Group,
 	t.createFromOutArgument(g, argName, argValue)
 }
 
+func (t *Type) jenNewFromNative() *jen.Statement {
+	if t.isClass() {
+		if t.isQualifiedName() {
+			class, _ := t.foreignNamespace.Classes.byName(t.foreignName)
+			return jen.Qual(t.foreignNamespace.goFullPackageName, class.newFromNativeName)
+		} else {
+			class, _ := t.namespace.Classes.byName(t.Name)
+			return jen.Id(class.newFromNativeName)
+		}
+
+	}
+
+	if t.isRecord() {
+		if t.isQualifiedName() {
+			record, _ := t.foreignNamespace.Records.byName(t.foreignName)
+			return jen.Qual(t.foreignNamespace.goFullPackageName, record.newFromNativeName)
+		} else {
+			record, _ := t.namespace.Records.byName(t.Name)
+			return jen.Id(record.newFromNativeName)
+		}
+	}
+
+	if t.isInterface() {
+		if t.isQualifiedName() {
+			iface, _ := t.foreignNamespace.Interfaces.byName(t.foreignName)
+			return jen.Qual(t.foreignNamespace.goFullPackageName, iface.newFromNativeName)
+		} else {
+			iface, _ := t.namespace.Interfaces.byName(t.Name)
+			return jen.Id(iface.newFromNativeName)
+		}
+	}
+
+	panic(fmt.Sprintf("Cannot provide newFromNative for %s", t.Name))
+}
+
 func (t *Type) isString() bool {
 	return t.Name == "utf8" || t.Name == "filename"
 }
@@ -447,5 +504,15 @@ func (t *Type) isRecord() bool {
 	}
 
 	_, found := t.namespace.Records.byName(t.Name)
+	return found
+}
+
+func (t *Type) isInterface() bool {
+	if t.isQualifiedName() {
+		_, found := t.foreignNamespace.Interfaces.byName(t.foreignName)
+		return found
+	}
+
+	_, found := t.namespace.Interfaces.byName(t.Name)
 	return found
 }

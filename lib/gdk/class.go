@@ -170,7 +170,34 @@ func (recv *AppLaunchContext) SetDisplay(display *Display) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_app_launch_context_set_icon' : parameter 'icon' of type 'Gio.Icon' not supported
+var appLaunchContextSetIconFunction *gi.Function
+var appLaunchContextSetIconFunction_Once sync.Once
+
+func appLaunchContextSetIconFunction_Set() error {
+	var err error
+	appLaunchContextSetIconFunction_Once.Do(func() {
+		err = appLaunchContextObject_Set()
+		if err != nil {
+			return
+		}
+		appLaunchContextSetIconFunction, err = appLaunchContextObject.InvokerNew("set_icon")
+	})
+	return err
+}
+
+// SetIcon is a representation of the C type gdk_app_launch_context_set_icon.
+func (recv *AppLaunchContext) SetIcon(icon *gio.Icon) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(icon.Native())
+
+	err := appLaunchContextSetIconFunction_Set()
+	if err == nil {
+		appLaunchContextSetIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var appLaunchContextSetIconNameFunction *gi.Function
 var appLaunchContextSetIconNameFunction_Once sync.Once

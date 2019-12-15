@@ -6,7 +6,9 @@ import (
 	callback "github.com/pekim/gobbi/internal/cgo/callback"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	gtk "github.com/pekim/gobbi/lib/gtk"
 	"sync"
 	"unsafe"
 )
@@ -83,9 +85,70 @@ func (recv *CompletionProposal) Changed() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_proposal_equal' : parameter 'other' of type 'CompletionProposal' not supported
+var completionProposalEqualFunction *gi.Function
+var completionProposalEqualFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_completion_proposal_get_gicon' : return type 'Gio.Icon' not supported
+func completionProposalEqualFunction_Set() error {
+	var err error
+	completionProposalEqualFunction_Once.Do(func() {
+		err = completionProposalInterface_Set()
+		if err != nil {
+			return
+		}
+		completionProposalEqualFunction, err = completionProposalInterface.InvokerNew("equal")
+	})
+	return err
+}
+
+// Equal is a representation of the C type gtk_source_completion_proposal_equal.
+func (recv *CompletionProposal) Equal(other *CompletionProposal) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(other.Native())
+
+	var ret gi.Argument
+
+	err := completionProposalEqualFunction_Set()
+	if err == nil {
+		ret = completionProposalEqualFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+var completionProposalGetGiconFunction *gi.Function
+var completionProposalGetGiconFunction_Once sync.Once
+
+func completionProposalGetGiconFunction_Set() error {
+	var err error
+	completionProposalGetGiconFunction_Once.Do(func() {
+		err = completionProposalInterface_Set()
+		if err != nil {
+			return
+		}
+		completionProposalGetGiconFunction, err = completionProposalInterface.InvokerNew("get_gicon")
+	})
+	return err
+}
+
+// GetGicon is a representation of the C type gtk_source_completion_proposal_get_gicon.
+func (recv *CompletionProposal) GetGicon() *gio.Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := completionProposalGetGiconFunction_Set()
+	if err == nil {
+		ret = completionProposalGetGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var completionProposalGetIconFunction *gi.Function
 var completionProposalGetIconFunction_Once sync.Once
@@ -381,7 +444,39 @@ func (recv *CompletionProvider) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_provider_activate_proposal' : parameter 'proposal' of type 'CompletionProposal' not supported
+var completionProviderActivateProposalFunction *gi.Function
+var completionProviderActivateProposalFunction_Once sync.Once
+
+func completionProviderActivateProposalFunction_Set() error {
+	var err error
+	completionProviderActivateProposalFunction_Once.Do(func() {
+		err = completionProviderInterface_Set()
+		if err != nil {
+			return
+		}
+		completionProviderActivateProposalFunction, err = completionProviderInterface.InvokerNew("activate_proposal")
+	})
+	return err
+}
+
+// ActivateProposal is a representation of the C type gtk_source_completion_provider_activate_proposal.
+func (recv *CompletionProvider) ActivateProposal(proposal *CompletionProposal, iter *gtk.TextIter) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(proposal.Native())
+	inArgs[2].SetPointer(iter.Native())
+
+	var ret gi.Argument
+
+	err := completionProviderActivateProposalFunction_Set()
+	if err == nil {
+		ret = completionProviderActivateProposalFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var completionProviderGetActivationFunction *gi.Function
 var completionProviderGetActivationFunction_Once sync.Once
@@ -415,7 +510,37 @@ func (recv *CompletionProvider) GetActivation() CompletionActivation {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_provider_get_gicon' : return type 'Gio.Icon' not supported
+var completionProviderGetGiconFunction *gi.Function
+var completionProviderGetGiconFunction_Once sync.Once
+
+func completionProviderGetGiconFunction_Set() error {
+	var err error
+	completionProviderGetGiconFunction_Once.Do(func() {
+		err = completionProviderInterface_Set()
+		if err != nil {
+			return
+		}
+		completionProviderGetGiconFunction, err = completionProviderInterface.InvokerNew("get_gicon")
+	})
+	return err
+}
+
+// GetGicon is a representation of the C type gtk_source_completion_provider_get_gicon.
+func (recv *CompletionProvider) GetGicon() *gio.Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := completionProviderGetGiconFunction_Set()
+	if err == nil {
+		ret = completionProviderGetGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var completionProviderGetIconFunction *gi.Function
 var completionProviderGetIconFunction_Once sync.Once
@@ -481,7 +606,38 @@ func (recv *CompletionProvider) GetIconName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_provider_get_info_widget' : parameter 'proposal' of type 'CompletionProposal' not supported
+var completionProviderGetInfoWidgetFunction *gi.Function
+var completionProviderGetInfoWidgetFunction_Once sync.Once
+
+func completionProviderGetInfoWidgetFunction_Set() error {
+	var err error
+	completionProviderGetInfoWidgetFunction_Once.Do(func() {
+		err = completionProviderInterface_Set()
+		if err != nil {
+			return
+		}
+		completionProviderGetInfoWidgetFunction, err = completionProviderInterface.InvokerNew("get_info_widget")
+	})
+	return err
+}
+
+// GetInfoWidget is a representation of the C type gtk_source_completion_provider_get_info_widget.
+func (recv *CompletionProvider) GetInfoWidget(proposal *CompletionProposal) *gtk.Widget {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(proposal.Native())
+
+	var ret gi.Argument
+
+	err := completionProviderGetInfoWidgetFunction_Set()
+	if err == nil {
+		ret = completionProviderGetInfoWidgetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gtk.WidgetNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var completionProviderGetInteractiveDelayFunction *gi.Function
 var completionProviderGetInteractiveDelayFunction_Once sync.Once
@@ -579,7 +735,41 @@ func (recv *CompletionProvider) GetPriority() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_provider_get_start_iter' : parameter 'proposal' of type 'CompletionProposal' not supported
+var completionProviderGetStartIterFunction *gi.Function
+var completionProviderGetStartIterFunction_Once sync.Once
+
+func completionProviderGetStartIterFunction_Set() error {
+	var err error
+	completionProviderGetStartIterFunction_Once.Do(func() {
+		err = completionProviderInterface_Set()
+		if err != nil {
+			return
+		}
+		completionProviderGetStartIterFunction, err = completionProviderInterface.InvokerNew("get_start_iter")
+	})
+	return err
+}
+
+// GetStartIter is a representation of the C type gtk_source_completion_provider_get_start_iter.
+func (recv *CompletionProvider) GetStartIter(context *CompletionContext, proposal *CompletionProposal) (bool, *gtk.TextIter) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(context.Native())
+	inArgs[2].SetPointer(proposal.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := completionProviderGetStartIterFunction_Set()
+	if err == nil {
+		ret = completionProviderGetStartIterFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gtk.TextIterNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
 
 var completionProviderMatchFunction *gi.Function
 var completionProviderMatchFunction_Once sync.Once
@@ -643,7 +833,35 @@ func (recv *CompletionProvider) Populate(context *CompletionContext) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_provider_update_info' : parameter 'proposal' of type 'CompletionProposal' not supported
+var completionProviderUpdateInfoFunction *gi.Function
+var completionProviderUpdateInfoFunction_Once sync.Once
+
+func completionProviderUpdateInfoFunction_Set() error {
+	var err error
+	completionProviderUpdateInfoFunction_Once.Do(func() {
+		err = completionProviderInterface_Set()
+		if err != nil {
+			return
+		}
+		completionProviderUpdateInfoFunction, err = completionProviderInterface.InvokerNew("update_info")
+	})
+	return err
+}
+
+// UpdateInfo is a representation of the C type gtk_source_completion_provider_update_info.
+func (recv *CompletionProvider) UpdateInfo(proposal *CompletionProposal, info *CompletionInfo) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(proposal.Native())
+	inArgs[2].SetPointer(info.Native())
+
+	err := completionProviderUpdateInfoFunction_Set()
+	if err == nil {
+		completionProviderUpdateInfoFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var styleSchemeChooserInterface *gi.Interface
 var styleSchemeChooserInterface_Once sync.Once

@@ -754,7 +754,37 @@ func (recv *Buffer) GetStyleScheme() *StyleScheme {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_buffer_get_undo_manager' : return type 'UndoManager' not supported
+var bufferGetUndoManagerFunction *gi.Function
+var bufferGetUndoManagerFunction_Once sync.Once
+
+func bufferGetUndoManagerFunction_Set() error {
+	var err error
+	bufferGetUndoManagerFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferGetUndoManagerFunction, err = bufferObject.InvokerNew("get_undo_manager")
+	})
+	return err
+}
+
+// GetUndoManager is a representation of the C type gtk_source_buffer_get_undo_manager.
+func (recv *Buffer) GetUndoManager() *UndoManager {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := bufferGetUndoManagerFunction_Set()
+	if err == nil {
+		ret = bufferGetUndoManagerFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := UndoManagerNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var bufferIterBackwardToContextClassToggleFunction *gi.Function
 var bufferIterBackwardToContextClassToggleFunction_Once sync.Once
@@ -1121,7 +1151,34 @@ func (recv *Buffer) SetStyleScheme(scheme *StyleScheme) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_buffer_set_undo_manager' : parameter 'manager' of type 'UndoManager' not supported
+var bufferSetUndoManagerFunction *gi.Function
+var bufferSetUndoManagerFunction_Once sync.Once
+
+func bufferSetUndoManagerFunction_Set() error {
+	var err error
+	bufferSetUndoManagerFunction_Once.Do(func() {
+		err = bufferObject_Set()
+		if err != nil {
+			return
+		}
+		bufferSetUndoManagerFunction, err = bufferObject.InvokerNew("set_undo_manager")
+	})
+	return err
+}
+
+// SetUndoManager is a representation of the C type gtk_source_buffer_set_undo_manager.
+func (recv *Buffer) SetUndoManager(manager *UndoManager) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(manager.Native())
+
+	err := bufferSetUndoManagerFunction_Set()
+	if err == nil {
+		bufferSetUndoManagerFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var bufferSortLinesFunction *gi.Function
 var bufferSortLinesFunction_Once sync.Once
@@ -1380,7 +1437,38 @@ func (recv *Completion) SetFieldPriv(value *CompletionPrivate) {
 	gi.ObjectFieldSet(completionObject, recv.Native(), "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_add_provider' : parameter 'provider' of type 'CompletionProvider' not supported
+var completionAddProviderFunction *gi.Function
+var completionAddProviderFunction_Once sync.Once
+
+func completionAddProviderFunction_Set() error {
+	var err error
+	completionAddProviderFunction_Once.Do(func() {
+		err = completionObject_Set()
+		if err != nil {
+			return
+		}
+		completionAddProviderFunction, err = completionObject.InvokerNew("add_provider")
+	})
+	return err
+}
+
+// AddProvider is a representation of the C type gtk_source_completion_add_provider.
+func (recv *Completion) AddProvider(provider *CompletionProvider) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(provider.Native())
+
+	var ret gi.Argument
+
+	err := completionAddProviderFunction_Set()
+	if err == nil {
+		ret = completionAddProviderFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var completionBlockInteractiveFunction *gi.Function
 var completionBlockInteractiveFunction_Once sync.Once
@@ -1596,7 +1684,38 @@ func (recv *Completion) MoveWindow(iter *gtk.TextIter) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_remove_provider' : parameter 'provider' of type 'CompletionProvider' not supported
+var completionRemoveProviderFunction *gi.Function
+var completionRemoveProviderFunction_Once sync.Once
+
+func completionRemoveProviderFunction_Set() error {
+	var err error
+	completionRemoveProviderFunction_Once.Do(func() {
+		err = completionObject_Set()
+		if err != nil {
+			return
+		}
+		completionRemoveProviderFunction, err = completionObject.InvokerNew("remove_provider")
+	})
+	return err
+}
+
+// RemoveProvider is a representation of the C type gtk_source_completion_remove_provider.
+func (recv *Completion) RemoveProvider(provider *CompletionProvider) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(provider.Native())
+
+	var ret gi.Argument
+
+	err := completionRemoveProviderFunction_Set()
+	if err == nil {
+		ret = completionRemoveProviderFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var completionShowFunction *gi.Function
 var completionShowFunction_Once sync.Once
@@ -1842,7 +1961,36 @@ func (recv *CompletionContext) SetFieldPriv(value *CompletionContextPrivate) {
 	gi.ObjectFieldSet(completionContextObject, recv.Native(), "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_context_add_proposals' : parameter 'provider' of type 'CompletionProvider' not supported
+var completionContextAddProposalsFunction *gi.Function
+var completionContextAddProposalsFunction_Once sync.Once
+
+func completionContextAddProposalsFunction_Set() error {
+	var err error
+	completionContextAddProposalsFunction_Once.Do(func() {
+		err = completionContextObject_Set()
+		if err != nil {
+			return
+		}
+		completionContextAddProposalsFunction, err = completionContextObject.InvokerNew("add_proposals")
+	})
+	return err
+}
+
+// AddProposals is a representation of the C type gtk_source_completion_context_add_proposals.
+func (recv *CompletionContext) AddProposals(provider *CompletionProvider, proposals *glib.List, finished bool) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(provider.Native())
+	inArgs[2].SetPointer(proposals.Native())
+	inArgs[3].SetBoolean(finished)
+
+	err := completionContextAddProposalsFunction_Set()
+	if err == nil {
+		completionContextAddProposalsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var completionContextGetActivationFunction *gi.Function
 var completionContextGetActivationFunction_Once sync.Once
@@ -2405,7 +2553,34 @@ func CompletionItemNewWithMarkup(markup string, text string, icon *gdkpixbuf.Pix
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_completion_item_set_gicon' : parameter 'gicon' of type 'Gio.Icon' not supported
+var completionItemSetGiconFunction *gi.Function
+var completionItemSetGiconFunction_Once sync.Once
+
+func completionItemSetGiconFunction_Set() error {
+	var err error
+	completionItemSetGiconFunction_Once.Do(func() {
+		err = completionItemObject_Set()
+		if err != nil {
+			return
+		}
+		completionItemSetGiconFunction, err = completionItemObject.InvokerNew("set_gicon")
+	})
+	return err
+}
+
+// SetGicon is a representation of the C type gtk_source_completion_item_set_gicon.
+func (recv *CompletionItem) SetGicon(gicon *gio.Icon) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(gicon.Native())
+
+	err := completionItemSetGiconFunction_Set()
+	if err == nil {
+		completionItemSetGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var completionItemSetIconFunction *gi.Function
 var completionItemSetIconFunction_Once sync.Once
@@ -2984,7 +3159,37 @@ func (recv *File) GetEncoding() *Encoding {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_get_location' : return type 'Gio.File' not supported
+var fileGetLocationFunction *gi.Function
+var fileGetLocationFunction_Once sync.Once
+
+func fileGetLocationFunction_Set() error {
+	var err error
+	fileGetLocationFunction_Once.Do(func() {
+		err = fileObject_Set()
+		if err != nil {
+			return
+		}
+		fileGetLocationFunction, err = fileObject.InvokerNew("get_location")
+	})
+	return err
+}
+
+// GetLocation is a representation of the C type gtk_source_file_get_location.
+func (recv *File) GetLocation() *gio.File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileGetLocationFunction_Set()
+	if err == nil {
+		ret = fileGetLocationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileGetNewlineTypeFunction *gi.Function
 var fileGetNewlineTypeFunction_Once sync.Once
@@ -3146,7 +3351,34 @@ func (recv *File) IsReadonly() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_set_location' : parameter 'location' of type 'Gio.File' not supported
+var fileSetLocationFunction *gi.Function
+var fileSetLocationFunction_Once sync.Once
+
+func fileSetLocationFunction_Set() error {
+	var err error
+	fileSetLocationFunction_Once.Do(func() {
+		err = fileObject_Set()
+		if err != nil {
+			return
+		}
+		fileSetLocationFunction, err = fileObject.InvokerNew("set_location")
+	})
+	return err
+}
+
+// SetLocation is a representation of the C type gtk_source_file_set_location.
+func (recv *File) SetLocation(location *gio.File) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(location.Native())
+
+	err := fileSetLocationFunction_Set()
+	if err == nil {
+		fileSetLocationFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // UNSUPPORTED : C value 'gtk_source_file_set_mount_operation_factory' : parameter 'callback' of type 'MountOperationFactory' not supported
 
@@ -3469,7 +3701,37 @@ func (recv *FileLoader) GetInputStream() *gio.InputStream {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_loader_get_location' : return type 'Gio.File' not supported
+var fileLoaderGetLocationFunction *gi.Function
+var fileLoaderGetLocationFunction_Once sync.Once
+
+func fileLoaderGetLocationFunction_Set() error {
+	var err error
+	fileLoaderGetLocationFunction_Once.Do(func() {
+		err = fileLoaderObject_Set()
+		if err != nil {
+			return
+		}
+		fileLoaderGetLocationFunction, err = fileLoaderObject.InvokerNew("get_location")
+	})
+	return err
+}
+
+// GetLocation is a representation of the C type gtk_source_file_loader_get_location.
+func (recv *FileLoader) GetLocation() *gio.File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileLoaderGetLocationFunction_Set()
+	if err == nil {
+		ret = fileLoaderGetLocationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileLoaderGetNewlineTypeFunction *gi.Function
 var fileLoaderGetNewlineTypeFunction_Once sync.Once
@@ -3505,7 +3767,38 @@ func (recv *FileLoader) GetNewlineType() NewlineType {
 
 // UNSUPPORTED : C value 'gtk_source_file_loader_load_async' : parameter 'progress_callback' of type 'Gio.FileProgressCallback' not supported
 
-// UNSUPPORTED : C value 'gtk_source_file_loader_load_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var fileLoaderLoadFinishFunction *gi.Function
+var fileLoaderLoadFinishFunction_Once sync.Once
+
+func fileLoaderLoadFinishFunction_Set() error {
+	var err error
+	fileLoaderLoadFinishFunction_Once.Do(func() {
+		err = fileLoaderObject_Set()
+		if err != nil {
+			return
+		}
+		fileLoaderLoadFinishFunction, err = fileLoaderObject.InvokerNew("load_finish")
+	})
+	return err
+}
+
+// LoadFinish is a representation of the C type gtk_source_file_loader_load_finish.
+func (recv *FileLoader) LoadFinish(result *gio.AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileLoaderLoadFinishFunction_Set()
+	if err == nil {
+		ret = fileLoaderLoadFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileLoaderSetCandidateEncodingsFunction *gi.Function
 var fileLoaderSetCandidateEncodingsFunction_Once sync.Once
@@ -3659,7 +3952,41 @@ func FileSaverNew(buffer *Buffer, file *File) *FileSaver {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_new_with_target' : parameter 'target_location' of type 'Gio.File' not supported
+var fileSaverNewWithTargetFunction *gi.Function
+var fileSaverNewWithTargetFunction_Once sync.Once
+
+func fileSaverNewWithTargetFunction_Set() error {
+	var err error
+	fileSaverNewWithTargetFunction_Once.Do(func() {
+		err = fileSaverObject_Set()
+		if err != nil {
+			return
+		}
+		fileSaverNewWithTargetFunction, err = fileSaverObject.InvokerNew("new_with_target")
+	})
+	return err
+}
+
+// FileSaverNewWithTarget is a representation of the C type gtk_source_file_saver_new_with_target.
+func FileSaverNewWithTarget(buffer *Buffer, file *File, targetLocation *gio.File) *FileSaver {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(buffer.Native())
+	inArgs[1].SetPointer(file.Native())
+	inArgs[2].SetPointer(targetLocation.Native())
+
+	var ret gi.Argument
+
+	err := fileSaverNewWithTargetFunction_Set()
+	if err == nil {
+		ret = fileSaverNewWithTargetFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileSaverNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var fileSaverGetBufferFunction *gi.Function
 var fileSaverGetBufferFunction_Once sync.Once
@@ -3821,7 +4148,37 @@ func (recv *FileSaver) GetFlags() FileSaverFlags {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_get_location' : return type 'Gio.File' not supported
+var fileSaverGetLocationFunction *gi.Function
+var fileSaverGetLocationFunction_Once sync.Once
+
+func fileSaverGetLocationFunction_Set() error {
+	var err error
+	fileSaverGetLocationFunction_Once.Do(func() {
+		err = fileSaverObject_Set()
+		if err != nil {
+			return
+		}
+		fileSaverGetLocationFunction, err = fileSaverObject.InvokerNew("get_location")
+	})
+	return err
+}
+
+// GetLocation is a representation of the C type gtk_source_file_saver_get_location.
+func (recv *FileSaver) GetLocation() *gio.File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileSaverGetLocationFunction_Set()
+	if err == nil {
+		ret = fileSaverGetLocationFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileSaverGetNewlineTypeFunction *gi.Function
 var fileSaverGetNewlineTypeFunction_Once sync.Once
@@ -3857,7 +4214,38 @@ func (recv *FileSaver) GetNewlineType() NewlineType {
 
 // UNSUPPORTED : C value 'gtk_source_file_saver_save_async' : parameter 'progress_callback' of type 'Gio.FileProgressCallback' not supported
 
-// UNSUPPORTED : C value 'gtk_source_file_saver_save_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var fileSaverSaveFinishFunction *gi.Function
+var fileSaverSaveFinishFunction_Once sync.Once
+
+func fileSaverSaveFinishFunction_Set() error {
+	var err error
+	fileSaverSaveFinishFunction_Once.Do(func() {
+		err = fileSaverObject_Set()
+		if err != nil {
+			return
+		}
+		fileSaverSaveFinishFunction, err = fileSaverObject.InvokerNew("save_finish")
+	})
+	return err
+}
+
+// SaveFinish is a representation of the C type gtk_source_file_saver_save_finish.
+func (recv *FileSaver) SaveFinish(result *gio.AsyncResult) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := fileSaverSaveFinishFunction_Set()
+	if err == nil {
+		ret = fileSaverSaveFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileSaverSetCompressionTypeFunction *gi.Function
 var fileSaverSetCompressionTypeFunction_Once sync.Once
@@ -5215,7 +5603,37 @@ func GutterRendererPixbufNew() *GutterRendererPixbuf {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_pixbuf_get_gicon' : return type 'Gio.Icon' not supported
+var gutterRendererPixbufGetGiconFunction *gi.Function
+var gutterRendererPixbufGetGiconFunction_Once sync.Once
+
+func gutterRendererPixbufGetGiconFunction_Set() error {
+	var err error
+	gutterRendererPixbufGetGiconFunction_Once.Do(func() {
+		err = gutterRendererPixbufObject_Set()
+		if err != nil {
+			return
+		}
+		gutterRendererPixbufGetGiconFunction, err = gutterRendererPixbufObject.InvokerNew("get_gicon")
+	})
+	return err
+}
+
+// GetGicon is a representation of the C type gtk_source_gutter_renderer_pixbuf_get_gicon.
+func (recv *GutterRendererPixbuf) GetGicon() *gio.Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := gutterRendererPixbufGetGiconFunction_Set()
+	if err == nil {
+		ret = gutterRendererPixbufGetGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var gutterRendererPixbufGetIconNameFunction *gi.Function
 var gutterRendererPixbufGetIconNameFunction_Once sync.Once
@@ -5313,7 +5731,34 @@ func (recv *GutterRendererPixbuf) GetStockId() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_pixbuf_set_gicon' : parameter 'icon' of type 'Gio.Icon' not supported
+var gutterRendererPixbufSetGiconFunction *gi.Function
+var gutterRendererPixbufSetGiconFunction_Once sync.Once
+
+func gutterRendererPixbufSetGiconFunction_Set() error {
+	var err error
+	gutterRendererPixbufSetGiconFunction_Once.Do(func() {
+		err = gutterRendererPixbufObject_Set()
+		if err != nil {
+			return
+		}
+		gutterRendererPixbufSetGiconFunction, err = gutterRendererPixbufObject.InvokerNew("set_gicon")
+	})
+	return err
+}
+
+// SetGicon is a representation of the C type gtk_source_gutter_renderer_pixbuf_set_gicon.
+func (recv *GutterRendererPixbuf) SetGicon(icon *gio.Icon) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(icon.Native())
+
+	err := gutterRendererPixbufSetGiconFunction_Set()
+	if err == nil {
+		gutterRendererPixbufSetGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var gutterRendererPixbufSetIconNameFunction *gi.Function
 var gutterRendererPixbufSetIconNameFunction_Once sync.Once
@@ -6831,7 +7276,37 @@ func (recv *MarkAttributes) GetBackground() (bool, *gdk.RGBA) {
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'gtk_source_mark_attributes_get_gicon' : return type 'Gio.Icon' not supported
+var markAttributesGetGiconFunction *gi.Function
+var markAttributesGetGiconFunction_Once sync.Once
+
+func markAttributesGetGiconFunction_Set() error {
+	var err error
+	markAttributesGetGiconFunction_Once.Do(func() {
+		err = markAttributesObject_Set()
+		if err != nil {
+			return
+		}
+		markAttributesGetGiconFunction, err = markAttributesObject.InvokerNew("get_gicon")
+	})
+	return err
+}
+
+// GetGicon is a representation of the C type gtk_source_mark_attributes_get_gicon.
+func (recv *MarkAttributes) GetGicon() *gio.Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := markAttributesGetGiconFunction_Set()
+	if err == nil {
+		ret = markAttributesGetGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var markAttributesGetIconNameFunction *gi.Function
 var markAttributesGetIconNameFunction_Once sync.Once
@@ -7058,7 +7533,34 @@ func (recv *MarkAttributes) SetBackground(background *gdk.RGBA) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_mark_attributes_set_gicon' : parameter 'gicon' of type 'Gio.Icon' not supported
+var markAttributesSetGiconFunction *gi.Function
+var markAttributesSetGiconFunction_Once sync.Once
+
+func markAttributesSetGiconFunction_Set() error {
+	var err error
+	markAttributesSetGiconFunction_Once.Do(func() {
+		err = markAttributesObject_Set()
+		if err != nil {
+			return
+		}
+		markAttributesSetGiconFunction, err = markAttributesObject.InvokerNew("set_gicon")
+	})
+	return err
+}
+
+// SetGicon is a representation of the C type gtk_source_mark_attributes_set_gicon.
+func (recv *MarkAttributes) SetGicon(gicon *gio.Icon) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(gicon.Native())
+
+	err := markAttributesSetGiconFunction_Set()
+	if err == nil {
+		markAttributesSetGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var markAttributesSetIconNameFunction *gi.Function
 var markAttributesSetIconNameFunction_Once sync.Once
@@ -8804,9 +9306,78 @@ func (recv *SearchContext) Backward2(iter *gtk.TextIter) (bool, *gtk.TextIter, *
 
 // UNSUPPORTED : C value 'gtk_source_search_context_backward_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'gtk_source_search_context_backward_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var searchContextBackwardFinishFunction *gi.Function
+var searchContextBackwardFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_search_context_backward_finish2' : parameter 'result' of type 'Gio.AsyncResult' not supported
+func searchContextBackwardFinishFunction_Set() error {
+	var err error
+	searchContextBackwardFinishFunction_Once.Do(func() {
+		err = searchContextObject_Set()
+		if err != nil {
+			return
+		}
+		searchContextBackwardFinishFunction, err = searchContextObject.InvokerNew("backward_finish")
+	})
+	return err
+}
+
+// BackwardFinish is a representation of the C type gtk_source_search_context_backward_finish.
+func (recv *SearchContext) BackwardFinish(result *gio.AsyncResult) (bool, *gtk.TextIter, *gtk.TextIter) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := searchContextBackwardFinishFunction_Set()
+	if err == nil {
+		ret = searchContextBackwardFinishFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gtk.TextIterNewFromNative(outArgs[0].Pointer())
+	out1 := gtk.TextIterNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
+
+var searchContextBackwardFinish2Function *gi.Function
+var searchContextBackwardFinish2Function_Once sync.Once
+
+func searchContextBackwardFinish2Function_Set() error {
+	var err error
+	searchContextBackwardFinish2Function_Once.Do(func() {
+		err = searchContextObject_Set()
+		if err != nil {
+			return
+		}
+		searchContextBackwardFinish2Function, err = searchContextObject.InvokerNew("backward_finish2")
+	})
+	return err
+}
+
+// BackwardFinish2 is a representation of the C type gtk_source_search_context_backward_finish2.
+func (recv *SearchContext) BackwardFinish2(result *gio.AsyncResult) (bool, *gtk.TextIter, *gtk.TextIter, bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := searchContextBackwardFinish2Function_Set()
+	if err == nil {
+		ret = searchContextBackwardFinish2Function.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gtk.TextIterNewFromNative(outArgs[0].Pointer())
+	out1 := gtk.TextIterNewFromNative(outArgs[1].Pointer())
+	out2 := outArgs[2].Boolean()
+
+	return retGo, out0, out1, out2
+}
 
 var searchContextForwardFunction *gi.Function
 var searchContextForwardFunction_Once sync.Once
@@ -8883,9 +9454,78 @@ func (recv *SearchContext) Forward2(iter *gtk.TextIter) (bool, *gtk.TextIter, *g
 
 // UNSUPPORTED : C value 'gtk_source_search_context_forward_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'gtk_source_search_context_forward_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var searchContextForwardFinishFunction *gi.Function
+var searchContextForwardFinishFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_source_search_context_forward_finish2' : parameter 'result' of type 'Gio.AsyncResult' not supported
+func searchContextForwardFinishFunction_Set() error {
+	var err error
+	searchContextForwardFinishFunction_Once.Do(func() {
+		err = searchContextObject_Set()
+		if err != nil {
+			return
+		}
+		searchContextForwardFinishFunction, err = searchContextObject.InvokerNew("forward_finish")
+	})
+	return err
+}
+
+// ForwardFinish is a representation of the C type gtk_source_search_context_forward_finish.
+func (recv *SearchContext) ForwardFinish(result *gio.AsyncResult) (bool, *gtk.TextIter, *gtk.TextIter) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := searchContextForwardFinishFunction_Set()
+	if err == nil {
+		ret = searchContextForwardFinishFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gtk.TextIterNewFromNative(outArgs[0].Pointer())
+	out1 := gtk.TextIterNewFromNative(outArgs[1].Pointer())
+
+	return retGo, out0, out1
+}
+
+var searchContextForwardFinish2Function *gi.Function
+var searchContextForwardFinish2Function_Once sync.Once
+
+func searchContextForwardFinish2Function_Set() error {
+	var err error
+	searchContextForwardFinish2Function_Once.Do(func() {
+		err = searchContextObject_Set()
+		if err != nil {
+			return
+		}
+		searchContextForwardFinish2Function, err = searchContextObject.InvokerNew("forward_finish2")
+	})
+	return err
+}
+
+// ForwardFinish2 is a representation of the C type gtk_source_search_context_forward_finish2.
+func (recv *SearchContext) ForwardFinish2(result *gio.AsyncResult) (bool, *gtk.TextIter, *gtk.TextIter, bool) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := searchContextForwardFinish2Function_Set()
+	if err == nil {
+		ret = searchContextForwardFinish2Function.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := gtk.TextIterNewFromNative(outArgs[0].Pointer())
+	out1 := gtk.TextIterNewFromNative(outArgs[1].Pointer())
+	out2 := outArgs[2].Boolean()
+
+	return retGo, out0, out1, out2
+}
 
 var searchContextGetBufferFunction *gi.Function
 var searchContextGetBufferFunction_Once sync.Once

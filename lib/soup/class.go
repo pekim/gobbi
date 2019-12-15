@@ -5781,7 +5781,38 @@ func (recv *MultipartInputStream) NextPart(cancellable *gio.Cancellable) *gio.In
 
 // UNSUPPORTED : C value 'soup_multipart_input_stream_next_part_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'soup_multipart_input_stream_next_part_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var multipartInputStreamNextPartFinishFunction *gi.Function
+var multipartInputStreamNextPartFinishFunction_Once sync.Once
+
+func multipartInputStreamNextPartFinishFunction_Set() error {
+	var err error
+	multipartInputStreamNextPartFinishFunction_Once.Do(func() {
+		err = multipartInputStreamObject_Set()
+		if err != nil {
+			return
+		}
+		multipartInputStreamNextPartFinishFunction, err = multipartInputStreamObject.InvokerNew("next_part_finish")
+	})
+	return err
+}
+
+// NextPartFinish is a representation of the C type soup_multipart_input_stream_next_part_finish.
+func (recv *MultipartInputStream) NextPartFinish(result *gio.AsyncResult) *gio.InputStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := multipartInputStreamNextPartFinishFunction_Set()
+	if err == nil {
+		ret = multipartInputStreamNextPartFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.InputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // GioPollableInputStream returns the Gio.PollableInputStream interface implemented by MultipartInputStream
 func (recv *MultipartInputStream) GioPollableInputStream() *gio.PollableInputStream {
@@ -6123,7 +6154,38 @@ func (recv *Request) Send(cancellable *gio.Cancellable) *gio.InputStream {
 
 // UNSUPPORTED : C value 'soup_request_send_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'soup_request_send_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var requestSendFinishFunction *gi.Function
+var requestSendFinishFunction_Once sync.Once
+
+func requestSendFinishFunction_Set() error {
+	var err error
+	requestSendFinishFunction_Once.Do(func() {
+		err = requestObject_Set()
+		if err != nil {
+			return
+		}
+		requestSendFinishFunction, err = requestObject.InvokerNew("send_finish")
+	})
+	return err
+}
+
+// SendFinish is a representation of the C type soup_request_send_finish.
+func (recv *Request) SendFinish(result *gio.AsyncResult) *gio.InputStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := requestSendFinishFunction_Set()
+	if err == nil {
+		ret = requestSendFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.InputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // GioInitable returns the Gio.Initable interface implemented by Request
 func (recv *Request) GioInitable() *gio.Initable {
@@ -6321,7 +6383,37 @@ func (recv *RequestFile) SetFieldPriv(value *RequestFilePrivate) {
 	gi.ObjectFieldSet(requestFileObject, recv.Native(), "priv", argValue)
 }
 
-// UNSUPPORTED : C value 'soup_request_file_get_file' : return type 'Gio.File' not supported
+var requestFileGetFileFunction *gi.Function
+var requestFileGetFileFunction_Once sync.Once
+
+func requestFileGetFileFunction_Set() error {
+	var err error
+	requestFileGetFileFunction_Once.Do(func() {
+		err = requestFileObject_Set()
+		if err != nil {
+			return
+		}
+		requestFileGetFileFunction, err = requestFileObject.InvokerNew("get_file")
+	})
+	return err
+}
+
+// GetFile is a representation of the C type soup_request_file_get_file.
+func (recv *RequestFile) GetFile() *gio.File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := requestFileGetFileFunction_Set()
+	if err == nil {
+		ret = requestFileGetFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // GioInitable returns the Gio.Initable interface implemented by RequestFile
 func (recv *RequestFile) GioInitable() *gio.Initable {
@@ -7714,7 +7806,34 @@ func (recv *Session) Abort() {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_session_add_feature' : parameter 'feature' of type 'SessionFeature' not supported
+var sessionAddFeatureFunction *gi.Function
+var sessionAddFeatureFunction_Once sync.Once
+
+func sessionAddFeatureFunction_Set() error {
+	var err error
+	sessionAddFeatureFunction_Once.Do(func() {
+		err = sessionObject_Set()
+		if err != nil {
+			return
+		}
+		sessionAddFeatureFunction, err = sessionObject.InvokerNew("add_feature")
+	})
+	return err
+}
+
+// AddFeature is a representation of the C type soup_session_add_feature.
+func (recv *Session) AddFeature(feature *SessionFeature) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(feature.Native())
+
+	err := sessionAddFeatureFunction_Set()
+	if err == nil {
+		sessionAddFeatureFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var sessionAddFeatureByTypeFunction *gi.Function
 var sessionAddFeatureByTypeFunction_Once sync.Once
@@ -7777,7 +7896,38 @@ func (recv *Session) CancelMessage(msg *Message, statusCode uint32) {
 
 // UNSUPPORTED : C value 'soup_session_connect_async' : parameter 'progress_callback' of type 'SessionConnectProgressCallback' not supported
 
-// UNSUPPORTED : C value 'soup_session_connect_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var sessionConnectFinishFunction *gi.Function
+var sessionConnectFinishFunction_Once sync.Once
+
+func sessionConnectFinishFunction_Set() error {
+	var err error
+	sessionConnectFinishFunction_Once.Do(func() {
+		err = sessionObject_Set()
+		if err != nil {
+			return
+		}
+		sessionConnectFinishFunction, err = sessionObject.InvokerNew("connect_finish")
+	})
+	return err
+}
+
+// ConnectFinish is a representation of the C type soup_session_connect_finish.
+func (recv *Session) ConnectFinish(result *gio.AsyncResult) *gio.IOStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := sessionConnectFinishFunction_Set()
+	if err == nil {
+		ret = sessionConnectFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.IOStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var sessionGetAsyncContextFunction *gi.Function
 var sessionGetAsyncContextFunction_Once sync.Once
@@ -7811,9 +7961,72 @@ func (recv *Session) GetAsyncContext() *glib.MainContext {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_session_get_feature' : return type 'SessionFeature' not supported
+var sessionGetFeatureFunction *gi.Function
+var sessionGetFeatureFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_session_get_feature_for_message' : return type 'SessionFeature' not supported
+func sessionGetFeatureFunction_Set() error {
+	var err error
+	sessionGetFeatureFunction_Once.Do(func() {
+		err = sessionObject_Set()
+		if err != nil {
+			return
+		}
+		sessionGetFeatureFunction, err = sessionObject.InvokerNew("get_feature")
+	})
+	return err
+}
+
+// GetFeature is a representation of the C type soup_session_get_feature.
+func (recv *Session) GetFeature(featureType int64) *SessionFeature {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(featureType)
+
+	var ret gi.Argument
+
+	err := sessionGetFeatureFunction_Set()
+	if err == nil {
+		ret = sessionGetFeatureFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SessionFeatureNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var sessionGetFeatureForMessageFunction *gi.Function
+var sessionGetFeatureForMessageFunction_Once sync.Once
+
+func sessionGetFeatureForMessageFunction_Set() error {
+	var err error
+	sessionGetFeatureForMessageFunction_Once.Do(func() {
+		err = sessionObject_Set()
+		if err != nil {
+			return
+		}
+		sessionGetFeatureForMessageFunction, err = sessionObject.InvokerNew("get_feature_for_message")
+	})
+	return err
+}
+
+// GetFeatureForMessage is a representation of the C type soup_session_get_feature_for_message.
+func (recv *Session) GetFeatureForMessage(featureType int64, msg *Message) *SessionFeature {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt64(featureType)
+	inArgs[2].SetPointer(msg.Native())
+
+	var ret gi.Argument
+
+	err := sessionGetFeatureForMessageFunction_Set()
+	if err == nil {
+		ret = sessionGetFeatureForMessageFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SessionFeatureNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var sessionGetFeaturesFunction *gi.Function
 var sessionGetFeaturesFunction_Once sync.Once
@@ -7976,7 +8189,34 @@ func (recv *Session) RedirectMessage(msg *Message) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_session_remove_feature' : parameter 'feature' of type 'SessionFeature' not supported
+var sessionRemoveFeatureFunction *gi.Function
+var sessionRemoveFeatureFunction_Once sync.Once
+
+func sessionRemoveFeatureFunction_Set() error {
+	var err error
+	sessionRemoveFeatureFunction_Once.Do(func() {
+		err = sessionObject_Set()
+		if err != nil {
+			return
+		}
+		sessionRemoveFeatureFunction, err = sessionObject.InvokerNew("remove_feature")
+	})
+	return err
+}
+
+// RemoveFeature is a representation of the C type soup_session_remove_feature.
+func (recv *Session) RemoveFeature(feature *SessionFeature) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(feature.Native())
+
+	err := sessionRemoveFeatureFunction_Set()
+	if err == nil {
+		sessionRemoveFeatureFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var sessionRemoveFeatureByTypeFunction *gi.Function
 var sessionRemoveFeatureByTypeFunction_Once sync.Once
@@ -8206,7 +8446,38 @@ func (recv *Session) Send(msg *Message, cancellable *gio.Cancellable) *gio.Input
 
 // UNSUPPORTED : C value 'soup_session_send_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'soup_session_send_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var sessionSendFinishFunction *gi.Function
+var sessionSendFinishFunction_Once sync.Once
+
+func sessionSendFinishFunction_Set() error {
+	var err error
+	sessionSendFinishFunction_Once.Do(func() {
+		err = sessionObject_Set()
+		if err != nil {
+			return
+		}
+		sessionSendFinishFunction, err = sessionObject.InvokerNew("send_finish")
+	})
+	return err
+}
+
+// SendFinish is a representation of the C type soup_session_send_finish.
+func (recv *Session) SendFinish(result *gio.AsyncResult) *gio.InputStream {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := sessionSendFinishFunction_Set()
+	if err == nil {
+		ret = sessionSendFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.InputStreamNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var sessionSendMessageFunction *gi.Function
 var sessionSendMessageFunction_Once sync.Once
@@ -8305,7 +8576,38 @@ func (recv *Session) UnpauseMessage(msg *Message) {
 
 // UNSUPPORTED : C value 'soup_session_websocket_connect_async' : parameter 'protocols' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_session_websocket_connect_finish' : parameter 'result' of type 'Gio.AsyncResult' not supported
+var sessionWebsocketConnectFinishFunction *gi.Function
+var sessionWebsocketConnectFinishFunction_Once sync.Once
+
+func sessionWebsocketConnectFinishFunction_Set() error {
+	var err error
+	sessionWebsocketConnectFinishFunction_Once.Do(func() {
+		err = sessionObject_Set()
+		if err != nil {
+			return
+		}
+		sessionWebsocketConnectFinishFunction, err = sessionObject.InvokerNew("websocket_connect_finish")
+	})
+	return err
+}
+
+// WebsocketConnectFinish is a representation of the C type soup_session_websocket_connect_finish.
+func (recv *Session) WebsocketConnectFinish(result *gio.AsyncResult) *WebsocketConnection {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := sessionWebsocketConnectFinishFunction_Set()
+	if err == nil {
+		ret = sessionWebsocketConnectFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := WebsocketConnectionNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var sessionWouldRedirectFunction *gi.Function
 var sessionWouldRedirectFunction_Once sync.Once

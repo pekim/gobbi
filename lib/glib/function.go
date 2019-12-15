@@ -1440,7 +1440,6 @@ func Base64DecodeInplace(text string, outLen uint64) (uint8, string, uint64) {
 	}
 
 	retGo := ret.Uint8()
-	// what here?
 	out0 := outArgs[0].String(true)
 	out1 := outArgs[1].Uint64()
 
@@ -1478,7 +1477,6 @@ func Base64EncodeClose(breakLines bool, state int32, save int32) (uint64, string
 	}
 
 	retGo := ret.Uint64()
-	// what here?
 	out0 := outArgs[0].String(true)
 	out1 := outArgs[1].Int32()
 	out2 := outArgs[2].Int32()

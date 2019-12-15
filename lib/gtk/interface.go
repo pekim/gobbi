@@ -7,6 +7,7 @@ import (
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	atk "github.com/pekim/gobbi/lib/atk"
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
@@ -479,7 +480,37 @@ func (recv *AppChooser) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_app_chooser_get_app_info' : return type 'Gio.AppInfo' not supported
+var appChooserGetAppInfoFunction *gi.Function
+var appChooserGetAppInfoFunction_Once sync.Once
+
+func appChooserGetAppInfoFunction_Set() error {
+	var err error
+	appChooserGetAppInfoFunction_Once.Do(func() {
+		err = appChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		appChooserGetAppInfoFunction, err = appChooserInterface.InvokerNew("get_app_info")
+	})
+	return err
+}
+
+// GetAppInfo is a representation of the C type gtk_app_chooser_get_app_info.
+func (recv *AppChooser) GetAppInfo() *gio.AppInfo {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := appChooserGetAppInfoFunction_Set()
+	if err == nil {
+		ret = appChooserGetAppInfoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.AppInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var appChooserGetContentTypeFunction *gi.Function
 var appChooserGetContentTypeFunction_Once sync.Once
@@ -2716,7 +2747,37 @@ func (recv *FileChooser) GetCurrentFolder() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_get_current_folder_file' : return type 'Gio.File' not supported
+var fileChooserGetCurrentFolderFileFunction *gi.Function
+var fileChooserGetCurrentFolderFileFunction_Once sync.Once
+
+func fileChooserGetCurrentFolderFileFunction_Set() error {
+	var err error
+	fileChooserGetCurrentFolderFileFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserGetCurrentFolderFileFunction, err = fileChooserInterface.InvokerNew("get_current_folder_file")
+	})
+	return err
+}
+
+// GetCurrentFolderFile is a representation of the C type gtk_file_chooser_get_current_folder_file.
+func (recv *FileChooser) GetCurrentFolderFile() *gio.File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserGetCurrentFolderFileFunction_Set()
+	if err == nil {
+		ret = fileChooserGetCurrentFolderFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileChooserGetCurrentFolderUriFunction *gi.Function
 var fileChooserGetCurrentFolderUriFunction_Once sync.Once
@@ -2846,7 +2907,37 @@ func (recv *FileChooser) GetExtraWidget() *Widget {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_get_file' : return type 'Gio.File' not supported
+var fileChooserGetFileFunction *gi.Function
+var fileChooserGetFileFunction_Once sync.Once
+
+func fileChooserGetFileFunction_Set() error {
+	var err error
+	fileChooserGetFileFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserGetFileFunction, err = fileChooserInterface.InvokerNew("get_file")
+	})
+	return err
+}
+
+// GetFile is a representation of the C type gtk_file_chooser_get_file.
+func (recv *FileChooser) GetFile() *gio.File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserGetFileFunction_Set()
+	if err == nil {
+		ret = fileChooserGetFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileChooserGetFilenameFunction *gi.Function
 var fileChooserGetFilenameFunction_Once sync.Once
@@ -3008,7 +3099,37 @@ func (recv *FileChooser) GetLocalOnly() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_get_preview_file' : return type 'Gio.File' not supported
+var fileChooserGetPreviewFileFunction *gi.Function
+var fileChooserGetPreviewFileFunction_Once sync.Once
+
+func fileChooserGetPreviewFileFunction_Set() error {
+	var err error
+	fileChooserGetPreviewFileFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserGetPreviewFileFunction, err = fileChooserInterface.InvokerNew("get_preview_file")
+	})
+	return err
+}
+
+// GetPreviewFile is a representation of the C type gtk_file_chooser_get_preview_file.
+func (recv *FileChooser) GetPreviewFile() *gio.File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserGetPreviewFileFunction_Set()
+	if err == nil {
+		ret = fileChooserGetPreviewFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var fileChooserGetPreviewFilenameFunction *gi.Function
 var fileChooserGetPreviewFilenameFunction_Once sync.Once
@@ -3546,7 +3667,38 @@ func (recv *FileChooser) SelectAll() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_select_file' : parameter 'file' of type 'Gio.File' not supported
+var fileChooserSelectFileFunction *gi.Function
+var fileChooserSelectFileFunction_Once sync.Once
+
+func fileChooserSelectFileFunction_Set() error {
+	var err error
+	fileChooserSelectFileFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserSelectFileFunction, err = fileChooserInterface.InvokerNew("select_file")
+	})
+	return err
+}
+
+// SelectFile is a representation of the C type gtk_file_chooser_select_file.
+func (recv *FileChooser) SelectFile(file *gio.File) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(file.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserSelectFileFunction_Set()
+	if err == nil {
+		ret = fileChooserSelectFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileChooserSelectFilenameFunction *gi.Function
 var fileChooserSelectFilenameFunction_Once sync.Once
@@ -3735,7 +3887,38 @@ func (recv *FileChooser) SetCurrentFolder(filename string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_set_current_folder_file' : parameter 'file' of type 'Gio.File' not supported
+var fileChooserSetCurrentFolderFileFunction *gi.Function
+var fileChooserSetCurrentFolderFileFunction_Once sync.Once
+
+func fileChooserSetCurrentFolderFileFunction_Set() error {
+	var err error
+	fileChooserSetCurrentFolderFileFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserSetCurrentFolderFileFunction, err = fileChooserInterface.InvokerNew("set_current_folder_file")
+	})
+	return err
+}
+
+// SetCurrentFolderFile is a representation of the C type gtk_file_chooser_set_current_folder_file.
+func (recv *FileChooser) SetCurrentFolderFile(file *gio.File) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(file.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserSetCurrentFolderFileFunction_Set()
+	if err == nil {
+		ret = fileChooserSetCurrentFolderFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileChooserSetCurrentFolderUriFunction *gi.Function
 var fileChooserSetCurrentFolderUriFunction_Once sync.Once
@@ -3857,7 +4040,38 @@ func (recv *FileChooser) SetExtraWidget(extraWidget *Widget) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_set_file' : parameter 'file' of type 'Gio.File' not supported
+var fileChooserSetFileFunction *gi.Function
+var fileChooserSetFileFunction_Once sync.Once
+
+func fileChooserSetFileFunction_Set() error {
+	var err error
+	fileChooserSetFileFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserSetFileFunction, err = fileChooserInterface.InvokerNew("set_file")
+	})
+	return err
+}
+
+// SetFile is a representation of the C type gtk_file_chooser_set_file.
+func (recv *FileChooser) SetFile(file *gio.File) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(file.Native())
+
+	var ret gi.Argument
+
+	err := fileChooserSetFileFunction_Set()
+	if err == nil {
+		ret = fileChooserSetFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var fileChooserSetFilenameFunction *gi.Function
 var fileChooserSetFilenameFunction_Once sync.Once
@@ -4156,7 +4370,34 @@ func (recv *FileChooser) UnselectAll() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_unselect_file' : parameter 'file' of type 'Gio.File' not supported
+var fileChooserUnselectFileFunction *gi.Function
+var fileChooserUnselectFileFunction_Once sync.Once
+
+func fileChooserUnselectFileFunction_Set() error {
+	var err error
+	fileChooserUnselectFileFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserUnselectFileFunction, err = fileChooserInterface.InvokerNew("unselect_file")
+	})
+	return err
+}
+
+// UnselectFile is a representation of the C type gtk_file_chooser_unselect_file.
+func (recv *FileChooser) UnselectFile(file *gio.File) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(file.Native())
+
+	err := fileChooserUnselectFileFunction_Set()
+	if err == nil {
+		fileChooserUnselectFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fileChooserUnselectFilenameFunction *gi.Function
 var fileChooserUnselectFilenameFunction_Once sync.Once
@@ -7308,7 +7549,38 @@ func (recv *TreeModel) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_tree_model_filter_new' : return type 'TreeModel' not supported
+var treeModelFilterNewFunction *gi.Function
+var treeModelFilterNewFunction_Once sync.Once
+
+func treeModelFilterNewFunction_Set() error {
+	var err error
+	treeModelFilterNewFunction_Once.Do(func() {
+		err = treeModelInterface_Set()
+		if err != nil {
+			return
+		}
+		treeModelFilterNewFunction, err = treeModelInterface.InvokerNew("filter_new")
+	})
+	return err
+}
+
+// FilterNew is a representation of the C type gtk_tree_model_filter_new.
+func (recv *TreeModel) FilterNew(root *TreePath) *TreeModel {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(root.Native())
+
+	var ret gi.Argument
+
+	err := treeModelFilterNewFunction_Set()
+	if err == nil {
+		ret = treeModelFilterNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeModelNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'gtk_tree_model_foreach' : parameter 'func' of type 'TreeModelForeachFunc' not supported
 
@@ -8036,7 +8308,37 @@ func (recv *TreeModel) RowsReordered(path *TreePath, iter *TreeIter, newOrder in
 
 // UNSUPPORTED : C value 'gtk_tree_model_rows_reordered_with_length' : parameter 'new_order' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_model_sort_new_with_model' : return type 'TreeModel' not supported
+var treeModelSortNewWithModelFunction *gi.Function
+var treeModelSortNewWithModelFunction_Once sync.Once
+
+func treeModelSortNewWithModelFunction_Set() error {
+	var err error
+	treeModelSortNewWithModelFunction_Once.Do(func() {
+		err = treeModelInterface_Set()
+		if err != nil {
+			return
+		}
+		treeModelSortNewWithModelFunction, err = treeModelInterface.InvokerNew("sort_new_with_model")
+	})
+	return err
+}
+
+// SortNewWithModel is a representation of the C type gtk_tree_model_sort_new_with_model.
+func (recv *TreeModel) SortNewWithModel() *TreeModel {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := treeModelSortNewWithModelFunction_Set()
+	if err == nil {
+		ret = treeModelSortNewWithModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeModelNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var treeModelUnrefNodeFunction *gi.Function
 var treeModelUnrefNodeFunction_Once sync.Once

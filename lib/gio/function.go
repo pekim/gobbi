@@ -98,7 +98,35 @@ func ActionPrintDetailedName(actionName string, targetValue *glib.Variant) strin
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_app_info_create_from_commandline' : return type 'AppInfo' not supported
+var appInfoCreateFromCommandlineFunction *gi.Function
+var appInfoCreateFromCommandlineFunction_Once sync.Once
+
+func appInfoCreateFromCommandlineFunction_Set() error {
+	var err error
+	appInfoCreateFromCommandlineFunction_Once.Do(func() {
+		appInfoCreateFromCommandlineFunction, err = gi.FunctionInvokerNew("Gio", "app_info_create_from_commandline")
+	})
+	return err
+}
+
+// AppInfoCreateFromCommandline is a representation of the C type g_app_info_create_from_commandline.
+func AppInfoCreateFromCommandline(commandline string, applicationName string, flags AppInfoCreateFlags) *AppInfo {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(commandline)
+	inArgs[1].SetString(applicationName)
+	inArgs[2].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := appInfoCreateFromCommandlineFunction_Set()
+	if err == nil {
+		ret = appInfoCreateFromCommandlineFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AppInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var appInfoGetAllFunction *gi.Function
 var appInfoGetAllFunction_Once sync.Once
@@ -154,9 +182,62 @@ func AppInfoGetAllForType(contentType string) *glib.List {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_app_info_get_default_for_type' : return type 'AppInfo' not supported
+var appInfoGetDefaultForTypeFunction *gi.Function
+var appInfoGetDefaultForTypeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_app_info_get_default_for_uri_scheme' : return type 'AppInfo' not supported
+func appInfoGetDefaultForTypeFunction_Set() error {
+	var err error
+	appInfoGetDefaultForTypeFunction_Once.Do(func() {
+		appInfoGetDefaultForTypeFunction, err = gi.FunctionInvokerNew("Gio", "app_info_get_default_for_type")
+	})
+	return err
+}
+
+// AppInfoGetDefaultForType is a representation of the C type g_app_info_get_default_for_type.
+func AppInfoGetDefaultForType(contentType string, mustSupportUris bool) *AppInfo {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(contentType)
+	inArgs[1].SetBoolean(mustSupportUris)
+
+	var ret gi.Argument
+
+	err := appInfoGetDefaultForTypeFunction_Set()
+	if err == nil {
+		ret = appInfoGetDefaultForTypeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AppInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var appInfoGetDefaultForUriSchemeFunction *gi.Function
+var appInfoGetDefaultForUriSchemeFunction_Once sync.Once
+
+func appInfoGetDefaultForUriSchemeFunction_Set() error {
+	var err error
+	appInfoGetDefaultForUriSchemeFunction_Once.Do(func() {
+		appInfoGetDefaultForUriSchemeFunction, err = gi.FunctionInvokerNew("Gio", "app_info_get_default_for_uri_scheme")
+	})
+	return err
+}
+
+// AppInfoGetDefaultForUriScheme is a representation of the C type g_app_info_get_default_for_uri_scheme.
+func AppInfoGetDefaultForUriScheme(uriScheme string) *AppInfo {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(uriScheme)
+
+	var ret gi.Argument
+
+	err := appInfoGetDefaultForUriSchemeFunction_Set()
+	if err == nil {
+		ret = appInfoGetDefaultForUriSchemeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := AppInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var appInfoGetFallbackForTypeFunction *gi.Function
 var appInfoGetFallbackForTypeFunction_Once sync.Once
@@ -245,7 +326,33 @@ func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) bool {
 
 // UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_app_info_launch_default_for_uri_finish' : parameter 'result' of type 'AsyncResult' not supported
+var appInfoLaunchDefaultForUriFinishFunction *gi.Function
+var appInfoLaunchDefaultForUriFinishFunction_Once sync.Once
+
+func appInfoLaunchDefaultForUriFinishFunction_Set() error {
+	var err error
+	appInfoLaunchDefaultForUriFinishFunction_Once.Do(func() {
+		appInfoLaunchDefaultForUriFinishFunction, err = gi.FunctionInvokerNew("Gio", "app_info_launch_default_for_uri_finish")
+	})
+	return err
+}
+
+// AppInfoLaunchDefaultForUriFinish is a representation of the C type g_app_info_launch_default_for_uri_finish.
+func AppInfoLaunchDefaultForUriFinish(result *AsyncResult) bool {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(result.Native())
+
+	var ret gi.Argument
+
+	err := appInfoLaunchDefaultForUriFinishFunction_Set()
+	if err == nil {
+		ret = appInfoLaunchDefaultForUriFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var appInfoResetTypeAssociationsFunction *gi.Function
 var appInfoResetTypeAssociationsFunction_Once sync.Once
@@ -275,7 +382,33 @@ func AppInfoResetTypeAssociations(contentType string) {
 
 // UNSUPPORTED : C value 'g_bus_get' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_bus_get_finish' : parameter 'res' of type 'AsyncResult' not supported
+var busGetFinishFunction *gi.Function
+var busGetFinishFunction_Once sync.Once
+
+func busGetFinishFunction_Set() error {
+	var err error
+	busGetFinishFunction_Once.Do(func() {
+		busGetFinishFunction, err = gi.FunctionInvokerNew("Gio", "bus_get_finish")
+	})
+	return err
+}
+
+// BusGetFinish is a representation of the C type g_bus_get_finish.
+func BusGetFinish(res *AsyncResult) *DBusConnection {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(res.Native())
+
+	var ret gi.Argument
+
+	err := busGetFinishFunction_Set()
+	if err == nil {
+		ret = busGetFinishFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusConnectionNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var busGetSyncFunction *gi.Function
 var busGetSyncFunction_Once sync.Once
@@ -632,7 +765,33 @@ func ContentTypeGetGenericIconName(type_ string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_content_type_get_icon' : return type 'Icon' not supported
+var contentTypeGetIconFunction *gi.Function
+var contentTypeGetIconFunction_Once sync.Once
+
+func contentTypeGetIconFunction_Set() error {
+	var err error
+	contentTypeGetIconFunction_Once.Do(func() {
+		contentTypeGetIconFunction, err = gi.FunctionInvokerNew("Gio", "content_type_get_icon")
+	})
+	return err
+}
+
+// ContentTypeGetIcon is a representation of the C type g_content_type_get_icon.
+func ContentTypeGetIcon(type_ string) *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(type_)
+
+	var ret gi.Argument
+
+	err := contentTypeGetIconFunction_Set()
+	if err == nil {
+		ret = contentTypeGetIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var contentTypeGetMimeDirsFunction *gi.Function
 var contentTypeGetMimeDirsFunction_Once sync.Once
@@ -684,11 +843,59 @@ func ContentTypeGetMimeType(type_ string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_content_type_get_symbolic_icon' : return type 'Icon' not supported
+var contentTypeGetSymbolicIconFunction *gi.Function
+var contentTypeGetSymbolicIconFunction_Once sync.Once
+
+func contentTypeGetSymbolicIconFunction_Set() error {
+	var err error
+	contentTypeGetSymbolicIconFunction_Once.Do(func() {
+		contentTypeGetSymbolicIconFunction, err = gi.FunctionInvokerNew("Gio", "content_type_get_symbolic_icon")
+	})
+	return err
+}
+
+// ContentTypeGetSymbolicIcon is a representation of the C type g_content_type_get_symbolic_icon.
+func ContentTypeGetSymbolicIcon(type_ string) *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(type_)
+
+	var ret gi.Argument
+
+	err := contentTypeGetSymbolicIconFunction_Set()
+	if err == nil {
+		ret = contentTypeGetSymbolicIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_content_type_guess' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_content_type_guess_for_tree' : parameter 'root' of type 'File' not supported
+var contentTypeGuessForTreeFunction *gi.Function
+var contentTypeGuessForTreeFunction_Once sync.Once
+
+func contentTypeGuessForTreeFunction_Set() error {
+	var err error
+	contentTypeGuessForTreeFunction_Once.Do(func() {
+		contentTypeGuessForTreeFunction, err = gi.FunctionInvokerNew("Gio", "content_type_guess_for_tree")
+	})
+	return err
+}
+
+// ContentTypeGuessForTree is a representation of the C type g_content_type_guess_for_tree.
+func ContentTypeGuessForTree(root *File) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(root.Native())
+
+	err := contentTypeGuessForTreeFunction_Set()
+	if err == nil {
+		contentTypeGuessForTreeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var contentTypeIsAFunction *gi.Function
 var contentTypeIsAFunction_Once sync.Once
@@ -863,7 +1070,35 @@ func DbusAddressGetForBusSync(busType BusType, cancellable *Cancellable) string 
 
 // UNSUPPORTED : C value 'g_dbus_address_get_stream' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_dbus_address_get_stream_finish' : parameter 'res' of type 'AsyncResult' not supported
+var dbusAddressGetStreamFinishFunction *gi.Function
+var dbusAddressGetStreamFinishFunction_Once sync.Once
+
+func dbusAddressGetStreamFinishFunction_Set() error {
+	var err error
+	dbusAddressGetStreamFinishFunction_Once.Do(func() {
+		dbusAddressGetStreamFinishFunction, err = gi.FunctionInvokerNew("Gio", "dbus_address_get_stream_finish")
+	})
+	return err
+}
+
+// DbusAddressGetStreamFinish is a representation of the C type g_dbus_address_get_stream_finish.
+func DbusAddressGetStreamFinish(res *AsyncResult) (*IOStream, string) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(res.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := dbusAddressGetStreamFinishFunction_Set()
+	if err == nil {
+		ret = dbusAddressGetStreamFinishFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := IOStreamNewFromNative(ret.Pointer())
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0
+}
 
 var dbusAddressGetStreamSyncFunction *gi.Function
 var dbusAddressGetStreamSyncFunction_Once sync.Once
@@ -1406,23 +1641,262 @@ func DbusIsUniqueName(string_ string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dtls_client_connection_new' : parameter 'base_socket' of type 'DatagramBased' not supported
+var dtlsClientConnectionNewFunction *gi.Function
+var dtlsClientConnectionNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_dtls_server_connection_new' : parameter 'base_socket' of type 'DatagramBased' not supported
+func dtlsClientConnectionNewFunction_Set() error {
+	var err error
+	dtlsClientConnectionNewFunction_Once.Do(func() {
+		dtlsClientConnectionNewFunction, err = gi.FunctionInvokerNew("Gio", "dtls_client_connection_new")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_file_new_for_commandline_arg' : return type 'File' not supported
+// DtlsClientConnectionNew is a representation of the C type g_dtls_client_connection_new.
+func DtlsClientConnectionNew(baseSocket *DatagramBased, serverIdentity *SocketConnectable) *DtlsClientConnection {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(baseSocket.Native())
+	inArgs[1].SetPointer(serverIdentity.Native())
 
-// UNSUPPORTED : C value 'g_file_new_for_commandline_arg_and_cwd' : return type 'File' not supported
+	var ret gi.Argument
 
-// UNSUPPORTED : C value 'g_file_new_for_path' : return type 'File' not supported
+	err := dtlsClientConnectionNewFunction_Set()
+	if err == nil {
+		ret = dtlsClientConnectionNewFunction.Invoke(inArgs[:], nil)
+	}
 
-// UNSUPPORTED : C value 'g_file_new_for_uri' : return type 'File' not supported
+	retGo := DtlsClientConnectionNewFromNative(ret.Pointer())
 
-// UNSUPPORTED : C value 'g_file_new_tmp' : return type 'File' not supported
+	return retGo
+}
 
-// UNSUPPORTED : C value 'g_file_parse_name' : return type 'File' not supported
+var dtlsServerConnectionNewFunction *gi.Function
+var dtlsServerConnectionNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_icon_deserialize' : return type 'Icon' not supported
+func dtlsServerConnectionNewFunction_Set() error {
+	var err error
+	dtlsServerConnectionNewFunction_Once.Do(func() {
+		dtlsServerConnectionNewFunction, err = gi.FunctionInvokerNew("Gio", "dtls_server_connection_new")
+	})
+	return err
+}
+
+// DtlsServerConnectionNew is a representation of the C type g_dtls_server_connection_new.
+func DtlsServerConnectionNew(baseSocket *DatagramBased, certificate *TlsCertificate) *DtlsServerConnection {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(baseSocket.Native())
+	inArgs[1].SetPointer(certificate.Native())
+
+	var ret gi.Argument
+
+	err := dtlsServerConnectionNewFunction_Set()
+	if err == nil {
+		ret = dtlsServerConnectionNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DtlsServerConnectionNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileNewForCommandlineArgFunction *gi.Function
+var fileNewForCommandlineArgFunction_Once sync.Once
+
+func fileNewForCommandlineArgFunction_Set() error {
+	var err error
+	fileNewForCommandlineArgFunction_Once.Do(func() {
+		fileNewForCommandlineArgFunction, err = gi.FunctionInvokerNew("Gio", "file_new_for_commandline_arg")
+	})
+	return err
+}
+
+// FileNewForCommandlineArg is a representation of the C type g_file_new_for_commandline_arg.
+func FileNewForCommandlineArg(arg string) *File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(arg)
+
+	var ret gi.Argument
+
+	err := fileNewForCommandlineArgFunction_Set()
+	if err == nil {
+		ret = fileNewForCommandlineArgFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileNewForCommandlineArgAndCwdFunction *gi.Function
+var fileNewForCommandlineArgAndCwdFunction_Once sync.Once
+
+func fileNewForCommandlineArgAndCwdFunction_Set() error {
+	var err error
+	fileNewForCommandlineArgAndCwdFunction_Once.Do(func() {
+		fileNewForCommandlineArgAndCwdFunction, err = gi.FunctionInvokerNew("Gio", "file_new_for_commandline_arg_and_cwd")
+	})
+	return err
+}
+
+// FileNewForCommandlineArgAndCwd is a representation of the C type g_file_new_for_commandline_arg_and_cwd.
+func FileNewForCommandlineArgAndCwd(arg string, cwd string) *File {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(arg)
+	inArgs[1].SetString(cwd)
+
+	var ret gi.Argument
+
+	err := fileNewForCommandlineArgAndCwdFunction_Set()
+	if err == nil {
+		ret = fileNewForCommandlineArgAndCwdFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileNewForPathFunction *gi.Function
+var fileNewForPathFunction_Once sync.Once
+
+func fileNewForPathFunction_Set() error {
+	var err error
+	fileNewForPathFunction_Once.Do(func() {
+		fileNewForPathFunction, err = gi.FunctionInvokerNew("Gio", "file_new_for_path")
+	})
+	return err
+}
+
+// FileNewForPath is a representation of the C type g_file_new_for_path.
+func FileNewForPath(path string) *File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(path)
+
+	var ret gi.Argument
+
+	err := fileNewForPathFunction_Set()
+	if err == nil {
+		ret = fileNewForPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileNewForUriFunction *gi.Function
+var fileNewForUriFunction_Once sync.Once
+
+func fileNewForUriFunction_Set() error {
+	var err error
+	fileNewForUriFunction_Once.Do(func() {
+		fileNewForUriFunction, err = gi.FunctionInvokerNew("Gio", "file_new_for_uri")
+	})
+	return err
+}
+
+// FileNewForUri is a representation of the C type g_file_new_for_uri.
+func FileNewForUri(uri string) *File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(uri)
+
+	var ret gi.Argument
+
+	err := fileNewForUriFunction_Set()
+	if err == nil {
+		ret = fileNewForUriFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var fileNewTmpFunction *gi.Function
+var fileNewTmpFunction_Once sync.Once
+
+func fileNewTmpFunction_Set() error {
+	var err error
+	fileNewTmpFunction_Once.Do(func() {
+		fileNewTmpFunction, err = gi.FunctionInvokerNew("Gio", "file_new_tmp")
+	})
+	return err
+}
+
+// FileNewTmp is a representation of the C type g_file_new_tmp.
+func FileNewTmp(tmpl string) (*File, *FileIOStream) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(tmpl)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := fileNewTmpFunction_Set()
+	if err == nil {
+		ret = fileNewTmpFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+	out0 := FileIOStreamNewFromNative(outArgs[0].Pointer())
+
+	return retGo, out0
+}
+
+var fileParseNameFunction *gi.Function
+var fileParseNameFunction_Once sync.Once
+
+func fileParseNameFunction_Set() error {
+	var err error
+	fileParseNameFunction_Once.Do(func() {
+		fileParseNameFunction, err = gi.FunctionInvokerNew("Gio", "file_parse_name")
+	})
+	return err
+}
+
+// FileParseName is a representation of the C type g_file_parse_name.
+func FileParseName(parseName string) *File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(parseName)
+
+	var ret gi.Argument
+
+	err := fileParseNameFunction_Set()
+	if err == nil {
+		ret = fileParseNameFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var iconDeserializeFunction *gi.Function
+var iconDeserializeFunction_Once sync.Once
+
+func iconDeserializeFunction_Set() error {
+	var err error
+	iconDeserializeFunction_Once.Do(func() {
+		iconDeserializeFunction, err = gi.FunctionInvokerNew("Gio", "icon_deserialize")
+	})
+	return err
+}
+
+// IconDeserialize is a representation of the C type g_icon_deserialize.
+func IconDeserialize(value *glib.Variant) *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(value.Native())
+
+	var ret gi.Argument
+
+	err := iconDeserializeFunction_Set()
+	if err == nil {
+		ret = iconDeserializeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var iconHashFunction *gi.Function
 var iconHashFunction_Once sync.Once
@@ -1452,7 +1926,33 @@ func IconHash(icon unsafe.Pointer) uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_icon_new_for_string' : return type 'Icon' not supported
+var iconNewForStringFunction *gi.Function
+var iconNewForStringFunction_Once sync.Once
+
+func iconNewForStringFunction_Set() error {
+	var err error
+	iconNewForStringFunction_Once.Do(func() {
+		iconNewForStringFunction, err = gi.FunctionInvokerNew("Gio", "icon_new_for_string")
+	})
+	return err
+}
+
+// IconNewForString is a representation of the C type g_icon_new_for_string.
+func IconNewForString(str string) *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(str)
+
+	var ret gi.Argument
+
+	err := iconNewForStringFunction_Set()
+	if err == nil {
+		ret = iconNewForStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_initable_newv' : parameter 'parameters' of type 'nil' not supported
 
@@ -1783,7 +2283,31 @@ func MemorySettingsBackendNew() *SettingsBackend {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_network_monitor_get_default' : return type 'NetworkMonitor' not supported
+var networkMonitorGetDefaultFunction *gi.Function
+var networkMonitorGetDefaultFunction_Once sync.Once
+
+func networkMonitorGetDefaultFunction_Set() error {
+	var err error
+	networkMonitorGetDefaultFunction_Once.Do(func() {
+		networkMonitorGetDefaultFunction, err = gi.FunctionInvokerNew("Gio", "network_monitor_get_default")
+	})
+	return err
+}
+
+// NetworkMonitorGetDefault is a representation of the C type g_network_monitor_get_default.
+func NetworkMonitorGetDefault() *NetworkMonitor {
+
+	var ret gi.Argument
+
+	err := networkMonitorGetDefaultFunction_Set()
+	if err == nil {
+		ret = networkMonitorGetDefaultFunction.Invoke(nil, nil)
+	}
+
+	retGo := NetworkMonitorNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var networkingInitFunction *gi.Function
 var networkingInitFunction_Once sync.Once
@@ -1897,9 +2421,59 @@ func PollableSourceNewFull(pollableStream *gobject.Object, childSource *glib.Sou
 
 // UNSUPPORTED : C value 'g_pollable_stream_write_all' : parameter 'buffer' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_proxy_get_default_for_protocol' : return type 'Proxy' not supported
+var proxyGetDefaultForProtocolFunction *gi.Function
+var proxyGetDefaultForProtocolFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_proxy_resolver_get_default' : return type 'ProxyResolver' not supported
+func proxyGetDefaultForProtocolFunction_Set() error {
+	var err error
+	proxyGetDefaultForProtocolFunction_Once.Do(func() {
+		proxyGetDefaultForProtocolFunction, err = gi.FunctionInvokerNew("Gio", "proxy_get_default_for_protocol")
+	})
+	return err
+}
+
+// ProxyGetDefaultForProtocol is a representation of the C type g_proxy_get_default_for_protocol.
+func ProxyGetDefaultForProtocol(protocol string) *Proxy {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(protocol)
+
+	var ret gi.Argument
+
+	err := proxyGetDefaultForProtocolFunction_Set()
+	if err == nil {
+		ret = proxyGetDefaultForProtocolFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ProxyNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var proxyResolverGetDefaultFunction *gi.Function
+var proxyResolverGetDefaultFunction_Once sync.Once
+
+func proxyResolverGetDefaultFunction_Set() error {
+	var err error
+	proxyResolverGetDefaultFunction_Once.Do(func() {
+		proxyResolverGetDefaultFunction, err = gi.FunctionInvokerNew("Gio", "proxy_resolver_get_default")
+	})
+	return err
+}
+
+// ProxyResolverGetDefault is a representation of the C type g_proxy_resolver_get_default.
+func ProxyResolverGetDefault() *ProxyResolver {
+
+	var ret gi.Argument
+
+	err := proxyResolverGetDefaultFunction_Set()
+	if err == nil {
+		ret = proxyResolverGetDefaultFunction.Invoke(nil, nil)
+	}
+
+	retGo := ProxyResolverNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var resolverErrorQuarkFunction *gi.Function
 var resolverErrorQuarkFunction_Once sync.Once
@@ -2204,9 +2778,60 @@ func SrvTargetListSort(targets *glib.List) *glib.List {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tls_backend_get_default' : return type 'TlsBackend' not supported
+var tlsBackendGetDefaultFunction *gi.Function
+var tlsBackendGetDefaultFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_tls_client_connection_new' : parameter 'server_identity' of type 'SocketConnectable' not supported
+func tlsBackendGetDefaultFunction_Set() error {
+	var err error
+	tlsBackendGetDefaultFunction_Once.Do(func() {
+		tlsBackendGetDefaultFunction, err = gi.FunctionInvokerNew("Gio", "tls_backend_get_default")
+	})
+	return err
+}
+
+// TlsBackendGetDefault is a representation of the C type g_tls_backend_get_default.
+func TlsBackendGetDefault() *TlsBackend {
+
+	var ret gi.Argument
+
+	err := tlsBackendGetDefaultFunction_Set()
+	if err == nil {
+		ret = tlsBackendGetDefaultFunction.Invoke(nil, nil)
+	}
+
+	retGo := TlsBackendNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var tlsClientConnectionNewFunction *gi.Function
+var tlsClientConnectionNewFunction_Once sync.Once
+
+func tlsClientConnectionNewFunction_Set() error {
+	var err error
+	tlsClientConnectionNewFunction_Once.Do(func() {
+		tlsClientConnectionNewFunction, err = gi.FunctionInvokerNew("Gio", "tls_client_connection_new")
+	})
+	return err
+}
+
+// TlsClientConnectionNew is a representation of the C type g_tls_client_connection_new.
+func TlsClientConnectionNew(baseIoStream *IOStream, serverIdentity *SocketConnectable) *TlsClientConnection {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(baseIoStream.Native())
+	inArgs[1].SetPointer(serverIdentity.Native())
+
+	var ret gi.Argument
+
+	err := tlsClientConnectionNewFunction_Set()
+	if err == nil {
+		ret = tlsClientConnectionNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsClientConnectionNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var tlsErrorQuarkFunction *gi.Function
 var tlsErrorQuarkFunction_Once sync.Once
@@ -2234,9 +2859,62 @@ func TlsErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tls_file_database_new' : return type 'TlsFileDatabase' not supported
+var tlsFileDatabaseNewFunction *gi.Function
+var tlsFileDatabaseNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_tls_server_connection_new' : return type 'TlsServerConnection' not supported
+func tlsFileDatabaseNewFunction_Set() error {
+	var err error
+	tlsFileDatabaseNewFunction_Once.Do(func() {
+		tlsFileDatabaseNewFunction, err = gi.FunctionInvokerNew("Gio", "tls_file_database_new")
+	})
+	return err
+}
+
+// TlsFileDatabaseNew is a representation of the C type g_tls_file_database_new.
+func TlsFileDatabaseNew(anchors string) *TlsFileDatabase {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(anchors)
+
+	var ret gi.Argument
+
+	err := tlsFileDatabaseNewFunction_Set()
+	if err == nil {
+		ret = tlsFileDatabaseNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsFileDatabaseNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var tlsServerConnectionNewFunction *gi.Function
+var tlsServerConnectionNewFunction_Once sync.Once
+
+func tlsServerConnectionNewFunction_Set() error {
+	var err error
+	tlsServerConnectionNewFunction_Once.Do(func() {
+		tlsServerConnectionNewFunction, err = gi.FunctionInvokerNew("Gio", "tls_server_connection_new")
+	})
+	return err
+}
+
+// TlsServerConnectionNew is a representation of the C type g_tls_server_connection_new.
+func TlsServerConnectionNew(baseIoStream *IOStream, certificate *TlsCertificate) *TlsServerConnection {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(baseIoStream.Native())
+	inArgs[1].SetPointer(certificate.Native())
+
+	var ret gi.Argument
+
+	err := tlsServerConnectionNewFunction_Set()
+	if err == nil {
+		ret = tlsServerConnectionNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TlsServerConnectionNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var unixIsMountPathSystemInternalFunction *gi.Function
 var unixIsMountPathSystemInternalFunction_Once sync.Once
@@ -2631,7 +3309,33 @@ func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_guess_icon' : return type 'Icon' not supported
+var unixMountGuessIconFunction *gi.Function
+var unixMountGuessIconFunction_Once sync.Once
+
+func unixMountGuessIconFunction_Set() error {
+	var err error
+	unixMountGuessIconFunction_Once.Do(func() {
+		unixMountGuessIconFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_guess_icon")
+	})
+	return err
+}
+
+// UnixMountGuessIcon is a representation of the C type g_unix_mount_guess_icon.
+func UnixMountGuessIcon(mountEntry *UnixMountEntry) *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.Native())
+
+	var ret gi.Argument
+
+	err := unixMountGuessIconFunction_Set()
+	if err == nil {
+		ret = unixMountGuessIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var unixMountGuessNameFunction *gi.Function
 var unixMountGuessNameFunction_Once sync.Once
@@ -2689,7 +3393,33 @@ func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_unix_mount_guess_symbolic_icon' : return type 'Icon' not supported
+var unixMountGuessSymbolicIconFunction *gi.Function
+var unixMountGuessSymbolicIconFunction_Once sync.Once
+
+func unixMountGuessSymbolicIconFunction_Set() error {
+	var err error
+	unixMountGuessSymbolicIconFunction_Once.Do(func() {
+		unixMountGuessSymbolicIconFunction, err = gi.FunctionInvokerNew("Gio", "unix_mount_guess_symbolic_icon")
+	})
+	return err
+}
+
+// UnixMountGuessSymbolicIcon is a representation of the C type g_unix_mount_guess_symbolic_icon.
+func UnixMountGuessSymbolicIcon(mountEntry *UnixMountEntry) *Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(mountEntry.Native())
+
+	var ret gi.Argument
+
+	err := unixMountGuessSymbolicIconFunction_Set()
+	if err == nil {
+		ret = unixMountGuessSymbolicIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var unixMountIsReadonlyFunction *gi.Function
 var unixMountIsReadonlyFunction_Once sync.Once

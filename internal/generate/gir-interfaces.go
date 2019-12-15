@@ -14,12 +14,12 @@ func (ii Interfaces) generate(f *file) {
 	}
 }
 
-func (ii Interfaces) byName(name string) *Interface {
+func (ii Interfaces) byName(name string) (*Interface, bool) {
 	for _, iface := range ii {
 		if iface.Name == name {
-			return iface
+			return iface, true
 		}
 	}
 
-	return nil
+	return nil, false
 }

@@ -10538,7 +10538,37 @@ func (recv *CssSection) GetEndPosition() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_css_section_get_file' : return type 'Gio.File' not supported
+var cssSectionGetFileFunction *gi.Function
+var cssSectionGetFileFunction_Once sync.Once
+
+func cssSectionGetFileFunction_Set() error {
+	var err error
+	cssSectionGetFileFunction_Once.Do(func() {
+		err = cssSectionStruct_Set()
+		if err != nil {
+			return
+		}
+		cssSectionGetFileFunction, err = cssSectionStruct.InvokerNew("get_file")
+	})
+	return err
+}
+
+// GetFile is a representation of the C type gtk_css_section_get_file.
+func (recv *CssSection) GetFile() *gio.File {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := cssSectionGetFileFunction_Set()
+	if err == nil {
+		ret = cssSectionGetFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.FileNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var cssSectionGetParentFunction *gi.Function
 var cssSectionGetParentFunction_Once sync.Once
@@ -30158,7 +30188,38 @@ func (recv *RecentInfo) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_recent_info_create_app_info' : return type 'Gio.AppInfo' not supported
+var recentInfoCreateAppInfoFunction *gi.Function
+var recentInfoCreateAppInfoFunction_Once sync.Once
+
+func recentInfoCreateAppInfoFunction_Set() error {
+	var err error
+	recentInfoCreateAppInfoFunction_Once.Do(func() {
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoCreateAppInfoFunction, err = recentInfoStruct.InvokerNew("create_app_info")
+	})
+	return err
+}
+
+// CreateAppInfo is a representation of the C type gtk_recent_info_create_app_info.
+func (recv *RecentInfo) CreateAppInfo(appName string) *gio.AppInfo {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(appName)
+
+	var ret gi.Argument
+
+	err := recentInfoCreateAppInfoFunction_Set()
+	if err == nil {
+		ret = recentInfoCreateAppInfoFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.AppInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var recentInfoExistsFunction *gi.Function
 var recentInfoExistsFunction_Once sync.Once
@@ -30389,7 +30450,37 @@ func (recv *RecentInfo) GetDisplayName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_recent_info_get_gicon' : return type 'Gio.Icon' not supported
+var recentInfoGetGiconFunction *gi.Function
+var recentInfoGetGiconFunction_Once sync.Once
+
+func recentInfoGetGiconFunction_Set() error {
+	var err error
+	recentInfoGetGiconFunction_Once.Do(func() {
+		err = recentInfoStruct_Set()
+		if err != nil {
+			return
+		}
+		recentInfoGetGiconFunction, err = recentInfoStruct.InvokerNew("get_gicon")
+	})
+	return err
+}
+
+// GetGicon is a representation of the C type gtk_recent_info_get_gicon.
+func (recv *RecentInfo) GetGicon() *gio.Icon {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := recentInfoGetGiconFunction_Set()
+	if err == nil {
+		ret = recentInfoGetGiconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := gio.IconNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var recentInfoGetGroupsFunction *gi.Function
 var recentInfoGetGroupsFunction_Once sync.Once
@@ -47008,9 +47099,72 @@ func (recv *TreeRowReference) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_tree_row_reference_new' : parameter 'model' of type 'TreeModel' not supported
+var treeRowReferenceNewFunction *gi.Function
+var treeRowReferenceNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_tree_row_reference_new_proxy' : parameter 'model' of type 'TreeModel' not supported
+func treeRowReferenceNewFunction_Set() error {
+	var err error
+	treeRowReferenceNewFunction_Once.Do(func() {
+		err = treeRowReferenceStruct_Set()
+		if err != nil {
+			return
+		}
+		treeRowReferenceNewFunction, err = treeRowReferenceStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// TreeRowReferenceNew is a representation of the C type gtk_tree_row_reference_new.
+func TreeRowReferenceNew(model *TreeModel, path *TreePath) *TreeRowReference {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(model.Native())
+	inArgs[1].SetPointer(path.Native())
+
+	var ret gi.Argument
+
+	err := treeRowReferenceNewFunction_Set()
+	if err == nil {
+		ret = treeRowReferenceNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeRowReferenceNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var treeRowReferenceNewProxyFunction *gi.Function
+var treeRowReferenceNewProxyFunction_Once sync.Once
+
+func treeRowReferenceNewProxyFunction_Set() error {
+	var err error
+	treeRowReferenceNewProxyFunction_Once.Do(func() {
+		err = treeRowReferenceStruct_Set()
+		if err != nil {
+			return
+		}
+		treeRowReferenceNewProxyFunction, err = treeRowReferenceStruct.InvokerNew("new_proxy")
+	})
+	return err
+}
+
+// TreeRowReferenceNewProxy is a representation of the C type gtk_tree_row_reference_new_proxy.
+func TreeRowReferenceNewProxy(proxy *gobject.Object, model *TreeModel, path *TreePath) *TreeRowReference {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(proxy.Native())
+	inArgs[1].SetPointer(model.Native())
+	inArgs[2].SetPointer(path.Native())
+
+	var ret gi.Argument
+
+	err := treeRowReferenceNewProxyFunction_Set()
+	if err == nil {
+		ret = treeRowReferenceNewProxyFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeRowReferenceNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var treeRowReferenceCopyFunction *gi.Function
 var treeRowReferenceCopyFunction_Once sync.Once
@@ -47072,7 +47226,37 @@ func (recv *TreeRowReference) Free() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tree_row_reference_get_model' : return type 'TreeModel' not supported
+var treeRowReferenceGetModelFunction *gi.Function
+var treeRowReferenceGetModelFunction_Once sync.Once
+
+func treeRowReferenceGetModelFunction_Set() error {
+	var err error
+	treeRowReferenceGetModelFunction_Once.Do(func() {
+		err = treeRowReferenceStruct_Set()
+		if err != nil {
+			return
+		}
+		treeRowReferenceGetModelFunction, err = treeRowReferenceStruct.InvokerNew("get_model")
+	})
+	return err
+}
+
+// GetModel is a representation of the C type gtk_tree_row_reference_get_model.
+func (recv *TreeRowReference) GetModel() *TreeModel {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var ret gi.Argument
+
+	err := treeRowReferenceGetModelFunction_Set()
+	if err == nil {
+		ret = treeRowReferenceGetModelFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := TreeModelNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var treeRowReferenceGetPathFunction *gi.Function
 var treeRowReferenceGetPathFunction_Once sync.Once

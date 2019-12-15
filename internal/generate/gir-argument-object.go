@@ -29,41 +29,26 @@ func (a Argument) generateValueFromObject(s *jen.Statement, objectVarName string
 	typ := a.Type
 	resolvedType := typ.resolvedType()
 
-	if resolvedType.isClass() {
-		var newFromNative *jen.Statement
-		if resolvedType.isQualifiedName() {
-			class, _ := resolvedType.foreignNamespace.Classes.byName(resolvedType.foreignName)
-			newFromNative = jen.Qual(resolvedType.foreignNamespace.goFullPackageName, class.newFromNativeName)
+	if resolvedType.isClass() || resolvedType.isRecord() || resolvedType.isInterface() {
+		newFromNative := resolvedType.jenNewFromNative()
+
+		if resolvedType.isClass() || resolvedType.isInterface() {
+
+			// GEN: WidgetNewFromNative(value0.GetObject().Native())
+			s.
+				Add(newFromNative).
+				Call(jen.
+					Id(objectVarName).Dot("GetObject").Call().
+					Dot("Native").Call())
+			return
 		} else {
-			class, _ := resolvedType.namespace.Classes.byName(resolvedType.Name)
-			newFromNative = jen.Id(class.newFromNativeName)
+			// GEN: WidgetNewFromNative(value0.GetBoxed().Native())
+			s.
+				Add(newFromNative).
+				Call(jen.
+					Id(objectVarName).Dot("GetBoxed").Call())
+			return
 		}
-
-		// GEN: WidgetNewFromNative(value0.GetObject().Native())
-		s.
-			Add(newFromNative).
-			Call(jen.
-				Id(objectVarName).Dot("GetObject").Call().
-				Dot("Native").Call())
-		return
-	}
-
-	if resolvedType.isRecord() {
-		var newFromNative *jen.Statement
-		if resolvedType.isQualifiedName() {
-			record, _ := resolvedType.foreignNamespace.Records.byName(resolvedType.foreignName)
-			newFromNative = jen.Qual(resolvedType.foreignNamespace.goFullPackageName, record.newFromNativeName)
-		} else {
-			record, _ := resolvedType.namespace.Records.byName(resolvedType.Name)
-			newFromNative = jen.Id(record.newFromNativeName)
-		}
-
-		// GEN: WidgetNewFromNative(value0.GetBoxed().Native())
-		s.
-			Add(newFromNative).
-			Call(jen.
-				Id(objectVarName).Dot("GetBoxed").Call())
-		return
 	}
 
 	if resolvedType.isBitfield() {
