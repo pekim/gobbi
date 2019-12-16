@@ -29623,11 +29623,11 @@ func socketReceiveFunction_Set() error {
 }
 
 // Receive is a representation of the C type g_socket_receive.
-func (recv *Socket) Receive(buffer string, size uint64, cancellable *Cancellable) int32 {
+func (recv *Socket) Receive(buffer string, cancellable *Cancellable) int32 {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(buffer)
-	inArgs[2].SetUint64(size)
+	inArgs[2].SetUint64(uint64(len(buffer)))
 	inArgs[3].SetPointer(cancellable.Native())
 
 	var ret gi.Argument
@@ -29658,11 +29658,11 @@ func socketReceiveFromFunction_Set() error {
 }
 
 // ReceiveFrom is a representation of the C type g_socket_receive_from.
-func (recv *Socket) ReceiveFrom(buffer string, size uint64, cancellable *Cancellable) (int32, *SocketAddress) {
+func (recv *Socket) ReceiveFrom(buffer string, cancellable *Cancellable) (int32, *SocketAddress) {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(buffer)
-	inArgs[2].SetUint64(size)
+	inArgs[2].SetUint64(uint64(len(buffer)))
 	inArgs[3].SetPointer(cancellable.Native())
 
 	var outArgs [1]gi.Argument
@@ -29699,11 +29699,11 @@ func socketReceiveWithBlockingFunction_Set() error {
 }
 
 // ReceiveWithBlocking is a representation of the C type g_socket_receive_with_blocking.
-func (recv *Socket) ReceiveWithBlocking(buffer string, size uint64, blocking bool, cancellable *Cancellable) int32 {
+func (recv *Socket) ReceiveWithBlocking(buffer string, blocking bool, cancellable *Cancellable) int32 {
 	var inArgs [5]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(buffer)
-	inArgs[2].SetUint64(size)
+	inArgs[2].SetUint64(uint64(len(buffer)))
 	inArgs[3].SetBoolean(blocking)
 	inArgs[4].SetPointer(cancellable.Native())
 
@@ -29735,11 +29735,11 @@ func socketSendFunction_Set() error {
 }
 
 // Send is a representation of the C type g_socket_send.
-func (recv *Socket) Send(buffer string, size uint64, cancellable *Cancellable) int32 {
+func (recv *Socket) Send(buffer string, cancellable *Cancellable) int32 {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(buffer)
-	inArgs[2].SetUint64(size)
+	inArgs[2].SetUint64(uint64(len(buffer)))
 	inArgs[3].SetPointer(cancellable.Native())
 
 	var ret gi.Argument
@@ -29776,12 +29776,12 @@ func socketSendToFunction_Set() error {
 }
 
 // SendTo is a representation of the C type g_socket_send_to.
-func (recv *Socket) SendTo(address *SocketAddress, buffer string, size uint64, cancellable *Cancellable) int32 {
+func (recv *Socket) SendTo(address *SocketAddress, buffer string, cancellable *Cancellable) int32 {
 	var inArgs [5]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetPointer(address.Native())
 	inArgs[2].SetString(buffer)
-	inArgs[3].SetUint64(size)
+	inArgs[3].SetUint64(uint64(len(buffer)))
 	inArgs[4].SetPointer(cancellable.Native())
 
 	var ret gi.Argument
@@ -29812,11 +29812,11 @@ func socketSendWithBlockingFunction_Set() error {
 }
 
 // SendWithBlocking is a representation of the C type g_socket_send_with_blocking.
-func (recv *Socket) SendWithBlocking(buffer string, size uint64, blocking bool, cancellable *Cancellable) int32 {
+func (recv *Socket) SendWithBlocking(buffer string, blocking bool, cancellable *Cancellable) int32 {
 	var inArgs [5]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(buffer)
-	inArgs[2].SetUint64(size)
+	inArgs[2].SetUint64(uint64(len(buffer)))
 	inArgs[3].SetBoolean(blocking)
 	inArgs[4].SetPointer(cancellable.Native())
 
@@ -39470,10 +39470,10 @@ func unixSocketAddressNewAbstractFunction_Set() error {
 }
 
 // UnixSocketAddressNewAbstract is a representation of the C type g_unix_socket_address_new_abstract.
-func UnixSocketAddressNewAbstract(path string, pathLen int32) *UnixSocketAddress {
+func UnixSocketAddressNewAbstract(path string) *UnixSocketAddress {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(path)
-	inArgs[1].SetInt32(pathLen)
+	inArgs[1].SetInt32(int32(len(path)))
 
 	var ret gi.Argument
 
@@ -39505,10 +39505,10 @@ func unixSocketAddressNewWithTypeFunction_Set() error {
 }
 
 // UnixSocketAddressNewWithType is a representation of the C type g_unix_socket_address_new_with_type.
-func UnixSocketAddressNewWithType(path string, pathLen int32, type_ UnixSocketAddressType) *UnixSocketAddress {
+func UnixSocketAddressNewWithType(path string, type_ UnixSocketAddressType) *UnixSocketAddress {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(path)
-	inArgs[1].SetInt32(pathLen)
+	inArgs[1].SetInt32(int32(len(path)))
 	inArgs[2].SetInt32(int32(type_))
 
 	var ret gi.Argument

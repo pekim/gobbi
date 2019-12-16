@@ -38,7 +38,7 @@ func main() {
 
 	// style the widget
 	cssProvider := gtk.CssProviderNew()
-	cssProvider.LoadFromData(css, int32(len(css)))
+	cssProvider.LoadFromData(css)
 	da.Widget().GetStyleContext().AddProvider(cssProvider.StyleProvider(), uint32(gtk.STYLE_PROVIDER_PRIORITY_APPLICATION))
 	da.Widget().GetStyleContext().AddClass(class)
 

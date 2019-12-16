@@ -67,6 +67,10 @@ func (p *Parameter) generateInDeclaration(g *jen.Group) {
 		return
 	}
 
+	if p.lengthForParam != nil && p.lengthForParam.isIn() {
+		return
+	}
+
 	goType, err := p.Type.jenGoType()
 	if err != nil {
 		panic(err)
@@ -77,6 +81,11 @@ func (p *Parameter) generateInDeclaration(g *jen.Group) {
 
 func (p Parameter) generateInArg(g *jen.Group, index int) {
 	goVar := jen.Id(p.goVarName)
+
+	if p.lengthForParam != nil && p.lengthForParam.isIn() {
+		goType, _ := p.Type.jenGoType()
+		goVar = jen.Add(goType).Params(jen.Len(jen.Id(p.lengthForParam.goVarName)))
+	}
 
 	if p.Array != nil && strings.HasSuffix(p.Array.CType, "gchar*") {
 		// inArgs[<index>].Set...(<goVar>)

@@ -24054,11 +24054,11 @@ func cssProviderLoadFromDataFunction_Set() error {
 }
 
 // LoadFromData is a representation of the C type gtk_css_provider_load_from_data.
-func (recv *CssProvider) LoadFromData(data string, length int32) bool {
+func (recv *CssProvider) LoadFromData(data string) bool {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(data)
-	inArgs[2].SetInt32(length)
+	inArgs[2].SetInt32(int32(len(data)))
 
 	var ret gi.Argument
 

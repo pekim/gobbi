@@ -1426,10 +1426,10 @@ func base64DecodeInplaceFunction_Set() error {
 }
 
 // Base64DecodeInplace is a representation of the C type g_base64_decode_inplace.
-func Base64DecodeInplace(text string, outLen uint64) (uint8, string, uint64) {
+func Base64DecodeInplace(text string) (uint8, string, uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(text)
-	inArgs[1].SetUint64(outLen)
+	inArgs[1].SetUint64(uint64(len(text)))
 
 	var outArgs [2]gi.Argument
 	var ret gi.Argument
@@ -2053,10 +2053,10 @@ func convertFunction_Set() error {
 }
 
 // Convert is a representation of the C type g_convert.
-func Convert(str string, len int32, toCodeset string, fromCodeset string) (uint64, uint64) {
+func Convert(str string, toCodeset string, fromCodeset string) (uint64, uint64) {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetString(str)
-	inArgs[1].SetInt32(len)
+	inArgs[1].SetInt32(int32(len(str)))
 	inArgs[2].SetString(toCodeset)
 	inArgs[3].SetString(fromCodeset)
 
@@ -2111,10 +2111,10 @@ func convertWithFallbackFunction_Set() error {
 }
 
 // ConvertWithFallback is a representation of the C type g_convert_with_fallback.
-func ConvertWithFallback(str string, len int32, toCodeset string, fromCodeset string, fallback string) (uint64, uint64) {
+func ConvertWithFallback(str string, toCodeset string, fromCodeset string, fallback string) (uint64, uint64) {
 	var inArgs [5]gi.Argument
 	inArgs[0].SetString(str)
-	inArgs[1].SetInt32(len)
+	inArgs[1].SetInt32(int32(len(str)))
 	inArgs[2].SetString(toCodeset)
 	inArgs[3].SetString(fromCodeset)
 	inArgs[4].SetString(fallback)
@@ -2144,10 +2144,10 @@ func convertWithIconvFunction_Set() error {
 }
 
 // ConvertWithIconv is a representation of the C type g_convert_with_iconv.
-func ConvertWithIconv(str string, len int32, converter *IConv) (uint64, uint64) {
+func ConvertWithIconv(str string, converter *IConv) (uint64, uint64) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(str)
-	inArgs[1].SetInt32(len)
+	inArgs[1].SetInt32(int32(len(str)))
 	inArgs[2].SetPointer(converter.Native())
 
 	var outArgs [2]gi.Argument
@@ -3294,11 +3294,11 @@ func fileSetContentsFunction_Set() error {
 }
 
 // FileSetContents is a representation of the C type g_file_set_contents.
-func FileSetContents(filename string, contents string, length int32) bool {
+func FileSetContents(filename string, contents string) bool {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(filename)
 	inArgs[1].SetString(contents)
-	inArgs[2].SetInt32(length)
+	inArgs[2].SetInt32(int32(len(contents)))
 
 	var ret gi.Argument
 
@@ -5138,10 +5138,10 @@ func localeToUtf8Function_Set() error {
 }
 
 // LocaleToUtf8 is a representation of the C type g_locale_to_utf8.
-func LocaleToUtf8(opsysstring string, len int32) (string, uint64, uint64) {
+func LocaleToUtf8(opsysstring string) (string, uint64, uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(opsysstring)
-	inArgs[1].SetInt32(len)
+	inArgs[1].SetInt32(int32(len(opsysstring)))
 
 	var outArgs [2]gi.Argument
 	var ret gi.Argument
@@ -7299,10 +7299,10 @@ func regexEscapeStringFunction_Set() error {
 }
 
 // RegexEscapeString is a representation of the C type g_regex_escape_string.
-func RegexEscapeString(string_ string, length int32) string {
+func RegexEscapeString(string_ string) string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(string_)
-	inArgs[1].SetInt32(length)
+	inArgs[1].SetInt32(int32(len(string_)))
 
 	var ret gi.Argument
 
@@ -12153,10 +12153,10 @@ func utf8ValidateFunction_Set() error {
 }
 
 // Utf8Validate is a representation of the C type g_utf8_validate.
-func Utf8Validate(str string, maxLen int32) (bool, string) {
+func Utf8Validate(str string) (bool, string) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
-	inArgs[1].SetInt32(maxLen)
+	inArgs[1].SetInt32(int32(len(str)))
 
 	var outArgs [1]gi.Argument
 	var ret gi.Argument
@@ -12184,10 +12184,10 @@ func utf8ValidateLenFunction_Set() error {
 }
 
 // Utf8ValidateLen is a representation of the C type g_utf8_validate_len.
-func Utf8ValidateLen(str string, maxLen uint64) (bool, string) {
+func Utf8ValidateLen(str string) (bool, string) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(str)
-	inArgs[1].SetUint64(maxLen)
+	inArgs[1].SetUint64(uint64(len(str)))
 
 	var outArgs [1]gi.Argument
 	var ret gi.Argument

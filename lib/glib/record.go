@@ -1499,11 +1499,11 @@ func bookmarkFileLoadFromDataFunction_Set() error {
 }
 
 // LoadFromData is a representation of the C type g_bookmark_file_load_from_data.
-func (recv *BookmarkFile) LoadFromData(data string, length uint64) bool {
+func (recv *BookmarkFile) LoadFromData(data string) bool {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(data)
-	inArgs[2].SetUint64(length)
+	inArgs[2].SetUint64(uint64(len(data)))
 
 	var ret gi.Argument
 
@@ -16128,11 +16128,11 @@ func regexMatchAllFullFunction_Set() error {
 }
 
 // MatchAllFull is a representation of the C type g_regex_match_all_full.
-func (recv *Regex) MatchAllFull(string_ string, stringLen int32, startPosition int32, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
+func (recv *Regex) MatchAllFull(string_ string, startPosition int32, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
 	var inArgs [5]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(string_)
-	inArgs[2].SetInt32(stringLen)
+	inArgs[2].SetInt32(int32(len(string_)))
 	inArgs[3].SetInt32(startPosition)
 	inArgs[4].SetInt32(int32(matchOptions))
 
@@ -16166,11 +16166,11 @@ func regexMatchFullFunction_Set() error {
 }
 
 // MatchFull is a representation of the C type g_regex_match_full.
-func (recv *Regex) MatchFull(string_ string, stringLen int32, startPosition int32, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
+func (recv *Regex) MatchFull(string_ string, startPosition int32, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
 	var inArgs [5]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(string_)
-	inArgs[2].SetInt32(stringLen)
+	inArgs[2].SetInt32(int32(len(string_)))
 	inArgs[3].SetInt32(startPosition)
 	inArgs[4].SetInt32(int32(matchOptions))
 
@@ -16236,11 +16236,11 @@ func regexReplaceFunction_Set() error {
 }
 
 // Replace is a representation of the C type g_regex_replace.
-func (recv *Regex) Replace(string_ string, stringLen int32, startPosition int32, replacement string, matchOptions RegexMatchFlags) string {
+func (recv *Regex) Replace(string_ string, startPosition int32, replacement string, matchOptions RegexMatchFlags) string {
 	var inArgs [6]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(string_)
-	inArgs[2].SetInt32(stringLen)
+	inArgs[2].SetInt32(int32(len(string_)))
 	inArgs[3].SetInt32(startPosition)
 	inArgs[4].SetString(replacement)
 	inArgs[5].SetInt32(int32(matchOptions))
@@ -16275,11 +16275,11 @@ func regexReplaceLiteralFunction_Set() error {
 }
 
 // ReplaceLiteral is a representation of the C type g_regex_replace_literal.
-func (recv *Regex) ReplaceLiteral(string_ string, stringLen int32, startPosition int32, replacement string, matchOptions RegexMatchFlags) string {
+func (recv *Regex) ReplaceLiteral(string_ string, startPosition int32, replacement string, matchOptions RegexMatchFlags) string {
 	var inArgs [6]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(string_)
-	inArgs[2].SetInt32(stringLen)
+	inArgs[2].SetInt32(int32(len(string_)))
 	inArgs[3].SetInt32(startPosition)
 	inArgs[4].SetString(replacement)
 	inArgs[5].SetInt32(int32(matchOptions))
@@ -16342,11 +16342,11 @@ func regexSplitFullFunction_Set() error {
 }
 
 // SplitFull is a representation of the C type g_regex_split_full.
-func (recv *Regex) SplitFull(string_ string, stringLen int32, startPosition int32, matchOptions RegexMatchFlags, maxTokens int32) {
+func (recv *Regex) SplitFull(string_ string, startPosition int32, matchOptions RegexMatchFlags, maxTokens int32) {
 	var inArgs [6]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(string_)
-	inArgs[2].SetInt32(stringLen)
+	inArgs[2].SetInt32(int32(len(string_)))
 	inArgs[3].SetInt32(startPosition)
 	inArgs[4].SetInt32(int32(matchOptions))
 	inArgs[5].SetInt32(maxTokens)
