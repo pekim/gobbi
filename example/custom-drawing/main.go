@@ -4,9 +4,6 @@ import (
 	"github.com/pekim/gobbi/lib/cairo"
 	"github.com/pekim/gobbi/lib/gdk"
 	"github.com/pekim/gobbi/lib/gtk"
-	"github.com/pekim/gobbi/lib/pango"
-	"github.com/pekim/gobbi/lib/pangocairo"
-	"math"
 	"runtime"
 )
 
@@ -93,39 +90,39 @@ func draw(cr *cairo.Context, widget *gtk.Widget) bool {
 	gtk.RenderBackground(widget.GetStyleContext(), cr,
 		0, 0, width, height)
 
-	// an arc that describes a circle to the path
-	cr.Arc(width/2.0, height/2.0, math.Min(width, height)/2.0, 0, 2*math.Pi)
-
-	styleContext := widget.GetStyleContext()
-	colour := styleContext.GetColor(styleContext.GetState())
-	backGroundColour := styleContext.GetBackgroundColor(styleContext.GetState())
-
-	// use the widget's context's colour for the source pattern
-	gdk.CairoSetSourceRgba(cr, colour)
-
-	// fill the path (that describes a circle)
-	cr.Fill()
-
-	// Setup the font to use for text.
-	fd := pango.FontDescriptionNew()
-	//fd.SetFamily("Monospace")
-	//fd.SetWeight(pango.PANGO_WEIGHT_BOLD)
-	fd.SetSize(24 * pango.SCALE)
-
-	// Layout the text.
-	layout := widget.CreatePangoLayout("Hello\nworld")
-	layout.SetFontDescription(fd)
-
-	// Get the extents of the text.
-	textWidth, textHeight := layout.GetPixelSize()
-	// And position the text in the middle of the widget.
-	x := (width - float64(textWidth)) / 2
-	y := (height - float64(textHeight)) / 2
-
-	// Draw the text.
-	cr.SetSourceRGBA(backGroundColour.FieldRed(), backGroundColour.FieldGreen(), backGroundColour.FieldBlue(), backGroundColour.FieldAlpha())
-	cr.MoveTo(x, y)
-	pangocairo.ShowLayout(cr, layout)
+	//// an arc that describes a circle to the path
+	//cr.Arc(width/2.0, height/2.0, math.Min(width, height)/2.0, 0, 2*math.Pi)
+	//
+	//styleContext := widget.GetStyleContext()
+	//colour := styleContext.GetColor(styleContext.GetState())
+	//backGroundColour := styleContext.GetBackgroundColor(styleContext.GetState())
+	//
+	//// use the widget's context's colour for the source pattern
+	//gdk.CairoSetSourceRgba(cr, colour)
+	//
+	//// fill the path (that describes a circle)
+	//cr.Fill()
+	//
+	//// Setup the font to use for text.
+	//fd := pango.FontDescriptionNew()
+	////fd.SetFamily("Monospace")
+	////fd.SetWeight(pango.PANGO_WEIGHT_BOLD)
+	//fd.SetSize(24 * pango.SCALE)
+	//
+	//// Layout the text.
+	//layout := widget.CreatePangoLayout("Hello\nworld")
+	//layout.SetFontDescription(fd)
+	//
+	//// Get the extents of the text.
+	//textWidth, textHeight := layout.GetPixelSize()
+	//// And position the text in the middle of the widget.
+	//x := (width - float64(textWidth)) / 2
+	//y := (height - float64(textHeight)) / 2
+	//
+	//// Draw the text.
+	//cr.SetSourceRGBA(backGroundColour.FieldRed(), backGroundColour.FieldGreen(), backGroundColour.FieldBlue(), backGroundColour.FieldAlpha())
+	//cr.MoveTo(x, y)
+	//pangocairo.ShowLayout(cr, layout)
 
 	return false
 }
