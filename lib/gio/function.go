@@ -1246,61 +1246,9 @@ func DbusErrorNewForDbusError(dbusErrorName string, dbusErrorMessage string) *gl
 	return retGo
 }
 
-var dbusErrorQuarkFunction *gi.Function
-var dbusErrorQuarkFunction_Once sync.Once
+// UNSUPPORTED : C value 'g_dbus_error_quark' : return type 'GLib.Quark' not supported
 
-func dbusErrorQuarkFunction_Set() error {
-	var err error
-	dbusErrorQuarkFunction_Once.Do(func() {
-		dbusErrorQuarkFunction, err = gi.FunctionInvokerNew("Gio", "dbus_error_quark")
-	})
-	return err
-}
-
-// DbusErrorQuark is a representation of the C type g_dbus_error_quark.
-func DbusErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := dbusErrorQuarkFunction_Set()
-	if err == nil {
-		ret = dbusErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
-
-var dbusErrorRegisterErrorFunction *gi.Function
-var dbusErrorRegisterErrorFunction_Once sync.Once
-
-func dbusErrorRegisterErrorFunction_Set() error {
-	var err error
-	dbusErrorRegisterErrorFunction_Once.Do(func() {
-		dbusErrorRegisterErrorFunction, err = gi.FunctionInvokerNew("Gio", "dbus_error_register_error")
-	})
-	return err
-}
-
-// DbusErrorRegisterError is a representation of the C type g_dbus_error_register_error.
-func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorName string) bool {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetUint32(uint32(errorDomain))
-	inArgs[1].SetInt32(errorCode)
-	inArgs[2].SetString(dbusErrorName)
-
-	var ret gi.Argument
-
-	err := dbusErrorRegisterErrorFunction_Set()
-	if err == nil {
-		ret = dbusErrorRegisterErrorFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Boolean()
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_dbus_error_register_error' : parameter 'error_domain' of type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : parameter 'entries' of type 'nil' not supported
 
@@ -1332,35 +1280,7 @@ func DbusErrorStripRemoteError(error *glib.Error) bool {
 	return retGo
 }
 
-var dbusErrorUnregisterErrorFunction *gi.Function
-var dbusErrorUnregisterErrorFunction_Once sync.Once
-
-func dbusErrorUnregisterErrorFunction_Set() error {
-	var err error
-	dbusErrorUnregisterErrorFunction_Once.Do(func() {
-		dbusErrorUnregisterErrorFunction, err = gi.FunctionInvokerNew("Gio", "dbus_error_unregister_error")
-	})
-	return err
-}
-
-// DbusErrorUnregisterError is a representation of the C type g_dbus_error_unregister_error.
-func DbusErrorUnregisterError(errorDomain glib.Quark, errorCode int32, dbusErrorName string) bool {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetUint32(uint32(errorDomain))
-	inArgs[1].SetInt32(errorCode)
-	inArgs[2].SetString(dbusErrorName)
-
-	var ret gi.Argument
-
-	err := dbusErrorUnregisterErrorFunction_Set()
-	if err == nil {
-		ret = dbusErrorUnregisterErrorFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Boolean()
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_dbus_error_unregister_error' : parameter 'error_domain' of type 'GLib.Quark' not supported
 
 var dbusGenerateGuidFunction *gi.Function
 var dbusGenerateGuidFunction_Once sync.Once
@@ -1984,31 +1904,7 @@ func IoErrorFromErrno(errNo int32) IOErrorEnum {
 	return retGo
 }
 
-var ioErrorQuarkFunction *gi.Function
-var ioErrorQuarkFunction_Once sync.Once
-
-func ioErrorQuarkFunction_Set() error {
-	var err error
-	ioErrorQuarkFunction_Once.Do(func() {
-		ioErrorQuarkFunction, err = gi.FunctionInvokerNew("Gio", "io_error_quark")
-	})
-	return err
-}
-
-// IoErrorQuark is a representation of the C type g_io_error_quark.
-func IoErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := ioErrorQuarkFunction_Set()
-	if err == nil {
-		ret = ioErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_io_error_quark' : return type 'GLib.Quark' not supported
 
 var ioExtensionPointImplementFunction *gi.Function
 var ioExtensionPointImplementFunction_Once sync.Once
@@ -2475,57 +2371,9 @@ func ProxyResolverGetDefault() *ProxyResolver {
 	return retGo
 }
 
-var resolverErrorQuarkFunction *gi.Function
-var resolverErrorQuarkFunction_Once sync.Once
+// UNSUPPORTED : C value 'g_resolver_error_quark' : return type 'GLib.Quark' not supported
 
-func resolverErrorQuarkFunction_Set() error {
-	var err error
-	resolverErrorQuarkFunction_Once.Do(func() {
-		resolverErrorQuarkFunction, err = gi.FunctionInvokerNew("Gio", "resolver_error_quark")
-	})
-	return err
-}
-
-// ResolverErrorQuark is a representation of the C type g_resolver_error_quark.
-func ResolverErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := resolverErrorQuarkFunction_Set()
-	if err == nil {
-		ret = resolverErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
-
-var resourceErrorQuarkFunction *gi.Function
-var resourceErrorQuarkFunction_Once sync.Once
-
-func resourceErrorQuarkFunction_Set() error {
-	var err error
-	resourceErrorQuarkFunction_Once.Do(func() {
-		resourceErrorQuarkFunction, err = gi.FunctionInvokerNew("Gio", "resource_error_quark")
-	})
-	return err
-}
-
-// ResourceErrorQuark is a representation of the C type g_resource_error_quark.
-func ResourceErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := resourceErrorQuarkFunction_Set()
-	if err == nil {
-		ret = resourceErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_resource_error_quark' : return type 'GLib.Quark' not supported
 
 var resourceLoadFunction *gi.Function
 var resourceLoadFunction_Once sync.Once
@@ -2833,31 +2681,7 @@ func TlsClientConnectionNew(baseIoStream *IOStream, serverIdentity *SocketConnec
 	return retGo
 }
 
-var tlsErrorQuarkFunction *gi.Function
-var tlsErrorQuarkFunction_Once sync.Once
-
-func tlsErrorQuarkFunction_Set() error {
-	var err error
-	tlsErrorQuarkFunction_Once.Do(func() {
-		tlsErrorQuarkFunction, err = gi.FunctionInvokerNew("Gio", "tls_error_quark")
-	})
-	return err
-}
-
-// TlsErrorQuark is a representation of the C type g_tls_error_quark.
-func TlsErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := tlsErrorQuarkFunction_Set()
-	if err == nil {
-		ret = tlsErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_tls_error_quark' : return type 'GLib.Quark' not supported
 
 var tlsFileDatabaseNewFunction *gi.Function
 var tlsFileDatabaseNewFunction_Once sync.Once

@@ -18375,7 +18375,7 @@ func WebsiteDataManagerNewEphemeral() *WebsiteDataManager {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_website_data_manager_clear' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
+// UNSUPPORTED : C value 'webkit_website_data_manager_clear' : parameter 'timespan' of type 'GLib.TimeSpan' not supported
 
 var websiteDataManagerClearFinishFunction *gi.Function
 var websiteDataManagerClearFinishFunction_Once sync.Once

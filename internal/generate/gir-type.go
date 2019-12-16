@@ -85,11 +85,11 @@ func (t *Type) jenGoTypeForTypeName() (*jen.Statement, bool) {
 		return nil, false
 	}
 
-	if t.isQualifiedName() {
-		if _, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
-			return jen.Qual(t.foreignNamespace.goFullPackageName, t.foreignName), true
-		}
-	}
+	//if t.isQualifiedName() {
+	//	if _, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
+	//		return jen.Qual(t.foreignNamespace.goFullPackageName, t.foreignName), true
+	//	}
+	//}
 
 	if jenType, found := jenGoTypes[t.Name]; found {
 		return jenType, true
@@ -245,13 +245,13 @@ func (t *Type) argumentValueGetFunctionName() string {
 		return argumentGetFunctionNames["int"]
 	}
 
-	if t.isQualifiedName() {
-		if alias, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
-			if getFunctionName, ok := argumentGetFunctionNames[alias.Type.Name]; ok {
-				return getFunctionName
-			}
-		}
-	}
+	//if t.isQualifiedName() {
+	//	if alias, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
+	//		if getFunctionName, ok := argumentGetFunctionNames[alias.Type.Name]; ok {
+	//			return getFunctionName
+	//		}
+	//	}
+	//}
 
 	if t.isRecord() || t.isInterface() {
 		return "Pointer"
@@ -260,7 +260,7 @@ func (t *Type) argumentValueGetFunctionName() string {
 	panic(fmt.Sprintf("Cannot determine argumentGetFunctionName for %s", t.Name))
 }
 
-func (t *Type) resolvedType() *Type {
+func (t *Type) resolvedTypeX() *Type {
 	if t == nil {
 		return t
 	}
@@ -273,13 +273,11 @@ func (t *Type) resolvedType() *Type {
 }
 
 func (t *Type) argumentValueSetFunctionName() string {
-	resolvedType := t.resolvedType()
-
-	if setFunctionName, ok := argumentSetFunctionNames[resolvedType.Name]; ok {
+	if setFunctionName, ok := argumentSetFunctionNames[t.Name]; ok {
 		return setFunctionName
 	}
 
-	if resolvedType.Name == "gpointer" {
+	if t.Name == "gpointer" {
 		return "SetPointer"
 	}
 
@@ -291,22 +289,22 @@ func (t *Type) argumentValueSetFunctionName() string {
 		return argumentSetFunctionNames["int"]
 	}
 
-	if alias, ok := t.namespace.Aliases.byName(resolvedType.Name); ok {
-		fmt.Println(alias)
-		if setFunctionName, ok := argumentSetFunctionNames[alias.Type.Name]; ok {
-			return setFunctionName
-		}
-	}
+	//if alias, ok := t.namespace.Aliases.byName(t.Name); ok {
+	//	fmt.Println(alias)
+	//	if setFunctionName, ok := argumentSetFunctionNames[alias.Type.Name]; ok {
+	//		return setFunctionName
+	//	}
+	//}
 
-	if resolvedType.isQualifiedName() {
-		if alias, ok := resolvedType.foreignNamespace.Aliases.byName(resolvedType.foreignName); ok {
-			if setFunctionName, ok := argumentSetFunctionNames[alias.Type.Name]; ok {
-				return setFunctionName
-			}
-		}
-	}
+	//if t.isQualifiedName() {
+	//	if alias, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
+	//		if setFunctionName, ok := argumentSetFunctionNames[alias.Type.Name]; ok {
+	//			return setFunctionName
+	//		}
+	//	}
+	//}
 
-	if resolvedType.isRecord() || resolvedType.isInterface() {
+	if t.isRecord() || t.isInterface() {
 		return "SetPointer"
 	}
 
@@ -350,17 +348,17 @@ func (t *Type) createFromOutArgument(g *jen.Group, argName *jen.Statement, argVa
 		return
 	}
 
-	if t.isQualifiedName() {
-		if _, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
-			g.
-				Add(argName).
-				Op(":=").
-				Qual(t.foreignNamespace.goFullPackageName, t.foreignName).
-				Parens(argValue)
-
-			return
-		}
-	}
+	//if t.isQualifiedName() {
+	//	if _, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
+	//		g.
+	//			Add(argName).
+	//			Op(":=").
+	//			Qual(t.foreignNamespace.goFullPackageName, t.foreignName).
+	//			Parens(argValue)
+	//
+	//		return
+	//	}
+	//}
 
 	g.
 		Add(argName).
@@ -374,13 +372,13 @@ func (t *Type) createFromInArgument(arg *jen.Statement) *jen.Statement {
 	//	return record.createFromArgument
 	//}
 
-	if t.isQualifiedName() {
-		if alias, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
-			return jen.
-				Add(jenGoTypes[alias.Type.Name]).
-				Parens(arg)
-		}
-	}
+	//if t.isQualifiedName() {
+	//	if alias, ok := t.foreignNamespace.Aliases.byName(t.foreignName); ok {
+	//		return jen.
+	//			Add(jenGoTypes[alias.Type.Name]).
+	//			Parens(arg)
+	//	}
+	//}
 
 	return arg
 }
@@ -390,22 +388,14 @@ func (t *Type) createFromInArgument(arg *jen.Statement) *jen.Statement {
 func (t *Type) generateOutArgValue(g *jen.Group,
 	argName *jen.Statement, argVar *jen.Statement, transferOwnership *bool,
 ) {
-	resolvedType := t.resolvedType()
-
 	var to *jen.Statement
 	if transferOwnership != nil {
 		to = jen.Lit(*transferOwnership)
 	}
 
 	argValue := argVar.
-		Dot(resolvedType.argumentValueGetFunctionName()).
+		Dot(t.argumentValueGetFunctionName()).
 		Call(to)
-
-	if t.isAlias() {
-		argValue = jen.
-			Id(t.Name).
-			Parens(argValue)
-	}
 
 	if t.isBitfield() {
 		bitfield, _ := t.namespace.Bitfields.byName(t.Name)
@@ -462,7 +452,7 @@ func (t *Type) isString() bool {
 	return t.Name == "utf8" || t.Name == "filename"
 }
 
-func (t *Type) isAlias() bool {
+func (t *Type) isAliasX() bool {
 	_, found := t.namespace.Aliases.byName(t.Name)
 	return found
 }

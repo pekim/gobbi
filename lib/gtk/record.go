@@ -334,19 +334,9 @@ func (recv *AccelGroupEntry) SetFieldClosure(value *gobject.Closure) {
 	gi.StructFieldSet(accelGroupEntryStruct, recv.Native(), "closure", argValue)
 }
 
-// FieldAccelPathQuark returns the C field 'accel_path_quark'.
-func (recv *AccelGroupEntry) FieldAccelPathQuark() glib.Quark {
-	argValue := gi.StructFieldGet(accelGroupEntryStruct, recv.Native(), "accel_path_quark")
-	value := glib.Quark(argValue.Uint32())
-	return value
-}
+// UNSUPPORTED : C value 'accel_path_quark' : for field getter : no Go type for 'GLib.Quark'
 
-// SetFieldAccelPathQuark sets the value of the C field 'accel_path_quark'.
-func (recv *AccelGroupEntry) SetFieldAccelPathQuark(value glib.Quark) {
-	var argValue gi.Argument
-	argValue.SetUint32(uint32(value))
-	gi.StructFieldSet(accelGroupEntryStruct, recv.Native(), "accel_path_quark", argValue)
-}
+// UNSUPPORTED : C value 'accel_path_quark' : for field setter : no Go type for 'GLib.Quark'
 
 // AccelGroupEntryStruct creates an uninitialised AccelGroupEntry.
 func AccelGroupEntryStruct() *AccelGroupEntry {
@@ -28977,33 +28967,13 @@ func (recv *RcProperty) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// FieldTypeName returns the C field 'type_name'.
-func (recv *RcProperty) FieldTypeName() glib.Quark {
-	argValue := gi.StructFieldGet(rcPropertyStruct, recv.Native(), "type_name")
-	value := glib.Quark(argValue.Uint32())
-	return value
-}
+// UNSUPPORTED : C value 'type_name' : for field getter : no Go type for 'GLib.Quark'
 
-// SetFieldTypeName sets the value of the C field 'type_name'.
-func (recv *RcProperty) SetFieldTypeName(value glib.Quark) {
-	var argValue gi.Argument
-	argValue.SetUint32(uint32(value))
-	gi.StructFieldSet(rcPropertyStruct, recv.Native(), "type_name", argValue)
-}
+// UNSUPPORTED : C value 'type_name' : for field setter : no Go type for 'GLib.Quark'
 
-// FieldPropertyName returns the C field 'property_name'.
-func (recv *RcProperty) FieldPropertyName() glib.Quark {
-	argValue := gi.StructFieldGet(rcPropertyStruct, recv.Native(), "property_name")
-	value := glib.Quark(argValue.Uint32())
-	return value
-}
+// UNSUPPORTED : C value 'property_name' : for field getter : no Go type for 'GLib.Quark'
 
-// SetFieldPropertyName sets the value of the C field 'property_name'.
-func (recv *RcProperty) SetFieldPropertyName(value glib.Quark) {
-	var argValue gi.Argument
-	argValue.SetUint32(uint32(value))
-	gi.StructFieldSet(rcPropertyStruct, recv.Native(), "property_name", argValue)
-}
+// UNSUPPORTED : C value 'property_name' : for field setter : no Go type for 'GLib.Quark'
 
 // FieldOrigin returns the C field 'origin'.
 func (recv *RcProperty) FieldOrigin() string {
@@ -50684,109 +50654,11 @@ func (recv *WidgetPath) IterHasName(pos int32, name string) bool {
 	return retGo
 }
 
-var widgetPathIterHasQclassFunction *gi.Function
-var widgetPathIterHasQclassFunction_Once sync.Once
+// UNSUPPORTED : C value 'gtk_widget_path_iter_has_qclass' : parameter 'qname' of type 'GLib.Quark' not supported
 
-func widgetPathIterHasQclassFunction_Set() error {
-	var err error
-	widgetPathIterHasQclassFunction_Once.Do(func() {
-		err = widgetPathStruct_Set()
-		if err != nil {
-			return
-		}
-		widgetPathIterHasQclassFunction, err = widgetPathStruct.InvokerNew("iter_has_qclass")
-	})
-	return err
-}
+// UNSUPPORTED : C value 'gtk_widget_path_iter_has_qname' : parameter 'qname' of type 'GLib.Quark' not supported
 
-// IterHasQclass is a representation of the C type gtk_widget_path_iter_has_qclass.
-func (recv *WidgetPath) IterHasQclass(pos int32, qname glib.Quark) bool {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetInt32(pos)
-	inArgs[2].SetUint32(uint32(qname))
-
-	var ret gi.Argument
-
-	err := widgetPathIterHasQclassFunction_Set()
-	if err == nil {
-		ret = widgetPathIterHasQclassFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Boolean()
-
-	return retGo
-}
-
-var widgetPathIterHasQnameFunction *gi.Function
-var widgetPathIterHasQnameFunction_Once sync.Once
-
-func widgetPathIterHasQnameFunction_Set() error {
-	var err error
-	widgetPathIterHasQnameFunction_Once.Do(func() {
-		err = widgetPathStruct_Set()
-		if err != nil {
-			return
-		}
-		widgetPathIterHasQnameFunction, err = widgetPathStruct.InvokerNew("iter_has_qname")
-	})
-	return err
-}
-
-// IterHasQname is a representation of the C type gtk_widget_path_iter_has_qname.
-func (recv *WidgetPath) IterHasQname(pos int32, qname glib.Quark) bool {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetInt32(pos)
-	inArgs[2].SetUint32(uint32(qname))
-
-	var ret gi.Argument
-
-	err := widgetPathIterHasQnameFunction_Set()
-	if err == nil {
-		ret = widgetPathIterHasQnameFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Boolean()
-
-	return retGo
-}
-
-var widgetPathIterHasQregionFunction *gi.Function
-var widgetPathIterHasQregionFunction_Once sync.Once
-
-func widgetPathIterHasQregionFunction_Set() error {
-	var err error
-	widgetPathIterHasQregionFunction_Once.Do(func() {
-		err = widgetPathStruct_Set()
-		if err != nil {
-			return
-		}
-		widgetPathIterHasQregionFunction, err = widgetPathStruct.InvokerNew("iter_has_qregion")
-	})
-	return err
-}
-
-// IterHasQregion is a representation of the C type gtk_widget_path_iter_has_qregion.
-func (recv *WidgetPath) IterHasQregion(pos int32, qname glib.Quark) (bool, RegionFlags) {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetInt32(pos)
-	inArgs[2].SetUint32(uint32(qname))
-
-	var outArgs [1]gi.Argument
-	var ret gi.Argument
-
-	err := widgetPathIterHasQregionFunction_Set()
-	if err == nil {
-		ret = widgetPathIterHasQregionFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	retGo := ret.Boolean()
-	out0 := RegionFlags(outArgs[0].Int32())
-
-	return retGo, out0
-}
+// UNSUPPORTED : C value 'gtk_widget_path_iter_has_qregion' : parameter 'qname' of type 'GLib.Quark' not supported
 
 var widgetPathIterHasRegionFunction *gi.Function
 var widgetPathIterHasRegionFunction_Once sync.Once

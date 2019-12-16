@@ -36,14 +36,6 @@ func (a Argument) supportedAsOutParameter() bool {
 		return true
 	}
 
-	if a.Type.isAlias() {
-		alias, _ := a.Type.namespace.Aliases.byName(a.Type.Name)
-		if !strings.HasPrefix(alias.Type.Name, "g") {
-			// Alias that is not a simple type is not yet supported.
-			return false
-		}
-	}
-
 	return a.isSupported()
 }
 
@@ -56,13 +48,7 @@ func (a Argument) isSupported() bool {
 		return false
 	}
 
-	typ := a.Type.resolvedType()
-
-	if !typ.isValid() {
-		return false
-	}
-
-	if _, err := typ.jenGoType(); err == nil {
+	if _, err := a.Type.jenGoType(); err == nil {
 		return true
 	}
 

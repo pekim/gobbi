@@ -98,14 +98,6 @@ func (f *Field) generateSetter(fi *file) {
 func (f *Field) generateSetterBody(g *jen.Group) {
 	jenValue := jen.Id("value")
 
-	if f.Type.isAlias() {
-		typ := f.Type.resolvedType()
-
-		jenValue = jen.
-			Add(jenGoTypes[typ.Name]).
-			Parens(jenValue)
-	}
-
 	if f.Type.isBitfield() || f.Type.isEnumeration() {
 		jenValue = jen.
 			Add(jenGoTypes["int"]).
@@ -125,10 +117,9 @@ func (f *Field) generateSetterBody(g *jen.Group) {
 		Qual(gi.PackageName, "Argument")
 
 	// argValue.Set...(value)
-	typ := f.Type.resolvedType()
 	g.
 		Id("argValue").
-		Dot(typ.argumentValueSetFunctionName()).
+		Dot(f.Type.argumentValueSetFunctionName()).
 		Call(value)
 
 	g.

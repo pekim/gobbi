@@ -95,9 +95,9 @@ func (n *Namespace) generateFile(name string, generateContent func(f *file)) {
 }
 
 func (n *Namespace) haveType(typeName string) bool {
-	if _, found := n.Aliases.byName(typeName); found {
-		return true
-	}
+	//if _, found := n.Aliases.byName(typeName); found {
+	//	return true
+	//}
 
 	if _, found := n.Constants.byName(typeName); found {
 		return true

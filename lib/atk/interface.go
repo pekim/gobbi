@@ -1428,10 +1428,10 @@ func editableTextSetRunAttributesFunction_Set() error {
 }
 
 // SetRunAttributes is a representation of the C type atk_editable_text_set_run_attributes.
-func (recv *EditableText) SetRunAttributes(attribSet AttributeSet, startOffset int32, endOffset int32) bool {
+func (recv *EditableText) SetRunAttributes(attribSet *glib.SList, startOffset int32, endOffset int32) bool {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetPointer((*glib.SList)(attribSet).Native())
+	inArgs[1].SetPointer(attribSet.Native())
 	inArgs[2].SetInt32(startOffset)
 	inArgs[3].SetInt32(endOffset)
 

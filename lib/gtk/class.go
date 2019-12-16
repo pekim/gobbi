@@ -13,7 +13,6 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
-	xlib "github.com/pekim/gobbi/lib/xlib"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -1139,7 +1138,7 @@ func AccelGroupNew() *AccelGroup {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_accel_group_activate' : parameter 'accel_mods' of type 'Gdk.ModifierType' not supported
+// UNSUPPORTED : C value 'gtk_accel_group_activate' : parameter 'accel_quark' of type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'gtk_accel_group_connect' : parameter 'accel_mods' of type 'Gdk.ModifierType' not supported
 
@@ -67567,129 +67566,13 @@ func (recv *Plug) SetFieldPriv(value *PlugPrivate) {
 	gi.ObjectFieldSet(plugObject, recv.Native(), "priv", argValue)
 }
 
-var plugNewFunction *gi.Function
-var plugNewFunction_Once sync.Once
+// UNSUPPORTED : C value 'gtk_plug_new' : parameter 'socket_id' of type 'xlib.Window' not supported
 
-func plugNewFunction_Set() error {
-	var err error
-	plugNewFunction_Once.Do(func() {
-		err = plugObject_Set()
-		if err != nil {
-			return
-		}
-		plugNewFunction, err = plugObject.InvokerNew("new")
-	})
-	return err
-}
+// UNSUPPORTED : C value 'gtk_plug_new_for_display' : parameter 'socket_id' of type 'xlib.Window' not supported
 
-// PlugNew is a representation of the C type gtk_plug_new.
-func PlugNew(socketId xlib.Window) *Plug {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetUint64(uint64(socketId))
+// UNSUPPORTED : C value 'gtk_plug_construct' : parameter 'socket_id' of type 'xlib.Window' not supported
 
-	var ret gi.Argument
-
-	err := plugNewFunction_Set()
-	if err == nil {
-		ret = plugNewFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := PlugNewFromNative(ret.Pointer())
-
-	return retGo
-}
-
-var plugNewForDisplayFunction *gi.Function
-var plugNewForDisplayFunction_Once sync.Once
-
-func plugNewForDisplayFunction_Set() error {
-	var err error
-	plugNewForDisplayFunction_Once.Do(func() {
-		err = plugObject_Set()
-		if err != nil {
-			return
-		}
-		plugNewForDisplayFunction, err = plugObject.InvokerNew("new_for_display")
-	})
-	return err
-}
-
-// PlugNewForDisplay is a representation of the C type gtk_plug_new_for_display.
-func PlugNewForDisplay(display *gdk.Display, socketId xlib.Window) *Plug {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(display.Native())
-	inArgs[1].SetUint64(uint64(socketId))
-
-	var ret gi.Argument
-
-	err := plugNewForDisplayFunction_Set()
-	if err == nil {
-		ret = plugNewForDisplayFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := PlugNewFromNative(ret.Pointer())
-
-	return retGo
-}
-
-var plugConstructFunction *gi.Function
-var plugConstructFunction_Once sync.Once
-
-func plugConstructFunction_Set() error {
-	var err error
-	plugConstructFunction_Once.Do(func() {
-		err = plugObject_Set()
-		if err != nil {
-			return
-		}
-		plugConstructFunction, err = plugObject.InvokerNew("construct")
-	})
-	return err
-}
-
-// Construct is a representation of the C type gtk_plug_construct.
-func (recv *Plug) Construct(socketId xlib.Window) {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetUint64(uint64(socketId))
-
-	err := plugConstructFunction_Set()
-	if err == nil {
-		plugConstructFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
-
-var plugConstructForDisplayFunction *gi.Function
-var plugConstructForDisplayFunction_Once sync.Once
-
-func plugConstructForDisplayFunction_Set() error {
-	var err error
-	plugConstructForDisplayFunction_Once.Do(func() {
-		err = plugObject_Set()
-		if err != nil {
-			return
-		}
-		plugConstructForDisplayFunction, err = plugObject.InvokerNew("construct_for_display")
-	})
-	return err
-}
-
-// ConstructForDisplay is a representation of the C type gtk_plug_construct_for_display.
-func (recv *Plug) ConstructForDisplay(display *gdk.Display, socketId xlib.Window) {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetPointer(display.Native())
-	inArgs[2].SetUint64(uint64(socketId))
-
-	err := plugConstructForDisplayFunction_Set()
-	if err == nil {
-		plugConstructForDisplayFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'gtk_plug_construct_for_display' : parameter 'socket_id' of type 'xlib.Window' not supported
 
 var plugGetEmbeddedFunction *gi.Function
 var plugGetEmbeddedFunction_Once sync.Once
@@ -67723,37 +67606,7 @@ func (recv *Plug) GetEmbedded() bool {
 	return retGo
 }
 
-var plugGetIdFunction *gi.Function
-var plugGetIdFunction_Once sync.Once
-
-func plugGetIdFunction_Set() error {
-	var err error
-	plugGetIdFunction_Once.Do(func() {
-		err = plugObject_Set()
-		if err != nil {
-			return
-		}
-		plugGetIdFunction, err = plugObject.InvokerNew("get_id")
-	})
-	return err
-}
-
-// GetId is a representation of the C type gtk_plug_get_id.
-func (recv *Plug) GetId() xlib.Window {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var ret gi.Argument
-
-	err := plugGetIdFunction_Set()
-	if err == nil {
-		ret = plugGetIdFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := xlib.Window(ret.Uint64())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'gtk_plug_get_id' : return type 'xlib.Window' not supported
 
 var plugGetSocketWindowFunction *gi.Function
 var plugGetSocketWindowFunction_Once sync.Once
@@ -83702,66 +83555,9 @@ func SocketNew() *Socket {
 	return retGo
 }
 
-var socketAddIdFunction *gi.Function
-var socketAddIdFunction_Once sync.Once
+// UNSUPPORTED : C value 'gtk_socket_add_id' : parameter 'window' of type 'xlib.Window' not supported
 
-func socketAddIdFunction_Set() error {
-	var err error
-	socketAddIdFunction_Once.Do(func() {
-		err = socketObject_Set()
-		if err != nil {
-			return
-		}
-		socketAddIdFunction, err = socketObject.InvokerNew("add_id")
-	})
-	return err
-}
-
-// AddId is a representation of the C type gtk_socket_add_id.
-func (recv *Socket) AddId(window xlib.Window) {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetUint64(uint64(window))
-
-	err := socketAddIdFunction_Set()
-	if err == nil {
-		socketAddIdFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
-
-var socketGetIdFunction *gi.Function
-var socketGetIdFunction_Once sync.Once
-
-func socketGetIdFunction_Set() error {
-	var err error
-	socketGetIdFunction_Once.Do(func() {
-		err = socketObject_Set()
-		if err != nil {
-			return
-		}
-		socketGetIdFunction, err = socketObject.InvokerNew("get_id")
-	})
-	return err
-}
-
-// GetId is a representation of the C type gtk_socket_get_id.
-func (recv *Socket) GetId() xlib.Window {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var ret gi.Argument
-
-	err := socketGetIdFunction_Set()
-	if err == nil {
-		ret = socketGetIdFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := xlib.Window(ret.Uint64())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'gtk_socket_get_id' : return type 'xlib.Window' not supported
 
 var socketGetPlugWindowFunction *gi.Function
 var socketGetPlugWindowFunction_Once sync.Once
@@ -114971,7 +114767,7 @@ func widgetGetAllocatedSizeFunction_Set() error {
 }
 
 // GetAllocatedSize is a representation of the C type gtk_widget_get_allocated_size.
-func (recv *Widget) GetAllocatedSize() (Allocation, int32) {
+func (recv *Widget) GetAllocatedSize() (*gdk.Rectangle, int32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
@@ -114982,7 +114778,7 @@ func (recv *Widget) GetAllocatedSize() (Allocation, int32) {
 		widgetGetAllocatedSizeFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := Allocation(outArgs[0].Pointer())
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
 	out1 := outArgs[1].Int32()
 
 	return out0, out1
@@ -115036,7 +114832,7 @@ func widgetGetAllocationFunction_Set() error {
 }
 
 // GetAllocation is a representation of the C type gtk_widget_get_allocation.
-func (recv *Widget) GetAllocation() Allocation {
+func (recv *Widget) GetAllocation() *gdk.Rectangle {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
@@ -115047,7 +114843,7 @@ func (recv *Widget) GetAllocation() Allocation {
 		widgetGetAllocationFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := Allocation(outArgs[0].Pointer())
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
 
 	return out0
 }
@@ -115261,7 +115057,7 @@ func widgetGetClipFunction_Set() error {
 }
 
 // GetClip is a representation of the C type gtk_widget_get_clip.
-func (recv *Widget) GetClip() Allocation {
+func (recv *Widget) GetClip() *gdk.Rectangle {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
@@ -115272,7 +115068,7 @@ func (recv *Widget) GetClip() Allocation {
 		widgetGetClipFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := Allocation(outArgs[0].Pointer())
+	out0 := gdk.RectangleNewFromNative(outArgs[0].Pointer())
 
 	return out0
 }
@@ -119253,10 +119049,10 @@ func widgetSetAllocationFunction_Set() error {
 }
 
 // SetAllocation is a representation of the C type gtk_widget_set_allocation.
-func (recv *Widget) SetAllocation(allocation Allocation) {
+func (recv *Widget) SetAllocation(allocation *gdk.Rectangle) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetPointer((*gdk.Rectangle)(allocation).Native())
+	inArgs[1].SetPointer(allocation.Native())
 
 	err := widgetSetAllocationFunction_Set()
 	if err == nil {
@@ -119398,10 +119194,10 @@ func widgetSetClipFunction_Set() error {
 }
 
 // SetClip is a representation of the C type gtk_widget_set_clip.
-func (recv *Widget) SetClip(clip Allocation) {
+func (recv *Widget) SetClip(clip *gdk.Rectangle) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetPointer((*gdk.Rectangle)(clip).Native())
+	inArgs[1].SetPointer(clip.Native())
 
 	err := widgetSetClipFunction_Set()
 	if err == nil {
@@ -120792,10 +120588,10 @@ func widgetSizeAllocateFunction_Set() error {
 }
 
 // SizeAllocate is a representation of the C type gtk_widget_size_allocate.
-func (recv *Widget) SizeAllocate(allocation Allocation) {
+func (recv *Widget) SizeAllocate(allocation *gdk.Rectangle) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetPointer((*gdk.Rectangle)(allocation).Native())
+	inArgs[1].SetPointer(allocation.Native())
 
 	err := widgetSizeAllocateFunction_Set()
 	if err == nil {
@@ -120821,10 +120617,10 @@ func widgetSizeAllocateWithBaselineFunction_Set() error {
 }
 
 // SizeAllocateWithBaseline is a representation of the C type gtk_widget_size_allocate_with_baseline.
-func (recv *Widget) SizeAllocateWithBaseline(allocation Allocation, baseline int32) {
+func (recv *Widget) SizeAllocateWithBaseline(allocation *gdk.Rectangle, baseline int32) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetPointer((*gdk.Rectangle)(allocation).Native())
+	inArgs[1].SetPointer(allocation.Native())
 	inArgs[2].SetInt32(baseline)
 
 	err := widgetSizeAllocateWithBaselineFunction_Set()
@@ -122390,7 +122186,7 @@ ConnectSizeAllocate connects a callback to the 'size-allocate' signal of the Wid
 
 The returned value represents the connection, and may be passed to the Disconnect method to remove it.
 */
-func (recv *Widget) ConnectSizeAllocate(handler func(instance *Widget, allocation Allocation)) int {
+func (recv *Widget) ConnectSizeAllocate(handler func(instance *Widget, allocation *gdk.Rectangle)) int {
 	marshal := func(returnValue *callback.Value, paramValues []callback.Value) {
 		objectInstance := gobject.ValueNewFromNative(unsafe.Pointer(&paramValues[0]))
 		argInstance := WidgetNewFromNative(objectInstance.GetObject().Native())

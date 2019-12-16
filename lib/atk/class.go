@@ -1445,35 +1445,7 @@ func (recv *Object) Initialize(data unsafe.Pointer) {
 	return
 }
 
-var objectNotifyStateChangeFunction *gi.Function
-var objectNotifyStateChangeFunction_Once sync.Once
-
-func objectNotifyStateChangeFunction_Set() error {
-	var err error
-	objectNotifyStateChangeFunction_Once.Do(func() {
-		err = objectObject_Set()
-		if err != nil {
-			return
-		}
-		objectNotifyStateChangeFunction, err = objectObject.InvokerNew("notify_state_change")
-	})
-	return err
-}
-
-// NotifyStateChange is a representation of the C type atk_object_notify_state_change.
-func (recv *Object) NotifyStateChange(state State, value bool) {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetUint64(uint64(state))
-	inArgs[2].SetBoolean(value)
-
-	err := objectNotifyStateChangeFunction_Set()
-	if err == nil {
-		objectNotifyStateChangeFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'atk_object_notify_state_change' : parameter 'state' of type 'State' not supported
 
 var objectPeekParentFunction *gi.Function
 var objectPeekParentFunction_Once sync.Once

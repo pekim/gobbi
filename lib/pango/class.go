@@ -1166,39 +1166,7 @@ func (recv *Font) GetFontMap() *FontMap {
 	return retGo
 }
 
-var fontGetGlyphExtentsFunction *gi.Function
-var fontGetGlyphExtentsFunction_Once sync.Once
-
-func fontGetGlyphExtentsFunction_Set() error {
-	var err error
-	fontGetGlyphExtentsFunction_Once.Do(func() {
-		err = fontObject_Set()
-		if err != nil {
-			return
-		}
-		fontGetGlyphExtentsFunction, err = fontObject.InvokerNew("get_glyph_extents")
-	})
-	return err
-}
-
-// GetGlyphExtents is a representation of the C type pango_font_get_glyph_extents.
-func (recv *Font) GetGlyphExtents(glyph Glyph) (*Rectangle, *Rectangle) {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetUint32(uint32(glyph))
-
-	var outArgs [2]gi.Argument
-
-	err := fontGetGlyphExtentsFunction_Set()
-	if err == nil {
-		fontGetGlyphExtentsFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := RectangleNewFromNative(outArgs[0].Pointer())
-	out1 := RectangleNewFromNative(outArgs[1].Pointer())
-
-	return out0, out1
-}
+// UNSUPPORTED : C value 'pango_font_get_glyph_extents' : parameter 'glyph' of type 'Glyph' not supported
 
 var fontGetMetricsFunction *gi.Function
 var fontGetMetricsFunction_Once sync.Once
@@ -4078,37 +4046,7 @@ func (recv *Renderer) DrawErrorUnderline(x int32, y int32, width int32, height i
 	return
 }
 
-var rendererDrawGlyphFunction *gi.Function
-var rendererDrawGlyphFunction_Once sync.Once
-
-func rendererDrawGlyphFunction_Set() error {
-	var err error
-	rendererDrawGlyphFunction_Once.Do(func() {
-		err = rendererObject_Set()
-		if err != nil {
-			return
-		}
-		rendererDrawGlyphFunction, err = rendererObject.InvokerNew("draw_glyph")
-	})
-	return err
-}
-
-// DrawGlyph is a representation of the C type pango_renderer_draw_glyph.
-func (recv *Renderer) DrawGlyph(font *Font, glyph Glyph, x float64, y float64) {
-	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetPointer(font.Native())
-	inArgs[2].SetUint32(uint32(glyph))
-	inArgs[3].SetFloat64(x)
-	inArgs[4].SetFloat64(y)
-
-	err := rendererDrawGlyphFunction_Set()
-	if err == nil {
-		rendererDrawGlyphFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'pango_renderer_draw_glyph' : parameter 'glyph' of type 'Glyph' not supported
 
 var rendererDrawGlyphItemFunction *gi.Function
 var rendererDrawGlyphItemFunction_Once sync.Once

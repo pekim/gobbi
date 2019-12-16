@@ -466,7 +466,7 @@ func (recv *Object) BindPropertyWithClosures(sourceProperty string, target *Obje
 
 // UNSUPPORTED : C value 'g_object_dup_data' : parameter 'dup_func' of type 'GLib.DuplicateFunc' not supported
 
-// UNSUPPORTED : C value 'g_object_dup_qdata' : parameter 'dup_func' of type 'GLib.DuplicateFunc' not supported
+// UNSUPPORTED : C value 'g_object_dup_qdata' : parameter 'quark' of type 'GLib.Quark' not supported
 
 var objectForceFloatingFunction *gi.Function
 var objectForceFloatingFunction_Once sync.Once
@@ -589,38 +589,7 @@ func (recv *Object) GetProperty(propertyName string, value *Value) {
 	return
 }
 
-var objectGetQdataFunction *gi.Function
-var objectGetQdataFunction_Once sync.Once
-
-func objectGetQdataFunction_Set() error {
-	var err error
-	objectGetQdataFunction_Once.Do(func() {
-		err = objectObject_Set()
-		if err != nil {
-			return
-		}
-		objectGetQdataFunction, err = objectObject.InvokerNew("get_qdata")
-	})
-	return err
-}
-
-// GetQdata is a representation of the C type g_object_get_qdata.
-func (recv *Object) GetQdata(quark glib.Quark) unsafe.Pointer {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetUint32(uint32(quark))
-
-	var ret gi.Argument
-
-	err := objectGetQdataFunction_Set()
-	if err == nil {
-		ret = objectGetQdataFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Pointer()
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_object_get_qdata' : parameter 'quark' of type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_object_get_valist' : parameter 'var_args' of type 'va_list' not supported
 
@@ -817,7 +786,7 @@ func (recv *Object) RemoveWeakPointer(weakPointerLocation unsafe.Pointer) unsafe
 
 // UNSUPPORTED : C value 'g_object_replace_data' : parameter 'destroy' of type 'GLib.DestroyNotify' not supported
 
-// UNSUPPORTED : C value 'g_object_replace_qdata' : parameter 'destroy' of type 'GLib.DestroyNotify' not supported
+// UNSUPPORTED : C value 'g_object_replace_qdata' : parameter 'quark' of type 'GLib.Quark' not supported
 
 var objectRunDisposeFunction *gi.Function
 var objectRunDisposeFunction_Once sync.Once
@@ -911,37 +880,9 @@ func (recv *Object) SetProperty(propertyName string, value *Value) {
 	return
 }
 
-var objectSetQdataFunction *gi.Function
-var objectSetQdataFunction_Once sync.Once
+// UNSUPPORTED : C value 'g_object_set_qdata' : parameter 'quark' of type 'GLib.Quark' not supported
 
-func objectSetQdataFunction_Set() error {
-	var err error
-	objectSetQdataFunction_Once.Do(func() {
-		err = objectObject_Set()
-		if err != nil {
-			return
-		}
-		objectSetQdataFunction, err = objectObject.InvokerNew("set_qdata")
-	})
-	return err
-}
-
-// SetQdata is a representation of the C type g_object_set_qdata.
-func (recv *Object) SetQdata(quark glib.Quark, data unsafe.Pointer) {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetUint32(uint32(quark))
-	inArgs[2].SetPointer(data)
-
-	err := objectSetQdataFunction_Set()
-	if err == nil {
-		objectSetQdataFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
-
-// UNSUPPORTED : C value 'g_object_set_qdata_full' : parameter 'destroy' of type 'GLib.DestroyNotify' not supported
+// UNSUPPORTED : C value 'g_object_set_qdata_full' : parameter 'quark' of type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_object_set_valist' : parameter 'var_args' of type 'va_list' not supported
 
@@ -980,38 +921,7 @@ func (recv *Object) StealData(key string) unsafe.Pointer {
 	return retGo
 }
 
-var objectStealQdataFunction *gi.Function
-var objectStealQdataFunction_Once sync.Once
-
-func objectStealQdataFunction_Set() error {
-	var err error
-	objectStealQdataFunction_Once.Do(func() {
-		err = objectObject_Set()
-		if err != nil {
-			return
-		}
-		objectStealQdataFunction, err = objectObject.InvokerNew("steal_qdata")
-	})
-	return err
-}
-
-// StealQdata is a representation of the C type g_object_steal_qdata.
-func (recv *Object) StealQdata(quark glib.Quark) unsafe.Pointer {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetUint32(uint32(quark))
-
-	var ret gi.Argument
-
-	err := objectStealQdataFunction_Set()
-	if err == nil {
-		ret = objectStealQdataFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Pointer()
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_object_steal_qdata' : parameter 'quark' of type 'GLib.Quark' not supported
 
 var objectThawNotifyFunction *gi.Function
 var objectThawNotifyFunction_Once sync.Once
@@ -1332,37 +1242,7 @@ func (recv *ParamSpec) GetName() string {
 	return retGo
 }
 
-var paramSpecGetNameQuarkFunction *gi.Function
-var paramSpecGetNameQuarkFunction_Once sync.Once
-
-func paramSpecGetNameQuarkFunction_Set() error {
-	var err error
-	paramSpecGetNameQuarkFunction_Once.Do(func() {
-		err = paramSpecObject_Set()
-		if err != nil {
-			return
-		}
-		paramSpecGetNameQuarkFunction, err = paramSpecObject.InvokerNew("get_name_quark")
-	})
-	return err
-}
-
-// GetNameQuark is a representation of the C type g_param_spec_get_name_quark.
-func (recv *ParamSpec) GetNameQuark() glib.Quark {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var ret gi.Argument
-
-	err := paramSpecGetNameQuarkFunction_Set()
-	if err == nil {
-		ret = paramSpecGetNameQuarkFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_param_spec_get_name_quark' : return type 'GLib.Quark' not supported
 
 var paramSpecGetNickFunction *gi.Function
 var paramSpecGetNickFunction_Once sync.Once
@@ -1396,38 +1276,7 @@ func (recv *ParamSpec) GetNick() string {
 	return retGo
 }
 
-var paramSpecGetQdataFunction *gi.Function
-var paramSpecGetQdataFunction_Once sync.Once
-
-func paramSpecGetQdataFunction_Set() error {
-	var err error
-	paramSpecGetQdataFunction_Once.Do(func() {
-		err = paramSpecObject_Set()
-		if err != nil {
-			return
-		}
-		paramSpecGetQdataFunction, err = paramSpecObject.InvokerNew("get_qdata")
-	})
-	return err
-}
-
-// GetQdata is a representation of the C type g_param_spec_get_qdata.
-func (recv *ParamSpec) GetQdata(quark glib.Quark) unsafe.Pointer {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetUint32(uint32(quark))
-
-	var ret gi.Argument
-
-	err := paramSpecGetQdataFunction_Set()
-	if err == nil {
-		ret = paramSpecGetQdataFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Pointer()
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_param_spec_get_qdata' : parameter 'quark' of type 'GLib.Quark' not supported
 
 var paramSpecGetRedirectTargetFunction *gi.Function
 var paramSpecGetRedirectTargetFunction_Once sync.Once
@@ -1525,37 +1374,9 @@ func (recv *ParamSpec) RefSink() *ParamSpec {
 	return retGo
 }
 
-var paramSpecSetQdataFunction *gi.Function
-var paramSpecSetQdataFunction_Once sync.Once
+// UNSUPPORTED : C value 'g_param_spec_set_qdata' : parameter 'quark' of type 'GLib.Quark' not supported
 
-func paramSpecSetQdataFunction_Set() error {
-	var err error
-	paramSpecSetQdataFunction_Once.Do(func() {
-		err = paramSpecObject_Set()
-		if err != nil {
-			return
-		}
-		paramSpecSetQdataFunction, err = paramSpecObject.InvokerNew("set_qdata")
-	})
-	return err
-}
-
-// SetQdata is a representation of the C type g_param_spec_set_qdata.
-func (recv *ParamSpec) SetQdata(quark glib.Quark, data unsafe.Pointer) {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetUint32(uint32(quark))
-	inArgs[2].SetPointer(data)
-
-	err := paramSpecSetQdataFunction_Set()
-	if err == nil {
-		paramSpecSetQdataFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
-
-// UNSUPPORTED : C value 'g_param_spec_set_qdata_full' : parameter 'destroy' of type 'GLib.DestroyNotify' not supported
+// UNSUPPORTED : C value 'g_param_spec_set_qdata_full' : parameter 'quark' of type 'GLib.Quark' not supported
 
 var paramSpecSinkFunction *gi.Function
 var paramSpecSinkFunction_Once sync.Once
@@ -1585,38 +1406,7 @@ func (recv *ParamSpec) Sink() {
 	return
 }
 
-var paramSpecStealQdataFunction *gi.Function
-var paramSpecStealQdataFunction_Once sync.Once
-
-func paramSpecStealQdataFunction_Set() error {
-	var err error
-	paramSpecStealQdataFunction_Once.Do(func() {
-		err = paramSpecObject_Set()
-		if err != nil {
-			return
-		}
-		paramSpecStealQdataFunction, err = paramSpecObject.InvokerNew("steal_qdata")
-	})
-	return err
-}
-
-// StealQdata is a representation of the C type g_param_spec_steal_qdata.
-func (recv *ParamSpec) StealQdata(quark glib.Quark) unsafe.Pointer {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetUint32(uint32(quark))
-
-	var ret gi.Argument
-
-	err := paramSpecStealQdataFunction_Set()
-	if err == nil {
-		ret = paramSpecStealQdataFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Pointer()
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_param_spec_steal_qdata' : parameter 'quark' of type 'GLib.Quark' not supported
 
 var paramSpecUnrefFunction *gi.Function
 var paramSpecUnrefFunction_Once sync.Once

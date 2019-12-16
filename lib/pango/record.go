@@ -4943,47 +4943,17 @@ func (recv *GlyphGeometry) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// FieldWidth returns the C field 'width'.
-func (recv *GlyphGeometry) FieldWidth() GlyphUnit {
-	argValue := gi.StructFieldGet(glyphGeometryStruct, recv.Native(), "width")
-	value := GlyphUnit(argValue.Int32())
-	return value
-}
+// UNSUPPORTED : C value 'width' : for field getter : no Go type for 'GlyphUnit'
 
-// SetFieldWidth sets the value of the C field 'width'.
-func (recv *GlyphGeometry) SetFieldWidth(value GlyphUnit) {
-	var argValue gi.Argument
-	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(glyphGeometryStruct, recv.Native(), "width", argValue)
-}
+// UNSUPPORTED : C value 'width' : for field setter : no Go type for 'GlyphUnit'
 
-// FieldXOffset returns the C field 'x_offset'.
-func (recv *GlyphGeometry) FieldXOffset() GlyphUnit {
-	argValue := gi.StructFieldGet(glyphGeometryStruct, recv.Native(), "x_offset")
-	value := GlyphUnit(argValue.Int32())
-	return value
-}
+// UNSUPPORTED : C value 'x_offset' : for field getter : no Go type for 'GlyphUnit'
 
-// SetFieldXOffset sets the value of the C field 'x_offset'.
-func (recv *GlyphGeometry) SetFieldXOffset(value GlyphUnit) {
-	var argValue gi.Argument
-	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(glyphGeometryStruct, recv.Native(), "x_offset", argValue)
-}
+// UNSUPPORTED : C value 'x_offset' : for field setter : no Go type for 'GlyphUnit'
 
-// FieldYOffset returns the C field 'y_offset'.
-func (recv *GlyphGeometry) FieldYOffset() GlyphUnit {
-	argValue := gi.StructFieldGet(glyphGeometryStruct, recv.Native(), "y_offset")
-	value := GlyphUnit(argValue.Int32())
-	return value
-}
+// UNSUPPORTED : C value 'y_offset' : for field getter : no Go type for 'GlyphUnit'
 
-// SetFieldYOffset sets the value of the C field 'y_offset'.
-func (recv *GlyphGeometry) SetFieldYOffset(value GlyphUnit) {
-	var argValue gi.Argument
-	argValue.SetInt32(int32(value))
-	gi.StructFieldSet(glyphGeometryStruct, recv.Native(), "y_offset", argValue)
-}
+// UNSUPPORTED : C value 'y_offset' : for field setter : no Go type for 'GlyphUnit'
 
 // GlyphGeometryStruct creates an uninitialised GlyphGeometry.
 func GlyphGeometryStruct() *GlyphGeometry {
@@ -5044,19 +5014,9 @@ func (recv *GlyphInfo) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// FieldGlyph returns the C field 'glyph'.
-func (recv *GlyphInfo) FieldGlyph() Glyph {
-	argValue := gi.StructFieldGet(glyphInfoStruct, recv.Native(), "glyph")
-	value := Glyph(argValue.Uint32())
-	return value
-}
+// UNSUPPORTED : C value 'glyph' : for field getter : no Go type for 'Glyph'
 
-// SetFieldGlyph sets the value of the C field 'glyph'.
-func (recv *GlyphInfo) SetFieldGlyph(value Glyph) {
-	var argValue gi.Argument
-	argValue.SetUint32(uint32(value))
-	gi.StructFieldSet(glyphInfoStruct, recv.Native(), "glyph", argValue)
-}
+// UNSUPPORTED : C value 'glyph' : for field setter : no Go type for 'Glyph'
 
 // FieldGeometry returns the C field 'geometry'.
 func (recv *GlyphInfo) FieldGeometry() *GlyphGeometry {

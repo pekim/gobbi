@@ -8,31 +8,7 @@ import (
 	"sync"
 )
 
-var completionErrorQuarkFunction *gi.Function
-var completionErrorQuarkFunction_Once sync.Once
-
-func completionErrorQuarkFunction_Set() error {
-	var err error
-	completionErrorQuarkFunction_Once.Do(func() {
-		completionErrorQuarkFunction, err = gi.FunctionInvokerNew("GtkSource", "completion_error_quark")
-	})
-	return err
-}
-
-// CompletionErrorQuark is a representation of the C type gtk_source_completion_error_quark.
-func CompletionErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := completionErrorQuarkFunction_Set()
-	if err == nil {
-		ret = completionErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'gtk_source_completion_error_quark' : return type 'GLib.Quark' not supported
 
 var encodingGetAllFunction *gi.Function
 var encodingGetAllFunction_Once sync.Once
@@ -166,57 +142,9 @@ func EncodingGetUtf8() *Encoding {
 	return retGo
 }
 
-var fileLoaderErrorQuarkFunction *gi.Function
-var fileLoaderErrorQuarkFunction_Once sync.Once
+// UNSUPPORTED : C value 'gtk_source_file_loader_error_quark' : return type 'GLib.Quark' not supported
 
-func fileLoaderErrorQuarkFunction_Set() error {
-	var err error
-	fileLoaderErrorQuarkFunction_Once.Do(func() {
-		fileLoaderErrorQuarkFunction, err = gi.FunctionInvokerNew("GtkSource", "file_loader_error_quark")
-	})
-	return err
-}
-
-// FileLoaderErrorQuark is a representation of the C type gtk_source_file_loader_error_quark.
-func FileLoaderErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := fileLoaderErrorQuarkFunction_Set()
-	if err == nil {
-		ret = fileLoaderErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
-
-var fileSaverErrorQuarkFunction *gi.Function
-var fileSaverErrorQuarkFunction_Once sync.Once
-
-func fileSaverErrorQuarkFunction_Set() error {
-	var err error
-	fileSaverErrorQuarkFunction_Once.Do(func() {
-		fileSaverErrorQuarkFunction, err = gi.FunctionInvokerNew("GtkSource", "file_saver_error_quark")
-	})
-	return err
-}
-
-// FileSaverErrorQuark is a representation of the C type gtk_source_file_saver_error_quark.
-func FileSaverErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := fileSaverErrorQuarkFunction_Set()
-	if err == nil {
-		ret = fileSaverErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'gtk_source_file_saver_error_quark' : return type 'GLib.Quark' not supported
 
 var utilsEscapeSearchTextFunction *gi.Function
 var utilsEscapeSearchTextFunction_Once sync.Once

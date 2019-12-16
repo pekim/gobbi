@@ -66,35 +66,7 @@ func FontGetFace(font *pango.Font) *freetype2.Face {
 	return retGo
 }
 
-var fontGetKerningFunction *gi.Function
-var fontGetKerningFunction_Once sync.Once
-
-func fontGetKerningFunction_Set() error {
-	var err error
-	fontGetKerningFunction_Once.Do(func() {
-		fontGetKerningFunction, err = gi.FunctionInvokerNew("PangoFT2", "font_get_kerning")
-	})
-	return err
-}
-
-// FontGetKerning is a representation of the C type pango_ft2_font_get_kerning.
-func FontGetKerning(font *pango.Font, left pango.Glyph, right pango.Glyph) int32 {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(font.Native())
-	inArgs[1].SetUint32(uint32(left))
-	inArgs[2].SetUint32(uint32(right))
-
-	var ret gi.Argument
-
-	err := fontGetKerningFunction_Set()
-	if err == nil {
-		ret = fontGetKerningFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Int32()
-
-	return retGo
-}
+// UNSUPPORTED : C value 'pango_ft2_font_get_kerning' : parameter 'left' of type 'Pango.Glyph' not supported
 
 var getContextFunction *gi.Function
 var getContextFunction_Once sync.Once
@@ -125,33 +97,7 @@ func GetContext(dpiX float64, dpiY float64) *pango.Context {
 	return retGo
 }
 
-var getUnknownGlyphFunction *gi.Function
-var getUnknownGlyphFunction_Once sync.Once
-
-func getUnknownGlyphFunction_Set() error {
-	var err error
-	getUnknownGlyphFunction_Once.Do(func() {
-		getUnknownGlyphFunction, err = gi.FunctionInvokerNew("PangoFT2", "get_unknown_glyph")
-	})
-	return err
-}
-
-// GetUnknownGlyph is a representation of the C type pango_ft2_get_unknown_glyph.
-func GetUnknownGlyph(font *pango.Font) pango.Glyph {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(font.Native())
-
-	var ret gi.Argument
-
-	err := getUnknownGlyphFunction_Set()
-	if err == nil {
-		ret = getUnknownGlyphFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := pango.Glyph(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'pango_ft2_get_unknown_glyph' : return type 'Pango.Glyph' not supported
 
 var renderFunction *gi.Function
 var renderFunction_Once sync.Once

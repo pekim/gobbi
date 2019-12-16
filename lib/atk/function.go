@@ -26,9 +26,9 @@ func attributeSetFreeFunction_Set() error {
 }
 
 // AttributeSetFree is a representation of the C type atk_attribute_set_free.
-func AttributeSetFree(attribSet AttributeSet) {
+func AttributeSetFree(attribSet *glib.SList) {
 	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer((*glib.SList)(attribSet).Native())
+	inArgs[0].SetPointer(attribSet.Native())
 
 	err := attributeSetFreeFunction_Set()
 	if err == nil {

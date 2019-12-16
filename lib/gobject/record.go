@@ -1843,19 +1843,9 @@ func (recv *SignalInvocationHint) SetFieldSignalId(value uint32) {
 	gi.StructFieldSet(signalInvocationHintStruct, recv.Native(), "signal_id", argValue)
 }
 
-// FieldDetail returns the C field 'detail'.
-func (recv *SignalInvocationHint) FieldDetail() glib.Quark {
-	argValue := gi.StructFieldGet(signalInvocationHintStruct, recv.Native(), "detail")
-	value := glib.Quark(argValue.Uint32())
-	return value
-}
+// UNSUPPORTED : C value 'detail' : for field getter : no Go type for 'GLib.Quark'
 
-// SetFieldDetail sets the value of the C field 'detail'.
-func (recv *SignalInvocationHint) SetFieldDetail(value glib.Quark) {
-	var argValue gi.Argument
-	argValue.SetUint32(uint32(value))
-	gi.StructFieldSet(signalInvocationHintStruct, recv.Native(), "detail", argValue)
-}
+// UNSUPPORTED : C value 'detail' : for field setter : no Go type for 'GLib.Quark'
 
 // FieldRunType returns the C field 'run_type'.
 func (recv *SignalInvocationHint) FieldRunType() SignalFlags {

@@ -2179,7 +2179,7 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_signal_add_emission_hook' : parameter 'hook_func' of type 'SignalEmissionHook' not supported
+// UNSUPPORTED : C value 'g_signal_add_emission_hook' : parameter 'detail' of type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_signal_chain_from_overridden' : parameter 'instance_and_params' of type 'nil' not supported
 
@@ -2216,47 +2216,17 @@ func SignalConnectClosure(instance *Object, detailedSignal string, closure *Clos
 	return retGo
 }
 
-var signalConnectClosureByIdFunction *gi.Function
-var signalConnectClosureByIdFunction_Once sync.Once
-
-func signalConnectClosureByIdFunction_Set() error {
-	var err error
-	signalConnectClosureByIdFunction_Once.Do(func() {
-		signalConnectClosureByIdFunction, err = gi.FunctionInvokerNew("GObject", "signal_connect_closure_by_id")
-	})
-	return err
-}
-
-// SignalConnectClosureById is a representation of the C type g_signal_connect_closure_by_id.
-func SignalConnectClosureById(instance *Object, signalId uint32, detail glib.Quark, closure *Closure, after bool) uint64 {
-	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(instance.Native())
-	inArgs[1].SetUint32(signalId)
-	inArgs[2].SetUint32(uint32(detail))
-	inArgs[3].SetPointer(closure.Native())
-	inArgs[4].SetBoolean(after)
-
-	var ret gi.Argument
-
-	err := signalConnectClosureByIdFunction_Set()
-	if err == nil {
-		ret = signalConnectClosureByIdFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Uint64()
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_signal_connect_closure_by_id' : parameter 'detail' of type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_signal_connect_data' : parameter 'c_handler' of type 'Callback' not supported
 
 // UNSUPPORTED : C value 'g_signal_connect_object' : parameter 'c_handler' of type 'Callback' not supported
 
-// UNSUPPORTED : C value 'g_signal_emit' : parameter '...' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_signal_emit' : parameter 'detail' of type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_signal_emit_by_name' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_signal_emit_valist' : parameter 'var_args' of type 'va_list' not supported
+// UNSUPPORTED : C value 'g_signal_emit_valist' : parameter 'detail' of type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_signal_emitv' : parameter 'instance_and_params' of type 'nil' not supported
 
@@ -2338,39 +2308,7 @@ func SignalHandlerDisconnect(instance *Object, handlerId uint64) {
 	return
 }
 
-var signalHandlerFindFunction *gi.Function
-var signalHandlerFindFunction_Once sync.Once
-
-func signalHandlerFindFunction_Set() error {
-	var err error
-	signalHandlerFindFunction_Once.Do(func() {
-		signalHandlerFindFunction, err = gi.FunctionInvokerNew("GObject", "signal_handler_find")
-	})
-	return err
-}
-
-// SignalHandlerFind is a representation of the C type g_signal_handler_find.
-func SignalHandlerFind(instance *Object, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) uint64 {
-	var inArgs [7]gi.Argument
-	inArgs[0].SetPointer(instance.Native())
-	inArgs[1].SetInt32(int32(mask))
-	inArgs[2].SetUint32(signalId)
-	inArgs[3].SetUint32(uint32(detail))
-	inArgs[4].SetPointer(closure.Native())
-	inArgs[5].SetPointer(func_)
-	inArgs[6].SetPointer(data)
-
-	var ret gi.Argument
-
-	err := signalHandlerFindFunction_Set()
-	if err == nil {
-		ret = signalHandlerFindFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Uint64()
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_signal_handler_find' : parameter 'detail' of type 'GLib.Quark' not supported
 
 var signalHandlerIsConnectedFunction *gi.Function
 var signalHandlerIsConnectedFunction_Once sync.Once
@@ -2426,39 +2364,7 @@ func SignalHandlerUnblock(instance *Object, handlerId uint64) {
 	return
 }
 
-var signalHandlersBlockMatchedFunction *gi.Function
-var signalHandlersBlockMatchedFunction_Once sync.Once
-
-func signalHandlersBlockMatchedFunction_Set() error {
-	var err error
-	signalHandlersBlockMatchedFunction_Once.Do(func() {
-		signalHandlersBlockMatchedFunction, err = gi.FunctionInvokerNew("GObject", "signal_handlers_block_matched")
-	})
-	return err
-}
-
-// SignalHandlersBlockMatched is a representation of the C type g_signal_handlers_block_matched.
-func SignalHandlersBlockMatched(instance *Object, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) uint32 {
-	var inArgs [7]gi.Argument
-	inArgs[0].SetPointer(instance.Native())
-	inArgs[1].SetInt32(int32(mask))
-	inArgs[2].SetUint32(signalId)
-	inArgs[3].SetUint32(uint32(detail))
-	inArgs[4].SetPointer(closure.Native())
-	inArgs[5].SetPointer(func_)
-	inArgs[6].SetPointer(data)
-
-	var ret gi.Argument
-
-	err := signalHandlersBlockMatchedFunction_Set()
-	if err == nil {
-		ret = signalHandlersBlockMatchedFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Uint32()
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_signal_handlers_block_matched' : parameter 'detail' of type 'GLib.Quark' not supported
 
 var signalHandlersDestroyFunction *gi.Function
 var signalHandlersDestroyFunction_Once sync.Once
@@ -2484,104 +2390,11 @@ func SignalHandlersDestroy(instance *Object) {
 	return
 }
 
-var signalHandlersDisconnectMatchedFunction *gi.Function
-var signalHandlersDisconnectMatchedFunction_Once sync.Once
+// UNSUPPORTED : C value 'g_signal_handlers_disconnect_matched' : parameter 'detail' of type 'GLib.Quark' not supported
 
-func signalHandlersDisconnectMatchedFunction_Set() error {
-	var err error
-	signalHandlersDisconnectMatchedFunction_Once.Do(func() {
-		signalHandlersDisconnectMatchedFunction, err = gi.FunctionInvokerNew("GObject", "signal_handlers_disconnect_matched")
-	})
-	return err
-}
+// UNSUPPORTED : C value 'g_signal_handlers_unblock_matched' : parameter 'detail' of type 'GLib.Quark' not supported
 
-// SignalHandlersDisconnectMatched is a representation of the C type g_signal_handlers_disconnect_matched.
-func SignalHandlersDisconnectMatched(instance *Object, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) uint32 {
-	var inArgs [7]gi.Argument
-	inArgs[0].SetPointer(instance.Native())
-	inArgs[1].SetInt32(int32(mask))
-	inArgs[2].SetUint32(signalId)
-	inArgs[3].SetUint32(uint32(detail))
-	inArgs[4].SetPointer(closure.Native())
-	inArgs[5].SetPointer(func_)
-	inArgs[6].SetPointer(data)
-
-	var ret gi.Argument
-
-	err := signalHandlersDisconnectMatchedFunction_Set()
-	if err == nil {
-		ret = signalHandlersDisconnectMatchedFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Uint32()
-
-	return retGo
-}
-
-var signalHandlersUnblockMatchedFunction *gi.Function
-var signalHandlersUnblockMatchedFunction_Once sync.Once
-
-func signalHandlersUnblockMatchedFunction_Set() error {
-	var err error
-	signalHandlersUnblockMatchedFunction_Once.Do(func() {
-		signalHandlersUnblockMatchedFunction, err = gi.FunctionInvokerNew("GObject", "signal_handlers_unblock_matched")
-	})
-	return err
-}
-
-// SignalHandlersUnblockMatched is a representation of the C type g_signal_handlers_unblock_matched.
-func SignalHandlersUnblockMatched(instance *Object, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) uint32 {
-	var inArgs [7]gi.Argument
-	inArgs[0].SetPointer(instance.Native())
-	inArgs[1].SetInt32(int32(mask))
-	inArgs[2].SetUint32(signalId)
-	inArgs[3].SetUint32(uint32(detail))
-	inArgs[4].SetPointer(closure.Native())
-	inArgs[5].SetPointer(func_)
-	inArgs[6].SetPointer(data)
-
-	var ret gi.Argument
-
-	err := signalHandlersUnblockMatchedFunction_Set()
-	if err == nil {
-		ret = signalHandlersUnblockMatchedFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Uint32()
-
-	return retGo
-}
-
-var signalHasHandlerPendingFunction *gi.Function
-var signalHasHandlerPendingFunction_Once sync.Once
-
-func signalHasHandlerPendingFunction_Set() error {
-	var err error
-	signalHasHandlerPendingFunction_Once.Do(func() {
-		signalHasHandlerPendingFunction, err = gi.FunctionInvokerNew("GObject", "signal_has_handler_pending")
-	})
-	return err
-}
-
-// SignalHasHandlerPending is a representation of the C type g_signal_has_handler_pending.
-func SignalHasHandlerPending(instance *Object, signalId uint32, detail glib.Quark, mayBeBlocked bool) bool {
-	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(instance.Native())
-	inArgs[1].SetUint32(signalId)
-	inArgs[2].SetUint32(uint32(detail))
-	inArgs[3].SetBoolean(mayBeBlocked)
-
-	var ret gi.Argument
-
-	err := signalHasHandlerPendingFunction_Set()
-	if err == nil {
-		ret = signalHasHandlerPendingFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Boolean()
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_signal_has_handler_pending' : parameter 'detail' of type 'GLib.Quark' not supported
 
 var signalListIdsFunction *gi.Function
 var signalListIdsFunction_Once sync.Once
@@ -2704,38 +2517,7 @@ func SignalOverrideClassClosure(signalId uint32, instanceType int64, classClosur
 
 // UNSUPPORTED : C value 'g_signal_override_class_handler' : parameter 'class_handler' of type 'Callback' not supported
 
-var signalParseNameFunction *gi.Function
-var signalParseNameFunction_Once sync.Once
-
-func signalParseNameFunction_Set() error {
-	var err error
-	signalParseNameFunction_Once.Do(func() {
-		signalParseNameFunction, err = gi.FunctionInvokerNew("GObject", "signal_parse_name")
-	})
-	return err
-}
-
-// SignalParseName is a representation of the C type g_signal_parse_name.
-func SignalParseName(detailedSignal string, itype int64, forceDetailQuark bool) (bool, uint32, glib.Quark) {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetString(detailedSignal)
-	inArgs[1].SetInt64(itype)
-	inArgs[2].SetBoolean(forceDetailQuark)
-
-	var outArgs [2]gi.Argument
-	var ret gi.Argument
-
-	err := signalParseNameFunction_Set()
-	if err == nil {
-		ret = signalParseNameFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	retGo := ret.Boolean()
-	out0 := outArgs[0].Uint32()
-	out1 := glib.Quark(outArgs[1].Uint32())
-
-	return retGo, out0, out1
-}
+// UNSUPPORTED : C value 'g_signal_parse_name' : parameter 'detail_p' of type 'GLib.Quark' not supported
 
 var signalQueryFunction *gi.Function
 var signalQueryFunction_Once sync.Once
@@ -2792,31 +2574,7 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 
 // UNSUPPORTED : C value 'g_signal_set_va_marshaller' : parameter 'va_marshaller' of type 'SignalCVaMarshaller' not supported
 
-var signalStopEmissionFunction *gi.Function
-var signalStopEmissionFunction_Once sync.Once
-
-func signalStopEmissionFunction_Set() error {
-	var err error
-	signalStopEmissionFunction_Once.Do(func() {
-		signalStopEmissionFunction, err = gi.FunctionInvokerNew("GObject", "signal_stop_emission")
-	})
-	return err
-}
-
-// SignalStopEmission is a representation of the C type g_signal_stop_emission.
-func SignalStopEmission(instance *Object, signalId uint32, detail glib.Quark) {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(instance.Native())
-	inArgs[1].SetUint32(signalId)
-	inArgs[2].SetUint32(uint32(detail))
-
-	err := signalStopEmissionFunction_Set()
-	if err == nil {
-		signalStopEmissionFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'g_signal_stop_emission' : parameter 'detail' of type 'GLib.Quark' not supported
 
 var signalStopEmissionByNameFunction *gi.Function
 var signalStopEmissionByNameFunction_Once sync.Once
@@ -3776,34 +3534,7 @@ func TypeGetPlugin(type_ int64) *TypePlugin {
 	return retGo
 }
 
-var typeGetQdataFunction *gi.Function
-var typeGetQdataFunction_Once sync.Once
-
-func typeGetQdataFunction_Set() error {
-	var err error
-	typeGetQdataFunction_Once.Do(func() {
-		typeGetQdataFunction, err = gi.FunctionInvokerNew("GObject", "type_get_qdata")
-	})
-	return err
-}
-
-// TypeGetQdata is a representation of the C type g_type_get_qdata.
-func TypeGetQdata(type_ int64, quark glib.Quark) unsafe.Pointer {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetInt64(type_)
-	inArgs[1].SetUint32(uint32(quark))
-
-	var ret gi.Argument
-
-	err := typeGetQdataFunction_Set()
-	if err == nil {
-		ret = typeGetQdataFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := ret.Pointer()
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_type_get_qdata' : parameter 'quark' of type 'GLib.Quark' not supported
 
 var typeGetTypeRegistrationSerialFunction *gi.Function
 var typeGetTypeRegistrationSerialFunction_Once sync.Once
@@ -4186,33 +3917,7 @@ func TypeParent(type_ int64) int64 {
 	return retGo
 }
 
-var typeQnameFunction *gi.Function
-var typeQnameFunction_Once sync.Once
-
-func typeQnameFunction_Set() error {
-	var err error
-	typeQnameFunction_Once.Do(func() {
-		typeQnameFunction, err = gi.FunctionInvokerNew("GObject", "type_qname")
-	})
-	return err
-}
-
-// TypeQname is a representation of the C type g_type_qname.
-func TypeQname(type_ int64) glib.Quark {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetInt64(type_)
-
-	var ret gi.Argument
-
-	err := typeQnameFunction_Set()
-	if err == nil {
-		ret = typeQnameFunction.Invoke(inArgs[:], nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'g_type_qname' : return type 'GLib.Quark' not supported
 
 var typeQueryFunction *gi.Function
 var typeQueryFunction_Once sync.Once
@@ -4342,31 +4047,7 @@ func TypeRegisterStatic(parentType int64, typeName string, info *TypeInfo, flags
 
 // UNSUPPORTED : C value 'g_type_remove_interface_check' : parameter 'check_func' of type 'TypeInterfaceCheckFunc' not supported
 
-var typeSetQdataFunction *gi.Function
-var typeSetQdataFunction_Once sync.Once
-
-func typeSetQdataFunction_Set() error {
-	var err error
-	typeSetQdataFunction_Once.Do(func() {
-		typeSetQdataFunction, err = gi.FunctionInvokerNew("GObject", "type_set_qdata")
-	})
-	return err
-}
-
-// TypeSetQdata is a representation of the C type g_type_set_qdata.
-func TypeSetQdata(type_ int64, quark glib.Quark, data unsafe.Pointer) {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetInt64(type_)
-	inArgs[1].SetUint32(uint32(quark))
-	inArgs[2].SetPointer(data)
-
-	err := typeSetQdataFunction_Set()
-	if err == nil {
-		typeSetQdataFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'g_type_set_qdata' : parameter 'quark' of type 'GLib.Quark' not supported
 
 var typeTestFlagsFunction *gi.Function
 var typeTestFlagsFunction_Once sync.Once

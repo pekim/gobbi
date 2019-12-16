@@ -26,13 +26,10 @@ var goTypeValueSetterFunctions = map[string]string{
 }
 
 func (a Argument) generateValueFromObject(s *jen.Statement, objectVarName string) {
-	typ := a.Type
-	resolvedType := typ.resolvedType()
+	if a.Type.isClass() || a.Type.isRecord() || a.Type.isInterface() {
+		newFromNative := a.Type.jenNewFromNative()
 
-	if resolvedType.isClass() || resolvedType.isRecord() || resolvedType.isInterface() {
-		newFromNative := resolvedType.jenNewFromNative()
-
-		if resolvedType.isClass() || resolvedType.isInterface() {
+		if a.Type.isClass() || a.Type.isInterface() {
 
 			// GEN: WidgetNewFromNative(value0.GetObject().Native())
 			s.
@@ -51,45 +48,42 @@ func (a Argument) generateValueFromObject(s *jen.Statement, objectVarName string
 		}
 	}
 
-	if resolvedType.isBitfield() {
-		bitfield, _ := resolvedType.namespace.Bitfields.byName(resolvedType.Name)
+	if a.Type.isBitfield() {
+		bitfield, _ := a.Type.namespace.Bitfields.byName(a.Type.Name)
 		s.Params(jen.Id(bitfield.goTypeName)).
 			Params(jen.Id(objectVarName).Dot("GetInt").Call())
 
 		return
 	}
 
-	if resolvedType.isEnumeration() {
-		enum, _ := resolvedType.namespace.Enumerations.byName(resolvedType.Name)
+	if a.Type.isEnumeration() {
+		enum, _ := a.Type.namespace.Enumerations.byName(a.Type.Name)
 		s.Params(jen.Id(enum.goTypeName)).
 			Params(jen.Id(objectVarName).Dot("GetInt").Call())
 
 		return
 	}
 
-	if funcName, found := goTypeValueGetterFunctions[resolvedType.Name]; found {
+	if funcName, found := goTypeValueGetterFunctions[a.Type.Name]; found {
 		s.Id(objectVarName).Dot(funcName).Call()
 		return
 	}
 
-	if resolvedType.Name == "gpointer" {
+	if a.Type.Name == "gpointer" {
 		s.Id(objectVarName).Dot("GetPointer()")
 		return
 	}
 
-	panic(fmt.Sprintf("unable to unmarshal %s.%s from Object", resolvedType.namespace.Name, resolvedType.Name))
+	panic(fmt.Sprintf("unable to unmarshal %s.%s from Object", a.Type.namespace.Name, a.Type.Name))
 }
 
 func (a Argument) generateObjectFromValue(g *jen.Group, objectVarName string, valueVarName string) {
-	typ := a.Type
-	resolvedType := typ.resolvedType()
-
-	if funcName, found := goTypeValueSetterFunctions[resolvedType.Name]; found {
+	if funcName, found := goTypeValueSetterFunctions[a.Type.Name]; found {
 		g.Id(objectVarName).Dot(funcName).Call(jen.Id(valueVarName))
 		return
 	}
 
-	if resolvedType.isClass() {
+	if a.Type.isClass() {
 		g.Id(objectVarName).Dot("SetObject").CallFunc(func(g *jen.Group) {
 			if a.Type.Name == "Object" || a.Type.foreignName == "Object" {
 				g.Id(valueVarName)
@@ -101,16 +95,16 @@ func (a Argument) generateObjectFromValue(g *jen.Group, objectVarName string, va
 		return
 	}
 
-	if resolvedType.isRecord() {
+	if a.Type.isRecord() {
 		g.Id(objectVarName).Dot("SetBoxed").Call(
 			jen.Id(valueVarName).Dot("Native").Call())
 		return
 	}
 
-	if resolvedType.isEnumeration() {
+	if a.Type.isEnumeration() {
 		g.Id(objectVarName).Dot("SetInt").Call(jen.Int32().Params(jen.Id(valueVarName)))
 		return
 	}
 
-	panic(fmt.Sprintf("unable to unmarshal value to %s.%s Object", resolvedType.namespace.Name, resolvedType.Name))
+	panic(fmt.Sprintf("unable to unmarshal value to %s.%s Object", a.Type.namespace.Name, a.Type.Name))
 }

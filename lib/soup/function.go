@@ -954,31 +954,7 @@ func HeadersParseStatusLine(statusLine string) (bool, HTTPVersion, uint32, strin
 	return retGo, out0, out1, out2
 }
 
-var httpErrorQuarkFunction *gi.Function
-var httpErrorQuarkFunction_Once sync.Once
-
-func httpErrorQuarkFunction_Set() error {
-	var err error
-	httpErrorQuarkFunction_Once.Do(func() {
-		httpErrorQuarkFunction, err = gi.FunctionInvokerNew("Soup", "http_error_quark")
-	})
-	return err
-}
-
-// HttpErrorQuark is a representation of the C type soup_http_error_quark.
-func HttpErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := httpErrorQuarkFunction_Set()
-	if err == nil {
-		ret = httpErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'soup_http_error_quark' : return type 'GLib.Quark' not supported
 
 var messageHeadersIterInitFunction *gi.Function
 var messageHeadersIterInitFunction_Once sync.Once
@@ -1008,57 +984,9 @@ func MessageHeadersIterInit(hdrs *MessageHeaders) *MessageHeadersIter {
 	return out0
 }
 
-var requestErrorQuarkFunction *gi.Function
-var requestErrorQuarkFunction_Once sync.Once
+// UNSUPPORTED : C value 'soup_request_error_quark' : return type 'GLib.Quark' not supported
 
-func requestErrorQuarkFunction_Set() error {
-	var err error
-	requestErrorQuarkFunction_Once.Do(func() {
-		requestErrorQuarkFunction, err = gi.FunctionInvokerNew("Soup", "request_error_quark")
-	})
-	return err
-}
-
-// RequestErrorQuark is a representation of the C type soup_request_error_quark.
-func RequestErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := requestErrorQuarkFunction_Set()
-	if err == nil {
-		ret = requestErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
-
-var requesterErrorQuarkFunction *gi.Function
-var requesterErrorQuarkFunction_Once sync.Once
-
-func requesterErrorQuarkFunction_Set() error {
-	var err error
-	requesterErrorQuarkFunction_Once.Do(func() {
-		requesterErrorQuarkFunction, err = gi.FunctionInvokerNew("Soup", "requester_error_quark")
-	})
-	return err
-}
-
-// RequesterErrorQuark is a representation of the C type soup_requester_error_quark.
-func RequesterErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := requesterErrorQuarkFunction_Set()
-	if err == nil {
-		ret = requesterErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'soup_requester_error_quark' : return type 'GLib.Quark' not supported
 
 var statusGetPhraseFunction *gi.Function
 var statusGetPhraseFunction_Once sync.Once
@@ -1201,31 +1129,7 @@ func TldDomainIsPublicSuffix(domain string) bool {
 	return retGo
 }
 
-var tldErrorQuarkFunction *gi.Function
-var tldErrorQuarkFunction_Once sync.Once
-
-func tldErrorQuarkFunction_Set() error {
-	var err error
-	tldErrorQuarkFunction_Once.Do(func() {
-		tldErrorQuarkFunction, err = gi.FunctionInvokerNew("Soup", "tld_error_quark")
-	})
-	return err
-}
-
-// TldErrorQuark is a representation of the C type soup_tld_error_quark.
-func TldErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := tldErrorQuarkFunction_Set()
-	if err == nil {
-		ret = tldErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'soup_tld_error_quark' : return type 'GLib.Quark' not supported
 
 var tldGetBaseDomainFunction *gi.Function
 var tldGetBaseDomainFunction_Once sync.Once
@@ -1477,31 +1381,7 @@ func WebsocketClientVerifyHandshake(msg *Message) bool {
 
 // UNSUPPORTED : C value 'soup_websocket_client_verify_handshake_with_extensions' : parameter 'supported_extensions' of type 'nil' not supported
 
-var websocketErrorGetQuarkFunction *gi.Function
-var websocketErrorGetQuarkFunction_Once sync.Once
-
-func websocketErrorGetQuarkFunction_Set() error {
-	var err error
-	websocketErrorGetQuarkFunction_Once.Do(func() {
-		websocketErrorGetQuarkFunction, err = gi.FunctionInvokerNew("Soup", "websocket_error_get_quark")
-	})
-	return err
-}
-
-// WebsocketErrorGetQuark is a representation of the C type soup_websocket_error_get_quark.
-func WebsocketErrorGetQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := websocketErrorGetQuarkFunction_Set()
-	if err == nil {
-		ret = websocketErrorGetQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'soup_websocket_error_get_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'soup_websocket_server_check_handshake' : parameter 'protocols' of type 'nil' not supported
 
@@ -1600,61 +1480,13 @@ func XmlrpcBuildResponse(value *glib.Variant) string {
 	return retGo
 }
 
-var xmlrpcErrorQuarkFunction *gi.Function
-var xmlrpcErrorQuarkFunction_Once sync.Once
-
-func xmlrpcErrorQuarkFunction_Set() error {
-	var err error
-	xmlrpcErrorQuarkFunction_Once.Do(func() {
-		xmlrpcErrorQuarkFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_error_quark")
-	})
-	return err
-}
-
-// XmlrpcErrorQuark is a representation of the C type soup_xmlrpc_error_quark.
-func XmlrpcErrorQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := xmlrpcErrorQuarkFunction_Set()
-	if err == nil {
-		ret = xmlrpcErrorQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'soup_xmlrpc_error_quark' : return type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_extract_method_call' : parameter '...' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_extract_method_response' : parameter '...' of type 'nil' not supported
 
-var xmlrpcFaultQuarkFunction *gi.Function
-var xmlrpcFaultQuarkFunction_Once sync.Once
-
-func xmlrpcFaultQuarkFunction_Set() error {
-	var err error
-	xmlrpcFaultQuarkFunction_Once.Do(func() {
-		xmlrpcFaultQuarkFunction, err = gi.FunctionInvokerNew("Soup", "xmlrpc_fault_quark")
-	})
-	return err
-}
-
-// XmlrpcFaultQuark is a representation of the C type soup_xmlrpc_fault_quark.
-func XmlrpcFaultQuark() glib.Quark {
-
-	var ret gi.Argument
-
-	err := xmlrpcFaultQuarkFunction_Set()
-	if err == nil {
-		ret = xmlrpcFaultQuarkFunction.Invoke(nil, nil)
-	}
-
-	retGo := glib.Quark(ret.Uint32())
-
-	return retGo
-}
+// UNSUPPORTED : C value 'soup_xmlrpc_fault_quark' : return type 'GLib.Quark' not supported
 
 var xmlrpcMessageNewFunction *gi.Function
 var xmlrpcMessageNewFunction_Once sync.Once

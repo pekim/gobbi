@@ -8150,40 +8150,11 @@ func (recv *DBusMethodInvocation) ReturnDbusError(errorName string, errorMessage
 	return
 }
 
-// UNSUPPORTED : C value 'g_dbus_method_invocation_return_error' : parameter '...' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_dbus_method_invocation_return_error' : parameter 'domain' of type 'GLib.Quark' not supported
 
-var dBusMethodInvocationReturnErrorLiteralFunction *gi.Function
-var dBusMethodInvocationReturnErrorLiteralFunction_Once sync.Once
+// UNSUPPORTED : C value 'g_dbus_method_invocation_return_error_literal' : parameter 'domain' of type 'GLib.Quark' not supported
 
-func dBusMethodInvocationReturnErrorLiteralFunction_Set() error {
-	var err error
-	dBusMethodInvocationReturnErrorLiteralFunction_Once.Do(func() {
-		err = dBusMethodInvocationObject_Set()
-		if err != nil {
-			return
-		}
-		dBusMethodInvocationReturnErrorLiteralFunction, err = dBusMethodInvocationObject.InvokerNew("return_error_literal")
-	})
-	return err
-}
-
-// ReturnErrorLiteral is a representation of the C type g_dbus_method_invocation_return_error_literal.
-func (recv *DBusMethodInvocation) ReturnErrorLiteral(domain glib.Quark, code int32, message string) {
-	var inArgs [4]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetUint32(uint32(domain))
-	inArgs[2].SetInt32(code)
-	inArgs[3].SetString(message)
-
-	err := dBusMethodInvocationReturnErrorLiteralFunction_Set()
-	if err == nil {
-		dBusMethodInvocationReturnErrorLiteralFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
-
-// UNSUPPORTED : C value 'g_dbus_method_invocation_return_error_valist' : parameter 'var_args' of type 'va_list' not supported
+// UNSUPPORTED : C value 'g_dbus_method_invocation_return_error_valist' : parameter 'domain' of type 'GLib.Quark' not supported
 
 var dBusMethodInvocationReturnGerrorFunction *gi.Function
 var dBusMethodInvocationReturnGerrorFunction_Once sync.Once
@@ -27938,9 +27909,9 @@ func (recv *SimpleAsyncResult) SetCheckCancellable(checkCancellable *Cancellable
 	return
 }
 
-// UNSUPPORTED : C value 'g_simple_async_result_set_error' : parameter '...' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_simple_async_result_set_error' : parameter 'domain' of type 'GLib.Quark' not supported
 
-// UNSUPPORTED : C value 'g_simple_async_result_set_error_va' : parameter 'args' of type 'va_list' not supported
+// UNSUPPORTED : C value 'g_simple_async_result_set_error_va' : parameter 'domain' of type 'GLib.Quark' not supported
 
 var simpleAsyncResultSetFromErrorFunction *gi.Function
 var simpleAsyncResultSetFromErrorFunction_Once sync.Once
@@ -34590,7 +34561,7 @@ func (recv *Task) ReturnInt(result int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_task_return_new_error' : parameter '...' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_task_return_new_error' : parameter 'domain' of type 'GLib.Quark' not supported
 
 // UNSUPPORTED : C value 'g_task_return_pointer' : parameter 'result_destroy' of type 'GLib.DestroyNotify' not supported
 

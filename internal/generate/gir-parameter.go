@@ -41,8 +41,16 @@ func (p *Parameter) init(ns *Namespace) {
 		//}
 
 		p.Type.init(ns)
-	}
 
+		if p.Type.isAliasX() {
+			name := p.Type.Name
+			typ := *(p.Type.resolvedTypeX())
+
+			p.Type = &typ
+			p.Type.Name = name
+			p.Type.init(ns)
+		}
+	}
 }
 
 func (p Parameter) supported() (bool, string) {
@@ -87,22 +95,6 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 			Call(goVar)
 
 		return
-	}
-
-	if p.Type.isAlias() {
-		typ := p.Type.resolvedType()
-		goType, _ := typ.jenGoType()
-
-		if typ.isRecord() || typ.isInterface() {
-			goVar = jen.
-				Parens(goType).
-				Parens(goVar).
-				Dot(nativeAccessorName).Call()
-		} else {
-			goVar = jen.
-				Add(goType).
-				Parens(goVar)
-		}
 	}
 
 	if p.Type.isBitfield() || p.Type.isEnumeration() {
