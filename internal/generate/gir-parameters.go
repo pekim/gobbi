@@ -8,48 +8,49 @@ import (
 type Parameters []*Parameter
 
 func (pp Parameters) init(ns *Namespace) {
-	//pp.fixupArgcArgv()
-	//pp.fixupStringLengthParams()
-	//pp.fixupFormatArgs()
-
-	for _, param := range pp {
-		if param.Array == nil {
-			continue
-		}
-		array := param.Array
-
-		if array.Length != nil {
-			arrayParam := param
-			lengthParam := pp[*array.Length]
-
-			// Mutually reference the array and length params.
-			lengthParam.lengthForParam = arrayParam
-			arrayParam.lengthParam = lengthParam
-		}
-	}
+	pp.pairUpArrayLengthParams()
+	pp.pairUpArgcArgvParams()
 
 	for _, param := range pp {
 		param.init(ns)
-
-		//if param.Array != nil {
-		//	if param.Array.Type != nil {
-		//		param.Array.Type.init(ns)
-		//		if param.Array.Type.generator == nil && param.Name == "files" {
-		//			fmt.Println(param.Name, param.Array.Type.CType)
-		//			panic("xxx")
-		//		}
-		//	}
-		//
-		//	if param.Array.Length != nil {
-		//		// Provide an array length param with a reference to its array param.
-		//		paramIndex := *param.Array.Length
-		//		pp[paramIndex].arrayLengthFor = param
-		//
-		//		// And the reverse.
-		//		param.Array.lengthParam = pp[paramIndex]
-		//	}
-		//}
 	}
+}
+
+func (pp Parameters) pairUpArrayLengthParams() {
+	for _, param := range pp {
+		if param.Array == nil || param.Array.Length == nil {
+			continue
+		}
+
+		arrayParam := param
+		lengthParam := pp[*param.Array.Length]
+
+		// Mutually reference the array and length params.
+		lengthParam.lengthForParam = arrayParam
+		arrayParam.lengthParam = lengthParam
+	}
+}
+
+func (pp Parameters) pairUpArgcArgvParams() {
+	argcParam, foundArgc := pp.byName("argc")
+	argvParam, foundArgv := pp.byName("argv")
+	if !foundArgc || !foundArgv {
+		return
+	}
+
+	// Mutually reference the argc and argv params.
+	argcParam.argvParam = argvParam
+	argvParam.argcParam = argcParam
+}
+
+func (pp Parameters) byName(name string) (*Parameter, bool) {
+	for _, param := range pp {
+		if param.Name == name {
+			return param, true
+		}
+	}
+
+	return nil, false
 }
 
 func (pp Parameters) supported() (bool, string) {

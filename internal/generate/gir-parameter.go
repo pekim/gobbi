@@ -19,6 +19,8 @@ type Parameter struct {
 
 	lengthParam    *Parameter
 	lengthForParam *Parameter
+	argcParam      *Parameter
+	argvParam      *Parameter
 }
 
 func (p *Parameter) init(ns *Namespace) {
