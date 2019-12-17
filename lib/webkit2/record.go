@@ -4551,7 +4551,7 @@ func (recv *NetworkProxySettings) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'webkit_network_proxy_settings_new' : parameter 'ignore_hosts' of type 'nil' not supported
+// UNSUPPORTED : C value 'webkit_network_proxy_settings_new' : array parameter 'ignore_hosts'
 
 var networkProxySettingsAddProxyForSchemeFunction *gi.Function
 var networkProxySettingsAddProxyForSchemeFunction_Once sync.Once
@@ -8229,9 +8229,9 @@ func (recv *UserScript) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'webkit_user_script_new' : parameter 'whitelist' of type 'nil' not supported
+// UNSUPPORTED : C value 'webkit_user_script_new' : array parameter 'whitelist'
 
-// UNSUPPORTED : C value 'webkit_user_script_new_for_world' : parameter 'whitelist' of type 'nil' not supported
+// UNSUPPORTED : C value 'webkit_user_script_new_for_world' : array parameter 'whitelist'
 
 var userScriptRefFunction *gi.Function
 var userScriptRefFunction_Once sync.Once
@@ -8337,9 +8337,9 @@ func (recv *UserStyleSheet) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'webkit_user_style_sheet_new' : parameter 'whitelist' of type 'nil' not supported
+// UNSUPPORTED : C value 'webkit_user_style_sheet_new' : array parameter 'whitelist'
 
-// UNSUPPORTED : C value 'webkit_user_style_sheet_new_for_world' : parameter 'whitelist' of type 'nil' not supported
+// UNSUPPORTED : C value 'webkit_user_style_sheet_new_for_world' : array parameter 'whitelist'
 
 var userStyleSheetRefFunction *gi.Function
 var userStyleSheetRefFunction_Once sync.Once

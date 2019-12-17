@@ -47,6 +47,10 @@ func (p *Parameter) init(ns *Namespace) {
 
 func (p Parameter) supported() (bool, string) {
 	if !p.isSupported() {
+		if p.Array != nil {
+			return false, fmt.Sprintf("array parameter '%s'", p.Name)
+		}
+
 		return false, fmt.Sprintf("parameter '%s' of type '%s' not supported", p.Name, p.Type)
 	}
 

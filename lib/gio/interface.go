@@ -960,7 +960,7 @@ func (recv *ActionMap) AddAction(action *Action) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_action_map_add_action_entries' : parameter 'entries' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_action_map_add_action_entries' : array parameter 'entries'
 
 var actionMapLookupActionFunction *gi.Function
 var actionMapLookupActionFunction_Once sync.Once
@@ -2174,7 +2174,7 @@ func (recv *Converter) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_converter_convert' : parameter 'inbuf' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_converter_convert' : array parameter 'inbuf'
 
 var converterResetFunction *gi.Function
 var converterResetFunction_Once sync.Once
@@ -2883,9 +2883,9 @@ func (recv *DatagramBased) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_datagram_based_create_source' : parameter 'condition' of type 'GLib.IOCondition' not supported
 
-// UNSUPPORTED : C value 'g_datagram_based_receive_messages' : parameter 'messages' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_datagram_based_receive_messages' : array parameter 'messages'
 
-// UNSUPPORTED : C value 'g_datagram_based_send_messages' : parameter 'messages' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_datagram_based_send_messages' : array parameter 'messages'
 
 var desktopAppInfoLookupInterface *gi.Interface
 var desktopAppInfoLookupInterface_Once sync.Once
@@ -4501,7 +4501,7 @@ func (recv *DtlsConnection) HandshakeFinish(result *AsyncResult) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dtls_connection_set_advertised_protocols' : parameter 'protocols' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_dtls_connection_set_advertised_protocols' : array parameter 'protocols'
 
 var dtlsConnectionSetCertificateFunction *gi.Function
 var dtlsConnectionSetCertificateFunction_Once sync.Once
@@ -5987,15 +5987,15 @@ func (recv *File) LoadBytesFinish(result *AsyncResult) (*glib.Bytes, string) {
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'g_file_load_contents' : parameter 'contents' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_file_load_contents' : array parameter 'contents'
 
 // UNSUPPORTED : C value 'g_file_load_contents_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_load_contents_finish' : parameter 'contents' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_file_load_contents_finish' : array parameter 'contents'
 
 // UNSUPPORTED : C value 'g_file_load_partial_contents_async' : parameter 'read_more_callback' of type 'FileReadMoreCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_load_partial_contents_finish' : parameter 'contents' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_file_load_partial_contents_finish' : array parameter 'contents'
 
 var fileMakeDirectoryFunction *gi.Function
 var fileMakeDirectoryFunction_Once sync.Once
@@ -6928,9 +6928,9 @@ func (recv *File) Replace(etag string, makeBackup bool, flags FileCreateFlags, c
 
 // UNSUPPORTED : C value 'g_file_replace_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_replace_contents' : parameter 'contents' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_file_replace_contents' : array parameter 'contents'
 
-// UNSUPPORTED : C value 'g_file_replace_contents_async' : parameter 'contents' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_file_replace_contents_async' : array parameter 'contents'
 
 // UNSUPPORTED : C value 'g_file_replace_contents_bytes_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
@@ -9550,7 +9550,7 @@ func (recv *PollableInputStream) IsReadable() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_pollable_input_stream_read_nonblocking' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_pollable_input_stream_read_nonblocking' : array parameter 'buffer'
 
 var pollableOutputStreamInterface *gi.Interface
 var pollableOutputStreamInterface_Once sync.Once
@@ -9693,9 +9693,9 @@ func (recv *PollableOutputStream) IsWritable() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_pollable_output_stream_write_nonblocking' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_pollable_output_stream_write_nonblocking' : array parameter 'buffer'
 
-// UNSUPPORTED : C value 'g_pollable_output_stream_writev_nonblocking' : parameter 'vectors' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_pollable_output_stream_writev_nonblocking' : array parameter 'vectors'
 
 var proxyInterface *gi.Interface
 var proxyInterface_Once sync.Once

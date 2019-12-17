@@ -2549,7 +2549,7 @@ func (recv *Relation) SetFieldRelationship(value RelationType) {
 	gi.ObjectFieldSet(relationObject, recv.Native(), "relationship", argValue)
 }
 
-// UNSUPPORTED : C value 'atk_relation_new' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'atk_relation_new' : array parameter 'targets'
 
 var relationAddTargetFunction *gi.Function
 var relationAddTargetFunction_Once sync.Once
@@ -3352,7 +3352,7 @@ func (recv *StateSet) AddState(type_ StateType) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_state_set_add_states' : parameter 'types' of type 'nil' not supported
+// UNSUPPORTED : C value 'atk_state_set_add_states' : array parameter 'types'
 
 var stateSetAndSetsFunction *gi.Function
 var stateSetAndSetsFunction_Once sync.Once
@@ -3448,7 +3448,7 @@ func (recv *StateSet) ContainsState(type_ StateType) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_state_set_contains_states' : parameter 'types' of type 'nil' not supported
+// UNSUPPORTED : C value 'atk_state_set_contains_states' : array parameter 'types'
 
 var stateSetIsEmptyFunction *gi.Function
 var stateSetIsEmptyFunction_Once sync.Once

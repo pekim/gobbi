@@ -2420,7 +2420,7 @@ func (recv *Coverage) Set(index int32, level CoverageLevel) {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_coverage_to_bytes' : parameter 'bytes' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_coverage_to_bytes' : array parameter 'bytes'
 
 var coverageUnrefFunction *gi.Function
 var coverageUnrefFunction_Once sync.Once
@@ -5267,9 +5267,9 @@ func (recv *GlyphItem) Free() {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_glyph_item_get_logical_widths' : parameter 'logical_widths' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_glyph_item_get_logical_widths' : array parameter 'logical_widths'
 
-// UNSUPPORTED : C value 'pango_glyph_item_letter_space' : parameter 'log_attrs' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_glyph_item_letter_space' : array parameter 'log_attrs'
 
 var glyphItemSplitFunction *gi.Function
 var glyphItemSplitFunction_Once sync.Once
@@ -5919,7 +5919,7 @@ func (recv *GlyphString) Free() {
 	return
 }
 
-// UNSUPPORTED : C value 'pango_glyph_string_get_logical_widths' : parameter 'logical_widths' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_glyph_string_get_logical_widths' : array parameter 'logical_widths'
 
 var glyphStringGetWidthFunction *gi.Function
 var glyphStringGetWidthFunction_Once sync.Once
@@ -7542,7 +7542,7 @@ func (recv *LayoutLine) GetPixelExtents() (*Rectangle, *Rectangle) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'pango_layout_line_get_x_ranges' : parameter 'ranges' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_layout_line_get_x_ranges' : array parameter 'ranges'
 
 var layoutLineIndexToXFunction *gi.Function
 var layoutLineIndexToXFunction_Once sync.Once
@@ -9313,7 +9313,7 @@ func (recv *TabArray) GetTab(tabIndex int32) (TabAlign, int32) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'pango_tab_array_get_tabs' : parameter 'locations' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_tab_array_get_tabs' : array parameter 'locations'
 
 var tabArrayResizeFunction *gi.Function
 var tabArrayResizeFunction_Once sync.Once

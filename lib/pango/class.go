@@ -453,7 +453,7 @@ func (recv *Context) GetSerial() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_context_list_families' : parameter 'families' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_context_list_families' : array parameter 'families'
 
 var contextLoadFontFunction *gi.Function
 var contextLoadFontFunction_Once sync.Once
@@ -1403,7 +1403,7 @@ func (recv *FontFace) IsSynthesized() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_font_face_list_sizes' : parameter 'sizes' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_font_face_list_sizes' : array parameter 'sizes'
 
 var fontFamilyObject *gi.Object
 var fontFamilyObject_Once sync.Once
@@ -1543,7 +1543,7 @@ func (recv *FontFamily) IsMonospace() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_font_family_list_faces' : parameter 'faces' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_font_family_list_faces' : array parameter 'faces'
 
 var fontMapObject *gi.Object
 var fontMapObject_Once sync.Once
@@ -1743,7 +1743,7 @@ func (recv *FontMap) GetShapeEngineType() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_font_map_list_families' : parameter 'families' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_font_map_list_families' : array parameter 'families'
 
 var fontMapLoadFontFunction *gi.Function
 var fontMapLoadFontFunction_Once sync.Once
@@ -2882,7 +2882,7 @@ func (recv *Layout) GetLinesReadonly() *glib.SList {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_layout_get_log_attrs' : parameter 'attrs' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_layout_get_log_attrs' : array parameter 'attrs'
 
 var layoutGetLogAttrsReadonlyFunction *gi.Function
 var layoutGetLogAttrsReadonlyFunction_Once sync.Once

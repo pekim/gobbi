@@ -4255,7 +4255,7 @@ func (recv *FileChooserRequest) GetSelectedFiles() {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_file_chooser_request_select_files' : parameter 'files' of type 'nil' not supported
+// UNSUPPORTED : C value 'webkit_file_chooser_request_select_files' : array parameter 'files'
 
 var findControllerObject *gi.Object
 var findControllerObject_Once sync.Once
@@ -4777,7 +4777,7 @@ func (recv *FormSubmissionRequest) GetTextFields() *glib.HashTable {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_form_submission_request_list_text_fields' : parameter 'field_names' of type 'nil' not supported
+// UNSUPPORTED : C value 'webkit_form_submission_request_list_text_fields' : array parameter 'field_names'
 
 var formSubmissionRequestSubmitFunction *gi.Function
 var formSubmissionRequestSubmitFunction_Once sync.Once
@@ -14563,7 +14563,7 @@ func (recv *WebContext) SetNetworkProxySettings(proxyMode NetworkProxyMode, prox
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_set_preferred_languages' : parameter 'languages' of type 'nil' not supported
+// UNSUPPORTED : C value 'webkit_web_context_set_preferred_languages' : array parameter 'languages'
 
 var webContextSetProcessModelFunction *gi.Function
 var webContextSetProcessModelFunction_Once sync.Once
@@ -14652,7 +14652,7 @@ func (recv *WebContext) SetSpellCheckingEnabled(enabled bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_set_spell_checking_languages' : parameter 'languages' of type 'nil' not supported
+// UNSUPPORTED : C value 'webkit_web_context_set_spell_checking_languages' : array parameter 'languages'
 
 var webContextSetTlsErrorsPolicyFunction *gi.Function
 var webContextSetTlsErrorsPolicyFunction_Once sync.Once

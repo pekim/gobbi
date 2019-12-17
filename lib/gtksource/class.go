@@ -6717,7 +6717,7 @@ func (recv *LanguageManager) GuessLanguage(filename string, contentType string) 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_language_manager_set_search_path' : parameter 'dirs' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_source_language_manager_set_search_path' : array parameter 'dirs'
 
 var mapObject *gi.Object
 var mapObject_Once sync.Once
@@ -11664,7 +11664,7 @@ func (recv *StyleSchemeManager) PrependSearchPath(path string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_style_scheme_manager_set_search_path' : parameter 'path' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_source_style_scheme_manager_set_search_path' : array parameter 'path'
 
 var tagObject *gi.Object
 var tagObject_Once sync.Once

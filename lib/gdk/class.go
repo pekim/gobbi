@@ -839,7 +839,7 @@ func (recv *Device) GetAxes() AxisFlags {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_device_get_axis' : parameter 'axes' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_device_get_axis' : array parameter 'axes'
 
 var deviceGetAxisUseFunction *gi.Function
 var deviceGetAxisUseFunction_Once sync.Once
@@ -874,7 +874,7 @@ func (recv *Device) GetAxisUse(index uint32) AxisUse {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_device_get_axis_value' : parameter 'axes' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_device_get_axis_value' : array parameter 'axes'
 
 var deviceGetDeviceTypeFunction *gi.Function
 var deviceGetDeviceTypeFunction_Once sync.Once
@@ -972,7 +972,7 @@ func (recv *Device) GetHasCursor() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_device_get_history' : parameter 'events' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_device_get_history' : array parameter 'events'
 
 var deviceGetKeyFunction *gi.Function
 var deviceGetKeyFunction_Once sync.Once
@@ -1334,7 +1334,7 @@ func (recv *Device) GetSource() InputSource {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_device_get_state' : parameter 'axes' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_device_get_state' : array parameter 'axes'
 
 var deviceGetVendorIdFunction *gi.Function
 var deviceGetVendorIdFunction_Once sync.Once
@@ -3199,7 +3199,7 @@ func (recv *Display) SetDoubleClickTime(msec uint32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_display_store_clipboard' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_display_store_clipboard' : array parameter 'targets'
 
 var displaySupportsClipboardPersistenceFunction *gi.Function
 var displaySupportsClipboardPersistenceFunction_Once sync.Once
@@ -5662,9 +5662,9 @@ func (recv *Keymap) GetCapsLockState() bool {
 
 // UNSUPPORTED : C value 'gdk_keymap_get_direction' : return type 'Pango.Direction' not supported
 
-// UNSUPPORTED : C value 'gdk_keymap_get_entries_for_keycode' : parameter 'keys' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_keymap_get_entries_for_keycode' : array parameter 'keys'
 
-// UNSUPPORTED : C value 'gdk_keymap_get_entries_for_keyval' : parameter 'keys' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_keymap_get_entries_for_keyval' : array parameter 'keys'
 
 var keymapGetModifierMaskFunction *gi.Function
 var keymapGetModifierMaskFunction_Once sync.Once

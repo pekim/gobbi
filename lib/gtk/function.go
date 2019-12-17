@@ -57,7 +57,7 @@ func AccelGroupsFromObject(object_ *gobject.Object) *glib.SList {
 
 // UNSUPPORTED : C value 'gtk_accelerator_parse' : parameter 'accelerator_mods' of type 'Gdk.ModifierType' not supported
 
-// UNSUPPORTED : C value 'gtk_accelerator_parse_with_keycode' : parameter 'accelerator_codes' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_accelerator_parse_with_keycode' : array parameter 'accelerator_codes'
 
 // UNSUPPORTED : C value 'gtk_accelerator_set_default_mod_mask' : parameter 'default_mod_mask' of type 'Gdk.ModifierType' not supported
 
@@ -1344,11 +1344,11 @@ func IconThemeErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_init' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_init' : array parameter 'argv'
 
-// UNSUPPORTED : C value 'gtk_init_check' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_init_check' : array parameter 'argv'
 
-// UNSUPPORTED : C value 'gtk_init_with_args' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_init_with_args' : array parameter 'argv'
 
 // UNSUPPORTED : C value 'gtk_key_snooper_install' : parameter 'snooper' of type 'KeySnoopFunc' not supported
 
@@ -2188,7 +2188,7 @@ func PaperSizeGetPaperSizes(includeCustom bool) *glib.List {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_parse_args' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_parse_args' : array parameter 'argv'
 
 var printErrorQuarkFunction *gi.Function
 var printErrorQuarkFunction_Once sync.Once
@@ -2940,7 +2940,7 @@ func RcScannerNew() *glib.Scanner {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_rc_set_default_files' : parameter 'filenames' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_rc_set_default_files' : array parameter 'filenames'
 
 var recentChooserErrorQuarkFunction *gi.Function
 var recentChooserErrorQuarkFunction_Once sync.Once
@@ -3583,7 +3583,7 @@ func SelectionAddTarget(widget *Widget, selection *gdk.Atom, target *gdk.Atom, i
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_selection_add_targets' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_selection_add_targets' : array parameter 'targets'
 
 var selectionClearTargetsFunction *gi.Function
 var selectionClearTargetsFunction_Once sync.Once
@@ -3812,9 +3812,9 @@ func ShowUriOnWindow(parent *Window, uri string, timestamp uint32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_stock_add' : parameter 'items' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_stock_add' : array parameter 'items'
 
-// UNSUPPORTED : C value 'gtk_stock_add_static' : parameter 'items' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_stock_add_static' : array parameter 'items'
 
 var stockListIdsFunction *gi.Function
 var stockListIdsFunction_Once sync.Once
@@ -3874,7 +3874,7 @@ func StockLookup(stockId string) (bool, *StockItem) {
 
 // UNSUPPORTED : C value 'gtk_stock_set_translate_func' : parameter 'func' of type 'TranslateFunc' not supported
 
-// UNSUPPORTED : C value 'gtk_target_table_free' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_target_table_free' : array parameter 'targets'
 
 var targetTableNewFromListFunction *gi.Function
 var targetTableNewFromListFunction_Once sync.Once
@@ -3904,13 +3904,13 @@ func TargetTableNewFromList(list *TargetList) int32 {
 	return out0
 }
 
-// UNSUPPORTED : C value 'gtk_targets_include_image' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_targets_include_image' : array parameter 'targets'
 
-// UNSUPPORTED : C value 'gtk_targets_include_rich_text' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_targets_include_rich_text' : array parameter 'targets'
 
-// UNSUPPORTED : C value 'gtk_targets_include_text' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_targets_include_text' : array parameter 'targets'
 
-// UNSUPPORTED : C value 'gtk_targets_include_uri' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_targets_include_uri' : array parameter 'targets'
 
 var testCreateSimpleWindowFunction *gi.Function
 var testCreateSimpleWindowFunction_Once sync.Once
@@ -4033,7 +4033,7 @@ func TestFindWidget(widget *Widget, labelPattern string, widgetType int64) *Widg
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_test_init' : parameter 'argvp' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_test_init' : array parameter 'argvp'
 
 var testListAllTypesFunction *gi.Function
 var testListAllTypesFunction_Once sync.Once
@@ -4328,7 +4328,7 @@ func TreeRowReferenceInserted(proxy *gobject.Object, path *TreePath) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tree_row_reference_reordered' : parameter 'new_order' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_tree_row_reference_reordered' : array parameter 'new_order'
 
 var treeSetRowDragDataFunction *gi.Function
 var treeSetRowDragDataFunction_Once sync.Once

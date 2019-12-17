@@ -1443,9 +1443,9 @@ func ValueHashNew() *glib.HashTable {
 
 // UNSUPPORTED : C value 'soup_value_hash_new_with_vals' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake' : parameter 'protocols' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake' : array parameter 'protocols'
 
-// UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake_with_extensions' : parameter 'protocols' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake_with_extensions' : array parameter 'protocols'
 
 var websocketClientVerifyHandshakeFunction *gi.Function
 var websocketClientVerifyHandshakeFunction_Once sync.Once
@@ -1475,7 +1475,7 @@ func WebsocketClientVerifyHandshake(msg *Message) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_websocket_client_verify_handshake_with_extensions' : parameter 'supported_extensions' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_websocket_client_verify_handshake_with_extensions' : array parameter 'supported_extensions'
 
 var websocketErrorGetQuarkFunction *gi.Function
 var websocketErrorGetQuarkFunction_Once sync.Once
@@ -1503,17 +1503,17 @@ func WebsocketErrorGetQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_websocket_server_check_handshake' : parameter 'protocols' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_websocket_server_check_handshake' : array parameter 'protocols'
 
-// UNSUPPORTED : C value 'soup_websocket_server_check_handshake_with_extensions' : parameter 'protocols' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_websocket_server_check_handshake_with_extensions' : array parameter 'protocols'
 
-// UNSUPPORTED : C value 'soup_websocket_server_process_handshake' : parameter 'protocols' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_websocket_server_process_handshake' : array parameter 'protocols'
 
-// UNSUPPORTED : C value 'soup_websocket_server_process_handshake_with_extensions' : parameter 'protocols' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_websocket_server_process_handshake_with_extensions' : array parameter 'protocols'
 
 // UNSUPPORTED : C value 'soup_xmlrpc_build_fault' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_xmlrpc_build_method_call' : parameter 'params' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_xmlrpc_build_method_call' : array parameter 'params'
 
 var xmlrpcBuildMethodResponseFunction *gi.Function
 var xmlrpcBuildMethodResponseFunction_Once sync.Once

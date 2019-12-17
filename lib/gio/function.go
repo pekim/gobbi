@@ -871,7 +871,7 @@ func ContentTypeGetSymbolicIcon(type_ string) *Icon {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_content_type_guess' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_content_type_guess' : array parameter 'data'
 
 var contentTypeGuessForTreeFunction *gi.Function
 var contentTypeGuessForTreeFunction_Once sync.Once
@@ -983,7 +983,7 @@ func ContentTypeIsUnknown(type_ string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_content_type_set_mime_dirs' : parameter 'dirs' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_content_type_set_mime_dirs' : array parameter 'dirs'
 
 var contentTypesGetRegisteredFunction *gi.Function
 var contentTypesGetRegisteredFunction_Once sync.Once
@@ -1131,7 +1131,7 @@ func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStre
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'g_dbus_annotation_info_lookup' : parameter 'annotations' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_dbus_annotation_info_lookup' : array parameter 'annotations'
 
 var dbusErrorEncodeGerrorFunction *gi.Function
 var dbusErrorEncodeGerrorFunction_Once sync.Once
@@ -1302,7 +1302,7 @@ func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorNa
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : parameter 'entries' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_dbus_error_register_error_domain' : array parameter 'entries'
 
 var dbusErrorStripRemoteErrorFunction *gi.Function
 var dbusErrorStripRemoteErrorFunction_Once sync.Once
@@ -1954,7 +1954,7 @@ func IconNewForString(str string) *Icon {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_initable_newv' : parameter 'parameters' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_initable_newv' : array parameter 'parameters'
 
 var ioErrorFromErrnoFunction *gi.Function
 var ioErrorFromErrnoFunction_Once sync.Once
@@ -2415,11 +2415,11 @@ func PollableSourceNewFull(pollableStream *gobject.Object, childSource *glib.Sou
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_pollable_stream_read' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_pollable_stream_read' : array parameter 'buffer'
 
-// UNSUPPORTED : C value 'g_pollable_stream_write' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_pollable_stream_write' : array parameter 'buffer'
 
-// UNSUPPORTED : C value 'g_pollable_stream_write_all' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_pollable_stream_write_all' : array parameter 'buffer'
 
 var proxyGetDefaultForProtocolFunction *gi.Function
 var proxyGetDefaultForProtocolFunction_Once sync.Once

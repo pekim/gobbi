@@ -721,11 +721,11 @@ func (recv *Buffer) SetFieldLength(value uint64) {
 	gi.StructFieldSet(bufferStruct, recv.Native(), "length", argValue)
 }
 
-// UNSUPPORTED : C value 'soup_buffer_new' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_buffer_new' : array parameter 'data'
 
-// UNSUPPORTED : C value 'soup_buffer_new_take' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_buffer_new_take' : array parameter 'data'
 
-// UNSUPPORTED : C value 'soup_buffer_new_with_owner' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_buffer_new_with_owner' : array parameter 'data'
 
 var bufferCopyFunction *gi.Function
 var bufferCopyFunction_Once sync.Once
@@ -819,7 +819,7 @@ func (recv *Buffer) GetAsBytes() *glib.Bytes {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_buffer_get_data' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_buffer_get_data' : array parameter 'data'
 
 var bufferGetOwnerFunction *gi.Function
 var bufferGetOwnerFunction_Once sync.Once
@@ -4573,7 +4573,7 @@ func MessageBodyNew() *MessageBody {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_message_body_append' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_message_body_append' : array parameter 'data'
 
 var messageBodyAppendBufferFunction *gi.Function
 var messageBodyAppendBufferFunction_Once sync.Once
@@ -4604,7 +4604,7 @@ func (recv *MessageBody) AppendBuffer(buffer *Buffer) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_message_body_append_take' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_message_body_append_take' : array parameter 'data'
 
 var messageBodyCompleteFunction *gi.Function
 var messageBodyCompleteFunction_Once sync.Once
@@ -5556,7 +5556,7 @@ func (recv *MessageHeaders) GetOne(name string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_message_headers_get_ranges' : parameter 'ranges' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_message_headers_get_ranges' : array parameter 'ranges'
 
 var messageHeadersHeaderContainsFunction *gi.Function
 var messageHeadersHeaderContainsFunction_Once sync.Once

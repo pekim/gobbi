@@ -1804,7 +1804,7 @@ func (recv *ColorChooser) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_color_chooser_add_palette' : parameter 'colors' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_color_chooser_add_palette' : array parameter 'colors'
 
 var colorChooserGetRgbaFunction *gi.Function
 var colorChooserGetRgbaFunction_Once sync.Once
@@ -2521,7 +2521,7 @@ func (recv *FileChooser) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_add_choice' : parameter 'options' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_file_chooser_add_choice' : array parameter 'options'
 
 var fileChooserAddFilterFunction *gi.Function
 var fileChooserAddFilterFunction_Once sync.Once
@@ -8306,7 +8306,7 @@ func (recv *TreeModel) RowsReordered(path *TreePath, iter *TreeIter, newOrder in
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tree_model_rows_reordered_with_length' : parameter 'new_order' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_tree_model_rows_reordered_with_length' : array parameter 'new_order'
 
 var treeModelSortNewWithModelFunction *gi.Function
 var treeModelSortNewWithModelFunction_Once sync.Once

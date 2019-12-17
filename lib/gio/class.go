@@ -565,7 +565,7 @@ func (recv *Application) Activate() {
 
 // UNSUPPORTED : C value 'g_application_add_main_option' : parameter 'flags' of type 'GLib.OptionFlags' not supported
 
-// UNSUPPORTED : C value 'g_application_add_main_option_entries' : parameter 'entries' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_application_add_main_option_entries' : array parameter 'entries'
 
 var applicationAddOptionGroupFunction *gi.Function
 var applicationAddOptionGroupFunction_Once sync.Once
@@ -970,7 +970,7 @@ func (recv *Application) MarkBusy() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_application_open' : parameter 'files' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_application_open' : array parameter 'files'
 
 var applicationQuitFunction *gi.Function
 var applicationQuitFunction_Once sync.Once
@@ -1061,7 +1061,7 @@ func (recv *Application) Release() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_application_run' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_application_run' : array parameter 'argv'
 
 var applicationSendNotificationFunction *gi.Function
 var applicationSendNotificationFunction_Once sync.Once
@@ -1523,7 +1523,7 @@ func (recv *Application) ConnectNameLost(handler func(instance *Application) boo
 	return callback.ConnectSignal(recv.Native(), "name-lost", marshal)
 }
 
-// UNSUPPORTED : C value 'open' : parameter 'files' of type 'nil' not supported
+// UNSUPPORTED : C value 'open' : array parameter 'files'
 
 /*
 ConnectShutdown connects a callback to the 'shutdown' signal of the Application.
@@ -2275,7 +2275,7 @@ func (recv *BufferedInputStream) GetBufferSize() uint64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_buffered_input_stream_peek' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_buffered_input_stream_peek' : array parameter 'buffer'
 
 var bufferedInputStreamPeekBufferFunction *gi.Function
 var bufferedInputStreamPeekBufferFunction_Once sync.Once
@@ -6367,7 +6367,7 @@ func DBusMessageNew() *DBusMessage {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_message_new_from_blob' : parameter 'blob' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_dbus_message_new_from_blob' : array parameter 'blob'
 
 var dBusMessageNewMethodCallFunction *gi.Function
 var dBusMessageNewMethodCallFunction_Once sync.Once
@@ -8562,7 +8562,7 @@ func (recv *DBusObjectManagerClient) GetNameOwner() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'interface-proxy-properties-changed' : parameter 'invalidated_properties' of type 'nil' not supported
+// UNSUPPORTED : C value 'interface-proxy-properties-changed' : array parameter 'invalidated_properties'
 
 /*
 ConnectInterfaceProxySignal connects a callback to the 'interface-proxy-signal' signal of the DBusObjectManagerClient.
@@ -10076,7 +10076,7 @@ func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
 	return
 }
 
-// UNSUPPORTED : C value 'g-properties-changed' : parameter 'invalidated_properties' of type 'nil' not supported
+// UNSUPPORTED : C value 'g-properties-changed' : array parameter 'invalidated_properties'
 
 /*
 ConnectGSignal connects a callback to the 'g-signal' signal of the DBusProxy.
@@ -15059,7 +15059,7 @@ func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_file_info_set_attribute_stringv' : parameter 'attr_value' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_file_info_set_attribute_stringv' : array parameter 'attr_value'
 
 var fileInfoSetAttributeUint32Function *gi.Function
 var fileInfoSetAttributeUint32Function_Once sync.Once
@@ -17307,7 +17307,7 @@ func InetAddressNewAny(family SocketFamily) *InetAddress {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_inet_address_new_from_bytes' : parameter 'bytes' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_inet_address_new_from_bytes' : array parameter 'bytes'
 
 var inetAddressNewFromStringFunction *gi.Function
 var inetAddressNewFromStringFunction_Once sync.Once
@@ -18716,11 +18716,11 @@ func (recv *InputStream) IsClosed() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_input_stream_read' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_input_stream_read' : array parameter 'buffer'
 
-// UNSUPPORTED : C value 'g_input_stream_read_all' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_input_stream_read_all' : array parameter 'buffer'
 
-// UNSUPPORTED : C value 'g_input_stream_read_all_async' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_input_stream_read_all_async' : array parameter 'buffer'
 
 var inputStreamReadAllFinishFunction *gi.Function
 var inputStreamReadAllFinishFunction_Once sync.Once
@@ -18757,7 +18757,7 @@ func (recv *InputStream) ReadAllFinish(result *AsyncResult) (bool, uint64) {
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'g_input_stream_read_async' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_input_stream_read_async' : array parameter 'buffer'
 
 var inputStreamReadBytesFunction *gi.Function
 var inputStreamReadBytesFunction_Once sync.Once
@@ -19176,7 +19176,7 @@ func (recv *ListStore) RemoveAll() {
 
 // UNSUPPORTED : C value 'g_list_store_sort' : parameter 'compare_func' of type 'GLib.CompareDataFunc' not supported
 
-// UNSUPPORTED : C value 'g_list_store_splice' : parameter 'additions' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_list_store_splice' : array parameter 'additions'
 
 // ListModel returns the ListModel interface implemented by ListStore
 func (recv *ListStore) ListModel() *ListModel {
@@ -19328,7 +19328,7 @@ func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *MemoryInputStream {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_memory_input_stream_new_from_data' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_memory_input_stream_new_from_data' : array parameter 'data'
 
 var memoryInputStreamAddBytesFunction *gi.Function
 var memoryInputStreamAddBytesFunction_Once sync.Once
@@ -19359,7 +19359,7 @@ func (recv *MemoryInputStream) AddBytes(bytes *glib.Bytes) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_memory_input_stream_add_data' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_memory_input_stream_add_data' : array parameter 'data'
 
 // PollableInputStream returns the PollableInputStream interface implemented by MemoryInputStream
 func (recv *MemoryInputStream) PollableInputStream() *PollableInputStream {
@@ -22242,7 +22242,7 @@ func (recv *MountOperation) ConnectAskPassword(handler func(instance *MountOpera
 	return callback.ConnectSignal(recv.Native(), "ask-password", marshal)
 }
 
-// UNSUPPORTED : C value 'ask-question' : parameter 'choices' of type 'nil' not supported
+// UNSUPPORTED : C value 'ask-question' : array parameter 'choices'
 
 /*
 ConnectReply connects a callback to the 'reply' signal of the MountOperation.
@@ -22264,7 +22264,7 @@ func (recv *MountOperation) ConnectReply(handler func(instance *MountOperation, 
 	return callback.ConnectSignal(recv.Native(), "reply", marshal)
 }
 
-// UNSUPPORTED : C value 'show-processes' : parameter 'processes' of type 'nil' not supported
+// UNSUPPORTED : C value 'show-processes' : array parameter 'processes'
 
 /*
 ConnectShowUnmountProgress connects a callback to the 'show-unmount-progress' signal of the MountOperation.
@@ -23818,11 +23818,11 @@ func (recv *OutputStream) SpliceFinish(result *AsyncResult) int32 {
 
 // UNSUPPORTED : C value 'g_output_stream_vprintf' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_output_stream_write' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_output_stream_write' : array parameter 'buffer'
 
-// UNSUPPORTED : C value 'g_output_stream_write_all' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_output_stream_write_all' : array parameter 'buffer'
 
-// UNSUPPORTED : C value 'g_output_stream_write_all_async' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_output_stream_write_all_async' : array parameter 'buffer'
 
 var outputStreamWriteAllFinishFunction *gi.Function
 var outputStreamWriteAllFinishFunction_Once sync.Once
@@ -23859,7 +23859,7 @@ func (recv *OutputStream) WriteAllFinish(result *AsyncResult) (bool, uint64) {
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'g_output_stream_write_async' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_output_stream_write_async' : array parameter 'buffer'
 
 var outputStreamWriteBytesFunction *gi.Function
 var outputStreamWriteBytesFunction_Once sync.Once
@@ -23963,11 +23963,11 @@ func (recv *OutputStream) WriteFinish(result *AsyncResult) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_output_stream_writev' : parameter 'vectors' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_output_stream_writev' : array parameter 'vectors'
 
-// UNSUPPORTED : C value 'g_output_stream_writev_all' : parameter 'vectors' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_output_stream_writev_all' : array parameter 'vectors'
 
-// UNSUPPORTED : C value 'g_output_stream_writev_all_async' : parameter 'vectors' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_output_stream_writev_all_async' : array parameter 'vectors'
 
 var outputStreamWritevAllFinishFunction *gi.Function
 var outputStreamWritevAllFinishFunction_Once sync.Once
@@ -24004,7 +24004,7 @@ func (recv *OutputStream) WritevAllFinish(result *AsyncResult) (bool, uint64) {
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'g_output_stream_writev_async' : parameter 'vectors' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_output_stream_writev_async' : array parameter 'vectors'
 
 var outputStreamWritevFinishFunction *gi.Function
 var outputStreamWritevFinishFunction_Once sync.Once
@@ -26754,7 +26754,7 @@ func (recv *Settings) SetString(key string, value string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_settings_set_strv' : parameter 'value' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_settings_set_strv' : array parameter 'value'
 
 var settingsSetUintFunction *gi.Function
 var settingsSetUintFunction_Once sync.Once
@@ -26858,7 +26858,7 @@ func (recv *Settings) SetValue(key string, value *glib.Variant) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'change-event' : parameter 'keys' of type 'nil' not supported
+// UNSUPPORTED : C value 'change-event' : array parameter 'keys'
 
 /*
 ConnectChanged connects a callback to the 'changed' signal of the Settings.
@@ -27066,7 +27066,7 @@ func (recv *SettingsBackend) ChangedTree(tree *glib.Tree, originTag unsafe.Point
 	return
 }
 
-// UNSUPPORTED : C value 'g_settings_backend_keys_changed' : parameter 'items' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_settings_backend_keys_changed' : array parameter 'items'
 
 var settingsBackendPathChangedFunction *gi.Function
 var settingsBackendPathChangedFunction_Once sync.Once
@@ -27520,7 +27520,7 @@ func SimpleActionGroupNew() *SimpleActionGroup {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_simple_action_group_add_entries' : parameter 'entries' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_simple_action_group_add_entries' : array parameter 'entries'
 
 var simpleActionGroupInsertFunction *gi.Function
 var simpleActionGroupInsertFunction_Once sync.Once
@@ -29679,9 +29679,9 @@ func (recv *Socket) ReceiveFrom(buffer string, cancellable *Cancellable) (int32,
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'g_socket_receive_message' : parameter 'vectors' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_socket_receive_message' : array parameter 'vectors'
 
-// UNSUPPORTED : C value 'g_socket_receive_messages' : parameter 'messages' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_socket_receive_messages' : array parameter 'messages'
 
 var socketReceiveWithBlockingFunction *gi.Function
 var socketReceiveWithBlockingFunction_Once sync.Once
@@ -29754,11 +29754,11 @@ func (recv *Socket) Send(buffer string, cancellable *Cancellable) int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_socket_send_message' : parameter 'vectors' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_socket_send_message' : array parameter 'vectors'
 
-// UNSUPPORTED : C value 'g_socket_send_message_with_timeout' : parameter 'vectors' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_socket_send_message_with_timeout' : array parameter 'vectors'
 
-// UNSUPPORTED : C value 'g_socket_send_messages' : parameter 'messages' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_socket_send_messages' : array parameter 'messages'
 
 var socketSendToFunction *gi.Function
 var socketSendToFunction_Once sync.Once
@@ -32832,7 +32832,7 @@ func (recv *Subprocess) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_subprocess_new' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_subprocess_newv' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_subprocess_newv' : array parameter 'argv'
 
 var subprocessCommunicateFunction *gi.Function
 var subprocessCommunicateFunction_Once sync.Once
@@ -33660,7 +33660,7 @@ func (recv *SubprocessLauncher) SetCwd(cwd string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_subprocess_launcher_set_environ' : parameter 'env' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_subprocess_launcher_set_environ' : array parameter 'env'
 
 var subprocessLauncherSetFlagsFunction *gi.Function
 var subprocessLauncherSetFlagsFunction_Once sync.Once
@@ -33811,7 +33811,7 @@ func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite 
 
 // UNSUPPORTED : C value 'g_subprocess_launcher_spawn' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_subprocess_launcher_spawnv' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_subprocess_launcher_spawnv' : array parameter 'argv'
 
 var subprocessLauncherTakeFdFunction *gi.Function
 var subprocessLauncherTakeFdFunction_Once sync.Once
@@ -35448,7 +35448,7 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_themed_icon_new_from_names' : parameter 'iconnames' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_themed_icon_new_from_names' : array parameter 'iconnames'
 
 var themedIconNewWithDefaultFallbacksFunction *gi.Function
 var themedIconNewWithDefaultFallbacksFunction_Once sync.Once
@@ -36516,7 +36516,7 @@ func (recv *TlsConnection) HandshakeFinish(result *AsyncResult) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tls_connection_set_advertised_protocols' : parameter 'protocols' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_tls_connection_set_advertised_protocols' : array parameter 'protocols'
 
 var tlsConnectionSetCertificateFunction *gi.Function
 var tlsConnectionSetCertificateFunction_Once sync.Once
@@ -36990,9 +36990,9 @@ func (recv *TlsDatabase) LookupCertificateIssuerFinish(result *AsyncResult) *Tls
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tls_database_lookup_certificates_issued_by' : parameter 'issuer_raw_dn' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificates_issued_by' : array parameter 'issuer_raw_dn'
 
-// UNSUPPORTED : C value 'g_tls_database_lookup_certificates_issued_by_async' : parameter 'issuer_raw_dn' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_tls_database_lookup_certificates_issued_by_async' : array parameter 'issuer_raw_dn'
 
 var tlsDatabaseLookupCertificatesIssuedByFinishFunction *gi.Function
 var tlsDatabaseLookupCertificatesIssuedByFinishFunction_Once sync.Once
@@ -37678,9 +37678,9 @@ func (recv *TlsPassword) SetFlags(flags TlsPasswordFlags) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_tls_password_set_value' : parameter 'value' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_tls_password_set_value' : array parameter 'value'
 
-// UNSUPPORTED : C value 'g_tls_password_set_value_full' : parameter 'value' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_tls_password_set_value_full' : array parameter 'value'
 
 var tlsPasswordSetWarningFunction *gi.Function
 var tlsPasswordSetWarningFunction_Once sync.Once
@@ -38323,7 +38323,7 @@ func UnixFDListNew() *UnixFDList {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_unix_fd_list_new_from_array' : parameter 'fds' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_unix_fd_list_new_from_array' : array parameter 'fds'
 
 var unixFDListAppendFunction *gi.Function
 var unixFDListAppendFunction_Once sync.Once

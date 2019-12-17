@@ -151,7 +151,7 @@ func PixbufNewFromBytes(data *glib.Bytes, colorspace Colorspace, hasAlpha bool, 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_data' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_new_from_data' : array parameter 'data'
 
 var pixbufNewFromFileFunction *gi.Function
 var pixbufNewFromFileFunction_Once sync.Once
@@ -260,7 +260,7 @@ func PixbufNewFromFileAtSize(filename string, width int32, height int32) *Pixbuf
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_inline' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_new_from_inline' : array parameter 'data'
 
 var pixbufNewFromResourceFunction *gi.Function
 var pixbufNewFromResourceFunction_Once sync.Once
@@ -440,7 +440,7 @@ func PixbufNewFromStreamFinish(asyncResult *gio.AsyncResult) *Pixbuf {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_xpm_data' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_new_from_xpm_data' : array parameter 'data'
 
 var pixbufAddAlphaFunction *gi.Function
 var pixbufAddAlphaFunction_Once sync.Once
@@ -1406,9 +1406,9 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 
 // UNSUPPORTED : C value 'gdk_pixbuf_save' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_save_to_buffer' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_save_to_buffer' : array parameter 'buffer'
 
-// UNSUPPORTED : C value 'gdk_pixbuf_save_to_bufferv' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_save_to_bufferv' : array parameter 'buffer'
 
 // UNSUPPORTED : C value 'gdk_pixbuf_save_to_callback' : parameter 'save_func' of type 'PixbufSaveFunc' not supported
 
@@ -1418,11 +1418,11 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 
 // UNSUPPORTED : C value 'gdk_pixbuf_save_to_stream_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_save_to_streamv' : parameter 'option_keys' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_save_to_streamv' : array parameter 'option_keys'
 
-// UNSUPPORTED : C value 'gdk_pixbuf_save_to_streamv_async' : parameter 'option_keys' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_save_to_streamv_async' : array parameter 'option_keys'
 
-// UNSUPPORTED : C value 'gdk_pixbuf_savev' : parameter 'option_keys' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_savev' : array parameter 'option_keys'
 
 var pixbufScaleFunction *gi.Function
 var pixbufScaleFunction_Once sync.Once
@@ -2508,7 +2508,7 @@ func (recv *PixbufLoader) SetSize(width int32, height int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_loader_write' : parameter 'buf' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_loader_write' : array parameter 'buf'
 
 var pixbufLoaderWriteBytesFunction *gi.Function
 var pixbufLoaderWriteBytesFunction_Once sync.Once

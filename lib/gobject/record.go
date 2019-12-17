@@ -255,7 +255,7 @@ func (recv *Closure) Invalidate() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_closure_invoke' : parameter 'param_values' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_closure_invoke' : array parameter 'param_values'
 
 var closureRefFunction *gi.Function
 var closureRefFunction_Once sync.Once
@@ -1113,7 +1113,7 @@ func (recv *ObjectClass) FindProperty(propertyName string) *ParamSpec {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_object_class_install_properties' : parameter 'pspecs' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_object_class_install_properties' : array parameter 'pspecs'
 
 var objectClassInstallPropertyFunction *gi.Function
 var objectClassInstallPropertyFunction_Once sync.Once

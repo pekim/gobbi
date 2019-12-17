@@ -607,7 +607,7 @@ func AttrWeightNew(weight Weight) *Attribute {
 
 // UNSUPPORTED : C value 'pango_bidi_type_for_unichar' : parameter 'ch' of type 'gunichar' not supported
 
-// UNSUPPORTED : C value 'pango_break' : parameter 'attrs' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_break' : array parameter 'attrs'
 
 var configKeyGetFunction *gi.Function
 var configKeyGetFunction_Once sync.Once
@@ -861,7 +861,7 @@ func GetLibSubdirectory() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_get_log_attrs' : parameter 'log_attrs' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_get_log_attrs' : array parameter 'log_attrs'
 
 // UNSUPPORTED : C value 'pango_get_mirror_char' : parameter 'ch' of type 'gunichar' not supported
 
@@ -1161,7 +1161,7 @@ func Log2visGetEmbeddingLevels(text string, length int32, pbaseDir Direction) ui
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_lookup_aliases' : parameter 'families' of type 'nil' not supported
+// UNSUPPORTED : C value 'pango_lookup_aliases' : array parameter 'families'
 
 // UNSUPPORTED : C value 'pango_markup_parser_finish' : parameter 'accel_char' of type 'gunichar' not supported
 

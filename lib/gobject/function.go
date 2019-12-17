@@ -2181,7 +2181,7 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 
 // UNSUPPORTED : C value 'g_signal_add_emission_hook' : parameter 'hook_func' of type 'SignalEmissionHook' not supported
 
-// UNSUPPORTED : C value 'g_signal_chain_from_overridden' : parameter 'instance_and_params' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_signal_chain_from_overridden' : array parameter 'instance_and_params'
 
 // UNSUPPORTED : C value 'g_signal_chain_from_overridden_handler' : parameter '...' of type 'nil' not supported
 
@@ -2258,7 +2258,7 @@ func SignalConnectClosureById(instance *Object, signalId uint32, detail glib.Qua
 
 // UNSUPPORTED : C value 'g_signal_emit_valist' : parameter 'var_args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_signal_emitv' : parameter 'instance_and_params' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_signal_emitv' : array parameter 'instance_and_params'
 
 var signalGetInvocationHintFunction *gi.Function
 var signalGetInvocationHintFunction_Once sync.Once

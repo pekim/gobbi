@@ -10144,7 +10144,7 @@ func (recv *ContainerClass) HandleBorderWidth() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_container_class_install_child_properties' : parameter 'pspecs' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_container_class_install_child_properties' : array parameter 'pspecs'
 
 var containerClassInstallChildPropertyFunction *gi.Function
 var containerClassInstallChildPropertyFunction_Once sync.Once
@@ -18045,7 +18045,7 @@ func (recv *IconSet) Copy() *IconSet {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_set_get_sizes' : parameter 'sizes' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_icon_set_get_sizes' : array parameter 'sizes'
 
 var iconSetRefFunction *gi.Function
 var iconSetRefFunction_Once sync.Once
@@ -33225,7 +33225,7 @@ func (recv *SelectionData) GetTarget() *gdk.Atom {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_selection_data_get_targets' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_selection_data_get_targets' : array parameter 'targets'
 
 var selectionDataGetTextFunction *gi.Function
 var selectionDataGetTextFunction_Once sync.Once
@@ -33287,7 +33287,7 @@ func (recv *SelectionData) GetUris() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_selection_data_set' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_selection_data_set' : array parameter 'data'
 
 var selectionDataSetPixbufFunction *gi.Function
 var selectionDataSetPixbufFunction_Once sync.Once
@@ -33356,7 +33356,7 @@ func (recv *SelectionData) SetText(str string, len int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_selection_data_set_uris' : parameter 'uris' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_selection_data_set_uris' : array parameter 'uris'
 
 var selectionDataTargetsIncludeImageFunction *gi.Function
 var selectionDataTargetsIncludeImageFunction_Once sync.Once
@@ -38390,7 +38390,7 @@ func (recv *TargetList) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_target_list_new' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_target_list_new' : array parameter 'targets'
 
 var targetListAddFunction *gi.Function
 var targetListAddFunction_Once sync.Once
@@ -38484,7 +38484,7 @@ func (recv *TargetList) AddRichTextTargets(info uint32, deserializable bool, buf
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_target_list_add_table' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_target_list_add_table' : array parameter 'targets'
 
 var targetListAddTextTargetsFunction *gi.Function
 var targetListAddTextTargetsFunction_Once sync.Once
@@ -46556,7 +46556,7 @@ func TreePathNewFirst() *TreePath {
 
 // UNSUPPORTED : C value 'gtk_tree_path_new_from_indices' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_path_new_from_indicesv' : parameter 'indices' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_tree_path_new_from_indicesv' : array parameter 'indices'
 
 var treePathNewFromStringFunction *gi.Function
 var treePathNewFromStringFunction_Once sync.Once

@@ -5090,9 +5090,9 @@ func (recv *Message) SetRedirect(statusCode uint32, redirectUri string) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_message_set_request' : parameter 'req_body' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_message_set_request' : array parameter 'req_body'
 
-// UNSUPPORTED : C value 'soup_message_set_response' : parameter 'resp_body' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_message_set_response' : array parameter 'resp_body'
 
 var messageSetStatusFunction *gi.Function
 var messageSetStatusFunction_Once sync.Once
@@ -6914,7 +6914,7 @@ func (recv *Server) AddWebsocketExtension(extensionType int64) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_server_add_websocket_handler' : parameter 'protocols' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_server_add_websocket_handler' : array parameter 'protocols'
 
 var serverDisconnectFunction *gi.Function
 var serverDisconnectFunction_Once sync.Once
@@ -8574,7 +8574,7 @@ func (recv *Session) UnpauseMessage(msg *Message) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_session_websocket_connect_async' : parameter 'protocols' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_session_websocket_connect_async' : array parameter 'protocols'
 
 var sessionWebsocketConnectFinishFunction *gi.Function
 var sessionWebsocketConnectFinishFunction_Once sync.Once
@@ -9337,9 +9337,9 @@ func (recv *Socket) Listen() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_socket_read' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_socket_read' : array parameter 'buffer'
 
-// UNSUPPORTED : C value 'soup_socket_read_until' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_socket_read_until' : array parameter 'buffer'
 
 var socketStartProxySslFunction *gi.Function
 var socketStartProxySslFunction_Once sync.Once
@@ -9408,7 +9408,7 @@ func (recv *Socket) StartSsl(cancellable *gio.Cancellable) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_socket_write' : parameter 'buffer' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_socket_write' : array parameter 'buffer'
 
 /*
 ConnectDisconnected connects a callback to the 'disconnected' signal of the Socket.
@@ -10030,7 +10030,7 @@ func (recv *WebsocketConnection) GetUri() *URI {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_websocket_connection_send_binary' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_websocket_connection_send_binary' : array parameter 'data'
 
 var websocketConnectionSendMessageFunction *gi.Function
 var websocketConnectionSendMessageFunction_Once sync.Once

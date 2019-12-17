@@ -153,7 +153,7 @@ func AboutDialogNew() *AboutDialog {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_about_dialog_add_credit_section' : parameter 'people' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_about_dialog_add_credit_section' : array parameter 'people'
 
 var aboutDialogGetArtistsFunction *gi.Function
 var aboutDialogGetArtistsFunction_Once sync.Once
@@ -623,9 +623,9 @@ func (recv *AboutDialog) GetWrapLicense() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_about_dialog_set_artists' : parameter 'artists' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_about_dialog_set_artists' : array parameter 'artists'
 
-// UNSUPPORTED : C value 'gtk_about_dialog_set_authors' : parameter 'authors' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_about_dialog_set_authors' : array parameter 'authors'
 
 var aboutDialogSetCommentsFunction *gi.Function
 var aboutDialogSetCommentsFunction_Once sync.Once
@@ -685,7 +685,7 @@ func (recv *AboutDialog) SetCopyright(copyright string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_about_dialog_set_documenters' : parameter 'documenters' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_about_dialog_set_documenters' : array parameter 'documenters'
 
 var aboutDialogSetLicenseFunction *gi.Function
 var aboutDialogSetLicenseFunction_Once sync.Once
@@ -3661,17 +3661,17 @@ func (recv *ActionGroup) AddActionWithAccel(action *Action, accelerator string) 
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_action_group_add_actions' : parameter 'entries' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_action_group_add_actions' : array parameter 'entries'
 
-// UNSUPPORTED : C value 'gtk_action_group_add_actions_full' : parameter 'entries' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_action_group_add_actions_full' : array parameter 'entries'
 
-// UNSUPPORTED : C value 'gtk_action_group_add_radio_actions' : parameter 'entries' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_action_group_add_radio_actions' : array parameter 'entries'
 
-// UNSUPPORTED : C value 'gtk_action_group_add_radio_actions_full' : parameter 'entries' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_action_group_add_radio_actions_full' : array parameter 'entries'
 
-// UNSUPPORTED : C value 'gtk_action_group_add_toggle_actions' : parameter 'entries' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_action_group_add_toggle_actions' : array parameter 'entries'
 
-// UNSUPPORTED : C value 'gtk_action_group_add_toggle_actions_full' : parameter 'entries' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_action_group_add_toggle_actions_full' : array parameter 'entries'
 
 var actionGroupGetAccelGroupFunction *gi.Function
 var actionGroupGetAccelGroupFunction_Once sync.Once
@@ -6975,7 +6975,7 @@ func (recv *Application) RemoveWindow(window *Window) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_application_set_accels_for_action' : parameter 'accels' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_application_set_accels_for_action' : array parameter 'accels'
 
 var applicationSetAppMenuFunction *gi.Function
 var applicationSetAppMenuFunction_Once sync.Once
@@ -10063,11 +10063,11 @@ func (recv *Builder) AddFromString(buffer string, length uint64) uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_builder_add_objects_from_file' : parameter 'object_ids' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_builder_add_objects_from_file' : array parameter 'object_ids'
 
-// UNSUPPORTED : C value 'gtk_builder_add_objects_from_resource' : parameter 'object_ids' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_builder_add_objects_from_resource' : array parameter 'object_ids'
 
-// UNSUPPORTED : C value 'gtk_builder_add_objects_from_string' : parameter 'object_ids' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_builder_add_objects_from_string' : array parameter 'object_ids'
 
 var builderConnectSignalsFunction *gi.Function
 var builderConnectSignalsFunction_Once sync.Once
@@ -18458,7 +18458,7 @@ func (recv *Clipboard) GetSelection() *gdk.Atom {
 
 // UNSUPPORTED : C value 'gtk_clipboard_request_uris' : parameter 'callback' of type 'ClipboardURIReceivedFunc' not supported
 
-// UNSUPPORTED : C value 'gtk_clipboard_set_can_store' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_clipboard_set_can_store' : array parameter 'targets'
 
 var clipboardSetImageFunction *gi.Function
 var clipboardSetImageFunction_Once sync.Once
@@ -18519,9 +18519,9 @@ func (recv *Clipboard) SetText(text string, len int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_clipboard_set_with_data' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_clipboard_set_with_data' : array parameter 'targets'
 
-// UNSUPPORTED : C value 'gtk_clipboard_set_with_owner' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_clipboard_set_with_owner' : array parameter 'targets'
 
 var clipboardStoreFunction *gi.Function
 var clipboardStoreFunction_Once sync.Once
@@ -18650,7 +18650,7 @@ func (recv *Clipboard) WaitForRichText(buffer *TextBuffer) (*gdk.Atom, uint64) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'gtk_clipboard_wait_for_targets' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_clipboard_wait_for_targets' : array parameter 'targets'
 
 var clipboardWaitForTextFunction *gi.Function
 var clipboardWaitForTextFunction_Once sync.Once
@@ -24658,7 +24658,7 @@ func (recv *Dialog) Run() int32 {
 
 // UNSUPPORTED : C value 'gtk_dialog_set_alternative_button_order' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_dialog_set_alternative_button_order_from_array' : parameter 'new_order' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_dialog_set_alternative_button_order_from_array' : array parameter 'new_order'
 
 var dialogSetDefaultResponseFunction *gi.Function
 var dialogSetDefaultResponseFunction_Once sync.Once
@@ -39641,7 +39641,7 @@ func GestureStylusNew(widget *Widget) *GestureStylus {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_gesture_stylus_get_axes' : parameter 'axes' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_gesture_stylus_get_axes' : array parameter 'axes'
 
 // UNSUPPORTED : C value 'gtk_gesture_stylus_get_axis' : parameter 'axis' of type 'Gdk.AxisUse' not supported
 
@@ -43786,7 +43786,7 @@ func (recv *IMContextSimple) AddComposeFile(composeFile string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_im_context_simple_add_table' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_im_context_simple_add_table' : array parameter 'data'
 
 var iMMulticontextObject *gi.Object
 var iMMulticontextObject_Once sync.Once
@@ -44374,7 +44374,7 @@ func (recv *IconInfo) Free() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_info_get_attach_points' : parameter 'points' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_icon_info_get_attach_points' : array parameter 'points'
 
 var iconInfoGetBaseScaleFunction *gi.Function
 var iconInfoGetBaseScaleFunction_Once sync.Once
@@ -45064,9 +45064,9 @@ func (recv *IconTheme) AppendSearchPath(path string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_theme_choose_icon' : parameter 'icon_names' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_icon_theme_choose_icon' : array parameter 'icon_names'
 
-// UNSUPPORTED : C value 'gtk_icon_theme_choose_icon_for_scale' : parameter 'icon_names' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_icon_theme_choose_icon_for_scale' : array parameter 'icon_names'
 
 var iconThemeGetExampleIconNameFunction *gi.Function
 var iconThemeGetExampleIconNameFunction_Once sync.Once
@@ -45129,7 +45129,7 @@ func (recv *IconTheme) GetIconSizes(iconName string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_theme_get_search_path' : parameter 'path' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_icon_theme_get_search_path' : array parameter 'path'
 
 var iconThemeHasIconFunction *gi.Function
 var iconThemeHasIconFunction_Once sync.Once
@@ -45598,7 +45598,7 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_theme_set_search_path' : parameter 'path' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_icon_theme_set_search_path' : array parameter 'path'
 
 /*
 ConnectChanged connects a callback to the 'changed' signal of the IconTheme.
@@ -45877,7 +45877,7 @@ func (recv *IconView) CreateDragIcon(path *TreePath) *cairo.Surface {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_icon_view_enable_model_drag_dest' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_icon_view_enable_model_drag_dest' : array parameter 'targets'
 
 // UNSUPPORTED : C value 'gtk_icon_view_enable_model_drag_source' : parameter 'start_button_mask' of type 'Gdk.ModifierType' not supported
 
@@ -55428,7 +55428,7 @@ func (recv *ListStore) SetFieldParent(value *gobject.Object) {
 
 // UNSUPPORTED : C value 'gtk_list_store_new' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_list_store_newv' : parameter 'types' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_list_store_newv' : array parameter 'types'
 
 var listStoreAppendFunction *gi.Function
 var listStoreAppendFunction_Once sync.Once
@@ -55591,7 +55591,7 @@ func (recv *ListStore) InsertBefore(sibling *TreeIter) *TreeIter {
 
 // UNSUPPORTED : C value 'gtk_list_store_insert_with_values' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_list_store_insert_with_valuesv' : parameter 'columns' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_list_store_insert_with_valuesv' : array parameter 'columns'
 
 var listStoreIterIsValidFunction *gi.Function
 var listStoreIterIsValidFunction_Once sync.Once
@@ -55751,11 +55751,11 @@ func (recv *ListStore) Remove(iter *TreeIter) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_list_store_reorder' : parameter 'new_order' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_list_store_reorder' : array parameter 'new_order'
 
 // UNSUPPORTED : C value 'gtk_list_store_set' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_list_store_set_column_types' : parameter 'types' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_list_store_set_column_types' : array parameter 'types'
 
 // UNSUPPORTED : C value 'gtk_list_store_set_valist' : parameter 'var_args' of type 'va_list' not supported
 
@@ -55790,7 +55790,7 @@ func (recv *ListStore) SetValue(iter *TreeIter, column int32, value *gobject.Val
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_list_store_set_valuesv' : parameter 'columns' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_list_store_set_valuesv' : array parameter 'columns'
 
 var listStoreSwapFunction *gi.Function
 var listStoreSwapFunction_Once sync.Once
@@ -64620,7 +64620,7 @@ func (recv *PadController) SetAction(type_ PadActionType, index int32, mode int3
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_pad_controller_set_action_entries' : parameter 'entries' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_pad_controller_set_action_entries' : array parameter 'entries'
 
 var pageSetupObject *gi.Object
 var pageSetupObject_Once sync.Once
@@ -72302,7 +72302,7 @@ func (recv *PrintSettings) SetOutputBin(outputBin string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_print_settings_set_page_ranges' : parameter 'page_ranges' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_print_settings_set_page_ranges' : array parameter 'page_ranges'
 
 var printSettingsSetPageSetFunction *gi.Function
 var printSettingsSetPageSetFunction_Once sync.Once
@@ -79389,7 +79389,7 @@ func (recv *ScaleButton) SetFieldParent(value *Button) {
 	gi.ObjectFieldSet(scaleButtonObject, recv.Native(), "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_scale_button_new' : parameter 'icons' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_scale_button_new' : array parameter 'icons'
 
 var scaleButtonGetAdjustmentFunction *gi.Function
 var scaleButtonGetAdjustmentFunction_Once sync.Once
@@ -79580,7 +79580,7 @@ func (recv *ScaleButton) SetAdjustment(adjustment *Adjustment) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_scale_button_set_icons' : parameter 'icons' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_scale_button_set_icons' : array parameter 'icons'
 
 var scaleButtonSetValueFunction *gi.Function
 var scaleButtonSetValueFunction_Once sync.Once
@@ -92589,7 +92589,7 @@ func (recv *TextBuffer) DeleteSelection(interactive bool, defaultEditable bool) 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_buffer_deserialize' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_text_buffer_deserialize' : array parameter 'data'
 
 var textBufferDeserializeGetCanCreateTagsFunction *gi.Function
 var textBufferDeserializeGetCanCreateTagsFunction_Once sync.Once
@@ -104682,7 +104682,7 @@ func (recv *TreeModelFilter) Refilter() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tree_model_filter_set_modify_func' : parameter 'types' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_tree_model_filter_set_modify_func' : array parameter 'types'
 
 var treeModelFilterSetVisibleColumnFunction *gi.Function
 var treeModelFilterSetVisibleColumnFunction_Once sync.Once
@@ -105775,7 +105775,7 @@ func (recv *TreeStore) SetFieldPriv(value *TreeStorePrivate) {
 
 // UNSUPPORTED : C value 'gtk_tree_store_new' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_store_newv' : parameter 'types' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_tree_store_newv' : array parameter 'types'
 
 var treeStoreAppendFunction *gi.Function
 var treeStoreAppendFunction_Once sync.Once
@@ -105942,7 +105942,7 @@ func (recv *TreeStore) InsertBefore(parent *TreeIter, sibling *TreeIter) *TreeIt
 
 // UNSUPPORTED : C value 'gtk_tree_store_insert_with_values' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_store_insert_with_valuesv' : parameter 'columns' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_tree_store_insert_with_valuesv' : array parameter 'columns'
 
 var treeStoreIsAncestorFunction *gi.Function
 var treeStoreIsAncestorFunction_Once sync.Once
@@ -106170,11 +106170,11 @@ func (recv *TreeStore) Remove(iter *TreeIter) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_store_reorder' : parameter 'new_order' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_tree_store_reorder' : array parameter 'new_order'
 
 // UNSUPPORTED : C value 'gtk_tree_store_set' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gtk_tree_store_set_column_types' : parameter 'types' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_tree_store_set_column_types' : array parameter 'types'
 
 // UNSUPPORTED : C value 'gtk_tree_store_set_valist' : parameter 'var_args' of type 'va_list' not supported
 
@@ -106209,7 +106209,7 @@ func (recv *TreeStore) SetValue(iter *TreeIter, column int32, value *gobject.Val
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_tree_store_set_valuesv' : parameter 'columns' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_tree_store_set_valuesv' : array parameter 'columns'
 
 var treeStoreSwapFunction *gi.Function
 var treeStoreSwapFunction_Once sync.Once
@@ -106782,7 +106782,7 @@ func (recv *TreeView) CreateRowDragIcon(path *TreePath) *cairo.Surface {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_enable_model_drag_dest' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_tree_view_enable_model_drag_dest' : array parameter 'targets'
 
 // UNSUPPORTED : C value 'gtk_tree_view_enable_model_drag_source' : parameter 'start_button_mask' of type 'Gdk.ModifierType' not supported
 
@@ -114243,7 +114243,7 @@ func (recv *Widget) DragDestGetTrackMotion() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_drag_dest_set' : parameter 'targets' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_drag_dest_set' : array parameter 'targets'
 
 // UNSUPPORTED : C value 'gtk_drag_dest_set_proxy' : parameter 'protocol' of type 'Gdk.DragProtocol' not supported
 

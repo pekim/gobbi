@@ -1446,9 +1446,9 @@ func Base64DecodeInplace(text string) (uint8, string, uint64) {
 	return retGo, out0, out1
 }
 
-// UNSUPPORTED : C value 'g_base64_decode_step' : parameter 'out' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_base64_decode_step' : array parameter 'out'
 
-// UNSUPPORTED : C value 'g_base64_encode' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_base64_encode' : array parameter 'data'
 
 var base64EncodeCloseFunction *gi.Function
 var base64EncodeCloseFunction_Once sync.Once
@@ -1484,7 +1484,7 @@ func Base64EncodeClose(breakLines bool, state int32, save int32) (uint64, string
 	return retGo, out0, out1, out2
 }
 
-// UNSUPPORTED : C value 'g_base64_encode_step' : parameter 'in' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_base64_encode_step' : array parameter 'in'
 
 var basenameFunction *gi.Function
 var basenameFunction_Once sync.Once
@@ -1709,15 +1709,15 @@ func BookmarkFileErrorQuark() Quark {
 
 // UNSUPPORTED : C value 'g_build_filename_valist' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_build_filenamev' : parameter 'args' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_build_filenamev' : array parameter 'args'
 
 // UNSUPPORTED : C value 'g_build_path' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_build_pathv' : parameter 'args' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_build_pathv' : array parameter 'args'
 
-// UNSUPPORTED : C value 'g_byte_array_free' : parameter 'array' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_byte_array_free' : array parameter 'array'
 
-// UNSUPPORTED : C value 'g_byte_array_free_to_bytes' : parameter 'array' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_byte_array_free_to_bytes' : array parameter 'array'
 
 var byteArrayNewFunction *gi.Function
 var byteArrayNewFunction_Once sync.Once
@@ -1741,9 +1741,9 @@ func ByteArrayNew() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_byte_array_new_take' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_byte_array_new_take' : array parameter 'data'
 
-// UNSUPPORTED : C value 'g_byte_array_unref' : parameter 'array' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_byte_array_unref' : array parameter 'array'
 
 var canonicalizeFilenameFunction *gi.Function
 var canonicalizeFilenameFunction_Once sync.Once
@@ -1975,7 +1975,7 @@ func ComputeChecksumForBytes(checksumType ChecksumType, data *Bytes) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_compute_checksum_for_data' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_compute_checksum_for_data' : array parameter 'data'
 
 var computeChecksumForStringFunction *gi.Function
 var computeChecksumForStringFunction_Once sync.Once
@@ -2037,9 +2037,9 @@ func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) strin
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_compute_hmac_for_data' : parameter 'key' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_compute_hmac_for_data' : array parameter 'key'
 
-// UNSUPPORTED : C value 'g_compute_hmac_for_string' : parameter 'key' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_compute_hmac_for_string' : array parameter 'key'
 
 var convertFunction *gi.Function
 var convertFunction_Once sync.Once
@@ -3162,11 +3162,11 @@ func Dpgettext2(domain string, context string, msgid string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_environ_getenv' : parameter 'envp' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_environ_getenv' : array parameter 'envp'
 
-// UNSUPPORTED : C value 'g_environ_setenv' : parameter 'envp' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_environ_setenv' : array parameter 'envp'
 
-// UNSUPPORTED : C value 'g_environ_unsetenv' : parameter 'envp' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_environ_unsetenv' : array parameter 'envp'
 
 var fileErrorFromErrnoFunction *gi.Function
 var fileErrorFromErrnoFunction_Once sync.Once
@@ -3222,7 +3222,7 @@ func FileErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_file_get_contents' : parameter 'contents' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_file_get_contents' : array parameter 'contents'
 
 var fileOpenTmpFunction *gi.Function
 var fileOpenTmpFunction_Once sync.Once
@@ -3839,7 +3839,7 @@ func GetEnviron() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_get_filename_charsets' : parameter 'filename_charsets' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_get_filename_charsets' : array parameter 'filename_charsets'
 
 var getHomeDirFunction *gi.Function
 var getHomeDirFunction_Once sync.Once
@@ -5279,7 +5279,7 @@ func LogSetFatalMask(logDomain string, fatalMask LogLevelFlags) LogLevelFlags {
 
 // UNSUPPORTED : C value 'g_log_structured' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_log_structured_array' : parameter 'fields' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_log_structured_array' : array parameter 'fields'
 
 // UNSUPPORTED : C value 'g_log_structured_standard' : parameter '...' of type 'nil' not supported
 
@@ -5309,9 +5309,9 @@ func LogVariant(logDomain string, logLevel LogLevelFlags, fields *Variant) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_log_writer_default' : parameter 'fields' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_log_writer_default' : array parameter 'fields'
 
-// UNSUPPORTED : C value 'g_log_writer_format_fields' : parameter 'fields' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_log_writer_format_fields' : array parameter 'fields'
 
 var logWriterIsJournaldFunction *gi.Function
 var logWriterIsJournaldFunction_Once sync.Once
@@ -5341,9 +5341,9 @@ func LogWriterIsJournald(outputFd int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_log_writer_journald' : parameter 'fields' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_log_writer_journald' : array parameter 'fields'
 
-// UNSUPPORTED : C value 'g_log_writer_standard_streams' : parameter 'fields' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_log_writer_standard_streams' : array parameter 'fields'
 
 var logWriterSupportsColorFunction *gi.Function
 var logWriterSupportsColorFunction_Once sync.Once
@@ -6102,7 +6102,7 @@ func OptionErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_parse_debug_string' : parameter 'keys' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_parse_debug_string' : array parameter 'keys'
 
 var pathGetBasenameFunction *gi.Function
 var pathGetBasenameFunction_Once sync.Once
@@ -6454,9 +6454,9 @@ func PropagateError(src *Error) *Error {
 
 // UNSUPPORTED : C value 'g_propagate_prefixed_error' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_ptr_array_find' : parameter 'haystack' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_ptr_array_find' : array parameter 'haystack'
 
-// UNSUPPORTED : C value 'g_ptr_array_find_with_equal_func' : parameter 'haystack' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_ptr_array_find_with_equal_func' : array parameter 'haystack'
 
 // UNSUPPORTED : C value 'g_qsort_with_data' : parameter 'compare_func' of type 'CompareDataFunc' not supported
 
@@ -7826,7 +7826,7 @@ func ShellErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_shell_parse_argv' : parameter 'argvp' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_shell_parse_argv' : array parameter 'argvp'
 
 var shellQuoteFunction *gi.Function
 var shellQuoteFunction_Once sync.Once
@@ -8243,11 +8243,11 @@ func SpacedPrimesClosest(num uint32) uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_spawn_async' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_spawn_async' : array parameter 'argv'
 
-// UNSUPPORTED : C value 'g_spawn_async_with_fds' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_spawn_async_with_fds' : array parameter 'argv'
 
-// UNSUPPORTED : C value 'g_spawn_async_with_pipes' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_spawn_async_with_pipes' : array parameter 'argv'
 
 var spawnCheckExitStatusFunction *gi.Function
 var spawnCheckExitStatusFunction_Once sync.Once
@@ -8329,7 +8329,7 @@ func SpawnCommandLineAsync(commandLine string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_spawn_command_line_sync' : parameter 'standard_output' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_spawn_command_line_sync' : array parameter 'standard_output'
 
 var spawnErrorQuarkFunction *gi.Function
 var spawnErrorQuarkFunction_Once sync.Once
@@ -8383,7 +8383,7 @@ func SpawnExitErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_spawn_sync' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_spawn_sync' : array parameter 'argv'
 
 // UNSUPPORTED : C value 'g_sprintf' : parameter '...' of type 'nil' not supported
 
@@ -8618,7 +8618,7 @@ func StrToAscii(str string, fromLocale string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_str_tokenize_and_fold' : parameter 'ascii_alternates' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_str_tokenize_and_fold' : array parameter 'ascii_alternates'
 
 var strcanonFunction *gi.Function
 var strcanonFunction_Once sync.Once

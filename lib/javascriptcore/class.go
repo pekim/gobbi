@@ -1235,9 +1235,9 @@ func (recv *Value) SetFieldParent(value *gobject.Object) {
 
 // UNSUPPORTED : C value 'jsc_value_new_array' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'jsc_value_new_array_from_garray' : parameter 'array' of type 'nil' not supported
+// UNSUPPORTED : C value 'jsc_value_new_array_from_garray' : array parameter 'array'
 
-// UNSUPPORTED : C value 'jsc_value_new_array_from_strv' : parameter 'strv' of type 'nil' not supported
+// UNSUPPORTED : C value 'jsc_value_new_array_from_strv' : array parameter 'strv'
 
 var valueNewBooleanFunction *gi.Function
 var valueNewBooleanFunction_Once sync.Once
@@ -1491,11 +1491,11 @@ func ValueNewUndefined(context *Context) *Value {
 
 // UNSUPPORTED : C value 'jsc_value_constructor_call' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'jsc_value_constructor_callv' : parameter 'parameters' of type 'nil' not supported
+// UNSUPPORTED : C value 'jsc_value_constructor_callv' : array parameter 'parameters'
 
 // UNSUPPORTED : C value 'jsc_value_function_call' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'jsc_value_function_callv' : parameter 'parameters' of type 'nil' not supported
+// UNSUPPORTED : C value 'jsc_value_function_callv' : array parameter 'parameters'
 
 var valueGetContextFunction *gi.Function
 var valueGetContextFunction_Once sync.Once
@@ -2012,7 +2012,7 @@ func (recv *Value) ObjectHasProperty(name string) bool {
 
 // UNSUPPORTED : C value 'jsc_value_object_invoke_method' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'jsc_value_object_invoke_methodv' : parameter 'parameters' of type 'nil' not supported
+// UNSUPPORTED : C value 'jsc_value_object_invoke_methodv' : array parameter 'parameters'
 
 var valueObjectIsInstanceOfFunction *gi.Function
 var valueObjectIsInstanceOfFunction_Once sync.Once

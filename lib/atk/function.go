@@ -815,7 +815,7 @@ func TextAttributeRegister(name string) TextAttribute {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_text_free_ranges' : parameter 'ranges' of type 'nil' not supported
+// UNSUPPORTED : C value 'atk_text_free_ranges' : array parameter 'ranges'
 
 var valueTypeGetLocalizedNameFunction *gi.Function
 var valueTypeGetLocalizedNameFunction_Once sync.Once
