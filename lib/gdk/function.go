@@ -1175,9 +1175,67 @@ func GlErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_init' : array parameter 'argv'
+var initFunction *gi.Function
+var initFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_init_check' : array parameter 'argv'
+func initFunction_Set() error {
+	var err error
+	initFunction_Once.Do(func() {
+		initFunction, err = gi.FunctionInvokerNew("Gdk", "init")
+	})
+	return err
+}
+
+// Init is a representation of the C type gdk_init.
+func Init(argv []string) (int32, []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(len(argv)))
+	inArgs[1].SetPointer(argv)
+
+	var outArgs [2]gi.Argument
+
+	err := initFunction_Set()
+	if err == nil {
+		initFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].String(true)
+
+	return out0, out1
+}
+
+var initCheckFunction *gi.Function
+var initCheckFunction_Once sync.Once
+
+func initCheckFunction_Set() error {
+	var err error
+	initCheckFunction_Once.Do(func() {
+		initCheckFunction, err = gi.FunctionInvokerNew("Gdk", "init_check")
+	})
+	return err
+}
+
+// InitCheck is a representation of the C type gdk_init_check.
+func InitCheck(argv []string) (bool, int32, []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(len(argv)))
+	inArgs[1].SetPointer(argv)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := initCheckFunction_Set()
+	if err == nil {
+		ret = initCheckFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].String(true)
+
+	return retGo, out0, out1
+}
 
 var keyboardGrabFunction *gi.Function
 var keyboardGrabFunction_Once sync.Once
@@ -1727,7 +1785,35 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32
 
 // UNSUPPORTED : C value 'gdk_pango_layout_line_get_clip_region' : array parameter 'index_ranges'
 
-// UNSUPPORTED : C value 'gdk_parse_args' : array parameter 'argv'
+var parseArgsFunction *gi.Function
+var parseArgsFunction_Once sync.Once
+
+func parseArgsFunction_Set() error {
+	var err error
+	parseArgsFunction_Once.Do(func() {
+		parseArgsFunction, err = gi.FunctionInvokerNew("Gdk", "parse_args")
+	})
+	return err
+}
+
+// ParseArgs is a representation of the C type gdk_parse_args.
+func ParseArgs(argv []string) (int32, []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(len(argv)))
+	inArgs[1].SetPointer(argv)
+
+	var outArgs [2]gi.Argument
+
+	err := parseArgsFunction_Set()
+	if err == nil {
+		parseArgsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].String(true)
+
+	return out0, out1
+}
 
 var pixbufGetFromSurfaceFunction *gi.Function
 var pixbufGetFromSurfaceFunction_Once sync.Once

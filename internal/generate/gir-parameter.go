@@ -50,6 +50,10 @@ func (p *Parameter) init(ns *Namespace) {
 func (p Parameter) supported() (bool, string) {
 	if !p.isSupported() {
 		if p.Array != nil {
+			if p.Name == "argv" && p.argcParam != nil {
+				return true, ""
+			}
+
 			return false, fmt.Sprintf("array parameter '%s'", p.Name)
 		}
 
@@ -77,6 +81,18 @@ func (p *Parameter) generateInDeclaration(g *jen.Group) {
 		return
 	}
 
+	if p.argvParam != nil {
+		// This is the argc param in an argc/argv pair.
+		// Do not generate declaration.
+		return
+	}
+
+	if p.argcParam != nil {
+		// GEN: name []string
+		g.Id(p.goVarName).Index().String()
+		return
+	}
+
 	goType, err := p.Type.jenGoType()
 	if err != nil {
 		panic(err)
@@ -99,6 +115,19 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 			Id("inArgs").
 			Index(jen.Lit(index)).
 			Dot("SetString").
+			Call(goVar)
+
+		return
+	}
+
+	if p.Array != nil && strings.HasSuffix(p.Array.CType, "char***") {
+		// argv parameter
+		// GEN: inArgs[<index>].Set...(<goVar>)
+		g.
+			Id("inArgs").
+			Index(jen.Lit(index)).
+			Dot("SetPointer").
+			// TODO convert
 			Call(goVar)
 
 		return
