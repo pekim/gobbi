@@ -1,0 +1,338 @@
+<?xml version="1.0"?>
+<!-- This file was automatically generated from C sources - DO NOT EDIT!
+To affect the contents of this file, edit the original C definitions,
+and/or use gtk-doc annotations.  -->
+<repository xmlns="http://www.gtk.org/introspection/core/1.0" xmlns:c="http://www.gtk.org/introspection/c/1.0" xmlns:glib="http://www.gtk.org/introspection/glib/1.0" version="1.2">
+  <include name="GObject" version="2.0"/>
+  <include name="Pango" version="1.0"/>
+  <include name="cairo" version="1.0"/>
+  <include name="fontconfig" version="2.0"/>
+  <include name="freetype2" version="2.0"/>
+  <package name="pangoft2"/>
+  <c:include name="pango/pangoft2.h"/>
+  <namespace name="PangoFT2" version="1.0" shared-library="libpangoft2-1.0.so.0" c:identifier-prefixes="PangoFT2" c:symbol-prefixes="pango_ft2">
+    <class name="FontMap" c:symbol-prefix="font_map" c:type="PangoFT2FontMap" parent="Pango.FontMap" glib:type-name="PangoFT2FontMap" glib:get-type="pango_ft2_font_map_get_type">
+      <constructor name="new" c:identifier="pango_ft2_font_map_new">
+        <source-position filename="../pango/pangoft2.h" line="100"/>
+        <return-value transfer-ownership="full">
+          <type name="Pango.FontMap" c:type="PangoFontMap*"/>
+        </return-value>
+      </constructor>
+      <function name="for_display" c:identifier="pango_ft2_font_map_for_display" introspectable="0">
+        <source-position filename="../pango/pangoft2.h" line="125"/>
+        <return-value>
+          <type name="Pango.FontMap" c:type="PangoFontMap*"/>
+        </return-value>
+      </function>
+      <method name="create_context" c:identifier="pango_ft2_font_map_create_context" introspectable="0">
+        <source-position filename="../pango/pangoft2.h" line="114"/>
+        <return-value>
+          <type name="Pango.Context" c:type="PangoContext*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="fontmap" transfer-ownership="none">
+            <type name="FontMap" c:type="PangoFT2FontMap*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="set_default_substitute" c:identifier="pango_ft2_font_map_set_default_substitute">
+        <source-position filename="../pango/pangoft2.h" line="106"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="fontmap" transfer-ownership="none">
+            <type name="FontMap" c:type="PangoFT2FontMap*"/>
+          </instance-parameter>
+          <parameter name="func" transfer-ownership="none" scope="notified" closure="1" destroy="2">
+            <type name="SubstituteFunc" c:type="PangoFT2SubstituteFunc"/>
+          </parameter>
+          <parameter name="data" transfer-ownership="none" nullable="1" allow-none="1">
+            <type name="gpointer" c:type="gpointer"/>
+          </parameter>
+          <parameter name="notify" transfer-ownership="none" scope="async">
+            <type name="GLib.DestroyNotify" c:type="GDestroyNotify"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_resolution" c:identifier="pango_ft2_font_map_set_resolution">
+        <source-position filename="../pango/pangoft2.h" line="102"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="fontmap" transfer-ownership="none">
+            <type name="FontMap" c:type="PangoFT2FontMap*"/>
+          </instance-parameter>
+          <parameter name="dpi_x" transfer-ownership="none">
+            <type name="gdouble" c:type="double"/>
+          </parameter>
+          <parameter name="dpi_y" transfer-ownership="none">
+            <type name="gdouble" c:type="double"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="substitute_changed" c:identifier="pango_ft2_font_map_substitute_changed">
+        <source-position filename="../pango/pangoft2.h" line="111"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="fontmap" transfer-ownership="none">
+            <type name="FontMap" c:type="PangoFT2FontMap*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+    </class>
+    <callback name="SubstituteFunc" c:type="PangoFT2SubstituteFunc">
+      <doc xml:space="preserve" filename="../pango/pangoft2.h" line="49">Function type for doing final config tweaking on prepared FcPatterns.</doc>
+      <source-position filename="../pango/pangoft2.h" line="56"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="pattern" transfer-ownership="none">
+          <doc xml:space="preserve" filename="../pango/pangoft2.h" line="51">the &lt;type&gt;FcPattern&lt;/type&gt; to tweak.</doc>
+          <type name="fontconfig.Pattern" c:type="FcPattern*"/>
+        </parameter>
+        <parameter name="data" transfer-ownership="none" nullable="1" allow-none="1">
+          <doc xml:space="preserve" filename="../pango/pangoft2.h" line="52">user data.</doc>
+          <type name="gpointer" c:type="gpointer"/>
+        </parameter>
+      </parameters>
+    </callback>
+    <function name="font_get_coverage" c:identifier="pango_ft2_font_get_coverage" introspectable="0">
+      <doc xml:space="preserve" filename="../pango/pangoft2.c" line="477">Gets the #PangoCoverage for a &lt;type&gt;PangoFT2Font&lt;/type&gt;. Use
+pango_font_get_coverage() instead.</doc>
+      <source-position filename="../pango/pangoft2.h" line="138"/>
+      <return-value>
+        <doc xml:space="preserve" filename="../pango/pangoft2.c" line="485">a #PangoCoverage.</doc>
+        <type name="Pango.Coverage" c:type="PangoCoverage*"/>
+      </return-value>
+      <parameters>
+        <parameter name="font" transfer-ownership="none">
+          <doc xml:space="preserve" filename="../pango/pangoft2.c" line="479">a &lt;type&gt;PangoFT2Font&lt;/type&gt;.</doc>
+          <type name="Pango.Font" c:type="PangoFont*"/>
+        </parameter>
+        <parameter name="language" transfer-ownership="none">
+          <doc xml:space="preserve" filename="../pango/pangoft2.c" line="480">a language tag.</doc>
+          <type name="Pango.Language" c:type="PangoLanguage*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="font_get_face" c:identifier="pango_ft2_font_get_face" introspectable="0">
+      <doc xml:space="preserve" filename="../pango/pangoft2.c" line="161">Returns the native FreeType2 &lt;type&gt;FT_Face&lt;/type&gt; structure used for this #PangoFont.
+This may be useful if you want to use FreeType2 functions directly.
+
+Use pango_fc_font_lock_face() instead; when you are done with a
+face from pango_fc_font_lock_face() you must call
+pango_fc_font_unlock_face().</doc>
+      <source-position filename="../pango/pangoft2.h" line="136"/>
+      <return-value nullable="1">
+        <doc xml:space="preserve" filename="../pango/pangoft2.c" line="172">a pointer to a &lt;type&gt;FT_Face&lt;/type&gt;
+              structure, with the size set correctly, or %NULL if
+              @font is %NULL.</doc>
+        <type name="freetype2.Face" c:type="FT_Face"/>
+      </return-value>
+      <parameters>
+        <parameter name="font" transfer-ownership="none">
+          <doc xml:space="preserve" filename="../pango/pangoft2.c" line="163">a #PangoFont</doc>
+          <type name="Pango.Font" c:type="PangoFont*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="font_get_kerning" c:identifier="pango_ft2_font_get_kerning">
+      <doc xml:space="preserve" filename="../pango/pangoft2.c" line="388">Retrieves kerning information for a combination of two glyphs.
+
+Use pango_fc_font_kern_glyphs() instead.</doc>
+      <source-position filename="../pango/pangoft2.h" line="132"/>
+      <return-value transfer-ownership="none">
+        <doc xml:space="preserve" filename="../pango/pangoft2.c" line="398">The amount of kerning (in Pango units) to apply for
+the given combination of glyphs.</doc>
+        <type name="gint" c:type="int"/>
+      </return-value>
+      <parameters>
+        <parameter name="font" transfer-ownership="none">
+          <doc xml:space="preserve" filename="../pango/pangoft2.c" line="390">a #PangoFont</doc>
+          <type name="Pango.Font" c:type="PangoFont*"/>
+        </parameter>
+        <parameter name="left" transfer-ownership="none">
+          <doc xml:space="preserve" filename="../pango/pangoft2.c" line="391">the left #PangoGlyph</doc>
+          <type name="Pango.Glyph" c:type="PangoGlyph"/>
+        </parameter>
+        <parameter name="right" transfer-ownership="none">
+          <doc xml:space="preserve" filename="../pango/pangoft2.c" line="392">the right #PangoGlyph</doc>
+          <type name="Pango.Glyph" c:type="PangoGlyph"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="get_context" c:identifier="pango_ft2_get_context" introspectable="0">
+      <source-position filename="../pango/pangoft2.h" line="122"/>
+      <return-value>
+        <type name="Pango.Context" c:type="PangoContext*"/>
+      </return-value>
+      <parameters>
+        <parameter name="dpi_x" transfer-ownership="none">
+          <type name="gdouble" c:type="double"/>
+        </parameter>
+        <parameter name="dpi_y" transfer-ownership="none">
+          <type name="gdouble" c:type="double"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="get_unknown_glyph" c:identifier="pango_ft2_get_unknown_glyph">
+      <doc xml:space="preserve" filename="../pango/pangoft2.c" line="496">Return the index of a glyph suitable for drawing unknown characters with
+@font, or %PANGO_GLYPH_EMPTY if no suitable glyph found.
+
+If you want to draw an unknown-box for a character that is not covered
+by the font,
+use PANGO_GET_UNKNOWN_GLYPH() instead.</doc>
+      <source-position filename="../pango/pangoft2.h" line="130"/>
+      <return-value transfer-ownership="none">
+        <doc xml:space="preserve" filename="../pango/pangoft2.c" line="507">a glyph index into @font, or %PANGO_GLYPH_EMPTY</doc>
+        <type name="Pango.Glyph" c:type="PangoGlyph"/>
+      </return-value>
+      <parameters>
+        <parameter name="font" transfer-ownership="none">
+          <doc xml:space="preserve" filename="../pango/pangoft2.c" line="498">a #PangoFont</doc>
+          <type name="Pango.Font" c:type="PangoFont*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="render" c:identifier="pango_ft2_render">
+      <source-position filename="../pango/pangoft2.h" line="62"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="bitmap" transfer-ownership="none">
+          <type name="freetype2.Bitmap" c:type="FT_Bitmap*"/>
+        </parameter>
+        <parameter name="font" transfer-ownership="none">
+          <type name="Pango.Font" c:type="PangoFont*"/>
+        </parameter>
+        <parameter name="glyphs" transfer-ownership="none">
+          <type name="Pango.GlyphString" c:type="PangoGlyphString*"/>
+        </parameter>
+        <parameter name="x" transfer-ownership="none">
+          <type name="gint" c:type="gint"/>
+        </parameter>
+        <parameter name="y" transfer-ownership="none">
+          <type name="gint" c:type="gint"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="render_layout" c:identifier="pango_ft2_render_layout">
+      <source-position filename="../pango/pangoft2.h" line="86"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="bitmap" transfer-ownership="none">
+          <type name="freetype2.Bitmap" c:type="FT_Bitmap*"/>
+        </parameter>
+        <parameter name="layout" transfer-ownership="none">
+          <type name="Pango.Layout" c:type="PangoLayout*"/>
+        </parameter>
+        <parameter name="x" transfer-ownership="none">
+          <type name="gint" c:type="int"/>
+        </parameter>
+        <parameter name="y" transfer-ownership="none">
+          <type name="gint" c:type="int"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="render_layout_line" c:identifier="pango_ft2_render_layout_line">
+      <source-position filename="../pango/pangoft2.h" line="76"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="bitmap" transfer-ownership="none">
+          <type name="freetype2.Bitmap" c:type="FT_Bitmap*"/>
+        </parameter>
+        <parameter name="line" transfer-ownership="none">
+          <type name="Pango.LayoutLine" c:type="PangoLayoutLine*"/>
+        </parameter>
+        <parameter name="x" transfer-ownership="none">
+          <type name="gint" c:type="int"/>
+        </parameter>
+        <parameter name="y" transfer-ownership="none">
+          <type name="gint" c:type="int"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="render_layout_line_subpixel" c:identifier="pango_ft2_render_layout_line_subpixel">
+      <source-position filename="../pango/pangoft2.h" line="81"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="bitmap" transfer-ownership="none">
+          <type name="freetype2.Bitmap" c:type="FT_Bitmap*"/>
+        </parameter>
+        <parameter name="line" transfer-ownership="none">
+          <type name="Pango.LayoutLine" c:type="PangoLayoutLine*"/>
+        </parameter>
+        <parameter name="x" transfer-ownership="none">
+          <type name="gint" c:type="int"/>
+        </parameter>
+        <parameter name="y" transfer-ownership="none">
+          <type name="gint" c:type="int"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="render_layout_subpixel" c:identifier="pango_ft2_render_layout_subpixel">
+      <source-position filename="../pango/pangoft2.h" line="91"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="bitmap" transfer-ownership="none">
+          <type name="freetype2.Bitmap" c:type="FT_Bitmap*"/>
+        </parameter>
+        <parameter name="layout" transfer-ownership="none">
+          <type name="Pango.Layout" c:type="PangoLayout*"/>
+        </parameter>
+        <parameter name="x" transfer-ownership="none">
+          <type name="gint" c:type="int"/>
+        </parameter>
+        <parameter name="y" transfer-ownership="none">
+          <type name="gint" c:type="int"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="render_transformed" c:identifier="pango_ft2_render_transformed">
+      <source-position filename="../pango/pangoft2.h" line="68"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="bitmap" transfer-ownership="none">
+          <type name="freetype2.Bitmap" c:type="FT_Bitmap*"/>
+        </parameter>
+        <parameter name="matrix" transfer-ownership="none">
+          <type name="Pango.Matrix" c:type="const PangoMatrix*"/>
+        </parameter>
+        <parameter name="font" transfer-ownership="none">
+          <type name="Pango.Font" c:type="PangoFont*"/>
+        </parameter>
+        <parameter name="glyphs" transfer-ownership="none">
+          <type name="Pango.GlyphString" c:type="PangoGlyphString*"/>
+        </parameter>
+        <parameter name="x" transfer-ownership="none">
+          <type name="gint" c:type="int"/>
+        </parameter>
+        <parameter name="y" transfer-ownership="none">
+          <type name="gint" c:type="int"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="shutdown_display" c:identifier="pango_ft2_shutdown_display">
+      <source-position filename="../pango/pangoft2.h" line="127"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+    </function>
+  </namespace>
+</repository>
