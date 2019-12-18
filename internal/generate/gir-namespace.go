@@ -59,7 +59,7 @@ func (n *Namespace) generate() {
 
 	n.mkDirs()
 
-	n.generateFile(filepath.Join(n.cDir, "sys"), n.generateSys)
+	n.generateSys()
 
 	//n.generateFile("alias", n.Aliases.generate)
 	//n.generateFile("bitfield", n.Bitfields.generate)

@@ -9,10 +9,16 @@ import (
 
 type repository struct {
 	// xml mappings
-	XMLName xml.Name `xml:"repository"`
-	Version string   `xml:"Version,attr"`
+	XMLName   xml.Name  `xml:"repository"`
+	Version   string    `xml:"Version,attr"`
+	CIncludes CIncludes `xml:"http://www.gtk.org/introspection/c/1.0 include"`
 	//Includes  []Include  `xml:"http://www.gtk.org/introspection/core/1.0 include"`
+	Packages  []Package  `xml:"package"`
 	Namespace *Namespace `xml:"namespace"`
+}
+
+type Package struct {
+	Name string `xml:"name,attr"`
 }
 
 func (r *repository) loadFromFile(filename string, required bool) {
