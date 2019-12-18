@@ -5,17 +5,16 @@ import (
 	"github.com/dave/jennifer/jen"
 	"io/ioutil"
 	"os"
-	"path"
 	"path/filepath"
 	"regexp"
 	"strings"
 )
 
 type Namespace struct {
-	Name                string       `xml:"name,attr"`
-	Version             string       `xml:"version,attr"`
-	CIdentifierPrefixes string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
-	CSymbolPrefixes     string       `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
+	Name                string `xml:"name,attr"`
+	Version             string `xml:"version,attr"`
+	CIdentifierPrefixes string `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
+	CSymbolPrefixes     string `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
 	//Aliases             Aliases      `xml:"alias"`
 	//Bitfields           Enumerations `xml:"bitfield"`
 	//	Callbacks                     Callbacks    `xml:"callback"`
@@ -26,7 +25,9 @@ type Namespace struct {
 	//Records      Records      `xml:"record"`
 	//Interfaces   Interfaces   `xml:"interface"`
 
+	repository        *repository
 	libDir            string
+	cDir              string
 	namespaces        namespaces
 	goPackageName     string
 	goFullPackageName string
@@ -34,7 +35,8 @@ type Namespace struct {
 	unsupportedCount  int
 }
 
-func (n *Namespace) init(namespaces namespaces) {
+func (n *Namespace) init(repository *repository, namespaces namespaces) {
+	n.repository = repository
 	n.namespaces = namespaces
 	n.cSymbolPrefixes = strings.Split(n.CSymbolPrefixes, ",")
 	n.goPackageName = strings.ToLower(n.Name)
@@ -51,8 +53,13 @@ func (n *Namespace) init(namespaces namespaces) {
 }
 
 func (n *Namespace) generate() {
-	n.libDir = projectFilepath("..", "lib", n.goPackageName)
-	n.generateLibDir()
+	libDir := projectFilepath("..", "lib")
+	n.libDir = filepath.Join(libDir, n.goPackageName)
+	n.cDir = filepath.Join(libDir, "internal", "c", n.goPackageName)
+
+	n.mkDirs()
+
+	n.generateFile(filepath.Join(n.cDir, "sys"), n.generateSys)
 
 	//n.generateFile("alias", n.Aliases.generate)
 	//n.generateFile("bitfield", n.Bitfields.generate)
@@ -66,8 +73,13 @@ func (n *Namespace) generate() {
 	n.setUnsupportedCount()
 }
 
-func (n *Namespace) generateLibDir() {
+func (n *Namespace) mkDirs() {
 	err := os.MkdirAll(n.libDir, 0775)
+	if err != nil {
+		panic(err)
+	}
+
+	err = os.MkdirAll(n.cDir, 0775)
 	if err != nil {
 		panic(err)
 	}
@@ -83,7 +95,7 @@ func (n *Namespace) generateFile(name string, generateContent func(f *jen.File))
 
 	generateContent(f)
 
-	filepath := path.Join(n.libDir, fmt.Sprintf("%s.go", name))
+	filepath := fmt.Sprintf("%s.go", name)
 	err := f.Save(filepath)
 	if err != nil {
 		panic(err)
@@ -100,6 +112,11 @@ func (n *Namespace) setUnsupportedCount() {
 
 	for _, info := range infos {
 		path := filepath.Join(n.libDir, info.Name())
+		fi, _ := os.Stat(path)
+		if fi.IsDir() {
+			continue
+		}
+
 		bytes, err := ioutil.ReadFile(path)
 		if err != nil {
 			panic(err)
