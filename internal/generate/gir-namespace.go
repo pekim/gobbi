@@ -19,7 +19,7 @@ type Namespace struct {
 	//Bitfields           Enumerations `xml:"bitfield"`
 	//	Callbacks                     Callbacks    `xml:"callback"`
 	//Classes      Classes      `xml:"class"`
-	//Constants    Constants    `xml:"constant"`
+	Constants Constants `xml:"constant"`
 	//Enumerations Enumerations `xml:"enumeration"`
 	//Functions    Functions    `xml:"function"`
 	//Records      Records      `xml:"record"`
@@ -44,7 +44,7 @@ func (n *Namespace) init(repository *repository, namespaces namespaces) {
 
 	//n.Aliases.init(n)
 	//n.Bitfields.init(n)
-	//n.Constants.init(n)
+	n.Constants.init(n)
 	//n.Enumerations.init(n)
 	//n.Functions.init(n)
 	//n.Records.init(n)
@@ -59,7 +59,7 @@ func (n *Namespace) generate() {
 
 	n.mkDirs()
 
-	n.generateSys()
+	n.generateC()
 
 	//n.generateFile("alias", n.Aliases.generate)
 	//n.generateFile("bitfield", n.Bitfields.generate)
