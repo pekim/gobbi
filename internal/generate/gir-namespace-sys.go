@@ -22,5 +22,7 @@ func (ns *Namespace) generatePackageFile(f *jen.File) {
 
 func (ns *Namespace) generateSysFile(f *jen.File) {
 	ns.repository.CIncludes.generate(f)
-	ns.Enumerations.generateSys(f)
+
+	ns.Bitfields.generateSys(f, "bitfields")
+	ns.Enumerations.generateSys(f, "enumerations")
 }

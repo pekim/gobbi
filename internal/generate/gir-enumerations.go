@@ -10,8 +10,12 @@ func (ee Enumerations) init(ns *Namespace) {
 	}
 }
 
-func (ee Enumerations) generateSys(f *jen.File) {
+func (ee Enumerations) generateSys(f *jen.File, typ string) {
+	f.Comment(typ)
+
 	for _, enum := range ee {
 		enum.generateSys(f)
 	}
+
+	f.Line()
 }

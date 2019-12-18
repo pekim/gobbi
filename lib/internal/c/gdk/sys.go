@@ -5,6 +5,21 @@ package gdk
 // #include <gdk/gdk.h>
 import "C"
 
+// bitfields
+type AnchorHints C.GdkAnchorHints
+type AxisFlags C.GdkAxisFlags
+type DragAction C.GdkDragAction
+type EventMask C.GdkEventMask
+type FrameClockPhase C.GdkFrameClockPhase
+type ModifierType C.GdkModifierType
+type SeatCapabilities C.GdkSeatCapabilities
+type WMDecoration C.GdkWMDecoration
+type WMFunction C.GdkWMFunction
+type WindowAttributesType C.GdkWindowAttributesType
+type WindowHints C.GdkWindowHints
+type WindowState C.GdkWindowState
+
+// enumerations
 type AxisUse C.GdkAxisUse
 type ByteOrder C.GdkByteOrder
 type CrossingMode C.GdkCrossingMode

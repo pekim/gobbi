@@ -7,6 +7,34 @@ package gtk
 // #include <gtk/gtkx.h>
 import "C"
 
+// bitfields
+type AccelFlags C.GtkAccelFlags
+type ApplicationInhibitFlags C.GtkApplicationInhibitFlags
+type AttachOptions C.GtkAttachOptions
+type CalendarDisplayOptions C.GtkCalendarDisplayOptions
+type CellRendererState C.GtkCellRendererState
+type DebugFlag C.GtkDebugFlag
+type DestDefaults C.GtkDestDefaults
+type DialogFlags C.GtkDialogFlags
+type EventControllerScrollFlags C.GtkEventControllerScrollFlags
+type FileFilterFlags C.GtkFileFilterFlags
+type FontChooserLevel C.GtkFontChooserLevel
+type IconLookupFlags C.GtkIconLookupFlags
+type InputHints C.GtkInputHints
+type JunctionSides C.GtkJunctionSides
+type PlacesOpenFlags C.GtkPlacesOpenFlags
+type RcFlags C.GtkRcFlags
+type RecentFilterFlags C.GtkRecentFilterFlags
+type RegionFlags C.GtkRegionFlags
+type StateFlags C.GtkStateFlags
+type StyleContextPrintFlags C.GtkStyleContextPrintFlags
+type TargetFlags C.GtkTargetFlags
+type TextSearchFlags C.GtkTextSearchFlags
+type ToolPaletteDragTargets C.GtkToolPaletteDragTargets
+type TreeModelFlags C.GtkTreeModelFlags
+type UIManagerItemType C.GtkUIManagerItemType
+
+// enumerations
 type Align C.GtkAlign
 type ArrowPlacement C.GtkArrowPlacement
 type ArrowType C.GtkArrowType

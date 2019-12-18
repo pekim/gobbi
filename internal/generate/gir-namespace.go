@@ -16,7 +16,7 @@ type Namespace struct {
 	CIdentifierPrefixes string `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
 	CSymbolPrefixes     string `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
 	//Aliases             Aliases      `xml:"alias"`
-	//Bitfields           Enumerations `xml:"bitfield"`
+	Bitfields Enumerations `xml:"bitfield"`
 	//	Callbacks                     Callbacks    `xml:"callback"`
 	//Classes      Classes      `xml:"class"`
 	Constants    Constants    `xml:"constant"`
@@ -43,7 +43,7 @@ func (n *Namespace) init(repository *repository, namespaces namespaces) {
 	n.goFullPackageName = "github.com/pekim/gobbi/lib/" + n.goPackageName
 
 	//n.Aliases.init(n)
-	//n.Bitfields.init(n)
+	n.Bitfields.init(n)
 	n.Constants.init(n)
 	n.Enumerations.init(n)
 	//n.Functions.init(n)

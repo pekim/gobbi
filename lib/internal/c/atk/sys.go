@@ -5,6 +5,10 @@ package atk
 // #include <atk/atk.h>
 import "C"
 
+// bitfields
+type HyperlinkStateFlags C.AtkHyperlinkStateFlags
+
+// enumerations
 type CoordType C.AtkCoordType
 type KeyEventType C.AtkKeyEventType
 type Layer C.AtkLayer

@@ -15,6 +15,48 @@ package gio
 // #include <gio/gunixsocketaddress.h>
 import "C"
 
+// bitfields
+type AppInfoCreateFlags C.GAppInfoCreateFlags
+type ApplicationFlags C.GApplicationFlags
+type AskPasswordFlags C.GAskPasswordFlags
+type BusNameOwnerFlags C.GBusNameOwnerFlags
+type BusNameWatcherFlags C.GBusNameWatcherFlags
+type ConverterFlags C.GConverterFlags
+type DBusCallFlags C.GDBusCallFlags
+type DBusCapabilityFlags C.GDBusCapabilityFlags
+type DBusConnectionFlags C.GDBusConnectionFlags
+type DBusInterfaceSkeletonFlags C.GDBusInterfaceSkeletonFlags
+type DBusMessageFlags C.GDBusMessageFlags
+type DBusObjectManagerClientFlags C.GDBusObjectManagerClientFlags
+type DBusPropertyInfoFlags C.GDBusPropertyInfoFlags
+type DBusProxyFlags C.GDBusProxyFlags
+type DBusSendMessageFlags C.GDBusSendMessageFlags
+type DBusServerFlags C.GDBusServerFlags
+type DBusSignalFlags C.GDBusSignalFlags
+type DBusSubtreeFlags C.GDBusSubtreeFlags
+type DriveStartFlags C.GDriveStartFlags
+type FileAttributeInfoFlags C.GFileAttributeInfoFlags
+type FileCopyFlags C.GFileCopyFlags
+type FileCreateFlags C.GFileCreateFlags
+type FileMeasureFlags C.GFileMeasureFlags
+type FileMonitorFlags C.GFileMonitorFlags
+type FileQueryInfoFlags C.GFileQueryInfoFlags
+type IOStreamSpliceFlags C.GIOStreamSpliceFlags
+type MountMountFlags C.GMountMountFlags
+type MountUnmountFlags C.GMountUnmountFlags
+type OutputStreamSpliceFlags C.GOutputStreamSpliceFlags
+type ResolverNameLookupFlags C.GResolverNameLookupFlags
+type ResourceFlags C.GResourceFlags
+type ResourceLookupFlags C.GResourceLookupFlags
+type SettingsBindFlags C.GSettingsBindFlags
+type SocketMsgFlags C.GSocketMsgFlags
+type SubprocessFlags C.GSubprocessFlags
+type TestDBusFlags C.GTestDBusFlags
+type TlsCertificateFlags C.GTlsCertificateFlags
+type TlsDatabaseVerifyFlags C.GTlsDatabaseVerifyFlags
+type TlsPasswordFlags C.GTlsPasswordFlags
+
+// enumerations
 type BusType C.GBusType
 type ConverterResult C.GConverterResult
 type CredentialsType C.GCredentialsType
