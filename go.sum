@@ -1,3 +1,5 @@
+github.com/blang/semver v3.5.1+incompatible h1:cQNTCjp13qL8KC3Nbxr/y2Bqb63oX6wdnnjpJbkM4JQ=
+github.com/blang/semver v3.5.1+incompatible/go.mod h1:kRBLl5iJ+tD4TcOOxsy/0fnwebNt5EWlYSAyrTnjyyk=
 github.com/boyter/scc v2.10.1+incompatible h1:0bg2TmmduZjvoSqz0dfF3W3jfibgEFv2XOsKItTjarU=
 github.com/boyter/scc v2.10.1+incompatible/go.mod h1:VB5w4e0dahmIiKnpZ7LRh/sjauoY0BmCWjIzZcShNY0=
 github.com/dave/jennifer v1.4.0 h1:tNJFJmLDVTLu+v05mVZ88RINa3vQqnyyWkTKWYz0CwE=

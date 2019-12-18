@@ -3,6 +3,7 @@ module github.com/pekim/gobbi
 go 1.13
 
 require (
+	github.com/blang/semver v3.5.1+incompatible
 	github.com/boyter/scc v2.10.1+incompatible
 	github.com/dave/jennifer v1.4.0
 	github.com/dbaggerman/cuba v0.3.2 // indirect

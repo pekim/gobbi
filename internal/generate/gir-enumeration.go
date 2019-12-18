@@ -1,6 +1,8 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
+import (
+	"github.com/dave/jennifer/jen"
+)
 
 type Enumeration struct {
 	Namespace *Namespace
@@ -17,10 +19,12 @@ type Enumeration struct {
 	//Functions    Functions `xml:"function"`
 
 	goTypeName string
+	version    *version
 }
 
 func (e *Enumeration) init(ns *Namespace) {
 	e.Namespace = ns
+	e.version = versionNew(e.Version)
 }
 
 func (e Enumeration) generateSys(f *jen.File) {
