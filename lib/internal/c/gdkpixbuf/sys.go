@@ -2,8 +2,11 @@
 
 package gdkpixbuf
 
-// constant : PIXBUF_FEATURES_H
-// constant : PIXBUF_MAJOR
-// constant : PIXBUF_MICRO
-// constant : PIXBUF_MINOR
-// constant : PIXBUF_VERSION
+// #include <gdk-pixbuf/gdk-pixbuf.h>
+import "C"
+
+type Colorspace C.GdkColorspace
+type InterpType C.GdkInterpType
+type PixbufAlphaMode C.GdkPixbufAlphaMode
+type PixbufError C.GdkPixbufError
+type PixbufRotation C.GdkPixbufRotation

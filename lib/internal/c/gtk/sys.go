@@ -2,265 +2,104 @@
 
 package gtk
 
-// constant : BINARY_AGE
-// constant : INPUT_ERROR
-// constant : INTERFACE_AGE
-// constant : LEVEL_BAR_OFFSET_FULL
-// constant : LEVEL_BAR_OFFSET_HIGH
-// constant : LEVEL_BAR_OFFSET_LOW
-// constant : MAJOR_VERSION
-// constant : MAX_COMPOSE_LEN
-// constant : MICRO_VERSION
-// constant : MINOR_VERSION
-// constant : PAPER_NAME_A3
-// constant : PAPER_NAME_A4
-// constant : PAPER_NAME_A5
-// constant : PAPER_NAME_B5
-// constant : PAPER_NAME_EXECUTIVE
-// constant : PAPER_NAME_LEGAL
-// constant : PAPER_NAME_LETTER
-// constant : PATH_PRIO_MASK
-// constant : PRINT_SETTINGS_COLLATE
-// constant : PRINT_SETTINGS_DEFAULT_SOURCE
-// constant : PRINT_SETTINGS_DITHER
-// constant : PRINT_SETTINGS_DUPLEX
-// constant : PRINT_SETTINGS_FINISHINGS
-// constant : PRINT_SETTINGS_MEDIA_TYPE
-// constant : PRINT_SETTINGS_NUMBER_UP
-// constant : PRINT_SETTINGS_NUMBER_UP_LAYOUT
-// constant : PRINT_SETTINGS_N_COPIES
-// constant : PRINT_SETTINGS_ORIENTATION
-// constant : PRINT_SETTINGS_OUTPUT_BASENAME
-// constant : PRINT_SETTINGS_OUTPUT_BIN
-// constant : PRINT_SETTINGS_OUTPUT_DIR
-// constant : PRINT_SETTINGS_OUTPUT_FILE_FORMAT
-// constant : PRINT_SETTINGS_OUTPUT_URI
-// constant : PRINT_SETTINGS_PAGE_RANGES
-// constant : PRINT_SETTINGS_PAGE_SET
-// constant : PRINT_SETTINGS_PAPER_FORMAT
-// constant : PRINT_SETTINGS_PAPER_HEIGHT
-// constant : PRINT_SETTINGS_PAPER_WIDTH
-// constant : PRINT_SETTINGS_PRINTER
-// constant : PRINT_SETTINGS_PRINTER_LPI
-// constant : PRINT_SETTINGS_PRINT_PAGES
-// constant : PRINT_SETTINGS_QUALITY
-// constant : PRINT_SETTINGS_RESOLUTION
-// constant : PRINT_SETTINGS_RESOLUTION_X
-// constant : PRINT_SETTINGS_RESOLUTION_Y
-// constant : PRINT_SETTINGS_REVERSE
-// constant : PRINT_SETTINGS_SCALE
-// constant : PRINT_SETTINGS_USE_COLOR
-// constant : PRINT_SETTINGS_WIN32_DRIVER_EXTRA
-// constant : PRINT_SETTINGS_WIN32_DRIVER_VERSION
-// constant : PRIORITY_RESIZE
-// constant : STOCK_ABOUT
-// constant : STOCK_ADD
-// constant : STOCK_APPLY
-// constant : STOCK_BOLD
-// constant : STOCK_CANCEL
-// constant : STOCK_CAPS_LOCK_WARNING
-// constant : STOCK_CDROM
-// constant : STOCK_CLEAR
-// constant : STOCK_CLOSE
-// constant : STOCK_COLOR_PICKER
-// constant : STOCK_CONNECT
-// constant : STOCK_CONVERT
-// constant : STOCK_COPY
-// constant : STOCK_CUT
-// constant : STOCK_DELETE
-// constant : STOCK_DIALOG_AUTHENTICATION
-// constant : STOCK_DIALOG_ERROR
-// constant : STOCK_DIALOG_INFO
-// constant : STOCK_DIALOG_QUESTION
-// constant : STOCK_DIALOG_WARNING
-// constant : STOCK_DIRECTORY
-// constant : STOCK_DISCARD
-// constant : STOCK_DISCONNECT
-// constant : STOCK_DND
-// constant : STOCK_DND_MULTIPLE
-// constant : STOCK_EDIT
-// constant : STOCK_EXECUTE
-// constant : STOCK_FILE
-// constant : STOCK_FIND
-// constant : STOCK_FIND_AND_REPLACE
-// constant : STOCK_FLOPPY
-// constant : STOCK_FULLSCREEN
-// constant : STOCK_GOTO_BOTTOM
-// constant : STOCK_GOTO_FIRST
-// constant : STOCK_GOTO_LAST
-// constant : STOCK_GOTO_TOP
-// constant : STOCK_GO_BACK
-// constant : STOCK_GO_DOWN
-// constant : STOCK_GO_FORWARD
-// constant : STOCK_GO_UP
-// constant : STOCK_HARDDISK
-// constant : STOCK_HELP
-// constant : STOCK_HOME
-// constant : STOCK_INDENT
-// constant : STOCK_INDEX
-// constant : STOCK_INFO
-// constant : STOCK_ITALIC
-// constant : STOCK_JUMP_TO
-// constant : STOCK_JUSTIFY_CENTER
-// constant : STOCK_JUSTIFY_FILL
-// constant : STOCK_JUSTIFY_LEFT
-// constant : STOCK_JUSTIFY_RIGHT
-// constant : STOCK_LEAVE_FULLSCREEN
-// constant : STOCK_MEDIA_FORWARD
-// constant : STOCK_MEDIA_NEXT
-// constant : STOCK_MEDIA_PAUSE
-// constant : STOCK_MEDIA_PLAY
-// constant : STOCK_MEDIA_PREVIOUS
-// constant : STOCK_MEDIA_RECORD
-// constant : STOCK_MEDIA_REWIND
-// constant : STOCK_MEDIA_STOP
-// constant : STOCK_MISSING_IMAGE
-// constant : STOCK_NETWORK
-// constant : STOCK_NEW
-// constant : STOCK_NO
-// constant : STOCK_OK
-// constant : STOCK_OPEN
-// constant : STOCK_ORIENTATION_LANDSCAPE
-// constant : STOCK_ORIENTATION_PORTRAIT
-// constant : STOCK_ORIENTATION_REVERSE_LANDSCAPE
-// constant : STOCK_ORIENTATION_REVERSE_PORTRAIT
-// constant : STOCK_PAGE_SETUP
-// constant : STOCK_PASTE
-// constant : STOCK_PREFERENCES
-// constant : STOCK_PRINT
-// constant : STOCK_PRINT_ERROR
-// constant : STOCK_PRINT_PAUSED
-// constant : STOCK_PRINT_PREVIEW
-// constant : STOCK_PRINT_REPORT
-// constant : STOCK_PRINT_WARNING
-// constant : STOCK_PROPERTIES
-// constant : STOCK_QUIT
-// constant : STOCK_REDO
-// constant : STOCK_REFRESH
-// constant : STOCK_REMOVE
-// constant : STOCK_REVERT_TO_SAVED
-// constant : STOCK_SAVE
-// constant : STOCK_SAVE_AS
-// constant : STOCK_SELECT_ALL
-// constant : STOCK_SELECT_COLOR
-// constant : STOCK_SELECT_FONT
-// constant : STOCK_SORT_ASCENDING
-// constant : STOCK_SORT_DESCENDING
-// constant : STOCK_SPELL_CHECK
-// constant : STOCK_STOP
-// constant : STOCK_STRIKETHROUGH
-// constant : STOCK_UNDELETE
-// constant : STOCK_UNDERLINE
-// constant : STOCK_UNDO
-// constant : STOCK_UNINDENT
-// constant : STOCK_YES
-// constant : STOCK_ZOOM_100
-// constant : STOCK_ZOOM_FIT
-// constant : STOCK_ZOOM_IN
-// constant : STOCK_ZOOM_OUT
-// constant : STYLE_CLASS_ACCELERATOR
-// constant : STYLE_CLASS_ARROW
-// constant : STYLE_CLASS_BACKGROUND
-// constant : STYLE_CLASS_BOTTOM
-// constant : STYLE_CLASS_BUTTON
-// constant : STYLE_CLASS_CALENDAR
-// constant : STYLE_CLASS_CELL
-// constant : STYLE_CLASS_CHECK
-// constant : STYLE_CLASS_COMBOBOX_ENTRY
-// constant : STYLE_CLASS_CONTEXT_MENU
-// constant : STYLE_CLASS_CSD
-// constant : STYLE_CLASS_CURSOR_HANDLE
-// constant : STYLE_CLASS_DEFAULT
-// constant : STYLE_CLASS_DESTRUCTIVE_ACTION
-// constant : STYLE_CLASS_DIM_LABEL
-// constant : STYLE_CLASS_DND
-// constant : STYLE_CLASS_DOCK
-// constant : STYLE_CLASS_ENTRY
-// constant : STYLE_CLASS_ERROR
-// constant : STYLE_CLASS_EXPANDER
-// constant : STYLE_CLASS_FLAT
-// constant : STYLE_CLASS_FRAME
-// constant : STYLE_CLASS_GRIP
-// constant : STYLE_CLASS_HEADER
-// constant : STYLE_CLASS_HIGHLIGHT
-// constant : STYLE_CLASS_HORIZONTAL
-// constant : STYLE_CLASS_IMAGE
-// constant : STYLE_CLASS_INFO
-// constant : STYLE_CLASS_INLINE_TOOLBAR
-// constant : STYLE_CLASS_INSERTION_CURSOR
-// constant : STYLE_CLASS_LABEL
-// constant : STYLE_CLASS_LEFT
-// constant : STYLE_CLASS_LEVEL_BAR
-// constant : STYLE_CLASS_LINKED
-// constant : STYLE_CLASS_LIST
-// constant : STYLE_CLASS_LIST_ROW
-// constant : STYLE_CLASS_MARK
-// constant : STYLE_CLASS_MENU
-// constant : STYLE_CLASS_MENUBAR
-// constant : STYLE_CLASS_MENUITEM
-// constant : STYLE_CLASS_MESSAGE_DIALOG
-// constant : STYLE_CLASS_MONOSPACE
-// constant : STYLE_CLASS_NEEDS_ATTENTION
-// constant : STYLE_CLASS_NOTEBOOK
-// constant : STYLE_CLASS_OSD
-// constant : STYLE_CLASS_OVERSHOOT
-// constant : STYLE_CLASS_PANE_SEPARATOR
-// constant : STYLE_CLASS_PAPER
-// constant : STYLE_CLASS_POPOVER
-// constant : STYLE_CLASS_POPUP
-// constant : STYLE_CLASS_PRIMARY_TOOLBAR
-// constant : STYLE_CLASS_PROGRESSBAR
-// constant : STYLE_CLASS_PULSE
-// constant : STYLE_CLASS_QUESTION
-// constant : STYLE_CLASS_RADIO
-// constant : STYLE_CLASS_RAISED
-// constant : STYLE_CLASS_READ_ONLY
-// constant : STYLE_CLASS_RIGHT
-// constant : STYLE_CLASS_RUBBERBAND
-// constant : STYLE_CLASS_SCALE
-// constant : STYLE_CLASS_SCALE_HAS_MARKS_ABOVE
-// constant : STYLE_CLASS_SCALE_HAS_MARKS_BELOW
-// constant : STYLE_CLASS_SCROLLBAR
-// constant : STYLE_CLASS_SCROLLBARS_JUNCTION
-// constant : STYLE_CLASS_SEPARATOR
-// constant : STYLE_CLASS_SIDEBAR
-// constant : STYLE_CLASS_SLIDER
-// constant : STYLE_CLASS_SPINBUTTON
-// constant : STYLE_CLASS_SPINNER
-// constant : STYLE_CLASS_STATUSBAR
-// constant : STYLE_CLASS_SUBTITLE
-// constant : STYLE_CLASS_SUGGESTED_ACTION
-// constant : STYLE_CLASS_TITLE
-// constant : STYLE_CLASS_TITLEBAR
-// constant : STYLE_CLASS_TOOLBAR
-// constant : STYLE_CLASS_TOOLTIP
-// constant : STYLE_CLASS_TOP
-// constant : STYLE_CLASS_TOUCH_SELECTION
-// constant : STYLE_CLASS_TROUGH
-// constant : STYLE_CLASS_UNDERSHOOT
-// constant : STYLE_CLASS_VERTICAL
-// constant : STYLE_CLASS_VIEW
-// constant : STYLE_CLASS_WARNING
-// constant : STYLE_CLASS_WIDE
-// constant : STYLE_PROPERTY_BACKGROUND_COLOR
-// constant : STYLE_PROPERTY_BACKGROUND_IMAGE
-// constant : STYLE_PROPERTY_BORDER_COLOR
-// constant : STYLE_PROPERTY_BORDER_RADIUS
-// constant : STYLE_PROPERTY_BORDER_STYLE
-// constant : STYLE_PROPERTY_BORDER_WIDTH
-// constant : STYLE_PROPERTY_COLOR
-// constant : STYLE_PROPERTY_FONT
-// constant : STYLE_PROPERTY_MARGIN
-// constant : STYLE_PROPERTY_PADDING
-// constant : STYLE_PROVIDER_PRIORITY_APPLICATION
-// constant : STYLE_PROVIDER_PRIORITY_FALLBACK
-// constant : STYLE_PROVIDER_PRIORITY_SETTINGS
-// constant : STYLE_PROVIDER_PRIORITY_THEME
-// constant : STYLE_PROVIDER_PRIORITY_USER
-// constant : STYLE_REGION_COLUMN
-// constant : STYLE_REGION_COLUMN_HEADER
-// constant : STYLE_REGION_ROW
-// constant : STYLE_REGION_TAB
-// constant : TEXT_VIEW_PRIORITY_VALIDATE
-// constant : TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID
-// constant : TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID
+// #include <gtk/gtk-a11y.h>
+// #include <gtk/gtk.h>
+// #include <gtk/gtkx.h>
+import "C"
+
+type Align C.GtkAlign
+type ArrowPlacement C.GtkArrowPlacement
+type ArrowType C.GtkArrowType
+type AssistantPageType C.GtkAssistantPageType
+type BaselinePosition C.GtkBaselinePosition
+type BorderStyle C.GtkBorderStyle
+type BuilderError C.GtkBuilderError
+type ButtonBoxStyle C.GtkButtonBoxStyle
+type ButtonRole C.GtkButtonRole
+type ButtonsType C.GtkButtonsType
+type CellRendererAccelMode C.GtkCellRendererAccelMode
+type CellRendererMode C.GtkCellRendererMode
+type CornerType C.GtkCornerType
+type CssProviderError C.GtkCssProviderError
+type CssSectionType C.GtkCssSectionType
+type DeleteType C.GtkDeleteType
+type DirectionType C.GtkDirectionType
+type DragResult C.GtkDragResult
+type EntryIconPosition C.GtkEntryIconPosition
+type EventSequenceState C.GtkEventSequenceState
+type ExpanderStyle C.GtkExpanderStyle
+type FileChooserAction C.GtkFileChooserAction
+type FileChooserConfirmation C.GtkFileChooserConfirmation
+type FileChooserError C.GtkFileChooserError
+type IMPreeditStyle C.GtkIMPreeditStyle
+type IMStatusStyle C.GtkIMStatusStyle
+type IconSize C.GtkIconSize
+type IconThemeError C.GtkIconThemeError
+type IconViewDropPosition C.GtkIconViewDropPosition
+type ImageType C.GtkImageType
+type InputPurpose C.GtkInputPurpose
+type Justification C.GtkJustification
+type LevelBarMode C.GtkLevelBarMode
+type License C.GtkLicense
+type MenuDirectionType C.GtkMenuDirectionType
+type MessageType C.GtkMessageType
+type MovementStep C.GtkMovementStep
+type NotebookTab C.GtkNotebookTab
+type NumberUpLayout C.GtkNumberUpLayout
+type Orientation C.GtkOrientation
+type PackDirection C.GtkPackDirection
+type PackType C.GtkPackType
+type PadActionType C.GtkPadActionType
+type PageOrientation C.GtkPageOrientation
+type PageSet C.GtkPageSet
+type PanDirection C.GtkPanDirection
+type PathPriorityType C.GtkPathPriorityType
+type PathType C.GtkPathType
+type PolicyType C.GtkPolicyType
+type PopoverConstraint C.GtkPopoverConstraint
+type PositionType C.GtkPositionType
+type PrintDuplex C.GtkPrintDuplex
+type PrintError C.GtkPrintError
+type PrintOperationAction C.GtkPrintOperationAction
+type PrintOperationResult C.GtkPrintOperationResult
+type PrintPages C.GtkPrintPages
+type PrintQuality C.GtkPrintQuality
+type PrintStatus C.GtkPrintStatus
+type PropagationPhase C.GtkPropagationPhase
+type RcTokenType C.GtkRcTokenType
+type RecentChooserError C.GtkRecentChooserError
+type RecentManagerError C.GtkRecentManagerError
+type RecentSortType C.GtkRecentSortType
+type ReliefStyle C.GtkReliefStyle
+type ResizeMode C.GtkResizeMode
+type ResponseType C.GtkResponseType
+type RevealerTransitionType C.GtkRevealerTransitionType
+type ScrollStep C.GtkScrollStep
+type ScrollType C.GtkScrollType
+type ScrollablePolicy C.GtkScrollablePolicy
+type SelectionMode C.GtkSelectionMode
+type SensitivityType C.GtkSensitivityType
+type ShadowType C.GtkShadowType
+type ShortcutType C.GtkShortcutType
+type SizeGroupMode C.GtkSizeGroupMode
+type SizeRequestMode C.GtkSizeRequestMode
+type SortType C.GtkSortType
+type SpinButtonUpdatePolicy C.GtkSpinButtonUpdatePolicy
+type SpinType C.GtkSpinType
+type StackTransitionType C.GtkStackTransitionType
+type StateType C.GtkStateType
+type TextBufferTargetInfo C.GtkTextBufferTargetInfo
+type TextDirection C.GtkTextDirection
+type TextExtendSelection C.GtkTextExtendSelection
+type TextViewLayer C.GtkTextViewLayer
+type TextWindowType C.GtkTextWindowType
+type ToolbarSpaceStyle C.GtkToolbarSpaceStyle
+type ToolbarStyle C.GtkToolbarStyle
+type TreeViewColumnSizing C.GtkTreeViewColumnSizing
+type TreeViewDropPosition C.GtkTreeViewDropPosition
+type TreeViewGridLines C.GtkTreeViewGridLines
+type Unit C.GtkUnit
+type WidgetHelpType C.GtkWidgetHelpType
+type WindowPosition C.GtkWindowPosition
+type WindowType C.GtkWindowType
+type WrapMode C.GtkWrapMode

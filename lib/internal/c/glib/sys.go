@@ -2,135 +2,43 @@
 
 package glib
 
-// constant : ANALYZER_ANALYZING
-// constant : ASCII_DTOSTR_BUF_SIZE
-// constant : BIG_ENDIAN
-// constant : CSET_A_2_Z
-// constant : CSET_DIGITS
-// constant : CSET_a_2_z
-// constant : DATALIST_FLAGS_MASK
-// constant : DATE_BAD_DAY
-// constant : DATE_BAD_JULIAN
-// constant : DATE_BAD_YEAR
-// constant : DIR_SEPARATOR
-// constant : DIR_SEPARATOR_S
-// constant : E
-// constant : GINT16_FORMAT
-// constant : GINT16_MODIFIER
-// constant : GINT32_FORMAT
-// constant : GINT32_MODIFIER
-// constant : GINT64_FORMAT
-// constant : GINT64_MODIFIER
-// constant : GINTPTR_FORMAT
-// constant : GINTPTR_MODIFIER
-// constant : GNUC_FUNCTION
-// constant : GNUC_PRETTY_FUNCTION
-// constant : GSIZE_FORMAT
-// constant : GSIZE_MODIFIER
-// constant : GSSIZE_FORMAT
-// constant : GSSIZE_MODIFIER
-// constant : GUINT16_FORMAT
-// constant : GUINT32_FORMAT
-// constant : GUINT64_FORMAT
-// constant : GUINTPTR_FORMAT
-// constant : HAVE_GINT64
-// constant : HAVE_GNUC_VARARGS
-// constant : HAVE_GNUC_VISIBILITY
-// constant : HAVE_GROWING_STACK
-// constant : HAVE_ISO_VARARGS
-// constant : HOOK_FLAG_USER_SHIFT
-// constant : IEEE754_DOUBLE_BIAS
-// constant : IEEE754_FLOAT_BIAS
-// constant : KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX
-// constant : KEY_FILE_DESKTOP_GROUP
-// constant : KEY_FILE_DESKTOP_KEY_ACTIONS
-// constant : KEY_FILE_DESKTOP_KEY_CATEGORIES
-// constant : KEY_FILE_DESKTOP_KEY_COMMENT
-// constant : KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE
-// constant : KEY_FILE_DESKTOP_KEY_EXEC
-// constant : KEY_FILE_DESKTOP_KEY_FULLNAME
-// constant : KEY_FILE_DESKTOP_KEY_GENERIC_NAME
-// constant : KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN
-// constant : KEY_FILE_DESKTOP_KEY_HIDDEN
-// constant : KEY_FILE_DESKTOP_KEY_ICON
-// constant : KEY_FILE_DESKTOP_KEY_KEYWORDS
-// constant : KEY_FILE_DESKTOP_KEY_MIME_TYPE
-// constant : KEY_FILE_DESKTOP_KEY_NAME
-// constant : KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN
-// constant : KEY_FILE_DESKTOP_KEY_NO_DISPLAY
-// constant : KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN
-// constant : KEY_FILE_DESKTOP_KEY_PATH
-// constant : KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY
-// constant : KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS
-// constant : KEY_FILE_DESKTOP_KEY_TERMINAL
-// constant : KEY_FILE_DESKTOP_KEY_TRY_EXEC
-// constant : KEY_FILE_DESKTOP_KEY_TYPE
-// constant : KEY_FILE_DESKTOP_KEY_URL
-// constant : KEY_FILE_DESKTOP_KEY_VERSION
-// constant : KEY_FILE_DESKTOP_TYPE_APPLICATION
-// constant : KEY_FILE_DESKTOP_TYPE_DIRECTORY
-// constant : KEY_FILE_DESKTOP_TYPE_LINK
-// constant : LITTLE_ENDIAN
-// constant : LN10
-// constant : LN2
-// constant : LOG_2_BASE_10
-// constant : LOG_DOMAIN
-// constant : LOG_FATAL_MASK
-// constant : LOG_LEVEL_USER_SHIFT
-// constant : MAJOR_VERSION
-// constant : MAXINT16
-// constant : MAXINT32
-// constant : MAXINT64
-// constant : MAXINT8
-// constant : MAXUINT16
-// constant : MAXUINT32
-// constant : MAXUINT64
-// constant : MAXUINT8
-// constant : MICRO_VERSION
-// constant : MININT16
-// constant : MININT32
-// constant : MININT64
-// constant : MININT8
-// constant : MINOR_VERSION
-// constant : MODULE_SUFFIX
-// constant : OPTION_REMAINING
-// constant : PDP_ENDIAN
-// constant : PI
-// constant : PID_FORMAT
-// constant : PI_2
-// constant : PI_4
-// constant : POLLFD_FORMAT
-// constant : PRIORITY_DEFAULT
-// constant : PRIORITY_DEFAULT_IDLE
-// constant : PRIORITY_HIGH
-// constant : PRIORITY_HIGH_IDLE
-// constant : PRIORITY_LOW
-// constant : SEARCHPATH_SEPARATOR
-// constant : SEARCHPATH_SEPARATOR_S
-// constant : SIZEOF_LONG
-// constant : SIZEOF_SIZE_T
-// constant : SIZEOF_SSIZE_T
-// constant : SIZEOF_VOID_P
-// constant : SOURCE_CONTINUE
-// constant : SOURCE_REMOVE
-// constant : SQRT2
-// constant : STR_DELIMITERS
-// constant : SYSDEF_AF_INET
-// constant : SYSDEF_AF_INET6
-// constant : SYSDEF_AF_UNIX
-// constant : SYSDEF_MSG_DONTROUTE
-// constant : SYSDEF_MSG_OOB
-// constant : SYSDEF_MSG_PEEK
-// constant : TEST_OPTION_ISOLATE_DIRS
-// constant : TIME_SPAN_DAY
-// constant : TIME_SPAN_HOUR
-// constant : TIME_SPAN_MILLISECOND
-// constant : TIME_SPAN_MINUTE
-// constant : TIME_SPAN_SECOND
-// constant : UNICHAR_MAX_DECOMPOSITION_LENGTH
-// constant : URI_RESERVED_CHARS_GENERIC_DELIMITERS
-// constant : URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS
-// constant : USEC_PER_SEC
-// constant : VA_COPY_AS_ARRAY
-// constant : VERSION_MIN_REQUIRED
-// constant : WIN32_MSG_HANDLE
+// #include <glib.h>
+import "C"
+
+type BookmarkFileError C.GBookmarkFileError
+type ChecksumType C.GChecksumType
+type ConvertError C.GConvertError
+type DateDMY C.GDateDMY
+type DateMonth C.GDateMonth
+type DateWeekday C.GDateWeekday
+type ErrorType C.GErrorType
+type FileError C.GFileError
+type IOChannelError C.GIOChannelError
+type IOError C.GIOError
+type IOStatus C.GIOStatus
+type KeyFileError C.GKeyFileError
+type LogWriterOutput C.GLogWriterOutput
+type MarkupError C.GMarkupError
+type NormalizeMode C.GNormalizeMode
+type NumberParserError C.GNumberParserError
+type OnceStatus C.GOnceStatus
+type OptionArg C.GOptionArg
+type OptionError C.GOptionError
+type RegexError C.GRegexError
+type SeekType C.GSeekType
+type ShellError C.GShellError
+type SliceConfig C.GSliceConfig
+type SpawnError C.GSpawnError
+type TestFileType C.GTestFileType
+type TestLogType C.GTestLogType
+type TestResult C.GTestResult
+type ThreadError C.GThreadError
+type TimeType C.GTimeType
+type TokenType C.GTokenType
+type TraverseType C.GTraverseType
+type UnicodeBreakType C.GUnicodeBreakType
+type UnicodeScript C.GUnicodeScript
+type UnicodeType C.GUnicodeType
+type UserDirectory C.GUserDirectory
+type VariantClass C.GVariantClass
+type VariantParseError C.GVariantParseError

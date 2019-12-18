@@ -1,7 +1,5 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
-
 type Constant struct {
 	Namespace *Namespace
 
@@ -29,9 +27,4 @@ func (c *Constant) init(ns *Namespace) {
 	//		c.goTypeName = goTypeName
 	//	}
 	//}
-}
-
-func (c Constant) generateSys(f *jen.File) {
-	f.Commentf("constant : %s", c.Name)
-
 }
