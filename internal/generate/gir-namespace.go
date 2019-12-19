@@ -33,6 +33,7 @@ type Namespace struct {
 	goFullPackageName string
 	cSymbolPrefixes   []string
 	unsupportedCount  int
+	versions          *versions
 }
 
 func (n *Namespace) init(repository *repository, namespaces namespaces) {
@@ -41,6 +42,7 @@ func (n *Namespace) init(repository *repository, namespaces namespaces) {
 	n.cSymbolPrefixes = strings.Split(n.CSymbolPrefixes, ",")
 	n.goPackageName = strings.ToLower(n.Name)
 	n.goFullPackageName = "github.com/pekim/gobbi/lib/" + n.goPackageName
+	n.versions = &versions{}
 
 	//n.Aliases.init(n)
 	n.Bitfields.init(n)
@@ -50,6 +52,8 @@ func (n *Namespace) init(repository *repository, namespaces namespaces) {
 	//n.Records.init(n)
 	//n.Classes.init(n)
 	//n.Interfaces.init((n))
+
+	n.versions.sort()
 }
 
 func (n *Namespace) generate() {

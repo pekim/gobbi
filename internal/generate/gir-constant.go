@@ -1,8 +1,8 @@
 package generate
 
-type Constant struct {
-	Namespace *Namespace
+import "github.com/blang/semver"
 
+type Constant struct {
 	Name      string `xml:"name,attr"`
 	Blacklist bool   `xml:"blacklist,attr"`
 	Value     string `xml:"value,attr"`
@@ -11,11 +11,17 @@ type Constant struct {
 	//Doc       *Doc   `xml:"doc"`
 	//Type      *Type  `xml:"type"`
 
+	namespace  *Namespace
+	version    semver.Version
 	goTypeName string
 }
 
 func (c *Constant) init(ns *Namespace) {
-	c.Namespace = ns
+	c.namespace = ns
+
+	c.version = versionNew(c.Version)
+	c.namespace.versions.add(c.version)
+
 	//
 	//switch c.Type.Name {
 	//case "gboolean":

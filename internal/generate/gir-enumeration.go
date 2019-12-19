@@ -6,8 +6,6 @@ import (
 )
 
 type Enumeration struct {
-	Namespace *Namespace
-
 	Name         string `xml:"name,attr"`
 	Blacklist    bool   `xml:"blacklist,attr"`
 	GoTypeName   string `xml:"goname,attr"` // used in addenda files
@@ -15,17 +13,21 @@ type Enumeration struct {
 	CType        string `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
 	GlibTypeName string `xml:"http://www.gtk.org/introspection/glib/1.0 type-name,attr"`
 	GlibGetType  string `xml:"http://www.gtk.org/introspection/glib/1.0 get-type,attr"`
-	//Doc          *Doc      `xml:"doc"`
-	//Members      Members   `xml:"member"`
-	//Functions    Functions `xml:"function"`
 
-	goTypeName string
+	//Functions    Functions `xml:"function"`
+	//Members      Members   `xml:"member"`
+	//Doc          *Doc      `xml:"doc"`
+
+	namespace  *Namespace
 	version    semver.Version
+	goTypeName string
 }
 
 func (e *Enumeration) init(ns *Namespace) {
-	e.Namespace = ns
+	e.namespace = ns
+
 	e.version = versionNew(e.Version)
+	e.namespace.versions.add(e.version)
 }
 
 func (e Enumeration) generateSys(f *jen.File) {
