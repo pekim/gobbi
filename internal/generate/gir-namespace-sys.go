@@ -5,6 +5,7 @@ import (
 	"github.com/blang/semver"
 	"github.com/dave/jennifer/jen"
 	"path/filepath"
+	"strings"
 )
 
 func (n *Namespace) generateC() {
@@ -30,14 +31,32 @@ func (ns *Namespace) generatePackageFile(f *jen.File) {
 }
 
 func (ns *Namespace) generateSysFile(f *jen.File, version semver.Version) {
-	if !versionIsNone(version) {
-		buildTag := fmt.Sprintf("+build %s_%s", ns.goPackageName, versionString(version))
-		f.HeaderComment(buildTag)
-		f.Line()
-	}
-
+	ns.generateSysFileBuildTags(f, version)
 	ns.repository.CIncludes.generate(f)
 
 	ns.Bitfields.generateSys(f, "bitfields")
 	ns.Enumerations.generateSys(f, "enumerations")
+}
+
+func (ns *Namespace) generateSysFileBuildTags(f *jen.File, version semver.Version) {
+	var buildTags string
+
+	if versionIsNone(version) {
+		versions := []string{}
+		for _, v := range ns.versions.versions {
+			if versionIsNone(v) {
+				continue
+			}
+
+			versions = append(versions, "!"+ns.goPackageName+"_"+versionString(v))
+		}
+
+		// !pkg_1.20,!pkg_1.22,!pgk_1.30,..
+		buildTags = strings.Join(versions, ",")
+	} else {
+		buildTags = fmt.Sprintf("%s_%s", ns.goPackageName, versionString(version))
+	}
+
+	f.HeaderComment(fmt.Sprintf("+build %s", buildTags))
+	f.Line()
 }

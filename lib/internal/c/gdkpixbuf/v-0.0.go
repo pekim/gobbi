@@ -1,4 +1,5 @@
 // Code generated - DO NOT EDIT.
+// +build
 
 package gdkpixbuf
 
