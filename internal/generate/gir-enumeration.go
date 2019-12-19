@@ -18,6 +18,7 @@ type Enumeration struct {
 	//Members      Members   `xml:"member"`
 	//Doc          *Doc      `xml:"doc"`
 
+	blacklist  bool
 	namespace  *Namespace
 	version    semver.Version
 	goTypeName string
@@ -32,6 +33,10 @@ func (e *Enumeration) init(ns *Namespace) {
 }
 
 func (e Enumeration) generateSys(f *jen.File, version semver.Version) {
+	if e.blacklist {
+		return
+	}
+
 	targetType := jen.Qual("C", e.CType)
 
 	if e.version.GT(version) {

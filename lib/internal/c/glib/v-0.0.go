@@ -54,7 +54,6 @@ type SliceConfig C.GSliceConfig
 type SpawnError C.GSpawnError
 type TestFileType c.UnusupportedByVersion
 type TestLogType C.GTestLogType
-type TestResult C.GTestResult
 type ThreadError C.GThreadError
 type TimeType C.GTimeType
 type TokenType C.GTokenType
