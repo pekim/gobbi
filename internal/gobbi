@@ -60,7 +60,7 @@ test () {
         flags=$1
     fi
 
-    go test -tags "$tags" $flags github.com/pekim/gobbi/lib/...
+    go test -tags "$tags" $flags github.com/pekim/gobbi/...
 }
 
 processOptions () {

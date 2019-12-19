@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"github.com/blang/semver"
 	"github.com/dave/jennifer/jen"
 )
 
@@ -19,7 +20,7 @@ type Enumeration struct {
 	//Functions    Functions `xml:"function"`
 
 	goTypeName string
-	version    *version
+	version    semver.Version
 }
 
 func (e *Enumeration) init(ns *Namespace) {
