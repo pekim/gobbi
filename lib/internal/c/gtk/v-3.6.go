@@ -3,6 +3,8 @@
 
 package gtk
 
+import c "github.com/pekim/gobbi/lib/internal/c"
+
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
@@ -17,9 +19,9 @@ type CellRendererState C.GtkCellRendererState
 type DebugFlag C.GtkDebugFlag
 type DestDefaults C.GtkDestDefaults
 type DialogFlags C.GtkDialogFlags
-type EventControllerScrollFlags C.GtkEventControllerScrollFlags
+type EventControllerScrollFlags c.UnusupportedByVersion
 type FileFilterFlags C.GtkFileFilterFlags
-type FontChooserLevel C.GtkFontChooserLevel
+type FontChooserLevel c.UnusupportedByVersion
 type IconLookupFlags C.GtkIconLookupFlags
 type InputHints C.GtkInputHints
 type JunctionSides C.GtkJunctionSides
@@ -40,7 +42,7 @@ type Align C.GtkAlign
 type ArrowPlacement C.GtkArrowPlacement
 type ArrowType C.GtkArrowType
 type AssistantPageType C.GtkAssistantPageType
-type BaselinePosition C.GtkBaselinePosition
+type BaselinePosition c.UnusupportedByVersion
 type BorderStyle C.GtkBorderStyle
 type BuilderError C.GtkBuilderError
 type ButtonBoxStyle C.GtkButtonBoxStyle
@@ -55,7 +57,7 @@ type DeleteType C.GtkDeleteType
 type DirectionType C.GtkDirectionType
 type DragResult C.GtkDragResult
 type EntryIconPosition C.GtkEntryIconPosition
-type EventSequenceState C.GtkEventSequenceState
+type EventSequenceState c.UnusupportedByVersion
 type ExpanderStyle C.GtkExpanderStyle
 type FileChooserAction C.GtkFileChooserAction
 type FileChooserConfirmation C.GtkFileChooserConfirmation
@@ -81,11 +83,11 @@ type PackType C.GtkPackType
 type PadActionType C.GtkPadActionType
 type PageOrientation C.GtkPageOrientation
 type PageSet C.GtkPageSet
-type PanDirection C.GtkPanDirection
+type PanDirection c.UnusupportedByVersion
 type PathPriorityType C.GtkPathPriorityType
 type PathType C.GtkPathType
 type PolicyType C.GtkPolicyType
-type PopoverConstraint C.GtkPopoverConstraint
+type PopoverConstraint c.UnusupportedByVersion
 type PositionType C.GtkPositionType
 type PrintDuplex C.GtkPrintDuplex
 type PrintError C.GtkPrintError
@@ -94,7 +96,7 @@ type PrintOperationResult C.GtkPrintOperationResult
 type PrintPages C.GtkPrintPages
 type PrintQuality C.GtkPrintQuality
 type PrintStatus C.GtkPrintStatus
-type PropagationPhase C.GtkPropagationPhase
+type PropagationPhase c.UnusupportedByVersion
 type RcTokenType C.GtkRcTokenType
 type RecentChooserError C.GtkRecentChooserError
 type RecentManagerError C.GtkRecentManagerError
@@ -109,7 +111,7 @@ type ScrollablePolicy C.GtkScrollablePolicy
 type SelectionMode C.GtkSelectionMode
 type SensitivityType C.GtkSensitivityType
 type ShadowType C.GtkShadowType
-type ShortcutType C.GtkShortcutType
+type ShortcutType c.UnusupportedByVersion
 type SizeGroupMode C.GtkSizeGroupMode
 type SizeRequestMode C.GtkSizeRequestMode
 type SortType C.GtkSortType
@@ -119,7 +121,7 @@ type StackTransitionType C.GtkStackTransitionType
 type StateType C.GtkStateType
 type TextBufferTargetInfo C.GtkTextBufferTargetInfo
 type TextDirection C.GtkTextDirection
-type TextExtendSelection C.GtkTextExtendSelection
+type TextExtendSelection c.UnusupportedByVersion
 type TextViewLayer C.GtkTextViewLayer
 type TextWindowType C.GtkTextWindowType
 type ToolbarSpaceStyle C.GtkToolbarSpaceStyle

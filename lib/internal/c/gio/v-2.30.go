@@ -3,6 +3,8 @@
 
 package gio
 
+import c "github.com/pekim/gobbi/lib/internal/c"
+
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -39,20 +41,20 @@ type DriveStartFlags C.GDriveStartFlags
 type FileAttributeInfoFlags C.GFileAttributeInfoFlags
 type FileCopyFlags C.GFileCopyFlags
 type FileCreateFlags C.GFileCreateFlags
-type FileMeasureFlags C.GFileMeasureFlags
+type FileMeasureFlags c.UnusupportedByVersion
 type FileMonitorFlags C.GFileMonitorFlags
 type FileQueryInfoFlags C.GFileQueryInfoFlags
 type IOStreamSpliceFlags C.GIOStreamSpliceFlags
 type MountMountFlags C.GMountMountFlags
 type MountUnmountFlags C.GMountUnmountFlags
 type OutputStreamSpliceFlags C.GOutputStreamSpliceFlags
-type ResolverNameLookupFlags C.GResolverNameLookupFlags
-type ResourceFlags C.GResourceFlags
-type ResourceLookupFlags C.GResourceLookupFlags
+type ResolverNameLookupFlags c.UnusupportedByVersion
+type ResourceFlags c.UnusupportedByVersion
+type ResourceLookupFlags c.UnusupportedByVersion
 type SettingsBindFlags C.GSettingsBindFlags
 type SocketMsgFlags C.GSocketMsgFlags
-type SubprocessFlags C.GSubprocessFlags
-type TestDBusFlags C.GTestDBusFlags
+type SubprocessFlags c.UnusupportedByVersion
+type TestDBusFlags c.UnusupportedByVersion
 type TlsCertificateFlags C.GTlsCertificateFlags
 type TlsDatabaseVerifyFlags C.GTlsDatabaseVerifyFlags
 type TlsPasswordFlags C.GTlsPasswordFlags
@@ -77,20 +79,20 @@ type FilesystemPreviewType C.GFilesystemPreviewType
 type IOErrorEnum C.GIOErrorEnum
 type IOModuleScopeFlags C.GIOModuleScopeFlags
 type MountOperationResult C.GMountOperationResult
-type NetworkConnectivity C.GNetworkConnectivity
-type NotificationPriority C.GNotificationPriority
+type NetworkConnectivity c.UnusupportedByVersion
+type NotificationPriority c.UnusupportedByVersion
 type PasswordSave C.GPasswordSave
-type PollableReturn C.GPollableReturn
+type PollableReturn c.UnusupportedByVersion
 type ResolverError C.GResolverError
-type ResolverRecordType C.GResolverRecordType
-type ResourceError C.GResourceError
-type SocketClientEvent C.GSocketClientEvent
+type ResolverRecordType c.UnusupportedByVersion
+type ResourceError c.UnusupportedByVersion
+type SocketClientEvent c.UnusupportedByVersion
 type SocketFamily C.GSocketFamily
-type SocketListenerEvent C.GSocketListenerEvent
+type SocketListenerEvent c.UnusupportedByVersion
 type SocketProtocol C.GSocketProtocol
 type SocketType C.GSocketType
 type TlsAuthenticationMode C.GTlsAuthenticationMode
-type TlsCertificateRequestFlags C.GTlsCertificateRequestFlags
+type TlsCertificateRequestFlags c.UnusupportedByVersion
 type TlsDatabaseLookupFlags C.GTlsDatabaseLookupFlags
 type TlsError C.GTlsError
 type TlsInteractionResult C.GTlsInteractionResult

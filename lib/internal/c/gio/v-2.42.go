@@ -3,6 +3,8 @@
 
 package gio
 
+import c "github.com/pekim/gobbi/lib/internal/c"
+
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -46,7 +48,7 @@ type IOStreamSpliceFlags C.GIOStreamSpliceFlags
 type MountMountFlags C.GMountMountFlags
 type MountUnmountFlags C.GMountUnmountFlags
 type OutputStreamSpliceFlags C.GOutputStreamSpliceFlags
-type ResolverNameLookupFlags C.GResolverNameLookupFlags
+type ResolverNameLookupFlags c.UnusupportedByVersion
 type ResourceFlags C.GResourceFlags
 type ResourceLookupFlags C.GResourceLookupFlags
 type SettingsBindFlags C.GSettingsBindFlags
@@ -77,16 +79,16 @@ type FilesystemPreviewType C.GFilesystemPreviewType
 type IOErrorEnum C.GIOErrorEnum
 type IOModuleScopeFlags C.GIOModuleScopeFlags
 type MountOperationResult C.GMountOperationResult
-type NetworkConnectivity C.GNetworkConnectivity
+type NetworkConnectivity c.UnusupportedByVersion
 type NotificationPriority C.GNotificationPriority
 type PasswordSave C.GPasswordSave
-type PollableReturn C.GPollableReturn
+type PollableReturn c.UnusupportedByVersion
 type ResolverError C.GResolverError
 type ResolverRecordType C.GResolverRecordType
 type ResourceError C.GResourceError
 type SocketClientEvent C.GSocketClientEvent
 type SocketFamily C.GSocketFamily
-type SocketListenerEvent C.GSocketListenerEvent
+type SocketListenerEvent c.UnusupportedByVersion
 type SocketProtocol C.GSocketProtocol
 type SocketType C.GSocketType
 type TlsAuthenticationMode C.GTlsAuthenticationMode

@@ -3,6 +3,8 @@
 
 package gtk
 
+import c "github.com/pekim/gobbi/lib/internal/c"
+
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
@@ -17,9 +19,9 @@ type CellRendererState C.GtkCellRendererState
 type DebugFlag C.GtkDebugFlag
 type DestDefaults C.GtkDestDefaults
 type DialogFlags C.GtkDialogFlags
-type EventControllerScrollFlags C.GtkEventControllerScrollFlags
+type EventControllerScrollFlags c.UnusupportedByVersion
 type FileFilterFlags C.GtkFileFilterFlags
-type FontChooserLevel C.GtkFontChooserLevel
+type FontChooserLevel c.UnusupportedByVersion
 type IconLookupFlags C.GtkIconLookupFlags
 type InputHints C.GtkInputHints
 type JunctionSides C.GtkJunctionSides
@@ -85,7 +87,7 @@ type PanDirection C.GtkPanDirection
 type PathPriorityType C.GtkPathPriorityType
 type PathType C.GtkPathType
 type PolicyType C.GtkPolicyType
-type PopoverConstraint C.GtkPopoverConstraint
+type PopoverConstraint c.UnusupportedByVersion
 type PositionType C.GtkPositionType
 type PrintDuplex C.GtkPrintDuplex
 type PrintError C.GtkPrintError
@@ -109,7 +111,7 @@ type ScrollablePolicy C.GtkScrollablePolicy
 type SelectionMode C.GtkSelectionMode
 type SensitivityType C.GtkSensitivityType
 type ShadowType C.GtkShadowType
-type ShortcutType C.GtkShortcutType
+type ShortcutType c.UnusupportedByVersion
 type SizeGroupMode C.GtkSizeGroupMode
 type SizeRequestMode C.GtkSizeRequestMode
 type SortType C.GtkSortType
@@ -119,7 +121,7 @@ type StackTransitionType C.GtkStackTransitionType
 type StateType C.GtkStateType
 type TextBufferTargetInfo C.GtkTextBufferTargetInfo
 type TextDirection C.GtkTextDirection
-type TextExtendSelection C.GtkTextExtendSelection
+type TextExtendSelection c.UnusupportedByVersion
 type TextViewLayer C.GtkTextViewLayer
 type TextWindowType C.GtkTextWindowType
 type ToolbarSpaceStyle C.GtkToolbarSpaceStyle

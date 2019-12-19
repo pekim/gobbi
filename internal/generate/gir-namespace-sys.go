@@ -34,8 +34,8 @@ func (ns *Namespace) generateSysFile(f *jen.File, version semver.Version) {
 	ns.generateSysFileBuildTags(f, version)
 	ns.repository.CIncludes.generate(f)
 
-	ns.Bitfields.generateSys(f, "bitfields")
-	ns.Enumerations.generateSys(f, "enumerations")
+	ns.Bitfields.generateSys(f, version, "bitfields")
+	ns.Enumerations.generateSys(f, version, "enumerations")
 }
 
 func (ns *Namespace) generateSysFileBuildTags(f *jen.File, version semver.Version) {

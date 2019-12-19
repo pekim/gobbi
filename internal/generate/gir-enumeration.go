@@ -26,13 +26,18 @@ type Enumeration struct {
 func (e *Enumeration) init(ns *Namespace) {
 	e.namespace = ns
 
+	e.applyAddenda()
 	e.version = versionNew(e.Version)
 	e.namespace.versions.add(e.version)
 }
 
-func (e Enumeration) generateSys(f *jen.File) {
-	f.
-		Type().
-		Id(e.Name).
-		Qual("C", e.CType)
+func (e Enumeration) generateSys(f *jen.File, version semver.Version) {
+	targetType := jen.Qual("C", e.CType)
+
+	if e.version.GT(version) {
+		targetType = unusupportedByVersion
+	}
+
+	// GEN: type SomeEnum TargetType
+	f.Type().Id(e.Name).Add(targetType)
 }

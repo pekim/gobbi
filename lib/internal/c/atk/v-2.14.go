@@ -3,6 +3,8 @@
 
 package atk
 
+import c "github.com/pekim/gobbi/lib/internal/c"
+
 // #include <atk/atk.h>
 import "C"
 
@@ -15,7 +17,7 @@ type KeyEventType C.AtkKeyEventType
 type Layer C.AtkLayer
 type RelationType C.AtkRelationType
 type Role C.AtkRole
-type ScrollType C.AtkScrollType
+type ScrollType c.UnusupportedByVersion
 type StateType C.AtkStateType
 type TextAttribute C.AtkTextAttribute
 type TextBoundary C.AtkTextBoundary

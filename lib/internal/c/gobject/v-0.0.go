@@ -3,11 +3,13 @@
 
 package gobject
 
+import c "github.com/pekim/gobbi/lib/internal/c"
+
 // #include <glib-object.h>
 import "C"
 
 // bitfields
-type BindingFlags C.GBindingFlags
+type BindingFlags c.UnusupportedByVersion
 type ConnectFlags C.GConnectFlags
 type ParamFlags C.GParamFlags
 type SignalFlags C.GSignalFlags

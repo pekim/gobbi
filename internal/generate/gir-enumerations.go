@@ -1,6 +1,9 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
+import (
+	"github.com/blang/semver"
+	"github.com/dave/jennifer/jen"
+)
 
 type Enumerations []*Enumeration
 
@@ -10,11 +13,11 @@ func (ee Enumerations) init(ns *Namespace) {
 	}
 }
 
-func (ee Enumerations) generateSys(f *jen.File, typ string) {
+func (ee Enumerations) generateSys(f *jen.File, version semver.Version, typ string) {
 	f.Comment(typ)
 
 	for _, enum := range ee {
-		enum.generateSys(f)
+		enum.generateSys(f, version)
 	}
 
 	f.Line()
