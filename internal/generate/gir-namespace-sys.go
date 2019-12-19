@@ -8,7 +8,10 @@ import (
 
 func (n *Namespace) generateC() {
 	n.generateFile(filepath.Join(n.cDir, "package"), n.generatePackageFile)
-	n.generateFile(filepath.Join(n.cDir, "sys"), n.generateSysFile)
+
+	for _, version := range n.versions.versions {
+		n.generateFile(filepath.Join(n.cDir, "v-"+version.String()), n.generateSysFile)
+	}
 }
 
 // generatePackageFile generates a file with cgo pkg-config comments
