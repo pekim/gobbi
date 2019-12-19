@@ -2,15 +2,21 @@ package generate
 
 import (
 	"fmt"
+	"github.com/blang/semver"
 	"github.com/dave/jennifer/jen"
 	"path/filepath"
 )
 
 func (n *Namespace) generateC() {
-	n.generateFile(filepath.Join(n.cDir, "package"), n.generatePackageFile)
+	filename := filepath.Join(n.cDir, "package")
+	n.generateFile(filename, n.generatePackageFile)
 
 	for _, version := range n.versions.versions {
-		n.generateFile(filepath.Join(n.cDir, "v-"+version.String()), n.generateSysFile)
+		filename := filepath.Join(n.cDir, "v-"+versionString(version))
+
+		n.generateFile(filename, func(f *jen.File) {
+			n.generateSysFile(f, version)
+		})
 	}
 }
 
@@ -23,7 +29,13 @@ func (ns *Namespace) generatePackageFile(f *jen.File) {
 	}
 }
 
-func (ns *Namespace) generateSysFile(f *jen.File) {
+func (ns *Namespace) generateSysFile(f *jen.File, version semver.Version) {
+	if !versionIsNone(version) {
+		buildTag := fmt.Sprintf("+build %s_%s", ns.goPackageName, versionString(version))
+		f.HeaderComment(buildTag)
+		f.Line()
+	}
+
 	ns.repository.CIncludes.generate(f)
 
 	ns.Bitfields.generateSys(f, "bitfields")

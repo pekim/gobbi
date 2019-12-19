@@ -2,7 +2,6 @@ package generate
 
 import (
 	"github.com/stretchr/testify/assert"
-	"strings"
 	"testing"
 )
 
@@ -38,14 +37,5 @@ func TestVersions(t *testing.T) {
 		vv.sort()
 
 		assert.Equal(t, "0.0.0 1.1.0 1.3.0 1.3.1 1.3.2", vv.String())
-	})
-
-	t.Run("versionStringsGreaterThanOrEqual", func(t *testing.T) {
-		vv := testVersions()
-		vv.sort()
-		versionStrings := vv.versionStringsGreaterThanOrEqual(versionNew("1.3.0"))
-		versionsAsString := strings.Join(versionStrings, " : ")
-
-		assert.Equal(t, "1.3.0 : 1.3.1 : 1.3.2", versionsAsString)
 	})
 }

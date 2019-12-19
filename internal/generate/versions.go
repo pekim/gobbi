@@ -6,6 +6,17 @@ import (
 	"strings"
 )
 
+// noVersion represents the absence of a version.
+//
+// This is used for entities that do not have a version
+// specified in gir file.
+// Something that is unrestricted by version.
+// In other words supported in all versions of a library.
+var noVersion semver.Version = func() semver.Version {
+	version, _ := semver.Parse("0.0.0")
+	return version
+}()
+
 type versions struct {
 	versions semver.Versions
 }
@@ -14,8 +25,7 @@ func versionNew(value string) semver.Version {
 	value = strings.TrimSpace(value)
 	value = strings.TrimSuffix(value, ".")
 	if value == "" {
-		// default to 0 to allow for easy version comparison
-		value = "0.0.0"
+		return noVersion
 	}
 
 	version, err := semver.ParseTolerant(value)
@@ -24,6 +34,18 @@ func versionNew(value string) semver.Version {
 	}
 
 	return version
+}
+
+func versionIsNone(version semver.Version) bool {
+	return version.EQ(noVersion)
+}
+
+func versionString(version semver.Version) string {
+	if version.Patch == 0 {
+		return strings.TrimSuffix(version.String(), ".0")
+	} else {
+		return version.String()
+	}
 }
 
 func (vv *versions) add(version semver.Version) {
@@ -51,18 +73,6 @@ func (vv *versions) dedupe() {
 func (vv *versions) sort() {
 	vv.dedupe()
 	semver.Sort(vv.versions)
-}
-
-func (vv versions) versionStringsGreaterThanOrEqual(version semver.Version) []string {
-	var eligibleVersions []string
-
-	for _, possibleVersion := range vv.versions {
-		if possibleVersion.GTE(version) {
-			eligibleVersions = append(eligibleVersions, possibleVersion.String())
-		}
-	}
-
-	return eligibleVersions
 }
 
 func (vv *versions) String() string {
