@@ -87,3 +87,22 @@ type TimeCoord C.GdkTimeCoord
 type WindowAttr C.GdkWindowAttr
 type WindowClass C.GdkWindowClass
 type WindowRedirect C.GdkWindowRedirect
+
+// classes
+type AppLaunchContext C.GdkAppLaunchContext
+type Cursor C.GdkCursor
+type Device C.GdkDevice
+type DeviceManager C.GdkDeviceManager
+type DeviceTool C.GdkDeviceTool
+type Display C.GdkDisplay
+type DisplayManager C.GdkDisplayManager
+type DragContext C.GdkDragContext
+type DrawingContext C.GdkDrawingContext
+type FrameClock C.GdkFrameClock
+type GLContext C.GdkGLContext
+type Keymap C.GdkKeymap
+type Monitor C.GdkMonitor
+type Screen C.GdkScreen
+type Seat C.GdkSeat
+type Visual C.GdkVisual
+type Window C.GdkWindow

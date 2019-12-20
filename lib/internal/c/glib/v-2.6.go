@@ -117,3 +117,5 @@ type Tree C.GTree
 type VariantBuilder C.GVariantBuilder
 type VariantIter C.GVariantIter
 type VariantType C.GVariantType
+
+// classes

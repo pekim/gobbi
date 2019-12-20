@@ -134,3 +134,5 @@ type VariantBuilder C.GVariantBuilder
 type VariantDict C.GVariantDict
 type VariantIter C.GVariantIter
 type VariantType C.GVariantType
+
+// classes

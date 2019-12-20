@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build !gobject_2.26
+// +build !gobject_2.4,!gobject_2.10,!gobject_2.26
 
 package gobject
 
@@ -47,3 +47,29 @@ type TypeValueTable C.GTypeValueTable
 type Value C.GValue
 type ValueArray C.GValueArray
 type WeakRef C.GWeakRef
+
+// classes
+type InitiallyUnowned C.GInitiallyUnowned
+type Object C.GObject
+type ParamSpec C.GParamSpec
+type ParamSpecBoolean C.GParamSpecBoolean
+type ParamSpecBoxed C.GParamSpecBoxed
+type ParamSpecChar C.GParamSpecChar
+type ParamSpecDouble C.GParamSpecDouble
+type ParamSpecEnum C.GParamSpecEnum
+type ParamSpecFlags C.GParamSpecFlags
+type ParamSpecFloat C.GParamSpecFloat
+type ParamSpecInt C.GParamSpecInt
+type ParamSpecInt64 C.GParamSpecInt64
+type ParamSpecLong C.GParamSpecLong
+type ParamSpecObject C.GParamSpecObject
+type ParamSpecParam C.GParamSpecParam
+type ParamSpecPointer C.GParamSpecPointer
+type ParamSpecString C.GParamSpecString
+type ParamSpecUChar C.GParamSpecUChar
+type ParamSpecUInt C.GParamSpecUInt
+type ParamSpecUInt64 C.GParamSpecUInt64
+type ParamSpecULong C.GParamSpecULong
+type ParamSpecUnichar C.GParamSpecUnichar
+type ParamSpecValueArray C.GParamSpecValueArray
+type TypeModule C.GTypeModule

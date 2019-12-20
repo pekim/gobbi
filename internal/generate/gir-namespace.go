@@ -18,7 +18,7 @@ type Namespace struct {
 	//Aliases             Aliases      `xml:"alias"`
 	Bitfields Enumerations `xml:"bitfield"`
 	//	Callbacks                     Callbacks    `xml:"callback"`
-	//Classes      Classes      `xml:"class"`
+	Classes      Classes      `xml:"class"`
 	Constants    Constants    `xml:"constant"`
 	Enumerations Enumerations `xml:"enumeration"`
 	//Functions    Functions    `xml:"function"`
@@ -50,7 +50,7 @@ func (n *Namespace) init(repository *repository, namespaces namespaces) {
 	n.Enumerations.init(n)
 	//n.Functions.init(n)
 	n.Records.init(n)
-	//n.Classes.init(n)
+	n.Classes.init(n)
 	//n.Interfaces.init((n))
 
 	n.versions.sort()

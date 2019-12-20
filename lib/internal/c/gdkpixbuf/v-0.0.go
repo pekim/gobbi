@@ -19,3 +19,10 @@ type PixbufRotation C.GdkPixbufRotation
 type PixbufFormat C.GdkPixbufFormat
 type PixbufLoaderClass C.GdkPixbufLoaderClass
 type PixbufSimpleAnimClass C.GdkPixbufSimpleAnimClass
+
+// classes
+type Pixbuf C.GdkPixbuf
+type PixbufAnimation C.GdkPixbufAnimation
+type PixbufAnimationIter C.GdkPixbufAnimationIter
+type PixbufLoader C.GdkPixbufLoader
+type PixbufSimpleAnim C.GdkPixbufSimpleAnim

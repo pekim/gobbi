@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gtk_3.10
+// +build gtk_2.20
 
 package gtk
 
@@ -10,7 +10,6 @@ import "C"
 
 // bitfields
 type AccelFlags C.GtkAccelFlags
-type ApplicationInhibitFlags C.GtkApplicationInhibitFlags
 type AttachOptions C.GtkAttachOptions
 type CalendarDisplayOptions C.GtkCalendarDisplayOptions
 type CellRendererState C.GtkCellRendererState
@@ -19,7 +18,6 @@ type DestDefaults C.GtkDestDefaults
 type DialogFlags C.GtkDialogFlags
 type FileFilterFlags C.GtkFileFilterFlags
 type IconLookupFlags C.GtkIconLookupFlags
-type InputHints C.GtkInputHints
 type JunctionSides C.GtkJunctionSides
 type PlacesOpenFlags C.GtkPlacesOpenFlags
 type RcFlags C.GtkRcFlags
@@ -38,7 +36,6 @@ type Align C.GtkAlign
 type ArrowPlacement C.GtkArrowPlacement
 type ArrowType C.GtkArrowType
 type AssistantPageType C.GtkAssistantPageType
-type BaselinePosition C.GtkBaselinePosition
 type BorderStyle C.GtkBorderStyle
 type BuilderError C.GtkBuilderError
 type ButtonBoxStyle C.GtkButtonBoxStyle
@@ -48,7 +45,6 @@ type CellRendererAccelMode C.GtkCellRendererAccelMode
 type CellRendererMode C.GtkCellRendererMode
 type CornerType C.GtkCornerType
 type CssProviderError C.GtkCssProviderError
-type CssSectionType C.GtkCssSectionType
 type DeleteType C.GtkDeleteType
 type DirectionType C.GtkDirectionType
 type DragResult C.GtkDragResult
@@ -63,10 +59,7 @@ type IconSize C.GtkIconSize
 type IconThemeError C.GtkIconThemeError
 type IconViewDropPosition C.GtkIconViewDropPosition
 type ImageType C.GtkImageType
-type InputPurpose C.GtkInputPurpose
 type Justification C.GtkJustification
-type LevelBarMode C.GtkLevelBarMode
-type License C.GtkLicense
 type MenuDirectionType C.GtkMenuDirectionType
 type MessageType C.GtkMessageType
 type MovementStep C.GtkMovementStep
@@ -252,7 +245,6 @@ type ContainerClass C.GtkContainerClass
 type ContainerPrivate C.GtkContainerPrivate
 type CssProviderClass C.GtkCssProviderClass
 type CssProviderPrivate C.GtkCssProviderPrivate
-type CssSection C.GtkCssSection
 type DialogClass C.GtkDialogClass
 type DialogPrivate C.GtkDialogPrivate
 type DrawingAreaClass C.GtkDrawingAreaClass
@@ -690,8 +682,6 @@ type CheckMenuItem C.GtkCheckMenuItem
 type CheckMenuItemAccessible C.GtkCheckMenuItemAccessible
 type Clipboard C.GtkClipboard
 type ColorButton C.GtkColorButton
-type ColorChooserDialog C.GtkColorChooserDialog
-type ColorChooserWidget C.GtkColorChooserWidget
 type ColorSelection C.GtkColorSelection
 type ColorSelectionDialog C.GtkColorSelectionDialog
 type ComboBox C.GtkComboBox
@@ -722,8 +712,6 @@ type FlowBoxAccessible C.GtkFlowBoxAccessible
 type FlowBoxChild C.GtkFlowBoxChild
 type FlowBoxChildAccessible C.GtkFlowBoxChildAccessible
 type FontButton C.GtkFontButton
-type FontChooserDialog C.GtkFontChooserDialog
-type FontChooserWidget C.GtkFontChooserWidget
 type FontSelection C.GtkFontSelection
 type FontSelectionDialog C.GtkFontSelectionDialog
 type Frame C.GtkFrame
@@ -833,8 +821,6 @@ type ScaleButtonAccessible C.GtkScaleButtonAccessible
 type Scrollbar C.GtkScrollbar
 type ScrolledWindow C.GtkScrolledWindow
 type ScrolledWindowAccessible C.GtkScrolledWindowAccessible
-type SearchBar C.GtkSearchBar
-type SearchEntry C.GtkSearchEntry
 type Separator C.GtkSeparator
 type SeparatorMenuItem C.GtkSeparatorMenuItem
 type SeparatorToolItem C.GtkSeparatorToolItem

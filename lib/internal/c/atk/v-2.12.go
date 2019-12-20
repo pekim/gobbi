@@ -59,3 +59,19 @@ type TextRectangle C.AtkTextRectangle
 type UtilClass C.AtkUtilClass
 type ValueIface C.AtkValueIface
 type WindowIface C.AtkWindowIface
+
+// classes
+type GObjectAccessible C.AtkGObjectAccessible
+type Hyperlink C.AtkHyperlink
+type Misc C.AtkMisc
+type NoOpObject C.AtkNoOpObject
+type NoOpObjectFactory C.AtkNoOpObjectFactory
+type Object C.AtkObject
+type ObjectFactory C.AtkObjectFactory
+type Plug C.AtkPlug
+type Registry C.AtkRegistry
+type Relation C.AtkRelation
+type RelationSet C.AtkRelationSet
+type Socket C.AtkSocket
+type StateSet C.AtkStateSet
+type Util C.AtkUtil

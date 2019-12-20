@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gobject_2.26
+// +build gobject_2.10
 
 package gobject
 
@@ -7,7 +7,6 @@ package gobject
 import "C"
 
 // bitfields
-type BindingFlags C.GBindingFlags
 type ConnectFlags C.GConnectFlags
 type ParamFlags C.GParamFlags
 type SignalFlags C.GSignalFlags
@@ -50,7 +49,6 @@ type ValueArray C.GValueArray
 type WeakRef C.GWeakRef
 
 // classes
-type Binding C.GBinding
 type InitiallyUnowned C.GInitiallyUnowned
 type Object C.GObject
 type ParamSpec C.GParamSpec
@@ -76,5 +74,4 @@ type ParamSpecUInt64 C.GParamSpecUInt64
 type ParamSpecULong C.GParamSpecULong
 type ParamSpecUnichar C.GParamSpecUnichar
 type ParamSpecValueArray C.GParamSpecValueArray
-type ParamSpecVariant C.GParamSpecVariant
 type TypeModule C.GTypeModule
