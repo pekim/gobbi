@@ -28,3 +28,6 @@ type PixbufLoader C.GdkPixbufLoader
 type PixbufSimpleAnim C.GdkPixbufSimpleAnim
 
 // interfaces
+
+// functions
+func Fn_pixbuf_error_quark() {}

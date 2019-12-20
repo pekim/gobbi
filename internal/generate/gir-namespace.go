@@ -21,9 +21,9 @@ type Namespace struct {
 	Classes      Classes      `xml:"class"`
 	Constants    Constants    `xml:"constant"`
 	Enumerations Enumerations `xml:"enumeration"`
-	//Functions    Functions    `xml:"function"`
-	Records    Records    `xml:"record"`
-	Interfaces Interfaces `xml:"interface"`
+	Functions    Functions    `xml:"function"`
+	Records      Records      `xml:"record"`
+	Interfaces   Interfaces   `xml:"interface"`
 
 	repository        *repository
 	libDir            string
@@ -48,7 +48,7 @@ func (n *Namespace) init(repository *repository, namespaces namespaces) {
 	n.Bitfields.init(n)
 	n.Constants.init(n)
 	n.Enumerations.init(n)
-	//n.Functions.init(n)
+	n.Functions.init(n)
 	n.Records.init(n)
 	n.Classes.init(n)
 	n.Interfaces.init((n))
