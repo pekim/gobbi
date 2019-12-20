@@ -26,7 +26,6 @@ type Enumeration struct {
 
 func (e *Enumeration) init(ns *Namespace) {
 	e.namespace = ns
-
 	e.applyAddenda()
 	e.version = versionNew(e.Version)
 	e.namespace.versions.add(e.version)

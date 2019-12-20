@@ -107,7 +107,6 @@ type StringChunk C.GStringChunk
 type TestCase C.GTestCase
 type TestConfig C.GTestConfig
 type TestLogBuffer C.GTestLogBuffer
-type TestLogMsg C.GTestLogMsg
 type TestSuite C.GTestSuite
 type Thread C.GThread
 type ThreadPool C.GThreadPool

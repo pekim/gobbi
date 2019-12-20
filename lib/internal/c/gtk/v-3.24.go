@@ -277,8 +277,6 @@ type EventBoxClass C.GtkEventBoxClass
 type EventBoxPrivate C.GtkEventBoxPrivate
 type EventControllerClass C.GtkEventControllerClass
 type EventControllerKeyClass C.GtkEventControllerKeyClass
-type EventControllerMotionClass C.GtkEventControllerMotionClass
-type EventControllerScrollClass C.GtkEventControllerScrollClass
 type ExpanderAccessibleClass C.GtkExpanderAccessibleClass
 type ExpanderAccessiblePrivate C.GtkExpanderAccessiblePrivate
 type ExpanderClass C.GtkExpanderClass
@@ -322,7 +320,6 @@ type GestureMultiPressClass C.GtkGestureMultiPressClass
 type GesturePanClass C.GtkGesturePanClass
 type GestureRotateClass C.GtkGestureRotateClass
 type GestureSingleClass C.GtkGestureSingleClass
-type GestureStylusClass C.GtkGestureStylusClass
 type GestureSwipeClass C.GtkGestureSwipeClass
 type GestureZoomClass C.GtkGestureZoomClass
 type Gradient C.GtkGradient
@@ -338,8 +335,6 @@ type HScrollbarClass C.GtkHScrollbarClass
 type HSeparatorClass C.GtkHSeparatorClass
 type HandleBoxClass C.GtkHandleBoxClass
 type HandleBoxPrivate C.GtkHandleBoxPrivate
-type HeaderBarAccessibleClass C.GtkHeaderBarAccessibleClass
-type HeaderBarAccessiblePrivate C.GtkHeaderBarAccessiblePrivate
 type HeaderBarClass C.GtkHeaderBarClass
 type HeaderBarPrivate C.GtkHeaderBarPrivate
 type IMContextClass C.GtkIMContextClass
@@ -538,7 +533,6 @@ type SpinnerAccessibleClass C.GtkSpinnerAccessibleClass
 type SpinnerAccessiblePrivate C.GtkSpinnerAccessiblePrivate
 type SpinnerClass C.GtkSpinnerClass
 type SpinnerPrivate C.GtkSpinnerPrivate
-type StackAccessibleClass C.GtkStackAccessibleClass
 type StackClass C.GtkStackClass
 type StackSidebarClass C.GtkStackSidebarClass
 type StackSidebarPrivate C.GtkStackSidebarPrivate

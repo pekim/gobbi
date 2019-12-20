@@ -1,12 +1,20 @@
 package generate
 
-func (e *Enumeration) applyAddenda() {
+var enumerationBlacklist = map[string]bool{
 	// internal to glib
-	if e.namespace.Name == "GLib" && e.Name == "TestResult" {
+	"GLib.TestResult": true,
+}
+
+var enumerationVersionAddenda = map[string]string{
+	"Gtk.FontChooserLevel": "3.24",
+}
+
+func (e *Enumeration) applyAddenda() {
+	if _, ok := enumerationBlacklist[e.namespace.Name+"."+e.Name]; ok {
 		e.blacklist = true
 	}
 
-	if e.namespace.Name == "Gtk" && e.Name == "FontChooserLevel" {
-		e.Version = "3.24"
+	if version, ok := enumerationVersionAddenda[e.namespace.Name+"."+e.Name]; ok {
+		e.Version = version
 	}
 }

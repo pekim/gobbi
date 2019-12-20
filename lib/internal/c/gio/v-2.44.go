@@ -212,8 +212,6 @@ type MenuModelPrivate C.GMenuModelPrivate
 type MountIface C.GMountIface
 type MountOperationClass C.GMountOperationClass
 type MountOperationPrivate C.GMountOperationPrivate
-type NativeSocketAddressClass C.GNativeSocketAddressClass
-type NativeSocketAddressPrivate C.GNativeSocketAddressPrivate
 type NativeVolumeMonitorClass C.GNativeVolumeMonitorClass
 type NetworkAddressClass C.GNetworkAddressClass
 type NetworkAddressPrivate C.GNetworkAddressPrivate
@@ -239,8 +237,6 @@ type ResolverClass C.GResolverClass
 type ResolverPrivate C.GResolverPrivate
 type Resource C.GResource
 type SeekableIface C.GSeekableIface
-type SettingsBackendClass C.GSettingsBackendClass
-type SettingsBackendPrivate C.GSettingsBackendPrivate
 type SettingsClass C.GSettingsClass
 type SettingsPrivate C.GSettingsPrivate
 type SettingsSchema C.GSettingsSchema
