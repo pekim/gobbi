@@ -3,8 +3,6 @@
 
 package glib
 
-import c "github.com/pekim/gobbi/lib/internal/c"
-
 // #include <glib.h>
 import "C"
 
@@ -43,7 +41,6 @@ type KeyFileError C.GKeyFileError
 type LogWriterOutput C.GLogWriterOutput
 type MarkupError C.GMarkupError
 type NormalizeMode C.GNormalizeMode
-type NumberParserError c.UnusupportedByVersion
 type OnceStatus C.GOnceStatus
 type OptionArg C.GOptionArg
 type OptionError C.GOptionError

@@ -3,14 +3,10 @@
 
 package gdk
 
-import c "github.com/pekim/gobbi/lib/internal/c"
-
 // #include <gdk/gdk.h>
 import "C"
 
 // bitfields
-type AnchorHints c.UnusupportedByVersion
-type AxisFlags c.UnusupportedByVersion
 type DragAction C.GdkDragAction
 type EventMask C.GdkEventMask
 type FrameClockPhase C.GdkFrameClockPhase
@@ -28,7 +24,6 @@ type ByteOrder C.GdkByteOrder
 type CrossingMode C.GdkCrossingMode
 type CursorType C.GdkCursorType
 type DevicePadFeature C.GdkDevicePadFeature
-type DeviceToolType c.UnusupportedByVersion
 type DeviceType C.GdkDeviceType
 type DragCancelReason C.GdkDragCancelReason
 type DragProtocol C.GdkDragProtocol
@@ -49,7 +44,6 @@ type PropertyState C.GdkPropertyState
 type ScrollDirection C.GdkScrollDirection
 type SettingAction C.GdkSettingAction
 type Status C.GdkStatus
-type SubpixelLayout c.UnusupportedByVersion
 type TouchpadGesturePhase C.GdkTouchpadGesturePhase
 type VisibilityState C.GdkVisibilityState
 type VisualType C.GdkVisualType

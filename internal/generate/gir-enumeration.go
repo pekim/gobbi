@@ -37,12 +37,10 @@ func (e Enumeration) generateSys(f *jen.File, version semver.Version) {
 		return
 	}
 
-	targetType := jen.Qual("C", e.CType)
-
 	if e.version.GT(version) {
-		targetType = unusupportedByVersion
+		return
 	}
 
 	// GEN: type SomeEnum TargetType
-	f.Type().Id(e.Name).Add(targetType)
+	f.Type().Id(e.Name).Qual("C", e.CType)
 }

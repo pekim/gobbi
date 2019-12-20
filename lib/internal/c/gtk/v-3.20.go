@@ -3,8 +3,6 @@
 
 package gtk
 
-import c "github.com/pekim/gobbi/lib/internal/c"
-
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
@@ -19,9 +17,7 @@ type CellRendererState C.GtkCellRendererState
 type DebugFlag C.GtkDebugFlag
 type DestDefaults C.GtkDestDefaults
 type DialogFlags C.GtkDialogFlags
-type EventControllerScrollFlags c.UnusupportedByVersion
 type FileFilterFlags C.GtkFileFilterFlags
-type FontChooserLevel c.UnusupportedByVersion
 type IconLookupFlags C.GtkIconLookupFlags
 type InputHints C.GtkInputHints
 type JunctionSides C.GtkJunctionSides

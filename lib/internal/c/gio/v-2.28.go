@@ -3,8 +3,6 @@
 
 package gio
 
-import c "github.com/pekim/gobbi/lib/internal/c"
-
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -28,9 +26,7 @@ type ConverterFlags C.GConverterFlags
 type DBusCallFlags C.GDBusCallFlags
 type DBusCapabilityFlags C.GDBusCapabilityFlags
 type DBusConnectionFlags C.GDBusConnectionFlags
-type DBusInterfaceSkeletonFlags c.UnusupportedByVersion
 type DBusMessageFlags C.GDBusMessageFlags
-type DBusObjectManagerClientFlags c.UnusupportedByVersion
 type DBusPropertyInfoFlags C.GDBusPropertyInfoFlags
 type DBusProxyFlags C.GDBusProxyFlags
 type DBusSendMessageFlags C.GDBusSendMessageFlags
@@ -41,23 +37,15 @@ type DriveStartFlags C.GDriveStartFlags
 type FileAttributeInfoFlags C.GFileAttributeInfoFlags
 type FileCopyFlags C.GFileCopyFlags
 type FileCreateFlags C.GFileCreateFlags
-type FileMeasureFlags c.UnusupportedByVersion
 type FileMonitorFlags C.GFileMonitorFlags
 type FileQueryInfoFlags C.GFileQueryInfoFlags
 type IOStreamSpliceFlags C.GIOStreamSpliceFlags
 type MountMountFlags C.GMountMountFlags
 type MountUnmountFlags C.GMountUnmountFlags
 type OutputStreamSpliceFlags C.GOutputStreamSpliceFlags
-type ResolverNameLookupFlags c.UnusupportedByVersion
-type ResourceFlags c.UnusupportedByVersion
-type ResourceLookupFlags c.UnusupportedByVersion
 type SettingsBindFlags C.GSettingsBindFlags
 type SocketMsgFlags C.GSocketMsgFlags
-type SubprocessFlags c.UnusupportedByVersion
-type TestDBusFlags c.UnusupportedByVersion
 type TlsCertificateFlags C.GTlsCertificateFlags
-type TlsDatabaseVerifyFlags c.UnusupportedByVersion
-type TlsPasswordFlags c.UnusupportedByVersion
 
 // enumerations
 type BusType C.GBusType
@@ -77,25 +65,14 @@ type FileMonitorEvent C.GFileMonitorEvent
 type FileType C.GFileType
 type FilesystemPreviewType C.GFilesystemPreviewType
 type IOErrorEnum C.GIOErrorEnum
-type IOModuleScopeFlags c.UnusupportedByVersion
 type MountOperationResult C.GMountOperationResult
-type NetworkConnectivity c.UnusupportedByVersion
-type NotificationPriority c.UnusupportedByVersion
 type PasswordSave C.GPasswordSave
-type PollableReturn c.UnusupportedByVersion
 type ResolverError C.GResolverError
-type ResolverRecordType c.UnusupportedByVersion
-type ResourceError c.UnusupportedByVersion
-type SocketClientEvent c.UnusupportedByVersion
 type SocketFamily C.GSocketFamily
-type SocketListenerEvent c.UnusupportedByVersion
 type SocketProtocol C.GSocketProtocol
 type SocketType C.GSocketType
 type TlsAuthenticationMode C.GTlsAuthenticationMode
-type TlsCertificateRequestFlags c.UnusupportedByVersion
-type TlsDatabaseLookupFlags c.UnusupportedByVersion
 type TlsError C.GTlsError
-type TlsInteractionResult c.UnusupportedByVersion
 type TlsRehandshakeMode C.GTlsRehandshakeMode
 type UnixSocketAddressType C.GUnixSocketAddressType
 type ZlibCompressorFormat C.GZlibCompressorFormat

@@ -3,8 +3,6 @@
 
 package glib
 
-import c "github.com/pekim/gobbi/lib/internal/c"
-
 // #include <glib.h>
 import "C"
 
@@ -29,7 +27,6 @@ type TraverseFlags C.GTraverseFlags
 
 // enumerations
 type BookmarkFileError C.GBookmarkFileError
-type ChecksumType c.UnusupportedByVersion
 type ConvertError C.GConvertError
 type DateDMY C.GDateDMY
 type DateMonth C.GDateMonth
@@ -40,10 +37,8 @@ type IOChannelError C.GIOChannelError
 type IOError C.GIOError
 type IOStatus C.GIOStatus
 type KeyFileError C.GKeyFileError
-type LogWriterOutput c.UnusupportedByVersion
 type MarkupError C.GMarkupError
 type NormalizeMode C.GNormalizeMode
-type NumberParserError c.UnusupportedByVersion
 type OnceStatus C.GOnceStatus
 type OptionArg C.GOptionArg
 type OptionError C.GOptionError
@@ -52,7 +47,6 @@ type SeekType C.GSeekType
 type ShellError C.GShellError
 type SliceConfig C.GSliceConfig
 type SpawnError C.GSpawnError
-type TestFileType c.UnusupportedByVersion
 type TestLogType C.GTestLogType
 type ThreadError C.GThreadError
 type TimeType C.GTimeType
@@ -62,5 +56,4 @@ type UnicodeBreakType C.GUnicodeBreakType
 type UnicodeScript C.GUnicodeScript
 type UnicodeType C.GUnicodeType
 type UserDirectory C.GUserDirectory
-type VariantClass c.UnusupportedByVersion
 type VariantParseError C.GVariantParseError

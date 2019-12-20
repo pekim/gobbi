@@ -3,8 +3,6 @@
 
 package gio
 
-import c "github.com/pekim/gobbi/lib/internal/c"
-
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -41,19 +39,16 @@ type DriveStartFlags C.GDriveStartFlags
 type FileAttributeInfoFlags C.GFileAttributeInfoFlags
 type FileCopyFlags C.GFileCopyFlags
 type FileCreateFlags C.GFileCreateFlags
-type FileMeasureFlags c.UnusupportedByVersion
 type FileMonitorFlags C.GFileMonitorFlags
 type FileQueryInfoFlags C.GFileQueryInfoFlags
 type IOStreamSpliceFlags C.GIOStreamSpliceFlags
 type MountMountFlags C.GMountMountFlags
 type MountUnmountFlags C.GMountUnmountFlags
 type OutputStreamSpliceFlags C.GOutputStreamSpliceFlags
-type ResolverNameLookupFlags c.UnusupportedByVersion
 type ResourceFlags C.GResourceFlags
 type ResourceLookupFlags C.GResourceLookupFlags
 type SettingsBindFlags C.GSettingsBindFlags
 type SocketMsgFlags C.GSocketMsgFlags
-type SubprocessFlags c.UnusupportedByVersion
 type TestDBusFlags C.GTestDBusFlags
 type TlsCertificateFlags C.GTlsCertificateFlags
 type TlsDatabaseVerifyFlags C.GTlsDatabaseVerifyFlags
@@ -79,20 +74,15 @@ type FilesystemPreviewType C.GFilesystemPreviewType
 type IOErrorEnum C.GIOErrorEnum
 type IOModuleScopeFlags C.GIOModuleScopeFlags
 type MountOperationResult C.GMountOperationResult
-type NetworkConnectivity c.UnusupportedByVersion
-type NotificationPriority c.UnusupportedByVersion
 type PasswordSave C.GPasswordSave
-type PollableReturn c.UnusupportedByVersion
 type ResolverError C.GResolverError
 type ResolverRecordType C.GResolverRecordType
 type ResourceError C.GResourceError
 type SocketClientEvent C.GSocketClientEvent
 type SocketFamily C.GSocketFamily
-type SocketListenerEvent c.UnusupportedByVersion
 type SocketProtocol C.GSocketProtocol
 type SocketType C.GSocketType
 type TlsAuthenticationMode C.GTlsAuthenticationMode
-type TlsCertificateRequestFlags c.UnusupportedByVersion
 type TlsDatabaseLookupFlags C.GTlsDatabaseLookupFlags
 type TlsError C.GTlsError
 type TlsInteractionResult C.GTlsInteractionResult

@@ -3,8 +3,6 @@
 
 package gio
 
-import c "github.com/pekim/gobbi/lib/internal/c"
-
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -48,7 +46,6 @@ type IOStreamSpliceFlags C.GIOStreamSpliceFlags
 type MountMountFlags C.GMountMountFlags
 type MountUnmountFlags C.GMountUnmountFlags
 type OutputStreamSpliceFlags C.GOutputStreamSpliceFlags
-type ResolverNameLookupFlags c.UnusupportedByVersion
 type ResourceFlags C.GResourceFlags
 type ResourceLookupFlags C.GResourceLookupFlags
 type SettingsBindFlags C.GSettingsBindFlags
@@ -82,7 +79,6 @@ type MountOperationResult C.GMountOperationResult
 type NetworkConnectivity C.GNetworkConnectivity
 type NotificationPriority C.GNotificationPriority
 type PasswordSave C.GPasswordSave
-type PollableReturn c.UnusupportedByVersion
 type ResolverError C.GResolverError
 type ResolverRecordType C.GResolverRecordType
 type ResourceError C.GResourceError
