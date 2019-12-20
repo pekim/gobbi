@@ -14,3 +14,8 @@ type InterpType C.GdkInterpType
 type PixbufAlphaMode C.GdkPixbufAlphaMode
 type PixbufError C.GdkPixbufError
 type PixbufRotation C.GdkPixbufRotation
+
+// records
+type PixbufFormat C.GdkPixbufFormat
+type PixbufLoaderClass C.GdkPixbufLoaderClass
+type PixbufSimpleAnimClass C.GdkPixbufSimpleAnimClass

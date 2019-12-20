@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build glib_2.26
+// +build glib_2.40
 
 package glib
 
@@ -48,6 +48,7 @@ type SeekType C.GSeekType
 type ShellError C.GShellError
 type SliceConfig C.GSliceConfig
 type SpawnError C.GSpawnError
+type TestFileType C.GTestFileType
 type TestLogType C.GTestLogType
 type ThreadError C.GThreadError
 type TimeType C.GTimeType
@@ -65,6 +66,7 @@ type Array C.GArray
 type AsyncQueue C.GAsyncQueue
 type BookmarkFile C.GBookmarkFile
 type ByteArray C.GByteArray
+type Bytes C.GBytes
 type Checksum C.GChecksum
 type Cond C.GCond
 type Data C.GData
@@ -75,6 +77,7 @@ type Dir C.GDir
 type Error C.GError
 type HashTable C.GHashTable
 type HashTableIter C.GHashTableIter
+type Hmac C.GHmac
 type Hook C.GHook
 type HookList C.GHookList
 type IConv C.GIConv
@@ -99,7 +102,9 @@ type PollFD C.GPollFD
 type Private C.GPrivate
 type PtrArray C.GPtrArray
 type Queue C.GQueue
+type RWLock C.GRWLock
 type Rand C.GRand
+type RecMutex C.GRecMutex
 type Regex C.GRegex
 type SList C.GSList
 type Scanner C.GScanner
@@ -127,5 +132,6 @@ type TrashStack C.GTrashStack
 type Tree C.GTree
 type Variant C.GVariant
 type VariantBuilder C.GVariantBuilder
+type VariantDict C.GVariantDict
 type VariantIter C.GVariantIter
 type VariantType C.GVariantType

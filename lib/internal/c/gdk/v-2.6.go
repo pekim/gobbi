@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gdk_3.4
+// +build gdk_2.6
 
 package gdk
 
@@ -31,7 +31,6 @@ type GrabStatus C.GdkGrabStatus
 type Gravity C.GdkGravity
 type InputMode C.GdkInputMode
 type InputSource C.GdkInputSource
-type ModifierIntent C.GdkModifierIntent
 type NotifyType C.GdkNotifyType
 type OwnerChange C.GdkOwnerChange
 type PropMode C.GdkPropMode
@@ -59,7 +58,6 @@ type EventCrossing C.GdkEventCrossing
 type EventDND C.GdkEventDND
 type EventExpose C.GdkEventExpose
 type EventFocus C.GdkEventFocus
-type EventGrabBroken C.GdkEventGrabBroken
 type EventKey C.GdkEventKey
 type EventMotion C.GdkEventMotion
 type EventOwnerChange C.GdkEventOwnerChange

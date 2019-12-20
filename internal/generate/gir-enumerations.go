@@ -16,8 +16,8 @@ func (ee Enumerations) init(ns *Namespace) {
 func (ee Enumerations) generateSys(f *jen.File, version semver.Version, typ string) {
 	f.Comment(typ)
 
-	for _, enum := range ee {
-		enum.generateSys(f, version)
+	for _, e := range ee {
+		e.generateSys(f, version)
 	}
 
 	f.Line()

@@ -41,6 +41,6 @@ func (e Enumeration) generateSys(f *jen.File, version semver.Version) {
 		return
 	}
 
-	// GEN: type SomeEnum TargetType
+	// GEN: type SomeEnum SomeCType
 	f.Type().Id(e.Name).Qual("C", e.CType)
 }

@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build glib_2.26
+// +build glib_2.30
 
 package glib
 
@@ -75,6 +75,7 @@ type Dir C.GDir
 type Error C.GError
 type HashTable C.GHashTable
 type HashTableIter C.GHashTableIter
+type Hmac C.GHmac
 type Hook C.GHook
 type HookList C.GHookList
 type IConv C.GIConv
