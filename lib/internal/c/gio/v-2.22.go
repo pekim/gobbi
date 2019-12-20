@@ -138,6 +138,9 @@ type MenuModelPrivate C.GMenuModelPrivate
 type MountIface C.GMountIface
 type MountOperationClass C.GMountOperationClass
 type MountOperationPrivate C.GMountOperationPrivate
+
+// UNSUPPORTED : NativeSocketAddressClass : blacklisted
+// UNSUPPORTED : NativeSocketAddressPrivate : blacklisted
 type NativeVolumeMonitorClass C.GNativeVolumeMonitorClass
 type NetworkAddressClass C.GNetworkAddressClass
 type NetworkAddressPrivate C.GNetworkAddressPrivate
@@ -155,6 +158,9 @@ type ProxyResolverInterface C.GProxyResolverInterface
 type ResolverClass C.GResolverClass
 type ResolverPrivate C.GResolverPrivate
 type SeekableIface C.GSeekableIface
+
+// UNSUPPORTED : SettingsBackendClass : blacklisted
+// UNSUPPORTED : SettingsBackendPrivate : blacklisted
 type SettingsClass C.GSettingsClass
 type SettingsPrivate C.GSettingsPrivate
 type SettingsSchemaKey C.GSettingsSchemaKey

@@ -27,6 +27,8 @@ type PixbufAnimationIter C.GdkPixbufAnimationIter
 type PixbufLoader C.GdkPixbufLoader
 type PixbufSimpleAnim C.GdkPixbufSimpleAnim
 
+// UNSUPPORTED : PixbufSimpleAnimIter : blacklisted
+
 // interfaces
 
 func Fn_pixbuf_error_quark() {}

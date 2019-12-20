@@ -41,6 +41,7 @@ func (r *Record) init(ns *Namespace) {
 
 func (r Record) generateSys(f *jen.File, version semver.Version) {
 	if r.blacklist {
+		f.Commentf("UNSUPPORTED : %s : blacklisted", r.Name)
 		return
 	}
 

@@ -51,6 +51,8 @@ type SliceConfig C.GSliceConfig
 type SpawnError C.GSpawnError
 type TestFileType C.GTestFileType
 type TestLogType C.GTestLogType
+
+// UNSUPPORTED : TestResult : blacklisted
 type ThreadError C.GThreadError
 type TimeType C.GTimeType
 type TokenType C.GTokenType
@@ -123,6 +125,8 @@ type StringChunk C.GStringChunk
 type TestCase C.GTestCase
 type TestConfig C.GTestConfig
 type TestLogBuffer C.GTestLogBuffer
+
+// UNSUPPORTED : TestLogMsg : blacklisted
 type TestSuite C.GTestSuite
 type Thread C.GThread
 type ThreadPool C.GThreadPool

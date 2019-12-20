@@ -255,6 +255,9 @@ type EntryPrivate C.GtkEntryPrivate
 type EventBoxClass C.GtkEventBoxClass
 type EventBoxPrivate C.GtkEventBoxPrivate
 type EventControllerClass C.GtkEventControllerClass
+
+// UNSUPPORTED : EventControllerMotionClass : blacklisted
+// UNSUPPORTED : EventControllerScrollClass : blacklisted
 type ExpanderAccessibleClass C.GtkExpanderAccessibleClass
 type ExpanderAccessiblePrivate C.GtkExpanderAccessiblePrivate
 type ExpanderClass C.GtkExpanderClass
@@ -297,6 +300,8 @@ type GestureMultiPressClass C.GtkGestureMultiPressClass
 type GesturePanClass C.GtkGesturePanClass
 type GestureRotateClass C.GtkGestureRotateClass
 type GestureSingleClass C.GtkGestureSingleClass
+
+// UNSUPPORTED : GestureStylusClass : blacklisted
 type GestureSwipeClass C.GtkGestureSwipeClass
 type GestureZoomClass C.GtkGestureZoomClass
 type Gradient C.GtkGradient
@@ -312,6 +317,9 @@ type HScrollbarClass C.GtkHScrollbarClass
 type HSeparatorClass C.GtkHSeparatorClass
 type HandleBoxClass C.GtkHandleBoxClass
 type HandleBoxPrivate C.GtkHandleBoxPrivate
+
+// UNSUPPORTED : HeaderBarAccessibleClass : blacklisted
+// UNSUPPORTED : HeaderBarAccessiblePrivate : blacklisted
 type HeaderBarClass C.GtkHeaderBarClass
 type HeaderBarPrivate C.GtkHeaderBarPrivate
 type IMContextClass C.GtkIMContextClass
@@ -508,6 +516,8 @@ type SpinnerAccessibleClass C.GtkSpinnerAccessibleClass
 type SpinnerAccessiblePrivate C.GtkSpinnerAccessiblePrivate
 type SpinnerClass C.GtkSpinnerClass
 type SpinnerPrivate C.GtkSpinnerPrivate
+
+// UNSUPPORTED : StackAccessibleClass : blacklisted
 type StackClass C.GtkStackClass
 type StackSidebarClass C.GtkStackSidebarClass
 type StackSidebarPrivate C.GtkStackSidebarPrivate
@@ -689,8 +699,14 @@ type DrawingArea C.GtkDrawingArea
 type Entry C.GtkEntry
 type EntryAccessible C.GtkEntryAccessible
 type EntryCompletion C.GtkEntryCompletion
+
+// UNSUPPORTED : EntryIconAccessible : blacklisted
 type EventBox C.GtkEventBox
 type EventController C.GtkEventController
+
+// UNSUPPORTED : EventControllerKey : blacklisted
+// UNSUPPORTED : EventControllerMotion : blacklisted
+// UNSUPPORTED : EventControllerScroll : blacklisted
 type Expander C.GtkExpander
 type ExpanderAccessible C.GtkExpanderAccessible
 type FileChooserButton C.GtkFileChooserButton
@@ -715,6 +731,8 @@ type GestureMultiPress C.GtkGestureMultiPress
 type GesturePan C.GtkGesturePan
 type GestureRotate C.GtkGestureRotate
 type GestureSingle C.GtkGestureSingle
+
+// UNSUPPORTED : GestureStylus : blacklisted
 type GestureSwipe C.GtkGestureSwipe
 type GestureZoom C.GtkGestureZoom
 type Grid C.GtkGrid
@@ -727,6 +745,8 @@ type HScrollbar C.GtkHScrollbar
 type HSeparator C.GtkHSeparator
 type HandleBox C.GtkHandleBox
 type HeaderBar C.GtkHeaderBar
+
+// UNSUPPORTED : HeaderBarAccessible : blacklisted
 type IMContext C.GtkIMContext
 type IMContextSimple C.GtkIMContextSimple
 type IMMulticontext C.GtkIMMulticontext
@@ -828,6 +848,8 @@ type SpinButtonAccessible C.GtkSpinButtonAccessible
 type Spinner C.GtkSpinner
 type SpinnerAccessible C.GtkSpinnerAccessible
 type Stack C.GtkStack
+
+// UNSUPPORTED : StackAccessible : blacklisted
 type StackSwitcher C.GtkStackSwitcher
 type StatusIcon C.GtkStatusIcon
 type Statusbar C.GtkStatusbar

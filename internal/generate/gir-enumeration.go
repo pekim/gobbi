@@ -33,6 +33,7 @@ func (e *Enumeration) init(ns *Namespace) {
 
 func (e Enumeration) generateSys(f *jen.File, version semver.Version) {
 	if e.blacklist {
+		f.Commentf("UNSUPPORTED : %s : blacklisted", e.Name)
 		return
 	}
 
