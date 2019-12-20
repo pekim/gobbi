@@ -26,3 +26,5 @@ type PixbufAnimation C.GdkPixbufAnimation
 type PixbufAnimationIter C.GdkPixbufAnimationIter
 type PixbufLoader C.GdkPixbufLoader
 type PixbufSimpleAnim C.GdkPixbufSimpleAnim
+
+// interfaces

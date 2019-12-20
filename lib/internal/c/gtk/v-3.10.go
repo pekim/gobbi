@@ -903,3 +903,26 @@ type WidgetAccessible C.GtkWidgetAccessible
 type Window C.GtkWindow
 type WindowAccessible C.GtkWindowAccessible
 type WindowGroup C.GtkWindowGroup
+
+// interfaces
+type Actionable C.GtkActionable
+type Activatable C.GtkActivatable
+type AppChooser C.GtkAppChooser
+type Buildable C.GtkBuildable
+type CellAccessibleParent C.GtkCellAccessibleParent
+type CellEditable C.GtkCellEditable
+type CellLayout C.GtkCellLayout
+type ColorChooser C.GtkColorChooser
+type Editable C.GtkEditable
+type FileChooser C.GtkFileChooser
+type FontChooser C.GtkFontChooser
+type Orientable C.GtkOrientable
+type PrintOperationPreview C.GtkPrintOperationPreview
+type RecentChooser C.GtkRecentChooser
+type Scrollable C.GtkScrollable
+type StyleProvider C.GtkStyleProvider
+type ToolShell C.GtkToolShell
+type TreeDragDest C.GtkTreeDragDest
+type TreeDragSource C.GtkTreeDragSource
+type TreeModel C.GtkTreeModel
+type TreeSortable C.GtkTreeSortable

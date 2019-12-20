@@ -267,3 +267,21 @@ type Vfs C.GVfs
 type VolumeMonitor C.GVolumeMonitor
 type ZlibCompressor C.GZlibCompressor
 type ZlibDecompressor C.GZlibDecompressor
+
+// interfaces
+type Action C.GAction
+type ActionGroup C.GActionGroup
+type AppInfo C.GAppInfo
+type AsyncResult C.GAsyncResult
+type DBusObject C.GDBusObject
+type DBusObjectManager C.GDBusObjectManager
+type DesktopAppInfoLookup C.GDesktopAppInfoLookup
+type Drive C.GDrive
+type File C.GFile
+type Icon C.GIcon
+type ListModel C.GListModel
+type LoadableIcon C.GLoadableIcon
+type Mount C.GMount
+type Seekable C.GSeekable
+type SocketConnectable C.GSocketConnectable
+type Volume C.GVolume

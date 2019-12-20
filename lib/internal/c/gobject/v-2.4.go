@@ -74,3 +74,6 @@ type ParamSpecULong C.GParamSpecULong
 type ParamSpecUnichar C.GParamSpecUnichar
 type ParamSpecValueArray C.GParamSpecValueArray
 type TypeModule C.GTypeModule
+
+// interfaces
+type TypePlugin C.GTypePlugin

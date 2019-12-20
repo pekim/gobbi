@@ -74,3 +74,20 @@ type RelationSet C.AtkRelationSet
 type Socket C.AtkSocket
 type StateSet C.AtkStateSet
 type Util C.AtkUtil
+
+// interfaces
+type Action C.AtkAction
+type Component C.AtkComponent
+type Document C.AtkDocument
+type EditableText C.AtkEditableText
+type HyperlinkImpl C.AtkHyperlinkImpl
+type Hypertext C.AtkHypertext
+type Image C.AtkImage
+type ImplementorIface C.AtkImplementorIface
+type Selection C.AtkSelection
+type StreamableContent C.AtkStreamableContent
+type Table C.AtkTable
+type TableCell C.AtkTableCell
+type Text C.AtkText
+type Value C.AtkValue
+type Window C.AtkWindow

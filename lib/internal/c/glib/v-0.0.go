@@ -116,3 +116,5 @@ type VariantIter C.GVariantIter
 type VariantType C.GVariantType
 
 // classes
+
+// interfaces

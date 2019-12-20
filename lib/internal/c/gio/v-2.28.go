@@ -357,3 +357,32 @@ type Vfs C.GVfs
 type VolumeMonitor C.GVolumeMonitor
 type ZlibCompressor C.GZlibCompressor
 type ZlibDecompressor C.GZlibDecompressor
+
+// interfaces
+type Action C.GAction
+type ActionGroup C.GActionGroup
+type AppInfo C.GAppInfo
+type AsyncInitable C.GAsyncInitable
+type AsyncResult C.GAsyncResult
+type Converter C.GConverter
+type DBusObject C.GDBusObject
+type DBusObjectManager C.GDBusObjectManager
+type DesktopAppInfoLookup C.GDesktopAppInfoLookup
+type Drive C.GDrive
+type File C.GFile
+type FileDescriptorBased C.GFileDescriptorBased
+type Icon C.GIcon
+type Initable C.GInitable
+type ListModel C.GListModel
+type LoadableIcon C.GLoadableIcon
+type Mount C.GMount
+type PollableInputStream C.GPollableInputStream
+type PollableOutputStream C.GPollableOutputStream
+type Proxy C.GProxy
+type ProxyResolver C.GProxyResolver
+type Seekable C.GSeekable
+type SocketConnectable C.GSocketConnectable
+type TlsBackend C.GTlsBackend
+type TlsClientConnection C.GTlsClientConnection
+type TlsServerConnection C.GTlsServerConnection
+type Volume C.GVolume

@@ -103,3 +103,6 @@ type Screen C.GdkScreen
 type Seat C.GdkSeat
 type Visual C.GdkVisual
 type Window C.GdkWindow
+
+// interfaces
+type DevicePad C.GdkDevicePad

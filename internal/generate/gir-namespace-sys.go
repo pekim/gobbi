@@ -38,6 +38,7 @@ func (ns *Namespace) generateSysFile(f *jen.File, version semver.Version) {
 	ns.Enumerations.generateSys(f, version, "enumerations")
 	ns.Records.generateSys(f, version)
 	ns.Classes.generateSys(f, version)
+	ns.Interfaces.generateSys(f, version)
 }
 
 func (ns *Namespace) generateSysFileBuildTags(f *jen.File, version semver.Version) {
