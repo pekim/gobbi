@@ -6,19 +6,27 @@ import (
 	"github.com/dave/jennifer/jen"
 	"path/filepath"
 	"strings"
+	"sync"
 )
 
 func (n *Namespace) generateC() {
 	filename := filepath.Join(n.cDir, "package")
 	n.generateFile(filename, n.generatePackageFile)
 
+	var wg sync.WaitGroup
 	for _, version := range n.versions.versions {
-		filename := filepath.Join(n.cDir, "v-"+versionString(version))
+		wg.Add(1)
 
-		n.generateFile(filename, func(f *jen.File) {
-			n.generateSysFile(f, version)
-		})
+		go func(version semver.Version) {
+			defer wg.Done()
+
+			filename := filepath.Join(n.cDir, "v-"+versionString(version))
+			n.generateFile(filename, func(f *jen.File) {
+				n.generateSysFile(f, version)
+			})
+		}(version)
 	}
+	wg.Wait()
 }
 
 // generatePackageFile generates a file with cgo pkg-config comments
