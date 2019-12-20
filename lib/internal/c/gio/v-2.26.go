@@ -364,98 +364,203 @@ type Seekable C.GSeekable
 type SocketConnectable C.GSocketConnectable
 type Volume C.GVolume
 
-// functions
-func Fn_app_info_create_from_commandline()           {}
-func Fn_app_info_get_all()                           {}
-func Fn_app_info_get_all_for_type()                  {}
-func Fn_app_info_get_default_for_type()              {}
-func Fn_app_info_get_default_for_uri_scheme()        {}
-func Fn_app_info_launch_default_for_uri()            {}
-func Fn_app_info_reset_type_associations()           {}
-func Fn_async_initable_newv_async()                  {}
-func Fn_bus_get()                                    {}
-func Fn_bus_get_finish()                             {}
-func Fn_bus_get_sync()                               {}
-func Fn_bus_own_name()                               {}
-func Fn_bus_own_name_on_connection()                 {}
-func Fn_bus_own_name_on_connection_with_closures()   {}
-func Fn_bus_own_name_with_closures()                 {}
-func Fn_bus_unown_name()                             {}
-func Fn_bus_unwatch_name()                           {}
-func Fn_bus_watch_name()                             {}
-func Fn_bus_watch_name_on_connection()               {}
-func Fn_bus_watch_name_on_connection_with_closures() {}
-func Fn_bus_watch_name_with_closures()               {}
-func Fn_content_type_can_be_executable()             {}
-func Fn_content_type_equals()                        {}
-func Fn_content_type_from_mime_type()                {}
-func Fn_content_type_get_description()               {}
-func Fn_content_type_get_icon()                      {}
-func Fn_content_type_get_mime_type()                 {}
-func Fn_content_type_guess()                         {}
-func Fn_content_type_guess_for_tree()                {}
-func Fn_content_type_is_a()                          {}
-func Fn_content_type_is_unknown()                    {}
-func Fn_content_types_get_registered()               {}
-func Fn_dbus_address_get_for_bus_sync()              {}
-func Fn_dbus_address_get_stream()                    {}
-func Fn_dbus_address_get_stream_finish()             {}
-func Fn_dbus_address_get_stream_sync()               {}
-func Fn_dbus_annotation_info_lookup()                {}
-func Fn_dbus_error_encode_gerror()                   {}
-func Fn_dbus_error_get_remote_error()                {}
-func Fn_dbus_error_is_remote_error()                 {}
-func Fn_dbus_error_new_for_dbus_error()              {}
-func Fn_dbus_error_quark()                           {}
-func Fn_dbus_error_register_error()                  {}
-func Fn_dbus_error_register_error_domain()           {}
-func Fn_dbus_error_strip_remote_error()              {}
-func Fn_dbus_error_unregister_error()                {}
-func Fn_dbus_generate_guid()                         {}
-func Fn_dbus_is_address()                            {}
-func Fn_dbus_is_guid()                               {}
-func Fn_dbus_is_interface_name()                     {}
-func Fn_dbus_is_member_name()                        {}
-func Fn_dbus_is_name()                               {}
-func Fn_dbus_is_supported_address()                  {}
-func Fn_dbus_is_unique_name()                        {}
-func Fn_file_new_for_commandline_arg()               {}
-func Fn_file_new_for_path()                          {}
-func Fn_file_new_for_uri()                           {}
-func Fn_file_parse_name()                            {}
-func Fn_icon_hash()                                  {}
-func Fn_icon_new_for_string()                        {}
-func Fn_initable_newv()                              {}
-func Fn_io_error_from_errno()                        {}
-func Fn_io_error_quark()                             {}
-func Fn_io_extension_point_implement()               {}
-func Fn_io_extension_point_lookup()                  {}
-func Fn_io_extension_point_register()                {}
-func Fn_io_modules_load_all_in_directory()           {}
-func Fn_io_modules_scan_all_in_directory()           {}
-func Fn_io_scheduler_cancel_all_jobs()               {}
-func Fn_io_scheduler_push_job()                      {}
-func Fn_keyfile_settings_backend_new()               {}
-func Fn_proxy_get_default_for_protocol()             {}
-func Fn_proxy_resolver_get_default()                 {}
-func Fn_resolver_error_quark()                       {}
-func Fn_simple_async_report_error_in_idle()          {}
-func Fn_simple_async_report_gerror_in_idle()         {}
-func Fn_srv_target_list_sort()                       {}
-func Fn_unix_is_mount_path_system_internal()         {}
-func Fn_unix_mount_at()                              {}
-func Fn_unix_mount_compare()                         {}
-func Fn_unix_mount_free()                            {}
-func Fn_unix_mount_get_device_path()                 {}
-func Fn_unix_mount_get_fs_type()                     {}
-func Fn_unix_mount_get_mount_path()                  {}
-func Fn_unix_mount_guess_can_eject()                 {}
-func Fn_unix_mount_guess_icon()                      {}
-func Fn_unix_mount_guess_name()                      {}
-func Fn_unix_mount_guess_should_display()            {}
-func Fn_unix_mount_is_readonly()                     {}
-func Fn_unix_mount_is_system_internal()              {}
-func Fn_unix_mount_points_changed_since()            {}
-func Fn_unix_mount_points_get()                      {}
-func Fn_unix_mounts_changed_since()                  {}
-func Fn_unix_mounts_get()                            {}
+func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags string) {}
+
+func Fn_app_info_get_all() {}
+
+func Fn_app_info_get_all_for_type(contentType string) {}
+
+func Fn_app_info_get_default_for_type(contentType string, mustSupportUris string) {}
+
+func Fn_app_info_get_default_for_uri_scheme(uriScheme string) {}
+
+func Fn_app_info_launch_default_for_uri(uri string, context string) {}
+
+func Fn_app_info_reset_type_associations(contentType string) {}
+
+func Fn_async_initable_newv_async(objectType string, nParameters string, parameters string, ioPriority string, cancellable string, callback string, userData string) {
+}
+
+func Fn_bus_get(busType string, cancellable string, callback string, userData string) {}
+
+func Fn_bus_get_finish(res string) {}
+
+func Fn_bus_get_sync(busType string, cancellable string) {}
+
+func Fn_bus_own_name(busType string, name string, flags string, busAcquiredHandler string, nameAcquiredHandler string, nameLostHandler string, userData string, userDataFreeFunc string) {
+}
+
+func Fn_bus_own_name_on_connection(connection string, name string, flags string, nameAcquiredHandler string, nameLostHandler string, userData string, userDataFreeFunc string) {
+}
+
+func Fn_bus_own_name_on_connection_with_closures(connection string, name string, flags string, nameAcquiredClosure string, nameLostClosure string) {
+}
+
+func Fn_bus_own_name_with_closures(busType string, name string, flags string, busAcquiredClosure string, nameAcquiredClosure string, nameLostClosure string) {
+}
+
+func Fn_bus_unown_name(ownerId string) {}
+
+func Fn_bus_unwatch_name(watcherId string) {}
+
+func Fn_bus_watch_name(busType string, name string, flags string, nameAppearedHandler string, nameVanishedHandler string, userData string, userDataFreeFunc string) {
+}
+
+func Fn_bus_watch_name_on_connection(connection string, name string, flags string, nameAppearedHandler string, nameVanishedHandler string, userData string, userDataFreeFunc string) {
+}
+
+func Fn_bus_watch_name_on_connection_with_closures(connection string, name string, flags string, nameAppearedClosure string, nameVanishedClosure string) {
+}
+
+func Fn_bus_watch_name_with_closures(busType string, name string, flags string, nameAppearedClosure string, nameVanishedClosure string) {
+}
+
+func Fn_content_type_can_be_executable(type_ string) {}
+
+func Fn_content_type_equals(type1 string, type2 string) {}
+
+func Fn_content_type_from_mime_type(mimeType string) {}
+
+func Fn_content_type_get_description(type_ string) {}
+
+func Fn_content_type_get_icon(type_ string) {}
+
+func Fn_content_type_get_mime_type(type_ string) {}
+
+func Fn_content_type_guess(filename string, data string, dataSize string, resultUncertain string) {}
+
+func Fn_content_type_guess_for_tree(root string) {}
+
+func Fn_content_type_is_a(type_ string, supertype string) {}
+
+func Fn_content_type_is_unknown(type_ string) {}
+
+func Fn_content_types_get_registered() {}
+
+func Fn_dbus_address_get_for_bus_sync(busType string, cancellable string) {}
+
+func Fn_dbus_address_get_stream(address string, cancellable string, callback string, userData string) {}
+
+func Fn_dbus_address_get_stream_finish(res string, outGuid string) {}
+
+func Fn_dbus_address_get_stream_sync(address string, outGuid string, cancellable string) {}
+
+func Fn_dbus_annotation_info_lookup(annotations string, name string) {}
+
+func Fn_dbus_error_encode_gerror(error string) {}
+
+func Fn_dbus_error_get_remote_error(error string) {}
+
+func Fn_dbus_error_is_remote_error(error string) {}
+
+func Fn_dbus_error_new_for_dbus_error(dbusErrorName string, dbusErrorMessage string) {}
+
+func Fn_dbus_error_quark() {}
+
+func Fn_dbus_error_register_error(errorDomain string, errorCode string, dbusErrorName string) {}
+
+func Fn_dbus_error_register_error_domain(errorDomainQuarkName string, quarkVolatile string, entries string, numEntries string) {
+}
+
+func Fn_dbus_error_strip_remote_error(error string) {}
+
+func Fn_dbus_error_unregister_error(errorDomain string, errorCode string, dbusErrorName string) {}
+
+func Fn_dbus_generate_guid() {}
+
+func Fn_dbus_is_address(string_ string) {}
+
+func Fn_dbus_is_guid(string_ string) {}
+
+func Fn_dbus_is_interface_name(string_ string) {}
+
+func Fn_dbus_is_member_name(string_ string) {}
+
+func Fn_dbus_is_name(string_ string) {}
+
+func Fn_dbus_is_supported_address(string_ string) {}
+
+func Fn_dbus_is_unique_name(string_ string) {}
+
+func Fn_file_new_for_commandline_arg(arg string) {}
+
+func Fn_file_new_for_path(path string) {}
+
+func Fn_file_new_for_uri(uri string) {}
+
+func Fn_file_parse_name(parseName string) {}
+
+func Fn_icon_hash(icon string) {}
+
+func Fn_icon_new_for_string(str string) {}
+
+func Fn_initable_newv(objectType string, nParameters string, parameters string, cancellable string) {}
+
+func Fn_io_error_from_errno(errNo string) {}
+
+func Fn_io_error_quark() {}
+
+func Fn_io_extension_point_implement(extensionPointName string, type_ string, extensionName string, priority string) {
+}
+
+func Fn_io_extension_point_lookup(name string) {}
+
+func Fn_io_extension_point_register(name string) {}
+
+func Fn_io_modules_load_all_in_directory(dirname string) {}
+
+func Fn_io_modules_scan_all_in_directory(dirname string) {}
+
+func Fn_io_scheduler_cancel_all_jobs() {}
+
+func Fn_io_scheduler_push_job(jobFunc string, userData string, notify string, ioPriority string, cancellable string) {
+}
+
+func Fn_keyfile_settings_backend_new(filename string, rootPath string, rootGroup string) {}
+
+func Fn_proxy_get_default_for_protocol(protocol string) {}
+
+func Fn_proxy_resolver_get_default() {}
+
+func Fn_resolver_error_quark() {}
+
+// UNSUPPORTED : simple_async_report_error_in_idle : has varargs
+
+func Fn_simple_async_report_gerror_in_idle(object string, callback string, userData string, error string) {
+}
+
+func Fn_srv_target_list_sort(targets string) {}
+
+func Fn_unix_is_mount_path_system_internal(mountPath string) {}
+
+func Fn_unix_mount_at(mountPath string, timeRead string) {}
+
+func Fn_unix_mount_compare(mount1 string, mount2 string) {}
+
+func Fn_unix_mount_free(mountEntry string) {}
+
+func Fn_unix_mount_get_device_path(mountEntry string) {}
+
+func Fn_unix_mount_get_fs_type(mountEntry string) {}
+
+func Fn_unix_mount_get_mount_path(mountEntry string) {}
+
+func Fn_unix_mount_guess_can_eject(mountEntry string) {}
+
+func Fn_unix_mount_guess_icon(mountEntry string) {}
+
+func Fn_unix_mount_guess_name(mountEntry string) {}
+
+func Fn_unix_mount_guess_should_display(mountEntry string) {}
+
+func Fn_unix_mount_is_readonly(mountEntry string) {}
+
+func Fn_unix_mount_is_system_internal(mountEntry string) {}
+
+func Fn_unix_mount_points_changed_since(time string) {}
+
+func Fn_unix_mount_points_get(timeRead string) {}
+
+func Fn_unix_mounts_changed_since(time string) {}
+
+func Fn_unix_mounts_get(timeRead string) {}

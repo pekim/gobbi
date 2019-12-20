@@ -112,111 +112,231 @@ type Window C.GdkWindow
 // interfaces
 type DevicePad C.GdkDevicePad
 
-// functions
-func Fn_add_option_entries_libgtk_only()         {}
-func Fn_atom_intern()                            {}
-func Fn_atom_intern_static_string()              {}
-func Fn_beep()                                   {}
-func Fn_cairo_create()                           {}
-func Fn_cairo_get_clip_rectangle()               {}
-func Fn_cairo_rectangle()                        {}
-func Fn_cairo_region()                           {}
-func Fn_cairo_region_create_from_surface()       {}
-func Fn_cairo_set_source_color()                 {}
-func Fn_cairo_set_source_pixbuf()                {}
-func Fn_cairo_set_source_rgba()                  {}
-func Fn_cairo_set_source_window()                {}
-func Fn_color_parse()                            {}
-func Fn_disable_multidevice()                    {}
-func Fn_drag_abort()                             {}
-func Fn_drag_begin()                             {}
-func Fn_drag_begin_for_device()                  {}
-func Fn_drag_drop()                              {}
-func Fn_drag_drop_succeeded()                    {}
-func Fn_drag_find_window_for_screen()            {}
-func Fn_drag_get_selection()                     {}
-func Fn_drag_motion()                            {}
-func Fn_drag_status()                            {}
-func Fn_drop_finish()                            {}
-func Fn_drop_reply()                             {}
-func Fn_error_trap_pop()                         {}
-func Fn_error_trap_pop_ignored()                 {}
-func Fn_error_trap_push()                        {}
-func Fn_event_get()                              {}
-func Fn_event_handler_set()                      {}
-func Fn_event_peek()                             {}
-func Fn_event_request_motions()                  {}
-func Fn_events_get_angle()                       {}
-func Fn_events_get_center()                      {}
-func Fn_events_get_distance()                    {}
-func Fn_events_pending()                         {}
-func Fn_flush()                                  {}
-func Fn_get_default_root_window()                {}
-func Fn_get_display()                            {}
-func Fn_get_display_arg_name()                   {}
-func Fn_get_program_class()                      {}
-func Fn_get_show_events()                        {}
-func Fn_gl_error_quark()                         {}
-func Fn_init()                                   {}
-func Fn_init_check()                             {}
-func Fn_keyboard_grab()                          {}
-func Fn_keyboard_ungrab()                        {}
-func Fn_keyval_convert_case()                    {}
-func Fn_keyval_from_name()                       {}
-func Fn_keyval_is_lower()                        {}
-func Fn_keyval_is_upper()                        {}
-func Fn_keyval_name()                            {}
-func Fn_keyval_to_lower()                        {}
-func Fn_keyval_to_unicode()                      {}
-func Fn_keyval_to_upper()                        {}
-func Fn_list_visuals()                           {}
-func Fn_notify_startup_complete()                {}
-func Fn_notify_startup_complete_with_id()        {}
-func Fn_offscreen_window_get_embedder()          {}
-func Fn_offscreen_window_get_surface()           {}
-func Fn_offscreen_window_set_embedder()          {}
-func Fn_pango_context_get()                      {}
-func Fn_pango_context_get_for_screen()           {}
-func Fn_pango_layout_get_clip_region()           {}
-func Fn_pango_layout_line_get_clip_region()      {}
-func Fn_parse_args()                             {}
-func Fn_pixbuf_get_from_surface()                {}
-func Fn_pixbuf_get_from_window()                 {}
-func Fn_pointer_grab()                           {}
-func Fn_pointer_is_grabbed()                     {}
-func Fn_pointer_ungrab()                         {}
-func Fn_pre_parse_libgtk_only()                  {}
-func Fn_property_change()                        {}
-func Fn_property_delete()                        {}
-func Fn_property_get()                           {}
-func Fn_query_depths()                           {}
-func Fn_query_visual_types()                     {}
-func Fn_selection_convert()                      {}
-func Fn_selection_owner_get()                    {}
-func Fn_selection_owner_get_for_display()        {}
-func Fn_selection_owner_set()                    {}
-func Fn_selection_owner_set_for_display()        {}
-func Fn_selection_property_get()                 {}
-func Fn_selection_send_notify()                  {}
-func Fn_selection_send_notify_for_display()      {}
-func Fn_set_double_click_time()                  {}
-func Fn_set_program_class()                      {}
-func Fn_set_show_events()                        {}
-func Fn_setting_get()                            {}
-func Fn_synthesize_window_state()                {}
-func Fn_test_render_sync()                       {}
-func Fn_test_simulate_button()                   {}
-func Fn_test_simulate_key()                      {}
-func Fn_text_property_to_utf8_list_for_display() {}
-func Fn_threads_add_idle()                       {}
-func Fn_threads_add_idle_full()                  {}
-func Fn_threads_add_timeout()                    {}
-func Fn_threads_add_timeout_full()               {}
-func Fn_threads_add_timeout_seconds()            {}
-func Fn_threads_add_timeout_seconds_full()       {}
-func Fn_threads_enter()                          {}
-func Fn_threads_init()                           {}
-func Fn_threads_leave()                          {}
-func Fn_threads_set_lock_functions()             {}
-func Fn_unicode_to_keyval()                      {}
-func Fn_utf8_to_string_target()                  {}
+func Fn_add_option_entries_libgtk_only(group string) {}
+
+func Fn_atom_intern(atomName string, onlyIfExists string) {}
+
+func Fn_atom_intern_static_string(atomName string) {}
+
+func Fn_beep() {}
+
+func Fn_cairo_create(window string) {}
+
+func Fn_cairo_get_clip_rectangle(cr string, rect string) {}
+
+func Fn_cairo_rectangle(cr string, rectangle string) {}
+
+func Fn_cairo_region(cr string, region string) {}
+
+func Fn_cairo_region_create_from_surface(surface string) {}
+
+func Fn_cairo_set_source_color(cr string, color string) {}
+
+func Fn_cairo_set_source_pixbuf(cr string, pixbuf string, pixbufX string, pixbufY string) {}
+
+func Fn_cairo_set_source_rgba(cr string, rgba string) {}
+
+func Fn_cairo_set_source_window(cr string, window string, x string, y string) {}
+
+func Fn_color_parse(spec string, color string) {}
+
+func Fn_disable_multidevice() {}
+
+func Fn_drag_abort(context string, time string) {}
+
+func Fn_drag_begin(window string, targets string) {}
+
+func Fn_drag_begin_for_device(window string, device string, targets string) {}
+
+func Fn_drag_drop(context string, time string) {}
+
+func Fn_drag_drop_succeeded(context string) {}
+
+func Fn_drag_find_window_for_screen(context string, dragWindow string, screen string, xRoot string, yRoot string, destWindow string, protocol string) {
+}
+
+func Fn_drag_get_selection(context string) {}
+
+func Fn_drag_motion(context string, destWindow string, protocol string, xRoot string, yRoot string, suggestedAction string, possibleActions string, time string) {
+}
+
+func Fn_drag_status(context string, action string, time string) {}
+
+func Fn_drop_finish(context string, success string, time string) {}
+
+func Fn_drop_reply(context string, accepted string, time string) {}
+
+func Fn_error_trap_pop() {}
+
+func Fn_error_trap_pop_ignored() {}
+
+func Fn_error_trap_push() {}
+
+func Fn_event_get() {}
+
+func Fn_event_handler_set(func_ string, data string, notify string) {}
+
+func Fn_event_peek() {}
+
+func Fn_event_request_motions(event string) {}
+
+func Fn_events_get_angle(event1 string, event2 string, angle string) {}
+
+func Fn_events_get_center(event1 string, event2 string, x string, y string) {}
+
+func Fn_events_get_distance(event1 string, event2 string, distance string) {}
+
+func Fn_events_pending() {}
+
+func Fn_flush() {}
+
+func Fn_get_default_root_window() {}
+
+func Fn_get_display() {}
+
+func Fn_get_display_arg_name() {}
+
+func Fn_get_program_class() {}
+
+func Fn_get_show_events() {}
+
+func Fn_gl_error_quark() {}
+
+func Fn_init(argc string, argv string) {}
+
+func Fn_init_check(argc string, argv string) {}
+
+func Fn_keyboard_grab(window string, ownerEvents string, time string) {}
+
+func Fn_keyboard_ungrab(time string) {}
+
+func Fn_keyval_convert_case(symbol string, lower string, upper string) {}
+
+func Fn_keyval_from_name(keyvalName string) {}
+
+func Fn_keyval_is_lower(keyval string) {}
+
+func Fn_keyval_is_upper(keyval string) {}
+
+func Fn_keyval_name(keyval string) {}
+
+func Fn_keyval_to_lower(keyval string) {}
+
+func Fn_keyval_to_unicode(keyval string) {}
+
+func Fn_keyval_to_upper(keyval string) {}
+
+func Fn_list_visuals() {}
+
+func Fn_notify_startup_complete() {}
+
+func Fn_notify_startup_complete_with_id(startupId string) {}
+
+func Fn_offscreen_window_get_embedder(window string) {}
+
+func Fn_offscreen_window_get_surface(window string) {}
+
+func Fn_offscreen_window_set_embedder(window string, embedder string) {}
+
+func Fn_pango_context_get() {}
+
+func Fn_pango_context_get_for_screen(screen string) {}
+
+func Fn_pango_layout_get_clip_region(layout string, xOrigin string, yOrigin string, indexRanges string, nRanges string) {
+}
+
+func Fn_pango_layout_line_get_clip_region(line string, xOrigin string, yOrigin string, indexRanges string, nRanges string) {
+}
+
+func Fn_parse_args(argc string, argv string) {}
+
+func Fn_pixbuf_get_from_surface(surface string, srcX string, srcY string, width string, height string) {}
+
+func Fn_pixbuf_get_from_window(window string, srcX string, srcY string, width string, height string) {}
+
+func Fn_pointer_grab(window string, ownerEvents string, eventMask string, confineTo string, cursor string, time string) {
+}
+
+func Fn_pointer_is_grabbed() {}
+
+func Fn_pointer_ungrab(time string) {}
+
+func Fn_pre_parse_libgtk_only() {}
+
+func Fn_property_change(window string, property string, type_ string, format string, mode string, data string, nelements string) {
+}
+
+func Fn_property_delete(window string, property string) {}
+
+func Fn_property_get(window string, property string, type_ string, offset string, length string, pdelete string, actualPropertyType string, actualFormat string, actualLength string, data string) {
+}
+
+func Fn_query_depths(depths string, count string) {}
+
+func Fn_query_visual_types(visualTypes string, count string) {}
+
+func Fn_selection_convert(requestor string, selection string, target string, time string) {}
+
+func Fn_selection_owner_get(selection string) {}
+
+func Fn_selection_owner_get_for_display(display string, selection string) {}
+
+func Fn_selection_owner_set(owner string, selection string, time string, sendEvent string) {}
+
+func Fn_selection_owner_set_for_display(display string, owner string, selection string, time string, sendEvent string) {
+}
+
+func Fn_selection_property_get(requestor string, data string, propType string, propFormat string) {}
+
+func Fn_selection_send_notify(requestor string, selection string, target string, property string, time string) {
+}
+
+func Fn_selection_send_notify_for_display(display string, requestor string, selection string, target string, property string, time string) {
+}
+
+func Fn_set_double_click_time(msec string) {}
+
+func Fn_set_program_class(programClass string) {}
+
+func Fn_set_show_events(showEvents string) {}
+
+func Fn_setting_get(name string, value string) {}
+
+func Fn_synthesize_window_state(window string, unsetFlags string, setFlags string) {}
+
+func Fn_test_render_sync(window string) {}
+
+func Fn_test_simulate_button(window string, x string, y string, button string, modifiers string, buttonPressrelease string) {
+}
+
+func Fn_test_simulate_key(window string, x string, y string, keyval string, modifiers string, keyPressrelease string) {
+}
+
+func Fn_text_property_to_utf8_list_for_display(display string, encoding string, format string, text string, length string, list string) {
+}
+
+func Fn_threads_add_idle(function string, data string) {}
+
+func Fn_threads_add_idle_full(priority string, function string, data string, notify string) {}
+
+func Fn_threads_add_timeout(interval string, function string, data string) {}
+
+func Fn_threads_add_timeout_full(priority string, interval string, function string, data string, notify string) {
+}
+
+func Fn_threads_add_timeout_seconds(interval string, function string, data string) {}
+
+func Fn_threads_add_timeout_seconds_full(priority string, interval string, function string, data string, notify string) {
+}
+
+func Fn_threads_enter() {}
+
+func Fn_threads_init() {}
+
+func Fn_threads_leave() {}
+
+func Fn_threads_set_lock_functions(enterFn string, leaveFn string) {}
+
+func Fn_unicode_to_keyval(wc string) {}
+
+func Fn_utf8_to_string_target(str string) {}

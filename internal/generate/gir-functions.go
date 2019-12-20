@@ -14,11 +14,7 @@ func (ff Functions) init(ns *Namespace /*, namePrefix string*/) {
 }
 
 func (ff Functions) generateSys(f *jen.File, version semver.Version) {
-	f.Comment("functions")
-
 	for _, fn := range ff {
 		fn.generateSys(f, version)
 	}
-
-	f.Line()
 }

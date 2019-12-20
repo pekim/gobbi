@@ -77,158 +77,361 @@ type TypeModule C.GTypeModule
 // interfaces
 type TypePlugin C.GTypePlugin
 
-// functions
-func Fn_boxed_copy()                              {}
-func Fn_boxed_free()                              {}
-func Fn_boxed_type_register_static()              {}
-func Fn_cclosure_marshal_BOOLEAN__BOXED_BOXED()   {}
-func Fn_cclosure_marshal_BOOLEAN__FLAGS()         {}
-func Fn_cclosure_marshal_STRING__OBJECT_POINTER() {}
-func Fn_cclosure_marshal_VOID__BOOLEAN()          {}
-func Fn_cclosure_marshal_VOID__BOXED()            {}
-func Fn_cclosure_marshal_VOID__CHAR()             {}
-func Fn_cclosure_marshal_VOID__DOUBLE()           {}
-func Fn_cclosure_marshal_VOID__ENUM()             {}
-func Fn_cclosure_marshal_VOID__FLAGS()            {}
-func Fn_cclosure_marshal_VOID__FLOAT()            {}
-func Fn_cclosure_marshal_VOID__INT()              {}
-func Fn_cclosure_marshal_VOID__LONG()             {}
-func Fn_cclosure_marshal_VOID__OBJECT()           {}
-func Fn_cclosure_marshal_VOID__PARAM()            {}
-func Fn_cclosure_marshal_VOID__POINTER()          {}
-func Fn_cclosure_marshal_VOID__STRING()           {}
-func Fn_cclosure_marshal_VOID__UCHAR()            {}
-func Fn_cclosure_marshal_VOID__UINT()             {}
-func Fn_cclosure_marshal_VOID__UINT_POINTER()     {}
-func Fn_cclosure_marshal_VOID__ULONG()            {}
-func Fn_cclosure_marshal_VOID__VOID()             {}
-func Fn_cclosure_new()                            {}
-func Fn_cclosure_new_object()                     {}
-func Fn_cclosure_new_object_swap()                {}
-func Fn_cclosure_new_swap()                       {}
-func Fn_enum_complete_type_info()                 {}
-func Fn_enum_get_value()                          {}
-func Fn_enum_get_value_by_name()                  {}
-func Fn_enum_get_value_by_nick()                  {}
-func Fn_enum_register_static()                    {}
-func Fn_flags_complete_type_info()                {}
-func Fn_flags_get_first_value()                   {}
-func Fn_flags_get_value_by_name()                 {}
-func Fn_flags_get_value_by_nick()                 {}
-func Fn_flags_register_static()                   {}
-func Fn_gtype_get_type()                          {}
-func Fn_param_spec_boolean()                      {}
-func Fn_param_spec_boxed()                        {}
-func Fn_param_spec_char()                         {}
-func Fn_param_spec_double()                       {}
-func Fn_param_spec_enum()                         {}
-func Fn_param_spec_flags()                        {}
-func Fn_param_spec_float()                        {}
-func Fn_param_spec_int()                          {}
-func Fn_param_spec_int64()                        {}
-func Fn_param_spec_long()                         {}
-func Fn_param_spec_object()                       {}
-func Fn_param_spec_param()                        {}
-func Fn_param_spec_pointer()                      {}
-func Fn_param_spec_pool_new()                     {}
-func Fn_param_spec_string()                       {}
-func Fn_param_spec_uchar()                        {}
-func Fn_param_spec_uint()                         {}
-func Fn_param_spec_uint64()                       {}
-func Fn_param_spec_ulong()                        {}
-func Fn_param_spec_unichar()                      {}
-func Fn_param_spec_value_array()                  {}
-func Fn_param_type_register_static()              {}
-func Fn_param_value_convert()                     {}
-func Fn_param_value_defaults()                    {}
-func Fn_param_value_set_default()                 {}
-func Fn_param_value_validate()                    {}
-func Fn_param_values_cmp()                        {}
-func Fn_pointer_type_register_static()            {}
-func Fn_signal_add_emission_hook()                {}
-func Fn_signal_chain_from_overridden()            {}
-func Fn_signal_connect_closure()                  {}
-func Fn_signal_connect_closure_by_id()            {}
-func Fn_signal_connect_data()                     {}
-func Fn_signal_connect_object()                   {}
-func Fn_signal_emit()                             {}
-func Fn_signal_emit_by_name()                     {}
-func Fn_signal_emit_valist()                      {}
-func Fn_signal_emitv()                            {}
-func Fn_signal_get_invocation_hint()              {}
-func Fn_signal_handler_block()                    {}
-func Fn_signal_handler_disconnect()               {}
-func Fn_signal_handler_find()                     {}
-func Fn_signal_handler_is_connected()             {}
-func Fn_signal_handler_unblock()                  {}
-func Fn_signal_handlers_block_matched()           {}
-func Fn_signal_handlers_destroy()                 {}
-func Fn_signal_handlers_disconnect_matched()      {}
-func Fn_signal_handlers_unblock_matched()         {}
-func Fn_signal_has_handler_pending()              {}
-func Fn_signal_list_ids()                         {}
-func Fn_signal_lookup()                           {}
-func Fn_signal_name()                             {}
-func Fn_signal_new()                              {}
-func Fn_signal_new_valist()                       {}
-func Fn_signal_newv()                             {}
-func Fn_signal_override_class_closure()           {}
-func Fn_signal_parse_name()                       {}
-func Fn_signal_query()                            {}
-func Fn_signal_remove_emission_hook()             {}
-func Fn_signal_stop_emission()                    {}
-func Fn_signal_stop_emission_by_name()            {}
-func Fn_signal_type_cclosure_new()                {}
-func Fn_source_set_closure()                      {}
-func Fn_source_set_dummy_callback()               {}
-func Fn_strdup_value_contents()                   {}
-func Fn_type_add_class_cache_func()               {}
-func Fn_type_add_instance_private()               {}
-func Fn_type_add_interface_dynamic()              {}
-func Fn_type_add_interface_static()               {}
-func Fn_type_check_class_cast()                   {}
-func Fn_type_check_class_is_a()                   {}
-func Fn_type_check_instance()                     {}
-func Fn_type_check_instance_cast()                {}
-func Fn_type_check_instance_is_a()                {}
-func Fn_type_check_instance_is_fundamentally_a()  {}
-func Fn_type_check_is_value_type()                {}
-func Fn_type_check_value()                        {}
-func Fn_type_check_value_holds()                  {}
-func Fn_type_children()                           {}
-func Fn_type_class_adjust_private_offset()        {}
-func Fn_type_class_peek()                         {}
-func Fn_type_class_ref()                          {}
-func Fn_type_create_instance()                    {}
-func Fn_type_depth()                              {}
-func Fn_type_free_instance()                      {}
-func Fn_type_from_name()                          {}
-func Fn_type_fundamental()                        {}
-func Fn_type_fundamental_next()                   {}
-func Fn_type_get_plugin()                         {}
-func Fn_type_get_qdata()                          {}
-func Fn_type_init()                               {}
-func Fn_type_init_with_debug_flags()              {}
-func Fn_type_interface_add_prerequisite()         {}
-func Fn_type_interface_get_plugin()               {}
-func Fn_type_interface_peek()                     {}
-func Fn_type_interfaces()                         {}
-func Fn_type_is_a()                               {}
-func Fn_type_name()                               {}
-func Fn_type_name_from_class()                    {}
-func Fn_type_name_from_instance()                 {}
-func Fn_type_next_base()                          {}
-func Fn_type_parent()                             {}
-func Fn_type_qname()                              {}
-func Fn_type_query()                              {}
-func Fn_type_register_dynamic()                   {}
-func Fn_type_register_fundamental()               {}
-func Fn_type_register_static()                    {}
-func Fn_type_remove_class_cache_func()            {}
-func Fn_type_set_qdata()                          {}
-func Fn_type_test_flags()                         {}
-func Fn_type_value_table_peek()                   {}
-func Fn_value_register_transform_func()           {}
-func Fn_value_type_compatible()                   {}
-func Fn_value_type_transformable()                {}
-func Fn_bad()                                     {}
+func Fn_boxed_copy(boxedType string, srcBoxed string) {}
+
+func Fn_boxed_free(boxedType string, boxed string) {}
+
+func Fn_boxed_type_register_static(name string, boxedCopy string, boxedFree string) {}
+
+func Fn_cclosure_marshal_BOOLEAN__BOXED_BOXED(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_BOOLEAN__FLAGS(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_STRING__OBJECT_POINTER(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__BOOLEAN(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__BOXED(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__CHAR(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__DOUBLE(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__ENUM(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__FLAGS(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__FLOAT(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__INT(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__LONG(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__OBJECT(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__PARAM(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__POINTER(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__STRING(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__UCHAR(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__UINT(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__UINT_POINTER(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__ULONG(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_marshal_VOID__VOID(closure string, returnValue string, nParamValues string, paramValues string, invocationHint string, marshalData string) {
+}
+
+func Fn_cclosure_new(callbackFunc string, userData string, destroyData string) {}
+
+func Fn_cclosure_new_object(callbackFunc string, object string) {}
+
+func Fn_cclosure_new_object_swap(callbackFunc string, object string) {}
+
+func Fn_cclosure_new_swap(callbackFunc string, userData string, destroyData string) {}
+
+func Fn_enum_complete_type_info(gEnumType string, info string, constValues string) {}
+
+func Fn_enum_get_value(enumClass string, value string) {}
+
+func Fn_enum_get_value_by_name(enumClass string, name string) {}
+
+func Fn_enum_get_value_by_nick(enumClass string, nick string) {}
+
+func Fn_enum_register_static(name string, constStaticValues string) {}
+
+func Fn_flags_complete_type_info(gFlagsType string, info string, constValues string) {}
+
+func Fn_flags_get_first_value(flagsClass string, value string) {}
+
+func Fn_flags_get_value_by_name(flagsClass string, name string) {}
+
+func Fn_flags_get_value_by_nick(flagsClass string, nick string) {}
+
+func Fn_flags_register_static(name string, constStaticValues string) {}
+
+func Fn_gtype_get_type() {}
+
+func Fn_param_spec_boolean(name string, nick string, blurb string, defaultValue string, flags string) {}
+
+func Fn_param_spec_boxed(name string, nick string, blurb string, boxedType string, flags string) {}
+
+func Fn_param_spec_char(name string, nick string, blurb string, minimum string, maximum string, defaultValue string, flags string) {
+}
+
+func Fn_param_spec_double(name string, nick string, blurb string, minimum string, maximum string, defaultValue string, flags string) {
+}
+
+func Fn_param_spec_enum(name string, nick string, blurb string, enumType string, defaultValue string, flags string) {
+}
+
+func Fn_param_spec_flags(name string, nick string, blurb string, flagsType string, defaultValue string, flags string) {
+}
+
+func Fn_param_spec_float(name string, nick string, blurb string, minimum string, maximum string, defaultValue string, flags string) {
+}
+
+func Fn_param_spec_int(name string, nick string, blurb string, minimum string, maximum string, defaultValue string, flags string) {
+}
+
+func Fn_param_spec_int64(name string, nick string, blurb string, minimum string, maximum string, defaultValue string, flags string) {
+}
+
+func Fn_param_spec_long(name string, nick string, blurb string, minimum string, maximum string, defaultValue string, flags string) {
+}
+
+func Fn_param_spec_object(name string, nick string, blurb string, objectType string, flags string) {}
+
+func Fn_param_spec_param(name string, nick string, blurb string, paramType string, flags string) {}
+
+func Fn_param_spec_pointer(name string, nick string, blurb string, flags string) {}
+
+func Fn_param_spec_pool_new(typePrefixing string) {}
+
+func Fn_param_spec_string(name string, nick string, blurb string, defaultValue string, flags string) {}
+
+func Fn_param_spec_uchar(name string, nick string, blurb string, minimum string, maximum string, defaultValue string, flags string) {
+}
+
+func Fn_param_spec_uint(name string, nick string, blurb string, minimum string, maximum string, defaultValue string, flags string) {
+}
+
+func Fn_param_spec_uint64(name string, nick string, blurb string, minimum string, maximum string, defaultValue string, flags string) {
+}
+
+func Fn_param_spec_ulong(name string, nick string, blurb string, minimum string, maximum string, defaultValue string, flags string) {
+}
+
+func Fn_param_spec_unichar(name string, nick string, blurb string, defaultValue string, flags string) {}
+
+func Fn_param_spec_value_array(name string, nick string, blurb string, elementSpec string, flags string) {
+}
+
+func Fn_param_type_register_static(name string, pspecInfo string) {}
+
+func Fn_param_value_convert(pspec string, srcValue string, destValue string, strictValidation string) {}
+
+func Fn_param_value_defaults(pspec string, value string) {}
+
+func Fn_param_value_set_default(pspec string, value string) {}
+
+func Fn_param_value_validate(pspec string, value string) {}
+
+func Fn_param_values_cmp(pspec string, value1 string, value2 string) {}
+
+func Fn_pointer_type_register_static(name string) {}
+
+func Fn_signal_add_emission_hook(signalId string, detail string, hookFunc string, hookData string, dataDestroy string) {
+}
+
+func Fn_signal_chain_from_overridden(instanceAndParams string, returnValue string) {}
+
+// UNSUPPORTED : signal_chain_from_overridden_handler : has varargs
+
+func Fn_signal_connect_closure(instance string, detailedSignal string, closure string, after string) {}
+
+func Fn_signal_connect_closure_by_id(instance string, signalId string, detail string, closure string, after string) {
+}
+
+func Fn_signal_connect_data(instance string, detailedSignal string, cHandler string, data string, destroyData string, connectFlags string) {
+}
+
+func Fn_signal_connect_object(instance string, detailedSignal string, cHandler string, gobject string, connectFlags string) {
+}
+
+// UNSUPPORTED : signal_emit : has varargs
+
+// UNSUPPORTED : signal_emit_by_name : has varargs
+
+func Fn_signal_emit_valist(instance string, signalId string, detail string, varArgs string) {}
+
+func Fn_signal_emitv(instanceAndParams string, signalId string, detail string, returnValue string) {}
+
+func Fn_signal_get_invocation_hint(instance string) {}
+
+func Fn_signal_handler_block(instance string, handlerId string) {}
+
+func Fn_signal_handler_disconnect(instance string, handlerId string) {}
+
+func Fn_signal_handler_find(instance string, mask string, signalId string, detail string, closure string, func_ string, data string) {
+}
+
+func Fn_signal_handler_is_connected(instance string, handlerId string) {}
+
+func Fn_signal_handler_unblock(instance string, handlerId string) {}
+
+func Fn_signal_handlers_block_matched(instance string, mask string, signalId string, detail string, closure string, func_ string, data string) {
+}
+
+func Fn_signal_handlers_destroy(instance string) {}
+
+func Fn_signal_handlers_disconnect_matched(instance string, mask string, signalId string, detail string, closure string, func_ string, data string) {
+}
+
+func Fn_signal_handlers_unblock_matched(instance string, mask string, signalId string, detail string, closure string, func_ string, data string) {
+}
+
+func Fn_signal_has_handler_pending(instance string, signalId string, detail string, mayBeBlocked string) {
+}
+
+func Fn_signal_list_ids(itype string, nIds string) {}
+
+func Fn_signal_lookup(name string, itype string) {}
+
+func Fn_signal_name(signalId string) {}
+
+// UNSUPPORTED : signal_new : has varargs
+
+// UNSUPPORTED : signal_new_class_handler : has varargs
+
+func Fn_signal_new_valist(signalName string, itype string, signalFlags string, classClosure string, accumulator string, accuData string, cMarshaller string, returnType string, nParams string, args string) {
+}
+
+func Fn_signal_newv(signalName string, itype string, signalFlags string, classClosure string, accumulator string, accuData string, cMarshaller string, returnType string, nParams string, paramTypes string) {
+}
+
+func Fn_signal_override_class_closure(signalId string, instanceType string, classClosure string) {}
+
+func Fn_signal_parse_name(detailedSignal string, itype string, signalIdP string, detailP string, forceDetailQuark string) {
+}
+
+func Fn_signal_query(signalId string, query string) {}
+
+func Fn_signal_remove_emission_hook(signalId string, hookId string) {}
+
+func Fn_signal_stop_emission(instance string, signalId string, detail string) {}
+
+func Fn_signal_stop_emission_by_name(instance string, detailedSignal string) {}
+
+func Fn_signal_type_cclosure_new(itype string, structOffset string) {}
+
+func Fn_source_set_closure(source string, closure string) {}
+
+func Fn_source_set_dummy_callback(source string) {}
+
+func Fn_strdup_value_contents(value string) {}
+
+func Fn_type_add_class_cache_func(cacheData string, cacheFunc string) {}
+
+func Fn_type_add_instance_private(classType string, privateSize string) {}
+
+func Fn_type_add_interface_dynamic(instanceType string, interfaceType string, plugin string) {}
+
+func Fn_type_add_interface_static(instanceType string, interfaceType string, info string) {}
+
+func Fn_type_check_class_cast(gClass string, isAType string) {}
+
+func Fn_type_check_class_is_a(gClass string, isAType string) {}
+
+func Fn_type_check_instance(instance string) {}
+
+func Fn_type_check_instance_cast(instance string, ifaceType string) {}
+
+func Fn_type_check_instance_is_a(instance string, ifaceType string) {}
+
+func Fn_type_check_instance_is_fundamentally_a(instance string, fundamentalType string) {}
+
+func Fn_type_check_is_value_type(type_ string) {}
+
+func Fn_type_check_value(value string) {}
+
+func Fn_type_check_value_holds(value string, type_ string) {}
+
+func Fn_type_children(type_ string, nChildren string) {}
+
+func Fn_type_class_adjust_private_offset(gClass string, privateSizeOrOffset string) {}
+
+func Fn_type_class_peek(type_ string) {}
+
+func Fn_type_class_ref(type_ string) {}
+
+func Fn_type_create_instance(type_ string) {}
+
+func Fn_type_depth(type_ string) {}
+
+func Fn_type_free_instance(instance string) {}
+
+func Fn_type_from_name(name string) {}
+
+func Fn_type_fundamental(typeId string) {}
+
+func Fn_type_fundamental_next() {}
+
+func Fn_type_get_plugin(type_ string) {}
+
+func Fn_type_get_qdata(type_ string, quark string) {}
+
+func Fn_type_init() {}
+
+func Fn_type_init_with_debug_flags(debugFlags string) {}
+
+func Fn_type_interface_add_prerequisite(interfaceType string, prerequisiteType string) {}
+
+func Fn_type_interface_get_plugin(instanceType string, interfaceType string) {}
+
+func Fn_type_interface_peek(instanceClass string, ifaceType string) {}
+
+func Fn_type_interfaces(type_ string, nInterfaces string) {}
+
+func Fn_type_is_a(type_ string, isAType string) {}
+
+func Fn_type_name(type_ string) {}
+
+func Fn_type_name_from_class(gClass string) {}
+
+func Fn_type_name_from_instance(instance string) {}
+
+func Fn_type_next_base(leafType string, rootType string) {}
+
+func Fn_type_parent(type_ string) {}
+
+func Fn_type_qname(type_ string) {}
+
+func Fn_type_query(type_ string, query string) {}
+
+func Fn_type_register_dynamic(parentType string, typeName string, plugin string, flags string) {}
+
+func Fn_type_register_fundamental(typeId string, typeName string, info string, finfo string, flags string) {
+}
+
+func Fn_type_register_static(parentType string, typeName string, info string, flags string) {}
+
+func Fn_type_remove_class_cache_func(cacheData string, cacheFunc string) {}
+
+func Fn_type_set_qdata(type_ string, quark string, data string) {}
+
+func Fn_type_test_flags(type_ string, flags string) {}
+
+func Fn_type_value_table_peek(type_ string) {}
+
+func Fn_value_register_transform_func(srcType string, destType string, transformFunc string) {}
+
+func Fn_value_type_compatible(srcType string, destType string) {}
+
+func Fn_value_type_transformable(srcType string, destType string) {}
+
+func Fn_bad() {}

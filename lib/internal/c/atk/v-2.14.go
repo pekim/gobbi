@@ -93,41 +93,76 @@ type Text C.AtkText
 type Value C.AtkValue
 type Window C.AtkWindow
 
-// functions
-func Fn_add_focus_tracker()             {}
-func Fn_add_global_event_listener()     {}
-func Fn_add_key_event_listener()        {}
-func Fn_attribute_set_free()            {}
-func Fn_focus_tracker_init()            {}
-func Fn_focus_tracker_notify()          {}
-func Fn_get_binary_age()                {}
-func Fn_get_default_registry()          {}
-func Fn_get_focus_object()              {}
-func Fn_get_interface_age()             {}
-func Fn_get_major_version()             {}
-func Fn_get_micro_version()             {}
-func Fn_get_minor_version()             {}
-func Fn_get_root()                      {}
-func Fn_get_toolkit_name()              {}
-func Fn_get_toolkit_version()           {}
-func Fn_get_version()                   {}
-func Fn_relation_type_for_name()        {}
-func Fn_relation_type_get_name()        {}
-func Fn_relation_type_register()        {}
-func Fn_remove_focus_tracker()          {}
-func Fn_remove_global_event_listener()  {}
-func Fn_remove_key_event_listener()     {}
-func Fn_role_for_name()                 {}
-func Fn_role_get_localized_name()       {}
-func Fn_role_get_name()                 {}
-func Fn_role_register()                 {}
-func Fn_state_type_for_name()           {}
-func Fn_state_type_get_name()           {}
-func Fn_state_type_register()           {}
-func Fn_text_attribute_for_name()       {}
-func Fn_text_attribute_get_name()       {}
-func Fn_text_attribute_get_value()      {}
-func Fn_text_attribute_register()       {}
-func Fn_text_free_ranges()              {}
-func Fn_value_type_get_localized_name() {}
-func Fn_value_type_get_name()           {}
+func Fn_add_focus_tracker(focusTracker string) {}
+
+func Fn_add_global_event_listener(listener string, eventType string) {}
+
+func Fn_add_key_event_listener(listener string, data string) {}
+
+func Fn_attribute_set_free(attribSet string) {}
+
+func Fn_focus_tracker_init(init string) {}
+
+func Fn_focus_tracker_notify(object string) {}
+
+func Fn_get_binary_age() {}
+
+func Fn_get_default_registry() {}
+
+func Fn_get_focus_object() {}
+
+func Fn_get_interface_age() {}
+
+func Fn_get_major_version() {}
+
+func Fn_get_micro_version() {}
+
+func Fn_get_minor_version() {}
+
+func Fn_get_root() {}
+
+func Fn_get_toolkit_name() {}
+
+func Fn_get_toolkit_version() {}
+
+func Fn_get_version() {}
+
+func Fn_relation_type_for_name(name string) {}
+
+func Fn_relation_type_get_name(type_ string) {}
+
+func Fn_relation_type_register(name string) {}
+
+func Fn_remove_focus_tracker(trackerId string) {}
+
+func Fn_remove_global_event_listener(listenerId string) {}
+
+func Fn_remove_key_event_listener(listenerId string) {}
+
+func Fn_role_for_name(name string) {}
+
+func Fn_role_get_localized_name(role string) {}
+
+func Fn_role_get_name(role string) {}
+
+func Fn_role_register(name string) {}
+
+func Fn_state_type_for_name(name string) {}
+
+func Fn_state_type_get_name(type_ string) {}
+
+func Fn_state_type_register(name string) {}
+
+func Fn_text_attribute_for_name(name string) {}
+
+func Fn_text_attribute_get_name(attr string) {}
+
+func Fn_text_attribute_get_value(attr string, index string) {}
+
+func Fn_text_attribute_register(name string) {}
+
+func Fn_text_free_ranges(ranges string) {}
+
+func Fn_value_type_get_localized_name(valueType string) {}
+
+func Fn_value_type_get_name(valueType string) {}

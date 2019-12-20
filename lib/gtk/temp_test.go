@@ -6,5 +6,5 @@ import (
 )
 
 func TestFuncCall(t *testing.T) {
-	gtk.Fn_init()
+	gtk.Fn_init("", "")
 }

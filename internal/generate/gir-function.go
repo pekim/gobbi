@@ -14,7 +14,7 @@ type Function struct {
 	DeprecatedVersion string `xml:"deprecated-version,attr"`
 	//Doc               *Doc   `xml:"doc"`
 	//InstanceParameter *Parameter   `xml:"parameters>instance-parameter"`
-	//Parameters     Parameters   `xml:"parameters>parameter"`
+	Parameters Parameters `xml:"parameters>parameter"`
 	//ReturnValue    *ReturnValue `xml:"return-value"`
 	Throws         int    `xml:"throws,attr"`
 	Introspectable string `xml:"introspectable,attr"`
@@ -28,12 +28,26 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	f.namespace = ns
 	f.version = versionNew(f.Version)
 	f.sysName = "Fn_" + f.Name
+	f.Parameters.init(ns)
 }
 
-func (fn Function) generateSys(f *jen.File, version semver.Version) {
-	if fn.version.GT(version) {
+func (f Function) generateSys(fi *jen.File, version semver.Version) {
+	if f.Parameters.hasVarargs() {
+		fi.Commentf("UNSUPPORTED : %s : has varargs", f.Name)
+		fi.Line()
 		return
 	}
 
-	f.Func().Id(fn.sysName).Params().Block()
+	if f.version.GT(version) {
+		return
+	}
+
+	fi.Func().Id(f.sysName).ParamsFunc(f.generateSysParamDeclaration).Block()
+	fi.Line()
+}
+
+func (f Function) generateSysParamDeclaration(g *jen.Group) {
+	for _, param := range f.Parameters {
+		g.Id(param.goVarName).Id("string")
+	}
 }

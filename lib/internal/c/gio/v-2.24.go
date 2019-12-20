@@ -317,62 +317,122 @@ type Seekable C.GSeekable
 type SocketConnectable C.GSocketConnectable
 type Volume C.GVolume
 
-// functions
-func Fn_app_info_create_from_commandline()    {}
-func Fn_app_info_get_all()                    {}
-func Fn_app_info_get_all_for_type()           {}
-func Fn_app_info_get_default_for_type()       {}
-func Fn_app_info_get_default_for_uri_scheme() {}
-func Fn_app_info_launch_default_for_uri()     {}
-func Fn_app_info_reset_type_associations()    {}
-func Fn_async_initable_newv_async()           {}
-func Fn_content_type_can_be_executable()      {}
-func Fn_content_type_equals()                 {}
-func Fn_content_type_from_mime_type()         {}
-func Fn_content_type_get_description()        {}
-func Fn_content_type_get_icon()               {}
-func Fn_content_type_get_mime_type()          {}
-func Fn_content_type_guess()                  {}
-func Fn_content_type_guess_for_tree()         {}
-func Fn_content_type_is_a()                   {}
-func Fn_content_type_is_unknown()             {}
-func Fn_content_types_get_registered()        {}
-func Fn_dbus_error_quark()                    {}
-func Fn_file_new_for_commandline_arg()        {}
-func Fn_file_new_for_path()                   {}
-func Fn_file_new_for_uri()                    {}
-func Fn_file_parse_name()                     {}
-func Fn_icon_hash()                           {}
-func Fn_icon_new_for_string()                 {}
-func Fn_initable_newv()                       {}
-func Fn_io_error_from_errno()                 {}
-func Fn_io_error_quark()                      {}
-func Fn_io_extension_point_implement()        {}
-func Fn_io_extension_point_lookup()           {}
-func Fn_io_extension_point_register()         {}
-func Fn_io_modules_load_all_in_directory()    {}
-func Fn_io_modules_scan_all_in_directory()    {}
-func Fn_io_scheduler_cancel_all_jobs()        {}
-func Fn_io_scheduler_push_job()               {}
-func Fn_keyfile_settings_backend_new()        {}
-func Fn_resolver_error_quark()                {}
-func Fn_simple_async_report_error_in_idle()   {}
-func Fn_simple_async_report_gerror_in_idle()  {}
-func Fn_srv_target_list_sort()                {}
-func Fn_unix_is_mount_path_system_internal()  {}
-func Fn_unix_mount_at()                       {}
-func Fn_unix_mount_compare()                  {}
-func Fn_unix_mount_free()                     {}
-func Fn_unix_mount_get_device_path()          {}
-func Fn_unix_mount_get_fs_type()              {}
-func Fn_unix_mount_get_mount_path()           {}
-func Fn_unix_mount_guess_can_eject()          {}
-func Fn_unix_mount_guess_icon()               {}
-func Fn_unix_mount_guess_name()               {}
-func Fn_unix_mount_guess_should_display()     {}
-func Fn_unix_mount_is_readonly()              {}
-func Fn_unix_mount_is_system_internal()       {}
-func Fn_unix_mount_points_changed_since()     {}
-func Fn_unix_mount_points_get()               {}
-func Fn_unix_mounts_changed_since()           {}
-func Fn_unix_mounts_get()                     {}
+func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags string) {}
+
+func Fn_app_info_get_all() {}
+
+func Fn_app_info_get_all_for_type(contentType string) {}
+
+func Fn_app_info_get_default_for_type(contentType string, mustSupportUris string) {}
+
+func Fn_app_info_get_default_for_uri_scheme(uriScheme string) {}
+
+func Fn_app_info_launch_default_for_uri(uri string, context string) {}
+
+func Fn_app_info_reset_type_associations(contentType string) {}
+
+func Fn_async_initable_newv_async(objectType string, nParameters string, parameters string, ioPriority string, cancellable string, callback string, userData string) {
+}
+
+func Fn_content_type_can_be_executable(type_ string) {}
+
+func Fn_content_type_equals(type1 string, type2 string) {}
+
+func Fn_content_type_from_mime_type(mimeType string) {}
+
+func Fn_content_type_get_description(type_ string) {}
+
+func Fn_content_type_get_icon(type_ string) {}
+
+func Fn_content_type_get_mime_type(type_ string) {}
+
+func Fn_content_type_guess(filename string, data string, dataSize string, resultUncertain string) {}
+
+func Fn_content_type_guess_for_tree(root string) {}
+
+func Fn_content_type_is_a(type_ string, supertype string) {}
+
+func Fn_content_type_is_unknown(type_ string) {}
+
+func Fn_content_types_get_registered() {}
+
+func Fn_dbus_error_quark() {}
+
+func Fn_file_new_for_commandline_arg(arg string) {}
+
+func Fn_file_new_for_path(path string) {}
+
+func Fn_file_new_for_uri(uri string) {}
+
+func Fn_file_parse_name(parseName string) {}
+
+func Fn_icon_hash(icon string) {}
+
+func Fn_icon_new_for_string(str string) {}
+
+func Fn_initable_newv(objectType string, nParameters string, parameters string, cancellable string) {}
+
+func Fn_io_error_from_errno(errNo string) {}
+
+func Fn_io_error_quark() {}
+
+func Fn_io_extension_point_implement(extensionPointName string, type_ string, extensionName string, priority string) {
+}
+
+func Fn_io_extension_point_lookup(name string) {}
+
+func Fn_io_extension_point_register(name string) {}
+
+func Fn_io_modules_load_all_in_directory(dirname string) {}
+
+func Fn_io_modules_scan_all_in_directory(dirname string) {}
+
+func Fn_io_scheduler_cancel_all_jobs() {}
+
+func Fn_io_scheduler_push_job(jobFunc string, userData string, notify string, ioPriority string, cancellable string) {
+}
+
+func Fn_keyfile_settings_backend_new(filename string, rootPath string, rootGroup string) {}
+
+func Fn_resolver_error_quark() {}
+
+// UNSUPPORTED : simple_async_report_error_in_idle : has varargs
+
+func Fn_simple_async_report_gerror_in_idle(object string, callback string, userData string, error string) {
+}
+
+func Fn_srv_target_list_sort(targets string) {}
+
+func Fn_unix_is_mount_path_system_internal(mountPath string) {}
+
+func Fn_unix_mount_at(mountPath string, timeRead string) {}
+
+func Fn_unix_mount_compare(mount1 string, mount2 string) {}
+
+func Fn_unix_mount_free(mountEntry string) {}
+
+func Fn_unix_mount_get_device_path(mountEntry string) {}
+
+func Fn_unix_mount_get_fs_type(mountEntry string) {}
+
+func Fn_unix_mount_get_mount_path(mountEntry string) {}
+
+func Fn_unix_mount_guess_can_eject(mountEntry string) {}
+
+func Fn_unix_mount_guess_icon(mountEntry string) {}
+
+func Fn_unix_mount_guess_name(mountEntry string) {}
+
+func Fn_unix_mount_guess_should_display(mountEntry string) {}
+
+func Fn_unix_mount_is_readonly(mountEntry string) {}
+
+func Fn_unix_mount_is_system_internal(mountEntry string) {}
+
+func Fn_unix_mount_points_changed_since(time string) {}
+
+func Fn_unix_mount_points_get(timeRead string) {}
+
+func Fn_unix_mounts_changed_since(time string) {}
+
+func Fn_unix_mounts_get(timeRead string) {}
