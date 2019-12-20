@@ -25,15 +25,16 @@ type Namespace struct {
 	Records      Records      `xml:"record"`
 	Interfaces   Interfaces   `xml:"interface"`
 
-	repository        *repository
-	libDir            string
-	cDir              string
-	namespaces        namespaces
-	goPackageName     string
-	goFullPackageName string
-	cSymbolPrefixes   []string
-	unsupportedCount  int
-	versions          *versions
+	repository         *repository
+	libDir             string
+	cDir               string
+	namespaces         namespaces
+	goPackageName      string
+	goFullPackageName  string
+	cSymbolPrefixes    []string
+	cUnsupportedCount  int
+	goUnsupportedCount int
+	versions           *versions
 }
 
 func (n *Namespace) init(repository *repository, namespaces namespaces) {
@@ -74,7 +75,8 @@ func (n *Namespace) generate() {
 	//n.generateFile("class", n.Classes.generate)
 	//n.generateFile("interface", n.Interfaces.generate)
 
-	n.setUnsupportedCount()
+	n.cUnsupportedCount = n.getUnsupportedCount(n.cDir)
+	n.goUnsupportedCount = n.getUnsupportedCount(n.libDir)
 }
 
 func (n *Namespace) mkDirs() {
@@ -106,16 +108,17 @@ func (n *Namespace) generateFile(name string, generateContent func(f *jen.File))
 	}
 }
 
-func (n *Namespace) setUnsupportedCount() {
+func (n *Namespace) getUnsupportedCount(dir string) int {
 	re := regexp.MustCompile(`// UNSUPPORTED `)
 
-	infos, err := ioutil.ReadDir(n.libDir)
+	infos, err := ioutil.ReadDir(dir)
 	if err != nil {
 		panic(err)
 	}
 
+	count := 0
 	for _, info := range infos {
-		path := filepath.Join(n.libDir, info.Name())
+		path := filepath.Join(dir, info.Name())
 		fi, _ := os.Stat(path)
 		if fi.IsDir() {
 			continue
@@ -128,6 +131,8 @@ func (n *Namespace) setUnsupportedCount() {
 
 		content := string(bytes)
 		matches := re.FindAllString(content, -1)
-		n.unsupportedCount += len(matches)
+		count += len(matches)
 	}
+
+	return count
 }

@@ -45,11 +45,12 @@ func (ss RepositorySpecs) Generate() {
 	// Deep initialise all namespaces.
 	// In particular provide descendants with their namespace.
 	for _, r := range rr {
-		r.Namespace.init(r,namespaces)
+		r.Namespace.init(r, namespaces)
 	}
 
 	// Generate files for all namespaces
-	unsupportedCount := 0
+	cUnsupportedCount := 0
+	goUnsupportedCount := 0
 	for _, r := range rr {
 		wg.Add(1)
 
@@ -59,7 +60,8 @@ func (ss RepositorySpecs) Generate() {
 			mu.Lock()
 			defer mu.Unlock()
 
-			unsupportedCount += r.Namespace.unsupportedCount
+			cUnsupportedCount += r.Namespace.cUnsupportedCount
+			goUnsupportedCount += r.Namespace.goUnsupportedCount
 			ss.incrementProgress()
 
 			wg.Done()
@@ -69,7 +71,9 @@ func (ss RepositorySpecs) Generate() {
 
 	ss.clearProgressLine(progressLineLen)
 	ss.ansi("25h") // show cursor
-	//fmt.Printf("%d unsupported\n", unsupportedCount)
+
+	fmt.Printf(" C unsupported : %5d\n", cUnsupportedCount)
+	fmt.Printf("Go unsupported : %5d\n", goUnsupportedCount)
 }
 
 func (ss RepositorySpecs) ansi(sequence string) {
