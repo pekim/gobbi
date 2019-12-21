@@ -3,7 +3,10 @@
 
 package gdk
 
-import c "github.com/pekim/gobbi/lib/internal/c"
+import (
+	c "github.com/pekim/gobbi/lib/internal/c"
+	"unsafe"
+)
 
 // #include <gdk/gdk.h>
 import "C"
@@ -119,7 +122,7 @@ type DevicePad C.GdkDevicePad
 
 func Fn_add_option_entries_libgtk_only(group c.UndefinedParamType) {}
 
-func Fn_atom_intern(atomName c.UndefinedParamType, onlyIfExists c.UndefinedParamType) {}
+func Fn_atom_intern(atomName c.UndefinedParamType, onlyIfExists bool) {}
 
 func Fn_atom_intern_static_string(atomName c.UndefinedParamType) {}
 
@@ -127,7 +130,7 @@ func Fn_beep() {}
 
 func Fn_cairo_create(window c.UndefinedParamType) {}
 
-func Fn_cairo_draw_from_gl(cr c.UndefinedParamType, window c.UndefinedParamType, source c.UndefinedParamType, sourceType c.UndefinedParamType, bufferScale c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
+func Fn_cairo_draw_from_gl(cr c.UndefinedParamType, window c.UndefinedParamType, source int, sourceType int, bufferScale int, x int, y int, width int, height int) {
 }
 
 func Fn_cairo_get_clip_rectangle(cr c.UndefinedParamType, rect c.UndefinedParamType) {}
@@ -140,53 +143,50 @@ func Fn_cairo_region_create_from_surface(surface c.UndefinedParamType) {}
 
 func Fn_cairo_set_source_color(cr c.UndefinedParamType, color c.UndefinedParamType) {}
 
-func Fn_cairo_set_source_pixbuf(cr c.UndefinedParamType, pixbuf c.UndefinedParamType, pixbufX c.UndefinedParamType, pixbufY c.UndefinedParamType) {
+func Fn_cairo_set_source_pixbuf(cr c.UndefinedParamType, pixbuf c.UndefinedParamType, pixbufX float64, pixbufY float64) {
 }
 
 func Fn_cairo_set_source_rgba(cr c.UndefinedParamType, rgba c.UndefinedParamType) {}
 
-func Fn_cairo_set_source_window(cr c.UndefinedParamType, window c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType) {
+func Fn_cairo_set_source_window(cr c.UndefinedParamType, window c.UndefinedParamType, x float64, y float64) {
 }
 
-func Fn_cairo_surface_create_from_pixbuf(pixbuf c.UndefinedParamType, scale c.UndefinedParamType, forWindow c.UndefinedParamType) {
+func Fn_cairo_surface_create_from_pixbuf(pixbuf c.UndefinedParamType, scale int, forWindow c.UndefinedParamType) {
 }
 
 func Fn_color_parse(spec c.UndefinedParamType, color c.UndefinedParamType) {}
 
 func Fn_disable_multidevice() {}
 
-func Fn_drag_abort(context c.UndefinedParamType, time c.UndefinedParamType) {}
+func Fn_drag_abort(context c.UndefinedParamType, time uint32) {}
 
 func Fn_drag_begin(window c.UndefinedParamType, targets c.UndefinedParamType) {}
 
 func Fn_drag_begin_for_device(window c.UndefinedParamType, device c.UndefinedParamType, targets c.UndefinedParamType) {
 }
 
-func Fn_drag_begin_from_point(window c.UndefinedParamType, device c.UndefinedParamType, targets c.UndefinedParamType, xRoot c.UndefinedParamType, yRoot c.UndefinedParamType) {
+func Fn_drag_begin_from_point(window c.UndefinedParamType, device c.UndefinedParamType, targets c.UndefinedParamType, xRoot int, yRoot int) {
 }
 
-func Fn_drag_drop(context c.UndefinedParamType, time c.UndefinedParamType) {}
+func Fn_drag_drop(context c.UndefinedParamType, time uint32) {}
 
-func Fn_drag_drop_done(context c.UndefinedParamType, success c.UndefinedParamType) {}
+func Fn_drag_drop_done(context c.UndefinedParamType, success bool) {}
 
 func Fn_drag_drop_succeeded(context c.UndefinedParamType) {}
 
-func Fn_drag_find_window_for_screen(context c.UndefinedParamType, dragWindow c.UndefinedParamType, screen c.UndefinedParamType, xRoot c.UndefinedParamType, yRoot c.UndefinedParamType, destWindow c.UndefinedParamType, protocol c.UndefinedParamType) {
+func Fn_drag_find_window_for_screen(context c.UndefinedParamType, dragWindow c.UndefinedParamType, screen c.UndefinedParamType, xRoot int, yRoot int, destWindow c.UndefinedParamType, protocol c.UndefinedParamType) {
 }
 
 func Fn_drag_get_selection(context c.UndefinedParamType) {}
 
-func Fn_drag_motion(context c.UndefinedParamType, destWindow c.UndefinedParamType, protocol c.UndefinedParamType, xRoot c.UndefinedParamType, yRoot c.UndefinedParamType, suggestedAction c.UndefinedParamType, possibleActions c.UndefinedParamType, time c.UndefinedParamType) {
+func Fn_drag_motion(context c.UndefinedParamType, destWindow c.UndefinedParamType, protocol c.UndefinedParamType, xRoot int, yRoot int, suggestedAction c.UndefinedParamType, possibleActions c.UndefinedParamType, time uint32) {
 }
 
-func Fn_drag_status(context c.UndefinedParamType, action c.UndefinedParamType, time c.UndefinedParamType) {
-}
+func Fn_drag_status(context c.UndefinedParamType, action c.UndefinedParamType, time uint32) {}
 
-func Fn_drop_finish(context c.UndefinedParamType, success c.UndefinedParamType, time c.UndefinedParamType) {
-}
+func Fn_drop_finish(context c.UndefinedParamType, success bool, time uint32) {}
 
-func Fn_drop_reply(context c.UndefinedParamType, accepted c.UndefinedParamType, time c.UndefinedParamType) {
-}
+func Fn_drop_reply(context c.UndefinedParamType, accepted bool, time uint32) {}
 
 func Fn_error_trap_pop() {}
 
@@ -196,20 +196,19 @@ func Fn_error_trap_push() {}
 
 func Fn_event_get() {}
 
-func Fn_event_handler_set(func_ c.UndefinedParamType, data c.UndefinedParamType, notify c.UndefinedParamType) {
+func Fn_event_handler_set(func_ c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
 func Fn_event_peek() {}
 
 func Fn_event_request_motions(event c.UndefinedParamType) {}
 
-func Fn_events_get_angle(event1 c.UndefinedParamType, event2 c.UndefinedParamType, angle c.UndefinedParamType) {
+func Fn_events_get_angle(event1 c.UndefinedParamType, event2 c.UndefinedParamType, angle *float64) {}
+
+func Fn_events_get_center(event1 c.UndefinedParamType, event2 c.UndefinedParamType, x *float64, y *float64) {
 }
 
-func Fn_events_get_center(event1 c.UndefinedParamType, event2 c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType) {
-}
-
-func Fn_events_get_distance(event1 c.UndefinedParamType, event2 c.UndefinedParamType, distance c.UndefinedParamType) {
+func Fn_events_get_distance(event1 c.UndefinedParamType, event2 c.UndefinedParamType, distance *float64) {
 }
 
 func Fn_events_pending() {}
@@ -228,31 +227,29 @@ func Fn_get_show_events() {}
 
 func Fn_gl_error_quark() {}
 
-func Fn_init(argc c.UndefinedParamType, argv c.UndefinedParamType) {}
+func Fn_init(argc *int, argv c.UndefinedParamType) {}
 
-func Fn_init_check(argc c.UndefinedParamType, argv c.UndefinedParamType) {}
+func Fn_init_check(argc *int, argv c.UndefinedParamType) {}
 
-func Fn_keyboard_grab(window c.UndefinedParamType, ownerEvents c.UndefinedParamType, time c.UndefinedParamType) {
-}
+func Fn_keyboard_grab(window c.UndefinedParamType, ownerEvents bool, time uint32) {}
 
-func Fn_keyboard_ungrab(time c.UndefinedParamType) {}
+func Fn_keyboard_ungrab(time uint32) {}
 
-func Fn_keyval_convert_case(symbol c.UndefinedParamType, lower c.UndefinedParamType, upper c.UndefinedParamType) {
-}
+func Fn_keyval_convert_case(symbol uint, lower *uint, upper *uint) {}
 
 func Fn_keyval_from_name(keyvalName c.UndefinedParamType) {}
 
-func Fn_keyval_is_lower(keyval c.UndefinedParamType) {}
+func Fn_keyval_is_lower(keyval uint) {}
 
-func Fn_keyval_is_upper(keyval c.UndefinedParamType) {}
+func Fn_keyval_is_upper(keyval uint) {}
 
-func Fn_keyval_name(keyval c.UndefinedParamType) {}
+func Fn_keyval_name(keyval uint) {}
 
-func Fn_keyval_to_lower(keyval c.UndefinedParamType) {}
+func Fn_keyval_to_lower(keyval uint) {}
 
-func Fn_keyval_to_unicode(keyval c.UndefinedParamType) {}
+func Fn_keyval_to_unicode(keyval uint) {}
 
-func Fn_keyval_to_upper(keyval c.UndefinedParamType) {}
+func Fn_keyval_to_upper(keyval uint) {}
 
 func Fn_list_visuals() {}
 
@@ -270,42 +267,42 @@ func Fn_pango_context_get() {}
 
 func Fn_pango_context_get_for_screen(screen c.UndefinedParamType) {}
 
-func Fn_pango_layout_get_clip_region(layout c.UndefinedParamType, xOrigin c.UndefinedParamType, yOrigin c.UndefinedParamType, indexRanges c.UndefinedParamType, nRanges c.UndefinedParamType) {
+func Fn_pango_layout_get_clip_region(layout c.UndefinedParamType, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
 }
 
-func Fn_pango_layout_line_get_clip_region(line c.UndefinedParamType, xOrigin c.UndefinedParamType, yOrigin c.UndefinedParamType, indexRanges c.UndefinedParamType, nRanges c.UndefinedParamType) {
+func Fn_pango_layout_line_get_clip_region(line c.UndefinedParamType, xOrigin int, yOrigin int, indexRanges c.UndefinedParamType, nRanges int) {
 }
 
-func Fn_parse_args(argc c.UndefinedParamType, argv c.UndefinedParamType) {}
+func Fn_parse_args(argc *int, argv c.UndefinedParamType) {}
 
-func Fn_pixbuf_get_from_surface(surface c.UndefinedParamType, srcX c.UndefinedParamType, srcY c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
+func Fn_pixbuf_get_from_surface(surface c.UndefinedParamType, srcX int, srcY int, width int, height int) {
 }
 
-func Fn_pixbuf_get_from_window(window c.UndefinedParamType, srcX c.UndefinedParamType, srcY c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
+func Fn_pixbuf_get_from_window(window c.UndefinedParamType, srcX int, srcY int, width int, height int) {
 }
 
-func Fn_pointer_grab(window c.UndefinedParamType, ownerEvents c.UndefinedParamType, eventMask c.UndefinedParamType, confineTo c.UndefinedParamType, cursor c.UndefinedParamType, time c.UndefinedParamType) {
+func Fn_pointer_grab(window c.UndefinedParamType, ownerEvents bool, eventMask c.UndefinedParamType, confineTo c.UndefinedParamType, cursor c.UndefinedParamType, time uint32) {
 }
 
 func Fn_pointer_is_grabbed() {}
 
-func Fn_pointer_ungrab(time c.UndefinedParamType) {}
+func Fn_pointer_ungrab(time uint32) {}
 
 func Fn_pre_parse_libgtk_only() {}
 
-func Fn_property_change(window c.UndefinedParamType, property c.UndefinedParamType, type_ c.UndefinedParamType, format c.UndefinedParamType, mode c.UndefinedParamType, data c.UndefinedParamType, nelements c.UndefinedParamType) {
+func Fn_property_change(window c.UndefinedParamType, property c.UndefinedParamType, type_ c.UndefinedParamType, format int, mode c.UndefinedParamType, data c.UndefinedParamType, nelements int) {
 }
 
 func Fn_property_delete(window c.UndefinedParamType, property c.UndefinedParamType) {}
 
-func Fn_property_get(window c.UndefinedParamType, property c.UndefinedParamType, type_ c.UndefinedParamType, offset c.UndefinedParamType, length c.UndefinedParamType, pdelete c.UndefinedParamType, actualPropertyType c.UndefinedParamType, actualFormat c.UndefinedParamType, actualLength c.UndefinedParamType, data c.UndefinedParamType) {
+func Fn_property_get(window c.UndefinedParamType, property c.UndefinedParamType, type_ c.UndefinedParamType, offset uint64, length uint64, pdelete int, actualPropertyType c.UndefinedParamType, actualFormat *int, actualLength *int, data c.UndefinedParamType) {
 }
 
-func Fn_query_depths(depths c.UndefinedParamType, count c.UndefinedParamType) {}
+func Fn_query_depths(depths c.UndefinedParamType, count *int) {}
 
-func Fn_query_visual_types(visualTypes c.UndefinedParamType, count c.UndefinedParamType) {}
+func Fn_query_visual_types(visualTypes c.UndefinedParamType, count *int) {}
 
-func Fn_selection_convert(requestor c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, time c.UndefinedParamType) {
+func Fn_selection_convert(requestor c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, time uint32) {
 }
 
 func Fn_selection_owner_get(selection c.UndefinedParamType) {}
@@ -313,28 +310,28 @@ func Fn_selection_owner_get(selection c.UndefinedParamType) {}
 func Fn_selection_owner_get_for_display(display c.UndefinedParamType, selection c.UndefinedParamType) {
 }
 
-func Fn_selection_owner_set(owner c.UndefinedParamType, selection c.UndefinedParamType, time c.UndefinedParamType, sendEvent c.UndefinedParamType) {
+func Fn_selection_owner_set(owner c.UndefinedParamType, selection c.UndefinedParamType, time uint32, sendEvent bool) {
 }
 
-func Fn_selection_owner_set_for_display(display c.UndefinedParamType, owner c.UndefinedParamType, selection c.UndefinedParamType, time c.UndefinedParamType, sendEvent c.UndefinedParamType) {
+func Fn_selection_owner_set_for_display(display c.UndefinedParamType, owner c.UndefinedParamType, selection c.UndefinedParamType, time uint32, sendEvent bool) {
 }
 
-func Fn_selection_property_get(requestor c.UndefinedParamType, data c.UndefinedParamType, propType c.UndefinedParamType, propFormat c.UndefinedParamType) {
+func Fn_selection_property_get(requestor c.UndefinedParamType, data c.UndefinedParamType, propType c.UndefinedParamType, propFormat *int) {
 }
 
-func Fn_selection_send_notify(requestor c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, property c.UndefinedParamType, time c.UndefinedParamType) {
+func Fn_selection_send_notify(requestor c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, property c.UndefinedParamType, time uint32) {
 }
 
-func Fn_selection_send_notify_for_display(display c.UndefinedParamType, requestor c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, property c.UndefinedParamType, time c.UndefinedParamType) {
+func Fn_selection_send_notify_for_display(display c.UndefinedParamType, requestor c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, property c.UndefinedParamType, time uint32) {
 }
 
 func Fn_set_allowed_backends(backends c.UndefinedParamType) {}
 
-func Fn_set_double_click_time(msec c.UndefinedParamType) {}
+func Fn_set_double_click_time(msec uint) {}
 
 func Fn_set_program_class(programClass c.UndefinedParamType) {}
 
-func Fn_set_show_events(showEvents c.UndefinedParamType) {}
+func Fn_set_show_events(showEvents bool) {}
 
 func Fn_setting_get(name c.UndefinedParamType, value c.UndefinedParamType) {}
 
@@ -343,30 +340,29 @@ func Fn_synthesize_window_state(window c.UndefinedParamType, unsetFlags c.Undefi
 
 func Fn_test_render_sync(window c.UndefinedParamType) {}
 
-func Fn_test_simulate_button(window c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, button c.UndefinedParamType, modifiers c.UndefinedParamType, buttonPressrelease c.UndefinedParamType) {
+func Fn_test_simulate_button(window c.UndefinedParamType, x int, y int, button uint, modifiers c.UndefinedParamType, buttonPressrelease c.UndefinedParamType) {
 }
 
-func Fn_test_simulate_key(window c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, keyval c.UndefinedParamType, modifiers c.UndefinedParamType, keyPressrelease c.UndefinedParamType) {
+func Fn_test_simulate_key(window c.UndefinedParamType, x int, y int, keyval uint, modifiers c.UndefinedParamType, keyPressrelease c.UndefinedParamType) {
 }
 
-func Fn_text_property_to_utf8_list_for_display(display c.UndefinedParamType, encoding c.UndefinedParamType, format c.UndefinedParamType, text c.UndefinedParamType, length c.UndefinedParamType, list c.UndefinedParamType) {
+func Fn_text_property_to_utf8_list_for_display(display c.UndefinedParamType, encoding c.UndefinedParamType, format int, text c.UndefinedParamType, length int, list c.UndefinedParamType) {
 }
 
-func Fn_threads_add_idle(function c.UndefinedParamType, data c.UndefinedParamType) {}
+func Fn_threads_add_idle(function c.UndefinedParamType, data unsafe.Pointer) {}
 
-func Fn_threads_add_idle_full(priority c.UndefinedParamType, function c.UndefinedParamType, data c.UndefinedParamType, notify c.UndefinedParamType) {
+func Fn_threads_add_idle_full(priority int, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
-func Fn_threads_add_timeout(interval c.UndefinedParamType, function c.UndefinedParamType, data c.UndefinedParamType) {
+func Fn_threads_add_timeout(interval uint, function c.UndefinedParamType, data unsafe.Pointer) {}
+
+func Fn_threads_add_timeout_full(priority int, interval uint, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
-func Fn_threads_add_timeout_full(priority c.UndefinedParamType, interval c.UndefinedParamType, function c.UndefinedParamType, data c.UndefinedParamType, notify c.UndefinedParamType) {
+func Fn_threads_add_timeout_seconds(interval uint, function c.UndefinedParamType, data unsafe.Pointer) {
 }
 
-func Fn_threads_add_timeout_seconds(interval c.UndefinedParamType, function c.UndefinedParamType, data c.UndefinedParamType) {
-}
-
-func Fn_threads_add_timeout_seconds_full(priority c.UndefinedParamType, interval c.UndefinedParamType, function c.UndefinedParamType, data c.UndefinedParamType, notify c.UndefinedParamType) {
+func Fn_threads_add_timeout_seconds_full(priority int, interval uint, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
 func Fn_threads_enter() {}
@@ -377,6 +373,6 @@ func Fn_threads_leave() {}
 
 func Fn_threads_set_lock_functions(enterFn c.UndefinedParamType, leaveFn c.UndefinedParamType) {}
 
-func Fn_unicode_to_keyval(wc c.UndefinedParamType) {}
+func Fn_unicode_to_keyval(wc uint32) {}
 
 func Fn_utf8_to_string_target(str c.UndefinedParamType) {}

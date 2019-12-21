@@ -3,7 +3,10 @@
 
 package gio
 
-import c "github.com/pekim/gobbi/lib/internal/c"
+import (
+	c "github.com/pekim/gobbi/lib/internal/c"
+	"unsafe"
+)
 
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -326,8 +329,7 @@ func Fn_app_info_get_all() {}
 
 func Fn_app_info_get_all_for_type(contentType c.UndefinedParamType) {}
 
-func Fn_app_info_get_default_for_type(contentType c.UndefinedParamType, mustSupportUris c.UndefinedParamType) {
-}
+func Fn_app_info_get_default_for_type(contentType c.UndefinedParamType, mustSupportUris bool) {}
 
 func Fn_app_info_get_default_for_uri_scheme(uriScheme c.UndefinedParamType) {}
 
@@ -335,7 +337,7 @@ func Fn_app_info_launch_default_for_uri(uri c.UndefinedParamType, context c.Unde
 
 func Fn_app_info_reset_type_associations(contentType c.UndefinedParamType) {}
 
-func Fn_async_initable_newv_async(objectType c.UndefinedParamType, nParameters c.UndefinedParamType, parameters c.UndefinedParamType, ioPriority c.UndefinedParamType, cancellable c.UndefinedParamType, callback c.UndefinedParamType, userData c.UndefinedParamType) {
+func Fn_async_initable_newv_async(objectType c.UndefinedParamType, nParameters uint, parameters c.UndefinedParamType, ioPriority int, cancellable c.UndefinedParamType, callback c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
 func Fn_content_type_can_be_executable(type_ c.UndefinedParamType) {}
@@ -350,7 +352,7 @@ func Fn_content_type_get_icon(type_ c.UndefinedParamType) {}
 
 func Fn_content_type_get_mime_type(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_guess(filename c.UndefinedParamType, data c.UndefinedParamType, dataSize c.UndefinedParamType, resultUncertain c.UndefinedParamType) {
+func Fn_content_type_guess(filename c.UndefinedParamType, data c.UndefinedParamType, dataSize uint64, resultUncertain *bool) {
 }
 
 func Fn_content_type_guess_for_tree(root c.UndefinedParamType) {}
@@ -375,14 +377,14 @@ func Fn_icon_hash(icon c.UndefinedParamType) {}
 
 func Fn_icon_new_for_string(str c.UndefinedParamType) {}
 
-func Fn_initable_newv(objectType c.UndefinedParamType, nParameters c.UndefinedParamType, parameters c.UndefinedParamType, cancellable c.UndefinedParamType) {
+func Fn_initable_newv(objectType c.UndefinedParamType, nParameters uint, parameters c.UndefinedParamType, cancellable c.UndefinedParamType) {
 }
 
-func Fn_io_error_from_errno(errNo c.UndefinedParamType) {}
+func Fn_io_error_from_errno(errNo int) {}
 
 func Fn_io_error_quark() {}
 
-func Fn_io_extension_point_implement(extensionPointName c.UndefinedParamType, type_ c.UndefinedParamType, extensionName c.UndefinedParamType, priority c.UndefinedParamType) {
+func Fn_io_extension_point_implement(extensionPointName c.UndefinedParamType, type_ c.UndefinedParamType, extensionName c.UndefinedParamType, priority int) {
 }
 
 func Fn_io_extension_point_lookup(name c.UndefinedParamType) {}
@@ -393,7 +395,7 @@ func Fn_io_modules_load_all_in_directory(dirname c.UndefinedParamType) {}
 
 func Fn_io_scheduler_cancel_all_jobs() {}
 
-func Fn_io_scheduler_push_job(jobFunc c.UndefinedParamType, userData c.UndefinedParamType, notify c.UndefinedParamType, ioPriority c.UndefinedParamType, cancellable c.UndefinedParamType) {
+func Fn_io_scheduler_push_job(jobFunc c.UndefinedParamType, userData unsafe.Pointer, notify c.UndefinedParamType, ioPriority int, cancellable c.UndefinedParamType) {
 }
 
 func Fn_keyfile_settings_backend_new(filename c.UndefinedParamType, rootPath c.UndefinedParamType, rootGroup c.UndefinedParamType) {
@@ -403,14 +405,14 @@ func Fn_resolver_error_quark() {}
 
 // UNSUPPORTED : simple_async_report_error_in_idle : has varargs
 
-func Fn_simple_async_report_gerror_in_idle(object c.UndefinedParamType, callback c.UndefinedParamType, userData c.UndefinedParamType, error c.UndefinedParamType) {
+func Fn_simple_async_report_gerror_in_idle(object c.UndefinedParamType, callback c.UndefinedParamType, userData unsafe.Pointer, error c.UndefinedParamType) {
 }
 
 func Fn_srv_target_list_sort(targets c.UndefinedParamType) {}
 
 func Fn_unix_is_mount_path_system_internal(mountPath c.UndefinedParamType) {}
 
-func Fn_unix_mount_at(mountPath c.UndefinedParamType, timeRead c.UndefinedParamType) {}
+func Fn_unix_mount_at(mountPath c.UndefinedParamType, timeRead *uint64) {}
 
 func Fn_unix_mount_compare(mount1 c.UndefinedParamType, mount2 c.UndefinedParamType) {}
 
@@ -434,10 +436,10 @@ func Fn_unix_mount_is_readonly(mountEntry c.UndefinedParamType) {}
 
 func Fn_unix_mount_is_system_internal(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_points_changed_since(time c.UndefinedParamType) {}
+func Fn_unix_mount_points_changed_since(time uint64) {}
 
-func Fn_unix_mount_points_get(timeRead c.UndefinedParamType) {}
+func Fn_unix_mount_points_get(timeRead *uint64) {}
 
-func Fn_unix_mounts_changed_since(time c.UndefinedParamType) {}
+func Fn_unix_mounts_changed_since(time uint64) {}
 
-func Fn_unix_mounts_get(timeRead c.UndefinedParamType) {}
+func Fn_unix_mounts_get(timeRead *uint64) {}

@@ -3,7 +3,10 @@
 
 package glib
 
-import c "github.com/pekim/gobbi/lib/internal/c"
+import (
+	c "github.com/pekim/gobbi/lib/internal/c"
+	"unsafe"
+)
 
 // #include <glib.h>
 import "C"
@@ -148,37 +151,34 @@ type VariantType C.GVariantType
 
 // interfaces
 
-func Fn_access(filename c.UndefinedParamType, mode c.UndefinedParamType) {}
+func Fn_access(filename c.UndefinedParamType, mode int) {}
 
 func Fn_ascii_digit_value(c c.UndefinedParamType) {}
 
-func Fn_ascii_dtostr(buffer c.UndefinedParamType, bufLen c.UndefinedParamType, d c.UndefinedParamType) {
-}
+func Fn_ascii_dtostr(buffer c.UndefinedParamType, bufLen int, d float64) {}
 
-func Fn_ascii_formatd(buffer c.UndefinedParamType, bufLen c.UndefinedParamType, format c.UndefinedParamType, d c.UndefinedParamType) {
+func Fn_ascii_formatd(buffer c.UndefinedParamType, bufLen int, format c.UndefinedParamType, d float64) {
 }
 
 func Fn_ascii_strcasecmp(s1 c.UndefinedParamType, s2 c.UndefinedParamType) {}
 
-func Fn_ascii_strdown(str c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_ascii_strdown(str c.UndefinedParamType, len uint64) {}
 
-func Fn_ascii_string_to_signed(str c.UndefinedParamType, base c.UndefinedParamType, min c.UndefinedParamType, max c.UndefinedParamType, outNum c.UndefinedParamType) {
+func Fn_ascii_string_to_signed(str c.UndefinedParamType, base uint, min int64, max int64, outNum *int64) {
 }
 
-func Fn_ascii_string_to_unsigned(str c.UndefinedParamType, base c.UndefinedParamType, min c.UndefinedParamType, max c.UndefinedParamType, outNum c.UndefinedParamType) {
+func Fn_ascii_string_to_unsigned(str c.UndefinedParamType, base uint, min uint64, max uint64, outNum *uint64) {
 }
 
-func Fn_ascii_strncasecmp(s1 c.UndefinedParamType, s2 c.UndefinedParamType, n c.UndefinedParamType) {}
+func Fn_ascii_strncasecmp(s1 c.UndefinedParamType, s2 c.UndefinedParamType, n uint64) {}
 
 func Fn_ascii_strtod(nptr c.UndefinedParamType, endptr c.UndefinedParamType) {}
 
-func Fn_ascii_strtoll(nptr c.UndefinedParamType, endptr c.UndefinedParamType, base c.UndefinedParamType) {
-}
+func Fn_ascii_strtoll(nptr c.UndefinedParamType, endptr c.UndefinedParamType, base uint) {}
 
-func Fn_ascii_strtoull(nptr c.UndefinedParamType, endptr c.UndefinedParamType, base c.UndefinedParamType) {
-}
+func Fn_ascii_strtoull(nptr c.UndefinedParamType, endptr c.UndefinedParamType, base uint) {}
 
-func Fn_ascii_strup(str c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_ascii_strup(str c.UndefinedParamType, len uint64) {}
 
 func Fn_ascii_tolower(c c.UndefinedParamType) {}
 
@@ -186,90 +186,88 @@ func Fn_ascii_toupper(c c.UndefinedParamType) {}
 
 func Fn_ascii_xdigit_value(c c.UndefinedParamType) {}
 
-func Fn_assert_warning(logDomain c.UndefinedParamType, file c.UndefinedParamType, line c.UndefinedParamType, prettyFunction c.UndefinedParamType, expression c.UndefinedParamType) {
+func Fn_assert_warning(logDomain c.UndefinedParamType, file c.UndefinedParamType, line int, prettyFunction c.UndefinedParamType, expression c.UndefinedParamType) {
 }
 
-func Fn_assertion_message(domain c.UndefinedParamType, file c.UndefinedParamType, line c.UndefinedParamType, func_ c.UndefinedParamType, message c.UndefinedParamType) {
+func Fn_assertion_message(domain c.UndefinedParamType, file c.UndefinedParamType, line int, func_ c.UndefinedParamType, message c.UndefinedParamType) {
 }
 
-func Fn_assertion_message_cmpnum(domain c.UndefinedParamType, file c.UndefinedParamType, line c.UndefinedParamType, func_ c.UndefinedParamType, expr c.UndefinedParamType, arg1 c.UndefinedParamType, cmp c.UndefinedParamType, arg2 c.UndefinedParamType, numtype c.UndefinedParamType) {
+func Fn_assertion_message_cmpnum(domain c.UndefinedParamType, file c.UndefinedParamType, line int, func_ c.UndefinedParamType, expr c.UndefinedParamType, arg1 float64, cmp c.UndefinedParamType, arg2 float64, numtype c.UndefinedParamType) {
 }
 
-func Fn_assertion_message_cmpstr(domain c.UndefinedParamType, file c.UndefinedParamType, line c.UndefinedParamType, func_ c.UndefinedParamType, expr c.UndefinedParamType, arg1 c.UndefinedParamType, cmp c.UndefinedParamType, arg2 c.UndefinedParamType) {
+func Fn_assertion_message_cmpstr(domain c.UndefinedParamType, file c.UndefinedParamType, line int, func_ c.UndefinedParamType, expr c.UndefinedParamType, arg1 c.UndefinedParamType, cmp c.UndefinedParamType, arg2 c.UndefinedParamType) {
 }
 
-func Fn_assertion_message_error(domain c.UndefinedParamType, file c.UndefinedParamType, line c.UndefinedParamType, func_ c.UndefinedParamType, expr c.UndefinedParamType, error c.UndefinedParamType, errorDomain c.UndefinedParamType, errorCode c.UndefinedParamType) {
+func Fn_assertion_message_error(domain c.UndefinedParamType, file c.UndefinedParamType, line int, func_ c.UndefinedParamType, expr c.UndefinedParamType, error c.UndefinedParamType, errorDomain c.UndefinedParamType, errorCode int) {
 }
 
-func Fn_assertion_message_expr(domain c.UndefinedParamType, file c.UndefinedParamType, line c.UndefinedParamType, func_ c.UndefinedParamType, expr c.UndefinedParamType) {
+func Fn_assertion_message_expr(domain c.UndefinedParamType, file c.UndefinedParamType, line int, func_ c.UndefinedParamType, expr c.UndefinedParamType) {
 }
 
 func Fn_atexit(func_ c.UndefinedParamType) {}
 
-func Fn_atomic_int_add(atomic c.UndefinedParamType, val c.UndefinedParamType) {}
+func Fn_atomic_int_add(atomic c.UndefinedParamType, val int) {}
 
-func Fn_atomic_int_and(atomic c.UndefinedParamType, val c.UndefinedParamType) {}
+func Fn_atomic_int_and(atomic c.UndefinedParamType, val uint) {}
 
-func Fn_atomic_int_compare_and_exchange(atomic c.UndefinedParamType, oldval c.UndefinedParamType, newval c.UndefinedParamType) {
-}
+func Fn_atomic_int_compare_and_exchange(atomic c.UndefinedParamType, oldval int, newval int) {}
 
 func Fn_atomic_int_dec_and_test(atomic c.UndefinedParamType) {}
 
-func Fn_atomic_int_exchange_and_add(atomic c.UndefinedParamType, val c.UndefinedParamType) {}
+func Fn_atomic_int_exchange_and_add(atomic c.UndefinedParamType, val int) {}
 
 func Fn_atomic_int_get(atomic c.UndefinedParamType) {}
 
 func Fn_atomic_int_inc(atomic c.UndefinedParamType) {}
 
-func Fn_atomic_int_or(atomic c.UndefinedParamType, val c.UndefinedParamType) {}
+func Fn_atomic_int_or(atomic c.UndefinedParamType, val uint) {}
 
-func Fn_atomic_int_set(atomic c.UndefinedParamType, newval c.UndefinedParamType) {}
+func Fn_atomic_int_set(atomic c.UndefinedParamType, newval int) {}
 
-func Fn_atomic_int_xor(atomic c.UndefinedParamType, val c.UndefinedParamType) {}
+func Fn_atomic_int_xor(atomic c.UndefinedParamType, val uint) {}
 
-func Fn_atomic_pointer_add(atomic c.UndefinedParamType, val c.UndefinedParamType) {}
+func Fn_atomic_pointer_add(atomic c.UndefinedParamType, val uint64) {}
 
-func Fn_atomic_pointer_and(atomic c.UndefinedParamType, val c.UndefinedParamType) {}
+func Fn_atomic_pointer_and(atomic c.UndefinedParamType, val uint64) {}
 
-func Fn_atomic_pointer_compare_and_exchange(atomic c.UndefinedParamType, oldval c.UndefinedParamType, newval c.UndefinedParamType) {
+func Fn_atomic_pointer_compare_and_exchange(atomic c.UndefinedParamType, oldval unsafe.Pointer, newval unsafe.Pointer) {
 }
 
 func Fn_atomic_pointer_get(atomic c.UndefinedParamType) {}
 
-func Fn_atomic_pointer_or(atomic c.UndefinedParamType, val c.UndefinedParamType) {}
+func Fn_atomic_pointer_or(atomic c.UndefinedParamType, val uint64) {}
 
-func Fn_atomic_pointer_set(atomic c.UndefinedParamType, newval c.UndefinedParamType) {}
+func Fn_atomic_pointer_set(atomic c.UndefinedParamType, newval unsafe.Pointer) {}
 
-func Fn_atomic_pointer_xor(atomic c.UndefinedParamType, val c.UndefinedParamType) {}
+func Fn_atomic_pointer_xor(atomic c.UndefinedParamType, val uint64) {}
 
-func Fn_base64_decode(text c.UndefinedParamType, outLen c.UndefinedParamType) {}
+func Fn_base64_decode(text c.UndefinedParamType, outLen *uint64) {}
 
-func Fn_base64_decode_inplace(text c.UndefinedParamType, outLen c.UndefinedParamType) {}
+func Fn_base64_decode_inplace(text c.UndefinedParamType, outLen *uint64) {}
 
-func Fn_base64_decode_step(in c.UndefinedParamType, len c.UndefinedParamType, out c.UndefinedParamType, state c.UndefinedParamType, save c.UndefinedParamType) {
+func Fn_base64_decode_step(in c.UndefinedParamType, len uint64, out c.UndefinedParamType, state *int, save *uint) {
 }
 
-func Fn_base64_encode(data c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_base64_encode(data c.UndefinedParamType, len uint64) {}
 
-func Fn_base64_encode_close(breakLines c.UndefinedParamType, out c.UndefinedParamType, state c.UndefinedParamType, save c.UndefinedParamType) {
-}
+func Fn_base64_encode_close(breakLines bool, out c.UndefinedParamType, state *int, save *int) {}
 
-func Fn_base64_encode_step(in c.UndefinedParamType, len c.UndefinedParamType, breakLines c.UndefinedParamType, out c.UndefinedParamType, state c.UndefinedParamType, save c.UndefinedParamType) {
+func Fn_base64_encode_step(in c.UndefinedParamType, len uint64, breakLines bool, out c.UndefinedParamType, state *int, save *int) {
 }
 
 func Fn_basename(fileName c.UndefinedParamType) {}
 
-func Fn_bit_lock(address c.UndefinedParamType, lockBit c.UndefinedParamType) {}
+func Fn_bit_lock(address c.UndefinedParamType, lockBit int) {}
 
-func Fn_bit_nth_lsf(mask c.UndefinedParamType, nthBit c.UndefinedParamType) {}
+func Fn_bit_nth_lsf(mask uint64, nthBit int) {}
 
-func Fn_bit_nth_msf(mask c.UndefinedParamType, nthBit c.UndefinedParamType) {}
+func Fn_bit_nth_msf(mask uint64, nthBit int) {}
 
-func Fn_bit_storage(number c.UndefinedParamType) {}
+func Fn_bit_storage(number uint64) {}
 
-func Fn_bit_trylock(address c.UndefinedParamType, lockBit c.UndefinedParamType) {}
+func Fn_bit_trylock(address c.UndefinedParamType, lockBit int) {}
 
-func Fn_bit_unlock(address c.UndefinedParamType, lockBit c.UndefinedParamType) {}
+func Fn_bit_unlock(address c.UndefinedParamType, lockBit int) {}
 
 func Fn_bookmark_file_error_quark() {}
 
@@ -281,96 +279,95 @@ func Fn_build_filenamev(args c.UndefinedParamType) {}
 
 func Fn_build_pathv(separator c.UndefinedParamType, args c.UndefinedParamType) {}
 
-func Fn_byte_array_free(array c.UndefinedParamType, freeSegment c.UndefinedParamType) {}
+func Fn_byte_array_free(array c.UndefinedParamType, freeSegment bool) {}
 
 func Fn_byte_array_free_to_bytes(array c.UndefinedParamType) {}
 
 func Fn_byte_array_new() {}
 
-func Fn_byte_array_new_take(data c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_byte_array_new_take(data c.UndefinedParamType, len uint64) {}
 
 func Fn_byte_array_unref(array c.UndefinedParamType) {}
 
 func Fn_chdir(path c.UndefinedParamType) {}
 
-func Fn_check_version(requiredMajor c.UndefinedParamType, requiredMinor c.UndefinedParamType, requiredMicro c.UndefinedParamType) {
-}
+func Fn_check_version(requiredMajor uint, requiredMinor uint, requiredMicro uint) {}
 
 func Fn_checksum_type_get_length(checksumType c.UndefinedParamType) {}
 
-func Fn_child_watch_add(pid c.UndefinedParamType, function c.UndefinedParamType, data c.UndefinedParamType) {
+func Fn_child_watch_add(pid c.UndefinedParamType, function c.UndefinedParamType, data unsafe.Pointer) {
 }
 
-func Fn_child_watch_add_full(priority c.UndefinedParamType, pid c.UndefinedParamType, function c.UndefinedParamType, data c.UndefinedParamType, notify c.UndefinedParamType) {
+func Fn_child_watch_add_full(priority int, pid c.UndefinedParamType, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
 func Fn_child_watch_source_new(pid c.UndefinedParamType) {}
 
 func Fn_clear_error() {}
 
-func Fn_clear_pointer(pp c.UndefinedParamType, destroy c.UndefinedParamType) {}
+func Fn_clear_pointer(pp *unsafe.Pointer, destroy c.UndefinedParamType) {}
 
-func Fn_close(fd c.UndefinedParamType) {}
+func Fn_close(fd int) {}
 
 func Fn_compute_checksum_for_bytes(checksumType c.UndefinedParamType, data c.UndefinedParamType) {}
 
-func Fn_compute_checksum_for_data(checksumType c.UndefinedParamType, data c.UndefinedParamType, length c.UndefinedParamType) {
+func Fn_compute_checksum_for_data(checksumType c.UndefinedParamType, data c.UndefinedParamType, length uint64) {
 }
 
-func Fn_compute_checksum_for_string(checksumType c.UndefinedParamType, str c.UndefinedParamType, length c.UndefinedParamType) {
+func Fn_compute_checksum_for_string(checksumType c.UndefinedParamType, str c.UndefinedParamType, length uint64) {
 }
 
 func Fn_compute_hmac_for_bytes(digestType c.UndefinedParamType, key c.UndefinedParamType, data c.UndefinedParamType) {
 }
 
-func Fn_compute_hmac_for_data(digestType c.UndefinedParamType, key c.UndefinedParamType, keyLen c.UndefinedParamType, data c.UndefinedParamType, length c.UndefinedParamType) {
+func Fn_compute_hmac_for_data(digestType c.UndefinedParamType, key c.UndefinedParamType, keyLen uint64, data c.UndefinedParamType, length uint64) {
 }
 
-func Fn_compute_hmac_for_string(digestType c.UndefinedParamType, key c.UndefinedParamType, keyLen c.UndefinedParamType, str c.UndefinedParamType, length c.UndefinedParamType) {
+func Fn_compute_hmac_for_string(digestType c.UndefinedParamType, key c.UndefinedParamType, keyLen uint64, str c.UndefinedParamType, length uint64) {
 }
 
-func Fn_convert(str c.UndefinedParamType, len c.UndefinedParamType, toCodeset c.UndefinedParamType, fromCodeset c.UndefinedParamType, bytesRead c.UndefinedParamType, bytesWritten c.UndefinedParamType) {
+func Fn_convert(str c.UndefinedParamType, len uint64, toCodeset c.UndefinedParamType, fromCodeset c.UndefinedParamType, bytesRead *uint64, bytesWritten *uint64) {
 }
 
 func Fn_convert_error_quark() {}
 
-func Fn_convert_with_fallback(str c.UndefinedParamType, len c.UndefinedParamType, toCodeset c.UndefinedParamType, fromCodeset c.UndefinedParamType, fallback c.UndefinedParamType, bytesRead c.UndefinedParamType, bytesWritten c.UndefinedParamType) {
+func Fn_convert_with_fallback(str c.UndefinedParamType, len uint64, toCodeset c.UndefinedParamType, fromCodeset c.UndefinedParamType, fallback c.UndefinedParamType, bytesRead *uint64, bytesWritten *uint64) {
 }
 
-func Fn_convert_with_iconv(str c.UndefinedParamType, len c.UndefinedParamType, converter c.UndefinedParamType, bytesRead c.UndefinedParamType, bytesWritten c.UndefinedParamType) {
+func Fn_convert_with_iconv(str c.UndefinedParamType, len uint64, converter c.UndefinedParamType, bytesRead *uint64, bytesWritten *uint64) {
 }
 
 func Fn_datalist_clear(datalist c.UndefinedParamType) {}
 
-func Fn_datalist_foreach(datalist c.UndefinedParamType, func_ c.UndefinedParamType, userData c.UndefinedParamType) {
+func Fn_datalist_foreach(datalist c.UndefinedParamType, func_ c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
 func Fn_datalist_get_data(datalist c.UndefinedParamType, key c.UndefinedParamType) {}
 
 func Fn_datalist_get_flags(datalist c.UndefinedParamType) {}
 
-func Fn_datalist_id_dup_data(datalist c.UndefinedParamType, keyId c.UndefinedParamType, dupFunc c.UndefinedParamType, userData c.UndefinedParamType) {
+func Fn_datalist_id_dup_data(datalist c.UndefinedParamType, keyId c.UndefinedParamType, dupFunc c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
 func Fn_datalist_id_get_data(datalist c.UndefinedParamType, keyId c.UndefinedParamType) {}
 
 func Fn_datalist_id_remove_no_notify(datalist c.UndefinedParamType, keyId c.UndefinedParamType) {}
 
-func Fn_datalist_id_replace_data(datalist c.UndefinedParamType, keyId c.UndefinedParamType, oldval c.UndefinedParamType, newval c.UndefinedParamType, destroy c.UndefinedParamType, oldDestroy c.UndefinedParamType) {
+func Fn_datalist_id_replace_data(datalist c.UndefinedParamType, keyId c.UndefinedParamType, oldval unsafe.Pointer, newval unsafe.Pointer, destroy c.UndefinedParamType, oldDestroy c.UndefinedParamType) {
 }
 
-func Fn_datalist_id_set_data_full(datalist c.UndefinedParamType, keyId c.UndefinedParamType, data c.UndefinedParamType, destroyFunc c.UndefinedParamType) {
+func Fn_datalist_id_set_data_full(datalist c.UndefinedParamType, keyId c.UndefinedParamType, data unsafe.Pointer, destroyFunc c.UndefinedParamType) {
 }
 
 func Fn_datalist_init(datalist c.UndefinedParamType) {}
 
-func Fn_datalist_set_flags(datalist c.UndefinedParamType, flags c.UndefinedParamType) {}
+func Fn_datalist_set_flags(datalist c.UndefinedParamType, flags uint) {}
 
-func Fn_datalist_unset_flags(datalist c.UndefinedParamType, flags c.UndefinedParamType) {}
+func Fn_datalist_unset_flags(datalist c.UndefinedParamType, flags uint) {}
 
 func Fn_dataset_destroy(datasetLocation c.UndefinedParamType) {}
 
-func Fn_dataset_foreach(datasetLocation c.UndefinedParamType, func_ c.UndefinedParamType, userData c.UndefinedParamType) {
+func Fn_dataset_foreach(datasetLocation c.UndefinedParamType, func_ c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
 func Fn_dataset_id_get_data(datasetLocation c.UndefinedParamType, keyId c.UndefinedParamType) {}
@@ -378,7 +375,7 @@ func Fn_dataset_id_get_data(datasetLocation c.UndefinedParamType, keyId c.Undefi
 func Fn_dataset_id_remove_no_notify(datasetLocation c.UndefinedParamType, keyId c.UndefinedParamType) {
 }
 
-func Fn_dataset_id_set_data_full(datasetLocation c.UndefinedParamType, keyId c.UndefinedParamType, data c.UndefinedParamType, destroyFunc c.UndefinedParamType) {
+func Fn_dataset_id_set_data_full(datasetLocation c.UndefinedParamType, keyId c.UndefinedParamType, data unsafe.Pointer, destroyFunc c.UndefinedParamType) {
 }
 
 func Fn_date_get_days_in_month(month c.UndefinedParamType, year c.UndefinedParamType) {}
@@ -389,7 +386,7 @@ func Fn_date_get_sunday_weeks_in_year(year c.UndefinedParamType) {}
 
 func Fn_date_is_leap_year(year c.UndefinedParamType) {}
 
-func Fn_date_strftime(s c.UndefinedParamType, slen c.UndefinedParamType, format c.UndefinedParamType, date c.UndefinedParamType) {
+func Fn_date_strftime(s c.UndefinedParamType, slen uint64, format c.UndefinedParamType, date c.UndefinedParamType) {
 }
 
 func Fn_date_time_compare(dt1 c.UndefinedParamType, dt2 c.UndefinedParamType) {}
@@ -403,7 +400,7 @@ func Fn_date_valid_day(day c.UndefinedParamType) {}
 func Fn_date_valid_dmy(day c.UndefinedParamType, month c.UndefinedParamType, year c.UndefinedParamType) {
 }
 
-func Fn_date_valid_julian(julianDate c.UndefinedParamType) {}
+func Fn_date_valid_julian(julianDate uint32) {}
 
 func Fn_date_valid_month(month c.UndefinedParamType) {}
 
@@ -411,8 +408,7 @@ func Fn_date_valid_weekday(weekday c.UndefinedParamType) {}
 
 func Fn_date_valid_year(year c.UndefinedParamType) {}
 
-func Fn_dcgettext(domain c.UndefinedParamType, msgid c.UndefinedParamType, category c.UndefinedParamType) {
-}
+func Fn_dcgettext(domain c.UndefinedParamType, msgid c.UndefinedParamType, category int) {}
 
 func Fn_dgettext(domain c.UndefinedParamType, msgid c.UndefinedParamType) {}
 
@@ -422,38 +418,37 @@ func Fn_direct_equal(v1 c.UndefinedParamType, v2 c.UndefinedParamType) {}
 
 func Fn_direct_hash(v c.UndefinedParamType) {}
 
-func Fn_dngettext(domain c.UndefinedParamType, msgid c.UndefinedParamType, msgidPlural c.UndefinedParamType, n c.UndefinedParamType) {
+func Fn_dngettext(domain c.UndefinedParamType, msgid c.UndefinedParamType, msgidPlural c.UndefinedParamType, n uint64) {
 }
 
 func Fn_double_equal(v1 c.UndefinedParamType, v2 c.UndefinedParamType) {}
 
 func Fn_double_hash(v c.UndefinedParamType) {}
 
-func Fn_dpgettext(domain c.UndefinedParamType, msgctxtid c.UndefinedParamType, msgidoffset c.UndefinedParamType) {
-}
+func Fn_dpgettext(domain c.UndefinedParamType, msgctxtid c.UndefinedParamType, msgidoffset uint64) {}
 
 func Fn_dpgettext2(domain c.UndefinedParamType, context c.UndefinedParamType, msgid c.UndefinedParamType) {
 }
 
 func Fn_environ_getenv(envp c.UndefinedParamType, variable c.UndefinedParamType) {}
 
-func Fn_environ_setenv(envp c.UndefinedParamType, variable c.UndefinedParamType, value c.UndefinedParamType, overwrite c.UndefinedParamType) {
+func Fn_environ_setenv(envp c.UndefinedParamType, variable c.UndefinedParamType, value c.UndefinedParamType, overwrite bool) {
 }
 
 func Fn_environ_unsetenv(envp c.UndefinedParamType, variable c.UndefinedParamType) {}
 
-func Fn_file_error_from_errno(errNo c.UndefinedParamType) {}
+func Fn_file_error_from_errno(errNo int) {}
 
 func Fn_file_error_quark() {}
 
-func Fn_file_get_contents(filename c.UndefinedParamType, contents c.UndefinedParamType, length c.UndefinedParamType) {
+func Fn_file_get_contents(filename c.UndefinedParamType, contents c.UndefinedParamType, length *uint64) {
 }
 
 func Fn_file_open_tmp(tmpl c.UndefinedParamType, nameUsed c.UndefinedParamType) {}
 
 func Fn_file_read_link(filename c.UndefinedParamType) {}
 
-func Fn_file_set_contents(filename c.UndefinedParamType, contents c.UndefinedParamType, length c.UndefinedParamType) {
+func Fn_file_set_contents(filename c.UndefinedParamType, contents c.UndefinedParamType, length uint64) {
 }
 
 func Fn_file_test(filename c.UndefinedParamType, test c.UndefinedParamType) {}
@@ -464,25 +459,25 @@ func Fn_filename_display_name(filename c.UndefinedParamType) {}
 
 func Fn_filename_from_uri(uri c.UndefinedParamType, hostname c.UndefinedParamType) {}
 
-func Fn_filename_from_utf8(utf8string c.UndefinedParamType, len c.UndefinedParamType, bytesRead c.UndefinedParamType, bytesWritten c.UndefinedParamType) {
+func Fn_filename_from_utf8(utf8string c.UndefinedParamType, len uint64, bytesRead *uint64, bytesWritten *uint64) {
 }
 
 func Fn_filename_to_uri(filename c.UndefinedParamType, hostname c.UndefinedParamType) {}
 
-func Fn_filename_to_utf8(opsysstring c.UndefinedParamType, len c.UndefinedParamType, bytesRead c.UndefinedParamType, bytesWritten c.UndefinedParamType) {
+func Fn_filename_to_utf8(opsysstring c.UndefinedParamType, len uint64, bytesRead *uint64, bytesWritten *uint64) {
 }
 
 func Fn_find_program_in_path(program c.UndefinedParamType) {}
 
-func Fn_format_size(size c.UndefinedParamType) {}
+func Fn_format_size(size uint64) {}
 
 func Fn_format_size_for_display(size c.UndefinedParamType) {}
 
-func Fn_format_size_full(size c.UndefinedParamType, flags c.UndefinedParamType) {}
+func Fn_format_size_full(size uint64, flags c.UndefinedParamType) {}
 
 // UNSUPPORTED : fprintf : has varargs
 
-func Fn_free(mem c.UndefinedParamType) {}
+func Fn_free(mem unsafe.Pointer) {}
 
 func Fn_get_application_name() {}
 
@@ -536,25 +531,24 @@ func Fn_get_user_special_dir(directory c.UndefinedParamType) {}
 
 func Fn_getenv(variable c.UndefinedParamType) {}
 
-func Fn_hash_table_add(hashTable c.UndefinedParamType, key c.UndefinedParamType) {}
+func Fn_hash_table_add(hashTable c.UndefinedParamType, key unsafe.Pointer) {}
 
 func Fn_hash_table_contains(hashTable c.UndefinedParamType, key c.UndefinedParamType) {}
 
 func Fn_hash_table_destroy(hashTable c.UndefinedParamType) {}
 
-func Fn_hash_table_insert(hashTable c.UndefinedParamType, key c.UndefinedParamType, value c.UndefinedParamType) {
-}
+func Fn_hash_table_insert(hashTable c.UndefinedParamType, key unsafe.Pointer, value unsafe.Pointer) {}
 
 func Fn_hash_table_lookup(hashTable c.UndefinedParamType, key c.UndefinedParamType) {}
 
-func Fn_hash_table_lookup_extended(hashTable c.UndefinedParamType, lookupKey c.UndefinedParamType, origKey c.UndefinedParamType, value c.UndefinedParamType) {
+func Fn_hash_table_lookup_extended(hashTable c.UndefinedParamType, lookupKey c.UndefinedParamType, origKey *unsafe.Pointer, value *unsafe.Pointer) {
 }
 
 func Fn_hash_table_remove(hashTable c.UndefinedParamType, key c.UndefinedParamType) {}
 
 func Fn_hash_table_remove_all(hashTable c.UndefinedParamType) {}
 
-func Fn_hash_table_replace(hashTable c.UndefinedParamType, key c.UndefinedParamType, value c.UndefinedParamType) {
+func Fn_hash_table_replace(hashTable c.UndefinedParamType, key unsafe.Pointer, value unsafe.Pointer) {
 }
 
 func Fn_hash_table_size(hashTable c.UndefinedParamType) {}
@@ -565,7 +559,7 @@ func Fn_hash_table_steal_all(hashTable c.UndefinedParamType) {}
 
 func Fn_hash_table_unref(hashTable c.UndefinedParamType) {}
 
-func Fn_hook_destroy(hookList c.UndefinedParamType, hookId c.UndefinedParamType) {}
+func Fn_hook_destroy(hookList c.UndefinedParamType, hookId uint64) {}
 
 func Fn_hook_destroy_link(hookList c.UndefinedParamType, hook c.UndefinedParamType) {}
 
@@ -588,17 +582,17 @@ func Fn_hostname_to_ascii(hostname c.UndefinedParamType) {}
 
 func Fn_hostname_to_unicode(hostname c.UndefinedParamType) {}
 
-func Fn_iconv(converter c.UndefinedParamType, inbuf c.UndefinedParamType, inbytesLeft c.UndefinedParamType, outbuf c.UndefinedParamType, outbytesLeft c.UndefinedParamType) {
+func Fn_iconv(converter c.UndefinedParamType, inbuf c.UndefinedParamType, inbytesLeft *uint64, outbuf c.UndefinedParamType, outbytesLeft *uint64) {
 }
 
 func Fn_iconv_open(toCodeset c.UndefinedParamType, fromCodeset c.UndefinedParamType) {}
 
-func Fn_idle_add(function c.UndefinedParamType, data c.UndefinedParamType) {}
+func Fn_idle_add(function c.UndefinedParamType, data unsafe.Pointer) {}
 
-func Fn_idle_add_full(priority c.UndefinedParamType, function c.UndefinedParamType, data c.UndefinedParamType, notify c.UndefinedParamType) {
+func Fn_idle_add_full(priority int, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
-func Fn_idle_remove_by_data(data c.UndefinedParamType) {}
+func Fn_idle_remove_by_data(data unsafe.Pointer) {}
 
 func Fn_idle_source_new() {}
 
@@ -614,13 +608,13 @@ func Fn_intern_static_string(string_ c.UndefinedParamType) {}
 
 func Fn_intern_string(string_ c.UndefinedParamType) {}
 
-func Fn_io_add_watch(channel c.UndefinedParamType, condition c.UndefinedParamType, func_ c.UndefinedParamType, userData c.UndefinedParamType) {
+func Fn_io_add_watch(channel c.UndefinedParamType, condition c.UndefinedParamType, func_ c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
-func Fn_io_add_watch_full(channel c.UndefinedParamType, priority c.UndefinedParamType, condition c.UndefinedParamType, func_ c.UndefinedParamType, userData c.UndefinedParamType, notify c.UndefinedParamType) {
+func Fn_io_add_watch_full(channel c.UndefinedParamType, priority int, condition c.UndefinedParamType, func_ c.UndefinedParamType, userData unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
-func Fn_io_channel_error_from_errno(en c.UndefinedParamType) {}
+func Fn_io_channel_error_from_errno(en int) {}
 
 func Fn_io_channel_error_quark() {}
 
@@ -630,37 +624,37 @@ func Fn_key_file_error_quark() {}
 
 func Fn_listenv() {}
 
-func Fn_locale_from_utf8(utf8string c.UndefinedParamType, len c.UndefinedParamType, bytesRead c.UndefinedParamType, bytesWritten c.UndefinedParamType) {
+func Fn_locale_from_utf8(utf8string c.UndefinedParamType, len uint64, bytesRead *uint64, bytesWritten *uint64) {
 }
 
-func Fn_locale_to_utf8(opsysstring c.UndefinedParamType, len c.UndefinedParamType, bytesRead c.UndefinedParamType, bytesWritten c.UndefinedParamType) {
+func Fn_locale_to_utf8(opsysstring c.UndefinedParamType, len uint64, bytesRead *uint64, bytesWritten *uint64) {
 }
 
 // UNSUPPORTED : log : has varargs
 
-func Fn_log_default_handler(logDomain c.UndefinedParamType, logLevel c.UndefinedParamType, message c.UndefinedParamType, unusedData c.UndefinedParamType) {
+func Fn_log_default_handler(logDomain c.UndefinedParamType, logLevel c.UndefinedParamType, message c.UndefinedParamType, unusedData unsafe.Pointer) {
 }
 
-func Fn_log_remove_handler(logDomain c.UndefinedParamType, handlerId c.UndefinedParamType) {}
+func Fn_log_remove_handler(logDomain c.UndefinedParamType, handlerId uint) {}
 
 func Fn_log_set_always_fatal(fatalMask c.UndefinedParamType) {}
 
-func Fn_log_set_default_handler(logFunc c.UndefinedParamType, userData c.UndefinedParamType) {}
+func Fn_log_set_default_handler(logFunc c.UndefinedParamType, userData unsafe.Pointer) {}
 
 func Fn_log_set_fatal_mask(logDomain c.UndefinedParamType, fatalMask c.UndefinedParamType) {}
 
-func Fn_log_set_handler(logDomain c.UndefinedParamType, logLevels c.UndefinedParamType, logFunc c.UndefinedParamType, userData c.UndefinedParamType) {
+func Fn_log_set_handler(logDomain c.UndefinedParamType, logLevels c.UndefinedParamType, logFunc c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
-func Fn_log_set_handler_full(logDomain c.UndefinedParamType, logLevels c.UndefinedParamType, logFunc c.UndefinedParamType, userData c.UndefinedParamType, destroy c.UndefinedParamType) {
+func Fn_log_set_handler_full(logDomain c.UndefinedParamType, logLevels c.UndefinedParamType, logFunc c.UndefinedParamType, userData unsafe.Pointer, destroy c.UndefinedParamType) {
 }
 
-func Fn_log_set_writer_func(func_ c.UndefinedParamType, userData c.UndefinedParamType, userDataFree c.UndefinedParamType) {
+func Fn_log_set_writer_func(func_ c.UndefinedParamType, userData unsafe.Pointer, userDataFree c.UndefinedParamType) {
 }
 
 // UNSUPPORTED : log_structured : has varargs
 
-func Fn_log_structured_array(logLevel c.UndefinedParamType, fields c.UndefinedParamType, nFields c.UndefinedParamType) {
+func Fn_log_structured_array(logLevel c.UndefinedParamType, fields c.UndefinedParamType, nFields uint64) {
 }
 
 // UNSUPPORTED : log_structured_standard : has varargs
@@ -668,21 +662,21 @@ func Fn_log_structured_array(logLevel c.UndefinedParamType, fields c.UndefinedPa
 func Fn_log_variant(logDomain c.UndefinedParamType, logLevel c.UndefinedParamType, fields c.UndefinedParamType) {
 }
 
-func Fn_log_writer_default(logLevel c.UndefinedParamType, fields c.UndefinedParamType, nFields c.UndefinedParamType, userData c.UndefinedParamType) {
+func Fn_log_writer_default(logLevel c.UndefinedParamType, fields c.UndefinedParamType, nFields uint64, userData unsafe.Pointer) {
 }
 
-func Fn_log_writer_format_fields(logLevel c.UndefinedParamType, fields c.UndefinedParamType, nFields c.UndefinedParamType, useColor c.UndefinedParamType) {
+func Fn_log_writer_format_fields(logLevel c.UndefinedParamType, fields c.UndefinedParamType, nFields uint64, useColor bool) {
 }
 
-func Fn_log_writer_is_journald(outputFd c.UndefinedParamType) {}
+func Fn_log_writer_is_journald(outputFd int) {}
 
-func Fn_log_writer_journald(logLevel c.UndefinedParamType, fields c.UndefinedParamType, nFields c.UndefinedParamType, userData c.UndefinedParamType) {
+func Fn_log_writer_journald(logLevel c.UndefinedParamType, fields c.UndefinedParamType, nFields uint64, userData unsafe.Pointer) {
 }
 
-func Fn_log_writer_standard_streams(logLevel c.UndefinedParamType, fields c.UndefinedParamType, nFields c.UndefinedParamType, userData c.UndefinedParamType) {
+func Fn_log_writer_standard_streams(logLevel c.UndefinedParamType, fields c.UndefinedParamType, nFields uint64, userData unsafe.Pointer) {
 }
 
-func Fn_log_writer_supports_color(outputFd c.UndefinedParamType) {}
+func Fn_log_writer_supports_color(outputFd int) {}
 
 func Fn_logv(logDomain c.UndefinedParamType, logLevel c.UndefinedParamType, format c.UndefinedParamType, args c.UndefinedParamType) {
 }
@@ -697,19 +691,19 @@ func Fn_main_current_source() {}
 
 func Fn_main_depth() {}
 
-func Fn_malloc(nBytes c.UndefinedParamType) {}
+func Fn_malloc(nBytes uint64) {}
 
-func Fn_malloc0(nBytes c.UndefinedParamType) {}
+func Fn_malloc0(nBytes uint64) {}
 
-func Fn_malloc0_n(nBlocks c.UndefinedParamType, nBlockBytes c.UndefinedParamType) {}
+func Fn_malloc0_n(nBlocks uint64, nBlockBytes uint64) {}
 
-func Fn_malloc_n(nBlocks c.UndefinedParamType, nBlockBytes c.UndefinedParamType) {}
+func Fn_malloc_n(nBlocks uint64, nBlockBytes uint64) {}
 
 // UNSUPPORTED : markup_collect_attributes : has varargs
 
 func Fn_markup_error_quark() {}
 
-func Fn_markup_escape_text(text c.UndefinedParamType, length c.UndefinedParamType) {}
+func Fn_markup_escape_text(text c.UndefinedParamType, length uint64) {}
 
 // UNSUPPORTED : markup_printf_escaped : has varargs
 
@@ -721,20 +715,19 @@ func Fn_mem_profile() {}
 
 func Fn_mem_set_vtable(vtable c.UndefinedParamType) {}
 
-func Fn_memdup(mem c.UndefinedParamType, byteSize c.UndefinedParamType) {}
+func Fn_memdup(mem c.UndefinedParamType, byteSize uint) {}
 
-func Fn_mkdir_with_parents(pathname c.UndefinedParamType, mode c.UndefinedParamType) {}
+func Fn_mkdir_with_parents(pathname c.UndefinedParamType, mode int) {}
 
 func Fn_mkdtemp(tmpl c.UndefinedParamType) {}
 
-func Fn_mkdtemp_full(tmpl c.UndefinedParamType, mode c.UndefinedParamType) {}
+func Fn_mkdtemp_full(tmpl c.UndefinedParamType, mode int) {}
 
 func Fn_mkstemp(tmpl c.UndefinedParamType) {}
 
-func Fn_mkstemp_full(tmpl c.UndefinedParamType, flags c.UndefinedParamType, mode c.UndefinedParamType) {
-}
+func Fn_mkstemp_full(tmpl c.UndefinedParamType, flags int, mode int) {}
 
-func Fn_nullify_pointer(nullifyLocation c.UndefinedParamType) {}
+func Fn_nullify_pointer(nullifyLocation *unsafe.Pointer) {}
 
 func Fn_number_parser_error_quark() {}
 
@@ -744,12 +737,11 @@ func Fn_on_error_stack_trace(prgName c.UndefinedParamType) {}
 
 func Fn_once_init_enter(location c.UndefinedParamType) {}
 
-func Fn_once_init_leave(location c.UndefinedParamType, result c.UndefinedParamType) {}
+func Fn_once_init_leave(location c.UndefinedParamType, result uint64) {}
 
 func Fn_option_error_quark() {}
 
-func Fn_parse_debug_string(string_ c.UndefinedParamType, keys c.UndefinedParamType, nkeys c.UndefinedParamType) {
-}
+func Fn_parse_debug_string(string_ c.UndefinedParamType, keys c.UndefinedParamType, nkeys uint) {}
 
 func Fn_path_get_basename(fileName c.UndefinedParamType) {}
 
@@ -759,20 +751,20 @@ func Fn_path_is_absolute(fileName c.UndefinedParamType) {}
 
 func Fn_path_skip_root(fileName c.UndefinedParamType) {}
 
-func Fn_pattern_match(pspec c.UndefinedParamType, stringLength c.UndefinedParamType, string_ c.UndefinedParamType, stringReversed c.UndefinedParamType) {
+func Fn_pattern_match(pspec c.UndefinedParamType, stringLength uint, string_ c.UndefinedParamType, stringReversed c.UndefinedParamType) {
 }
 
 func Fn_pattern_match_simple(pattern c.UndefinedParamType, string_ c.UndefinedParamType) {}
 
 func Fn_pattern_match_string(pspec c.UndefinedParamType, string_ c.UndefinedParamType) {}
 
-func Fn_pointer_bit_lock(address c.UndefinedParamType, lockBit c.UndefinedParamType) {}
+func Fn_pointer_bit_lock(address c.UndefinedParamType, lockBit int) {}
 
-func Fn_pointer_bit_trylock(address c.UndefinedParamType, lockBit c.UndefinedParamType) {}
+func Fn_pointer_bit_trylock(address c.UndefinedParamType, lockBit int) {}
 
-func Fn_pointer_bit_unlock(address c.UndefinedParamType, lockBit c.UndefinedParamType) {}
+func Fn_pointer_bit_unlock(address c.UndefinedParamType, lockBit int) {}
 
-func Fn_poll(fds c.UndefinedParamType, nfds c.UndefinedParamType, timeout c.UndefinedParamType) {}
+func Fn_poll(fds c.UndefinedParamType, nfds uint, timeout int) {}
 
 // UNSUPPORTED : prefix_error : has varargs
 
@@ -788,13 +780,12 @@ func Fn_propagate_error(dest c.UndefinedParamType, src c.UndefinedParamType) {}
 
 // UNSUPPORTED : propagate_prefixed_error : has varargs
 
-func Fn_ptr_array_find(haystack c.UndefinedParamType, needle c.UndefinedParamType, index c.UndefinedParamType) {
+func Fn_ptr_array_find(haystack c.UndefinedParamType, needle c.UndefinedParamType, index *uint) {}
+
+func Fn_ptr_array_find_with_equal_func(haystack c.UndefinedParamType, needle c.UndefinedParamType, equalFunc c.UndefinedParamType, index *uint) {
 }
 
-func Fn_ptr_array_find_with_equal_func(haystack c.UndefinedParamType, needle c.UndefinedParamType, equalFunc c.UndefinedParamType, index c.UndefinedParamType) {
-}
-
-func Fn_qsort_with_data(pbase c.UndefinedParamType, totalElems c.UndefinedParamType, size c.UndefinedParamType, compareFunc c.UndefinedParamType, userData c.UndefinedParamType) {
+func Fn_qsort_with_data(pbase c.UndefinedParamType, totalElems int, size uint64, compareFunc c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
 func Fn_quark_from_static_string(string_ c.UndefinedParamType) {}
@@ -807,27 +798,25 @@ func Fn_quark_try_string(string_ c.UndefinedParamType) {}
 
 func Fn_random_double() {}
 
-func Fn_random_double_range(begin c.UndefinedParamType, end c.UndefinedParamType) {}
+func Fn_random_double_range(begin float64, end float64) {}
 
 func Fn_random_int() {}
 
-func Fn_random_int_range(begin c.UndefinedParamType, end c.UndefinedParamType) {}
+func Fn_random_int_range(begin int32, end int32) {}
 
-func Fn_random_set_seed(seed c.UndefinedParamType) {}
+func Fn_random_set_seed(seed uint32) {}
 
-func Fn_realloc(mem c.UndefinedParamType, nBytes c.UndefinedParamType) {}
+func Fn_realloc(mem unsafe.Pointer, nBytes uint64) {}
 
-func Fn_realloc_n(mem c.UndefinedParamType, nBlocks c.UndefinedParamType, nBlockBytes c.UndefinedParamType) {
-}
+func Fn_realloc_n(mem unsafe.Pointer, nBlocks uint64, nBlockBytes uint64) {}
 
-func Fn_regex_check_replacement(replacement c.UndefinedParamType, hasReferences c.UndefinedParamType) {
-}
+func Fn_regex_check_replacement(replacement c.UndefinedParamType, hasReferences *bool) {}
 
 func Fn_regex_error_quark() {}
 
-func Fn_regex_escape_nul(string_ c.UndefinedParamType, length c.UndefinedParamType) {}
+func Fn_regex_escape_nul(string_ c.UndefinedParamType, length int) {}
 
-func Fn_regex_escape_string(string_ c.UndefinedParamType, length c.UndefinedParamType) {}
+func Fn_regex_escape_string(string_ c.UndefinedParamType, length int) {}
 
 func Fn_regex_match_simple(pattern c.UndefinedParamType, string_ c.UndefinedParamType, compileOptions c.UndefinedParamType, matchOptions c.UndefinedParamType) {
 }
@@ -844,7 +833,7 @@ func Fn_rmdir(filename c.UndefinedParamType) {}
 
 func Fn_sequence_get(iter c.UndefinedParamType) {}
 
-func Fn_sequence_insert_before(iter c.UndefinedParamType, data c.UndefinedParamType) {}
+func Fn_sequence_insert_before(iter c.UndefinedParamType, data unsafe.Pointer) {}
 
 func Fn_sequence_move(src c.UndefinedParamType, dest c.UndefinedParamType) {}
 
@@ -857,7 +846,7 @@ func Fn_sequence_remove(iter c.UndefinedParamType) {}
 
 func Fn_sequence_remove_range(begin c.UndefinedParamType, end c.UndefinedParamType) {}
 
-func Fn_sequence_set(iter c.UndefinedParamType, data c.UndefinedParamType) {}
+func Fn_sequence_set(iter c.UndefinedParamType, data unsafe.Pointer) {}
 
 func Fn_sequence_swap(a c.UndefinedParamType, b c.UndefinedParamType) {}
 
@@ -865,7 +854,7 @@ func Fn_set_application_name(applicationName c.UndefinedParamType) {}
 
 // UNSUPPORTED : set_error : has varargs
 
-func Fn_set_error_literal(err c.UndefinedParamType, domain c.UndefinedParamType, code c.UndefinedParamType, message c.UndefinedParamType) {
+func Fn_set_error_literal(err c.UndefinedParamType, domain c.UndefinedParamType, code int, message c.UndefinedParamType) {
 }
 
 func Fn_set_prgname(prgname c.UndefinedParamType) {}
@@ -874,68 +863,64 @@ func Fn_set_print_handler(func_ c.UndefinedParamType) {}
 
 func Fn_set_printerr_handler(func_ c.UndefinedParamType) {}
 
-func Fn_setenv(variable c.UndefinedParamType, value c.UndefinedParamType, overwrite c.UndefinedParamType) {
-}
+func Fn_setenv(variable c.UndefinedParamType, value c.UndefinedParamType, overwrite bool) {}
 
 func Fn_shell_error_quark() {}
 
-func Fn_shell_parse_argv(commandLine c.UndefinedParamType, argcp c.UndefinedParamType, argvp c.UndefinedParamType) {
-}
+func Fn_shell_parse_argv(commandLine c.UndefinedParamType, argcp *int, argvp c.UndefinedParamType) {}
 
 func Fn_shell_quote(unquotedString c.UndefinedParamType) {}
 
 func Fn_shell_unquote(quotedString c.UndefinedParamType) {}
 
-func Fn_slice_alloc(blockSize c.UndefinedParamType) {}
+func Fn_slice_alloc(blockSize uint64) {}
 
-func Fn_slice_alloc0(blockSize c.UndefinedParamType) {}
+func Fn_slice_alloc0(blockSize uint64) {}
 
-func Fn_slice_copy(blockSize c.UndefinedParamType, memBlock c.UndefinedParamType) {}
+func Fn_slice_copy(blockSize uint64, memBlock c.UndefinedParamType) {}
 
-func Fn_slice_free1(blockSize c.UndefinedParamType, memBlock c.UndefinedParamType) {}
+func Fn_slice_free1(blockSize uint64, memBlock unsafe.Pointer) {}
 
-func Fn_slice_free_chain_with_offset(blockSize c.UndefinedParamType, memChain c.UndefinedParamType, nextOffset c.UndefinedParamType) {
-}
+func Fn_slice_free_chain_with_offset(blockSize uint64, memChain unsafe.Pointer, nextOffset uint64) {}
 
 func Fn_slice_get_config(ckey c.UndefinedParamType) {}
 
-func Fn_slice_get_config_state(ckey c.UndefinedParamType, address c.UndefinedParamType, nValues c.UndefinedParamType) {
-}
+func Fn_slice_get_config_state(ckey c.UndefinedParamType, address int64, nValues *uint) {}
 
-func Fn_slice_set_config(ckey c.UndefinedParamType, value c.UndefinedParamType) {}
+func Fn_slice_set_config(ckey c.UndefinedParamType, value int64) {}
 
 // UNSUPPORTED : snprintf : has varargs
 
-func Fn_source_remove(tag c.UndefinedParamType) {}
+func Fn_source_remove(tag uint) {}
 
-func Fn_source_remove_by_funcs_user_data(funcs c.UndefinedParamType, userData c.UndefinedParamType) {}
+func Fn_source_remove_by_funcs_user_data(funcs c.UndefinedParamType, userData unsafe.Pointer) {}
 
-func Fn_source_remove_by_user_data(userData c.UndefinedParamType) {}
+func Fn_source_remove_by_user_data(userData unsafe.Pointer) {}
 
-func Fn_source_set_name_by_id(tag c.UndefinedParamType, name c.UndefinedParamType) {}
+func Fn_source_set_name_by_id(tag uint, name c.UndefinedParamType) {}
 
-func Fn_spaced_primes_closest(num c.UndefinedParamType) {}
+func Fn_spaced_primes_closest(num uint) {}
 
-func Fn_spawn_async(workingDirectory c.UndefinedParamType, argv c.UndefinedParamType, envp c.UndefinedParamType, flags c.UndefinedParamType, childSetup c.UndefinedParamType, userData c.UndefinedParamType, childPid c.UndefinedParamType) {
+func Fn_spawn_async(workingDirectory c.UndefinedParamType, argv c.UndefinedParamType, envp c.UndefinedParamType, flags c.UndefinedParamType, childSetup c.UndefinedParamType, userData unsafe.Pointer, childPid c.UndefinedParamType) {
 }
 
-func Fn_spawn_async_with_pipes(workingDirectory c.UndefinedParamType, argv c.UndefinedParamType, envp c.UndefinedParamType, flags c.UndefinedParamType, childSetup c.UndefinedParamType, userData c.UndefinedParamType, childPid c.UndefinedParamType, standardInput c.UndefinedParamType, standardOutput c.UndefinedParamType, standardError c.UndefinedParamType) {
+func Fn_spawn_async_with_pipes(workingDirectory c.UndefinedParamType, argv c.UndefinedParamType, envp c.UndefinedParamType, flags c.UndefinedParamType, childSetup c.UndefinedParamType, userData unsafe.Pointer, childPid c.UndefinedParamType, standardInput *int, standardOutput *int, standardError *int) {
 }
 
-func Fn_spawn_check_exit_status(exitStatus c.UndefinedParamType) {}
+func Fn_spawn_check_exit_status(exitStatus int) {}
 
 func Fn_spawn_close_pid(pid c.UndefinedParamType) {}
 
 func Fn_spawn_command_line_async(commandLine c.UndefinedParamType) {}
 
-func Fn_spawn_command_line_sync(commandLine c.UndefinedParamType, standardOutput c.UndefinedParamType, standardError c.UndefinedParamType, exitStatus c.UndefinedParamType) {
+func Fn_spawn_command_line_sync(commandLine c.UndefinedParamType, standardOutput c.UndefinedParamType, standardError c.UndefinedParamType, exitStatus *int) {
 }
 
 func Fn_spawn_error_quark() {}
 
 func Fn_spawn_exit_error_quark() {}
 
-func Fn_spawn_sync(workingDirectory c.UndefinedParamType, argv c.UndefinedParamType, envp c.UndefinedParamType, flags c.UndefinedParamType, childSetup c.UndefinedParamType, userData c.UndefinedParamType, standardOutput c.UndefinedParamType, standardError c.UndefinedParamType, exitStatus c.UndefinedParamType) {
+func Fn_spawn_sync(workingDirectory c.UndefinedParamType, argv c.UndefinedParamType, envp c.UndefinedParamType, flags c.UndefinedParamType, childSetup c.UndefinedParamType, userData unsafe.Pointer, standardOutput c.UndefinedParamType, standardError c.UndefinedParamType, exitStatus *int) {
 }
 
 // UNSUPPORTED : sprintf : has varargs
@@ -952,7 +937,7 @@ func Fn_str_hash(v c.UndefinedParamType) {}
 
 func Fn_str_is_ascii(str c.UndefinedParamType) {}
 
-func Fn_str_match_string(searchTerm c.UndefinedParamType, potentialHit c.UndefinedParamType, acceptAlternates c.UndefinedParamType) {
+func Fn_str_match_string(searchTerm c.UndefinedParamType, potentialHit c.UndefinedParamType, acceptAlternates bool) {
 }
 
 func Fn_str_to_ascii(str c.UndefinedParamType, fromLocale c.UndefinedParamType) {}
@@ -988,7 +973,7 @@ func Fn_strdup_vprintf(format c.UndefinedParamType, args c.UndefinedParamType) {
 
 func Fn_strdupv(strArray c.UndefinedParamType) {}
 
-func Fn_strerror(errnum c.UndefinedParamType) {}
+func Fn_strerror(errnum int) {}
 
 func Fn_strescape(source c.UndefinedParamType, exceptions c.UndefinedParamType) {}
 
@@ -996,9 +981,9 @@ func Fn_strfreev(strArray c.UndefinedParamType) {}
 
 func Fn_string_new(init c.UndefinedParamType) {}
 
-func Fn_string_new_len(init c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_string_new_len(init c.UndefinedParamType, len uint64) {}
 
-func Fn_string_sized_new(dflSize c.UndefinedParamType) {}
+func Fn_string_sized_new(dflSize uint64) {}
 
 func Fn_strip_context(msgid c.UndefinedParamType, msgval c.UndefinedParamType) {}
 
@@ -1006,33 +991,29 @@ func Fn_strip_context(msgid c.UndefinedParamType, msgval c.UndefinedParamType) {
 
 func Fn_strjoinv(separator c.UndefinedParamType, strArray c.UndefinedParamType) {}
 
-func Fn_strlcat(dest c.UndefinedParamType, src c.UndefinedParamType, destSize c.UndefinedParamType) {}
+func Fn_strlcat(dest c.UndefinedParamType, src c.UndefinedParamType, destSize uint64) {}
 
-func Fn_strlcpy(dest c.UndefinedParamType, src c.UndefinedParamType, destSize c.UndefinedParamType) {}
+func Fn_strlcpy(dest c.UndefinedParamType, src c.UndefinedParamType, destSize uint64) {}
 
-func Fn_strncasecmp(s1 c.UndefinedParamType, s2 c.UndefinedParamType, n c.UndefinedParamType) {}
+func Fn_strncasecmp(s1 c.UndefinedParamType, s2 c.UndefinedParamType, n uint) {}
 
-func Fn_strndup(str c.UndefinedParamType, n c.UndefinedParamType) {}
+func Fn_strndup(str c.UndefinedParamType, n uint64) {}
 
-func Fn_strnfill(length c.UndefinedParamType, fillChar c.UndefinedParamType) {}
+func Fn_strnfill(length uint64, fillChar c.UndefinedParamType) {}
 
 func Fn_strreverse(string_ c.UndefinedParamType) {}
 
 func Fn_strrstr(haystack c.UndefinedParamType, needle c.UndefinedParamType) {}
 
-func Fn_strrstr_len(haystack c.UndefinedParamType, haystackLen c.UndefinedParamType, needle c.UndefinedParamType) {
-}
+func Fn_strrstr_len(haystack c.UndefinedParamType, haystackLen uint64, needle c.UndefinedParamType) {}
 
-func Fn_strsignal(signum c.UndefinedParamType) {}
+func Fn_strsignal(signum int) {}
 
-func Fn_strsplit(string_ c.UndefinedParamType, delimiter c.UndefinedParamType, maxTokens c.UndefinedParamType) {
-}
+func Fn_strsplit(string_ c.UndefinedParamType, delimiter c.UndefinedParamType, maxTokens int) {}
 
-func Fn_strsplit_set(string_ c.UndefinedParamType, delimiters c.UndefinedParamType, maxTokens c.UndefinedParamType) {
-}
+func Fn_strsplit_set(string_ c.UndefinedParamType, delimiters c.UndefinedParamType, maxTokens int) {}
 
-func Fn_strstr_len(haystack c.UndefinedParamType, haystackLen c.UndefinedParamType, needle c.UndefinedParamType) {
-}
+func Fn_strstr_len(haystack c.UndefinedParamType, haystackLen uint64, needle c.UndefinedParamType) {}
 
 func Fn_strtod(nptr c.UndefinedParamType, endptr c.UndefinedParamType) {}
 
@@ -1047,15 +1028,15 @@ func Fn_strv_length(strArray c.UndefinedParamType) {}
 func Fn_test_add_data_func(testpath c.UndefinedParamType, testData c.UndefinedParamType, testFunc c.UndefinedParamType) {
 }
 
-func Fn_test_add_data_func_full(testpath c.UndefinedParamType, testData c.UndefinedParamType, testFunc c.UndefinedParamType, dataFreeFunc c.UndefinedParamType) {
+func Fn_test_add_data_func_full(testpath c.UndefinedParamType, testData unsafe.Pointer, testFunc c.UndefinedParamType, dataFreeFunc c.UndefinedParamType) {
 }
 
 func Fn_test_add_func(testpath c.UndefinedParamType, testFunc c.UndefinedParamType) {}
 
-func Fn_test_add_vtable(testpath c.UndefinedParamType, dataSize c.UndefinedParamType, testData c.UndefinedParamType, dataSetup c.UndefinedParamType, dataTest c.UndefinedParamType, dataTeardown c.UndefinedParamType) {
+func Fn_test_add_vtable(testpath c.UndefinedParamType, dataSize uint64, testData c.UndefinedParamType, dataSetup c.UndefinedParamType, dataTest c.UndefinedParamType, dataTeardown c.UndefinedParamType) {
 }
 
-func Fn_test_assert_expected_messages_internal(domain c.UndefinedParamType, file c.UndefinedParamType, line c.UndefinedParamType, func_ c.UndefinedParamType) {
+func Fn_test_assert_expected_messages_internal(domain c.UndefinedParamType, file c.UndefinedParamType, line int, func_ c.UndefinedParamType) {
 }
 
 func Fn_test_bug(bugUriSnippet c.UndefinedParamType) {}
@@ -1064,7 +1045,7 @@ func Fn_test_bug_base(uriPattern c.UndefinedParamType) {}
 
 // UNSUPPORTED : test_build_filename : has varargs
 
-func Fn_test_create_case(testName c.UndefinedParamType, dataSize c.UndefinedParamType, testData c.UndefinedParamType, dataSetup c.UndefinedParamType, dataTest c.UndefinedParamType, dataTeardown c.UndefinedParamType) {
+func Fn_test_create_case(testName c.UndefinedParamType, dataSize uint64, testData c.UndefinedParamType, dataSetup c.UndefinedParamType, dataTest c.UndefinedParamType, dataTeardown c.UndefinedParamType) {
 }
 
 func Fn_test_create_suite(suiteName c.UndefinedParamType) {}
@@ -1086,7 +1067,7 @@ func Fn_test_incomplete(msg c.UndefinedParamType) {}
 
 // UNSUPPORTED : test_init : has varargs
 
-func Fn_test_log_set_fatal_handler(logFunc c.UndefinedParamType, userData c.UndefinedParamType) {}
+func Fn_test_log_set_fatal_handler(logFunc c.UndefinedParamType, userData unsafe.Pointer) {}
 
 func Fn_test_log_type_name(logType c.UndefinedParamType) {}
 
@@ -1096,17 +1077,17 @@ func Fn_test_log_type_name(logType c.UndefinedParamType) {}
 
 // UNSUPPORTED : test_minimized_result : has varargs
 
-func Fn_test_queue_destroy(destroyFunc c.UndefinedParamType, destroyData c.UndefinedParamType) {}
+func Fn_test_queue_destroy(destroyFunc c.UndefinedParamType, destroyData unsafe.Pointer) {}
 
-func Fn_test_queue_free(gfreePointer c.UndefinedParamType) {}
+func Fn_test_queue_free(gfreePointer unsafe.Pointer) {}
 
 func Fn_test_rand_double() {}
 
-func Fn_test_rand_double_range(rangeStart c.UndefinedParamType, rangeEnd c.UndefinedParamType) {}
+func Fn_test_rand_double_range(rangeStart float64, rangeEnd float64) {}
 
 func Fn_test_rand_int() {}
 
-func Fn_test_rand_int_range(begin c.UndefinedParamType, end c.UndefinedParamType) {}
+func Fn_test_rand_int_range(begin int32, end int32) {}
 
 func Fn_test_run() {}
 
@@ -1124,21 +1105,21 @@ func Fn_test_timer_last() {}
 
 func Fn_test_timer_start() {}
 
-func Fn_test_trap_assertions(domain c.UndefinedParamType, file c.UndefinedParamType, line c.UndefinedParamType, func_ c.UndefinedParamType, assertionFlags c.UndefinedParamType, pattern c.UndefinedParamType) {
+func Fn_test_trap_assertions(domain c.UndefinedParamType, file c.UndefinedParamType, line int, func_ c.UndefinedParamType, assertionFlags uint64, pattern c.UndefinedParamType) {
 }
 
-func Fn_test_trap_fork(usecTimeout c.UndefinedParamType, testTrapFlags c.UndefinedParamType) {}
+func Fn_test_trap_fork(usecTimeout uint64, testTrapFlags c.UndefinedParamType) {}
 
 func Fn_test_trap_has_passed() {}
 
 func Fn_test_trap_reached_timeout() {}
 
-func Fn_test_trap_subprocess(testPath c.UndefinedParamType, usecTimeout c.UndefinedParamType, testFlags c.UndefinedParamType) {
+func Fn_test_trap_subprocess(testPath c.UndefinedParamType, usecTimeout uint64, testFlags c.UndefinedParamType) {
 }
 
 func Fn_thread_error_quark() {}
 
-func Fn_thread_exit(retval c.UndefinedParamType) {}
+func Fn_thread_exit(retval unsafe.Pointer) {}
 
 func Fn_thread_pool_get_max_idle_time() {}
 
@@ -1146,9 +1127,9 @@ func Fn_thread_pool_get_max_unused_threads() {}
 
 func Fn_thread_pool_get_num_unused_threads() {}
 
-func Fn_thread_pool_set_max_idle_time(interval c.UndefinedParamType) {}
+func Fn_thread_pool_set_max_idle_time(interval uint) {}
 
-func Fn_thread_pool_set_max_unused_threads(maxThreads c.UndefinedParamType) {}
+func Fn_thread_pool_set_max_unused_threads(maxThreads int) {}
 
 func Fn_thread_pool_stop_unused_threads() {}
 
@@ -1158,21 +1139,19 @@ func Fn_thread_yield() {}
 
 func Fn_time_val_from_iso8601(isoDate c.UndefinedParamType, time c.UndefinedParamType) {}
 
-func Fn_timeout_add(interval c.UndefinedParamType, function c.UndefinedParamType, data c.UndefinedParamType) {
+func Fn_timeout_add(interval uint, function c.UndefinedParamType, data unsafe.Pointer) {}
+
+func Fn_timeout_add_full(priority int, interval uint, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
-func Fn_timeout_add_full(priority c.UndefinedParamType, interval c.UndefinedParamType, function c.UndefinedParamType, data c.UndefinedParamType, notify c.UndefinedParamType) {
+func Fn_timeout_add_seconds(interval uint, function c.UndefinedParamType, data unsafe.Pointer) {}
+
+func Fn_timeout_add_seconds_full(priority int, interval uint, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
-func Fn_timeout_add_seconds(interval c.UndefinedParamType, function c.UndefinedParamType, data c.UndefinedParamType) {
-}
+func Fn_timeout_source_new(interval uint) {}
 
-func Fn_timeout_add_seconds_full(priority c.UndefinedParamType, interval c.UndefinedParamType, function c.UndefinedParamType, data c.UndefinedParamType, notify c.UndefinedParamType) {
-}
-
-func Fn_timeout_source_new(interval c.UndefinedParamType) {}
-
-func Fn_timeout_source_new_seconds(interval c.UndefinedParamType) {}
+func Fn_timeout_source_new_seconds(interval uint) {}
 
 func Fn_trash_stack_height(stackP c.UndefinedParamType) {}
 
@@ -1180,127 +1159,122 @@ func Fn_trash_stack_peek(stackP c.UndefinedParamType) {}
 
 func Fn_trash_stack_pop(stackP c.UndefinedParamType) {}
 
-func Fn_trash_stack_push(stackP c.UndefinedParamType, dataP c.UndefinedParamType) {}
+func Fn_trash_stack_push(stackP c.UndefinedParamType, dataP unsafe.Pointer) {}
 
-func Fn_try_malloc(nBytes c.UndefinedParamType) {}
+func Fn_try_malloc(nBytes uint64) {}
 
-func Fn_try_malloc0(nBytes c.UndefinedParamType) {}
+func Fn_try_malloc0(nBytes uint64) {}
 
-func Fn_try_malloc0_n(nBlocks c.UndefinedParamType, nBlockBytes c.UndefinedParamType) {}
+func Fn_try_malloc0_n(nBlocks uint64, nBlockBytes uint64) {}
 
-func Fn_try_malloc_n(nBlocks c.UndefinedParamType, nBlockBytes c.UndefinedParamType) {}
+func Fn_try_malloc_n(nBlocks uint64, nBlockBytes uint64) {}
 
-func Fn_try_realloc(mem c.UndefinedParamType, nBytes c.UndefinedParamType) {}
+func Fn_try_realloc(mem unsafe.Pointer, nBytes uint64) {}
 
-func Fn_try_realloc_n(mem c.UndefinedParamType, nBlocks c.UndefinedParamType, nBlockBytes c.UndefinedParamType) {
-}
+func Fn_try_realloc_n(mem unsafe.Pointer, nBlocks uint64, nBlockBytes uint64) {}
 
-func Fn_ucs4_to_utf16(str c.UndefinedParamType, len c.UndefinedParamType, itemsRead c.UndefinedParamType, itemsWritten c.UndefinedParamType) {
-}
+func Fn_ucs4_to_utf16(str *rune, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_ucs4_to_utf8(str c.UndefinedParamType, len c.UndefinedParamType, itemsRead c.UndefinedParamType, itemsWritten c.UndefinedParamType) {
-}
+func Fn_ucs4_to_utf8(str *rune, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_unichar_break_type(c c.UndefinedParamType) {}
+func Fn_unichar_break_type(c rune) {}
 
-func Fn_unichar_combining_class(uc c.UndefinedParamType) {}
+func Fn_unichar_combining_class(uc rune) {}
 
-func Fn_unichar_compose(a c.UndefinedParamType, b c.UndefinedParamType, ch c.UndefinedParamType) {}
+func Fn_unichar_compose(a rune, b rune, ch *rune) {}
 
-func Fn_unichar_decompose(ch c.UndefinedParamType, a c.UndefinedParamType, b c.UndefinedParamType) {}
+func Fn_unichar_decompose(ch rune, a *rune, b *rune) {}
 
-func Fn_unichar_digit_value(c c.UndefinedParamType) {}
+func Fn_unichar_digit_value(c rune) {}
 
-func Fn_unichar_fully_decompose(ch c.UndefinedParamType, compat c.UndefinedParamType, result c.UndefinedParamType, resultLen c.UndefinedParamType) {
-}
+func Fn_unichar_fully_decompose(ch rune, compat bool, result *rune, resultLen uint64) {}
 
-func Fn_unichar_get_mirror_char(ch c.UndefinedParamType, mirroredCh c.UndefinedParamType) {}
+func Fn_unichar_get_mirror_char(ch rune, mirroredCh *rune) {}
 
-func Fn_unichar_get_script(ch c.UndefinedParamType) {}
+func Fn_unichar_get_script(ch rune) {}
 
-func Fn_unichar_isalnum(c c.UndefinedParamType) {}
+func Fn_unichar_isalnum(c rune) {}
 
-func Fn_unichar_isalpha(c c.UndefinedParamType) {}
+func Fn_unichar_isalpha(c rune) {}
 
-func Fn_unichar_iscntrl(c c.UndefinedParamType) {}
+func Fn_unichar_iscntrl(c rune) {}
 
-func Fn_unichar_isdefined(c c.UndefinedParamType) {}
+func Fn_unichar_isdefined(c rune) {}
 
-func Fn_unichar_isdigit(c c.UndefinedParamType) {}
+func Fn_unichar_isdigit(c rune) {}
 
-func Fn_unichar_isgraph(c c.UndefinedParamType) {}
+func Fn_unichar_isgraph(c rune) {}
 
-func Fn_unichar_islower(c c.UndefinedParamType) {}
+func Fn_unichar_islower(c rune) {}
 
-func Fn_unichar_ismark(c c.UndefinedParamType) {}
+func Fn_unichar_ismark(c rune) {}
 
-func Fn_unichar_isprint(c c.UndefinedParamType) {}
+func Fn_unichar_isprint(c rune) {}
 
-func Fn_unichar_ispunct(c c.UndefinedParamType) {}
+func Fn_unichar_ispunct(c rune) {}
 
-func Fn_unichar_isspace(c c.UndefinedParamType) {}
+func Fn_unichar_isspace(c rune) {}
 
-func Fn_unichar_istitle(c c.UndefinedParamType) {}
+func Fn_unichar_istitle(c rune) {}
 
-func Fn_unichar_isupper(c c.UndefinedParamType) {}
+func Fn_unichar_isupper(c rune) {}
 
-func Fn_unichar_iswide(c c.UndefinedParamType) {}
+func Fn_unichar_iswide(c rune) {}
 
-func Fn_unichar_iswide_cjk(c c.UndefinedParamType) {}
+func Fn_unichar_iswide_cjk(c rune) {}
 
-func Fn_unichar_isxdigit(c c.UndefinedParamType) {}
+func Fn_unichar_isxdigit(c rune) {}
 
-func Fn_unichar_iszerowidth(c c.UndefinedParamType) {}
+func Fn_unichar_iszerowidth(c rune) {}
 
-func Fn_unichar_to_utf8(c c.UndefinedParamType, outbuf c.UndefinedParamType) {}
+func Fn_unichar_to_utf8(c rune, outbuf c.UndefinedParamType) {}
 
-func Fn_unichar_tolower(c c.UndefinedParamType) {}
+func Fn_unichar_tolower(c rune) {}
 
-func Fn_unichar_totitle(c c.UndefinedParamType) {}
+func Fn_unichar_totitle(c rune) {}
 
-func Fn_unichar_toupper(c c.UndefinedParamType) {}
+func Fn_unichar_toupper(c rune) {}
 
-func Fn_unichar_type(c c.UndefinedParamType) {}
+func Fn_unichar_type(c rune) {}
 
-func Fn_unichar_validate(ch c.UndefinedParamType) {}
+func Fn_unichar_validate(ch rune) {}
 
-func Fn_unichar_xdigit_value(c c.UndefinedParamType) {}
+func Fn_unichar_xdigit_value(c rune) {}
 
-func Fn_unicode_canonical_decomposition(ch c.UndefinedParamType, resultLen c.UndefinedParamType) {}
+func Fn_unicode_canonical_decomposition(ch rune, resultLen *uint64) {}
 
-func Fn_unicode_canonical_ordering(string_ c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_unicode_canonical_ordering(string_ *rune, len uint64) {}
 
-func Fn_unicode_script_from_iso15924(iso15924 c.UndefinedParamType) {}
+func Fn_unicode_script_from_iso15924(iso15924 uint32) {}
 
 func Fn_unicode_script_to_iso15924(script c.UndefinedParamType) {}
 
 func Fn_unix_error_quark() {}
 
-func Fn_unix_fd_add(fd c.UndefinedParamType, condition c.UndefinedParamType, function c.UndefinedParamType, userData c.UndefinedParamType) {
+func Fn_unix_fd_add(fd int, condition c.UndefinedParamType, function c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
-func Fn_unix_fd_add_full(priority c.UndefinedParamType, fd c.UndefinedParamType, condition c.UndefinedParamType, function c.UndefinedParamType, userData c.UndefinedParamType, notify c.UndefinedParamType) {
+func Fn_unix_fd_add_full(priority int, fd int, condition c.UndefinedParamType, function c.UndefinedParamType, userData unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
-func Fn_unix_fd_source_new(fd c.UndefinedParamType, condition c.UndefinedParamType) {}
+func Fn_unix_fd_source_new(fd int, condition c.UndefinedParamType) {}
 
-func Fn_unix_open_pipe(fds c.UndefinedParamType, flags c.UndefinedParamType) {}
+func Fn_unix_open_pipe(fds *int, flags int) {}
 
-func Fn_unix_set_fd_nonblocking(fd c.UndefinedParamType, nonblock c.UndefinedParamType) {}
+func Fn_unix_set_fd_nonblocking(fd int, nonblock bool) {}
 
-func Fn_unix_signal_add(signum c.UndefinedParamType, handler c.UndefinedParamType, userData c.UndefinedParamType) {
+func Fn_unix_signal_add(signum int, handler c.UndefinedParamType, userData unsafe.Pointer) {}
+
+func Fn_unix_signal_add_full(priority int, signum int, handler c.UndefinedParamType, userData unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
-func Fn_unix_signal_add_full(priority c.UndefinedParamType, signum c.UndefinedParamType, handler c.UndefinedParamType, userData c.UndefinedParamType, notify c.UndefinedParamType) {
-}
-
-func Fn_unix_signal_source_new(signum c.UndefinedParamType) {}
+func Fn_unix_signal_source_new(signum int) {}
 
 func Fn_unlink(filename c.UndefinedParamType) {}
 
 func Fn_unsetenv(variable c.UndefinedParamType) {}
 
-func Fn_uri_escape_string(unescaped c.UndefinedParamType, reservedCharsAllowed c.UndefinedParamType, allowUtf8 c.UndefinedParamType) {
+func Fn_uri_escape_string(unescaped c.UndefinedParamType, reservedCharsAllowed c.UndefinedParamType, allowUtf8 bool) {
 }
 
 func Fn_uri_list_extract_uris(uriList c.UndefinedParamType) {}
@@ -1313,21 +1287,19 @@ func Fn_uri_unescape_segment(escapedString c.UndefinedParamType, escapedStringEn
 func Fn_uri_unescape_string(escapedString c.UndefinedParamType, illegalCharacters c.UndefinedParamType) {
 }
 
-func Fn_usleep(microseconds c.UndefinedParamType) {}
+func Fn_usleep(microseconds uint64) {}
 
-func Fn_utf16_to_ucs4(str c.UndefinedParamType, len c.UndefinedParamType, itemsRead c.UndefinedParamType, itemsWritten c.UndefinedParamType) {
-}
+func Fn_utf16_to_ucs4(str c.UndefinedParamType, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_utf16_to_utf8(str c.UndefinedParamType, len c.UndefinedParamType, itemsRead c.UndefinedParamType, itemsWritten c.UndefinedParamType) {
-}
+func Fn_utf16_to_utf8(str c.UndefinedParamType, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_utf8_casefold(str c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_utf8_casefold(str c.UndefinedParamType, len uint64) {}
 
 func Fn_utf8_collate(str1 c.UndefinedParamType, str2 c.UndefinedParamType) {}
 
-func Fn_utf8_collate_key(str c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_utf8_collate_key(str c.UndefinedParamType, len uint64) {}
 
-func Fn_utf8_collate_key_for_filename(str c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_utf8_collate_key_for_filename(str c.UndefinedParamType, len uint64) {}
 
 func Fn_utf8_find_next_char(p c.UndefinedParamType, end c.UndefinedParamType) {}
 
@@ -1335,46 +1307,41 @@ func Fn_utf8_find_prev_char(str c.UndefinedParamType, p c.UndefinedParamType) {}
 
 func Fn_utf8_get_char(p c.UndefinedParamType) {}
 
-func Fn_utf8_get_char_validated(p c.UndefinedParamType, maxLen c.UndefinedParamType) {}
+func Fn_utf8_get_char_validated(p c.UndefinedParamType, maxLen uint64) {}
 
-func Fn_utf8_make_valid(str c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_utf8_make_valid(str c.UndefinedParamType, len uint64) {}
 
-func Fn_utf8_normalize(str c.UndefinedParamType, len c.UndefinedParamType, mode c.UndefinedParamType) {}
+func Fn_utf8_normalize(str c.UndefinedParamType, len uint64, mode c.UndefinedParamType) {}
 
-func Fn_utf8_offset_to_pointer(str c.UndefinedParamType, offset c.UndefinedParamType) {}
+func Fn_utf8_offset_to_pointer(str c.UndefinedParamType, offset int64) {}
 
 func Fn_utf8_pointer_to_offset(str c.UndefinedParamType, pos c.UndefinedParamType) {}
 
 func Fn_utf8_prev_char(p c.UndefinedParamType) {}
 
-func Fn_utf8_strchr(p c.UndefinedParamType, len c.UndefinedParamType, c c.UndefinedParamType) {}
+func Fn_utf8_strchr(p c.UndefinedParamType, len uint64, c rune) {}
 
-func Fn_utf8_strdown(str c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_utf8_strdown(str c.UndefinedParamType, len uint64) {}
 
-func Fn_utf8_strlen(p c.UndefinedParamType, max c.UndefinedParamType) {}
+func Fn_utf8_strlen(p c.UndefinedParamType, max uint64) {}
 
-func Fn_utf8_strncpy(dest c.UndefinedParamType, src c.UndefinedParamType, n c.UndefinedParamType) {}
+func Fn_utf8_strncpy(dest c.UndefinedParamType, src c.UndefinedParamType, n uint64) {}
 
-func Fn_utf8_strrchr(p c.UndefinedParamType, len c.UndefinedParamType, c c.UndefinedParamType) {}
+func Fn_utf8_strrchr(p c.UndefinedParamType, len uint64, c rune) {}
 
-func Fn_utf8_strreverse(str c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_utf8_strreverse(str c.UndefinedParamType, len uint64) {}
 
-func Fn_utf8_strup(str c.UndefinedParamType, len c.UndefinedParamType) {}
+func Fn_utf8_strup(str c.UndefinedParamType, len uint64) {}
 
-func Fn_utf8_substring(str c.UndefinedParamType, startPos c.UndefinedParamType, endPos c.UndefinedParamType) {
-}
+func Fn_utf8_substring(str c.UndefinedParamType, startPos int64, endPos int64) {}
 
-func Fn_utf8_to_ucs4(str c.UndefinedParamType, len c.UndefinedParamType, itemsRead c.UndefinedParamType, itemsWritten c.UndefinedParamType) {
-}
+func Fn_utf8_to_ucs4(str c.UndefinedParamType, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_utf8_to_ucs4_fast(str c.UndefinedParamType, len c.UndefinedParamType, itemsWritten c.UndefinedParamType) {
-}
+func Fn_utf8_to_ucs4_fast(str c.UndefinedParamType, len int64, itemsWritten *int64) {}
 
-func Fn_utf8_to_utf16(str c.UndefinedParamType, len c.UndefinedParamType, itemsRead c.UndefinedParamType, itemsWritten c.UndefinedParamType) {
-}
+func Fn_utf8_to_utf16(str c.UndefinedParamType, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_utf8_validate(str c.UndefinedParamType, maxLen c.UndefinedParamType, end c.UndefinedParamType) {
-}
+func Fn_utf8_validate(str c.UndefinedParamType, maxLen uint64, end c.UndefinedParamType) {}
 
 func Fn_uuid_string_is_valid(str c.UndefinedParamType) {}
 
@@ -1412,11 +1379,11 @@ func Fn_vfprintf(file c.UndefinedParamType, format c.UndefinedParamType, args c.
 
 func Fn_vprintf(format c.UndefinedParamType, args c.UndefinedParamType) {}
 
-func Fn_vsnprintf(string_ c.UndefinedParamType, n c.UndefinedParamType, format c.UndefinedParamType, args c.UndefinedParamType) {
+func Fn_vsnprintf(string_ c.UndefinedParamType, n uint64, format c.UndefinedParamType, args c.UndefinedParamType) {
 }
 
 func Fn_vsprintf(string_ c.UndefinedParamType, format c.UndefinedParamType, args c.UndefinedParamType) {
 }
 
-func Fn_warn_message(domain c.UndefinedParamType, file c.UndefinedParamType, line c.UndefinedParamType, func_ c.UndefinedParamType, warnexpr c.UndefinedParamType) {
+func Fn_warn_message(domain c.UndefinedParamType, file c.UndefinedParamType, line int, func_ c.UndefinedParamType, warnexpr c.UndefinedParamType) {
 }
