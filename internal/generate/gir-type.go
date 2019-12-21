@@ -6,7 +6,7 @@ import (
 	"regexp"
 )
 
-var cTypeRegex = regexp.MustCompile(" *(const|volatile)? *([a-zA-Z0-9 ]+) *(\\**)? *")
+var cTypeRegex = regexp.MustCompile(" *(const |volatile )* *([a-zA-Z0-9 ]+) *(\\**)? *")
 
 var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"gchar":         jen.Int8(),
@@ -47,7 +47,6 @@ type Type struct {
 	foreignNamespace *Namespace
 	foreignName      string
 
-	cIsConst          bool
 	cType             string
 	cStars            string
 	cIndirectionCount int
@@ -91,7 +90,6 @@ func (t *Type) analyseName() {
 
 func (t *Type) parseCtype() {
 	parts := cTypeRegex.FindStringSubmatch(t.CType)
-	t.cIsConst = parts[1] != ""
 	t.cType = parts[2]
 	t.cStars = parts[3]
 	t.cIndirectionCount = len(t.cStars)

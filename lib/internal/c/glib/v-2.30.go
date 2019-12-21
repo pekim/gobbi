@@ -212,7 +212,7 @@ func Fn_atomic_int_dec_and_test(atomic *int) {}
 
 func Fn_atomic_int_exchange_and_add(atomic *int, val int) {}
 
-func Fn_atomic_int_get(atomic c.UndefinedParamType) {}
+func Fn_atomic_int_get(atomic *int) {}
 
 func Fn_atomic_int_inc(atomic *int) {}
 
