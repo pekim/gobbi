@@ -3,6 +3,8 @@
 
 package gio
 
+import c "github.com/pekim/gobbi/lib/internal/c"
+
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -443,177 +445,191 @@ type TlsFileDatabase C.GTlsFileDatabase
 type TlsServerConnection C.GTlsServerConnection
 type Volume C.GVolume
 
-func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags string) {}
+func Fn_app_info_create_from_commandline(commandline c.UndefinedParamType, applicationName c.UndefinedParamType, flags c.UndefinedParamType) {
+}
 
 func Fn_app_info_get_all() {}
 
-func Fn_app_info_get_all_for_type(contentType string) {}
+func Fn_app_info_get_all_for_type(contentType c.UndefinedParamType) {}
 
-func Fn_app_info_get_default_for_type(contentType string, mustSupportUris string) {}
-
-func Fn_app_info_get_default_for_uri_scheme(uriScheme string) {}
-
-func Fn_app_info_get_fallback_for_type(contentType string) {}
-
-func Fn_app_info_get_recommended_for_type(contentType string) {}
-
-func Fn_app_info_launch_default_for_uri(uri string, context string) {}
-
-func Fn_app_info_reset_type_associations(contentType string) {}
-
-func Fn_async_initable_newv_async(objectType string, nParameters string, parameters string, ioPriority string, cancellable string, callback string, userData string) {
+func Fn_app_info_get_default_for_type(contentType c.UndefinedParamType, mustSupportUris c.UndefinedParamType) {
 }
 
-func Fn_bus_get(busType string, cancellable string, callback string, userData string) {}
+func Fn_app_info_get_default_for_uri_scheme(uriScheme c.UndefinedParamType) {}
 
-func Fn_bus_get_finish(res string) {}
+func Fn_app_info_get_fallback_for_type(contentType c.UndefinedParamType) {}
 
-func Fn_bus_get_sync(busType string, cancellable string) {}
+func Fn_app_info_get_recommended_for_type(contentType c.UndefinedParamType) {}
 
-func Fn_bus_own_name(busType string, name string, flags string, busAcquiredHandler string, nameAcquiredHandler string, nameLostHandler string, userData string, userDataFreeFunc string) {
+func Fn_app_info_launch_default_for_uri(uri c.UndefinedParamType, context c.UndefinedParamType) {}
+
+func Fn_app_info_reset_type_associations(contentType c.UndefinedParamType) {}
+
+func Fn_async_initable_newv_async(objectType c.UndefinedParamType, nParameters c.UndefinedParamType, parameters c.UndefinedParamType, ioPriority c.UndefinedParamType, cancellable c.UndefinedParamType, callback c.UndefinedParamType, userData c.UndefinedParamType) {
 }
 
-func Fn_bus_own_name_on_connection(connection string, name string, flags string, nameAcquiredHandler string, nameLostHandler string, userData string, userDataFreeFunc string) {
+func Fn_bus_get(busType c.UndefinedParamType, cancellable c.UndefinedParamType, callback c.UndefinedParamType, userData c.UndefinedParamType) {
 }
 
-func Fn_bus_own_name_on_connection_with_closures(connection string, name string, flags string, nameAcquiredClosure string, nameLostClosure string) {
+func Fn_bus_get_finish(res c.UndefinedParamType) {}
+
+func Fn_bus_get_sync(busType c.UndefinedParamType, cancellable c.UndefinedParamType) {}
+
+func Fn_bus_own_name(busType c.UndefinedParamType, name c.UndefinedParamType, flags c.UndefinedParamType, busAcquiredHandler c.UndefinedParamType, nameAcquiredHandler c.UndefinedParamType, nameLostHandler c.UndefinedParamType, userData c.UndefinedParamType, userDataFreeFunc c.UndefinedParamType) {
 }
 
-func Fn_bus_own_name_with_closures(busType string, name string, flags string, busAcquiredClosure string, nameAcquiredClosure string, nameLostClosure string) {
+func Fn_bus_own_name_on_connection(connection c.UndefinedParamType, name c.UndefinedParamType, flags c.UndefinedParamType, nameAcquiredHandler c.UndefinedParamType, nameLostHandler c.UndefinedParamType, userData c.UndefinedParamType, userDataFreeFunc c.UndefinedParamType) {
 }
 
-func Fn_bus_unown_name(ownerId string) {}
-
-func Fn_bus_unwatch_name(watcherId string) {}
-
-func Fn_bus_watch_name(busType string, name string, flags string, nameAppearedHandler string, nameVanishedHandler string, userData string, userDataFreeFunc string) {
+func Fn_bus_own_name_on_connection_with_closures(connection c.UndefinedParamType, name c.UndefinedParamType, flags c.UndefinedParamType, nameAcquiredClosure c.UndefinedParamType, nameLostClosure c.UndefinedParamType) {
 }
 
-func Fn_bus_watch_name_on_connection(connection string, name string, flags string, nameAppearedHandler string, nameVanishedHandler string, userData string, userDataFreeFunc string) {
+func Fn_bus_own_name_with_closures(busType c.UndefinedParamType, name c.UndefinedParamType, flags c.UndefinedParamType, busAcquiredClosure c.UndefinedParamType, nameAcquiredClosure c.UndefinedParamType, nameLostClosure c.UndefinedParamType) {
 }
 
-func Fn_bus_watch_name_on_connection_with_closures(connection string, name string, flags string, nameAppearedClosure string, nameVanishedClosure string) {
+func Fn_bus_unown_name(ownerId c.UndefinedParamType) {}
+
+func Fn_bus_unwatch_name(watcherId c.UndefinedParamType) {}
+
+func Fn_bus_watch_name(busType c.UndefinedParamType, name c.UndefinedParamType, flags c.UndefinedParamType, nameAppearedHandler c.UndefinedParamType, nameVanishedHandler c.UndefinedParamType, userData c.UndefinedParamType, userDataFreeFunc c.UndefinedParamType) {
 }
 
-func Fn_bus_watch_name_with_closures(busType string, name string, flags string, nameAppearedClosure string, nameVanishedClosure string) {
+func Fn_bus_watch_name_on_connection(connection c.UndefinedParamType, name c.UndefinedParamType, flags c.UndefinedParamType, nameAppearedHandler c.UndefinedParamType, nameVanishedHandler c.UndefinedParamType, userData c.UndefinedParamType, userDataFreeFunc c.UndefinedParamType) {
 }
 
-func Fn_content_type_can_be_executable(type_ string) {}
+func Fn_bus_watch_name_on_connection_with_closures(connection c.UndefinedParamType, name c.UndefinedParamType, flags c.UndefinedParamType, nameAppearedClosure c.UndefinedParamType, nameVanishedClosure c.UndefinedParamType) {
+}
 
-func Fn_content_type_equals(type1 string, type2 string) {}
+func Fn_bus_watch_name_with_closures(busType c.UndefinedParamType, name c.UndefinedParamType, flags c.UndefinedParamType, nameAppearedClosure c.UndefinedParamType, nameVanishedClosure c.UndefinedParamType) {
+}
 
-func Fn_content_type_from_mime_type(mimeType string) {}
+func Fn_content_type_can_be_executable(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_get_description(type_ string) {}
+func Fn_content_type_equals(type1 c.UndefinedParamType, type2 c.UndefinedParamType) {}
 
-func Fn_content_type_get_generic_icon_name(type_ string) {}
+func Fn_content_type_from_mime_type(mimeType c.UndefinedParamType) {}
 
-func Fn_content_type_get_icon(type_ string) {}
+func Fn_content_type_get_description(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_get_mime_type(type_ string) {}
+func Fn_content_type_get_generic_icon_name(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_get_symbolic_icon(type_ string) {}
+func Fn_content_type_get_icon(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_guess(filename string, data string, dataSize string, resultUncertain string) {}
+func Fn_content_type_get_mime_type(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_guess_for_tree(root string) {}
+func Fn_content_type_get_symbolic_icon(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_is_a(type_ string, supertype string) {}
+func Fn_content_type_guess(filename c.UndefinedParamType, data c.UndefinedParamType, dataSize c.UndefinedParamType, resultUncertain c.UndefinedParamType) {
+}
 
-func Fn_content_type_is_unknown(type_ string) {}
+func Fn_content_type_guess_for_tree(root c.UndefinedParamType) {}
+
+func Fn_content_type_is_a(type_ c.UndefinedParamType, supertype c.UndefinedParamType) {}
+
+func Fn_content_type_is_unknown(type_ c.UndefinedParamType) {}
 
 func Fn_content_types_get_registered() {}
 
-func Fn_dbus_address_get_for_bus_sync(busType string, cancellable string) {}
+func Fn_dbus_address_get_for_bus_sync(busType c.UndefinedParamType, cancellable c.UndefinedParamType) {
+}
 
-func Fn_dbus_address_get_stream(address string, cancellable string, callback string, userData string) {}
+func Fn_dbus_address_get_stream(address c.UndefinedParamType, cancellable c.UndefinedParamType, callback c.UndefinedParamType, userData c.UndefinedParamType) {
+}
 
-func Fn_dbus_address_get_stream_finish(res string, outGuid string) {}
+func Fn_dbus_address_get_stream_finish(res c.UndefinedParamType, outGuid c.UndefinedParamType) {}
 
-func Fn_dbus_address_get_stream_sync(address string, outGuid string, cancellable string) {}
+func Fn_dbus_address_get_stream_sync(address c.UndefinedParamType, outGuid c.UndefinedParamType, cancellable c.UndefinedParamType) {
+}
 
-func Fn_dbus_annotation_info_lookup(annotations string, name string) {}
+func Fn_dbus_annotation_info_lookup(annotations c.UndefinedParamType, name c.UndefinedParamType) {}
 
-func Fn_dbus_error_encode_gerror(error string) {}
+func Fn_dbus_error_encode_gerror(error c.UndefinedParamType) {}
 
-func Fn_dbus_error_get_remote_error(error string) {}
+func Fn_dbus_error_get_remote_error(error c.UndefinedParamType) {}
 
-func Fn_dbus_error_is_remote_error(error string) {}
+func Fn_dbus_error_is_remote_error(error c.UndefinedParamType) {}
 
-func Fn_dbus_error_new_for_dbus_error(dbusErrorName string, dbusErrorMessage string) {}
+func Fn_dbus_error_new_for_dbus_error(dbusErrorName c.UndefinedParamType, dbusErrorMessage c.UndefinedParamType) {
+}
 
 func Fn_dbus_error_quark() {}
 
-func Fn_dbus_error_register_error(errorDomain string, errorCode string, dbusErrorName string) {}
-
-func Fn_dbus_error_register_error_domain(errorDomainQuarkName string, quarkVolatile string, entries string, numEntries string) {
+func Fn_dbus_error_register_error(errorDomain c.UndefinedParamType, errorCode c.UndefinedParamType, dbusErrorName c.UndefinedParamType) {
 }
 
-func Fn_dbus_error_strip_remote_error(error string) {}
+func Fn_dbus_error_register_error_domain(errorDomainQuarkName c.UndefinedParamType, quarkVolatile c.UndefinedParamType, entries c.UndefinedParamType, numEntries c.UndefinedParamType) {
+}
 
-func Fn_dbus_error_unregister_error(errorDomain string, errorCode string, dbusErrorName string) {}
+func Fn_dbus_error_strip_remote_error(error c.UndefinedParamType) {}
+
+func Fn_dbus_error_unregister_error(errorDomain c.UndefinedParamType, errorCode c.UndefinedParamType, dbusErrorName c.UndefinedParamType) {
+}
 
 func Fn_dbus_generate_guid() {}
 
-func Fn_dbus_gvalue_to_gvariant(gvalue string, type_ string) {}
+func Fn_dbus_gvalue_to_gvariant(gvalue c.UndefinedParamType, type_ c.UndefinedParamType) {}
 
-func Fn_dbus_gvariant_to_gvalue(value string, outGvalue string) {}
+func Fn_dbus_gvariant_to_gvalue(value c.UndefinedParamType, outGvalue c.UndefinedParamType) {}
 
-func Fn_dbus_is_address(string_ string) {}
+func Fn_dbus_is_address(string_ c.UndefinedParamType) {}
 
-func Fn_dbus_is_guid(string_ string) {}
+func Fn_dbus_is_guid(string_ c.UndefinedParamType) {}
 
-func Fn_dbus_is_interface_name(string_ string) {}
+func Fn_dbus_is_interface_name(string_ c.UndefinedParamType) {}
 
-func Fn_dbus_is_member_name(string_ string) {}
+func Fn_dbus_is_member_name(string_ c.UndefinedParamType) {}
 
-func Fn_dbus_is_name(string_ string) {}
+func Fn_dbus_is_name(string_ c.UndefinedParamType) {}
 
-func Fn_dbus_is_supported_address(string_ string) {}
+func Fn_dbus_is_supported_address(string_ c.UndefinedParamType) {}
 
-func Fn_dbus_is_unique_name(string_ string) {}
+func Fn_dbus_is_unique_name(string_ c.UndefinedParamType) {}
 
-func Fn_file_new_for_commandline_arg(arg string) {}
+func Fn_file_new_for_commandline_arg(arg c.UndefinedParamType) {}
 
-func Fn_file_new_for_path(path string) {}
+func Fn_file_new_for_path(path c.UndefinedParamType) {}
 
-func Fn_file_new_for_uri(uri string) {}
+func Fn_file_new_for_uri(uri c.UndefinedParamType) {}
 
-func Fn_file_new_tmp(tmpl string, iostream string) {}
+func Fn_file_new_tmp(tmpl c.UndefinedParamType, iostream c.UndefinedParamType) {}
 
-func Fn_file_parse_name(parseName string) {}
+func Fn_file_parse_name(parseName c.UndefinedParamType) {}
 
-func Fn_icon_hash(icon string) {}
+func Fn_icon_hash(icon c.UndefinedParamType) {}
 
-func Fn_icon_new_for_string(str string) {}
+func Fn_icon_new_for_string(str c.UndefinedParamType) {}
 
-func Fn_initable_newv(objectType string, nParameters string, parameters string, cancellable string) {}
+func Fn_initable_newv(objectType c.UndefinedParamType, nParameters c.UndefinedParamType, parameters c.UndefinedParamType, cancellable c.UndefinedParamType) {
+}
 
-func Fn_io_error_from_errno(errNo string) {}
+func Fn_io_error_from_errno(errNo c.UndefinedParamType) {}
 
 func Fn_io_error_quark() {}
 
-func Fn_io_extension_point_implement(extensionPointName string, type_ string, extensionName string, priority string) {
+func Fn_io_extension_point_implement(extensionPointName c.UndefinedParamType, type_ c.UndefinedParamType, extensionName c.UndefinedParamType, priority c.UndefinedParamType) {
 }
 
-func Fn_io_extension_point_lookup(name string) {}
+func Fn_io_extension_point_lookup(name c.UndefinedParamType) {}
 
-func Fn_io_extension_point_register(name string) {}
+func Fn_io_extension_point_register(name c.UndefinedParamType) {}
 
-func Fn_io_modules_load_all_in_directory(dirname string) {}
+func Fn_io_modules_load_all_in_directory(dirname c.UndefinedParamType) {}
 
-func Fn_io_modules_load_all_in_directory_with_scope(dirname string, scope string) {}
+func Fn_io_modules_load_all_in_directory_with_scope(dirname c.UndefinedParamType, scope c.UndefinedParamType) {
+}
 
-func Fn_io_modules_scan_all_in_directory(dirname string) {}
+func Fn_io_modules_scan_all_in_directory(dirname c.UndefinedParamType) {}
 
-func Fn_io_modules_scan_all_in_directory_with_scope(dirname string, scope string) {}
+func Fn_io_modules_scan_all_in_directory_with_scope(dirname c.UndefinedParamType, scope c.UndefinedParamType) {
+}
 
 func Fn_io_scheduler_cancel_all_jobs() {}
 
-func Fn_io_scheduler_push_job(jobFunc string, userData string, notify string, ioPriority string, cancellable string) {
+func Fn_io_scheduler_push_job(jobFunc c.UndefinedParamType, userData c.UndefinedParamType, notify c.UndefinedParamType, ioPriority c.UndefinedParamType, cancellable c.UndefinedParamType) {
 }
 
-func Fn_keyfile_settings_backend_new(filename string, rootPath string, rootGroup string) {}
+func Fn_keyfile_settings_backend_new(filename c.UndefinedParamType, rootPath c.UndefinedParamType, rootGroup c.UndefinedParamType) {
+}
 
 func Fn_memory_settings_backend_new() {}
 
@@ -621,20 +637,21 @@ func Fn_network_monitor_get_default() {}
 
 func Fn_null_settings_backend_new() {}
 
-func Fn_pollable_source_new(pollableStream string) {}
+func Fn_pollable_source_new(pollableStream c.UndefinedParamType) {}
 
-func Fn_pollable_source_new_full(pollableStream string, childSource string, cancellable string) {}
-
-func Fn_pollable_stream_read(stream string, buffer string, count string, blocking string, cancellable string) {
+func Fn_pollable_source_new_full(pollableStream c.UndefinedParamType, childSource c.UndefinedParamType, cancellable c.UndefinedParamType) {
 }
 
-func Fn_pollable_stream_write(stream string, buffer string, count string, blocking string, cancellable string) {
+func Fn_pollable_stream_read(stream c.UndefinedParamType, buffer c.UndefinedParamType, count c.UndefinedParamType, blocking c.UndefinedParamType, cancellable c.UndefinedParamType) {
 }
 
-func Fn_pollable_stream_write_all(stream string, buffer string, count string, blocking string, bytesWritten string, cancellable string) {
+func Fn_pollable_stream_write(stream c.UndefinedParamType, buffer c.UndefinedParamType, count c.UndefinedParamType, blocking c.UndefinedParamType, cancellable c.UndefinedParamType) {
 }
 
-func Fn_proxy_get_default_for_protocol(protocol string) {}
+func Fn_pollable_stream_write_all(stream c.UndefinedParamType, buffer c.UndefinedParamType, count c.UndefinedParamType, blocking c.UndefinedParamType, bytesWritten c.UndefinedParamType, cancellable c.UndefinedParamType) {
+}
+
+func Fn_proxy_get_default_for_protocol(protocol c.UndefinedParamType) {}
 
 func Fn_proxy_resolver_get_default() {}
 
@@ -642,74 +659,77 @@ func Fn_resolver_error_quark() {}
 
 func Fn_resource_error_quark() {}
 
-func Fn_resource_load(filename string) {}
+func Fn_resource_load(filename c.UndefinedParamType) {}
 
-func Fn_resources_enumerate_children(path string, lookupFlags string) {}
+func Fn_resources_enumerate_children(path c.UndefinedParamType, lookupFlags c.UndefinedParamType) {}
 
-func Fn_resources_get_info(path string, lookupFlags string, size string, flags string) {}
+func Fn_resources_get_info(path c.UndefinedParamType, lookupFlags c.UndefinedParamType, size c.UndefinedParamType, flags c.UndefinedParamType) {
+}
 
-func Fn_resources_lookup_data(path string, lookupFlags string) {}
+func Fn_resources_lookup_data(path c.UndefinedParamType, lookupFlags c.UndefinedParamType) {}
 
-func Fn_resources_open_stream(path string, lookupFlags string) {}
+func Fn_resources_open_stream(path c.UndefinedParamType, lookupFlags c.UndefinedParamType) {}
 
-func Fn_resources_register(resource string) {}
+func Fn_resources_register(resource c.UndefinedParamType) {}
 
-func Fn_resources_unregister(resource string) {}
+func Fn_resources_unregister(resource c.UndefinedParamType) {}
 
 func Fn_settings_schema_source_get_default() {}
 
 // UNSUPPORTED : simple_async_report_error_in_idle : has varargs
 
-func Fn_simple_async_report_gerror_in_idle(object string, callback string, userData string, error string) {
+func Fn_simple_async_report_gerror_in_idle(object c.UndefinedParamType, callback c.UndefinedParamType, userData c.UndefinedParamType, error c.UndefinedParamType) {
 }
 
-func Fn_simple_async_report_take_gerror_in_idle(object string, callback string, userData string, error string) {
+func Fn_simple_async_report_take_gerror_in_idle(object c.UndefinedParamType, callback c.UndefinedParamType, userData c.UndefinedParamType, error c.UndefinedParamType) {
 }
 
-func Fn_srv_target_list_sort(targets string) {}
+func Fn_srv_target_list_sort(targets c.UndefinedParamType) {}
 
 func Fn_tls_backend_get_default() {}
 
-func Fn_tls_client_connection_new(baseIoStream string, serverIdentity string) {}
+func Fn_tls_client_connection_new(baseIoStream c.UndefinedParamType, serverIdentity c.UndefinedParamType) {
+}
 
 func Fn_tls_error_quark() {}
 
-func Fn_tls_file_database_new(anchors string) {}
+func Fn_tls_file_database_new(anchors c.UndefinedParamType) {}
 
-func Fn_tls_server_connection_new(baseIoStream string, certificate string) {}
+func Fn_tls_server_connection_new(baseIoStream c.UndefinedParamType, certificate c.UndefinedParamType) {
+}
 
-func Fn_unix_is_mount_path_system_internal(mountPath string) {}
+func Fn_unix_is_mount_path_system_internal(mountPath c.UndefinedParamType) {}
 
-func Fn_unix_mount_at(mountPath string, timeRead string) {}
+func Fn_unix_mount_at(mountPath c.UndefinedParamType, timeRead c.UndefinedParamType) {}
 
-func Fn_unix_mount_compare(mount1 string, mount2 string) {}
+func Fn_unix_mount_compare(mount1 c.UndefinedParamType, mount2 c.UndefinedParamType) {}
 
-func Fn_unix_mount_free(mountEntry string) {}
+func Fn_unix_mount_free(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_get_device_path(mountEntry string) {}
+func Fn_unix_mount_get_device_path(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_get_fs_type(mountEntry string) {}
+func Fn_unix_mount_get_fs_type(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_get_mount_path(mountEntry string) {}
+func Fn_unix_mount_get_mount_path(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_guess_can_eject(mountEntry string) {}
+func Fn_unix_mount_guess_can_eject(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_guess_icon(mountEntry string) {}
+func Fn_unix_mount_guess_icon(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_guess_name(mountEntry string) {}
+func Fn_unix_mount_guess_name(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_guess_should_display(mountEntry string) {}
+func Fn_unix_mount_guess_should_display(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_guess_symbolic_icon(mountEntry string) {}
+func Fn_unix_mount_guess_symbolic_icon(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_is_readonly(mountEntry string) {}
+func Fn_unix_mount_is_readonly(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_is_system_internal(mountEntry string) {}
+func Fn_unix_mount_is_system_internal(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_points_changed_since(time string) {}
+func Fn_unix_mount_points_changed_since(time c.UndefinedParamType) {}
 
-func Fn_unix_mount_points_get(timeRead string) {}
+func Fn_unix_mount_points_get(timeRead c.UndefinedParamType) {}
 
-func Fn_unix_mounts_changed_since(time string) {}
+func Fn_unix_mounts_changed_since(time c.UndefinedParamType) {}
 
-func Fn_unix_mounts_get(timeRead string) {}
+func Fn_unix_mounts_get(timeRead c.UndefinedParamType) {}

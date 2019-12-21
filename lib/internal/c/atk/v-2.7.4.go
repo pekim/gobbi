@@ -3,6 +3,8 @@
 
 package atk
 
+import c "github.com/pekim/gobbi/lib/internal/c"
+
 // #include <atk/atk.h>
 import "C"
 
@@ -92,17 +94,17 @@ type Text C.AtkText
 type Value C.AtkValue
 type Window C.AtkWindow
 
-func Fn_add_focus_tracker(focusTracker string) {}
+func Fn_add_focus_tracker(focusTracker c.UndefinedParamType) {}
 
-func Fn_add_global_event_listener(listener string, eventType string) {}
+func Fn_add_global_event_listener(listener c.UndefinedParamType, eventType c.UndefinedParamType) {}
 
-func Fn_add_key_event_listener(listener string, data string) {}
+func Fn_add_key_event_listener(listener c.UndefinedParamType, data c.UndefinedParamType) {}
 
-func Fn_attribute_set_free(attribSet string) {}
+func Fn_attribute_set_free(attribSet c.UndefinedParamType) {}
 
-func Fn_focus_tracker_init(init string) {}
+func Fn_focus_tracker_init(init c.UndefinedParamType) {}
 
-func Fn_focus_tracker_notify(object string) {}
+func Fn_focus_tracker_notify(object c.UndefinedParamType) {}
 
 func Fn_get_default_registry() {}
 
@@ -116,42 +118,42 @@ func Fn_get_toolkit_version() {}
 
 func Fn_get_version() {}
 
-func Fn_relation_type_for_name(name string) {}
+func Fn_relation_type_for_name(name c.UndefinedParamType) {}
 
-func Fn_relation_type_get_name(type_ string) {}
+func Fn_relation_type_get_name(type_ c.UndefinedParamType) {}
 
-func Fn_relation_type_register(name string) {}
+func Fn_relation_type_register(name c.UndefinedParamType) {}
 
-func Fn_remove_focus_tracker(trackerId string) {}
+func Fn_remove_focus_tracker(trackerId c.UndefinedParamType) {}
 
-func Fn_remove_global_event_listener(listenerId string) {}
+func Fn_remove_global_event_listener(listenerId c.UndefinedParamType) {}
 
-func Fn_remove_key_event_listener(listenerId string) {}
+func Fn_remove_key_event_listener(listenerId c.UndefinedParamType) {}
 
-func Fn_role_for_name(name string) {}
+func Fn_role_for_name(name c.UndefinedParamType) {}
 
-func Fn_role_get_localized_name(role string) {}
+func Fn_role_get_localized_name(role c.UndefinedParamType) {}
 
-func Fn_role_get_name(role string) {}
+func Fn_role_get_name(role c.UndefinedParamType) {}
 
-func Fn_role_register(name string) {}
+func Fn_role_register(name c.UndefinedParamType) {}
 
-func Fn_state_type_for_name(name string) {}
+func Fn_state_type_for_name(name c.UndefinedParamType) {}
 
-func Fn_state_type_get_name(type_ string) {}
+func Fn_state_type_get_name(type_ c.UndefinedParamType) {}
 
-func Fn_state_type_register(name string) {}
+func Fn_state_type_register(name c.UndefinedParamType) {}
 
-func Fn_text_attribute_for_name(name string) {}
+func Fn_text_attribute_for_name(name c.UndefinedParamType) {}
 
-func Fn_text_attribute_get_name(attr string) {}
+func Fn_text_attribute_get_name(attr c.UndefinedParamType) {}
 
-func Fn_text_attribute_get_value(attr string, index string) {}
+func Fn_text_attribute_get_value(attr c.UndefinedParamType, index c.UndefinedParamType) {}
 
-func Fn_text_attribute_register(name string) {}
+func Fn_text_attribute_register(name c.UndefinedParamType) {}
 
-func Fn_text_free_ranges(ranges string) {}
+func Fn_text_free_ranges(ranges c.UndefinedParamType) {}
 
-func Fn_value_type_get_localized_name(valueType string) {}
+func Fn_value_type_get_localized_name(valueType c.UndefinedParamType) {}
 
-func Fn_value_type_get_name(valueType string) {}
+func Fn_value_type_get_name(valueType c.UndefinedParamType) {}

@@ -55,6 +55,6 @@ func (f Function) generateSysParamDeclaration(g *jen.Group) {
 		//	fmt.Println("array", param.Array.CType)
 		//}
 
-		g.Id(param.goVarName).Id("string")
+		g.Id(param.goVarName).Qual("github.com/pekim/gobbi/lib/internal/c", "UndefinedParamType")
 	}
 }

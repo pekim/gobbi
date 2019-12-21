@@ -3,6 +3,8 @@
 
 package gtk
 
+import c "github.com/pekim/gobbi/lib/internal/c"
+
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
@@ -928,66 +930,79 @@ type TreeDragSource C.GtkTreeDragSource
 type TreeModel C.GtkTreeModel
 type TreeSortable C.GtkTreeSortable
 
-func Fn_accel_groups_activate(object string, accelKey string, accelMods string) {}
+func Fn_accel_groups_activate(object c.UndefinedParamType, accelKey c.UndefinedParamType, accelMods c.UndefinedParamType) {
+}
 
-func Fn_accel_groups_from_object(object string) {}
+func Fn_accel_groups_from_object(object c.UndefinedParamType) {}
 
 func Fn_accelerator_get_default_mod_mask() {}
 
-func Fn_accelerator_get_label(acceleratorKey string, acceleratorMods string) {}
-
-func Fn_accelerator_name(acceleratorKey string, acceleratorMods string) {}
-
-func Fn_accelerator_parse(accelerator string, acceleratorKey string, acceleratorMods string) {}
-
-func Fn_accelerator_set_default_mod_mask(defaultModMask string) {}
-
-func Fn_accelerator_valid(keyval string, modifiers string) {}
-
-func Fn_alternative_dialog_button_order(screen string) {}
-
-func Fn_binding_entry_add_signall(bindingSet string, keyval string, modifiers string, signalName string, bindingArgs string) {
+func Fn_accelerator_get_label(acceleratorKey c.UndefinedParamType, acceleratorMods c.UndefinedParamType) {
 }
 
-func Fn_binding_entry_remove(bindingSet string, keyval string, modifiers string) {}
+func Fn_accelerator_name(acceleratorKey c.UndefinedParamType, acceleratorMods c.UndefinedParamType) {}
 
-func Fn_binding_entry_skip(bindingSet string, keyval string, modifiers string) {}
+func Fn_accelerator_parse(accelerator c.UndefinedParamType, acceleratorKey c.UndefinedParamType, acceleratorMods c.UndefinedParamType) {
+}
 
-func Fn_binding_set_by_class(objectClass string) {}
+func Fn_accelerator_set_default_mod_mask(defaultModMask c.UndefinedParamType) {}
 
-func Fn_binding_set_find(setName string) {}
+func Fn_accelerator_valid(keyval c.UndefinedParamType, modifiers c.UndefinedParamType) {}
 
-func Fn_binding_set_new(setName string) {}
+func Fn_alternative_dialog_button_order(screen c.UndefinedParamType) {}
 
-func Fn_bindings_activate(object string, keyval string, modifiers string) {}
+func Fn_binding_entry_add_signall(bindingSet c.UndefinedParamType, keyval c.UndefinedParamType, modifiers c.UndefinedParamType, signalName c.UndefinedParamType, bindingArgs c.UndefinedParamType) {
+}
 
-func Fn_bindings_activate_event(object string, event string) {}
+func Fn_binding_entry_remove(bindingSet c.UndefinedParamType, keyval c.UndefinedParamType, modifiers c.UndefinedParamType) {
+}
+
+func Fn_binding_entry_skip(bindingSet c.UndefinedParamType, keyval c.UndefinedParamType, modifiers c.UndefinedParamType) {
+}
+
+func Fn_binding_set_by_class(objectClass c.UndefinedParamType) {}
+
+func Fn_binding_set_find(setName c.UndefinedParamType) {}
+
+func Fn_binding_set_new(setName c.UndefinedParamType) {}
+
+func Fn_bindings_activate(object c.UndefinedParamType, keyval c.UndefinedParamType, modifiers c.UndefinedParamType) {
+}
+
+func Fn_bindings_activate_event(object c.UndefinedParamType, event c.UndefinedParamType) {}
 
 func Fn_builder_error_quark() {}
 
-func Fn_check_version(requiredMajor string, requiredMinor string, requiredMicro string) {}
+func Fn_check_version(requiredMajor c.UndefinedParamType, requiredMinor c.UndefinedParamType, requiredMicro c.UndefinedParamType) {
+}
 
 func Fn_css_provider_error_quark() {}
 
 func Fn_disable_setlocale() {}
 
-func Fn_distribute_natural_allocation(extraSpace string, nRequestedSizes string, sizes string) {}
+func Fn_distribute_natural_allocation(extraSpace c.UndefinedParamType, nRequestedSizes c.UndefinedParamType, sizes c.UndefinedParamType) {
+}
 
-func Fn_drag_finish(context string, success string, del string, time string) {}
+func Fn_drag_finish(context c.UndefinedParamType, success c.UndefinedParamType, del c.UndefinedParamType, time c.UndefinedParamType) {
+}
 
-func Fn_drag_get_source_widget(context string) {}
+func Fn_drag_get_source_widget(context c.UndefinedParamType) {}
 
-func Fn_drag_set_icon_default(context string) {}
+func Fn_drag_set_icon_default(context c.UndefinedParamType) {}
 
-func Fn_drag_set_icon_name(context string, iconName string, hotX string, hotY string) {}
+func Fn_drag_set_icon_name(context c.UndefinedParamType, iconName c.UndefinedParamType, hotX c.UndefinedParamType, hotY c.UndefinedParamType) {
+}
 
-func Fn_drag_set_icon_pixbuf(context string, pixbuf string, hotX string, hotY string) {}
+func Fn_drag_set_icon_pixbuf(context c.UndefinedParamType, pixbuf c.UndefinedParamType, hotX c.UndefinedParamType, hotY c.UndefinedParamType) {
+}
 
-func Fn_drag_set_icon_stock(context string, stockId string, hotX string, hotY string) {}
+func Fn_drag_set_icon_stock(context c.UndefinedParamType, stockId c.UndefinedParamType, hotX c.UndefinedParamType, hotY c.UndefinedParamType) {
+}
 
-func Fn_drag_set_icon_surface(context string, surface string) {}
+func Fn_drag_set_icon_surface(context c.UndefinedParamType, surface c.UndefinedParamType) {}
 
-func Fn_drag_set_icon_widget(context string, widget string, hotX string, hotY string) {}
+func Fn_drag_set_icon_widget(context c.UndefinedParamType, widget c.UndefinedParamType, hotX c.UndefinedParamType, hotY c.UndefinedParamType) {
+}
 
 func Fn_events_pending() {}
 
@@ -999,7 +1014,7 @@ func Fn_get_current_event() {}
 
 func Fn_get_current_event_device() {}
 
-func Fn_get_current_event_state(state string) {}
+func Fn_get_current_event_state(state c.UndefinedParamType) {}
 
 func Fn_get_current_event_time() {}
 
@@ -1007,129 +1022,134 @@ func Fn_get_debug_flags() {}
 
 func Fn_get_default_language() {}
 
-func Fn_get_event_widget(event string) {}
+func Fn_get_event_widget(event c.UndefinedParamType) {}
 
-func Fn_get_option_group(openDefaultDisplay string) {}
+func Fn_get_option_group(openDefaultDisplay c.UndefinedParamType) {}
 
 func Fn_grab_get_current() {}
 
-func Fn_icon_size_from_name(name string) {}
+func Fn_icon_size_from_name(name c.UndefinedParamType) {}
 
-func Fn_icon_size_get_name(size string) {}
+func Fn_icon_size_get_name(size c.UndefinedParamType) {}
 
-func Fn_icon_size_lookup(size string, width string, height string) {}
+func Fn_icon_size_lookup(size c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
+}
 
-func Fn_icon_size_lookup_for_settings(settings string, size string, width string, height string) {}
+func Fn_icon_size_lookup_for_settings(settings c.UndefinedParamType, size c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
+}
 
-func Fn_icon_size_register(name string, width string, height string) {}
+func Fn_icon_size_register(name c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
+}
 
-func Fn_icon_size_register_alias(alias string, target string) {}
+func Fn_icon_size_register_alias(alias c.UndefinedParamType, target c.UndefinedParamType) {}
 
 func Fn_icon_theme_error_quark() {}
 
-func Fn_init(argc string, argv string) {}
+func Fn_init(argc c.UndefinedParamType, argv c.UndefinedParamType) {}
 
-func Fn_init_check(argc string, argv string) {}
+func Fn_init_check(argc c.UndefinedParamType, argv c.UndefinedParamType) {}
 
-func Fn_init_with_args(argc string, argv string, parameterString string, entries string, translationDomain string) {
+func Fn_init_with_args(argc c.UndefinedParamType, argv c.UndefinedParamType, parameterString c.UndefinedParamType, entries c.UndefinedParamType, translationDomain c.UndefinedParamType) {
 }
 
-func Fn_key_snooper_install(snooper string, funcData string) {}
+func Fn_key_snooper_install(snooper c.UndefinedParamType, funcData c.UndefinedParamType) {}
 
-func Fn_key_snooper_remove(snooperHandlerId string) {}
+func Fn_key_snooper_remove(snooperHandlerId c.UndefinedParamType) {}
 
 func Fn_main() {}
 
-func Fn_main_do_event(event string) {}
+func Fn_main_do_event(event c.UndefinedParamType) {}
 
 func Fn_main_iteration() {}
 
-func Fn_main_iteration_do(blocking string) {}
+func Fn_main_iteration_do(blocking c.UndefinedParamType) {}
 
 func Fn_main_level() {}
 
 func Fn_main_quit() {}
 
-func Fn_paint_arrow(style string, cr string, stateType string, shadowType string, widget string, detail string, arrowType string, fill string, x string, y string, width string, height string) {
+func Fn_paint_arrow(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, arrowType c.UndefinedParamType, fill c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
 }
 
-func Fn_paint_box(style string, cr string, stateType string, shadowType string, widget string, detail string, x string, y string, width string, height string) {
+func Fn_paint_box(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
 }
 
-func Fn_paint_box_gap(style string, cr string, stateType string, shadowType string, widget string, detail string, x string, y string, width string, height string, gapSide string, gapX string, gapWidth string) {
+func Fn_paint_box_gap(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType, gapSide c.UndefinedParamType, gapX c.UndefinedParamType, gapWidth c.UndefinedParamType) {
 }
 
-func Fn_paint_check(style string, cr string, stateType string, shadowType string, widget string, detail string, x string, y string, width string, height string) {
+func Fn_paint_check(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
 }
 
-func Fn_paint_diamond(style string, cr string, stateType string, shadowType string, widget string, detail string, x string, y string, width string, height string) {
+func Fn_paint_diamond(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
 }
 
-func Fn_paint_expander(style string, cr string, stateType string, widget string, detail string, x string, y string, expanderStyle string) {
+func Fn_paint_expander(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, expanderStyle c.UndefinedParamType) {
 }
 
-func Fn_paint_extension(style string, cr string, stateType string, shadowType string, widget string, detail string, x string, y string, width string, height string, gapSide string) {
+func Fn_paint_extension(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType, gapSide c.UndefinedParamType) {
 }
 
-func Fn_paint_flat_box(style string, cr string, stateType string, shadowType string, widget string, detail string, x string, y string, width string, height string) {
+func Fn_paint_flat_box(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
 }
 
-func Fn_paint_focus(style string, cr string, stateType string, widget string, detail string, x string, y string, width string, height string) {
+func Fn_paint_focus(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
 }
 
-func Fn_paint_handle(style string, cr string, stateType string, shadowType string, widget string, detail string, x string, y string, width string, height string, orientation string) {
+func Fn_paint_handle(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType, orientation c.UndefinedParamType) {
 }
 
-func Fn_paint_hline(style string, cr string, stateType string, widget string, detail string, x1 string, x2 string, y string) {
+func Fn_paint_hline(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x1 c.UndefinedParamType, x2 c.UndefinedParamType, y c.UndefinedParamType) {
 }
 
-func Fn_paint_layout(style string, cr string, stateType string, useText string, widget string, detail string, x string, y string, layout string) {
+func Fn_paint_layout(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, useText c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, layout c.UndefinedParamType) {
 }
 
-func Fn_paint_option(style string, cr string, stateType string, shadowType string, widget string, detail string, x string, y string, width string, height string) {
+func Fn_paint_option(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
 }
 
-func Fn_paint_resize_grip(style string, cr string, stateType string, widget string, detail string, edge string, x string, y string, width string, height string) {
+func Fn_paint_resize_grip(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, edge c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
 }
 
-func Fn_paint_shadow(style string, cr string, stateType string, shadowType string, widget string, detail string, x string, y string, width string, height string) {
+func Fn_paint_shadow(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
 }
 
-func Fn_paint_shadow_gap(style string, cr string, stateType string, shadowType string, widget string, detail string, x string, y string, width string, height string, gapSide string, gapX string, gapWidth string) {
+func Fn_paint_shadow_gap(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType, gapSide c.UndefinedParamType, gapX c.UndefinedParamType, gapWidth c.UndefinedParamType) {
 }
 
-func Fn_paint_slider(style string, cr string, stateType string, shadowType string, widget string, detail string, x string, y string, width string, height string, orientation string) {
+func Fn_paint_slider(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType, orientation c.UndefinedParamType) {
 }
 
-func Fn_paint_spinner(style string, cr string, stateType string, widget string, detail string, step string, x string, y string, width string, height string) {
+func Fn_paint_spinner(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, step c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
 }
 
-func Fn_paint_tab(style string, cr string, stateType string, shadowType string, widget string, detail string, x string, y string, width string, height string) {
+func Fn_paint_tab(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, x c.UndefinedParamType, y c.UndefinedParamType, width c.UndefinedParamType, height c.UndefinedParamType) {
 }
 
-func Fn_paint_vline(style string, cr string, stateType string, widget string, detail string, y1 string, y2 string, x string) {
+func Fn_paint_vline(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, widget c.UndefinedParamType, detail c.UndefinedParamType, y1 c.UndefinedParamType, y2 c.UndefinedParamType, x c.UndefinedParamType) {
 }
 
 func Fn_paper_size_get_default() {}
 
-func Fn_paper_size_get_paper_sizes(includeCustom string) {}
+func Fn_paper_size_get_paper_sizes(includeCustom c.UndefinedParamType) {}
 
-func Fn_parse_args(argc string, argv string) {}
+func Fn_parse_args(argc c.UndefinedParamType, argv c.UndefinedParamType) {}
 
 func Fn_print_error_quark() {}
 
-func Fn_print_run_page_setup_dialog(parent string, pageSetup string, settings string) {}
-
-func Fn_print_run_page_setup_dialog_async(parent string, pageSetup string, settings string, doneCb string, data string) {
+func Fn_print_run_page_setup_dialog(parent c.UndefinedParamType, pageSetup c.UndefinedParamType, settings c.UndefinedParamType) {
 }
 
-func Fn_propagate_event(widget string, event string) {}
+func Fn_print_run_page_setup_dialog_async(parent c.UndefinedParamType, pageSetup c.UndefinedParamType, settings c.UndefinedParamType, doneCb c.UndefinedParamType, data c.UndefinedParamType) {
+}
 
-func Fn_rc_add_default_file(filename string) {}
+func Fn_propagate_event(widget c.UndefinedParamType, event c.UndefinedParamType) {}
 
-func Fn_rc_find_module_in_path(moduleFile string) {}
+func Fn_rc_add_default_file(filename c.UndefinedParamType) {}
 
-func Fn_rc_find_pixmap_in_path(settings string, scanner string, pixmapFile string) {}
+func Fn_rc_find_module_in_path(moduleFile c.UndefinedParamType) {}
+
+func Fn_rc_find_pixmap_in_path(settings c.UndefinedParamType, scanner c.UndefinedParamType, pixmapFile c.UndefinedParamType) {
+}
 
 func Fn_rc_get_default_files() {}
 
@@ -1139,132 +1159,156 @@ func Fn_rc_get_im_module_path() {}
 
 func Fn_rc_get_module_dir() {}
 
-func Fn_rc_get_style(widget string) {}
+func Fn_rc_get_style(widget c.UndefinedParamType) {}
 
-func Fn_rc_get_style_by_paths(settings string, widgetPath string, classPath string, type_ string) {}
+func Fn_rc_get_style_by_paths(settings c.UndefinedParamType, widgetPath c.UndefinedParamType, classPath c.UndefinedParamType, type_ c.UndefinedParamType) {
+}
 
 func Fn_rc_get_theme_dir() {}
 
-func Fn_rc_parse(filename string) {}
+func Fn_rc_parse(filename c.UndefinedParamType) {}
 
-func Fn_rc_parse_color(scanner string, color string) {}
+func Fn_rc_parse_color(scanner c.UndefinedParamType, color c.UndefinedParamType) {}
 
-func Fn_rc_parse_color_full(scanner string, style string, color string) {}
+func Fn_rc_parse_color_full(scanner c.UndefinedParamType, style c.UndefinedParamType, color c.UndefinedParamType) {
+}
 
-func Fn_rc_parse_priority(scanner string, priority string) {}
+func Fn_rc_parse_priority(scanner c.UndefinedParamType, priority c.UndefinedParamType) {}
 
-func Fn_rc_parse_state(scanner string, state string) {}
+func Fn_rc_parse_state(scanner c.UndefinedParamType, state c.UndefinedParamType) {}
 
-func Fn_rc_parse_string(rcString string) {}
+func Fn_rc_parse_string(rcString c.UndefinedParamType) {}
 
-func Fn_rc_property_parse_border(pspec string, gstring string, propertyValue string) {}
+func Fn_rc_property_parse_border(pspec c.UndefinedParamType, gstring c.UndefinedParamType, propertyValue c.UndefinedParamType) {
+}
 
-func Fn_rc_property_parse_color(pspec string, gstring string, propertyValue string) {}
+func Fn_rc_property_parse_color(pspec c.UndefinedParamType, gstring c.UndefinedParamType, propertyValue c.UndefinedParamType) {
+}
 
-func Fn_rc_property_parse_enum(pspec string, gstring string, propertyValue string) {}
+func Fn_rc_property_parse_enum(pspec c.UndefinedParamType, gstring c.UndefinedParamType, propertyValue c.UndefinedParamType) {
+}
 
-func Fn_rc_property_parse_flags(pspec string, gstring string, propertyValue string) {}
+func Fn_rc_property_parse_flags(pspec c.UndefinedParamType, gstring c.UndefinedParamType, propertyValue c.UndefinedParamType) {
+}
 
-func Fn_rc_property_parse_requisition(pspec string, gstring string, propertyValue string) {}
+func Fn_rc_property_parse_requisition(pspec c.UndefinedParamType, gstring c.UndefinedParamType, propertyValue c.UndefinedParamType) {
+}
 
 func Fn_rc_reparse_all() {}
 
-func Fn_rc_reparse_all_for_settings(settings string, forceLoad string) {}
+func Fn_rc_reparse_all_for_settings(settings c.UndefinedParamType, forceLoad c.UndefinedParamType) {}
 
-func Fn_rc_reset_styles(settings string) {}
+func Fn_rc_reset_styles(settings c.UndefinedParamType) {}
 
 func Fn_rc_scanner_new() {}
 
-func Fn_rc_set_default_files(filenames string) {}
+func Fn_rc_set_default_files(filenames c.UndefinedParamType) {}
 
 func Fn_recent_chooser_error_quark() {}
 
 func Fn_recent_manager_error_quark() {}
 
-func Fn_rgb_to_hsv(r string, g string, b string, h string, s string, v string) {}
+func Fn_rgb_to_hsv(r c.UndefinedParamType, g c.UndefinedParamType, b c.UndefinedParamType, h c.UndefinedParamType, s c.UndefinedParamType, v c.UndefinedParamType) {
+}
 
-func Fn_selection_add_target(widget string, selection string, target string, info string) {}
+func Fn_selection_add_target(widget c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, info c.UndefinedParamType) {
+}
 
-func Fn_selection_add_targets(widget string, selection string, targets string, ntargets string) {}
+func Fn_selection_add_targets(widget c.UndefinedParamType, selection c.UndefinedParamType, targets c.UndefinedParamType, ntargets c.UndefinedParamType) {
+}
 
-func Fn_selection_clear_targets(widget string, selection string) {}
+func Fn_selection_clear_targets(widget c.UndefinedParamType, selection c.UndefinedParamType) {}
 
-func Fn_selection_convert(widget string, selection string, target string, time string) {}
+func Fn_selection_convert(widget c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, time c.UndefinedParamType) {
+}
 
-func Fn_selection_owner_set(widget string, selection string, time string) {}
+func Fn_selection_owner_set(widget c.UndefinedParamType, selection c.UndefinedParamType, time c.UndefinedParamType) {
+}
 
-func Fn_selection_owner_set_for_display(display string, widget string, selection string, time string) {}
+func Fn_selection_owner_set_for_display(display c.UndefinedParamType, widget c.UndefinedParamType, selection c.UndefinedParamType, time c.UndefinedParamType) {
+}
 
-func Fn_selection_remove_all(widget string) {}
+func Fn_selection_remove_all(widget c.UndefinedParamType) {}
 
-func Fn_set_debug_flags(flags string) {}
+func Fn_set_debug_flags(flags c.UndefinedParamType) {}
 
 // UNSUPPORTED : show_about_dialog : has varargs
 
-func Fn_show_uri(screen string, uri string, timestamp string) {}
+func Fn_show_uri(screen c.UndefinedParamType, uri c.UndefinedParamType, timestamp c.UndefinedParamType) {
+}
 
-func Fn_stock_add(items string, nItems string) {}
+func Fn_stock_add(items c.UndefinedParamType, nItems c.UndefinedParamType) {}
 
-func Fn_stock_add_static(items string, nItems string) {}
+func Fn_stock_add_static(items c.UndefinedParamType, nItems c.UndefinedParamType) {}
 
 func Fn_stock_list_ids() {}
 
-func Fn_stock_lookup(stockId string, item string) {}
+func Fn_stock_lookup(stockId c.UndefinedParamType, item c.UndefinedParamType) {}
 
-func Fn_stock_set_translate_func(domain string, func_ string, data string, notify string) {}
+func Fn_stock_set_translate_func(domain c.UndefinedParamType, func_ c.UndefinedParamType, data c.UndefinedParamType, notify c.UndefinedParamType) {
+}
 
-func Fn_target_table_free(targets string, nTargets string) {}
+func Fn_target_table_free(targets c.UndefinedParamType, nTargets c.UndefinedParamType) {}
 
-func Fn_target_table_new_from_list(list string, nTargets string) {}
+func Fn_target_table_new_from_list(list c.UndefinedParamType, nTargets c.UndefinedParamType) {}
 
-func Fn_targets_include_image(targets string, nTargets string, writable string) {}
+func Fn_targets_include_image(targets c.UndefinedParamType, nTargets c.UndefinedParamType, writable c.UndefinedParamType) {
+}
 
-func Fn_targets_include_rich_text(targets string, nTargets string, buffer string) {}
+func Fn_targets_include_rich_text(targets c.UndefinedParamType, nTargets c.UndefinedParamType, buffer c.UndefinedParamType) {
+}
 
-func Fn_targets_include_text(targets string, nTargets string) {}
+func Fn_targets_include_text(targets c.UndefinedParamType, nTargets c.UndefinedParamType) {}
 
-func Fn_targets_include_uri(targets string, nTargets string) {}
+func Fn_targets_include_uri(targets c.UndefinedParamType, nTargets c.UndefinedParamType) {}
 
-func Fn_test_create_simple_window(windowTitle string, dialogText string) {}
+func Fn_test_create_simple_window(windowTitle c.UndefinedParamType, dialogText c.UndefinedParamType) {}
 
 // UNSUPPORTED : test_create_widget : has varargs
 
 // UNSUPPORTED : test_display_button_window : has varargs
 
-func Fn_test_find_label(widget string, labelPattern string) {}
+func Fn_test_find_label(widget c.UndefinedParamType, labelPattern c.UndefinedParamType) {}
 
-func Fn_test_find_sibling(baseWidget string, widgetType string) {}
+func Fn_test_find_sibling(baseWidget c.UndefinedParamType, widgetType c.UndefinedParamType) {}
 
-func Fn_test_find_widget(widget string, labelPattern string, widgetType string) {}
+func Fn_test_find_widget(widget c.UndefinedParamType, labelPattern c.UndefinedParamType, widgetType c.UndefinedParamType) {
+}
 
 // UNSUPPORTED : test_init : has varargs
 
-func Fn_test_list_all_types(nTypes string) {}
+func Fn_test_list_all_types(nTypes c.UndefinedParamType) {}
 
 func Fn_test_register_all_types() {}
 
-func Fn_test_slider_get_value(widget string) {}
+func Fn_test_slider_get_value(widget c.UndefinedParamType) {}
 
-func Fn_test_slider_set_perc(widget string, percentage string) {}
+func Fn_test_slider_set_perc(widget c.UndefinedParamType, percentage c.UndefinedParamType) {}
 
-func Fn_test_spin_button_click(spinner string, button string, upwards string) {}
+func Fn_test_spin_button_click(spinner c.UndefinedParamType, button c.UndefinedParamType, upwards c.UndefinedParamType) {
+}
 
-func Fn_test_text_get(widget string) {}
+func Fn_test_text_get(widget c.UndefinedParamType) {}
 
-func Fn_test_text_set(widget string, string_ string) {}
+func Fn_test_text_set(widget c.UndefinedParamType, string_ c.UndefinedParamType) {}
 
-func Fn_test_widget_click(widget string, button string, modifiers string) {}
+func Fn_test_widget_click(widget c.UndefinedParamType, button c.UndefinedParamType, modifiers c.UndefinedParamType) {
+}
 
-func Fn_test_widget_send_key(widget string, keyval string, modifiers string) {}
+func Fn_test_widget_send_key(widget c.UndefinedParamType, keyval c.UndefinedParamType, modifiers c.UndefinedParamType) {
+}
 
-func Fn_tree_get_row_drag_data(selectionData string, treeModel string, path string) {}
+func Fn_tree_get_row_drag_data(selectionData c.UndefinedParamType, treeModel c.UndefinedParamType, path c.UndefinedParamType) {
+}
 
-func Fn_tree_row_reference_deleted(proxy string, path string) {}
+func Fn_tree_row_reference_deleted(proxy c.UndefinedParamType, path c.UndefinedParamType) {}
 
-func Fn_tree_row_reference_inserted(proxy string, path string) {}
+func Fn_tree_row_reference_inserted(proxy c.UndefinedParamType, path c.UndefinedParamType) {}
 
-func Fn_tree_row_reference_reordered(proxy string, path string, iter string, newOrder string) {}
+func Fn_tree_row_reference_reordered(proxy c.UndefinedParamType, path c.UndefinedParamType, iter c.UndefinedParamType, newOrder c.UndefinedParamType) {
+}
 
-func Fn_tree_set_row_drag_data(selectionData string, treeModel string, path string) {}
+func Fn_tree_set_row_drag_data(selectionData c.UndefinedParamType, treeModel c.UndefinedParamType, path c.UndefinedParamType) {
+}
 
 func Fn_true() {}

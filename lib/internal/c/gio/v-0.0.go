@@ -3,6 +3,8 @@
 
 package gio
 
+import c "github.com/pekim/gobbi/lib/internal/c"
+
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -292,103 +294,107 @@ type Seekable C.GSeekable
 type SocketConnectable C.GSocketConnectable
 type Volume C.GVolume
 
-func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags string) {}
+func Fn_app_info_create_from_commandline(commandline c.UndefinedParamType, applicationName c.UndefinedParamType, flags c.UndefinedParamType) {
+}
 
 func Fn_app_info_get_all() {}
 
-func Fn_app_info_get_all_for_type(contentType string) {}
+func Fn_app_info_get_all_for_type(contentType c.UndefinedParamType) {}
 
-func Fn_app_info_get_default_for_type(contentType string, mustSupportUris string) {}
+func Fn_app_info_get_default_for_type(contentType c.UndefinedParamType, mustSupportUris c.UndefinedParamType) {
+}
 
-func Fn_app_info_get_default_for_uri_scheme(uriScheme string) {}
+func Fn_app_info_get_default_for_uri_scheme(uriScheme c.UndefinedParamType) {}
 
-func Fn_app_info_launch_default_for_uri(uri string, context string) {}
+func Fn_app_info_launch_default_for_uri(uri c.UndefinedParamType, context c.UndefinedParamType) {}
 
-func Fn_content_type_can_be_executable(type_ string) {}
+func Fn_content_type_can_be_executable(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_equals(type1 string, type2 string) {}
+func Fn_content_type_equals(type1 c.UndefinedParamType, type2 c.UndefinedParamType) {}
 
-func Fn_content_type_get_description(type_ string) {}
+func Fn_content_type_get_description(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_get_icon(type_ string) {}
+func Fn_content_type_get_icon(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_get_mime_type(type_ string) {}
+func Fn_content_type_get_mime_type(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_guess(filename string, data string, dataSize string, resultUncertain string) {}
+func Fn_content_type_guess(filename c.UndefinedParamType, data c.UndefinedParamType, dataSize c.UndefinedParamType, resultUncertain c.UndefinedParamType) {
+}
 
-func Fn_content_type_is_a(type_ string, supertype string) {}
+func Fn_content_type_is_a(type_ c.UndefinedParamType, supertype c.UndefinedParamType) {}
 
-func Fn_content_type_is_unknown(type_ string) {}
+func Fn_content_type_is_unknown(type_ c.UndefinedParamType) {}
 
 func Fn_content_types_get_registered() {}
 
 func Fn_dbus_error_quark() {}
 
-func Fn_file_new_for_commandline_arg(arg string) {}
+func Fn_file_new_for_commandline_arg(arg c.UndefinedParamType) {}
 
-func Fn_file_new_for_path(path string) {}
+func Fn_file_new_for_path(path c.UndefinedParamType) {}
 
-func Fn_file_new_for_uri(uri string) {}
+func Fn_file_new_for_uri(uri c.UndefinedParamType) {}
 
-func Fn_file_parse_name(parseName string) {}
+func Fn_file_parse_name(parseName c.UndefinedParamType) {}
 
-func Fn_icon_hash(icon string) {}
+func Fn_icon_hash(icon c.UndefinedParamType) {}
 
-func Fn_io_error_from_errno(errNo string) {}
+func Fn_io_error_from_errno(errNo c.UndefinedParamType) {}
 
 func Fn_io_error_quark() {}
 
-func Fn_io_extension_point_implement(extensionPointName string, type_ string, extensionName string, priority string) {
+func Fn_io_extension_point_implement(extensionPointName c.UndefinedParamType, type_ c.UndefinedParamType, extensionName c.UndefinedParamType, priority c.UndefinedParamType) {
 }
 
-func Fn_io_extension_point_lookup(name string) {}
+func Fn_io_extension_point_lookup(name c.UndefinedParamType) {}
 
-func Fn_io_extension_point_register(name string) {}
+func Fn_io_extension_point_register(name c.UndefinedParamType) {}
 
-func Fn_io_modules_load_all_in_directory(dirname string) {}
+func Fn_io_modules_load_all_in_directory(dirname c.UndefinedParamType) {}
 
 func Fn_io_scheduler_cancel_all_jobs() {}
 
-func Fn_io_scheduler_push_job(jobFunc string, userData string, notify string, ioPriority string, cancellable string) {
+func Fn_io_scheduler_push_job(jobFunc c.UndefinedParamType, userData c.UndefinedParamType, notify c.UndefinedParamType, ioPriority c.UndefinedParamType, cancellable c.UndefinedParamType) {
 }
 
-func Fn_keyfile_settings_backend_new(filename string, rootPath string, rootGroup string) {}
+func Fn_keyfile_settings_backend_new(filename c.UndefinedParamType, rootPath c.UndefinedParamType, rootGroup c.UndefinedParamType) {
+}
 
 // UNSUPPORTED : simple_async_report_error_in_idle : has varargs
 
-func Fn_simple_async_report_gerror_in_idle(object string, callback string, userData string, error string) {
+func Fn_simple_async_report_gerror_in_idle(object c.UndefinedParamType, callback c.UndefinedParamType, userData c.UndefinedParamType, error c.UndefinedParamType) {
 }
 
-func Fn_unix_is_mount_path_system_internal(mountPath string) {}
+func Fn_unix_is_mount_path_system_internal(mountPath c.UndefinedParamType) {}
 
-func Fn_unix_mount_at(mountPath string, timeRead string) {}
+func Fn_unix_mount_at(mountPath c.UndefinedParamType, timeRead c.UndefinedParamType) {}
 
-func Fn_unix_mount_compare(mount1 string, mount2 string) {}
+func Fn_unix_mount_compare(mount1 c.UndefinedParamType, mount2 c.UndefinedParamType) {}
 
-func Fn_unix_mount_free(mountEntry string) {}
+func Fn_unix_mount_free(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_get_device_path(mountEntry string) {}
+func Fn_unix_mount_get_device_path(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_get_fs_type(mountEntry string) {}
+func Fn_unix_mount_get_fs_type(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_get_mount_path(mountEntry string) {}
+func Fn_unix_mount_get_mount_path(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_guess_can_eject(mountEntry string) {}
+func Fn_unix_mount_guess_can_eject(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_guess_icon(mountEntry string) {}
+func Fn_unix_mount_guess_icon(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_guess_name(mountEntry string) {}
+func Fn_unix_mount_guess_name(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_guess_should_display(mountEntry string) {}
+func Fn_unix_mount_guess_should_display(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_is_readonly(mountEntry string) {}
+func Fn_unix_mount_is_readonly(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_is_system_internal(mountEntry string) {}
+func Fn_unix_mount_is_system_internal(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_points_changed_since(time string) {}
+func Fn_unix_mount_points_changed_since(time c.UndefinedParamType) {}
 
-func Fn_unix_mount_points_get(timeRead string) {}
+func Fn_unix_mount_points_get(timeRead c.UndefinedParamType) {}
 
-func Fn_unix_mounts_changed_since(time string) {}
+func Fn_unix_mounts_changed_since(time c.UndefinedParamType) {}
 
-func Fn_unix_mounts_get(timeRead string) {}
+func Fn_unix_mounts_get(timeRead c.UndefinedParamType) {}
