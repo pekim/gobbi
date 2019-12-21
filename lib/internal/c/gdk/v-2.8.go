@@ -116,7 +116,7 @@ type DevicePad C.GdkDevicePad
 
 func Fn_add_option_entries_libgtk_only(group c.UndefinedParamType) {}
 
-func Fn_atom_intern(atomName c.UndefinedParamType, onlyIfExists bool) {}
+func Fn_atom_intern(atomName string, onlyIfExists bool) {}
 
 func Fn_beep() {}
 
@@ -135,7 +135,7 @@ func Fn_cairo_set_source_color(cr c.UndefinedParamType, color c.UndefinedParamTy
 func Fn_cairo_set_source_pixbuf(cr c.UndefinedParamType, pixbuf c.UndefinedParamType, pixbufX float64, pixbufY float64) {
 }
 
-func Fn_color_parse(spec c.UndefinedParamType) {}
+func Fn_color_parse(spec string) {}
 
 func Fn_drag_abort(context c.UndefinedParamType, time uint32) {}
 
@@ -199,7 +199,7 @@ func Fn_keyboard_ungrab(time uint32) {}
 
 func Fn_keyval_convert_case(symbol uint) {}
 
-func Fn_keyval_from_name(keyvalName c.UndefinedParamType) {}
+func Fn_keyval_from_name(keyvalName string) {}
 
 func Fn_keyval_is_lower(keyval uint) {}
 
@@ -283,11 +283,11 @@ func Fn_selection_send_notify_for_display(display c.UndefinedParamType, requesto
 
 func Fn_set_double_click_time(msec uint) {}
 
-func Fn_set_program_class(programClass c.UndefinedParamType) {}
+func Fn_set_program_class(programClass string) {}
 
 func Fn_set_show_events(showEvents bool) {}
 
-func Fn_setting_get(name c.UndefinedParamType, value c.UndefinedParamType) {}
+func Fn_setting_get(name string, value c.UndefinedParamType) {}
 
 func Fn_synthesize_window_state(window c.UndefinedParamType, unsetFlags c.UndefinedParamType, setFlags c.UndefinedParamType) {
 }
@@ -305,4 +305,4 @@ func Fn_threads_set_lock_functions(enterFn c.UndefinedParamType, leaveFn c.Undef
 
 func Fn_unicode_to_keyval(wc uint32) {}
 
-func Fn_utf8_to_string_target(str c.UndefinedParamType) {}
+func Fn_utf8_to_string_target(str string) {}

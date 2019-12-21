@@ -66,10 +66,15 @@ func (t *Type) parseCtype() {
 }
 
 func (t *Type) sysParamGoType() *jen.Statement {
+	if t.Name == "utf8" {
+		return jen.String()
+	}
+
 	if simpleGoType, ok := simpleSysParamGoTypes[t.cType]; ok {
 		return jen.Op(t.stars).Add(simpleGoType)
 	}
-	//fmt.Println("type", p.Type.CType)
+	//fmt.Println("type", t.CType)
 
 	return jen.Qual("github.com/pekim/gobbi/lib/internal/c", "UndefinedParamType")
+	//.Comment(t.CType)
 }

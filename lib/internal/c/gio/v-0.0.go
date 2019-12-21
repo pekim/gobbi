@@ -297,35 +297,34 @@ type Seekable C.GSeekable
 type SocketConnectable C.GSocketConnectable
 type Volume C.GVolume
 
-func Fn_app_info_create_from_commandline(commandline c.UndefinedParamType, applicationName c.UndefinedParamType, flags c.UndefinedParamType) {
+func Fn_app_info_create_from_commandline(commandline c.UndefinedParamType, applicationName string, flags c.UndefinedParamType) {
 }
 
 func Fn_app_info_get_all() {}
 
-func Fn_app_info_get_all_for_type(contentType c.UndefinedParamType) {}
+func Fn_app_info_get_all_for_type(contentType string) {}
 
-func Fn_app_info_get_default_for_type(contentType c.UndefinedParamType, mustSupportUris bool) {}
+func Fn_app_info_get_default_for_type(contentType string, mustSupportUris bool) {}
 
-func Fn_app_info_get_default_for_uri_scheme(uriScheme c.UndefinedParamType) {}
+func Fn_app_info_get_default_for_uri_scheme(uriScheme string) {}
 
-func Fn_app_info_launch_default_for_uri(uri c.UndefinedParamType, context c.UndefinedParamType) {}
+func Fn_app_info_launch_default_for_uri(uri string, context c.UndefinedParamType) {}
 
-func Fn_content_type_can_be_executable(type_ c.UndefinedParamType) {}
+func Fn_content_type_can_be_executable(type_ string) {}
 
-func Fn_content_type_equals(type1 c.UndefinedParamType, type2 c.UndefinedParamType) {}
+func Fn_content_type_equals(type1 string, type2 string) {}
 
-func Fn_content_type_get_description(type_ c.UndefinedParamType) {}
+func Fn_content_type_get_description(type_ string) {}
 
-func Fn_content_type_get_icon(type_ c.UndefinedParamType) {}
+func Fn_content_type_get_icon(type_ string) {}
 
-func Fn_content_type_get_mime_type(type_ c.UndefinedParamType) {}
+func Fn_content_type_get_mime_type(type_ string) {}
 
-func Fn_content_type_guess(filename c.UndefinedParamType, data c.UndefinedParamType, dataSize uint64) {
-}
+func Fn_content_type_guess(filename string, data c.UndefinedParamType, dataSize uint64) {}
 
-func Fn_content_type_is_a(type_ c.UndefinedParamType, supertype c.UndefinedParamType) {}
+func Fn_content_type_is_a(type_ string, supertype string) {}
 
-func Fn_content_type_is_unknown(type_ c.UndefinedParamType) {}
+func Fn_content_type_is_unknown(type_ string) {}
 
 func Fn_content_types_get_registered() {}
 
@@ -335,9 +334,9 @@ func Fn_file_new_for_commandline_arg(arg c.UndefinedParamType) {}
 
 func Fn_file_new_for_path(path c.UndefinedParamType) {}
 
-func Fn_file_new_for_uri(uri c.UndefinedParamType) {}
+func Fn_file_new_for_uri(uri string) {}
 
-func Fn_file_parse_name(parseName c.UndefinedParamType) {}
+func Fn_file_parse_name(parseName string) {}
 
 func Fn_icon_hash(icon c.UndefinedParamType) {}
 
@@ -345,12 +344,12 @@ func Fn_io_error_from_errno(errNo int) {}
 
 func Fn_io_error_quark() {}
 
-func Fn_io_extension_point_implement(extensionPointName c.UndefinedParamType, type_ c.UndefinedParamType, extensionName c.UndefinedParamType, priority int) {
+func Fn_io_extension_point_implement(extensionPointName string, type_ c.UndefinedParamType, extensionName string, priority int) {
 }
 
-func Fn_io_extension_point_lookup(name c.UndefinedParamType) {}
+func Fn_io_extension_point_lookup(name string) {}
 
-func Fn_io_extension_point_register(name c.UndefinedParamType) {}
+func Fn_io_extension_point_register(name string) {}
 
 func Fn_io_modules_load_all_in_directory(dirname c.UndefinedParamType) {}
 
@@ -359,8 +358,7 @@ func Fn_io_scheduler_cancel_all_jobs() {}
 func Fn_io_scheduler_push_job(jobFunc c.UndefinedParamType, userData unsafe.Pointer, notify c.UndefinedParamType, ioPriority int, cancellable c.UndefinedParamType) {
 }
 
-func Fn_keyfile_settings_backend_new(filename c.UndefinedParamType, rootPath c.UndefinedParamType, rootGroup c.UndefinedParamType) {
-}
+func Fn_keyfile_settings_backend_new(filename string, rootPath string, rootGroup string) {}
 
 // UNSUPPORTED : simple_async_report_error_in_idle : has varargs
 

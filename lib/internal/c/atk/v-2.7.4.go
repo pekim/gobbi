@@ -99,7 +99,7 @@ type Window C.AtkWindow
 
 func Fn_add_focus_tracker(focusTracker c.UndefinedParamType) {}
 
-func Fn_add_global_event_listener(listener c.UndefinedParamType, eventType c.UndefinedParamType) {}
+func Fn_add_global_event_listener(listener c.UndefinedParamType, eventType string) {}
 
 func Fn_add_key_event_listener(listener c.UndefinedParamType, data unsafe.Pointer) {}
 
@@ -121,11 +121,11 @@ func Fn_get_toolkit_version() {}
 
 func Fn_get_version() {}
 
-func Fn_relation_type_for_name(name c.UndefinedParamType) {}
+func Fn_relation_type_for_name(name string) {}
 
 func Fn_relation_type_get_name(type_ c.UndefinedParamType) {}
 
-func Fn_relation_type_register(name c.UndefinedParamType) {}
+func Fn_relation_type_register(name string) {}
 
 func Fn_remove_focus_tracker(trackerId uint) {}
 
@@ -133,27 +133,27 @@ func Fn_remove_global_event_listener(listenerId uint) {}
 
 func Fn_remove_key_event_listener(listenerId uint) {}
 
-func Fn_role_for_name(name c.UndefinedParamType) {}
+func Fn_role_for_name(name string) {}
 
 func Fn_role_get_localized_name(role c.UndefinedParamType) {}
 
 func Fn_role_get_name(role c.UndefinedParamType) {}
 
-func Fn_role_register(name c.UndefinedParamType) {}
+func Fn_role_register(name string) {}
 
-func Fn_state_type_for_name(name c.UndefinedParamType) {}
+func Fn_state_type_for_name(name string) {}
 
 func Fn_state_type_get_name(type_ c.UndefinedParamType) {}
 
-func Fn_state_type_register(name c.UndefinedParamType) {}
+func Fn_state_type_register(name string) {}
 
-func Fn_text_attribute_for_name(name c.UndefinedParamType) {}
+func Fn_text_attribute_for_name(name string) {}
 
 func Fn_text_attribute_get_name(attr c.UndefinedParamType) {}
 
 func Fn_text_attribute_get_value(attr c.UndefinedParamType, index int) {}
 
-func Fn_text_attribute_register(name c.UndefinedParamType) {}
+func Fn_text_attribute_register(name string) {}
 
 func Fn_text_free_ranges(ranges c.UndefinedParamType) {}
 

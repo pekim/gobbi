@@ -117,9 +117,9 @@ type DevicePad C.GdkDevicePad
 
 func Fn_add_option_entries_libgtk_only(group c.UndefinedParamType) {}
 
-func Fn_atom_intern(atomName c.UndefinedParamType, onlyIfExists bool) {}
+func Fn_atom_intern(atomName string, onlyIfExists bool) {}
 
-func Fn_atom_intern_static_string(atomName c.UndefinedParamType) {}
+func Fn_atom_intern_static_string(atomName string) {}
 
 func Fn_beep() {}
 
@@ -143,7 +143,7 @@ func Fn_cairo_set_source_rgba(cr c.UndefinedParamType, rgba c.UndefinedParamType
 func Fn_cairo_set_source_window(cr c.UndefinedParamType, window c.UndefinedParamType, x float64, y float64) {
 }
 
-func Fn_color_parse(spec c.UndefinedParamType) {}
+func Fn_color_parse(spec string) {}
 
 func Fn_disable_multidevice() {}
 
@@ -219,7 +219,7 @@ func Fn_keyboard_ungrab(time uint32) {}
 
 func Fn_keyval_convert_case(symbol uint) {}
 
-func Fn_keyval_from_name(keyvalName c.UndefinedParamType) {}
+func Fn_keyval_from_name(keyvalName string) {}
 
 func Fn_keyval_is_lower(keyval uint) {}
 
@@ -237,7 +237,7 @@ func Fn_list_visuals() {}
 
 func Fn_notify_startup_complete() {}
 
-func Fn_notify_startup_complete_with_id(startupId c.UndefinedParamType) {}
+func Fn_notify_startup_complete_with_id(startupId string) {}
 
 func Fn_offscreen_window_get_embedder(window c.UndefinedParamType) {}
 
@@ -309,11 +309,11 @@ func Fn_selection_send_notify_for_display(display c.UndefinedParamType, requesto
 
 func Fn_set_double_click_time(msec uint) {}
 
-func Fn_set_program_class(programClass c.UndefinedParamType) {}
+func Fn_set_program_class(programClass string) {}
 
 func Fn_set_show_events(showEvents bool) {}
 
-func Fn_setting_get(name c.UndefinedParamType, value c.UndefinedParamType) {}
+func Fn_setting_get(name string, value c.UndefinedParamType) {}
 
 func Fn_synthesize_window_state(window c.UndefinedParamType, unsetFlags c.UndefinedParamType, setFlags c.UndefinedParamType) {
 }
@@ -355,4 +355,4 @@ func Fn_threads_set_lock_functions(enterFn c.UndefinedParamType, leaveFn c.Undef
 
 func Fn_unicode_to_keyval(wc uint32) {}
 
-func Fn_utf8_to_string_target(str c.UndefinedParamType) {}
+func Fn_utf8_to_string_target(str string) {}

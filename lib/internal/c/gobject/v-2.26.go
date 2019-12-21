@@ -91,7 +91,7 @@ func Fn_boxed_copy(boxedType c.UndefinedParamType, srcBoxed c.UndefinedParamType
 
 func Fn_boxed_free(boxedType c.UndefinedParamType, boxed unsafe.Pointer) {}
 
-func Fn_boxed_type_register_static(name c.UndefinedParamType, boxedCopy c.UndefinedParamType, boxedFree c.UndefinedParamType) {
+func Fn_boxed_type_register_static(name string, boxedCopy c.UndefinedParamType, boxedFree c.UndefinedParamType) {
 }
 
 func Fn_cclosure_marshal_BOOLEAN__BOXED_BOXED(closure c.UndefinedParamType, returnValue c.UndefinedParamType, nParamValues uint, paramValues c.UndefinedParamType, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
@@ -174,95 +174,94 @@ func Fn_enum_complete_type_info(gEnumType c.UndefinedParamType, constValues c.Un
 
 func Fn_enum_get_value(enumClass c.UndefinedParamType, value int) {}
 
-func Fn_enum_get_value_by_name(enumClass c.UndefinedParamType, name c.UndefinedParamType) {}
+func Fn_enum_get_value_by_name(enumClass c.UndefinedParamType, name string) {}
 
-func Fn_enum_get_value_by_nick(enumClass c.UndefinedParamType, nick c.UndefinedParamType) {}
+func Fn_enum_get_value_by_nick(enumClass c.UndefinedParamType, nick string) {}
 
-func Fn_enum_register_static(name c.UndefinedParamType, constStaticValues c.UndefinedParamType) {}
+func Fn_enum_register_static(name string, constStaticValues c.UndefinedParamType) {}
 
 func Fn_flags_complete_type_info(gFlagsType c.UndefinedParamType, constValues c.UndefinedParamType) {}
 
 func Fn_flags_get_first_value(flagsClass c.UndefinedParamType, value uint) {}
 
-func Fn_flags_get_value_by_name(flagsClass c.UndefinedParamType, name c.UndefinedParamType) {}
+func Fn_flags_get_value_by_name(flagsClass c.UndefinedParamType, name string) {}
 
-func Fn_flags_get_value_by_nick(flagsClass c.UndefinedParamType, nick c.UndefinedParamType) {}
+func Fn_flags_get_value_by_nick(flagsClass c.UndefinedParamType, nick string) {}
 
-func Fn_flags_register_static(name c.UndefinedParamType, constStaticValues c.UndefinedParamType) {}
+func Fn_flags_register_static(name string, constStaticValues c.UndefinedParamType) {}
 
 func Fn_gtype_get_type() {}
 
-func Fn_param_spec_boolean(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, defaultValue bool, flags c.UndefinedParamType) {
+func Fn_param_spec_boolean(name string, nick string, blurb string, defaultValue bool, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_boxed(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, boxedType c.UndefinedParamType, flags c.UndefinedParamType) {
+func Fn_param_spec_boxed(name string, nick string, blurb string, boxedType c.UndefinedParamType, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_char(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, minimum int8, maximum int8, defaultValue int8, flags c.UndefinedParamType) {
+func Fn_param_spec_char(name string, nick string, blurb string, minimum int8, maximum int8, defaultValue int8, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_double(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, minimum float64, maximum float64, defaultValue float64, flags c.UndefinedParamType) {
+func Fn_param_spec_double(name string, nick string, blurb string, minimum float64, maximum float64, defaultValue float64, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_enum(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, enumType c.UndefinedParamType, defaultValue int, flags c.UndefinedParamType) {
+func Fn_param_spec_enum(name string, nick string, blurb string, enumType c.UndefinedParamType, defaultValue int, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_flags(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, flagsType c.UndefinedParamType, defaultValue uint, flags c.UndefinedParamType) {
+func Fn_param_spec_flags(name string, nick string, blurb string, flagsType c.UndefinedParamType, defaultValue uint, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_float(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, minimum float32, maximum float32, defaultValue float32, flags c.UndefinedParamType) {
+func Fn_param_spec_float(name string, nick string, blurb string, minimum float32, maximum float32, defaultValue float32, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_gtype(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, isAType c.UndefinedParamType, flags c.UndefinedParamType) {
+func Fn_param_spec_gtype(name string, nick string, blurb string, isAType c.UndefinedParamType, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_int(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, minimum int, maximum int, defaultValue int, flags c.UndefinedParamType) {
+func Fn_param_spec_int(name string, nick string, blurb string, minimum int, maximum int, defaultValue int, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_int64(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, minimum int64, maximum int64, defaultValue int64, flags c.UndefinedParamType) {
+func Fn_param_spec_int64(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_long(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, minimum int64, maximum int64, defaultValue int64, flags c.UndefinedParamType) {
+func Fn_param_spec_long(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_object(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, objectType c.UndefinedParamType, flags c.UndefinedParamType) {
+func Fn_param_spec_object(name string, nick string, blurb string, objectType c.UndefinedParamType, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_override(name c.UndefinedParamType, overridden c.UndefinedParamType) {}
+func Fn_param_spec_override(name string, overridden c.UndefinedParamType) {}
 
-func Fn_param_spec_param(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, paramType c.UndefinedParamType, flags c.UndefinedParamType) {
+func Fn_param_spec_param(name string, nick string, blurb string, paramType c.UndefinedParamType, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_pointer(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, flags c.UndefinedParamType) {
-}
+func Fn_param_spec_pointer(name string, nick string, blurb string, flags c.UndefinedParamType) {}
 
 func Fn_param_spec_pool_new(typePrefixing bool) {}
 
-func Fn_param_spec_string(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, defaultValue c.UndefinedParamType, flags c.UndefinedParamType) {
+func Fn_param_spec_string(name string, nick string, blurb string, defaultValue string, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_uchar(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, minimum uint8, maximum uint8, defaultValue uint8, flags c.UndefinedParamType) {
+func Fn_param_spec_uchar(name string, nick string, blurb string, minimum uint8, maximum uint8, defaultValue uint8, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_uint(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, minimum uint, maximum uint, defaultValue uint, flags c.UndefinedParamType) {
+func Fn_param_spec_uint(name string, nick string, blurb string, minimum uint, maximum uint, defaultValue uint, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_uint64(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, minimum uint64, maximum uint64, defaultValue uint64, flags c.UndefinedParamType) {
+func Fn_param_spec_uint64(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_ulong(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, minimum uint64, maximum uint64, defaultValue uint64, flags c.UndefinedParamType) {
+func Fn_param_spec_ulong(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_unichar(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, defaultValue rune, flags c.UndefinedParamType) {
+func Fn_param_spec_unichar(name string, nick string, blurb string, defaultValue rune, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_value_array(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, elementSpec c.UndefinedParamType, flags c.UndefinedParamType) {
+func Fn_param_spec_value_array(name string, nick string, blurb string, elementSpec c.UndefinedParamType, flags c.UndefinedParamType) {
 }
 
-func Fn_param_spec_variant(name c.UndefinedParamType, nick c.UndefinedParamType, blurb c.UndefinedParamType, type_ c.UndefinedParamType, defaultValue c.UndefinedParamType, flags c.UndefinedParamType) {
+func Fn_param_spec_variant(name string, nick string, blurb string, type_ c.UndefinedParamType, defaultValue c.UndefinedParamType, flags c.UndefinedParamType) {
 }
 
-func Fn_param_type_register_static(name c.UndefinedParamType, pspecInfo c.UndefinedParamType) {}
+func Fn_param_type_register_static(name string, pspecInfo c.UndefinedParamType) {}
 
 func Fn_param_value_convert(pspec c.UndefinedParamType, srcValue c.UndefinedParamType, destValue c.UndefinedParamType, strictValidation bool) {
 }
@@ -276,7 +275,7 @@ func Fn_param_value_validate(pspec c.UndefinedParamType, value c.UndefinedParamT
 func Fn_param_values_cmp(pspec c.UndefinedParamType, value1 c.UndefinedParamType, value2 c.UndefinedParamType) {
 }
 
-func Fn_pointer_type_register_static(name c.UndefinedParamType) {}
+func Fn_pointer_type_register_static(name string) {}
 
 func Fn_signal_accumulator_true_handled(ihint c.UndefinedParamType, returnAccu c.UndefinedParamType, handlerReturn c.UndefinedParamType, dummy unsafe.Pointer) {
 }
@@ -289,16 +288,16 @@ func Fn_signal_chain_from_overridden(instanceAndParams c.UndefinedParamType, ret
 
 // UNSUPPORTED : signal_chain_from_overridden_handler : has varargs
 
-func Fn_signal_connect_closure(instance unsafe.Pointer, detailedSignal c.UndefinedParamType, closure c.UndefinedParamType, after bool) {
+func Fn_signal_connect_closure(instance unsafe.Pointer, detailedSignal string, closure c.UndefinedParamType, after bool) {
 }
 
 func Fn_signal_connect_closure_by_id(instance unsafe.Pointer, signalId uint, detail c.UndefinedParamType, closure c.UndefinedParamType, after bool) {
 }
 
-func Fn_signal_connect_data(instance unsafe.Pointer, detailedSignal c.UndefinedParamType, cHandler c.UndefinedParamType, data unsafe.Pointer, destroyData c.UndefinedParamType, connectFlags c.UndefinedParamType) {
+func Fn_signal_connect_data(instance unsafe.Pointer, detailedSignal string, cHandler c.UndefinedParamType, data unsafe.Pointer, destroyData c.UndefinedParamType, connectFlags c.UndefinedParamType) {
 }
 
-func Fn_signal_connect_object(instance unsafe.Pointer, detailedSignal c.UndefinedParamType, cHandler c.UndefinedParamType, gobject unsafe.Pointer, connectFlags c.UndefinedParamType) {
+func Fn_signal_connect_object(instance unsafe.Pointer, detailedSignal string, cHandler c.UndefinedParamType, gobject unsafe.Pointer, connectFlags c.UndefinedParamType) {
 }
 
 // UNSUPPORTED : signal_emit : has varargs
@@ -340,7 +339,7 @@ func Fn_signal_has_handler_pending(instance unsafe.Pointer, signalId uint, detai
 
 func Fn_signal_list_ids(itype c.UndefinedParamType) {}
 
-func Fn_signal_lookup(name c.UndefinedParamType, itype c.UndefinedParamType) {}
+func Fn_signal_lookup(name string, itype c.UndefinedParamType) {}
 
 func Fn_signal_name(signalId uint) {}
 
@@ -348,20 +347,19 @@ func Fn_signal_name(signalId uint) {}
 
 // UNSUPPORTED : signal_new_class_handler : has varargs
 
-func Fn_signal_new_valist(signalName c.UndefinedParamType, itype c.UndefinedParamType, signalFlags c.UndefinedParamType, classClosure c.UndefinedParamType, accumulator c.UndefinedParamType, accuData unsafe.Pointer, cMarshaller c.UndefinedParamType, returnType c.UndefinedParamType, nParams uint, args c.UndefinedParamType) {
+func Fn_signal_new_valist(signalName string, itype c.UndefinedParamType, signalFlags c.UndefinedParamType, classClosure c.UndefinedParamType, accumulator c.UndefinedParamType, accuData unsafe.Pointer, cMarshaller c.UndefinedParamType, returnType c.UndefinedParamType, nParams uint, args c.UndefinedParamType) {
 }
 
-func Fn_signal_newv(signalName c.UndefinedParamType, itype c.UndefinedParamType, signalFlags c.UndefinedParamType, classClosure c.UndefinedParamType, accumulator c.UndefinedParamType, accuData unsafe.Pointer, cMarshaller c.UndefinedParamType, returnType c.UndefinedParamType, nParams uint, paramTypes c.UndefinedParamType) {
+func Fn_signal_newv(signalName string, itype c.UndefinedParamType, signalFlags c.UndefinedParamType, classClosure c.UndefinedParamType, accumulator c.UndefinedParamType, accuData unsafe.Pointer, cMarshaller c.UndefinedParamType, returnType c.UndefinedParamType, nParams uint, paramTypes c.UndefinedParamType) {
 }
 
 func Fn_signal_override_class_closure(signalId uint, instanceType c.UndefinedParamType, classClosure c.UndefinedParamType) {
 }
 
-func Fn_signal_override_class_handler(signalName c.UndefinedParamType, instanceType c.UndefinedParamType, classHandler c.UndefinedParamType) {
+func Fn_signal_override_class_handler(signalName string, instanceType c.UndefinedParamType, classHandler c.UndefinedParamType) {
 }
 
-func Fn_signal_parse_name(detailedSignal c.UndefinedParamType, itype c.UndefinedParamType, forceDetailQuark bool) {
-}
+func Fn_signal_parse_name(detailedSignal string, itype c.UndefinedParamType, forceDetailQuark bool) {}
 
 func Fn_signal_query(signalId uint) {}
 
@@ -369,7 +367,7 @@ func Fn_signal_remove_emission_hook(signalId uint, hookId uint64) {}
 
 func Fn_signal_stop_emission(instance unsafe.Pointer, signalId uint, detail c.UndefinedParamType) {}
 
-func Fn_signal_stop_emission_by_name(instance unsafe.Pointer, detailedSignal c.UndefinedParamType) {}
+func Fn_signal_stop_emission_by_name(instance unsafe.Pointer, detailedSignal string) {}
 
 func Fn_signal_type_cclosure_new(itype c.UndefinedParamType, structOffset uint) {}
 
@@ -434,7 +432,7 @@ func Fn_type_depth(type_ c.UndefinedParamType) {}
 
 func Fn_type_free_instance(instance c.UndefinedParamType) {}
 
-func Fn_type_from_name(name c.UndefinedParamType) {}
+func Fn_type_from_name(name string) {}
 
 func Fn_type_fundamental(typeId c.UndefinedParamType) {}
 
@@ -476,16 +474,16 @@ func Fn_type_qname(type_ c.UndefinedParamType) {}
 
 func Fn_type_query(type_ c.UndefinedParamType) {}
 
-func Fn_type_register_dynamic(parentType c.UndefinedParamType, typeName c.UndefinedParamType, plugin c.UndefinedParamType, flags c.UndefinedParamType) {
+func Fn_type_register_dynamic(parentType c.UndefinedParamType, typeName string, plugin c.UndefinedParamType, flags c.UndefinedParamType) {
 }
 
-func Fn_type_register_fundamental(typeId c.UndefinedParamType, typeName c.UndefinedParamType, info c.UndefinedParamType, finfo c.UndefinedParamType, flags c.UndefinedParamType) {
+func Fn_type_register_fundamental(typeId c.UndefinedParamType, typeName string, info c.UndefinedParamType, finfo c.UndefinedParamType, flags c.UndefinedParamType) {
 }
 
-func Fn_type_register_static(parentType c.UndefinedParamType, typeName c.UndefinedParamType, info c.UndefinedParamType, flags c.UndefinedParamType) {
+func Fn_type_register_static(parentType c.UndefinedParamType, typeName string, info c.UndefinedParamType, flags c.UndefinedParamType) {
 }
 
-func Fn_type_register_static_simple(parentType c.UndefinedParamType, typeName c.UndefinedParamType, classSize uint, classInit c.UndefinedParamType, instanceSize uint, instanceInit c.UndefinedParamType, flags c.UndefinedParamType) {
+func Fn_type_register_static_simple(parentType c.UndefinedParamType, typeName string, classSize uint, classInit c.UndefinedParamType, instanceSize uint, instanceInit c.UndefinedParamType, flags c.UndefinedParamType) {
 }
 
 func Fn_type_remove_class_cache_func(cacheData unsafe.Pointer, cacheFunc c.UndefinedParamType) {}
