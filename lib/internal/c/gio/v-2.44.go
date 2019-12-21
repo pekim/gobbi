@@ -579,16 +579,14 @@ func Fn_dbus_error_new_for_dbus_error(dbusErrorName string, dbusErrorMessage str
 
 func Fn_dbus_error_quark() {}
 
-func Fn_dbus_error_register_error(errorDomain c.UndefinedParamType, errorCode int, dbusErrorName string) {
-}
+func Fn_dbus_error_register_error(errorDomain glib.Quark, errorCode int, dbusErrorName string) {}
 
 func Fn_dbus_error_register_error_domain(errorDomainQuarkName string, quarkVolatile c.UndefinedParamType, entries c.UndefinedParamType, numEntries uint) {
 }
 
 func Fn_dbus_error_strip_remote_error(error *glib.Error) {}
 
-func Fn_dbus_error_unregister_error(errorDomain c.UndefinedParamType, errorCode int, dbusErrorName string) {
-}
+func Fn_dbus_error_unregister_error(errorDomain glib.Quark, errorCode int, dbusErrorName string) {}
 
 func Fn_dbus_generate_guid() {}
 

@@ -272,7 +272,7 @@ func Fn_pointer_type_register_static(name string) {}
 func Fn_signal_accumulator_true_handled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy unsafe.Pointer) {
 }
 
-func Fn_signal_add_emission_hook(signalId uint, detail c.UndefinedParamType, hookFunc c.UndefinedParamType, hookData unsafe.Pointer, dataDestroy c.UndefinedParamType) {
+func Fn_signal_add_emission_hook(signalId uint, detail glib.Quark, hookFunc c.UndefinedParamType, hookData unsafe.Pointer, dataDestroy c.UndefinedParamType) {
 }
 
 func Fn_signal_chain_from_overridden(instanceAndParams c.UndefinedParamType, returnValue *Value) {}
@@ -282,7 +282,7 @@ func Fn_signal_chain_from_overridden(instanceAndParams c.UndefinedParamType, ret
 func Fn_signal_connect_closure(instance unsafe.Pointer, detailedSignal string, closure *Closure, after bool) {
 }
 
-func Fn_signal_connect_closure_by_id(instance unsafe.Pointer, signalId uint, detail c.UndefinedParamType, closure *Closure, after bool) {
+func Fn_signal_connect_closure_by_id(instance unsafe.Pointer, signalId uint, detail glib.Quark, closure *Closure, after bool) {
 }
 
 func Fn_signal_connect_data(instance unsafe.Pointer, detailedSignal string, cHandler c.UndefinedParamType, data unsafe.Pointer, destroyData c.UndefinedParamType, connectFlags ConnectFlags) {
@@ -297,7 +297,7 @@ func Fn_signal_connect_object(instance unsafe.Pointer, detailedSignal string, cH
 
 // UNSUPPORTED : signal_emit_valist : has va_list
 
-func Fn_signal_emitv(instanceAndParams c.UndefinedParamType, signalId uint, detail c.UndefinedParamType, returnValue *Value) {
+func Fn_signal_emitv(instanceAndParams c.UndefinedParamType, signalId uint, detail glib.Quark, returnValue *Value) {
 }
 
 func Fn_signal_get_invocation_hint(instance unsafe.Pointer) {}
@@ -306,25 +306,25 @@ func Fn_signal_handler_block(instance unsafe.Pointer, handlerId uint64) {}
 
 func Fn_signal_handler_disconnect(instance unsafe.Pointer, handlerId uint64) {}
 
-func Fn_signal_handler_find(instance unsafe.Pointer, mask SignalMatchType, signalId uint, detail c.UndefinedParamType, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
+func Fn_signal_handler_find(instance unsafe.Pointer, mask SignalMatchType, signalId uint, detail glib.Quark, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
 }
 
 func Fn_signal_handler_is_connected(instance unsafe.Pointer, handlerId uint64) {}
 
 func Fn_signal_handler_unblock(instance unsafe.Pointer, handlerId uint64) {}
 
-func Fn_signal_handlers_block_matched(instance unsafe.Pointer, mask SignalMatchType, signalId uint, detail c.UndefinedParamType, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
+func Fn_signal_handlers_block_matched(instance unsafe.Pointer, mask SignalMatchType, signalId uint, detail glib.Quark, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
 }
 
 func Fn_signal_handlers_destroy(instance unsafe.Pointer) {}
 
-func Fn_signal_handlers_disconnect_matched(instance unsafe.Pointer, mask SignalMatchType, signalId uint, detail c.UndefinedParamType, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
+func Fn_signal_handlers_disconnect_matched(instance unsafe.Pointer, mask SignalMatchType, signalId uint, detail glib.Quark, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
 }
 
-func Fn_signal_handlers_unblock_matched(instance unsafe.Pointer, mask SignalMatchType, signalId uint, detail c.UndefinedParamType, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
+func Fn_signal_handlers_unblock_matched(instance unsafe.Pointer, mask SignalMatchType, signalId uint, detail glib.Quark, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
 }
 
-func Fn_signal_has_handler_pending(instance unsafe.Pointer, signalId uint, detail c.UndefinedParamType, mayBeBlocked bool) {
+func Fn_signal_has_handler_pending(instance unsafe.Pointer, signalId uint, detail glib.Quark, mayBeBlocked bool) {
 }
 
 func Fn_signal_list_ids(itype c.UndefinedParamType) {}
@@ -351,7 +351,7 @@ func Fn_signal_query(signalId uint) {}
 
 func Fn_signal_remove_emission_hook(signalId uint, hookId uint64) {}
 
-func Fn_signal_stop_emission(instance unsafe.Pointer, signalId uint, detail c.UndefinedParamType) {}
+func Fn_signal_stop_emission(instance unsafe.Pointer, signalId uint, detail glib.Quark) {}
 
 func Fn_signal_stop_emission_by_name(instance unsafe.Pointer, detailedSignal string) {}
 
@@ -424,7 +424,7 @@ func Fn_type_fundamental_next() {}
 
 func Fn_type_get_plugin(type_ c.UndefinedParamType) {}
 
-func Fn_type_get_qdata(type_ c.UndefinedParamType, quark c.UndefinedParamType) {}
+func Fn_type_get_qdata(type_ c.UndefinedParamType, quark glib.Quark) {}
 
 func Fn_type_init() {}
 
@@ -471,7 +471,7 @@ func Fn_type_remove_class_cache_func(cacheData unsafe.Pointer, cacheFunc c.Undef
 
 func Fn_type_remove_interface_check(checkData unsafe.Pointer, checkFunc c.UndefinedParamType) {}
 
-func Fn_type_set_qdata(type_ c.UndefinedParamType, quark c.UndefinedParamType, data unsafe.Pointer) {}
+func Fn_type_set_qdata(type_ c.UndefinedParamType, quark glib.Quark, data unsafe.Pointer) {}
 
 func Fn_type_test_flags(type_ c.UndefinedParamType, flags uint) {}
 

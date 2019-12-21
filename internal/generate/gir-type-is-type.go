@@ -1,6 +1,11 @@
 package generate
 
 func (t *Type) isAlias() bool {
+	if t.isQualifiedName() {
+		_, found := t.foreignNamespace.Aliases.byName(t.foreignName)
+		return found
+	}
+
 	_, found := t.namespace.Aliases.byName(t.Name)
 	return found
 }
