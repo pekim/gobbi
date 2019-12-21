@@ -25,16 +25,17 @@ type Namespace struct {
 	Records      Records      `xml:"record"`
 	Interfaces   Interfaces   `xml:"interface"`
 
-	repository         *repository
-	libDir             string
-	cDir               string
-	namespaces         namespaces
-	goPackageName      string
-	goFullPackageName  string
-	cSymbolPrefixes    []string
-	cUnsupportedCount  int
-	goUnsupportedCount int
-	versions           *versions
+	repository           *repository
+	libDir               string
+	cDir                 string
+	namespaces           namespaces
+	goPackageName        string
+	goFullPackageName    string
+	goFullSysPackageName string
+	cSymbolPrefixes      []string
+	cUnsupportedCount    int
+	goUnsupportedCount   int
+	versions             *versions
 }
 
 func (n *Namespace) init(repository *repository, namespaces namespaces) {
@@ -43,6 +44,7 @@ func (n *Namespace) init(repository *repository, namespaces namespaces) {
 	n.cSymbolPrefixes = strings.Split(n.CSymbolPrefixes, ",")
 	n.goPackageName = strings.ToLower(n.Name)
 	n.goFullPackageName = "github.com/pekim/gobbi/lib/" + n.goPackageName
+	n.goFullSysPackageName = "github.com/pekim/gobbi/lib/internal/c/" + n.goPackageName
 	n.versions = &versions{}
 
 	//n.Aliases.init(n)

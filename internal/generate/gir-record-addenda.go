@@ -14,6 +14,23 @@ var recordBlacklist = map[string]bool{
 	"Gtk.HeaderBarAccessibleClass":   true,
 	"Gtk.HeaderBarAccessiblePrivate": true,
 	"Gtk.StackAccessibleClass":       true,
+
+	"Pango.Engine":             true,
+	"Pango.EngineClass":        true,
+	"Pango.EngineInfo":         true,
+	"Pango.EngineLangClass":    true,
+	"Pango.EngineScriptInfo":   true,
+	"Pango.EngineShapeClass":   true,
+	"Pango.FontClass":          true,
+	"Pango.FontFaceClass":      true,
+	"Pango.FontFamilyClass":    true,
+	"Pango.FontMapClass":       true,
+	"Pango.FontsetClass":       true,
+	"Pango.FontsetSimple":      true,
+	"Pango.FontsetSimpleClass": true,
+	"Pango.IncludedModule":     true,
+	"Pango.Map":                true,
+	"Pango.MapEntry":           true,
 }
 
 var recordVersionAddenda = map[string]string{

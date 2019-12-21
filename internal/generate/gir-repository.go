@@ -21,6 +21,15 @@ type Package struct {
 	Name string `xml:"name,attr"`
 }
 
+func repositoryFromFile(spec repositorySpec) *repository {
+	fullname := spec.Name + "-" + spec.Version
+
+	r := &repository{}
+	r.loadFromFile(fullname+".gir", true)
+
+	return r
+}
+
 func (r *repository) loadFromFile(filename string, required bool) {
 	filepath := projectFilepath("gir-files", filename)
 	source, err := ioutil.ReadFile(filepath)
@@ -36,13 +45,12 @@ func (r *repository) loadFromFile(filename string, required bool) {
 	if err != nil {
 		panic(fmt.Errorf("Failed to parse %s : %s", filepath, err))
 	}
+
+	r.init()
 }
 
-func repositoryFromFile(spec repositorySpec) *repository {
-	fullname := spec.Name + "-" + spec.Version
-
-	r := &repository{}
-	r.loadFromFile(fullname+".gir", true)
-
-	return r
+func (r *repository) init() {
+	if r.Namespace.Name == "GLib" {
+		r.CIncludes = append(r.CIncludes, &CInclude{Name: "glib/gstdio.h"})
+	}
 }

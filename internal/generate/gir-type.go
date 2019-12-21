@@ -40,10 +40,10 @@ type Type struct {
 	foreignNamespace *Namespace
 	foreignName      string
 
-	isConst          bool
-	cType            string
-	stars            string
-	indirectionCount int
+	cIsConst          bool
+	cType             string
+	cStars            string
+	cIndirectionCount int
 }
 
 func (t *Type) init(ns *Namespace) {
@@ -52,15 +52,24 @@ func (t *Type) init(ns *Namespace) {
 	}
 
 	t.namespace = ns
+	t.analyseName()
 	t.parseCtype()
+}
+
+func (t *Type) analyseName() {
+	isForeign, foreignNamespace, foreignName := t.namespace.namespaces.analyseName(t.Name)
+	if isForeign {
+		t.foreignNamespace = foreignNamespace
+		t.foreignName = foreignName
+	}
 }
 
 func (t *Type) parseCtype() {
 	parts := cTypeRegex.FindStringSubmatch(t.CType)
-	t.isConst = parts[1] != ""
+	t.cIsConst = parts[1] != ""
 	t.cType = parts[2]
-	t.stars = parts[3]
-	t.indirectionCount = len(t.stars)
+	t.cStars = parts[3]
+	t.cIndirectionCount = len(t.cStars)
 	if t.cType == "" {
 		panic(fmt.Sprintf("Failed to parse type ; '%s'", t.CType))
 	}
@@ -72,9 +81,30 @@ func (t *Type) sysParamGoType() *jen.Statement {
 	}
 
 	if simpleGoType, ok := simpleSysParamGoTypes[t.cType]; ok {
-		return jen.Op(t.stars).Add(simpleGoType)
+		return jen.Op(t.cStars).Add(simpleGoType)
 	}
-	//fmt.Printf("type '%s' : '%s'\n", t.CType, t.Name)
 
+	if t.isBitfield() {
+		bf, _ := t.namespace.Bitfields.byName(t.Name)
+		return jen.Id(bf.Name)
+	}
+
+	if t.isEnumeration() {
+		enum, _ := t.namespace.Enumerations.byName(t.Name)
+		return jen.Id(enum.Name)
+	}
+
+	if t.isClass() || t.isRecord() || t.isInterface() {
+		if t.isQualifiedName() {
+			return jen.Op(t.cStars).Qual(t.foreignNamespace.goFullSysPackageName, t.foreignName)
+		}
+		return jen.Op(t.cStars).Id(t.Name)
+	}
+
+	//fmt.Printf("type '%s' : '%s'\n", t.CType, t.Name)
 	return jen.Qual("github.com/pekim/gobbi/lib/internal/c", "UndefinedParamType")
+}
+
+func (t *Type) isQualifiedName() bool {
+	return t.foreignNamespace != nil && t.foreignNamespace != t.namespace
 }

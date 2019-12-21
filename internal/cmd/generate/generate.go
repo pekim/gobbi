@@ -8,7 +8,7 @@ import (
 
 var libraries = generate.RepositorySpecs{
 	{Version: "1.0", Name: "Atk"},
-	//{Version: "1.0", Name: "cairo"},
+	{Version: "1.0", Name: "cairo"},
 	//{Version: "2.0", Name: "freetype2"},
 	{Version: "3.0", Name: "Gdk"},
 	{Version: "2.0", Name: "GdkPixbuf"},
@@ -18,7 +18,7 @@ var libraries = generate.RepositorySpecs{
 	{Version: "3.0", Name: "Gtk"},
 	//{Version: "3.0", Name: "GtkSource"},
 	//{Version: "4.0", Name: "JavaScriptCore"},
-	//{Version: "1.0", Name: "Pango"},
+	{Version: "1.0", Name: "Pango"},
 	//{Version: "1.0", Name: "PangoCairo"},
 	//{Version: "1.0", Name: "PangoFT2"},
 	//{Version: "2.4", Name: "Soup"},

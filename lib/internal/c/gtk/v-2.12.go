@@ -5,6 +5,12 @@ package gtk
 
 import (
 	c "github.com/pekim/gobbi/lib/internal/c"
+	cairo "github.com/pekim/gobbi/lib/internal/c/cairo"
+	gdk "github.com/pekim/gobbi/lib/internal/c/gdk"
+	gdkpixbuf "github.com/pekim/gobbi/lib/internal/c/gdkpixbuf"
+	glib "github.com/pekim/gobbi/lib/internal/c/glib"
+	gobject "github.com/pekim/gobbi/lib/internal/c/gobject"
+	pango "github.com/pekim/gobbi/lib/internal/c/pango"
 	"unsafe"
 )
 
@@ -933,10 +939,10 @@ type TreeDragSource C.GtkTreeDragSource
 type TreeModel C.GtkTreeModel
 type TreeSortable C.GtkTreeSortable
 
-func Fn_accel_groups_activate(object c.UndefinedParamType, accelKey uint, accelMods c.UndefinedParamType) {
+func Fn_accel_groups_activate(object *gobject.Object, accelKey uint, accelMods c.UndefinedParamType) {
 }
 
-func Fn_accel_groups_from_object(object c.UndefinedParamType) {}
+func Fn_accel_groups_from_object(object *gobject.Object) {}
 
 func Fn_accelerator_get_default_mod_mask() {}
 
@@ -950,16 +956,14 @@ func Fn_accelerator_set_default_mod_mask(defaultModMask c.UndefinedParamType) {}
 
 func Fn_accelerator_valid(keyval uint, modifiers c.UndefinedParamType) {}
 
-func Fn_alternative_dialog_button_order(screen c.UndefinedParamType) {}
+func Fn_alternative_dialog_button_order(screen *gdk.Screen) {}
 
-func Fn_binding_entry_add_signall(bindingSet c.UndefinedParamType, keyval uint, modifiers c.UndefinedParamType, signalName string, bindingArgs c.UndefinedParamType) {
+func Fn_binding_entry_add_signall(bindingSet *BindingSet, keyval uint, modifiers c.UndefinedParamType, signalName string, bindingArgs *glib.SList) {
 }
 
-func Fn_binding_entry_remove(bindingSet c.UndefinedParamType, keyval uint, modifiers c.UndefinedParamType) {
-}
+func Fn_binding_entry_remove(bindingSet *BindingSet, keyval uint, modifiers c.UndefinedParamType) {}
 
-func Fn_binding_entry_skip(bindingSet c.UndefinedParamType, keyval uint, modifiers c.UndefinedParamType) {
-}
+func Fn_binding_entry_skip(bindingSet *BindingSet, keyval uint, modifiers c.UndefinedParamType) {}
 
 func Fn_binding_set_by_class(objectClass unsafe.Pointer) {}
 
@@ -967,9 +971,9 @@ func Fn_binding_set_find(setName string) {}
 
 func Fn_binding_set_new(setName string) {}
 
-func Fn_bindings_activate(object c.UndefinedParamType, keyval uint, modifiers c.UndefinedParamType) {}
+func Fn_bindings_activate(object *gobject.Object, keyval uint, modifiers c.UndefinedParamType) {}
 
-func Fn_bindings_activate_event(object c.UndefinedParamType, event c.UndefinedParamType) {}
+func Fn_bindings_activate_event(object *gobject.Object, event *gdk.EventKey) {}
 
 func Fn_builder_error_quark() {}
 
@@ -979,26 +983,24 @@ func Fn_css_provider_error_quark() {}
 
 func Fn_disable_setlocale() {}
 
-func Fn_distribute_natural_allocation(extraSpace int, nRequestedSizes uint, sizes c.UndefinedParamType) {
+func Fn_distribute_natural_allocation(extraSpace int, nRequestedSizes uint, sizes *RequestedSize) {}
+
+func Fn_drag_finish(context *gdk.DragContext, success bool, del bool, time uint32) {}
+
+func Fn_drag_get_source_widget(context *gdk.DragContext) {}
+
+func Fn_drag_set_icon_default(context *gdk.DragContext) {}
+
+func Fn_drag_set_icon_name(context *gdk.DragContext, iconName string, hotX int, hotY int) {}
+
+func Fn_drag_set_icon_pixbuf(context *gdk.DragContext, pixbuf *gdkpixbuf.Pixbuf, hotX int, hotY int) {
 }
 
-func Fn_drag_finish(context c.UndefinedParamType, success bool, del bool, time uint32) {}
+func Fn_drag_set_icon_stock(context *gdk.DragContext, stockId string, hotX int, hotY int) {}
 
-func Fn_drag_get_source_widget(context c.UndefinedParamType) {}
+func Fn_drag_set_icon_surface(context *gdk.DragContext, surface cairo.Surface) {}
 
-func Fn_drag_set_icon_default(context c.UndefinedParamType) {}
-
-func Fn_drag_set_icon_name(context c.UndefinedParamType, iconName string, hotX int, hotY int) {}
-
-func Fn_drag_set_icon_pixbuf(context c.UndefinedParamType, pixbuf c.UndefinedParamType, hotX int, hotY int) {
-}
-
-func Fn_drag_set_icon_stock(context c.UndefinedParamType, stockId string, hotX int, hotY int) {}
-
-func Fn_drag_set_icon_surface(context c.UndefinedParamType, surface c.UndefinedParamType) {}
-
-func Fn_drag_set_icon_widget(context c.UndefinedParamType, widget c.UndefinedParamType, hotX int, hotY int) {
-}
+func Fn_drag_set_icon_widget(context *gdk.DragContext, widget *Widget, hotX int, hotY int) {}
 
 func Fn_events_pending() {}
 
@@ -1026,15 +1028,15 @@ func Fn_grab_get_current() {}
 
 func Fn_icon_size_from_name(name string) {}
 
-func Fn_icon_size_get_name(size c.UndefinedParamType) {}
+func Fn_icon_size_get_name(size IconSize) {}
 
-func Fn_icon_size_lookup(size c.UndefinedParamType) {}
+func Fn_icon_size_lookup(size IconSize) {}
 
-func Fn_icon_size_lookup_for_settings(settings c.UndefinedParamType, size c.UndefinedParamType) {}
+func Fn_icon_size_lookup_for_settings(settings *Settings, size IconSize) {}
 
 func Fn_icon_size_register(name string, width int, height int) {}
 
-func Fn_icon_size_register_alias(alias string, target c.UndefinedParamType) {}
+func Fn_icon_size_register_alias(alias string, target IconSize) {}
 
 func Fn_icon_theme_error_quark() {}
 
@@ -1061,64 +1063,64 @@ func Fn_main_level() {}
 
 func Fn_main_quit() {}
 
-func Fn_paint_arrow(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, arrowType c.UndefinedParamType, fill bool, x int, y int, width int, height int) {
+func Fn_paint_arrow(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, arrowType ArrowType, fill bool, x int, y int, width int, height int) {
 }
 
-func Fn_paint_box(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int) {
+func Fn_paint_box(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 }
 
-func Fn_paint_box_gap(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int, gapSide c.UndefinedParamType, gapX int, gapWidth int) {
+func Fn_paint_box_gap(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int, gapSide PositionType, gapX int, gapWidth int) {
 }
 
-func Fn_paint_check(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int) {
+func Fn_paint_check(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 }
 
-func Fn_paint_diamond(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int) {
+func Fn_paint_diamond(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 }
 
-func Fn_paint_expander(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, expanderStyle c.UndefinedParamType) {
+func Fn_paint_expander(style *Style, cr cairo.Context, stateType StateType, widget *Widget, detail string, x int, y int, expanderStyle ExpanderStyle) {
 }
 
-func Fn_paint_extension(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int, gapSide c.UndefinedParamType) {
+func Fn_paint_extension(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int, gapSide PositionType) {
 }
 
-func Fn_paint_flat_box(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int) {
+func Fn_paint_flat_box(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 }
 
-func Fn_paint_focus(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int) {
+func Fn_paint_focus(style *Style, cr cairo.Context, stateType StateType, widget *Widget, detail string, x int, y int, width int, height int) {
 }
 
-func Fn_paint_handle(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int, orientation c.UndefinedParamType) {
+func Fn_paint_handle(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int, orientation Orientation) {
 }
 
-func Fn_paint_hline(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x1 int, x2 int, y int) {
+func Fn_paint_hline(style *Style, cr cairo.Context, stateType StateType, widget *Widget, detail string, x1 int, x2 int, y int) {
 }
 
-func Fn_paint_layout(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, useText bool, widget c.UndefinedParamType, detail string, x int, y int, layout c.UndefinedParamType) {
+func Fn_paint_layout(style *Style, cr cairo.Context, stateType StateType, useText bool, widget *Widget, detail string, x int, y int, layout *pango.Layout) {
 }
 
-func Fn_paint_option(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int) {
+func Fn_paint_option(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 }
 
-func Fn_paint_resize_grip(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, widget c.UndefinedParamType, detail string, edge c.UndefinedParamType, x int, y int, width int, height int) {
+func Fn_paint_resize_grip(style *Style, cr cairo.Context, stateType StateType, widget *Widget, detail string, edge c.UndefinedParamType, x int, y int, width int, height int) {
 }
 
-func Fn_paint_shadow(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int) {
+func Fn_paint_shadow(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 }
 
-func Fn_paint_shadow_gap(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int, gapSide c.UndefinedParamType, gapX int, gapWidth int) {
+func Fn_paint_shadow_gap(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int, gapSide PositionType, gapX int, gapWidth int) {
 }
 
-func Fn_paint_slider(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int, orientation c.UndefinedParamType) {
+func Fn_paint_slider(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int, orientation Orientation) {
 }
 
-func Fn_paint_spinner(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, widget c.UndefinedParamType, detail string, step uint, x int, y int, width int, height int) {
+func Fn_paint_spinner(style *Style, cr cairo.Context, stateType StateType, widget *Widget, detail string, step uint, x int, y int, width int, height int) {
 }
 
-func Fn_paint_tab(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, shadowType c.UndefinedParamType, widget c.UndefinedParamType, detail string, x int, y int, width int, height int) {
+func Fn_paint_tab(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 }
 
-func Fn_paint_vline(style c.UndefinedParamType, cr c.UndefinedParamType, stateType c.UndefinedParamType, widget c.UndefinedParamType, detail string, y1 int, y2 int, x int) {
+func Fn_paint_vline(style *Style, cr cairo.Context, stateType StateType, widget *Widget, detail string, y1 int, y2 int, x int) {
 }
 
 func Fn_paper_size_get_default() {}
@@ -1129,20 +1131,18 @@ func Fn_parse_args(argc *int, argv c.UndefinedParamType) {}
 
 func Fn_print_error_quark() {}
 
-func Fn_print_run_page_setup_dialog(parent c.UndefinedParamType, pageSetup c.UndefinedParamType, settings c.UndefinedParamType) {
+func Fn_print_run_page_setup_dialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) {}
+
+func Fn_print_run_page_setup_dialog_async(parent *Window, pageSetup *PageSetup, settings *PrintSettings, doneCb c.UndefinedParamType, data unsafe.Pointer) {
 }
 
-func Fn_print_run_page_setup_dialog_async(parent c.UndefinedParamType, pageSetup c.UndefinedParamType, settings c.UndefinedParamType, doneCb c.UndefinedParamType, data unsafe.Pointer) {
-}
-
-func Fn_propagate_event(widget c.UndefinedParamType, event c.UndefinedParamType) {}
+func Fn_propagate_event(widget *Widget, event c.UndefinedParamType) {}
 
 func Fn_rc_add_default_file(filename string) {}
 
 func Fn_rc_find_module_in_path(moduleFile string) {}
 
-func Fn_rc_find_pixmap_in_path(settings c.UndefinedParamType, scanner c.UndefinedParamType, pixmapFile string) {
-}
+func Fn_rc_find_pixmap_in_path(settings *Settings, scanner *glib.Scanner, pixmapFile string) {}
 
 func Fn_rc_get_default_files() {}
 
@@ -1152,45 +1152,45 @@ func Fn_rc_get_im_module_path() {}
 
 func Fn_rc_get_module_dir() {}
 
-func Fn_rc_get_style(widget c.UndefinedParamType) {}
+func Fn_rc_get_style(widget *Widget) {}
 
-func Fn_rc_get_style_by_paths(settings c.UndefinedParamType, widgetPath string, classPath string, type_ c.UndefinedParamType) {
+func Fn_rc_get_style_by_paths(settings *Settings, widgetPath string, classPath string, type_ c.UndefinedParamType) {
 }
 
 func Fn_rc_get_theme_dir() {}
 
 func Fn_rc_parse(filename string) {}
 
-func Fn_rc_parse_color(scanner c.UndefinedParamType) {}
+func Fn_rc_parse_color(scanner *glib.Scanner) {}
 
-func Fn_rc_parse_color_full(scanner c.UndefinedParamType, style c.UndefinedParamType) {}
+func Fn_rc_parse_color_full(scanner *glib.Scanner, style *RcStyle) {}
 
-func Fn_rc_parse_priority(scanner c.UndefinedParamType, priority c.UndefinedParamType) {}
+func Fn_rc_parse_priority(scanner *glib.Scanner, priority PathPriorityType) {}
 
-func Fn_rc_parse_state(scanner c.UndefinedParamType) {}
+func Fn_rc_parse_state(scanner *glib.Scanner) {}
 
 func Fn_rc_parse_string(rcString string) {}
 
-func Fn_rc_property_parse_border(pspec c.UndefinedParamType, gstring c.UndefinedParamType, propertyValue c.UndefinedParamType) {
+func Fn_rc_property_parse_border(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) {
 }
 
-func Fn_rc_property_parse_color(pspec c.UndefinedParamType, gstring c.UndefinedParamType, propertyValue c.UndefinedParamType) {
+func Fn_rc_property_parse_color(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) {
 }
 
-func Fn_rc_property_parse_enum(pspec c.UndefinedParamType, gstring c.UndefinedParamType, propertyValue c.UndefinedParamType) {
+func Fn_rc_property_parse_enum(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) {
 }
 
-func Fn_rc_property_parse_flags(pspec c.UndefinedParamType, gstring c.UndefinedParamType, propertyValue c.UndefinedParamType) {
+func Fn_rc_property_parse_flags(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) {
 }
 
-func Fn_rc_property_parse_requisition(pspec c.UndefinedParamType, gstring c.UndefinedParamType, propertyValue c.UndefinedParamType) {
+func Fn_rc_property_parse_requisition(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) {
 }
 
 func Fn_rc_reparse_all() {}
 
-func Fn_rc_reparse_all_for_settings(settings c.UndefinedParamType, forceLoad bool) {}
+func Fn_rc_reparse_all_for_settings(settings *Settings, forceLoad bool) {}
 
-func Fn_rc_reset_styles(settings c.UndefinedParamType) {}
+func Fn_rc_reset_styles(settings *Settings) {}
 
 func Fn_rc_scanner_new() {}
 
@@ -1200,24 +1200,21 @@ func Fn_recent_chooser_error_quark() {}
 
 func Fn_recent_manager_error_quark() {}
 
-func Fn_selection_add_target(widget c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, info uint) {
+func Fn_selection_add_target(widget *Widget, selection gdk.Atom, target gdk.Atom, info uint) {}
+
+func Fn_selection_add_targets(widget *Widget, selection gdk.Atom, targets c.UndefinedParamType, ntargets uint) {
 }
 
-func Fn_selection_add_targets(widget c.UndefinedParamType, selection c.UndefinedParamType, targets c.UndefinedParamType, ntargets uint) {
+func Fn_selection_clear_targets(widget *Widget, selection gdk.Atom) {}
+
+func Fn_selection_convert(widget *Widget, selection gdk.Atom, target gdk.Atom, time uint32) {}
+
+func Fn_selection_owner_set(widget *Widget, selection gdk.Atom, time uint32) {}
+
+func Fn_selection_owner_set_for_display(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) {
 }
 
-func Fn_selection_clear_targets(widget c.UndefinedParamType, selection c.UndefinedParamType) {}
-
-func Fn_selection_convert(widget c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, time uint32) {
-}
-
-func Fn_selection_owner_set(widget c.UndefinedParamType, selection c.UndefinedParamType, time uint32) {
-}
-
-func Fn_selection_owner_set_for_display(display c.UndefinedParamType, widget c.UndefinedParamType, selection c.UndefinedParamType, time uint32) {
-}
-
-func Fn_selection_remove_all(widget c.UndefinedParamType) {}
+func Fn_selection_remove_all(widget *Widget) {}
 
 func Fn_set_debug_flags(flags uint) {}
 
@@ -1236,12 +1233,11 @@ func Fn_stock_set_translate_func(domain string, func_ c.UndefinedParamType, data
 
 func Fn_target_table_free(targets c.UndefinedParamType, nTargets int) {}
 
-func Fn_target_table_new_from_list(list c.UndefinedParamType) {}
+func Fn_target_table_new_from_list(list *TargetList) {}
 
 func Fn_targets_include_image(targets c.UndefinedParamType, nTargets int, writable bool) {}
 
-func Fn_targets_include_rich_text(targets c.UndefinedParamType, nTargets int, buffer c.UndefinedParamType) {
-}
+func Fn_targets_include_rich_text(targets c.UndefinedParamType, nTargets int, buffer *TextBuffer) {}
 
 func Fn_targets_include_text(targets c.UndefinedParamType, nTargets int) {}
 
@@ -1253,16 +1249,15 @@ func Fn_targets_include_uri(targets c.UndefinedParamType, nTargets int) {}
 
 // UNSUPPORTED : test_init : has varargs
 
-func Fn_tree_get_row_drag_data(selectionData c.UndefinedParamType) {}
+func Fn_tree_get_row_drag_data(selectionData *SelectionData) {}
 
-func Fn_tree_row_reference_deleted(proxy c.UndefinedParamType, path c.UndefinedParamType) {}
+func Fn_tree_row_reference_deleted(proxy *gobject.Object, path *TreePath) {}
 
-func Fn_tree_row_reference_inserted(proxy c.UndefinedParamType, path c.UndefinedParamType) {}
+func Fn_tree_row_reference_inserted(proxy *gobject.Object, path *TreePath) {}
 
-func Fn_tree_row_reference_reordered(proxy c.UndefinedParamType, path c.UndefinedParamType, iter c.UndefinedParamType, newOrder c.UndefinedParamType) {
+func Fn_tree_row_reference_reordered(proxy *gobject.Object, path *TreePath, iter *TreeIter, newOrder c.UndefinedParamType) {
 }
 
-func Fn_tree_set_row_drag_data(selectionData c.UndefinedParamType, treeModel c.UndefinedParamType, path c.UndefinedParamType) {
-}
+func Fn_tree_set_row_drag_data(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) {}
 
 func Fn_true() {}

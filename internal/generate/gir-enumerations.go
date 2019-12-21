@@ -13,6 +13,16 @@ func (ee Enumerations) init(ns *Namespace) {
 	}
 }
 
+func (ee Enumerations) byName(name string) (*Enumeration, bool) {
+	for _, e := range ee {
+		if e.Name == name {
+			return e, true
+		}
+	}
+
+	return nil, false
+}
+
 func (ee Enumerations) generateSys(f *jen.File, version semver.Version, typ string) {
 	f.Comment(typ)
 

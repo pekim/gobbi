@@ -20,18 +20,25 @@ type Function struct {
 	Introspectable string `xml:"introspectable,attr"`
 
 	namespace *Namespace
+	blacklist bool
 	version   semver.Version
 	sysName   string
 }
 
 func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	f.namespace = ns
+	f.applyAddenda()
 	f.version = versionNew(f.Version)
 	f.sysName = "Fn_" + f.Name
 	f.Parameters.init(ns)
 }
 
 func (f Function) generateSys(fi *jen.File, version semver.Version) {
+	if f.blacklist {
+		fi.Commentf("UNSUPPORTED : %s : blacklisted", f.Name)
+		return
+	}
+
 	if f.Parameters.hasVarargs() {
 		fi.Commentf("UNSUPPORTED : %s : has varargs", f.Name)
 		fi.Line()

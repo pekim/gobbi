@@ -107,7 +107,7 @@ func Fn_attribute_set_free(attribSet c.UndefinedParamType) {}
 
 func Fn_focus_tracker_init(init c.UndefinedParamType) {}
 
-func Fn_focus_tracker_notify(object c.UndefinedParamType) {}
+func Fn_focus_tracker_notify(object *Object) {}
 
 func Fn_get_default_registry() {}
 
@@ -123,7 +123,7 @@ func Fn_get_version() {}
 
 func Fn_relation_type_for_name(name string) {}
 
-func Fn_relation_type_get_name(type_ c.UndefinedParamType) {}
+func Fn_relation_type_get_name(type_ RelationType) {}
 
 func Fn_relation_type_register(name string) {}
 
@@ -135,28 +135,28 @@ func Fn_remove_key_event_listener(listenerId uint) {}
 
 func Fn_role_for_name(name string) {}
 
-func Fn_role_get_localized_name(role c.UndefinedParamType) {}
+func Fn_role_get_localized_name(role Role) {}
 
-func Fn_role_get_name(role c.UndefinedParamType) {}
+func Fn_role_get_name(role Role) {}
 
 func Fn_role_register(name string) {}
 
 func Fn_state_type_for_name(name string) {}
 
-func Fn_state_type_get_name(type_ c.UndefinedParamType) {}
+func Fn_state_type_get_name(type_ StateType) {}
 
 func Fn_state_type_register(name string) {}
 
 func Fn_text_attribute_for_name(name string) {}
 
-func Fn_text_attribute_get_name(attr c.UndefinedParamType) {}
+func Fn_text_attribute_get_name(attr TextAttribute) {}
 
-func Fn_text_attribute_get_value(attr c.UndefinedParamType, index int) {}
+func Fn_text_attribute_get_value(attr TextAttribute, index int) {}
 
 func Fn_text_attribute_register(name string) {}
 
 func Fn_text_free_ranges(ranges c.UndefinedParamType) {}
 
-func Fn_value_type_get_localized_name(valueType c.UndefinedParamType) {}
+func Fn_value_type_get_localized_name(valueType ValueType) {}
 
-func Fn_value_type_get_name(valueType c.UndefinedParamType) {}
+func Fn_value_type_get_name(valueType ValueType) {}

@@ -5,6 +5,8 @@ package gio
 
 import (
 	c "github.com/pekim/gobbi/lib/internal/c"
+	glib "github.com/pekim/gobbi/lib/internal/c/glib"
+	gobject "github.com/pekim/gobbi/lib/internal/c/gobject"
 	"unsafe"
 )
 
@@ -298,7 +300,7 @@ type Seekable C.GSeekable
 type SocketConnectable C.GSocketConnectable
 type Volume C.GVolume
 
-func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags c.UndefinedParamType) {
+func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags AppInfoCreateFlags) {
 }
 
 func Fn_app_info_get_all() {}
@@ -309,7 +311,7 @@ func Fn_app_info_get_default_for_type(contentType string, mustSupportUris bool) 
 
 func Fn_app_info_get_default_for_uri_scheme(uriScheme string) {}
 
-func Fn_app_info_launch_default_for_uri(uri string, context c.UndefinedParamType) {}
+func Fn_app_info_launch_default_for_uri(uri string, context *AppLaunchContext) {}
 
 func Fn_app_info_reset_type_associations(contentType string) {}
 
@@ -327,7 +329,7 @@ func Fn_content_type_get_mime_type(type_ string) {}
 
 func Fn_content_type_guess(filename string, data c.UndefinedParamType, dataSize uint64) {}
 
-func Fn_content_type_guess_for_tree(root c.UndefinedParamType) {}
+func Fn_content_type_guess_for_tree(root *File) {}
 
 func Fn_content_type_is_a(type_ string, supertype string) {}
 
@@ -364,41 +366,41 @@ func Fn_io_modules_load_all_in_directory(dirname string) {}
 
 func Fn_io_scheduler_cancel_all_jobs() {}
 
-func Fn_io_scheduler_push_job(jobFunc c.UndefinedParamType, userData unsafe.Pointer, notify c.UndefinedParamType, ioPriority int, cancellable c.UndefinedParamType) {
+func Fn_io_scheduler_push_job(jobFunc c.UndefinedParamType, userData unsafe.Pointer, notify c.UndefinedParamType, ioPriority int, cancellable *Cancellable) {
 }
 
 func Fn_keyfile_settings_backend_new(filename string, rootPath string, rootGroup string) {}
 
 // UNSUPPORTED : simple_async_report_error_in_idle : has varargs
 
-func Fn_simple_async_report_gerror_in_idle(object c.UndefinedParamType, callback c.UndefinedParamType, userData unsafe.Pointer, error c.UndefinedParamType) {
+func Fn_simple_async_report_gerror_in_idle(object *gobject.Object, callback c.UndefinedParamType, userData unsafe.Pointer, error *glib.Error) {
 }
 
 func Fn_unix_is_mount_path_system_internal(mountPath string) {}
 
 func Fn_unix_mount_at(mountPath string) {}
 
-func Fn_unix_mount_compare(mount1 c.UndefinedParamType, mount2 c.UndefinedParamType) {}
+func Fn_unix_mount_compare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) {}
 
-func Fn_unix_mount_free(mountEntry c.UndefinedParamType) {}
+func Fn_unix_mount_free(mountEntry *UnixMountEntry) {}
 
-func Fn_unix_mount_get_device_path(mountEntry c.UndefinedParamType) {}
+func Fn_unix_mount_get_device_path(mountEntry *UnixMountEntry) {}
 
-func Fn_unix_mount_get_fs_type(mountEntry c.UndefinedParamType) {}
+func Fn_unix_mount_get_fs_type(mountEntry *UnixMountEntry) {}
 
-func Fn_unix_mount_get_mount_path(mountEntry c.UndefinedParamType) {}
+func Fn_unix_mount_get_mount_path(mountEntry *UnixMountEntry) {}
 
-func Fn_unix_mount_guess_can_eject(mountEntry c.UndefinedParamType) {}
+func Fn_unix_mount_guess_can_eject(mountEntry *UnixMountEntry) {}
 
-func Fn_unix_mount_guess_icon(mountEntry c.UndefinedParamType) {}
+func Fn_unix_mount_guess_icon(mountEntry *UnixMountEntry) {}
 
-func Fn_unix_mount_guess_name(mountEntry c.UndefinedParamType) {}
+func Fn_unix_mount_guess_name(mountEntry *UnixMountEntry) {}
 
-func Fn_unix_mount_guess_should_display(mountEntry c.UndefinedParamType) {}
+func Fn_unix_mount_guess_should_display(mountEntry *UnixMountEntry) {}
 
-func Fn_unix_mount_is_readonly(mountEntry c.UndefinedParamType) {}
+func Fn_unix_mount_is_readonly(mountEntry *UnixMountEntry) {}
 
-func Fn_unix_mount_is_system_internal(mountEntry c.UndefinedParamType) {}
+func Fn_unix_mount_is_system_internal(mountEntry *UnixMountEntry) {}
 
 func Fn_unix_mount_points_changed_since(time uint64) {}
 

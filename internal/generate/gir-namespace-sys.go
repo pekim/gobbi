@@ -69,6 +69,10 @@ func (ns *Namespace) generateSysFileBuildTags(f *jen.File, version semver.Versio
 		buildTags = fmt.Sprintf("%s_%s", ns.goPackageName, versionString(version))
 	}
 
+	if buildTags == "" {
+		return
+	}
+
 	f.HeaderComment(fmt.Sprintf("+build %s", buildTags))
 	f.Line()
 }
