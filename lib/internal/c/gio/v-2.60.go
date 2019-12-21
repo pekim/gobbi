@@ -477,8 +477,7 @@ type Volume C.GVolume
 
 func Fn_action_name_is_valid(actionName c.UndefinedParamType) {}
 
-func Fn_action_parse_detailed_name(detailedName c.UndefinedParamType, actionName c.UndefinedParamType, targetValue c.UndefinedParamType) {
-}
+func Fn_action_parse_detailed_name(detailedName c.UndefinedParamType) {}
 
 func Fn_action_print_detailed_name(actionName c.UndefinedParamType, targetValue c.UndefinedParamType) {
 }
@@ -563,7 +562,7 @@ func Fn_content_type_get_mime_type(type_ c.UndefinedParamType) {}
 
 func Fn_content_type_get_symbolic_icon(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_guess(filename c.UndefinedParamType, data c.UndefinedParamType, dataSize uint64, resultUncertain *bool) {
+func Fn_content_type_guess(filename c.UndefinedParamType, data c.UndefinedParamType, dataSize uint64) {
 }
 
 func Fn_content_type_guess_for_tree(root c.UndefinedParamType) {}
@@ -586,10 +585,9 @@ func Fn_dbus_address_get_for_bus_sync(busType c.UndefinedParamType, cancellable 
 func Fn_dbus_address_get_stream(address c.UndefinedParamType, cancellable c.UndefinedParamType, callback c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
-func Fn_dbus_address_get_stream_finish(res c.UndefinedParamType, outGuid c.UndefinedParamType) {}
+func Fn_dbus_address_get_stream_finish(res c.UndefinedParamType) {}
 
-func Fn_dbus_address_get_stream_sync(address c.UndefinedParamType, outGuid c.UndefinedParamType, cancellable c.UndefinedParamType) {
-}
+func Fn_dbus_address_get_stream_sync(address c.UndefinedParamType, cancellable c.UndefinedParamType) {}
 
 func Fn_dbus_annotation_info_lookup(annotations c.UndefinedParamType, name c.UndefinedParamType) {}
 
@@ -619,7 +617,7 @@ func Fn_dbus_generate_guid() {}
 
 func Fn_dbus_gvalue_to_gvariant(gvalue c.UndefinedParamType, type_ c.UndefinedParamType) {}
 
-func Fn_dbus_gvariant_to_gvalue(value c.UndefinedParamType, outGvalue c.UndefinedParamType) {}
+func Fn_dbus_gvariant_to_gvalue(value c.UndefinedParamType) {}
 
 func Fn_dbus_is_address(string_ c.UndefinedParamType) {}
 
@@ -649,7 +647,7 @@ func Fn_file_new_for_path(path c.UndefinedParamType) {}
 
 func Fn_file_new_for_uri(uri c.UndefinedParamType) {}
 
-func Fn_file_new_tmp(tmpl c.UndefinedParamType, iostream c.UndefinedParamType) {}
+func Fn_file_new_tmp(tmpl c.UndefinedParamType) {}
 
 func Fn_file_parse_name(parseName c.UndefinedParamType) {}
 
@@ -710,7 +708,7 @@ func Fn_pollable_stream_read(stream c.UndefinedParamType, buffer c.UndefinedPara
 func Fn_pollable_stream_write(stream c.UndefinedParamType, buffer c.UndefinedParamType, count uint64, blocking bool, cancellable c.UndefinedParamType) {
 }
 
-func Fn_pollable_stream_write_all(stream c.UndefinedParamType, buffer c.UndefinedParamType, count uint64, blocking bool, bytesWritten *uint64, cancellable c.UndefinedParamType) {
+func Fn_pollable_stream_write_all(stream c.UndefinedParamType, buffer c.UndefinedParamType, count uint64, blocking bool, cancellable c.UndefinedParamType) {
 }
 
 func Fn_proxy_get_default_for_protocol(protocol c.UndefinedParamType) {}
@@ -725,8 +723,7 @@ func Fn_resource_load(filename c.UndefinedParamType) {}
 
 func Fn_resources_enumerate_children(path c.UndefinedParamType, lookupFlags c.UndefinedParamType) {}
 
-func Fn_resources_get_info(path c.UndefinedParamType, lookupFlags c.UndefinedParamType, size *uint64, flags *uint32) {
-}
+func Fn_resources_get_info(path c.UndefinedParamType, lookupFlags c.UndefinedParamType) {}
 
 func Fn_resources_lookup_data(path c.UndefinedParamType, lookupFlags c.UndefinedParamType) {}
 
@@ -766,13 +763,13 @@ func Fn_unix_is_system_device_path(devicePath c.UndefinedParamType) {}
 
 func Fn_unix_is_system_fs_type(fsType c.UndefinedParamType) {}
 
-func Fn_unix_mount_at(mountPath c.UndefinedParamType, timeRead *uint64) {}
+func Fn_unix_mount_at(mountPath c.UndefinedParamType) {}
 
 func Fn_unix_mount_compare(mount1 c.UndefinedParamType, mount2 c.UndefinedParamType) {}
 
 func Fn_unix_mount_copy(mountEntry c.UndefinedParamType) {}
 
-func Fn_unix_mount_for(filePath c.UndefinedParamType, timeRead *uint64) {}
+func Fn_unix_mount_for(filePath c.UndefinedParamType) {}
 
 func Fn_unix_mount_free(mountEntry c.UndefinedParamType) {}
 
@@ -802,8 +799,8 @@ func Fn_unix_mount_is_system_internal(mountEntry c.UndefinedParamType) {}
 
 func Fn_unix_mount_points_changed_since(time uint64) {}
 
-func Fn_unix_mount_points_get(timeRead *uint64) {}
+func Fn_unix_mount_points_get() {}
 
 func Fn_unix_mounts_changed_since(time uint64) {}
 
-func Fn_unix_mounts_get(timeRead *uint64) {}
+func Fn_unix_mounts_get() {}

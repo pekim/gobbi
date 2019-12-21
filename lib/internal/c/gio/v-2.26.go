@@ -440,7 +440,7 @@ func Fn_content_type_get_icon(type_ c.UndefinedParamType) {}
 
 func Fn_content_type_get_mime_type(type_ c.UndefinedParamType) {}
 
-func Fn_content_type_guess(filename c.UndefinedParamType, data c.UndefinedParamType, dataSize uint64, resultUncertain *bool) {
+func Fn_content_type_guess(filename c.UndefinedParamType, data c.UndefinedParamType, dataSize uint64) {
 }
 
 func Fn_content_type_guess_for_tree(root c.UndefinedParamType) {}
@@ -457,10 +457,9 @@ func Fn_dbus_address_get_for_bus_sync(busType c.UndefinedParamType, cancellable 
 func Fn_dbus_address_get_stream(address c.UndefinedParamType, cancellable c.UndefinedParamType, callback c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
-func Fn_dbus_address_get_stream_finish(res c.UndefinedParamType, outGuid c.UndefinedParamType) {}
+func Fn_dbus_address_get_stream_finish(res c.UndefinedParamType) {}
 
-func Fn_dbus_address_get_stream_sync(address c.UndefinedParamType, outGuid c.UndefinedParamType, cancellable c.UndefinedParamType) {
-}
+func Fn_dbus_address_get_stream_sync(address c.UndefinedParamType, cancellable c.UndefinedParamType) {}
 
 func Fn_dbus_annotation_info_lookup(annotations c.UndefinedParamType, name c.UndefinedParamType) {}
 
@@ -555,7 +554,7 @@ func Fn_srv_target_list_sort(targets c.UndefinedParamType) {}
 
 func Fn_unix_is_mount_path_system_internal(mountPath c.UndefinedParamType) {}
 
-func Fn_unix_mount_at(mountPath c.UndefinedParamType, timeRead *uint64) {}
+func Fn_unix_mount_at(mountPath c.UndefinedParamType) {}
 
 func Fn_unix_mount_compare(mount1 c.UndefinedParamType, mount2 c.UndefinedParamType) {}
 
@@ -581,8 +580,8 @@ func Fn_unix_mount_is_system_internal(mountEntry c.UndefinedParamType) {}
 
 func Fn_unix_mount_points_changed_since(time uint64) {}
 
-func Fn_unix_mount_points_get(timeRead *uint64) {}
+func Fn_unix_mount_points_get() {}
 
 func Fn_unix_mounts_changed_since(time uint64) {}
 
-func Fn_unix_mounts_get(timeRead *uint64) {}
+func Fn_unix_mounts_get() {}

@@ -48,6 +48,10 @@ func (f Function) generateSys(fi *jen.File, version semver.Version) {
 
 func (f Function) generateSysParamDeclaration(g *jen.Group) {
 	for _, param := range f.Parameters {
+		if !param.isIn() {
+			continue
+		}
+
 		//if param.Type != nil {
 		//	fmt.Println("type", param.Type.CType)
 		//}

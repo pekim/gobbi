@@ -31,6 +31,18 @@ func (p *Parameter) init(ns *Namespace) {
 	p.goVarName = makeUnexportedGoName(p.Name)
 }
 
+func (p *Parameter) isIn() bool {
+	return p.Direction == "" || p.Direction == "in" || p.Direction == "inout"
+}
+
+func (p *Parameter) isOut() bool {
+	return p.Direction == "out" || p.Direction == "inout"
+}
+
+func (p *Parameter) isInOut() bool {
+	return p.Direction == "inout"
+}
+
 func (p *Parameter) sysParamGoType() *jen.Statement {
 	if p.Type != nil {
 		parts := cTypeRegex.FindStringSubmatch(p.Type.CType)

@@ -122,7 +122,7 @@ func Fn_beep() {}
 
 func Fn_cairo_create(window c.UndefinedParamType) {}
 
-func Fn_cairo_get_clip_rectangle(cr c.UndefinedParamType, rect c.UndefinedParamType) {}
+func Fn_cairo_get_clip_rectangle(cr c.UndefinedParamType) {}
 
 func Fn_cairo_rectangle(cr c.UndefinedParamType, rectangle c.UndefinedParamType) {}
 
@@ -135,7 +135,7 @@ func Fn_cairo_set_source_color(cr c.UndefinedParamType, color c.UndefinedParamTy
 func Fn_cairo_set_source_pixbuf(cr c.UndefinedParamType, pixbuf c.UndefinedParamType, pixbufX float64, pixbufY float64) {
 }
 
-func Fn_color_parse(spec c.UndefinedParamType, color c.UndefinedParamType) {}
+func Fn_color_parse(spec c.UndefinedParamType) {}
 
 func Fn_drag_abort(context c.UndefinedParamType, time uint32) {}
 
@@ -148,7 +148,7 @@ func Fn_drag_drop(context c.UndefinedParamType, time uint32) {}
 
 func Fn_drag_drop_succeeded(context c.UndefinedParamType) {}
 
-func Fn_drag_find_window_for_screen(context c.UndefinedParamType, dragWindow c.UndefinedParamType, screen c.UndefinedParamType, xRoot int, yRoot int, destWindow c.UndefinedParamType, protocol c.UndefinedParamType) {
+func Fn_drag_find_window_for_screen(context c.UndefinedParamType, dragWindow c.UndefinedParamType, screen c.UndefinedParamType, xRoot int, yRoot int) {
 }
 
 func Fn_drag_get_selection(context c.UndefinedParamType) {}
@@ -197,7 +197,7 @@ func Fn_keyboard_grab(window c.UndefinedParamType, ownerEvents bool, time uint32
 
 func Fn_keyboard_ungrab(time uint32) {}
 
-func Fn_keyval_convert_case(symbol uint, lower *uint, upper *uint) {}
+func Fn_keyval_convert_case(symbol uint) {}
 
 func Fn_keyval_from_name(keyvalName c.UndefinedParamType) {}
 
@@ -251,12 +251,12 @@ func Fn_property_change(window c.UndefinedParamType, property c.UndefinedParamTy
 
 func Fn_property_delete(window c.UndefinedParamType, property c.UndefinedParamType) {}
 
-func Fn_property_get(window c.UndefinedParamType, property c.UndefinedParamType, type_ c.UndefinedParamType, offset uint64, length uint64, pdelete int, actualPropertyType c.UndefinedParamType, actualFormat *int, actualLength *int, data c.UndefinedParamType) {
+func Fn_property_get(window c.UndefinedParamType, property c.UndefinedParamType, type_ c.UndefinedParamType, offset uint64, length uint64, pdelete int) {
 }
 
-func Fn_query_depths(depths c.UndefinedParamType, count *int) {}
+func Fn_query_depths() {}
 
-func Fn_query_visual_types(visualTypes c.UndefinedParamType, count *int) {}
+func Fn_query_visual_types() {}
 
 func Fn_selection_convert(requestor c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, time uint32) {
 }
@@ -292,7 +292,7 @@ func Fn_setting_get(name c.UndefinedParamType, value c.UndefinedParamType) {}
 func Fn_synthesize_window_state(window c.UndefinedParamType, unsetFlags c.UndefinedParamType, setFlags c.UndefinedParamType) {
 }
 
-func Fn_text_property_to_utf8_list_for_display(display c.UndefinedParamType, encoding c.UndefinedParamType, format int, text c.UndefinedParamType, length int, list c.UndefinedParamType) {
+func Fn_text_property_to_utf8_list_for_display(display c.UndefinedParamType, encoding c.UndefinedParamType, format int, text c.UndefinedParamType, length int) {
 }
 
 func Fn_threads_enter() {}

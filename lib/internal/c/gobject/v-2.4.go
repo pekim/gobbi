@@ -163,8 +163,7 @@ func Fn_cclosure_new_object_swap(callbackFunc c.UndefinedParamType, object c.Und
 func Fn_cclosure_new_swap(callbackFunc c.UndefinedParamType, userData unsafe.Pointer, destroyData c.UndefinedParamType) {
 }
 
-func Fn_enum_complete_type_info(gEnumType c.UndefinedParamType, info c.UndefinedParamType, constValues c.UndefinedParamType) {
-}
+func Fn_enum_complete_type_info(gEnumType c.UndefinedParamType, constValues c.UndefinedParamType) {}
 
 func Fn_enum_get_value(enumClass c.UndefinedParamType, value int) {}
 
@@ -174,8 +173,7 @@ func Fn_enum_get_value_by_nick(enumClass c.UndefinedParamType, nick c.UndefinedP
 
 func Fn_enum_register_static(name c.UndefinedParamType, constStaticValues c.UndefinedParamType) {}
 
-func Fn_flags_complete_type_info(gFlagsType c.UndefinedParamType, info c.UndefinedParamType, constValues c.UndefinedParamType) {
-}
+func Fn_flags_complete_type_info(gFlagsType c.UndefinedParamType, constValues c.UndefinedParamType) {}
 
 func Fn_flags_get_first_value(flagsClass c.UndefinedParamType, value uint) {}
 
@@ -327,7 +325,7 @@ func Fn_signal_handlers_unblock_matched(instance unsafe.Pointer, mask c.Undefine
 func Fn_signal_has_handler_pending(instance unsafe.Pointer, signalId uint, detail c.UndefinedParamType, mayBeBlocked bool) {
 }
 
-func Fn_signal_list_ids(itype c.UndefinedParamType, nIds *uint) {}
+func Fn_signal_list_ids(itype c.UndefinedParamType) {}
 
 func Fn_signal_lookup(name c.UndefinedParamType, itype c.UndefinedParamType) {}
 
@@ -346,10 +344,10 @@ func Fn_signal_newv(signalName c.UndefinedParamType, itype c.UndefinedParamType,
 func Fn_signal_override_class_closure(signalId uint, instanceType c.UndefinedParamType, classClosure c.UndefinedParamType) {
 }
 
-func Fn_signal_parse_name(detailedSignal c.UndefinedParamType, itype c.UndefinedParamType, signalIdP *uint, detailP c.UndefinedParamType, forceDetailQuark bool) {
+func Fn_signal_parse_name(detailedSignal c.UndefinedParamType, itype c.UndefinedParamType, forceDetailQuark bool) {
 }
 
-func Fn_signal_query(signalId uint, query c.UndefinedParamType) {}
+func Fn_signal_query(signalId uint) {}
 
 func Fn_signal_remove_emission_hook(signalId uint, hookId uint64) {}
 
@@ -396,7 +394,7 @@ func Fn_type_check_value(value c.UndefinedParamType) {}
 
 func Fn_type_check_value_holds(value c.UndefinedParamType, type_ c.UndefinedParamType) {}
 
-func Fn_type_children(type_ c.UndefinedParamType, nChildren *uint) {}
+func Fn_type_children(type_ c.UndefinedParamType) {}
 
 func Fn_type_class_adjust_private_offset(gClass unsafe.Pointer, privateSizeOrOffset *int) {}
 
@@ -440,9 +438,9 @@ func Fn_type_interface_get_plugin(instanceType c.UndefinedParamType, interfaceTy
 
 func Fn_type_interface_peek(instanceClass unsafe.Pointer, ifaceType c.UndefinedParamType) {}
 
-func Fn_type_interface_prerequisites(interfaceType c.UndefinedParamType, nPrerequisites *uint) {}
+func Fn_type_interface_prerequisites(interfaceType c.UndefinedParamType) {}
 
-func Fn_type_interfaces(type_ c.UndefinedParamType, nInterfaces *uint) {}
+func Fn_type_interfaces(type_ c.UndefinedParamType) {}
 
 func Fn_type_is_a(type_ c.UndefinedParamType, isAType c.UndefinedParamType) {}
 
@@ -458,7 +456,7 @@ func Fn_type_parent(type_ c.UndefinedParamType) {}
 
 func Fn_type_qname(type_ c.UndefinedParamType) {}
 
-func Fn_type_query(type_ c.UndefinedParamType, query c.UndefinedParamType) {}
+func Fn_type_query(type_ c.UndefinedParamType) {}
 
 func Fn_type_register_dynamic(parentType c.UndefinedParamType, typeName c.UndefinedParamType, plugin c.UndefinedParamType, flags c.UndefinedParamType) {
 }

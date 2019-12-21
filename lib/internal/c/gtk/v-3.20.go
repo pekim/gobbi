@@ -981,11 +981,9 @@ func Fn_accelerator_name(acceleratorKey uint, acceleratorMods c.UndefinedParamTy
 func Fn_accelerator_name_with_keycode(display c.UndefinedParamType, acceleratorKey uint, keycode uint, acceleratorMods c.UndefinedParamType) {
 }
 
-func Fn_accelerator_parse(accelerator c.UndefinedParamType, acceleratorKey *uint, acceleratorMods c.UndefinedParamType) {
-}
+func Fn_accelerator_parse(accelerator c.UndefinedParamType) {}
 
-func Fn_accelerator_parse_with_keycode(accelerator c.UndefinedParamType, acceleratorKey *uint, acceleratorCodes c.UndefinedParamType, acceleratorMods c.UndefinedParamType) {
-}
+func Fn_accelerator_parse_with_keycode(accelerator c.UndefinedParamType) {}
 
 func Fn_accelerator_set_default_mod_mask(defaultModMask c.UndefinedParamType) {}
 
@@ -1075,7 +1073,7 @@ func Fn_get_current_event() {}
 
 func Fn_get_current_event_device() {}
 
-func Fn_get_current_event_state(state c.UndefinedParamType) {}
+func Fn_get_current_event_state() {}
 
 func Fn_get_current_event_time() {}
 
@@ -1103,10 +1101,9 @@ func Fn_icon_size_from_name(name c.UndefinedParamType) {}
 
 func Fn_icon_size_get_name(size c.UndefinedParamType) {}
 
-func Fn_icon_size_lookup(size c.UndefinedParamType, width *int, height *int) {}
+func Fn_icon_size_lookup(size c.UndefinedParamType) {}
 
-func Fn_icon_size_lookup_for_settings(settings c.UndefinedParamType, size c.UndefinedParamType, width *int, height *int) {
-}
+func Fn_icon_size_lookup_for_settings(settings c.UndefinedParamType, size c.UndefinedParamType) {}
 
 func Fn_icon_size_register(name c.UndefinedParamType, width int, height int) {}
 
@@ -1237,14 +1234,13 @@ func Fn_rc_get_theme_dir() {}
 
 func Fn_rc_parse(filename c.UndefinedParamType) {}
 
-func Fn_rc_parse_color(scanner c.UndefinedParamType, color c.UndefinedParamType) {}
+func Fn_rc_parse_color(scanner c.UndefinedParamType) {}
 
-func Fn_rc_parse_color_full(scanner c.UndefinedParamType, style c.UndefinedParamType, color c.UndefinedParamType) {
-}
+func Fn_rc_parse_color_full(scanner c.UndefinedParamType, style c.UndefinedParamType) {}
 
 func Fn_rc_parse_priority(scanner c.UndefinedParamType, priority c.UndefinedParamType) {}
 
-func Fn_rc_parse_state(scanner c.UndefinedParamType, state c.UndefinedParamType) {}
+func Fn_rc_parse_state(scanner c.UndefinedParamType) {}
 
 func Fn_rc_parse_string(rcString c.UndefinedParamType) {}
 
@@ -1286,7 +1282,7 @@ func Fn_render_arrow(context c.UndefinedParamType, cr c.UndefinedParamType, angl
 func Fn_render_background(context c.UndefinedParamType, cr c.UndefinedParamType, x float64, y float64, width float64, height float64) {
 }
 
-func Fn_render_background_get_clip(context c.UndefinedParamType, x float64, y float64, width float64, height float64, outClip c.UndefinedParamType) {
+func Fn_render_background_get_clip(context c.UndefinedParamType, x float64, y float64, width float64, height float64) {
 }
 
 func Fn_render_check(context c.UndefinedParamType, cr c.UndefinedParamType, x float64, y float64, width float64, height float64) {
@@ -1334,7 +1330,7 @@ func Fn_render_option(context c.UndefinedParamType, cr c.UndefinedParamType, x f
 func Fn_render_slider(context c.UndefinedParamType, cr c.UndefinedParamType, x float64, y float64, width float64, height float64, orientation c.UndefinedParamType) {
 }
 
-func Fn_rgb_to_hsv(r float64, g float64, b float64, h *float64, s *float64, v *float64) {}
+func Fn_rgb_to_hsv(r float64, g float64, b float64) {}
 
 func Fn_selection_add_target(widget c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, info uint) {
 }
@@ -1367,14 +1363,14 @@ func Fn_stock_add_static(items c.UndefinedParamType, nItems uint) {}
 
 func Fn_stock_list_ids() {}
 
-func Fn_stock_lookup(stockId c.UndefinedParamType, item c.UndefinedParamType) {}
+func Fn_stock_lookup(stockId c.UndefinedParamType) {}
 
 func Fn_stock_set_translate_func(domain c.UndefinedParamType, func_ c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
 func Fn_target_table_free(targets c.UndefinedParamType, nTargets int) {}
 
-func Fn_target_table_new_from_list(list c.UndefinedParamType, nTargets *int) {}
+func Fn_target_table_new_from_list(list c.UndefinedParamType) {}
 
 func Fn_targets_include_image(targets c.UndefinedParamType, nTargets int, writable bool) {}
 
@@ -1400,7 +1396,7 @@ func Fn_test_find_widget(widget c.UndefinedParamType, labelPattern c.UndefinedPa
 
 // UNSUPPORTED : test_init : has varargs
 
-func Fn_test_list_all_types(nTypes *uint) {}
+func Fn_test_list_all_types() {}
 
 func Fn_test_register_all_types() {}
 
@@ -1421,8 +1417,7 @@ func Fn_test_widget_send_key(widget c.UndefinedParamType, keyval uint, modifiers
 
 func Fn_test_widget_wait_for_draw(widget c.UndefinedParamType) {}
 
-func Fn_tree_get_row_drag_data(selectionData c.UndefinedParamType, treeModel c.UndefinedParamType, path c.UndefinedParamType) {
-}
+func Fn_tree_get_row_drag_data(selectionData c.UndefinedParamType) {}
 
 func Fn_tree_row_reference_deleted(proxy c.UndefinedParamType, path c.UndefinedParamType) {}
 

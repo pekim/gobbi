@@ -937,8 +937,7 @@ func Fn_accelerator_get_label(acceleratorKey uint, acceleratorMods c.UndefinedPa
 
 func Fn_accelerator_name(acceleratorKey uint, acceleratorMods c.UndefinedParamType) {}
 
-func Fn_accelerator_parse(accelerator c.UndefinedParamType, acceleratorKey *uint, acceleratorMods c.UndefinedParamType) {
-}
+func Fn_accelerator_parse(accelerator c.UndefinedParamType) {}
 
 func Fn_accelerator_set_default_mod_mask(defaultModMask c.UndefinedParamType) {}
 
@@ -1000,7 +999,7 @@ func Fn_get_current_event() {}
 
 func Fn_get_current_event_device() {}
 
-func Fn_get_current_event_state(state c.UndefinedParamType) {}
+func Fn_get_current_event_state() {}
 
 func Fn_get_current_event_time() {}
 
@@ -1018,10 +1017,9 @@ func Fn_icon_size_from_name(name c.UndefinedParamType) {}
 
 func Fn_icon_size_get_name(size c.UndefinedParamType) {}
 
-func Fn_icon_size_lookup(size c.UndefinedParamType, width *int, height *int) {}
+func Fn_icon_size_lookup(size c.UndefinedParamType) {}
 
-func Fn_icon_size_lookup_for_settings(settings c.UndefinedParamType, size c.UndefinedParamType, width *int, height *int) {
-}
+func Fn_icon_size_lookup_for_settings(settings c.UndefinedParamType, size c.UndefinedParamType) {}
 
 func Fn_icon_size_register(name c.UndefinedParamType, width int, height int) {}
 
@@ -1140,11 +1138,11 @@ func Fn_rc_get_theme_dir() {}
 
 func Fn_rc_parse(filename c.UndefinedParamType) {}
 
-func Fn_rc_parse_color(scanner c.UndefinedParamType, color c.UndefinedParamType) {}
+func Fn_rc_parse_color(scanner c.UndefinedParamType) {}
 
 func Fn_rc_parse_priority(scanner c.UndefinedParamType, priority c.UndefinedParamType) {}
 
-func Fn_rc_parse_state(scanner c.UndefinedParamType, state c.UndefinedParamType) {}
+func Fn_rc_parse_state(scanner c.UndefinedParamType) {}
 
 func Fn_rc_parse_string(rcString c.UndefinedParamType) {}
 
@@ -1206,7 +1204,7 @@ func Fn_stock_add_static(items c.UndefinedParamType, nItems uint) {}
 
 func Fn_stock_list_ids() {}
 
-func Fn_stock_lookup(stockId c.UndefinedParamType, item c.UndefinedParamType) {}
+func Fn_stock_lookup(stockId c.UndefinedParamType) {}
 
 // UNSUPPORTED : test_create_widget : has varargs
 
@@ -1214,8 +1212,7 @@ func Fn_stock_lookup(stockId c.UndefinedParamType, item c.UndefinedParamType) {}
 
 // UNSUPPORTED : test_init : has varargs
 
-func Fn_tree_get_row_drag_data(selectionData c.UndefinedParamType, treeModel c.UndefinedParamType, path c.UndefinedParamType) {
-}
+func Fn_tree_get_row_drag_data(selectionData c.UndefinedParamType) {}
 
 func Fn_tree_row_reference_deleted(proxy c.UndefinedParamType, path c.UndefinedParamType) {}
 

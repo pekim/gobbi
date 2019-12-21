@@ -133,7 +133,7 @@ func Fn_cairo_create(window c.UndefinedParamType) {}
 func Fn_cairo_draw_from_gl(cr c.UndefinedParamType, window c.UndefinedParamType, source int, sourceType int, bufferScale int, x int, y int, width int, height int) {
 }
 
-func Fn_cairo_get_clip_rectangle(cr c.UndefinedParamType, rect c.UndefinedParamType) {}
+func Fn_cairo_get_clip_rectangle(cr c.UndefinedParamType) {}
 
 func Fn_cairo_rectangle(cr c.UndefinedParamType, rectangle c.UndefinedParamType) {}
 
@@ -154,7 +154,7 @@ func Fn_cairo_set_source_window(cr c.UndefinedParamType, window c.UndefinedParam
 func Fn_cairo_surface_create_from_pixbuf(pixbuf c.UndefinedParamType, scale int, forWindow c.UndefinedParamType) {
 }
 
-func Fn_color_parse(spec c.UndefinedParamType, color c.UndefinedParamType) {}
+func Fn_color_parse(spec c.UndefinedParamType) {}
 
 func Fn_disable_multidevice() {}
 
@@ -174,7 +174,7 @@ func Fn_drag_drop_done(context c.UndefinedParamType, success bool) {}
 
 func Fn_drag_drop_succeeded(context c.UndefinedParamType) {}
 
-func Fn_drag_find_window_for_screen(context c.UndefinedParamType, dragWindow c.UndefinedParamType, screen c.UndefinedParamType, xRoot int, yRoot int, destWindow c.UndefinedParamType, protocol c.UndefinedParamType) {
+func Fn_drag_find_window_for_screen(context c.UndefinedParamType, dragWindow c.UndefinedParamType, screen c.UndefinedParamType, xRoot int, yRoot int) {
 }
 
 func Fn_drag_get_selection(context c.UndefinedParamType) {}
@@ -203,13 +203,11 @@ func Fn_event_peek() {}
 
 func Fn_event_request_motions(event c.UndefinedParamType) {}
 
-func Fn_events_get_angle(event1 c.UndefinedParamType, event2 c.UndefinedParamType, angle *float64) {}
+func Fn_events_get_angle(event1 c.UndefinedParamType, event2 c.UndefinedParamType) {}
 
-func Fn_events_get_center(event1 c.UndefinedParamType, event2 c.UndefinedParamType, x *float64, y *float64) {
-}
+func Fn_events_get_center(event1 c.UndefinedParamType, event2 c.UndefinedParamType) {}
 
-func Fn_events_get_distance(event1 c.UndefinedParamType, event2 c.UndefinedParamType, distance *float64) {
-}
+func Fn_events_get_distance(event1 c.UndefinedParamType, event2 c.UndefinedParamType) {}
 
 func Fn_events_pending() {}
 
@@ -235,7 +233,7 @@ func Fn_keyboard_grab(window c.UndefinedParamType, ownerEvents bool, time uint32
 
 func Fn_keyboard_ungrab(time uint32) {}
 
-func Fn_keyval_convert_case(symbol uint, lower *uint, upper *uint) {}
+func Fn_keyval_convert_case(symbol uint) {}
 
 func Fn_keyval_from_name(keyvalName c.UndefinedParamType) {}
 
@@ -295,12 +293,12 @@ func Fn_property_change(window c.UndefinedParamType, property c.UndefinedParamTy
 
 func Fn_property_delete(window c.UndefinedParamType, property c.UndefinedParamType) {}
 
-func Fn_property_get(window c.UndefinedParamType, property c.UndefinedParamType, type_ c.UndefinedParamType, offset uint64, length uint64, pdelete int, actualPropertyType c.UndefinedParamType, actualFormat *int, actualLength *int, data c.UndefinedParamType) {
+func Fn_property_get(window c.UndefinedParamType, property c.UndefinedParamType, type_ c.UndefinedParamType, offset uint64, length uint64, pdelete int) {
 }
 
-func Fn_query_depths(depths c.UndefinedParamType, count *int) {}
+func Fn_query_depths() {}
 
-func Fn_query_visual_types(visualTypes c.UndefinedParamType, count *int) {}
+func Fn_query_visual_types() {}
 
 func Fn_selection_convert(requestor c.UndefinedParamType, selection c.UndefinedParamType, target c.UndefinedParamType, time uint32) {
 }
@@ -346,7 +344,7 @@ func Fn_test_simulate_button(window c.UndefinedParamType, x int, y int, button u
 func Fn_test_simulate_key(window c.UndefinedParamType, x int, y int, keyval uint, modifiers c.UndefinedParamType, keyPressrelease c.UndefinedParamType) {
 }
 
-func Fn_text_property_to_utf8_list_for_display(display c.UndefinedParamType, encoding c.UndefinedParamType, format int, text c.UndefinedParamType, length int, list c.UndefinedParamType) {
+func Fn_text_property_to_utf8_list_for_display(display c.UndefinedParamType, encoding c.UndefinedParamType, format int, text c.UndefinedParamType, length int) {
 }
 
 func Fn_threads_add_idle(function c.UndefinedParamType, data unsafe.Pointer) {}
