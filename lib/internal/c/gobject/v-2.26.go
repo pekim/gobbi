@@ -303,8 +303,7 @@ func Fn_signal_connect_object(instance unsafe.Pointer, detailedSignal string, cH
 
 // UNSUPPORTED : signal_emit_by_name : has varargs
 
-func Fn_signal_emit_valist(instance unsafe.Pointer, signalId uint, detail c.UndefinedParamType, varArgs c.UndefinedParamType) {
-}
+// UNSUPPORTED : signal_emit_valist : has va_list
 
 func Fn_signal_emitv(instanceAndParams c.UndefinedParamType, signalId uint, detail c.UndefinedParamType, returnValue *Value) {
 }
@@ -346,8 +345,7 @@ func Fn_signal_name(signalId uint) {}
 
 // UNSUPPORTED : signal_new_class_handler : has varargs
 
-func Fn_signal_new_valist(signalName string, itype c.UndefinedParamType, signalFlags SignalFlags, classClosure *Closure, accumulator c.UndefinedParamType, accuData unsafe.Pointer, cMarshaller c.UndefinedParamType, returnType c.UndefinedParamType, nParams uint, args c.UndefinedParamType) {
-}
+// UNSUPPORTED : signal_new_valist : has va_list
 
 func Fn_signal_newv(signalName string, itype c.UndefinedParamType, signalFlags SignalFlags, classClosure *Closure, accumulator c.UndefinedParamType, accuData unsafe.Pointer, cMarshaller c.UndefinedParamType, returnType c.UndefinedParamType, nParams uint, paramTypes c.UndefinedParamType) {
 }

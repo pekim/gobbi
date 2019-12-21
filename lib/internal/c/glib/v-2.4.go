@@ -206,6 +206,8 @@ func Fn_bookmark_file_error_quark() {}
 
 // UNSUPPORTED : build_filename : has varargs
 
+// UNSUPPORTED : build_filename_valist : has va_list
+
 // UNSUPPORTED : build_path : has varargs
 
 func Fn_byte_array_free(array c.UndefinedParamType, freeSegment bool) {}
@@ -415,7 +417,7 @@ func Fn_log_set_handler(logDomain string, logLevels LogLevelFlags, logFunc c.Und
 
 // UNSUPPORTED : log_structured_standard : has varargs
 
-func Fn_logv(logDomain string, logLevel LogLevelFlags, format string, args c.UndefinedParamType) {}
+// UNSUPPORTED : logv : has va_list
 
 func Fn_main_context_default() {}
 
@@ -433,7 +435,7 @@ func Fn_markup_escape_text(text string, length uint64) {}
 
 // UNSUPPORTED : markup_printf_escaped : has varargs
 
-func Fn_markup_vprintf_escaped(format string, args c.UndefinedParamType) {}
+// UNSUPPORTED : markup_vprintf_escaped : has va_list
 
 func Fn_mem_is_system_malloc() {}
 
@@ -479,7 +481,7 @@ func Fn_pattern_match_string(pspec *PatternSpec, string_ string) {}
 
 // UNSUPPORTED : printf : has varargs
 
-func Fn_printf_string_upper_bound(format string, args c.UndefinedParamType) {}
+// UNSUPPORTED : printf_string_upper_bound : has va_list
 
 func Fn_propagate_error(src *Error) {}
 
@@ -599,7 +601,7 @@ func Fn_strdup(str string) {}
 
 // UNSUPPORTED : strdup_printf : has varargs
 
-func Fn_strdup_vprintf(format string, args c.UndefinedParamType) {}
+// UNSUPPORTED : strdup_vprintf : has va_list
 
 func Fn_strdupv(strArray string) {}
 
@@ -832,14 +834,14 @@ func Fn_variant_type_string_get_depth_(typeString string) {}
 
 func Fn_variant_type_string_is_valid(typeString string) {}
 
-func Fn_vasprintf(string_ string, format string, args c.UndefinedParamType) {}
+// UNSUPPORTED : vasprintf : has va_list
 
-func Fn_vfprintf(file c.UndefinedParamType, format string, args c.UndefinedParamType) {}
+// UNSUPPORTED : vfprintf : has va_list
 
-func Fn_vprintf(format string, args c.UndefinedParamType) {}
+// UNSUPPORTED : vprintf : has va_list
 
-func Fn_vsnprintf(string_ string, n uint64, format string, args c.UndefinedParamType) {}
+// UNSUPPORTED : vsnprintf : has va_list
 
-func Fn_vsprintf(string_ string, format string, args c.UndefinedParamType) {}
+// UNSUPPORTED : vsprintf : has va_list
 
 func Fn_warn_message(domain string, file string, line int, func_ string, warnexpr string) {}

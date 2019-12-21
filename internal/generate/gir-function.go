@@ -39,8 +39,8 @@ func (f Function) generateSys(fi *jen.File, version semver.Version) {
 		return
 	}
 
-	if f.Parameters.hasVarargs() {
-		fi.Commentf("UNSUPPORTED : %s : has varargs", f.Name)
+	if supported, reason := f.Parameters.allSupported(); !supported {
+		fi.Commentf("UNSUPPORTED : %s : %s", f.Name, reason)
 		fi.Line()
 		return
 	}

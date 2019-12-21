@@ -101,7 +101,7 @@ func (t *Type) sysParamGoType() *jen.Statement {
 		return jen.Op(t.cStars).Id(t.Name)
 	}
 
-	//fmt.Printf("type '%s' : '%s'\n", t.CType, t.Name)
+	//fmt.Printf("type : %s : '%s' : '%s'\n", t.namespace.Name, t.CType, t.Name)
 	return jen.Qual("github.com/pekim/gobbi/lib/internal/c", "UndefinedParamType")
 }
 

@@ -43,3 +43,7 @@ func (t *Type) isInterface() bool {
 	_, found := t.namespace.Interfaces.byName(t.Name)
 	return found
 }
+
+func (t *Type) isVaList() bool {
+	return t.Name == "va_list"
+}

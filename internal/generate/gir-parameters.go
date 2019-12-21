@@ -11,9 +11,31 @@ func (pp Parameters) init(ns *Namespace) {
 	}
 }
 
+func (pp Parameters) allSupported() (bool, string) {
+	if pp.hasVarargs() {
+		return false, "has varargs"
+	}
+
+	if pp.hasVaList() {
+		return false, "has va_list"
+	}
+
+	return true, ""
+}
+
 func (pp Parameters) hasVarargs() bool {
 	for _, p := range pp {
 		if p.Varargs != nil {
+			return true
+		}
+	}
+
+	return false
+}
+
+func (pp Parameters) hasVaList() bool {
+	for _, p := range pp {
+		if p.Type != nil && p.Type.isVaList() {
 			return true
 		}
 	}
