@@ -9,6 +9,7 @@ var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"gchar":         jen.Int8(),
 	"guchar":        jen.Uint8(),
 	"gunichar":      jen.Rune(),
+	"gunichar2":     jen.Uint16(),
 	"int":           jen.Int(),
 	"gint":          jen.Int(),
 	"gint8":         jen.Int8(),

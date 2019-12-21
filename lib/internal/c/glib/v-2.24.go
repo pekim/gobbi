@@ -1061,9 +1061,9 @@ func Fn_uri_unescape_string(escapedString string, illegalCharacters string) {}
 
 func Fn_usleep(microseconds uint64) {}
 
-func Fn_utf16_to_ucs4(str c.UndefinedParamType, len int64) {}
+func Fn_utf16_to_ucs4(str *uint16, len int64) {}
 
-func Fn_utf16_to_utf8(str c.UndefinedParamType, len int64) {}
+func Fn_utf16_to_utf8(str *uint16, len int64) {}
 
 func Fn_utf8_casefold(str string, len uint64) {}
 
