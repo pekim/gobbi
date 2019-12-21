@@ -353,7 +353,7 @@ func Fn_io_error_from_errno(errNo int) {}
 
 func Fn_io_error_quark() {}
 
-func Fn_io_extension_point_implement(extensionPointName string, type_ c.UndefinedParamType, extensionName string, priority int) {
+func Fn_io_extension_point_implement(extensionPointName string, type_ glib.Type, extensionName string, priority int) {
 }
 
 func Fn_io_extension_point_lookup(name string) {}

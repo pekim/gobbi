@@ -215,7 +215,7 @@ func Fn_markup_parser_finish(context *glib.MarkupParseContext) {}
 func Fn_markup_parser_new(accelMarker rune) {}
 
 // UNSUPPORTED : module_register : blacklisted
-func Fn_parse_enum(type_ c.UndefinedParamType, str string, warn bool) {}
+func Fn_parse_enum(type_ glib.Type, str string, warn bool) {}
 
 func Fn_parse_markup(markupText string, length int, accelMarker rune) {}
 

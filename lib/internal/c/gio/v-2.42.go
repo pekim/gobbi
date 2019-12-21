@@ -488,7 +488,7 @@ func Fn_app_info_launch_default_for_uri(uri string, context *AppLaunchContext) {
 
 func Fn_app_info_reset_type_associations(contentType string) {}
 
-func Fn_async_initable_newv_async(objectType c.UndefinedParamType, nParameters uint, parameters *gobject.Parameter, ioPriority int, cancellable *Cancellable, callback c.UndefinedParamType, userData unsafe.Pointer) {
+func Fn_async_initable_newv_async(objectType glib.Type, nParameters uint, parameters *gobject.Parameter, ioPriority int, cancellable *Cancellable, callback c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
 func Fn_bus_get(busType BusType, cancellable *Cancellable, callback c.UndefinedParamType, userData unsafe.Pointer) {
@@ -622,14 +622,14 @@ func Fn_icon_hash(icon unsafe.Pointer) {}
 
 func Fn_icon_new_for_string(str string) {}
 
-func Fn_initable_newv(objectType c.UndefinedParamType, nParameters uint, parameters c.UndefinedParamType, cancellable *Cancellable) {
+func Fn_initable_newv(objectType glib.Type, nParameters uint, parameters c.UndefinedParamType, cancellable *Cancellable) {
 }
 
 func Fn_io_error_from_errno(errNo int) {}
 
 func Fn_io_error_quark() {}
 
-func Fn_io_extension_point_implement(extensionPointName string, type_ c.UndefinedParamType, extensionName string, priority int) {
+func Fn_io_extension_point_implement(extensionPointName string, type_ glib.Type, extensionName string, priority int) {
 }
 
 func Fn_io_extension_point_lookup(name string) {}

@@ -88,9 +88,9 @@ type TypeModule C.GTypeModule
 // interfaces
 type TypePlugin C.GTypePlugin
 
-func Fn_boxed_copy(boxedType c.UndefinedParamType, srcBoxed unsafe.Pointer) {}
+func Fn_boxed_copy(boxedType glib.Type, srcBoxed unsafe.Pointer) {}
 
-func Fn_boxed_free(boxedType c.UndefinedParamType, boxed unsafe.Pointer) {}
+func Fn_boxed_free(boxedType glib.Type, boxed unsafe.Pointer) {}
 
 func Fn_boxed_type_register_static(name string, boxedCopy c.UndefinedParamType, boxedFree c.UndefinedParamType) {
 }
@@ -168,7 +168,7 @@ func Fn_cclosure_new_object_swap(callbackFunc c.UndefinedParamType, object *Obje
 func Fn_cclosure_new_swap(callbackFunc c.UndefinedParamType, userData unsafe.Pointer, destroyData c.UndefinedParamType) {
 }
 
-func Fn_enum_complete_type_info(gEnumType c.UndefinedParamType, constValues *EnumValue) {}
+func Fn_enum_complete_type_info(gEnumType glib.Type, constValues *EnumValue) {}
 
 func Fn_enum_get_value(enumClass *EnumClass, value int) {}
 
@@ -178,7 +178,7 @@ func Fn_enum_get_value_by_nick(enumClass *EnumClass, nick string) {}
 
 func Fn_enum_register_static(name string, constStaticValues *EnumValue) {}
 
-func Fn_flags_complete_type_info(gFlagsType c.UndefinedParamType, constValues *FlagsValue) {}
+func Fn_flags_complete_type_info(gFlagsType glib.Type, constValues *FlagsValue) {}
 
 func Fn_flags_get_first_value(flagsClass *FlagsClass, value uint) {}
 
@@ -193,7 +193,7 @@ func Fn_gtype_get_type() {}
 func Fn_param_spec_boolean(name string, nick string, blurb string, defaultValue bool, flags ParamFlags) {
 }
 
-func Fn_param_spec_boxed(name string, nick string, blurb string, boxedType c.UndefinedParamType, flags ParamFlags) {
+func Fn_param_spec_boxed(name string, nick string, blurb string, boxedType glib.Type, flags ParamFlags) {
 }
 
 func Fn_param_spec_char(name string, nick string, blurb string, minimum int8, maximum int8, defaultValue int8, flags ParamFlags) {
@@ -202,10 +202,10 @@ func Fn_param_spec_char(name string, nick string, blurb string, minimum int8, ma
 func Fn_param_spec_double(name string, nick string, blurb string, minimum float64, maximum float64, defaultValue float64, flags ParamFlags) {
 }
 
-func Fn_param_spec_enum(name string, nick string, blurb string, enumType c.UndefinedParamType, defaultValue int, flags ParamFlags) {
+func Fn_param_spec_enum(name string, nick string, blurb string, enumType glib.Type, defaultValue int, flags ParamFlags) {
 }
 
-func Fn_param_spec_flags(name string, nick string, blurb string, flagsType c.UndefinedParamType, defaultValue uint, flags ParamFlags) {
+func Fn_param_spec_flags(name string, nick string, blurb string, flagsType glib.Type, defaultValue uint, flags ParamFlags) {
 }
 
 func Fn_param_spec_float(name string, nick string, blurb string, minimum float32, maximum float32, defaultValue float32, flags ParamFlags) {
@@ -220,10 +220,10 @@ func Fn_param_spec_int64(name string, nick string, blurb string, minimum int64, 
 func Fn_param_spec_long(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags ParamFlags) {
 }
 
-func Fn_param_spec_object(name string, nick string, blurb string, objectType c.UndefinedParamType, flags ParamFlags) {
+func Fn_param_spec_object(name string, nick string, blurb string, objectType glib.Type, flags ParamFlags) {
 }
 
-func Fn_param_spec_param(name string, nick string, blurb string, paramType c.UndefinedParamType, flags ParamFlags) {
+func Fn_param_spec_param(name string, nick string, blurb string, paramType glib.Type, flags ParamFlags) {
 }
 
 func Fn_param_spec_pointer(name string, nick string, blurb string, flags ParamFlags) {}
@@ -321,9 +321,9 @@ func Fn_signal_handlers_unblock_matched(instance unsafe.Pointer, mask SignalMatc
 func Fn_signal_has_handler_pending(instance unsafe.Pointer, signalId uint, detail glib.Quark, mayBeBlocked bool) {
 }
 
-func Fn_signal_list_ids(itype c.UndefinedParamType) {}
+func Fn_signal_list_ids(itype glib.Type) {}
 
-func Fn_signal_lookup(name string, itype c.UndefinedParamType) {}
+func Fn_signal_lookup(name string, itype glib.Type) {}
 
 func Fn_signal_name(signalId uint) {}
 
@@ -333,13 +333,13 @@ func Fn_signal_name(signalId uint) {}
 
 // UNSUPPORTED : signal_new_valist : has va_list
 
-func Fn_signal_newv(signalName string, itype c.UndefinedParamType, signalFlags SignalFlags, classClosure *Closure, accumulator c.UndefinedParamType, accuData unsafe.Pointer, cMarshaller SignalCMarshaller, returnType c.UndefinedParamType, nParams uint, paramTypes c.UndefinedParamType) {
+func Fn_signal_newv(signalName string, itype glib.Type, signalFlags SignalFlags, classClosure *Closure, accumulator c.UndefinedParamType, accuData unsafe.Pointer, cMarshaller SignalCMarshaller, returnType glib.Type, nParams uint, paramTypes c.UndefinedParamType) {
 }
 
-func Fn_signal_override_class_closure(signalId uint, instanceType c.UndefinedParamType, classClosure *Closure) {
+func Fn_signal_override_class_closure(signalId uint, instanceType glib.Type, classClosure *Closure) {
 }
 
-func Fn_signal_parse_name(detailedSignal string, itype c.UndefinedParamType, forceDetailQuark bool) {}
+func Fn_signal_parse_name(detailedSignal string, itype glib.Type, forceDetailQuark bool) {}
 
 func Fn_signal_query(signalId uint) {}
 
@@ -349,7 +349,7 @@ func Fn_signal_stop_emission(instance unsafe.Pointer, signalId uint, detail glib
 
 func Fn_signal_stop_emission_by_name(instance unsafe.Pointer, detailedSignal string) {}
 
-func Fn_signal_type_cclosure_new(itype c.UndefinedParamType, structOffset uint) {}
+func Fn_signal_type_cclosure_new(itype glib.Type, structOffset uint) {}
 
 func Fn_source_set_closure(source *glib.Source, closure *Closure) {}
 
@@ -359,109 +359,106 @@ func Fn_strdup_value_contents(value *Value) {}
 
 func Fn_type_add_class_cache_func(cacheData unsafe.Pointer, cacheFunc c.UndefinedParamType) {}
 
-func Fn_type_add_instance_private(classType c.UndefinedParamType, privateSize uint64) {}
+func Fn_type_add_instance_private(classType glib.Type, privateSize uint64) {}
 
-func Fn_type_add_interface_dynamic(instanceType c.UndefinedParamType, interfaceType c.UndefinedParamType, plugin *TypePlugin) {
+func Fn_type_add_interface_dynamic(instanceType glib.Type, interfaceType glib.Type, plugin *TypePlugin) {
 }
 
-func Fn_type_add_interface_static(instanceType c.UndefinedParamType, interfaceType c.UndefinedParamType, info *InterfaceInfo) {
+func Fn_type_add_interface_static(instanceType glib.Type, interfaceType glib.Type, info *InterfaceInfo) {
 }
 
-func Fn_type_check_class_cast(gClass *TypeClass, isAType c.UndefinedParamType) {}
+func Fn_type_check_class_cast(gClass *TypeClass, isAType glib.Type) {}
 
-func Fn_type_check_class_is_a(gClass *TypeClass, isAType c.UndefinedParamType) {}
+func Fn_type_check_class_is_a(gClass *TypeClass, isAType glib.Type) {}
 
 func Fn_type_check_instance(instance *TypeInstance) {}
 
-func Fn_type_check_instance_cast(instance *TypeInstance, ifaceType c.UndefinedParamType) {}
+func Fn_type_check_instance_cast(instance *TypeInstance, ifaceType glib.Type) {}
 
-func Fn_type_check_instance_is_a(instance *TypeInstance, ifaceType c.UndefinedParamType) {}
+func Fn_type_check_instance_is_a(instance *TypeInstance, ifaceType glib.Type) {}
 
-func Fn_type_check_instance_is_fundamentally_a(instance *TypeInstance, fundamentalType c.UndefinedParamType) {
-}
+func Fn_type_check_instance_is_fundamentally_a(instance *TypeInstance, fundamentalType glib.Type) {}
 
-func Fn_type_check_is_value_type(type_ c.UndefinedParamType) {}
+func Fn_type_check_is_value_type(type_ glib.Type) {}
 
 func Fn_type_check_value(value *Value) {}
 
-func Fn_type_check_value_holds(value *Value, type_ c.UndefinedParamType) {}
+func Fn_type_check_value_holds(value *Value, type_ glib.Type) {}
 
-func Fn_type_children(type_ c.UndefinedParamType) {}
+func Fn_type_children(type_ glib.Type) {}
 
 func Fn_type_class_adjust_private_offset(gClass unsafe.Pointer, privateSizeOrOffset *int) {}
 
-func Fn_type_class_peek(type_ c.UndefinedParamType) {}
+func Fn_type_class_peek(type_ glib.Type) {}
 
-func Fn_type_class_ref(type_ c.UndefinedParamType) {}
+func Fn_type_class_ref(type_ glib.Type) {}
 
-func Fn_type_create_instance(type_ c.UndefinedParamType) {}
+func Fn_type_create_instance(type_ glib.Type) {}
 
-func Fn_type_depth(type_ c.UndefinedParamType) {}
+func Fn_type_depth(type_ glib.Type) {}
 
 func Fn_type_free_instance(instance *TypeInstance) {}
 
 func Fn_type_from_name(name string) {}
 
-func Fn_type_fundamental(typeId c.UndefinedParamType) {}
+func Fn_type_fundamental(typeId glib.Type) {}
 
 func Fn_type_fundamental_next() {}
 
-func Fn_type_get_plugin(type_ c.UndefinedParamType) {}
+func Fn_type_get_plugin(type_ glib.Type) {}
 
-func Fn_type_get_qdata(type_ c.UndefinedParamType, quark glib.Quark) {}
+func Fn_type_get_qdata(type_ glib.Type, quark glib.Quark) {}
 
 func Fn_type_init() {}
 
 func Fn_type_init_with_debug_flags(debugFlags TypeDebugFlags) {}
 
-func Fn_type_interface_add_prerequisite(interfaceType c.UndefinedParamType, prerequisiteType c.UndefinedParamType) {
-}
+func Fn_type_interface_add_prerequisite(interfaceType glib.Type, prerequisiteType glib.Type) {}
 
-func Fn_type_interface_get_plugin(instanceType c.UndefinedParamType, interfaceType c.UndefinedParamType) {
-}
+func Fn_type_interface_get_plugin(instanceType glib.Type, interfaceType glib.Type) {}
 
-func Fn_type_interface_peek(instanceClass unsafe.Pointer, ifaceType c.UndefinedParamType) {}
+func Fn_type_interface_peek(instanceClass unsafe.Pointer, ifaceType glib.Type) {}
 
-func Fn_type_interfaces(type_ c.UndefinedParamType) {}
+func Fn_type_interfaces(type_ glib.Type) {}
 
-func Fn_type_is_a(type_ c.UndefinedParamType, isAType c.UndefinedParamType) {}
+func Fn_type_is_a(type_ glib.Type, isAType glib.Type) {}
 
-func Fn_type_name(type_ c.UndefinedParamType) {}
+func Fn_type_name(type_ glib.Type) {}
 
 func Fn_type_name_from_class(gClass *TypeClass) {}
 
 func Fn_type_name_from_instance(instance *TypeInstance) {}
 
-func Fn_type_next_base(leafType c.UndefinedParamType, rootType c.UndefinedParamType) {}
+func Fn_type_next_base(leafType glib.Type, rootType glib.Type) {}
 
-func Fn_type_parent(type_ c.UndefinedParamType) {}
+func Fn_type_parent(type_ glib.Type) {}
 
-func Fn_type_qname(type_ c.UndefinedParamType) {}
+func Fn_type_qname(type_ glib.Type) {}
 
-func Fn_type_query(type_ c.UndefinedParamType) {}
+func Fn_type_query(type_ glib.Type) {}
 
-func Fn_type_register_dynamic(parentType c.UndefinedParamType, typeName string, plugin *TypePlugin, flags TypeFlags) {
+func Fn_type_register_dynamic(parentType glib.Type, typeName string, plugin *TypePlugin, flags TypeFlags) {
 }
 
-func Fn_type_register_fundamental(typeId c.UndefinedParamType, typeName string, info *TypeInfo, finfo *TypeFundamentalInfo, flags TypeFlags) {
+func Fn_type_register_fundamental(typeId glib.Type, typeName string, info *TypeInfo, finfo *TypeFundamentalInfo, flags TypeFlags) {
 }
 
-func Fn_type_register_static(parentType c.UndefinedParamType, typeName string, info *TypeInfo, flags TypeFlags) {
+func Fn_type_register_static(parentType glib.Type, typeName string, info *TypeInfo, flags TypeFlags) {
 }
 
 func Fn_type_remove_class_cache_func(cacheData unsafe.Pointer, cacheFunc c.UndefinedParamType) {}
 
-func Fn_type_set_qdata(type_ c.UndefinedParamType, quark glib.Quark, data unsafe.Pointer) {}
+func Fn_type_set_qdata(type_ glib.Type, quark glib.Quark, data unsafe.Pointer) {}
 
-func Fn_type_test_flags(type_ c.UndefinedParamType, flags uint) {}
+func Fn_type_test_flags(type_ glib.Type, flags uint) {}
 
-func Fn_type_value_table_peek(type_ c.UndefinedParamType) {}
+func Fn_type_value_table_peek(type_ glib.Type) {}
 
-func Fn_value_register_transform_func(srcType c.UndefinedParamType, destType c.UndefinedParamType, transformFunc c.UndefinedParamType) {
+func Fn_value_register_transform_func(srcType glib.Type, destType glib.Type, transformFunc c.UndefinedParamType) {
 }
 
-func Fn_value_type_compatible(srcType c.UndefinedParamType, destType c.UndefinedParamType) {}
+func Fn_value_type_compatible(srcType glib.Type, destType glib.Type) {}
 
-func Fn_value_type_transformable(srcType c.UndefinedParamType, destType c.UndefinedParamType) {}
+func Fn_value_type_transformable(srcType glib.Type, destType glib.Type) {}
 
 func Fn_bad() {}

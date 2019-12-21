@@ -203,7 +203,7 @@ func Fn_log2vis_get_embedding_levels(text string, length int, pbaseDir *Directio
 func Fn_lookup_aliases(fontname string) {}
 
 // UNSUPPORTED : module_register : blacklisted
-func Fn_parse_enum(type_ c.UndefinedParamType, str string, warn bool) {}
+func Fn_parse_enum(type_ glib.Type, str string, warn bool) {}
 
 func Fn_parse_markup(markupText string, length int, accelMarker rune) {}
 

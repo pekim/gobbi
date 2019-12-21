@@ -1187,7 +1187,7 @@ func Fn_rc_get_module_dir() {}
 
 func Fn_rc_get_style(widget *Widget) {}
 
-func Fn_rc_get_style_by_paths(settings *Settings, widgetPath string, classPath string, type_ c.UndefinedParamType) {
+func Fn_rc_get_style_by_paths(settings *Settings, widgetPath string, classPath string, type_ glib.Type) {
 }
 
 func Fn_rc_get_theme_dir() {}
@@ -1332,9 +1332,9 @@ func Fn_test_create_simple_window(windowTitle string, dialogText string) {}
 
 func Fn_test_find_label(widget *Widget, labelPattern string) {}
 
-func Fn_test_find_sibling(baseWidget *Widget, widgetType c.UndefinedParamType) {}
+func Fn_test_find_sibling(baseWidget *Widget, widgetType glib.Type) {}
 
-func Fn_test_find_widget(widget *Widget, labelPattern string, widgetType c.UndefinedParamType) {}
+func Fn_test_find_widget(widget *Widget, labelPattern string, widgetType glib.Type) {}
 
 // UNSUPPORTED : test_init : has varargs
 

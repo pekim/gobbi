@@ -54,6 +54,12 @@ func (t *Type) init(ns *Namespace) {
 	}
 
 	t.namespace = ns
+
+	// Strangely some GType references are not consistent.
+	if t.Name == "GType" && t.namespace.Name != "GLib" {
+		t.Name = "GLib.Type"
+	}
+
 	t.analyseName()
 	t.parseCtype()
 }

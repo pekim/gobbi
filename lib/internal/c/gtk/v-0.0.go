@@ -1121,7 +1121,7 @@ func Fn_rc_get_module_dir() {}
 
 func Fn_rc_get_style(widget *Widget) {}
 
-func Fn_rc_get_style_by_paths(settings *Settings, widgetPath string, classPath string, type_ c.UndefinedParamType) {
+func Fn_rc_get_style_by_paths(settings *Settings, widgetPath string, classPath string, type_ glib.Type) {
 }
 
 func Fn_rc_get_theme_dir() {}
