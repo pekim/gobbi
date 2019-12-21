@@ -19,5 +19,6 @@ type Parameter struct {
 
 func (p *Parameter) init(ns *Namespace) {
 	p.namespace = ns
+	p.Array.init(ns)
 	p.goVarName = makeUnexportedGoName(p.Name)
 }

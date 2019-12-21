@@ -48,6 +48,13 @@ func (f Function) generateSys(fi *jen.File, version semver.Version) {
 
 func (f Function) generateSysParamDeclaration(g *jen.Group) {
 	for _, param := range f.Parameters {
+		//if param.Type != nil {
+		//	fmt.Println("type", param.Type.CType)
+		//}
+		//if param.Array != nil {
+		//	fmt.Println("array", param.Array.CType)
+		//}
+
 		g.Id(param.goVarName).Id("string")
 	}
 }
