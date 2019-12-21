@@ -11,6 +11,11 @@ import (
 // #include <pango/pango.h>
 import "C"
 
+// aliases
+type Glyph C.PangoGlyph
+type GlyphUnit C.PangoGlyphUnit
+type LayoutRun C.PangoLayoutRun
+
 // bitfields
 type FontMask C.PangoFontMask
 

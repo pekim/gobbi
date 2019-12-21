@@ -11,6 +11,10 @@ import (
 // #include <atk/atk.h>
 import "C"
 
+// aliases
+type AttributeSet C.AtkAttributeSet
+type State C.AtkState
+
 // bitfields
 type HyperlinkStateFlags C.AtkHyperlinkStateFlags
 

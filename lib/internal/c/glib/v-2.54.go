@@ -10,7 +10,19 @@ import (
 
 // #include <glib.h>
 // #include <glib/gstdio.h>
+// #include <glib-2.0/glib-object.h>
 import "C"
+
+// aliases
+type DateDay C.GDateDay
+type DateYear C.GDateYear
+type MutexLocker C.GMutexLocker
+type Pid C.GPid
+type Quark C.GQuark
+type Strv C.GStrv
+type Time C.GTime
+type TimeSpan C.GTimeSpan
+type Type C.GType
 
 // bitfields
 type AsciiType C.GAsciiType

@@ -12,6 +12,11 @@ import (
 // #include <glib-object.h>
 import "C"
 
+// aliases
+type SignalCMarshaller C.GSignalCMarshaller
+type SignalCVaMarshaller C.GSignalCVaMarshaller
+type Type C.GType
+
 // bitfields
 type BindingFlags C.GBindingFlags
 type ConnectFlags C.GConnectFlags

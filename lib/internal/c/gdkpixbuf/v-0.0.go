@@ -5,6 +5,8 @@ package gdkpixbuf
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 import "C"
 
+// aliases
+
 // bitfields
 
 // enumerations

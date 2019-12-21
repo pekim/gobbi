@@ -23,6 +23,8 @@ import (
 // #include <gio/gunixsocketaddress.h>
 import "C"
 
+// aliases
+
 // bitfields
 type AppInfoCreateFlags C.GAppInfoCreateFlags
 type AskPasswordFlags C.GAskPasswordFlags

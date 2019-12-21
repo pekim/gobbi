@@ -5,6 +5,8 @@ package cairo
 // #include <cairo-gobject.h>
 import "C"
 
+// aliases
+
 // bitfields
 
 // enumerations

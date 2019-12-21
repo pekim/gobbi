@@ -52,5 +52,6 @@ func (r *repository) loadFromFile(filename string, required bool) {
 func (r *repository) init() {
 	if r.Namespace.Name == "GLib" {
 		r.CIncludes = append(r.CIncludes, &CInclude{Name: "glib/gstdio.h"})
+		r.CIncludes = append(r.CIncludes, &CInclude{Name: "glib-2.0/glib-object.h"})
 	}
 }

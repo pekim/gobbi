@@ -16,6 +16,9 @@ import (
 // #include <gdk/gdk.h>
 import "C"
 
+// aliases
+type XEvent C.GdkXEvent
+
 // bitfields
 type AnchorHints C.GdkAnchorHints
 type AxisFlags C.GdkAxisFlags

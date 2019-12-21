@@ -11,12 +11,12 @@ import (
 )
 
 type Namespace struct {
-	Name                string `xml:"name,attr"`
-	Version             string `xml:"version,attr"`
-	CIdentifierPrefixes string `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
-	CSymbolPrefixes     string `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
-	//Aliases             Aliases      `xml:"alias"`
-	Bitfields Enumerations `xml:"bitfield"`
+	Name                string       `xml:"name,attr"`
+	Version             string       `xml:"version,attr"`
+	CIdentifierPrefixes string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
+	CSymbolPrefixes     string       `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
+	Aliases             Aliases      `xml:"alias"`
+	Bitfields           Enumerations `xml:"bitfield"`
 	//	Callbacks                     Callbacks    `xml:"callback"`
 	Classes      Classes      `xml:"class"`
 	Constants    Constants    `xml:"constant"`
@@ -47,7 +47,7 @@ func (n *Namespace) init(repository *repository, namespaces namespaces) {
 	n.goFullSysPackageName = "github.com/pekim/gobbi/lib/internal/c/" + n.goPackageName
 	n.versions = &versions{}
 
-	//n.Aliases.init(n)
+	n.Aliases.init(n)
 	n.Bitfields.init(n)
 	n.Constants.init(n)
 	n.Enumerations.init(n)

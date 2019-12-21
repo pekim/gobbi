@@ -20,6 +20,10 @@ import (
 // #include <gtk/gtkx.h>
 import "C"
 
+// aliases
+type Allocation C.GtkAllocation
+type Stock C.GtkStock
+
 // bitfields
 type AccelFlags C.GtkAccelFlags
 type AttachOptions C.GtkAttachOptions
