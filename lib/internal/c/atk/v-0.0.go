@@ -107,7 +107,7 @@ func Fn_add_global_event_listener(listener c.UndefinedParamType, eventType strin
 
 func Fn_add_key_event_listener(listener c.UndefinedParamType, data unsafe.Pointer) {}
 
-func Fn_attribute_set_free(attribSet c.UndefinedParamType) {}
+func Fn_attribute_set_free(attribSet *AttributeSet) {}
 
 func Fn_focus_tracker_init(init c.UndefinedParamType) {}
 

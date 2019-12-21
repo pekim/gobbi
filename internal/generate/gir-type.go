@@ -84,17 +84,13 @@ func (t *Type) sysParamGoType() *jen.Statement {
 		return jen.Op(t.cStars).Add(simpleGoType)
 	}
 
-	if t.isBitfield() {
-		bf, _ := t.namespace.Bitfields.byName(t.Name)
-		return jen.Id(bf.Name)
-	}
+	if t.isAlias() ||
+		t.isBitfield() ||
+		t.isEnumeration() ||
+		t.isClass() ||
+		t.isRecord() ||
+		t.isInterface() {
 
-	if t.isEnumeration() {
-		enum, _ := t.namespace.Enumerations.byName(t.Name)
-		return jen.Id(enum.Name)
-	}
-
-	if t.isClass() || t.isRecord() || t.isInterface() {
 		if t.isQualifiedName() {
 			return jen.Op(t.cStars).Qual(t.foreignNamespace.goFullSysPackageName, t.foreignName)
 		}

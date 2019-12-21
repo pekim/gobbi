@@ -207,7 +207,7 @@ func Fn_assertion_message_cmpnum(domain string, file string, line int, func_ str
 func Fn_assertion_message_cmpstr(domain string, file string, line int, func_ string, expr string, arg1 string, cmp string, arg2 string) {
 }
 
-func Fn_assertion_message_error(domain string, file string, line int, func_ string, expr string, error *Error, errorDomain c.UndefinedParamType, errorCode int) {
+func Fn_assertion_message_error(domain string, file string, line int, func_ string, expr string, error *Error, errorDomain Quark, errorCode int) {
 }
 
 func Fn_assertion_message_expr(domain string, file string, line int, func_ string, expr string) {}
@@ -304,13 +304,12 @@ func Fn_check_version(requiredMajor uint, requiredMinor uint, requiredMicro uint
 
 func Fn_checksum_type_get_length(checksumType ChecksumType) {}
 
-func Fn_child_watch_add(pid c.UndefinedParamType, function c.UndefinedParamType, data unsafe.Pointer) {
+func Fn_child_watch_add(pid Pid, function c.UndefinedParamType, data unsafe.Pointer) {}
+
+func Fn_child_watch_add_full(priority int, pid Pid, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
 }
 
-func Fn_child_watch_add_full(priority int, pid c.UndefinedParamType, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
-}
-
-func Fn_child_watch_source_new(pid c.UndefinedParamType) {}
+func Fn_child_watch_source_new(pid Pid) {}
 
 func Fn_clear_error() {}
 
@@ -350,17 +349,17 @@ func Fn_datalist_get_data(datalist **Data, key string) {}
 
 func Fn_datalist_get_flags(datalist **Data) {}
 
-func Fn_datalist_id_dup_data(datalist **Data, keyId c.UndefinedParamType, dupFunc c.UndefinedParamType, userData unsafe.Pointer) {
+func Fn_datalist_id_dup_data(datalist **Data, keyId Quark, dupFunc c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
-func Fn_datalist_id_get_data(datalist **Data, keyId c.UndefinedParamType) {}
+func Fn_datalist_id_get_data(datalist **Data, keyId Quark) {}
 
-func Fn_datalist_id_remove_no_notify(datalist **Data, keyId c.UndefinedParamType) {}
+func Fn_datalist_id_remove_no_notify(datalist **Data, keyId Quark) {}
 
-func Fn_datalist_id_replace_data(datalist **Data, keyId c.UndefinedParamType, oldval unsafe.Pointer, newval unsafe.Pointer, destroy c.UndefinedParamType) {
+func Fn_datalist_id_replace_data(datalist **Data, keyId Quark, oldval unsafe.Pointer, newval unsafe.Pointer, destroy c.UndefinedParamType) {
 }
 
-func Fn_datalist_id_set_data_full(datalist **Data, keyId c.UndefinedParamType, data unsafe.Pointer, destroyFunc c.UndefinedParamType) {
+func Fn_datalist_id_set_data_full(datalist **Data, keyId Quark, data unsafe.Pointer, destroyFunc c.UndefinedParamType) {
 }
 
 func Fn_datalist_init(datalist **Data) {}
@@ -374,20 +373,20 @@ func Fn_dataset_destroy(datasetLocation unsafe.Pointer) {}
 func Fn_dataset_foreach(datasetLocation unsafe.Pointer, func_ c.UndefinedParamType, userData unsafe.Pointer) {
 }
 
-func Fn_dataset_id_get_data(datasetLocation unsafe.Pointer, keyId c.UndefinedParamType) {}
+func Fn_dataset_id_get_data(datasetLocation unsafe.Pointer, keyId Quark) {}
 
-func Fn_dataset_id_remove_no_notify(datasetLocation unsafe.Pointer, keyId c.UndefinedParamType) {}
+func Fn_dataset_id_remove_no_notify(datasetLocation unsafe.Pointer, keyId Quark) {}
 
-func Fn_dataset_id_set_data_full(datasetLocation unsafe.Pointer, keyId c.UndefinedParamType, data unsafe.Pointer, destroyFunc c.UndefinedParamType) {
+func Fn_dataset_id_set_data_full(datasetLocation unsafe.Pointer, keyId Quark, data unsafe.Pointer, destroyFunc c.UndefinedParamType) {
 }
 
-func Fn_date_get_days_in_month(month DateMonth, year c.UndefinedParamType) {}
+func Fn_date_get_days_in_month(month DateMonth, year DateYear) {}
 
-func Fn_date_get_monday_weeks_in_year(year c.UndefinedParamType) {}
+func Fn_date_get_monday_weeks_in_year(year DateYear) {}
 
-func Fn_date_get_sunday_weeks_in_year(year c.UndefinedParamType) {}
+func Fn_date_get_sunday_weeks_in_year(year DateYear) {}
 
-func Fn_date_is_leap_year(year c.UndefinedParamType) {}
+func Fn_date_is_leap_year(year DateYear) {}
 
 func Fn_date_strftime(s string, slen uint64, format string, date *Date) {}
 
@@ -397,9 +396,9 @@ func Fn_date_time_equal(dt1 unsafe.Pointer, dt2 unsafe.Pointer) {}
 
 func Fn_date_time_hash(datetime unsafe.Pointer) {}
 
-func Fn_date_valid_day(day c.UndefinedParamType) {}
+func Fn_date_valid_day(day DateDay) {}
 
-func Fn_date_valid_dmy(day c.UndefinedParamType, month DateMonth, year c.UndefinedParamType) {}
+func Fn_date_valid_dmy(day DateDay, month DateMonth, year DateYear) {}
 
 func Fn_date_valid_julian(julianDate uint32) {}
 
@@ -407,7 +406,7 @@ func Fn_date_valid_month(month DateMonth) {}
 
 func Fn_date_valid_weekday(weekday DateWeekday) {}
 
-func Fn_date_valid_year(year c.UndefinedParamType) {}
+func Fn_date_valid_year(year DateYear) {}
 
 func Fn_dcgettext(domain string, msgid string, category int) {}
 
@@ -778,7 +777,7 @@ func Fn_quark_from_static_string(string_ string) {}
 
 func Fn_quark_from_string(string_ string) {}
 
-func Fn_quark_to_string(quark c.UndefinedParamType) {}
+func Fn_quark_to_string(quark Quark) {}
 
 func Fn_quark_try_string(string_ string) {}
 
@@ -838,7 +837,7 @@ func Fn_set_application_name(applicationName string) {}
 
 // UNSUPPORTED : set_error : has varargs
 
-func Fn_set_error_literal(domain c.UndefinedParamType, code int, message string) {}
+func Fn_set_error_literal(domain Quark, code int, message string) {}
 
 func Fn_set_prgname(prgname string) {}
 
@@ -892,7 +891,7 @@ func Fn_spawn_async_with_pipes(workingDirectory string, argv c.UndefinedParamTyp
 
 func Fn_spawn_check_exit_status(exitStatus int) {}
 
-func Fn_spawn_close_pid(pid c.UndefinedParamType) {}
+func Fn_spawn_close_pid(pid Pid) {}
 
 func Fn_spawn_command_line_async(commandLine string) {}
 

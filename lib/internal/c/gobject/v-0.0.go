@@ -333,7 +333,7 @@ func Fn_signal_name(signalId uint) {}
 
 // UNSUPPORTED : signal_new_valist : has va_list
 
-func Fn_signal_newv(signalName string, itype c.UndefinedParamType, signalFlags SignalFlags, classClosure *Closure, accumulator c.UndefinedParamType, accuData unsafe.Pointer, cMarshaller c.UndefinedParamType, returnType c.UndefinedParamType, nParams uint, paramTypes c.UndefinedParamType) {
+func Fn_signal_newv(signalName string, itype c.UndefinedParamType, signalFlags SignalFlags, classClosure *Closure, accumulator c.UndefinedParamType, accuData unsafe.Pointer, cMarshaller SignalCMarshaller, returnType c.UndefinedParamType, nParams uint, paramTypes c.UndefinedParamType) {
 }
 
 func Fn_signal_override_class_closure(signalId uint, instanceType c.UndefinedParamType, classClosure *Closure) {

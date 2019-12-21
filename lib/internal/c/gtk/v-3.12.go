@@ -1227,7 +1227,7 @@ func Fn_rc_parse_color(scanner *glib.Scanner) {}
 
 func Fn_rc_parse_color_full(scanner *glib.Scanner, style *RcStyle) {}
 
-func Fn_rc_parse_priority(scanner *glib.Scanner, priority PathPriorityType) {}
+func Fn_rc_parse_priority(scanner *glib.Scanner, priority *PathPriorityType) {}
 
 func Fn_rc_parse_state(scanner *glib.Scanner) {}
 

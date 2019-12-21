@@ -1,5 +1,10 @@
 package generate
 
+func (t *Type) isAlias() bool {
+	_, found := t.namespace.Aliases.byName(t.Name)
+	return found
+}
+
 func (t *Type) isBitfield() bool {
 	_, found := t.namespace.Bitfields.byName(t.Name)
 	return found

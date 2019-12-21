@@ -167,7 +167,7 @@ func Fn_itemize_with_base_dir(context *Context, baseDir Direction, text string, 
 
 func Fn_language_from_string(language string) {}
 
-func Fn_log2vis_get_embedding_levels(text string, length int, pbaseDir Direction) {}
+func Fn_log2vis_get_embedding_levels(text string, length int, pbaseDir *Direction) {}
 
 func Fn_lookup_aliases(fontname string) {}
 
