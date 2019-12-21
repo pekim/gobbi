@@ -345,22 +345,21 @@ func Fn_get_user_name() {}
 
 func Fn_getenv(variable string) {}
 
-func Fn_hash_table_destroy(hashTable c.UndefinedParamType) {}
+func Fn_hash_table_destroy(hashTable *HashTable) {}
 
-func Fn_hash_table_insert(hashTable c.UndefinedParamType, key unsafe.Pointer, value unsafe.Pointer) {}
+func Fn_hash_table_insert(hashTable *HashTable, key unsafe.Pointer, value unsafe.Pointer) {}
 
-func Fn_hash_table_lookup(hashTable c.UndefinedParamType, key unsafe.Pointer) {}
+func Fn_hash_table_lookup(hashTable *HashTable, key unsafe.Pointer) {}
 
-func Fn_hash_table_lookup_extended(hashTable c.UndefinedParamType, lookupKey unsafe.Pointer) {}
+func Fn_hash_table_lookup_extended(hashTable *HashTable, lookupKey unsafe.Pointer) {}
 
-func Fn_hash_table_remove(hashTable c.UndefinedParamType, key unsafe.Pointer) {}
+func Fn_hash_table_remove(hashTable *HashTable, key unsafe.Pointer) {}
 
-func Fn_hash_table_replace(hashTable c.UndefinedParamType, key unsafe.Pointer, value unsafe.Pointer) {
-}
+func Fn_hash_table_replace(hashTable *HashTable, key unsafe.Pointer, value unsafe.Pointer) {}
 
-func Fn_hash_table_size(hashTable c.UndefinedParamType) {}
+func Fn_hash_table_size(hashTable *HashTable) {}
 
-func Fn_hash_table_steal(hashTable c.UndefinedParamType, key unsafe.Pointer) {}
+func Fn_hash_table_steal(hashTable *HashTable, key unsafe.Pointer) {}
 
 func Fn_hook_destroy(hookList *HookList, hookId uint64) {}
 

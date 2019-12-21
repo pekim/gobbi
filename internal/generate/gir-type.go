@@ -70,10 +70,22 @@ func (t *Type) init(ns *Namespace) {
 
 func (t *Type) analyseName() {
 	isForeign, foreignNamespace, foreignName := t.namespace.namespaces.analyseName(t.Name)
-	if isForeign {
-		t.foreignNamespace = foreignNamespace
-		t.foreignName = foreignName
+
+	if !isForeign {
+		return
 	}
+
+	if foreignNamespace == t.namespace {
+		// It's a qualified reference, but in this namespace.
+		// So it's not really foreign.
+
+		t.Name = foreignName
+		return
+	}
+
+	t.foreignNamespace = foreignNamespace
+	t.foreignName = foreignName
+
 }
 
 func (t *Type) parseCtype() {
