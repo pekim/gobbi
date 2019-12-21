@@ -2,10 +2,7 @@ package generate
 
 import (
 	"github.com/dave/jennifer/jen"
-	"regexp"
 )
-
-var cTypeRegex = regexp.MustCompile(" *(const)? *([a-zA-Z0-9 ]+) *(\\**)? *")
 
 type Parameter struct {
 	Name      string `xml:"name,attr"`

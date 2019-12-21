@@ -201,19 +201,19 @@ func Fn_assertion_message_expr(domain string, file string, line int, func_ strin
 
 func Fn_atexit(func_ c.UndefinedParamType) {}
 
-func Fn_atomic_int_add(atomic c.UndefinedParamType, val int) {}
+func Fn_atomic_int_add(atomic *int, val int) {}
 
-func Fn_atomic_int_compare_and_exchange(atomic c.UndefinedParamType, oldval int, newval int) {}
+func Fn_atomic_int_compare_and_exchange(atomic *int, oldval int, newval int) {}
 
-func Fn_atomic_int_dec_and_test(atomic c.UndefinedParamType) {}
+func Fn_atomic_int_dec_and_test(atomic *int) {}
 
-func Fn_atomic_int_exchange_and_add(atomic c.UndefinedParamType, val int) {}
+func Fn_atomic_int_exchange_and_add(atomic *int, val int) {}
 
 func Fn_atomic_int_get(atomic c.UndefinedParamType) {}
 
-func Fn_atomic_int_inc(atomic c.UndefinedParamType) {}
+func Fn_atomic_int_inc(atomic *int) {}
 
-func Fn_atomic_int_set(atomic c.UndefinedParamType, newval int) {}
+func Fn_atomic_int_set(atomic *int, newval int) {}
 
 func Fn_atomic_pointer_compare_and_exchange(atomic unsafe.Pointer, oldval unsafe.Pointer, newval unsafe.Pointer) {
 }
@@ -237,7 +237,7 @@ func Fn_base64_encode_step(in c.UndefinedParamType, len uint64, breakLines bool,
 
 func Fn_basename(fileName string) {}
 
-func Fn_bit_lock(address c.UndefinedParamType, lockBit int) {}
+func Fn_bit_lock(address *int, lockBit int) {}
 
 func Fn_bit_nth_lsf(mask uint64, nthBit int) {}
 
@@ -245,9 +245,9 @@ func Fn_bit_nth_msf(mask uint64, nthBit int) {}
 
 func Fn_bit_storage(number uint64) {}
 
-func Fn_bit_trylock(address c.UndefinedParamType, lockBit int) {}
+func Fn_bit_trylock(address *int, lockBit int) {}
 
-func Fn_bit_unlock(address c.UndefinedParamType, lockBit int) {}
+func Fn_bit_unlock(address *int, lockBit int) {}
 
 func Fn_bookmark_file_error_quark() {}
 

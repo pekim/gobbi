@@ -185,19 +185,19 @@ func Fn_assertion_message_expr(domain string, file string, line int, func_ strin
 
 func Fn_atexit(func_ c.UndefinedParamType) {}
 
-func Fn_atomic_int_add(atomic c.UndefinedParamType, val int) {}
+func Fn_atomic_int_add(atomic *int, val int) {}
 
-func Fn_atomic_int_compare_and_exchange(atomic c.UndefinedParamType, oldval int, newval int) {}
+func Fn_atomic_int_compare_and_exchange(atomic *int, oldval int, newval int) {}
 
-func Fn_atomic_int_dec_and_test(atomic c.UndefinedParamType) {}
+func Fn_atomic_int_dec_and_test(atomic *int) {}
 
-func Fn_atomic_int_exchange_and_add(atomic c.UndefinedParamType, val int) {}
+func Fn_atomic_int_exchange_and_add(atomic *int, val int) {}
 
 func Fn_atomic_int_get(atomic c.UndefinedParamType) {}
 
-func Fn_atomic_int_inc(atomic c.UndefinedParamType) {}
+func Fn_atomic_int_inc(atomic *int) {}
 
-func Fn_atomic_int_set(atomic c.UndefinedParamType, newval int) {}
+func Fn_atomic_int_set(atomic *int, newval int) {}
 
 func Fn_atomic_pointer_compare_and_exchange(atomic unsafe.Pointer, oldval unsafe.Pointer, newval unsafe.Pointer) {
 }

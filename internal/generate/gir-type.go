@@ -3,7 +3,10 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
+	"regexp"
 )
+
+var cTypeRegex = regexp.MustCompile(" *(const|volatile)? *([a-zA-Z0-9 ]+) *(\\**)? *")
 
 var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"gchar":         jen.Int8(),
