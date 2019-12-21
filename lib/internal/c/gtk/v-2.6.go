@@ -936,29 +936,28 @@ type TreeDragSource C.GtkTreeDragSource
 type TreeModel C.GtkTreeModel
 type TreeSortable C.GtkTreeSortable
 
-func Fn_accel_groups_activate(object *gobject.Object, accelKey uint, accelMods c.UndefinedParamType) {
-}
+func Fn_accel_groups_activate(object *gobject.Object, accelKey uint, accelMods gdk.ModifierType) {}
 
 func Fn_accel_groups_from_object(object *gobject.Object) {}
 
 func Fn_accelerator_get_default_mod_mask() {}
 
-func Fn_accelerator_get_label(acceleratorKey uint, acceleratorMods c.UndefinedParamType) {}
+func Fn_accelerator_get_label(acceleratorKey uint, acceleratorMods gdk.ModifierType) {}
 
-func Fn_accelerator_name(acceleratorKey uint, acceleratorMods c.UndefinedParamType) {}
+func Fn_accelerator_name(acceleratorKey uint, acceleratorMods gdk.ModifierType) {}
 
 func Fn_accelerator_parse(accelerator string) {}
 
-func Fn_accelerator_set_default_mod_mask(defaultModMask c.UndefinedParamType) {}
+func Fn_accelerator_set_default_mod_mask(defaultModMask gdk.ModifierType) {}
 
-func Fn_accelerator_valid(keyval uint, modifiers c.UndefinedParamType) {}
+func Fn_accelerator_valid(keyval uint, modifiers gdk.ModifierType) {}
 
 func Fn_alternative_dialog_button_order(screen *gdk.Screen) {}
 
-func Fn_binding_entry_add_signall(bindingSet *BindingSet, keyval uint, modifiers c.UndefinedParamType, signalName string, bindingArgs *glib.SList) {
+func Fn_binding_entry_add_signall(bindingSet *BindingSet, keyval uint, modifiers gdk.ModifierType, signalName string, bindingArgs *glib.SList) {
 }
 
-func Fn_binding_entry_remove(bindingSet *BindingSet, keyval uint, modifiers c.UndefinedParamType) {}
+func Fn_binding_entry_remove(bindingSet *BindingSet, keyval uint, modifiers gdk.ModifierType) {}
 
 func Fn_binding_set_by_class(objectClass unsafe.Pointer) {}
 
@@ -966,7 +965,7 @@ func Fn_binding_set_find(setName string) {}
 
 func Fn_binding_set_new(setName string) {}
 
-func Fn_bindings_activate(object *gobject.Object, keyval uint, modifiers c.UndefinedParamType) {}
+func Fn_bindings_activate(object *gobject.Object, keyval uint, modifiers gdk.ModifierType) {}
 
 func Fn_bindings_activate_event(object *gobject.Object, event *gdk.EventKey) {}
 
@@ -1095,7 +1094,7 @@ func Fn_paint_layout(style *Style, cr cairo.Context, stateType StateType, useTex
 func Fn_paint_option(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 }
 
-func Fn_paint_resize_grip(style *Style, cr cairo.Context, stateType StateType, widget *Widget, detail string, edge c.UndefinedParamType, x int, y int, width int, height int) {
+func Fn_paint_resize_grip(style *Style, cr cairo.Context, stateType StateType, widget *Widget, detail string, edge gdk.WindowEdge, x int, y int, width int, height int) {
 }
 
 func Fn_paint_shadow(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {

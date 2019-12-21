@@ -11,11 +11,21 @@ func (t *Type) isAlias() bool {
 }
 
 func (t *Type) isBitfield() bool {
+	if t.isQualifiedName() {
+		_, found := t.foreignNamespace.Bitfields.byName(t.foreignName)
+		return found
+	}
+
 	_, found := t.namespace.Bitfields.byName(t.Name)
 	return found
 }
 
 func (t *Type) isEnumeration() bool {
+	if t.isQualifiedName() {
+		_, found := t.foreignNamespace.Enumerations.byName(t.foreignName)
+		return found
+	}
+
 	_, found := t.namespace.Enumerations.byName(t.Name)
 	return found
 }
