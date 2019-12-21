@@ -500,28 +500,23 @@ func Fn_app_info_get_recommended_for_type(contentType string) {}
 
 func Fn_app_info_launch_default_for_uri(uri string, context *AppLaunchContext) {}
 
-func Fn_app_info_launch_default_for_uri_async(uri string, context *AppLaunchContext, cancellable *Cancellable, callback c.UndefinedParamType, userData unsafe.Pointer) {
-}
+// UNSUPPORTED : app_info_launch_default_for_uri_async : has callback
 
 func Fn_app_info_launch_default_for_uri_finish(result *AsyncResult) {}
 
 func Fn_app_info_reset_type_associations(contentType string) {}
 
-func Fn_async_initable_newv_async(objectType glib.Type, nParameters uint, parameters *gobject.Parameter, ioPriority int, cancellable *Cancellable, callback c.UndefinedParamType, userData unsafe.Pointer) {
-}
+// UNSUPPORTED : async_initable_newv_async : has callback
 
-func Fn_bus_get(busType BusType, cancellable *Cancellable, callback c.UndefinedParamType, userData unsafe.Pointer) {
-}
+// UNSUPPORTED : bus_get : has callback
 
 func Fn_bus_get_finish(res *AsyncResult) {}
 
 func Fn_bus_get_sync(busType BusType, cancellable *Cancellable) {}
 
-func Fn_bus_own_name(busType BusType, name string, flags BusNameOwnerFlags, busAcquiredHandler c.UndefinedParamType, nameAcquiredHandler c.UndefinedParamType, nameLostHandler c.UndefinedParamType, userData unsafe.Pointer, userDataFreeFunc c.UndefinedParamType) {
-}
+// UNSUPPORTED : bus_own_name : has callback
 
-func Fn_bus_own_name_on_connection(connection *DBusConnection, name string, flags BusNameOwnerFlags, nameAcquiredHandler c.UndefinedParamType, nameLostHandler c.UndefinedParamType, userData unsafe.Pointer, userDataFreeFunc c.UndefinedParamType) {
-}
+// UNSUPPORTED : bus_own_name_on_connection : has callback
 
 func Fn_bus_own_name_on_connection_with_closures(connection *DBusConnection, name string, flags BusNameOwnerFlags, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) {
 }
@@ -533,11 +528,9 @@ func Fn_bus_unown_name(ownerId uint) {}
 
 func Fn_bus_unwatch_name(watcherId uint) {}
 
-func Fn_bus_watch_name(busType BusType, name string, flags BusNameWatcherFlags, nameAppearedHandler c.UndefinedParamType, nameVanishedHandler c.UndefinedParamType, userData unsafe.Pointer, userDataFreeFunc c.UndefinedParamType) {
-}
+// UNSUPPORTED : bus_watch_name : has callback
 
-func Fn_bus_watch_name_on_connection(connection *DBusConnection, name string, flags BusNameWatcherFlags, nameAppearedHandler c.UndefinedParamType, nameVanishedHandler c.UndefinedParamType, userData unsafe.Pointer, userDataFreeFunc c.UndefinedParamType) {
-}
+// UNSUPPORTED : bus_watch_name_on_connection : has callback
 
 func Fn_bus_watch_name_on_connection_with_closures(connection *DBusConnection, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) {
 }
@@ -577,8 +570,7 @@ func Fn_dbus_address_escape_value(string_ string) {}
 
 func Fn_dbus_address_get_for_bus_sync(busType BusType, cancellable *Cancellable) {}
 
-func Fn_dbus_address_get_stream(address string, cancellable *Cancellable, callback c.UndefinedParamType, userData unsafe.Pointer) {
-}
+// UNSUPPORTED : dbus_address_get_stream : has callback
 
 func Fn_dbus_address_get_stream_finish(res *AsyncResult) {}
 
@@ -671,8 +663,7 @@ func Fn_io_modules_scan_all_in_directory_with_scope(dirname string, scope *IOMod
 
 func Fn_io_scheduler_cancel_all_jobs() {}
 
-func Fn_io_scheduler_push_job(jobFunc c.UndefinedParamType, userData unsafe.Pointer, notify c.UndefinedParamType, ioPriority int, cancellable *Cancellable) {
-}
+// UNSUPPORTED : io_scheduler_push_job : has callback
 
 func Fn_keyfile_settings_backend_new(filename string, rootPath string, rootGroup string) {}
 
@@ -724,11 +715,9 @@ func Fn_settings_schema_source_get_default() {}
 
 // UNSUPPORTED : simple_async_report_error_in_idle : has varargs
 
-func Fn_simple_async_report_gerror_in_idle(object *gobject.Object, callback c.UndefinedParamType, userData unsafe.Pointer, error *glib.Error) {
-}
+// UNSUPPORTED : simple_async_report_gerror_in_idle : has callback
 
-func Fn_simple_async_report_take_gerror_in_idle(object *gobject.Object, callback c.UndefinedParamType, userData unsafe.Pointer, error *glib.Error) {
-}
+// UNSUPPORTED : simple_async_report_take_gerror_in_idle : has callback
 
 func Fn_srv_target_list_sort(targets *glib.List) {}
 

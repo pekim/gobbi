@@ -9,7 +9,6 @@ import (
 	glib "github.com/pekim/gobbi/lib/internal/c/glib"
 	gobject "github.com/pekim/gobbi/lib/internal/c/gobject"
 	pango "github.com/pekim/gobbi/lib/internal/c/pango"
-	"unsafe"
 )
 
 // #include <gdk/gdk.h>
@@ -156,8 +155,7 @@ func Fn_error_trap_push() {}
 
 func Fn_event_get() {}
 
-func Fn_event_handler_set(func_ c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
-}
+// UNSUPPORTED : event_handler_set : has callback
 
 func Fn_event_peek() {}
 
@@ -257,11 +255,25 @@ func Fn_setting_get(name string, value *gobject.Value) {}
 
 func Fn_synthesize_window_state(window *Window, unsetFlags WindowState, setFlags WindowState) {}
 
+// UNSUPPORTED : threads_add_idle : has callback
+
+// UNSUPPORTED : threads_add_idle_full : has callback
+
+// UNSUPPORTED : threads_add_timeout : has callback
+
+// UNSUPPORTED : threads_add_timeout_full : has callback
+
+// UNSUPPORTED : threads_add_timeout_seconds : has callback
+
+// UNSUPPORTED : threads_add_timeout_seconds_full : has callback
+
 func Fn_threads_enter() {}
 
 func Fn_threads_init() {}
 
 func Fn_threads_leave() {}
+
+// UNSUPPORTED : threads_set_lock_functions : has callback
 
 func Fn_unicode_to_keyval(wc uint32) {}
 

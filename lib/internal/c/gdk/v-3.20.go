@@ -10,7 +10,6 @@ import (
 	glib "github.com/pekim/gobbi/lib/internal/c/glib"
 	gobject "github.com/pekim/gobbi/lib/internal/c/gobject"
 	pango "github.com/pekim/gobbi/lib/internal/c/pango"
-	"unsafe"
 )
 
 // #include <gdk/gdk.h>
@@ -201,8 +200,7 @@ func Fn_error_trap_push() {}
 
 func Fn_event_get() {}
 
-func Fn_event_handler_set(func_ c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
-}
+// UNSUPPORTED : event_handler_set : has callback
 
 func Fn_event_peek() {}
 
@@ -345,21 +343,17 @@ func Fn_test_simulate_key(window *Window, x int, y int, keyval uint, modifiers M
 func Fn_text_property_to_utf8_list_for_display(display *Display, encoding Atom, format int, text c.UndefinedParamType, length int) {
 }
 
-func Fn_threads_add_idle(function c.UndefinedParamType, data unsafe.Pointer) {}
+// UNSUPPORTED : threads_add_idle : has callback
 
-func Fn_threads_add_idle_full(priority int, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
-}
+// UNSUPPORTED : threads_add_idle_full : has callback
 
-func Fn_threads_add_timeout(interval uint, function c.UndefinedParamType, data unsafe.Pointer) {}
+// UNSUPPORTED : threads_add_timeout : has callback
 
-func Fn_threads_add_timeout_full(priority int, interval uint, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
-}
+// UNSUPPORTED : threads_add_timeout_full : has callback
 
-func Fn_threads_add_timeout_seconds(interval uint, function c.UndefinedParamType, data unsafe.Pointer) {
-}
+// UNSUPPORTED : threads_add_timeout_seconds : has callback
 
-func Fn_threads_add_timeout_seconds_full(priority int, interval uint, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
-}
+// UNSUPPORTED : threads_add_timeout_seconds_full : has callback
 
 func Fn_threads_enter() {}
 
@@ -367,7 +361,7 @@ func Fn_threads_init() {}
 
 func Fn_threads_leave() {}
 
-func Fn_threads_set_lock_functions(enterFn c.UndefinedParamType, leaveFn c.UndefinedParamType) {}
+// UNSUPPORTED : threads_set_lock_functions : has callback
 
 func Fn_unicode_to_keyval(wc uint32) {}
 

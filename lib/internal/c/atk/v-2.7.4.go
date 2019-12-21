@@ -3,10 +3,7 @@
 
 package atk
 
-import (
-	c "github.com/pekim/gobbi/lib/internal/c"
-	"unsafe"
-)
+import c "github.com/pekim/gobbi/lib/internal/c"
 
 // #include <atk/atk.h>
 import "C"
@@ -101,15 +98,15 @@ type Text C.AtkText
 type Value C.AtkValue
 type Window C.AtkWindow
 
-func Fn_add_focus_tracker(focusTracker c.UndefinedParamType) {}
+// UNSUPPORTED : add_focus_tracker : has callback
 
-func Fn_add_global_event_listener(listener c.UndefinedParamType, eventType string) {}
+// UNSUPPORTED : add_global_event_listener : has callback
 
-func Fn_add_key_event_listener(listener c.UndefinedParamType, data unsafe.Pointer) {}
+// UNSUPPORTED : add_key_event_listener : has callback
 
 func Fn_attribute_set_free(attribSet *AttributeSet) {}
 
-func Fn_focus_tracker_init(init c.UndefinedParamType) {}
+// UNSUPPORTED : focus_tracker_init : has callback
 
 func Fn_focus_tracker_notify(object *Object) {}
 

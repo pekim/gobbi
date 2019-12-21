@@ -97,8 +97,7 @@ func Fn_boxed_copy(boxedType glib.Type, srcBoxed unsafe.Pointer) {}
 
 func Fn_boxed_free(boxedType glib.Type, boxed unsafe.Pointer) {}
 
-func Fn_boxed_type_register_static(name string, boxedCopy c.UndefinedParamType, boxedFree c.UndefinedParamType) {
-}
+// UNSUPPORTED : boxed_type_register_static : has callback
 
 func Fn_cclosure_marshal_BOOLEAN__BOXED_BOXED(closure *Closure, returnValue *Value, nParamValues uint, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
 }
@@ -166,15 +165,13 @@ func Fn_cclosure_marshal_VOID__VARIANT(closure *Closure, returnValue *Value, nPa
 func Fn_cclosure_marshal_VOID__VOID(closure *Closure, returnValue *Value, nParamValues uint, paramValues *Value, invocationHint unsafe.Pointer, marshalData unsafe.Pointer) {
 }
 
-func Fn_cclosure_new(callbackFunc c.UndefinedParamType, userData unsafe.Pointer, destroyData c.UndefinedParamType) {
-}
+// UNSUPPORTED : cclosure_new : has callback
 
-func Fn_cclosure_new_object(callbackFunc c.UndefinedParamType, object *Object) {}
+// UNSUPPORTED : cclosure_new_object : has callback
 
-func Fn_cclosure_new_object_swap(callbackFunc c.UndefinedParamType, object *Object) {}
+// UNSUPPORTED : cclosure_new_object_swap : has callback
 
-func Fn_cclosure_new_swap(callbackFunc c.UndefinedParamType, userData unsafe.Pointer, destroyData c.UndefinedParamType) {
-}
+// UNSUPPORTED : cclosure_new_swap : has callback
 
 func Fn_enum_complete_type_info(gEnumType glib.Type, constValues *EnumValue) {}
 
@@ -284,8 +281,7 @@ func Fn_pointer_type_register_static(name string) {}
 func Fn_signal_accumulator_true_handled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy unsafe.Pointer) {
 }
 
-func Fn_signal_add_emission_hook(signalId uint, detail glib.Quark, hookFunc c.UndefinedParamType, hookData unsafe.Pointer, dataDestroy c.UndefinedParamType) {
-}
+// UNSUPPORTED : signal_add_emission_hook : has callback
 
 func Fn_signal_chain_from_overridden(instanceAndParams c.UndefinedParamType, returnValue *Value) {}
 
@@ -297,11 +293,9 @@ func Fn_signal_connect_closure(instance unsafe.Pointer, detailedSignal string, c
 func Fn_signal_connect_closure_by_id(instance unsafe.Pointer, signalId uint, detail glib.Quark, closure *Closure, after bool) {
 }
 
-func Fn_signal_connect_data(instance unsafe.Pointer, detailedSignal string, cHandler c.UndefinedParamType, data unsafe.Pointer, destroyData c.UndefinedParamType, connectFlags ConnectFlags) {
-}
+// UNSUPPORTED : signal_connect_data : has callback
 
-func Fn_signal_connect_object(instance unsafe.Pointer, detailedSignal string, cHandler c.UndefinedParamType, gobject unsafe.Pointer, connectFlags ConnectFlags) {
-}
+// UNSUPPORTED : signal_connect_object : has callback
 
 // UNSUPPORTED : signal_emit : has varargs
 
@@ -351,14 +345,12 @@ func Fn_signal_name(signalId uint) {}
 
 // UNSUPPORTED : signal_new_valist : has va_list
 
-func Fn_signal_newv(signalName string, itype glib.Type, signalFlags SignalFlags, classClosure *Closure, accumulator c.UndefinedParamType, accuData unsafe.Pointer, cMarshaller SignalCMarshaller, returnType glib.Type, nParams uint, paramTypes c.UndefinedParamType) {
-}
+// UNSUPPORTED : signal_newv : has callback
 
 func Fn_signal_override_class_closure(signalId uint, instanceType glib.Type, classClosure *Closure) {
 }
 
-func Fn_signal_override_class_handler(signalName string, instanceType glib.Type, classHandler c.UndefinedParamType) {
-}
+// UNSUPPORTED : signal_override_class_handler : has callback
 
 func Fn_signal_parse_name(detailedSignal string, itype glib.Type, forceDetailQuark bool) {}
 
@@ -378,13 +370,13 @@ func Fn_source_set_dummy_callback(source *glib.Source) {}
 
 func Fn_strdup_value_contents(value *Value) {}
 
-func Fn_type_add_class_cache_func(cacheData unsafe.Pointer, cacheFunc c.UndefinedParamType) {}
+// UNSUPPORTED : type_add_class_cache_func : has callback
 
 func Fn_type_add_class_private(classType glib.Type, privateSize uint64) {}
 
 func Fn_type_add_instance_private(classType glib.Type, privateSize uint64) {}
 
-func Fn_type_add_interface_check(checkData unsafe.Pointer, checkFunc c.UndefinedParamType) {}
+// UNSUPPORTED : type_add_interface_check : has callback
 
 func Fn_type_add_interface_dynamic(instanceType glib.Type, interfaceType glib.Type, plugin *TypePlugin) {
 }
@@ -481,12 +473,11 @@ func Fn_type_register_fundamental(typeId glib.Type, typeName string, info *TypeI
 func Fn_type_register_static(parentType glib.Type, typeName string, info *TypeInfo, flags TypeFlags) {
 }
 
-func Fn_type_register_static_simple(parentType glib.Type, typeName string, classSize uint, classInit c.UndefinedParamType, instanceSize uint, instanceInit c.UndefinedParamType, flags TypeFlags) {
-}
+// UNSUPPORTED : type_register_static_simple : has callback
 
-func Fn_type_remove_class_cache_func(cacheData unsafe.Pointer, cacheFunc c.UndefinedParamType) {}
+// UNSUPPORTED : type_remove_class_cache_func : has callback
 
-func Fn_type_remove_interface_check(checkData unsafe.Pointer, checkFunc c.UndefinedParamType) {}
+// UNSUPPORTED : type_remove_interface_check : has callback
 
 func Fn_type_set_qdata(type_ glib.Type, quark glib.Quark, data unsafe.Pointer) {}
 
@@ -494,8 +485,7 @@ func Fn_type_test_flags(type_ glib.Type, flags uint) {}
 
 func Fn_type_value_table_peek(type_ glib.Type) {}
 
-func Fn_value_register_transform_func(srcType glib.Type, destType glib.Type, transformFunc c.UndefinedParamType) {
-}
+// UNSUPPORTED : value_register_transform_func : has callback
 
 func Fn_value_type_compatible(srcType glib.Type, destType glib.Type) {}
 

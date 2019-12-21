@@ -20,6 +20,10 @@ func (pp Parameters) allSupported() (bool, string) {
 		return false, "has va_list"
 	}
 
+	if pp.hasCallback() {
+		return false, "has callback"
+	}
+
 	return true, ""
 }
 
@@ -36,6 +40,16 @@ func (pp Parameters) hasVarargs() bool {
 func (pp Parameters) hasVaList() bool {
 	for _, p := range pp {
 		if p.Type != nil && p.Type.isVaList() {
+			return true
+		}
+	}
+
+	return false
+}
+
+func (pp Parameters) hasCallback() bool {
+	for _, p := range pp {
+		if p.Type != nil && p.Type.isCallback() {
 			return true
 		}
 	}

@@ -1039,7 +1039,7 @@ func Fn_init_check(argc *int, argv c.UndefinedParamType) {}
 func Fn_init_with_args(argc *int, argv c.UndefinedParamType, parameterString string, entries c.UndefinedParamType, translationDomain string) {
 }
 
-func Fn_key_snooper_install(snooper c.UndefinedParamType, funcData unsafe.Pointer) {}
+// UNSUPPORTED : key_snooper_install : has callback
 
 func Fn_key_snooper_remove(snooperHandlerId uint) {}
 
@@ -1116,6 +1116,8 @@ func Fn_paint_vline(style *Style, cr cairo.Context, stateType StateType, widget 
 }
 
 func Fn_parse_args(argc *int, argv c.UndefinedParamType) {}
+
+// UNSUPPORTED : print_run_page_setup_dialog_async : has callback
 
 func Fn_propagate_event(widget *Widget, event c.UndefinedParamType) {}
 
@@ -1206,6 +1208,8 @@ func Fn_stock_add_static(items c.UndefinedParamType, nItems uint) {}
 func Fn_stock_list_ids() {}
 
 func Fn_stock_lookup(stockId string) {}
+
+// UNSUPPORTED : stock_set_translate_func : has callback
 
 // UNSUPPORTED : test_create_widget : has varargs
 

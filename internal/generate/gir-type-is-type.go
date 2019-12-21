@@ -64,6 +64,16 @@ func (t *Type) isInterface() bool {
 	return found
 }
 
+func (t *Type) isCallback() bool {
+	if t.isQualifiedName() {
+		_, found := t.foreignNamespace.Callbacks.byName(t.foreignName)
+		return found
+	}
+
+	_, found := t.namespace.Callbacks.byName(t.Name)
+	return found
+}
+
 func (t *Type) isVaList() bool {
 	return t.Name == "va_list"
 }

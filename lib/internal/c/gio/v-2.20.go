@@ -6,7 +6,6 @@ package gio
 import (
 	c "github.com/pekim/gobbi/lib/internal/c"
 	glib "github.com/pekim/gobbi/lib/internal/c/glib"
-	gobject "github.com/pekim/gobbi/lib/internal/c/gobject"
 	"unsafe"
 )
 
@@ -315,7 +314,21 @@ func Fn_app_info_get_default_for_uri_scheme(uriScheme string) {}
 
 func Fn_app_info_launch_default_for_uri(uri string, context *AppLaunchContext) {}
 
+// UNSUPPORTED : app_info_launch_default_for_uri_async : has callback
+
 func Fn_app_info_reset_type_associations(contentType string) {}
+
+// UNSUPPORTED : async_initable_newv_async : has callback
+
+// UNSUPPORTED : bus_get : has callback
+
+// UNSUPPORTED : bus_own_name : has callback
+
+// UNSUPPORTED : bus_own_name_on_connection : has callback
+
+// UNSUPPORTED : bus_watch_name : has callback
+
+// UNSUPPORTED : bus_watch_name_on_connection : has callback
 
 func Fn_content_type_can_be_executable(type_ string) {}
 
@@ -338,6 +351,8 @@ func Fn_content_type_is_a(type_ string, supertype string) {}
 func Fn_content_type_is_unknown(type_ string) {}
 
 func Fn_content_types_get_registered() {}
+
+// UNSUPPORTED : dbus_address_get_stream : has callback
 
 func Fn_dbus_error_quark() {}
 
@@ -368,15 +383,15 @@ func Fn_io_modules_load_all_in_directory(dirname string) {}
 
 func Fn_io_scheduler_cancel_all_jobs() {}
 
-func Fn_io_scheduler_push_job(jobFunc c.UndefinedParamType, userData unsafe.Pointer, notify c.UndefinedParamType, ioPriority int, cancellable *Cancellable) {
-}
+// UNSUPPORTED : io_scheduler_push_job : has callback
 
 func Fn_keyfile_settings_backend_new(filename string, rootPath string, rootGroup string) {}
 
 // UNSUPPORTED : simple_async_report_error_in_idle : has varargs
 
-func Fn_simple_async_report_gerror_in_idle(object *gobject.Object, callback c.UndefinedParamType, userData unsafe.Pointer, error *glib.Error) {
-}
+// UNSUPPORTED : simple_async_report_gerror_in_idle : has callback
+
+// UNSUPPORTED : simple_async_report_take_gerror_in_idle : has callback
 
 func Fn_unix_is_mount_path_system_internal(mountPath string) {}
 

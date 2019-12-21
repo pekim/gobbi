@@ -197,7 +197,7 @@ func Fn_assertion_message_error(domain string, file string, line int, func_ stri
 
 func Fn_assertion_message_expr(domain string, file string, line int, func_ string, expr string) {}
 
-func Fn_atexit(func_ c.UndefinedParamType) {}
+// UNSUPPORTED : atexit : has callback
 
 func Fn_atomic_int_add(atomic *int, val int) {}
 
@@ -219,6 +219,8 @@ func Fn_atomic_pointer_compare_and_exchange(atomic unsafe.Pointer, oldval unsafe
 func Fn_atomic_pointer_get(atomic unsafe.Pointer) {}
 
 func Fn_atomic_pointer_set(atomic unsafe.Pointer, newval unsafe.Pointer) {}
+
+// UNSUPPORTED : atomic_rc_box_release_full : has callback
 
 func Fn_base64_decode(text string) {}
 
@@ -271,14 +273,17 @@ func Fn_check_version(requiredMajor uint, requiredMinor uint, requiredMicro uint
 
 func Fn_checksum_type_get_length(checksumType ChecksumType) {}
 
-func Fn_child_watch_add(pid Pid, function c.UndefinedParamType, data unsafe.Pointer) {}
+// UNSUPPORTED : child_watch_add : has callback
 
-func Fn_child_watch_add_full(priority int, pid Pid, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
-}
+// UNSUPPORTED : child_watch_add_full : has callback
 
 func Fn_child_watch_source_new(pid Pid) {}
 
 func Fn_clear_error() {}
+
+// UNSUPPORTED : clear_handle_id : has callback
+
+// UNSUPPORTED : clear_pointer : has callback
 
 func Fn_compute_checksum_for_data(checksumType ChecksumType, data c.UndefinedParamType, length uint64) {
 }
@@ -296,18 +301,21 @@ func Fn_convert_with_iconv(str c.UndefinedParamType, len uint64, converter IConv
 
 func Fn_datalist_clear(datalist **Data) {}
 
-func Fn_datalist_foreach(datalist **Data, func_ c.UndefinedParamType, userData unsafe.Pointer) {}
+// UNSUPPORTED : datalist_foreach : has callback
 
 func Fn_datalist_get_data(datalist **Data, key string) {}
 
 func Fn_datalist_get_flags(datalist **Data) {}
 
+// UNSUPPORTED : datalist_id_dup_data : has callback
+
 func Fn_datalist_id_get_data(datalist **Data, keyId Quark) {}
 
 func Fn_datalist_id_remove_no_notify(datalist **Data, keyId Quark) {}
 
-func Fn_datalist_id_set_data_full(datalist **Data, keyId Quark, data unsafe.Pointer, destroyFunc c.UndefinedParamType) {
-}
+// UNSUPPORTED : datalist_id_replace_data : has callback
+
+// UNSUPPORTED : datalist_id_set_data_full : has callback
 
 func Fn_datalist_init(datalist **Data) {}
 
@@ -317,15 +325,13 @@ func Fn_datalist_unset_flags(datalist **Data, flags uint) {}
 
 func Fn_dataset_destroy(datasetLocation unsafe.Pointer) {}
 
-func Fn_dataset_foreach(datasetLocation unsafe.Pointer, func_ c.UndefinedParamType, userData unsafe.Pointer) {
-}
+// UNSUPPORTED : dataset_foreach : has callback
 
 func Fn_dataset_id_get_data(datasetLocation unsafe.Pointer, keyId Quark) {}
 
 func Fn_dataset_id_remove_no_notify(datasetLocation unsafe.Pointer, keyId Quark) {}
 
-func Fn_dataset_id_set_data_full(datasetLocation unsafe.Pointer, keyId Quark, data unsafe.Pointer, destroyFunc c.UndefinedParamType) {
-}
+// UNSUPPORTED : dataset_id_set_data_full : has callback
 
 func Fn_date_get_days_in_month(month DateMonth, year DateYear) {}
 
@@ -488,10 +494,9 @@ func Fn_iconv(converter IConv, inbuf string, inbytesLeft *uint64, outbuf string,
 
 func Fn_iconv_open(toCodeset string, fromCodeset string) {}
 
-func Fn_idle_add(function c.UndefinedParamType, data unsafe.Pointer) {}
+// UNSUPPORTED : idle_add : has callback
 
-func Fn_idle_add_full(priority int, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
-}
+// UNSUPPORTED : idle_add_full : has callback
 
 func Fn_idle_remove_by_data(data unsafe.Pointer) {}
 
@@ -509,11 +514,9 @@ func Fn_intern_static_string(string_ string) {}
 
 func Fn_intern_string(string_ string) {}
 
-func Fn_io_add_watch(channel *IOChannel, condition IOCondition, func_ c.UndefinedParamType, userData unsafe.Pointer) {
-}
+// UNSUPPORTED : io_add_watch : has callback
 
-func Fn_io_add_watch_full(channel *IOChannel, priority int, condition IOCondition, func_ c.UndefinedParamType, userData unsafe.Pointer, notify c.UndefinedParamType) {
-}
+// UNSUPPORTED : io_add_watch_full : has callback
 
 func Fn_io_channel_error_from_errno(en int) {}
 
@@ -538,12 +541,15 @@ func Fn_log_remove_handler(logDomain string, handlerId uint) {}
 
 func Fn_log_set_always_fatal(fatalMask LogLevelFlags) {}
 
-func Fn_log_set_default_handler(logFunc c.UndefinedParamType, userData unsafe.Pointer) {}
+// UNSUPPORTED : log_set_default_handler : has callback
 
 func Fn_log_set_fatal_mask(logDomain string, fatalMask LogLevelFlags) {}
 
-func Fn_log_set_handler(logDomain string, logLevels LogLevelFlags, logFunc c.UndefinedParamType, userData unsafe.Pointer) {
-}
+// UNSUPPORTED : log_set_handler : has callback
+
+// UNSUPPORTED : log_set_handler_full : has callback
+
+// UNSUPPORTED : log_set_writer_func : has callback
 
 // UNSUPPORTED : log_structured : has varargs
 
@@ -637,8 +643,9 @@ func Fn_propagate_error(src *Error) {}
 
 // UNSUPPORTED : propagate_prefixed_error : has varargs
 
-func Fn_qsort_with_data(pbase unsafe.Pointer, totalElems int, size uint64, compareFunc c.UndefinedParamType, userData unsafe.Pointer) {
-}
+// UNSUPPORTED : ptr_array_find_with_equal_func : has callback
+
+// UNSUPPORTED : qsort_with_data : has callback
 
 func Fn_quark_from_static_string(string_ string) {}
 
@@ -657,6 +664,8 @@ func Fn_random_int() {}
 func Fn_random_int_range(begin int32, end int32) {}
 
 func Fn_random_set_seed(seed uint32) {}
+
+// UNSUPPORTED : rc_box_release_full : has callback
 
 func Fn_realloc(mem unsafe.Pointer, nBytes uint64) {}
 
@@ -706,9 +715,9 @@ func Fn_set_error_literal(domain Quark, code int, message string) {}
 
 func Fn_set_prgname(prgname string) {}
 
-func Fn_set_print_handler(func_ c.UndefinedParamType) {}
+// UNSUPPORTED : set_print_handler : has callback
 
-func Fn_set_printerr_handler(func_ c.UndefinedParamType) {}
+// UNSUPPORTED : set_printerr_handler : has callback
 
 func Fn_setenv(variable string, value string, overwrite bool) {}
 
@@ -746,11 +755,11 @@ func Fn_source_remove_by_user_data(userData unsafe.Pointer) {}
 
 func Fn_spaced_primes_closest(num uint) {}
 
-func Fn_spawn_async(workingDirectory string, argv c.UndefinedParamType, envp c.UndefinedParamType, flags SpawnFlags, childSetup c.UndefinedParamType, userData unsafe.Pointer) {
-}
+// UNSUPPORTED : spawn_async : has callback
 
-func Fn_spawn_async_with_pipes(workingDirectory string, argv c.UndefinedParamType, envp c.UndefinedParamType, flags SpawnFlags, childSetup c.UndefinedParamType, userData unsafe.Pointer) {
-}
+// UNSUPPORTED : spawn_async_with_fds : has callback
+
+// UNSUPPORTED : spawn_async_with_pipes : has callback
 
 func Fn_spawn_close_pid(pid Pid) {}
 
@@ -762,8 +771,7 @@ func Fn_spawn_error_quark() {}
 
 func Fn_spawn_exit_error_quark() {}
 
-func Fn_spawn_sync(workingDirectory string, argv c.UndefinedParamType, envp c.UndefinedParamType, flags SpawnFlags, childSetup c.UndefinedParamType, userData unsafe.Pointer) {
-}
+// UNSUPPORTED : spawn_sync : has callback
 
 // UNSUPPORTED : sprintf : has varargs
 
@@ -853,12 +861,13 @@ func Fn_strv_get_type() {}
 
 func Fn_strv_length(strArray string) {}
 
-func Fn_test_add_data_func(testpath string, testData unsafe.Pointer, testFunc c.UndefinedParamType) {}
+// UNSUPPORTED : test_add_data_func : has callback
 
-func Fn_test_add_func(testpath string, testFunc c.UndefinedParamType) {}
+// UNSUPPORTED : test_add_data_func_full : has callback
 
-func Fn_test_add_vtable(testpath string, dataSize uint64, testData unsafe.Pointer, dataSetup c.UndefinedParamType, dataTest c.UndefinedParamType, dataTeardown c.UndefinedParamType) {
-}
+// UNSUPPORTED : test_add_func : has callback
+
+// UNSUPPORTED : test_add_vtable : has callback
 
 func Fn_test_assert_expected_messages_internal(domain string, file string, line int, func_ string) {}
 
@@ -868,8 +877,7 @@ func Fn_test_bug_base(uriPattern string) {}
 
 // UNSUPPORTED : test_build_filename : has varargs
 
-func Fn_test_create_case(testName string, dataSize uint64, testData unsafe.Pointer, dataSetup c.UndefinedParamType, dataTest c.UndefinedParamType, dataTeardown c.UndefinedParamType) {
-}
+// UNSUPPORTED : test_create_case : has callback
 
 func Fn_test_create_suite(suiteName string) {}
 
@@ -879,7 +887,7 @@ func Fn_test_get_root() {}
 
 // UNSUPPORTED : test_init : has varargs
 
-func Fn_test_log_set_fatal_handler(logFunc c.UndefinedParamType, userData unsafe.Pointer) {}
+// UNSUPPORTED : test_log_set_fatal_handler : has callback
 
 func Fn_test_log_type_name(logType TestLogType) {}
 
@@ -889,7 +897,7 @@ func Fn_test_log_type_name(logType TestLogType) {}
 
 // UNSUPPORTED : test_minimized_result : has varargs
 
-func Fn_test_queue_destroy(destroyFunc c.UndefinedParamType, destroyData unsafe.Pointer) {}
+// UNSUPPORTED : test_queue_destroy : has callback
 
 func Fn_test_queue_free(gfreePointer unsafe.Pointer) {}
 
@@ -942,15 +950,13 @@ func Fn_thread_yield() {}
 
 func Fn_time_val_from_iso8601(isoDate string) {}
 
-func Fn_timeout_add(interval uint, function c.UndefinedParamType, data unsafe.Pointer) {}
+// UNSUPPORTED : timeout_add : has callback
 
-func Fn_timeout_add_full(priority int, interval uint, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
-}
+// UNSUPPORTED : timeout_add_full : has callback
 
-func Fn_timeout_add_seconds(interval uint, function c.UndefinedParamType, data unsafe.Pointer) {}
+// UNSUPPORTED : timeout_add_seconds : has callback
 
-func Fn_timeout_add_seconds_full(priority int, interval uint, function c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
-}
+// UNSUPPORTED : timeout_add_seconds_full : has callback
 
 func Fn_timeout_source_new(interval uint) {}
 
@@ -1043,6 +1049,14 @@ func Fn_unicode_canonical_decomposition(ch rune, resultLen *uint64) {}
 func Fn_unicode_canonical_ordering(string_ *rune, len uint64) {}
 
 func Fn_unix_error_quark() {}
+
+// UNSUPPORTED : unix_fd_add : has callback
+
+// UNSUPPORTED : unix_fd_add_full : has callback
+
+// UNSUPPORTED : unix_signal_add : has callback
+
+// UNSUPPORTED : unix_signal_add_full : has callback
 
 func Fn_unlink(filename string) {}
 

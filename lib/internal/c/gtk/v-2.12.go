@@ -1050,7 +1050,7 @@ func Fn_init_check(argc *int, argv c.UndefinedParamType) {}
 func Fn_init_with_args(argc *int, argv c.UndefinedParamType, parameterString string, entries c.UndefinedParamType, translationDomain string) {
 }
 
-func Fn_key_snooper_install(snooper c.UndefinedParamType, funcData unsafe.Pointer) {}
+// UNSUPPORTED : key_snooper_install : has callback
 
 func Fn_key_snooper_remove(snooperHandlerId uint) {}
 
@@ -1136,8 +1136,7 @@ func Fn_print_error_quark() {}
 
 func Fn_print_run_page_setup_dialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) {}
 
-func Fn_print_run_page_setup_dialog_async(parent *Window, pageSetup *PageSetup, settings *PrintSettings, doneCb c.UndefinedParamType, data unsafe.Pointer) {
-}
+// UNSUPPORTED : print_run_page_setup_dialog_async : has callback
 
 func Fn_propagate_event(widget *Widget, event c.UndefinedParamType) {}
 
@@ -1231,8 +1230,7 @@ func Fn_stock_list_ids() {}
 
 func Fn_stock_lookup(stockId string) {}
 
-func Fn_stock_set_translate_func(domain string, func_ c.UndefinedParamType, data unsafe.Pointer, notify c.UndefinedParamType) {
-}
+// UNSUPPORTED : stock_set_translate_func : has callback
 
 func Fn_target_table_free(targets c.UndefinedParamType, nTargets int) {}
 

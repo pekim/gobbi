@@ -24,6 +24,7 @@ type Namespace struct {
 	Functions    Functions    `xml:"function"`
 	Records      Records      `xml:"record"`
 	Interfaces   Interfaces   `xml:"interface"`
+	Callbacks    Callbacks    `xml:"callback"`
 
 	repository           *repository
 	libDir               string
@@ -54,7 +55,8 @@ func (n *Namespace) init(repository *repository, namespaces namespaces) {
 	n.Functions.init(n)
 	n.Records.init(n)
 	n.Classes.init(n)
-	n.Interfaces.init((n))
+	n.Interfaces.init(n)
+	n.Callbacks.init(n)
 
 	n.versions.sort()
 }
