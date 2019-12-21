@@ -36,6 +36,7 @@ var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"gboolean":      jen.Bool(),
 	"gpointer":      jen.Qual("unsafe", "Pointer"),
 	"gconstpointer": jen.Qual("unsafe", "Pointer"),
+	"goffset":       jen.Int64(),
 }
 
 type Type struct {

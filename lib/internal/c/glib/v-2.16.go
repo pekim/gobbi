@@ -371,7 +371,7 @@ func Fn_filename_to_utf8(opsysstring string, len uint64) {}
 
 func Fn_find_program_in_path(program string) {}
 
-func Fn_format_size_for_display(size c.UndefinedParamType) {}
+func Fn_format_size_for_display(size int64) {}
 
 // UNSUPPORTED : fprintf : has varargs
 

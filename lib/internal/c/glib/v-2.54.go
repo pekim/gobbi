@@ -464,7 +464,7 @@ func Fn_find_program_in_path(program string) {}
 
 func Fn_format_size(size uint64) {}
 
-func Fn_format_size_for_display(size c.UndefinedParamType) {}
+func Fn_format_size_for_display(size int64) {}
 
 func Fn_format_size_full(size uint64, flags FormatSizeFlags) {}
 
