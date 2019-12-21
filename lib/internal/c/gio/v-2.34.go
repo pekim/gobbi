@@ -448,7 +448,7 @@ type TlsFileDatabase C.GTlsFileDatabase
 type TlsServerConnection C.GTlsServerConnection
 type Volume C.GVolume
 
-func Fn_app_info_create_from_commandline(commandline c.UndefinedParamType, applicationName string, flags c.UndefinedParamType) {
+func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags c.UndefinedParamType) {
 }
 
 func Fn_app_info_get_all() {}
@@ -584,17 +584,17 @@ func Fn_dbus_is_supported_address(string_ string) {}
 
 func Fn_dbus_is_unique_name(string_ string) {}
 
-func Fn_file_new_for_commandline_arg(arg c.UndefinedParamType) {}
+func Fn_file_new_for_commandline_arg(arg string) {}
 
-func Fn_file_new_for_path(path c.UndefinedParamType) {}
+func Fn_file_new_for_path(path string) {}
 
 func Fn_file_new_for_uri(uri string) {}
 
-func Fn_file_new_tmp(tmpl c.UndefinedParamType) {}
+func Fn_file_new_tmp(tmpl string) {}
 
 func Fn_file_parse_name(parseName string) {}
 
-func Fn_icon_hash(icon c.UndefinedParamType) {}
+func Fn_icon_hash(icon unsafe.Pointer) {}
 
 func Fn_icon_new_for_string(str string) {}
 
@@ -612,15 +612,13 @@ func Fn_io_extension_point_lookup(name string) {}
 
 func Fn_io_extension_point_register(name string) {}
 
-func Fn_io_modules_load_all_in_directory(dirname c.UndefinedParamType) {}
+func Fn_io_modules_load_all_in_directory(dirname string) {}
 
-func Fn_io_modules_load_all_in_directory_with_scope(dirname c.UndefinedParamType, scope c.UndefinedParamType) {
-}
+func Fn_io_modules_load_all_in_directory_with_scope(dirname string, scope c.UndefinedParamType) {}
 
-func Fn_io_modules_scan_all_in_directory(dirname c.UndefinedParamType) {}
+func Fn_io_modules_scan_all_in_directory(dirname string) {}
 
-func Fn_io_modules_scan_all_in_directory_with_scope(dirname c.UndefinedParamType, scope c.UndefinedParamType) {
-}
+func Fn_io_modules_scan_all_in_directory_with_scope(dirname string, scope c.UndefinedParamType) {}
 
 func Fn_io_scheduler_cancel_all_jobs() {}
 
@@ -657,7 +655,7 @@ func Fn_resolver_error_quark() {}
 
 func Fn_resource_error_quark() {}
 
-func Fn_resource_load(filename c.UndefinedParamType) {}
+func Fn_resource_load(filename string) {}
 
 func Fn_resources_enumerate_children(path string, lookupFlags c.UndefinedParamType) {}
 
@@ -690,14 +688,14 @@ func Fn_tls_client_connection_new(baseIoStream c.UndefinedParamType, serverIdent
 
 func Fn_tls_error_quark() {}
 
-func Fn_tls_file_database_new(anchors c.UndefinedParamType) {}
+func Fn_tls_file_database_new(anchors string) {}
 
 func Fn_tls_server_connection_new(baseIoStream c.UndefinedParamType, certificate c.UndefinedParamType) {
 }
 
-func Fn_unix_is_mount_path_system_internal(mountPath c.UndefinedParamType) {}
+func Fn_unix_is_mount_path_system_internal(mountPath string) {}
 
-func Fn_unix_mount_at(mountPath c.UndefinedParamType) {}
+func Fn_unix_mount_at(mountPath string) {}
 
 func Fn_unix_mount_compare(mount1 c.UndefinedParamType, mount2 c.UndefinedParamType) {}
 

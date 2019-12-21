@@ -6,29 +6,30 @@ import (
 )
 
 var simpleSysParamGoTypes = map[string]*jen.Statement{
-	"gunichar":    jen.Rune(),
-	"int":         jen.Int(),
-	"gint":        jen.Int(),
-	"gint8":       jen.Int8(),
-	"gint16":      jen.Int16(),
-	"gint32":      jen.Int32(),
-	"gint64":      jen.Int64(),
-	"guint":       jen.Uint(),
-	"guint8":      jen.Uint8(),
-	"guint16":     jen.Uint16(),
-	"guint32":     jen.Uint32(),
-	"guint64":     jen.Uint64(),
-	"glong":       jen.Int64(),
-	"gulong":      jen.Uint64(),
-	"gloat":       jen.Float32(),
-	"gfloat":      jen.Float32(),
-	"double":      jen.Float64(),
-	"long double": jen.Float64(), // not ideal, but Go has nothing better
-	"gdouble":     jen.Float64(),
-	"gsize":       jen.Uint64(),
-	"gssize":      jen.Uint64(),
-	"gboolean":    jen.Bool(),
-	"gpointer":    jen.Qual("unsafe", "Pointer"),
+	"gunichar":      jen.Rune(),
+	"int":           jen.Int(),
+	"gint":          jen.Int(),
+	"gint8":         jen.Int8(),
+	"gint16":        jen.Int16(),
+	"gint32":        jen.Int32(),
+	"gint64":        jen.Int64(),
+	"guint":         jen.Uint(),
+	"guint8":        jen.Uint8(),
+	"guint16":       jen.Uint16(),
+	"guint32":       jen.Uint32(),
+	"guint64":       jen.Uint64(),
+	"glong":         jen.Int64(),
+	"gulong":        jen.Uint64(),
+	"gloat":         jen.Float32(),
+	"gfloat":        jen.Float32(),
+	"double":        jen.Float64(),
+	"long double":   jen.Float64(), // not ideal, but Go has nothing better
+	"gdouble":       jen.Float64(),
+	"gsize":         jen.Uint64(),
+	"gssize":        jen.Uint64(),
+	"gboolean":      jen.Bool(),
+	"gpointer":      jen.Qual("unsafe", "Pointer"),
+	"gconstpointer": jen.Qual("unsafe", "Pointer"),
 }
 
 type Type struct {
@@ -66,15 +67,14 @@ func (t *Type) parseCtype() {
 }
 
 func (t *Type) sysParamGoType() *jen.Statement {
-	if t.Name == "utf8" {
+	if t.Name == "utf8" || t.Name == "filename" {
 		return jen.String()
 	}
 
 	if simpleGoType, ok := simpleSysParamGoTypes[t.cType]; ok {
 		return jen.Op(t.stars).Add(simpleGoType)
 	}
-	//fmt.Println("type", t.CType)
+	//fmt.Printf("type '%s' : '%s'\n", t.CType, t.Name)
 
 	return jen.Qual("github.com/pekim/gobbi/lib/internal/c", "UndefinedParamType")
-	//.Comment(t.CType)
 }

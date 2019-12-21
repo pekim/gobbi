@@ -1199,7 +1199,7 @@ func Fn_print_run_page_setup_dialog_async(parent c.UndefinedParamType, pageSetup
 
 func Fn_propagate_event(widget c.UndefinedParamType, event c.UndefinedParamType) {}
 
-func Fn_rc_add_default_file(filename c.UndefinedParamType) {}
+func Fn_rc_add_default_file(filename string) {}
 
 func Fn_rc_find_module_in_path(moduleFile string) {}
 

@@ -82,7 +82,7 @@ type TypeModule C.GTypeModule
 // interfaces
 type TypePlugin C.GTypePlugin
 
-func Fn_boxed_copy(boxedType c.UndefinedParamType, srcBoxed c.UndefinedParamType) {}
+func Fn_boxed_copy(boxedType c.UndefinedParamType, srcBoxed unsafe.Pointer) {}
 
 func Fn_boxed_free(boxedType c.UndefinedParamType, boxed unsafe.Pointer) {}
 
