@@ -163,7 +163,7 @@ type VariantType C.GVariantType
 
 func Fn_access(filename string, mode int) {}
 
-func Fn_ascii_digit_value(c c.UndefinedParamType) {}
+func Fn_ascii_digit_value(c int8) {}
 
 func Fn_ascii_dtostr(buffer string, bufLen int, d float64) {}
 
@@ -183,11 +183,11 @@ func Fn_ascii_strtoull(nptr string, base uint) {}
 
 func Fn_ascii_strup(str string, len uint64) {}
 
-func Fn_ascii_tolower(c c.UndefinedParamType) {}
+func Fn_ascii_tolower(c int8) {}
 
-func Fn_ascii_toupper(c c.UndefinedParamType) {}
+func Fn_ascii_toupper(c int8) {}
 
-func Fn_ascii_xdigit_value(c c.UndefinedParamType) {}
+func Fn_ascii_xdigit_value(c int8) {}
 
 func Fn_assert_warning(logDomain string, file string, line int, prettyFunction string, expression string) {
 }
@@ -884,7 +884,7 @@ func Fn_str_to_ascii(str string, fromLocale string) {}
 
 func Fn_str_tokenize_and_fold(string_ string, translitLocale string) {}
 
-func Fn_strcanon(string_ string, validChars string, substitutor c.UndefinedParamType) {}
+func Fn_strcanon(string_ string, validChars string, substitutor int8) {}
 
 func Fn_strcasecmp(s1 string, s2 string) {}
 
@@ -898,7 +898,7 @@ func Fn_strcompress(source string) {}
 
 // UNSUPPORTED : strconcat : has varargs
 
-func Fn_strdelimit(string_ string, delimiters string, newDelimiter c.UndefinedParamType) {}
+func Fn_strdelimit(string_ string, delimiters string, newDelimiter int8) {}
 
 func Fn_strdown(string_ string) {}
 
@@ -936,7 +936,7 @@ func Fn_strncasecmp(s1 string, s2 string, n uint) {}
 
 func Fn_strndup(str string, n uint64) {}
 
-func Fn_strnfill(length uint64, fillChar c.UndefinedParamType) {}
+func Fn_strnfill(length uint64, fillChar int8) {}
 
 func Fn_strreverse(string_ string) {}
 

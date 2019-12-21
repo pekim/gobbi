@@ -6,6 +6,8 @@ import (
 )
 
 var simpleSysParamGoTypes = map[string]*jen.Statement{
+	"gchar":         jen.Int8(),
+	"guchar":        jen.Uint8(),
 	"gunichar":      jen.Rune(),
 	"int":           jen.Int(),
 	"gint":          jen.Int(),

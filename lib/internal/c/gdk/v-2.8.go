@@ -251,7 +251,7 @@ func Fn_pointer_ungrab(time uint32) {}
 
 func Fn_pre_parse_libgtk_only() {}
 
-func Fn_property_change(window *Window, property Atom, type_ Atom, format int, mode PropMode, data c.UndefinedParamType, nelements int) {
+func Fn_property_change(window *Window, property Atom, type_ Atom, format int, mode PropMode, data *uint8, nelements int) {
 }
 
 func Fn_property_delete(window *Window, property Atom) {}
@@ -274,8 +274,7 @@ func Fn_selection_owner_set(owner *Window, selection Atom, time uint32, sendEven
 func Fn_selection_owner_set_for_display(display *Display, owner *Window, selection Atom, time uint32, sendEvent bool) {
 }
 
-func Fn_selection_property_get(requestor *Window, data c.UndefinedParamType, propType *Atom, propFormat *int) {
-}
+func Fn_selection_property_get(requestor *Window, data **uint8, propType *Atom, propFormat *int) {}
 
 func Fn_selection_send_notify(requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
 }
