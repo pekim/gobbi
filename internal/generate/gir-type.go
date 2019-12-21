@@ -89,6 +89,10 @@ func (t *Type) sysParamGoType() *jen.Statement {
 		return jen.String()
 	}
 
+	if t.cType == "void" && t.cIndirectionCount == 1 {
+		return jen.Qual("unsafe", "Pointer")
+	}
+
 	if simpleGoType, ok := simpleSysParamGoTypes[t.cType]; ok {
 		return jen.Op(t.cStars).Add(simpleGoType)
 	}

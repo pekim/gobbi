@@ -200,12 +200,12 @@ func Fn_atomic_int_inc(atomic c.UndefinedParamType) {}
 
 func Fn_atomic_int_set(atomic c.UndefinedParamType, newval int) {}
 
-func Fn_atomic_pointer_compare_and_exchange(atomic c.UndefinedParamType, oldval unsafe.Pointer, newval unsafe.Pointer) {
+func Fn_atomic_pointer_compare_and_exchange(atomic unsafe.Pointer, oldval unsafe.Pointer, newval unsafe.Pointer) {
 }
 
-func Fn_atomic_pointer_get(atomic c.UndefinedParamType) {}
+func Fn_atomic_pointer_get(atomic unsafe.Pointer) {}
 
-func Fn_atomic_pointer_set(atomic c.UndefinedParamType, newval unsafe.Pointer) {}
+func Fn_atomic_pointer_set(atomic unsafe.Pointer, newval unsafe.Pointer) {}
 
 func Fn_basename(fileName string) {}
 

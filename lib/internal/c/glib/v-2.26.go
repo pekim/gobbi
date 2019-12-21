@@ -215,12 +215,12 @@ func Fn_atomic_int_inc(atomic c.UndefinedParamType) {}
 
 func Fn_atomic_int_set(atomic c.UndefinedParamType, newval int) {}
 
-func Fn_atomic_pointer_compare_and_exchange(atomic c.UndefinedParamType, oldval unsafe.Pointer, newval unsafe.Pointer) {
+func Fn_atomic_pointer_compare_and_exchange(atomic unsafe.Pointer, oldval unsafe.Pointer, newval unsafe.Pointer) {
 }
 
-func Fn_atomic_pointer_get(atomic c.UndefinedParamType) {}
+func Fn_atomic_pointer_get(atomic unsafe.Pointer) {}
 
-func Fn_atomic_pointer_set(atomic c.UndefinedParamType, newval unsafe.Pointer) {}
+func Fn_atomic_pointer_set(atomic unsafe.Pointer, newval unsafe.Pointer) {}
 
 func Fn_base64_decode(text string) {}
 
@@ -610,9 +610,9 @@ func Fn_on_error_query(prgName string) {}
 
 func Fn_on_error_stack_trace(prgName string) {}
 
-func Fn_once_init_enter(location c.UndefinedParamType) {}
+func Fn_once_init_enter(location unsafe.Pointer) {}
 
-func Fn_once_init_leave(location c.UndefinedParamType, result uint64) {}
+func Fn_once_init_leave(location unsafe.Pointer, result uint64) {}
 
 func Fn_option_error_quark() {}
 

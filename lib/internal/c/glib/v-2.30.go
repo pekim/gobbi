@@ -222,20 +222,20 @@ func Fn_atomic_int_set(atomic c.UndefinedParamType, newval int) {}
 
 func Fn_atomic_int_xor(atomic c.UndefinedParamType, val uint) {}
 
-func Fn_atomic_pointer_add(atomic c.UndefinedParamType, val uint64) {}
+func Fn_atomic_pointer_add(atomic unsafe.Pointer, val uint64) {}
 
-func Fn_atomic_pointer_and(atomic c.UndefinedParamType, val uint64) {}
+func Fn_atomic_pointer_and(atomic unsafe.Pointer, val uint64) {}
 
-func Fn_atomic_pointer_compare_and_exchange(atomic c.UndefinedParamType, oldval unsafe.Pointer, newval unsafe.Pointer) {
+func Fn_atomic_pointer_compare_and_exchange(atomic unsafe.Pointer, oldval unsafe.Pointer, newval unsafe.Pointer) {
 }
 
-func Fn_atomic_pointer_get(atomic c.UndefinedParamType) {}
+func Fn_atomic_pointer_get(atomic unsafe.Pointer) {}
 
-func Fn_atomic_pointer_or(atomic c.UndefinedParamType, val uint64) {}
+func Fn_atomic_pointer_or(atomic unsafe.Pointer, val uint64) {}
 
-func Fn_atomic_pointer_set(atomic c.UndefinedParamType, newval unsafe.Pointer) {}
+func Fn_atomic_pointer_set(atomic unsafe.Pointer, newval unsafe.Pointer) {}
 
-func Fn_atomic_pointer_xor(atomic c.UndefinedParamType, val uint64) {}
+func Fn_atomic_pointer_xor(atomic unsafe.Pointer, val uint64) {}
 
 func Fn_base64_decode(text string) {}
 
@@ -651,9 +651,9 @@ func Fn_on_error_query(prgName string) {}
 
 func Fn_on_error_stack_trace(prgName string) {}
 
-func Fn_once_init_enter(location c.UndefinedParamType) {}
+func Fn_once_init_enter(location unsafe.Pointer) {}
 
-func Fn_once_init_leave(location c.UndefinedParamType, result uint64) {}
+func Fn_once_init_leave(location unsafe.Pointer, result uint64) {}
 
 func Fn_option_error_quark() {}
 
@@ -673,11 +673,11 @@ func Fn_pattern_match_simple(pattern string, string_ string) {}
 
 func Fn_pattern_match_string(pspec *PatternSpec, string_ string) {}
 
-func Fn_pointer_bit_lock(address c.UndefinedParamType, lockBit int) {}
+func Fn_pointer_bit_lock(address unsafe.Pointer, lockBit int) {}
 
-func Fn_pointer_bit_trylock(address c.UndefinedParamType, lockBit int) {}
+func Fn_pointer_bit_trylock(address unsafe.Pointer, lockBit int) {}
 
-func Fn_pointer_bit_unlock(address c.UndefinedParamType, lockBit int) {}
+func Fn_pointer_bit_unlock(address unsafe.Pointer, lockBit int) {}
 
 func Fn_poll(fds *PollFD, nfds uint, timeout int) {}
 
