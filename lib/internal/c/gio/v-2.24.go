@@ -60,6 +60,8 @@ type SocketProtocol C.GSocketProtocol
 type SocketType C.GSocketType
 type ZlibCompressorFormat C.GZlibCompressorFormat
 
+// unions
+
 // records
 type ActionEntry C.GActionEntry
 type AppInfoIface C.GAppInfoIface

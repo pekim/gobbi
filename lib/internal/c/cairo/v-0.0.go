@@ -33,6 +33,8 @@ type Extend C.cairo_extend_t
 type Filter C.cairo_filter_t
 type RegionOverlap C.cairo_region_overlap_t
 
+// unions
+
 // records
 type Context C.cairo_t
 type Device C.cairo_device_t

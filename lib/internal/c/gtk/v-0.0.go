@@ -128,6 +128,8 @@ type WindowPosition C.GtkWindowPosition
 type WindowType C.GtkWindowType
 type WrapMode C.GtkWrapMode
 
+// unions
+
 // records
 type AboutDialogClass C.GtkAboutDialogClass
 type AboutDialogPrivate C.GtkAboutDialogPrivate
@@ -1004,7 +1006,7 @@ func Fn_get_debug_flags() {}
 
 func Fn_get_default_language() {}
 
-func Fn_get_event_widget(event c.UndefinedParamType) {}
+func Fn_get_event_widget(event *gdk.Event) {}
 
 func Fn_grab_get_current() {}
 
@@ -1030,7 +1032,7 @@ func Fn_key_snooper_remove(snooperHandlerId uint) {}
 
 func Fn_main() {}
 
-func Fn_main_do_event(event c.UndefinedParamType) {}
+func Fn_main_do_event(event *gdk.Event) {}
 
 func Fn_main_iteration() {}
 
@@ -1104,7 +1106,7 @@ func Fn_parse_args(argc *int, argv c.UndefinedParamType) {}
 
 // UNSUPPORTED : print_run_page_setup_dialog_async : has callback
 
-func Fn_propagate_event(widget *Widget, event c.UndefinedParamType) {}
+func Fn_propagate_event(widget *Widget, event *gdk.Event) {}
 
 func Fn_rc_add_default_file(filename string) {}
 

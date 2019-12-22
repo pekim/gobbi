@@ -28,6 +28,11 @@ type TypeFundamentalFlags C.GTypeFundamentalFlags
 
 // enumerations
 
+// unions
+type TypeCValue C.GTypeCValue
+
+// UNSUPPORTED : _Value__data__union : blacklisted
+
 // records
 type CClosure C.GCClosure
 type Closure C.GClosure

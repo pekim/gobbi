@@ -74,6 +74,16 @@ func (t *Type) isCallback() bool {
 	return found
 }
 
+func (t *Type) isUnion() bool {
+	if t.isQualifiedName() {
+		_, found := t.foreignNamespace.Unions.byName(t.foreignName)
+		return found
+	}
+
+	_, found := t.namespace.Unions.byName(t.Name)
+	return found
+}
+
 func (t *Type) isVaList() bool {
 	return t.Name == "va_list"
 }

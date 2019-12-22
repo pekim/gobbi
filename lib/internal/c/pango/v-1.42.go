@@ -38,6 +38,8 @@ type Variant C.PangoVariant
 type Weight C.PangoWeight
 type WrapMode C.PangoWrapMode
 
+// unions
+
 // records
 type Analysis C.PangoAnalysis
 type AttrClass C.PangoAttrClass

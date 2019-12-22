@@ -102,6 +102,8 @@ type TlsRehandshakeMode C.GTlsRehandshakeMode
 type UnixSocketAddressType C.GUnixSocketAddressType
 type ZlibCompressorFormat C.GZlibCompressorFormat
 
+// unions
+
 // records
 type ActionEntry C.GActionEntry
 type ActionGroupInterface C.GActionGroupInterface

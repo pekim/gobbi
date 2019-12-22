@@ -50,6 +50,8 @@ type IOErrorEnum C.GIOErrorEnum
 type MountOperationResult C.GMountOperationResult
 type PasswordSave C.GPasswordSave
 
+// unions
+
 // records
 type ActionEntry C.GActionEntry
 type AppInfoIface C.GAppInfoIface

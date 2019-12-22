@@ -116,7 +116,8 @@ func (t *Type) sysParamGoType() *jen.Statement {
 		t.isEnumeration() ||
 		t.isClass() ||
 		t.isRecord() ||
-		t.isInterface() {
+		t.isInterface() ||
+		t.isUnion() {
 
 		if t.isQualifiedName() {
 			return jen.Op(t.cStars).Qual(t.foreignNamespace.goFullSysPackageName, t.foreignName)

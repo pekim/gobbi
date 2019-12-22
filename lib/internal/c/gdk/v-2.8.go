@@ -58,6 +58,9 @@ type WindowType C.GdkWindowType
 type WindowTypeHint C.GdkWindowTypeHint
 type WindowWindowClass C.GdkWindowWindowClass
 
+// unions
+type Event C.GdkEvent
+
 // records
 type Atom C.GdkAtom
 type Color C.GdkColor

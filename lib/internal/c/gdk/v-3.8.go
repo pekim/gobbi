@@ -61,6 +61,9 @@ type WindowType C.GdkWindowType
 type WindowTypeHint C.GdkWindowTypeHint
 type WindowWindowClass C.GdkWindowWindowClass
 
+// unions
+type Event C.GdkEvent
+
 // records
 type Atom C.GdkAtom
 type Color C.GdkColor
@@ -193,11 +196,11 @@ func Fn_event_peek() {}
 
 func Fn_event_request_motions(event *EventMotion) {}
 
-func Fn_events_get_angle(event1 c.UndefinedParamType, event2 c.UndefinedParamType) {}
+func Fn_events_get_angle(event1 *Event, event2 *Event) {}
 
-func Fn_events_get_center(event1 c.UndefinedParamType, event2 c.UndefinedParamType) {}
+func Fn_events_get_center(event1 *Event, event2 *Event) {}
 
-func Fn_events_get_distance(event1 c.UndefinedParamType, event2 c.UndefinedParamType) {}
+func Fn_events_get_distance(event1 *Event, event2 *Event) {}
 
 func Fn_events_pending() {}
 

@@ -29,6 +29,8 @@ type TextClipType C.AtkTextClipType
 type TextGranularity C.AtkTextGranularity
 type ValueType C.AtkValueType
 
+// unions
+
 // records
 type ActionIface C.AtkActionIface
 type Attribute C.AtkAttribute

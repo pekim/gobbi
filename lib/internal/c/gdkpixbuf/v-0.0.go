@@ -16,6 +16,8 @@ type PixbufAlphaMode C.GdkPixbufAlphaMode
 type PixbufError C.GdkPixbufError
 type PixbufRotation C.GdkPixbufRotation
 
+// unions
+
 // records
 type PixbufFormat C.GdkPixbufFormat
 type PixbufLoaderClass C.GdkPixbufLoaderClass

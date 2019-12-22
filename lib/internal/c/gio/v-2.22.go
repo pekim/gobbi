@@ -57,6 +57,8 @@ type SocketFamily C.GSocketFamily
 type SocketProtocol C.GSocketProtocol
 type SocketType C.GSocketType
 
+// unions
+
 // records
 type ActionEntry C.GActionEntry
 type AppInfoIface C.GAppInfoIface

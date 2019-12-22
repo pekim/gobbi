@@ -82,6 +82,12 @@ type UserDirectory C.GUserDirectory
 type VariantClass C.GVariantClass
 type VariantParseError C.GVariantParseError
 
+// unions
+type DoubleIEEE754 C.GDoubleIEEE754
+type FloatIEEE754 C.GFloatIEEE754
+type Mutex C.GMutex
+type TokenValue C.GTokenValue
+
 // records
 type Array C.GArray
 type AsyncQueue C.GAsyncQueue
