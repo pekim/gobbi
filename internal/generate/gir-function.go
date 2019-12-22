@@ -33,7 +33,7 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	f.Parameters.init(ns)
 }
 
-func (f Function) generateSys(fi *jen.File, version semver.Version) {
+func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 	if f.blacklist {
 		fi.Commentf("UNSUPPORTED : %s : blacklisted", f.Name)
 		return
@@ -49,24 +49,32 @@ func (f Function) generateSys(fi *jen.File, version semver.Version) {
 		return
 	}
 
-	fi.Func().Id(f.sysName).ParamsFunc(f.generateSysParamDeclaration).Block()
+	fi.
+		Func().
+		Id(f.sysName).
+		ParamsFunc(f.generateSysParamDeclaration).
+		BlockFunc(f.generateSysBody)
+
 	fi.Line()
 }
 
-func (f Function) generateSysParamDeclaration(g *jen.Group) {
+func (f *Function) generateSysParamDeclaration(g *jen.Group) {
 	for _, param := range f.Parameters {
 		if !param.isIn() {
 			continue
 		}
 
-		//if param.Type != nil {
-		//	fmt.Println("type", param.Type.CType)
-		//}
-		//if param.Array != nil {
-		//	fmt.Println("array", param.Array.CType)
-		//}
-
 		goType := param.sysParamGoType()
 		g.Id(param.goVarName).Add(goType)
 	}
+}
+
+func (f *Function) generateSysBody(g *jen.Group) {
+	if len(f.Parameters) > 0 {
+		return
+	}
+
+	g.
+		Qual("C", f.CIdentifier).
+		Call()
 }

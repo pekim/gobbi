@@ -35,6 +35,16 @@ func (ns *Namespace) generatePackageFile(f *jen.File) {
 	// pkg-config
 	for _, pkg := range ns.repository.Packages {
 		f.CgoPreamble(fmt.Sprintf("// #cgo pkg-config: %s", pkg.Name))
+
+		/*
+		 * Suppress C compiler warnings about deprecated functions.
+		 *
+		 * There are api functions that are deprecated from various
+		 * library versions. The compiler warnings are noisy as
+		 * they will be emitted regardless of whether such functions
+		 * are used or not by an application.
+		 */
+		f.CgoPreamble("#cgo CFLAGS: -Wno-deprecated-declarations")
 	}
 }
 

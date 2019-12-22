@@ -220,7 +220,9 @@ func Fn_bit_nth_msf(mask uint64, nthBit int) {}
 
 func Fn_bit_storage(number uint64) {}
 
-func Fn_bookmark_file_error_quark() {}
+func Fn_bookmark_file_error_quark() {
+	C.g_bookmark_file_error_quark()
+}
 
 // UNSUPPORTED : build_filename : has varargs
 
@@ -230,7 +232,9 @@ func Fn_bookmark_file_error_quark() {}
 
 func Fn_byte_array_free(array *uint8, freeSegment bool) {}
 
-func Fn_byte_array_new() {}
+func Fn_byte_array_new() {
+	C.g_byte_array_new()
+}
 
 func Fn_check_version(requiredMajor uint, requiredMinor uint, requiredMicro uint) {}
 
@@ -240,7 +244,9 @@ func Fn_check_version(requiredMajor uint, requiredMinor uint, requiredMicro uint
 
 func Fn_child_watch_source_new(pid Pid) {}
 
-func Fn_clear_error() {}
+func Fn_clear_error() {
+	C.g_clear_error()
+}
 
 // UNSUPPORTED : clear_handle_id : has callback
 
@@ -248,7 +254,9 @@ func Fn_clear_error() {}
 
 func Fn_convert(str *uint8, len uint64, toCodeset string, fromCodeset string) {}
 
-func Fn_convert_error_quark() {}
+func Fn_convert_error_quark() {
+	C.g_convert_error_quark()
+}
 
 func Fn_convert_with_fallback(str *uint8, len uint64, toCodeset string, fromCodeset string, fallback string) {
 }
@@ -311,7 +319,9 @@ func Fn_direct_hash(v unsafe.Pointer) {}
 
 func Fn_file_error_from_errno(errNo int) {}
 
-func Fn_file_error_quark() {}
+func Fn_file_error_quark() {
+	C.g_file_error_quark()
+}
 
 func Fn_file_get_contents(filename string) {}
 
@@ -339,39 +349,67 @@ func Fn_find_program_in_path(program string) {}
 
 func Fn_free(mem unsafe.Pointer) {}
 
-func Fn_get_application_name() {}
+func Fn_get_application_name() {
+	C.g_get_application_name()
+}
 
 func Fn_get_charset() {}
 
-func Fn_get_codeset() {}
+func Fn_get_codeset() {
+	C.g_get_codeset()
+}
 
-func Fn_get_current_dir() {}
+func Fn_get_current_dir() {
+	C.g_get_current_dir()
+}
 
 func Fn_get_current_time(result *TimeVal) {}
 
 func Fn_get_filename_charsets() {}
 
-func Fn_get_home_dir() {}
+func Fn_get_home_dir() {
+	C.g_get_home_dir()
+}
 
-func Fn_get_language_names() {}
+func Fn_get_language_names() {
+	C.g_get_language_names()
+}
 
-func Fn_get_prgname() {}
+func Fn_get_prgname() {
+	C.g_get_prgname()
+}
 
-func Fn_get_real_name() {}
+func Fn_get_real_name() {
+	C.g_get_real_name()
+}
 
-func Fn_get_system_config_dirs() {}
+func Fn_get_system_config_dirs() {
+	C.g_get_system_config_dirs()
+}
 
-func Fn_get_system_data_dirs() {}
+func Fn_get_system_data_dirs() {
+	C.g_get_system_data_dirs()
+}
 
-func Fn_get_tmp_dir() {}
+func Fn_get_tmp_dir() {
+	C.g_get_tmp_dir()
+}
 
-func Fn_get_user_cache_dir() {}
+func Fn_get_user_cache_dir() {
+	C.g_get_user_cache_dir()
+}
 
-func Fn_get_user_config_dir() {}
+func Fn_get_user_config_dir() {
+	C.g_get_user_config_dir()
+}
 
-func Fn_get_user_data_dir() {}
+func Fn_get_user_data_dir() {
+	C.g_get_user_data_dir()
+}
 
-func Fn_get_user_name() {}
+func Fn_get_user_name() {
+	C.g_get_user_name()
+}
 
 func Fn_getenv(variable string) {}
 
@@ -414,7 +452,9 @@ func Fn_iconv_open(toCodeset string, fromCodeset string) {}
 
 func Fn_idle_remove_by_data(data unsafe.Pointer) {}
 
-func Fn_idle_source_new() {}
+func Fn_idle_source_new() {
+	C.g_idle_source_new()
+}
 
 func Fn_int_equal(v1 unsafe.Pointer, v2 unsafe.Pointer) {}
 
@@ -426,11 +466,15 @@ func Fn_int_hash(v unsafe.Pointer) {}
 
 func Fn_io_channel_error_from_errno(en int) {}
 
-func Fn_io_channel_error_quark() {}
+func Fn_io_channel_error_quark() {
+	C.g_io_channel_error_quark()
+}
 
 func Fn_io_create_watch(channel *IOChannel, condition IOCondition) {}
 
-func Fn_key_file_error_quark() {}
+func Fn_key_file_error_quark() {
+	C.g_key_file_error_quark()
+}
 
 func Fn_locale_from_utf8(utf8string string, len uint64) {}
 
@@ -461,9 +505,13 @@ func Fn_log_set_fatal_mask(logDomain string, fatalMask LogLevelFlags) {}
 
 // UNSUPPORTED : logv : has va_list
 
-func Fn_main_context_default() {}
+func Fn_main_context_default() {
+	C.g_main_context_default()
+}
 
-func Fn_main_depth() {}
+func Fn_main_depth() {
+	C.g_main_depth()
+}
 
 func Fn_malloc(nBytes uint64) {}
 
@@ -471,7 +519,9 @@ func Fn_malloc0(nBytes uint64) {}
 
 // UNSUPPORTED : markup_collect_attributes : has varargs
 
-func Fn_markup_error_quark() {}
+func Fn_markup_error_quark() {
+	C.g_markup_error_quark()
+}
 
 func Fn_markup_escape_text(text string, length uint64) {}
 
@@ -479,9 +529,13 @@ func Fn_markup_escape_text(text string, length uint64) {}
 
 // UNSUPPORTED : markup_vprintf_escaped : has va_list
 
-func Fn_mem_is_system_malloc() {}
+func Fn_mem_is_system_malloc() {
+	C.g_mem_is_system_malloc()
+}
 
-func Fn_mem_profile() {}
+func Fn_mem_profile() {
+	C.g_mem_profile()
+}
 
 func Fn_mem_set_vtable(vtable *MemVTable) {}
 
@@ -491,13 +545,17 @@ func Fn_mkstemp(tmpl string) {}
 
 func Fn_nullify_pointer(nullifyLocation *unsafe.Pointer) {}
 
-func Fn_number_parser_error_quark() {}
+func Fn_number_parser_error_quark() {
+	C.g_number_parser_error_quark()
+}
 
 func Fn_on_error_query(prgName string) {}
 
 func Fn_on_error_stack_trace(prgName string) {}
 
-func Fn_option_error_quark() {}
+func Fn_option_error_quark() {
+	C.g_option_error_quark()
+}
 
 func Fn_parse_debug_string(string_ string, keys *DebugKey, nkeys uint) {}
 
@@ -541,11 +599,15 @@ func Fn_quark_to_string(quark Quark) {}
 
 func Fn_quark_try_string(string_ string) {}
 
-func Fn_random_double() {}
+func Fn_random_double() {
+	C.g_random_double()
+}
 
 func Fn_random_double_range(begin float64, end float64) {}
 
-func Fn_random_int() {}
+func Fn_random_int() {
+	C.g_random_int()
+}
 
 func Fn_random_int_range(begin int32, end int32) {}
 
@@ -555,7 +617,9 @@ func Fn_random_set_seed(seed uint32) {}
 
 func Fn_realloc(mem unsafe.Pointer, nBytes uint64) {}
 
-func Fn_regex_error_quark() {}
+func Fn_regex_error_quark() {
+	C.g_regex_error_quark()
+}
 
 func Fn_return_if_fail_warning(logDomain string, prettyFunction string, expression string) {}
 
@@ -573,7 +637,9 @@ func Fn_set_prgname(prgname string) {}
 
 func Fn_setenv(variable string, value string, overwrite bool) {}
 
-func Fn_shell_error_quark() {}
+func Fn_shell_error_quark() {
+	C.g_shell_error_quark()
+}
 
 func Fn_shell_parse_argv(commandLine string) {}
 
@@ -609,9 +675,13 @@ func Fn_spawn_command_line_async(commandLine string) {}
 
 func Fn_spawn_command_line_sync(commandLine string) {}
 
-func Fn_spawn_error_quark() {}
+func Fn_spawn_error_quark() {
+	C.g_spawn_error_quark()
+}
 
-func Fn_spawn_exit_error_quark() {}
+func Fn_spawn_exit_error_quark() {
+	C.g_spawn_exit_error_quark()
+}
 
 // UNSUPPORTED : spawn_sync : has callback
 
@@ -697,7 +767,9 @@ func Fn_strtod(nptr string) {}
 
 func Fn_strup(string_ string) {}
 
-func Fn_strv_get_type() {}
+func Fn_strv_get_type() {
+	C.g_strv_get_type()
+}
 
 func Fn_strv_length(strArray string) {}
 
@@ -734,21 +806,33 @@ func Fn_test_log_type_name(logType TestLogType) {}
 func Fn_test_trap_assertions(domain string, file string, line int, func_ string, assertionFlags uint64, pattern string) {
 }
 
-func Fn_thread_error_quark() {}
+func Fn_thread_error_quark() {
+	C.g_thread_error_quark()
+}
 
 func Fn_thread_exit(retval unsafe.Pointer) {}
 
-func Fn_thread_pool_get_max_unused_threads() {}
+func Fn_thread_pool_get_max_unused_threads() {
+	C.g_thread_pool_get_max_unused_threads()
+}
 
-func Fn_thread_pool_get_num_unused_threads() {}
+func Fn_thread_pool_get_num_unused_threads() {
+	C.g_thread_pool_get_num_unused_threads()
+}
 
 func Fn_thread_pool_set_max_unused_threads(maxThreads int) {}
 
-func Fn_thread_pool_stop_unused_threads() {}
+func Fn_thread_pool_stop_unused_threads() {
+	C.g_thread_pool_stop_unused_threads()
+}
 
-func Fn_thread_self() {}
+func Fn_thread_self() {
+	C.g_thread_self()
+}
 
-func Fn_thread_yield() {}
+func Fn_thread_yield() {
+	C.g_thread_yield()
+}
 
 // UNSUPPORTED : timeout_add : has callback
 
@@ -828,8 +912,7 @@ func Fn_unicode_canonical_decomposition(ch rune, resultLen *uint64) {}
 
 func Fn_unicode_canonical_ordering(string_ *rune, len uint64) {}
 
-func Fn_unix_error_quark() {}
-
+// UNSUPPORTED : unix_error_quark : blacklisted
 // UNSUPPORTED : unix_fd_add : has callback
 
 // UNSUPPORTED : unix_fd_add_full : has callback
@@ -894,13 +977,19 @@ func Fn_utf8_to_utf16(str string, len int64) {}
 
 func Fn_utf8_validate(str *uint8, maxLen uint64) {}
 
-func Fn_variant_get_gtype() {}
+func Fn_variant_get_gtype() {
+	C.g_variant_get_gtype()
+}
 
 func Fn_variant_parse(type_ *VariantType, text string, limit string, endptr string) {}
 
-func Fn_variant_parse_error_quark() {}
+func Fn_variant_parse_error_quark() {
+	C.g_variant_parse_error_quark()
+}
 
-func Fn_variant_parser_get_error_quark() {}
+func Fn_variant_parser_get_error_quark() {
+	C.g_variant_parser_get_error_quark()
+}
 
 func Fn_variant_type_checked_(arg0 string) {}
 

@@ -53,4 +53,4 @@ type RectangleInt C.cairo_rectangle_int_t
 
 // interfaces
 
-func Fn_image_surface_create() {}
+// UNSUPPORTED : image_surface_create : blacklisted

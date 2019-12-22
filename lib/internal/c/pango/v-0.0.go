@@ -145,14 +145,18 @@ func Fn_find_paragraph_boundary(text string, length int) {}
 
 func Fn_font_description_from_string(str string) {}
 
-func Fn_get_lib_subdirectory() {}
+func Fn_get_lib_subdirectory() {
+	C.pango_get_lib_subdirectory()
+}
 
 func Fn_get_log_attrs(text string, length int, level int, language *Language, logAttrs *LogAttr, attrsLen int) {
 }
 
 func Fn_get_mirror_char(ch rune, mirroredCh *rune) {}
 
-func Fn_get_sysconf_subdirectory() {}
+func Fn_get_sysconf_subdirectory() {
+	C.pango_get_sysconf_subdirectory()
+}
 
 func Fn_itemize(context *Context, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
 }

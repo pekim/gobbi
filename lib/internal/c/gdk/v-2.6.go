@@ -125,7 +125,9 @@ func Fn_add_option_entries_libgtk_only(group *glib.OptionGroup) {}
 
 func Fn_atom_intern(atomName string, onlyIfExists bool) {}
 
-func Fn_beep() {}
+func Fn_beep() {
+	C.gdk_beep()
+}
 
 func Fn_cairo_get_clip_rectangle(cr cairo.Context) {}
 
@@ -157,31 +159,55 @@ func Fn_drop_finish(context *DragContext, success bool, time uint32) {}
 
 func Fn_drop_reply(context *DragContext, accepted bool, time uint32) {}
 
-func Fn_error_trap_pop() {}
+func Fn_error_trap_pop() {
+	C.gdk_error_trap_pop()
+}
 
-func Fn_error_trap_push() {}
+func Fn_error_trap_push() {
+	C.gdk_error_trap_push()
+}
 
-func Fn_event_get() {}
+func Fn_event_get() {
+	C.gdk_event_get()
+}
 
 // UNSUPPORTED : event_handler_set : has callback
 
-func Fn_event_peek() {}
+func Fn_event_peek() {
+	C.gdk_event_peek()
+}
 
-func Fn_events_pending() {}
+func Fn_events_pending() {
+	C.gdk_events_pending()
+}
 
-func Fn_flush() {}
+func Fn_flush() {
+	C.gdk_flush()
+}
 
-func Fn_get_default_root_window() {}
+func Fn_get_default_root_window() {
+	C.gdk_get_default_root_window()
+}
 
-func Fn_get_display() {}
+func Fn_get_display() {
+	C.gdk_get_display()
+}
 
-func Fn_get_display_arg_name() {}
+func Fn_get_display_arg_name() {
+	C.gdk_get_display_arg_name()
+}
 
-func Fn_get_program_class() {}
+func Fn_get_program_class() {
+	C.gdk_get_program_class()
+}
 
-func Fn_get_show_events() {}
+func Fn_get_show_events() {
+	C.gdk_get_show_events()
+}
 
-func Fn_gl_error_quark() {}
+func Fn_gl_error_quark() {
+	C.gdk_gl_error_quark()
+}
 
 func Fn_init(argc *int, argv *string) {}
 
@@ -207,13 +233,19 @@ func Fn_keyval_to_unicode(keyval uint) {}
 
 func Fn_keyval_to_upper(keyval uint) {}
 
-func Fn_list_visuals() {}
+func Fn_list_visuals() {
+	C.gdk_list_visuals()
+}
 
-func Fn_notify_startup_complete() {}
+func Fn_notify_startup_complete() {
+	C.gdk_notify_startup_complete()
+}
 
 func Fn_offscreen_window_get_surface(window *Window) {}
 
-func Fn_pango_context_get() {}
+func Fn_pango_context_get() {
+	C.gdk_pango_context_get()
+}
 
 func Fn_pango_context_get_for_screen(screen *Screen) {}
 
@@ -232,11 +264,15 @@ func Fn_pixbuf_get_from_window(window *Window, srcX int, srcY int, width int, he
 func Fn_pointer_grab(window *Window, ownerEvents bool, eventMask EventMask, confineTo *Window, cursor *Cursor, time uint32) {
 }
 
-func Fn_pointer_is_grabbed() {}
+func Fn_pointer_is_grabbed() {
+	C.gdk_pointer_is_grabbed()
+}
 
 func Fn_pointer_ungrab(time uint32) {}
 
-func Fn_pre_parse_libgtk_only() {}
+func Fn_pre_parse_libgtk_only() {
+	C.gdk_pre_parse_libgtk_only()
+}
 
 func Fn_property_change(window *Window, property Atom, type_ Atom, format int, mode PropMode, data *uint8, nelements int) {
 }
@@ -294,11 +330,17 @@ func Fn_text_property_to_utf8_list_for_display(display *Display, encoding Atom, 
 
 // UNSUPPORTED : threads_add_timeout_seconds_full : has callback
 
-func Fn_threads_enter() {}
+func Fn_threads_enter() {
+	C.gdk_threads_enter()
+}
 
-func Fn_threads_init() {}
+func Fn_threads_init() {
+	C.gdk_threads_init()
+}
 
-func Fn_threads_leave() {}
+func Fn_threads_leave() {
+	C.gdk_threads_leave()
+}
 
 // UNSUPPORTED : threads_set_lock_functions : has callback
 

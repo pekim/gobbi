@@ -330,7 +330,9 @@ type Volume C.GVolume
 func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags AppInfoCreateFlags) {
 }
 
-func Fn_app_info_get_all() {}
+func Fn_app_info_get_all() {
+	C.g_app_info_get_all()
+}
 
 func Fn_app_info_get_all_for_type(contentType string) {}
 
@@ -376,11 +378,15 @@ func Fn_content_type_is_a(type_ string, supertype string) {}
 
 func Fn_content_type_is_unknown(type_ string) {}
 
-func Fn_content_types_get_registered() {}
+func Fn_content_types_get_registered() {
+	C.g_content_types_get_registered()
+}
 
 // UNSUPPORTED : dbus_address_get_stream : has callback
 
-func Fn_dbus_error_quark() {}
+func Fn_dbus_error_quark() {
+	C.g_dbus_error_quark()
+}
 
 func Fn_file_new_for_commandline_arg(arg string) {}
 
@@ -399,7 +405,9 @@ func Fn_initable_newv(objectType glib.Type, nParameters uint, parameters *gobjec
 
 func Fn_io_error_from_errno(errNo int) {}
 
-func Fn_io_error_quark() {}
+func Fn_io_error_quark() {
+	C.g_io_error_quark()
+}
 
 func Fn_io_extension_point_implement(extensionPointName string, type_ glib.Type, extensionName string, priority int) {
 }
@@ -410,13 +418,17 @@ func Fn_io_extension_point_register(name string) {}
 
 func Fn_io_modules_load_all_in_directory(dirname string) {}
 
-func Fn_io_scheduler_cancel_all_jobs() {}
+func Fn_io_scheduler_cancel_all_jobs() {
+	C.g_io_scheduler_cancel_all_jobs()
+}
 
 // UNSUPPORTED : io_scheduler_push_job : has callback
 
 func Fn_keyfile_settings_backend_new(filename string, rootPath string, rootGroup string) {}
 
-func Fn_resolver_error_quark() {}
+func Fn_resolver_error_quark() {
+	C.g_resolver_error_quark()
+}
 
 // UNSUPPORTED : simple_async_report_error_in_idle : has varargs
 

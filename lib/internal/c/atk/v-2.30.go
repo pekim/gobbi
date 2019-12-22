@@ -112,27 +112,49 @@ func Fn_attribute_set_free(attribSet *AttributeSet) {}
 
 func Fn_focus_tracker_notify(object *Object) {}
 
-func Fn_get_binary_age() {}
+func Fn_get_binary_age() {
+	C.atk_get_binary_age()
+}
 
-func Fn_get_default_registry() {}
+func Fn_get_default_registry() {
+	C.atk_get_default_registry()
+}
 
-func Fn_get_focus_object() {}
+func Fn_get_focus_object() {
+	C.atk_get_focus_object()
+}
 
-func Fn_get_interface_age() {}
+func Fn_get_interface_age() {
+	C.atk_get_interface_age()
+}
 
-func Fn_get_major_version() {}
+func Fn_get_major_version() {
+	C.atk_get_major_version()
+}
 
-func Fn_get_micro_version() {}
+func Fn_get_micro_version() {
+	C.atk_get_micro_version()
+}
 
-func Fn_get_minor_version() {}
+func Fn_get_minor_version() {
+	C.atk_get_minor_version()
+}
 
-func Fn_get_root() {}
+func Fn_get_root() {
+	C.atk_get_root()
+}
 
-func Fn_get_toolkit_name() {}
+func Fn_get_toolkit_name() {
+	C.atk_get_toolkit_name()
+}
 
-func Fn_get_toolkit_version() {}
+func Fn_get_toolkit_version() {
+	C.atk_get_toolkit_version()
+}
 
-func Fn_get_version() {}
+func Fn_get_version() {
+	C.atk_get_version()
+}
 
 func Fn_relation_type_for_name(name string) {}
 

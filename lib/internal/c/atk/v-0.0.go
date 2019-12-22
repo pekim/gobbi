@@ -110,13 +110,21 @@ func Fn_attribute_set_free(attribSet *AttributeSet) {}
 
 func Fn_focus_tracker_notify(object *Object) {}
 
-func Fn_get_default_registry() {}
+func Fn_get_default_registry() {
+	C.atk_get_default_registry()
+}
 
-func Fn_get_root() {}
+func Fn_get_root() {
+	C.atk_get_root()
+}
 
-func Fn_get_toolkit_name() {}
+func Fn_get_toolkit_name() {
+	C.atk_get_toolkit_name()
+}
 
-func Fn_get_toolkit_version() {}
+func Fn_get_toolkit_version() {
+	C.atk_get_toolkit_version()
+}
 
 func Fn_relation_type_for_name(name string) {}
 

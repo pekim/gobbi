@@ -173,14 +173,18 @@ func Fn_find_paragraph_boundary(text string, length int) {}
 
 func Fn_font_description_from_string(str string) {}
 
-func Fn_get_lib_subdirectory() {}
+func Fn_get_lib_subdirectory() {
+	C.pango_get_lib_subdirectory()
+}
 
 func Fn_get_log_attrs(text string, length int, level int, language *Language, logAttrs *LogAttr, attrsLen int) {
 }
 
 func Fn_get_mirror_char(ch rune, mirroredCh *rune) {}
 
-func Fn_get_sysconf_subdirectory() {}
+func Fn_get_sysconf_subdirectory() {
+	C.pango_get_sysconf_subdirectory()
+}
 
 func Fn_gravity_get_for_matrix(matrix *Matrix) {}
 
@@ -201,7 +205,9 @@ func Fn_itemize_with_base_dir(context *Context, baseDir Direction, text string, 
 
 func Fn_language_from_string(language string) {}
 
-func Fn_language_get_default() {}
+func Fn_language_get_default() {
+	C.pango_language_get_default()
+}
 
 func Fn_log2vis_get_embedding_levels(text string, length int, pbaseDir *Direction) {}
 
@@ -257,8 +263,12 @@ func Fn_units_from_double(d float64) {}
 
 func Fn_units_to_double(i int) {}
 
-func Fn_version() {}
+func Fn_version() {
+	C.pango_version()
+}
 
 func Fn_version_check(requiredMajor int, requiredMinor int, requiredMicro int) {}
 
-func Fn_version_string() {}
+func Fn_version_string() {
+	C.pango_version_string()
+}

@@ -406,7 +406,9 @@ type Volume C.GVolume
 func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags AppInfoCreateFlags) {
 }
 
-func Fn_app_info_get_all() {}
+func Fn_app_info_get_all() {
+	C.g_app_info_get_all()
+}
 
 func Fn_app_info_get_all_for_type(contentType string) {}
 
@@ -476,7 +478,9 @@ func Fn_content_type_is_a(type_ string, supertype string) {}
 
 func Fn_content_type_is_unknown(type_ string) {}
 
-func Fn_content_types_get_registered() {}
+func Fn_content_types_get_registered() {
+	C.g_content_types_get_registered()
+}
 
 func Fn_dbus_address_get_for_bus_sync(busType BusType, cancellable *Cancellable) {}
 
@@ -496,7 +500,9 @@ func Fn_dbus_error_is_remote_error(error *glib.Error) {}
 
 func Fn_dbus_error_new_for_dbus_error(dbusErrorName string, dbusErrorMessage string) {}
 
-func Fn_dbus_error_quark() {}
+func Fn_dbus_error_quark() {
+	C.g_dbus_error_quark()
+}
 
 func Fn_dbus_error_register_error(errorDomain glib.Quark, errorCode int, dbusErrorName string) {}
 
@@ -507,7 +513,9 @@ func Fn_dbus_error_strip_remote_error(error *glib.Error) {}
 
 func Fn_dbus_error_unregister_error(errorDomain glib.Quark, errorCode int, dbusErrorName string) {}
 
-func Fn_dbus_generate_guid() {}
+func Fn_dbus_generate_guid() {
+	C.g_dbus_generate_guid()
+}
 
 func Fn_dbus_is_address(string_ string) {}
 
@@ -540,7 +548,9 @@ func Fn_initable_newv(objectType glib.Type, nParameters uint, parameters *gobjec
 
 func Fn_io_error_from_errno(errNo int) {}
 
-func Fn_io_error_quark() {}
+func Fn_io_error_quark() {
+	C.g_io_error_quark()
+}
 
 func Fn_io_extension_point_implement(extensionPointName string, type_ glib.Type, extensionName string, priority int) {
 }
@@ -553,23 +563,33 @@ func Fn_io_modules_load_all_in_directory(dirname string) {}
 
 func Fn_io_modules_scan_all_in_directory(dirname string) {}
 
-func Fn_io_scheduler_cancel_all_jobs() {}
+func Fn_io_scheduler_cancel_all_jobs() {
+	C.g_io_scheduler_cancel_all_jobs()
+}
 
 // UNSUPPORTED : io_scheduler_push_job : has callback
 
 func Fn_keyfile_settings_backend_new(filename string, rootPath string, rootGroup string) {}
 
-func Fn_memory_settings_backend_new() {}
+func Fn_memory_settings_backend_new() {
+	C.g_memory_settings_backend_new()
+}
 
-func Fn_null_settings_backend_new() {}
+func Fn_null_settings_backend_new() {
+	C.g_null_settings_backend_new()
+}
 
 func Fn_pollable_source_new(pollableStream *gobject.Object) {}
 
 func Fn_proxy_get_default_for_protocol(protocol string) {}
 
-func Fn_proxy_resolver_get_default() {}
+func Fn_proxy_resolver_get_default() {
+	C.g_proxy_resolver_get_default()
+}
 
-func Fn_resolver_error_quark() {}
+func Fn_resolver_error_quark() {
+	C.g_resolver_error_quark()
+}
 
 // UNSUPPORTED : simple_async_report_error_in_idle : has varargs
 
@@ -579,11 +599,15 @@ func Fn_resolver_error_quark() {}
 
 func Fn_srv_target_list_sort(targets *glib.List) {}
 
-func Fn_tls_backend_get_default() {}
+func Fn_tls_backend_get_default() {
+	C.g_tls_backend_get_default()
+}
 
 func Fn_tls_client_connection_new(baseIoStream *IOStream, serverIdentity *SocketConnectable) {}
 
-func Fn_tls_error_quark() {}
+func Fn_tls_error_quark() {
+	C.g_tls_error_quark()
+}
 
 func Fn_tls_server_connection_new(baseIoStream *IOStream, certificate *TlsCertificate) {}
 

@@ -34,4 +34,6 @@ type PixbufSimpleAnim C.GdkPixbufSimpleAnim
 
 // interfaces
 
-func Fn_pixbuf_error_quark() {}
+func Fn_pixbuf_error_quark() {
+	C.gdk_pixbuf_error_quark()
+}

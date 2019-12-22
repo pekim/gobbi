@@ -950,7 +950,9 @@ func Fn_accel_groups_activate(object *gobject.Object, accelKey uint, accelMods g
 
 func Fn_accel_groups_from_object(object *gobject.Object) {}
 
-func Fn_accelerator_get_default_mod_mask() {}
+func Fn_accelerator_get_default_mod_mask() {
+	C.gtk_accelerator_get_default_mod_mask()
+}
 
 func Fn_accelerator_get_label(acceleratorKey uint, acceleratorMods gdk.ModifierType) {}
 
@@ -981,13 +983,19 @@ func Fn_bindings_activate(object *gobject.Object, keyval uint, modifiers gdk.Mod
 
 func Fn_bindings_activate_event(object *gobject.Object, event *gdk.EventKey) {}
 
-func Fn_builder_error_quark() {}
+func Fn_builder_error_quark() {
+	C.gtk_builder_error_quark()
+}
 
 func Fn_check_version(requiredMajor uint, requiredMinor uint, requiredMicro uint) {}
 
-func Fn_css_provider_error_quark() {}
+func Fn_css_provider_error_quark() {
+	C.gtk_css_provider_error_quark()
+}
 
-func Fn_disable_setlocale() {}
+func Fn_disable_setlocale() {
+	C.gtk_disable_setlocale()
+}
 
 func Fn_distribute_natural_allocation(extraSpace int, nRequestedSizes uint, sizes *RequestedSize) {}
 
@@ -1008,29 +1016,47 @@ func Fn_drag_set_icon_surface(context *gdk.DragContext, surface cairo.Surface) {
 
 func Fn_drag_set_icon_widget(context *gdk.DragContext, widget *Widget, hotX int, hotY int) {}
 
-func Fn_events_pending() {}
+func Fn_events_pending() {
+	C.gtk_events_pending()
+}
 
-func Fn_false() {}
+func Fn_false() {
+	C.gtk_false()
+}
 
-func Fn_file_chooser_error_quark() {}
+func Fn_file_chooser_error_quark() {
+	C.gtk_file_chooser_error_quark()
+}
 
-func Fn_get_current_event() {}
+func Fn_get_current_event() {
+	C.gtk_get_current_event()
+}
 
-func Fn_get_current_event_device() {}
+func Fn_get_current_event_device() {
+	C.gtk_get_current_event_device()
+}
 
 func Fn_get_current_event_state() {}
 
-func Fn_get_current_event_time() {}
+func Fn_get_current_event_time() {
+	C.gtk_get_current_event_time()
+}
 
-func Fn_get_debug_flags() {}
+func Fn_get_debug_flags() {
+	C.gtk_get_debug_flags()
+}
 
-func Fn_get_default_language() {}
+func Fn_get_default_language() {
+	C.gtk_get_default_language()
+}
 
 func Fn_get_event_widget(event *gdk.Event) {}
 
 func Fn_get_option_group(openDefaultDisplay bool) {}
 
-func Fn_grab_get_current() {}
+func Fn_grab_get_current() {
+	C.gtk_grab_get_current()
+}
 
 func Fn_icon_size_from_name(name string) {}
 
@@ -1044,7 +1070,9 @@ func Fn_icon_size_register(name string, width int, height int) {}
 
 func Fn_icon_size_register_alias(alias string, target IconSize) {}
 
-func Fn_icon_theme_error_quark() {}
+func Fn_icon_theme_error_quark() {
+	C.gtk_icon_theme_error_quark()
+}
 
 func Fn_init(argc *int, argv *string) {}
 
@@ -1057,17 +1085,25 @@ func Fn_init_with_args(argc *int, argv *string, parameterString string, entries 
 
 func Fn_key_snooper_remove(snooperHandlerId uint) {}
 
-func Fn_main() {}
+func Fn_main() {
+	C.gtk_main()
+}
 
 func Fn_main_do_event(event *gdk.Event) {}
 
-func Fn_main_iteration() {}
+func Fn_main_iteration() {
+	C.gtk_main_iteration()
+}
 
 func Fn_main_iteration_do(blocking bool) {}
 
-func Fn_main_level() {}
+func Fn_main_level() {
+	C.gtk_main_level()
+}
 
-func Fn_main_quit() {}
+func Fn_main_quit() {
+	C.gtk_main_quit()
+}
 
 func Fn_paint_arrow(style *Style, cr cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, arrowType ArrowType, fill bool, x int, y int, width int, height int) {
 }
@@ -1129,13 +1165,17 @@ func Fn_paint_tab(style *Style, cr cairo.Context, stateType StateType, shadowTyp
 func Fn_paint_vline(style *Style, cr cairo.Context, stateType StateType, widget *Widget, detail string, y1 int, y2 int, x int) {
 }
 
-func Fn_paper_size_get_default() {}
+func Fn_paper_size_get_default() {
+	C.gtk_paper_size_get_default()
+}
 
 func Fn_paper_size_get_paper_sizes(includeCustom bool) {}
 
 func Fn_parse_args(argc *int, argv *string) {}
 
-func Fn_print_error_quark() {}
+func Fn_print_error_quark() {
+	C.gtk_print_error_quark()
+}
 
 func Fn_print_run_page_setup_dialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) {}
 
@@ -1149,20 +1189,30 @@ func Fn_rc_find_module_in_path(moduleFile string) {}
 
 func Fn_rc_find_pixmap_in_path(settings *Settings, scanner *glib.Scanner, pixmapFile string) {}
 
-func Fn_rc_get_default_files() {}
+func Fn_rc_get_default_files() {
+	C.gtk_rc_get_default_files()
+}
 
-func Fn_rc_get_im_module_file() {}
+func Fn_rc_get_im_module_file() {
+	C.gtk_rc_get_im_module_file()
+}
 
-func Fn_rc_get_im_module_path() {}
+func Fn_rc_get_im_module_path() {
+	C.gtk_rc_get_im_module_path()
+}
 
-func Fn_rc_get_module_dir() {}
+func Fn_rc_get_module_dir() {
+	C.gtk_rc_get_module_dir()
+}
 
 func Fn_rc_get_style(widget *Widget) {}
 
 func Fn_rc_get_style_by_paths(settings *Settings, widgetPath string, classPath string, type_ glib.Type) {
 }
 
-func Fn_rc_get_theme_dir() {}
+func Fn_rc_get_theme_dir() {
+	C.gtk_rc_get_theme_dir()
+}
 
 func Fn_rc_parse(filename string) {}
 
@@ -1191,19 +1241,27 @@ func Fn_rc_property_parse_flags(pspec *gobject.ParamSpec, gstring *glib.String, 
 func Fn_rc_property_parse_requisition(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) {
 }
 
-func Fn_rc_reparse_all() {}
+func Fn_rc_reparse_all() {
+	C.gtk_rc_reparse_all()
+}
 
 func Fn_rc_reparse_all_for_settings(settings *Settings, forceLoad bool) {}
 
 func Fn_rc_reset_styles(settings *Settings) {}
 
-func Fn_rc_scanner_new() {}
+func Fn_rc_scanner_new() {
+	C.gtk_rc_scanner_new()
+}
 
 func Fn_rc_set_default_files(filenames *string) {}
 
-func Fn_recent_chooser_error_quark() {}
+func Fn_recent_chooser_error_quark() {
+	C.gtk_recent_chooser_error_quark()
+}
 
-func Fn_recent_manager_error_quark() {}
+func Fn_recent_manager_error_quark() {
+	C.gtk_recent_manager_error_quark()
+}
 
 func Fn_rgb_to_hsv(r float64, g float64, b float64) {}
 
@@ -1233,7 +1291,9 @@ func Fn_stock_add(items *StockItem, nItems uint) {}
 
 func Fn_stock_add_static(items *StockItem, nItems uint) {}
 
-func Fn_stock_list_ids() {}
+func Fn_stock_list_ids() {
+	C.gtk_stock_list_ids()
+}
 
 func Fn_stock_lookup(stockId string) {}
 
@@ -1267,7 +1327,9 @@ func Fn_test_find_widget(widget *Widget, labelPattern string, widgetType glib.Ty
 
 func Fn_test_list_all_types() {}
 
-func Fn_test_register_all_types() {}
+func Fn_test_register_all_types() {
+	C.gtk_test_register_all_types()
+}
 
 func Fn_test_slider_get_value(widget *Widget) {}
 
@@ -1294,4 +1356,6 @@ func Fn_tree_row_reference_reordered(proxy *gobject.Object, path *TreePath, iter
 
 func Fn_tree_set_row_drag_data(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) {}
 
-func Fn_true() {}
+func Fn_true() {
+	C.gtk_true()
+}

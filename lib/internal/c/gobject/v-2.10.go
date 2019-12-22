@@ -191,7 +191,9 @@ func Fn_flags_get_value_by_nick(flagsClass *FlagsClass, nick string) {}
 
 func Fn_flags_register_static(name string, constStaticValues *FlagsValue) {}
 
-func Fn_gtype_get_type() {}
+func Fn_gtype_get_type() {
+	C.g_gtype_get_type()
+}
 
 func Fn_param_spec_boolean(name string, nick string, blurb string, defaultValue bool, flags ParamFlags) {
 }
@@ -421,13 +423,17 @@ func Fn_type_from_name(name string) {}
 
 func Fn_type_fundamental(typeId glib.Type) {}
 
-func Fn_type_fundamental_next() {}
+func Fn_type_fundamental_next() {
+	C.g_type_fundamental_next()
+}
 
 func Fn_type_get_plugin(type_ glib.Type) {}
 
 func Fn_type_get_qdata(type_ glib.Type, quark glib.Quark) {}
 
-func Fn_type_init() {}
+func Fn_type_init() {
+	C.g_type_init()
+}
 
 func Fn_type_init_with_debug_flags(debugFlags TypeDebugFlags) {}
 
@@ -484,4 +490,6 @@ func Fn_value_type_compatible(srcType glib.Type, destType glib.Type) {}
 
 func Fn_value_type_transformable(srcType glib.Type, destType glib.Type) {}
 
-func Fn_bad() {}
+func Fn_bad() {
+	C.g_bad()
+}
