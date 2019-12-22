@@ -470,7 +470,3 @@ func Fn_type_value_table_peek(type_ glib.Type) {}
 func Fn_value_type_compatible(srcType glib.Type, destType glib.Type) {}
 
 func Fn_value_type_transformable(srcType glib.Type, destType glib.Type) {}
-
-func Fn_bad() {
-	C.g_bad()
-}

@@ -214,9 +214,7 @@ func Fn_byte_array_new() {
 
 // UNSUPPORTED : child_watch_add_full : has callback
 
-func Fn_clear_error() {
-	C.g_clear_error()
-}
+func Fn_clear_error(err **Error) {}
 
 // UNSUPPORTED : clear_handle_id : has callback
 

@@ -311,9 +311,7 @@ func Fn_checksum_type_get_length(checksumType ChecksumType) {}
 
 func Fn_child_watch_source_new(pid Pid) {}
 
-func Fn_clear_error() {
-	//C.g_clear_error()
-}
+func Fn_clear_error(err **Error) {}
 
 // UNSUPPORTED : clear_handle_id : has callback
 
@@ -1336,8 +1334,7 @@ func Fn_uri_list_extract_uris(uriList string) {}
 
 func Fn_uri_parse_scheme(uri string) {}
 
-func Fn_uri_unescape_segment(escapedString string, escapedStringEnd string, illegalCharacters string) {
-}
+func Fn_uri_unescape_segment(escapedString string, escapedStringEnd string, illegalCharacters string) {}
 
 func Fn_uri_unescape_string(escapedString string, illegalCharacters string) {}
 

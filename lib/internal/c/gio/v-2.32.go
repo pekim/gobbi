@@ -20,6 +20,7 @@ import (
 // #include <gio/gunixmounts.h>
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
+// #include <gio/gnetworking.h>
 import "C"
 
 // aliases
@@ -626,20 +627,13 @@ func Fn_io_scheduler_cancel_all_jobs() {
 
 // UNSUPPORTED : io_scheduler_push_job : has callback
 
-func Fn_keyfile_settings_backend_new(filename string, rootPath string, rootGroup string) {}
-
-func Fn_memory_settings_backend_new() {
-	C.g_memory_settings_backend_new()
-}
-
+// UNSUPPORTED : keyfile_settings_backend_new : blacklisted
+// UNSUPPORTED : memory_settings_backend_new : blacklisted
 func Fn_network_monitor_get_default() {
 	C.g_network_monitor_get_default()
 }
 
-func Fn_null_settings_backend_new() {
-	C.g_null_settings_backend_new()
-}
-
+// UNSUPPORTED : null_settings_backend_new : blacklisted
 func Fn_pollable_source_new(pollableStream *gobject.Object) {}
 
 func Fn_proxy_get_default_for_protocol(protocol string) {}

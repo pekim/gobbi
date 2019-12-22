@@ -241,9 +241,7 @@ func Fn_byte_array_new() {
 
 func Fn_child_watch_source_new(pid Pid) {}
 
-func Fn_clear_error() {
-	C.g_clear_error()
-}
+func Fn_clear_error(err **Error) {}
 
 // UNSUPPORTED : clear_handle_id : has callback
 

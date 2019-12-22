@@ -17428,17 +17428,5 @@ transformation function must be registered.</doc>
         </parameter>
       </parameters>
     </function>
-
-    <!--
-      gobbi
-
-      This is a manually added function, for the purposes of testing handling of
-      functions that are not available in the install version of a library.
-    -->
-    <function name="bad" c:identifier="g_bad">
-      <return-value transfer-ownership="none">
-        <type name="none" c:type="void"/>
-      </return-value>
-    </function>
   </namespace>
 </repository>

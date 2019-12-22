@@ -55,6 +55,10 @@ func (r *repository) init() {
 		r.CIncludes = append(r.CIncludes, &CInclude{Name: "glib-2.0/glib-object.h"})
 	}
 
+	if r.Namespace.Name == "Gio" {
+		r.CIncludes = append(r.CIncludes, &CInclude{Name: "gio/gnetworking.h"})
+	}
+
 	if r.Namespace.Name == "GLib" {
 		r.Packages = append(r.Packages, Package{Name: "gobject-2.0"})
 	}

@@ -173,19 +173,13 @@ func Fn_find_paragraph_boundary(text string, length int) {}
 
 func Fn_font_description_from_string(str string) {}
 
-func Fn_get_lib_subdirectory() {
-	C.pango_get_lib_subdirectory()
-}
-
+// UNSUPPORTED : get_lib_subdirectory : blacklisted
 func Fn_get_log_attrs(text string, length int, level int, language *Language, logAttrs *LogAttr, attrsLen int) {
 }
 
 func Fn_get_mirror_char(ch rune, mirroredCh *rune) {}
 
-func Fn_get_sysconf_subdirectory() {
-	C.pango_get_sysconf_subdirectory()
-}
-
+// UNSUPPORTED : get_sysconf_subdirectory : blacklisted
 func Fn_gravity_get_for_matrix(matrix *Matrix) {}
 
 func Fn_gravity_get_for_script(script Script, baseGravity Gravity, hint GravityHint) {}

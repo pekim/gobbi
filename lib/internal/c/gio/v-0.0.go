@@ -19,6 +19,7 @@ import (
 // #include <gio/gunixmounts.h>
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
+// #include <gio/gnetworking.h>
 import "C"
 
 // aliases
@@ -387,8 +388,9 @@ func Fn_io_scheduler_cancel_all_jobs() {
 
 // UNSUPPORTED : io_scheduler_push_job : has callback
 
-func Fn_keyfile_settings_backend_new(filename string, rootPath string, rootGroup string) {}
-
+// UNSUPPORTED : keyfile_settings_backend_new : blacklisted
+// UNSUPPORTED : memory_settings_backend_new : blacklisted
+// UNSUPPORTED : null_settings_backend_new : blacklisted
 // UNSUPPORTED : simple_async_report_error_in_idle : has varargs
 
 // UNSUPPORTED : simple_async_report_gerror_in_idle : has callback
