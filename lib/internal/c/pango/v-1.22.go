@@ -6,6 +6,7 @@ package pango
 import (
 	c "github.com/pekim/gobbi/lib/internal/c"
 	glib "github.com/pekim/gobbi/lib/internal/c/glib"
+	"unsafe"
 )
 
 // #include <pango/pango.h>
@@ -219,7 +220,7 @@ func Fn_parse_weight(str string, warn bool) {}
 
 func Fn_quantize_line_geometry(thickness *int, position *int) {}
 
-func Fn_read_line(stream c.UndefinedParamType) {}
+func Fn_read_line(stream unsafe.Pointer) {}
 
 func Fn_reorder_items(logicalItems *glib.List) {}
 

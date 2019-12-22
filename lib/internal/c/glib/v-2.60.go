@@ -271,13 +271,13 @@ func Fn_atomic_rc_box_release(memBlock unsafe.Pointer) {}
 
 // UNSUPPORTED : atomic_rc_box_release_full : has callback
 
-func Fn_atomic_ref_count_compare(arc c.UndefinedParamType, val int) {}
+func Fn_atomic_ref_count_compare(arc *int, val int) {}
 
-func Fn_atomic_ref_count_dec(arc c.UndefinedParamType) {}
+func Fn_atomic_ref_count_dec(arc *int) {}
 
-func Fn_atomic_ref_count_inc(arc c.UndefinedParamType) {}
+func Fn_atomic_ref_count_inc(arc *int) {}
 
-func Fn_atomic_ref_count_init(arc c.UndefinedParamType) {}
+func Fn_atomic_ref_count_init(arc *int) {}
 
 func Fn_base64_decode(text string) {}
 
@@ -832,13 +832,13 @@ func Fn_realloc(mem unsafe.Pointer, nBytes uint64) {}
 
 func Fn_realloc_n(mem unsafe.Pointer, nBlocks uint64, nBlockBytes uint64) {}
 
-func Fn_ref_count_compare(rc c.UndefinedParamType, val int) {}
+func Fn_ref_count_compare(rc *int, val int) {}
 
-func Fn_ref_count_dec(rc c.UndefinedParamType) {}
+func Fn_ref_count_dec(rc *int) {}
 
-func Fn_ref_count_inc(rc c.UndefinedParamType) {}
+func Fn_ref_count_inc(rc *int) {}
 
-func Fn_ref_count_init(rc c.UndefinedParamType) {}
+func Fn_ref_count_init(rc *int) {}
 
 func Fn_ref_string_acquire(str string) {}
 
