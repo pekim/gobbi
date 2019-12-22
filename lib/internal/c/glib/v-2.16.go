@@ -190,7 +190,7 @@ func Fn_assert_warning(logDomain string, file string, line int, prettyFunction s
 
 func Fn_assertion_message(domain string, file string, line int, func_ string, message string) {}
 
-func Fn_assertion_message_cmpnum(domain string, file string, line int, func_ string, expr string, arg1 float64, cmp string, arg2 float64, numtype c.UndefinedParamType) {
+func Fn_assertion_message_cmpnum(domain string, file string, line int, func_ string, expr string, arg1 float64, cmp string, arg2 float64, numtype int8) {
 }
 
 func Fn_assertion_message_cmpstr(domain string, file string, line int, func_ string, expr string, arg1 string, cmp string, arg2 string) {

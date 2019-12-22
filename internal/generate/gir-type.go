@@ -9,6 +9,7 @@ import (
 var cTypeRegex = regexp.MustCompile(" *(const |volatile )* *([a-zA-Z0-9 ]+) *(\\**)? *")
 
 var simpleSysParamGoTypes = map[string]*jen.Statement{
+	"char":          jen.Int8(),
 	"gchar":         jen.Int8(),
 	"guchar":        jen.Uint8(),
 	"gunichar":      jen.Rune(),
