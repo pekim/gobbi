@@ -133,8 +133,7 @@ func (t *Type) sysParamGoType() *jen.Statement {
 		return jen.Op(t.cStars).Id(t.Name)
 	}
 
-	fmt.Printf("type : %s : '%s' : '%s'\n", t.namespace.Name, t.CType, t.Name)
-	return jen.Qual("github.com/pekim/gobbi/lib/internal/c", "UndefinedParamType")
+	panic(fmt.Sprintf("Unsupported type : %s %s (%s)", t.namespace.Name, t.Name, t.CType))
 }
 
 func (t *Type) isQualifiedName() bool {
