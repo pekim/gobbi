@@ -4,8 +4,8 @@
 package gio
 
 import (
-	c "github.com/pekim/gobbi/lib/internal/c"
 	glib "github.com/pekim/gobbi/lib/internal/c/glib"
+	gobject "github.com/pekim/gobbi/lib/internal/c/gobject"
 	"unsafe"
 )
 
@@ -368,7 +368,7 @@ func Fn_content_type_get_icon(type_ string) {}
 
 func Fn_content_type_get_mime_type(type_ string) {}
 
-func Fn_content_type_guess(filename string, data c.UndefinedParamType, dataSize uint64) {}
+func Fn_content_type_guess(filename string, data *uint8, dataSize uint64) {}
 
 func Fn_content_type_guess_for_tree(root *File) {}
 
@@ -394,7 +394,7 @@ func Fn_icon_hash(icon unsafe.Pointer) {}
 
 func Fn_icon_new_for_string(str string) {}
 
-func Fn_initable_newv(objectType glib.Type, nParameters uint, parameters c.UndefinedParamType, cancellable *Cancellable) {
+func Fn_initable_newv(objectType glib.Type, nParameters uint, parameters *gobject.Parameter, cancellable *Cancellable) {
 }
 
 func Fn_io_error_from_errno(errNo int) {}

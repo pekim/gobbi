@@ -4,7 +4,6 @@
 package gdk
 
 import (
-	c "github.com/pekim/gobbi/lib/internal/c"
 	cairo "github.com/pekim/gobbi/lib/internal/c/cairo"
 	glib "github.com/pekim/gobbi/lib/internal/c/glib"
 	gobject "github.com/pekim/gobbi/lib/internal/c/gobject"
@@ -176,9 +175,9 @@ func Fn_get_show_events() {}
 
 func Fn_gl_error_quark() {}
 
-func Fn_init(argc *int, argv c.UndefinedParamType) {}
+func Fn_init(argc *int, argv *string) {}
 
-func Fn_init_check(argc *int, argv c.UndefinedParamType) {}
+func Fn_init_check(argc *int, argv *string) {}
 
 func Fn_keyboard_grab(window *Window, ownerEvents bool, time uint32) {}
 
@@ -209,7 +208,7 @@ func Fn_pango_context_get() {}
 func Fn_pango_layout_get_clip_region(layout *pango.Layout, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
 }
 
-func Fn_pango_layout_line_get_clip_region(line *pango.LayoutLine, xOrigin int, yOrigin int, indexRanges c.UndefinedParamType, nRanges int) {
+func Fn_pango_layout_line_get_clip_region(line *pango.LayoutLine, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
 }
 
 func Fn_pixbuf_get_from_surface(surface cairo.Surface, srcX int, srcY int, width int, height int) {}

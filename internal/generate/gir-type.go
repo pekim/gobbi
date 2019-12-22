@@ -92,7 +92,16 @@ func (t *Type) analyseName() {
 }
 
 func (t *Type) parseCtype() {
-	parts := cTypeRegex.FindStringSubmatch(t.CType)
+	ctype := t.CType
+	if ctype == "" {
+		ctype = t.Name
+	}
+
+	parts := cTypeRegex.FindStringSubmatch(ctype)
+	if parts == nil {
+		panic(fmt.Sprintf("Failed to parse type ; '%s'", t.CType))
+	}
+
 	t.cType = parts[2]
 	t.cStars = parts[3]
 	t.cIndirectionCount = len(t.cStars)

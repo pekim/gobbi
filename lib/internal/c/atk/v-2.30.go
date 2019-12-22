@@ -3,8 +3,6 @@
 
 package atk
 
-import c "github.com/pekim/gobbi/lib/internal/c"
-
 // #include <atk/atk.h>
 import "C"
 
@@ -170,7 +168,7 @@ func Fn_text_attribute_get_value(attr TextAttribute, index int) {}
 
 func Fn_text_attribute_register(name string) {}
 
-func Fn_text_free_ranges(ranges c.UndefinedParamType) {}
+func Fn_text_free_ranges(ranges **TextRange) {}
 
 func Fn_value_type_get_localized_name(valueType ValueType) {}
 

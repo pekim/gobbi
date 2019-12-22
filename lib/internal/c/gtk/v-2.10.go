@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	c "github.com/pekim/gobbi/lib/internal/c"
 	cairo "github.com/pekim/gobbi/lib/internal/c/cairo"
 	gdk "github.com/pekim/gobbi/lib/internal/c/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/internal/c/gdkpixbuf"
@@ -1043,11 +1042,11 @@ func Fn_icon_size_register_alias(alias string, target IconSize) {}
 
 func Fn_icon_theme_error_quark() {}
 
-func Fn_init(argc *int, argv c.UndefinedParamType) {}
+func Fn_init(argc *int, argv *string) {}
 
-func Fn_init_check(argc *int, argv c.UndefinedParamType) {}
+func Fn_init_check(argc *int, argv *string) {}
 
-func Fn_init_with_args(argc *int, argv c.UndefinedParamType, parameterString string, entries c.UndefinedParamType, translationDomain string) {
+func Fn_init_with_args(argc *int, argv *string, parameterString string, entries *glib.OptionEntry, translationDomain string) {
 }
 
 // UNSUPPORTED : key_snooper_install : has callback
@@ -1128,7 +1127,7 @@ func Fn_paint_vline(style *Style, cr cairo.Context, stateType StateType, widget 
 
 func Fn_paper_size_get_default() {}
 
-func Fn_parse_args(argc *int, argv c.UndefinedParamType) {}
+func Fn_parse_args(argc *int, argv *string) {}
 
 func Fn_print_error_quark() {}
 
@@ -1192,7 +1191,7 @@ func Fn_rc_reset_styles(settings *Settings) {}
 
 func Fn_rc_scanner_new() {}
 
-func Fn_rc_set_default_files(filenames c.UndefinedParamType) {}
+func Fn_rc_set_default_files(filenames *string) {}
 
 func Fn_recent_chooser_error_quark() {}
 
@@ -1200,7 +1199,7 @@ func Fn_recent_manager_error_quark() {}
 
 func Fn_selection_add_target(widget *Widget, selection gdk.Atom, target gdk.Atom, info uint) {}
 
-func Fn_selection_add_targets(widget *Widget, selection gdk.Atom, targets c.UndefinedParamType, ntargets uint) {
+func Fn_selection_add_targets(widget *Widget, selection gdk.Atom, targets *TargetEntry, ntargets uint) {
 }
 
 func Fn_selection_clear_targets(widget *Widget, selection gdk.Atom) {}
@@ -1218,9 +1217,9 @@ func Fn_set_debug_flags(flags uint) {}
 
 // UNSUPPORTED : show_about_dialog : has varargs
 
-func Fn_stock_add(items c.UndefinedParamType, nItems uint) {}
+func Fn_stock_add(items *StockItem, nItems uint) {}
 
-func Fn_stock_add_static(items c.UndefinedParamType, nItems uint) {}
+func Fn_stock_add_static(items *StockItem, nItems uint) {}
 
 func Fn_stock_list_ids() {}
 
@@ -1228,17 +1227,17 @@ func Fn_stock_lookup(stockId string) {}
 
 // UNSUPPORTED : stock_set_translate_func : has callback
 
-func Fn_target_table_free(targets c.UndefinedParamType, nTargets int) {}
+func Fn_target_table_free(targets *TargetEntry, nTargets int) {}
 
 func Fn_target_table_new_from_list(list *TargetList) {}
 
-func Fn_targets_include_image(targets c.UndefinedParamType, nTargets int, writable bool) {}
+func Fn_targets_include_image(targets *gdk.Atom, nTargets int, writable bool) {}
 
-func Fn_targets_include_rich_text(targets c.UndefinedParamType, nTargets int, buffer *TextBuffer) {}
+func Fn_targets_include_rich_text(targets *gdk.Atom, nTargets int, buffer *TextBuffer) {}
 
-func Fn_targets_include_text(targets c.UndefinedParamType, nTargets int) {}
+func Fn_targets_include_text(targets *gdk.Atom, nTargets int) {}
 
-func Fn_targets_include_uri(targets c.UndefinedParamType, nTargets int) {}
+func Fn_targets_include_uri(targets *gdk.Atom, nTargets int) {}
 
 // UNSUPPORTED : test_create_widget : has varargs
 
@@ -1252,7 +1251,7 @@ func Fn_tree_row_reference_deleted(proxy *gobject.Object, path *TreePath) {}
 
 func Fn_tree_row_reference_inserted(proxy *gobject.Object, path *TreePath) {}
 
-func Fn_tree_row_reference_reordered(proxy *gobject.Object, path *TreePath, iter *TreeIter, newOrder c.UndefinedParamType) {
+func Fn_tree_row_reference_reordered(proxy *gobject.Object, path *TreePath, iter *TreeIter, newOrder *int) {
 }
 
 func Fn_tree_set_row_drag_data(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) {}

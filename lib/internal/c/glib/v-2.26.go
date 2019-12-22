@@ -3,10 +3,7 @@
 
 package glib
 
-import (
-	c "github.com/pekim/gobbi/lib/internal/c"
-	"unsafe"
-)
+import "unsafe"
 
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -232,16 +229,15 @@ func Fn_atomic_pointer_set(atomic unsafe.Pointer, newval unsafe.Pointer) {}
 
 func Fn_base64_decode(text string) {}
 
-func Fn_base64_decode_inplace(text c.UndefinedParamType, outLen *uint64) {}
+func Fn_base64_decode_inplace(text *uint8, outLen *uint64) {}
 
-func Fn_base64_decode_step(in c.UndefinedParamType, len uint64, state *int, save *uint) {}
+func Fn_base64_decode_step(in *uint8, len uint64, state *int, save *uint) {}
 
-func Fn_base64_encode(data c.UndefinedParamType, len uint64) {}
+func Fn_base64_encode(data *uint8, len uint64) {}
 
 func Fn_base64_encode_close(breakLines bool, state *int, save *int) {}
 
-func Fn_base64_encode_step(in c.UndefinedParamType, len uint64, breakLines bool, state *int, save *int) {
-}
+func Fn_base64_encode_step(in *uint8, len uint64, breakLines bool, state *int, save *int) {}
 
 func Fn_basename(fileName string) {}
 
@@ -263,17 +259,17 @@ func Fn_bookmark_file_error_quark() {}
 
 // UNSUPPORTED : build_filename_valist : has va_list
 
-func Fn_build_filenamev(args c.UndefinedParamType) {}
+func Fn_build_filenamev(args *string) {}
 
 // UNSUPPORTED : build_path : has varargs
 
-func Fn_build_pathv(separator string, args c.UndefinedParamType) {}
+func Fn_build_pathv(separator string, args *string) {}
 
-func Fn_byte_array_free(array c.UndefinedParamType, freeSegment bool) {}
+func Fn_byte_array_free(array *uint8, freeSegment bool) {}
 
 func Fn_byte_array_new() {}
 
-func Fn_byte_array_unref(array c.UndefinedParamType) {}
+func Fn_byte_array_unref(array *uint8) {}
 
 func Fn_chdir(path string) {}
 
@@ -293,19 +289,18 @@ func Fn_clear_error() {}
 
 // UNSUPPORTED : clear_pointer : has callback
 
-func Fn_compute_checksum_for_data(checksumType ChecksumType, data c.UndefinedParamType, length uint64) {
-}
+func Fn_compute_checksum_for_data(checksumType ChecksumType, data *uint8, length uint64) {}
 
 func Fn_compute_checksum_for_string(checksumType ChecksumType, str string, length uint64) {}
 
-func Fn_convert(str c.UndefinedParamType, len uint64, toCodeset string, fromCodeset string) {}
+func Fn_convert(str *uint8, len uint64, toCodeset string, fromCodeset string) {}
 
 func Fn_convert_error_quark() {}
 
-func Fn_convert_with_fallback(str c.UndefinedParamType, len uint64, toCodeset string, fromCodeset string, fallback string) {
+func Fn_convert_with_fallback(str *uint8, len uint64, toCodeset string, fromCodeset string, fallback string) {
 }
 
-func Fn_convert_with_iconv(str c.UndefinedParamType, len uint64, converter IConv) {}
+func Fn_convert_with_iconv(str *uint8, len uint64, converter IConv) {}
 
 func Fn_datalist_clear(datalist **Data) {}
 
@@ -397,7 +392,7 @@ func Fn_file_open_tmp(tmpl string) {}
 
 func Fn_file_read_link(filename string) {}
 
-func Fn_file_set_contents(filename string, contents c.UndefinedParamType, length uint64) {}
+func Fn_file_set_contents(filename string, contents *uint8, length uint64) {}
 
 func Fn_file_test(filename string, test FileTest) {}
 
@@ -546,7 +541,7 @@ func Fn_listenv() {}
 
 func Fn_locale_from_utf8(utf8string string, len uint64) {}
 
-func Fn_locale_to_utf8(opsysstring c.UndefinedParamType, len uint64) {}
+func Fn_locale_to_utf8(opsysstring *uint8, len uint64) {}
 
 // UNSUPPORTED : log : has varargs
 
@@ -627,7 +622,7 @@ func Fn_once_init_leave(location unsafe.Pointer, result uint64) {}
 
 func Fn_option_error_quark() {}
 
-func Fn_parse_debug_string(string_ string, keys c.UndefinedParamType, nkeys uint) {}
+func Fn_parse_debug_string(string_ string, keys *DebugKey, nkeys uint) {}
 
 func Fn_path_get_basename(fileName string) {}
 
@@ -691,7 +686,7 @@ func Fn_regex_check_replacement(replacement string) {}
 
 func Fn_regex_error_quark() {}
 
-func Fn_regex_escape_string(string_ c.UndefinedParamType, length int) {}
+func Fn_regex_escape_string(string_ *string, length int) {}
 
 func Fn_regex_match_simple(pattern string, string_ string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) {
 }
@@ -1140,7 +1135,7 @@ func Fn_utf8_to_ucs4_fast(str string, len int64) {}
 
 func Fn_utf8_to_utf16(str string, len int64) {}
 
-func Fn_utf8_validate(str c.UndefinedParamType, maxLen uint64) {}
+func Fn_utf8_validate(str *uint8, maxLen uint64) {}
 
 func Fn_variant_get_gtype() {}
 

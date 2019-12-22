@@ -4,7 +4,6 @@
 package gio
 
 import (
-	c "github.com/pekim/gobbi/lib/internal/c"
 	glib "github.com/pekim/gobbi/lib/internal/c/glib"
 	"unsafe"
 )
@@ -344,7 +343,7 @@ func Fn_content_type_get_icon(type_ string) {}
 
 func Fn_content_type_get_mime_type(type_ string) {}
 
-func Fn_content_type_guess(filename string, data c.UndefinedParamType, dataSize uint64) {}
+func Fn_content_type_guess(filename string, data *uint8, dataSize uint64) {}
 
 func Fn_content_type_guess_for_tree(root *File) {}
 

@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"fmt"
 	"github.com/dave/jennifer/jen"
 )
 
@@ -45,5 +46,9 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 		return p.Type.sysParamGoType()
 	}
 
-	return jen.Qual("github.com/pekim/gobbi/lib/internal/c", "UndefinedParamType")
+	if p.Array != nil {
+		return p.Array.sysParamGoType()
+	}
+
+	panic(fmt.Sprintf("Parameter is not a type or an array: %s", p.Name))
 }

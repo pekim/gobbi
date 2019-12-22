@@ -4,7 +4,6 @@
 package pango
 
 import (
-	c "github.com/pekim/gobbi/lib/internal/c"
 	glib "github.com/pekim/gobbi/lib/internal/c/glib"
 	"unsafe"
 )
@@ -161,7 +160,7 @@ func Fn_attr_weight_new(weight Weight) {}
 
 func Fn_bidi_type_for_unichar(ch rune) {}
 
-func Fn_break(text string, length int, analysis *Analysis, attrs c.UndefinedParamType, attrsLen int) {}
+func Fn_break(text string, length int, analysis *Analysis, attrs *LogAttr, attrsLen int) {}
 
 func Fn_config_key_get(key string) {}
 
@@ -181,7 +180,7 @@ func Fn_font_description_from_string(str string) {}
 
 func Fn_get_lib_subdirectory() {}
 
-func Fn_get_log_attrs(text string, length int, level int, language *Language, logAttrs c.UndefinedParamType, attrsLen int) {
+func Fn_get_log_attrs(text string, length int, level int, language *Language, logAttrs *LogAttr, attrsLen int) {
 }
 
 func Fn_get_mirror_char(ch rune, mirroredCh *rune) {}

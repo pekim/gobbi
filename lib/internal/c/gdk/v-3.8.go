@@ -4,7 +4,6 @@
 package gdk
 
 import (
-	c "github.com/pekim/gobbi/lib/internal/c"
 	cairo "github.com/pekim/gobbi/lib/internal/c/cairo"
 	gdkpixbuf "github.com/pekim/gobbi/lib/internal/c/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/internal/c/glib"
@@ -218,9 +217,9 @@ func Fn_get_show_events() {}
 
 func Fn_gl_error_quark() {}
 
-func Fn_init(argc *int, argv c.UndefinedParamType) {}
+func Fn_init(argc *int, argv *string) {}
 
-func Fn_init_check(argc *int, argv c.UndefinedParamType) {}
+func Fn_init_check(argc *int, argv *string) {}
 
 func Fn_keyboard_grab(window *Window, ownerEvents bool, time uint32) {}
 
@@ -261,10 +260,10 @@ func Fn_pango_context_get_for_screen(screen *Screen) {}
 func Fn_pango_layout_get_clip_region(layout *pango.Layout, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
 }
 
-func Fn_pango_layout_line_get_clip_region(line *pango.LayoutLine, xOrigin int, yOrigin int, indexRanges c.UndefinedParamType, nRanges int) {
+func Fn_pango_layout_line_get_clip_region(line *pango.LayoutLine, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
 }
 
-func Fn_parse_args(argc *int, argv c.UndefinedParamType) {}
+func Fn_parse_args(argc *int, argv *string) {}
 
 func Fn_pixbuf_get_from_surface(surface cairo.Surface, srcX int, srcY int, width int, height int) {}
 
@@ -328,7 +327,7 @@ func Fn_test_simulate_button(window *Window, x int, y int, button uint, modifier
 func Fn_test_simulate_key(window *Window, x int, y int, keyval uint, modifiers ModifierType, keyPressrelease EventType) {
 }
 
-func Fn_text_property_to_utf8_list_for_display(display *Display, encoding Atom, format int, text c.UndefinedParamType, length int) {
+func Fn_text_property_to_utf8_list_for_display(display *Display, encoding Atom, format int, text *uint8, length int) {
 }
 
 // UNSUPPORTED : threads_add_idle : has callback

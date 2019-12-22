@@ -4,7 +4,6 @@
 package gio
 
 import (
-	c "github.com/pekim/gobbi/lib/internal/c"
 	glib "github.com/pekim/gobbi/lib/internal/c/glib"
 	gobject "github.com/pekim/gobbi/lib/internal/c/gobject"
 	"unsafe"
@@ -539,7 +538,7 @@ func Fn_content_type_get_mime_type(type_ string) {}
 
 func Fn_content_type_get_symbolic_icon(type_ string) {}
 
-func Fn_content_type_guess(filename string, data c.UndefinedParamType, dataSize uint64) {}
+func Fn_content_type_guess(filename string, data *uint8, dataSize uint64) {}
 
 func Fn_content_type_guess_for_tree(root *File) {}
 
@@ -559,7 +558,7 @@ func Fn_dbus_address_get_stream_finish(res *AsyncResult) {}
 
 func Fn_dbus_address_get_stream_sync(address string, cancellable *Cancellable) {}
 
-func Fn_dbus_annotation_info_lookup(annotations c.UndefinedParamType, name string) {}
+func Fn_dbus_annotation_info_lookup(annotations **DBusAnnotationInfo, name string) {}
 
 func Fn_dbus_error_encode_gerror(error *glib.Error) {}
 
@@ -573,7 +572,7 @@ func Fn_dbus_error_quark() {}
 
 func Fn_dbus_error_register_error(errorDomain glib.Quark, errorCode int, dbusErrorName string) {}
 
-func Fn_dbus_error_register_error_domain(errorDomainQuarkName string, quarkVolatile *uint64, entries c.UndefinedParamType, numEntries uint) {
+func Fn_dbus_error_register_error_domain(errorDomainQuarkName string, quarkVolatile *uint64, entries *DBusErrorEntry, numEntries uint) {
 }
 
 func Fn_dbus_error_strip_remote_error(error *glib.Error) {}
@@ -618,7 +617,7 @@ func Fn_icon_hash(icon unsafe.Pointer) {}
 
 func Fn_icon_new_for_string(str string) {}
 
-func Fn_initable_newv(objectType glib.Type, nParameters uint, parameters c.UndefinedParamType, cancellable *Cancellable) {
+func Fn_initable_newv(objectType glib.Type, nParameters uint, parameters *gobject.Parameter, cancellable *Cancellable) {
 }
 
 func Fn_io_error_from_errno(errNo int) {}
@@ -659,13 +658,13 @@ func Fn_pollable_source_new(pollableStream *gobject.Object) {}
 func Fn_pollable_source_new_full(pollableStream unsafe.Pointer, childSource *glib.Source, cancellable *Cancellable) {
 }
 
-func Fn_pollable_stream_read(stream *InputStream, buffer c.UndefinedParamType, count uint64, blocking bool, cancellable *Cancellable) {
+func Fn_pollable_stream_read(stream *InputStream, buffer *uint8, count uint64, blocking bool, cancellable *Cancellable) {
 }
 
-func Fn_pollable_stream_write(stream *OutputStream, buffer c.UndefinedParamType, count uint64, blocking bool, cancellable *Cancellable) {
+func Fn_pollable_stream_write(stream *OutputStream, buffer *uint8, count uint64, blocking bool, cancellable *Cancellable) {
 }
 
-func Fn_pollable_stream_write_all(stream *OutputStream, buffer c.UndefinedParamType, count uint64, blocking bool, cancellable *Cancellable) {
+func Fn_pollable_stream_write_all(stream *OutputStream, buffer *uint8, count uint64, blocking bool, cancellable *Cancellable) {
 }
 
 func Fn_proxy_get_default_for_protocol(protocol string) {}

@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	c "github.com/pekim/gobbi/lib/internal/c"
 	cairo "github.com/pekim/gobbi/lib/internal/c/cairo"
 	gdk "github.com/pekim/gobbi/lib/internal/c/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/internal/c/gdkpixbuf"
@@ -1024,9 +1023,9 @@ func Fn_icon_size_register_alias(alias string, target IconSize) {}
 
 func Fn_icon_theme_error_quark() {}
 
-func Fn_init(argc *int, argv c.UndefinedParamType) {}
+func Fn_init(argc *int, argv *string) {}
 
-func Fn_init_check(argc *int, argv c.UndefinedParamType) {}
+func Fn_init_check(argc *int, argv *string) {}
 
 // UNSUPPORTED : key_snooper_install : has callback
 
@@ -1104,7 +1103,7 @@ func Fn_paint_tab(style *Style, cr cairo.Context, stateType StateType, shadowTyp
 func Fn_paint_vline(style *Style, cr cairo.Context, stateType StateType, widget *Widget, detail string, y1 int, y2 int, x int) {
 }
 
-func Fn_parse_args(argc *int, argv c.UndefinedParamType) {}
+func Fn_parse_args(argc *int, argv *string) {}
 
 // UNSUPPORTED : print_run_page_setup_dialog_async : has callback
 
@@ -1162,7 +1161,7 @@ func Fn_rc_reparse_all_for_settings(settings *Settings, forceLoad bool) {}
 
 func Fn_rc_scanner_new() {}
 
-func Fn_rc_set_default_files(filenames c.UndefinedParamType) {}
+func Fn_rc_set_default_files(filenames *string) {}
 
 func Fn_recent_chooser_error_quark() {}
 
@@ -1170,7 +1169,7 @@ func Fn_recent_manager_error_quark() {}
 
 func Fn_selection_add_target(widget *Widget, selection gdk.Atom, target gdk.Atom, info uint) {}
 
-func Fn_selection_add_targets(widget *Widget, selection gdk.Atom, targets c.UndefinedParamType, ntargets uint) {
+func Fn_selection_add_targets(widget *Widget, selection gdk.Atom, targets *TargetEntry, ntargets uint) {
 }
 
 func Fn_selection_clear_targets(widget *Widget, selection gdk.Atom) {}
@@ -1188,9 +1187,9 @@ func Fn_set_debug_flags(flags uint) {}
 
 // UNSUPPORTED : show_about_dialog : has varargs
 
-func Fn_stock_add(items c.UndefinedParamType, nItems uint) {}
+func Fn_stock_add(items *StockItem, nItems uint) {}
 
-func Fn_stock_add_static(items c.UndefinedParamType, nItems uint) {}
+func Fn_stock_add_static(items *StockItem, nItems uint) {}
 
 func Fn_stock_list_ids() {}
 
@@ -1210,7 +1209,7 @@ func Fn_tree_row_reference_deleted(proxy *gobject.Object, path *TreePath) {}
 
 func Fn_tree_row_reference_inserted(proxy *gobject.Object, path *TreePath) {}
 
-func Fn_tree_row_reference_reordered(proxy *gobject.Object, path *TreePath, iter *TreeIter, newOrder c.UndefinedParamType) {
+func Fn_tree_row_reference_reordered(proxy *gobject.Object, path *TreePath, iter *TreeIter, newOrder *int) {
 }
 
 func Fn_tree_set_row_drag_data(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) {}

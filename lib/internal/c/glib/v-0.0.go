@@ -3,10 +3,7 @@
 
 package glib
 
-import (
-	c "github.com/pekim/gobbi/lib/internal/c"
-	"unsafe"
-)
+import "unsafe"
 
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -205,7 +202,7 @@ func Fn_bookmark_file_error_quark() {}
 
 // UNSUPPORTED : build_path : has varargs
 
-func Fn_byte_array_free(array c.UndefinedParamType, freeSegment bool) {}
+func Fn_byte_array_free(array *uint8, freeSegment bool) {}
 
 func Fn_byte_array_new() {}
 
@@ -219,14 +216,14 @@ func Fn_clear_error() {}
 
 // UNSUPPORTED : clear_pointer : has callback
 
-func Fn_convert(str c.UndefinedParamType, len uint64, toCodeset string, fromCodeset string) {}
+func Fn_convert(str *uint8, len uint64, toCodeset string, fromCodeset string) {}
 
 func Fn_convert_error_quark() {}
 
-func Fn_convert_with_fallback(str c.UndefinedParamType, len uint64, toCodeset string, fromCodeset string, fallback string) {
+func Fn_convert_with_fallback(str *uint8, len uint64, toCodeset string, fromCodeset string, fallback string) {
 }
 
-func Fn_convert_with_iconv(str c.UndefinedParamType, len uint64, converter IConv) {}
+func Fn_convert_with_iconv(str *uint8, len uint64, converter IConv) {}
 
 func Fn_datalist_clear(datalist **Data) {}
 
@@ -385,7 +382,7 @@ func Fn_key_file_error_quark() {}
 
 func Fn_locale_from_utf8(utf8string string, len uint64) {}
 
-func Fn_locale_to_utf8(opsysstring c.UndefinedParamType, len uint64) {}
+func Fn_locale_to_utf8(opsysstring *uint8, len uint64) {}
 
 // UNSUPPORTED : log : has varargs
 
@@ -450,7 +447,7 @@ func Fn_on_error_stack_trace(prgName string) {}
 
 func Fn_option_error_quark() {}
 
-func Fn_parse_debug_string(string_ string, keys c.UndefinedParamType, nkeys uint) {}
+func Fn_parse_debug_string(string_ string, keys *DebugKey, nkeys uint) {}
 
 func Fn_path_get_basename(fileName string) {}
 
@@ -817,7 +814,7 @@ func Fn_utf8_to_ucs4_fast(str string, len int64) {}
 
 func Fn_utf8_to_utf16(str string, len int64) {}
 
-func Fn_utf8_validate(str c.UndefinedParamType, maxLen uint64) {}
+func Fn_utf8_validate(str *uint8, maxLen uint64) {}
 
 func Fn_variant_get_gtype() {}
 
