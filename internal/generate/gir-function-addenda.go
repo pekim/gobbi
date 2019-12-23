@@ -24,6 +24,9 @@ var functionBlacklist = map[string]bool{
 	"pango_module_register":          true,
 	"pango_get_lib_subdirectory":     true,
 	"pango_get_sysconf_subdirectory": true,
+	"pango_fontset_simple_new":       true,
+	"pango_fontset_simple_append":    true,
+	"pango_fontset_simple_size":      true,
 
 	// xlib
 	"XOpenDisplay": true,

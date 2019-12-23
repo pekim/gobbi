@@ -89,14 +89,9 @@ func (f *Function) generateSysBody(g *jen.Group) {
 
 	f.generateSysCArgs(g)
 
-	//var i int = 42
-	//pi := &i
-	//cpi := (*C.int)(unsafe.Pointer(pi))
-	//fmt.Println(cpi)
-
-	//g.
-	//	Qual("C", f.CIdentifier).
-	//	Call()
+	g.
+		Qual("C", f.CIdentifier).
+		CallFunc(f.generateSysCallParams)
 }
 
 func (f *Function) generateSysCArgs(g *jen.Group) {
@@ -117,4 +112,14 @@ func (f *Function) generateSysCArgs(g *jen.Group) {
 func (f *Function) generateSysCArg(g *jen.Group, param *Parameter, paramName string, cVarName string) {
 	cValue := param.generateSysCValue(paramName)
 	g.Id(cVarName).Op(":=").Add(cValue)
+}
+
+func (f *Function) generateSysCallParams(g *jen.Group) {
+	if f.InstanceParameter != nil {
+		g.Id("cValueInstance")
+	}
+
+	for i, _ := range f.Parameters {
+		g.Id("cValue" + strconv.Itoa(i))
+	}
 }
