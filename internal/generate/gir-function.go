@@ -60,10 +60,6 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 
 func (f *Function) generateSysParamDeclaration(g *jen.Group) {
 	for _, param := range f.Parameters {
-		if !param.isIn() {
-			continue
-		}
-
 		goType := param.sysParamGoType()
 		g.Id(param.goVarName).Add(goType)
 	}

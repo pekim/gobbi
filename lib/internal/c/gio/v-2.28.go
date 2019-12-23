@@ -289,7 +289,7 @@ func Fn_content_type_get_icon(type_ string) {}
 
 func Fn_content_type_get_mime_type(type_ string) {}
 
-func Fn_content_type_guess(filename string, data *uint8, dataSize uint64) {}
+func Fn_content_type_guess(filename string, data *uint8, dataSize uint64, resultUncertain *bool) {}
 
 func Fn_content_type_guess_for_tree(root unsafe.Pointer) {}
 
@@ -305,9 +305,9 @@ func Fn_dbus_address_get_for_bus_sync(busType int, cancellable unsafe.Pointer) {
 
 // UNSUPPORTED : dbus_address_get_stream : has callback
 
-func Fn_dbus_address_get_stream_finish(res unsafe.Pointer) {}
+func Fn_dbus_address_get_stream_finish(res unsafe.Pointer, outGuid string) {}
 
-func Fn_dbus_address_get_stream_sync(address string, cancellable unsafe.Pointer) {}
+func Fn_dbus_address_get_stream_sync(address string, outGuid string, cancellable unsafe.Pointer) {}
 
 func Fn_dbus_annotation_info_lookup(annotations *unsafe.Pointer, name string) {}
 
@@ -425,7 +425,7 @@ func Fn_tls_server_connection_new(baseIoStream unsafe.Pointer, certificate unsaf
 
 func Fn_unix_is_mount_path_system_internal(mountPath string) {}
 
-func Fn_unix_mount_at(mountPath string) {}
+func Fn_unix_mount_at(mountPath string, timeRead *uint64) {}
 
 func Fn_unix_mount_compare(mount1 unsafe.Pointer, mount2 unsafe.Pointer) {}
 
@@ -451,8 +451,8 @@ func Fn_unix_mount_is_system_internal(mountEntry unsafe.Pointer) {}
 
 func Fn_unix_mount_points_changed_since(time uint64) {}
 
-func Fn_unix_mount_points_get() {}
+func Fn_unix_mount_points_get(timeRead *uint64) {}
 
 func Fn_unix_mounts_changed_since(time uint64) {}
 
-func Fn_unix_mounts_get() {}
+func Fn_unix_mounts_get(timeRead *uint64) {}

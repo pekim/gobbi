@@ -560,9 +560,10 @@ func Fn_accelerator_name(acceleratorKey uint, acceleratorMods int) {}
 func Fn_accelerator_name_with_keycode(display unsafe.Pointer, acceleratorKey uint, keycode uint, acceleratorMods int) {
 }
 
-func Fn_accelerator_parse(accelerator string) {}
+func Fn_accelerator_parse(accelerator string, acceleratorKey *uint, acceleratorMods int) {}
 
-func Fn_accelerator_parse_with_keycode(accelerator string) {}
+func Fn_accelerator_parse_with_keycode(accelerator string, acceleratorKey *uint, acceleratorCodes **uint, acceleratorMods int) {
+}
 
 func Fn_accelerator_set_default_mod_mask(defaultModMask int) {}
 
@@ -658,7 +659,7 @@ func Fn_get_current_event_device() {
 	C.gtk_get_current_event_device()
 }
 
-func Fn_get_current_event_state() {}
+func Fn_get_current_event_state(state int) {}
 
 func Fn_get_current_event_time() {
 	C.gtk_get_current_event_time()
@@ -700,9 +701,9 @@ func Fn_icon_size_from_name(name string) {}
 
 func Fn_icon_size_get_name(size int) {}
 
-func Fn_icon_size_lookup(size int) {}
+func Fn_icon_size_lookup(size int, width *int, height *int) {}
 
-func Fn_icon_size_lookup_for_settings(settings unsafe.Pointer, size int) {}
+func Fn_icon_size_lookup_for_settings(settings unsafe.Pointer, size int, width *int, height *int) {}
 
 func Fn_icon_size_register(name string, width int, height int) {}
 
@@ -855,13 +856,13 @@ func Fn_rc_get_theme_dir() {
 
 func Fn_rc_parse(filename string) {}
 
-func Fn_rc_parse_color(scanner unsafe.Pointer) {}
+func Fn_rc_parse_color(scanner unsafe.Pointer, color unsafe.Pointer) {}
 
-func Fn_rc_parse_color_full(scanner unsafe.Pointer, style unsafe.Pointer) {}
+func Fn_rc_parse_color_full(scanner unsafe.Pointer, style unsafe.Pointer, color unsafe.Pointer) {}
 
 func Fn_rc_parse_priority(scanner unsafe.Pointer, priority int) {}
 
-func Fn_rc_parse_state(scanner unsafe.Pointer) {}
+func Fn_rc_parse_state(scanner unsafe.Pointer, state int) {}
 
 func Fn_rc_parse_string(rcString string) {}
 
@@ -952,7 +953,7 @@ func Fn_render_option(context unsafe.Pointer, cr unsafe.Pointer, x float64, y fl
 func Fn_render_slider(context unsafe.Pointer, cr unsafe.Pointer, x float64, y float64, width float64, height float64, orientation int) {
 }
 
-func Fn_rgb_to_hsv(r float64, g float64, b float64) {}
+func Fn_rgb_to_hsv(r float64, g float64, b float64, h *float64, s *float64, v *float64) {}
 
 func Fn_selection_add_target(widget unsafe.Pointer, selection gdk.Atom, target gdk.Atom, info uint) {}
 
@@ -984,13 +985,13 @@ func Fn_stock_list_ids() {
 	C.gtk_stock_list_ids()
 }
 
-func Fn_stock_lookup(stockId string) {}
+func Fn_stock_lookup(stockId string, item unsafe.Pointer) {}
 
 // UNSUPPORTED : stock_set_translate_func : has callback
 
 func Fn_target_table_free(targets *TargetEntry, nTargets int) {}
 
-func Fn_target_table_new_from_list(list unsafe.Pointer) {}
+func Fn_target_table_new_from_list(list unsafe.Pointer, nTargets *int) {}
 
 func Fn_targets_include_image(targets *gdk.Atom, nTargets int, writable bool) {}
 
@@ -1014,7 +1015,7 @@ func Fn_test_find_widget(widget unsafe.Pointer, labelPattern string, widgetType 
 
 // UNSUPPORTED : test_init : has varargs
 
-func Fn_test_list_all_types() {}
+func Fn_test_list_all_types(nTypes *uint) {}
 
 func Fn_test_register_all_types() {
 	C.gtk_test_register_all_types()
@@ -1034,7 +1035,8 @@ func Fn_test_widget_click(widget unsafe.Pointer, button uint, modifiers int) {}
 
 func Fn_test_widget_send_key(widget unsafe.Pointer, keyval uint, modifiers int) {}
 
-func Fn_tree_get_row_drag_data(selectionData unsafe.Pointer) {}
+func Fn_tree_get_row_drag_data(selectionData unsafe.Pointer, treeModel *unsafe.Pointer, path *unsafe.Pointer) {
+}
 
 func Fn_tree_row_reference_deleted(proxy unsafe.Pointer, path unsafe.Pointer) {}
 

@@ -86,7 +86,7 @@ func Fn_ascii_strdown(str string, len uint64) {}
 
 func Fn_ascii_strncasecmp(s1 string, s2 string, n uint64) {}
 
-func Fn_ascii_strtod(nptr string) {}
+func Fn_ascii_strtod(nptr string, endptr string) {}
 
 func Fn_ascii_strup(str string, len uint64) {}
 
@@ -150,16 +150,18 @@ func Fn_clear_error(err *unsafe.Pointer) {}
 
 // UNSUPPORTED : clear_pointer : has callback
 
-func Fn_convert(str *uint8, len uint64, toCodeset string, fromCodeset string) {}
+func Fn_convert(str *uint8, len uint64, toCodeset string, fromCodeset string, bytesRead *uint64, bytesWritten *uint64) {
+}
 
 func Fn_convert_error_quark() {
 	C.g_convert_error_quark()
 }
 
-func Fn_convert_with_fallback(str *uint8, len uint64, toCodeset string, fromCodeset string, fallback string) {
+func Fn_convert_with_fallback(str *uint8, len uint64, toCodeset string, fromCodeset string, fallback string, bytesRead *uint64, bytesWritten *uint64) {
 }
 
-func Fn_convert_with_iconv(str *uint8, len uint64, converter IConv) {}
+func Fn_convert_with_iconv(str *uint8, len uint64, converter IConv, bytesRead *uint64, bytesWritten *uint64) {
+}
 
 func Fn_datalist_clear(datalist *unsafe.Pointer) {}
 
@@ -221,19 +223,19 @@ func Fn_file_error_quark() {
 	C.g_file_error_quark()
 }
 
-func Fn_file_get_contents(filename string) {}
+func Fn_file_get_contents(filename string, contents *uint8, length *uint64) {}
 
-func Fn_file_open_tmp(tmpl string) {}
+func Fn_file_open_tmp(tmpl string, nameUsed string) {}
 
 func Fn_file_test(filename string, test int) {}
 
-func Fn_filename_from_uri(uri string) {}
+func Fn_filename_from_uri(uri string, hostname string) {}
 
-func Fn_filename_from_utf8(utf8string string, len uint64) {}
+func Fn_filename_from_utf8(utf8string string, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
 
 func Fn_filename_to_uri(filename string, hostname string) {}
 
-func Fn_filename_to_utf8(opsysstring string, len uint64) {}
+func Fn_filename_to_utf8(opsysstring string, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
 
 func Fn_find_program_in_path(program string) {}
 
@@ -241,7 +243,7 @@ func Fn_find_program_in_path(program string) {}
 
 func Fn_free(mem unsafe.Pointer) {}
 
-func Fn_get_charset() {}
+func Fn_get_charset(charset string) {}
 
 func Fn_get_codeset() {
 	C.g_get_codeset()
@@ -281,7 +283,8 @@ func Fn_hash_table_insert(hashTable unsafe.Pointer, key unsafe.Pointer, value un
 
 func Fn_hash_table_lookup(hashTable unsafe.Pointer, key unsafe.Pointer) {}
 
-func Fn_hash_table_lookup_extended(hashTable unsafe.Pointer, lookupKey unsafe.Pointer) {}
+func Fn_hash_table_lookup_extended(hashTable unsafe.Pointer, lookupKey unsafe.Pointer, origKey *unsafe.Pointer, value *unsafe.Pointer) {
+}
 
 func Fn_hash_table_remove(hashTable unsafe.Pointer, key unsafe.Pointer) {}
 
@@ -338,9 +341,9 @@ func Fn_key_file_error_quark() {
 	C.g_key_file_error_quark()
 }
 
-func Fn_locale_from_utf8(utf8string string, len uint64) {}
+func Fn_locale_from_utf8(utf8string string, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
 
-func Fn_locale_to_utf8(opsysstring *uint8, len uint64) {}
+func Fn_locale_to_utf8(opsysstring *uint8, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
 
 // UNSUPPORTED : log : has varargs
 
@@ -446,7 +449,7 @@ func Fn_pattern_match_string(pspec unsafe.Pointer, string_ string) {}
 
 // UNSUPPORTED : printf_string_upper_bound : has va_list
 
-func Fn_propagate_error(src unsafe.Pointer) {}
+func Fn_propagate_error(dest *unsafe.Pointer, src unsafe.Pointer) {}
 
 // UNSUPPORTED : propagate_prefixed_error : has varargs
 
@@ -498,7 +501,7 @@ func Fn_shell_error_quark() {
 	C.g_shell_error_quark()
 }
 
-func Fn_shell_parse_argv(commandLine string) {}
+func Fn_shell_parse_argv(commandLine string, argcp *int, argvp *string) {}
 
 func Fn_shell_quote(unquotedString string) {}
 
@@ -530,7 +533,8 @@ func Fn_spawn_close_pid(pid int) {}
 
 func Fn_spawn_command_line_async(commandLine string) {}
 
-func Fn_spawn_command_line_sync(commandLine string) {}
+func Fn_spawn_command_line_sync(commandLine string, standardOutput *uint8, standardError *uint8, exitStatus *int) {
+}
 
 func Fn_spawn_error_quark() {
 	C.g_spawn_error_quark()
@@ -612,7 +616,7 @@ func Fn_strsplit(string_ string, delimiter string, maxTokens int) {}
 
 func Fn_strstr_len(haystack string, haystackLen uint64, needle string) {}
 
-func Fn_strtod(nptr string) {}
+func Fn_strtod(nptr string, endptr string) {}
 
 func Fn_strup(string_ string) {}
 
@@ -703,9 +707,9 @@ func Fn_try_malloc(nBytes uint64) {}
 
 func Fn_try_realloc(mem unsafe.Pointer, nBytes uint64) {}
 
-func Fn_ucs4_to_utf16(str *rune, len int64) {}
+func Fn_ucs4_to_utf16(str *rune, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_ucs4_to_utf8(str *rune, len int64) {}
+func Fn_ucs4_to_utf8(str *rune, len int64, itemsRead *int64, itemsWritten *int64) {}
 
 func Fn_unichar_break_type(c rune) {}
 
@@ -739,7 +743,7 @@ func Fn_unichar_iswide(c rune) {}
 
 func Fn_unichar_isxdigit(c rune) {}
 
-func Fn_unichar_to_utf8(c rune) {}
+func Fn_unichar_to_utf8(c rune, outbuf string) {}
 
 func Fn_unichar_tolower(c rune) {}
 
@@ -768,9 +772,9 @@ func Fn_unicode_canonical_ordering(string_ *rune, len uint64) {}
 
 func Fn_usleep(microseconds uint64) {}
 
-func Fn_utf16_to_ucs4(str *uint16, len int64) {}
+func Fn_utf16_to_ucs4(str *uint16, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_utf16_to_utf8(str *uint16, len int64) {}
+func Fn_utf16_to_utf8(str *uint16, len int64, itemsRead *int64, itemsWritten *int64) {}
 
 func Fn_utf8_casefold(str string, len uint64) {}
 
@@ -806,13 +810,13 @@ func Fn_utf8_strrchr(p string, len uint64, c rune) {}
 
 func Fn_utf8_strup(str string, len uint64) {}
 
-func Fn_utf8_to_ucs4(str string, len int64) {}
+func Fn_utf8_to_ucs4(str string, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_utf8_to_ucs4_fast(str string, len int64) {}
+func Fn_utf8_to_ucs4_fast(str string, len int64, itemsWritten *int64) {}
 
-func Fn_utf8_to_utf16(str string, len int64) {}
+func Fn_utf8_to_utf16(str string, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_utf8_validate(str *uint8, maxLen uint64) {}
+func Fn_utf8_validate(str *uint8, maxLen uint64, end string) {}
 
 func Fn_variant_get_gtype() {
 	C.g_variant_get_gtype()

@@ -55,11 +55,11 @@ func Fn_beep() {
 	C.gdk_beep()
 }
 
-func Fn_cairo_get_clip_rectangle(cr unsafe.Pointer) {}
+func Fn_cairo_get_clip_rectangle(cr unsafe.Pointer, rect unsafe.Pointer) {}
 
 func Fn_cairo_region_create_from_surface(surface unsafe.Pointer) {}
 
-func Fn_color_parse(spec string) {}
+func Fn_color_parse(spec string, color unsafe.Pointer) {}
 
 func Fn_drag_abort(context unsafe.Pointer, time uint32) {}
 
@@ -135,7 +135,7 @@ func Fn_keyboard_grab(window unsafe.Pointer, ownerEvents bool, time uint32) {}
 
 func Fn_keyboard_ungrab(time uint32) {}
 
-func Fn_keyval_convert_case(symbol uint) {}
+func Fn_keyval_convert_case(symbol uint, lower *uint, upper *uint) {}
 
 func Fn_keyval_from_name(keyvalName string) {}
 
@@ -189,12 +189,12 @@ func Fn_property_change(window unsafe.Pointer, property Atom, type_ Atom, format
 
 func Fn_property_delete(window unsafe.Pointer, property Atom) {}
 
-func Fn_property_get(window unsafe.Pointer, property Atom, type_ Atom, offset uint64, length uint64, pdelete int) {
+func Fn_property_get(window unsafe.Pointer, property Atom, type_ Atom, offset uint64, length uint64, pdelete int, actualPropertyType unsafe.Pointer, actualFormat *int, actualLength *int, data **uint8) {
 }
 
-func Fn_query_depths() {}
+func Fn_query_depths(depths **int, count *int) {}
 
-func Fn_query_visual_types() {}
+func Fn_query_visual_types(visualTypes *int, count *int) {}
 
 func Fn_selection_convert(requestor unsafe.Pointer, selection Atom, target Atom, time uint32) {}
 

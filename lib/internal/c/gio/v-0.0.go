@@ -229,7 +229,7 @@ func Fn_content_type_get_icon(type_ string) {}
 
 func Fn_content_type_get_mime_type(type_ string) {}
 
-func Fn_content_type_guess(filename string, data *uint8, dataSize uint64) {}
+func Fn_content_type_guess(filename string, data *uint8, dataSize uint64, resultUncertain *bool) {}
 
 func Fn_content_type_is_a(type_ string, supertype string) {}
 
@@ -287,7 +287,7 @@ func Fn_io_scheduler_cancel_all_jobs() {
 
 func Fn_unix_is_mount_path_system_internal(mountPath string) {}
 
-func Fn_unix_mount_at(mountPath string) {}
+func Fn_unix_mount_at(mountPath string, timeRead *uint64) {}
 
 func Fn_unix_mount_compare(mount1 unsafe.Pointer, mount2 unsafe.Pointer) {}
 
@@ -313,8 +313,8 @@ func Fn_unix_mount_is_system_internal(mountEntry unsafe.Pointer) {}
 
 func Fn_unix_mount_points_changed_since(time uint64) {}
 
-func Fn_unix_mount_points_get() {}
+func Fn_unix_mount_points_get(timeRead *uint64) {}
 
 func Fn_unix_mounts_changed_since(time uint64) {}
 
-func Fn_unix_mounts_get() {}
+func Fn_unix_mounts_get(timeRead *uint64) {}

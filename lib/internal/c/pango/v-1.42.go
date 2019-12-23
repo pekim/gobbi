@@ -125,7 +125,8 @@ func Fn_find_base_dir(text string, length int) {}
 
 func Fn_find_map(language unsafe.Pointer, engineTypeId uint, renderTypeId uint) {}
 
-func Fn_find_paragraph_boundary(text string, length int) {}
+func Fn_find_paragraph_boundary(text string, length int, paragraphDelimiterIndex *int, nextParagraphStart *int) {
+}
 
 func Fn_font_description_from_string(str string) {}
 
@@ -160,36 +161,38 @@ func Fn_language_get_default() {
 
 func Fn_log2vis_get_embedding_levels(text string, length int, pbaseDir int) {}
 
-func Fn_lookup_aliases(fontname string) {}
+func Fn_lookup_aliases(fontname string, families *string, nFamilies *int) {}
 
-func Fn_markup_parser_finish(context unsafe.Pointer) {}
+func Fn_markup_parser_finish(context unsafe.Pointer, attrList *unsafe.Pointer, text string, accelChar *rune) {
+}
 
 func Fn_markup_parser_new(accelMarker rune) {}
 
 // UNSUPPORTED : module_register : blacklisted
-func Fn_parse_enum(type_ uint64, str string, warn bool) {}
+func Fn_parse_enum(type_ uint64, str string, value *int, warn bool, possibleValues string) {}
 
-func Fn_parse_markup(markupText string, length int, accelMarker rune) {}
+func Fn_parse_markup(markupText string, length int, accelMarker rune, attrList *unsafe.Pointer, text string, accelChar *rune) {
+}
 
-func Fn_parse_stretch(str string, warn bool) {}
+func Fn_parse_stretch(str string, stretch int, warn bool) {}
 
-func Fn_parse_style(str string, warn bool) {}
+func Fn_parse_style(str string, style int, warn bool) {}
 
-func Fn_parse_variant(str string, warn bool) {}
+func Fn_parse_variant(str string, variant int, warn bool) {}
 
-func Fn_parse_weight(str string, warn bool) {}
+func Fn_parse_weight(str string, weight int, warn bool) {}
 
 func Fn_quantize_line_geometry(thickness *int, position *int) {}
 
-func Fn_read_line(stream unsafe.Pointer) {}
+func Fn_read_line(stream unsafe.Pointer, str unsafe.Pointer) {}
 
 func Fn_reorder_items(logicalItems unsafe.Pointer) {}
 
-func Fn_scan_int(pos string) {}
+func Fn_scan_int(pos string, out *int) {}
 
-func Fn_scan_string(pos string) {}
+func Fn_scan_string(pos string, out unsafe.Pointer) {}
 
-func Fn_scan_word(pos string) {}
+func Fn_scan_word(pos string, out unsafe.Pointer) {}
 
 func Fn_script_for_unichar(ch rune) {}
 

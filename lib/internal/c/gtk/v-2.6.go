@@ -550,7 +550,7 @@ func Fn_accelerator_get_label(acceleratorKey uint, acceleratorMods int) {}
 
 func Fn_accelerator_name(acceleratorKey uint, acceleratorMods int) {}
 
-func Fn_accelerator_parse(accelerator string) {}
+func Fn_accelerator_parse(accelerator string, acceleratorKey *uint, acceleratorMods int) {}
 
 func Fn_accelerator_set_default_mod_mask(defaultModMask int) {}
 
@@ -623,7 +623,7 @@ func Fn_get_current_event_device() {
 	C.gtk_get_current_event_device()
 }
 
-func Fn_get_current_event_state() {}
+func Fn_get_current_event_state(state int) {}
 
 func Fn_get_current_event_time() {
 	C.gtk_get_current_event_time()
@@ -649,9 +649,9 @@ func Fn_icon_size_from_name(name string) {}
 
 func Fn_icon_size_get_name(size int) {}
 
-func Fn_icon_size_lookup(size int) {}
+func Fn_icon_size_lookup(size int, width *int, height *int) {}
 
-func Fn_icon_size_lookup_for_settings(settings unsafe.Pointer, size int) {}
+func Fn_icon_size_lookup_for_settings(settings unsafe.Pointer, size int, width *int, height *int) {}
 
 func Fn_icon_size_register(name string, width int, height int) {}
 
@@ -791,11 +791,11 @@ func Fn_rc_get_theme_dir() {
 
 func Fn_rc_parse(filename string) {}
 
-func Fn_rc_parse_color(scanner unsafe.Pointer) {}
+func Fn_rc_parse_color(scanner unsafe.Pointer, color unsafe.Pointer) {}
 
 func Fn_rc_parse_priority(scanner unsafe.Pointer, priority int) {}
 
-func Fn_rc_parse_state(scanner unsafe.Pointer) {}
+func Fn_rc_parse_state(scanner unsafe.Pointer, state int) {}
 
 func Fn_rc_parse_string(rcString string) {}
 
@@ -864,7 +864,7 @@ func Fn_stock_list_ids() {
 	C.gtk_stock_list_ids()
 }
 
-func Fn_stock_lookup(stockId string) {}
+func Fn_stock_lookup(stockId string, item unsafe.Pointer) {}
 
 // UNSUPPORTED : stock_set_translate_func : has callback
 
@@ -874,7 +874,8 @@ func Fn_stock_lookup(stockId string) {}
 
 // UNSUPPORTED : test_init : has varargs
 
-func Fn_tree_get_row_drag_data(selectionData unsafe.Pointer) {}
+func Fn_tree_get_row_drag_data(selectionData unsafe.Pointer, treeModel *unsafe.Pointer, path *unsafe.Pointer) {
+}
 
 func Fn_tree_row_reference_deleted(proxy unsafe.Pointer, path unsafe.Pointer) {}
 

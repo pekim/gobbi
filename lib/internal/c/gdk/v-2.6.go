@@ -56,11 +56,11 @@ func Fn_beep() {
 	C.gdk_beep()
 }
 
-func Fn_cairo_get_clip_rectangle(cr unsafe.Pointer) {}
+func Fn_cairo_get_clip_rectangle(cr unsafe.Pointer, rect unsafe.Pointer) {}
 
 func Fn_cairo_region_create_from_surface(surface unsafe.Pointer) {}
 
-func Fn_color_parse(spec string) {}
+func Fn_color_parse(spec string, color unsafe.Pointer) {}
 
 func Fn_drag_abort(context unsafe.Pointer, time uint32) {}
 
@@ -73,7 +73,7 @@ func Fn_drag_drop(context unsafe.Pointer, time uint32) {}
 
 func Fn_drag_drop_succeeded(context unsafe.Pointer) {}
 
-func Fn_drag_find_window_for_screen(context unsafe.Pointer, dragWindow unsafe.Pointer, screen unsafe.Pointer, xRoot int, yRoot int) {
+func Fn_drag_find_window_for_screen(context unsafe.Pointer, dragWindow unsafe.Pointer, screen unsafe.Pointer, xRoot int, yRoot int, destWindow *unsafe.Pointer, protocol int) {
 }
 
 func Fn_drag_get_selection(context unsafe.Pointer) {}
@@ -145,7 +145,7 @@ func Fn_keyboard_grab(window unsafe.Pointer, ownerEvents bool, time uint32) {}
 
 func Fn_keyboard_ungrab(time uint32) {}
 
-func Fn_keyval_convert_case(symbol uint) {}
+func Fn_keyval_convert_case(symbol uint, lower *uint, upper *uint) {}
 
 func Fn_keyval_from_name(keyvalName string) {}
 
@@ -207,12 +207,12 @@ func Fn_property_change(window unsafe.Pointer, property Atom, type_ Atom, format
 
 func Fn_property_delete(window unsafe.Pointer, property Atom) {}
 
-func Fn_property_get(window unsafe.Pointer, property Atom, type_ Atom, offset uint64, length uint64, pdelete int) {
+func Fn_property_get(window unsafe.Pointer, property Atom, type_ Atom, offset uint64, length uint64, pdelete int, actualPropertyType unsafe.Pointer, actualFormat *int, actualLength *int, data **uint8) {
 }
 
-func Fn_query_depths() {}
+func Fn_query_depths(depths **int, count *int) {}
 
-func Fn_query_visual_types() {}
+func Fn_query_visual_types(visualTypes *int, count *int) {}
 
 func Fn_selection_convert(requestor unsafe.Pointer, selection Atom, target Atom, time uint32) {}
 
@@ -244,7 +244,7 @@ func Fn_setting_get(name string, value unsafe.Pointer) {}
 
 func Fn_synthesize_window_state(window unsafe.Pointer, unsetFlags int, setFlags int) {}
 
-func Fn_text_property_to_utf8_list_for_display(display unsafe.Pointer, encoding Atom, format int, text *uint8, length int) {
+func Fn_text_property_to_utf8_list_for_display(display unsafe.Pointer, encoding Atom, format int, text *uint8, length int, list *string) {
 }
 
 // UNSUPPORTED : threads_add_idle : has callback

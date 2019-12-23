@@ -93,11 +93,11 @@ func Fn_ascii_strdown(str string, len uint64) {}
 
 func Fn_ascii_strncasecmp(s1 string, s2 string, n uint64) {}
 
-func Fn_ascii_strtod(nptr string) {}
+func Fn_ascii_strtod(nptr string, endptr string) {}
 
-func Fn_ascii_strtoll(nptr string, base uint) {}
+func Fn_ascii_strtoll(nptr string, endptr string, base uint) {}
 
-func Fn_ascii_strtoull(nptr string, base uint) {}
+func Fn_ascii_strtoull(nptr string, endptr string, base uint) {}
 
 func Fn_ascii_strup(str string, len uint64) {}
 
@@ -148,17 +148,18 @@ func Fn_atomic_pointer_set(atomic unsafe.Pointer, newval unsafe.Pointer) {}
 
 // UNSUPPORTED : atomic_rc_box_release_full : has callback
 
-func Fn_base64_decode(text string) {}
+func Fn_base64_decode(text string, outLen *uint64) {}
 
 func Fn_base64_decode_inplace(text *uint8, outLen *uint64) {}
 
-func Fn_base64_decode_step(in *uint8, len uint64, state *int, save *uint) {}
+func Fn_base64_decode_step(in *uint8, len uint64, out *uint8, state *int, save *uint) {}
 
 func Fn_base64_encode(data *uint8, len uint64) {}
 
-func Fn_base64_encode_close(breakLines bool, state *int, save *int) {}
+func Fn_base64_encode_close(breakLines bool, out *uint8, state *int, save *int) {}
 
-func Fn_base64_encode_step(in *uint8, len uint64, breakLines bool, state *int, save *int) {}
+func Fn_base64_encode_step(in *uint8, len uint64, breakLines bool, out *uint8, state *int, save *int) {
+}
 
 func Fn_basename(fileName string) {}
 
@@ -218,16 +219,18 @@ func Fn_compute_checksum_for_data(checksumType int, data *uint8, length uint64) 
 
 func Fn_compute_checksum_for_string(checksumType int, str string, length uint64) {}
 
-func Fn_convert(str *uint8, len uint64, toCodeset string, fromCodeset string) {}
+func Fn_convert(str *uint8, len uint64, toCodeset string, fromCodeset string, bytesRead *uint64, bytesWritten *uint64) {
+}
 
 func Fn_convert_error_quark() {
 	C.g_convert_error_quark()
 }
 
-func Fn_convert_with_fallback(str *uint8, len uint64, toCodeset string, fromCodeset string, fallback string) {
+func Fn_convert_with_fallback(str *uint8, len uint64, toCodeset string, fromCodeset string, fallback string, bytesRead *uint64, bytesWritten *uint64) {
 }
 
-func Fn_convert_with_iconv(str *uint8, len uint64, converter IConv) {}
+func Fn_convert_with_iconv(str *uint8, len uint64, converter IConv, bytesRead *uint64, bytesWritten *uint64) {
+}
 
 func Fn_datalist_clear(datalist *unsafe.Pointer) {}
 
@@ -307,9 +310,9 @@ func Fn_file_error_quark() {
 	C.g_file_error_quark()
 }
 
-func Fn_file_get_contents(filename string) {}
+func Fn_file_get_contents(filename string, contents *uint8, length *uint64) {}
 
-func Fn_file_open_tmp(tmpl string) {}
+func Fn_file_open_tmp(tmpl string, nameUsed string) {}
 
 func Fn_file_read_link(filename string) {}
 
@@ -321,13 +324,13 @@ func Fn_filename_display_basename(filename string) {}
 
 func Fn_filename_display_name(filename string) {}
 
-func Fn_filename_from_uri(uri string) {}
+func Fn_filename_from_uri(uri string, hostname string) {}
 
-func Fn_filename_from_utf8(utf8string string, len uint64) {}
+func Fn_filename_from_utf8(utf8string string, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
 
 func Fn_filename_to_uri(filename string, hostname string) {}
 
-func Fn_filename_to_utf8(opsysstring string, len uint64) {}
+func Fn_filename_to_utf8(opsysstring string, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
 
 func Fn_find_program_in_path(program string) {}
 
@@ -341,7 +344,7 @@ func Fn_get_application_name() {
 	C.g_get_application_name()
 }
 
-func Fn_get_charset() {}
+func Fn_get_charset(charset string) {}
 
 func Fn_get_codeset() {
 	C.g_get_codeset()
@@ -353,7 +356,7 @@ func Fn_get_current_dir() {
 
 func Fn_get_current_time(result unsafe.Pointer) {}
 
-func Fn_get_filename_charsets() {}
+func Fn_get_filename_charsets(filenameCharsets *string) {}
 
 func Fn_get_home_dir() {
 	C.g_get_home_dir()
@@ -413,7 +416,8 @@ func Fn_hash_table_insert(hashTable unsafe.Pointer, key unsafe.Pointer, value un
 
 func Fn_hash_table_lookup(hashTable unsafe.Pointer, key unsafe.Pointer) {}
 
-func Fn_hash_table_lookup_extended(hashTable unsafe.Pointer, lookupKey unsafe.Pointer) {}
+func Fn_hash_table_lookup_extended(hashTable unsafe.Pointer, lookupKey unsafe.Pointer, origKey *unsafe.Pointer, value *unsafe.Pointer) {
+}
 
 func Fn_hash_table_remove(hashTable unsafe.Pointer, key unsafe.Pointer) {}
 
@@ -498,9 +502,9 @@ func Fn_listenv() {
 	C.g_listenv()
 }
 
-func Fn_locale_from_utf8(utf8string string, len uint64) {}
+func Fn_locale_from_utf8(utf8string string, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
 
-func Fn_locale_to_utf8(opsysstring *uint8, len uint64) {}
+func Fn_locale_to_utf8(opsysstring *uint8, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
 
 // UNSUPPORTED : log : has varargs
 
@@ -628,7 +632,7 @@ func Fn_poll(fds unsafe.Pointer, nfds uint, timeout int) {}
 
 // UNSUPPORTED : printf_string_upper_bound : has va_list
 
-func Fn_propagate_error(src unsafe.Pointer) {}
+func Fn_propagate_error(dest *unsafe.Pointer, src unsafe.Pointer) {}
 
 // UNSUPPORTED : propagate_prefixed_error : has varargs
 
@@ -664,7 +668,7 @@ func Fn_realloc(mem unsafe.Pointer, nBytes uint64) {}
 
 func Fn_realloc_n(mem unsafe.Pointer, nBlocks uint64, nBlockBytes uint64) {}
 
-func Fn_regex_check_replacement(replacement string) {}
+func Fn_regex_check_replacement(replacement string, hasReferences *bool) {}
 
 func Fn_regex_error_quark() {
 	C.g_regex_error_quark()
@@ -706,7 +710,7 @@ func Fn_set_application_name(applicationName string) {}
 
 // UNSUPPORTED : set_error : has varargs
 
-func Fn_set_error_literal(domain uint32, code int, message string) {}
+func Fn_set_error_literal(err *unsafe.Pointer, domain uint32, code int, message string) {}
 
 func Fn_set_prgname(prgname string) {}
 
@@ -720,7 +724,7 @@ func Fn_shell_error_quark() {
 	C.g_shell_error_quark()
 }
 
-func Fn_shell_parse_argv(commandLine string) {}
+func Fn_shell_parse_argv(commandLine string, argcp *int, argvp *string) {}
 
 func Fn_shell_quote(unquotedString string) {}
 
@@ -762,7 +766,8 @@ func Fn_spawn_close_pid(pid int) {}
 
 func Fn_spawn_command_line_async(commandLine string) {}
 
-func Fn_spawn_command_line_sync(commandLine string) {}
+func Fn_spawn_command_line_sync(commandLine string, standardOutput *uint8, standardError *uint8, exitStatus *int) {
+}
 
 func Fn_spawn_error_quark() {
 	C.g_spawn_error_quark()
@@ -854,7 +859,7 @@ func Fn_strsplit_set(string_ string, delimiters string, maxTokens int) {}
 
 func Fn_strstr_len(haystack string, haystackLen uint64, needle string) {}
 
-func Fn_strtod(nptr string) {}
+func Fn_strtod(nptr string, endptr string) {}
 
 func Fn_strup(string_ string) {}
 
@@ -983,7 +988,7 @@ func Fn_thread_yield() {
 	C.g_thread_yield()
 }
 
-func Fn_time_val_from_iso8601(isoDate string) {}
+func Fn_time_val_from_iso8601(isoDate string, time unsafe.Pointer) {}
 
 // UNSUPPORTED : timeout_add : has callback
 
@@ -1017,9 +1022,9 @@ func Fn_try_realloc(mem unsafe.Pointer, nBytes uint64) {}
 
 func Fn_try_realloc_n(mem unsafe.Pointer, nBlocks uint64, nBlockBytes uint64) {}
 
-func Fn_ucs4_to_utf16(str *rune, len int64) {}
+func Fn_ucs4_to_utf16(str *rune, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_ucs4_to_utf8(str *rune, len int64) {}
+func Fn_ucs4_to_utf8(str *rune, len int64, itemsRead *int64, itemsWritten *int64) {}
 
 func Fn_unichar_break_type(c rune) {}
 
@@ -1065,7 +1070,7 @@ func Fn_unichar_isxdigit(c rune) {}
 
 func Fn_unichar_iszerowidth(c rune) {}
 
-func Fn_unichar_to_utf8(c rune) {}
+func Fn_unichar_to_utf8(c rune, outbuf string) {}
 
 func Fn_unichar_tolower(c rune) {}
 
@@ -1108,9 +1113,9 @@ func Fn_uri_unescape_string(escapedString string, illegalCharacters string) {}
 
 func Fn_usleep(microseconds uint64) {}
 
-func Fn_utf16_to_ucs4(str *uint16, len int64) {}
+func Fn_utf16_to_ucs4(str *uint16, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_utf16_to_utf8(str *uint16, len int64) {}
+func Fn_utf16_to_utf8(str *uint16, len int64, itemsRead *int64, itemsWritten *int64) {}
 
 func Fn_utf8_casefold(str string, len uint64) {}
 
@@ -1150,13 +1155,13 @@ func Fn_utf8_strreverse(str string, len uint64) {}
 
 func Fn_utf8_strup(str string, len uint64) {}
 
-func Fn_utf8_to_ucs4(str string, len int64) {}
+func Fn_utf8_to_ucs4(str string, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_utf8_to_ucs4_fast(str string, len int64) {}
+func Fn_utf8_to_ucs4_fast(str string, len int64, itemsWritten *int64) {}
 
-func Fn_utf8_to_utf16(str string, len int64) {}
+func Fn_utf8_to_utf16(str string, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_utf8_validate(str *uint8, maxLen uint64) {}
+func Fn_utf8_validate(str *uint8, maxLen uint64, end string) {}
 
 func Fn_variant_get_gtype() {
 	C.g_variant_get_gtype()
@@ -1182,7 +1187,7 @@ func Fn_variant_type_string_get_depth_(typeString string) {}
 
 func Fn_variant_type_string_is_valid(typeString string) {}
 
-func Fn_variant_type_string_scan(string_ string, limit string) {}
+func Fn_variant_type_string_scan(string_ string, limit string, endptr string) {}
 
 // UNSUPPORTED : vasprintf : has va_list
 

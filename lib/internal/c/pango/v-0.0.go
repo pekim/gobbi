@@ -97,7 +97,8 @@ func Fn_default_break(text string, length int, analysis unsafe.Pointer, attrs un
 
 func Fn_find_map(language unsafe.Pointer, engineTypeId uint, renderTypeId uint) {}
 
-func Fn_find_paragraph_boundary(text string, length int) {}
+func Fn_find_paragraph_boundary(text string, length int, paragraphDelimiterIndex *int, nextParagraphStart *int) {
+}
 
 func Fn_font_description_from_string(str string) {}
 
@@ -113,28 +114,29 @@ func Fn_itemize(context unsafe.Pointer, text string, startIndex int, length int,
 
 func Fn_language_from_string(language string) {}
 
-func Fn_lookup_aliases(fontname string) {}
+func Fn_lookup_aliases(fontname string, families *string, nFamilies *int) {}
 
 // UNSUPPORTED : module_register : blacklisted
-func Fn_parse_markup(markupText string, length int, accelMarker rune) {}
+func Fn_parse_markup(markupText string, length int, accelMarker rune, attrList *unsafe.Pointer, text string, accelChar *rune) {
+}
 
-func Fn_parse_stretch(str string, warn bool) {}
+func Fn_parse_stretch(str string, stretch int, warn bool) {}
 
-func Fn_parse_style(str string, warn bool) {}
+func Fn_parse_style(str string, style int, warn bool) {}
 
-func Fn_parse_variant(str string, warn bool) {}
+func Fn_parse_variant(str string, variant int, warn bool) {}
 
-func Fn_parse_weight(str string, warn bool) {}
+func Fn_parse_weight(str string, weight int, warn bool) {}
 
-func Fn_read_line(stream unsafe.Pointer) {}
+func Fn_read_line(stream unsafe.Pointer, str unsafe.Pointer) {}
 
 func Fn_reorder_items(logicalItems unsafe.Pointer) {}
 
-func Fn_scan_int(pos string) {}
+func Fn_scan_int(pos string, out *int) {}
 
-func Fn_scan_string(pos string) {}
+func Fn_scan_string(pos string, out unsafe.Pointer) {}
 
-func Fn_scan_word(pos string) {}
+func Fn_scan_word(pos string, out unsafe.Pointer) {}
 
 func Fn_shape(text string, length int, analysis unsafe.Pointer, glyphs unsafe.Pointer) {}
 

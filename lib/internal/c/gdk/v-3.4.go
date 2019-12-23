@@ -61,7 +61,7 @@ func Fn_beep() {
 
 func Fn_cairo_create(window unsafe.Pointer) {}
 
-func Fn_cairo_get_clip_rectangle(cr unsafe.Pointer) {}
+func Fn_cairo_get_clip_rectangle(cr unsafe.Pointer, rect unsafe.Pointer) {}
 
 func Fn_cairo_rectangle(cr unsafe.Pointer, rectangle unsafe.Pointer) {}
 
@@ -78,7 +78,7 @@ func Fn_cairo_set_source_rgba(cr unsafe.Pointer, rgba unsafe.Pointer) {}
 
 func Fn_cairo_set_source_window(cr unsafe.Pointer, window unsafe.Pointer, x float64, y float64) {}
 
-func Fn_color_parse(spec string) {}
+func Fn_color_parse(spec string, color unsafe.Pointer) {}
 
 func Fn_disable_multidevice() {
 	C.gdk_disable_multidevice()
@@ -95,7 +95,7 @@ func Fn_drag_drop(context unsafe.Pointer, time uint32) {}
 
 func Fn_drag_drop_succeeded(context unsafe.Pointer) {}
 
-func Fn_drag_find_window_for_screen(context unsafe.Pointer, dragWindow unsafe.Pointer, screen unsafe.Pointer, xRoot int, yRoot int) {
+func Fn_drag_find_window_for_screen(context unsafe.Pointer, dragWindow unsafe.Pointer, screen unsafe.Pointer, xRoot int, yRoot int, destWindow *unsafe.Pointer, protocol int) {
 }
 
 func Fn_drag_get_selection(context unsafe.Pointer) {}
@@ -133,11 +133,11 @@ func Fn_event_peek() {
 
 func Fn_event_request_motions(event unsafe.Pointer) {}
 
-func Fn_events_get_angle(event1 unsafe.Pointer, event2 unsafe.Pointer) {}
+func Fn_events_get_angle(event1 unsafe.Pointer, event2 unsafe.Pointer, angle *float64) {}
 
-func Fn_events_get_center(event1 unsafe.Pointer, event2 unsafe.Pointer) {}
+func Fn_events_get_center(event1 unsafe.Pointer, event2 unsafe.Pointer, x *float64, y *float64) {}
 
-func Fn_events_get_distance(event1 unsafe.Pointer, event2 unsafe.Pointer) {}
+func Fn_events_get_distance(event1 unsafe.Pointer, event2 unsafe.Pointer, distance *float64) {}
 
 func Fn_events_pending() {
 	C.gdk_events_pending()
@@ -179,7 +179,7 @@ func Fn_keyboard_grab(window unsafe.Pointer, ownerEvents bool, time uint32) {}
 
 func Fn_keyboard_ungrab(time uint32) {}
 
-func Fn_keyval_convert_case(symbol uint) {}
+func Fn_keyval_convert_case(symbol uint, lower *uint, upper *uint) {}
 
 func Fn_keyval_from_name(keyvalName string) {}
 
@@ -247,12 +247,12 @@ func Fn_property_change(window unsafe.Pointer, property Atom, type_ Atom, format
 
 func Fn_property_delete(window unsafe.Pointer, property Atom) {}
 
-func Fn_property_get(window unsafe.Pointer, property Atom, type_ Atom, offset uint64, length uint64, pdelete int) {
+func Fn_property_get(window unsafe.Pointer, property Atom, type_ Atom, offset uint64, length uint64, pdelete int, actualPropertyType unsafe.Pointer, actualFormat *int, actualLength *int, data **uint8) {
 }
 
-func Fn_query_depths() {}
+func Fn_query_depths(depths **int, count *int) {}
 
-func Fn_query_visual_types() {}
+func Fn_query_visual_types(visualTypes *int, count *int) {}
 
 func Fn_selection_convert(requestor unsafe.Pointer, selection Atom, target Atom, time uint32) {}
 
@@ -292,7 +292,7 @@ func Fn_test_simulate_button(window unsafe.Pointer, x int, y int, button uint, m
 func Fn_test_simulate_key(window unsafe.Pointer, x int, y int, keyval uint, modifiers int, keyPressrelease int) {
 }
 
-func Fn_text_property_to_utf8_list_for_display(display unsafe.Pointer, encoding Atom, format int, text *uint8, length int) {
+func Fn_text_property_to_utf8_list_for_display(display unsafe.Pointer, encoding Atom, format int, text *uint8, length int, list *string) {
 }
 
 // UNSUPPORTED : threads_add_idle : has callback

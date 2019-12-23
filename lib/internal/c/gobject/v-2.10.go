@@ -116,7 +116,7 @@ func Fn_cclosure_marshal_VOID__VOID(closure unsafe.Pointer, returnValue unsafe.P
 
 // UNSUPPORTED : cclosure_new_swap : has callback
 
-func Fn_enum_complete_type_info(gEnumType uint64, constValues unsafe.Pointer) {}
+func Fn_enum_complete_type_info(gEnumType uint64, info unsafe.Pointer, constValues unsafe.Pointer) {}
 
 func Fn_enum_get_value(enumClass unsafe.Pointer, value int) {}
 
@@ -126,7 +126,8 @@ func Fn_enum_get_value_by_nick(enumClass unsafe.Pointer, nick string) {}
 
 func Fn_enum_register_static(name string, constStaticValues unsafe.Pointer) {}
 
-func Fn_flags_complete_type_info(gFlagsType uint64, constValues unsafe.Pointer) {}
+func Fn_flags_complete_type_info(gFlagsType uint64, info unsafe.Pointer, constValues unsafe.Pointer) {
+}
 
 func Fn_flags_get_first_value(flagsClass unsafe.Pointer, value uint) {}
 
@@ -269,7 +270,7 @@ func Fn_signal_handlers_unblock_matched(instance unsafe.Pointer, mask int, signa
 func Fn_signal_has_handler_pending(instance unsafe.Pointer, signalId uint, detail uint32, mayBeBlocked bool) {
 }
 
-func Fn_signal_list_ids(itype uint64) {}
+func Fn_signal_list_ids(itype uint64, nIds *uint) {}
 
 func Fn_signal_lookup(name string, itype uint64) {}
 
@@ -288,9 +289,10 @@ func Fn_signal_override_class_closure(signalId uint, instanceType uint64, classC
 
 // UNSUPPORTED : signal_override_class_handler : has callback
 
-func Fn_signal_parse_name(detailedSignal string, itype uint64, forceDetailQuark bool) {}
+func Fn_signal_parse_name(detailedSignal string, itype uint64, signalIdP *uint, detailP uint32, forceDetailQuark bool) {
+}
 
-func Fn_signal_query(signalId uint) {}
+func Fn_signal_query(signalId uint, query unsafe.Pointer) {}
 
 func Fn_signal_remove_emission_hook(signalId uint, hookId uint64) {}
 
@@ -335,7 +337,7 @@ func Fn_type_check_value(value unsafe.Pointer) {}
 
 func Fn_type_check_value_holds(value unsafe.Pointer, type_ uint64) {}
 
-func Fn_type_children(type_ uint64) {}
+func Fn_type_children(type_ uint64, nChildren *uint) {}
 
 func Fn_type_class_adjust_private_offset(gClass unsafe.Pointer, privateSizeOrOffset *int) {}
 
@@ -381,9 +383,9 @@ func Fn_type_interface_get_plugin(instanceType uint64, interfaceType uint64) {}
 
 func Fn_type_interface_peek(instanceClass unsafe.Pointer, ifaceType uint64) {}
 
-func Fn_type_interface_prerequisites(interfaceType uint64) {}
+func Fn_type_interface_prerequisites(interfaceType uint64, nPrerequisites *uint) {}
 
-func Fn_type_interfaces(type_ uint64) {}
+func Fn_type_interfaces(type_ uint64, nInterfaces *uint) {}
 
 func Fn_type_is_a(type_ uint64, isAType uint64) {}
 
@@ -399,7 +401,7 @@ func Fn_type_parent(type_ uint64) {}
 
 func Fn_type_qname(type_ uint64) {}
 
-func Fn_type_query(type_ uint64) {}
+func Fn_type_query(type_ uint64, query unsafe.Pointer) {}
 
 func Fn_type_register_dynamic(parentType uint64, typeName string, plugin unsafe.Pointer, flags int) {}
 
