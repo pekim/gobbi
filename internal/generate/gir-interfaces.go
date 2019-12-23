@@ -1,10 +1,5 @@
 package generate
 
-import (
-	"github.com/blang/semver"
-	"github.com/dave/jennifer/jen"
-)
-
 type Interfaces []*Interface
 
 func (ii Interfaces) init(ns *Namespace) {
@@ -23,12 +18,12 @@ func (ii Interfaces) byName(name string) (*Interface, bool) {
 	return nil, false
 }
 
-func (ii Interfaces) generateSys(f *jen.File, version semver.Version) {
-	f.Comment("interfaces")
-
-	for _, i := range ii {
-		i.generateSys(f, version)
-	}
-
-	f.Line()
-}
+//func (ii Interfaces) generateSys(f *jen.File, version semver.Version) {
+//	f.Comment("interfaces")
+//
+//	for _, i := range ii {
+//		i.generateSys(f, version)
+//	}
+//
+//	f.Line()
+//}

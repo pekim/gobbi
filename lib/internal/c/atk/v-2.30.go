@@ -3,31 +3,13 @@
 
 package atk
 
+import (
+	glib "github.com/pekim/gobbi/lib/internal/c/glib"
+	"unsafe"
+)
+
 // #include <atk/atk.h>
 import "C"
-
-// aliases
-type AttributeSet C.AtkAttributeSet
-type State C.AtkState
-
-// bitfields
-type HyperlinkStateFlags C.AtkHyperlinkStateFlags
-
-// enumerations
-type CoordType C.AtkCoordType
-type KeyEventType C.AtkKeyEventType
-type Layer C.AtkLayer
-type RelationType C.AtkRelationType
-type Role C.AtkRole
-type ScrollType C.AtkScrollType
-type StateType C.AtkStateType
-type TextAttribute C.AtkTextAttribute
-type TextBoundary C.AtkTextBoundary
-type TextClipType C.AtkTextClipType
-type TextGranularity C.AtkTextGranularity
-type ValueType C.AtkValueType
-
-// unions
 
 // records
 type ActionIface C.AtkActionIface
@@ -67,50 +49,17 @@ type UtilClass C.AtkUtilClass
 type ValueIface C.AtkValueIface
 type WindowIface C.AtkWindowIface
 
-// classes
-type GObjectAccessible C.AtkGObjectAccessible
-type Hyperlink C.AtkHyperlink
-type Misc C.AtkMisc
-type NoOpObject C.AtkNoOpObject
-type NoOpObjectFactory C.AtkNoOpObjectFactory
-type Object C.AtkObject
-type ObjectFactory C.AtkObjectFactory
-type Plug C.AtkPlug
-type Registry C.AtkRegistry
-type Relation C.AtkRelation
-type RelationSet C.AtkRelationSet
-type Socket C.AtkSocket
-type StateSet C.AtkStateSet
-type Util C.AtkUtil
-
-// interfaces
-type Action C.AtkAction
-type Component C.AtkComponent
-type Document C.AtkDocument
-type EditableText C.AtkEditableText
-type HyperlinkImpl C.AtkHyperlinkImpl
-type Hypertext C.AtkHypertext
-type Image C.AtkImage
-type ImplementorIface C.AtkImplementorIface
-type Selection C.AtkSelection
-type StreamableContent C.AtkStreamableContent
-type Table C.AtkTable
-type TableCell C.AtkTableCell
-type Text C.AtkText
-type Value C.AtkValue
-type Window C.AtkWindow
-
 // UNSUPPORTED : add_focus_tracker : has callback
 
 // UNSUPPORTED : add_global_event_listener : has callback
 
 // UNSUPPORTED : add_key_event_listener : has callback
 
-func Fn_attribute_set_free(attribSet *AttributeSet) {}
+func Fn_attribute_set_free(attribSet glib.SList) {}
 
 // UNSUPPORTED : focus_tracker_init : has callback
 
-func Fn_focus_tracker_notify(object *Object) {}
+func Fn_focus_tracker_notify(object unsafe.Pointer) {}
 
 func Fn_get_binary_age() {
 	C.atk_get_binary_age()
@@ -158,7 +107,7 @@ func Fn_get_version() {
 
 func Fn_relation_type_for_name(name string) {}
 
-func Fn_relation_type_get_name(type_ RelationType) {}
+func Fn_relation_type_get_name(type_ int) {}
 
 func Fn_relation_type_register(name string) {}
 
@@ -170,28 +119,28 @@ func Fn_remove_key_event_listener(listenerId uint) {}
 
 func Fn_role_for_name(name string) {}
 
-func Fn_role_get_localized_name(role Role) {}
+func Fn_role_get_localized_name(role int) {}
 
-func Fn_role_get_name(role Role) {}
+func Fn_role_get_name(role int) {}
 
 func Fn_role_register(name string) {}
 
 func Fn_state_type_for_name(name string) {}
 
-func Fn_state_type_get_name(type_ StateType) {}
+func Fn_state_type_get_name(type_ int) {}
 
 func Fn_state_type_register(name string) {}
 
 func Fn_text_attribute_for_name(name string) {}
 
-func Fn_text_attribute_get_name(attr TextAttribute) {}
+func Fn_text_attribute_get_name(attr int) {}
 
-func Fn_text_attribute_get_value(attr TextAttribute, index int) {}
+func Fn_text_attribute_get_value(attr int, index int) {}
 
 func Fn_text_attribute_register(name string) {}
 
-func Fn_text_free_ranges(ranges **TextRange) {}
+func Fn_text_free_ranges(ranges *unsafe.Pointer) {}
 
-func Fn_value_type_get_localized_name(valueType ValueType) {}
+func Fn_value_type_get_localized_name(valueType int) {}
 
-func Fn_value_type_get_name(valueType ValueType) {}
+func Fn_value_type_get_name(valueType int) {}

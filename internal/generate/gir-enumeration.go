@@ -2,7 +2,6 @@ package generate
 
 import (
 	"github.com/blang/semver"
-	"github.com/dave/jennifer/jen"
 )
 
 type Enumeration struct {
@@ -31,16 +30,16 @@ func (e *Enumeration) init(ns *Namespace) {
 	e.namespace.versions.add(e.version)
 }
 
-func (e *Enumeration) generateSys(f *jen.File, version semver.Version) {
-	if e.blacklist {
-		f.Commentf("UNSUPPORTED : %s : blacklisted", e.Name)
-		return
-	}
-
-	if e.version.GT(version) {
-		return
-	}
-
-	// GEN: type SomeEnum SomeCType
-	f.Type().Id(e.Name).Qual("C", e.CType)
-}
+//func (e *Enumeration) generateSys(f *jen.File, version semver.Version) {
+//	if e.blacklist {
+//		f.Commentf("UNSUPPORTED : %s : blacklisted", e.Name)
+//		return
+//	}
+//
+//	if e.version.GT(version) {
+//		return
+//	}
+//
+//	// GEN: type SomeEnum SomeCType
+//	f.Type().Id(e.Name).Qual("C", e.CType)
+//}

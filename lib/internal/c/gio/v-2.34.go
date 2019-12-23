@@ -4,7 +4,6 @@
 package gio
 
 import (
-	glib "github.com/pekim/gobbi/lib/internal/c/glib"
 	gobject "github.com/pekim/gobbi/lib/internal/c/gobject"
 	"unsafe"
 )
@@ -22,84 +21,6 @@ import (
 // #include <gio/gunixsocketaddress.h>
 // #include <gio/gnetworking.h>
 import "C"
-
-// aliases
-
-// bitfields
-type AppInfoCreateFlags C.GAppInfoCreateFlags
-type ApplicationFlags C.GApplicationFlags
-type AskPasswordFlags C.GAskPasswordFlags
-type BusNameOwnerFlags C.GBusNameOwnerFlags
-type BusNameWatcherFlags C.GBusNameWatcherFlags
-type ConverterFlags C.GConverterFlags
-type DBusCallFlags C.GDBusCallFlags
-type DBusCapabilityFlags C.GDBusCapabilityFlags
-type DBusConnectionFlags C.GDBusConnectionFlags
-type DBusInterfaceSkeletonFlags C.GDBusInterfaceSkeletonFlags
-type DBusMessageFlags C.GDBusMessageFlags
-type DBusObjectManagerClientFlags C.GDBusObjectManagerClientFlags
-type DBusPropertyInfoFlags C.GDBusPropertyInfoFlags
-type DBusProxyFlags C.GDBusProxyFlags
-type DBusSendMessageFlags C.GDBusSendMessageFlags
-type DBusServerFlags C.GDBusServerFlags
-type DBusSignalFlags C.GDBusSignalFlags
-type DBusSubtreeFlags C.GDBusSubtreeFlags
-type DriveStartFlags C.GDriveStartFlags
-type FileAttributeInfoFlags C.GFileAttributeInfoFlags
-type FileCopyFlags C.GFileCopyFlags
-type FileCreateFlags C.GFileCreateFlags
-type FileMonitorFlags C.GFileMonitorFlags
-type FileQueryInfoFlags C.GFileQueryInfoFlags
-type IOStreamSpliceFlags C.GIOStreamSpliceFlags
-type MountMountFlags C.GMountMountFlags
-type MountUnmountFlags C.GMountUnmountFlags
-type OutputStreamSpliceFlags C.GOutputStreamSpliceFlags
-type ResourceFlags C.GResourceFlags
-type ResourceLookupFlags C.GResourceLookupFlags
-type SettingsBindFlags C.GSettingsBindFlags
-type SocketMsgFlags C.GSocketMsgFlags
-type TestDBusFlags C.GTestDBusFlags
-type TlsCertificateFlags C.GTlsCertificateFlags
-type TlsDatabaseVerifyFlags C.GTlsDatabaseVerifyFlags
-type TlsPasswordFlags C.GTlsPasswordFlags
-
-// enumerations
-type BusType C.GBusType
-type ConverterResult C.GConverterResult
-type CredentialsType C.GCredentialsType
-type DBusError C.GDBusError
-type DBusMessageByteOrder C.GDBusMessageByteOrder
-type DBusMessageHeaderField C.GDBusMessageHeaderField
-type DBusMessageType C.GDBusMessageType
-type DataStreamByteOrder C.GDataStreamByteOrder
-type DataStreamNewlineType C.GDataStreamNewlineType
-type DriveStartStopType C.GDriveStartStopType
-type EmblemOrigin C.GEmblemOrigin
-type FileAttributeStatus C.GFileAttributeStatus
-type FileAttributeType C.GFileAttributeType
-type FileMonitorEvent C.GFileMonitorEvent
-type FileType C.GFileType
-type FilesystemPreviewType C.GFilesystemPreviewType
-type IOErrorEnum C.GIOErrorEnum
-type IOModuleScopeFlags C.GIOModuleScopeFlags
-type MountOperationResult C.GMountOperationResult
-type PasswordSave C.GPasswordSave
-type ResolverError C.GResolverError
-type ResolverRecordType C.GResolverRecordType
-type ResourceError C.GResourceError
-type SocketClientEvent C.GSocketClientEvent
-type SocketFamily C.GSocketFamily
-type SocketProtocol C.GSocketProtocol
-type SocketType C.GSocketType
-type TlsAuthenticationMode C.GTlsAuthenticationMode
-type TlsDatabaseLookupFlags C.GTlsDatabaseLookupFlags
-type TlsError C.GTlsError
-type TlsInteractionResult C.GTlsInteractionResult
-type TlsRehandshakeMode C.GTlsRehandshakeMode
-type UnixSocketAddressType C.GUnixSocketAddressType
-type ZlibCompressorFormat C.GZlibCompressorFormat
-
-// unions
 
 // records
 type ActionEntry C.GActionEntry
@@ -319,143 +240,7 @@ type VolumeMonitorClass C.GVolumeMonitorClass
 type ZlibCompressorClass C.GZlibCompressorClass
 type ZlibDecompressorClass C.GZlibDecompressorClass
 
-// classes
-type AppLaunchContext C.GAppLaunchContext
-type Application C.GApplication
-type ApplicationCommandLine C.GApplicationCommandLine
-type BufferedInputStream C.GBufferedInputStream
-type BufferedOutputStream C.GBufferedOutputStream
-type Cancellable C.GCancellable
-type CharsetConverter C.GCharsetConverter
-type ConverterInputStream C.GConverterInputStream
-type ConverterOutputStream C.GConverterOutputStream
-type Credentials C.GCredentials
-type DBusActionGroup C.GDBusActionGroup
-type DBusAuthObserver C.GDBusAuthObserver
-type DBusConnection C.GDBusConnection
-type DBusInterfaceSkeleton C.GDBusInterfaceSkeleton
-type DBusMenuModel C.GDBusMenuModel
-type DBusMessage C.GDBusMessage
-type DBusMethodInvocation C.GDBusMethodInvocation
-type DBusObjectManagerClient C.GDBusObjectManagerClient
-type DBusObjectManagerServer C.GDBusObjectManagerServer
-type DBusObjectProxy C.GDBusObjectProxy
-type DBusObjectSkeleton C.GDBusObjectSkeleton
-type DBusProxy C.GDBusProxy
-type DBusServer C.GDBusServer
-type DataInputStream C.GDataInputStream
-type DataOutputStream C.GDataOutputStream
-type DesktopAppInfo C.GDesktopAppInfo
-type Emblem C.GEmblem
-type EmblemedIcon C.GEmblemedIcon
-type FileEnumerator C.GFileEnumerator
-type FileIOStream C.GFileIOStream
-type FileIcon C.GFileIcon
-type FileInfo C.GFileInfo
-type FileInputStream C.GFileInputStream
-type FileMonitor C.GFileMonitor
-type FileOutputStream C.GFileOutputStream
-type FilenameCompleter C.GFilenameCompleter
-type FilterInputStream C.GFilterInputStream
-type FilterOutputStream C.GFilterOutputStream
-type IOModule C.GIOModule
-type IOStream C.GIOStream
-type InetAddress C.GInetAddress
-type InetAddressMask C.GInetAddressMask
-type InetSocketAddress C.GInetSocketAddress
-type InputStream C.GInputStream
-type ListStore C.GListStore
-type MemoryInputStream C.GMemoryInputStream
-type MemoryOutputStream C.GMemoryOutputStream
-type Menu C.GMenu
-type MenuAttributeIter C.GMenuAttributeIter
-type MenuItem C.GMenuItem
-type MenuLinkIter C.GMenuLinkIter
-type MenuModel C.GMenuModel
-type MountOperation C.GMountOperation
-type NativeSocketAddress C.GNativeSocketAddress
-type NativeVolumeMonitor C.GNativeVolumeMonitor
-type NetworkAddress C.GNetworkAddress
-type NetworkService C.GNetworkService
-type OutputStream C.GOutputStream
-type Permission C.GPermission
-type ProxyAddress C.GProxyAddress
-type ProxyAddressEnumerator C.GProxyAddressEnumerator
-type Resolver C.GResolver
-type Settings C.GSettings
-type SettingsBackend C.GSettingsBackend
-type SimpleAction C.GSimpleAction
-type SimpleActionGroup C.GSimpleActionGroup
-type SimpleAsyncResult C.GSimpleAsyncResult
-type SimplePermission C.GSimplePermission
-type Socket C.GSocket
-type SocketAddress C.GSocketAddress
-type SocketAddressEnumerator C.GSocketAddressEnumerator
-type SocketClient C.GSocketClient
-type SocketConnection C.GSocketConnection
-type SocketControlMessage C.GSocketControlMessage
-type SocketListener C.GSocketListener
-type SocketService C.GSocketService
-type Task C.GTask
-type TcpConnection C.GTcpConnection
-type TcpWrapperConnection C.GTcpWrapperConnection
-type TestDBus C.GTestDBus
-type ThemedIcon C.GThemedIcon
-type ThreadedSocketService C.GThreadedSocketService
-type TlsCertificate C.GTlsCertificate
-type TlsConnection C.GTlsConnection
-type TlsDatabase C.GTlsDatabase
-type TlsInteraction C.GTlsInteraction
-type TlsPassword C.GTlsPassword
-type UnixConnection C.GUnixConnection
-type UnixCredentialsMessage C.GUnixCredentialsMessage
-type UnixFDList C.GUnixFDList
-type UnixFDMessage C.GUnixFDMessage
-type UnixInputStream C.GUnixInputStream
-type UnixMountMonitor C.GUnixMountMonitor
-type UnixOutputStream C.GUnixOutputStream
-type UnixSocketAddress C.GUnixSocketAddress
-type Vfs C.GVfs
-type VolumeMonitor C.GVolumeMonitor
-type ZlibCompressor C.GZlibCompressor
-type ZlibDecompressor C.GZlibDecompressor
-
-// interfaces
-type Action C.GAction
-type ActionGroup C.GActionGroup
-type ActionMap C.GActionMap
-type AppInfo C.GAppInfo
-type AsyncInitable C.GAsyncInitable
-type AsyncResult C.GAsyncResult
-type Converter C.GConverter
-type DBusInterface C.GDBusInterface
-type DBusObject C.GDBusObject
-type DBusObjectManager C.GDBusObjectManager
-type DesktopAppInfoLookup C.GDesktopAppInfoLookup
-type Drive C.GDrive
-type File C.GFile
-type FileDescriptorBased C.GFileDescriptorBased
-type Icon C.GIcon
-type Initable C.GInitable
-type ListModel C.GListModel
-type LoadableIcon C.GLoadableIcon
-type Mount C.GMount
-type NetworkMonitor C.GNetworkMonitor
-type PollableInputStream C.GPollableInputStream
-type PollableOutputStream C.GPollableOutputStream
-type Proxy C.GProxy
-type ProxyResolver C.GProxyResolver
-type RemoteActionGroup C.GRemoteActionGroup
-type Seekable C.GSeekable
-type SocketConnectable C.GSocketConnectable
-type TlsBackend C.GTlsBackend
-type TlsClientConnection C.GTlsClientConnection
-type TlsFileDatabase C.GTlsFileDatabase
-type TlsServerConnection C.GTlsServerConnection
-type Volume C.GVolume
-
-func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags AppInfoCreateFlags) {
-}
+func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags int) {}
 
 func Fn_app_info_get_all() {
 	C.g_app_info_get_all()
@@ -471,7 +256,7 @@ func Fn_app_info_get_fallback_for_type(contentType string) {}
 
 func Fn_app_info_get_recommended_for_type(contentType string) {}
 
-func Fn_app_info_launch_default_for_uri(uri string, context *AppLaunchContext) {}
+func Fn_app_info_launch_default_for_uri(uri string, context unsafe.Pointer) {}
 
 // UNSUPPORTED : app_info_launch_default_for_uri_async : has callback
 
@@ -481,18 +266,18 @@ func Fn_app_info_reset_type_associations(contentType string) {}
 
 // UNSUPPORTED : bus_get : has callback
 
-func Fn_bus_get_finish(res *AsyncResult) {}
+func Fn_bus_get_finish(res unsafe.Pointer) {}
 
-func Fn_bus_get_sync(busType BusType, cancellable *Cancellable) {}
+func Fn_bus_get_sync(busType int, cancellable unsafe.Pointer) {}
 
 // UNSUPPORTED : bus_own_name : has callback
 
 // UNSUPPORTED : bus_own_name_on_connection : has callback
 
-func Fn_bus_own_name_on_connection_with_closures(connection *DBusConnection, name string, flags BusNameOwnerFlags, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) {
+func Fn_bus_own_name_on_connection_with_closures(connection unsafe.Pointer, name string, flags int, nameAcquiredClosure unsafe.Pointer, nameLostClosure unsafe.Pointer) {
 }
 
-func Fn_bus_own_name_with_closures(busType BusType, name string, flags BusNameOwnerFlags, busAcquiredClosure *gobject.Closure, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) {
+func Fn_bus_own_name_with_closures(busType int, name string, flags int, busAcquiredClosure unsafe.Pointer, nameAcquiredClosure unsafe.Pointer, nameLostClosure unsafe.Pointer) {
 }
 
 func Fn_bus_unown_name(ownerId uint) {}
@@ -503,10 +288,10 @@ func Fn_bus_unwatch_name(watcherId uint) {}
 
 // UNSUPPORTED : bus_watch_name_on_connection : has callback
 
-func Fn_bus_watch_name_on_connection_with_closures(connection *DBusConnection, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) {
+func Fn_bus_watch_name_on_connection_with_closures(connection unsafe.Pointer, name string, flags int, nameAppearedClosure unsafe.Pointer, nameVanishedClosure unsafe.Pointer) {
 }
 
-func Fn_bus_watch_name_with_closures(busType BusType, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) {
+func Fn_bus_watch_name_with_closures(busType int, name string, flags int, nameAppearedClosure unsafe.Pointer, nameVanishedClosure unsafe.Pointer) {
 }
 
 func Fn_content_type_can_be_executable(type_ string) {}
@@ -527,7 +312,7 @@ func Fn_content_type_get_symbolic_icon(type_ string) {}
 
 func Fn_content_type_guess(filename string, data *uint8, dataSize uint64) {}
 
-func Fn_content_type_guess_for_tree(root *File) {}
+func Fn_content_type_guess_for_tree(root unsafe.Pointer) {}
 
 func Fn_content_type_is_a(type_ string, supertype string) {}
 
@@ -537,21 +322,21 @@ func Fn_content_types_get_registered() {
 	C.g_content_types_get_registered()
 }
 
-func Fn_dbus_address_get_for_bus_sync(busType BusType, cancellable *Cancellable) {}
+func Fn_dbus_address_get_for_bus_sync(busType int, cancellable unsafe.Pointer) {}
 
 // UNSUPPORTED : dbus_address_get_stream : has callback
 
-func Fn_dbus_address_get_stream_finish(res *AsyncResult) {}
+func Fn_dbus_address_get_stream_finish(res unsafe.Pointer) {}
 
-func Fn_dbus_address_get_stream_sync(address string, cancellable *Cancellable) {}
+func Fn_dbus_address_get_stream_sync(address string, cancellable unsafe.Pointer) {}
 
-func Fn_dbus_annotation_info_lookup(annotations **DBusAnnotationInfo, name string) {}
+func Fn_dbus_annotation_info_lookup(annotations *unsafe.Pointer, name string) {}
 
-func Fn_dbus_error_encode_gerror(error *glib.Error) {}
+func Fn_dbus_error_encode_gerror(error unsafe.Pointer) {}
 
-func Fn_dbus_error_get_remote_error(error *glib.Error) {}
+func Fn_dbus_error_get_remote_error(error unsafe.Pointer) {}
 
-func Fn_dbus_error_is_remote_error(error *glib.Error) {}
+func Fn_dbus_error_is_remote_error(error unsafe.Pointer) {}
 
 func Fn_dbus_error_new_for_dbus_error(dbusErrorName string, dbusErrorMessage string) {}
 
@@ -559,22 +344,22 @@ func Fn_dbus_error_quark() {
 	C.g_dbus_error_quark()
 }
 
-func Fn_dbus_error_register_error(errorDomain glib.Quark, errorCode int, dbusErrorName string) {}
+func Fn_dbus_error_register_error(errorDomain uint32, errorCode int, dbusErrorName string) {}
 
 func Fn_dbus_error_register_error_domain(errorDomainQuarkName string, quarkVolatile *uint64, entries *DBusErrorEntry, numEntries uint) {
 }
 
-func Fn_dbus_error_strip_remote_error(error *glib.Error) {}
+func Fn_dbus_error_strip_remote_error(error unsafe.Pointer) {}
 
-func Fn_dbus_error_unregister_error(errorDomain glib.Quark, errorCode int, dbusErrorName string) {}
+func Fn_dbus_error_unregister_error(errorDomain uint32, errorCode int, dbusErrorName string) {}
 
 func Fn_dbus_generate_guid() {
 	C.g_dbus_generate_guid()
 }
 
-func Fn_dbus_gvalue_to_gvariant(gvalue *gobject.Value, type_ *glib.VariantType) {}
+func Fn_dbus_gvalue_to_gvariant(gvalue unsafe.Pointer, type_ unsafe.Pointer) {}
 
-func Fn_dbus_gvariant_to_gvalue(value *glib.Variant) {}
+func Fn_dbus_gvariant_to_gvalue(value unsafe.Pointer) {}
 
 func Fn_dbus_is_address(string_ string) {}
 
@@ -604,7 +389,7 @@ func Fn_icon_hash(icon unsafe.Pointer) {}
 
 func Fn_icon_new_for_string(str string) {}
 
-func Fn_initable_newv(objectType glib.Type, nParameters uint, parameters *gobject.Parameter, cancellable *Cancellable) {
+func Fn_initable_newv(objectType uint64, nParameters uint, parameters *gobject.Parameter, cancellable unsafe.Pointer) {
 }
 
 func Fn_io_error_from_errno(errNo int) {}
@@ -613,7 +398,7 @@ func Fn_io_error_quark() {
 	C.g_io_error_quark()
 }
 
-func Fn_io_extension_point_implement(extensionPointName string, type_ glib.Type, extensionName string, priority int) {
+func Fn_io_extension_point_implement(extensionPointName string, type_ uint64, extensionName string, priority int) {
 }
 
 func Fn_io_extension_point_lookup(name string) {}
@@ -622,11 +407,11 @@ func Fn_io_extension_point_register(name string) {}
 
 func Fn_io_modules_load_all_in_directory(dirname string) {}
 
-func Fn_io_modules_load_all_in_directory_with_scope(dirname string, scope *IOModuleScope) {}
+func Fn_io_modules_load_all_in_directory_with_scope(dirname string, scope unsafe.Pointer) {}
 
 func Fn_io_modules_scan_all_in_directory(dirname string) {}
 
-func Fn_io_modules_scan_all_in_directory_with_scope(dirname string, scope *IOModuleScope) {}
+func Fn_io_modules_scan_all_in_directory_with_scope(dirname string, scope unsafe.Pointer) {}
 
 func Fn_io_scheduler_cancel_all_jobs() {
 	C.g_io_scheduler_cancel_all_jobs()
@@ -641,18 +426,18 @@ func Fn_network_monitor_get_default() {
 }
 
 // UNSUPPORTED : null_settings_backend_new : blacklisted
-func Fn_pollable_source_new(pollableStream *gobject.Object) {}
+func Fn_pollable_source_new(pollableStream unsafe.Pointer) {}
 
-func Fn_pollable_source_new_full(pollableStream unsafe.Pointer, childSource *glib.Source, cancellable *Cancellable) {
+func Fn_pollable_source_new_full(pollableStream unsafe.Pointer, childSource unsafe.Pointer, cancellable unsafe.Pointer) {
 }
 
-func Fn_pollable_stream_read(stream *InputStream, buffer *uint8, count uint64, blocking bool, cancellable *Cancellable) {
+func Fn_pollable_stream_read(stream unsafe.Pointer, buffer *uint8, count uint64, blocking bool, cancellable unsafe.Pointer) {
 }
 
-func Fn_pollable_stream_write(stream *OutputStream, buffer *uint8, count uint64, blocking bool, cancellable *Cancellable) {
+func Fn_pollable_stream_write(stream unsafe.Pointer, buffer *uint8, count uint64, blocking bool, cancellable unsafe.Pointer) {
 }
 
-func Fn_pollable_stream_write_all(stream *OutputStream, buffer *uint8, count uint64, blocking bool, cancellable *Cancellable) {
+func Fn_pollable_stream_write_all(stream unsafe.Pointer, buffer *uint8, count uint64, blocking bool, cancellable unsafe.Pointer) {
 }
 
 func Fn_proxy_get_default_for_protocol(protocol string) {}
@@ -671,17 +456,17 @@ func Fn_resource_error_quark() {
 
 func Fn_resource_load(filename string) {}
 
-func Fn_resources_enumerate_children(path string, lookupFlags ResourceLookupFlags) {}
+func Fn_resources_enumerate_children(path string, lookupFlags int) {}
 
-func Fn_resources_get_info(path string, lookupFlags ResourceLookupFlags) {}
+func Fn_resources_get_info(path string, lookupFlags int) {}
 
-func Fn_resources_lookup_data(path string, lookupFlags ResourceLookupFlags) {}
+func Fn_resources_lookup_data(path string, lookupFlags int) {}
 
-func Fn_resources_open_stream(path string, lookupFlags ResourceLookupFlags) {}
+func Fn_resources_open_stream(path string, lookupFlags int) {}
 
-func Fn_resources_register(resource *Resource) {}
+func Fn_resources_register(resource unsafe.Pointer) {}
 
-func Fn_resources_unregister(resource *Resource) {}
+func Fn_resources_unregister(resource unsafe.Pointer) {}
 
 func Fn_settings_schema_source_get_default() {
 	C.g_settings_schema_source_get_default()
@@ -693,13 +478,13 @@ func Fn_settings_schema_source_get_default() {
 
 // UNSUPPORTED : simple_async_report_take_gerror_in_idle : has callback
 
-func Fn_srv_target_list_sort(targets *glib.List) {}
+func Fn_srv_target_list_sort(targets unsafe.Pointer) {}
 
 func Fn_tls_backend_get_default() {
 	C.g_tls_backend_get_default()
 }
 
-func Fn_tls_client_connection_new(baseIoStream *IOStream, serverIdentity *SocketConnectable) {}
+func Fn_tls_client_connection_new(baseIoStream unsafe.Pointer, serverIdentity unsafe.Pointer) {}
 
 func Fn_tls_error_quark() {
 	C.g_tls_error_quark()
@@ -707,35 +492,35 @@ func Fn_tls_error_quark() {
 
 func Fn_tls_file_database_new(anchors string) {}
 
-func Fn_tls_server_connection_new(baseIoStream *IOStream, certificate *TlsCertificate) {}
+func Fn_tls_server_connection_new(baseIoStream unsafe.Pointer, certificate unsafe.Pointer) {}
 
 func Fn_unix_is_mount_path_system_internal(mountPath string) {}
 
 func Fn_unix_mount_at(mountPath string) {}
 
-func Fn_unix_mount_compare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) {}
+func Fn_unix_mount_compare(mount1 unsafe.Pointer, mount2 unsafe.Pointer) {}
 
-func Fn_unix_mount_free(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_free(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_get_device_path(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_get_device_path(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_get_fs_type(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_get_fs_type(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_get_mount_path(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_get_mount_path(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_can_eject(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_guess_can_eject(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_icon(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_guess_icon(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_name(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_guess_name(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_should_display(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_guess_should_display(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_symbolic_icon(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_guess_symbolic_icon(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_is_readonly(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_is_readonly(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_is_system_internal(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_is_system_internal(mountEntry unsafe.Pointer) {}
 
 func Fn_unix_mount_points_changed_since(time uint64) {}
 

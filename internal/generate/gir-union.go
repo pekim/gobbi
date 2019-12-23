@@ -1,10 +1,5 @@
 package generate
 
-import (
-	"github.com/blang/semver"
-	"github.com/dave/jennifer/jen"
-)
-
 type Union struct {
 	Name          string `xml:"name,attr"`
 	CSymbolPrefix string `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefix,attr"`
@@ -23,12 +18,12 @@ func (u *Union) init(ns *Namespace) {
 	u.applyAddenda()
 }
 
-func (u Union) generateSys(f *jen.File, version semver.Version) {
-	if u.blacklist {
-		f.Commentf("UNSUPPORTED : %s : blacklisted", u.Name)
-		return
-	}
-
-	// GEN: type SomeUnion SomeCType
-	f.Type().Id(u.Name).Qual("C", u.CType)
-}
+//func (u Union) generateSys(f *jen.File, version semver.Version) {
+//	if u.blacklist {
+//		f.Commentf("UNSUPPORTED : %s : blacklisted", u.Name)
+//		return
+//	}
+//
+//	// GEN: type SomeUnion SomeCType
+//	f.Type().Id(u.Name).Qual("C", u.CType)
+//}

@@ -10,73 +10,6 @@ import "unsafe"
 // #include <glib-2.0/glib-object.h>
 import "C"
 
-// aliases
-type DateDay C.GDateDay
-type DateYear C.GDateYear
-type MutexLocker C.GMutexLocker
-type Pid C.GPid
-type Quark C.GQuark
-type Strv C.GStrv
-type Time C.GTime
-type TimeSpan C.GTimeSpan
-type Type C.GType
-
-// bitfields
-type AsciiType C.GAsciiType
-type FileTest C.GFileTest
-type FormatSizeFlags C.GFormatSizeFlags
-type HookFlagMask C.GHookFlagMask
-type IOCondition C.GIOCondition
-type IOFlags C.GIOFlags
-type KeyFileFlags C.GKeyFileFlags
-type LogLevelFlags C.GLogLevelFlags
-type MarkupCollectType C.GMarkupCollectType
-type MarkupParseFlags C.GMarkupParseFlags
-type OptionFlags C.GOptionFlags
-type SpawnFlags C.GSpawnFlags
-type TestSubprocessFlags C.GTestSubprocessFlags
-type TestTrapFlags C.GTestTrapFlags
-type TraverseFlags C.GTraverseFlags
-
-// enumerations
-type BookmarkFileError C.GBookmarkFileError
-type ConvertError C.GConvertError
-type DateDMY C.GDateDMY
-type DateMonth C.GDateMonth
-type DateWeekday C.GDateWeekday
-type ErrorType C.GErrorType
-type FileError C.GFileError
-type IOChannelError C.GIOChannelError
-type IOError C.GIOError
-type IOStatus C.GIOStatus
-type KeyFileError C.GKeyFileError
-type MarkupError C.GMarkupError
-type NormalizeMode C.GNormalizeMode
-type OnceStatus C.GOnceStatus
-type OptionArg C.GOptionArg
-type OptionError C.GOptionError
-type SeekType C.GSeekType
-type ShellError C.GShellError
-type SliceConfig C.GSliceConfig
-type SpawnError C.GSpawnError
-type TestLogType C.GTestLogType
-
-// UNSUPPORTED : TestResult : blacklisted
-type ThreadError C.GThreadError
-type TimeType C.GTimeType
-type TokenType C.GTokenType
-type TraverseType C.GTraverseType
-type UnicodeBreakType C.GUnicodeBreakType
-type UnicodeScript C.GUnicodeScript
-type UnicodeType C.GUnicodeType
-type VariantParseError C.GVariantParseError
-
-// unions
-type DoubleIEEE754 C.GDoubleIEEE754
-type FloatIEEE754 C.GFloatIEEE754
-type Mutex C.GMutex
-type TokenValue C.GTokenValue
-
 // records
 type Array C.GArray
 type AsyncQueue C.GAsyncQueue
@@ -143,10 +76,6 @@ type VariantBuilder C.GVariantBuilder
 type VariantIter C.GVariantIter
 type VariantType C.GVariantType
 
-// classes
-
-// interfaces
-
 func Fn_ascii_digit_value(c int8) {}
 
 func Fn_ascii_dtostr(buffer string, bufLen int, d float64) {}
@@ -182,7 +111,7 @@ func Fn_assertion_message_cmpnum(domain string, file string, line int, func_ str
 func Fn_assertion_message_cmpstr(domain string, file string, line int, func_ string, expr string, arg1 string, cmp string, arg2 string) {
 }
 
-func Fn_assertion_message_error(domain string, file string, line int, func_ string, expr string, error *Error, errorDomain Quark, errorCode int) {
+func Fn_assertion_message_error(domain string, file string, line int, func_ string, expr string, error unsafe.Pointer, errorDomain uint32, errorCode int) {
 }
 
 func Fn_assertion_message_expr(domain string, file string, line int, func_ string, expr string) {}
@@ -242,9 +171,9 @@ func Fn_check_version(requiredMajor uint, requiredMinor uint, requiredMicro uint
 
 // UNSUPPORTED : child_watch_add_full : has callback
 
-func Fn_child_watch_source_new(pid Pid) {}
+func Fn_child_watch_source_new(pid int) {}
 
-func Fn_clear_error(err **Error) {}
+func Fn_clear_error(err *unsafe.Pointer) {}
 
 // UNSUPPORTED : clear_handle_id : has callback
 
@@ -261,55 +190,55 @@ func Fn_convert_with_fallback(str *uint8, len uint64, toCodeset string, fromCode
 
 func Fn_convert_with_iconv(str *uint8, len uint64, converter IConv) {}
 
-func Fn_datalist_clear(datalist **Data) {}
+func Fn_datalist_clear(datalist *unsafe.Pointer) {}
 
 // UNSUPPORTED : datalist_foreach : has callback
 
-func Fn_datalist_get_data(datalist **Data, key string) {}
+func Fn_datalist_get_data(datalist *unsafe.Pointer, key string) {}
 
 // UNSUPPORTED : datalist_id_dup_data : has callback
 
-func Fn_datalist_id_get_data(datalist **Data, keyId Quark) {}
+func Fn_datalist_id_get_data(datalist *unsafe.Pointer, keyId uint32) {}
 
-func Fn_datalist_id_remove_no_notify(datalist **Data, keyId Quark) {}
+func Fn_datalist_id_remove_no_notify(datalist *unsafe.Pointer, keyId uint32) {}
 
 // UNSUPPORTED : datalist_id_replace_data : has callback
 
 // UNSUPPORTED : datalist_id_set_data_full : has callback
 
-func Fn_datalist_init(datalist **Data) {}
+func Fn_datalist_init(datalist *unsafe.Pointer) {}
 
 func Fn_dataset_destroy(datasetLocation unsafe.Pointer) {}
 
 // UNSUPPORTED : dataset_foreach : has callback
 
-func Fn_dataset_id_get_data(datasetLocation unsafe.Pointer, keyId Quark) {}
+func Fn_dataset_id_get_data(datasetLocation unsafe.Pointer, keyId uint32) {}
 
-func Fn_dataset_id_remove_no_notify(datasetLocation unsafe.Pointer, keyId Quark) {}
+func Fn_dataset_id_remove_no_notify(datasetLocation unsafe.Pointer, keyId uint32) {}
 
 // UNSUPPORTED : dataset_id_set_data_full : has callback
 
-func Fn_date_get_days_in_month(month DateMonth, year DateYear) {}
+func Fn_date_get_days_in_month(month int, year uint16) {}
 
-func Fn_date_get_monday_weeks_in_year(year DateYear) {}
+func Fn_date_get_monday_weeks_in_year(year uint16) {}
 
-func Fn_date_get_sunday_weeks_in_year(year DateYear) {}
+func Fn_date_get_sunday_weeks_in_year(year uint16) {}
 
-func Fn_date_is_leap_year(year DateYear) {}
+func Fn_date_is_leap_year(year uint16) {}
 
-func Fn_date_strftime(s string, slen uint64, format string, date *Date) {}
+func Fn_date_strftime(s string, slen uint64, format string, date unsafe.Pointer) {}
 
-func Fn_date_valid_day(day DateDay) {}
+func Fn_date_valid_day(day uint8) {}
 
-func Fn_date_valid_dmy(day DateDay, month DateMonth, year DateYear) {}
+func Fn_date_valid_dmy(day uint8, month int, year uint16) {}
 
 func Fn_date_valid_julian(julianDate uint32) {}
 
-func Fn_date_valid_month(month DateMonth) {}
+func Fn_date_valid_month(month int) {}
 
-func Fn_date_valid_weekday(weekday DateWeekday) {}
+func Fn_date_valid_weekday(weekday int) {}
 
-func Fn_date_valid_year(year DateYear) {}
+func Fn_date_valid_year(year uint16) {}
 
 func Fn_direct_equal(v1 unsafe.Pointer, v2 unsafe.Pointer) {}
 
@@ -327,7 +256,7 @@ func Fn_file_open_tmp(tmpl string) {}
 
 func Fn_file_read_link(filename string) {}
 
-func Fn_file_test(filename string, test FileTest) {}
+func Fn_file_test(filename string, test int) {}
 
 func Fn_filename_display_basename(filename string) {}
 
@@ -361,7 +290,7 @@ func Fn_get_current_dir() {
 	C.g_get_current_dir()
 }
 
-func Fn_get_current_time(result *TimeVal) {}
+func Fn_get_current_time(result unsafe.Pointer) {}
 
 func Fn_get_filename_charsets() {}
 
@@ -411,33 +340,33 @@ func Fn_get_user_name() {
 
 func Fn_getenv(variable string) {}
 
-func Fn_hash_table_destroy(hashTable *HashTable) {}
+func Fn_hash_table_destroy(hashTable unsafe.Pointer) {}
 
-func Fn_hash_table_insert(hashTable *HashTable, key unsafe.Pointer, value unsafe.Pointer) {}
+func Fn_hash_table_insert(hashTable unsafe.Pointer, key unsafe.Pointer, value unsafe.Pointer) {}
 
-func Fn_hash_table_lookup(hashTable *HashTable, key unsafe.Pointer) {}
+func Fn_hash_table_lookup(hashTable unsafe.Pointer, key unsafe.Pointer) {}
 
-func Fn_hash_table_lookup_extended(hashTable *HashTable, lookupKey unsafe.Pointer) {}
+func Fn_hash_table_lookup_extended(hashTable unsafe.Pointer, lookupKey unsafe.Pointer) {}
 
-func Fn_hash_table_remove(hashTable *HashTable, key unsafe.Pointer) {}
+func Fn_hash_table_remove(hashTable unsafe.Pointer, key unsafe.Pointer) {}
 
-func Fn_hash_table_replace(hashTable *HashTable, key unsafe.Pointer, value unsafe.Pointer) {}
+func Fn_hash_table_replace(hashTable unsafe.Pointer, key unsafe.Pointer, value unsafe.Pointer) {}
 
-func Fn_hash_table_size(hashTable *HashTable) {}
+func Fn_hash_table_size(hashTable unsafe.Pointer) {}
 
-func Fn_hash_table_steal(hashTable *HashTable, key unsafe.Pointer) {}
+func Fn_hash_table_steal(hashTable unsafe.Pointer, key unsafe.Pointer) {}
 
-func Fn_hook_destroy(hookList *HookList, hookId uint64) {}
+func Fn_hook_destroy(hookList unsafe.Pointer, hookId uint64) {}
 
-func Fn_hook_destroy_link(hookList *HookList, hook *Hook) {}
+func Fn_hook_destroy_link(hookList unsafe.Pointer, hook unsafe.Pointer) {}
 
-func Fn_hook_free(hookList *HookList, hook *Hook) {}
+func Fn_hook_free(hookList unsafe.Pointer, hook unsafe.Pointer) {}
 
-func Fn_hook_insert_before(hookList *HookList, sibling *Hook, hook *Hook) {}
+func Fn_hook_insert_before(hookList unsafe.Pointer, sibling unsafe.Pointer, hook unsafe.Pointer) {}
 
-func Fn_hook_prepend(hookList *HookList, hook *Hook) {}
+func Fn_hook_prepend(hookList unsafe.Pointer, hook unsafe.Pointer) {}
 
-func Fn_hook_unref(hookList *HookList, hook *Hook) {}
+func Fn_hook_unref(hookList unsafe.Pointer, hook unsafe.Pointer) {}
 
 func Fn_iconv(converter IConv, inbuf string, inbytesLeft *uint64, outbuf string, outbytesLeft *uint64) {
 }
@@ -468,7 +397,7 @@ func Fn_io_channel_error_quark() {
 	C.g_io_channel_error_quark()
 }
 
-func Fn_io_create_watch(channel *IOChannel, condition IOCondition) {}
+func Fn_io_create_watch(channel unsafe.Pointer, condition int) {}
 
 func Fn_key_file_error_quark() {
 	C.g_key_file_error_quark()
@@ -480,16 +409,16 @@ func Fn_locale_to_utf8(opsysstring *uint8, len uint64) {}
 
 // UNSUPPORTED : log : has varargs
 
-func Fn_log_default_handler(logDomain string, logLevel LogLevelFlags, message string, unusedData unsafe.Pointer) {
+func Fn_log_default_handler(logDomain string, logLevel int, message string, unusedData unsafe.Pointer) {
 }
 
 func Fn_log_remove_handler(logDomain string, handlerId uint) {}
 
-func Fn_log_set_always_fatal(fatalMask LogLevelFlags) {}
+func Fn_log_set_always_fatal(fatalMask int) {}
 
 // UNSUPPORTED : log_set_default_handler : has callback
 
-func Fn_log_set_fatal_mask(logDomain string, fatalMask LogLevelFlags) {}
+func Fn_log_set_fatal_mask(logDomain string, fatalMask int) {}
 
 // UNSUPPORTED : log_set_handler : has callback
 
@@ -535,7 +464,7 @@ func Fn_mem_profile() {
 	C.g_mem_profile()
 }
 
-func Fn_mem_set_vtable(vtable *MemVTable) {}
+func Fn_mem_set_vtable(vtable unsafe.Pointer) {}
 
 func Fn_memdup(mem unsafe.Pointer, byteSize uint) {}
 
@@ -565,11 +494,12 @@ func Fn_path_is_absolute(fileName string) {}
 
 func Fn_path_skip_root(fileName string) {}
 
-func Fn_pattern_match(pspec *PatternSpec, stringLength uint, string_ string, stringReversed string) {}
+func Fn_pattern_match(pspec unsafe.Pointer, stringLength uint, string_ string, stringReversed string) {
+}
 
 func Fn_pattern_match_simple(pattern string, string_ string) {}
 
-func Fn_pattern_match_string(pspec *PatternSpec, string_ string) {}
+func Fn_pattern_match_string(pspec unsafe.Pointer, string_ string) {}
 
 // UNSUPPORTED : prefix_error : has varargs
 
@@ -581,7 +511,7 @@ func Fn_pattern_match_string(pspec *PatternSpec, string_ string) {}
 
 // UNSUPPORTED : printf_string_upper_bound : has va_list
 
-func Fn_propagate_error(src *Error) {}
+func Fn_propagate_error(src unsafe.Pointer) {}
 
 // UNSUPPORTED : propagate_prefixed_error : has varargs
 
@@ -593,7 +523,7 @@ func Fn_quark_from_static_string(string_ string) {}
 
 func Fn_quark_from_string(string_ string) {}
 
-func Fn_quark_to_string(quark Quark) {}
+func Fn_quark_to_string(quark uint32) {}
 
 func Fn_quark_try_string(string_ string) {}
 
@@ -645,17 +575,17 @@ func Fn_shell_quote(unquotedString string) {}
 
 func Fn_shell_unquote(quotedString string) {}
 
-func Fn_slice_get_config(ckey SliceConfig) {}
+func Fn_slice_get_config(ckey int) {}
 
-func Fn_slice_get_config_state(ckey SliceConfig, address int64, nValues *uint) {}
+func Fn_slice_get_config_state(ckey int, address int64, nValues *uint) {}
 
-func Fn_slice_set_config(ckey SliceConfig, value int64) {}
+func Fn_slice_set_config(ckey int, value int64) {}
 
 // UNSUPPORTED : snprintf : has varargs
 
 func Fn_source_remove(tag uint) {}
 
-func Fn_source_remove_by_funcs_user_data(funcs *SourceFuncs, userData unsafe.Pointer) {}
+func Fn_source_remove_by_funcs_user_data(funcs unsafe.Pointer, userData unsafe.Pointer) {}
 
 func Fn_source_remove_by_user_data(userData unsafe.Pointer) {}
 
@@ -667,7 +597,7 @@ func Fn_spaced_primes_closest(num uint) {}
 
 // UNSUPPORTED : spawn_async_with_pipes : has callback
 
-func Fn_spawn_close_pid(pid Pid) {}
+func Fn_spawn_close_pid(pid int) {}
 
 func Fn_spawn_command_line_async(commandLine string) {}
 
@@ -791,7 +721,7 @@ func Fn_test_assert_expected_messages_internal(domain string, file string, line 
 
 // UNSUPPORTED : test_log_set_fatal_handler : has callback
 
-func Fn_test_log_type_name(logType TestLogType) {}
+func Fn_test_log_type_name(logType int) {}
 
 // UNSUPPORTED : test_maximized_result : has varargs
 
@@ -842,13 +772,13 @@ func Fn_thread_yield() {
 
 func Fn_timeout_source_new(interval uint) {}
 
-func Fn_trash_stack_height(stackP **TrashStack) {}
+func Fn_trash_stack_height(stackP *unsafe.Pointer) {}
 
-func Fn_trash_stack_peek(stackP **TrashStack) {}
+func Fn_trash_stack_peek(stackP *unsafe.Pointer) {}
 
-func Fn_trash_stack_pop(stackP **TrashStack) {}
+func Fn_trash_stack_pop(stackP *unsafe.Pointer) {}
 
-func Fn_trash_stack_push(stackP **TrashStack, dataP unsafe.Pointer) {}
+func Fn_trash_stack_push(stackP *unsafe.Pointer, dataP unsafe.Pointer) {}
 
 func Fn_try_malloc(nBytes uint64) {}
 
@@ -945,7 +875,7 @@ func Fn_utf8_get_char(p string) {}
 
 func Fn_utf8_get_char_validated(p string, maxLen uint64) {}
 
-func Fn_utf8_normalize(str string, len uint64, mode NormalizeMode) {}
+func Fn_utf8_normalize(str string, len uint64, mode int) {}
 
 func Fn_utf8_offset_to_pointer(str string, offset int64) {}
 
@@ -979,7 +909,7 @@ func Fn_variant_get_gtype() {
 	C.g_variant_get_gtype()
 }
 
-func Fn_variant_parse(type_ *VariantType, text string, limit string, endptr string) {}
+func Fn_variant_parse(type_ unsafe.Pointer, text string, limit string, endptr string) {}
 
 func Fn_variant_parse_error_quark() {
 	C.g_variant_parse_error_quark()

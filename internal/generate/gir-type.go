@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
 	"regexp"
+	"strings"
 )
 
-var cTypeRegex = regexp.MustCompile(" *(const |volatile )* *([a-zA-Z0-9 ]+) *(\\**)? *")
+var cTypeRegex = regexp.MustCompile(" *(const |volatile )* *([a-zA-Z0-9_ ]+) *(\\**)? *")
 
 var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"char":            jen.Int8(),
@@ -128,18 +129,34 @@ func (t *Type) sysParamGoType() *jen.Statement {
 		return jen.Op(t.cStars).Add(simpleGoType)
 	}
 
-	if t.isAlias() ||
-		t.isBitfield() ||
-		t.isEnumeration() ||
-		t.isClass() ||
+	if t.isAlias() {
+		if t.isQualifiedName() {
+			alias, _ := t.foreignNamespace.Aliases.byName(t.foreignName)
+			return alias.Type.sysParamGoType()
+		}
+
+		alias, _ := t.namespace.Aliases.byName(t.Name)
+		return alias.Type.sysParamGoType()
+	}
+
+	if t.isBitfield() || t.isEnumeration() {
+		return jen.Int()
+	}
+
+	if t.isRecord() && t.cIndirectionCount == 0 {
+		if t.isQualifiedName() {
+			return jen.Qual(t.foreignNamespace.goFullSysPackageName, t.foreignName)
+		}
+		return jen.Op(t.cStars).Id(t.Name)
+	}
+
+	if t.isClass() ||
 		t.isRecord() ||
 		t.isInterface() ||
 		t.isUnion() {
 
-		if t.isQualifiedName() {
-			return jen.Op(t.cStars).Qual(t.foreignNamespace.goFullSysPackageName, t.foreignName)
-		}
-		return jen.Op(t.cStars).Id(t.Name)
+		stars := strings.Repeat("*", t.cIndirectionCount-1)
+		return jen.Op(stars).Qual("unsafe", "Pointer")
 	}
 
 	panic(fmt.Sprintf("Unsupported type : %s %s (%s)", t.namespace.Name, t.Name, t.CType))

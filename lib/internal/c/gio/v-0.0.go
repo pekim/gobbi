@@ -3,10 +3,7 @@
 
 package gio
 
-import (
-	glib "github.com/pekim/gobbi/lib/internal/c/glib"
-	"unsafe"
-)
+import "unsafe"
 
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -21,35 +18,6 @@ import (
 // #include <gio/gunixsocketaddress.h>
 // #include <gio/gnetworking.h>
 import "C"
-
-// aliases
-
-// bitfields
-type AppInfoCreateFlags C.GAppInfoCreateFlags
-type AskPasswordFlags C.GAskPasswordFlags
-type FileAttributeInfoFlags C.GFileAttributeInfoFlags
-type FileCopyFlags C.GFileCopyFlags
-type FileCreateFlags C.GFileCreateFlags
-type FileMonitorFlags C.GFileMonitorFlags
-type FileQueryInfoFlags C.GFileQueryInfoFlags
-type MountMountFlags C.GMountMountFlags
-type MountUnmountFlags C.GMountUnmountFlags
-type OutputStreamSpliceFlags C.GOutputStreamSpliceFlags
-type SettingsBindFlags C.GSettingsBindFlags
-
-// enumerations
-type DataStreamByteOrder C.GDataStreamByteOrder
-type DataStreamNewlineType C.GDataStreamNewlineType
-type FileAttributeStatus C.GFileAttributeStatus
-type FileAttributeType C.GFileAttributeType
-type FileMonitorEvent C.GFileMonitorEvent
-type FileType C.GFileType
-type FilesystemPreviewType C.GFilesystemPreviewType
-type IOErrorEnum C.GIOErrorEnum
-type MountOperationResult C.GMountOperationResult
-type PasswordSave C.GPasswordSave
-
-// unions
 
 // records
 type ActionEntry C.GActionEntry
@@ -223,87 +191,7 @@ type VolumeMonitorClass C.GVolumeMonitorClass
 type ZlibCompressorClass C.GZlibCompressorClass
 type ZlibDecompressorClass C.GZlibDecompressorClass
 
-// classes
-type AppLaunchContext C.GAppLaunchContext
-type ApplicationCommandLine C.GApplicationCommandLine
-type BufferedInputStream C.GBufferedInputStream
-type BufferedOutputStream C.GBufferedOutputStream
-type Cancellable C.GCancellable
-type CharsetConverter C.GCharsetConverter
-type ConverterInputStream C.GConverterInputStream
-type ConverterOutputStream C.GConverterOutputStream
-type DBusActionGroup C.GDBusActionGroup
-type DBusMenuModel C.GDBusMenuModel
-type DataInputStream C.GDataInputStream
-type DataOutputStream C.GDataOutputStream
-type DesktopAppInfo C.GDesktopAppInfo
-type Emblem C.GEmblem
-type EmblemedIcon C.GEmblemedIcon
-type FileEnumerator C.GFileEnumerator
-type FileIcon C.GFileIcon
-type FileInfo C.GFileInfo
-type FileInputStream C.GFileInputStream
-type FileMonitor C.GFileMonitor
-type FileOutputStream C.GFileOutputStream
-type FilenameCompleter C.GFilenameCompleter
-type FilterInputStream C.GFilterInputStream
-type FilterOutputStream C.GFilterOutputStream
-type IOModule C.GIOModule
-type InetAddress C.GInetAddress
-type InetSocketAddress C.GInetSocketAddress
-type InputStream C.GInputStream
-type ListStore C.GListStore
-type MemoryInputStream C.GMemoryInputStream
-type MemoryOutputStream C.GMemoryOutputStream
-type MountOperation C.GMountOperation
-type NativeSocketAddress C.GNativeSocketAddress
-type NativeVolumeMonitor C.GNativeVolumeMonitor
-type NetworkAddress C.GNetworkAddress
-type NetworkService C.GNetworkService
-type OutputStream C.GOutputStream
-type Permission C.GPermission
-type ProxyAddressEnumerator C.GProxyAddressEnumerator
-type Resolver C.GResolver
-type Settings C.GSettings
-type SettingsBackend C.GSettingsBackend
-type SimpleAction C.GSimpleAction
-type SimpleAsyncResult C.GSimpleAsyncResult
-type SimplePermission C.GSimplePermission
-type SocketAddress C.GSocketAddress
-type SocketAddressEnumerator C.GSocketAddressEnumerator
-type Task C.GTask
-type ThemedIcon C.GThemedIcon
-type UnixFDList C.GUnixFDList
-type UnixFDMessage C.GUnixFDMessage
-type UnixInputStream C.GUnixInputStream
-type UnixMountMonitor C.GUnixMountMonitor
-type UnixOutputStream C.GUnixOutputStream
-type UnixSocketAddress C.GUnixSocketAddress
-type Vfs C.GVfs
-type VolumeMonitor C.GVolumeMonitor
-type ZlibCompressor C.GZlibCompressor
-type ZlibDecompressor C.GZlibDecompressor
-
-// interfaces
-type Action C.GAction
-type ActionGroup C.GActionGroup
-type AppInfo C.GAppInfo
-type AsyncResult C.GAsyncResult
-type DBusObject C.GDBusObject
-type DBusObjectManager C.GDBusObjectManager
-type DesktopAppInfoLookup C.GDesktopAppInfoLookup
-type Drive C.GDrive
-type File C.GFile
-type Icon C.GIcon
-type ListModel C.GListModel
-type LoadableIcon C.GLoadableIcon
-type Mount C.GMount
-type Seekable C.GSeekable
-type SocketConnectable C.GSocketConnectable
-type Volume C.GVolume
-
-func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags AppInfoCreateFlags) {
-}
+func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags int) {}
 
 func Fn_app_info_get_all() {
 	C.g_app_info_get_all()
@@ -315,7 +203,7 @@ func Fn_app_info_get_default_for_type(contentType string, mustSupportUris bool) 
 
 func Fn_app_info_get_default_for_uri_scheme(uriScheme string) {}
 
-func Fn_app_info_launch_default_for_uri(uri string, context *AppLaunchContext) {}
+func Fn_app_info_launch_default_for_uri(uri string, context unsafe.Pointer) {}
 
 // UNSUPPORTED : app_info_launch_default_for_uri_async : has callback
 
@@ -373,7 +261,7 @@ func Fn_io_error_quark() {
 	C.g_io_error_quark()
 }
 
-func Fn_io_extension_point_implement(extensionPointName string, type_ glib.Type, extensionName string, priority int) {
+func Fn_io_extension_point_implement(extensionPointName string, type_ uint64, extensionName string, priority int) {
 }
 
 func Fn_io_extension_point_lookup(name string) {}
@@ -401,27 +289,27 @@ func Fn_unix_is_mount_path_system_internal(mountPath string) {}
 
 func Fn_unix_mount_at(mountPath string) {}
 
-func Fn_unix_mount_compare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) {}
+func Fn_unix_mount_compare(mount1 unsafe.Pointer, mount2 unsafe.Pointer) {}
 
-func Fn_unix_mount_free(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_free(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_get_device_path(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_get_device_path(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_get_fs_type(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_get_fs_type(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_get_mount_path(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_get_mount_path(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_can_eject(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_guess_can_eject(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_icon(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_guess_icon(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_name(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_guess_name(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_should_display(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_guess_should_display(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_is_readonly(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_is_readonly(mountEntry unsafe.Pointer) {}
 
-func Fn_unix_mount_is_system_internal(mountEntry *UnixMountEntry) {}
+func Fn_unix_mount_is_system_internal(mountEntry unsafe.Pointer) {}
 
 func Fn_unix_mount_points_changed_since(time uint64) {}
 
