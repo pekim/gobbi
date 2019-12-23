@@ -86,7 +86,7 @@ func Fn_attr_variant_new(variant int) {}
 
 func Fn_attr_weight_new(weight int) {}
 
-func Fn_break(text string, length int, analysis unsafe.Pointer, attrs *LogAttr, attrsLen int) {}
+func Fn_break(text string, length int, analysis unsafe.Pointer, attrs []LogAttr, attrsLen int) {}
 
 func Fn_config_key_get(key string) {}
 
@@ -103,7 +103,7 @@ func Fn_find_paragraph_boundary(text string, length int, paragraphDelimiterIndex
 func Fn_font_description_from_string(str string) {}
 
 // UNSUPPORTED : get_lib_subdirectory : blacklisted
-func Fn_get_log_attrs(text string, length int, level int, language unsafe.Pointer, logAttrs *LogAttr, attrsLen int) {
+func Fn_get_log_attrs(text string, length int, level int, language unsafe.Pointer, logAttrs []LogAttr, attrsLen int) {
 }
 
 func Fn_get_mirror_char(ch rune, mirroredCh *rune) {}
@@ -114,7 +114,7 @@ func Fn_itemize(context unsafe.Pointer, text string, startIndex int, length int,
 
 func Fn_language_from_string(language string) {}
 
-func Fn_lookup_aliases(fontname string, families *string, nFamilies *int) {}
+func Fn_lookup_aliases(fontname string, families *[]string, nFamilies *int) {}
 
 // UNSUPPORTED : module_register : blacklisted
 func Fn_parse_markup(markupText string, length int, accelMarker rune, attrList *unsafe.Pointer, text string, accelChar *rune) {

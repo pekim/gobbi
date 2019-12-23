@@ -112,7 +112,7 @@ func (t *Type) parseCtype() {
 }
 
 func (t *Type) sysParamGoType() *jen.Statement {
-	if t.Name == "utf8" || t.Name == "filename" {
+	if t.isString() {
 		return jen.String()
 	}
 

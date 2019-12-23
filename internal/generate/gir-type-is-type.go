@@ -87,3 +87,7 @@ func (t *Type) isUnion() bool {
 func (t *Type) isVaList() bool {
 	return t.Name == "va_list"
 }
+
+func (t *Type) isString() bool {
+	return t.Name == "utf8" || t.Name == "filename"
+}

@@ -127,9 +127,9 @@ func Fn_gl_error_quark() {
 	C.gdk_gl_error_quark()
 }
 
-func Fn_init(argc *int, argv *string) {}
+func Fn_init(argc *int, argv *[]string) {}
 
-func Fn_init_check(argc *int, argv *string) {}
+func Fn_init_check(argc *int, argv *[]string) {}
 
 func Fn_keyboard_grab(window unsafe.Pointer, ownerEvents bool, time uint32) {}
 
@@ -164,7 +164,7 @@ func Fn_pango_context_get() {
 func Fn_pango_layout_get_clip_region(layout unsafe.Pointer, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
 }
 
-func Fn_pango_layout_line_get_clip_region(line unsafe.Pointer, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
+func Fn_pango_layout_line_get_clip_region(line unsafe.Pointer, xOrigin int, yOrigin int, indexRanges []int, nRanges int) {
 }
 
 func Fn_pixbuf_get_from_surface(surface unsafe.Pointer, srcX int, srcY int, width int, height int) {}
@@ -189,12 +189,12 @@ func Fn_property_change(window unsafe.Pointer, property Atom, type_ Atom, format
 
 func Fn_property_delete(window unsafe.Pointer, property Atom) {}
 
-func Fn_property_get(window unsafe.Pointer, property Atom, type_ Atom, offset uint64, length uint64, pdelete int, actualPropertyType unsafe.Pointer, actualFormat *int, actualLength *int, data **uint8) {
+func Fn_property_get(window unsafe.Pointer, property Atom, type_ Atom, offset uint64, length uint64, pdelete int, actualPropertyType unsafe.Pointer, actualFormat *int, actualLength *int, data []*uint8) {
 }
 
-func Fn_query_depths(depths **int, count *int) {}
+func Fn_query_depths(depths []*int, count *int) {}
 
-func Fn_query_visual_types(visualTypes *int, count *int) {}
+func Fn_query_visual_types(visualTypes []int, count *int) {}
 
 func Fn_selection_convert(requestor unsafe.Pointer, selection Atom, target Atom, time uint32) {}
 

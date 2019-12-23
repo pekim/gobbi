@@ -158,7 +158,7 @@ func Fn_bookmark_file_error_quark() {
 
 // UNSUPPORTED : build_path : has varargs
 
-func Fn_byte_array_free(array *uint8, freeSegment bool) {}
+func Fn_byte_array_free(array []uint8, freeSegment bool) {}
 
 func Fn_byte_array_new() {
 	C.g_byte_array_new()
@@ -176,17 +176,17 @@ func Fn_clear_error(err *unsafe.Pointer) {}
 
 // UNSUPPORTED : clear_pointer : has callback
 
-func Fn_convert(str *uint8, len uint64, toCodeset string, fromCodeset string, bytesRead *uint64, bytesWritten *uint64) {
+func Fn_convert(str []uint8, len uint64, toCodeset string, fromCodeset string, bytesRead *uint64, bytesWritten *uint64) {
 }
 
 func Fn_convert_error_quark() {
 	C.g_convert_error_quark()
 }
 
-func Fn_convert_with_fallback(str *uint8, len uint64, toCodeset string, fromCodeset string, fallback string, bytesRead *uint64, bytesWritten *uint64) {
+func Fn_convert_with_fallback(str []uint8, len uint64, toCodeset string, fromCodeset string, fallback string, bytesRead *uint64, bytesWritten *uint64) {
 }
 
-func Fn_convert_with_iconv(str *uint8, len uint64, converter IConv, bytesRead *uint64, bytesWritten *uint64) {
+func Fn_convert_with_iconv(str []uint8, len uint64, converter IConv, bytesRead *uint64, bytesWritten *uint64) {
 }
 
 func Fn_datalist_clear(datalist *unsafe.Pointer) {}
@@ -249,7 +249,7 @@ func Fn_file_error_quark() {
 	C.g_file_error_quark()
 }
 
-func Fn_file_get_contents(filename string, contents *uint8, length *uint64) {}
+func Fn_file_get_contents(filename string, contents []uint8, length *uint64) {}
 
 func Fn_file_open_tmp(tmpl string, nameUsed string) {}
 
@@ -375,7 +375,7 @@ func Fn_key_file_error_quark() {
 
 func Fn_locale_from_utf8(utf8string string, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
 
-func Fn_locale_to_utf8(opsysstring *uint8, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
+func Fn_locale_to_utf8(opsysstring []uint8, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
 
 // UNSUPPORTED : log : has varargs
 
@@ -454,7 +454,7 @@ func Fn_option_error_quark() {
 	C.g_option_error_quark()
 }
 
-func Fn_parse_debug_string(string_ string, keys *DebugKey, nkeys uint) {}
+func Fn_parse_debug_string(string_ string, keys []DebugKey, nkeys uint) {}
 
 func Fn_path_get_basename(fileName string) {}
 
@@ -537,7 +537,7 @@ func Fn_shell_error_quark() {
 	C.g_shell_error_quark()
 }
 
-func Fn_shell_parse_argv(commandLine string, argcp *int, argvp *string) {}
+func Fn_shell_parse_argv(commandLine string, argcp *int, argvp *[]string) {}
 
 func Fn_shell_quote(unquotedString string) {}
 
@@ -569,7 +569,7 @@ func Fn_spawn_close_pid(pid int) {}
 
 func Fn_spawn_command_line_async(commandLine string) {}
 
-func Fn_spawn_command_line_sync(commandLine string, standardOutput *uint8, standardError *uint8, exitStatus *int) {
+func Fn_spawn_command_line_sync(commandLine string, standardOutput []uint8, standardError []uint8, exitStatus *int) {
 }
 
 func Fn_spawn_error_quark() {
@@ -866,7 +866,7 @@ func Fn_utf8_to_ucs4_fast(str string, len int64, itemsWritten *int64) {}
 
 func Fn_utf8_to_utf16(str string, len int64, itemsRead *int64, itemsWritten *int64) {}
 
-func Fn_utf8_validate(str *uint8, maxLen uint64, end string) {}
+func Fn_utf8_validate(str []uint8, maxLen uint64, end string) {}
 
 func Fn_variant_get_gtype() {
 	C.g_variant_get_gtype()

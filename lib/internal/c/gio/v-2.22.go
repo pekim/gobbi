@@ -240,7 +240,7 @@ func Fn_content_type_get_icon(type_ string) {}
 
 func Fn_content_type_get_mime_type(type_ string) {}
 
-func Fn_content_type_guess(filename string, data *uint8, dataSize uint64, resultUncertain *bool) {}
+func Fn_content_type_guess(filename string, data []uint8, dataSize uint64, resultUncertain *bool) {}
 
 func Fn_content_type_guess_for_tree(root unsafe.Pointer) {}
 
@@ -270,7 +270,7 @@ func Fn_icon_hash(icon unsafe.Pointer) {}
 
 func Fn_icon_new_for_string(str string) {}
 
-func Fn_initable_newv(objectType uint64, nParameters uint, parameters *gobject.Parameter, cancellable unsafe.Pointer) {
+func Fn_initable_newv(objectType uint64, nParameters uint, parameters []gobject.Parameter, cancellable unsafe.Pointer) {
 }
 
 func Fn_io_error_from_errno(errNo int) {}

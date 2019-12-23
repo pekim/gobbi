@@ -1,6 +1,9 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
+import (
+	"github.com/dave/jennifer/jen"
+	"strings"
+)
 
 type Array struct {
 	Type           *Type  `xml:"type"`
@@ -23,7 +26,14 @@ func (a *Array) init(ns *Namespace) {
 }
 
 func (a *Array) sysParamGoType() *jen.Statement {
+	stars := ""
+	if a.Type.isString() && strings.HasSuffix(a.CType, "***") {
+		// special case for "*[]string"
+		stars = "*"
+	}
+
 	return jen.
-		Op("*"). // an extra level of indirection for array
+		Op(stars).
+		Index().
 		Add(a.Type.sysParamGoType())
 }

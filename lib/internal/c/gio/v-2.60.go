@@ -330,7 +330,7 @@ func Fn_content_type_get_mime_type(type_ string) {}
 
 func Fn_content_type_get_symbolic_icon(type_ string) {}
 
-func Fn_content_type_guess(filename string, data *uint8, dataSize uint64, resultUncertain *bool) {}
+func Fn_content_type_guess(filename string, data []uint8, dataSize uint64, resultUncertain *bool) {}
 
 func Fn_content_type_guess_for_tree(root unsafe.Pointer) {}
 
@@ -340,7 +340,7 @@ func Fn_content_type_is_mime_type(type_ string, mimeType string) {}
 
 func Fn_content_type_is_unknown(type_ string) {}
 
-func Fn_content_type_set_mime_dirs(dirs *string) {}
+func Fn_content_type_set_mime_dirs(dirs []string) {}
 
 func Fn_content_types_get_registered() {
 	C.g_content_types_get_registered()
@@ -356,7 +356,7 @@ func Fn_dbus_address_get_stream_finish(res unsafe.Pointer, outGuid string) {}
 
 func Fn_dbus_address_get_stream_sync(address string, outGuid string, cancellable unsafe.Pointer) {}
 
-func Fn_dbus_annotation_info_lookup(annotations *unsafe.Pointer, name string) {}
+func Fn_dbus_annotation_info_lookup(annotations []unsafe.Pointer, name string) {}
 
 func Fn_dbus_error_encode_gerror(error unsafe.Pointer) {}
 
@@ -372,7 +372,7 @@ func Fn_dbus_error_quark() {
 
 func Fn_dbus_error_register_error(errorDomain uint32, errorCode int, dbusErrorName string) {}
 
-func Fn_dbus_error_register_error_domain(errorDomainQuarkName string, quarkVolatile *uint64, entries *DBusErrorEntry, numEntries uint) {
+func Fn_dbus_error_register_error_domain(errorDomainQuarkName string, quarkVolatile *uint64, entries []DBusErrorEntry, numEntries uint) {
 }
 
 func Fn_dbus_error_strip_remote_error(error unsafe.Pointer) {}
@@ -423,7 +423,7 @@ func Fn_icon_hash(icon unsafe.Pointer) {}
 
 func Fn_icon_new_for_string(str string) {}
 
-func Fn_initable_newv(objectType uint64, nParameters uint, parameters *gobject.Parameter, cancellable unsafe.Pointer) {
+func Fn_initable_newv(objectType uint64, nParameters uint, parameters []gobject.Parameter, cancellable unsafe.Pointer) {
 }
 
 func Fn_io_error_from_errno(errNo int) {}
@@ -469,13 +469,13 @@ func Fn_pollable_source_new(pollableStream unsafe.Pointer) {}
 func Fn_pollable_source_new_full(pollableStream unsafe.Pointer, childSource unsafe.Pointer, cancellable unsafe.Pointer) {
 }
 
-func Fn_pollable_stream_read(stream unsafe.Pointer, buffer *uint8, count uint64, blocking bool, cancellable unsafe.Pointer) {
+func Fn_pollable_stream_read(stream unsafe.Pointer, buffer []uint8, count uint64, blocking bool, cancellable unsafe.Pointer) {
 }
 
-func Fn_pollable_stream_write(stream unsafe.Pointer, buffer *uint8, count uint64, blocking bool, cancellable unsafe.Pointer) {
+func Fn_pollable_stream_write(stream unsafe.Pointer, buffer []uint8, count uint64, blocking bool, cancellable unsafe.Pointer) {
 }
 
-func Fn_pollable_stream_write_all(stream unsafe.Pointer, buffer *uint8, count uint64, blocking bool, bytesWritten *uint64, cancellable unsafe.Pointer) {
+func Fn_pollable_stream_write_all(stream unsafe.Pointer, buffer []uint8, count uint64, blocking bool, bytesWritten *uint64, cancellable unsafe.Pointer) {
 }
 
 func Fn_proxy_get_default_for_protocol(protocol string) {}

@@ -139,7 +139,7 @@ func Fn_text_attribute_get_value(attr int, index int) {}
 
 func Fn_text_attribute_register(name string) {}
 
-func Fn_text_free_ranges(ranges *unsafe.Pointer) {}
+func Fn_text_free_ranges(ranges []unsafe.Pointer) {}
 
 func Fn_value_type_get_localized_name(valueType int) {}
 

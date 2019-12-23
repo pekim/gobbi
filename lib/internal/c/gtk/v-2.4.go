@@ -654,9 +654,9 @@ func Fn_icon_theme_error_quark() {
 	C.gtk_icon_theme_error_quark()
 }
 
-func Fn_init(argc *int, argv *string) {}
+func Fn_init(argc *int, argv *[]string) {}
 
-func Fn_init_check(argc *int, argv *string) {}
+func Fn_init_check(argc *int, argv *[]string) {}
 
 // UNSUPPORTED : key_snooper_install : has callback
 
@@ -742,7 +742,7 @@ func Fn_paint_tab(style unsafe.Pointer, cr unsafe.Pointer, stateType int, shadow
 func Fn_paint_vline(style unsafe.Pointer, cr unsafe.Pointer, stateType int, widget unsafe.Pointer, detail string, y1 int, y2 int, x int) {
 }
 
-func Fn_parse_args(argc *int, argv *string) {}
+func Fn_parse_args(argc *int, argv *[]string) {}
 
 // UNSUPPORTED : print_run_page_setup_dialog_async : has callback
 
@@ -816,7 +816,7 @@ func Fn_rc_scanner_new() {
 	C.gtk_rc_scanner_new()
 }
 
-func Fn_rc_set_default_files(filenames *string) {}
+func Fn_rc_set_default_files(filenames []string) {}
 
 func Fn_recent_chooser_error_quark() {
 	C.gtk_recent_chooser_error_quark()
@@ -828,7 +828,7 @@ func Fn_recent_manager_error_quark() {
 
 func Fn_selection_add_target(widget unsafe.Pointer, selection gdk.Atom, target gdk.Atom, info uint) {}
 
-func Fn_selection_add_targets(widget unsafe.Pointer, selection gdk.Atom, targets *TargetEntry, ntargets uint) {
+func Fn_selection_add_targets(widget unsafe.Pointer, selection gdk.Atom, targets []TargetEntry, ntargets uint) {
 }
 
 func Fn_selection_clear_targets(widget unsafe.Pointer, selection gdk.Atom) {}
@@ -846,9 +846,9 @@ func Fn_set_debug_flags(flags uint) {}
 
 // UNSUPPORTED : show_about_dialog : has varargs
 
-func Fn_stock_add(items *StockItem, nItems uint) {}
+func Fn_stock_add(items []StockItem, nItems uint) {}
 
-func Fn_stock_add_static(items *StockItem, nItems uint) {}
+func Fn_stock_add_static(items []StockItem, nItems uint) {}
 
 func Fn_stock_list_ids() {
 	C.gtk_stock_list_ids()
@@ -871,7 +871,7 @@ func Fn_tree_row_reference_deleted(proxy unsafe.Pointer, path unsafe.Pointer) {}
 
 func Fn_tree_row_reference_inserted(proxy unsafe.Pointer, path unsafe.Pointer) {}
 
-func Fn_tree_row_reference_reordered(proxy unsafe.Pointer, path unsafe.Pointer, iter unsafe.Pointer, newOrder *int) {
+func Fn_tree_row_reference_reordered(proxy unsafe.Pointer, path unsafe.Pointer, iter unsafe.Pointer, newOrder []int) {
 }
 
 func Fn_tree_set_row_drag_data(selectionData unsafe.Pointer, treeModel unsafe.Pointer, path unsafe.Pointer) {

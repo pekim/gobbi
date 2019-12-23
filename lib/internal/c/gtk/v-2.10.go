@@ -665,11 +665,11 @@ func Fn_icon_theme_error_quark() {
 	C.gtk_icon_theme_error_quark()
 }
 
-func Fn_init(argc *int, argv *string) {}
+func Fn_init(argc *int, argv *[]string) {}
 
-func Fn_init_check(argc *int, argv *string) {}
+func Fn_init_check(argc *int, argv *[]string) {}
 
-func Fn_init_with_args(argc *int, argv *string, parameterString string, entries *glib.OptionEntry, translationDomain string) {
+func Fn_init_with_args(argc *int, argv *[]string, parameterString string, entries []glib.OptionEntry, translationDomain string) {
 }
 
 // UNSUPPORTED : key_snooper_install : has callback
@@ -760,7 +760,7 @@ func Fn_paper_size_get_default() {
 	C.gtk_paper_size_get_default()
 }
 
-func Fn_parse_args(argc *int, argv *string) {}
+func Fn_parse_args(argc *int, argv *[]string) {}
 
 func Fn_print_error_quark() {
 	C.gtk_print_error_quark()
@@ -841,7 +841,7 @@ func Fn_rc_scanner_new() {
 	C.gtk_rc_scanner_new()
 }
 
-func Fn_rc_set_default_files(filenames *string) {}
+func Fn_rc_set_default_files(filenames []string) {}
 
 func Fn_recent_chooser_error_quark() {
 	C.gtk_recent_chooser_error_quark()
@@ -853,7 +853,7 @@ func Fn_recent_manager_error_quark() {
 
 func Fn_selection_add_target(widget unsafe.Pointer, selection gdk.Atom, target gdk.Atom, info uint) {}
 
-func Fn_selection_add_targets(widget unsafe.Pointer, selection gdk.Atom, targets *TargetEntry, ntargets uint) {
+func Fn_selection_add_targets(widget unsafe.Pointer, selection gdk.Atom, targets []TargetEntry, ntargets uint) {
 }
 
 func Fn_selection_clear_targets(widget unsafe.Pointer, selection gdk.Atom) {}
@@ -871,9 +871,9 @@ func Fn_set_debug_flags(flags uint) {}
 
 // UNSUPPORTED : show_about_dialog : has varargs
 
-func Fn_stock_add(items *StockItem, nItems uint) {}
+func Fn_stock_add(items []StockItem, nItems uint) {}
 
-func Fn_stock_add_static(items *StockItem, nItems uint) {}
+func Fn_stock_add_static(items []StockItem, nItems uint) {}
 
 func Fn_stock_list_ids() {
 	C.gtk_stock_list_ids()
@@ -883,17 +883,17 @@ func Fn_stock_lookup(stockId string, item unsafe.Pointer) {}
 
 // UNSUPPORTED : stock_set_translate_func : has callback
 
-func Fn_target_table_free(targets *TargetEntry, nTargets int) {}
+func Fn_target_table_free(targets []TargetEntry, nTargets int) {}
 
 func Fn_target_table_new_from_list(list unsafe.Pointer, nTargets *int) {}
 
-func Fn_targets_include_image(targets *gdk.Atom, nTargets int, writable bool) {}
+func Fn_targets_include_image(targets []gdk.Atom, nTargets int, writable bool) {}
 
-func Fn_targets_include_rich_text(targets *gdk.Atom, nTargets int, buffer unsafe.Pointer) {}
+func Fn_targets_include_rich_text(targets []gdk.Atom, nTargets int, buffer unsafe.Pointer) {}
 
-func Fn_targets_include_text(targets *gdk.Atom, nTargets int) {}
+func Fn_targets_include_text(targets []gdk.Atom, nTargets int) {}
 
-func Fn_targets_include_uri(targets *gdk.Atom, nTargets int) {}
+func Fn_targets_include_uri(targets []gdk.Atom, nTargets int) {}
 
 // UNSUPPORTED : test_create_widget : has varargs
 
@@ -908,7 +908,7 @@ func Fn_tree_row_reference_deleted(proxy unsafe.Pointer, path unsafe.Pointer) {}
 
 func Fn_tree_row_reference_inserted(proxy unsafe.Pointer, path unsafe.Pointer) {}
 
-func Fn_tree_row_reference_reordered(proxy unsafe.Pointer, path unsafe.Pointer, iter unsafe.Pointer, newOrder *int) {
+func Fn_tree_row_reference_reordered(proxy unsafe.Pointer, path unsafe.Pointer, iter unsafe.Pointer, newOrder []int) {
 }
 
 func Fn_tree_set_row_drag_data(selectionData unsafe.Pointer, treeModel unsafe.Pointer, path unsafe.Pointer) {

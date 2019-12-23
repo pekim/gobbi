@@ -137,9 +137,9 @@ func Fn_gl_error_quark() {
 	C.gdk_gl_error_quark()
 }
 
-func Fn_init(argc *int, argv *string) {}
+func Fn_init(argc *int, argv *[]string) {}
 
-func Fn_init_check(argc *int, argv *string) {}
+func Fn_init_check(argc *int, argv *[]string) {}
 
 func Fn_keyboard_grab(window unsafe.Pointer, ownerEvents bool, time uint32) {}
 
@@ -180,10 +180,10 @@ func Fn_pango_context_get_for_screen(screen unsafe.Pointer) {}
 func Fn_pango_layout_get_clip_region(layout unsafe.Pointer, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
 }
 
-func Fn_pango_layout_line_get_clip_region(line unsafe.Pointer, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
+func Fn_pango_layout_line_get_clip_region(line unsafe.Pointer, xOrigin int, yOrigin int, indexRanges []int, nRanges int) {
 }
 
-func Fn_parse_args(argc *int, argv *string) {}
+func Fn_parse_args(argc *int, argv *[]string) {}
 
 func Fn_pixbuf_get_from_surface(surface unsafe.Pointer, srcX int, srcY int, width int, height int) {}
 
@@ -207,12 +207,12 @@ func Fn_property_change(window unsafe.Pointer, property Atom, type_ Atom, format
 
 func Fn_property_delete(window unsafe.Pointer, property Atom) {}
 
-func Fn_property_get(window unsafe.Pointer, property Atom, type_ Atom, offset uint64, length uint64, pdelete int, actualPropertyType unsafe.Pointer, actualFormat *int, actualLength *int, data **uint8) {
+func Fn_property_get(window unsafe.Pointer, property Atom, type_ Atom, offset uint64, length uint64, pdelete int, actualPropertyType unsafe.Pointer, actualFormat *int, actualLength *int, data []*uint8) {
 }
 
-func Fn_query_depths(depths **int, count *int) {}
+func Fn_query_depths(depths []*int, count *int) {}
 
-func Fn_query_visual_types(visualTypes *int, count *int) {}
+func Fn_query_visual_types(visualTypes []int, count *int) {}
 
 func Fn_selection_convert(requestor unsafe.Pointer, selection Atom, target Atom, time uint32) {}
 
@@ -244,7 +244,7 @@ func Fn_setting_get(name string, value unsafe.Pointer) {}
 
 func Fn_synthesize_window_state(window unsafe.Pointer, unsetFlags int, setFlags int) {}
 
-func Fn_text_property_to_utf8_list_for_display(display unsafe.Pointer, encoding Atom, format int, text *uint8, length int, list *string) {
+func Fn_text_property_to_utf8_list_for_display(display unsafe.Pointer, encoding Atom, format int, text []uint8, length int, list *[]string) {
 }
 
 // UNSUPPORTED : threads_add_idle : has callback

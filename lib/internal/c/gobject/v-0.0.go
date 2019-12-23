@@ -213,7 +213,7 @@ func Fn_pointer_type_register_static(name string) {}
 
 // UNSUPPORTED : signal_add_emission_hook : has callback
 
-func Fn_signal_chain_from_overridden(instanceAndParams *Value, returnValue unsafe.Pointer) {}
+func Fn_signal_chain_from_overridden(instanceAndParams []Value, returnValue unsafe.Pointer) {}
 
 // UNSUPPORTED : signal_chain_from_overridden_handler : has varargs
 
@@ -233,7 +233,7 @@ func Fn_signal_connect_closure_by_id(instance unsafe.Pointer, signalId uint, det
 
 // UNSUPPORTED : signal_emit_valist : has va_list
 
-func Fn_signal_emitv(instanceAndParams *Value, signalId uint, detail uint32, returnValue unsafe.Pointer) {
+func Fn_signal_emitv(instanceAndParams []Value, signalId uint, detail uint32, returnValue unsafe.Pointer) {
 }
 
 func Fn_signal_get_invocation_hint(instance unsafe.Pointer) {}

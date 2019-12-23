@@ -231,7 +231,7 @@ func Fn_content_type_get_icon(type_ string) {}
 
 func Fn_content_type_get_mime_type(type_ string) {}
 
-func Fn_content_type_guess(filename string, data *uint8, dataSize uint64, resultUncertain *bool) {}
+func Fn_content_type_guess(filename string, data []uint8, dataSize uint64, resultUncertain *bool) {}
 
 func Fn_content_type_guess_for_tree(root unsafe.Pointer) {}
 
