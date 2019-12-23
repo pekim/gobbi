@@ -38,8 +38,8 @@ var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"gsize":           jen.Uint64(),
 	"gssize":          jen.Uint64(),
 	"gboolean":        jen.Bool(),
-	"gpointer":        jen.Qual("unsafe", "Pointer"),
-	"gconstpointer":   jen.Qual("unsafe", "Pointer"),
+	"gpointer":        jenUnsafePointer(),
+	"gconstpointer":   jenUnsafePointer(),
 	"goffset":         jen.Int64(),
 }
 
@@ -117,12 +117,12 @@ func (t *Type) sysParamGoType() *jen.Statement {
 	}
 
 	if t.cType == "void" && t.cIndirectionCount == 1 {
-		return jen.Qual("unsafe", "Pointer")
+		return jenUnsafePointer()
 	}
 
 	// pango specific
 	if t.cType == "FILE" && t.cIndirectionCount == 1 {
-		return jen.Qual("unsafe", "Pointer")
+		return jenUnsafePointer()
 	}
 
 	if simpleGoType, ok := simpleSysParamGoTypes[t.cType]; ok {
@@ -156,7 +156,7 @@ func (t *Type) sysParamGoType() *jen.Statement {
 		t.isUnion() {
 
 		stars := strings.Repeat("*", t.cIndirectionCount-1)
-		return jen.Op(stars).Qual("unsafe", "Pointer")
+		return jen.Op(stars).Add(jenUnsafePointer())
 	}
 
 	panic(fmt.Sprintf("Unsupported type : %s %s (%s)", t.namespace.Name, t.Name, t.CType))
