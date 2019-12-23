@@ -1933,10 +1933,14 @@ func Fn_g_unicode_canonical_ordering(param0 *rune, param1 uint64) {
 
 // UNSUPPORTED : unix_fd_add_full : has callback
 
+// UNSUPPORTED : unix_fd_source_new : blacklisted
+// UNSUPPORTED : unix_open_pipe : blacklisted
+// UNSUPPORTED : unix_set_fd_nonblocking : blacklisted
 // UNSUPPORTED : unix_signal_add : has callback
 
 // UNSUPPORTED : unix_signal_add_full : has callback
 
+// UNSUPPORTED : unix_signal_source_new : blacklisted
 func Fn_g_unlink(param0 string) {
 	cValue0 := 42
 

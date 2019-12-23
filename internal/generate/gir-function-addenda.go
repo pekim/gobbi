@@ -1,6 +1,10 @@
 package generate
 
 var functionBlacklist = map[string]bool{
+	// gdk
+	"gdk_synthesize_window_state": true,
+	"gdk_window_destroy_notify":   true,
+
 	// gio
 	"g_io_module_query": true,
 
@@ -18,15 +22,24 @@ var functionBlacklist = map[string]bool{
 	"g_null_settings_backend_new":              true,
 
 	// glib
-	"g_unix_error_quark": true,
+	"g_unix_error_quark":        true,
+	"g_unix_fd_source_new":      true,
+	"g_unix_open_pipe":          true,
+	"g_unix_set_fd_nonblocking": true,
+	"g_unix_signal_source_new":  true,
 
 	// pango
-	"pango_module_register":          true,
-	"pango_get_lib_subdirectory":     true,
-	"pango_get_sysconf_subdirectory": true,
-	"pango_fontset_simple_new":       true,
-	"pango_fontset_simple_append":    true,
-	"pango_fontset_simple_size":      true,
+	"pango_module_register":                true,
+	"pango_get_lib_subdirectory":           true,
+	"pango_get_sysconf_subdirectory":       true,
+	"pango_fontset_simple_new":             true,
+	"pango_fontset_simple_append":          true,
+	"pango_fontset_simple_size":            true,
+	"pango_config_key_get":                 true,
+	"pango_config_key_get_system":          true,
+	"pango_default_break":                  true,
+	"pango_find_map":                       true,
+	"pango_font_map_get_shape_engine_type": true,
 
 	// xlib
 	"XOpenDisplay": true,

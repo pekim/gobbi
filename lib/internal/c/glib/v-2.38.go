@@ -2929,37 +2929,14 @@ func Fn_g_unicode_script_to_iso15924(param0 int) {
 
 // UNSUPPORTED : unix_fd_add_full : has callback
 
-func Fn_g_unix_fd_source_new(param0 int, param1 int) {
-	cValue0 := (C.gint)(param0)
-	cValue1 := (C.GIOCondition)(param1)
-
-	C.g_unix_fd_source_new(cValue0, cValue1)
-}
-
-func Fn_g_unix_open_pipe(param0 *int, param1 int) {
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
-	cValue1 := (C.gint)(param1)
-
-	C.g_unix_open_pipe(cValue0, cValue1)
-}
-
-func Fn_g_unix_set_fd_nonblocking(param0 int, param1 bool) {
-	cValue0 := (C.gint)(param0)
-	cValue1 := toCBool(param1)
-
-	C.g_unix_set_fd_nonblocking(cValue0, cValue1)
-}
-
+// UNSUPPORTED : unix_fd_source_new : blacklisted
+// UNSUPPORTED : unix_open_pipe : blacklisted
+// UNSUPPORTED : unix_set_fd_nonblocking : blacklisted
 // UNSUPPORTED : unix_signal_add : has callback
 
 // UNSUPPORTED : unix_signal_add_full : has callback
 
-func Fn_g_unix_signal_source_new(param0 int) {
-	cValue0 := (C.gint)(param0)
-
-	C.g_unix_signal_source_new(cValue0)
-}
-
+// UNSUPPORTED : unix_signal_source_new : blacklisted
 func Fn_g_unlink(param0 string) {
 	cValue0 := 42
 

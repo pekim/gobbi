@@ -203,28 +203,9 @@ func Fn_pango_break(param0 string, param1 int, param2 unsafe.Pointer, param3 []L
 	// has array param
 }
 
-func Fn_pango_config_key_get(param0 string) {
-	cValue0 := 42
-
-	C.pango_config_key_get(cValue0)
-}
-
-func Fn_pango_config_key_get_system(param0 string) {
-	cValue0 := 42
-
-	C.pango_config_key_get_system(cValue0)
-}
-
-func Fn_pango_default_break(param0 string, param1 int, param2 unsafe.Pointer, param3 unsafe.Pointer, param4 int) {
-	cValue0 := 42
-	cValue1 := (C.int)(param1)
-	cValue2 := (*C.PangoAnalysis)(unsafe.Pointer(param2))
-	cValue3 := (*C.PangoLogAttr)(unsafe.Pointer(param3))
-	cValue4 := (C.int)(param4)
-
-	C.pango_default_break(cValue0, cValue1, cValue2, cValue3, cValue4)
-}
-
+// UNSUPPORTED : config_key_get : blacklisted
+// UNSUPPORTED : config_key_get_system : blacklisted
+// UNSUPPORTED : default_break : blacklisted
 func Fn_pango_extents_to_pixels(param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValue0 := (*C.PangoRectangle)(unsafe.Pointer(param0))
 	cValue1 := (*C.PangoRectangle)(unsafe.Pointer(param1))
@@ -239,14 +220,7 @@ func Fn_pango_find_base_dir(param0 string, param1 int) {
 	C.pango_find_base_dir(cValue0, cValue1)
 }
 
-func Fn_pango_find_map(param0 unsafe.Pointer, param1 uint, param2 uint) {
-	cValue0 := (*C.PangoLanguage)(unsafe.Pointer(param0))
-	cValue1 := (C.guint)(param1)
-	cValue2 := (C.guint)(param2)
-
-	C.pango_find_map(cValue0, cValue1, cValue2)
-}
-
+// UNSUPPORTED : find_map : blacklisted
 func Fn_pango_find_paragraph_boundary(param0 string, param1 int, param2 *int, param3 *int) {
 	cValue0 := 42
 	cValue1 := (C.gint)(param1)
@@ -743,12 +717,7 @@ func Fn_pango_font_map_create_context(paramInstance unsafe.Pointer) {
 	C.pango_font_map_create_context(cValueInstance)
 }
 
-func Fn_pango_font_map_get_shape_engine_type(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.PangoFontMap)(unsafe.Pointer(paramInstance))
-
-	C.pango_font_map_get_shape_engine_type(cValueInstance)
-}
-
+// UNSUPPORTED : get_shape_engine_type : blacklisted
 func Fn_pango_font_map_list_families(paramInstance unsafe.Pointer, param0 []*unsafe.Pointer, param1 *int) {
 	// has array param
 }

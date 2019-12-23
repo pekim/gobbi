@@ -468,14 +468,7 @@ func Fn_gdk_setting_get(param0 string, param1 unsafe.Pointer) {
 	C.gdk_setting_get(cValue0, cValue1)
 }
 
-func Fn_gdk_synthesize_window_state(param0 unsafe.Pointer, param1 int, param2 int) {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
-	cValue1 := (C.GdkWindowState)(param1)
-	cValue2 := (C.GdkWindowState)(param2)
-
-	C.gdk_synthesize_window_state(cValue0, cValue1, cValue2)
-}
-
+// UNSUPPORTED : synthesize_window_state : blacklisted
 // UNSUPPORTED : threads_add_idle : has callback
 
 // UNSUPPORTED : threads_add_idle_full : has callback
@@ -790,12 +783,7 @@ func Fn_gdk_window_destroy(paramInstance unsafe.Pointer) {
 	C.gdk_window_destroy(cValueInstance)
 }
 
-func Fn_gdk_window_destroy_notify(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	C.gdk_window_destroy_notify(cValueInstance)
-}
-
+// UNSUPPORTED : destroy_notify : blacklisted
 func Fn_gdk_window_end_paint(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 
