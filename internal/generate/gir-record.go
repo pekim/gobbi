@@ -18,7 +18,7 @@ type Record struct {
 	//Fields         Fields       `xml:"field"`
 	Constructors Constructors `xml:"constructor"`
 	Functions    Functions    `xml:"function"`
-	//Methods        Methods      `xml:"method"`
+	Methods      Methods      `xml:"method"`
 	//Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
 
 	goName    string
@@ -36,6 +36,7 @@ func (r *Record) init(ns *Namespace) {
 	r.version = versionNew(r.Version)
 	r.namespace.versions.add(r.version)
 	r.Constructors.init(ns, r)
+	r.Methods.init(ns, r)
 	r.Functions.init(ns)
 
 	r.goName = r.Name
@@ -57,5 +58,6 @@ func (r Record) generateSysType(f *jen.File, version semver.Version) {
 
 func (r *Record) generateSys(f *jen.File, version semver.Version) {
 	r.Constructors.generateSys(f, version)
+	r.Methods.generateSys(f, version)
 	r.Functions.generateSys(f, version)
 }

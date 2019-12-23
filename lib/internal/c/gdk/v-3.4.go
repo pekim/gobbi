@@ -332,6 +332,18 @@ func Fn_gdk_app_launch_context_new() {
 	C.gdk_app_launch_context_new()
 }
 
+func Fn_gdk_app_launch_context_set_desktop(param0 int) {}
+
+func Fn_gdk_app_launch_context_set_display(param0 unsafe.Pointer) {}
+
+func Fn_gdk_app_launch_context_set_icon(param0 unsafe.Pointer) {}
+
+func Fn_gdk_app_launch_context_set_icon_name(param0 string) {}
+
+func Fn_gdk_app_launch_context_set_screen(param0 unsafe.Pointer) {}
+
+func Fn_gdk_app_launch_context_set_timestamp(param0 uint32) {}
+
 func Fn_gdk_cursor_new(param0 int) {}
 
 func Fn_gdk_cursor_new_for_display(param0 unsafe.Pointer, param1 int) {}
@@ -341,10 +353,157 @@ func Fn_gdk_cursor_new_from_name(param0 unsafe.Pointer, param1 string) {}
 func Fn_gdk_cursor_new_from_pixbuf(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int) {
 }
 
+func Fn_gdk_cursor_get_cursor_type() {}
+
+func Fn_gdk_cursor_get_display() {}
+
+func Fn_gdk_cursor_get_image() {}
+
+func Fn_gdk_cursor_ref() {}
+
+func Fn_gdk_cursor_unref() {}
+
+func Fn_gdk_device_get_associated_device() {}
+
+func Fn_gdk_device_get_axis(param0 []float64, param1 int, param2 *float64) {}
+
+func Fn_gdk_device_get_axis_use(param0 uint) {}
+
+func Fn_gdk_device_get_axis_value(param0 []float64, param1 Atom, param2 *float64) {}
+
+func Fn_gdk_device_get_device_type() {}
+
+func Fn_gdk_device_get_display() {}
+
+func Fn_gdk_device_get_has_cursor() {}
+
+func Fn_gdk_device_get_history(param0 unsafe.Pointer, param1 uint32, param2 uint32, param3 []*unsafe.Pointer, param4 *int) {
+}
+
+func Fn_gdk_device_get_key(param0 uint, param1 *uint, param2 int) {}
+
+func Fn_gdk_device_get_mode() {}
+
+func Fn_gdk_device_get_n_axes() {}
+
+func Fn_gdk_device_get_n_keys() {}
+
+func Fn_gdk_device_get_name() {}
+
+func Fn_gdk_device_get_position(param0 *unsafe.Pointer, param1 *int, param2 *int) {}
+
+func Fn_gdk_device_get_source() {}
+
+func Fn_gdk_device_get_state(param0 unsafe.Pointer, param1 []float64, param2 int) {}
+
+func Fn_gdk_device_get_window_at_position(param0 *int, param1 *int) {}
+
+func Fn_gdk_device_get_window_at_position_double(param0 *float64, param1 *float64) {}
+
+func Fn_gdk_device_grab(param0 unsafe.Pointer, param1 int, param2 bool, param3 int, param4 unsafe.Pointer, param5 uint32) {
+}
+
+func Fn_gdk_device_list_axes() {}
+
+func Fn_gdk_device_list_slave_devices() {}
+
+func Fn_gdk_device_set_axis_use(param0 uint, param1 int) {}
+
+func Fn_gdk_device_set_key(param0 uint, param1 uint, param2 int) {}
+
+func Fn_gdk_device_set_mode(param0 int) {}
+
+func Fn_gdk_device_ungrab(param0 uint32) {}
+
+func Fn_gdk_device_warp(param0 unsafe.Pointer, param1 int, param2 int) {}
+
 func Fn_gdk_device_free_history(param0 []unsafe.Pointer, param1 int) {}
 
 func Fn_gdk_device_grab_info_libgtk_only(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *unsafe.Pointer, param3 *bool) {
 }
+
+func Fn_gdk_device_manager_get_client_pointer() {}
+
+func Fn_gdk_device_manager_get_display() {}
+
+func Fn_gdk_device_manager_list_devices(param0 int) {}
+
+func Fn_gdk_display_beep() {}
+
+func Fn_gdk_display_close() {}
+
+func Fn_gdk_display_device_is_grabbed(param0 unsafe.Pointer) {}
+
+func Fn_gdk_display_flush() {}
+
+func Fn_gdk_display_get_app_launch_context() {}
+
+func Fn_gdk_display_get_default_cursor_size() {}
+
+func Fn_gdk_display_get_default_group() {}
+
+func Fn_gdk_display_get_default_screen() {}
+
+func Fn_gdk_display_get_device_manager() {}
+
+func Fn_gdk_display_get_event() {}
+
+func Fn_gdk_display_get_maximal_cursor_size(param0 *uint, param1 *uint) {}
+
+func Fn_gdk_display_get_n_screens() {}
+
+func Fn_gdk_display_get_name() {}
+
+func Fn_gdk_display_get_pointer(param0 *unsafe.Pointer, param1 *int, param2 *int, param3 int) {}
+
+func Fn_gdk_display_get_screen(param0 int) {}
+
+func Fn_gdk_display_get_window_at_pointer(param0 *int, param1 *int) {}
+
+func Fn_gdk_display_has_pending() {}
+
+func Fn_gdk_display_is_closed() {}
+
+func Fn_gdk_display_keyboard_ungrab(param0 uint32) {}
+
+func Fn_gdk_display_list_devices() {}
+
+func Fn_gdk_display_notify_startup_complete(param0 string) {}
+
+func Fn_gdk_display_peek_event() {}
+
+func Fn_gdk_display_pointer_is_grabbed() {}
+
+func Fn_gdk_display_pointer_ungrab(param0 uint32) {}
+
+func Fn_gdk_display_put_event(param0 unsafe.Pointer) {}
+
+func Fn_gdk_display_request_selection_notification(param0 Atom) {}
+
+func Fn_gdk_display_set_double_click_distance(param0 uint) {}
+
+func Fn_gdk_display_set_double_click_time(param0 uint) {}
+
+func Fn_gdk_display_store_clipboard(param0 unsafe.Pointer, param1 uint32, param2 []Atom, param3 int) {
+}
+
+func Fn_gdk_display_supports_clipboard_persistence() {}
+
+func Fn_gdk_display_supports_composite() {}
+
+func Fn_gdk_display_supports_cursor_alpha() {}
+
+func Fn_gdk_display_supports_cursor_color() {}
+
+func Fn_gdk_display_supports_input_shapes() {}
+
+func Fn_gdk_display_supports_selection_notification() {}
+
+func Fn_gdk_display_supports_shapes() {}
+
+func Fn_gdk_display_sync() {}
+
+func Fn_gdk_display_warp_pointer(param0 unsafe.Pointer, param1 int, param2 int) {}
 
 func Fn_gdk_display_get_default() {
 	C.gdk_display_get_default()
@@ -356,8 +515,60 @@ func Fn_gdk_display_open_default_libgtk_only() {
 	C.gdk_display_open_default_libgtk_only()
 }
 
+func Fn_gdk_display_manager_get_default_display() {}
+
+func Fn_gdk_display_manager_list_displays() {}
+
+func Fn_gdk_display_manager_open_display(param0 string) {}
+
+func Fn_gdk_display_manager_set_default_display(param0 unsafe.Pointer) {}
+
 func Fn_gdk_display_manager_get() {
 	C.gdk_display_manager_get()
+}
+
+func Fn_gdk_drag_context_get_actions() {}
+
+func Fn_gdk_drag_context_get_dest_window() {}
+
+func Fn_gdk_drag_context_get_device() {}
+
+func Fn_gdk_drag_context_get_protocol() {}
+
+func Fn_gdk_drag_context_get_selected_action() {}
+
+func Fn_gdk_drag_context_get_source_window() {}
+
+func Fn_gdk_drag_context_get_suggested_action() {}
+
+func Fn_gdk_drag_context_list_targets() {}
+
+func Fn_gdk_drag_context_set_device(param0 unsafe.Pointer) {}
+
+func Fn_gdk_keymap_add_virtual_modifiers(param0 int) {}
+
+func Fn_gdk_keymap_get_caps_lock_state() {}
+
+func Fn_gdk_keymap_get_direction() {}
+
+func Fn_gdk_keymap_get_entries_for_keycode(param0 uint, param1 []unsafe.Pointer, param2 []*uint, param3 *int) {
+}
+
+func Fn_gdk_keymap_get_entries_for_keyval(param0 uint, param1 []unsafe.Pointer, param2 *int) {}
+
+func Fn_gdk_keymap_get_modifier_mask(param0 int) {}
+
+func Fn_gdk_keymap_get_modifier_state() {}
+
+func Fn_gdk_keymap_get_num_lock_state() {}
+
+func Fn_gdk_keymap_have_bidi_layouts() {}
+
+func Fn_gdk_keymap_lookup_key(param0 unsafe.Pointer) {}
+
+func Fn_gdk_keymap_map_virtual_modifiers(param0 int) {}
+
+func Fn_gdk_keymap_translate_keyboard_state(param0 uint, param1 int, param2 int, param3 *uint, param4 *int, param5 *int, param6 int) {
 }
 
 func Fn_gdk_keymap_get_default() {
@@ -365,6 +576,68 @@ func Fn_gdk_keymap_get_default() {
 }
 
 func Fn_gdk_keymap_get_for_display(param0 unsafe.Pointer) {}
+
+func Fn_gdk_monitor_get_manufacturer() {}
+
+func Fn_gdk_monitor_get_model() {}
+
+func Fn_gdk_screen_get_active_window() {}
+
+func Fn_gdk_screen_get_display() {}
+
+func Fn_gdk_screen_get_font_options() {}
+
+func Fn_gdk_screen_get_height() {}
+
+func Fn_gdk_screen_get_height_mm() {}
+
+func Fn_gdk_screen_get_monitor_at_point(param0 int, param1 int) {}
+
+func Fn_gdk_screen_get_monitor_at_window(param0 unsafe.Pointer) {}
+
+func Fn_gdk_screen_get_monitor_geometry(param0 int, param1 unsafe.Pointer) {}
+
+func Fn_gdk_screen_get_monitor_height_mm(param0 int) {}
+
+func Fn_gdk_screen_get_monitor_plug_name(param0 int) {}
+
+func Fn_gdk_screen_get_monitor_width_mm(param0 int) {}
+
+func Fn_gdk_screen_get_monitor_workarea(param0 int, param1 unsafe.Pointer) {}
+
+func Fn_gdk_screen_get_n_monitors() {}
+
+func Fn_gdk_screen_get_number() {}
+
+func Fn_gdk_screen_get_primary_monitor() {}
+
+func Fn_gdk_screen_get_resolution() {}
+
+func Fn_gdk_screen_get_rgba_visual() {}
+
+func Fn_gdk_screen_get_root_window() {}
+
+func Fn_gdk_screen_get_setting(param0 string, param1 unsafe.Pointer) {}
+
+func Fn_gdk_screen_get_system_visual() {}
+
+func Fn_gdk_screen_get_toplevel_windows() {}
+
+func Fn_gdk_screen_get_width() {}
+
+func Fn_gdk_screen_get_width_mm() {}
+
+func Fn_gdk_screen_get_window_stack() {}
+
+func Fn_gdk_screen_is_composited() {}
+
+func Fn_gdk_screen_list_visuals() {}
+
+func Fn_gdk_screen_make_display_name() {}
+
+func Fn_gdk_screen_set_font_options(param0 unsafe.Pointer) {}
+
+func Fn_gdk_screen_set_resolution(param0 float64) {}
 
 func Fn_gdk_screen_get_default() {
 	C.gdk_screen_get_default()
@@ -385,6 +658,28 @@ func Fn_gdk_screen_width() {
 func Fn_gdk_screen_width_mm() {
 	C.gdk_screen_width_mm()
 }
+
+func Fn_gdk_seat_get_display() {}
+
+// UNSUPPORTED : grab : has callback
+
+func Fn_gdk_visual_get_bits_per_rgb() {}
+
+func Fn_gdk_visual_get_blue_pixel_details(param0 *uint32, param1 *int, param2 *int) {}
+
+func Fn_gdk_visual_get_byte_order() {}
+
+func Fn_gdk_visual_get_colormap_size() {}
+
+func Fn_gdk_visual_get_depth() {}
+
+func Fn_gdk_visual_get_green_pixel_details(param0 *uint32, param1 *int, param2 *int) {}
+
+func Fn_gdk_visual_get_red_pixel_details(param0 *uint32, param1 *int, param2 *int) {}
+
+func Fn_gdk_visual_get_screen() {}
+
+func Fn_gdk_visual_get_visual_type() {}
 
 func Fn_gdk_visual_get_best() {
 	C.gdk_visual_get_best()
@@ -409,6 +704,286 @@ func Fn_gdk_visual_get_system() {
 }
 
 func Fn_gdk_window_new(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int) {}
+
+// UNSUPPORTED : add_filter : has callback
+
+func Fn_gdk_window_beep() {}
+
+func Fn_gdk_window_begin_move_drag(param0 int, param1 int, param2 int, param3 uint32) {}
+
+func Fn_gdk_window_begin_move_drag_for_device(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 uint32) {
+}
+
+func Fn_gdk_window_begin_paint_rect(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_begin_paint_region(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_begin_resize_drag(param0 int, param1 int, param2 int, param3 int, param4 uint32) {}
+
+func Fn_gdk_window_begin_resize_drag_for_device(param0 int, param1 unsafe.Pointer, param2 int, param3 int, param4 int, param5 uint32) {
+}
+
+func Fn_gdk_window_configure_finished() {}
+
+func Fn_gdk_window_coords_from_parent(param0 float64, param1 float64, param2 *float64, param3 *float64) {
+}
+
+func Fn_gdk_window_coords_to_parent(param0 float64, param1 float64, param2 *float64, param3 *float64) {
+}
+
+func Fn_gdk_window_create_similar_surface(param0 int, param1 int, param2 int) {}
+
+func Fn_gdk_window_deiconify() {}
+
+func Fn_gdk_window_destroy() {}
+
+func Fn_gdk_window_destroy_notify() {}
+
+func Fn_gdk_window_enable_synchronized_configure() {}
+
+func Fn_gdk_window_end_paint() {}
+
+func Fn_gdk_window_ensure_native() {}
+
+func Fn_gdk_window_flush() {}
+
+func Fn_gdk_window_focus(param0 uint32) {}
+
+func Fn_gdk_window_freeze_toplevel_updates_libgtk_only() {}
+
+func Fn_gdk_window_freeze_updates() {}
+
+func Fn_gdk_window_fullscreen() {}
+
+func Fn_gdk_window_fullscreen_on_monitor(param0 int) {}
+
+func Fn_gdk_window_geometry_changed() {}
+
+func Fn_gdk_window_get_accept_focus() {}
+
+func Fn_gdk_window_get_background_pattern() {}
+
+func Fn_gdk_window_get_children() {}
+
+func Fn_gdk_window_get_clip_region() {}
+
+func Fn_gdk_window_get_composited() {}
+
+func Fn_gdk_window_get_cursor() {}
+
+func Fn_gdk_window_get_decorations(param0 int) {}
+
+func Fn_gdk_window_get_device_cursor(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_get_device_events(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_get_device_position(param0 unsafe.Pointer, param1 *int, param2 *int, param3 int) {}
+
+func Fn_gdk_window_get_display() {}
+
+func Fn_gdk_window_get_drag_protocol(param0 *unsafe.Pointer) {}
+
+func Fn_gdk_window_get_effective_parent() {}
+
+func Fn_gdk_window_get_effective_toplevel() {}
+
+func Fn_gdk_window_get_events() {}
+
+func Fn_gdk_window_get_focus_on_map() {}
+
+func Fn_gdk_window_get_frame_extents(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_get_geometry(param0 *int, param1 *int, param2 *int, param3 *int) {}
+
+func Fn_gdk_window_get_group() {}
+
+func Fn_gdk_window_get_height() {}
+
+func Fn_gdk_window_get_modal_hint() {}
+
+func Fn_gdk_window_get_origin(param0 *int, param1 *int) {}
+
+func Fn_gdk_window_get_parent() {}
+
+func Fn_gdk_window_get_pointer(param0 *int, param1 *int, param2 int) {}
+
+func Fn_gdk_window_get_position(param0 *int, param1 *int) {}
+
+func Fn_gdk_window_get_root_coords(param0 int, param1 int, param2 *int, param3 *int) {}
+
+func Fn_gdk_window_get_root_origin(param0 *int, param1 *int) {}
+
+func Fn_gdk_window_get_screen() {}
+
+func Fn_gdk_window_get_source_events(param0 int) {}
+
+func Fn_gdk_window_get_state() {}
+
+func Fn_gdk_window_get_support_multidevice() {}
+
+func Fn_gdk_window_get_toplevel() {}
+
+func Fn_gdk_window_get_type_hint() {}
+
+func Fn_gdk_window_get_update_area() {}
+
+func Fn_gdk_window_get_user_data(param0 *unsafe.Pointer) {}
+
+func Fn_gdk_window_get_visible_region() {}
+
+func Fn_gdk_window_get_visual() {}
+
+func Fn_gdk_window_get_width() {}
+
+func Fn_gdk_window_get_window_type() {}
+
+func Fn_gdk_window_has_native() {}
+
+func Fn_gdk_window_hide() {}
+
+func Fn_gdk_window_iconify() {}
+
+func Fn_gdk_window_input_shape_combine_region(param0 unsafe.Pointer, param1 int, param2 int) {}
+
+// UNSUPPORTED : invalidate_maybe_recurse : has callback
+
+func Fn_gdk_window_invalidate_rect(param0 unsafe.Pointer, param1 bool) {}
+
+func Fn_gdk_window_invalidate_region(param0 unsafe.Pointer, param1 bool) {}
+
+func Fn_gdk_window_is_destroyed() {}
+
+func Fn_gdk_window_is_input_only() {}
+
+func Fn_gdk_window_is_shaped() {}
+
+func Fn_gdk_window_is_viewable() {}
+
+func Fn_gdk_window_is_visible() {}
+
+func Fn_gdk_window_lower() {}
+
+func Fn_gdk_window_maximize() {}
+
+func Fn_gdk_window_merge_child_input_shapes() {}
+
+func Fn_gdk_window_merge_child_shapes() {}
+
+func Fn_gdk_window_move(param0 int, param1 int) {}
+
+func Fn_gdk_window_move_region(param0 unsafe.Pointer, param1 int, param2 int) {}
+
+func Fn_gdk_window_move_resize(param0 int, param1 int, param2 int, param3 int) {}
+
+func Fn_gdk_window_peek_children() {}
+
+func Fn_gdk_window_process_updates(param0 bool) {}
+
+func Fn_gdk_window_raise() {}
+
+func Fn_gdk_window_register_dnd() {}
+
+// UNSUPPORTED : remove_filter : has callback
+
+func Fn_gdk_window_reparent(param0 unsafe.Pointer, param1 int, param2 int) {}
+
+func Fn_gdk_window_resize(param0 int, param1 int) {}
+
+func Fn_gdk_window_restack(param0 unsafe.Pointer, param1 bool) {}
+
+func Fn_gdk_window_scroll(param0 int, param1 int) {}
+
+func Fn_gdk_window_set_accept_focus(param0 bool) {}
+
+func Fn_gdk_window_set_background(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_background_pattern(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_background_rgba(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_child_input_shapes() {}
+
+func Fn_gdk_window_set_child_shapes() {}
+
+func Fn_gdk_window_set_composited(param0 bool) {}
+
+func Fn_gdk_window_set_cursor(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_decorations(param0 int) {}
+
+func Fn_gdk_window_set_device_cursor(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_device_events(param0 unsafe.Pointer, param1 int) {}
+
+func Fn_gdk_window_set_events(param0 int) {}
+
+func Fn_gdk_window_set_focus_on_map(param0 bool) {}
+
+func Fn_gdk_window_set_functions(param0 int) {}
+
+func Fn_gdk_window_set_geometry_hints(param0 unsafe.Pointer, param1 int) {}
+
+func Fn_gdk_window_set_group(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_icon_list(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_icon_name(param0 string) {}
+
+// UNSUPPORTED : set_invalidate_handler : has callback
+
+func Fn_gdk_window_set_keep_above(param0 bool) {}
+
+func Fn_gdk_window_set_keep_below(param0 bool) {}
+
+func Fn_gdk_window_set_modal_hint(param0 bool) {}
+
+func Fn_gdk_window_set_opacity(param0 float64) {}
+
+func Fn_gdk_window_set_override_redirect(param0 bool) {}
+
+func Fn_gdk_window_set_role(param0 string) {}
+
+func Fn_gdk_window_set_skip_pager_hint(param0 bool) {}
+
+func Fn_gdk_window_set_skip_taskbar_hint(param0 bool) {}
+
+func Fn_gdk_window_set_source_events(param0 int, param1 int) {}
+
+func Fn_gdk_window_set_startup_id(param0 string) {}
+
+func Fn_gdk_window_set_static_gravities(param0 bool) {}
+
+func Fn_gdk_window_set_support_multidevice(param0 bool) {}
+
+func Fn_gdk_window_set_title(param0 string) {}
+
+func Fn_gdk_window_set_transient_for(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_type_hint(param0 int) {}
+
+func Fn_gdk_window_set_urgency_hint(param0 bool) {}
+
+func Fn_gdk_window_set_user_data(param0 *unsafe.Pointer) {}
+
+func Fn_gdk_window_shape_combine_region(param0 unsafe.Pointer, param1 int, param2 int) {}
+
+func Fn_gdk_window_show() {}
+
+func Fn_gdk_window_show_unraised() {}
+
+func Fn_gdk_window_stick() {}
+
+func Fn_gdk_window_thaw_toplevel_updates_libgtk_only() {}
+
+func Fn_gdk_window_thaw_updates() {}
+
+func Fn_gdk_window_unfullscreen() {}
+
+func Fn_gdk_window_unmaximize() {}
+
+func Fn_gdk_window_unstick() {}
+
+func Fn_gdk_window_withdraw() {}
 
 func Fn_gdk_window_at_pointer(param0 *int, param1 *int) {}
 

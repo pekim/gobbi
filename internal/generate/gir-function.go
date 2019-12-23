@@ -15,7 +15,8 @@ type Function struct {
 	DeprecatedVersion string `xml:"deprecated-version,attr"`
 	//Doc               *Doc   `xml:"doc"`
 	//InstanceParameter *Parameter   `xml:"parameters>instance-parameter"`
-	Parameters Parameters `xml:"parameters>parameter"`
+	InstanceParameter *Parameter `xml:"parameters>instance-parameter"`
+	Parameters        Parameters `xml:"parameters>parameter"`
 	//ReturnValue    *ReturnValue `xml:"return-value"`
 	Throws         int    `xml:"throws,attr"`
 	Introspectable string `xml:"introspectable,attr"`
@@ -69,7 +70,7 @@ func (f *Function) generateSysParamDeclaration(g *jen.Group) {
 }
 
 func (f *Function) generateSysBody(g *jen.Group) {
-	if len(f.Parameters) > 0 {
+	if f.InstanceParameter != nil || len(f.Parameters) > 0 {
 		return
 	}
 

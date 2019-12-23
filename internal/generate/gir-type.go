@@ -23,6 +23,7 @@ var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"gint16":          jen.Int16(),
 	"gint32":          jen.Int32(),
 	"gint64":          jen.Int64(),
+	"uid_t":           jen.Uint(),
 	"guint":           jen.Uint(),
 	"guint8":          jen.Uint8(),
 	"guint16":         jen.Uint16(),
@@ -41,6 +42,7 @@ var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"gpointer":        jenUnsafePointer(),
 	"gconstpointer":   jenUnsafePointer(),
 	"goffset":         jen.Int64(),
+	"cairo_format_t":  jen.Int(),
 }
 
 type Type struct {
@@ -109,6 +111,11 @@ func (t *Type) parseCtype() {
 	if t.cType == "" {
 		panic(fmt.Sprintf("Failed to parse type ; '%s'", t.CType))
 	}
+
+	if t.CType == "gpointer" {
+		t.cIndirectionCount = 1
+		t.cStars = "*"
+	}
 }
 
 func (t *Type) sysParamGoType() *jen.Statement {
@@ -154,6 +161,10 @@ func (t *Type) sysParamGoType() *jen.Statement {
 		t.isRecord() ||
 		t.isInterface() ||
 		t.isUnion() {
+
+		if t.cIndirectionCount == 0 {
+			return jenUnsafePointer()
+		}
 
 		stars := strings.Repeat("*", t.cIndirectionCount-1)
 		return jen.Op(stars).Add(jenUnsafePointer())

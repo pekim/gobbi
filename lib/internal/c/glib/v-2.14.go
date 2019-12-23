@@ -136,12 +136,12 @@ func Fn_g_atomic_int_inc(param0 *int) {}
 
 func Fn_g_atomic_int_set(param0 *int, param1 int) {}
 
-func Fn_g_atomic_pointer_compare_and_exchange(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {
+func Fn_g_atomic_pointer_compare_and_exchange(param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 *unsafe.Pointer) {
 }
 
 func Fn_g_atomic_pointer_get(param0 unsafe.Pointer) {}
 
-func Fn_g_atomic_pointer_set(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_g_atomic_pointer_set(param0 unsafe.Pointer, param1 *unsafe.Pointer) {}
 
 // UNSUPPORTED : atomic_rc_box_release_full : has callback
 
@@ -306,7 +306,7 @@ func Fn_g_find_program_in_path(param0 string) {}
 
 // UNSUPPORTED : fprintf : has varargs
 
-func Fn_g_free(param0 unsafe.Pointer) {}
+func Fn_g_free(param0 *unsafe.Pointer) {}
 
 func Fn_g_get_application_name() {
 	C.g_get_application_name()
@@ -380,7 +380,7 @@ func Fn_g_getenv(param0 string) {}
 
 func Fn_g_hash_table_destroy(param0 unsafe.Pointer) {}
 
-func Fn_g_hash_table_insert(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {}
+func Fn_g_hash_table_insert(param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 *unsafe.Pointer) {}
 
 func Fn_g_hash_table_lookup(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
@@ -391,7 +391,8 @@ func Fn_g_hash_table_remove(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
 func Fn_g_hash_table_remove_all(param0 unsafe.Pointer) {}
 
-func Fn_g_hash_table_replace(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {}
+func Fn_g_hash_table_replace(param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 *unsafe.Pointer) {
+}
 
 func Fn_g_hash_table_size(param0 unsafe.Pointer) {}
 
@@ -421,7 +422,7 @@ func Fn_g_iconv_open(param0 string, param1 string) {}
 
 // UNSUPPORTED : idle_add_full : has callback
 
-func Fn_g_idle_remove_by_data(param0 unsafe.Pointer) {}
+func Fn_g_idle_remove_by_data(param0 *unsafe.Pointer) {}
 
 func Fn_g_idle_source_new() {
 	C.g_idle_source_new()
@@ -461,7 +462,7 @@ func Fn_g_locale_to_utf8(param0 []uint8, param1 uint64, param2 *uint64, param3 *
 
 // UNSUPPORTED : log : has varargs
 
-func Fn_g_log_default_handler(param0 string, param1 int, param2 string, param3 unsafe.Pointer) {}
+func Fn_g_log_default_handler(param0 string, param1 int, param2 string, param3 *unsafe.Pointer) {}
 
 func Fn_g_log_remove_handler(param0 string, param1 uint) {}
 
@@ -603,7 +604,7 @@ func Fn_g_random_set_seed(param0 uint32) {}
 
 // UNSUPPORTED : rc_box_release_full : has callback
 
-func Fn_g_realloc(param0 unsafe.Pointer, param1 uint64) {}
+func Fn_g_realloc(param0 *unsafe.Pointer, param1 uint64) {}
 
 func Fn_g_regex_check_replacement(param0 string, param1 *bool) {}
 
@@ -623,7 +624,7 @@ func Fn_g_rmdir(param0 string) {}
 
 func Fn_g_sequence_get(param0 unsafe.Pointer) {}
 
-func Fn_g_sequence_insert_before(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_g_sequence_insert_before(param0 unsafe.Pointer, param1 *unsafe.Pointer) {}
 
 func Fn_g_sequence_move(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
@@ -635,7 +636,7 @@ func Fn_g_sequence_remove(param0 unsafe.Pointer) {}
 
 func Fn_g_sequence_remove_range(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_g_sequence_set(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_g_sequence_set(param0 unsafe.Pointer, param1 *unsafe.Pointer) {}
 
 func Fn_g_sequence_swap(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
@@ -667,9 +668,9 @@ func Fn_g_slice_alloc0(param0 uint64) {}
 
 func Fn_g_slice_copy(param0 uint64, param1 unsafe.Pointer) {}
 
-func Fn_g_slice_free1(param0 uint64, param1 unsafe.Pointer) {}
+func Fn_g_slice_free1(param0 uint64, param1 *unsafe.Pointer) {}
 
-func Fn_g_slice_free_chain_with_offset(param0 uint64, param1 unsafe.Pointer, param2 uint64) {}
+func Fn_g_slice_free_chain_with_offset(param0 uint64, param1 *unsafe.Pointer, param2 uint64) {}
 
 func Fn_g_slice_get_config(param0 int) {}
 
@@ -681,9 +682,9 @@ func Fn_g_slice_set_config(param0 int, param1 int64) {}
 
 func Fn_g_source_remove(param0 uint) {}
 
-func Fn_g_source_remove_by_funcs_user_data(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_g_source_remove_by_funcs_user_data(param0 unsafe.Pointer, param1 *unsafe.Pointer) {}
 
-func Fn_g_source_remove_by_user_data(param0 unsafe.Pointer) {}
+func Fn_g_source_remove_by_user_data(param0 *unsafe.Pointer) {}
 
 func Fn_g_spaced_primes_closest(param0 uint) {}
 
@@ -835,7 +836,7 @@ func Fn_g_thread_error_quark() {
 	C.g_thread_error_quark()
 }
 
-func Fn_g_thread_exit(param0 unsafe.Pointer) {}
+func Fn_g_thread_exit(param0 *unsafe.Pointer) {}
 
 func Fn_g_thread_pool_get_max_idle_time() {
 	C.g_thread_pool_get_max_idle_time()
@@ -885,13 +886,13 @@ func Fn_g_trash_stack_peek(param0 *unsafe.Pointer) {}
 
 func Fn_g_trash_stack_pop(param0 *unsafe.Pointer) {}
 
-func Fn_g_trash_stack_push(param0 *unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_g_trash_stack_push(param0 *unsafe.Pointer, param1 *unsafe.Pointer) {}
 
 func Fn_g_try_malloc(param0 uint64) {}
 
 func Fn_g_try_malloc0(param0 uint64) {}
 
-func Fn_g_try_realloc(param0 unsafe.Pointer, param1 uint64) {}
+func Fn_g_try_realloc(param0 *unsafe.Pointer, param1 uint64) {}
 
 func Fn_g_ucs4_to_utf16(param0 *rune, param1 int64, param2 *int64, param3 *int64) {}
 

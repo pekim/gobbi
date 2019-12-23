@@ -40,71 +40,71 @@ type WeakRef C.GWeakRef
 
 func Fn_g_boxed_copy(param0 uint64, param1 unsafe.Pointer) {}
 
-func Fn_g_boxed_free(param0 uint64, param1 unsafe.Pointer) {}
+func Fn_g_boxed_free(param0 uint64, param1 *unsafe.Pointer) {}
 
 // UNSUPPORTED : boxed_type_register_static : has callback
 
-func Fn_g_cclosure_marshal_BOOLEAN__BOXED_BOXED(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_BOOLEAN__BOXED_BOXED(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_BOOLEAN__FLAGS(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_BOOLEAN__FLAGS(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_STRING__OBJECT_POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_STRING__OBJECT_POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__BOOLEAN(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__BOOLEAN(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__BOXED(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__BOXED(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__CHAR(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__CHAR(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__DOUBLE(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__DOUBLE(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__ENUM(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__ENUM(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__FLAGS(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__FLAGS(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__FLOAT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__FLOAT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__INT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__INT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__LONG(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__LONG(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__OBJECT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__OBJECT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__PARAM(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__PARAM(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__STRING(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__STRING(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__UCHAR(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__UCHAR(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__UINT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__UINT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__UINT_POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__UINT_POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__ULONG(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__ULONG(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
-func Fn_g_cclosure_marshal_VOID__VOID(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__VOID(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
 }
 
 // UNSUPPORTED : cclosure_new : has callback
@@ -213,7 +213,7 @@ func Fn_g_param_values_cmp(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 
 
 func Fn_g_pointer_type_register_static(param0 string) {}
 
-func Fn_g_signal_accumulator_true_handled(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 unsafe.Pointer) {
+func Fn_g_signal_accumulator_true_handled(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 *unsafe.Pointer) {
 }
 
 // UNSUPPORTED : signal_add_emission_hook : has callback
@@ -222,10 +222,10 @@ func Fn_g_signal_chain_from_overridden(param0 []Value, param1 unsafe.Pointer) {}
 
 // UNSUPPORTED : signal_chain_from_overridden_handler : has varargs
 
-func Fn_g_signal_connect_closure(param0 unsafe.Pointer, param1 string, param2 unsafe.Pointer, param3 bool) {
+func Fn_g_signal_connect_closure(param0 *unsafe.Pointer, param1 string, param2 unsafe.Pointer, param3 bool) {
 }
 
-func Fn_g_signal_connect_closure_by_id(param0 unsafe.Pointer, param1 uint, param2 uint32, param3 unsafe.Pointer, param4 bool) {
+func Fn_g_signal_connect_closure_by_id(param0 *unsafe.Pointer, param1 uint, param2 uint32, param3 unsafe.Pointer, param4 bool) {
 }
 
 // UNSUPPORTED : signal_connect_data : has callback
@@ -240,31 +240,31 @@ func Fn_g_signal_connect_closure_by_id(param0 unsafe.Pointer, param1 uint, param
 
 func Fn_g_signal_emitv(param0 []Value, param1 uint, param2 uint32, param3 unsafe.Pointer) {}
 
-func Fn_g_signal_get_invocation_hint(param0 unsafe.Pointer) {}
+func Fn_g_signal_get_invocation_hint(param0 *unsafe.Pointer) {}
 
-func Fn_g_signal_handler_block(param0 unsafe.Pointer, param1 uint64) {}
+func Fn_g_signal_handler_block(param0 *unsafe.Pointer, param1 uint64) {}
 
-func Fn_g_signal_handler_disconnect(param0 unsafe.Pointer, param1 uint64) {}
+func Fn_g_signal_handler_disconnect(param0 *unsafe.Pointer, param1 uint64) {}
 
-func Fn_g_signal_handler_find(param0 unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 unsafe.Pointer, param6 unsafe.Pointer) {
+func Fn_g_signal_handler_find(param0 *unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 *unsafe.Pointer, param6 *unsafe.Pointer) {
 }
 
-func Fn_g_signal_handler_is_connected(param0 unsafe.Pointer, param1 uint64) {}
+func Fn_g_signal_handler_is_connected(param0 *unsafe.Pointer, param1 uint64) {}
 
-func Fn_g_signal_handler_unblock(param0 unsafe.Pointer, param1 uint64) {}
+func Fn_g_signal_handler_unblock(param0 *unsafe.Pointer, param1 uint64) {}
 
-func Fn_g_signal_handlers_block_matched(param0 unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 unsafe.Pointer, param6 unsafe.Pointer) {
+func Fn_g_signal_handlers_block_matched(param0 *unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 *unsafe.Pointer, param6 *unsafe.Pointer) {
 }
 
-func Fn_g_signal_handlers_destroy(param0 unsafe.Pointer) {}
+func Fn_g_signal_handlers_destroy(param0 *unsafe.Pointer) {}
 
-func Fn_g_signal_handlers_disconnect_matched(param0 unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 unsafe.Pointer, param6 unsafe.Pointer) {
+func Fn_g_signal_handlers_disconnect_matched(param0 *unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 *unsafe.Pointer, param6 *unsafe.Pointer) {
 }
 
-func Fn_g_signal_handlers_unblock_matched(param0 unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 unsafe.Pointer, param6 unsafe.Pointer) {
+func Fn_g_signal_handlers_unblock_matched(param0 *unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 *unsafe.Pointer, param6 *unsafe.Pointer) {
 }
 
-func Fn_g_signal_has_handler_pending(param0 unsafe.Pointer, param1 uint, param2 uint32, param3 bool) {
+func Fn_g_signal_has_handler_pending(param0 *unsafe.Pointer, param1 uint, param2 uint32, param3 bool) {
 }
 
 func Fn_g_signal_list_ids(param0 uint64, param1 *uint) {}
@@ -291,9 +291,9 @@ func Fn_g_signal_query(param0 uint, param1 unsafe.Pointer) {}
 
 func Fn_g_signal_remove_emission_hook(param0 uint, param1 uint64) {}
 
-func Fn_g_signal_stop_emission(param0 unsafe.Pointer, param1 uint, param2 uint32) {}
+func Fn_g_signal_stop_emission(param0 *unsafe.Pointer, param1 uint, param2 uint32) {}
 
-func Fn_g_signal_stop_emission_by_name(param0 unsafe.Pointer, param1 string) {}
+func Fn_g_signal_stop_emission_by_name(param0 *unsafe.Pointer, param1 string) {}
 
 func Fn_g_signal_type_cclosure_new(param0 uint64, param1 uint) {}
 
@@ -333,7 +333,7 @@ func Fn_g_type_check_value_holds(param0 unsafe.Pointer, param1 uint64) {}
 
 func Fn_g_type_children(param0 uint64, param1 *uint) {}
 
-func Fn_g_type_class_adjust_private_offset(param0 unsafe.Pointer, param1 *int) {}
+func Fn_g_type_class_adjust_private_offset(param0 *unsafe.Pointer, param1 *int) {}
 
 func Fn_g_type_class_peek(param0 uint64) {}
 
@@ -347,7 +347,7 @@ func Fn_g_type_default_interface_peek(param0 uint64) {}
 
 func Fn_g_type_default_interface_ref(param0 uint64) {}
 
-func Fn_g_type_default_interface_unref(param0 unsafe.Pointer) {}
+func Fn_g_type_default_interface_unref(param0 *unsafe.Pointer) {}
 
 func Fn_g_type_depth(param0 uint64) {}
 
@@ -375,7 +375,7 @@ func Fn_g_type_interface_add_prerequisite(param0 uint64, param1 uint64) {}
 
 func Fn_g_type_interface_get_plugin(param0 uint64, param1 uint64) {}
 
-func Fn_g_type_interface_peek(param0 unsafe.Pointer, param1 uint64) {}
+func Fn_g_type_interface_peek(param0 *unsafe.Pointer, param1 uint64) {}
 
 func Fn_g_type_interface_prerequisites(param0 uint64, param1 *uint) {}
 
@@ -410,7 +410,7 @@ func Fn_g_type_register_static(param0 uint64, param1 string, param2 unsafe.Point
 
 // UNSUPPORTED : type_remove_interface_check : has callback
 
-func Fn_g_type_set_qdata(param0 uint64, param1 uint32, param2 unsafe.Pointer) {}
+func Fn_g_type_set_qdata(param0 uint64, param1 uint32, param2 *unsafe.Pointer) {}
 
 func Fn_g_type_test_flags(param0 uint64, param1 uint) {}
 
@@ -428,12 +428,124 @@ func Fn_g_value_type_transformable(param0 uint64, param1 uint64) {}
 
 func Fn_g_object_newv(param0 uint64, param1 uint, param2 []Parameter) {}
 
-func Fn_g_object_compat_control(param0 uint64, param1 unsafe.Pointer) {}
+// UNSUPPORTED : add_toggle_ref : has callback
 
-func Fn_g_object_interface_find_property(param0 unsafe.Pointer, param1 string) {}
+func Fn_g_object_add_weak_pointer(param0 *unsafe.Pointer) {}
 
-func Fn_g_object_interface_install_property(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+// UNSUPPORTED : bind_property_full : has callback
 
-func Fn_g_object_interface_list_properties(param0 unsafe.Pointer, param1 *uint) {}
+// UNSUPPORTED : connect : has varargs
+
+// UNSUPPORTED : disconnect : has varargs
+
+// UNSUPPORTED : dup_data : has callback
+
+// UNSUPPORTED : dup_qdata : has callback
+
+func Fn_g_object_force_floating() {}
+
+func Fn_g_object_freeze_notify() {}
+
+// UNSUPPORTED : get : has varargs
+
+func Fn_g_object_get_data(param0 string) {}
+
+func Fn_g_object_get_property(param0 string, param1 unsafe.Pointer) {}
+
+func Fn_g_object_get_qdata(param0 uint32) {}
+
+// UNSUPPORTED : get_valist : has va_list
+
+func Fn_g_object_is_floating() {}
+
+func Fn_g_object_notify(param0 string) {}
+
+func Fn_g_object_ref() {}
+
+func Fn_g_object_ref_sink() {}
+
+// UNSUPPORTED : remove_toggle_ref : has callback
+
+func Fn_g_object_remove_weak_pointer(param0 *unsafe.Pointer) {}
+
+// UNSUPPORTED : replace_data : has callback
+
+// UNSUPPORTED : replace_qdata : has callback
+
+func Fn_g_object_run_dispose() {}
+
+// UNSUPPORTED : set : has varargs
+
+func Fn_g_object_set_data(param0 string, param1 *unsafe.Pointer) {}
+
+// UNSUPPORTED : set_data_full : has callback
+
+func Fn_g_object_set_property(param0 string, param1 unsafe.Pointer) {}
+
+func Fn_g_object_set_qdata(param0 uint32, param1 *unsafe.Pointer) {}
+
+// UNSUPPORTED : set_qdata_full : has callback
+
+// UNSUPPORTED : set_valist : has va_list
+
+func Fn_g_object_steal_data(param0 string) {}
+
+func Fn_g_object_steal_qdata(param0 uint32) {}
+
+func Fn_g_object_thaw_notify() {}
+
+func Fn_g_object_unref() {}
+
+func Fn_g_object_watch_closure(param0 unsafe.Pointer) {}
+
+// UNSUPPORTED : weak_ref : has callback
+
+// UNSUPPORTED : weak_unref : has callback
+
+func Fn_g_object_compat_control(param0 uint64, param1 *unsafe.Pointer) {}
+
+func Fn_g_object_interface_find_property(param0 *unsafe.Pointer, param1 string) {}
+
+func Fn_g_object_interface_install_property(param0 *unsafe.Pointer, param1 unsafe.Pointer) {}
+
+func Fn_g_object_interface_list_properties(param0 *unsafe.Pointer, param1 *uint) {}
+
+func Fn_g_param_spec_get_blurb() {}
+
+func Fn_g_param_spec_get_name() {}
+
+func Fn_g_param_spec_get_nick() {}
+
+func Fn_g_param_spec_get_qdata(param0 uint32) {}
+
+func Fn_g_param_spec_get_redirect_target() {}
+
+func Fn_g_param_spec_ref() {}
+
+func Fn_g_param_spec_ref_sink() {}
+
+func Fn_g_param_spec_set_qdata(param0 uint32, param1 *unsafe.Pointer) {}
+
+// UNSUPPORTED : set_qdata_full : has callback
+
+func Fn_g_param_spec_sink() {}
+
+func Fn_g_param_spec_steal_qdata(param0 uint32) {}
+
+func Fn_g_param_spec_unref() {}
 
 func Fn_g_param_spec_internal(param0 uint64, param1 string, param2 string, param3 string, param4 int) {}
+
+func Fn_g_type_module_add_interface(param0 uint64, param1 uint64, param2 unsafe.Pointer) {}
+
+func Fn_g_type_module_register_enum(param0 string, param1 unsafe.Pointer) {}
+
+func Fn_g_type_module_register_flags(param0 string, param1 unsafe.Pointer) {}
+
+func Fn_g_type_module_register_type(param0 uint64, param1 string, param2 unsafe.Pointer, param3 int) {}
+
+func Fn_g_type_module_set_name(param0 string) {}
+
+func Fn_g_type_module_unuse() {}
+
+func Fn_g_type_module_use() {}

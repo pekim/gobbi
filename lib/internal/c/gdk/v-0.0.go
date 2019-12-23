@@ -251,18 +251,59 @@ func Fn_gdk_utf8_to_string_target(param0 string) {}
 
 func Fn_gdk_cursor_new(param0 int) {}
 
+func Fn_gdk_cursor_ref() {}
+
+func Fn_gdk_cursor_unref() {}
+
+func Fn_gdk_device_get_axis(param0 []float64, param1 int, param2 *float64) {}
+
+func Fn_gdk_device_get_history(param0 unsafe.Pointer, param1 uint32, param2 uint32, param3 []*unsafe.Pointer, param4 *int) {
+}
+
+func Fn_gdk_device_get_state(param0 unsafe.Pointer, param1 []float64, param2 int) {}
+
+func Fn_gdk_device_list_slave_devices() {}
+
+func Fn_gdk_device_set_axis_use(param0 uint, param1 int) {}
+
+func Fn_gdk_device_set_key(param0 uint, param1 uint, param2 int) {}
+
+func Fn_gdk_device_set_mode(param0 int) {}
+
 func Fn_gdk_device_free_history(param0 []unsafe.Pointer, param1 int) {}
 
 func Fn_gdk_device_grab_info_libgtk_only(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *unsafe.Pointer, param3 *bool) {
 }
 
+func Fn_gdk_display_device_is_grabbed(param0 unsafe.Pointer) {}
+
 func Fn_gdk_display_open_default_libgtk_only() {
 	C.gdk_display_open_default_libgtk_only()
+}
+
+func Fn_gdk_drag_context_get_device() {}
+
+func Fn_gdk_drag_context_set_device(param0 unsafe.Pointer) {}
+
+func Fn_gdk_keymap_get_direction() {}
+
+func Fn_gdk_keymap_get_entries_for_keycode(param0 uint, param1 []unsafe.Pointer, param2 []*uint, param3 *int) {
+}
+
+func Fn_gdk_keymap_get_entries_for_keyval(param0 uint, param1 []unsafe.Pointer, param2 *int) {}
+
+func Fn_gdk_keymap_lookup_key(param0 unsafe.Pointer) {}
+
+func Fn_gdk_keymap_translate_keyboard_state(param0 uint, param1 int, param2 int, param3 *uint, param4 *int, param5 *int, param6 int) {
 }
 
 func Fn_gdk_keymap_get_default() {
 	C.gdk_keymap_get_default()
 }
+
+func Fn_gdk_monitor_get_manufacturer() {}
+
+func Fn_gdk_monitor_get_model() {}
 
 func Fn_gdk_screen_height() {
 	C.gdk_screen_height()
@@ -279,6 +320,10 @@ func Fn_gdk_screen_width() {
 func Fn_gdk_screen_width_mm() {
 	C.gdk_screen_width_mm()
 }
+
+func Fn_gdk_seat_get_display() {}
+
+// UNSUPPORTED : grab : has callback
 
 func Fn_gdk_visual_get_best() {
 	C.gdk_visual_get_best()
@@ -303,6 +348,168 @@ func Fn_gdk_visual_get_system() {
 }
 
 func Fn_gdk_window_new(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int) {}
+
+// UNSUPPORTED : add_filter : has callback
+
+func Fn_gdk_window_begin_move_drag(param0 int, param1 int, param2 int, param3 uint32) {}
+
+func Fn_gdk_window_begin_paint_rect(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_begin_paint_region(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_begin_resize_drag(param0 int, param1 int, param2 int, param3 int, param4 uint32) {}
+
+func Fn_gdk_window_deiconify() {}
+
+func Fn_gdk_window_destroy() {}
+
+func Fn_gdk_window_destroy_notify() {}
+
+func Fn_gdk_window_end_paint() {}
+
+func Fn_gdk_window_focus(param0 uint32) {}
+
+func Fn_gdk_window_freeze_toplevel_updates_libgtk_only() {}
+
+func Fn_gdk_window_freeze_updates() {}
+
+func Fn_gdk_window_fullscreen_on_monitor(param0 int) {}
+
+func Fn_gdk_window_get_children() {}
+
+func Fn_gdk_window_get_clip_region() {}
+
+func Fn_gdk_window_get_decorations(param0 int) {}
+
+func Fn_gdk_window_get_events() {}
+
+func Fn_gdk_window_get_frame_extents(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_get_geometry(param0 *int, param1 *int, param2 *int, param3 *int) {}
+
+func Fn_gdk_window_get_origin(param0 *int, param1 *int) {}
+
+func Fn_gdk_window_get_parent() {}
+
+func Fn_gdk_window_get_pointer(param0 *int, param1 *int, param2 int) {}
+
+func Fn_gdk_window_get_position(param0 *int, param1 *int) {}
+
+func Fn_gdk_window_get_root_origin(param0 *int, param1 *int) {}
+
+func Fn_gdk_window_get_source_events(param0 int) {}
+
+func Fn_gdk_window_get_state() {}
+
+func Fn_gdk_window_get_toplevel() {}
+
+func Fn_gdk_window_get_update_area() {}
+
+func Fn_gdk_window_get_user_data(param0 *unsafe.Pointer) {}
+
+func Fn_gdk_window_get_visible_region() {}
+
+func Fn_gdk_window_get_window_type() {}
+
+func Fn_gdk_window_hide() {}
+
+func Fn_gdk_window_iconify() {}
+
+// UNSUPPORTED : invalidate_maybe_recurse : has callback
+
+func Fn_gdk_window_invalidate_rect(param0 unsafe.Pointer, param1 bool) {}
+
+func Fn_gdk_window_invalidate_region(param0 unsafe.Pointer, param1 bool) {}
+
+func Fn_gdk_window_is_viewable() {}
+
+func Fn_gdk_window_is_visible() {}
+
+func Fn_gdk_window_lower() {}
+
+func Fn_gdk_window_maximize() {}
+
+func Fn_gdk_window_merge_child_shapes() {}
+
+func Fn_gdk_window_move(param0 int, param1 int) {}
+
+func Fn_gdk_window_move_resize(param0 int, param1 int, param2 int, param3 int) {}
+
+func Fn_gdk_window_peek_children() {}
+
+func Fn_gdk_window_process_updates(param0 bool) {}
+
+func Fn_gdk_window_raise() {}
+
+func Fn_gdk_window_register_dnd() {}
+
+// UNSUPPORTED : remove_filter : has callback
+
+func Fn_gdk_window_reparent(param0 unsafe.Pointer, param1 int, param2 int) {}
+
+func Fn_gdk_window_resize(param0 int, param1 int) {}
+
+func Fn_gdk_window_scroll(param0 int, param1 int) {}
+
+func Fn_gdk_window_set_background(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_background_pattern(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_background_rgba(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_child_shapes() {}
+
+func Fn_gdk_window_set_cursor(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_decorations(param0 int) {}
+
+func Fn_gdk_window_set_events(param0 int) {}
+
+func Fn_gdk_window_set_functions(param0 int) {}
+
+func Fn_gdk_window_set_geometry_hints(param0 unsafe.Pointer, param1 int) {}
+
+func Fn_gdk_window_set_group(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_icon_list(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_icon_name(param0 string) {}
+
+// UNSUPPORTED : set_invalidate_handler : has callback
+
+func Fn_gdk_window_set_modal_hint(param0 bool) {}
+
+func Fn_gdk_window_set_override_redirect(param0 bool) {}
+
+func Fn_gdk_window_set_role(param0 string) {}
+
+func Fn_gdk_window_set_static_gravities(param0 bool) {}
+
+func Fn_gdk_window_set_title(param0 string) {}
+
+func Fn_gdk_window_set_transient_for(param0 unsafe.Pointer) {}
+
+func Fn_gdk_window_set_type_hint(param0 int) {}
+
+func Fn_gdk_window_set_user_data(param0 *unsafe.Pointer) {}
+
+func Fn_gdk_window_shape_combine_region(param0 unsafe.Pointer, param1 int, param2 int) {}
+
+func Fn_gdk_window_show() {}
+
+func Fn_gdk_window_show_unraised() {}
+
+func Fn_gdk_window_stick() {}
+
+func Fn_gdk_window_thaw_toplevel_updates_libgtk_only() {}
+
+func Fn_gdk_window_thaw_updates() {}
+
+func Fn_gdk_window_unmaximize() {}
+
+func Fn_gdk_window_unstick() {}
+
+func Fn_gdk_window_withdraw() {}
 
 func Fn_gdk_window_at_pointer(param0 *int, param1 *int) {}
 
