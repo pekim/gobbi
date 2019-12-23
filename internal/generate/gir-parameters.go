@@ -24,6 +24,10 @@ func (pp Parameters) allSupported() (bool, string) {
 		return false, "has callback"
 	}
 
+	if pp.hasLongDouble() {
+		return false, "has long double"
+	}
+
 	return true, ""
 }
 
@@ -50,6 +54,16 @@ func (pp Parameters) hasVaList() bool {
 func (pp Parameters) hasCallback() bool {
 	for _, p := range pp {
 		if p.Type != nil && p.Type.isCallback() {
+			return true
+		}
+	}
+
+	return false
+}
+
+func (pp Parameters) hasLongDouble() bool {
+	for _, p := range pp {
+		if p.Type != nil && p.Type.isLongDouble() {
 			return true
 		}
 	}

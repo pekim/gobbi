@@ -1,5 +1,6 @@
 package generate
 
+import "C"
 import (
 	"github.com/blang/semver"
 	"github.com/dave/jennifer/jen"
@@ -79,18 +80,41 @@ func (f *Function) generateSysParamDeclaration(g *jen.Group) {
 }
 
 func (f *Function) generateSysBody(g *jen.Group) {
-	//for _, param := range f.Parameters {
-	//	if param.Array != nil {
-	//		g.Comment("has array param")
-	//		return
-	//	}
-	//}
-
-	if f.InstanceParameter != nil || len(f.Parameters) > 0 {
-		return
+	for _, param := range f.Parameters {
+		if param.Array != nil {
+			g.Comment("has array param")
+			return
+		}
 	}
 
-	g.
-		Qual("C", f.CIdentifier).
-		Call()
+	f.generateSysCArgs(g)
+
+	//var i int = 42
+	//pi := &i
+	//cpi := (*C.int)(unsafe.Pointer(pi))
+	//fmt.Println(cpi)
+
+	//g.
+	//	Qual("C", f.CIdentifier).
+	//	Call()
+}
+
+func (f *Function) generateSysCArgs(g *jen.Group) {
+	if f.InstanceParameter != nil {
+		f.generateSysCArg(g, f.InstanceParameter, "paramInstance", "cValueInstance")
+	}
+
+	for i, param := range f.Parameters {
+		paramName := "param" + strconv.Itoa(i)
+		cVarName := "cValue" + strconv.Itoa(i)
+
+		f.generateSysCArg(g, param, paramName, cVarName)
+	}
+
+	g.Line()
+}
+
+func (f *Function) generateSysCArg(g *jen.Group, param *Parameter, paramName string, cVarName string) {
+	cValue := param.generateSysCValue(paramName)
+	g.Id(cVarName).Op(":=").Add(cValue)
 }

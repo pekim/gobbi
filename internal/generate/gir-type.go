@@ -34,7 +34,6 @@ var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"gloat":           jen.Float32(),
 	"gfloat":          jen.Float32(),
 	"double":          jen.Float64(),
-	"long double":     jen.Float64(), // not ideal, but Go has nothing better
 	"gdouble":         jen.Float64(),
 	"gsize":           jen.Uint64(),
 	"gssize":          jen.Uint64(),
@@ -175,4 +174,8 @@ func (t *Type) sysParamGoType() *jen.Statement {
 
 func (t *Type) isQualifiedName() bool {
 	return t.foreignNamespace != nil && t.foreignNamespace != t.namespace
+}
+
+func (t *Type) jenGoCType() *jen.Statement {
+	return jen.Parens(jen.Op(t.cStars).Qual("C", t.cType))
 }

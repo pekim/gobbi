@@ -52,3 +52,16 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 
 	panic(fmt.Sprintf("Parameter is not a type or an array: %s", p.Name))
 }
+
+func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
+	if p.Type.isString() {
+		return jen.Lit(42)
+	}
+
+	goValue := jen.Id(goVarName)
+	if p.Type.cIndirectionCount > 0 {
+		goValue = jenUnsafePointer().Call(goValue)
+	}
+
+	return jen.Parens(p.Type.jenGoCType()).Parens(goValue)
+}
