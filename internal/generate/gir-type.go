@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-var cTypeRegex = regexp.MustCompile(" *(const |volatile )* *([a-zA-Z0-9_ ]+) *(\\**)? *")
+var cTypeRegex = regexp.MustCompile(" *(const |volatile )* *([a-zA-Z0-9_ ]+) *(.*)?")
 
 var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"char":            jen.Int8(),
@@ -104,8 +104,8 @@ func (t *Type) parseCtype() {
 	}
 
 	t.cType = parts[2]
-	t.cStars = parts[3]
-	t.cIndirectionCount = len(t.cStars)
+	t.cIndirectionCount = strings.Count(parts[3], "*")
+	t.cStars = strings.Repeat("*", t.cIndirectionCount)
 	if t.cType == "" {
 		panic(fmt.Sprintf("Failed to parse type ; '%s'", t.CType))
 	}
