@@ -74,55 +74,54 @@ type VariantBuilder C.GVariantBuilder
 type VariantIter C.GVariantIter
 type VariantType C.GVariantType
 
-func Fn_ascii_digit_value(c int8) {}
+func Fn_ascii_digit_value(param0 int8) {}
 
-func Fn_ascii_dtostr(buffer string, bufLen int, d float64) {}
+func Fn_ascii_dtostr(param0 string, param1 int, param2 float64) {}
 
-func Fn_ascii_formatd(buffer string, bufLen int, format string, d float64) {}
+func Fn_ascii_formatd(param0 string, param1 int, param2 string, param3 float64) {}
 
-func Fn_ascii_strcasecmp(s1 string, s2 string) {}
+func Fn_ascii_strcasecmp(param0 string, param1 string) {}
 
-func Fn_ascii_strdown(str string, len uint64) {}
+func Fn_ascii_strdown(param0 string, param1 uint64) {}
 
-func Fn_ascii_strncasecmp(s1 string, s2 string, n uint64) {}
+func Fn_ascii_strncasecmp(param0 string, param1 string, param2 uint64) {}
 
-func Fn_ascii_strtod(nptr string, endptr string) {}
+func Fn_ascii_strtod(param0 string, param1 string) {}
 
-func Fn_ascii_strup(str string, len uint64) {}
+func Fn_ascii_strup(param0 string, param1 uint64) {}
 
-func Fn_ascii_tolower(c int8) {}
+func Fn_ascii_tolower(param0 int8) {}
 
-func Fn_ascii_toupper(c int8) {}
+func Fn_ascii_toupper(param0 int8) {}
 
-func Fn_ascii_xdigit_value(c int8) {}
+func Fn_ascii_xdigit_value(param0 int8) {}
 
-func Fn_assert_warning(logDomain string, file string, line int, prettyFunction string, expression string) {
+func Fn_assert_warning(param0 string, param1 string, param2 int, param3 string, param4 string) {}
+
+func Fn_assertion_message(param0 string, param1 string, param2 int, param3 string, param4 string) {}
+
+func Fn_assertion_message_cmpnum(param0 string, param1 string, param2 int, param3 string, param4 string, param5 float64, param6 string, param7 float64, param8 int8) {
 }
 
-func Fn_assertion_message(domain string, file string, line int, func_ string, message string) {}
-
-func Fn_assertion_message_cmpnum(domain string, file string, line int, func_ string, expr string, arg1 float64, cmp string, arg2 float64, numtype int8) {
+func Fn_assertion_message_cmpstr(param0 string, param1 string, param2 int, param3 string, param4 string, param5 string, param6 string, param7 string) {
 }
 
-func Fn_assertion_message_cmpstr(domain string, file string, line int, func_ string, expr string, arg1 string, cmp string, arg2 string) {
+func Fn_assertion_message_error(param0 string, param1 string, param2 int, param3 string, param4 string, param5 unsafe.Pointer, param6 uint32, param7 int) {
 }
 
-func Fn_assertion_message_error(domain string, file string, line int, func_ string, expr string, error unsafe.Pointer, errorDomain uint32, errorCode int) {
-}
-
-func Fn_assertion_message_expr(domain string, file string, line int, func_ string, expr string) {}
+func Fn_assertion_message_expr(param0 string, param1 string, param2 int, param3 string, param4 string) {}
 
 // UNSUPPORTED : atexit : has callback
 
 // UNSUPPORTED : atomic_rc_box_release_full : has callback
 
-func Fn_basename(fileName string) {}
+func Fn_basename(param0 string) {}
 
-func Fn_bit_nth_lsf(mask uint64, nthBit int) {}
+func Fn_bit_nth_lsf(param0 uint64, param1 int) {}
 
-func Fn_bit_nth_msf(mask uint64, nthBit int) {}
+func Fn_bit_nth_msf(param0 uint64, param1 int) {}
 
-func Fn_bit_storage(number uint64) {}
+func Fn_bit_storage(param0 uint64) {}
 
 func Fn_bookmark_file_error_quark() {
 	C.g_bookmark_file_error_quark()
@@ -134,7 +133,7 @@ func Fn_bookmark_file_error_quark() {
 
 // UNSUPPORTED : build_path : has varargs
 
-func Fn_byte_array_free(array []uint8, freeSegment bool) {}
+func Fn_byte_array_free(param0 []uint8, param1 bool) {}
 
 func Fn_byte_array_new() {
 	C.g_byte_array_new()
@@ -144,106 +143,106 @@ func Fn_byte_array_new() {
 
 // UNSUPPORTED : child_watch_add_full : has callback
 
-func Fn_clear_error(err *unsafe.Pointer) {}
+func Fn_clear_error(param0 *unsafe.Pointer) {}
 
 // UNSUPPORTED : clear_handle_id : has callback
 
 // UNSUPPORTED : clear_pointer : has callback
 
-func Fn_convert(str []uint8, len uint64, toCodeset string, fromCodeset string, bytesRead *uint64, bytesWritten *uint64) {
+func Fn_convert(param0 []uint8, param1 uint64, param2 string, param3 string, param4 *uint64, param5 *uint64) {
 }
 
 func Fn_convert_error_quark() {
 	C.g_convert_error_quark()
 }
 
-func Fn_convert_with_fallback(str []uint8, len uint64, toCodeset string, fromCodeset string, fallback string, bytesRead *uint64, bytesWritten *uint64) {
+func Fn_convert_with_fallback(param0 []uint8, param1 uint64, param2 string, param3 string, param4 string, param5 *uint64, param6 *uint64) {
 }
 
-func Fn_convert_with_iconv(str []uint8, len uint64, converter IConv, bytesRead *uint64, bytesWritten *uint64) {
+func Fn_convert_with_iconv(param0 []uint8, param1 uint64, param2 IConv, param3 *uint64, param4 *uint64) {
 }
 
-func Fn_datalist_clear(datalist *unsafe.Pointer) {}
+func Fn_datalist_clear(param0 *unsafe.Pointer) {}
 
 // UNSUPPORTED : datalist_foreach : has callback
 
-func Fn_datalist_get_data(datalist *unsafe.Pointer, key string) {}
+func Fn_datalist_get_data(param0 *unsafe.Pointer, param1 string) {}
 
 // UNSUPPORTED : datalist_id_dup_data : has callback
 
-func Fn_datalist_id_get_data(datalist *unsafe.Pointer, keyId uint32) {}
+func Fn_datalist_id_get_data(param0 *unsafe.Pointer, param1 uint32) {}
 
-func Fn_datalist_id_remove_no_notify(datalist *unsafe.Pointer, keyId uint32) {}
+func Fn_datalist_id_remove_no_notify(param0 *unsafe.Pointer, param1 uint32) {}
 
 // UNSUPPORTED : datalist_id_replace_data : has callback
 
 // UNSUPPORTED : datalist_id_set_data_full : has callback
 
-func Fn_datalist_init(datalist *unsafe.Pointer) {}
+func Fn_datalist_init(param0 *unsafe.Pointer) {}
 
-func Fn_dataset_destroy(datasetLocation unsafe.Pointer) {}
+func Fn_dataset_destroy(param0 unsafe.Pointer) {}
 
 // UNSUPPORTED : dataset_foreach : has callback
 
-func Fn_dataset_id_get_data(datasetLocation unsafe.Pointer, keyId uint32) {}
+func Fn_dataset_id_get_data(param0 unsafe.Pointer, param1 uint32) {}
 
-func Fn_dataset_id_remove_no_notify(datasetLocation unsafe.Pointer, keyId uint32) {}
+func Fn_dataset_id_remove_no_notify(param0 unsafe.Pointer, param1 uint32) {}
 
 // UNSUPPORTED : dataset_id_set_data_full : has callback
 
-func Fn_date_get_days_in_month(month int, year uint16) {}
+func Fn_date_get_days_in_month(param0 int, param1 uint16) {}
 
-func Fn_date_get_monday_weeks_in_year(year uint16) {}
+func Fn_date_get_monday_weeks_in_year(param0 uint16) {}
 
-func Fn_date_get_sunday_weeks_in_year(year uint16) {}
+func Fn_date_get_sunday_weeks_in_year(param0 uint16) {}
 
-func Fn_date_is_leap_year(year uint16) {}
+func Fn_date_is_leap_year(param0 uint16) {}
 
-func Fn_date_strftime(s string, slen uint64, format string, date unsafe.Pointer) {}
+func Fn_date_strftime(param0 string, param1 uint64, param2 string, param3 unsafe.Pointer) {}
 
-func Fn_date_valid_day(day uint8) {}
+func Fn_date_valid_day(param0 uint8) {}
 
-func Fn_date_valid_dmy(day uint8, month int, year uint16) {}
+func Fn_date_valid_dmy(param0 uint8, param1 int, param2 uint16) {}
 
-func Fn_date_valid_julian(julianDate uint32) {}
+func Fn_date_valid_julian(param0 uint32) {}
 
-func Fn_date_valid_month(month int) {}
+func Fn_date_valid_month(param0 int) {}
 
-func Fn_date_valid_weekday(weekday int) {}
+func Fn_date_valid_weekday(param0 int) {}
 
-func Fn_date_valid_year(year uint16) {}
+func Fn_date_valid_year(param0 uint16) {}
 
-func Fn_direct_equal(v1 unsafe.Pointer, v2 unsafe.Pointer) {}
+func Fn_direct_equal(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_direct_hash(v unsafe.Pointer) {}
+func Fn_direct_hash(param0 unsafe.Pointer) {}
 
-func Fn_file_error_from_errno(errNo int) {}
+func Fn_file_error_from_errno(param0 int) {}
 
 func Fn_file_error_quark() {
 	C.g_file_error_quark()
 }
 
-func Fn_file_get_contents(filename string, contents []uint8, length *uint64) {}
+func Fn_file_get_contents(param0 string, param1 []uint8, param2 *uint64) {}
 
-func Fn_file_open_tmp(tmpl string, nameUsed string) {}
+func Fn_file_open_tmp(param0 string, param1 string) {}
 
-func Fn_file_test(filename string, test int) {}
+func Fn_file_test(param0 string, param1 int) {}
 
-func Fn_filename_from_uri(uri string, hostname string) {}
+func Fn_filename_from_uri(param0 string, param1 string) {}
 
-func Fn_filename_from_utf8(utf8string string, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
+func Fn_filename_from_utf8(param0 string, param1 uint64, param2 *uint64, param3 *uint64) {}
 
-func Fn_filename_to_uri(filename string, hostname string) {}
+func Fn_filename_to_uri(param0 string, param1 string) {}
 
-func Fn_filename_to_utf8(opsysstring string, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
+func Fn_filename_to_utf8(param0 string, param1 uint64, param2 *uint64, param3 *uint64) {}
 
-func Fn_find_program_in_path(program string) {}
+func Fn_find_program_in_path(param0 string) {}
 
 // UNSUPPORTED : fprintf : has varargs
 
-func Fn_free(mem unsafe.Pointer) {}
+func Fn_free(param0 unsafe.Pointer) {}
 
-func Fn_get_charset(charset string) {}
+func Fn_get_charset(param0 string) {}
 
 func Fn_get_codeset() {
 	C.g_get_codeset()
@@ -253,7 +252,7 @@ func Fn_get_current_dir() {
 	C.g_get_current_dir()
 }
 
-func Fn_get_current_time(result unsafe.Pointer) {}
+func Fn_get_current_time(param0 unsafe.Pointer) {}
 
 func Fn_get_home_dir() {
 	C.g_get_home_dir()
@@ -275,88 +274,86 @@ func Fn_get_user_name() {
 	C.g_get_user_name()
 }
 
-func Fn_getenv(variable string) {}
+func Fn_getenv(param0 string) {}
 
-func Fn_hash_table_destroy(hashTable unsafe.Pointer) {}
+func Fn_hash_table_destroy(param0 unsafe.Pointer) {}
 
-func Fn_hash_table_insert(hashTable unsafe.Pointer, key unsafe.Pointer, value unsafe.Pointer) {}
+func Fn_hash_table_insert(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {}
 
-func Fn_hash_table_lookup(hashTable unsafe.Pointer, key unsafe.Pointer) {}
+func Fn_hash_table_lookup(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_hash_table_lookup_extended(hashTable unsafe.Pointer, lookupKey unsafe.Pointer, origKey *unsafe.Pointer, value *unsafe.Pointer) {
+func Fn_hash_table_lookup_extended(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *unsafe.Pointer, param3 *unsafe.Pointer) {
 }
 
-func Fn_hash_table_remove(hashTable unsafe.Pointer, key unsafe.Pointer) {}
+func Fn_hash_table_remove(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_hash_table_replace(hashTable unsafe.Pointer, key unsafe.Pointer, value unsafe.Pointer) {}
+func Fn_hash_table_replace(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {}
 
-func Fn_hash_table_size(hashTable unsafe.Pointer) {}
+func Fn_hash_table_size(param0 unsafe.Pointer) {}
 
-func Fn_hash_table_steal(hashTable unsafe.Pointer, key unsafe.Pointer) {}
+func Fn_hash_table_steal(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_hook_destroy(hookList unsafe.Pointer, hookId uint64) {}
+func Fn_hook_destroy(param0 unsafe.Pointer, param1 uint64) {}
 
-func Fn_hook_destroy_link(hookList unsafe.Pointer, hook unsafe.Pointer) {}
+func Fn_hook_destroy_link(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_hook_free(hookList unsafe.Pointer, hook unsafe.Pointer) {}
+func Fn_hook_free(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_hook_insert_before(hookList unsafe.Pointer, sibling unsafe.Pointer, hook unsafe.Pointer) {}
+func Fn_hook_insert_before(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {}
 
-func Fn_hook_prepend(hookList unsafe.Pointer, hook unsafe.Pointer) {}
+func Fn_hook_prepend(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_hook_unref(hookList unsafe.Pointer, hook unsafe.Pointer) {}
+func Fn_hook_unref(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_iconv(converter IConv, inbuf string, inbytesLeft *uint64, outbuf string, outbytesLeft *uint64) {
-}
+func Fn_iconv(param0 IConv, param1 string, param2 *uint64, param3 string, param4 *uint64) {}
 
-func Fn_iconv_open(toCodeset string, fromCodeset string) {}
+func Fn_iconv_open(param0 string, param1 string) {}
 
 // UNSUPPORTED : idle_add : has callback
 
 // UNSUPPORTED : idle_add_full : has callback
 
-func Fn_idle_remove_by_data(data unsafe.Pointer) {}
+func Fn_idle_remove_by_data(param0 unsafe.Pointer) {}
 
 func Fn_idle_source_new() {
 	C.g_idle_source_new()
 }
 
-func Fn_int_equal(v1 unsafe.Pointer, v2 unsafe.Pointer) {}
+func Fn_int_equal(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_int_hash(v unsafe.Pointer) {}
+func Fn_int_hash(param0 unsafe.Pointer) {}
 
 // UNSUPPORTED : io_add_watch : has callback
 
 // UNSUPPORTED : io_add_watch_full : has callback
 
-func Fn_io_channel_error_from_errno(en int) {}
+func Fn_io_channel_error_from_errno(param0 int) {}
 
 func Fn_io_channel_error_quark() {
 	C.g_io_channel_error_quark()
 }
 
-func Fn_io_create_watch(channel unsafe.Pointer, condition int) {}
+func Fn_io_create_watch(param0 unsafe.Pointer, param1 int) {}
 
 func Fn_key_file_error_quark() {
 	C.g_key_file_error_quark()
 }
 
-func Fn_locale_from_utf8(utf8string string, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
+func Fn_locale_from_utf8(param0 string, param1 uint64, param2 *uint64, param3 *uint64) {}
 
-func Fn_locale_to_utf8(opsysstring []uint8, len uint64, bytesRead *uint64, bytesWritten *uint64) {}
+func Fn_locale_to_utf8(param0 []uint8, param1 uint64, param2 *uint64, param3 *uint64) {}
 
 // UNSUPPORTED : log : has varargs
 
-func Fn_log_default_handler(logDomain string, logLevel int, message string, unusedData unsafe.Pointer) {
-}
+func Fn_log_default_handler(param0 string, param1 int, param2 string, param3 unsafe.Pointer) {}
 
-func Fn_log_remove_handler(logDomain string, handlerId uint) {}
+func Fn_log_remove_handler(param0 string, param1 uint) {}
 
-func Fn_log_set_always_fatal(fatalMask int) {}
+func Fn_log_set_always_fatal(param0 int) {}
 
 // UNSUPPORTED : log_set_default_handler : has callback
 
-func Fn_log_set_fatal_mask(logDomain string, fatalMask int) {}
+func Fn_log_set_fatal_mask(param0 string, param1 int) {}
 
 // UNSUPPORTED : log_set_handler : has callback
 
@@ -378,9 +375,9 @@ func Fn_main_depth() {
 	C.g_main_depth()
 }
 
-func Fn_malloc(nBytes uint64) {}
+func Fn_malloc(param0 uint64) {}
 
-func Fn_malloc0(nBytes uint64) {}
+func Fn_malloc0(param0 uint64) {}
 
 // UNSUPPORTED : markup_collect_attributes : has varargs
 
@@ -388,7 +385,7 @@ func Fn_markup_error_quark() {
 	C.g_markup_error_quark()
 }
 
-func Fn_markup_escape_text(text string, length uint64) {}
+func Fn_markup_escape_text(param0 string, param1 uint64) {}
 
 // UNSUPPORTED : markup_printf_escaped : has varargs
 
@@ -402,42 +399,41 @@ func Fn_mem_profile() {
 	C.g_mem_profile()
 }
 
-func Fn_mem_set_vtable(vtable unsafe.Pointer) {}
+func Fn_mem_set_vtable(param0 unsafe.Pointer) {}
 
-func Fn_memdup(mem unsafe.Pointer, byteSize uint) {}
+func Fn_memdup(param0 unsafe.Pointer, param1 uint) {}
 
-func Fn_mkstemp(tmpl string) {}
+func Fn_mkstemp(param0 string) {}
 
-func Fn_nullify_pointer(nullifyLocation *unsafe.Pointer) {}
+func Fn_nullify_pointer(param0 *unsafe.Pointer) {}
 
 func Fn_number_parser_error_quark() {
 	C.g_number_parser_error_quark()
 }
 
-func Fn_on_error_query(prgName string) {}
+func Fn_on_error_query(param0 string) {}
 
-func Fn_on_error_stack_trace(prgName string) {}
+func Fn_on_error_stack_trace(param0 string) {}
 
 func Fn_option_error_quark() {
 	C.g_option_error_quark()
 }
 
-func Fn_parse_debug_string(string_ string, keys []DebugKey, nkeys uint) {}
+func Fn_parse_debug_string(param0 string, param1 []DebugKey, param2 uint) {}
 
-func Fn_path_get_basename(fileName string) {}
+func Fn_path_get_basename(param0 string) {}
 
-func Fn_path_get_dirname(fileName string) {}
+func Fn_path_get_dirname(param0 string) {}
 
-func Fn_path_is_absolute(fileName string) {}
+func Fn_path_is_absolute(param0 string) {}
 
-func Fn_path_skip_root(fileName string) {}
+func Fn_path_skip_root(param0 string) {}
 
-func Fn_pattern_match(pspec unsafe.Pointer, stringLength uint, string_ string, stringReversed string) {
-}
+func Fn_pattern_match(param0 unsafe.Pointer, param1 uint, param2 string, param3 string) {}
 
-func Fn_pattern_match_simple(pattern string, string_ string) {}
+func Fn_pattern_match_simple(param0 string, param1 string) {}
 
-func Fn_pattern_match_string(pspec unsafe.Pointer, string_ string) {}
+func Fn_pattern_match_string(param0 unsafe.Pointer, param1 string) {}
 
 // UNSUPPORTED : prefix_error : has varargs
 
@@ -449,7 +445,7 @@ func Fn_pattern_match_string(pspec unsafe.Pointer, string_ string) {}
 
 // UNSUPPORTED : printf_string_upper_bound : has va_list
 
-func Fn_propagate_error(dest *unsafe.Pointer, src unsafe.Pointer) {}
+func Fn_propagate_error(param0 *unsafe.Pointer, param1 unsafe.Pointer) {}
 
 // UNSUPPORTED : propagate_prefixed_error : has varargs
 
@@ -457,41 +453,41 @@ func Fn_propagate_error(dest *unsafe.Pointer, src unsafe.Pointer) {}
 
 // UNSUPPORTED : qsort_with_data : has callback
 
-func Fn_quark_from_static_string(string_ string) {}
+func Fn_quark_from_static_string(param0 string) {}
 
-func Fn_quark_from_string(string_ string) {}
+func Fn_quark_from_string(param0 string) {}
 
-func Fn_quark_to_string(quark uint32) {}
+func Fn_quark_to_string(param0 uint32) {}
 
-func Fn_quark_try_string(string_ string) {}
+func Fn_quark_try_string(param0 string) {}
 
 func Fn_random_double() {
 	C.g_random_double()
 }
 
-func Fn_random_double_range(begin float64, end float64) {}
+func Fn_random_double_range(param0 float64, param1 float64) {}
 
 func Fn_random_int() {
 	C.g_random_int()
 }
 
-func Fn_random_int_range(begin int32, end int32) {}
+func Fn_random_int_range(param0 int32, param1 int32) {}
 
-func Fn_random_set_seed(seed uint32) {}
+func Fn_random_set_seed(param0 uint32) {}
 
 // UNSUPPORTED : rc_box_release_full : has callback
 
-func Fn_realloc(mem unsafe.Pointer, nBytes uint64) {}
+func Fn_realloc(param0 unsafe.Pointer, param1 uint64) {}
 
 func Fn_regex_error_quark() {
 	C.g_regex_error_quark()
 }
 
-func Fn_return_if_fail_warning(logDomain string, prettyFunction string, expression string) {}
+func Fn_return_if_fail_warning(param0 string, param1 string, param2 string) {}
 
 // UNSUPPORTED : set_error : has varargs
 
-func Fn_set_prgname(prgname string) {}
+func Fn_set_prgname(param0 string) {}
 
 // UNSUPPORTED : set_print_handler : has callback
 
@@ -501,27 +497,27 @@ func Fn_shell_error_quark() {
 	C.g_shell_error_quark()
 }
 
-func Fn_shell_parse_argv(commandLine string, argcp *int, argvp *[]string) {}
+func Fn_shell_parse_argv(param0 string, param1 *int, param2 *[]string) {}
 
-func Fn_shell_quote(unquotedString string) {}
+func Fn_shell_quote(param0 string) {}
 
-func Fn_shell_unquote(quotedString string) {}
+func Fn_shell_unquote(param0 string) {}
 
-func Fn_slice_get_config(ckey int) {}
+func Fn_slice_get_config(param0 int) {}
 
-func Fn_slice_get_config_state(ckey int, address int64, nValues *uint) {}
+func Fn_slice_get_config_state(param0 int, param1 int64, param2 *uint) {}
 
-func Fn_slice_set_config(ckey int, value int64) {}
+func Fn_slice_set_config(param0 int, param1 int64) {}
 
 // UNSUPPORTED : snprintf : has varargs
 
-func Fn_source_remove(tag uint) {}
+func Fn_source_remove(param0 uint) {}
 
-func Fn_source_remove_by_funcs_user_data(funcs unsafe.Pointer, userData unsafe.Pointer) {}
+func Fn_source_remove_by_funcs_user_data(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_source_remove_by_user_data(userData unsafe.Pointer) {}
+func Fn_source_remove_by_user_data(param0 unsafe.Pointer) {}
 
-func Fn_spaced_primes_closest(num uint) {}
+func Fn_spaced_primes_closest(param0 uint) {}
 
 // UNSUPPORTED : spawn_async : has callback
 
@@ -529,12 +525,11 @@ func Fn_spaced_primes_closest(num uint) {}
 
 // UNSUPPORTED : spawn_async_with_pipes : has callback
 
-func Fn_spawn_close_pid(pid int) {}
+func Fn_spawn_close_pid(param0 int) {}
 
-func Fn_spawn_command_line_async(commandLine string) {}
+func Fn_spawn_command_line_async(param0 string) {}
 
-func Fn_spawn_command_line_sync(commandLine string, standardOutput []uint8, standardError []uint8, exitStatus *int) {
-}
+func Fn_spawn_command_line_sync(param0 string, param1 []uint8, param2 []uint8, param3 *int) {}
 
 func Fn_spawn_error_quark() {
 	C.g_spawn_error_quark()
@@ -548,77 +543,77 @@ func Fn_spawn_exit_error_quark() {
 
 // UNSUPPORTED : sprintf : has varargs
 
-func Fn_stpcpy(dest string, src string) {}
+func Fn_stpcpy(param0 string, param1 string) {}
 
-func Fn_str_equal(v1 unsafe.Pointer, v2 unsafe.Pointer) {}
+func Fn_str_equal(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_str_hash(v unsafe.Pointer) {}
+func Fn_str_hash(param0 unsafe.Pointer) {}
 
-func Fn_strcanon(string_ string, validChars string, substitutor int8) {}
+func Fn_strcanon(param0 string, param1 string, param2 int8) {}
 
-func Fn_strcasecmp(s1 string, s2 string) {}
+func Fn_strcasecmp(param0 string, param1 string) {}
 
-func Fn_strchomp(string_ string) {}
+func Fn_strchomp(param0 string) {}
 
-func Fn_strchug(string_ string) {}
+func Fn_strchug(param0 string) {}
 
-func Fn_strcompress(source string) {}
+func Fn_strcompress(param0 string) {}
 
 // UNSUPPORTED : strconcat : has varargs
 
-func Fn_strdelimit(string_ string, delimiters string, newDelimiter int8) {}
+func Fn_strdelimit(param0 string, param1 string, param2 int8) {}
 
-func Fn_strdown(string_ string) {}
+func Fn_strdown(param0 string) {}
 
-func Fn_strdup(str string) {}
+func Fn_strdup(param0 string) {}
 
 // UNSUPPORTED : strdup_printf : has varargs
 
 // UNSUPPORTED : strdup_vprintf : has va_list
 
-func Fn_strdupv(strArray string) {}
+func Fn_strdupv(param0 string) {}
 
-func Fn_strerror(errnum int) {}
+func Fn_strerror(param0 int) {}
 
-func Fn_strescape(source string, exceptions string) {}
+func Fn_strescape(param0 string, param1 string) {}
 
-func Fn_strfreev(strArray string) {}
+func Fn_strfreev(param0 string) {}
 
-func Fn_string_new(init string) {}
+func Fn_string_new(param0 string) {}
 
-func Fn_string_new_len(init string, len uint64) {}
+func Fn_string_new_len(param0 string, param1 uint64) {}
 
-func Fn_string_sized_new(dflSize uint64) {}
+func Fn_string_sized_new(param0 uint64) {}
 
 // UNSUPPORTED : strjoin : has varargs
 
-func Fn_strjoinv(separator string, strArray string) {}
+func Fn_strjoinv(param0 string, param1 string) {}
 
-func Fn_strlcat(dest string, src string, destSize uint64) {}
+func Fn_strlcat(param0 string, param1 string, param2 uint64) {}
 
-func Fn_strlcpy(dest string, src string, destSize uint64) {}
+func Fn_strlcpy(param0 string, param1 string, param2 uint64) {}
 
-func Fn_strncasecmp(s1 string, s2 string, n uint) {}
+func Fn_strncasecmp(param0 string, param1 string, param2 uint) {}
 
-func Fn_strndup(str string, n uint64) {}
+func Fn_strndup(param0 string, param1 uint64) {}
 
-func Fn_strnfill(length uint64, fillChar int8) {}
+func Fn_strnfill(param0 uint64, param1 int8) {}
 
-func Fn_strreverse(string_ string) {}
+func Fn_strreverse(param0 string) {}
 
-func Fn_strrstr(haystack string, needle string) {}
+func Fn_strrstr(param0 string, param1 string) {}
 
-func Fn_strrstr_len(haystack string, haystackLen uint64, needle string) {}
+func Fn_strrstr_len(param0 string, param1 uint64, param2 string) {}
 
-func Fn_strsignal(signum int) {}
+func Fn_strsignal(param0 int) {}
 
-func Fn_strsplit(string_ string, delimiter string, maxTokens int) {}
+func Fn_strsplit(param0 string, param1 string, param2 int) {}
 
-func Fn_strstr_len(haystack string, haystackLen uint64, needle string) {}
+func Fn_strstr_len(param0 string, param1 uint64, param2 string) {}
 
-func Fn_strtod(nptr string, endptr string) {}
+func Fn_strtod(param0 string, param1 string) {}
 
-func Fn_strup(string_ string) {}
+func Fn_strup(param0 string) {}
 
 func Fn_strv_get_type() {
 	C.g_strv_get_type()
@@ -632,7 +627,8 @@ func Fn_strv_get_type() {
 
 // UNSUPPORTED : test_add_vtable : has callback
 
-func Fn_test_assert_expected_messages_internal(domain string, file string, line int, func_ string) {}
+func Fn_test_assert_expected_messages_internal(param0 string, param1 string, param2 int, param3 string) {
+}
 
 // UNSUPPORTED : test_build_filename : has varargs
 
@@ -644,7 +640,7 @@ func Fn_test_assert_expected_messages_internal(domain string, file string, line 
 
 // UNSUPPORTED : test_log_set_fatal_handler : has callback
 
-func Fn_test_log_type_name(logType int) {}
+func Fn_test_log_type_name(param0 int) {}
 
 // UNSUPPORTED : test_maximized_result : has varargs
 
@@ -654,14 +650,14 @@ func Fn_test_log_type_name(logType int) {}
 
 // UNSUPPORTED : test_queue_destroy : has callback
 
-func Fn_test_trap_assertions(domain string, file string, line int, func_ string, assertionFlags uint64, pattern string) {
+func Fn_test_trap_assertions(param0 string, param1 string, param2 int, param3 string, param4 uint64, param5 string) {
 }
 
 func Fn_thread_error_quark() {
 	C.g_thread_error_quark()
 }
 
-func Fn_thread_exit(retval unsafe.Pointer) {}
+func Fn_thread_exit(param0 unsafe.Pointer) {}
 
 func Fn_thread_pool_get_max_unused_threads() {
 	C.g_thread_pool_get_max_unused_threads()
@@ -671,7 +667,7 @@ func Fn_thread_pool_get_num_unused_threads() {
 	C.g_thread_pool_get_num_unused_threads()
 }
 
-func Fn_thread_pool_set_max_unused_threads(maxThreads int) {}
+func Fn_thread_pool_set_max_unused_threads(param0 int) {}
 
 func Fn_thread_pool_stop_unused_threads() {
 	C.g_thread_pool_stop_unused_threads()
@@ -693,73 +689,73 @@ func Fn_thread_yield() {
 
 // UNSUPPORTED : timeout_add_seconds_full : has callback
 
-func Fn_timeout_source_new(interval uint) {}
+func Fn_timeout_source_new(param0 uint) {}
 
-func Fn_trash_stack_height(stackP *unsafe.Pointer) {}
+func Fn_trash_stack_height(param0 *unsafe.Pointer) {}
 
-func Fn_trash_stack_peek(stackP *unsafe.Pointer) {}
+func Fn_trash_stack_peek(param0 *unsafe.Pointer) {}
 
-func Fn_trash_stack_pop(stackP *unsafe.Pointer) {}
+func Fn_trash_stack_pop(param0 *unsafe.Pointer) {}
 
-func Fn_trash_stack_push(stackP *unsafe.Pointer, dataP unsafe.Pointer) {}
+func Fn_trash_stack_push(param0 *unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_try_malloc(nBytes uint64) {}
+func Fn_try_malloc(param0 uint64) {}
 
-func Fn_try_realloc(mem unsafe.Pointer, nBytes uint64) {}
+func Fn_try_realloc(param0 unsafe.Pointer, param1 uint64) {}
 
-func Fn_ucs4_to_utf16(str *rune, len int64, itemsRead *int64, itemsWritten *int64) {}
+func Fn_ucs4_to_utf16(param0 *rune, param1 int64, param2 *int64, param3 *int64) {}
 
-func Fn_ucs4_to_utf8(str *rune, len int64, itemsRead *int64, itemsWritten *int64) {}
+func Fn_ucs4_to_utf8(param0 *rune, param1 int64, param2 *int64, param3 *int64) {}
 
-func Fn_unichar_break_type(c rune) {}
+func Fn_unichar_break_type(param0 rune) {}
 
-func Fn_unichar_digit_value(c rune) {}
+func Fn_unichar_digit_value(param0 rune) {}
 
-func Fn_unichar_isalnum(c rune) {}
+func Fn_unichar_isalnum(param0 rune) {}
 
-func Fn_unichar_isalpha(c rune) {}
+func Fn_unichar_isalpha(param0 rune) {}
 
-func Fn_unichar_iscntrl(c rune) {}
+func Fn_unichar_iscntrl(param0 rune) {}
 
-func Fn_unichar_isdefined(c rune) {}
+func Fn_unichar_isdefined(param0 rune) {}
 
-func Fn_unichar_isdigit(c rune) {}
+func Fn_unichar_isdigit(param0 rune) {}
 
-func Fn_unichar_isgraph(c rune) {}
+func Fn_unichar_isgraph(param0 rune) {}
 
-func Fn_unichar_islower(c rune) {}
+func Fn_unichar_islower(param0 rune) {}
 
-func Fn_unichar_isprint(c rune) {}
+func Fn_unichar_isprint(param0 rune) {}
 
-func Fn_unichar_ispunct(c rune) {}
+func Fn_unichar_ispunct(param0 rune) {}
 
-func Fn_unichar_isspace(c rune) {}
+func Fn_unichar_isspace(param0 rune) {}
 
-func Fn_unichar_istitle(c rune) {}
+func Fn_unichar_istitle(param0 rune) {}
 
-func Fn_unichar_isupper(c rune) {}
+func Fn_unichar_isupper(param0 rune) {}
 
-func Fn_unichar_iswide(c rune) {}
+func Fn_unichar_iswide(param0 rune) {}
 
-func Fn_unichar_isxdigit(c rune) {}
+func Fn_unichar_isxdigit(param0 rune) {}
 
-func Fn_unichar_to_utf8(c rune, outbuf string) {}
+func Fn_unichar_to_utf8(param0 rune, param1 string) {}
 
-func Fn_unichar_tolower(c rune) {}
+func Fn_unichar_tolower(param0 rune) {}
 
-func Fn_unichar_totitle(c rune) {}
+func Fn_unichar_totitle(param0 rune) {}
 
-func Fn_unichar_toupper(c rune) {}
+func Fn_unichar_toupper(param0 rune) {}
 
-func Fn_unichar_type(c rune) {}
+func Fn_unichar_type(param0 rune) {}
 
-func Fn_unichar_validate(ch rune) {}
+func Fn_unichar_validate(param0 rune) {}
 
-func Fn_unichar_xdigit_value(c rune) {}
+func Fn_unichar_xdigit_value(param0 rune) {}
 
-func Fn_unicode_canonical_decomposition(ch rune, resultLen *uint64) {}
+func Fn_unicode_canonical_decomposition(param0 rune, param1 *uint64) {}
 
-func Fn_unicode_canonical_ordering(string_ *rune, len uint64) {}
+func Fn_unicode_canonical_ordering(param0 *rune, param1 uint64) {}
 
 // UNSUPPORTED : unix_error_quark : blacklisted
 // UNSUPPORTED : unix_fd_add : has callback
@@ -770,59 +766,59 @@ func Fn_unicode_canonical_ordering(string_ *rune, len uint64) {}
 
 // UNSUPPORTED : unix_signal_add_full : has callback
 
-func Fn_usleep(microseconds uint64) {}
+func Fn_usleep(param0 uint64) {}
 
-func Fn_utf16_to_ucs4(str *uint16, len int64, itemsRead *int64, itemsWritten *int64) {}
+func Fn_utf16_to_ucs4(param0 *uint16, param1 int64, param2 *int64, param3 *int64) {}
 
-func Fn_utf16_to_utf8(str *uint16, len int64, itemsRead *int64, itemsWritten *int64) {}
+func Fn_utf16_to_utf8(param0 *uint16, param1 int64, param2 *int64, param3 *int64) {}
 
-func Fn_utf8_casefold(str string, len uint64) {}
+func Fn_utf8_casefold(param0 string, param1 uint64) {}
 
-func Fn_utf8_collate(str1 string, str2 string) {}
+func Fn_utf8_collate(param0 string, param1 string) {}
 
-func Fn_utf8_collate_key(str string, len uint64) {}
+func Fn_utf8_collate_key(param0 string, param1 uint64) {}
 
-func Fn_utf8_find_next_char(p string, end string) {}
+func Fn_utf8_find_next_char(param0 string, param1 string) {}
 
-func Fn_utf8_find_prev_char(str string, p string) {}
+func Fn_utf8_find_prev_char(param0 string, param1 string) {}
 
-func Fn_utf8_get_char(p string) {}
+func Fn_utf8_get_char(param0 string) {}
 
-func Fn_utf8_get_char_validated(p string, maxLen uint64) {}
+func Fn_utf8_get_char_validated(param0 string, param1 uint64) {}
 
-func Fn_utf8_normalize(str string, len uint64, mode int) {}
+func Fn_utf8_normalize(param0 string, param1 uint64, param2 int) {}
 
-func Fn_utf8_offset_to_pointer(str string, offset int64) {}
+func Fn_utf8_offset_to_pointer(param0 string, param1 int64) {}
 
-func Fn_utf8_pointer_to_offset(str string, pos string) {}
+func Fn_utf8_pointer_to_offset(param0 string, param1 string) {}
 
-func Fn_utf8_prev_char(p string) {}
+func Fn_utf8_prev_char(param0 string) {}
 
-func Fn_utf8_strchr(p string, len uint64, c rune) {}
+func Fn_utf8_strchr(param0 string, param1 uint64, param2 rune) {}
 
-func Fn_utf8_strdown(str string, len uint64) {}
+func Fn_utf8_strdown(param0 string, param1 uint64) {}
 
-func Fn_utf8_strlen(p string, max uint64) {}
+func Fn_utf8_strlen(param0 string, param1 uint64) {}
 
-func Fn_utf8_strncpy(dest string, src string, n uint64) {}
+func Fn_utf8_strncpy(param0 string, param1 string, param2 uint64) {}
 
-func Fn_utf8_strrchr(p string, len uint64, c rune) {}
+func Fn_utf8_strrchr(param0 string, param1 uint64, param2 rune) {}
 
-func Fn_utf8_strup(str string, len uint64) {}
+func Fn_utf8_strup(param0 string, param1 uint64) {}
 
-func Fn_utf8_to_ucs4(str string, len int64, itemsRead *int64, itemsWritten *int64) {}
+func Fn_utf8_to_ucs4(param0 string, param1 int64, param2 *int64, param3 *int64) {}
 
-func Fn_utf8_to_ucs4_fast(str string, len int64, itemsWritten *int64) {}
+func Fn_utf8_to_ucs4_fast(param0 string, param1 int64, param2 *int64) {}
 
-func Fn_utf8_to_utf16(str string, len int64, itemsRead *int64, itemsWritten *int64) {}
+func Fn_utf8_to_utf16(param0 string, param1 int64, param2 *int64, param3 *int64) {}
 
-func Fn_utf8_validate(str []uint8, maxLen uint64, end string) {}
+func Fn_utf8_validate(param0 []uint8, param1 uint64, param2 string) {}
 
 func Fn_variant_get_gtype() {
 	C.g_variant_get_gtype()
 }
 
-func Fn_variant_parse(type_ unsafe.Pointer, text string, limit string, endptr string) {}
+func Fn_variant_parse(param0 unsafe.Pointer, param1 string, param2 string, param3 string) {}
 
 func Fn_variant_parse_error_quark() {
 	C.g_variant_parse_error_quark()
@@ -832,11 +828,11 @@ func Fn_variant_parser_get_error_quark() {
 	C.g_variant_parser_get_error_quark()
 }
 
-func Fn_variant_type_checked_(arg0 string) {}
+func Fn_variant_type_checked_(param0 string) {}
 
-func Fn_variant_type_string_get_depth_(typeString string) {}
+func Fn_variant_type_string_get_depth_(param0 string) {}
 
-func Fn_variant_type_string_is_valid(typeString string) {}
+func Fn_variant_type_string_is_valid(param0 string) {}
 
 // UNSUPPORTED : vasprintf : has va_list
 
@@ -848,4 +844,4 @@ func Fn_variant_type_string_is_valid(typeString string) {}
 
 // UNSUPPORTED : vsprintf : has va_list
 
-func Fn_warn_message(domain string, file string, line int, func_ string, warnexpr string) {}
+func Fn_warn_message(param0 string, param1 string, param2 int, param3 string, param4 string) {}

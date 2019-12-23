@@ -49,65 +49,65 @@ type WindowAttr C.GdkWindowAttr
 type WindowClass C.GdkWindowClass
 type WindowRedirect C.GdkWindowRedirect
 
-func Fn_add_option_entries_libgtk_only(group unsafe.Pointer) {}
+func Fn_add_option_entries_libgtk_only(param0 unsafe.Pointer) {}
 
-func Fn_atom_intern(atomName string, onlyIfExists bool) {}
+func Fn_atom_intern(param0 string, param1 bool) {}
 
-func Fn_atom_intern_static_string(atomName string) {}
+func Fn_atom_intern_static_string(param0 string) {}
 
 func Fn_beep() {
 	C.gdk_beep()
 }
 
-func Fn_cairo_create(window unsafe.Pointer) {}
+func Fn_cairo_create(param0 unsafe.Pointer) {}
 
-func Fn_cairo_get_clip_rectangle(cr unsafe.Pointer, rect unsafe.Pointer) {}
+func Fn_cairo_get_clip_rectangle(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_cairo_rectangle(cr unsafe.Pointer, rectangle unsafe.Pointer) {}
+func Fn_cairo_rectangle(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_cairo_region(cr unsafe.Pointer, region unsafe.Pointer) {}
+func Fn_cairo_region(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_cairo_region_create_from_surface(surface unsafe.Pointer) {}
+func Fn_cairo_region_create_from_surface(param0 unsafe.Pointer) {}
 
-func Fn_cairo_set_source_color(cr unsafe.Pointer, color unsafe.Pointer) {}
+func Fn_cairo_set_source_color(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_cairo_set_source_pixbuf(cr unsafe.Pointer, pixbuf unsafe.Pointer, pixbufX float64, pixbufY float64) {
+func Fn_cairo_set_source_pixbuf(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 float64, param3 float64) {
 }
 
-func Fn_cairo_set_source_rgba(cr unsafe.Pointer, rgba unsafe.Pointer) {}
+func Fn_cairo_set_source_rgba(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_cairo_set_source_window(cr unsafe.Pointer, window unsafe.Pointer, x float64, y float64) {}
+func Fn_cairo_set_source_window(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 float64, param3 float64) {
+}
 
-func Fn_color_parse(spec string, color unsafe.Pointer) {}
+func Fn_color_parse(param0 string, param1 unsafe.Pointer) {}
 
 func Fn_disable_multidevice() {
 	C.gdk_disable_multidevice()
 }
 
-func Fn_drag_abort(context unsafe.Pointer, time uint32) {}
+func Fn_drag_abort(param0 unsafe.Pointer, param1 uint32) {}
 
-func Fn_drag_begin(window unsafe.Pointer, targets unsafe.Pointer) {}
+func Fn_drag_begin(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_drag_begin_for_device(window unsafe.Pointer, device unsafe.Pointer, targets unsafe.Pointer) {
+func Fn_drag_begin_for_device(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {}
+
+func Fn_drag_drop(param0 unsafe.Pointer, param1 uint32) {}
+
+func Fn_drag_drop_succeeded(param0 unsafe.Pointer) {}
+
+func Fn_drag_find_window_for_screen(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 int, param4 int, param5 *unsafe.Pointer, param6 int) {
 }
 
-func Fn_drag_drop(context unsafe.Pointer, time uint32) {}
+func Fn_drag_get_selection(param0 unsafe.Pointer) {}
 
-func Fn_drag_drop_succeeded(context unsafe.Pointer) {}
-
-func Fn_drag_find_window_for_screen(context unsafe.Pointer, dragWindow unsafe.Pointer, screen unsafe.Pointer, xRoot int, yRoot int, destWindow *unsafe.Pointer, protocol int) {
+func Fn_drag_motion(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 int, param5 int, param6 int, param7 uint32) {
 }
 
-func Fn_drag_get_selection(context unsafe.Pointer) {}
+func Fn_drag_status(param0 unsafe.Pointer, param1 int, param2 uint32) {}
 
-func Fn_drag_motion(context unsafe.Pointer, destWindow unsafe.Pointer, protocol int, xRoot int, yRoot int, suggestedAction int, possibleActions int, time uint32) {
-}
+func Fn_drop_finish(param0 unsafe.Pointer, param1 bool, param2 uint32) {}
 
-func Fn_drag_status(context unsafe.Pointer, action int, time uint32) {}
-
-func Fn_drop_finish(context unsafe.Pointer, success bool, time uint32) {}
-
-func Fn_drop_reply(context unsafe.Pointer, accepted bool, time uint32) {}
+func Fn_drop_reply(param0 unsafe.Pointer, param1 bool, param2 uint32) {}
 
 func Fn_error_trap_pop() {
 	C.gdk_error_trap_pop()
@@ -131,13 +131,14 @@ func Fn_event_peek() {
 	C.gdk_event_peek()
 }
 
-func Fn_event_request_motions(event unsafe.Pointer) {}
+func Fn_event_request_motions(param0 unsafe.Pointer) {}
 
-func Fn_events_get_angle(event1 unsafe.Pointer, event2 unsafe.Pointer, angle *float64) {}
+func Fn_events_get_angle(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *float64) {}
 
-func Fn_events_get_center(event1 unsafe.Pointer, event2 unsafe.Pointer, x *float64, y *float64) {}
+func Fn_events_get_center(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *float64, param3 *float64) {
+}
 
-func Fn_events_get_distance(event1 unsafe.Pointer, event2 unsafe.Pointer, distance *float64) {}
+func Fn_events_get_distance(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *float64) {}
 
 func Fn_events_pending() {
 	C.gdk_events_pending()
@@ -171,29 +172,29 @@ func Fn_gl_error_quark() {
 	C.gdk_gl_error_quark()
 }
 
-func Fn_init(argc *int, argv *[]string) {}
+func Fn_init(param0 *int, param1 *[]string) {}
 
-func Fn_init_check(argc *int, argv *[]string) {}
+func Fn_init_check(param0 *int, param1 *[]string) {}
 
-func Fn_keyboard_grab(window unsafe.Pointer, ownerEvents bool, time uint32) {}
+func Fn_keyboard_grab(param0 unsafe.Pointer, param1 bool, param2 uint32) {}
 
-func Fn_keyboard_ungrab(time uint32) {}
+func Fn_keyboard_ungrab(param0 uint32) {}
 
-func Fn_keyval_convert_case(symbol uint, lower *uint, upper *uint) {}
+func Fn_keyval_convert_case(param0 uint, param1 *uint, param2 *uint) {}
 
-func Fn_keyval_from_name(keyvalName string) {}
+func Fn_keyval_from_name(param0 string) {}
 
-func Fn_keyval_is_lower(keyval uint) {}
+func Fn_keyval_is_lower(param0 uint) {}
 
-func Fn_keyval_is_upper(keyval uint) {}
+func Fn_keyval_is_upper(param0 uint) {}
 
-func Fn_keyval_name(keyval uint) {}
+func Fn_keyval_name(param0 uint) {}
 
-func Fn_keyval_to_lower(keyval uint) {}
+func Fn_keyval_to_lower(param0 uint) {}
 
-func Fn_keyval_to_unicode(keyval uint) {}
+func Fn_keyval_to_unicode(param0 uint) {}
 
-func Fn_keyval_to_upper(keyval uint) {}
+func Fn_keyval_to_upper(param0 uint) {}
 
 func Fn_list_visuals() {
 	C.gdk_list_visuals()
@@ -203,96 +204,98 @@ func Fn_notify_startup_complete() {
 	C.gdk_notify_startup_complete()
 }
 
-func Fn_notify_startup_complete_with_id(startupId string) {}
+func Fn_notify_startup_complete_with_id(param0 string) {}
 
-func Fn_offscreen_window_get_embedder(window unsafe.Pointer) {}
+func Fn_offscreen_window_get_embedder(param0 unsafe.Pointer) {}
 
-func Fn_offscreen_window_get_surface(window unsafe.Pointer) {}
+func Fn_offscreen_window_get_surface(param0 unsafe.Pointer) {}
 
-func Fn_offscreen_window_set_embedder(window unsafe.Pointer, embedder unsafe.Pointer) {}
+func Fn_offscreen_window_set_embedder(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
 func Fn_pango_context_get() {
 	C.gdk_pango_context_get()
 }
 
-func Fn_pango_context_get_for_screen(screen unsafe.Pointer) {}
+func Fn_pango_context_get_for_screen(param0 unsafe.Pointer) {}
 
-func Fn_pango_layout_get_clip_region(layout unsafe.Pointer, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
+func Fn_pango_layout_get_clip_region(param0 unsafe.Pointer, param1 int, param2 int, param3 *int, param4 int) {
 }
 
-func Fn_pango_layout_line_get_clip_region(line unsafe.Pointer, xOrigin int, yOrigin int, indexRanges []int, nRanges int) {
+func Fn_pango_layout_line_get_clip_region(param0 unsafe.Pointer, param1 int, param2 int, param3 []int, param4 int) {
 }
 
-func Fn_parse_args(argc *int, argv *[]string) {}
+func Fn_parse_args(param0 *int, param1 *[]string) {}
 
-func Fn_pixbuf_get_from_surface(surface unsafe.Pointer, srcX int, srcY int, width int, height int) {}
+func Fn_pixbuf_get_from_surface(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int) {
+}
 
-func Fn_pixbuf_get_from_window(window unsafe.Pointer, srcX int, srcY int, width int, height int) {}
+func Fn_pixbuf_get_from_window(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int) {
+}
 
-func Fn_pointer_grab(window unsafe.Pointer, ownerEvents bool, eventMask int, confineTo unsafe.Pointer, cursor unsafe.Pointer, time uint32) {
+func Fn_pointer_grab(param0 unsafe.Pointer, param1 bool, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 uint32) {
 }
 
 func Fn_pointer_is_grabbed() {
 	C.gdk_pointer_is_grabbed()
 }
 
-func Fn_pointer_ungrab(time uint32) {}
+func Fn_pointer_ungrab(param0 uint32) {}
 
 func Fn_pre_parse_libgtk_only() {
 	C.gdk_pre_parse_libgtk_only()
 }
 
-func Fn_property_change(window unsafe.Pointer, property Atom, type_ Atom, format int, mode int, data *uint8, nelements int) {
+func Fn_property_change(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 int, param4 int, param5 *uint8, param6 int) {
 }
 
-func Fn_property_delete(window unsafe.Pointer, property Atom) {}
+func Fn_property_delete(param0 unsafe.Pointer, param1 Atom) {}
 
-func Fn_property_get(window unsafe.Pointer, property Atom, type_ Atom, offset uint64, length uint64, pdelete int, actualPropertyType unsafe.Pointer, actualFormat *int, actualLength *int, data []*uint8) {
+func Fn_property_get(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint64, param4 uint64, param5 int, param6 unsafe.Pointer, param7 *int, param8 *int, param9 []*uint8) {
 }
 
-func Fn_query_depths(depths []*int, count *int) {}
+func Fn_query_depths(param0 []*int, param1 *int) {}
 
-func Fn_query_visual_types(visualTypes []int, count *int) {}
+func Fn_query_visual_types(param0 []int, param1 *int) {}
 
-func Fn_selection_convert(requestor unsafe.Pointer, selection Atom, target Atom, time uint32) {}
+func Fn_selection_convert(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint32) {}
 
-func Fn_selection_owner_get(selection Atom) {}
+func Fn_selection_owner_get(param0 Atom) {}
 
-func Fn_selection_owner_get_for_display(display unsafe.Pointer, selection Atom) {}
+func Fn_selection_owner_get_for_display(param0 unsafe.Pointer, param1 Atom) {}
 
-func Fn_selection_owner_set(owner unsafe.Pointer, selection Atom, time uint32, sendEvent bool) {}
+func Fn_selection_owner_set(param0 unsafe.Pointer, param1 Atom, param2 uint32, param3 bool) {}
 
-func Fn_selection_owner_set_for_display(display unsafe.Pointer, owner unsafe.Pointer, selection Atom, time uint32, sendEvent bool) {
+func Fn_selection_owner_set_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 Atom, param3 uint32, param4 bool) {
 }
 
-func Fn_selection_property_get(requestor unsafe.Pointer, data **uint8, propType unsafe.Pointer, propFormat *int) {
+func Fn_selection_property_get(param0 unsafe.Pointer, param1 **uint8, param2 unsafe.Pointer, param3 *int) {
 }
 
-func Fn_selection_send_notify(requestor unsafe.Pointer, selection Atom, target Atom, property Atom, time uint32) {
+func Fn_selection_send_notify(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 Atom, param4 uint32) {
 }
 
-func Fn_selection_send_notify_for_display(display unsafe.Pointer, requestor unsafe.Pointer, selection Atom, target Atom, property Atom, time uint32) {
+func Fn_selection_send_notify_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 Atom, param3 Atom, param4 Atom, param5 uint32) {
 }
 
-func Fn_set_double_click_time(msec uint) {}
+func Fn_set_double_click_time(param0 uint) {}
 
-func Fn_set_program_class(programClass string) {}
+func Fn_set_program_class(param0 string) {}
 
-func Fn_set_show_events(showEvents bool) {}
+func Fn_set_show_events(param0 bool) {}
 
-func Fn_setting_get(name string, value unsafe.Pointer) {}
+func Fn_setting_get(param0 string, param1 unsafe.Pointer) {}
 
-func Fn_synthesize_window_state(window unsafe.Pointer, unsetFlags int, setFlags int) {}
+func Fn_synthesize_window_state(param0 unsafe.Pointer, param1 int, param2 int) {}
 
-func Fn_test_render_sync(window unsafe.Pointer) {}
+func Fn_test_render_sync(param0 unsafe.Pointer) {}
 
-func Fn_test_simulate_button(window unsafe.Pointer, x int, y int, button uint, modifiers int, buttonPressrelease int) {
+func Fn_test_simulate_button(param0 unsafe.Pointer, param1 int, param2 int, param3 uint, param4 int, param5 int) {
 }
 
-func Fn_test_simulate_key(window unsafe.Pointer, x int, y int, keyval uint, modifiers int, keyPressrelease int) {
+func Fn_test_simulate_key(param0 unsafe.Pointer, param1 int, param2 int, param3 uint, param4 int, param5 int) {
 }
 
-func Fn_text_property_to_utf8_list_for_display(display unsafe.Pointer, encoding Atom, format int, text []uint8, length int, list *[]string) {
+func Fn_text_property_to_utf8_list_for_display(param0 unsafe.Pointer, param1 Atom, param2 int, param3 []uint8, param4 int, param5 *[]string) {
 }
 
 // UNSUPPORTED : threads_add_idle : has callback
@@ -321,6 +324,6 @@ func Fn_threads_leave() {
 
 // UNSUPPORTED : threads_set_lock_functions : has callback
 
-func Fn_unicode_to_keyval(wc uint32) {}
+func Fn_unicode_to_keyval(param0 uint32) {}
 
-func Fn_utf8_to_string_target(str string) {}
+func Fn_utf8_to_string_target(param0 string) {}

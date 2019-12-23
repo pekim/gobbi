@@ -3,6 +3,7 @@ package generate
 import (
 	"github.com/blang/semver"
 	"github.com/dave/jennifer/jen"
+	"strconv"
 )
 
 type Function struct {
@@ -59,9 +60,11 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 }
 
 func (f *Function) generateSysParamDeclaration(g *jen.Group) {
-	for _, param := range f.Parameters {
+	for i, param := range f.Parameters {
+		paramName := "param" + strconv.Itoa(i)
 		goType := param.sysParamGoType()
-		g.Id(param.goVarName).Add(goType)
+
+		g.Id(paramName).Add(goType)
 	}
 }
 

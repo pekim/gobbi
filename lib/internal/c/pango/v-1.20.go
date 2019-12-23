@@ -64,142 +64,141 @@ type RendererPrivate C.PangoRendererPrivate
 type ScriptIter C.PangoScriptIter
 type TabArray C.PangoTabArray
 
-func Fn_attr_background_new(red uint16, green uint16, blue uint16) {}
+func Fn_attr_background_new(param0 uint16, param1 uint16, param2 uint16) {}
 
-func Fn_attr_fallback_new(enableFallback bool) {}
+func Fn_attr_fallback_new(param0 bool) {}
 
-func Fn_attr_family_new(family string) {}
+func Fn_attr_family_new(param0 string) {}
 
-func Fn_attr_foreground_new(red uint16, green uint16, blue uint16) {}
+func Fn_attr_foreground_new(param0 uint16, param1 uint16, param2 uint16) {}
 
-func Fn_attr_gravity_hint_new(hint int) {}
+func Fn_attr_gravity_hint_new(param0 int) {}
 
-func Fn_attr_gravity_new(gravity int) {}
+func Fn_attr_gravity_new(param0 int) {}
 
-func Fn_attr_letter_spacing_new(letterSpacing int) {}
+func Fn_attr_letter_spacing_new(param0 int) {}
 
-func Fn_attr_rise_new(rise int) {}
+func Fn_attr_rise_new(param0 int) {}
 
-func Fn_attr_scale_new(scaleFactor float64) {}
+func Fn_attr_scale_new(param0 float64) {}
 
-func Fn_attr_stretch_new(stretch int) {}
+func Fn_attr_stretch_new(param0 int) {}
 
-func Fn_attr_strikethrough_color_new(red uint16, green uint16, blue uint16) {}
+func Fn_attr_strikethrough_color_new(param0 uint16, param1 uint16, param2 uint16) {}
 
-func Fn_attr_strikethrough_new(strikethrough bool) {}
+func Fn_attr_strikethrough_new(param0 bool) {}
 
-func Fn_attr_style_new(style int) {}
+func Fn_attr_style_new(param0 int) {}
 
-func Fn_attr_type_register(name string) {}
+func Fn_attr_type_register(param0 string) {}
 
-func Fn_attr_underline_color_new(red uint16, green uint16, blue uint16) {}
+func Fn_attr_underline_color_new(param0 uint16, param1 uint16, param2 uint16) {}
 
-func Fn_attr_underline_new(underline int) {}
+func Fn_attr_underline_new(param0 int) {}
 
-func Fn_attr_variant_new(variant int) {}
+func Fn_attr_variant_new(param0 int) {}
 
-func Fn_attr_weight_new(weight int) {}
+func Fn_attr_weight_new(param0 int) {}
 
-func Fn_break(text string, length int, analysis unsafe.Pointer, attrs []LogAttr, attrsLen int) {}
+func Fn_break(param0 string, param1 int, param2 unsafe.Pointer, param3 []LogAttr, param4 int) {}
 
-func Fn_config_key_get(key string) {}
+func Fn_config_key_get(param0 string) {}
 
-func Fn_config_key_get_system(key string) {}
+func Fn_config_key_get_system(param0 string) {}
 
-func Fn_default_break(text string, length int, analysis unsafe.Pointer, attrs unsafe.Pointer, attrsLen int) {
+func Fn_default_break(param0 string, param1 int, param2 unsafe.Pointer, param3 unsafe.Pointer, param4 int) {
 }
 
-func Fn_extents_to_pixels(inclusive unsafe.Pointer, nearest unsafe.Pointer) {}
+func Fn_extents_to_pixels(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_find_base_dir(text string, length int) {}
+func Fn_find_base_dir(param0 string, param1 int) {}
 
-func Fn_find_map(language unsafe.Pointer, engineTypeId uint, renderTypeId uint) {}
+func Fn_find_map(param0 unsafe.Pointer, param1 uint, param2 uint) {}
 
-func Fn_find_paragraph_boundary(text string, length int, paragraphDelimiterIndex *int, nextParagraphStart *int) {
-}
+func Fn_find_paragraph_boundary(param0 string, param1 int, param2 *int, param3 *int) {}
 
-func Fn_font_description_from_string(str string) {}
+func Fn_font_description_from_string(param0 string) {}
 
 // UNSUPPORTED : get_lib_subdirectory : blacklisted
-func Fn_get_log_attrs(text string, length int, level int, language unsafe.Pointer, logAttrs []LogAttr, attrsLen int) {
+func Fn_get_log_attrs(param0 string, param1 int, param2 int, param3 unsafe.Pointer, param4 []LogAttr, param5 int) {
 }
 
-func Fn_get_mirror_char(ch rune, mirroredCh *rune) {}
+func Fn_get_mirror_char(param0 rune, param1 *rune) {}
 
 // UNSUPPORTED : get_sysconf_subdirectory : blacklisted
-func Fn_gravity_get_for_matrix(matrix unsafe.Pointer) {}
+func Fn_gravity_get_for_matrix(param0 unsafe.Pointer) {}
 
-func Fn_gravity_get_for_script(script int, baseGravity int, hint int) {}
+func Fn_gravity_get_for_script(param0 int, param1 int, param2 int) {}
 
-func Fn_gravity_to_rotation(gravity int) {}
+func Fn_gravity_to_rotation(param0 int) {}
 
-func Fn_is_zero_width(ch rune) {}
+func Fn_is_zero_width(param0 rune) {}
 
-func Fn_itemize(context unsafe.Pointer, text string, startIndex int, length int, attrs unsafe.Pointer, cachedIter unsafe.Pointer) {
+func Fn_itemize(param0 unsafe.Pointer, param1 string, param2 int, param3 int, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 }
 
-func Fn_itemize_with_base_dir(context unsafe.Pointer, baseDir int, text string, startIndex int, length int, attrs unsafe.Pointer, cachedIter unsafe.Pointer) {
+func Fn_itemize_with_base_dir(param0 unsafe.Pointer, param1 int, param2 string, param3 int, param4 int, param5 unsafe.Pointer, param6 unsafe.Pointer) {
 }
 
-func Fn_language_from_string(language string) {}
+func Fn_language_from_string(param0 string) {}
 
 func Fn_language_get_default() {
 	C.pango_language_get_default()
 }
 
-func Fn_log2vis_get_embedding_levels(text string, length int, pbaseDir int) {}
+func Fn_log2vis_get_embedding_levels(param0 string, param1 int, param2 int) {}
 
-func Fn_lookup_aliases(fontname string, families *[]string, nFamilies *int) {}
+func Fn_lookup_aliases(param0 string, param1 *[]string, param2 *int) {}
 
 // UNSUPPORTED : module_register : blacklisted
-func Fn_parse_enum(type_ uint64, str string, value *int, warn bool, possibleValues string) {}
+func Fn_parse_enum(param0 uint64, param1 string, param2 *int, param3 bool, param4 string) {}
 
-func Fn_parse_markup(markupText string, length int, accelMarker rune, attrList *unsafe.Pointer, text string, accelChar *rune) {
+func Fn_parse_markup(param0 string, param1 int, param2 rune, param3 *unsafe.Pointer, param4 string, param5 *rune) {
 }
 
-func Fn_parse_stretch(str string, stretch int, warn bool) {}
+func Fn_parse_stretch(param0 string, param1 int, param2 bool) {}
 
-func Fn_parse_style(str string, style int, warn bool) {}
+func Fn_parse_style(param0 string, param1 int, param2 bool) {}
 
-func Fn_parse_variant(str string, variant int, warn bool) {}
+func Fn_parse_variant(param0 string, param1 int, param2 bool) {}
 
-func Fn_parse_weight(str string, weight int, warn bool) {}
+func Fn_parse_weight(param0 string, param1 int, param2 bool) {}
 
-func Fn_quantize_line_geometry(thickness *int, position *int) {}
+func Fn_quantize_line_geometry(param0 *int, param1 *int) {}
 
-func Fn_read_line(stream unsafe.Pointer, str unsafe.Pointer) {}
+func Fn_read_line(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_reorder_items(logicalItems unsafe.Pointer) {}
+func Fn_reorder_items(param0 unsafe.Pointer) {}
 
-func Fn_scan_int(pos string, out *int) {}
+func Fn_scan_int(param0 string, param1 *int) {}
 
-func Fn_scan_string(pos string, out unsafe.Pointer) {}
+func Fn_scan_string(param0 string, param1 unsafe.Pointer) {}
 
-func Fn_scan_word(pos string, out unsafe.Pointer) {}
+func Fn_scan_word(param0 string, param1 unsafe.Pointer) {}
 
-func Fn_script_for_unichar(ch rune) {}
+func Fn_script_for_unichar(param0 rune) {}
 
-func Fn_script_get_sample_language(script int) {}
+func Fn_script_get_sample_language(param0 int) {}
 
-func Fn_shape(text string, length int, analysis unsafe.Pointer, glyphs unsafe.Pointer) {}
+func Fn_shape(param0 string, param1 int, param2 unsafe.Pointer, param3 unsafe.Pointer) {}
 
-func Fn_skip_space(pos string) {}
+func Fn_skip_space(param0 string) {}
 
-func Fn_split_file_list(str string) {}
+func Fn_split_file_list(param0 string) {}
 
-func Fn_trim_string(str string) {}
+func Fn_trim_string(param0 string) {}
 
-func Fn_unichar_direction(ch rune) {}
+func Fn_unichar_direction(param0 rune) {}
 
-func Fn_units_from_double(d float64) {}
+func Fn_units_from_double(param0 float64) {}
 
-func Fn_units_to_double(i int) {}
+func Fn_units_to_double(param0 int) {}
 
 func Fn_version() {
 	C.pango_version()
 }
 
-func Fn_version_check(requiredMajor int, requiredMinor int, requiredMicro int) {}
+func Fn_version_check(param0 int, param1 int, param2 int) {}
 
 func Fn_version_string() {
 	C.pango_version_string()

@@ -191,23 +191,23 @@ type VolumeMonitorClass C.GVolumeMonitorClass
 type ZlibCompressorClass C.GZlibCompressorClass
 type ZlibDecompressorClass C.GZlibDecompressorClass
 
-func Fn_app_info_create_from_commandline(commandline string, applicationName string, flags int) {}
+func Fn_app_info_create_from_commandline(param0 string, param1 string, param2 int) {}
 
 func Fn_app_info_get_all() {
 	C.g_app_info_get_all()
 }
 
-func Fn_app_info_get_all_for_type(contentType string) {}
+func Fn_app_info_get_all_for_type(param0 string) {}
 
-func Fn_app_info_get_default_for_type(contentType string, mustSupportUris bool) {}
+func Fn_app_info_get_default_for_type(param0 string, param1 bool) {}
 
-func Fn_app_info_get_default_for_uri_scheme(uriScheme string) {}
+func Fn_app_info_get_default_for_uri_scheme(param0 string) {}
 
-func Fn_app_info_launch_default_for_uri(uri string, context unsafe.Pointer) {}
+func Fn_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer) {}
 
 // UNSUPPORTED : app_info_launch_default_for_uri_async : has callback
 
-func Fn_app_info_reset_type_associations(contentType string) {}
+func Fn_app_info_reset_type_associations(param0 string) {}
 
 // UNSUPPORTED : async_initable_newv_async : has callback
 
@@ -221,25 +221,25 @@ func Fn_app_info_reset_type_associations(contentType string) {}
 
 // UNSUPPORTED : bus_watch_name_on_connection : has callback
 
-func Fn_content_type_can_be_executable(type_ string) {}
+func Fn_content_type_can_be_executable(param0 string) {}
 
-func Fn_content_type_equals(type1 string, type2 string) {}
+func Fn_content_type_equals(param0 string, param1 string) {}
 
-func Fn_content_type_from_mime_type(mimeType string) {}
+func Fn_content_type_from_mime_type(param0 string) {}
 
-func Fn_content_type_get_description(type_ string) {}
+func Fn_content_type_get_description(param0 string) {}
 
-func Fn_content_type_get_icon(type_ string) {}
+func Fn_content_type_get_icon(param0 string) {}
 
-func Fn_content_type_get_mime_type(type_ string) {}
+func Fn_content_type_get_mime_type(param0 string) {}
 
-func Fn_content_type_guess(filename string, data []uint8, dataSize uint64, resultUncertain *bool) {}
+func Fn_content_type_guess(param0 string, param1 []uint8, param2 uint64, param3 *bool) {}
 
-func Fn_content_type_guess_for_tree(root unsafe.Pointer) {}
+func Fn_content_type_guess_for_tree(param0 unsafe.Pointer) {}
 
-func Fn_content_type_is_a(type_ string, supertype string) {}
+func Fn_content_type_is_a(param0 string, param1 string) {}
 
-func Fn_content_type_is_unknown(type_ string) {}
+func Fn_content_type_is_unknown(param0 string) {}
 
 func Fn_content_types_get_registered() {
 	C.g_content_types_get_registered()
@@ -251,32 +251,31 @@ func Fn_dbus_error_quark() {
 	C.g_dbus_error_quark()
 }
 
-func Fn_file_new_for_commandline_arg(arg string) {}
+func Fn_file_new_for_commandline_arg(param0 string) {}
 
-func Fn_file_new_for_path(path string) {}
+func Fn_file_new_for_path(param0 string) {}
 
-func Fn_file_new_for_uri(uri string) {}
+func Fn_file_new_for_uri(param0 string) {}
 
-func Fn_file_parse_name(parseName string) {}
+func Fn_file_parse_name(param0 string) {}
 
-func Fn_icon_hash(icon unsafe.Pointer) {}
+func Fn_icon_hash(param0 unsafe.Pointer) {}
 
-func Fn_icon_new_for_string(str string) {}
+func Fn_icon_new_for_string(param0 string) {}
 
-func Fn_io_error_from_errno(errNo int) {}
+func Fn_io_error_from_errno(param0 int) {}
 
 func Fn_io_error_quark() {
 	C.g_io_error_quark()
 }
 
-func Fn_io_extension_point_implement(extensionPointName string, type_ uint64, extensionName string, priority int) {
-}
+func Fn_io_extension_point_implement(param0 string, param1 uint64, param2 string, param3 int) {}
 
-func Fn_io_extension_point_lookup(name string) {}
+func Fn_io_extension_point_lookup(param0 string) {}
 
-func Fn_io_extension_point_register(name string) {}
+func Fn_io_extension_point_register(param0 string) {}
 
-func Fn_io_modules_load_all_in_directory(dirname string) {}
+func Fn_io_modules_load_all_in_directory(param0 string) {}
 
 func Fn_io_scheduler_cancel_all_jobs() {
 	C.g_io_scheduler_cancel_all_jobs()
@@ -293,36 +292,36 @@ func Fn_io_scheduler_cancel_all_jobs() {
 
 // UNSUPPORTED : simple_async_report_take_gerror_in_idle : has callback
 
-func Fn_unix_is_mount_path_system_internal(mountPath string) {}
+func Fn_unix_is_mount_path_system_internal(param0 string) {}
 
-func Fn_unix_mount_at(mountPath string, timeRead *uint64) {}
+func Fn_unix_mount_at(param0 string, param1 *uint64) {}
 
-func Fn_unix_mount_compare(mount1 unsafe.Pointer, mount2 unsafe.Pointer) {}
+func Fn_unix_mount_compare(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_unix_mount_free(mountEntry unsafe.Pointer) {}
+func Fn_unix_mount_free(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_get_device_path(mountEntry unsafe.Pointer) {}
+func Fn_unix_mount_get_device_path(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_get_fs_type(mountEntry unsafe.Pointer) {}
+func Fn_unix_mount_get_fs_type(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_get_mount_path(mountEntry unsafe.Pointer) {}
+func Fn_unix_mount_get_mount_path(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_can_eject(mountEntry unsafe.Pointer) {}
+func Fn_unix_mount_guess_can_eject(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_icon(mountEntry unsafe.Pointer) {}
+func Fn_unix_mount_guess_icon(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_name(mountEntry unsafe.Pointer) {}
+func Fn_unix_mount_guess_name(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_should_display(mountEntry unsafe.Pointer) {}
+func Fn_unix_mount_guess_should_display(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_is_readonly(mountEntry unsafe.Pointer) {}
+func Fn_unix_mount_is_readonly(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_is_system_internal(mountEntry unsafe.Pointer) {}
+func Fn_unix_mount_is_system_internal(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_points_changed_since(time uint64) {}
+func Fn_unix_mount_points_changed_since(param0 uint64) {}
 
-func Fn_unix_mount_points_get(timeRead *uint64) {}
+func Fn_unix_mount_points_get(param0 *uint64) {}
 
-func Fn_unix_mounts_changed_since(time uint64) {}
+func Fn_unix_mounts_changed_since(param0 uint64) {}
 
-func Fn_unix_mounts_get(timeRead *uint64) {}
+func Fn_unix_mounts_get(param0 *uint64) {}
