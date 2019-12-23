@@ -113,23 +113,23 @@ func Fn_atk_value_type_get_localized_name(param0 int) {}
 
 func Fn_atk_value_type_get_name(param0 int) {}
 
-func Fn_atk_gobject_accessible_get_object() {}
+func Fn_atk_gobject_accessible_get_object(paramInstance unsafe.Pointer) {}
 
 func Fn_atk_gobject_accessible_for_object(param0 unsafe.Pointer) {}
 
-func Fn_atk_hyperlink_get_end_index() {}
+func Fn_atk_hyperlink_get_end_index(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_hyperlink_get_n_anchors() {}
+func Fn_atk_hyperlink_get_n_anchors(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_hyperlink_get_object(param0 int) {}
+func Fn_atk_hyperlink_get_object(paramInstance unsafe.Pointer, param0 int) {}
 
-func Fn_atk_hyperlink_get_start_index() {}
+func Fn_atk_hyperlink_get_start_index(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_hyperlink_get_uri(param0 int) {}
+func Fn_atk_hyperlink_get_uri(paramInstance unsafe.Pointer, param0 int) {}
 
-func Fn_atk_hyperlink_is_inline() {}
+func Fn_atk_hyperlink_is_inline(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_hyperlink_is_valid() {}
+func Fn_atk_hyperlink_is_valid(paramInstance unsafe.Pointer) {}
 
 func Fn_atk_no_op_object_new(param0 unsafe.Pointer) {}
 
@@ -137,87 +137,90 @@ func Fn_atk_no_op_object_factory_new() {
 	C.atk_no_op_object_factory_new()
 }
 
-func Fn_atk_object_add_relationship(param0 int, param1 unsafe.Pointer) {}
+func Fn_atk_object_add_relationship(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
+}
 
 // UNSUPPORTED : connect_property_change_handler : has callback
 
-func Fn_atk_object_get_description() {}
+func Fn_atk_object_get_description(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_object_get_index_in_parent() {}
+func Fn_atk_object_get_index_in_parent(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_object_get_layer() {}
+func Fn_atk_object_get_layer(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_object_get_mdi_zorder() {}
+func Fn_atk_object_get_mdi_zorder(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_object_get_n_accessible_children() {}
+func Fn_atk_object_get_n_accessible_children(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_object_get_name() {}
+func Fn_atk_object_get_name(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_object_get_parent() {}
+func Fn_atk_object_get_parent(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_object_get_role() {}
+func Fn_atk_object_get_role(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_object_initialize(param0 *unsafe.Pointer) {}
+func Fn_atk_object_initialize(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {}
 
-func Fn_atk_object_notify_state_change(param0 uint64, param1 bool) {}
+func Fn_atk_object_notify_state_change(paramInstance unsafe.Pointer, param0 uint64, param1 bool) {}
 
-func Fn_atk_object_peek_parent() {}
+func Fn_atk_object_peek_parent(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_object_ref_accessible_child(param0 int) {}
+func Fn_atk_object_ref_accessible_child(paramInstance unsafe.Pointer, param0 int) {}
 
-func Fn_atk_object_ref_relation_set() {}
+func Fn_atk_object_ref_relation_set(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_object_ref_state_set() {}
+func Fn_atk_object_ref_state_set(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_object_remove_property_change_handler(param0 uint) {}
+func Fn_atk_object_remove_property_change_handler(paramInstance unsafe.Pointer, param0 uint) {}
 
-func Fn_atk_object_remove_relationship(param0 int, param1 unsafe.Pointer) {}
+func Fn_atk_object_remove_relationship(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
+}
 
-func Fn_atk_object_set_description(param0 string) {}
+func Fn_atk_object_set_description(paramInstance unsafe.Pointer, param0 string) {}
 
-func Fn_atk_object_set_name(param0 string) {}
+func Fn_atk_object_set_name(paramInstance unsafe.Pointer, param0 string) {}
 
-func Fn_atk_object_set_parent(param0 unsafe.Pointer) {}
+func Fn_atk_object_set_parent(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
-func Fn_atk_object_set_role(param0 int) {}
+func Fn_atk_object_set_role(paramInstance unsafe.Pointer, param0 int) {}
 
-func Fn_atk_object_factory_create_accessible(param0 unsafe.Pointer) {}
+func Fn_atk_object_factory_create_accessible(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
-func Fn_atk_object_factory_get_accessible_type() {}
+func Fn_atk_object_factory_get_accessible_type(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_object_factory_invalidate() {}
+func Fn_atk_object_factory_invalidate(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_registry_get_factory(param0 uint64) {}
+func Fn_atk_registry_get_factory(paramInstance unsafe.Pointer, param0 uint64) {}
 
-func Fn_atk_registry_get_factory_type(param0 uint64) {}
+func Fn_atk_registry_get_factory_type(paramInstance unsafe.Pointer, param0 uint64) {}
 
-func Fn_atk_registry_set_factory_type(param0 uint64, param1 uint64) {}
+func Fn_atk_registry_set_factory_type(paramInstance unsafe.Pointer, param0 uint64, param1 uint64) {}
 
 func Fn_atk_relation_new(param0 []unsafe.Pointer, param1 int, param2 int) {}
 
-func Fn_atk_relation_get_relation_type() {}
+func Fn_atk_relation_get_relation_type(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_relation_get_target() {}
+func Fn_atk_relation_get_target(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_relation_remove_target(param0 unsafe.Pointer) {}
+func Fn_atk_relation_remove_target(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
 func Fn_atk_relation_set_new() {
 	C.atk_relation_set_new()
 }
 
-func Fn_atk_relation_set_add(param0 unsafe.Pointer) {}
+func Fn_atk_relation_set_add(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
-func Fn_atk_relation_set_contains(param0 int) {}
+func Fn_atk_relation_set_contains(paramInstance unsafe.Pointer, param0 int) {}
 
-func Fn_atk_relation_set_contains_target(param0 int, param1 unsafe.Pointer) {}
+func Fn_atk_relation_set_contains_target(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
+}
 
-func Fn_atk_relation_set_get_n_relations() {}
+func Fn_atk_relation_set_get_n_relations(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_relation_set_get_relation(param0 int) {}
+func Fn_atk_relation_set_get_relation(paramInstance unsafe.Pointer, param0 int) {}
 
-func Fn_atk_relation_set_get_relation_by_type(param0 int) {}
+func Fn_atk_relation_set_get_relation_by_type(paramInstance unsafe.Pointer, param0 int) {}
 
-func Fn_atk_relation_set_remove(param0 unsafe.Pointer) {}
+func Fn_atk_relation_set_remove(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
 func Fn_atk_socket_new() {
 	C.atk_socket_new()
@@ -227,22 +230,22 @@ func Fn_atk_state_set_new() {
 	C.atk_state_set_new()
 }
 
-func Fn_atk_state_set_add_state(param0 int) {}
+func Fn_atk_state_set_add_state(paramInstance unsafe.Pointer, param0 int) {}
 
-func Fn_atk_state_set_add_states(param0 []int, param1 int) {}
+func Fn_atk_state_set_add_states(paramInstance unsafe.Pointer, param0 []int, param1 int) {}
 
-func Fn_atk_state_set_and_sets(param0 unsafe.Pointer) {}
+func Fn_atk_state_set_and_sets(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
-func Fn_atk_state_set_clear_states() {}
+func Fn_atk_state_set_clear_states(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_state_set_contains_state(param0 int) {}
+func Fn_atk_state_set_contains_state(paramInstance unsafe.Pointer, param0 int) {}
 
-func Fn_atk_state_set_contains_states(param0 []int, param1 int) {}
+func Fn_atk_state_set_contains_states(paramInstance unsafe.Pointer, param0 []int, param1 int) {}
 
-func Fn_atk_state_set_is_empty() {}
+func Fn_atk_state_set_is_empty(paramInstance unsafe.Pointer) {}
 
-func Fn_atk_state_set_or_sets(param0 unsafe.Pointer) {}
+func Fn_atk_state_set_or_sets(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
-func Fn_atk_state_set_remove_state(param0 int) {}
+func Fn_atk_state_set_remove_state(paramInstance unsafe.Pointer, param0 int) {}
 
-func Fn_atk_state_set_xor_sets(param0 unsafe.Pointer) {}
+func Fn_atk_state_set_xor_sets(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}

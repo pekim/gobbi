@@ -413,7 +413,7 @@ func Fn_g_object_newv(param0 uint64, param1 uint, param2 []Parameter) {}
 
 // UNSUPPORTED : add_toggle_ref : has callback
 
-func Fn_g_object_add_weak_pointer(param0 *unsafe.Pointer) {}
+func Fn_g_object_add_weak_pointer(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {}
 
 // UNSUPPORTED : bind_property_full : has callback
 
@@ -425,55 +425,55 @@ func Fn_g_object_add_weak_pointer(param0 *unsafe.Pointer) {}
 
 // UNSUPPORTED : dup_qdata : has callback
 
-func Fn_g_object_freeze_notify() {}
+func Fn_g_object_freeze_notify(paramInstance unsafe.Pointer) {}
 
 // UNSUPPORTED : get : has varargs
 
-func Fn_g_object_get_data(param0 string) {}
+func Fn_g_object_get_data(paramInstance unsafe.Pointer, param0 string) {}
 
-func Fn_g_object_get_property(param0 string, param1 unsafe.Pointer) {}
+func Fn_g_object_get_property(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {}
 
-func Fn_g_object_get_qdata(param0 uint32) {}
+func Fn_g_object_get_qdata(paramInstance unsafe.Pointer, param0 uint32) {}
 
 // UNSUPPORTED : get_valist : has va_list
 
-func Fn_g_object_notify(param0 string) {}
+func Fn_g_object_notify(paramInstance unsafe.Pointer, param0 string) {}
 
-func Fn_g_object_ref() {}
+func Fn_g_object_ref(paramInstance *unsafe.Pointer) {}
 
 // UNSUPPORTED : remove_toggle_ref : has callback
 
-func Fn_g_object_remove_weak_pointer(param0 *unsafe.Pointer) {}
+func Fn_g_object_remove_weak_pointer(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {}
 
 // UNSUPPORTED : replace_data : has callback
 
 // UNSUPPORTED : replace_qdata : has callback
 
-func Fn_g_object_run_dispose() {}
+func Fn_g_object_run_dispose(paramInstance unsafe.Pointer) {}
 
 // UNSUPPORTED : set : has varargs
 
-func Fn_g_object_set_data(param0 string, param1 *unsafe.Pointer) {}
+func Fn_g_object_set_data(paramInstance unsafe.Pointer, param0 string, param1 *unsafe.Pointer) {}
 
 // UNSUPPORTED : set_data_full : has callback
 
-func Fn_g_object_set_property(param0 string, param1 unsafe.Pointer) {}
+func Fn_g_object_set_property(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {}
 
-func Fn_g_object_set_qdata(param0 uint32, param1 *unsafe.Pointer) {}
+func Fn_g_object_set_qdata(paramInstance unsafe.Pointer, param0 uint32, param1 *unsafe.Pointer) {}
 
 // UNSUPPORTED : set_qdata_full : has callback
 
 // UNSUPPORTED : set_valist : has va_list
 
-func Fn_g_object_steal_data(param0 string) {}
+func Fn_g_object_steal_data(paramInstance unsafe.Pointer, param0 string) {}
 
-func Fn_g_object_steal_qdata(param0 uint32) {}
+func Fn_g_object_steal_qdata(paramInstance unsafe.Pointer, param0 uint32) {}
 
-func Fn_g_object_thaw_notify() {}
+func Fn_g_object_thaw_notify(paramInstance unsafe.Pointer) {}
 
-func Fn_g_object_unref() {}
+func Fn_g_object_unref(paramInstance *unsafe.Pointer) {}
 
-func Fn_g_object_watch_closure(param0 unsafe.Pointer) {}
+func Fn_g_object_watch_closure(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
 // UNSUPPORTED : weak_ref : has callback
 
@@ -481,34 +481,37 @@ func Fn_g_object_watch_closure(param0 unsafe.Pointer) {}
 
 func Fn_g_object_compat_control(param0 uint64, param1 *unsafe.Pointer) {}
 
-func Fn_g_param_spec_get_blurb() {}
+func Fn_g_param_spec_get_blurb(paramInstance unsafe.Pointer) {}
 
-func Fn_g_param_spec_get_name() {}
+func Fn_g_param_spec_get_name(paramInstance unsafe.Pointer) {}
 
-func Fn_g_param_spec_get_nick() {}
+func Fn_g_param_spec_get_nick(paramInstance unsafe.Pointer) {}
 
-func Fn_g_param_spec_get_qdata(param0 uint32) {}
+func Fn_g_param_spec_get_qdata(paramInstance unsafe.Pointer, param0 uint32) {}
 
-func Fn_g_param_spec_ref() {}
+func Fn_g_param_spec_ref(paramInstance unsafe.Pointer) {}
 
-func Fn_g_param_spec_set_qdata(param0 uint32, param1 *unsafe.Pointer) {}
+func Fn_g_param_spec_set_qdata(paramInstance unsafe.Pointer, param0 uint32, param1 *unsafe.Pointer) {
+}
 
 // UNSUPPORTED : set_qdata_full : has callback
 
-func Fn_g_param_spec_sink() {}
+func Fn_g_param_spec_sink(paramInstance unsafe.Pointer) {}
 
-func Fn_g_param_spec_steal_qdata(param0 uint32) {}
+func Fn_g_param_spec_steal_qdata(paramInstance unsafe.Pointer, param0 uint32) {}
 
-func Fn_g_param_spec_unref() {}
+func Fn_g_param_spec_unref(paramInstance unsafe.Pointer) {}
 
 func Fn_g_param_spec_internal(param0 uint64, param1 string, param2 string, param3 string, param4 int) {}
 
-func Fn_g_type_module_add_interface(param0 uint64, param1 uint64, param2 unsafe.Pointer) {}
+func Fn_g_type_module_add_interface(paramInstance unsafe.Pointer, param0 uint64, param1 uint64, param2 unsafe.Pointer) {
+}
 
-func Fn_g_type_module_register_type(param0 uint64, param1 string, param2 unsafe.Pointer, param3 int) {}
+func Fn_g_type_module_register_type(paramInstance unsafe.Pointer, param0 uint64, param1 string, param2 unsafe.Pointer, param3 int) {
+}
 
-func Fn_g_type_module_set_name(param0 string) {}
+func Fn_g_type_module_set_name(paramInstance unsafe.Pointer, param0 string) {}
 
-func Fn_g_type_module_unuse() {}
+func Fn_g_type_module_unuse(paramInstance unsafe.Pointer) {}
 
-func Fn_g_type_module_use() {}
+func Fn_g_type_module_use(paramInstance unsafe.Pointer) {}

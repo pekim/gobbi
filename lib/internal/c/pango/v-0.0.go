@@ -151,146 +151,160 @@ func Fn_pango_context_new() {
 	C.pango_context_new()
 }
 
-func Fn_pango_context_get_base_dir() {}
+func Fn_pango_context_get_base_dir(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_context_get_font_description() {}
+func Fn_pango_context_get_font_description(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_context_get_language() {}
+func Fn_pango_context_get_language(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_context_get_metrics(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_pango_context_get_metrics(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+}
 
-func Fn_pango_context_list_families(param0 []*unsafe.Pointer, param1 *int) {}
+func Fn_pango_context_list_families(paramInstance unsafe.Pointer, param0 []*unsafe.Pointer, param1 *int) {
+}
 
-func Fn_pango_context_load_font(param0 unsafe.Pointer) {}
+func Fn_pango_context_load_font(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
-func Fn_pango_context_load_fontset(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_pango_context_load_fontset(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+}
 
-func Fn_pango_context_set_base_dir(param0 int) {}
+func Fn_pango_context_set_base_dir(paramInstance unsafe.Pointer, param0 int) {}
 
-func Fn_pango_context_set_font_description(param0 unsafe.Pointer) {}
+func Fn_pango_context_set_font_description(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
-func Fn_pango_context_set_font_map(param0 unsafe.Pointer) {}
+func Fn_pango_context_set_font_map(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
-func Fn_pango_context_set_language(param0 unsafe.Pointer) {}
+func Fn_pango_context_set_language(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
-func Fn_pango_font_describe() {}
+func Fn_pango_font_describe(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_font_find_shaper(param0 unsafe.Pointer, param1 uint32) {}
+func Fn_pango_font_find_shaper(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint32) {}
 
-func Fn_pango_font_get_coverage(param0 unsafe.Pointer) {}
+func Fn_pango_font_get_coverage(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
-func Fn_pango_font_get_glyph_extents(param0 uint32, param1 unsafe.Pointer, param2 unsafe.Pointer) {}
+func Fn_pango_font_get_glyph_extents(paramInstance unsafe.Pointer, param0 uint32, param1 unsafe.Pointer, param2 unsafe.Pointer) {
+}
 
-func Fn_pango_font_get_metrics(param0 unsafe.Pointer) {}
+func Fn_pango_font_get_metrics(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
 func Fn_pango_font_descriptions_free(param0 []unsafe.Pointer, param1 int) {}
 
-func Fn_pango_font_face_describe() {}
+func Fn_pango_font_face_describe(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_font_face_get_face_name() {}
+func Fn_pango_font_face_get_face_name(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_font_family_get_name() {}
+func Fn_pango_font_family_get_name(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_font_family_list_faces(param0 []*unsafe.Pointer, param1 *int) {}
+func Fn_pango_font_family_list_faces(paramInstance unsafe.Pointer, param0 []*unsafe.Pointer, param1 *int) {
+}
 
-func Fn_pango_font_map_list_families(param0 []*unsafe.Pointer, param1 *int) {}
+func Fn_pango_font_map_list_families(paramInstance unsafe.Pointer, param0 []*unsafe.Pointer, param1 *int) {
+}
 
-func Fn_pango_font_map_load_font(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_pango_font_map_load_font(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+}
 
-func Fn_pango_font_map_load_fontset(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {
+func Fn_pango_font_map_load_fontset(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {
 }
 
 // UNSUPPORTED : foreach : has callback
 
-func Fn_pango_fontset_get_font(param0 uint) {}
+func Fn_pango_fontset_get_font(paramInstance unsafe.Pointer, param0 uint) {}
 
-func Fn_pango_fontset_get_metrics() {}
+func Fn_pango_fontset_get_metrics(paramInstance unsafe.Pointer) {}
 
 func Fn_pango_fontset_simple_new(param0 unsafe.Pointer) {}
 
-func Fn_pango_fontset_simple_append(param0 unsafe.Pointer) {}
+func Fn_pango_fontset_simple_append(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
 
-func Fn_pango_fontset_simple_size() {}
+func Fn_pango_fontset_simple_size(paramInstance unsafe.Pointer) {}
 
 func Fn_pango_layout_new(param0 unsafe.Pointer) {}
 
-func Fn_pango_layout_context_changed() {}
+func Fn_pango_layout_context_changed(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_layout_copy() {}
+func Fn_pango_layout_copy(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_layout_get_alignment() {}
+func Fn_pango_layout_get_alignment(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_layout_get_attributes() {}
+func Fn_pango_layout_get_attributes(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_layout_get_context() {}
+func Fn_pango_layout_get_context(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_layout_get_cursor_pos(param0 int, param1 unsafe.Pointer, param2 unsafe.Pointer) {}
-
-func Fn_pango_layout_get_extents(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
-
-func Fn_pango_layout_get_indent() {}
-
-func Fn_pango_layout_get_iter() {}
-
-func Fn_pango_layout_get_justify() {}
-
-func Fn_pango_layout_get_line(param0 int) {}
-
-func Fn_pango_layout_get_line_count() {}
-
-func Fn_pango_layout_get_lines() {}
-
-func Fn_pango_layout_get_log_attrs(param0 []unsafe.Pointer, param1 *int) {}
-
-func Fn_pango_layout_get_pixel_extents(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
-
-func Fn_pango_layout_get_pixel_size(param0 *int, param1 *int) {}
-
-func Fn_pango_layout_get_single_paragraph_mode() {}
-
-func Fn_pango_layout_get_size(param0 *int, param1 *int) {}
-
-func Fn_pango_layout_get_spacing() {}
-
-func Fn_pango_layout_get_tabs() {}
-
-func Fn_pango_layout_get_text() {}
-
-func Fn_pango_layout_get_width() {}
-
-func Fn_pango_layout_get_wrap() {}
-
-func Fn_pango_layout_index_to_line_x(param0 int, param1 bool, param2 *int, param3 *int) {}
-
-func Fn_pango_layout_index_to_pos(param0 int, param1 unsafe.Pointer) {}
-
-func Fn_pango_layout_move_cursor_visually(param0 bool, param1 int, param2 int, param3 int, param4 *int, param5 *int) {
+func Fn_pango_layout_get_cursor_pos(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer, param2 unsafe.Pointer) {
 }
 
-func Fn_pango_layout_set_alignment(param0 int) {}
+func Fn_pango_layout_get_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+}
 
-func Fn_pango_layout_set_attributes(param0 unsafe.Pointer) {}
+func Fn_pango_layout_get_indent(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_layout_set_font_description(param0 unsafe.Pointer) {}
+func Fn_pango_layout_get_iter(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_layout_set_indent(param0 int) {}
+func Fn_pango_layout_get_justify(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_layout_set_justify(param0 bool) {}
+func Fn_pango_layout_get_line(paramInstance unsafe.Pointer, param0 int) {}
 
-func Fn_pango_layout_set_markup(param0 string, param1 int) {}
+func Fn_pango_layout_get_line_count(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_layout_set_markup_with_accel(param0 string, param1 int, param2 rune, param3 *rune) {}
+func Fn_pango_layout_get_lines(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_layout_set_single_paragraph_mode(param0 bool) {}
+func Fn_pango_layout_get_log_attrs(paramInstance unsafe.Pointer, param0 []unsafe.Pointer, param1 *int) {
+}
 
-func Fn_pango_layout_set_spacing(param0 int) {}
+func Fn_pango_layout_get_pixel_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+}
 
-func Fn_pango_layout_set_tabs(param0 unsafe.Pointer) {}
+func Fn_pango_layout_get_pixel_size(paramInstance unsafe.Pointer, param0 *int, param1 *int) {}
 
-func Fn_pango_layout_set_text(param0 string, param1 int) {}
+func Fn_pango_layout_get_single_paragraph_mode(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_layout_set_width(param0 int) {}
+func Fn_pango_layout_get_size(paramInstance unsafe.Pointer, param0 *int, param1 *int) {}
 
-func Fn_pango_layout_set_wrap(param0 int) {}
+func Fn_pango_layout_get_spacing(paramInstance unsafe.Pointer) {}
 
-func Fn_pango_layout_xy_to_index(param0 int, param1 int, param2 *int, param3 *int) {}
+func Fn_pango_layout_get_tabs(paramInstance unsafe.Pointer) {}
+
+func Fn_pango_layout_get_text(paramInstance unsafe.Pointer) {}
+
+func Fn_pango_layout_get_width(paramInstance unsafe.Pointer) {}
+
+func Fn_pango_layout_get_wrap(paramInstance unsafe.Pointer) {}
+
+func Fn_pango_layout_index_to_line_x(paramInstance unsafe.Pointer, param0 int, param1 bool, param2 *int, param3 *int) {
+}
+
+func Fn_pango_layout_index_to_pos(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {}
+
+func Fn_pango_layout_move_cursor_visually(paramInstance unsafe.Pointer, param0 bool, param1 int, param2 int, param3 int, param4 *int, param5 *int) {
+}
+
+func Fn_pango_layout_set_alignment(paramInstance unsafe.Pointer, param0 int) {}
+
+func Fn_pango_layout_set_attributes(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
+
+func Fn_pango_layout_set_font_description(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
+
+func Fn_pango_layout_set_indent(paramInstance unsafe.Pointer, param0 int) {}
+
+func Fn_pango_layout_set_justify(paramInstance unsafe.Pointer, param0 bool) {}
+
+func Fn_pango_layout_set_markup(paramInstance unsafe.Pointer, param0 string, param1 int) {}
+
+func Fn_pango_layout_set_markup_with_accel(paramInstance unsafe.Pointer, param0 string, param1 int, param2 rune, param3 *rune) {
+}
+
+func Fn_pango_layout_set_single_paragraph_mode(paramInstance unsafe.Pointer, param0 bool) {}
+
+func Fn_pango_layout_set_spacing(paramInstance unsafe.Pointer, param0 int) {}
+
+func Fn_pango_layout_set_tabs(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {}
+
+func Fn_pango_layout_set_text(paramInstance unsafe.Pointer, param0 string, param1 int) {}
+
+func Fn_pango_layout_set_width(paramInstance unsafe.Pointer, param0 int) {}
+
+func Fn_pango_layout_set_wrap(paramInstance unsafe.Pointer, param0 int) {}
+
+func Fn_pango_layout_xy_to_index(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *int, param3 *int) {
+}

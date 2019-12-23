@@ -32,6 +32,9 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	f.applyAddenda()
 	f.version = versionNew(f.Version)
 	f.sysName = "Fn_" + f.CIdentifier
+	if f.InstanceParameter != nil {
+		f.InstanceParameter.init(ns)
+	}
 	f.Parameters.init(ns)
 }
 
@@ -61,6 +64,12 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 }
 
 func (f *Function) generateSysParamDeclaration(g *jen.Group) {
+	if f.InstanceParameter != nil {
+		goType := f.InstanceParameter.sysParamGoType()
+		g.Id("paramInstance").Add(goType)
+
+	}
+
 	for i, param := range f.Parameters {
 		paramName := "param" + strconv.Itoa(i)
 		goType := param.sysParamGoType()
@@ -70,6 +79,13 @@ func (f *Function) generateSysParamDeclaration(g *jen.Group) {
 }
 
 func (f *Function) generateSysBody(g *jen.Group) {
+	//for _, param := range f.Parameters {
+	//	if param.Array != nil {
+	//		g.Comment("has array param")
+	//		return
+	//	}
+	//}
+
 	if f.InstanceParameter != nil || len(f.Parameters) > 0 {
 		return
 	}
