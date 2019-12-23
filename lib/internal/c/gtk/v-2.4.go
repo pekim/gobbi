@@ -889,7 +889,39 @@ func Fn_gtk_accel_group_new() {
 	C.gtk_accel_group_new()
 }
 
+func Fn_gtk_accel_group_from_accel_closure(param0 unsafe.Pointer) {}
+
 func Fn_gtk_accel_label_new(param0 string) {}
+
+func Fn_gtk_accel_map_add_entry(param0 string, param1 uint, param2 int) {}
+
+func Fn_gtk_accel_map_add_filter(param0 string) {}
+
+func Fn_gtk_accel_map_change_entry(param0 string, param1 uint, param2 int, param3 bool) {}
+
+// UNSUPPORTED : foreach : has callback
+
+// UNSUPPORTED : foreach_unfiltered : has callback
+
+func Fn_gtk_accel_map_get() {
+	C.gtk_accel_map_get()
+}
+
+func Fn_gtk_accel_map_load(param0 string) {}
+
+func Fn_gtk_accel_map_load_fd(param0 int) {}
+
+func Fn_gtk_accel_map_load_scanner(param0 unsafe.Pointer) {}
+
+func Fn_gtk_accel_map_lock_path(param0 string) {}
+
+func Fn_gtk_accel_map_lookup_entry(param0 string, param1 unsafe.Pointer) {}
+
+func Fn_gtk_accel_map_save(param0 string) {}
+
+func Fn_gtk_accel_map_save_fd(param0 int) {}
+
+func Fn_gtk_accel_map_unlock_path(param0 string) {}
 
 func Fn_gtk_action_new(param0 string, param1 string, param2 string, param3 string) {}
 
@@ -947,6 +979,10 @@ func Fn_gtk_check_menu_item_new_with_label(param0 string) {}
 
 func Fn_gtk_check_menu_item_new_with_mnemonic(param0 string) {}
 
+func Fn_gtk_clipboard_get(param0 gdk.Atom) {}
+
+func Fn_gtk_clipboard_get_for_display(param0 unsafe.Pointer, param1 gdk.Atom) {}
+
 func Fn_gtk_color_button_new() {
 	C.gtk_color_button_new()
 }
@@ -956,6 +992,13 @@ func Fn_gtk_color_button_new_with_color(param0 unsafe.Pointer) {}
 func Fn_gtk_color_selection_new() {
 	C.gtk_color_selection_new()
 }
+
+func Fn_gtk_color_selection_palette_from_string(param0 string, param1 []unsafe.Pointer, param2 *int) {
+}
+
+func Fn_gtk_color_selection_palette_to_string(param0 []gdk.Color, param1 int) {}
+
+// UNSUPPORTED : set_change_palette_with_screen_hook : has callback
 
 func Fn_gtk_color_selection_dialog_new(param0 string) {}
 
@@ -976,6 +1019,12 @@ func Fn_gtk_container_cell_accessible_new() {
 func Fn_gtk_css_provider_new() {
 	C.gtk_css_provider_new()
 }
+
+func Fn_gtk_css_provider_get_default() {
+	C.gtk_css_provider_get_default()
+}
+
+func Fn_gtk_css_provider_get_named(param0 string, param1 string) {}
 
 func Fn_gtk_dialog_new() {
 	C.gtk_dialog_new()
@@ -1071,9 +1120,19 @@ func Fn_gtk_icon_factory_new() {
 	C.gtk_icon_factory_new()
 }
 
+func Fn_gtk_icon_factory_lookup_default(param0 string) {}
+
 func Fn_gtk_icon_theme_new() {
 	C.gtk_icon_theme_new()
 }
+
+func Fn_gtk_icon_theme_add_builtin_icon(param0 string, param1 int, param2 unsafe.Pointer) {}
+
+func Fn_gtk_icon_theme_get_default() {
+	C.gtk_icon_theme_get_default()
+}
+
+func Fn_gtk_icon_theme_get_for_screen(param0 unsafe.Pointer) {}
 
 func Fn_gtk_image_new() {
 	C.gtk_image_new()
@@ -1205,6 +1264,16 @@ func Fn_gtk_separator_tool_item_new() {
 	C.gtk_separator_tool_item_new()
 }
 
+func Fn_gtk_settings_get_default() {
+	C.gtk_settings_get_default()
+}
+
+func Fn_gtk_settings_get_for_screen(param0 unsafe.Pointer) {}
+
+func Fn_gtk_settings_install_property(param0 unsafe.Pointer) {}
+
+// UNSUPPORTED : install_property_parser : has callback
+
 func Fn_gtk_size_group_new(param0 int) {}
 
 func Fn_gtk_socket_new() {
@@ -1231,6 +1300,10 @@ func Fn_gtk_style_properties_new() {
 	C.gtk_style_properties_new()
 }
 
+// UNSUPPORTED : lookup_property : has callback
+
+// UNSUPPORTED : register_property : has callback
+
 func Fn_gtk_table_new(param0 uint, param1 uint, param2 bool) {}
 
 func Fn_gtk_tearoff_menu_item_new() {
@@ -1254,6 +1327,10 @@ func Fn_gtk_text_view_new() {
 }
 
 func Fn_gtk_text_view_new_with_buffer(param0 unsafe.Pointer) {}
+
+func Fn_gtk_theming_engine_load(param0 string) {}
+
+// UNSUPPORTED : register_property : has callback
 
 func Fn_gtk_toggle_action_new(param0 string, param1 string, param2 string, param3 string) {}
 
@@ -1327,7 +1404,41 @@ func Fn_gtk_viewport_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
 // UNSUPPORTED : new : has varargs
 
+func Fn_gtk_widget_get_default_direction() {
+	C.gtk_widget_get_default_direction()
+}
+
+func Fn_gtk_widget_get_default_style() {
+	C.gtk_widget_get_default_style()
+}
+
+func Fn_gtk_widget_pop_composite_child() {
+	C.gtk_widget_pop_composite_child()
+}
+
+func Fn_gtk_widget_push_composite_child() {
+	C.gtk_widget_push_composite_child()
+}
+
+func Fn_gtk_widget_set_default_direction(param0 int) {}
+
 func Fn_gtk_window_new(param0 int) {}
+
+func Fn_gtk_window_get_default_icon_list() {
+	C.gtk_window_get_default_icon_list()
+}
+
+func Fn_gtk_window_list_toplevels() {
+	C.gtk_window_list_toplevels()
+}
+
+func Fn_gtk_window_set_auto_startup_notification(param0 bool) {}
+
+func Fn_gtk_window_set_default_icon(param0 unsafe.Pointer) {}
+
+func Fn_gtk_window_set_default_icon_from_file(param0 string) {}
+
+func Fn_gtk_window_set_default_icon_list(param0 unsafe.Pointer) {}
 
 func Fn_gtk_window_group_new() {
 	C.gtk_window_group_new()

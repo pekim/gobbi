@@ -352,4 +352,90 @@ func Fn_gdk_cursor_new_from_pixbuf(param0 unsafe.Pointer, param1 unsafe.Pointer,
 func Fn_gdk_cursor_new_from_surface(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 float64, param3 float64) {
 }
 
+func Fn_gdk_device_free_history(param0 []unsafe.Pointer, param1 int) {}
+
+func Fn_gdk_device_grab_info_libgtk_only(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *unsafe.Pointer, param3 *bool) {
+}
+
+func Fn_gdk_display_get_default() {
+	C.gdk_display_get_default()
+}
+
+func Fn_gdk_display_open(param0 string) {}
+
+func Fn_gdk_display_open_default_libgtk_only() {
+	C.gdk_display_open_default_libgtk_only()
+}
+
+func Fn_gdk_display_manager_get() {
+	C.gdk_display_manager_get()
+}
+
+func Fn_gdk_gl_context_clear_current() {
+	C.gdk_gl_context_clear_current()
+}
+
+func Fn_gdk_gl_context_get_current() {
+	C.gdk_gl_context_get_current()
+}
+
+func Fn_gdk_keymap_get_default() {
+	C.gdk_keymap_get_default()
+}
+
+func Fn_gdk_keymap_get_for_display(param0 unsafe.Pointer) {}
+
+func Fn_gdk_screen_get_default() {
+	C.gdk_screen_get_default()
+}
+
+func Fn_gdk_screen_height() {
+	C.gdk_screen_height()
+}
+
+func Fn_gdk_screen_height_mm() {
+	C.gdk_screen_height_mm()
+}
+
+func Fn_gdk_screen_width() {
+	C.gdk_screen_width()
+}
+
+func Fn_gdk_screen_width_mm() {
+	C.gdk_screen_width_mm()
+}
+
+func Fn_gdk_visual_get_best() {
+	C.gdk_visual_get_best()
+}
+
+func Fn_gdk_visual_get_best_depth() {
+	C.gdk_visual_get_best_depth()
+}
+
+func Fn_gdk_visual_get_best_type() {
+	C.gdk_visual_get_best_type()
+}
+
+func Fn_gdk_visual_get_best_with_both(param0 int, param1 int) {}
+
+func Fn_gdk_visual_get_best_with_depth(param0 int) {}
+
+func Fn_gdk_visual_get_best_with_type(param0 int) {}
+
+func Fn_gdk_visual_get_system() {
+	C.gdk_visual_get_system()
+}
+
 func Fn_gdk_window_new(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int) {}
+
+func Fn_gdk_window_at_pointer(param0 *int, param1 *int) {}
+
+func Fn_gdk_window_constrain_size(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 *int, param5 *int) {
+}
+
+func Fn_gdk_window_process_all_updates() {
+	C.gdk_window_process_all_updates()
+}
+
+func Fn_gdk_window_set_debug_updates(param0 bool) {}

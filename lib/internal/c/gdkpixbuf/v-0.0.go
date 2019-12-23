@@ -23,7 +23,15 @@ func Fn_gdk_pixbuf_new_from_inline(param0 int, param1 []uint8, param2 bool) {}
 
 func Fn_gdk_pixbuf_new_from_xpm_data(param0 []string) {}
 
+// UNSUPPORTED : get_file_info_async : has callback
+
+// UNSUPPORTED : new_from_stream_async : has callback
+
+// UNSUPPORTED : new_from_stream_at_scale_async : has callback
+
 func Fn_gdk_pixbuf_animation_new_from_file(param0 string) {}
+
+// UNSUPPORTED : new_from_stream_async : has callback
 
 func Fn_gdk_pixbuf_loader_new() {
 	C.gdk_pixbuf_loader_new()

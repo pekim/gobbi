@@ -17,7 +17,7 @@ type Record struct {
 	ParentName string `xml:"parent,attr"`
 	//Fields         Fields       `xml:"field"`
 	Constructors Constructors `xml:"constructor"`
-	//Functions      Functions    `xml:"function"`
+	Functions    Functions    `xml:"function"`
 	//Methods        Methods      `xml:"method"`
 	//Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
 
@@ -36,6 +36,7 @@ func (r *Record) init(ns *Namespace) {
 	r.version = versionNew(r.Version)
 	r.namespace.versions.add(r.version)
 	r.Constructors.init(ns, r)
+	r.Functions.init(ns)
 
 	r.goName = r.Name
 }
@@ -52,4 +53,9 @@ func (r Record) generateSysType(f *jen.File, version semver.Version) {
 
 	// GEN: type SomeRecord SomeCType
 	f.Type().Id(r.Name).Qual("C", r.CType)
+}
+
+func (r *Record) generateSys(f *jen.File, version semver.Version) {
+	r.Constructors.generateSys(f, version)
+	r.Functions.generateSys(f, version)
 }

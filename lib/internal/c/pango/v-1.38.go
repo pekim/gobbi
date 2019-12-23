@@ -228,6 +228,8 @@ func Fn_pango_context_new() {
 	C.pango_context_new()
 }
 
+func Fn_pango_font_descriptions_free(param0 []unsafe.Pointer, param1 int) {}
+
 func Fn_pango_fontset_simple_new(param0 unsafe.Pointer) {}
 
 func Fn_pango_layout_new(param0 unsafe.Pointer) {}

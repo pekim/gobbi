@@ -1,26 +1,32 @@
 package generate
 
 var functionBlacklist = map[string]bool{
+	// gio
+	"g_io_module_query": true,
+
 	// settings backend implementations
-	"Gio.settings_backend_get_default":           true,
-	"Gio.settings_backend_changed":               true,
-	"Gio.settings_backend_path_changed":          true,
-	"Gio.settings_backend_keys_changed":          true,
-	"Gio.settings_backend_path_writable_changed": true,
-	"Gio.settings_backend_writable_changed":      true,
-	"Gio.settings_backend_changed_tree":          true,
-	"Gio.settings_backend_flatten_tree":          true,
-	"Gio.keyfile_settings_backend_new":           true,
-	"Gio.memory_settings_backend_new":            true,
-	"Gio.null_settings_backend_new":              true,
+	"g_settings_backend_get_default":           true,
+	"g_settings_backend_changed":               true,
+	"g_settings_backend_path_changed":          true,
+	"g_settings_backend_keys_changed":          true,
+	"g_settings_backend_path_writable_changed": true,
+	"g_settings_backend_writable_changed":      true,
+	"g_settings_backend_changed_tree":          true,
+	"g_settings_backend_flatten_tree":          true,
+	"g_keyfile_settings_backend_new":           true,
+	"g_memory_settings_backend_new":            true,
+	"g_null_settings_backend_new":              true,
 
-	"GLib.unix_error_quark": true,
+	// glib
+	"g_unix_error_quark": true,
 
-	"Pango.module_register":          true,
-	"Pango.get_lib_subdirectory":     true,
-	"Pango.get_sysconf_subdirectory": true,
+	// pango
+	"pango_module_register":          true,
+	"pango_get_lib_subdirectory":     true,
+	"pango_get_sysconf_subdirectory": true,
 
-	"xlib.open_display": true,
+	// xlib
+	"XOpenDisplay": true,
 }
 
 func (f *Function) applyAddenda() {
@@ -42,7 +48,7 @@ func (f *Function) applyAddenda() {
 		return
 	}
 
-	if _, ok := functionBlacklist[f.namespace.Name+"."+f.Name]; ok {
+	if _, ok := functionBlacklist[f.CIdentifier]; ok {
 		f.blacklist = true
 	}
 }

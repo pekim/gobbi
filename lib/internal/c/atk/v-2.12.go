@@ -144,6 +144,12 @@ func Fn_atk_value_type_get_localized_name(param0 int) {}
 
 func Fn_atk_value_type_get_name(param0 int) {}
 
+func Fn_atk_gobject_accessible_for_object(param0 unsafe.Pointer) {}
+
+func Fn_atk_misc_get_instance() {
+	C.atk_misc_get_instance()
+}
+
 func Fn_atk_no_op_object_new(param0 unsafe.Pointer) {}
 
 func Fn_atk_no_op_object_factory_new() {

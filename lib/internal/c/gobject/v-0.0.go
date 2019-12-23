@@ -410,3 +410,7 @@ func Fn_g_value_type_transformable(param0 uint64, param1 uint64) {}
 // UNSUPPORTED : new_valist : has va_list
 
 func Fn_g_object_newv(param0 uint64, param1 uint, param2 []Parameter) {}
+
+func Fn_g_object_compat_control(param0 uint64, param1 unsafe.Pointer) {}
+
+func Fn_g_param_spec_internal(param0 uint64, param1 string, param2 string, param3 string, param4 int) {}

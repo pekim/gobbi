@@ -550,6 +550,12 @@ func Fn_g_app_launch_context_new() {
 
 func Fn_g_application_new(param0 string, param1 int) {}
 
+func Fn_g_application_get_default() {
+	C.g_application_get_default()
+}
+
+func Fn_g_application_id_is_valid(param0 string) {}
+
 func Fn_g_buffered_input_stream_new(param0 unsafe.Pointer) {}
 
 func Fn_g_buffered_input_stream_new_sized(param0 unsafe.Pointer, param1 uint64) {}
@@ -564,6 +570,10 @@ func Fn_g_cancellable_new() {
 	C.g_cancellable_new()
 }
 
+func Fn_g_cancellable_get_current() {
+	C.g_cancellable_get_current()
+}
+
 func Fn_g_charset_converter_new(param0 string, param1 string) {}
 
 func Fn_g_converter_input_stream_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
@@ -573,6 +583,8 @@ func Fn_g_converter_output_stream_new(param0 unsafe.Pointer, param1 unsafe.Point
 func Fn_g_credentials_new() {
 	C.g_credentials_new()
 }
+
+func Fn_g_dbus_action_group_get(param0 unsafe.Pointer, param1 string, param2 string) {}
 
 func Fn_g_dbus_auth_observer_new() {
 	C.g_dbus_auth_observer_new()
@@ -588,6 +600,12 @@ func Fn_g_dbus_connection_new_for_address_sync(param0 string, param1 int, param2
 func Fn_g_dbus_connection_new_sync(param0 unsafe.Pointer, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer) {
 }
 
+// UNSUPPORTED : new : has callback
+
+// UNSUPPORTED : new_for_address : has callback
+
+func Fn_g_dbus_menu_model_get(param0 unsafe.Pointer, param1 string, param2 string) {}
+
 func Fn_g_dbus_message_new() {
 	C.g_dbus_message_new()
 }
@@ -598,6 +616,8 @@ func Fn_g_dbus_message_new_method_call(param0 string, param1 string, param2 stri
 
 func Fn_g_dbus_message_new_signal(param0 string, param1 string, param2 string) {}
 
+func Fn_g_dbus_message_bytes_needed(param0 []uint8, param1 uint64) {}
+
 func Fn_g_dbus_object_manager_client_new_finish(param0 unsafe.Pointer) {}
 
 func Fn_g_dbus_object_manager_client_new_for_bus_finish(param0 unsafe.Pointer) {}
@@ -605,6 +625,10 @@ func Fn_g_dbus_object_manager_client_new_for_bus_finish(param0 unsafe.Pointer) {
 // UNSUPPORTED : new_for_bus_sync : has callback
 
 // UNSUPPORTED : new_sync : has callback
+
+// UNSUPPORTED : new : has callback
+
+// UNSUPPORTED : new_for_bus : has callback
 
 func Fn_g_dbus_object_manager_server_new(param0 string) {}
 
@@ -622,6 +646,10 @@ func Fn_g_dbus_proxy_new_for_bus_sync(param0 int, param1 int, param2 unsafe.Poin
 func Fn_g_dbus_proxy_new_sync(param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer, param3 string, param4 string, param5 string, param6 unsafe.Pointer) {
 }
 
+// UNSUPPORTED : new : has callback
+
+// UNSUPPORTED : new_for_bus : has callback
+
 func Fn_g_dbus_server_new_sync(param0 string, param1 int, param2 string, param3 unsafe.Pointer, param4 unsafe.Pointer) {
 }
 
@@ -634,6 +662,10 @@ func Fn_g_desktop_app_info_new(param0 string) {}
 func Fn_g_desktop_app_info_new_from_filename(param0 string) {}
 
 func Fn_g_desktop_app_info_new_from_keyfile(param0 unsafe.Pointer) {}
+
+func Fn_g_desktop_app_info_search(param0 string) {}
+
+func Fn_g_desktop_app_info_set_desktop_env(param0 string) {}
 
 func Fn_g_emblem_new(param0 unsafe.Pointer) {}
 
@@ -652,6 +684,9 @@ func Fn_g_filename_completer_new() {
 }
 
 func Fn_g_io_module_new(param0 string) {}
+
+// UNSUPPORTED : query : blacklisted
+func Fn_g_io_stream_splice_finish(param0 unsafe.Pointer) {}
 
 func Fn_g_inet_address_new_any(param0 int) {}
 
@@ -699,11 +734,23 @@ func Fn_g_mount_operation_new() {
 
 func Fn_g_network_address_new(param0 string, param1 uint16) {}
 
+func Fn_g_network_address_parse(param0 string, param1 uint16) {}
+
+func Fn_g_network_address_parse_uri(param0 string, param1 uint16) {}
+
 func Fn_g_network_service_new(param0 string, param1 string, param2 string) {}
 
 func Fn_g_property_action_new(param0 string, param1 unsafe.Pointer, param2 string) {}
 
 func Fn_g_proxy_address_new(param0 unsafe.Pointer, param1 uint16, param2 string, param3 string, param4 uint16, param5 string, param6 string) {
+}
+
+func Fn_g_resolver_free_addresses(param0 unsafe.Pointer) {}
+
+func Fn_g_resolver_free_targets(param0 unsafe.Pointer) {}
+
+func Fn_g_resolver_get_default() {
+	C.g_resolver_get_default()
 }
 
 func Fn_g_settings_new(param0 string) {}
@@ -716,6 +763,22 @@ func Fn_g_settings_new_with_backend_and_path(param0 string, param1 unsafe.Pointe
 
 func Fn_g_settings_new_with_path(param0 string, param1 string) {}
 
+func Fn_g_settings_list_relocatable_schemas() {
+	C.g_settings_list_relocatable_schemas()
+}
+
+func Fn_g_settings_list_schemas() {
+	C.g_settings_list_schemas()
+}
+
+func Fn_g_settings_sync() {
+	C.g_settings_sync()
+}
+
+func Fn_g_settings_unbind(param0 unsafe.Pointer, param1 string) {}
+
+// UNSUPPORTED : flatten_tree : blacklisted
+// UNSUPPORTED : get_default : blacklisted
 func Fn_g_simple_action_new(param0 string, param1 unsafe.Pointer) {}
 
 func Fn_g_simple_action_new_stateful(param0 string, param1 unsafe.Pointer, param2 unsafe.Pointer) {}
@@ -732,7 +795,12 @@ func Fn_g_simple_action_group_new() {
 
 // UNSUPPORTED : new_take_error : has callback
 
+func Fn_g_simple_async_result_is_valid(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {
+}
+
 func Fn_g_simple_permission_new(param0 bool) {}
+
+func Fn_g_simple_proxy_resolver_new(param0 string, param1 string) {}
 
 func Fn_g_socket_new(param0 int, param1 int, param2 int) {}
 
@@ -742,6 +810,13 @@ func Fn_g_socket_address_new_from_native(param0 unsafe.Pointer, param1 uint64) {
 
 func Fn_g_socket_client_new() {
 	C.g_socket_client_new()
+}
+
+func Fn_g_socket_connection_factory_lookup_type(param0 int, param1 int, param2 int) {}
+
+func Fn_g_socket_connection_factory_register_type(param0 uint64, param1 int, param2 int, param3 int) {}
+
+func Fn_g_socket_control_message_deserialize(param0 int, param1 int, param2 uint64, param3 []uint8) {
 }
 
 func Fn_g_socket_listener_new() {
@@ -756,9 +831,19 @@ func Fn_g_socket_service_new() {
 
 // UNSUPPORTED : new : has callback
 
+func Fn_g_task_is_valid(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+
+// UNSUPPORTED : report_error : has callback
+
+// UNSUPPORTED : report_new_error : has varargs
+
 func Fn_g_tcp_wrapper_connection_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
 func Fn_g_test_dbus_new(param0 int) {}
+
+func Fn_g_test_dbus_unset() {
+	C.g_test_dbus_unset()
+}
 
 func Fn_g_themed_icon_new(param0 string) {}
 
@@ -774,6 +859,8 @@ func Fn_g_tls_certificate_new_from_files(param0 string, param1 string) {}
 
 func Fn_g_tls_certificate_new_from_pem(param0 string, param1 uint64) {}
 
+func Fn_g_tls_certificate_list_new_from_file(param0 string) {}
+
 func Fn_g_tls_password_new(param0 int, param1 string) {}
 
 func Fn_g_unix_credentials_message_new() {
@@ -781,6 +868,10 @@ func Fn_g_unix_credentials_message_new() {
 }
 
 func Fn_g_unix_credentials_message_new_with_credentials(param0 unsafe.Pointer) {}
+
+func Fn_g_unix_credentials_message_is_supported() {
+	C.g_unix_credentials_message_is_supported()
+}
 
 func Fn_g_unix_fd_list_new() {
 	C.g_unix_fd_list_new()
@@ -807,6 +898,24 @@ func Fn_g_unix_socket_address_new(param0 string) {}
 func Fn_g_unix_socket_address_new_abstract(param0 []int8, param1 int) {}
 
 func Fn_g_unix_socket_address_new_with_type(param0 []int8, param1 int, param2 int) {}
+
+func Fn_g_unix_socket_address_abstract_names_supported() {
+	C.g_unix_socket_address_abstract_names_supported()
+}
+
+func Fn_g_vfs_get_default() {
+	C.g_vfs_get_default()
+}
+
+func Fn_g_vfs_get_local() {
+	C.g_vfs_get_local()
+}
+
+func Fn_g_volume_monitor_adopt_orphan_mount(param0 unsafe.Pointer) {}
+
+func Fn_g_volume_monitor_get() {
+	C.g_volume_monitor_get()
+}
 
 func Fn_g_zlib_compressor_new(param0 int, param1 int) {}
 
