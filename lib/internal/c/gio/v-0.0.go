@@ -19,7 +19,6 @@ import "unsafe"
 // #include <gio/gnetworking.h>
 import "C"
 
-// records
 type ActionEntry C.GActionEntry
 type AppInfoIface C.GAppInfoIface
 type AppLaunchContextClass C.GAppLaunchContextClass
@@ -191,19 +190,19 @@ type VolumeMonitorClass C.GVolumeMonitorClass
 type ZlibCompressorClass C.GZlibCompressorClass
 type ZlibDecompressorClass C.GZlibDecompressorClass
 
-func Fn_app_info_create_from_commandline(param0 string, param1 string, param2 int) {}
+func Fn_g_app_info_create_from_commandline(param0 string, param1 string, param2 int) {}
 
-func Fn_app_info_get_all() {
+func Fn_g_app_info_get_all() {
 	C.g_app_info_get_all()
 }
 
-func Fn_app_info_get_all_for_type(param0 string) {}
+func Fn_g_app_info_get_all_for_type(param0 string) {}
 
-func Fn_app_info_get_default_for_type(param0 string, param1 bool) {}
+func Fn_g_app_info_get_default_for_type(param0 string, param1 bool) {}
 
-func Fn_app_info_get_default_for_uri_scheme(param0 string) {}
+func Fn_g_app_info_get_default_for_uri_scheme(param0 string) {}
 
-func Fn_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer) {}
+func Fn_g_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer) {}
 
 // UNSUPPORTED : app_info_launch_default_for_uri_async : has callback
 
@@ -219,57 +218,57 @@ func Fn_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer) {}
 
 // UNSUPPORTED : bus_watch_name_on_connection : has callback
 
-func Fn_content_type_can_be_executable(param0 string) {}
+func Fn_g_content_type_can_be_executable(param0 string) {}
 
-func Fn_content_type_equals(param0 string, param1 string) {}
+func Fn_g_content_type_equals(param0 string, param1 string) {}
 
-func Fn_content_type_get_description(param0 string) {}
+func Fn_g_content_type_get_description(param0 string) {}
 
-func Fn_content_type_get_icon(param0 string) {}
+func Fn_g_content_type_get_icon(param0 string) {}
 
-func Fn_content_type_get_mime_type(param0 string) {}
+func Fn_g_content_type_get_mime_type(param0 string) {}
 
-func Fn_content_type_guess(param0 string, param1 []uint8, param2 uint64, param3 *bool) {}
+func Fn_g_content_type_guess(param0 string, param1 []uint8, param2 uint64, param3 *bool) {}
 
-func Fn_content_type_is_a(param0 string, param1 string) {}
+func Fn_g_content_type_is_a(param0 string, param1 string) {}
 
-func Fn_content_type_is_unknown(param0 string) {}
+func Fn_g_content_type_is_unknown(param0 string) {}
 
-func Fn_content_types_get_registered() {
+func Fn_g_content_types_get_registered() {
 	C.g_content_types_get_registered()
 }
 
 // UNSUPPORTED : dbus_address_get_stream : has callback
 
-func Fn_dbus_error_quark() {
+func Fn_g_dbus_error_quark() {
 	C.g_dbus_error_quark()
 }
 
-func Fn_file_new_for_commandline_arg(param0 string) {}
+func Fn_g_file_new_for_commandline_arg(param0 string) {}
 
-func Fn_file_new_for_path(param0 string) {}
+func Fn_g_file_new_for_path(param0 string) {}
 
-func Fn_file_new_for_uri(param0 string) {}
+func Fn_g_file_new_for_uri(param0 string) {}
 
-func Fn_file_parse_name(param0 string) {}
+func Fn_g_file_parse_name(param0 string) {}
 
-func Fn_icon_hash(param0 unsafe.Pointer) {}
+func Fn_g_icon_hash(param0 unsafe.Pointer) {}
 
-func Fn_io_error_from_errno(param0 int) {}
+func Fn_g_io_error_from_errno(param0 int) {}
 
-func Fn_io_error_quark() {
+func Fn_g_io_error_quark() {
 	C.g_io_error_quark()
 }
 
-func Fn_io_extension_point_implement(param0 string, param1 uint64, param2 string, param3 int) {}
+func Fn_g_io_extension_point_implement(param0 string, param1 uint64, param2 string, param3 int) {}
 
-func Fn_io_extension_point_lookup(param0 string) {}
+func Fn_g_io_extension_point_lookup(param0 string) {}
 
-func Fn_io_extension_point_register(param0 string) {}
+func Fn_g_io_extension_point_register(param0 string) {}
 
-func Fn_io_modules_load_all_in_directory(param0 string) {}
+func Fn_g_io_modules_load_all_in_directory(param0 string) {}
 
-func Fn_io_scheduler_cancel_all_jobs() {
+func Fn_g_io_scheduler_cancel_all_jobs() {
 	C.g_io_scheduler_cancel_all_jobs()
 }
 
@@ -284,36 +283,126 @@ func Fn_io_scheduler_cancel_all_jobs() {
 
 // UNSUPPORTED : simple_async_report_take_gerror_in_idle : has callback
 
-func Fn_unix_is_mount_path_system_internal(param0 string) {}
+func Fn_g_unix_is_mount_path_system_internal(param0 string) {}
 
-func Fn_unix_mount_at(param0 string, param1 *uint64) {}
+func Fn_g_unix_mount_at(param0 string, param1 *uint64) {}
 
-func Fn_unix_mount_compare(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_g_unix_mount_compare(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_unix_mount_free(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_free(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_get_device_path(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_get_device_path(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_get_fs_type(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_get_fs_type(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_get_mount_path(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_get_mount_path(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_can_eject(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_guess_can_eject(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_icon(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_guess_icon(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_name(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_guess_name(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_should_display(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_guess_should_display(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_is_readonly(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_is_readonly(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_is_system_internal(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_is_system_internal(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_points_changed_since(param0 uint64) {}
+func Fn_g_unix_mount_points_changed_since(param0 uint64) {}
 
-func Fn_unix_mount_points_get(param0 *uint64) {}
+func Fn_g_unix_mount_points_get(param0 *uint64) {}
 
-func Fn_unix_mounts_changed_since(param0 uint64) {}
+func Fn_g_unix_mounts_changed_since(param0 uint64) {}
 
-func Fn_unix_mounts_get(param0 *uint64) {}
+func Fn_g_unix_mounts_get(param0 *uint64) {}
+
+func Fn_g_app_launch_context_new() {
+	C.g_app_launch_context_new()
+}
+
+func Fn_g_application_new(param0 string, param1 int) {}
+
+func Fn_g_buffered_input_stream_new(param0 unsafe.Pointer) {}
+
+func Fn_g_buffered_input_stream_new_sized(param0 unsafe.Pointer, param1 uint64) {}
+
+func Fn_g_buffered_output_stream_new(param0 unsafe.Pointer) {}
+
+func Fn_g_buffered_output_stream_new_sized(param0 unsafe.Pointer, param1 uint64) {}
+
+func Fn_g_cancellable_new() {
+	C.g_cancellable_new()
+}
+
+func Fn_g_converter_input_stream_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+
+func Fn_g_converter_output_stream_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+
+// UNSUPPORTED : new_for_bus_sync : has callback
+
+// UNSUPPORTED : new_sync : has callback
+
+func Fn_g_data_input_stream_new(param0 unsafe.Pointer) {}
+
+func Fn_g_data_output_stream_new(param0 unsafe.Pointer) {}
+
+func Fn_g_desktop_app_info_new(param0 string) {}
+
+func Fn_g_desktop_app_info_new_from_filename(param0 string) {}
+
+func Fn_g_file_icon_new(param0 unsafe.Pointer) {}
+
+func Fn_g_file_info_new() {
+	C.g_file_info_new()
+}
+
+func Fn_g_filename_completer_new() {
+	C.g_filename_completer_new()
+}
+
+func Fn_g_io_module_new(param0 string) {}
+
+func Fn_g_memory_input_stream_new() {
+	C.g_memory_input_stream_new()
+}
+
+// UNSUPPORTED : new_from_data : has callback
+
+// UNSUPPORTED : new : has callback
+
+func Fn_g_mount_operation_new() {
+	C.g_mount_operation_new()
+}
+
+// UNSUPPORTED : new : has callback
+
+// UNSUPPORTED : new_error : has varargs
+
+// UNSUPPORTED : new_from_error : has callback
+
+// UNSUPPORTED : new_take_error : has callback
+
+// UNSUPPORTED : new : has varargs
+
+// UNSUPPORTED : new : has callback
+
+func Fn_g_test_dbus_new(param0 int) {}
+
+func Fn_g_themed_icon_new(param0 string) {}
+
+func Fn_g_themed_icon_new_from_names(param0 []string, param1 int) {}
+
+func Fn_g_themed_icon_new_with_default_fallbacks(param0 string) {}
+
+func Fn_g_tls_password_new(param0 int, param1 string) {}
+
+func Fn_g_unix_input_stream_new(param0 int, param1 bool) {}
+
+func Fn_g_unix_mount_monitor_new() {
+	C.g_unix_mount_monitor_new()
+}
+
+func Fn_g_unix_output_stream_new(param0 int, param1 bool) {}
+
+func Fn_g_unix_socket_address_new_abstract(param0 []int8, param1 int) {}

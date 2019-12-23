@@ -22,7 +22,6 @@ import (
 // #include <gio/gnetworking.h>
 import "C"
 
-// records
 type ActionEntry C.GActionEntry
 type ActionGroupInterface C.GActionGroupInterface
 type ActionInterface C.GActionInterface
@@ -234,173 +233,173 @@ type VolumeMonitorClass C.GVolumeMonitorClass
 type ZlibCompressorClass C.GZlibCompressorClass
 type ZlibDecompressorClass C.GZlibDecompressorClass
 
-func Fn_app_info_create_from_commandline(param0 string, param1 string, param2 int) {}
+func Fn_g_app_info_create_from_commandline(param0 string, param1 string, param2 int) {}
 
-func Fn_app_info_get_all() {
+func Fn_g_app_info_get_all() {
 	C.g_app_info_get_all()
 }
 
-func Fn_app_info_get_all_for_type(param0 string) {}
+func Fn_g_app_info_get_all_for_type(param0 string) {}
 
-func Fn_app_info_get_default_for_type(param0 string, param1 bool) {}
+func Fn_g_app_info_get_default_for_type(param0 string, param1 bool) {}
 
-func Fn_app_info_get_default_for_uri_scheme(param0 string) {}
+func Fn_g_app_info_get_default_for_uri_scheme(param0 string) {}
 
-func Fn_app_info_get_fallback_for_type(param0 string) {}
+func Fn_g_app_info_get_fallback_for_type(param0 string) {}
 
-func Fn_app_info_get_recommended_for_type(param0 string) {}
+func Fn_g_app_info_get_recommended_for_type(param0 string) {}
 
-func Fn_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer) {}
+func Fn_g_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer) {}
 
 // UNSUPPORTED : app_info_launch_default_for_uri_async : has callback
 
-func Fn_app_info_reset_type_associations(param0 string) {}
+func Fn_g_app_info_reset_type_associations(param0 string) {}
 
 // UNSUPPORTED : async_initable_newv_async : has callback
 
 // UNSUPPORTED : bus_get : has callback
 
-func Fn_bus_get_finish(param0 unsafe.Pointer) {}
+func Fn_g_bus_get_finish(param0 unsafe.Pointer) {}
 
-func Fn_bus_get_sync(param0 int, param1 unsafe.Pointer) {}
+func Fn_g_bus_get_sync(param0 int, param1 unsafe.Pointer) {}
 
 // UNSUPPORTED : bus_own_name : has callback
 
 // UNSUPPORTED : bus_own_name_on_connection : has callback
 
-func Fn_bus_own_name_on_connection_with_closures(param0 unsafe.Pointer, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer) {
+func Fn_g_bus_own_name_on_connection_with_closures(param0 unsafe.Pointer, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer) {
 }
 
-func Fn_bus_own_name_with_closures(param0 int, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
+func Fn_g_bus_own_name_with_closures(param0 int, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 }
 
-func Fn_bus_unown_name(param0 uint) {}
+func Fn_g_bus_unown_name(param0 uint) {}
 
-func Fn_bus_unwatch_name(param0 uint) {}
+func Fn_g_bus_unwatch_name(param0 uint) {}
 
 // UNSUPPORTED : bus_watch_name : has callback
 
 // UNSUPPORTED : bus_watch_name_on_connection : has callback
 
-func Fn_bus_watch_name_on_connection_with_closures(param0 unsafe.Pointer, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer) {
+func Fn_g_bus_watch_name_on_connection_with_closures(param0 unsafe.Pointer, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer) {
 }
 
-func Fn_bus_watch_name_with_closures(param0 int, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer) {
+func Fn_g_bus_watch_name_with_closures(param0 int, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer) {
 }
 
-func Fn_content_type_can_be_executable(param0 string) {}
+func Fn_g_content_type_can_be_executable(param0 string) {}
 
-func Fn_content_type_equals(param0 string, param1 string) {}
+func Fn_g_content_type_equals(param0 string, param1 string) {}
 
-func Fn_content_type_from_mime_type(param0 string) {}
+func Fn_g_content_type_from_mime_type(param0 string) {}
 
-func Fn_content_type_get_description(param0 string) {}
+func Fn_g_content_type_get_description(param0 string) {}
 
-func Fn_content_type_get_icon(param0 string) {}
+func Fn_g_content_type_get_icon(param0 string) {}
 
-func Fn_content_type_get_mime_type(param0 string) {}
+func Fn_g_content_type_get_mime_type(param0 string) {}
 
-func Fn_content_type_guess(param0 string, param1 []uint8, param2 uint64, param3 *bool) {}
+func Fn_g_content_type_guess(param0 string, param1 []uint8, param2 uint64, param3 *bool) {}
 
-func Fn_content_type_guess_for_tree(param0 unsafe.Pointer) {}
+func Fn_g_content_type_guess_for_tree(param0 unsafe.Pointer) {}
 
-func Fn_content_type_is_a(param0 string, param1 string) {}
+func Fn_g_content_type_is_a(param0 string, param1 string) {}
 
-func Fn_content_type_is_unknown(param0 string) {}
+func Fn_g_content_type_is_unknown(param0 string) {}
 
-func Fn_content_types_get_registered() {
+func Fn_g_content_types_get_registered() {
 	C.g_content_types_get_registered()
 }
 
-func Fn_dbus_address_get_for_bus_sync(param0 int, param1 unsafe.Pointer) {}
+func Fn_g_dbus_address_get_for_bus_sync(param0 int, param1 unsafe.Pointer) {}
 
 // UNSUPPORTED : dbus_address_get_stream : has callback
 
-func Fn_dbus_address_get_stream_finish(param0 unsafe.Pointer, param1 string) {}
+func Fn_g_dbus_address_get_stream_finish(param0 unsafe.Pointer, param1 string) {}
 
-func Fn_dbus_address_get_stream_sync(param0 string, param1 string, param2 unsafe.Pointer) {}
+func Fn_g_dbus_address_get_stream_sync(param0 string, param1 string, param2 unsafe.Pointer) {}
 
-func Fn_dbus_annotation_info_lookup(param0 []unsafe.Pointer, param1 string) {}
+func Fn_g_dbus_annotation_info_lookup(param0 []unsafe.Pointer, param1 string) {}
 
-func Fn_dbus_error_encode_gerror(param0 unsafe.Pointer) {}
+func Fn_g_dbus_error_encode_gerror(param0 unsafe.Pointer) {}
 
-func Fn_dbus_error_get_remote_error(param0 unsafe.Pointer) {}
+func Fn_g_dbus_error_get_remote_error(param0 unsafe.Pointer) {}
 
-func Fn_dbus_error_is_remote_error(param0 unsafe.Pointer) {}
+func Fn_g_dbus_error_is_remote_error(param0 unsafe.Pointer) {}
 
-func Fn_dbus_error_new_for_dbus_error(param0 string, param1 string) {}
+func Fn_g_dbus_error_new_for_dbus_error(param0 string, param1 string) {}
 
-func Fn_dbus_error_quark() {
+func Fn_g_dbus_error_quark() {
 	C.g_dbus_error_quark()
 }
 
-func Fn_dbus_error_register_error(param0 uint32, param1 int, param2 string) {}
+func Fn_g_dbus_error_register_error(param0 uint32, param1 int, param2 string) {}
 
-func Fn_dbus_error_register_error_domain(param0 string, param1 *uint64, param2 []DBusErrorEntry, param3 uint) {
+func Fn_g_dbus_error_register_error_domain(param0 string, param1 *uint64, param2 []DBusErrorEntry, param3 uint) {
 }
 
-func Fn_dbus_error_strip_remote_error(param0 unsafe.Pointer) {}
+func Fn_g_dbus_error_strip_remote_error(param0 unsafe.Pointer) {}
 
-func Fn_dbus_error_unregister_error(param0 uint32, param1 int, param2 string) {}
+func Fn_g_dbus_error_unregister_error(param0 uint32, param1 int, param2 string) {}
 
-func Fn_dbus_generate_guid() {
+func Fn_g_dbus_generate_guid() {
 	C.g_dbus_generate_guid()
 }
 
-func Fn_dbus_gvalue_to_gvariant(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_g_dbus_gvalue_to_gvariant(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_dbus_gvariant_to_gvalue(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_g_dbus_gvariant_to_gvalue(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_dbus_is_address(param0 string) {}
+func Fn_g_dbus_is_address(param0 string) {}
 
-func Fn_dbus_is_guid(param0 string) {}
+func Fn_g_dbus_is_guid(param0 string) {}
 
-func Fn_dbus_is_interface_name(param0 string) {}
+func Fn_g_dbus_is_interface_name(param0 string) {}
 
-func Fn_dbus_is_member_name(param0 string) {}
+func Fn_g_dbus_is_member_name(param0 string) {}
 
-func Fn_dbus_is_name(param0 string) {}
+func Fn_g_dbus_is_name(param0 string) {}
 
-func Fn_dbus_is_supported_address(param0 string) {}
+func Fn_g_dbus_is_supported_address(param0 string) {}
 
-func Fn_dbus_is_unique_name(param0 string) {}
+func Fn_g_dbus_is_unique_name(param0 string) {}
 
-func Fn_file_new_for_commandline_arg(param0 string) {}
+func Fn_g_file_new_for_commandline_arg(param0 string) {}
 
-func Fn_file_new_for_path(param0 string) {}
+func Fn_g_file_new_for_path(param0 string) {}
 
-func Fn_file_new_for_uri(param0 string) {}
+func Fn_g_file_new_for_uri(param0 string) {}
 
-func Fn_file_parse_name(param0 string) {}
+func Fn_g_file_parse_name(param0 string) {}
 
-func Fn_icon_hash(param0 unsafe.Pointer) {}
+func Fn_g_icon_hash(param0 unsafe.Pointer) {}
 
-func Fn_icon_new_for_string(param0 string) {}
+func Fn_g_icon_new_for_string(param0 string) {}
 
-func Fn_initable_newv(param0 uint64, param1 uint, param2 []gobject.Parameter, param3 unsafe.Pointer) {
+func Fn_g_initable_newv(param0 uint64, param1 uint, param2 []gobject.Parameter, param3 unsafe.Pointer) {
 }
 
-func Fn_io_error_from_errno(param0 int) {}
+func Fn_g_io_error_from_errno(param0 int) {}
 
-func Fn_io_error_quark() {
+func Fn_g_io_error_quark() {
 	C.g_io_error_quark()
 }
 
-func Fn_io_extension_point_implement(param0 string, param1 uint64, param2 string, param3 int) {}
+func Fn_g_io_extension_point_implement(param0 string, param1 uint64, param2 string, param3 int) {}
 
-func Fn_io_extension_point_lookup(param0 string) {}
+func Fn_g_io_extension_point_lookup(param0 string) {}
 
-func Fn_io_extension_point_register(param0 string) {}
+func Fn_g_io_extension_point_register(param0 string) {}
 
-func Fn_io_modules_load_all_in_directory(param0 string) {}
+func Fn_g_io_modules_load_all_in_directory(param0 string) {}
 
-func Fn_io_modules_load_all_in_directory_with_scope(param0 string, param1 unsafe.Pointer) {}
+func Fn_g_io_modules_load_all_in_directory_with_scope(param0 string, param1 unsafe.Pointer) {}
 
-func Fn_io_modules_scan_all_in_directory(param0 string) {}
+func Fn_g_io_modules_scan_all_in_directory(param0 string) {}
 
-func Fn_io_modules_scan_all_in_directory_with_scope(param0 string, param1 unsafe.Pointer) {}
+func Fn_g_io_modules_scan_all_in_directory_with_scope(param0 string, param1 unsafe.Pointer) {}
 
-func Fn_io_scheduler_cancel_all_jobs() {
+func Fn_g_io_scheduler_cancel_all_jobs() {
 	C.g_io_scheduler_cancel_all_jobs()
 }
 
@@ -409,15 +408,15 @@ func Fn_io_scheduler_cancel_all_jobs() {
 // UNSUPPORTED : keyfile_settings_backend_new : blacklisted
 // UNSUPPORTED : memory_settings_backend_new : blacklisted
 // UNSUPPORTED : null_settings_backend_new : blacklisted
-func Fn_pollable_source_new(param0 unsafe.Pointer) {}
+func Fn_g_pollable_source_new(param0 unsafe.Pointer) {}
 
-func Fn_proxy_get_default_for_protocol(param0 string) {}
+func Fn_g_proxy_get_default_for_protocol(param0 string) {}
 
-func Fn_proxy_resolver_get_default() {
+func Fn_g_proxy_resolver_get_default() {
 	C.g_proxy_resolver_get_default()
 }
 
-func Fn_resolver_error_quark() {
+func Fn_g_resolver_error_quark() {
 	C.g_resolver_error_quark()
 }
 
@@ -427,52 +426,292 @@ func Fn_resolver_error_quark() {
 
 // UNSUPPORTED : simple_async_report_take_gerror_in_idle : has callback
 
-func Fn_srv_target_list_sort(param0 unsafe.Pointer) {}
+func Fn_g_srv_target_list_sort(param0 unsafe.Pointer) {}
 
-func Fn_tls_backend_get_default() {
+func Fn_g_tls_backend_get_default() {
 	C.g_tls_backend_get_default()
 }
 
-func Fn_tls_client_connection_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_g_tls_client_connection_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_tls_error_quark() {
+func Fn_g_tls_error_quark() {
 	C.g_tls_error_quark()
 }
 
-func Fn_tls_file_database_new(param0 string) {}
+func Fn_g_tls_file_database_new(param0 string) {}
 
-func Fn_tls_server_connection_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_g_tls_server_connection_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_unix_is_mount_path_system_internal(param0 string) {}
+func Fn_g_unix_is_mount_path_system_internal(param0 string) {}
 
-func Fn_unix_mount_at(param0 string, param1 *uint64) {}
+func Fn_g_unix_mount_at(param0 string, param1 *uint64) {}
 
-func Fn_unix_mount_compare(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+func Fn_g_unix_mount_compare(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
 
-func Fn_unix_mount_free(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_free(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_get_device_path(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_get_device_path(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_get_fs_type(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_get_fs_type(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_get_mount_path(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_get_mount_path(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_can_eject(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_guess_can_eject(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_icon(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_guess_icon(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_name(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_guess_name(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_guess_should_display(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_guess_should_display(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_is_readonly(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_is_readonly(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_is_system_internal(param0 unsafe.Pointer) {}
+func Fn_g_unix_mount_is_system_internal(param0 unsafe.Pointer) {}
 
-func Fn_unix_mount_points_changed_since(param0 uint64) {}
+func Fn_g_unix_mount_points_changed_since(param0 uint64) {}
 
-func Fn_unix_mount_points_get(param0 *uint64) {}
+func Fn_g_unix_mount_points_get(param0 *uint64) {}
 
-func Fn_unix_mounts_changed_since(param0 uint64) {}
+func Fn_g_unix_mounts_changed_since(param0 uint64) {}
 
-func Fn_unix_mounts_get(param0 *uint64) {}
+func Fn_g_unix_mounts_get(param0 *uint64) {}
+
+func Fn_g_app_launch_context_new() {
+	C.g_app_launch_context_new()
+}
+
+func Fn_g_application_new(param0 string, param1 int) {}
+
+func Fn_g_buffered_input_stream_new(param0 unsafe.Pointer) {}
+
+func Fn_g_buffered_input_stream_new_sized(param0 unsafe.Pointer, param1 uint64) {}
+
+func Fn_g_buffered_output_stream_new(param0 unsafe.Pointer) {}
+
+func Fn_g_buffered_output_stream_new_sized(param0 unsafe.Pointer, param1 uint64) {}
+
+func Fn_g_cancellable_new() {
+	C.g_cancellable_new()
+}
+
+func Fn_g_charset_converter_new(param0 string, param1 string) {}
+
+func Fn_g_converter_input_stream_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+
+func Fn_g_converter_output_stream_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+
+func Fn_g_credentials_new() {
+	C.g_credentials_new()
+}
+
+func Fn_g_dbus_auth_observer_new() {
+	C.g_dbus_auth_observer_new()
+}
+
+func Fn_g_dbus_connection_new_finish(param0 unsafe.Pointer) {}
+
+func Fn_g_dbus_connection_new_for_address_finish(param0 unsafe.Pointer) {}
+
+func Fn_g_dbus_connection_new_for_address_sync(param0 string, param1 int, param2 unsafe.Pointer, param3 unsafe.Pointer) {
+}
+
+func Fn_g_dbus_connection_new_sync(param0 unsafe.Pointer, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer) {
+}
+
+func Fn_g_dbus_message_new() {
+	C.g_dbus_message_new()
+}
+
+func Fn_g_dbus_message_new_from_blob(param0 []uint8, param1 uint64, param2 int) {}
+
+func Fn_g_dbus_message_new_method_call(param0 string, param1 string, param2 string, param3 string) {}
+
+func Fn_g_dbus_message_new_signal(param0 string, param1 string, param2 string) {}
+
+func Fn_g_dbus_object_manager_client_new_finish(param0 unsafe.Pointer) {}
+
+func Fn_g_dbus_object_manager_client_new_for_bus_finish(param0 unsafe.Pointer) {}
+
+// UNSUPPORTED : new_for_bus_sync : has callback
+
+// UNSUPPORTED : new_sync : has callback
+
+func Fn_g_dbus_object_manager_server_new(param0 string) {}
+
+func Fn_g_dbus_object_proxy_new(param0 unsafe.Pointer, param1 string) {}
+
+func Fn_g_dbus_object_skeleton_new(param0 string) {}
+
+func Fn_g_dbus_proxy_new_finish(param0 unsafe.Pointer) {}
+
+func Fn_g_dbus_proxy_new_for_bus_finish(param0 unsafe.Pointer) {}
+
+func Fn_g_dbus_proxy_new_for_bus_sync(param0 int, param1 int, param2 unsafe.Pointer, param3 string, param4 string, param5 string, param6 unsafe.Pointer) {
+}
+
+func Fn_g_dbus_proxy_new_sync(param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer, param3 string, param4 string, param5 string, param6 unsafe.Pointer) {
+}
+
+func Fn_g_dbus_server_new_sync(param0 string, param1 int, param2 string, param3 unsafe.Pointer, param4 unsafe.Pointer) {
+}
+
+func Fn_g_data_input_stream_new(param0 unsafe.Pointer) {}
+
+func Fn_g_data_output_stream_new(param0 unsafe.Pointer) {}
+
+func Fn_g_desktop_app_info_new(param0 string) {}
+
+func Fn_g_desktop_app_info_new_from_filename(param0 string) {}
+
+func Fn_g_desktop_app_info_new_from_keyfile(param0 unsafe.Pointer) {}
+
+func Fn_g_emblem_new(param0 unsafe.Pointer) {}
+
+func Fn_g_emblem_new_with_origin(param0 unsafe.Pointer, param1 int) {}
+
+func Fn_g_emblemed_icon_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+
+func Fn_g_file_icon_new(param0 unsafe.Pointer) {}
+
+func Fn_g_file_info_new() {
+	C.g_file_info_new()
+}
+
+func Fn_g_filename_completer_new() {
+	C.g_filename_completer_new()
+}
+
+func Fn_g_io_module_new(param0 string) {}
+
+func Fn_g_inet_address_new_any(param0 int) {}
+
+func Fn_g_inet_address_new_from_bytes(param0 []uint8, param1 int) {}
+
+func Fn_g_inet_address_new_from_string(param0 string) {}
+
+func Fn_g_inet_address_new_loopback(param0 int) {}
+
+func Fn_g_inet_socket_address_new(param0 unsafe.Pointer, param1 uint16) {}
+
+func Fn_g_memory_input_stream_new() {
+	C.g_memory_input_stream_new()
+}
+
+// UNSUPPORTED : new_from_data : has callback
+
+// UNSUPPORTED : new : has callback
+
+func Fn_g_mount_operation_new() {
+	C.g_mount_operation_new()
+}
+
+func Fn_g_network_address_new(param0 string, param1 uint16) {}
+
+func Fn_g_network_service_new(param0 string, param1 string, param2 string) {}
+
+func Fn_g_proxy_address_new(param0 unsafe.Pointer, param1 uint16, param2 string, param3 string, param4 uint16, param5 string, param6 string) {
+}
+
+func Fn_g_settings_new(param0 string) {}
+
+func Fn_g_settings_new_with_backend(param0 string, param1 unsafe.Pointer) {}
+
+func Fn_g_settings_new_with_backend_and_path(param0 string, param1 unsafe.Pointer, param2 string) {}
+
+func Fn_g_settings_new_with_path(param0 string, param1 string) {}
+
+func Fn_g_simple_action_new(param0 string, param1 unsafe.Pointer) {}
+
+func Fn_g_simple_action_new_stateful(param0 string, param1 unsafe.Pointer, param2 unsafe.Pointer) {}
+
+func Fn_g_simple_action_group_new() {
+	C.g_simple_action_group_new()
+}
+
+// UNSUPPORTED : new : has callback
+
+// UNSUPPORTED : new_error : has varargs
+
+// UNSUPPORTED : new_from_error : has callback
+
+// UNSUPPORTED : new_take_error : has callback
+
+func Fn_g_simple_permission_new(param0 bool) {}
+
+func Fn_g_socket_new(param0 int, param1 int, param2 int) {}
+
+func Fn_g_socket_new_from_fd(param0 int) {}
+
+func Fn_g_socket_address_new_from_native(param0 unsafe.Pointer, param1 uint64) {}
+
+func Fn_g_socket_client_new() {
+	C.g_socket_client_new()
+}
+
+func Fn_g_socket_listener_new() {
+	C.g_socket_listener_new()
+}
+
+func Fn_g_socket_service_new() {
+	C.g_socket_service_new()
+}
+
+// UNSUPPORTED : new : has varargs
+
+// UNSUPPORTED : new : has callback
+
+func Fn_g_tcp_wrapper_connection_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {}
+
+func Fn_g_test_dbus_new(param0 int) {}
+
+func Fn_g_themed_icon_new(param0 string) {}
+
+func Fn_g_themed_icon_new_from_names(param0 []string, param1 int) {}
+
+func Fn_g_themed_icon_new_with_default_fallbacks(param0 string) {}
+
+func Fn_g_threaded_socket_service_new(param0 int) {}
+
+func Fn_g_tls_certificate_new_from_file(param0 string) {}
+
+func Fn_g_tls_certificate_new_from_files(param0 string, param1 string) {}
+
+func Fn_g_tls_certificate_new_from_pem(param0 string, param1 uint64) {}
+
+func Fn_g_tls_password_new(param0 int, param1 string) {}
+
+func Fn_g_unix_credentials_message_new() {
+	C.g_unix_credentials_message_new()
+}
+
+func Fn_g_unix_credentials_message_new_with_credentials(param0 unsafe.Pointer) {}
+
+func Fn_g_unix_fd_list_new() {
+	C.g_unix_fd_list_new()
+}
+
+func Fn_g_unix_fd_list_new_from_array(param0 []int, param1 int) {}
+
+func Fn_g_unix_fd_message_new() {
+	C.g_unix_fd_message_new()
+}
+
+func Fn_g_unix_fd_message_new_with_fd_list(param0 unsafe.Pointer) {}
+
+func Fn_g_unix_input_stream_new(param0 int, param1 bool) {}
+
+func Fn_g_unix_mount_monitor_new() {
+	C.g_unix_mount_monitor_new()
+}
+
+func Fn_g_unix_output_stream_new(param0 int, param1 bool) {}
+
+func Fn_g_unix_socket_address_new(param0 string) {}
+
+func Fn_g_unix_socket_address_new_abstract(param0 []int8, param1 int) {}
+
+func Fn_g_unix_socket_address_new_with_type(param0 []int8, param1 int, param2 int) {}
+
+func Fn_g_zlib_compressor_new(param0 int, param1 int) {}
+
+func Fn_g_zlib_decompressor_new(param0 int) {}

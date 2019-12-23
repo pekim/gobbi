@@ -24,10 +24,8 @@ func (rr Records) byName(name string) (*Record, bool) {
 }
 
 func (rr Records) generateSys(f *jen.File, version semver.Version) {
-	f.Comment("records")
-
 	for _, r := range rr {
-		r.generateSys(f, version)
+		r.generateSysType(f, version)
 	}
 
 	f.Line()

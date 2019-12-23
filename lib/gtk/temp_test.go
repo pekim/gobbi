@@ -8,5 +8,5 @@ import (
 func TestFuncCall(t *testing.T) {
 	var count int
 	var args []string
-	gtk.Fn_init(&count, &args)
+	gtk.Fn_gtk_init(&count, &args)
 }

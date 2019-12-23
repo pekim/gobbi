@@ -1,5 +1,10 @@
 package generate
 
+import (
+	"github.com/blang/semver"
+	"github.com/dave/jennifer/jen"
+)
+
 type Classes []*Class
 
 func (cc Classes) init(ns *Namespace) {
@@ -18,12 +23,10 @@ func (cc Classes) byName(name string) (*Class, bool) {
 	return nil, false
 }
 
-//func (cc Classes) generateSys(f *jen.File, version semver.Version) {
-//	f.Comment("classes")
-//
-//	for _, c := range cc {
-//		c.generateSys(f, version)
-//	}
-//
-//	f.Line()
-//}
+func (cc Classes) generateSys(f *jen.File, version semver.Version) {
+	for _, c := range cc {
+		c.generateSys(f, version)
+	}
+
+	f.Line()
+}

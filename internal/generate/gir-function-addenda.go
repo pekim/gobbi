@@ -19,6 +19,8 @@ var functionBlacklist = map[string]bool{
 	"Pango.module_register":          true,
 	"Pango.get_lib_subdirectory":     true,
 	"Pango.get_sysconf_subdirectory": true,
+
+	"xlib.open_display": true,
 }
 
 func (f *Function) applyAddenda() {

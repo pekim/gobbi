@@ -53,13 +53,18 @@ func (r *repository) init() {
 	if r.Namespace.Name == "GLib" {
 		r.CIncludes = append(r.CIncludes, &CInclude{Name: "glib/gstdio.h"})
 		r.CIncludes = append(r.CIncludes, &CInclude{Name: "glib-2.0/glib-object.h"})
+
+		r.Packages = append(r.Packages, Package{Name: "gobject-2.0"})
 	}
 
 	if r.Namespace.Name == "Gio" {
 		r.CIncludes = append(r.CIncludes, &CInclude{Name: "gio/gnetworking.h"})
 	}
 
-	if r.Namespace.Name == "GLib" {
-		r.Packages = append(r.Packages, Package{Name: "gobject-2.0"})
+	if r.Namespace.Name == "xlib" {
+		r.CIncludes = append(r.CIncludes, &CInclude{Name: "X11/Xlib.h"})
+		r.CIncludes = append(r.CIncludes, &CInclude{Name: "X11/extensions/Xrender.h"})
+
+		r.Packages = append(r.Packages, Package{Name: "x11"})
 	}
 }

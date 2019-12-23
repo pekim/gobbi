@@ -16,7 +16,7 @@ type Record struct {
 	//Doc            *Doc         `xml:"doc"`
 	ParentName string `xml:"parent,attr"`
 	//Fields         Fields       `xml:"field"`
-	//Constructors   Constructors `xml:"constructor"`
+	Constructors Constructors `xml:"constructor"`
 	//Functions      Functions    `xml:"function"`
 	//Methods        Methods      `xml:"method"`
 	//Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
@@ -35,11 +35,12 @@ func (r *Record) init(ns *Namespace) {
 	r.applyAddenda()
 	r.version = versionNew(r.Version)
 	r.namespace.versions.add(r.version)
+	r.Constructors.init(ns, r)
 
 	r.goName = r.Name
 }
 
-func (r Record) generateSys(f *jen.File, version semver.Version) {
+func (r Record) generateSysType(f *jen.File, version semver.Version) {
 	if r.blacklist {
 		f.Commentf("UNSUPPORTED : %s : blacklisted", r.Name)
 		return
