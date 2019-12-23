@@ -298,7 +298,7 @@ func Fn_pango_language_get_default() {
 
 }
 
-func Fn_pango_log2vis_get_embedding_levels(param0 string, param1 int, param2 int) {
+func Fn_pango_log2vis_get_embedding_levels(param0 string, param1 int, param2 *int) {
 	cValue0 := 42
 	cValue1 := (C.int)(param1)
 	cValue2 := (*C.PangoDirection)(unsafe.Pointer(param2))
@@ -329,28 +329,28 @@ func Fn_pango_parse_markup(param0 string, param1 int, param2 rune, param3 *unsaf
 
 }
 
-func Fn_pango_parse_stretch(param0 string, param1 int, param2 bool) {
+func Fn_pango_parse_stretch(param0 string, param1 *int, param2 bool) {
 	cValue0 := 42
 	cValue1 := (*C.PangoStretch)(unsafe.Pointer(param1))
 	cValue2 := toCBool(param2)
 
 }
 
-func Fn_pango_parse_style(param0 string, param1 int, param2 bool) {
+func Fn_pango_parse_style(param0 string, param1 *int, param2 bool) {
 	cValue0 := 42
 	cValue1 := (*C.PangoStyle)(unsafe.Pointer(param1))
 	cValue2 := toCBool(param2)
 
 }
 
-func Fn_pango_parse_variant(param0 string, param1 int, param2 bool) {
+func Fn_pango_parse_variant(param0 string, param1 *int, param2 bool) {
 	cValue0 := 42
 	cValue1 := (*C.PangoVariant)(unsafe.Pointer(param1))
 	cValue2 := toCBool(param2)
 
 }
 
-func Fn_pango_parse_weight(param0 string, param1 int, param2 bool) {
+func Fn_pango_parse_weight(param0 string, param1 *int, param2 bool) {
 	cValue0 := 42
 	cValue1 := (*C.PangoWeight)(unsafe.Pointer(param1))
 	cValue2 := toCBool(param2)

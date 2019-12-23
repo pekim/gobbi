@@ -752,7 +752,7 @@ func Fn_g_signal_override_class_closure(param0 uint, param1 uint64, param2 unsaf
 
 // UNSUPPORTED : signal_override_class_handler : has callback
 
-func Fn_g_signal_parse_name(param0 string, param1 uint64, param2 *uint, param3 uint32, param4 bool) {
+func Fn_g_signal_parse_name(param0 string, param1 uint64, param2 *uint, param3 *uint32, param4 bool) {
 	cValue0 := 42
 	cValue1 := (C.GType)(param1)
 	cValue2 := (*C.guint)(unsafe.Pointer(param2))

@@ -348,7 +348,7 @@ func Fn_gdk_query_depths(param0 []*int, param1 *int) {
 	// has array param
 }
 
-func Fn_gdk_query_visual_types(param0 []int, param1 *int) {
+func Fn_gdk_query_visual_types(param0 []*int, param1 *int) {
 	// has array param
 }
 
@@ -477,7 +477,7 @@ func Fn_gdk_device_get_history(paramInstance unsafe.Pointer, param0 unsafe.Point
 	// has array param
 }
 
-func Fn_gdk_device_get_state(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []float64, param2 int) {
+func Fn_gdk_device_get_state(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []float64, param2 *int) {
 	// has array param
 }
 
@@ -559,7 +559,7 @@ func Fn_gdk_keymap_lookup_key(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 
 }
 
-func Fn_gdk_keymap_translate_keyboard_state(paramInstance unsafe.Pointer, param0 uint, param1 int, param2 int, param3 *uint, param4 *int, param5 *int, param6 int) {
+func Fn_gdk_keymap_translate_keyboard_state(paramInstance unsafe.Pointer, param0 uint, param1 int, param2 int, param3 *uint, param4 *int, param5 *int, param6 *int) {
 	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.guint)(param0)
 	cValue1 := (C.GdkModifierType)(param1)
@@ -732,7 +732,7 @@ func Fn_gdk_window_get_clip_region(paramInstance unsafe.Pointer) {
 
 }
 
-func Fn_gdk_window_get_decorations(paramInstance unsafe.Pointer, param0 int) {
+func Fn_gdk_window_get_decorations(paramInstance unsafe.Pointer, param0 *int) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GdkWMDecoration)(unsafe.Pointer(param0))
 
@@ -770,7 +770,7 @@ func Fn_gdk_window_get_parent(paramInstance unsafe.Pointer) {
 
 }
 
-func Fn_gdk_window_get_pointer(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 int) {
+func Fn_gdk_window_get_pointer(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 *int) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.gint)(unsafe.Pointer(param0))
 	cValue1 := (*C.gint)(unsafe.Pointer(param1))

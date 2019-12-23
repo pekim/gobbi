@@ -565,7 +565,7 @@ func Fn_gtk_accelerator_name(param0 uint, param1 int) {
 
 }
 
-func Fn_gtk_accelerator_parse(param0 string, param1 *uint, param2 int) {
+func Fn_gtk_accelerator_parse(param0 string, param1 *uint, param2 *int) {
 	cValue0 := 42
 	cValue1 := (*C.guint)(unsafe.Pointer(param1))
 	cValue2 := (*C.GdkModifierType)(unsafe.Pointer(param2))
@@ -711,7 +711,7 @@ func Fn_gtk_get_current_event_device() {
 
 }
 
-func Fn_gtk_get_current_event_state(param0 int) {
+func Fn_gtk_get_current_event_state(param0 *int) {
 	cValue0 := (*C.GdkModifierType)(unsafe.Pointer(param0))
 
 }
@@ -1176,13 +1176,13 @@ func Fn_gtk_rc_parse_color(param0 unsafe.Pointer, param1 unsafe.Pointer) {
 
 }
 
-func Fn_gtk_rc_parse_priority(param0 unsafe.Pointer, param1 int) {
+func Fn_gtk_rc_parse_priority(param0 unsafe.Pointer, param1 *int) {
 	cValue0 := (*C.GScanner)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkPathPriorityType)(unsafe.Pointer(param1))
 
 }
 
-func Fn_gtk_rc_parse_state(param0 unsafe.Pointer, param1 int) {
+func Fn_gtk_rc_parse_state(param0 unsafe.Pointer, param1 *int) {
 	cValue0 := (*C.GScanner)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkStateType)(unsafe.Pointer(param1))
 
@@ -1685,7 +1685,7 @@ func Fn_gtk_box_pack_start(paramInstance unsafe.Pointer, param0 unsafe.Pointer, 
 
 }
 
-func Fn_gtk_box_query_child_packing(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *bool, param2 *bool, param3 *uint, param4 int) {
+func Fn_gtk_box_query_child_packing(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *bool, param2 *bool, param3 *uint, param4 *int) {
 	cValueInstance := (*C.GtkBox)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
 	cValue1 := (*C.gboolean)(unsafe.Pointer(param1))
@@ -3077,7 +3077,7 @@ func Fn_gtk_image_get_animation(paramInstance unsafe.Pointer) {
 
 }
 
-func Fn_gtk_image_get_icon_set(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 int) {
+func Fn_gtk_image_get_icon_set(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *int) {
 	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
 	cValue0 := (**C.GtkIconSet)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkIconSize)(unsafe.Pointer(param1))
@@ -3089,7 +3089,7 @@ func Fn_gtk_image_get_pixbuf(paramInstance unsafe.Pointer) {
 
 }
 
-func Fn_gtk_image_get_stock(paramInstance unsafe.Pointer, param0 string, param1 int) {
+func Fn_gtk_image_get_stock(paramInstance unsafe.Pointer, param0 string, param1 *int) {
 	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
 	cValue1 := (*C.GtkIconSize)(unsafe.Pointer(param1))
@@ -4328,7 +4328,7 @@ func Fn_gtk_scrolled_window_get_placement(paramInstance unsafe.Pointer) {
 
 }
 
-func Fn_gtk_scrolled_window_get_policy(paramInstance unsafe.Pointer, param0 int, param1 int) {
+func Fn_gtk_scrolled_window_get_policy(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
 	cValueInstance := (*C.GtkScrolledWindow)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkPolicyType)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkPolicyType)(unsafe.Pointer(param1))
@@ -6142,7 +6142,7 @@ func Fn_gtk_tree_view_get_cursor(paramInstance unsafe.Pointer, param0 *unsafe.Po
 
 }
 
-func Fn_gtk_tree_view_get_dest_row_at_pos(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *unsafe.Pointer, param3 int) {
+func Fn_gtk_tree_view_get_dest_row_at_pos(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *unsafe.Pointer, param3 *int) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.gint)(param0)
 	cValue1 := (C.gint)(param1)
@@ -6151,7 +6151,7 @@ func Fn_gtk_tree_view_get_dest_row_at_pos(paramInstance unsafe.Pointer, param0 i
 
 }
 
-func Fn_gtk_tree_view_get_drag_dest_row(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 int) {
+func Fn_gtk_tree_view_get_drag_dest_row(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *int) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
 	cValue0 := (**C.GtkTreePath)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkTreeViewDropPosition)(unsafe.Pointer(param1))
@@ -7419,7 +7419,7 @@ func Fn_gtk_widget_show_now(paramInstance unsafe.Pointer) {
 
 }
 
-func Fn_gtk_widget_size_allocate(paramInstance unsafe.Pointer, param0 gdk.Rectangle) {
+func Fn_gtk_widget_size_allocate(paramInstance unsafe.Pointer, param0 *gdk.Rectangle) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkAllocation)(unsafe.Pointer(param0))
 

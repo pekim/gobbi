@@ -60,7 +60,7 @@ type WindowIface C.AtkWindowIface
 
 // UNSUPPORTED : add_key_event_listener : has callback
 
-func Fn_atk_attribute_set_free(param0 glib.SList) {
+func Fn_atk_attribute_set_free(param0 *glib.SList) {
 	cValue0 := (*C.AtkAttributeSet)(unsafe.Pointer(param0))
 
 }

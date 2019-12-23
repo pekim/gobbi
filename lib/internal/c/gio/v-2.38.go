@@ -2888,7 +2888,7 @@ func Fn_g_file_info_get_attribute_byte_string(paramInstance unsafe.Pointer, para
 
 }
 
-func Fn_g_file_info_get_attribute_data(paramInstance unsafe.Pointer, param0 string, param1 int, param2 *unsafe.Pointer, param3 int) {
+func Fn_g_file_info_get_attribute_data(paramInstance unsafe.Pointer, param0 string, param1 *int, param2 *unsafe.Pointer, param3 *int) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
 	cValue1 := (*C.GFileAttributeType)(unsafe.Pointer(param1))

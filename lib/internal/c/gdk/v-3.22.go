@@ -214,7 +214,7 @@ func Fn_gdk_drag_drop_succeeded(param0 unsafe.Pointer) {
 
 }
 
-func Fn_gdk_drag_find_window_for_screen(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 int, param4 int, param5 *unsafe.Pointer, param6 int) {
+func Fn_gdk_drag_find_window_for_screen(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 int, param4 int, param5 *unsafe.Pointer, param6 *int) {
 	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
 	cValue1 := (*C.GdkWindow)(unsafe.Pointer(param1))
 	cValue2 := (*C.GdkScreen)(unsafe.Pointer(param2))
@@ -532,7 +532,7 @@ func Fn_gdk_query_depths(param0 []*int, param1 *int) {
 	// has array param
 }
 
-func Fn_gdk_query_visual_types(param0 []int, param1 *int) {
+func Fn_gdk_query_visual_types(param0 []*int, param1 *int) {
 	// has array param
 }
 
@@ -845,7 +845,7 @@ func Fn_gdk_device_get_history(paramInstance unsafe.Pointer, param0 unsafe.Point
 	// has array param
 }
 
-func Fn_gdk_device_get_key(paramInstance unsafe.Pointer, param0 uint, param1 *uint, param2 int) {
+func Fn_gdk_device_get_key(paramInstance unsafe.Pointer, param0 uint, param1 *uint, param2 *int) {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.guint)(param0)
 	cValue1 := (*C.guint)(unsafe.Pointer(param1))
@@ -909,7 +909,7 @@ func Fn_gdk_device_get_source(paramInstance unsafe.Pointer) {
 
 }
 
-func Fn_gdk_device_get_state(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []float64, param2 int) {
+func Fn_gdk_device_get_state(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []float64, param2 *int) {
 	// has array param
 }
 
@@ -1128,7 +1128,7 @@ func Fn_gdk_display_get_name(paramInstance unsafe.Pointer) {
 
 }
 
-func Fn_gdk_display_get_pointer(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *int, param2 *int, param3 int) {
+func Fn_gdk_display_get_pointer(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *int, param2 *int, param3 *int) {
 	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
 	cValue0 := (**C.GdkScreen)(unsafe.Pointer(param0))
 	cValue1 := (*C.gint)(unsafe.Pointer(param1))
@@ -1545,7 +1545,7 @@ func Fn_gdk_gl_context_get_current() {
 
 }
 
-func Fn_gdk_keymap_add_virtual_modifiers(paramInstance unsafe.Pointer, param0 int) {
+func Fn_gdk_keymap_add_virtual_modifiers(paramInstance unsafe.Pointer, param0 *int) {
 	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GdkModifierType)(unsafe.Pointer(param0))
 
@@ -1601,13 +1601,13 @@ func Fn_gdk_keymap_lookup_key(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 
 }
 
-func Fn_gdk_keymap_map_virtual_modifiers(paramInstance unsafe.Pointer, param0 int) {
+func Fn_gdk_keymap_map_virtual_modifiers(paramInstance unsafe.Pointer, param0 *int) {
 	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GdkModifierType)(unsafe.Pointer(param0))
 
 }
 
-func Fn_gdk_keymap_translate_keyboard_state(paramInstance unsafe.Pointer, param0 uint, param1 int, param2 int, param3 *uint, param4 *int, param5 *int, param6 int) {
+func Fn_gdk_keymap_translate_keyboard_state(paramInstance unsafe.Pointer, param0 uint, param1 int, param2 int, param3 *uint, param4 *int, param5 *int, param6 *int) {
 	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.guint)(param0)
 	cValue1 := (C.GdkModifierType)(param1)
@@ -2215,7 +2215,7 @@ func Fn_gdk_window_get_cursor(paramInstance unsafe.Pointer) {
 
 }
 
-func Fn_gdk_window_get_decorations(paramInstance unsafe.Pointer, param0 int) {
+func Fn_gdk_window_get_decorations(paramInstance unsafe.Pointer, param0 *int) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GdkWMDecoration)(unsafe.Pointer(param0))
 
@@ -2233,7 +2233,7 @@ func Fn_gdk_window_get_device_events(paramInstance unsafe.Pointer, param0 unsafe
 
 }
 
-func Fn_gdk_window_get_device_position(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *int, param2 *int, param3 int) {
+func Fn_gdk_window_get_device_position(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *int, param2 *int, param3 *int) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GdkDevice)(unsafe.Pointer(param0))
 	cValue1 := (*C.gint)(unsafe.Pointer(param1))
@@ -2242,7 +2242,7 @@ func Fn_gdk_window_get_device_position(paramInstance unsafe.Pointer, param0 unsa
 
 }
 
-func Fn_gdk_window_get_device_position_double(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *float64, param2 *float64, param3 int) {
+func Fn_gdk_window_get_device_position_double(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *float64, param2 *float64, param3 *int) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GdkDevice)(unsafe.Pointer(param0))
 	cValue1 := (*C.gdouble)(unsafe.Pointer(param1))
@@ -2344,7 +2344,7 @@ func Fn_gdk_window_get_pass_through(paramInstance unsafe.Pointer) {
 
 }
 
-func Fn_gdk_window_get_pointer(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 int) {
+func Fn_gdk_window_get_pointer(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 *int) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.gint)(unsafe.Pointer(param0))
 	cValue1 := (*C.gint)(unsafe.Pointer(param1))

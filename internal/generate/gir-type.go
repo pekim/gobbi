@@ -138,15 +138,15 @@ func (t *Type) sysParamGoType() *jen.Statement {
 	if t.isAlias() {
 		if t.isQualifiedName() {
 			alias, _ := t.foreignNamespace.Aliases.byName(t.foreignName)
-			return alias.Type.sysParamGoType()
+			return jen.Op(t.cStars).Add(alias.Type.sysParamGoType())
 		}
 
 		alias, _ := t.namespace.Aliases.byName(t.Name)
-		return alias.Type.sysParamGoType()
+		return jen.Op(t.cStars).Add(alias.Type.sysParamGoType())
 	}
 
 	if t.isBitfield() || t.isEnumeration() {
-		return jen.Int()
+		return jen.Op(t.cStars).Int()
 	}
 
 	if t.isRecord() && t.cIndirectionCount == 0 {
