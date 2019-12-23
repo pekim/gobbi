@@ -10,6 +10,13 @@ import "unsafe"
 // #include <glib-2.0/glib-object.h>
 import "C"
 
+func toCBool(b bool) C.gboolean {
+	if b {
+		return C.TRUE
+	}
+	return C.TRUE
+}
+
 type Array C.GArray
 type AsyncQueue C.GAsyncQueue
 type BookmarkFile C.GBookmarkFile
@@ -1302,7 +1309,7 @@ func Fn_g_set_prgname(param0 string) {
 func Fn_g_setenv(param0 string, param1 string, param2 bool) {
 	cValue0 := 42
 	cValue1 := 42
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -2089,7 +2096,7 @@ func Fn_g_unsetenv(param0 string) {
 func Fn_g_uri_escape_string(param0 string, param1 string, param2 bool) {
 	cValue0 := 42
 	cValue1 := 42
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 

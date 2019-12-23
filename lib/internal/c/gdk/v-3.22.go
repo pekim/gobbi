@@ -8,6 +8,13 @@ import "unsafe"
 // #include <gdk/gdk.h>
 import "C"
 
+func toCBool(b bool) C.gboolean {
+	if b {
+		return C.TRUE
+	}
+	return C.TRUE
+}
+
 type Atom C.GdkAtom
 type Color C.GdkColor
 type DevicePadInterface C.GdkDevicePadInterface
@@ -58,7 +65,7 @@ func Fn_gdk_add_option_entries_libgtk_only(param0 unsafe.Pointer) {
 
 func Fn_gdk_atom_intern(param0 string, param1 bool) {
 	cValue0 := 42
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -198,7 +205,7 @@ func Fn_gdk_drag_drop(param0 unsafe.Pointer, param1 uint32) {
 
 func Fn_gdk_drag_drop_done(param0 unsafe.Pointer, param1 bool) {
 	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -244,14 +251,14 @@ func Fn_gdk_drag_status(param0 unsafe.Pointer, param1 int, param2 uint32) {
 
 func Fn_gdk_drop_finish(param0 unsafe.Pointer, param1 bool, param2 uint32) {
 	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 	cValue2 := (C.guint32)(param2)
 
 }
 
 func Fn_gdk_drop_reply(param0 unsafe.Pointer, param1 bool, param2 uint32) {
 	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 	cValue2 := (C.guint32)(param2)
 
 }
@@ -347,7 +354,7 @@ func Fn_gdk_init_check(param0 *int, param1 *[]string) {
 
 func Fn_gdk_keyboard_grab(param0 unsafe.Pointer, param1 bool, param2 uint32) {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 	cValue2 := (C.guint32)(param2)
 
 }
@@ -479,7 +486,7 @@ func Fn_gdk_pixbuf_get_from_window(param0 unsafe.Pointer, param1 int, param2 int
 
 func Fn_gdk_pointer_grab(param0 unsafe.Pointer, param1 bool, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 uint32) {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 	cValue2 := (C.GdkEventMask)(param2)
 	cValue3 := (*C.GdkWindow)(unsafe.Pointer(param3))
 	cValue4 := (*C.GdkCursor)(unsafe.Pointer(param4))
@@ -552,7 +559,7 @@ func Fn_gdk_selection_owner_set(param0 unsafe.Pointer, param1 Atom, param2 uint3
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
 	cValue1 := (C.GdkAtom)(param1)
 	cValue2 := (C.guint32)(param2)
-	cValue3 := (C.gboolean)(param3)
+	cValue3 := toCBool(param3)
 
 }
 
@@ -561,7 +568,7 @@ func Fn_gdk_selection_owner_set_for_display(param0 unsafe.Pointer, param1 unsafe
 	cValue1 := (*C.GdkWindow)(unsafe.Pointer(param1))
 	cValue2 := (C.GdkAtom)(param2)
 	cValue3 := (C.guint32)(param3)
-	cValue4 := (C.gboolean)(param4)
+	cValue4 := toCBool(param4)
 
 }
 
@@ -608,7 +615,7 @@ func Fn_gdk_set_program_class(param0 string) {
 }
 
 func Fn_gdk_set_show_events(param0 bool) {
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -929,7 +936,7 @@ func Fn_gdk_device_grab(paramInstance unsafe.Pointer, param0 unsafe.Pointer, par
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
 	cValue1 := (C.GdkGrabOwnership)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 	cValue3 := (C.GdkEventMask)(param3)
 	cValue4 := (*C.GdkCursor)(unsafe.Pointer(param4))
 	cValue5 := (C.guint32)(param5)
@@ -1507,13 +1514,13 @@ func Fn_gdk_gl_context_realize(paramInstance unsafe.Pointer) {
 
 func Fn_gdk_gl_context_set_debug_enabled(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gdk_gl_context_set_forward_compatible(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2463,14 +2470,14 @@ func Fn_gdk_window_input_shape_combine_region(paramInstance unsafe.Pointer, para
 func Fn_gdk_window_invalidate_rect(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GdkRectangle)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
 func Fn_gdk_window_invalidate_region(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.cairo_region_t)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -2556,7 +2563,7 @@ func Fn_gdk_window_peek_children(paramInstance unsafe.Pointer) {
 
 func Fn_gdk_window_process_updates(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2590,7 +2597,7 @@ func Fn_gdk_window_resize(paramInstance unsafe.Pointer, param0 int, param1 int) 
 func Fn_gdk_window_restack(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -2603,7 +2610,7 @@ func Fn_gdk_window_scroll(paramInstance unsafe.Pointer, param0 int, param1 int) 
 
 func Fn_gdk_window_set_accept_focus(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2637,7 +2644,7 @@ func Fn_gdk_window_set_child_shapes(paramInstance unsafe.Pointer) {
 
 func Fn_gdk_window_set_composited(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2669,7 +2676,7 @@ func Fn_gdk_window_set_device_events(paramInstance unsafe.Pointer, param0 unsafe
 
 func Fn_gdk_window_set_event_compression(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2681,7 +2688,7 @@ func Fn_gdk_window_set_events(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_gdk_window_set_focus_on_map(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2726,19 +2733,19 @@ func Fn_gdk_window_set_icon_name(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_gdk_window_set_keep_above(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gdk_window_set_keep_below(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gdk_window_set_modal_hint(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2756,13 +2763,13 @@ func Fn_gdk_window_set_opaque_region(paramInstance unsafe.Pointer, param0 unsafe
 
 func Fn_gdk_window_set_override_redirect(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gdk_window_set_pass_through(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2783,13 +2790,13 @@ func Fn_gdk_window_set_shadow_width(paramInstance unsafe.Pointer, param0 int, pa
 
 func Fn_gdk_window_set_skip_pager_hint(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gdk_window_set_skip_taskbar_hint(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2808,13 +2815,13 @@ func Fn_gdk_window_set_startup_id(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_gdk_window_set_static_gravities(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gdk_window_set_support_multidevice(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2838,7 +2845,7 @@ func Fn_gdk_window_set_type_hint(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_gdk_window_set_urgency_hint(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2928,6 +2935,6 @@ func Fn_gdk_window_process_all_updates() {
 }
 
 func Fn_gdk_window_set_debug_updates(param0 bool) {
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }

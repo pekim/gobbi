@@ -15,6 +15,13 @@ import (
 // #include <gtk/gtkx.h>
 import "C"
 
+func toCBool(b bool) C.gboolean {
+	if b {
+		return C.TRUE
+	}
+	return C.TRUE
+}
+
 type AboutDialogClass C.GtkAboutDialogClass
 type AboutDialogPrivate C.GtkAboutDialogPrivate
 type AccelGroupClass C.GtkAccelGroupClass
@@ -670,8 +677,8 @@ func Fn_gtk_distribute_natural_allocation(param0 int, param1 uint, param2 unsafe
 
 func Fn_gtk_drag_finish(param0 unsafe.Pointer, param1 bool, param2 bool, param3 uint32) {
 	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue1 := toCBool(param1)
+	cValue2 := toCBool(param2)
 	cValue3 := (C.guint32)(param3)
 
 }
@@ -767,7 +774,7 @@ func Fn_gtk_get_event_widget(param0 unsafe.Pointer) {
 }
 
 func Fn_gtk_get_option_group(param0 bool) {
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -850,7 +857,7 @@ func Fn_gtk_main_iteration() {
 }
 
 func Fn_gtk_main_iteration_do(param0 bool) {
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -870,7 +877,7 @@ func Fn_gtk_paint_arrow(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 	cValue5 := 42
 	cValue6 := (C.GtkArrowType)(param6)
-	cValue7 := (C.gboolean)(param7)
+	cValue7 := toCBool(param7)
 	cValue8 := (C.gint)(param8)
 	cValue9 := (C.gint)(param9)
 	cValue10 := (C.gint)(param10)
@@ -1022,7 +1029,7 @@ func Fn_gtk_paint_layout(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 in
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
 	cValue2 := (C.GtkStateType)(param2)
-	cValue3 := (C.gboolean)(param3)
+	cValue3 := toCBool(param3)
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 	cValue5 := 42
 	cValue6 := (C.gint)(param6)
@@ -1150,7 +1157,7 @@ func Fn_gtk_paper_size_get_default() {
 }
 
 func Fn_gtk_paper_size_get_paper_sizes(param0 bool) {
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -1303,7 +1310,7 @@ func Fn_gtk_rc_reparse_all() {
 
 func Fn_gtk_rc_reparse_all_for_settings(param0 unsafe.Pointer, param1 bool) {
 	cValue0 := (*C.GtkSettings)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -1615,7 +1622,7 @@ func Fn_gtk_about_dialog_set_website_label(paramInstance unsafe.Pointer, param0 
 
 func Fn_gtk_about_dialog_set_wrap_license(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkAboutDialog)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -1734,7 +1741,7 @@ func Fn_gtk_accel_map_change_entry(param0 string, param1 uint, param2 int, param
 	cValue0 := 42
 	cValue1 := (C.guint)(param1)
 	cValue2 := (C.GdkModifierType)(param2)
-	cValue3 := (C.gboolean)(param3)
+	cValue3 := toCBool(param3)
 
 }
 
@@ -1890,13 +1897,13 @@ func Fn_gtk_action_set_accel_path(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_gtk_action_set_sensitive(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkAction)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_action_set_visible(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkAction)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -1968,7 +1975,7 @@ func Fn_gtk_action_group_remove_action(paramInstance unsafe.Pointer, param0 unsa
 
 func Fn_gtk_action_group_set_sensitive(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkActionGroup)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -1982,7 +1989,7 @@ func Fn_gtk_action_group_set_translation_domain(paramInstance unsafe.Pointer, pa
 
 func Fn_gtk_action_group_set_visible(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkActionGroup)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2111,7 +2118,7 @@ func Fn_gtk_aspect_frame_new(param0 string, param1 float32, param2 float32, para
 	cValue1 := (C.gfloat)(param1)
 	cValue2 := (C.gfloat)(param2)
 	cValue3 := (C.gfloat)(param3)
-	cValue4 := (C.gboolean)(param4)
+	cValue4 := toCBool(param4)
 
 }
 
@@ -2120,7 +2127,7 @@ func Fn_gtk_aspect_frame_set(paramInstance unsafe.Pointer, param0 float32, param
 	cValue0 := (C.gfloat)(param0)
 	cValue1 := (C.gfloat)(param1)
 	cValue2 := (C.gfloat)(param2)
-	cValue3 := (C.gboolean)(param3)
+	cValue3 := toCBool(param3)
 
 }
 
@@ -2216,7 +2223,7 @@ func Fn_gtk_assistant_set_current_page(paramInstance unsafe.Pointer, param0 int)
 func Fn_gtk_assistant_set_page_complete(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GtkAssistant)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -2271,8 +2278,8 @@ func Fn_gtk_box_get_spacing(paramInstance unsafe.Pointer) {
 func Fn_gtk_box_pack_end(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool, param2 bool, param3 uint) {
 	cValueInstance := (*C.GtkBox)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue1 := toCBool(param1)
+	cValue2 := toCBool(param2)
 	cValue3 := (C.guint)(param3)
 
 }
@@ -2280,8 +2287,8 @@ func Fn_gtk_box_pack_end(paramInstance unsafe.Pointer, param0 unsafe.Pointer, pa
 func Fn_gtk_box_pack_start(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool, param2 bool, param3 uint) {
 	cValueInstance := (*C.GtkBox)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue1 := toCBool(param1)
+	cValue2 := toCBool(param2)
 	cValue3 := (C.guint)(param3)
 
 }
@@ -2306,8 +2313,8 @@ func Fn_gtk_box_reorder_child(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 func Fn_gtk_box_set_child_packing(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool, param2 bool, param3 uint, param4 int) {
 	cValueInstance := (*C.GtkBox)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue1 := toCBool(param1)
+	cValue2 := toCBool(param2)
 	cValue3 := (C.guint)(param3)
 	cValue4 := (C.GtkPackType)(param4)
 
@@ -2315,7 +2322,7 @@ func Fn_gtk_box_set_child_packing(paramInstance unsafe.Pointer, param0 unsafe.Po
 
 func Fn_gtk_box_set_homogeneous(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkBox)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2502,7 +2509,7 @@ func Fn_gtk_button_set_alignment(paramInstance unsafe.Pointer, param0 float32, p
 
 func Fn_gtk_button_set_focus_on_click(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2532,13 +2539,13 @@ func Fn_gtk_button_set_relief(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_gtk_button_set_use_stock(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_button_set_use_underline(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2556,7 +2563,7 @@ func Fn_gtk_button_box_get_layout(paramInstance unsafe.Pointer) {
 func Fn_gtk_button_box_set_child_secondary(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GtkButtonBox)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -2706,7 +2713,7 @@ func Fn_gtk_cell_renderer_start_editing(paramInstance unsafe.Pointer, param0 uns
 
 func Fn_gtk_cell_renderer_stop_editing(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkCellRenderer)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2756,13 +2763,13 @@ func Fn_gtk_cell_renderer_toggle_get_radio(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_cell_renderer_toggle_set_active(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkCellRendererToggle)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_cell_renderer_toggle_set_radio(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkCellRendererToggle)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2866,19 +2873,19 @@ func Fn_gtk_check_menu_item_get_inconsistent(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_check_menu_item_set_active(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkCheckMenuItem)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_check_menu_item_set_draw_as_radio(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkCheckMenuItem)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_check_menu_item_set_inconsistent(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkCheckMenuItem)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3051,7 +3058,7 @@ func Fn_gtk_color_button_set_title(paramInstance unsafe.Pointer, param0 string) 
 
 func Fn_gtk_color_button_set_use_alpha(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkColorButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3110,13 +3117,13 @@ func Fn_gtk_color_selection_set_current_color(paramInstance unsafe.Pointer, para
 
 func Fn_gtk_color_selection_set_has_opacity_control(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkColorSelection)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_color_selection_set_has_palette(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkColorSelection)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3246,7 +3253,7 @@ func Fn_gtk_combo_box_set_active_iter(paramInstance unsafe.Pointer, param0 unsaf
 
 func Fn_gtk_combo_box_set_add_tearoffs(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkComboBox)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3258,7 +3265,7 @@ func Fn_gtk_combo_box_set_column_span_column(paramInstance unsafe.Pointer, param
 
 func Fn_gtk_combo_box_set_focus_on_click(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkComboBox)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3421,7 +3428,7 @@ func Fn_gtk_container_set_focus_vadjustment(paramInstance unsafe.Pointer, param0
 
 func Fn_gtk_container_set_reallocate_redraws(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkContainer)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3541,7 +3548,7 @@ func Fn_gtk_dialog_set_default_response(paramInstance unsafe.Pointer, param0 int
 func Fn_gtk_dialog_set_response_sensitive(paramInstance unsafe.Pointer, param0 int, param1 bool) {
 	cValueInstance := (*C.GtkDialog)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.GtkResponseType)(param0)
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -3628,7 +3635,7 @@ func Fn_gtk_entry_layout_index_to_text_index(paramInstance unsafe.Pointer, param
 
 func Fn_gtk_entry_set_activates_default(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkEntry)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3652,7 +3659,7 @@ func Fn_gtk_entry_set_cursor_hadjustment(paramInstance unsafe.Pointer, param0 un
 
 func Fn_gtk_entry_set_has_frame(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkEntry)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3682,7 +3689,7 @@ func Fn_gtk_entry_set_text(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_gtk_entry_set_visibility(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkEntry)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3784,13 +3791,13 @@ func Fn_gtk_entry_completion_insert_prefix(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_entry_completion_set_inline_completion(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkEntryCompletion)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_entry_completion_set_inline_selection(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkEntryCompletion)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3810,19 +3817,19 @@ func Fn_gtk_entry_completion_set_model(paramInstance unsafe.Pointer, param0 unsa
 
 func Fn_gtk_entry_completion_set_popup_completion(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkEntryCompletion)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_entry_completion_set_popup_set_width(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkEntryCompletion)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_entry_completion_set_popup_single_match(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkEntryCompletion)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3848,13 +3855,13 @@ func Fn_gtk_event_box_get_visible_window(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_event_box_set_above_child(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkEventBox)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_event_box_set_visible_window(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkEventBox)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3922,7 +3929,7 @@ func Fn_gtk_expander_get_use_underline(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_expander_set_expanded(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkExpander)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3946,13 +3953,13 @@ func Fn_gtk_expander_set_spacing(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_gtk_expander_set_use_markup(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkExpander)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_expander_set_use_underline(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkExpander)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3984,7 +3991,7 @@ func Fn_gtk_file_chooser_button_get_width_chars(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_file_chooser_button_set_focus_on_click(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkFileChooserButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -4127,13 +4134,13 @@ func Fn_gtk_font_button_set_font_name(paramInstance unsafe.Pointer, param0 strin
 
 func Fn_gtk_font_button_set_show_size(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkFontButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_font_button_set_show_style(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkFontButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -4145,13 +4152,13 @@ func Fn_gtk_font_button_set_title(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_gtk_font_button_set_use_font(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkFontButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_font_button_set_use_size(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkFontButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -4312,7 +4319,7 @@ func Fn_gtk_grid_get_row_spacing(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_grid_set_column_homogeneous(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkGrid)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -4324,7 +4331,7 @@ func Fn_gtk_grid_set_column_spacing(paramInstance unsafe.Pointer, param0 uint) {
 
 func Fn_gtk_grid_set_row_homogeneous(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkGrid)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -4335,7 +4342,7 @@ func Fn_gtk_grid_set_row_spacing(paramInstance unsafe.Pointer, param0 uint) {
 }
 
 func Fn_gtk_hbox_new(param0 bool, param1 int) {
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 	cValue1 := (C.gint)(param1)
 
 }
@@ -4471,7 +4478,7 @@ func Fn_gtk_im_context_set_surrounding(paramInstance unsafe.Pointer, param0 stri
 
 func Fn_gtk_im_context_set_use_preedit(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkIMContext)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -4584,7 +4591,7 @@ func Fn_gtk_icon_info_load_icon(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_icon_info_set_raw_coordinates(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkIconInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -4843,7 +4850,7 @@ func Fn_gtk_icon_view_get_tooltip_context(paramInstance unsafe.Pointer, param0 *
 	cValueInstance := (*C.GtkIconView)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.gint)(unsafe.Pointer(param0))
 	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 	cValue3 := (**C.GtkTreeModel)(unsafe.Pointer(param3))
 	cValue4 := (**C.GtkTreePath)(unsafe.Pointer(param4))
 	cValue5 := (*C.GtkTreeIter)(unsafe.Pointer(param5))
@@ -4872,7 +4879,7 @@ func Fn_gtk_icon_view_path_is_selected(paramInstance unsafe.Pointer, param0 unsa
 func Fn_gtk_icon_view_scroll_to_path(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool, param2 float32, param3 float32) {
 	cValueInstance := (*C.GtkIconView)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 	cValue2 := (C.gfloat)(param2)
 	cValue3 := (C.gfloat)(param3)
 
@@ -4907,7 +4914,7 @@ func Fn_gtk_icon_view_set_cursor(paramInstance unsafe.Pointer, param0 unsafe.Poi
 	cValueInstance := (*C.GtkIconView)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkCellRenderer)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -4956,7 +4963,7 @@ func Fn_gtk_icon_view_set_pixbuf_column(paramInstance unsafe.Pointer, param0 int
 
 func Fn_gtk_icon_view_set_reorderable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkIconView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5363,7 +5370,7 @@ func Fn_gtk_label_set_label(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_gtk_label_set_line_wrap(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkLabel)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5405,13 +5412,13 @@ func Fn_gtk_label_set_pattern(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_gtk_label_set_selectable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkLabel)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_label_set_single_line_mode(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkLabel)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5429,13 +5436,13 @@ func Fn_gtk_label_set_text_with_mnemonic(paramInstance unsafe.Pointer, param0 st
 
 func Fn_gtk_label_set_use_markup(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkLabel)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_label_set_use_underline(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkLabel)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5741,7 +5748,7 @@ func Fn_gtk_menu_set_screen(paramInstance unsafe.Pointer, param0 unsafe.Pointer)
 
 func Fn_gtk_menu_set_tearoff_state(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkMenu)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5829,7 +5836,7 @@ func Fn_gtk_menu_item_set_accel_path(paramInstance unsafe.Pointer, param0 string
 
 func Fn_gtk_menu_item_set_right_justified(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkMenuItem)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5854,7 +5861,7 @@ func Fn_gtk_menu_item_toggle_size_request(paramInstance unsafe.Pointer, param0 *
 func Fn_gtk_menu_shell_activate_item(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GtkMenuShell)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -5899,7 +5906,7 @@ func Fn_gtk_menu_shell_prepend(paramInstance unsafe.Pointer, param0 unsafe.Point
 
 func Fn_gtk_menu_shell_select_first(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkMenuShell)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5911,7 +5918,7 @@ func Fn_gtk_menu_shell_select_item(paramInstance unsafe.Pointer, param0 unsafe.P
 
 func Fn_gtk_menu_shell_set_take_focus(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkMenuShell)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -6181,26 +6188,26 @@ func Fn_gtk_notebook_set_menu_label_text(paramInstance unsafe.Pointer, param0 un
 
 func Fn_gtk_notebook_set_scrollable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkNotebook)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_notebook_set_show_border(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkNotebook)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_notebook_set_show_tabs(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkNotebook)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_notebook_set_tab_detachable(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GtkNotebook)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -6227,7 +6234,7 @@ func Fn_gtk_notebook_set_tab_pos(paramInstance unsafe.Pointer, param0 int) {
 func Fn_gtk_notebook_set_tab_reorderable(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GtkNotebook)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -6409,16 +6416,16 @@ func Fn_gtk_paned_get_position(paramInstance unsafe.Pointer) {
 func Fn_gtk_paned_pack1(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool, param2 bool) {
 	cValueInstance := (*C.GtkPaned)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue1 := toCBool(param1)
+	cValue2 := toCBool(param2)
 
 }
 
 func Fn_gtk_paned_pack2(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool, param2 bool) {
 	cValueInstance := (*C.GtkPaned)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue1 := toCBool(param1)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -6574,7 +6581,7 @@ func Fn_gtk_print_operation_run(paramInstance unsafe.Pointer, param0 int, param1
 
 func Fn_gtk_print_operation_set_allow_async(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkPrintOperation)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -6622,13 +6629,13 @@ func Fn_gtk_print_operation_set_print_settings(paramInstance unsafe.Pointer, par
 
 func Fn_gtk_print_operation_set_show_progress(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkPrintOperation)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_print_operation_set_track_print_status(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkPrintOperation)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -6640,7 +6647,7 @@ func Fn_gtk_print_operation_set_unit(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_gtk_print_operation_set_use_full_page(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkPrintOperation)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -6840,13 +6847,13 @@ func Fn_gtk_print_settings_set(paramInstance unsafe.Pointer, param0 string, para
 func Fn_gtk_print_settings_set_bool(paramInstance unsafe.Pointer, param0 string, param1 bool) {
 	cValueInstance := (*C.GtkPrintSettings)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
 func Fn_gtk_print_settings_set_collate(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkPrintSettings)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -6982,7 +6989,7 @@ func Fn_gtk_print_settings_set_resolution(paramInstance unsafe.Pointer, param0 i
 
 func Fn_gtk_print_settings_set_reverse(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkPrintSettings)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -6994,7 +7001,7 @@ func Fn_gtk_print_settings_set_scale(paramInstance unsafe.Pointer, param0 float6
 
 func Fn_gtk_print_settings_set_use_color(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkPrintSettings)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -7065,7 +7072,7 @@ func Fn_gtk_progress_bar_set_fraction(paramInstance unsafe.Pointer, param0 float
 
 func Fn_gtk_progress_bar_set_inverted(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkProgressBar)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -7296,7 +7303,7 @@ func Fn_gtk_range_set_increments(paramInstance unsafe.Pointer, param0 float64, p
 
 func Fn_gtk_range_set_inverted(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkRange)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -7315,13 +7322,13 @@ func Fn_gtk_range_set_range(paramInstance unsafe.Pointer, param0 float64, param1
 
 func Fn_gtk_range_set_restrict_to_fill_level(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkRange)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_range_set_show_fill_level(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkRange)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -7370,7 +7377,7 @@ func Fn_gtk_recent_action_get_show_numbers(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_recent_action_set_show_numbers(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkRecentAction)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -7394,7 +7401,7 @@ func Fn_gtk_recent_chooser_menu_get_show_numbers(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_recent_chooser_menu_set_show_numbers(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkRecentChooserMenu)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -7566,7 +7573,7 @@ func Fn_gtk_scale_set_digits(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_gtk_scale_set_draw_value(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkScale)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -7706,7 +7713,7 @@ func Fn_gtk_separator_tool_item_get_draw(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_separator_tool_item_set_draw(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkSeparatorToolItem)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -7791,7 +7798,7 @@ func Fn_gtk_size_group_remove_widget(paramInstance unsafe.Pointer, param0 unsafe
 
 func Fn_gtk_size_group_set_ignore_hidden(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkSizeGroup)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -7913,7 +7920,7 @@ func Fn_gtk_spin_button_set_increments(paramInstance unsafe.Pointer, param0 floa
 
 func Fn_gtk_spin_button_set_numeric(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkSpinButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -7926,7 +7933,7 @@ func Fn_gtk_spin_button_set_range(paramInstance unsafe.Pointer, param0 float64, 
 
 func Fn_gtk_spin_button_set_snap_to_ticks(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkSpinButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -7944,7 +7951,7 @@ func Fn_gtk_spin_button_set_value(paramInstance unsafe.Pointer, param0 float64) 
 
 func Fn_gtk_spin_button_set_wrap(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkSpinButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -8064,7 +8071,7 @@ func Fn_gtk_status_icon_set_screen(paramInstance unsafe.Pointer, param0 unsafe.P
 
 func Fn_gtk_status_icon_set_visible(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkStatusIcon)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -8241,7 +8248,7 @@ func Fn_gtk_style_properties_clear(paramInstance unsafe.Pointer) {
 func Fn_gtk_table_new(param0 uint, param1 uint, param2 bool) {
 	cValue0 := (C.guint)(param0)
 	cValue1 := (C.guint)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -8318,7 +8325,7 @@ func Fn_gtk_table_set_col_spacings(paramInstance unsafe.Pointer, param0 uint) {
 
 func Fn_gtk_table_set_homogeneous(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTable)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -8376,8 +8383,8 @@ func Fn_gtk_text_buffer_apply_tag_by_name(paramInstance unsafe.Pointer, param0 s
 func Fn_gtk_text_buffer_backspace(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool, param2 bool) {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkTextIter)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue1 := toCBool(param1)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -8402,7 +8409,7 @@ func Fn_gtk_text_buffer_create_mark(paramInstance unsafe.Pointer, param0 string,
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
 	cValue1 := (*C.GtkTextIter)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -8411,7 +8418,7 @@ func Fn_gtk_text_buffer_create_mark(paramInstance unsafe.Pointer, param0 string,
 func Fn_gtk_text_buffer_cut_clipboard(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkClipboard)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -8426,7 +8433,7 @@ func Fn_gtk_text_buffer_delete_interactive(paramInstance unsafe.Pointer, param0 
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkTextIter)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkTextIter)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -8444,8 +8451,8 @@ func Fn_gtk_text_buffer_delete_mark_by_name(paramInstance unsafe.Pointer, param0
 
 func Fn_gtk_text_buffer_delete_selection(paramInstance unsafe.Pointer, param0 bool, param1 bool) {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
-	cValue1 := (C.gboolean)(param1)
+	cValue0 := toCBool(param0)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -8462,7 +8469,7 @@ func Fn_gtk_text_buffer_deserialize_get_can_create_tags(paramInstance unsafe.Poi
 func Fn_gtk_text_buffer_deserialize_set_can_create_tags(paramInstance unsafe.Pointer, param0 gdk.Atom, param1 bool) {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.GdkAtom)(param0)
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -8597,7 +8604,7 @@ func Fn_gtk_text_buffer_get_slice(paramInstance unsafe.Pointer, param0 unsafe.Po
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkTextIter)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkTextIter)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -8616,7 +8623,7 @@ func Fn_gtk_text_buffer_get_text(paramInstance unsafe.Pointer, param0 unsafe.Poi
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkTextIter)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkTextIter)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -8647,7 +8654,7 @@ func Fn_gtk_text_buffer_insert_interactive(paramInstance unsafe.Pointer, param0 
 	cValue0 := (*C.GtkTextIter)(unsafe.Pointer(param0))
 	cValue1 := 42
 	cValue2 := (C.gint)(param2)
-	cValue3 := (C.gboolean)(param3)
+	cValue3 := toCBool(param3)
 
 }
 
@@ -8655,7 +8662,7 @@ func Fn_gtk_text_buffer_insert_interactive_at_cursor(paramInstance unsafe.Pointe
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
 	cValue1 := (C.gint)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -8679,7 +8686,7 @@ func Fn_gtk_text_buffer_insert_range_interactive(paramInstance unsafe.Pointer, p
 	cValue0 := (*C.GtkTextIter)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkTextIter)(unsafe.Pointer(param1))
 	cValue2 := (*C.GtkTextIter)(unsafe.Pointer(param2))
-	cValue3 := (C.gboolean)(param3)
+	cValue3 := toCBool(param3)
 
 }
 
@@ -8705,7 +8712,7 @@ func Fn_gtk_text_buffer_paste_clipboard(paramInstance unsafe.Pointer, param0 uns
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkClipboard)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkTextIter)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -8779,7 +8786,7 @@ func Fn_gtk_text_buffer_serialize(paramInstance unsafe.Pointer, param0 unsafe.Po
 
 func Fn_gtk_text_buffer_set_modified(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -8818,7 +8825,7 @@ func Fn_gtk_text_child_anchor_get_widgets(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_text_mark_new(param0 string, param1 bool) {
 	cValue0 := 42
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -8849,7 +8856,7 @@ func Fn_gtk_text_mark_get_visible(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_text_mark_set_visible(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTextMark)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -9140,7 +9147,7 @@ func Fn_gtk_text_view_scroll_to_iter(paramInstance unsafe.Pointer, param0 unsafe
 	cValueInstance := (*C.GtkTextView)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkTextIter)(unsafe.Pointer(param0))
 	cValue1 := (C.gdouble)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 	cValue3 := (C.gdouble)(param3)
 	cValue4 := (C.gdouble)(param4)
 
@@ -9150,7 +9157,7 @@ func Fn_gtk_text_view_scroll_to_mark(paramInstance unsafe.Pointer, param0 unsafe
 	cValueInstance := (*C.GtkTextView)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkTextMark)(unsafe.Pointer(param0))
 	cValue1 := (C.gdouble)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 	cValue3 := (C.gdouble)(param3)
 	cValue4 := (C.gdouble)(param4)
 
@@ -9158,7 +9165,7 @@ func Fn_gtk_text_view_scroll_to_mark(paramInstance unsafe.Pointer, param0 unsafe
 
 func Fn_gtk_text_view_set_accepts_tab(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTextView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -9177,13 +9184,13 @@ func Fn_gtk_text_view_set_buffer(paramInstance unsafe.Pointer, param0 unsafe.Poi
 
 func Fn_gtk_text_view_set_cursor_visible(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTextView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_text_view_set_editable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTextView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -9207,7 +9214,7 @@ func Fn_gtk_text_view_set_left_margin(paramInstance unsafe.Pointer, param0 int) 
 
 func Fn_gtk_text_view_set_overwrite(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTextView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -9303,13 +9310,13 @@ func Fn_gtk_toggle_action_get_draw_as_radio(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_toggle_action_set_active(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToggleAction)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_toggle_action_set_draw_as_radio(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToggleAction)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -9349,19 +9356,19 @@ func Fn_gtk_toggle_button_get_mode(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_toggle_button_set_active(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToggleButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_toggle_button_set_inconsistent(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToggleButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_toggle_button_set_mode(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToggleButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -9386,7 +9393,7 @@ func Fn_gtk_toggle_tool_button_get_active(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_toggle_tool_button_set_active(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToggleToolButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -9463,7 +9470,7 @@ func Fn_gtk_tool_button_set_stock_id(paramInstance unsafe.Pointer, param0 string
 
 func Fn_gtk_tool_button_set_use_underline(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToolButton)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -9539,19 +9546,19 @@ func Fn_gtk_tool_item_retrieve_proxy_menu_item(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_tool_item_set_expand(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToolItem)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_tool_item_set_homogeneous(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToolItem)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_tool_item_set_is_important(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToolItem)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -9576,19 +9583,19 @@ func Fn_gtk_tool_item_set_tooltip_text(paramInstance unsafe.Pointer, param0 stri
 
 func Fn_gtk_tool_item_set_use_drag_window(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToolItem)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_tool_item_set_visible_horizontal(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToolItem)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_tool_item_set_visible_vertical(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToolItem)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -9662,7 +9669,7 @@ func Fn_gtk_toolbar_set_icon_size(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_gtk_toolbar_set_show_arrow(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkToolbar)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -10162,7 +10169,7 @@ func Fn_gtk_tree_view_expand_all(paramInstance unsafe.Pointer) {
 func Fn_gtk_tree_view_expand_row(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -10357,7 +10364,7 @@ func Fn_gtk_tree_view_get_tooltip_context(paramInstance unsafe.Pointer, param0 *
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.gint)(unsafe.Pointer(param0))
 	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 	cValue3 := (**C.GtkTreeModel)(unsafe.Pointer(param3))
 	cValue4 := (**C.GtkTreePath)(unsafe.Pointer(param4))
 	cValue5 := (*C.GtkTreeIter)(unsafe.Pointer(param5))
@@ -10430,7 +10437,7 @@ func Fn_gtk_tree_view_scroll_to_cell(paramInstance unsafe.Pointer, param0 unsafe
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkTreeViewColumn)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 	cValue3 := (C.gfloat)(param3)
 	cValue4 := (C.gfloat)(param4)
 
@@ -10449,7 +10456,7 @@ func Fn_gtk_tree_view_set_cursor(paramInstance unsafe.Pointer, param0 unsafe.Poi
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkTreeViewColumn)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -10458,7 +10465,7 @@ func Fn_gtk_tree_view_set_cursor_on_cell(paramInstance unsafe.Pointer, param0 un
 	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkTreeViewColumn)(unsafe.Pointer(param1))
 	cValue2 := (*C.GtkCellRenderer)(unsafe.Pointer(param2))
-	cValue3 := (C.gboolean)(param3)
+	cValue3 := toCBool(param3)
 
 }
 
@@ -10473,13 +10480,13 @@ func Fn_gtk_tree_view_set_drag_dest_row(paramInstance unsafe.Pointer, param0 uns
 
 func Fn_gtk_tree_view_set_enable_search(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_tree_view_set_enable_tree_lines(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -10491,7 +10498,7 @@ func Fn_gtk_tree_view_set_expander_column(paramInstance unsafe.Pointer, param0 u
 
 func Fn_gtk_tree_view_set_fixed_height_mode(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -10509,25 +10516,25 @@ func Fn_gtk_tree_view_set_hadjustment(paramInstance unsafe.Pointer, param0 unsaf
 
 func Fn_gtk_tree_view_set_headers_clickable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_tree_view_set_headers_visible(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_tree_view_set_hover_expand(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_tree_view_set_hover_selection(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -10545,7 +10552,7 @@ func Fn_gtk_tree_view_set_model(paramInstance unsafe.Pointer, param0 unsafe.Poin
 
 func Fn_gtk_tree_view_set_reorderable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -10553,13 +10560,13 @@ func Fn_gtk_tree_view_set_reorderable(paramInstance unsafe.Pointer, param0 bool)
 
 func Fn_gtk_tree_view_set_rubber_banding(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_tree_view_set_rules_hint(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -10581,7 +10588,7 @@ func Fn_gtk_tree_view_set_search_entry(paramInstance unsafe.Pointer, param0 unsa
 
 func Fn_gtk_tree_view_set_show_expanders(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -10664,8 +10671,8 @@ func Fn_gtk_tree_view_column_cell_set_cell_data(paramInstance unsafe.Pointer, pa
 	cValueInstance := (*C.GtkTreeViewColumn)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkTreeModel)(unsafe.Pointer(param0))
 	cValue1 := (*C.GtkTreeIter)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
-	cValue3 := (C.gboolean)(param3)
+	cValue2 := toCBool(param2)
+	cValue3 := toCBool(param3)
 
 }
 
@@ -10784,14 +10791,14 @@ func Fn_gtk_tree_view_column_get_width(paramInstance unsafe.Pointer) {
 func Fn_gtk_tree_view_column_pack_end(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GtkTreeViewColumn)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkCellRenderer)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
 func Fn_gtk_tree_view_column_pack_start(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GtkTreeViewColumn)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkCellRenderer)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -10812,13 +10819,13 @@ func Fn_gtk_tree_view_column_set_alignment(paramInstance unsafe.Pointer, param0 
 
 func Fn_gtk_tree_view_column_set_clickable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeViewColumn)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_tree_view_column_set_expand(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeViewColumn)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -10842,13 +10849,13 @@ func Fn_gtk_tree_view_column_set_min_width(paramInstance unsafe.Pointer, param0 
 
 func Fn_gtk_tree_view_column_set_reorderable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeViewColumn)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_tree_view_column_set_resizable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeViewColumn)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -10866,7 +10873,7 @@ func Fn_gtk_tree_view_column_set_sort_column_id(paramInstance unsafe.Pointer, pa
 
 func Fn_gtk_tree_view_column_set_sort_indicator(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeViewColumn)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -10890,7 +10897,7 @@ func Fn_gtk_tree_view_column_set_title(paramInstance unsafe.Pointer, param0 stri
 
 func Fn_gtk_tree_view_column_set_visible(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkTreeViewColumn)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -10911,7 +10918,7 @@ func Fn_gtk_ui_manager_add_ui(paramInstance unsafe.Pointer, param0 uint, param1 
 	cValue2 := 42
 	cValue3 := 42
 	cValue4 := (C.GtkUIManagerItemType)(param4)
-	cValue5 := (C.gboolean)(param5)
+	cValue5 := toCBool(param5)
 
 }
 
@@ -10997,12 +11004,12 @@ func Fn_gtk_ui_manager_remove_ui(paramInstance unsafe.Pointer, param0 uint) {
 
 func Fn_gtk_ui_manager_set_add_tearoffs(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkUIManager)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_vbox_new(param0 bool, param1 int) {
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 	cValue1 := (C.gint)(param1)
 
 }
@@ -11222,7 +11229,7 @@ func Fn_gtk_drag_dest_set_proxy(paramInstance unsafe.Pointer, param0 unsafe.Poin
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
 	cValue1 := (C.GdkDragProtocol)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -11234,7 +11241,7 @@ func Fn_gtk_drag_dest_set_target_list(paramInstance unsafe.Pointer, param0 unsaf
 
 func Fn_gtk_drag_dest_set_track_motion(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -11625,7 +11632,7 @@ func Fn_gtk_widget_map(paramInstance unsafe.Pointer) {
 
 func Fn_gtk_widget_mnemonic_activate(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -11772,13 +11779,13 @@ func Fn_gtk_widget_set_accel_path(paramInstance unsafe.Pointer, param0 string, p
 
 func Fn_gtk_widget_set_app_paintable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_widget_set_child_visible(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -11796,7 +11803,7 @@ func Fn_gtk_widget_set_direction(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_gtk_widget_set_double_buffered(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -11814,19 +11821,19 @@ func Fn_gtk_widget_set_halign(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_gtk_widget_set_has_tooltip(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_widget_set_hexpand(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_widget_set_hexpand_set(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -11838,7 +11845,7 @@ func Fn_gtk_widget_set_name(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_gtk_widget_set_no_show_all(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -11856,13 +11863,13 @@ func Fn_gtk_widget_set_parent_window(paramInstance unsafe.Pointer, param0 unsafe
 
 func Fn_gtk_widget_set_redraw_on_allocate(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_widget_set_sensitive(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -11911,13 +11918,13 @@ func Fn_gtk_widget_set_valign(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_gtk_widget_set_vexpand(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_widget_set_vexpand_set(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -12309,13 +12316,13 @@ func Fn_gtk_window_resize(paramInstance unsafe.Pointer, param0 int, param1 int) 
 
 func Fn_gtk_window_set_accept_focus(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_window_set_decorated(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -12334,13 +12341,13 @@ func Fn_gtk_window_set_default_size(paramInstance unsafe.Pointer, param0 int, pa
 
 func Fn_gtk_window_set_deletable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_window_set_destroy_with_parent(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -12352,7 +12359,7 @@ func Fn_gtk_window_set_focus(paramInstance unsafe.Pointer, param0 unsafe.Pointer
 
 func Fn_gtk_window_set_focus_on_map(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -12396,13 +12403,13 @@ func Fn_gtk_window_set_icon_name(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_gtk_window_set_keep_above(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_window_set_keep_below(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -12414,7 +12421,7 @@ func Fn_gtk_window_set_mnemonic_modifier(paramInstance unsafe.Pointer, param0 in
 
 func Fn_gtk_window_set_modal(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -12432,7 +12439,7 @@ func Fn_gtk_window_set_position(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_gtk_window_set_resizable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -12450,13 +12457,13 @@ func Fn_gtk_window_set_screen(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 
 func Fn_gtk_window_set_skip_pager_hint(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_gtk_window_set_skip_taskbar_hint(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -12486,7 +12493,7 @@ func Fn_gtk_window_set_type_hint(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_gtk_window_set_urgency_hint(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -12526,7 +12533,7 @@ func Fn_gtk_window_list_toplevels() {
 }
 
 func Fn_gtk_window_set_auto_startup_notification(param0 bool) {
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 

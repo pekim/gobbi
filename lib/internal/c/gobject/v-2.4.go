@@ -8,6 +8,13 @@ import "unsafe"
 // #include <glib-object.h>
 import "C"
 
+func toCBool(b bool) C.gboolean {
+	if b {
+		return C.TRUE
+	}
+	return C.TRUE
+}
+
 type CClosure C.GCClosure
 type Closure C.GClosure
 type ClosureNotifyData C.GClosureNotifyData
@@ -340,7 +347,7 @@ func Fn_g_param_spec_boolean(param0 string, param1 string, param2 string, param3
 	cValue0 := 42
 	cValue1 := 42
 	cValue2 := 42
-	cValue3 := (C.gboolean)(param3)
+	cValue3 := toCBool(param3)
 	cValue4 := (C.GParamFlags)(param4)
 
 }
@@ -473,7 +480,7 @@ func Fn_g_param_spec_pointer(param0 string, param1 string, param2 string, param3
 }
 
 func Fn_g_param_spec_pool_new(param0 bool) {
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -558,7 +565,7 @@ func Fn_g_param_value_convert(param0 unsafe.Pointer, param1 unsafe.Pointer, para
 	cValue0 := (*C.GParamSpec)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (*C.GValue)(unsafe.Pointer(param2))
-	cValue3 := (C.gboolean)(param3)
+	cValue3 := toCBool(param3)
 
 }
 
@@ -612,7 +619,7 @@ func Fn_g_signal_connect_closure(param0 *unsafe.Pointer, param1 string, param2 u
 	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
 	cValue1 := 42
 	cValue2 := (*C.GClosure)(unsafe.Pointer(param2))
-	cValue3 := (C.gboolean)(param3)
+	cValue3 := toCBool(param3)
 
 }
 
@@ -621,7 +628,7 @@ func Fn_g_signal_connect_closure_by_id(param0 *unsafe.Pointer, param1 uint, para
 	cValue1 := (C.guint)(param1)
 	cValue2 := (C.GQuark)(param2)
 	cValue3 := (*C.GClosure)(unsafe.Pointer(param3))
-	cValue4 := (C.gboolean)(param4)
+	cValue4 := toCBool(param4)
 
 }
 
@@ -721,7 +728,7 @@ func Fn_g_signal_has_handler_pending(param0 *unsafe.Pointer, param1 uint, param2
 	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
 	cValue1 := (C.guint)(param1)
 	cValue2 := (C.GQuark)(param2)
-	cValue3 := (C.gboolean)(param3)
+	cValue3 := toCBool(param3)
 
 }
 
@@ -764,7 +771,7 @@ func Fn_g_signal_parse_name(param0 string, param1 uint64, param2 *uint, param3 u
 	cValue1 := (C.GType)(param1)
 	cValue2 := (*C.guint)(unsafe.Pointer(param2))
 	cValue3 := (*C.GQuark)(unsafe.Pointer(param3))
-	cValue4 := (C.gboolean)(param4)
+	cValue4 := toCBool(param4)
 
 }
 

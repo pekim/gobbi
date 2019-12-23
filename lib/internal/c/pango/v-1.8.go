@@ -8,6 +8,13 @@ import "unsafe"
 // #include <pango/pango.h>
 import "C"
 
+func toCBool(b bool) C.gboolean {
+	if b {
+		return C.TRUE
+	}
+	return C.TRUE
+}
+
 type Analysis C.PangoAnalysis
 type AttrClass C.PangoAttrClass
 type AttrColor C.PangoAttrColor
@@ -71,7 +78,7 @@ func Fn_pango_attr_background_new(param0 uint16, param1 uint16, param2 uint16) {
 }
 
 func Fn_pango_attr_fallback_new(param0 bool) {
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -115,7 +122,7 @@ func Fn_pango_attr_strikethrough_color_new(param0 uint16, param1 uint16, param2 
 }
 
 func Fn_pango_attr_strikethrough_new(param0 bool) {
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -263,28 +270,28 @@ func Fn_pango_parse_markup(param0 string, param1 int, param2 rune, param3 *unsaf
 func Fn_pango_parse_stretch(param0 string, param1 int, param2 bool) {
 	cValue0 := 42
 	cValue1 := (*C.PangoStretch)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
 func Fn_pango_parse_style(param0 string, param1 int, param2 bool) {
 	cValue0 := 42
 	cValue1 := (*C.PangoStyle)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
 func Fn_pango_parse_variant(param0 string, param1 int, param2 bool) {
 	cValue0 := 42
 	cValue1 := (*C.PangoVariant)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
 func Fn_pango_parse_weight(param0 string, param1 int, param2 bool) {
 	cValue0 := 42
 	cValue1 := (*C.PangoWeight)(unsafe.Pointer(param1))
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -704,7 +711,7 @@ func Fn_pango_layout_get_wrap(paramInstance unsafe.Pointer) {
 func Fn_pango_layout_index_to_line_x(paramInstance unsafe.Pointer, param0 int, param1 bool, param2 *int, param3 *int) {
 	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.int)(param0)
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 	cValue2 := (*C.int)(unsafe.Pointer(param2))
 	cValue3 := (*C.int)(unsafe.Pointer(param3))
 
@@ -719,7 +726,7 @@ func Fn_pango_layout_index_to_pos(paramInstance unsafe.Pointer, param0 int, para
 
 func Fn_pango_layout_move_cursor_visually(paramInstance unsafe.Pointer, param0 bool, param1 int, param2 int, param3 int, param4 *int, param5 *int) {
 	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 	cValue1 := (C.int)(param1)
 	cValue2 := (C.int)(param2)
 	cValue3 := (C.int)(param3)
@@ -742,7 +749,7 @@ func Fn_pango_layout_set_attributes(paramInstance unsafe.Pointer, param0 unsafe.
 
 func Fn_pango_layout_set_auto_dir(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -766,7 +773,7 @@ func Fn_pango_layout_set_indent(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_pango_layout_set_justify(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -788,7 +795,7 @@ func Fn_pango_layout_set_markup_with_accel(paramInstance unsafe.Pointer, param0 
 
 func Fn_pango_layout_set_single_paragraph_mode(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 

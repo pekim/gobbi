@@ -7,6 +7,13 @@ import "unsafe"
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 import "C"
 
+func toCBool(b bool) C.gboolean {
+	if b {
+		return C.TRUE
+	}
+	return C.TRUE
+}
+
 type PixbufFormat C.GdkPixbufFormat
 type PixbufLoaderClass C.GdkPixbufLoaderClass
 type PixbufSimpleAnimClass C.GdkPixbufSimpleAnimClass
@@ -17,7 +24,7 @@ func Fn_gdk_pixbuf_error_quark() {
 
 func Fn_gdk_pixbuf_new(param0 int, param1 bool, param2 int, param3 int, param4 int) {
 	cValue0 := (C.GdkColorspace)(param0)
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 	cValue2 := (C.int)(param2)
 	cValue3 := (C.int)(param3)
 	cValue4 := (C.int)(param4)
@@ -41,7 +48,7 @@ func Fn_gdk_pixbuf_new_from_xpm_data(param0 []string) {
 
 func Fn_gdk_pixbuf_add_alpha(paramInstance unsafe.Pointer, param0 bool, param1 uint8, param2 uint8, param3 uint8) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 	cValue1 := (C.guchar)(param1)
 	cValue2 := (C.guchar)(param2)
 	cValue3 := (C.guchar)(param3)
@@ -184,7 +191,7 @@ func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 un
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GdkPixbuf)(unsafe.Pointer(param0))
 	cValue1 := (C.gfloat)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 

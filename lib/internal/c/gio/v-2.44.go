@@ -23,6 +23,13 @@ import (
 // #include <gio/gnetworking.h>
 import "C"
 
+func toCBool(b bool) C.gboolean {
+	if b {
+		return C.TRUE
+	}
+	return C.TRUE
+}
+
 type ActionEntry C.GActionEntry
 type ActionGroupInterface C.GActionGroupInterface
 type ActionInterface C.GActionInterface
@@ -278,7 +285,7 @@ func Fn_g_app_info_get_all_for_type(param0 string) {
 
 func Fn_g_app_info_get_default_for_type(param0 string, param1 bool) {
 	cValue0 := 42
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -1282,7 +1289,7 @@ func Fn_g_buffered_output_stream_get_buffer_size(paramInstance unsafe.Pointer) {
 
 func Fn_g_buffered_output_stream_set_auto_grow(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GBufferedOutputStream)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -1387,7 +1394,7 @@ func Fn_g_charset_converter_get_use_fallback(paramInstance unsafe.Pointer) {
 
 func Fn_g_charset_converter_set_use_fallback(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GCharsetConverter)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -1687,7 +1694,7 @@ func Fn_g_dbus_connection_send_message_with_reply_sync(paramInstance unsafe.Poin
 
 func Fn_g_dbus_connection_set_exit_on_close(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GDBusConnection)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -2898,7 +2905,7 @@ func Fn_g_file_enumerator_next_files_finish(paramInstance unsafe.Pointer, param0
 
 func Fn_g_file_enumerator_set_pending(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3149,7 +3156,7 @@ func Fn_g_file_info_set_attribute(paramInstance unsafe.Pointer, param0 string, p
 func Fn_g_file_info_set_attribute_boolean(paramInstance unsafe.Pointer, param0 string, param1 bool) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -3251,13 +3258,13 @@ func Fn_g_file_info_set_icon(paramInstance unsafe.Pointer, param0 unsafe.Pointer
 
 func Fn_g_file_info_set_is_hidden(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_g_file_info_set_is_symlink(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3379,7 +3386,7 @@ func Fn_g_filename_completer_get_completions(paramInstance unsafe.Pointer, param
 
 func Fn_g_filename_completer_set_dirs_only(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFilenameCompleter)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3395,7 +3402,7 @@ func Fn_g_filter_input_stream_get_close_base_stream(paramInstance unsafe.Pointer
 
 func Fn_g_filter_input_stream_set_close_base_stream(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFilterInputStream)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -3411,7 +3418,7 @@ func Fn_g_filter_output_stream_get_close_base_stream(paramInstance unsafe.Pointe
 
 func Fn_g_filter_output_stream_set_close_base_stream(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFilterOutputStream)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -4160,7 +4167,7 @@ func Fn_g_mount_operation_reply(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_g_mount_operation_set_anonymous(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GMountOperation)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -4328,7 +4335,7 @@ func Fn_g_notification_set_title(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_g_notification_set_urgent(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GNotification)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -4480,9 +4487,9 @@ func Fn_g_permission_get_can_release(paramInstance unsafe.Pointer) {
 
 func Fn_g_permission_impl_update(paramInstance unsafe.Pointer, param0 bool, param1 bool, param2 bool) {
 	cValueInstance := (*C.GPermission)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
-	cValue1 := (C.gboolean)(param1)
-	cValue2 := (C.gboolean)(param2)
+	cValue0 := toCBool(param0)
+	cValue1 := toCBool(param1)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -4689,7 +4696,7 @@ func Fn_g_settings_bind_writable(paramInstance unsafe.Pointer, param0 string, pa
 	cValue0 := 42
 	cValue1 := (*C.gpointer)(unsafe.Pointer(param1))
 	cValue2 := 42
-	cValue3 := (C.gboolean)(param3)
+	cValue3 := toCBool(param3)
 
 }
 
@@ -4830,7 +4837,7 @@ func Fn_g_settings_revert(paramInstance unsafe.Pointer) {
 func Fn_g_settings_set_boolean(paramInstance unsafe.Pointer, param0 string, param1 bool) {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -4928,7 +4935,7 @@ func Fn_g_simple_action_new_stateful(param0 string, param1 unsafe.Pointer, param
 
 func Fn_g_simple_action_set_enabled(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GSimpleAction)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5033,13 +5040,13 @@ func Fn_g_simple_async_result_set_from_error(paramInstance unsafe.Pointer, param
 
 func Fn_g_simple_async_result_set_handle_cancellation(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_g_simple_async_result_set_op_res_gboolean(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5071,7 +5078,7 @@ func Fn_g_simple_io_stream_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {
 }
 
 func Fn_g_simple_permission_new(param0 bool) {
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5121,7 +5128,7 @@ func Fn_g_socket_accept(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 func Fn_g_socket_bind(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GSocket)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GSocketAddress)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -5276,7 +5283,7 @@ func Fn_g_socket_is_connected(paramInstance unsafe.Pointer) {
 func Fn_g_socket_join_multicast_group(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool, param2 string) {
 	cValueInstance := (*C.GSocket)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GInetAddress)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 	cValue2 := 42
 
 }
@@ -5284,7 +5291,7 @@ func Fn_g_socket_join_multicast_group(paramInstance unsafe.Pointer, param0 unsaf
 func Fn_g_socket_leave_multicast_group(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool, param2 string) {
 	cValueInstance := (*C.GSocket)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GInetAddress)(unsafe.Pointer(param0))
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 	cValue2 := 42
 
 }
@@ -5332,19 +5339,19 @@ func Fn_g_socket_send_with_blocking(paramInstance unsafe.Pointer, param0 []uint8
 
 func Fn_g_socket_set_blocking(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GSocket)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_g_socket_set_broadcast(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GSocket)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_g_socket_set_keepalive(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GSocket)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5356,7 +5363,7 @@ func Fn_g_socket_set_listen_backlog(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_g_socket_set_multicast_loopback(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GSocket)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5388,8 +5395,8 @@ func Fn_g_socket_set_ttl(paramInstance unsafe.Pointer, param0 uint) {
 
 func Fn_g_socket_shutdown(paramInstance unsafe.Pointer, param0 bool, param1 bool) {
 	cValueInstance := (*C.GSocket)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
-	cValue1 := (C.gboolean)(param1)
+	cValue0 := toCBool(param0)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -5555,7 +5562,7 @@ func Fn_g_socket_client_get_tls_validation_flags(paramInstance unsafe.Pointer) {
 
 func Fn_g_socket_client_set_enable_proxy(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GSocketClient)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5597,7 +5604,7 @@ func Fn_g_socket_client_set_timeout(paramInstance unsafe.Pointer, param0 uint) {
 
 func Fn_g_socket_client_set_tls(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GSocketClient)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -5962,7 +5969,7 @@ func Fn_g_subprocess_launcher_setenv(paramInstance unsafe.Pointer, param0 string
 	cValueInstance := (*C.GSubprocessLauncher)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
 	cValue1 := 42
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -6074,7 +6081,7 @@ func Fn_g_task_propagate_pointer(paramInstance unsafe.Pointer) {
 
 func Fn_g_task_return_boolean(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GTask)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -6105,7 +6112,7 @@ func Fn_g_task_return_int(paramInstance unsafe.Pointer, param0 uint64) {
 
 func Fn_g_task_set_check_cancellable(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GTask)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -6117,7 +6124,7 @@ func Fn_g_task_set_priority(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_g_task_set_return_on_cancel(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GTask)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -6146,7 +6153,7 @@ func Fn_g_tcp_connection_get_graceful_disconnect(paramInstance unsafe.Pointer) {
 
 func Fn_g_tcp_connection_set_graceful_disconnect(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GTcpConnection)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -6364,13 +6371,13 @@ func Fn_g_tls_connection_set_rehandshake_mode(paramInstance unsafe.Pointer, para
 
 func Fn_g_tls_connection_set_require_close_notify(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GTlsConnection)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
 func Fn_g_tls_connection_set_use_system_certdb(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GTlsConnection)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -6666,7 +6673,7 @@ func Fn_g_unix_fd_message_steal_fds(paramInstance unsafe.Pointer, param0 *int) {
 
 func Fn_g_unix_input_stream_new(param0 int, param1 bool) {
 	cValue0 := (C.gint)(param0)
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -6682,7 +6689,7 @@ func Fn_g_unix_input_stream_get_fd(paramInstance unsafe.Pointer) {
 
 func Fn_g_unix_input_stream_set_close_fd(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GUnixInputStream)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 
@@ -6702,7 +6709,7 @@ func Fn_g_unix_mount_monitor_get() {
 
 func Fn_g_unix_output_stream_new(param0 int, param1 bool) {
 	cValue0 := (C.gint)(param0)
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -6718,7 +6725,7 @@ func Fn_g_unix_output_stream_get_fd(paramInstance unsafe.Pointer) {
 
 func Fn_g_unix_output_stream_set_close_fd(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GUnixOutputStream)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.gboolean)(param0)
+	cValue0 := toCBool(param0)
 
 }
 

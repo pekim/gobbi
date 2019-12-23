@@ -10,6 +10,13 @@ import "unsafe"
 // #include <glib-2.0/glib-object.h>
 import "C"
 
+func toCBool(b bool) C.gboolean {
+	if b {
+		return C.TRUE
+	}
+	return C.TRUE
+}
+
 type Array C.GArray
 type AsyncQueue C.GAsyncQueue
 type BookmarkFile C.GBookmarkFile
@@ -1595,7 +1602,7 @@ func Fn_g_set_prgname(param0 string) {
 func Fn_g_setenv(param0 string, param1 string, param2 bool) {
 	cValue0 := 42
 	cValue1 := 42
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 
@@ -2261,7 +2268,7 @@ func Fn_g_unichar_digit_value(param0 rune) {
 
 func Fn_g_unichar_fully_decompose(param0 rune, param1 bool, param2 *rune, param3 uint64) {
 	cValue0 := (C.gunichar)(param0)
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 	cValue2 := (*C.gunichar)(unsafe.Pointer(param2))
 	cValue3 := (C.gsize)(param3)
 
@@ -2434,7 +2441,7 @@ func Fn_g_unix_open_pipe(param0 *int, param1 int) {
 
 func Fn_g_unix_set_fd_nonblocking(param0 int, param1 bool) {
 	cValue0 := (C.gint)(param0)
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 
@@ -2460,7 +2467,7 @@ func Fn_g_unsetenv(param0 string) {
 func Fn_g_uri_escape_string(param0 string, param1 string, param2 bool) {
 	cValue0 := 42
 	cValue1 := 42
-	cValue2 := (C.gboolean)(param2)
+	cValue2 := toCBool(param2)
 
 }
 

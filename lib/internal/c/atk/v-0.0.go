@@ -11,6 +11,13 @@ import (
 // #include <atk/atk.h>
 import "C"
 
+func toCBool(b bool) C.gboolean {
+	if b {
+		return C.TRUE
+	}
+	return C.TRUE
+}
+
 type ActionIface C.AtkActionIface
 type Attribute C.AtkAttribute
 type ComponentIface C.AtkComponentIface
@@ -291,7 +298,7 @@ func Fn_atk_object_initialize(paramInstance unsafe.Pointer, param0 *unsafe.Point
 func Fn_atk_object_notify_state_change(paramInstance unsafe.Pointer, param0 uint64, param1 bool) {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.AtkState)(param0)
-	cValue1 := (C.gboolean)(param1)
+	cValue1 := toCBool(param1)
 
 }
 

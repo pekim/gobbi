@@ -5,6 +5,13 @@ package cairo
 // #include <cairo-gobject.h>
 import "C"
 
+func toCBool(b bool) C.gboolean {
+	if b {
+		return C.TRUE
+	}
+	return C.TRUE
+}
+
 type Context C.cairo_t
 type Device C.cairo_device_t
 type Surface C.cairo_surface_t

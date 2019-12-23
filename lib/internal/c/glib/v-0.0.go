@@ -10,6 +10,13 @@ import "unsafe"
 // #include <glib-2.0/glib-object.h>
 import "C"
 
+func toCBool(b bool) C.gboolean {
+	if b {
+		return C.TRUE
+	}
+	return C.TRUE
+}
+
 type Array C.GArray
 type AsyncQueue C.GAsyncQueue
 type BookmarkFile C.GBookmarkFile

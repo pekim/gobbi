@@ -52,6 +52,8 @@ func (ns *Namespace) generateSysFile(f *jen.File, version semver.Version) {
 	ns.generateSysFileBuildTags(f, version)
 	ns.repository.CIncludes.generate(f)
 
+	ns.generateSysToCBoolFunction(f)
+
 	ns.Records.generateSys(f, version)
 	ns.Functions.generateSys(f, version)
 	ns.Classes.generateSys(f, version)
@@ -82,4 +84,20 @@ func (ns *Namespace) generateSysFileBuildTags(f *jen.File, version semver.Versio
 
 	f.HeaderComment(fmt.Sprintf("+build %s", buildTags))
 	f.Line()
+}
+
+func (ns *Namespace) generateSysToCBoolFunction(f *jen.File) {
+	if ns.Name == "xlib" {
+		return
+	}
+
+	f.
+		Func().
+		Id("toCBool").
+		Params(jen.Id("b").Bool()).
+		Params(jen.Qual("C", "gboolean")).
+		Block(jen.
+			If(jen.Id("b")).Block(jen.Return(jen.Qual("C", "TRUE"))),
+			jen.Return(jen.Qual("C", "TRUE")),
+		)
 }

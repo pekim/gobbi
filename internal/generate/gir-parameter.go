@@ -1,5 +1,6 @@
 package generate
 
+import "C"
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
@@ -59,6 +60,11 @@ func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
 	}
 
 	goValue := jen.Id(goVarName)
+
+	if p.Type.CType == "gboolean" {
+		return jen.Id("toCBool").Call(goValue)
+	}
+
 	if p.Type.cIndirectionCount > 0 {
 		goValue = jenUnsafePointer().Call(goValue)
 	}
