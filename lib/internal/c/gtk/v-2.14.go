@@ -3740,7 +3740,7 @@ func Fn_gtk_dialog_new() {
 func Fn_gtk_dialog_add_action_widget(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int) {
 	cValueInstance := (*C.GtkDialog)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
-	cValue1 := (C.GtkResponseType)(param1)
+	cValue1 := (C.gint)(param1)
 
 	C.gtk_dialog_add_action_widget(cValueInstance, cValue0, cValue1)
 }
@@ -3772,7 +3772,7 @@ func Fn_gtk_dialog_get_response_for_widget(paramInstance unsafe.Pointer, param0 
 
 func Fn_gtk_dialog_response(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GtkDialog)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.GtkResponseType)(param0)
+	cValue0 := (C.gint)(param0)
 
 	C.gtk_dialog_response(cValueInstance, cValue0)
 }
@@ -3791,14 +3791,14 @@ func Fn_gtk_dialog_set_alternative_button_order_from_array(paramInstance unsafe.
 
 func Fn_gtk_dialog_set_default_response(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GtkDialog)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.GtkResponseType)(param0)
+	cValue0 := (C.gint)(param0)
 
 	C.gtk_dialog_set_default_response(cValueInstance, cValue0)
 }
 
 func Fn_gtk_dialog_set_response_sensitive(paramInstance unsafe.Pointer, param0 int, param1 bool) {
 	cValueInstance := (*C.GtkDialog)(unsafe.Pointer(paramInstance))
-	cValue0 := (C.GtkResponseType)(param0)
+	cValue0 := (C.gint)(param0)
 	cValue1 := toCBool(param1)
 
 	C.gtk_dialog_set_response_sensitive(cValueInstance, cValue0, cValue1)

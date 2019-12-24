@@ -45,6 +45,14 @@ var functionBlacklist = map[string]bool{
 }
 
 func (f *Function) applyAddenda() {
+	// Parameters with a type of ResponseType do not match the signature of functions
+	// of that accept the parameters.
+	for _, param := range f.Parameters {
+		if param.Type != nil && param.Type.Name == "ResponseType" {
+			param.Type.CType = "gint"
+		}
+	}
+
 	if f.namespace.Name == "cairo" {
 		f.blacklist = true
 		return
