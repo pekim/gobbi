@@ -13,7 +13,7 @@ type repositorySpec struct {
 type RepositorySpecs []repositorySpec
 
 func (ss RepositorySpecs) Generate() {
-	ss.ansi("25l") // hide cursor
+	ss.ansi("?25l") // hide cursor
 
 	var wg sync.WaitGroup
 
@@ -70,7 +70,7 @@ func (ss RepositorySpecs) Generate() {
 	wg.Wait()
 
 	ss.clearProgressLine(progressLineLen)
-	ss.ansi("25h") // show cursor
+	ss.ansi("?25h") // show cursor
 
 	fmt.Printf(" C unsupported : %5d\n", cUnsupportedCount)
 	fmt.Printf("Go unsupported : %5d\n", goUnsupportedCount)
