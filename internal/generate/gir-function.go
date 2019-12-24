@@ -91,13 +91,6 @@ func (f *Function) generateSysBody(g *jen.Group) {
 		}
 	}
 
-	for _, param := range f.Parameters {
-		if param.Type != nil && param.Type.isString() && param.Type.cIndirectionCount > 2 {
-			g.Comment("has string param, non-trivial")
-			return
-		}
-	}
-
 	f.generateSysCArgs(g)
 
 	g.
