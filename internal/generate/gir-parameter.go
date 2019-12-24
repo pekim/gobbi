@@ -70,6 +70,11 @@ func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
 		goValue = jenUnsafePointer().Call(goValue)
 	}
 
+	// Atoms are really pointers underneath.
+	if p.Type.CType == "GdkAtom" {
+		goValue = jenUnsafePointer().Call(goValue)
+	}
+
 	return jen.Parens(p.Type.jenGoCType()).Parens(goValue)
 }
 
