@@ -295,7 +295,7 @@ func Fn_pango_lookup_aliases(param0 string, param1 *[]string, param2 *int) {
 	// has array param
 }
 
-func Fn_pango_markup_parser_finish(param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 string, param3 *rune) {
+func Fn_pango_markup_parser_finish(param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 string, param3 *rune, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -310,7 +310,7 @@ func Fn_pango_parse_enum(param0 uint64, param1 string, param2 *int, param3 bool,
 	// has string param
 }
 
-func Fn_pango_parse_markup(param0 string, param1 int, param2 rune, param3 *unsafe.Pointer, param4 string, param5 *rune) {
+func Fn_pango_parse_markup(param0 string, param1 int, param2 rune, param3 *unsafe.Pointer, param4 string, param5 *rune, error unsafe.Pointer) {
 	// has string param
 }
 

@@ -1600,10 +1600,11 @@ func Fn_gdk_gl_context_make_current(paramInstance unsafe.Pointer) {
 	C.gdk_gl_context_make_current(cValueInstance)
 }
 
-func Fn_gdk_gl_context_realize(paramInstance unsafe.Pointer) {
+func Fn_gdk_gl_context_realize(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+	cError := (**C.GError)(error)
 
-	C.gdk_gl_context_realize(cValueInstance)
+	C.gdk_gl_context_realize(cValueInstance, cError)
 }
 
 func Fn_gdk_gl_context_set_debug_enabled(paramInstance unsafe.Pointer, param0 bool) {
@@ -2203,10 +2204,11 @@ func Fn_gdk_window_coords_to_parent(paramInstance unsafe.Pointer, param0 float64
 	C.gdk_window_coords_to_parent(cValueInstance, cValue0, cValue1, cValue2, cValue3)
 }
 
-func Fn_gdk_window_create_gl_context(paramInstance unsafe.Pointer) {
+func Fn_gdk_window_create_gl_context(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+	cError := (**C.GError)(error)
 
-	C.gdk_window_create_gl_context(cValueInstance)
+	C.gdk_window_create_gl_context(cValueInstance, cError)
 }
 
 func Fn_gdk_window_create_similar_image_surface(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int) {

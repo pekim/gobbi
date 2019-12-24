@@ -1582,7 +1582,7 @@ func Fn_gtk_box_set_spacing(paramInstance unsafe.Pointer, param0 int) {
 
 // UNSUPPORTED : connect_signals_full : has callback
 
-func Fn_gtk_builder_extend_with_template(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint64, param2 string, param3 uint64) {
+func Fn_gtk_builder_extend_with_template(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint64, param2 string, param3 uint64, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -2321,18 +2321,19 @@ func Fn_gtk_css_provider_new() {
 	C.gtk_css_provider_new()
 }
 
-func Fn_gtk_css_provider_load_from_data(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64) {
+func Fn_gtk_css_provider_load_from_data(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, error unsafe.Pointer) {
 	// has array param
 }
 
-func Fn_gtk_css_provider_load_from_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_gtk_css_provider_load_from_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GtkCssProvider)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GFile)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.gtk_css_provider_load_from_file(cValueInstance, cValue0)
+	C.gtk_css_provider_load_from_file(cValueInstance, cValue0, cError)
 }
 
-func Fn_gtk_css_provider_load_from_path(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_css_provider_load_from_path(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -8204,7 +8205,7 @@ func Fn_gtk_window_set_icon(paramInstance unsafe.Pointer, param0 unsafe.Pointer)
 	C.gtk_window_set_icon(cValueInstance, cValue0)
 }
 
-func Fn_gtk_window_set_icon_from_file(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_window_set_icon_from_file(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -8330,7 +8331,7 @@ func Fn_gtk_window_set_auto_startup_notification(param0 bool) {
 	C.gtk_window_set_auto_startup_notification(cValue0)
 }
 
-func Fn_gtk_window_set_default_icon_from_file(param0 string) {
+func Fn_gtk_window_set_default_icon_from_file(param0 string, error unsafe.Pointer) {
 	// has string param
 }
 

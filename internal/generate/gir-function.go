@@ -19,7 +19,7 @@ type Function struct {
 	InstanceParameter *Parameter `xml:"parameters>instance-parameter"`
 	Parameters        Parameters `xml:"parameters>parameter"`
 	//ReturnValue    *ReturnValue `xml:"return-value"`
-	Throws         int    `xml:"throws,attr"`
+	Throws         bool   `xml:"throws,attr"`
 	Introspectable string `xml:"introspectable,attr"`
 
 	namespace *Namespace
@@ -58,13 +58,13 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 	fi.
 		Func().
 		Id(f.sysName).
-		ParamsFunc(f.generateSysParamDeclaration).
+		ParamsFunc(f.generateSysParamsDeclaration).
 		BlockFunc(f.generateSysBody)
 
 	fi.Line()
 }
 
-func (f *Function) generateSysParamDeclaration(g *jen.Group) {
+func (f *Function) generateSysParamsDeclaration(g *jen.Group) {
 	if f.InstanceParameter != nil {
 		goType := f.InstanceParameter.sysParamGoType()
 		g.Id("paramInstance").Add(goType)
@@ -76,6 +76,10 @@ func (f *Function) generateSysParamDeclaration(g *jen.Group) {
 		goType := param.sysParamGoType()
 
 		g.Id(paramName).Add(goType)
+	}
+
+	if f.Throws {
+		g.Id("error").Add(jenUnsafePointer())
 	}
 }
 
@@ -113,6 +117,12 @@ func (f *Function) generateSysCArgs(g *jen.Group) {
 		f.generateSysCArg(g, param, paramName, cVarName)
 	}
 
+	if f.Throws {
+		g.Id("cError").Op(":=").
+			Parens(jen.Op("**").Qual("C", "GError")).
+			Parens(jen.Id("error"))
+	}
+
 	g.Line()
 }
 
@@ -128,5 +138,9 @@ func (f *Function) generateSysCallParams(g *jen.Group) {
 
 	for i, _ := range f.Parameters {
 		g.Id("cValue" + strconv.Itoa(i))
+	}
+
+	if f.Throws {
+		g.Id("cError")
 	}
 }

@@ -951,7 +951,7 @@ func Fn_gtk_init_check(param0 *int, param1 *[]string) {
 	// has array param
 }
 
-func Fn_gtk_init_with_args(param0 *int, param1 *[]string, param2 string, param3 []glib.OptionEntry, param4 string) {
+func Fn_gtk_init_with_args(param0 *int, param1 *[]string, param2 string, param3 []glib.OptionEntry, param4 string, error unsafe.Pointer) {
 	// has array param
 }
 
@@ -1532,7 +1532,7 @@ func Fn_gtk_set_debug_flags(param0 uint) {
 
 // UNSUPPORTED : show_about_dialog : has varargs
 
-func Fn_gtk_show_uri(param0 unsafe.Pointer, param1 string, param2 uint32) {
+func Fn_gtk_show_uri(param0 unsafe.Pointer, param1 string, param2 uint32, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -3168,27 +3168,27 @@ func Fn_gtk_builder_new() {
 
 // UNSUPPORTED : add_callback_symbols : has varargs
 
-func Fn_gtk_builder_add_from_file(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_builder_add_from_file(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gtk_builder_add_from_resource(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_builder_add_from_resource(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gtk_builder_add_from_string(paramInstance unsafe.Pointer, param0 string, param1 uint64) {
+func Fn_gtk_builder_add_from_string(paramInstance unsafe.Pointer, param0 string, param1 uint64, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gtk_builder_add_objects_from_file(paramInstance unsafe.Pointer, param0 string, param1 []string) {
+func Fn_gtk_builder_add_objects_from_file(paramInstance unsafe.Pointer, param0 string, param1 []string, error unsafe.Pointer) {
 	// has array param
 }
 
-func Fn_gtk_builder_add_objects_from_resource(paramInstance unsafe.Pointer, param0 string, param1 []string) {
+func Fn_gtk_builder_add_objects_from_resource(paramInstance unsafe.Pointer, param0 string, param1 []string, error unsafe.Pointer) {
 	// has array param
 }
 
-func Fn_gtk_builder_add_objects_from_string(paramInstance unsafe.Pointer, param0 string, param1 uint64, param2 []string) {
+func Fn_gtk_builder_add_objects_from_string(paramInstance unsafe.Pointer, param0 string, param1 uint64, param2 []string, error unsafe.Pointer) {
 	// has array param
 }
 
@@ -3201,7 +3201,7 @@ func Fn_gtk_builder_connect_signals(paramInstance unsafe.Pointer, param0 unsafe.
 
 // UNSUPPORTED : connect_signals_full : has callback
 
-func Fn_gtk_builder_extend_with_template(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint64, param2 string, param3 uint64) {
+func Fn_gtk_builder_extend_with_template(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint64, param2 string, param3 uint64, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -3229,11 +3229,11 @@ func Fn_gtk_builder_set_translation_domain(paramInstance unsafe.Pointer, param0 
 	// has string param
 }
 
-func Fn_gtk_builder_value_from_string(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, param2 unsafe.Pointer) {
+func Fn_gtk_builder_value_from_string(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, param2 unsafe.Pointer, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gtk_builder_value_from_string_type(paramInstance unsafe.Pointer, param0 uint64, param1 string, param2 unsafe.Pointer) {
+func Fn_gtk_builder_value_from_string_type(paramInstance unsafe.Pointer, param0 uint64, param1 string, param2 unsafe.Pointer, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -5287,18 +5287,19 @@ func Fn_gtk_css_provider_new() {
 	C.gtk_css_provider_new()
 }
 
-func Fn_gtk_css_provider_load_from_data(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64) {
+func Fn_gtk_css_provider_load_from_data(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, error unsafe.Pointer) {
 	// has array param
 }
 
-func Fn_gtk_css_provider_load_from_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_gtk_css_provider_load_from_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GtkCssProvider)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GFile)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.gtk_css_provider_load_from_file(cValueInstance, cValue0)
+	C.gtk_css_provider_load_from_file(cValueInstance, cValue0, cError)
 }
 
-func Fn_gtk_css_provider_load_from_path(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_css_provider_load_from_path(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -7068,44 +7069,48 @@ func Fn_gtk_icon_info_get_filename(paramInstance unsafe.Pointer) {
 	C.gtk_icon_info_get_filename(cValueInstance)
 }
 
-func Fn_gtk_icon_info_load_icon(paramInstance unsafe.Pointer) {
+func Fn_gtk_icon_info_load_icon(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GtkIconInfo)(unsafe.Pointer(paramInstance))
+	cError := (**C.GError)(error)
 
-	C.gtk_icon_info_load_icon(cValueInstance)
+	C.gtk_icon_info_load_icon(cValueInstance, cError)
 }
 
 // UNSUPPORTED : load_icon_async : has callback
 
-func Fn_gtk_icon_info_load_symbolic(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 unsafe.Pointer, param4 *bool) {
+func Fn_gtk_icon_info_load_symbolic(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 unsafe.Pointer, param4 *bool, error unsafe.Pointer) {
 	cValueInstance := (*C.GtkIconInfo)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GdkRGBA)(unsafe.Pointer(param0))
 	cValue1 := (*C.GdkRGBA)(unsafe.Pointer(param1))
 	cValue2 := (*C.GdkRGBA)(unsafe.Pointer(param2))
 	cValue3 := (*C.GdkRGBA)(unsafe.Pointer(param3))
 	cValue4 := (*C.gboolean)(unsafe.Pointer(param4))
+	cError := (**C.GError)(error)
 
-	C.gtk_icon_info_load_symbolic(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4)
+	C.gtk_icon_info_load_symbolic(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cError)
 }
 
 // UNSUPPORTED : load_symbolic_async : has callback
 
-func Fn_gtk_icon_info_load_symbolic_for_context(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *bool) {
+func Fn_gtk_icon_info_load_symbolic_for_context(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *bool, error unsafe.Pointer) {
 	cValueInstance := (*C.GtkIconInfo)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkStyleContext)(unsafe.Pointer(param0))
 	cValue1 := (*C.gboolean)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.gtk_icon_info_load_symbolic_for_context(cValueInstance, cValue0, cValue1)
+	C.gtk_icon_info_load_symbolic_for_context(cValueInstance, cValue0, cValue1, cError)
 }
 
 // UNSUPPORTED : load_symbolic_for_context_async : has callback
 
-func Fn_gtk_icon_info_load_symbolic_for_style(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 *bool) {
+func Fn_gtk_icon_info_load_symbolic_for_style(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 *bool, error unsafe.Pointer) {
 	cValueInstance := (*C.GtkIconInfo)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 	cValue1 := (C.GtkStateType)(param1)
 	cValue2 := (*C.gboolean)(unsafe.Pointer(param2))
+	cError := (**C.GError)(error)
 
-	C.gtk_icon_info_load_symbolic_for_style(cValueInstance, cValue0, cValue1, cValue2)
+	C.gtk_icon_info_load_symbolic_for_style(cValueInstance, cValue0, cValue1, cValue2, cError)
 }
 
 func Fn_gtk_icon_info_set_raw_coordinates(paramInstance unsafe.Pointer, param0 bool) {
@@ -7156,7 +7161,7 @@ func Fn_gtk_icon_theme_list_icons(paramInstance unsafe.Pointer, param0 string) {
 	// has string param
 }
 
-func Fn_gtk_icon_theme_load_icon(paramInstance unsafe.Pointer, param0 string, param1 int, param2 int) {
+func Fn_gtk_icon_theme_load_icon(paramInstance unsafe.Pointer, param0 string, param1 int, param2 int, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -9556,11 +9561,11 @@ func Fn_gtk_page_setup_new() {
 	C.gtk_page_setup_new()
 }
 
-func Fn_gtk_page_setup_new_from_file(param0 string) {
+func Fn_gtk_page_setup_new_from_file(param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gtk_page_setup_new_from_key_file(param0 unsafe.Pointer, param1 string) {
+func Fn_gtk_page_setup_new_from_key_file(param0 unsafe.Pointer, param1 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -9638,11 +9643,11 @@ func Fn_gtk_page_setup_get_top_margin(paramInstance unsafe.Pointer, param0 int) 
 	C.gtk_page_setup_get_top_margin(cValueInstance, cValue0)
 }
 
-func Fn_gtk_page_setup_load_file(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_page_setup_load_file(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gtk_page_setup_load_key_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string) {
+func Fn_gtk_page_setup_load_key_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -9699,7 +9704,7 @@ func Fn_gtk_page_setup_set_top_margin(paramInstance unsafe.Pointer, param0 float
 	C.gtk_page_setup_set_top_margin(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_page_setup_to_file(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_page_setup_to_file(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -9943,10 +9948,11 @@ func Fn_gtk_print_operation_get_embed_page_setup(paramInstance unsafe.Pointer) {
 	C.gtk_print_operation_get_embed_page_setup(cValueInstance)
 }
 
-func Fn_gtk_print_operation_get_error(paramInstance unsafe.Pointer) {
+func Fn_gtk_print_operation_get_error(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GtkPrintOperation)(unsafe.Pointer(paramInstance))
+	cError := (**C.GError)(error)
 
-	C.gtk_print_operation_get_error(cValueInstance)
+	C.gtk_print_operation_get_error(cValueInstance, cError)
 }
 
 func Fn_gtk_print_operation_get_has_selection(paramInstance unsafe.Pointer) {
@@ -9991,12 +9997,13 @@ func Fn_gtk_print_operation_is_finished(paramInstance unsafe.Pointer) {
 	C.gtk_print_operation_is_finished(cValueInstance)
 }
 
-func Fn_gtk_print_operation_run(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
+func Fn_gtk_print_operation_run(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GtkPrintOperation)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.GtkPrintOperationAction)(param0)
 	cValue1 := (*C.GtkWindow)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.gtk_print_operation_run(cValueInstance, cValue0, cValue1)
+	C.gtk_print_operation_run(cValueInstance, cValue0, cValue1, cError)
 }
 
 func Fn_gtk_print_operation_set_allow_async(paramInstance unsafe.Pointer, param0 bool) {
@@ -10106,11 +10113,11 @@ func Fn_gtk_print_settings_new() {
 	C.gtk_print_settings_new()
 }
 
-func Fn_gtk_print_settings_new_from_file(param0 string) {
+func Fn_gtk_print_settings_new_from_file(param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gtk_print_settings_new_from_key_file(param0 unsafe.Pointer, param1 string) {
+func Fn_gtk_print_settings_new_from_key_file(param0 unsafe.Pointer, param1 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -10313,11 +10320,11 @@ func Fn_gtk_print_settings_has_key(paramInstance unsafe.Pointer, param0 string) 
 	// has string param
 }
 
-func Fn_gtk_print_settings_load_file(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_print_settings_load_file(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gtk_print_settings_load_key_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string) {
+func Fn_gtk_print_settings_load_key_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -10498,7 +10505,7 @@ func Fn_gtk_print_settings_set_use_color(paramInstance unsafe.Pointer, param0 bo
 	C.gtk_print_settings_set_use_color(cValueInstance, cValue0)
 }
 
-func Fn_gtk_print_settings_to_file(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_print_settings_to_file(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -11095,21 +11102,22 @@ func Fn_gtk_recent_manager_has_item(paramInstance unsafe.Pointer, param0 string)
 	// has string param
 }
 
-func Fn_gtk_recent_manager_lookup_item(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_recent_manager_lookup_item(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gtk_recent_manager_move_item(paramInstance unsafe.Pointer, param0 string, param1 string) {
+func Fn_gtk_recent_manager_move_item(paramInstance unsafe.Pointer, param0 string, param1 string, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gtk_recent_manager_purge_items(paramInstance unsafe.Pointer) {
+func Fn_gtk_recent_manager_purge_items(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GtkRecentManager)(unsafe.Pointer(paramInstance))
+	cError := (**C.GError)(error)
 
-	C.gtk_recent_manager_purge_items(cValueInstance)
+	C.gtk_recent_manager_purge_items(cValueInstance, cError)
 }
 
-func Fn_gtk_recent_manager_remove_item(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_recent_manager_remove_item(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -12680,7 +12688,7 @@ func Fn_gtk_text_buffer_delete_selection(paramInstance unsafe.Pointer, param0 bo
 	C.gtk_text_buffer_delete_selection(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_text_buffer_deserialize(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 gdk.Atom, param2 unsafe.Pointer, param3 []uint8, param4 uint64) {
+func Fn_gtk_text_buffer_deserialize(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 gdk.Atom, param2 unsafe.Pointer, param3 []uint8, param4 uint64, error unsafe.Pointer) {
 	// has array param
 }
 
@@ -15934,15 +15942,15 @@ func Fn_gtk_ui_manager_add_ui(paramInstance unsafe.Pointer, param0 uint, param1 
 	// has string param
 }
 
-func Fn_gtk_ui_manager_add_ui_from_file(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_ui_manager_add_ui_from_file(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gtk_ui_manager_add_ui_from_resource(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_ui_manager_add_ui_from_resource(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gtk_ui_manager_add_ui_from_string(paramInstance unsafe.Pointer, param0 string, param1 uint64) {
+func Fn_gtk_ui_manager_add_ui_from_string(paramInstance unsafe.Pointer, param0 string, param1 uint64, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -18184,7 +18192,7 @@ func Fn_gtk_window_set_icon(paramInstance unsafe.Pointer, param0 unsafe.Pointer)
 	C.gtk_window_set_icon(cValueInstance, cValue0)
 }
 
-func Fn_gtk_window_set_icon_from_file(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_window_set_icon_from_file(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -18364,7 +18372,7 @@ func Fn_gtk_window_set_default_icon(param0 unsafe.Pointer) {
 	C.gtk_window_set_default_icon(cValue0)
 }
 
-func Fn_gtk_window_set_default_icon_from_file(param0 string) {
+func Fn_gtk_window_set_default_icon_from_file(param0 string, error unsafe.Pointer) {
 	// has string param
 }
 

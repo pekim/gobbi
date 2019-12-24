@@ -197,7 +197,7 @@ type VolumeMonitorClass C.GVolumeMonitorClass
 type ZlibCompressorClass C.GZlibCompressorClass
 type ZlibDecompressorClass C.GZlibDecompressorClass
 
-func Fn_g_app_info_create_from_commandline(param0 string, param1 string, param2 int) {
+func Fn_g_app_info_create_from_commandline(param0 string, param1 string, param2 int, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -218,7 +218,7 @@ func Fn_g_app_info_get_default_for_uri_scheme(param0 string) {
 	// has string param
 }
 
-func Fn_g_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer) {
+func Fn_g_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -316,7 +316,7 @@ func Fn_g_icon_hash(param0 unsafe.Pointer) {
 	C.g_icon_hash(cValue0)
 }
 
-func Fn_g_icon_new_for_string(param0 string) {
+func Fn_g_icon_new_for_string(param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -524,21 +524,23 @@ func Fn_g_buffered_input_stream_new_sized(param0 unsafe.Pointer, param1 uint64) 
 	C.g_buffered_input_stream_new_sized(cValue0, cValue1)
 }
 
-func Fn_g_buffered_input_stream_fill(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer) {
+func Fn_g_buffered_input_stream_fill(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GBufferedInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.gssize)(param0)
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_buffered_input_stream_fill(cValueInstance, cValue0, cValue1)
+	C.g_buffered_input_stream_fill(cValueInstance, cValue0, cValue1, cError)
 }
 
 // UNSUPPORTED : fill_async : has callback
 
-func Fn_g_buffered_input_stream_fill_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_buffered_input_stream_fill_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GBufferedInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_buffered_input_stream_fill_finish(cValueInstance, cValue0)
+	C.g_buffered_input_stream_fill_finish(cValueInstance, cValue0, cError)
 }
 
 func Fn_g_buffered_input_stream_get_available(paramInstance unsafe.Pointer) {
@@ -564,11 +566,12 @@ func Fn_g_buffered_input_stream_peek_buffer(paramInstance unsafe.Pointer, param0
 	C.g_buffered_input_stream_peek_buffer(cValueInstance, cValue0)
 }
 
-func Fn_g_buffered_input_stream_read_byte(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_buffered_input_stream_read_byte(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GBufferedInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_buffered_input_stream_read_byte(cValueInstance, cValue0)
+	C.g_buffered_input_stream_read_byte(cValueInstance, cValue0, cError)
 }
 
 func Fn_g_buffered_input_stream_set_buffer_size(paramInstance unsafe.Pointer, param0 uint64) {
@@ -660,10 +663,11 @@ func Fn_g_cancellable_reset(paramInstance unsafe.Pointer) {
 	C.g_cancellable_reset(cValueInstance)
 }
 
-func Fn_g_cancellable_set_error_if_cancelled(paramInstance unsafe.Pointer) {
+func Fn_g_cancellable_set_error_if_cancelled(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GCancellable)(unsafe.Pointer(paramInstance))
+	cError := (**C.GError)(error)
 
-	C.g_cancellable_set_error_if_cancelled(cValueInstance)
+	C.g_cancellable_set_error_if_cancelled(cValueInstance, cError)
 }
 
 func Fn_g_cancellable_get_current() {
@@ -769,85 +773,95 @@ func Fn_g_data_input_stream_get_newline_type(paramInstance unsafe.Pointer) {
 	C.g_data_input_stream_get_newline_type(cValueInstance)
 }
 
-func Fn_g_data_input_stream_read_byte(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_data_input_stream_read_byte(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_data_input_stream_read_byte(cValueInstance, cValue0)
+	C.g_data_input_stream_read_byte(cValueInstance, cValue0, cError)
 }
 
-func Fn_g_data_input_stream_read_int16(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_data_input_stream_read_int16(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_data_input_stream_read_int16(cValueInstance, cValue0)
+	C.g_data_input_stream_read_int16(cValueInstance, cValue0, cError)
 }
 
-func Fn_g_data_input_stream_read_int32(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_data_input_stream_read_int32(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_data_input_stream_read_int32(cValueInstance, cValue0)
+	C.g_data_input_stream_read_int32(cValueInstance, cValue0, cError)
 }
 
-func Fn_g_data_input_stream_read_int64(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_data_input_stream_read_int64(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_data_input_stream_read_int64(cValueInstance, cValue0)
+	C.g_data_input_stream_read_int64(cValueInstance, cValue0, cError)
 }
 
-func Fn_g_data_input_stream_read_line(paramInstance unsafe.Pointer, param0 *uint64, param1 unsafe.Pointer) {
+func Fn_g_data_input_stream_read_line(paramInstance unsafe.Pointer, param0 *uint64, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.gsize)(unsafe.Pointer(param0))
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_data_input_stream_read_line(cValueInstance, cValue0, cValue1)
+	C.g_data_input_stream_read_line(cValueInstance, cValue0, cValue1, cError)
 }
 
 // UNSUPPORTED : read_line_async : has callback
 
-func Fn_g_data_input_stream_read_line_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *uint64) {
+func Fn_g_data_input_stream_read_line_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *uint64, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
 	cValue1 := (*C.gsize)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_data_input_stream_read_line_finish(cValueInstance, cValue0, cValue1)
+	C.g_data_input_stream_read_line_finish(cValueInstance, cValue0, cValue1, cError)
 }
 
-func Fn_g_data_input_stream_read_uint16(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_data_input_stream_read_uint16(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_data_input_stream_read_uint16(cValueInstance, cValue0)
+	C.g_data_input_stream_read_uint16(cValueInstance, cValue0, cError)
 }
 
-func Fn_g_data_input_stream_read_uint32(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_data_input_stream_read_uint32(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_data_input_stream_read_uint32(cValueInstance, cValue0)
+	C.g_data_input_stream_read_uint32(cValueInstance, cValue0, cError)
 }
 
-func Fn_g_data_input_stream_read_uint64(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_data_input_stream_read_uint64(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_data_input_stream_read_uint64(cValueInstance, cValue0)
+	C.g_data_input_stream_read_uint64(cValueInstance, cValue0, cError)
 }
 
-func Fn_g_data_input_stream_read_until(paramInstance unsafe.Pointer, param0 string, param1 *uint64, param2 unsafe.Pointer) {
+func Fn_g_data_input_stream_read_until(paramInstance unsafe.Pointer, param0 string, param1 *uint64, param2 unsafe.Pointer, error unsafe.Pointer) {
 	// has string param
 }
 
 // UNSUPPORTED : read_until_async : has callback
 
-func Fn_g_data_input_stream_read_until_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *uint64) {
+func Fn_g_data_input_stream_read_until_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *uint64, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
 	cValue1 := (*C.gsize)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_data_input_stream_read_until_finish(cValueInstance, cValue0, cValue1)
+	C.g_data_input_stream_read_until_finish(cValueInstance, cValue0, cValue1, cError)
 }
 
 // UNSUPPORTED : read_upto_async : has callback
@@ -878,64 +892,71 @@ func Fn_g_data_output_stream_get_byte_order(paramInstance unsafe.Pointer) {
 	C.g_data_output_stream_get_byte_order(cValueInstance)
 }
 
-func Fn_g_data_output_stream_put_byte(paramInstance unsafe.Pointer, param0 uint8, param1 unsafe.Pointer) {
+func Fn_g_data_output_stream_put_byte(paramInstance unsafe.Pointer, param0 uint8, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.guchar)(param0)
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_data_output_stream_put_byte(cValueInstance, cValue0, cValue1)
+	C.g_data_output_stream_put_byte(cValueInstance, cValue0, cValue1, cError)
 }
 
-func Fn_g_data_output_stream_put_int16(paramInstance unsafe.Pointer, param0 int16, param1 unsafe.Pointer) {
+func Fn_g_data_output_stream_put_int16(paramInstance unsafe.Pointer, param0 int16, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.gint16)(param0)
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_data_output_stream_put_int16(cValueInstance, cValue0, cValue1)
+	C.g_data_output_stream_put_int16(cValueInstance, cValue0, cValue1, cError)
 }
 
-func Fn_g_data_output_stream_put_int32(paramInstance unsafe.Pointer, param0 int32, param1 unsafe.Pointer) {
+func Fn_g_data_output_stream_put_int32(paramInstance unsafe.Pointer, param0 int32, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.gint32)(param0)
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_data_output_stream_put_int32(cValueInstance, cValue0, cValue1)
+	C.g_data_output_stream_put_int32(cValueInstance, cValue0, cValue1, cError)
 }
 
-func Fn_g_data_output_stream_put_int64(paramInstance unsafe.Pointer, param0 int64, param1 unsafe.Pointer) {
+func Fn_g_data_output_stream_put_int64(paramInstance unsafe.Pointer, param0 int64, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.gint64)(param0)
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_data_output_stream_put_int64(cValueInstance, cValue0, cValue1)
+	C.g_data_output_stream_put_int64(cValueInstance, cValue0, cValue1, cError)
 }
 
-func Fn_g_data_output_stream_put_string(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
+func Fn_g_data_output_stream_put_string(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_g_data_output_stream_put_uint16(paramInstance unsafe.Pointer, param0 uint16, param1 unsafe.Pointer) {
+func Fn_g_data_output_stream_put_uint16(paramInstance unsafe.Pointer, param0 uint16, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.guint16)(param0)
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_data_output_stream_put_uint16(cValueInstance, cValue0, cValue1)
+	C.g_data_output_stream_put_uint16(cValueInstance, cValue0, cValue1, cError)
 }
 
-func Fn_g_data_output_stream_put_uint32(paramInstance unsafe.Pointer, param0 uint32, param1 unsafe.Pointer) {
+func Fn_g_data_output_stream_put_uint32(paramInstance unsafe.Pointer, param0 uint32, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.guint32)(param0)
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_data_output_stream_put_uint32(cValueInstance, cValue0, cValue1)
+	C.g_data_output_stream_put_uint32(cValueInstance, cValue0, cValue1, cError)
 }
 
-func Fn_g_data_output_stream_put_uint64(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer) {
+func Fn_g_data_output_stream_put_uint64(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.guint64)(param0)
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_data_output_stream_put_uint64(cValueInstance, cValue0, cValue1)
+	C.g_data_output_stream_put_uint64(cValueInstance, cValue0, cValue1, cError)
 }
 
 func Fn_g_data_output_stream_set_byte_order(paramInstance unsafe.Pointer, param0 int) {
@@ -1040,20 +1061,22 @@ func Fn_g_emblemed_icon_get_icon(paramInstance unsafe.Pointer) {
 	C.g_emblemed_icon_get_icon(cValueInstance)
 }
 
-func Fn_g_file_enumerator_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_file_enumerator_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_file_enumerator_close(cValueInstance, cValue0)
+	C.g_file_enumerator_close(cValueInstance, cValue0, cError)
 }
 
 // UNSUPPORTED : close_async : has callback
 
-func Fn_g_file_enumerator_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_file_enumerator_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_file_enumerator_close_finish(cValueInstance, cValue0)
+	C.g_file_enumerator_close_finish(cValueInstance, cValue0, cError)
 }
 
 func Fn_g_file_enumerator_get_container(paramInstance unsafe.Pointer) {
@@ -1074,20 +1097,22 @@ func Fn_g_file_enumerator_is_closed(paramInstance unsafe.Pointer) {
 	C.g_file_enumerator_is_closed(cValueInstance)
 }
 
-func Fn_g_file_enumerator_next_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_file_enumerator_next_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_file_enumerator_next_file(cValueInstance, cValue0)
+	C.g_file_enumerator_next_file(cValueInstance, cValue0, cError)
 }
 
 // UNSUPPORTED : next_files_async : has callback
 
-func Fn_g_file_enumerator_next_files_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_file_enumerator_next_files_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_file_enumerator_next_files_finish(cValueInstance, cValue0)
+	C.g_file_enumerator_next_files_finish(cValueInstance, cValue0, cError)
 }
 
 func Fn_g_file_enumerator_set_pending(paramInstance unsafe.Pointer, param0 bool) {
@@ -1402,17 +1427,18 @@ func Fn_g_file_info_unset_attribute_mask(paramInstance unsafe.Pointer) {
 	C.g_file_info_unset_attribute_mask(cValueInstance)
 }
 
-func Fn_g_file_input_stream_query_info(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
+func Fn_g_file_input_stream_query_info(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) {
 	// has string param
 }
 
 // UNSUPPORTED : query_info_async : has callback
 
-func Fn_g_file_input_stream_query_info_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_file_input_stream_query_info_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_file_input_stream_query_info_finish(cValueInstance, cValue0)
+	C.g_file_input_stream_query_info_finish(cValueInstance, cValue0, cError)
 }
 
 func Fn_g_file_monitor_cancel(paramInstance unsafe.Pointer) {
@@ -1449,17 +1475,18 @@ func Fn_g_file_output_stream_get_etag(paramInstance unsafe.Pointer) {
 	C.g_file_output_stream_get_etag(cValueInstance)
 }
 
-func Fn_g_file_output_stream_query_info(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
+func Fn_g_file_output_stream_query_info(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) {
 	// has string param
 }
 
 // UNSUPPORTED : query_info_async : has callback
 
-func Fn_g_file_output_stream_query_info_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_file_output_stream_query_info_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_file_output_stream_query_info_finish(cValueInstance, cValue0)
+	C.g_file_output_stream_query_info_finish(cValueInstance, cValue0, cError)
 }
 
 func Fn_g_filename_completer_new() {
@@ -1534,20 +1561,22 @@ func Fn_g_input_stream_clear_pending(paramInstance unsafe.Pointer) {
 	C.g_input_stream_clear_pending(cValueInstance)
 }
 
-func Fn_g_input_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_input_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_input_stream_close(cValueInstance, cValue0)
+	C.g_input_stream_close(cValueInstance, cValue0, cError)
 }
 
 // UNSUPPORTED : close_async : has callback
 
-func Fn_g_input_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_input_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_input_stream_close_finish(cValueInstance, cValue0)
+	C.g_input_stream_close_finish(cValueInstance, cValue0, cError)
 }
 
 func Fn_g_input_stream_has_pending(paramInstance unsafe.Pointer) {
@@ -1562,11 +1591,11 @@ func Fn_g_input_stream_is_closed(paramInstance unsafe.Pointer) {
 	C.g_input_stream_is_closed(cValueInstance)
 }
 
-func Fn_g_input_stream_read(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer) {
+func Fn_g_input_stream_read(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) {
 	// has array param
 }
 
-func Fn_g_input_stream_read_all(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 *uint64, param3 unsafe.Pointer) {
+func Fn_g_input_stream_read_all(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 *uint64, param3 unsafe.Pointer, error unsafe.Pointer) {
 	// has array param
 }
 
@@ -1576,34 +1605,38 @@ func Fn_g_input_stream_read_all(paramInstance unsafe.Pointer, param0 []uint8, pa
 
 // UNSUPPORTED : read_bytes_async : has callback
 
-func Fn_g_input_stream_read_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_input_stream_read_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_input_stream_read_finish(cValueInstance, cValue0)
+	C.g_input_stream_read_finish(cValueInstance, cValue0, cError)
 }
 
-func Fn_g_input_stream_set_pending(paramInstance unsafe.Pointer) {
+func Fn_g_input_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
+	cError := (**C.GError)(error)
 
-	C.g_input_stream_set_pending(cValueInstance)
+	C.g_input_stream_set_pending(cValueInstance, cError)
 }
 
-func Fn_g_input_stream_skip(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer) {
+func Fn_g_input_stream_skip(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.gsize)(param0)
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_input_stream_skip(cValueInstance, cValue0, cValue1)
+	C.g_input_stream_skip(cValueInstance, cValue0, cValue1, cError)
 }
 
 // UNSUPPORTED : skip_async : has callback
 
-func Fn_g_input_stream_skip_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_input_stream_skip_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_input_stream_skip_finish(cValueInstance, cValue0)
+	C.g_input_stream_skip_finish(cValueInstance, cValue0, cError)
 }
 
 // UNSUPPORTED : insert_sorted : has callback
@@ -1745,36 +1778,40 @@ func Fn_g_output_stream_clear_pending(paramInstance unsafe.Pointer) {
 	C.g_output_stream_clear_pending(cValueInstance)
 }
 
-func Fn_g_output_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_output_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_output_stream_close(cValueInstance, cValue0)
+	C.g_output_stream_close(cValueInstance, cValue0, cError)
 }
 
 // UNSUPPORTED : close_async : has callback
 
-func Fn_g_output_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_output_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_output_stream_close_finish(cValueInstance, cValue0)
+	C.g_output_stream_close_finish(cValueInstance, cValue0, cError)
 }
 
-func Fn_g_output_stream_flush(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_output_stream_flush(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_output_stream_flush(cValueInstance, cValue0)
+	C.g_output_stream_flush(cValueInstance, cValue0, cError)
 }
 
 // UNSUPPORTED : flush_async : has callback
 
-func Fn_g_output_stream_flush_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_output_stream_flush_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_output_stream_flush_finish(cValueInstance, cValue0)
+	C.g_output_stream_flush_finish(cValueInstance, cValue0, cError)
 }
 
 func Fn_g_output_stream_has_pending(paramInstance unsafe.Pointer) {
@@ -1791,37 +1828,40 @@ func Fn_g_output_stream_is_closed(paramInstance unsafe.Pointer) {
 
 // UNSUPPORTED : printf : has varargs
 
-func Fn_g_output_stream_set_pending(paramInstance unsafe.Pointer) {
+func Fn_g_output_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
+	cError := (**C.GError)(error)
 
-	C.g_output_stream_set_pending(cValueInstance)
+	C.g_output_stream_set_pending(cValueInstance, cError)
 }
 
-func Fn_g_output_stream_splice(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer) {
+func Fn_g_output_stream_splice(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GInputStream)(unsafe.Pointer(param0))
 	cValue1 := (C.GOutputStreamSpliceFlags)(param1)
 	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
+	cError := (**C.GError)(error)
 
-	C.g_output_stream_splice(cValueInstance, cValue0, cValue1, cValue2)
+	C.g_output_stream_splice(cValueInstance, cValue0, cValue1, cValue2, cError)
 }
 
 // UNSUPPORTED : splice_async : has callback
 
-func Fn_g_output_stream_splice_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_output_stream_splice_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_output_stream_splice_finish(cValueInstance, cValue0)
+	C.g_output_stream_splice_finish(cValueInstance, cValue0, cError)
 }
 
 // UNSUPPORTED : vprintf : has va_list
 
-func Fn_g_output_stream_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer) {
+func Fn_g_output_stream_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) {
 	// has array param
 }
 
-func Fn_g_output_stream_write_all(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 *uint64, param3 unsafe.Pointer) {
+func Fn_g_output_stream_write_all(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 *uint64, param3 unsafe.Pointer, error unsafe.Pointer) {
 	// has array param
 }
 
@@ -1829,28 +1869,31 @@ func Fn_g_output_stream_write_all(paramInstance unsafe.Pointer, param0 []uint8, 
 
 // UNSUPPORTED : write_async : has callback
 
-func Fn_g_output_stream_write_bytes(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+func Fn_g_output_stream_write_bytes(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GBytes)(unsafe.Pointer(param0))
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	cError := (**C.GError)(error)
 
-	C.g_output_stream_write_bytes(cValueInstance, cValue0, cValue1)
+	C.g_output_stream_write_bytes(cValueInstance, cValue0, cValue1, cError)
 }
 
 // UNSUPPORTED : write_bytes_async : has callback
 
-func Fn_g_output_stream_write_bytes_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_output_stream_write_bytes_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_output_stream_write_bytes_finish(cValueInstance, cValue0)
+	C.g_output_stream_write_bytes_finish(cValueInstance, cValue0, cError)
 }
 
-func Fn_g_output_stream_write_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_output_stream_write_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_output_stream_write_finish(cValueInstance, cValue0)
+	C.g_output_stream_write_finish(cValueInstance, cValue0, cError)
 }
 
 // UNSUPPORTED : writev_all_async : has callback
@@ -1972,10 +2015,11 @@ func Fn_g_simple_async_result_get_source_tag(paramInstance unsafe.Pointer) {
 	C.g_simple_async_result_get_source_tag(cValueInstance)
 }
 
-func Fn_g_simple_async_result_propagate_error(paramInstance unsafe.Pointer) {
+func Fn_g_simple_async_result_propagate_error(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
+	cError := (**C.GError)(error)
 
-	C.g_simple_async_result_propagate_error(cValueInstance)
+	C.g_simple_async_result_propagate_error(cValueInstance, cError)
 }
 
 // UNSUPPORTED : run_in_thread : has callback
@@ -2022,20 +2066,22 @@ func Fn_g_simple_async_result_is_valid(param0 unsafe.Pointer, param1 unsafe.Poin
 	C.g_simple_async_result_is_valid(cValue0, cValue1, cValue2)
 }
 
-func Fn_g_socket_address_enumerator_next(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_socket_address_enumerator_next(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GSocketAddressEnumerator)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_socket_address_enumerator_next(cValueInstance, cValue0)
+	C.g_socket_address_enumerator_next(cValueInstance, cValue0, cError)
 }
 
 // UNSUPPORTED : next_async : has callback
 
-func Fn_g_socket_address_enumerator_next_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+func Fn_g_socket_address_enumerator_next_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GSocketAddressEnumerator)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	cError := (**C.GError)(error)
 
-	C.g_socket_address_enumerator_next_finish(cValueInstance, cValue0)
+	C.g_socket_address_enumerator_next_finish(cValueInstance, cValue0, cError)
 }
 
 func Fn_g_socket_client_add_application_proxy(paramInstance unsafe.Pointer, param0 string) {
@@ -2046,7 +2092,7 @@ func Fn_g_socket_client_add_application_proxy(paramInstance unsafe.Pointer, para
 
 // UNSUPPORTED : connect_to_host_async : has callback
 
-func Fn_g_socket_client_connect_to_service(paramInstance unsafe.Pointer, param0 string, param1 string, param2 unsafe.Pointer) {
+func Fn_g_socket_client_connect_to_service(paramInstance unsafe.Pointer, param0 string, param1 string, param2 unsafe.Pointer, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -2064,22 +2110,23 @@ func Fn_g_socket_client_connect_to_service(paramInstance unsafe.Pointer, param0 
 
 // UNSUPPORTED : communicate_async : has callback
 
-func Fn_g_subprocess_communicate_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 *unsafe.Pointer) {
+func Fn_g_subprocess_communicate_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 *unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
 	cValue1 := (**C.GBytes)(unsafe.Pointer(param1))
 	cValue2 := (**C.GBytes)(unsafe.Pointer(param2))
+	cError := (**C.GError)(error)
 
-	C.g_subprocess_communicate_finish(cValueInstance, cValue0, cValue1, cValue2)
+	C.g_subprocess_communicate_finish(cValueInstance, cValue0, cValue1, cValue2, cError)
 }
 
-func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 string, param3 string) {
+func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 string, param3 string, error unsafe.Pointer) {
 	// has string param
 }
 
 // UNSUPPORTED : communicate_utf8_async : has callback
 
-func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, param2 string) {
+func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, param2 string, error unsafe.Pointer) {
 	// has string param
 }
 

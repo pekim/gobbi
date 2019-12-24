@@ -35,11 +35,11 @@ func Fn_gdk_pixbuf_new(param0 int, param1 bool, param2 int, param3 int, param4 i
 
 // UNSUPPORTED : new_from_data : has callback
 
-func Fn_gdk_pixbuf_new_from_file(param0 string) {
+func Fn_gdk_pixbuf_new_from_file(param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gdk_pixbuf_new_from_inline(param0 int, param1 []uint8, param2 bool) {
+func Fn_gdk_pixbuf_new_from_inline(param0 int, param1 []uint8, param2 bool, error unsafe.Pointer) {
 	// has array param
 }
 
@@ -226,7 +226,7 @@ func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 un
 
 // UNSUPPORTED : save_to_streamv_async : has callback
 
-func Fn_gdk_pixbuf_savev(paramInstance unsafe.Pointer, param0 string, param1 string, param2 []string, param3 []string) {
+func Fn_gdk_pixbuf_savev(paramInstance unsafe.Pointer, param0 string, param1 string, param2 []string, param3 []string, error unsafe.Pointer) {
 	// has array param
 }
 
@@ -267,7 +267,7 @@ func Fn_gdk_pixbuf_unref(paramInstance unsafe.Pointer) {
 
 // UNSUPPORTED : new_from_stream_at_scale_async : has callback
 
-func Fn_gdk_pixbuf_animation_new_from_file(param0 string) {
+func Fn_gdk_pixbuf_animation_new_from_file(param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
@@ -346,14 +346,15 @@ func Fn_gdk_pixbuf_loader_new() {
 	C.gdk_pixbuf_loader_new()
 }
 
-func Fn_gdk_pixbuf_loader_new_with_type(param0 string) {
+func Fn_gdk_pixbuf_loader_new_with_type(param0 string, error unsafe.Pointer) {
 	// has string param
 }
 
-func Fn_gdk_pixbuf_loader_close(paramInstance unsafe.Pointer) {
+func Fn_gdk_pixbuf_loader_close(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GdkPixbufLoader)(unsafe.Pointer(paramInstance))
+	cError := (**C.GError)(error)
 
-	C.gdk_pixbuf_loader_close(cValueInstance)
+	C.gdk_pixbuf_loader_close(cValueInstance, cError)
 }
 
 func Fn_gdk_pixbuf_loader_get_animation(paramInstance unsafe.Pointer) {
@@ -368,6 +369,6 @@ func Fn_gdk_pixbuf_loader_get_pixbuf(paramInstance unsafe.Pointer) {
 	C.gdk_pixbuf_loader_get_pixbuf(cValueInstance)
 }
 
-func Fn_gdk_pixbuf_loader_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64) {
+func Fn_gdk_pixbuf_loader_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, error unsafe.Pointer) {
 	// has array param
 }
