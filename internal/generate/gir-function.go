@@ -92,8 +92,8 @@ func (f *Function) generateSysBody(g *jen.Group) {
 	}
 
 	for _, param := range f.Parameters {
-		if param.Type != nil && param.Type.isString() {
-			g.Comment("has string param")
+		if param.Type != nil && param.Type.isString() && param.Type.cIndirectionCount > 1 {
+			g.Comment("has string param, non-trivial")
 			return
 		}
 	}
@@ -129,6 +129,10 @@ func (f *Function) generateSysCArgs(g *jen.Group) {
 func (f *Function) generateSysCArg(g *jen.Group, param *Parameter, paramName string, cVarName string) {
 	cValue := param.generateSysCValue(paramName)
 	g.Id(cVarName).Op(":=").Add(cValue)
+
+	if param.Type.isString() && param.transferNone() {
+		g.Defer().Qual("C", "free").Call(jenUnsafePointer().Call(jen.Id(cVarName)))
+	}
 }
 
 func (f *Function) generateSysCallParams(g *jen.Group) {

@@ -9,6 +9,7 @@ import (
 )
 
 // #include <atk/atk.h>
+// #include <stdlib.h>
 import "C"
 
 func toCBool(b bool) C.gboolean {
@@ -131,7 +132,10 @@ func Fn_atk_get_version() {
 }
 
 func Fn_atk_relation_type_for_name(param0 string) {
-	// has string param
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.atk_relation_type_for_name(cValue0)
 }
 
 func Fn_atk_relation_type_get_name(param0 int) {
@@ -141,7 +145,10 @@ func Fn_atk_relation_type_get_name(param0 int) {
 }
 
 func Fn_atk_relation_type_register(param0 string) {
-	// has string param
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.atk_relation_type_register(cValue0)
 }
 
 func Fn_atk_remove_focus_tracker(param0 uint) {
@@ -163,7 +170,10 @@ func Fn_atk_remove_key_event_listener(param0 uint) {
 }
 
 func Fn_atk_role_for_name(param0 string) {
-	// has string param
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.atk_role_for_name(cValue0)
 }
 
 func Fn_atk_role_get_localized_name(param0 int) {
@@ -179,11 +189,17 @@ func Fn_atk_role_get_name(param0 int) {
 }
 
 func Fn_atk_role_register(param0 string) {
-	// has string param
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.atk_role_register(cValue0)
 }
 
 func Fn_atk_state_type_for_name(param0 string) {
-	// has string param
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.atk_state_type_for_name(cValue0)
 }
 
 func Fn_atk_state_type_get_name(param0 int) {
@@ -193,11 +209,17 @@ func Fn_atk_state_type_get_name(param0 int) {
 }
 
 func Fn_atk_state_type_register(param0 string) {
-	// has string param
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.atk_state_type_register(cValue0)
 }
 
 func Fn_atk_text_attribute_for_name(param0 string) {
-	// has string param
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.atk_text_attribute_for_name(cValue0)
 }
 
 func Fn_atk_text_attribute_get_name(param0 int) {
@@ -214,7 +236,10 @@ func Fn_atk_text_attribute_get_value(param0 int, param1 int) {
 }
 
 func Fn_atk_text_attribute_register(param0 string) {
-	// has string param
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.atk_text_attribute_register(cValue0)
 }
 
 func Fn_atk_text_free_ranges(param0 []unsafe.Pointer) {
@@ -449,11 +474,19 @@ func Fn_atk_object_remove_relationship(paramInstance unsafe.Pointer, param0 int,
 }
 
 func Fn_atk_object_set_description(paramInstance unsafe.Pointer, param0 string) {
-	// has string param
+	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.atk_object_set_description(cValueInstance, cValue0)
 }
 
 func Fn_atk_object_set_name(paramInstance unsafe.Pointer, param0 string) {
-	// has string param
+	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.atk_object_set_name(cValueInstance, cValue0)
 }
 
 func Fn_atk_object_set_parent(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -620,7 +653,11 @@ func Fn_atk_socket_new() {
 }
 
 func Fn_atk_socket_embed(paramInstance unsafe.Pointer, param0 string) {
-	// has string param
+	cValueInstance := (*C.AtkSocket)(unsafe.Pointer(paramInstance))
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.atk_socket_embed(cValueInstance, cValue0)
 }
 
 func Fn_atk_socket_is_occupied(paramInstance unsafe.Pointer) {

@@ -3,6 +3,7 @@
 package cairo
 
 // #include <cairo-gobject.h>
+// #include <stdlib.h>
 import "C"
 
 func toCBool(b bool) C.gboolean {

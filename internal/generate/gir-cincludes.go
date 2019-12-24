@@ -16,4 +16,6 @@ func (cc CIncludes) generate(f *jen.File) { //, version Version) {
 	for _, cInclude := range cc {
 		f.CgoPreamble(fmt.Sprintf("#include <%s>", cInclude.Name))
 	}
+
+	f.CgoPreamble(fmt.Sprintf("#include <%s>", "stdlib.h"))
 }

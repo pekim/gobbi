@@ -6,6 +6,7 @@ package glib
 // #include <glib.h>
 // #include <glib/gstdio.h>
 // #include <glib-2.0/glib-object.h>
+// #include <stdlib.h>
 import "C"
 
 func toCBool(b bool) C.gboolean {

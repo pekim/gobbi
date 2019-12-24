@@ -4,6 +4,7 @@ package xlib
 
 // #include <X11/Xlib.h>
 // #include <X11/extensions/Xrender.h>
+// #include <stdlib.h>
 import "C"
 
 type Display C.Display
