@@ -21,13 +21,6 @@ var functionBlacklist = map[string]bool{
 	"g_memory_settings_backend_new":            true,
 	"g_null_settings_backend_new":              true,
 
-	// glib
-	"g_unix_error_quark":        true,
-	"g_unix_fd_source_new":      true,
-	"g_unix_open_pipe":          true,
-	"g_unix_set_fd_nonblocking": true,
-	"g_unix_signal_source_new":  true,
-
 	// pango
 	"pango_module_register":                true,
 	"pango_get_lib_subdirectory":           true,
@@ -62,6 +55,12 @@ func (f *Function) applyAddenda() {
 			},
 		})
 		return
+	}
+
+	// A small number of glib will be manually implemented, but in general
+	// glib functions are not needed.
+	if f.namespace.Name == "GLib" {
+		f.blacklist = true
 	}
 
 	if _, ok := functionBlacklist[f.CIdentifier]; ok {

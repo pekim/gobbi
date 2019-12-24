@@ -1385,11 +1385,11 @@ func Fn_g_file_info_remove_attribute(paramInstance unsafe.Pointer, param0 string
 	C.g_file_info_remove_attribute(cValueInstance, cValue0)
 }
 
-func Fn_g_file_info_set_attribute(paramInstance unsafe.Pointer, param0 string, param1 int, param2 *unsafe.Pointer) {
+func Fn_g_file_info_set_attribute(paramInstance unsafe.Pointer, param0 string, param1 int, param2 unsafe.Pointer) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
 	cValue1 := (C.GFileAttributeType)(param1)
-	cValue2 := (*C.gpointer)(unsafe.Pointer(param2))
+	cValue2 := (C.gpointer)(param2)
 
 	C.g_file_info_set_attribute(cValueInstance, cValue0, cValue1, cValue2)
 }

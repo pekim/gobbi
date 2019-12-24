@@ -634,8 +634,8 @@ func Fn_gtk_binding_entry_skip(param0 unsafe.Pointer, param1 uint, param2 int) {
 	C.gtk_binding_entry_skip(cValue0, cValue1, cValue2)
 }
 
-func Fn_gtk_binding_set_by_class(param0 *unsafe.Pointer) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_gtk_binding_set_by_class(param0 unsafe.Pointer) {
+	cValue0 := (C.gpointer)(param0)
 
 	C.gtk_binding_set_by_class(cValue0)
 }
@@ -2377,7 +2377,7 @@ func Fn_gtk_action_group_add_action_with_accel(paramInstance unsafe.Pointer, par
 	C.gtk_action_group_add_action_with_accel(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_action_group_add_actions(paramInstance unsafe.Pointer, param0 []ActionEntry, param1 uint, param2 *unsafe.Pointer) {
+func Fn_gtk_action_group_add_actions(paramInstance unsafe.Pointer, param0 []ActionEntry, param1 uint, param2 unsafe.Pointer) {
 	// has array param
 }
 
@@ -2387,7 +2387,7 @@ func Fn_gtk_action_group_add_actions(paramInstance unsafe.Pointer, param0 []Acti
 
 // UNSUPPORTED : add_radio_actions_full : has callback
 
-func Fn_gtk_action_group_add_toggle_actions(paramInstance unsafe.Pointer, param0 []ToggleActionEntry, param1 uint, param2 *unsafe.Pointer) {
+func Fn_gtk_action_group_add_toggle_actions(paramInstance unsafe.Pointer, param0 []ToggleActionEntry, param1 uint, param2 unsafe.Pointer) {
 	// has array param
 }
 
@@ -2953,9 +2953,9 @@ func Fn_gtk_builder_add_objects_from_string(paramInstance unsafe.Pointer, param0
 	// has array param
 }
 
-func Fn_gtk_builder_connect_signals(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
+func Fn_gtk_builder_connect_signals(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GtkBuilder)(unsafe.Pointer(paramInstance))
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+	cValue0 := (C.gpointer)(param0)
 
 	C.gtk_builder_connect_signals(cValueInstance, cValue0)
 }
@@ -10447,12 +10447,12 @@ func Fn_gtk_status_icon_set_visible(paramInstance unsafe.Pointer, param0 bool) {
 	C.gtk_status_icon_set_visible(cValueInstance, cValue0)
 }
 
-func Fn_gtk_status_icon_position_menu(param0 unsafe.Pointer, param1 *int, param2 *int, param3 *bool, param4 *unsafe.Pointer) {
+func Fn_gtk_status_icon_position_menu(param0 unsafe.Pointer, param1 *int, param2 *int, param3 *bool, param4 unsafe.Pointer) {
 	cValue0 := (*C.GtkMenu)(unsafe.Pointer(param0))
 	cValue1 := (*C.gint)(unsafe.Pointer(param1))
 	cValue2 := (*C.gint)(unsafe.Pointer(param2))
 	cValue3 := (*C.gboolean)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
+	cValue4 := (C.gpointer)(param4)
 
 	C.gtk_status_icon_position_menu(cValue0, cValue1, cValue2, cValue3, cValue4)
 }

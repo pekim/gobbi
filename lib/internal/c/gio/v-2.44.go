@@ -779,8 +779,8 @@ func Fn_g_pollable_source_new(param0 unsafe.Pointer) {
 	C.g_pollable_source_new(cValue0)
 }
 
-func Fn_g_pollable_source_new_full(param0 *unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_pollable_source_new_full(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (*C.GSource)(unsafe.Pointer(param1))
 	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
 
@@ -1115,9 +1115,9 @@ func Fn_g_application_add_option_group(paramInstance unsafe.Pointer, param0 unsa
 	C.g_application_add_option_group(cValueInstance, cValue0)
 }
 
-func Fn_g_application_bind_busy_property(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 string) {
+func Fn_g_application_bind_busy_property(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string) {
 	cValueInstance := (*C.GApplication)(unsafe.Pointer(paramInstance))
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := 42
 
 	C.g_application_bind_busy_property(cValueInstance, cValue0, cValue1)
@@ -1265,9 +1265,9 @@ func Fn_g_application_set_resource_base_path(paramInstance unsafe.Pointer, param
 	C.g_application_set_resource_base_path(cValueInstance, cValue0)
 }
 
-func Fn_g_application_unbind_busy_property(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 string) {
+func Fn_g_application_unbind_busy_property(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string) {
 	cValueInstance := (*C.GApplication)(unsafe.Pointer(paramInstance))
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := 42
 
 	C.g_application_unbind_busy_property(cValueInstance, cValue0, cValue1)
@@ -1652,10 +1652,10 @@ func Fn_g_credentials_is_same_user(paramInstance unsafe.Pointer, param0 unsafe.P
 	C.g_credentials_is_same_user(cValueInstance, cValue0)
 }
 
-func Fn_g_credentials_set_native(paramInstance unsafe.Pointer, param0 int, param1 *unsafe.Pointer) {
+func Fn_g_credentials_set_native(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GCredentials)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.GCredentialsType)(param0)
-	cValue1 := (*C.gpointer)(unsafe.Pointer(param1))
+	cValue1 := (C.gpointer)(param1)
 
 	C.g_credentials_set_native(cValueInstance, cValue0, cValue1)
 }
@@ -3628,11 +3628,11 @@ func Fn_g_file_info_remove_attribute(paramInstance unsafe.Pointer, param0 string
 	C.g_file_info_remove_attribute(cValueInstance, cValue0)
 }
 
-func Fn_g_file_info_set_attribute(paramInstance unsafe.Pointer, param0 string, param1 int, param2 *unsafe.Pointer) {
+func Fn_g_file_info_set_attribute(paramInstance unsafe.Pointer, param0 string, param1 int, param2 unsafe.Pointer) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
 	cValue1 := (C.GFileAttributeType)(param1)
-	cValue2 := (*C.gpointer)(unsafe.Pointer(param2))
+	cValue2 := (C.gpointer)(param2)
 
 	C.g_file_info_set_attribute(cValueInstance, cValue0, cValue1, cValue2)
 }
@@ -4337,17 +4337,17 @@ func Fn_g_list_store_new(param0 uint64) {
 	C.g_list_store_new(cValue0)
 }
 
-func Fn_g_list_store_append(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
+func Fn_g_list_store_append(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GListStore)(unsafe.Pointer(paramInstance))
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+	cValue0 := (C.gpointer)(param0)
 
 	C.g_list_store_append(cValueInstance, cValue0)
 }
 
-func Fn_g_list_store_insert(paramInstance unsafe.Pointer, param0 uint, param1 *unsafe.Pointer) {
+func Fn_g_list_store_insert(paramInstance unsafe.Pointer, param0 uint, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GListStore)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.guint)(param0)
-	cValue1 := (*C.gpointer)(unsafe.Pointer(param1))
+	cValue1 := (C.gpointer)(param1)
 
 	C.g_list_store_insert(cValueInstance, cValue0, cValue1)
 }
@@ -5209,9 +5209,9 @@ func Fn_g_permission_release_finish(paramInstance unsafe.Pointer, param0 unsafe.
 	C.g_permission_release_finish(cValueInstance, cValue0)
 }
 
-func Fn_g_property_action_new(param0 string, param1 *unsafe.Pointer, param2 string) {
+func Fn_g_property_action_new(param0 string, param1 unsafe.Pointer, param2 string) {
 	cValue0 := 42
-	cValue1 := (*C.gpointer)(unsafe.Pointer(param1))
+	cValue1 := (C.gpointer)(param1)
 	cValue2 := 42
 
 	C.g_property_action_new(cValue0, cValue1, cValue2)
@@ -5409,10 +5409,10 @@ func Fn_g_settings_apply(paramInstance unsafe.Pointer) {
 	C.g_settings_apply(cValueInstance)
 }
 
-func Fn_g_settings_bind(paramInstance unsafe.Pointer, param0 string, param1 *unsafe.Pointer, param2 string, param3 int) {
+func Fn_g_settings_bind(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 string, param3 int) {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
-	cValue1 := (*C.gpointer)(unsafe.Pointer(param1))
+	cValue1 := (C.gpointer)(param1)
 	cValue2 := 42
 	cValue3 := (C.GSettingsBindFlags)(param3)
 
@@ -5421,10 +5421,10 @@ func Fn_g_settings_bind(paramInstance unsafe.Pointer, param0 string, param1 *uns
 
 // UNSUPPORTED : bind_with_mapping : has callback
 
-func Fn_g_settings_bind_writable(paramInstance unsafe.Pointer, param0 string, param1 *unsafe.Pointer, param2 string, param3 bool) {
+func Fn_g_settings_bind_writable(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 string, param3 bool) {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
-	cValue1 := (*C.gpointer)(unsafe.Pointer(param1))
+	cValue1 := (C.gpointer)(param1)
 	cValue2 := 42
 	cValue3 := toCBool(param3)
 
@@ -5670,8 +5670,8 @@ func Fn_g_settings_sync() {
 	C.g_settings_sync()
 }
 
-func Fn_g_settings_unbind(param0 *unsafe.Pointer, param1 string) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_settings_unbind(param0 unsafe.Pointer, param1 string) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := 42
 
 	C.g_settings_unbind(cValue0, cValue1)
@@ -5726,7 +5726,7 @@ func Fn_g_simple_action_group_new() {
 	C.g_simple_action_group_new()
 }
 
-func Fn_g_simple_action_group_add_entries(paramInstance unsafe.Pointer, param0 []ActionEntry, param1 int, param2 *unsafe.Pointer) {
+func Fn_g_simple_action_group_add_entries(paramInstance unsafe.Pointer, param0 []ActionEntry, param1 int, param2 unsafe.Pointer) {
 	// has array param
 }
 
@@ -5851,10 +5851,10 @@ func Fn_g_simple_async_result_take_error(paramInstance unsafe.Pointer, param0 un
 	C.g_simple_async_result_take_error(cValueInstance, cValue0)
 }
 
-func Fn_g_simple_async_result_is_valid(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *unsafe.Pointer) {
+func Fn_g_simple_async_result_is_valid(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
 	cValue1 := (*C.GObject)(unsafe.Pointer(param1))
-	cValue2 := (*C.gpointer)(unsafe.Pointer(param2))
+	cValue2 := (C.gpointer)(param2)
 
 	C.g_simple_async_result_is_valid(cValue0, cValue1, cValue2)
 }
@@ -6244,8 +6244,8 @@ func Fn_g_socket_speaks_ipv4(paramInstance unsafe.Pointer) {
 	C.g_socket_speaks_ipv4(cValueInstance)
 }
 
-func Fn_g_socket_address_new_from_native(param0 *unsafe.Pointer, param1 uint64) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_socket_address_new_from_native(param0 unsafe.Pointer, param1 uint64) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.gsize)(param1)
 
 	C.g_socket_address_new_from_native(cValue0, cValue1)
@@ -6263,9 +6263,9 @@ func Fn_g_socket_address_get_native_size(paramInstance unsafe.Pointer) {
 	C.g_socket_address_get_native_size(cValueInstance)
 }
 
-func Fn_g_socket_address_to_native(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 uint64) {
+func Fn_g_socket_address_to_native(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint64) {
 	cValueInstance := (*C.GSocketAddress)(unsafe.Pointer(paramInstance))
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.gsize)(param1)
 
 	C.g_socket_address_to_native(cValueInstance, cValue0, cValue1)
@@ -6563,9 +6563,9 @@ func Fn_g_socket_control_message_get_size(paramInstance unsafe.Pointer) {
 	C.g_socket_control_message_get_size(cValueInstance)
 }
 
-func Fn_g_socket_control_message_serialize(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
+func Fn_g_socket_control_message_serialize(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GSocketControlMessage)(unsafe.Pointer(paramInstance))
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+	cValue0 := (C.gpointer)(param0)
 
 	C.g_socket_control_message_serialize(cValueInstance, cValue0)
 }
@@ -7081,18 +7081,18 @@ func Fn_g_task_set_return_on_cancel(paramInstance unsafe.Pointer, param0 bool) {
 	C.g_task_set_return_on_cancel(cValueInstance, cValue0)
 }
 
-func Fn_g_task_set_source_tag(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
+func Fn_g_task_set_source_tag(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GTask)(unsafe.Pointer(paramInstance))
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+	cValue0 := (C.gpointer)(param0)
 
 	C.g_task_set_source_tag(cValueInstance, cValue0)
 }
 
 // UNSUPPORTED : set_task_data : has callback
 
-func Fn_g_task_is_valid(param0 *unsafe.Pointer, param1 *unsafe.Pointer) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
-	cValue1 := (*C.gpointer)(unsafe.Pointer(param1))
+func Fn_g_task_is_valid(param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValue0 := (C.gpointer)(param0)
+	cValue1 := (C.gpointer)(param1)
 
 	C.g_task_is_valid(cValue0, cValue1)
 }

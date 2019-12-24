@@ -623,8 +623,8 @@ func Fn_gtk_binding_entry_remove(param0 unsafe.Pointer, param1 uint, param2 int)
 	C.gtk_binding_entry_remove(cValue0, cValue1, cValue2)
 }
 
-func Fn_gtk_binding_set_by_class(param0 *unsafe.Pointer) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_gtk_binding_set_by_class(param0 unsafe.Pointer) {
+	cValue0 := (C.gpointer)(param0)
 
 	C.gtk_binding_set_by_class(cValue0)
 }
@@ -2038,7 +2038,7 @@ func Fn_gtk_action_group_add_action_with_accel(paramInstance unsafe.Pointer, par
 	C.gtk_action_group_add_action_with_accel(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_action_group_add_actions(paramInstance unsafe.Pointer, param0 []ActionEntry, param1 uint, param2 *unsafe.Pointer) {
+func Fn_gtk_action_group_add_actions(paramInstance unsafe.Pointer, param0 []ActionEntry, param1 uint, param2 unsafe.Pointer) {
 	// has array param
 }
 
@@ -2048,7 +2048,7 @@ func Fn_gtk_action_group_add_actions(paramInstance unsafe.Pointer, param0 []Acti
 
 // UNSUPPORTED : add_radio_actions_full : has callback
 
-func Fn_gtk_action_group_add_toggle_actions(paramInstance unsafe.Pointer, param0 []ToggleActionEntry, param1 uint, param2 *unsafe.Pointer) {
+func Fn_gtk_action_group_add_toggle_actions(paramInstance unsafe.Pointer, param0 []ToggleActionEntry, param1 uint, param2 unsafe.Pointer) {
 	// has array param
 }
 

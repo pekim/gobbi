@@ -52,242 +52,242 @@ func Fn_g_boxed_copy(param0 uint64, param1 unsafe.Pointer) {
 	C.g_boxed_copy(cValue0, cValue1)
 }
 
-func Fn_g_boxed_free(param0 uint64, param1 *unsafe.Pointer) {
+func Fn_g_boxed_free(param0 uint64, param1 unsafe.Pointer) {
 	cValue0 := (C.GType)(param0)
-	cValue1 := (*C.gpointer)(unsafe.Pointer(param1))
+	cValue1 := (C.gpointer)(param1)
 
 	C.g_boxed_free(cValue0, cValue1)
 }
 
 // UNSUPPORTED : boxed_type_register_static : has callback
 
-func Fn_g_cclosure_marshal_BOOLEAN__BOXED_BOXED(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_BOOLEAN__BOXED_BOXED(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_BOOLEAN__BOXED_BOXED(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_BOOLEAN__FLAGS(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_BOOLEAN__FLAGS(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_BOOLEAN__FLAGS(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_STRING__OBJECT_POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_STRING__OBJECT_POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_STRING__OBJECT_POINTER(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__BOOLEAN(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__BOOLEAN(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__BOOLEAN(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__BOXED(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__BOXED(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__BOXED(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__CHAR(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__CHAR(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__CHAR(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__DOUBLE(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__DOUBLE(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__DOUBLE(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__ENUM(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__ENUM(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__ENUM(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__FLAGS(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__FLAGS(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__FLAGS(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__FLOAT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__FLOAT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__FLOAT(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__INT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__INT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__INT(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__LONG(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__LONG(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__LONG(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__OBJECT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__OBJECT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__OBJECT(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__PARAM(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__PARAM(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__PARAM(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__POINTER(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__STRING(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__STRING(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__STRING(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__UCHAR(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__UCHAR(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__UCHAR(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__UINT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__UINT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__UINT(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__UINT_POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__UINT_POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__UINT_POINTER(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__ULONG(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__ULONG(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__ULONG(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_g_cclosure_marshal_VOID__VOID(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) {
+func Fn_g_cclosure_marshal_VOID__VOID(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 	cValue2 := (C.guint)(param2)
 	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
-	cValue4 := (*C.gpointer)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
+	cValue4 := (C.gpointer)(param4)
+	cValue5 := (C.gpointer)(param5)
 
 	C.g_cclosure_marshal_VOID__VOID(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
@@ -663,8 +663,8 @@ func Fn_g_signal_chain_from_overridden(param0 []Value, param1 unsafe.Pointer) {
 
 // UNSUPPORTED : signal_chain_from_overridden_handler : has varargs
 
-func Fn_g_signal_connect_closure(param0 *unsafe.Pointer, param1 string, param2 unsafe.Pointer, param3 bool) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_connect_closure(param0 unsafe.Pointer, param1 string, param2 unsafe.Pointer, param3 bool) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := 42
 	cValue2 := (*C.GClosure)(unsafe.Pointer(param2))
 	cValue3 := toCBool(param3)
@@ -672,8 +672,8 @@ func Fn_g_signal_connect_closure(param0 *unsafe.Pointer, param1 string, param2 u
 	C.g_signal_connect_closure(cValue0, cValue1, cValue2, cValue3)
 }
 
-func Fn_g_signal_connect_closure_by_id(param0 *unsafe.Pointer, param1 uint, param2 uint32, param3 unsafe.Pointer, param4 bool) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_connect_closure_by_id(param0 unsafe.Pointer, param1 uint, param2 uint32, param3 unsafe.Pointer, param4 bool) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.guint)(param1)
 	cValue2 := (C.GQuark)(param2)
 	cValue3 := (*C.GClosure)(unsafe.Pointer(param3))
@@ -696,96 +696,96 @@ func Fn_g_signal_emitv(param0 []Value, param1 uint, param2 uint32, param3 unsafe
 	// has array param
 }
 
-func Fn_g_signal_get_invocation_hint(param0 *unsafe.Pointer) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_get_invocation_hint(param0 unsafe.Pointer) {
+	cValue0 := (C.gpointer)(param0)
 
 	C.g_signal_get_invocation_hint(cValue0)
 }
 
-func Fn_g_signal_handler_block(param0 *unsafe.Pointer, param1 uint64) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_handler_block(param0 unsafe.Pointer, param1 uint64) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.gulong)(param1)
 
 	C.g_signal_handler_block(cValue0, cValue1)
 }
 
-func Fn_g_signal_handler_disconnect(param0 *unsafe.Pointer, param1 uint64) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_handler_disconnect(param0 unsafe.Pointer, param1 uint64) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.gulong)(param1)
 
 	C.g_signal_handler_disconnect(cValue0, cValue1)
 }
 
-func Fn_g_signal_handler_find(param0 *unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 *unsafe.Pointer, param6 *unsafe.Pointer) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_handler_find(param0 unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 unsafe.Pointer, param6 unsafe.Pointer) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.GSignalMatchType)(param1)
 	cValue2 := (C.guint)(param2)
 	cValue3 := (C.GQuark)(param3)
 	cValue4 := (*C.GClosure)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
-	cValue6 := (*C.gpointer)(unsafe.Pointer(param6))
+	cValue5 := (C.gpointer)(param5)
+	cValue6 := (C.gpointer)(param6)
 
 	C.g_signal_handler_find(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
 }
 
-func Fn_g_signal_handler_is_connected(param0 *unsafe.Pointer, param1 uint64) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_handler_is_connected(param0 unsafe.Pointer, param1 uint64) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.gulong)(param1)
 
 	C.g_signal_handler_is_connected(cValue0, cValue1)
 }
 
-func Fn_g_signal_handler_unblock(param0 *unsafe.Pointer, param1 uint64) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_handler_unblock(param0 unsafe.Pointer, param1 uint64) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.gulong)(param1)
 
 	C.g_signal_handler_unblock(cValue0, cValue1)
 }
 
-func Fn_g_signal_handlers_block_matched(param0 *unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 *unsafe.Pointer, param6 *unsafe.Pointer) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_handlers_block_matched(param0 unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 unsafe.Pointer, param6 unsafe.Pointer) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.GSignalMatchType)(param1)
 	cValue2 := (C.guint)(param2)
 	cValue3 := (C.GQuark)(param3)
 	cValue4 := (*C.GClosure)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
-	cValue6 := (*C.gpointer)(unsafe.Pointer(param6))
+	cValue5 := (C.gpointer)(param5)
+	cValue6 := (C.gpointer)(param6)
 
 	C.g_signal_handlers_block_matched(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
 }
 
-func Fn_g_signal_handlers_destroy(param0 *unsafe.Pointer) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_handlers_destroy(param0 unsafe.Pointer) {
+	cValue0 := (C.gpointer)(param0)
 
 	C.g_signal_handlers_destroy(cValue0)
 }
 
-func Fn_g_signal_handlers_disconnect_matched(param0 *unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 *unsafe.Pointer, param6 *unsafe.Pointer) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_handlers_disconnect_matched(param0 unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 unsafe.Pointer, param6 unsafe.Pointer) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.GSignalMatchType)(param1)
 	cValue2 := (C.guint)(param2)
 	cValue3 := (C.GQuark)(param3)
 	cValue4 := (*C.GClosure)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
-	cValue6 := (*C.gpointer)(unsafe.Pointer(param6))
+	cValue5 := (C.gpointer)(param5)
+	cValue6 := (C.gpointer)(param6)
 
 	C.g_signal_handlers_disconnect_matched(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
 }
 
-func Fn_g_signal_handlers_unblock_matched(param0 *unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 *unsafe.Pointer, param6 *unsafe.Pointer) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_handlers_unblock_matched(param0 unsafe.Pointer, param1 int, param2 uint, param3 uint32, param4 unsafe.Pointer, param5 unsafe.Pointer, param6 unsafe.Pointer) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.GSignalMatchType)(param1)
 	cValue2 := (C.guint)(param2)
 	cValue3 := (C.GQuark)(param3)
 	cValue4 := (*C.GClosure)(unsafe.Pointer(param4))
-	cValue5 := (*C.gpointer)(unsafe.Pointer(param5))
-	cValue6 := (*C.gpointer)(unsafe.Pointer(param6))
+	cValue5 := (C.gpointer)(param5)
+	cValue6 := (C.gpointer)(param6)
 
 	C.g_signal_handlers_unblock_matched(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
 }
 
-func Fn_g_signal_has_handler_pending(param0 *unsafe.Pointer, param1 uint, param2 uint32, param3 bool) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_has_handler_pending(param0 unsafe.Pointer, param1 uint, param2 uint32, param3 bool) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.guint)(param1)
 	cValue2 := (C.GQuark)(param2)
 	cValue3 := toCBool(param3)
@@ -855,16 +855,16 @@ func Fn_g_signal_remove_emission_hook(param0 uint, param1 uint64) {
 	C.g_signal_remove_emission_hook(cValue0, cValue1)
 }
 
-func Fn_g_signal_stop_emission(param0 *unsafe.Pointer, param1 uint, param2 uint32) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_stop_emission(param0 unsafe.Pointer, param1 uint, param2 uint32) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.guint)(param1)
 	cValue2 := (C.GQuark)(param2)
 
 	C.g_signal_stop_emission(cValue0, cValue1, cValue2)
 }
 
-func Fn_g_signal_stop_emission_by_name(param0 *unsafe.Pointer, param1 string) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_signal_stop_emission_by_name(param0 unsafe.Pointer, param1 string) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := 42
 
 	C.g_signal_stop_emission_by_name(cValue0, cValue1)
@@ -990,8 +990,8 @@ func Fn_g_type_children(param0 uint64, param1 *uint) {
 	C.g_type_children(cValue0, cValue1)
 }
 
-func Fn_g_type_class_adjust_private_offset(param0 *unsafe.Pointer, param1 *int) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_type_class_adjust_private_offset(param0 unsafe.Pointer, param1 *int) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (*C.gint)(unsafe.Pointer(param1))
 
 	C.g_type_class_adjust_private_offset(cValue0, cValue1)
@@ -1082,8 +1082,8 @@ func Fn_g_type_interface_get_plugin(param0 uint64, param1 uint64) {
 	C.g_type_interface_get_plugin(cValue0, cValue1)
 }
 
-func Fn_g_type_interface_peek(param0 *unsafe.Pointer, param1 uint64) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_g_type_interface_peek(param0 unsafe.Pointer, param1 uint64) {
+	cValue0 := (C.gpointer)(param0)
 	cValue1 := (C.GType)(param1)
 
 	C.g_type_interface_peek(cValue0, cValue1)
@@ -1181,10 +1181,10 @@ func Fn_g_type_register_static(param0 uint64, param1 string, param2 unsafe.Point
 
 // UNSUPPORTED : type_remove_interface_check : has callback
 
-func Fn_g_type_set_qdata(param0 uint64, param1 uint32, param2 *unsafe.Pointer) {
+func Fn_g_type_set_qdata(param0 uint64, param1 uint32, param2 unsafe.Pointer) {
 	cValue0 := (C.GType)(param0)
 	cValue1 := (C.GQuark)(param1)
-	cValue2 := (*C.gpointer)(unsafe.Pointer(param2))
+	cValue2 := (C.gpointer)(param2)
 
 	C.g_type_set_qdata(cValue0, cValue1, cValue2)
 }
@@ -1284,8 +1284,8 @@ func Fn_g_object_notify(paramInstance unsafe.Pointer, param0 string) {
 	C.g_object_notify(cValueInstance, cValue0)
 }
 
-func Fn_g_object_ref(paramInstance *unsafe.Pointer) {
-	cValueInstance := (*C.gpointer)(unsafe.Pointer(paramInstance))
+func Fn_g_object_ref(paramInstance unsafe.Pointer) {
+	cValueInstance := (C.gpointer)(paramInstance)
 
 	C.g_object_ref(cValueInstance)
 }
@@ -1311,10 +1311,10 @@ func Fn_g_object_run_dispose(paramInstance unsafe.Pointer) {
 
 // UNSUPPORTED : set : has varargs
 
-func Fn_g_object_set_data(paramInstance unsafe.Pointer, param0 string, param1 *unsafe.Pointer) {
+func Fn_g_object_set_data(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
 	cValue0 := 42
-	cValue1 := (*C.gpointer)(unsafe.Pointer(param1))
+	cValue1 := (C.gpointer)(param1)
 
 	C.g_object_set_data(cValueInstance, cValue0, cValue1)
 }
@@ -1329,10 +1329,10 @@ func Fn_g_object_set_property(paramInstance unsafe.Pointer, param0 string, param
 	C.g_object_set_property(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_g_object_set_qdata(paramInstance unsafe.Pointer, param0 uint32, param1 *unsafe.Pointer) {
+func Fn_g_object_set_qdata(paramInstance unsafe.Pointer, param0 uint32, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.GQuark)(param0)
-	cValue1 := (*C.gpointer)(unsafe.Pointer(param1))
+	cValue1 := (C.gpointer)(param1)
 
 	C.g_object_set_qdata(cValueInstance, cValue0, cValue1)
 }
@@ -1361,8 +1361,8 @@ func Fn_g_object_thaw_notify(paramInstance unsafe.Pointer) {
 	C.g_object_thaw_notify(cValueInstance)
 }
 
-func Fn_g_object_unref(paramInstance *unsafe.Pointer) {
-	cValueInstance := (*C.gpointer)(unsafe.Pointer(paramInstance))
+func Fn_g_object_unref(paramInstance unsafe.Pointer) {
+	cValueInstance := (C.gpointer)(paramInstance)
 
 	C.g_object_unref(cValueInstance)
 }
@@ -1378,9 +1378,9 @@ func Fn_g_object_watch_closure(paramInstance unsafe.Pointer, param0 unsafe.Point
 
 // UNSUPPORTED : weak_unref : has callback
 
-func Fn_g_object_compat_control(param0 uint64, param1 *unsafe.Pointer) {
+func Fn_g_object_compat_control(param0 uint64, param1 unsafe.Pointer) {
 	cValue0 := (C.gsize)(param0)
-	cValue1 := (*C.gpointer)(unsafe.Pointer(param1))
+	cValue1 := (C.gpointer)(param1)
 
 	C.g_object_compat_control(cValue0, cValue1)
 }
@@ -1416,10 +1416,10 @@ func Fn_g_param_spec_ref(paramInstance unsafe.Pointer) {
 	C.g_param_spec_ref(cValueInstance)
 }
 
-func Fn_g_param_spec_set_qdata(paramInstance unsafe.Pointer, param0 uint32, param1 *unsafe.Pointer) {
+func Fn_g_param_spec_set_qdata(paramInstance unsafe.Pointer, param0 uint32, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GParamSpec)(unsafe.Pointer(paramInstance))
 	cValue0 := (C.GQuark)(param0)
-	cValue1 := (*C.gpointer)(unsafe.Pointer(param1))
+	cValue1 := (C.gpointer)(param1)
 
 	C.g_param_spec_set_qdata(cValueInstance, cValue0, cValue1)
 }

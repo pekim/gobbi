@@ -334,9 +334,9 @@ func Fn_atk_object_get_role(paramInstance unsafe.Pointer) {
 	C.atk_object_get_role(cValueInstance)
 }
 
-func Fn_atk_object_initialize(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
+func Fn_atk_object_initialize(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+	cValue0 := (C.gpointer)(param0)
 
 	C.atk_object_initialize(cValueInstance, cValue0)
 }

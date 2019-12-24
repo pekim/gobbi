@@ -608,8 +608,8 @@ func Fn_gtk_binding_entry_remove(param0 unsafe.Pointer, param1 uint, param2 int)
 	C.gtk_binding_entry_remove(cValue0, cValue1, cValue2)
 }
 
-func Fn_gtk_binding_set_by_class(param0 *unsafe.Pointer) {
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+func Fn_gtk_binding_set_by_class(param0 unsafe.Pointer) {
+	cValue0 := (C.gpointer)(param0)
 
 	C.gtk_binding_set_by_class(cValue0)
 }

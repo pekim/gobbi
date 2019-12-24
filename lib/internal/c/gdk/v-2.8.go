@@ -1782,9 +1782,9 @@ func Fn_gdk_window_set_urgency_hint(paramInstance unsafe.Pointer, param0 bool) {
 	C.gdk_window_set_urgency_hint(cValueInstance, cValue0)
 }
 
-func Fn_gdk_window_set_user_data(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
+func Fn_gdk_window_set_user_data(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
+	cValue0 := (C.gpointer)(param0)
 
 	C.gdk_window_set_user_data(cValueInstance, cValue0)
 }
