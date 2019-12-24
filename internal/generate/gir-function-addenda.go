@@ -1,5 +1,7 @@
 package generate
 
+import "strings"
+
 var functionBlacklist = map[string]bool{
 	// gdk
 	"gdk_synthesize_window_state": true,
@@ -58,17 +60,8 @@ func (f *Function) applyAddenda() {
 		return
 	}
 
-	if f.namespace.Name == "GLib" && f.Name == "clear_error" {
-		f.Parameters = append(f.Parameters, &Parameter{
-			Name: "err",
-			Argument: Argument{
-				Type: &Type{
-					Name:  "Error",
-					CType: "GError**",
-				},
-			},
-		})
-		return
+	if strings.HasPrefix(f.CIdentifier, "g_io_module") {
+		f.blacklist = true
 	}
 
 	// A small number of glib will be manually implemented, but in general

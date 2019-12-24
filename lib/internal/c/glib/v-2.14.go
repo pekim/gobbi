@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #include <glib.h>
 // #include <glib/gstdio.h>
 // #include <glib-2.0/glib-object.h>
@@ -165,12 +163,7 @@ type VariantType C.GVariantType
 // UNSUPPORTED : child_watch_add : blacklisted
 // UNSUPPORTED : child_watch_add_full : blacklisted
 // UNSUPPORTED : child_watch_source_new : blacklisted
-func Fn_g_clear_error(param0 *unsafe.Pointer) {
-	cValue0 := (**C.GError)(unsafe.Pointer(param0))
-
-	C.g_clear_error(cValue0)
-}
-
+// UNSUPPORTED : clear_error : blacklisted
 // UNSUPPORTED : clear_handle_id : blacklisted
 // UNSUPPORTED : clear_pointer : blacklisted
 // UNSUPPORTED : close : blacklisted

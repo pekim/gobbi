@@ -343,10 +343,10 @@ func Fn_g_io_extension_point_register(param0 string) {
 	// has string param
 }
 
-func Fn_g_io_modules_load_all_in_directory(param0 string) {
-	// has string param
-}
-
+// UNSUPPORTED : io_modules_load_all_in_directory : blacklisted
+// UNSUPPORTED : io_modules_load_all_in_directory_with_scope : blacklisted
+// UNSUPPORTED : io_modules_scan_all_in_directory : blacklisted
+// UNSUPPORTED : io_modules_scan_all_in_directory_with_scope : blacklisted
 func Fn_g_io_scheduler_cancel_all_jobs() {
 
 	C.g_io_scheduler_cancel_all_jobs()
@@ -1520,22 +1520,9 @@ func Fn_g_filter_output_stream_set_close_base_stream(paramInstance unsafe.Pointe
 	C.g_filter_output_stream_set_close_base_stream(cValueInstance, cValue0)
 }
 
-func Fn_g_io_module_new(param0 string) {
-	// has string param
-}
-
-func Fn_g_io_module_load(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GIOModule)(unsafe.Pointer(paramInstance))
-
-	C.g_io_module_load(cValueInstance)
-}
-
-func Fn_g_io_module_unload(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GIOModule)(unsafe.Pointer(paramInstance))
-
-	C.g_io_module_unload(cValueInstance)
-}
-
+// UNSUPPORTED : new : blacklisted
+// UNSUPPORTED : load : blacklisted
+// UNSUPPORTED : unload : blacklisted
 // UNSUPPORTED : query : blacklisted
 // UNSUPPORTED : close_async : has callback
 
