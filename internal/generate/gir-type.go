@@ -119,7 +119,11 @@ func (t *Type) parseCtype() {
 
 func (t *Type) sysParamGoType() *jen.Statement {
 	if t.isString() {
-		return jen.String()
+		stars := ""
+		if t.cIndirectionCount > 0 {
+			stars = strings.Repeat("*", t.cIndirectionCount-1)
+		}
+		return jen.Op(stars).String()
 	}
 
 	if t.cType == "void" && t.cIndirectionCount == 1 {

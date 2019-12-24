@@ -26,14 +26,15 @@ func (a *Array) init(ns *Namespace) {
 }
 
 func (a *Array) sysParamGoType() *jen.Statement {
-	stars := ""
 	if a.Type.isString() && strings.HasSuffix(a.CType, "***") {
 		// special case for "*[]string"
-		stars = "*"
+		return jen.
+			Op("*").
+			Index().
+			String()
 	}
 
 	return jen.
-		Op(stars).
 		Index().
 		Add(a.Type.sysParamGoType())
 }

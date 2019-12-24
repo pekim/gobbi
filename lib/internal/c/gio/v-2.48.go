@@ -262,8 +262,17 @@ func Fn_g_action_name_is_valid(param0 string) {
 	C.g_action_name_is_valid(cValue0)
 }
 
-func Fn_g_action_parse_detailed_name(param0 string, param1 string, param2 *unsafe.Pointer, error unsafe.Pointer) {
-	// has string param, non-trivial
+func Fn_g_action_parse_detailed_name(param0 string, param1 *string, param2 *unsafe.Pointer, error unsafe.Pointer) {
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+	var cValue1String *C.gchar
+	cValue1 := &cValue1String
+	cValue2 := (**C.GVariant)(unsafe.Pointer(param2))
+	cError := (**C.GError)(error)
+
+	C.g_action_parse_detailed_name(cValue0, cValue1, cValue2, cError)
+	param1String := C.GoString(cValue1String)
+	*param1 = param1String
 }
 
 func Fn_g_action_print_detailed_name(param0 string, param1 unsafe.Pointer) {
@@ -534,12 +543,28 @@ func Fn_g_dbus_address_get_for_bus_sync(param0 int, param1 unsafe.Pointer, error
 
 // UNSUPPORTED : dbus_address_get_stream : has callback
 
-func Fn_g_dbus_address_get_stream_finish(param0 unsafe.Pointer, param1 string, error unsafe.Pointer) {
-	// has string param, non-trivial
+func Fn_g_dbus_address_get_stream_finish(param0 unsafe.Pointer, param1 *string, error unsafe.Pointer) {
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	var cValue1String *C.gchar
+	cValue1 := &cValue1String
+	cError := (**C.GError)(error)
+
+	C.g_dbus_address_get_stream_finish(cValue0, cValue1, cError)
+	param1String := C.GoString(cValue1String)
+	*param1 = param1String
 }
 
-func Fn_g_dbus_address_get_stream_sync(param0 string, param1 string, param2 unsafe.Pointer, error unsafe.Pointer) {
-	// has string param, non-trivial
+func Fn_g_dbus_address_get_stream_sync(param0 string, param1 *string, param2 unsafe.Pointer, error unsafe.Pointer) {
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+	var cValue1String *C.gchar
+	cValue1 := &cValue1String
+	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
+	cError := (**C.GError)(error)
+
+	C.g_dbus_address_get_stream_sync(cValue0, cValue1, cValue2, cError)
+	param1String := C.GoString(cValue1String)
+	*param1 = param1String
 }
 
 func Fn_g_dbus_annotation_info_lookup(param0 []unsafe.Pointer, param1 string) {
@@ -4860,8 +4885,15 @@ func Fn_g_menu_attribute_iter_get_name(paramInstance unsafe.Pointer) {
 	C.g_menu_attribute_iter_get_name(cValueInstance)
 }
 
-func Fn_g_menu_attribute_iter_get_next(paramInstance unsafe.Pointer, param0 string, param1 *unsafe.Pointer) {
-	// has string param, non-trivial
+func Fn_g_menu_attribute_iter_get_next(paramInstance unsafe.Pointer, param0 *string, param1 *unsafe.Pointer) {
+	cValueInstance := (*C.GMenuAttributeIter)(unsafe.Pointer(paramInstance))
+	var cValue0String *C.gchar
+	cValue0 := &cValue0String
+	cValue1 := (**C.GVariant)(unsafe.Pointer(param1))
+
+	C.g_menu_attribute_iter_get_next(cValueInstance, cValue0, cValue1)
+	param0String := C.GoString(cValue0String)
+	*param0 = param0String
 }
 
 func Fn_g_menu_attribute_iter_get_value(paramInstance unsafe.Pointer) {
@@ -5001,8 +5033,15 @@ func Fn_g_menu_link_iter_get_name(paramInstance unsafe.Pointer) {
 	C.g_menu_link_iter_get_name(cValueInstance)
 }
 
-func Fn_g_menu_link_iter_get_next(paramInstance unsafe.Pointer, param0 string, param1 *unsafe.Pointer) {
-	// has string param, non-trivial
+func Fn_g_menu_link_iter_get_next(paramInstance unsafe.Pointer, param0 *string, param1 *unsafe.Pointer) {
+	cValueInstance := (*C.GMenuLinkIter)(unsafe.Pointer(paramInstance))
+	var cValue0String *C.gchar
+	cValue0 := &cValue0String
+	cValue1 := (**C.GMenuModel)(unsafe.Pointer(param1))
+
+	C.g_menu_link_iter_get_next(cValueInstance, cValue0, cValue1)
+	param0String := C.GoString(cValue0String)
+	*param0 = param0String
 }
 
 func Fn_g_menu_link_iter_get_value(paramInstance unsafe.Pointer) {
@@ -6291,8 +6330,14 @@ func Fn_g_simple_proxy_resolver_set_default_proxy(paramInstance unsafe.Pointer, 
 	C.g_simple_proxy_resolver_set_default_proxy(cValueInstance, cValue0)
 }
 
-func Fn_g_simple_proxy_resolver_set_ignore_hosts(paramInstance unsafe.Pointer, param0 string) {
-	// has string param, non-trivial
+func Fn_g_simple_proxy_resolver_set_ignore_hosts(paramInstance unsafe.Pointer, param0 *string) {
+	cValueInstance := (*C.GSimpleProxyResolver)(unsafe.Pointer(paramInstance))
+	var cValue0String *C.gchar
+	cValue0String = (*C.gchar)(C.CString(*param0))
+	cValue0 := &cValue0String
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.g_simple_proxy_resolver_set_ignore_hosts(cValueInstance, cValue0)
 }
 
 func Fn_g_simple_proxy_resolver_set_uri_proxy(paramInstance unsafe.Pointer, param0 string, param1 string) {
@@ -6305,8 +6350,15 @@ func Fn_g_simple_proxy_resolver_set_uri_proxy(paramInstance unsafe.Pointer, para
 	C.g_simple_proxy_resolver_set_uri_proxy(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_g_simple_proxy_resolver_new(param0 string, param1 string) {
-	// has string param, non-trivial
+func Fn_g_simple_proxy_resolver_new(param0 string, param1 *string) {
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+	var cValue1String *C.gchar
+	cValue1String = (*C.gchar)(C.CString(*param1))
+	cValue1 := &cValue1String
+	defer C.free(unsafe.Pointer(cValue1))
+
+	C.g_simple_proxy_resolver_new(cValue0, cValue1)
 }
 
 func Fn_g_socket_new(param0 int, param1 int, param2 int, error unsafe.Pointer) {
@@ -7174,14 +7226,40 @@ func Fn_g_subprocess_communicate_finish(paramInstance unsafe.Pointer, param0 uns
 	C.g_subprocess_communicate_finish(cValueInstance, cValue0, cValue1, cValue2, cError)
 }
 
-func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 string, param3 string, error unsafe.Pointer) {
-	// has string param, non-trivial
+func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 *string, param3 *string, error unsafe.Pointer) {
+	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	var cValue2String *C.gchar
+	cValue2 := &cValue2String
+	var cValue3String *C.gchar
+	cValue3 := &cValue3String
+	cError := (**C.GError)(error)
+
+	C.g_subprocess_communicate_utf8(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+	param2String := C.GoString(cValue2String)
+	*param2 = param2String
+	param3String := C.GoString(cValue3String)
+	*param3 = param3String
 }
 
 // UNSUPPORTED : communicate_utf8_async : has callback
 
-func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, param2 string, error unsafe.Pointer) {
-	// has string param, non-trivial
+func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string, param2 *string, error unsafe.Pointer) {
+	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	var cValue1String *C.gchar
+	cValue1 := &cValue1String
+	var cValue2String *C.gchar
+	cValue2 := &cValue2String
+	cError := (**C.GError)(error)
+
+	C.g_subprocess_communicate_utf8_finish(cValueInstance, cValue0, cValue1, cValue2, cError)
+	param1String := C.GoString(cValue1String)
+	*param1 = param1String
+	param2String := C.GoString(cValue2String)
+	*param2 = param2String
 }
 
 func Fn_g_subprocess_force_exit(paramInstance unsafe.Pointer) {

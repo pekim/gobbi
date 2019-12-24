@@ -5164,12 +5164,27 @@ func Fn_gtk_im_context_focus_out(paramInstance unsafe.Pointer) {
 	C.gtk_im_context_focus_out(cValueInstance)
 }
 
-func Fn_gtk_im_context_get_preedit_string(paramInstance unsafe.Pointer, param0 string, param1 *unsafe.Pointer, param2 *int) {
-	// has string param, non-trivial
+func Fn_gtk_im_context_get_preedit_string(paramInstance unsafe.Pointer, param0 *string, param1 *unsafe.Pointer, param2 *int) {
+	cValueInstance := (*C.GtkIMContext)(unsafe.Pointer(paramInstance))
+	var cValue0String *C.gchar
+	cValue0 := &cValue0String
+	cValue1 := (**C.PangoAttrList)(unsafe.Pointer(param1))
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	C.gtk_im_context_get_preedit_string(cValueInstance, cValue0, cValue1, cValue2)
+	param0String := C.GoString(cValue0String)
+	*param0 = param0String
 }
 
-func Fn_gtk_im_context_get_surrounding(paramInstance unsafe.Pointer, param0 string, param1 *int) {
-	// has string param, non-trivial
+func Fn_gtk_im_context_get_surrounding(paramInstance unsafe.Pointer, param0 *string, param1 *int) {
+	cValueInstance := (*C.GtkIMContext)(unsafe.Pointer(paramInstance))
+	var cValue0String *C.gchar
+	cValue0 := &cValue0String
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	C.gtk_im_context_get_surrounding(cValueInstance, cValue0, cValue1)
+	param0String := C.GoString(cValue0String)
+	*param0 = param0String
 }
 
 func Fn_gtk_im_context_reset(paramInstance unsafe.Pointer) {
@@ -5922,8 +5937,15 @@ func Fn_gtk_image_get_animation(paramInstance unsafe.Pointer) {
 	C.gtk_image_get_animation(cValueInstance)
 }
 
-func Fn_gtk_image_get_icon_name(paramInstance unsafe.Pointer, param0 string, param1 *int) {
-	// has string param, non-trivial
+func Fn_gtk_image_get_icon_name(paramInstance unsafe.Pointer, param0 *string, param1 *int) {
+	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
+	var cValue0String *C.gchar
+	cValue0 := &cValue0String
+	cValue1 := (*C.GtkIconSize)(unsafe.Pointer(param1))
+
+	C.gtk_image_get_icon_name(cValueInstance, cValue0, cValue1)
+	param0String := C.GoString(cValue0String)
+	*param0 = param0String
 }
 
 func Fn_gtk_image_get_icon_set(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *int) {
@@ -5946,8 +5968,15 @@ func Fn_gtk_image_get_pixel_size(paramInstance unsafe.Pointer) {
 	C.gtk_image_get_pixel_size(cValueInstance)
 }
 
-func Fn_gtk_image_get_stock(paramInstance unsafe.Pointer, param0 string, param1 *int) {
-	// has string param, non-trivial
+func Fn_gtk_image_get_stock(paramInstance unsafe.Pointer, param0 *string, param1 *int) {
+	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
+	var cValue0String *C.gchar
+	cValue0 := &cValue0String
+	cValue1 := (*C.GtkIconSize)(unsafe.Pointer(param1))
+
+	C.gtk_image_get_stock(cValueInstance, cValue0, cValue1)
+	param0String := C.GoString(cValue0String)
+	*param0 = param0String
 }
 
 func Fn_gtk_image_get_storage_type(paramInstance unsafe.Pointer) {
@@ -13142,8 +13171,19 @@ func Fn_gtk_widget_child_notify(paramInstance unsafe.Pointer, param0 string) {
 	C.gtk_widget_child_notify(cValueInstance, cValue0)
 }
 
-func Fn_gtk_widget_class_path(paramInstance unsafe.Pointer, param0 *uint, param1 string, param2 string) {
-	// has string param, non-trivial
+func Fn_gtk_widget_class_path(paramInstance unsafe.Pointer, param0 *uint, param1 *string, param2 *string) {
+	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
+	cValue0 := (*C.guint)(unsafe.Pointer(param0))
+	var cValue1String *C.gchar
+	cValue1 := &cValue1String
+	var cValue2String *C.gchar
+	cValue2 := &cValue2String
+
+	C.gtk_widget_class_path(cValueInstance, cValue0, cValue1, cValue2)
+	param1String := C.GoString(cValue1String)
+	*param1 = param1String
+	param2String := C.GoString(cValue2String)
+	*param2 = param2String
 }
 
 func Fn_gtk_widget_compute_expand(paramInstance unsafe.Pointer, param0 int) {
@@ -13786,8 +13826,19 @@ func Fn_gtk_widget_modify_text(paramInstance unsafe.Pointer, param0 int, param1 
 	C.gtk_widget_modify_text(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_widget_path(paramInstance unsafe.Pointer, param0 *uint, param1 string, param2 string) {
-	// has string param, non-trivial
+func Fn_gtk_widget_path(paramInstance unsafe.Pointer, param0 *uint, param1 *string, param2 *string) {
+	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
+	cValue0 := (*C.guint)(unsafe.Pointer(param0))
+	var cValue1String *C.gchar
+	cValue1 := &cValue1String
+	var cValue2String *C.gchar
+	cValue2 := &cValue2String
+
+	C.gtk_widget_path(cValueInstance, cValue0, cValue1, cValue2)
+	param1String := C.GoString(cValue1String)
+	*param1 = param1String
+	param2String := C.GoString(cValue2String)
+	*param2 = param2String
 }
 
 func Fn_gtk_widget_queue_compute_expand(paramInstance unsafe.Pointer) {

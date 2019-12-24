@@ -3437,14 +3437,40 @@ func Fn_g_subprocess_communicate_finish(paramInstance unsafe.Pointer, param0 uns
 	C.g_subprocess_communicate_finish(cValueInstance, cValue0, cValue1, cValue2, cError)
 }
 
-func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 string, param3 string, error unsafe.Pointer) {
-	// has string param, non-trivial
+func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 *string, param3 *string, error unsafe.Pointer) {
+	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	var cValue2String *C.gchar
+	cValue2 := &cValue2String
+	var cValue3String *C.gchar
+	cValue3 := &cValue3String
+	cError := (**C.GError)(error)
+
+	C.g_subprocess_communicate_utf8(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+	param2String := C.GoString(cValue2String)
+	*param2 = param2String
+	param3String := C.GoString(cValue3String)
+	*param3 = param3String
 }
 
 // UNSUPPORTED : communicate_utf8_async : has callback
 
-func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, param2 string, error unsafe.Pointer) {
-	// has string param, non-trivial
+func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string, param2 *string, error unsafe.Pointer) {
+	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+	var cValue1String *C.gchar
+	cValue1 := &cValue1String
+	var cValue2String *C.gchar
+	cValue2 := &cValue2String
+	cError := (**C.GError)(error)
+
+	C.g_subprocess_communicate_utf8_finish(cValueInstance, cValue0, cValue1, cValue2, cError)
+	param1String := C.GoString(cValue1String)
+	*param1 = param1String
+	param2String := C.GoString(cValue2String)
+	*param2 = param2String
 }
 
 // UNSUPPORTED : wait_async : has callback

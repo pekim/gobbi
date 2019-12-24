@@ -332,12 +332,34 @@ func Fn_pango_lookup_aliases(param0 string, param1 *[]string, param2 *int) {
 }
 
 // UNSUPPORTED : module_register : blacklisted
-func Fn_pango_parse_enum(param0 uint64, param1 string, param2 *int, param3 bool, param4 string) {
-	// has string param, non-trivial
+func Fn_pango_parse_enum(param0 uint64, param1 string, param2 *int, param3 bool, param4 *string) {
+	cValue0 := (C.GType)(param0)
+	cValue1 := (*C.char)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+	cValue2 := (*C.int)(unsafe.Pointer(param2))
+	cValue3 := toCBool(param3)
+	var cValue4String *C.gchar
+	cValue4 := &cValue4String
+
+	C.pango_parse_enum(cValue0, cValue1, cValue2, cValue3, cValue4)
+	param4String := C.GoString(cValue4String)
+	*param4 = param4String
 }
 
-func Fn_pango_parse_markup(param0 string, param1 int, param2 rune, param3 *unsafe.Pointer, param4 string, param5 *rune, error unsafe.Pointer) {
-	// has string param, non-trivial
+func Fn_pango_parse_markup(param0 string, param1 int, param2 rune, param3 *unsafe.Pointer, param4 *string, param5 *rune, error unsafe.Pointer) {
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+	cValue1 := (C.int)(param1)
+	cValue2 := (C.gunichar)(param2)
+	cValue3 := (**C.PangoAttrList)(unsafe.Pointer(param3))
+	var cValue4String *C.gchar
+	cValue4 := &cValue4String
+	cValue5 := (*C.gunichar)(unsafe.Pointer(param5))
+	cError := (**C.GError)(error)
+
+	C.pango_parse_markup(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cError)
+	param4String := C.GoString(cValue4String)
+	*param4 = param4String
 }
 
 func Fn_pango_parse_stretch(param0 string, param1 *int, param2 bool) {
@@ -396,16 +418,37 @@ func Fn_pango_reorder_items(param0 unsafe.Pointer) {
 	C.pango_reorder_items(cValue0)
 }
 
-func Fn_pango_scan_int(param0 string, param1 *int) {
-	// has string param, non-trivial
+func Fn_pango_scan_int(param0 *string, param1 *int) {
+	var cValue0String *C.gchar
+	cValue0String = (*C.gchar)(C.CString(*param0))
+	cValue0 := &cValue0String
+	cValue1 := (*C.int)(unsafe.Pointer(param1))
+
+	C.pango_scan_int(cValue0, cValue1)
+	param0String := C.GoString(cValue0String)
+	*param0 = param0String
 }
 
-func Fn_pango_scan_string(param0 string, param1 unsafe.Pointer) {
-	// has string param, non-trivial
+func Fn_pango_scan_string(param0 *string, param1 unsafe.Pointer) {
+	var cValue0String *C.gchar
+	cValue0String = (*C.gchar)(C.CString(*param0))
+	cValue0 := &cValue0String
+	cValue1 := (*C.GString)(unsafe.Pointer(param1))
+
+	C.pango_scan_string(cValue0, cValue1)
+	param0String := C.GoString(cValue0String)
+	*param0 = param0String
 }
 
-func Fn_pango_scan_word(param0 string, param1 unsafe.Pointer) {
-	// has string param, non-trivial
+func Fn_pango_scan_word(param0 *string, param1 unsafe.Pointer) {
+	var cValue0String *C.gchar
+	cValue0String = (*C.gchar)(C.CString(*param0))
+	cValue0 := &cValue0String
+	cValue1 := (*C.GString)(unsafe.Pointer(param1))
+
+	C.pango_scan_word(cValue0, cValue1)
+	param0String := C.GoString(cValue0String)
+	*param0 = param0String
 }
 
 func Fn_pango_script_for_unichar(param0 rune) {
@@ -430,8 +473,14 @@ func Fn_pango_shape(param0 string, param1 int, param2 unsafe.Pointer, param3 uns
 	C.pango_shape(cValue0, cValue1, cValue2, cValue3)
 }
 
-func Fn_pango_skip_space(param0 string) {
-	// has string param, non-trivial
+func Fn_pango_skip_space(param0 *string) {
+	var cValue0String *C.gchar
+	cValue0String = (*C.gchar)(C.CString(*param0))
+	cValue0 := &cValue0String
+
+	C.pango_skip_space(cValue0)
+	param0String := C.GoString(cValue0String)
+	*param0 = param0String
 }
 
 func Fn_pango_split_file_list(param0 string) {

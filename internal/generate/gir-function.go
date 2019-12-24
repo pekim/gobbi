@@ -92,7 +92,7 @@ func (f *Function) generateSysBody(g *jen.Group) {
 	}
 
 	for _, param := range f.Parameters {
-		if param.Type != nil && param.Type.isString() && param.Type.cIndirectionCount > 1 {
+		if param.Type != nil && param.Type.isString() && param.Type.cIndirectionCount > 2 {
 			g.Comment("has string param, non-trivial")
 			return
 		}
@@ -103,18 +103,20 @@ func (f *Function) generateSysBody(g *jen.Group) {
 	g.
 		Qual("C", f.CIdentifier).
 		CallFunc(f.generateSysCallParams)
+
+	f.generateSysCArgsOut(g)
 }
 
 func (f *Function) generateSysCArgs(g *jen.Group) {
 	if f.InstanceParameter != nil {
-		f.generateSysCArg(g, f.InstanceParameter, "paramInstance", "cValueInstance")
+		f.InstanceParameter.generateSysCArg(g, "paramInstance", "cValueInstance")
 	}
 
 	for i, param := range f.Parameters {
 		paramName := "param" + strconv.Itoa(i)
 		cVarName := "cValue" + strconv.Itoa(i)
 
-		f.generateSysCArg(g, param, paramName, cVarName)
+		param.generateSysCArg(g, paramName, cVarName)
 	}
 
 	if f.Throws {
@@ -126,12 +128,12 @@ func (f *Function) generateSysCArgs(g *jen.Group) {
 	g.Line()
 }
 
-func (f *Function) generateSysCArg(g *jen.Group, param *Parameter, paramName string, cVarName string) {
-	cValue := param.generateSysCValue(paramName)
-	g.Id(cVarName).Op(":=").Add(cValue)
+func (f *Function) generateSysCArgsOut(g *jen.Group) {
+	for i, param := range f.Parameters {
+		paramName := "param" + strconv.Itoa(i)
+		cVarName := "cValue" + strconv.Itoa(i)
 
-	if param.Type.isString() && param.transferNone() {
-		g.Defer().Qual("C", "free").Call(jenUnsafePointer().Call(jen.Id(cVarName)))
+		param.generateSysCArgOut(g, paramName, cVarName)
 	}
 }
 
