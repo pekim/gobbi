@@ -36,9 +36,7 @@ func Fn_gdk_pixbuf_new(param0 int, param1 bool, param2 int, param3 int, param4 i
 // UNSUPPORTED : new_from_data : has callback
 
 func Fn_gdk_pixbuf_new_from_file(param0 string) {
-	cValue0 := 42
-
-	C.gdk_pixbuf_new_from_file(cValue0)
+	// has string param
 }
 
 func Fn_gdk_pixbuf_new_from_inline(param0 int, param1 []uint8, param2 bool) {
@@ -168,10 +166,7 @@ func Fn_gdk_pixbuf_get_n_channels(paramInstance unsafe.Pointer) {
 }
 
 func Fn_gdk_pixbuf_get_option(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.gdk_pixbuf_get_option(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_gdk_pixbuf_get_pixels(paramInstance unsafe.Pointer) {
@@ -273,9 +268,7 @@ func Fn_gdk_pixbuf_unref(paramInstance unsafe.Pointer) {
 // UNSUPPORTED : new_from_stream_at_scale_async : has callback
 
 func Fn_gdk_pixbuf_animation_new_from_file(param0 string) {
-	cValue0 := 42
-
-	C.gdk_pixbuf_animation_new_from_file(cValue0)
+	// has string param
 }
 
 func Fn_gdk_pixbuf_animation_get_height(paramInstance unsafe.Pointer) {
@@ -354,9 +347,7 @@ func Fn_gdk_pixbuf_loader_new() {
 }
 
 func Fn_gdk_pixbuf_loader_new_with_type(param0 string) {
-	cValue0 := 42
-
-	C.gdk_pixbuf_loader_new_with_type(cValue0)
+	// has string param
 }
 
 func Fn_gdk_pixbuf_loader_close(paramInstance unsafe.Pointer) {

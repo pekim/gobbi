@@ -21,6 +21,12 @@ var functionBlacklist = map[string]bool{
 	"g_memory_settings_backend_new":            true,
 	"g_null_settings_backend_new":              true,
 
+	// gtk
+	"gtk_event_controller_key_forward":        true,
+	"gtk_event_controller_key_get_group":      true,
+	"gtk_event_controller_key_new":            true,
+	"gtk_event_controller_key_set_im_context": true,
+
 	// pango
 	"pango_module_register":                true,
 	"pango_get_lib_subdirectory":           true,

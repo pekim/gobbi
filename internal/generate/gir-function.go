@@ -87,6 +87,13 @@ func (f *Function) generateSysBody(g *jen.Group) {
 		}
 	}
 
+	for _, param := range f.Parameters {
+		if param.Type != nil && param.Type.isString() {
+			g.Comment("has string param")
+			return
+		}
+	}
+
 	f.generateSysCArgs(g)
 
 	g.

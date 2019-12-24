@@ -111,10 +111,10 @@ func (t *Type) parseCtype() {
 		panic(fmt.Sprintf("Failed to parse type ; '%s'", t.CType))
 	}
 
-	if t.CType == "gpointer" {
-		t.cIndirectionCount = 1
-		t.cStars = "*"
-	}
+	//if t.CType == "gpointer" {
+	//	t.cIndirectionCount = 1
+	//	t.cStars = "*"
+	//}
 }
 
 func (t *Type) sysParamGoType() *jen.Statement {

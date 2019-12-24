@@ -61,10 +61,7 @@ func Fn_gdk_add_option_entries_libgtk_only(param0 unsafe.Pointer) {
 }
 
 func Fn_gdk_atom_intern(param0 string, param1 bool) {
-	cValue0 := 42
-	cValue1 := toCBool(param1)
-
-	C.gdk_atom_intern(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_gdk_beep() {
@@ -86,10 +83,7 @@ func Fn_gdk_cairo_region_create_from_surface(param0 unsafe.Pointer) {
 }
 
 func Fn_gdk_color_parse(param0 string, param1 unsafe.Pointer) {
-	cValue0 := 42
-	cValue1 := (*C.GdkColor)(unsafe.Pointer(param1))
-
-	C.gdk_color_parse(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_gdk_drag_abort(param0 unsafe.Pointer, param1 uint32) {
@@ -275,9 +269,7 @@ func Fn_gdk_keyval_convert_case(param0 uint, param1 *uint, param2 *uint) {
 }
 
 func Fn_gdk_keyval_from_name(param0 string) {
-	cValue0 := 42
-
-	C.gdk_keyval_from_name(cValue0)
+	// has string param
 }
 
 func Fn_gdk_keyval_is_lower(param0 uint) {
@@ -517,9 +509,7 @@ func Fn_gdk_set_double_click_time(param0 uint) {
 }
 
 func Fn_gdk_set_program_class(param0 string) {
-	cValue0 := 42
-
-	C.gdk_set_program_class(cValue0)
+	// has string param
 }
 
 func Fn_gdk_set_show_events(param0 bool) {
@@ -529,10 +519,7 @@ func Fn_gdk_set_show_events(param0 bool) {
 }
 
 func Fn_gdk_setting_get(param0 string, param1 unsafe.Pointer) {
-	cValue0 := 42
-	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
-
-	C.gdk_setting_get(cValue0, cValue1)
+	// has string param
 }
 
 // UNSUPPORTED : synthesize_window_state : blacklisted
@@ -576,9 +563,7 @@ func Fn_gdk_unicode_to_keyval(param0 uint32) {
 }
 
 func Fn_gdk_utf8_to_string_target(param0 string) {
-	cValue0 := 42
-
-	C.gdk_utf8_to_string_target(cValue0)
+	// has string param
 }
 
 func Fn_gdk_cursor_new(param0 int) {
@@ -870,9 +855,7 @@ func Fn_gdk_display_get_default() {
 }
 
 func Fn_gdk_display_open(param0 string) {
-	cValue0 := 42
-
-	C.gdk_display_open(cValue0)
+	// has string param
 }
 
 func Fn_gdk_display_open_default_libgtk_only() {
@@ -1034,11 +1017,7 @@ func Fn_gdk_screen_get_root_window(paramInstance unsafe.Pointer) {
 }
 
 func Fn_gdk_screen_get_setting(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
-
-	C.gdk_screen_get_setting(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_gdk_screen_get_system_visual(paramInstance unsafe.Pointer) {
@@ -1616,10 +1595,7 @@ func Fn_gdk_window_set_icon_list(paramInstance unsafe.Pointer, param0 unsafe.Poi
 }
 
 func Fn_gdk_window_set_icon_name(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.gdk_window_set_icon_name(cValueInstance, cValue0)
+	// has string param
 }
 
 // UNSUPPORTED : set_invalidate_handler : has callback
@@ -1653,10 +1629,7 @@ func Fn_gdk_window_set_override_redirect(paramInstance unsafe.Pointer, param0 bo
 }
 
 func Fn_gdk_window_set_role(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.gdk_window_set_role(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_gdk_window_set_skip_pager_hint(paramInstance unsafe.Pointer, param0 bool) {
@@ -1681,10 +1654,7 @@ func Fn_gdk_window_set_static_gravities(paramInstance unsafe.Pointer, param0 boo
 }
 
 func Fn_gdk_window_set_title(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.gdk_window_set_title(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_gdk_window_set_transient_for(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {

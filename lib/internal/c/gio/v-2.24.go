@@ -206,11 +206,7 @@ type ZlibCompressorClass C.GZlibCompressorClass
 type ZlibDecompressorClass C.GZlibDecompressorClass
 
 func Fn_g_app_info_create_from_commandline(param0 string, param1 string, param2 int) {
-	cValue0 := 42
-	cValue1 := 42
-	cValue2 := (C.GAppInfoCreateFlags)(param2)
-
-	C.g_app_info_create_from_commandline(cValue0, cValue1, cValue2)
+	// has string param
 }
 
 func Fn_g_app_info_get_all() {
@@ -219,37 +215,25 @@ func Fn_g_app_info_get_all() {
 }
 
 func Fn_g_app_info_get_all_for_type(param0 string) {
-	cValue0 := 42
-
-	C.g_app_info_get_all_for_type(cValue0)
+	// has string param
 }
 
 func Fn_g_app_info_get_default_for_type(param0 string, param1 bool) {
-	cValue0 := 42
-	cValue1 := toCBool(param1)
-
-	C.g_app_info_get_default_for_type(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_app_info_get_default_for_uri_scheme(param0 string) {
-	cValue0 := 42
-
-	C.g_app_info_get_default_for_uri_scheme(cValue0)
+	// has string param
 }
 
 func Fn_g_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer) {
-	cValue0 := 42
-	cValue1 := (*C.GAppLaunchContext)(unsafe.Pointer(param1))
-
-	C.g_app_info_launch_default_for_uri(cValue0, cValue1)
+	// has string param
 }
 
 // UNSUPPORTED : app_info_launch_default_for_uri_async : has callback
 
 func Fn_g_app_info_reset_type_associations(param0 string) {
-	cValue0 := 42
-
-	C.g_app_info_reset_type_associations(cValue0)
+	// has string param
 }
 
 // UNSUPPORTED : async_initable_newv_async : has callback
@@ -265,40 +249,27 @@ func Fn_g_app_info_reset_type_associations(param0 string) {
 // UNSUPPORTED : bus_watch_name_on_connection : has callback
 
 func Fn_g_content_type_can_be_executable(param0 string) {
-	cValue0 := 42
-
-	C.g_content_type_can_be_executable(cValue0)
+	// has string param
 }
 
 func Fn_g_content_type_equals(param0 string, param1 string) {
-	cValue0 := 42
-	cValue1 := 42
-
-	C.g_content_type_equals(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_content_type_from_mime_type(param0 string) {
-	cValue0 := 42
-
-	C.g_content_type_from_mime_type(cValue0)
+	// has string param
 }
 
 func Fn_g_content_type_get_description(param0 string) {
-	cValue0 := 42
-
-	C.g_content_type_get_description(cValue0)
+	// has string param
 }
 
 func Fn_g_content_type_get_icon(param0 string) {
-	cValue0 := 42
-
-	C.g_content_type_get_icon(cValue0)
+	// has string param
 }
 
 func Fn_g_content_type_get_mime_type(param0 string) {
-	cValue0 := 42
-
-	C.g_content_type_get_mime_type(cValue0)
+	// has string param
 }
 
 func Fn_g_content_type_guess(param0 string, param1 []uint8, param2 uint64, param3 *bool) {
@@ -312,16 +283,11 @@ func Fn_g_content_type_guess_for_tree(param0 unsafe.Pointer) {
 }
 
 func Fn_g_content_type_is_a(param0 string, param1 string) {
-	cValue0 := 42
-	cValue1 := 42
-
-	C.g_content_type_is_a(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_content_type_is_unknown(param0 string) {
-	cValue0 := 42
-
-	C.g_content_type_is_unknown(cValue0)
+	// has string param
 }
 
 func Fn_g_content_types_get_registered() {
@@ -337,27 +303,19 @@ func Fn_g_dbus_error_quark() {
 }
 
 func Fn_g_file_new_for_commandline_arg(param0 string) {
-	cValue0 := 42
-
-	C.g_file_new_for_commandline_arg(cValue0)
+	// has string param
 }
 
 func Fn_g_file_new_for_path(param0 string) {
-	cValue0 := 42
-
-	C.g_file_new_for_path(cValue0)
+	// has string param
 }
 
 func Fn_g_file_new_for_uri(param0 string) {
-	cValue0 := 42
-
-	C.g_file_new_for_uri(cValue0)
+	// has string param
 }
 
 func Fn_g_file_parse_name(param0 string) {
-	cValue0 := 42
-
-	C.g_file_parse_name(cValue0)
+	// has string param
 }
 
 func Fn_g_icon_hash(param0 unsafe.Pointer) {
@@ -367,9 +325,7 @@ func Fn_g_icon_hash(param0 unsafe.Pointer) {
 }
 
 func Fn_g_icon_new_for_string(param0 string) {
-	cValue0 := 42
-
-	C.g_icon_new_for_string(cValue0)
+	// has string param
 }
 
 func Fn_g_initable_newv(param0 uint64, param1 uint, param2 []gobject.Parameter, param3 unsafe.Pointer) {
@@ -388,36 +344,23 @@ func Fn_g_io_error_quark() {
 }
 
 func Fn_g_io_extension_point_implement(param0 string, param1 uint64, param2 string, param3 int) {
-	cValue0 := 42
-	cValue1 := (C.GType)(param1)
-	cValue2 := 42
-	cValue3 := (C.gint)(param3)
-
-	C.g_io_extension_point_implement(cValue0, cValue1, cValue2, cValue3)
+	// has string param
 }
 
 func Fn_g_io_extension_point_lookup(param0 string) {
-	cValue0 := 42
-
-	C.g_io_extension_point_lookup(cValue0)
+	// has string param
 }
 
 func Fn_g_io_extension_point_register(param0 string) {
-	cValue0 := 42
-
-	C.g_io_extension_point_register(cValue0)
+	// has string param
 }
 
 func Fn_g_io_modules_load_all_in_directory(param0 string) {
-	cValue0 := 42
-
-	C.g_io_modules_load_all_in_directory(cValue0)
+	// has string param
 }
 
 func Fn_g_io_modules_scan_all_in_directory(param0 string) {
-	cValue0 := 42
-
-	C.g_io_modules_scan_all_in_directory(cValue0)
+	// has string param
 }
 
 func Fn_g_io_scheduler_cancel_all_jobs() {
@@ -448,16 +391,11 @@ func Fn_g_srv_target_list_sort(param0 unsafe.Pointer) {
 }
 
 func Fn_g_unix_is_mount_path_system_internal(param0 string) {
-	cValue0 := 42
-
-	C.g_unix_is_mount_path_system_internal(cValue0)
+	// has string param
 }
 
 func Fn_g_unix_mount_at(param0 string, param1 *uint64) {
-	cValue0 := 42
-	cValue1 := (*C.guint64)(unsafe.Pointer(param1))
-
-	C.g_unix_mount_at(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_unix_mount_compare(param0 unsafe.Pointer, param1 unsafe.Pointer) {
@@ -573,17 +511,11 @@ func Fn_g_app_launch_context_get_startup_notify_id(paramInstance unsafe.Pointer,
 }
 
 func Fn_g_app_launch_context_launch_failed(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GAppLaunchContext)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_app_launch_context_launch_failed(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_application_new(param0 string, param1 int) {
-	cValue0 := 42
-	cValue1 := (C.GApplicationFlags)(param1)
-
-	C.g_application_new(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_application_hold(paramInstance unsafe.Pointer) {
@@ -599,9 +531,7 @@ func Fn_g_application_release(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_application_id_is_valid(param0 string) {
-	cValue0 := 42
-
-	C.g_application_id_is_valid(cValue0)
+	// has string param
 }
 
 // UNSUPPORTED : print : has varargs
@@ -789,10 +719,7 @@ func Fn_g_cancellable_get_current() {
 }
 
 func Fn_g_charset_converter_new(param0 string, param1 string) {
-	cValue0 := 42
-	cValue1 := 42
-
-	C.g_charset_converter_new(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_charset_converter_get_num_fallbacks(paramInstance unsafe.Pointer) {
@@ -992,12 +919,7 @@ func Fn_g_data_input_stream_read_uint64(paramInstance unsafe.Pointer, param0 uns
 }
 
 func Fn_g_data_input_stream_read_until(paramInstance unsafe.Pointer, param0 string, param1 *uint64, param2 unsafe.Pointer) {
-	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (*C.gsize)(unsafe.Pointer(param1))
-	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
-
-	C.g_data_input_stream_read_until(cValueInstance, cValue0, cValue1, cValue2)
+	// has string param
 }
 
 // UNSUPPORTED : read_until_async : has callback
@@ -1079,11 +1001,7 @@ func Fn_g_data_output_stream_put_int64(paramInstance unsafe.Pointer, param0 int6
 }
 
 func Fn_g_data_output_stream_put_string(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
-	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
-
-	C.g_data_output_stream_put_string(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_data_output_stream_put_uint16(paramInstance unsafe.Pointer, param0 uint16, param1 unsafe.Pointer) {
@@ -1118,15 +1036,11 @@ func Fn_g_data_output_stream_set_byte_order(paramInstance unsafe.Pointer, param0
 }
 
 func Fn_g_desktop_app_info_new(param0 string) {
-	cValue0 := 42
-
-	C.g_desktop_app_info_new(cValue0)
+	// has string param
 }
 
 func Fn_g_desktop_app_info_new_from_filename(param0 string) {
-	cValue0 := 42
-
-	C.g_desktop_app_info_new_from_filename(cValue0)
+	// has string param
 }
 
 func Fn_g_desktop_app_info_new_from_keyfile(param0 unsafe.Pointer) {
@@ -1164,15 +1078,11 @@ func Fn_g_desktop_app_info_get_is_hidden(paramInstance unsafe.Pointer) {
 // UNSUPPORTED : launch_uris_as_manager_with_fds : has callback
 
 func Fn_g_desktop_app_info_search(param0 string) {
-	cValue0 := 42
-
-	C.g_desktop_app_info_search(cValue0)
+	// has string param
 }
 
 func Fn_g_desktop_app_info_set_desktop_env(param0 string) {
-	cValue0 := 42
-
-	C.g_desktop_app_info_set_desktop_env(cValue0)
+	// has string param
 }
 
 func Fn_g_emblem_new(param0 unsafe.Pointer) {
@@ -1290,11 +1200,7 @@ func Fn_g_file_io_stream_get_etag(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_file_io_stream_query_info(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
-	cValueInstance := (*C.GFileIOStream)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
-
-	C.g_file_io_stream_query_info(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 // UNSUPPORTED : query_info_async : has callback
@@ -1343,97 +1249,55 @@ func Fn_g_file_info_dup(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_file_info_get_attribute_as_string(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_get_attribute_as_string(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_get_attribute_boolean(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_get_attribute_boolean(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_get_attribute_byte_string(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_get_attribute_byte_string(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_get_attribute_data(paramInstance unsafe.Pointer, param0 string, param1 *int, param2 *unsafe.Pointer, param3 *int) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (*C.GFileAttributeType)(unsafe.Pointer(param1))
-	cValue2 := (*C.gpointer)(unsafe.Pointer(param2))
-	cValue3 := (*C.GFileAttributeStatus)(unsafe.Pointer(param3))
-
-	C.g_file_info_get_attribute_data(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	// has string param
 }
 
 func Fn_g_file_info_get_attribute_int32(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_get_attribute_int32(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_get_attribute_int64(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_get_attribute_int64(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_get_attribute_object(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_get_attribute_object(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_get_attribute_status(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_get_attribute_status(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_get_attribute_string(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_get_attribute_string(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_get_attribute_stringv(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_get_attribute_stringv(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_get_attribute_type(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_get_attribute_type(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_get_attribute_uint32(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_get_attribute_uint32(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_get_attribute_uint64(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_get_attribute_uint64(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_get_content_type(paramInstance unsafe.Pointer) {
@@ -1522,72 +1386,39 @@ func Fn_g_file_info_get_symlink_target(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_file_info_has_attribute(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_has_attribute(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_has_namespace(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_has_namespace(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_list_attributes(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_list_attributes(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_remove_attribute(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_remove_attribute(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_set_attribute(paramInstance unsafe.Pointer, param0 string, param1 int, param2 unsafe.Pointer) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (C.GFileAttributeType)(param1)
-	cValue2 := (C.gpointer)(param2)
-
-	C.g_file_info_set_attribute(cValueInstance, cValue0, cValue1, cValue2)
+	// has string param
 }
 
 func Fn_g_file_info_set_attribute_boolean(paramInstance unsafe.Pointer, param0 string, param1 bool) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := toCBool(param1)
-
-	C.g_file_info_set_attribute_boolean(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_file_info_set_attribute_byte_string(paramInstance unsafe.Pointer, param0 string, param1 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := 42
-
-	C.g_file_info_set_attribute_byte_string(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_file_info_set_attribute_int32(paramInstance unsafe.Pointer, param0 string, param1 int32) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (C.gint32)(param1)
-
-	C.g_file_info_set_attribute_int32(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_file_info_set_attribute_int64(paramInstance unsafe.Pointer, param0 string, param1 int64) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (C.gint64)(param1)
-
-	C.g_file_info_set_attribute_int64(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_file_info_set_attribute_mask(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -1598,27 +1429,15 @@ func Fn_g_file_info_set_attribute_mask(paramInstance unsafe.Pointer, param0 unsa
 }
 
 func Fn_g_file_info_set_attribute_object(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (*C.GObject)(unsafe.Pointer(param1))
-
-	C.g_file_info_set_attribute_object(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_file_info_set_attribute_status(paramInstance unsafe.Pointer, param0 string, param1 int) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (C.GFileAttributeStatus)(param1)
-
-	C.g_file_info_set_attribute_status(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_file_info_set_attribute_string(paramInstance unsafe.Pointer, param0 string, param1 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := 42
-
-	C.g_file_info_set_attribute_string(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_file_info_set_attribute_stringv(paramInstance unsafe.Pointer, param0 string, param1 []string) {
@@ -1626,40 +1445,23 @@ func Fn_g_file_info_set_attribute_stringv(paramInstance unsafe.Pointer, param0 s
 }
 
 func Fn_g_file_info_set_attribute_uint32(paramInstance unsafe.Pointer, param0 string, param1 uint32) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (C.guint32)(param1)
-
-	C.g_file_info_set_attribute_uint32(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_file_info_set_attribute_uint64(paramInstance unsafe.Pointer, param0 string, param1 uint64) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (C.guint64)(param1)
-
-	C.g_file_info_set_attribute_uint64(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_file_info_set_content_type(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_set_content_type(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_set_display_name(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_set_display_name(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_set_edit_name(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_set_edit_name(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_set_file_type(paramInstance unsafe.Pointer, param0 int) {
@@ -1698,10 +1500,7 @@ func Fn_g_file_info_set_modification_time(paramInstance unsafe.Pointer, param0 u
 }
 
 func Fn_g_file_info_set_name(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_set_name(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_set_size(paramInstance unsafe.Pointer, param0 int64) {
@@ -1719,10 +1518,7 @@ func Fn_g_file_info_set_sort_order(paramInstance unsafe.Pointer, param0 int32) {
 }
 
 func Fn_g_file_info_set_symlink_target(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_file_info_set_symlink_target(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_file_info_unset_attribute_mask(paramInstance unsafe.Pointer) {
@@ -1732,11 +1528,7 @@ func Fn_g_file_info_unset_attribute_mask(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_file_input_stream_query_info(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
-	cValueInstance := (*C.GFileInputStream)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
-
-	C.g_file_input_stream_query_info(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 // UNSUPPORTED : query_info_async : has callback
@@ -1783,11 +1575,7 @@ func Fn_g_file_output_stream_get_etag(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_file_output_stream_query_info(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
-	cValueInstance := (*C.GFileOutputStream)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
-
-	C.g_file_output_stream_query_info(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 // UNSUPPORTED : query_info_async : has callback
@@ -1805,17 +1593,11 @@ func Fn_g_filename_completer_new() {
 }
 
 func Fn_g_filename_completer_get_completion_suffix(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFilenameCompleter)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_filename_completer_get_completion_suffix(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_filename_completer_get_completions(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GFilenameCompleter)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_filename_completer_get_completions(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_filename_completer_set_dirs_only(paramInstance unsafe.Pointer, param0 bool) {
@@ -1864,9 +1646,7 @@ func Fn_g_filter_output_stream_set_close_base_stream(paramInstance unsafe.Pointe
 }
 
 func Fn_g_io_module_new(param0 string) {
-	cValue0 := 42
-
-	C.g_io_module_new(cValue0)
+	// has string param
 }
 
 func Fn_g_io_module_load(paramInstance unsafe.Pointer) {
@@ -1947,9 +1727,7 @@ func Fn_g_inet_address_new_from_bytes(param0 []uint8, param1 int) {
 }
 
 func Fn_g_inet_address_new_from_string(param0 string) {
-	cValue0 := 42
-
-	C.g_inet_address_new_from_string(cValue0)
+	// has string param
 }
 
 func Fn_g_inet_address_new_loopback(param0 int) {
@@ -2243,17 +2021,11 @@ func Fn_g_mount_operation_set_choice(paramInstance unsafe.Pointer, param0 int) {
 }
 
 func Fn_g_mount_operation_set_domain(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GMountOperation)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_mount_operation_set_domain(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_mount_operation_set_password(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GMountOperation)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_mount_operation_set_password(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_mount_operation_set_password_save(paramInstance unsafe.Pointer, param0 int) {
@@ -2264,17 +2036,11 @@ func Fn_g_mount_operation_set_password_save(paramInstance unsafe.Pointer, param0
 }
 
 func Fn_g_mount_operation_set_username(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GMountOperation)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_mount_operation_set_username(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_network_address_new(param0 string, param1 uint16) {
-	cValue0 := 42
-	cValue1 := (C.guint16)(param1)
-
-	C.g_network_address_new(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_network_address_get_hostname(paramInstance unsafe.Pointer) {
@@ -2290,18 +2056,11 @@ func Fn_g_network_address_get_port(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_network_address_parse(param0 string, param1 uint16) {
-	cValue0 := 42
-	cValue1 := (C.guint16)(param1)
-
-	C.g_network_address_parse(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_network_service_new(param0 string, param1 string, param2 string) {
-	cValue0 := 42
-	cValue1 := 42
-	cValue2 := 42
-
-	C.g_network_service_new(cValue0, cValue1, cValue2)
+	// has string param
 }
 
 func Fn_g_network_service_get_domain(paramInstance unsafe.Pointer) {
@@ -2479,11 +2238,7 @@ func Fn_g_resolver_lookup_by_address_finish(paramInstance unsafe.Pointer, param0
 }
 
 func Fn_g_resolver_lookup_by_name(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
-	cValueInstance := (*C.GResolver)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
-
-	C.g_resolver_lookup_by_name(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 // UNSUPPORTED : lookup_by_name_async : has callback
@@ -2500,13 +2255,7 @@ func Fn_g_resolver_lookup_by_name_finish(paramInstance unsafe.Pointer, param0 un
 // UNSUPPORTED : lookup_records_async : has callback
 
 func Fn_g_resolver_lookup_service(paramInstance unsafe.Pointer, param0 string, param1 string, param2 string, param3 unsafe.Pointer) {
-	cValueInstance := (*C.GResolver)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := 42
-	cValue2 := 42
-	cValue3 := (*C.GCancellable)(unsafe.Pointer(param3))
-
-	C.g_resolver_lookup_service(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	// has string param
 }
 
 // UNSUPPORTED : lookup_service_async : has callback
@@ -2566,10 +2315,7 @@ func Fn_g_settings_list_keys(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_settings_reset(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_settings_reset(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_settings_revert(paramInstance unsafe.Pointer) {
@@ -2581,19 +2327,11 @@ func Fn_g_settings_revert(paramInstance unsafe.Pointer) {
 // UNSUPPORTED : set : has varargs
 
 func Fn_g_settings_set_enum(paramInstance unsafe.Pointer, param0 string, param1 int) {
-	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (C.gint)(param1)
-
-	C.g_settings_set_enum(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_settings_set_flags(paramInstance unsafe.Pointer, param0 string, param1 uint) {
-	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (C.guint)(param1)
-
-	C.g_settings_set_flags(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_g_settings_sync() {
@@ -2961,10 +2699,7 @@ func Fn_g_socket_client_new() {
 }
 
 func Fn_g_socket_client_add_application_proxy(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GSocketClient)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_socket_client_add_application_proxy(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_socket_client_connect(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
@@ -2985,12 +2720,7 @@ func Fn_g_socket_client_connect_finish(paramInstance unsafe.Pointer, param0 unsa
 }
 
 func Fn_g_socket_client_connect_to_host(paramInstance unsafe.Pointer, param0 string, param1 uint16, param2 unsafe.Pointer) {
-	cValueInstance := (*C.GSocketClient)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (C.guint16)(param1)
-	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
-
-	C.g_socket_client_connect_to_host(cValueInstance, cValue0, cValue1, cValue2)
+	// has string param
 }
 
 // UNSUPPORTED : connect_to_host_async : has callback
@@ -3003,12 +2733,7 @@ func Fn_g_socket_client_connect_to_host_finish(paramInstance unsafe.Pointer, par
 }
 
 func Fn_g_socket_client_connect_to_service(paramInstance unsafe.Pointer, param0 string, param1 string, param2 unsafe.Pointer) {
-	cValueInstance := (*C.GSocketClient)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := 42
-	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
-
-	C.g_socket_client_connect_to_service(cValueInstance, cValue0, cValue1, cValue2)
+	// has string param
 }
 
 // UNSUPPORTED : connect_to_service_async : has callback
@@ -3265,24 +2990,13 @@ func Fn_g_subprocess_communicate_finish(paramInstance unsafe.Pointer, param0 uns
 }
 
 func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 string, param3 string) {
-	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
-	cValue2 := 42
-	cValue3 := 42
-
-	C.g_subprocess_communicate_utf8(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	// has string param
 }
 
 // UNSUPPORTED : communicate_utf8_async : has callback
 
 func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, param2 string) {
-	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
-	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
-	cValue1 := 42
-	cValue2 := 42
-
-	C.g_subprocess_communicate_utf8_finish(cValueInstance, cValue0, cValue1, cValue2)
+	// has string param
 }
 
 // UNSUPPORTED : wait_async : has callback
@@ -3345,10 +3059,7 @@ func Fn_g_test_dbus_new(param0 int) {
 }
 
 func Fn_g_test_dbus_add_service_dir(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GTestDBus)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_test_dbus_add_service_dir(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_test_dbus_down(paramInstance unsafe.Pointer) {
@@ -3387,9 +3098,7 @@ func Fn_g_test_dbus_unset() {
 }
 
 func Fn_g_themed_icon_new(param0 string) {
-	cValue0 := 42
-
-	C.g_themed_icon_new(cValue0)
+	// has string param
 }
 
 func Fn_g_themed_icon_new_from_names(param0 []string, param1 int) {
@@ -3397,16 +3106,11 @@ func Fn_g_themed_icon_new_from_names(param0 []string, param1 int) {
 }
 
 func Fn_g_themed_icon_new_with_default_fallbacks(param0 string) {
-	cValue0 := 42
-
-	C.g_themed_icon_new_with_default_fallbacks(cValue0)
+	// has string param
 }
 
 func Fn_g_themed_icon_append_name(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GThemedIcon)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_themed_icon_append_name(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_themed_icon_get_names(paramInstance unsafe.Pointer) {
@@ -3416,10 +3120,7 @@ func Fn_g_themed_icon_get_names(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_themed_icon_prepend_name(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GThemedIcon)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_themed_icon_prepend_name(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_threaded_socket_service_new(param0 int) {
@@ -3456,10 +3157,7 @@ func Fn_g_tls_connection_set_use_system_certdb(paramInstance unsafe.Pointer, par
 // UNSUPPORTED : request_certificate_async : has callback
 
 func Fn_g_tls_password_new(param0 int, param1 string) {
-	cValue0 := (C.GTlsPasswordFlags)(param0)
-	cValue1 := 42
-
-	C.g_tls_password_new(cValue0, cValue1)
+	// has string param
 }
 
 // UNSUPPORTED : set_value_full : has callback
@@ -3622,9 +3320,7 @@ func Fn_g_unix_output_stream_set_close_fd(paramInstance unsafe.Pointer, param0 b
 }
 
 func Fn_g_unix_socket_address_new(param0 string) {
-	cValue0 := 42
-
-	C.g_unix_socket_address_new(cValue0)
+	// has string param
 }
 
 func Fn_g_unix_socket_address_new_abstract(param0 []int8, param1 int) {
@@ -3655,17 +3351,11 @@ func Fn_g_unix_socket_address_abstract_names_supported() {
 }
 
 func Fn_g_vfs_get_file_for_path(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GVfs)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_vfs_get_file_for_path(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_vfs_get_file_for_uri(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GVfs)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_vfs_get_file_for_uri(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_vfs_get_supported_uri_schemes(paramInstance unsafe.Pointer) {
@@ -3681,10 +3371,7 @@ func Fn_g_vfs_is_active(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_vfs_parse_name(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GVfs)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_vfs_parse_name(cValueInstance, cValue0)
+	// has string param
 }
 
 // UNSUPPORTED : register_uri_scheme : has callback
@@ -3706,10 +3393,7 @@ func Fn_g_volume_monitor_get_connected_drives(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_volume_monitor_get_mount_for_uuid(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GVolumeMonitor)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_volume_monitor_get_mount_for_uuid(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_volume_monitor_get_mounts(paramInstance unsafe.Pointer) {
@@ -3719,10 +3403,7 @@ func Fn_g_volume_monitor_get_mounts(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_volume_monitor_get_volume_for_uuid(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GVolumeMonitor)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-
-	C.g_volume_monitor_get_volume_for_uuid(cValueInstance, cValue0)
+	// has string param
 }
 
 func Fn_g_volume_monitor_get_volumes(paramInstance unsafe.Pointer) {

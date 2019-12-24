@@ -57,6 +57,7 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
 	if p.Type.isString() {
 		return jen.Lit(42)
+		//return p.generateSysStringCValue(goVarName)
 	}
 
 	goValue := jen.Id(goVarName)
@@ -71,3 +72,10 @@ func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
 
 	return jen.Parens(p.Type.jenGoCType()).Parens(goValue)
 }
+
+//func (p *Parameter) generateSysStringCValue(goVarName string) *jen.Statement {
+//	if p.Type.cIndirectionCount > 0 {
+//		return jen.Lit(42)
+//	}
+//
+//}

@@ -77,9 +77,7 @@ func Fn_pango_attr_background_new(param0 uint16, param1 uint16, param2 uint16) {
 }
 
 func Fn_pango_attr_family_new(param0 string) {
-	cValue0 := 42
-
-	C.pango_attr_family_new(cValue0)
+	// has string param
 }
 
 func Fn_pango_attr_foreground_new(param0 uint16, param1 uint16, param2 uint16) {
@@ -121,9 +119,7 @@ func Fn_pango_attr_style_new(param0 int) {
 }
 
 func Fn_pango_attr_type_register(param0 string) {
-	cValue0 := 42
-
-	C.pango_attr_type_register(cValue0)
+	// has string param
 }
 
 func Fn_pango_attr_underline_new(param0 int) {
@@ -153,18 +149,11 @@ func Fn_pango_break(param0 string, param1 int, param2 unsafe.Pointer, param3 []L
 // UNSUPPORTED : default_break : blacklisted
 // UNSUPPORTED : find_map : blacklisted
 func Fn_pango_find_paragraph_boundary(param0 string, param1 int, param2 *int, param3 *int) {
-	cValue0 := 42
-	cValue1 := (C.gint)(param1)
-	cValue2 := (*C.gint)(unsafe.Pointer(param2))
-	cValue3 := (*C.gint)(unsafe.Pointer(param3))
-
-	C.pango_find_paragraph_boundary(cValue0, cValue1, cValue2, cValue3)
+	// has string param
 }
 
 func Fn_pango_font_description_from_string(param0 string) {
-	cValue0 := 42
-
-	C.pango_font_description_from_string(cValue0)
+	// has string param
 }
 
 // UNSUPPORTED : get_lib_subdirectory : blacklisted
@@ -181,20 +170,11 @@ func Fn_pango_get_mirror_char(param0 rune, param1 *rune) {
 
 // UNSUPPORTED : get_sysconf_subdirectory : blacklisted
 func Fn_pango_itemize(param0 unsafe.Pointer, param1 string, param2 int, param3 int, param4 unsafe.Pointer, param5 unsafe.Pointer) {
-	cValue0 := (*C.PangoContext)(unsafe.Pointer(param0))
-	cValue1 := 42
-	cValue2 := (C.int)(param2)
-	cValue3 := (C.int)(param3)
-	cValue4 := (*C.PangoAttrList)(unsafe.Pointer(param4))
-	cValue5 := (*C.PangoAttrIterator)(unsafe.Pointer(param5))
-
-	C.pango_itemize(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+	// has string param
 }
 
 func Fn_pango_language_from_string(param0 string) {
-	cValue0 := 42
-
-	C.pango_language_from_string(cValue0)
+	// has string param
 }
 
 func Fn_pango_lookup_aliases(param0 string, param1 *[]string, param2 *int) {
@@ -203,46 +183,23 @@ func Fn_pango_lookup_aliases(param0 string, param1 *[]string, param2 *int) {
 
 // UNSUPPORTED : module_register : blacklisted
 func Fn_pango_parse_markup(param0 string, param1 int, param2 rune, param3 *unsafe.Pointer, param4 string, param5 *rune) {
-	cValue0 := 42
-	cValue1 := (C.int)(param1)
-	cValue2 := (C.gunichar)(param2)
-	cValue3 := (**C.PangoAttrList)(unsafe.Pointer(param3))
-	cValue4 := 42
-	cValue5 := (*C.gunichar)(unsafe.Pointer(param5))
-
-	C.pango_parse_markup(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+	// has string param
 }
 
 func Fn_pango_parse_stretch(param0 string, param1 *int, param2 bool) {
-	cValue0 := 42
-	cValue1 := (*C.PangoStretch)(unsafe.Pointer(param1))
-	cValue2 := toCBool(param2)
-
-	C.pango_parse_stretch(cValue0, cValue1, cValue2)
+	// has string param
 }
 
 func Fn_pango_parse_style(param0 string, param1 *int, param2 bool) {
-	cValue0 := 42
-	cValue1 := (*C.PangoStyle)(unsafe.Pointer(param1))
-	cValue2 := toCBool(param2)
-
-	C.pango_parse_style(cValue0, cValue1, cValue2)
+	// has string param
 }
 
 func Fn_pango_parse_variant(param0 string, param1 *int, param2 bool) {
-	cValue0 := 42
-	cValue1 := (*C.PangoVariant)(unsafe.Pointer(param1))
-	cValue2 := toCBool(param2)
-
-	C.pango_parse_variant(cValue0, cValue1, cValue2)
+	// has string param
 }
 
 func Fn_pango_parse_weight(param0 string, param1 *int, param2 bool) {
-	cValue0 := 42
-	cValue1 := (*C.PangoWeight)(unsafe.Pointer(param1))
-	cValue2 := toCBool(param2)
-
-	C.pango_parse_weight(cValue0, cValue1, cValue2)
+	// has string param
 }
 
 func Fn_pango_read_line(param0 unsafe.Pointer, param1 unsafe.Pointer) {
@@ -259,51 +216,31 @@ func Fn_pango_reorder_items(param0 unsafe.Pointer) {
 }
 
 func Fn_pango_scan_int(param0 string, param1 *int) {
-	cValue0 := 42
-	cValue1 := (*C.int)(unsafe.Pointer(param1))
-
-	C.pango_scan_int(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_pango_scan_string(param0 string, param1 unsafe.Pointer) {
-	cValue0 := 42
-	cValue1 := (*C.GString)(unsafe.Pointer(param1))
-
-	C.pango_scan_string(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_pango_scan_word(param0 string, param1 unsafe.Pointer) {
-	cValue0 := 42
-	cValue1 := (*C.GString)(unsafe.Pointer(param1))
-
-	C.pango_scan_word(cValue0, cValue1)
+	// has string param
 }
 
 func Fn_pango_shape(param0 string, param1 int, param2 unsafe.Pointer, param3 unsafe.Pointer) {
-	cValue0 := 42
-	cValue1 := (C.gint)(param1)
-	cValue2 := (*C.PangoAnalysis)(unsafe.Pointer(param2))
-	cValue3 := (*C.PangoGlyphString)(unsafe.Pointer(param3))
-
-	C.pango_shape(cValue0, cValue1, cValue2, cValue3)
+	// has string param
 }
 
 func Fn_pango_skip_space(param0 string) {
-	cValue0 := 42
-
-	C.pango_skip_space(cValue0)
+	// has string param
 }
 
 func Fn_pango_split_file_list(param0 string) {
-	cValue0 := 42
-
-	C.pango_split_file_list(cValue0)
+	// has string param
 }
 
 func Fn_pango_trim_string(param0 string) {
-	cValue0 := 42
-
-	C.pango_trim_string(cValue0)
+	// has string param
 }
 
 func Fn_pango_unichar_direction(param0 rune) {
@@ -713,21 +650,11 @@ func Fn_pango_layout_set_justify(paramInstance unsafe.Pointer, param0 bool) {
 }
 
 func Fn_pango_layout_set_markup(paramInstance unsafe.Pointer, param0 string, param1 int) {
-	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (C.int)(param1)
-
-	C.pango_layout_set_markup(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_pango_layout_set_markup_with_accel(paramInstance unsafe.Pointer, param0 string, param1 int, param2 rune, param3 *rune) {
-	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (C.int)(param1)
-	cValue2 := (C.gunichar)(param2)
-	cValue3 := (*C.gunichar)(unsafe.Pointer(param3))
-
-	C.pango_layout_set_markup_with_accel(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	// has string param
 }
 
 func Fn_pango_layout_set_single_paragraph_mode(paramInstance unsafe.Pointer, param0 bool) {
@@ -752,11 +679,7 @@ func Fn_pango_layout_set_tabs(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 }
 
 func Fn_pango_layout_set_text(paramInstance unsafe.Pointer, param0 string, param1 int) {
-	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))
-	cValue0 := 42
-	cValue1 := (C.int)(param1)
-
-	C.pango_layout_set_text(cValueInstance, cValue0, cValue1)
+	// has string param
 }
 
 func Fn_pango_layout_set_width(paramInstance unsafe.Pointer, param0 int) {
