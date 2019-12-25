@@ -188,6 +188,9 @@ func (p *Parameter) generateSysCArgArrayString(g *jen.Group, goVarName string, c
 		count.Op("*").Qual("C", "sizeof_gpointer"),
 	)
 
+	// defer C.free(unsafe.Pointer(cValue2Array))
+	g.Defer().Qual("C", "free").Call(jenUnsafePointer().Call(jen.Id(cArrayVarName)))
+
 	// param2Slice := (*[1 << 28]C.gchar)(unsafe.Pointer(cParam2Array))[:param2Len:param2Len]
 	g.
 		// param2Slice :=
@@ -204,13 +207,18 @@ func (p *Parameter) generateSysCArgArrayString(g *jen.Group, goVarName string, c
 	stringVarName := goVarName + "String"
 	// for param2i, param2String := range param2 {
 	//     cValue2Array[param2i] = (*C.gchar)(C.CString(param2String))
+	//     defer C.free(unsafe.Pointer(cValue2Array[param2i]))
 	// }
 	g.
 		For(jen.Id(indexVarName).Op(",").Id(stringVarName).Op(":=").Range().Id(goVarName)).
-		Block(jen.
-			Id(goSliceVarName).Index(jen.Id(indexVarName)).Op("=").
-			Parens(jen.Op("*").Qual("C", "gchar")).
-			Parens(jen.Qual("C", "CString").Call(jen.Id(stringVarName))),
+		Block(
+			jen.
+				Id(goSliceVarName).Index(jen.Id(indexVarName)).Op("=").
+				Parens(jen.Op("*").Qual("C", "gchar")).
+				Parens(jen.Qual("C", "CString").Call(jen.Id(stringVarName))),
+
+			// defer C.free(unsafe.Pointer(cValue2Array[param2i]))
+			jen.Defer().Qual("C", "free").Call(jenUnsafePointer().Call(jen.Id(goSliceVarName).Index(jen.Id(indexVarName)))),
 		)
 
 	// cValue2 := &cValue2Array[0]

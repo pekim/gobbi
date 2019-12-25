@@ -1392,9 +1392,11 @@ func Fn_gtk_rc_scanner_new() {
 func Fn_gtk_rc_set_default_files(param0 []string) {
 	param0Len := len(param0)
 	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
 	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
 	for param0i, param0String := range param0 {
 		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
 	}
 	cValue0 := &param0Slice[0]
 
@@ -4477,9 +4479,11 @@ func Fn_gtk_icon_theme_set_search_path(paramInstance unsafe.Pointer, param0 []st
 	cValueInstance := (*C.GtkIconTheme)(unsafe.Pointer(paramInstance))
 	param0Len := len(param0)
 	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
 	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
 	for param0i, param0String := range param0 {
 		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
 	}
 	cValue0 := &param0Slice[0]
 	cValue1 := (C.gint)(param1)

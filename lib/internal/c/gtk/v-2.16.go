@@ -1470,9 +1470,11 @@ func Fn_gtk_rc_scanner_new() {
 func Fn_gtk_rc_set_default_files(param0 []string) {
 	param0Len := len(param0)
 	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
 	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
 	for param0i, param0String := range param0 {
 		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
 	}
 	cValue0 := &param0Slice[0]
 
@@ -1853,9 +1855,11 @@ func Fn_gtk_about_dialog_set_artists(paramInstance unsafe.Pointer, param0 []stri
 	cValueInstance := (*C.GtkAboutDialog)(unsafe.Pointer(paramInstance))
 	param0Len := len(param0)
 	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
 	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
 	for param0i, param0String := range param0 {
 		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
 	}
 	cValue0 := &param0Slice[0]
 
@@ -1866,9 +1870,11 @@ func Fn_gtk_about_dialog_set_authors(paramInstance unsafe.Pointer, param0 []stri
 	cValueInstance := (*C.GtkAboutDialog)(unsafe.Pointer(paramInstance))
 	param0Len := len(param0)
 	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
 	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
 	for param0i, param0String := range param0 {
 		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
 	}
 	cValue0 := &param0Slice[0]
 
@@ -1895,9 +1901,11 @@ func Fn_gtk_about_dialog_set_documenters(paramInstance unsafe.Pointer, param0 []
 	cValueInstance := (*C.GtkAboutDialog)(unsafe.Pointer(paramInstance))
 	param0Len := len(param0)
 	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
 	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
 	for param0i, param0String := range param0 {
 		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
 	}
 	cValue0 := &param0Slice[0]
 
@@ -3074,9 +3082,11 @@ func Fn_gtk_builder_add_objects_from_file(paramInstance unsafe.Pointer, param0 s
 	defer C.free(unsafe.Pointer(cValue0))
 	param1Len := len(param1)
 	cValue1Array := C.malloc((C.ulong)(param1Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue1Array))
 	param1Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1Array))[:param1Len:param1Len]
 	for param1i, param1String := range param1 {
 		param1Slice[param1i] = (*C.gchar)(C.CString(param1String))
+		defer C.free(unsafe.Pointer(param1Slice[param1i]))
 	}
 	cValue1 := &param1Slice[0]
 	cError := (**C.GError)(error)
@@ -3091,9 +3101,11 @@ func Fn_gtk_builder_add_objects_from_string(paramInstance unsafe.Pointer, param0
 	cValue1 := (C.gsize)(param1)
 	param2Len := len(param2)
 	cValue2Array := C.malloc((C.ulong)(param2Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue2Array))
 	param2Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue2Array))[:param2Len:param2Len]
 	for param2i, param2String := range param2 {
 		param2Slice[param2i] = (*C.gchar)(C.CString(param2String))
+		defer C.free(unsafe.Pointer(param2Slice[param2i]))
 	}
 	cValue2 := &param2Slice[0]
 	cError := (**C.GError)(error)
@@ -6221,9 +6233,11 @@ func Fn_gtk_icon_theme_choose_icon(paramInstance unsafe.Pointer, param0 []string
 	cValueInstance := (*C.GtkIconTheme)(unsafe.Pointer(paramInstance))
 	param0Len := len(param0)
 	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
 	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
 	for param0i, param0String := range param0 {
 		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
 	}
 	cValue0 := &param0Slice[0]
 	cValue1 := (C.gint)(param1)
@@ -6335,9 +6349,11 @@ func Fn_gtk_icon_theme_set_search_path(paramInstance unsafe.Pointer, param0 []st
 	cValueInstance := (*C.GtkIconTheme)(unsafe.Pointer(paramInstance))
 	param0Len := len(param0)
 	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
 	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
 	for param0i, param0String := range param0 {
 		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
 	}
 	cValue0 := &param0Slice[0]
 	cValue1 := (C.gint)(param1)
@@ -10146,9 +10162,11 @@ func Fn_gtk_scale_button_new(param0 int, param1 float64, param2 float64, param3 
 	cValue3 := (C.gdouble)(param3)
 	param4Len := len(param4)
 	cValue4Array := C.malloc((C.ulong)(param4Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue4Array))
 	param4Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue4Array))[:param4Len:param4Len]
 	for param4i, param4String := range param4 {
 		param4Slice[param4i] = (*C.gchar)(C.CString(param4String))
+		defer C.free(unsafe.Pointer(param4Slice[param4i]))
 	}
 	cValue4 := &param4Slice[0]
 
@@ -10196,9 +10214,11 @@ func Fn_gtk_scale_button_set_icons(paramInstance unsafe.Pointer, param0 []string
 	cValueInstance := (*C.GtkScaleButton)(unsafe.Pointer(paramInstance))
 	param0Len := len(param0)
 	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
 	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
 	for param0i, param0String := range param0 {
 		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
 	}
 	cValue0 := &param0Slice[0]
 

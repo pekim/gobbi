@@ -2868,9 +2868,11 @@ func Fn_g_file_info_set_attribute_stringv(paramInstance unsafe.Pointer, param0 s
 	defer C.free(unsafe.Pointer(cValue0))
 	param1Len := len(param1)
 	cValue1Array := C.malloc((C.ulong)(param1Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue1Array))
 	param1Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1Array))[:param1Len:param1Len]
 	for param1i, param1String := range param1 {
 		param1Slice[param1i] = (*C.gchar)(C.CString(param1String))
+		defer C.free(unsafe.Pointer(param1Slice[param1i]))
 	}
 	cValue1 := &param1Slice[0]
 
@@ -4223,9 +4225,11 @@ func Fn_g_settings_set_strv(paramInstance unsafe.Pointer, param0 string, param1 
 	defer C.free(unsafe.Pointer(cValue0))
 	param1Len := len(param1)
 	cValue1Array := C.malloc((C.ulong)(param1Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue1Array))
 	param1Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1Array))[:param1Len:param1Len]
 	for param1i, param1String := range param1 {
 		param1Slice[param1i] = (*C.gchar)(C.CString(param1String))
+		defer C.free(unsafe.Pointer(param1Slice[param1i]))
 	}
 	cValue1 := &param1Slice[0]
 
@@ -5186,9 +5190,11 @@ func Fn_g_themed_icon_new(param0 string) {
 func Fn_g_themed_icon_new_from_names(param0 []string, param1 int) {
 	param0Len := len(param0)
 	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
 	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
 	for param0i, param0String := range param0 {
 		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
 	}
 	cValue0 := &param0Slice[0]
 	cValue1 := (C.int)(param1)
