@@ -159,7 +159,7 @@ func (p *Parameter) generateSysCArgArray(g *jen.Group, goVarName string, cVarNam
 			return
 		}
 
-		panic(fmt.Sprintf("Unsupported indirection count (%d) for array string param '%s'", p.Array.Type.cType.indirectionCount))
+		panic(fmt.Sprintf("Unsupported indirection count (%d) for array string param", p.Array.Type.cType.indirectionCount))
 	}
 }
 
