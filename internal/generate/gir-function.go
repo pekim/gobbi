@@ -107,6 +107,7 @@ func (f *Function) generateSysBody(g *jen.Group) {
 func (f *Function) generateSysCArgs(g *jen.Group) {
 	if f.InstanceParameter != nil {
 		f.InstanceParameter.generateSysCArg(g, "paramInstance", "cValueInstance")
+		g.Line()
 	}
 
 	for i, param := range f.Parameters {
@@ -114,15 +115,15 @@ func (f *Function) generateSysCArgs(g *jen.Group) {
 		cVarName := "cValue" + strconv.Itoa(i)
 
 		param.generateSysCArg(g, paramName, cVarName)
+		g.Line()
 	}
 
 	if f.Throws {
 		g.Id("cError").Op(":=").
 			Parens(jen.Op("**").Qual("C", "GError")).
 			Parens(jen.Id("error"))
+		g.Line()
 	}
-
-	g.Line()
 }
 
 func (f *Function) generateSysCArgsOut(g *jen.Group) {

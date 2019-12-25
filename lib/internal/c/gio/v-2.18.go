@@ -201,16 +201,18 @@ type ZlibDecompressorClass C.GZlibDecompressorClass
 func Fn_g_app_info_create_from_commandline(param0 string, param1 string, param2 int, error unsafe.Pointer) {
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.char)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
+
 	cValue2 := (C.GAppInfoCreateFlags)(param2)
+
 	cError := (**C.GError)(error)
 
 	C.g_app_info_create_from_commandline(cValue0, cValue1, cValue2, cError)
 }
 
 func Fn_g_app_info_get_all() {
-
 	C.g_app_info_get_all()
 }
 
@@ -224,6 +226,7 @@ func Fn_g_app_info_get_all_for_type(param0 string) {
 func Fn_g_app_info_get_default_for_type(param0 string, param1 bool) {
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := toCBool(param1)
 
 	C.g_app_info_get_default_for_type(cValue0, cValue1)
@@ -239,7 +242,9 @@ func Fn_g_app_info_get_default_for_uri_scheme(param0 string) {
 func Fn_g_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.GAppLaunchContext)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_app_info_launch_default_for_uri(cValue0, cValue1, cError)
@@ -269,6 +274,7 @@ func Fn_g_content_type_can_be_executable(param0 string) {
 func Fn_g_content_type_equals(param0 string, param1 string) {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.gchar)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
 
@@ -316,6 +322,7 @@ func Fn_g_content_type_guess_for_tree(param0 unsafe.Pointer) {
 func Fn_g_content_type_is_a(param0 string, param1 string) {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.gchar)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
 
@@ -330,14 +337,12 @@ func Fn_g_content_type_is_unknown(param0 string) {
 }
 
 func Fn_g_content_types_get_registered() {
-
 	C.g_content_types_get_registered()
 }
 
 // UNSUPPORTED : dbus_address_get_stream : has callback
 
 func Fn_g_dbus_error_quark() {
-
 	C.g_dbus_error_quark()
 }
 
@@ -382,16 +387,18 @@ func Fn_g_io_error_from_errno(param0 int) {
 }
 
 func Fn_g_io_error_quark() {
-
 	C.g_io_error_quark()
 }
 
 func Fn_g_io_extension_point_implement(param0 string, param1 uint64, param2 string, param3 int) {
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (C.GType)(param1)
+
 	cValue2 := (*C.char)(C.CString(param2))
 	defer C.free(unsafe.Pointer(cValue2))
+
 	cValue3 := (C.gint)(param3)
 
 	C.g_io_extension_point_implement(cValue0, cValue1, cValue2, cValue3)
@@ -416,7 +423,6 @@ func Fn_g_io_extension_point_register(param0 string) {
 // UNSUPPORTED : io_modules_scan_all_in_directory : blacklisted
 // UNSUPPORTED : io_modules_scan_all_in_directory_with_scope : blacklisted
 func Fn_g_io_scheduler_cancel_all_jobs() {
-
 	C.g_io_scheduler_cancel_all_jobs()
 }
 
@@ -441,6 +447,7 @@ func Fn_g_unix_is_mount_path_system_internal(param0 string) {
 func Fn_g_unix_mount_at(param0 string, param1 *uint64) {
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.guint64)(unsafe.Pointer(param1))
 
 	C.g_unix_mount_at(cValue0, cValue1)
@@ -448,6 +455,7 @@ func Fn_g_unix_mount_at(param0 string, param1 *uint64) {
 
 func Fn_g_unix_mount_compare(param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValue0 := (*C.GUnixMountEntry)(unsafe.Pointer(param0))
+
 	cValue1 := (*C.GUnixMountEntry)(unsafe.Pointer(param1))
 
 	C.g_unix_mount_compare(cValue0, cValue1)
@@ -538,13 +546,14 @@ func Fn_g_unix_mounts_get(param0 *uint64) {
 }
 
 func Fn_g_app_launch_context_new() {
-
 	C.g_app_launch_context_new()
 }
 
 func Fn_g_app_launch_context_get_display(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GAppLaunchContext)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAppInfo)(unsafe.Pointer(param0))
+
 	cValue1 := (*C.GList)(unsafe.Pointer(param1))
 
 	C.g_app_launch_context_get_display(cValueInstance, cValue0, cValue1)
@@ -552,7 +561,9 @@ func Fn_g_app_launch_context_get_display(paramInstance unsafe.Pointer, param0 un
 
 func Fn_g_app_launch_context_get_startup_notify_id(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GAppLaunchContext)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAppInfo)(unsafe.Pointer(param0))
+
 	cValue1 := (*C.GList)(unsafe.Pointer(param1))
 
 	C.g_app_launch_context_get_startup_notify_id(cValueInstance, cValue0, cValue1)
@@ -560,6 +571,7 @@ func Fn_g_app_launch_context_get_startup_notify_id(paramInstance unsafe.Pointer,
 
 func Fn_g_app_launch_context_launch_failed(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GAppLaunchContext)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -569,6 +581,7 @@ func Fn_g_app_launch_context_launch_failed(paramInstance unsafe.Pointer, param0 
 func Fn_g_application_new(param0 string, param1 int) {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (C.GApplicationFlags)(param1)
 
 	C.g_application_new(cValue0, cValue1)
@@ -605,6 +618,7 @@ func Fn_g_buffered_input_stream_new(param0 unsafe.Pointer) {
 
 func Fn_g_buffered_input_stream_new_sized(param0 unsafe.Pointer, param1 uint64) {
 	cValue0 := (*C.GInputStream)(unsafe.Pointer(param0))
+
 	cValue1 := (C.gsize)(param1)
 
 	C.g_buffered_input_stream_new_sized(cValue0, cValue1)
@@ -612,8 +626,11 @@ func Fn_g_buffered_input_stream_new_sized(param0 unsafe.Pointer, param1 uint64) 
 
 func Fn_g_buffered_input_stream_fill(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GBufferedInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gssize)(param0)
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_buffered_input_stream_fill(cValueInstance, cValue0, cValue1, cError)
@@ -623,7 +640,9 @@ func Fn_g_buffered_input_stream_fill(paramInstance unsafe.Pointer, param0 uint64
 
 func Fn_g_buffered_input_stream_fill_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GBufferedInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_buffered_input_stream_fill_finish(cValueInstance, cValue0, cError)
@@ -647,6 +666,7 @@ func Fn_g_buffered_input_stream_peek(paramInstance unsafe.Pointer, param0 []uint
 
 func Fn_g_buffered_input_stream_peek_buffer(paramInstance unsafe.Pointer, param0 *uint64) {
 	cValueInstance := (*C.GBufferedInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gsize)(unsafe.Pointer(param0))
 
 	C.g_buffered_input_stream_peek_buffer(cValueInstance, cValue0)
@@ -654,7 +674,9 @@ func Fn_g_buffered_input_stream_peek_buffer(paramInstance unsafe.Pointer, param0
 
 func Fn_g_buffered_input_stream_read_byte(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GBufferedInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_buffered_input_stream_read_byte(cValueInstance, cValue0, cError)
@@ -662,6 +684,7 @@ func Fn_g_buffered_input_stream_read_byte(paramInstance unsafe.Pointer, param0 u
 
 func Fn_g_buffered_input_stream_set_buffer_size(paramInstance unsafe.Pointer, param0 uint64) {
 	cValueInstance := (*C.GBufferedInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gsize)(param0)
 
 	C.g_buffered_input_stream_set_buffer_size(cValueInstance, cValue0)
@@ -675,6 +698,7 @@ func Fn_g_buffered_output_stream_new(param0 unsafe.Pointer) {
 
 func Fn_g_buffered_output_stream_new_sized(param0 unsafe.Pointer, param1 uint64) {
 	cValue0 := (*C.GOutputStream)(unsafe.Pointer(param0))
+
 	cValue1 := (C.gsize)(param1)
 
 	C.g_buffered_output_stream_new_sized(cValue0, cValue1)
@@ -694,6 +718,7 @@ func Fn_g_buffered_output_stream_get_buffer_size(paramInstance unsafe.Pointer) {
 
 func Fn_g_buffered_output_stream_set_auto_grow(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GBufferedOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := toCBool(param0)
 
 	C.g_buffered_output_stream_set_auto_grow(cValueInstance, cValue0)
@@ -701,13 +726,13 @@ func Fn_g_buffered_output_stream_set_auto_grow(paramInstance unsafe.Pointer, par
 
 func Fn_g_buffered_output_stream_set_buffer_size(paramInstance unsafe.Pointer, param0 uint64) {
 	cValueInstance := (*C.GBufferedOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gsize)(param0)
 
 	C.g_buffered_output_stream_set_buffer_size(cValueInstance, cValue0)
 }
 
 func Fn_g_cancellable_new() {
-
 	C.g_cancellable_new()
 }
 
@@ -751,18 +776,19 @@ func Fn_g_cancellable_reset(paramInstance unsafe.Pointer) {
 
 func Fn_g_cancellable_set_error_if_cancelled(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GCancellable)(unsafe.Pointer(paramInstance))
+
 	cError := (**C.GError)(error)
 
 	C.g_cancellable_set_error_if_cancelled(cValueInstance, cError)
 }
 
 func Fn_g_cancellable_get_current() {
-
 	C.g_cancellable_get_current()
 }
 
 func Fn_g_converter_input_stream_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValue0 := (*C.GInputStream)(unsafe.Pointer(param0))
+
 	cValue1 := (*C.GConverter)(unsafe.Pointer(param1))
 
 	C.g_converter_input_stream_new(cValue0, cValue1)
@@ -770,6 +796,7 @@ func Fn_g_converter_input_stream_new(param0 unsafe.Pointer, param1 unsafe.Pointe
 
 func Fn_g_converter_output_stream_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValue0 := (*C.GOutputStream)(unsafe.Pointer(param0))
+
 	cValue1 := (*C.GConverter)(unsafe.Pointer(param1))
 
 	C.g_converter_output_stream_new(cValue0, cValue1)
@@ -809,6 +836,7 @@ func Fn_g_dbus_message_get_byte_order(paramInstance unsafe.Pointer) {
 
 func Fn_g_dbus_message_set_byte_order(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GDBusMessage)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.GDBusMessageByteOrder)(param0)
 
 	C.g_dbus_message_set_byte_order(cValueInstance, cValue0)
@@ -828,6 +856,7 @@ func Fn_g_dbus_message_set_byte_order(paramInstance unsafe.Pointer, param0 int) 
 
 func Fn_g_dbus_object_manager_server_set_connection(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GDBusObjectManagerServer)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GDBusConnection)(unsafe.Pointer(param0))
 
 	C.g_dbus_object_manager_server_set_connection(cValueInstance, cValue0)
@@ -861,7 +890,9 @@ func Fn_g_data_input_stream_get_newline_type(paramInstance unsafe.Pointer) {
 
 func Fn_g_data_input_stream_read_byte(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_input_stream_read_byte(cValueInstance, cValue0, cError)
@@ -869,7 +900,9 @@ func Fn_g_data_input_stream_read_byte(paramInstance unsafe.Pointer, param0 unsaf
 
 func Fn_g_data_input_stream_read_int16(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_input_stream_read_int16(cValueInstance, cValue0, cError)
@@ -877,7 +910,9 @@ func Fn_g_data_input_stream_read_int16(paramInstance unsafe.Pointer, param0 unsa
 
 func Fn_g_data_input_stream_read_int32(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_input_stream_read_int32(cValueInstance, cValue0, cError)
@@ -885,7 +920,9 @@ func Fn_g_data_input_stream_read_int32(paramInstance unsafe.Pointer, param0 unsa
 
 func Fn_g_data_input_stream_read_int64(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_input_stream_read_int64(cValueInstance, cValue0, cError)
@@ -893,8 +930,11 @@ func Fn_g_data_input_stream_read_int64(paramInstance unsafe.Pointer, param0 unsa
 
 func Fn_g_data_input_stream_read_line(paramInstance unsafe.Pointer, param0 *uint64, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gsize)(unsafe.Pointer(param0))
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_input_stream_read_line(cValueInstance, cValue0, cValue1, cError)
@@ -904,7 +944,9 @@ func Fn_g_data_input_stream_read_line(paramInstance unsafe.Pointer, param0 *uint
 
 func Fn_g_data_input_stream_read_uint16(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_input_stream_read_uint16(cValueInstance, cValue0, cError)
@@ -912,7 +954,9 @@ func Fn_g_data_input_stream_read_uint16(paramInstance unsafe.Pointer, param0 uns
 
 func Fn_g_data_input_stream_read_uint32(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_input_stream_read_uint32(cValueInstance, cValue0, cError)
@@ -920,7 +964,9 @@ func Fn_g_data_input_stream_read_uint32(paramInstance unsafe.Pointer, param0 uns
 
 func Fn_g_data_input_stream_read_uint64(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_input_stream_read_uint64(cValueInstance, cValue0, cError)
@@ -928,10 +974,14 @@ func Fn_g_data_input_stream_read_uint64(paramInstance unsafe.Pointer, param0 uns
 
 func Fn_g_data_input_stream_read_until(paramInstance unsafe.Pointer, param0 string, param1 *uint64, param2 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.gsize)(unsafe.Pointer(param1))
+
 	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_input_stream_read_until(cValueInstance, cValue0, cValue1, cValue2, cError)
@@ -943,6 +993,7 @@ func Fn_g_data_input_stream_read_until(paramInstance unsafe.Pointer, param0 stri
 
 func Fn_g_data_input_stream_set_byte_order(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.GDataStreamByteOrder)(param0)
 
 	C.g_data_input_stream_set_byte_order(cValueInstance, cValue0)
@@ -950,6 +1001,7 @@ func Fn_g_data_input_stream_set_byte_order(paramInstance unsafe.Pointer, param0 
 
 func Fn_g_data_input_stream_set_newline_type(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.GDataStreamNewlineType)(param0)
 
 	C.g_data_input_stream_set_newline_type(cValueInstance, cValue0)
@@ -969,8 +1021,11 @@ func Fn_g_data_output_stream_get_byte_order(paramInstance unsafe.Pointer) {
 
 func Fn_g_data_output_stream_put_byte(paramInstance unsafe.Pointer, param0 uint8, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.guchar)(param0)
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_output_stream_put_byte(cValueInstance, cValue0, cValue1, cError)
@@ -978,8 +1033,11 @@ func Fn_g_data_output_stream_put_byte(paramInstance unsafe.Pointer, param0 uint8
 
 func Fn_g_data_output_stream_put_int16(paramInstance unsafe.Pointer, param0 int16, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gint16)(param0)
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_output_stream_put_int16(cValueInstance, cValue0, cValue1, cError)
@@ -987,8 +1045,11 @@ func Fn_g_data_output_stream_put_int16(paramInstance unsafe.Pointer, param0 int1
 
 func Fn_g_data_output_stream_put_int32(paramInstance unsafe.Pointer, param0 int32, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gint32)(param0)
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_output_stream_put_int32(cValueInstance, cValue0, cValue1, cError)
@@ -996,8 +1057,11 @@ func Fn_g_data_output_stream_put_int32(paramInstance unsafe.Pointer, param0 int3
 
 func Fn_g_data_output_stream_put_int64(paramInstance unsafe.Pointer, param0 int64, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gint64)(param0)
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_output_stream_put_int64(cValueInstance, cValue0, cValue1, cError)
@@ -1005,9 +1069,12 @@ func Fn_g_data_output_stream_put_int64(paramInstance unsafe.Pointer, param0 int6
 
 func Fn_g_data_output_stream_put_string(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_output_stream_put_string(cValueInstance, cValue0, cValue1, cError)
@@ -1015,8 +1082,11 @@ func Fn_g_data_output_stream_put_string(paramInstance unsafe.Pointer, param0 str
 
 func Fn_g_data_output_stream_put_uint16(paramInstance unsafe.Pointer, param0 uint16, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.guint16)(param0)
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_output_stream_put_uint16(cValueInstance, cValue0, cValue1, cError)
@@ -1024,8 +1094,11 @@ func Fn_g_data_output_stream_put_uint16(paramInstance unsafe.Pointer, param0 uin
 
 func Fn_g_data_output_stream_put_uint32(paramInstance unsafe.Pointer, param0 uint32, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.guint32)(param0)
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_output_stream_put_uint32(cValueInstance, cValue0, cValue1, cError)
@@ -1033,8 +1106,11 @@ func Fn_g_data_output_stream_put_uint32(paramInstance unsafe.Pointer, param0 uin
 
 func Fn_g_data_output_stream_put_uint64(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.guint64)(param0)
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_data_output_stream_put_uint64(cValueInstance, cValue0, cValue1, cError)
@@ -1042,6 +1118,7 @@ func Fn_g_data_output_stream_put_uint64(paramInstance unsafe.Pointer, param0 uin
 
 func Fn_g_data_output_stream_set_byte_order(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GDataOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.GDataStreamByteOrder)(param0)
 
 	C.g_data_output_stream_set_byte_order(cValueInstance, cValue0)
@@ -1111,6 +1188,7 @@ func Fn_g_emblem_new(param0 unsafe.Pointer) {
 
 func Fn_g_emblem_new_with_origin(param0 unsafe.Pointer, param1 int) {
 	cValue0 := (*C.GIcon)(unsafe.Pointer(param0))
+
 	cValue1 := (C.GEmblemOrigin)(param1)
 
 	C.g_emblem_new_with_origin(cValue0, cValue1)
@@ -1130,6 +1208,7 @@ func Fn_g_emblem_get_origin(paramInstance unsafe.Pointer) {
 
 func Fn_g_emblemed_icon_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValue0 := (*C.GIcon)(unsafe.Pointer(param0))
+
 	cValue1 := (*C.GEmblem)(unsafe.Pointer(param1))
 
 	C.g_emblemed_icon_new(cValue0, cValue1)
@@ -1137,6 +1216,7 @@ func Fn_g_emblemed_icon_new(param0 unsafe.Pointer, param1 unsafe.Pointer) {
 
 func Fn_g_emblemed_icon_add_emblem(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GEmblemedIcon)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GEmblem)(unsafe.Pointer(param0))
 
 	C.g_emblemed_icon_add_emblem(cValueInstance, cValue0)
@@ -1156,7 +1236,9 @@ func Fn_g_emblemed_icon_get_icon(paramInstance unsafe.Pointer) {
 
 func Fn_g_file_enumerator_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_file_enumerator_close(cValueInstance, cValue0, cError)
@@ -1166,7 +1248,9 @@ func Fn_g_file_enumerator_close(paramInstance unsafe.Pointer, param0 unsafe.Poin
 
 func Fn_g_file_enumerator_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_file_enumerator_close_finish(cValueInstance, cValue0, cError)
@@ -1192,7 +1276,9 @@ func Fn_g_file_enumerator_is_closed(paramInstance unsafe.Pointer) {
 
 func Fn_g_file_enumerator_next_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_file_enumerator_next_file(cValueInstance, cValue0, cError)
@@ -1202,7 +1288,9 @@ func Fn_g_file_enumerator_next_file(paramInstance unsafe.Pointer, param0 unsafe.
 
 func Fn_g_file_enumerator_next_files_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_file_enumerator_next_files_finish(cValueInstance, cValue0, cError)
@@ -1210,6 +1298,7 @@ func Fn_g_file_enumerator_next_files_finish(paramInstance unsafe.Pointer, param0
 
 func Fn_g_file_enumerator_set_pending(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
+
 	cValue0 := toCBool(param0)
 
 	C.g_file_enumerator_set_pending(cValueInstance, cValue0)
@@ -1230,7 +1319,6 @@ func Fn_g_file_icon_get_file(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_file_info_new() {
-
 	C.g_file_info_new()
 }
 
@@ -1242,6 +1330,7 @@ func Fn_g_file_info_clear_status(paramInstance unsafe.Pointer) {
 
 func Fn_g_file_info_copy_into(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GFileInfo)(unsafe.Pointer(param0))
 
 	C.g_file_info_copy_into(cValueInstance, cValue0)
@@ -1255,6 +1344,7 @@ func Fn_g_file_info_dup(paramInstance unsafe.Pointer) {
 
 func Fn_g_file_info_get_attribute_as_string(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1263,6 +1353,7 @@ func Fn_g_file_info_get_attribute_as_string(paramInstance unsafe.Pointer, param0
 
 func Fn_g_file_info_get_attribute_boolean(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1271,6 +1362,7 @@ func Fn_g_file_info_get_attribute_boolean(paramInstance unsafe.Pointer, param0 s
 
 func Fn_g_file_info_get_attribute_byte_string(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1279,10 +1371,14 @@ func Fn_g_file_info_get_attribute_byte_string(paramInstance unsafe.Pointer, para
 
 func Fn_g_file_info_get_attribute_data(paramInstance unsafe.Pointer, param0 string, param1 *int, param2 *unsafe.Pointer, param3 *int) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.GFileAttributeType)(unsafe.Pointer(param1))
+
 	cValue2 := (*C.gpointer)(unsafe.Pointer(param2))
+
 	cValue3 := (*C.GFileAttributeStatus)(unsafe.Pointer(param3))
 
 	C.g_file_info_get_attribute_data(cValueInstance, cValue0, cValue1, cValue2, cValue3)
@@ -1290,6 +1386,7 @@ func Fn_g_file_info_get_attribute_data(paramInstance unsafe.Pointer, param0 stri
 
 func Fn_g_file_info_get_attribute_int32(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1298,6 +1395,7 @@ func Fn_g_file_info_get_attribute_int32(paramInstance unsafe.Pointer, param0 str
 
 func Fn_g_file_info_get_attribute_int64(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1306,6 +1404,7 @@ func Fn_g_file_info_get_attribute_int64(paramInstance unsafe.Pointer, param0 str
 
 func Fn_g_file_info_get_attribute_object(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1314,6 +1413,7 @@ func Fn_g_file_info_get_attribute_object(paramInstance unsafe.Pointer, param0 st
 
 func Fn_g_file_info_get_attribute_status(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1322,6 +1422,7 @@ func Fn_g_file_info_get_attribute_status(paramInstance unsafe.Pointer, param0 st
 
 func Fn_g_file_info_get_attribute_string(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1330,6 +1431,7 @@ func Fn_g_file_info_get_attribute_string(paramInstance unsafe.Pointer, param0 st
 
 func Fn_g_file_info_get_attribute_type(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1338,6 +1440,7 @@ func Fn_g_file_info_get_attribute_type(paramInstance unsafe.Pointer, param0 stri
 
 func Fn_g_file_info_get_attribute_uint32(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1346,6 +1449,7 @@ func Fn_g_file_info_get_attribute_uint32(paramInstance unsafe.Pointer, param0 st
 
 func Fn_g_file_info_get_attribute_uint64(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1408,6 +1512,7 @@ func Fn_g_file_info_get_is_symlink(paramInstance unsafe.Pointer) {
 
 func Fn_g_file_info_get_modification_time(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GTimeVal)(unsafe.Pointer(param0))
 
 	C.g_file_info_get_modification_time(cValueInstance, cValue0)
@@ -1439,6 +1544,7 @@ func Fn_g_file_info_get_symlink_target(paramInstance unsafe.Pointer) {
 
 func Fn_g_file_info_has_attribute(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1447,6 +1553,7 @@ func Fn_g_file_info_has_attribute(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_g_file_info_list_attributes(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1455,6 +1562,7 @@ func Fn_g_file_info_list_attributes(paramInstance unsafe.Pointer, param0 string)
 
 func Fn_g_file_info_remove_attribute(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1463,9 +1571,12 @@ func Fn_g_file_info_remove_attribute(paramInstance unsafe.Pointer, param0 string
 
 func Fn_g_file_info_set_attribute(paramInstance unsafe.Pointer, param0 string, param1 int, param2 unsafe.Pointer) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (C.GFileAttributeType)(param1)
+
 	cValue2 := (C.gpointer)(param2)
 
 	C.g_file_info_set_attribute(cValueInstance, cValue0, cValue1, cValue2)
@@ -1473,8 +1584,10 @@ func Fn_g_file_info_set_attribute(paramInstance unsafe.Pointer, param0 string, p
 
 func Fn_g_file_info_set_attribute_boolean(paramInstance unsafe.Pointer, param0 string, param1 bool) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := toCBool(param1)
 
 	C.g_file_info_set_attribute_boolean(cValueInstance, cValue0, cValue1)
@@ -1482,8 +1595,10 @@ func Fn_g_file_info_set_attribute_boolean(paramInstance unsafe.Pointer, param0 s
 
 func Fn_g_file_info_set_attribute_byte_string(paramInstance unsafe.Pointer, param0 string, param1 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.char)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
 
@@ -1492,8 +1607,10 @@ func Fn_g_file_info_set_attribute_byte_string(paramInstance unsafe.Pointer, para
 
 func Fn_g_file_info_set_attribute_int32(paramInstance unsafe.Pointer, param0 string, param1 int32) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (C.gint32)(param1)
 
 	C.g_file_info_set_attribute_int32(cValueInstance, cValue0, cValue1)
@@ -1501,8 +1618,10 @@ func Fn_g_file_info_set_attribute_int32(paramInstance unsafe.Pointer, param0 str
 
 func Fn_g_file_info_set_attribute_int64(paramInstance unsafe.Pointer, param0 string, param1 int64) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (C.gint64)(param1)
 
 	C.g_file_info_set_attribute_int64(cValueInstance, cValue0, cValue1)
@@ -1510,6 +1629,7 @@ func Fn_g_file_info_set_attribute_int64(paramInstance unsafe.Pointer, param0 str
 
 func Fn_g_file_info_set_attribute_mask(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GFileAttributeMatcher)(unsafe.Pointer(param0))
 
 	C.g_file_info_set_attribute_mask(cValueInstance, cValue0)
@@ -1517,8 +1637,10 @@ func Fn_g_file_info_set_attribute_mask(paramInstance unsafe.Pointer, param0 unsa
 
 func Fn_g_file_info_set_attribute_object(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.GObject)(unsafe.Pointer(param1))
 
 	C.g_file_info_set_attribute_object(cValueInstance, cValue0, cValue1)
@@ -1526,8 +1648,10 @@ func Fn_g_file_info_set_attribute_object(paramInstance unsafe.Pointer, param0 st
 
 func Fn_g_file_info_set_attribute_string(paramInstance unsafe.Pointer, param0 string, param1 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.char)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
 
@@ -1536,8 +1660,10 @@ func Fn_g_file_info_set_attribute_string(paramInstance unsafe.Pointer, param0 st
 
 func Fn_g_file_info_set_attribute_stringv(paramInstance unsafe.Pointer, param0 string, param1 []string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	param1Len := len(param1)
 	cValue1Array := C.malloc((C.ulong)(param1Len) * C.sizeof_gpointer)
 	defer C.free(unsafe.Pointer(cValue1Array))
@@ -1553,8 +1679,10 @@ func Fn_g_file_info_set_attribute_stringv(paramInstance unsafe.Pointer, param0 s
 
 func Fn_g_file_info_set_attribute_uint32(paramInstance unsafe.Pointer, param0 string, param1 uint32) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (C.guint32)(param1)
 
 	C.g_file_info_set_attribute_uint32(cValueInstance, cValue0, cValue1)
@@ -1562,8 +1690,10 @@ func Fn_g_file_info_set_attribute_uint32(paramInstance unsafe.Pointer, param0 st
 
 func Fn_g_file_info_set_attribute_uint64(paramInstance unsafe.Pointer, param0 string, param1 uint64) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (C.guint64)(param1)
 
 	C.g_file_info_set_attribute_uint64(cValueInstance, cValue0, cValue1)
@@ -1571,6 +1701,7 @@ func Fn_g_file_info_set_attribute_uint64(paramInstance unsafe.Pointer, param0 st
 
 func Fn_g_file_info_set_content_type(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1579,6 +1710,7 @@ func Fn_g_file_info_set_content_type(paramInstance unsafe.Pointer, param0 string
 
 func Fn_g_file_info_set_display_name(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1587,6 +1719,7 @@ func Fn_g_file_info_set_display_name(paramInstance unsafe.Pointer, param0 string
 
 func Fn_g_file_info_set_edit_name(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1595,6 +1728,7 @@ func Fn_g_file_info_set_edit_name(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_g_file_info_set_file_type(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.GFileType)(param0)
 
 	C.g_file_info_set_file_type(cValueInstance, cValue0)
@@ -1602,6 +1736,7 @@ func Fn_g_file_info_set_file_type(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_g_file_info_set_icon(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GIcon)(unsafe.Pointer(param0))
 
 	C.g_file_info_set_icon(cValueInstance, cValue0)
@@ -1609,6 +1744,7 @@ func Fn_g_file_info_set_icon(paramInstance unsafe.Pointer, param0 unsafe.Pointer
 
 func Fn_g_file_info_set_is_hidden(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := toCBool(param0)
 
 	C.g_file_info_set_is_hidden(cValueInstance, cValue0)
@@ -1616,6 +1752,7 @@ func Fn_g_file_info_set_is_hidden(paramInstance unsafe.Pointer, param0 bool) {
 
 func Fn_g_file_info_set_is_symlink(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := toCBool(param0)
 
 	C.g_file_info_set_is_symlink(cValueInstance, cValue0)
@@ -1623,6 +1760,7 @@ func Fn_g_file_info_set_is_symlink(paramInstance unsafe.Pointer, param0 bool) {
 
 func Fn_g_file_info_set_modification_time(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GTimeVal)(unsafe.Pointer(param0))
 
 	C.g_file_info_set_modification_time(cValueInstance, cValue0)
@@ -1630,6 +1768,7 @@ func Fn_g_file_info_set_modification_time(paramInstance unsafe.Pointer, param0 u
 
 func Fn_g_file_info_set_name(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1638,6 +1777,7 @@ func Fn_g_file_info_set_name(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_g_file_info_set_size(paramInstance unsafe.Pointer, param0 int64) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.goffset)(param0)
 
 	C.g_file_info_set_size(cValueInstance, cValue0)
@@ -1645,6 +1785,7 @@ func Fn_g_file_info_set_size(paramInstance unsafe.Pointer, param0 int64) {
 
 func Fn_g_file_info_set_sort_order(paramInstance unsafe.Pointer, param0 int32) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gint32)(param0)
 
 	C.g_file_info_set_sort_order(cValueInstance, cValue0)
@@ -1652,6 +1793,7 @@ func Fn_g_file_info_set_sort_order(paramInstance unsafe.Pointer, param0 int32) {
 
 func Fn_g_file_info_set_symlink_target(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1666,9 +1808,12 @@ func Fn_g_file_info_unset_attribute_mask(paramInstance unsafe.Pointer) {
 
 func Fn_g_file_input_stream_query_info(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_file_input_stream_query_info(cValueInstance, cValue0, cValue1, cError)
@@ -1678,7 +1823,9 @@ func Fn_g_file_input_stream_query_info(paramInstance unsafe.Pointer, param0 stri
 
 func Fn_g_file_input_stream_query_info_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_file_input_stream_query_info_finish(cValueInstance, cValue0, cError)
@@ -1692,8 +1839,11 @@ func Fn_g_file_monitor_cancel(paramInstance unsafe.Pointer) {
 
 func Fn_g_file_monitor_emit_event(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int) {
 	cValueInstance := (*C.GFileMonitor)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GFile)(unsafe.Pointer(param0))
+
 	cValue1 := (*C.GFile)(unsafe.Pointer(param1))
+
 	cValue2 := (C.GFileMonitorEvent)(param2)
 
 	C.g_file_monitor_emit_event(cValueInstance, cValue0, cValue1, cValue2)
@@ -1707,6 +1857,7 @@ func Fn_g_file_monitor_is_cancelled(paramInstance unsafe.Pointer) {
 
 func Fn_g_file_monitor_set_rate_limit(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GFileMonitor)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gint)(param0)
 
 	C.g_file_monitor_set_rate_limit(cValueInstance, cValue0)
@@ -1720,9 +1871,12 @@ func Fn_g_file_output_stream_get_etag(paramInstance unsafe.Pointer) {
 
 func Fn_g_file_output_stream_query_info(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_file_output_stream_query_info(cValueInstance, cValue0, cValue1, cError)
@@ -1732,19 +1886,21 @@ func Fn_g_file_output_stream_query_info(paramInstance unsafe.Pointer, param0 str
 
 func Fn_g_file_output_stream_query_info_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GFileOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_file_output_stream_query_info_finish(cValueInstance, cValue0, cError)
 }
 
 func Fn_g_filename_completer_new() {
-
 	C.g_filename_completer_new()
 }
 
 func Fn_g_filename_completer_get_completion_suffix(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFilenameCompleter)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1753,6 +1909,7 @@ func Fn_g_filename_completer_get_completion_suffix(paramInstance unsafe.Pointer,
 
 func Fn_g_filename_completer_get_completions(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFilenameCompleter)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -1761,6 +1918,7 @@ func Fn_g_filename_completer_get_completions(paramInstance unsafe.Pointer, param
 
 func Fn_g_filename_completer_set_dirs_only(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFilenameCompleter)(unsafe.Pointer(paramInstance))
+
 	cValue0 := toCBool(param0)
 
 	C.g_filename_completer_set_dirs_only(cValueInstance, cValue0)
@@ -1780,6 +1938,7 @@ func Fn_g_filter_input_stream_get_close_base_stream(paramInstance unsafe.Pointer
 
 func Fn_g_filter_input_stream_set_close_base_stream(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFilterInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := toCBool(param0)
 
 	C.g_filter_input_stream_set_close_base_stream(cValueInstance, cValue0)
@@ -1799,6 +1958,7 @@ func Fn_g_filter_output_stream_get_close_base_stream(paramInstance unsafe.Pointe
 
 func Fn_g_filter_output_stream_set_close_base_stream(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFilterOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := toCBool(param0)
 
 	C.g_filter_output_stream_set_close_base_stream(cValueInstance, cValue0)
@@ -1820,7 +1980,9 @@ func Fn_g_input_stream_clear_pending(paramInstance unsafe.Pointer) {
 
 func Fn_g_input_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_input_stream_close(cValueInstance, cValue0, cError)
@@ -1830,7 +1992,9 @@ func Fn_g_input_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer
 
 func Fn_g_input_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_input_stream_close_finish(cValueInstance, cValue0, cError)
@@ -1864,7 +2028,9 @@ func Fn_g_input_stream_read_all(paramInstance unsafe.Pointer, param0 []uint8, pa
 
 func Fn_g_input_stream_read_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_input_stream_read_finish(cValueInstance, cValue0, cError)
@@ -1872,6 +2038,7 @@ func Fn_g_input_stream_read_finish(paramInstance unsafe.Pointer, param0 unsafe.P
 
 func Fn_g_input_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
+
 	cError := (**C.GError)(error)
 
 	C.g_input_stream_set_pending(cValueInstance, cError)
@@ -1879,8 +2046,11 @@ func Fn_g_input_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Po
 
 func Fn_g_input_stream_skip(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gsize)(param0)
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_input_stream_skip(cValueInstance, cValue0, cValue1, cError)
@@ -1890,7 +2060,9 @@ func Fn_g_input_stream_skip(paramInstance unsafe.Pointer, param0 uint64, param1 
 
 func Fn_g_input_stream_skip_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_input_stream_skip_finish(cValueInstance, cValue0, cError)
@@ -1901,7 +2073,6 @@ func Fn_g_input_stream_skip_finish(paramInstance unsafe.Pointer, param0 unsafe.P
 // UNSUPPORTED : sort : has callback
 
 func Fn_g_memory_input_stream_new() {
-
 	C.g_memory_input_stream_new()
 }
 
@@ -1938,7 +2109,6 @@ func Fn_g_memory_output_stream_get_size(paramInstance unsafe.Pointer) {
 // UNSUPPORTED : get_item_attribute : has varargs
 
 func Fn_g_mount_operation_new() {
-
 	C.g_mount_operation_new()
 }
 
@@ -1980,6 +2150,7 @@ func Fn_g_mount_operation_get_username(paramInstance unsafe.Pointer) {
 
 func Fn_g_mount_operation_reply(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GMountOperation)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.GMountOperationResult)(param0)
 
 	C.g_mount_operation_reply(cValueInstance, cValue0)
@@ -1987,6 +2158,7 @@ func Fn_g_mount_operation_reply(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_g_mount_operation_set_anonymous(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GMountOperation)(unsafe.Pointer(paramInstance))
+
 	cValue0 := toCBool(param0)
 
 	C.g_mount_operation_set_anonymous(cValueInstance, cValue0)
@@ -1994,6 +2166,7 @@ func Fn_g_mount_operation_set_anonymous(paramInstance unsafe.Pointer, param0 boo
 
 func Fn_g_mount_operation_set_choice(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GMountOperation)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.int)(param0)
 
 	C.g_mount_operation_set_choice(cValueInstance, cValue0)
@@ -2001,6 +2174,7 @@ func Fn_g_mount_operation_set_choice(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_g_mount_operation_set_domain(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GMountOperation)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2009,6 +2183,7 @@ func Fn_g_mount_operation_set_domain(paramInstance unsafe.Pointer, param0 string
 
 func Fn_g_mount_operation_set_password(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GMountOperation)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2017,6 +2192,7 @@ func Fn_g_mount_operation_set_password(paramInstance unsafe.Pointer, param0 stri
 
 func Fn_g_mount_operation_set_password_save(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GMountOperation)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.GPasswordSave)(param0)
 
 	C.g_mount_operation_set_password_save(cValueInstance, cValue0)
@@ -2024,6 +2200,7 @@ func Fn_g_mount_operation_set_password_save(paramInstance unsafe.Pointer, param0
 
 func Fn_g_mount_operation_set_username(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GMountOperation)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2036,6 +2213,7 @@ func Fn_g_mount_operation_set_username(paramInstance unsafe.Pointer, param0 stri
 
 func Fn_g_notification_set_priority(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GNotification)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.GNotificationPriority)(param0)
 
 	C.g_notification_set_priority(cValueInstance, cValue0)
@@ -2049,7 +2227,9 @@ func Fn_g_output_stream_clear_pending(paramInstance unsafe.Pointer) {
 
 func Fn_g_output_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_output_stream_close(cValueInstance, cValue0, cError)
@@ -2059,7 +2239,9 @@ func Fn_g_output_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 
 func Fn_g_output_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_output_stream_close_finish(cValueInstance, cValue0, cError)
@@ -2067,7 +2249,9 @@ func Fn_g_output_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe
 
 func Fn_g_output_stream_flush(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_output_stream_flush(cValueInstance, cValue0, cError)
@@ -2077,7 +2261,9 @@ func Fn_g_output_stream_flush(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 
 func Fn_g_output_stream_flush_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_output_stream_flush_finish(cValueInstance, cValue0, cError)
@@ -2099,6 +2285,7 @@ func Fn_g_output_stream_is_closed(paramInstance unsafe.Pointer) {
 
 func Fn_g_output_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
+
 	cError := (**C.GError)(error)
 
 	C.g_output_stream_set_pending(cValueInstance, cError)
@@ -2106,9 +2293,13 @@ func Fn_g_output_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.P
 
 func Fn_g_output_stream_splice(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GInputStream)(unsafe.Pointer(param0))
+
 	cValue1 := (C.GOutputStreamSpliceFlags)(param1)
+
 	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
+
 	cError := (**C.GError)(error)
 
 	C.g_output_stream_splice(cValueInstance, cValue0, cValue1, cValue2, cError)
@@ -2118,7 +2309,9 @@ func Fn_g_output_stream_splice(paramInstance unsafe.Pointer, param0 unsafe.Point
 
 func Fn_g_output_stream_splice_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_output_stream_splice_finish(cValueInstance, cValue0, cError)
@@ -2140,8 +2333,11 @@ func Fn_g_output_stream_write_all(paramInstance unsafe.Pointer, param0 []uint8, 
 
 func Fn_g_output_stream_write_bytes(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GBytes)(unsafe.Pointer(param0))
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	cError := (**C.GError)(error)
 
 	C.g_output_stream_write_bytes(cValueInstance, cValue0, cValue1, cError)
@@ -2151,7 +2347,9 @@ func Fn_g_output_stream_write_bytes(paramInstance unsafe.Pointer, param0 unsafe.
 
 func Fn_g_output_stream_write_bytes_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_output_stream_write_bytes_finish(cValueInstance, cValue0, cError)
@@ -2159,7 +2357,9 @@ func Fn_g_output_stream_write_bytes_finish(paramInstance unsafe.Pointer, param0 
 
 func Fn_g_output_stream_write_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_output_stream_write_finish(cValueInstance, cValue0, cError)
@@ -2209,6 +2409,7 @@ func Fn_g_settings_list_keys(paramInstance unsafe.Pointer) {
 
 func Fn_g_settings_reset(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2225,8 +2426,10 @@ func Fn_g_settings_revert(paramInstance unsafe.Pointer) {
 
 func Fn_g_settings_set_enum(paramInstance unsafe.Pointer, param0 string, param1 int) {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (C.gint)(param1)
 
 	C.g_settings_set_enum(cValueInstance, cValue0, cValue1)
@@ -2234,15 +2437,16 @@ func Fn_g_settings_set_enum(paramInstance unsafe.Pointer, param0 string, param1 
 
 func Fn_g_settings_set_flags(paramInstance unsafe.Pointer, param0 string, param1 uint) {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (C.guint)(param1)
 
 	C.g_settings_set_flags(cValueInstance, cValue0, cValue1)
 }
 
 func Fn_g_settings_sync() {
-
 	C.g_settings_sync()
 }
 
@@ -2300,6 +2504,7 @@ func Fn_g_simple_async_result_get_source_tag(paramInstance unsafe.Pointer) {
 
 func Fn_g_simple_async_result_propagate_error(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
+
 	cError := (**C.GError)(error)
 
 	C.g_simple_async_result_propagate_error(cValueInstance, cError)
@@ -2313,6 +2518,7 @@ func Fn_g_simple_async_result_propagate_error(paramInstance unsafe.Pointer, erro
 
 func Fn_g_simple_async_result_set_from_error(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GError)(unsafe.Pointer(param0))
 
 	C.g_simple_async_result_set_from_error(cValueInstance, cValue0)
@@ -2320,6 +2526,7 @@ func Fn_g_simple_async_result_set_from_error(paramInstance unsafe.Pointer, param
 
 func Fn_g_simple_async_result_set_handle_cancellation(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
+
 	cValue0 := toCBool(param0)
 
 	C.g_simple_async_result_set_handle_cancellation(cValueInstance, cValue0)
@@ -2327,6 +2534,7 @@ func Fn_g_simple_async_result_set_handle_cancellation(paramInstance unsafe.Point
 
 func Fn_g_simple_async_result_set_op_res_gboolean(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
+
 	cValue0 := toCBool(param0)
 
 	C.g_simple_async_result_set_op_res_gboolean(cValueInstance, cValue0)
@@ -2336,6 +2544,7 @@ func Fn_g_simple_async_result_set_op_res_gboolean(paramInstance unsafe.Pointer, 
 
 func Fn_g_simple_async_result_set_op_res_gssize(paramInstance unsafe.Pointer, param0 uint64) {
 	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gssize)(param0)
 
 	C.g_simple_async_result_set_op_res_gssize(cValueInstance, cValue0)
@@ -2343,7 +2552,9 @@ func Fn_g_simple_async_result_set_op_res_gssize(paramInstance unsafe.Pointer, pa
 
 func Fn_g_socket_address_enumerator_next(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GSocketAddressEnumerator)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_socket_address_enumerator_next(cValueInstance, cValue0, cError)
@@ -2353,7 +2564,9 @@ func Fn_g_socket_address_enumerator_next(paramInstance unsafe.Pointer, param0 un
 
 func Fn_g_socket_address_enumerator_next_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GSocketAddressEnumerator)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cError := (**C.GError)(error)
 
 	C.g_socket_address_enumerator_next_finish(cValueInstance, cValue0, cError)
@@ -2361,6 +2574,7 @@ func Fn_g_socket_address_enumerator_next_finish(paramInstance unsafe.Pointer, pa
 
 func Fn_g_socket_client_add_application_proxy(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GSocketClient)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2373,11 +2587,15 @@ func Fn_g_socket_client_add_application_proxy(paramInstance unsafe.Pointer, para
 
 func Fn_g_socket_client_connect_to_service(paramInstance unsafe.Pointer, param0 string, param1 string, param2 unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GSocketClient)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.gchar)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
+
 	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
+
 	cError := (**C.GError)(error)
 
 	C.g_socket_client_connect_to_service(cValueInstance, cValue0, cValue1, cValue2, cError)
@@ -2399,9 +2617,13 @@ func Fn_g_socket_client_connect_to_service(paramInstance unsafe.Pointer, param0 
 
 func Fn_g_subprocess_communicate_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 *unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	cValue1 := (**C.GBytes)(unsafe.Pointer(param1))
+
 	cValue2 := (**C.GBytes)(unsafe.Pointer(param2))
+
 	cError := (**C.GError)(error)
 
 	C.g_subprocess_communicate_finish(cValueInstance, cValue0, cValue1, cValue2, cError)
@@ -2409,13 +2631,18 @@ func Fn_g_subprocess_communicate_finish(paramInstance unsafe.Pointer, param0 uns
 
 func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 *string, param3 *string, error unsafe.Pointer) {
 	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
 	var cValue2String *C.gchar
 	cValue2 := &cValue2String
+
 	var cValue3String *C.gchar
 	cValue3 := &cValue3String
+
 	cError := (**C.GError)(error)
 
 	C.g_subprocess_communicate_utf8(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
@@ -2429,11 +2656,15 @@ func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 strin
 
 func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string, param2 *string, error unsafe.Pointer) {
 	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
 	var cValue1String *C.gchar
 	cValue1 := &cValue1String
+
 	var cValue2String *C.gchar
 	cValue2 := &cValue2String
+
 	cError := (**C.GError)(error)
 
 	C.g_subprocess_communicate_utf8_finish(cValueInstance, cValue0, cValue1, cValue2, cError)
@@ -2453,7 +2684,9 @@ func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param
 
 func Fn_g_subprocess_launcher_take_fd(paramInstance unsafe.Pointer, param0 int, param1 int) {
 	cValueInstance := (*C.GSubprocessLauncher)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gint)(param0)
+
 	cValue1 := (C.gint)(param1)
 
 	C.g_subprocess_launcher_take_fd(cValueInstance, cValue0, cValue1)
@@ -2491,6 +2724,7 @@ func Fn_g_test_dbus_new(param0 int) {
 
 func Fn_g_test_dbus_add_service_dir(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GTestDBus)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2528,7 +2762,6 @@ func Fn_g_test_dbus_up(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_test_dbus_unset() {
-
 	C.g_test_dbus_unset()
 }
 
@@ -2549,6 +2782,7 @@ func Fn_g_themed_icon_new_from_names(param0 []string, param1 int) {
 		defer C.free(unsafe.Pointer(param0Slice[param0i]))
 	}
 	cValue0 := &param0Slice[0]
+
 	cValue1 := (C.int)(param1)
 
 	C.g_themed_icon_new_from_names(cValue0, cValue1)
@@ -2563,6 +2797,7 @@ func Fn_g_themed_icon_new_with_default_fallbacks(param0 string) {
 
 func Fn_g_themed_icon_append_name(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GThemedIcon)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2577,6 +2812,7 @@ func Fn_g_themed_icon_get_names(paramInstance unsafe.Pointer) {
 
 func Fn_g_themed_icon_prepend_name(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GThemedIcon)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2593,6 +2829,7 @@ func Fn_g_tls_connection_get_use_system_certdb(paramInstance unsafe.Pointer) {
 
 func Fn_g_tls_connection_set_use_system_certdb(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GTlsConnection)(unsafe.Pointer(paramInstance))
+
 	cValue0 := toCBool(param0)
 
 	C.g_tls_connection_set_use_system_certdb(cValueInstance, cValue0)
@@ -2612,6 +2849,7 @@ func Fn_g_tls_connection_set_use_system_certdb(paramInstance unsafe.Pointer, par
 
 func Fn_g_tls_password_new(param0 int, param1 string) {
 	cValue0 := (C.GTlsPasswordFlags)(param0)
+
 	cValue1 := (*C.gchar)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
 
@@ -2626,18 +2864,19 @@ func Fn_g_tls_password_new(param0 int, param1 string) {
 
 func Fn_g_unix_input_stream_new(param0 int, param1 bool) {
 	cValue0 := (C.gint)(param0)
+
 	cValue1 := toCBool(param1)
 
 	C.g_unix_input_stream_new(cValue0, cValue1)
 }
 
 func Fn_g_unix_mount_monitor_new() {
-
 	C.g_unix_mount_monitor_new()
 }
 
 func Fn_g_unix_mount_monitor_set_rate_limit(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GUnixMountMonitor)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.int)(param0)
 
 	C.g_unix_mount_monitor_set_rate_limit(cValueInstance, cValue0)
@@ -2645,6 +2884,7 @@ func Fn_g_unix_mount_monitor_set_rate_limit(paramInstance unsafe.Pointer, param0
 
 func Fn_g_unix_output_stream_new(param0 int, param1 bool) {
 	cValue0 := (C.gint)(param0)
+
 	cValue1 := toCBool(param1)
 
 	C.g_unix_output_stream_new(cValue0, cValue1)
@@ -2656,6 +2896,7 @@ func Fn_g_unix_socket_address_new_abstract(param0 []int8, param1 int) {
 
 func Fn_g_vfs_get_file_for_path(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GVfs)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2664,6 +2905,7 @@ func Fn_g_vfs_get_file_for_path(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_g_vfs_get_file_for_uri(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GVfs)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2684,6 +2926,7 @@ func Fn_g_vfs_is_active(paramInstance unsafe.Pointer) {
 
 func Fn_g_vfs_parse_name(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GVfs)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2693,12 +2936,10 @@ func Fn_g_vfs_parse_name(paramInstance unsafe.Pointer, param0 string) {
 // UNSUPPORTED : register_uri_scheme : has callback
 
 func Fn_g_vfs_get_default() {
-
 	C.g_vfs_get_default()
 }
 
 func Fn_g_vfs_get_local() {
-
 	C.g_vfs_get_local()
 }
 
@@ -2710,6 +2951,7 @@ func Fn_g_volume_monitor_get_connected_drives(paramInstance unsafe.Pointer) {
 
 func Fn_g_volume_monitor_get_mount_for_uuid(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GVolumeMonitor)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2724,6 +2966,7 @@ func Fn_g_volume_monitor_get_mounts(paramInstance unsafe.Pointer) {
 
 func Fn_g_volume_monitor_get_volume_for_uuid(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GVolumeMonitor)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2743,6 +2986,5 @@ func Fn_g_volume_monitor_adopt_orphan_mount(param0 unsafe.Pointer) {
 }
 
 func Fn_g_volume_monitor_get() {
-
 	C.g_volume_monitor_get()
 }

@@ -76,32 +76,26 @@ func Fn_atk_focus_tracker_notify(param0 unsafe.Pointer) {
 }
 
 func Fn_atk_get_default_registry() {
-
 	C.atk_get_default_registry()
 }
 
 func Fn_atk_get_focus_object() {
-
 	C.atk_get_focus_object()
 }
 
 func Fn_atk_get_root() {
-
 	C.atk_get_root()
 }
 
 func Fn_atk_get_toolkit_name() {
-
 	C.atk_get_toolkit_name()
 }
 
 func Fn_atk_get_toolkit_version() {
-
 	C.atk_get_toolkit_version()
 }
 
 func Fn_atk_get_version() {
-
 	C.atk_get_version()
 }
 
@@ -204,6 +198,7 @@ func Fn_atk_text_attribute_get_name(param0 int) {
 
 func Fn_atk_text_attribute_get_value(param0 int, param1 int) {
 	cValue0 := (C.AtkTextAttribute)(param0)
+
 	cValue1 := (C.gint)(param1)
 
 	C.atk_text_attribute_get_value(cValue0, cValue1)
@@ -258,6 +253,7 @@ func Fn_atk_hyperlink_get_n_anchors(paramInstance unsafe.Pointer) {
 
 func Fn_atk_hyperlink_get_object(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.AtkHyperlink)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gint)(param0)
 
 	C.atk_hyperlink_get_object(cValueInstance, cValue0)
@@ -271,6 +267,7 @@ func Fn_atk_hyperlink_get_start_index(paramInstance unsafe.Pointer) {
 
 func Fn_atk_hyperlink_get_uri(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.AtkHyperlink)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gint)(param0)
 
 	C.atk_hyperlink_get_uri(cValueInstance, cValue0)
@@ -307,7 +304,6 @@ func Fn_atk_misc_threads_leave(paramInstance unsafe.Pointer) {
 }
 
 func Fn_atk_misc_get_instance() {
-
 	C.atk_misc_get_instance()
 }
 
@@ -318,13 +314,14 @@ func Fn_atk_no_op_object_new(param0 unsafe.Pointer) {
 }
 
 func Fn_atk_no_op_object_factory_new() {
-
 	C.atk_no_op_object_factory_new()
 }
 
 func Fn_atk_object_add_relationship(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.AtkRelationType)(param0)
+
 	cValue1 := (*C.AtkObject)(unsafe.Pointer(param1))
 
 	C.atk_object_add_relationship(cValueInstance, cValue0, cValue1)
@@ -388,6 +385,7 @@ func Fn_atk_object_get_role(paramInstance unsafe.Pointer) {
 
 func Fn_atk_object_initialize(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gpointer)(param0)
 
 	C.atk_object_initialize(cValueInstance, cValue0)
@@ -395,7 +393,9 @@ func Fn_atk_object_initialize(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 
 func Fn_atk_object_notify_state_change(paramInstance unsafe.Pointer, param0 uint64, param1 bool) {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.AtkState)(param0)
+
 	cValue1 := toCBool(param1)
 
 	C.atk_object_notify_state_change(cValueInstance, cValue0, cValue1)
@@ -409,6 +409,7 @@ func Fn_atk_object_peek_parent(paramInstance unsafe.Pointer) {
 
 func Fn_atk_object_ref_accessible_child(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gint)(param0)
 
 	C.atk_object_ref_accessible_child(cValueInstance, cValue0)
@@ -428,6 +429,7 @@ func Fn_atk_object_ref_state_set(paramInstance unsafe.Pointer) {
 
 func Fn_atk_object_remove_property_change_handler(paramInstance unsafe.Pointer, param0 uint) {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.guint)(param0)
 
 	C.atk_object_remove_property_change_handler(cValueInstance, cValue0)
@@ -435,7 +437,9 @@ func Fn_atk_object_remove_property_change_handler(paramInstance unsafe.Pointer, 
 
 func Fn_atk_object_remove_relationship(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.AtkRelationType)(param0)
+
 	cValue1 := (*C.AtkObject)(unsafe.Pointer(param1))
 
 	C.atk_object_remove_relationship(cValueInstance, cValue0, cValue1)
@@ -443,6 +447,7 @@ func Fn_atk_object_remove_relationship(paramInstance unsafe.Pointer, param0 int,
 
 func Fn_atk_object_set_description(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -451,6 +456,7 @@ func Fn_atk_object_set_description(paramInstance unsafe.Pointer, param0 string) 
 
 func Fn_atk_object_set_name(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -459,6 +465,7 @@ func Fn_atk_object_set_name(paramInstance unsafe.Pointer, param0 string) {
 
 func Fn_atk_object_set_parent(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.AtkObject)(unsafe.Pointer(param0))
 
 	C.atk_object_set_parent(cValueInstance, cValue0)
@@ -466,6 +473,7 @@ func Fn_atk_object_set_parent(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 
 func Fn_atk_object_set_role(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.AtkRole)(param0)
 
 	C.atk_object_set_role(cValueInstance, cValue0)
@@ -473,6 +481,7 @@ func Fn_atk_object_set_role(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_atk_object_factory_create_accessible(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.AtkObjectFactory)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GObject)(unsafe.Pointer(param0))
 
 	C.atk_object_factory_create_accessible(cValueInstance, cValue0)
@@ -491,7 +500,6 @@ func Fn_atk_object_factory_invalidate(paramInstance unsafe.Pointer) {
 }
 
 func Fn_atk_plug_new() {
-
 	C.atk_plug_new()
 }
 
@@ -503,6 +511,7 @@ func Fn_atk_plug_get_id(paramInstance unsafe.Pointer) {
 
 func Fn_atk_registry_get_factory(paramInstance unsafe.Pointer, param0 uint64) {
 	cValueInstance := (*C.AtkRegistry)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.GType)(param0)
 
 	C.atk_registry_get_factory(cValueInstance, cValue0)
@@ -510,6 +519,7 @@ func Fn_atk_registry_get_factory(paramInstance unsafe.Pointer, param0 uint64) {
 
 func Fn_atk_registry_get_factory_type(paramInstance unsafe.Pointer, param0 uint64) {
 	cValueInstance := (*C.AtkRegistry)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.GType)(param0)
 
 	C.atk_registry_get_factory_type(cValueInstance, cValue0)
@@ -517,7 +527,9 @@ func Fn_atk_registry_get_factory_type(paramInstance unsafe.Pointer, param0 uint6
 
 func Fn_atk_registry_set_factory_type(paramInstance unsafe.Pointer, param0 uint64, param1 uint64) {
 	cValueInstance := (*C.AtkRegistry)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.GType)(param0)
+
 	cValue1 := (C.GType)(param1)
 
 	C.atk_registry_set_factory_type(cValueInstance, cValue0, cValue1)
@@ -529,6 +541,7 @@ func Fn_atk_relation_new(param0 []unsafe.Pointer, param1 int, param2 int) {
 
 func Fn_atk_relation_add_target(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.AtkRelation)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.AtkObject)(unsafe.Pointer(param0))
 
 	C.atk_relation_add_target(cValueInstance, cValue0)
@@ -548,18 +561,19 @@ func Fn_atk_relation_get_target(paramInstance unsafe.Pointer) {
 
 func Fn_atk_relation_remove_target(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.AtkRelation)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.AtkObject)(unsafe.Pointer(param0))
 
 	C.atk_relation_remove_target(cValueInstance, cValue0)
 }
 
 func Fn_atk_relation_set_new() {
-
 	C.atk_relation_set_new()
 }
 
 func Fn_atk_relation_set_add(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.AtkRelationSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.AtkRelation)(unsafe.Pointer(param0))
 
 	C.atk_relation_set_add(cValueInstance, cValue0)
@@ -567,7 +581,9 @@ func Fn_atk_relation_set_add(paramInstance unsafe.Pointer, param0 unsafe.Pointer
 
 func Fn_atk_relation_set_add_relation_by_type(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
 	cValueInstance := (*C.AtkRelationSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.AtkRelationType)(param0)
+
 	cValue1 := (*C.AtkObject)(unsafe.Pointer(param1))
 
 	C.atk_relation_set_add_relation_by_type(cValueInstance, cValue0, cValue1)
@@ -575,6 +591,7 @@ func Fn_atk_relation_set_add_relation_by_type(paramInstance unsafe.Pointer, para
 
 func Fn_atk_relation_set_contains(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.AtkRelationSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.AtkRelationType)(param0)
 
 	C.atk_relation_set_contains(cValueInstance, cValue0)
@@ -582,7 +599,9 @@ func Fn_atk_relation_set_contains(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_atk_relation_set_contains_target(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
 	cValueInstance := (*C.AtkRelationSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.AtkRelationType)(param0)
+
 	cValue1 := (*C.AtkObject)(unsafe.Pointer(param1))
 
 	C.atk_relation_set_contains_target(cValueInstance, cValue0, cValue1)
@@ -596,6 +615,7 @@ func Fn_atk_relation_set_get_n_relations(paramInstance unsafe.Pointer) {
 
 func Fn_atk_relation_set_get_relation(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.AtkRelationSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.gint)(param0)
 
 	C.atk_relation_set_get_relation(cValueInstance, cValue0)
@@ -603,6 +623,7 @@ func Fn_atk_relation_set_get_relation(paramInstance unsafe.Pointer, param0 int) 
 
 func Fn_atk_relation_set_get_relation_by_type(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.AtkRelationSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.AtkRelationType)(param0)
 
 	C.atk_relation_set_get_relation_by_type(cValueInstance, cValue0)
@@ -610,18 +631,19 @@ func Fn_atk_relation_set_get_relation_by_type(paramInstance unsafe.Pointer, para
 
 func Fn_atk_relation_set_remove(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.AtkRelationSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.AtkRelation)(unsafe.Pointer(param0))
 
 	C.atk_relation_set_remove(cValueInstance, cValue0)
 }
 
 func Fn_atk_socket_new() {
-
 	C.atk_socket_new()
 }
 
 func Fn_atk_socket_embed(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.AtkSocket)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -635,12 +657,12 @@ func Fn_atk_socket_is_occupied(paramInstance unsafe.Pointer) {
 }
 
 func Fn_atk_state_set_new() {
-
 	C.atk_state_set_new()
 }
 
 func Fn_atk_state_set_add_state(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.AtkStateSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.AtkStateType)(param0)
 
 	C.atk_state_set_add_state(cValueInstance, cValue0)
@@ -652,6 +674,7 @@ func Fn_atk_state_set_add_states(paramInstance unsafe.Pointer, param0 []int, par
 
 func Fn_atk_state_set_and_sets(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.AtkStateSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.AtkStateSet)(unsafe.Pointer(param0))
 
 	C.atk_state_set_and_sets(cValueInstance, cValue0)
@@ -665,6 +688,7 @@ func Fn_atk_state_set_clear_states(paramInstance unsafe.Pointer) {
 
 func Fn_atk_state_set_contains_state(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.AtkStateSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.AtkStateType)(param0)
 
 	C.atk_state_set_contains_state(cValueInstance, cValue0)
@@ -682,6 +706,7 @@ func Fn_atk_state_set_is_empty(paramInstance unsafe.Pointer) {
 
 func Fn_atk_state_set_or_sets(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.AtkStateSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.AtkStateSet)(unsafe.Pointer(param0))
 
 	C.atk_state_set_or_sets(cValueInstance, cValue0)
@@ -689,6 +714,7 @@ func Fn_atk_state_set_or_sets(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 
 func Fn_atk_state_set_remove_state(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.AtkStateSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.AtkStateType)(param0)
 
 	C.atk_state_set_remove_state(cValueInstance, cValue0)
@@ -696,6 +722,7 @@ func Fn_atk_state_set_remove_state(paramInstance unsafe.Pointer, param0 int) {
 
 func Fn_atk_state_set_xor_sets(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.AtkStateSet)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.AtkStateSet)(unsafe.Pointer(param0))
 
 	C.atk_state_set_xor_sets(cValueInstance, cValue0)

@@ -20,15 +20,18 @@ type PixbufLoaderClass C.GdkPixbufLoaderClass
 type PixbufSimpleAnimClass C.GdkPixbufSimpleAnimClass
 
 func Fn_gdk_pixbuf_error_quark() {
-
 	C.gdk_pixbuf_error_quark()
 }
 
 func Fn_gdk_pixbuf_new(param0 int, param1 bool, param2 int, param3 int, param4 int) {
 	cValue0 := (C.GdkColorspace)(param0)
+
 	cValue1 := toCBool(param1)
+
 	cValue2 := (C.int)(param2)
+
 	cValue3 := (C.int)(param3)
+
 	cValue4 := (C.int)(param4)
 
 	C.gdk_pixbuf_new(cValue0, cValue1, cValue2, cValue3, cValue4)
@@ -39,6 +42,7 @@ func Fn_gdk_pixbuf_new(param0 int, param1 bool, param2 int, param3 int, param4 i
 func Fn_gdk_pixbuf_new_from_file(param0 string, error unsafe.Pointer) {
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cError := (**C.GError)(error)
 
 	C.gdk_pixbuf_new_from_file(cValue0, cError)
@@ -64,9 +68,13 @@ func Fn_gdk_pixbuf_new_from_xpm_data(param0 []string) {
 
 func Fn_gdk_pixbuf_add_alpha(paramInstance unsafe.Pointer, param0 bool, param1 uint8, param2 uint8, param3 uint8) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+
 	cValue0 := toCBool(param0)
+
 	cValue1 := (C.guchar)(param1)
+
 	cValue2 := (C.guchar)(param2)
+
 	cValue3 := (C.guchar)(param3)
 
 	C.gdk_pixbuf_add_alpha(cValueInstance, cValue0, cValue1, cValue2, cValue3)
@@ -74,16 +82,27 @@ func Fn_gdk_pixbuf_add_alpha(paramInstance unsafe.Pointer, param0 bool, param1 u
 
 func Fn_gdk_pixbuf_composite(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int, param5 float64, param6 float64, param7 float64, param8 float64, param9 int, param10 int) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GdkPixbuf)(unsafe.Pointer(param0))
+
 	cValue1 := (C.int)(param1)
+
 	cValue2 := (C.int)(param2)
+
 	cValue3 := (C.int)(param3)
+
 	cValue4 := (C.int)(param4)
+
 	cValue5 := (C.double)(param5)
+
 	cValue6 := (C.double)(param6)
+
 	cValue7 := (C.double)(param7)
+
 	cValue8 := (C.double)(param8)
+
 	cValue9 := (C.GdkInterpType)(param9)
+
 	cValue10 := (C.int)(param10)
 
 	C.gdk_pixbuf_composite(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9, cValue10)
@@ -91,21 +110,37 @@ func Fn_gdk_pixbuf_composite(paramInstance unsafe.Pointer, param0 unsafe.Pointer
 
 func Fn_gdk_pixbuf_composite_color(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int, param5 float64, param6 float64, param7 float64, param8 float64, param9 int, param10 int, param11 int, param12 int, param13 int, param14 uint32, param15 uint32) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GdkPixbuf)(unsafe.Pointer(param0))
+
 	cValue1 := (C.int)(param1)
+
 	cValue2 := (C.int)(param2)
+
 	cValue3 := (C.int)(param3)
+
 	cValue4 := (C.int)(param4)
+
 	cValue5 := (C.double)(param5)
+
 	cValue6 := (C.double)(param6)
+
 	cValue7 := (C.double)(param7)
+
 	cValue8 := (C.double)(param8)
+
 	cValue9 := (C.GdkInterpType)(param9)
+
 	cValue10 := (C.int)(param10)
+
 	cValue11 := (C.int)(param11)
+
 	cValue12 := (C.int)(param12)
+
 	cValue13 := (C.int)(param13)
+
 	cValue14 := (C.guint32)(param14)
+
 	cValue15 := (C.guint32)(param15)
 
 	C.gdk_pixbuf_composite_color(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9, cValue10, cValue11, cValue12, cValue13, cValue14, cValue15)
@@ -113,12 +148,19 @@ func Fn_gdk_pixbuf_composite_color(paramInstance unsafe.Pointer, param0 unsafe.P
 
 func Fn_gdk_pixbuf_composite_color_simple(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int, param4 int, param5 uint32, param6 uint32) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.int)(param0)
+
 	cValue1 := (C.int)(param1)
+
 	cValue2 := (C.GdkInterpType)(param2)
+
 	cValue3 := (C.int)(param3)
+
 	cValue4 := (C.int)(param4)
+
 	cValue5 := (C.guint32)(param5)
+
 	cValue6 := (C.guint32)(param6)
 
 	C.gdk_pixbuf_composite_color_simple(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
@@ -132,12 +174,19 @@ func Fn_gdk_pixbuf_copy(paramInstance unsafe.Pointer) {
 
 func Fn_gdk_pixbuf_copy_area(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int, param4 unsafe.Pointer, param5 int, param6 int) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.int)(param0)
+
 	cValue1 := (C.int)(param1)
+
 	cValue2 := (C.int)(param2)
+
 	cValue3 := (C.int)(param3)
+
 	cValue4 := (*C.GdkPixbuf)(unsafe.Pointer(param4))
+
 	cValue5 := (C.int)(param5)
+
 	cValue6 := (C.int)(param6)
 
 	C.gdk_pixbuf_copy_area(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
@@ -145,6 +194,7 @@ func Fn_gdk_pixbuf_copy_area(paramInstance unsafe.Pointer, param0 int, param1 in
 
 func Fn_gdk_pixbuf_fill(paramInstance unsafe.Pointer, param0 uint32) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.guint32)(param0)
 
 	C.gdk_pixbuf_fill(cValueInstance, cValue0)
@@ -182,6 +232,7 @@ func Fn_gdk_pixbuf_get_n_channels(paramInstance unsafe.Pointer) {
 
 func Fn_gdk_pixbuf_get_option(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -208,9 +259,13 @@ func Fn_gdk_pixbuf_get_width(paramInstance unsafe.Pointer) {
 
 func Fn_gdk_pixbuf_new_subpixbuf(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.int)(param0)
+
 	cValue1 := (C.int)(param1)
+
 	cValue2 := (C.int)(param2)
+
 	cValue3 := (C.int)(param3)
 
 	C.gdk_pixbuf_new_subpixbuf(cValueInstance, cValue0, cValue1, cValue2, cValue3)
@@ -224,8 +279,11 @@ func Fn_gdk_pixbuf_ref(paramInstance unsafe.Pointer) {
 
 func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 float32, param2 bool) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GdkPixbuf)(unsafe.Pointer(param0))
+
 	cValue1 := (C.gfloat)(param1)
+
 	cValue2 := toCBool(param2)
 
 	C.gdk_pixbuf_saturate_and_pixelate(cValueInstance, cValue0, cValue1, cValue2)
@@ -247,10 +305,13 @@ func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 un
 
 func Fn_gdk_pixbuf_savev(paramInstance unsafe.Pointer, param0 string, param1 string, param2 []string, param3 []string, error unsafe.Pointer) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cValue1 := (*C.char)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
+
 	param2Len := len(param2)
 	cValue2Array := C.malloc((C.ulong)(param2Len) * C.sizeof_gpointer)
 	defer C.free(unsafe.Pointer(cValue2Array))
@@ -260,6 +321,7 @@ func Fn_gdk_pixbuf_savev(paramInstance unsafe.Pointer, param0 string, param1 str
 		defer C.free(unsafe.Pointer(param2Slice[param2i]))
 	}
 	cValue2 := &param2Slice[0]
+
 	param3Len := len(param3)
 	cValue3Array := C.malloc((C.ulong)(param3Len) * C.sizeof_gpointer)
 	defer C.free(unsafe.Pointer(cValue3Array))
@@ -269,6 +331,7 @@ func Fn_gdk_pixbuf_savev(paramInstance unsafe.Pointer, param0 string, param1 str
 		defer C.free(unsafe.Pointer(param3Slice[param3i]))
 	}
 	cValue3 := &param3Slice[0]
+
 	cError := (**C.GError)(error)
 
 	C.gdk_pixbuf_savev(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
@@ -276,15 +339,25 @@ func Fn_gdk_pixbuf_savev(paramInstance unsafe.Pointer, param0 string, param1 str
 
 func Fn_gdk_pixbuf_scale(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int, param5 float64, param6 float64, param7 float64, param8 float64, param9 int) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GdkPixbuf)(unsafe.Pointer(param0))
+
 	cValue1 := (C.int)(param1)
+
 	cValue2 := (C.int)(param2)
+
 	cValue3 := (C.int)(param3)
+
 	cValue4 := (C.int)(param4)
+
 	cValue5 := (C.double)(param5)
+
 	cValue6 := (C.double)(param6)
+
 	cValue7 := (C.double)(param7)
+
 	cValue8 := (C.double)(param8)
+
 	cValue9 := (C.GdkInterpType)(param9)
 
 	C.gdk_pixbuf_scale(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
@@ -292,8 +365,11 @@ func Fn_gdk_pixbuf_scale(paramInstance unsafe.Pointer, param0 unsafe.Pointer, pa
 
 func Fn_gdk_pixbuf_scale_simple(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (C.int)(param0)
+
 	cValue1 := (C.int)(param1)
+
 	cValue2 := (C.GdkInterpType)(param2)
 
 	C.gdk_pixbuf_scale_simple(cValueInstance, cValue0, cValue1, cValue2)
@@ -314,6 +390,7 @@ func Fn_gdk_pixbuf_unref(paramInstance unsafe.Pointer) {
 func Fn_gdk_pixbuf_animation_new_from_file(param0 string, error unsafe.Pointer) {
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cError := (**C.GError)(error)
 
 	C.gdk_pixbuf_animation_new_from_file(cValue0, cError)
@@ -327,6 +404,7 @@ func Fn_gdk_pixbuf_animation_get_height(paramInstance unsafe.Pointer) {
 
 func Fn_gdk_pixbuf_animation_get_iter(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GdkPixbufAnimation)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GTimeVal)(unsafe.Pointer(param0))
 
 	C.gdk_pixbuf_animation_get_iter(cValueInstance, cValue0)
@@ -366,6 +444,7 @@ func Fn_gdk_pixbuf_animation_unref(paramInstance unsafe.Pointer) {
 
 func Fn_gdk_pixbuf_animation_iter_advance(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GdkPixbufAnimationIter)(unsafe.Pointer(paramInstance))
+
 	cValue0 := (*C.GTimeVal)(unsafe.Pointer(param0))
 
 	C.gdk_pixbuf_animation_iter_advance(cValueInstance, cValue0)
@@ -390,13 +469,13 @@ func Fn_gdk_pixbuf_animation_iter_on_currently_loading_frame(paramInstance unsaf
 }
 
 func Fn_gdk_pixbuf_loader_new() {
-
 	C.gdk_pixbuf_loader_new()
 }
 
 func Fn_gdk_pixbuf_loader_new_with_type(param0 string, error unsafe.Pointer) {
 	cValue0 := (*C.char)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
+
 	cError := (**C.GError)(error)
 
 	C.gdk_pixbuf_loader_new_with_type(cValue0, cError)
@@ -404,6 +483,7 @@ func Fn_gdk_pixbuf_loader_new_with_type(param0 string, error unsafe.Pointer) {
 
 func Fn_gdk_pixbuf_loader_close(paramInstance unsafe.Pointer, error unsafe.Pointer) {
 	cValueInstance := (*C.GdkPixbufLoader)(unsafe.Pointer(paramInstance))
+
 	cError := (**C.GError)(error)
 
 	C.gdk_pixbuf_loader_close(cValueInstance, cError)
