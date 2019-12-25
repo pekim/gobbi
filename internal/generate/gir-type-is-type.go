@@ -89,7 +89,7 @@ func (t *Type) isVaList() bool {
 }
 
 func (t *Type) isLongDouble() bool {
-	return t.cType == "long double"
+	return t.cType.typ == "long double"
 }
 
 func (t *Type) isString() bool {

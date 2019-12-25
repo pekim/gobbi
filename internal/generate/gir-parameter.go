@@ -71,7 +71,7 @@ func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
 		return jen.Id("toCBool").Call(goValue)
 	}
 
-	if p.Type.cIndirectionCount > 0 {
+	if p.Type.cType.indirectionCount > 0 {
 		goValue = jenUnsafePointer().Call(goValue)
 	}
 
@@ -84,17 +84,17 @@ func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
 }
 
 func (p *Parameter) generateSysCArgString(g *jen.Group, goVarName string, cVarName string) {
-	if p.Type.cIndirectionCount == 1 {
+	if p.Type.cType.indirectionCount == 1 {
 		p.generateSysCArgStringSimple(g, goVarName, cVarName)
 		return
 	}
 
-	if p.Type.cIndirectionCount == 2 {
+	if p.Type.cType.indirectionCount == 2 {
 		p.generateSysCArgStringPointer(g, goVarName, cVarName)
 		return
 	}
 
-	panic(fmt.Sprintf("Unsupported indirection count (%d) for string param ", p.Type.cIndirectionCount))
+	panic(fmt.Sprintf("Unsupported indirection count (%d) for string param ", p.Type.cType.indirectionCount))
 }
 
 func (p *Parameter) generateSysCArgStringSimple(g *jen.Group, goVarName string, cVarName string) {
@@ -129,7 +129,7 @@ func (p *Parameter) generateSysCArgOut(g *jen.Group, goVarName string, cVarName 
 		return
 	}
 
-	if p.Type.isString() && p.Type.cIndirectionCount == 2 {
+	if p.Type.isString() && p.Type.cType.indirectionCount == 2 {
 		p.generateSysCArgStringPointerOut(g, goVarName, cVarName)
 	}
 }

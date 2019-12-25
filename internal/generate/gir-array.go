@@ -14,6 +14,7 @@ type Array struct {
 
 	namespace   *Namespace
 	lengthParam *Parameter
+	cType       cType
 }
 
 func (a *Array) init(ns *Namespace) {
@@ -23,6 +24,7 @@ func (a *Array) init(ns *Namespace) {
 
 	a.namespace = ns
 	a.Type.init(ns)
+	a.cType = parseCtype(a.CType)
 }
 
 func (a *Array) sysParamGoType() *jen.Statement {

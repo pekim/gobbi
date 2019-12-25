@@ -3,11 +3,8 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
-	"regexp"
 	"strings"
 )
-
-var cTypeRegex = regexp.MustCompile(" *(const |volatile )* *([a-zA-Z0-9_ ]+) *(.*)?")
 
 var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"char":            jen.Int8(),
@@ -51,10 +48,7 @@ type Type struct {
 	namespace        *Namespace
 	foreignNamespace *Namespace
 	foreignName      string
-
-	cType             string
-	cStars            string
-	cIndirectionCount int
+	cType            cType
 }
 
 func (t *Type) init(ns *Namespace) {
@@ -70,7 +64,12 @@ func (t *Type) init(ns *Namespace) {
 	}
 
 	t.analyseName()
-	t.parseCtype()
+
+	if t.CType != "" {
+		t.cType = parseCtype(t.CType)
+	} else {
+		t.cType = parseCtype(t.Name)
+	}
 }
 
 func (t *Type) analyseName() {
@@ -93,71 +92,47 @@ func (t *Type) analyseName() {
 
 }
 
-func (t *Type) parseCtype() {
-	ctype := t.CType
-	if ctype == "" {
-		ctype = t.Name
-	}
-
-	parts := cTypeRegex.FindStringSubmatch(ctype)
-	if parts == nil {
-		panic(fmt.Sprintf("Failed to parse type ; '%s'", t.CType))
-	}
-
-	t.cType = parts[2]
-	t.cIndirectionCount = strings.Count(parts[3], "*")
-	t.cStars = strings.Repeat("*", t.cIndirectionCount)
-	if t.cType == "" {
-		panic(fmt.Sprintf("Failed to parse type ; '%s'", t.CType))
-	}
-
-	//if t.CType == "gpointer" {
-	//	t.cIndirectionCount = 1
-	//	t.cStars = "*"
-	//}
-}
-
 func (t *Type) sysParamGoType() *jen.Statement {
 	if t.isString() {
 		stars := ""
-		if t.cIndirectionCount > 0 {
-			stars = strings.Repeat("*", t.cIndirectionCount-1)
+		if t.cType.indirectionCount > 0 {
+			stars = strings.Repeat("*", t.cType.indirectionCount-1)
 		}
 		return jen.Op(stars).String()
 	}
 
-	if t.cType == "void" && t.cIndirectionCount == 1 {
+	if t.cType.typ == "void" && t.cType.indirectionCount == 1 {
 		return jenUnsafePointer()
 	}
 
 	// pango specific
-	if t.cType == "FILE" && t.cIndirectionCount == 1 {
+	if t.cType.typ == "FILE" && t.cType.indirectionCount == 1 {
 		return jenUnsafePointer()
 	}
 
-	if simpleGoType, ok := simpleSysParamGoTypes[t.cType]; ok {
-		return jen.Op(t.cStars).Add(simpleGoType)
+	if simpleGoType, ok := simpleSysParamGoTypes[t.cType.typ]; ok {
+		return jen.Op(t.cType.stars).Add(simpleGoType)
 	}
 
 	if t.isAlias() {
 		if t.isQualifiedName() {
 			alias, _ := t.foreignNamespace.Aliases.byName(t.foreignName)
-			return jen.Op(t.cStars).Add(alias.Type.sysParamGoType())
+			return jen.Op(t.cType.stars).Add(alias.Type.sysParamGoType())
 		}
 
 		alias, _ := t.namespace.Aliases.byName(t.Name)
-		return jen.Op(t.cStars).Add(alias.Type.sysParamGoType())
+		return jen.Op(t.cType.stars).Add(alias.Type.sysParamGoType())
 	}
 
 	if t.isBitfield() || t.isEnumeration() {
-		return jen.Op(t.cStars).Int()
+		return jen.Op(t.cType.stars).Int()
 	}
 
-	if t.isRecord() && t.cIndirectionCount == 0 {
+	if t.isRecord() && t.cType.indirectionCount == 0 {
 		if t.isQualifiedName() {
 			return jen.Qual(t.foreignNamespace.goFullSysPackageName, t.foreignName)
 		}
-		return jen.Op(t.cStars).Id(t.Name)
+		return jen.Op(t.cType.stars).Id(t.Name)
 	}
 
 	if t.isClass() ||
@@ -165,11 +140,11 @@ func (t *Type) sysParamGoType() *jen.Statement {
 		t.isInterface() ||
 		t.isUnion() {
 
-		if t.cIndirectionCount == 0 {
+		if t.cType.indirectionCount == 0 {
 			return jenUnsafePointer()
 		}
 
-		stars := strings.Repeat("*", t.cIndirectionCount-1)
+		stars := strings.Repeat("*", t.cType.indirectionCount-1)
 		return jen.Op(stars).Add(jenUnsafePointer())
 	}
 
@@ -181,5 +156,5 @@ func (t *Type) isQualifiedName() bool {
 }
 
 func (t *Type) jenGoCType() *jen.Statement {
-	return jen.Parens(jen.Op(t.cStars).Qual("C", t.cType))
+	return jen.Parens(jen.Op(t.cType.stars).Qual("C", t.cType.typ))
 }
