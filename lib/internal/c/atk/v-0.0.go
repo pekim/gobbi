@@ -470,7 +470,7 @@ func Fn_atk_registry_set_factory_type(paramInstance unsafe.Pointer, param0 uint6
 }
 
 func Fn_atk_relation_new(param0 []unsafe.Pointer, param1 int, param2 int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_atk_relation_get_relation_type(paramInstance unsafe.Pointer) {
@@ -564,7 +564,7 @@ func Fn_atk_state_set_add_state(paramInstance unsafe.Pointer, param0 int) {
 }
 
 func Fn_atk_state_set_add_states(paramInstance unsafe.Pointer, param0 []int, param1 int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_atk_state_set_and_sets(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -588,7 +588,7 @@ func Fn_atk_state_set_contains_state(paramInstance unsafe.Pointer, param0 int) {
 }
 
 func Fn_atk_state_set_contains_states(paramInstance unsafe.Pointer, param0 []int, param1 int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_atk_state_set_is_empty(paramInstance unsafe.Pointer) {

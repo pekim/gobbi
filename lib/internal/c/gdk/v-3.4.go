@@ -349,11 +349,11 @@ func Fn_gdk_gl_error_quark() {
 }
 
 func Fn_gdk_init(param0 *int, param1 *[]string) {
-	// has array param
+	// has string array[3] param
 }
 
 func Fn_gdk_init_check(param0 *int, param1 *[]string) {
-	// has array param
+	// has string array[3] param
 }
 
 func Fn_gdk_keyboard_grab(param0 unsafe.Pointer, param1 bool, param2 uint32) {
@@ -479,11 +479,11 @@ func Fn_gdk_pango_layout_get_clip_region(param0 unsafe.Pointer, param1 int, para
 }
 
 func Fn_gdk_pango_layout_line_get_clip_region(param0 unsafe.Pointer, param1 int, param2 int, param3 []int, param4 int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_parse_args(param0 *int, param1 *[]string) {
-	// has array param
+	// has string array[3] param
 }
 
 func Fn_gdk_pixbuf_get_from_surface(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int) {
@@ -553,15 +553,15 @@ func Fn_gdk_property_delete(param0 unsafe.Pointer, param1 Atom) {
 }
 
 func Fn_gdk_property_get(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint64, param4 uint64, param5 int, param6 unsafe.Pointer, param7 *int, param8 *int, param9 []*uint8) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_query_depths(param0 []*int, param1 *int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_query_visual_types(param0 []*int, param1 *int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_selection_convert(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint32) {
@@ -692,7 +692,7 @@ func Fn_gdk_test_simulate_key(param0 unsafe.Pointer, param1 int, param2 int, par
 }
 
 func Fn_gdk_text_property_to_utf8_list_for_display(param0 unsafe.Pointer, param1 Atom, param2 int, param3 []uint8, param4 int, param5 *[]string) {
-	// has array param
+	// has non-string array param
 }
 
 // UNSUPPORTED : threads_add_idle : has callback
@@ -852,7 +852,7 @@ func Fn_gdk_device_get_associated_device(paramInstance unsafe.Pointer) {
 }
 
 func Fn_gdk_device_get_axis(paramInstance unsafe.Pointer, param0 []float64, param1 int, param2 *float64) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_device_get_axis_use(paramInstance unsafe.Pointer, param0 uint) {
@@ -863,7 +863,7 @@ func Fn_gdk_device_get_axis_use(paramInstance unsafe.Pointer, param0 uint) {
 }
 
 func Fn_gdk_device_get_axis_value(paramInstance unsafe.Pointer, param0 []float64, param1 Atom, param2 *float64) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_device_get_device_type(paramInstance unsafe.Pointer) {
@@ -885,7 +885,7 @@ func Fn_gdk_device_get_has_cursor(paramInstance unsafe.Pointer) {
 }
 
 func Fn_gdk_device_get_history(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint32, param2 uint32, param3 []*unsafe.Pointer, param4 *int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_device_get_key(paramInstance unsafe.Pointer, param0 uint, param1 *uint, param2 *int) {
@@ -937,7 +937,7 @@ func Fn_gdk_device_get_source(paramInstance unsafe.Pointer) {
 }
 
 func Fn_gdk_device_get_state(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []float64, param2 *int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_device_get_window_at_position(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
@@ -1021,7 +1021,7 @@ func Fn_gdk_device_warp(paramInstance unsafe.Pointer, param0 unsafe.Pointer, par
 }
 
 func Fn_gdk_device_free_history(param0 []unsafe.Pointer, param1 int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_device_grab_info_libgtk_only(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *unsafe.Pointer, param3 *bool) {
@@ -1239,7 +1239,7 @@ func Fn_gdk_display_set_double_click_time(paramInstance unsafe.Pointer, param0 u
 }
 
 func Fn_gdk_display_store_clipboard(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint32, param2 []Atom, param3 int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_display_supports_clipboard_persistence(paramInstance unsafe.Pointer) {
@@ -1423,11 +1423,11 @@ func Fn_gdk_keymap_get_direction(paramInstance unsafe.Pointer) {
 }
 
 func Fn_gdk_keymap_get_entries_for_keycode(paramInstance unsafe.Pointer, param0 uint, param1 []unsafe.Pointer, param2 []*uint, param3 *int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_keymap_get_entries_for_keyval(paramInstance unsafe.Pointer, param0 uint, param1 []unsafe.Pointer, param2 *int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_keymap_get_modifier_mask(paramInstance unsafe.Pointer, param0 int) {

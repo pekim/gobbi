@@ -304,7 +304,7 @@ func Fn_g_content_type_get_mime_type(param0 string) {
 }
 
 func Fn_g_content_type_guess(param0 string, param1 []uint8, param2 uint64, param3 *bool) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_g_content_type_guess_for_tree(param0 unsafe.Pointer) {
@@ -642,7 +642,7 @@ func Fn_g_buffered_input_stream_get_buffer_size(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_buffered_input_stream_peek(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 uint64) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_g_buffered_input_stream_peek_buffer(paramInstance unsafe.Pointer, param0 *uint64) {
@@ -1535,7 +1535,18 @@ func Fn_g_file_info_set_attribute_string(paramInstance unsafe.Pointer, param0 st
 }
 
 func Fn_g_file_info_set_attribute_stringv(paramInstance unsafe.Pointer, param0 string, param1 []string) {
-	// has array param
+	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+	param1Len := len(param1)
+	cValue1Array := C.malloc((C.ulong)(param1Len) * C.sizeof_gpointer)
+	param1Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1Array))[:param1Len:param1Len]
+	for param1i, param1String := range param1 {
+		param1Slice[param1i] = (*C.gchar)(C.CString(param1String))
+	}
+	cValue1 := &param1Slice[0]
+
+	C.g_file_info_set_attribute_stringv(cValueInstance, cValue0, cValue1)
 }
 
 func Fn_g_file_info_set_attribute_uint32(paramInstance unsafe.Pointer, param0 string, param1 uint32) {
@@ -1836,11 +1847,11 @@ func Fn_g_input_stream_is_closed(paramInstance unsafe.Pointer) {
 }
 
 func Fn_g_input_stream_read(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_g_input_stream_read_all(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 *uint64, param3 unsafe.Pointer, error unsafe.Pointer) {
-	// has array param
+	// has non-string array param
 }
 
 // UNSUPPORTED : read_all_async : has callback
@@ -2114,11 +2125,11 @@ func Fn_g_output_stream_splice_finish(paramInstance unsafe.Pointer, param0 unsaf
 // UNSUPPORTED : vprintf : has va_list
 
 func Fn_g_output_stream_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_g_output_stream_write_all(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 *uint64, param3 unsafe.Pointer, error unsafe.Pointer) {
-	// has array param
+	// has non-string array param
 }
 
 // UNSUPPORTED : write_all_async : has callback
@@ -2527,7 +2538,16 @@ func Fn_g_themed_icon_new(param0 string) {
 }
 
 func Fn_g_themed_icon_new_from_names(param0 []string, param1 int) {
-	// has array param
+	param0Len := len(param0)
+	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
+	for param0i, param0String := range param0 {
+		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+	}
+	cValue0 := &param0Slice[0]
+	cValue1 := (C.int)(param1)
+
+	C.g_themed_icon_new_from_names(cValue0, cValue1)
 }
 
 func Fn_g_themed_icon_new_with_default_fallbacks(param0 string) {
@@ -2627,7 +2647,7 @@ func Fn_g_unix_output_stream_new(param0 int, param1 bool) {
 }
 
 func Fn_g_unix_socket_address_new_abstract(param0 []int8, param1 int) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_g_vfs_get_file_for_path(paramInstance unsafe.Pointer, param0 string) {

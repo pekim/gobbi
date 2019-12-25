@@ -45,11 +45,19 @@ func Fn_gdk_pixbuf_new_from_file(param0 string, error unsafe.Pointer) {
 }
 
 func Fn_gdk_pixbuf_new_from_inline(param0 int, param1 []uint8, param2 bool, error unsafe.Pointer) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_gdk_pixbuf_new_from_xpm_data(param0 []string) {
-	// has array param
+	param0Len := len(param0)
+	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
+	for param0i, param0String := range param0 {
+		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+	}
+	cValue0 := &param0Slice[0]
+
+	C.gdk_pixbuf_new_from_xpm_data(cValue0)
 }
 
 func Fn_gdk_pixbuf_add_alpha(paramInstance unsafe.Pointer, param0 bool, param1 uint8, param2 uint8, param3 uint8) {
@@ -236,7 +244,28 @@ func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 un
 // UNSUPPORTED : save_to_streamv_async : has callback
 
 func Fn_gdk_pixbuf_savev(paramInstance unsafe.Pointer, param0 string, param1 string, param2 []string, param3 []string, error unsafe.Pointer) {
-	// has array param
+	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+	cValue1 := (*C.char)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+	param2Len := len(param2)
+	cValue2Array := C.malloc((C.ulong)(param2Len) * C.sizeof_gpointer)
+	param2Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue2Array))[:param2Len:param2Len]
+	for param2i, param2String := range param2 {
+		param2Slice[param2i] = (*C.gchar)(C.CString(param2String))
+	}
+	cValue2 := &param2Slice[0]
+	param3Len := len(param3)
+	cValue3Array := C.malloc((C.ulong)(param3Len) * C.sizeof_gpointer)
+	param3Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue3Array))[:param3Len:param3Len]
+	for param3i, param3String := range param3 {
+		param3Slice[param3i] = (*C.gchar)(C.CString(param3String))
+	}
+	cValue3 := &param3Slice[0]
+	cError := (**C.GError)(error)
+
+	C.gdk_pixbuf_savev(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
 }
 
 func Fn_gdk_pixbuf_scale(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int, param5 float64, param6 float64, param7 float64, param8 float64, param9 int) {
@@ -387,5 +416,5 @@ func Fn_gdk_pixbuf_loader_get_pixbuf(paramInstance unsafe.Pointer) {
 }
 
 func Fn_gdk_pixbuf_loader_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, error unsafe.Pointer) {
-	// has array param
+	// has non-string array param
 }

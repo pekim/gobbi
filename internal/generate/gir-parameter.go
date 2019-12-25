@@ -55,6 +55,11 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 }
 
 func (p *Parameter) generateSysCArg(g *jen.Group, goVarName string, cVarName string) {
+	if p.Array != nil {
+		p.generateSysCArgArray(g, goVarName, cVarName)
+		return
+	}
+
 	if p.Type.isString() {
 		p.generateSysCArgString(g, goVarName, cVarName)
 		return
@@ -140,4 +145,74 @@ func (p *Parameter) generateSysCArgStringPointerOut(g *jen.Group, goVarName stri
 
 	g.Id(goStringVarName).Op(":=").Qual("C", "GoString").Call(jen.Id(cStringVarName))
 	g.Op("*").Id(goVarName).Op("=").Id(goStringVarName)
+}
+
+func (p *Parameter) generateSysCArgArray(g *jen.Group, goVarName string, cVarName string) {
+	if p.Array.Type.isString() {
+		if p.Array.cType.indirectionCount == 2 {
+			p.generateSysCArgArrayString(g, goVarName, cVarName)
+			return
+		}
+
+		if p.Array.cType.indirectionCount == 3 {
+			panic("TODO")
+			return
+		}
+
+		panic(fmt.Sprintf("Unsupported indirection count (%d) for array string param '%s'", p.Array.Type.cType.indirectionCount))
+	}
+}
+
+func (p *Parameter) generateSysCArgArrayString(g *jen.Group, goVarName string, cVarName string) {
+	// cValue2Array := C.malloc((C.ulong)(len(param2)) * C.sizeof_gpointer)
+	// param2Slice := (*[1 << 28]C.gchar)(unsafe.Pointer(cParam2Array))[:param2Len:param2Len]
+	//
+	// for param2i, str := range param2 {
+	//     cValue2Array[param2i] = (*C.gchar)(C.CString(param2[param2i]))
+	// }
+	//
+	// cValue2 := &cValue2Array[0]
+
+	lenVarName := goVarName + "Len"
+	cArrayVarName := cVarName + "Array"
+	goSliceVarName := goVarName + "Slice"
+
+	// param2Len := len(param2)
+	g.Id(lenVarName).Op(":=").Len(jen.Id(goVarName))
+
+	// cValue2Array := C.malloc((C.ulong)(len(param2)) * C.sizeof_gpointer)
+	count := jen.
+		Parens(jen.Qual("C", "ulong")).
+		Parens(jen.Id(lenVarName))
+	g.Id(cArrayVarName).Op(":=").Qual("C", "malloc").Call(
+		count.Op("*").Qual("C", "sizeof_gpointer"),
+	)
+
+	// param2Slice := (*[1 << 28]C.gchar)(unsafe.Pointer(cParam2Array))[:param2Len:param2Len]
+	g.
+		// param2Slice :=
+		Id(goSliceVarName).Op(":=").
+		// (*[1 << 28]C.gchar)
+		Parens(
+			jen.Op("*").Index(jen.Lit(1).Op("<<").Lit(30)).Parens(jen.Op("*").Qual("C", "gchar"))).
+		// (unsafe.Pointer(cParam2Array))
+		Parens(jenUnsafePointer().Call(jen.Id(cArrayVarName))).
+		// [:param2Len:param2Len]
+		Index(jen.Op(":").Id(lenVarName).Op(":").Id(lenVarName))
+
+	indexVarName := goVarName + "i"
+	stringVarName := goVarName + "String"
+	// for param2i, param2String := range param2 {
+	//     cValue2Array[param2i] = (*C.gchar)(C.CString(param2String))
+	// }
+	g.
+		For(jen.Id(indexVarName).Op(",").Id(stringVarName).Op(":=").Range().Id(goVarName)).
+		Block(jen.
+			Id(goSliceVarName).Index(jen.Id(indexVarName)).Op("=").
+			Parens(jen.Op("*").Qual("C", "gchar")).
+			Parens(jen.Qual("C", "CString").Call(jen.Id(stringVarName))),
+		)
+
+	// cValue2 := &cValue2Array[0]
+	g.Id(cVarName).Op(":=").Op("&").Id(goSliceVarName).Index(jen.Lit(0))
 }

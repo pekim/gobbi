@@ -783,7 +783,7 @@ func Fn_g_signal_accumulator_true_handled(param0 unsafe.Pointer, param1 unsafe.P
 // UNSUPPORTED : signal_add_emission_hook : has callback
 
 func Fn_g_signal_chain_from_overridden(param0 []Value, param1 unsafe.Pointer) {
-	// has array param
+	// has non-string array param
 }
 
 // UNSUPPORTED : signal_chain_from_overridden_handler : has varargs
@@ -819,7 +819,7 @@ func Fn_g_signal_connect_closure_by_id(param0 unsafe.Pointer, param1 uint, param
 // UNSUPPORTED : signal_emit_valist : has va_list
 
 func Fn_g_signal_emitv(param0 []Value, param1 uint, param2 uint32, param3 unsafe.Pointer) {
-	// has array param
+	// has non-string array param
 }
 
 func Fn_g_signal_get_invocation_hint(param0 unsafe.Pointer) {
@@ -1424,7 +1424,7 @@ func Fn_g_binding_get_target_property(paramInstance unsafe.Pointer) {
 // UNSUPPORTED : new_valist : has va_list
 
 func Fn_g_object_newv(param0 uint64, param1 uint, param2 []Parameter) {
-	// has array param
+	// has non-string array param
 }
 
 // UNSUPPORTED : add_toggle_ref : has callback

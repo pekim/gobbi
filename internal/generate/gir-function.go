@@ -85,8 +85,12 @@ func (f *Function) generateSysParamsDeclaration(g *jen.Group) {
 
 func (f *Function) generateSysBody(g *jen.Group) {
 	for _, param := range f.Parameters {
-		if param.Array != nil {
-			g.Comment("has array param")
+		if param.Array != nil && !param.Array.Type.isString() {
+			g.Comment("has non-string array param")
+			return
+		}
+		if param.Array != nil && param.Array.Type.isString() && param.Array.cType.indirectionCount != 2 {
+			g.Comment("has string array[3] param")
 			return
 		}
 	}
