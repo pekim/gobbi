@@ -22,10 +22,6 @@ type Parameter struct {
 	lengthParamN    int
 	lengthForParam  *Parameter
 	lengthForParamN int
-	argcParam       *Parameter
-	argcParamN      int
-	argvParam       *Parameter
-	argvParamN      int
 }
 
 func (p *Parameter) init(ns *Namespace) {

@@ -4,7 +4,6 @@ type Parameters []*Parameter
 
 func (pp Parameters) init(ns *Namespace) {
 	pp.pairUpArrayLengthParams()
-	pp.pairUpArgcArgvParams()
 
 	for _, param := range pp {
 		param.init(ns)
@@ -25,20 +24,6 @@ func (pp Parameters) pairUpArrayLengthParams() {
 		arrayParam.lengthParam = lengthParam
 		arrayParam.lengthParamN = *param.Array.Length
 	}
-}
-
-func (pp Parameters) pairUpArgcArgvParams() {
-	argcParam, argcParamN, foundArgc := pp.byName("argc")
-	argvParam, argvParamN, foundArgv := pp.byName("argv")
-	if !foundArgc || !foundArgv {
-		return
-	}
-
-	// Mutually reference the argc and argv params.
-	argcParam.argvParam = argvParam
-	argcParam.argvParamN = argvParamN
-	argvParam.argcParam = argcParam
-	argvParam.argcParamN = argcParamN
 }
 
 func (pp Parameters) byName(name string) (*Parameter, int, bool) {
