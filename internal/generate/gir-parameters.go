@@ -12,7 +12,7 @@ func (pp Parameters) init(ns *Namespace) {
 }
 
 func (pp Parameters) pairUpArrayLengthParams() {
-	for _, param := range pp {
+	for n, param := range pp {
 		if param.Array == nil || param.Array.Length == nil {
 			continue
 		}
@@ -21,30 +21,34 @@ func (pp Parameters) pairUpArrayLengthParams() {
 
 		// Mutually reference the array and length params.
 		lengthParam.lengthForParam = arrayParam
+		lengthParam.lengthForParamN = n
 		arrayParam.lengthParam = lengthParam
+		arrayParam.lengthParamN = *param.Array.Length
 	}
 }
 
 func (pp Parameters) pairUpArgcArgvParams() {
-	argcParam, foundArgc := pp.byName("argc")
-	argvParam, foundArgv := pp.byName("argv")
+	argcParam, argcParamN, foundArgc := pp.byName("argc")
+	argvParam, argvParamN, foundArgv := pp.byName("argv")
 	if !foundArgc || !foundArgv {
 		return
 	}
 
 	// Mutually reference the argc and argv params.
 	argcParam.argvParam = argvParam
+	argcParam.argvParamN = argvParamN
 	argvParam.argcParam = argcParam
+	argvParam.argcParamN = argcParamN
 }
 
-func (pp Parameters) byName(name string) (*Parameter, bool) {
-	for _, param := range pp {
+func (pp Parameters) byName(name string) (*Parameter, int, bool) {
+	for n, param := range pp {
 		if param.Name == name {
-			return param, true
+			return param, n, true
 		}
 	}
 
-	return nil, false
+	return nil, -1, false
 }
 
 func (pp Parameters) allSupported() (bool, string) {

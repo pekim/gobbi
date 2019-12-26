@@ -517,6 +517,7 @@ func Fn_g_dbus_address_get_stream_finish(param0 unsafe.Pointer, param1 *string, 
 	cError := (**C.GError)(error)
 
 	C.g_dbus_address_get_stream_finish(cValue0, cValue1, cError)
+
 	param1String := C.GoString(cValue1String)
 	*param1 = param1String
 }
@@ -533,6 +534,7 @@ func Fn_g_dbus_address_get_stream_sync(param0 string, param1 *string, param2 uns
 	cError := (**C.GError)(error)
 
 	C.g_dbus_address_get_stream_sync(cValue0, cValue1, cValue2, cError)
+
 	param1String := C.GoString(cValue1String)
 	*param1 = param1String
 }
@@ -6419,8 +6421,10 @@ func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 strin
 	cError := (**C.GError)(error)
 
 	C.g_subprocess_communicate_utf8(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+
 	param2String := C.GoString(cValue2String)
 	*param2 = param2String
+
 	param3String := C.GoString(cValue3String)
 	*param3 = param3String
 }
@@ -6441,8 +6445,10 @@ func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param
 	cError := (**C.GError)(error)
 
 	C.g_subprocess_communicate_utf8_finish(cValueInstance, cValue0, cValue1, cValue2, cError)
+
 	param1String := C.GoString(cValue1String)
 	*param1 = param1String
+
 	param2String := C.GoString(cValue2String)
 	*param2 = param2String
 }

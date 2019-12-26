@@ -310,6 +310,7 @@ func Fn_pango_parse_markup(param0 string, param1 int, param2 rune, param3 *unsaf
 	cError := (**C.GError)(error)
 
 	C.pango_parse_markup(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cError)
+
 	param4String := C.GoString(cValue4String)
 	*param4 = param4String
 }
@@ -380,6 +381,7 @@ func Fn_pango_scan_int(param0 *string, param1 *int) {
 	cValue1 := (*C.int)(unsafe.Pointer(param1))
 
 	C.pango_scan_int(cValue0, cValue1)
+
 	param0String := C.GoString(cValue0String)
 	*param0 = param0String
 }
@@ -392,6 +394,7 @@ func Fn_pango_scan_string(param0 *string, param1 unsafe.Pointer) {
 	cValue1 := (*C.GString)(unsafe.Pointer(param1))
 
 	C.pango_scan_string(cValue0, cValue1)
+
 	param0String := C.GoString(cValue0String)
 	*param0 = param0String
 }
@@ -404,6 +407,7 @@ func Fn_pango_scan_word(param0 *string, param1 unsafe.Pointer) {
 	cValue1 := (*C.GString)(unsafe.Pointer(param1))
 
 	C.pango_scan_word(cValue0, cValue1)
+
 	param0String := C.GoString(cValue0String)
 	*param0 = param0String
 }
@@ -439,6 +443,7 @@ func Fn_pango_skip_space(param0 *string) {
 	cValue0 := &cValue0String
 
 	C.pango_skip_space(cValue0)
+
 	param0String := C.GoString(cValue0String)
 	*param0 = param0String
 }

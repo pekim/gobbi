@@ -887,6 +887,16 @@ func Fn_gtk_init(param0 *int, param1 *[]string) {
 	}
 
 	C.gtk_init(cValue0, cValue1)
+
+	param1OutLen := int(*cValue0)
+	param1Out := make([]string, param1OutLen, param1OutLen)
+	if param1OutLen > 0 {
+		param1OutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
+		for param1Outi, param1OutCString := range param1OutCSlice {
+			param1Out[param1Outi] = C.GoString(param1OutCString)
+		}
+	}
+	*param1 = param1Out
 }
 
 func Fn_gtk_init_check(param0 *int, param1 *[]string) {
@@ -908,6 +918,16 @@ func Fn_gtk_init_check(param0 *int, param1 *[]string) {
 	}
 
 	C.gtk_init_check(cValue0, cValue1)
+
+	param1OutLen := int(*cValue0)
+	param1Out := make([]string, param1OutLen, param1OutLen)
+	if param1OutLen > 0 {
+		param1OutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
+		for param1Outi, param1OutCString := range param1OutCSlice {
+			param1Out[param1Outi] = C.GoString(param1OutCString)
+		}
+	}
+	*param1 = param1Out
 }
 
 // UNSUPPORTED : key_snooper_install : has callback
@@ -1471,6 +1491,16 @@ func Fn_gtk_parse_args(param0 *int, param1 *[]string) {
 	}
 
 	C.gtk_parse_args(cValue0, cValue1)
+
+	param1OutLen := int(*cValue0)
+	param1Out := make([]string, param1OutLen, param1OutLen)
+	if param1OutLen > 0 {
+		param1OutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
+		for param1Outi, param1OutCString := range param1OutCSlice {
+			param1Out[param1Outi] = C.GoString(param1OutCString)
+		}
+	}
+	*param1 = param1Out
 }
 
 // UNSUPPORTED : print_run_page_setup_dialog_async : has callback
@@ -4752,6 +4782,7 @@ func Fn_gtk_im_context_get_preedit_string(paramInstance unsafe.Pointer, param0 *
 	cValue2 := (*C.gint)(unsafe.Pointer(param2))
 
 	C.gtk_im_context_get_preedit_string(cValueInstance, cValue0, cValue1, cValue2)
+
 	param0String := C.GoString(cValue0String)
 	*param0 = param0String
 }
@@ -4765,6 +4796,7 @@ func Fn_gtk_im_context_get_surrounding(paramInstance unsafe.Pointer, param0 *str
 	cValue1 := (*C.gint)(unsafe.Pointer(param1))
 
 	C.gtk_im_context_get_surrounding(cValueInstance, cValue0, cValue1)
+
 	param0String := C.GoString(cValue0String)
 	*param0 = param0String
 }
@@ -4982,6 +5014,16 @@ func Fn_gtk_icon_theme_get_search_path(paramInstance unsafe.Pointer, param0 *[]s
 	cValue1 := (*C.gint)(unsafe.Pointer(param1))
 
 	C.gtk_icon_theme_get_search_path(cValueInstance, cValue0, cValue1)
+
+	param0OutLen := int(*cValue1)
+	param0Out := make([]string, param0OutLen, param0OutLen)
+	if param0OutLen > 0 {
+		param0OutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0ArrayPointer))[:param0OutLen:param0OutLen]
+		for param0Outi, param0OutCString := range param0OutCSlice {
+			param0Out[param0Outi] = C.GoString(param0OutCString)
+		}
+	}
+	*param0 = param0Out
 }
 
 func Fn_gtk_icon_theme_has_icon(paramInstance unsafe.Pointer, param0 string) {
@@ -5174,6 +5216,7 @@ func Fn_gtk_image_get_stock(paramInstance unsafe.Pointer, param0 *string, param1
 	cValue1 := (*C.GtkIconSize)(unsafe.Pointer(param1))
 
 	C.gtk_image_get_stock(cValueInstance, cValue0, cValue1)
+
 	param0String := C.GoString(cValue0String)
 	*param0 = param0String
 }
@@ -10917,8 +10960,10 @@ func Fn_gtk_widget_class_path(paramInstance unsafe.Pointer, param0 *uint, param1
 	cValue2 := &cValue2String
 
 	C.gtk_widget_class_path(cValueInstance, cValue0, cValue1, cValue2)
+
 	param1String := C.GoString(cValue1String)
 	*param1 = param1String
+
 	param2String := C.GoString(cValue2String)
 	*param2 = param2String
 }
@@ -11514,8 +11559,10 @@ func Fn_gtk_widget_path(paramInstance unsafe.Pointer, param0 *uint, param1 *stri
 	cValue2 := &cValue2String
 
 	C.gtk_widget_path(cValueInstance, cValue0, cValue1, cValue2)
+
 	param1String := C.GoString(cValue1String)
 	*param1 = param1String
+
 	param2String := C.GoString(cValue2String)
 	*param2 = param2String
 }

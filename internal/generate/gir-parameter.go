@@ -4,6 +4,7 @@ import "C"
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
+	"strconv"
 )
 
 type Parameter struct {
@@ -17,10 +18,14 @@ type Parameter struct {
 	goVarName string
 	namespace *Namespace
 
-	lengthParam    *Parameter
-	lengthForParam *Parameter
-	argcParam      *Parameter
-	argvParam      *Parameter
+	lengthParam     *Parameter
+	lengthParamN    int
+	lengthForParam  *Parameter
+	lengthForParamN int
+	argcParam       *Parameter
+	argcParamN      int
+	argvParam       *Parameter
+	argvParamN      int
 }
 
 func (p *Parameter) init(ns *Namespace) {
@@ -137,14 +142,67 @@ func (p *Parameter) generateSysCArgOut(g *jen.Group, goVarName string, cVarName 
 	if p.Type != nil && p.Type.isString() && p.Type.cType.indirectionCount == 2 {
 		p.generateSysCArgStringPointerOut(g, goVarName, cVarName)
 	}
+
+	if p.Array != nil && p.Array.Type.isString() && p.Array.cType.indirectionCount == 3 {
+		if p.lengthParam == nil {
+			panic(fmt.Sprintf("No length param for %s", p.Name))
+		}
+		p.generateSysCArgArrayStringPointerOut(g, goVarName, cVarName)
+	}
 }
 
 func (p *Parameter) generateSysCArgStringPointerOut(g *jen.Group, goVarName string, cVarName string) {
 	cStringVarName := cVarName + "String"
 	goStringVarName := goVarName + "String"
 
+	g.Line()
+
 	g.Id(goStringVarName).Op(":=").Qual("C", "GoString").Call(jen.Id(cStringVarName))
 	g.Op("*").Id(goVarName).Op("=").Id(goStringVarName)
+}
+
+func (p *Parameter) generateSysCArgArrayStringPointerOut(g *jen.Group, goVarName string, cVarName string) {
+	g.Line()
+
+	outVarName := goVarName + "Out"
+	lenVarName := outVarName + "Len"
+	cSliceVarName := outVarName + "CSlice"
+	cArrayVarName := cVarName + "ArrayPointer"
+	lengthParamName := "cValue" + strconv.Itoa(p.lengthParamN)
+
+	// param2OutLen := (int)(*cValue?)
+	g.Id(lenVarName).Op(":=").Int().Parens(jen.Op("*").Id(lengthParamName))
+
+	// param2Out := make([]string, param2OutLen, param2OutLen)
+	g.Id(outVarName).Op(":=").Make(
+		jen.Index().String(),
+		jen.Id(lenVarName),
+		jen.Id(lenVarName),
+	)
+
+	// if (param2OutLen > 0) {...}
+	g.If(jen.Id(lenVarName).Op(">").Lit(0)).BlockFunc(func(g *jen.Group) {
+		// param2OutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue2ArrayPointer))[:param2OutLen:param2OutLen]
+		g.Id(cSliceVarName).Op(":=").
+			// (*[1 << 30]C.gchar)
+			Parens(
+				jen.Op("*").Index(jen.Lit(1).Op("<<").Lit(30)).Parens(jen.Op("*").Qual("C", "gchar"))).
+			// (unsafe.Pointer(cParam2Array))
+			Parens(jenUnsafePointer().Call(jen.Id(cArrayVarName))).
+			// [:param2Len:param2Len]
+			Index(jen.Op(":").Id(lenVarName).Op(":").Id(lenVarName))
+
+		indexVarName := outVarName + "i"
+		cStringVarName := outVarName + "CString"
+		// for param2Outi, param2OutCString := range param2OutCSlice {
+		//    param2Out[param2Outi] = C.GoString(param2OutCString)
+		// }
+		g.For(jen.Id(indexVarName).Op(",").Id(cStringVarName).Op(":=").Range().Id(cSliceVarName)).
+			Block(jen.Id(outVarName).Index(jen.Id(indexVarName)).Op("=").Qual("C", "GoString").Call(jen.Id(cStringVarName)))
+	})
+
+	// *param2 = param2Out
+	g.Op("*").Id(goVarName).Op("=").Id(outVarName)
 }
 
 func (p *Parameter) generateSysCArgArray(g *jen.Group, goVarName string, cVarName string) {
@@ -199,7 +257,7 @@ func (p *Parameter) generateSysCArgArrayStringPointer(g *jen.Group, goVarName st
 // generateGoArrayStringToC converts a Go slice of strings to a C array of null terminated strings.
 func (p *Parameter) generateGoArrayStringToC(g *jen.Group, goVarName string, cVarName string) string {
 	// cValue2Array := C.malloc((C.ulong)(len(param2)) * C.sizeof_gpointer)
-	// param2Slice := (*[1 << 28]C.gchar)(unsafe.Pointer(cParam2Array))[:param2Len:param2Len]
+	// param2Slice := (*[1 << 30]C.gchar)(unsafe.Pointer(cParam2Array))[:param2Len:param2Len]
 	//
 	// for param2i, str := range param2 {
 	//     cValue2Array[param2i] = (*C.gchar)(C.CString(param2[param2i]))
@@ -223,11 +281,11 @@ func (p *Parameter) generateGoArrayStringToC(g *jen.Group, goVarName string, cVa
 	// defer C.free(unsafe.Pointer(cValue2Array))
 	g.Defer().Qual("C", "free").Call(jenUnsafePointer().Call(jen.Id(cArrayVarName)))
 
-	// param2Slice := (*[1 << 28]C.gchar)(unsafe.Pointer(cParam2Array))[:param2Len:param2Len]
+	// param2Slice := (*[1 << 30]C.gchar)(unsafe.Pointer(cParam2Array))[:param2Len:param2Len]
 	g.
 		// param2Slice :=
 		Id(goSliceVarName).Op(":=").
-		// (*[1 << 28]C.gchar)
+		// (*[1 << 30]C.gchar)
 		Parens(
 			jen.Op("*").Index(jen.Lit(1).Op("<<").Lit(30)).Parens(jen.Op("*").Qual("C", "gchar"))).
 		// (unsafe.Pointer(cParam2Array))

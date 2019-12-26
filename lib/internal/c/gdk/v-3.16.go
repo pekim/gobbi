@@ -428,6 +428,16 @@ func Fn_gdk_init(param0 *int, param1 *[]string) {
 	}
 
 	C.gdk_init(cValue0, cValue1)
+
+	param1OutLen := int(*cValue0)
+	param1Out := make([]string, param1OutLen, param1OutLen)
+	if param1OutLen > 0 {
+		param1OutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
+		for param1Outi, param1OutCString := range param1OutCSlice {
+			param1Out[param1Outi] = C.GoString(param1OutCString)
+		}
+	}
+	*param1 = param1Out
 }
 
 func Fn_gdk_init_check(param0 *int, param1 *[]string) {
@@ -449,6 +459,16 @@ func Fn_gdk_init_check(param0 *int, param1 *[]string) {
 	}
 
 	C.gdk_init_check(cValue0, cValue1)
+
+	param1OutLen := int(*cValue0)
+	param1Out := make([]string, param1OutLen, param1OutLen)
+	if param1OutLen > 0 {
+		param1OutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
+		for param1Outi, param1OutCString := range param1OutCSlice {
+			param1Out[param1Outi] = C.GoString(param1OutCString)
+		}
+	}
+	*param1 = param1Out
 }
 
 func Fn_gdk_keyboard_grab(param0 unsafe.Pointer, param1 bool, param2 uint32) {
@@ -602,6 +622,16 @@ func Fn_gdk_parse_args(param0 *int, param1 *[]string) {
 	}
 
 	C.gdk_parse_args(cValue0, cValue1)
+
+	param1OutLen := int(*cValue0)
+	param1Out := make([]string, param1OutLen, param1OutLen)
+	if param1OutLen > 0 {
+		param1OutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
+		for param1Outi, param1OutCString := range param1OutCSlice {
+			param1Out[param1Outi] = C.GoString(param1OutCString)
+		}
+	}
+	*param1 = param1Out
 }
 
 func Fn_gdk_pixbuf_get_from_surface(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int) {
