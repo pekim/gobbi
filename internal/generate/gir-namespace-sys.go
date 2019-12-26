@@ -98,6 +98,14 @@ func (ns *Namespace) generateSysToCBoolFunction(f *jen.File) {
 		Params(jen.Qual("C", "gboolean")).
 		Block(jen.
 			If(jen.Id("b")).Block(jen.Return(jen.Qual("C", "TRUE"))),
-			jen.Return(jen.Qual("C", "TRUE")),
+			jen.Return(jen.Qual("C", "FALSE")),
 		)
+
+	f.
+		Func().
+		Id("toGoBool").
+		Params(jen.Id("b").Qual("C", "gboolean")).
+		Params(jen.Bool()).
+		Block(jen.
+			Return().Id("b").Op("==").Qual("C", "TRUE"))
 }

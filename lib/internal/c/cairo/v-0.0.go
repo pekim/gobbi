@@ -10,7 +10,10 @@ func toCBool(b bool) C.gboolean {
 	if b {
 		return C.TRUE
 	}
-	return C.TRUE
+	return C.FALSE
+}
+func toGoBool(b C.gboolean) bool {
+	return b == C.TRUE
 }
 
 type Context C.cairo_t

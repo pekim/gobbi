@@ -93,6 +93,20 @@ func (f *Function) generateSysParamsDeclaration(g *jen.Group) {
 }
 
 func (f *Function) generateSysReturnTypeDeclaration(s *jen.Statement) {
+	for _, param := range f.Parameters {
+		if param.Array != nil && !param.Array.Type.isString() {
+			return
+		}
+	}
+
+	if supported, _ := f.Parameters.allSupported(); !supported {
+		return
+	}
+
+	if supported, _ := f.ReturnValue.isSupported(); !supported {
+		return
+	}
+
 	if f.ReturnValue.isVoid() {
 		return
 	}
@@ -175,6 +189,5 @@ func (f *Function) generateSysReturn(g *jen.Group) {
 	}
 
 	g.Line()
-
-	g.Qual("fmt", "Println").Call(jen.Id("ret"))
+	g.Return().Add(f.ReturnValue.generateSysGoValue("ret"))
 }

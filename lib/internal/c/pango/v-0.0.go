@@ -3,10 +3,7 @@
 
 package pango
 
-import (
-	"fmt"
-	"unsafe"
-)
+import "unsafe"
 
 // #include <pango/pango.h>
 // #include <stdlib.h>
@@ -16,7 +13,10 @@ func toCBool(b bool) C.gboolean {
 	if b {
 		return C.TRUE
 	}
-	return C.TRUE
+	return C.FALSE
+}
+func toGoBool(b C.gboolean) bool {
+	return b == C.TRUE
 }
 
 type Analysis C.PangoAnalysis
@@ -81,7 +81,7 @@ func Fn_pango_attr_background_new(param0 uint16, param1 uint16, param2 uint16) u
 
 	ret := C.pango_attr_background_new(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_attr_family_new(param0 string) unsafe.Pointer {
@@ -90,7 +90,7 @@ func Fn_pango_attr_family_new(param0 string) unsafe.Pointer {
 
 	ret := C.pango_attr_family_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_attr_foreground_new(param0 uint16, param1 uint16, param2 uint16) unsafe.Pointer {
@@ -102,7 +102,7 @@ func Fn_pango_attr_foreground_new(param0 uint16, param1 uint16, param2 uint16) u
 
 	ret := C.pango_attr_foreground_new(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_attr_rise_new(param0 int) unsafe.Pointer {
@@ -110,7 +110,7 @@ func Fn_pango_attr_rise_new(param0 int) unsafe.Pointer {
 
 	ret := C.pango_attr_rise_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_attr_scale_new(param0 float64) unsafe.Pointer {
@@ -118,7 +118,7 @@ func Fn_pango_attr_scale_new(param0 float64) unsafe.Pointer {
 
 	ret := C.pango_attr_scale_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_attr_stretch_new(param0 int) unsafe.Pointer {
@@ -126,7 +126,7 @@ func Fn_pango_attr_stretch_new(param0 int) unsafe.Pointer {
 
 	ret := C.pango_attr_stretch_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_attr_strikethrough_new(param0 bool) unsafe.Pointer {
@@ -134,7 +134,7 @@ func Fn_pango_attr_strikethrough_new(param0 bool) unsafe.Pointer {
 
 	ret := C.pango_attr_strikethrough_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_attr_style_new(param0 int) unsafe.Pointer {
@@ -142,7 +142,7 @@ func Fn_pango_attr_style_new(param0 int) unsafe.Pointer {
 
 	ret := C.pango_attr_style_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_attr_type_register(param0 string) int {
@@ -151,7 +151,7 @@ func Fn_pango_attr_type_register(param0 string) int {
 
 	ret := C.pango_attr_type_register(cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_pango_attr_underline_new(param0 int) unsafe.Pointer {
@@ -159,7 +159,7 @@ func Fn_pango_attr_underline_new(param0 int) unsafe.Pointer {
 
 	ret := C.pango_attr_underline_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_attr_variant_new(param0 int) unsafe.Pointer {
@@ -167,7 +167,7 @@ func Fn_pango_attr_variant_new(param0 int) unsafe.Pointer {
 
 	ret := C.pango_attr_variant_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_attr_weight_new(param0 int) unsafe.Pointer {
@@ -175,7 +175,7 @@ func Fn_pango_attr_weight_new(param0 int) unsafe.Pointer {
 
 	ret := C.pango_attr_weight_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_break(param0 string, param1 int, param2 unsafe.Pointer, param3 []LogAttr, param4 int) {
@@ -205,7 +205,7 @@ func Fn_pango_font_description_from_string(param0 string) unsafe.Pointer {
 
 	ret := C.pango_font_description_from_string(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : get_lib_subdirectory : blacklisted
@@ -220,7 +220,7 @@ func Fn_pango_get_mirror_char(param0 rune, param1 *rune) bool {
 
 	ret := C.pango_get_mirror_char(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : get_sysconf_subdirectory : blacklisted
@@ -240,7 +240,7 @@ func Fn_pango_itemize(param0 unsafe.Pointer, param1 string, param2 int, param3 i
 
 	ret := C.pango_itemize(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_language_from_string(param0 string) unsafe.Pointer {
@@ -249,7 +249,7 @@ func Fn_pango_language_from_string(param0 string) unsafe.Pointer {
 
 	ret := C.pango_language_from_string(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : lookup_aliases : blacklisted
@@ -276,7 +276,7 @@ func Fn_pango_parse_markup(param0 string, param1 int, param2 rune, param3 *unsaf
 	param4String := C.GoString(cValue4String)
 	*param4 = param4String
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_pango_parse_stretch(param0 string, param1 *int, param2 bool) bool {
@@ -289,7 +289,7 @@ func Fn_pango_parse_stretch(param0 string, param1 *int, param2 bool) bool {
 
 	ret := C.pango_parse_stretch(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_pango_parse_style(param0 string, param1 *int, param2 bool) bool {
@@ -302,7 +302,7 @@ func Fn_pango_parse_style(param0 string, param1 *int, param2 bool) bool {
 
 	ret := C.pango_parse_style(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_pango_parse_variant(param0 string, param1 *int, param2 bool) bool {
@@ -315,7 +315,7 @@ func Fn_pango_parse_variant(param0 string, param1 *int, param2 bool) bool {
 
 	ret := C.pango_parse_variant(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_pango_parse_weight(param0 string, param1 *int, param2 bool) bool {
@@ -328,7 +328,7 @@ func Fn_pango_parse_weight(param0 string, param1 *int, param2 bool) bool {
 
 	ret := C.pango_parse_weight(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_pango_read_line(param0 unsafe.Pointer, param1 unsafe.Pointer) int {
@@ -338,7 +338,7 @@ func Fn_pango_read_line(param0 unsafe.Pointer, param1 unsafe.Pointer) int {
 
 	ret := C.pango_read_line(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_pango_reorder_items(param0 unsafe.Pointer) unsafe.Pointer {
@@ -346,7 +346,7 @@ func Fn_pango_reorder_items(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.pango_reorder_items(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_scan_int(param0 *string, param1 *int) bool {
@@ -361,7 +361,7 @@ func Fn_pango_scan_int(param0 *string, param1 *int) bool {
 	param0String := C.GoString(cValue0String)
 	*param0 = param0String
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_pango_scan_string(param0 *string, param1 unsafe.Pointer) bool {
@@ -376,7 +376,7 @@ func Fn_pango_scan_string(param0 *string, param1 unsafe.Pointer) bool {
 	param0String := C.GoString(cValue0String)
 	*param0 = param0String
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_pango_scan_word(param0 *string, param1 unsafe.Pointer) bool {
@@ -391,7 +391,7 @@ func Fn_pango_scan_word(param0 *string, param1 unsafe.Pointer) bool {
 	param0String := C.GoString(cValue0String)
 	*param0 = param0String
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_pango_shape(param0 string, param1 int, param2 unsafe.Pointer, param3 unsafe.Pointer) {
@@ -417,7 +417,7 @@ func Fn_pango_skip_space(param0 *string) bool {
 	param0String := C.GoString(cValue0String)
 	*param0 = param0String
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : split_file_list : has array return
@@ -428,7 +428,7 @@ func Fn_pango_trim_string(param0 string) string {
 
 	ret := C.pango_trim_string(cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_pango_unichar_direction(param0 rune) int {
@@ -436,13 +436,13 @@ func Fn_pango_unichar_direction(param0 rune) int {
 
 	ret := C.pango_unichar_direction(cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_pango_context_new() unsafe.Pointer {
 	ret := C.pango_context_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_context_get_base_dir(paramInstance unsafe.Pointer) int {
@@ -450,7 +450,7 @@ func Fn_pango_context_get_base_dir(paramInstance unsafe.Pointer) int {
 
 	ret := C.pango_context_get_base_dir(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_pango_context_get_font_description(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -458,7 +458,7 @@ func Fn_pango_context_get_font_description(paramInstance unsafe.Pointer) unsafe.
 
 	ret := C.pango_context_get_font_description(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_context_get_language(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -466,7 +466,7 @@ func Fn_pango_context_get_language(paramInstance unsafe.Pointer) unsafe.Pointer 
 
 	ret := C.pango_context_get_language(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_context_get_metrics(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
@@ -478,7 +478,7 @@ func Fn_pango_context_get_metrics(paramInstance unsafe.Pointer, param0 unsafe.Po
 
 	ret := C.pango_context_get_metrics(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_context_list_families(paramInstance unsafe.Pointer, param0 []*unsafe.Pointer, param1 *int) {
@@ -492,7 +492,7 @@ func Fn_pango_context_load_font(paramInstance unsafe.Pointer, param0 unsafe.Poin
 
 	ret := C.pango_context_load_font(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_context_load_fontset(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
@@ -504,7 +504,7 @@ func Fn_pango_context_load_fontset(paramInstance unsafe.Pointer, param0 unsafe.P
 
 	ret := C.pango_context_load_fontset(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_context_set_base_dir(paramInstance unsafe.Pointer, param0 int) {
@@ -544,7 +544,7 @@ func Fn_pango_font_describe(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.pango_font_describe(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_font_find_shaper(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint32) unsafe.Pointer {
@@ -556,7 +556,7 @@ func Fn_pango_font_find_shaper(paramInstance unsafe.Pointer, param0 unsafe.Point
 
 	ret := C.pango_font_find_shaper(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_font_get_coverage(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
@@ -566,7 +566,7 @@ func Fn_pango_font_get_coverage(paramInstance unsafe.Pointer, param0 unsafe.Poin
 
 	ret := C.pango_font_get_coverage(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_font_get_glyph_extents(paramInstance unsafe.Pointer, param0 uint32, param1 unsafe.Pointer, param2 unsafe.Pointer) {
@@ -588,7 +588,7 @@ func Fn_pango_font_get_metrics(paramInstance unsafe.Pointer, param0 unsafe.Point
 
 	ret := C.pango_font_get_metrics(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_font_descriptions_free(param0 []unsafe.Pointer, param1 int) {
@@ -600,7 +600,7 @@ func Fn_pango_font_face_describe(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.pango_font_face_describe(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_font_face_get_face_name(paramInstance unsafe.Pointer) string {
@@ -608,7 +608,7 @@ func Fn_pango_font_face_get_face_name(paramInstance unsafe.Pointer) string {
 
 	ret := C.pango_font_face_get_face_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_pango_font_family_get_name(paramInstance unsafe.Pointer) string {
@@ -616,7 +616,7 @@ func Fn_pango_font_family_get_name(paramInstance unsafe.Pointer) string {
 
 	ret := C.pango_font_family_get_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_pango_font_family_list_faces(paramInstance unsafe.Pointer, param0 []*unsafe.Pointer, param1 *int) {
@@ -637,7 +637,7 @@ func Fn_pango_font_map_load_font(paramInstance unsafe.Pointer, param0 unsafe.Poi
 
 	ret := C.pango_font_map_load_font(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_font_map_load_fontset(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) unsafe.Pointer {
@@ -651,7 +651,7 @@ func Fn_pango_font_map_load_fontset(paramInstance unsafe.Pointer, param0 unsafe.
 
 	ret := C.pango_font_map_load_fontset(cValueInstance, cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : foreach : has callback
@@ -663,7 +663,7 @@ func Fn_pango_fontset_get_font(paramInstance unsafe.Pointer, param0 uint) unsafe
 
 	ret := C.pango_fontset_get_font(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_fontset_get_metrics(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -671,7 +671,7 @@ func Fn_pango_fontset_get_metrics(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.pango_fontset_get_metrics(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : new : blacklisted
@@ -682,7 +682,7 @@ func Fn_pango_layout_new(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.pango_layout_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_layout_context_changed(paramInstance unsafe.Pointer) {
@@ -696,7 +696,7 @@ func Fn_pango_layout_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.pango_layout_copy(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_layout_get_alignment(paramInstance unsafe.Pointer) int {
@@ -704,7 +704,7 @@ func Fn_pango_layout_get_alignment(paramInstance unsafe.Pointer) int {
 
 	ret := C.pango_layout_get_alignment(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_pango_layout_get_attributes(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -712,7 +712,7 @@ func Fn_pango_layout_get_attributes(paramInstance unsafe.Pointer) unsafe.Pointer
 
 	ret := C.pango_layout_get_attributes(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_layout_get_context(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -720,7 +720,7 @@ func Fn_pango_layout_get_context(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.pango_layout_get_context(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_layout_get_cursor_pos(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer, param2 unsafe.Pointer) {
@@ -750,7 +750,7 @@ func Fn_pango_layout_get_indent(paramInstance unsafe.Pointer) int {
 
 	ret := C.pango_layout_get_indent(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_pango_layout_get_iter(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -758,7 +758,7 @@ func Fn_pango_layout_get_iter(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.pango_layout_get_iter(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_layout_get_justify(paramInstance unsafe.Pointer) bool {
@@ -766,7 +766,7 @@ func Fn_pango_layout_get_justify(paramInstance unsafe.Pointer) bool {
 
 	ret := C.pango_layout_get_justify(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_pango_layout_get_line(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
@@ -776,7 +776,7 @@ func Fn_pango_layout_get_line(paramInstance unsafe.Pointer, param0 int) unsafe.P
 
 	ret := C.pango_layout_get_line(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_layout_get_line_count(paramInstance unsafe.Pointer) int {
@@ -784,7 +784,7 @@ func Fn_pango_layout_get_line_count(paramInstance unsafe.Pointer) int {
 
 	ret := C.pango_layout_get_line_count(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_pango_layout_get_lines(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -792,7 +792,7 @@ func Fn_pango_layout_get_lines(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.pango_layout_get_lines(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_layout_get_log_attrs(paramInstance unsafe.Pointer, param0 []unsafe.Pointer, param1 *int) {
@@ -826,7 +826,7 @@ func Fn_pango_layout_get_single_paragraph_mode(paramInstance unsafe.Pointer) boo
 
 	ret := C.pango_layout_get_single_paragraph_mode(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_pango_layout_get_size(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
@@ -844,7 +844,7 @@ func Fn_pango_layout_get_spacing(paramInstance unsafe.Pointer) int {
 
 	ret := C.pango_layout_get_spacing(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_pango_layout_get_tabs(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -852,7 +852,7 @@ func Fn_pango_layout_get_tabs(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.pango_layout_get_tabs(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_layout_get_text(paramInstance unsafe.Pointer) string {
@@ -860,7 +860,7 @@ func Fn_pango_layout_get_text(paramInstance unsafe.Pointer) string {
 
 	ret := C.pango_layout_get_text(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_pango_layout_get_width(paramInstance unsafe.Pointer) int {
@@ -868,7 +868,7 @@ func Fn_pango_layout_get_width(paramInstance unsafe.Pointer) int {
 
 	ret := C.pango_layout_get_width(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_pango_layout_get_wrap(paramInstance unsafe.Pointer) int {
@@ -876,7 +876,7 @@ func Fn_pango_layout_get_wrap(paramInstance unsafe.Pointer) int {
 
 	ret := C.pango_layout_get_wrap(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_pango_layout_index_to_line_x(paramInstance unsafe.Pointer, param0 int, param1 bool, param2 *int, param3 *int) {
@@ -1051,5 +1051,5 @@ func Fn_pango_layout_xy_to_index(paramInstance unsafe.Pointer, param0 int, param
 
 	ret := C.pango_layout_xy_to_index(cValueInstance, cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }

@@ -1,5 +1,7 @@
 package generate
 
+import "github.com/dave/jennifer/jen"
+
 type ReturnValue struct {
 	Namespace *Namespace
 
@@ -32,7 +34,7 @@ func (r *ReturnValue) isVoid() bool {
 	return false
 }
 
-func (r ReturnValue) isSupported() (bool, string) {
+func (r *ReturnValue) isSupported() (bool, string) {
 	if r.isVoid() {
 		return true, ""
 	}
@@ -46,4 +48,27 @@ func (r ReturnValue) isSupported() (bool, string) {
 	}
 
 	return true, ""
+}
+
+func (r *ReturnValue) generateSysGoValue(cVarName string) *jen.Statement {
+	if r.Type.CType == "GdkAtom" {
+		if r.Type.isQualifiedName() {
+			return jen.Qual(r.Type.foreignNamespace.goFullSysPackageName, r.Type.foreignName).Parens(jenUnsafePointer().Call(jen.Id(cVarName)))
+		}
+		return jen.Id(r.Type.Name).Parens(jen.Id(cVarName))
+	}
+
+	if r.Type.isString() {
+		return jen.Qual("C", "GoString").Call(jen.Id(cVarName))
+	}
+
+	if r.Type.isClass() || r.Type.isRecord() || r.Type.isInterface() || r.Type.isUnion() {
+		return jenUnsafePointer().Call(jen.Id(cVarName))
+	}
+
+	if r.Type.CType == "gboolean" {
+		return jen.Id("toGoBool").Call(jen.Id(cVarName))
+	}
+
+	return jen.Parens(r.Type.sysParamGoType()).Parens(jen.Id("ret"))
 }

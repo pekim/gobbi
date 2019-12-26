@@ -4,7 +4,6 @@
 package gio
 
 import (
-	"fmt"
 	gobject "github.com/pekim/gobbi/lib/internal/c/gobject"
 	"unsafe"
 )
@@ -28,7 +27,10 @@ func toCBool(b bool) C.gboolean {
 	if b {
 		return C.TRUE
 	}
-	return C.TRUE
+	return C.FALSE
+}
+func toGoBool(b C.gboolean) bool {
+	return b == C.TRUE
 }
 
 type ActionEntry C.GActionEntry
@@ -244,13 +246,13 @@ func Fn_g_app_info_create_from_commandline(param0 string, param1 string, param2 
 
 	ret := C.g_app_info_create_from_commandline(cValue0, cValue1, cValue2, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_app_info_get_all() unsafe.Pointer {
 	ret := C.g_app_info_get_all()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_app_info_get_all_for_type(param0 string) unsafe.Pointer {
@@ -259,7 +261,7 @@ func Fn_g_app_info_get_all_for_type(param0 string) unsafe.Pointer {
 
 	ret := C.g_app_info_get_all_for_type(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_app_info_get_default_for_type(param0 string, param1 bool) unsafe.Pointer {
@@ -270,7 +272,7 @@ func Fn_g_app_info_get_default_for_type(param0 string, param1 bool) unsafe.Point
 
 	ret := C.g_app_info_get_default_for_type(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_app_info_get_default_for_uri_scheme(param0 string) unsafe.Pointer {
@@ -279,7 +281,7 @@ func Fn_g_app_info_get_default_for_uri_scheme(param0 string) unsafe.Pointer {
 
 	ret := C.g_app_info_get_default_for_uri_scheme(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_app_info_get_fallback_for_type(param0 string) unsafe.Pointer {
@@ -288,7 +290,7 @@ func Fn_g_app_info_get_fallback_for_type(param0 string) unsafe.Pointer {
 
 	ret := C.g_app_info_get_fallback_for_type(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_app_info_get_recommended_for_type(param0 string) unsafe.Pointer {
@@ -297,7 +299,7 @@ func Fn_g_app_info_get_recommended_for_type(param0 string) unsafe.Pointer {
 
 	ret := C.g_app_info_get_recommended_for_type(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -310,7 +312,7 @@ func Fn_g_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer, 
 
 	ret := C.g_app_info_launch_default_for_uri(cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : app_info_launch_default_for_uri_async : has callback
@@ -333,7 +335,7 @@ func Fn_g_bus_get_finish(param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Poi
 
 	ret := C.g_bus_get_finish(cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_bus_get_sync(param0 int, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -345,7 +347,7 @@ func Fn_g_bus_get_sync(param0 int, param1 unsafe.Pointer, error unsafe.Pointer) 
 
 	ret := C.g_bus_get_sync(cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : bus_own_name : has callback
@@ -366,7 +368,7 @@ func Fn_g_bus_own_name_on_connection_with_closures(param0 unsafe.Pointer, param1
 
 	ret := C.g_bus_own_name_on_connection_with_closures(cValue0, cValue1, cValue2, cValue3, cValue4)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_g_bus_own_name_with_closures(param0 int, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) uint {
@@ -385,7 +387,7 @@ func Fn_g_bus_own_name_with_closures(param0 int, param1 string, param2 int, para
 
 	ret := C.g_bus_own_name_with_closures(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_g_bus_unown_name(param0 uint) {
@@ -418,7 +420,7 @@ func Fn_g_bus_watch_name_on_connection_with_closures(param0 unsafe.Pointer, para
 
 	ret := C.g_bus_watch_name_on_connection_with_closures(cValue0, cValue1, cValue2, cValue3, cValue4)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_g_bus_watch_name_with_closures(param0 int, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer) uint {
@@ -435,7 +437,7 @@ func Fn_g_bus_watch_name_with_closures(param0 int, param1 string, param2 int, pa
 
 	ret := C.g_bus_watch_name_with_closures(cValue0, cValue1, cValue2, cValue3, cValue4)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_g_content_type_can_be_executable(param0 string) bool {
@@ -444,7 +446,7 @@ func Fn_g_content_type_can_be_executable(param0 string) bool {
 
 	ret := C.g_content_type_can_be_executable(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_content_type_equals(param0 string, param1 string) bool {
@@ -456,7 +458,7 @@ func Fn_g_content_type_equals(param0 string, param1 string) bool {
 
 	ret := C.g_content_type_equals(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_content_type_from_mime_type(param0 string) string {
@@ -465,7 +467,7 @@ func Fn_g_content_type_from_mime_type(param0 string) string {
 
 	ret := C.g_content_type_from_mime_type(cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_content_type_get_description(param0 string) string {
@@ -474,7 +476,7 @@ func Fn_g_content_type_get_description(param0 string) string {
 
 	ret := C.g_content_type_get_description(cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_content_type_get_icon(param0 string) unsafe.Pointer {
@@ -483,7 +485,7 @@ func Fn_g_content_type_get_icon(param0 string) unsafe.Pointer {
 
 	ret := C.g_content_type_get_icon(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : content_type_get_mime_dirs : has array return
@@ -494,10 +496,10 @@ func Fn_g_content_type_get_mime_type(param0 string) string {
 
 	ret := C.g_content_type_get_mime_type(cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
-func Fn_g_content_type_guess(param0 string, param1 []uint8, param2 uint64, param3 *bool) string {
+func Fn_g_content_type_guess(param0 string, param1 []uint8, param2 uint64, param3 *bool) {
 	// has non-string array param
 }
 
@@ -512,7 +514,7 @@ func Fn_g_content_type_is_a(param0 string, param1 string) bool {
 
 	ret := C.g_content_type_is_a(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_content_type_is_unknown(param0 string) bool {
@@ -521,13 +523,13 @@ func Fn_g_content_type_is_unknown(param0 string) bool {
 
 	ret := C.g_content_type_is_unknown(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_content_types_get_registered() unsafe.Pointer {
 	ret := C.g_content_types_get_registered()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_address_get_for_bus_sync(param0 int, param1 unsafe.Pointer, error unsafe.Pointer) string {
@@ -539,7 +541,7 @@ func Fn_g_dbus_address_get_for_bus_sync(param0 int, param1 unsafe.Pointer, error
 
 	ret := C.g_dbus_address_get_for_bus_sync(cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 // UNSUPPORTED : dbus_address_get_stream : has callback
@@ -557,7 +559,7 @@ func Fn_g_dbus_address_get_stream_finish(param0 unsafe.Pointer, param1 *string, 
 	param1String := C.GoString(cValue1String)
 	*param1 = param1String
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_address_get_stream_sync(param0 string, param1 *string, param2 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -576,10 +578,10 @@ func Fn_g_dbus_address_get_stream_sync(param0 string, param1 *string, param2 uns
 	param1String := C.GoString(cValue1String)
 	*param1 = param1String
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
-func Fn_g_dbus_annotation_info_lookup(param0 []unsafe.Pointer, param1 string) string {
+func Fn_g_dbus_annotation_info_lookup(param0 []unsafe.Pointer, param1 string) {
 	// has non-string array param
 }
 
@@ -588,7 +590,7 @@ func Fn_g_dbus_error_encode_gerror(param0 unsafe.Pointer) string {
 
 	ret := C.g_dbus_error_encode_gerror(cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_error_get_remote_error(param0 unsafe.Pointer) string {
@@ -596,7 +598,7 @@ func Fn_g_dbus_error_get_remote_error(param0 unsafe.Pointer) string {
 
 	ret := C.g_dbus_error_get_remote_error(cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_error_is_remote_error(param0 unsafe.Pointer) bool {
@@ -604,7 +606,7 @@ func Fn_g_dbus_error_is_remote_error(param0 unsafe.Pointer) bool {
 
 	ret := C.g_dbus_error_is_remote_error(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_error_new_for_dbus_error(param0 string, param1 string) unsafe.Pointer {
@@ -616,13 +618,13 @@ func Fn_g_dbus_error_new_for_dbus_error(param0 string, param1 string) unsafe.Poi
 
 	ret := C.g_dbus_error_new_for_dbus_error(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_error_quark() uint32 {
 	ret := C.g_dbus_error_quark()
 
-	fmt.Println(ret)
+	return (uint32)(ret)
 }
 
 func Fn_g_dbus_error_register_error(param0 uint32, param1 int, param2 string) bool {
@@ -635,7 +637,7 @@ func Fn_g_dbus_error_register_error(param0 uint32, param1 int, param2 string) bo
 
 	ret := C.g_dbus_error_register_error(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_error_register_error_domain(param0 string, param1 *uint64, param2 []DBusErrorEntry, param3 uint) {
@@ -647,7 +649,7 @@ func Fn_g_dbus_error_strip_remote_error(param0 unsafe.Pointer) bool {
 
 	ret := C.g_dbus_error_strip_remote_error(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_error_unregister_error(param0 uint32, param1 int, param2 string) bool {
@@ -660,13 +662,13 @@ func Fn_g_dbus_error_unregister_error(param0 uint32, param1 int, param2 string) 
 
 	ret := C.g_dbus_error_unregister_error(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_generate_guid() string {
 	ret := C.g_dbus_generate_guid()
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_is_address(param0 string) bool {
@@ -675,7 +677,7 @@ func Fn_g_dbus_is_address(param0 string) bool {
 
 	ret := C.g_dbus_is_address(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_is_guid(param0 string) bool {
@@ -684,7 +686,7 @@ func Fn_g_dbus_is_guid(param0 string) bool {
 
 	ret := C.g_dbus_is_guid(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_is_interface_name(param0 string) bool {
@@ -693,7 +695,7 @@ func Fn_g_dbus_is_interface_name(param0 string) bool {
 
 	ret := C.g_dbus_is_interface_name(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_is_member_name(param0 string) bool {
@@ -702,7 +704,7 @@ func Fn_g_dbus_is_member_name(param0 string) bool {
 
 	ret := C.g_dbus_is_member_name(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_is_name(param0 string) bool {
@@ -711,7 +713,7 @@ func Fn_g_dbus_is_name(param0 string) bool {
 
 	ret := C.g_dbus_is_name(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_is_supported_address(param0 string, error unsafe.Pointer) bool {
@@ -722,7 +724,7 @@ func Fn_g_dbus_is_supported_address(param0 string, error unsafe.Pointer) bool {
 
 	ret := C.g_dbus_is_supported_address(cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_is_unique_name(param0 string) bool {
@@ -731,7 +733,7 @@ func Fn_g_dbus_is_unique_name(param0 string) bool {
 
 	ret := C.g_dbus_is_unique_name(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_new_for_commandline_arg(param0 string) unsafe.Pointer {
@@ -740,7 +742,7 @@ func Fn_g_file_new_for_commandline_arg(param0 string) unsafe.Pointer {
 
 	ret := C.g_file_new_for_commandline_arg(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_new_for_path(param0 string) unsafe.Pointer {
@@ -749,7 +751,7 @@ func Fn_g_file_new_for_path(param0 string) unsafe.Pointer {
 
 	ret := C.g_file_new_for_path(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_new_for_uri(param0 string) unsafe.Pointer {
@@ -758,7 +760,7 @@ func Fn_g_file_new_for_uri(param0 string) unsafe.Pointer {
 
 	ret := C.g_file_new_for_uri(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_parse_name(param0 string) unsafe.Pointer {
@@ -767,7 +769,7 @@ func Fn_g_file_parse_name(param0 string) unsafe.Pointer {
 
 	ret := C.g_file_parse_name(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_icon_hash(param0 unsafe.Pointer) uint {
@@ -775,7 +777,7 @@ func Fn_g_icon_hash(param0 unsafe.Pointer) uint {
 
 	ret := C.g_icon_hash(cValue0)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_g_icon_new_for_string(param0 string, error unsafe.Pointer) unsafe.Pointer {
@@ -786,10 +788,10 @@ func Fn_g_icon_new_for_string(param0 string, error unsafe.Pointer) unsafe.Pointe
 
 	ret := C.g_icon_new_for_string(cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
-func Fn_g_initable_newv(param0 uint64, param1 uint, param2 []gobject.Parameter, param3 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+func Fn_g_initable_newv(param0 uint64, param1 uint, param2 []gobject.Parameter, param3 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
@@ -798,13 +800,13 @@ func Fn_g_io_error_from_errno(param0 int) int {
 
 	ret := C.g_io_error_from_errno(cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_io_error_quark() uint32 {
 	ret := C.g_io_error_quark()
 
-	fmt.Println(ret)
+	return (uint32)(ret)
 }
 
 func Fn_g_io_extension_point_implement(param0 string, param1 uint64, param2 string, param3 int) unsafe.Pointer {
@@ -820,7 +822,7 @@ func Fn_g_io_extension_point_implement(param0 string, param1 uint64, param2 stri
 
 	ret := C.g_io_extension_point_implement(cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_io_extension_point_lookup(param0 string) unsafe.Pointer {
@@ -829,7 +831,7 @@ func Fn_g_io_extension_point_lookup(param0 string) unsafe.Pointer {
 
 	ret := C.g_io_extension_point_lookup(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_io_extension_point_register(param0 string) unsafe.Pointer {
@@ -838,7 +840,7 @@ func Fn_g_io_extension_point_register(param0 string) unsafe.Pointer {
 
 	ret := C.g_io_extension_point_register(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : io_modules_load_all_in_directory : blacklisted
@@ -859,7 +861,7 @@ func Fn_g_pollable_source_new(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_pollable_source_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_proxy_get_default_for_protocol(param0 string) unsafe.Pointer {
@@ -868,19 +870,19 @@ func Fn_g_proxy_get_default_for_protocol(param0 string) unsafe.Pointer {
 
 	ret := C.g_proxy_get_default_for_protocol(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_proxy_resolver_get_default() unsafe.Pointer {
 	ret := C.g_proxy_resolver_get_default()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_resolver_error_quark() uint32 {
 	ret := C.g_resolver_error_quark()
 
-	fmt.Println(ret)
+	return (uint32)(ret)
 }
 
 // UNSUPPORTED : resources_enumerate_children : has array return
@@ -896,13 +898,13 @@ func Fn_g_srv_target_list_sort(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_srv_target_list_sort(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_tls_backend_get_default() unsafe.Pointer {
 	ret := C.g_tls_backend_get_default()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_tls_client_connection_new(param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -914,13 +916,13 @@ func Fn_g_tls_client_connection_new(param0 unsafe.Pointer, param1 unsafe.Pointer
 
 	ret := C.g_tls_client_connection_new(cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_tls_error_quark() uint32 {
 	ret := C.g_tls_error_quark()
 
-	fmt.Println(ret)
+	return (uint32)(ret)
 }
 
 func Fn_g_tls_server_connection_new(param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -932,7 +934,7 @@ func Fn_g_tls_server_connection_new(param0 unsafe.Pointer, param1 unsafe.Pointer
 
 	ret := C.g_tls_server_connection_new(cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_unix_is_mount_path_system_internal(param0 string) bool {
@@ -941,7 +943,7 @@ func Fn_g_unix_is_mount_path_system_internal(param0 string) bool {
 
 	ret := C.g_unix_is_mount_path_system_internal(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_mount_at(param0 string, param1 *uint64) unsafe.Pointer {
@@ -952,7 +954,7 @@ func Fn_g_unix_mount_at(param0 string, param1 *uint64) unsafe.Pointer {
 
 	ret := C.g_unix_mount_at(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_unix_mount_compare(param0 unsafe.Pointer, param1 unsafe.Pointer) int {
@@ -962,7 +964,7 @@ func Fn_g_unix_mount_compare(param0 unsafe.Pointer, param1 unsafe.Pointer) int {
 
 	ret := C.g_unix_mount_compare(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_unix_mount_free(param0 unsafe.Pointer) {
@@ -976,7 +978,7 @@ func Fn_g_unix_mount_get_device_path(param0 unsafe.Pointer) string {
 
 	ret := C.g_unix_mount_get_device_path(cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_unix_mount_get_fs_type(param0 unsafe.Pointer) string {
@@ -984,7 +986,7 @@ func Fn_g_unix_mount_get_fs_type(param0 unsafe.Pointer) string {
 
 	ret := C.g_unix_mount_get_fs_type(cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_unix_mount_get_mount_path(param0 unsafe.Pointer) string {
@@ -992,7 +994,7 @@ func Fn_g_unix_mount_get_mount_path(param0 unsafe.Pointer) string {
 
 	ret := C.g_unix_mount_get_mount_path(cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_unix_mount_guess_can_eject(param0 unsafe.Pointer) bool {
@@ -1000,7 +1002,7 @@ func Fn_g_unix_mount_guess_can_eject(param0 unsafe.Pointer) bool {
 
 	ret := C.g_unix_mount_guess_can_eject(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_mount_guess_icon(param0 unsafe.Pointer) unsafe.Pointer {
@@ -1008,7 +1010,7 @@ func Fn_g_unix_mount_guess_icon(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_unix_mount_guess_icon(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_unix_mount_guess_name(param0 unsafe.Pointer) string {
@@ -1016,7 +1018,7 @@ func Fn_g_unix_mount_guess_name(param0 unsafe.Pointer) string {
 
 	ret := C.g_unix_mount_guess_name(cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_unix_mount_guess_should_display(param0 unsafe.Pointer) bool {
@@ -1024,7 +1026,7 @@ func Fn_g_unix_mount_guess_should_display(param0 unsafe.Pointer) bool {
 
 	ret := C.g_unix_mount_guess_should_display(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_mount_is_readonly(param0 unsafe.Pointer) bool {
@@ -1032,7 +1034,7 @@ func Fn_g_unix_mount_is_readonly(param0 unsafe.Pointer) bool {
 
 	ret := C.g_unix_mount_is_readonly(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_mount_is_system_internal(param0 unsafe.Pointer) bool {
@@ -1040,7 +1042,7 @@ func Fn_g_unix_mount_is_system_internal(param0 unsafe.Pointer) bool {
 
 	ret := C.g_unix_mount_is_system_internal(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_mount_points_changed_since(param0 uint64) bool {
@@ -1048,7 +1050,7 @@ func Fn_g_unix_mount_points_changed_since(param0 uint64) bool {
 
 	ret := C.g_unix_mount_points_changed_since(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_mount_points_get(param0 *uint64) unsafe.Pointer {
@@ -1056,7 +1058,7 @@ func Fn_g_unix_mount_points_get(param0 *uint64) unsafe.Pointer {
 
 	ret := C.g_unix_mount_points_get(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_unix_mounts_changed_since(param0 uint64) bool {
@@ -1064,7 +1066,7 @@ func Fn_g_unix_mounts_changed_since(param0 uint64) bool {
 
 	ret := C.g_unix_mounts_changed_since(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_mounts_get(param0 *uint64) unsafe.Pointer {
@@ -1072,13 +1074,13 @@ func Fn_g_unix_mounts_get(param0 *uint64) unsafe.Pointer {
 
 	ret := C.g_unix_mounts_get(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_app_launch_context_new() unsafe.Pointer {
 	ret := C.g_app_launch_context_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_app_launch_context_get_display(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) string {
@@ -1090,7 +1092,7 @@ func Fn_g_app_launch_context_get_display(paramInstance unsafe.Pointer, param0 un
 
 	ret := C.g_app_launch_context_get_display(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 // UNSUPPORTED : get_environment : has array return
@@ -1104,7 +1106,7 @@ func Fn_g_app_launch_context_get_startup_notify_id(paramInstance unsafe.Pointer,
 
 	ret := C.g_app_launch_context_get_startup_notify_id(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_app_launch_context_launch_failed(paramInstance unsafe.Pointer, param0 string) {
@@ -1124,7 +1126,7 @@ func Fn_g_application_new(param0 string, param1 int) unsafe.Pointer {
 
 	ret := C.g_application_new(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_application_activate(paramInstance unsafe.Pointer) {
@@ -1138,7 +1140,7 @@ func Fn_g_application_get_application_id(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_application_get_application_id(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_application_get_flags(paramInstance unsafe.Pointer) int {
@@ -1146,7 +1148,7 @@ func Fn_g_application_get_flags(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_application_get_flags(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_application_get_inactivity_timeout(paramInstance unsafe.Pointer) uint {
@@ -1154,7 +1156,7 @@ func Fn_g_application_get_inactivity_timeout(paramInstance unsafe.Pointer) uint 
 
 	ret := C.g_application_get_inactivity_timeout(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_g_application_get_is_registered(paramInstance unsafe.Pointer) bool {
@@ -1162,7 +1164,7 @@ func Fn_g_application_get_is_registered(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_application_get_is_registered(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_application_get_is_remote(paramInstance unsafe.Pointer) bool {
@@ -1170,7 +1172,7 @@ func Fn_g_application_get_is_remote(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_application_get_is_remote(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_application_hold(paramInstance unsafe.Pointer) {
@@ -1192,7 +1194,7 @@ func Fn_g_application_register(paramInstance unsafe.Pointer, param0 unsafe.Point
 
 	ret := C.g_application_register(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_application_release(paramInstance unsafe.Pointer) {
@@ -1218,7 +1220,7 @@ func Fn_g_application_run(paramInstance unsafe.Pointer, param0 int, param1 []str
 
 	ret := C.g_application_run(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_application_set_action_group(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -1260,7 +1262,7 @@ func Fn_g_application_id_is_valid(param0 string) bool {
 
 	ret := C.g_application_id_is_valid(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : get_arguments : has array return
@@ -1270,7 +1272,7 @@ func Fn_g_application_command_line_get_cwd(paramInstance unsafe.Pointer) string 
 
 	ret := C.g_application_command_line_get_cwd(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 // UNSUPPORTED : get_environ : has array return
@@ -1280,7 +1282,7 @@ func Fn_g_application_command_line_get_exit_status(paramInstance unsafe.Pointer)
 
 	ret := C.g_application_command_line_get_exit_status(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_application_command_line_get_is_remote(paramInstance unsafe.Pointer) bool {
@@ -1288,7 +1290,7 @@ func Fn_g_application_command_line_get_is_remote(paramInstance unsafe.Pointer) b
 
 	ret := C.g_application_command_line_get_is_remote(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_application_command_line_get_platform_data(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1296,7 +1298,7 @@ func Fn_g_application_command_line_get_platform_data(paramInstance unsafe.Pointe
 
 	ret := C.g_application_command_line_get_platform_data(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_application_command_line_getenv(paramInstance unsafe.Pointer, param0 string) string {
@@ -1307,7 +1309,7 @@ func Fn_g_application_command_line_getenv(paramInstance unsafe.Pointer, param0 s
 
 	ret := C.g_application_command_line_getenv(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 // UNSUPPORTED : print : has varargs
@@ -1327,7 +1329,7 @@ func Fn_g_buffered_input_stream_new(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_buffered_input_stream_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_buffered_input_stream_new_sized(param0 unsafe.Pointer, param1 uint64) unsafe.Pointer {
@@ -1337,7 +1339,7 @@ func Fn_g_buffered_input_stream_new_sized(param0 unsafe.Pointer, param1 uint64) 
 
 	ret := C.g_buffered_input_stream_new_sized(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_buffered_input_stream_fill(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer, error unsafe.Pointer) uint64 {
@@ -1351,7 +1353,7 @@ func Fn_g_buffered_input_stream_fill(paramInstance unsafe.Pointer, param0 uint64
 
 	ret := C.g_buffered_input_stream_fill(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 // UNSUPPORTED : fill_async : has callback
@@ -1365,7 +1367,7 @@ func Fn_g_buffered_input_stream_fill_finish(paramInstance unsafe.Pointer, param0
 
 	ret := C.g_buffered_input_stream_fill_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_buffered_input_stream_get_available(paramInstance unsafe.Pointer) uint64 {
@@ -1373,7 +1375,7 @@ func Fn_g_buffered_input_stream_get_available(paramInstance unsafe.Pointer) uint
 
 	ret := C.g_buffered_input_stream_get_available(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_buffered_input_stream_get_buffer_size(paramInstance unsafe.Pointer) uint64 {
@@ -1381,10 +1383,10 @@ func Fn_g_buffered_input_stream_get_buffer_size(paramInstance unsafe.Pointer) ui
 
 	ret := C.g_buffered_input_stream_get_buffer_size(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
-func Fn_g_buffered_input_stream_peek(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 uint64) uint64 {
+func Fn_g_buffered_input_stream_peek(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 uint64) {
 	// has non-string array param
 }
 
@@ -1399,7 +1401,7 @@ func Fn_g_buffered_input_stream_read_byte(paramInstance unsafe.Pointer, param0 u
 
 	ret := C.g_buffered_input_stream_read_byte(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_buffered_input_stream_set_buffer_size(paramInstance unsafe.Pointer, param0 uint64) {
@@ -1415,7 +1417,7 @@ func Fn_g_buffered_output_stream_new(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_buffered_output_stream_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_buffered_output_stream_new_sized(param0 unsafe.Pointer, param1 uint64) unsafe.Pointer {
@@ -1425,7 +1427,7 @@ func Fn_g_buffered_output_stream_new_sized(param0 unsafe.Pointer, param1 uint64)
 
 	ret := C.g_buffered_output_stream_new_sized(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_buffered_output_stream_get_auto_grow(paramInstance unsafe.Pointer) bool {
@@ -1433,7 +1435,7 @@ func Fn_g_buffered_output_stream_get_auto_grow(paramInstance unsafe.Pointer) boo
 
 	ret := C.g_buffered_output_stream_get_auto_grow(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_buffered_output_stream_get_buffer_size(paramInstance unsafe.Pointer) uint64 {
@@ -1441,7 +1443,7 @@ func Fn_g_buffered_output_stream_get_buffer_size(paramInstance unsafe.Pointer) u
 
 	ret := C.g_buffered_output_stream_get_buffer_size(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_buffered_output_stream_set_auto_grow(paramInstance unsafe.Pointer, param0 bool) {
@@ -1463,7 +1465,7 @@ func Fn_g_buffered_output_stream_set_buffer_size(paramInstance unsafe.Pointer, p
 func Fn_g_cancellable_new() unsafe.Pointer {
 	ret := C.g_cancellable_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_cancellable_cancel(paramInstance unsafe.Pointer) {
@@ -1487,7 +1489,7 @@ func Fn_g_cancellable_get_fd(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_cancellable_get_fd(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_cancellable_is_cancelled(paramInstance unsafe.Pointer) bool {
@@ -1495,7 +1497,7 @@ func Fn_g_cancellable_is_cancelled(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_cancellable_is_cancelled(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_cancellable_make_pollfd(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
@@ -1505,7 +1507,7 @@ func Fn_g_cancellable_make_pollfd(paramInstance unsafe.Pointer, param0 unsafe.Po
 
 	ret := C.g_cancellable_make_pollfd(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_cancellable_pop_current(paramInstance unsafe.Pointer) {
@@ -1539,7 +1541,7 @@ func Fn_g_cancellable_set_error_if_cancelled(paramInstance unsafe.Pointer, error
 
 	ret := C.g_cancellable_set_error_if_cancelled(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_cancellable_source_new(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1547,13 +1549,13 @@ func Fn_g_cancellable_source_new(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_cancellable_source_new(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_cancellable_get_current() unsafe.Pointer {
 	ret := C.g_cancellable_get_current()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_charset_converter_new(param0 string, param1 string, error unsafe.Pointer) unsafe.Pointer {
@@ -1567,7 +1569,7 @@ func Fn_g_charset_converter_new(param0 string, param1 string, error unsafe.Point
 
 	ret := C.g_charset_converter_new(cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_charset_converter_get_num_fallbacks(paramInstance unsafe.Pointer) uint {
@@ -1575,7 +1577,7 @@ func Fn_g_charset_converter_get_num_fallbacks(paramInstance unsafe.Pointer) uint
 
 	ret := C.g_charset_converter_get_num_fallbacks(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_g_charset_converter_get_use_fallback(paramInstance unsafe.Pointer) bool {
@@ -1583,7 +1585,7 @@ func Fn_g_charset_converter_get_use_fallback(paramInstance unsafe.Pointer) bool 
 
 	ret := C.g_charset_converter_get_use_fallback(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_charset_converter_set_use_fallback(paramInstance unsafe.Pointer, param0 bool) {
@@ -1601,7 +1603,7 @@ func Fn_g_converter_input_stream_new(param0 unsafe.Pointer, param1 unsafe.Pointe
 
 	ret := C.g_converter_input_stream_new(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_converter_input_stream_get_converter(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1609,7 +1611,7 @@ func Fn_g_converter_input_stream_get_converter(paramInstance unsafe.Pointer) uns
 
 	ret := C.g_converter_input_stream_get_converter(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_converter_output_stream_new(param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
@@ -1619,7 +1621,7 @@ func Fn_g_converter_output_stream_new(param0 unsafe.Pointer, param1 unsafe.Point
 
 	ret := C.g_converter_output_stream_new(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_converter_output_stream_get_converter(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1627,13 +1629,13 @@ func Fn_g_converter_output_stream_get_converter(paramInstance unsafe.Pointer) un
 
 	ret := C.g_converter_output_stream_get_converter(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_credentials_new() unsafe.Pointer {
 	ret := C.g_credentials_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_credentials_get_native(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
@@ -1643,7 +1645,7 @@ func Fn_g_credentials_get_native(paramInstance unsafe.Pointer, param0 int) unsaf
 
 	ret := C.g_credentials_get_native(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (unsafe.Pointer)(ret)
 }
 
 func Fn_g_credentials_get_unix_user(paramInstance unsafe.Pointer, error unsafe.Pointer) uint {
@@ -1653,7 +1655,7 @@ func Fn_g_credentials_get_unix_user(paramInstance unsafe.Pointer, error unsafe.P
 
 	ret := C.g_credentials_get_unix_user(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_g_credentials_is_same_user(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -1665,7 +1667,7 @@ func Fn_g_credentials_is_same_user(paramInstance unsafe.Pointer, param0 unsafe.P
 
 	ret := C.g_credentials_is_same_user(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_credentials_set_native(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
@@ -1687,7 +1689,7 @@ func Fn_g_credentials_set_unix_user(paramInstance unsafe.Pointer, param0 uint, e
 
 	ret := C.g_credentials_set_unix_user(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_credentials_to_string(paramInstance unsafe.Pointer) string {
@@ -1695,13 +1697,13 @@ func Fn_g_credentials_to_string(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_credentials_to_string(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_auth_observer_new() unsafe.Pointer {
 	ret := C.g_dbus_auth_observer_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_auth_observer_authorize_authenticated_peer(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) bool {
@@ -1713,7 +1715,7 @@ func Fn_g_dbus_auth_observer_authorize_authenticated_peer(paramInstance unsafe.P
 
 	ret := C.g_dbus_auth_observer_authorize_authenticated_peer(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_connection_new_finish(param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -1723,7 +1725,7 @@ func Fn_g_dbus_connection_new_finish(param0 unsafe.Pointer, error unsafe.Pointer
 
 	ret := C.g_dbus_connection_new_finish(cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_connection_new_for_address_finish(param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -1733,7 +1735,7 @@ func Fn_g_dbus_connection_new_for_address_finish(param0 unsafe.Pointer, error un
 
 	ret := C.g_dbus_connection_new_for_address_finish(cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_connection_new_for_address_sync(param0 string, param1 int, param2 unsafe.Pointer, param3 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -1750,7 +1752,7 @@ func Fn_g_dbus_connection_new_for_address_sync(param0 string, param1 int, param2
 
 	ret := C.g_dbus_connection_new_for_address_sync(cValue0, cValue1, cValue2, cValue3, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_connection_new_sync(param0 unsafe.Pointer, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -1769,7 +1771,7 @@ func Fn_g_dbus_connection_new_sync(param0 unsafe.Pointer, param1 string, param2 
 
 	ret := C.g_dbus_connection_new_sync(cValue0, cValue1, cValue2, cValue3, cValue4, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : add_filter : has callback
@@ -1785,7 +1787,7 @@ func Fn_g_dbus_connection_call_finish(paramInstance unsafe.Pointer, param0 unsaf
 
 	ret := C.g_dbus_connection_call_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_connection_call_sync(paramInstance unsafe.Pointer, param0 string, param1 string, param2 string, param3 string, param4 unsafe.Pointer, param5 unsafe.Pointer, param6 int, param7 int, param8 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -1817,7 +1819,7 @@ func Fn_g_dbus_connection_call_sync(paramInstance unsafe.Pointer, param0 string,
 
 	ret := C.g_dbus_connection_call_sync(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : call_with_unix_fd_list : has callback
@@ -1833,7 +1835,7 @@ func Fn_g_dbus_connection_close_finish(paramInstance unsafe.Pointer, param0 unsa
 
 	ret := C.g_dbus_connection_close_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_connection_close_sync(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -1845,7 +1847,7 @@ func Fn_g_dbus_connection_close_sync(paramInstance unsafe.Pointer, param0 unsafe
 
 	ret := C.g_dbus_connection_close_sync(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_connection_emit_signal(paramInstance unsafe.Pointer, param0 string, param1 string, param2 string, param3 string, param4 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -1869,7 +1871,7 @@ func Fn_g_dbus_connection_emit_signal(paramInstance unsafe.Pointer, param0 strin
 
 	ret := C.g_dbus_connection_emit_signal(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : flush : has callback
@@ -1883,7 +1885,7 @@ func Fn_g_dbus_connection_flush_finish(paramInstance unsafe.Pointer, param0 unsa
 
 	ret := C.g_dbus_connection_flush_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_connection_flush_sync(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -1895,7 +1897,7 @@ func Fn_g_dbus_connection_flush_sync(paramInstance unsafe.Pointer, param0 unsafe
 
 	ret := C.g_dbus_connection_flush_sync(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_connection_get_capabilities(paramInstance unsafe.Pointer) int {
@@ -1903,7 +1905,7 @@ func Fn_g_dbus_connection_get_capabilities(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_dbus_connection_get_capabilities(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_dbus_connection_get_exit_on_close(paramInstance unsafe.Pointer) bool {
@@ -1911,7 +1913,7 @@ func Fn_g_dbus_connection_get_exit_on_close(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_dbus_connection_get_exit_on_close(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_connection_get_guid(paramInstance unsafe.Pointer) string {
@@ -1919,7 +1921,7 @@ func Fn_g_dbus_connection_get_guid(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_connection_get_guid(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_connection_get_peer_credentials(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1927,7 +1929,7 @@ func Fn_g_dbus_connection_get_peer_credentials(paramInstance unsafe.Pointer) uns
 
 	ret := C.g_dbus_connection_get_peer_credentials(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_connection_get_stream(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1935,7 +1937,7 @@ func Fn_g_dbus_connection_get_stream(paramInstance unsafe.Pointer) unsafe.Pointe
 
 	ret := C.g_dbus_connection_get_stream(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_connection_get_unique_name(paramInstance unsafe.Pointer) string {
@@ -1943,7 +1945,7 @@ func Fn_g_dbus_connection_get_unique_name(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_connection_get_unique_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_connection_is_closed(paramInstance unsafe.Pointer) bool {
@@ -1951,7 +1953,7 @@ func Fn_g_dbus_connection_is_closed(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_dbus_connection_is_closed(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : register_object : has callback
@@ -1979,7 +1981,7 @@ func Fn_g_dbus_connection_send_message(paramInstance unsafe.Pointer, param0 unsa
 
 	ret := C.g_dbus_connection_send_message(cValueInstance, cValue0, cValue1, cValue2, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : send_message_with_reply : has callback
@@ -1993,7 +1995,7 @@ func Fn_g_dbus_connection_send_message_with_reply_finish(paramInstance unsafe.Po
 
 	ret := C.g_dbus_connection_send_message_with_reply_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_connection_send_message_with_reply_sync(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 *uint32, param4 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -2013,7 +2015,7 @@ func Fn_g_dbus_connection_send_message_with_reply_sync(paramInstance unsafe.Poin
 
 	ret := C.g_dbus_connection_send_message_with_reply_sync(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_connection_set_exit_on_close(paramInstance unsafe.Pointer, param0 bool) {
@@ -2047,7 +2049,7 @@ func Fn_g_dbus_connection_unregister_object(paramInstance unsafe.Pointer, param0
 
 	ret := C.g_dbus_connection_unregister_object(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_connection_unregister_subtree(paramInstance unsafe.Pointer, param0 uint) bool {
@@ -2057,7 +2059,7 @@ func Fn_g_dbus_connection_unregister_subtree(paramInstance unsafe.Pointer, param
 
 	ret := C.g_dbus_connection_unregister_subtree(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : new : has callback
@@ -2067,10 +2069,10 @@ func Fn_g_dbus_connection_unregister_subtree(paramInstance unsafe.Pointer, param
 func Fn_g_dbus_message_new() unsafe.Pointer {
 	ret := C.g_dbus_message_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
-func Fn_g_dbus_message_new_from_blob(param0 []uint8, param1 uint64, param2 int, error unsafe.Pointer) unsafe.Pointer {
+func Fn_g_dbus_message_new_from_blob(param0 []uint8, param1 uint64, param2 int, error unsafe.Pointer) {
 	// has non-string array param
 }
 
@@ -2089,7 +2091,7 @@ func Fn_g_dbus_message_new_method_call(param0 string, param1 string, param2 stri
 
 	ret := C.g_dbus_message_new_method_call(cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_message_new_signal(param0 string, param1 string, param2 string) unsafe.Pointer {
@@ -2104,7 +2106,7 @@ func Fn_g_dbus_message_new_signal(param0 string, param1 string, param2 string) u
 
 	ret := C.g_dbus_message_new_signal(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_message_copy(paramInstance unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -2114,7 +2116,7 @@ func Fn_g_dbus_message_copy(paramInstance unsafe.Pointer, error unsafe.Pointer) 
 
 	ret := C.g_dbus_message_copy(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_message_get_arg0(paramInstance unsafe.Pointer) string {
@@ -2122,7 +2124,7 @@ func Fn_g_dbus_message_get_arg0(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_message_get_arg0(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_message_get_body(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2130,7 +2132,7 @@ func Fn_g_dbus_message_get_body(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_dbus_message_get_body(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_message_get_byte_order(paramInstance unsafe.Pointer) int {
@@ -2138,7 +2140,7 @@ func Fn_g_dbus_message_get_byte_order(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_dbus_message_get_byte_order(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_dbus_message_get_destination(paramInstance unsafe.Pointer) string {
@@ -2146,7 +2148,7 @@ func Fn_g_dbus_message_get_destination(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_message_get_destination(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_message_get_error_name(paramInstance unsafe.Pointer) string {
@@ -2154,7 +2156,7 @@ func Fn_g_dbus_message_get_error_name(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_message_get_error_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_message_get_flags(paramInstance unsafe.Pointer) int {
@@ -2162,7 +2164,7 @@ func Fn_g_dbus_message_get_flags(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_dbus_message_get_flags(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_dbus_message_get_header(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
@@ -2172,7 +2174,7 @@ func Fn_g_dbus_message_get_header(paramInstance unsafe.Pointer, param0 int) unsa
 
 	ret := C.g_dbus_message_get_header(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : get_header_fields : has array return
@@ -2182,7 +2184,7 @@ func Fn_g_dbus_message_get_interface(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_message_get_interface(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_message_get_locked(paramInstance unsafe.Pointer) bool {
@@ -2190,7 +2192,7 @@ func Fn_g_dbus_message_get_locked(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_dbus_message_get_locked(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_message_get_member(paramInstance unsafe.Pointer) string {
@@ -2198,7 +2200,7 @@ func Fn_g_dbus_message_get_member(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_message_get_member(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_message_get_message_type(paramInstance unsafe.Pointer) int {
@@ -2206,7 +2208,7 @@ func Fn_g_dbus_message_get_message_type(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_dbus_message_get_message_type(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_dbus_message_get_num_unix_fds(paramInstance unsafe.Pointer) uint32 {
@@ -2214,7 +2216,7 @@ func Fn_g_dbus_message_get_num_unix_fds(paramInstance unsafe.Pointer) uint32 {
 
 	ret := C.g_dbus_message_get_num_unix_fds(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint32)(ret)
 }
 
 func Fn_g_dbus_message_get_path(paramInstance unsafe.Pointer) string {
@@ -2222,7 +2224,7 @@ func Fn_g_dbus_message_get_path(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_message_get_path(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_message_get_reply_serial(paramInstance unsafe.Pointer) uint32 {
@@ -2230,7 +2232,7 @@ func Fn_g_dbus_message_get_reply_serial(paramInstance unsafe.Pointer) uint32 {
 
 	ret := C.g_dbus_message_get_reply_serial(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint32)(ret)
 }
 
 func Fn_g_dbus_message_get_sender(paramInstance unsafe.Pointer) string {
@@ -2238,7 +2240,7 @@ func Fn_g_dbus_message_get_sender(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_message_get_sender(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_message_get_serial(paramInstance unsafe.Pointer) uint32 {
@@ -2246,7 +2248,7 @@ func Fn_g_dbus_message_get_serial(paramInstance unsafe.Pointer) uint32 {
 
 	ret := C.g_dbus_message_get_serial(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint32)(ret)
 }
 
 func Fn_g_dbus_message_get_signature(paramInstance unsafe.Pointer) string {
@@ -2254,7 +2256,7 @@ func Fn_g_dbus_message_get_signature(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_message_get_signature(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_message_get_unix_fd_list(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2262,7 +2264,7 @@ func Fn_g_dbus_message_get_unix_fd_list(paramInstance unsafe.Pointer) unsafe.Poi
 
 	ret := C.g_dbus_message_get_unix_fd_list(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_message_lock(paramInstance unsafe.Pointer) {
@@ -2284,7 +2286,7 @@ func Fn_g_dbus_message_new_method_error_literal(paramInstance unsafe.Pointer, pa
 
 	ret := C.g_dbus_message_new_method_error_literal(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : new_method_error_valist : has va_list
@@ -2294,7 +2296,7 @@ func Fn_g_dbus_message_new_method_reply(paramInstance unsafe.Pointer) unsafe.Poi
 
 	ret := C.g_dbus_message_new_method_reply(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_message_print(paramInstance unsafe.Pointer, param0 uint) string {
@@ -2304,7 +2306,7 @@ func Fn_g_dbus_message_print(paramInstance unsafe.Pointer, param0 uint) string {
 
 	ret := C.g_dbus_message_print(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_message_set_body(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -2453,10 +2455,10 @@ func Fn_g_dbus_message_to_gerror(paramInstance unsafe.Pointer, error unsafe.Poin
 
 	ret := C.g_dbus_message_to_gerror(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
-func Fn_g_dbus_message_bytes_needed(param0 []uint8, param1 uint64, error unsafe.Pointer) uint64 {
+func Fn_g_dbus_message_bytes_needed(param0 []uint8, param1 uint64, error unsafe.Pointer) {
 	// has non-string array param
 }
 
@@ -2465,7 +2467,7 @@ func Fn_g_dbus_method_invocation_get_connection(paramInstance unsafe.Pointer) un
 
 	ret := C.g_dbus_method_invocation_get_connection(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_method_invocation_get_interface_name(paramInstance unsafe.Pointer) string {
@@ -2473,7 +2475,7 @@ func Fn_g_dbus_method_invocation_get_interface_name(paramInstance unsafe.Pointer
 
 	ret := C.g_dbus_method_invocation_get_interface_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_method_invocation_get_message(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2481,7 +2483,7 @@ func Fn_g_dbus_method_invocation_get_message(paramInstance unsafe.Pointer) unsaf
 
 	ret := C.g_dbus_method_invocation_get_message(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_method_invocation_get_method_info(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2489,7 +2491,7 @@ func Fn_g_dbus_method_invocation_get_method_info(paramInstance unsafe.Pointer) u
 
 	ret := C.g_dbus_method_invocation_get_method_info(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_method_invocation_get_method_name(paramInstance unsafe.Pointer) string {
@@ -2497,7 +2499,7 @@ func Fn_g_dbus_method_invocation_get_method_name(paramInstance unsafe.Pointer) s
 
 	ret := C.g_dbus_method_invocation_get_method_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_method_invocation_get_object_path(paramInstance unsafe.Pointer) string {
@@ -2505,7 +2507,7 @@ func Fn_g_dbus_method_invocation_get_object_path(paramInstance unsafe.Pointer) s
 
 	ret := C.g_dbus_method_invocation_get_object_path(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_method_invocation_get_parameters(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2513,7 +2515,7 @@ func Fn_g_dbus_method_invocation_get_parameters(paramInstance unsafe.Pointer) un
 
 	ret := C.g_dbus_method_invocation_get_parameters(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_method_invocation_get_sender(paramInstance unsafe.Pointer) string {
@@ -2521,7 +2523,7 @@ func Fn_g_dbus_method_invocation_get_sender(paramInstance unsafe.Pointer) string
 
 	ret := C.g_dbus_method_invocation_get_sender(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_method_invocation_get_user_data(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2529,7 +2531,7 @@ func Fn_g_dbus_method_invocation_get_user_data(paramInstance unsafe.Pointer) uns
 
 	ret := C.g_dbus_method_invocation_get_user_data(cValueInstance)
 
-	fmt.Println(ret)
+	return (unsafe.Pointer)(ret)
 }
 
 func Fn_g_dbus_method_invocation_return_dbus_error(paramInstance unsafe.Pointer, param0 string, param1 string) {
@@ -2600,7 +2602,7 @@ func Fn_g_dbus_proxy_new_finish(param0 unsafe.Pointer, error unsafe.Pointer) uns
 
 	ret := C.g_dbus_proxy_new_finish(cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_proxy_new_for_bus_finish(param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -2610,7 +2612,7 @@ func Fn_g_dbus_proxy_new_for_bus_finish(param0 unsafe.Pointer, error unsafe.Poin
 
 	ret := C.g_dbus_proxy_new_for_bus_finish(cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_proxy_new_for_bus_sync(param0 int, param1 int, param2 unsafe.Pointer, param3 string, param4 string, param5 string, param6 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -2635,7 +2637,7 @@ func Fn_g_dbus_proxy_new_for_bus_sync(param0 int, param1 int, param2 unsafe.Poin
 
 	ret := C.g_dbus_proxy_new_for_bus_sync(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_proxy_new_sync(param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer, param3 string, param4 string, param5 string, param6 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -2660,7 +2662,7 @@ func Fn_g_dbus_proxy_new_sync(param0 unsafe.Pointer, param1 int, param2 unsafe.P
 
 	ret := C.g_dbus_proxy_new_sync(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : call : has callback
@@ -2674,7 +2676,7 @@ func Fn_g_dbus_proxy_call_finish(paramInstance unsafe.Pointer, param0 unsafe.Poi
 
 	ret := C.g_dbus_proxy_call_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_proxy_call_sync(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -2695,7 +2697,7 @@ func Fn_g_dbus_proxy_call_sync(paramInstance unsafe.Pointer, param0 string, para
 
 	ret := C.g_dbus_proxy_call_sync(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : call_with_unix_fd_list : has callback
@@ -2708,7 +2710,7 @@ func Fn_g_dbus_proxy_get_cached_property(paramInstance unsafe.Pointer, param0 st
 
 	ret := C.g_dbus_proxy_get_cached_property(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : get_cached_property_names : has array return
@@ -2718,7 +2720,7 @@ func Fn_g_dbus_proxy_get_connection(paramInstance unsafe.Pointer) unsafe.Pointer
 
 	ret := C.g_dbus_proxy_get_connection(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_proxy_get_default_timeout(paramInstance unsafe.Pointer) int {
@@ -2726,7 +2728,7 @@ func Fn_g_dbus_proxy_get_default_timeout(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_dbus_proxy_get_default_timeout(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_dbus_proxy_get_flags(paramInstance unsafe.Pointer) int {
@@ -2734,7 +2736,7 @@ func Fn_g_dbus_proxy_get_flags(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_dbus_proxy_get_flags(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_dbus_proxy_get_interface_info(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2742,7 +2744,7 @@ func Fn_g_dbus_proxy_get_interface_info(paramInstance unsafe.Pointer) unsafe.Poi
 
 	ret := C.g_dbus_proxy_get_interface_info(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_proxy_get_interface_name(paramInstance unsafe.Pointer) string {
@@ -2750,7 +2752,7 @@ func Fn_g_dbus_proxy_get_interface_name(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_proxy_get_interface_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_proxy_get_name(paramInstance unsafe.Pointer) string {
@@ -2758,7 +2760,7 @@ func Fn_g_dbus_proxy_get_name(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_proxy_get_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_proxy_get_name_owner(paramInstance unsafe.Pointer) string {
@@ -2766,7 +2768,7 @@ func Fn_g_dbus_proxy_get_name_owner(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_proxy_get_name_owner(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_proxy_get_object_path(paramInstance unsafe.Pointer) string {
@@ -2774,7 +2776,7 @@ func Fn_g_dbus_proxy_get_object_path(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_proxy_get_object_path(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_proxy_set_cached_property(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
@@ -2825,7 +2827,7 @@ func Fn_g_dbus_server_new_sync(param0 string, param1 int, param2 string, param3 
 
 	ret := C.g_dbus_server_new_sync(cValue0, cValue1, cValue2, cValue3, cValue4, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_dbus_server_get_client_address(paramInstance unsafe.Pointer) string {
@@ -2833,7 +2835,7 @@ func Fn_g_dbus_server_get_client_address(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_server_get_client_address(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_server_get_flags(paramInstance unsafe.Pointer) int {
@@ -2841,7 +2843,7 @@ func Fn_g_dbus_server_get_flags(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_dbus_server_get_flags(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_dbus_server_get_guid(paramInstance unsafe.Pointer) string {
@@ -2849,7 +2851,7 @@ func Fn_g_dbus_server_get_guid(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_dbus_server_get_guid(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_dbus_server_is_active(paramInstance unsafe.Pointer) bool {
@@ -2857,7 +2859,7 @@ func Fn_g_dbus_server_is_active(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_dbus_server_is_active(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_dbus_server_start(paramInstance unsafe.Pointer) {
@@ -2877,7 +2879,7 @@ func Fn_g_data_input_stream_new(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_data_input_stream_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_data_input_stream_get_byte_order(paramInstance unsafe.Pointer) int {
@@ -2885,7 +2887,7 @@ func Fn_g_data_input_stream_get_byte_order(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_data_input_stream_get_byte_order(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_data_input_stream_get_newline_type(paramInstance unsafe.Pointer) int {
@@ -2893,7 +2895,7 @@ func Fn_g_data_input_stream_get_newline_type(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_data_input_stream_get_newline_type(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_data_input_stream_read_byte(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint8 {
@@ -2905,7 +2907,7 @@ func Fn_g_data_input_stream_read_byte(paramInstance unsafe.Pointer, param0 unsaf
 
 	ret := C.g_data_input_stream_read_byte(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (uint8)(ret)
 }
 
 func Fn_g_data_input_stream_read_int16(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) int16 {
@@ -2917,7 +2919,7 @@ func Fn_g_data_input_stream_read_int16(paramInstance unsafe.Pointer, param0 unsa
 
 	ret := C.g_data_input_stream_read_int16(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (int16)(ret)
 }
 
 func Fn_g_data_input_stream_read_int32(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) int32 {
@@ -2929,7 +2931,7 @@ func Fn_g_data_input_stream_read_int32(paramInstance unsafe.Pointer, param0 unsa
 
 	ret := C.g_data_input_stream_read_int32(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (int32)(ret)
 }
 
 func Fn_g_data_input_stream_read_int64(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) int64 {
@@ -2941,7 +2943,7 @@ func Fn_g_data_input_stream_read_int64(paramInstance unsafe.Pointer, param0 unsa
 
 	ret := C.g_data_input_stream_read_int64(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (int64)(ret)
 }
 
 // UNSUPPORTED : read_line : has array return
@@ -2959,7 +2961,7 @@ func Fn_g_data_input_stream_read_uint16(paramInstance unsafe.Pointer, param0 uns
 
 	ret := C.g_data_input_stream_read_uint16(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (uint16)(ret)
 }
 
 func Fn_g_data_input_stream_read_uint32(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint32 {
@@ -2971,7 +2973,7 @@ func Fn_g_data_input_stream_read_uint32(paramInstance unsafe.Pointer, param0 uns
 
 	ret := C.g_data_input_stream_read_uint32(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (uint32)(ret)
 }
 
 func Fn_g_data_input_stream_read_uint64(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint64 {
@@ -2983,7 +2985,7 @@ func Fn_g_data_input_stream_read_uint64(paramInstance unsafe.Pointer, param0 uns
 
 	ret := C.g_data_input_stream_read_uint64(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_data_input_stream_read_until(paramInstance unsafe.Pointer, param0 string, param1 *uint64, param2 unsafe.Pointer, error unsafe.Pointer) string {
@@ -3000,7 +3002,7 @@ func Fn_g_data_input_stream_read_until(paramInstance unsafe.Pointer, param0 stri
 
 	ret := C.g_data_input_stream_read_until(cValueInstance, cValue0, cValue1, cValue2, cError)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 // UNSUPPORTED : read_until_async : has callback
@@ -3016,7 +3018,7 @@ func Fn_g_data_input_stream_read_until_finish(paramInstance unsafe.Pointer, para
 
 	ret := C.g_data_input_stream_read_until_finish(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_data_input_stream_read_upto(paramInstance unsafe.Pointer, param0 string, param1 uint64, param2 *uint64, param3 unsafe.Pointer, error unsafe.Pointer) string {
@@ -3035,7 +3037,7 @@ func Fn_g_data_input_stream_read_upto(paramInstance unsafe.Pointer, param0 strin
 
 	ret := C.g_data_input_stream_read_upto(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 // UNSUPPORTED : read_upto_async : has callback
@@ -3051,7 +3053,7 @@ func Fn_g_data_input_stream_read_upto_finish(paramInstance unsafe.Pointer, param
 
 	ret := C.g_data_input_stream_read_upto_finish(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_data_input_stream_set_byte_order(paramInstance unsafe.Pointer, param0 int) {
@@ -3075,7 +3077,7 @@ func Fn_g_data_output_stream_new(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_data_output_stream_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_data_output_stream_get_byte_order(paramInstance unsafe.Pointer) int {
@@ -3083,7 +3085,7 @@ func Fn_g_data_output_stream_get_byte_order(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_data_output_stream_get_byte_order(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_data_output_stream_put_byte(paramInstance unsafe.Pointer, param0 uint8, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -3097,7 +3099,7 @@ func Fn_g_data_output_stream_put_byte(paramInstance unsafe.Pointer, param0 uint8
 
 	ret := C.g_data_output_stream_put_byte(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_data_output_stream_put_int16(paramInstance unsafe.Pointer, param0 int16, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -3111,7 +3113,7 @@ func Fn_g_data_output_stream_put_int16(paramInstance unsafe.Pointer, param0 int1
 
 	ret := C.g_data_output_stream_put_int16(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_data_output_stream_put_int32(paramInstance unsafe.Pointer, param0 int32, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -3125,7 +3127,7 @@ func Fn_g_data_output_stream_put_int32(paramInstance unsafe.Pointer, param0 int3
 
 	ret := C.g_data_output_stream_put_int32(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_data_output_stream_put_int64(paramInstance unsafe.Pointer, param0 int64, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -3139,7 +3141,7 @@ func Fn_g_data_output_stream_put_int64(paramInstance unsafe.Pointer, param0 int6
 
 	ret := C.g_data_output_stream_put_int64(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_data_output_stream_put_string(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -3154,7 +3156,7 @@ func Fn_g_data_output_stream_put_string(paramInstance unsafe.Pointer, param0 str
 
 	ret := C.g_data_output_stream_put_string(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_data_output_stream_put_uint16(paramInstance unsafe.Pointer, param0 uint16, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -3168,7 +3170,7 @@ func Fn_g_data_output_stream_put_uint16(paramInstance unsafe.Pointer, param0 uin
 
 	ret := C.g_data_output_stream_put_uint16(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_data_output_stream_put_uint32(paramInstance unsafe.Pointer, param0 uint32, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -3182,7 +3184,7 @@ func Fn_g_data_output_stream_put_uint32(paramInstance unsafe.Pointer, param0 uin
 
 	ret := C.g_data_output_stream_put_uint32(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_data_output_stream_put_uint64(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -3196,7 +3198,7 @@ func Fn_g_data_output_stream_put_uint64(paramInstance unsafe.Pointer, param0 uin
 
 	ret := C.g_data_output_stream_put_uint64(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_data_output_stream_set_byte_order(paramInstance unsafe.Pointer, param0 int) {
@@ -3213,7 +3215,7 @@ func Fn_g_desktop_app_info_new(param0 string) unsafe.Pointer {
 
 	ret := C.g_desktop_app_info_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_desktop_app_info_new_from_filename(param0 string) unsafe.Pointer {
@@ -3222,7 +3224,7 @@ func Fn_g_desktop_app_info_new_from_filename(param0 string) unsafe.Pointer {
 
 	ret := C.g_desktop_app_info_new_from_filename(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_desktop_app_info_new_from_keyfile(param0 unsafe.Pointer) unsafe.Pointer {
@@ -3230,7 +3232,7 @@ func Fn_g_desktop_app_info_new_from_keyfile(param0 unsafe.Pointer) unsafe.Pointe
 
 	ret := C.g_desktop_app_info_new_from_keyfile(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_desktop_app_info_get_categories(paramInstance unsafe.Pointer) string {
@@ -3238,7 +3240,7 @@ func Fn_g_desktop_app_info_get_categories(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_desktop_app_info_get_categories(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_desktop_app_info_get_filename(paramInstance unsafe.Pointer) string {
@@ -3246,7 +3248,7 @@ func Fn_g_desktop_app_info_get_filename(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_desktop_app_info_get_filename(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_desktop_app_info_get_generic_name(paramInstance unsafe.Pointer) string {
@@ -3254,7 +3256,7 @@ func Fn_g_desktop_app_info_get_generic_name(paramInstance unsafe.Pointer) string
 
 	ret := C.g_desktop_app_info_get_generic_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_desktop_app_info_get_is_hidden(paramInstance unsafe.Pointer) bool {
@@ -3262,7 +3264,7 @@ func Fn_g_desktop_app_info_get_is_hidden(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_desktop_app_info_get_is_hidden(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : get_keywords : has array return
@@ -3289,7 +3291,7 @@ func Fn_g_emblem_new(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_emblem_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_emblem_new_with_origin(param0 unsafe.Pointer, param1 int) unsafe.Pointer {
@@ -3299,7 +3301,7 @@ func Fn_g_emblem_new_with_origin(param0 unsafe.Pointer, param1 int) unsafe.Point
 
 	ret := C.g_emblem_new_with_origin(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_emblem_get_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3307,7 +3309,7 @@ func Fn_g_emblem_get_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_emblem_get_icon(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_emblem_get_origin(paramInstance unsafe.Pointer) int {
@@ -3315,7 +3317,7 @@ func Fn_g_emblem_get_origin(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_emblem_get_origin(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_emblemed_icon_new(param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
@@ -3325,7 +3327,7 @@ func Fn_g_emblemed_icon_new(param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe
 
 	ret := C.g_emblemed_icon_new(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_emblemed_icon_add_emblem(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -3347,7 +3349,7 @@ func Fn_g_emblemed_icon_get_emblems(paramInstance unsafe.Pointer) unsafe.Pointer
 
 	ret := C.g_emblemed_icon_get_emblems(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_emblemed_icon_get_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3355,7 +3357,7 @@ func Fn_g_emblemed_icon_get_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_emblemed_icon_get_icon(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_enumerator_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -3367,7 +3369,7 @@ func Fn_g_file_enumerator_close(paramInstance unsafe.Pointer, param0 unsafe.Poin
 
 	ret := C.g_file_enumerator_close(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : close_async : has callback
@@ -3381,7 +3383,7 @@ func Fn_g_file_enumerator_close_finish(paramInstance unsafe.Pointer, param0 unsa
 
 	ret := C.g_file_enumerator_close_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_enumerator_get_container(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3389,7 +3391,7 @@ func Fn_g_file_enumerator_get_container(paramInstance unsafe.Pointer) unsafe.Poi
 
 	ret := C.g_file_enumerator_get_container(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_enumerator_has_pending(paramInstance unsafe.Pointer) bool {
@@ -3397,7 +3399,7 @@ func Fn_g_file_enumerator_has_pending(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_file_enumerator_has_pending(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_enumerator_is_closed(paramInstance unsafe.Pointer) bool {
@@ -3405,7 +3407,7 @@ func Fn_g_file_enumerator_is_closed(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_file_enumerator_is_closed(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_enumerator_next_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -3417,7 +3419,7 @@ func Fn_g_file_enumerator_next_file(paramInstance unsafe.Pointer, param0 unsafe.
 
 	ret := C.g_file_enumerator_next_file(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : next_files_async : has callback
@@ -3431,7 +3433,7 @@ func Fn_g_file_enumerator_next_files_finish(paramInstance unsafe.Pointer, param0
 
 	ret := C.g_file_enumerator_next_files_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_enumerator_set_pending(paramInstance unsafe.Pointer, param0 bool) {
@@ -3447,7 +3449,7 @@ func Fn_g_file_io_stream_get_etag(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_file_io_stream_get_etag(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_file_io_stream_query_info(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -3462,7 +3464,7 @@ func Fn_g_file_io_stream_query_info(paramInstance unsafe.Pointer, param0 string,
 
 	ret := C.g_file_io_stream_query_info(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : query_info_async : has callback
@@ -3476,7 +3478,7 @@ func Fn_g_file_io_stream_query_info_finish(paramInstance unsafe.Pointer, param0 
 
 	ret := C.g_file_io_stream_query_info_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_icon_new(param0 unsafe.Pointer) unsafe.Pointer {
@@ -3484,7 +3486,7 @@ func Fn_g_file_icon_new(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_file_icon_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_icon_get_file(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3492,13 +3494,13 @@ func Fn_g_file_icon_get_file(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_file_icon_get_file(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_info_new() unsafe.Pointer {
 	ret := C.g_file_info_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_info_clear_status(paramInstance unsafe.Pointer) {
@@ -3520,7 +3522,7 @@ func Fn_g_file_info_dup(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_file_info_dup(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_info_get_attribute_as_string(paramInstance unsafe.Pointer, param0 string) string {
@@ -3531,7 +3533,7 @@ func Fn_g_file_info_get_attribute_as_string(paramInstance unsafe.Pointer, param0
 
 	ret := C.g_file_info_get_attribute_as_string(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_file_info_get_attribute_boolean(paramInstance unsafe.Pointer, param0 string) bool {
@@ -3542,7 +3544,7 @@ func Fn_g_file_info_get_attribute_boolean(paramInstance unsafe.Pointer, param0 s
 
 	ret := C.g_file_info_get_attribute_boolean(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_info_get_attribute_byte_string(paramInstance unsafe.Pointer, param0 string) string {
@@ -3553,7 +3555,7 @@ func Fn_g_file_info_get_attribute_byte_string(paramInstance unsafe.Pointer, para
 
 	ret := C.g_file_info_get_attribute_byte_string(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_file_info_get_attribute_data(paramInstance unsafe.Pointer, param0 string, param1 *int, param2 *unsafe.Pointer, param3 *int) bool {
@@ -3570,7 +3572,7 @@ func Fn_g_file_info_get_attribute_data(paramInstance unsafe.Pointer, param0 stri
 
 	ret := C.g_file_info_get_attribute_data(cValueInstance, cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_info_get_attribute_int32(paramInstance unsafe.Pointer, param0 string) int32 {
@@ -3581,7 +3583,7 @@ func Fn_g_file_info_get_attribute_int32(paramInstance unsafe.Pointer, param0 str
 
 	ret := C.g_file_info_get_attribute_int32(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int32)(ret)
 }
 
 func Fn_g_file_info_get_attribute_int64(paramInstance unsafe.Pointer, param0 string) int64 {
@@ -3592,7 +3594,7 @@ func Fn_g_file_info_get_attribute_int64(paramInstance unsafe.Pointer, param0 str
 
 	ret := C.g_file_info_get_attribute_int64(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int64)(ret)
 }
 
 func Fn_g_file_info_get_attribute_object(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
@@ -3603,7 +3605,7 @@ func Fn_g_file_info_get_attribute_object(paramInstance unsafe.Pointer, param0 st
 
 	ret := C.g_file_info_get_attribute_object(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_info_get_attribute_status(paramInstance unsafe.Pointer, param0 string) int {
@@ -3614,7 +3616,7 @@ func Fn_g_file_info_get_attribute_status(paramInstance unsafe.Pointer, param0 st
 
 	ret := C.g_file_info_get_attribute_status(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_file_info_get_attribute_string(paramInstance unsafe.Pointer, param0 string) string {
@@ -3625,7 +3627,7 @@ func Fn_g_file_info_get_attribute_string(paramInstance unsafe.Pointer, param0 st
 
 	ret := C.g_file_info_get_attribute_string(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 // UNSUPPORTED : get_attribute_stringv : has array return
@@ -3638,7 +3640,7 @@ func Fn_g_file_info_get_attribute_type(paramInstance unsafe.Pointer, param0 stri
 
 	ret := C.g_file_info_get_attribute_type(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_file_info_get_attribute_uint32(paramInstance unsafe.Pointer, param0 string) uint32 {
@@ -3649,7 +3651,7 @@ func Fn_g_file_info_get_attribute_uint32(paramInstance unsafe.Pointer, param0 st
 
 	ret := C.g_file_info_get_attribute_uint32(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (uint32)(ret)
 }
 
 func Fn_g_file_info_get_attribute_uint64(paramInstance unsafe.Pointer, param0 string) uint64 {
@@ -3660,7 +3662,7 @@ func Fn_g_file_info_get_attribute_uint64(paramInstance unsafe.Pointer, param0 st
 
 	ret := C.g_file_info_get_attribute_uint64(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_file_info_get_content_type(paramInstance unsafe.Pointer) string {
@@ -3668,7 +3670,7 @@ func Fn_g_file_info_get_content_type(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_file_info_get_content_type(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_file_info_get_display_name(paramInstance unsafe.Pointer) string {
@@ -3676,7 +3678,7 @@ func Fn_g_file_info_get_display_name(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_file_info_get_display_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_file_info_get_edit_name(paramInstance unsafe.Pointer) string {
@@ -3684,7 +3686,7 @@ func Fn_g_file_info_get_edit_name(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_file_info_get_edit_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_file_info_get_etag(paramInstance unsafe.Pointer) string {
@@ -3692,7 +3694,7 @@ func Fn_g_file_info_get_etag(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_file_info_get_etag(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_file_info_get_file_type(paramInstance unsafe.Pointer) int {
@@ -3700,7 +3702,7 @@ func Fn_g_file_info_get_file_type(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_file_info_get_file_type(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_file_info_get_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3708,7 +3710,7 @@ func Fn_g_file_info_get_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_file_info_get_icon(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_info_get_is_backup(paramInstance unsafe.Pointer) bool {
@@ -3716,7 +3718,7 @@ func Fn_g_file_info_get_is_backup(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_file_info_get_is_backup(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_info_get_is_hidden(paramInstance unsafe.Pointer) bool {
@@ -3724,7 +3726,7 @@ func Fn_g_file_info_get_is_hidden(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_file_info_get_is_hidden(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_info_get_is_symlink(paramInstance unsafe.Pointer) bool {
@@ -3732,7 +3734,7 @@ func Fn_g_file_info_get_is_symlink(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_file_info_get_is_symlink(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_info_get_modification_time(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -3748,7 +3750,7 @@ func Fn_g_file_info_get_name(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_file_info_get_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_file_info_get_size(paramInstance unsafe.Pointer) int64 {
@@ -3756,7 +3758,7 @@ func Fn_g_file_info_get_size(paramInstance unsafe.Pointer) int64 {
 
 	ret := C.g_file_info_get_size(cValueInstance)
 
-	fmt.Println(ret)
+	return (int64)(ret)
 }
 
 func Fn_g_file_info_get_sort_order(paramInstance unsafe.Pointer) int32 {
@@ -3764,7 +3766,7 @@ func Fn_g_file_info_get_sort_order(paramInstance unsafe.Pointer) int32 {
 
 	ret := C.g_file_info_get_sort_order(cValueInstance)
 
-	fmt.Println(ret)
+	return (int32)(ret)
 }
 
 func Fn_g_file_info_get_symlink_target(paramInstance unsafe.Pointer) string {
@@ -3772,7 +3774,7 @@ func Fn_g_file_info_get_symlink_target(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_file_info_get_symlink_target(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_file_info_has_attribute(paramInstance unsafe.Pointer, param0 string) bool {
@@ -3783,7 +3785,7 @@ func Fn_g_file_info_has_attribute(paramInstance unsafe.Pointer, param0 string) b
 
 	ret := C.g_file_info_has_attribute(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_info_has_namespace(paramInstance unsafe.Pointer, param0 string) bool {
@@ -3794,7 +3796,7 @@ func Fn_g_file_info_has_namespace(paramInstance unsafe.Pointer, param0 string) b
 
 	ret := C.g_file_info_has_namespace(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : list_attributes : has array return
@@ -3895,7 +3897,7 @@ func Fn_g_file_info_set_attribute_status(paramInstance unsafe.Pointer, param0 st
 
 	ret := C.g_file_info_set_attribute_status(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_info_set_attribute_string(paramInstance unsafe.Pointer, param0 string, param1 string) {
@@ -4070,7 +4072,7 @@ func Fn_g_file_input_stream_query_info(paramInstance unsafe.Pointer, param0 stri
 
 	ret := C.g_file_input_stream_query_info(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : query_info_async : has callback
@@ -4084,7 +4086,7 @@ func Fn_g_file_input_stream_query_info_finish(paramInstance unsafe.Pointer, para
 
 	ret := C.g_file_input_stream_query_info_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_file_monitor_cancel(paramInstance unsafe.Pointer) bool {
@@ -4092,7 +4094,7 @@ func Fn_g_file_monitor_cancel(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_file_monitor_cancel(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_monitor_emit_event(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int) {
@@ -4112,7 +4114,7 @@ func Fn_g_file_monitor_is_cancelled(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_file_monitor_is_cancelled(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_file_monitor_set_rate_limit(paramInstance unsafe.Pointer, param0 int) {
@@ -4128,7 +4130,7 @@ func Fn_g_file_output_stream_get_etag(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_file_output_stream_get_etag(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_file_output_stream_query_info(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -4143,7 +4145,7 @@ func Fn_g_file_output_stream_query_info(paramInstance unsafe.Pointer, param0 str
 
 	ret := C.g_file_output_stream_query_info(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : query_info_async : has callback
@@ -4157,13 +4159,13 @@ func Fn_g_file_output_stream_query_info_finish(paramInstance unsafe.Pointer, par
 
 	ret := C.g_file_output_stream_query_info_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_filename_completer_new() unsafe.Pointer {
 	ret := C.g_filename_completer_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_filename_completer_get_completion_suffix(paramInstance unsafe.Pointer, param0 string) string {
@@ -4174,7 +4176,7 @@ func Fn_g_filename_completer_get_completion_suffix(paramInstance unsafe.Pointer,
 
 	ret := C.g_filename_completer_get_completion_suffix(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 // UNSUPPORTED : get_completions : has array return
@@ -4192,7 +4194,7 @@ func Fn_g_filter_input_stream_get_base_stream(paramInstance unsafe.Pointer) unsa
 
 	ret := C.g_filter_input_stream_get_base_stream(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_filter_input_stream_get_close_base_stream(paramInstance unsafe.Pointer) bool {
@@ -4200,7 +4202,7 @@ func Fn_g_filter_input_stream_get_close_base_stream(paramInstance unsafe.Pointer
 
 	ret := C.g_filter_input_stream_get_close_base_stream(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_filter_input_stream_set_close_base_stream(paramInstance unsafe.Pointer, param0 bool) {
@@ -4216,7 +4218,7 @@ func Fn_g_filter_output_stream_get_base_stream(paramInstance unsafe.Pointer) uns
 
 	ret := C.g_filter_output_stream_get_base_stream(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_filter_output_stream_get_close_base_stream(paramInstance unsafe.Pointer) bool {
@@ -4224,7 +4226,7 @@ func Fn_g_filter_output_stream_get_close_base_stream(paramInstance unsafe.Pointe
 
 	ret := C.g_filter_output_stream_get_close_base_stream(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_filter_output_stream_set_close_base_stream(paramInstance unsafe.Pointer, param0 bool) {
@@ -4254,7 +4256,7 @@ func Fn_g_io_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer, e
 
 	ret := C.g_io_stream_close(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : close_async : has callback
@@ -4268,7 +4270,7 @@ func Fn_g_io_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Poi
 
 	ret := C.g_io_stream_close_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_io_stream_get_input_stream(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -4276,7 +4278,7 @@ func Fn_g_io_stream_get_input_stream(paramInstance unsafe.Pointer) unsafe.Pointe
 
 	ret := C.g_io_stream_get_input_stream(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_io_stream_get_output_stream(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -4284,7 +4286,7 @@ func Fn_g_io_stream_get_output_stream(paramInstance unsafe.Pointer) unsafe.Point
 
 	ret := C.g_io_stream_get_output_stream(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_io_stream_has_pending(paramInstance unsafe.Pointer) bool {
@@ -4292,7 +4294,7 @@ func Fn_g_io_stream_has_pending(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_io_stream_has_pending(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_io_stream_is_closed(paramInstance unsafe.Pointer) bool {
@@ -4300,7 +4302,7 @@ func Fn_g_io_stream_is_closed(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_io_stream_is_closed(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_io_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
@@ -4310,7 +4312,7 @@ func Fn_g_io_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Point
 
 	ret := C.g_io_stream_set_pending(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : splice_async : has callback
@@ -4322,7 +4324,7 @@ func Fn_g_io_stream_splice_finish(param0 unsafe.Pointer, error unsafe.Pointer) b
 
 	ret := C.g_io_stream_splice_finish(cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_inet_address_new_any(param0 int) unsafe.Pointer {
@@ -4330,10 +4332,10 @@ func Fn_g_inet_address_new_any(param0 int) unsafe.Pointer {
 
 	ret := C.g_inet_address_new_any(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
-func Fn_g_inet_address_new_from_bytes(param0 []uint8, param1 int) unsafe.Pointer {
+func Fn_g_inet_address_new_from_bytes(param0 []uint8, param1 int) {
 	// has non-string array param
 }
 
@@ -4343,7 +4345,7 @@ func Fn_g_inet_address_new_from_string(param0 string) unsafe.Pointer {
 
 	ret := C.g_inet_address_new_from_string(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_inet_address_new_loopback(param0 int) unsafe.Pointer {
@@ -4351,7 +4353,7 @@ func Fn_g_inet_address_new_loopback(param0 int) unsafe.Pointer {
 
 	ret := C.g_inet_address_new_loopback(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_inet_address_get_family(paramInstance unsafe.Pointer) int {
@@ -4359,7 +4361,7 @@ func Fn_g_inet_address_get_family(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_inet_address_get_family(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_inet_address_get_is_any(paramInstance unsafe.Pointer) bool {
@@ -4367,7 +4369,7 @@ func Fn_g_inet_address_get_is_any(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_inet_address_get_is_any(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_inet_address_get_is_link_local(paramInstance unsafe.Pointer) bool {
@@ -4375,7 +4377,7 @@ func Fn_g_inet_address_get_is_link_local(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_inet_address_get_is_link_local(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_inet_address_get_is_loopback(paramInstance unsafe.Pointer) bool {
@@ -4383,7 +4385,7 @@ func Fn_g_inet_address_get_is_loopback(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_inet_address_get_is_loopback(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_inet_address_get_is_mc_global(paramInstance unsafe.Pointer) bool {
@@ -4391,7 +4393,7 @@ func Fn_g_inet_address_get_is_mc_global(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_inet_address_get_is_mc_global(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_inet_address_get_is_mc_link_local(paramInstance unsafe.Pointer) bool {
@@ -4399,7 +4401,7 @@ func Fn_g_inet_address_get_is_mc_link_local(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_inet_address_get_is_mc_link_local(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_inet_address_get_is_mc_node_local(paramInstance unsafe.Pointer) bool {
@@ -4407,7 +4409,7 @@ func Fn_g_inet_address_get_is_mc_node_local(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_inet_address_get_is_mc_node_local(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_inet_address_get_is_mc_org_local(paramInstance unsafe.Pointer) bool {
@@ -4415,7 +4417,7 @@ func Fn_g_inet_address_get_is_mc_org_local(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_inet_address_get_is_mc_org_local(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_inet_address_get_is_mc_site_local(paramInstance unsafe.Pointer) bool {
@@ -4423,7 +4425,7 @@ func Fn_g_inet_address_get_is_mc_site_local(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_inet_address_get_is_mc_site_local(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_inet_address_get_is_multicast(paramInstance unsafe.Pointer) bool {
@@ -4431,7 +4433,7 @@ func Fn_g_inet_address_get_is_multicast(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_inet_address_get_is_multicast(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_inet_address_get_is_site_local(paramInstance unsafe.Pointer) bool {
@@ -4439,7 +4441,7 @@ func Fn_g_inet_address_get_is_site_local(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_inet_address_get_is_site_local(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_inet_address_get_native_size(paramInstance unsafe.Pointer) uint64 {
@@ -4447,7 +4449,7 @@ func Fn_g_inet_address_get_native_size(paramInstance unsafe.Pointer) uint64 {
 
 	ret := C.g_inet_address_get_native_size(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_inet_address_to_bytes(paramInstance unsafe.Pointer) *uint8 {
@@ -4455,7 +4457,7 @@ func Fn_g_inet_address_to_bytes(paramInstance unsafe.Pointer) *uint8 {
 
 	ret := C.g_inet_address_to_bytes(cValueInstance)
 
-	fmt.Println(ret)
+	return (*uint8)(ret)
 }
 
 func Fn_g_inet_address_to_string(paramInstance unsafe.Pointer) string {
@@ -4463,7 +4465,7 @@ func Fn_g_inet_address_to_string(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_inet_address_to_string(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_inet_socket_address_new(param0 unsafe.Pointer, param1 uint16) unsafe.Pointer {
@@ -4473,7 +4475,7 @@ func Fn_g_inet_socket_address_new(param0 unsafe.Pointer, param1 uint16) unsafe.P
 
 	ret := C.g_inet_socket_address_new(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_inet_socket_address_get_address(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -4481,7 +4483,7 @@ func Fn_g_inet_socket_address_get_address(paramInstance unsafe.Pointer) unsafe.P
 
 	ret := C.g_inet_socket_address_get_address(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_inet_socket_address_get_port(paramInstance unsafe.Pointer) uint16 {
@@ -4489,7 +4491,7 @@ func Fn_g_inet_socket_address_get_port(paramInstance unsafe.Pointer) uint16 {
 
 	ret := C.g_inet_socket_address_get_port(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint16)(ret)
 }
 
 func Fn_g_input_stream_clear_pending(paramInstance unsafe.Pointer) {
@@ -4507,7 +4509,7 @@ func Fn_g_input_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer
 
 	ret := C.g_input_stream_close(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : close_async : has callback
@@ -4521,7 +4523,7 @@ func Fn_g_input_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe.
 
 	ret := C.g_input_stream_close_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_input_stream_has_pending(paramInstance unsafe.Pointer) bool {
@@ -4529,7 +4531,7 @@ func Fn_g_input_stream_has_pending(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_input_stream_has_pending(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_input_stream_is_closed(paramInstance unsafe.Pointer) bool {
@@ -4537,14 +4539,14 @@ func Fn_g_input_stream_is_closed(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_input_stream_is_closed(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
-func Fn_g_input_stream_read(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) uint64 {
+func Fn_g_input_stream_read(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
-func Fn_g_input_stream_read_all(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 *uint64, param3 unsafe.Pointer, error unsafe.Pointer) bool {
+func Fn_g_input_stream_read_all(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 *uint64, param3 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
@@ -4563,7 +4565,7 @@ func Fn_g_input_stream_read_finish(paramInstance unsafe.Pointer, param0 unsafe.P
 
 	ret := C.g_input_stream_read_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_input_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
@@ -4573,7 +4575,7 @@ func Fn_g_input_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Po
 
 	ret := C.g_input_stream_set_pending(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_input_stream_skip(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer, error unsafe.Pointer) uint64 {
@@ -4587,7 +4589,7 @@ func Fn_g_input_stream_skip(paramInstance unsafe.Pointer, param0 uint64, param1 
 
 	ret := C.g_input_stream_skip(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 // UNSUPPORTED : skip_async : has callback
@@ -4601,7 +4603,7 @@ func Fn_g_input_stream_skip_finish(paramInstance unsafe.Pointer, param0 unsafe.P
 
 	ret := C.g_input_stream_skip_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 // UNSUPPORTED : insert_sorted : has callback
@@ -4611,7 +4613,7 @@ func Fn_g_input_stream_skip_finish(paramInstance unsafe.Pointer, param0 unsafe.P
 func Fn_g_memory_input_stream_new() unsafe.Pointer {
 	ret := C.g_memory_input_stream_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : new_from_data : has callback
@@ -4625,7 +4627,7 @@ func Fn_g_memory_output_stream_get_data(paramInstance unsafe.Pointer) unsafe.Poi
 
 	ret := C.g_memory_output_stream_get_data(cValueInstance)
 
-	fmt.Println(ret)
+	return (unsafe.Pointer)(ret)
 }
 
 func Fn_g_memory_output_stream_get_data_size(paramInstance unsafe.Pointer) uint64 {
@@ -4633,7 +4635,7 @@ func Fn_g_memory_output_stream_get_data_size(paramInstance unsafe.Pointer) uint6
 
 	ret := C.g_memory_output_stream_get_data_size(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_memory_output_stream_get_size(paramInstance unsafe.Pointer) uint64 {
@@ -4641,7 +4643,7 @@ func Fn_g_memory_output_stream_get_size(paramInstance unsafe.Pointer) uint64 {
 
 	ret := C.g_memory_output_stream_get_size(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_memory_output_stream_steal_data(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -4649,7 +4651,7 @@ func Fn_g_memory_output_stream_steal_data(paramInstance unsafe.Pointer) unsafe.P
 
 	ret := C.g_memory_output_stream_steal_data(cValueInstance)
 
-	fmt.Println(ret)
+	return (unsafe.Pointer)(ret)
 }
 
 // UNSUPPORTED : get_attribute : has varargs
@@ -4663,7 +4665,7 @@ func Fn_g_memory_output_stream_steal_data(paramInstance unsafe.Pointer) unsafe.P
 func Fn_g_mount_operation_new() unsafe.Pointer {
 	ret := C.g_mount_operation_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_mount_operation_get_anonymous(paramInstance unsafe.Pointer) bool {
@@ -4671,7 +4673,7 @@ func Fn_g_mount_operation_get_anonymous(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_mount_operation_get_anonymous(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_mount_operation_get_choice(paramInstance unsafe.Pointer) int {
@@ -4679,7 +4681,7 @@ func Fn_g_mount_operation_get_choice(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_mount_operation_get_choice(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_mount_operation_get_domain(paramInstance unsafe.Pointer) string {
@@ -4687,7 +4689,7 @@ func Fn_g_mount_operation_get_domain(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_mount_operation_get_domain(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_mount_operation_get_password(paramInstance unsafe.Pointer) string {
@@ -4695,7 +4697,7 @@ func Fn_g_mount_operation_get_password(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_mount_operation_get_password(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_mount_operation_get_password_save(paramInstance unsafe.Pointer) int {
@@ -4703,7 +4705,7 @@ func Fn_g_mount_operation_get_password_save(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_mount_operation_get_password_save(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_mount_operation_get_username(paramInstance unsafe.Pointer) string {
@@ -4711,7 +4713,7 @@ func Fn_g_mount_operation_get_username(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_mount_operation_get_username(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_mount_operation_reply(paramInstance unsafe.Pointer, param0 int) {
@@ -4781,7 +4783,7 @@ func Fn_g_network_address_new(param0 string, param1 uint16) unsafe.Pointer {
 
 	ret := C.g_network_address_new(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_network_address_get_hostname(paramInstance unsafe.Pointer) string {
@@ -4789,7 +4791,7 @@ func Fn_g_network_address_get_hostname(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_network_address_get_hostname(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_network_address_get_port(paramInstance unsafe.Pointer) uint16 {
@@ -4797,7 +4799,7 @@ func Fn_g_network_address_get_port(paramInstance unsafe.Pointer) uint16 {
 
 	ret := C.g_network_address_get_port(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint16)(ret)
 }
 
 func Fn_g_network_address_get_scheme(paramInstance unsafe.Pointer) string {
@@ -4805,7 +4807,7 @@ func Fn_g_network_address_get_scheme(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_network_address_get_scheme(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_network_address_parse(param0 string, param1 uint16, error unsafe.Pointer) unsafe.Pointer {
@@ -4818,7 +4820,7 @@ func Fn_g_network_address_parse(param0 string, param1 uint16, error unsafe.Point
 
 	ret := C.g_network_address_parse(cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_network_address_parse_uri(param0 string, param1 uint16, error unsafe.Pointer) unsafe.Pointer {
@@ -4831,7 +4833,7 @@ func Fn_g_network_address_parse_uri(param0 string, param1 uint16, error unsafe.P
 
 	ret := C.g_network_address_parse_uri(cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_network_service_new(param0 string, param1 string, param2 string) unsafe.Pointer {
@@ -4846,7 +4848,7 @@ func Fn_g_network_service_new(param0 string, param1 string, param2 string) unsaf
 
 	ret := C.g_network_service_new(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_network_service_get_domain(paramInstance unsafe.Pointer) string {
@@ -4854,7 +4856,7 @@ func Fn_g_network_service_get_domain(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_network_service_get_domain(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_network_service_get_protocol(paramInstance unsafe.Pointer) string {
@@ -4862,7 +4864,7 @@ func Fn_g_network_service_get_protocol(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_network_service_get_protocol(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_network_service_get_scheme(paramInstance unsafe.Pointer) string {
@@ -4870,7 +4872,7 @@ func Fn_g_network_service_get_scheme(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_network_service_get_scheme(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_network_service_get_service(paramInstance unsafe.Pointer) string {
@@ -4878,7 +4880,7 @@ func Fn_g_network_service_get_service(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_network_service_get_service(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_network_service_set_scheme(paramInstance unsafe.Pointer, param0 string) {
@@ -4917,7 +4919,7 @@ func Fn_g_output_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 
 	ret := C.g_output_stream_close(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : close_async : has callback
@@ -4931,7 +4933,7 @@ func Fn_g_output_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe
 
 	ret := C.g_output_stream_close_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_output_stream_flush(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -4943,7 +4945,7 @@ func Fn_g_output_stream_flush(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 
 	ret := C.g_output_stream_flush(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : flush_async : has callback
@@ -4957,7 +4959,7 @@ func Fn_g_output_stream_flush_finish(paramInstance unsafe.Pointer, param0 unsafe
 
 	ret := C.g_output_stream_flush_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_output_stream_has_pending(paramInstance unsafe.Pointer) bool {
@@ -4965,7 +4967,7 @@ func Fn_g_output_stream_has_pending(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_output_stream_has_pending(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_output_stream_is_closed(paramInstance unsafe.Pointer) bool {
@@ -4973,7 +4975,7 @@ func Fn_g_output_stream_is_closed(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_output_stream_is_closed(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_output_stream_is_closing(paramInstance unsafe.Pointer) bool {
@@ -4981,7 +4983,7 @@ func Fn_g_output_stream_is_closing(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_output_stream_is_closing(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : printf : has varargs
@@ -4993,7 +4995,7 @@ func Fn_g_output_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.P
 
 	ret := C.g_output_stream_set_pending(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_output_stream_splice(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer, error unsafe.Pointer) uint64 {
@@ -5009,7 +5011,7 @@ func Fn_g_output_stream_splice(paramInstance unsafe.Pointer, param0 unsafe.Point
 
 	ret := C.g_output_stream_splice(cValueInstance, cValue0, cValue1, cValue2, cError)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 // UNSUPPORTED : splice_async : has callback
@@ -5023,16 +5025,16 @@ func Fn_g_output_stream_splice_finish(paramInstance unsafe.Pointer, param0 unsaf
 
 	ret := C.g_output_stream_splice_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 // UNSUPPORTED : vprintf : has va_list
 
-func Fn_g_output_stream_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) uint64 {
+func Fn_g_output_stream_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
-func Fn_g_output_stream_write_all(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 *uint64, param3 unsafe.Pointer, error unsafe.Pointer) bool {
+func Fn_g_output_stream_write_all(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 *uint64, param3 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
@@ -5051,7 +5053,7 @@ func Fn_g_output_stream_write_bytes(paramInstance unsafe.Pointer, param0 unsafe.
 
 	ret := C.g_output_stream_write_bytes(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 // UNSUPPORTED : write_bytes_async : has callback
@@ -5065,7 +5067,7 @@ func Fn_g_output_stream_write_bytes_finish(paramInstance unsafe.Pointer, param0 
 
 	ret := C.g_output_stream_write_bytes_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_output_stream_write_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint64 {
@@ -5077,7 +5079,7 @@ func Fn_g_output_stream_write_finish(paramInstance unsafe.Pointer, param0 unsafe
 
 	ret := C.g_output_stream_write_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 // UNSUPPORTED : writev_all_async : has callback
@@ -5093,7 +5095,7 @@ func Fn_g_permission_acquire(paramInstance unsafe.Pointer, param0 unsafe.Pointer
 
 	ret := C.g_permission_acquire(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : acquire_async : has callback
@@ -5107,7 +5109,7 @@ func Fn_g_permission_acquire_finish(paramInstance unsafe.Pointer, param0 unsafe.
 
 	ret := C.g_permission_acquire_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_permission_get_allowed(paramInstance unsafe.Pointer) bool {
@@ -5115,7 +5117,7 @@ func Fn_g_permission_get_allowed(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_permission_get_allowed(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_permission_get_can_acquire(paramInstance unsafe.Pointer) bool {
@@ -5123,7 +5125,7 @@ func Fn_g_permission_get_can_acquire(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_permission_get_can_acquire(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_permission_get_can_release(paramInstance unsafe.Pointer) bool {
@@ -5131,7 +5133,7 @@ func Fn_g_permission_get_can_release(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_permission_get_can_release(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_permission_impl_update(paramInstance unsafe.Pointer, param0 bool, param1 bool, param2 bool) {
@@ -5155,7 +5157,7 @@ func Fn_g_permission_release(paramInstance unsafe.Pointer, param0 unsafe.Pointer
 
 	ret := C.g_permission_release(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : release_async : has callback
@@ -5169,7 +5171,7 @@ func Fn_g_permission_release_finish(paramInstance unsafe.Pointer, param0 unsafe.
 
 	ret := C.g_permission_release_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_proxy_address_new(param0 unsafe.Pointer, param1 uint16, param2 string, param3 string, param4 uint16, param5 string, param6 string) unsafe.Pointer {
@@ -5193,7 +5195,7 @@ func Fn_g_proxy_address_new(param0 unsafe.Pointer, param1 uint16, param2 string,
 
 	ret := C.g_proxy_address_new(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_proxy_address_get_destination_hostname(paramInstance unsafe.Pointer) string {
@@ -5201,7 +5203,7 @@ func Fn_g_proxy_address_get_destination_hostname(paramInstance unsafe.Pointer) s
 
 	ret := C.g_proxy_address_get_destination_hostname(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_proxy_address_get_destination_port(paramInstance unsafe.Pointer) uint16 {
@@ -5209,7 +5211,7 @@ func Fn_g_proxy_address_get_destination_port(paramInstance unsafe.Pointer) uint1
 
 	ret := C.g_proxy_address_get_destination_port(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint16)(ret)
 }
 
 func Fn_g_proxy_address_get_password(paramInstance unsafe.Pointer) string {
@@ -5217,7 +5219,7 @@ func Fn_g_proxy_address_get_password(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_proxy_address_get_password(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_proxy_address_get_protocol(paramInstance unsafe.Pointer) string {
@@ -5225,7 +5227,7 @@ func Fn_g_proxy_address_get_protocol(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_proxy_address_get_protocol(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_proxy_address_get_username(paramInstance unsafe.Pointer) string {
@@ -5233,7 +5235,7 @@ func Fn_g_proxy_address_get_username(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_proxy_address_get_username(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_resolver_lookup_by_address(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) string {
@@ -5247,7 +5249,7 @@ func Fn_g_resolver_lookup_by_address(paramInstance unsafe.Pointer, param0 unsafe
 
 	ret := C.g_resolver_lookup_by_address(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 // UNSUPPORTED : lookup_by_address_async : has callback
@@ -5261,7 +5263,7 @@ func Fn_g_resolver_lookup_by_address_finish(paramInstance unsafe.Pointer, param0
 
 	ret := C.g_resolver_lookup_by_address_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_resolver_lookup_by_name(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -5276,7 +5278,7 @@ func Fn_g_resolver_lookup_by_name(paramInstance unsafe.Pointer, param0 string, p
 
 	ret := C.g_resolver_lookup_by_name(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : lookup_by_name_async : has callback
@@ -5290,7 +5292,7 @@ func Fn_g_resolver_lookup_by_name_finish(paramInstance unsafe.Pointer, param0 un
 
 	ret := C.g_resolver_lookup_by_name_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : lookup_by_name_with_flags_async : has callback
@@ -5315,7 +5317,7 @@ func Fn_g_resolver_lookup_service(paramInstance unsafe.Pointer, param0 string, p
 
 	ret := C.g_resolver_lookup_service(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : lookup_service_async : has callback
@@ -5329,7 +5331,7 @@ func Fn_g_resolver_lookup_service_finish(paramInstance unsafe.Pointer, param0 un
 
 	ret := C.g_resolver_lookup_service_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_resolver_set_default(paramInstance unsafe.Pointer) {
@@ -5353,7 +5355,7 @@ func Fn_g_resolver_free_targets(param0 unsafe.Pointer) {
 func Fn_g_resolver_get_default() unsafe.Pointer {
 	ret := C.g_resolver_get_default()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_settings_new(param0 string) unsafe.Pointer {
@@ -5362,7 +5364,7 @@ func Fn_g_settings_new(param0 string) unsafe.Pointer {
 
 	ret := C.g_settings_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_settings_new_with_backend(param0 string, param1 unsafe.Pointer) unsafe.Pointer {
@@ -5373,7 +5375,7 @@ func Fn_g_settings_new_with_backend(param0 string, param1 unsafe.Pointer) unsafe
 
 	ret := C.g_settings_new_with_backend(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_settings_new_with_backend_and_path(param0 string, param1 unsafe.Pointer, param2 string) unsafe.Pointer {
@@ -5387,7 +5389,7 @@ func Fn_g_settings_new_with_backend_and_path(param0 string, param1 unsafe.Pointe
 
 	ret := C.g_settings_new_with_backend_and_path(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_settings_new_with_path(param0 string, param1 string) unsafe.Pointer {
@@ -5399,7 +5401,7 @@ func Fn_g_settings_new_with_path(param0 string, param1 string) unsafe.Pointer {
 
 	ret := C.g_settings_new_with_path(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_settings_apply(paramInstance unsafe.Pointer) {
@@ -5458,7 +5460,7 @@ func Fn_g_settings_get_boolean(paramInstance unsafe.Pointer, param0 string) bool
 
 	ret := C.g_settings_get_boolean(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_settings_get_child(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
@@ -5469,7 +5471,7 @@ func Fn_g_settings_get_child(paramInstance unsafe.Pointer, param0 string) unsafe
 
 	ret := C.g_settings_get_child(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_settings_get_double(paramInstance unsafe.Pointer, param0 string) float64 {
@@ -5480,7 +5482,7 @@ func Fn_g_settings_get_double(paramInstance unsafe.Pointer, param0 string) float
 
 	ret := C.g_settings_get_double(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (float64)(ret)
 }
 
 func Fn_g_settings_get_enum(paramInstance unsafe.Pointer, param0 string) int {
@@ -5491,7 +5493,7 @@ func Fn_g_settings_get_enum(paramInstance unsafe.Pointer, param0 string) int {
 
 	ret := C.g_settings_get_enum(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_settings_get_flags(paramInstance unsafe.Pointer, param0 string) uint {
@@ -5502,7 +5504,7 @@ func Fn_g_settings_get_flags(paramInstance unsafe.Pointer, param0 string) uint {
 
 	ret := C.g_settings_get_flags(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_g_settings_get_has_unapplied(paramInstance unsafe.Pointer) bool {
@@ -5510,7 +5512,7 @@ func Fn_g_settings_get_has_unapplied(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_settings_get_has_unapplied(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_settings_get_int(paramInstance unsafe.Pointer, param0 string) int {
@@ -5521,7 +5523,7 @@ func Fn_g_settings_get_int(paramInstance unsafe.Pointer, param0 string) int {
 
 	ret := C.g_settings_get_int(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 // UNSUPPORTED : get_mapped : has callback
@@ -5534,7 +5536,7 @@ func Fn_g_settings_get_range(paramInstance unsafe.Pointer, param0 string) unsafe
 
 	ret := C.g_settings_get_range(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_settings_get_string(paramInstance unsafe.Pointer, param0 string) string {
@@ -5545,7 +5547,7 @@ func Fn_g_settings_get_string(paramInstance unsafe.Pointer, param0 string) strin
 
 	ret := C.g_settings_get_string(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 // UNSUPPORTED : get_strv : has array return
@@ -5558,7 +5560,7 @@ func Fn_g_settings_get_value(paramInstance unsafe.Pointer, param0 string) unsafe
 
 	ret := C.g_settings_get_value(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_settings_is_writable(paramInstance unsafe.Pointer, param0 string) bool {
@@ -5569,7 +5571,7 @@ func Fn_g_settings_is_writable(paramInstance unsafe.Pointer, param0 string) bool
 
 	ret := C.g_settings_is_writable(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : list_children : has array return
@@ -5586,7 +5588,7 @@ func Fn_g_settings_range_check(paramInstance unsafe.Pointer, param0 string, para
 
 	ret := C.g_settings_range_check(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_settings_reset(paramInstance unsafe.Pointer, param0 string) {
@@ -5616,7 +5618,7 @@ func Fn_g_settings_set_boolean(paramInstance unsafe.Pointer, param0 string, para
 
 	ret := C.g_settings_set_boolean(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_settings_set_double(paramInstance unsafe.Pointer, param0 string, param1 float64) bool {
@@ -5629,7 +5631,7 @@ func Fn_g_settings_set_double(paramInstance unsafe.Pointer, param0 string, param
 
 	ret := C.g_settings_set_double(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_settings_set_enum(paramInstance unsafe.Pointer, param0 string, param1 int) bool {
@@ -5642,7 +5644,7 @@ func Fn_g_settings_set_enum(paramInstance unsafe.Pointer, param0 string, param1 
 
 	ret := C.g_settings_set_enum(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_settings_set_flags(paramInstance unsafe.Pointer, param0 string, param1 uint) bool {
@@ -5655,7 +5657,7 @@ func Fn_g_settings_set_flags(paramInstance unsafe.Pointer, param0 string, param1
 
 	ret := C.g_settings_set_flags(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_settings_set_int(paramInstance unsafe.Pointer, param0 string, param1 int) bool {
@@ -5668,7 +5670,7 @@ func Fn_g_settings_set_int(paramInstance unsafe.Pointer, param0 string, param1 i
 
 	ret := C.g_settings_set_int(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_settings_set_string(paramInstance unsafe.Pointer, param0 string, param1 string) bool {
@@ -5682,7 +5684,7 @@ func Fn_g_settings_set_string(paramInstance unsafe.Pointer, param0 string, param
 
 	ret := C.g_settings_set_string(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_settings_set_strv(paramInstance unsafe.Pointer, param0 string, param1 []string) bool {
@@ -5703,7 +5705,7 @@ func Fn_g_settings_set_strv(paramInstance unsafe.Pointer, param0 string, param1 
 
 	ret := C.g_settings_set_strv(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_settings_set_value(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) bool {
@@ -5716,7 +5718,7 @@ func Fn_g_settings_set_value(paramInstance unsafe.Pointer, param0 string, param1
 
 	ret := C.g_settings_set_value(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : list_relocatable_schemas : has array return
@@ -5752,7 +5754,7 @@ func Fn_g_simple_action_new(param0 string, param1 unsafe.Pointer) unsafe.Pointer
 
 	ret := C.g_simple_action_new(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_simple_action_new_stateful(param0 string, param1 unsafe.Pointer, param2 unsafe.Pointer) unsafe.Pointer {
@@ -5765,7 +5767,7 @@ func Fn_g_simple_action_new_stateful(param0 string, param1 unsafe.Pointer, param
 
 	ret := C.g_simple_action_new_stateful(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_simple_action_set_enabled(paramInstance unsafe.Pointer, param0 bool) {
@@ -5779,7 +5781,7 @@ func Fn_g_simple_action_set_enabled(paramInstance unsafe.Pointer, param0 bool) {
 func Fn_g_simple_action_group_new() unsafe.Pointer {
 	ret := C.g_simple_action_group_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_simple_action_group_insert(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -5798,7 +5800,7 @@ func Fn_g_simple_action_group_lookup(paramInstance unsafe.Pointer, param0 string
 
 	ret := C.g_simple_action_group_lookup(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_simple_action_group_remove(paramInstance unsafe.Pointer, param0 string) {
@@ -5835,7 +5837,7 @@ func Fn_g_simple_async_result_get_op_res_gboolean(paramInstance unsafe.Pointer) 
 
 	ret := C.g_simple_async_result_get_op_res_gboolean(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_simple_async_result_get_op_res_gpointer(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -5843,7 +5845,7 @@ func Fn_g_simple_async_result_get_op_res_gpointer(paramInstance unsafe.Pointer) 
 
 	ret := C.g_simple_async_result_get_op_res_gpointer(cValueInstance)
 
-	fmt.Println(ret)
+	return (unsafe.Pointer)(ret)
 }
 
 func Fn_g_simple_async_result_get_op_res_gssize(paramInstance unsafe.Pointer) uint64 {
@@ -5851,7 +5853,7 @@ func Fn_g_simple_async_result_get_op_res_gssize(paramInstance unsafe.Pointer) ui
 
 	ret := C.g_simple_async_result_get_op_res_gssize(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_simple_async_result_get_source_tag(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -5859,7 +5861,7 @@ func Fn_g_simple_async_result_get_source_tag(paramInstance unsafe.Pointer) unsaf
 
 	ret := C.g_simple_async_result_get_source_tag(cValueInstance)
 
-	fmt.Println(ret)
+	return (unsafe.Pointer)(ret)
 }
 
 func Fn_g_simple_async_result_propagate_error(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
@@ -5869,7 +5871,7 @@ func Fn_g_simple_async_result_propagate_error(paramInstance unsafe.Pointer, erro
 
 	ret := C.g_simple_async_result_propagate_error(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : run_in_thread : has callback
@@ -5929,7 +5931,7 @@ func Fn_g_simple_async_result_is_valid(param0 unsafe.Pointer, param1 unsafe.Poin
 
 	ret := C.g_simple_async_result_is_valid(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_simple_permission_new(param0 bool) unsafe.Pointer {
@@ -5937,7 +5939,7 @@ func Fn_g_simple_permission_new(param0 bool) unsafe.Pointer {
 
 	ret := C.g_simple_permission_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_new(param0 int, param1 int, param2 int, error unsafe.Pointer) unsafe.Pointer {
@@ -5951,7 +5953,7 @@ func Fn_g_socket_new(param0 int, param1 int, param2 int, error unsafe.Pointer) u
 
 	ret := C.g_socket_new(cValue0, cValue1, cValue2, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_new_from_fd(param0 int, error unsafe.Pointer) unsafe.Pointer {
@@ -5961,7 +5963,7 @@ func Fn_g_socket_new_from_fd(param0 int, error unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.g_socket_new_from_fd(cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_accept(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -5973,7 +5975,7 @@ func Fn_g_socket_accept(paramInstance unsafe.Pointer, param0 unsafe.Pointer, err
 
 	ret := C.g_socket_accept(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_bind(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool, error unsafe.Pointer) bool {
@@ -5987,7 +5989,7 @@ func Fn_g_socket_bind(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param
 
 	ret := C.g_socket_bind(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_check_connect_result(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
@@ -5997,7 +5999,7 @@ func Fn_g_socket_check_connect_result(paramInstance unsafe.Pointer, error unsafe
 
 	ret := C.g_socket_check_connect_result(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_close(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
@@ -6007,7 +6009,7 @@ func Fn_g_socket_close(paramInstance unsafe.Pointer, error unsafe.Pointer) bool 
 
 	ret := C.g_socket_close(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_condition_check(paramInstance unsafe.Pointer, param0 int) int {
@@ -6017,7 +6019,7 @@ func Fn_g_socket_condition_check(paramInstance unsafe.Pointer, param0 int) int {
 
 	ret := C.g_socket_condition_check(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_condition_wait(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -6031,7 +6033,7 @@ func Fn_g_socket_condition_wait(paramInstance unsafe.Pointer, param0 int, param1
 
 	ret := C.g_socket_condition_wait(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_connect(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -6045,7 +6047,7 @@ func Fn_g_socket_connect(paramInstance unsafe.Pointer, param0 unsafe.Pointer, pa
 
 	ret := C.g_socket_connect(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_connection_factory_create_connection(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -6053,7 +6055,7 @@ func Fn_g_socket_connection_factory_create_connection(paramInstance unsafe.Point
 
 	ret := C.g_socket_connection_factory_create_connection(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_create_source(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) unsafe.Pointer {
@@ -6065,7 +6067,7 @@ func Fn_g_socket_create_source(paramInstance unsafe.Pointer, param0 int, param1 
 
 	ret := C.g_socket_create_source(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_get_blocking(paramInstance unsafe.Pointer) bool {
@@ -6073,7 +6075,7 @@ func Fn_g_socket_get_blocking(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_socket_get_blocking(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_get_credentials(paramInstance unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -6083,7 +6085,7 @@ func Fn_g_socket_get_credentials(paramInstance unsafe.Pointer, error unsafe.Poin
 
 	ret := C.g_socket_get_credentials(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_get_family(paramInstance unsafe.Pointer) int {
@@ -6091,7 +6093,7 @@ func Fn_g_socket_get_family(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_socket_get_family(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_get_fd(paramInstance unsafe.Pointer) int {
@@ -6099,7 +6101,7 @@ func Fn_g_socket_get_fd(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_socket_get_fd(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_get_keepalive(paramInstance unsafe.Pointer) bool {
@@ -6107,7 +6109,7 @@ func Fn_g_socket_get_keepalive(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_socket_get_keepalive(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_get_listen_backlog(paramInstance unsafe.Pointer) int {
@@ -6115,7 +6117,7 @@ func Fn_g_socket_get_listen_backlog(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_socket_get_listen_backlog(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_get_local_address(paramInstance unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -6125,7 +6127,7 @@ func Fn_g_socket_get_local_address(paramInstance unsafe.Pointer, error unsafe.Po
 
 	ret := C.g_socket_get_local_address(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_get_protocol(paramInstance unsafe.Pointer) int {
@@ -6133,7 +6135,7 @@ func Fn_g_socket_get_protocol(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_socket_get_protocol(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_get_remote_address(paramInstance unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -6143,7 +6145,7 @@ func Fn_g_socket_get_remote_address(paramInstance unsafe.Pointer, error unsafe.P
 
 	ret := C.g_socket_get_remote_address(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_get_socket_type(paramInstance unsafe.Pointer) int {
@@ -6151,7 +6153,7 @@ func Fn_g_socket_get_socket_type(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_socket_get_socket_type(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_get_timeout(paramInstance unsafe.Pointer) uint {
@@ -6159,7 +6161,7 @@ func Fn_g_socket_get_timeout(paramInstance unsafe.Pointer) uint {
 
 	ret := C.g_socket_get_timeout(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_g_socket_is_closed(paramInstance unsafe.Pointer) bool {
@@ -6167,7 +6169,7 @@ func Fn_g_socket_is_closed(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_socket_is_closed(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_is_connected(paramInstance unsafe.Pointer) bool {
@@ -6175,7 +6177,7 @@ func Fn_g_socket_is_connected(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_socket_is_connected(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_listen(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
@@ -6185,38 +6187,38 @@ func Fn_g_socket_listen(paramInstance unsafe.Pointer, error unsafe.Pointer) bool
 
 	ret := C.g_socket_listen(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
-func Fn_g_socket_receive(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) uint64 {
+func Fn_g_socket_receive(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
-func Fn_g_socket_receive_from(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 []uint8, param2 uint64, param3 unsafe.Pointer, error unsafe.Pointer) uint64 {
+func Fn_g_socket_receive_from(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 []uint8, param2 uint64, param3 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
-func Fn_g_socket_receive_message(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 []InputVector, param2 int, param3 []*unsafe.Pointer, param4 *int, param5 *int, param6 unsafe.Pointer, error unsafe.Pointer) uint64 {
+func Fn_g_socket_receive_message(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 []InputVector, param2 int, param3 []*unsafe.Pointer, param4 *int, param5 *int, param6 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
-func Fn_g_socket_receive_with_blocking(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 bool, param3 unsafe.Pointer, error unsafe.Pointer) uint64 {
+func Fn_g_socket_receive_with_blocking(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 bool, param3 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
-func Fn_g_socket_send(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) uint64 {
+func Fn_g_socket_send(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
-func Fn_g_socket_send_message(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []OutputVector, param2 int, param3 []unsafe.Pointer, param4 int, param5 int, param6 unsafe.Pointer, error unsafe.Pointer) uint64 {
+func Fn_g_socket_send_message(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []OutputVector, param2 int, param3 []unsafe.Pointer, param4 int, param5 int, param6 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
-func Fn_g_socket_send_to(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []uint8, param2 uint64, param3 unsafe.Pointer, error unsafe.Pointer) uint64 {
+func Fn_g_socket_send_to(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []uint8, param2 uint64, param3 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
-func Fn_g_socket_send_with_blocking(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 bool, param3 unsafe.Pointer, error unsafe.Pointer) uint64 {
+func Fn_g_socket_send_with_blocking(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 bool, param3 unsafe.Pointer, error unsafe.Pointer) {
 	// has non-string array param
 }
 
@@ -6263,7 +6265,7 @@ func Fn_g_socket_shutdown(paramInstance unsafe.Pointer, param0 bool, param1 bool
 
 	ret := C.g_socket_shutdown(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_speaks_ipv4(paramInstance unsafe.Pointer) bool {
@@ -6271,7 +6273,7 @@ func Fn_g_socket_speaks_ipv4(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_socket_speaks_ipv4(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_address_new_from_native(param0 unsafe.Pointer, param1 uint64) unsafe.Pointer {
@@ -6281,7 +6283,7 @@ func Fn_g_socket_address_new_from_native(param0 unsafe.Pointer, param1 uint64) u
 
 	ret := C.g_socket_address_new_from_native(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_address_get_family(paramInstance unsafe.Pointer) int {
@@ -6289,7 +6291,7 @@ func Fn_g_socket_address_get_family(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_socket_address_get_family(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_address_get_native_size(paramInstance unsafe.Pointer) uint64 {
@@ -6297,7 +6299,7 @@ func Fn_g_socket_address_get_native_size(paramInstance unsafe.Pointer) uint64 {
 
 	ret := C.g_socket_address_get_native_size(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_socket_address_to_native(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint64, error unsafe.Pointer) bool {
@@ -6311,7 +6313,7 @@ func Fn_g_socket_address_to_native(paramInstance unsafe.Pointer, param0 unsafe.P
 
 	ret := C.g_socket_address_to_native(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_address_enumerator_next(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -6323,7 +6325,7 @@ func Fn_g_socket_address_enumerator_next(paramInstance unsafe.Pointer, param0 un
 
 	ret := C.g_socket_address_enumerator_next(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : next_async : has callback
@@ -6337,13 +6339,13 @@ func Fn_g_socket_address_enumerator_next_finish(paramInstance unsafe.Pointer, pa
 
 	ret := C.g_socket_address_enumerator_next_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_client_new() unsafe.Pointer {
 	ret := C.g_socket_client_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_client_add_application_proxy(paramInstance unsafe.Pointer, param0 string) {
@@ -6366,7 +6368,7 @@ func Fn_g_socket_client_connect(paramInstance unsafe.Pointer, param0 unsafe.Poin
 
 	ret := C.g_socket_client_connect(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : connect_async : has callback
@@ -6380,7 +6382,7 @@ func Fn_g_socket_client_connect_finish(paramInstance unsafe.Pointer, param0 unsa
 
 	ret := C.g_socket_client_connect_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_client_connect_to_host(paramInstance unsafe.Pointer, param0 string, param1 uint16, param2 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -6397,7 +6399,7 @@ func Fn_g_socket_client_connect_to_host(paramInstance unsafe.Pointer, param0 str
 
 	ret := C.g_socket_client_connect_to_host(cValueInstance, cValue0, cValue1, cValue2, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : connect_to_host_async : has callback
@@ -6411,7 +6413,7 @@ func Fn_g_socket_client_connect_to_host_finish(paramInstance unsafe.Pointer, par
 
 	ret := C.g_socket_client_connect_to_host_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_client_connect_to_service(paramInstance unsafe.Pointer, param0 string, param1 string, param2 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -6429,7 +6431,7 @@ func Fn_g_socket_client_connect_to_service(paramInstance unsafe.Pointer, param0 
 
 	ret := C.g_socket_client_connect_to_service(cValueInstance, cValue0, cValue1, cValue2, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : connect_to_service_async : has callback
@@ -6443,7 +6445,7 @@ func Fn_g_socket_client_connect_to_service_finish(paramInstance unsafe.Pointer, 
 
 	ret := C.g_socket_client_connect_to_service_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_client_connect_to_uri(paramInstance unsafe.Pointer, param0 string, param1 uint16, param2 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -6460,7 +6462,7 @@ func Fn_g_socket_client_connect_to_uri(paramInstance unsafe.Pointer, param0 stri
 
 	ret := C.g_socket_client_connect_to_uri(cValueInstance, cValue0, cValue1, cValue2, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : connect_to_uri_async : has callback
@@ -6474,7 +6476,7 @@ func Fn_g_socket_client_connect_to_uri_finish(paramInstance unsafe.Pointer, para
 
 	ret := C.g_socket_client_connect_to_uri_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_client_get_enable_proxy(paramInstance unsafe.Pointer) bool {
@@ -6482,7 +6484,7 @@ func Fn_g_socket_client_get_enable_proxy(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_socket_client_get_enable_proxy(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_client_get_family(paramInstance unsafe.Pointer) int {
@@ -6490,7 +6492,7 @@ func Fn_g_socket_client_get_family(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_socket_client_get_family(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_client_get_local_address(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -6498,7 +6500,7 @@ func Fn_g_socket_client_get_local_address(paramInstance unsafe.Pointer) unsafe.P
 
 	ret := C.g_socket_client_get_local_address(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_client_get_protocol(paramInstance unsafe.Pointer) int {
@@ -6506,7 +6508,7 @@ func Fn_g_socket_client_get_protocol(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_socket_client_get_protocol(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_client_get_socket_type(paramInstance unsafe.Pointer) int {
@@ -6514,7 +6516,7 @@ func Fn_g_socket_client_get_socket_type(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_socket_client_get_socket_type(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_client_get_timeout(paramInstance unsafe.Pointer) uint {
@@ -6522,7 +6524,7 @@ func Fn_g_socket_client_get_timeout(paramInstance unsafe.Pointer) uint {
 
 	ret := C.g_socket_client_get_timeout(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_g_socket_client_get_tls(paramInstance unsafe.Pointer) bool {
@@ -6530,7 +6532,7 @@ func Fn_g_socket_client_get_tls(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_socket_client_get_tls(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_client_get_tls_validation_flags(paramInstance unsafe.Pointer) int {
@@ -6538,7 +6540,7 @@ func Fn_g_socket_client_get_tls_validation_flags(paramInstance unsafe.Pointer) i
 
 	ret := C.g_socket_client_get_tls_validation_flags(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_client_set_enable_proxy(paramInstance unsafe.Pointer, param0 bool) {
@@ -6614,7 +6616,7 @@ func Fn_g_socket_connection_get_local_address(paramInstance unsafe.Pointer, erro
 
 	ret := C.g_socket_connection_get_local_address(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_connection_get_remote_address(paramInstance unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -6624,7 +6626,7 @@ func Fn_g_socket_connection_get_remote_address(paramInstance unsafe.Pointer, err
 
 	ret := C.g_socket_connection_get_remote_address(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_connection_get_socket(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -6632,7 +6634,7 @@ func Fn_g_socket_connection_get_socket(paramInstance unsafe.Pointer) unsafe.Poin
 
 	ret := C.g_socket_connection_get_socket(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_connection_factory_lookup_type(param0 int, param1 int, param2 int) uint64 {
@@ -6644,7 +6646,7 @@ func Fn_g_socket_connection_factory_lookup_type(param0 int, param1 int, param2 i
 
 	ret := C.g_socket_connection_factory_lookup_type(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_socket_connection_factory_register_type(param0 uint64, param1 int, param2 int, param3 int) {
@@ -6664,7 +6666,7 @@ func Fn_g_socket_control_message_get_level(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_socket_control_message_get_level(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_control_message_get_msg_type(paramInstance unsafe.Pointer) int {
@@ -6672,7 +6674,7 @@ func Fn_g_socket_control_message_get_msg_type(paramInstance unsafe.Pointer) int 
 
 	ret := C.g_socket_control_message_get_msg_type(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_socket_control_message_get_size(paramInstance unsafe.Pointer) uint64 {
@@ -6680,7 +6682,7 @@ func Fn_g_socket_control_message_get_size(paramInstance unsafe.Pointer) uint64 {
 
 	ret := C.g_socket_control_message_get_size(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_socket_control_message_serialize(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -6691,14 +6693,14 @@ func Fn_g_socket_control_message_serialize(paramInstance unsafe.Pointer, param0 
 	C.g_socket_control_message_serialize(cValueInstance, cValue0)
 }
 
-func Fn_g_socket_control_message_deserialize(param0 int, param1 int, param2 uint64, param3 []uint8) unsafe.Pointer {
+func Fn_g_socket_control_message_deserialize(param0 int, param1 int, param2 uint64, param3 []uint8) {
 	// has non-string array param
 }
 
 func Fn_g_socket_listener_new() unsafe.Pointer {
 	ret := C.g_socket_listener_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_listener_accept(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -6712,7 +6714,7 @@ func Fn_g_socket_listener_accept(paramInstance unsafe.Pointer, param0 *unsafe.Po
 
 	ret := C.g_socket_listener_accept(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : accept_async : has callback
@@ -6728,7 +6730,7 @@ func Fn_g_socket_listener_accept_finish(paramInstance unsafe.Pointer, param0 uns
 
 	ret := C.g_socket_listener_accept_finish(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_listener_accept_socket(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
@@ -6742,7 +6744,7 @@ func Fn_g_socket_listener_accept_socket(paramInstance unsafe.Pointer, param0 *un
 
 	ret := C.g_socket_listener_accept_socket(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : accept_socket_async : has callback
@@ -6758,7 +6760,7 @@ func Fn_g_socket_listener_accept_socket_finish(paramInstance unsafe.Pointer, par
 
 	ret := C.g_socket_listener_accept_socket_finish(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_listener_add_address(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 unsafe.Pointer, param4 *unsafe.Pointer, error unsafe.Pointer) bool {
@@ -6778,7 +6780,7 @@ func Fn_g_socket_listener_add_address(paramInstance unsafe.Pointer, param0 unsaf
 
 	ret := C.g_socket_listener_add_address(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_listener_add_any_inet_port(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint16 {
@@ -6790,7 +6792,7 @@ func Fn_g_socket_listener_add_any_inet_port(paramInstance unsafe.Pointer, param0
 
 	ret := C.g_socket_listener_add_any_inet_port(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (uint16)(ret)
 }
 
 func Fn_g_socket_listener_add_inet_port(paramInstance unsafe.Pointer, param0 uint16, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -6804,7 +6806,7 @@ func Fn_g_socket_listener_add_inet_port(paramInstance unsafe.Pointer, param0 uin
 
 	ret := C.g_socket_listener_add_inet_port(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_listener_add_socket(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -6818,7 +6820,7 @@ func Fn_g_socket_listener_add_socket(paramInstance unsafe.Pointer, param0 unsafe
 
 	ret := C.g_socket_listener_add_socket(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_listener_close(paramInstance unsafe.Pointer) {
@@ -6838,7 +6840,7 @@ func Fn_g_socket_listener_set_backlog(paramInstance unsafe.Pointer, param0 int) 
 func Fn_g_socket_service_new() unsafe.Pointer {
 	ret := C.g_socket_service_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_socket_service_is_active(paramInstance unsafe.Pointer) bool {
@@ -6846,7 +6848,7 @@ func Fn_g_socket_service_is_active(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_socket_service_is_active(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_socket_service_start(paramInstance unsafe.Pointer) {
@@ -6878,7 +6880,7 @@ func Fn_g_subprocess_communicate_finish(paramInstance unsafe.Pointer, param0 uns
 
 	ret := C.g_subprocess_communicate_finish(cValueInstance, cValue0, cValue1, cValue2, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 *string, param3 *string, error unsafe.Pointer) bool {
@@ -6905,7 +6907,7 @@ func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 strin
 	param3String := C.GoString(cValue3String)
 	*param3 = param3String
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : communicate_utf8_async : has callback
@@ -6931,7 +6933,7 @@ func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param
 	param2String := C.GoString(cValue2String)
 	*param2 = param2String
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : wait_async : has callback
@@ -6975,7 +6977,7 @@ func Fn_g_tcp_connection_get_graceful_disconnect(paramInstance unsafe.Pointer) b
 
 	ret := C.g_tcp_connection_get_graceful_disconnect(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_tcp_connection_set_graceful_disconnect(paramInstance unsafe.Pointer, param0 bool) {
@@ -6993,7 +6995,7 @@ func Fn_g_tcp_wrapper_connection_new(param0 unsafe.Pointer, param1 unsafe.Pointe
 
 	ret := C.g_tcp_wrapper_connection_new(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_tcp_wrapper_connection_get_base_io_stream(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -7001,7 +7003,7 @@ func Fn_g_tcp_wrapper_connection_get_base_io_stream(paramInstance unsafe.Pointer
 
 	ret := C.g_tcp_wrapper_connection_get_base_io_stream(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_test_dbus_new(param0 int) unsafe.Pointer {
@@ -7009,7 +7011,7 @@ func Fn_g_test_dbus_new(param0 int) unsafe.Pointer {
 
 	ret := C.g_test_dbus_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_test_dbus_add_service_dir(paramInstance unsafe.Pointer, param0 string) {
@@ -7032,7 +7034,7 @@ func Fn_g_test_dbus_get_bus_address(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_test_dbus_get_bus_address(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_test_dbus_get_flags(paramInstance unsafe.Pointer) int {
@@ -7040,7 +7042,7 @@ func Fn_g_test_dbus_get_flags(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_test_dbus_get_flags(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_test_dbus_stop(paramInstance unsafe.Pointer) {
@@ -7065,7 +7067,7 @@ func Fn_g_themed_icon_new(param0 string) unsafe.Pointer {
 
 	ret := C.g_themed_icon_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_themed_icon_new_from_names(param0 []string, param1 int) unsafe.Pointer {
@@ -7083,7 +7085,7 @@ func Fn_g_themed_icon_new_from_names(param0 []string, param1 int) unsafe.Pointer
 
 	ret := C.g_themed_icon_new_from_names(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_themed_icon_new_with_default_fallbacks(param0 string) unsafe.Pointer {
@@ -7092,7 +7094,7 @@ func Fn_g_themed_icon_new_with_default_fallbacks(param0 string) unsafe.Pointer {
 
 	ret := C.g_themed_icon_new_with_default_fallbacks(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_themed_icon_append_name(paramInstance unsafe.Pointer, param0 string) {
@@ -7120,7 +7122,7 @@ func Fn_g_threaded_socket_service_new(param0 int) unsafe.Pointer {
 
 	ret := C.g_threaded_socket_service_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_tls_certificate_new_from_file(param0 string, error unsafe.Pointer) unsafe.Pointer {
@@ -7131,7 +7133,7 @@ func Fn_g_tls_certificate_new_from_file(param0 string, error unsafe.Pointer) uns
 
 	ret := C.g_tls_certificate_new_from_file(cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_tls_certificate_new_from_files(param0 string, param1 string, error unsafe.Pointer) unsafe.Pointer {
@@ -7145,7 +7147,7 @@ func Fn_g_tls_certificate_new_from_files(param0 string, param1 string, error uns
 
 	ret := C.g_tls_certificate_new_from_files(cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_tls_certificate_new_from_pem(param0 string, param1 uint64, error unsafe.Pointer) unsafe.Pointer {
@@ -7158,7 +7160,7 @@ func Fn_g_tls_certificate_new_from_pem(param0 string, param1 uint64, error unsaf
 
 	ret := C.g_tls_certificate_new_from_pem(cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_tls_certificate_get_issuer(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -7166,7 +7168,7 @@ func Fn_g_tls_certificate_get_issuer(paramInstance unsafe.Pointer) unsafe.Pointe
 
 	ret := C.g_tls_certificate_get_issuer(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_tls_certificate_verify(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) int {
@@ -7178,7 +7180,7 @@ func Fn_g_tls_certificate_verify(paramInstance unsafe.Pointer, param0 unsafe.Poi
 
 	ret := C.g_tls_certificate_verify(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_tls_certificate_list_new_from_file(param0 string, error unsafe.Pointer) unsafe.Pointer {
@@ -7189,7 +7191,7 @@ func Fn_g_tls_certificate_list_new_from_file(param0 string, error unsafe.Pointer
 
 	ret := C.g_tls_certificate_list_new_from_file(cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_tls_connection_emit_accept_certificate(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int) bool {
@@ -7201,7 +7203,7 @@ func Fn_g_tls_connection_emit_accept_certificate(paramInstance unsafe.Pointer, p
 
 	ret := C.g_tls_connection_emit_accept_certificate(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_tls_connection_get_certificate(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -7209,7 +7211,7 @@ func Fn_g_tls_connection_get_certificate(paramInstance unsafe.Pointer) unsafe.Po
 
 	ret := C.g_tls_connection_get_certificate(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_tls_connection_get_peer_certificate(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -7217,7 +7219,7 @@ func Fn_g_tls_connection_get_peer_certificate(paramInstance unsafe.Pointer) unsa
 
 	ret := C.g_tls_connection_get_peer_certificate(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_tls_connection_get_peer_certificate_errors(paramInstance unsafe.Pointer) int {
@@ -7225,7 +7227,7 @@ func Fn_g_tls_connection_get_peer_certificate_errors(paramInstance unsafe.Pointe
 
 	ret := C.g_tls_connection_get_peer_certificate_errors(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_tls_connection_get_rehandshake_mode(paramInstance unsafe.Pointer) int {
@@ -7233,7 +7235,7 @@ func Fn_g_tls_connection_get_rehandshake_mode(paramInstance unsafe.Pointer) int 
 
 	ret := C.g_tls_connection_get_rehandshake_mode(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_tls_connection_get_require_close_notify(paramInstance unsafe.Pointer) bool {
@@ -7241,7 +7243,7 @@ func Fn_g_tls_connection_get_require_close_notify(paramInstance unsafe.Pointer) 
 
 	ret := C.g_tls_connection_get_require_close_notify(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_tls_connection_get_use_system_certdb(paramInstance unsafe.Pointer) bool {
@@ -7249,7 +7251,7 @@ func Fn_g_tls_connection_get_use_system_certdb(paramInstance unsafe.Pointer) boo
 
 	ret := C.g_tls_connection_get_use_system_certdb(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_tls_connection_handshake(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -7261,7 +7263,7 @@ func Fn_g_tls_connection_handshake(paramInstance unsafe.Pointer, param0 unsafe.P
 
 	ret := C.g_tls_connection_handshake(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : handshake_async : has callback
@@ -7275,7 +7277,7 @@ func Fn_g_tls_connection_handshake_finish(paramInstance unsafe.Pointer, param0 u
 
 	ret := C.g_tls_connection_handshake_finish(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_tls_connection_set_certificate(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -7330,7 +7332,7 @@ func Fn_g_tls_password_new(param0 int, param1 string) unsafe.Pointer {
 
 	ret := C.g_tls_password_new(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : set_value_full : has callback
@@ -7344,7 +7346,7 @@ func Fn_g_unix_connection_receive_credentials(paramInstance unsafe.Pointer, para
 
 	ret := C.g_unix_connection_receive_credentials(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : receive_credentials_async : has callback
@@ -7358,7 +7360,7 @@ func Fn_g_unix_connection_receive_fd(paramInstance unsafe.Pointer, param0 unsafe
 
 	ret := C.g_unix_connection_receive_fd(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_unix_connection_send_credentials(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
@@ -7370,7 +7372,7 @@ func Fn_g_unix_connection_send_credentials(paramInstance unsafe.Pointer, param0 
 
 	ret := C.g_unix_connection_send_credentials(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : send_credentials_async : has callback
@@ -7386,13 +7388,13 @@ func Fn_g_unix_connection_send_fd(paramInstance unsafe.Pointer, param0 int, para
 
 	ret := C.g_unix_connection_send_fd(cValueInstance, cValue0, cValue1, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_credentials_message_new() unsafe.Pointer {
 	ret := C.g_unix_credentials_message_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_unix_credentials_message_new_with_credentials(param0 unsafe.Pointer) unsafe.Pointer {
@@ -7400,7 +7402,7 @@ func Fn_g_unix_credentials_message_new_with_credentials(param0 unsafe.Pointer) u
 
 	ret := C.g_unix_credentials_message_new_with_credentials(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_unix_credentials_message_get_credentials(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -7408,22 +7410,22 @@ func Fn_g_unix_credentials_message_get_credentials(paramInstance unsafe.Pointer)
 
 	ret := C.g_unix_credentials_message_get_credentials(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_unix_credentials_message_is_supported() bool {
 	ret := C.g_unix_credentials_message_is_supported()
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_fd_list_new() unsafe.Pointer {
 	ret := C.g_unix_fd_list_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
-func Fn_g_unix_fd_list_new_from_array(param0 []int, param1 int) unsafe.Pointer {
+func Fn_g_unix_fd_list_new_from_array(param0 []int, param1 int) {
 	// has non-string array param
 }
 
@@ -7436,7 +7438,7 @@ func Fn_g_unix_fd_list_append(paramInstance unsafe.Pointer, param0 int, error un
 
 	ret := C.g_unix_fd_list_append(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_unix_fd_list_get(paramInstance unsafe.Pointer, param0 int, error unsafe.Pointer) int {
@@ -7448,7 +7450,7 @@ func Fn_g_unix_fd_list_get(paramInstance unsafe.Pointer, param0 int, error unsaf
 
 	ret := C.g_unix_fd_list_get(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_unix_fd_list_get_length(paramInstance unsafe.Pointer) int {
@@ -7456,7 +7458,7 @@ func Fn_g_unix_fd_list_get_length(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_unix_fd_list_get_length(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 // UNSUPPORTED : peek_fds : has array return
@@ -7466,7 +7468,7 @@ func Fn_g_unix_fd_list_get_length(paramInstance unsafe.Pointer) int {
 func Fn_g_unix_fd_message_new() unsafe.Pointer {
 	ret := C.g_unix_fd_message_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_unix_fd_message_new_with_fd_list(param0 unsafe.Pointer) unsafe.Pointer {
@@ -7474,7 +7476,7 @@ func Fn_g_unix_fd_message_new_with_fd_list(param0 unsafe.Pointer) unsafe.Pointer
 
 	ret := C.g_unix_fd_message_new_with_fd_list(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_unix_fd_message_append_fd(paramInstance unsafe.Pointer, param0 int, error unsafe.Pointer) bool {
@@ -7486,7 +7488,7 @@ func Fn_g_unix_fd_message_append_fd(paramInstance unsafe.Pointer, param0 int, er
 
 	ret := C.g_unix_fd_message_append_fd(cValueInstance, cValue0, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_fd_message_get_fd_list(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -7494,7 +7496,7 @@ func Fn_g_unix_fd_message_get_fd_list(paramInstance unsafe.Pointer) unsafe.Point
 
 	ret := C.g_unix_fd_message_get_fd_list(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : steal_fds : has array return
@@ -7506,7 +7508,7 @@ func Fn_g_unix_input_stream_new(param0 int, param1 bool) unsafe.Pointer {
 
 	ret := C.g_unix_input_stream_new(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_unix_input_stream_get_close_fd(paramInstance unsafe.Pointer) bool {
@@ -7514,7 +7516,7 @@ func Fn_g_unix_input_stream_get_close_fd(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_unix_input_stream_get_close_fd(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_input_stream_get_fd(paramInstance unsafe.Pointer) int {
@@ -7522,7 +7524,7 @@ func Fn_g_unix_input_stream_get_fd(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_unix_input_stream_get_fd(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_unix_input_stream_set_close_fd(paramInstance unsafe.Pointer, param0 bool) {
@@ -7536,7 +7538,7 @@ func Fn_g_unix_input_stream_set_close_fd(paramInstance unsafe.Pointer, param0 bo
 func Fn_g_unix_mount_monitor_new() unsafe.Pointer {
 	ret := C.g_unix_mount_monitor_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_unix_mount_monitor_set_rate_limit(paramInstance unsafe.Pointer, param0 int) {
@@ -7554,7 +7556,7 @@ func Fn_g_unix_output_stream_new(param0 int, param1 bool) unsafe.Pointer {
 
 	ret := C.g_unix_output_stream_new(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_unix_output_stream_get_close_fd(paramInstance unsafe.Pointer) bool {
@@ -7562,7 +7564,7 @@ func Fn_g_unix_output_stream_get_close_fd(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_unix_output_stream_get_close_fd(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_output_stream_get_fd(paramInstance unsafe.Pointer) int {
@@ -7570,7 +7572,7 @@ func Fn_g_unix_output_stream_get_fd(paramInstance unsafe.Pointer) int {
 
 	ret := C.g_unix_output_stream_get_fd(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_unix_output_stream_set_close_fd(paramInstance unsafe.Pointer, param0 bool) {
@@ -7587,14 +7589,14 @@ func Fn_g_unix_socket_address_new(param0 string) unsafe.Pointer {
 
 	ret := C.g_unix_socket_address_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
-func Fn_g_unix_socket_address_new_abstract(param0 []int8, param1 int) unsafe.Pointer {
+func Fn_g_unix_socket_address_new_abstract(param0 []int8, param1 int) {
 	// has non-string array param
 }
 
-func Fn_g_unix_socket_address_new_with_type(param0 []int8, param1 int, param2 int) unsafe.Pointer {
+func Fn_g_unix_socket_address_new_with_type(param0 []int8, param1 int, param2 int) {
 	// has non-string array param
 }
 
@@ -7603,7 +7605,7 @@ func Fn_g_unix_socket_address_get_address_type(paramInstance unsafe.Pointer) int
 
 	ret := C.g_unix_socket_address_get_address_type(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_g_unix_socket_address_get_is_abstract(paramInstance unsafe.Pointer) bool {
@@ -7611,7 +7613,7 @@ func Fn_g_unix_socket_address_get_is_abstract(paramInstance unsafe.Pointer) bool
 
 	ret := C.g_unix_socket_address_get_is_abstract(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_unix_socket_address_get_path(paramInstance unsafe.Pointer) string {
@@ -7619,7 +7621,7 @@ func Fn_g_unix_socket_address_get_path(paramInstance unsafe.Pointer) string {
 
 	ret := C.g_unix_socket_address_get_path(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_g_unix_socket_address_get_path_len(paramInstance unsafe.Pointer) uint64 {
@@ -7627,13 +7629,13 @@ func Fn_g_unix_socket_address_get_path_len(paramInstance unsafe.Pointer) uint64 
 
 	ret := C.g_unix_socket_address_get_path_len(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint64)(ret)
 }
 
 func Fn_g_unix_socket_address_abstract_names_supported() bool {
 	ret := C.g_unix_socket_address_abstract_names_supported()
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_vfs_get_file_for_path(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
@@ -7644,7 +7646,7 @@ func Fn_g_vfs_get_file_for_path(paramInstance unsafe.Pointer, param0 string) uns
 
 	ret := C.g_vfs_get_file_for_path(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_vfs_get_file_for_uri(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
@@ -7655,7 +7657,7 @@ func Fn_g_vfs_get_file_for_uri(paramInstance unsafe.Pointer, param0 string) unsa
 
 	ret := C.g_vfs_get_file_for_uri(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : get_supported_uri_schemes : has array return
@@ -7665,7 +7667,7 @@ func Fn_g_vfs_is_active(paramInstance unsafe.Pointer) bool {
 
 	ret := C.g_vfs_is_active(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_g_vfs_parse_name(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
@@ -7676,7 +7678,7 @@ func Fn_g_vfs_parse_name(paramInstance unsafe.Pointer, param0 string) unsafe.Poi
 
 	ret := C.g_vfs_parse_name(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : register_uri_scheme : has callback
@@ -7684,13 +7686,13 @@ func Fn_g_vfs_parse_name(paramInstance unsafe.Pointer, param0 string) unsafe.Poi
 func Fn_g_vfs_get_default() unsafe.Pointer {
 	ret := C.g_vfs_get_default()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_vfs_get_local() unsafe.Pointer {
 	ret := C.g_vfs_get_local()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_volume_monitor_get_connected_drives(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -7698,7 +7700,7 @@ func Fn_g_volume_monitor_get_connected_drives(paramInstance unsafe.Pointer) unsa
 
 	ret := C.g_volume_monitor_get_connected_drives(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_volume_monitor_get_mount_for_uuid(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
@@ -7709,7 +7711,7 @@ func Fn_g_volume_monitor_get_mount_for_uuid(paramInstance unsafe.Pointer, param0
 
 	ret := C.g_volume_monitor_get_mount_for_uuid(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_volume_monitor_get_mounts(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -7717,7 +7719,7 @@ func Fn_g_volume_monitor_get_mounts(paramInstance unsafe.Pointer) unsafe.Pointer
 
 	ret := C.g_volume_monitor_get_mounts(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_volume_monitor_get_volume_for_uuid(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
@@ -7728,7 +7730,7 @@ func Fn_g_volume_monitor_get_volume_for_uuid(paramInstance unsafe.Pointer, param
 
 	ret := C.g_volume_monitor_get_volume_for_uuid(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_volume_monitor_get_volumes(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -7736,7 +7738,7 @@ func Fn_g_volume_monitor_get_volumes(paramInstance unsafe.Pointer) unsafe.Pointe
 
 	ret := C.g_volume_monitor_get_volumes(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_volume_monitor_adopt_orphan_mount(param0 unsafe.Pointer) unsafe.Pointer {
@@ -7744,13 +7746,13 @@ func Fn_g_volume_monitor_adopt_orphan_mount(param0 unsafe.Pointer) unsafe.Pointe
 
 	ret := C.g_volume_monitor_adopt_orphan_mount(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_volume_monitor_get() unsafe.Pointer {
 	ret := C.g_volume_monitor_get()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_zlib_compressor_new(param0 int, param1 int) unsafe.Pointer {
@@ -7760,7 +7762,7 @@ func Fn_g_zlib_compressor_new(param0 int, param1 int) unsafe.Pointer {
 
 	ret := C.g_zlib_compressor_new(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_zlib_compressor_get_file_info(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -7768,7 +7770,7 @@ func Fn_g_zlib_compressor_get_file_info(paramInstance unsafe.Pointer) unsafe.Poi
 
 	ret := C.g_zlib_compressor_get_file_info(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_zlib_compressor_set_file_info(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -7784,7 +7786,7 @@ func Fn_g_zlib_decompressor_new(param0 int) unsafe.Pointer {
 
 	ret := C.g_zlib_decompressor_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_g_zlib_decompressor_get_file_info(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -7792,5 +7794,5 @@ func Fn_g_zlib_decompressor_get_file_info(paramInstance unsafe.Pointer) unsafe.P
 
 	ret := C.g_zlib_decompressor_get_file_info(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }

@@ -3,10 +3,7 @@
 
 package gdk
 
-import (
-	"fmt"
-	"unsafe"
-)
+import "unsafe"
 
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
@@ -16,7 +13,10 @@ func toCBool(b bool) C.gboolean {
 	if b {
 		return C.TRUE
 	}
-	return C.TRUE
+	return C.FALSE
+}
+func toGoBool(b C.gboolean) bool {
+	return b == C.TRUE
 }
 
 type Atom C.GdkAtom
@@ -73,7 +73,7 @@ func Fn_gdk_atom_intern(param0 string, param1 bool) Atom {
 
 	ret := C.gdk_atom_intern(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return Atom(ret)
 }
 
 func Fn_gdk_atom_intern_static_string(param0 string) Atom {
@@ -82,7 +82,7 @@ func Fn_gdk_atom_intern_static_string(param0 string) Atom {
 
 	ret := C.gdk_atom_intern_static_string(cValue0)
 
-	fmt.Println(ret)
+	return Atom(ret)
 }
 
 func Fn_gdk_beep() {
@@ -94,7 +94,7 @@ func Fn_gdk_cairo_create(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_cairo_create(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_cairo_draw_from_gl(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 int, param5 int, param6 int, param7 int, param8 int) {
@@ -126,7 +126,7 @@ func Fn_gdk_cairo_get_clip_rectangle(param0 unsafe.Pointer, param1 unsafe.Pointe
 
 	ret := C.gdk_cairo_get_clip_rectangle(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_cairo_rectangle(param0 unsafe.Pointer, param1 unsafe.Pointer) {
@@ -150,7 +150,7 @@ func Fn_gdk_cairo_region_create_from_surface(param0 unsafe.Pointer) unsafe.Point
 
 	ret := C.gdk_cairo_region_create_from_surface(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_cairo_set_source_color(param0 unsafe.Pointer, param1 unsafe.Pointer) {
@@ -202,7 +202,7 @@ func Fn_gdk_cairo_surface_create_from_pixbuf(param0 unsafe.Pointer, param1 int, 
 
 	ret := C.gdk_cairo_surface_create_from_pixbuf(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_color_parse(param0 string, param1 unsafe.Pointer) bool {
@@ -213,7 +213,7 @@ func Fn_gdk_color_parse(param0 string, param1 unsafe.Pointer) bool {
 
 	ret := C.gdk_color_parse(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_disable_multidevice() {
@@ -235,7 +235,7 @@ func Fn_gdk_drag_begin(param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Poin
 
 	ret := C.gdk_drag_begin(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_drag_begin_for_device(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) unsafe.Pointer {
@@ -247,7 +247,7 @@ func Fn_gdk_drag_begin_for_device(param0 unsafe.Pointer, param1 unsafe.Pointer, 
 
 	ret := C.gdk_drag_begin_for_device(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_drag_begin_from_point(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 int, param4 int) unsafe.Pointer {
@@ -263,7 +263,7 @@ func Fn_gdk_drag_begin_from_point(param0 unsafe.Pointer, param1 unsafe.Pointer, 
 
 	ret := C.gdk_drag_begin_from_point(cValue0, cValue1, cValue2, cValue3, cValue4)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_drag_drop(param0 unsafe.Pointer, param1 uint32) {
@@ -287,7 +287,7 @@ func Fn_gdk_drag_drop_succeeded(param0 unsafe.Pointer) bool {
 
 	ret := C.gdk_drag_drop_succeeded(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_drag_find_window_for_screen(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 int, param4 int, param5 *unsafe.Pointer, param6 *int) {
@@ -313,7 +313,7 @@ func Fn_gdk_drag_get_selection(param0 unsafe.Pointer) Atom {
 
 	ret := C.gdk_drag_get_selection(cValue0)
 
-	fmt.Println(ret)
+	return Atom(ret)
 }
 
 func Fn_gdk_drag_motion(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 int, param5 int, param6 int, param7 uint32) bool {
@@ -335,7 +335,7 @@ func Fn_gdk_drag_motion(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int
 
 	ret := C.gdk_drag_motion(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_drag_status(param0 unsafe.Pointer, param1 int, param2 uint32) {
@@ -371,7 +371,7 @@ func Fn_gdk_drop_reply(param0 unsafe.Pointer, param1 bool, param2 uint32) {
 func Fn_gdk_error_trap_pop() int {
 	ret := C.gdk_error_trap_pop()
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_error_trap_pop_ignored() {
@@ -385,7 +385,7 @@ func Fn_gdk_error_trap_push() {
 func Fn_gdk_event_get() unsafe.Pointer {
 	ret := C.gdk_event_get()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : event_handler_set : has callback
@@ -393,7 +393,7 @@ func Fn_gdk_event_get() unsafe.Pointer {
 func Fn_gdk_event_peek() unsafe.Pointer {
 	ret := C.gdk_event_peek()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_event_request_motions(param0 unsafe.Pointer) {
@@ -411,7 +411,7 @@ func Fn_gdk_events_get_angle(param0 unsafe.Pointer, param1 unsafe.Pointer, param
 
 	ret := C.gdk_events_get_angle(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_events_get_center(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *float64, param3 *float64) bool {
@@ -425,7 +425,7 @@ func Fn_gdk_events_get_center(param0 unsafe.Pointer, param1 unsafe.Pointer, para
 
 	ret := C.gdk_events_get_center(cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_events_get_distance(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *float64) bool {
@@ -437,13 +437,13 @@ func Fn_gdk_events_get_distance(param0 unsafe.Pointer, param1 unsafe.Pointer, pa
 
 	ret := C.gdk_events_get_distance(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_events_pending() bool {
 	ret := C.gdk_events_pending()
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_flush() {
@@ -453,37 +453,37 @@ func Fn_gdk_flush() {
 func Fn_gdk_get_default_root_window() unsafe.Pointer {
 	ret := C.gdk_get_default_root_window()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_get_display() string {
 	ret := C.gdk_get_display()
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_get_display_arg_name() string {
 	ret := C.gdk_get_display_arg_name()
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_get_program_class() string {
 	ret := C.gdk_get_program_class()
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_get_show_events() bool {
 	ret := C.gdk_get_show_events()
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_gl_error_quark() uint32 {
 	ret := C.gdk_gl_error_quark()
 
-	fmt.Println(ret)
+	return (uint32)(ret)
 }
 
 func Fn_gdk_init(param0 *int, param1 *[]string) {
@@ -547,7 +547,7 @@ func Fn_gdk_init_check(param0 *int, param1 *[]string) bool {
 	}
 	*param1 = param1Out
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_keyboard_grab(param0 unsafe.Pointer, param1 bool, param2 uint32) int {
@@ -559,7 +559,7 @@ func Fn_gdk_keyboard_grab(param0 unsafe.Pointer, param1 bool, param2 uint32) int
 
 	ret := C.gdk_keyboard_grab(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_keyboard_ungrab(param0 uint32) {
@@ -584,7 +584,7 @@ func Fn_gdk_keyval_from_name(param0 string) uint {
 
 	ret := C.gdk_keyval_from_name(cValue0)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_gdk_keyval_is_lower(param0 uint) bool {
@@ -592,7 +592,7 @@ func Fn_gdk_keyval_is_lower(param0 uint) bool {
 
 	ret := C.gdk_keyval_is_lower(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_keyval_is_upper(param0 uint) bool {
@@ -600,7 +600,7 @@ func Fn_gdk_keyval_is_upper(param0 uint) bool {
 
 	ret := C.gdk_keyval_is_upper(cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_keyval_name(param0 uint) string {
@@ -608,7 +608,7 @@ func Fn_gdk_keyval_name(param0 uint) string {
 
 	ret := C.gdk_keyval_name(cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_keyval_to_lower(param0 uint) uint {
@@ -616,7 +616,7 @@ func Fn_gdk_keyval_to_lower(param0 uint) uint {
 
 	ret := C.gdk_keyval_to_lower(cValue0)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_gdk_keyval_to_unicode(param0 uint) uint32 {
@@ -624,7 +624,7 @@ func Fn_gdk_keyval_to_unicode(param0 uint) uint32 {
 
 	ret := C.gdk_keyval_to_unicode(cValue0)
 
-	fmt.Println(ret)
+	return (uint32)(ret)
 }
 
 func Fn_gdk_keyval_to_upper(param0 uint) uint {
@@ -632,13 +632,13 @@ func Fn_gdk_keyval_to_upper(param0 uint) uint {
 
 	ret := C.gdk_keyval_to_upper(cValue0)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_gdk_list_visuals() unsafe.Pointer {
 	ret := C.gdk_list_visuals()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_notify_startup_complete() {
@@ -657,7 +657,7 @@ func Fn_gdk_offscreen_window_get_embedder(param0 unsafe.Pointer) unsafe.Pointer 
 
 	ret := C.gdk_offscreen_window_get_embedder(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_offscreen_window_get_surface(param0 unsafe.Pointer) unsafe.Pointer {
@@ -665,7 +665,7 @@ func Fn_gdk_offscreen_window_get_surface(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_offscreen_window_get_surface(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_offscreen_window_set_embedder(param0 unsafe.Pointer, param1 unsafe.Pointer) {
@@ -679,7 +679,7 @@ func Fn_gdk_offscreen_window_set_embedder(param0 unsafe.Pointer, param1 unsafe.P
 func Fn_gdk_pango_context_get() unsafe.Pointer {
 	ret := C.gdk_pango_context_get()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_pango_context_get_for_screen(param0 unsafe.Pointer) unsafe.Pointer {
@@ -687,7 +687,7 @@ func Fn_gdk_pango_context_get_for_screen(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_pango_context_get_for_screen(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_pango_layout_get_clip_region(param0 unsafe.Pointer, param1 int, param2 int, param3 *int, param4 int) unsafe.Pointer {
@@ -703,10 +703,10 @@ func Fn_gdk_pango_layout_get_clip_region(param0 unsafe.Pointer, param1 int, para
 
 	ret := C.gdk_pango_layout_get_clip_region(cValue0, cValue1, cValue2, cValue3, cValue4)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pango_layout_line_get_clip_region(param0 unsafe.Pointer, param1 int, param2 int, param3 []int, param4 int) unsafe.Pointer {
+func Fn_gdk_pango_layout_line_get_clip_region(param0 unsafe.Pointer, param1 int, param2 int, param3 []int, param4 int) {
 	// has non-string array param
 }
 
@@ -754,7 +754,7 @@ func Fn_gdk_pixbuf_get_from_surface(param0 unsafe.Pointer, param1 int, param2 in
 
 	ret := C.gdk_pixbuf_get_from_surface(cValue0, cValue1, cValue2, cValue3, cValue4)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_pixbuf_get_from_window(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int) unsafe.Pointer {
@@ -770,7 +770,7 @@ func Fn_gdk_pixbuf_get_from_window(param0 unsafe.Pointer, param1 int, param2 int
 
 	ret := C.gdk_pixbuf_get_from_window(cValue0, cValue1, cValue2, cValue3, cValue4)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_pointer_grab(param0 unsafe.Pointer, param1 bool, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 uint32) int {
@@ -788,13 +788,13 @@ func Fn_gdk_pointer_grab(param0 unsafe.Pointer, param1 bool, param2 int, param3 
 
 	ret := C.gdk_pointer_grab(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_pointer_is_grabbed() bool {
 	ret := C.gdk_pointer_is_grabbed()
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_pointer_ungrab(param0 uint32) {
@@ -833,7 +833,7 @@ func Fn_gdk_property_delete(param0 unsafe.Pointer, param1 Atom) {
 	C.gdk_property_delete(cValue0, cValue1)
 }
 
-func Fn_gdk_property_get(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint64, param4 uint64, param5 int, param6 unsafe.Pointer, param7 *int, param8 *int, param9 []*uint8) bool {
+func Fn_gdk_property_get(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint64, param4 uint64, param5 int, param6 unsafe.Pointer, param7 *int, param8 *int, param9 []*uint8) {
 	// has non-string array param
 }
 
@@ -862,7 +862,7 @@ func Fn_gdk_selection_owner_get(param0 Atom) unsafe.Pointer {
 
 	ret := C.gdk_selection_owner_get(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_selection_owner_get_for_display(param0 unsafe.Pointer, param1 Atom) unsafe.Pointer {
@@ -872,7 +872,7 @@ func Fn_gdk_selection_owner_get_for_display(param0 unsafe.Pointer, param1 Atom) 
 
 	ret := C.gdk_selection_owner_get_for_display(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_selection_owner_set(param0 unsafe.Pointer, param1 Atom, param2 uint32, param3 bool) bool {
@@ -886,7 +886,7 @@ func Fn_gdk_selection_owner_set(param0 unsafe.Pointer, param1 Atom, param2 uint3
 
 	ret := C.gdk_selection_owner_set(cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_selection_owner_set_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 Atom, param3 uint32, param4 bool) bool {
@@ -902,7 +902,7 @@ func Fn_gdk_selection_owner_set_for_display(param0 unsafe.Pointer, param1 unsafe
 
 	ret := C.gdk_selection_owner_set_for_display(cValue0, cValue1, cValue2, cValue3, cValue4)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_selection_property_get(param0 unsafe.Pointer, param1 **uint8, param2 unsafe.Pointer, param3 *int) int {
@@ -916,7 +916,7 @@ func Fn_gdk_selection_property_get(param0 unsafe.Pointer, param1 **uint8, param2
 
 	ret := C.gdk_selection_property_get(cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_selection_send_notify(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 Atom, param4 uint32) {
@@ -983,7 +983,7 @@ func Fn_gdk_setting_get(param0 string, param1 unsafe.Pointer) bool {
 
 	ret := C.gdk_setting_get(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 // UNSUPPORTED : synthesize_window_state : blacklisted
@@ -1008,7 +1008,7 @@ func Fn_gdk_test_simulate_button(param0 unsafe.Pointer, param1 int, param2 int, 
 
 	ret := C.gdk_test_simulate_button(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_test_simulate_key(param0 unsafe.Pointer, param1 int, param2 int, param3 uint, param4 int, param5 int) bool {
@@ -1026,10 +1026,10 @@ func Fn_gdk_test_simulate_key(param0 unsafe.Pointer, param1 int, param2 int, par
 
 	ret := C.gdk_test_simulate_key(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
-func Fn_gdk_text_property_to_utf8_list_for_display(param0 unsafe.Pointer, param1 Atom, param2 int, param3 []uint8, param4 int, param5 *[]string) int {
+func Fn_gdk_text_property_to_utf8_list_for_display(param0 unsafe.Pointer, param1 Atom, param2 int, param3 []uint8, param4 int, param5 *[]string) {
 	// has non-string array param
 }
 
@@ -1064,7 +1064,7 @@ func Fn_gdk_unicode_to_keyval(param0 uint32) uint {
 
 	ret := C.gdk_unicode_to_keyval(cValue0)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_gdk_utf8_to_string_target(param0 string) string {
@@ -1073,13 +1073,13 @@ func Fn_gdk_utf8_to_string_target(param0 string) string {
 
 	ret := C.gdk_utf8_to_string_target(cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_app_launch_context_new() unsafe.Pointer {
 	ret := C.gdk_app_launch_context_new()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_app_launch_context_set_desktop(paramInstance unsafe.Pointer, param0 int) {
@@ -1136,7 +1136,7 @@ func Fn_gdk_cursor_new(param0 int) unsafe.Pointer {
 
 	ret := C.gdk_cursor_new(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_cursor_new_for_display(param0 unsafe.Pointer, param1 int) unsafe.Pointer {
@@ -1146,7 +1146,7 @@ func Fn_gdk_cursor_new_for_display(param0 unsafe.Pointer, param1 int) unsafe.Poi
 
 	ret := C.gdk_cursor_new_for_display(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_cursor_new_from_name(param0 unsafe.Pointer, param1 string) unsafe.Pointer {
@@ -1157,7 +1157,7 @@ func Fn_gdk_cursor_new_from_name(param0 unsafe.Pointer, param1 string) unsafe.Po
 
 	ret := C.gdk_cursor_new_from_name(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_cursor_new_from_pixbuf(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int) unsafe.Pointer {
@@ -1171,7 +1171,7 @@ func Fn_gdk_cursor_new_from_pixbuf(param0 unsafe.Pointer, param1 unsafe.Pointer,
 
 	ret := C.gdk_cursor_new_from_pixbuf(cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_cursor_new_from_surface(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 float64, param3 float64) unsafe.Pointer {
@@ -1185,7 +1185,7 @@ func Fn_gdk_cursor_new_from_surface(param0 unsafe.Pointer, param1 unsafe.Pointer
 
 	ret := C.gdk_cursor_new_from_surface(cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_cursor_get_cursor_type(paramInstance unsafe.Pointer) int {
@@ -1193,7 +1193,7 @@ func Fn_gdk_cursor_get_cursor_type(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_cursor_get_cursor_type(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_cursor_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1201,7 +1201,7 @@ func Fn_gdk_cursor_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_cursor_get_display(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_cursor_get_image(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1209,7 +1209,7 @@ func Fn_gdk_cursor_get_image(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_cursor_get_image(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_cursor_get_surface(paramInstance unsafe.Pointer, param0 *float64, param1 *float64) unsafe.Pointer {
@@ -1221,7 +1221,7 @@ func Fn_gdk_cursor_get_surface(paramInstance unsafe.Pointer, param0 *float64, pa
 
 	ret := C.gdk_cursor_get_surface(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_cursor_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1229,7 +1229,7 @@ func Fn_gdk_cursor_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_cursor_ref(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_cursor_unref(paramInstance unsafe.Pointer) {
@@ -1243,10 +1243,10 @@ func Fn_gdk_device_get_associated_device(paramInstance unsafe.Pointer) unsafe.Po
 
 	ret := C.gdk_device_get_associated_device(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_device_get_axis(paramInstance unsafe.Pointer, param0 []float64, param1 int, param2 *float64) bool {
+func Fn_gdk_device_get_axis(paramInstance unsafe.Pointer, param0 []float64, param1 int, param2 *float64) {
 	// has non-string array param
 }
 
@@ -1257,10 +1257,10 @@ func Fn_gdk_device_get_axis_use(paramInstance unsafe.Pointer, param0 uint) int {
 
 	ret := C.gdk_device_get_axis_use(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
-func Fn_gdk_device_get_axis_value(paramInstance unsafe.Pointer, param0 []float64, param1 Atom, param2 *float64) bool {
+func Fn_gdk_device_get_axis_value(paramInstance unsafe.Pointer, param0 []float64, param1 Atom, param2 *float64) {
 	// has non-string array param
 }
 
@@ -1269,7 +1269,7 @@ func Fn_gdk_device_get_device_type(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_device_get_device_type(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_device_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1277,7 +1277,7 @@ func Fn_gdk_device_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_device_get_display(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_device_get_has_cursor(paramInstance unsafe.Pointer) bool {
@@ -1285,10 +1285,10 @@ func Fn_gdk_device_get_has_cursor(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_device_get_has_cursor(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
-func Fn_gdk_device_get_history(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint32, param2 uint32, param3 []*unsafe.Pointer, param4 *int) bool {
+func Fn_gdk_device_get_history(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint32, param2 uint32, param3 []*unsafe.Pointer, param4 *int) {
 	// has non-string array param
 }
 
@@ -1303,7 +1303,7 @@ func Fn_gdk_device_get_key(paramInstance unsafe.Pointer, param0 uint, param1 *ui
 
 	ret := C.gdk_device_get_key(cValueInstance, cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_device_get_last_event_window(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1311,7 +1311,7 @@ func Fn_gdk_device_get_last_event_window(paramInstance unsafe.Pointer) unsafe.Po
 
 	ret := C.gdk_device_get_last_event_window(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_device_get_mode(paramInstance unsafe.Pointer) int {
@@ -1319,7 +1319,7 @@ func Fn_gdk_device_get_mode(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_device_get_mode(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_device_get_n_axes(paramInstance unsafe.Pointer) int {
@@ -1327,7 +1327,7 @@ func Fn_gdk_device_get_n_axes(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_device_get_n_axes(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_device_get_n_keys(paramInstance unsafe.Pointer) int {
@@ -1335,7 +1335,7 @@ func Fn_gdk_device_get_n_keys(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_device_get_n_keys(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_device_get_name(paramInstance unsafe.Pointer) string {
@@ -1343,7 +1343,7 @@ func Fn_gdk_device_get_name(paramInstance unsafe.Pointer) string {
 
 	ret := C.gdk_device_get_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_device_get_position(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *int, param2 *int) {
@@ -1375,7 +1375,7 @@ func Fn_gdk_device_get_product_id(paramInstance unsafe.Pointer) string {
 
 	ret := C.gdk_device_get_product_id(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_device_get_seat(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1383,7 +1383,7 @@ func Fn_gdk_device_get_seat(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_device_get_seat(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_device_get_source(paramInstance unsafe.Pointer) int {
@@ -1391,7 +1391,7 @@ func Fn_gdk_device_get_source(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_device_get_source(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_device_get_state(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []float64, param2 *int) {
@@ -1403,7 +1403,7 @@ func Fn_gdk_device_get_vendor_id(paramInstance unsafe.Pointer) string {
 
 	ret := C.gdk_device_get_vendor_id(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_device_get_window_at_position(paramInstance unsafe.Pointer, param0 *int, param1 *int) unsafe.Pointer {
@@ -1415,7 +1415,7 @@ func Fn_gdk_device_get_window_at_position(paramInstance unsafe.Pointer, param0 *
 
 	ret := C.gdk_device_get_window_at_position(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_device_get_window_at_position_double(paramInstance unsafe.Pointer, param0 *float64, param1 *float64) unsafe.Pointer {
@@ -1427,7 +1427,7 @@ func Fn_gdk_device_get_window_at_position_double(paramInstance unsafe.Pointer, p
 
 	ret := C.gdk_device_get_window_at_position_double(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_device_grab(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 bool, param3 int, param4 unsafe.Pointer, param5 uint32) int {
@@ -1447,7 +1447,7 @@ func Fn_gdk_device_grab(paramInstance unsafe.Pointer, param0 unsafe.Pointer, par
 
 	ret := C.gdk_device_grab(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_device_list_axes(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1455,7 +1455,7 @@ func Fn_gdk_device_list_axes(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_device_list_axes(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_device_list_slave_devices(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1463,7 +1463,7 @@ func Fn_gdk_device_list_slave_devices(paramInstance unsafe.Pointer) unsafe.Point
 
 	ret := C.gdk_device_list_slave_devices(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_device_set_axis_use(paramInstance unsafe.Pointer, param0 uint, param1 int) {
@@ -1495,7 +1495,7 @@ func Fn_gdk_device_set_mode(paramInstance unsafe.Pointer, param0 int) bool {
 
 	ret := C.gdk_device_set_mode(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_device_ungrab(paramInstance unsafe.Pointer, param0 uint32) {
@@ -1533,7 +1533,7 @@ func Fn_gdk_device_grab_info_libgtk_only(param0 unsafe.Pointer, param1 unsafe.Po
 
 	ret := C.gdk_device_grab_info_libgtk_only(cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_device_manager_get_client_pointer(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1541,7 +1541,7 @@ func Fn_gdk_device_manager_get_client_pointer(paramInstance unsafe.Pointer) unsa
 
 	ret := C.gdk_device_manager_get_client_pointer(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_device_manager_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1549,7 +1549,7 @@ func Fn_gdk_device_manager_get_display(paramInstance unsafe.Pointer) unsafe.Poin
 
 	ret := C.gdk_device_manager_get_display(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_device_manager_list_devices(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
@@ -1559,7 +1559,7 @@ func Fn_gdk_device_manager_list_devices(paramInstance unsafe.Pointer, param0 int
 
 	ret := C.gdk_device_manager_list_devices(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_beep(paramInstance unsafe.Pointer) {
@@ -1581,7 +1581,7 @@ func Fn_gdk_display_device_is_grabbed(paramInstance unsafe.Pointer, param0 unsaf
 
 	ret := C.gdk_display_device_is_grabbed(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_display_flush(paramInstance unsafe.Pointer) {
@@ -1595,7 +1595,7 @@ func Fn_gdk_display_get_app_launch_context(paramInstance unsafe.Pointer) unsafe.
 
 	ret := C.gdk_display_get_app_launch_context(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_get_default_cursor_size(paramInstance unsafe.Pointer) uint {
@@ -1603,7 +1603,7 @@ func Fn_gdk_display_get_default_cursor_size(paramInstance unsafe.Pointer) uint {
 
 	ret := C.gdk_display_get_default_cursor_size(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_gdk_display_get_default_group(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1611,7 +1611,7 @@ func Fn_gdk_display_get_default_group(paramInstance unsafe.Pointer) unsafe.Point
 
 	ret := C.gdk_display_get_default_group(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_get_default_screen(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1619,7 +1619,7 @@ func Fn_gdk_display_get_default_screen(paramInstance unsafe.Pointer) unsafe.Poin
 
 	ret := C.gdk_display_get_default_screen(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_get_default_seat(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1627,7 +1627,7 @@ func Fn_gdk_display_get_default_seat(paramInstance unsafe.Pointer) unsafe.Pointe
 
 	ret := C.gdk_display_get_default_seat(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_get_device_manager(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1635,7 +1635,7 @@ func Fn_gdk_display_get_device_manager(paramInstance unsafe.Pointer) unsafe.Poin
 
 	ret := C.gdk_display_get_device_manager(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_get_event(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1643,7 +1643,7 @@ func Fn_gdk_display_get_event(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_display_get_event(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_get_maximal_cursor_size(paramInstance unsafe.Pointer, param0 *uint, param1 *uint) {
@@ -1661,7 +1661,7 @@ func Fn_gdk_display_get_n_screens(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_display_get_n_screens(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_display_get_name(paramInstance unsafe.Pointer) string {
@@ -1669,7 +1669,7 @@ func Fn_gdk_display_get_name(paramInstance unsafe.Pointer) string {
 
 	ret := C.gdk_display_get_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_display_get_pointer(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *int, param2 *int, param3 *int) {
@@ -1693,7 +1693,7 @@ func Fn_gdk_display_get_screen(paramInstance unsafe.Pointer, param0 int) unsafe.
 
 	ret := C.gdk_display_get_screen(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_get_window_at_pointer(paramInstance unsafe.Pointer, param0 *int, param1 *int) unsafe.Pointer {
@@ -1705,7 +1705,7 @@ func Fn_gdk_display_get_window_at_pointer(paramInstance unsafe.Pointer, param0 *
 
 	ret := C.gdk_display_get_window_at_pointer(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_has_pending(paramInstance unsafe.Pointer) bool {
@@ -1713,7 +1713,7 @@ func Fn_gdk_display_has_pending(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_display_has_pending(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_display_is_closed(paramInstance unsafe.Pointer) bool {
@@ -1721,7 +1721,7 @@ func Fn_gdk_display_is_closed(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_display_is_closed(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_display_keyboard_ungrab(paramInstance unsafe.Pointer, param0 uint32) {
@@ -1737,7 +1737,7 @@ func Fn_gdk_display_list_devices(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_display_list_devices(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_list_seats(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1745,7 +1745,7 @@ func Fn_gdk_display_list_seats(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_display_list_seats(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_notify_startup_complete(paramInstance unsafe.Pointer, param0 string) {
@@ -1762,7 +1762,7 @@ func Fn_gdk_display_peek_event(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_display_peek_event(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_pointer_is_grabbed(paramInstance unsafe.Pointer) bool {
@@ -1770,7 +1770,7 @@ func Fn_gdk_display_pointer_is_grabbed(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_display_pointer_is_grabbed(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_display_pointer_ungrab(paramInstance unsafe.Pointer, param0 uint32) {
@@ -1796,7 +1796,7 @@ func Fn_gdk_display_request_selection_notification(paramInstance unsafe.Pointer,
 
 	ret := C.gdk_display_request_selection_notification(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_display_set_double_click_distance(paramInstance unsafe.Pointer, param0 uint) {
@@ -1824,7 +1824,7 @@ func Fn_gdk_display_supports_clipboard_persistence(paramInstance unsafe.Pointer)
 
 	ret := C.gdk_display_supports_clipboard_persistence(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_display_supports_composite(paramInstance unsafe.Pointer) bool {
@@ -1832,7 +1832,7 @@ func Fn_gdk_display_supports_composite(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_display_supports_composite(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_display_supports_cursor_alpha(paramInstance unsafe.Pointer) bool {
@@ -1840,7 +1840,7 @@ func Fn_gdk_display_supports_cursor_alpha(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_display_supports_cursor_alpha(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_display_supports_cursor_color(paramInstance unsafe.Pointer) bool {
@@ -1848,7 +1848,7 @@ func Fn_gdk_display_supports_cursor_color(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_display_supports_cursor_color(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_display_supports_input_shapes(paramInstance unsafe.Pointer) bool {
@@ -1856,7 +1856,7 @@ func Fn_gdk_display_supports_input_shapes(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_display_supports_input_shapes(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_display_supports_selection_notification(paramInstance unsafe.Pointer) bool {
@@ -1864,7 +1864,7 @@ func Fn_gdk_display_supports_selection_notification(paramInstance unsafe.Pointer
 
 	ret := C.gdk_display_supports_selection_notification(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_display_supports_shapes(paramInstance unsafe.Pointer) bool {
@@ -1872,7 +1872,7 @@ func Fn_gdk_display_supports_shapes(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_display_supports_shapes(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_display_sync(paramInstance unsafe.Pointer) {
@@ -1896,7 +1896,7 @@ func Fn_gdk_display_warp_pointer(paramInstance unsafe.Pointer, param0 unsafe.Poi
 func Fn_gdk_display_get_default() unsafe.Pointer {
 	ret := C.gdk_display_get_default()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_open(param0 string) unsafe.Pointer {
@@ -1905,13 +1905,13 @@ func Fn_gdk_display_open(param0 string) unsafe.Pointer {
 
 	ret := C.gdk_display_open(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_open_default_libgtk_only() unsafe.Pointer {
 	ret := C.gdk_display_open_default_libgtk_only()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_manager_get_default_display(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1919,7 +1919,7 @@ func Fn_gdk_display_manager_get_default_display(paramInstance unsafe.Pointer) un
 
 	ret := C.gdk_display_manager_get_default_display(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_manager_list_displays(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1927,7 +1927,7 @@ func Fn_gdk_display_manager_list_displays(paramInstance unsafe.Pointer) unsafe.P
 
 	ret := C.gdk_display_manager_list_displays(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_manager_open_display(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
@@ -1938,7 +1938,7 @@ func Fn_gdk_display_manager_open_display(paramInstance unsafe.Pointer, param0 st
 
 	ret := C.gdk_display_manager_open_display(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_display_manager_set_default_display(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -1952,7 +1952,7 @@ func Fn_gdk_display_manager_set_default_display(paramInstance unsafe.Pointer, pa
 func Fn_gdk_display_manager_get() unsafe.Pointer {
 	ret := C.gdk_display_manager_get()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_drag_context_get_actions(paramInstance unsafe.Pointer) int {
@@ -1960,7 +1960,7 @@ func Fn_gdk_drag_context_get_actions(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_drag_context_get_actions(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_drag_context_get_dest_window(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1968,7 +1968,7 @@ func Fn_gdk_drag_context_get_dest_window(paramInstance unsafe.Pointer) unsafe.Po
 
 	ret := C.gdk_drag_context_get_dest_window(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_drag_context_get_device(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1976,7 +1976,7 @@ func Fn_gdk_drag_context_get_device(paramInstance unsafe.Pointer) unsafe.Pointer
 
 	ret := C.gdk_drag_context_get_device(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_drag_context_get_drag_window(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1984,7 +1984,7 @@ func Fn_gdk_drag_context_get_drag_window(paramInstance unsafe.Pointer) unsafe.Po
 
 	ret := C.gdk_drag_context_get_drag_window(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_drag_context_get_protocol(paramInstance unsafe.Pointer) int {
@@ -1992,7 +1992,7 @@ func Fn_gdk_drag_context_get_protocol(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_drag_context_get_protocol(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_drag_context_get_selected_action(paramInstance unsafe.Pointer) int {
@@ -2000,7 +2000,7 @@ func Fn_gdk_drag_context_get_selected_action(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_drag_context_get_selected_action(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_drag_context_get_source_window(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2008,7 +2008,7 @@ func Fn_gdk_drag_context_get_source_window(paramInstance unsafe.Pointer) unsafe.
 
 	ret := C.gdk_drag_context_get_source_window(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_drag_context_get_suggested_action(paramInstance unsafe.Pointer) int {
@@ -2016,7 +2016,7 @@ func Fn_gdk_drag_context_get_suggested_action(paramInstance unsafe.Pointer) int 
 
 	ret := C.gdk_drag_context_get_suggested_action(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_drag_context_list_targets(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2024,7 +2024,7 @@ func Fn_gdk_drag_context_list_targets(paramInstance unsafe.Pointer) unsafe.Point
 
 	ret := C.gdk_drag_context_list_targets(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_drag_context_manage_dnd(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int) bool {
@@ -2036,7 +2036,7 @@ func Fn_gdk_drag_context_manage_dnd(paramInstance unsafe.Pointer, param0 unsafe.
 
 	ret := C.gdk_drag_context_manage_dnd(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_drag_context_set_device(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -2074,7 +2074,7 @@ func Fn_gdk_frame_clock_get_current_timings(paramInstance unsafe.Pointer) unsafe
 
 	ret := C.gdk_frame_clock_get_current_timings(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_frame_clock_get_frame_counter(paramInstance unsafe.Pointer) int64 {
@@ -2082,7 +2082,7 @@ func Fn_gdk_frame_clock_get_frame_counter(paramInstance unsafe.Pointer) int64 {
 
 	ret := C.gdk_frame_clock_get_frame_counter(cValueInstance)
 
-	fmt.Println(ret)
+	return (int64)(ret)
 }
 
 func Fn_gdk_frame_clock_get_frame_time(paramInstance unsafe.Pointer) int64 {
@@ -2090,7 +2090,7 @@ func Fn_gdk_frame_clock_get_frame_time(paramInstance unsafe.Pointer) int64 {
 
 	ret := C.gdk_frame_clock_get_frame_time(cValueInstance)
 
-	fmt.Println(ret)
+	return (int64)(ret)
 }
 
 func Fn_gdk_frame_clock_get_history_start(paramInstance unsafe.Pointer) int64 {
@@ -2098,7 +2098,7 @@ func Fn_gdk_frame_clock_get_history_start(paramInstance unsafe.Pointer) int64 {
 
 	ret := C.gdk_frame_clock_get_history_start(cValueInstance)
 
-	fmt.Println(ret)
+	return (int64)(ret)
 }
 
 func Fn_gdk_frame_clock_get_refresh_info(paramInstance unsafe.Pointer, param0 int64, param1 *int64, param2 *int64) {
@@ -2120,7 +2120,7 @@ func Fn_gdk_frame_clock_get_timings(paramInstance unsafe.Pointer, param0 int64) 
 
 	ret := C.gdk_frame_clock_get_timings(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_frame_clock_request_phase(paramInstance unsafe.Pointer, param0 int) {
@@ -2136,7 +2136,7 @@ func Fn_gdk_gl_context_get_debug_enabled(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_gl_context_get_debug_enabled(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_gl_context_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2144,7 +2144,7 @@ func Fn_gdk_gl_context_get_display(paramInstance unsafe.Pointer) unsafe.Pointer 
 
 	ret := C.gdk_gl_context_get_display(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_gl_context_get_forward_compatible(paramInstance unsafe.Pointer) bool {
@@ -2152,7 +2152,7 @@ func Fn_gdk_gl_context_get_forward_compatible(paramInstance unsafe.Pointer) bool
 
 	ret := C.gdk_gl_context_get_forward_compatible(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_gl_context_get_required_version(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
@@ -2170,7 +2170,7 @@ func Fn_gdk_gl_context_get_shared_context(paramInstance unsafe.Pointer) unsafe.P
 
 	ret := C.gdk_gl_context_get_shared_context(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_gl_context_get_version(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
@@ -2188,7 +2188,7 @@ func Fn_gdk_gl_context_get_window(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_gl_context_get_window(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_gl_context_is_legacy(paramInstance unsafe.Pointer) bool {
@@ -2196,7 +2196,7 @@ func Fn_gdk_gl_context_is_legacy(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_gl_context_is_legacy(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_gl_context_make_current(paramInstance unsafe.Pointer) {
@@ -2212,7 +2212,7 @@ func Fn_gdk_gl_context_realize(paramInstance unsafe.Pointer, error unsafe.Pointe
 
 	ret := C.gdk_gl_context_realize(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_gl_context_set_debug_enabled(paramInstance unsafe.Pointer, param0 bool) {
@@ -2248,7 +2248,7 @@ func Fn_gdk_gl_context_clear_current() {
 func Fn_gdk_gl_context_get_current() unsafe.Pointer {
 	ret := C.gdk_gl_context_get_current()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_keymap_add_virtual_modifiers(paramInstance unsafe.Pointer, param0 *int) {
@@ -2264,7 +2264,7 @@ func Fn_gdk_keymap_get_caps_lock_state(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_keymap_get_caps_lock_state(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_keymap_get_direction(paramInstance unsafe.Pointer) int {
@@ -2272,14 +2272,14 @@ func Fn_gdk_keymap_get_direction(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_keymap_get_direction(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
-func Fn_gdk_keymap_get_entries_for_keycode(paramInstance unsafe.Pointer, param0 uint, param1 []unsafe.Pointer, param2 []*uint, param3 *int) bool {
+func Fn_gdk_keymap_get_entries_for_keycode(paramInstance unsafe.Pointer, param0 uint, param1 []unsafe.Pointer, param2 []*uint, param3 *int) {
 	// has non-string array param
 }
 
-func Fn_gdk_keymap_get_entries_for_keyval(paramInstance unsafe.Pointer, param0 uint, param1 []unsafe.Pointer, param2 *int) bool {
+func Fn_gdk_keymap_get_entries_for_keyval(paramInstance unsafe.Pointer, param0 uint, param1 []unsafe.Pointer, param2 *int) {
 	// has non-string array param
 }
 
@@ -2290,7 +2290,7 @@ func Fn_gdk_keymap_get_modifier_mask(paramInstance unsafe.Pointer, param0 int) i
 
 	ret := C.gdk_keymap_get_modifier_mask(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_keymap_get_modifier_state(paramInstance unsafe.Pointer) uint {
@@ -2298,7 +2298,7 @@ func Fn_gdk_keymap_get_modifier_state(paramInstance unsafe.Pointer) uint {
 
 	ret := C.gdk_keymap_get_modifier_state(cValueInstance)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_gdk_keymap_get_num_lock_state(paramInstance unsafe.Pointer) bool {
@@ -2306,7 +2306,7 @@ func Fn_gdk_keymap_get_num_lock_state(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_keymap_get_num_lock_state(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_keymap_get_scroll_lock_state(paramInstance unsafe.Pointer) bool {
@@ -2314,7 +2314,7 @@ func Fn_gdk_keymap_get_scroll_lock_state(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_keymap_get_scroll_lock_state(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_keymap_have_bidi_layouts(paramInstance unsafe.Pointer) bool {
@@ -2322,7 +2322,7 @@ func Fn_gdk_keymap_have_bidi_layouts(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_keymap_have_bidi_layouts(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_keymap_lookup_key(paramInstance unsafe.Pointer, param0 unsafe.Pointer) uint {
@@ -2332,7 +2332,7 @@ func Fn_gdk_keymap_lookup_key(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 
 	ret := C.gdk_keymap_lookup_key(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (uint)(ret)
 }
 
 func Fn_gdk_keymap_map_virtual_modifiers(paramInstance unsafe.Pointer, param0 *int) bool {
@@ -2342,7 +2342,7 @@ func Fn_gdk_keymap_map_virtual_modifiers(paramInstance unsafe.Pointer, param0 *i
 
 	ret := C.gdk_keymap_map_virtual_modifiers(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_keymap_translate_keyboard_state(paramInstance unsafe.Pointer, param0 uint, param1 int, param2 int, param3 *uint, param4 *int, param5 *int, param6 *int) bool {
@@ -2364,13 +2364,13 @@ func Fn_gdk_keymap_translate_keyboard_state(paramInstance unsafe.Pointer, param0
 
 	ret := C.gdk_keymap_translate_keyboard_state(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_keymap_get_default() unsafe.Pointer {
 	ret := C.gdk_keymap_get_default()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_keymap_get_for_display(param0 unsafe.Pointer) unsafe.Pointer {
@@ -2378,7 +2378,7 @@ func Fn_gdk_keymap_get_for_display(param0 unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_keymap_get_for_display(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_monitor_get_manufacturer(paramInstance unsafe.Pointer) string {
@@ -2386,7 +2386,7 @@ func Fn_gdk_monitor_get_manufacturer(paramInstance unsafe.Pointer) string {
 
 	ret := C.gdk_monitor_get_manufacturer(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_monitor_get_model(paramInstance unsafe.Pointer) string {
@@ -2394,7 +2394,7 @@ func Fn_gdk_monitor_get_model(paramInstance unsafe.Pointer) string {
 
 	ret := C.gdk_monitor_get_model(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_screen_get_active_window(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2402,7 +2402,7 @@ func Fn_gdk_screen_get_active_window(paramInstance unsafe.Pointer) unsafe.Pointe
 
 	ret := C.gdk_screen_get_active_window(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_screen_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2410,7 +2410,7 @@ func Fn_gdk_screen_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_screen_get_display(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_screen_get_font_options(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2418,7 +2418,7 @@ func Fn_gdk_screen_get_font_options(paramInstance unsafe.Pointer) unsafe.Pointer
 
 	ret := C.gdk_screen_get_font_options(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_screen_get_height(paramInstance unsafe.Pointer) int {
@@ -2426,7 +2426,7 @@ func Fn_gdk_screen_get_height(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_screen_get_height(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_get_height_mm(paramInstance unsafe.Pointer) int {
@@ -2434,7 +2434,7 @@ func Fn_gdk_screen_get_height_mm(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_screen_get_height_mm(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_get_monitor_at_point(paramInstance unsafe.Pointer, param0 int, param1 int) int {
@@ -2446,7 +2446,7 @@ func Fn_gdk_screen_get_monitor_at_point(paramInstance unsafe.Pointer, param0 int
 
 	ret := C.gdk_screen_get_monitor_at_point(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_get_monitor_at_window(paramInstance unsafe.Pointer, param0 unsafe.Pointer) int {
@@ -2456,7 +2456,7 @@ func Fn_gdk_screen_get_monitor_at_window(paramInstance unsafe.Pointer, param0 un
 
 	ret := C.gdk_screen_get_monitor_at_window(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_get_monitor_geometry(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
@@ -2476,7 +2476,7 @@ func Fn_gdk_screen_get_monitor_height_mm(paramInstance unsafe.Pointer, param0 in
 
 	ret := C.gdk_screen_get_monitor_height_mm(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_get_monitor_plug_name(paramInstance unsafe.Pointer, param0 int) string {
@@ -2486,7 +2486,7 @@ func Fn_gdk_screen_get_monitor_plug_name(paramInstance unsafe.Pointer, param0 in
 
 	ret := C.gdk_screen_get_monitor_plug_name(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_screen_get_monitor_scale_factor(paramInstance unsafe.Pointer, param0 int) int {
@@ -2496,7 +2496,7 @@ func Fn_gdk_screen_get_monitor_scale_factor(paramInstance unsafe.Pointer, param0
 
 	ret := C.gdk_screen_get_monitor_scale_factor(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_get_monitor_width_mm(paramInstance unsafe.Pointer, param0 int) int {
@@ -2506,7 +2506,7 @@ func Fn_gdk_screen_get_monitor_width_mm(paramInstance unsafe.Pointer, param0 int
 
 	ret := C.gdk_screen_get_monitor_width_mm(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_get_monitor_workarea(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
@@ -2524,7 +2524,7 @@ func Fn_gdk_screen_get_n_monitors(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_screen_get_n_monitors(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_get_number(paramInstance unsafe.Pointer) int {
@@ -2532,7 +2532,7 @@ func Fn_gdk_screen_get_number(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_screen_get_number(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_get_primary_monitor(paramInstance unsafe.Pointer) int {
@@ -2540,7 +2540,7 @@ func Fn_gdk_screen_get_primary_monitor(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_screen_get_primary_monitor(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_get_resolution(paramInstance unsafe.Pointer) float64 {
@@ -2548,7 +2548,7 @@ func Fn_gdk_screen_get_resolution(paramInstance unsafe.Pointer) float64 {
 
 	ret := C.gdk_screen_get_resolution(cValueInstance)
 
-	fmt.Println(ret)
+	return (float64)(ret)
 }
 
 func Fn_gdk_screen_get_rgba_visual(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2556,7 +2556,7 @@ func Fn_gdk_screen_get_rgba_visual(paramInstance unsafe.Pointer) unsafe.Pointer 
 
 	ret := C.gdk_screen_get_rgba_visual(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_screen_get_root_window(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2564,7 +2564,7 @@ func Fn_gdk_screen_get_root_window(paramInstance unsafe.Pointer) unsafe.Pointer 
 
 	ret := C.gdk_screen_get_root_window(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_screen_get_setting(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) bool {
@@ -2577,7 +2577,7 @@ func Fn_gdk_screen_get_setting(paramInstance unsafe.Pointer, param0 string, para
 
 	ret := C.gdk_screen_get_setting(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_screen_get_system_visual(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2585,7 +2585,7 @@ func Fn_gdk_screen_get_system_visual(paramInstance unsafe.Pointer) unsafe.Pointe
 
 	ret := C.gdk_screen_get_system_visual(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_screen_get_toplevel_windows(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2593,7 +2593,7 @@ func Fn_gdk_screen_get_toplevel_windows(paramInstance unsafe.Pointer) unsafe.Poi
 
 	ret := C.gdk_screen_get_toplevel_windows(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_screen_get_width(paramInstance unsafe.Pointer) int {
@@ -2601,7 +2601,7 @@ func Fn_gdk_screen_get_width(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_screen_get_width(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_get_width_mm(paramInstance unsafe.Pointer) int {
@@ -2609,7 +2609,7 @@ func Fn_gdk_screen_get_width_mm(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_screen_get_width_mm(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_get_window_stack(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2617,7 +2617,7 @@ func Fn_gdk_screen_get_window_stack(paramInstance unsafe.Pointer) unsafe.Pointer
 
 	ret := C.gdk_screen_get_window_stack(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_screen_is_composited(paramInstance unsafe.Pointer) bool {
@@ -2625,7 +2625,7 @@ func Fn_gdk_screen_is_composited(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_screen_is_composited(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_screen_list_visuals(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2633,7 +2633,7 @@ func Fn_gdk_screen_list_visuals(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_screen_list_visuals(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_screen_make_display_name(paramInstance unsafe.Pointer) string {
@@ -2641,7 +2641,7 @@ func Fn_gdk_screen_make_display_name(paramInstance unsafe.Pointer) string {
 
 	ret := C.gdk_screen_make_display_name(cValueInstance)
 
-	fmt.Println(ret)
+	return C.GoString(ret)
 }
 
 func Fn_gdk_screen_set_font_options(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -2663,31 +2663,31 @@ func Fn_gdk_screen_set_resolution(paramInstance unsafe.Pointer, param0 float64) 
 func Fn_gdk_screen_get_default() unsafe.Pointer {
 	ret := C.gdk_screen_get_default()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_screen_height() int {
 	ret := C.gdk_screen_height()
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_height_mm() int {
 	ret := C.gdk_screen_height_mm()
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_width() int {
 	ret := C.gdk_screen_width()
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_screen_width_mm() int {
 	ret := C.gdk_screen_width_mm()
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_seat_get_capabilities(paramInstance unsafe.Pointer) int {
@@ -2695,7 +2695,7 @@ func Fn_gdk_seat_get_capabilities(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_seat_get_capabilities(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_seat_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2703,7 +2703,7 @@ func Fn_gdk_seat_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_seat_get_display(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_seat_get_keyboard(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2711,7 +2711,7 @@ func Fn_gdk_seat_get_keyboard(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_seat_get_keyboard(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_seat_get_pointer(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -2719,7 +2719,7 @@ func Fn_gdk_seat_get_pointer(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_seat_get_pointer(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_seat_get_slaves(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
@@ -2729,7 +2729,7 @@ func Fn_gdk_seat_get_slaves(paramInstance unsafe.Pointer, param0 int) unsafe.Poi
 
 	ret := C.gdk_seat_get_slaves(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : grab : has callback
@@ -2745,7 +2745,7 @@ func Fn_gdk_visual_get_bits_per_rgb(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_visual_get_bits_per_rgb(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_visual_get_blue_pixel_details(paramInstance unsafe.Pointer, param0 *uint32, param1 *int, param2 *int) {
@@ -2765,7 +2765,7 @@ func Fn_gdk_visual_get_byte_order(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_visual_get_byte_order(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_visual_get_colormap_size(paramInstance unsafe.Pointer) int {
@@ -2773,7 +2773,7 @@ func Fn_gdk_visual_get_colormap_size(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_visual_get_colormap_size(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_visual_get_depth(paramInstance unsafe.Pointer) int {
@@ -2781,7 +2781,7 @@ func Fn_gdk_visual_get_depth(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_visual_get_depth(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_visual_get_green_pixel_details(paramInstance unsafe.Pointer, param0 *uint32, param1 *int, param2 *int) {
@@ -2813,7 +2813,7 @@ func Fn_gdk_visual_get_screen(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_visual_get_screen(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_visual_get_visual_type(paramInstance unsafe.Pointer) int {
@@ -2821,25 +2821,25 @@ func Fn_gdk_visual_get_visual_type(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_visual_get_visual_type(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_visual_get_best() unsafe.Pointer {
 	ret := C.gdk_visual_get_best()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_visual_get_best_depth() int {
 	ret := C.gdk_visual_get_best_depth()
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_visual_get_best_type() int {
 	ret := C.gdk_visual_get_best_type()
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_visual_get_best_with_both(param0 int, param1 int) unsafe.Pointer {
@@ -2849,7 +2849,7 @@ func Fn_gdk_visual_get_best_with_both(param0 int, param1 int) unsafe.Pointer {
 
 	ret := C.gdk_visual_get_best_with_both(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_visual_get_best_with_depth(param0 int) unsafe.Pointer {
@@ -2857,7 +2857,7 @@ func Fn_gdk_visual_get_best_with_depth(param0 int) unsafe.Pointer {
 
 	ret := C.gdk_visual_get_best_with_depth(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_visual_get_best_with_type(param0 int) unsafe.Pointer {
@@ -2865,13 +2865,13 @@ func Fn_gdk_visual_get_best_with_type(param0 int) unsafe.Pointer {
 
 	ret := C.gdk_visual_get_best_with_type(cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_visual_get_system() unsafe.Pointer {
 	ret := C.gdk_visual_get_system()
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_new(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int) unsafe.Pointer {
@@ -2883,7 +2883,7 @@ func Fn_gdk_window_new(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int)
 
 	ret := C.gdk_window_new(cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : add_filter : has callback
@@ -3015,7 +3015,7 @@ func Fn_gdk_window_create_gl_context(paramInstance unsafe.Pointer, error unsafe.
 
 	ret := C.gdk_window_create_gl_context(cValueInstance, cError)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_create_similar_image_surface(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int) unsafe.Pointer {
@@ -3031,7 +3031,7 @@ func Fn_gdk_window_create_similar_image_surface(paramInstance unsafe.Pointer, pa
 
 	ret := C.gdk_window_create_similar_image_surface(cValueInstance, cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_create_similar_surface(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int) unsafe.Pointer {
@@ -3045,7 +3045,7 @@ func Fn_gdk_window_create_similar_surface(paramInstance unsafe.Pointer, param0 i
 
 	ret := C.gdk_window_create_similar_surface(cValueInstance, cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_deiconify(paramInstance unsafe.Pointer) {
@@ -3078,7 +3078,7 @@ func Fn_gdk_window_ensure_native(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_ensure_native(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_flush(paramInstance unsafe.Pointer) {
@@ -3132,7 +3132,7 @@ func Fn_gdk_window_get_accept_focus(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_get_accept_focus(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_get_background_pattern(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3140,7 +3140,7 @@ func Fn_gdk_window_get_background_pattern(paramInstance unsafe.Pointer) unsafe.P
 
 	ret := C.gdk_window_get_background_pattern(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_children(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3148,7 +3148,7 @@ func Fn_gdk_window_get_children(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_window_get_children(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_children_with_user_data(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
@@ -3158,7 +3158,7 @@ func Fn_gdk_window_get_children_with_user_data(paramInstance unsafe.Pointer, par
 
 	ret := C.gdk_window_get_children_with_user_data(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_clip_region(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3166,7 +3166,7 @@ func Fn_gdk_window_get_clip_region(paramInstance unsafe.Pointer) unsafe.Pointer 
 
 	ret := C.gdk_window_get_clip_region(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_composited(paramInstance unsafe.Pointer) bool {
@@ -3174,7 +3174,7 @@ func Fn_gdk_window_get_composited(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_get_composited(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_get_cursor(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3182,7 +3182,7 @@ func Fn_gdk_window_get_cursor(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_window_get_cursor(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_decorations(paramInstance unsafe.Pointer, param0 *int) bool {
@@ -3192,7 +3192,7 @@ func Fn_gdk_window_get_decorations(paramInstance unsafe.Pointer, param0 *int) bo
 
 	ret := C.gdk_window_get_decorations(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_get_device_cursor(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
@@ -3202,7 +3202,7 @@ func Fn_gdk_window_get_device_cursor(paramInstance unsafe.Pointer, param0 unsafe
 
 	ret := C.gdk_window_get_device_cursor(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_device_events(paramInstance unsafe.Pointer, param0 unsafe.Pointer) int {
@@ -3212,7 +3212,7 @@ func Fn_gdk_window_get_device_events(paramInstance unsafe.Pointer, param0 unsafe
 
 	ret := C.gdk_window_get_device_events(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_window_get_device_position(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *int, param2 *int, param3 *int) unsafe.Pointer {
@@ -3228,7 +3228,7 @@ func Fn_gdk_window_get_device_position(paramInstance unsafe.Pointer, param0 unsa
 
 	ret := C.gdk_window_get_device_position(cValueInstance, cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_device_position_double(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *float64, param2 *float64, param3 *int) unsafe.Pointer {
@@ -3244,7 +3244,7 @@ func Fn_gdk_window_get_device_position_double(paramInstance unsafe.Pointer, para
 
 	ret := C.gdk_window_get_device_position_double(cValueInstance, cValue0, cValue1, cValue2, cValue3)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3252,7 +3252,7 @@ func Fn_gdk_window_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_window_get_display(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_drag_protocol(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) int {
@@ -3262,7 +3262,7 @@ func Fn_gdk_window_get_drag_protocol(paramInstance unsafe.Pointer, param0 *unsaf
 
 	ret := C.gdk_window_get_drag_protocol(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_window_get_effective_parent(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3270,7 +3270,7 @@ func Fn_gdk_window_get_effective_parent(paramInstance unsafe.Pointer) unsafe.Poi
 
 	ret := C.gdk_window_get_effective_parent(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_effective_toplevel(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3278,7 +3278,7 @@ func Fn_gdk_window_get_effective_toplevel(paramInstance unsafe.Pointer) unsafe.P
 
 	ret := C.gdk_window_get_effective_toplevel(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_event_compression(paramInstance unsafe.Pointer) bool {
@@ -3286,7 +3286,7 @@ func Fn_gdk_window_get_event_compression(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_get_event_compression(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_get_events(paramInstance unsafe.Pointer) int {
@@ -3294,7 +3294,7 @@ func Fn_gdk_window_get_events(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_window_get_events(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_window_get_focus_on_map(paramInstance unsafe.Pointer) bool {
@@ -3302,7 +3302,7 @@ func Fn_gdk_window_get_focus_on_map(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_get_focus_on_map(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_get_frame_clock(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3310,7 +3310,7 @@ func Fn_gdk_window_get_frame_clock(paramInstance unsafe.Pointer) unsafe.Pointer 
 
 	ret := C.gdk_window_get_frame_clock(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_frame_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
@@ -3326,7 +3326,7 @@ func Fn_gdk_window_get_fullscreen_mode(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_window_get_fullscreen_mode(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_window_get_geometry(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 *int, param3 *int) {
@@ -3348,7 +3348,7 @@ func Fn_gdk_window_get_group(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_window_get_group(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_height(paramInstance unsafe.Pointer) int {
@@ -3356,7 +3356,7 @@ func Fn_gdk_window_get_height(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_window_get_height(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_window_get_modal_hint(paramInstance unsafe.Pointer) bool {
@@ -3364,7 +3364,7 @@ func Fn_gdk_window_get_modal_hint(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_get_modal_hint(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_get_origin(paramInstance unsafe.Pointer, param0 *int, param1 *int) int {
@@ -3376,7 +3376,7 @@ func Fn_gdk_window_get_origin(paramInstance unsafe.Pointer, param0 *int, param1 
 
 	ret := C.gdk_window_get_origin(cValueInstance, cValue0, cValue1)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_window_get_parent(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3384,7 +3384,7 @@ func Fn_gdk_window_get_parent(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_window_get_parent(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_pass_through(paramInstance unsafe.Pointer) bool {
@@ -3392,7 +3392,7 @@ func Fn_gdk_window_get_pass_through(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_get_pass_through(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_get_pointer(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 *int) unsafe.Pointer {
@@ -3406,7 +3406,7 @@ func Fn_gdk_window_get_pointer(paramInstance unsafe.Pointer, param0 *int, param1
 
 	ret := C.gdk_window_get_pointer(cValueInstance, cValue0, cValue1, cValue2)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_position(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
@@ -3448,7 +3448,7 @@ func Fn_gdk_window_get_scale_factor(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_window_get_scale_factor(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_window_get_screen(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3456,7 +3456,7 @@ func Fn_gdk_window_get_screen(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_window_get_screen(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_source_events(paramInstance unsafe.Pointer, param0 int) int {
@@ -3466,7 +3466,7 @@ func Fn_gdk_window_get_source_events(paramInstance unsafe.Pointer, param0 int) i
 
 	ret := C.gdk_window_get_source_events(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_window_get_state(paramInstance unsafe.Pointer) int {
@@ -3474,7 +3474,7 @@ func Fn_gdk_window_get_state(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_window_get_state(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_window_get_support_multidevice(paramInstance unsafe.Pointer) bool {
@@ -3482,7 +3482,7 @@ func Fn_gdk_window_get_support_multidevice(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_get_support_multidevice(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_get_toplevel(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3490,7 +3490,7 @@ func Fn_gdk_window_get_toplevel(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_window_get_toplevel(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_type_hint(paramInstance unsafe.Pointer) int {
@@ -3498,7 +3498,7 @@ func Fn_gdk_window_get_type_hint(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_window_get_type_hint(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_window_get_update_area(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3506,7 +3506,7 @@ func Fn_gdk_window_get_update_area(paramInstance unsafe.Pointer) unsafe.Pointer 
 
 	ret := C.gdk_window_get_update_area(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_user_data(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
@@ -3522,7 +3522,7 @@ func Fn_gdk_window_get_visible_region(paramInstance unsafe.Pointer) unsafe.Point
 
 	ret := C.gdk_window_get_visible_region(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_visual(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -3530,7 +3530,7 @@ func Fn_gdk_window_get_visual(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_window_get_visual(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_get_width(paramInstance unsafe.Pointer) int {
@@ -3538,7 +3538,7 @@ func Fn_gdk_window_get_width(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_window_get_width(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_window_get_window_type(paramInstance unsafe.Pointer) int {
@@ -3546,7 +3546,7 @@ func Fn_gdk_window_get_window_type(paramInstance unsafe.Pointer) int {
 
 	ret := C.gdk_window_get_window_type(cValueInstance)
 
-	fmt.Println(ret)
+	return (int)(ret)
 }
 
 func Fn_gdk_window_has_native(paramInstance unsafe.Pointer) bool {
@@ -3554,7 +3554,7 @@ func Fn_gdk_window_has_native(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_has_native(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_hide(paramInstance unsafe.Pointer) {
@@ -3608,7 +3608,7 @@ func Fn_gdk_window_is_destroyed(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_is_destroyed(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_is_input_only(paramInstance unsafe.Pointer) bool {
@@ -3616,7 +3616,7 @@ func Fn_gdk_window_is_input_only(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_is_input_only(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_is_shaped(paramInstance unsafe.Pointer) bool {
@@ -3624,7 +3624,7 @@ func Fn_gdk_window_is_shaped(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_is_shaped(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_is_viewable(paramInstance unsafe.Pointer) bool {
@@ -3632,7 +3632,7 @@ func Fn_gdk_window_is_viewable(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_is_viewable(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_is_visible(paramInstance unsafe.Pointer) bool {
@@ -3640,7 +3640,7 @@ func Fn_gdk_window_is_visible(paramInstance unsafe.Pointer) bool {
 
 	ret := C.gdk_window_is_visible(cValueInstance)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_lower(paramInstance unsafe.Pointer) {
@@ -3716,7 +3716,7 @@ func Fn_gdk_window_peek_children(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 	ret := C.gdk_window_peek_children(cValueInstance)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_process_updates(paramInstance unsafe.Pointer, param0 bool) {
@@ -4069,7 +4069,7 @@ func Fn_gdk_window_set_static_gravities(paramInstance unsafe.Pointer, param0 boo
 
 	ret := C.gdk_window_set_static_gravities(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_set_support_multidevice(paramInstance unsafe.Pointer, param0 bool) {
@@ -4152,7 +4152,7 @@ func Fn_gdk_window_show_window_menu(paramInstance unsafe.Pointer, param0 unsafe.
 
 	ret := C.gdk_window_show_window_menu(cValueInstance, cValue0)
 
-	fmt.Println(ret)
+	return toGoBool(ret)
 }
 
 func Fn_gdk_window_stick(paramInstance unsafe.Pointer) {
@@ -4204,7 +4204,7 @@ func Fn_gdk_window_at_pointer(param0 *int, param1 *int) unsafe.Pointer {
 
 	ret := C.gdk_window_at_pointer(cValue0, cValue1)
 
-	fmt.Println(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_window_constrain_size(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 *int, param5 *int) {
