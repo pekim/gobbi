@@ -412,6 +412,8 @@ func Fn_gdk_gl_error_quark() {
 func Fn_gdk_init(param0 *int, param1 *[]string) {
 	cValue0 := (*C.gint)(unsafe.Pointer(param0))
 
+	var cValue1ArrayPointer **C.gchar
+	cValue1 := &cValue1ArrayPointer
 	param1Indirected := *param1
 	param1IndirectedLen := len(param1Indirected)
 	cValue1Array := C.malloc((C.ulong)(param1IndirectedLen) * C.sizeof_gpointer)
@@ -421,12 +423,9 @@ func Fn_gdk_init(param0 *int, param1 *[]string) {
 		param1IndirectedSlice[param1Indirectedi] = (*C.gchar)(C.CString(param1IndirectedString))
 		defer C.free(unsafe.Pointer(param1IndirectedSlice[param1Indirectedi]))
 	}
-	var cValue1 ***C.gchar
-	var cValue1ArrayPointer **C.gchar
 	if len(param1IndirectedSlice) > 0 {
 		cValue1ArrayPointer = &param1IndirectedSlice[0]
 	}
-	cValue1 = &cValue1ArrayPointer
 
 	C.gdk_init(cValue0, cValue1)
 }
@@ -434,6 +433,8 @@ func Fn_gdk_init(param0 *int, param1 *[]string) {
 func Fn_gdk_init_check(param0 *int, param1 *[]string) {
 	cValue0 := (*C.gint)(unsafe.Pointer(param0))
 
+	var cValue1ArrayPointer **C.gchar
+	cValue1 := &cValue1ArrayPointer
 	param1Indirected := *param1
 	param1IndirectedLen := len(param1Indirected)
 	cValue1Array := C.malloc((C.ulong)(param1IndirectedLen) * C.sizeof_gpointer)
@@ -443,12 +444,9 @@ func Fn_gdk_init_check(param0 *int, param1 *[]string) {
 		param1IndirectedSlice[param1Indirectedi] = (*C.gchar)(C.CString(param1IndirectedString))
 		defer C.free(unsafe.Pointer(param1IndirectedSlice[param1Indirectedi]))
 	}
-	var cValue1 ***C.gchar
-	var cValue1ArrayPointer **C.gchar
 	if len(param1IndirectedSlice) > 0 {
 		cValue1ArrayPointer = &param1IndirectedSlice[0]
 	}
-	cValue1 = &cValue1ArrayPointer
 
 	C.gdk_init_check(cValue0, cValue1)
 }
@@ -588,6 +586,8 @@ func Fn_gdk_pango_layout_line_get_clip_region(param0 unsafe.Pointer, param1 int,
 func Fn_gdk_parse_args(param0 *int, param1 *[]string) {
 	cValue0 := (*C.gint)(unsafe.Pointer(param0))
 
+	var cValue1ArrayPointer **C.gchar
+	cValue1 := &cValue1ArrayPointer
 	param1Indirected := *param1
 	param1IndirectedLen := len(param1Indirected)
 	cValue1Array := C.malloc((C.ulong)(param1IndirectedLen) * C.sizeof_gpointer)
@@ -597,12 +597,9 @@ func Fn_gdk_parse_args(param0 *int, param1 *[]string) {
 		param1IndirectedSlice[param1Indirectedi] = (*C.gchar)(C.CString(param1IndirectedString))
 		defer C.free(unsafe.Pointer(param1IndirectedSlice[param1Indirectedi]))
 	}
-	var cValue1 ***C.gchar
-	var cValue1ArrayPointer **C.gchar
 	if len(param1IndirectedSlice) > 0 {
 		cValue1ArrayPointer = &param1IndirectedSlice[0]
 	}
-	cValue1 = &cValue1ArrayPointer
 
 	C.gdk_parse_args(cValue0, cValue1)
 }

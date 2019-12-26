@@ -172,29 +172,28 @@ func (p *Parameter) generateSysCArgArrayString(g *jen.Group, goVarName string, c
 }
 
 func (p *Parameter) generateSysCArgArrayStringPointer(g *jen.Group, goVarName string, cVarName string) {
-	goVarIndirectedName := goVarName + "Indirected"
-	// param2Indirected := *param2
-	g.Id(goVarIndirectedName).Op(":=").Op("*").Id(goVarName)
-
-	// Convert Go slice of strings to C array of null terminated strings.
-	goCPtrSliceVarName := p.generateGoArrayStringToC(g, goVarIndirectedName, cVarName)
-
 	cArrayPointerVarName := cVarName + "ArrayPointer"
-
-	// var cValue2 ***C.gchar
-	g.Var().Id(cVarName).Op("***").Qual("C", "gchar")
 
 	// var cValue2ArrayPointer **C.gchar
 	g.Var().Id(cArrayPointerVarName).Op("**").Qual("C", "gchar")
 
-	// if len(param2Slice) > 0 {
-	//   cValue2ArrayPointer = &param2Slice[0]
-	// }
-	g.If(jen.Len(jen.Id(goCPtrSliceVarName)).Op(">").Lit(0)).
-		Block(jen.Id(cArrayPointerVarName).Op("=").Op("&").Id(goCPtrSliceVarName).Index(jen.Lit(0)))
-
 	// cValue2 = &cValue2ArrayPointer
-	g.Id(cVarName).Op("=").Op("&").Id(cArrayPointerVarName)
+	g.Id(cVarName).Op(":=").Op("&").Id(cArrayPointerVarName)
+
+	if p.isIn() {
+		goVarIndirectedName := goVarName + "Indirected"
+		// param2Indirected := *param2
+		g.Id(goVarIndirectedName).Op(":=").Op("*").Id(goVarName)
+
+		// Convert Go slice of strings to C array of null terminated strings.
+		goCPtrSliceVarName := p.generateGoArrayStringToC(g, goVarIndirectedName, cVarName)
+
+		// if len(param2Slice) > 0 {
+		//   cValue2ArrayPointer = &param2Slice[0]
+		// }
+		g.If(jen.Len(jen.Id(goCPtrSliceVarName)).Op(">").Lit(0)).
+			Block(jen.Id(cArrayPointerVarName).Op("=").Op("&").Id(goCPtrSliceVarName).Index(jen.Lit(0)))
+	}
 }
 
 // generateGoArrayStringToC converts a Go slice of strings to a C array of null terminated strings.

@@ -1000,6 +1000,8 @@ func Fn_gtk_icon_theme_error_quark() {
 func Fn_gtk_init(param0 *int, param1 *[]string) {
 	cValue0 := (*C.int)(unsafe.Pointer(param0))
 
+	var cValue1ArrayPointer **C.gchar
+	cValue1 := &cValue1ArrayPointer
 	param1Indirected := *param1
 	param1IndirectedLen := len(param1Indirected)
 	cValue1Array := C.malloc((C.ulong)(param1IndirectedLen) * C.sizeof_gpointer)
@@ -1009,12 +1011,9 @@ func Fn_gtk_init(param0 *int, param1 *[]string) {
 		param1IndirectedSlice[param1Indirectedi] = (*C.gchar)(C.CString(param1IndirectedString))
 		defer C.free(unsafe.Pointer(param1IndirectedSlice[param1Indirectedi]))
 	}
-	var cValue1 ***C.gchar
-	var cValue1ArrayPointer **C.gchar
 	if len(param1IndirectedSlice) > 0 {
 		cValue1ArrayPointer = &param1IndirectedSlice[0]
 	}
-	cValue1 = &cValue1ArrayPointer
 
 	C.gtk_init(cValue0, cValue1)
 }
@@ -1022,6 +1021,8 @@ func Fn_gtk_init(param0 *int, param1 *[]string) {
 func Fn_gtk_init_check(param0 *int, param1 *[]string) {
 	cValue0 := (*C.int)(unsafe.Pointer(param0))
 
+	var cValue1ArrayPointer **C.gchar
+	cValue1 := &cValue1ArrayPointer
 	param1Indirected := *param1
 	param1IndirectedLen := len(param1Indirected)
 	cValue1Array := C.malloc((C.ulong)(param1IndirectedLen) * C.sizeof_gpointer)
@@ -1031,12 +1032,9 @@ func Fn_gtk_init_check(param0 *int, param1 *[]string) {
 		param1IndirectedSlice[param1Indirectedi] = (*C.gchar)(C.CString(param1IndirectedString))
 		defer C.free(unsafe.Pointer(param1IndirectedSlice[param1Indirectedi]))
 	}
-	var cValue1 ***C.gchar
-	var cValue1ArrayPointer **C.gchar
 	if len(param1IndirectedSlice) > 0 {
 		cValue1ArrayPointer = &param1IndirectedSlice[0]
 	}
-	cValue1 = &cValue1ArrayPointer
 
 	C.gtk_init_check(cValue0, cValue1)
 }
@@ -1600,6 +1598,8 @@ func Fn_gtk_paper_size_get_paper_sizes(param0 bool) {
 func Fn_gtk_parse_args(param0 *int, param1 *[]string) {
 	cValue0 := (*C.int)(unsafe.Pointer(param0))
 
+	var cValue1ArrayPointer **C.gchar
+	cValue1 := &cValue1ArrayPointer
 	param1Indirected := *param1
 	param1IndirectedLen := len(param1Indirected)
 	cValue1Array := C.malloc((C.ulong)(param1IndirectedLen) * C.sizeof_gpointer)
@@ -1609,12 +1609,9 @@ func Fn_gtk_parse_args(param0 *int, param1 *[]string) {
 		param1IndirectedSlice[param1Indirectedi] = (*C.gchar)(C.CString(param1IndirectedString))
 		defer C.free(unsafe.Pointer(param1IndirectedSlice[param1Indirectedi]))
 	}
-	var cValue1 ***C.gchar
-	var cValue1ArrayPointer **C.gchar
 	if len(param1IndirectedSlice) > 0 {
 		cValue1ArrayPointer = &param1IndirectedSlice[0]
 	}
-	cValue1 = &cValue1ArrayPointer
 
 	C.gtk_parse_args(cValue0, cValue1)
 }
@@ -8833,21 +8830,8 @@ func Fn_gtk_icon_theme_get_icon_sizes(paramInstance unsafe.Pointer, param0 strin
 func Fn_gtk_icon_theme_get_search_path(paramInstance unsafe.Pointer, param0 *[]string, param1 *int) {
 	cValueInstance := (*C.GtkIconTheme)(unsafe.Pointer(paramInstance))
 
-	param0Indirected := *param0
-	param0IndirectedLen := len(param0Indirected)
-	cValue0Array := C.malloc((C.ulong)(param0IndirectedLen) * C.sizeof_gpointer)
-	defer C.free(unsafe.Pointer(cValue0Array))
-	param0IndirectedSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0IndirectedLen:param0IndirectedLen]
-	for param0Indirectedi, param0IndirectedString := range param0Indirected {
-		param0IndirectedSlice[param0Indirectedi] = (*C.gchar)(C.CString(param0IndirectedString))
-		defer C.free(unsafe.Pointer(param0IndirectedSlice[param0Indirectedi]))
-	}
-	var cValue0 ***C.gchar
 	var cValue0ArrayPointer **C.gchar
-	if len(param0IndirectedSlice) > 0 {
-		cValue0ArrayPointer = &param0IndirectedSlice[0]
-	}
-	cValue0 = &cValue0ArrayPointer
+	cValue0 := &cValue0ArrayPointer
 
 	cValue1 := (*C.gint)(unsafe.Pointer(param1))
 
