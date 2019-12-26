@@ -3,12 +3,48 @@ package generate
 type Parameters []*Parameter
 
 func (pp Parameters) init(ns *Namespace) {
-	//pp.pairUpArrayLengthParams()
-	//pp.pairUpArgcArgvParams()
+	pp.pairUpArrayLengthParams()
+	pp.pairUpArgcArgvParams()
 
 	for _, param := range pp {
 		param.init(ns)
 	}
+}
+
+func (pp Parameters) pairUpArrayLengthParams() {
+	for _, param := range pp {
+		if param.Array == nil || param.Array.Length == nil {
+			continue
+		}
+		arrayParam := param
+		lengthParam := pp[*param.Array.Length]
+
+		// Mutually reference the array and length params.
+		lengthParam.lengthForParam = arrayParam
+		arrayParam.lengthParam = lengthParam
+	}
+}
+
+func (pp Parameters) pairUpArgcArgvParams() {
+	argcParam, foundArgc := pp.byName("argc")
+	argvParam, foundArgv := pp.byName("argv")
+	if !foundArgc || !foundArgv {
+		return
+	}
+
+	// Mutually reference the argc and argv params.
+	argcParam.argvParam = argvParam
+	argvParam.argcParam = argcParam
+}
+
+func (pp Parameters) byName(name string) (*Parameter, bool) {
+	for _, param := range pp {
+		if param.Name == name {
+			return param, true
+		}
+	}
+
+	return nil, false
 }
 
 func (pp Parameters) allSupported() (bool, string) {
