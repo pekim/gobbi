@@ -41,6 +41,7 @@ var functionBlacklist = map[string]bool{
 	"pango_default_break":                  true,
 	"pango_find_map":                       true,
 	"pango_font_map_get_shape_engine_type": true,
+	"pango_lookup_aliases":                 true,
 
 	// xlib
 	"XOpenDisplay": true,

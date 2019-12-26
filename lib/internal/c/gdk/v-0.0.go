@@ -233,11 +233,47 @@ func Fn_gdk_gl_error_quark() {
 }
 
 func Fn_gdk_init(param0 *int, param1 *[]string) {
-	// has string array[3] param
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	param1Indirected := *param1
+	param1IndirectedLen := len(param1Indirected)
+	cValue1Array := C.malloc((C.ulong)(param1IndirectedLen) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue1Array))
+	param1IndirectedSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1Array))[:param1IndirectedLen:param1IndirectedLen]
+	for param1Indirectedi, param1IndirectedString := range param1Indirected {
+		param1IndirectedSlice[param1Indirectedi] = (*C.gchar)(C.CString(param1IndirectedString))
+		defer C.free(unsafe.Pointer(param1IndirectedSlice[param1Indirectedi]))
+	}
+	var cValue1 ***C.gchar
+	var cValue1ArrayPointer **C.gchar
+	if len(param1IndirectedSlice) > 0 {
+		cValue1ArrayPointer = &param1IndirectedSlice[0]
+	}
+	cValue1 = &cValue1ArrayPointer
+
+	C.gdk_init(cValue0, cValue1)
 }
 
 func Fn_gdk_init_check(param0 *int, param1 *[]string) {
-	// has string array[3] param
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	param1Indirected := *param1
+	param1IndirectedLen := len(param1Indirected)
+	cValue1Array := C.malloc((C.ulong)(param1IndirectedLen) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue1Array))
+	param1IndirectedSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1Array))[:param1IndirectedLen:param1IndirectedLen]
+	for param1Indirectedi, param1IndirectedString := range param1Indirected {
+		param1IndirectedSlice[param1Indirectedi] = (*C.gchar)(C.CString(param1IndirectedString))
+		defer C.free(unsafe.Pointer(param1IndirectedSlice[param1Indirectedi]))
+	}
+	var cValue1 ***C.gchar
+	var cValue1ArrayPointer **C.gchar
+	if len(param1IndirectedSlice) > 0 {
+		cValue1ArrayPointer = &param1IndirectedSlice[0]
+	}
+	cValue1 = &cValue1ArrayPointer
+
+	C.gdk_init_check(cValue0, cValue1)
 }
 
 func Fn_gdk_keyboard_grab(param0 unsafe.Pointer, param1 bool, param2 uint32) {

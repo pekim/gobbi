@@ -290,10 +290,7 @@ func Fn_pango_log2vis_get_embedding_levels(param0 string, param1 int, param2 *in
 	C.pango_log2vis_get_embedding_levels(cValue0, cValue1, cValue2)
 }
 
-func Fn_pango_lookup_aliases(param0 string, param1 *[]string, param2 *int) {
-	// has string array[3] param
-}
-
+// UNSUPPORTED : lookup_aliases : blacklisted
 // UNSUPPORTED : module_register : blacklisted
 func Fn_pango_parse_markup(param0 string, param1 int, param2 rune, param3 *unsafe.Pointer, param4 *string, param5 *rune, error unsafe.Pointer) {
 	cValue0 := (*C.char)(C.CString(param0))

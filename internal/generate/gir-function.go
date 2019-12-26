@@ -89,10 +89,6 @@ func (f *Function) generateSysBody(g *jen.Group) {
 			g.Comment("has non-string array param")
 			return
 		}
-		if param.Array != nil && param.Array.Type.isString() && param.Array.cType.indirectionCount != 2 {
-			g.Comment("has string array[3] param")
-			return
-		}
 	}
 
 	f.generateSysCArgs(g)

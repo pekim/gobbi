@@ -134,7 +134,7 @@ func (p *Parameter) generateSysCArgOut(g *jen.Group, goVarName string, cVarName 
 		return
 	}
 
-	if p.Type.isString() && p.Type.cType.indirectionCount == 2 {
+	if p.Type != nil && p.Type.isString() && p.Type.cType.indirectionCount == 2 {
 		p.generateSysCArgStringPointerOut(g, goVarName, cVarName)
 	}
 }
@@ -155,7 +155,7 @@ func (p *Parameter) generateSysCArgArray(g *jen.Group, goVarName string, cVarNam
 		}
 
 		if p.Array.cType.indirectionCount == 3 {
-			panic("TODO")
+			p.generateSysCArgArrayStringPointer(g, goVarName, cVarName)
 			return
 		}
 
@@ -164,14 +164,47 @@ func (p *Parameter) generateSysCArgArray(g *jen.Group, goVarName string, cVarNam
 }
 
 func (p *Parameter) generateSysCArgArrayString(g *jen.Group, goVarName string, cVarName string) {
+	// Convert Go slice of strings to C array of null terminated strings.
+	goSliceVarName := p.generateGoArrayStringToC(g, goVarName, cVarName)
+
+	// cValue2 := &cValue2Array[0]
+	g.Id(cVarName).Op(":=").Op("&").Id(goSliceVarName).Index(jen.Lit(0))
+}
+
+func (p *Parameter) generateSysCArgArrayStringPointer(g *jen.Group, goVarName string, cVarName string) {
+	goVarIndirectedName := goVarName + "Indirected"
+	// param2Indirected := *param2
+	g.Id(goVarIndirectedName).Op(":=").Op("*").Id(goVarName)
+
+	// Convert Go slice of strings to C array of null terminated strings.
+	goCPtrSliceVarName := p.generateGoArrayStringToC(g, goVarIndirectedName, cVarName)
+
+	cArrayPointerVarName := cVarName + "ArrayPointer"
+
+	// var cValue2 ***C.gchar
+	g.Var().Id(cVarName).Op("***").Qual("C", "gchar")
+
+	// var cValue2ArrayPointer **C.gchar
+	g.Var().Id(cArrayPointerVarName).Op("**").Qual("C", "gchar")
+
+	// if len(param2Slice) > 0 {
+	//   cValue2ArrayPointer = &param2Slice[0]
+	// }
+	g.If(jen.Len(jen.Id(goCPtrSliceVarName)).Op(">").Lit(0)).
+		Block(jen.Id(cArrayPointerVarName).Op("=").Op("&").Id(goCPtrSliceVarName).Index(jen.Lit(0)))
+
+	// cValue2 = &cValue2ArrayPointer
+	g.Id(cVarName).Op("=").Op("&").Id(cArrayPointerVarName)
+}
+
+// generateGoArrayStringToC converts a Go slice of strings to a C array of null terminated strings.
+func (p *Parameter) generateGoArrayStringToC(g *jen.Group, goVarName string, cVarName string) string {
 	// cValue2Array := C.malloc((C.ulong)(len(param2)) * C.sizeof_gpointer)
 	// param2Slice := (*[1 << 28]C.gchar)(unsafe.Pointer(cParam2Array))[:param2Len:param2Len]
 	//
 	// for param2i, str := range param2 {
 	//     cValue2Array[param2i] = (*C.gchar)(C.CString(param2[param2i]))
 	// }
-	//
-	// cValue2 := &cValue2Array[0]
 
 	lenVarName := goVarName + "Len"
 	cArrayVarName := cVarName + "Array"
@@ -221,6 +254,5 @@ func (p *Parameter) generateSysCArgArrayString(g *jen.Group, goVarName string, c
 			jen.Defer().Qual("C", "free").Call(jenUnsafePointer().Call(jen.Id(goSliceVarName).Index(jen.Id(indexVarName)))),
 		)
 
-	// cValue2 := &cValue2Array[0]
-	g.Id(cVarName).Op(":=").Op("&").Id(goSliceVarName).Index(jen.Lit(0))
+	return goSliceVarName
 }
