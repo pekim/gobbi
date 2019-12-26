@@ -16,11 +16,11 @@ type Function struct {
 	DeprecatedVersion string `xml:"deprecated-version,attr"`
 	//Doc               *Doc   `xml:"doc"`
 	//InstanceParameter *Parameter   `xml:"parameters>instance-parameter"`
-	InstanceParameter *Parameter `xml:"parameters>instance-parameter"`
-	Parameters        Parameters `xml:"parameters>parameter"`
-	//ReturnValue    *ReturnValue `xml:"return-value"`
-	Throws         bool   `xml:"throws,attr"`
-	Introspectable string `xml:"introspectable,attr"`
+	InstanceParameter *Parameter   `xml:"parameters>instance-parameter"`
+	Parameters        Parameters   `xml:"parameters>parameter"`
+	ReturnValue       *ReturnValue `xml:"return-value"`
+	Throws            bool         `xml:"throws,attr"`
+	Introspectable    string       `xml:"introspectable,attr"`
 
 	namespace *Namespace
 	blacklist bool
@@ -37,6 +37,7 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 		f.InstanceParameter.init(ns)
 	}
 	f.Parameters.init(ns)
+	f.ReturnValue.init(ns)
 }
 
 func (f *Function) generateSys(fi *jen.File, version semver.Version) {
@@ -51,14 +52,22 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 		return
 	}
 
+	if supported, reason := f.ReturnValue.isSupported(); !supported {
+		fi.Commentf("UNSUPPORTED : %s : %s", f.Name, reason)
+		fi.Line()
+		return
+	}
+
 	if f.version.GT(version) {
 		return
 	}
 
+	// func Fn_some_function(...) [return type] {...}
 	fi.
 		Func().
 		Id(f.sysName).
 		ParamsFunc(f.generateSysParamsDeclaration).
+		Do(f.generateSysReturnTypeDeclaration).
 		BlockFunc(f.generateSysBody)
 
 	fi.Line()
@@ -83,6 +92,14 @@ func (f *Function) generateSysParamsDeclaration(g *jen.Group) {
 	}
 }
 
+func (f *Function) generateSysReturnTypeDeclaration(s *jen.Statement) {
+	if f.ReturnValue.isVoid() {
+		return
+	}
+
+	s.Add(f.ReturnValue.Type.sysParamGoType())
+}
+
 func (f *Function) generateSysBody(g *jen.Group) {
 	for _, param := range f.Parameters {
 		if param.Array != nil && !param.Array.Type.isString() {
@@ -93,11 +110,18 @@ func (f *Function) generateSysBody(g *jen.Group) {
 
 	f.generateSysCArgs(g)
 
+	// [ret :=] C.somefunction(...)
 	g.
+		Do(func(s *jen.Statement) {
+			if !f.ReturnValue.isVoid() {
+				s.Id("ret").Op(":=")
+			}
+		}).
 		Qual("C", f.CIdentifier).
 		CallFunc(f.generateSysCallParams)
 
 	f.generateSysCArgsOut(g)
+	f.generateSysReturn(g)
 }
 
 func (f *Function) generateSysCArgs(g *jen.Group) {
@@ -143,4 +167,14 @@ func (f *Function) generateSysCallParams(g *jen.Group) {
 	if f.Throws {
 		g.Id("cError")
 	}
+}
+
+func (f *Function) generateSysReturn(g *jen.Group) {
+	if f.ReturnValue.isVoid() {
+		return
+	}
+
+	g.Line()
+
+	g.Qual("fmt", "Println").Call(jen.Id("ret"))
 }

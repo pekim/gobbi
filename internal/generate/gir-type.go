@@ -14,6 +14,7 @@ var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"gunichar2":       jen.Uint16(),
 	"gatomicrefcount": jen.Int(),
 	"grefcount":       jen.Int(),
+	"pid_t":           jen.Int(),
 	"int":             jen.Int(),
 	"gint":            jen.Int(),
 	"gint8":           jen.Int8(),
