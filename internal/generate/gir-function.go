@@ -42,25 +42,25 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 
 func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 	if f.blacklist {
-		fi.Commentf("UNSUPPORTED : %s : blacklisted", f.Name)
+		fi.Commentf("UNSUPPORTED : %s : blacklisted", f.CIdentifier)
 		return
 	}
 
 	if supported, reason := f.Parameters.allSupported(); !supported {
-		fi.Commentf("UNSUPPORTED : %s : %s", f.Name, reason)
+		fi.Commentf("UNSUPPORTED : %s : %s", f.CIdentifier, reason)
 		fi.Line()
 		return
 	}
 
 	if supported, reason := f.ReturnValue.isSupported(); !supported {
-		fi.Commentf("UNSUPPORTED : %s : %s", f.Name, reason)
+		fi.Commentf("UNSUPPORTED : %s : %s", f.CIdentifier, reason)
 		fi.Line()
 		return
 	}
 
 	for _, param := range f.Parameters {
 		if param.Array != nil && !param.Array.Type.isString() {
-			fi.Commentf("UNSUPPORTED : %s : has non-string array param %s", f.Name, param.Name)
+			fi.Commentf("UNSUPPORTED : %s : has non-string array param %s", f.CIdentifier, param.Name)
 			fi.Line()
 			return
 		}

@@ -270,7 +270,7 @@ func Fn_g_app_info_launch_default_for_uri(param0 string, param1 unsafe.Pointer, 
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : app_info_launch_default_for_uri_async : has callback
+// UNSUPPORTED : g_app_info_launch_default_for_uri_async : has callback
 
 func Fn_g_app_info_reset_type_associations(param0 string) {
 	cValue0 := (*C.char)(C.CString(param0))
@@ -279,17 +279,17 @@ func Fn_g_app_info_reset_type_associations(param0 string) {
 	C.g_app_info_reset_type_associations(cValue0)
 }
 
-// UNSUPPORTED : async_initable_newv_async : has callback
+// UNSUPPORTED : g_async_initable_newv_async : has callback
 
-// UNSUPPORTED : bus_get : has callback
+// UNSUPPORTED : g_bus_get : has callback
 
-// UNSUPPORTED : bus_own_name : has callback
+// UNSUPPORTED : g_bus_own_name : has callback
 
-// UNSUPPORTED : bus_own_name_on_connection : has callback
+// UNSUPPORTED : g_bus_own_name_on_connection : has callback
 
-// UNSUPPORTED : bus_watch_name : has callback
+// UNSUPPORTED : g_bus_watch_name : has callback
 
-// UNSUPPORTED : bus_watch_name_on_connection : has callback
+// UNSUPPORTED : g_bus_watch_name_on_connection : has callback
 
 func Fn_g_content_type_can_be_executable(param0 string) bool {
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -339,7 +339,7 @@ func Fn_g_content_type_get_icon(param0 string) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : content_type_get_mime_dirs : has array return
+// UNSUPPORTED : g_content_type_get_mime_dirs : has array return
 
 func Fn_g_content_type_get_mime_type(param0 string) string {
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -350,9 +350,9 @@ func Fn_g_content_type_get_mime_type(param0 string) string {
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : content_type_guess : has non-string array param data
+// UNSUPPORTED : g_content_type_guess : has non-string array param data
 
-// UNSUPPORTED : content_type_guess_for_tree : has array return
+// UNSUPPORTED : g_content_type_guess_for_tree : has array return
 
 func Fn_g_content_type_is_a(param0 string, param1 string) bool {
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -381,9 +381,9 @@ func Fn_g_content_types_get_registered() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : dbus_address_get_stream : has callback
+// UNSUPPORTED : g_dbus_address_get_stream : has callback
 
-// UNSUPPORTED : dbus_annotation_info_lookup : has non-string array param annotations
+// UNSUPPORTED : g_dbus_annotation_info_lookup : has non-string array param annotations
 
 func Fn_g_dbus_error_quark() uint32 {
 	ret := C.g_dbus_error_quark()
@@ -391,7 +391,7 @@ func Fn_g_dbus_error_quark() uint32 {
 	return (uint32)(ret)
 }
 
-// UNSUPPORTED : dbus_error_register_error_domain : has non-string array param entries
+// UNSUPPORTED : g_dbus_error_register_error_domain : has non-string array param entries
 
 func Fn_g_file_new_for_commandline_arg(param0 string) unsafe.Pointer {
 	cValue0 := (*C.char)(C.CString(param0))
@@ -448,7 +448,7 @@ func Fn_g_icon_new_for_string(param0 string, error unsafe.Pointer) unsafe.Pointe
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : initable_newv : has non-string array param parameters
+// UNSUPPORTED : g_initable_newv : has non-string array param parameters
 
 func Fn_g_io_error_from_errno(param0 int) int {
 	cValue0 := (C.gint)(param0)
@@ -498,24 +498,24 @@ func Fn_g_io_extension_point_register(param0 string) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : io_modules_load_all_in_directory : blacklisted
-// UNSUPPORTED : io_modules_load_all_in_directory_with_scope : blacklisted
-// UNSUPPORTED : io_modules_scan_all_in_directory : blacklisted
-// UNSUPPORTED : io_modules_scan_all_in_directory_with_scope : blacklisted
+// UNSUPPORTED : g_io_modules_load_all_in_directory : blacklisted
+// UNSUPPORTED : g_io_modules_load_all_in_directory_with_scope : blacklisted
+// UNSUPPORTED : g_io_modules_scan_all_in_directory : blacklisted
+// UNSUPPORTED : g_io_modules_scan_all_in_directory_with_scope : blacklisted
 func Fn_g_io_scheduler_cancel_all_jobs() {
 	C.g_io_scheduler_cancel_all_jobs()
 }
 
-// UNSUPPORTED : io_scheduler_push_job : has callback
+// UNSUPPORTED : g_io_scheduler_push_job : has callback
 
-// UNSUPPORTED : keyfile_settings_backend_new : blacklisted
-// UNSUPPORTED : memory_settings_backend_new : blacklisted
-// UNSUPPORTED : null_settings_backend_new : blacklisted
-// UNSUPPORTED : pollable_stream_read : has non-string array param buffer
+// UNSUPPORTED : g_keyfile_settings_backend_new : blacklisted
+// UNSUPPORTED : g_memory_settings_backend_new : blacklisted
+// UNSUPPORTED : g_null_settings_backend_new : blacklisted
+// UNSUPPORTED : g_pollable_stream_read : has non-string array param buffer
 
-// UNSUPPORTED : pollable_stream_write : has non-string array param buffer
+// UNSUPPORTED : g_pollable_stream_write : has non-string array param buffer
 
-// UNSUPPORTED : pollable_stream_write_all : has non-string array param buffer
+// UNSUPPORTED : g_pollable_stream_write_all : has non-string array param buffer
 
 func Fn_g_resolver_error_quark() uint32 {
 	ret := C.g_resolver_error_quark()
@@ -523,13 +523,13 @@ func Fn_g_resolver_error_quark() uint32 {
 	return (uint32)(ret)
 }
 
-// UNSUPPORTED : resources_enumerate_children : has array return
+// UNSUPPORTED : g_resources_enumerate_children : has array return
 
-// UNSUPPORTED : simple_async_report_error_in_idle : has varargs
+// UNSUPPORTED : g_simple_async_report_error_in_idle : has varargs
 
-// UNSUPPORTED : simple_async_report_gerror_in_idle : has callback
+// UNSUPPORTED : g_simple_async_report_gerror_in_idle : has callback
 
-// UNSUPPORTED : simple_async_report_take_gerror_in_idle : has callback
+// UNSUPPORTED : g_simple_async_report_take_gerror_in_idle : has callback
 
 func Fn_g_srv_target_list_sort(param0 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GList)(unsafe.Pointer(param0))
@@ -697,7 +697,7 @@ func Fn_g_app_launch_context_get_display(paramInstance unsafe.Pointer, param0 un
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : get_environment : has array return
+// UNSUPPORTED : g_app_launch_context_get_environment : has array return
 
 func Fn_g_app_launch_context_get_startup_notify_id(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) string {
 	cValueInstance := (*C.GAppLaunchContext)(unsafe.Pointer(paramInstance))
@@ -731,7 +731,7 @@ func Fn_g_application_new(param0 string, param1 int) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : add_main_option_entries : has non-string array param entries
+// UNSUPPORTED : g_application_add_main_option_entries : has non-string array param entries
 
 func Fn_g_application_hold(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GApplication)(unsafe.Pointer(paramInstance))
@@ -739,7 +739,7 @@ func Fn_g_application_hold(paramInstance unsafe.Pointer) {
 	C.g_application_hold(cValueInstance)
 }
 
-// UNSUPPORTED : open : has non-string array param files
+// UNSUPPORTED : g_application_open : has non-string array param files
 
 func Fn_g_application_release(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GApplication)(unsafe.Pointer(paramInstance))
@@ -756,13 +756,13 @@ func Fn_g_application_id_is_valid(param0 string) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : get_arguments : has array return
+// UNSUPPORTED : g_application_command_line_get_arguments : has array return
 
-// UNSUPPORTED : get_environ : has array return
+// UNSUPPORTED : g_application_command_line_get_environ : has array return
 
-// UNSUPPORTED : print : has varargs
+// UNSUPPORTED : g_application_command_line_print : has varargs
 
-// UNSUPPORTED : printerr : has varargs
+// UNSUPPORTED : g_application_command_line_printerr : has varargs
 
 func Fn_g_buffered_input_stream_new(param0 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GInputStream)(unsafe.Pointer(param0))
@@ -796,7 +796,7 @@ func Fn_g_buffered_input_stream_fill(paramInstance unsafe.Pointer, param0 uint64
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : fill_async : has callback
+// UNSUPPORTED : g_buffered_input_stream_fill_async : has callback
 
 func Fn_g_buffered_input_stream_fill_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint64 {
 	cValueInstance := (*C.GBufferedInputStream)(unsafe.Pointer(paramInstance))
@@ -826,9 +826,9 @@ func Fn_g_buffered_input_stream_get_buffer_size(paramInstance unsafe.Pointer) ui
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : peek : has non-string array param buffer
+// UNSUPPORTED : g_buffered_input_stream_peek : has non-string array param buffer
 
-// UNSUPPORTED : peek_buffer : has array return
+// UNSUPPORTED : g_buffered_input_stream_peek_buffer : has array return
 
 func Fn_g_buffered_input_stream_read_byte(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) int {
 	cValueInstance := (*C.GBufferedInputStream)(unsafe.Pointer(paramInstance))
@@ -912,7 +912,7 @@ func Fn_g_cancellable_cancel(paramInstance unsafe.Pointer) {
 	C.g_cancellable_cancel(cValueInstance)
 }
 
-// UNSUPPORTED : connect : has callback
+// UNSUPPORTED : g_cancellable_connect : has callback
 
 func Fn_g_cancellable_disconnect(paramInstance unsafe.Pointer, param0 uint64) {
 	cValueInstance := (*C.GCancellable)(unsafe.Pointer(paramInstance))
@@ -1062,29 +1062,29 @@ func Fn_g_converter_output_stream_get_converter(paramInstance unsafe.Pointer) un
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : add_filter : has callback
+// UNSUPPORTED : g_dbus_connection_add_filter : has callback
 
-// UNSUPPORTED : call : has callback
+// UNSUPPORTED : g_dbus_connection_call : has callback
 
-// UNSUPPORTED : call_with_unix_fd_list : has callback
+// UNSUPPORTED : g_dbus_connection_call_with_unix_fd_list : has callback
 
-// UNSUPPORTED : close : has callback
+// UNSUPPORTED : g_dbus_connection_close : has callback
 
-// UNSUPPORTED : flush : has callback
+// UNSUPPORTED : g_dbus_connection_flush : has callback
 
-// UNSUPPORTED : register_object : has callback
+// UNSUPPORTED : g_dbus_connection_register_object : has callback
 
-// UNSUPPORTED : register_subtree : has callback
+// UNSUPPORTED : g_dbus_connection_register_subtree : has callback
 
-// UNSUPPORTED : send_message_with_reply : has callback
+// UNSUPPORTED : g_dbus_connection_send_message_with_reply : has callback
 
-// UNSUPPORTED : signal_subscribe : has callback
+// UNSUPPORTED : g_dbus_connection_signal_subscribe : has callback
 
-// UNSUPPORTED : new : has callback
+// UNSUPPORTED : g_dbus_connection_new : has callback
 
-// UNSUPPORTED : new_for_address : has callback
+// UNSUPPORTED : g_dbus_connection_new_for_address : has callback
 
-// UNSUPPORTED : new_from_blob : has non-string array param blob
+// UNSUPPORTED : g_dbus_message_new_from_blob : has non-string array param blob
 
 func Fn_g_dbus_message_get_byte_order(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.GDBusMessage)(unsafe.Pointer(paramInstance))
@@ -1094,11 +1094,11 @@ func Fn_g_dbus_message_get_byte_order(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : get_header_fields : has array return
+// UNSUPPORTED : g_dbus_message_get_header_fields : has array return
 
-// UNSUPPORTED : new_method_error : has varargs
+// UNSUPPORTED : g_dbus_message_new_method_error : has varargs
 
-// UNSUPPORTED : new_method_error_valist : has va_list
+// UNSUPPORTED : g_dbus_message_new_method_error_valist : has va_list
 
 func Fn_g_dbus_message_set_byte_order(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GDBusMessage)(unsafe.Pointer(paramInstance))
@@ -1108,21 +1108,21 @@ func Fn_g_dbus_message_set_byte_order(paramInstance unsafe.Pointer, param0 int) 
 	C.g_dbus_message_set_byte_order(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : to_blob : has array return
+// UNSUPPORTED : g_dbus_message_to_blob : has array return
 
-// UNSUPPORTED : bytes_needed : has non-string array param blob
+// UNSUPPORTED : g_dbus_message_bytes_needed : has non-string array param blob
 
-// UNSUPPORTED : return_error : has varargs
+// UNSUPPORTED : g_dbus_method_invocation_return_error : has varargs
 
-// UNSUPPORTED : return_error_valist : has va_list
+// UNSUPPORTED : g_dbus_method_invocation_return_error_valist : has va_list
 
-// UNSUPPORTED : new_for_bus_sync : has callback
+// UNSUPPORTED : g_dbus_object_manager_client_new_for_bus_sync : has callback
 
-// UNSUPPORTED : new_sync : has callback
+// UNSUPPORTED : g_dbus_object_manager_client_new_sync : has callback
 
-// UNSUPPORTED : new : has callback
+// UNSUPPORTED : g_dbus_object_manager_client_new : has callback
 
-// UNSUPPORTED : new_for_bus : has callback
+// UNSUPPORTED : g_dbus_object_manager_client_new_for_bus : has callback
 
 func Fn_g_dbus_object_manager_server_set_connection(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GDBusObjectManagerServer)(unsafe.Pointer(paramInstance))
@@ -1132,15 +1132,15 @@ func Fn_g_dbus_object_manager_server_set_connection(paramInstance unsafe.Pointer
 	C.g_dbus_object_manager_server_set_connection(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : call : has callback
+// UNSUPPORTED : g_dbus_proxy_call : has callback
 
-// UNSUPPORTED : call_with_unix_fd_list : has callback
+// UNSUPPORTED : g_dbus_proxy_call_with_unix_fd_list : has callback
 
-// UNSUPPORTED : get_cached_property_names : has array return
+// UNSUPPORTED : g_dbus_proxy_get_cached_property_names : has array return
 
-// UNSUPPORTED : new : has callback
+// UNSUPPORTED : g_dbus_proxy_new : has callback
 
-// UNSUPPORTED : new_for_bus : has callback
+// UNSUPPORTED : g_dbus_proxy_new_for_bus : has callback
 
 func Fn_g_data_input_stream_new(param0 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GInputStream)(unsafe.Pointer(param0))
@@ -1214,11 +1214,11 @@ func Fn_g_data_input_stream_read_int64(paramInstance unsafe.Pointer, param0 unsa
 	return (int64)(ret)
 }
 
-// UNSUPPORTED : read_line : has array return
+// UNSUPPORTED : g_data_input_stream_read_line : has array return
 
-// UNSUPPORTED : read_line_async : has callback
+// UNSUPPORTED : g_data_input_stream_read_line_async : has callback
 
-// UNSUPPORTED : read_line_finish : has array return
+// UNSUPPORTED : g_data_input_stream_read_line_finish : has array return
 
 func Fn_g_data_input_stream_read_uint16(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint16 {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
@@ -1273,7 +1273,7 @@ func Fn_g_data_input_stream_read_until(paramInstance unsafe.Pointer, param0 stri
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : read_until_async : has callback
+// UNSUPPORTED : g_data_input_stream_read_until_async : has callback
 
 func Fn_g_data_input_stream_read_until_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *uint64, error unsafe.Pointer) string {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
@@ -1289,7 +1289,7 @@ func Fn_g_data_input_stream_read_until_finish(paramInstance unsafe.Pointer, para
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : read_upto_async : has callback
+// UNSUPPORTED : g_data_input_stream_read_upto_async : has callback
 
 func Fn_g_data_input_stream_read_upto_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *uint64, error unsafe.Pointer) string {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
@@ -1516,17 +1516,17 @@ func Fn_g_desktop_app_info_get_is_hidden(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : get_keywords : has array return
+// UNSUPPORTED : g_desktop_app_info_get_keywords : has array return
 
-// UNSUPPORTED : get_string_list : has array return
+// UNSUPPORTED : g_desktop_app_info_get_string_list : has array return
 
-// UNSUPPORTED : launch_uris_as_manager : has callback
+// UNSUPPORTED : g_desktop_app_info_launch_uris_as_manager : has callback
 
-// UNSUPPORTED : launch_uris_as_manager_with_fds : has callback
+// UNSUPPORTED : g_desktop_app_info_launch_uris_as_manager_with_fds : has callback
 
-// UNSUPPORTED : list_actions : has array return
+// UNSUPPORTED : g_desktop_app_info_list_actions : has array return
 
-// UNSUPPORTED : search : has array return
+// UNSUPPORTED : g_desktop_app_info_search : has array return
 
 func Fn_g_desktop_app_info_set_desktop_env(param0 string) {
 	cValue0 := (*C.char)(C.CString(param0))
@@ -1615,7 +1615,7 @@ func Fn_g_file_enumerator_close(paramInstance unsafe.Pointer, param0 unsafe.Poin
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : close_async : has callback
+// UNSUPPORTED : g_file_enumerator_close_async : has callback
 
 func Fn_g_file_enumerator_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
@@ -1665,7 +1665,7 @@ func Fn_g_file_enumerator_next_file(paramInstance unsafe.Pointer, param0 unsafe.
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : next_files_async : has callback
+// UNSUPPORTED : g_file_enumerator_next_files_async : has callback
 
 func Fn_g_file_enumerator_next_files_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
@@ -1710,7 +1710,7 @@ func Fn_g_file_io_stream_query_info(paramInstance unsafe.Pointer, param0 string,
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : query_info_async : has callback
+// UNSUPPORTED : g_file_io_stream_query_info_async : has callback
 
 func Fn_g_file_io_stream_query_info_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GFileIOStream)(unsafe.Pointer(paramInstance))
@@ -1873,7 +1873,7 @@ func Fn_g_file_info_get_attribute_string(paramInstance unsafe.Pointer, param0 st
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : get_attribute_stringv : has array return
+// UNSUPPORTED : g_file_info_get_attribute_stringv : has array return
 
 func Fn_g_file_info_get_attribute_type(paramInstance unsafe.Pointer, param0 string) int {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
@@ -2042,7 +2042,7 @@ func Fn_g_file_info_has_namespace(paramInstance unsafe.Pointer, param0 string) b
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : list_attributes : has array return
+// UNSUPPORTED : g_file_info_list_attributes : has array return
 
 func Fn_g_file_info_remove_attribute(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
@@ -2318,7 +2318,7 @@ func Fn_g_file_input_stream_query_info(paramInstance unsafe.Pointer, param0 stri
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : query_info_async : has callback
+// UNSUPPORTED : g_file_input_stream_query_info_async : has callback
 
 func Fn_g_file_input_stream_query_info_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GFileInputStream)(unsafe.Pointer(paramInstance))
@@ -2391,7 +2391,7 @@ func Fn_g_file_output_stream_query_info(paramInstance unsafe.Pointer, param0 str
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : query_info_async : has callback
+// UNSUPPORTED : g_file_output_stream_query_info_async : has callback
 
 func Fn_g_file_output_stream_query_info_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GFileOutputStream)(unsafe.Pointer(paramInstance))
@@ -2422,7 +2422,7 @@ func Fn_g_filename_completer_get_completion_suffix(paramInstance unsafe.Pointer,
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : get_completions : has array return
+// UNSUPPORTED : g_filename_completer_get_completions : has array return
 
 func Fn_g_filename_completer_set_dirs_only(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFilenameCompleter)(unsafe.Pointer(paramInstance))
@@ -2480,10 +2480,10 @@ func Fn_g_filter_output_stream_set_close_base_stream(paramInstance unsafe.Pointe
 	C.g_filter_output_stream_set_close_base_stream(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : new : blacklisted
-// UNSUPPORTED : load : blacklisted
-// UNSUPPORTED : unload : blacklisted
-// UNSUPPORTED : query : blacklisted
+// UNSUPPORTED : g_io_module_new : blacklisted
+// UNSUPPORTED : g_io_module_load : blacklisted
+// UNSUPPORTED : g_io_module_unload : blacklisted
+// UNSUPPORTED : g_io_module_query : blacklisted
 func Fn_g_io_stream_clear_pending(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GIOStream)(unsafe.Pointer(paramInstance))
 
@@ -2502,7 +2502,7 @@ func Fn_g_io_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer, e
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : close_async : has callback
+// UNSUPPORTED : g_io_stream_close_async : has callback
 
 func Fn_g_io_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GIOStream)(unsafe.Pointer(paramInstance))
@@ -2558,7 +2558,7 @@ func Fn_g_io_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Point
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : splice_async : has callback
+// UNSUPPORTED : g_io_stream_splice_async : has callback
 
 func Fn_g_inet_address_new_any(param0 int) unsafe.Pointer {
 	cValue0 := (C.GSocketFamily)(param0)
@@ -2568,7 +2568,7 @@ func Fn_g_inet_address_new_any(param0 int) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : new_from_bytes : has non-string array param bytes
+// UNSUPPORTED : g_inet_address_new_from_bytes : has non-string array param bytes
 
 func Fn_g_inet_address_new_from_string(param0 string) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -2743,7 +2743,7 @@ func Fn_g_input_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointer
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : close_async : has callback
+// UNSUPPORTED : g_input_stream_close_async : has callback
 
 func Fn_g_input_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
@@ -2773,15 +2773,15 @@ func Fn_g_input_stream_is_closed(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : read : has non-string array param buffer
+// UNSUPPORTED : g_input_stream_read : has non-string array param buffer
 
-// UNSUPPORTED : read_all : has non-string array param buffer
+// UNSUPPORTED : g_input_stream_read_all : has non-string array param buffer
 
-// UNSUPPORTED : read_all_async : has callback
+// UNSUPPORTED : g_input_stream_read_all_async : has callback
 
-// UNSUPPORTED : read_async : has callback
+// UNSUPPORTED : g_input_stream_read_async : has callback
 
-// UNSUPPORTED : read_bytes_async : has callback
+// UNSUPPORTED : g_input_stream_read_bytes_async : has callback
 
 func Fn_g_input_stream_read_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint64 {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
@@ -2819,7 +2819,7 @@ func Fn_g_input_stream_skip(paramInstance unsafe.Pointer, param0 uint64, param1 
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : skip_async : has callback
+// UNSUPPORTED : g_input_stream_skip_async : has callback
 
 func Fn_g_input_stream_skip_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint64 {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
@@ -2833,11 +2833,11 @@ func Fn_g_input_stream_skip_finish(paramInstance unsafe.Pointer, param0 unsafe.P
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : insert_sorted : has callback
+// UNSUPPORTED : g_list_store_insert_sorted : has callback
 
-// UNSUPPORTED : sort : has callback
+// UNSUPPORTED : g_list_store_sort : has callback
 
-// UNSUPPORTED : splice : has non-string array param additions
+// UNSUPPORTED : g_list_store_splice : has non-string array param additions
 
 func Fn_g_memory_input_stream_new() unsafe.Pointer {
 	ret := C.g_memory_input_stream_new()
@@ -2845,11 +2845,11 @@ func Fn_g_memory_input_stream_new() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : new_from_data : has callback
+// UNSUPPORTED : g_memory_input_stream_new_from_data : has callback
 
-// UNSUPPORTED : add_data : has callback
+// UNSUPPORTED : g_memory_input_stream_add_data : has callback
 
-// UNSUPPORTED : new : has callback
+// UNSUPPORTED : g_memory_output_stream_new : has callback
 
 func Fn_g_memory_output_stream_get_data(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GMemoryOutputStream)(unsafe.Pointer(paramInstance))
@@ -2875,13 +2875,13 @@ func Fn_g_memory_output_stream_get_size(paramInstance unsafe.Pointer) uint64 {
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : get_attribute : has varargs
+// UNSUPPORTED : g_menu_item_get_attribute : has varargs
 
-// UNSUPPORTED : set_action_and_target : has varargs
+// UNSUPPORTED : g_menu_item_set_action_and_target : has varargs
 
-// UNSUPPORTED : set_attribute : has varargs
+// UNSUPPORTED : g_menu_item_set_attribute : has varargs
 
-// UNSUPPORTED : get_item_attribute : has varargs
+// UNSUPPORTED : g_menu_model_get_item_attribute : has varargs
 
 func Fn_g_mount_operation_new() unsafe.Pointer {
 	ret := C.g_mount_operation_new()
@@ -3075,9 +3075,9 @@ func Fn_g_network_service_get_service(paramInstance unsafe.Pointer) string {
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : add_button_with_target : has varargs
+// UNSUPPORTED : g_notification_add_button_with_target : has varargs
 
-// UNSUPPORTED : set_default_action_and_target : has varargs
+// UNSUPPORTED : g_notification_set_default_action_and_target : has varargs
 
 func Fn_g_notification_set_priority(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GNotification)(unsafe.Pointer(paramInstance))
@@ -3105,7 +3105,7 @@ func Fn_g_output_stream_close(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : close_async : has callback
+// UNSUPPORTED : g_output_stream_close_async : has callback
 
 func Fn_g_output_stream_close_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
@@ -3131,7 +3131,7 @@ func Fn_g_output_stream_flush(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : flush_async : has callback
+// UNSUPPORTED : g_output_stream_flush_async : has callback
 
 func Fn_g_output_stream_flush_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
@@ -3169,7 +3169,7 @@ func Fn_g_output_stream_is_closing(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : printf : has varargs
+// UNSUPPORTED : g_output_stream_printf : has varargs
 
 func Fn_g_output_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
@@ -3197,7 +3197,7 @@ func Fn_g_output_stream_splice(paramInstance unsafe.Pointer, param0 unsafe.Point
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : splice_async : has callback
+// UNSUPPORTED : g_output_stream_splice_async : has callback
 
 func Fn_g_output_stream_splice_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint64 {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
@@ -3211,15 +3211,15 @@ func Fn_g_output_stream_splice_finish(paramInstance unsafe.Pointer, param0 unsaf
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : vprintf : has va_list
+// UNSUPPORTED : g_output_stream_vprintf : has va_list
 
-// UNSUPPORTED : write : has non-string array param buffer
+// UNSUPPORTED : g_output_stream_write : has non-string array param buffer
 
-// UNSUPPORTED : write_all : has non-string array param buffer
+// UNSUPPORTED : g_output_stream_write_all : has non-string array param buffer
 
-// UNSUPPORTED : write_all_async : has callback
+// UNSUPPORTED : g_output_stream_write_all_async : has callback
 
-// UNSUPPORTED : write_async : has callback
+// UNSUPPORTED : g_output_stream_write_async : has callback
 
 func Fn_g_output_stream_write_bytes(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) uint64 {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
@@ -3235,7 +3235,7 @@ func Fn_g_output_stream_write_bytes(paramInstance unsafe.Pointer, param0 unsafe.
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : write_bytes_async : has callback
+// UNSUPPORTED : g_output_stream_write_bytes_async : has callback
 
 func Fn_g_output_stream_write_bytes_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint64 {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
@@ -3261,17 +3261,17 @@ func Fn_g_output_stream_write_finish(paramInstance unsafe.Pointer, param0 unsafe
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : writev : has non-string array param vectors
+// UNSUPPORTED : g_output_stream_writev : has non-string array param vectors
 
-// UNSUPPORTED : writev_all : has non-string array param vectors
+// UNSUPPORTED : g_output_stream_writev_all : has non-string array param vectors
 
-// UNSUPPORTED : writev_all_async : has callback
+// UNSUPPORTED : g_output_stream_writev_all_async : has callback
 
-// UNSUPPORTED : writev_async : has callback
+// UNSUPPORTED : g_output_stream_writev_async : has callback
 
-// UNSUPPORTED : acquire_async : has callback
+// UNSUPPORTED : g_permission_acquire_async : has callback
 
-// UNSUPPORTED : release_async : has callback
+// UNSUPPORTED : g_permission_release_async : has callback
 
 func Fn_g_resolver_lookup_by_address(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) string {
 	cValueInstance := (*C.GResolver)(unsafe.Pointer(paramInstance))
@@ -3287,7 +3287,7 @@ func Fn_g_resolver_lookup_by_address(paramInstance unsafe.Pointer, param0 unsafe
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : lookup_by_address_async : has callback
+// UNSUPPORTED : g_resolver_lookup_by_address_async : has callback
 
 func Fn_g_resolver_lookup_by_address_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) string {
 	cValueInstance := (*C.GResolver)(unsafe.Pointer(paramInstance))
@@ -3316,7 +3316,7 @@ func Fn_g_resolver_lookup_by_name(paramInstance unsafe.Pointer, param0 string, p
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : lookup_by_name_async : has callback
+// UNSUPPORTED : g_resolver_lookup_by_name_async : has callback
 
 func Fn_g_resolver_lookup_by_name_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GResolver)(unsafe.Pointer(paramInstance))
@@ -3330,9 +3330,9 @@ func Fn_g_resolver_lookup_by_name_finish(paramInstance unsafe.Pointer, param0 un
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : lookup_by_name_with_flags_async : has callback
+// UNSUPPORTED : g_resolver_lookup_by_name_with_flags_async : has callback
 
-// UNSUPPORTED : lookup_records_async : has callback
+// UNSUPPORTED : g_resolver_lookup_records_async : has callback
 
 func Fn_g_resolver_lookup_service(paramInstance unsafe.Pointer, param0 string, param1 string, param2 string, param3 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GResolver)(unsafe.Pointer(paramInstance))
@@ -3355,7 +3355,7 @@ func Fn_g_resolver_lookup_service(paramInstance unsafe.Pointer, param0 string, p
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : lookup_service_async : has callback
+// UNSUPPORTED : g_resolver_lookup_service_async : has callback
 
 func Fn_g_resolver_lookup_service_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GResolver)(unsafe.Pointer(paramInstance))
@@ -3399,17 +3399,17 @@ func Fn_g_settings_apply(paramInstance unsafe.Pointer) {
 	C.g_settings_apply(cValueInstance)
 }
 
-// UNSUPPORTED : bind_with_mapping : has callback
+// UNSUPPORTED : g_settings_bind_with_mapping : has callback
 
-// UNSUPPORTED : get : has varargs
+// UNSUPPORTED : g_settings_get : has varargs
 
-// UNSUPPORTED : get_mapped : has callback
+// UNSUPPORTED : g_settings_get_mapped : has callback
 
-// UNSUPPORTED : get_strv : has array return
+// UNSUPPORTED : g_settings_get_strv : has array return
 
-// UNSUPPORTED : list_children : has array return
+// UNSUPPORTED : g_settings_list_children : has array return
 
-// UNSUPPORTED : list_keys : has array return
+// UNSUPPORTED : g_settings_list_keys : has array return
 
 func Fn_g_settings_reset(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
@@ -3426,7 +3426,7 @@ func Fn_g_settings_revert(paramInstance unsafe.Pointer) {
 	C.g_settings_revert(cValueInstance)
 }
 
-// UNSUPPORTED : set : has varargs
+// UNSUPPORTED : g_settings_set : has varargs
 
 func Fn_g_settings_set_enum(paramInstance unsafe.Pointer, param0 string, param1 int) bool {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
@@ -3454,31 +3454,31 @@ func Fn_g_settings_set_flags(paramInstance unsafe.Pointer, param0 string, param1
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : list_relocatable_schemas : has array return
+// UNSUPPORTED : g_settings_list_relocatable_schemas : has array return
 
-// UNSUPPORTED : list_schemas : has array return
+// UNSUPPORTED : g_settings_list_schemas : has array return
 
 func Fn_g_settings_sync() {
 	C.g_settings_sync()
 }
 
-// UNSUPPORTED : changed : blacklisted
-// UNSUPPORTED : changed_tree : blacklisted
-// UNSUPPORTED : keys_changed : blacklisted
-// UNSUPPORTED : path_changed : blacklisted
-// UNSUPPORTED : path_writable_changed : blacklisted
-// UNSUPPORTED : writable_changed : blacklisted
-// UNSUPPORTED : flatten_tree : blacklisted
-// UNSUPPORTED : get_default : blacklisted
-// UNSUPPORTED : add_entries : has non-string array param entries
+// UNSUPPORTED : g_settings_backend_changed : blacklisted
+// UNSUPPORTED : g_settings_backend_changed_tree : blacklisted
+// UNSUPPORTED : g_settings_backend_keys_changed : blacklisted
+// UNSUPPORTED : g_settings_backend_path_changed : blacklisted
+// UNSUPPORTED : g_settings_backend_path_writable_changed : blacklisted
+// UNSUPPORTED : g_settings_backend_writable_changed : blacklisted
+// UNSUPPORTED : g_settings_backend_flatten_tree : blacklisted
+// UNSUPPORTED : g_settings_backend_get_default : blacklisted
+// UNSUPPORTED : g_simple_action_group_add_entries : has non-string array param entries
 
-// UNSUPPORTED : new : has callback
+// UNSUPPORTED : g_simple_async_result_new : has callback
 
-// UNSUPPORTED : new_error : has varargs
+// UNSUPPORTED : g_simple_async_result_new_error : has varargs
 
-// UNSUPPORTED : new_from_error : has callback
+// UNSUPPORTED : g_simple_async_result_new_from_error : has callback
 
-// UNSUPPORTED : new_take_error : has callback
+// UNSUPPORTED : g_simple_async_result_new_take_error : has callback
 
 func Fn_g_simple_async_result_complete(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
@@ -3534,11 +3534,11 @@ func Fn_g_simple_async_result_propagate_error(paramInstance unsafe.Pointer, erro
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : run_in_thread : has callback
+// UNSUPPORTED : g_simple_async_result_run_in_thread : has callback
 
-// UNSUPPORTED : set_error : has varargs
+// UNSUPPORTED : g_simple_async_result_set_error : has varargs
 
-// UNSUPPORTED : set_error_va : has va_list
+// UNSUPPORTED : g_simple_async_result_set_error_va : has va_list
 
 func Fn_g_simple_async_result_set_from_error(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
@@ -3564,7 +3564,7 @@ func Fn_g_simple_async_result_set_op_res_gboolean(paramInstance unsafe.Pointer, 
 	C.g_simple_async_result_set_op_res_gboolean(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : set_op_res_gpointer : has callback
+// UNSUPPORTED : g_simple_async_result_set_op_res_gpointer : has callback
 
 func Fn_g_simple_async_result_set_op_res_gssize(paramInstance unsafe.Pointer, param0 uint64) {
 	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
@@ -3816,27 +3816,27 @@ func Fn_g_socket_listen(paramInstance unsafe.Pointer, error unsafe.Pointer) bool
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : receive : has non-string array param buffer
+// UNSUPPORTED : g_socket_receive : has non-string array param buffer
 
-// UNSUPPORTED : receive_from : has non-string array param buffer
+// UNSUPPORTED : g_socket_receive_from : has non-string array param buffer
 
-// UNSUPPORTED : receive_message : has non-string array param vectors
+// UNSUPPORTED : g_socket_receive_message : has non-string array param vectors
 
-// UNSUPPORTED : receive_messages : has non-string array param messages
+// UNSUPPORTED : g_socket_receive_messages : has non-string array param messages
 
-// UNSUPPORTED : receive_with_blocking : has non-string array param buffer
+// UNSUPPORTED : g_socket_receive_with_blocking : has non-string array param buffer
 
-// UNSUPPORTED : send : has non-string array param buffer
+// UNSUPPORTED : g_socket_send : has non-string array param buffer
 
-// UNSUPPORTED : send_message : has non-string array param vectors
+// UNSUPPORTED : g_socket_send_message : has non-string array param vectors
 
-// UNSUPPORTED : send_message_with_timeout : has non-string array param vectors
+// UNSUPPORTED : g_socket_send_message_with_timeout : has non-string array param vectors
 
-// UNSUPPORTED : send_messages : has non-string array param messages
+// UNSUPPORTED : g_socket_send_messages : has non-string array param messages
 
-// UNSUPPORTED : send_to : has non-string array param buffer
+// UNSUPPORTED : g_socket_send_to : has non-string array param buffer
 
-// UNSUPPORTED : send_with_blocking : has non-string array param buffer
+// UNSUPPORTED : g_socket_send_with_blocking : has non-string array param buffer
 
 func Fn_g_socket_set_blocking(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GSocket)(unsafe.Pointer(paramInstance))
@@ -3936,7 +3936,7 @@ func Fn_g_socket_address_enumerator_next(paramInstance unsafe.Pointer, param0 un
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : next_async : has callback
+// UNSUPPORTED : g_socket_address_enumerator_next_async : has callback
 
 func Fn_g_socket_address_enumerator_next_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GSocketAddressEnumerator)(unsafe.Pointer(paramInstance))
@@ -3979,7 +3979,7 @@ func Fn_g_socket_client_connect(paramInstance unsafe.Pointer, param0 unsafe.Poin
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : connect_async : has callback
+// UNSUPPORTED : g_socket_client_connect_async : has callback
 
 func Fn_g_socket_client_connect_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GSocketClient)(unsafe.Pointer(paramInstance))
@@ -4010,7 +4010,7 @@ func Fn_g_socket_client_connect_to_host(paramInstance unsafe.Pointer, param0 str
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : connect_to_host_async : has callback
+// UNSUPPORTED : g_socket_client_connect_to_host_async : has callback
 
 func Fn_g_socket_client_connect_to_host_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GSocketClient)(unsafe.Pointer(paramInstance))
@@ -4042,7 +4042,7 @@ func Fn_g_socket_client_connect_to_service(paramInstance unsafe.Pointer, param0 
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : connect_to_service_async : has callback
+// UNSUPPORTED : g_socket_client_connect_to_service_async : has callback
 
 func Fn_g_socket_client_connect_to_service_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GSocketClient)(unsafe.Pointer(paramInstance))
@@ -4056,7 +4056,7 @@ func Fn_g_socket_client_connect_to_service_finish(paramInstance unsafe.Pointer, 
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : connect_to_uri_async : has callback
+// UNSUPPORTED : g_socket_client_connect_to_uri_async : has callback
 
 func Fn_g_socket_client_get_family(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.GSocketClient)(unsafe.Pointer(paramInstance))
@@ -4122,7 +4122,7 @@ func Fn_g_socket_client_set_socket_type(paramInstance unsafe.Pointer, param0 int
 	C.g_socket_client_set_socket_type(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : connect_async : has callback
+// UNSUPPORTED : g_socket_connection_connect_async : has callback
 
 func Fn_g_socket_connection_get_local_address(paramInstance unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GSocketConnection)(unsafe.Pointer(paramInstance))
@@ -4208,7 +4208,7 @@ func Fn_g_socket_control_message_serialize(paramInstance unsafe.Pointer, param0 
 	C.g_socket_control_message_serialize(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : deserialize : has non-string array param data
+// UNSUPPORTED : g_socket_control_message_deserialize : has non-string array param data
 
 func Fn_g_socket_listener_new() unsafe.Pointer {
 	ret := C.g_socket_listener_new()
@@ -4230,7 +4230,7 @@ func Fn_g_socket_listener_accept(paramInstance unsafe.Pointer, param0 *unsafe.Po
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : accept_async : has callback
+// UNSUPPORTED : g_socket_listener_accept_async : has callback
 
 func Fn_g_socket_listener_accept_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GSocketListener)(unsafe.Pointer(paramInstance))
@@ -4260,7 +4260,7 @@ func Fn_g_socket_listener_accept_socket(paramInstance unsafe.Pointer, param0 *un
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : accept_socket_async : has callback
+// UNSUPPORTED : g_socket_listener_accept_socket_async : has callback
 
 func Fn_g_socket_listener_accept_socket_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GSocketListener)(unsafe.Pointer(paramInstance))
@@ -4376,9 +4376,9 @@ func Fn_g_socket_service_stop(paramInstance unsafe.Pointer) {
 	C.g_socket_service_stop(cValueInstance)
 }
 
-// UNSUPPORTED : new : has varargs
+// UNSUPPORTED : g_subprocess_new : has varargs
 
-// UNSUPPORTED : communicate_async : has callback
+// UNSUPPORTED : g_subprocess_communicate_async : has callback
 
 func Fn_g_subprocess_communicate_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 *unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
@@ -4423,7 +4423,7 @@ func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 strin
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : communicate_utf8_async : has callback
+// UNSUPPORTED : g_subprocess_communicate_utf8_async : has callback
 
 func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string, param2 *string, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
@@ -4449,13 +4449,13 @@ func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : wait_async : has callback
+// UNSUPPORTED : g_subprocess_wait_async : has callback
 
-// UNSUPPORTED : wait_check_async : has callback
+// UNSUPPORTED : g_subprocess_wait_check_async : has callback
 
-// UNSUPPORTED : set_child_setup : has callback
+// UNSUPPORTED : g_subprocess_launcher_set_child_setup : has callback
 
-// UNSUPPORTED : spawn : has varargs
+// UNSUPPORTED : g_subprocess_launcher_spawn : has varargs
 
 func Fn_g_subprocess_launcher_take_fd(paramInstance unsafe.Pointer, param0 int, param1 int) {
 	cValueInstance := (*C.GSubprocessLauncher)(unsafe.Pointer(paramInstance))
@@ -4467,23 +4467,23 @@ func Fn_g_subprocess_launcher_take_fd(paramInstance unsafe.Pointer, param0 int, 
 	C.g_subprocess_launcher_take_fd(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : new : has callback
+// UNSUPPORTED : g_task_new : has callback
 
-// UNSUPPORTED : attach_source : has callback
+// UNSUPPORTED : g_task_attach_source : has callback
 
-// UNSUPPORTED : return_new_error : has varargs
+// UNSUPPORTED : g_task_return_new_error : has varargs
 
-// UNSUPPORTED : return_pointer : has callback
+// UNSUPPORTED : g_task_return_pointer : has callback
 
-// UNSUPPORTED : run_in_thread : has callback
+// UNSUPPORTED : g_task_run_in_thread : has callback
 
-// UNSUPPORTED : run_in_thread_sync : has callback
+// UNSUPPORTED : g_task_run_in_thread_sync : has callback
 
-// UNSUPPORTED : set_task_data : has callback
+// UNSUPPORTED : g_task_set_task_data : has callback
 
-// UNSUPPORTED : report_error : has callback
+// UNSUPPORTED : g_task_report_error : has callback
 
-// UNSUPPORTED : report_new_error : has varargs
+// UNSUPPORTED : g_task_report_new_error : has varargs
 
 func Fn_g_tcp_connection_get_graceful_disconnect(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GTcpConnection)(unsafe.Pointer(paramInstance))
@@ -4609,7 +4609,7 @@ func Fn_g_themed_icon_append_name(paramInstance unsafe.Pointer, param0 string) {
 	C.g_themed_icon_append_name(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : get_names : has array return
+// UNSUPPORTED : g_themed_icon_get_names : has array return
 
 func Fn_g_themed_icon_prepend_name(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GThemedIcon)(unsafe.Pointer(paramInstance))
@@ -4636,7 +4636,7 @@ func Fn_g_tls_connection_get_use_system_certdb(paramInstance unsafe.Pointer) boo
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : handshake_async : has callback
+// UNSUPPORTED : g_tls_connection_handshake_async : has callback
 
 func Fn_g_tls_connection_set_use_system_certdb(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GTlsConnection)(unsafe.Pointer(paramInstance))
@@ -4646,19 +4646,19 @@ func Fn_g_tls_connection_set_use_system_certdb(paramInstance unsafe.Pointer, par
 	C.g_tls_connection_set_use_system_certdb(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : lookup_certificate_for_handle_async : has callback
+// UNSUPPORTED : g_tls_database_lookup_certificate_for_handle_async : has callback
 
-// UNSUPPORTED : lookup_certificate_issuer_async : has callback
+// UNSUPPORTED : g_tls_database_lookup_certificate_issuer_async : has callback
 
-// UNSUPPORTED : lookup_certificates_issued_by : has non-string array param issuer_raw_dn
+// UNSUPPORTED : g_tls_database_lookup_certificates_issued_by : has non-string array param issuer_raw_dn
 
-// UNSUPPORTED : lookup_certificates_issued_by_async : has callback
+// UNSUPPORTED : g_tls_database_lookup_certificates_issued_by_async : has callback
 
-// UNSUPPORTED : verify_chain_async : has callback
+// UNSUPPORTED : g_tls_database_verify_chain_async : has callback
 
-// UNSUPPORTED : ask_password_async : has callback
+// UNSUPPORTED : g_tls_interaction_ask_password_async : has callback
 
-// UNSUPPORTED : request_certificate_async : has callback
+// UNSUPPORTED : g_tls_interaction_request_certificate_async : has callback
 
 func Fn_g_tls_password_new(param0 int, param1 string) unsafe.Pointer {
 	cValue0 := (C.GTlsPasswordFlags)(param0)
@@ -4671,11 +4671,11 @@ func Fn_g_tls_password_new(param0 int, param1 string) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : set_value : has non-string array param value
+// UNSUPPORTED : g_tls_password_set_value : has non-string array param value
 
-// UNSUPPORTED : set_value_full : has callback
+// UNSUPPORTED : g_tls_password_set_value_full : has callback
 
-// UNSUPPORTED : receive_credentials_async : has callback
+// UNSUPPORTED : g_unix_connection_receive_credentials_async : has callback
 
 func Fn_g_unix_connection_receive_fd(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) int {
 	cValueInstance := (*C.GUnixConnection)(unsafe.Pointer(paramInstance))
@@ -4689,7 +4689,7 @@ func Fn_g_unix_connection_receive_fd(paramInstance unsafe.Pointer, param0 unsafe
 	return (int)(ret)
 }
 
-// UNSUPPORTED : send_credentials_async : has callback
+// UNSUPPORTED : g_unix_connection_send_credentials_async : has callback
 
 func Fn_g_unix_connection_send_fd(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GUnixConnection)(unsafe.Pointer(paramInstance))
@@ -4711,7 +4711,7 @@ func Fn_g_unix_fd_list_new() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : new_from_array : has non-string array param fds
+// UNSUPPORTED : g_unix_fd_list_new_from_array : has non-string array param fds
 
 func Fn_g_unix_fd_list_append(paramInstance unsafe.Pointer, param0 int, error unsafe.Pointer) int {
 	cValueInstance := (*C.GUnixFDList)(unsafe.Pointer(paramInstance))
@@ -4745,9 +4745,9 @@ func Fn_g_unix_fd_list_get_length(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : peek_fds : has array return
+// UNSUPPORTED : g_unix_fd_list_peek_fds : has array return
 
-// UNSUPPORTED : steal_fds : has array return
+// UNSUPPORTED : g_unix_fd_list_steal_fds : has array return
 
 func Fn_g_unix_fd_message_new() unsafe.Pointer {
 	ret := C.g_unix_fd_message_new()
@@ -4783,7 +4783,7 @@ func Fn_g_unix_fd_message_get_fd_list(paramInstance unsafe.Pointer) unsafe.Point
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : steal_fds : has array return
+// UNSUPPORTED : g_unix_fd_message_steal_fds : has array return
 
 func Fn_g_unix_input_stream_new(param0 int, param1 bool) unsafe.Pointer {
 	cValue0 := (C.gint)(param0)
@@ -4876,9 +4876,9 @@ func Fn_g_unix_socket_address_new(param0 string) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : new_abstract : has non-string array param path
+// UNSUPPORTED : g_unix_socket_address_new_abstract : has non-string array param path
 
-// UNSUPPORTED : new_with_type : has non-string array param path
+// UNSUPPORTED : g_unix_socket_address_new_with_type : has non-string array param path
 
 func Fn_g_unix_socket_address_get_is_abstract(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GUnixSocketAddress)(unsafe.Pointer(paramInstance))
@@ -4932,7 +4932,7 @@ func Fn_g_vfs_get_file_for_uri(paramInstance unsafe.Pointer, param0 string) unsa
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : get_supported_uri_schemes : has array return
+// UNSUPPORTED : g_vfs_get_supported_uri_schemes : has array return
 
 func Fn_g_vfs_is_active(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GVfs)(unsafe.Pointer(paramInstance))
@@ -4953,7 +4953,7 @@ func Fn_g_vfs_parse_name(paramInstance unsafe.Pointer, param0 string) unsafe.Poi
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : register_uri_scheme : has callback
+// UNSUPPORTED : g_vfs_register_uri_scheme : has callback
 
 func Fn_g_vfs_get_default() unsafe.Pointer {
 	ret := C.g_vfs_get_default()

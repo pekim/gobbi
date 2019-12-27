@@ -253,11 +253,11 @@ func Fn_pango_bidi_type_for_unichar(param0 rune) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : break : has non-string array param attrs
+// UNSUPPORTED : pango_break : has non-string array param attrs
 
-// UNSUPPORTED : config_key_get : blacklisted
-// UNSUPPORTED : config_key_get_system : blacklisted
-// UNSUPPORTED : default_break : blacklisted
+// UNSUPPORTED : pango_config_key_get : blacklisted
+// UNSUPPORTED : pango_config_key_get_system : blacklisted
+// UNSUPPORTED : pango_default_break : blacklisted
 func Fn_pango_extents_to_pixels(param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValue0 := (*C.PangoRectangle)(unsafe.Pointer(param0))
 
@@ -277,7 +277,7 @@ func Fn_pango_find_base_dir(param0 string, param1 int) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : find_map : blacklisted
+// UNSUPPORTED : pango_find_map : blacklisted
 func Fn_pango_find_paragraph_boundary(param0 string, param1 int, param2 *int, param3 *int) {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
@@ -300,8 +300,8 @@ func Fn_pango_font_description_from_string(param0 string) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : get_lib_subdirectory : blacklisted
-// UNSUPPORTED : get_log_attrs : has non-string array param log_attrs
+// UNSUPPORTED : pango_get_lib_subdirectory : blacklisted
+// UNSUPPORTED : pango_get_log_attrs : has non-string array param log_attrs
 
 func Fn_pango_get_mirror_char(param0 rune, param1 *rune) bool {
 	cValue0 := (C.gunichar)(param0)
@@ -313,7 +313,7 @@ func Fn_pango_get_mirror_char(param0 rune, param1 *rune) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : get_sysconf_subdirectory : blacklisted
+// UNSUPPORTED : pango_get_sysconf_subdirectory : blacklisted
 func Fn_pango_gravity_get_for_matrix(param0 unsafe.Pointer) int {
 	cValue0 := (*C.PangoMatrix)(unsafe.Pointer(param0))
 
@@ -432,7 +432,7 @@ func Fn_pango_log2vis_get_embedding_levels(param0 string, param1 int, param2 *in
 	return (*uint8)(ret)
 }
 
-// UNSUPPORTED : lookup_aliases : blacklisted
+// UNSUPPORTED : pango_lookup_aliases : blacklisted
 func Fn_pango_markup_parser_finish(param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 *string, param3 *rune, error unsafe.Pointer) bool {
 	cValue0 := (*C.GMarkupParseContext)(unsafe.Pointer(param0))
 
@@ -461,7 +461,7 @@ func Fn_pango_markup_parser_new(param0 rune) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : module_register : blacklisted
+// UNSUPPORTED : pango_module_register : blacklisted
 func Fn_pango_parse_enum(param0 uint64, param1 string, param2 *int, param3 bool, param4 *string) bool {
 	cValue0 := (C.GType)(param0)
 
@@ -691,7 +691,7 @@ func Fn_pango_skip_space(param0 *string) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : split_file_list : has array return
+// UNSUPPORTED : pango_split_file_list : has array return
 
 func Fn_pango_trim_string(param0 string) string {
 	cValue0 := (*C.char)(C.CString(param0))
@@ -846,7 +846,7 @@ func Fn_pango_context_get_serial(paramInstance unsafe.Pointer) uint {
 	return (uint)(ret)
 }
 
-// UNSUPPORTED : list_families : has non-string array param families
+// UNSUPPORTED : pango_context_list_families : has non-string array param families
 
 func Fn_pango_context_load_font(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.PangoContext)(unsafe.Pointer(paramInstance))
@@ -994,7 +994,7 @@ func Fn_pango_font_get_metrics(paramInstance unsafe.Pointer, param0 unsafe.Point
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : descriptions_free : has non-string array param descs
+// UNSUPPORTED : pango_font_descriptions_free : has non-string array param descs
 
 func Fn_pango_font_face_describe(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.PangoFontFace)(unsafe.Pointer(paramInstance))
@@ -1020,7 +1020,7 @@ func Fn_pango_font_face_is_synthesized(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : list_sizes : has non-string array param sizes
+// UNSUPPORTED : pango_font_face_list_sizes : has non-string array param sizes
 
 func Fn_pango_font_family_get_name(paramInstance unsafe.Pointer) string {
 	cValueInstance := (*C.PangoFontFamily)(unsafe.Pointer(paramInstance))
@@ -1038,7 +1038,7 @@ func Fn_pango_font_family_is_monospace(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : list_faces : has non-string array param faces
+// UNSUPPORTED : pango_font_family_list_faces : has non-string array param faces
 
 func Fn_pango_font_map_changed(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.PangoFontMap)(unsafe.Pointer(paramInstance))
@@ -1062,8 +1062,8 @@ func Fn_pango_font_map_get_serial(paramInstance unsafe.Pointer) uint {
 	return (uint)(ret)
 }
 
-// UNSUPPORTED : get_shape_engine_type : blacklisted
-// UNSUPPORTED : list_families : has non-string array param families
+// UNSUPPORTED : pango_font_map_get_shape_engine_type : blacklisted
+// UNSUPPORTED : pango_font_map_list_families : has non-string array param families
 
 func Fn_pango_font_map_load_font(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.PangoFontMap)(unsafe.Pointer(paramInstance))
@@ -1091,7 +1091,7 @@ func Fn_pango_font_map_load_fontset(paramInstance unsafe.Pointer, param0 unsafe.
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : foreach : has callback
+// UNSUPPORTED : pango_fontset_foreach : has callback
 
 func Fn_pango_fontset_get_font(paramInstance unsafe.Pointer, param0 uint) unsafe.Pointer {
 	cValueInstance := (*C.PangoFontset)(unsafe.Pointer(paramInstance))
@@ -1111,9 +1111,9 @@ func Fn_pango_fontset_get_metrics(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : new : blacklisted
-// UNSUPPORTED : append : blacklisted
-// UNSUPPORTED : size : blacklisted
+// UNSUPPORTED : pango_fontset_simple_new : blacklisted
+// UNSUPPORTED : pango_fontset_simple_append : blacklisted
+// UNSUPPORTED : pango_fontset_simple_size : blacklisted
 func Fn_pango_layout_new(param0 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.PangoContext)(unsafe.Pointer(param0))
 
@@ -1298,9 +1298,9 @@ func Fn_pango_layout_get_lines_readonly(paramInstance unsafe.Pointer) unsafe.Poi
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : get_log_attrs : has non-string array param attrs
+// UNSUPPORTED : pango_layout_get_log_attrs : has non-string array param attrs
 
-// UNSUPPORTED : get_log_attrs_readonly : has array return
+// UNSUPPORTED : pango_layout_get_log_attrs_readonly : has array return
 
 func Fn_pango_layout_get_pixel_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))

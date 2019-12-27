@@ -17,4 +17,4 @@ type XTrapezoid C.XTrapezoid
 type XVisualInfo C.XVisualInfo
 type XWindowAttributes C.XWindowAttributes
 
-// UNSUPPORTED : open_display : blacklisted
+// UNSUPPORTED : XOpenDisplay : blacklisted

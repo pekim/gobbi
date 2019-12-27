@@ -29,4 +29,4 @@ type Path C.cairo_path_t
 type Rectangle C.cairo_rectangle_t
 type RectangleInt C.cairo_rectangle_int_t
 
-// UNSUPPORTED : image_surface_create : blacklisted
+// UNSUPPORTED : cairo_image_surface_create : blacklisted

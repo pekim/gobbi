@@ -67,7 +67,7 @@ func Fn_g_boxed_free(param0 uint64, param1 unsafe.Pointer) {
 	C.g_boxed_free(cValue0, cValue1)
 }
 
-// UNSUPPORTED : boxed_type_register_static : has callback
+// UNSUPPORTED : g_boxed_type_register_static : has callback
 
 func Fn_g_cclosure_marshal_BOOLEAN__BOXED_BOXED(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -421,13 +421,13 @@ func Fn_g_cclosure_marshal_VOID__VOID(param0 unsafe.Pointer, param1 unsafe.Point
 	C.g_cclosure_marshal_VOID__VOID(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : cclosure_new : has callback
+// UNSUPPORTED : g_cclosure_new : has callback
 
-// UNSUPPORTED : cclosure_new_object : has callback
+// UNSUPPORTED : g_cclosure_new_object : has callback
 
-// UNSUPPORTED : cclosure_new_object_swap : has callback
+// UNSUPPORTED : g_cclosure_new_object_swap : has callback
 
-// UNSUPPORTED : cclosure_new_swap : has callback
+// UNSUPPORTED : g_cclosure_new_swap : has callback
 
 func Fn_g_enum_complete_type_info(param0 uint64, param1 unsafe.Pointer, param2 unsafe.Pointer) {
 	cValue0 := (C.GType)(param0)
@@ -1111,11 +1111,11 @@ func Fn_g_signal_accumulator_true_handled(param0 unsafe.Pointer, param1 unsafe.P
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : signal_add_emission_hook : has callback
+// UNSUPPORTED : g_signal_add_emission_hook : has callback
 
-// UNSUPPORTED : signal_chain_from_overridden : has non-string array param instance_and_params
+// UNSUPPORTED : g_signal_chain_from_overridden : has non-string array param instance_and_params
 
-// UNSUPPORTED : signal_chain_from_overridden_handler : has varargs
+// UNSUPPORTED : g_signal_chain_from_overridden_handler : has varargs
 
 func Fn_g_signal_connect_closure(param0 unsafe.Pointer, param1 string, param2 unsafe.Pointer, param3 bool) uint64 {
 	cValue0 := (C.gpointer)(param0)
@@ -1148,17 +1148,17 @@ func Fn_g_signal_connect_closure_by_id(param0 unsafe.Pointer, param1 uint, param
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : signal_connect_data : has callback
+// UNSUPPORTED : g_signal_connect_data : has callback
 
-// UNSUPPORTED : signal_connect_object : has callback
+// UNSUPPORTED : g_signal_connect_object : has callback
 
-// UNSUPPORTED : signal_emit : has varargs
+// UNSUPPORTED : g_signal_emit : has varargs
 
-// UNSUPPORTED : signal_emit_by_name : has varargs
+// UNSUPPORTED : g_signal_emit_by_name : has varargs
 
-// UNSUPPORTED : signal_emit_valist : has va_list
+// UNSUPPORTED : g_signal_emit_valist : has va_list
 
-// UNSUPPORTED : signal_emitv : has non-string array param instance_and_params
+// UNSUPPORTED : g_signal_emitv : has non-string array param instance_and_params
 
 func Fn_g_signal_get_invocation_hint(param0 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (C.gpointer)(param0)
@@ -1302,7 +1302,7 @@ func Fn_g_signal_has_handler_pending(param0 unsafe.Pointer, param1 uint, param2 
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : signal_list_ids : has array return
+// UNSUPPORTED : g_signal_list_ids : has array return
 
 func Fn_g_signal_lookup(param0 string, param1 uint64) uint {
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -1323,13 +1323,13 @@ func Fn_g_signal_name(param0 uint) string {
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : signal_new : has varargs
+// UNSUPPORTED : g_signal_new : has varargs
 
-// UNSUPPORTED : signal_new_class_handler : has varargs
+// UNSUPPORTED : g_signal_new_class_handler : has varargs
 
-// UNSUPPORTED : signal_new_valist : has va_list
+// UNSUPPORTED : g_signal_new_valist : has va_list
 
-// UNSUPPORTED : signal_newv : has callback
+// UNSUPPORTED : g_signal_newv : has callback
 
 func Fn_g_signal_override_class_closure(param0 uint, param1 uint64, param2 unsafe.Pointer) {
 	cValue0 := (C.guint)(param0)
@@ -1341,7 +1341,7 @@ func Fn_g_signal_override_class_closure(param0 uint, param1 uint64, param2 unsaf
 	C.g_signal_override_class_closure(cValue0, cValue1, cValue2)
 }
 
-// UNSUPPORTED : signal_override_class_handler : has callback
+// UNSUPPORTED : g_signal_override_class_handler : has callback
 
 func Fn_g_signal_parse_name(param0 string, param1 uint64, param2 *uint, param3 *uint32, param4 bool) bool {
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -1427,7 +1427,7 @@ func Fn_g_strdup_value_contents(param0 unsafe.Pointer) string {
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : type_add_class_cache_func : has callback
+// UNSUPPORTED : g_type_add_class_cache_func : has callback
 
 func Fn_g_type_add_class_private(param0 uint64, param1 uint64) {
 	cValue0 := (C.GType)(param0)
@@ -1447,7 +1447,7 @@ func Fn_g_type_add_instance_private(param0 uint64, param1 uint64) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : type_add_interface_check : has callback
+// UNSUPPORTED : g_type_add_interface_check : has callback
 
 func Fn_g_type_add_interface_dynamic(param0 uint64, param1 uint64, param2 unsafe.Pointer) {
 	cValue0 := (C.GType)(param0)
@@ -1553,7 +1553,7 @@ func Fn_g_type_check_value_holds(param0 unsafe.Pointer, param1 uint64) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : type_children : has array return
+// UNSUPPORTED : g_type_children : has array return
 
 func Fn_g_type_class_adjust_private_offset(param0 unsafe.Pointer, param1 *int) {
 	cValue0 := (C.gpointer)(param0)
@@ -1710,9 +1710,9 @@ func Fn_g_type_interface_peek(param0 unsafe.Pointer, param1 uint64) unsafe.Point
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : type_interface_prerequisites : has array return
+// UNSUPPORTED : g_type_interface_prerequisites : has array return
 
-// UNSUPPORTED : type_interfaces : has array return
+// UNSUPPORTED : g_type_interfaces : has array return
 
 func Fn_g_type_is_a(param0 uint64, param1 uint64) bool {
 	cValue0 := (C.GType)(param0)
@@ -1829,11 +1829,11 @@ func Fn_g_type_register_static(param0 uint64, param1 string, param2 unsafe.Point
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : type_register_static_simple : has callback
+// UNSUPPORTED : g_type_register_static_simple : has callback
 
-// UNSUPPORTED : type_remove_class_cache_func : has callback
+// UNSUPPORTED : g_type_remove_class_cache_func : has callback
 
-// UNSUPPORTED : type_remove_interface_check : has callback
+// UNSUPPORTED : g_type_remove_interface_check : has callback
 
 func Fn_g_type_set_qdata(param0 uint64, param1 uint32, param2 unsafe.Pointer) {
 	cValue0 := (C.GType)(param0)
@@ -1863,7 +1863,7 @@ func Fn_g_type_value_table_peek(param0 uint64) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : value_register_transform_func : has callback
+// UNSUPPORTED : g_value_register_transform_func : has callback
 
 func Fn_g_value_type_compatible(param0 uint64, param1 uint64) bool {
 	cValue0 := (C.GType)(param0)
@@ -1925,15 +1925,15 @@ func Fn_g_binding_get_target_property(paramInstance unsafe.Pointer) string {
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : new : has varargs
+// UNSUPPORTED : g_object_new : has varargs
 
-// UNSUPPORTED : new_valist : has va_list
+// UNSUPPORTED : g_object_new_valist : has va_list
 
-// UNSUPPORTED : new_with_properties : has non-string array param values
+// UNSUPPORTED : g_object_new_with_properties : has non-string array param values
 
-// UNSUPPORTED : newv : has non-string array param parameters
+// UNSUPPORTED : g_object_newv : has non-string array param parameters
 
-// UNSUPPORTED : add_toggle_ref : has callback
+// UNSUPPORTED : g_object_add_toggle_ref : has callback
 
 func Fn_g_object_add_weak_pointer(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -1961,7 +1961,7 @@ func Fn_g_object_bind_property(paramInstance unsafe.Pointer, param0 string, para
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : bind_property_full : has callback
+// UNSUPPORTED : g_object_bind_property_full : has callback
 
 func Fn_g_object_bind_property_with_closures(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 string, param3 int, param4 unsafe.Pointer, param5 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (C.gpointer)(paramInstance)
@@ -1985,13 +1985,13 @@ func Fn_g_object_bind_property_with_closures(paramInstance unsafe.Pointer, param
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : connect : has varargs
+// UNSUPPORTED : g_object_connect : has varargs
 
-// UNSUPPORTED : disconnect : has varargs
+// UNSUPPORTED : g_object_disconnect : has varargs
 
-// UNSUPPORTED : dup_data : has callback
+// UNSUPPORTED : g_object_dup_data : has callback
 
-// UNSUPPORTED : dup_qdata : has callback
+// UNSUPPORTED : g_object_dup_qdata : has callback
 
 func Fn_g_object_force_floating(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -2005,7 +2005,7 @@ func Fn_g_object_freeze_notify(paramInstance unsafe.Pointer) {
 	C.g_object_freeze_notify(cValueInstance)
 }
 
-// UNSUPPORTED : get : has varargs
+// UNSUPPORTED : g_object_get : has varargs
 
 func Fn_g_object_get_data(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -2039,9 +2039,9 @@ func Fn_g_object_get_qdata(paramInstance unsafe.Pointer, param0 uint32) unsafe.P
 	return (unsafe.Pointer)(ret)
 }
 
-// UNSUPPORTED : get_valist : has va_list
+// UNSUPPORTED : g_object_get_valist : has va_list
 
-// UNSUPPORTED : getv : has non-string array param values
+// UNSUPPORTED : g_object_getv : has non-string array param values
 
 func Fn_g_object_is_floating(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (C.gpointer)(paramInstance)
@@ -2084,7 +2084,7 @@ func Fn_g_object_ref_sink(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : remove_toggle_ref : has callback
+// UNSUPPORTED : g_object_remove_toggle_ref : has callback
 
 func Fn_g_object_remove_weak_pointer(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -2094,9 +2094,9 @@ func Fn_g_object_remove_weak_pointer(paramInstance unsafe.Pointer, param0 *unsaf
 	C.g_object_remove_weak_pointer(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : replace_data : has callback
+// UNSUPPORTED : g_object_replace_data : has callback
 
-// UNSUPPORTED : replace_qdata : has callback
+// UNSUPPORTED : g_object_replace_qdata : has callback
 
 func Fn_g_object_run_dispose(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -2104,7 +2104,7 @@ func Fn_g_object_run_dispose(paramInstance unsafe.Pointer) {
 	C.g_object_run_dispose(cValueInstance)
 }
 
-// UNSUPPORTED : set : has varargs
+// UNSUPPORTED : g_object_set : has varargs
 
 func Fn_g_object_set_data(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -2117,7 +2117,7 @@ func Fn_g_object_set_data(paramInstance unsafe.Pointer, param0 string, param1 un
 	C.g_object_set_data(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : set_data_full : has callback
+// UNSUPPORTED : g_object_set_data_full : has callback
 
 func Fn_g_object_set_property(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -2140,11 +2140,11 @@ func Fn_g_object_set_qdata(paramInstance unsafe.Pointer, param0 uint32, param1 u
 	C.g_object_set_qdata(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : set_qdata_full : has callback
+// UNSUPPORTED : g_object_set_qdata_full : has callback
 
-// UNSUPPORTED : set_valist : has va_list
+// UNSUPPORTED : g_object_set_valist : has va_list
 
-// UNSUPPORTED : setv : has non-string array param values
+// UNSUPPORTED : g_object_setv : has non-string array param values
 
 func Fn_g_object_steal_data(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -2187,9 +2187,9 @@ func Fn_g_object_watch_closure(paramInstance unsafe.Pointer, param0 unsafe.Point
 	C.g_object_watch_closure(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : weak_ref : has callback
+// UNSUPPORTED : g_object_weak_ref : has callback
 
-// UNSUPPORTED : weak_unref : has callback
+// UNSUPPORTED : g_object_weak_unref : has callback
 
 func Fn_g_object_compat_control(param0 uint64, param1 unsafe.Pointer) uint64 {
 	cValue0 := (C.gsize)(param0)
@@ -2220,7 +2220,7 @@ func Fn_g_object_interface_install_property(param0 unsafe.Pointer, param1 unsafe
 	C.g_object_interface_install_property(cValue0, cValue1)
 }
 
-// UNSUPPORTED : interface_list_properties : has array return
+// UNSUPPORTED : g_object_interface_list_properties : has array return
 
 func Fn_g_param_spec_get_blurb(paramInstance unsafe.Pointer) string {
 	cValueInstance := (*C.GParamSpec)(unsafe.Pointer(paramInstance))
@@ -2290,7 +2290,7 @@ func Fn_g_param_spec_set_qdata(paramInstance unsafe.Pointer, param0 uint32, para
 	C.g_param_spec_set_qdata(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : set_qdata_full : has callback
+// UNSUPPORTED : g_param_spec_set_qdata_full : has callback
 
 func Fn_g_param_spec_sink(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GParamSpec)(unsafe.Pointer(paramInstance))

@@ -248,7 +248,7 @@ func Fn_gdk_event_get() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : event_handler_set : has callback
+// UNSUPPORTED : gdk_event_handler_set : has callback
 
 func Fn_gdk_event_peek() unsafe.Pointer {
 	ret := C.gdk_event_peek()
@@ -499,7 +499,7 @@ func Fn_gdk_pango_layout_get_clip_region(param0 unsafe.Pointer, param1 int, para
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : pango_layout_line_get_clip_region : has non-string array param index_ranges
+// UNSUPPORTED : gdk_pango_layout_line_get_clip_region : has non-string array param index_ranges
 
 func Fn_gdk_parse_args(param0 *int, param1 *[]string) {
 	cValue0 := (*C.gint)(unsafe.Pointer(param0))
@@ -624,11 +624,11 @@ func Fn_gdk_property_delete(param0 unsafe.Pointer, param1 Atom) {
 	C.gdk_property_delete(cValue0, cValue1)
 }
 
-// UNSUPPORTED : property_get : has non-string array param data
+// UNSUPPORTED : gdk_property_get : has non-string array param data
 
-// UNSUPPORTED : query_depths : has non-string array param depths
+// UNSUPPORTED : gdk_query_depths : has non-string array param depths
 
-// UNSUPPORTED : query_visual_types : has non-string array param visual_types
+// UNSUPPORTED : gdk_query_visual_types : has non-string array param visual_types
 
 func Fn_gdk_selection_convert(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint32) {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
@@ -764,20 +764,20 @@ func Fn_gdk_setting_get(param0 string, param1 unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : synthesize_window_state : blacklisted
-// UNSUPPORTED : text_property_to_utf8_list_for_display : has non-string array param text
+// UNSUPPORTED : gdk_synthesize_window_state : blacklisted
+// UNSUPPORTED : gdk_text_property_to_utf8_list_for_display : has non-string array param text
 
-// UNSUPPORTED : threads_add_idle : has callback
+// UNSUPPORTED : gdk_threads_add_idle : has callback
 
-// UNSUPPORTED : threads_add_idle_full : has callback
+// UNSUPPORTED : gdk_threads_add_idle_full : has callback
 
-// UNSUPPORTED : threads_add_timeout : has callback
+// UNSUPPORTED : gdk_threads_add_timeout : has callback
 
-// UNSUPPORTED : threads_add_timeout_full : has callback
+// UNSUPPORTED : gdk_threads_add_timeout_full : has callback
 
-// UNSUPPORTED : threads_add_timeout_seconds : has callback
+// UNSUPPORTED : gdk_threads_add_timeout_seconds : has callback
 
-// UNSUPPORTED : threads_add_timeout_seconds_full : has callback
+// UNSUPPORTED : gdk_threads_add_timeout_seconds_full : has callback
 
 func Fn_gdk_threads_enter() {
 	C.gdk_threads_enter()
@@ -791,7 +791,7 @@ func Fn_gdk_threads_leave() {
 	C.gdk_threads_leave()
 }
 
-// UNSUPPORTED : threads_set_lock_functions : has callback
+// UNSUPPORTED : gdk_threads_set_lock_functions : has callback
 
 func Fn_gdk_unicode_to_keyval(param0 uint32) uint {
 	cValue0 := (C.guint32)(param0)
@@ -864,13 +864,13 @@ func Fn_gdk_cursor_unref(paramInstance unsafe.Pointer) {
 	C.gdk_cursor_unref(cValueInstance)
 }
 
-// UNSUPPORTED : get_axis : has non-string array param axes
+// UNSUPPORTED : gdk_device_get_axis : has non-string array param axes
 
-// UNSUPPORTED : get_axis_value : has non-string array param axes
+// UNSUPPORTED : gdk_device_get_axis_value : has non-string array param axes
 
-// UNSUPPORTED : get_history : has non-string array param events
+// UNSUPPORTED : gdk_device_get_history : has non-string array param events
 
-// UNSUPPORTED : get_state : has non-string array param axes
+// UNSUPPORTED : gdk_device_get_state : has non-string array param axes
 
 func Fn_gdk_device_list_slave_devices(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
@@ -912,7 +912,7 @@ func Fn_gdk_device_set_mode(paramInstance unsafe.Pointer, param0 int) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : free_history : has non-string array param events
+// UNSUPPORTED : gdk_device_free_history : has non-string array param events
 
 func Fn_gdk_device_grab_info_libgtk_only(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *unsafe.Pointer, param3 *bool) bool {
 	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
@@ -1124,7 +1124,7 @@ func Fn_gdk_display_set_double_click_time(paramInstance unsafe.Pointer, param0 u
 	C.gdk_display_set_double_click_time(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : store_clipboard : has non-string array param targets
+// UNSUPPORTED : gdk_display_store_clipboard : has non-string array param targets
 
 func Fn_gdk_display_supports_clipboard_persistence(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
@@ -1239,9 +1239,9 @@ func Fn_gdk_keymap_get_direction(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : get_entries_for_keycode : has non-string array param keys
+// UNSUPPORTED : gdk_keymap_get_entries_for_keycode : has non-string array param keys
 
-// UNSUPPORTED : get_entries_for_keyval : has non-string array param keys
+// UNSUPPORTED : gdk_keymap_get_entries_for_keyval : has non-string array param keys
 
 func Fn_gdk_keymap_lookup_key(paramInstance unsafe.Pointer, param0 unsafe.Pointer) uint {
 	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
@@ -1484,7 +1484,7 @@ func Fn_gdk_seat_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : grab : has callback
+// UNSUPPORTED : gdk_seat_grab : has callback
 
 func Fn_gdk_visual_get_screen(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GdkVisual)(unsafe.Pointer(paramInstance))
@@ -1556,7 +1556,7 @@ func Fn_gdk_window_new(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int)
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : add_filter : has callback
+// UNSUPPORTED : gdk_window_add_filter : has callback
 
 func Fn_gdk_window_begin_move_drag(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 uint32) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
@@ -1622,7 +1622,7 @@ func Fn_gdk_window_destroy(paramInstance unsafe.Pointer) {
 	C.gdk_window_destroy(cValueInstance)
 }
 
-// UNSUPPORTED : destroy_notify : blacklisted
+// UNSUPPORTED : gdk_window_destroy_notify : blacklisted
 func Fn_gdk_window_enable_synchronized_configure(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 
@@ -1857,7 +1857,7 @@ func Fn_gdk_window_iconify(paramInstance unsafe.Pointer) {
 	C.gdk_window_iconify(cValueInstance)
 }
 
-// UNSUPPORTED : invalidate_maybe_recurse : has callback
+// UNSUPPORTED : gdk_window_invalidate_maybe_recurse : has callback
 
 func Fn_gdk_window_invalidate_rect(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
@@ -1965,7 +1965,7 @@ func Fn_gdk_window_register_dnd(paramInstance unsafe.Pointer) {
 	C.gdk_window_register_dnd(cValueInstance)
 }
 
-// UNSUPPORTED : remove_filter : has callback
+// UNSUPPORTED : gdk_window_remove_filter : has callback
 
 func Fn_gdk_window_reparent(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
@@ -2112,7 +2112,7 @@ func Fn_gdk_window_set_icon_name(paramInstance unsafe.Pointer, param0 string) {
 	C.gdk_window_set_icon_name(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : set_invalidate_handler : has callback
+// UNSUPPORTED : gdk_window_set_invalidate_handler : has callback
 
 func Fn_gdk_window_set_keep_above(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))

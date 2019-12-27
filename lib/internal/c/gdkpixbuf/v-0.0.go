@@ -44,7 +44,7 @@ func Fn_gdk_pixbuf_new(param0 int, param1 bool, param2 int, param3 int, param4 i
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : new_from_data : has callback
+// UNSUPPORTED : gdk_pixbuf_new_from_data : has callback
 
 func Fn_gdk_pixbuf_new_from_file(param0 string, error unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.char)(C.CString(param0))
@@ -57,7 +57,7 @@ func Fn_gdk_pixbuf_new_from_file(param0 string, error unsafe.Pointer) unsafe.Poi
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : new_from_inline : has non-string array param data
+// UNSUPPORTED : gdk_pixbuf_new_from_inline : has non-string array param data
 
 func Fn_gdk_pixbuf_new_from_xpm_data(param0 []string) unsafe.Pointer {
 	param0Len := len(param0)
@@ -266,9 +266,9 @@ func Fn_gdk_pixbuf_get_option(paramInstance unsafe.Pointer, param0 string) strin
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : get_pixels : has array return
+// UNSUPPORTED : gdk_pixbuf_get_pixels : has array return
 
-// UNSUPPORTED : get_pixels_with_length : has array return
+// UNSUPPORTED : gdk_pixbuf_get_pixels_with_length : has array return
 
 func Fn_gdk_pixbuf_get_rowstride(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
@@ -322,21 +322,21 @@ func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 un
 	C.gdk_pixbuf_saturate_and_pixelate(cValueInstance, cValue0, cValue1, cValue2)
 }
 
-// UNSUPPORTED : save : has varargs
+// UNSUPPORTED : gdk_pixbuf_save : has varargs
 
-// UNSUPPORTED : save_to_buffer : has varargs
+// UNSUPPORTED : gdk_pixbuf_save_to_buffer : has varargs
 
-// UNSUPPORTED : save_to_bufferv : has non-string array param buffer
+// UNSUPPORTED : gdk_pixbuf_save_to_bufferv : has non-string array param buffer
 
-// UNSUPPORTED : save_to_callback : has varargs
+// UNSUPPORTED : gdk_pixbuf_save_to_callback : has varargs
 
-// UNSUPPORTED : save_to_callbackv : has callback
+// UNSUPPORTED : gdk_pixbuf_save_to_callbackv : has callback
 
-// UNSUPPORTED : save_to_stream : has varargs
+// UNSUPPORTED : gdk_pixbuf_save_to_stream : has varargs
 
-// UNSUPPORTED : save_to_stream_async : has varargs
+// UNSUPPORTED : gdk_pixbuf_save_to_stream_async : has varargs
 
-// UNSUPPORTED : save_to_streamv_async : has callback
+// UNSUPPORTED : gdk_pixbuf_save_to_streamv_async : has callback
 
 func Fn_gdk_pixbuf_savev(paramInstance unsafe.Pointer, param0 string, param1 string, param2 []string, param3 []string, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
@@ -420,11 +420,11 @@ func Fn_gdk_pixbuf_unref(paramInstance unsafe.Pointer) {
 	C.gdk_pixbuf_unref(cValueInstance)
 }
 
-// UNSUPPORTED : get_file_info_async : has callback
+// UNSUPPORTED : gdk_pixbuf_get_file_info_async : has callback
 
-// UNSUPPORTED : new_from_stream_async : has callback
+// UNSUPPORTED : gdk_pixbuf_new_from_stream_async : has callback
 
-// UNSUPPORTED : new_from_stream_at_scale_async : has callback
+// UNSUPPORTED : gdk_pixbuf_new_from_stream_at_scale_async : has callback
 
 func Fn_gdk_pixbuf_animation_new_from_file(param0 string, error unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.char)(C.CString(param0))
@@ -493,7 +493,7 @@ func Fn_gdk_pixbuf_animation_unref(paramInstance unsafe.Pointer) {
 	C.gdk_pixbuf_animation_unref(cValueInstance)
 }
 
-// UNSUPPORTED : new_from_stream_async : has callback
+// UNSUPPORTED : gdk_pixbuf_animation_new_from_stream_async : has callback
 
 func Fn_gdk_pixbuf_animation_iter_advance(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
 	cValueInstance := (*C.GdkPixbufAnimationIter)(unsafe.Pointer(paramInstance))
@@ -572,4 +572,4 @@ func Fn_gdk_pixbuf_loader_get_pixbuf(paramInstance unsafe.Pointer) unsafe.Pointe
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : write : has non-string array param buf
+// UNSUPPORTED : gdk_pixbuf_loader_write : has non-string array param buf
