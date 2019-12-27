@@ -706,9 +706,7 @@ func Fn_gdk_pango_layout_get_clip_region(param0 unsafe.Pointer, param1 int, para
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pango_layout_line_get_clip_region(param0 unsafe.Pointer, param1 int, param2 int, param3 []int, param4 int) {
-	// has non-string array param
-}
+// UNSUPPORTED : pango_layout_line_get_clip_region : has non-string array param index_ranges
 
 func Fn_gdk_parse_args(param0 *int, param1 *[]string) {
 	cValue0 := (*C.gint)(unsafe.Pointer(param0))
@@ -833,17 +831,11 @@ func Fn_gdk_property_delete(param0 unsafe.Pointer, param1 Atom) {
 	C.gdk_property_delete(cValue0, cValue1)
 }
 
-func Fn_gdk_property_get(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint64, param4 uint64, param5 int, param6 unsafe.Pointer, param7 *int, param8 *int, param9 []*uint8) {
-	// has non-string array param
-}
+// UNSUPPORTED : property_get : has non-string array param data
 
-func Fn_gdk_query_depths(param0 []*int, param1 *int) {
-	// has non-string array param
-}
+// UNSUPPORTED : query_depths : has non-string array param depths
 
-func Fn_gdk_query_visual_types(param0 []*int, param1 *int) {
-	// has non-string array param
-}
+// UNSUPPORTED : query_visual_types : has non-string array param visual_types
 
 func Fn_gdk_selection_convert(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint32) {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
@@ -1029,9 +1021,7 @@ func Fn_gdk_test_simulate_key(param0 unsafe.Pointer, param1 int, param2 int, par
 	return toGoBool(ret)
 }
 
-func Fn_gdk_text_property_to_utf8_list_for_display(param0 unsafe.Pointer, param1 Atom, param2 int, param3 []uint8, param4 int, param5 *[]string) {
-	// has non-string array param
-}
+// UNSUPPORTED : text_property_to_utf8_list_for_display : has non-string array param text
 
 // UNSUPPORTED : threads_add_idle : has callback
 
@@ -1246,9 +1236,7 @@ func Fn_gdk_device_get_associated_device(paramInstance unsafe.Pointer) unsafe.Po
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_device_get_axis(paramInstance unsafe.Pointer, param0 []float64, param1 int, param2 *float64) {
-	// has non-string array param
-}
+// UNSUPPORTED : get_axis : has non-string array param axes
 
 func Fn_gdk_device_get_axis_use(paramInstance unsafe.Pointer, param0 uint) int {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
@@ -1260,9 +1248,7 @@ func Fn_gdk_device_get_axis_use(paramInstance unsafe.Pointer, param0 uint) int {
 	return (int)(ret)
 }
 
-func Fn_gdk_device_get_axis_value(paramInstance unsafe.Pointer, param0 []float64, param1 Atom, param2 *float64) {
-	// has non-string array param
-}
+// UNSUPPORTED : get_axis_value : has non-string array param axes
 
 func Fn_gdk_device_get_device_type(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
@@ -1288,9 +1274,7 @@ func Fn_gdk_device_get_has_cursor(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-func Fn_gdk_device_get_history(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint32, param2 uint32, param3 []*unsafe.Pointer, param4 *int) {
-	// has non-string array param
-}
+// UNSUPPORTED : get_history : has non-string array param events
 
 func Fn_gdk_device_get_key(paramInstance unsafe.Pointer, param0 uint, param1 *uint, param2 *int) bool {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
@@ -1394,9 +1378,7 @@ func Fn_gdk_device_get_source(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-func Fn_gdk_device_get_state(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []float64, param2 *int) {
-	// has non-string array param
-}
+// UNSUPPORTED : get_state : has non-string array param axes
 
 func Fn_gdk_device_get_vendor_id(paramInstance unsafe.Pointer) string {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
@@ -1518,9 +1500,7 @@ func Fn_gdk_device_warp(paramInstance unsafe.Pointer, param0 unsafe.Pointer, par
 	C.gdk_device_warp(cValueInstance, cValue0, cValue1, cValue2)
 }
 
-func Fn_gdk_device_free_history(param0 []unsafe.Pointer, param1 int) {
-	// has non-string array param
-}
+// UNSUPPORTED : free_history : has non-string array param events
 
 func Fn_gdk_device_grab_info_libgtk_only(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *unsafe.Pointer, param3 *bool) bool {
 	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
@@ -1815,9 +1795,7 @@ func Fn_gdk_display_set_double_click_time(paramInstance unsafe.Pointer, param0 u
 	C.gdk_display_set_double_click_time(cValueInstance, cValue0)
 }
 
-func Fn_gdk_display_store_clipboard(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint32, param2 []Atom, param3 int) {
-	// has non-string array param
-}
+// UNSUPPORTED : store_clipboard : has non-string array param targets
 
 func Fn_gdk_display_supports_clipboard_persistence(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
@@ -2275,13 +2253,9 @@ func Fn_gdk_keymap_get_direction(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-func Fn_gdk_keymap_get_entries_for_keycode(paramInstance unsafe.Pointer, param0 uint, param1 []unsafe.Pointer, param2 []*uint, param3 *int) {
-	// has non-string array param
-}
+// UNSUPPORTED : get_entries_for_keycode : has non-string array param keys
 
-func Fn_gdk_keymap_get_entries_for_keyval(paramInstance unsafe.Pointer, param0 uint, param1 []unsafe.Pointer, param2 *int) {
-	// has non-string array param
-}
+// UNSUPPORTED : get_entries_for_keyval : has non-string array param keys
 
 func Fn_gdk_keymap_get_modifier_mask(paramInstance unsafe.Pointer, param0 int) int {
 	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))

@@ -57,9 +57,7 @@ func Fn_gdk_pixbuf_new_from_file(param0 string, error unsafe.Pointer) unsafe.Poi
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_new_from_inline(param0 int, param1 []uint8, param2 bool, error unsafe.Pointer) {
-	// has non-string array param
-}
+// UNSUPPORTED : new_from_inline : has non-string array param data
 
 func Fn_gdk_pixbuf_new_from_xpm_data(param0 []string) unsafe.Pointer {
 	param0Len := len(param0)
@@ -328,6 +326,8 @@ func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 un
 
 // UNSUPPORTED : save_to_buffer : has varargs
 
+// UNSUPPORTED : save_to_bufferv : has non-string array param buffer
+
 // UNSUPPORTED : save_to_callback : has varargs
 
 // UNSUPPORTED : save_to_callbackv : has callback
@@ -572,6 +572,4 @@ func Fn_gdk_pixbuf_loader_get_pixbuf(paramInstance unsafe.Pointer) unsafe.Pointe
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_loader_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, error unsafe.Pointer) {
-	// has non-string array param
-}
+// UNSUPPORTED : write : has non-string array param buf

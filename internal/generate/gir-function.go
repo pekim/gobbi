@@ -58,6 +58,14 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 		return
 	}
 
+	for _, param := range f.Parameters {
+		if param.Array != nil && !param.Array.Type.isString() {
+			fi.Commentf("UNSUPPORTED : %s : has non-string array param %s", f.Name, param.Name)
+			fi.Line()
+			return
+		}
+	}
+
 	if f.version.GT(version) {
 		return
 	}
@@ -115,13 +123,6 @@ func (f *Function) generateSysReturnTypeDeclaration(s *jen.Statement) {
 }
 
 func (f *Function) generateSysBody(g *jen.Group) {
-	for _, param := range f.Parameters {
-		if param.Array != nil && !param.Array.Type.isString() {
-			g.Comment("has non-string array param")
-			return
-		}
-	}
-
 	f.generateSysCArgs(g)
 
 	// [ret :=] C.somefunction(...)

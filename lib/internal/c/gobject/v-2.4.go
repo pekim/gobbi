@@ -1057,9 +1057,7 @@ func Fn_g_signal_accumulator_true_handled(param0 unsafe.Pointer, param1 unsafe.P
 
 // UNSUPPORTED : signal_add_emission_hook : has callback
 
-func Fn_g_signal_chain_from_overridden(param0 []Value, param1 unsafe.Pointer) {
-	// has non-string array param
-}
+// UNSUPPORTED : signal_chain_from_overridden : has non-string array param instance_and_params
 
 // UNSUPPORTED : signal_chain_from_overridden_handler : has varargs
 
@@ -1104,9 +1102,7 @@ func Fn_g_signal_connect_closure_by_id(param0 unsafe.Pointer, param1 uint, param
 
 // UNSUPPORTED : signal_emit_valist : has va_list
 
-func Fn_g_signal_emitv(param0 []Value, param1 uint, param2 uint32, param3 unsafe.Pointer) {
-	// has non-string array param
-}
+// UNSUPPORTED : signal_emitv : has non-string array param instance_and_params
 
 func Fn_g_signal_get_invocation_hint(param0 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (C.gpointer)(param0)
@@ -1829,9 +1825,9 @@ func Fn_g_value_type_transformable(param0 uint64, param1 uint64) bool {
 
 // UNSUPPORTED : new_valist : has va_list
 
-func Fn_g_object_newv(param0 uint64, param1 uint, param2 []Parameter) {
-	// has non-string array param
-}
+// UNSUPPORTED : new_with_properties : has non-string array param values
+
+// UNSUPPORTED : newv : has non-string array param parameters
 
 // UNSUPPORTED : add_toggle_ref : has callback
 
@@ -1894,6 +1890,8 @@ func Fn_g_object_get_qdata(paramInstance unsafe.Pointer, param0 uint32) unsafe.P
 }
 
 // UNSUPPORTED : get_valist : has va_list
+
+// UNSUPPORTED : getv : has non-string array param values
 
 func Fn_g_object_notify(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -1971,6 +1969,8 @@ func Fn_g_object_set_qdata(paramInstance unsafe.Pointer, param0 uint32, param1 u
 // UNSUPPORTED : set_qdata_full : has callback
 
 // UNSUPPORTED : set_valist : has va_list
+
+// UNSUPPORTED : setv : has non-string array param values
 
 func Fn_g_object_steal_data(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))

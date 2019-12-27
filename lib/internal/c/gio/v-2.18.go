@@ -338,9 +338,7 @@ func Fn_g_content_type_get_mime_type(param0 string) string {
 	return C.GoString(ret)
 }
 
-func Fn_g_content_type_guess(param0 string, param1 []uint8, param2 uint64, param3 *bool) {
-	// has non-string array param
-}
+// UNSUPPORTED : content_type_guess : has non-string array param data
 
 // UNSUPPORTED : content_type_guess_for_tree : has array return
 
@@ -373,11 +371,15 @@ func Fn_g_content_types_get_registered() unsafe.Pointer {
 
 // UNSUPPORTED : dbus_address_get_stream : has callback
 
+// UNSUPPORTED : dbus_annotation_info_lookup : has non-string array param annotations
+
 func Fn_g_dbus_error_quark() uint32 {
 	ret := C.g_dbus_error_quark()
 
 	return (uint32)(ret)
 }
+
+// UNSUPPORTED : dbus_error_register_error_domain : has non-string array param entries
 
 func Fn_g_file_new_for_commandline_arg(param0 string) unsafe.Pointer {
 	cValue0 := (*C.char)(C.CString(param0))
@@ -422,6 +424,8 @@ func Fn_g_icon_hash(param0 unsafe.Pointer) uint {
 
 	return (uint)(ret)
 }
+
+// UNSUPPORTED : initable_newv : has non-string array param parameters
 
 func Fn_g_io_error_from_errno(param0 int) int {
 	cValue0 := (C.gint)(param0)
@@ -484,6 +488,12 @@ func Fn_g_io_scheduler_cancel_all_jobs() {
 // UNSUPPORTED : keyfile_settings_backend_new : blacklisted
 // UNSUPPORTED : memory_settings_backend_new : blacklisted
 // UNSUPPORTED : null_settings_backend_new : blacklisted
+// UNSUPPORTED : pollable_stream_read : has non-string array param buffer
+
+// UNSUPPORTED : pollable_stream_write : has non-string array param buffer
+
+// UNSUPPORTED : pollable_stream_write_all : has non-string array param buffer
+
 // UNSUPPORTED : resources_enumerate_children : has array return
 
 // UNSUPPORTED : simple_async_report_error_in_idle : has varargs
@@ -684,11 +694,15 @@ func Fn_g_application_new(param0 string, param1 int) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
+// UNSUPPORTED : add_main_option_entries : has non-string array param entries
+
 func Fn_g_application_hold(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GApplication)(unsafe.Pointer(paramInstance))
 
 	C.g_application_hold(cValueInstance)
 }
+
+// UNSUPPORTED : open : has non-string array param files
 
 func Fn_g_application_release(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GApplication)(unsafe.Pointer(paramInstance))
@@ -775,9 +789,7 @@ func Fn_g_buffered_input_stream_get_buffer_size(paramInstance unsafe.Pointer) ui
 	return (uint64)(ret)
 }
 
-func Fn_g_buffered_input_stream_peek(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 uint64) {
-	// has non-string array param
-}
+// UNSUPPORTED : peek : has non-string array param buffer
 
 // UNSUPPORTED : peek_buffer : has array return
 
@@ -957,6 +969,8 @@ func Fn_g_converter_output_stream_new(param0 unsafe.Pointer, param1 unsafe.Point
 
 // UNSUPPORTED : new_for_address : has callback
 
+// UNSUPPORTED : new_from_blob : has non-string array param blob
+
 func Fn_g_dbus_message_get_byte_order(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.GDBusMessage)(unsafe.Pointer(paramInstance))
 
@@ -980,6 +994,8 @@ func Fn_g_dbus_message_set_byte_order(paramInstance unsafe.Pointer, param0 int) 
 }
 
 // UNSUPPORTED : to_blob : has array return
+
+// UNSUPPORTED : bytes_needed : has non-string array param blob
 
 // UNSUPPORTED : return_error : has varargs
 
@@ -2262,6 +2278,8 @@ func Fn_g_filter_output_stream_set_close_base_stream(paramInstance unsafe.Pointe
 
 // UNSUPPORTED : splice_async : has callback
 
+// UNSUPPORTED : new_from_bytes : has non-string array param bytes
+
 func Fn_g_input_stream_clear_pending(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
 
@@ -2310,13 +2328,9 @@ func Fn_g_input_stream_is_closed(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-func Fn_g_input_stream_read(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) {
-	// has non-string array param
-}
+// UNSUPPORTED : read : has non-string array param buffer
 
-func Fn_g_input_stream_read_all(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 *uint64, param3 unsafe.Pointer, error unsafe.Pointer) {
-	// has non-string array param
-}
+// UNSUPPORTED : read_all : has non-string array param buffer
 
 // UNSUPPORTED : read_all_async : has callback
 
@@ -2377,6 +2391,8 @@ func Fn_g_input_stream_skip_finish(paramInstance unsafe.Pointer, param0 unsafe.P
 // UNSUPPORTED : insert_sorted : has callback
 
 // UNSUPPORTED : sort : has callback
+
+// UNSUPPORTED : splice : has non-string array param additions
 
 func Fn_g_memory_input_stream_new() unsafe.Pointer {
 	ret := C.g_memory_input_stream_new()
@@ -2665,13 +2681,9 @@ func Fn_g_output_stream_splice_finish(paramInstance unsafe.Pointer, param0 unsaf
 
 // UNSUPPORTED : vprintf : has va_list
 
-func Fn_g_output_stream_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) {
-	// has non-string array param
-}
+// UNSUPPORTED : write : has non-string array param buffer
 
-func Fn_g_output_stream_write_all(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 *uint64, param3 unsafe.Pointer, error unsafe.Pointer) {
-	// has non-string array param
-}
+// UNSUPPORTED : write_all : has non-string array param buffer
 
 // UNSUPPORTED : write_all_async : has callback
 
@@ -2716,6 +2728,10 @@ func Fn_g_output_stream_write_finish(paramInstance unsafe.Pointer, param0 unsafe
 
 	return (uint64)(ret)
 }
+
+// UNSUPPORTED : writev : has non-string array param vectors
+
+// UNSUPPORTED : writev_all : has non-string array param vectors
 
 // UNSUPPORTED : writev_all_async : has callback
 
@@ -2812,6 +2828,8 @@ func Fn_g_settings_sync() {
 // UNSUPPORTED : writable_changed : blacklisted
 // UNSUPPORTED : flatten_tree : blacklisted
 // UNSUPPORTED : get_default : blacklisted
+// UNSUPPORTED : add_entries : has non-string array param entries
+
 // UNSUPPORTED : new : has callback
 
 // UNSUPPORTED : new_error : has varargs
@@ -2914,6 +2932,28 @@ func Fn_g_simple_async_result_set_op_res_gssize(paramInstance unsafe.Pointer, pa
 	C.g_simple_async_result_set_op_res_gssize(cValueInstance, cValue0)
 }
 
+// UNSUPPORTED : receive : has non-string array param buffer
+
+// UNSUPPORTED : receive_from : has non-string array param buffer
+
+// UNSUPPORTED : receive_message : has non-string array param vectors
+
+// UNSUPPORTED : receive_messages : has non-string array param messages
+
+// UNSUPPORTED : receive_with_blocking : has non-string array param buffer
+
+// UNSUPPORTED : send : has non-string array param buffer
+
+// UNSUPPORTED : send_message : has non-string array param vectors
+
+// UNSUPPORTED : send_message_with_timeout : has non-string array param vectors
+
+// UNSUPPORTED : send_messages : has non-string array param messages
+
+// UNSUPPORTED : send_to : has non-string array param buffer
+
+// UNSUPPORTED : send_with_blocking : has non-string array param buffer
+
 func Fn_g_socket_address_enumerator_next(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GSocketAddressEnumerator)(unsafe.Pointer(paramInstance))
 
@@ -2976,6 +3016,8 @@ func Fn_g_socket_client_connect_to_service(paramInstance unsafe.Pointer, param0 
 // UNSUPPORTED : connect_to_uri_async : has callback
 
 // UNSUPPORTED : connect_async : has callback
+
+// UNSUPPORTED : deserialize : has non-string array param data
 
 // UNSUPPORTED : accept_async : has callback
 
@@ -3231,6 +3273,8 @@ func Fn_g_tls_connection_set_use_system_certdb(paramInstance unsafe.Pointer, par
 
 // UNSUPPORTED : lookup_certificate_issuer_async : has callback
 
+// UNSUPPORTED : lookup_certificates_issued_by : has non-string array param issuer_raw_dn
+
 // UNSUPPORTED : lookup_certificates_issued_by_async : has callback
 
 // UNSUPPORTED : verify_chain_async : has callback
@@ -3250,11 +3294,15 @@ func Fn_g_tls_password_new(param0 int, param1 string) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
+// UNSUPPORTED : set_value : has non-string array param value
+
 // UNSUPPORTED : set_value_full : has callback
 
 // UNSUPPORTED : receive_credentials_async : has callback
 
 // UNSUPPORTED : send_credentials_async : has callback
+
+// UNSUPPORTED : new_from_array : has non-string array param fds
 
 // UNSUPPORTED : peek_fds : has array return
 
@@ -3296,9 +3344,9 @@ func Fn_g_unix_output_stream_new(param0 int, param1 bool) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_g_unix_socket_address_new_abstract(param0 []int8, param1 int) {
-	// has non-string array param
-}
+// UNSUPPORTED : new_abstract : has non-string array param path
+
+// UNSUPPORTED : new_with_type : has non-string array param path
 
 func Fn_g_vfs_get_file_for_path(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
 	cValueInstance := (*C.GVfs)(unsafe.Pointer(paramInstance))

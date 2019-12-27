@@ -242,6 +242,8 @@ func Fn_atk_text_attribute_register(param0 string) int {
 	return (int)(ret)
 }
 
+// UNSUPPORTED : text_free_ranges : has non-string array param ranges
+
 func Fn_atk_value_type_get_localized_name(param0 int) string {
 	cValue0 := (C.AtkValueType)(param0)
 
@@ -586,9 +588,7 @@ func Fn_atk_registry_set_factory_type(paramInstance unsafe.Pointer, param0 uint6
 	C.atk_registry_set_factory_type(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_atk_relation_new(param0 []unsafe.Pointer, param1 int, param2 int) {
-	// has non-string array param
-}
+// UNSUPPORTED : new : has non-string array param targets
 
 func Fn_atk_relation_get_relation_type(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.AtkRelation)(unsafe.Pointer(paramInstance))
@@ -704,9 +704,7 @@ func Fn_atk_state_set_add_state(paramInstance unsafe.Pointer, param0 int) bool {
 	return toGoBool(ret)
 }
 
-func Fn_atk_state_set_add_states(paramInstance unsafe.Pointer, param0 []int, param1 int) {
-	// has non-string array param
-}
+// UNSUPPORTED : add_states : has non-string array param types
 
 func Fn_atk_state_set_and_sets(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.AtkStateSet)(unsafe.Pointer(paramInstance))
@@ -734,9 +732,7 @@ func Fn_atk_state_set_contains_state(paramInstance unsafe.Pointer, param0 int) b
 	return toGoBool(ret)
 }
 
-func Fn_atk_state_set_contains_states(paramInstance unsafe.Pointer, param0 []int, param1 int) {
-	// has non-string array param
-}
+// UNSUPPORTED : contains_states : has non-string array param types
 
 func Fn_atk_state_set_is_empty(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.AtkStateSet)(unsafe.Pointer(paramInstance))
