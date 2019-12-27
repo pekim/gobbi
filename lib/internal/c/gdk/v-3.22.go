@@ -4443,3 +4443,43 @@ func Fn_gdk_window_set_debug_updates(param0 bool) {
 
 	C.gdk_window_set_debug_updates(cValue0)
 }
+
+func Fn_gdk_device_pad_get_feature_group(paramInstance unsafe.Pointer, param0 int, param1 int) int {
+	cValueInstance := (*C.GdkDevicePad)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GdkDevicePadFeature)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	ret := C.gdk_device_pad_get_feature_group(cValueInstance, cValue0, cValue1)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_device_pad_get_group_n_modes(paramInstance unsafe.Pointer, param0 int) int {
+	cValueInstance := (*C.GdkDevicePad)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.gdk_device_pad_get_group_n_modes(cValueInstance, cValue0)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_device_pad_get_n_features(paramInstance unsafe.Pointer, param0 int) int {
+	cValueInstance := (*C.GdkDevicePad)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GdkDevicePadFeature)(param0)
+
+	ret := C.gdk_device_pad_get_n_features(cValueInstance, cValue0)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_device_pad_get_n_groups(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.GdkDevicePad)(unsafe.Pointer(paramInstance))
+
+	ret := C.gdk_device_pad_get_n_groups(cValueInstance)
+
+	return (int)(ret)
+}

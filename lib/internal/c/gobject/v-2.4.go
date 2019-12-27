@@ -2202,3 +2202,39 @@ func Fn_g_type_module_use(paramInstance unsafe.Pointer) bool {
 
 	return toGoBool(ret)
 }
+
+func Fn_g_type_plugin_complete_interface_info(paramInstance unsafe.Pointer, param0 uint64, param1 uint64, param2 unsafe.Pointer) {
+	cValueInstance := (*C.GTypePlugin)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GType)(param0)
+
+	cValue1 := (C.GType)(param1)
+
+	cValue2 := (*C.GInterfaceInfo)(unsafe.Pointer(param2))
+
+	C.g_type_plugin_complete_interface_info(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_g_type_plugin_complete_type_info(paramInstance unsafe.Pointer, param0 uint64, param1 unsafe.Pointer, param2 unsafe.Pointer) {
+	cValueInstance := (*C.GTypePlugin)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GType)(param0)
+
+	cValue1 := (*C.GTypeInfo)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.GTypeValueTable)(unsafe.Pointer(param2))
+
+	C.g_type_plugin_complete_type_info(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_g_type_plugin_unuse(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GTypePlugin)(unsafe.Pointer(paramInstance))
+
+	C.g_type_plugin_unuse(cValueInstance)
+}
+
+func Fn_g_type_plugin_use(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GTypePlugin)(unsafe.Pointer(paramInstance))
+
+	C.g_type_plugin_use(cValueInstance)
+}

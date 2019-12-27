@@ -9712,3 +9712,2678 @@ func Fn_g_zlib_decompressor_get_file_info(paramInstance unsafe.Pointer) unsafe.P
 
 	return unsafe.Pointer(ret)
 }
+
+func Fn_g_action_activate(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GAction)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GVariant)(unsafe.Pointer(param0))
+
+	C.g_action_activate(cValueInstance, cValue0)
+}
+
+func Fn_g_action_change_state(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GAction)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GVariant)(unsafe.Pointer(param0))
+
+	C.g_action_change_state(cValueInstance, cValue0)
+}
+
+func Fn_g_action_get_enabled(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GAction)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_action_get_enabled(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_action_get_name(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GAction)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_action_get_name(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_action_get_parameter_type(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GAction)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_action_get_parameter_type(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_action_get_state(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GAction)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_action_get_state(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_action_get_state_hint(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GAction)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_action_get_state_hint(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_action_get_state_type(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GAction)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_action_get_state_type(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_action_group_action_added(paramInstance unsafe.Pointer, param0 string) {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.g_action_group_action_added(cValueInstance, cValue0)
+}
+
+func Fn_g_action_group_action_enabled_changed(paramInstance unsafe.Pointer, param0 string, param1 bool) {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := toCBool(param1)
+
+	C.g_action_group_action_enabled_changed(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_g_action_group_action_removed(paramInstance unsafe.Pointer, param0 string) {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.g_action_group_action_removed(cValueInstance, cValue0)
+}
+
+func Fn_g_action_group_action_state_changed(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.GVariant)(unsafe.Pointer(param1))
+
+	C.g_action_group_action_state_changed(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_g_action_group_activate_action(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.GVariant)(unsafe.Pointer(param1))
+
+	C.g_action_group_activate_action(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_g_action_group_change_action_state(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.GVariant)(unsafe.Pointer(param1))
+
+	C.g_action_group_change_action_state(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_g_action_group_get_action_enabled(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_action_group_get_action_enabled(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_action_group_get_action_parameter_type(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_action_group_get_action_parameter_type(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_action_group_get_action_state(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_action_group_get_action_state(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_action_group_get_action_state_hint(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_action_group_get_action_state_hint(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_action_group_get_action_state_type(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_action_group_get_action_state_type(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_action_group_has_action(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_action_group_has_action(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_action_group_list_actions : has array return
+
+func Fn_g_action_group_query_action(paramInstance unsafe.Pointer, param0 string, param1 *bool, param2 *unsafe.Pointer, param3 *unsafe.Pointer, param4 *unsafe.Pointer, param5 *unsafe.Pointer) bool {
+	cValueInstance := (*C.GActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.gboolean)(unsafe.Pointer(param1))
+
+	cValue2 := (**C.GVariantType)(unsafe.Pointer(param2))
+
+	cValue3 := (**C.GVariantType)(unsafe.Pointer(param3))
+
+	cValue4 := (**C.GVariant)(unsafe.Pointer(param4))
+
+	cValue5 := (**C.GVariant)(unsafe.Pointer(param5))
+
+	ret := C.g_action_group_query_action(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_action_map_add_action(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GActionMap)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAction)(unsafe.Pointer(param0))
+
+	C.g_action_map_add_action(cValueInstance, cValue0)
+}
+
+// UNSUPPORTED : g_action_map_add_action_entries : has non-string array param entries
+
+func Fn_g_action_map_lookup_action(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+	cValueInstance := (*C.GActionMap)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_action_map_lookup_action(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_action_map_remove_action(paramInstance unsafe.Pointer, param0 string) {
+	cValueInstance := (*C.GActionMap)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.g_action_map_remove_action(cValueInstance, cValue0)
+}
+
+func Fn_g_app_info_add_supports_type(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_app_info_add_supports_type(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_app_info_can_delete(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_can_delete(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_app_info_can_remove_supports_type(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_can_remove_supports_type(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_app_info_delete(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_delete(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_app_info_dup(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_dup(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_app_info_equal(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAppInfo)(unsafe.Pointer(param0))
+
+	ret := C.g_app_info_equal(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_app_info_get_commandline(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_get_commandline(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_app_info_get_description(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_get_description(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_app_info_get_display_name(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_get_display_name(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_app_info_get_executable(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_get_executable(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_app_info_get_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_get_icon(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_app_info_get_id(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_get_id(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_app_info_get_name(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_get_name(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+// UNSUPPORTED : g_app_info_get_supported_types : has array return
+
+func Fn_g_app_info_launch(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GList)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GAppLaunchContext)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_app_info_launch(cValueInstance, cValue0, cValue1, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_app_info_launch_uris(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GList)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GAppLaunchContext)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_app_info_launch_uris(cValueInstance, cValue0, cValue1, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_app_info_launch_uris_async : has callback
+
+func Fn_g_app_info_remove_supports_type(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_app_info_remove_supports_type(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_app_info_set_as_default_for_extension(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_app_info_set_as_default_for_extension(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_app_info_set_as_default_for_type(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_app_info_set_as_default_for_type(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_app_info_set_as_last_used_for_type(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_app_info_set_as_last_used_for_type(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_app_info_should_show(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_should_show(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_app_info_supports_files(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_supports_files(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_app_info_supports_uris(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_app_info_supports_uris(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_async_initable_init_async : has callback
+
+func Fn_g_async_initable_init_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GAsyncInitable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_async_initable_init_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_async_initable_new_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GAsyncInitable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_async_initable_new_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_async_result_get_source_object(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GAsyncResult)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_async_result_get_source_object(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_async_result_get_user_data(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GAsyncResult)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_async_result_get_user_data(cValueInstance)
+
+	return (unsafe.Pointer)(ret)
+}
+
+func Fn_g_async_result_is_tagged(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GAsyncResult)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gpointer)(param0)
+
+	ret := C.g_async_result_is_tagged(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_async_result_legacy_propagate_error(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GAsyncResult)(unsafe.Pointer(paramInstance))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_async_result_legacy_propagate_error(cValueInstance, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_converter_convert : has non-string array param inbuf
+
+func Fn_g_converter_reset(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GConverter)(unsafe.Pointer(paramInstance))
+
+	C.g_converter_reset(cValueInstance)
+}
+
+func Fn_g_dbus_interface_dup_object(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GDBusInterface)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_dbus_interface_dup_object(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_dbus_interface_get_info(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GDBusInterface)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_dbus_interface_get_info(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_dbus_interface_get_object(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GDBusInterface)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_dbus_interface_get_object(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_dbus_interface_set_object(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GDBusInterface)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GDBusObject)(unsafe.Pointer(param0))
+
+	C.g_dbus_interface_set_object(cValueInstance, cValue0)
+}
+
+func Fn_g_dbus_object_get_interface(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+	cValueInstance := (*C.GDBusObject)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_dbus_object_get_interface(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_dbus_object_get_interfaces(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GDBusObject)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_dbus_object_get_interfaces(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_dbus_object_get_object_path(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GDBusObject)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_dbus_object_get_object_path(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_dbus_object_manager_get_interface(paramInstance unsafe.Pointer, param0 string, param1 string) unsafe.Pointer {
+	cValueInstance := (*C.GDBusObjectManager)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.gchar)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	ret := C.g_dbus_object_manager_get_interface(cValueInstance, cValue0, cValue1)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_dbus_object_manager_get_object(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+	cValueInstance := (*C.GDBusObjectManager)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_dbus_object_manager_get_object(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_dbus_object_manager_get_object_path(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GDBusObjectManager)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_dbus_object_manager_get_object_path(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_dbus_object_manager_get_objects(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GDBusObjectManager)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_dbus_object_manager_get_objects(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_datagram_based_receive_messages : has non-string array param messages
+
+// UNSUPPORTED : g_datagram_based_send_messages : has non-string array param messages
+
+func Fn_g_desktop_app_info_lookup_get_default_for_uri_scheme(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+	cValueInstance := (*C.GDesktopAppInfoLookup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_desktop_app_info_lookup_get_default_for_uri_scheme(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_drive_can_eject(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_can_eject(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_drive_can_poll_for_media(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_can_poll_for_media(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_drive_can_start(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_can_start(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_drive_can_start_degraded(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_can_start_degraded(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_drive_can_stop(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_can_stop(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_drive_eject : has callback
+
+func Fn_g_drive_eject_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_drive_eject_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_drive_eject_with_operation : has callback
+
+func Fn_g_drive_eject_with_operation_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_drive_eject_with_operation_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_drive_enumerate_identifiers : has array return
+
+func Fn_g_drive_get_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_get_icon(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_drive_get_identifier(paramInstance unsafe.Pointer, param0 string) string {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_drive_get_identifier(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_drive_get_name(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_get_name(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_drive_get_sort_key(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_get_sort_key(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_drive_get_start_stop_type(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_get_start_stop_type(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_g_drive_get_symbolic_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_get_symbolic_icon(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_drive_get_volumes(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_get_volumes(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_drive_has_media(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_has_media(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_drive_has_volumes(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_has_volumes(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_drive_is_media_check_automatic(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_is_media_check_automatic(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_drive_is_media_removable(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_drive_is_media_removable(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_drive_poll_for_media : has callback
+
+func Fn_g_drive_poll_for_media_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_drive_poll_for_media_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_drive_start : has callback
+
+func Fn_g_drive_start_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_drive_start_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_drive_stop : has callback
+
+func Fn_g_drive_stop_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_drive_stop_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_dtls_connection_close_async : has callback
+
+// UNSUPPORTED : g_dtls_connection_handshake_async : has callback
+
+// UNSUPPORTED : g_dtls_connection_shutdown_async : has callback
+
+func Fn_g_file_append_to(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GFileCreateFlags)(param0)
+
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_append_to(cValueInstance, cValue0, cValue1, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_append_to_async : has callback
+
+func Fn_g_file_append_to_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_append_to_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_copy : has callback
+
+// UNSUPPORTED : g_file_copy_async : has callback
+
+func Fn_g_file_copy_attributes(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GFile)(unsafe.Pointer(param0))
+
+	cValue1 := (C.GFileCopyFlags)(param1)
+
+	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_copy_attributes(cValueInstance, cValue0, cValue1, cValue2, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_copy_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_copy_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_create(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GFileCreateFlags)(param0)
+
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_create(cValueInstance, cValue0, cValue1, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_create_async : has callback
+
+func Fn_g_file_create_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_create_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_create_readwrite(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GFileCreateFlags)(param0)
+
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_create_readwrite(cValueInstance, cValue0, cValue1, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_create_readwrite_async : has callback
+
+func Fn_g_file_create_readwrite_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_create_readwrite_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_delete(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_delete(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_file_delete_async : has callback
+
+func Fn_g_file_delete_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_delete_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_dup(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_file_dup(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_eject_mountable : has callback
+
+func Fn_g_file_eject_mountable_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_eject_mountable_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_file_eject_mountable_with_operation : has callback
+
+func Fn_g_file_eject_mountable_with_operation_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_eject_mountable_with_operation_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_enumerate_children(paramInstance unsafe.Pointer, param0 string, param1 int, param2 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.GFileQueryInfoFlags)(param1)
+
+	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_enumerate_children(cValueInstance, cValue0, cValue1, cValue2, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_enumerate_children_async : has callback
+
+func Fn_g_file_enumerate_children_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_enumerate_children_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_equal(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GFile)(unsafe.Pointer(param0))
+
+	ret := C.g_file_equal(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_find_enclosing_mount(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_find_enclosing_mount(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_find_enclosing_mount_async : has callback
+
+func Fn_g_file_find_enclosing_mount_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_find_enclosing_mount_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_get_basename(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_file_get_basename(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_file_get_child(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_file_get_child(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_get_child_for_display_name(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_get_child_for_display_name(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_get_parent(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_file_get_parent(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_get_parse_name(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_file_get_parse_name(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_file_get_path(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_file_get_path(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_file_get_relative_path(paramInstance unsafe.Pointer, param0 unsafe.Pointer) string {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GFile)(unsafe.Pointer(param0))
+
+	ret := C.g_file_get_relative_path(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_file_get_uri(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_file_get_uri(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_file_get_uri_scheme(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_file_get_uri_scheme(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_file_has_parent(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GFile)(unsafe.Pointer(param0))
+
+	ret := C.g_file_has_parent(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_has_prefix(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GFile)(unsafe.Pointer(param0))
+
+	ret := C.g_file_has_prefix(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_has_uri_scheme(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_file_has_uri_scheme(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_hash(paramInstance unsafe.Pointer) uint {
+	cValueInstance := (C.gconstpointer)(paramInstance)
+
+	ret := C.g_file_hash(cValueInstance)
+
+	return (uint)(ret)
+}
+
+func Fn_g_file_is_native(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_file_is_native(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_file_load_bytes_async : has callback
+
+// UNSUPPORTED : g_file_load_contents : has non-string array param contents
+
+// UNSUPPORTED : g_file_load_contents_async : has callback
+
+// UNSUPPORTED : g_file_load_contents_finish : has non-string array param contents
+
+// UNSUPPORTED : g_file_load_partial_contents_async : has callback
+
+// UNSUPPORTED : g_file_load_partial_contents_finish : has non-string array param contents
+
+func Fn_g_file_make_directory(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_make_directory(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_file_make_directory_async : has callback
+
+func Fn_g_file_make_directory_with_parents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_make_directory_with_parents(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_make_symbolic_link(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_make_symbolic_link(cValueInstance, cValue0, cValue1, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_file_measure_disk_usage : has callback
+
+// UNSUPPORTED : g_file_measure_disk_usage_async : has callback
+
+func Fn_g_file_monitor(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GFileMonitorFlags)(param0)
+
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_monitor(cValueInstance, cValue0, cValue1, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_monitor_directory(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GFileMonitorFlags)(param0)
+
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_monitor_directory(cValueInstance, cValue0, cValue1, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_monitor_file(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GFileMonitorFlags)(param0)
+
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_monitor_file(cValueInstance, cValue0, cValue1, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_mount_enclosing_volume : has callback
+
+func Fn_g_file_mount_enclosing_volume_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_mount_enclosing_volume_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_file_mount_mountable : has callback
+
+func Fn_g_file_mount_mountable_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_mount_mountable_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_move : has callback
+
+func Fn_g_file_open_readwrite(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_open_readwrite(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_open_readwrite_async : has callback
+
+func Fn_g_file_open_readwrite_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_open_readwrite_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_poll_mountable : has callback
+
+func Fn_g_file_poll_mountable_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_poll_mountable_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_query_default_handler(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_query_default_handler(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_query_default_handler_async : has callback
+
+func Fn_g_file_query_exists(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	ret := C.g_file_query_exists(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_query_file_type(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) int {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GFileQueryInfoFlags)(param0)
+
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
+	ret := C.g_file_query_file_type(cValueInstance, cValue0, cValue1)
+
+	return (int)(ret)
+}
+
+func Fn_g_file_query_filesystem_info(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_query_filesystem_info(cValueInstance, cValue0, cValue1, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_query_filesystem_info_async : has callback
+
+func Fn_g_file_query_filesystem_info_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_query_filesystem_info_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_query_info(paramInstance unsafe.Pointer, param0 string, param1 int, param2 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.GFileQueryInfoFlags)(param1)
+
+	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_query_info(cValueInstance, cValue0, cValue1, cValue2, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_query_info_async : has callback
+
+func Fn_g_file_query_info_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_query_info_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_query_settable_attributes(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_query_settable_attributes(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_query_writable_namespaces(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_query_writable_namespaces(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_read(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_read(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_read_async : has callback
+
+func Fn_g_file_read_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_read_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_replace(paramInstance unsafe.Pointer, param0 string, param1 bool, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := toCBool(param1)
+
+	cValue2 := (C.GFileCreateFlags)(param2)
+
+	cValue3 := (*C.GCancellable)(unsafe.Pointer(param3))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_replace(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_replace_async : has callback
+
+// UNSUPPORTED : g_file_replace_contents : has non-string array param contents
+
+// UNSUPPORTED : g_file_replace_contents_async : has callback
+
+// UNSUPPORTED : g_file_replace_contents_bytes_async : has callback
+
+func Fn_g_file_replace_contents_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	var cValue1String *C.gchar
+	cValue1 := &cValue1String
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_replace_contents_finish(cValueInstance, cValue0, cValue1, cError)
+
+	param1String := C.GoString(cValue1String)
+	*param1 = param1String
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_replace_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_replace_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_replace_readwrite(paramInstance unsafe.Pointer, param0 string, param1 bool, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := toCBool(param1)
+
+	cValue2 := (C.GFileCreateFlags)(param2)
+
+	cValue3 := (*C.GCancellable)(unsafe.Pointer(param3))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_replace_readwrite(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_replace_readwrite_async : has callback
+
+func Fn_g_file_replace_readwrite_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_replace_readwrite_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_resolve_relative_path(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_file_resolve_relative_path(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_file_set_attribute(paramInstance unsafe.Pointer, param0 string, param1 int, param2 unsafe.Pointer, param3 int, param4 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.GFileAttributeType)(param1)
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue3 := (C.GFileQueryInfoFlags)(param3)
+
+	cValue4 := (*C.GCancellable)(unsafe.Pointer(param4))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_set_attribute(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_set_attribute_byte_string(paramInstance unsafe.Pointer, param0 string, param1 string, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.char)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	cValue2 := (C.GFileQueryInfoFlags)(param2)
+
+	cValue3 := (*C.GCancellable)(unsafe.Pointer(param3))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_set_attribute_byte_string(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_set_attribute_int32(paramInstance unsafe.Pointer, param0 string, param1 int32, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.gint32)(param1)
+
+	cValue2 := (C.GFileQueryInfoFlags)(param2)
+
+	cValue3 := (*C.GCancellable)(unsafe.Pointer(param3))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_set_attribute_int32(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_set_attribute_int64(paramInstance unsafe.Pointer, param0 string, param1 int64, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.gint64)(param1)
+
+	cValue2 := (C.GFileQueryInfoFlags)(param2)
+
+	cValue3 := (*C.GCancellable)(unsafe.Pointer(param3))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_set_attribute_int64(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_set_attribute_string(paramInstance unsafe.Pointer, param0 string, param1 string, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.char)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	cValue2 := (C.GFileQueryInfoFlags)(param2)
+
+	cValue3 := (*C.GCancellable)(unsafe.Pointer(param3))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_set_attribute_string(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_set_attribute_uint32(paramInstance unsafe.Pointer, param0 string, param1 uint32, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.guint32)(param1)
+
+	cValue2 := (C.GFileQueryInfoFlags)(param2)
+
+	cValue3 := (*C.GCancellable)(unsafe.Pointer(param3))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_set_attribute_uint32(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_set_attribute_uint64(paramInstance unsafe.Pointer, param0 string, param1 uint64, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.guint64)(param1)
+
+	cValue2 := (C.GFileQueryInfoFlags)(param2)
+
+	cValue3 := (*C.GCancellable)(unsafe.Pointer(param3))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_set_attribute_uint64(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_file_set_attributes_async : has callback
+
+func Fn_g_file_set_attributes_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cValue1 := (**C.GFileInfo)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_set_attributes_finish(cValueInstance, cValue0, cValue1, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_set_attributes_from_info(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GFileInfo)(unsafe.Pointer(param0))
+
+	cValue1 := (C.GFileQueryInfoFlags)(param1)
+
+	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_set_attributes_from_info(cValueInstance, cValue0, cValue1, cValue2, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_set_display_name(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_set_display_name(cValueInstance, cValue0, cValue1, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_set_display_name_async : has callback
+
+func Fn_g_file_set_display_name_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_set_display_name_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_file_start_mountable : has callback
+
+func Fn_g_file_start_mountable_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_start_mountable_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_file_stop_mountable : has callback
+
+func Fn_g_file_stop_mountable_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_stop_mountable_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_supports_thread_contexts(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_file_supports_thread_contexts(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_trash(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_trash(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_file_trash_async : has callback
+
+// UNSUPPORTED : g_file_unmount_mountable : has callback
+
+func Fn_g_file_unmount_mountable_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_unmount_mountable_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_file_unmount_mountable_with_operation : has callback
+
+func Fn_g_file_unmount_mountable_with_operation_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_file_unmount_mountable_with_operation_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_file_descriptor_based_get_fd(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.GFileDescriptorBased)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_file_descriptor_based_get_fd(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_g_icon_equal(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GIcon)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GIcon)(unsafe.Pointer(param0))
+
+	ret := C.g_icon_equal(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_icon_to_string(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GIcon)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_icon_to_string(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_initable_init(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GInitable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_initable_init(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_loadable_icon_load(paramInstance unsafe.Pointer, param0 int, param1 *string, param2 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GLoadableIcon)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.int)(param0)
+
+	var cValue1String *C.gchar
+	cValue1 := &cValue1String
+
+	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_loadable_icon_load(cValueInstance, cValue0, cValue1, cValue2, cError)
+
+	param1String := C.GoString(cValue1String)
+	*param1 = param1String
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_loadable_icon_load_async : has callback
+
+func Fn_g_loadable_icon_load_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GLoadableIcon)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	var cValue1String *C.gchar
+	cValue1 := &cValue1String
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_loadable_icon_load_finish(cValueInstance, cValue0, cValue1, cError)
+
+	param1String := C.GoString(cValue1String)
+	*param1 = param1String
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_mount_can_eject(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_mount_can_eject(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_mount_can_unmount(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_mount_can_unmount(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_mount_eject : has callback
+
+func Fn_g_mount_eject_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_mount_eject_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_mount_eject_with_operation : has callback
+
+func Fn_g_mount_eject_with_operation_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_mount_eject_with_operation_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_mount_get_default_location(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_mount_get_default_location(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_mount_get_drive(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_mount_get_drive(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_mount_get_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_mount_get_icon(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_mount_get_name(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_mount_get_name(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_mount_get_root(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_mount_get_root(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_mount_get_sort_key(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_mount_get_sort_key(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_mount_get_symbolic_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_mount_get_symbolic_icon(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_mount_get_uuid(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_mount_get_uuid(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_mount_get_volume(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_mount_get_volume(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_mount_guess_content_type : has callback
+
+// UNSUPPORTED : g_mount_guess_content_type_finish : has array return
+
+// UNSUPPORTED : g_mount_guess_content_type_sync : has array return
+
+func Fn_g_mount_is_shadowed(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_mount_is_shadowed(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_mount_remount : has callback
+
+func Fn_g_mount_remount_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_mount_remount_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_mount_shadow(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	C.g_mount_shadow(cValueInstance)
+}
+
+// UNSUPPORTED : g_mount_unmount : has callback
+
+func Fn_g_mount_unmount_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_mount_unmount_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_mount_unmount_with_operation : has callback
+
+func Fn_g_mount_unmount_with_operation_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_mount_unmount_with_operation_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_mount_unshadow(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
+
+	C.g_mount_unshadow(cValueInstance)
+}
+
+func Fn_g_network_monitor_can_reach(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GNetworkMonitor)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GSocketConnectable)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_network_monitor_can_reach(cValueInstance, cValue0, cValue1, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_network_monitor_can_reach_async : has callback
+
+func Fn_g_network_monitor_can_reach_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GNetworkMonitor)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_network_monitor_can_reach_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_network_monitor_get_network_available(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GNetworkMonitor)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_network_monitor_get_network_available(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_pollable_input_stream_can_poll(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GPollableInputStream)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_pollable_input_stream_can_poll(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_pollable_input_stream_create_source(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GPollableInputStream)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	ret := C.g_pollable_input_stream_create_source(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_pollable_input_stream_is_readable(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GPollableInputStream)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_pollable_input_stream_is_readable(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_pollable_input_stream_read_nonblocking : has non-string array param buffer
+
+func Fn_g_pollable_output_stream_can_poll(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GPollableOutputStream)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_pollable_output_stream_can_poll(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_pollable_output_stream_create_source(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GPollableOutputStream)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GCancellable)(unsafe.Pointer(param0))
+
+	ret := C.g_pollable_output_stream_create_source(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_pollable_output_stream_is_writable(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GPollableOutputStream)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_pollable_output_stream_is_writable(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_pollable_output_stream_write_nonblocking : has non-string array param buffer
+
+// UNSUPPORTED : g_pollable_output_stream_writev_nonblocking : has non-string array param vectors
+
+func Fn_g_proxy_connect(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GProxy)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GIOStream)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GProxyAddress)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_proxy_connect(cValueInstance, cValue0, cValue1, cValue2, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_proxy_connect_async : has callback
+
+func Fn_g_proxy_connect_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GProxy)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_proxy_connect_finish(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_proxy_supports_hostname(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GProxy)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_proxy_supports_hostname(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_proxy_resolver_is_supported(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GProxyResolver)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_proxy_resolver_is_supported(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_proxy_resolver_lookup : has array return
+
+// UNSUPPORTED : g_proxy_resolver_lookup_async : has callback
+
+// UNSUPPORTED : g_proxy_resolver_lookup_finish : has array return
+
+func Fn_g_remote_action_group_activate_action_full(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 unsafe.Pointer) {
+	cValueInstance := (*C.GRemoteActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.GVariant)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.GVariant)(unsafe.Pointer(param2))
+
+	C.g_remote_action_group_activate_action_full(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_g_remote_action_group_change_action_state_full(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 unsafe.Pointer) {
+	cValueInstance := (*C.GRemoteActionGroup)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.GVariant)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.GVariant)(unsafe.Pointer(param2))
+
+	C.g_remote_action_group_change_action_state_full(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_g_seekable_can_seek(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GSeekable)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_seekable_can_seek(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_seekable_can_truncate(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GSeekable)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_seekable_can_truncate(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_seekable_seek(paramInstance unsafe.Pointer, param0 int64, param1 int, param2 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GSeekable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.goffset)(param0)
+
+	cValue1 := (C.GSeekType)(param1)
+
+	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_seekable_seek(cValueInstance, cValue0, cValue1, cValue2, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_seekable_tell(paramInstance unsafe.Pointer) int64 {
+	cValueInstance := (*C.GSeekable)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_seekable_tell(cValueInstance)
+
+	return (int64)(ret)
+}
+
+func Fn_g_seekable_truncate(paramInstance unsafe.Pointer, param0 int64, param1 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GSeekable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.goffset)(param0)
+
+	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_seekable_truncate(cValueInstance, cValue0, cValue1, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_socket_connectable_enumerate(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GSocketConnectable)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_socket_connectable_enumerate(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_socket_connectable_proxy_enumerate(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GSocketConnectable)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_socket_connectable_proxy_enumerate(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_tls_backend_get_certificate_type(paramInstance unsafe.Pointer) uint64 {
+	cValueInstance := (*C.GTlsBackend)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_tls_backend_get_certificate_type(cValueInstance)
+
+	return (uint64)(ret)
+}
+
+func Fn_g_tls_backend_get_client_connection_type(paramInstance unsafe.Pointer) uint64 {
+	cValueInstance := (*C.GTlsBackend)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_tls_backend_get_client_connection_type(cValueInstance)
+
+	return (uint64)(ret)
+}
+
+func Fn_g_tls_backend_get_default_database(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GTlsBackend)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_tls_backend_get_default_database(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_tls_backend_get_file_database_type(paramInstance unsafe.Pointer) uint64 {
+	cValueInstance := (*C.GTlsBackend)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_tls_backend_get_file_database_type(cValueInstance)
+
+	return (uint64)(ret)
+}
+
+func Fn_g_tls_backend_get_server_connection_type(paramInstance unsafe.Pointer) uint64 {
+	cValueInstance := (*C.GTlsBackend)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_tls_backend_get_server_connection_type(cValueInstance)
+
+	return (uint64)(ret)
+}
+
+func Fn_g_tls_backend_supports_tls(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GTlsBackend)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_tls_backend_supports_tls(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_tls_client_connection_get_accepted_cas(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GTlsClientConnection)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_tls_client_connection_get_accepted_cas(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_tls_client_connection_get_server_identity(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GTlsClientConnection)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_tls_client_connection_get_server_identity(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_tls_client_connection_get_use_ssl3(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GTlsClientConnection)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_tls_client_connection_get_use_ssl3(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_tls_client_connection_get_validation_flags(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.GTlsClientConnection)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_tls_client_connection_get_validation_flags(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_g_tls_client_connection_set_server_identity(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GTlsClientConnection)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GSocketConnectable)(unsafe.Pointer(param0))
+
+	C.g_tls_client_connection_set_server_identity(cValueInstance, cValue0)
+}
+
+func Fn_g_tls_client_connection_set_use_ssl3(paramInstance unsafe.Pointer, param0 bool) {
+	cValueInstance := (*C.GTlsClientConnection)(unsafe.Pointer(paramInstance))
+
+	cValue0 := toCBool(param0)
+
+	C.g_tls_client_connection_set_use_ssl3(cValueInstance, cValue0)
+}
+
+func Fn_g_tls_client_connection_set_validation_flags(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.GTlsClientConnection)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GTlsCertificateFlags)(param0)
+
+	C.g_tls_client_connection_set_validation_flags(cValueInstance, cValue0)
+}
+
+func Fn_g_volume_can_eject(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_volume_can_eject(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_volume_can_mount(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_volume_can_mount(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_volume_eject : has callback
+
+func Fn_g_volume_eject_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_volume_eject_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_volume_eject_with_operation : has callback
+
+func Fn_g_volume_eject_with_operation_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_volume_eject_with_operation_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : g_volume_enumerate_identifiers : has array return
+
+func Fn_g_volume_get_activation_root(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_volume_get_activation_root(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_volume_get_drive(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_volume_get_drive(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_volume_get_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_volume_get_icon(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_volume_get_identifier(paramInstance unsafe.Pointer, param0 string) string {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.g_volume_get_identifier(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_volume_get_mount(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_volume_get_mount(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_volume_get_name(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_volume_get_name(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_volume_get_sort_key(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_volume_get_sort_key(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_g_volume_get_symbolic_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_volume_get_symbolic_icon(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_g_volume_get_uuid(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_volume_get_uuid(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+// UNSUPPORTED : g_volume_mount : has callback
+
+func Fn_g_volume_mount_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_volume_mount_finish(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_g_volume_should_automount(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))
+
+	ret := C.g_volume_should_automount(cValueInstance)
+
+	return toGoBool(ret)
+}

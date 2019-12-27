@@ -15273,3 +15273,1058 @@ func Fn_gtk_window_group_remove_window(paramInstance unsafe.Pointer, param0 unsa
 
 	C.gtk_window_group_remove_window(cValueInstance, cValue0)
 }
+
+// UNSUPPORTED : gtk_actionable_set_action_target : has varargs
+
+func Fn_gtk_cell_accessible_parent_activate(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkCellAccessibleParent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellAccessible)(unsafe.Pointer(param0))
+
+	C.gtk_cell_accessible_parent_activate(cValueInstance, cValue0)
+}
+
+func Fn_gtk_cell_accessible_parent_edit(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkCellAccessibleParent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellAccessible)(unsafe.Pointer(param0))
+
+	C.gtk_cell_accessible_parent_edit(cValueInstance, cValue0)
+}
+
+func Fn_gtk_cell_accessible_parent_expand_collapse(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkCellAccessibleParent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellAccessible)(unsafe.Pointer(param0))
+
+	C.gtk_cell_accessible_parent_expand_collapse(cValueInstance, cValue0)
+}
+
+func Fn_gtk_cell_accessible_parent_get_cell_area(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValueInstance := (*C.GtkCellAccessibleParent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellAccessible)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GdkRectangle)(unsafe.Pointer(param1))
+
+	C.gtk_cell_accessible_parent_get_cell_area(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_gtk_cell_accessible_parent_get_cell_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *int, param2 *int, param3 *int, param4 *int, param5 int) {
+	cValueInstance := (*C.GtkCellAccessibleParent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellAccessible)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	cValue3 := (*C.gint)(unsafe.Pointer(param3))
+
+	cValue4 := (*C.gint)(unsafe.Pointer(param4))
+
+	cValue5 := (C.AtkCoordType)(param5)
+
+	C.gtk_cell_accessible_parent_get_cell_extents(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+}
+
+// UNSUPPORTED : gtk_cell_accessible_parent_get_cell_position : blacklisted
+func Fn_gtk_cell_accessible_parent_get_child_index(paramInstance unsafe.Pointer, param0 unsafe.Pointer) int {
+	cValueInstance := (*C.GtkCellAccessibleParent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellAccessible)(unsafe.Pointer(param0))
+
+	ret := C.gtk_cell_accessible_parent_get_child_index(cValueInstance, cValue0)
+
+	return (int)(ret)
+}
+
+// UNSUPPORTED : gtk_cell_accessible_parent_get_column_header_cells : has array return
+
+func Fn_gtk_cell_accessible_parent_get_renderer_state(paramInstance unsafe.Pointer, param0 unsafe.Pointer) int {
+	cValueInstance := (*C.GtkCellAccessibleParent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellAccessible)(unsafe.Pointer(param0))
+
+	ret := C.gtk_cell_accessible_parent_get_renderer_state(cValueInstance, cValue0)
+
+	return (int)(ret)
+}
+
+// UNSUPPORTED : gtk_cell_accessible_parent_get_row_header_cells : has array return
+
+func Fn_gtk_cell_accessible_parent_grab_focus(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkCellAccessibleParent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellAccessible)(unsafe.Pointer(param0))
+
+	ret := C.gtk_cell_accessible_parent_grab_focus(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_cell_accessible_parent_update_relationset(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValueInstance := (*C.GtkCellAccessibleParent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellAccessible)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.AtkRelationSet)(unsafe.Pointer(param1))
+
+	C.gtk_cell_accessible_parent_update_relationset(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_gtk_cell_editable_editing_done(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GtkCellEditable)(unsafe.Pointer(paramInstance))
+
+	C.gtk_cell_editable_editing_done(cValueInstance)
+}
+
+func Fn_gtk_cell_editable_remove_widget(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GtkCellEditable)(unsafe.Pointer(paramInstance))
+
+	C.gtk_cell_editable_remove_widget(cValueInstance)
+}
+
+func Fn_gtk_cell_editable_start_editing(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkCellEditable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GdkEvent)(unsafe.Pointer(param0))
+
+	C.gtk_cell_editable_start_editing(cValueInstance, cValue0)
+}
+
+func Fn_gtk_cell_layout_add_attribute(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, param2 int) {
+	cValueInstance := (*C.GtkCellLayout)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellRenderer)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gchar)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	cValue2 := (C.gint)(param2)
+
+	C.gtk_cell_layout_add_attribute(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_gtk_cell_layout_clear(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GtkCellLayout)(unsafe.Pointer(paramInstance))
+
+	C.gtk_cell_layout_clear(cValueInstance)
+}
+
+func Fn_gtk_cell_layout_clear_attributes(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkCellLayout)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellRenderer)(unsafe.Pointer(param0))
+
+	C.gtk_cell_layout_clear_attributes(cValueInstance, cValue0)
+}
+
+func Fn_gtk_cell_layout_pack_end(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
+	cValueInstance := (*C.GtkCellLayout)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellRenderer)(unsafe.Pointer(param0))
+
+	cValue1 := toCBool(param1)
+
+	C.gtk_cell_layout_pack_end(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_gtk_cell_layout_pack_start(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
+	cValueInstance := (*C.GtkCellLayout)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellRenderer)(unsafe.Pointer(param0))
+
+	cValue1 := toCBool(param1)
+
+	C.gtk_cell_layout_pack_start(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_gtk_cell_layout_reorder(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int) {
+	cValueInstance := (*C.GtkCellLayout)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkCellRenderer)(unsafe.Pointer(param0))
+
+	cValue1 := (C.gint)(param1)
+
+	C.gtk_cell_layout_reorder(cValueInstance, cValue0, cValue1)
+}
+
+// UNSUPPORTED : gtk_cell_layout_set_attributes : has varargs
+
+// UNSUPPORTED : gtk_cell_layout_set_cell_data_func : has callback
+
+// UNSUPPORTED : gtk_color_chooser_add_palette : has non-string array param colors
+
+func Fn_gtk_editable_copy_clipboard(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	C.gtk_editable_copy_clipboard(cValueInstance)
+}
+
+func Fn_gtk_editable_cut_clipboard(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	C.gtk_editable_cut_clipboard(cValueInstance)
+}
+
+func Fn_gtk_editable_delete_selection(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	C.gtk_editable_delete_selection(cValueInstance)
+}
+
+func Fn_gtk_editable_delete_text(paramInstance unsafe.Pointer, param0 int, param1 int) {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	C.gtk_editable_delete_text(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_gtk_editable_get_chars(paramInstance unsafe.Pointer, param0 int, param1 int) string {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	ret := C.gtk_editable_get_chars(cValueInstance, cValue0, cValue1)
+
+	return C.GoString(ret)
+}
+
+func Fn_gtk_editable_get_editable(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_editable_get_editable(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_editable_get_position(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_editable_get_position(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_gtk_editable_get_selection_bounds(paramInstance unsafe.Pointer, param0 *int, param1 *int) bool {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	ret := C.gtk_editable_get_selection_bounds(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_editable_insert_text(paramInstance unsafe.Pointer, param0 string, param1 int, param2 *int) {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	C.gtk_editable_insert_text(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_gtk_editable_paste_clipboard(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	C.gtk_editable_paste_clipboard(cValueInstance)
+}
+
+func Fn_gtk_editable_select_region(paramInstance unsafe.Pointer, param0 int, param1 int) {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	C.gtk_editable_select_region(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_gtk_editable_set_editable(paramInstance unsafe.Pointer, param0 bool) {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := toCBool(param0)
+
+	C.gtk_editable_set_editable(cValueInstance, cValue0)
+}
+
+func Fn_gtk_editable_set_position(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.GtkEditable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	C.gtk_editable_set_position(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_add_filter(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkFileFilter)(unsafe.Pointer(param0))
+
+	C.gtk_file_chooser_add_filter(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_add_shortcut_folder(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.gtk_file_chooser_add_shortcut_folder(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_add_shortcut_folder_uri(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.gtk_file_chooser_add_shortcut_folder_uri(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_get_action(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_action(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_gtk_file_chooser_get_current_folder(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_current_folder(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_gtk_file_chooser_get_current_folder_uri(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_current_folder_uri(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_gtk_file_chooser_get_extra_widget(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_extra_widget(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gtk_file_chooser_get_filename(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_filename(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_gtk_file_chooser_get_filenames(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_filenames(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gtk_file_chooser_get_filter(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_filter(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gtk_file_chooser_get_local_only(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_local_only(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_get_preview_filename(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_preview_filename(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_gtk_file_chooser_get_preview_uri(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_preview_uri(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_gtk_file_chooser_get_preview_widget(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_preview_widget(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gtk_file_chooser_get_preview_widget_active(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_preview_widget_active(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_get_select_multiple(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_select_multiple(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_get_show_hidden(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_show_hidden(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_get_uri(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_uri(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_gtk_file_chooser_get_uris(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_uris(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gtk_file_chooser_get_use_preview_label(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_get_use_preview_label(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_list_filters(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_list_filters(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gtk_file_chooser_list_shortcut_folder_uris(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_list_shortcut_folder_uris(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gtk_file_chooser_list_shortcut_folders(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_file_chooser_list_shortcut_folders(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gtk_file_chooser_remove_filter(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkFileFilter)(unsafe.Pointer(param0))
+
+	C.gtk_file_chooser_remove_filter(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_remove_shortcut_folder(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.gtk_file_chooser_remove_shortcut_folder(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_remove_shortcut_folder_uri(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cError := (**C.GError)(error)
+
+	ret := C.gtk_file_chooser_remove_shortcut_folder_uri(cValueInstance, cValue0, cError)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_select_all(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	C.gtk_file_chooser_select_all(cValueInstance)
+}
+
+func Fn_gtk_file_chooser_select_filename(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.gtk_file_chooser_select_filename(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_select_uri(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.gtk_file_chooser_select_uri(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_set_action(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GtkFileChooserAction)(param0)
+
+	C.gtk_file_chooser_set_action(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_set_current_folder(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.gtk_file_chooser_set_current_folder(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_set_current_folder_uri(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.gtk_file_chooser_set_current_folder_uri(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_set_current_name(paramInstance unsafe.Pointer, param0 string) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.gtk_file_chooser_set_current_name(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_set_extra_widget(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
+
+	C.gtk_file_chooser_set_extra_widget(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_set_filename(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.gtk_file_chooser_set_filename(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_set_filter(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkFileFilter)(unsafe.Pointer(param0))
+
+	C.gtk_file_chooser_set_filter(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_set_local_only(paramInstance unsafe.Pointer, param0 bool) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := toCBool(param0)
+
+	C.gtk_file_chooser_set_local_only(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_set_preview_widget(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
+
+	C.gtk_file_chooser_set_preview_widget(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_set_preview_widget_active(paramInstance unsafe.Pointer, param0 bool) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := toCBool(param0)
+
+	C.gtk_file_chooser_set_preview_widget_active(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_set_select_multiple(paramInstance unsafe.Pointer, param0 bool) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := toCBool(param0)
+
+	C.gtk_file_chooser_set_select_multiple(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_set_show_hidden(paramInstance unsafe.Pointer, param0 bool) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := toCBool(param0)
+
+	C.gtk_file_chooser_set_show_hidden(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_set_uri(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.gtk_file_chooser_set_uri(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_file_chooser_set_use_preview_label(paramInstance unsafe.Pointer, param0 bool) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := toCBool(param0)
+
+	C.gtk_file_chooser_set_use_preview_label(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_unselect_all(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	C.gtk_file_chooser_unselect_all(cValueInstance)
+}
+
+func Fn_gtk_file_chooser_unselect_filename(paramInstance unsafe.Pointer, param0 string) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.gtk_file_chooser_unselect_filename(cValueInstance, cValue0)
+}
+
+func Fn_gtk_file_chooser_unselect_uri(paramInstance unsafe.Pointer, param0 string) {
+	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.gtk_file_chooser_unselect_uri(cValueInstance, cValue0)
+}
+
+// UNSUPPORTED : gtk_font_chooser_set_filter_func : has callback
+
+// UNSUPPORTED : gtk_recent_chooser_get_uris : has array return
+
+// UNSUPPORTED : gtk_recent_chooser_set_sort_func : has callback
+
+func Fn_gtk_tree_drag_dest_drag_data_received(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkTreeDragDest)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkSelectionData)(unsafe.Pointer(param1))
+
+	ret := C.gtk_tree_drag_dest_drag_data_received(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_drag_dest_row_drop_possible(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkTreeDragDest)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkSelectionData)(unsafe.Pointer(param1))
+
+	ret := C.gtk_tree_drag_dest_row_drop_possible(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_drag_source_drag_data_delete(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkTreeDragSource)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
+
+	ret := C.gtk_tree_drag_source_drag_data_delete(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_drag_source_drag_data_get(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkTreeDragSource)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkSelectionData)(unsafe.Pointer(param1))
+
+	ret := C.gtk_tree_drag_source_drag_data_get(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_drag_source_row_draggable(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkTreeDragSource)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
+
+	ret := C.gtk_tree_drag_source_row_draggable(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_model_filter_new(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
+
+	ret := C.gtk_tree_model_filter_new(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : gtk_tree_model_foreach : has callback
+
+// UNSUPPORTED : gtk_tree_model_get : has varargs
+
+func Fn_gtk_tree_model_get_column_type(paramInstance unsafe.Pointer, param0 int) uint64 {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.gtk_tree_model_get_column_type(cValueInstance, cValue0)
+
+	return (uint64)(ret)
+}
+
+func Fn_gtk_tree_model_get_flags(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_tree_model_get_flags(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_gtk_tree_model_get_iter(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkTreePath)(unsafe.Pointer(param1))
+
+	ret := C.gtk_tree_model_get_iter(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_model_get_iter_first(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	ret := C.gtk_tree_model_get_iter_first(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_model_get_iter_from_string(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string) bool {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gchar)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	ret := C.gtk_tree_model_get_iter_from_string(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_model_get_n_columns(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_tree_model_get_n_columns(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_gtk_tree_model_get_path(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	ret := C.gtk_tree_model_get_path(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gtk_tree_model_get_string_from_iter(paramInstance unsafe.Pointer, param0 unsafe.Pointer) string {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	ret := C.gtk_tree_model_get_string_from_iter(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+// UNSUPPORTED : gtk_tree_model_get_valist : has va_list
+
+func Fn_gtk_tree_model_get_value(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer) {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (*C.GValue)(unsafe.Pointer(param2))
+
+	C.gtk_tree_model_get_value(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_gtk_tree_model_iter_children(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkTreeIter)(unsafe.Pointer(param1))
+
+	ret := C.gtk_tree_model_iter_children(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_model_iter_has_child(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	ret := C.gtk_tree_model_iter_has_child(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_model_iter_n_children(paramInstance unsafe.Pointer, param0 unsafe.Pointer) int {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	ret := C.gtk_tree_model_iter_n_children(cValueInstance, cValue0)
+
+	return (int)(ret)
+}
+
+func Fn_gtk_tree_model_iter_next(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	ret := C.gtk_tree_model_iter_next(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_model_iter_nth_child(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int) bool {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkTreeIter)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gint)(param2)
+
+	ret := C.gtk_tree_model_iter_nth_child(cValueInstance, cValue0, cValue1, cValue2)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_model_iter_parent(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkTreeIter)(unsafe.Pointer(param1))
+
+	ret := C.gtk_tree_model_iter_parent(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_model_ref_node(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	C.gtk_tree_model_ref_node(cValueInstance, cValue0)
+}
+
+func Fn_gtk_tree_model_row_changed(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkTreeIter)(unsafe.Pointer(param1))
+
+	C.gtk_tree_model_row_changed(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_gtk_tree_model_row_deleted(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
+
+	C.gtk_tree_model_row_deleted(cValueInstance, cValue0)
+}
+
+func Fn_gtk_tree_model_row_has_child_toggled(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkTreeIter)(unsafe.Pointer(param1))
+
+	C.gtk_tree_model_row_has_child_toggled(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_gtk_tree_model_row_inserted(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkTreeIter)(unsafe.Pointer(param1))
+
+	C.gtk_tree_model_row_inserted(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_gtk_tree_model_rows_reordered(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *int) {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreePath)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkTreeIter)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	C.gtk_tree_model_rows_reordered(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+// UNSUPPORTED : gtk_tree_model_rows_reordered_with_length : has non-string array param new_order
+
+func Fn_gtk_tree_model_sort_new_with_model(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_tree_model_sort_new_with_model(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gtk_tree_model_unref_node(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.GtkTreeModel)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	C.gtk_tree_model_unref_node(cValueInstance, cValue0)
+}
+
+func Fn_gtk_tree_sortable_get_sort_column_id(paramInstance unsafe.Pointer, param0 *int, param1 *int) bool {
+	cValueInstance := (*C.GtkTreeSortable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkSortType)(unsafe.Pointer(param1))
+
+	ret := C.gtk_tree_sortable_get_sort_column_id(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_gtk_tree_sortable_has_default_sort_func(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.GtkTreeSortable)(unsafe.Pointer(paramInstance))
+
+	ret := C.gtk_tree_sortable_has_default_sort_func(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : gtk_tree_sortable_set_default_sort_func : has callback
+
+func Fn_gtk_tree_sortable_set_sort_column_id(paramInstance unsafe.Pointer, param0 int, param1 int) {
+	cValueInstance := (*C.GtkTreeSortable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.GtkSortType)(param1)
+
+	C.gtk_tree_sortable_set_sort_column_id(cValueInstance, cValue0, cValue1)
+}
+
+// UNSUPPORTED : gtk_tree_sortable_set_sort_func : has callback
+
+func Fn_gtk_tree_sortable_sort_column_changed(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GtkTreeSortable)(unsafe.Pointer(paramInstance))
+
+	C.gtk_tree_sortable_sort_column_changed(cValueInstance)
+}

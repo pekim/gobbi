@@ -17,13 +17,3 @@ func (u *Union) init(ns *Namespace) {
 	u.namespace = ns
 	u.applyAddenda()
 }
-
-//func (u Union) generateSys(f *jen.File, version semver.Version) {
-//	if u.blacklist {
-//		f.Commentf("UNSUPPORTED : %s : blacklisted", u.Name)
-//		return
-//	}
-//
-//	// GEN: type SomeUnion SomeCType
-//	f.Type().Id(u.Name).Qual("C", u.CType)
-//}

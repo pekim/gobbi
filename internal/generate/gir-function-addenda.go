@@ -3,6 +3,12 @@ package generate
 import "strings"
 
 var functionBlacklist = map[string]bool{
+	// atk
+
+	// return *glib.SList
+	"atk_text_get_default_attributes": true,
+	"atk_text_get_run_attributes":     true,
+
 	// gdk
 	"gdk_synthesize_window_state": true,
 	"gdk_window_destroy_notify":   true,
@@ -24,10 +30,11 @@ var functionBlacklist = map[string]bool{
 	"g_null_settings_backend_new":              true,
 
 	// gtk
-	"gtk_event_controller_key_forward":        true,
-	"gtk_event_controller_key_get_group":      true,
-	"gtk_event_controller_key_new":            true,
-	"gtk_event_controller_key_set_im_context": true,
+	"gtk_cell_accessible_parent_get_cell_position": true,
+	"gtk_event_controller_key_forward":             true,
+	"gtk_event_controller_key_get_group":           true,
+	"gtk_event_controller_key_new":                 true,
+	"gtk_event_controller_key_set_im_context":      true,
 
 	// pango
 	"pango_module_register":                true,

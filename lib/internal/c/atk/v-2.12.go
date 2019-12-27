@@ -905,3 +905,1216 @@ func Fn_atk_state_set_xor_sets(paramInstance unsafe.Pointer, param0 unsafe.Point
 
 	return unsafe.Pointer(ret)
 }
+
+func Fn_atk_action_do_action(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.AtkAction)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_action_do_action(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_action_get_description(paramInstance unsafe.Pointer, param0 int) string {
+	cValueInstance := (*C.AtkAction)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_action_get_description(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_action_get_keybinding(paramInstance unsafe.Pointer, param0 int) string {
+	cValueInstance := (*C.AtkAction)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_action_get_keybinding(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_action_get_localized_name(paramInstance unsafe.Pointer, param0 int) string {
+	cValueInstance := (*C.AtkAction)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_action_get_localized_name(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_action_get_n_actions(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkAction)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_action_get_n_actions(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_action_get_name(paramInstance unsafe.Pointer, param0 int) string {
+	cValueInstance := (*C.AtkAction)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_action_get_name(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_action_set_description(paramInstance unsafe.Pointer, param0 int, param1 string) bool {
+	cValueInstance := (*C.AtkAction)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (*C.gchar)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	ret := C.atk_action_set_description(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : atk_component_add_focus_handler : has callback
+
+func Fn_atk_component_contains(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int) bool {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (C.AtkCoordType)(param2)
+
+	ret := C.atk_component_contains(cValueInstance, cValue0, cValue1, cValue2)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_component_get_alpha(paramInstance unsafe.Pointer) float64 {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_component_get_alpha(cValueInstance)
+
+	return (float64)(ret)
+}
+
+func Fn_atk_component_get_extents(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 *int, param3 *int, param4 int) {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	cValue3 := (*C.gint)(unsafe.Pointer(param3))
+
+	cValue4 := (C.AtkCoordType)(param4)
+
+	C.atk_component_get_extents(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4)
+}
+
+func Fn_atk_component_get_layer(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_component_get_layer(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_component_get_mdi_zorder(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_component_get_mdi_zorder(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_component_get_position(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 int) {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	cValue2 := (C.AtkCoordType)(param2)
+
+	C.atk_component_get_position(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_atk_component_get_size(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	C.atk_component_get_size(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_atk_component_grab_focus(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_component_grab_focus(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_component_ref_accessible_at_point(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int) unsafe.Pointer {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (C.AtkCoordType)(param2)
+
+	ret := C.atk_component_ref_accessible_at_point(cValueInstance, cValue0, cValue1, cValue2)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_component_remove_focus_handler(paramInstance unsafe.Pointer, param0 uint) {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.guint)(param0)
+
+	C.atk_component_remove_focus_handler(cValueInstance, cValue0)
+}
+
+func Fn_atk_component_set_extents(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int, param4 int) bool {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (C.gint)(param2)
+
+	cValue3 := (C.gint)(param3)
+
+	cValue4 := (C.AtkCoordType)(param4)
+
+	ret := C.atk_component_set_extents(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_component_set_position(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int) bool {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (C.AtkCoordType)(param2)
+
+	ret := C.atk_component_set_position(cValueInstance, cValue0, cValue1, cValue2)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_component_set_size(paramInstance unsafe.Pointer, param0 int, param1 int) bool {
+	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	ret := C.atk_component_set_size(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_document_get_attribute_value(paramInstance unsafe.Pointer, param0 string) string {
+	cValueInstance := (*C.AtkDocument)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.atk_document_get_attribute_value(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_document_get_attributes(paramInstance unsafe.Pointer) *glib.SList {
+	cValueInstance := (*C.AtkDocument)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_document_get_attributes(cValueInstance)
+
+	return (*glib.SList)(ret)
+}
+
+func Fn_atk_document_get_current_page_number(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkDocument)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_document_get_current_page_number(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_document_get_document(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.AtkDocument)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_document_get_document(cValueInstance)
+
+	return (unsafe.Pointer)(ret)
+}
+
+func Fn_atk_document_get_document_type(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.AtkDocument)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_document_get_document_type(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_document_get_locale(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.AtkDocument)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_document_get_locale(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_document_get_page_count(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkDocument)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_document_get_page_count(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_document_set_attribute_value(paramInstance unsafe.Pointer, param0 string, param1 string) bool {
+	cValueInstance := (*C.AtkDocument)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.gchar)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	ret := C.atk_document_set_attribute_value(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_editable_text_copy_text(paramInstance unsafe.Pointer, param0 int, param1 int) {
+	cValueInstance := (*C.AtkEditableText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	C.atk_editable_text_copy_text(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_atk_editable_text_cut_text(paramInstance unsafe.Pointer, param0 int, param1 int) {
+	cValueInstance := (*C.AtkEditableText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	C.atk_editable_text_cut_text(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_atk_editable_text_delete_text(paramInstance unsafe.Pointer, param0 int, param1 int) {
+	cValueInstance := (*C.AtkEditableText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	C.atk_editable_text_delete_text(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_atk_editable_text_insert_text(paramInstance unsafe.Pointer, param0 string, param1 int, param2 *int) {
+	cValueInstance := (*C.AtkEditableText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	C.atk_editable_text_insert_text(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_atk_editable_text_paste_text(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.AtkEditableText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	C.atk_editable_text_paste_text(cValueInstance, cValue0)
+}
+
+func Fn_atk_editable_text_set_run_attributes(paramInstance unsafe.Pointer, param0 *glib.SList, param1 int, param2 int) bool {
+	cValueInstance := (*C.AtkEditableText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.AtkAttributeSet)(unsafe.Pointer(param0))
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (C.gint)(param2)
+
+	ret := C.atk_editable_text_set_run_attributes(cValueInstance, cValue0, cValue1, cValue2)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_editable_text_set_text_contents(paramInstance unsafe.Pointer, param0 string) {
+	cValueInstance := (*C.AtkEditableText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.atk_editable_text_set_text_contents(cValueInstance, cValue0)
+}
+
+func Fn_atk_hyperlink_impl_get_hyperlink(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.AtkHyperlinkImpl)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_hyperlink_impl_get_hyperlink(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_hypertext_get_link(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
+	cValueInstance := (*C.AtkHypertext)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_hypertext_get_link(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_hypertext_get_link_index(paramInstance unsafe.Pointer, param0 int) int {
+	cValueInstance := (*C.AtkHypertext)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_hypertext_get_link_index(cValueInstance, cValue0)
+
+	return (int)(ret)
+}
+
+func Fn_atk_hypertext_get_n_links(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkHypertext)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_hypertext_get_n_links(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_image_get_image_description(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.AtkImage)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_image_get_image_description(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_image_get_image_locale(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.AtkImage)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_image_get_image_locale(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_image_get_image_position(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 int) {
+	cValueInstance := (*C.AtkImage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	cValue2 := (C.AtkCoordType)(param2)
+
+	C.atk_image_get_image_position(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_atk_image_get_image_size(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
+	cValueInstance := (*C.AtkImage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	C.atk_image_get_image_size(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_atk_image_set_image_description(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.AtkImage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.atk_image_set_image_description(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_selection_add_selection(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.AtkSelection)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_selection_add_selection(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_selection_clear_selection(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.AtkSelection)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_selection_clear_selection(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_selection_get_selection_count(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkSelection)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_selection_get_selection_count(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_selection_is_child_selected(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.AtkSelection)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_selection_is_child_selected(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_selection_ref_selection(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
+	cValueInstance := (*C.AtkSelection)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_selection_ref_selection(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_selection_remove_selection(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.AtkSelection)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_selection_remove_selection(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_selection_select_all_selection(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.AtkSelection)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_selection_select_all_selection(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_streamable_content_get_mime_type(paramInstance unsafe.Pointer, param0 int) string {
+	cValueInstance := (*C.AtkStreamableContent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_streamable_content_get_mime_type(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_streamable_content_get_n_mime_types(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkStreamableContent)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_streamable_content_get_n_mime_types(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_streamable_content_get_stream(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+	cValueInstance := (*C.AtkStreamableContent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.atk_streamable_content_get_stream(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_streamable_content_get_uri(paramInstance unsafe.Pointer, param0 string) string {
+	cValueInstance := (*C.AtkStreamableContent)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.atk_streamable_content_get_uri(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_table_add_column_selection(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_table_add_column_selection(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_table_add_row_selection(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_table_add_row_selection(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_table_get_caption(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_table_get_caption(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_table_get_column_at_index(paramInstance unsafe.Pointer, param0 int) int {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_table_get_column_at_index(cValueInstance, cValue0)
+
+	return (int)(ret)
+}
+
+func Fn_atk_table_get_column_description(paramInstance unsafe.Pointer, param0 int) string {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_table_get_column_description(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_table_get_column_extent_at(paramInstance unsafe.Pointer, param0 int, param1 int) int {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	ret := C.atk_table_get_column_extent_at(cValueInstance, cValue0, cValue1)
+
+	return (int)(ret)
+}
+
+func Fn_atk_table_get_column_header(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_table_get_column_header(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_table_get_index_at(paramInstance unsafe.Pointer, param0 int, param1 int) int {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	ret := C.atk_table_get_index_at(cValueInstance, cValue0, cValue1)
+
+	return (int)(ret)
+}
+
+func Fn_atk_table_get_n_columns(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_table_get_n_columns(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_table_get_n_rows(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_table_get_n_rows(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_table_get_row_at_index(paramInstance unsafe.Pointer, param0 int) int {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_table_get_row_at_index(cValueInstance, cValue0)
+
+	return (int)(ret)
+}
+
+func Fn_atk_table_get_row_description(paramInstance unsafe.Pointer, param0 int) string {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_table_get_row_description(cValueInstance, cValue0)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_table_get_row_extent_at(paramInstance unsafe.Pointer, param0 int, param1 int) int {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	ret := C.atk_table_get_row_extent_at(cValueInstance, cValue0, cValue1)
+
+	return (int)(ret)
+}
+
+func Fn_atk_table_get_row_header(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_table_get_row_header(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_table_get_selected_columns(paramInstance unsafe.Pointer, param0 **int) int {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (**C.gint)(unsafe.Pointer(param0))
+
+	ret := C.atk_table_get_selected_columns(cValueInstance, cValue0)
+
+	return (int)(ret)
+}
+
+func Fn_atk_table_get_selected_rows(paramInstance unsafe.Pointer, param0 **int) int {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (**C.gint)(unsafe.Pointer(param0))
+
+	ret := C.atk_table_get_selected_rows(cValueInstance, cValue0)
+
+	return (int)(ret)
+}
+
+func Fn_atk_table_get_summary(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_table_get_summary(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_table_is_column_selected(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_table_is_column_selected(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_table_is_row_selected(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_table_is_row_selected(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_table_is_selected(paramInstance unsafe.Pointer, param0 int, param1 int) bool {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	ret := C.atk_table_is_selected(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_table_ref_at(paramInstance unsafe.Pointer, param0 int, param1 int) unsafe.Pointer {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	ret := C.atk_table_ref_at(cValueInstance, cValue0, cValue1)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_table_remove_column_selection(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_table_remove_column_selection(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_table_remove_row_selection(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_table_remove_row_selection(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_table_set_caption(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.AtkObject)(unsafe.Pointer(param0))
+
+	C.atk_table_set_caption(cValueInstance, cValue0)
+}
+
+func Fn_atk_table_set_column_description(paramInstance unsafe.Pointer, param0 int, param1 string) {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (*C.gchar)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	C.atk_table_set_column_description(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_atk_table_set_column_header(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (*C.AtkObject)(unsafe.Pointer(param1))
+
+	C.atk_table_set_column_header(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_atk_table_set_row_description(paramInstance unsafe.Pointer, param0 int, param1 string) {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (*C.gchar)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	C.atk_table_set_row_description(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_atk_table_set_row_header(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (*C.AtkObject)(unsafe.Pointer(param1))
+
+	C.atk_table_set_row_header(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_atk_table_set_summary(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.AtkObject)(unsafe.Pointer(param0))
+
+	C.atk_table_set_summary(cValueInstance, cValue0)
+}
+
+// UNSUPPORTED : atk_table_cell_get_column_header_cells : has array return
+
+func Fn_atk_table_cell_get_column_span(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkTableCell)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_table_cell_get_column_span(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_table_cell_get_position(paramInstance unsafe.Pointer, param0 *int, param1 *int) bool {
+	cValueInstance := (*C.AtkTableCell)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	ret := C.atk_table_cell_get_position(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_table_cell_get_row_column_span(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 *int, param3 *int) bool {
+	cValueInstance := (*C.AtkTableCell)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	cValue3 := (*C.gint)(unsafe.Pointer(param3))
+
+	ret := C.atk_table_cell_get_row_column_span(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : atk_table_cell_get_row_header_cells : has array return
+
+func Fn_atk_table_cell_get_row_span(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkTableCell)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_table_cell_get_row_span(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_table_cell_get_table(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.AtkTableCell)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_table_cell_get_table(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_text_add_selection(paramInstance unsafe.Pointer, param0 int, param1 int) bool {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	ret := C.atk_text_add_selection(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : atk_text_get_bounded_ranges : has array return
+
+func Fn_atk_text_get_caret_offset(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_text_get_caret_offset(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_text_get_character_at_offset(paramInstance unsafe.Pointer, param0 int) rune {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_text_get_character_at_offset(cValueInstance, cValue0)
+
+	return (rune)(ret)
+}
+
+func Fn_atk_text_get_character_count(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_text_get_character_count(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_text_get_character_extents(paramInstance unsafe.Pointer, param0 int, param1 *int, param2 *int, param3 *int, param4 *int, param5 int) {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	cValue3 := (*C.gint)(unsafe.Pointer(param3))
+
+	cValue4 := (*C.gint)(unsafe.Pointer(param4))
+
+	cValue5 := (C.AtkCoordType)(param5)
+
+	C.atk_text_get_character_extents(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+}
+
+// UNSUPPORTED : atk_text_get_default_attributes : blacklisted
+func Fn_atk_text_get_n_selections(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_text_get_n_selections(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_atk_text_get_offset_at_point(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int) int {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (C.AtkCoordType)(param2)
+
+	ret := C.atk_text_get_offset_at_point(cValueInstance, cValue0, cValue1, cValue2)
+
+	return (int)(ret)
+}
+
+func Fn_atk_text_get_range_extents(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 unsafe.Pointer) {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (C.AtkCoordType)(param2)
+
+	cValue3 := (*C.AtkTextRectangle)(unsafe.Pointer(param3))
+
+	C.atk_text_get_range_extents(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+}
+
+// UNSUPPORTED : atk_text_get_run_attributes : blacklisted
+func Fn_atk_text_get_selection(paramInstance unsafe.Pointer, param0 int, param1 *int, param2 *int) string {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	ret := C.atk_text_get_selection(cValueInstance, cValue0, cValue1, cValue2)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_text_get_string_at_offset(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *int, param3 *int) string {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.AtkTextGranularity)(param1)
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	cValue3 := (*C.gint)(unsafe.Pointer(param3))
+
+	ret := C.atk_text_get_string_at_offset(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_text_get_text(paramInstance unsafe.Pointer, param0 int, param1 int) string {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	ret := C.atk_text_get_text(cValueInstance, cValue0, cValue1)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_text_get_text_after_offset(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *int, param3 *int) string {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.AtkTextBoundary)(param1)
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	cValue3 := (*C.gint)(unsafe.Pointer(param3))
+
+	ret := C.atk_text_get_text_after_offset(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_text_get_text_at_offset(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *int, param3 *int) string {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.AtkTextBoundary)(param1)
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	cValue3 := (*C.gint)(unsafe.Pointer(param3))
+
+	ret := C.atk_text_get_text_at_offset(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_text_get_text_before_offset(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *int, param3 *int) string {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.AtkTextBoundary)(param1)
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	cValue3 := (*C.gint)(unsafe.Pointer(param3))
+
+	ret := C.atk_text_get_text_before_offset(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_text_remove_selection(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_text_remove_selection(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_text_set_caret_offset(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	ret := C.atk_text_set_caret_offset(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_text_set_selection(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int) bool {
+	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (C.gint)(param2)
+
+	ret := C.atk_text_set_selection(cValueInstance, cValue0, cValue1, cValue2)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_value_get_current_value(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GValue)(unsafe.Pointer(param0))
+
+	C.atk_value_get_current_value(cValueInstance, cValue0)
+}
+
+func Fn_atk_value_get_increment(paramInstance unsafe.Pointer) float64 {
+	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_value_get_increment(cValueInstance)
+
+	return (float64)(ret)
+}
+
+func Fn_atk_value_get_maximum_value(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GValue)(unsafe.Pointer(param0))
+
+	C.atk_value_get_maximum_value(cValueInstance, cValue0)
+}
+
+func Fn_atk_value_get_minimum_increment(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GValue)(unsafe.Pointer(param0))
+
+	C.atk_value_get_minimum_increment(cValueInstance, cValue0)
+}
+
+func Fn_atk_value_get_minimum_value(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GValue)(unsafe.Pointer(param0))
+
+	C.atk_value_get_minimum_value(cValueInstance, cValue0)
+}
+
+func Fn_atk_value_get_range(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_value_get_range(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_value_get_sub_ranges(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_value_get_sub_ranges(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_value_get_value_and_text(paramInstance unsafe.Pointer, param0 *float64, param1 *string) {
+	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gdouble)(unsafe.Pointer(param0))
+
+	var cValue1String *C.gchar
+	cValue1 := &cValue1String
+
+	C.atk_value_get_value_and_text(cValueInstance, cValue0, cValue1)
+
+	param1String := C.GoString(cValue1String)
+	*param1 = param1String
+}
+
+func Fn_atk_value_set_current_value(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GValue)(unsafe.Pointer(param0))
+
+	ret := C.atk_value_set_current_value(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_atk_value_set_value(paramInstance unsafe.Pointer, param0 float64) {
+	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gdouble)(param0)
+
+	C.atk_value_set_value(cValueInstance, cValue0)
+}
