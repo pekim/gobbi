@@ -115,14 +115,15 @@ func (n *Namespace) generateFile(name string, generateContent func(f *jen.File))
 }
 
 func (n *Namespace) getUnsupportedCount(dir string) int {
-	re := regexp.MustCompile(`// UNSUPPORTED `)
+	re := regexp.MustCompile(`// UNSUPPORTED (.*)`)
 
 	infos, err := ioutil.ReadDir(dir)
 	if err != nil {
 		panic(err)
 	}
 
-	count := 0
+	uniqUnsupported := make(map[string]bool)
+
 	for _, info := range infos {
 		path := filepath.Join(dir, info.Name())
 		fi, _ := os.Stat(path)
@@ -136,9 +137,12 @@ func (n *Namespace) getUnsupportedCount(dir string) int {
 		}
 
 		content := string(bytes)
-		matches := re.FindAllString(content, -1)
-		count += len(matches)
+		matches := re.FindAllStringSubmatch(content, -1)
+
+		for _, m := range matches {
+			uniqUnsupported[m[0]] = true
+		}
 	}
 
-	return count
+	return len(uniqUnsupported)
 }
