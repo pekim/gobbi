@@ -59,17 +59,76 @@ type UtilClass C.AtkUtilClass
 type ValueIface C.AtkValueIface
 type WindowIface C.AtkWindowIface
 
-// UNSUPPORTED : atk_add_focus_tracker : has callback
-
-// UNSUPPORTED : atk_add_global_event_listener : has callback
-
-// UNSUPPORTED : atk_add_key_event_listener : has callback
-
 func Fn_atk_attribute_set_free(param0 *glib.SList) {
 	cValue0 := (*C.AtkAttributeSet)(unsafe.Pointer(param0))
 
 	C.atk_attribute_set_free(cValue0)
 }
+
+func Fn_atk_implementor_ref_accessible(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.AtkImplementor)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_implementor_ref_accessible(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_range_new(param0 float64, param1 float64, param2 string) unsafe.Pointer {
+	cValue0 := (C.gdouble)(param0)
+
+	cValue1 := (C.gdouble)(param1)
+
+	cValue2 := (*C.gchar)(C.CString(param2))
+	defer C.free(unsafe.Pointer(cValue2))
+
+	ret := C.atk_range_new(cValue0, cValue1, cValue2)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_range_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.AtkRange)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_range_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_atk_range_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.AtkRange)(unsafe.Pointer(paramInstance))
+
+	C.atk_range_free(cValueInstance)
+}
+
+func Fn_atk_range_get_description(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.AtkRange)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_range_get_description(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_atk_range_get_lower_limit(paramInstance unsafe.Pointer) float64 {
+	cValueInstance := (*C.AtkRange)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_range_get_lower_limit(cValueInstance)
+
+	return (float64)(ret)
+}
+
+func Fn_atk_range_get_upper_limit(paramInstance unsafe.Pointer) float64 {
+	cValueInstance := (*C.AtkRange)(unsafe.Pointer(paramInstance))
+
+	ret := C.atk_range_get_upper_limit(cValueInstance)
+
+	return (float64)(ret)
+}
+
+// UNSUPPORTED : atk_add_focus_tracker : has callback
+
+// UNSUPPORTED : atk_add_global_event_listener : has callback
+
+// UNSUPPORTED : atk_add_key_event_listener : has callback
 
 // UNSUPPORTED : atk_focus_tracker_init : has callback
 
@@ -145,32 +204,6 @@ func Fn_atk_get_version() string {
 	return C.GoString(ret)
 }
 
-func Fn_atk_relation_type_for_name(param0 string) int {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.atk_relation_type_for_name(cValue0)
-
-	return (int)(ret)
-}
-
-func Fn_atk_relation_type_get_name(param0 int) string {
-	cValue0 := (C.AtkRelationType)(param0)
-
-	ret := C.atk_relation_type_get_name(cValue0)
-
-	return C.GoString(ret)
-}
-
-func Fn_atk_relation_type_register(param0 string) int {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.atk_relation_type_register(cValue0)
-
-	return (int)(ret)
-}
-
 func Fn_atk_remove_focus_tracker(param0 uint) {
 	cValue0 := (C.guint)(param0)
 
@@ -189,119 +222,7 @@ func Fn_atk_remove_key_event_listener(param0 uint) {
 	C.atk_remove_key_event_listener(cValue0)
 }
 
-func Fn_atk_role_for_name(param0 string) int {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.atk_role_for_name(cValue0)
-
-	return (int)(ret)
-}
-
-func Fn_atk_role_get_localized_name(param0 int) string {
-	cValue0 := (C.AtkRole)(param0)
-
-	ret := C.atk_role_get_localized_name(cValue0)
-
-	return C.GoString(ret)
-}
-
-func Fn_atk_role_get_name(param0 int) string {
-	cValue0 := (C.AtkRole)(param0)
-
-	ret := C.atk_role_get_name(cValue0)
-
-	return C.GoString(ret)
-}
-
-func Fn_atk_role_register(param0 string) int {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.atk_role_register(cValue0)
-
-	return (int)(ret)
-}
-
-func Fn_atk_state_type_for_name(param0 string) int {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.atk_state_type_for_name(cValue0)
-
-	return (int)(ret)
-}
-
-func Fn_atk_state_type_get_name(param0 int) string {
-	cValue0 := (C.AtkStateType)(param0)
-
-	ret := C.atk_state_type_get_name(cValue0)
-
-	return C.GoString(ret)
-}
-
-func Fn_atk_state_type_register(param0 string) int {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.atk_state_type_register(cValue0)
-
-	return (int)(ret)
-}
-
-func Fn_atk_text_attribute_for_name(param0 string) int {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.atk_text_attribute_for_name(cValue0)
-
-	return (int)(ret)
-}
-
-func Fn_atk_text_attribute_get_name(param0 int) string {
-	cValue0 := (C.AtkTextAttribute)(param0)
-
-	ret := C.atk_text_attribute_get_name(cValue0)
-
-	return C.GoString(ret)
-}
-
-func Fn_atk_text_attribute_get_value(param0 int, param1 int) string {
-	cValue0 := (C.AtkTextAttribute)(param0)
-
-	cValue1 := (C.gint)(param1)
-
-	ret := C.atk_text_attribute_get_value(cValue0, cValue1)
-
-	return C.GoString(ret)
-}
-
-func Fn_atk_text_attribute_register(param0 string) int {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.atk_text_attribute_register(cValue0)
-
-	return (int)(ret)
-}
-
 // UNSUPPORTED : atk_text_free_ranges : has non-string array param ranges
-
-func Fn_atk_value_type_get_localized_name(param0 int) string {
-	cValue0 := (C.AtkValueType)(param0)
-
-	ret := C.atk_value_type_get_localized_name(cValue0)
-
-	return C.GoString(ret)
-}
-
-func Fn_atk_value_type_get_name(param0 int) string {
-	cValue0 := (C.AtkValueType)(param0)
-
-	ret := C.atk_value_type_get_name(cValue0)
-
-	return C.GoString(ret)
-}
 
 func Fn_atk_gobject_accessible_get_object(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.AtkGObjectAccessible)(unsafe.Pointer(paramInstance))

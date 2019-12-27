@@ -14,7 +14,8 @@ var functionBlacklist = map[string]bool{
 	"gdk_window_destroy_notify":   true,
 
 	// gio
-	"g_io_module_query": true,
+	"g_io_module_query":                     true,
+	"g_settings_schema_source_list_schemas": true,
 
 	// settings backend implementations
 	"g_settings_backend_get_default":           true,
@@ -49,6 +50,9 @@ var functionBlacklist = map[string]bool{
 	"pango_find_map":                       true,
 	"pango_font_map_get_shape_engine_type": true,
 	"pango_lookup_aliases":                 true,
+	"pango_font_metrics_new":               true,
+	"pango_map_get_engine":                 true,
+	"pango_map_get_engines":                true,
 
 	// xlib
 	"XOpenDisplay": true,

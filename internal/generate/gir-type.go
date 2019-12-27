@@ -27,6 +27,7 @@ var simpleSysParamGoTypes = map[string]*jen.Statement{
 	"guint16":         jen.Uint16(),
 	"guint32":         jen.Uint32(),
 	"guint64":         jen.Uint64(),
+	"time_t":          jen.Int64(),
 	"glong":           jen.Int64(),
 	"gulong":          jen.Uint64(),
 	"gloat":           jen.Float32(),

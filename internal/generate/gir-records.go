@@ -28,5 +28,9 @@ func (rr Records) generateSys(f *jen.File, version semver.Version) {
 		r.generateSysType(f, version)
 	}
 
+	for _, r := range rr {
+		r.generateSys(f, version)
+	}
+
 	f.Line()
 }

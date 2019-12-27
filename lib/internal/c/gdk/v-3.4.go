@@ -59,10 +59,12 @@ type WindowAttr C.GdkWindowAttr
 type WindowClass C.GdkWindowClass
 type WindowRedirect C.GdkWindowRedirect
 
-func Fn_gdk_add_option_entries_libgtk_only(param0 unsafe.Pointer) {
-	cValue0 := (*C.GOptionGroup)(unsafe.Pointer(param0))
+func Fn_gdk_atom_name(paramInstance Atom) string {
+	cValueInstance := (C.GdkAtom)(unsafe.Pointer(paramInstance))
 
-	C.gdk_add_option_entries_libgtk_only(cValue0)
+	ret := C.gdk_atom_name(cValueInstance)
+
+	return C.GoString(ret)
 }
 
 func Fn_gdk_atom_intern(param0 string, param1 bool) Atom {
@@ -83,6 +85,144 @@ func Fn_gdk_atom_intern_static_string(param0 string) Atom {
 	ret := C.gdk_atom_intern_static_string(cValue0)
 
 	return Atom(ret)
+}
+
+func Fn_gdk_color_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GdkColor)(unsafe.Pointer(paramInstance))
+
+	ret := C.gdk_color_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_color_equal(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.GdkColor)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GdkColor)(unsafe.Pointer(param0))
+
+	ret := C.gdk_color_equal(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_color_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GdkColor)(unsafe.Pointer(paramInstance))
+
+	C.gdk_color_free(cValueInstance)
+}
+
+func Fn_gdk_color_hash(paramInstance unsafe.Pointer) uint {
+	cValueInstance := (*C.GdkColor)(unsafe.Pointer(paramInstance))
+
+	ret := C.gdk_color_hash(cValueInstance)
+
+	return (uint)(ret)
+}
+
+func Fn_gdk_color_to_string(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GdkColor)(unsafe.Pointer(paramInstance))
+
+	ret := C.gdk_color_to_string(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_gdk_color_parse(param0 string, param1 unsafe.Pointer) bool {
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.GdkColor)(unsafe.Pointer(param1))
+
+	ret := C.gdk_color_parse(cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_frame_timings_get_frame_time(paramInstance unsafe.Pointer) int64 {
+	cValueInstance := (*C.GdkFrameTimings)(unsafe.Pointer(paramInstance))
+
+	ret := C.gdk_frame_timings_get_frame_time(cValueInstance)
+
+	return (int64)(ret)
+}
+
+func Fn_gdk_rgba_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GdkRGBA)(unsafe.Pointer(paramInstance))
+
+	ret := C.gdk_rgba_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_rgba_equal(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (C.gconstpointer)(paramInstance)
+
+	cValue0 := (C.gconstpointer)(param0)
+
+	ret := C.gdk_rgba_equal(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_rgba_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.GdkRGBA)(unsafe.Pointer(paramInstance))
+
+	C.gdk_rgba_free(cValueInstance)
+}
+
+func Fn_gdk_rgba_hash(paramInstance unsafe.Pointer) uint {
+	cValueInstance := (C.gconstpointer)(paramInstance)
+
+	ret := C.gdk_rgba_hash(cValueInstance)
+
+	return (uint)(ret)
+}
+
+func Fn_gdk_rgba_parse(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.GdkRGBA)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.gdk_rgba_parse(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_rgba_to_string(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.GdkRGBA)(unsafe.Pointer(paramInstance))
+
+	ret := C.gdk_rgba_to_string(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_gdk_rectangle_intersect(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) bool {
+	cValueInstance := (*C.GdkRectangle)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GdkRectangle)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GdkRectangle)(unsafe.Pointer(param1))
+
+	ret := C.gdk_rectangle_intersect(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_rectangle_union(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValueInstance := (*C.GdkRectangle)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GdkRectangle)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GdkRectangle)(unsafe.Pointer(param1))
+
+	C.gdk_rectangle_union(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_gdk_add_option_entries_libgtk_only(param0 unsafe.Pointer) {
+	cValue0 := (*C.GOptionGroup)(unsafe.Pointer(param0))
+
+	C.gdk_add_option_entries_libgtk_only(cValue0)
 }
 
 func Fn_gdk_beep() {
@@ -169,17 +309,6 @@ func Fn_gdk_cairo_set_source_window(param0 unsafe.Pointer, param1 unsafe.Pointer
 	cValue3 := (C.gdouble)(param3)
 
 	C.gdk_cairo_set_source_window(cValue0, cValue1, cValue2, cValue3)
-}
-
-func Fn_gdk_color_parse(param0 string, param1 unsafe.Pointer) bool {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	cValue1 := (*C.GdkColor)(unsafe.Pointer(param1))
-
-	ret := C.gdk_color_parse(cValue0, cValue1)
-
-	return toGoBool(ret)
 }
 
 func Fn_gdk_disable_multidevice() {
@@ -324,25 +453,7 @@ func Fn_gdk_error_trap_push() {
 	C.gdk_error_trap_push()
 }
 
-func Fn_gdk_event_get() unsafe.Pointer {
-	ret := C.gdk_event_get()
-
-	return unsafe.Pointer(ret)
-}
-
 // UNSUPPORTED : gdk_event_handler_set : has callback
-
-func Fn_gdk_event_peek() unsafe.Pointer {
-	ret := C.gdk_event_peek()
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_event_request_motions(param0 unsafe.Pointer) {
-	cValue0 := (*C.GdkEventMotion)(unsafe.Pointer(param0))
-
-	C.gdk_event_request_motions(cValue0)
-}
 
 func Fn_gdk_events_get_angle(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *float64) bool {
 	cValue0 := (*C.GdkEvent)(unsafe.Pointer(param0))
@@ -420,12 +531,6 @@ func Fn_gdk_get_show_events() bool {
 	ret := C.gdk_get_show_events()
 
 	return toGoBool(ret)
-}
-
-func Fn_gdk_gl_error_quark() uint32 {
-	ret := C.gdk_gl_error_quark()
-
-	return (uint32)(ret)
 }
 
 func Fn_gdk_init(param0 *int, param1 *[]string) {

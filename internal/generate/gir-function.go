@@ -11,6 +11,7 @@ type Function struct {
 	Name              string `xml:"name,attr"`
 	Version           string `xml:"version,attr"`
 	MovedTo           string `xml:"moved-to,attr"`
+	ShadowedBy        string `xml:"shadowed-by,attr"`
 	CIdentifier       string `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
 	Deprecated        int    `xml:"deprecated,attr"`
 	DeprecatedVersion string `xml:"deprecated-version,attr"`
@@ -64,6 +65,10 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 			fi.Line()
 			return
 		}
+	}
+
+	if f.MovedTo != "" || f.ShadowedBy != "" {
+		return
 	}
 
 	if f.version.GT(version) {

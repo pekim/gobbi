@@ -22,11 +22,9 @@ type PixbufFormat C.GdkPixbufFormat
 type PixbufLoaderClass C.GdkPixbufLoaderClass
 type PixbufSimpleAnimClass C.GdkPixbufSimpleAnimClass
 
-func Fn_gdk_pixbuf_error_quark() uint32 {
-	ret := C.gdk_pixbuf_error_quark()
+// UNSUPPORTED : gdk_pixbuf_format_get_extensions : has array return
 
-	return (uint32)(ret)
-}
+// UNSUPPORTED : gdk_pixbuf_format_get_mime_types : has array return
 
 func Fn_gdk_pixbuf_new(param0 int, param1 bool, param2 int, param3 int, param4 int) unsafe.Pointer {
 	cValue0 := (C.GdkColorspace)(param0)

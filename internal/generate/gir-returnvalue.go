@@ -1,6 +1,8 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
+import (
+	"github.com/dave/jennifer/jen"
+)
 
 type ReturnValue struct {
 	Namespace *Namespace
@@ -59,6 +61,10 @@ func (r *ReturnValue) generateSysGoValue(cVarName string) *jen.Statement {
 	}
 
 	if r.Type.isString() {
+		if r.Type.cType.typ == "guchar" {
+			return jen.Qual("C", "GoString").Call(
+				jen.Parens(jen.Id("*").Qual("C", "char")).Parens(jenUnsafePointer().Call(jen.Id(cVarName))))
+		}
 		return jen.Qual("C", "GoString").Call(jen.Id(cVarName))
 	}
 

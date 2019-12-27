@@ -6,6 +6,8 @@ package pango
 import "unsafe"
 
 // #include <pango/pango.h>
+// #include <pango/pango-font.h>
+// #include <pango/pango-modules.h>
 // #include <stdlib.h>
 import "C"
 
@@ -75,6 +77,1403 @@ type RendererClass C.PangoRendererClass
 type RendererPrivate C.PangoRendererPrivate
 type ScriptIter C.PangoScriptIter
 type TabArray C.PangoTabArray
+
+func Fn_pango_attr_font_desc_new(param0 unsafe.Pointer) unsafe.Pointer {
+	cValue0 := (*C.PangoFontDescription)(unsafe.Pointer(param0))
+
+	ret := C.pango_attr_font_desc_new(cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_attr_font_features_new(param0 string) unsafe.Pointer {
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.pango_attr_font_features_new(cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_attr_iterator_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoAttrIterator)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_attr_iterator_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_attr_iterator_destroy(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoAttrIterator)(unsafe.Pointer(paramInstance))
+
+	C.pango_attr_iterator_destroy(cValueInstance)
+}
+
+func Fn_pango_attr_iterator_get(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
+	cValueInstance := (*C.PangoAttrIterator)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.PangoAttrType)(param0)
+
+	ret := C.pango_attr_iterator_get(cValueInstance, cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_attr_iterator_get_attrs(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoAttrIterator)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_attr_iterator_get_attrs(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_attr_iterator_get_font(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 *unsafe.Pointer) {
+	cValueInstance := (*C.PangoAttrIterator)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoFontDescription)(unsafe.Pointer(param0))
+
+	cValue1 := (**C.PangoLanguage)(unsafe.Pointer(param1))
+
+	cValue2 := (**C.GSList)(unsafe.Pointer(param2))
+
+	C.pango_attr_iterator_get_font(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_pango_attr_iterator_next(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoAttrIterator)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_attr_iterator_next(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_attr_iterator_range(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
+	cValueInstance := (*C.PangoAttrIterator)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	C.pango_attr_iterator_range(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_attr_language_new(param0 unsafe.Pointer) unsafe.Pointer {
+	cValue0 := (*C.PangoLanguage)(unsafe.Pointer(param0))
+
+	ret := C.pango_attr_language_new(cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_attr_list_new() unsafe.Pointer {
+	ret := C.pango_attr_list_new()
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_attr_list_change(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.PangoAttrList)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoAttribute)(unsafe.Pointer(param0))
+
+	C.pango_attr_list_change(cValueInstance, cValue0)
+}
+
+func Fn_pango_attr_list_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoAttrList)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_attr_list_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : pango_attr_list_filter : has callback
+
+func Fn_pango_attr_list_get_iterator(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoAttrList)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_attr_list_get_iterator(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_attr_list_insert(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.PangoAttrList)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoAttribute)(unsafe.Pointer(param0))
+
+	C.pango_attr_list_insert(cValueInstance, cValue0)
+}
+
+func Fn_pango_attr_list_insert_before(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.PangoAttrList)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoAttribute)(unsafe.Pointer(param0))
+
+	C.pango_attr_list_insert_before(cValueInstance, cValue0)
+}
+
+func Fn_pango_attr_list_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoAttrList)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_attr_list_ref(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_attr_list_splice(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int) {
+	cValueInstance := (*C.PangoAttrList)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoAttrList)(unsafe.Pointer(param0))
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (C.gint)(param2)
+
+	C.pango_attr_list_splice(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_pango_attr_list_unref(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoAttrList)(unsafe.Pointer(paramInstance))
+
+	C.pango_attr_list_unref(cValueInstance)
+}
+
+func Fn_pango_attr_shape_new(param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
+	cValue0 := (*C.PangoRectangle)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.PangoRectangle)(unsafe.Pointer(param1))
+
+	ret := C.pango_attr_shape_new(cValue0, cValue1)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : pango_attr_shape_new_with_data : has callback
+
+func Fn_pango_attr_size_new(param0 int) unsafe.Pointer {
+	cValue0 := (C.int)(param0)
+
+	ret := C.pango_attr_size_new(cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_attr_size_new_absolute(param0 int) unsafe.Pointer {
+	cValue0 := (C.int)(param0)
+
+	ret := C.pango_attr_size_new_absolute(cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_attribute_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoAttribute)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_attribute_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_attribute_destroy(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoAttribute)(unsafe.Pointer(paramInstance))
+
+	C.pango_attribute_destroy(cValueInstance)
+}
+
+func Fn_pango_attribute_equal(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoAttribute)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoAttribute)(unsafe.Pointer(param0))
+
+	ret := C.pango_attribute_equal(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_attribute_init(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.PangoAttribute)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoAttrClass)(unsafe.Pointer(param0))
+
+	C.pango_attribute_init(cValueInstance, cValue0)
+}
+
+func Fn_pango_color_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoColor)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_color_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_color_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoColor)(unsafe.Pointer(paramInstance))
+
+	C.pango_color_free(cValueInstance)
+}
+
+func Fn_pango_color_parse(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.PangoColor)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.pango_color_parse(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_color_to_string(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.PangoColor)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_color_to_string(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_pango_coverage_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoCoverage)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_coverage_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_coverage_get(paramInstance unsafe.Pointer, param0 int) int {
+	cValueInstance := (*C.PangoCoverage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.int)(param0)
+
+	ret := C.pango_coverage_get(cValueInstance, cValue0)
+
+	return (int)(ret)
+}
+
+func Fn_pango_coverage_max(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.PangoCoverage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoCoverage)(unsafe.Pointer(param0))
+
+	C.pango_coverage_max(cValueInstance, cValue0)
+}
+
+func Fn_pango_coverage_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoCoverage)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_coverage_ref(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_coverage_set(paramInstance unsafe.Pointer, param0 int, param1 int) {
+	cValueInstance := (*C.PangoCoverage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.int)(param0)
+
+	cValue1 := (C.PangoCoverageLevel)(param1)
+
+	C.pango_coverage_set(cValueInstance, cValue0, cValue1)
+}
+
+// UNSUPPORTED : pango_coverage_to_bytes : has non-string array param bytes
+
+func Fn_pango_coverage_unref(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoCoverage)(unsafe.Pointer(paramInstance))
+
+	C.pango_coverage_unref(cValueInstance)
+}
+
+// UNSUPPORTED : pango_coverage_from_bytes : has non-string array param bytes
+
+func Fn_pango_coverage_new() unsafe.Pointer {
+	ret := C.pango_coverage_new()
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_font_description_new() unsafe.Pointer {
+	ret := C.pango_font_description_new()
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_font_description_better_match(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoFontDescription)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.PangoFontDescription)(unsafe.Pointer(param1))
+
+	ret := C.pango_font_description_better_match(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_font_description_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_font_description_copy_static(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_copy_static(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_font_description_equal(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoFontDescription)(unsafe.Pointer(param0))
+
+	ret := C.pango_font_description_equal(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_font_description_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	C.pango_font_description_free(cValueInstance)
+}
+
+func Fn_pango_font_description_get_family(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_get_family(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_pango_font_description_get_gravity(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_get_gravity(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_description_get_set_fields(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_get_set_fields(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_description_get_size(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_get_size(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_description_get_size_is_absolute(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_get_size_is_absolute(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_font_description_get_stretch(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_get_stretch(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_description_get_style(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_get_style(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_description_get_variant(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_get_variant(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_description_get_weight(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_get_weight(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_description_hash(paramInstance unsafe.Pointer) uint {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_hash(cValueInstance)
+
+	return (uint)(ret)
+}
+
+func Fn_pango_font_description_merge(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoFontDescription)(unsafe.Pointer(param0))
+
+	cValue1 := toCBool(param1)
+
+	C.pango_font_description_merge(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_font_description_merge_static(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoFontDescription)(unsafe.Pointer(param0))
+
+	cValue1 := toCBool(param1)
+
+	C.pango_font_description_merge_static(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_font_description_set_absolute_size(paramInstance unsafe.Pointer, param0 float64) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.double)(param0)
+
+	C.pango_font_description_set_absolute_size(cValueInstance, cValue0)
+}
+
+func Fn_pango_font_description_set_family(paramInstance unsafe.Pointer, param0 string) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.pango_font_description_set_family(cValueInstance, cValue0)
+}
+
+func Fn_pango_font_description_set_family_static(paramInstance unsafe.Pointer, param0 string) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.pango_font_description_set_family_static(cValueInstance, cValue0)
+}
+
+func Fn_pango_font_description_set_gravity(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.PangoGravity)(param0)
+
+	C.pango_font_description_set_gravity(cValueInstance, cValue0)
+}
+
+func Fn_pango_font_description_set_size(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	C.pango_font_description_set_size(cValueInstance, cValue0)
+}
+
+func Fn_pango_font_description_set_stretch(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.PangoStretch)(param0)
+
+	C.pango_font_description_set_stretch(cValueInstance, cValue0)
+}
+
+func Fn_pango_font_description_set_style(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.PangoStyle)(param0)
+
+	C.pango_font_description_set_style(cValueInstance, cValue0)
+}
+
+func Fn_pango_font_description_set_variant(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.PangoVariant)(param0)
+
+	C.pango_font_description_set_variant(cValueInstance, cValue0)
+}
+
+func Fn_pango_font_description_set_weight(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.PangoWeight)(param0)
+
+	C.pango_font_description_set_weight(cValueInstance, cValue0)
+}
+
+func Fn_pango_font_description_to_filename(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_to_filename(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_pango_font_description_to_string(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_description_to_string(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_pango_font_description_unset_fields(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.PangoFontDescription)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.PangoFontMask)(param0)
+
+	C.pango_font_description_unset_fields(cValueInstance, cValue0)
+}
+
+func Fn_pango_font_description_from_string(param0 string) unsafe.Pointer {
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.pango_font_description_from_string(cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : pango_font_metrics_new : blacklisted
+func Fn_pango_font_metrics_get_approximate_char_width(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontMetrics)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_metrics_get_approximate_char_width(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_metrics_get_approximate_digit_width(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontMetrics)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_metrics_get_approximate_digit_width(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_metrics_get_ascent(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontMetrics)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_metrics_get_ascent(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_metrics_get_descent(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontMetrics)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_metrics_get_descent(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_metrics_get_strikethrough_position(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontMetrics)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_metrics_get_strikethrough_position(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_metrics_get_strikethrough_thickness(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontMetrics)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_metrics_get_strikethrough_thickness(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_metrics_get_underline_position(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontMetrics)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_metrics_get_underline_position(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_metrics_get_underline_thickness(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoFontMetrics)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_metrics_get_underline_thickness(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_font_metrics_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoFontMetrics)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_font_metrics_ref(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_font_metrics_unref(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoFontMetrics)(unsafe.Pointer(paramInstance))
+
+	C.pango_font_metrics_unref(cValueInstance)
+}
+
+func Fn_pango_glyph_item_apply_attrs(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoGlyphItem)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.PangoAttrList)(unsafe.Pointer(param1))
+
+	ret := C.pango_glyph_item_apply_attrs(cValueInstance, cValue0, cValue1)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_glyph_item_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoGlyphItem)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_glyph_item_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_glyph_item_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoGlyphItem)(unsafe.Pointer(paramInstance))
+
+	C.pango_glyph_item_free(cValueInstance)
+}
+
+// UNSUPPORTED : pango_glyph_item_get_logical_widths : has non-string array param logical_widths
+
+// UNSUPPORTED : pango_glyph_item_letter_space : has non-string array param log_attrs
+
+func Fn_pango_glyph_item_split(paramInstance unsafe.Pointer, param0 string, param1 int) unsafe.Pointer {
+	cValueInstance := (*C.PangoGlyphItem)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.int)(param1)
+
+	ret := C.pango_glyph_item_split(cValueInstance, cValue0, cValue1)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_glyph_item_iter_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoGlyphItemIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_glyph_item_iter_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_glyph_item_iter_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoGlyphItemIter)(unsafe.Pointer(paramInstance))
+
+	C.pango_glyph_item_iter_free(cValueInstance)
+}
+
+func Fn_pango_glyph_item_iter_init_end(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string) bool {
+	cValueInstance := (*C.PangoGlyphItemIter)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoGlyphItem)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.char)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	ret := C.pango_glyph_item_iter_init_end(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_glyph_item_iter_init_start(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string) bool {
+	cValueInstance := (*C.PangoGlyphItemIter)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoGlyphItem)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.char)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	ret := C.pango_glyph_item_iter_init_start(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_glyph_item_iter_next_cluster(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoGlyphItemIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_glyph_item_iter_next_cluster(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_glyph_item_iter_prev_cluster(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoGlyphItemIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_glyph_item_iter_prev_cluster(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_glyph_string_new() unsafe.Pointer {
+	ret := C.pango_glyph_string_new()
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_glyph_string_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoGlyphString)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_glyph_string_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_glyph_string_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) {
+	cValueInstance := (*C.PangoGlyphString)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoFont)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.PangoRectangle)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.PangoRectangle)(unsafe.Pointer(param2))
+
+	C.pango_glyph_string_extents(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_pango_glyph_string_extents_range(paramInstance unsafe.Pointer, param0 int, param1 int, param2 unsafe.Pointer, param3 unsafe.Pointer, param4 unsafe.Pointer) {
+	cValueInstance := (*C.PangoGlyphString)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.int)(param0)
+
+	cValue1 := (C.int)(param1)
+
+	cValue2 := (*C.PangoFont)(unsafe.Pointer(param2))
+
+	cValue3 := (*C.PangoRectangle)(unsafe.Pointer(param3))
+
+	cValue4 := (*C.PangoRectangle)(unsafe.Pointer(param4))
+
+	C.pango_glyph_string_extents_range(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4)
+}
+
+func Fn_pango_glyph_string_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoGlyphString)(unsafe.Pointer(paramInstance))
+
+	C.pango_glyph_string_free(cValueInstance)
+}
+
+// UNSUPPORTED : pango_glyph_string_get_logical_widths : has non-string array param logical_widths
+
+func Fn_pango_glyph_string_get_width(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoGlyphString)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_glyph_string_get_width(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_glyph_string_index_to_x(paramInstance unsafe.Pointer, param0 string, param1 int, param2 unsafe.Pointer, param3 int, param4 bool, param5 *int) {
+	cValueInstance := (*C.PangoGlyphString)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.int)(param1)
+
+	cValue2 := (*C.PangoAnalysis)(unsafe.Pointer(param2))
+
+	cValue3 := (C.int)(param3)
+
+	cValue4 := toCBool(param4)
+
+	cValue5 := (*C.int)(unsafe.Pointer(param5))
+
+	C.pango_glyph_string_index_to_x(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+}
+
+func Fn_pango_glyph_string_set_size(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.PangoGlyphString)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	C.pango_glyph_string_set_size(cValueInstance, cValue0)
+}
+
+func Fn_pango_glyph_string_x_to_index(paramInstance unsafe.Pointer, param0 string, param1 int, param2 unsafe.Pointer, param3 int, param4 *int, param5 *int) {
+	cValueInstance := (*C.PangoGlyphString)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.int)(param1)
+
+	cValue2 := (*C.PangoAnalysis)(unsafe.Pointer(param2))
+
+	cValue3 := (C.int)(param3)
+
+	cValue4 := (*C.int)(unsafe.Pointer(param4))
+
+	cValue5 := (*C.int)(unsafe.Pointer(param5))
+
+	C.pango_glyph_string_x_to_index(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+}
+
+func Fn_pango_item_new() unsafe.Pointer {
+	ret := C.pango_item_new()
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_item_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoItem)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_item_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_item_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoItem)(unsafe.Pointer(paramInstance))
+
+	C.pango_item_free(cValueInstance)
+}
+
+func Fn_pango_item_split(paramInstance unsafe.Pointer, param0 int, param1 int) unsafe.Pointer {
+	cValueInstance := (*C.PangoItem)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.int)(param0)
+
+	cValue1 := (C.int)(param1)
+
+	ret := C.pango_item_split(cValueInstance, cValue0, cValue1)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_language_get_sample_string(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.PangoLanguage)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_language_get_sample_string(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+// UNSUPPORTED : pango_language_get_scripts : has array return
+
+func Fn_pango_language_includes_script(paramInstance unsafe.Pointer, param0 int) bool {
+	cValueInstance := (*C.PangoLanguage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.PangoScript)(param0)
+
+	ret := C.pango_language_includes_script(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_language_matches(paramInstance unsafe.Pointer, param0 string) bool {
+	cValueInstance := (*C.PangoLanguage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.pango_language_matches(cValueInstance, cValue0)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_language_to_string(paramInstance unsafe.Pointer) string {
+	cValueInstance := (*C.PangoLanguage)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_language_to_string(cValueInstance)
+
+	return C.GoString(ret)
+}
+
+func Fn_pango_language_from_string(param0 string) unsafe.Pointer {
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	ret := C.pango_language_from_string(cValue0)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_language_get_default() unsafe.Pointer {
+	ret := C.pango_language_get_default()
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_layout_iter_at_last_line(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_at_last_line(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_layout_iter_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_layout_iter_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	C.pango_layout_iter_free(cValueInstance)
+}
+
+func Fn_pango_layout_iter_get_baseline(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_get_baseline(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_layout_iter_get_char_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoRectangle)(unsafe.Pointer(param0))
+
+	C.pango_layout_iter_get_char_extents(cValueInstance, cValue0)
+}
+
+func Fn_pango_layout_iter_get_cluster_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoRectangle)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.PangoRectangle)(unsafe.Pointer(param1))
+
+	C.pango_layout_iter_get_cluster_extents(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_layout_iter_get_index(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_get_index(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_layout_iter_get_layout(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_get_layout(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_layout_iter_get_layout_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoRectangle)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.PangoRectangle)(unsafe.Pointer(param1))
+
+	C.pango_layout_iter_get_layout_extents(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_layout_iter_get_line(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_get_line(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_layout_iter_get_line_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoRectangle)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.PangoRectangle)(unsafe.Pointer(param1))
+
+	C.pango_layout_iter_get_line_extents(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_layout_iter_get_line_readonly(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_get_line_readonly(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_layout_iter_get_line_yrange(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.int)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.int)(unsafe.Pointer(param1))
+
+	C.pango_layout_iter_get_line_yrange(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_layout_iter_get_run(paramInstance unsafe.Pointer) *GlyphItem {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_get_run(cValueInstance)
+
+	return (*GlyphItem)(ret)
+}
+
+func Fn_pango_layout_iter_get_run_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoRectangle)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.PangoRectangle)(unsafe.Pointer(param1))
+
+	C.pango_layout_iter_get_run_extents(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_layout_iter_get_run_readonly(paramInstance unsafe.Pointer) *GlyphItem {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_get_run_readonly(cValueInstance)
+
+	return (*GlyphItem)(ret)
+}
+
+func Fn_pango_layout_iter_next_char(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_next_char(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_layout_iter_next_cluster(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_next_cluster(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_layout_iter_next_line(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_next_line(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_layout_iter_next_run(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoLayoutIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_iter_next_run(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_layout_line_get_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValueInstance := (*C.PangoLayoutLine)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoRectangle)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.PangoRectangle)(unsafe.Pointer(param1))
+
+	C.pango_layout_line_get_extents(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_layout_line_get_pixel_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
+	cValueInstance := (*C.PangoLayoutLine)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoRectangle)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.PangoRectangle)(unsafe.Pointer(param1))
+
+	C.pango_layout_line_get_pixel_extents(cValueInstance, cValue0, cValue1)
+}
+
+// UNSUPPORTED : pango_layout_line_get_x_ranges : has non-string array param ranges
+
+func Fn_pango_layout_line_index_to_x(paramInstance unsafe.Pointer, param0 int, param1 bool, param2 *int) {
+	cValueInstance := (*C.PangoLayoutLine)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.int)(param0)
+
+	cValue1 := toCBool(param1)
+
+	cValue2 := (*C.int)(unsafe.Pointer(param2))
+
+	C.pango_layout_line_index_to_x(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_pango_layout_line_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoLayoutLine)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_layout_line_ref(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_layout_line_unref(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoLayoutLine)(unsafe.Pointer(paramInstance))
+
+	C.pango_layout_line_unref(cValueInstance)
+}
+
+func Fn_pango_layout_line_x_to_index(paramInstance unsafe.Pointer, param0 int, param1 *int, param2 *int) bool {
+	cValueInstance := (*C.PangoLayoutLine)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.int)(param0)
+
+	cValue1 := (*C.int)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.int)(unsafe.Pointer(param2))
+
+	ret := C.pango_layout_line_x_to_index(cValueInstance, cValue0, cValue1, cValue2)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : pango_map_get_engine : blacklisted
+// UNSUPPORTED : pango_map_get_engines : blacklisted
+func Fn_pango_matrix_concat(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.PangoMatrix)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoMatrix)(unsafe.Pointer(param0))
+
+	C.pango_matrix_concat(cValueInstance, cValue0)
+}
+
+func Fn_pango_matrix_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoMatrix)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_matrix_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_matrix_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoMatrix)(unsafe.Pointer(paramInstance))
+
+	C.pango_matrix_free(cValueInstance)
+}
+
+func Fn_pango_matrix_get_font_scale_factor(paramInstance unsafe.Pointer) float64 {
+	cValueInstance := (*C.PangoMatrix)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_matrix_get_font_scale_factor(cValueInstance)
+
+	return (float64)(ret)
+}
+
+func Fn_pango_matrix_get_font_scale_factors(paramInstance unsafe.Pointer, param0 *float64, param1 *float64) {
+	cValueInstance := (*C.PangoMatrix)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.double)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.double)(unsafe.Pointer(param1))
+
+	C.pango_matrix_get_font_scale_factors(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_matrix_rotate(paramInstance unsafe.Pointer, param0 float64) {
+	cValueInstance := (*C.PangoMatrix)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.double)(param0)
+
+	C.pango_matrix_rotate(cValueInstance, cValue0)
+}
+
+func Fn_pango_matrix_scale(paramInstance unsafe.Pointer, param0 float64, param1 float64) {
+	cValueInstance := (*C.PangoMatrix)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.double)(param0)
+
+	cValue1 := (C.double)(param1)
+
+	C.pango_matrix_scale(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_matrix_transform_distance(paramInstance unsafe.Pointer, param0 *float64, param1 *float64) {
+	cValueInstance := (*C.PangoMatrix)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.double)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.double)(unsafe.Pointer(param1))
+
+	C.pango_matrix_transform_distance(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_matrix_transform_pixel_rectangle(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.PangoMatrix)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoRectangle)(unsafe.Pointer(param0))
+
+	C.pango_matrix_transform_pixel_rectangle(cValueInstance, cValue0)
+}
+
+func Fn_pango_matrix_transform_point(paramInstance unsafe.Pointer, param0 *float64, param1 *float64) {
+	cValueInstance := (*C.PangoMatrix)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.double)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.double)(unsafe.Pointer(param1))
+
+	C.pango_matrix_transform_point(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_matrix_transform_rectangle(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
+	cValueInstance := (*C.PangoMatrix)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.PangoRectangle)(unsafe.Pointer(param0))
+
+	C.pango_matrix_transform_rectangle(cValueInstance, cValue0)
+}
+
+func Fn_pango_matrix_translate(paramInstance unsafe.Pointer, param0 float64, param1 float64) {
+	cValueInstance := (*C.PangoMatrix)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.double)(param0)
+
+	cValue1 := (C.double)(param1)
+
+	C.pango_matrix_translate(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_script_iter_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoScriptIter)(unsafe.Pointer(paramInstance))
+
+	C.pango_script_iter_free(cValueInstance)
+}
+
+func Fn_pango_script_iter_get_range(paramInstance unsafe.Pointer, param0 *string, param1 *string, param2 *int) {
+	cValueInstance := (*C.PangoScriptIter)(unsafe.Pointer(paramInstance))
+
+	var cValue0String *C.gchar
+	cValue0 := &cValue0String
+
+	var cValue1String *C.gchar
+	cValue1 := &cValue1String
+
+	cValue2 := (*C.PangoScript)(unsafe.Pointer(param2))
+
+	C.pango_script_iter_get_range(cValueInstance, cValue0, cValue1, cValue2)
+
+	param0String := C.GoString(cValue0String)
+	*param0 = param0String
+
+	param1String := C.GoString(cValue1String)
+	*param1 = param1String
+}
+
+func Fn_pango_script_iter_next(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoScriptIter)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_script_iter_next(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_script_iter_new(param0 string, param1 int) unsafe.Pointer {
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.int)(param1)
+
+	ret := C.pango_script_iter_new(cValue0, cValue1)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_tab_array_new(param0 int, param1 bool) unsafe.Pointer {
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := toCBool(param1)
+
+	ret := C.pango_tab_array_new(cValue0, cValue1)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : pango_tab_array_new_with_positions : has varargs
+
+func Fn_pango_tab_array_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.PangoTabArray)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_tab_array_copy(cValueInstance)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_pango_tab_array_free(paramInstance unsafe.Pointer) {
+	cValueInstance := (*C.PangoTabArray)(unsafe.Pointer(paramInstance))
+
+	C.pango_tab_array_free(cValueInstance)
+}
+
+func Fn_pango_tab_array_get_positions_in_pixels(paramInstance unsafe.Pointer) bool {
+	cValueInstance := (*C.PangoTabArray)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_tab_array_get_positions_in_pixels(cValueInstance)
+
+	return toGoBool(ret)
+}
+
+func Fn_pango_tab_array_get_size(paramInstance unsafe.Pointer) int {
+	cValueInstance := (*C.PangoTabArray)(unsafe.Pointer(paramInstance))
+
+	ret := C.pango_tab_array_get_size(cValueInstance)
+
+	return (int)(ret)
+}
+
+func Fn_pango_tab_array_get_tab(paramInstance unsafe.Pointer, param0 int, param1 *int, param2 *int) {
+	cValueInstance := (*C.PangoTabArray)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (*C.PangoTabAlign)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	C.pango_tab_array_get_tab(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+// UNSUPPORTED : pango_tab_array_get_tabs : has non-string array param locations
+
+func Fn_pango_tab_array_resize(paramInstance unsafe.Pointer, param0 int) {
+	cValueInstance := (*C.PangoTabArray)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	C.pango_tab_array_resize(cValueInstance, cValue0)
+}
+
+func Fn_pango_tab_array_set_tab(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int) {
+	cValueInstance := (*C.PangoTabArray)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := (C.PangoTabAlign)(param1)
+
+	cValue2 := (C.gint)(param2)
+
+	C.pango_tab_array_set_tab(cValueInstance, cValue0, cValue1, cValue2)
+}
 
 func Fn_pango_attr_background_alpha_new(param0 uint16) unsafe.Pointer {
 	cValue0 := (C.guint16)(param0)
@@ -209,23 +1608,6 @@ func Fn_pango_attr_style_new(param0 int) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_pango_attr_type_get_name(param0 int) string {
-	cValue0 := (C.PangoAttrType)(param0)
-
-	ret := C.pango_attr_type_get_name(cValue0)
-
-	return C.GoString(ret)
-}
-
-func Fn_pango_attr_type_register(param0 string) int {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.pango_attr_type_register(cValue0)
-
-	return (int)(ret)
-}
-
 func Fn_pango_attr_underline_color_new(param0 uint16, param1 uint16, param2 uint16) unsafe.Pointer {
 	cValue0 := (C.guint16)(param0)
 
@@ -260,14 +1642,6 @@ func Fn_pango_attr_weight_new(param0 int) unsafe.Pointer {
 	ret := C.pango_attr_weight_new(cValue0)
 
 	return unsafe.Pointer(ret)
-}
-
-func Fn_pango_bidi_type_for_unichar(param0 rune) int {
-	cValue0 := (C.gunichar)(param0)
-
-	ret := C.pango_bidi_type_for_unichar(cValue0)
-
-	return (int)(ret)
 }
 
 // UNSUPPORTED : pango_break : has non-string array param attrs
@@ -308,15 +1682,6 @@ func Fn_pango_find_paragraph_boundary(param0 string, param1 int, param2 *int, pa
 	C.pango_find_paragraph_boundary(cValue0, cValue1, cValue2, cValue3)
 }
 
-func Fn_pango_font_description_from_string(param0 string) unsafe.Pointer {
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.pango_font_description_from_string(cValue0)
-
-	return unsafe.Pointer(ret)
-}
-
 // UNSUPPORTED : pango_get_lib_subdirectory : blacklisted
 // UNSUPPORTED : pango_get_log_attrs : has non-string array param log_attrs
 
@@ -331,48 +1696,6 @@ func Fn_pango_get_mirror_char(param0 rune, param1 *rune) bool {
 }
 
 // UNSUPPORTED : pango_get_sysconf_subdirectory : blacklisted
-func Fn_pango_gravity_get_for_matrix(param0 unsafe.Pointer) int {
-	cValue0 := (*C.PangoMatrix)(unsafe.Pointer(param0))
-
-	ret := C.pango_gravity_get_for_matrix(cValue0)
-
-	return (int)(ret)
-}
-
-func Fn_pango_gravity_get_for_script(param0 int, param1 int, param2 int) int {
-	cValue0 := (C.PangoScript)(param0)
-
-	cValue1 := (C.PangoGravity)(param1)
-
-	cValue2 := (C.PangoGravityHint)(param2)
-
-	ret := C.pango_gravity_get_for_script(cValue0, cValue1, cValue2)
-
-	return (int)(ret)
-}
-
-func Fn_pango_gravity_get_for_script_and_width(param0 int, param1 bool, param2 int, param3 int) int {
-	cValue0 := (C.PangoScript)(param0)
-
-	cValue1 := toCBool(param1)
-
-	cValue2 := (C.PangoGravity)(param2)
-
-	cValue3 := (C.PangoGravityHint)(param3)
-
-	ret := C.pango_gravity_get_for_script_and_width(cValue0, cValue1, cValue2, cValue3)
-
-	return (int)(ret)
-}
-
-func Fn_pango_gravity_to_rotation(param0 int) float64 {
-	cValue0 := (C.PangoGravity)(param0)
-
-	ret := C.pango_gravity_to_rotation(cValue0)
-
-	return (float64)(ret)
-}
-
 func Fn_pango_is_zero_width(param0 rune) bool {
 	cValue0 := (C.gunichar)(param0)
 
@@ -417,21 +1740,6 @@ func Fn_pango_itemize_with_base_dir(param0 unsafe.Pointer, param1 int, param2 st
 	cValue6 := (*C.PangoAttrIterator)(unsafe.Pointer(param6))
 
 	ret := C.pango_itemize_with_base_dir(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_pango_language_from_string(param0 string) unsafe.Pointer {
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.pango_language_from_string(cValue0)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_pango_language_get_default() unsafe.Pointer {
-	ret := C.pango_language_get_default()
 
 	return unsafe.Pointer(ret)
 }
@@ -646,22 +1954,6 @@ func Fn_pango_scan_word(param0 *string, param1 unsafe.Pointer) bool {
 	*param0 = param0String
 
 	return toGoBool(ret)
-}
-
-func Fn_pango_script_for_unichar(param0 rune) int {
-	cValue0 := (C.gunichar)(param0)
-
-	ret := C.pango_script_for_unichar(cValue0)
-
-	return (int)(ret)
-}
-
-func Fn_pango_script_get_sample_language(param0 int) unsafe.Pointer {
-	cValue0 := (C.PangoScript)(param0)
-
-	ret := C.pango_script_get_sample_language(cValue0)
-
-	return unsafe.Pointer(ret)
 }
 
 func Fn_pango_shape(param0 string, param1 int, param2 unsafe.Pointer, param3 unsafe.Pointer) {
