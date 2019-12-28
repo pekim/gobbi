@@ -20,20 +20,8 @@ static gboolean c_gdk_pixbuf_save_to_buffer(GdkPixbuf* pixbuf, gchar** buffer, g
 */
 /*
 
-static gboolean c_gdk_pixbuf_save_to_callback(GdkPixbuf* pixbuf, GdkPixbufSaveFunc save_func, gpointer user_data, const char* type, GError** error) {
-    return gdk_pixbuf_save_to_callback(pixbuf, save_func, user_data, type, error, NULL);
-}
-*/
-/*
-
 static gboolean c_gdk_pixbuf_save_to_stream(GdkPixbuf* pixbuf, GOutputStream* stream, const char* type, GCancellable* cancellable, GError** error) {
     return gdk_pixbuf_save_to_stream(pixbuf, stream, type, cancellable, error, NULL);
-}
-*/
-/*
-
-static void c_gdk_pixbuf_save_to_stream_async(GdkPixbuf* pixbuf, GOutputStream* stream, const gchar* type, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer user_data) {
-    return gdk_pixbuf_save_to_stream_async(pixbuf, stream, type, cancellable, callback, user_data, NULL);
 }
 */
 import "C"
@@ -350,19 +338,31 @@ func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 un
 	C.gdk_pixbuf_saturate_and_pixelate(cValueInstance, cValue0, cValue1, cValue2)
 }
 
-// UNSUPPORTED : gdk_pixbuf_save : has varargs
+func Fn_gdk_pixbuf_save(paramInstance unsafe.Pointer, param0 string, param1 string, param2 *unsafe.Pointer) bool {
+	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
 
-// UNSUPPORTED : gdk_pixbuf_save_to_buffer : has varargs
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.char)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	cValue2 := (**C.GError)(unsafe.Pointer(param2))
+
+	ret := C.c_gdk_pixbuf_save(cValueInstance, cValue0, cValue1, cValue2)
+
+	return toGoBool(ret)
+}
+
+// UNSUPPORTED : gdk_pixbuf_save_to_buffer : has non-string array param buffer
 
 // UNSUPPORTED : gdk_pixbuf_save_to_bufferv : has non-string array param buffer
 
-// UNSUPPORTED : gdk_pixbuf_save_to_callback : has varargs
+// UNSUPPORTED : gdk_pixbuf_save_to_callback : has callback
 
 // UNSUPPORTED : gdk_pixbuf_save_to_callbackv : has callback
 
-// UNSUPPORTED : gdk_pixbuf_save_to_stream : has varargs
-
-// UNSUPPORTED : gdk_pixbuf_save_to_stream_async : has varargs
+// UNSUPPORTED : gdk_pixbuf_save_to_stream_async : has callback
 
 // UNSUPPORTED : gdk_pixbuf_save_to_streamv_async : has callback
 

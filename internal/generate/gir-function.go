@@ -44,10 +44,6 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 }
 
 func (f *Function) generateSys(fi *jen.File, version semver.Version) {
-	if f.Parameters.hasVarargs() {
-		f.generateSysVarArgsCFunction(fi)
-	}
-
 	if f.blacklist {
 		fi.Commentf("UNSUPPORTED : %s : blacklisted", f.CIdentifier)
 		return
@@ -63,6 +59,10 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 		fi.Commentf("UNSUPPORTED : %s : %s", f.CIdentifier, reason)
 		fi.Line()
 		return
+	}
+
+	if f.Parameters.hasVarargs() || f.Parameters.hasVaList() {
+		f.generateSysVarArgsCFunction(fi)
 	}
 
 	for _, param := range f.Parameters {
@@ -100,6 +100,10 @@ func (f *Function) generateSysParamsDeclaration(g *jen.Group) {
 	}
 
 	for i, param := range f.Parameters {
+		if param.isVarargsOrValist() {
+			continue
+		}
+
 		paramName := "param" + strconv.Itoa(i)
 		goType := param.sysParamGoType()
 
@@ -136,6 +140,11 @@ func (f *Function) generateSysReturnTypeDeclaration(s *jen.Statement) {
 func (f *Function) generateSysBody(g *jen.Group) {
 	f.generateSysCArgs(g)
 
+	cIdentifier := f.CIdentifier
+	if f.Parameters.hasVaList() || f.Parameters.hasVarargs() {
+		cIdentifier = "c_" + cIdentifier
+	}
+
 	// [ret :=] C.somefunction(...)
 	g.
 		Do(func(s *jen.Statement) {
@@ -143,7 +152,7 @@ func (f *Function) generateSysBody(g *jen.Group) {
 				s.Id("ret").Op(":=")
 			}
 		}).
-		Qual("C", f.CIdentifier).
+		Qual("C", cIdentifier).
 		CallFunc(f.generateSysCallParams)
 
 	f.generateSysCArgsOut(g)
@@ -157,6 +166,10 @@ func (f *Function) generateSysCArgs(g *jen.Group) {
 	}
 
 	for i, param := range f.Parameters {
+		if param.isVarargsOrValist() {
+			continue
+		}
+
 		paramName := "param" + strconv.Itoa(i)
 		cVarName := "cValue" + strconv.Itoa(i)
 
@@ -186,7 +199,11 @@ func (f *Function) generateSysCallParams(g *jen.Group) {
 		g.Id("cValueInstance")
 	}
 
-	for i, _ := range f.Parameters {
+	for i, param := range f.Parameters {
+		if param.isVarargsOrValist() {
+			continue
+		}
+
 		g.Id("cValue" + strconv.Itoa(i))
 	}
 
@@ -221,7 +238,7 @@ func (f *Function) generateSysVarArgsCFunction(fi *jen.File) {
 	}
 
 	for _, param := range f.Parameters {
-		if (param.Type != nil && param.Type.isVaList()) || param.Varargs != nil {
+		if param.isVarargsOrValist() {
 			args = append(args, "NULL")
 		} else if param.Type != nil {
 			params = append(params, param.Type.CType+" "+param.Name)
@@ -233,7 +250,6 @@ func (f *Function) generateSysVarArgsCFunction(fi *jen.File) {
 			panic(fmt.Sprintf("Do not know how to generate parameter %s for %s", param.Name, f.CIdentifier))
 		}
 	}
-	//paramsDecl := strings.Join(params, ", ")
 
 	fnDecl := fmt.Sprintf(`
 static %s c_%s(%s) {

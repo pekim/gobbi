@@ -309,3 +309,7 @@ func (p *Parameter) generateGoArrayStringToC(g *jen.Group, goVarName string, cVa
 
 	return goSliceVarName
 }
+
+func (p *Parameter) isVarargsOrValist() bool {
+	return (p.Type != nil && p.Type.isVaList()) || p.Varargs != nil
+}

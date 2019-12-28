@@ -1338,7 +1338,19 @@ func Fn_pango_tab_array_new(param0 int, param1 bool) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : pango_tab_array_new_with_positions : has varargs
+func Fn_pango_tab_array_new_with_positions(param0 int, param1 bool, param2 int, param3 int) unsafe.Pointer {
+	cValue0 := (C.gint)(param0)
+
+	cValue1 := toCBool(param1)
+
+	cValue2 := (C.PangoTabAlign)(param2)
+
+	cValue3 := (C.gint)(param3)
+
+	ret := C.c_pango_tab_array_new_with_positions(cValue0, cValue1, cValue2, cValue3)
+
+	return unsafe.Pointer(ret)
+}
 
 func Fn_pango_tab_array_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.PangoTabArray)(unsafe.Pointer(paramInstance))

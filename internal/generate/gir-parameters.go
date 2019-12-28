@@ -37,14 +37,6 @@ func (pp Parameters) byName(name string) (*Parameter, int, bool) {
 }
 
 func (pp Parameters) allSupported() (bool, string) {
-	if pp.hasVarargs() {
-		return false, "has varargs"
-	}
-
-	if pp.hasVaList() {
-		return false, "has va_list"
-	}
-
 	if pp.hasCallback() {
 		return false, "has callback"
 	}

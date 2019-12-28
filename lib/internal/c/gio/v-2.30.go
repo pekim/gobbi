@@ -20,12 +20,6 @@ import "unsafe"
 // #include <stdlib.h>
 /*
 
-static void c_g_simple_async_report_error_in_idle(GObject* object, GAsyncReadyCallback callback, gpointer user_data, GQuark domain, gint code, const char* format) {
-    return g_simple_async_report_error_in_idle(object, callback, user_data, domain, code, format, NULL);
-}
-*/
-/*
-
 static void c_g_application_command_line_print(GApplicationCommandLine* cmdline, const gchar* format) {
     return g_application_command_line_print(cmdline, format, NULL);
 }
@@ -44,8 +38,20 @@ static GDBusMessage* c_g_dbus_message_new_method_error(GDBusMessage* method_call
 */
 /*
 
+static GDBusMessage* c_g_dbus_message_new_method_error_valist(GDBusMessage* method_call_message, const gchar* error_name, const gchar* error_message_format) {
+    return g_dbus_message_new_method_error_valist(method_call_message, error_name, error_message_format, NULL);
+}
+*/
+/*
+
 static void c_g_dbus_method_invocation_return_error(GDBusMethodInvocation* invocation, GQuark domain, gint code, const gchar* format) {
     return g_dbus_method_invocation_return_error(invocation, domain, code, format, NULL);
+}
+*/
+/*
+
+static void c_g_dbus_method_invocation_return_error_valist(GDBusMethodInvocation* invocation, GQuark domain, gint code, const gchar* format) {
+    return g_dbus_method_invocation_return_error_valist(invocation, domain, code, format, NULL);
 }
 */
 /*
@@ -92,6 +98,12 @@ static gboolean c_g_output_stream_printf(GOutputStream* stream, gsize* bytes_wri
 */
 /*
 
+static gboolean c_g_output_stream_vprintf(GOutputStream* stream, gsize* bytes_written, GCancellable* cancellable, GError** error, const gchar* format) {
+    return g_output_stream_vprintf(stream, bytes_written, cancellable, error, format, NULL);
+}
+*/
+/*
+
 static void c_g_settings_get(GSettings* settings, const gchar* key, const gchar* format) {
     return g_settings_get(settings, key, format, NULL);
 }
@@ -104,14 +116,14 @@ static gboolean c_g_settings_set(GSettings* settings, const gchar* key, const gc
 */
 /*
 
-static GSimpleAsyncResult* c_g_simple_async_result_new_error(GObject* source_object, GAsyncReadyCallback callback, gpointer user_data, GQuark domain, gint code, const char* format) {
-    return g_simple_async_result_new_error(source_object, callback, user_data, domain, code, format, NULL);
+static void c_g_simple_async_result_set_error(GSimpleAsyncResult* simple, GQuark domain, gint code, const char* format) {
+    return g_simple_async_result_set_error(simple, domain, code, format, NULL);
 }
 */
 /*
 
-static void c_g_simple_async_result_set_error(GSimpleAsyncResult* simple, GQuark domain, gint code, const char* format) {
-    return g_simple_async_result_set_error(simple, domain, code, format, NULL);
+static void c_g_simple_async_result_set_error_va(GSimpleAsyncResult* simple, GQuark domain, gint code, const char* format) {
+    return g_simple_async_result_set_error_va(simple, domain, code, format, NULL);
 }
 */
 /*
@@ -130,12 +142,6 @@ static GSubprocess* c_g_subprocess_launcher_spawn(GSubprocessLauncher* self, GEr
 
 static void c_g_task_return_new_error(GTask* task, GQuark domain, gint code, const char* format) {
     return g_task_return_new_error(task, domain, code, format, NULL);
-}
-*/
-/*
-
-static void c_g_task_report_new_error(gpointer source_object, GAsyncReadyCallback callback, gpointer callback_data, gpointer source_tag, GQuark domain, gint code, const char* format) {
-    return g_task_report_new_error(source_object, callback, callback_data, source_tag, domain, code, format, NULL);
 }
 */
 import "C"
@@ -1349,7 +1355,7 @@ func Fn_g_pollable_source_new(param0 unsafe.Pointer) unsafe.Pointer {
 
 // UNSUPPORTED : g_resources_enumerate_children : has array return
 
-// UNSUPPORTED : g_simple_async_report_error_in_idle : has varargs
+// UNSUPPORTED : g_simple_async_report_error_in_idle : has callback
 
 // UNSUPPORTED : g_simple_async_report_gerror_in_idle : has callback
 
@@ -1730,9 +1736,23 @@ func Fn_g_application_command_line_getenv(paramInstance unsafe.Pointer, param0 s
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : g_application_command_line_print : has varargs
+func Fn_g_application_command_line_print(paramInstance unsafe.Pointer, param0 string) {
+	cValueInstance := (*C.GApplicationCommandLine)(unsafe.Pointer(paramInstance))
 
-// UNSUPPORTED : g_application_command_line_printerr : has varargs
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.c_g_application_command_line_print(cValueInstance, cValue0)
+}
+
+func Fn_g_application_command_line_printerr(paramInstance unsafe.Pointer, param0 string) {
+	cValueInstance := (*C.GApplicationCommandLine)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	C.c_g_application_command_line_printerr(cValueInstance, cValue0)
+}
 
 func Fn_g_application_command_line_set_exit_status(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GApplicationCommandLine)(unsafe.Pointer(paramInstance))
@@ -2820,7 +2840,19 @@ func Fn_g_dbus_message_lock(paramInstance unsafe.Pointer) {
 	C.g_dbus_message_lock(cValueInstance)
 }
 
-// UNSUPPORTED : g_dbus_message_new_method_error : has varargs
+func Fn_g_dbus_message_new_method_error(paramInstance unsafe.Pointer, param0 string, param1 string) unsafe.Pointer {
+	cValueInstance := (*C.GDBusMessage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.gchar)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	ret := C.c_g_dbus_message_new_method_error(cValueInstance, cValue0, cValue1)
+
+	return unsafe.Pointer(ret)
+}
 
 func Fn_g_dbus_message_new_method_error_literal(paramInstance unsafe.Pointer, param0 string, param1 string) unsafe.Pointer {
 	cValueInstance := (*C.GDBusMessage)(unsafe.Pointer(paramInstance))
@@ -2836,7 +2868,19 @@ func Fn_g_dbus_message_new_method_error_literal(paramInstance unsafe.Pointer, pa
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_dbus_message_new_method_error_valist : has va_list
+func Fn_g_dbus_message_new_method_error_valist(paramInstance unsafe.Pointer, param0 string, param1 string) unsafe.Pointer {
+	cValueInstance := (*C.GDBusMessage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.gchar)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	ret := C.c_g_dbus_message_new_method_error_valist(cValueInstance, cValue0, cValue1)
+
+	return unsafe.Pointer(ret)
+}
 
 func Fn_g_dbus_message_new_method_reply(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GDBusMessage)(unsafe.Pointer(paramInstance))
@@ -3091,7 +3135,18 @@ func Fn_g_dbus_method_invocation_return_dbus_error(paramInstance unsafe.Pointer,
 	C.g_dbus_method_invocation_return_dbus_error(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : g_dbus_method_invocation_return_error : has varargs
+func Fn_g_dbus_method_invocation_return_error(paramInstance unsafe.Pointer, param0 uint32, param1 int, param2 string) {
+	cValueInstance := (*C.GDBusMethodInvocation)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GQuark)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (*C.gchar)(C.CString(param2))
+	defer C.free(unsafe.Pointer(cValue2))
+
+	C.c_g_dbus_method_invocation_return_error(cValueInstance, cValue0, cValue1, cValue2)
+}
 
 func Fn_g_dbus_method_invocation_return_error_literal(paramInstance unsafe.Pointer, param0 uint32, param1 int, param2 string) {
 	cValueInstance := (*C.GDBusMethodInvocation)(unsafe.Pointer(paramInstance))
@@ -3106,7 +3161,18 @@ func Fn_g_dbus_method_invocation_return_error_literal(paramInstance unsafe.Point
 	C.g_dbus_method_invocation_return_error_literal(cValueInstance, cValue0, cValue1, cValue2)
 }
 
-// UNSUPPORTED : g_dbus_method_invocation_return_error_valist : has va_list
+func Fn_g_dbus_method_invocation_return_error_valist(paramInstance unsafe.Pointer, param0 uint32, param1 int, param2 string) {
+	cValueInstance := (*C.GDBusMethodInvocation)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GQuark)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (*C.gchar)(C.CString(param2))
+	defer C.free(unsafe.Pointer(cValue2))
+
+	C.c_g_dbus_method_invocation_return_error_valist(cValueInstance, cValue0, cValue1, cValue2)
+}
 
 func Fn_g_dbus_method_invocation_return_gerror(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GDBusMethodInvocation)(unsafe.Pointer(paramInstance))
@@ -5473,14 +5539,6 @@ func Fn_g_memory_output_stream_steal_data(paramInstance unsafe.Pointer) unsafe.P
 	return (unsafe.Pointer)(ret)
 }
 
-// UNSUPPORTED : g_menu_item_get_attribute : has varargs
-
-// UNSUPPORTED : g_menu_item_set_action_and_target : has varargs
-
-// UNSUPPORTED : g_menu_item_set_attribute : has varargs
-
-// UNSUPPORTED : g_menu_model_get_item_attribute : has varargs
-
 func Fn_g_mount_operation_new() unsafe.Pointer {
 	ret := C.g_mount_operation_new()
 
@@ -5711,10 +5769,6 @@ func Fn_g_network_service_set_scheme(paramInstance unsafe.Pointer, param0 string
 	C.g_network_service_set_scheme(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : g_notification_add_button_with_target : has varargs
-
-// UNSUPPORTED : g_notification_set_default_action_and_target : has varargs
-
 func Fn_g_notification_set_priority(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GNotification)(unsafe.Pointer(paramInstance))
 
@@ -5805,8 +5859,6 @@ func Fn_g_output_stream_is_closing(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_output_stream_printf : has varargs
-
 func Fn_g_output_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
 
@@ -5846,8 +5898,6 @@ func Fn_g_output_stream_splice_finish(paramInstance unsafe.Pointer, param0 unsaf
 
 	return (uint64)(ret)
 }
-
-// UNSUPPORTED : g_output_stream_vprintf : has va_list
 
 // UNSUPPORTED : g_output_stream_write : has non-string array param buffer
 
@@ -6269,7 +6319,17 @@ func Fn_g_settings_delay(paramInstance unsafe.Pointer) {
 	C.g_settings_delay(cValueInstance)
 }
 
-// UNSUPPORTED : g_settings_get : has varargs
+func Fn_g_settings_get(paramInstance unsafe.Pointer, param0 string, param1 string) {
+	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.gchar)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	C.c_g_settings_get(cValueInstance, cValue0, cValue1)
+}
 
 func Fn_g_settings_get_boolean(paramInstance unsafe.Pointer, param0 string) bool {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
@@ -6436,7 +6496,19 @@ func Fn_g_settings_revert(paramInstance unsafe.Pointer) {
 	C.g_settings_revert(cValueInstance)
 }
 
-// UNSUPPORTED : g_settings_set : has varargs
+func Fn_g_settings_set(paramInstance unsafe.Pointer, param0 string, param1 string) bool {
+	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.gchar)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	ret := C.c_g_settings_set(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
 
 func Fn_g_settings_set_boolean(paramInstance unsafe.Pointer, param0 string, param1 bool) bool {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
@@ -6667,7 +6739,7 @@ func Fn_g_simple_action_group_remove(paramInstance unsafe.Pointer, param0 string
 
 // UNSUPPORTED : g_simple_async_result_new : has callback
 
-// UNSUPPORTED : g_simple_async_result_new_error : has varargs
+// UNSUPPORTED : g_simple_async_result_new_error : has callback
 
 // UNSUPPORTED : g_simple_async_result_new_from_error : has callback
 
@@ -6729,9 +6801,31 @@ func Fn_g_simple_async_result_propagate_error(paramInstance unsafe.Pointer, erro
 
 // UNSUPPORTED : g_simple_async_result_run_in_thread : has callback
 
-// UNSUPPORTED : g_simple_async_result_set_error : has varargs
+func Fn_g_simple_async_result_set_error(paramInstance unsafe.Pointer, param0 uint32, param1 int, param2 string) {
+	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
 
-// UNSUPPORTED : g_simple_async_result_set_error_va : has va_list
+	cValue0 := (C.GQuark)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (*C.char)(C.CString(param2))
+	defer C.free(unsafe.Pointer(cValue2))
+
+	C.c_g_simple_async_result_set_error(cValueInstance, cValue0, cValue1, cValue2)
+}
+
+func Fn_g_simple_async_result_set_error_va(paramInstance unsafe.Pointer, param0 uint32, param1 int, param2 string) {
+	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GQuark)(param0)
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (*C.char)(C.CString(param2))
+	defer C.free(unsafe.Pointer(cValue2))
+
+	C.c_g_simple_async_result_set_error_va(cValueInstance, cValue0, cValue1, cValue2)
+}
 
 func Fn_g_simple_async_result_set_from_error(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GSimpleAsyncResult)(unsafe.Pointer(paramInstance))
@@ -7704,8 +7798,6 @@ func Fn_g_socket_service_stop(paramInstance unsafe.Pointer) {
 	C.g_socket_service_stop(cValueInstance)
 }
 
-// UNSUPPORTED : g_subprocess_new : has varargs
-
 // UNSUPPORTED : g_subprocess_communicate_async : has callback
 
 func Fn_g_subprocess_communicate_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 *unsafe.Pointer, error unsafe.Pointer) bool {
@@ -7783,8 +7875,6 @@ func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param
 
 // UNSUPPORTED : g_subprocess_launcher_set_child_setup : has callback
 
-// UNSUPPORTED : g_subprocess_launcher_spawn : has varargs
-
 func Fn_g_subprocess_launcher_take_fd(paramInstance unsafe.Pointer, param0 int, param1 int) {
 	cValueInstance := (*C.GSubprocessLauncher)(unsafe.Pointer(paramInstance))
 
@@ -7799,8 +7889,6 @@ func Fn_g_subprocess_launcher_take_fd(paramInstance unsafe.Pointer, param0 int, 
 
 // UNSUPPORTED : g_task_attach_source : has callback
 
-// UNSUPPORTED : g_task_return_new_error : has varargs
-
 // UNSUPPORTED : g_task_return_pointer : has callback
 
 // UNSUPPORTED : g_task_run_in_thread : has callback
@@ -7811,7 +7899,7 @@ func Fn_g_subprocess_launcher_take_fd(paramInstance unsafe.Pointer, param0 int, 
 
 // UNSUPPORTED : g_task_report_error : has callback
 
-// UNSUPPORTED : g_task_report_new_error : has varargs
+// UNSUPPORTED : g_task_report_new_error : has callback
 
 func Fn_g_tcp_connection_get_graceful_disconnect(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GTcpConnection)(unsafe.Pointer(paramInstance))
