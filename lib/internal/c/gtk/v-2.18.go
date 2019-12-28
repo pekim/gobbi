@@ -12,6 +12,300 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+static void c_gtk_binding_entry_add_signal(GtkBindingSet* binding_set, guint keyval, GdkModifierType modifiers, const gchar* signal_name, guint n_args) {
+    return gtk_binding_entry_add_signal(binding_set, keyval, modifiers, signal_name, n_args, NULL);
+}
+*/
+/*
+
+static GtkTreePath* c_gtk_tree_path_new_from_indices(gint first_index) {
+    return gtk_tree_path_new_from_indices(first_index, NULL);
+}
+*/
+/*
+
+static void c_gtk_show_about_dialog(GtkWindow* parent, const gchar* first_property_name) {
+    return gtk_show_about_dialog(parent, first_property_name, NULL);
+}
+*/
+/*
+
+static GtkWidget* c_gtk_test_create_widget(GType widget_type, const gchar* first_property_name) {
+    return gtk_test_create_widget(widget_type, first_property_name, NULL);
+}
+*/
+/*
+
+static GtkWidget* c_gtk_test_display_button_window(const gchar* window_title, const gchar* dialog_text) {
+    return gtk_test_display_button_window(window_title, dialog_text, NULL);
+}
+*/
+/*
+
+static void c_gtk_test_init(int* argcp, char*** argvp) {
+    return gtk_test_init(argcp, argvp, NULL);
+}
+*/
+/*
+
+static void c_gtk_builder_add_callback_symbols(GtkBuilder* builder, const gchar* first_callback_name, GCallback first_callback_symbol) {
+    return gtk_builder_add_callback_symbols(builder, first_callback_name, first_callback_symbol, NULL);
+}
+*/
+/*
+
+static void c_gtk_cell_area_add_with_properties(GtkCellArea* area, GtkCellRenderer* renderer, const gchar* first_prop_name) {
+    return gtk_cell_area_add_with_properties(area, renderer, first_prop_name, NULL);
+}
+*/
+/*
+
+static void c_gtk_cell_area_cell_get(GtkCellArea* area, GtkCellRenderer* renderer, const gchar* first_prop_name) {
+    return gtk_cell_area_cell_get(area, renderer, first_prop_name, NULL);
+}
+*/
+/*
+
+static void c_gtk_cell_area_cell_set(GtkCellArea* area, GtkCellRenderer* renderer, const gchar* first_prop_name) {
+    return gtk_cell_area_cell_set(area, renderer, first_prop_name, NULL);
+}
+*/
+/*
+
+static void c_gtk_container_add_with_properties(GtkContainer* container, GtkWidget* widget, const gchar* first_prop_name) {
+    return gtk_container_add_with_properties(container, widget, first_prop_name, NULL);
+}
+*/
+/*
+
+static void c_gtk_container_child_get(GtkContainer* container, GtkWidget* child, const gchar* first_prop_name) {
+    return gtk_container_child_get(container, child, first_prop_name, NULL);
+}
+*/
+/*
+
+static void c_gtk_container_child_set(GtkContainer* container, GtkWidget* child, const gchar* first_prop_name) {
+    return gtk_container_child_set(container, child, first_prop_name, NULL);
+}
+*/
+/*
+
+static GtkWidget* c_gtk_dialog_new_with_buttons(const gchar* title, GtkWindow* parent, GtkDialogFlags flags, const gchar* first_button_text) {
+    return gtk_dialog_new_with_buttons(title, parent, flags, first_button_text, NULL);
+}
+*/
+/*
+
+static void c_gtk_dialog_add_buttons(GtkDialog* dialog, const gchar* first_button_text) {
+    return gtk_dialog_add_buttons(dialog, first_button_text, NULL);
+}
+*/
+/*
+
+static void c_gtk_dialog_set_alternative_button_order(GtkDialog* dialog, gint first_response_id) {
+    return gtk_dialog_set_alternative_button_order(dialog, first_response_id, NULL);
+}
+*/
+/*
+
+static GtkWidget* c_gtk_file_chooser_dialog_new(const gchar* title, GtkWindow* parent, GtkFileChooserAction action, const gchar* first_button_text) {
+    return gtk_file_chooser_dialog_new(title, parent, action, first_button_text, NULL);
+}
+*/
+/*
+
+static GtkWidget* c_gtk_info_bar_new_with_buttons(const gchar* first_button_text) {
+    return gtk_info_bar_new_with_buttons(first_button_text, NULL);
+}
+*/
+/*
+
+static void c_gtk_info_bar_add_buttons(GtkInfoBar* info_bar, const gchar* first_button_text) {
+    return gtk_info_bar_add_buttons(info_bar, first_button_text, NULL);
+}
+*/
+/*
+
+static GtkListStore* c_gtk_list_store_new(gint n_columns) {
+    return gtk_list_store_new(n_columns, NULL);
+}
+*/
+/*
+
+static void c_gtk_list_store_insert_with_values(GtkListStore* list_store, GtkTreeIter* iter, gint position) {
+    return gtk_list_store_insert_with_values(list_store, iter, position, NULL);
+}
+*/
+/*
+
+static void c_gtk_list_store_set(GtkListStore* list_store, GtkTreeIter* iter) {
+    return gtk_list_store_set(list_store, iter, NULL);
+}
+*/
+/*
+
+static GtkWidget* c_gtk_message_dialog_new(GtkWindow* parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons, const gchar* message_format) {
+    return gtk_message_dialog_new(parent, flags, type, buttons, message_format, NULL);
+}
+*/
+/*
+
+static GtkWidget* c_gtk_message_dialog_new_with_markup(GtkWindow* parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons, const gchar* message_format) {
+    return gtk_message_dialog_new_with_markup(parent, flags, type, buttons, message_format, NULL);
+}
+*/
+/*
+
+static void c_gtk_message_dialog_format_secondary_markup(GtkMessageDialog* message_dialog, const gchar* message_format) {
+    return gtk_message_dialog_format_secondary_markup(message_dialog, message_format, NULL);
+}
+*/
+/*
+
+static void c_gtk_message_dialog_format_secondary_text(GtkMessageDialog* message_dialog, const gchar* message_format) {
+    return gtk_message_dialog_format_secondary_text(message_dialog, message_format, NULL);
+}
+*/
+/*
+
+static GtkWidget* c_gtk_recent_chooser_dialog_new(const gchar* title, GtkWindow* parent, const gchar* first_button_text) {
+    return gtk_recent_chooser_dialog_new(title, parent, first_button_text, NULL);
+}
+*/
+/*
+
+static GtkWidget* c_gtk_recent_chooser_dialog_new_for_manager(const gchar* title, GtkWindow* parent, GtkRecentManager* manager, const gchar* first_button_text) {
+    return gtk_recent_chooser_dialog_new_for_manager(title, parent, manager, first_button_text, NULL);
+}
+*/
+/*
+
+static void c_gtk_style_get(GtkStyle* style, GType widget_type, const gchar* first_property_name) {
+    return gtk_style_get(style, widget_type, first_property_name, NULL);
+}
+*/
+/*
+
+static void c_gtk_style_context_get(GtkStyleContext* context, GtkStateFlags state) {
+    return gtk_style_context_get(context, state, NULL);
+}
+*/
+/*
+
+static void c_gtk_style_context_get_style(GtkStyleContext* context) {
+    return gtk_style_context_get_style(context, NULL);
+}
+*/
+/*
+
+static void c_gtk_style_properties_get(GtkStyleProperties* props, GtkStateFlags state) {
+    return gtk_style_properties_get(props, state, NULL);
+}
+*/
+/*
+
+static void c_gtk_style_properties_set(GtkStyleProperties* props, GtkStateFlags state) {
+    return gtk_style_properties_set(props, state, NULL);
+}
+*/
+/*
+
+static GtkTextTag* c_gtk_text_buffer_create_tag(GtkTextBuffer* buffer, const gchar* tag_name, const gchar* first_property_name) {
+    return gtk_text_buffer_create_tag(buffer, tag_name, first_property_name, NULL);
+}
+*/
+/*
+
+static void c_gtk_text_buffer_insert_with_tags(GtkTextBuffer* buffer, GtkTextIter* iter, const gchar* text, gint len, GtkTextTag* first_tag) {
+    return gtk_text_buffer_insert_with_tags(buffer, iter, text, len, first_tag, NULL);
+}
+*/
+/*
+
+static void c_gtk_text_buffer_insert_with_tags_by_name(GtkTextBuffer* buffer, GtkTextIter* iter, const gchar* text, gint len, const gchar* first_tag_name) {
+    return gtk_text_buffer_insert_with_tags_by_name(buffer, iter, text, len, first_tag_name, NULL);
+}
+*/
+/*
+
+static void c_gtk_theming_engine_get(GtkThemingEngine* engine, GtkStateFlags state) {
+    return gtk_theming_engine_get(engine, state, NULL);
+}
+*/
+/*
+
+static void c_gtk_theming_engine_get_style(GtkThemingEngine* engine) {
+    return gtk_theming_engine_get_style(engine, NULL);
+}
+*/
+/*
+
+static GtkTreeStore* c_gtk_tree_store_new(gint n_columns) {
+    return gtk_tree_store_new(n_columns, NULL);
+}
+*/
+/*
+
+static void c_gtk_tree_store_insert_with_values(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* parent, gint position) {
+    return gtk_tree_store_insert_with_values(tree_store, iter, parent, position, NULL);
+}
+*/
+/*
+
+static void c_gtk_tree_store_set(GtkTreeStore* tree_store, GtkTreeIter* iter) {
+    return gtk_tree_store_set(tree_store, iter, NULL);
+}
+*/
+/*
+
+static gint c_gtk_tree_view_insert_column_with_attributes(GtkTreeView* tree_view, gint position, const gchar* title, GtkCellRenderer* cell) {
+    return gtk_tree_view_insert_column_with_attributes(tree_view, position, title, cell, NULL);
+}
+*/
+/*
+
+static GtkTreeViewColumn* c_gtk_tree_view_column_new_with_attributes(const gchar* title, GtkCellRenderer* cell) {
+    return gtk_tree_view_column_new_with_attributes(title, cell, NULL);
+}
+*/
+/*
+
+static void c_gtk_tree_view_column_set_attributes(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell_renderer) {
+    return gtk_tree_view_column_set_attributes(tree_column, cell_renderer, NULL);
+}
+*/
+/*
+
+static GtkWidget* c_gtk_widget_new(GType type, const gchar* first_property_name) {
+    return gtk_widget_new(type, first_property_name, NULL);
+}
+*/
+/*
+
+static void c_gtk_widget_style_get(GtkWidget* widget, const gchar* first_property_name) {
+    return gtk_widget_style_get(widget, first_property_name, NULL);
+}
+*/
+/*
+
+static void c_gtk_actionable_set_action_target(GtkActionable* actionable, const gchar* format_string) {
+    return gtk_actionable_set_action_target(actionable, format_string, NULL);
+}
+*/
+/*
+
+static void c_gtk_cell_layout_set_attributes(GtkCellLayout* cell_layout, GtkCellRenderer* cell) {
+    return gtk_cell_layout_set_attributes(cell_layout, cell, NULL);
+}
+*/
+/*
+
+static void c_gtk_tree_model_get(GtkTreeModel* tree_model, GtkTreeIter* iter) {
+    return gtk_tree_model_get(tree_model, iter, NULL);
+}
+*/
 import "C"
 
 func toCBool(b bool) C.gboolean {

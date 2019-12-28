@@ -2,9 +2,11 @@ package generate
 
 import "C"
 import (
+	"fmt"
 	"github.com/blang/semver"
 	"github.com/dave/jennifer/jen"
 	"strconv"
+	"strings"
 )
 
 type Function struct {
@@ -42,6 +44,10 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 }
 
 func (f *Function) generateSys(fi *jen.File, version semver.Version) {
+	if f.Parameters.hasVarargs() {
+		f.generateSysVarArgsCFunction(fi)
+	}
+
 	if f.blacklist {
 		fi.Commentf("UNSUPPORTED : %s : blacklisted", f.CIdentifier)
 		return
@@ -196,4 +202,50 @@ func (f *Function) generateSysReturn(g *jen.Group) {
 
 	g.Line()
 	g.Return().Add(f.ReturnValue.generateSysGoValue("ret"))
+}
+
+func (f *Function) generateSysVarArgsCFunction(fi *jen.File) {
+	params := []string{}
+	args := []string{}
+
+	if f.InstanceParameter != nil {
+		if f.InstanceParameter.Type != nil {
+			params = append(params, f.InstanceParameter.Type.CType+" "+f.InstanceParameter.Name)
+			args = append(args, f.InstanceParameter.Name)
+		} else if f.InstanceParameter.Array != nil {
+			params = append(params, f.InstanceParameter.Array.CType+" "+f.InstanceParameter.Name)
+			args = append(args, f.InstanceParameter.Name)
+		} else {
+			panic(fmt.Sprintf("Do not know how to generate instance parameter %s for %s", f.InstanceParameter.Name, f.CIdentifier))
+		}
+	}
+
+	for _, param := range f.Parameters {
+		if (param.Type != nil && param.Type.isVaList()) || param.Varargs != nil {
+			args = append(args, "NULL")
+		} else if param.Type != nil {
+			params = append(params, param.Type.CType+" "+param.Name)
+			args = append(args, param.Name)
+		} else if param.Array != nil {
+			params = append(params, param.Array.CType+" "+param.Name)
+			args = append(args, param.Name)
+		} else {
+			panic(fmt.Sprintf("Do not know how to generate parameter %s for %s", param.Name, f.CIdentifier))
+		}
+	}
+	//paramsDecl := strings.Join(params, ", ")
+
+	fnDecl := fmt.Sprintf(`
+static %s c_%s(%s) {
+    return %s(%s);
+}
+`,
+		f.ReturnValue.Type.CType,
+		f.CIdentifier,
+		strings.Join(params, ", "),
+		f.CIdentifier,
+		strings.Join(args, ", "),
+	)
+
+	fi.CgoPreamble(fnDecl)
 }

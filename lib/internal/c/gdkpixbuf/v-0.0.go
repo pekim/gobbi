@@ -6,6 +6,36 @@ import "unsafe"
 
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
+/*
+
+static gboolean c_gdk_pixbuf_save(GdkPixbuf* pixbuf, const char* filename, const char* type, GError** error) {
+    return gdk_pixbuf_save(pixbuf, filename, type, error, NULL);
+}
+*/
+/*
+
+static gboolean c_gdk_pixbuf_save_to_buffer(GdkPixbuf* pixbuf, gchar** buffer, gsize* buffer_size, const char* type, GError** error) {
+    return gdk_pixbuf_save_to_buffer(pixbuf, buffer, buffer_size, type, error, NULL);
+}
+*/
+/*
+
+static gboolean c_gdk_pixbuf_save_to_callback(GdkPixbuf* pixbuf, GdkPixbufSaveFunc save_func, gpointer user_data, const char* type, GError** error) {
+    return gdk_pixbuf_save_to_callback(pixbuf, save_func, user_data, type, error, NULL);
+}
+*/
+/*
+
+static gboolean c_gdk_pixbuf_save_to_stream(GdkPixbuf* pixbuf, GOutputStream* stream, const char* type, GCancellable* cancellable, GError** error) {
+    return gdk_pixbuf_save_to_stream(pixbuf, stream, type, cancellable, error, NULL);
+}
+*/
+/*
+
+static void c_gdk_pixbuf_save_to_stream_async(GdkPixbuf* pixbuf, GOutputStream* stream, const gchar* type, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer user_data) {
+    return gdk_pixbuf_save_to_stream_async(pixbuf, stream, type, cancellable, callback, user_data, NULL);
+}
+*/
 import "C"
 
 func toCBool(b bool) C.gboolean {

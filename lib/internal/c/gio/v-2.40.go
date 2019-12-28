@@ -18,6 +18,126 @@ import "unsafe"
 // #include <gio/gunixsocketaddress.h>
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
+/*
+
+static void c_g_simple_async_report_error_in_idle(GObject* object, GAsyncReadyCallback callback, gpointer user_data, GQuark domain, gint code, const char* format) {
+    return g_simple_async_report_error_in_idle(object, callback, user_data, domain, code, format, NULL);
+}
+*/
+/*
+
+static void c_g_application_command_line_print(GApplicationCommandLine* cmdline, const gchar* format) {
+    return g_application_command_line_print(cmdline, format, NULL);
+}
+*/
+/*
+
+static void c_g_application_command_line_printerr(GApplicationCommandLine* cmdline, const gchar* format) {
+    return g_application_command_line_printerr(cmdline, format, NULL);
+}
+*/
+/*
+
+static GDBusMessage* c_g_dbus_message_new_method_error(GDBusMessage* method_call_message, const gchar* error_name, const gchar* error_message_format) {
+    return g_dbus_message_new_method_error(method_call_message, error_name, error_message_format, NULL);
+}
+*/
+/*
+
+static void c_g_dbus_method_invocation_return_error(GDBusMethodInvocation* invocation, GQuark domain, gint code, const gchar* format) {
+    return g_dbus_method_invocation_return_error(invocation, domain, code, format, NULL);
+}
+*/
+/*
+
+static gboolean c_g_menu_item_get_attribute(GMenuItem* menu_item, const gchar* attribute, const gchar* format_string) {
+    return g_menu_item_get_attribute(menu_item, attribute, format_string, NULL);
+}
+*/
+/*
+
+static void c_g_menu_item_set_action_and_target(GMenuItem* menu_item, const gchar* action, const gchar* format_string) {
+    return g_menu_item_set_action_and_target(menu_item, action, format_string, NULL);
+}
+*/
+/*
+
+static void c_g_menu_item_set_attribute(GMenuItem* menu_item, const gchar* attribute, const gchar* format_string) {
+    return g_menu_item_set_attribute(menu_item, attribute, format_string, NULL);
+}
+*/
+/*
+
+static gboolean c_g_menu_model_get_item_attribute(GMenuModel* model, gint item_index, const gchar* attribute, const gchar* format_string) {
+    return g_menu_model_get_item_attribute(model, item_index, attribute, format_string, NULL);
+}
+*/
+/*
+
+static void c_g_notification_add_button_with_target(GNotification* notification, const gchar* label, const gchar* action, const gchar* target_format) {
+    return g_notification_add_button_with_target(notification, label, action, target_format, NULL);
+}
+*/
+/*
+
+static void c_g_notification_set_default_action_and_target(GNotification* notification, const gchar* action, const gchar* target_format) {
+    return g_notification_set_default_action_and_target(notification, action, target_format, NULL);
+}
+*/
+/*
+
+static gboolean c_g_output_stream_printf(GOutputStream* stream, gsize* bytes_written, GCancellable* cancellable, GError** error, const gchar* format) {
+    return g_output_stream_printf(stream, bytes_written, cancellable, error, format, NULL);
+}
+*/
+/*
+
+static void c_g_settings_get(GSettings* settings, const gchar* key, const gchar* format) {
+    return g_settings_get(settings, key, format, NULL);
+}
+*/
+/*
+
+static gboolean c_g_settings_set(GSettings* settings, const gchar* key, const gchar* format) {
+    return g_settings_set(settings, key, format, NULL);
+}
+*/
+/*
+
+static GSimpleAsyncResult* c_g_simple_async_result_new_error(GObject* source_object, GAsyncReadyCallback callback, gpointer user_data, GQuark domain, gint code, const char* format) {
+    return g_simple_async_result_new_error(source_object, callback, user_data, domain, code, format, NULL);
+}
+*/
+/*
+
+static void c_g_simple_async_result_set_error(GSimpleAsyncResult* simple, GQuark domain, gint code, const char* format) {
+    return g_simple_async_result_set_error(simple, domain, code, format, NULL);
+}
+*/
+/*
+
+static GSubprocess* c_g_subprocess_new(GSubprocessFlags flags, GError** error, const gchar* argv0) {
+    return g_subprocess_new(flags, error, argv0, NULL);
+}
+*/
+/*
+
+static GSubprocess* c_g_subprocess_launcher_spawn(GSubprocessLauncher* self, GError** error, const gchar* argv0) {
+    return g_subprocess_launcher_spawn(self, error, argv0, NULL);
+}
+*/
+/*
+
+static void c_g_task_return_new_error(GTask* task, GQuark domain, gint code, const char* format) {
+    return g_task_return_new_error(task, domain, code, format, NULL);
+}
+*/
+/*
+
+static void c_g_task_report_new_error(gpointer source_object, GAsyncReadyCallback callback, gpointer callback_data, gpointer source_tag, GQuark domain, gint code, const char* format) {
+    return g_task_report_new_error(source_object, callback, callback_data, source_tag, domain, code, format, NULL);
+}
+*/
 import "C"
 
 func toCBool(b bool) C.gboolean {

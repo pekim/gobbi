@@ -9,6 +9,12 @@ import "unsafe"
 // #include <pango/pango-font.h>
 // #include <pango/pango-modules.h>
 // #include <stdlib.h>
+/*
+
+static PangoTabArray* c_pango_tab_array_new_with_positions(gint size, gboolean positions_in_pixels, PangoTabAlign first_alignment, gint first_position) {
+    return pango_tab_array_new_with_positions(size, positions_in_pixels, first_alignment, first_position, NULL);
+}
+*/
 import "C"
 
 func toCBool(b bool) C.gboolean {

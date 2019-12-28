@@ -7,6 +7,66 @@ import "unsafe"
 
 // #include <glib-object.h>
 // #include <stdlib.h>
+/*
+
+static void c_g_signal_chain_from_overridden_handler(gpointer instance) {
+    return g_signal_chain_from_overridden_handler(instance, NULL);
+}
+*/
+/*
+
+static void c_g_signal_emit(gpointer instance, guint signal_id, GQuark detail) {
+    return g_signal_emit(instance, signal_id, detail, NULL);
+}
+*/
+/*
+
+static void c_g_signal_emit_by_name(gpointer instance, const gchar* detailed_signal) {
+    return g_signal_emit_by_name(instance, detailed_signal, NULL);
+}
+*/
+/*
+
+static guint c_g_signal_new(const gchar* signal_name, GType itype, GSignalFlags signal_flags, guint class_offset, GSignalAccumulator accumulator, gpointer accu_data, GSignalCMarshaller c_marshaller, GType return_type, guint n_params) {
+    return g_signal_new(signal_name, itype, signal_flags, class_offset, accumulator, accu_data, c_marshaller, return_type, n_params, NULL);
+}
+*/
+/*
+
+static guint c_g_signal_new_class_handler(const gchar* signal_name, GType itype, GSignalFlags signal_flags, GCallback class_handler, GSignalAccumulator accumulator, gpointer accu_data, GSignalCMarshaller c_marshaller, GType return_type, guint n_params) {
+    return g_signal_new_class_handler(signal_name, itype, signal_flags, class_handler, accumulator, accu_data, c_marshaller, return_type, n_params, NULL);
+}
+*/
+/*
+
+static gpointer c_g_object_new(GType object_type, const gchar* first_property_name) {
+    return g_object_new(object_type, first_property_name, NULL);
+}
+*/
+/*
+
+static gpointer c_g_object_connect(gpointer object, const gchar* signal_spec) {
+    return g_object_connect(object, signal_spec, NULL);
+}
+*/
+/*
+
+static void c_g_object_disconnect(gpointer object, const gchar* signal_spec) {
+    return g_object_disconnect(object, signal_spec, NULL);
+}
+*/
+/*
+
+static void c_g_object_get(gpointer object, const gchar* first_property_name) {
+    return g_object_get(object, first_property_name, NULL);
+}
+*/
+/*
+
+static void c_g_object_set(gpointer object, const gchar* first_property_name) {
+    return g_object_set(object, first_property_name, NULL);
+}
+*/
 import "C"
 
 func toCBool(b bool) C.gboolean {
