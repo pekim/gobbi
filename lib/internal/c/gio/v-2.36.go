@@ -80,30 +80,6 @@ static gboolean c_g_menu_model_get_item_attribute(GMenuModel* model, gint item_i
 */
 /*
 
-static void c_g_notification_add_button_with_target(GNotification* notification, const gchar* label, const gchar* action, const gchar* target_format) {
-    return g_notification_add_button_with_target(notification, label, action, target_format, NULL);
-}
-*/
-/*
-
-static void c_g_notification_set_default_action_and_target(GNotification* notification, const gchar* action, const gchar* target_format) {
-    return g_notification_set_default_action_and_target(notification, action, target_format, NULL);
-}
-*/
-/*
-
-static gboolean c_g_output_stream_printf(GOutputStream* stream, gsize* bytes_written, GCancellable* cancellable, GError** error, const gchar* format) {
-    return g_output_stream_printf(stream, bytes_written, cancellable, error, format, NULL);
-}
-*/
-/*
-
-static gboolean c_g_output_stream_vprintf(GOutputStream* stream, gsize* bytes_written, GCancellable* cancellable, GError** error, const gchar* format) {
-    return g_output_stream_vprintf(stream, bytes_written, cancellable, error, format, NULL);
-}
-*/
-/*
-
 static void c_g_settings_get(GSettings* settings, const gchar* key, const gchar* format) {
     return g_settings_get(settings, key, format, NULL);
 }
@@ -124,18 +100,6 @@ static void c_g_simple_async_result_set_error(GSimpleAsyncResult* simple, GQuark
 
 static void c_g_simple_async_result_set_error_va(GSimpleAsyncResult* simple, GQuark domain, gint code, const char* format) {
     return g_simple_async_result_set_error_va(simple, domain, code, format, NULL);
-}
-*/
-/*
-
-static GSubprocess* c_g_subprocess_new(GSubprocessFlags flags, GError** error, const gchar* argv0) {
-    return g_subprocess_new(flags, error, argv0, NULL);
-}
-*/
-/*
-
-static GSubprocess* c_g_subprocess_launcher_spawn(GSubprocessLauncher* self, GError** error, const gchar* argv0) {
-    return g_subprocess_launcher_spawn(self, error, argv0, NULL);
 }
 */
 /*
@@ -796,8 +760,11 @@ func Fn_g_io_extension_point_register(param0 string) unsafe.Pointer {
 }
 
 // UNSUPPORTED : g_io_module_scope_block : blacklisted
+
 // UNSUPPORTED : g_io_module_scope_free : blacklisted
+
 // UNSUPPORTED : g_io_module_scope_new : blacklisted
+
 // UNSUPPORTED : g_io_scheduler_job_send_to_mainloop : has callback
 
 // UNSUPPORTED : g_io_scheduler_job_send_to_mainloop_async : has callback
@@ -954,6 +921,7 @@ func Fn_g_settings_schema_source_new_from_directory(param0 string, param1 unsafe
 }
 
 // UNSUPPORTED : g_settings_schema_source_list_schemas : blacklisted
+
 func Fn_g_settings_schema_source_lookup(paramInstance unsafe.Pointer, param0 string, param1 bool) unsafe.Pointer {
 	cValueInstance := (*C.GSettingsSchemaSource)(unsafe.Pointer(paramInstance))
 
@@ -1574,9 +1542,13 @@ func Fn_g_io_error_quark() uint32 {
 }
 
 // UNSUPPORTED : g_io_modules_load_all_in_directory : blacklisted
+
 // UNSUPPORTED : g_io_modules_load_all_in_directory_with_scope : blacklisted
+
 // UNSUPPORTED : g_io_modules_scan_all_in_directory : blacklisted
+
 // UNSUPPORTED : g_io_modules_scan_all_in_directory_with_scope : blacklisted
+
 func Fn_g_io_scheduler_cancel_all_jobs() {
 	C.g_io_scheduler_cancel_all_jobs()
 }
@@ -1584,12 +1556,15 @@ func Fn_g_io_scheduler_cancel_all_jobs() {
 // UNSUPPORTED : g_io_scheduler_push_job : has callback
 
 // UNSUPPORTED : g_keyfile_settings_backend_new : blacklisted
+
 // UNSUPPORTED : g_memory_settings_backend_new : blacklisted
+
 func Fn_g_networking_init() {
 	C.g_networking_init()
 }
 
 // UNSUPPORTED : g_null_settings_backend_new : blacklisted
+
 func Fn_g_pollable_source_new(param0 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GObject)(unsafe.Pointer(param0))
 
@@ -5731,9 +5706,13 @@ func Fn_g_filter_output_stream_set_close_base_stream(paramInstance unsafe.Pointe
 }
 
 // UNSUPPORTED : g_io_module_new : blacklisted
+
 // UNSUPPORTED : g_io_module_load : blacklisted
+
 // UNSUPPORTED : g_io_module_unload : blacklisted
+
 // UNSUPPORTED : g_io_module_query : blacklisted
+
 func Fn_g_io_stream_clear_pending(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GIOStream)(unsafe.Pointer(paramInstance))
 
@@ -7983,13 +7962,21 @@ func Fn_g_settings_unbind(param0 unsafe.Pointer, param1 string) {
 }
 
 // UNSUPPORTED : g_settings_backend_changed : blacklisted
+
 // UNSUPPORTED : g_settings_backend_changed_tree : blacklisted
+
 // UNSUPPORTED : g_settings_backend_keys_changed : blacklisted
+
 // UNSUPPORTED : g_settings_backend_path_changed : blacklisted
+
 // UNSUPPORTED : g_settings_backend_path_writable_changed : blacklisted
+
 // UNSUPPORTED : g_settings_backend_writable_changed : blacklisted
+
 // UNSUPPORTED : g_settings_backend_flatten_tree : blacklisted
+
 // UNSUPPORTED : g_settings_backend_get_default : blacklisted
+
 func Fn_g_simple_action_new(param0 string, param1 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))

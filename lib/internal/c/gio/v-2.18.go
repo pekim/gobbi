@@ -20,102 +20,6 @@ import "unsafe"
 // #include <stdlib.h>
 /*
 
-static void c_g_application_command_line_print(GApplicationCommandLine* cmdline, const gchar* format) {
-    return g_application_command_line_print(cmdline, format, NULL);
-}
-*/
-/*
-
-static void c_g_application_command_line_printerr(GApplicationCommandLine* cmdline, const gchar* format) {
-    return g_application_command_line_printerr(cmdline, format, NULL);
-}
-*/
-/*
-
-static GDBusMessage* c_g_dbus_message_new_method_error(GDBusMessage* method_call_message, const gchar* error_name, const gchar* error_message_format) {
-    return g_dbus_message_new_method_error(method_call_message, error_name, error_message_format, NULL);
-}
-*/
-/*
-
-static GDBusMessage* c_g_dbus_message_new_method_error_valist(GDBusMessage* method_call_message, const gchar* error_name, const gchar* error_message_format) {
-    return g_dbus_message_new_method_error_valist(method_call_message, error_name, error_message_format, NULL);
-}
-*/
-/*
-
-static void c_g_dbus_method_invocation_return_error(GDBusMethodInvocation* invocation, GQuark domain, gint code, const gchar* format) {
-    return g_dbus_method_invocation_return_error(invocation, domain, code, format, NULL);
-}
-*/
-/*
-
-static void c_g_dbus_method_invocation_return_error_valist(GDBusMethodInvocation* invocation, GQuark domain, gint code, const gchar* format) {
-    return g_dbus_method_invocation_return_error_valist(invocation, domain, code, format, NULL);
-}
-*/
-/*
-
-static gboolean c_g_menu_item_get_attribute(GMenuItem* menu_item, const gchar* attribute, const gchar* format_string) {
-    return g_menu_item_get_attribute(menu_item, attribute, format_string, NULL);
-}
-*/
-/*
-
-static void c_g_menu_item_set_action_and_target(GMenuItem* menu_item, const gchar* action, const gchar* format_string) {
-    return g_menu_item_set_action_and_target(menu_item, action, format_string, NULL);
-}
-*/
-/*
-
-static void c_g_menu_item_set_attribute(GMenuItem* menu_item, const gchar* attribute, const gchar* format_string) {
-    return g_menu_item_set_attribute(menu_item, attribute, format_string, NULL);
-}
-*/
-/*
-
-static gboolean c_g_menu_model_get_item_attribute(GMenuModel* model, gint item_index, const gchar* attribute, const gchar* format_string) {
-    return g_menu_model_get_item_attribute(model, item_index, attribute, format_string, NULL);
-}
-*/
-/*
-
-static void c_g_notification_add_button_with_target(GNotification* notification, const gchar* label, const gchar* action, const gchar* target_format) {
-    return g_notification_add_button_with_target(notification, label, action, target_format, NULL);
-}
-*/
-/*
-
-static void c_g_notification_set_default_action_and_target(GNotification* notification, const gchar* action, const gchar* target_format) {
-    return g_notification_set_default_action_and_target(notification, action, target_format, NULL);
-}
-*/
-/*
-
-static gboolean c_g_output_stream_printf(GOutputStream* stream, gsize* bytes_written, GCancellable* cancellable, GError** error, const gchar* format) {
-    return g_output_stream_printf(stream, bytes_written, cancellable, error, format, NULL);
-}
-*/
-/*
-
-static gboolean c_g_output_stream_vprintf(GOutputStream* stream, gsize* bytes_written, GCancellable* cancellable, GError** error, const gchar* format) {
-    return g_output_stream_vprintf(stream, bytes_written, cancellable, error, format, NULL);
-}
-*/
-/*
-
-static void c_g_settings_get(GSettings* settings, const gchar* key, const gchar* format) {
-    return g_settings_get(settings, key, format, NULL);
-}
-*/
-/*
-
-static gboolean c_g_settings_set(GSettings* settings, const gchar* key, const gchar* format) {
-    return g_settings_set(settings, key, format, NULL);
-}
-*/
-/*
-
 static void c_g_simple_async_result_set_error(GSimpleAsyncResult* simple, GQuark domain, gint code, const char* format) {
     return g_simple_async_result_set_error(simple, domain, code, format, NULL);
 }
@@ -124,24 +28,6 @@ static void c_g_simple_async_result_set_error(GSimpleAsyncResult* simple, GQuark
 
 static void c_g_simple_async_result_set_error_va(GSimpleAsyncResult* simple, GQuark domain, gint code, const char* format) {
     return g_simple_async_result_set_error_va(simple, domain, code, format, NULL);
-}
-*/
-/*
-
-static GSubprocess* c_g_subprocess_new(GSubprocessFlags flags, GError** error, const gchar* argv0) {
-    return g_subprocess_new(flags, error, argv0, NULL);
-}
-*/
-/*
-
-static GSubprocess* c_g_subprocess_launcher_spawn(GSubprocessLauncher* self, GError** error, const gchar* argv0) {
-    return g_subprocess_launcher_spawn(self, error, argv0, NULL);
-}
-*/
-/*
-
-static void c_g_task_return_new_error(GTask* task, GQuark domain, gint code, const char* format) {
-    return g_task_return_new_error(task, domain, code, format, NULL);
 }
 */
 import "C"
@@ -557,8 +443,11 @@ func Fn_g_io_extension_point_register(param0 string) unsafe.Pointer {
 }
 
 // UNSUPPORTED : g_io_module_scope_block : blacklisted
+
 // UNSUPPORTED : g_io_module_scope_free : blacklisted
+
 // UNSUPPORTED : g_io_module_scope_new : blacklisted
+
 // UNSUPPORTED : g_io_scheduler_job_send_to_mainloop : has callback
 
 // UNSUPPORTED : g_io_scheduler_job_send_to_mainloop_async : has callback
@@ -578,6 +467,7 @@ func Fn_g_settings_schema_get_id(paramInstance unsafe.Pointer) string {
 // UNSUPPORTED : g_settings_schema_list_keys : has array return
 
 // UNSUPPORTED : g_settings_schema_source_list_schemas : blacklisted
+
 func Fn_g_unix_mount_point_compare(paramInstance unsafe.Pointer, param0 unsafe.Pointer) int {
 	cValueInstance := (*C.GUnixMountPoint)(unsafe.Pointer(paramInstance))
 
@@ -793,9 +683,13 @@ func Fn_g_io_error_quark() uint32 {
 }
 
 // UNSUPPORTED : g_io_modules_load_all_in_directory : blacklisted
+
 // UNSUPPORTED : g_io_modules_load_all_in_directory_with_scope : blacklisted
+
 // UNSUPPORTED : g_io_modules_scan_all_in_directory : blacklisted
+
 // UNSUPPORTED : g_io_modules_scan_all_in_directory_with_scope : blacklisted
+
 func Fn_g_io_scheduler_cancel_all_jobs() {
 	C.g_io_scheduler_cancel_all_jobs()
 }
@@ -803,8 +697,11 @@ func Fn_g_io_scheduler_cancel_all_jobs() {
 // UNSUPPORTED : g_io_scheduler_push_job : has callback
 
 // UNSUPPORTED : g_keyfile_settings_backend_new : blacklisted
+
 // UNSUPPORTED : g_memory_settings_backend_new : blacklisted
+
 // UNSUPPORTED : g_null_settings_backend_new : blacklisted
+
 // UNSUPPORTED : g_pollable_stream_read : has non-string array param buffer
 
 // UNSUPPORTED : g_pollable_stream_write : has non-string array param buffer
@@ -2576,9 +2473,13 @@ func Fn_g_filter_output_stream_set_close_base_stream(paramInstance unsafe.Pointe
 }
 
 // UNSUPPORTED : g_io_module_new : blacklisted
+
 // UNSUPPORTED : g_io_module_load : blacklisted
+
 // UNSUPPORTED : g_io_module_unload : blacklisted
+
 // UNSUPPORTED : g_io_module_query : blacklisted
+
 // UNSUPPORTED : g_io_stream_close_async : has callback
 
 // UNSUPPORTED : g_io_stream_splice_async : has callback
@@ -3106,13 +3007,21 @@ func Fn_g_settings_sync() {
 }
 
 // UNSUPPORTED : g_settings_backend_changed : blacklisted
+
 // UNSUPPORTED : g_settings_backend_changed_tree : blacklisted
+
 // UNSUPPORTED : g_settings_backend_keys_changed : blacklisted
+
 // UNSUPPORTED : g_settings_backend_path_changed : blacklisted
+
 // UNSUPPORTED : g_settings_backend_path_writable_changed : blacklisted
+
 // UNSUPPORTED : g_settings_backend_writable_changed : blacklisted
+
 // UNSUPPORTED : g_settings_backend_flatten_tree : blacklisted
+
 // UNSUPPORTED : g_settings_backend_get_default : blacklisted
+
 // UNSUPPORTED : g_simple_action_group_add_entries : has non-string array param entries
 
 // UNSUPPORTED : g_simple_async_result_new : has callback

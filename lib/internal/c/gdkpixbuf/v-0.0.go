@@ -12,18 +12,6 @@ static gboolean c_gdk_pixbuf_save(GdkPixbuf* pixbuf, const char* filename, const
     return gdk_pixbuf_save(pixbuf, filename, type, error, NULL);
 }
 */
-/*
-
-static gboolean c_gdk_pixbuf_save_to_buffer(GdkPixbuf* pixbuf, gchar** buffer, gsize* buffer_size, const char* type, GError** error) {
-    return gdk_pixbuf_save_to_buffer(pixbuf, buffer, buffer_size, type, error, NULL);
-}
-*/
-/*
-
-static gboolean c_gdk_pixbuf_save_to_stream(GdkPixbuf* pixbuf, GOutputStream* stream, const char* type, GCancellable* cancellable, GError** error) {
-    return gdk_pixbuf_save_to_stream(pixbuf, stream, type, cancellable, error, NULL);
-}
-*/
 import "C"
 
 func toCBool(b bool) C.gboolean {

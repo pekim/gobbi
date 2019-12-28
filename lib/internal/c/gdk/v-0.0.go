@@ -699,6 +699,7 @@ func Fn_gdk_setting_get(param0 string, param1 unsafe.Pointer) bool {
 }
 
 // UNSUPPORTED : gdk_synthesize_window_state : blacklisted
+
 // UNSUPPORTED : gdk_text_property_to_utf8_list_for_display : has non-string array param text
 
 // UNSUPPORTED : gdk_threads_add_idle : has callback
@@ -1087,6 +1088,7 @@ func Fn_gdk_window_destroy(paramInstance unsafe.Pointer) {
 }
 
 // UNSUPPORTED : gdk_window_destroy_notify : blacklisted
+
 func Fn_gdk_window_end_paint(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 

@@ -20,12 +20,6 @@ static void c_gtk_binding_entry_add_signal(GtkBindingSet* binding_set, guint key
 */
 /*
 
-static GtkTreePath* c_gtk_tree_path_new_from_indices(gint first_index) {
-    return gtk_tree_path_new_from_indices(first_index, NULL);
-}
-*/
-/*
-
 static void c_gtk_show_about_dialog(GtkWindow* parent, const gchar* first_property_name) {
     return gtk_show_about_dialog(parent, first_property_name, NULL);
 }
@@ -46,36 +40,6 @@ static GtkWidget* c_gtk_test_display_button_window(const gchar* window_title, co
 
 static void c_gtk_test_init(int* argcp, char*** argvp) {
     return gtk_test_init(argcp, argvp, NULL);
-}
-*/
-/*
-
-static void c_gtk_cell_area_add_with_properties(GtkCellArea* area, GtkCellRenderer* renderer, const gchar* first_prop_name) {
-    return gtk_cell_area_add_with_properties(area, renderer, first_prop_name, NULL);
-}
-*/
-/*
-
-static void c_gtk_cell_area_cell_get(GtkCellArea* area, GtkCellRenderer* renderer, const gchar* first_prop_name) {
-    return gtk_cell_area_cell_get(area, renderer, first_prop_name, NULL);
-}
-*/
-/*
-
-static void c_gtk_cell_area_cell_get_valist(GtkCellArea* area, GtkCellRenderer* renderer, const gchar* first_property_name) {
-    return gtk_cell_area_cell_get_valist(area, renderer, first_property_name, NULL);
-}
-*/
-/*
-
-static void c_gtk_cell_area_cell_set(GtkCellArea* area, GtkCellRenderer* renderer, const gchar* first_prop_name) {
-    return gtk_cell_area_cell_set(area, renderer, first_prop_name, NULL);
-}
-*/
-/*
-
-static void c_gtk_cell_area_cell_set_valist(GtkCellArea* area, GtkCellRenderer* renderer, const gchar* first_property_name) {
-    return gtk_cell_area_cell_set_valist(area, renderer, first_property_name, NULL);
 }
 */
 /*
@@ -146,20 +110,8 @@ static void c_gtk_info_bar_add_buttons(GtkInfoBar* info_bar, const gchar* first_
 */
 /*
 
-static GtkListStore* c_gtk_list_store_new(gint n_columns) {
-    return gtk_list_store_new(n_columns, NULL);
-}
-*/
-/*
-
 static void c_gtk_list_store_insert_with_values(GtkListStore* list_store, GtkTreeIter* iter, gint position) {
     return gtk_list_store_insert_with_values(list_store, iter, position, NULL);
-}
-*/
-/*
-
-static void c_gtk_list_store_set(GtkListStore* list_store, GtkTreeIter* iter) {
-    return gtk_list_store_set(list_store, iter, NULL);
 }
 */
 /*
@@ -218,54 +170,6 @@ static void c_gtk_style_get_valist(GtkStyle* style, GType widget_type, const gch
 */
 /*
 
-static void c_gtk_style_context_get(GtkStyleContext* context, GtkStateFlags state) {
-    return gtk_style_context_get(context, state, NULL);
-}
-*/
-/*
-
-static void c_gtk_style_context_get_style(GtkStyleContext* context) {
-    return gtk_style_context_get_style(context, NULL);
-}
-*/
-/*
-
-static void c_gtk_style_context_get_style_valist(GtkStyleContext* context) {
-    return gtk_style_context_get_style_valist(context, NULL);
-}
-*/
-/*
-
-static void c_gtk_style_context_get_valist(GtkStyleContext* context, GtkStateFlags state) {
-    return gtk_style_context_get_valist(context, state, NULL);
-}
-*/
-/*
-
-static void c_gtk_style_properties_get(GtkStyleProperties* props, GtkStateFlags state) {
-    return gtk_style_properties_get(props, state, NULL);
-}
-*/
-/*
-
-static void c_gtk_style_properties_get_valist(GtkStyleProperties* props, GtkStateFlags state) {
-    return gtk_style_properties_get_valist(props, state, NULL);
-}
-*/
-/*
-
-static void c_gtk_style_properties_set(GtkStyleProperties* props, GtkStateFlags state) {
-    return gtk_style_properties_set(props, state, NULL);
-}
-*/
-/*
-
-static void c_gtk_style_properties_set_valist(GtkStyleProperties* props, GtkStateFlags state) {
-    return gtk_style_properties_set_valist(props, state, NULL);
-}
-*/
-/*
-
 static GtkTextTag* c_gtk_text_buffer_create_tag(GtkTextBuffer* buffer, const gchar* tag_name, const gchar* first_property_name) {
     return gtk_text_buffer_create_tag(buffer, tag_name, first_property_name, NULL);
 }
@@ -280,48 +184,6 @@ static void c_gtk_text_buffer_insert_with_tags(GtkTextBuffer* buffer, GtkTextIte
 
 static void c_gtk_text_buffer_insert_with_tags_by_name(GtkTextBuffer* buffer, GtkTextIter* iter, const gchar* text, gint len, const gchar* first_tag_name) {
     return gtk_text_buffer_insert_with_tags_by_name(buffer, iter, text, len, first_tag_name, NULL);
-}
-*/
-/*
-
-static void c_gtk_theming_engine_get(GtkThemingEngine* engine, GtkStateFlags state) {
-    return gtk_theming_engine_get(engine, state, NULL);
-}
-*/
-/*
-
-static void c_gtk_theming_engine_get_style(GtkThemingEngine* engine) {
-    return gtk_theming_engine_get_style(engine, NULL);
-}
-*/
-/*
-
-static void c_gtk_theming_engine_get_style_valist(GtkThemingEngine* engine) {
-    return gtk_theming_engine_get_style_valist(engine, NULL);
-}
-*/
-/*
-
-static void c_gtk_theming_engine_get_valist(GtkThemingEngine* engine, GtkStateFlags state) {
-    return gtk_theming_engine_get_valist(engine, state, NULL);
-}
-*/
-/*
-
-static GtkTreeStore* c_gtk_tree_store_new(gint n_columns) {
-    return gtk_tree_store_new(n_columns, NULL);
-}
-*/
-/*
-
-static void c_gtk_tree_store_insert_with_values(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* parent, gint position) {
-    return gtk_tree_store_insert_with_values(tree_store, iter, parent, position, NULL);
-}
-*/
-/*
-
-static void c_gtk_tree_store_set(GtkTreeStore* tree_store, GtkTreeIter* iter) {
-    return gtk_tree_store_set(tree_store, iter, NULL);
 }
 */
 /*
@@ -364,12 +226,6 @@ static void c_gtk_widget_style_get(GtkWidget* widget, const gchar* first_propert
 
 static void c_gtk_widget_style_get_valist(GtkWidget* widget, const gchar* first_property_name) {
     return gtk_widget_style_get_valist(widget, first_property_name, NULL);
-}
-*/
-/*
-
-static void c_gtk_actionable_set_action_target(GtkActionable* actionable, const gchar* format_string) {
-    return gtk_actionable_set_action_target(actionable, format_string, NULL);
 }
 */
 /*
@@ -9276,9 +9132,13 @@ func Fn_gtk_event_box_set_visible_window(paramInstance unsafe.Pointer, param0 bo
 }
 
 // UNSUPPORTED : gtk_event_controller_key_new : blacklisted
+
 // UNSUPPORTED : gtk_event_controller_key_forward : blacklisted
+
 // UNSUPPORTED : gtk_event_controller_key_get_group : blacklisted
+
 // UNSUPPORTED : gtk_event_controller_key_set_im_context : blacklisted
+
 func Fn_gtk_expander_new(param0 string) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
@@ -23942,6 +23802,7 @@ func Fn_gtk_cell_accessible_parent_get_cell_extents(paramInstance unsafe.Pointer
 }
 
 // UNSUPPORTED : gtk_cell_accessible_parent_get_cell_position : blacklisted
+
 func Fn_gtk_cell_accessible_parent_get_child_index(paramInstance unsafe.Pointer, param0 unsafe.Pointer) int {
 	cValueInstance := (*C.GtkCellAccessibleParent)(unsafe.Pointer(paramInstance))
 

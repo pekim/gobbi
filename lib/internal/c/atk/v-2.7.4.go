@@ -1633,6 +1633,7 @@ func Fn_atk_text_get_character_extents(paramInstance unsafe.Pointer, param0 int,
 }
 
 // UNSUPPORTED : atk_text_get_default_attributes : blacklisted
+
 func Fn_atk_text_get_n_selections(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
 
@@ -1670,6 +1671,7 @@ func Fn_atk_text_get_range_extents(paramInstance unsafe.Pointer, param0 int, par
 }
 
 // UNSUPPORTED : atk_text_get_run_attributes : blacklisted
+
 func Fn_atk_text_get_selection(paramInstance unsafe.Pointer, param0 int, param1 *int, param2 *int) string {
 	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))
 

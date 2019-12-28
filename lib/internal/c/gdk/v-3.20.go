@@ -1148,6 +1148,7 @@ func Fn_gdk_setting_get(param0 string, param1 unsafe.Pointer) bool {
 }
 
 // UNSUPPORTED : gdk_synthesize_window_state : blacklisted
+
 func Fn_gdk_test_render_sync(param0 unsafe.Pointer) {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
 
@@ -3204,6 +3205,7 @@ func Fn_gdk_window_destroy(paramInstance unsafe.Pointer) {
 }
 
 // UNSUPPORTED : gdk_window_destroy_notify : blacklisted
+
 func Fn_gdk_window_enable_synchronized_configure(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 

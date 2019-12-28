@@ -20,12 +20,6 @@ static void c_gtk_binding_entry_add_signal(GtkBindingSet* binding_set, guint key
 */
 /*
 
-static GtkTreePath* c_gtk_tree_path_new_from_indices(gint first_index) {
-    return gtk_tree_path_new_from_indices(first_index, NULL);
-}
-*/
-/*
-
 static void c_gtk_show_about_dialog(GtkWindow* parent, const gchar* first_property_name) {
     return gtk_show_about_dialog(parent, first_property_name, NULL);
 }
@@ -146,20 +140,8 @@ static void c_gtk_info_bar_add_buttons(GtkInfoBar* info_bar, const gchar* first_
 */
 /*
 
-static GtkListStore* c_gtk_list_store_new(gint n_columns) {
-    return gtk_list_store_new(n_columns, NULL);
-}
-*/
-/*
-
 static void c_gtk_list_store_insert_with_values(GtkListStore* list_store, GtkTreeIter* iter, gint position) {
     return gtk_list_store_insert_with_values(list_store, iter, position, NULL);
-}
-*/
-/*
-
-static void c_gtk_list_store_set(GtkListStore* list_store, GtkTreeIter* iter) {
-    return gtk_list_store_set(list_store, iter, NULL);
 }
 */
 /*
@@ -304,24 +286,6 @@ static void c_gtk_theming_engine_get_style_valist(GtkThemingEngine* engine) {
 
 static void c_gtk_theming_engine_get_valist(GtkThemingEngine* engine, GtkStateFlags state) {
     return gtk_theming_engine_get_valist(engine, state, NULL);
-}
-*/
-/*
-
-static GtkTreeStore* c_gtk_tree_store_new(gint n_columns) {
-    return gtk_tree_store_new(n_columns, NULL);
-}
-*/
-/*
-
-static void c_gtk_tree_store_insert_with_values(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* parent, gint position) {
-    return gtk_tree_store_insert_with_values(tree_store, iter, parent, position, NULL);
-}
-*/
-/*
-
-static void c_gtk_tree_store_set(GtkTreeStore* tree_store, GtkTreeIter* iter) {
-    return gtk_tree_store_set(tree_store, iter, NULL);
 }
 */
 /*
@@ -12094,9 +12058,13 @@ func Fn_gtk_event_box_set_visible_window(paramInstance unsafe.Pointer, param0 bo
 }
 
 // UNSUPPORTED : gtk_event_controller_key_new : blacklisted
+
 // UNSUPPORTED : gtk_event_controller_key_forward : blacklisted
+
 // UNSUPPORTED : gtk_event_controller_key_get_group : blacklisted
+
 // UNSUPPORTED : gtk_event_controller_key_set_im_context : blacklisted
+
 func Fn_gtk_expander_new(param0 string) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
@@ -29678,6 +29646,7 @@ func Fn_gtk_cell_accessible_parent_get_cell_extents(paramInstance unsafe.Pointer
 }
 
 // UNSUPPORTED : gtk_cell_accessible_parent_get_cell_position : blacklisted
+
 func Fn_gtk_cell_accessible_parent_get_child_index(paramInstance unsafe.Pointer, param0 unsafe.Pointer) int {
 	cValueInstance := (*C.GtkCellAccessibleParent)(unsafe.Pointer(paramInstance))
 

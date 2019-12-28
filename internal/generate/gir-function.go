@@ -18,7 +18,6 @@ type Function struct {
 	Deprecated        int    `xml:"deprecated,attr"`
 	DeprecatedVersion string `xml:"deprecated-version,attr"`
 	//Doc               *Doc   `xml:"doc"`
-	//InstanceParameter *Parameter   `xml:"parameters>instance-parameter"`
 	InstanceParameter *Parameter   `xml:"parameters>instance-parameter"`
 	Parameters        Parameters   `xml:"parameters>parameter"`
 	ReturnValue       *ReturnValue `xml:"return-value"`
@@ -44,33 +43,11 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 }
 
 func (f *Function) generateSys(fi *jen.File, version semver.Version) {
-	if f.blacklist {
-		fi.Commentf("UNSUPPORTED : %s : blacklisted", f.CIdentifier)
-		return
-	}
-
-	if supported, reason := f.Parameters.allSupported(); !supported {
+	if supported, reason := f.isSupported(); !supported {
 		fi.Commentf("UNSUPPORTED : %s : %s", f.CIdentifier, reason)
 		fi.Line()
 		return
-	}
 
-	if supported, reason := f.ReturnValue.isSupported(); !supported {
-		fi.Commentf("UNSUPPORTED : %s : %s", f.CIdentifier, reason)
-		fi.Line()
-		return
-	}
-
-	if f.Parameters.hasVarargs() || f.Parameters.hasVaList() {
-		f.generateSysVarArgsCFunction(fi)
-	}
-
-	for _, param := range f.Parameters {
-		if param.Array != nil && !param.Array.Type.isString() {
-			fi.Commentf("UNSUPPORTED : %s : has non-string array param %s", f.CIdentifier, param.Name)
-			fi.Line()
-			return
-		}
 	}
 
 	if f.MovedTo != "" || f.ShadowedBy != "" {
@@ -79,6 +56,10 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 
 	if f.version.GT(version) {
 		return
+	}
+
+	if f.Parameters.hasVarargs() || f.Parameters.hasVaList() {
+		f.generateSysVarArgsCFunction(fi)
 	}
 
 	// func Fn_some_function(...) [return type] {...}
@@ -90,6 +71,28 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 		BlockFunc(f.generateSysBody)
 
 	fi.Line()
+}
+
+func (f *Function) isSupported() (bool, string) {
+	if f.blacklist {
+		return false, "blacklisted"
+	}
+
+	if supported, reason := f.Parameters.allSupported(); !supported {
+		return false, reason
+	}
+
+	if supported, reason := f.ReturnValue.isSupported(); !supported {
+		return false, reason
+	}
+
+	for _, param := range f.Parameters {
+		if param.Array != nil && !param.Array.Type.isString() {
+			return false, fmt.Sprintf("has non-string array param %s", param.Name)
+		}
+	}
+
+	return true, ""
 }
 
 func (f *Function) generateSysParamsDeclaration(g *jen.Group) {
