@@ -16,6 +16,11 @@ var functionBlacklist = map[string]bool{
 	// gio
 	"g_io_module_query":                     true,
 	"g_settings_schema_source_list_schemas": true,
+	"g_input_stream_read":                   true,
+	"g_input_stream_read_all":               true,
+	"g_file_load_contents":                  true,
+	"g_file_load_contents_finish":           true,
+	"g_file_load_partial_contents_finish":   true,
 
 	// settings backend implementations
 	"g_settings_backend_get_default":           true,
@@ -53,6 +58,7 @@ var functionBlacklist = map[string]bool{
 	"pango_font_metrics_new":               true,
 	"pango_map_get_engine":                 true,
 	"pango_map_get_engines":                true,
+	"pango_coverage_to_bytes":              true,
 
 	// xlib
 	"XOpenDisplay": true,

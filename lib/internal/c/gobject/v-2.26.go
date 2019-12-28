@@ -9,6 +9,138 @@ import "unsafe"
 // #include <stdlib.h>
 /*
 
+static void c_g_cclosure_marshal_BOOLEAN__BOXED_BOXEDv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_BOOLEAN__BOXED_BOXEDv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_BOOLEAN__FLAGSv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_BOOLEAN__FLAGSv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_STRING__OBJECT_POINTERv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_STRING__OBJECT_POINTERv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__BOOLEANv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__BOOLEANv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__BOXEDv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__BOXEDv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__CHARv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__CHARv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__DOUBLEv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__DOUBLEv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__ENUMv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__ENUMv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__FLAGSv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__FLAGSv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__FLOATv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__FLOATv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__INTv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__INTv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__LONGv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__LONGv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__OBJECTv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__OBJECTv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__PARAMv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__PARAMv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__POINTERv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__POINTERv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__STRINGv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__STRINGv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__UCHARv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__UCHARv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__UINT_POINTERv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__UINT_POINTERv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__UINTv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__UINTv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__ULONGv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__ULONGv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__VARIANTv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__VARIANTv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
+static void c_g_cclosure_marshal_VOID__VOIDv(GClosure* closure, GValue* return_value, gpointer instance, gpointer marshal_data, int n_params, GType* param_types) {
+    return g_cclosure_marshal_VOID__VOIDv(closure, return_value, instance, NULL, marshal_data, n_params, param_types);
+}
+*/
+/*
+
 static void c_g_signal_chain_from_overridden_handler(gpointer instance) {
     return g_signal_chain_from_overridden_handler(instance, NULL);
 }
@@ -137,7 +269,21 @@ func Fn_g_cclosure_marshal_BOOLEAN__BOXED_BOXED(param0 unsafe.Pointer, param1 un
 	C.g_cclosure_marshal_BOOLEAN__BOXED_BOXED(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_BOOLEAN__BOXED_BOXEDv : has non-string array param param_types
+func Fn_g_cclosure_marshal_BOOLEAN__BOXED_BOXEDv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_BOOLEAN__BOXED_BOXEDv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_BOOLEAN__FLAGS(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -155,7 +301,21 @@ func Fn_g_cclosure_marshal_BOOLEAN__FLAGS(param0 unsafe.Pointer, param1 unsafe.P
 	C.g_cclosure_marshal_BOOLEAN__FLAGS(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_BOOLEAN__FLAGSv : has non-string array param param_types
+func Fn_g_cclosure_marshal_BOOLEAN__FLAGSv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_BOOLEAN__FLAGSv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_STRING__OBJECT_POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -173,7 +333,21 @@ func Fn_g_cclosure_marshal_STRING__OBJECT_POINTER(param0 unsafe.Pointer, param1 
 	C.g_cclosure_marshal_STRING__OBJECT_POINTER(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_STRING__OBJECT_POINTERv : has non-string array param param_types
+func Fn_g_cclosure_marshal_STRING__OBJECT_POINTERv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_STRING__OBJECT_POINTERv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__BOOLEAN(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -191,7 +365,21 @@ func Fn_g_cclosure_marshal_VOID__BOOLEAN(param0 unsafe.Pointer, param1 unsafe.Po
 	C.g_cclosure_marshal_VOID__BOOLEAN(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__BOOLEANv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__BOOLEANv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__BOOLEANv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__BOXED(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -209,7 +397,21 @@ func Fn_g_cclosure_marshal_VOID__BOXED(param0 unsafe.Pointer, param1 unsafe.Poin
 	C.g_cclosure_marshal_VOID__BOXED(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__BOXEDv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__BOXEDv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__BOXEDv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__CHAR(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -227,7 +429,21 @@ func Fn_g_cclosure_marshal_VOID__CHAR(param0 unsafe.Pointer, param1 unsafe.Point
 	C.g_cclosure_marshal_VOID__CHAR(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__CHARv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__CHARv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__CHARv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__DOUBLE(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -245,7 +461,21 @@ func Fn_g_cclosure_marshal_VOID__DOUBLE(param0 unsafe.Pointer, param1 unsafe.Poi
 	C.g_cclosure_marshal_VOID__DOUBLE(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__DOUBLEv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__DOUBLEv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__DOUBLEv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__ENUM(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -263,7 +493,21 @@ func Fn_g_cclosure_marshal_VOID__ENUM(param0 unsafe.Pointer, param1 unsafe.Point
 	C.g_cclosure_marshal_VOID__ENUM(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__ENUMv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__ENUMv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__ENUMv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__FLAGS(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -281,7 +525,21 @@ func Fn_g_cclosure_marshal_VOID__FLAGS(param0 unsafe.Pointer, param1 unsafe.Poin
 	C.g_cclosure_marshal_VOID__FLAGS(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__FLAGSv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__FLAGSv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__FLAGSv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__FLOAT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -299,7 +557,21 @@ func Fn_g_cclosure_marshal_VOID__FLOAT(param0 unsafe.Pointer, param1 unsafe.Poin
 	C.g_cclosure_marshal_VOID__FLOAT(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__FLOATv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__FLOATv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__FLOATv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__INT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -317,7 +589,21 @@ func Fn_g_cclosure_marshal_VOID__INT(param0 unsafe.Pointer, param1 unsafe.Pointe
 	C.g_cclosure_marshal_VOID__INT(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__INTv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__INTv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__INTv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__LONG(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -335,7 +621,21 @@ func Fn_g_cclosure_marshal_VOID__LONG(param0 unsafe.Pointer, param1 unsafe.Point
 	C.g_cclosure_marshal_VOID__LONG(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__LONGv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__LONGv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__LONGv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__OBJECT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -353,7 +653,21 @@ func Fn_g_cclosure_marshal_VOID__OBJECT(param0 unsafe.Pointer, param1 unsafe.Poi
 	C.g_cclosure_marshal_VOID__OBJECT(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__OBJECTv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__OBJECTv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__OBJECTv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__PARAM(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -371,7 +685,21 @@ func Fn_g_cclosure_marshal_VOID__PARAM(param0 unsafe.Pointer, param1 unsafe.Poin
 	C.g_cclosure_marshal_VOID__PARAM(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__PARAMv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__PARAMv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__PARAMv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__POINTER(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -389,7 +717,21 @@ func Fn_g_cclosure_marshal_VOID__POINTER(param0 unsafe.Pointer, param1 unsafe.Po
 	C.g_cclosure_marshal_VOID__POINTER(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__POINTERv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__POINTERv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__POINTERv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__STRING(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -407,7 +749,21 @@ func Fn_g_cclosure_marshal_VOID__STRING(param0 unsafe.Pointer, param1 unsafe.Poi
 	C.g_cclosure_marshal_VOID__STRING(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__STRINGv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__STRINGv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__STRINGv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__UCHAR(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -425,7 +781,21 @@ func Fn_g_cclosure_marshal_VOID__UCHAR(param0 unsafe.Pointer, param1 unsafe.Poin
 	C.g_cclosure_marshal_VOID__UCHAR(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__UCHARv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__UCHARv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__UCHARv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__UINT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -459,9 +829,37 @@ func Fn_g_cclosure_marshal_VOID__UINT_POINTER(param0 unsafe.Pointer, param1 unsa
 	C.g_cclosure_marshal_VOID__UINT_POINTER(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__UINT_POINTERv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__UINT_POINTERv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__UINTv : has non-string array param param_types
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__UINT_POINTERv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
+
+func Fn_g_cclosure_marshal_VOID__UINTv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__UINTv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__ULONG(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -479,7 +877,21 @@ func Fn_g_cclosure_marshal_VOID__ULONG(param0 unsafe.Pointer, param1 unsafe.Poin
 	C.g_cclosure_marshal_VOID__ULONG(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__ULONGv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__ULONGv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__ULONGv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__VARIANT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -497,7 +909,21 @@ func Fn_g_cclosure_marshal_VOID__VARIANT(param0 unsafe.Pointer, param1 unsafe.Po
 	C.g_cclosure_marshal_VOID__VARIANT(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__VARIANTv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__VARIANTv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	cValue2 := (C.gpointer)(param2)
+
+	cValue4 := (C.gpointer)(param4)
+
+	cValue5 := (C.int)(param5)
+
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__VARIANTv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
 
 func Fn_g_cclosure_marshal_VOID__VOID(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
@@ -515,17 +941,29 @@ func Fn_g_cclosure_marshal_VOID__VOID(param0 unsafe.Pointer, param1 unsafe.Point
 	C.g_cclosure_marshal_VOID__VOID(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_cclosure_marshal_VOID__VOIDv : has non-string array param param_types
+func Fn_g_cclosure_marshal_VOID__VOIDv(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param4 unsafe.Pointer, param5 int, param6 []uint64) {
+	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 
-// UNSUPPORTED : g_cclosure_marshal_generic_va : has non-string array param param_types
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
 
-// UNSUPPORTED : g_cclosure_new : has callback
+	cValue2 := (C.gpointer)(param2)
 
-// UNSUPPORTED : g_cclosure_new_object : has callback
+	cValue4 := (C.gpointer)(param4)
 
-// UNSUPPORTED : g_cclosure_new_object_swap : has callback
+	cValue5 := (C.int)(param5)
 
-// UNSUPPORTED : g_cclosure_new_swap : has callback
+	cValue6 := (*C.GType)(unsafe.Pointer(&param6[0]))
+
+	C.c_g_cclosure_marshal_VOID__VOIDv(cValue0, cValue1, cValue2, cValue4, cValue5, cValue6)
+}
+
+// UNSUPPORTED : g_cclosure_new : parameter 'callback_func' is callback
+
+// UNSUPPORTED : g_cclosure_new_object : parameter 'callback_func' is callback
+
+// UNSUPPORTED : g_cclosure_new_object_swap : parameter 'callback_func' is callback
+
+// UNSUPPORTED : g_cclosure_new_swap : parameter 'callback_func' is callback
 
 func Fn_g_closure_new_object(param0 uint, param1 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (C.guint)(param0)
@@ -547,11 +985,11 @@ func Fn_g_closure_new_simple(param0 uint, param1 unsafe.Pointer) unsafe.Pointer 
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_closure_add_finalize_notifier : has callback
+// UNSUPPORTED : g_closure_add_finalize_notifier : parameter 'notify_func' is callback
 
-// UNSUPPORTED : g_closure_add_invalidate_notifier : has callback
+// UNSUPPORTED : g_closure_add_invalidate_notifier : parameter 'notify_func' is callback
 
-// UNSUPPORTED : g_closure_add_marshal_guards : has callback
+// UNSUPPORTED : g_closure_add_marshal_guards : parameter 'pre_marshal_notify' is callback
 
 func Fn_g_closure_invalidate(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GClosure)(unsafe.Pointer(paramInstance))
@@ -559,7 +997,19 @@ func Fn_g_closure_invalidate(paramInstance unsafe.Pointer) {
 	C.g_closure_invalidate(cValueInstance)
 }
 
-// UNSUPPORTED : g_closure_invoke : has non-string array param param_values
+func Fn_g_closure_invoke(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint, param2 []Value, param3 unsafe.Pointer) {
+	cValueInstance := (*C.GClosure)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GValue)(unsafe.Pointer(param0))
+
+	cValue1 := (C.guint)(param1)
+
+	cValue2 := (*C.GValue)(unsafe.Pointer(&param2[0]))
+
+	cValue3 := (C.gpointer)(param3)
+
+	C.g_closure_invoke(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+}
 
 func Fn_g_closure_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GClosure)(unsafe.Pointer(paramInstance))
@@ -569,13 +1019,13 @@ func Fn_g_closure_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_closure_remove_finalize_notifier : has callback
+// UNSUPPORTED : g_closure_remove_finalize_notifier : parameter 'notify_func' is callback
 
-// UNSUPPORTED : g_closure_remove_invalidate_notifier : has callback
+// UNSUPPORTED : g_closure_remove_invalidate_notifier : parameter 'notify_func' is callback
 
-// UNSUPPORTED : g_closure_set_marshal : has callback
+// UNSUPPORTED : g_closure_set_marshal : parameter 'marshal' is callback
 
-// UNSUPPORTED : g_closure_set_meta_marshal : has callback
+// UNSUPPORTED : g_closure_set_meta_marshal : parameter 'meta_marshal' is callback
 
 func Fn_g_closure_sink(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GClosure)(unsafe.Pointer(paramInstance))
@@ -600,7 +1050,15 @@ func Fn_g_object_class_find_property(paramInstance unsafe.Pointer, param0 string
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_object_class_install_properties : has non-string array param pspecs
+func Fn_g_object_class_install_properties(paramInstance unsafe.Pointer, param0 uint, param1 []unsafe.Pointer) {
+	cValueInstance := (*C.GObjectClass)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.guint)(param0)
+
+	cValue1 := (**C.GParamSpec)(unsafe.Pointer(&param1[0]))
+
+	C.g_object_class_install_properties(cValueInstance, cValue0, cValue1)
+}
 
 func Fn_g_object_class_install_property(paramInstance unsafe.Pointer, param0 uint, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GObjectClass)(unsafe.Pointer(paramInstance))
@@ -1322,7 +1780,7 @@ func Fn_g_value_unset(paramInstance unsafe.Pointer) {
 	C.g_value_unset(cValueInstance)
 }
 
-// UNSUPPORTED : g_value_register_transform_func : has callback
+// UNSUPPORTED : g_value_register_transform_func : parameter 'transform_func' is callback
 
 func Fn_g_value_type_compatible(param0 uint64, param1 uint64) bool {
 	cValue0 := (C.GType)(param0)
@@ -1418,9 +1876,9 @@ func Fn_g_value_array_remove(paramInstance unsafe.Pointer, param0 uint) unsafe.P
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_value_array_sort : has callback
+// UNSUPPORTED : g_value_array_sort : parameter 'compare_func' is callback
 
-// UNSUPPORTED : g_value_array_sort_with_data : has callback
+// UNSUPPORTED : g_value_array_sort_with_data : parameter 'compare_func' is callback
 
 func Fn_g_boxed_copy(param0 uint64, param1 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (C.GType)(param0)
@@ -1440,15 +1898,15 @@ func Fn_g_boxed_free(param0 uint64, param1 unsafe.Pointer) {
 	C.g_boxed_free(cValue0, cValue1)
 }
 
-// UNSUPPORTED : g_boxed_type_register_static : has callback
+// UNSUPPORTED : g_boxed_type_register_static : parameter 'boxed_copy' is callback
 
-// UNSUPPORTED : g_cclosure_new : has callback
+// UNSUPPORTED : g_cclosure_new : parameter 'callback_func' is callback
 
-// UNSUPPORTED : g_cclosure_new_object : has callback
+// UNSUPPORTED : g_cclosure_new_object : parameter 'callback_func' is callback
 
-// UNSUPPORTED : g_cclosure_new_object_swap : has callback
+// UNSUPPORTED : g_cclosure_new_object_swap : parameter 'callback_func' is callback
 
-// UNSUPPORTED : g_cclosure_new_swap : has callback
+// UNSUPPORTED : g_cclosure_new_swap : parameter 'callback_func' is callback
 
 func Fn_g_enum_complete_type_info(param0 uint64, param1 unsafe.Pointer, param2 unsafe.Pointer) {
 	cValue0 := (C.GType)(param0)
@@ -2124,9 +2582,9 @@ func Fn_g_signal_accumulator_true_handled(param0 unsafe.Pointer, param1 unsafe.P
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_signal_add_emission_hook : has callback
+// UNSUPPORTED : g_signal_add_emission_hook : parameter 'hook_func' is callback
 
-// UNSUPPORTED : g_signal_chain_from_overridden : has non-string array param instance_and_params
+// UNSUPPORTED : g_signal_chain_from_overridden : parameter 'instance_and_params' is array parameter without length parameter
 
 func Fn_g_signal_chain_from_overridden_handler(param0 unsafe.Pointer) {
 	cValue0 := (C.gpointer)(param0)
@@ -2165,9 +2623,9 @@ func Fn_g_signal_connect_closure_by_id(param0 unsafe.Pointer, param1 uint, param
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : g_signal_connect_data : has callback
+// UNSUPPORTED : g_signal_connect_data : parameter 'c_handler' is callback
 
-// UNSUPPORTED : g_signal_connect_object : has callback
+// UNSUPPORTED : g_signal_connect_object : parameter 'c_handler' is callback
 
 func Fn_g_signal_emit(param0 unsafe.Pointer, param1 uint, param2 uint32) {
 	cValue0 := (C.gpointer)(param0)
@@ -2198,7 +2656,7 @@ func Fn_g_signal_emit_valist(param0 unsafe.Pointer, param1 uint, param2 uint32) 
 	C.c_g_signal_emit_valist(cValue0, cValue1, cValue2)
 }
 
-// UNSUPPORTED : g_signal_emitv : has non-string array param instance_and_params
+// UNSUPPORTED : g_signal_emitv : parameter 'instance_and_params' is array parameter without length parameter
 
 func Fn_g_signal_get_invocation_hint(param0 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (C.gpointer)(param0)
@@ -2363,13 +2821,13 @@ func Fn_g_signal_name(param0 uint) string {
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : g_signal_new : has callback
+// UNSUPPORTED : g_signal_new : parameter 'accumulator' is callback
 
-// UNSUPPORTED : g_signal_new_class_handler : has callback
+// UNSUPPORTED : g_signal_new_class_handler : parameter 'class_handler' is callback
 
-// UNSUPPORTED : g_signal_new_valist : has callback
+// UNSUPPORTED : g_signal_new_valist : parameter 'accumulator' is callback
 
-// UNSUPPORTED : g_signal_newv : has callback
+// UNSUPPORTED : g_signal_newv : parameter 'accumulator' is callback
 
 func Fn_g_signal_override_class_closure(param0 uint, param1 uint64, param2 unsafe.Pointer) {
 	cValue0 := (C.guint)(param0)
@@ -2381,7 +2839,7 @@ func Fn_g_signal_override_class_closure(param0 uint, param1 uint64, param2 unsaf
 	C.g_signal_override_class_closure(cValue0, cValue1, cValue2)
 }
 
-// UNSUPPORTED : g_signal_override_class_handler : has callback
+// UNSUPPORTED : g_signal_override_class_handler : parameter 'class_handler' is callback
 
 func Fn_g_signal_parse_name(param0 string, param1 uint64, param2 *uint, param3 *uint32, param4 bool) bool {
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -2467,7 +2925,7 @@ func Fn_g_strdup_value_contents(param0 unsafe.Pointer) string {
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : g_type_add_class_cache_func : has callback
+// UNSUPPORTED : g_type_add_class_cache_func : parameter 'cache_func' is callback
 
 func Fn_g_type_add_class_private(param0 uint64, param1 uint64) {
 	cValue0 := (C.GType)(param0)
@@ -2487,7 +2945,7 @@ func Fn_g_type_add_instance_private(param0 uint64, param1 uint64) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : g_type_add_interface_check : has callback
+// UNSUPPORTED : g_type_add_interface_check : parameter 'check_func' is callback
 
 func Fn_g_type_add_interface_dynamic(param0 uint64, param1 uint64, param2 unsafe.Pointer) {
 	cValue0 := (C.GType)(param0)
@@ -2809,11 +3267,11 @@ func Fn_g_type_register_static(param0 uint64, param1 string, param2 unsafe.Point
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : g_type_register_static_simple : has callback
+// UNSUPPORTED : g_type_register_static_simple : parameter 'class_init' is callback
 
-// UNSUPPORTED : g_type_remove_class_cache_func : has callback
+// UNSUPPORTED : g_type_remove_class_cache_func : parameter 'cache_func' is callback
 
-// UNSUPPORTED : g_type_remove_interface_check : has callback
+// UNSUPPORTED : g_type_remove_interface_check : parameter 'check_func' is callback
 
 func Fn_g_type_set_qdata(param0 uint64, param1 uint32, param2 unsafe.Pointer) {
 	cValue0 := (C.GType)(param0)
@@ -2835,7 +3293,7 @@ func Fn_g_type_test_flags(param0 uint64, param1 uint) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_value_register_transform_func : has callback
+// UNSUPPORTED : g_value_register_transform_func : parameter 'transform_func' is callback
 
 func Fn_g_binding_get_flags(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.GBinding)(unsafe.Pointer(paramInstance))
@@ -2899,11 +3357,19 @@ func Fn_g_object_new_valist(param0 uint64, param1 string) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_object_new_with_properties : has non-string array param values
+func Fn_g_object_newv(param0 uint64, param1 uint, param2 []Parameter) unsafe.Pointer {
+	cValue0 := (C.GType)(param0)
 
-// UNSUPPORTED : g_object_newv : has non-string array param parameters
+	cValue1 := (C.guint)(param1)
 
-// UNSUPPORTED : g_object_add_toggle_ref : has callback
+	cValue2 := (*C.GParameter)(unsafe.Pointer(&param2[0]))
+
+	ret := C.g_object_newv(cValue0, cValue1, cValue2)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_object_add_toggle_ref : parameter 'notify' is callback
 
 func Fn_g_object_add_weak_pointer(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -2931,7 +3397,7 @@ func Fn_g_object_bind_property(paramInstance unsafe.Pointer, param0 string, para
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_object_bind_property_full : has callback
+// UNSUPPORTED : g_object_bind_property_full : parameter 'transform_to' is callback
 
 func Fn_g_object_bind_property_with_closures(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 string, param3 int, param4 unsafe.Pointer, param5 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (C.gpointer)(paramInstance)
@@ -2975,9 +3441,9 @@ func Fn_g_object_disconnect(paramInstance unsafe.Pointer, param0 string) {
 	C.c_g_object_disconnect(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : g_object_dup_data : has callback
+// UNSUPPORTED : g_object_dup_data : parameter 'dup_func' is callback
 
-// UNSUPPORTED : g_object_dup_qdata : has callback
+// UNSUPPORTED : g_object_dup_qdata : parameter 'dup_func' is callback
 
 func Fn_g_object_force_floating(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -3041,8 +3507,6 @@ func Fn_g_object_get_valist(paramInstance unsafe.Pointer, param0 string) {
 	C.c_g_object_get_valist(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : g_object_getv : has non-string array param values
-
 func Fn_g_object_is_floating(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (C.gpointer)(paramInstance)
 
@@ -3084,7 +3548,7 @@ func Fn_g_object_ref_sink(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_object_remove_toggle_ref : has callback
+// UNSUPPORTED : g_object_remove_toggle_ref : parameter 'notify' is callback
 
 func Fn_g_object_remove_weak_pointer(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -3094,9 +3558,9 @@ func Fn_g_object_remove_weak_pointer(paramInstance unsafe.Pointer, param0 *unsaf
 	C.g_object_remove_weak_pointer(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : g_object_replace_data : has callback
+// UNSUPPORTED : g_object_replace_data : parameter 'destroy' is callback
 
-// UNSUPPORTED : g_object_replace_qdata : has callback
+// UNSUPPORTED : g_object_replace_qdata : parameter 'destroy' is callback
 
 func Fn_g_object_run_dispose(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -3124,7 +3588,7 @@ func Fn_g_object_set_data(paramInstance unsafe.Pointer, param0 string, param1 un
 	C.g_object_set_data(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : g_object_set_data_full : has callback
+// UNSUPPORTED : g_object_set_data_full : parameter 'destroy' is callback
 
 func Fn_g_object_set_property(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -3147,7 +3611,7 @@ func Fn_g_object_set_qdata(paramInstance unsafe.Pointer, param0 uint32, param1 u
 	C.g_object_set_qdata(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : g_object_set_qdata_full : has callback
+// UNSUPPORTED : g_object_set_qdata_full : parameter 'destroy' is callback
 
 func Fn_g_object_set_valist(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -3157,8 +3621,6 @@ func Fn_g_object_set_valist(paramInstance unsafe.Pointer, param0 string) {
 
 	C.c_g_object_set_valist(cValueInstance, cValue0)
 }
-
-// UNSUPPORTED : g_object_setv : has non-string array param values
 
 func Fn_g_object_steal_data(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
 	cValueInstance := (*C.GObject)(unsafe.Pointer(paramInstance))
@@ -3201,9 +3663,9 @@ func Fn_g_object_watch_closure(paramInstance unsafe.Pointer, param0 unsafe.Point
 	C.g_object_watch_closure(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : g_object_weak_ref : has callback
+// UNSUPPORTED : g_object_weak_ref : parameter 'notify' is callback
 
-// UNSUPPORTED : g_object_weak_unref : has callback
+// UNSUPPORTED : g_object_weak_unref : parameter 'notify' is callback
 
 func Fn_g_object_compat_control(param0 uint64, param1 unsafe.Pointer) uint64 {
 	cValue0 := (C.gsize)(param0)
@@ -3304,7 +3766,7 @@ func Fn_g_param_spec_set_qdata(paramInstance unsafe.Pointer, param0 uint32, para
 	C.g_param_spec_set_qdata(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : g_param_spec_set_qdata_full : has callback
+// UNSUPPORTED : g_param_spec_set_qdata_full : parameter 'destroy' is callback
 
 func Fn_g_param_spec_sink(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GParamSpec)(unsafe.Pointer(paramInstance))

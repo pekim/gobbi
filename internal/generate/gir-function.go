@@ -86,12 +86,6 @@ func (f *Function) isSupported() (bool, string) {
 		return false, reason
 	}
 
-	for _, param := range f.Parameters {
-		if param.Array != nil && !param.Array.Type.isString() {
-			return false, fmt.Sprintf("has non-string array param %s", param.Name)
-		}
-	}
-
 	return true, ""
 }
 
@@ -119,25 +113,11 @@ func (f *Function) generateSysParamsDeclaration(g *jen.Group) {
 }
 
 func (f *Function) generateSysReturnTypeDeclaration(s *jen.Statement) {
-	for _, param := range f.Parameters {
-		if param.Array != nil && !param.Array.Type.isString() {
-			return
-		}
-	}
-
-	if supported, _ := f.Parameters.allSupported(); !supported {
-		return
-	}
-
-	if supported, _ := f.ReturnValue.isSupported(); !supported {
-		return
-	}
-
 	if f.ReturnValue.isVoid() {
 		return
 	}
 
-	s.Add(f.ReturnValue.Type.sysParamGoType())
+	s.Add(f.ReturnValue.Type.sysParamGoType(false))
 }
 
 func (f *Function) generateSysBody(g *jen.Group) {

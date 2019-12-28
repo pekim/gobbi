@@ -1,5 +1,7 @@
 package generate
 
+import "fmt"
+
 type Parameters []*Parameter
 
 func (pp Parameters) init(ns *Namespace) {
@@ -37,12 +39,10 @@ func (pp Parameters) byName(name string) (*Parameter, int, bool) {
 }
 
 func (pp Parameters) allSupported() (bool, string) {
-	if pp.hasCallback() {
-		return false, "has callback"
-	}
-
-	if pp.hasLongDouble() {
-		return false, "has long double"
+	for _, p := range pp {
+		if supported, reason := p.isSupported(); !supported {
+			return supported, fmt.Sprintf("parameter '%s' %s", p.Name, reason)
+		}
 	}
 
 	return true, ""
@@ -61,26 +61,6 @@ func (pp Parameters) hasVarargs() bool {
 func (pp Parameters) hasVaList() bool {
 	for _, p := range pp {
 		if p.Type != nil && p.Type.isVaList() {
-			return true
-		}
-	}
-
-	return false
-}
-
-func (pp Parameters) hasCallback() bool {
-	for _, p := range pp {
-		if p.Type != nil && p.Type.isCallback() {
-			return true
-		}
-	}
-
-	return false
-}
-
-func (pp Parameters) hasLongDouble() bool {
-	for _, p := range pp {
-		if p.Type != nil && p.Type.isLongDouble() {
 			return true
 		}
 	}

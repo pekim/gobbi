@@ -183,7 +183,7 @@ func Fn_pango_attr_list_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : pango_attr_list_filter : has callback
+// UNSUPPORTED : pango_attr_list_filter : parameter 'func' is callback
 
 func Fn_pango_attr_list_get_iterator(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.PangoAttrList)(unsafe.Pointer(paramInstance))
@@ -245,7 +245,7 @@ func Fn_pango_attr_shape_new(param0 unsafe.Pointer, param1 unsafe.Pointer) unsaf
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : pango_attr_shape_new_with_data : has callback
+// UNSUPPORTED : pango_attr_shape_new_with_data : parameter 'copy_func' is callback
 
 func Fn_pango_attr_size_new(param0 int) unsafe.Pointer {
 	cValue0 := (C.int)(param0)
@@ -372,7 +372,7 @@ func Fn_pango_coverage_set(paramInstance unsafe.Pointer, param0 int, param1 int)
 	C.pango_coverage_set(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : pango_coverage_to_bytes : has non-string array param bytes
+// UNSUPPORTED : pango_coverage_to_bytes : blacklisted
 
 func Fn_pango_coverage_unref(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.PangoCoverage)(unsafe.Pointer(paramInstance))
@@ -380,7 +380,15 @@ func Fn_pango_coverage_unref(paramInstance unsafe.Pointer) {
 	C.pango_coverage_unref(cValueInstance)
 }
 
-// UNSUPPORTED : pango_coverage_from_bytes : has non-string array param bytes
+func Fn_pango_coverage_from_bytes(param0 []uint8, param1 int) unsafe.Pointer {
+	cValue0 := (*C.guchar)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (C.int)(param1)
+
+	ret := C.pango_coverage_from_bytes(cValue0, cValue1)
+
+	return unsafe.Pointer(ret)
+}
 
 func Fn_pango_coverage_new() unsafe.Pointer {
 	ret := C.pango_coverage_new()
@@ -752,9 +760,9 @@ func Fn_pango_glyph_item_free(paramInstance unsafe.Pointer) {
 	C.pango_glyph_item_free(cValueInstance)
 }
 
-// UNSUPPORTED : pango_glyph_item_get_logical_widths : has non-string array param logical_widths
+// UNSUPPORTED : pango_glyph_item_get_logical_widths : parameter 'logical_widths' is array parameter without length parameter
 
-// UNSUPPORTED : pango_glyph_item_letter_space : has non-string array param log_attrs
+// UNSUPPORTED : pango_glyph_item_letter_space : parameter 'log_attrs' is array parameter without length parameter
 
 func Fn_pango_glyph_item_split(paramInstance unsafe.Pointer, param0 string, param1 int) unsafe.Pointer {
 	cValueInstance := (*C.PangoGlyphItem)(unsafe.Pointer(paramInstance))
@@ -873,7 +881,7 @@ func Fn_pango_glyph_string_free(paramInstance unsafe.Pointer) {
 	C.pango_glyph_string_free(cValueInstance)
 }
 
-// UNSUPPORTED : pango_glyph_string_get_logical_widths : has non-string array param logical_widths
+// UNSUPPORTED : pango_glyph_string_get_logical_widths : parameter 'logical_widths' is array parameter without length parameter
 
 func Fn_pango_glyph_string_get_width(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.PangoGlyphString)(unsafe.Pointer(paramInstance))
@@ -1203,7 +1211,27 @@ func Fn_pango_layout_line_get_pixel_extents(paramInstance unsafe.Pointer, param0
 	C.pango_layout_line_get_pixel_extents(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : pango_layout_line_get_x_ranges : has non-string array param ranges
+func Fn_pango_layout_line_get_x_ranges(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *[]int, param3 *int) {
+	cValueInstance := (*C.PangoLayoutLine)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.int)(param0)
+
+	cValue1 := (C.int)(param1)
+
+	var cValue2ArrayPointer (*C.int)
+	cValue2 := &cValue2ArrayPointer
+
+	cValue3 := (*C.int)(unsafe.Pointer(param3))
+
+	C.pango_layout_line_get_x_ranges(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+
+	param2OutLen := int(*cValue3)
+	param2Out := make([]int, param2OutLen, param2OutLen)
+	if param2OutLen > 0 {
+		param2Out = (*[1 << 30](int))(unsafe.Pointer(cValue2ArrayPointer))[:param2OutLen:param2OutLen]
+	}
+	*param2 = param2Out
+}
 
 func Fn_pango_layout_line_index_to_x(paramInstance unsafe.Pointer, param0 int, param1 bool, param2 *int) {
 	cValueInstance := (*C.PangoLayoutLine)(unsafe.Pointer(paramInstance))
@@ -1454,7 +1482,7 @@ func Fn_pango_tab_array_get_tab(paramInstance unsafe.Pointer, param0 int, param1
 	C.pango_tab_array_get_tab(cValueInstance, cValue0, cValue1, cValue2)
 }
 
-// UNSUPPORTED : pango_tab_array_get_tabs : has non-string array param locations
+// UNSUPPORTED : pango_tab_array_get_tabs : parameter 'locations' is array parameter without length parameter
 
 func Fn_pango_tab_array_resize(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.PangoTabArray)(unsafe.Pointer(paramInstance))
@@ -1629,7 +1657,20 @@ func Fn_pango_attr_weight_new(param0 int) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : pango_break : has non-string array param attrs
+func Fn_pango_break(param0 string, param1 int, param2 unsafe.Pointer, param3 []LogAttr, param4 int) {
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.int)(param1)
+
+	cValue2 := (*C.PangoAnalysis)(unsafe.Pointer(param2))
+
+	cValue3 := (*C.PangoLogAttr)(unsafe.Pointer(&param3[0]))
+
+	cValue4 := (C.int)(param4)
+
+	C.pango_break(cValue0, cValue1, cValue2, cValue3, cValue4)
+}
 
 // UNSUPPORTED : pango_config_key_get : blacklisted
 
@@ -1673,7 +1714,22 @@ func Fn_pango_find_paragraph_boundary(param0 string, param1 int, param2 *int, pa
 
 // UNSUPPORTED : pango_get_lib_subdirectory : blacklisted
 
-// UNSUPPORTED : pango_get_log_attrs : has non-string array param log_attrs
+func Fn_pango_get_log_attrs(param0 string, param1 int, param2 int, param3 unsafe.Pointer, param4 []LogAttr, param5 int) {
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.int)(param1)
+
+	cValue2 := (C.int)(param2)
+
+	cValue3 := (*C.PangoLanguage)(unsafe.Pointer(param3))
+
+	cValue4 := (*C.PangoLogAttr)(unsafe.Pointer(&param4[0]))
+
+	cValue5 := (C.int)(param5)
+
+	C.pango_get_log_attrs(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+}
 
 func Fn_pango_get_mirror_char(param0 rune, param1 *rune) bool {
 	cValue0 := (C.gunichar)(param0)
@@ -2088,7 +2144,23 @@ func Fn_pango_context_get_metrics(paramInstance unsafe.Pointer, param0 unsafe.Po
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : pango_context_list_families : has non-string array param families
+func Fn_pango_context_list_families(paramInstance unsafe.Pointer, param0 *[]unsafe.Pointer, param1 *int) {
+	cValueInstance := (*C.PangoContext)(unsafe.Pointer(paramInstance))
+
+	var cValue0ArrayPointer (**C.PangoFontFamily)
+	cValue0 := &cValue0ArrayPointer
+
+	cValue1 := (*C.int)(unsafe.Pointer(param1))
+
+	C.pango_context_list_families(cValueInstance, cValue0, cValue1)
+
+	param0OutLen := int(*cValue1)
+	param0Out := make([]unsafe.Pointer, param0OutLen, param0OutLen)
+	if param0OutLen > 0 {
+		param0Out = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(cValue0ArrayPointer))[:param0OutLen:param0OutLen]
+	}
+	*param0 = param0Out
+}
 
 func Fn_pango_context_load_font(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.PangoContext)(unsafe.Pointer(paramInstance))
@@ -2236,7 +2308,13 @@ func Fn_pango_font_get_metrics(paramInstance unsafe.Pointer, param0 unsafe.Point
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : pango_font_descriptions_free : has non-string array param descs
+func Fn_pango_font_descriptions_free(param0 []unsafe.Pointer, param1 int) {
+	cValue0 := (**C.PangoFontDescription)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (C.int)(param1)
+
+	C.pango_font_descriptions_free(cValue0, cValue1)
+}
 
 func Fn_pango_font_face_describe(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.PangoFontFace)(unsafe.Pointer(paramInstance))
@@ -2262,7 +2340,23 @@ func Fn_pango_font_face_is_synthesized(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : pango_font_face_list_sizes : has non-string array param sizes
+func Fn_pango_font_face_list_sizes(paramInstance unsafe.Pointer, param0 *[]int, param1 *int) {
+	cValueInstance := (*C.PangoFontFace)(unsafe.Pointer(paramInstance))
+
+	var cValue0ArrayPointer (*C.int)
+	cValue0 := &cValue0ArrayPointer
+
+	cValue1 := (*C.int)(unsafe.Pointer(param1))
+
+	C.pango_font_face_list_sizes(cValueInstance, cValue0, cValue1)
+
+	param0OutLen := int(*cValue1)
+	param0Out := make([]int, param0OutLen, param0OutLen)
+	if param0OutLen > 0 {
+		param0Out = (*[1 << 30](int))(unsafe.Pointer(cValue0ArrayPointer))[:param0OutLen:param0OutLen]
+	}
+	*param0 = param0Out
+}
 
 func Fn_pango_font_family_get_name(paramInstance unsafe.Pointer) string {
 	cValueInstance := (*C.PangoFontFamily)(unsafe.Pointer(paramInstance))
@@ -2280,7 +2374,23 @@ func Fn_pango_font_family_is_monospace(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : pango_font_family_list_faces : has non-string array param faces
+func Fn_pango_font_family_list_faces(paramInstance unsafe.Pointer, param0 *[]unsafe.Pointer, param1 *int) {
+	cValueInstance := (*C.PangoFontFamily)(unsafe.Pointer(paramInstance))
+
+	var cValue0ArrayPointer (**C.PangoFontFace)
+	cValue0 := &cValue0ArrayPointer
+
+	cValue1 := (*C.int)(unsafe.Pointer(param1))
+
+	C.pango_font_family_list_faces(cValueInstance, cValue0, cValue1)
+
+	param0OutLen := int(*cValue1)
+	param0Out := make([]unsafe.Pointer, param0OutLen, param0OutLen)
+	if param0OutLen > 0 {
+		param0Out = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(cValue0ArrayPointer))[:param0OutLen:param0OutLen]
+	}
+	*param0 = param0Out
+}
 
 func Fn_pango_font_map_create_context(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.PangoFontMap)(unsafe.Pointer(paramInstance))
@@ -2292,7 +2402,23 @@ func Fn_pango_font_map_create_context(paramInstance unsafe.Pointer) unsafe.Point
 
 // UNSUPPORTED : pango_font_map_get_shape_engine_type : blacklisted
 
-// UNSUPPORTED : pango_font_map_list_families : has non-string array param families
+func Fn_pango_font_map_list_families(paramInstance unsafe.Pointer, param0 *[]unsafe.Pointer, param1 *int) {
+	cValueInstance := (*C.PangoFontMap)(unsafe.Pointer(paramInstance))
+
+	var cValue0ArrayPointer (**C.PangoFontFamily)
+	cValue0 := &cValue0ArrayPointer
+
+	cValue1 := (*C.int)(unsafe.Pointer(param1))
+
+	C.pango_font_map_list_families(cValueInstance, cValue0, cValue1)
+
+	param0OutLen := int(*cValue1)
+	param0Out := make([]unsafe.Pointer, param0OutLen, param0OutLen)
+	if param0OutLen > 0 {
+		param0Out = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(cValue0ArrayPointer))[:param0OutLen:param0OutLen]
+	}
+	*param0 = param0Out
+}
 
 func Fn_pango_font_map_load_font(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.PangoFontMap)(unsafe.Pointer(paramInstance))
@@ -2320,7 +2446,7 @@ func Fn_pango_font_map_load_fontset(paramInstance unsafe.Pointer, param0 unsafe.
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : pango_fontset_foreach : has callback
+// UNSUPPORTED : pango_fontset_foreach : parameter 'func' is callback
 
 func Fn_pango_fontset_get_font(paramInstance unsafe.Pointer, param0 uint) unsafe.Pointer {
 	cValueInstance := (*C.PangoFontset)(unsafe.Pointer(paramInstance))
@@ -2522,7 +2648,23 @@ func Fn_pango_layout_get_lines_readonly(paramInstance unsafe.Pointer) unsafe.Poi
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : pango_layout_get_log_attrs : has non-string array param attrs
+func Fn_pango_layout_get_log_attrs(paramInstance unsafe.Pointer, param0 *[]unsafe.Pointer, param1 *int) {
+	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))
+
+	var cValue0ArrayPointer (*C.PangoLogAttr)
+	cValue0 := &cValue0ArrayPointer
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	C.pango_layout_get_log_attrs(cValueInstance, cValue0, cValue1)
+
+	param0OutLen := int(*cValue1)
+	param0Out := make([]unsafe.Pointer, param0OutLen, param0OutLen)
+	if param0OutLen > 0 {
+		param0Out = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(cValue0ArrayPointer))[:param0OutLen:param0OutLen]
+	}
+	*param0 = param0Out
+}
 
 // UNSUPPORTED : pango_layout_get_log_attrs_readonly : has array return
 

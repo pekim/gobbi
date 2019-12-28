@@ -453,7 +453,7 @@ func Fn_gdk_error_trap_push() {
 	C.gdk_error_trap_push()
 }
 
-// UNSUPPORTED : gdk_event_handler_set : has callback
+// UNSUPPORTED : gdk_event_handler_set : parameter 'func' is callback
 
 func Fn_gdk_events_get_angle(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *float64) bool {
 	cValue0 := (*C.GdkEvent)(unsafe.Pointer(param0))
@@ -753,7 +753,7 @@ func Fn_gdk_pango_layout_get_clip_region(param0 unsafe.Pointer, param1 int, para
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : gdk_pango_layout_line_get_clip_region : has non-string array param index_ranges
+// UNSUPPORTED : gdk_pango_layout_line_get_clip_region : parameter 'index_ranges' is array parameter without length parameter
 
 func Fn_gdk_parse_args(param0 *int, param1 *[]string) {
 	cValue0 := (*C.gint)(unsafe.Pointer(param0))
@@ -878,11 +878,71 @@ func Fn_gdk_property_delete(param0 unsafe.Pointer, param1 Atom) {
 	C.gdk_property_delete(cValue0, cValue1)
 }
 
-// UNSUPPORTED : gdk_property_get : has non-string array param data
+func Fn_gdk_property_get(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint64, param4 uint64, param5 int, param6 unsafe.Pointer, param7 *int, param8 *int, param9 *[]uint8) bool {
+	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
 
-// UNSUPPORTED : gdk_query_depths : has non-string array param depths
+	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
 
-// UNSUPPORTED : gdk_query_visual_types : has non-string array param visual_types
+	cValue2 := (C.GdkAtom)(unsafe.Pointer(param2))
+
+	cValue3 := (C.gulong)(param3)
+
+	cValue4 := (C.gulong)(param4)
+
+	cValue5 := (C.gint)(param5)
+
+	cValue6 := (*C.GdkAtom)(unsafe.Pointer(param6))
+
+	cValue7 := (*C.gint)(unsafe.Pointer(param7))
+
+	cValue8 := (*C.gint)(unsafe.Pointer(param8))
+
+	var cValue9ArrayPointer (*C.guchar)
+	cValue9 := &cValue9ArrayPointer
+
+	ret := C.gdk_property_get(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
+
+	param9OutLen := int(*cValue8)
+	param9Out := make([]uint8, param9OutLen, param9OutLen)
+	if param9OutLen > 0 {
+		param9Out = (*[1 << 30](uint8))(unsafe.Pointer(cValue9ArrayPointer))[:param9OutLen:param9OutLen]
+	}
+	*param9 = param9Out
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_query_depths(param0 *[]int, param1 *int) {
+	var cValue0ArrayPointer (*C.gint)
+	cValue0 := &cValue0ArrayPointer
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	C.gdk_query_depths(cValue0, cValue1)
+
+	param0OutLen := int(*cValue1)
+	param0Out := make([]int, param0OutLen, param0OutLen)
+	if param0OutLen > 0 {
+		param0Out = (*[1 << 30](int))(unsafe.Pointer(cValue0ArrayPointer))[:param0OutLen:param0OutLen]
+	}
+	*param0 = param0Out
+}
+
+func Fn_gdk_query_visual_types(param0 *[]int, param1 *int) {
+	var cValue0ArrayPointer (*C.GdkVisualType)
+	cValue0 := &cValue0ArrayPointer
+
+	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+
+	C.gdk_query_visual_types(cValue0, cValue1)
+
+	param0OutLen := int(*cValue1)
+	param0Out := make([]int, param0OutLen, param0OutLen)
+	if param0OutLen > 0 {
+		param0Out = (*[1 << 30](int))(unsafe.Pointer(cValue0ArrayPointer))[:param0OutLen:param0OutLen]
+	}
+	*param0 = param0Out
+}
 
 func Fn_gdk_selection_convert(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint32) {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
@@ -1062,19 +1122,19 @@ func Fn_gdk_test_simulate_key(param0 unsafe.Pointer, param1 int, param2 int, par
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : gdk_text_property_to_utf8_list_for_display : has non-string array param text
+// UNSUPPORTED : gdk_text_property_to_utf8_list_for_display : parameter 'list' is array parameter without length parameter
 
-// UNSUPPORTED : gdk_threads_add_idle : has callback
+// UNSUPPORTED : gdk_threads_add_idle : parameter 'function' is callback
 
-// UNSUPPORTED : gdk_threads_add_idle_full : has callback
+// UNSUPPORTED : gdk_threads_add_idle_full : parameter 'function' is callback
 
-// UNSUPPORTED : gdk_threads_add_timeout : has callback
+// UNSUPPORTED : gdk_threads_add_timeout : parameter 'function' is callback
 
-// UNSUPPORTED : gdk_threads_add_timeout_full : has callback
+// UNSUPPORTED : gdk_threads_add_timeout_full : parameter 'function' is callback
 
-// UNSUPPORTED : gdk_threads_add_timeout_seconds : has callback
+// UNSUPPORTED : gdk_threads_add_timeout_seconds : parameter 'function' is callback
 
-// UNSUPPORTED : gdk_threads_add_timeout_seconds_full : has callback
+// UNSUPPORTED : gdk_threads_add_timeout_seconds_full : parameter 'function' is callback
 
 func Fn_gdk_threads_enter() {
 	C.gdk_threads_enter()
@@ -1088,7 +1148,7 @@ func Fn_gdk_threads_leave() {
 	C.gdk_threads_leave()
 }
 
-// UNSUPPORTED : gdk_threads_set_lock_functions : has callback
+// UNSUPPORTED : gdk_threads_set_lock_functions : parameter 'enter_fn' is callback
 
 func Fn_gdk_unicode_to_keyval(param0 uint32) uint {
 	cValue0 := (C.guint32)(param0)
@@ -1251,7 +1311,7 @@ func Fn_gdk_device_get_associated_device(paramInstance unsafe.Pointer) unsafe.Po
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : gdk_device_get_axis : has non-string array param axes
+// UNSUPPORTED : gdk_device_get_axis : parameter 'axes' is array parameter without length parameter
 
 func Fn_gdk_device_get_axis_use(paramInstance unsafe.Pointer, param0 uint) int {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
@@ -1263,7 +1323,7 @@ func Fn_gdk_device_get_axis_use(paramInstance unsafe.Pointer, param0 uint) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : gdk_device_get_axis_value : has non-string array param axes
+// UNSUPPORTED : gdk_device_get_axis_value : parameter 'axes' is array parameter without length parameter
 
 func Fn_gdk_device_get_device_type(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
@@ -1289,7 +1349,31 @@ func Fn_gdk_device_get_has_cursor(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : gdk_device_get_history : has non-string array param events
+func Fn_gdk_device_get_history(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint32, param2 uint32, param3 *[]unsafe.Pointer, param4 *int) bool {
+	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+
+	cValue1 := (C.guint32)(param1)
+
+	cValue2 := (C.guint32)(param2)
+
+	var cValue3ArrayPointer (**C.GdkTimeCoord)
+	cValue3 := &cValue3ArrayPointer
+
+	cValue4 := (*C.gint)(unsafe.Pointer(param4))
+
+	ret := C.gdk_device_get_history(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4)
+
+	param3OutLen := int(*cValue4)
+	param3Out := make([]unsafe.Pointer, param3OutLen, param3OutLen)
+	if param3OutLen > 0 {
+		param3Out = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(cValue3ArrayPointer))[:param3OutLen:param3OutLen]
+	}
+	*param3 = param3Out
+
+	return toGoBool(ret)
+}
 
 func Fn_gdk_device_get_key(paramInstance unsafe.Pointer, param0 uint, param1 *uint, param2 *int) bool {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
@@ -1357,7 +1441,7 @@ func Fn_gdk_device_get_source(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : gdk_device_get_state : has non-string array param axes
+// UNSUPPORTED : gdk_device_get_state : parameter 'axes' is array parameter without length parameter
 
 func Fn_gdk_device_get_window_at_position(paramInstance unsafe.Pointer, param0 *int, param1 *int) unsafe.Pointer {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
@@ -1471,7 +1555,13 @@ func Fn_gdk_device_warp(paramInstance unsafe.Pointer, param0 unsafe.Pointer, par
 	C.gdk_device_warp(cValueInstance, cValue0, cValue1, cValue2)
 }
 
-// UNSUPPORTED : gdk_device_free_history : has non-string array param events
+func Fn_gdk_device_free_history(param0 []unsafe.Pointer, param1 int) {
+	cValue0 := (**C.GdkTimeCoord)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (C.gint)(param1)
+
+	C.gdk_device_free_history(cValue0, cValue1)
+}
 
 func Fn_gdk_device_grab_info_libgtk_only(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *unsafe.Pointer, param3 *bool) bool {
 	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
@@ -1750,7 +1840,19 @@ func Fn_gdk_display_set_double_click_time(paramInstance unsafe.Pointer, param0 u
 	C.gdk_display_set_double_click_time(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : gdk_display_store_clipboard : has non-string array param targets
+func Fn_gdk_display_store_clipboard(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint32, param2 []Atom, param3 int) {
+	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+
+	cValue1 := (C.guint32)(param1)
+
+	cValue2 := (*C.GdkAtom)(unsafe.Pointer(&param2[0]))
+
+	cValue3 := (C.gint)(param3)
+
+	C.gdk_display_store_clipboard(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+}
 
 func Fn_gdk_display_supports_clipboard_persistence(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
@@ -1984,9 +2086,59 @@ func Fn_gdk_keymap_get_direction(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : gdk_keymap_get_entries_for_keycode : has non-string array param keys
+func Fn_gdk_keymap_get_entries_for_keycode(paramInstance unsafe.Pointer, param0 uint, param1 *[]unsafe.Pointer, param2 *[]uint, param3 *int) bool {
+	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
 
-// UNSUPPORTED : gdk_keymap_get_entries_for_keyval : has non-string array param keys
+	cValue0 := (C.guint)(param0)
+
+	var cValue1ArrayPointer (*C.GdkKeymapKey)
+	cValue1 := &cValue1ArrayPointer
+
+	var cValue2ArrayPointer (*C.guint)
+	cValue2 := &cValue2ArrayPointer
+
+	cValue3 := (*C.gint)(unsafe.Pointer(param3))
+
+	ret := C.gdk_keymap_get_entries_for_keycode(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+
+	param1OutLen := int(*cValue3)
+	param1Out := make([]unsafe.Pointer, param1OutLen, param1OutLen)
+	if param1OutLen > 0 {
+		param1Out = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
+	}
+	*param1 = param1Out
+
+	param2OutLen := int(*cValue3)
+	param2Out := make([]uint, param2OutLen, param2OutLen)
+	if param2OutLen > 0 {
+		param2Out = (*[1 << 30](uint))(unsafe.Pointer(cValue2ArrayPointer))[:param2OutLen:param2OutLen]
+	}
+	*param2 = param2Out
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_keymap_get_entries_for_keyval(paramInstance unsafe.Pointer, param0 uint, param1 *[]unsafe.Pointer, param2 *int) bool {
+	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.guint)(param0)
+
+	var cValue1ArrayPointer (*C.GdkKeymapKey)
+	cValue1 := &cValue1ArrayPointer
+
+	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+
+	ret := C.gdk_keymap_get_entries_for_keyval(cValueInstance, cValue0, cValue1, cValue2)
+
+	param1OutLen := int(*cValue2)
+	param1Out := make([]unsafe.Pointer, param1OutLen, param1OutLen)
+	if param1OutLen > 0 {
+		param1Out = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
+	}
+	*param1 = param1Out
+
+	return toGoBool(ret)
+}
 
 func Fn_gdk_keymap_get_modifier_mask(paramInstance unsafe.Pointer, param0 int) int {
 	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
@@ -2385,7 +2537,7 @@ func Fn_gdk_seat_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : gdk_seat_grab : has callback
+// UNSUPPORTED : gdk_seat_grab : parameter 'prepare_func' is callback
 
 func Fn_gdk_visual_get_bits_per_rgb(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.GdkVisual)(unsafe.Pointer(paramInstance))
@@ -2533,7 +2685,7 @@ func Fn_gdk_window_new(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int)
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : gdk_window_add_filter : has callback
+// UNSUPPORTED : gdk_window_add_filter : parameter 'function' is callback
 
 func Fn_gdk_window_beep(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
@@ -3137,7 +3289,7 @@ func Fn_gdk_window_input_shape_combine_region(paramInstance unsafe.Pointer, para
 	C.gdk_window_input_shape_combine_region(cValueInstance, cValue0, cValue1, cValue2)
 }
 
-// UNSUPPORTED : gdk_window_invalidate_maybe_recurse : has callback
+// UNSUPPORTED : gdk_window_invalidate_maybe_recurse : parameter 'child_func' is callback
 
 func Fn_gdk_window_invalidate_rect(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
@@ -3287,7 +3439,7 @@ func Fn_gdk_window_register_dnd(paramInstance unsafe.Pointer) {
 	C.gdk_window_register_dnd(cValueInstance)
 }
 
-// UNSUPPORTED : gdk_window_remove_filter : has callback
+// UNSUPPORTED : gdk_window_remove_filter : parameter 'function' is callback
 
 func Fn_gdk_window_reparent(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
@@ -3478,7 +3630,7 @@ func Fn_gdk_window_set_icon_name(paramInstance unsafe.Pointer, param0 string) {
 	C.gdk_window_set_icon_name(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : gdk_window_set_invalidate_handler : has callback
+// UNSUPPORTED : gdk_window_set_invalidate_handler : parameter 'handler' is callback
 
 func Fn_gdk_window_set_keep_above(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))

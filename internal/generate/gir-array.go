@@ -2,7 +2,6 @@ package generate
 
 import (
 	"github.com/dave/jennifer/jen"
-	"strings"
 )
 
 type Array struct {
@@ -12,9 +11,8 @@ type Array struct {
 	Length         *int   `xml:"length,attr"`
 	ZeroTerminated string `xml:"zero-terminated,attr"`
 
-	namespace   *Namespace
-	lengthParam *Parameter
-	cType       cType
+	namespace *Namespace
+	cType     cType
 }
 
 func (a *Array) init(ns *Namespace) {
@@ -28,15 +26,5 @@ func (a *Array) init(ns *Namespace) {
 }
 
 func (a *Array) sysParamGoType() *jen.Statement {
-	if a.Type.isString() && strings.HasSuffix(a.CType, "***") {
-		// special case for "*[]string"
-		return jen.
-			Op("*").
-			Index().
-			String()
-	}
-
-	return jen.
-		Index().
-		Add(a.Type.sysParamGoType())
+	return jen.Index().Add(a.Type.sysParamGoPlainType())
 }

@@ -48,7 +48,7 @@ func Fn_gdk_pixbuf_new(param0 int, param1 bool, param2 int, param3 int, param4 i
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : gdk_pixbuf_new_from_data : has callback
+// UNSUPPORTED : gdk_pixbuf_new_from_data : parameter 'data' is array parameter without length parameter
 
 func Fn_gdk_pixbuf_new_from_file(param0 string, error unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.char)(C.CString(param0))
@@ -61,23 +61,21 @@ func Fn_gdk_pixbuf_new_from_file(param0 string, error unsafe.Pointer) unsafe.Poi
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : gdk_pixbuf_new_from_inline : has non-string array param data
+func Fn_gdk_pixbuf_new_from_inline(param0 int, param1 []uint8, param2 bool, error unsafe.Pointer) unsafe.Pointer {
+	cValue0 := (C.gint)(param0)
 
-func Fn_gdk_pixbuf_new_from_xpm_data(param0 []string) unsafe.Pointer {
-	param0Len := len(param0)
-	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
-	defer C.free(unsafe.Pointer(cValue0Array))
-	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
-	for param0i, param0String := range param0 {
-		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
-		defer C.free(unsafe.Pointer(param0Slice[param0i]))
-	}
-	cValue0 := &param0Slice[0]
+	cValue1 := (*C.guint8)(unsafe.Pointer(&param1[0]))
 
-	ret := C.gdk_pixbuf_new_from_xpm_data(cValue0)
+	cValue2 := toCBool(param2)
+
+	cError := (**C.GError)(error)
+
+	ret := C.gdk_pixbuf_new_from_inline(cValue0, cValue1, cValue2, cError)
 
 	return unsafe.Pointer(ret)
 }
+
+// UNSUPPORTED : gdk_pixbuf_new_from_xpm_data : parameter 'data' is array parameter without length parameter
 
 func Fn_gdk_pixbuf_add_alpha(paramInstance unsafe.Pointer, param0 bool, param1 uint8, param2 uint8, param3 uint8) unsafe.Pointer {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
@@ -342,53 +340,19 @@ func Fn_gdk_pixbuf_save(paramInstance unsafe.Pointer, param0 string, param1 stri
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : gdk_pixbuf_save_to_buffer : has non-string array param buffer
+// UNSUPPORTED : gdk_pixbuf_save_to_bufferv : parameter 'option_keys' is array parameter without length parameter
 
-// UNSUPPORTED : gdk_pixbuf_save_to_bufferv : has non-string array param buffer
+// UNSUPPORTED : gdk_pixbuf_save_to_callback : parameter 'save_func' is callback
 
-// UNSUPPORTED : gdk_pixbuf_save_to_callback : has callback
+// UNSUPPORTED : gdk_pixbuf_save_to_callbackv : parameter 'save_func' is callback
 
-// UNSUPPORTED : gdk_pixbuf_save_to_callbackv : has callback
+// UNSUPPORTED : gdk_pixbuf_save_to_stream_async : parameter 'callback' is callback
 
-// UNSUPPORTED : gdk_pixbuf_save_to_stream_async : has callback
+// UNSUPPORTED : gdk_pixbuf_save_to_streamv : parameter 'option_keys' is array parameter without length parameter
 
-// UNSUPPORTED : gdk_pixbuf_save_to_streamv_async : has callback
+// UNSUPPORTED : gdk_pixbuf_save_to_streamv_async : parameter 'option_keys' is array parameter without length parameter
 
-func Fn_gdk_pixbuf_savev(paramInstance unsafe.Pointer, param0 string, param1 string, param2 []string, param3 []string, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	cValue1 := (*C.char)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
-
-	param2Len := len(param2)
-	cValue2Array := C.malloc((C.ulong)(param2Len) * C.sizeof_gpointer)
-	defer C.free(unsafe.Pointer(cValue2Array))
-	param2Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue2Array))[:param2Len:param2Len]
-	for param2i, param2String := range param2 {
-		param2Slice[param2i] = (*C.gchar)(C.CString(param2String))
-		defer C.free(unsafe.Pointer(param2Slice[param2i]))
-	}
-	cValue2 := &param2Slice[0]
-
-	param3Len := len(param3)
-	cValue3Array := C.malloc((C.ulong)(param3Len) * C.sizeof_gpointer)
-	defer C.free(unsafe.Pointer(cValue3Array))
-	param3Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue3Array))[:param3Len:param3Len]
-	for param3i, param3String := range param3 {
-		param3Slice[param3i] = (*C.gchar)(C.CString(param3String))
-		defer C.free(unsafe.Pointer(param3Slice[param3i]))
-	}
-	cValue3 := &param3Slice[0]
-
-	cError := (**C.GError)(error)
-
-	ret := C.gdk_pixbuf_savev(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gdk_pixbuf_savev : parameter 'option_keys' is array parameter without length parameter
 
 func Fn_gdk_pixbuf_scale(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int, param5 float64, param6 float64, param7 float64, param8 float64, param9 int) {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
@@ -436,11 +400,11 @@ func Fn_gdk_pixbuf_unref(paramInstance unsafe.Pointer) {
 	C.gdk_pixbuf_unref(cValueInstance)
 }
 
-// UNSUPPORTED : gdk_pixbuf_get_file_info_async : has callback
+// UNSUPPORTED : gdk_pixbuf_get_file_info_async : parameter 'callback' is callback
 
-// UNSUPPORTED : gdk_pixbuf_new_from_stream_async : has callback
+// UNSUPPORTED : gdk_pixbuf_new_from_stream_async : parameter 'callback' is callback
 
-// UNSUPPORTED : gdk_pixbuf_new_from_stream_at_scale_async : has callback
+// UNSUPPORTED : gdk_pixbuf_new_from_stream_at_scale_async : parameter 'callback' is callback
 
 func Fn_gdk_pixbuf_animation_new_from_file(param0 string, error unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.char)(C.CString(param0))
@@ -509,7 +473,7 @@ func Fn_gdk_pixbuf_animation_unref(paramInstance unsafe.Pointer) {
 	C.gdk_pixbuf_animation_unref(cValueInstance)
 }
 
-// UNSUPPORTED : gdk_pixbuf_animation_new_from_stream_async : has callback
+// UNSUPPORTED : gdk_pixbuf_animation_new_from_stream_async : parameter 'callback' is callback
 
 func Fn_gdk_pixbuf_animation_iter_advance(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
 	cValueInstance := (*C.GdkPixbufAnimationIter)(unsafe.Pointer(paramInstance))
@@ -588,4 +552,16 @@ func Fn_gdk_pixbuf_loader_get_pixbuf(paramInstance unsafe.Pointer) unsafe.Pointe
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : gdk_pixbuf_loader_write : has non-string array param buf
+func Fn_gdk_pixbuf_loader_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, error unsafe.Pointer) bool {
+	cValueInstance := (*C.GdkPixbufLoader)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.guchar)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (C.gsize)(param1)
+
+	cError := (**C.GError)(error)
+
+	ret := C.gdk_pixbuf_loader_write(cValueInstance, cValue0, cValue1, cError)
+
+	return toGoBool(ret)
+}

@@ -76,5 +76,5 @@ func (r *ReturnValue) generateSysGoValue(cVarName string) *jen.Statement {
 		return jen.Id("toGoBool").Call(jen.Id(cVarName))
 	}
 
-	return jen.Parens(r.Type.sysParamGoType()).Parens(jen.Id("ret"))
+	return jen.Parens(r.Type.sysParamGoType(false)).Parens(jen.Id("ret"))
 }

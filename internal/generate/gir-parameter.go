@@ -31,6 +31,28 @@ func (p *Parameter) init(ns *Namespace) {
 	p.goVarName = makeUnexportedGoName(p.Name)
 }
 
+func (p Parameter) isSupported() (bool, string) {
+	if p.Type != nil && p.Type.isCallback() {
+		return false, "is callback"
+	}
+
+	if p.Type != nil && p.Type.isLongDouble() {
+		return false, "is long double"
+	}
+
+	if p.Array != nil && p.lengthParam == nil {
+		return false, "is array parameter without length parameter"
+	}
+
+	if p.Array != nil && p.Array.cType.indirectionCount == 0 {
+		if !p.Array.Type.isString() {
+			return false, fmt.Sprintf("is array parameter with indirection of %d", p.Array.cType.indirectionCount)
+		}
+	}
+
+	return true, ""
+}
+
 func (p *Parameter) isIn() bool {
 	return p.Direction == "" || p.Direction == "in" || p.Direction == "inout"
 }
@@ -45,11 +67,18 @@ func (p *Parameter) isInOut() bool {
 
 func (p *Parameter) sysParamGoType() *jen.Statement {
 	if p.Type != nil {
-		return p.Type.sysParamGoType()
+		return jen.
+			Add(p.Type.sysParamGoType(false))
 	}
 
+	star := ""
+	if p.isOut() {
+		star = "*"
+	}
 	if p.Array != nil {
-		return p.Array.sysParamGoType()
+		return jen.
+			Op(star).
+			Add(p.Array.sysParamGoType())
 	}
 
 	panic(fmt.Sprintf("Parameter is not a type or an array: %s", p.Name))
@@ -139,11 +168,16 @@ func (p *Parameter) generateSysCArgOut(g *jen.Group, goVarName string, cVarName 
 		p.generateSysCArgStringPointerOut(g, goVarName, cVarName)
 	}
 
-	if p.Array != nil && p.Array.Type.isString() && p.Array.cType.indirectionCount == 3 {
+	if p.Array != nil {
 		if p.lengthParam == nil {
 			panic(fmt.Sprintf("No length param for %s", p.Name))
 		}
-		p.generateSysCArgArrayStringPointerOut(g, goVarName, cVarName)
+
+		if p.Array.Type.isString() && p.Array.cType.indirectionCount == 3 {
+			p.generateSysCArgArrayStringPointerOut(g, goVarName, cVarName)
+		} else {
+			p.generateSysCArgArrayPointerOut(g, goVarName, cVarName)
+		}
 	}
 }
 
@@ -201,6 +235,41 @@ func (p *Parameter) generateSysCArgArrayStringPointerOut(g *jen.Group, goVarName
 	g.Op("*").Id(goVarName).Op("=").Id(outVarName)
 }
 
+func (p *Parameter) generateSysCArgArrayPointerOut(g *jen.Group, goVarName string, cVarName string) {
+	g.Line()
+
+	outVarName := goVarName + "Out"
+	lenVarName := outVarName + "Len"
+	cArrayVarName := cVarName + "ArrayPointer"
+	lengthParamName := "cValue" + strconv.Itoa(p.lengthParamN)
+
+	// param2OutLen := (int)(*cValue?)
+	g.Id(lenVarName).Op(":=").Int().Parens(jen.Op("*").Id(lengthParamName))
+
+	// param2Out := make([]SomeType, param2OutLen, param2OutLen)
+	g.Id(outVarName).Op(":=").Make(
+		jen.Add(p.Array.sysParamGoType()),
+		jen.Id(lenVarName),
+		jen.Id(lenVarName),
+	)
+
+	// if (param2OutLen > 0) {...}
+	g.If(jen.Id(lenVarName).Op(">").Lit(0)).BlockFunc(func(g *jen.Group) {
+		// param2OutCSlice := (*[1 << 30](*C.Sometype))(unsafe.Pointer(cValue2ArrayPointer))[:param2OutLen:param2OutLen]
+		g.Id(outVarName).Op("=").
+			// (*[1 << 30]C.SomeType)
+			Parens(
+				jen.Op("*").Index(jen.Lit(1).Op("<<").Lit(30)).Parens(p.Array.Type.sysParamGoPlainType())).
+			// (unsafe.Pointer(cParam2Array))
+			Parens(jenUnsafePointer().Call(jen.Id(cArrayVarName))).
+			// [:param2Len:param2Len]
+			Index(jen.Op(":").Id(lenVarName).Op(":").Id(lenVarName))
+	})
+
+	// *param2 = param2Out
+	g.Op("*").Id(goVarName).Op("=").Id(outVarName)
+}
+
 func (p *Parameter) generateSysCArgArray(g *jen.Group, goVarName string, cVarName string) {
 	if p.Array.Type.isString() {
 		if p.Array.cType.indirectionCount == 2 {
@@ -213,8 +282,18 @@ func (p *Parameter) generateSysCArgArray(g *jen.Group, goVarName string, cVarNam
 			return
 		}
 
-		panic(fmt.Sprintf("Unsupported indirection count (%d) for array string param", p.Array.Type.cType.indirectionCount))
+		panic(fmt.Sprintf("Unsupported indirection count (%d) for array string param %s", p.Array.cType.indirectionCount, p.Name))
 	}
+
+	if p.isOut() {
+		p.generateSysCArgArrayNonStringOut(g, goVarName, cVarName)
+		return
+	} else {
+		p.generateSysCArgArrayNonString(g, goVarName, cVarName)
+		return
+	}
+
+	panic(fmt.Sprintf("Unsupported indirection count (%d) for array param %s", p.Array.cType.indirectionCount, p.Name))
 }
 
 func (p *Parameter) generateSysCArgArrayString(g *jen.Group, goVarName string, cVarName string) {
@@ -252,13 +331,6 @@ func (p *Parameter) generateSysCArgArrayStringPointer(g *jen.Group, goVarName st
 
 // generateGoArrayStringToC converts a Go slice of strings to a C array of null terminated strings.
 func (p *Parameter) generateGoArrayStringToC(g *jen.Group, goVarName string, cVarName string) string {
-	// cValue2Array := C.malloc((C.ulong)(len(param2)) * C.sizeof_gpointer)
-	// param2Slice := (*[1 << 30]C.gchar)(unsafe.Pointer(cParam2Array))[:param2Len:param2Len]
-	//
-	// for param2i, str := range param2 {
-	//     cValue2Array[param2i] = (*C.gchar)(C.CString(param2[param2i]))
-	// }
-
 	lenVarName := goVarName + "Len"
 	cArrayVarName := cVarName + "Array"
 	goSliceVarName := goVarName + "Slice"
@@ -308,6 +380,34 @@ func (p *Parameter) generateGoArrayStringToC(g *jen.Group, goVarName string, cVa
 		)
 
 	return goSliceVarName
+}
+
+func (p *Parameter) generateSysCArgArrayNonString(g *jen.Group, goVarName string, cVarName string) {
+	cType := jen.Op(p.Array.cType.stars).Qual("C", p.Array.cType.typ)
+	if p.Array.cType.typ == "void" && p.Array.cType.indirectionCount == 1 {
+		cType = jenUnsafePointer()
+	}
+
+	// cValue2 := ([*]C.SomeType)(unsafe.Pointer(&cParam2[0]))
+	g.
+		Id(cVarName).
+		Op(":=").
+		Parens(cType).
+		Parens(jenUnsafePointer().Call(jen.Op("&").Id(goVarName).Index(jen.Lit(0))))
+}
+
+func (p *Parameter) generateSysCArgArrayNonStringOut(g *jen.Group, goVarName string, cVarName string) {
+	cArrayPointerVarName := cVarName + "ArrayPointer"
+
+	// var cValue2ArrayPointer *[*]C.SomeType
+	g.Var().Id(cArrayPointerVarName).Parens(jen.Op(p.Array.Type.cType.stars).Qual("C", p.Array.Type.cType.typ))
+
+	// cValue2 = &cValue2ArrayPointer
+	g.Id(cVarName).Op(":=").Op("&").Id(cArrayPointerVarName)
+
+	if p.isIn() {
+		panic(fmt.Sprintf("Unsupported inout array param %s", p.Name))
+	}
 }
 
 func (p *Parameter) isVarargsOrValist() bool {

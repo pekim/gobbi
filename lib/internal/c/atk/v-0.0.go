@@ -72,13 +72,13 @@ func Fn_atk_implementor_ref_accessible(paramInstance unsafe.Pointer) unsafe.Poin
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : atk_add_focus_tracker : has callback
+// UNSUPPORTED : atk_add_focus_tracker : parameter 'focus_tracker' is callback
 
-// UNSUPPORTED : atk_add_global_event_listener : has callback
+// UNSUPPORTED : atk_add_global_event_listener : parameter 'listener' is callback
 
-// UNSUPPORTED : atk_add_key_event_listener : has callback
+// UNSUPPORTED : atk_add_key_event_listener : parameter 'listener' is callback
 
-// UNSUPPORTED : atk_focus_tracker_init : has callback
+// UNSUPPORTED : atk_focus_tracker_init : parameter 'init' is callback
 
 func Fn_atk_focus_tracker_notify(param0 unsafe.Pointer) {
 	cValue0 := (*C.AtkObject)(unsafe.Pointer(param0))
@@ -128,7 +128,7 @@ func Fn_atk_remove_key_event_listener(param0 uint) {
 	C.atk_remove_key_event_listener(cValue0)
 }
 
-// UNSUPPORTED : atk_text_free_ranges : has non-string array param ranges
+// UNSUPPORTED : atk_text_free_ranges : parameter 'ranges' is array parameter without length parameter
 
 func Fn_atk_gobject_accessible_get_object(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.AtkGObjectAccessible)(unsafe.Pointer(paramInstance))
@@ -232,7 +232,7 @@ func Fn_atk_object_add_relationship(paramInstance unsafe.Pointer, param0 int, pa
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : atk_object_connect_property_change_handler : has callback
+// UNSUPPORTED : atk_object_connect_property_change_handler : parameter 'handler' is callback
 
 func Fn_atk_object_get_description(paramInstance unsafe.Pointer) string {
 	cValueInstance := (*C.AtkObject)(unsafe.Pointer(paramInstance))
@@ -458,7 +458,17 @@ func Fn_atk_registry_set_factory_type(paramInstance unsafe.Pointer, param0 uint6
 	C.atk_registry_set_factory_type(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : atk_relation_new : has non-string array param targets
+func Fn_atk_relation_new(param0 []unsafe.Pointer, param1 int, param2 int) unsafe.Pointer {
+	cValue0 := (**C.AtkObject)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (C.AtkRelationType)(param2)
+
+	ret := C.atk_relation_new(cValue0, cValue1, cValue2)
+
+	return unsafe.Pointer(ret)
+}
 
 func Fn_atk_relation_get_relation_type(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.AtkRelation)(unsafe.Pointer(paramInstance))
@@ -574,7 +584,15 @@ func Fn_atk_state_set_add_state(paramInstance unsafe.Pointer, param0 int) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : atk_state_set_add_states : has non-string array param types
+func Fn_atk_state_set_add_states(paramInstance unsafe.Pointer, param0 []int, param1 int) {
+	cValueInstance := (*C.AtkStateSet)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.AtkStateType)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (C.gint)(param1)
+
+	C.atk_state_set_add_states(cValueInstance, cValue0, cValue1)
+}
 
 func Fn_atk_state_set_and_sets(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.AtkStateSet)(unsafe.Pointer(paramInstance))
@@ -602,7 +620,17 @@ func Fn_atk_state_set_contains_state(paramInstance unsafe.Pointer, param0 int) b
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : atk_state_set_contains_states : has non-string array param types
+func Fn_atk_state_set_contains_states(paramInstance unsafe.Pointer, param0 []int, param1 int) bool {
+	cValueInstance := (*C.AtkStateSet)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.AtkStateType)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (C.gint)(param1)
+
+	ret := C.atk_state_set_contains_states(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
 
 func Fn_atk_state_set_is_empty(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.AtkStateSet)(unsafe.Pointer(paramInstance))
@@ -713,7 +741,7 @@ func Fn_atk_action_set_description(paramInstance unsafe.Pointer, param0 int, par
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : atk_component_add_focus_handler : has callback
+// UNSUPPORTED : atk_component_add_focus_handler : parameter 'handler' is callback
 
 func Fn_atk_component_contains(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int) bool {
 	cValueInstance := (*C.AtkComponent)(unsafe.Pointer(paramInstance))

@@ -94,7 +94,60 @@ func (t *Type) analyseName() {
 
 }
 
-func (t *Type) sysParamGoType() *jen.Statement {
+func (t *Type) sysParamGoPlainType() *jen.Statement {
+	if t.isString() {
+		return jen.String()
+	}
+
+	//if t.cType.typ == "void" && t.cType.indirectionCount == 1 {
+	//	return jenUnsafePointer()
+	//}
+	if t.cType.typ == "void" {
+		return nil
+	}
+
+	// pango specific
+	if t.cType.typ == "FILE" && t.cType.indirectionCount == 1 {
+		return jenUnsafePointer()
+	}
+
+	if simpleGoType, ok := simpleSysParamGoTypes[t.cType.typ]; ok {
+		return jen.Add(simpleGoType)
+	}
+
+	if t.isAlias() {
+		if t.isQualifiedName() {
+			alias, _ := t.foreignNamespace.Aliases.byName(t.foreignName)
+			return jen.Add(alias.Type.sysParamGoType(false))
+		}
+
+		alias, _ := t.namespace.Aliases.byName(t.Name)
+		return jen.Add(alias.Type.sysParamGoType(false))
+	}
+
+	if t.isBitfield() || t.isEnumeration() {
+		return jen.Int()
+	}
+
+	if t.isRecord() && t.cType.indirectionCount == 0 {
+		if t.isQualifiedName() {
+			return jen.Qual(t.foreignNamespace.goFullSysPackageName, t.foreignName)
+		}
+		return jen.Id(t.Name)
+	}
+
+	if t.isClass() ||
+		t.isRecord() ||
+		t.isInterface() ||
+		t.isUnion() {
+
+		return jenUnsafePointer()
+	}
+
+	panic(fmt.Sprintf("Unsupported type : %s %s (%s)", t.namespace.Name, t.Name, t.CType))
+}
+
+func (t *Type) sysParamGoType(decrementIndirectionCount bool) *jen.Statement {
 	if t.isString() {
 		stars := ""
 		if t.cType.indirectionCount > 0 {
@@ -112,29 +165,34 @@ func (t *Type) sysParamGoType() *jen.Statement {
 		return jenUnsafePointer()
 	}
 
+	stars := t.cType.stars
+	if decrementIndirectionCount && t.cType.indirectionCount > 0 {
+		stars = strings.Repeat("*", t.cType.indirectionCount-1)
+	}
+
 	if simpleGoType, ok := simpleSysParamGoTypes[t.cType.typ]; ok {
-		return jen.Op(t.cType.stars).Add(simpleGoType)
+		return jen.Op(stars).Add(simpleGoType)
 	}
 
 	if t.isAlias() {
 		if t.isQualifiedName() {
 			alias, _ := t.foreignNamespace.Aliases.byName(t.foreignName)
-			return jen.Op(t.cType.stars).Add(alias.Type.sysParamGoType())
+			return jen.Op(stars).Add(alias.Type.sysParamGoType(false))
 		}
 
 		alias, _ := t.namespace.Aliases.byName(t.Name)
-		return jen.Op(t.cType.stars).Add(alias.Type.sysParamGoType())
+		return jen.Op(stars).Add(alias.Type.sysParamGoType(false))
 	}
 
 	if t.isBitfield() || t.isEnumeration() {
-		return jen.Op(t.cType.stars).Int()
+		return jen.Op(stars).Int()
 	}
 
 	if t.isRecord() && t.cType.indirectionCount == 0 {
 		if t.isQualifiedName() {
 			return jen.Qual(t.foreignNamespace.goFullSysPackageName, t.foreignName)
 		}
-		return jen.Op(t.cType.stars).Id(t.Name)
+		return jen.Op(stars).Id(t.Name)
 	}
 
 	if t.isClass() ||
