@@ -7,40 +7,32 @@ import (
 )
 
 var simpleSysParamGoTypes = map[string]*jen.Statement{
-	"char":            jen.Int8(),
-	"gchar":           jen.Int8(),
-	"guchar":          jen.Uint8(),
-	"gunichar":        jen.Rune(),
-	"gunichar2":       jen.Uint16(),
-	"gatomicrefcount": jen.Int(),
-	"grefcount":       jen.Int(),
-	"pid_t":           jen.Int(),
-	"int":             jen.Int(),
-	"gint":            jen.Int(),
-	"gint8":           jen.Int8(),
-	"gint16":          jen.Int16(),
-	"gint32":          jen.Int32(),
-	"gint64":          jen.Int64(),
-	"uid_t":           jen.Uint(),
-	"guint":           jen.Uint(),
-	"guint8":          jen.Uint8(),
-	"guint16":         jen.Uint16(),
-	"guint32":         jen.Uint32(),
-	"guint64":         jen.Uint64(),
-	"time_t":          jen.Int64(),
-	"glong":           jen.Int64(),
-	"gulong":          jen.Uint64(),
-	"gloat":           jen.Float32(),
-	"gfloat":          jen.Float32(),
-	"double":          jen.Float64(),
-	"gdouble":         jen.Float64(),
-	"gsize":           jen.Uint64(),
-	"gssize":          jen.Uint64(),
-	"gboolean":        jen.Bool(),
-	"gpointer":        jenUnsafePointer(),
-	"gconstpointer":   jenUnsafePointer(),
-	"goffset":         jen.Int64(),
-	"cairo_format_t":  jen.Int(),
+	"char":          jen.Int8(),
+	"gchar":         jen.Int8(),
+	"guchar":        jen.Uint8(),
+	"gunichar":      jen.Rune(),
+	"int":           jen.Int(),
+	"gint":          jen.Int(),
+	"gint8":         jen.Int8(),
+	"gint16":        jen.Int16(),
+	"gint32":        jen.Int32(),
+	"gint64":        jen.Int64(),
+	"guint":         jen.Uint(),
+	"guint8":        jen.Uint8(),
+	"guint16":       jen.Uint16(),
+	"guint32":       jen.Uint32(),
+	"guint64":       jen.Uint64(),
+	"glong":         jen.Int64(),
+	"gulong":        jen.Uint64(),
+	"gfloat":        jen.Float32(),
+	"double":        jen.Float64(),
+	"gdouble":       jen.Float64(),
+	"gsize":         jen.Uint64(),
+	"gssize":        jen.Uint64(),
+	"gboolean":      jen.Bool(),
+	"gpointer":      jenUnsafePointer(),
+	"gconstpointer": jenUnsafePointer(),
+	"goffset":       jen.Int64(),
 }
 
 type Type struct {
@@ -171,6 +163,9 @@ func (t *Type) sysParamGoType(decrementIndirectionCount bool) *jen.Statement {
 	}
 
 	if simpleGoType, ok := simpleSysParamGoTypes[t.cType.typ]; ok {
+		return jen.Op(stars).Add(simpleGoType)
+	}
+	if simpleGoType, ok := simpleSysParamGoTypes[t.Name]; ok {
 		return jen.Op(stars).Add(simpleGoType)
 	}
 
