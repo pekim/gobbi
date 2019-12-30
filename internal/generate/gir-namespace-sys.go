@@ -5,13 +5,12 @@ import (
 	"github.com/blang/semver"
 	"github.com/dave/jennifer/jen"
 	"path/filepath"
-	"strings"
 	"sync"
 )
 
-func (n *Namespace) generateC() {
+func (n *Namespace) generateSys() {
 	filename := filepath.Join(n.cDir, "package")
-	n.generateFile(filename, n.generatePackageFile)
+	n.generateFile(filename, n.generateSysPackageFile)
 
 	var wg sync.WaitGroup
 	for _, version := range n.versions.versions {
@@ -29,9 +28,9 @@ func (n *Namespace) generateC() {
 	wg.Wait()
 }
 
-// generatePackageFile generates a file with cgo pkg-config comments
+// generateSysPackageFile generates a file with cgo pkg-config comments
 // for the namespace's packages.
-func (ns *Namespace) generatePackageFile(f *jen.File) {
+func (ns *Namespace) generateSysPackageFile(f *jen.File) {
 	// pkg-config
 	for _, pkg := range ns.repository.Packages {
 		f.CgoPreamble(fmt.Sprintf("// #cgo pkg-config: %s", pkg.Name))
@@ -49,7 +48,7 @@ func (ns *Namespace) generatePackageFile(f *jen.File) {
 }
 
 func (ns *Namespace) generateSysFile(f *jen.File, version semver.Version) {
-	ns.generateSysFileBuildTags(f, version)
+	ns.generateFileBuildTags(f, version)
 	ns.repository.CIncludes.generate(f)
 
 	ns.generateSysToCBoolFunction(f)
@@ -58,33 +57,6 @@ func (ns *Namespace) generateSysFile(f *jen.File, version semver.Version) {
 	ns.Functions.generateSys(f, version)
 	ns.Classes.generateSys(f, version)
 	ns.Interfaces.generateSys(f, version)
-}
-
-func (ns *Namespace) generateSysFileBuildTags(f *jen.File, version semver.Version) {
-	var buildTags string
-
-	if versionIsNone(version) {
-		versions := []string{}
-		for _, v := range ns.versions.versions {
-			if versionIsNone(v) {
-				continue
-			}
-
-			versions = append(versions, "!"+ns.goPackageName+"_"+versionString(v))
-		}
-
-		// !pkg_1.20,!pkg_1.22,!pgk_1.30,..
-		buildTags = strings.Join(versions, ",")
-	} else {
-		buildTags = fmt.Sprintf("%s_%s", ns.goPackageName, versionString(version))
-	}
-
-	if buildTags == "" {
-		return
-	}
-
-	f.HeaderComment(fmt.Sprintf("+build %s", buildTags))
-	f.Line()
 }
 
 func (ns *Namespace) generateSysToCBoolFunction(f *jen.File) {

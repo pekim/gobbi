@@ -2,6 +2,7 @@ package generate
 
 import (
 	"fmt"
+	"github.com/blang/semver"
 	"github.com/dave/jennifer/jen"
 	"io/ioutil"
 	"os"
@@ -70,7 +71,8 @@ func (n *Namespace) generate() {
 
 	n.mkDirs()
 
-	n.generateC()
+	n.generateSys()
+	n.generateLib()
 
 	//n.generateFile("alias", n.Aliases.generate)
 	//n.generateFile("bitfield", n.Bitfields.generate)
@@ -145,4 +147,31 @@ func (n *Namespace) getUnsupportedCount(dir string) int {
 	}
 
 	return len(uniqUnsupported)
+}
+
+func (ns *Namespace) generateFileBuildTags(f *jen.File, version semver.Version) {
+	var buildTags string
+
+	if versionIsNone(version) {
+		versions := []string{}
+		for _, v := range ns.versions.versions {
+			if versionIsNone(v) {
+				continue
+			}
+
+			versions = append(versions, "!"+ns.goPackageName+"_"+versionString(v))
+		}
+
+		// !pkg_1.20,!pkg_1.22,!pgk_1.30,..
+		buildTags = strings.Join(versions, ",")
+	} else {
+		buildTags = fmt.Sprintf("%s_%s", ns.goPackageName, versionString(version))
+	}
+
+	if buildTags == "" {
+		return
+	}
+
+	f.HeaderComment(fmt.Sprintf("+build %s", buildTags))
+	f.Line()
 }
