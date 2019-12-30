@@ -2802,6 +2802,8 @@ func Fn_g_signal_remove_emission_hook(param0 uint, param1 uint64) {
 	C.g_signal_remove_emission_hook(cValue0, cValue1)
 }
 
+// UNSUPPORTED : g_signal_set_va_marshaller : blacklisted
+
 func Fn_g_signal_stop_emission(param0 unsafe.Pointer, param1 uint, param2 uint32) {
 	cValue0 := (C.gpointer)(param0)
 

@@ -34,6 +34,7 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 	f.namespace = ns
 	f.applyAddenda()
 	f.version = versionNew(f.Version)
+	f.namespace.versions.add(f.version)
 	f.sysName = "Fn_" + f.CIdentifier
 	if f.InstanceParameter != nil {
 		f.InstanceParameter.init(ns)

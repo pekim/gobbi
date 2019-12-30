@@ -13,6 +13,9 @@ var functionBlacklist = map[string]bool{
 	"gdk_synthesize_window_state": true,
 	"gdk_window_destroy_notify":   true,
 
+	// gdkpixbuf
+	"gdk_pixbuf_save_to_buffer": true,
+
 	// gio
 	"g_io_module_query":                     true,
 	"g_settings_schema_source_list_schemas": true,
@@ -34,6 +37,9 @@ var functionBlacklist = map[string]bool{
 	"g_keyfile_settings_backend_new":           true,
 	"g_memory_settings_backend_new":            true,
 	"g_null_settings_backend_new":              true,
+
+	// gobject
+	"g_signal_set_va_marshaller": true,
 
 	// gtk
 	"gtk_cell_accessible_parent_get_cell_position": true,
