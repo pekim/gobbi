@@ -683,7 +683,7 @@ func Fn_g_io_extension_point_register(param0 string) unsafe.Pointer {
 
 // UNSUPPORTED : g_io_scheduler_job_send_to_mainloop_async : parameter 'func' is callback
 
-// UNSUPPORTED : g_resource_enumerate_children : has array return
+// UNSUPPORTED : g_resource_enumerate_children : no array length
 
 func Fn_g_settings_schema_get_id(paramInstance unsafe.Pointer) string {
 	cValueInstance := (*C.GSettingsSchema)(unsafe.Pointer(paramInstance))
@@ -693,9 +693,9 @@ func Fn_g_settings_schema_get_id(paramInstance unsafe.Pointer) string {
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : g_settings_schema_list_children : has array return
+// UNSUPPORTED : g_settings_schema_list_children : no array length
 
-// UNSUPPORTED : g_settings_schema_list_keys : has array return
+// UNSUPPORTED : g_settings_schema_list_keys : no array length
 
 // UNSUPPORTED : g_settings_schema_source_list_schemas : blacklisted
 
@@ -1022,7 +1022,7 @@ func Fn_g_content_type_get_icon(param0 string) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_content_type_get_mime_dirs : has array return
+// UNSUPPORTED : g_content_type_get_mime_dirs : no array length
 
 func Fn_g_content_type_get_mime_type(param0 string) string {
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -1048,7 +1048,7 @@ func Fn_g_content_type_guess(param0 string, param1 []uint8, param2 uint64, param
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : g_content_type_guess_for_tree : has array return
+// UNSUPPORTED : g_content_type_guess_for_tree : no array length
 
 func Fn_g_content_type_is_a(param0 string, param1 string) bool {
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -1235,7 +1235,7 @@ func Fn_g_io_scheduler_cancel_all_jobs() {
 
 // UNSUPPORTED : g_null_settings_backend_new : blacklisted
 
-// UNSUPPORTED : g_resources_enumerate_children : has array return
+// UNSUPPORTED : g_resources_enumerate_children : no array length
 
 // UNSUPPORTED : g_simple_async_report_error_in_idle : parameter 'callback' is callback
 
@@ -1401,7 +1401,7 @@ func Fn_g_app_launch_context_get_display(paramInstance unsafe.Pointer, param0 un
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : g_app_launch_context_get_environment : has array return
+// UNSUPPORTED : g_app_launch_context_get_environment : no array length
 
 func Fn_g_app_launch_context_get_startup_notify_id(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) string {
 	cValueInstance := (*C.GAppLaunchContext)(unsafe.Pointer(paramInstance))
@@ -1458,9 +1458,7 @@ func Fn_g_application_id_is_valid(param0 string) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_application_command_line_get_arguments : has array return
-
-// UNSUPPORTED : g_application_command_line_get_environ : has array return
+// UNSUPPORTED : g_application_command_line_get_environ : no array length
 
 func Fn_g_buffered_input_stream_new(param0 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GInputStream)(unsafe.Pointer(param0))
@@ -1538,7 +1536,20 @@ func Fn_g_buffered_input_stream_peek(paramInstance unsafe.Pointer, param0 []uint
 	return (uint64)(ret)
 }
 
-// UNSUPPORTED : g_buffered_input_stream_peek_buffer : has array return
+func Fn_g_buffered_input_stream_peek_buffer(paramInstance unsafe.Pointer, param0 *uint64) []uint8 {
+	cValueInstance := (*C.GBufferedInputStream)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gsize)(unsafe.Pointer(param0))
+
+	ret := C.g_buffered_input_stream_peek_buffer(cValueInstance, cValue0)
+
+	retLen := int(*cValue0)
+	retGo := make([]uint8, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](uint8))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_g_buffered_input_stream_read_byte(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) int {
 	cValueInstance := (*C.GBufferedInputStream)(unsafe.Pointer(paramInstance))
@@ -2327,7 +2338,7 @@ func Fn_g_dbus_message_get_header(paramInstance unsafe.Pointer, param0 int) unsa
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_dbus_message_get_header_fields : has array return
+// UNSUPPORTED : g_dbus_message_get_header_fields : no array length
 
 func Fn_g_dbus_message_get_interface(paramInstance unsafe.Pointer) string {
 	cValueInstance := (*C.GDBusMessage)(unsafe.Pointer(paramInstance))
@@ -2620,7 +2631,24 @@ func Fn_g_dbus_message_set_unix_fd_list(paramInstance unsafe.Pointer, param0 uns
 	C.g_dbus_message_set_unix_fd_list(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : g_dbus_message_to_blob : has array return
+func Fn_g_dbus_message_to_blob(paramInstance unsafe.Pointer, param0 *uint64, param1 int, error unsafe.Pointer) []uint8 {
+	cValueInstance := (*C.GDBusMessage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gsize)(unsafe.Pointer(param0))
+
+	cValue1 := (C.GDBusCapabilityFlags)(param1)
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_dbus_message_to_blob(cValueInstance, cValue0, cValue1, cError)
+
+	retLen := int(*cValue0)
+	retGo := make([]uint8, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](uint8))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_g_dbus_message_to_gerror(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GDBusMessage)(unsafe.Pointer(paramInstance))
@@ -2917,7 +2945,7 @@ func Fn_g_dbus_proxy_get_cached_property(paramInstance unsafe.Pointer, param0 st
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_dbus_proxy_get_cached_property_names : has array return
+// UNSUPPORTED : g_dbus_proxy_get_cached_property_names : no array length
 
 func Fn_g_dbus_proxy_get_connection(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GDBusProxy)(unsafe.Pointer(paramInstance))
@@ -3150,11 +3178,11 @@ func Fn_g_data_input_stream_read_int64(paramInstance unsafe.Pointer, param0 unsa
 	return (int64)(ret)
 }
 
-// UNSUPPORTED : g_data_input_stream_read_line : has array return
+// UNSUPPORTED : g_data_input_stream_read_line : no array length
 
 // UNSUPPORTED : g_data_input_stream_read_line_async : parameter 'callback' is callback
 
-// UNSUPPORTED : g_data_input_stream_read_line_finish : has array return
+// UNSUPPORTED : g_data_input_stream_read_line_finish : no array length
 
 func Fn_g_data_input_stream_read_uint16(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint16 {
 	cValueInstance := (*C.GDataInputStream)(unsafe.Pointer(paramInstance))
@@ -3471,17 +3499,15 @@ func Fn_g_desktop_app_info_get_is_hidden(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_desktop_app_info_get_keywords : has array return
-
-// UNSUPPORTED : g_desktop_app_info_get_string_list : has array return
+// UNSUPPORTED : g_desktop_app_info_get_keywords : no array length
 
 // UNSUPPORTED : g_desktop_app_info_launch_uris_as_manager : parameter 'user_setup' is callback
 
 // UNSUPPORTED : g_desktop_app_info_launch_uris_as_manager_with_fds : parameter 'user_setup' is callback
 
-// UNSUPPORTED : g_desktop_app_info_list_actions : has array return
+// UNSUPPORTED : g_desktop_app_info_list_actions : no array length
 
-// UNSUPPORTED : g_desktop_app_info_search : has array return
+// UNSUPPORTED : g_desktop_app_info_search : array has no type
 
 func Fn_g_desktop_app_info_set_desktop_env(param0 string) {
 	cValue0 := (*C.char)(C.CString(param0))
@@ -3828,7 +3854,7 @@ func Fn_g_file_info_get_attribute_string(paramInstance unsafe.Pointer, param0 st
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : g_file_info_get_attribute_stringv : has array return
+// UNSUPPORTED : g_file_info_get_attribute_stringv : no array length
 
 func Fn_g_file_info_get_attribute_type(paramInstance unsafe.Pointer, param0 string) int {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
@@ -3997,7 +4023,7 @@ func Fn_g_file_info_has_namespace(paramInstance unsafe.Pointer, param0 string) b
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_file_info_list_attributes : has array return
+// UNSUPPORTED : g_file_info_list_attributes : no array length
 
 func Fn_g_file_info_remove_attribute(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
@@ -4360,7 +4386,7 @@ func Fn_g_filename_completer_get_completion_suffix(paramInstance unsafe.Pointer,
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : g_filename_completer_get_completions : has array return
+// UNSUPPORTED : g_filename_completer_get_completions : no array length
 
 func Fn_g_filename_completer_set_dirs_only(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GFilenameCompleter)(unsafe.Pointer(paramInstance))
@@ -5728,7 +5754,7 @@ func Fn_g_settings_get_string(paramInstance unsafe.Pointer, param0 string) strin
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : g_settings_get_strv : has array return
+// UNSUPPORTED : g_settings_get_strv : no array length
 
 func Fn_g_settings_get_value(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
@@ -5752,9 +5778,9 @@ func Fn_g_settings_is_writable(paramInstance unsafe.Pointer, param0 string) bool
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_settings_list_children : has array return
+// UNSUPPORTED : g_settings_list_children : no array length
 
-// UNSUPPORTED : g_settings_list_keys : has array return
+// UNSUPPORTED : g_settings_list_keys : no array length
 
 func Fn_g_settings_reset(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
@@ -5879,9 +5905,9 @@ func Fn_g_settings_set_value(paramInstance unsafe.Pointer, param0 string, param1
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_settings_list_relocatable_schemas : has array return
+// UNSUPPORTED : g_settings_list_relocatable_schemas : no array length
 
-// UNSUPPORTED : g_settings_list_schemas : has array return
+// UNSUPPORTED : g_settings_list_schemas : no array length
 
 func Fn_g_settings_sync() {
 	C.g_settings_sync()
@@ -7304,7 +7330,7 @@ func Fn_g_themed_icon_append_name(paramInstance unsafe.Pointer, param0 string) {
 	C.g_themed_icon_append_name(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : g_themed_icon_get_names : has array return
+// UNSUPPORTED : g_themed_icon_get_names : no array length
 
 func Fn_g_themed_icon_prepend_name(paramInstance unsafe.Pointer, param0 string) {
 	cValueInstance := (*C.GThemedIcon)(unsafe.Pointer(paramInstance))
@@ -7500,9 +7526,35 @@ func Fn_g_unix_fd_list_get_length(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : g_unix_fd_list_peek_fds : has array return
+func Fn_g_unix_fd_list_peek_fds(paramInstance unsafe.Pointer, param0 *int) []int {
+	cValueInstance := (*C.GUnixFDList)(unsafe.Pointer(paramInstance))
 
-// UNSUPPORTED : g_unix_fd_list_steal_fds : has array return
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	ret := C.g_unix_fd_list_peek_fds(cValueInstance, cValue0)
+
+	retLen := int(*cValue0)
+	retGo := make([]int, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](int))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
+
+func Fn_g_unix_fd_list_steal_fds(paramInstance unsafe.Pointer, param0 *int) []int {
+	cValueInstance := (*C.GUnixFDList)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	ret := C.g_unix_fd_list_steal_fds(cValueInstance, cValue0)
+
+	retLen := int(*cValue0)
+	retGo := make([]int, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](int))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_g_unix_fd_message_new() unsafe.Pointer {
 	ret := C.g_unix_fd_message_new()
@@ -7538,7 +7590,20 @@ func Fn_g_unix_fd_message_get_fd_list(paramInstance unsafe.Pointer) unsafe.Point
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_unix_fd_message_steal_fds : has array return
+func Fn_g_unix_fd_message_steal_fds(paramInstance unsafe.Pointer, param0 *int) []int {
+	cValueInstance := (*C.GUnixFDMessage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	ret := C.g_unix_fd_message_steal_fds(cValueInstance, cValue0)
+
+	retLen := int(*cValue0)
+	retGo := make([]int, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](int))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_g_unix_input_stream_new(param0 int, param1 bool) unsafe.Pointer {
 	cValue0 := (C.gint)(param0)
@@ -7713,7 +7778,7 @@ func Fn_g_vfs_get_file_for_uri(paramInstance unsafe.Pointer, param0 string) unsa
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_vfs_get_supported_uri_schemes : has array return
+// UNSUPPORTED : g_vfs_get_supported_uri_schemes : no array length
 
 func Fn_g_vfs_is_active(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GVfs)(unsafe.Pointer(paramInstance))
@@ -7850,7 +7915,7 @@ func Fn_g_zlib_decompressor_get_file_info(paramInstance unsafe.Pointer) unsafe.P
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_action_group_list_actions : has array return
+// UNSUPPORTED : g_action_group_list_actions : no array length
 
 func Fn_g_app_info_add_supports_type(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
@@ -7963,7 +8028,7 @@ func Fn_g_app_info_get_name(paramInstance unsafe.Pointer) string {
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : g_app_info_get_supported_types : has array return
+// UNSUPPORTED : g_app_info_get_supported_types : no array length
 
 func Fn_g_app_info_launch(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
@@ -8222,7 +8287,7 @@ func Fn_g_drive_eject_with_operation_finish(paramInstance unsafe.Pointer, param0
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_drive_enumerate_identifiers : has array return
+// UNSUPPORTED : g_drive_enumerate_identifiers : no array length
 
 func Fn_g_drive_get_icon(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GDrive)(unsafe.Pointer(paramInstance))
@@ -9610,9 +9675,9 @@ func Fn_g_mount_get_volume(paramInstance unsafe.Pointer) unsafe.Pointer {
 
 // UNSUPPORTED : g_mount_guess_content_type : parameter 'callback' is callback
 
-// UNSUPPORTED : g_mount_guess_content_type_finish : has array return
+// UNSUPPORTED : g_mount_guess_content_type_finish : no array length
 
-// UNSUPPORTED : g_mount_guess_content_type_sync : has array return
+// UNSUPPORTED : g_mount_guess_content_type_sync : no array length
 
 func Fn_g_mount_is_shadowed(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))
@@ -9768,11 +9833,11 @@ func Fn_g_proxy_resolver_is_supported(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_proxy_resolver_lookup : has array return
+// UNSUPPORTED : g_proxy_resolver_lookup : no array length
 
 // UNSUPPORTED : g_proxy_resolver_lookup_async : parameter 'callback' is callback
 
-// UNSUPPORTED : g_proxy_resolver_lookup_finish : has array return
+// UNSUPPORTED : g_proxy_resolver_lookup_finish : no array length
 
 func Fn_g_seekable_can_seek(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GSeekable)(unsafe.Pointer(paramInstance))
@@ -9888,7 +9953,7 @@ func Fn_g_volume_eject_with_operation_finish(paramInstance unsafe.Pointer, param
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_volume_enumerate_identifiers : has array return
+// UNSUPPORTED : g_volume_enumerate_identifiers : no array length
 
 func Fn_g_volume_get_activation_root(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GVolume)(unsafe.Pointer(paramInstance))

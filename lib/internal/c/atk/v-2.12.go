@@ -636,7 +636,7 @@ func Fn_atk_relation_get_relation_type(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : atk_relation_get_target : has array return
+// UNSUPPORTED : atk_relation_get_target : no array length
 
 func Fn_atk_relation_remove_target(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
 	cValueInstance := (*C.AtkRelation)(unsafe.Pointer(paramInstance))
@@ -1704,7 +1704,7 @@ func Fn_atk_table_set_summary(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 	C.atk_table_set_summary(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : atk_table_cell_get_column_header_cells : has array return
+// UNSUPPORTED : atk_table_cell_get_column_header_cells : no array length
 
 func Fn_atk_table_cell_get_column_span(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.AtkTableCell)(unsafe.Pointer(paramInstance))
@@ -1742,7 +1742,7 @@ func Fn_atk_table_cell_get_row_column_span(paramInstance unsafe.Pointer, param0 
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : atk_table_cell_get_row_header_cells : has array return
+// UNSUPPORTED : atk_table_cell_get_row_header_cells : no array length
 
 func Fn_atk_table_cell_get_row_span(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.AtkTableCell)(unsafe.Pointer(paramInstance))
@@ -1772,7 +1772,7 @@ func Fn_atk_text_add_selection(paramInstance unsafe.Pointer, param0 int, param1 
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : atk_text_get_bounded_ranges : has array return
+// UNSUPPORTED : atk_text_get_bounded_ranges : no array length
 
 func Fn_atk_text_get_caret_offset(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.AtkText)(unsafe.Pointer(paramInstance))

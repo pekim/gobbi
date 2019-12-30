@@ -117,7 +117,7 @@ func (f *Function) generateSysReturnTypeDeclaration(s *jen.Statement) {
 		return
 	}
 
-	s.Add(f.ReturnValue.Type.sysParamGoType(false))
+	s.Add(f.ReturnValue.sysParamGoType())
 }
 
 func (f *Function) generateSysBody(g *jen.Group) {
@@ -201,7 +201,8 @@ func (f *Function) generateSysReturn(g *jen.Group) {
 	}
 
 	g.Line()
-	g.Return().Add(f.ReturnValue.generateSysGoValue("ret"))
+	retValue := f.ReturnValue.generateSysGoValue(g, "ret")
+	g.Return().Add(retValue)
 }
 
 func (f *Function) generateSysVarArgsCFunction(fi *jen.File) {

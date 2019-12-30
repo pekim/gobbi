@@ -987,7 +987,20 @@ func Fn_pango_language_get_sample_string(paramInstance unsafe.Pointer) string {
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : pango_language_get_scripts : has array return
+func Fn_pango_language_get_scripts(paramInstance unsafe.Pointer, param0 *int) []int {
+	cValueInstance := (*C.PangoLanguage)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.int)(unsafe.Pointer(param0))
+
+	ret := C.pango_language_get_scripts(cValueInstance, cValue0)
+
+	retLen := int(*cValue0)
+	retGo := make([]int, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](int))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_pango_language_includes_script(paramInstance unsafe.Pointer, param0 int) bool {
 	cValueInstance := (*C.PangoLanguage)(unsafe.Pointer(paramInstance))
@@ -2085,7 +2098,7 @@ func Fn_pango_skip_space(param0 *string) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : pango_split_file_list : has array return
+// UNSUPPORTED : pango_split_file_list : no array length
 
 func Fn_pango_trim_string(param0 string) string {
 	cValue0 := (*C.char)(C.CString(param0))
@@ -2784,7 +2797,20 @@ func Fn_pango_layout_get_log_attrs(paramInstance unsafe.Pointer, param0 *[]unsaf
 	*param0 = param0Out
 }
 
-// UNSUPPORTED : pango_layout_get_log_attrs_readonly : has array return
+func Fn_pango_layout_get_log_attrs_readonly(paramInstance unsafe.Pointer, param0 *int) []LogAttr {
+	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+
+	ret := C.pango_layout_get_log_attrs_readonly(cValueInstance, cValue0)
+
+	retLen := int(*cValue0)
+	retGo := make([]LogAttr, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](LogAttr))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_pango_layout_get_pixel_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))

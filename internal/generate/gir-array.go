@@ -25,6 +25,14 @@ func (a *Array) init(ns *Namespace) {
 	a.cType = parseCtype(a.CType)
 }
 
+func (a *Array) isSupported() (bool, string) {
+	if a.Type == nil {
+		return false, "array has no type"
+	}
+
+	return true, ""
+}
+
 func (a *Array) sysParamGoType() *jen.Statement {
 	return jen.Index().Add(a.Type.sysParamGoPlainType())
 }

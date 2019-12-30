@@ -50,6 +50,12 @@ func (p Parameter) isSupported() (bool, string) {
 		}
 	}
 
+	if p.Array != nil {
+		if supported, reason := p.Array.isSupported(); !supported {
+			return supported, reason
+		}
+	}
+
 	return true, ""
 }
 

@@ -864,8 +864,6 @@ func Fn_pango_language_get_sample_string(paramInstance unsafe.Pointer) string {
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : pango_language_get_scripts : has array return
-
 func Fn_pango_language_includes_script(paramInstance unsafe.Pointer, param0 int) bool {
 	cValueInstance := (*C.PangoLanguage)(unsafe.Pointer(paramInstance))
 
@@ -1739,7 +1737,7 @@ func Fn_pango_skip_space(param0 *string) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : pango_split_file_list : has array return
+// UNSUPPORTED : pango_split_file_list : no array length
 
 func Fn_pango_trim_string(param0 string) string {
 	cValue0 := (*C.char)(C.CString(param0))
@@ -2255,8 +2253,6 @@ func Fn_pango_layout_get_log_attrs(paramInstance unsafe.Pointer, param0 *[]unsaf
 	}
 	*param0 = param0Out
 }
-
-// UNSUPPORTED : pango_layout_get_log_attrs_readonly : has array return
 
 func Fn_pango_layout_get_pixel_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValueInstance := (*C.PangoLayout)(unsafe.Pointer(paramInstance))

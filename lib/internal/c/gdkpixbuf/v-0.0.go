@@ -28,9 +28,9 @@ type PixbufFormat C.GdkPixbufFormat
 type PixbufLoaderClass C.GdkPixbufLoaderClass
 type PixbufSimpleAnimClass C.GdkPixbufSimpleAnimClass
 
-// UNSUPPORTED : gdk_pixbuf_format_get_extensions : has array return
+// UNSUPPORTED : gdk_pixbuf_format_get_extensions : no array length
 
-// UNSUPPORTED : gdk_pixbuf_format_get_mime_types : has array return
+// UNSUPPORTED : gdk_pixbuf_format_get_mime_types : no array length
 
 func Fn_gdk_pixbuf_new(param0 int, param1 bool, param2 int, param3 int, param4 int) unsafe.Pointer {
 	cValue0 := (C.GdkColorspace)(param0)
@@ -268,9 +268,7 @@ func Fn_gdk_pixbuf_get_option(paramInstance unsafe.Pointer, param0 string) strin
 	return C.GoString(ret)
 }
 
-// UNSUPPORTED : gdk_pixbuf_get_pixels : has array return
-
-// UNSUPPORTED : gdk_pixbuf_get_pixels_with_length : has array return
+// UNSUPPORTED : gdk_pixbuf_get_pixels : no array length
 
 func Fn_gdk_pixbuf_get_rowstride(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))

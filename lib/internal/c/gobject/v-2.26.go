@@ -1070,7 +1070,20 @@ func Fn_g_object_class_install_property(paramInstance unsafe.Pointer, param0 uin
 	C.g_object_class_install_property(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : g_object_class_list_properties : has array return
+func Fn_g_object_class_list_properties(paramInstance unsafe.Pointer, param0 *uint) []unsafe.Pointer {
+	cValueInstance := (*C.GObjectClass)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.guint)(unsafe.Pointer(param0))
+
+	ret := C.g_object_class_list_properties(cValueInstance, cValue0)
+
+	retLen := int(*cValue0)
+	retGo := make([]unsafe.Pointer, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_g_object_class_override_property(paramInstance unsafe.Pointer, param0 uint, param1 string) {
 	cValueInstance := (*C.GObjectClass)(unsafe.Pointer(paramInstance))
@@ -1093,7 +1106,22 @@ func Fn_g_param_spec_pool_insert(paramInstance unsafe.Pointer, param0 unsafe.Poi
 	C.g_param_spec_pool_insert(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : g_param_spec_pool_list : has array return
+func Fn_g_param_spec_pool_list(paramInstance unsafe.Pointer, param0 uint64, param1 *uint) []unsafe.Pointer {
+	cValueInstance := (*C.GParamSpecPool)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (C.GType)(param0)
+
+	cValue1 := (*C.guint)(unsafe.Pointer(param1))
+
+	ret := C.g_param_spec_pool_list(cValueInstance, cValue0, cValue1)
+
+	retLen := int(*cValue1)
+	retGo := make([]unsafe.Pointer, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_g_param_spec_pool_list_owned(paramInstance unsafe.Pointer, param0 uint64) unsafe.Pointer {
 	cValueInstance := (*C.GParamSpecPool)(unsafe.Pointer(paramInstance))
@@ -1252,7 +1280,20 @@ func Fn_g_type_interface_peek(param0 unsafe.Pointer, param1 uint64) unsafe.Point
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_type_interface_prerequisites : has array return
+func Fn_g_type_interface_prerequisites(param0 uint64, param1 *uint) []uint64 {
+	cValue0 := (C.GType)(param0)
+
+	cValue1 := (*C.guint)(unsafe.Pointer(param1))
+
+	ret := C.g_type_interface_prerequisites(cValue0, cValue1)
+
+	retLen := int(*cValue1)
+	retGo := make([]uint64, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](uint64))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_g_type_value_table_peek(param0 uint64) unsafe.Pointer {
 	cValue0 := (C.GType)(param0)
@@ -2800,7 +2841,20 @@ func Fn_g_signal_has_handler_pending(param0 unsafe.Pointer, param1 uint, param2 
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_signal_list_ids : has array return
+func Fn_g_signal_list_ids(param0 uint64, param1 *uint) []uint {
+	cValue0 := (C.GType)(param0)
+
+	cValue1 := (*C.guint)(unsafe.Pointer(param1))
+
+	ret := C.g_signal_list_ids(cValue0, cValue1)
+
+	retLen := int(*cValue1)
+	retGo := make([]uint, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](uint))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_g_signal_lookup(param0 string, param1 uint64) uint {
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -3051,7 +3105,20 @@ func Fn_g_type_check_value_holds(param0 unsafe.Pointer, param1 uint64) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_type_children : has array return
+func Fn_g_type_children(param0 uint64, param1 *uint) []uint64 {
+	cValue0 := (C.GType)(param0)
+
+	cValue1 := (*C.guint)(unsafe.Pointer(param1))
+
+	ret := C.g_type_children(cValue0, cValue1)
+
+	retLen := int(*cValue1)
+	retGo := make([]uint64, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](uint64))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_g_type_create_instance(param0 uint64) unsafe.Pointer {
 	cValue0 := (C.GType)(param0)
@@ -3148,9 +3215,20 @@ func Fn_g_type_init_with_debug_flags(param0 int) {
 	C.g_type_init_with_debug_flags(cValue0)
 }
 
-// UNSUPPORTED : g_type_interface_prerequisites : has array return
+func Fn_g_type_interfaces(param0 uint64, param1 *uint) []uint64 {
+	cValue0 := (C.GType)(param0)
 
-// UNSUPPORTED : g_type_interfaces : has array return
+	cValue1 := (*C.guint)(unsafe.Pointer(param1))
+
+	ret := C.g_type_interfaces(cValue0, cValue1)
+
+	retLen := int(*cValue1)
+	retGo := make([]uint64, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](uint64))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_g_type_is_a(param0 uint64, param1 uint64) bool {
 	cValue0 := (C.GType)(param0)
@@ -3696,7 +3774,20 @@ func Fn_g_object_interface_install_property(param0 unsafe.Pointer, param1 unsafe
 	C.g_object_interface_install_property(cValue0, cValue1)
 }
 
-// UNSUPPORTED : g_object_interface_list_properties : has array return
+func Fn_g_object_interface_list_properties(param0 unsafe.Pointer, param1 *uint) []unsafe.Pointer {
+	cValue0 := (C.gpointer)(param0)
+
+	cValue1 := (*C.guint)(unsafe.Pointer(param1))
+
+	ret := C.g_object_interface_list_properties(cValue0, cValue1)
+
+	retLen := int(*cValue1)
+	retGo := make([]unsafe.Pointer, retLen, retLen)
+	if retLen > 0 {
+		retGo = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(ret))[:retLen:retLen]
+	}
+	return retGo
+}
 
 func Fn_g_param_spec_get_blurb(paramInstance unsafe.Pointer) string {
 	cValueInstance := (*C.GParamSpec)(unsafe.Pointer(paramInstance))
