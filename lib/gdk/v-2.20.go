@@ -2,3 +2,5 @@
 // +build gdk_2.20
 
 package gdk
+
+// UNSUPPORTED : XEvent : blacklisted

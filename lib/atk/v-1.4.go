@@ -2,3 +2,9 @@
 // +build atk_1.4
 
 package atk
+
+import glib "github.com/pekim/gobbi/lib/glib"
+
+type AttributeSet glib.SList
+
+type State uint64

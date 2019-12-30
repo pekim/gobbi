@@ -2,6 +2,7 @@ package generate
 
 import (
 	"github.com/blang/semver"
+	"github.com/dave/jennifer/jen"
 )
 
 type Alias struct {
@@ -14,27 +15,34 @@ type Alias struct {
 	blacklist bool
 	namespace *Namespace
 	version   semver.Version
-	//goName    string
+	goName    string
 }
 
 func (a *Alias) init(ns *Namespace) {
 	a.namespace = ns
 	a.applyAddenda()
 	a.version = versionNew(a.Version)
-	//a.goName = makeExportedGoName(a.Name)
+	a.goName = makeExportedGoName(a.Name)
 	a.Type.init(ns)
 }
 
-//func (a *Alias) generateSys(f *jen.File, version semver.Version) {
-//	if a.blacklist {
-//		f.Commentf("UNSUPPORTED : %s : blacklisted", a.Name)
-//		return
-//	}
-//
-//	if a.version.GT(version) {
-//		return
-//	}
-//
-//	// GEN: type SomeAlias SomeCType
-//	f.Type().Id(a.Name).Qual("C", a.CType)
-//}
+func (a *Alias) generateLib(f *jen.File, version semver.Version) {
+	if a.blacklist {
+		f.Commentf("UNSUPPORTED : %s : blacklisted", a.Name)
+		f.Line()
+		return
+	}
+
+	if a.version.GT(version) {
+		return
+	}
+
+	goType := a.Type.libParamGoType(false)
+	//f.docForC(a.goName, a.Name)
+	f.
+		Type().
+		Id(a.goName).
+		Add(goType)
+
+	f.Line()
+}

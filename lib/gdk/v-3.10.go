@@ -2,3 +2,5 @@
 // +build gdk_3.10
 
 package gdk
+
+// UNSUPPORTED : XEvent : blacklisted

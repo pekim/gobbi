@@ -1,6 +1,16 @@
 package generate
 
-var aliasBlacklist = map[string]bool{}
+var aliasBlacklist = map[string]bool{
+	"GLib.MutexLocker":        true,
+	"GLib.RecMutexLocker":     true,
+	"GLib.RWLockReaderLocker": true,
+	"GLib.RWLockWriterLocker": true,
+
+	"Gdk.XEvent": true,
+
+	"GObject.SignalCMarshaller":   true,
+	"GObject.SignalCVaMarshaller": true,
+}
 
 var aliasVersionAddenda = map[string]string{
 	"GLib.RecMutexLocker":     "2.60",

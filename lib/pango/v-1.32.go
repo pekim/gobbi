@@ -2,3 +2,9 @@
 // +build pango_1.32
 
 package pango
+
+type Glyph uint32
+
+type GlyphUnit int32
+
+type LayoutRun GlyphItem

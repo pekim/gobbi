@@ -2,3 +2,5 @@
 // +build gdk_2.18
 
 package gdk
+
+// UNSUPPORTED : XEvent : blacklisted
