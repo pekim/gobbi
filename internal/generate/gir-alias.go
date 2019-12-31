@@ -38,6 +38,7 @@ func (a *Alias) generateLib(f *jen.File, version semver.Version) {
 	}
 
 	f.Commentf("%s is a representation of the C alias %s.", a.goName, a.CType)
+	docVersion(f, a.Version)
 
 	goType := a.Type.libParamGoType(false)
 	f.

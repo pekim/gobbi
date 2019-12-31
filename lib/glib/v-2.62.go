@@ -26,6 +26,8 @@ type Quark uint32
 // UNSUPPORTED : RecMutexLocker : blacklisted
 
 // RefString is a representation of the C alias GRefString.
+//
+// since 2.58
 type RefString int8
 
 // Strv is a representation of the C alias GStrv.
