@@ -7,4 +7,5 @@ package gobject
 
 // UNSUPPORTED : SignalCVaMarshaller : blacklisted
 
+// Type is a representation of the C alias GType.
 type Type uint64
