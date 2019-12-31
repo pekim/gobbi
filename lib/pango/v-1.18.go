@@ -14,6 +14,35 @@ type GlyphUnit int32
 // LayoutRun is a representation of the C alias PangoLayoutRun.
 type LayoutRun GlyphItem
 
+// ANALYSIS_FLAG_CENTERED_BASELINE is a representation of the C constant PANGO_ANALYSIS_FLAG_CENTERED_BASELINE.
+//
+// since 1.16
+const ANALYSIS_FLAG_CENTERED_BASELINE = 1
+
+// ENGINE_TYPE_LANG is a representation of the C constant PANGO_ENGINE_TYPE_LANG.
+const ENGINE_TYPE_LANG = "PangoEngineLang"
+
+// ENGINE_TYPE_SHAPE is a representation of the C constant PANGO_ENGINE_TYPE_SHAPE.
+const ENGINE_TYPE_SHAPE = "PangoEngineShape"
+
+// GLYPH_EMPTY is a representation of the C constant PANGO_GLYPH_EMPTY.
+const GLYPH_EMPTY = uint64(0xfffffff)
+
+// GLYPH_UNKNOWN_FLAG is a representation of the C constant PANGO_GLYPH_UNKNOWN_FLAG.
+const GLYPH_UNKNOWN_FLAG = uint64(0x10000000)
+
+// RENDER_TYPE_NONE is a representation of the C constant PANGO_RENDER_TYPE_NONE.
+const RENDER_TYPE_NONE = "PangoRenderNone"
+
+// SCALE is a representation of the C constant PANGO_SCALE.
+const SCALE = 1024
+
+// UNKNOWN_GLYPH_HEIGHT is a representation of the C constant PANGO_UNKNOWN_GLYPH_HEIGHT.
+const UNKNOWN_GLYPH_HEIGHT = 14
+
+// UNKNOWN_GLYPH_WIDTH is a representation of the C constant PANGO_UNKNOWN_GLYPH_WIDTH.
+const UNKNOWN_GLYPH_WIDTH = 10
+
 // Analysis is a representation of the C record PangoAnalysis.
 type Analysis struct {
 	native unsafe.Pointer

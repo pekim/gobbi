@@ -14,6 +14,31 @@ type AttributeSet glib.SList
 // State is a representation of the C alias AtkState.
 type State uint64
 
+// BINARY_AGE is a representation of the C constant ATK_BINARY_AGE.
+//
+// since 2.7.4
+const BINARY_AGE = 23313
+
+// INTERFACE_AGE is a representation of the C constant ATK_INTERFACE_AGE.
+//
+// since 2.7.4
+const INTERFACE_AGE = 1
+
+// MAJOR_VERSION is a representation of the C constant ATK_MAJOR_VERSION.
+//
+// since 2.7.4
+const MAJOR_VERSION = 2
+
+// MICRO_VERSION is a representation of the C constant ATK_MICRO_VERSION.
+//
+// since 2.7.4
+const MICRO_VERSION = 3
+
+// MINOR_VERSION is a representation of the C constant ATK_MINOR_VERSION.
+//
+// since 2.7.4
+const MINOR_VERSION = 33
+
 // ActionIface is a representation of the C record AtkActionIface.
 type ActionIface struct {
 	native unsafe.Pointer
