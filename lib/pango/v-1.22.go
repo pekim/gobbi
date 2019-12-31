@@ -176,6 +176,8 @@ type GlyphItem struct {
 }
 
 // GlyphItemIter is a representation of the C record PangoGlyphItemIter.
+//
+// since 1.22
 type GlyphItemIter struct {
 	native unsafe.Pointer
 }
@@ -227,6 +229,8 @@ type LogAttr struct {
 // UNSUPPORTED : MapEntry : blacklisted
 
 // Matrix is a representation of the C record PangoMatrix.
+//
+// since 1.6
 type Matrix struct {
 	native unsafe.Pointer
 }
@@ -237,6 +241,8 @@ type Rectangle struct {
 }
 
 // RendererClass is a representation of the C record PangoRendererClass.
+//
+// since 1.8
 type RendererClass struct {
 	native unsafe.Pointer
 }

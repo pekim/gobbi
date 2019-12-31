@@ -366,16 +366,22 @@ type ActionEntry struct {
 }
 
 // ActionGroupInterface is a representation of the C record GActionGroupInterface.
+//
+// since 2.28
 type ActionGroupInterface struct {
 	native unsafe.Pointer
 }
 
 // ActionInterface is a representation of the C record GActionInterface.
+//
+// since 2.28
 type ActionInterface struct {
 	native unsafe.Pointer
 }
 
 // ActionMapInterface is a representation of the C record GActionMapInterface.
+//
+// since 2.32
 type ActionMapInterface struct {
 	native unsafe.Pointer
 }
@@ -396,11 +402,15 @@ type AppLaunchContextPrivate struct {
 }
 
 // ApplicationClass is a representation of the C record GApplicationClass.
+//
+// since 2.28
 type ApplicationClass struct {
 	native unsafe.Pointer
 }
 
 // ApplicationCommandLineClass is a representation of the C record GApplicationCommandLineClass.
+//
+// since 2.28
 type ApplicationCommandLineClass struct {
 	native unsafe.Pointer
 }
@@ -416,6 +426,8 @@ type ApplicationPrivate struct {
 }
 
 // AsyncInitableIface is a representation of the C record GAsyncInitableIface.
+//
+// since 2.22
 type AsyncInitableIface struct {
 	native unsafe.Pointer
 }
@@ -461,6 +473,8 @@ type CharsetConverterClass struct {
 }
 
 // ConverterIface is a representation of the C record GConverterIface.
+//
+// since 2.24
 type ConverterIface struct {
 	native unsafe.Pointer
 }
@@ -486,36 +500,50 @@ type ConverterOutputStreamPrivate struct {
 }
 
 // CredentialsClass is a representation of the C record GCredentialsClass.
+//
+// since 2.26
 type CredentialsClass struct {
 	native unsafe.Pointer
 }
 
 // DBusAnnotationInfo is a representation of the C record GDBusAnnotationInfo.
+//
+// since 2.26
 type DBusAnnotationInfo struct {
 	native unsafe.Pointer
 }
 
 // DBusArgInfo is a representation of the C record GDBusArgInfo.
+//
+// since 2.26
 type DBusArgInfo struct {
 	native unsafe.Pointer
 }
 
 // DBusErrorEntry is a representation of the C record GDBusErrorEntry.
+//
+// since 2.26
 type DBusErrorEntry struct {
 	native unsafe.Pointer
 }
 
 // DBusInterfaceIface is a representation of the C record GDBusInterfaceIface.
+//
+// since 2.30
 type DBusInterfaceIface struct {
 	native unsafe.Pointer
 }
 
 // DBusInterfaceInfo is a representation of the C record GDBusInterfaceInfo.
+//
+// since 2.26
 type DBusInterfaceInfo struct {
 	native unsafe.Pointer
 }
 
 // DBusInterfaceSkeletonClass is a representation of the C record GDBusInterfaceSkeletonClass.
+//
+// since 2.30
 type DBusInterfaceSkeletonClass struct {
 	native unsafe.Pointer
 }
@@ -526,26 +554,36 @@ type DBusInterfaceSkeletonPrivate struct {
 }
 
 // DBusInterfaceVTable is a representation of the C record GDBusInterfaceVTable.
+//
+// since 2.26
 type DBusInterfaceVTable struct {
 	native unsafe.Pointer
 }
 
 // DBusMethodInfo is a representation of the C record GDBusMethodInfo.
+//
+// since 2.26
 type DBusMethodInfo struct {
 	native unsafe.Pointer
 }
 
 // DBusNodeInfo is a representation of the C record GDBusNodeInfo.
+//
+// since 2.26
 type DBusNodeInfo struct {
 	native unsafe.Pointer
 }
 
 // DBusObjectIface is a representation of the C record GDBusObjectIface.
+//
+// since 2.30
 type DBusObjectIface struct {
 	native unsafe.Pointer
 }
 
 // DBusObjectManagerClientClass is a representation of the C record GDBusObjectManagerClientClass.
+//
+// since 2.30
 type DBusObjectManagerClientClass struct {
 	native unsafe.Pointer
 }
@@ -556,11 +594,15 @@ type DBusObjectManagerClientPrivate struct {
 }
 
 // DBusObjectManagerIface is a representation of the C record GDBusObjectManagerIface.
+//
+// since 2.30
 type DBusObjectManagerIface struct {
 	native unsafe.Pointer
 }
 
 // DBusObjectManagerServerClass is a representation of the C record GDBusObjectManagerServerClass.
+//
+// since 2.30
 type DBusObjectManagerServerClass struct {
 	native unsafe.Pointer
 }
@@ -571,6 +613,8 @@ type DBusObjectManagerServerPrivate struct {
 }
 
 // DBusObjectProxyClass is a representation of the C record GDBusObjectProxyClass.
+//
+// since 2.30
 type DBusObjectProxyClass struct {
 	native unsafe.Pointer
 }
@@ -581,6 +625,8 @@ type DBusObjectProxyPrivate struct {
 }
 
 // DBusObjectSkeletonClass is a representation of the C record GDBusObjectSkeletonClass.
+//
+// since 2.30
 type DBusObjectSkeletonClass struct {
 	native unsafe.Pointer
 }
@@ -591,11 +637,15 @@ type DBusObjectSkeletonPrivate struct {
 }
 
 // DBusPropertyInfo is a representation of the C record GDBusPropertyInfo.
+//
+// since 2.26
 type DBusPropertyInfo struct {
 	native unsafe.Pointer
 }
 
 // DBusProxyClass is a representation of the C record GDBusProxyClass.
+//
+// since 2.26
 type DBusProxyClass struct {
 	native unsafe.Pointer
 }
@@ -606,11 +656,15 @@ type DBusProxyPrivate struct {
 }
 
 // DBusSignalInfo is a representation of the C record GDBusSignalInfo.
+//
+// since 2.26
 type DBusSignalInfo struct {
 	native unsafe.Pointer
 }
 
 // DBusSubtreeVTable is a representation of the C record GDBusSubtreeVTable.
+//
+// since 2.26
 type DBusSubtreeVTable struct {
 	native unsafe.Pointer
 }
@@ -781,6 +835,8 @@ type IOModuleClass struct {
 }
 
 // IOModuleScope is a representation of the C record GIOModuleScope.
+//
+// since 2.30
 type IOModuleScope struct {
 	native unsafe.Pointer
 }
@@ -841,6 +897,8 @@ type InetSocketAddressPrivate struct {
 }
 
 // InitableIface is a representation of the C record GInitableIface.
+//
+// since 2.22
 type InitableIface struct {
 	native unsafe.Pointer
 }
@@ -856,11 +914,15 @@ type InputStreamPrivate struct {
 }
 
 // InputVector is a representation of the C record GInputVector.
+//
+// since 2.22
 type InputVector struct {
 	native unsafe.Pointer
 }
 
 // ListModelInterface is a representation of the C record GListModelInterface.
+//
+// since 2.44
 type ListModelInterface struct {
 	native unsafe.Pointer
 }
@@ -960,6 +1022,8 @@ type NetworkAddressPrivate struct {
 }
 
 // NetworkMonitorInterface is a representation of the C record GNetworkMonitorInterface.
+//
+// since 2.32
 type NetworkMonitorInterface struct {
 	native unsafe.Pointer
 }
@@ -975,6 +1039,8 @@ type NetworkServicePrivate struct {
 }
 
 // OutputMessage is a representation of the C record GOutputMessage.
+//
+// since 2.44
 type OutputMessage struct {
 	native unsafe.Pointer
 }
@@ -990,6 +1056,8 @@ type OutputStreamPrivate struct {
 }
 
 // OutputVector is a representation of the C record GOutputVector.
+//
+// since 2.22
 type OutputVector struct {
 	native unsafe.Pointer
 }
@@ -1005,16 +1073,22 @@ type PermissionPrivate struct {
 }
 
 // PollableInputStreamInterface is a representation of the C record GPollableInputStreamInterface.
+//
+// since 2.28
 type PollableInputStreamInterface struct {
 	native unsafe.Pointer
 }
 
 // PollableOutputStreamInterface is a representation of the C record GPollableOutputStreamInterface.
+//
+// since 2.28
 type PollableOutputStreamInterface struct {
 	native unsafe.Pointer
 }
 
 // ProxyAddressClass is a representation of the C record GProxyAddressClass.
+//
+// since 2.26
 type ProxyAddressClass struct {
 	native unsafe.Pointer
 }
@@ -1035,6 +1109,8 @@ type ProxyAddressPrivate struct {
 }
 
 // ProxyInterface is a representation of the C record GProxyInterface.
+//
+// since 2.26
 type ProxyInterface struct {
 	native unsafe.Pointer
 }
@@ -1045,6 +1121,8 @@ type ProxyResolverInterface struct {
 }
 
 // RemoteActionGroupInterface is a representation of the C record GRemoteActionGroupInterface.
+//
+// since 2.32
 type RemoteActionGroupInterface struct {
 	native unsafe.Pointer
 }
@@ -1060,6 +1138,8 @@ type ResolverPrivate struct {
 }
 
 // Resource is a representation of the C record GResource.
+//
+// since 2.32
 type Resource struct {
 	native unsafe.Pointer
 }
@@ -1084,6 +1164,8 @@ type SettingsPrivate struct {
 }
 
 // SettingsSchema is a representation of the C record GSettingsSchema.
+//
+// since 2.32
 type SettingsSchema struct {
 	native unsafe.Pointer
 }
@@ -1094,6 +1176,8 @@ type SettingsSchemaKey struct {
 }
 
 // SettingsSchemaSource is a representation of the C record GSettingsSchemaSource.
+//
+// since 2.32
 type SettingsSchemaSource struct {
 	native unsafe.Pointer
 }
@@ -1249,6 +1333,8 @@ type ThreadedSocketServicePrivate struct {
 }
 
 // TlsBackendInterface is a representation of the C record GTlsBackendInterface.
+//
+// since 2.28
 type TlsBackendInterface struct {
 	native unsafe.Pointer
 }
@@ -1264,6 +1350,8 @@ type TlsCertificatePrivate struct {
 }
 
 // TlsClientConnectionInterface is a representation of the C record GTlsClientConnectionInterface.
+//
+// since 2.26
 type TlsClientConnectionInterface struct {
 	native unsafe.Pointer
 }
@@ -1279,6 +1367,8 @@ type TlsConnectionPrivate struct {
 }
 
 // TlsDatabaseClass is a representation of the C record GTlsDatabaseClass.
+//
+// since 2.30
 type TlsDatabaseClass struct {
 	native unsafe.Pointer
 }
@@ -1294,6 +1384,8 @@ type TlsFileDatabaseInterface struct {
 }
 
 // TlsInteractionClass is a representation of the C record GTlsInteractionClass.
+//
+// since 2.30
 type TlsInteractionClass struct {
 	native unsafe.Pointer
 }
@@ -1314,6 +1406,8 @@ type TlsPasswordPrivate struct {
 }
 
 // TlsServerConnectionInterface is a representation of the C record GTlsServerConnectionInterface.
+//
+// since 2.26
 type TlsServerConnectionInterface struct {
 	native unsafe.Pointer
 }
@@ -1329,6 +1423,8 @@ type UnixConnectionPrivate struct {
 }
 
 // UnixCredentialsMessageClass is a representation of the C record GUnixCredentialsMessageClass.
+//
+// since 2.26
 type UnixCredentialsMessageClass struct {
 	native unsafe.Pointer
 }

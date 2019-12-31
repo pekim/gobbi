@@ -501,6 +501,8 @@ type ByteArray struct {
 }
 
 // Checksum is a representation of the C record GChecksum.
+//
+// since 2.16
 type Checksum struct {
 	native unsafe.Pointer
 }
@@ -621,6 +623,8 @@ type Node struct {
 }
 
 // Once is a representation of the C record GOnce.
+//
+// since 2.4
 type Once struct {
 	native unsafe.Pointer
 }
@@ -671,6 +675,8 @@ type Rand struct {
 }
 
 // Regex is a representation of the C record GRegex.
+//
+// since 2.14
 type Regex struct {
 	native unsafe.Pointer
 }
@@ -721,6 +727,8 @@ type SourcePrivate struct {
 }
 
 // StatBuf is a representation of the C record GStatBuf.
+//
+// since 2.6
 type StatBuf struct {
 	native unsafe.Pointer
 }
@@ -788,6 +796,8 @@ type Tree struct {
 }
 
 // Variant is a representation of the C record GVariant.
+//
+// since 2.24
 type Variant struct {
 	native unsafe.Pointer
 }

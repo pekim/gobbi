@@ -546,11 +546,15 @@ type ByteArray struct {
 }
 
 // Bytes is a representation of the C record GBytes.
+//
+// since 2.32
 type Bytes struct {
 	native unsafe.Pointer
 }
 
 // Checksum is a representation of the C record GChecksum.
+//
+// since 2.16
 type Checksum struct {
 	native unsafe.Pointer
 }
@@ -571,6 +575,8 @@ type Date struct {
 }
 
 // DateTime is a representation of the C record GDateTime.
+//
+// since 2.26
 type DateTime struct {
 	native unsafe.Pointer
 }
@@ -601,6 +607,8 @@ type HashTableIter struct {
 }
 
 // Hmac is a representation of the C record GHmac.
+//
+// since 2.30
 type Hmac struct {
 	native unsafe.Pointer
 }
@@ -681,6 +689,8 @@ type Node struct {
 }
 
 // Once is a representation of the C record GOnce.
+//
+// since 2.4
 type Once struct {
 	native unsafe.Pointer
 }
@@ -726,6 +736,8 @@ type Queue struct {
 }
 
 // RWLock is a representation of the C record GRWLock.
+//
+// since 2.32
 type RWLock struct {
 	native unsafe.Pointer
 }
@@ -736,11 +748,15 @@ type Rand struct {
 }
 
 // RecMutex is a representation of the C record GRecMutex.
+//
+// since 2.32
 type RecMutex struct {
 	native unsafe.Pointer
 }
 
 // Regex is a representation of the C record GRegex.
+//
+// since 2.14
 type Regex struct {
 	native unsafe.Pointer
 }
@@ -791,6 +807,8 @@ type SourcePrivate struct {
 }
 
 // StatBuf is a representation of the C record GStatBuf.
+//
+// since 2.6
 type StatBuf struct {
 	native unsafe.Pointer
 }
@@ -843,6 +861,8 @@ type TimeVal struct {
 }
 
 // TimeZone is a representation of the C record GTimeZone.
+//
+// since 2.26
 type TimeZone struct {
 	native unsafe.Pointer
 }
@@ -863,6 +883,8 @@ type Tree struct {
 }
 
 // Variant is a representation of the C record GVariant.
+//
+// since 2.24
 type Variant struct {
 	native unsafe.Pointer
 }

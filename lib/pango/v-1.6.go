@@ -212,6 +212,8 @@ type LogAttr struct {
 // UNSUPPORTED : MapEntry : blacklisted
 
 // Matrix is a representation of the C record PangoMatrix.
+//
+// since 1.6
 type Matrix struct {
 	native unsafe.Pointer
 }

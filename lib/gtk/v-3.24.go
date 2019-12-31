@@ -1012,6 +1012,8 @@ type ActionableInterface struct {
 }
 
 // ActivatableIface is a representation of the C record GtkActivatableIface.
+//
+// since 2.16
 type ActivatableIface struct {
 	native unsafe.Pointer
 }
@@ -1547,6 +1549,8 @@ type CssProviderPrivate struct {
 }
 
 // CssSection is a representation of the C record GtkCssSection.
+//
+// since 3.2
 type CssSection struct {
 	native unsafe.Pointer
 }
@@ -1627,6 +1631,8 @@ type EventControllerClass struct {
 }
 
 // EventControllerKeyClass is a representation of the C record GtkEventControllerKeyClass.
+//
+// since 3.24
 type EventControllerKeyClass struct {
 	native unsafe.Pointer
 }
@@ -1811,6 +1817,8 @@ type FramePrivate struct {
 }
 
 // GLAreaClass is a representation of the C record GtkGLAreaClass.
+//
+// since 3.16
 type GLAreaClass struct {
 	native unsafe.Pointer
 }
@@ -2672,11 +2680,15 @@ type RecentFilterInfo struct {
 }
 
 // RecentInfo is a representation of the C record GtkRecentInfo.
+//
+// since 2.10
 type RecentInfo struct {
 	native unsafe.Pointer
 }
 
 // RecentManagerClass is a representation of the C record GtkRecentManagerClass.
+//
+// since 2.10
 type RecentManagerClass struct {
 	native unsafe.Pointer
 }

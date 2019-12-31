@@ -6894,6 +6894,8 @@ type EventFocus struct {
 }
 
 // EventGrabBroken is a representation of the C record GdkEventGrabBroken.
+//
+// since 2.8
 type EventGrabBroken struct {
 	native unsafe.Pointer
 }
@@ -6909,6 +6911,8 @@ type EventMotion struct {
 }
 
 // EventOwnerChange is a representation of the C record GdkEventOwnerChange.
+//
+// since 2.6
 type EventOwnerChange struct {
 	native unsafe.Pointer
 }

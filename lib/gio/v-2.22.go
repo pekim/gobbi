@@ -321,6 +321,8 @@ type ApplicationPrivate struct {
 }
 
 // AsyncInitableIface is a representation of the C record GAsyncInitableIface.
+//
+// since 2.22
 type AsyncInitableIface struct {
 	native unsafe.Pointer
 }
@@ -636,6 +638,8 @@ type InetSocketAddressPrivate struct {
 }
 
 // InitableIface is a representation of the C record GInitableIface.
+//
+// since 2.22
 type InitableIface struct {
 	native unsafe.Pointer
 }
@@ -651,6 +655,8 @@ type InputStreamPrivate struct {
 }
 
 // InputVector is a representation of the C record GInputVector.
+//
+// since 2.22
 type InputVector struct {
 	native unsafe.Pointer
 }
@@ -770,6 +776,8 @@ type OutputStreamPrivate struct {
 }
 
 // OutputVector is a representation of the C record GOutputVector.
+//
+// since 2.22
 type OutputVector struct {
 	native unsafe.Pointer
 }

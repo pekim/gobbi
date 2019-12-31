@@ -21,6 +21,7 @@ func (r *Record) generateLib(f *jen.File, version semver.Version) {
 
 func (r *Record) generateLibType(f *jen.File) {
 	f.Commentf("%s is a representation of the C record %s.", r.goName, r.CType)
+	docVersion(f, r.Version)
 
 	f.Type().Id(r.goName).Struct(
 		jen.Id("native").Add(jenUnsafePointer()),

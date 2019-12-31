@@ -6904,6 +6904,8 @@ type EventMotion struct {
 }
 
 // EventOwnerChange is a representation of the C record GdkEventOwnerChange.
+//
+// since 2.6
 type EventOwnerChange struct {
 	native unsafe.Pointer
 }

@@ -461,6 +461,8 @@ type Node struct {
 }
 
 // Once is a representation of the C record GOnce.
+//
+// since 2.4
 type Once struct {
 	native unsafe.Pointer
 }

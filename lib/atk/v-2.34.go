@@ -185,6 +185,8 @@ type StreamableContentIface struct {
 }
 
 // TableCellIface is a representation of the C record AtkTableCellIface.
+//
+// since 2.12
 type TableCellIface struct {
 	native unsafe.Pointer
 }
