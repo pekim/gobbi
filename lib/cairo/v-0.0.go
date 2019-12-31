@@ -592,6 +592,8 @@ const RegionOverlap_out = RegionOverlap(1)
 // RegionOverlap_part is a representation of the C enumeration member CAIRO_REGION_OVERLAP_PART.
 const RegionOverlap_part = RegionOverlap(2)
 
+// UNSUPPORTED : cairo_image_surface_create : blacklisted
+
 // Context is a representation of the C record cairo_t.
 type Context struct {
 	native unsafe.Pointer

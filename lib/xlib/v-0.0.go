@@ -43,6 +43,8 @@ type XID uint64
 // Pixmap is a representation of the C alias Pixmap.
 type Pixmap uint64
 
+// UNSUPPORTED : XOpenDisplay : blacklisted
+
 // Display is a representation of the C record Display.
 type Display struct {
 	native unsafe.Pointer

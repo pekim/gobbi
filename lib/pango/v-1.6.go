@@ -695,6 +695,94 @@ const WrapMode_char = WrapMode(1)
 // WrapMode_word_char is a representation of the C enumeration member PANGO_WRAP_WORD_CHAR.
 const WrapMode_word_char = WrapMode(2)
 
+func Fn_pango_attr_background_new() {}
+
+func Fn_pango_attr_fallback_new() {}
+
+func Fn_pango_attr_family_new() {}
+
+func Fn_pango_attr_foreground_new() {}
+
+func Fn_pango_attr_letter_spacing_new() {}
+
+func Fn_pango_attr_rise_new() {}
+
+func Fn_pango_attr_scale_new() {}
+
+func Fn_pango_attr_stretch_new() {}
+
+func Fn_pango_attr_strikethrough_new() {}
+
+func Fn_pango_attr_style_new() {}
+
+func Fn_pango_attr_underline_new() {}
+
+func Fn_pango_attr_variant_new() {}
+
+func Fn_pango_attr_weight_new() {}
+
+func Fn_pango_break() {}
+
+// UNSUPPORTED : pango_config_key_get : blacklisted
+
+// UNSUPPORTED : pango_config_key_get_system : blacklisted
+
+// UNSUPPORTED : pango_default_break : blacklisted
+
+func Fn_pango_find_base_dir() {}
+
+// UNSUPPORTED : pango_find_map : blacklisted
+
+func Fn_pango_find_paragraph_boundary() {}
+
+// UNSUPPORTED : pango_get_lib_subdirectory : blacklisted
+
+func Fn_pango_get_log_attrs() {}
+
+func Fn_pango_get_mirror_char() {}
+
+// UNSUPPORTED : pango_get_sysconf_subdirectory : blacklisted
+
+func Fn_pango_itemize() {}
+
+func Fn_pango_itemize_with_base_dir() {}
+
+func Fn_pango_log2vis_get_embedding_levels() {}
+
+// UNSUPPORTED : pango_lookup_aliases : blacklisted
+
+// UNSUPPORTED : pango_module_register : blacklisted
+
+func Fn_pango_parse_markup() {}
+
+func Fn_pango_parse_stretch() {}
+
+func Fn_pango_parse_style() {}
+
+func Fn_pango_parse_variant() {}
+
+func Fn_pango_parse_weight() {}
+
+func Fn_pango_read_line() {}
+
+func Fn_pango_reorder_items() {}
+
+func Fn_pango_scan_int() {}
+
+func Fn_pango_scan_string() {}
+
+func Fn_pango_scan_word() {}
+
+func Fn_pango_shape() {}
+
+func Fn_pango_skip_space() {}
+
+// UNSUPPORTED : pango_split_file_list : no array length
+
+func Fn_pango_trim_string() {}
+
+func Fn_pango_unichar_direction() {}
+
 // Analysis is a representation of the C record PangoAnalysis.
 type Analysis struct {
 	native unsafe.Pointer

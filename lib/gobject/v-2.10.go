@@ -194,6 +194,274 @@ const TypeFundamentalFlags_derivable = TypeFundamentalFlags(4)
 // TypeFundamentalFlags_deep_derivable is a representation of the C bitfield member G_TYPE_FLAG_DEEP_DERIVABLE.
 const TypeFundamentalFlags_deep_derivable = TypeFundamentalFlags(8)
 
+func Fn_g_boxed_copy() {}
+
+func Fn_g_boxed_free() {}
+
+// UNSUPPORTED : g_boxed_type_register_static : parameter 'boxed_copy' is callback
+
+// UNSUPPORTED : g_cclosure_new : parameter 'callback_func' is callback
+
+// UNSUPPORTED : g_cclosure_new_object : parameter 'callback_func' is callback
+
+// UNSUPPORTED : g_cclosure_new_object_swap : parameter 'callback_func' is callback
+
+// UNSUPPORTED : g_cclosure_new_swap : parameter 'callback_func' is callback
+
+func Fn_g_enum_complete_type_info() {}
+
+func Fn_g_enum_get_value() {}
+
+func Fn_g_enum_get_value_by_name() {}
+
+func Fn_g_enum_get_value_by_nick() {}
+
+func Fn_g_enum_register_static() {}
+
+func Fn_g_flags_complete_type_info() {}
+
+func Fn_g_flags_get_first_value() {}
+
+func Fn_g_flags_get_value_by_name() {}
+
+func Fn_g_flags_get_value_by_nick() {}
+
+func Fn_g_flags_register_static() {}
+
+func Fn_g_gtype_get_type() {}
+
+func Fn_g_param_spec_boolean() {}
+
+func Fn_g_param_spec_boxed() {}
+
+func Fn_g_param_spec_char() {}
+
+func Fn_g_param_spec_double() {}
+
+func Fn_g_param_spec_enum() {}
+
+func Fn_g_param_spec_flags() {}
+
+func Fn_g_param_spec_float() {}
+
+func Fn_g_param_spec_gtype() {}
+
+func Fn_g_param_spec_int() {}
+
+func Fn_g_param_spec_int64() {}
+
+func Fn_g_param_spec_long() {}
+
+func Fn_g_param_spec_object() {}
+
+func Fn_g_param_spec_override() {}
+
+func Fn_g_param_spec_param() {}
+
+func Fn_g_param_spec_pointer() {}
+
+func Fn_g_param_spec_string() {}
+
+func Fn_g_param_spec_uchar() {}
+
+func Fn_g_param_spec_uint() {}
+
+func Fn_g_param_spec_uint64() {}
+
+func Fn_g_param_spec_ulong() {}
+
+func Fn_g_param_spec_unichar() {}
+
+func Fn_g_param_spec_value_array() {}
+
+func Fn_g_param_type_register_static() {}
+
+func Fn_g_param_value_convert() {}
+
+func Fn_g_param_value_defaults() {}
+
+func Fn_g_param_value_set_default() {}
+
+func Fn_g_param_value_validate() {}
+
+func Fn_g_param_values_cmp() {}
+
+func Fn_g_pointer_type_register_static() {}
+
+func Fn_g_signal_accumulator_true_handled() {}
+
+// UNSUPPORTED : g_signal_add_emission_hook : parameter 'hook_func' is callback
+
+// UNSUPPORTED : g_signal_chain_from_overridden : parameter 'instance_and_params' is array parameter without length parameter
+
+func Fn_g_signal_connect_closure() {}
+
+func Fn_g_signal_connect_closure_by_id() {}
+
+// UNSUPPORTED : g_signal_connect_data : parameter 'c_handler' is callback
+
+// UNSUPPORTED : g_signal_connect_object : parameter 'c_handler' is callback
+
+func Fn_g_signal_emit() {}
+
+func Fn_g_signal_emit_by_name() {}
+
+func Fn_g_signal_emit_valist() {}
+
+// UNSUPPORTED : g_signal_emitv : parameter 'instance_and_params' is array parameter without length parameter
+
+func Fn_g_signal_get_invocation_hint() {}
+
+func Fn_g_signal_handler_block() {}
+
+func Fn_g_signal_handler_disconnect() {}
+
+func Fn_g_signal_handler_find() {}
+
+func Fn_g_signal_handler_is_connected() {}
+
+func Fn_g_signal_handler_unblock() {}
+
+func Fn_g_signal_handlers_block_matched() {}
+
+func Fn_g_signal_handlers_destroy() {}
+
+func Fn_g_signal_handlers_disconnect_matched() {}
+
+func Fn_g_signal_handlers_unblock_matched() {}
+
+func Fn_g_signal_has_handler_pending() {}
+
+func Fn_g_signal_list_ids() {}
+
+func Fn_g_signal_lookup() {}
+
+func Fn_g_signal_name() {}
+
+// UNSUPPORTED : g_signal_new : parameter 'accumulator' is callback
+
+// UNSUPPORTED : g_signal_new_class_handler : parameter 'class_handler' is callback
+
+// UNSUPPORTED : g_signal_new_valist : parameter 'accumulator' is callback
+
+// UNSUPPORTED : g_signal_newv : parameter 'accumulator' is callback
+
+func Fn_g_signal_override_class_closure() {}
+
+// UNSUPPORTED : g_signal_override_class_handler : parameter 'class_handler' is callback
+
+func Fn_g_signal_parse_name() {}
+
+func Fn_g_signal_query() {}
+
+func Fn_g_signal_remove_emission_hook() {}
+
+// UNSUPPORTED : g_signal_set_va_marshaller : blacklisted
+
+func Fn_g_signal_stop_emission() {}
+
+func Fn_g_signal_stop_emission_by_name() {}
+
+func Fn_g_signal_type_cclosure_new() {}
+
+func Fn_g_source_set_closure() {}
+
+func Fn_g_source_set_dummy_callback() {}
+
+func Fn_g_strdup_value_contents() {}
+
+// UNSUPPORTED : g_type_add_class_cache_func : parameter 'cache_func' is callback
+
+func Fn_g_type_add_instance_private() {}
+
+// UNSUPPORTED : g_type_add_interface_check : parameter 'check_func' is callback
+
+func Fn_g_type_add_interface_dynamic() {}
+
+func Fn_g_type_add_interface_static() {}
+
+func Fn_g_type_check_class_cast() {}
+
+func Fn_g_type_check_class_is_a() {}
+
+func Fn_g_type_check_instance() {}
+
+func Fn_g_type_check_instance_cast() {}
+
+func Fn_g_type_check_instance_is_a() {}
+
+func Fn_g_type_check_instance_is_fundamentally_a() {}
+
+func Fn_g_type_check_is_value_type() {}
+
+func Fn_g_type_check_value() {}
+
+func Fn_g_type_check_value_holds() {}
+
+func Fn_g_type_children() {}
+
+func Fn_g_type_create_instance() {}
+
+func Fn_g_type_default_interface_peek() {}
+
+func Fn_g_type_default_interface_ref() {}
+
+func Fn_g_type_default_interface_unref() {}
+
+func Fn_g_type_depth() {}
+
+func Fn_g_type_free_instance() {}
+
+func Fn_g_type_from_name() {}
+
+func Fn_g_type_fundamental() {}
+
+func Fn_g_type_fundamental_next() {}
+
+func Fn_g_type_get_plugin() {}
+
+func Fn_g_type_get_qdata() {}
+
+func Fn_g_type_init() {}
+
+func Fn_g_type_init_with_debug_flags() {}
+
+func Fn_g_type_interfaces() {}
+
+func Fn_g_type_is_a() {}
+
+func Fn_g_type_name() {}
+
+func Fn_g_type_name_from_class() {}
+
+func Fn_g_type_name_from_instance() {}
+
+func Fn_g_type_next_base() {}
+
+func Fn_g_type_parent() {}
+
+func Fn_g_type_qname() {}
+
+func Fn_g_type_query() {}
+
+func Fn_g_type_register_dynamic() {}
+
+func Fn_g_type_register_fundamental() {}
+
+func Fn_g_type_register_static() {}
+
+// UNSUPPORTED : g_type_register_static_simple : parameter 'class_init' is callback
+
+// UNSUPPORTED : g_type_remove_class_cache_func : parameter 'cache_func' is callback
+
+// UNSUPPORTED : g_type_remove_interface_check : parameter 'check_func' is callback
+
+func Fn_g_type_set_qdata() {}
+
+func Fn_g_type_test_flags() {}
+
+// UNSUPPORTED : g_value_register_transform_func : parameter 'transform_func' is callback
+
 // CClosure is a representation of the C record GCClosure.
 type CClosure struct {
 	native unsafe.Pointer

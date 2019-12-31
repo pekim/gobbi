@@ -2892,6 +2892,320 @@ const WrapMode_word = WrapMode(2)
 // WrapMode_word_char is a representation of the C enumeration member GTK_WRAP_WORD_CHAR.
 const WrapMode_word_char = WrapMode(3)
 
+func Fn_gtk_accel_groups_activate() {}
+
+func Fn_gtk_accel_groups_from_object() {}
+
+func Fn_gtk_accelerator_get_default_mod_mask() {}
+
+func Fn_gtk_accelerator_get_label() {}
+
+func Fn_gtk_accelerator_name() {}
+
+func Fn_gtk_accelerator_parse() {}
+
+// UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
+
+func Fn_gtk_accelerator_set_default_mod_mask() {}
+
+func Fn_gtk_accelerator_valid() {}
+
+func Fn_gtk_alternative_dialog_button_order() {}
+
+func Fn_gtk_bindings_activate() {}
+
+func Fn_gtk_bindings_activate_event() {}
+
+func Fn_gtk_cairo_should_draw_window() {}
+
+func Fn_gtk_cairo_transform_to_window() {}
+
+func Fn_gtk_check_version() {}
+
+func Fn_gtk_device_grab_add() {}
+
+func Fn_gtk_device_grab_remove() {}
+
+func Fn_gtk_disable_setlocale() {}
+
+func Fn_gtk_distribute_natural_allocation() {}
+
+func Fn_gtk_drag_finish() {}
+
+func Fn_gtk_drag_get_source_widget() {}
+
+func Fn_gtk_drag_set_icon_default() {}
+
+func Fn_gtk_drag_set_icon_name() {}
+
+func Fn_gtk_drag_set_icon_pixbuf() {}
+
+func Fn_gtk_drag_set_icon_stock() {}
+
+func Fn_gtk_drag_set_icon_surface() {}
+
+func Fn_gtk_drag_set_icon_widget() {}
+
+func Fn_gtk_draw_insertion_cursor() {}
+
+func Fn_gtk_events_pending() {}
+
+func Fn_gtk_false() {}
+
+func Fn_gtk_get_binary_age() {}
+
+func Fn_gtk_get_current_event() {}
+
+func Fn_gtk_get_current_event_device() {}
+
+func Fn_gtk_get_current_event_state() {}
+
+func Fn_gtk_get_current_event_time() {}
+
+func Fn_gtk_get_debug_flags() {}
+
+func Fn_gtk_get_default_language() {}
+
+func Fn_gtk_get_event_widget() {}
+
+func Fn_gtk_get_interface_age() {}
+
+func Fn_gtk_get_major_version() {}
+
+func Fn_gtk_get_micro_version() {}
+
+func Fn_gtk_get_minor_version() {}
+
+func Fn_gtk_get_option_group() {}
+
+func Fn_gtk_grab_get_current() {}
+
+func Fn_gtk_init() {}
+
+func Fn_gtk_init_check() {}
+
+// UNSUPPORTED : gtk_init_with_args : parameter 'entries' is array parameter without length parameter
+
+// UNSUPPORTED : gtk_key_snooper_install : parameter 'snooper' is callback
+
+func Fn_gtk_key_snooper_remove() {}
+
+func Fn_gtk_main() {}
+
+func Fn_gtk_main_do_event() {}
+
+func Fn_gtk_main_iteration() {}
+
+func Fn_gtk_main_iteration_do() {}
+
+func Fn_gtk_main_level() {}
+
+func Fn_gtk_main_quit() {}
+
+func Fn_gtk_paint_arrow() {}
+
+func Fn_gtk_paint_box() {}
+
+func Fn_gtk_paint_box_gap() {}
+
+func Fn_gtk_paint_check() {}
+
+func Fn_gtk_paint_diamond() {}
+
+func Fn_gtk_paint_expander() {}
+
+func Fn_gtk_paint_extension() {}
+
+func Fn_gtk_paint_flat_box() {}
+
+func Fn_gtk_paint_focus() {}
+
+func Fn_gtk_paint_handle() {}
+
+func Fn_gtk_paint_hline() {}
+
+func Fn_gtk_paint_layout() {}
+
+func Fn_gtk_paint_option() {}
+
+func Fn_gtk_paint_resize_grip() {}
+
+func Fn_gtk_paint_shadow() {}
+
+func Fn_gtk_paint_shadow_gap() {}
+
+func Fn_gtk_paint_slider() {}
+
+func Fn_gtk_paint_spinner() {}
+
+func Fn_gtk_paint_tab() {}
+
+func Fn_gtk_paint_vline() {}
+
+func Fn_gtk_parse_args() {}
+
+func Fn_gtk_print_run_page_setup_dialog() {}
+
+// UNSUPPORTED : gtk_print_run_page_setup_dialog_async : parameter 'done_cb' is callback
+
+func Fn_gtk_propagate_event() {}
+
+func Fn_gtk_rc_add_default_file() {}
+
+func Fn_gtk_rc_find_module_in_path() {}
+
+func Fn_gtk_rc_find_pixmap_in_path() {}
+
+// UNSUPPORTED : gtk_rc_get_default_files : no array length
+
+func Fn_gtk_rc_get_im_module_file() {}
+
+func Fn_gtk_rc_get_im_module_path() {}
+
+func Fn_gtk_rc_get_module_dir() {}
+
+func Fn_gtk_rc_get_style() {}
+
+func Fn_gtk_rc_get_style_by_paths() {}
+
+func Fn_gtk_rc_get_theme_dir() {}
+
+func Fn_gtk_rc_parse() {}
+
+func Fn_gtk_rc_parse_color() {}
+
+func Fn_gtk_rc_parse_color_full() {}
+
+func Fn_gtk_rc_parse_priority() {}
+
+func Fn_gtk_rc_parse_state() {}
+
+func Fn_gtk_rc_parse_string() {}
+
+func Fn_gtk_rc_reparse_all() {}
+
+func Fn_gtk_rc_reparse_all_for_settings() {}
+
+func Fn_gtk_rc_reset_styles() {}
+
+func Fn_gtk_rc_scanner_new() {}
+
+// UNSUPPORTED : gtk_rc_set_default_files : parameter 'filenames' is array parameter without length parameter
+
+func Fn_gtk_render_activity() {}
+
+func Fn_gtk_render_arrow() {}
+
+func Fn_gtk_render_background() {}
+
+func Fn_gtk_render_check() {}
+
+func Fn_gtk_render_expander() {}
+
+func Fn_gtk_render_extension() {}
+
+func Fn_gtk_render_focus() {}
+
+func Fn_gtk_render_frame() {}
+
+func Fn_gtk_render_frame_gap() {}
+
+func Fn_gtk_render_handle() {}
+
+func Fn_gtk_render_icon_pixbuf() {}
+
+func Fn_gtk_render_layout() {}
+
+func Fn_gtk_render_line() {}
+
+func Fn_gtk_render_option() {}
+
+func Fn_gtk_render_slider() {}
+
+func Fn_gtk_rgb_to_hsv() {}
+
+func Fn_gtk_selection_add_target() {}
+
+func Fn_gtk_selection_add_targets() {}
+
+func Fn_gtk_selection_clear_targets() {}
+
+func Fn_gtk_selection_convert() {}
+
+func Fn_gtk_selection_owner_set() {}
+
+func Fn_gtk_selection_owner_set_for_display() {}
+
+func Fn_gtk_selection_remove_all() {}
+
+func Fn_gtk_set_debug_flags() {}
+
+func Fn_gtk_show_about_dialog() {}
+
+func Fn_gtk_show_uri() {}
+
+func Fn_gtk_stock_add() {}
+
+func Fn_gtk_stock_add_static() {}
+
+func Fn_gtk_stock_list_ids() {}
+
+func Fn_gtk_stock_lookup() {}
+
+// UNSUPPORTED : gtk_stock_set_translate_func : parameter 'func' is callback
+
+func Fn_gtk_target_table_free() {}
+
+func Fn_gtk_target_table_new_from_list() {}
+
+func Fn_gtk_targets_include_image() {}
+
+func Fn_gtk_targets_include_rich_text() {}
+
+func Fn_gtk_targets_include_text() {}
+
+func Fn_gtk_targets_include_uri() {}
+
+func Fn_gtk_test_create_simple_window() {}
+
+func Fn_gtk_test_create_widget() {}
+
+func Fn_gtk_test_display_button_window() {}
+
+func Fn_gtk_test_find_label() {}
+
+func Fn_gtk_test_find_sibling() {}
+
+func Fn_gtk_test_find_widget() {}
+
+func Fn_gtk_test_init() {}
+
+func Fn_gtk_test_list_all_types() {}
+
+func Fn_gtk_test_register_all_types() {}
+
+func Fn_gtk_test_slider_get_value() {}
+
+func Fn_gtk_test_slider_set_perc() {}
+
+func Fn_gtk_test_spin_button_click() {}
+
+func Fn_gtk_test_text_get() {}
+
+func Fn_gtk_test_text_set() {}
+
+func Fn_gtk_test_widget_click() {}
+
+func Fn_gtk_test_widget_send_key() {}
+
+func Fn_gtk_tree_get_row_drag_data() {}
+
+// UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
+
+func Fn_gtk_tree_set_row_drag_data() {}
+
+func Fn_gtk_true() {}
+
 // AboutDialogClass is a representation of the C record GtkAboutDialogClass.
 type AboutDialogClass struct {
 	native unsafe.Pointer

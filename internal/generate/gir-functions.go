@@ -18,3 +18,9 @@ func (ff Functions) generateSys(f *jen.File, version semver.Version) {
 		fn.generateSys(f, version)
 	}
 }
+
+func (ff Functions) generateLib(f *jen.File, version semver.Version) {
+	for _, fn := range ff {
+		fn.generateLib(f, version)
+	}
+}

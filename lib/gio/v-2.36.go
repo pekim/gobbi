@@ -1661,6 +1661,186 @@ const ZlibCompressorFormat_gzip = ZlibCompressorFormat(1)
 // ZlibCompressorFormat_raw is a representation of the C enumeration member G_ZLIB_COMPRESSOR_FORMAT_RAW.
 const ZlibCompressorFormat_raw = ZlibCompressorFormat(2)
 
+// UNSUPPORTED : g_app_info_launch_default_for_uri_async : parameter 'callback' is callback
+
+// UNSUPPORTED : g_async_initable_newv_async : parameter 'callback' is callback
+
+// UNSUPPORTED : g_bus_get : parameter 'callback' is callback
+
+func Fn_g_bus_get_finish() {}
+
+func Fn_g_bus_get_sync() {}
+
+// UNSUPPORTED : g_bus_own_name : parameter 'bus_acquired_handler' is callback
+
+// UNSUPPORTED : g_bus_own_name_on_connection : parameter 'name_acquired_handler' is callback
+
+func Fn_g_bus_own_name_on_connection_with_closures() {}
+
+func Fn_g_bus_own_name_with_closures() {}
+
+func Fn_g_bus_unown_name() {}
+
+func Fn_g_bus_unwatch_name() {}
+
+// UNSUPPORTED : g_bus_watch_name : parameter 'name_appeared_handler' is callback
+
+// UNSUPPORTED : g_bus_watch_name_on_connection : parameter 'name_appeared_handler' is callback
+
+func Fn_g_bus_watch_name_on_connection_with_closures() {}
+
+func Fn_g_bus_watch_name_with_closures() {}
+
+func Fn_g_content_type_can_be_executable() {}
+
+func Fn_g_content_type_equals() {}
+
+func Fn_g_content_type_from_mime_type() {}
+
+func Fn_g_content_type_get_description() {}
+
+func Fn_g_content_type_get_generic_icon_name() {}
+
+func Fn_g_content_type_get_icon() {}
+
+// UNSUPPORTED : g_content_type_get_mime_dirs : no array length
+
+func Fn_g_content_type_get_mime_type() {}
+
+func Fn_g_content_type_get_symbolic_icon() {}
+
+func Fn_g_content_type_guess() {}
+
+// UNSUPPORTED : g_content_type_guess_for_tree : no array length
+
+func Fn_g_content_type_is_a() {}
+
+func Fn_g_content_type_is_unknown() {}
+
+// UNSUPPORTED : g_content_type_set_mime_dirs : parameter 'dirs' is array parameter without length parameter
+
+func Fn_g_content_types_get_registered() {}
+
+func Fn_g_dbus_address_escape_value() {}
+
+func Fn_g_dbus_address_get_for_bus_sync() {}
+
+// UNSUPPORTED : g_dbus_address_get_stream : parameter 'callback' is callback
+
+func Fn_g_dbus_address_get_stream_finish() {}
+
+func Fn_g_dbus_address_get_stream_sync() {}
+
+// UNSUPPORTED : g_dbus_annotation_info_lookup : parameter 'annotations' is array parameter without length parameter
+
+func Fn_g_dbus_generate_guid() {}
+
+func Fn_g_dbus_gvalue_to_gvariant() {}
+
+func Fn_g_dbus_gvariant_to_gvalue() {}
+
+func Fn_g_dbus_is_address() {}
+
+func Fn_g_dbus_is_guid() {}
+
+func Fn_g_dbus_is_interface_name() {}
+
+func Fn_g_dbus_is_member_name() {}
+
+func Fn_g_dbus_is_name() {}
+
+func Fn_g_dbus_is_supported_address() {}
+
+func Fn_g_dbus_is_unique_name() {}
+
+func Fn_g_io_error_from_errno() {}
+
+func Fn_g_io_error_quark() {}
+
+// UNSUPPORTED : g_io_modules_load_all_in_directory : blacklisted
+
+// UNSUPPORTED : g_io_modules_load_all_in_directory_with_scope : blacklisted
+
+// UNSUPPORTED : g_io_modules_scan_all_in_directory : blacklisted
+
+// UNSUPPORTED : g_io_modules_scan_all_in_directory_with_scope : blacklisted
+
+func Fn_g_io_scheduler_cancel_all_jobs() {}
+
+// UNSUPPORTED : g_io_scheduler_push_job : parameter 'job_func' is callback
+
+// UNSUPPORTED : g_keyfile_settings_backend_new : blacklisted
+
+// UNSUPPORTED : g_memory_settings_backend_new : blacklisted
+
+func Fn_g_networking_init() {}
+
+// UNSUPPORTED : g_null_settings_backend_new : blacklisted
+
+func Fn_g_pollable_source_new() {}
+
+func Fn_g_pollable_source_new_full() {}
+
+func Fn_g_pollable_stream_read() {}
+
+func Fn_g_pollable_stream_write() {}
+
+func Fn_g_pollable_stream_write_all() {}
+
+// UNSUPPORTED : g_resources_enumerate_children : no array length
+
+func Fn_g_resources_get_info() {}
+
+func Fn_g_resources_lookup_data() {}
+
+func Fn_g_resources_open_stream() {}
+
+func Fn_g_resources_register() {}
+
+func Fn_g_resources_unregister() {}
+
+// UNSUPPORTED : g_simple_async_report_error_in_idle : parameter 'callback' is callback
+
+// UNSUPPORTED : g_simple_async_report_gerror_in_idle : parameter 'callback' is callback
+
+// UNSUPPORTED : g_simple_async_report_take_gerror_in_idle : parameter 'callback' is callback
+
+func Fn_g_unix_is_mount_path_system_internal() {}
+
+func Fn_g_unix_mount_at() {}
+
+func Fn_g_unix_mount_compare() {}
+
+func Fn_g_unix_mount_free() {}
+
+func Fn_g_unix_mount_get_device_path() {}
+
+func Fn_g_unix_mount_get_fs_type() {}
+
+func Fn_g_unix_mount_get_mount_path() {}
+
+func Fn_g_unix_mount_guess_can_eject() {}
+
+func Fn_g_unix_mount_guess_icon() {}
+
+func Fn_g_unix_mount_guess_name() {}
+
+func Fn_g_unix_mount_guess_should_display() {}
+
+func Fn_g_unix_mount_guess_symbolic_icon() {}
+
+func Fn_g_unix_mount_is_readonly() {}
+
+func Fn_g_unix_mount_is_system_internal() {}
+
+func Fn_g_unix_mount_points_changed_since() {}
+
+func Fn_g_unix_mount_points_get() {}
+
+func Fn_g_unix_mounts_changed_since() {}
+
+func Fn_g_unix_mounts_get() {}
+
 // ActionEntry is a representation of the C record GActionEntry.
 type ActionEntry struct {
 	native unsafe.Pointer

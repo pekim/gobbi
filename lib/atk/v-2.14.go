@@ -884,6 +884,46 @@ const ValueType_best = ValueType(14)
 // ValueType_last_defined is a representation of the C enumeration member ATK_VALUE_LAST_DEFINED.
 const ValueType_last_defined = ValueType(15)
 
+// UNSUPPORTED : atk_add_focus_tracker : parameter 'focus_tracker' is callback
+
+// UNSUPPORTED : atk_add_global_event_listener : parameter 'listener' is callback
+
+// UNSUPPORTED : atk_add_key_event_listener : parameter 'listener' is callback
+
+// UNSUPPORTED : atk_focus_tracker_init : parameter 'init' is callback
+
+func Fn_atk_focus_tracker_notify() {}
+
+func Fn_atk_get_binary_age() {}
+
+func Fn_atk_get_default_registry() {}
+
+func Fn_atk_get_focus_object() {}
+
+func Fn_atk_get_interface_age() {}
+
+func Fn_atk_get_major_version() {}
+
+func Fn_atk_get_micro_version() {}
+
+func Fn_atk_get_minor_version() {}
+
+func Fn_atk_get_root() {}
+
+func Fn_atk_get_toolkit_name() {}
+
+func Fn_atk_get_toolkit_version() {}
+
+func Fn_atk_get_version() {}
+
+func Fn_atk_remove_focus_tracker() {}
+
+func Fn_atk_remove_global_event_listener() {}
+
+func Fn_atk_remove_key_event_listener() {}
+
+// UNSUPPORTED : atk_text_free_ranges : parameter 'ranges' is array parameter without length parameter
+
 // ActionIface is a representation of the C record AtkActionIface.
 type ActionIface struct {
 	native unsafe.Pointer
