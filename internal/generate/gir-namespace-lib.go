@@ -31,5 +31,5 @@ func (ns *Namespace) generateLibFile(f *jen.File, version semver.Version) {
 	ns.generateFileBuildTags(f, version)
 
 	ns.Aliases.generateLib(f, version)
-	//ns.Records.generateLib(f, version)
+	ns.Records.generateLib(f, version)
 }

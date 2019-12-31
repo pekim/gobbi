@@ -34,3 +34,11 @@ func (rr Records) generateSys(f *jen.File, version semver.Version) {
 
 	f.Line()
 }
+
+func (rr Records) generateLib(f *jen.File, version semver.Version) {
+	for _, r := range rr {
+		r.generateLib(f, version)
+	}
+
+	f.Line()
+}

@@ -42,3 +42,48 @@ type XID uint64
 
 // Pixmap is a representation of the C alias Pixmap.
 type Pixmap uint64
+
+// Display is a representation of the C record Display.
+type Display struct {
+	native unsafe.Pointer
+}
+
+// Screen is a representation of the C record Screen.
+type Screen struct {
+	native unsafe.Pointer
+}
+
+// Visual is a representation of the C record Visual.
+type Visual struct {
+	native unsafe.Pointer
+}
+
+// XConfigureEvent is a representation of the C record XConfigureEvent.
+type XConfigureEvent struct {
+	native unsafe.Pointer
+}
+
+// XImage is a representation of the C record XImage.
+type XImage struct {
+	native unsafe.Pointer
+}
+
+// XFontStruct is a representation of the C record XFontStruct.
+type XFontStruct struct {
+	native unsafe.Pointer
+}
+
+// XTrapezoid is a representation of the C record XTrapezoid.
+type XTrapezoid struct {
+	native unsafe.Pointer
+}
+
+// XVisualInfo is a representation of the C record XVisualInfo.
+type XVisualInfo struct {
+	native unsafe.Pointer
+}
+
+// XWindowAttributes is a representation of the C record XWindowAttributes.
+type XWindowAttributes struct {
+	native unsafe.Pointer
+}
