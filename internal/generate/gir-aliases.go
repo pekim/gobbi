@@ -27,6 +27,4 @@ func (aa Aliases) generateLib(f *jen.File, version semver.Version) {
 	for _, a := range aa {
 		a.generateLib(f, version)
 	}
-
-	f.Line()
 }

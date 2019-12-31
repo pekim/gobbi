@@ -32,5 +32,7 @@ func (ns *Namespace) generateLibFile(f *jen.File, version semver.Version) {
 
 	ns.Aliases.generateLib(f, version)
 	ns.Constants.generateLib(f, version)
+	ns.Bitfields.generateLib(f, version, "bitfield")
+	ns.Enumerations.generateLib(f, version, "enumeration")
 	ns.Records.generateLib(f, version)
 }

@@ -766,6 +766,2040 @@ const TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID = -1
 // TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID is a representation of the C constant GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID.
 const TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID = -2
 
+// AccelFlags is a representation of the C bitfield GtkAccelFlags.
+type AccelFlags int
+
+// AccelFlags_visible is a representation of the C bitfield member GTK_ACCEL_VISIBLE.
+const AccelFlags_visible = AccelFlags(1)
+
+// AccelFlags_locked is a representation of the C bitfield member GTK_ACCEL_LOCKED.
+const AccelFlags_locked = AccelFlags(2)
+
+// AccelFlags_mask is a representation of the C bitfield member GTK_ACCEL_MASK.
+const AccelFlags_mask = AccelFlags(7)
+
+// AttachOptions is a representation of the C bitfield GtkAttachOptions.
+type AttachOptions int
+
+// AttachOptions_expand is a representation of the C bitfield member GTK_EXPAND.
+const AttachOptions_expand = AttachOptions(1)
+
+// AttachOptions_shrink is a representation of the C bitfield member GTK_SHRINK.
+const AttachOptions_shrink = AttachOptions(2)
+
+// AttachOptions_fill is a representation of the C bitfield member GTK_FILL.
+const AttachOptions_fill = AttachOptions(4)
+
+// CalendarDisplayOptions is a representation of the C bitfield GtkCalendarDisplayOptions.
+type CalendarDisplayOptions int
+
+// CalendarDisplayOptions_show_heading is a representation of the C bitfield member GTK_CALENDAR_SHOW_HEADING.
+const CalendarDisplayOptions_show_heading = CalendarDisplayOptions(1)
+
+// CalendarDisplayOptions_show_day_names is a representation of the C bitfield member GTK_CALENDAR_SHOW_DAY_NAMES.
+const CalendarDisplayOptions_show_day_names = CalendarDisplayOptions(2)
+
+// CalendarDisplayOptions_no_month_change is a representation of the C bitfield member GTK_CALENDAR_NO_MONTH_CHANGE.
+const CalendarDisplayOptions_no_month_change = CalendarDisplayOptions(4)
+
+// CalendarDisplayOptions_show_week_numbers is a representation of the C bitfield member GTK_CALENDAR_SHOW_WEEK_NUMBERS.
+const CalendarDisplayOptions_show_week_numbers = CalendarDisplayOptions(8)
+
+// CalendarDisplayOptions_show_details is a representation of the C bitfield member GTK_CALENDAR_SHOW_DETAILS.
+const CalendarDisplayOptions_show_details = CalendarDisplayOptions(32)
+
+// CellRendererState is a representation of the C bitfield GtkCellRendererState.
+type CellRendererState int
+
+// CellRendererState_selected is a representation of the C bitfield member GTK_CELL_RENDERER_SELECTED.
+const CellRendererState_selected = CellRendererState(1)
+
+// CellRendererState_prelit is a representation of the C bitfield member GTK_CELL_RENDERER_PRELIT.
+const CellRendererState_prelit = CellRendererState(2)
+
+// CellRendererState_insensitive is a representation of the C bitfield member GTK_CELL_RENDERER_INSENSITIVE.
+const CellRendererState_insensitive = CellRendererState(4)
+
+// CellRendererState_sorted is a representation of the C bitfield member GTK_CELL_RENDERER_SORTED.
+const CellRendererState_sorted = CellRendererState(8)
+
+// CellRendererState_focused is a representation of the C bitfield member GTK_CELL_RENDERER_FOCUSED.
+const CellRendererState_focused = CellRendererState(16)
+
+// CellRendererState_expandable is a representation of the C bitfield member GTK_CELL_RENDERER_EXPANDABLE.
+const CellRendererState_expandable = CellRendererState(32)
+
+// CellRendererState_expanded is a representation of the C bitfield member GTK_CELL_RENDERER_EXPANDED.
+const CellRendererState_expanded = CellRendererState(64)
+
+// DebugFlag is a representation of the C bitfield GtkDebugFlag.
+type DebugFlag int
+
+// DebugFlag_misc is a representation of the C bitfield member GTK_DEBUG_MISC.
+const DebugFlag_misc = DebugFlag(1)
+
+// DebugFlag_plugsocket is a representation of the C bitfield member GTK_DEBUG_PLUGSOCKET.
+const DebugFlag_plugsocket = DebugFlag(2)
+
+// DebugFlag_text is a representation of the C bitfield member GTK_DEBUG_TEXT.
+const DebugFlag_text = DebugFlag(4)
+
+// DebugFlag_tree is a representation of the C bitfield member GTK_DEBUG_TREE.
+const DebugFlag_tree = DebugFlag(8)
+
+// DebugFlag_updates is a representation of the C bitfield member GTK_DEBUG_UPDATES.
+const DebugFlag_updates = DebugFlag(16)
+
+// DebugFlag_keybindings is a representation of the C bitfield member GTK_DEBUG_KEYBINDINGS.
+const DebugFlag_keybindings = DebugFlag(32)
+
+// DebugFlag_multihead is a representation of the C bitfield member GTK_DEBUG_MULTIHEAD.
+const DebugFlag_multihead = DebugFlag(64)
+
+// DebugFlag_modules is a representation of the C bitfield member GTK_DEBUG_MODULES.
+const DebugFlag_modules = DebugFlag(128)
+
+// DebugFlag_geometry is a representation of the C bitfield member GTK_DEBUG_GEOMETRY.
+const DebugFlag_geometry = DebugFlag(256)
+
+// DebugFlag_icontheme is a representation of the C bitfield member GTK_DEBUG_ICONTHEME.
+const DebugFlag_icontheme = DebugFlag(512)
+
+// DebugFlag_printing is a representation of the C bitfield member GTK_DEBUG_PRINTING.
+const DebugFlag_printing = DebugFlag(1024)
+
+// DebugFlag_builder is a representation of the C bitfield member GTK_DEBUG_BUILDER.
+const DebugFlag_builder = DebugFlag(2048)
+
+// DebugFlag_size_request is a representation of the C bitfield member GTK_DEBUG_SIZE_REQUEST.
+const DebugFlag_size_request = DebugFlag(4096)
+
+// DebugFlag_no_css_cache is a representation of the C bitfield member GTK_DEBUG_NO_CSS_CACHE.
+const DebugFlag_no_css_cache = DebugFlag(8192)
+
+// DebugFlag_baselines is a representation of the C bitfield member GTK_DEBUG_BASELINES.
+const DebugFlag_baselines = DebugFlag(16384)
+
+// DebugFlag_pixel_cache is a representation of the C bitfield member GTK_DEBUG_PIXEL_CACHE.
+const DebugFlag_pixel_cache = DebugFlag(32768)
+
+// DebugFlag_no_pixel_cache is a representation of the C bitfield member GTK_DEBUG_NO_PIXEL_CACHE.
+const DebugFlag_no_pixel_cache = DebugFlag(65536)
+
+// DebugFlag_interactive is a representation of the C bitfield member GTK_DEBUG_INTERACTIVE.
+const DebugFlag_interactive = DebugFlag(131072)
+
+// DebugFlag_touchscreen is a representation of the C bitfield member GTK_DEBUG_TOUCHSCREEN.
+const DebugFlag_touchscreen = DebugFlag(262144)
+
+// DebugFlag_actions is a representation of the C bitfield member GTK_DEBUG_ACTIONS.
+const DebugFlag_actions = DebugFlag(524288)
+
+// DebugFlag_resize is a representation of the C bitfield member GTK_DEBUG_RESIZE.
+const DebugFlag_resize = DebugFlag(1048576)
+
+// DebugFlag_layout is a representation of the C bitfield member GTK_DEBUG_LAYOUT.
+const DebugFlag_layout = DebugFlag(2097152)
+
+// DestDefaults is a representation of the C bitfield GtkDestDefaults.
+type DestDefaults int
+
+// DestDefaults_motion is a representation of the C bitfield member GTK_DEST_DEFAULT_MOTION.
+const DestDefaults_motion = DestDefaults(1)
+
+// DestDefaults_highlight is a representation of the C bitfield member GTK_DEST_DEFAULT_HIGHLIGHT.
+const DestDefaults_highlight = DestDefaults(2)
+
+// DestDefaults_drop is a representation of the C bitfield member GTK_DEST_DEFAULT_DROP.
+const DestDefaults_drop = DestDefaults(4)
+
+// DestDefaults_all is a representation of the C bitfield member GTK_DEST_DEFAULT_ALL.
+const DestDefaults_all = DestDefaults(7)
+
+// DialogFlags is a representation of the C bitfield GtkDialogFlags.
+type DialogFlags int
+
+// DialogFlags_modal is a representation of the C bitfield member GTK_DIALOG_MODAL.
+const DialogFlags_modal = DialogFlags(1)
+
+// DialogFlags_destroy_with_parent is a representation of the C bitfield member GTK_DIALOG_DESTROY_WITH_PARENT.
+const DialogFlags_destroy_with_parent = DialogFlags(2)
+
+// DialogFlags_use_header_bar is a representation of the C bitfield member GTK_DIALOG_USE_HEADER_BAR.
+const DialogFlags_use_header_bar = DialogFlags(4)
+
+// FileFilterFlags is a representation of the C bitfield GtkFileFilterFlags.
+type FileFilterFlags int
+
+// FileFilterFlags_filename is a representation of the C bitfield member GTK_FILE_FILTER_FILENAME.
+const FileFilterFlags_filename = FileFilterFlags(1)
+
+// FileFilterFlags_uri is a representation of the C bitfield member GTK_FILE_FILTER_URI.
+const FileFilterFlags_uri = FileFilterFlags(2)
+
+// FileFilterFlags_display_name is a representation of the C bitfield member GTK_FILE_FILTER_DISPLAY_NAME.
+const FileFilterFlags_display_name = FileFilterFlags(4)
+
+// FileFilterFlags_mime_type is a representation of the C bitfield member GTK_FILE_FILTER_MIME_TYPE.
+const FileFilterFlags_mime_type = FileFilterFlags(8)
+
+// IconLookupFlags is a representation of the C bitfield GtkIconLookupFlags.
+type IconLookupFlags int
+
+// IconLookupFlags_no_svg is a representation of the C bitfield member GTK_ICON_LOOKUP_NO_SVG.
+const IconLookupFlags_no_svg = IconLookupFlags(1)
+
+// IconLookupFlags_force_svg is a representation of the C bitfield member GTK_ICON_LOOKUP_FORCE_SVG.
+const IconLookupFlags_force_svg = IconLookupFlags(2)
+
+// IconLookupFlags_use_builtin is a representation of the C bitfield member GTK_ICON_LOOKUP_USE_BUILTIN.
+const IconLookupFlags_use_builtin = IconLookupFlags(4)
+
+// IconLookupFlags_generic_fallback is a representation of the C bitfield member GTK_ICON_LOOKUP_GENERIC_FALLBACK.
+const IconLookupFlags_generic_fallback = IconLookupFlags(8)
+
+// IconLookupFlags_force_size is a representation of the C bitfield member GTK_ICON_LOOKUP_FORCE_SIZE.
+const IconLookupFlags_force_size = IconLookupFlags(16)
+
+// IconLookupFlags_force_regular is a representation of the C bitfield member GTK_ICON_LOOKUP_FORCE_REGULAR.
+const IconLookupFlags_force_regular = IconLookupFlags(32)
+
+// IconLookupFlags_force_symbolic is a representation of the C bitfield member GTK_ICON_LOOKUP_FORCE_SYMBOLIC.
+const IconLookupFlags_force_symbolic = IconLookupFlags(64)
+
+// IconLookupFlags_dir_ltr is a representation of the C bitfield member GTK_ICON_LOOKUP_DIR_LTR.
+const IconLookupFlags_dir_ltr = IconLookupFlags(128)
+
+// IconLookupFlags_dir_rtl is a representation of the C bitfield member GTK_ICON_LOOKUP_DIR_RTL.
+const IconLookupFlags_dir_rtl = IconLookupFlags(256)
+
+// JunctionSides is a representation of the C bitfield GtkJunctionSides.
+type JunctionSides int
+
+// JunctionSides_none is a representation of the C bitfield member GTK_JUNCTION_NONE.
+const JunctionSides_none = JunctionSides(0)
+
+// JunctionSides_corner_topleft is a representation of the C bitfield member GTK_JUNCTION_CORNER_TOPLEFT.
+const JunctionSides_corner_topleft = JunctionSides(1)
+
+// JunctionSides_corner_topright is a representation of the C bitfield member GTK_JUNCTION_CORNER_TOPRIGHT.
+const JunctionSides_corner_topright = JunctionSides(2)
+
+// JunctionSides_corner_bottomleft is a representation of the C bitfield member GTK_JUNCTION_CORNER_BOTTOMLEFT.
+const JunctionSides_corner_bottomleft = JunctionSides(4)
+
+// JunctionSides_corner_bottomright is a representation of the C bitfield member GTK_JUNCTION_CORNER_BOTTOMRIGHT.
+const JunctionSides_corner_bottomright = JunctionSides(8)
+
+// JunctionSides_top is a representation of the C bitfield member GTK_JUNCTION_TOP.
+const JunctionSides_top = JunctionSides(3)
+
+// JunctionSides_bottom is a representation of the C bitfield member GTK_JUNCTION_BOTTOM.
+const JunctionSides_bottom = JunctionSides(12)
+
+// JunctionSides_left is a representation of the C bitfield member GTK_JUNCTION_LEFT.
+const JunctionSides_left = JunctionSides(5)
+
+// JunctionSides_right is a representation of the C bitfield member GTK_JUNCTION_RIGHT.
+const JunctionSides_right = JunctionSides(10)
+
+// PlacesOpenFlags is a representation of the C bitfield GtkPlacesOpenFlags.
+type PlacesOpenFlags int
+
+// PlacesOpenFlags_normal is a representation of the C bitfield member GTK_PLACES_OPEN_NORMAL.
+const PlacesOpenFlags_normal = PlacesOpenFlags(1)
+
+// PlacesOpenFlags_new_tab is a representation of the C bitfield member GTK_PLACES_OPEN_NEW_TAB.
+const PlacesOpenFlags_new_tab = PlacesOpenFlags(2)
+
+// PlacesOpenFlags_new_window is a representation of the C bitfield member GTK_PLACES_OPEN_NEW_WINDOW.
+const PlacesOpenFlags_new_window = PlacesOpenFlags(4)
+
+// RcFlags is a representation of the C bitfield GtkRcFlags.
+type RcFlags int
+
+// RcFlags_fg is a representation of the C bitfield member GTK_RC_FG.
+const RcFlags_fg = RcFlags(1)
+
+// RcFlags_bg is a representation of the C bitfield member GTK_RC_BG.
+const RcFlags_bg = RcFlags(2)
+
+// RcFlags_text is a representation of the C bitfield member GTK_RC_TEXT.
+const RcFlags_text = RcFlags(4)
+
+// RcFlags_base is a representation of the C bitfield member GTK_RC_BASE.
+const RcFlags_base = RcFlags(8)
+
+// RecentFilterFlags is a representation of the C bitfield GtkRecentFilterFlags.
+type RecentFilterFlags int
+
+// RecentFilterFlags_uri is a representation of the C bitfield member GTK_RECENT_FILTER_URI.
+const RecentFilterFlags_uri = RecentFilterFlags(1)
+
+// RecentFilterFlags_display_name is a representation of the C bitfield member GTK_RECENT_FILTER_DISPLAY_NAME.
+const RecentFilterFlags_display_name = RecentFilterFlags(2)
+
+// RecentFilterFlags_mime_type is a representation of the C bitfield member GTK_RECENT_FILTER_MIME_TYPE.
+const RecentFilterFlags_mime_type = RecentFilterFlags(4)
+
+// RecentFilterFlags_application is a representation of the C bitfield member GTK_RECENT_FILTER_APPLICATION.
+const RecentFilterFlags_application = RecentFilterFlags(8)
+
+// RecentFilterFlags_group is a representation of the C bitfield member GTK_RECENT_FILTER_GROUP.
+const RecentFilterFlags_group = RecentFilterFlags(16)
+
+// RecentFilterFlags_age is a representation of the C bitfield member GTK_RECENT_FILTER_AGE.
+const RecentFilterFlags_age = RecentFilterFlags(32)
+
+// RegionFlags is a representation of the C bitfield GtkRegionFlags.
+type RegionFlags int
+
+// RegionFlags_even is a representation of the C bitfield member GTK_REGION_EVEN.
+const RegionFlags_even = RegionFlags(1)
+
+// RegionFlags_odd is a representation of the C bitfield member GTK_REGION_ODD.
+const RegionFlags_odd = RegionFlags(2)
+
+// RegionFlags_first is a representation of the C bitfield member GTK_REGION_FIRST.
+const RegionFlags_first = RegionFlags(4)
+
+// RegionFlags_last is a representation of the C bitfield member GTK_REGION_LAST.
+const RegionFlags_last = RegionFlags(8)
+
+// RegionFlags_only is a representation of the C bitfield member GTK_REGION_ONLY.
+const RegionFlags_only = RegionFlags(16)
+
+// RegionFlags_sorted is a representation of the C bitfield member GTK_REGION_SORTED.
+const RegionFlags_sorted = RegionFlags(32)
+
+// StateFlags is a representation of the C bitfield GtkStateFlags.
+type StateFlags int
+
+// StateFlags_normal is a representation of the C bitfield member GTK_STATE_FLAG_NORMAL.
+const StateFlags_normal = StateFlags(0)
+
+// StateFlags_active is a representation of the C bitfield member GTK_STATE_FLAG_ACTIVE.
+const StateFlags_active = StateFlags(1)
+
+// StateFlags_prelight is a representation of the C bitfield member GTK_STATE_FLAG_PRELIGHT.
+const StateFlags_prelight = StateFlags(2)
+
+// StateFlags_selected is a representation of the C bitfield member GTK_STATE_FLAG_SELECTED.
+const StateFlags_selected = StateFlags(4)
+
+// StateFlags_insensitive is a representation of the C bitfield member GTK_STATE_FLAG_INSENSITIVE.
+const StateFlags_insensitive = StateFlags(8)
+
+// StateFlags_inconsistent is a representation of the C bitfield member GTK_STATE_FLAG_INCONSISTENT.
+const StateFlags_inconsistent = StateFlags(16)
+
+// StateFlags_focused is a representation of the C bitfield member GTK_STATE_FLAG_FOCUSED.
+const StateFlags_focused = StateFlags(32)
+
+// StateFlags_backdrop is a representation of the C bitfield member GTK_STATE_FLAG_BACKDROP.
+const StateFlags_backdrop = StateFlags(64)
+
+// StateFlags_dir_ltr is a representation of the C bitfield member GTK_STATE_FLAG_DIR_LTR.
+const StateFlags_dir_ltr = StateFlags(128)
+
+// StateFlags_dir_rtl is a representation of the C bitfield member GTK_STATE_FLAG_DIR_RTL.
+const StateFlags_dir_rtl = StateFlags(256)
+
+// StateFlags_link is a representation of the C bitfield member GTK_STATE_FLAG_LINK.
+const StateFlags_link = StateFlags(512)
+
+// StateFlags_visited is a representation of the C bitfield member GTK_STATE_FLAG_VISITED.
+const StateFlags_visited = StateFlags(1024)
+
+// StateFlags_checked is a representation of the C bitfield member GTK_STATE_FLAG_CHECKED.
+const StateFlags_checked = StateFlags(2048)
+
+// StateFlags_drop_active is a representation of the C bitfield member GTK_STATE_FLAG_DROP_ACTIVE.
+const StateFlags_drop_active = StateFlags(4096)
+
+// StyleContextPrintFlags is a representation of the C bitfield GtkStyleContextPrintFlags.
+type StyleContextPrintFlags int
+
+// StyleContextPrintFlags_none is a representation of the C bitfield member GTK_STYLE_CONTEXT_PRINT_NONE.
+const StyleContextPrintFlags_none = StyleContextPrintFlags(0)
+
+// StyleContextPrintFlags_recurse is a representation of the C bitfield member GTK_STYLE_CONTEXT_PRINT_RECURSE.
+const StyleContextPrintFlags_recurse = StyleContextPrintFlags(1)
+
+// StyleContextPrintFlags_show_style is a representation of the C bitfield member GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE.
+const StyleContextPrintFlags_show_style = StyleContextPrintFlags(2)
+
+// TargetFlags is a representation of the C bitfield GtkTargetFlags.
+type TargetFlags int
+
+// TargetFlags_same_app is a representation of the C bitfield member GTK_TARGET_SAME_APP.
+const TargetFlags_same_app = TargetFlags(1)
+
+// TargetFlags_same_widget is a representation of the C bitfield member GTK_TARGET_SAME_WIDGET.
+const TargetFlags_same_widget = TargetFlags(2)
+
+// TargetFlags_other_app is a representation of the C bitfield member GTK_TARGET_OTHER_APP.
+const TargetFlags_other_app = TargetFlags(4)
+
+// TargetFlags_other_widget is a representation of the C bitfield member GTK_TARGET_OTHER_WIDGET.
+const TargetFlags_other_widget = TargetFlags(8)
+
+// TextSearchFlags is a representation of the C bitfield GtkTextSearchFlags.
+type TextSearchFlags int
+
+// TextSearchFlags_visible_only is a representation of the C bitfield member GTK_TEXT_SEARCH_VISIBLE_ONLY.
+const TextSearchFlags_visible_only = TextSearchFlags(1)
+
+// TextSearchFlags_text_only is a representation of the C bitfield member GTK_TEXT_SEARCH_TEXT_ONLY.
+const TextSearchFlags_text_only = TextSearchFlags(2)
+
+// TextSearchFlags_case_insensitive is a representation of the C bitfield member GTK_TEXT_SEARCH_CASE_INSENSITIVE.
+const TextSearchFlags_case_insensitive = TextSearchFlags(4)
+
+// ToolPaletteDragTargets is a representation of the C bitfield GtkToolPaletteDragTargets.
+type ToolPaletteDragTargets int
+
+// ToolPaletteDragTargets_items is a representation of the C bitfield member GTK_TOOL_PALETTE_DRAG_ITEMS.
+const ToolPaletteDragTargets_items = ToolPaletteDragTargets(1)
+
+// ToolPaletteDragTargets_groups is a representation of the C bitfield member GTK_TOOL_PALETTE_DRAG_GROUPS.
+const ToolPaletteDragTargets_groups = ToolPaletteDragTargets(2)
+
+// TreeModelFlags is a representation of the C bitfield GtkTreeModelFlags.
+type TreeModelFlags int
+
+// TreeModelFlags_iters_persist is a representation of the C bitfield member GTK_TREE_MODEL_ITERS_PERSIST.
+const TreeModelFlags_iters_persist = TreeModelFlags(1)
+
+// TreeModelFlags_list_only is a representation of the C bitfield member GTK_TREE_MODEL_LIST_ONLY.
+const TreeModelFlags_list_only = TreeModelFlags(2)
+
+// UIManagerItemType is a representation of the C bitfield GtkUIManagerItemType.
+type UIManagerItemType int
+
+// UIManagerItemType_auto is a representation of the C bitfield member GTK_UI_MANAGER_AUTO.
+const UIManagerItemType_auto = UIManagerItemType(0)
+
+// UIManagerItemType_menubar is a representation of the C bitfield member GTK_UI_MANAGER_MENUBAR.
+const UIManagerItemType_menubar = UIManagerItemType(1)
+
+// UIManagerItemType_menu is a representation of the C bitfield member GTK_UI_MANAGER_MENU.
+const UIManagerItemType_menu = UIManagerItemType(2)
+
+// UIManagerItemType_toolbar is a representation of the C bitfield member GTK_UI_MANAGER_TOOLBAR.
+const UIManagerItemType_toolbar = UIManagerItemType(4)
+
+// UIManagerItemType_placeholder is a representation of the C bitfield member GTK_UI_MANAGER_PLACEHOLDER.
+const UIManagerItemType_placeholder = UIManagerItemType(8)
+
+// UIManagerItemType_popup is a representation of the C bitfield member GTK_UI_MANAGER_POPUP.
+const UIManagerItemType_popup = UIManagerItemType(16)
+
+// UIManagerItemType_menuitem is a representation of the C bitfield member GTK_UI_MANAGER_MENUITEM.
+const UIManagerItemType_menuitem = UIManagerItemType(32)
+
+// UIManagerItemType_toolitem is a representation of the C bitfield member GTK_UI_MANAGER_TOOLITEM.
+const UIManagerItemType_toolitem = UIManagerItemType(64)
+
+// UIManagerItemType_separator is a representation of the C bitfield member GTK_UI_MANAGER_SEPARATOR.
+const UIManagerItemType_separator = UIManagerItemType(128)
+
+// UIManagerItemType_accelerator is a representation of the C bitfield member GTK_UI_MANAGER_ACCELERATOR.
+const UIManagerItemType_accelerator = UIManagerItemType(256)
+
+// UIManagerItemType_popup_with_accels is a representation of the C bitfield member GTK_UI_MANAGER_POPUP_WITH_ACCELS.
+const UIManagerItemType_popup_with_accels = UIManagerItemType(512)
+
+// Align is a representation of the C enumeration GtkAlign.
+type Align int
+
+// Align_fill is a representation of the C enumeration member GTK_ALIGN_FILL.
+const Align_fill = Align(0)
+
+// Align_start is a representation of the C enumeration member GTK_ALIGN_START.
+const Align_start = Align(1)
+
+// Align_end is a representation of the C enumeration member GTK_ALIGN_END.
+const Align_end = Align(2)
+
+// Align_center is a representation of the C enumeration member GTK_ALIGN_CENTER.
+const Align_center = Align(3)
+
+// Align_baseline is a representation of the C enumeration member GTK_ALIGN_BASELINE.
+const Align_baseline = Align(4)
+
+// ArrowPlacement is a representation of the C enumeration GtkArrowPlacement.
+type ArrowPlacement int
+
+// ArrowPlacement_both is a representation of the C enumeration member GTK_ARROWS_BOTH.
+const ArrowPlacement_both = ArrowPlacement(0)
+
+// ArrowPlacement_start is a representation of the C enumeration member GTK_ARROWS_START.
+const ArrowPlacement_start = ArrowPlacement(1)
+
+// ArrowPlacement_end is a representation of the C enumeration member GTK_ARROWS_END.
+const ArrowPlacement_end = ArrowPlacement(2)
+
+// ArrowType is a representation of the C enumeration GtkArrowType.
+type ArrowType int
+
+// ArrowType_up is a representation of the C enumeration member GTK_ARROW_UP.
+const ArrowType_up = ArrowType(0)
+
+// ArrowType_down is a representation of the C enumeration member GTK_ARROW_DOWN.
+const ArrowType_down = ArrowType(1)
+
+// ArrowType_left is a representation of the C enumeration member GTK_ARROW_LEFT.
+const ArrowType_left = ArrowType(2)
+
+// ArrowType_right is a representation of the C enumeration member GTK_ARROW_RIGHT.
+const ArrowType_right = ArrowType(3)
+
+// ArrowType_none is a representation of the C enumeration member GTK_ARROW_NONE.
+const ArrowType_none = ArrowType(4)
+
+// AssistantPageType is a representation of the C enumeration GtkAssistantPageType.
+type AssistantPageType int
+
+// AssistantPageType_content is a representation of the C enumeration member GTK_ASSISTANT_PAGE_CONTENT.
+const AssistantPageType_content = AssistantPageType(0)
+
+// AssistantPageType_intro is a representation of the C enumeration member GTK_ASSISTANT_PAGE_INTRO.
+const AssistantPageType_intro = AssistantPageType(1)
+
+// AssistantPageType_confirm is a representation of the C enumeration member GTK_ASSISTANT_PAGE_CONFIRM.
+const AssistantPageType_confirm = AssistantPageType(2)
+
+// AssistantPageType_summary is a representation of the C enumeration member GTK_ASSISTANT_PAGE_SUMMARY.
+const AssistantPageType_summary = AssistantPageType(3)
+
+// AssistantPageType_progress is a representation of the C enumeration member GTK_ASSISTANT_PAGE_PROGRESS.
+const AssistantPageType_progress = AssistantPageType(4)
+
+// AssistantPageType_custom is a representation of the C enumeration member GTK_ASSISTANT_PAGE_CUSTOM.
+const AssistantPageType_custom = AssistantPageType(5)
+
+// BorderStyle is a representation of the C enumeration GtkBorderStyle.
+type BorderStyle int
+
+// BorderStyle_none is a representation of the C enumeration member GTK_BORDER_STYLE_NONE.
+const BorderStyle_none = BorderStyle(0)
+
+// BorderStyle_solid is a representation of the C enumeration member GTK_BORDER_STYLE_SOLID.
+const BorderStyle_solid = BorderStyle(1)
+
+// BorderStyle_inset is a representation of the C enumeration member GTK_BORDER_STYLE_INSET.
+const BorderStyle_inset = BorderStyle(2)
+
+// BorderStyle_outset is a representation of the C enumeration member GTK_BORDER_STYLE_OUTSET.
+const BorderStyle_outset = BorderStyle(3)
+
+// BorderStyle_hidden is a representation of the C enumeration member GTK_BORDER_STYLE_HIDDEN.
+const BorderStyle_hidden = BorderStyle(4)
+
+// BorderStyle_dotted is a representation of the C enumeration member GTK_BORDER_STYLE_DOTTED.
+const BorderStyle_dotted = BorderStyle(5)
+
+// BorderStyle_dashed is a representation of the C enumeration member GTK_BORDER_STYLE_DASHED.
+const BorderStyle_dashed = BorderStyle(6)
+
+// BorderStyle_double is a representation of the C enumeration member GTK_BORDER_STYLE_DOUBLE.
+const BorderStyle_double = BorderStyle(7)
+
+// BorderStyle_groove is a representation of the C enumeration member GTK_BORDER_STYLE_GROOVE.
+const BorderStyle_groove = BorderStyle(8)
+
+// BorderStyle_ridge is a representation of the C enumeration member GTK_BORDER_STYLE_RIDGE.
+const BorderStyle_ridge = BorderStyle(9)
+
+// BuilderError is a representation of the C enumeration GtkBuilderError.
+type BuilderError int
+
+// BuilderError_invalid_type_function is a representation of the C enumeration member GTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION.
+const BuilderError_invalid_type_function = BuilderError(0)
+
+// BuilderError_unhandled_tag is a representation of the C enumeration member GTK_BUILDER_ERROR_UNHANDLED_TAG.
+const BuilderError_unhandled_tag = BuilderError(1)
+
+// BuilderError_missing_attribute is a representation of the C enumeration member GTK_BUILDER_ERROR_MISSING_ATTRIBUTE.
+const BuilderError_missing_attribute = BuilderError(2)
+
+// BuilderError_invalid_attribute is a representation of the C enumeration member GTK_BUILDER_ERROR_INVALID_ATTRIBUTE.
+const BuilderError_invalid_attribute = BuilderError(3)
+
+// BuilderError_invalid_tag is a representation of the C enumeration member GTK_BUILDER_ERROR_INVALID_TAG.
+const BuilderError_invalid_tag = BuilderError(4)
+
+// BuilderError_missing_property_value is a representation of the C enumeration member GTK_BUILDER_ERROR_MISSING_PROPERTY_VALUE.
+const BuilderError_missing_property_value = BuilderError(5)
+
+// BuilderError_invalid_value is a representation of the C enumeration member GTK_BUILDER_ERROR_INVALID_VALUE.
+const BuilderError_invalid_value = BuilderError(6)
+
+// BuilderError_version_mismatch is a representation of the C enumeration member GTK_BUILDER_ERROR_VERSION_MISMATCH.
+const BuilderError_version_mismatch = BuilderError(7)
+
+// BuilderError_duplicate_id is a representation of the C enumeration member GTK_BUILDER_ERROR_DUPLICATE_ID.
+const BuilderError_duplicate_id = BuilderError(8)
+
+// BuilderError_object_type_refused is a representation of the C enumeration member GTK_BUILDER_ERROR_OBJECT_TYPE_REFUSED.
+const BuilderError_object_type_refused = BuilderError(9)
+
+// BuilderError_template_mismatch is a representation of the C enumeration member GTK_BUILDER_ERROR_TEMPLATE_MISMATCH.
+const BuilderError_template_mismatch = BuilderError(10)
+
+// BuilderError_invalid_property is a representation of the C enumeration member GTK_BUILDER_ERROR_INVALID_PROPERTY.
+const BuilderError_invalid_property = BuilderError(11)
+
+// BuilderError_invalid_signal is a representation of the C enumeration member GTK_BUILDER_ERROR_INVALID_SIGNAL.
+const BuilderError_invalid_signal = BuilderError(12)
+
+// BuilderError_invalid_id is a representation of the C enumeration member GTK_BUILDER_ERROR_INVALID_ID.
+const BuilderError_invalid_id = BuilderError(13)
+
+// ButtonBoxStyle is a representation of the C enumeration GtkButtonBoxStyle.
+type ButtonBoxStyle int
+
+// ButtonBoxStyle_spread is a representation of the C enumeration member GTK_BUTTONBOX_SPREAD.
+const ButtonBoxStyle_spread = ButtonBoxStyle(1)
+
+// ButtonBoxStyle_edge is a representation of the C enumeration member GTK_BUTTONBOX_EDGE.
+const ButtonBoxStyle_edge = ButtonBoxStyle(2)
+
+// ButtonBoxStyle_start is a representation of the C enumeration member GTK_BUTTONBOX_START.
+const ButtonBoxStyle_start = ButtonBoxStyle(3)
+
+// ButtonBoxStyle_end is a representation of the C enumeration member GTK_BUTTONBOX_END.
+const ButtonBoxStyle_end = ButtonBoxStyle(4)
+
+// ButtonBoxStyle_center is a representation of the C enumeration member GTK_BUTTONBOX_CENTER.
+const ButtonBoxStyle_center = ButtonBoxStyle(5)
+
+// ButtonBoxStyle_expand is a representation of the C enumeration member GTK_BUTTONBOX_EXPAND.
+const ButtonBoxStyle_expand = ButtonBoxStyle(6)
+
+// ButtonRole is a representation of the C enumeration GtkButtonRole.
+type ButtonRole int
+
+// ButtonRole_normal is a representation of the C enumeration member GTK_BUTTON_ROLE_NORMAL.
+const ButtonRole_normal = ButtonRole(0)
+
+// ButtonRole_check is a representation of the C enumeration member GTK_BUTTON_ROLE_CHECK.
+const ButtonRole_check = ButtonRole(1)
+
+// ButtonRole_radio is a representation of the C enumeration member GTK_BUTTON_ROLE_RADIO.
+const ButtonRole_radio = ButtonRole(2)
+
+// ButtonsType is a representation of the C enumeration GtkButtonsType.
+type ButtonsType int
+
+// ButtonsType_none is a representation of the C enumeration member GTK_BUTTONS_NONE.
+const ButtonsType_none = ButtonsType(0)
+
+// ButtonsType_ok is a representation of the C enumeration member GTK_BUTTONS_OK.
+const ButtonsType_ok = ButtonsType(1)
+
+// ButtonsType_close is a representation of the C enumeration member GTK_BUTTONS_CLOSE.
+const ButtonsType_close = ButtonsType(2)
+
+// ButtonsType_cancel is a representation of the C enumeration member GTK_BUTTONS_CANCEL.
+const ButtonsType_cancel = ButtonsType(3)
+
+// ButtonsType_yes_no is a representation of the C enumeration member GTK_BUTTONS_YES_NO.
+const ButtonsType_yes_no = ButtonsType(4)
+
+// ButtonsType_ok_cancel is a representation of the C enumeration member GTK_BUTTONS_OK_CANCEL.
+const ButtonsType_ok_cancel = ButtonsType(5)
+
+// CellRendererAccelMode is a representation of the C enumeration GtkCellRendererAccelMode.
+type CellRendererAccelMode int
+
+// CellRendererAccelMode_gtk is a representation of the C enumeration member GTK_CELL_RENDERER_ACCEL_MODE_GTK.
+const CellRendererAccelMode_gtk = CellRendererAccelMode(0)
+
+// CellRendererAccelMode_other is a representation of the C enumeration member GTK_CELL_RENDERER_ACCEL_MODE_OTHER.
+const CellRendererAccelMode_other = CellRendererAccelMode(1)
+
+// CellRendererAccelMode_modifier_tap is a representation of the C enumeration member GTK_CELL_RENDERER_ACCEL_MODE_MODIFIER_TAP.
+const CellRendererAccelMode_modifier_tap = CellRendererAccelMode(2)
+
+// CellRendererMode is a representation of the C enumeration GtkCellRendererMode.
+type CellRendererMode int
+
+// CellRendererMode_inert is a representation of the C enumeration member GTK_CELL_RENDERER_MODE_INERT.
+const CellRendererMode_inert = CellRendererMode(0)
+
+// CellRendererMode_activatable is a representation of the C enumeration member GTK_CELL_RENDERER_MODE_ACTIVATABLE.
+const CellRendererMode_activatable = CellRendererMode(1)
+
+// CellRendererMode_editable is a representation of the C enumeration member GTK_CELL_RENDERER_MODE_EDITABLE.
+const CellRendererMode_editable = CellRendererMode(2)
+
+// CornerType is a representation of the C enumeration GtkCornerType.
+type CornerType int
+
+// CornerType_top_left is a representation of the C enumeration member GTK_CORNER_TOP_LEFT.
+const CornerType_top_left = CornerType(0)
+
+// CornerType_bottom_left is a representation of the C enumeration member GTK_CORNER_BOTTOM_LEFT.
+const CornerType_bottom_left = CornerType(1)
+
+// CornerType_top_right is a representation of the C enumeration member GTK_CORNER_TOP_RIGHT.
+const CornerType_top_right = CornerType(2)
+
+// CornerType_bottom_right is a representation of the C enumeration member GTK_CORNER_BOTTOM_RIGHT.
+const CornerType_bottom_right = CornerType(3)
+
+// CssProviderError is a representation of the C enumeration GtkCssProviderError.
+type CssProviderError int
+
+// CssProviderError_failed is a representation of the C enumeration member GTK_CSS_PROVIDER_ERROR_FAILED.
+const CssProviderError_failed = CssProviderError(0)
+
+// CssProviderError_syntax is a representation of the C enumeration member GTK_CSS_PROVIDER_ERROR_SYNTAX.
+const CssProviderError_syntax = CssProviderError(1)
+
+// CssProviderError_import is a representation of the C enumeration member GTK_CSS_PROVIDER_ERROR_IMPORT.
+const CssProviderError_import = CssProviderError(2)
+
+// CssProviderError_name is a representation of the C enumeration member GTK_CSS_PROVIDER_ERROR_NAME.
+const CssProviderError_name = CssProviderError(3)
+
+// CssProviderError_deprecated is a representation of the C enumeration member GTK_CSS_PROVIDER_ERROR_DEPRECATED.
+const CssProviderError_deprecated = CssProviderError(4)
+
+// CssProviderError_unknown_value is a representation of the C enumeration member GTK_CSS_PROVIDER_ERROR_UNKNOWN_VALUE.
+const CssProviderError_unknown_value = CssProviderError(5)
+
+// DeleteType is a representation of the C enumeration GtkDeleteType.
+type DeleteType int
+
+// DeleteType_chars is a representation of the C enumeration member GTK_DELETE_CHARS.
+const DeleteType_chars = DeleteType(0)
+
+// DeleteType_word_ends is a representation of the C enumeration member GTK_DELETE_WORD_ENDS.
+const DeleteType_word_ends = DeleteType(1)
+
+// DeleteType_words is a representation of the C enumeration member GTK_DELETE_WORDS.
+const DeleteType_words = DeleteType(2)
+
+// DeleteType_display_lines is a representation of the C enumeration member GTK_DELETE_DISPLAY_LINES.
+const DeleteType_display_lines = DeleteType(3)
+
+// DeleteType_display_line_ends is a representation of the C enumeration member GTK_DELETE_DISPLAY_LINE_ENDS.
+const DeleteType_display_line_ends = DeleteType(4)
+
+// DeleteType_paragraph_ends is a representation of the C enumeration member GTK_DELETE_PARAGRAPH_ENDS.
+const DeleteType_paragraph_ends = DeleteType(5)
+
+// DeleteType_paragraphs is a representation of the C enumeration member GTK_DELETE_PARAGRAPHS.
+const DeleteType_paragraphs = DeleteType(6)
+
+// DeleteType_whitespace is a representation of the C enumeration member GTK_DELETE_WHITESPACE.
+const DeleteType_whitespace = DeleteType(7)
+
+// DirectionType is a representation of the C enumeration GtkDirectionType.
+type DirectionType int
+
+// DirectionType_tab_forward is a representation of the C enumeration member GTK_DIR_TAB_FORWARD.
+const DirectionType_tab_forward = DirectionType(0)
+
+// DirectionType_tab_backward is a representation of the C enumeration member GTK_DIR_TAB_BACKWARD.
+const DirectionType_tab_backward = DirectionType(1)
+
+// DirectionType_up is a representation of the C enumeration member GTK_DIR_UP.
+const DirectionType_up = DirectionType(2)
+
+// DirectionType_down is a representation of the C enumeration member GTK_DIR_DOWN.
+const DirectionType_down = DirectionType(3)
+
+// DirectionType_left is a representation of the C enumeration member GTK_DIR_LEFT.
+const DirectionType_left = DirectionType(4)
+
+// DirectionType_right is a representation of the C enumeration member GTK_DIR_RIGHT.
+const DirectionType_right = DirectionType(5)
+
+// DragResult is a representation of the C enumeration GtkDragResult.
+type DragResult int
+
+// DragResult_success is a representation of the C enumeration member GTK_DRAG_RESULT_SUCCESS.
+const DragResult_success = DragResult(0)
+
+// DragResult_no_target is a representation of the C enumeration member GTK_DRAG_RESULT_NO_TARGET.
+const DragResult_no_target = DragResult(1)
+
+// DragResult_user_cancelled is a representation of the C enumeration member GTK_DRAG_RESULT_USER_CANCELLED.
+const DragResult_user_cancelled = DragResult(2)
+
+// DragResult_timeout_expired is a representation of the C enumeration member GTK_DRAG_RESULT_TIMEOUT_EXPIRED.
+const DragResult_timeout_expired = DragResult(3)
+
+// DragResult_grab_broken is a representation of the C enumeration member GTK_DRAG_RESULT_GRAB_BROKEN.
+const DragResult_grab_broken = DragResult(4)
+
+// DragResult_error is a representation of the C enumeration member GTK_DRAG_RESULT_ERROR.
+const DragResult_error = DragResult(5)
+
+// ExpanderStyle is a representation of the C enumeration GtkExpanderStyle.
+type ExpanderStyle int
+
+// ExpanderStyle_collapsed is a representation of the C enumeration member GTK_EXPANDER_COLLAPSED.
+const ExpanderStyle_collapsed = ExpanderStyle(0)
+
+// ExpanderStyle_semi_collapsed is a representation of the C enumeration member GTK_EXPANDER_SEMI_COLLAPSED.
+const ExpanderStyle_semi_collapsed = ExpanderStyle(1)
+
+// ExpanderStyle_semi_expanded is a representation of the C enumeration member GTK_EXPANDER_SEMI_EXPANDED.
+const ExpanderStyle_semi_expanded = ExpanderStyle(2)
+
+// ExpanderStyle_expanded is a representation of the C enumeration member GTK_EXPANDER_EXPANDED.
+const ExpanderStyle_expanded = ExpanderStyle(3)
+
+// FileChooserAction is a representation of the C enumeration GtkFileChooserAction.
+type FileChooserAction int
+
+// FileChooserAction_open is a representation of the C enumeration member GTK_FILE_CHOOSER_ACTION_OPEN.
+const FileChooserAction_open = FileChooserAction(0)
+
+// FileChooserAction_save is a representation of the C enumeration member GTK_FILE_CHOOSER_ACTION_SAVE.
+const FileChooserAction_save = FileChooserAction(1)
+
+// FileChooserAction_select_folder is a representation of the C enumeration member GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER.
+const FileChooserAction_select_folder = FileChooserAction(2)
+
+// FileChooserAction_create_folder is a representation of the C enumeration member GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER.
+const FileChooserAction_create_folder = FileChooserAction(3)
+
+// FileChooserConfirmation is a representation of the C enumeration GtkFileChooserConfirmation.
+type FileChooserConfirmation int
+
+// FileChooserConfirmation_confirm is a representation of the C enumeration member GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM.
+const FileChooserConfirmation_confirm = FileChooserConfirmation(0)
+
+// FileChooserConfirmation_accept_filename is a representation of the C enumeration member GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME.
+const FileChooserConfirmation_accept_filename = FileChooserConfirmation(1)
+
+// FileChooserConfirmation_select_again is a representation of the C enumeration member GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN.
+const FileChooserConfirmation_select_again = FileChooserConfirmation(2)
+
+// FileChooserError is a representation of the C enumeration GtkFileChooserError.
+type FileChooserError int
+
+// FileChooserError_nonexistent is a representation of the C enumeration member GTK_FILE_CHOOSER_ERROR_NONEXISTENT.
+const FileChooserError_nonexistent = FileChooserError(0)
+
+// FileChooserError_bad_filename is a representation of the C enumeration member GTK_FILE_CHOOSER_ERROR_BAD_FILENAME.
+const FileChooserError_bad_filename = FileChooserError(1)
+
+// FileChooserError_already_exists is a representation of the C enumeration member GTK_FILE_CHOOSER_ERROR_ALREADY_EXISTS.
+const FileChooserError_already_exists = FileChooserError(2)
+
+// FileChooserError_incomplete_hostname is a representation of the C enumeration member GTK_FILE_CHOOSER_ERROR_INCOMPLETE_HOSTNAME.
+const FileChooserError_incomplete_hostname = FileChooserError(3)
+
+// IMPreeditStyle is a representation of the C enumeration GtkIMPreeditStyle.
+type IMPreeditStyle int
+
+// IMPreeditStyle_nothing is a representation of the C enumeration member GTK_IM_PREEDIT_NOTHING.
+const IMPreeditStyle_nothing = IMPreeditStyle(0)
+
+// IMPreeditStyle_callback is a representation of the C enumeration member GTK_IM_PREEDIT_CALLBACK.
+const IMPreeditStyle_callback = IMPreeditStyle(1)
+
+// IMPreeditStyle_none is a representation of the C enumeration member GTK_IM_PREEDIT_NONE.
+const IMPreeditStyle_none = IMPreeditStyle(2)
+
+// IMStatusStyle is a representation of the C enumeration GtkIMStatusStyle.
+type IMStatusStyle int
+
+// IMStatusStyle_nothing is a representation of the C enumeration member GTK_IM_STATUS_NOTHING.
+const IMStatusStyle_nothing = IMStatusStyle(0)
+
+// IMStatusStyle_callback is a representation of the C enumeration member GTK_IM_STATUS_CALLBACK.
+const IMStatusStyle_callback = IMStatusStyle(1)
+
+// IMStatusStyle_none is a representation of the C enumeration member GTK_IM_STATUS_NONE.
+const IMStatusStyle_none = IMStatusStyle(2)
+
+// IconSize is a representation of the C enumeration GtkIconSize.
+type IconSize int
+
+// IconSize_invalid is a representation of the C enumeration member GTK_ICON_SIZE_INVALID.
+const IconSize_invalid = IconSize(0)
+
+// IconSize_menu is a representation of the C enumeration member GTK_ICON_SIZE_MENU.
+const IconSize_menu = IconSize(1)
+
+// IconSize_small_toolbar is a representation of the C enumeration member GTK_ICON_SIZE_SMALL_TOOLBAR.
+const IconSize_small_toolbar = IconSize(2)
+
+// IconSize_large_toolbar is a representation of the C enumeration member GTK_ICON_SIZE_LARGE_TOOLBAR.
+const IconSize_large_toolbar = IconSize(3)
+
+// IconSize_button is a representation of the C enumeration member GTK_ICON_SIZE_BUTTON.
+const IconSize_button = IconSize(4)
+
+// IconSize_dnd is a representation of the C enumeration member GTK_ICON_SIZE_DND.
+const IconSize_dnd = IconSize(5)
+
+// IconSize_dialog is a representation of the C enumeration member GTK_ICON_SIZE_DIALOG.
+const IconSize_dialog = IconSize(6)
+
+// IconThemeError is a representation of the C enumeration GtkIconThemeError.
+type IconThemeError int
+
+// IconThemeError_not_found is a representation of the C enumeration member GTK_ICON_THEME_NOT_FOUND.
+const IconThemeError_not_found = IconThemeError(0)
+
+// IconThemeError_failed is a representation of the C enumeration member GTK_ICON_THEME_FAILED.
+const IconThemeError_failed = IconThemeError(1)
+
+// IconViewDropPosition is a representation of the C enumeration GtkIconViewDropPosition.
+type IconViewDropPosition int
+
+// IconViewDropPosition_no_drop is a representation of the C enumeration member GTK_ICON_VIEW_NO_DROP.
+const IconViewDropPosition_no_drop = IconViewDropPosition(0)
+
+// IconViewDropPosition_drop_into is a representation of the C enumeration member GTK_ICON_VIEW_DROP_INTO.
+const IconViewDropPosition_drop_into = IconViewDropPosition(1)
+
+// IconViewDropPosition_drop_left is a representation of the C enumeration member GTK_ICON_VIEW_DROP_LEFT.
+const IconViewDropPosition_drop_left = IconViewDropPosition(2)
+
+// IconViewDropPosition_drop_right is a representation of the C enumeration member GTK_ICON_VIEW_DROP_RIGHT.
+const IconViewDropPosition_drop_right = IconViewDropPosition(3)
+
+// IconViewDropPosition_drop_above is a representation of the C enumeration member GTK_ICON_VIEW_DROP_ABOVE.
+const IconViewDropPosition_drop_above = IconViewDropPosition(4)
+
+// IconViewDropPosition_drop_below is a representation of the C enumeration member GTK_ICON_VIEW_DROP_BELOW.
+const IconViewDropPosition_drop_below = IconViewDropPosition(5)
+
+// ImageType is a representation of the C enumeration GtkImageType.
+type ImageType int
+
+// ImageType_empty is a representation of the C enumeration member GTK_IMAGE_EMPTY.
+const ImageType_empty = ImageType(0)
+
+// ImageType_pixbuf is a representation of the C enumeration member GTK_IMAGE_PIXBUF.
+const ImageType_pixbuf = ImageType(1)
+
+// ImageType_stock is a representation of the C enumeration member GTK_IMAGE_STOCK.
+const ImageType_stock = ImageType(2)
+
+// ImageType_icon_set is a representation of the C enumeration member GTK_IMAGE_ICON_SET.
+const ImageType_icon_set = ImageType(3)
+
+// ImageType_animation is a representation of the C enumeration member GTK_IMAGE_ANIMATION.
+const ImageType_animation = ImageType(4)
+
+// ImageType_icon_name is a representation of the C enumeration member GTK_IMAGE_ICON_NAME.
+const ImageType_icon_name = ImageType(5)
+
+// ImageType_gicon is a representation of the C enumeration member GTK_IMAGE_GICON.
+const ImageType_gicon = ImageType(6)
+
+// ImageType_surface is a representation of the C enumeration member GTK_IMAGE_SURFACE.
+const ImageType_surface = ImageType(7)
+
+// Justification is a representation of the C enumeration GtkJustification.
+type Justification int
+
+// Justification_left is a representation of the C enumeration member GTK_JUSTIFY_LEFT.
+const Justification_left = Justification(0)
+
+// Justification_right is a representation of the C enumeration member GTK_JUSTIFY_RIGHT.
+const Justification_right = Justification(1)
+
+// Justification_center is a representation of the C enumeration member GTK_JUSTIFY_CENTER.
+const Justification_center = Justification(2)
+
+// Justification_fill is a representation of the C enumeration member GTK_JUSTIFY_FILL.
+const Justification_fill = Justification(3)
+
+// MenuDirectionType is a representation of the C enumeration GtkMenuDirectionType.
+type MenuDirectionType int
+
+// MenuDirectionType_parent is a representation of the C enumeration member GTK_MENU_DIR_PARENT.
+const MenuDirectionType_parent = MenuDirectionType(0)
+
+// MenuDirectionType_child is a representation of the C enumeration member GTK_MENU_DIR_CHILD.
+const MenuDirectionType_child = MenuDirectionType(1)
+
+// MenuDirectionType_next is a representation of the C enumeration member GTK_MENU_DIR_NEXT.
+const MenuDirectionType_next = MenuDirectionType(2)
+
+// MenuDirectionType_prev is a representation of the C enumeration member GTK_MENU_DIR_PREV.
+const MenuDirectionType_prev = MenuDirectionType(3)
+
+// MessageType is a representation of the C enumeration GtkMessageType.
+type MessageType int
+
+// MessageType_info is a representation of the C enumeration member GTK_MESSAGE_INFO.
+const MessageType_info = MessageType(0)
+
+// MessageType_warning is a representation of the C enumeration member GTK_MESSAGE_WARNING.
+const MessageType_warning = MessageType(1)
+
+// MessageType_question is a representation of the C enumeration member GTK_MESSAGE_QUESTION.
+const MessageType_question = MessageType(2)
+
+// MessageType_error is a representation of the C enumeration member GTK_MESSAGE_ERROR.
+const MessageType_error = MessageType(3)
+
+// MessageType_other is a representation of the C enumeration member GTK_MESSAGE_OTHER.
+const MessageType_other = MessageType(4)
+
+// MovementStep is a representation of the C enumeration GtkMovementStep.
+type MovementStep int
+
+// MovementStep_logical_positions is a representation of the C enumeration member GTK_MOVEMENT_LOGICAL_POSITIONS.
+const MovementStep_logical_positions = MovementStep(0)
+
+// MovementStep_visual_positions is a representation of the C enumeration member GTK_MOVEMENT_VISUAL_POSITIONS.
+const MovementStep_visual_positions = MovementStep(1)
+
+// MovementStep_words is a representation of the C enumeration member GTK_MOVEMENT_WORDS.
+const MovementStep_words = MovementStep(2)
+
+// MovementStep_display_lines is a representation of the C enumeration member GTK_MOVEMENT_DISPLAY_LINES.
+const MovementStep_display_lines = MovementStep(3)
+
+// MovementStep_display_line_ends is a representation of the C enumeration member GTK_MOVEMENT_DISPLAY_LINE_ENDS.
+const MovementStep_display_line_ends = MovementStep(4)
+
+// MovementStep_paragraphs is a representation of the C enumeration member GTK_MOVEMENT_PARAGRAPHS.
+const MovementStep_paragraphs = MovementStep(5)
+
+// MovementStep_paragraph_ends is a representation of the C enumeration member GTK_MOVEMENT_PARAGRAPH_ENDS.
+const MovementStep_paragraph_ends = MovementStep(6)
+
+// MovementStep_pages is a representation of the C enumeration member GTK_MOVEMENT_PAGES.
+const MovementStep_pages = MovementStep(7)
+
+// MovementStep_buffer_ends is a representation of the C enumeration member GTK_MOVEMENT_BUFFER_ENDS.
+const MovementStep_buffer_ends = MovementStep(8)
+
+// MovementStep_horizontal_pages is a representation of the C enumeration member GTK_MOVEMENT_HORIZONTAL_PAGES.
+const MovementStep_horizontal_pages = MovementStep(9)
+
+// NotebookTab is a representation of the C enumeration GtkNotebookTab.
+type NotebookTab int
+
+// NotebookTab_first is a representation of the C enumeration member GTK_NOTEBOOK_TAB_FIRST.
+const NotebookTab_first = NotebookTab(0)
+
+// NotebookTab_last is a representation of the C enumeration member GTK_NOTEBOOK_TAB_LAST.
+const NotebookTab_last = NotebookTab(1)
+
+// NumberUpLayout is a representation of the C enumeration GtkNumberUpLayout.
+type NumberUpLayout int
+
+// NumberUpLayout_lrtb is a representation of the C enumeration member GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM.
+const NumberUpLayout_lrtb = NumberUpLayout(0)
+
+// NumberUpLayout_lrbt is a representation of the C enumeration member GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP.
+const NumberUpLayout_lrbt = NumberUpLayout(1)
+
+// NumberUpLayout_rltb is a representation of the C enumeration member GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM.
+const NumberUpLayout_rltb = NumberUpLayout(2)
+
+// NumberUpLayout_rlbt is a representation of the C enumeration member GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_BOTTOM_TO_TOP.
+const NumberUpLayout_rlbt = NumberUpLayout(3)
+
+// NumberUpLayout_tblr is a representation of the C enumeration member GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_LEFT_TO_RIGHT.
+const NumberUpLayout_tblr = NumberUpLayout(4)
+
+// NumberUpLayout_tbrl is a representation of the C enumeration member GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_RIGHT_TO_LEFT.
+const NumberUpLayout_tbrl = NumberUpLayout(5)
+
+// NumberUpLayout_btlr is a representation of the C enumeration member GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_LEFT_TO_RIGHT.
+const NumberUpLayout_btlr = NumberUpLayout(6)
+
+// NumberUpLayout_btrl is a representation of the C enumeration member GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT.
+const NumberUpLayout_btrl = NumberUpLayout(7)
+
+// Orientation is a representation of the C enumeration GtkOrientation.
+type Orientation int
+
+// Orientation_horizontal is a representation of the C enumeration member GTK_ORIENTATION_HORIZONTAL.
+const Orientation_horizontal = Orientation(0)
+
+// Orientation_vertical is a representation of the C enumeration member GTK_ORIENTATION_VERTICAL.
+const Orientation_vertical = Orientation(1)
+
+// PackDirection is a representation of the C enumeration GtkPackDirection.
+type PackDirection int
+
+// PackDirection_ltr is a representation of the C enumeration member GTK_PACK_DIRECTION_LTR.
+const PackDirection_ltr = PackDirection(0)
+
+// PackDirection_rtl is a representation of the C enumeration member GTK_PACK_DIRECTION_RTL.
+const PackDirection_rtl = PackDirection(1)
+
+// PackDirection_ttb is a representation of the C enumeration member GTK_PACK_DIRECTION_TTB.
+const PackDirection_ttb = PackDirection(2)
+
+// PackDirection_btt is a representation of the C enumeration member GTK_PACK_DIRECTION_BTT.
+const PackDirection_btt = PackDirection(3)
+
+// PackType is a representation of the C enumeration GtkPackType.
+type PackType int
+
+// PackType_start is a representation of the C enumeration member GTK_PACK_START.
+const PackType_start = PackType(0)
+
+// PackType_end is a representation of the C enumeration member GTK_PACK_END.
+const PackType_end = PackType(1)
+
+// PadActionType is a representation of the C enumeration GtkPadActionType.
+type PadActionType int
+
+// PadActionType_button is a representation of the C enumeration member GTK_PAD_ACTION_BUTTON.
+const PadActionType_button = PadActionType(0)
+
+// PadActionType_ring is a representation of the C enumeration member GTK_PAD_ACTION_RING.
+const PadActionType_ring = PadActionType(1)
+
+// PadActionType_strip is a representation of the C enumeration member GTK_PAD_ACTION_STRIP.
+const PadActionType_strip = PadActionType(2)
+
+// PageOrientation is a representation of the C enumeration GtkPageOrientation.
+type PageOrientation int
+
+// PageOrientation_portrait is a representation of the C enumeration member GTK_PAGE_ORIENTATION_PORTRAIT.
+const PageOrientation_portrait = PageOrientation(0)
+
+// PageOrientation_landscape is a representation of the C enumeration member GTK_PAGE_ORIENTATION_LANDSCAPE.
+const PageOrientation_landscape = PageOrientation(1)
+
+// PageOrientation_reverse_portrait is a representation of the C enumeration member GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT.
+const PageOrientation_reverse_portrait = PageOrientation(2)
+
+// PageOrientation_reverse_landscape is a representation of the C enumeration member GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE.
+const PageOrientation_reverse_landscape = PageOrientation(3)
+
+// PageSet is a representation of the C enumeration GtkPageSet.
+type PageSet int
+
+// PageSet_all is a representation of the C enumeration member GTK_PAGE_SET_ALL.
+const PageSet_all = PageSet(0)
+
+// PageSet_even is a representation of the C enumeration member GTK_PAGE_SET_EVEN.
+const PageSet_even = PageSet(1)
+
+// PageSet_odd is a representation of the C enumeration member GTK_PAGE_SET_ODD.
+const PageSet_odd = PageSet(2)
+
+// PathPriorityType is a representation of the C enumeration GtkPathPriorityType.
+type PathPriorityType int
+
+// PathPriorityType_lowest is a representation of the C enumeration member GTK_PATH_PRIO_LOWEST.
+const PathPriorityType_lowest = PathPriorityType(0)
+
+// PathPriorityType_gtk is a representation of the C enumeration member GTK_PATH_PRIO_GTK.
+const PathPriorityType_gtk = PathPriorityType(4)
+
+// PathPriorityType_application is a representation of the C enumeration member GTK_PATH_PRIO_APPLICATION.
+const PathPriorityType_application = PathPriorityType(8)
+
+// PathPriorityType_theme is a representation of the C enumeration member GTK_PATH_PRIO_THEME.
+const PathPriorityType_theme = PathPriorityType(10)
+
+// PathPriorityType_rc is a representation of the C enumeration member GTK_PATH_PRIO_RC.
+const PathPriorityType_rc = PathPriorityType(12)
+
+// PathPriorityType_highest is a representation of the C enumeration member GTK_PATH_PRIO_HIGHEST.
+const PathPriorityType_highest = PathPriorityType(15)
+
+// PathType is a representation of the C enumeration GtkPathType.
+type PathType int
+
+// PathType_widget is a representation of the C enumeration member GTK_PATH_WIDGET.
+const PathType_widget = PathType(0)
+
+// PathType_widget_class is a representation of the C enumeration member GTK_PATH_WIDGET_CLASS.
+const PathType_widget_class = PathType(1)
+
+// PathType_class is a representation of the C enumeration member GTK_PATH_CLASS.
+const PathType_class = PathType(2)
+
+// PolicyType is a representation of the C enumeration GtkPolicyType.
+type PolicyType int
+
+// PolicyType_always is a representation of the C enumeration member GTK_POLICY_ALWAYS.
+const PolicyType_always = PolicyType(0)
+
+// PolicyType_automatic is a representation of the C enumeration member GTK_POLICY_AUTOMATIC.
+const PolicyType_automatic = PolicyType(1)
+
+// PolicyType_never is a representation of the C enumeration member GTK_POLICY_NEVER.
+const PolicyType_never = PolicyType(2)
+
+// PolicyType_external is a representation of the C enumeration member GTK_POLICY_EXTERNAL.
+const PolicyType_external = PolicyType(3)
+
+// PositionType is a representation of the C enumeration GtkPositionType.
+type PositionType int
+
+// PositionType_left is a representation of the C enumeration member GTK_POS_LEFT.
+const PositionType_left = PositionType(0)
+
+// PositionType_right is a representation of the C enumeration member GTK_POS_RIGHT.
+const PositionType_right = PositionType(1)
+
+// PositionType_top is a representation of the C enumeration member GTK_POS_TOP.
+const PositionType_top = PositionType(2)
+
+// PositionType_bottom is a representation of the C enumeration member GTK_POS_BOTTOM.
+const PositionType_bottom = PositionType(3)
+
+// PrintDuplex is a representation of the C enumeration GtkPrintDuplex.
+type PrintDuplex int
+
+// PrintDuplex_simplex is a representation of the C enumeration member GTK_PRINT_DUPLEX_SIMPLEX.
+const PrintDuplex_simplex = PrintDuplex(0)
+
+// PrintDuplex_horizontal is a representation of the C enumeration member GTK_PRINT_DUPLEX_HORIZONTAL.
+const PrintDuplex_horizontal = PrintDuplex(1)
+
+// PrintDuplex_vertical is a representation of the C enumeration member GTK_PRINT_DUPLEX_VERTICAL.
+const PrintDuplex_vertical = PrintDuplex(2)
+
+// PrintError is a representation of the C enumeration GtkPrintError.
+type PrintError int
+
+// PrintError_general is a representation of the C enumeration member GTK_PRINT_ERROR_GENERAL.
+const PrintError_general = PrintError(0)
+
+// PrintError_internal_error is a representation of the C enumeration member GTK_PRINT_ERROR_INTERNAL_ERROR.
+const PrintError_internal_error = PrintError(1)
+
+// PrintError_nomem is a representation of the C enumeration member GTK_PRINT_ERROR_NOMEM.
+const PrintError_nomem = PrintError(2)
+
+// PrintError_invalid_file is a representation of the C enumeration member GTK_PRINT_ERROR_INVALID_FILE.
+const PrintError_invalid_file = PrintError(3)
+
+// PrintOperationAction is a representation of the C enumeration GtkPrintOperationAction.
+type PrintOperationAction int
+
+// PrintOperationAction_print_dialog is a representation of the C enumeration member GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG.
+const PrintOperationAction_print_dialog = PrintOperationAction(0)
+
+// PrintOperationAction_print is a representation of the C enumeration member GTK_PRINT_OPERATION_ACTION_PRINT.
+const PrintOperationAction_print = PrintOperationAction(1)
+
+// PrintOperationAction_preview is a representation of the C enumeration member GTK_PRINT_OPERATION_ACTION_PREVIEW.
+const PrintOperationAction_preview = PrintOperationAction(2)
+
+// PrintOperationAction_export is a representation of the C enumeration member GTK_PRINT_OPERATION_ACTION_EXPORT.
+const PrintOperationAction_export = PrintOperationAction(3)
+
+// PrintOperationResult is a representation of the C enumeration GtkPrintOperationResult.
+type PrintOperationResult int
+
+// PrintOperationResult_error is a representation of the C enumeration member GTK_PRINT_OPERATION_RESULT_ERROR.
+const PrintOperationResult_error = PrintOperationResult(0)
+
+// PrintOperationResult_apply is a representation of the C enumeration member GTK_PRINT_OPERATION_RESULT_APPLY.
+const PrintOperationResult_apply = PrintOperationResult(1)
+
+// PrintOperationResult_cancel is a representation of the C enumeration member GTK_PRINT_OPERATION_RESULT_CANCEL.
+const PrintOperationResult_cancel = PrintOperationResult(2)
+
+// PrintOperationResult_in_progress is a representation of the C enumeration member GTK_PRINT_OPERATION_RESULT_IN_PROGRESS.
+const PrintOperationResult_in_progress = PrintOperationResult(3)
+
+// PrintPages is a representation of the C enumeration GtkPrintPages.
+type PrintPages int
+
+// PrintPages_all is a representation of the C enumeration member GTK_PRINT_PAGES_ALL.
+const PrintPages_all = PrintPages(0)
+
+// PrintPages_current is a representation of the C enumeration member GTK_PRINT_PAGES_CURRENT.
+const PrintPages_current = PrintPages(1)
+
+// PrintPages_ranges is a representation of the C enumeration member GTK_PRINT_PAGES_RANGES.
+const PrintPages_ranges = PrintPages(2)
+
+// PrintPages_selection is a representation of the C enumeration member GTK_PRINT_PAGES_SELECTION.
+const PrintPages_selection = PrintPages(3)
+
+// PrintQuality is a representation of the C enumeration GtkPrintQuality.
+type PrintQuality int
+
+// PrintQuality_low is a representation of the C enumeration member GTK_PRINT_QUALITY_LOW.
+const PrintQuality_low = PrintQuality(0)
+
+// PrintQuality_normal is a representation of the C enumeration member GTK_PRINT_QUALITY_NORMAL.
+const PrintQuality_normal = PrintQuality(1)
+
+// PrintQuality_high is a representation of the C enumeration member GTK_PRINT_QUALITY_HIGH.
+const PrintQuality_high = PrintQuality(2)
+
+// PrintQuality_draft is a representation of the C enumeration member GTK_PRINT_QUALITY_DRAFT.
+const PrintQuality_draft = PrintQuality(3)
+
+// PrintStatus is a representation of the C enumeration GtkPrintStatus.
+type PrintStatus int
+
+// PrintStatus_initial is a representation of the C enumeration member GTK_PRINT_STATUS_INITIAL.
+const PrintStatus_initial = PrintStatus(0)
+
+// PrintStatus_preparing is a representation of the C enumeration member GTK_PRINT_STATUS_PREPARING.
+const PrintStatus_preparing = PrintStatus(1)
+
+// PrintStatus_generating_data is a representation of the C enumeration member GTK_PRINT_STATUS_GENERATING_DATA.
+const PrintStatus_generating_data = PrintStatus(2)
+
+// PrintStatus_sending_data is a representation of the C enumeration member GTK_PRINT_STATUS_SENDING_DATA.
+const PrintStatus_sending_data = PrintStatus(3)
+
+// PrintStatus_pending is a representation of the C enumeration member GTK_PRINT_STATUS_PENDING.
+const PrintStatus_pending = PrintStatus(4)
+
+// PrintStatus_pending_issue is a representation of the C enumeration member GTK_PRINT_STATUS_PENDING_ISSUE.
+const PrintStatus_pending_issue = PrintStatus(5)
+
+// PrintStatus_printing is a representation of the C enumeration member GTK_PRINT_STATUS_PRINTING.
+const PrintStatus_printing = PrintStatus(6)
+
+// PrintStatus_finished is a representation of the C enumeration member GTK_PRINT_STATUS_FINISHED.
+const PrintStatus_finished = PrintStatus(7)
+
+// PrintStatus_finished_aborted is a representation of the C enumeration member GTK_PRINT_STATUS_FINISHED_ABORTED.
+const PrintStatus_finished_aborted = PrintStatus(8)
+
+// RcTokenType is a representation of the C enumeration GtkRcTokenType.
+type RcTokenType int
+
+// RcTokenType_invalid is a representation of the C enumeration member GTK_RC_TOKEN_INVALID.
+const RcTokenType_invalid = RcTokenType(270)
+
+// RcTokenType_include is a representation of the C enumeration member GTK_RC_TOKEN_INCLUDE.
+const RcTokenType_include = RcTokenType(271)
+
+// RcTokenType_normal is a representation of the C enumeration member GTK_RC_TOKEN_NORMAL.
+const RcTokenType_normal = RcTokenType(272)
+
+// RcTokenType_active is a representation of the C enumeration member GTK_RC_TOKEN_ACTIVE.
+const RcTokenType_active = RcTokenType(273)
+
+// RcTokenType_prelight is a representation of the C enumeration member GTK_RC_TOKEN_PRELIGHT.
+const RcTokenType_prelight = RcTokenType(274)
+
+// RcTokenType_selected is a representation of the C enumeration member GTK_RC_TOKEN_SELECTED.
+const RcTokenType_selected = RcTokenType(275)
+
+// RcTokenType_insensitive is a representation of the C enumeration member GTK_RC_TOKEN_INSENSITIVE.
+const RcTokenType_insensitive = RcTokenType(276)
+
+// RcTokenType_fg is a representation of the C enumeration member GTK_RC_TOKEN_FG.
+const RcTokenType_fg = RcTokenType(277)
+
+// RcTokenType_bg is a representation of the C enumeration member GTK_RC_TOKEN_BG.
+const RcTokenType_bg = RcTokenType(278)
+
+// RcTokenType_text is a representation of the C enumeration member GTK_RC_TOKEN_TEXT.
+const RcTokenType_text = RcTokenType(279)
+
+// RcTokenType_base is a representation of the C enumeration member GTK_RC_TOKEN_BASE.
+const RcTokenType_base = RcTokenType(280)
+
+// RcTokenType_xthickness is a representation of the C enumeration member GTK_RC_TOKEN_XTHICKNESS.
+const RcTokenType_xthickness = RcTokenType(281)
+
+// RcTokenType_ythickness is a representation of the C enumeration member GTK_RC_TOKEN_YTHICKNESS.
+const RcTokenType_ythickness = RcTokenType(282)
+
+// RcTokenType_font is a representation of the C enumeration member GTK_RC_TOKEN_FONT.
+const RcTokenType_font = RcTokenType(283)
+
+// RcTokenType_fontset is a representation of the C enumeration member GTK_RC_TOKEN_FONTSET.
+const RcTokenType_fontset = RcTokenType(284)
+
+// RcTokenType_font_name is a representation of the C enumeration member GTK_RC_TOKEN_FONT_NAME.
+const RcTokenType_font_name = RcTokenType(285)
+
+// RcTokenType_bg_pixmap is a representation of the C enumeration member GTK_RC_TOKEN_BG_PIXMAP.
+const RcTokenType_bg_pixmap = RcTokenType(286)
+
+// RcTokenType_pixmap_path is a representation of the C enumeration member GTK_RC_TOKEN_PIXMAP_PATH.
+const RcTokenType_pixmap_path = RcTokenType(287)
+
+// RcTokenType_style is a representation of the C enumeration member GTK_RC_TOKEN_STYLE.
+const RcTokenType_style = RcTokenType(288)
+
+// RcTokenType_binding is a representation of the C enumeration member GTK_RC_TOKEN_BINDING.
+const RcTokenType_binding = RcTokenType(289)
+
+// RcTokenType_bind is a representation of the C enumeration member GTK_RC_TOKEN_BIND.
+const RcTokenType_bind = RcTokenType(290)
+
+// RcTokenType_widget is a representation of the C enumeration member GTK_RC_TOKEN_WIDGET.
+const RcTokenType_widget = RcTokenType(291)
+
+// RcTokenType_widget_class is a representation of the C enumeration member GTK_RC_TOKEN_WIDGET_CLASS.
+const RcTokenType_widget_class = RcTokenType(292)
+
+// RcTokenType_class is a representation of the C enumeration member GTK_RC_TOKEN_CLASS.
+const RcTokenType_class = RcTokenType(293)
+
+// RcTokenType_lowest is a representation of the C enumeration member GTK_RC_TOKEN_LOWEST.
+const RcTokenType_lowest = RcTokenType(294)
+
+// RcTokenType_gtk is a representation of the C enumeration member GTK_RC_TOKEN_GTK.
+const RcTokenType_gtk = RcTokenType(295)
+
+// RcTokenType_application is a representation of the C enumeration member GTK_RC_TOKEN_APPLICATION.
+const RcTokenType_application = RcTokenType(296)
+
+// RcTokenType_theme is a representation of the C enumeration member GTK_RC_TOKEN_THEME.
+const RcTokenType_theme = RcTokenType(297)
+
+// RcTokenType_rc is a representation of the C enumeration member GTK_RC_TOKEN_RC.
+const RcTokenType_rc = RcTokenType(298)
+
+// RcTokenType_highest is a representation of the C enumeration member GTK_RC_TOKEN_HIGHEST.
+const RcTokenType_highest = RcTokenType(299)
+
+// RcTokenType_engine is a representation of the C enumeration member GTK_RC_TOKEN_ENGINE.
+const RcTokenType_engine = RcTokenType(300)
+
+// RcTokenType_module_path is a representation of the C enumeration member GTK_RC_TOKEN_MODULE_PATH.
+const RcTokenType_module_path = RcTokenType(301)
+
+// RcTokenType_im_module_path is a representation of the C enumeration member GTK_RC_TOKEN_IM_MODULE_PATH.
+const RcTokenType_im_module_path = RcTokenType(302)
+
+// RcTokenType_im_module_file is a representation of the C enumeration member GTK_RC_TOKEN_IM_MODULE_FILE.
+const RcTokenType_im_module_file = RcTokenType(303)
+
+// RcTokenType_stock is a representation of the C enumeration member GTK_RC_TOKEN_STOCK.
+const RcTokenType_stock = RcTokenType(304)
+
+// RcTokenType_ltr is a representation of the C enumeration member GTK_RC_TOKEN_LTR.
+const RcTokenType_ltr = RcTokenType(305)
+
+// RcTokenType_rtl is a representation of the C enumeration member GTK_RC_TOKEN_RTL.
+const RcTokenType_rtl = RcTokenType(306)
+
+// RcTokenType_color is a representation of the C enumeration member GTK_RC_TOKEN_COLOR.
+const RcTokenType_color = RcTokenType(307)
+
+// RcTokenType_unbind is a representation of the C enumeration member GTK_RC_TOKEN_UNBIND.
+const RcTokenType_unbind = RcTokenType(308)
+
+// RcTokenType_last is a representation of the C enumeration member GTK_RC_TOKEN_LAST.
+const RcTokenType_last = RcTokenType(309)
+
+// RecentChooserError is a representation of the C enumeration GtkRecentChooserError.
+type RecentChooserError int
+
+// RecentChooserError_not_found is a representation of the C enumeration member GTK_RECENT_CHOOSER_ERROR_NOT_FOUND.
+const RecentChooserError_not_found = RecentChooserError(0)
+
+// RecentChooserError_invalid_uri is a representation of the C enumeration member GTK_RECENT_CHOOSER_ERROR_INVALID_URI.
+const RecentChooserError_invalid_uri = RecentChooserError(1)
+
+// RecentManagerError is a representation of the C enumeration GtkRecentManagerError.
+type RecentManagerError int
+
+// RecentManagerError_not_found is a representation of the C enumeration member GTK_RECENT_MANAGER_ERROR_NOT_FOUND.
+const RecentManagerError_not_found = RecentManagerError(0)
+
+// RecentManagerError_invalid_uri is a representation of the C enumeration member GTK_RECENT_MANAGER_ERROR_INVALID_URI.
+const RecentManagerError_invalid_uri = RecentManagerError(1)
+
+// RecentManagerError_invalid_encoding is a representation of the C enumeration member GTK_RECENT_MANAGER_ERROR_INVALID_ENCODING.
+const RecentManagerError_invalid_encoding = RecentManagerError(2)
+
+// RecentManagerError_not_registered is a representation of the C enumeration member GTK_RECENT_MANAGER_ERROR_NOT_REGISTERED.
+const RecentManagerError_not_registered = RecentManagerError(3)
+
+// RecentManagerError_read is a representation of the C enumeration member GTK_RECENT_MANAGER_ERROR_READ.
+const RecentManagerError_read = RecentManagerError(4)
+
+// RecentManagerError_write is a representation of the C enumeration member GTK_RECENT_MANAGER_ERROR_WRITE.
+const RecentManagerError_write = RecentManagerError(5)
+
+// RecentManagerError_unknown is a representation of the C enumeration member GTK_RECENT_MANAGER_ERROR_UNKNOWN.
+const RecentManagerError_unknown = RecentManagerError(6)
+
+// RecentSortType is a representation of the C enumeration GtkRecentSortType.
+type RecentSortType int
+
+// RecentSortType_none is a representation of the C enumeration member GTK_RECENT_SORT_NONE.
+const RecentSortType_none = RecentSortType(0)
+
+// RecentSortType_mru is a representation of the C enumeration member GTK_RECENT_SORT_MRU.
+const RecentSortType_mru = RecentSortType(1)
+
+// RecentSortType_lru is a representation of the C enumeration member GTK_RECENT_SORT_LRU.
+const RecentSortType_lru = RecentSortType(2)
+
+// RecentSortType_custom is a representation of the C enumeration member GTK_RECENT_SORT_CUSTOM.
+const RecentSortType_custom = RecentSortType(3)
+
+// ReliefStyle is a representation of the C enumeration GtkReliefStyle.
+type ReliefStyle int
+
+// ReliefStyle_normal is a representation of the C enumeration member GTK_RELIEF_NORMAL.
+const ReliefStyle_normal = ReliefStyle(0)
+
+// ReliefStyle_half is a representation of the C enumeration member GTK_RELIEF_HALF.
+const ReliefStyle_half = ReliefStyle(1)
+
+// ReliefStyle_none is a representation of the C enumeration member GTK_RELIEF_NONE.
+const ReliefStyle_none = ReliefStyle(2)
+
+// ResizeMode is a representation of the C enumeration GtkResizeMode.
+type ResizeMode int
+
+// ResizeMode_parent is a representation of the C enumeration member GTK_RESIZE_PARENT.
+const ResizeMode_parent = ResizeMode(0)
+
+// ResizeMode_queue is a representation of the C enumeration member GTK_RESIZE_QUEUE.
+const ResizeMode_queue = ResizeMode(1)
+
+// ResizeMode_immediate is a representation of the C enumeration member GTK_RESIZE_IMMEDIATE.
+const ResizeMode_immediate = ResizeMode(2)
+
+// ResponseType is a representation of the C enumeration GtkResponseType.
+type ResponseType int
+
+// ResponseType_none is a representation of the C enumeration member GTK_RESPONSE_NONE.
+const ResponseType_none = ResponseType(-1)
+
+// ResponseType_reject is a representation of the C enumeration member GTK_RESPONSE_REJECT.
+const ResponseType_reject = ResponseType(-2)
+
+// ResponseType_accept is a representation of the C enumeration member GTK_RESPONSE_ACCEPT.
+const ResponseType_accept = ResponseType(-3)
+
+// ResponseType_delete_event is a representation of the C enumeration member GTK_RESPONSE_DELETE_EVENT.
+const ResponseType_delete_event = ResponseType(-4)
+
+// ResponseType_ok is a representation of the C enumeration member GTK_RESPONSE_OK.
+const ResponseType_ok = ResponseType(-5)
+
+// ResponseType_cancel is a representation of the C enumeration member GTK_RESPONSE_CANCEL.
+const ResponseType_cancel = ResponseType(-6)
+
+// ResponseType_close is a representation of the C enumeration member GTK_RESPONSE_CLOSE.
+const ResponseType_close = ResponseType(-7)
+
+// ResponseType_yes is a representation of the C enumeration member GTK_RESPONSE_YES.
+const ResponseType_yes = ResponseType(-8)
+
+// ResponseType_no is a representation of the C enumeration member GTK_RESPONSE_NO.
+const ResponseType_no = ResponseType(-9)
+
+// ResponseType_apply is a representation of the C enumeration member GTK_RESPONSE_APPLY.
+const ResponseType_apply = ResponseType(-10)
+
+// ResponseType_help is a representation of the C enumeration member GTK_RESPONSE_HELP.
+const ResponseType_help = ResponseType(-11)
+
+// RevealerTransitionType is a representation of the C enumeration GtkRevealerTransitionType.
+type RevealerTransitionType int
+
+// RevealerTransitionType_none is a representation of the C enumeration member GTK_REVEALER_TRANSITION_TYPE_NONE.
+const RevealerTransitionType_none = RevealerTransitionType(0)
+
+// RevealerTransitionType_crossfade is a representation of the C enumeration member GTK_REVEALER_TRANSITION_TYPE_CROSSFADE.
+const RevealerTransitionType_crossfade = RevealerTransitionType(1)
+
+// RevealerTransitionType_slide_right is a representation of the C enumeration member GTK_REVEALER_TRANSITION_TYPE_SLIDE_RIGHT.
+const RevealerTransitionType_slide_right = RevealerTransitionType(2)
+
+// RevealerTransitionType_slide_left is a representation of the C enumeration member GTK_REVEALER_TRANSITION_TYPE_SLIDE_LEFT.
+const RevealerTransitionType_slide_left = RevealerTransitionType(3)
+
+// RevealerTransitionType_slide_up is a representation of the C enumeration member GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP.
+const RevealerTransitionType_slide_up = RevealerTransitionType(4)
+
+// RevealerTransitionType_slide_down is a representation of the C enumeration member GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN.
+const RevealerTransitionType_slide_down = RevealerTransitionType(5)
+
+// ScrollStep is a representation of the C enumeration GtkScrollStep.
+type ScrollStep int
+
+// ScrollStep_steps is a representation of the C enumeration member GTK_SCROLL_STEPS.
+const ScrollStep_steps = ScrollStep(0)
+
+// ScrollStep_pages is a representation of the C enumeration member GTK_SCROLL_PAGES.
+const ScrollStep_pages = ScrollStep(1)
+
+// ScrollStep_ends is a representation of the C enumeration member GTK_SCROLL_ENDS.
+const ScrollStep_ends = ScrollStep(2)
+
+// ScrollStep_horizontal_steps is a representation of the C enumeration member GTK_SCROLL_HORIZONTAL_STEPS.
+const ScrollStep_horizontal_steps = ScrollStep(3)
+
+// ScrollStep_horizontal_pages is a representation of the C enumeration member GTK_SCROLL_HORIZONTAL_PAGES.
+const ScrollStep_horizontal_pages = ScrollStep(4)
+
+// ScrollStep_horizontal_ends is a representation of the C enumeration member GTK_SCROLL_HORIZONTAL_ENDS.
+const ScrollStep_horizontal_ends = ScrollStep(5)
+
+// ScrollType is a representation of the C enumeration GtkScrollType.
+type ScrollType int
+
+// ScrollType_none is a representation of the C enumeration member GTK_SCROLL_NONE.
+const ScrollType_none = ScrollType(0)
+
+// ScrollType_jump is a representation of the C enumeration member GTK_SCROLL_JUMP.
+const ScrollType_jump = ScrollType(1)
+
+// ScrollType_step_backward is a representation of the C enumeration member GTK_SCROLL_STEP_BACKWARD.
+const ScrollType_step_backward = ScrollType(2)
+
+// ScrollType_step_forward is a representation of the C enumeration member GTK_SCROLL_STEP_FORWARD.
+const ScrollType_step_forward = ScrollType(3)
+
+// ScrollType_page_backward is a representation of the C enumeration member GTK_SCROLL_PAGE_BACKWARD.
+const ScrollType_page_backward = ScrollType(4)
+
+// ScrollType_page_forward is a representation of the C enumeration member GTK_SCROLL_PAGE_FORWARD.
+const ScrollType_page_forward = ScrollType(5)
+
+// ScrollType_step_up is a representation of the C enumeration member GTK_SCROLL_STEP_UP.
+const ScrollType_step_up = ScrollType(6)
+
+// ScrollType_step_down is a representation of the C enumeration member GTK_SCROLL_STEP_DOWN.
+const ScrollType_step_down = ScrollType(7)
+
+// ScrollType_page_up is a representation of the C enumeration member GTK_SCROLL_PAGE_UP.
+const ScrollType_page_up = ScrollType(8)
+
+// ScrollType_page_down is a representation of the C enumeration member GTK_SCROLL_PAGE_DOWN.
+const ScrollType_page_down = ScrollType(9)
+
+// ScrollType_step_left is a representation of the C enumeration member GTK_SCROLL_STEP_LEFT.
+const ScrollType_step_left = ScrollType(10)
+
+// ScrollType_step_right is a representation of the C enumeration member GTK_SCROLL_STEP_RIGHT.
+const ScrollType_step_right = ScrollType(11)
+
+// ScrollType_page_left is a representation of the C enumeration member GTK_SCROLL_PAGE_LEFT.
+const ScrollType_page_left = ScrollType(12)
+
+// ScrollType_page_right is a representation of the C enumeration member GTK_SCROLL_PAGE_RIGHT.
+const ScrollType_page_right = ScrollType(13)
+
+// ScrollType_start is a representation of the C enumeration member GTK_SCROLL_START.
+const ScrollType_start = ScrollType(14)
+
+// ScrollType_end is a representation of the C enumeration member GTK_SCROLL_END.
+const ScrollType_end = ScrollType(15)
+
+// ScrollablePolicy is a representation of the C enumeration GtkScrollablePolicy.
+type ScrollablePolicy int
+
+// ScrollablePolicy_minimum is a representation of the C enumeration member GTK_SCROLL_MINIMUM.
+const ScrollablePolicy_minimum = ScrollablePolicy(0)
+
+// ScrollablePolicy_natural is a representation of the C enumeration member GTK_SCROLL_NATURAL.
+const ScrollablePolicy_natural = ScrollablePolicy(1)
+
+// SelectionMode is a representation of the C enumeration GtkSelectionMode.
+type SelectionMode int
+
+// SelectionMode_none is a representation of the C enumeration member GTK_SELECTION_NONE.
+const SelectionMode_none = SelectionMode(0)
+
+// SelectionMode_single is a representation of the C enumeration member GTK_SELECTION_SINGLE.
+const SelectionMode_single = SelectionMode(1)
+
+// SelectionMode_browse is a representation of the C enumeration member GTK_SELECTION_BROWSE.
+const SelectionMode_browse = SelectionMode(2)
+
+// SelectionMode_multiple is a representation of the C enumeration member GTK_SELECTION_MULTIPLE.
+const SelectionMode_multiple = SelectionMode(3)
+
+// SensitivityType is a representation of the C enumeration GtkSensitivityType.
+type SensitivityType int
+
+// SensitivityType_auto is a representation of the C enumeration member GTK_SENSITIVITY_AUTO.
+const SensitivityType_auto = SensitivityType(0)
+
+// SensitivityType_on is a representation of the C enumeration member GTK_SENSITIVITY_ON.
+const SensitivityType_on = SensitivityType(1)
+
+// SensitivityType_off is a representation of the C enumeration member GTK_SENSITIVITY_OFF.
+const SensitivityType_off = SensitivityType(2)
+
+// ShadowType is a representation of the C enumeration GtkShadowType.
+type ShadowType int
+
+// ShadowType_none is a representation of the C enumeration member GTK_SHADOW_NONE.
+const ShadowType_none = ShadowType(0)
+
+// ShadowType_in is a representation of the C enumeration member GTK_SHADOW_IN.
+const ShadowType_in = ShadowType(1)
+
+// ShadowType_out is a representation of the C enumeration member GTK_SHADOW_OUT.
+const ShadowType_out = ShadowType(2)
+
+// ShadowType_etched_in is a representation of the C enumeration member GTK_SHADOW_ETCHED_IN.
+const ShadowType_etched_in = ShadowType(3)
+
+// ShadowType_etched_out is a representation of the C enumeration member GTK_SHADOW_ETCHED_OUT.
+const ShadowType_etched_out = ShadowType(4)
+
+// SizeGroupMode is a representation of the C enumeration GtkSizeGroupMode.
+type SizeGroupMode int
+
+// SizeGroupMode_none is a representation of the C enumeration member GTK_SIZE_GROUP_NONE.
+const SizeGroupMode_none = SizeGroupMode(0)
+
+// SizeGroupMode_horizontal is a representation of the C enumeration member GTK_SIZE_GROUP_HORIZONTAL.
+const SizeGroupMode_horizontal = SizeGroupMode(1)
+
+// SizeGroupMode_vertical is a representation of the C enumeration member GTK_SIZE_GROUP_VERTICAL.
+const SizeGroupMode_vertical = SizeGroupMode(2)
+
+// SizeGroupMode_both is a representation of the C enumeration member GTK_SIZE_GROUP_BOTH.
+const SizeGroupMode_both = SizeGroupMode(3)
+
+// SizeRequestMode is a representation of the C enumeration GtkSizeRequestMode.
+type SizeRequestMode int
+
+// SizeRequestMode_height_for_width is a representation of the C enumeration member GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH.
+const SizeRequestMode_height_for_width = SizeRequestMode(0)
+
+// SizeRequestMode_width_for_height is a representation of the C enumeration member GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT.
+const SizeRequestMode_width_for_height = SizeRequestMode(1)
+
+// SizeRequestMode_constant_size is a representation of the C enumeration member GTK_SIZE_REQUEST_CONSTANT_SIZE.
+const SizeRequestMode_constant_size = SizeRequestMode(2)
+
+// SortType is a representation of the C enumeration GtkSortType.
+type SortType int
+
+// SortType_ascending is a representation of the C enumeration member GTK_SORT_ASCENDING.
+const SortType_ascending = SortType(0)
+
+// SortType_descending is a representation of the C enumeration member GTK_SORT_DESCENDING.
+const SortType_descending = SortType(1)
+
+// SpinButtonUpdatePolicy is a representation of the C enumeration GtkSpinButtonUpdatePolicy.
+type SpinButtonUpdatePolicy int
+
+// SpinButtonUpdatePolicy_always is a representation of the C enumeration member GTK_UPDATE_ALWAYS.
+const SpinButtonUpdatePolicy_always = SpinButtonUpdatePolicy(0)
+
+// SpinButtonUpdatePolicy_if_valid is a representation of the C enumeration member GTK_UPDATE_IF_VALID.
+const SpinButtonUpdatePolicy_if_valid = SpinButtonUpdatePolicy(1)
+
+// SpinType is a representation of the C enumeration GtkSpinType.
+type SpinType int
+
+// SpinType_step_forward is a representation of the C enumeration member GTK_SPIN_STEP_FORWARD.
+const SpinType_step_forward = SpinType(0)
+
+// SpinType_step_backward is a representation of the C enumeration member GTK_SPIN_STEP_BACKWARD.
+const SpinType_step_backward = SpinType(1)
+
+// SpinType_page_forward is a representation of the C enumeration member GTK_SPIN_PAGE_FORWARD.
+const SpinType_page_forward = SpinType(2)
+
+// SpinType_page_backward is a representation of the C enumeration member GTK_SPIN_PAGE_BACKWARD.
+const SpinType_page_backward = SpinType(3)
+
+// SpinType_home is a representation of the C enumeration member GTK_SPIN_HOME.
+const SpinType_home = SpinType(4)
+
+// SpinType_end is a representation of the C enumeration member GTK_SPIN_END.
+const SpinType_end = SpinType(5)
+
+// SpinType_user_defined is a representation of the C enumeration member GTK_SPIN_USER_DEFINED.
+const SpinType_user_defined = SpinType(6)
+
+// StackTransitionType is a representation of the C enumeration GtkStackTransitionType.
+type StackTransitionType int
+
+// StackTransitionType_none is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_NONE.
+const StackTransitionType_none = StackTransitionType(0)
+
+// StackTransitionType_crossfade is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_CROSSFADE.
+const StackTransitionType_crossfade = StackTransitionType(1)
+
+// StackTransitionType_slide_right is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_SLIDE_RIGHT.
+const StackTransitionType_slide_right = StackTransitionType(2)
+
+// StackTransitionType_slide_left is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT.
+const StackTransitionType_slide_left = StackTransitionType(3)
+
+// StackTransitionType_slide_up is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_SLIDE_UP.
+const StackTransitionType_slide_up = StackTransitionType(4)
+
+// StackTransitionType_slide_down is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_SLIDE_DOWN.
+const StackTransitionType_slide_down = StackTransitionType(5)
+
+// StackTransitionType_slide_left_right is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT.
+const StackTransitionType_slide_left_right = StackTransitionType(6)
+
+// StackTransitionType_slide_up_down is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_SLIDE_UP_DOWN.
+const StackTransitionType_slide_up_down = StackTransitionType(7)
+
+// StackTransitionType_over_up is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_OVER_UP.
+const StackTransitionType_over_up = StackTransitionType(8)
+
+// StackTransitionType_over_down is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_OVER_DOWN.
+const StackTransitionType_over_down = StackTransitionType(9)
+
+// StackTransitionType_over_left is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_OVER_LEFT.
+const StackTransitionType_over_left = StackTransitionType(10)
+
+// StackTransitionType_over_right is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_OVER_RIGHT.
+const StackTransitionType_over_right = StackTransitionType(11)
+
+// StackTransitionType_under_up is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_UNDER_UP.
+const StackTransitionType_under_up = StackTransitionType(12)
+
+// StackTransitionType_under_down is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_UNDER_DOWN.
+const StackTransitionType_under_down = StackTransitionType(13)
+
+// StackTransitionType_under_left is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_UNDER_LEFT.
+const StackTransitionType_under_left = StackTransitionType(14)
+
+// StackTransitionType_under_right is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_UNDER_RIGHT.
+const StackTransitionType_under_right = StackTransitionType(15)
+
+// StackTransitionType_over_up_down is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_OVER_UP_DOWN.
+const StackTransitionType_over_up_down = StackTransitionType(16)
+
+// StackTransitionType_over_down_up is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_OVER_DOWN_UP.
+const StackTransitionType_over_down_up = StackTransitionType(17)
+
+// StackTransitionType_over_left_right is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_OVER_LEFT_RIGHT.
+const StackTransitionType_over_left_right = StackTransitionType(18)
+
+// StackTransitionType_over_right_left is a representation of the C enumeration member GTK_STACK_TRANSITION_TYPE_OVER_RIGHT_LEFT.
+const StackTransitionType_over_right_left = StackTransitionType(19)
+
+// StateType is a representation of the C enumeration GtkStateType.
+type StateType int
+
+// StateType_normal is a representation of the C enumeration member GTK_STATE_NORMAL.
+const StateType_normal = StateType(0)
+
+// StateType_active is a representation of the C enumeration member GTK_STATE_ACTIVE.
+const StateType_active = StateType(1)
+
+// StateType_prelight is a representation of the C enumeration member GTK_STATE_PRELIGHT.
+const StateType_prelight = StateType(2)
+
+// StateType_selected is a representation of the C enumeration member GTK_STATE_SELECTED.
+const StateType_selected = StateType(3)
+
+// StateType_insensitive is a representation of the C enumeration member GTK_STATE_INSENSITIVE.
+const StateType_insensitive = StateType(4)
+
+// StateType_inconsistent is a representation of the C enumeration member GTK_STATE_INCONSISTENT.
+const StateType_inconsistent = StateType(5)
+
+// StateType_focused is a representation of the C enumeration member GTK_STATE_FOCUSED.
+const StateType_focused = StateType(6)
+
+// TextBufferTargetInfo is a representation of the C enumeration GtkTextBufferTargetInfo.
+type TextBufferTargetInfo int
+
+// TextBufferTargetInfo_buffer_contents is a representation of the C enumeration member GTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS.
+const TextBufferTargetInfo_buffer_contents = TextBufferTargetInfo(-1)
+
+// TextBufferTargetInfo_rich_text is a representation of the C enumeration member GTK_TEXT_BUFFER_TARGET_INFO_RICH_TEXT.
+const TextBufferTargetInfo_rich_text = TextBufferTargetInfo(-2)
+
+// TextBufferTargetInfo_text is a representation of the C enumeration member GTK_TEXT_BUFFER_TARGET_INFO_TEXT.
+const TextBufferTargetInfo_text = TextBufferTargetInfo(-3)
+
+// TextDirection is a representation of the C enumeration GtkTextDirection.
+type TextDirection int
+
+// TextDirection_none is a representation of the C enumeration member GTK_TEXT_DIR_NONE.
+const TextDirection_none = TextDirection(0)
+
+// TextDirection_ltr is a representation of the C enumeration member GTK_TEXT_DIR_LTR.
+const TextDirection_ltr = TextDirection(1)
+
+// TextDirection_rtl is a representation of the C enumeration member GTK_TEXT_DIR_RTL.
+const TextDirection_rtl = TextDirection(2)
+
+// TextViewLayer is a representation of the C enumeration GtkTextViewLayer.
+type TextViewLayer int
+
+// TextViewLayer_below is a representation of the C enumeration member GTK_TEXT_VIEW_LAYER_BELOW.
+const TextViewLayer_below = TextViewLayer(0)
+
+// TextViewLayer_above is a representation of the C enumeration member GTK_TEXT_VIEW_LAYER_ABOVE.
+const TextViewLayer_above = TextViewLayer(1)
+
+// TextViewLayer_below_text is a representation of the C enumeration member GTK_TEXT_VIEW_LAYER_BELOW_TEXT.
+const TextViewLayer_below_text = TextViewLayer(2)
+
+// TextViewLayer_above_text is a representation of the C enumeration member GTK_TEXT_VIEW_LAYER_ABOVE_TEXT.
+const TextViewLayer_above_text = TextViewLayer(3)
+
+// TextWindowType is a representation of the C enumeration GtkTextWindowType.
+type TextWindowType int
+
+// TextWindowType_private is a representation of the C enumeration member GTK_TEXT_WINDOW_PRIVATE.
+const TextWindowType_private = TextWindowType(0)
+
+// TextWindowType_widget is a representation of the C enumeration member GTK_TEXT_WINDOW_WIDGET.
+const TextWindowType_widget = TextWindowType(1)
+
+// TextWindowType_text is a representation of the C enumeration member GTK_TEXT_WINDOW_TEXT.
+const TextWindowType_text = TextWindowType(2)
+
+// TextWindowType_left is a representation of the C enumeration member GTK_TEXT_WINDOW_LEFT.
+const TextWindowType_left = TextWindowType(3)
+
+// TextWindowType_right is a representation of the C enumeration member GTK_TEXT_WINDOW_RIGHT.
+const TextWindowType_right = TextWindowType(4)
+
+// TextWindowType_top is a representation of the C enumeration member GTK_TEXT_WINDOW_TOP.
+const TextWindowType_top = TextWindowType(5)
+
+// TextWindowType_bottom is a representation of the C enumeration member GTK_TEXT_WINDOW_BOTTOM.
+const TextWindowType_bottom = TextWindowType(6)
+
+// ToolbarSpaceStyle is a representation of the C enumeration GtkToolbarSpaceStyle.
+type ToolbarSpaceStyle int
+
+// ToolbarSpaceStyle_empty is a representation of the C enumeration member GTK_TOOLBAR_SPACE_EMPTY.
+const ToolbarSpaceStyle_empty = ToolbarSpaceStyle(0)
+
+// ToolbarSpaceStyle_line is a representation of the C enumeration member GTK_TOOLBAR_SPACE_LINE.
+const ToolbarSpaceStyle_line = ToolbarSpaceStyle(1)
+
+// ToolbarStyle is a representation of the C enumeration GtkToolbarStyle.
+type ToolbarStyle int
+
+// ToolbarStyle_icons is a representation of the C enumeration member GTK_TOOLBAR_ICONS.
+const ToolbarStyle_icons = ToolbarStyle(0)
+
+// ToolbarStyle_text is a representation of the C enumeration member GTK_TOOLBAR_TEXT.
+const ToolbarStyle_text = ToolbarStyle(1)
+
+// ToolbarStyle_both is a representation of the C enumeration member GTK_TOOLBAR_BOTH.
+const ToolbarStyle_both = ToolbarStyle(2)
+
+// ToolbarStyle_both_horiz is a representation of the C enumeration member GTK_TOOLBAR_BOTH_HORIZ.
+const ToolbarStyle_both_horiz = ToolbarStyle(3)
+
+// TreeViewColumnSizing is a representation of the C enumeration GtkTreeViewColumnSizing.
+type TreeViewColumnSizing int
+
+// TreeViewColumnSizing_grow_only is a representation of the C enumeration member GTK_TREE_VIEW_COLUMN_GROW_ONLY.
+const TreeViewColumnSizing_grow_only = TreeViewColumnSizing(0)
+
+// TreeViewColumnSizing_autosize is a representation of the C enumeration member GTK_TREE_VIEW_COLUMN_AUTOSIZE.
+const TreeViewColumnSizing_autosize = TreeViewColumnSizing(1)
+
+// TreeViewColumnSizing_fixed is a representation of the C enumeration member GTK_TREE_VIEW_COLUMN_FIXED.
+const TreeViewColumnSizing_fixed = TreeViewColumnSizing(2)
+
+// TreeViewDropPosition is a representation of the C enumeration GtkTreeViewDropPosition.
+type TreeViewDropPosition int
+
+// TreeViewDropPosition_before is a representation of the C enumeration member GTK_TREE_VIEW_DROP_BEFORE.
+const TreeViewDropPosition_before = TreeViewDropPosition(0)
+
+// TreeViewDropPosition_after is a representation of the C enumeration member GTK_TREE_VIEW_DROP_AFTER.
+const TreeViewDropPosition_after = TreeViewDropPosition(1)
+
+// TreeViewDropPosition_into_or_before is a representation of the C enumeration member GTK_TREE_VIEW_DROP_INTO_OR_BEFORE.
+const TreeViewDropPosition_into_or_before = TreeViewDropPosition(2)
+
+// TreeViewDropPosition_into_or_after is a representation of the C enumeration member GTK_TREE_VIEW_DROP_INTO_OR_AFTER.
+const TreeViewDropPosition_into_or_after = TreeViewDropPosition(3)
+
+// TreeViewGridLines is a representation of the C enumeration GtkTreeViewGridLines.
+type TreeViewGridLines int
+
+// TreeViewGridLines_none is a representation of the C enumeration member GTK_TREE_VIEW_GRID_LINES_NONE.
+const TreeViewGridLines_none = TreeViewGridLines(0)
+
+// TreeViewGridLines_horizontal is a representation of the C enumeration member GTK_TREE_VIEW_GRID_LINES_HORIZONTAL.
+const TreeViewGridLines_horizontal = TreeViewGridLines(1)
+
+// TreeViewGridLines_vertical is a representation of the C enumeration member GTK_TREE_VIEW_GRID_LINES_VERTICAL.
+const TreeViewGridLines_vertical = TreeViewGridLines(2)
+
+// TreeViewGridLines_both is a representation of the C enumeration member GTK_TREE_VIEW_GRID_LINES_BOTH.
+const TreeViewGridLines_both = TreeViewGridLines(3)
+
+// Unit is a representation of the C enumeration GtkUnit.
+type Unit int
+
+// Unit_none is a representation of the C enumeration member GTK_UNIT_NONE.
+const Unit_none = Unit(0)
+
+// Unit_points is a representation of the C enumeration member GTK_UNIT_POINTS.
+const Unit_points = Unit(1)
+
+// Unit_inch is a representation of the C enumeration member GTK_UNIT_INCH.
+const Unit_inch = Unit(2)
+
+// Unit_mm is a representation of the C enumeration member GTK_UNIT_MM.
+const Unit_mm = Unit(3)
+
+// WidgetHelpType is a representation of the C enumeration GtkWidgetHelpType.
+type WidgetHelpType int
+
+// WidgetHelpType_tooltip is a representation of the C enumeration member GTK_WIDGET_HELP_TOOLTIP.
+const WidgetHelpType_tooltip = WidgetHelpType(0)
+
+// WidgetHelpType_whats_this is a representation of the C enumeration member GTK_WIDGET_HELP_WHATS_THIS.
+const WidgetHelpType_whats_this = WidgetHelpType(1)
+
+// WindowPosition is a representation of the C enumeration GtkWindowPosition.
+type WindowPosition int
+
+// WindowPosition_none is a representation of the C enumeration member GTK_WIN_POS_NONE.
+const WindowPosition_none = WindowPosition(0)
+
+// WindowPosition_center is a representation of the C enumeration member GTK_WIN_POS_CENTER.
+const WindowPosition_center = WindowPosition(1)
+
+// WindowPosition_mouse is a representation of the C enumeration member GTK_WIN_POS_MOUSE.
+const WindowPosition_mouse = WindowPosition(2)
+
+// WindowPosition_center_always is a representation of the C enumeration member GTK_WIN_POS_CENTER_ALWAYS.
+const WindowPosition_center_always = WindowPosition(3)
+
+// WindowPosition_center_on_parent is a representation of the C enumeration member GTK_WIN_POS_CENTER_ON_PARENT.
+const WindowPosition_center_on_parent = WindowPosition(4)
+
+// WindowType is a representation of the C enumeration GtkWindowType.
+type WindowType int
+
+// WindowType_toplevel is a representation of the C enumeration member GTK_WINDOW_TOPLEVEL.
+const WindowType_toplevel = WindowType(0)
+
+// WindowType_popup is a representation of the C enumeration member GTK_WINDOW_POPUP.
+const WindowType_popup = WindowType(1)
+
+// WrapMode is a representation of the C enumeration GtkWrapMode.
+type WrapMode int
+
+// WrapMode_none is a representation of the C enumeration member GTK_WRAP_NONE.
+const WrapMode_none = WrapMode(0)
+
+// WrapMode_char is a representation of the C enumeration member GTK_WRAP_CHAR.
+const WrapMode_char = WrapMode(1)
+
+// WrapMode_word is a representation of the C enumeration member GTK_WRAP_WORD.
+const WrapMode_word = WrapMode(2)
+
+// WrapMode_word_char is a representation of the C enumeration member GTK_WRAP_WORD_CHAR.
+const WrapMode_word_char = WrapMode(3)
+
 // AboutDialogClass is a representation of the C record GtkAboutDialogClass.
 type AboutDialogClass struct {
 	native unsafe.Pointer

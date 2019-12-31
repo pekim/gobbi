@@ -17,6 +17,4 @@ func (cc Constants) generateLib(f *jen.File, version semver.Version) {
 	for _, c := range cc {
 		c.generateLib(f, version)
 	}
-
-	f.Line()
 }

@@ -305,6 +305,1170 @@ const VOLUME_IDENTIFIER_KIND_UUID = "uuid"
 // VOLUME_MONITOR_EXTENSION_POINT_NAME is a representation of the C constant G_VOLUME_MONITOR_EXTENSION_POINT_NAME.
 const VOLUME_MONITOR_EXTENSION_POINT_NAME = "gio-volume-monitor"
 
+// AppInfoCreateFlags is a representation of the C bitfield GAppInfoCreateFlags.
+type AppInfoCreateFlags int
+
+// AppInfoCreateFlags_none is a representation of the C bitfield member G_APP_INFO_CREATE_NONE.
+const AppInfoCreateFlags_none = AppInfoCreateFlags(0)
+
+// AppInfoCreateFlags_needs_terminal is a representation of the C bitfield member G_APP_INFO_CREATE_NEEDS_TERMINAL.
+const AppInfoCreateFlags_needs_terminal = AppInfoCreateFlags(1)
+
+// AppInfoCreateFlags_supports_uris is a representation of the C bitfield member G_APP_INFO_CREATE_SUPPORTS_URIS.
+const AppInfoCreateFlags_supports_uris = AppInfoCreateFlags(2)
+
+// AppInfoCreateFlags_supports_startup_notification is a representation of the C bitfield member G_APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION.
+const AppInfoCreateFlags_supports_startup_notification = AppInfoCreateFlags(4)
+
+// ApplicationFlags is a representation of the C bitfield GApplicationFlags.
+type ApplicationFlags int
+
+// ApplicationFlags_flags_none is a representation of the C bitfield member G_APPLICATION_FLAGS_NONE.
+const ApplicationFlags_flags_none = ApplicationFlags(0)
+
+// ApplicationFlags_is_service is a representation of the C bitfield member G_APPLICATION_IS_SERVICE.
+const ApplicationFlags_is_service = ApplicationFlags(1)
+
+// ApplicationFlags_is_launcher is a representation of the C bitfield member G_APPLICATION_IS_LAUNCHER.
+const ApplicationFlags_is_launcher = ApplicationFlags(2)
+
+// ApplicationFlags_handles_open is a representation of the C bitfield member G_APPLICATION_HANDLES_OPEN.
+const ApplicationFlags_handles_open = ApplicationFlags(4)
+
+// ApplicationFlags_handles_command_line is a representation of the C bitfield member G_APPLICATION_HANDLES_COMMAND_LINE.
+const ApplicationFlags_handles_command_line = ApplicationFlags(8)
+
+// ApplicationFlags_send_environment is a representation of the C bitfield member G_APPLICATION_SEND_ENVIRONMENT.
+const ApplicationFlags_send_environment = ApplicationFlags(16)
+
+// ApplicationFlags_non_unique is a representation of the C bitfield member G_APPLICATION_NON_UNIQUE.
+const ApplicationFlags_non_unique = ApplicationFlags(32)
+
+// ApplicationFlags_can_override_app_id is a representation of the C bitfield member G_APPLICATION_CAN_OVERRIDE_APP_ID.
+const ApplicationFlags_can_override_app_id = ApplicationFlags(64)
+
+// ApplicationFlags_allow_replacement is a representation of the C bitfield member G_APPLICATION_ALLOW_REPLACEMENT.
+const ApplicationFlags_allow_replacement = ApplicationFlags(128)
+
+// ApplicationFlags_replace is a representation of the C bitfield member G_APPLICATION_REPLACE.
+const ApplicationFlags_replace = ApplicationFlags(256)
+
+// AskPasswordFlags is a representation of the C bitfield GAskPasswordFlags.
+type AskPasswordFlags int
+
+// AskPasswordFlags_need_password is a representation of the C bitfield member G_ASK_PASSWORD_NEED_PASSWORD.
+const AskPasswordFlags_need_password = AskPasswordFlags(1)
+
+// AskPasswordFlags_need_username is a representation of the C bitfield member G_ASK_PASSWORD_NEED_USERNAME.
+const AskPasswordFlags_need_username = AskPasswordFlags(2)
+
+// AskPasswordFlags_need_domain is a representation of the C bitfield member G_ASK_PASSWORD_NEED_DOMAIN.
+const AskPasswordFlags_need_domain = AskPasswordFlags(4)
+
+// AskPasswordFlags_saving_supported is a representation of the C bitfield member G_ASK_PASSWORD_SAVING_SUPPORTED.
+const AskPasswordFlags_saving_supported = AskPasswordFlags(8)
+
+// AskPasswordFlags_anonymous_supported is a representation of the C bitfield member G_ASK_PASSWORD_ANONYMOUS_SUPPORTED.
+const AskPasswordFlags_anonymous_supported = AskPasswordFlags(16)
+
+// AskPasswordFlags_tcrypt is a representation of the C bitfield member G_ASK_PASSWORD_TCRYPT.
+const AskPasswordFlags_tcrypt = AskPasswordFlags(32)
+
+// BusNameOwnerFlags is a representation of the C bitfield GBusNameOwnerFlags.
+type BusNameOwnerFlags int
+
+// BusNameOwnerFlags_none is a representation of the C bitfield member G_BUS_NAME_OWNER_FLAGS_NONE.
+const BusNameOwnerFlags_none = BusNameOwnerFlags(0)
+
+// BusNameOwnerFlags_allow_replacement is a representation of the C bitfield member G_BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT.
+const BusNameOwnerFlags_allow_replacement = BusNameOwnerFlags(1)
+
+// BusNameOwnerFlags_replace is a representation of the C bitfield member G_BUS_NAME_OWNER_FLAGS_REPLACE.
+const BusNameOwnerFlags_replace = BusNameOwnerFlags(2)
+
+// BusNameOwnerFlags_do_not_queue is a representation of the C bitfield member G_BUS_NAME_OWNER_FLAGS_DO_NOT_QUEUE.
+const BusNameOwnerFlags_do_not_queue = BusNameOwnerFlags(4)
+
+// BusNameWatcherFlags is a representation of the C bitfield GBusNameWatcherFlags.
+type BusNameWatcherFlags int
+
+// BusNameWatcherFlags_none is a representation of the C bitfield member G_BUS_NAME_WATCHER_FLAGS_NONE.
+const BusNameWatcherFlags_none = BusNameWatcherFlags(0)
+
+// BusNameWatcherFlags_auto_start is a representation of the C bitfield member G_BUS_NAME_WATCHER_FLAGS_AUTO_START.
+const BusNameWatcherFlags_auto_start = BusNameWatcherFlags(1)
+
+// ConverterFlags is a representation of the C bitfield GConverterFlags.
+type ConverterFlags int
+
+// ConverterFlags_none is a representation of the C bitfield member G_CONVERTER_NO_FLAGS.
+const ConverterFlags_none = ConverterFlags(0)
+
+// ConverterFlags_input_at_end is a representation of the C bitfield member G_CONVERTER_INPUT_AT_END.
+const ConverterFlags_input_at_end = ConverterFlags(1)
+
+// ConverterFlags_flush is a representation of the C bitfield member G_CONVERTER_FLUSH.
+const ConverterFlags_flush = ConverterFlags(2)
+
+// DBusCallFlags is a representation of the C bitfield GDBusCallFlags.
+type DBusCallFlags int
+
+// DBusCallFlags_none is a representation of the C bitfield member G_DBUS_CALL_FLAGS_NONE.
+const DBusCallFlags_none = DBusCallFlags(0)
+
+// DBusCallFlags_no_auto_start is a representation of the C bitfield member G_DBUS_CALL_FLAGS_NO_AUTO_START.
+const DBusCallFlags_no_auto_start = DBusCallFlags(1)
+
+// DBusCallFlags_allow_interactive_authorization is a representation of the C bitfield member G_DBUS_CALL_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION.
+const DBusCallFlags_allow_interactive_authorization = DBusCallFlags(2)
+
+// DBusCapabilityFlags is a representation of the C bitfield GDBusCapabilityFlags.
+type DBusCapabilityFlags int
+
+// DBusCapabilityFlags_none is a representation of the C bitfield member G_DBUS_CAPABILITY_FLAGS_NONE.
+const DBusCapabilityFlags_none = DBusCapabilityFlags(0)
+
+// DBusCapabilityFlags_unix_fd_passing is a representation of the C bitfield member G_DBUS_CAPABILITY_FLAGS_UNIX_FD_PASSING.
+const DBusCapabilityFlags_unix_fd_passing = DBusCapabilityFlags(1)
+
+// DBusConnectionFlags is a representation of the C bitfield GDBusConnectionFlags.
+type DBusConnectionFlags int
+
+// DBusConnectionFlags_none is a representation of the C bitfield member G_DBUS_CONNECTION_FLAGS_NONE.
+const DBusConnectionFlags_none = DBusConnectionFlags(0)
+
+// DBusConnectionFlags_authentication_client is a representation of the C bitfield member G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_CLIENT.
+const DBusConnectionFlags_authentication_client = DBusConnectionFlags(1)
+
+// DBusConnectionFlags_authentication_server is a representation of the C bitfield member G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_SERVER.
+const DBusConnectionFlags_authentication_server = DBusConnectionFlags(2)
+
+// DBusConnectionFlags_authentication_allow_anonymous is a representation of the C bitfield member G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS.
+const DBusConnectionFlags_authentication_allow_anonymous = DBusConnectionFlags(4)
+
+// DBusConnectionFlags_message_bus_connection is a representation of the C bitfield member G_DBUS_CONNECTION_FLAGS_MESSAGE_BUS_CONNECTION.
+const DBusConnectionFlags_message_bus_connection = DBusConnectionFlags(8)
+
+// DBusConnectionFlags_delay_message_processing is a representation of the C bitfield member G_DBUS_CONNECTION_FLAGS_DELAY_MESSAGE_PROCESSING.
+const DBusConnectionFlags_delay_message_processing = DBusConnectionFlags(16)
+
+// DBusMessageFlags is a representation of the C bitfield GDBusMessageFlags.
+type DBusMessageFlags int
+
+// DBusMessageFlags_none is a representation of the C bitfield member G_DBUS_MESSAGE_FLAGS_NONE.
+const DBusMessageFlags_none = DBusMessageFlags(0)
+
+// DBusMessageFlags_no_reply_expected is a representation of the C bitfield member G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED.
+const DBusMessageFlags_no_reply_expected = DBusMessageFlags(1)
+
+// DBusMessageFlags_no_auto_start is a representation of the C bitfield member G_DBUS_MESSAGE_FLAGS_NO_AUTO_START.
+const DBusMessageFlags_no_auto_start = DBusMessageFlags(2)
+
+// DBusMessageFlags_allow_interactive_authorization is a representation of the C bitfield member G_DBUS_MESSAGE_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION.
+const DBusMessageFlags_allow_interactive_authorization = DBusMessageFlags(4)
+
+// DBusPropertyInfoFlags is a representation of the C bitfield GDBusPropertyInfoFlags.
+type DBusPropertyInfoFlags int
+
+// DBusPropertyInfoFlags_none is a representation of the C bitfield member G_DBUS_PROPERTY_INFO_FLAGS_NONE.
+const DBusPropertyInfoFlags_none = DBusPropertyInfoFlags(0)
+
+// DBusPropertyInfoFlags_readable is a representation of the C bitfield member G_DBUS_PROPERTY_INFO_FLAGS_READABLE.
+const DBusPropertyInfoFlags_readable = DBusPropertyInfoFlags(1)
+
+// DBusPropertyInfoFlags_writable is a representation of the C bitfield member G_DBUS_PROPERTY_INFO_FLAGS_WRITABLE.
+const DBusPropertyInfoFlags_writable = DBusPropertyInfoFlags(2)
+
+// DBusProxyFlags is a representation of the C bitfield GDBusProxyFlags.
+type DBusProxyFlags int
+
+// DBusProxyFlags_none is a representation of the C bitfield member G_DBUS_PROXY_FLAGS_NONE.
+const DBusProxyFlags_none = DBusProxyFlags(0)
+
+// DBusProxyFlags_do_not_load_properties is a representation of the C bitfield member G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES.
+const DBusProxyFlags_do_not_load_properties = DBusProxyFlags(1)
+
+// DBusProxyFlags_do_not_connect_signals is a representation of the C bitfield member G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS.
+const DBusProxyFlags_do_not_connect_signals = DBusProxyFlags(2)
+
+// DBusProxyFlags_do_not_auto_start is a representation of the C bitfield member G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START.
+const DBusProxyFlags_do_not_auto_start = DBusProxyFlags(4)
+
+// DBusProxyFlags_get_invalidated_properties is a representation of the C bitfield member G_DBUS_PROXY_FLAGS_GET_INVALIDATED_PROPERTIES.
+const DBusProxyFlags_get_invalidated_properties = DBusProxyFlags(8)
+
+// DBusProxyFlags_do_not_auto_start_at_construction is a representation of the C bitfield member G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START_AT_CONSTRUCTION.
+const DBusProxyFlags_do_not_auto_start_at_construction = DBusProxyFlags(16)
+
+// DBusSendMessageFlags is a representation of the C bitfield GDBusSendMessageFlags.
+type DBusSendMessageFlags int
+
+// DBusSendMessageFlags_none is a representation of the C bitfield member G_DBUS_SEND_MESSAGE_FLAGS_NONE.
+const DBusSendMessageFlags_none = DBusSendMessageFlags(0)
+
+// DBusSendMessageFlags_preserve_serial is a representation of the C bitfield member G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL.
+const DBusSendMessageFlags_preserve_serial = DBusSendMessageFlags(1)
+
+// DBusServerFlags is a representation of the C bitfield GDBusServerFlags.
+type DBusServerFlags int
+
+// DBusServerFlags_none is a representation of the C bitfield member G_DBUS_SERVER_FLAGS_NONE.
+const DBusServerFlags_none = DBusServerFlags(0)
+
+// DBusServerFlags_run_in_thread is a representation of the C bitfield member G_DBUS_SERVER_FLAGS_RUN_IN_THREAD.
+const DBusServerFlags_run_in_thread = DBusServerFlags(1)
+
+// DBusServerFlags_authentication_allow_anonymous is a representation of the C bitfield member G_DBUS_SERVER_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS.
+const DBusServerFlags_authentication_allow_anonymous = DBusServerFlags(2)
+
+// DBusSignalFlags is a representation of the C bitfield GDBusSignalFlags.
+type DBusSignalFlags int
+
+// DBusSignalFlags_none is a representation of the C bitfield member G_DBUS_SIGNAL_FLAGS_NONE.
+const DBusSignalFlags_none = DBusSignalFlags(0)
+
+// DBusSignalFlags_no_match_rule is a representation of the C bitfield member G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE.
+const DBusSignalFlags_no_match_rule = DBusSignalFlags(1)
+
+// DBusSignalFlags_match_arg0_namespace is a representation of the C bitfield member G_DBUS_SIGNAL_FLAGS_MATCH_ARG0_NAMESPACE.
+const DBusSignalFlags_match_arg0_namespace = DBusSignalFlags(2)
+
+// DBusSignalFlags_match_arg0_path is a representation of the C bitfield member G_DBUS_SIGNAL_FLAGS_MATCH_ARG0_PATH.
+const DBusSignalFlags_match_arg0_path = DBusSignalFlags(4)
+
+// DBusSubtreeFlags is a representation of the C bitfield GDBusSubtreeFlags.
+type DBusSubtreeFlags int
+
+// DBusSubtreeFlags_none is a representation of the C bitfield member G_DBUS_SUBTREE_FLAGS_NONE.
+const DBusSubtreeFlags_none = DBusSubtreeFlags(0)
+
+// DBusSubtreeFlags_dispatch_to_unenumerated_nodes is a representation of the C bitfield member G_DBUS_SUBTREE_FLAGS_DISPATCH_TO_UNENUMERATED_NODES.
+const DBusSubtreeFlags_dispatch_to_unenumerated_nodes = DBusSubtreeFlags(1)
+
+// DriveStartFlags is a representation of the C bitfield GDriveStartFlags.
+type DriveStartFlags int
+
+// DriveStartFlags_none is a representation of the C bitfield member G_DRIVE_START_NONE.
+const DriveStartFlags_none = DriveStartFlags(0)
+
+// FileAttributeInfoFlags is a representation of the C bitfield GFileAttributeInfoFlags.
+type FileAttributeInfoFlags int
+
+// FileAttributeInfoFlags_none is a representation of the C bitfield member G_FILE_ATTRIBUTE_INFO_NONE.
+const FileAttributeInfoFlags_none = FileAttributeInfoFlags(0)
+
+// FileAttributeInfoFlags_copy_with_file is a representation of the C bitfield member G_FILE_ATTRIBUTE_INFO_COPY_WITH_FILE.
+const FileAttributeInfoFlags_copy_with_file = FileAttributeInfoFlags(1)
+
+// FileAttributeInfoFlags_copy_when_moved is a representation of the C bitfield member G_FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED.
+const FileAttributeInfoFlags_copy_when_moved = FileAttributeInfoFlags(2)
+
+// FileCopyFlags is a representation of the C bitfield GFileCopyFlags.
+type FileCopyFlags int
+
+// FileCopyFlags_none is a representation of the C bitfield member G_FILE_COPY_NONE.
+const FileCopyFlags_none = FileCopyFlags(0)
+
+// FileCopyFlags_overwrite is a representation of the C bitfield member G_FILE_COPY_OVERWRITE.
+const FileCopyFlags_overwrite = FileCopyFlags(1)
+
+// FileCopyFlags_backup is a representation of the C bitfield member G_FILE_COPY_BACKUP.
+const FileCopyFlags_backup = FileCopyFlags(2)
+
+// FileCopyFlags_nofollow_symlinks is a representation of the C bitfield member G_FILE_COPY_NOFOLLOW_SYMLINKS.
+const FileCopyFlags_nofollow_symlinks = FileCopyFlags(4)
+
+// FileCopyFlags_all_metadata is a representation of the C bitfield member G_FILE_COPY_ALL_METADATA.
+const FileCopyFlags_all_metadata = FileCopyFlags(8)
+
+// FileCopyFlags_no_fallback_for_move is a representation of the C bitfield member G_FILE_COPY_NO_FALLBACK_FOR_MOVE.
+const FileCopyFlags_no_fallback_for_move = FileCopyFlags(16)
+
+// FileCopyFlags_target_default_perms is a representation of the C bitfield member G_FILE_COPY_TARGET_DEFAULT_PERMS.
+const FileCopyFlags_target_default_perms = FileCopyFlags(32)
+
+// FileCreateFlags is a representation of the C bitfield GFileCreateFlags.
+type FileCreateFlags int
+
+// FileCreateFlags_none is a representation of the C bitfield member G_FILE_CREATE_NONE.
+const FileCreateFlags_none = FileCreateFlags(0)
+
+// FileCreateFlags_private is a representation of the C bitfield member G_FILE_CREATE_PRIVATE.
+const FileCreateFlags_private = FileCreateFlags(1)
+
+// FileCreateFlags_replace_destination is a representation of the C bitfield member G_FILE_CREATE_REPLACE_DESTINATION.
+const FileCreateFlags_replace_destination = FileCreateFlags(2)
+
+// FileMonitorFlags is a representation of the C bitfield GFileMonitorFlags.
+type FileMonitorFlags int
+
+// FileMonitorFlags_none is a representation of the C bitfield member G_FILE_MONITOR_NONE.
+const FileMonitorFlags_none = FileMonitorFlags(0)
+
+// FileMonitorFlags_watch_mounts is a representation of the C bitfield member G_FILE_MONITOR_WATCH_MOUNTS.
+const FileMonitorFlags_watch_mounts = FileMonitorFlags(1)
+
+// FileMonitorFlags_send_moved is a representation of the C bitfield member G_FILE_MONITOR_SEND_MOVED.
+const FileMonitorFlags_send_moved = FileMonitorFlags(2)
+
+// FileMonitorFlags_watch_hard_links is a representation of the C bitfield member G_FILE_MONITOR_WATCH_HARD_LINKS.
+const FileMonitorFlags_watch_hard_links = FileMonitorFlags(4)
+
+// FileMonitorFlags_watch_moves is a representation of the C bitfield member G_FILE_MONITOR_WATCH_MOVES.
+const FileMonitorFlags_watch_moves = FileMonitorFlags(8)
+
+// FileQueryInfoFlags is a representation of the C bitfield GFileQueryInfoFlags.
+type FileQueryInfoFlags int
+
+// FileQueryInfoFlags_none is a representation of the C bitfield member G_FILE_QUERY_INFO_NONE.
+const FileQueryInfoFlags_none = FileQueryInfoFlags(0)
+
+// FileQueryInfoFlags_nofollow_symlinks is a representation of the C bitfield member G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS.
+const FileQueryInfoFlags_nofollow_symlinks = FileQueryInfoFlags(1)
+
+// IOStreamSpliceFlags is a representation of the C bitfield GIOStreamSpliceFlags.
+type IOStreamSpliceFlags int
+
+// IOStreamSpliceFlags_none is a representation of the C bitfield member G_IO_STREAM_SPLICE_NONE.
+const IOStreamSpliceFlags_none = IOStreamSpliceFlags(0)
+
+// IOStreamSpliceFlags_close_stream1 is a representation of the C bitfield member G_IO_STREAM_SPLICE_CLOSE_STREAM1.
+const IOStreamSpliceFlags_close_stream1 = IOStreamSpliceFlags(1)
+
+// IOStreamSpliceFlags_close_stream2 is a representation of the C bitfield member G_IO_STREAM_SPLICE_CLOSE_STREAM2.
+const IOStreamSpliceFlags_close_stream2 = IOStreamSpliceFlags(2)
+
+// IOStreamSpliceFlags_wait_for_both is a representation of the C bitfield member G_IO_STREAM_SPLICE_WAIT_FOR_BOTH.
+const IOStreamSpliceFlags_wait_for_both = IOStreamSpliceFlags(4)
+
+// MountMountFlags is a representation of the C bitfield GMountMountFlags.
+type MountMountFlags int
+
+// MountMountFlags_none is a representation of the C bitfield member G_MOUNT_MOUNT_NONE.
+const MountMountFlags_none = MountMountFlags(0)
+
+// MountUnmountFlags is a representation of the C bitfield GMountUnmountFlags.
+type MountUnmountFlags int
+
+// MountUnmountFlags_none is a representation of the C bitfield member G_MOUNT_UNMOUNT_NONE.
+const MountUnmountFlags_none = MountUnmountFlags(0)
+
+// MountUnmountFlags_force is a representation of the C bitfield member G_MOUNT_UNMOUNT_FORCE.
+const MountUnmountFlags_force = MountUnmountFlags(1)
+
+// OutputStreamSpliceFlags is a representation of the C bitfield GOutputStreamSpliceFlags.
+type OutputStreamSpliceFlags int
+
+// OutputStreamSpliceFlags_none is a representation of the C bitfield member G_OUTPUT_STREAM_SPLICE_NONE.
+const OutputStreamSpliceFlags_none = OutputStreamSpliceFlags(0)
+
+// OutputStreamSpliceFlags_close_source is a representation of the C bitfield member G_OUTPUT_STREAM_SPLICE_CLOSE_SOURCE.
+const OutputStreamSpliceFlags_close_source = OutputStreamSpliceFlags(1)
+
+// OutputStreamSpliceFlags_close_target is a representation of the C bitfield member G_OUTPUT_STREAM_SPLICE_CLOSE_TARGET.
+const OutputStreamSpliceFlags_close_target = OutputStreamSpliceFlags(2)
+
+// SettingsBindFlags is a representation of the C bitfield GSettingsBindFlags.
+type SettingsBindFlags int
+
+// SettingsBindFlags_default is a representation of the C bitfield member G_SETTINGS_BIND_DEFAULT.
+const SettingsBindFlags_default = SettingsBindFlags(0)
+
+// SettingsBindFlags_get is a representation of the C bitfield member G_SETTINGS_BIND_GET.
+const SettingsBindFlags_get = SettingsBindFlags(1)
+
+// SettingsBindFlags_set is a representation of the C bitfield member G_SETTINGS_BIND_SET.
+const SettingsBindFlags_set = SettingsBindFlags(2)
+
+// SettingsBindFlags_no_sensitivity is a representation of the C bitfield member G_SETTINGS_BIND_NO_SENSITIVITY.
+const SettingsBindFlags_no_sensitivity = SettingsBindFlags(4)
+
+// SettingsBindFlags_get_no_changes is a representation of the C bitfield member G_SETTINGS_BIND_GET_NO_CHANGES.
+const SettingsBindFlags_get_no_changes = SettingsBindFlags(8)
+
+// SettingsBindFlags_invert_boolean is a representation of the C bitfield member G_SETTINGS_BIND_INVERT_BOOLEAN.
+const SettingsBindFlags_invert_boolean = SettingsBindFlags(16)
+
+// SocketMsgFlags is a representation of the C bitfield GSocketMsgFlags.
+type SocketMsgFlags int
+
+// SocketMsgFlags_none is a representation of the C bitfield member G_SOCKET_MSG_NONE.
+const SocketMsgFlags_none = SocketMsgFlags(0)
+
+// SocketMsgFlags_oob is a representation of the C bitfield member G_SOCKET_MSG_OOB.
+const SocketMsgFlags_oob = SocketMsgFlags(1)
+
+// SocketMsgFlags_peek is a representation of the C bitfield member G_SOCKET_MSG_PEEK.
+const SocketMsgFlags_peek = SocketMsgFlags(2)
+
+// SocketMsgFlags_dontroute is a representation of the C bitfield member G_SOCKET_MSG_DONTROUTE.
+const SocketMsgFlags_dontroute = SocketMsgFlags(4)
+
+// TlsCertificateFlags is a representation of the C bitfield GTlsCertificateFlags.
+type TlsCertificateFlags int
+
+// TlsCertificateFlags_unknown_ca is a representation of the C bitfield member G_TLS_CERTIFICATE_UNKNOWN_CA.
+const TlsCertificateFlags_unknown_ca = TlsCertificateFlags(1)
+
+// TlsCertificateFlags_bad_identity is a representation of the C bitfield member G_TLS_CERTIFICATE_BAD_IDENTITY.
+const TlsCertificateFlags_bad_identity = TlsCertificateFlags(2)
+
+// TlsCertificateFlags_not_activated is a representation of the C bitfield member G_TLS_CERTIFICATE_NOT_ACTIVATED.
+const TlsCertificateFlags_not_activated = TlsCertificateFlags(4)
+
+// TlsCertificateFlags_expired is a representation of the C bitfield member G_TLS_CERTIFICATE_EXPIRED.
+const TlsCertificateFlags_expired = TlsCertificateFlags(8)
+
+// TlsCertificateFlags_revoked is a representation of the C bitfield member G_TLS_CERTIFICATE_REVOKED.
+const TlsCertificateFlags_revoked = TlsCertificateFlags(16)
+
+// TlsCertificateFlags_insecure is a representation of the C bitfield member G_TLS_CERTIFICATE_INSECURE.
+const TlsCertificateFlags_insecure = TlsCertificateFlags(32)
+
+// TlsCertificateFlags_generic_error is a representation of the C bitfield member G_TLS_CERTIFICATE_GENERIC_ERROR.
+const TlsCertificateFlags_generic_error = TlsCertificateFlags(64)
+
+// TlsCertificateFlags_validate_all is a representation of the C bitfield member G_TLS_CERTIFICATE_VALIDATE_ALL.
+const TlsCertificateFlags_validate_all = TlsCertificateFlags(127)
+
+// BusType is a representation of the C enumeration GBusType.
+type BusType int
+
+// BusType_starter is a representation of the C enumeration member G_BUS_TYPE_STARTER.
+const BusType_starter = BusType(-1)
+
+// BusType_none is a representation of the C enumeration member G_BUS_TYPE_NONE.
+const BusType_none = BusType(0)
+
+// BusType_system is a representation of the C enumeration member G_BUS_TYPE_SYSTEM.
+const BusType_system = BusType(1)
+
+// BusType_session is a representation of the C enumeration member G_BUS_TYPE_SESSION.
+const BusType_session = BusType(2)
+
+// ConverterResult is a representation of the C enumeration GConverterResult.
+type ConverterResult int
+
+// ConverterResult_error is a representation of the C enumeration member G_CONVERTER_ERROR.
+const ConverterResult_error = ConverterResult(0)
+
+// ConverterResult_converted is a representation of the C enumeration member G_CONVERTER_CONVERTED.
+const ConverterResult_converted = ConverterResult(1)
+
+// ConverterResult_finished is a representation of the C enumeration member G_CONVERTER_FINISHED.
+const ConverterResult_finished = ConverterResult(2)
+
+// ConverterResult_flushed is a representation of the C enumeration member G_CONVERTER_FLUSHED.
+const ConverterResult_flushed = ConverterResult(3)
+
+// CredentialsType is a representation of the C enumeration GCredentialsType.
+type CredentialsType int
+
+// CredentialsType_invalid is a representation of the C enumeration member G_CREDENTIALS_TYPE_INVALID.
+const CredentialsType_invalid = CredentialsType(0)
+
+// CredentialsType_linux_ucred is a representation of the C enumeration member G_CREDENTIALS_TYPE_LINUX_UCRED.
+const CredentialsType_linux_ucred = CredentialsType(1)
+
+// CredentialsType_freebsd_cmsgcred is a representation of the C enumeration member G_CREDENTIALS_TYPE_FREEBSD_CMSGCRED.
+const CredentialsType_freebsd_cmsgcred = CredentialsType(2)
+
+// CredentialsType_openbsd_sockpeercred is a representation of the C enumeration member G_CREDENTIALS_TYPE_OPENBSD_SOCKPEERCRED.
+const CredentialsType_openbsd_sockpeercred = CredentialsType(3)
+
+// CredentialsType_solaris_ucred is a representation of the C enumeration member G_CREDENTIALS_TYPE_SOLARIS_UCRED.
+const CredentialsType_solaris_ucred = CredentialsType(4)
+
+// CredentialsType_netbsd_unpcbid is a representation of the C enumeration member G_CREDENTIALS_TYPE_NETBSD_UNPCBID.
+const CredentialsType_netbsd_unpcbid = CredentialsType(5)
+
+// DBusError is a representation of the C enumeration GDBusError.
+type DBusError int
+
+// DBusError_failed is a representation of the C enumeration member G_DBUS_ERROR_FAILED.
+const DBusError_failed = DBusError(0)
+
+// DBusError_no_memory is a representation of the C enumeration member G_DBUS_ERROR_NO_MEMORY.
+const DBusError_no_memory = DBusError(1)
+
+// DBusError_service_unknown is a representation of the C enumeration member G_DBUS_ERROR_SERVICE_UNKNOWN.
+const DBusError_service_unknown = DBusError(2)
+
+// DBusError_name_has_no_owner is a representation of the C enumeration member G_DBUS_ERROR_NAME_HAS_NO_OWNER.
+const DBusError_name_has_no_owner = DBusError(3)
+
+// DBusError_no_reply is a representation of the C enumeration member G_DBUS_ERROR_NO_REPLY.
+const DBusError_no_reply = DBusError(4)
+
+// DBusError_io_error is a representation of the C enumeration member G_DBUS_ERROR_IO_ERROR.
+const DBusError_io_error = DBusError(5)
+
+// DBusError_bad_address is a representation of the C enumeration member G_DBUS_ERROR_BAD_ADDRESS.
+const DBusError_bad_address = DBusError(6)
+
+// DBusError_not_supported is a representation of the C enumeration member G_DBUS_ERROR_NOT_SUPPORTED.
+const DBusError_not_supported = DBusError(7)
+
+// DBusError_limits_exceeded is a representation of the C enumeration member G_DBUS_ERROR_LIMITS_EXCEEDED.
+const DBusError_limits_exceeded = DBusError(8)
+
+// DBusError_access_denied is a representation of the C enumeration member G_DBUS_ERROR_ACCESS_DENIED.
+const DBusError_access_denied = DBusError(9)
+
+// DBusError_auth_failed is a representation of the C enumeration member G_DBUS_ERROR_AUTH_FAILED.
+const DBusError_auth_failed = DBusError(10)
+
+// DBusError_no_server is a representation of the C enumeration member G_DBUS_ERROR_NO_SERVER.
+const DBusError_no_server = DBusError(11)
+
+// DBusError_timeout is a representation of the C enumeration member G_DBUS_ERROR_TIMEOUT.
+const DBusError_timeout = DBusError(12)
+
+// DBusError_no_network is a representation of the C enumeration member G_DBUS_ERROR_NO_NETWORK.
+const DBusError_no_network = DBusError(13)
+
+// DBusError_address_in_use is a representation of the C enumeration member G_DBUS_ERROR_ADDRESS_IN_USE.
+const DBusError_address_in_use = DBusError(14)
+
+// DBusError_disconnected is a representation of the C enumeration member G_DBUS_ERROR_DISCONNECTED.
+const DBusError_disconnected = DBusError(15)
+
+// DBusError_invalid_args is a representation of the C enumeration member G_DBUS_ERROR_INVALID_ARGS.
+const DBusError_invalid_args = DBusError(16)
+
+// DBusError_file_not_found is a representation of the C enumeration member G_DBUS_ERROR_FILE_NOT_FOUND.
+const DBusError_file_not_found = DBusError(17)
+
+// DBusError_file_exists is a representation of the C enumeration member G_DBUS_ERROR_FILE_EXISTS.
+const DBusError_file_exists = DBusError(18)
+
+// DBusError_unknown_method is a representation of the C enumeration member G_DBUS_ERROR_UNKNOWN_METHOD.
+const DBusError_unknown_method = DBusError(19)
+
+// DBusError_timed_out is a representation of the C enumeration member G_DBUS_ERROR_TIMED_OUT.
+const DBusError_timed_out = DBusError(20)
+
+// DBusError_match_rule_not_found is a representation of the C enumeration member G_DBUS_ERROR_MATCH_RULE_NOT_FOUND.
+const DBusError_match_rule_not_found = DBusError(21)
+
+// DBusError_match_rule_invalid is a representation of the C enumeration member G_DBUS_ERROR_MATCH_RULE_INVALID.
+const DBusError_match_rule_invalid = DBusError(22)
+
+// DBusError_spawn_exec_failed is a representation of the C enumeration member G_DBUS_ERROR_SPAWN_EXEC_FAILED.
+const DBusError_spawn_exec_failed = DBusError(23)
+
+// DBusError_spawn_fork_failed is a representation of the C enumeration member G_DBUS_ERROR_SPAWN_FORK_FAILED.
+const DBusError_spawn_fork_failed = DBusError(24)
+
+// DBusError_spawn_child_exited is a representation of the C enumeration member G_DBUS_ERROR_SPAWN_CHILD_EXITED.
+const DBusError_spawn_child_exited = DBusError(25)
+
+// DBusError_spawn_child_signaled is a representation of the C enumeration member G_DBUS_ERROR_SPAWN_CHILD_SIGNALED.
+const DBusError_spawn_child_signaled = DBusError(26)
+
+// DBusError_spawn_failed is a representation of the C enumeration member G_DBUS_ERROR_SPAWN_FAILED.
+const DBusError_spawn_failed = DBusError(27)
+
+// DBusError_spawn_setup_failed is a representation of the C enumeration member G_DBUS_ERROR_SPAWN_SETUP_FAILED.
+const DBusError_spawn_setup_failed = DBusError(28)
+
+// DBusError_spawn_config_invalid is a representation of the C enumeration member G_DBUS_ERROR_SPAWN_CONFIG_INVALID.
+const DBusError_spawn_config_invalid = DBusError(29)
+
+// DBusError_spawn_service_invalid is a representation of the C enumeration member G_DBUS_ERROR_SPAWN_SERVICE_INVALID.
+const DBusError_spawn_service_invalid = DBusError(30)
+
+// DBusError_spawn_service_not_found is a representation of the C enumeration member G_DBUS_ERROR_SPAWN_SERVICE_NOT_FOUND.
+const DBusError_spawn_service_not_found = DBusError(31)
+
+// DBusError_spawn_permissions_invalid is a representation of the C enumeration member G_DBUS_ERROR_SPAWN_PERMISSIONS_INVALID.
+const DBusError_spawn_permissions_invalid = DBusError(32)
+
+// DBusError_spawn_file_invalid is a representation of the C enumeration member G_DBUS_ERROR_SPAWN_FILE_INVALID.
+const DBusError_spawn_file_invalid = DBusError(33)
+
+// DBusError_spawn_no_memory is a representation of the C enumeration member G_DBUS_ERROR_SPAWN_NO_MEMORY.
+const DBusError_spawn_no_memory = DBusError(34)
+
+// DBusError_unix_process_id_unknown is a representation of the C enumeration member G_DBUS_ERROR_UNIX_PROCESS_ID_UNKNOWN.
+const DBusError_unix_process_id_unknown = DBusError(35)
+
+// DBusError_invalid_signature is a representation of the C enumeration member G_DBUS_ERROR_INVALID_SIGNATURE.
+const DBusError_invalid_signature = DBusError(36)
+
+// DBusError_invalid_file_content is a representation of the C enumeration member G_DBUS_ERROR_INVALID_FILE_CONTENT.
+const DBusError_invalid_file_content = DBusError(37)
+
+// DBusError_selinux_security_context_unknown is a representation of the C enumeration member G_DBUS_ERROR_SELINUX_SECURITY_CONTEXT_UNKNOWN.
+const DBusError_selinux_security_context_unknown = DBusError(38)
+
+// DBusError_adt_audit_data_unknown is a representation of the C enumeration member G_DBUS_ERROR_ADT_AUDIT_DATA_UNKNOWN.
+const DBusError_adt_audit_data_unknown = DBusError(39)
+
+// DBusError_object_path_in_use is a representation of the C enumeration member G_DBUS_ERROR_OBJECT_PATH_IN_USE.
+const DBusError_object_path_in_use = DBusError(40)
+
+// DBusError_unknown_object is a representation of the C enumeration member G_DBUS_ERROR_UNKNOWN_OBJECT.
+const DBusError_unknown_object = DBusError(41)
+
+// DBusError_unknown_interface is a representation of the C enumeration member G_DBUS_ERROR_UNKNOWN_INTERFACE.
+const DBusError_unknown_interface = DBusError(42)
+
+// DBusError_unknown_property is a representation of the C enumeration member G_DBUS_ERROR_UNKNOWN_PROPERTY.
+const DBusError_unknown_property = DBusError(43)
+
+// DBusError_property_read_only is a representation of the C enumeration member G_DBUS_ERROR_PROPERTY_READ_ONLY.
+const DBusError_property_read_only = DBusError(44)
+
+// DBusMessageByteOrder is a representation of the C enumeration GDBusMessageByteOrder.
+type DBusMessageByteOrder int
+
+// DBusMessageByteOrder_big_endian is a representation of the C enumeration member G_DBUS_MESSAGE_BYTE_ORDER_BIG_ENDIAN.
+const DBusMessageByteOrder_big_endian = DBusMessageByteOrder(66)
+
+// DBusMessageByteOrder_little_endian is a representation of the C enumeration member G_DBUS_MESSAGE_BYTE_ORDER_LITTLE_ENDIAN.
+const DBusMessageByteOrder_little_endian = DBusMessageByteOrder(108)
+
+// DBusMessageHeaderField is a representation of the C enumeration GDBusMessageHeaderField.
+type DBusMessageHeaderField int
+
+// DBusMessageHeaderField_invalid is a representation of the C enumeration member G_DBUS_MESSAGE_HEADER_FIELD_INVALID.
+const DBusMessageHeaderField_invalid = DBusMessageHeaderField(0)
+
+// DBusMessageHeaderField_path is a representation of the C enumeration member G_DBUS_MESSAGE_HEADER_FIELD_PATH.
+const DBusMessageHeaderField_path = DBusMessageHeaderField(1)
+
+// DBusMessageHeaderField_interface is a representation of the C enumeration member G_DBUS_MESSAGE_HEADER_FIELD_INTERFACE.
+const DBusMessageHeaderField_interface = DBusMessageHeaderField(2)
+
+// DBusMessageHeaderField_member is a representation of the C enumeration member G_DBUS_MESSAGE_HEADER_FIELD_MEMBER.
+const DBusMessageHeaderField_member = DBusMessageHeaderField(3)
+
+// DBusMessageHeaderField_error_name is a representation of the C enumeration member G_DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME.
+const DBusMessageHeaderField_error_name = DBusMessageHeaderField(4)
+
+// DBusMessageHeaderField_reply_serial is a representation of the C enumeration member G_DBUS_MESSAGE_HEADER_FIELD_REPLY_SERIAL.
+const DBusMessageHeaderField_reply_serial = DBusMessageHeaderField(5)
+
+// DBusMessageHeaderField_destination is a representation of the C enumeration member G_DBUS_MESSAGE_HEADER_FIELD_DESTINATION.
+const DBusMessageHeaderField_destination = DBusMessageHeaderField(6)
+
+// DBusMessageHeaderField_sender is a representation of the C enumeration member G_DBUS_MESSAGE_HEADER_FIELD_SENDER.
+const DBusMessageHeaderField_sender = DBusMessageHeaderField(7)
+
+// DBusMessageHeaderField_signature is a representation of the C enumeration member G_DBUS_MESSAGE_HEADER_FIELD_SIGNATURE.
+const DBusMessageHeaderField_signature = DBusMessageHeaderField(8)
+
+// DBusMessageHeaderField_num_unix_fds is a representation of the C enumeration member G_DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS.
+const DBusMessageHeaderField_num_unix_fds = DBusMessageHeaderField(9)
+
+// DBusMessageType is a representation of the C enumeration GDBusMessageType.
+type DBusMessageType int
+
+// DBusMessageType_invalid is a representation of the C enumeration member G_DBUS_MESSAGE_TYPE_INVALID.
+const DBusMessageType_invalid = DBusMessageType(0)
+
+// DBusMessageType_method_call is a representation of the C enumeration member G_DBUS_MESSAGE_TYPE_METHOD_CALL.
+const DBusMessageType_method_call = DBusMessageType(1)
+
+// DBusMessageType_method_return is a representation of the C enumeration member G_DBUS_MESSAGE_TYPE_METHOD_RETURN.
+const DBusMessageType_method_return = DBusMessageType(2)
+
+// DBusMessageType_error is a representation of the C enumeration member G_DBUS_MESSAGE_TYPE_ERROR.
+const DBusMessageType_error = DBusMessageType(3)
+
+// DBusMessageType_signal is a representation of the C enumeration member G_DBUS_MESSAGE_TYPE_SIGNAL.
+const DBusMessageType_signal = DBusMessageType(4)
+
+// DataStreamByteOrder is a representation of the C enumeration GDataStreamByteOrder.
+type DataStreamByteOrder int
+
+// DataStreamByteOrder_big_endian is a representation of the C enumeration member G_DATA_STREAM_BYTE_ORDER_BIG_ENDIAN.
+const DataStreamByteOrder_big_endian = DataStreamByteOrder(0)
+
+// DataStreamByteOrder_little_endian is a representation of the C enumeration member G_DATA_STREAM_BYTE_ORDER_LITTLE_ENDIAN.
+const DataStreamByteOrder_little_endian = DataStreamByteOrder(1)
+
+// DataStreamByteOrder_host_endian is a representation of the C enumeration member G_DATA_STREAM_BYTE_ORDER_HOST_ENDIAN.
+const DataStreamByteOrder_host_endian = DataStreamByteOrder(2)
+
+// DataStreamNewlineType is a representation of the C enumeration GDataStreamNewlineType.
+type DataStreamNewlineType int
+
+// DataStreamNewlineType_lf is a representation of the C enumeration member G_DATA_STREAM_NEWLINE_TYPE_LF.
+const DataStreamNewlineType_lf = DataStreamNewlineType(0)
+
+// DataStreamNewlineType_cr is a representation of the C enumeration member G_DATA_STREAM_NEWLINE_TYPE_CR.
+const DataStreamNewlineType_cr = DataStreamNewlineType(1)
+
+// DataStreamNewlineType_cr_lf is a representation of the C enumeration member G_DATA_STREAM_NEWLINE_TYPE_CR_LF.
+const DataStreamNewlineType_cr_lf = DataStreamNewlineType(2)
+
+// DataStreamNewlineType_any is a representation of the C enumeration member G_DATA_STREAM_NEWLINE_TYPE_ANY.
+const DataStreamNewlineType_any = DataStreamNewlineType(3)
+
+// DriveStartStopType is a representation of the C enumeration GDriveStartStopType.
+type DriveStartStopType int
+
+// DriveStartStopType_unknown is a representation of the C enumeration member G_DRIVE_START_STOP_TYPE_UNKNOWN.
+const DriveStartStopType_unknown = DriveStartStopType(0)
+
+// DriveStartStopType_shutdown is a representation of the C enumeration member G_DRIVE_START_STOP_TYPE_SHUTDOWN.
+const DriveStartStopType_shutdown = DriveStartStopType(1)
+
+// DriveStartStopType_network is a representation of the C enumeration member G_DRIVE_START_STOP_TYPE_NETWORK.
+const DriveStartStopType_network = DriveStartStopType(2)
+
+// DriveStartStopType_multidisk is a representation of the C enumeration member G_DRIVE_START_STOP_TYPE_MULTIDISK.
+const DriveStartStopType_multidisk = DriveStartStopType(3)
+
+// DriveStartStopType_password is a representation of the C enumeration member G_DRIVE_START_STOP_TYPE_PASSWORD.
+const DriveStartStopType_password = DriveStartStopType(4)
+
+// EmblemOrigin is a representation of the C enumeration GEmblemOrigin.
+type EmblemOrigin int
+
+// EmblemOrigin_unknown is a representation of the C enumeration member G_EMBLEM_ORIGIN_UNKNOWN.
+const EmblemOrigin_unknown = EmblemOrigin(0)
+
+// EmblemOrigin_device is a representation of the C enumeration member G_EMBLEM_ORIGIN_DEVICE.
+const EmblemOrigin_device = EmblemOrigin(1)
+
+// EmblemOrigin_livemetadata is a representation of the C enumeration member G_EMBLEM_ORIGIN_LIVEMETADATA.
+const EmblemOrigin_livemetadata = EmblemOrigin(2)
+
+// EmblemOrigin_tag is a representation of the C enumeration member G_EMBLEM_ORIGIN_TAG.
+const EmblemOrigin_tag = EmblemOrigin(3)
+
+// FileAttributeStatus is a representation of the C enumeration GFileAttributeStatus.
+type FileAttributeStatus int
+
+// FileAttributeStatus_unset is a representation of the C enumeration member G_FILE_ATTRIBUTE_STATUS_UNSET.
+const FileAttributeStatus_unset = FileAttributeStatus(0)
+
+// FileAttributeStatus_set is a representation of the C enumeration member G_FILE_ATTRIBUTE_STATUS_SET.
+const FileAttributeStatus_set = FileAttributeStatus(1)
+
+// FileAttributeStatus_error_setting is a representation of the C enumeration member G_FILE_ATTRIBUTE_STATUS_ERROR_SETTING.
+const FileAttributeStatus_error_setting = FileAttributeStatus(2)
+
+// FileAttributeType is a representation of the C enumeration GFileAttributeType.
+type FileAttributeType int
+
+// FileAttributeType_invalid is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_INVALID.
+const FileAttributeType_invalid = FileAttributeType(0)
+
+// FileAttributeType_string is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_STRING.
+const FileAttributeType_string = FileAttributeType(1)
+
+// FileAttributeType_byte_string is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
+const FileAttributeType_byte_string = FileAttributeType(2)
+
+// FileAttributeType_boolean is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+const FileAttributeType_boolean = FileAttributeType(3)
+
+// FileAttributeType_uint32 is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_UINT32.
+const FileAttributeType_uint32 = FileAttributeType(4)
+
+// FileAttributeType_int32 is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_INT32.
+const FileAttributeType_int32 = FileAttributeType(5)
+
+// FileAttributeType_uint64 is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_UINT64.
+const FileAttributeType_uint64 = FileAttributeType(6)
+
+// FileAttributeType_int64 is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_INT64.
+const FileAttributeType_int64 = FileAttributeType(7)
+
+// FileAttributeType_object is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_OBJECT.
+const FileAttributeType_object = FileAttributeType(8)
+
+// FileAttributeType_stringv is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_STRINGV.
+const FileAttributeType_stringv = FileAttributeType(9)
+
+// FileMonitorEvent is a representation of the C enumeration GFileMonitorEvent.
+type FileMonitorEvent int
+
+// FileMonitorEvent_changed is a representation of the C enumeration member G_FILE_MONITOR_EVENT_CHANGED.
+const FileMonitorEvent_changed = FileMonitorEvent(0)
+
+// FileMonitorEvent_changes_done_hint is a representation of the C enumeration member G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT.
+const FileMonitorEvent_changes_done_hint = FileMonitorEvent(1)
+
+// FileMonitorEvent_deleted is a representation of the C enumeration member G_FILE_MONITOR_EVENT_DELETED.
+const FileMonitorEvent_deleted = FileMonitorEvent(2)
+
+// FileMonitorEvent_created is a representation of the C enumeration member G_FILE_MONITOR_EVENT_CREATED.
+const FileMonitorEvent_created = FileMonitorEvent(3)
+
+// FileMonitorEvent_attribute_changed is a representation of the C enumeration member G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED.
+const FileMonitorEvent_attribute_changed = FileMonitorEvent(4)
+
+// FileMonitorEvent_pre_unmount is a representation of the C enumeration member G_FILE_MONITOR_EVENT_PRE_UNMOUNT.
+const FileMonitorEvent_pre_unmount = FileMonitorEvent(5)
+
+// FileMonitorEvent_unmounted is a representation of the C enumeration member G_FILE_MONITOR_EVENT_UNMOUNTED.
+const FileMonitorEvent_unmounted = FileMonitorEvent(6)
+
+// FileMonitorEvent_moved is a representation of the C enumeration member G_FILE_MONITOR_EVENT_MOVED.
+const FileMonitorEvent_moved = FileMonitorEvent(7)
+
+// FileMonitorEvent_renamed is a representation of the C enumeration member G_FILE_MONITOR_EVENT_RENAMED.
+const FileMonitorEvent_renamed = FileMonitorEvent(8)
+
+// FileMonitorEvent_moved_in is a representation of the C enumeration member G_FILE_MONITOR_EVENT_MOVED_IN.
+const FileMonitorEvent_moved_in = FileMonitorEvent(9)
+
+// FileMonitorEvent_moved_out is a representation of the C enumeration member G_FILE_MONITOR_EVENT_MOVED_OUT.
+const FileMonitorEvent_moved_out = FileMonitorEvent(10)
+
+// FileType is a representation of the C enumeration GFileType.
+type FileType int
+
+// FileType_unknown is a representation of the C enumeration member G_FILE_TYPE_UNKNOWN.
+const FileType_unknown = FileType(0)
+
+// FileType_regular is a representation of the C enumeration member G_FILE_TYPE_REGULAR.
+const FileType_regular = FileType(1)
+
+// FileType_directory is a representation of the C enumeration member G_FILE_TYPE_DIRECTORY.
+const FileType_directory = FileType(2)
+
+// FileType_symbolic_link is a representation of the C enumeration member G_FILE_TYPE_SYMBOLIC_LINK.
+const FileType_symbolic_link = FileType(3)
+
+// FileType_special is a representation of the C enumeration member G_FILE_TYPE_SPECIAL.
+const FileType_special = FileType(4)
+
+// FileType_shortcut is a representation of the C enumeration member G_FILE_TYPE_SHORTCUT.
+const FileType_shortcut = FileType(5)
+
+// FileType_mountable is a representation of the C enumeration member G_FILE_TYPE_MOUNTABLE.
+const FileType_mountable = FileType(6)
+
+// FilesystemPreviewType is a representation of the C enumeration GFilesystemPreviewType.
+type FilesystemPreviewType int
+
+// FilesystemPreviewType_if_always is a representation of the C enumeration member G_FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS.
+const FilesystemPreviewType_if_always = FilesystemPreviewType(0)
+
+// FilesystemPreviewType_if_local is a representation of the C enumeration member G_FILESYSTEM_PREVIEW_TYPE_IF_LOCAL.
+const FilesystemPreviewType_if_local = FilesystemPreviewType(1)
+
+// FilesystemPreviewType_never is a representation of the C enumeration member G_FILESYSTEM_PREVIEW_TYPE_NEVER.
+const FilesystemPreviewType_never = FilesystemPreviewType(2)
+
+// IOErrorEnum is a representation of the C enumeration GIOErrorEnum.
+type IOErrorEnum int
+
+// IOErrorEnum_failed is a representation of the C enumeration member G_IO_ERROR_FAILED.
+const IOErrorEnum_failed = IOErrorEnum(0)
+
+// IOErrorEnum_not_found is a representation of the C enumeration member G_IO_ERROR_NOT_FOUND.
+const IOErrorEnum_not_found = IOErrorEnum(1)
+
+// IOErrorEnum_exists is a representation of the C enumeration member G_IO_ERROR_EXISTS.
+const IOErrorEnum_exists = IOErrorEnum(2)
+
+// IOErrorEnum_is_directory is a representation of the C enumeration member G_IO_ERROR_IS_DIRECTORY.
+const IOErrorEnum_is_directory = IOErrorEnum(3)
+
+// IOErrorEnum_not_directory is a representation of the C enumeration member G_IO_ERROR_NOT_DIRECTORY.
+const IOErrorEnum_not_directory = IOErrorEnum(4)
+
+// IOErrorEnum_not_empty is a representation of the C enumeration member G_IO_ERROR_NOT_EMPTY.
+const IOErrorEnum_not_empty = IOErrorEnum(5)
+
+// IOErrorEnum_not_regular_file is a representation of the C enumeration member G_IO_ERROR_NOT_REGULAR_FILE.
+const IOErrorEnum_not_regular_file = IOErrorEnum(6)
+
+// IOErrorEnum_not_symbolic_link is a representation of the C enumeration member G_IO_ERROR_NOT_SYMBOLIC_LINK.
+const IOErrorEnum_not_symbolic_link = IOErrorEnum(7)
+
+// IOErrorEnum_not_mountable_file is a representation of the C enumeration member G_IO_ERROR_NOT_MOUNTABLE_FILE.
+const IOErrorEnum_not_mountable_file = IOErrorEnum(8)
+
+// IOErrorEnum_filename_too_long is a representation of the C enumeration member G_IO_ERROR_FILENAME_TOO_LONG.
+const IOErrorEnum_filename_too_long = IOErrorEnum(9)
+
+// IOErrorEnum_invalid_filename is a representation of the C enumeration member G_IO_ERROR_INVALID_FILENAME.
+const IOErrorEnum_invalid_filename = IOErrorEnum(10)
+
+// IOErrorEnum_too_many_links is a representation of the C enumeration member G_IO_ERROR_TOO_MANY_LINKS.
+const IOErrorEnum_too_many_links = IOErrorEnum(11)
+
+// IOErrorEnum_no_space is a representation of the C enumeration member G_IO_ERROR_NO_SPACE.
+const IOErrorEnum_no_space = IOErrorEnum(12)
+
+// IOErrorEnum_invalid_argument is a representation of the C enumeration member G_IO_ERROR_INVALID_ARGUMENT.
+const IOErrorEnum_invalid_argument = IOErrorEnum(13)
+
+// IOErrorEnum_permission_denied is a representation of the C enumeration member G_IO_ERROR_PERMISSION_DENIED.
+const IOErrorEnum_permission_denied = IOErrorEnum(14)
+
+// IOErrorEnum_not_supported is a representation of the C enumeration member G_IO_ERROR_NOT_SUPPORTED.
+const IOErrorEnum_not_supported = IOErrorEnum(15)
+
+// IOErrorEnum_not_mounted is a representation of the C enumeration member G_IO_ERROR_NOT_MOUNTED.
+const IOErrorEnum_not_mounted = IOErrorEnum(16)
+
+// IOErrorEnum_already_mounted is a representation of the C enumeration member G_IO_ERROR_ALREADY_MOUNTED.
+const IOErrorEnum_already_mounted = IOErrorEnum(17)
+
+// IOErrorEnum_closed is a representation of the C enumeration member G_IO_ERROR_CLOSED.
+const IOErrorEnum_closed = IOErrorEnum(18)
+
+// IOErrorEnum_cancelled is a representation of the C enumeration member G_IO_ERROR_CANCELLED.
+const IOErrorEnum_cancelled = IOErrorEnum(19)
+
+// IOErrorEnum_pending is a representation of the C enumeration member G_IO_ERROR_PENDING.
+const IOErrorEnum_pending = IOErrorEnum(20)
+
+// IOErrorEnum_read_only is a representation of the C enumeration member G_IO_ERROR_READ_ONLY.
+const IOErrorEnum_read_only = IOErrorEnum(21)
+
+// IOErrorEnum_cant_create_backup is a representation of the C enumeration member G_IO_ERROR_CANT_CREATE_BACKUP.
+const IOErrorEnum_cant_create_backup = IOErrorEnum(22)
+
+// IOErrorEnum_wrong_etag is a representation of the C enumeration member G_IO_ERROR_WRONG_ETAG.
+const IOErrorEnum_wrong_etag = IOErrorEnum(23)
+
+// IOErrorEnum_timed_out is a representation of the C enumeration member G_IO_ERROR_TIMED_OUT.
+const IOErrorEnum_timed_out = IOErrorEnum(24)
+
+// IOErrorEnum_would_recurse is a representation of the C enumeration member G_IO_ERROR_WOULD_RECURSE.
+const IOErrorEnum_would_recurse = IOErrorEnum(25)
+
+// IOErrorEnum_busy is a representation of the C enumeration member G_IO_ERROR_BUSY.
+const IOErrorEnum_busy = IOErrorEnum(26)
+
+// IOErrorEnum_would_block is a representation of the C enumeration member G_IO_ERROR_WOULD_BLOCK.
+const IOErrorEnum_would_block = IOErrorEnum(27)
+
+// IOErrorEnum_host_not_found is a representation of the C enumeration member G_IO_ERROR_HOST_NOT_FOUND.
+const IOErrorEnum_host_not_found = IOErrorEnum(28)
+
+// IOErrorEnum_would_merge is a representation of the C enumeration member G_IO_ERROR_WOULD_MERGE.
+const IOErrorEnum_would_merge = IOErrorEnum(29)
+
+// IOErrorEnum_failed_handled is a representation of the C enumeration member G_IO_ERROR_FAILED_HANDLED.
+const IOErrorEnum_failed_handled = IOErrorEnum(30)
+
+// IOErrorEnum_too_many_open_files is a representation of the C enumeration member G_IO_ERROR_TOO_MANY_OPEN_FILES.
+const IOErrorEnum_too_many_open_files = IOErrorEnum(31)
+
+// IOErrorEnum_not_initialized is a representation of the C enumeration member G_IO_ERROR_NOT_INITIALIZED.
+const IOErrorEnum_not_initialized = IOErrorEnum(32)
+
+// IOErrorEnum_address_in_use is a representation of the C enumeration member G_IO_ERROR_ADDRESS_IN_USE.
+const IOErrorEnum_address_in_use = IOErrorEnum(33)
+
+// IOErrorEnum_partial_input is a representation of the C enumeration member G_IO_ERROR_PARTIAL_INPUT.
+const IOErrorEnum_partial_input = IOErrorEnum(34)
+
+// IOErrorEnum_invalid_data is a representation of the C enumeration member G_IO_ERROR_INVALID_DATA.
+const IOErrorEnum_invalid_data = IOErrorEnum(35)
+
+// IOErrorEnum_dbus_error is a representation of the C enumeration member G_IO_ERROR_DBUS_ERROR.
+const IOErrorEnum_dbus_error = IOErrorEnum(36)
+
+// IOErrorEnum_host_unreachable is a representation of the C enumeration member G_IO_ERROR_HOST_UNREACHABLE.
+const IOErrorEnum_host_unreachable = IOErrorEnum(37)
+
+// IOErrorEnum_network_unreachable is a representation of the C enumeration member G_IO_ERROR_NETWORK_UNREACHABLE.
+const IOErrorEnum_network_unreachable = IOErrorEnum(38)
+
+// IOErrorEnum_connection_refused is a representation of the C enumeration member G_IO_ERROR_CONNECTION_REFUSED.
+const IOErrorEnum_connection_refused = IOErrorEnum(39)
+
+// IOErrorEnum_proxy_failed is a representation of the C enumeration member G_IO_ERROR_PROXY_FAILED.
+const IOErrorEnum_proxy_failed = IOErrorEnum(40)
+
+// IOErrorEnum_proxy_auth_failed is a representation of the C enumeration member G_IO_ERROR_PROXY_AUTH_FAILED.
+const IOErrorEnum_proxy_auth_failed = IOErrorEnum(41)
+
+// IOErrorEnum_proxy_need_auth is a representation of the C enumeration member G_IO_ERROR_PROXY_NEED_AUTH.
+const IOErrorEnum_proxy_need_auth = IOErrorEnum(42)
+
+// IOErrorEnum_proxy_not_allowed is a representation of the C enumeration member G_IO_ERROR_PROXY_NOT_ALLOWED.
+const IOErrorEnum_proxy_not_allowed = IOErrorEnum(43)
+
+// IOErrorEnum_broken_pipe is a representation of the C enumeration member G_IO_ERROR_BROKEN_PIPE.
+const IOErrorEnum_broken_pipe = IOErrorEnum(44)
+
+// IOErrorEnum_connection_closed is a representation of the C enumeration member G_IO_ERROR_CONNECTION_CLOSED.
+const IOErrorEnum_connection_closed = IOErrorEnum(44)
+
+// IOErrorEnum_not_connected is a representation of the C enumeration member G_IO_ERROR_NOT_CONNECTED.
+const IOErrorEnum_not_connected = IOErrorEnum(45)
+
+// IOErrorEnum_message_too_large is a representation of the C enumeration member G_IO_ERROR_MESSAGE_TOO_LARGE.
+const IOErrorEnum_message_too_large = IOErrorEnum(46)
+
+// MountOperationResult is a representation of the C enumeration GMountOperationResult.
+type MountOperationResult int
+
+// MountOperationResult_handled is a representation of the C enumeration member G_MOUNT_OPERATION_HANDLED.
+const MountOperationResult_handled = MountOperationResult(0)
+
+// MountOperationResult_aborted is a representation of the C enumeration member G_MOUNT_OPERATION_ABORTED.
+const MountOperationResult_aborted = MountOperationResult(1)
+
+// MountOperationResult_unhandled is a representation of the C enumeration member G_MOUNT_OPERATION_UNHANDLED.
+const MountOperationResult_unhandled = MountOperationResult(2)
+
+// PasswordSave is a representation of the C enumeration GPasswordSave.
+type PasswordSave int
+
+// PasswordSave_never is a representation of the C enumeration member G_PASSWORD_SAVE_NEVER.
+const PasswordSave_never = PasswordSave(0)
+
+// PasswordSave_for_session is a representation of the C enumeration member G_PASSWORD_SAVE_FOR_SESSION.
+const PasswordSave_for_session = PasswordSave(1)
+
+// PasswordSave_permanently is a representation of the C enumeration member G_PASSWORD_SAVE_PERMANENTLY.
+const PasswordSave_permanently = PasswordSave(2)
+
+// ResolverError is a representation of the C enumeration GResolverError.
+type ResolverError int
+
+// ResolverError_not_found is a representation of the C enumeration member G_RESOLVER_ERROR_NOT_FOUND.
+const ResolverError_not_found = ResolverError(0)
+
+// ResolverError_temporary_failure is a representation of the C enumeration member G_RESOLVER_ERROR_TEMPORARY_FAILURE.
+const ResolverError_temporary_failure = ResolverError(1)
+
+// ResolverError_internal is a representation of the C enumeration member G_RESOLVER_ERROR_INTERNAL.
+const ResolverError_internal = ResolverError(2)
+
+// SocketFamily is a representation of the C enumeration GSocketFamily.
+type SocketFamily int
+
+// SocketFamily_invalid is a representation of the C enumeration member G_SOCKET_FAMILY_INVALID.
+const SocketFamily_invalid = SocketFamily(0)
+
+// SocketFamily_unix is a representation of the C enumeration member G_SOCKET_FAMILY_UNIX.
+const SocketFamily_unix = SocketFamily(1)
+
+// SocketFamily_ipv4 is a representation of the C enumeration member G_SOCKET_FAMILY_IPV4.
+const SocketFamily_ipv4 = SocketFamily(2)
+
+// SocketFamily_ipv6 is a representation of the C enumeration member G_SOCKET_FAMILY_IPV6.
+const SocketFamily_ipv6 = SocketFamily(10)
+
+// SocketProtocol is a representation of the C enumeration GSocketProtocol.
+type SocketProtocol int
+
+// SocketProtocol_unknown is a representation of the C enumeration member G_SOCKET_PROTOCOL_UNKNOWN.
+const SocketProtocol_unknown = SocketProtocol(-1)
+
+// SocketProtocol_default is a representation of the C enumeration member G_SOCKET_PROTOCOL_DEFAULT.
+const SocketProtocol_default = SocketProtocol(0)
+
+// SocketProtocol_tcp is a representation of the C enumeration member G_SOCKET_PROTOCOL_TCP.
+const SocketProtocol_tcp = SocketProtocol(6)
+
+// SocketProtocol_udp is a representation of the C enumeration member G_SOCKET_PROTOCOL_UDP.
+const SocketProtocol_udp = SocketProtocol(17)
+
+// SocketProtocol_sctp is a representation of the C enumeration member G_SOCKET_PROTOCOL_SCTP.
+const SocketProtocol_sctp = SocketProtocol(132)
+
+// SocketType is a representation of the C enumeration GSocketType.
+type SocketType int
+
+// SocketType_invalid is a representation of the C enumeration member G_SOCKET_TYPE_INVALID.
+const SocketType_invalid = SocketType(0)
+
+// SocketType_stream is a representation of the C enumeration member G_SOCKET_TYPE_STREAM.
+const SocketType_stream = SocketType(1)
+
+// SocketType_datagram is a representation of the C enumeration member G_SOCKET_TYPE_DATAGRAM.
+const SocketType_datagram = SocketType(2)
+
+// SocketType_seqpacket is a representation of the C enumeration member G_SOCKET_TYPE_SEQPACKET.
+const SocketType_seqpacket = SocketType(3)
+
+// TlsAuthenticationMode is a representation of the C enumeration GTlsAuthenticationMode.
+type TlsAuthenticationMode int
+
+// TlsAuthenticationMode_none is a representation of the C enumeration member G_TLS_AUTHENTICATION_NONE.
+const TlsAuthenticationMode_none = TlsAuthenticationMode(0)
+
+// TlsAuthenticationMode_requested is a representation of the C enumeration member G_TLS_AUTHENTICATION_REQUESTED.
+const TlsAuthenticationMode_requested = TlsAuthenticationMode(1)
+
+// TlsAuthenticationMode_required is a representation of the C enumeration member G_TLS_AUTHENTICATION_REQUIRED.
+const TlsAuthenticationMode_required = TlsAuthenticationMode(2)
+
+// TlsError is a representation of the C enumeration GTlsError.
+type TlsError int
+
+// TlsError_unavailable is a representation of the C enumeration member G_TLS_ERROR_UNAVAILABLE.
+const TlsError_unavailable = TlsError(0)
+
+// TlsError_misc is a representation of the C enumeration member G_TLS_ERROR_MISC.
+const TlsError_misc = TlsError(1)
+
+// TlsError_bad_certificate is a representation of the C enumeration member G_TLS_ERROR_BAD_CERTIFICATE.
+const TlsError_bad_certificate = TlsError(2)
+
+// TlsError_not_tls is a representation of the C enumeration member G_TLS_ERROR_NOT_TLS.
+const TlsError_not_tls = TlsError(3)
+
+// TlsError_handshake is a representation of the C enumeration member G_TLS_ERROR_HANDSHAKE.
+const TlsError_handshake = TlsError(4)
+
+// TlsError_certificate_required is a representation of the C enumeration member G_TLS_ERROR_CERTIFICATE_REQUIRED.
+const TlsError_certificate_required = TlsError(5)
+
+// TlsError_eof is a representation of the C enumeration member G_TLS_ERROR_EOF.
+const TlsError_eof = TlsError(6)
+
+// TlsError_inappropriate_fallback is a representation of the C enumeration member G_TLS_ERROR_INAPPROPRIATE_FALLBACK.
+const TlsError_inappropriate_fallback = TlsError(7)
+
+// TlsRehandshakeMode is a representation of the C enumeration GTlsRehandshakeMode.
+type TlsRehandshakeMode int
+
+// TlsRehandshakeMode_never is a representation of the C enumeration member G_TLS_REHANDSHAKE_NEVER.
+const TlsRehandshakeMode_never = TlsRehandshakeMode(0)
+
+// TlsRehandshakeMode_safely is a representation of the C enumeration member G_TLS_REHANDSHAKE_SAFELY.
+const TlsRehandshakeMode_safely = TlsRehandshakeMode(1)
+
+// TlsRehandshakeMode_unsafely is a representation of the C enumeration member G_TLS_REHANDSHAKE_UNSAFELY.
+const TlsRehandshakeMode_unsafely = TlsRehandshakeMode(2)
+
+// UnixSocketAddressType is a representation of the C enumeration GUnixSocketAddressType.
+type UnixSocketAddressType int
+
+// UnixSocketAddressType_invalid is a representation of the C enumeration member G_UNIX_SOCKET_ADDRESS_INVALID.
+const UnixSocketAddressType_invalid = UnixSocketAddressType(0)
+
+// UnixSocketAddressType_anonymous is a representation of the C enumeration member G_UNIX_SOCKET_ADDRESS_ANONYMOUS.
+const UnixSocketAddressType_anonymous = UnixSocketAddressType(1)
+
+// UnixSocketAddressType_path is a representation of the C enumeration member G_UNIX_SOCKET_ADDRESS_PATH.
+const UnixSocketAddressType_path = UnixSocketAddressType(2)
+
+// UnixSocketAddressType_abstract is a representation of the C enumeration member G_UNIX_SOCKET_ADDRESS_ABSTRACT.
+const UnixSocketAddressType_abstract = UnixSocketAddressType(3)
+
+// UnixSocketAddressType_abstract_padded is a representation of the C enumeration member G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
+const UnixSocketAddressType_abstract_padded = UnixSocketAddressType(4)
+
+// ZlibCompressorFormat is a representation of the C enumeration GZlibCompressorFormat.
+type ZlibCompressorFormat int
+
+// ZlibCompressorFormat_zlib is a representation of the C enumeration member G_ZLIB_COMPRESSOR_FORMAT_ZLIB.
+const ZlibCompressorFormat_zlib = ZlibCompressorFormat(0)
+
+// ZlibCompressorFormat_gzip is a representation of the C enumeration member G_ZLIB_COMPRESSOR_FORMAT_GZIP.
+const ZlibCompressorFormat_gzip = ZlibCompressorFormat(1)
+
+// ZlibCompressorFormat_raw is a representation of the C enumeration member G_ZLIB_COMPRESSOR_FORMAT_RAW.
+const ZlibCompressorFormat_raw = ZlibCompressorFormat(2)
+
 // ActionEntry is a representation of the C record GActionEntry.
 type ActionEntry struct {
 	native unsafe.Pointer

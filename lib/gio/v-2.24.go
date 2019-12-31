@@ -300,6 +300,633 @@ const VOLUME_IDENTIFIER_KIND_UUID = "uuid"
 // VOLUME_MONITOR_EXTENSION_POINT_NAME is a representation of the C constant G_VOLUME_MONITOR_EXTENSION_POINT_NAME.
 const VOLUME_MONITOR_EXTENSION_POINT_NAME = "gio-volume-monitor"
 
+// AppInfoCreateFlags is a representation of the C bitfield GAppInfoCreateFlags.
+type AppInfoCreateFlags int
+
+// AppInfoCreateFlags_none is a representation of the C bitfield member G_APP_INFO_CREATE_NONE.
+const AppInfoCreateFlags_none = AppInfoCreateFlags(0)
+
+// AppInfoCreateFlags_needs_terminal is a representation of the C bitfield member G_APP_INFO_CREATE_NEEDS_TERMINAL.
+const AppInfoCreateFlags_needs_terminal = AppInfoCreateFlags(1)
+
+// AppInfoCreateFlags_supports_uris is a representation of the C bitfield member G_APP_INFO_CREATE_SUPPORTS_URIS.
+const AppInfoCreateFlags_supports_uris = AppInfoCreateFlags(2)
+
+// AppInfoCreateFlags_supports_startup_notification is a representation of the C bitfield member G_APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION.
+const AppInfoCreateFlags_supports_startup_notification = AppInfoCreateFlags(4)
+
+// AskPasswordFlags is a representation of the C bitfield GAskPasswordFlags.
+type AskPasswordFlags int
+
+// AskPasswordFlags_need_password is a representation of the C bitfield member G_ASK_PASSWORD_NEED_PASSWORD.
+const AskPasswordFlags_need_password = AskPasswordFlags(1)
+
+// AskPasswordFlags_need_username is a representation of the C bitfield member G_ASK_PASSWORD_NEED_USERNAME.
+const AskPasswordFlags_need_username = AskPasswordFlags(2)
+
+// AskPasswordFlags_need_domain is a representation of the C bitfield member G_ASK_PASSWORD_NEED_DOMAIN.
+const AskPasswordFlags_need_domain = AskPasswordFlags(4)
+
+// AskPasswordFlags_saving_supported is a representation of the C bitfield member G_ASK_PASSWORD_SAVING_SUPPORTED.
+const AskPasswordFlags_saving_supported = AskPasswordFlags(8)
+
+// AskPasswordFlags_anonymous_supported is a representation of the C bitfield member G_ASK_PASSWORD_ANONYMOUS_SUPPORTED.
+const AskPasswordFlags_anonymous_supported = AskPasswordFlags(16)
+
+// AskPasswordFlags_tcrypt is a representation of the C bitfield member G_ASK_PASSWORD_TCRYPT.
+const AskPasswordFlags_tcrypt = AskPasswordFlags(32)
+
+// ConverterFlags is a representation of the C bitfield GConverterFlags.
+type ConverterFlags int
+
+// ConverterFlags_none is a representation of the C bitfield member G_CONVERTER_NO_FLAGS.
+const ConverterFlags_none = ConverterFlags(0)
+
+// ConverterFlags_input_at_end is a representation of the C bitfield member G_CONVERTER_INPUT_AT_END.
+const ConverterFlags_input_at_end = ConverterFlags(1)
+
+// ConverterFlags_flush is a representation of the C bitfield member G_CONVERTER_FLUSH.
+const ConverterFlags_flush = ConverterFlags(2)
+
+// DriveStartFlags is a representation of the C bitfield GDriveStartFlags.
+type DriveStartFlags int
+
+// DriveStartFlags_none is a representation of the C bitfield member G_DRIVE_START_NONE.
+const DriveStartFlags_none = DriveStartFlags(0)
+
+// FileAttributeInfoFlags is a representation of the C bitfield GFileAttributeInfoFlags.
+type FileAttributeInfoFlags int
+
+// FileAttributeInfoFlags_none is a representation of the C bitfield member G_FILE_ATTRIBUTE_INFO_NONE.
+const FileAttributeInfoFlags_none = FileAttributeInfoFlags(0)
+
+// FileAttributeInfoFlags_copy_with_file is a representation of the C bitfield member G_FILE_ATTRIBUTE_INFO_COPY_WITH_FILE.
+const FileAttributeInfoFlags_copy_with_file = FileAttributeInfoFlags(1)
+
+// FileAttributeInfoFlags_copy_when_moved is a representation of the C bitfield member G_FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED.
+const FileAttributeInfoFlags_copy_when_moved = FileAttributeInfoFlags(2)
+
+// FileCopyFlags is a representation of the C bitfield GFileCopyFlags.
+type FileCopyFlags int
+
+// FileCopyFlags_none is a representation of the C bitfield member G_FILE_COPY_NONE.
+const FileCopyFlags_none = FileCopyFlags(0)
+
+// FileCopyFlags_overwrite is a representation of the C bitfield member G_FILE_COPY_OVERWRITE.
+const FileCopyFlags_overwrite = FileCopyFlags(1)
+
+// FileCopyFlags_backup is a representation of the C bitfield member G_FILE_COPY_BACKUP.
+const FileCopyFlags_backup = FileCopyFlags(2)
+
+// FileCopyFlags_nofollow_symlinks is a representation of the C bitfield member G_FILE_COPY_NOFOLLOW_SYMLINKS.
+const FileCopyFlags_nofollow_symlinks = FileCopyFlags(4)
+
+// FileCopyFlags_all_metadata is a representation of the C bitfield member G_FILE_COPY_ALL_METADATA.
+const FileCopyFlags_all_metadata = FileCopyFlags(8)
+
+// FileCopyFlags_no_fallback_for_move is a representation of the C bitfield member G_FILE_COPY_NO_FALLBACK_FOR_MOVE.
+const FileCopyFlags_no_fallback_for_move = FileCopyFlags(16)
+
+// FileCopyFlags_target_default_perms is a representation of the C bitfield member G_FILE_COPY_TARGET_DEFAULT_PERMS.
+const FileCopyFlags_target_default_perms = FileCopyFlags(32)
+
+// FileCreateFlags is a representation of the C bitfield GFileCreateFlags.
+type FileCreateFlags int
+
+// FileCreateFlags_none is a representation of the C bitfield member G_FILE_CREATE_NONE.
+const FileCreateFlags_none = FileCreateFlags(0)
+
+// FileCreateFlags_private is a representation of the C bitfield member G_FILE_CREATE_PRIVATE.
+const FileCreateFlags_private = FileCreateFlags(1)
+
+// FileCreateFlags_replace_destination is a representation of the C bitfield member G_FILE_CREATE_REPLACE_DESTINATION.
+const FileCreateFlags_replace_destination = FileCreateFlags(2)
+
+// FileMonitorFlags is a representation of the C bitfield GFileMonitorFlags.
+type FileMonitorFlags int
+
+// FileMonitorFlags_none is a representation of the C bitfield member G_FILE_MONITOR_NONE.
+const FileMonitorFlags_none = FileMonitorFlags(0)
+
+// FileMonitorFlags_watch_mounts is a representation of the C bitfield member G_FILE_MONITOR_WATCH_MOUNTS.
+const FileMonitorFlags_watch_mounts = FileMonitorFlags(1)
+
+// FileMonitorFlags_send_moved is a representation of the C bitfield member G_FILE_MONITOR_SEND_MOVED.
+const FileMonitorFlags_send_moved = FileMonitorFlags(2)
+
+// FileMonitorFlags_watch_hard_links is a representation of the C bitfield member G_FILE_MONITOR_WATCH_HARD_LINKS.
+const FileMonitorFlags_watch_hard_links = FileMonitorFlags(4)
+
+// FileMonitorFlags_watch_moves is a representation of the C bitfield member G_FILE_MONITOR_WATCH_MOVES.
+const FileMonitorFlags_watch_moves = FileMonitorFlags(8)
+
+// FileQueryInfoFlags is a representation of the C bitfield GFileQueryInfoFlags.
+type FileQueryInfoFlags int
+
+// FileQueryInfoFlags_none is a representation of the C bitfield member G_FILE_QUERY_INFO_NONE.
+const FileQueryInfoFlags_none = FileQueryInfoFlags(0)
+
+// FileQueryInfoFlags_nofollow_symlinks is a representation of the C bitfield member G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS.
+const FileQueryInfoFlags_nofollow_symlinks = FileQueryInfoFlags(1)
+
+// MountMountFlags is a representation of the C bitfield GMountMountFlags.
+type MountMountFlags int
+
+// MountMountFlags_none is a representation of the C bitfield member G_MOUNT_MOUNT_NONE.
+const MountMountFlags_none = MountMountFlags(0)
+
+// MountUnmountFlags is a representation of the C bitfield GMountUnmountFlags.
+type MountUnmountFlags int
+
+// MountUnmountFlags_none is a representation of the C bitfield member G_MOUNT_UNMOUNT_NONE.
+const MountUnmountFlags_none = MountUnmountFlags(0)
+
+// MountUnmountFlags_force is a representation of the C bitfield member G_MOUNT_UNMOUNT_FORCE.
+const MountUnmountFlags_force = MountUnmountFlags(1)
+
+// OutputStreamSpliceFlags is a representation of the C bitfield GOutputStreamSpliceFlags.
+type OutputStreamSpliceFlags int
+
+// OutputStreamSpliceFlags_none is a representation of the C bitfield member G_OUTPUT_STREAM_SPLICE_NONE.
+const OutputStreamSpliceFlags_none = OutputStreamSpliceFlags(0)
+
+// OutputStreamSpliceFlags_close_source is a representation of the C bitfield member G_OUTPUT_STREAM_SPLICE_CLOSE_SOURCE.
+const OutputStreamSpliceFlags_close_source = OutputStreamSpliceFlags(1)
+
+// OutputStreamSpliceFlags_close_target is a representation of the C bitfield member G_OUTPUT_STREAM_SPLICE_CLOSE_TARGET.
+const OutputStreamSpliceFlags_close_target = OutputStreamSpliceFlags(2)
+
+// SettingsBindFlags is a representation of the C bitfield GSettingsBindFlags.
+type SettingsBindFlags int
+
+// SettingsBindFlags_default is a representation of the C bitfield member G_SETTINGS_BIND_DEFAULT.
+const SettingsBindFlags_default = SettingsBindFlags(0)
+
+// SettingsBindFlags_get is a representation of the C bitfield member G_SETTINGS_BIND_GET.
+const SettingsBindFlags_get = SettingsBindFlags(1)
+
+// SettingsBindFlags_set is a representation of the C bitfield member G_SETTINGS_BIND_SET.
+const SettingsBindFlags_set = SettingsBindFlags(2)
+
+// SettingsBindFlags_no_sensitivity is a representation of the C bitfield member G_SETTINGS_BIND_NO_SENSITIVITY.
+const SettingsBindFlags_no_sensitivity = SettingsBindFlags(4)
+
+// SettingsBindFlags_get_no_changes is a representation of the C bitfield member G_SETTINGS_BIND_GET_NO_CHANGES.
+const SettingsBindFlags_get_no_changes = SettingsBindFlags(8)
+
+// SettingsBindFlags_invert_boolean is a representation of the C bitfield member G_SETTINGS_BIND_INVERT_BOOLEAN.
+const SettingsBindFlags_invert_boolean = SettingsBindFlags(16)
+
+// SocketMsgFlags is a representation of the C bitfield GSocketMsgFlags.
+type SocketMsgFlags int
+
+// SocketMsgFlags_none is a representation of the C bitfield member G_SOCKET_MSG_NONE.
+const SocketMsgFlags_none = SocketMsgFlags(0)
+
+// SocketMsgFlags_oob is a representation of the C bitfield member G_SOCKET_MSG_OOB.
+const SocketMsgFlags_oob = SocketMsgFlags(1)
+
+// SocketMsgFlags_peek is a representation of the C bitfield member G_SOCKET_MSG_PEEK.
+const SocketMsgFlags_peek = SocketMsgFlags(2)
+
+// SocketMsgFlags_dontroute is a representation of the C bitfield member G_SOCKET_MSG_DONTROUTE.
+const SocketMsgFlags_dontroute = SocketMsgFlags(4)
+
+// ConverterResult is a representation of the C enumeration GConverterResult.
+type ConverterResult int
+
+// ConverterResult_error is a representation of the C enumeration member G_CONVERTER_ERROR.
+const ConverterResult_error = ConverterResult(0)
+
+// ConverterResult_converted is a representation of the C enumeration member G_CONVERTER_CONVERTED.
+const ConverterResult_converted = ConverterResult(1)
+
+// ConverterResult_finished is a representation of the C enumeration member G_CONVERTER_FINISHED.
+const ConverterResult_finished = ConverterResult(2)
+
+// ConverterResult_flushed is a representation of the C enumeration member G_CONVERTER_FLUSHED.
+const ConverterResult_flushed = ConverterResult(3)
+
+// DataStreamByteOrder is a representation of the C enumeration GDataStreamByteOrder.
+type DataStreamByteOrder int
+
+// DataStreamByteOrder_big_endian is a representation of the C enumeration member G_DATA_STREAM_BYTE_ORDER_BIG_ENDIAN.
+const DataStreamByteOrder_big_endian = DataStreamByteOrder(0)
+
+// DataStreamByteOrder_little_endian is a representation of the C enumeration member G_DATA_STREAM_BYTE_ORDER_LITTLE_ENDIAN.
+const DataStreamByteOrder_little_endian = DataStreamByteOrder(1)
+
+// DataStreamByteOrder_host_endian is a representation of the C enumeration member G_DATA_STREAM_BYTE_ORDER_HOST_ENDIAN.
+const DataStreamByteOrder_host_endian = DataStreamByteOrder(2)
+
+// DataStreamNewlineType is a representation of the C enumeration GDataStreamNewlineType.
+type DataStreamNewlineType int
+
+// DataStreamNewlineType_lf is a representation of the C enumeration member G_DATA_STREAM_NEWLINE_TYPE_LF.
+const DataStreamNewlineType_lf = DataStreamNewlineType(0)
+
+// DataStreamNewlineType_cr is a representation of the C enumeration member G_DATA_STREAM_NEWLINE_TYPE_CR.
+const DataStreamNewlineType_cr = DataStreamNewlineType(1)
+
+// DataStreamNewlineType_cr_lf is a representation of the C enumeration member G_DATA_STREAM_NEWLINE_TYPE_CR_LF.
+const DataStreamNewlineType_cr_lf = DataStreamNewlineType(2)
+
+// DataStreamNewlineType_any is a representation of the C enumeration member G_DATA_STREAM_NEWLINE_TYPE_ANY.
+const DataStreamNewlineType_any = DataStreamNewlineType(3)
+
+// DriveStartStopType is a representation of the C enumeration GDriveStartStopType.
+type DriveStartStopType int
+
+// DriveStartStopType_unknown is a representation of the C enumeration member G_DRIVE_START_STOP_TYPE_UNKNOWN.
+const DriveStartStopType_unknown = DriveStartStopType(0)
+
+// DriveStartStopType_shutdown is a representation of the C enumeration member G_DRIVE_START_STOP_TYPE_SHUTDOWN.
+const DriveStartStopType_shutdown = DriveStartStopType(1)
+
+// DriveStartStopType_network is a representation of the C enumeration member G_DRIVE_START_STOP_TYPE_NETWORK.
+const DriveStartStopType_network = DriveStartStopType(2)
+
+// DriveStartStopType_multidisk is a representation of the C enumeration member G_DRIVE_START_STOP_TYPE_MULTIDISK.
+const DriveStartStopType_multidisk = DriveStartStopType(3)
+
+// DriveStartStopType_password is a representation of the C enumeration member G_DRIVE_START_STOP_TYPE_PASSWORD.
+const DriveStartStopType_password = DriveStartStopType(4)
+
+// EmblemOrigin is a representation of the C enumeration GEmblemOrigin.
+type EmblemOrigin int
+
+// EmblemOrigin_unknown is a representation of the C enumeration member G_EMBLEM_ORIGIN_UNKNOWN.
+const EmblemOrigin_unknown = EmblemOrigin(0)
+
+// EmblemOrigin_device is a representation of the C enumeration member G_EMBLEM_ORIGIN_DEVICE.
+const EmblemOrigin_device = EmblemOrigin(1)
+
+// EmblemOrigin_livemetadata is a representation of the C enumeration member G_EMBLEM_ORIGIN_LIVEMETADATA.
+const EmblemOrigin_livemetadata = EmblemOrigin(2)
+
+// EmblemOrigin_tag is a representation of the C enumeration member G_EMBLEM_ORIGIN_TAG.
+const EmblemOrigin_tag = EmblemOrigin(3)
+
+// FileAttributeStatus is a representation of the C enumeration GFileAttributeStatus.
+type FileAttributeStatus int
+
+// FileAttributeStatus_unset is a representation of the C enumeration member G_FILE_ATTRIBUTE_STATUS_UNSET.
+const FileAttributeStatus_unset = FileAttributeStatus(0)
+
+// FileAttributeStatus_set is a representation of the C enumeration member G_FILE_ATTRIBUTE_STATUS_SET.
+const FileAttributeStatus_set = FileAttributeStatus(1)
+
+// FileAttributeStatus_error_setting is a representation of the C enumeration member G_FILE_ATTRIBUTE_STATUS_ERROR_SETTING.
+const FileAttributeStatus_error_setting = FileAttributeStatus(2)
+
+// FileAttributeType is a representation of the C enumeration GFileAttributeType.
+type FileAttributeType int
+
+// FileAttributeType_invalid is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_INVALID.
+const FileAttributeType_invalid = FileAttributeType(0)
+
+// FileAttributeType_string is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_STRING.
+const FileAttributeType_string = FileAttributeType(1)
+
+// FileAttributeType_byte_string is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
+const FileAttributeType_byte_string = FileAttributeType(2)
+
+// FileAttributeType_boolean is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+const FileAttributeType_boolean = FileAttributeType(3)
+
+// FileAttributeType_uint32 is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_UINT32.
+const FileAttributeType_uint32 = FileAttributeType(4)
+
+// FileAttributeType_int32 is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_INT32.
+const FileAttributeType_int32 = FileAttributeType(5)
+
+// FileAttributeType_uint64 is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_UINT64.
+const FileAttributeType_uint64 = FileAttributeType(6)
+
+// FileAttributeType_int64 is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_INT64.
+const FileAttributeType_int64 = FileAttributeType(7)
+
+// FileAttributeType_object is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_OBJECT.
+const FileAttributeType_object = FileAttributeType(8)
+
+// FileAttributeType_stringv is a representation of the C enumeration member G_FILE_ATTRIBUTE_TYPE_STRINGV.
+const FileAttributeType_stringv = FileAttributeType(9)
+
+// FileMonitorEvent is a representation of the C enumeration GFileMonitorEvent.
+type FileMonitorEvent int
+
+// FileMonitorEvent_changed is a representation of the C enumeration member G_FILE_MONITOR_EVENT_CHANGED.
+const FileMonitorEvent_changed = FileMonitorEvent(0)
+
+// FileMonitorEvent_changes_done_hint is a representation of the C enumeration member G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT.
+const FileMonitorEvent_changes_done_hint = FileMonitorEvent(1)
+
+// FileMonitorEvent_deleted is a representation of the C enumeration member G_FILE_MONITOR_EVENT_DELETED.
+const FileMonitorEvent_deleted = FileMonitorEvent(2)
+
+// FileMonitorEvent_created is a representation of the C enumeration member G_FILE_MONITOR_EVENT_CREATED.
+const FileMonitorEvent_created = FileMonitorEvent(3)
+
+// FileMonitorEvent_attribute_changed is a representation of the C enumeration member G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED.
+const FileMonitorEvent_attribute_changed = FileMonitorEvent(4)
+
+// FileMonitorEvent_pre_unmount is a representation of the C enumeration member G_FILE_MONITOR_EVENT_PRE_UNMOUNT.
+const FileMonitorEvent_pre_unmount = FileMonitorEvent(5)
+
+// FileMonitorEvent_unmounted is a representation of the C enumeration member G_FILE_MONITOR_EVENT_UNMOUNTED.
+const FileMonitorEvent_unmounted = FileMonitorEvent(6)
+
+// FileMonitorEvent_moved is a representation of the C enumeration member G_FILE_MONITOR_EVENT_MOVED.
+const FileMonitorEvent_moved = FileMonitorEvent(7)
+
+// FileMonitorEvent_renamed is a representation of the C enumeration member G_FILE_MONITOR_EVENT_RENAMED.
+const FileMonitorEvent_renamed = FileMonitorEvent(8)
+
+// FileMonitorEvent_moved_in is a representation of the C enumeration member G_FILE_MONITOR_EVENT_MOVED_IN.
+const FileMonitorEvent_moved_in = FileMonitorEvent(9)
+
+// FileMonitorEvent_moved_out is a representation of the C enumeration member G_FILE_MONITOR_EVENT_MOVED_OUT.
+const FileMonitorEvent_moved_out = FileMonitorEvent(10)
+
+// FileType is a representation of the C enumeration GFileType.
+type FileType int
+
+// FileType_unknown is a representation of the C enumeration member G_FILE_TYPE_UNKNOWN.
+const FileType_unknown = FileType(0)
+
+// FileType_regular is a representation of the C enumeration member G_FILE_TYPE_REGULAR.
+const FileType_regular = FileType(1)
+
+// FileType_directory is a representation of the C enumeration member G_FILE_TYPE_DIRECTORY.
+const FileType_directory = FileType(2)
+
+// FileType_symbolic_link is a representation of the C enumeration member G_FILE_TYPE_SYMBOLIC_LINK.
+const FileType_symbolic_link = FileType(3)
+
+// FileType_special is a representation of the C enumeration member G_FILE_TYPE_SPECIAL.
+const FileType_special = FileType(4)
+
+// FileType_shortcut is a representation of the C enumeration member G_FILE_TYPE_SHORTCUT.
+const FileType_shortcut = FileType(5)
+
+// FileType_mountable is a representation of the C enumeration member G_FILE_TYPE_MOUNTABLE.
+const FileType_mountable = FileType(6)
+
+// FilesystemPreviewType is a representation of the C enumeration GFilesystemPreviewType.
+type FilesystemPreviewType int
+
+// FilesystemPreviewType_if_always is a representation of the C enumeration member G_FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS.
+const FilesystemPreviewType_if_always = FilesystemPreviewType(0)
+
+// FilesystemPreviewType_if_local is a representation of the C enumeration member G_FILESYSTEM_PREVIEW_TYPE_IF_LOCAL.
+const FilesystemPreviewType_if_local = FilesystemPreviewType(1)
+
+// FilesystemPreviewType_never is a representation of the C enumeration member G_FILESYSTEM_PREVIEW_TYPE_NEVER.
+const FilesystemPreviewType_never = FilesystemPreviewType(2)
+
+// IOErrorEnum is a representation of the C enumeration GIOErrorEnum.
+type IOErrorEnum int
+
+// IOErrorEnum_failed is a representation of the C enumeration member G_IO_ERROR_FAILED.
+const IOErrorEnum_failed = IOErrorEnum(0)
+
+// IOErrorEnum_not_found is a representation of the C enumeration member G_IO_ERROR_NOT_FOUND.
+const IOErrorEnum_not_found = IOErrorEnum(1)
+
+// IOErrorEnum_exists is a representation of the C enumeration member G_IO_ERROR_EXISTS.
+const IOErrorEnum_exists = IOErrorEnum(2)
+
+// IOErrorEnum_is_directory is a representation of the C enumeration member G_IO_ERROR_IS_DIRECTORY.
+const IOErrorEnum_is_directory = IOErrorEnum(3)
+
+// IOErrorEnum_not_directory is a representation of the C enumeration member G_IO_ERROR_NOT_DIRECTORY.
+const IOErrorEnum_not_directory = IOErrorEnum(4)
+
+// IOErrorEnum_not_empty is a representation of the C enumeration member G_IO_ERROR_NOT_EMPTY.
+const IOErrorEnum_not_empty = IOErrorEnum(5)
+
+// IOErrorEnum_not_regular_file is a representation of the C enumeration member G_IO_ERROR_NOT_REGULAR_FILE.
+const IOErrorEnum_not_regular_file = IOErrorEnum(6)
+
+// IOErrorEnum_not_symbolic_link is a representation of the C enumeration member G_IO_ERROR_NOT_SYMBOLIC_LINK.
+const IOErrorEnum_not_symbolic_link = IOErrorEnum(7)
+
+// IOErrorEnum_not_mountable_file is a representation of the C enumeration member G_IO_ERROR_NOT_MOUNTABLE_FILE.
+const IOErrorEnum_not_mountable_file = IOErrorEnum(8)
+
+// IOErrorEnum_filename_too_long is a representation of the C enumeration member G_IO_ERROR_FILENAME_TOO_LONG.
+const IOErrorEnum_filename_too_long = IOErrorEnum(9)
+
+// IOErrorEnum_invalid_filename is a representation of the C enumeration member G_IO_ERROR_INVALID_FILENAME.
+const IOErrorEnum_invalid_filename = IOErrorEnum(10)
+
+// IOErrorEnum_too_many_links is a representation of the C enumeration member G_IO_ERROR_TOO_MANY_LINKS.
+const IOErrorEnum_too_many_links = IOErrorEnum(11)
+
+// IOErrorEnum_no_space is a representation of the C enumeration member G_IO_ERROR_NO_SPACE.
+const IOErrorEnum_no_space = IOErrorEnum(12)
+
+// IOErrorEnum_invalid_argument is a representation of the C enumeration member G_IO_ERROR_INVALID_ARGUMENT.
+const IOErrorEnum_invalid_argument = IOErrorEnum(13)
+
+// IOErrorEnum_permission_denied is a representation of the C enumeration member G_IO_ERROR_PERMISSION_DENIED.
+const IOErrorEnum_permission_denied = IOErrorEnum(14)
+
+// IOErrorEnum_not_supported is a representation of the C enumeration member G_IO_ERROR_NOT_SUPPORTED.
+const IOErrorEnum_not_supported = IOErrorEnum(15)
+
+// IOErrorEnum_not_mounted is a representation of the C enumeration member G_IO_ERROR_NOT_MOUNTED.
+const IOErrorEnum_not_mounted = IOErrorEnum(16)
+
+// IOErrorEnum_already_mounted is a representation of the C enumeration member G_IO_ERROR_ALREADY_MOUNTED.
+const IOErrorEnum_already_mounted = IOErrorEnum(17)
+
+// IOErrorEnum_closed is a representation of the C enumeration member G_IO_ERROR_CLOSED.
+const IOErrorEnum_closed = IOErrorEnum(18)
+
+// IOErrorEnum_cancelled is a representation of the C enumeration member G_IO_ERROR_CANCELLED.
+const IOErrorEnum_cancelled = IOErrorEnum(19)
+
+// IOErrorEnum_pending is a representation of the C enumeration member G_IO_ERROR_PENDING.
+const IOErrorEnum_pending = IOErrorEnum(20)
+
+// IOErrorEnum_read_only is a representation of the C enumeration member G_IO_ERROR_READ_ONLY.
+const IOErrorEnum_read_only = IOErrorEnum(21)
+
+// IOErrorEnum_cant_create_backup is a representation of the C enumeration member G_IO_ERROR_CANT_CREATE_BACKUP.
+const IOErrorEnum_cant_create_backup = IOErrorEnum(22)
+
+// IOErrorEnum_wrong_etag is a representation of the C enumeration member G_IO_ERROR_WRONG_ETAG.
+const IOErrorEnum_wrong_etag = IOErrorEnum(23)
+
+// IOErrorEnum_timed_out is a representation of the C enumeration member G_IO_ERROR_TIMED_OUT.
+const IOErrorEnum_timed_out = IOErrorEnum(24)
+
+// IOErrorEnum_would_recurse is a representation of the C enumeration member G_IO_ERROR_WOULD_RECURSE.
+const IOErrorEnum_would_recurse = IOErrorEnum(25)
+
+// IOErrorEnum_busy is a representation of the C enumeration member G_IO_ERROR_BUSY.
+const IOErrorEnum_busy = IOErrorEnum(26)
+
+// IOErrorEnum_would_block is a representation of the C enumeration member G_IO_ERROR_WOULD_BLOCK.
+const IOErrorEnum_would_block = IOErrorEnum(27)
+
+// IOErrorEnum_host_not_found is a representation of the C enumeration member G_IO_ERROR_HOST_NOT_FOUND.
+const IOErrorEnum_host_not_found = IOErrorEnum(28)
+
+// IOErrorEnum_would_merge is a representation of the C enumeration member G_IO_ERROR_WOULD_MERGE.
+const IOErrorEnum_would_merge = IOErrorEnum(29)
+
+// IOErrorEnum_failed_handled is a representation of the C enumeration member G_IO_ERROR_FAILED_HANDLED.
+const IOErrorEnum_failed_handled = IOErrorEnum(30)
+
+// IOErrorEnum_too_many_open_files is a representation of the C enumeration member G_IO_ERROR_TOO_MANY_OPEN_FILES.
+const IOErrorEnum_too_many_open_files = IOErrorEnum(31)
+
+// IOErrorEnum_not_initialized is a representation of the C enumeration member G_IO_ERROR_NOT_INITIALIZED.
+const IOErrorEnum_not_initialized = IOErrorEnum(32)
+
+// IOErrorEnum_address_in_use is a representation of the C enumeration member G_IO_ERROR_ADDRESS_IN_USE.
+const IOErrorEnum_address_in_use = IOErrorEnum(33)
+
+// IOErrorEnum_partial_input is a representation of the C enumeration member G_IO_ERROR_PARTIAL_INPUT.
+const IOErrorEnum_partial_input = IOErrorEnum(34)
+
+// IOErrorEnum_invalid_data is a representation of the C enumeration member G_IO_ERROR_INVALID_DATA.
+const IOErrorEnum_invalid_data = IOErrorEnum(35)
+
+// IOErrorEnum_dbus_error is a representation of the C enumeration member G_IO_ERROR_DBUS_ERROR.
+const IOErrorEnum_dbus_error = IOErrorEnum(36)
+
+// IOErrorEnum_host_unreachable is a representation of the C enumeration member G_IO_ERROR_HOST_UNREACHABLE.
+const IOErrorEnum_host_unreachable = IOErrorEnum(37)
+
+// IOErrorEnum_network_unreachable is a representation of the C enumeration member G_IO_ERROR_NETWORK_UNREACHABLE.
+const IOErrorEnum_network_unreachable = IOErrorEnum(38)
+
+// IOErrorEnum_connection_refused is a representation of the C enumeration member G_IO_ERROR_CONNECTION_REFUSED.
+const IOErrorEnum_connection_refused = IOErrorEnum(39)
+
+// IOErrorEnum_proxy_failed is a representation of the C enumeration member G_IO_ERROR_PROXY_FAILED.
+const IOErrorEnum_proxy_failed = IOErrorEnum(40)
+
+// IOErrorEnum_proxy_auth_failed is a representation of the C enumeration member G_IO_ERROR_PROXY_AUTH_FAILED.
+const IOErrorEnum_proxy_auth_failed = IOErrorEnum(41)
+
+// IOErrorEnum_proxy_need_auth is a representation of the C enumeration member G_IO_ERROR_PROXY_NEED_AUTH.
+const IOErrorEnum_proxy_need_auth = IOErrorEnum(42)
+
+// IOErrorEnum_proxy_not_allowed is a representation of the C enumeration member G_IO_ERROR_PROXY_NOT_ALLOWED.
+const IOErrorEnum_proxy_not_allowed = IOErrorEnum(43)
+
+// IOErrorEnum_broken_pipe is a representation of the C enumeration member G_IO_ERROR_BROKEN_PIPE.
+const IOErrorEnum_broken_pipe = IOErrorEnum(44)
+
+// IOErrorEnum_connection_closed is a representation of the C enumeration member G_IO_ERROR_CONNECTION_CLOSED.
+const IOErrorEnum_connection_closed = IOErrorEnum(44)
+
+// IOErrorEnum_not_connected is a representation of the C enumeration member G_IO_ERROR_NOT_CONNECTED.
+const IOErrorEnum_not_connected = IOErrorEnum(45)
+
+// IOErrorEnum_message_too_large is a representation of the C enumeration member G_IO_ERROR_MESSAGE_TOO_LARGE.
+const IOErrorEnum_message_too_large = IOErrorEnum(46)
+
+// MountOperationResult is a representation of the C enumeration GMountOperationResult.
+type MountOperationResult int
+
+// MountOperationResult_handled is a representation of the C enumeration member G_MOUNT_OPERATION_HANDLED.
+const MountOperationResult_handled = MountOperationResult(0)
+
+// MountOperationResult_aborted is a representation of the C enumeration member G_MOUNT_OPERATION_ABORTED.
+const MountOperationResult_aborted = MountOperationResult(1)
+
+// MountOperationResult_unhandled is a representation of the C enumeration member G_MOUNT_OPERATION_UNHANDLED.
+const MountOperationResult_unhandled = MountOperationResult(2)
+
+// PasswordSave is a representation of the C enumeration GPasswordSave.
+type PasswordSave int
+
+// PasswordSave_never is a representation of the C enumeration member G_PASSWORD_SAVE_NEVER.
+const PasswordSave_never = PasswordSave(0)
+
+// PasswordSave_for_session is a representation of the C enumeration member G_PASSWORD_SAVE_FOR_SESSION.
+const PasswordSave_for_session = PasswordSave(1)
+
+// PasswordSave_permanently is a representation of the C enumeration member G_PASSWORD_SAVE_PERMANENTLY.
+const PasswordSave_permanently = PasswordSave(2)
+
+// ResolverError is a representation of the C enumeration GResolverError.
+type ResolverError int
+
+// ResolverError_not_found is a representation of the C enumeration member G_RESOLVER_ERROR_NOT_FOUND.
+const ResolverError_not_found = ResolverError(0)
+
+// ResolverError_temporary_failure is a representation of the C enumeration member G_RESOLVER_ERROR_TEMPORARY_FAILURE.
+const ResolverError_temporary_failure = ResolverError(1)
+
+// ResolverError_internal is a representation of the C enumeration member G_RESOLVER_ERROR_INTERNAL.
+const ResolverError_internal = ResolverError(2)
+
+// SocketFamily is a representation of the C enumeration GSocketFamily.
+type SocketFamily int
+
+// SocketFamily_invalid is a representation of the C enumeration member G_SOCKET_FAMILY_INVALID.
+const SocketFamily_invalid = SocketFamily(0)
+
+// SocketFamily_unix is a representation of the C enumeration member G_SOCKET_FAMILY_UNIX.
+const SocketFamily_unix = SocketFamily(1)
+
+// SocketFamily_ipv4 is a representation of the C enumeration member G_SOCKET_FAMILY_IPV4.
+const SocketFamily_ipv4 = SocketFamily(2)
+
+// SocketFamily_ipv6 is a representation of the C enumeration member G_SOCKET_FAMILY_IPV6.
+const SocketFamily_ipv6 = SocketFamily(10)
+
+// SocketProtocol is a representation of the C enumeration GSocketProtocol.
+type SocketProtocol int
+
+// SocketProtocol_unknown is a representation of the C enumeration member G_SOCKET_PROTOCOL_UNKNOWN.
+const SocketProtocol_unknown = SocketProtocol(-1)
+
+// SocketProtocol_default is a representation of the C enumeration member G_SOCKET_PROTOCOL_DEFAULT.
+const SocketProtocol_default = SocketProtocol(0)
+
+// SocketProtocol_tcp is a representation of the C enumeration member G_SOCKET_PROTOCOL_TCP.
+const SocketProtocol_tcp = SocketProtocol(6)
+
+// SocketProtocol_udp is a representation of the C enumeration member G_SOCKET_PROTOCOL_UDP.
+const SocketProtocol_udp = SocketProtocol(17)
+
+// SocketProtocol_sctp is a representation of the C enumeration member G_SOCKET_PROTOCOL_SCTP.
+const SocketProtocol_sctp = SocketProtocol(132)
+
+// SocketType is a representation of the C enumeration GSocketType.
+type SocketType int
+
+// SocketType_invalid is a representation of the C enumeration member G_SOCKET_TYPE_INVALID.
+const SocketType_invalid = SocketType(0)
+
+// SocketType_stream is a representation of the C enumeration member G_SOCKET_TYPE_STREAM.
+const SocketType_stream = SocketType(1)
+
+// SocketType_datagram is a representation of the C enumeration member G_SOCKET_TYPE_DATAGRAM.
+const SocketType_datagram = SocketType(2)
+
+// SocketType_seqpacket is a representation of the C enumeration member G_SOCKET_TYPE_SEQPACKET.
+const SocketType_seqpacket = SocketType(3)
+
+// ZlibCompressorFormat is a representation of the C enumeration GZlibCompressorFormat.
+type ZlibCompressorFormat int
+
+// ZlibCompressorFormat_zlib is a representation of the C enumeration member G_ZLIB_COMPRESSOR_FORMAT_ZLIB.
+const ZlibCompressorFormat_zlib = ZlibCompressorFormat(0)
+
+// ZlibCompressorFormat_gzip is a representation of the C enumeration member G_ZLIB_COMPRESSOR_FORMAT_GZIP.
+const ZlibCompressorFormat_gzip = ZlibCompressorFormat(1)
+
+// ZlibCompressorFormat_raw is a representation of the C enumeration member G_ZLIB_COMPRESSOR_FORMAT_RAW.
+const ZlibCompressorFormat_raw = ZlibCompressorFormat(2)
+
 // ActionEntry is a representation of the C record GActionEntry.
 type ActionEntry struct {
 	native unsafe.Pointer

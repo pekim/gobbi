@@ -2,6 +2,7 @@ package generate
 
 import (
 	"github.com/blang/semver"
+	"github.com/dave/jennifer/jen"
 )
 
 type Enumeration struct {
@@ -14,13 +15,24 @@ type Enumeration struct {
 	GlibGetType  string `xml:"http://www.gtk.org/introspection/glib/1.0 get-type,attr"`
 
 	//Functions    Functions `xml:"function"`
-	//Members      Members   `xml:"member"`
+	Members Members `xml:"member"`
 	//Doc          *Doc      `xml:"doc"`
 
 	blacklist  bool
 	namespace  *Namespace
 	version    semver.Version
 	goTypeName string
+}
+
+type Members []*Member
+
+type Member struct {
+	Name        string `xml:"name,attr"`
+	Value       int    `xml:"value,attr"`
+	CIdentifier string `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
+	//Doc         *Doc   `xml:"doc"`
+
+	namespace *Namespace
 }
 
 func (e *Enumeration) init(ns *Namespace) {
@@ -30,16 +42,23 @@ func (e *Enumeration) init(ns *Namespace) {
 	e.namespace.versions.add(e.version)
 }
 
-//func (e *Enumeration) generateSys(f *jen.File, version semver.Version) {
-//	if e.blacklist {
-//		f.Commentf("UNSUPPORTED : %s : blacklisted", e.Name)
-//		return
-//	}
-//
-//	if e.version.GT(version) {
-//		return
-//	}
-//
-//	// GEN: type SomeEnum SomeCType
-//	f.Type().Id(e.Name).Qual("C", e.CType)
-//}
+func (e *Enumeration) generateLib(f *jen.File, version semver.Version, typeName string) {
+	if e.blacklist {
+		f.Commentf("UNSUPPORTED : %s : blacklisted", e.Name)
+		return
+	}
+
+	if e.version.GT(version) {
+		return
+	}
+
+	f.Commentf("%s is a representation of the C %s %s.", e.Name, typeName, e.CType)
+	f.Type().Id(e.Name).Int()
+
+	for _, member := range e.Members {
+		name := e.Name + "_" + member.Name
+
+		f.Commentf("%s is a representation of the C %s member %s.", name, typeName, member.CIdentifier)
+		f.Const().Id(name).Op("=").Id(e.Name).Parens(jen.Lit(member.Value))
+	}
+}

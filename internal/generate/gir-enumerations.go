@@ -1,5 +1,10 @@
 package generate
 
+import (
+	"github.com/blang/semver"
+	"github.com/dave/jennifer/jen"
+)
+
 type Enumerations []*Enumeration
 
 func (ee Enumerations) init(ns *Namespace) {
@@ -18,12 +23,8 @@ func (ee Enumerations) byName(name string) (*Enumeration, bool) {
 	return nil, false
 }
 
-//func (ee Enumerations) generateSys(f *jen.File, version semver.Version, typ string) {
-//	f.Comment(typ)
-//
-//	for _, e := range ee {
-//		e.generateSys(f, version)
-//	}
-//
-//	f.Line()
-//}
+func (ee Enumerations) generateLib(f *jen.File, version semver.Version, typeName string) {
+	for _, e := range ee {
+		e.generateLib(f, version, typeName)
+	}
+}

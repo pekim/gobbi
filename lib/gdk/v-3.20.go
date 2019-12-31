@@ -6863,6 +6863,1371 @@ const PARENT_RELATIVE = 1
 // PRIORITY_REDRAW is a representation of the C constant GDK_PRIORITY_REDRAW.
 const PRIORITY_REDRAW = 120
 
+// DragAction is a representation of the C bitfield GdkDragAction.
+type DragAction int
+
+// DragAction_default is a representation of the C bitfield member GDK_ACTION_DEFAULT.
+const DragAction_default = DragAction(1)
+
+// DragAction_copy is a representation of the C bitfield member GDK_ACTION_COPY.
+const DragAction_copy = DragAction(2)
+
+// DragAction_move is a representation of the C bitfield member GDK_ACTION_MOVE.
+const DragAction_move = DragAction(4)
+
+// DragAction_link is a representation of the C bitfield member GDK_ACTION_LINK.
+const DragAction_link = DragAction(8)
+
+// DragAction_private is a representation of the C bitfield member GDK_ACTION_PRIVATE.
+const DragAction_private = DragAction(16)
+
+// DragAction_ask is a representation of the C bitfield member GDK_ACTION_ASK.
+const DragAction_ask = DragAction(32)
+
+// EventMask is a representation of the C bitfield GdkEventMask.
+type EventMask int
+
+// EventMask_exposure_mask is a representation of the C bitfield member GDK_EXPOSURE_MASK.
+const EventMask_exposure_mask = EventMask(2)
+
+// EventMask_pointer_motion_mask is a representation of the C bitfield member GDK_POINTER_MOTION_MASK.
+const EventMask_pointer_motion_mask = EventMask(4)
+
+// EventMask_pointer_motion_hint_mask is a representation of the C bitfield member GDK_POINTER_MOTION_HINT_MASK.
+const EventMask_pointer_motion_hint_mask = EventMask(8)
+
+// EventMask_button_motion_mask is a representation of the C bitfield member GDK_BUTTON_MOTION_MASK.
+const EventMask_button_motion_mask = EventMask(16)
+
+// EventMask_button1_motion_mask is a representation of the C bitfield member GDK_BUTTON1_MOTION_MASK.
+const EventMask_button1_motion_mask = EventMask(32)
+
+// EventMask_button2_motion_mask is a representation of the C bitfield member GDK_BUTTON2_MOTION_MASK.
+const EventMask_button2_motion_mask = EventMask(64)
+
+// EventMask_button3_motion_mask is a representation of the C bitfield member GDK_BUTTON3_MOTION_MASK.
+const EventMask_button3_motion_mask = EventMask(128)
+
+// EventMask_button_press_mask is a representation of the C bitfield member GDK_BUTTON_PRESS_MASK.
+const EventMask_button_press_mask = EventMask(256)
+
+// EventMask_button_release_mask is a representation of the C bitfield member GDK_BUTTON_RELEASE_MASK.
+const EventMask_button_release_mask = EventMask(512)
+
+// EventMask_key_press_mask is a representation of the C bitfield member GDK_KEY_PRESS_MASK.
+const EventMask_key_press_mask = EventMask(1024)
+
+// EventMask_key_release_mask is a representation of the C bitfield member GDK_KEY_RELEASE_MASK.
+const EventMask_key_release_mask = EventMask(2048)
+
+// EventMask_enter_notify_mask is a representation of the C bitfield member GDK_ENTER_NOTIFY_MASK.
+const EventMask_enter_notify_mask = EventMask(4096)
+
+// EventMask_leave_notify_mask is a representation of the C bitfield member GDK_LEAVE_NOTIFY_MASK.
+const EventMask_leave_notify_mask = EventMask(8192)
+
+// EventMask_focus_change_mask is a representation of the C bitfield member GDK_FOCUS_CHANGE_MASK.
+const EventMask_focus_change_mask = EventMask(16384)
+
+// EventMask_structure_mask is a representation of the C bitfield member GDK_STRUCTURE_MASK.
+const EventMask_structure_mask = EventMask(32768)
+
+// EventMask_property_change_mask is a representation of the C bitfield member GDK_PROPERTY_CHANGE_MASK.
+const EventMask_property_change_mask = EventMask(65536)
+
+// EventMask_visibility_notify_mask is a representation of the C bitfield member GDK_VISIBILITY_NOTIFY_MASK.
+const EventMask_visibility_notify_mask = EventMask(131072)
+
+// EventMask_proximity_in_mask is a representation of the C bitfield member GDK_PROXIMITY_IN_MASK.
+const EventMask_proximity_in_mask = EventMask(262144)
+
+// EventMask_proximity_out_mask is a representation of the C bitfield member GDK_PROXIMITY_OUT_MASK.
+const EventMask_proximity_out_mask = EventMask(524288)
+
+// EventMask_substructure_mask is a representation of the C bitfield member GDK_SUBSTRUCTURE_MASK.
+const EventMask_substructure_mask = EventMask(1048576)
+
+// EventMask_scroll_mask is a representation of the C bitfield member GDK_SCROLL_MASK.
+const EventMask_scroll_mask = EventMask(2097152)
+
+// EventMask_touch_mask is a representation of the C bitfield member GDK_TOUCH_MASK.
+const EventMask_touch_mask = EventMask(4194304)
+
+// EventMask_smooth_scroll_mask is a representation of the C bitfield member GDK_SMOOTH_SCROLL_MASK.
+const EventMask_smooth_scroll_mask = EventMask(8388608)
+
+// EventMask_touchpad_gesture_mask is a representation of the C bitfield member GDK_TOUCHPAD_GESTURE_MASK.
+const EventMask_touchpad_gesture_mask = EventMask(16777216)
+
+// EventMask_tablet_pad_mask is a representation of the C bitfield member GDK_TABLET_PAD_MASK.
+const EventMask_tablet_pad_mask = EventMask(33554432)
+
+// EventMask_all_events_mask is a representation of the C bitfield member GDK_ALL_EVENTS_MASK.
+const EventMask_all_events_mask = EventMask(67108862)
+
+// FrameClockPhase is a representation of the C bitfield GdkFrameClockPhase.
+type FrameClockPhase int
+
+// FrameClockPhase_none is a representation of the C bitfield member GDK_FRAME_CLOCK_PHASE_NONE.
+const FrameClockPhase_none = FrameClockPhase(0)
+
+// FrameClockPhase_flush_events is a representation of the C bitfield member GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS.
+const FrameClockPhase_flush_events = FrameClockPhase(1)
+
+// FrameClockPhase_before_paint is a representation of the C bitfield member GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT.
+const FrameClockPhase_before_paint = FrameClockPhase(2)
+
+// FrameClockPhase_update is a representation of the C bitfield member GDK_FRAME_CLOCK_PHASE_UPDATE.
+const FrameClockPhase_update = FrameClockPhase(4)
+
+// FrameClockPhase_layout is a representation of the C bitfield member GDK_FRAME_CLOCK_PHASE_LAYOUT.
+const FrameClockPhase_layout = FrameClockPhase(8)
+
+// FrameClockPhase_paint is a representation of the C bitfield member GDK_FRAME_CLOCK_PHASE_PAINT.
+const FrameClockPhase_paint = FrameClockPhase(16)
+
+// FrameClockPhase_resume_events is a representation of the C bitfield member GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS.
+const FrameClockPhase_resume_events = FrameClockPhase(32)
+
+// FrameClockPhase_after_paint is a representation of the C bitfield member GDK_FRAME_CLOCK_PHASE_AFTER_PAINT.
+const FrameClockPhase_after_paint = FrameClockPhase(64)
+
+// ModifierType is a representation of the C bitfield GdkModifierType.
+type ModifierType int
+
+// ModifierType_shift_mask is a representation of the C bitfield member GDK_SHIFT_MASK.
+const ModifierType_shift_mask = ModifierType(1)
+
+// ModifierType_lock_mask is a representation of the C bitfield member GDK_LOCK_MASK.
+const ModifierType_lock_mask = ModifierType(2)
+
+// ModifierType_control_mask is a representation of the C bitfield member GDK_CONTROL_MASK.
+const ModifierType_control_mask = ModifierType(4)
+
+// ModifierType_mod1_mask is a representation of the C bitfield member GDK_MOD1_MASK.
+const ModifierType_mod1_mask = ModifierType(8)
+
+// ModifierType_mod2_mask is a representation of the C bitfield member GDK_MOD2_MASK.
+const ModifierType_mod2_mask = ModifierType(16)
+
+// ModifierType_mod3_mask is a representation of the C bitfield member GDK_MOD3_MASK.
+const ModifierType_mod3_mask = ModifierType(32)
+
+// ModifierType_mod4_mask is a representation of the C bitfield member GDK_MOD4_MASK.
+const ModifierType_mod4_mask = ModifierType(64)
+
+// ModifierType_mod5_mask is a representation of the C bitfield member GDK_MOD5_MASK.
+const ModifierType_mod5_mask = ModifierType(128)
+
+// ModifierType_button1_mask is a representation of the C bitfield member GDK_BUTTON1_MASK.
+const ModifierType_button1_mask = ModifierType(256)
+
+// ModifierType_button2_mask is a representation of the C bitfield member GDK_BUTTON2_MASK.
+const ModifierType_button2_mask = ModifierType(512)
+
+// ModifierType_button3_mask is a representation of the C bitfield member GDK_BUTTON3_MASK.
+const ModifierType_button3_mask = ModifierType(1024)
+
+// ModifierType_button4_mask is a representation of the C bitfield member GDK_BUTTON4_MASK.
+const ModifierType_button4_mask = ModifierType(2048)
+
+// ModifierType_button5_mask is a representation of the C bitfield member GDK_BUTTON5_MASK.
+const ModifierType_button5_mask = ModifierType(4096)
+
+// ModifierType_modifier_reserved_13_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_13_MASK.
+const ModifierType_modifier_reserved_13_mask = ModifierType(8192)
+
+// ModifierType_modifier_reserved_14_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_14_MASK.
+const ModifierType_modifier_reserved_14_mask = ModifierType(16384)
+
+// ModifierType_modifier_reserved_15_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_15_MASK.
+const ModifierType_modifier_reserved_15_mask = ModifierType(32768)
+
+// ModifierType_modifier_reserved_16_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_16_MASK.
+const ModifierType_modifier_reserved_16_mask = ModifierType(65536)
+
+// ModifierType_modifier_reserved_17_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_17_MASK.
+const ModifierType_modifier_reserved_17_mask = ModifierType(131072)
+
+// ModifierType_modifier_reserved_18_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_18_MASK.
+const ModifierType_modifier_reserved_18_mask = ModifierType(262144)
+
+// ModifierType_modifier_reserved_19_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_19_MASK.
+const ModifierType_modifier_reserved_19_mask = ModifierType(524288)
+
+// ModifierType_modifier_reserved_20_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_20_MASK.
+const ModifierType_modifier_reserved_20_mask = ModifierType(1048576)
+
+// ModifierType_modifier_reserved_21_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_21_MASK.
+const ModifierType_modifier_reserved_21_mask = ModifierType(2097152)
+
+// ModifierType_modifier_reserved_22_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_22_MASK.
+const ModifierType_modifier_reserved_22_mask = ModifierType(4194304)
+
+// ModifierType_modifier_reserved_23_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_23_MASK.
+const ModifierType_modifier_reserved_23_mask = ModifierType(8388608)
+
+// ModifierType_modifier_reserved_24_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_24_MASK.
+const ModifierType_modifier_reserved_24_mask = ModifierType(16777216)
+
+// ModifierType_modifier_reserved_25_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_25_MASK.
+const ModifierType_modifier_reserved_25_mask = ModifierType(33554432)
+
+// ModifierType_super_mask is a representation of the C bitfield member GDK_SUPER_MASK.
+const ModifierType_super_mask = ModifierType(67108864)
+
+// ModifierType_hyper_mask is a representation of the C bitfield member GDK_HYPER_MASK.
+const ModifierType_hyper_mask = ModifierType(134217728)
+
+// ModifierType_meta_mask is a representation of the C bitfield member GDK_META_MASK.
+const ModifierType_meta_mask = ModifierType(268435456)
+
+// ModifierType_modifier_reserved_29_mask is a representation of the C bitfield member GDK_MODIFIER_RESERVED_29_MASK.
+const ModifierType_modifier_reserved_29_mask = ModifierType(536870912)
+
+// ModifierType_release_mask is a representation of the C bitfield member GDK_RELEASE_MASK.
+const ModifierType_release_mask = ModifierType(1073741824)
+
+// ModifierType_modifier_mask is a representation of the C bitfield member GDK_MODIFIER_MASK.
+const ModifierType_modifier_mask = ModifierType(1543512063)
+
+// SeatCapabilities is a representation of the C bitfield GdkSeatCapabilities.
+type SeatCapabilities int
+
+// SeatCapabilities_none is a representation of the C bitfield member GDK_SEAT_CAPABILITY_NONE.
+const SeatCapabilities_none = SeatCapabilities(0)
+
+// SeatCapabilities_pointer is a representation of the C bitfield member GDK_SEAT_CAPABILITY_POINTER.
+const SeatCapabilities_pointer = SeatCapabilities(1)
+
+// SeatCapabilities_touch is a representation of the C bitfield member GDK_SEAT_CAPABILITY_TOUCH.
+const SeatCapabilities_touch = SeatCapabilities(2)
+
+// SeatCapabilities_tablet_stylus is a representation of the C bitfield member GDK_SEAT_CAPABILITY_TABLET_STYLUS.
+const SeatCapabilities_tablet_stylus = SeatCapabilities(4)
+
+// SeatCapabilities_keyboard is a representation of the C bitfield member GDK_SEAT_CAPABILITY_KEYBOARD.
+const SeatCapabilities_keyboard = SeatCapabilities(8)
+
+// SeatCapabilities_all_pointing is a representation of the C bitfield member GDK_SEAT_CAPABILITY_ALL_POINTING.
+const SeatCapabilities_all_pointing = SeatCapabilities(7)
+
+// SeatCapabilities_all is a representation of the C bitfield member GDK_SEAT_CAPABILITY_ALL.
+const SeatCapabilities_all = SeatCapabilities(15)
+
+// WMDecoration is a representation of the C bitfield GdkWMDecoration.
+type WMDecoration int
+
+// WMDecoration_all is a representation of the C bitfield member GDK_DECOR_ALL.
+const WMDecoration_all = WMDecoration(1)
+
+// WMDecoration_border is a representation of the C bitfield member GDK_DECOR_BORDER.
+const WMDecoration_border = WMDecoration(2)
+
+// WMDecoration_resizeh is a representation of the C bitfield member GDK_DECOR_RESIZEH.
+const WMDecoration_resizeh = WMDecoration(4)
+
+// WMDecoration_title is a representation of the C bitfield member GDK_DECOR_TITLE.
+const WMDecoration_title = WMDecoration(8)
+
+// WMDecoration_menu is a representation of the C bitfield member GDK_DECOR_MENU.
+const WMDecoration_menu = WMDecoration(16)
+
+// WMDecoration_minimize is a representation of the C bitfield member GDK_DECOR_MINIMIZE.
+const WMDecoration_minimize = WMDecoration(32)
+
+// WMDecoration_maximize is a representation of the C bitfield member GDK_DECOR_MAXIMIZE.
+const WMDecoration_maximize = WMDecoration(64)
+
+// WMFunction is a representation of the C bitfield GdkWMFunction.
+type WMFunction int
+
+// WMFunction_all is a representation of the C bitfield member GDK_FUNC_ALL.
+const WMFunction_all = WMFunction(1)
+
+// WMFunction_resize is a representation of the C bitfield member GDK_FUNC_RESIZE.
+const WMFunction_resize = WMFunction(2)
+
+// WMFunction_move is a representation of the C bitfield member GDK_FUNC_MOVE.
+const WMFunction_move = WMFunction(4)
+
+// WMFunction_minimize is a representation of the C bitfield member GDK_FUNC_MINIMIZE.
+const WMFunction_minimize = WMFunction(8)
+
+// WMFunction_maximize is a representation of the C bitfield member GDK_FUNC_MAXIMIZE.
+const WMFunction_maximize = WMFunction(16)
+
+// WMFunction_close is a representation of the C bitfield member GDK_FUNC_CLOSE.
+const WMFunction_close = WMFunction(32)
+
+// WindowAttributesType is a representation of the C bitfield GdkWindowAttributesType.
+type WindowAttributesType int
+
+// WindowAttributesType_title is a representation of the C bitfield member GDK_WA_TITLE.
+const WindowAttributesType_title = WindowAttributesType(2)
+
+// WindowAttributesType_x is a representation of the C bitfield member GDK_WA_X.
+const WindowAttributesType_x = WindowAttributesType(4)
+
+// WindowAttributesType_y is a representation of the C bitfield member GDK_WA_Y.
+const WindowAttributesType_y = WindowAttributesType(8)
+
+// WindowAttributesType_cursor is a representation of the C bitfield member GDK_WA_CURSOR.
+const WindowAttributesType_cursor = WindowAttributesType(16)
+
+// WindowAttributesType_visual is a representation of the C bitfield member GDK_WA_VISUAL.
+const WindowAttributesType_visual = WindowAttributesType(32)
+
+// WindowAttributesType_wmclass is a representation of the C bitfield member GDK_WA_WMCLASS.
+const WindowAttributesType_wmclass = WindowAttributesType(64)
+
+// WindowAttributesType_noredir is a representation of the C bitfield member GDK_WA_NOREDIR.
+const WindowAttributesType_noredir = WindowAttributesType(128)
+
+// WindowAttributesType_type_hint is a representation of the C bitfield member GDK_WA_TYPE_HINT.
+const WindowAttributesType_type_hint = WindowAttributesType(256)
+
+// WindowHints is a representation of the C bitfield GdkWindowHints.
+type WindowHints int
+
+// WindowHints_pos is a representation of the C bitfield member GDK_HINT_POS.
+const WindowHints_pos = WindowHints(1)
+
+// WindowHints_min_size is a representation of the C bitfield member GDK_HINT_MIN_SIZE.
+const WindowHints_min_size = WindowHints(2)
+
+// WindowHints_max_size is a representation of the C bitfield member GDK_HINT_MAX_SIZE.
+const WindowHints_max_size = WindowHints(4)
+
+// WindowHints_base_size is a representation of the C bitfield member GDK_HINT_BASE_SIZE.
+const WindowHints_base_size = WindowHints(8)
+
+// WindowHints_aspect is a representation of the C bitfield member GDK_HINT_ASPECT.
+const WindowHints_aspect = WindowHints(16)
+
+// WindowHints_resize_inc is a representation of the C bitfield member GDK_HINT_RESIZE_INC.
+const WindowHints_resize_inc = WindowHints(32)
+
+// WindowHints_win_gravity is a representation of the C bitfield member GDK_HINT_WIN_GRAVITY.
+const WindowHints_win_gravity = WindowHints(64)
+
+// WindowHints_user_pos is a representation of the C bitfield member GDK_HINT_USER_POS.
+const WindowHints_user_pos = WindowHints(128)
+
+// WindowHints_user_size is a representation of the C bitfield member GDK_HINT_USER_SIZE.
+const WindowHints_user_size = WindowHints(256)
+
+// WindowState is a representation of the C bitfield GdkWindowState.
+type WindowState int
+
+// WindowState_withdrawn is a representation of the C bitfield member GDK_WINDOW_STATE_WITHDRAWN.
+const WindowState_withdrawn = WindowState(1)
+
+// WindowState_iconified is a representation of the C bitfield member GDK_WINDOW_STATE_ICONIFIED.
+const WindowState_iconified = WindowState(2)
+
+// WindowState_maximized is a representation of the C bitfield member GDK_WINDOW_STATE_MAXIMIZED.
+const WindowState_maximized = WindowState(4)
+
+// WindowState_sticky is a representation of the C bitfield member GDK_WINDOW_STATE_STICKY.
+const WindowState_sticky = WindowState(8)
+
+// WindowState_fullscreen is a representation of the C bitfield member GDK_WINDOW_STATE_FULLSCREEN.
+const WindowState_fullscreen = WindowState(16)
+
+// WindowState_above is a representation of the C bitfield member GDK_WINDOW_STATE_ABOVE.
+const WindowState_above = WindowState(32)
+
+// WindowState_below is a representation of the C bitfield member GDK_WINDOW_STATE_BELOW.
+const WindowState_below = WindowState(64)
+
+// WindowState_focused is a representation of the C bitfield member GDK_WINDOW_STATE_FOCUSED.
+const WindowState_focused = WindowState(128)
+
+// WindowState_tiled is a representation of the C bitfield member GDK_WINDOW_STATE_TILED.
+const WindowState_tiled = WindowState(256)
+
+// WindowState_top_tiled is a representation of the C bitfield member GDK_WINDOW_STATE_TOP_TILED.
+const WindowState_top_tiled = WindowState(512)
+
+// WindowState_top_resizable is a representation of the C bitfield member GDK_WINDOW_STATE_TOP_RESIZABLE.
+const WindowState_top_resizable = WindowState(1024)
+
+// WindowState_right_tiled is a representation of the C bitfield member GDK_WINDOW_STATE_RIGHT_TILED.
+const WindowState_right_tiled = WindowState(2048)
+
+// WindowState_right_resizable is a representation of the C bitfield member GDK_WINDOW_STATE_RIGHT_RESIZABLE.
+const WindowState_right_resizable = WindowState(4096)
+
+// WindowState_bottom_tiled is a representation of the C bitfield member GDK_WINDOW_STATE_BOTTOM_TILED.
+const WindowState_bottom_tiled = WindowState(8192)
+
+// WindowState_bottom_resizable is a representation of the C bitfield member GDK_WINDOW_STATE_BOTTOM_RESIZABLE.
+const WindowState_bottom_resizable = WindowState(16384)
+
+// WindowState_left_tiled is a representation of the C bitfield member GDK_WINDOW_STATE_LEFT_TILED.
+const WindowState_left_tiled = WindowState(32768)
+
+// WindowState_left_resizable is a representation of the C bitfield member GDK_WINDOW_STATE_LEFT_RESIZABLE.
+const WindowState_left_resizable = WindowState(65536)
+
+// AxisUse is a representation of the C enumeration GdkAxisUse.
+type AxisUse int
+
+// AxisUse_ignore is a representation of the C enumeration member GDK_AXIS_IGNORE.
+const AxisUse_ignore = AxisUse(0)
+
+// AxisUse_x is a representation of the C enumeration member GDK_AXIS_X.
+const AxisUse_x = AxisUse(1)
+
+// AxisUse_y is a representation of the C enumeration member GDK_AXIS_Y.
+const AxisUse_y = AxisUse(2)
+
+// AxisUse_pressure is a representation of the C enumeration member GDK_AXIS_PRESSURE.
+const AxisUse_pressure = AxisUse(3)
+
+// AxisUse_xtilt is a representation of the C enumeration member GDK_AXIS_XTILT.
+const AxisUse_xtilt = AxisUse(4)
+
+// AxisUse_ytilt is a representation of the C enumeration member GDK_AXIS_YTILT.
+const AxisUse_ytilt = AxisUse(5)
+
+// AxisUse_wheel is a representation of the C enumeration member GDK_AXIS_WHEEL.
+const AxisUse_wheel = AxisUse(6)
+
+// AxisUse_distance is a representation of the C enumeration member GDK_AXIS_DISTANCE.
+const AxisUse_distance = AxisUse(7)
+
+// AxisUse_rotation is a representation of the C enumeration member GDK_AXIS_ROTATION.
+const AxisUse_rotation = AxisUse(8)
+
+// AxisUse_slider is a representation of the C enumeration member GDK_AXIS_SLIDER.
+const AxisUse_slider = AxisUse(9)
+
+// AxisUse_last is a representation of the C enumeration member GDK_AXIS_LAST.
+const AxisUse_last = AxisUse(10)
+
+// ByteOrder is a representation of the C enumeration GdkByteOrder.
+type ByteOrder int
+
+// ByteOrder_lsb_first is a representation of the C enumeration member GDK_LSB_FIRST.
+const ByteOrder_lsb_first = ByteOrder(0)
+
+// ByteOrder_msb_first is a representation of the C enumeration member GDK_MSB_FIRST.
+const ByteOrder_msb_first = ByteOrder(1)
+
+// CrossingMode is a representation of the C enumeration GdkCrossingMode.
+type CrossingMode int
+
+// CrossingMode_normal is a representation of the C enumeration member GDK_CROSSING_NORMAL.
+const CrossingMode_normal = CrossingMode(0)
+
+// CrossingMode_grab is a representation of the C enumeration member GDK_CROSSING_GRAB.
+const CrossingMode_grab = CrossingMode(1)
+
+// CrossingMode_ungrab is a representation of the C enumeration member GDK_CROSSING_UNGRAB.
+const CrossingMode_ungrab = CrossingMode(2)
+
+// CrossingMode_gtk_grab is a representation of the C enumeration member GDK_CROSSING_GTK_GRAB.
+const CrossingMode_gtk_grab = CrossingMode(3)
+
+// CrossingMode_gtk_ungrab is a representation of the C enumeration member GDK_CROSSING_GTK_UNGRAB.
+const CrossingMode_gtk_ungrab = CrossingMode(4)
+
+// CrossingMode_state_changed is a representation of the C enumeration member GDK_CROSSING_STATE_CHANGED.
+const CrossingMode_state_changed = CrossingMode(5)
+
+// CrossingMode_touch_begin is a representation of the C enumeration member GDK_CROSSING_TOUCH_BEGIN.
+const CrossingMode_touch_begin = CrossingMode(6)
+
+// CrossingMode_touch_end is a representation of the C enumeration member GDK_CROSSING_TOUCH_END.
+const CrossingMode_touch_end = CrossingMode(7)
+
+// CrossingMode_device_switch is a representation of the C enumeration member GDK_CROSSING_DEVICE_SWITCH.
+const CrossingMode_device_switch = CrossingMode(8)
+
+// CursorType is a representation of the C enumeration GdkCursorType.
+type CursorType int
+
+// CursorType_x_cursor is a representation of the C enumeration member GDK_X_CURSOR.
+const CursorType_x_cursor = CursorType(0)
+
+// CursorType_arrow is a representation of the C enumeration member GDK_ARROW.
+const CursorType_arrow = CursorType(2)
+
+// CursorType_based_arrow_down is a representation of the C enumeration member GDK_BASED_ARROW_DOWN.
+const CursorType_based_arrow_down = CursorType(4)
+
+// CursorType_based_arrow_up is a representation of the C enumeration member GDK_BASED_ARROW_UP.
+const CursorType_based_arrow_up = CursorType(6)
+
+// CursorType_boat is a representation of the C enumeration member GDK_BOAT.
+const CursorType_boat = CursorType(8)
+
+// CursorType_bogosity is a representation of the C enumeration member GDK_BOGOSITY.
+const CursorType_bogosity = CursorType(10)
+
+// CursorType_bottom_left_corner is a representation of the C enumeration member GDK_BOTTOM_LEFT_CORNER.
+const CursorType_bottom_left_corner = CursorType(12)
+
+// CursorType_bottom_right_corner is a representation of the C enumeration member GDK_BOTTOM_RIGHT_CORNER.
+const CursorType_bottom_right_corner = CursorType(14)
+
+// CursorType_bottom_side is a representation of the C enumeration member GDK_BOTTOM_SIDE.
+const CursorType_bottom_side = CursorType(16)
+
+// CursorType_bottom_tee is a representation of the C enumeration member GDK_BOTTOM_TEE.
+const CursorType_bottom_tee = CursorType(18)
+
+// CursorType_box_spiral is a representation of the C enumeration member GDK_BOX_SPIRAL.
+const CursorType_box_spiral = CursorType(20)
+
+// CursorType_center_ptr is a representation of the C enumeration member GDK_CENTER_PTR.
+const CursorType_center_ptr = CursorType(22)
+
+// CursorType_circle is a representation of the C enumeration member GDK_CIRCLE.
+const CursorType_circle = CursorType(24)
+
+// CursorType_clock is a representation of the C enumeration member GDK_CLOCK.
+const CursorType_clock = CursorType(26)
+
+// CursorType_coffee_mug is a representation of the C enumeration member GDK_COFFEE_MUG.
+const CursorType_coffee_mug = CursorType(28)
+
+// CursorType_cross is a representation of the C enumeration member GDK_CROSS.
+const CursorType_cross = CursorType(30)
+
+// CursorType_cross_reverse is a representation of the C enumeration member GDK_CROSS_REVERSE.
+const CursorType_cross_reverse = CursorType(32)
+
+// CursorType_crosshair is a representation of the C enumeration member GDK_CROSSHAIR.
+const CursorType_crosshair = CursorType(34)
+
+// CursorType_diamond_cross is a representation of the C enumeration member GDK_DIAMOND_CROSS.
+const CursorType_diamond_cross = CursorType(36)
+
+// CursorType_dot is a representation of the C enumeration member GDK_DOT.
+const CursorType_dot = CursorType(38)
+
+// CursorType_dotbox is a representation of the C enumeration member GDK_DOTBOX.
+const CursorType_dotbox = CursorType(40)
+
+// CursorType_double_arrow is a representation of the C enumeration member GDK_DOUBLE_ARROW.
+const CursorType_double_arrow = CursorType(42)
+
+// CursorType_draft_large is a representation of the C enumeration member GDK_DRAFT_LARGE.
+const CursorType_draft_large = CursorType(44)
+
+// CursorType_draft_small is a representation of the C enumeration member GDK_DRAFT_SMALL.
+const CursorType_draft_small = CursorType(46)
+
+// CursorType_draped_box is a representation of the C enumeration member GDK_DRAPED_BOX.
+const CursorType_draped_box = CursorType(48)
+
+// CursorType_exchange is a representation of the C enumeration member GDK_EXCHANGE.
+const CursorType_exchange = CursorType(50)
+
+// CursorType_fleur is a representation of the C enumeration member GDK_FLEUR.
+const CursorType_fleur = CursorType(52)
+
+// CursorType_gobbler is a representation of the C enumeration member GDK_GOBBLER.
+const CursorType_gobbler = CursorType(54)
+
+// CursorType_gumby is a representation of the C enumeration member GDK_GUMBY.
+const CursorType_gumby = CursorType(56)
+
+// CursorType_hand1 is a representation of the C enumeration member GDK_HAND1.
+const CursorType_hand1 = CursorType(58)
+
+// CursorType_hand2 is a representation of the C enumeration member GDK_HAND2.
+const CursorType_hand2 = CursorType(60)
+
+// CursorType_heart is a representation of the C enumeration member GDK_HEART.
+const CursorType_heart = CursorType(62)
+
+// CursorType_icon is a representation of the C enumeration member GDK_ICON.
+const CursorType_icon = CursorType(64)
+
+// CursorType_iron_cross is a representation of the C enumeration member GDK_IRON_CROSS.
+const CursorType_iron_cross = CursorType(66)
+
+// CursorType_left_ptr is a representation of the C enumeration member GDK_LEFT_PTR.
+const CursorType_left_ptr = CursorType(68)
+
+// CursorType_left_side is a representation of the C enumeration member GDK_LEFT_SIDE.
+const CursorType_left_side = CursorType(70)
+
+// CursorType_left_tee is a representation of the C enumeration member GDK_LEFT_TEE.
+const CursorType_left_tee = CursorType(72)
+
+// CursorType_leftbutton is a representation of the C enumeration member GDK_LEFTBUTTON.
+const CursorType_leftbutton = CursorType(74)
+
+// CursorType_ll_angle is a representation of the C enumeration member GDK_LL_ANGLE.
+const CursorType_ll_angle = CursorType(76)
+
+// CursorType_lr_angle is a representation of the C enumeration member GDK_LR_ANGLE.
+const CursorType_lr_angle = CursorType(78)
+
+// CursorType_man is a representation of the C enumeration member GDK_MAN.
+const CursorType_man = CursorType(80)
+
+// CursorType_middlebutton is a representation of the C enumeration member GDK_MIDDLEBUTTON.
+const CursorType_middlebutton = CursorType(82)
+
+// CursorType_mouse is a representation of the C enumeration member GDK_MOUSE.
+const CursorType_mouse = CursorType(84)
+
+// CursorType_pencil is a representation of the C enumeration member GDK_PENCIL.
+const CursorType_pencil = CursorType(86)
+
+// CursorType_pirate is a representation of the C enumeration member GDK_PIRATE.
+const CursorType_pirate = CursorType(88)
+
+// CursorType_plus is a representation of the C enumeration member GDK_PLUS.
+const CursorType_plus = CursorType(90)
+
+// CursorType_question_arrow is a representation of the C enumeration member GDK_QUESTION_ARROW.
+const CursorType_question_arrow = CursorType(92)
+
+// CursorType_right_ptr is a representation of the C enumeration member GDK_RIGHT_PTR.
+const CursorType_right_ptr = CursorType(94)
+
+// CursorType_right_side is a representation of the C enumeration member GDK_RIGHT_SIDE.
+const CursorType_right_side = CursorType(96)
+
+// CursorType_right_tee is a representation of the C enumeration member GDK_RIGHT_TEE.
+const CursorType_right_tee = CursorType(98)
+
+// CursorType_rightbutton is a representation of the C enumeration member GDK_RIGHTBUTTON.
+const CursorType_rightbutton = CursorType(100)
+
+// CursorType_rtl_logo is a representation of the C enumeration member GDK_RTL_LOGO.
+const CursorType_rtl_logo = CursorType(102)
+
+// CursorType_sailboat is a representation of the C enumeration member GDK_SAILBOAT.
+const CursorType_sailboat = CursorType(104)
+
+// CursorType_sb_down_arrow is a representation of the C enumeration member GDK_SB_DOWN_ARROW.
+const CursorType_sb_down_arrow = CursorType(106)
+
+// CursorType_sb_h_double_arrow is a representation of the C enumeration member GDK_SB_H_DOUBLE_ARROW.
+const CursorType_sb_h_double_arrow = CursorType(108)
+
+// CursorType_sb_left_arrow is a representation of the C enumeration member GDK_SB_LEFT_ARROW.
+const CursorType_sb_left_arrow = CursorType(110)
+
+// CursorType_sb_right_arrow is a representation of the C enumeration member GDK_SB_RIGHT_ARROW.
+const CursorType_sb_right_arrow = CursorType(112)
+
+// CursorType_sb_up_arrow is a representation of the C enumeration member GDK_SB_UP_ARROW.
+const CursorType_sb_up_arrow = CursorType(114)
+
+// CursorType_sb_v_double_arrow is a representation of the C enumeration member GDK_SB_V_DOUBLE_ARROW.
+const CursorType_sb_v_double_arrow = CursorType(116)
+
+// CursorType_shuttle is a representation of the C enumeration member GDK_SHUTTLE.
+const CursorType_shuttle = CursorType(118)
+
+// CursorType_sizing is a representation of the C enumeration member GDK_SIZING.
+const CursorType_sizing = CursorType(120)
+
+// CursorType_spider is a representation of the C enumeration member GDK_SPIDER.
+const CursorType_spider = CursorType(122)
+
+// CursorType_spraycan is a representation of the C enumeration member GDK_SPRAYCAN.
+const CursorType_spraycan = CursorType(124)
+
+// CursorType_star is a representation of the C enumeration member GDK_STAR.
+const CursorType_star = CursorType(126)
+
+// CursorType_target is a representation of the C enumeration member GDK_TARGET.
+const CursorType_target = CursorType(128)
+
+// CursorType_tcross is a representation of the C enumeration member GDK_TCROSS.
+const CursorType_tcross = CursorType(130)
+
+// CursorType_top_left_arrow is a representation of the C enumeration member GDK_TOP_LEFT_ARROW.
+const CursorType_top_left_arrow = CursorType(132)
+
+// CursorType_top_left_corner is a representation of the C enumeration member GDK_TOP_LEFT_CORNER.
+const CursorType_top_left_corner = CursorType(134)
+
+// CursorType_top_right_corner is a representation of the C enumeration member GDK_TOP_RIGHT_CORNER.
+const CursorType_top_right_corner = CursorType(136)
+
+// CursorType_top_side is a representation of the C enumeration member GDK_TOP_SIDE.
+const CursorType_top_side = CursorType(138)
+
+// CursorType_top_tee is a representation of the C enumeration member GDK_TOP_TEE.
+const CursorType_top_tee = CursorType(140)
+
+// CursorType_trek is a representation of the C enumeration member GDK_TREK.
+const CursorType_trek = CursorType(142)
+
+// CursorType_ul_angle is a representation of the C enumeration member GDK_UL_ANGLE.
+const CursorType_ul_angle = CursorType(144)
+
+// CursorType_umbrella is a representation of the C enumeration member GDK_UMBRELLA.
+const CursorType_umbrella = CursorType(146)
+
+// CursorType_ur_angle is a representation of the C enumeration member GDK_UR_ANGLE.
+const CursorType_ur_angle = CursorType(148)
+
+// CursorType_watch is a representation of the C enumeration member GDK_WATCH.
+const CursorType_watch = CursorType(150)
+
+// CursorType_xterm is a representation of the C enumeration member GDK_XTERM.
+const CursorType_xterm = CursorType(152)
+
+// CursorType_last_cursor is a representation of the C enumeration member GDK_LAST_CURSOR.
+const CursorType_last_cursor = CursorType(153)
+
+// CursorType_blank_cursor is a representation of the C enumeration member GDK_BLANK_CURSOR.
+const CursorType_blank_cursor = CursorType(-2)
+
+// CursorType_cursor_is_pixmap is a representation of the C enumeration member GDK_CURSOR_IS_PIXMAP.
+const CursorType_cursor_is_pixmap = CursorType(-1)
+
+// DevicePadFeature is a representation of the C enumeration GdkDevicePadFeature.
+type DevicePadFeature int
+
+// DevicePadFeature_button is a representation of the C enumeration member GDK_DEVICE_PAD_FEATURE_BUTTON.
+const DevicePadFeature_button = DevicePadFeature(0)
+
+// DevicePadFeature_ring is a representation of the C enumeration member GDK_DEVICE_PAD_FEATURE_RING.
+const DevicePadFeature_ring = DevicePadFeature(1)
+
+// DevicePadFeature_strip is a representation of the C enumeration member GDK_DEVICE_PAD_FEATURE_STRIP.
+const DevicePadFeature_strip = DevicePadFeature(2)
+
+// DeviceType is a representation of the C enumeration GdkDeviceType.
+type DeviceType int
+
+// DeviceType_master is a representation of the C enumeration member GDK_DEVICE_TYPE_MASTER.
+const DeviceType_master = DeviceType(0)
+
+// DeviceType_slave is a representation of the C enumeration member GDK_DEVICE_TYPE_SLAVE.
+const DeviceType_slave = DeviceType(1)
+
+// DeviceType_floating is a representation of the C enumeration member GDK_DEVICE_TYPE_FLOATING.
+const DeviceType_floating = DeviceType(2)
+
+// DragCancelReason is a representation of the C enumeration GdkDragCancelReason.
+type DragCancelReason int
+
+// DragCancelReason_no_target is a representation of the C enumeration member GDK_DRAG_CANCEL_NO_TARGET.
+const DragCancelReason_no_target = DragCancelReason(0)
+
+// DragCancelReason_user_cancelled is a representation of the C enumeration member GDK_DRAG_CANCEL_USER_CANCELLED.
+const DragCancelReason_user_cancelled = DragCancelReason(1)
+
+// DragCancelReason_error is a representation of the C enumeration member GDK_DRAG_CANCEL_ERROR.
+const DragCancelReason_error = DragCancelReason(2)
+
+// DragProtocol is a representation of the C enumeration GdkDragProtocol.
+type DragProtocol int
+
+// DragProtocol_none is a representation of the C enumeration member GDK_DRAG_PROTO_NONE.
+const DragProtocol_none = DragProtocol(0)
+
+// DragProtocol_motif is a representation of the C enumeration member GDK_DRAG_PROTO_MOTIF.
+const DragProtocol_motif = DragProtocol(1)
+
+// DragProtocol_xdnd is a representation of the C enumeration member GDK_DRAG_PROTO_XDND.
+const DragProtocol_xdnd = DragProtocol(2)
+
+// DragProtocol_rootwin is a representation of the C enumeration member GDK_DRAG_PROTO_ROOTWIN.
+const DragProtocol_rootwin = DragProtocol(3)
+
+// DragProtocol_win32_dropfiles is a representation of the C enumeration member GDK_DRAG_PROTO_WIN32_DROPFILES.
+const DragProtocol_win32_dropfiles = DragProtocol(4)
+
+// DragProtocol_ole2 is a representation of the C enumeration member GDK_DRAG_PROTO_OLE2.
+const DragProtocol_ole2 = DragProtocol(5)
+
+// DragProtocol_local is a representation of the C enumeration member GDK_DRAG_PROTO_LOCAL.
+const DragProtocol_local = DragProtocol(6)
+
+// DragProtocol_wayland is a representation of the C enumeration member GDK_DRAG_PROTO_WAYLAND.
+const DragProtocol_wayland = DragProtocol(7)
+
+// EventType is a representation of the C enumeration GdkEventType.
+type EventType int
+
+// EventType_nothing is a representation of the C enumeration member GDK_NOTHING.
+const EventType_nothing = EventType(-1)
+
+// EventType_delete is a representation of the C enumeration member GDK_DELETE.
+const EventType_delete = EventType(0)
+
+// EventType_destroy is a representation of the C enumeration member GDK_DESTROY.
+const EventType_destroy = EventType(1)
+
+// EventType_expose is a representation of the C enumeration member GDK_EXPOSE.
+const EventType_expose = EventType(2)
+
+// EventType_motion_notify is a representation of the C enumeration member GDK_MOTION_NOTIFY.
+const EventType_motion_notify = EventType(3)
+
+// EventType_button_press is a representation of the C enumeration member GDK_BUTTON_PRESS.
+const EventType_button_press = EventType(4)
+
+// EventType_2button_press is a representation of the C enumeration member GDK_2BUTTON_PRESS.
+const EventType_2button_press = EventType(5)
+
+// EventType_double_button_press is a representation of the C enumeration member GDK_DOUBLE_BUTTON_PRESS.
+const EventType_double_button_press = EventType(5)
+
+// EventType_3button_press is a representation of the C enumeration member GDK_3BUTTON_PRESS.
+const EventType_3button_press = EventType(6)
+
+// EventType_triple_button_press is a representation of the C enumeration member GDK_TRIPLE_BUTTON_PRESS.
+const EventType_triple_button_press = EventType(6)
+
+// EventType_button_release is a representation of the C enumeration member GDK_BUTTON_RELEASE.
+const EventType_button_release = EventType(7)
+
+// EventType_key_press is a representation of the C enumeration member GDK_KEY_PRESS.
+const EventType_key_press = EventType(8)
+
+// EventType_key_release is a representation of the C enumeration member GDK_KEY_RELEASE.
+const EventType_key_release = EventType(9)
+
+// EventType_enter_notify is a representation of the C enumeration member GDK_ENTER_NOTIFY.
+const EventType_enter_notify = EventType(10)
+
+// EventType_leave_notify is a representation of the C enumeration member GDK_LEAVE_NOTIFY.
+const EventType_leave_notify = EventType(11)
+
+// EventType_focus_change is a representation of the C enumeration member GDK_FOCUS_CHANGE.
+const EventType_focus_change = EventType(12)
+
+// EventType_configure is a representation of the C enumeration member GDK_CONFIGURE.
+const EventType_configure = EventType(13)
+
+// EventType_map is a representation of the C enumeration member GDK_MAP.
+const EventType_map = EventType(14)
+
+// EventType_unmap is a representation of the C enumeration member GDK_UNMAP.
+const EventType_unmap = EventType(15)
+
+// EventType_property_notify is a representation of the C enumeration member GDK_PROPERTY_NOTIFY.
+const EventType_property_notify = EventType(16)
+
+// EventType_selection_clear is a representation of the C enumeration member GDK_SELECTION_CLEAR.
+const EventType_selection_clear = EventType(17)
+
+// EventType_selection_request is a representation of the C enumeration member GDK_SELECTION_REQUEST.
+const EventType_selection_request = EventType(18)
+
+// EventType_selection_notify is a representation of the C enumeration member GDK_SELECTION_NOTIFY.
+const EventType_selection_notify = EventType(19)
+
+// EventType_proximity_in is a representation of the C enumeration member GDK_PROXIMITY_IN.
+const EventType_proximity_in = EventType(20)
+
+// EventType_proximity_out is a representation of the C enumeration member GDK_PROXIMITY_OUT.
+const EventType_proximity_out = EventType(21)
+
+// EventType_drag_enter is a representation of the C enumeration member GDK_DRAG_ENTER.
+const EventType_drag_enter = EventType(22)
+
+// EventType_drag_leave is a representation of the C enumeration member GDK_DRAG_LEAVE.
+const EventType_drag_leave = EventType(23)
+
+// EventType_drag_motion is a representation of the C enumeration member GDK_DRAG_MOTION.
+const EventType_drag_motion = EventType(24)
+
+// EventType_drag_status is a representation of the C enumeration member GDK_DRAG_STATUS.
+const EventType_drag_status = EventType(25)
+
+// EventType_drop_start is a representation of the C enumeration member GDK_DROP_START.
+const EventType_drop_start = EventType(26)
+
+// EventType_drop_finished is a representation of the C enumeration member GDK_DROP_FINISHED.
+const EventType_drop_finished = EventType(27)
+
+// EventType_client_event is a representation of the C enumeration member GDK_CLIENT_EVENT.
+const EventType_client_event = EventType(28)
+
+// EventType_visibility_notify is a representation of the C enumeration member GDK_VISIBILITY_NOTIFY.
+const EventType_visibility_notify = EventType(29)
+
+// EventType_scroll is a representation of the C enumeration member GDK_SCROLL.
+const EventType_scroll = EventType(31)
+
+// EventType_window_state is a representation of the C enumeration member GDK_WINDOW_STATE.
+const EventType_window_state = EventType(32)
+
+// EventType_setting is a representation of the C enumeration member GDK_SETTING.
+const EventType_setting = EventType(33)
+
+// EventType_owner_change is a representation of the C enumeration member GDK_OWNER_CHANGE.
+const EventType_owner_change = EventType(34)
+
+// EventType_grab_broken is a representation of the C enumeration member GDK_GRAB_BROKEN.
+const EventType_grab_broken = EventType(35)
+
+// EventType_damage is a representation of the C enumeration member GDK_DAMAGE.
+const EventType_damage = EventType(36)
+
+// EventType_touch_begin is a representation of the C enumeration member GDK_TOUCH_BEGIN.
+const EventType_touch_begin = EventType(37)
+
+// EventType_touch_update is a representation of the C enumeration member GDK_TOUCH_UPDATE.
+const EventType_touch_update = EventType(38)
+
+// EventType_touch_end is a representation of the C enumeration member GDK_TOUCH_END.
+const EventType_touch_end = EventType(39)
+
+// EventType_touch_cancel is a representation of the C enumeration member GDK_TOUCH_CANCEL.
+const EventType_touch_cancel = EventType(40)
+
+// EventType_touchpad_swipe is a representation of the C enumeration member GDK_TOUCHPAD_SWIPE.
+const EventType_touchpad_swipe = EventType(41)
+
+// EventType_touchpad_pinch is a representation of the C enumeration member GDK_TOUCHPAD_PINCH.
+const EventType_touchpad_pinch = EventType(42)
+
+// EventType_pad_button_press is a representation of the C enumeration member GDK_PAD_BUTTON_PRESS.
+const EventType_pad_button_press = EventType(43)
+
+// EventType_pad_button_release is a representation of the C enumeration member GDK_PAD_BUTTON_RELEASE.
+const EventType_pad_button_release = EventType(44)
+
+// EventType_pad_ring is a representation of the C enumeration member GDK_PAD_RING.
+const EventType_pad_ring = EventType(45)
+
+// EventType_pad_strip is a representation of the C enumeration member GDK_PAD_STRIP.
+const EventType_pad_strip = EventType(46)
+
+// EventType_pad_group_mode is a representation of the C enumeration member GDK_PAD_GROUP_MODE.
+const EventType_pad_group_mode = EventType(47)
+
+// EventType_event_last is a representation of the C enumeration member GDK_EVENT_LAST.
+const EventType_event_last = EventType(48)
+
+// FilterReturn is a representation of the C enumeration GdkFilterReturn.
+type FilterReturn int
+
+// FilterReturn_continue is a representation of the C enumeration member GDK_FILTER_CONTINUE.
+const FilterReturn_continue = FilterReturn(0)
+
+// FilterReturn_translate is a representation of the C enumeration member GDK_FILTER_TRANSLATE.
+const FilterReturn_translate = FilterReturn(1)
+
+// FilterReturn_remove is a representation of the C enumeration member GDK_FILTER_REMOVE.
+const FilterReturn_remove = FilterReturn(2)
+
+// FullscreenMode is a representation of the C enumeration GdkFullscreenMode.
+type FullscreenMode int
+
+// FullscreenMode_current_monitor is a representation of the C enumeration member GDK_FULLSCREEN_ON_CURRENT_MONITOR.
+const FullscreenMode_current_monitor = FullscreenMode(0)
+
+// FullscreenMode_all_monitors is a representation of the C enumeration member GDK_FULLSCREEN_ON_ALL_MONITORS.
+const FullscreenMode_all_monitors = FullscreenMode(1)
+
+// GLError is a representation of the C enumeration GdkGLError.
+type GLError int
+
+// GLError_not_available is a representation of the C enumeration member GDK_GL_ERROR_NOT_AVAILABLE.
+const GLError_not_available = GLError(0)
+
+// GLError_unsupported_format is a representation of the C enumeration member GDK_GL_ERROR_UNSUPPORTED_FORMAT.
+const GLError_unsupported_format = GLError(1)
+
+// GLError_unsupported_profile is a representation of the C enumeration member GDK_GL_ERROR_UNSUPPORTED_PROFILE.
+const GLError_unsupported_profile = GLError(2)
+
+// GrabOwnership is a representation of the C enumeration GdkGrabOwnership.
+type GrabOwnership int
+
+// GrabOwnership_none is a representation of the C enumeration member GDK_OWNERSHIP_NONE.
+const GrabOwnership_none = GrabOwnership(0)
+
+// GrabOwnership_window is a representation of the C enumeration member GDK_OWNERSHIP_WINDOW.
+const GrabOwnership_window = GrabOwnership(1)
+
+// GrabOwnership_application is a representation of the C enumeration member GDK_OWNERSHIP_APPLICATION.
+const GrabOwnership_application = GrabOwnership(2)
+
+// GrabStatus is a representation of the C enumeration GdkGrabStatus.
+type GrabStatus int
+
+// GrabStatus_success is a representation of the C enumeration member GDK_GRAB_SUCCESS.
+const GrabStatus_success = GrabStatus(0)
+
+// GrabStatus_already_grabbed is a representation of the C enumeration member GDK_GRAB_ALREADY_GRABBED.
+const GrabStatus_already_grabbed = GrabStatus(1)
+
+// GrabStatus_invalid_time is a representation of the C enumeration member GDK_GRAB_INVALID_TIME.
+const GrabStatus_invalid_time = GrabStatus(2)
+
+// GrabStatus_not_viewable is a representation of the C enumeration member GDK_GRAB_NOT_VIEWABLE.
+const GrabStatus_not_viewable = GrabStatus(3)
+
+// GrabStatus_frozen is a representation of the C enumeration member GDK_GRAB_FROZEN.
+const GrabStatus_frozen = GrabStatus(4)
+
+// GrabStatus_failed is a representation of the C enumeration member GDK_GRAB_FAILED.
+const GrabStatus_failed = GrabStatus(5)
+
+// Gravity is a representation of the C enumeration GdkGravity.
+type Gravity int
+
+// Gravity_north_west is a representation of the C enumeration member GDK_GRAVITY_NORTH_WEST.
+const Gravity_north_west = Gravity(1)
+
+// Gravity_north is a representation of the C enumeration member GDK_GRAVITY_NORTH.
+const Gravity_north = Gravity(2)
+
+// Gravity_north_east is a representation of the C enumeration member GDK_GRAVITY_NORTH_EAST.
+const Gravity_north_east = Gravity(3)
+
+// Gravity_west is a representation of the C enumeration member GDK_GRAVITY_WEST.
+const Gravity_west = Gravity(4)
+
+// Gravity_center is a representation of the C enumeration member GDK_GRAVITY_CENTER.
+const Gravity_center = Gravity(5)
+
+// Gravity_east is a representation of the C enumeration member GDK_GRAVITY_EAST.
+const Gravity_east = Gravity(6)
+
+// Gravity_south_west is a representation of the C enumeration member GDK_GRAVITY_SOUTH_WEST.
+const Gravity_south_west = Gravity(7)
+
+// Gravity_south is a representation of the C enumeration member GDK_GRAVITY_SOUTH.
+const Gravity_south = Gravity(8)
+
+// Gravity_south_east is a representation of the C enumeration member GDK_GRAVITY_SOUTH_EAST.
+const Gravity_south_east = Gravity(9)
+
+// Gravity_static is a representation of the C enumeration member GDK_GRAVITY_STATIC.
+const Gravity_static = Gravity(10)
+
+// InputMode is a representation of the C enumeration GdkInputMode.
+type InputMode int
+
+// InputMode_disabled is a representation of the C enumeration member GDK_MODE_DISABLED.
+const InputMode_disabled = InputMode(0)
+
+// InputMode_screen is a representation of the C enumeration member GDK_MODE_SCREEN.
+const InputMode_screen = InputMode(1)
+
+// InputMode_window is a representation of the C enumeration member GDK_MODE_WINDOW.
+const InputMode_window = InputMode(2)
+
+// InputSource is a representation of the C enumeration GdkInputSource.
+type InputSource int
+
+// InputSource_mouse is a representation of the C enumeration member GDK_SOURCE_MOUSE.
+const InputSource_mouse = InputSource(0)
+
+// InputSource_pen is a representation of the C enumeration member GDK_SOURCE_PEN.
+const InputSource_pen = InputSource(1)
+
+// InputSource_eraser is a representation of the C enumeration member GDK_SOURCE_ERASER.
+const InputSource_eraser = InputSource(2)
+
+// InputSource_cursor is a representation of the C enumeration member GDK_SOURCE_CURSOR.
+const InputSource_cursor = InputSource(3)
+
+// InputSource_keyboard is a representation of the C enumeration member GDK_SOURCE_KEYBOARD.
+const InputSource_keyboard = InputSource(4)
+
+// InputSource_touchscreen is a representation of the C enumeration member GDK_SOURCE_TOUCHSCREEN.
+const InputSource_touchscreen = InputSource(5)
+
+// InputSource_touchpad is a representation of the C enumeration member GDK_SOURCE_TOUCHPAD.
+const InputSource_touchpad = InputSource(6)
+
+// InputSource_trackpoint is a representation of the C enumeration member GDK_SOURCE_TRACKPOINT.
+const InputSource_trackpoint = InputSource(7)
+
+// InputSource_tablet_pad is a representation of the C enumeration member GDK_SOURCE_TABLET_PAD.
+const InputSource_tablet_pad = InputSource(8)
+
+// ModifierIntent is a representation of the C enumeration GdkModifierIntent.
+type ModifierIntent int
+
+// ModifierIntent_primary_accelerator is a representation of the C enumeration member GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR.
+const ModifierIntent_primary_accelerator = ModifierIntent(0)
+
+// ModifierIntent_context_menu is a representation of the C enumeration member GDK_MODIFIER_INTENT_CONTEXT_MENU.
+const ModifierIntent_context_menu = ModifierIntent(1)
+
+// ModifierIntent_extend_selection is a representation of the C enumeration member GDK_MODIFIER_INTENT_EXTEND_SELECTION.
+const ModifierIntent_extend_selection = ModifierIntent(2)
+
+// ModifierIntent_modify_selection is a representation of the C enumeration member GDK_MODIFIER_INTENT_MODIFY_SELECTION.
+const ModifierIntent_modify_selection = ModifierIntent(3)
+
+// ModifierIntent_no_text_input is a representation of the C enumeration member GDK_MODIFIER_INTENT_NO_TEXT_INPUT.
+const ModifierIntent_no_text_input = ModifierIntent(4)
+
+// ModifierIntent_shift_group is a representation of the C enumeration member GDK_MODIFIER_INTENT_SHIFT_GROUP.
+const ModifierIntent_shift_group = ModifierIntent(5)
+
+// ModifierIntent_default_mod_mask is a representation of the C enumeration member GDK_MODIFIER_INTENT_DEFAULT_MOD_MASK.
+const ModifierIntent_default_mod_mask = ModifierIntent(6)
+
+// NotifyType is a representation of the C enumeration GdkNotifyType.
+type NotifyType int
+
+// NotifyType_ancestor is a representation of the C enumeration member GDK_NOTIFY_ANCESTOR.
+const NotifyType_ancestor = NotifyType(0)
+
+// NotifyType_virtual is a representation of the C enumeration member GDK_NOTIFY_VIRTUAL.
+const NotifyType_virtual = NotifyType(1)
+
+// NotifyType_inferior is a representation of the C enumeration member GDK_NOTIFY_INFERIOR.
+const NotifyType_inferior = NotifyType(2)
+
+// NotifyType_nonlinear is a representation of the C enumeration member GDK_NOTIFY_NONLINEAR.
+const NotifyType_nonlinear = NotifyType(3)
+
+// NotifyType_nonlinear_virtual is a representation of the C enumeration member GDK_NOTIFY_NONLINEAR_VIRTUAL.
+const NotifyType_nonlinear_virtual = NotifyType(4)
+
+// NotifyType_unknown is a representation of the C enumeration member GDK_NOTIFY_UNKNOWN.
+const NotifyType_unknown = NotifyType(5)
+
+// OwnerChange is a representation of the C enumeration GdkOwnerChange.
+type OwnerChange int
+
+// OwnerChange_new_owner is a representation of the C enumeration member GDK_OWNER_CHANGE_NEW_OWNER.
+const OwnerChange_new_owner = OwnerChange(0)
+
+// OwnerChange_destroy is a representation of the C enumeration member GDK_OWNER_CHANGE_DESTROY.
+const OwnerChange_destroy = OwnerChange(1)
+
+// OwnerChange_close is a representation of the C enumeration member GDK_OWNER_CHANGE_CLOSE.
+const OwnerChange_close = OwnerChange(2)
+
+// PropMode is a representation of the C enumeration GdkPropMode.
+type PropMode int
+
+// PropMode_replace is a representation of the C enumeration member GDK_PROP_MODE_REPLACE.
+const PropMode_replace = PropMode(0)
+
+// PropMode_prepend is a representation of the C enumeration member GDK_PROP_MODE_PREPEND.
+const PropMode_prepend = PropMode(1)
+
+// PropMode_append is a representation of the C enumeration member GDK_PROP_MODE_APPEND.
+const PropMode_append = PropMode(2)
+
+// PropertyState is a representation of the C enumeration GdkPropertyState.
+type PropertyState int
+
+// PropertyState_new_value is a representation of the C enumeration member GDK_PROPERTY_NEW_VALUE.
+const PropertyState_new_value = PropertyState(0)
+
+// PropertyState_delete is a representation of the C enumeration member GDK_PROPERTY_DELETE.
+const PropertyState_delete = PropertyState(1)
+
+// ScrollDirection is a representation of the C enumeration GdkScrollDirection.
+type ScrollDirection int
+
+// ScrollDirection_up is a representation of the C enumeration member GDK_SCROLL_UP.
+const ScrollDirection_up = ScrollDirection(0)
+
+// ScrollDirection_down is a representation of the C enumeration member GDK_SCROLL_DOWN.
+const ScrollDirection_down = ScrollDirection(1)
+
+// ScrollDirection_left is a representation of the C enumeration member GDK_SCROLL_LEFT.
+const ScrollDirection_left = ScrollDirection(2)
+
+// ScrollDirection_right is a representation of the C enumeration member GDK_SCROLL_RIGHT.
+const ScrollDirection_right = ScrollDirection(3)
+
+// ScrollDirection_smooth is a representation of the C enumeration member GDK_SCROLL_SMOOTH.
+const ScrollDirection_smooth = ScrollDirection(4)
+
+// SettingAction is a representation of the C enumeration GdkSettingAction.
+type SettingAction int
+
+// SettingAction_new is a representation of the C enumeration member GDK_SETTING_ACTION_NEW.
+const SettingAction_new = SettingAction(0)
+
+// SettingAction_changed is a representation of the C enumeration member GDK_SETTING_ACTION_CHANGED.
+const SettingAction_changed = SettingAction(1)
+
+// SettingAction_deleted is a representation of the C enumeration member GDK_SETTING_ACTION_DELETED.
+const SettingAction_deleted = SettingAction(2)
+
+// Status is a representation of the C enumeration GdkStatus.
+type Status int
+
+// Status_ok is a representation of the C enumeration member GDK_OK.
+const Status_ok = Status(0)
+
+// Status_error is a representation of the C enumeration member GDK_ERROR.
+const Status_error = Status(-1)
+
+// Status_error_param is a representation of the C enumeration member GDK_ERROR_PARAM.
+const Status_error_param = Status(-2)
+
+// Status_error_file is a representation of the C enumeration member GDK_ERROR_FILE.
+const Status_error_file = Status(-3)
+
+// Status_error_mem is a representation of the C enumeration member GDK_ERROR_MEM.
+const Status_error_mem = Status(-4)
+
+// TouchpadGesturePhase is a representation of the C enumeration GdkTouchpadGesturePhase.
+type TouchpadGesturePhase int
+
+// TouchpadGesturePhase_begin is a representation of the C enumeration member GDK_TOUCHPAD_GESTURE_PHASE_BEGIN.
+const TouchpadGesturePhase_begin = TouchpadGesturePhase(0)
+
+// TouchpadGesturePhase_update is a representation of the C enumeration member GDK_TOUCHPAD_GESTURE_PHASE_UPDATE.
+const TouchpadGesturePhase_update = TouchpadGesturePhase(1)
+
+// TouchpadGesturePhase_end is a representation of the C enumeration member GDK_TOUCHPAD_GESTURE_PHASE_END.
+const TouchpadGesturePhase_end = TouchpadGesturePhase(2)
+
+// TouchpadGesturePhase_cancel is a representation of the C enumeration member GDK_TOUCHPAD_GESTURE_PHASE_CANCEL.
+const TouchpadGesturePhase_cancel = TouchpadGesturePhase(3)
+
+// VisibilityState is a representation of the C enumeration GdkVisibilityState.
+type VisibilityState int
+
+// VisibilityState_unobscured is a representation of the C enumeration member GDK_VISIBILITY_UNOBSCURED.
+const VisibilityState_unobscured = VisibilityState(0)
+
+// VisibilityState_partial is a representation of the C enumeration member GDK_VISIBILITY_PARTIAL.
+const VisibilityState_partial = VisibilityState(1)
+
+// VisibilityState_fully_obscured is a representation of the C enumeration member GDK_VISIBILITY_FULLY_OBSCURED.
+const VisibilityState_fully_obscured = VisibilityState(2)
+
+// VisualType is a representation of the C enumeration GdkVisualType.
+type VisualType int
+
+// VisualType_static_gray is a representation of the C enumeration member GDK_VISUAL_STATIC_GRAY.
+const VisualType_static_gray = VisualType(0)
+
+// VisualType_grayscale is a representation of the C enumeration member GDK_VISUAL_GRAYSCALE.
+const VisualType_grayscale = VisualType(1)
+
+// VisualType_static_color is a representation of the C enumeration member GDK_VISUAL_STATIC_COLOR.
+const VisualType_static_color = VisualType(2)
+
+// VisualType_pseudo_color is a representation of the C enumeration member GDK_VISUAL_PSEUDO_COLOR.
+const VisualType_pseudo_color = VisualType(3)
+
+// VisualType_true_color is a representation of the C enumeration member GDK_VISUAL_TRUE_COLOR.
+const VisualType_true_color = VisualType(4)
+
+// VisualType_direct_color is a representation of the C enumeration member GDK_VISUAL_DIRECT_COLOR.
+const VisualType_direct_color = VisualType(5)
+
+// WindowEdge is a representation of the C enumeration GdkWindowEdge.
+type WindowEdge int
+
+// WindowEdge_north_west is a representation of the C enumeration member GDK_WINDOW_EDGE_NORTH_WEST.
+const WindowEdge_north_west = WindowEdge(0)
+
+// WindowEdge_north is a representation of the C enumeration member GDK_WINDOW_EDGE_NORTH.
+const WindowEdge_north = WindowEdge(1)
+
+// WindowEdge_north_east is a representation of the C enumeration member GDK_WINDOW_EDGE_NORTH_EAST.
+const WindowEdge_north_east = WindowEdge(2)
+
+// WindowEdge_west is a representation of the C enumeration member GDK_WINDOW_EDGE_WEST.
+const WindowEdge_west = WindowEdge(3)
+
+// WindowEdge_east is a representation of the C enumeration member GDK_WINDOW_EDGE_EAST.
+const WindowEdge_east = WindowEdge(4)
+
+// WindowEdge_south_west is a representation of the C enumeration member GDK_WINDOW_EDGE_SOUTH_WEST.
+const WindowEdge_south_west = WindowEdge(5)
+
+// WindowEdge_south is a representation of the C enumeration member GDK_WINDOW_EDGE_SOUTH.
+const WindowEdge_south = WindowEdge(6)
+
+// WindowEdge_south_east is a representation of the C enumeration member GDK_WINDOW_EDGE_SOUTH_EAST.
+const WindowEdge_south_east = WindowEdge(7)
+
+// WindowType is a representation of the C enumeration GdkWindowType.
+type WindowType int
+
+// WindowType_root is a representation of the C enumeration member GDK_WINDOW_ROOT.
+const WindowType_root = WindowType(0)
+
+// WindowType_toplevel is a representation of the C enumeration member GDK_WINDOW_TOPLEVEL.
+const WindowType_toplevel = WindowType(1)
+
+// WindowType_child is a representation of the C enumeration member GDK_WINDOW_CHILD.
+const WindowType_child = WindowType(2)
+
+// WindowType_temp is a representation of the C enumeration member GDK_WINDOW_TEMP.
+const WindowType_temp = WindowType(3)
+
+// WindowType_foreign is a representation of the C enumeration member GDK_WINDOW_FOREIGN.
+const WindowType_foreign = WindowType(4)
+
+// WindowType_offscreen is a representation of the C enumeration member GDK_WINDOW_OFFSCREEN.
+const WindowType_offscreen = WindowType(5)
+
+// WindowType_subsurface is a representation of the C enumeration member GDK_WINDOW_SUBSURFACE.
+const WindowType_subsurface = WindowType(6)
+
+// WindowTypeHint is a representation of the C enumeration GdkWindowTypeHint.
+type WindowTypeHint int
+
+// WindowTypeHint_normal is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_NORMAL.
+const WindowTypeHint_normal = WindowTypeHint(0)
+
+// WindowTypeHint_dialog is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_DIALOG.
+const WindowTypeHint_dialog = WindowTypeHint(1)
+
+// WindowTypeHint_menu is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_MENU.
+const WindowTypeHint_menu = WindowTypeHint(2)
+
+// WindowTypeHint_toolbar is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_TOOLBAR.
+const WindowTypeHint_toolbar = WindowTypeHint(3)
+
+// WindowTypeHint_splashscreen is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_SPLASHSCREEN.
+const WindowTypeHint_splashscreen = WindowTypeHint(4)
+
+// WindowTypeHint_utility is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_UTILITY.
+const WindowTypeHint_utility = WindowTypeHint(5)
+
+// WindowTypeHint_dock is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_DOCK.
+const WindowTypeHint_dock = WindowTypeHint(6)
+
+// WindowTypeHint_desktop is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_DESKTOP.
+const WindowTypeHint_desktop = WindowTypeHint(7)
+
+// WindowTypeHint_dropdown_menu is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU.
+const WindowTypeHint_dropdown_menu = WindowTypeHint(8)
+
+// WindowTypeHint_popup_menu is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_POPUP_MENU.
+const WindowTypeHint_popup_menu = WindowTypeHint(9)
+
+// WindowTypeHint_tooltip is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_TOOLTIP.
+const WindowTypeHint_tooltip = WindowTypeHint(10)
+
+// WindowTypeHint_notification is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_NOTIFICATION.
+const WindowTypeHint_notification = WindowTypeHint(11)
+
+// WindowTypeHint_combo is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_COMBO.
+const WindowTypeHint_combo = WindowTypeHint(12)
+
+// WindowTypeHint_dnd is a representation of the C enumeration member GDK_WINDOW_TYPE_HINT_DND.
+const WindowTypeHint_dnd = WindowTypeHint(13)
+
+// WindowWindowClass is a representation of the C enumeration GdkWindowWindowClass.
+type WindowWindowClass int
+
+// WindowWindowClass_input_output is a representation of the C enumeration member GDK_INPUT_OUTPUT.
+const WindowWindowClass_input_output = WindowWindowClass(0)
+
+// WindowWindowClass_input_only is a representation of the C enumeration member GDK_INPUT_ONLY.
+const WindowWindowClass_input_only = WindowWindowClass(1)
+
 // Atom is a representation of the C record GdkAtom.
 type Atom struct {
 	native unsafe.Pointer
