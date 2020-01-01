@@ -4056,3 +4056,15 @@ type VariantIter struct {
 type VariantType struct {
 	native unsafe.Pointer
 }
+
+// DoubleIEEE754 is a representation of the C union GDoubleIEEE754.
+type DoubleIEEE754 struct{}
+
+// FloatIEEE754 is a representation of the C union GFloatIEEE754.
+type FloatIEEE754 struct{}
+
+// Mutex is a representation of the C union GMutex.
+type Mutex struct{}
+
+// TokenValue is a representation of the C union GTokenValue.
+type TokenValue struct{}

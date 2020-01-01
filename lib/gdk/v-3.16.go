@@ -8708,3 +8708,6 @@ type Window struct {
 type DevicePad struct {
 	native unsafe.Pointer
 }
+
+// Event is a representation of the C union GdkEvent.
+type Event struct{}

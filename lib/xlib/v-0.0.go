@@ -89,3 +89,6 @@ type XVisualInfo struct {
 type XWindowAttributes struct {
 	native unsafe.Pointer
 }
+
+// XEvent is a representation of the C union XEvent.
+type XEvent struct{}

@@ -38,4 +38,5 @@ func (ns *Namespace) generateLibFile(f *jen.File, version semver.Version) {
 	ns.Records.generateLib(f, version)
 	ns.Classes.generateLib(f, version)
 	ns.Interfaces.generateLib(f, version)
+	ns.Unions.generateLib(f, version)
 }

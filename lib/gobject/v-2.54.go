@@ -827,3 +827,9 @@ type TypeModule struct {
 type TypePlugin struct {
 	native unsafe.Pointer
 }
+
+// TypeCValue is a representation of the C union GTypeCValue.
+type TypeCValue struct{}
+
+// _Value__data__union is a representation of the C union .
+type _Value__data__union struct{}
