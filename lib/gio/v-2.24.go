@@ -1907,3 +1907,483 @@ type ZlibCompressorClass struct {
 type ZlibDecompressorClass struct {
 	native unsafe.Pointer
 }
+
+// AppLaunchContext is a representation of the C record GAppLaunchContext.
+type AppLaunchContext struct {
+	native unsafe.Pointer
+}
+
+// ApplicationCommandLine is a representation of the C record GApplicationCommandLine.
+type ApplicationCommandLine struct {
+	native unsafe.Pointer
+}
+
+// BufferedInputStream is a representation of the C record GBufferedInputStream.
+type BufferedInputStream struct {
+	native unsafe.Pointer
+}
+
+// BufferedOutputStream is a representation of the C record GBufferedOutputStream.
+type BufferedOutputStream struct {
+	native unsafe.Pointer
+}
+
+// Cancellable is a representation of the C record GCancellable.
+type Cancellable struct {
+	native unsafe.Pointer
+}
+
+// CharsetConverter is a representation of the C record GCharsetConverter.
+type CharsetConverter struct {
+	native unsafe.Pointer
+}
+
+// ConverterInputStream is a representation of the C record GConverterInputStream.
+type ConverterInputStream struct {
+	native unsafe.Pointer
+}
+
+// ConverterOutputStream is a representation of the C record GConverterOutputStream.
+type ConverterOutputStream struct {
+	native unsafe.Pointer
+}
+
+// DBusActionGroup is a representation of the C record GDBusActionGroup.
+type DBusActionGroup struct {
+	native unsafe.Pointer
+}
+
+// DBusMenuModel is a representation of the C record GDBusMenuModel.
+type DBusMenuModel struct {
+	native unsafe.Pointer
+}
+
+// DataInputStream is a representation of the C record GDataInputStream.
+type DataInputStream struct {
+	native unsafe.Pointer
+}
+
+// DataOutputStream is a representation of the C record GDataOutputStream.
+type DataOutputStream struct {
+	native unsafe.Pointer
+}
+
+// DesktopAppInfo is a representation of the C record GDesktopAppInfo.
+type DesktopAppInfo struct {
+	native unsafe.Pointer
+}
+
+// Emblem is a representation of the C record GEmblem.
+type Emblem struct {
+	native unsafe.Pointer
+}
+
+// EmblemedIcon is a representation of the C record GEmblemedIcon.
+type EmblemedIcon struct {
+	native unsafe.Pointer
+}
+
+// FileEnumerator is a representation of the C record GFileEnumerator.
+type FileEnumerator struct {
+	native unsafe.Pointer
+}
+
+// FileIOStream is a representation of the C record GFileIOStream.
+//
+// since 2.22
+type FileIOStream struct {
+	native unsafe.Pointer
+}
+
+// FileIcon is a representation of the C record GFileIcon.
+type FileIcon struct {
+	native unsafe.Pointer
+}
+
+// FileInfo is a representation of the C record GFileInfo.
+type FileInfo struct {
+	native unsafe.Pointer
+}
+
+// FileInputStream is a representation of the C record GFileInputStream.
+type FileInputStream struct {
+	native unsafe.Pointer
+}
+
+// FileMonitor is a representation of the C record GFileMonitor.
+type FileMonitor struct {
+	native unsafe.Pointer
+}
+
+// FileOutputStream is a representation of the C record GFileOutputStream.
+type FileOutputStream struct {
+	native unsafe.Pointer
+}
+
+// FilenameCompleter is a representation of the C record GFilenameCompleter.
+type FilenameCompleter struct {
+	native unsafe.Pointer
+}
+
+// FilterInputStream is a representation of the C record GFilterInputStream.
+type FilterInputStream struct {
+	native unsafe.Pointer
+}
+
+// FilterOutputStream is a representation of the C record GFilterOutputStream.
+type FilterOutputStream struct {
+	native unsafe.Pointer
+}
+
+// IOModule is a representation of the C record GIOModule.
+type IOModule struct {
+	native unsafe.Pointer
+}
+
+// IOStream is a representation of the C record GIOStream.
+//
+// since 2.22
+type IOStream struct {
+	native unsafe.Pointer
+}
+
+// InetAddress is a representation of the C record GInetAddress.
+type InetAddress struct {
+	native unsafe.Pointer
+}
+
+// InetSocketAddress is a representation of the C record GInetSocketAddress.
+type InetSocketAddress struct {
+	native unsafe.Pointer
+}
+
+// InputStream is a representation of the C record GInputStream.
+type InputStream struct {
+	native unsafe.Pointer
+}
+
+// ListStore is a representation of the C record GListStore.
+type ListStore struct {
+	native unsafe.Pointer
+}
+
+// MemoryInputStream is a representation of the C record GMemoryInputStream.
+type MemoryInputStream struct {
+	native unsafe.Pointer
+}
+
+// MemoryOutputStream is a representation of the C record GMemoryOutputStream.
+type MemoryOutputStream struct {
+	native unsafe.Pointer
+}
+
+// MountOperation is a representation of the C record GMountOperation.
+type MountOperation struct {
+	native unsafe.Pointer
+}
+
+// NativeSocketAddress is a representation of the C record GNativeSocketAddress.
+type NativeSocketAddress struct {
+	native unsafe.Pointer
+}
+
+// NativeVolumeMonitor is a representation of the C record GNativeVolumeMonitor.
+type NativeVolumeMonitor struct {
+	native unsafe.Pointer
+}
+
+// NetworkAddress is a representation of the C record GNetworkAddress.
+type NetworkAddress struct {
+	native unsafe.Pointer
+}
+
+// NetworkService is a representation of the C record GNetworkService.
+type NetworkService struct {
+	native unsafe.Pointer
+}
+
+// OutputStream is a representation of the C record GOutputStream.
+type OutputStream struct {
+	native unsafe.Pointer
+}
+
+// Permission is a representation of the C record GPermission.
+type Permission struct {
+	native unsafe.Pointer
+}
+
+// ProxyAddressEnumerator is a representation of the C record GProxyAddressEnumerator.
+type ProxyAddressEnumerator struct {
+	native unsafe.Pointer
+}
+
+// Resolver is a representation of the C record GResolver.
+type Resolver struct {
+	native unsafe.Pointer
+}
+
+// Settings is a representation of the C record GSettings.
+type Settings struct {
+	native unsafe.Pointer
+}
+
+// SettingsBackend is a representation of the C record GSettingsBackend.
+type SettingsBackend struct {
+	native unsafe.Pointer
+}
+
+// SimpleAction is a representation of the C record GSimpleAction.
+type SimpleAction struct {
+	native unsafe.Pointer
+}
+
+// SimpleAsyncResult is a representation of the C record GSimpleAsyncResult.
+type SimpleAsyncResult struct {
+	native unsafe.Pointer
+}
+
+// SimplePermission is a representation of the C record GSimplePermission.
+type SimplePermission struct {
+	native unsafe.Pointer
+}
+
+// Socket is a representation of the C record GSocket.
+//
+// since 2.22
+type Socket struct {
+	native unsafe.Pointer
+}
+
+// SocketAddress is a representation of the C record GSocketAddress.
+type SocketAddress struct {
+	native unsafe.Pointer
+}
+
+// SocketAddressEnumerator is a representation of the C record GSocketAddressEnumerator.
+type SocketAddressEnumerator struct {
+	native unsafe.Pointer
+}
+
+// SocketClient is a representation of the C record GSocketClient.
+//
+// since 2.22
+type SocketClient struct {
+	native unsafe.Pointer
+}
+
+// SocketConnection is a representation of the C record GSocketConnection.
+//
+// since 2.22
+type SocketConnection struct {
+	native unsafe.Pointer
+}
+
+// SocketControlMessage is a representation of the C record GSocketControlMessage.
+//
+// since 2.22
+type SocketControlMessage struct {
+	native unsafe.Pointer
+}
+
+// SocketListener is a representation of the C record GSocketListener.
+//
+// since 2.22
+type SocketListener struct {
+	native unsafe.Pointer
+}
+
+// SocketService is a representation of the C record GSocketService.
+//
+// since 2.22
+type SocketService struct {
+	native unsafe.Pointer
+}
+
+// Task is a representation of the C record GTask.
+type Task struct {
+	native unsafe.Pointer
+}
+
+// TcpConnection is a representation of the C record GTcpConnection.
+//
+// since 2.22
+type TcpConnection struct {
+	native unsafe.Pointer
+}
+
+// ThemedIcon is a representation of the C record GThemedIcon.
+type ThemedIcon struct {
+	native unsafe.Pointer
+}
+
+// ThreadedSocketService is a representation of the C record GThreadedSocketService.
+//
+// since 2.22
+type ThreadedSocketService struct {
+	native unsafe.Pointer
+}
+
+// UnixConnection is a representation of the C record GUnixConnection.
+//
+// since 2.22
+type UnixConnection struct {
+	native unsafe.Pointer
+}
+
+// UnixFDList is a representation of the C record GUnixFDList.
+type UnixFDList struct {
+	native unsafe.Pointer
+}
+
+// UnixFDMessage is a representation of the C record GUnixFDMessage.
+type UnixFDMessage struct {
+	native unsafe.Pointer
+}
+
+// UnixInputStream is a representation of the C record GUnixInputStream.
+type UnixInputStream struct {
+	native unsafe.Pointer
+}
+
+// UnixMountMonitor is a representation of the C record GUnixMountMonitor.
+type UnixMountMonitor struct {
+	native unsafe.Pointer
+}
+
+// UnixOutputStream is a representation of the C record GUnixOutputStream.
+type UnixOutputStream struct {
+	native unsafe.Pointer
+}
+
+// UnixSocketAddress is a representation of the C record GUnixSocketAddress.
+type UnixSocketAddress struct {
+	native unsafe.Pointer
+}
+
+// Vfs is a representation of the C record GVfs.
+type Vfs struct {
+	native unsafe.Pointer
+}
+
+// VolumeMonitor is a representation of the C record GVolumeMonitor.
+type VolumeMonitor struct {
+	native unsafe.Pointer
+}
+
+// ZlibCompressor is a representation of the C record GZlibCompressor.
+type ZlibCompressor struct {
+	native unsafe.Pointer
+}
+
+// ZlibDecompressor is a representation of the C record GZlibDecompressor.
+type ZlibDecompressor struct {
+	native unsafe.Pointer
+}
+
+// Action is a representation of the C interface GAction.
+type Action struct {
+	native unsafe.Pointer
+}
+
+// ActionGroup is a representation of the C interface GActionGroup.
+type ActionGroup struct {
+	native unsafe.Pointer
+}
+
+// AppInfo is a representation of the C interface GAppInfo.
+type AppInfo struct {
+	native unsafe.Pointer
+}
+
+// AsyncInitable is a representation of the C interface GAsyncInitable.
+//
+// since 2.22
+type AsyncInitable struct {
+	native unsafe.Pointer
+}
+
+// AsyncResult is a representation of the C interface GAsyncResult.
+type AsyncResult struct {
+	native unsafe.Pointer
+}
+
+// Converter is a representation of the C interface GConverter.
+//
+// since 2.24
+type Converter struct {
+	native unsafe.Pointer
+}
+
+// DBusObject is a representation of the C interface GDBusObject.
+type DBusObject struct {
+	native unsafe.Pointer
+}
+
+// DBusObjectManager is a representation of the C interface GDBusObjectManager.
+type DBusObjectManager struct {
+	native unsafe.Pointer
+}
+
+// DesktopAppInfoLookup is a representation of the C interface GDesktopAppInfoLookup.
+type DesktopAppInfoLookup struct {
+	native unsafe.Pointer
+}
+
+// Drive is a representation of the C interface GDrive.
+type Drive struct {
+	native unsafe.Pointer
+}
+
+// File is a representation of the C interface GFile.
+type File struct {
+	native unsafe.Pointer
+}
+
+// FileDescriptorBased is a representation of the C interface GFileDescriptorBased.
+//
+// since 2.24
+type FileDescriptorBased struct {
+	native unsafe.Pointer
+}
+
+// Icon is a representation of the C interface GIcon.
+type Icon struct {
+	native unsafe.Pointer
+}
+
+// Initable is a representation of the C interface GInitable.
+//
+// since 2.22
+type Initable struct {
+	native unsafe.Pointer
+}
+
+// ListModel is a representation of the C interface GListModel.
+type ListModel struct {
+	native unsafe.Pointer
+}
+
+// LoadableIcon is a representation of the C interface GLoadableIcon.
+type LoadableIcon struct {
+	native unsafe.Pointer
+}
+
+// Mount is a representation of the C interface GMount.
+type Mount struct {
+	native unsafe.Pointer
+}
+
+// Seekable is a representation of the C interface GSeekable.
+type Seekable struct {
+	native unsafe.Pointer
+}
+
+// SocketConnectable is a representation of the C interface GSocketConnectable.
+type SocketConnectable struct {
+	native unsafe.Pointer
+}
+
+// Volume is a representation of the C interface GVolume.
+type Volume struct {
+	native unsafe.Pointer
+}

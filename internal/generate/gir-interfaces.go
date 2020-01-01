@@ -30,3 +30,11 @@ func (ii Interfaces) generateSys(f *jen.File, version semver.Version) {
 
 	f.Line()
 }
+
+func (ii Interfaces) generateLib(f *jen.File, version semver.Version) {
+	for _, i := range ii {
+		i.generateLib(f, version)
+	}
+
+	f.Line()
+}

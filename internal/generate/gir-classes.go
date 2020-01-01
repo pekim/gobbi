@@ -30,3 +30,11 @@ func (cc Classes) generateSys(f *jen.File, version semver.Version) {
 
 	f.Line()
 }
+
+func (cc Classes) generateLib(f *jen.File, version semver.Version) {
+	for _, c := range cc {
+		c.generateLib(f, version)
+	}
+
+	f.Line()
+}

@@ -8487,3 +8487,93 @@ type WindowClass struct {
 type WindowRedirect struct {
 	native unsafe.Pointer
 }
+
+// AppLaunchContext is a representation of the C record GdkAppLaunchContext.
+type AppLaunchContext struct {
+	native unsafe.Pointer
+}
+
+// Cursor is a representation of the C record GdkCursor.
+type Cursor struct {
+	native unsafe.Pointer
+}
+
+// Device is a representation of the C record GdkDevice.
+type Device struct {
+	native unsafe.Pointer
+}
+
+// DeviceManager is a representation of the C record GdkDeviceManager.
+type DeviceManager struct {
+	native unsafe.Pointer
+}
+
+// DeviceTool is a representation of the C record GdkDeviceTool.
+type DeviceTool struct {
+	native unsafe.Pointer
+}
+
+// Display is a representation of the C record GdkDisplay.
+type Display struct {
+	native unsafe.Pointer
+}
+
+// DisplayManager is a representation of the C record GdkDisplayManager.
+type DisplayManager struct {
+	native unsafe.Pointer
+}
+
+// DragContext is a representation of the C record GdkDragContext.
+type DragContext struct {
+	native unsafe.Pointer
+}
+
+// DrawingContext is a representation of the C record GdkDrawingContext.
+type DrawingContext struct {
+	native unsafe.Pointer
+}
+
+// FrameClock is a representation of the C record GdkFrameClock.
+type FrameClock struct {
+	native unsafe.Pointer
+}
+
+// GLContext is a representation of the C record GdkGLContext.
+type GLContext struct {
+	native unsafe.Pointer
+}
+
+// Keymap is a representation of the C record GdkKeymap.
+type Keymap struct {
+	native unsafe.Pointer
+}
+
+// Monitor is a representation of the C record GdkMonitor.
+type Monitor struct {
+	native unsafe.Pointer
+}
+
+// Screen is a representation of the C record GdkScreen.
+type Screen struct {
+	native unsafe.Pointer
+}
+
+// Seat is a representation of the C record GdkSeat.
+type Seat struct {
+	native unsafe.Pointer
+}
+
+// Visual is a representation of the C record GdkVisual.
+type Visual struct {
+	native unsafe.Pointer
+}
+
+// Window is a representation of the C record GdkWindow.
+type Window struct {
+	native unsafe.Pointer
+}
+
+// DevicePad is a representation of the C interface GdkDevicePad.
+type DevicePad struct {
+	native unsafe.Pointer
+}

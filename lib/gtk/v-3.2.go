@@ -5887,3 +5887,1399 @@ type WindowGroupPrivate struct {
 type WindowPrivate struct {
 	native unsafe.Pointer
 }
+
+// AboutDialog is a representation of the C record GtkAboutDialog.
+type AboutDialog struct {
+	native unsafe.Pointer
+}
+
+// AccelGroup is a representation of the C record GtkAccelGroup.
+type AccelGroup struct {
+	native unsafe.Pointer
+}
+
+// AccelLabel is a representation of the C record GtkAccelLabel.
+type AccelLabel struct {
+	native unsafe.Pointer
+}
+
+// AccelMap is a representation of the C record GtkAccelMap.
+type AccelMap struct {
+	native unsafe.Pointer
+}
+
+// Accessible is a representation of the C record GtkAccessible.
+type Accessible struct {
+	native unsafe.Pointer
+}
+
+// Action is a representation of the C record GtkAction.
+type Action struct {
+	native unsafe.Pointer
+}
+
+// ActionBar is a representation of the C record GtkActionBar.
+type ActionBar struct {
+	native unsafe.Pointer
+}
+
+// ActionGroup is a representation of the C record GtkActionGroup.
+type ActionGroup struct {
+	native unsafe.Pointer
+}
+
+// Adjustment is a representation of the C record GtkAdjustment.
+type Adjustment struct {
+	native unsafe.Pointer
+}
+
+// Alignment is a representation of the C record GtkAlignment.
+type Alignment struct {
+	native unsafe.Pointer
+}
+
+// AppChooserButton is a representation of the C record GtkAppChooserButton.
+type AppChooserButton struct {
+	native unsafe.Pointer
+}
+
+// AppChooserDialog is a representation of the C record GtkAppChooserDialog.
+type AppChooserDialog struct {
+	native unsafe.Pointer
+}
+
+// AppChooserWidget is a representation of the C record GtkAppChooserWidget.
+type AppChooserWidget struct {
+	native unsafe.Pointer
+}
+
+// Application is a representation of the C record GtkApplication.
+type Application struct {
+	native unsafe.Pointer
+}
+
+// ApplicationWindow is a representation of the C record GtkApplicationWindow.
+type ApplicationWindow struct {
+	native unsafe.Pointer
+}
+
+// Arrow is a representation of the C record GtkArrow.
+type Arrow struct {
+	native unsafe.Pointer
+}
+
+// ArrowAccessible is a representation of the C record GtkArrowAccessible.
+type ArrowAccessible struct {
+	native unsafe.Pointer
+}
+
+// AspectFrame is a representation of the C record GtkAspectFrame.
+type AspectFrame struct {
+	native unsafe.Pointer
+}
+
+// Assistant is a representation of the C record GtkAssistant.
+type Assistant struct {
+	native unsafe.Pointer
+}
+
+// Bin is a representation of the C record GtkBin.
+type Bin struct {
+	native unsafe.Pointer
+}
+
+// BooleanCellAccessible is a representation of the C record GtkBooleanCellAccessible.
+type BooleanCellAccessible struct {
+	native unsafe.Pointer
+}
+
+// Box is a representation of the C record GtkBox.
+type Box struct {
+	native unsafe.Pointer
+}
+
+// Builder is a representation of the C record GtkBuilder.
+type Builder struct {
+	native unsafe.Pointer
+}
+
+// Button is a representation of the C record GtkButton.
+type Button struct {
+	native unsafe.Pointer
+}
+
+// ButtonAccessible is a representation of the C record GtkButtonAccessible.
+type ButtonAccessible struct {
+	native unsafe.Pointer
+}
+
+// ButtonBox is a representation of the C record GtkButtonBox.
+type ButtonBox struct {
+	native unsafe.Pointer
+}
+
+// Calendar is a representation of the C record GtkCalendar.
+type Calendar struct {
+	native unsafe.Pointer
+}
+
+// CellAccessible is a representation of the C record GtkCellAccessible.
+type CellAccessible struct {
+	native unsafe.Pointer
+}
+
+// CellArea is a representation of the C record GtkCellArea.
+type CellArea struct {
+	native unsafe.Pointer
+}
+
+// CellAreaBox is a representation of the C record GtkCellAreaBox.
+type CellAreaBox struct {
+	native unsafe.Pointer
+}
+
+// CellAreaContext is a representation of the C record GtkCellAreaContext.
+type CellAreaContext struct {
+	native unsafe.Pointer
+}
+
+// CellRenderer is a representation of the C record GtkCellRenderer.
+type CellRenderer struct {
+	native unsafe.Pointer
+}
+
+// CellRendererAccel is a representation of the C record GtkCellRendererAccel.
+type CellRendererAccel struct {
+	native unsafe.Pointer
+}
+
+// CellRendererCombo is a representation of the C record GtkCellRendererCombo.
+type CellRendererCombo struct {
+	native unsafe.Pointer
+}
+
+// CellRendererPixbuf is a representation of the C record GtkCellRendererPixbuf.
+type CellRendererPixbuf struct {
+	native unsafe.Pointer
+}
+
+// CellRendererProgress is a representation of the C record GtkCellRendererProgress.
+type CellRendererProgress struct {
+	native unsafe.Pointer
+}
+
+// CellRendererSpin is a representation of the C record GtkCellRendererSpin.
+type CellRendererSpin struct {
+	native unsafe.Pointer
+}
+
+// CellRendererSpinner is a representation of the C record GtkCellRendererSpinner.
+type CellRendererSpinner struct {
+	native unsafe.Pointer
+}
+
+// CellRendererText is a representation of the C record GtkCellRendererText.
+type CellRendererText struct {
+	native unsafe.Pointer
+}
+
+// CellRendererToggle is a representation of the C record GtkCellRendererToggle.
+type CellRendererToggle struct {
+	native unsafe.Pointer
+}
+
+// CellView is a representation of the C record GtkCellView.
+type CellView struct {
+	native unsafe.Pointer
+}
+
+// CheckButton is a representation of the C record GtkCheckButton.
+type CheckButton struct {
+	native unsafe.Pointer
+}
+
+// CheckMenuItem is a representation of the C record GtkCheckMenuItem.
+type CheckMenuItem struct {
+	native unsafe.Pointer
+}
+
+// CheckMenuItemAccessible is a representation of the C record GtkCheckMenuItemAccessible.
+type CheckMenuItemAccessible struct {
+	native unsafe.Pointer
+}
+
+// Clipboard is a representation of the C record GtkClipboard.
+type Clipboard struct {
+	native unsafe.Pointer
+}
+
+// ColorButton is a representation of the C record GtkColorButton.
+type ColorButton struct {
+	native unsafe.Pointer
+}
+
+// ColorSelection is a representation of the C record GtkColorSelection.
+type ColorSelection struct {
+	native unsafe.Pointer
+}
+
+// ColorSelectionDialog is a representation of the C record GtkColorSelectionDialog.
+type ColorSelectionDialog struct {
+	native unsafe.Pointer
+}
+
+// ComboBox is a representation of the C record GtkComboBox.
+type ComboBox struct {
+	native unsafe.Pointer
+}
+
+// ComboBoxAccessible is a representation of the C record GtkComboBoxAccessible.
+type ComboBoxAccessible struct {
+	native unsafe.Pointer
+}
+
+// ComboBoxText is a representation of the C record GtkComboBoxText.
+type ComboBoxText struct {
+	native unsafe.Pointer
+}
+
+// Container is a representation of the C record GtkContainer.
+type Container struct {
+	native unsafe.Pointer
+}
+
+// ContainerAccessible is a representation of the C record GtkContainerAccessible.
+type ContainerAccessible struct {
+	native unsafe.Pointer
+}
+
+// ContainerCellAccessible is a representation of the C record GtkContainerCellAccessible.
+type ContainerCellAccessible struct {
+	native unsafe.Pointer
+}
+
+// CssProvider is a representation of the C record GtkCssProvider.
+type CssProvider struct {
+	native unsafe.Pointer
+}
+
+// Dialog is a representation of the C record GtkDialog.
+type Dialog struct {
+	native unsafe.Pointer
+}
+
+// DrawingArea is a representation of the C record GtkDrawingArea.
+type DrawingArea struct {
+	native unsafe.Pointer
+}
+
+// Entry is a representation of the C record GtkEntry.
+type Entry struct {
+	native unsafe.Pointer
+}
+
+// EntryAccessible is a representation of the C record GtkEntryAccessible.
+type EntryAccessible struct {
+	native unsafe.Pointer
+}
+
+// EntryBuffer is a representation of the C record GtkEntryBuffer.
+//
+// since 2.18
+type EntryBuffer struct {
+	native unsafe.Pointer
+}
+
+// EntryCompletion is a representation of the C record GtkEntryCompletion.
+type EntryCompletion struct {
+	native unsafe.Pointer
+}
+
+// UNSUPPORTED : EntryIconAccessible : blacklisted
+
+// EventBox is a representation of the C record GtkEventBox.
+type EventBox struct {
+	native unsafe.Pointer
+}
+
+// EventController is a representation of the C record GtkEventController.
+type EventController struct {
+	native unsafe.Pointer
+}
+
+// UNSUPPORTED : EventControllerKey : blacklisted
+
+// UNSUPPORTED : EventControllerMotion : blacklisted
+
+// UNSUPPORTED : EventControllerScroll : blacklisted
+
+// Expander is a representation of the C record GtkExpander.
+type Expander struct {
+	native unsafe.Pointer
+}
+
+// ExpanderAccessible is a representation of the C record GtkExpanderAccessible.
+type ExpanderAccessible struct {
+	native unsafe.Pointer
+}
+
+// FileChooserButton is a representation of the C record GtkFileChooserButton.
+type FileChooserButton struct {
+	native unsafe.Pointer
+}
+
+// FileChooserDialog is a representation of the C record GtkFileChooserDialog.
+type FileChooserDialog struct {
+	native unsafe.Pointer
+}
+
+// FileChooserNative is a representation of the C record GtkFileChooserNative.
+type FileChooserNative struct {
+	native unsafe.Pointer
+}
+
+// FileChooserWidget is a representation of the C record GtkFileChooserWidget.
+type FileChooserWidget struct {
+	native unsafe.Pointer
+}
+
+// FileFilter is a representation of the C record GtkFileFilter.
+type FileFilter struct {
+	native unsafe.Pointer
+}
+
+// Fixed is a representation of the C record GtkFixed.
+type Fixed struct {
+	native unsafe.Pointer
+}
+
+// FlowBox is a representation of the C record GtkFlowBox.
+type FlowBox struct {
+	native unsafe.Pointer
+}
+
+// FlowBoxAccessible is a representation of the C record GtkFlowBoxAccessible.
+type FlowBoxAccessible struct {
+	native unsafe.Pointer
+}
+
+// FlowBoxChild is a representation of the C record GtkFlowBoxChild.
+type FlowBoxChild struct {
+	native unsafe.Pointer
+}
+
+// FlowBoxChildAccessible is a representation of the C record GtkFlowBoxChildAccessible.
+type FlowBoxChildAccessible struct {
+	native unsafe.Pointer
+}
+
+// FontButton is a representation of the C record GtkFontButton.
+type FontButton struct {
+	native unsafe.Pointer
+}
+
+// FontChooserDialog is a representation of the C record GtkFontChooserDialog.
+//
+// since 3.2
+type FontChooserDialog struct {
+	native unsafe.Pointer
+}
+
+// FontChooserWidget is a representation of the C record GtkFontChooserWidget.
+//
+// since 3.2
+type FontChooserWidget struct {
+	native unsafe.Pointer
+}
+
+// FontSelection is a representation of the C record GtkFontSelection.
+type FontSelection struct {
+	native unsafe.Pointer
+}
+
+// FontSelectionDialog is a representation of the C record GtkFontSelectionDialog.
+type FontSelectionDialog struct {
+	native unsafe.Pointer
+}
+
+// Frame is a representation of the C record GtkFrame.
+type Frame struct {
+	native unsafe.Pointer
+}
+
+// FrameAccessible is a representation of the C record GtkFrameAccessible.
+type FrameAccessible struct {
+	native unsafe.Pointer
+}
+
+// Gesture is a representation of the C record GtkGesture.
+type Gesture struct {
+	native unsafe.Pointer
+}
+
+// GestureDrag is a representation of the C record GtkGestureDrag.
+type GestureDrag struct {
+	native unsafe.Pointer
+}
+
+// GestureLongPress is a representation of the C record GtkGestureLongPress.
+type GestureLongPress struct {
+	native unsafe.Pointer
+}
+
+// GestureMultiPress is a representation of the C record GtkGestureMultiPress.
+type GestureMultiPress struct {
+	native unsafe.Pointer
+}
+
+// GesturePan is a representation of the C record GtkGesturePan.
+type GesturePan struct {
+	native unsafe.Pointer
+}
+
+// GestureRotate is a representation of the C record GtkGestureRotate.
+type GestureRotate struct {
+	native unsafe.Pointer
+}
+
+// GestureSingle is a representation of the C record GtkGestureSingle.
+type GestureSingle struct {
+	native unsafe.Pointer
+}
+
+// UNSUPPORTED : GestureStylus : blacklisted
+
+// GestureSwipe is a representation of the C record GtkGestureSwipe.
+type GestureSwipe struct {
+	native unsafe.Pointer
+}
+
+// GestureZoom is a representation of the C record GtkGestureZoom.
+type GestureZoom struct {
+	native unsafe.Pointer
+}
+
+// Grid is a representation of the C record GtkGrid.
+type Grid struct {
+	native unsafe.Pointer
+}
+
+// HBox is a representation of the C record GtkHBox.
+type HBox struct {
+	native unsafe.Pointer
+}
+
+// HButtonBox is a representation of the C record GtkHButtonBox.
+type HButtonBox struct {
+	native unsafe.Pointer
+}
+
+// HPaned is a representation of the C record GtkHPaned.
+type HPaned struct {
+	native unsafe.Pointer
+}
+
+// HSV is a representation of the C record GtkHSV.
+type HSV struct {
+	native unsafe.Pointer
+}
+
+// HScale is a representation of the C record GtkHScale.
+type HScale struct {
+	native unsafe.Pointer
+}
+
+// HScrollbar is a representation of the C record GtkHScrollbar.
+type HScrollbar struct {
+	native unsafe.Pointer
+}
+
+// HSeparator is a representation of the C record GtkHSeparator.
+type HSeparator struct {
+	native unsafe.Pointer
+}
+
+// HandleBox is a representation of the C record GtkHandleBox.
+type HandleBox struct {
+	native unsafe.Pointer
+}
+
+// HeaderBar is a representation of the C record GtkHeaderBar.
+type HeaderBar struct {
+	native unsafe.Pointer
+}
+
+// UNSUPPORTED : HeaderBarAccessible : blacklisted
+
+// IMContext is a representation of the C record GtkIMContext.
+type IMContext struct {
+	native unsafe.Pointer
+}
+
+// IMContextSimple is a representation of the C record GtkIMContextSimple.
+type IMContextSimple struct {
+	native unsafe.Pointer
+}
+
+// IMMulticontext is a representation of the C record GtkIMMulticontext.
+type IMMulticontext struct {
+	native unsafe.Pointer
+}
+
+// IconFactory is a representation of the C record GtkIconFactory.
+type IconFactory struct {
+	native unsafe.Pointer
+}
+
+// IconInfo is a representation of the C record GtkIconInfo.
+type IconInfo struct {
+	native unsafe.Pointer
+}
+
+// IconTheme is a representation of the C record GtkIconTheme.
+type IconTheme struct {
+	native unsafe.Pointer
+}
+
+// IconView is a representation of the C record GtkIconView.
+type IconView struct {
+	native unsafe.Pointer
+}
+
+// IconViewAccessible is a representation of the C record GtkIconViewAccessible.
+type IconViewAccessible struct {
+	native unsafe.Pointer
+}
+
+// Image is a representation of the C record GtkImage.
+type Image struct {
+	native unsafe.Pointer
+}
+
+// ImageAccessible is a representation of the C record GtkImageAccessible.
+type ImageAccessible struct {
+	native unsafe.Pointer
+}
+
+// ImageCellAccessible is a representation of the C record GtkImageCellAccessible.
+type ImageCellAccessible struct {
+	native unsafe.Pointer
+}
+
+// ImageMenuItem is a representation of the C record GtkImageMenuItem.
+type ImageMenuItem struct {
+	native unsafe.Pointer
+}
+
+// InfoBar is a representation of the C record GtkInfoBar.
+type InfoBar struct {
+	native unsafe.Pointer
+}
+
+// Invisible is a representation of the C record GtkInvisible.
+type Invisible struct {
+	native unsafe.Pointer
+}
+
+// Label is a representation of the C record GtkLabel.
+type Label struct {
+	native unsafe.Pointer
+}
+
+// LabelAccessible is a representation of the C record GtkLabelAccessible.
+type LabelAccessible struct {
+	native unsafe.Pointer
+}
+
+// Layout is a representation of the C record GtkLayout.
+type Layout struct {
+	native unsafe.Pointer
+}
+
+// LevelBar is a representation of the C record GtkLevelBar.
+type LevelBar struct {
+	native unsafe.Pointer
+}
+
+// LevelBarAccessible is a representation of the C record GtkLevelBarAccessible.
+type LevelBarAccessible struct {
+	native unsafe.Pointer
+}
+
+// LinkButton is a representation of the C record GtkLinkButton.
+type LinkButton struct {
+	native unsafe.Pointer
+}
+
+// LinkButtonAccessible is a representation of the C record GtkLinkButtonAccessible.
+type LinkButtonAccessible struct {
+	native unsafe.Pointer
+}
+
+// ListBox is a representation of the C record GtkListBox.
+type ListBox struct {
+	native unsafe.Pointer
+}
+
+// ListBoxAccessible is a representation of the C record GtkListBoxAccessible.
+type ListBoxAccessible struct {
+	native unsafe.Pointer
+}
+
+// ListBoxRow is a representation of the C record GtkListBoxRow.
+type ListBoxRow struct {
+	native unsafe.Pointer
+}
+
+// ListBoxRowAccessible is a representation of the C record GtkListBoxRowAccessible.
+type ListBoxRowAccessible struct {
+	native unsafe.Pointer
+}
+
+// ListStore is a representation of the C record GtkListStore.
+type ListStore struct {
+	native unsafe.Pointer
+}
+
+// LockButton is a representation of the C record GtkLockButton.
+type LockButton struct {
+	native unsafe.Pointer
+}
+
+// LockButtonAccessible is a representation of the C record GtkLockButtonAccessible.
+type LockButtonAccessible struct {
+	native unsafe.Pointer
+}
+
+// Menu is a representation of the C record GtkMenu.
+type Menu struct {
+	native unsafe.Pointer
+}
+
+// MenuAccessible is a representation of the C record GtkMenuAccessible.
+type MenuAccessible struct {
+	native unsafe.Pointer
+}
+
+// MenuBar is a representation of the C record GtkMenuBar.
+type MenuBar struct {
+	native unsafe.Pointer
+}
+
+// MenuButton is a representation of the C record GtkMenuButton.
+type MenuButton struct {
+	native unsafe.Pointer
+}
+
+// MenuButtonAccessible is a representation of the C record GtkMenuButtonAccessible.
+type MenuButtonAccessible struct {
+	native unsafe.Pointer
+}
+
+// MenuItem is a representation of the C record GtkMenuItem.
+type MenuItem struct {
+	native unsafe.Pointer
+}
+
+// MenuItemAccessible is a representation of the C record GtkMenuItemAccessible.
+type MenuItemAccessible struct {
+	native unsafe.Pointer
+}
+
+// MenuShell is a representation of the C record GtkMenuShell.
+type MenuShell struct {
+	native unsafe.Pointer
+}
+
+// MenuShellAccessible is a representation of the C record GtkMenuShellAccessible.
+type MenuShellAccessible struct {
+	native unsafe.Pointer
+}
+
+// MenuToolButton is a representation of the C record GtkMenuToolButton.
+type MenuToolButton struct {
+	native unsafe.Pointer
+}
+
+// MessageDialog is a representation of the C record GtkMessageDialog.
+type MessageDialog struct {
+	native unsafe.Pointer
+}
+
+// Misc is a representation of the C record GtkMisc.
+type Misc struct {
+	native unsafe.Pointer
+}
+
+// ModelButton is a representation of the C record GtkModelButton.
+type ModelButton struct {
+	native unsafe.Pointer
+}
+
+// MountOperation is a representation of the C record GtkMountOperation.
+type MountOperation struct {
+	native unsafe.Pointer
+}
+
+// NativeDialog is a representation of the C record GtkNativeDialog.
+type NativeDialog struct {
+	native unsafe.Pointer
+}
+
+// Notebook is a representation of the C record GtkNotebook.
+type Notebook struct {
+	native unsafe.Pointer
+}
+
+// NotebookAccessible is a representation of the C record GtkNotebookAccessible.
+type NotebookAccessible struct {
+	native unsafe.Pointer
+}
+
+// NotebookPageAccessible is a representation of the C record GtkNotebookPageAccessible.
+type NotebookPageAccessible struct {
+	native unsafe.Pointer
+}
+
+// NumerableIcon is a representation of the C record GtkNumerableIcon.
+type NumerableIcon struct {
+	native unsafe.Pointer
+}
+
+// OffscreenWindow is a representation of the C record GtkOffscreenWindow.
+type OffscreenWindow struct {
+	native unsafe.Pointer
+}
+
+// Overlay is a representation of the C record GtkOverlay.
+type Overlay struct {
+	native unsafe.Pointer
+}
+
+// PadController is a representation of the C record GtkPadController.
+type PadController struct {
+	native unsafe.Pointer
+}
+
+// PageSetup is a representation of the C record GtkPageSetup.
+type PageSetup struct {
+	native unsafe.Pointer
+}
+
+// Paned is a representation of the C record GtkPaned.
+type Paned struct {
+	native unsafe.Pointer
+}
+
+// PanedAccessible is a representation of the C record GtkPanedAccessible.
+type PanedAccessible struct {
+	native unsafe.Pointer
+}
+
+// PlacesSidebar is a representation of the C record GtkPlacesSidebar.
+type PlacesSidebar struct {
+	native unsafe.Pointer
+}
+
+// Plug is a representation of the C record GtkPlug.
+type Plug struct {
+	native unsafe.Pointer
+}
+
+// PopoverAccessible is a representation of the C record GtkPopoverAccessible.
+type PopoverAccessible struct {
+	native unsafe.Pointer
+}
+
+// PopoverMenu is a representation of the C record GtkPopoverMenu.
+type PopoverMenu struct {
+	native unsafe.Pointer
+}
+
+// PrintContext is a representation of the C record GtkPrintContext.
+type PrintContext struct {
+	native unsafe.Pointer
+}
+
+// PrintOperation is a representation of the C record GtkPrintOperation.
+type PrintOperation struct {
+	native unsafe.Pointer
+}
+
+// PrintSettings is a representation of the C record GtkPrintSettings.
+type PrintSettings struct {
+	native unsafe.Pointer
+}
+
+// ProgressBar is a representation of the C record GtkProgressBar.
+type ProgressBar struct {
+	native unsafe.Pointer
+}
+
+// ProgressBarAccessible is a representation of the C record GtkProgressBarAccessible.
+type ProgressBarAccessible struct {
+	native unsafe.Pointer
+}
+
+// RadioAction is a representation of the C record GtkRadioAction.
+type RadioAction struct {
+	native unsafe.Pointer
+}
+
+// RadioButton is a representation of the C record GtkRadioButton.
+type RadioButton struct {
+	native unsafe.Pointer
+}
+
+// RadioButtonAccessible is a representation of the C record GtkRadioButtonAccessible.
+type RadioButtonAccessible struct {
+	native unsafe.Pointer
+}
+
+// RadioMenuItem is a representation of the C record GtkRadioMenuItem.
+type RadioMenuItem struct {
+	native unsafe.Pointer
+}
+
+// RadioMenuItemAccessible is a representation of the C record GtkRadioMenuItemAccessible.
+type RadioMenuItemAccessible struct {
+	native unsafe.Pointer
+}
+
+// RadioToolButton is a representation of the C record GtkRadioToolButton.
+type RadioToolButton struct {
+	native unsafe.Pointer
+}
+
+// Range is a representation of the C record GtkRange.
+type Range struct {
+	native unsafe.Pointer
+}
+
+// RangeAccessible is a representation of the C record GtkRangeAccessible.
+type RangeAccessible struct {
+	native unsafe.Pointer
+}
+
+// RcStyle is a representation of the C record GtkRcStyle.
+type RcStyle struct {
+	native unsafe.Pointer
+}
+
+// RecentAction is a representation of the C record GtkRecentAction.
+type RecentAction struct {
+	native unsafe.Pointer
+}
+
+// RecentChooserDialog is a representation of the C record GtkRecentChooserDialog.
+type RecentChooserDialog struct {
+	native unsafe.Pointer
+}
+
+// RecentChooserMenu is a representation of the C record GtkRecentChooserMenu.
+type RecentChooserMenu struct {
+	native unsafe.Pointer
+}
+
+// RecentChooserWidget is a representation of the C record GtkRecentChooserWidget.
+type RecentChooserWidget struct {
+	native unsafe.Pointer
+}
+
+// RecentFilter is a representation of the C record GtkRecentFilter.
+type RecentFilter struct {
+	native unsafe.Pointer
+}
+
+// RecentManager is a representation of the C record GtkRecentManager.
+//
+// since 2.10
+type RecentManager struct {
+	native unsafe.Pointer
+}
+
+// RendererCellAccessible is a representation of the C record GtkRendererCellAccessible.
+type RendererCellAccessible struct {
+	native unsafe.Pointer
+}
+
+// Revealer is a representation of the C record GtkRevealer.
+type Revealer struct {
+	native unsafe.Pointer
+}
+
+// Scale is a representation of the C record GtkScale.
+type Scale struct {
+	native unsafe.Pointer
+}
+
+// ScaleAccessible is a representation of the C record GtkScaleAccessible.
+type ScaleAccessible struct {
+	native unsafe.Pointer
+}
+
+// ScaleButton is a representation of the C record GtkScaleButton.
+type ScaleButton struct {
+	native unsafe.Pointer
+}
+
+// ScaleButtonAccessible is a representation of the C record GtkScaleButtonAccessible.
+type ScaleButtonAccessible struct {
+	native unsafe.Pointer
+}
+
+// Scrollbar is a representation of the C record GtkScrollbar.
+type Scrollbar struct {
+	native unsafe.Pointer
+}
+
+// ScrolledWindow is a representation of the C record GtkScrolledWindow.
+type ScrolledWindow struct {
+	native unsafe.Pointer
+}
+
+// ScrolledWindowAccessible is a representation of the C record GtkScrolledWindowAccessible.
+type ScrolledWindowAccessible struct {
+	native unsafe.Pointer
+}
+
+// Separator is a representation of the C record GtkSeparator.
+type Separator struct {
+	native unsafe.Pointer
+}
+
+// SeparatorMenuItem is a representation of the C record GtkSeparatorMenuItem.
+type SeparatorMenuItem struct {
+	native unsafe.Pointer
+}
+
+// SeparatorToolItem is a representation of the C record GtkSeparatorToolItem.
+type SeparatorToolItem struct {
+	native unsafe.Pointer
+}
+
+// Settings is a representation of the C record GtkSettings.
+type Settings struct {
+	native unsafe.Pointer
+}
+
+// ShortcutLabel is a representation of the C record GtkShortcutLabel.
+type ShortcutLabel struct {
+	native unsafe.Pointer
+}
+
+// ShortcutsGroup is a representation of the C record GtkShortcutsGroup.
+type ShortcutsGroup struct {
+	native unsafe.Pointer
+}
+
+// ShortcutsSection is a representation of the C record GtkShortcutsSection.
+type ShortcutsSection struct {
+	native unsafe.Pointer
+}
+
+// ShortcutsShortcut is a representation of the C record GtkShortcutsShortcut.
+type ShortcutsShortcut struct {
+	native unsafe.Pointer
+}
+
+// ShortcutsWindow is a representation of the C record GtkShortcutsWindow.
+type ShortcutsWindow struct {
+	native unsafe.Pointer
+}
+
+// SizeGroup is a representation of the C record GtkSizeGroup.
+type SizeGroup struct {
+	native unsafe.Pointer
+}
+
+// Socket is a representation of the C record GtkSocket.
+type Socket struct {
+	native unsafe.Pointer
+}
+
+// SpinButton is a representation of the C record GtkSpinButton.
+type SpinButton struct {
+	native unsafe.Pointer
+}
+
+// SpinButtonAccessible is a representation of the C record GtkSpinButtonAccessible.
+type SpinButtonAccessible struct {
+	native unsafe.Pointer
+}
+
+// Spinner is a representation of the C record GtkSpinner.
+type Spinner struct {
+	native unsafe.Pointer
+}
+
+// SpinnerAccessible is a representation of the C record GtkSpinnerAccessible.
+type SpinnerAccessible struct {
+	native unsafe.Pointer
+}
+
+// Stack is a representation of the C record GtkStack.
+type Stack struct {
+	native unsafe.Pointer
+}
+
+// UNSUPPORTED : StackAccessible : blacklisted
+
+// StackSwitcher is a representation of the C record GtkStackSwitcher.
+type StackSwitcher struct {
+	native unsafe.Pointer
+}
+
+// StatusIcon is a representation of the C record GtkStatusIcon.
+type StatusIcon struct {
+	native unsafe.Pointer
+}
+
+// Statusbar is a representation of the C record GtkStatusbar.
+type Statusbar struct {
+	native unsafe.Pointer
+}
+
+// StatusbarAccessible is a representation of the C record GtkStatusbarAccessible.
+type StatusbarAccessible struct {
+	native unsafe.Pointer
+}
+
+// Style is a representation of the C record GtkStyle.
+type Style struct {
+	native unsafe.Pointer
+}
+
+// StyleContext is a representation of the C record GtkStyleContext.
+type StyleContext struct {
+	native unsafe.Pointer
+}
+
+// StyleProperties is a representation of the C record GtkStyleProperties.
+type StyleProperties struct {
+	native unsafe.Pointer
+}
+
+// Switch is a representation of the C record GtkSwitch.
+type Switch struct {
+	native unsafe.Pointer
+}
+
+// SwitchAccessible is a representation of the C record GtkSwitchAccessible.
+type SwitchAccessible struct {
+	native unsafe.Pointer
+}
+
+// Table is a representation of the C record GtkTable.
+type Table struct {
+	native unsafe.Pointer
+}
+
+// TearoffMenuItem is a representation of the C record GtkTearoffMenuItem.
+type TearoffMenuItem struct {
+	native unsafe.Pointer
+}
+
+// TextBuffer is a representation of the C record GtkTextBuffer.
+type TextBuffer struct {
+	native unsafe.Pointer
+}
+
+// TextCellAccessible is a representation of the C record GtkTextCellAccessible.
+type TextCellAccessible struct {
+	native unsafe.Pointer
+}
+
+// TextChildAnchor is a representation of the C record GtkTextChildAnchor.
+type TextChildAnchor struct {
+	native unsafe.Pointer
+}
+
+// TextMark is a representation of the C record GtkTextMark.
+type TextMark struct {
+	native unsafe.Pointer
+}
+
+// TextTag is a representation of the C record GtkTextTag.
+type TextTag struct {
+	native unsafe.Pointer
+}
+
+// TextTagTable is a representation of the C record GtkTextTagTable.
+type TextTagTable struct {
+	native unsafe.Pointer
+}
+
+// TextView is a representation of the C record GtkTextView.
+type TextView struct {
+	native unsafe.Pointer
+}
+
+// TextViewAccessible is a representation of the C record GtkTextViewAccessible.
+type TextViewAccessible struct {
+	native unsafe.Pointer
+}
+
+// ThemingEngine is a representation of the C record GtkThemingEngine.
+type ThemingEngine struct {
+	native unsafe.Pointer
+}
+
+// ToggleAction is a representation of the C record GtkToggleAction.
+type ToggleAction struct {
+	native unsafe.Pointer
+}
+
+// ToggleButton is a representation of the C record GtkToggleButton.
+type ToggleButton struct {
+	native unsafe.Pointer
+}
+
+// ToggleButtonAccessible is a representation of the C record GtkToggleButtonAccessible.
+type ToggleButtonAccessible struct {
+	native unsafe.Pointer
+}
+
+// ToggleToolButton is a representation of the C record GtkToggleToolButton.
+type ToggleToolButton struct {
+	native unsafe.Pointer
+}
+
+// ToolButton is a representation of the C record GtkToolButton.
+type ToolButton struct {
+	native unsafe.Pointer
+}
+
+// ToolItem is a representation of the C record GtkToolItem.
+type ToolItem struct {
+	native unsafe.Pointer
+}
+
+// ToolItemGroup is a representation of the C record GtkToolItemGroup.
+//
+// since 2.20
+type ToolItemGroup struct {
+	native unsafe.Pointer
+}
+
+// ToolPalette is a representation of the C record GtkToolPalette.
+//
+// since 2.20
+type ToolPalette struct {
+	native unsafe.Pointer
+}
+
+// Toolbar is a representation of the C record GtkToolbar.
+type Toolbar struct {
+	native unsafe.Pointer
+}
+
+// Tooltip is a representation of the C record GtkTooltip.
+type Tooltip struct {
+	native unsafe.Pointer
+}
+
+// ToplevelAccessible is a representation of the C record GtkToplevelAccessible.
+type ToplevelAccessible struct {
+	native unsafe.Pointer
+}
+
+// TreeModelFilter is a representation of the C record GtkTreeModelFilter.
+type TreeModelFilter struct {
+	native unsafe.Pointer
+}
+
+// TreeModelSort is a representation of the C record GtkTreeModelSort.
+type TreeModelSort struct {
+	native unsafe.Pointer
+}
+
+// TreeSelection is a representation of the C record GtkTreeSelection.
+type TreeSelection struct {
+	native unsafe.Pointer
+}
+
+// TreeStore is a representation of the C record GtkTreeStore.
+type TreeStore struct {
+	native unsafe.Pointer
+}
+
+// TreeView is a representation of the C record GtkTreeView.
+type TreeView struct {
+	native unsafe.Pointer
+}
+
+// TreeViewAccessible is a representation of the C record GtkTreeViewAccessible.
+type TreeViewAccessible struct {
+	native unsafe.Pointer
+}
+
+// TreeViewColumn is a representation of the C record GtkTreeViewColumn.
+type TreeViewColumn struct {
+	native unsafe.Pointer
+}
+
+// UIManager is a representation of the C record GtkUIManager.
+type UIManager struct {
+	native unsafe.Pointer
+}
+
+// VBox is a representation of the C record GtkVBox.
+type VBox struct {
+	native unsafe.Pointer
+}
+
+// VButtonBox is a representation of the C record GtkVButtonBox.
+type VButtonBox struct {
+	native unsafe.Pointer
+}
+
+// VPaned is a representation of the C record GtkVPaned.
+type VPaned struct {
+	native unsafe.Pointer
+}
+
+// VScale is a representation of the C record GtkVScale.
+type VScale struct {
+	native unsafe.Pointer
+}
+
+// VScrollbar is a representation of the C record GtkVScrollbar.
+type VScrollbar struct {
+	native unsafe.Pointer
+}
+
+// VSeparator is a representation of the C record GtkVSeparator.
+type VSeparator struct {
+	native unsafe.Pointer
+}
+
+// Viewport is a representation of the C record GtkViewport.
+type Viewport struct {
+	native unsafe.Pointer
+}
+
+// VolumeButton is a representation of the C record GtkVolumeButton.
+type VolumeButton struct {
+	native unsafe.Pointer
+}
+
+// Widget is a representation of the C record GtkWidget.
+type Widget struct {
+	native unsafe.Pointer
+}
+
+// WidgetAccessible is a representation of the C record GtkWidgetAccessible.
+type WidgetAccessible struct {
+	native unsafe.Pointer
+}
+
+// Window is a representation of the C record GtkWindow.
+type Window struct {
+	native unsafe.Pointer
+}
+
+// WindowAccessible is a representation of the C record GtkWindowAccessible.
+type WindowAccessible struct {
+	native unsafe.Pointer
+}
+
+// WindowGroup is a representation of the C record GtkWindowGroup.
+type WindowGroup struct {
+	native unsafe.Pointer
+}
+
+// Activatable is a representation of the C interface GtkActivatable.
+type Activatable struct {
+	native unsafe.Pointer
+}
+
+// AppChooser is a representation of the C interface GtkAppChooser.
+type AppChooser struct {
+	native unsafe.Pointer
+}
+
+// Buildable is a representation of the C interface GtkBuildable.
+type Buildable struct {
+	native unsafe.Pointer
+}
+
+// CellAccessibleParent is a representation of the C interface GtkCellAccessibleParent.
+type CellAccessibleParent struct {
+	native unsafe.Pointer
+}
+
+// CellEditable is a representation of the C interface GtkCellEditable.
+type CellEditable struct {
+	native unsafe.Pointer
+}
+
+// CellLayout is a representation of the C interface GtkCellLayout.
+type CellLayout struct {
+	native unsafe.Pointer
+}
+
+// Editable is a representation of the C interface GtkEditable.
+type Editable struct {
+	native unsafe.Pointer
+}
+
+// FileChooser is a representation of the C interface GtkFileChooser.
+type FileChooser struct {
+	native unsafe.Pointer
+}
+
+// FontChooser is a representation of the C interface GtkFontChooser.
+type FontChooser struct {
+	native unsafe.Pointer
+}
+
+// Orientable is a representation of the C interface GtkOrientable.
+type Orientable struct {
+	native unsafe.Pointer
+}
+
+// PrintOperationPreview is a representation of the C interface GtkPrintOperationPreview.
+type PrintOperationPreview struct {
+	native unsafe.Pointer
+}
+
+// RecentChooser is a representation of the C interface GtkRecentChooser.
+type RecentChooser struct {
+	native unsafe.Pointer
+}
+
+// Scrollable is a representation of the C interface GtkScrollable.
+type Scrollable struct {
+	native unsafe.Pointer
+}
+
+// StyleProvider is a representation of the C interface GtkStyleProvider.
+type StyleProvider struct {
+	native unsafe.Pointer
+}
+
+// ToolShell is a representation of the C interface GtkToolShell.
+type ToolShell struct {
+	native unsafe.Pointer
+}
+
+// TreeDragDest is a representation of the C interface GtkTreeDragDest.
+type TreeDragDest struct {
+	native unsafe.Pointer
+}
+
+// TreeDragSource is a representation of the C interface GtkTreeDragSource.
+type TreeDragSource struct {
+	native unsafe.Pointer
+}
+
+// TreeModel is a representation of the C interface GtkTreeModel.
+type TreeModel struct {
+	native unsafe.Pointer
+}
+
+// TreeSortable is a representation of the C interface GtkTreeSortable.
+type TreeSortable struct {
+	native unsafe.Pointer
+}

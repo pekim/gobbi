@@ -103,3 +103,30 @@ type PixbufLoaderClass struct {
 type PixbufSimpleAnimClass struct {
 	native unsafe.Pointer
 }
+
+// Pixbuf is a representation of the C record GdkPixbuf.
+type Pixbuf struct {
+	native unsafe.Pointer
+}
+
+// PixbufAnimation is a representation of the C record GdkPixbufAnimation.
+type PixbufAnimation struct {
+	native unsafe.Pointer
+}
+
+// PixbufAnimationIter is a representation of the C record GdkPixbufAnimationIter.
+type PixbufAnimationIter struct {
+	native unsafe.Pointer
+}
+
+// PixbufLoader is a representation of the C record GdkPixbufLoader.
+type PixbufLoader struct {
+	native unsafe.Pointer
+}
+
+// PixbufSimpleAnim is a representation of the C record GdkPixbufSimpleAnim.
+type PixbufSimpleAnim struct {
+	native unsafe.Pointer
+}
+
+// UNSUPPORTED : PixbufSimpleAnimIter : blacklisted

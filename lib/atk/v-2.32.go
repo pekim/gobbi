@@ -1129,3 +1129,148 @@ type ValueIface struct {
 type WindowIface struct {
 	native unsafe.Pointer
 }
+
+// GObjectAccessible is a representation of the C record AtkGObjectAccessible.
+type GObjectAccessible struct {
+	native unsafe.Pointer
+}
+
+// Hyperlink is a representation of the C record AtkHyperlink.
+type Hyperlink struct {
+	native unsafe.Pointer
+}
+
+// Misc is a representation of the C record AtkMisc.
+type Misc struct {
+	native unsafe.Pointer
+}
+
+// NoOpObject is a representation of the C record AtkNoOpObject.
+type NoOpObject struct {
+	native unsafe.Pointer
+}
+
+// NoOpObjectFactory is a representation of the C record AtkNoOpObjectFactory.
+type NoOpObjectFactory struct {
+	native unsafe.Pointer
+}
+
+// Object is a representation of the C record AtkObject.
+type Object struct {
+	native unsafe.Pointer
+}
+
+// ObjectFactory is a representation of the C record AtkObjectFactory.
+type ObjectFactory struct {
+	native unsafe.Pointer
+}
+
+// Plug is a representation of the C record AtkPlug.
+type Plug struct {
+	native unsafe.Pointer
+}
+
+// Registry is a representation of the C record AtkRegistry.
+type Registry struct {
+	native unsafe.Pointer
+}
+
+// Relation is a representation of the C record AtkRelation.
+type Relation struct {
+	native unsafe.Pointer
+}
+
+// RelationSet is a representation of the C record AtkRelationSet.
+type RelationSet struct {
+	native unsafe.Pointer
+}
+
+// Socket is a representation of the C record AtkSocket.
+type Socket struct {
+	native unsafe.Pointer
+}
+
+// StateSet is a representation of the C record AtkStateSet.
+type StateSet struct {
+	native unsafe.Pointer
+}
+
+// Util is a representation of the C record AtkUtil.
+type Util struct {
+	native unsafe.Pointer
+}
+
+// Action is a representation of the C interface AtkAction.
+type Action struct {
+	native unsafe.Pointer
+}
+
+// Component is a representation of the C interface AtkComponent.
+type Component struct {
+	native unsafe.Pointer
+}
+
+// Document is a representation of the C interface AtkDocument.
+type Document struct {
+	native unsafe.Pointer
+}
+
+// EditableText is a representation of the C interface AtkEditableText.
+type EditableText struct {
+	native unsafe.Pointer
+}
+
+// HyperlinkImpl is a representation of the C interface AtkHyperlinkImpl.
+type HyperlinkImpl struct {
+	native unsafe.Pointer
+}
+
+// Hypertext is a representation of the C interface AtkHypertext.
+type Hypertext struct {
+	native unsafe.Pointer
+}
+
+// Image is a representation of the C interface AtkImage.
+type Image struct {
+	native unsafe.Pointer
+}
+
+// ImplementorIface is a representation of the C interface AtkImplementorIface.
+type ImplementorIface struct {
+	native unsafe.Pointer
+}
+
+// Selection is a representation of the C interface AtkSelection.
+type Selection struct {
+	native unsafe.Pointer
+}
+
+// StreamableContent is a representation of the C interface AtkStreamableContent.
+type StreamableContent struct {
+	native unsafe.Pointer
+}
+
+// Table is a representation of the C interface AtkTable.
+type Table struct {
+	native unsafe.Pointer
+}
+
+// TableCell is a representation of the C interface AtkTableCell.
+type TableCell struct {
+	native unsafe.Pointer
+}
+
+// Text is a representation of the C interface AtkText.
+type Text struct {
+	native unsafe.Pointer
+}
+
+// Value is a representation of the C interface AtkValue.
+type Value struct {
+	native unsafe.Pointer
+}
+
+// Window is a representation of the C interface AtkWindow.
+type Window struct {
+	native unsafe.Pointer
+}

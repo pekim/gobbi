@@ -637,3 +637,142 @@ type ValueArray struct {
 type WeakRef struct {
 	native unsafe.Pointer
 }
+
+// InitiallyUnowned is a representation of the C record GInitiallyUnowned.
+type InitiallyUnowned struct {
+	native unsafe.Pointer
+}
+
+// Object is a representation of the C record GObject.
+type Object struct {
+	native unsafe.Pointer
+}
+
+// ParamSpec is a representation of the C record GParamSpec.
+type ParamSpec struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecBoolean is a representation of the C record GParamSpecBoolean.
+type ParamSpecBoolean struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecBoxed is a representation of the C record GParamSpecBoxed.
+type ParamSpecBoxed struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecChar is a representation of the C record GParamSpecChar.
+type ParamSpecChar struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecDouble is a representation of the C record GParamSpecDouble.
+type ParamSpecDouble struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecEnum is a representation of the C record GParamSpecEnum.
+type ParamSpecEnum struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecFlags is a representation of the C record GParamSpecFlags.
+type ParamSpecFlags struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecFloat is a representation of the C record GParamSpecFloat.
+type ParamSpecFloat struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecGType is a representation of the C record GParamSpecGType.
+//
+// since 2.10
+type ParamSpecGType struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecInt is a representation of the C record GParamSpecInt.
+type ParamSpecInt struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecInt64 is a representation of the C record GParamSpecInt64.
+type ParamSpecInt64 struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecLong is a representation of the C record GParamSpecLong.
+type ParamSpecLong struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecObject is a representation of the C record GParamSpecObject.
+type ParamSpecObject struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecOverride is a representation of the C record GParamSpecOverride.
+//
+// since 2.4
+type ParamSpecOverride struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecParam is a representation of the C record GParamSpecParam.
+type ParamSpecParam struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecPointer is a representation of the C record GParamSpecPointer.
+type ParamSpecPointer struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecString is a representation of the C record GParamSpecString.
+type ParamSpecString struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecUChar is a representation of the C record GParamSpecUChar.
+type ParamSpecUChar struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecUInt is a representation of the C record GParamSpecUInt.
+type ParamSpecUInt struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecUInt64 is a representation of the C record GParamSpecUInt64.
+type ParamSpecUInt64 struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecULong is a representation of the C record GParamSpecULong.
+type ParamSpecULong struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecUnichar is a representation of the C record GParamSpecUnichar.
+type ParamSpecUnichar struct {
+	native unsafe.Pointer
+}
+
+// ParamSpecValueArray is a representation of the C record GParamSpecValueArray.
+type ParamSpecValueArray struct {
+	native unsafe.Pointer
+}
+
+// TypeModule is a representation of the C record GTypeModule.
+type TypeModule struct {
+	native unsafe.Pointer
+}
+
+// TypePlugin is a representation of the C interface GTypePlugin.
+type TypePlugin struct {
+	native unsafe.Pointer
+}

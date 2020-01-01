@@ -1015,3 +1015,59 @@ type ScriptIter struct {
 type TabArray struct {
 	native unsafe.Pointer
 }
+
+// Context is a representation of the C record PangoContext.
+type Context struct {
+	native unsafe.Pointer
+}
+
+// UNSUPPORTED : Engine : blacklisted
+
+// EngineLang is a representation of the C record PangoEngineLang.
+type EngineLang struct {
+	native unsafe.Pointer
+}
+
+// EngineShape is a representation of the C record PangoEngineShape.
+type EngineShape struct {
+	native unsafe.Pointer
+}
+
+// Font is a representation of the C record PangoFont.
+type Font struct {
+	native unsafe.Pointer
+}
+
+// FontFace is a representation of the C record PangoFontFace.
+type FontFace struct {
+	native unsafe.Pointer
+}
+
+// FontFamily is a representation of the C record PangoFontFamily.
+type FontFamily struct {
+	native unsafe.Pointer
+}
+
+// FontMap is a representation of the C record PangoFontMap.
+type FontMap struct {
+	native unsafe.Pointer
+}
+
+// Fontset is a representation of the C record PangoFontset.
+type Fontset struct {
+	native unsafe.Pointer
+}
+
+// UNSUPPORTED : FontsetSimple : blacklisted
+
+// Layout is a representation of the C record PangoLayout.
+type Layout struct {
+	native unsafe.Pointer
+}
+
+// Renderer is a representation of the C record PangoRenderer.
+//
+// since 1.8
+type Renderer struct {
+	native unsafe.Pointer
+}
