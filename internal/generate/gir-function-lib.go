@@ -78,6 +78,19 @@ func (f *Function) generateLibReturnTypeDeclaration(s *jen.Statement) {
 }
 
 func (f *Function) generateLibBody(g *jen.Group) {
+	for _, p := range f.Parameters {
+		if p.isVarargsOrValist() {
+			continue
+		}
+
+		if !p.isIn() {
+			continue
+		}
+
+		argVarName := "sys_" + p.goVarName
+		p.generateLibArg(g, argVarName)
+	}
+
 	//f.generateSysCArgs(g)
 	//
 	//cIdentifier := f.CIdentifier

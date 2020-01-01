@@ -828,43 +828,89 @@ const WrapMode_char = WrapMode(1)
 // WrapMode_word_char is a representation of the C enumeration member PANGO_WRAP_WORD_CHAR.
 const WrapMode_word_char = WrapMode(2)
 
-func Fn_pango_attr_background_alpha_new(alpha uint16) {}
+func Fn_pango_attr_background_alpha_new(alpha uint16) {
+	sys_alpha := uint16(alpha)
+}
 
-func Fn_pango_attr_background_new(red uint16, green uint16, blue uint16) {}
+func Fn_pango_attr_background_new(red uint16, green uint16, blue uint16) {
+	sys_red := uint16(red)
+	sys_green := uint16(green)
+	sys_blue := uint16(blue)
+}
 
-func Fn_pango_attr_fallback_new(enableFallback bool) {}
+func Fn_pango_attr_fallback_new(enableFallback bool) {
+	sys_enableFallback := bool(enableFallback)
+}
 
-func Fn_pango_attr_family_new(family string) {}
+func Fn_pango_attr_family_new(family string) {
+	sys_family := string(family)
+}
 
-func Fn_pango_attr_foreground_alpha_new(alpha uint16) {}
+func Fn_pango_attr_foreground_alpha_new(alpha uint16) {
+	sys_alpha := uint16(alpha)
+}
 
-func Fn_pango_attr_foreground_new(red uint16, green uint16, blue uint16) {}
+func Fn_pango_attr_foreground_new(red uint16, green uint16, blue uint16) {
+	sys_red := uint16(red)
+	sys_green := uint16(green)
+	sys_blue := uint16(blue)
+}
 
-func Fn_pango_attr_gravity_hint_new(hint int) {}
+func Fn_pango_attr_gravity_hint_new(hint int) {
+	sys_hint := int(hint)
+}
 
-func Fn_pango_attr_gravity_new(gravity int) {}
+func Fn_pango_attr_gravity_new(gravity int) {
+	sys_gravity := int(gravity)
+}
 
-func Fn_pango_attr_letter_spacing_new(letterSpacing int) {}
+func Fn_pango_attr_letter_spacing_new(letterSpacing int) {
+	sys_letterSpacing := int(letterSpacing)
+}
 
-func Fn_pango_attr_rise_new(rise int) {}
+func Fn_pango_attr_rise_new(rise int) {
+	sys_rise := int(rise)
+}
 
-func Fn_pango_attr_scale_new(scaleFactor float64) {}
+func Fn_pango_attr_scale_new(scaleFactor float64) {
+	sys_scaleFactor := float64(scaleFactor)
+}
 
-func Fn_pango_attr_stretch_new(stretch int) {}
+func Fn_pango_attr_stretch_new(stretch int) {
+	sys_stretch := int(stretch)
+}
 
-func Fn_pango_attr_strikethrough_color_new(red uint16, green uint16, blue uint16) {}
+func Fn_pango_attr_strikethrough_color_new(red uint16, green uint16, blue uint16) {
+	sys_red := uint16(red)
+	sys_green := uint16(green)
+	sys_blue := uint16(blue)
+}
 
-func Fn_pango_attr_strikethrough_new(strikethrough bool) {}
+func Fn_pango_attr_strikethrough_new(strikethrough bool) {
+	sys_strikethrough := bool(strikethrough)
+}
 
-func Fn_pango_attr_style_new(style int) {}
+func Fn_pango_attr_style_new(style int) {
+	sys_style := int(style)
+}
 
-func Fn_pango_attr_underline_color_new(red uint16, green uint16, blue uint16) {}
+func Fn_pango_attr_underline_color_new(red uint16, green uint16, blue uint16) {
+	sys_red := uint16(red)
+	sys_green := uint16(green)
+	sys_blue := uint16(blue)
+}
 
-func Fn_pango_attr_underline_new(underline int) {}
+func Fn_pango_attr_underline_new(underline int) {
+	sys_underline := int(underline)
+}
 
-func Fn_pango_attr_variant_new(variant int) {}
+func Fn_pango_attr_variant_new(variant int) {
+	sys_variant := int(variant)
+}
 
-func Fn_pango_attr_weight_new(weight int) {}
+func Fn_pango_attr_weight_new(weight int) {
+	sys_weight := int(weight)
+}
 
 // UNSUPPORTED : pango_break : has array param, attrs
 
@@ -874,84 +920,177 @@ func Fn_pango_attr_weight_new(weight int) {}
 
 // UNSUPPORTED : pango_default_break : blacklisted
 
-func Fn_pango_extents_to_pixels(inclusive *Rectangle, nearest *Rectangle) {}
+func Fn_pango_extents_to_pixels(inclusive *Rectangle, nearest *Rectangle) {
+	sys_inclusive := unsafe.Pointer(inclusive)
+	sys_nearest := unsafe.Pointer(nearest)
+}
 
-func Fn_pango_find_base_dir(text string, length int) {}
+func Fn_pango_find_base_dir(text string, length int) {
+	sys_text := string(text)
+	sys_length := int(length)
+}
 
 // UNSUPPORTED : pango_find_map : blacklisted
 
-func Fn_pango_find_paragraph_boundary(text string, length int) {}
+func Fn_pango_find_paragraph_boundary(text string, length int) {
+	sys_text := string(text)
+	sys_length := int(length)
+}
 
 // UNSUPPORTED : pango_get_lib_subdirectory : blacklisted
 
 // UNSUPPORTED : pango_get_log_attrs : has array param, log_attrs
 
-func Fn_pango_get_mirror_char(ch rune, mirroredCh *rune) {}
+func Fn_pango_get_mirror_char(ch rune, mirroredCh *rune) {
+	sys_ch := rune(ch)
+	sys_mirroredCh := *rune(mirroredCh)
+}
 
 // UNSUPPORTED : pango_get_sysconf_subdirectory : blacklisted
 
-func Fn_pango_is_zero_width(ch rune) {}
+func Fn_pango_is_zero_width(ch rune) {
+	sys_ch := rune(ch)
+}
 
 func Fn_pango_itemize(context *Context, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
+	sys_context := unsafe.Pointer(context)
+	sys_text := string(text)
+	sys_startIndex := int(startIndex)
+	sys_length := int(length)
+	sys_attrs := unsafe.Pointer(attrs)
+	sys_cachedIter := unsafe.Pointer(cachedIter)
 }
 
 func Fn_pango_itemize_with_base_dir(context *Context, baseDir int, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
+	sys_context := unsafe.Pointer(context)
+	sys_baseDir := int(baseDir)
+	sys_text := string(text)
+	sys_startIndex := int(startIndex)
+	sys_length := int(length)
+	sys_attrs := unsafe.Pointer(attrs)
+	sys_cachedIter := unsafe.Pointer(cachedIter)
 }
 
-func Fn_pango_log2vis_get_embedding_levels(text string, length int, pbaseDir *int) {}
+func Fn_pango_log2vis_get_embedding_levels(text string, length int, pbaseDir *int) {
+	sys_text := string(text)
+	sys_length := int(length)
+	sys_pbaseDir := *int(pbaseDir)
+}
 
 // UNSUPPORTED : pango_lookup_aliases : blacklisted
 
-func Fn_pango_markup_parser_finish(context *glib.MarkupParseContext) {}
+func Fn_pango_markup_parser_finish(context *glib.MarkupParseContext) {
+	sys_context := unsafe.Pointer(context)
+}
 
-func Fn_pango_markup_parser_new(accelMarker rune) {}
+func Fn_pango_markup_parser_new(accelMarker rune) {
+	sys_accelMarker := rune(accelMarker)
+}
 
 // UNSUPPORTED : pango_module_register : blacklisted
 
-func Fn_pango_parse_enum(type_ uint64, str string, warn bool) {}
-
-func Fn_pango_parse_markup(markupText string, length int, accelMarker rune) {}
-
-func Fn_pango_parse_stretch(str string, warn bool) {}
-
-func Fn_pango_parse_style(str string, warn bool) {}
-
-func Fn_pango_parse_variant(str string, warn bool) {}
-
-func Fn_pango_parse_weight(str string, warn bool) {}
-
-func Fn_pango_quantize_line_geometry(thickness *int, position *int) {}
-
-func Fn_pango_read_line(stream unsafe.Pointer) {}
-
-func Fn_pango_reorder_items(logicalItems *glib.List) {}
-
-func Fn_pango_scan_int(pos *string) {}
-
-func Fn_pango_scan_string(pos *string) {}
-
-func Fn_pango_scan_word(pos *string) {}
-
-func Fn_pango_shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {}
-
-func Fn_pango_shape_full(itemText string, itemLength int, paragraphText string, paragraphLength int, analysis *Analysis, glyphs *GlyphString) {
+func Fn_pango_parse_enum(type_ uint64, str string, warn bool) {
+	sys_type_ := uint64(type_)
+	sys_str := string(str)
+	sys_warn := bool(warn)
 }
 
-func Fn_pango_skip_space(pos *string) {}
+func Fn_pango_parse_markup(markupText string, length int, accelMarker rune) {
+	sys_markupText := string(markupText)
+	sys_length := int(length)
+	sys_accelMarker := rune(accelMarker)
+}
+
+func Fn_pango_parse_stretch(str string, warn bool) {
+	sys_str := string(str)
+	sys_warn := bool(warn)
+}
+
+func Fn_pango_parse_style(str string, warn bool) {
+	sys_str := string(str)
+	sys_warn := bool(warn)
+}
+
+func Fn_pango_parse_variant(str string, warn bool) {
+	sys_str := string(str)
+	sys_warn := bool(warn)
+}
+
+func Fn_pango_parse_weight(str string, warn bool) {
+	sys_str := string(str)
+	sys_warn := bool(warn)
+}
+
+func Fn_pango_quantize_line_geometry(thickness *int, position *int) {
+	sys_thickness := *int(thickness)
+	sys_position := *int(position)
+}
+
+func Fn_pango_read_line(stream unsafe.Pointer) {
+	sys_stream := unsafe.Pointer(stream)
+}
+
+func Fn_pango_reorder_items(logicalItems *glib.List) {
+	sys_logicalItems := unsafe.Pointer(logicalItems)
+}
+
+func Fn_pango_scan_int(pos *string) {
+	sys_pos := *string(pos)
+}
+
+func Fn_pango_scan_string(pos *string) {
+	sys_pos := *string(pos)
+}
+
+func Fn_pango_scan_word(pos *string) {
+	sys_pos := *string(pos)
+}
+
+func Fn_pango_shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
+	sys_text := string(text)
+	sys_length := int(length)
+	sys_analysis := unsafe.Pointer(analysis)
+	sys_glyphs := unsafe.Pointer(glyphs)
+}
+
+func Fn_pango_shape_full(itemText string, itemLength int, paragraphText string, paragraphLength int, analysis *Analysis, glyphs *GlyphString) {
+	sys_itemText := string(itemText)
+	sys_itemLength := int(itemLength)
+	sys_paragraphText := string(paragraphText)
+	sys_paragraphLength := int(paragraphLength)
+	sys_analysis := unsafe.Pointer(analysis)
+	sys_glyphs := unsafe.Pointer(glyphs)
+}
+
+func Fn_pango_skip_space(pos *string) {
+	sys_pos := *string(pos)
+}
 
 // UNSUPPORTED : pango_split_file_list : no array length
 
-func Fn_pango_trim_string(str string) {}
+func Fn_pango_trim_string(str string) {
+	sys_str := string(str)
+}
 
-func Fn_pango_unichar_direction(ch rune) {}
+func Fn_pango_unichar_direction(ch rune) {
+	sys_ch := rune(ch)
+}
 
-func Fn_pango_units_from_double(d float64) {}
+func Fn_pango_units_from_double(d float64) {
+	sys_d := float64(d)
+}
 
-func Fn_pango_units_to_double(i int) {}
+func Fn_pango_units_to_double(i int) {
+	sys_i := int(i)
+}
 
 func Fn_pango_version() {}
 
-func Fn_pango_version_check(requiredMajor int, requiredMinor int, requiredMicro int) {}
+func Fn_pango_version_check(requiredMajor int, requiredMinor int, requiredMicro int) {
+	sys_requiredMajor := int(requiredMajor)
+	sys_requiredMinor := int(requiredMinor)
+	sys_requiredMicro := int(requiredMicro)
+}
 
 func Fn_pango_version_string() {}
 

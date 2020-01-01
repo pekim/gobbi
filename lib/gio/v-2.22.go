@@ -892,27 +892,45 @@ const SocketType_seqpacket = SocketType(3)
 
 // UNSUPPORTED : g_bus_watch_name_on_connection : parameter 'name_appeared_handler' is callback
 
-func Fn_g_content_type_can_be_executable(type_ string) {}
+func Fn_g_content_type_can_be_executable(type_ string) {
+	sys_type_ := string(type_)
+}
 
-func Fn_g_content_type_equals(type1 string, type2 string) {}
+func Fn_g_content_type_equals(type1 string, type2 string) {
+	sys_type1 := string(type1)
+	sys_type2 := string(type2)
+}
 
-func Fn_g_content_type_from_mime_type(mimeType string) {}
+func Fn_g_content_type_from_mime_type(mimeType string) {
+	sys_mimeType := string(mimeType)
+}
 
-func Fn_g_content_type_get_description(type_ string) {}
+func Fn_g_content_type_get_description(type_ string) {
+	sys_type_ := string(type_)
+}
 
-func Fn_g_content_type_get_icon(type_ string) {}
+func Fn_g_content_type_get_icon(type_ string) {
+	sys_type_ := string(type_)
+}
 
 // UNSUPPORTED : g_content_type_get_mime_dirs : no array length
 
-func Fn_g_content_type_get_mime_type(type_ string) {}
+func Fn_g_content_type_get_mime_type(type_ string) {
+	sys_type_ := string(type_)
+}
 
 // UNSUPPORTED : g_content_type_guess : has array param, data
 
 // UNSUPPORTED : g_content_type_guess_for_tree : no array length
 
-func Fn_g_content_type_is_a(type_ string, supertype string) {}
+func Fn_g_content_type_is_a(type_ string, supertype string) {
+	sys_type_ := string(type_)
+	sys_supertype := string(supertype)
+}
 
-func Fn_g_content_type_is_unknown(type_ string) {}
+func Fn_g_content_type_is_unknown(type_ string) {
+	sys_type_ := string(type_)
+}
 
 // UNSUPPORTED : g_content_type_set_mime_dirs : parameter 'dirs' is array parameter without length parameter
 
@@ -926,7 +944,9 @@ func Fn_g_content_types_get_registered() {}
 
 // UNSUPPORTED : g_initable_newv : has array param, parameters
 
-func Fn_g_io_error_from_errno(errNo int) {}
+func Fn_g_io_error_from_errno(errNo int) {
+	sys_errNo := int(errNo)
+}
 
 func Fn_g_io_error_quark() {}
 
@@ -962,37 +982,68 @@ func Fn_g_io_scheduler_cancel_all_jobs() {}
 
 // UNSUPPORTED : g_simple_async_report_take_gerror_in_idle : parameter 'callback' is callback
 
-func Fn_g_unix_is_mount_path_system_internal(mountPath string) {}
+func Fn_g_unix_is_mount_path_system_internal(mountPath string) {
+	sys_mountPath := string(mountPath)
+}
 
-func Fn_g_unix_mount_at(mountPath string) {}
+func Fn_g_unix_mount_at(mountPath string) {
+	sys_mountPath := string(mountPath)
+}
 
-func Fn_g_unix_mount_compare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) {}
+func Fn_g_unix_mount_compare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) {
+	sys_mount1 := unsafe.Pointer(mount1)
+	sys_mount2 := unsafe.Pointer(mount2)
+}
 
-func Fn_g_unix_mount_free(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_free(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_get_device_path(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_get_device_path(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_get_fs_type(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_get_fs_type(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_get_mount_path(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_get_mount_path(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_guess_can_eject(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_guess_can_eject(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_guess_icon(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_guess_icon(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_guess_name(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_guess_name(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_guess_should_display(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_guess_should_display(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_is_readonly(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_is_readonly(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_is_system_internal(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_is_system_internal(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_points_changed_since(time uint64) {}
+func Fn_g_unix_mount_points_changed_since(time uint64) {
+	sys_time := uint64(time)
+}
 
 func Fn_g_unix_mount_points_get() {}
 
-func Fn_g_unix_mounts_changed_since(time uint64) {}
+func Fn_g_unix_mounts_changed_since(time uint64) {
+	sys_time := uint64(time)
+}
 
 func Fn_g_unix_mounts_get() {}
 

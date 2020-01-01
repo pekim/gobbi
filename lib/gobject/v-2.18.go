@@ -197,9 +197,15 @@ const TypeFundamentalFlags_derivable = TypeFundamentalFlags(4)
 // TypeFundamentalFlags_deep_derivable is a representation of the C bitfield member G_TYPE_FLAG_DEEP_DERIVABLE.
 const TypeFundamentalFlags_deep_derivable = TypeFundamentalFlags(8)
 
-func Fn_g_boxed_copy(boxedType uint64, srcBoxed unsafe.Pointer) {}
+func Fn_g_boxed_copy(boxedType uint64, srcBoxed unsafe.Pointer) {
+	sys_boxedType := uint64(boxedType)
+	sys_srcBoxed := unsafe.Pointer(srcBoxed)
+}
 
-func Fn_g_boxed_free(boxedType uint64, boxed unsafe.Pointer) {}
+func Fn_g_boxed_free(boxedType uint64, boxed unsafe.Pointer) {
+	sys_boxedType := uint64(boxedType)
+	sys_boxed := unsafe.Pointer(boxed)
+}
 
 // UNSUPPORTED : g_boxed_type_register_static : parameter 'boxed_copy' is callback
 
@@ -211,160 +217,429 @@ func Fn_g_boxed_free(boxedType uint64, boxed unsafe.Pointer) {}
 
 // UNSUPPORTED : g_cclosure_new_swap : parameter 'callback_func' is callback
 
-func Fn_g_enum_complete_type_info(gEnumType uint64, constValues *EnumValue) {}
+func Fn_g_enum_complete_type_info(gEnumType uint64, constValues *EnumValue) {
+	sys_gEnumType := uint64(gEnumType)
+	sys_constValues := unsafe.Pointer(constValues)
+}
 
-func Fn_g_enum_get_value(enumClass *EnumClass, value int) {}
+func Fn_g_enum_get_value(enumClass *EnumClass, value int) {
+	sys_enumClass := unsafe.Pointer(enumClass)
+	sys_value := int(value)
+}
 
-func Fn_g_enum_get_value_by_name(enumClass *EnumClass, name string) {}
+func Fn_g_enum_get_value_by_name(enumClass *EnumClass, name string) {
+	sys_enumClass := unsafe.Pointer(enumClass)
+	sys_name := string(name)
+}
 
-func Fn_g_enum_get_value_by_nick(enumClass *EnumClass, nick string) {}
+func Fn_g_enum_get_value_by_nick(enumClass *EnumClass, nick string) {
+	sys_enumClass := unsafe.Pointer(enumClass)
+	sys_nick := string(nick)
+}
 
-func Fn_g_enum_register_static(name string, constStaticValues *EnumValue) {}
+func Fn_g_enum_register_static(name string, constStaticValues *EnumValue) {
+	sys_name := string(name)
+	sys_constStaticValues := unsafe.Pointer(constStaticValues)
+}
 
-func Fn_g_flags_complete_type_info(gFlagsType uint64, constValues *FlagsValue) {}
+func Fn_g_flags_complete_type_info(gFlagsType uint64, constValues *FlagsValue) {
+	sys_gFlagsType := uint64(gFlagsType)
+	sys_constValues := unsafe.Pointer(constValues)
+}
 
-func Fn_g_flags_get_first_value(flagsClass *FlagsClass, value uint) {}
+func Fn_g_flags_get_first_value(flagsClass *FlagsClass, value uint) {
+	sys_flagsClass := unsafe.Pointer(flagsClass)
+	sys_value := uint(value)
+}
 
-func Fn_g_flags_get_value_by_name(flagsClass *FlagsClass, name string) {}
+func Fn_g_flags_get_value_by_name(flagsClass *FlagsClass, name string) {
+	sys_flagsClass := unsafe.Pointer(flagsClass)
+	sys_name := string(name)
+}
 
-func Fn_g_flags_get_value_by_nick(flagsClass *FlagsClass, nick string) {}
+func Fn_g_flags_get_value_by_nick(flagsClass *FlagsClass, nick string) {
+	sys_flagsClass := unsafe.Pointer(flagsClass)
+	sys_nick := string(nick)
+}
 
-func Fn_g_flags_register_static(name string, constStaticValues *FlagsValue) {}
+func Fn_g_flags_register_static(name string, constStaticValues *FlagsValue) {
+	sys_name := string(name)
+	sys_constStaticValues := unsafe.Pointer(constStaticValues)
+}
 
 func Fn_g_gtype_get_type() {}
 
-func Fn_g_param_spec_boolean(name string, nick string, blurb string, defaultValue bool, flags int) {}
+func Fn_g_param_spec_boolean(name string, nick string, blurb string, defaultValue bool, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_defaultValue := bool(defaultValue)
+	sys_flags := int(flags)
+}
 
-func Fn_g_param_spec_boxed(name string, nick string, blurb string, boxedType uint64, flags int) {}
+func Fn_g_param_spec_boxed(name string, nick string, blurb string, boxedType uint64, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_boxedType := uint64(boxedType)
+	sys_flags := int(flags)
+}
 
 func Fn_g_param_spec_char(name string, nick string, blurb string, minimum int8, maximum int8, defaultValue int8, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_minimum := int8(minimum)
+	sys_maximum := int8(maximum)
+	sys_defaultValue := int8(defaultValue)
+	sys_flags := int(flags)
 }
 
 func Fn_g_param_spec_double(name string, nick string, blurb string, minimum float64, maximum float64, defaultValue float64, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_minimum := float64(minimum)
+	sys_maximum := float64(maximum)
+	sys_defaultValue := float64(defaultValue)
+	sys_flags := int(flags)
 }
 
 func Fn_g_param_spec_enum(name string, nick string, blurb string, enumType uint64, defaultValue int, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_enumType := uint64(enumType)
+	sys_defaultValue := int(defaultValue)
+	sys_flags := int(flags)
 }
 
 func Fn_g_param_spec_flags(name string, nick string, blurb string, flagsType uint64, defaultValue uint, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_flagsType := uint64(flagsType)
+	sys_defaultValue := uint(defaultValue)
+	sys_flags := int(flags)
 }
 
 func Fn_g_param_spec_float(name string, nick string, blurb string, minimum float32, maximum float32, defaultValue float32, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_minimum := float32(minimum)
+	sys_maximum := float32(maximum)
+	sys_defaultValue := float32(defaultValue)
+	sys_flags := int(flags)
 }
 
-func Fn_g_param_spec_gtype(name string, nick string, blurb string, isAType uint64, flags int) {}
+func Fn_g_param_spec_gtype(name string, nick string, blurb string, isAType uint64, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_isAType := uint64(isAType)
+	sys_flags := int(flags)
+}
 
 func Fn_g_param_spec_int(name string, nick string, blurb string, minimum int, maximum int, defaultValue int, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_minimum := int(minimum)
+	sys_maximum := int(maximum)
+	sys_defaultValue := int(defaultValue)
+	sys_flags := int(flags)
 }
 
 func Fn_g_param_spec_int64(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_minimum := int64(minimum)
+	sys_maximum := int64(maximum)
+	sys_defaultValue := int64(defaultValue)
+	sys_flags := int(flags)
 }
 
 func Fn_g_param_spec_long(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_minimum := int64(minimum)
+	sys_maximum := int64(maximum)
+	sys_defaultValue := int64(defaultValue)
+	sys_flags := int(flags)
 }
 
-func Fn_g_param_spec_object(name string, nick string, blurb string, objectType uint64, flags int) {}
+func Fn_g_param_spec_object(name string, nick string, blurb string, objectType uint64, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_objectType := uint64(objectType)
+	sys_flags := int(flags)
+}
 
-func Fn_g_param_spec_override(name string, overridden *ParamSpec) {}
+func Fn_g_param_spec_override(name string, overridden *ParamSpec) {
+	sys_name := string(name)
+	sys_overridden := unsafe.Pointer(overridden)
+}
 
-func Fn_g_param_spec_param(name string, nick string, blurb string, paramType uint64, flags int) {}
+func Fn_g_param_spec_param(name string, nick string, blurb string, paramType uint64, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_paramType := uint64(paramType)
+	sys_flags := int(flags)
+}
 
-func Fn_g_param_spec_pointer(name string, nick string, blurb string, flags int) {}
+func Fn_g_param_spec_pointer(name string, nick string, blurb string, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_flags := int(flags)
+}
 
 func Fn_g_param_spec_string(name string, nick string, blurb string, defaultValue string, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_defaultValue := string(defaultValue)
+	sys_flags := int(flags)
 }
 
 func Fn_g_param_spec_uchar(name string, nick string, blurb string, minimum uint8, maximum uint8, defaultValue uint8, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_minimum := uint8(minimum)
+	sys_maximum := uint8(maximum)
+	sys_defaultValue := uint8(defaultValue)
+	sys_flags := int(flags)
 }
 
 func Fn_g_param_spec_uint(name string, nick string, blurb string, minimum uint, maximum uint, defaultValue uint, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_minimum := uint(minimum)
+	sys_maximum := uint(maximum)
+	sys_defaultValue := uint(defaultValue)
+	sys_flags := int(flags)
 }
 
 func Fn_g_param_spec_uint64(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_minimum := uint64(minimum)
+	sys_maximum := uint64(maximum)
+	sys_defaultValue := uint64(defaultValue)
+	sys_flags := int(flags)
 }
 
 func Fn_g_param_spec_ulong(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_minimum := uint64(minimum)
+	sys_maximum := uint64(maximum)
+	sys_defaultValue := uint64(defaultValue)
+	sys_flags := int(flags)
 }
 
-func Fn_g_param_spec_unichar(name string, nick string, blurb string, defaultValue rune, flags int) {}
+func Fn_g_param_spec_unichar(name string, nick string, blurb string, defaultValue rune, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_defaultValue := rune(defaultValue)
+	sys_flags := int(flags)
+}
 
 func Fn_g_param_spec_value_array(name string, nick string, blurb string, elementSpec *ParamSpec, flags int) {
+	sys_name := string(name)
+	sys_nick := string(nick)
+	sys_blurb := string(blurb)
+	sys_elementSpec := unsafe.Pointer(elementSpec)
+	sys_flags := int(flags)
 }
 
-func Fn_g_param_type_register_static(name string, pspecInfo *ParamSpecTypeInfo) {}
+func Fn_g_param_type_register_static(name string, pspecInfo *ParamSpecTypeInfo) {
+	sys_name := string(name)
+	sys_pspecInfo := unsafe.Pointer(pspecInfo)
+}
 
 func Fn_g_param_value_convert(pspec *ParamSpec, srcValue *Value, destValue *Value, strictValidation bool) {
+	sys_pspec := unsafe.Pointer(pspec)
+	sys_srcValue := unsafe.Pointer(srcValue)
+	sys_destValue := unsafe.Pointer(destValue)
+	sys_strictValidation := bool(strictValidation)
 }
 
-func Fn_g_param_value_defaults(pspec *ParamSpec, value *Value) {}
+func Fn_g_param_value_defaults(pspec *ParamSpec, value *Value) {
+	sys_pspec := unsafe.Pointer(pspec)
+	sys_value := unsafe.Pointer(value)
+}
 
-func Fn_g_param_value_set_default(pspec *ParamSpec, value *Value) {}
+func Fn_g_param_value_set_default(pspec *ParamSpec, value *Value) {
+	sys_pspec := unsafe.Pointer(pspec)
+	sys_value := unsafe.Pointer(value)
+}
 
-func Fn_g_param_value_validate(pspec *ParamSpec, value *Value) {}
+func Fn_g_param_value_validate(pspec *ParamSpec, value *Value) {
+	sys_pspec := unsafe.Pointer(pspec)
+	sys_value := unsafe.Pointer(value)
+}
 
-func Fn_g_param_values_cmp(pspec *ParamSpec, value1 *Value, value2 *Value) {}
+func Fn_g_param_values_cmp(pspec *ParamSpec, value1 *Value, value2 *Value) {
+	sys_pspec := unsafe.Pointer(pspec)
+	sys_value1 := unsafe.Pointer(value1)
+	sys_value2 := unsafe.Pointer(value2)
+}
 
-func Fn_g_pointer_type_register_static(name string) {}
+func Fn_g_pointer_type_register_static(name string) {
+	sys_name := string(name)
+}
 
 func Fn_g_signal_accumulator_true_handled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy unsafe.Pointer) {
+	sys_ihint := unsafe.Pointer(ihint)
+	sys_returnAccu := unsafe.Pointer(returnAccu)
+	sys_handlerReturn := unsafe.Pointer(handlerReturn)
+	sys_dummy := unsafe.Pointer(dummy)
 }
 
 // UNSUPPORTED : g_signal_add_emission_hook : parameter 'hook_func' is callback
 
 // UNSUPPORTED : g_signal_chain_from_overridden : parameter 'instance_and_params' is array parameter without length parameter
 
-func Fn_g_signal_chain_from_overridden_handler(instance unsafe.Pointer) {}
+func Fn_g_signal_chain_from_overridden_handler(instance unsafe.Pointer) {
+	sys_instance := unsafe.Pointer(instance)
+}
 
 func Fn_g_signal_connect_closure(instance unsafe.Pointer, detailedSignal string, closure *Closure, after bool) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_detailedSignal := string(detailedSignal)
+	sys_closure := unsafe.Pointer(closure)
+	sys_after := bool(after)
 }
 
 func Fn_g_signal_connect_closure_by_id(instance unsafe.Pointer, signalId uint, detail uint32, closure *Closure, after bool) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_signalId := uint(signalId)
+	sys_detail := uint32(detail)
+	sys_closure := unsafe.Pointer(closure)
+	sys_after := bool(after)
 }
 
 // UNSUPPORTED : g_signal_connect_data : parameter 'c_handler' is callback
 
 // UNSUPPORTED : g_signal_connect_object : parameter 'c_handler' is callback
 
-func Fn_g_signal_emit(instance unsafe.Pointer, signalId uint, detail uint32) {}
+func Fn_g_signal_emit(instance unsafe.Pointer, signalId uint, detail uint32) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_signalId := uint(signalId)
+	sys_detail := uint32(detail)
+}
 
-func Fn_g_signal_emit_by_name(instance unsafe.Pointer, detailedSignal string) {}
+func Fn_g_signal_emit_by_name(instance unsafe.Pointer, detailedSignal string) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_detailedSignal := string(detailedSignal)
+}
 
-func Fn_g_signal_emit_valist(instance unsafe.Pointer, signalId uint, detail uint32) {}
+func Fn_g_signal_emit_valist(instance unsafe.Pointer, signalId uint, detail uint32) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_signalId := uint(signalId)
+	sys_detail := uint32(detail)
+}
 
 // UNSUPPORTED : g_signal_emitv : parameter 'instance_and_params' is array parameter without length parameter
 
-func Fn_g_signal_get_invocation_hint(instance unsafe.Pointer) {}
+func Fn_g_signal_get_invocation_hint(instance unsafe.Pointer) {
+	sys_instance := unsafe.Pointer(instance)
+}
 
-func Fn_g_signal_handler_block(instance unsafe.Pointer, handlerId uint64) {}
+func Fn_g_signal_handler_block(instance unsafe.Pointer, handlerId uint64) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_handlerId := uint64(handlerId)
+}
 
-func Fn_g_signal_handler_disconnect(instance unsafe.Pointer, handlerId uint64) {}
+func Fn_g_signal_handler_disconnect(instance unsafe.Pointer, handlerId uint64) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_handlerId := uint64(handlerId)
+}
 
 func Fn_g_signal_handler_find(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_mask := int(mask)
+	sys_signalId := uint(signalId)
+	sys_detail := uint32(detail)
+	sys_closure := unsafe.Pointer(closure)
+	sys_func_ := unsafe.Pointer(func_)
+	sys_data := unsafe.Pointer(data)
 }
 
-func Fn_g_signal_handler_is_connected(instance unsafe.Pointer, handlerId uint64) {}
+func Fn_g_signal_handler_is_connected(instance unsafe.Pointer, handlerId uint64) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_handlerId := uint64(handlerId)
+}
 
-func Fn_g_signal_handler_unblock(instance unsafe.Pointer, handlerId uint64) {}
+func Fn_g_signal_handler_unblock(instance unsafe.Pointer, handlerId uint64) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_handlerId := uint64(handlerId)
+}
 
 func Fn_g_signal_handlers_block_matched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_mask := int(mask)
+	sys_signalId := uint(signalId)
+	sys_detail := uint32(detail)
+	sys_closure := unsafe.Pointer(closure)
+	sys_func_ := unsafe.Pointer(func_)
+	sys_data := unsafe.Pointer(data)
 }
 
-func Fn_g_signal_handlers_destroy(instance unsafe.Pointer) {}
+func Fn_g_signal_handlers_destroy(instance unsafe.Pointer) {
+	sys_instance := unsafe.Pointer(instance)
+}
 
 func Fn_g_signal_handlers_disconnect_matched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_mask := int(mask)
+	sys_signalId := uint(signalId)
+	sys_detail := uint32(detail)
+	sys_closure := unsafe.Pointer(closure)
+	sys_func_ := unsafe.Pointer(func_)
+	sys_data := unsafe.Pointer(data)
 }
 
 func Fn_g_signal_handlers_unblock_matched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_mask := int(mask)
+	sys_signalId := uint(signalId)
+	sys_detail := uint32(detail)
+	sys_closure := unsafe.Pointer(closure)
+	sys_func_ := unsafe.Pointer(func_)
+	sys_data := unsafe.Pointer(data)
 }
 
 func Fn_g_signal_has_handler_pending(instance unsafe.Pointer, signalId uint, detail uint32, mayBeBlocked bool) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_signalId := uint(signalId)
+	sys_detail := uint32(detail)
+	sys_mayBeBlocked := bool(mayBeBlocked)
 }
 
-func Fn_g_signal_list_ids(itype uint64) {}
+func Fn_g_signal_list_ids(itype uint64) {
+	sys_itype := uint64(itype)
+}
 
-func Fn_g_signal_lookup(name string, itype uint64) {}
+func Fn_g_signal_lookup(name string, itype uint64) {
+	sys_name := string(name)
+	sys_itype := uint64(itype)
+}
 
-func Fn_g_signal_name(signalId uint) {}
+func Fn_g_signal_name(signalId uint) {
+	sys_signalId := uint(signalId)
+}
 
 // UNSUPPORTED : g_signal_new : parameter 'accumulator' is callback
 
@@ -375,113 +650,234 @@ func Fn_g_signal_name(signalId uint) {}
 // UNSUPPORTED : g_signal_newv : parameter 'accumulator' is callback
 
 func Fn_g_signal_override_class_closure(signalId uint, instanceType uint64, classClosure *Closure) {
+	sys_signalId := uint(signalId)
+	sys_instanceType := uint64(instanceType)
+	sys_classClosure := unsafe.Pointer(classClosure)
 }
 
 // UNSUPPORTED : g_signal_override_class_handler : parameter 'class_handler' is callback
 
-func Fn_g_signal_parse_name(detailedSignal string, itype uint64, forceDetailQuark bool) {}
+func Fn_g_signal_parse_name(detailedSignal string, itype uint64, forceDetailQuark bool) {
+	sys_detailedSignal := string(detailedSignal)
+	sys_itype := uint64(itype)
+	sys_forceDetailQuark := bool(forceDetailQuark)
+}
 
-func Fn_g_signal_query(signalId uint) {}
+func Fn_g_signal_query(signalId uint) {
+	sys_signalId := uint(signalId)
+}
 
-func Fn_g_signal_remove_emission_hook(signalId uint, hookId uint64) {}
+func Fn_g_signal_remove_emission_hook(signalId uint, hookId uint64) {
+	sys_signalId := uint(signalId)
+	sys_hookId := uint64(hookId)
+}
 
 // UNSUPPORTED : g_signal_set_va_marshaller : blacklisted
 
-func Fn_g_signal_stop_emission(instance unsafe.Pointer, signalId uint, detail uint32) {}
+func Fn_g_signal_stop_emission(instance unsafe.Pointer, signalId uint, detail uint32) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_signalId := uint(signalId)
+	sys_detail := uint32(detail)
+}
 
-func Fn_g_signal_stop_emission_by_name(instance unsafe.Pointer, detailedSignal string) {}
+func Fn_g_signal_stop_emission_by_name(instance unsafe.Pointer, detailedSignal string) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_detailedSignal := string(detailedSignal)
+}
 
-func Fn_g_signal_type_cclosure_new(itype uint64, structOffset uint) {}
+func Fn_g_signal_type_cclosure_new(itype uint64, structOffset uint) {
+	sys_itype := uint64(itype)
+	sys_structOffset := uint(structOffset)
+}
 
-func Fn_g_source_set_closure(source *glib.Source, closure *Closure) {}
+func Fn_g_source_set_closure(source *glib.Source, closure *Closure) {
+	sys_source := unsafe.Pointer(source)
+	sys_closure := unsafe.Pointer(closure)
+}
 
-func Fn_g_source_set_dummy_callback(source *glib.Source) {}
+func Fn_g_source_set_dummy_callback(source *glib.Source) {
+	sys_source := unsafe.Pointer(source)
+}
 
-func Fn_g_strdup_value_contents(value *Value) {}
+func Fn_g_strdup_value_contents(value *Value) {
+	sys_value := unsafe.Pointer(value)
+}
 
 // UNSUPPORTED : g_type_add_class_cache_func : parameter 'cache_func' is callback
 
-func Fn_g_type_add_instance_private(classType uint64, privateSize uint64) {}
+func Fn_g_type_add_instance_private(classType uint64, privateSize uint64) {
+	sys_classType := uint64(classType)
+	sys_privateSize := uint64(privateSize)
+}
 
 // UNSUPPORTED : g_type_add_interface_check : parameter 'check_func' is callback
 
 func Fn_g_type_add_interface_dynamic(instanceType uint64, interfaceType uint64, plugin *TypePlugin) {
+	sys_instanceType := uint64(instanceType)
+	sys_interfaceType := uint64(interfaceType)
+	sys_plugin := unsafe.Pointer(plugin)
 }
 
 func Fn_g_type_add_interface_static(instanceType uint64, interfaceType uint64, info *InterfaceInfo) {
+	sys_instanceType := uint64(instanceType)
+	sys_interfaceType := uint64(interfaceType)
+	sys_info := unsafe.Pointer(info)
 }
 
-func Fn_g_type_check_class_cast(gClass *TypeClass, isAType uint64) {}
+func Fn_g_type_check_class_cast(gClass *TypeClass, isAType uint64) {
+	sys_gClass := unsafe.Pointer(gClass)
+	sys_isAType := uint64(isAType)
+}
 
-func Fn_g_type_check_class_is_a(gClass *TypeClass, isAType uint64) {}
+func Fn_g_type_check_class_is_a(gClass *TypeClass, isAType uint64) {
+	sys_gClass := unsafe.Pointer(gClass)
+	sys_isAType := uint64(isAType)
+}
 
-func Fn_g_type_check_instance(instance *TypeInstance) {}
+func Fn_g_type_check_instance(instance *TypeInstance) {
+	sys_instance := unsafe.Pointer(instance)
+}
 
-func Fn_g_type_check_instance_cast(instance *TypeInstance, ifaceType uint64) {}
+func Fn_g_type_check_instance_cast(instance *TypeInstance, ifaceType uint64) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_ifaceType := uint64(ifaceType)
+}
 
-func Fn_g_type_check_instance_is_a(instance *TypeInstance, ifaceType uint64) {}
+func Fn_g_type_check_instance_is_a(instance *TypeInstance, ifaceType uint64) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_ifaceType := uint64(ifaceType)
+}
 
-func Fn_g_type_check_instance_is_fundamentally_a(instance *TypeInstance, fundamentalType uint64) {}
+func Fn_g_type_check_instance_is_fundamentally_a(instance *TypeInstance, fundamentalType uint64) {
+	sys_instance := unsafe.Pointer(instance)
+	sys_fundamentalType := uint64(fundamentalType)
+}
 
-func Fn_g_type_check_is_value_type(type_ uint64) {}
+func Fn_g_type_check_is_value_type(type_ uint64) {
+	sys_type_ := uint64(type_)
+}
 
-func Fn_g_type_check_value(value *Value) {}
+func Fn_g_type_check_value(value *Value) {
+	sys_value := unsafe.Pointer(value)
+}
 
-func Fn_g_type_check_value_holds(value *Value, type_ uint64) {}
+func Fn_g_type_check_value_holds(value *Value, type_ uint64) {
+	sys_value := unsafe.Pointer(value)
+	sys_type_ := uint64(type_)
+}
 
-func Fn_g_type_children(type_ uint64) {}
+func Fn_g_type_children(type_ uint64) {
+	sys_type_ := uint64(type_)
+}
 
-func Fn_g_type_create_instance(type_ uint64) {}
+func Fn_g_type_create_instance(type_ uint64) {
+	sys_type_ := uint64(type_)
+}
 
-func Fn_g_type_default_interface_peek(gType uint64) {}
+func Fn_g_type_default_interface_peek(gType uint64) {
+	sys_gType := uint64(gType)
+}
 
-func Fn_g_type_default_interface_ref(gType uint64) {}
+func Fn_g_type_default_interface_ref(gType uint64) {
+	sys_gType := uint64(gType)
+}
 
-func Fn_g_type_default_interface_unref(gIface unsafe.Pointer) {}
+func Fn_g_type_default_interface_unref(gIface unsafe.Pointer) {
+	sys_gIface := unsafe.Pointer(gIface)
+}
 
-func Fn_g_type_depth(type_ uint64) {}
+func Fn_g_type_depth(type_ uint64) {
+	sys_type_ := uint64(type_)
+}
 
-func Fn_g_type_free_instance(instance *TypeInstance) {}
+func Fn_g_type_free_instance(instance *TypeInstance) {
+	sys_instance := unsafe.Pointer(instance)
+}
 
-func Fn_g_type_from_name(name string) {}
+func Fn_g_type_from_name(name string) {
+	sys_name := string(name)
+}
 
-func Fn_g_type_fundamental(typeId uint64) {}
+func Fn_g_type_fundamental(typeId uint64) {
+	sys_typeId := uint64(typeId)
+}
 
 func Fn_g_type_fundamental_next() {}
 
-func Fn_g_type_get_plugin(type_ uint64) {}
+func Fn_g_type_get_plugin(type_ uint64) {
+	sys_type_ := uint64(type_)
+}
 
-func Fn_g_type_get_qdata(type_ uint64, quark uint32) {}
+func Fn_g_type_get_qdata(type_ uint64, quark uint32) {
+	sys_type_ := uint64(type_)
+	sys_quark := uint32(quark)
+}
 
 func Fn_g_type_init() {}
 
-func Fn_g_type_init_with_debug_flags(debugFlags int) {}
+func Fn_g_type_init_with_debug_flags(debugFlags int) {
+	sys_debugFlags := int(debugFlags)
+}
 
-func Fn_g_type_interfaces(type_ uint64) {}
+func Fn_g_type_interfaces(type_ uint64) {
+	sys_type_ := uint64(type_)
+}
 
-func Fn_g_type_is_a(type_ uint64, isAType uint64) {}
+func Fn_g_type_is_a(type_ uint64, isAType uint64) {
+	sys_type_ := uint64(type_)
+	sys_isAType := uint64(isAType)
+}
 
-func Fn_g_type_name(type_ uint64) {}
+func Fn_g_type_name(type_ uint64) {
+	sys_type_ := uint64(type_)
+}
 
-func Fn_g_type_name_from_class(gClass *TypeClass) {}
+func Fn_g_type_name_from_class(gClass *TypeClass) {
+	sys_gClass := unsafe.Pointer(gClass)
+}
 
-func Fn_g_type_name_from_instance(instance *TypeInstance) {}
+func Fn_g_type_name_from_instance(instance *TypeInstance) {
+	sys_instance := unsafe.Pointer(instance)
+}
 
-func Fn_g_type_next_base(leafType uint64, rootType uint64) {}
+func Fn_g_type_next_base(leafType uint64, rootType uint64) {
+	sys_leafType := uint64(leafType)
+	sys_rootType := uint64(rootType)
+}
 
-func Fn_g_type_parent(type_ uint64) {}
+func Fn_g_type_parent(type_ uint64) {
+	sys_type_ := uint64(type_)
+}
 
-func Fn_g_type_qname(type_ uint64) {}
+func Fn_g_type_qname(type_ uint64) {
+	sys_type_ := uint64(type_)
+}
 
-func Fn_g_type_query(type_ uint64) {}
+func Fn_g_type_query(type_ uint64) {
+	sys_type_ := uint64(type_)
+}
 
 func Fn_g_type_register_dynamic(parentType uint64, typeName string, plugin *TypePlugin, flags int) {
+	sys_parentType := uint64(parentType)
+	sys_typeName := string(typeName)
+	sys_plugin := unsafe.Pointer(plugin)
+	sys_flags := int(flags)
 }
 
 func Fn_g_type_register_fundamental(typeId uint64, typeName string, info *TypeInfo, finfo *TypeFundamentalInfo, flags int) {
+	sys_typeId := uint64(typeId)
+	sys_typeName := string(typeName)
+	sys_info := unsafe.Pointer(info)
+	sys_finfo := unsafe.Pointer(finfo)
+	sys_flags := int(flags)
 }
 
-func Fn_g_type_register_static(parentType uint64, typeName string, info *TypeInfo, flags int) {}
+func Fn_g_type_register_static(parentType uint64, typeName string, info *TypeInfo, flags int) {
+	sys_parentType := uint64(parentType)
+	sys_typeName := string(typeName)
+	sys_info := unsafe.Pointer(info)
+	sys_flags := int(flags)
+}
 
 // UNSUPPORTED : g_type_register_static_simple : parameter 'class_init' is callback
 
@@ -489,9 +885,16 @@ func Fn_g_type_register_static(parentType uint64, typeName string, info *TypeInf
 
 // UNSUPPORTED : g_type_remove_interface_check : parameter 'check_func' is callback
 
-func Fn_g_type_set_qdata(type_ uint64, quark uint32, data unsafe.Pointer) {}
+func Fn_g_type_set_qdata(type_ uint64, quark uint32, data unsafe.Pointer) {
+	sys_type_ := uint64(type_)
+	sys_quark := uint32(quark)
+	sys_data := unsafe.Pointer(data)
+}
 
-func Fn_g_type_test_flags(type_ uint64, flags uint) {}
+func Fn_g_type_test_flags(type_ uint64, flags uint) {
+	sys_type_ := uint64(type_)
+	sys_flags := uint(flags)
+}
 
 // UNSUPPORTED : g_value_register_transform_func : parameter 'transform_func' is callback
 

@@ -20,3 +20,15 @@ func (p *Parameter) libParamGoType() *jen.Statement {
 
 	panic("TODO")
 }
+
+func (p *Parameter) generateLibArg(g *jen.Group, varName string) {
+	if p.Type != nil {
+		argValue := p.Type.sysParamGoType(false).Parens(jen.Id(p.goVarName))
+		g.Id(varName).Op(":=").Add(argValue)
+	}
+
+	//if p.Array != nil {
+	//	p.generateSysCArgArray(g, goVarName, cVarName)
+	//	return
+	//}
+}

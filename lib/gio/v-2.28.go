@@ -1478,67 +1478,123 @@ const ZlibCompressorFormat_raw = ZlibCompressorFormat(2)
 
 // UNSUPPORTED : g_bus_get : parameter 'callback' is callback
 
-func Fn_g_bus_get_finish(res *AsyncResult) {}
+func Fn_g_bus_get_finish(res *AsyncResult) {
+	sys_res := unsafe.Pointer(res)
+}
 
-func Fn_g_bus_get_sync(busType int, cancellable *Cancellable) {}
+func Fn_g_bus_get_sync(busType int, cancellable *Cancellable) {
+	sys_busType := int(busType)
+	sys_cancellable := unsafe.Pointer(cancellable)
+}
 
 // UNSUPPORTED : g_bus_own_name : parameter 'bus_acquired_handler' is callback
 
 // UNSUPPORTED : g_bus_own_name_on_connection : parameter 'name_acquired_handler' is callback
 
 func Fn_g_bus_own_name_on_connection_with_closures(connection *DBusConnection, name string, flags int, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) {
+	sys_connection := unsafe.Pointer(connection)
+	sys_name := string(name)
+	sys_flags := int(flags)
+	sys_nameAcquiredClosure := unsafe.Pointer(nameAcquiredClosure)
+	sys_nameLostClosure := unsafe.Pointer(nameLostClosure)
 }
 
 func Fn_g_bus_own_name_with_closures(busType int, name string, flags int, busAcquiredClosure *gobject.Closure, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) {
+	sys_busType := int(busType)
+	sys_name := string(name)
+	sys_flags := int(flags)
+	sys_busAcquiredClosure := unsafe.Pointer(busAcquiredClosure)
+	sys_nameAcquiredClosure := unsafe.Pointer(nameAcquiredClosure)
+	sys_nameLostClosure := unsafe.Pointer(nameLostClosure)
 }
 
-func Fn_g_bus_unown_name(ownerId uint) {}
+func Fn_g_bus_unown_name(ownerId uint) {
+	sys_ownerId := uint(ownerId)
+}
 
-func Fn_g_bus_unwatch_name(watcherId uint) {}
+func Fn_g_bus_unwatch_name(watcherId uint) {
+	sys_watcherId := uint(watcherId)
+}
 
 // UNSUPPORTED : g_bus_watch_name : parameter 'name_appeared_handler' is callback
 
 // UNSUPPORTED : g_bus_watch_name_on_connection : parameter 'name_appeared_handler' is callback
 
 func Fn_g_bus_watch_name_on_connection_with_closures(connection *DBusConnection, name string, flags int, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) {
+	sys_connection := unsafe.Pointer(connection)
+	sys_name := string(name)
+	sys_flags := int(flags)
+	sys_nameAppearedClosure := unsafe.Pointer(nameAppearedClosure)
+	sys_nameVanishedClosure := unsafe.Pointer(nameVanishedClosure)
 }
 
 func Fn_g_bus_watch_name_with_closures(busType int, name string, flags int, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) {
+	sys_busType := int(busType)
+	sys_name := string(name)
+	sys_flags := int(flags)
+	sys_nameAppearedClosure := unsafe.Pointer(nameAppearedClosure)
+	sys_nameVanishedClosure := unsafe.Pointer(nameVanishedClosure)
 }
 
-func Fn_g_content_type_can_be_executable(type_ string) {}
+func Fn_g_content_type_can_be_executable(type_ string) {
+	sys_type_ := string(type_)
+}
 
-func Fn_g_content_type_equals(type1 string, type2 string) {}
+func Fn_g_content_type_equals(type1 string, type2 string) {
+	sys_type1 := string(type1)
+	sys_type2 := string(type2)
+}
 
-func Fn_g_content_type_from_mime_type(mimeType string) {}
+func Fn_g_content_type_from_mime_type(mimeType string) {
+	sys_mimeType := string(mimeType)
+}
 
-func Fn_g_content_type_get_description(type_ string) {}
+func Fn_g_content_type_get_description(type_ string) {
+	sys_type_ := string(type_)
+}
 
-func Fn_g_content_type_get_icon(type_ string) {}
+func Fn_g_content_type_get_icon(type_ string) {
+	sys_type_ := string(type_)
+}
 
 // UNSUPPORTED : g_content_type_get_mime_dirs : no array length
 
-func Fn_g_content_type_get_mime_type(type_ string) {}
+func Fn_g_content_type_get_mime_type(type_ string) {
+	sys_type_ := string(type_)
+}
 
 // UNSUPPORTED : g_content_type_guess : has array param, data
 
 // UNSUPPORTED : g_content_type_guess_for_tree : no array length
 
-func Fn_g_content_type_is_a(type_ string, supertype string) {}
+func Fn_g_content_type_is_a(type_ string, supertype string) {
+	sys_type_ := string(type_)
+	sys_supertype := string(supertype)
+}
 
-func Fn_g_content_type_is_unknown(type_ string) {}
+func Fn_g_content_type_is_unknown(type_ string) {
+	sys_type_ := string(type_)
+}
 
 // UNSUPPORTED : g_content_type_set_mime_dirs : parameter 'dirs' is array parameter without length parameter
 
 func Fn_g_content_types_get_registered() {}
 
-func Fn_g_dbus_address_get_for_bus_sync(busType int, cancellable *Cancellable) {}
+func Fn_g_dbus_address_get_for_bus_sync(busType int, cancellable *Cancellable) {
+	sys_busType := int(busType)
+	sys_cancellable := unsafe.Pointer(cancellable)
+}
 
 // UNSUPPORTED : g_dbus_address_get_stream : parameter 'callback' is callback
 
-func Fn_g_dbus_address_get_stream_finish(res *AsyncResult) {}
+func Fn_g_dbus_address_get_stream_finish(res *AsyncResult) {
+	sys_res := unsafe.Pointer(res)
+}
 
-func Fn_g_dbus_address_get_stream_sync(address string, cancellable *Cancellable) {}
+func Fn_g_dbus_address_get_stream_sync(address string, cancellable *Cancellable) {
+	sys_address := string(address)
+	sys_cancellable := unsafe.Pointer(cancellable)
+}
 
 // UNSUPPORTED : g_dbus_annotation_info_lookup : parameter 'annotations' is array parameter without length parameter
 
@@ -1546,23 +1602,39 @@ func Fn_g_dbus_address_get_stream_sync(address string, cancellable *Cancellable)
 
 func Fn_g_dbus_generate_guid() {}
 
-func Fn_g_dbus_is_address(string_ string) {}
+func Fn_g_dbus_is_address(string_ string) {
+	sys_string_ := string(string_)
+}
 
-func Fn_g_dbus_is_guid(string_ string) {}
+func Fn_g_dbus_is_guid(string_ string) {
+	sys_string_ := string(string_)
+}
 
-func Fn_g_dbus_is_interface_name(string_ string) {}
+func Fn_g_dbus_is_interface_name(string_ string) {
+	sys_string_ := string(string_)
+}
 
-func Fn_g_dbus_is_member_name(string_ string) {}
+func Fn_g_dbus_is_member_name(string_ string) {
+	sys_string_ := string(string_)
+}
 
-func Fn_g_dbus_is_name(string_ string) {}
+func Fn_g_dbus_is_name(string_ string) {
+	sys_string_ := string(string_)
+}
 
-func Fn_g_dbus_is_supported_address(string_ string) {}
+func Fn_g_dbus_is_supported_address(string_ string) {
+	sys_string_ := string(string_)
+}
 
-func Fn_g_dbus_is_unique_name(string_ string) {}
+func Fn_g_dbus_is_unique_name(string_ string) {
+	sys_string_ := string(string_)
+}
 
 // UNSUPPORTED : g_initable_newv : has array param, parameters
 
-func Fn_g_io_error_from_errno(errNo int) {}
+func Fn_g_io_error_from_errno(errNo int) {
+	sys_errNo := int(errNo)
+}
 
 func Fn_g_io_error_quark() {}
 
@@ -1584,7 +1656,9 @@ func Fn_g_io_scheduler_cancel_all_jobs() {}
 
 // UNSUPPORTED : g_null_settings_backend_new : blacklisted
 
-func Fn_g_pollable_source_new(pollableStream *gobject.Object) {}
+func Fn_g_pollable_source_new(pollableStream *gobject.Object) {
+	sys_pollableStream := unsafe.Pointer(pollableStream)
+}
 
 // UNSUPPORTED : g_pollable_stream_read : has array param, buffer
 
@@ -1600,37 +1674,68 @@ func Fn_g_pollable_source_new(pollableStream *gobject.Object) {}
 
 // UNSUPPORTED : g_simple_async_report_take_gerror_in_idle : parameter 'callback' is callback
 
-func Fn_g_unix_is_mount_path_system_internal(mountPath string) {}
+func Fn_g_unix_is_mount_path_system_internal(mountPath string) {
+	sys_mountPath := string(mountPath)
+}
 
-func Fn_g_unix_mount_at(mountPath string) {}
+func Fn_g_unix_mount_at(mountPath string) {
+	sys_mountPath := string(mountPath)
+}
 
-func Fn_g_unix_mount_compare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) {}
+func Fn_g_unix_mount_compare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) {
+	sys_mount1 := unsafe.Pointer(mount1)
+	sys_mount2 := unsafe.Pointer(mount2)
+}
 
-func Fn_g_unix_mount_free(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_free(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_get_device_path(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_get_device_path(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_get_fs_type(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_get_fs_type(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_get_mount_path(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_get_mount_path(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_guess_can_eject(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_guess_can_eject(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_guess_icon(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_guess_icon(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_guess_name(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_guess_name(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_guess_should_display(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_guess_should_display(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_is_readonly(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_is_readonly(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_is_system_internal(mountEntry *UnixMountEntry) {}
+func Fn_g_unix_mount_is_system_internal(mountEntry *UnixMountEntry) {
+	sys_mountEntry := unsafe.Pointer(mountEntry)
+}
 
-func Fn_g_unix_mount_points_changed_since(time uint64) {}
+func Fn_g_unix_mount_points_changed_since(time uint64) {
+	sys_time := uint64(time)
+}
 
 func Fn_g_unix_mount_points_get() {}
 
-func Fn_g_unix_mounts_changed_since(time uint64) {}
+func Fn_g_unix_mounts_changed_since(time uint64) {
+	sys_time := uint64(time)
+}
 
 func Fn_g_unix_mounts_get() {}
 
