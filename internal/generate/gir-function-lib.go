@@ -11,7 +11,15 @@ func (f *Function) generateLib(fi *jen.File, version semver.Version) {
 		fi.Commentf("UNSUPPORTED : %s : %s", f.CIdentifier, reason)
 		fi.Line()
 		return
+	}
 
+	// TODO
+	for _, p := range f.Parameters {
+		if p.Array != nil {
+			fi.Commentf("UNSUPPORTED : %s : has array param, %s", f.CIdentifier, p.Name)
+			fi.Line()
+			return
+		}
 	}
 
 	if f.MovedTo != "" || f.ShadowedBy != "" {
@@ -25,6 +33,7 @@ func (f *Function) generateLib(fi *jen.File, version semver.Version) {
 	// func Fn_some_function(...) [return type] {...}
 	fi.
 		Func().
+		Do(f.generateLibReceiverDeclaration).
 		Id(f.sysName).
 		ParamsFunc(f.generateLibParamsDeclaration).
 		Do(f.generateLibReturnTypeDeclaration).
@@ -33,24 +42,28 @@ func (f *Function) generateLib(fi *jen.File, version semver.Version) {
 	fi.Line()
 }
 
+func (f *Function) generateLibReceiverDeclaration(s *jen.Statement) {
+	if f.InstanceParameter != nil {
+		s.Id("recv").Add(jen.Id(f.InstanceParameter.Type.Name))
+
+	}
+}
+
 func (f *Function) generateLibParamsDeclaration(g *jen.Group) {
-	//if f.InstanceParameter != nil {
-	//	goType := f.InstanceParameter.sysParamGoType()
-	//	g.Id("paramInstance").Add(goType)
-	//
-	//}
-	//
-	//for i, param := range f.Parameters {
-	//	if param.isVarargsOrValist() {
-	//		continue
-	//	}
-	//
-	//	paramName := "param" + strconv.Itoa(i)
-	//	goType := param.sysParamGoType()
-	//
-	//	g.Id(paramName).Add(goType)
-	//}
-	//
+	for _, param := range f.Parameters {
+		if param.isVarargsOrValist() {
+			continue
+		}
+
+		if !param.isIn() {
+			continue
+		}
+
+		goType := param.libParamGoType()
+
+		g.Id(param.goVarName).Add(goType)
+	}
+
 	//if f.Throws {
 	//	g.Id("error").Add(jenUnsafePointer())
 	//}

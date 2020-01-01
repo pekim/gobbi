@@ -3,7 +3,11 @@
 
 package gio
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"unsafe"
+)
 
 // DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME is a representation of the C constant G_DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME.
 const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME = "gio-desktop-app-info-lookup"
@@ -1662,91 +1666,99 @@ const ZlibCompressorFormat_raw = ZlibCompressorFormat(2)
 
 // UNSUPPORTED : g_bus_get : parameter 'callback' is callback
 
-func Fn_g_bus_get_finish() {}
+func Fn_g_bus_get_finish(res *AsyncResult) {}
 
-func Fn_g_bus_get_sync() {}
+func Fn_g_bus_get_sync(busType int, cancellable *Cancellable) {}
 
 // UNSUPPORTED : g_bus_own_name : parameter 'bus_acquired_handler' is callback
 
 // UNSUPPORTED : g_bus_own_name_on_connection : parameter 'name_acquired_handler' is callback
 
-func Fn_g_bus_own_name_on_connection_with_closures() {}
+func Fn_g_bus_own_name_on_connection_with_closures(connection *DBusConnection, name string, flags int, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) {
+}
 
-func Fn_g_bus_own_name_with_closures() {}
+func Fn_g_bus_own_name_with_closures(busType int, name string, flags int, busAcquiredClosure *gobject.Closure, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) {
+}
 
-func Fn_g_bus_unown_name() {}
+func Fn_g_bus_unown_name(ownerId uint) {}
 
-func Fn_g_bus_unwatch_name() {}
+func Fn_g_bus_unwatch_name(watcherId uint) {}
 
 // UNSUPPORTED : g_bus_watch_name : parameter 'name_appeared_handler' is callback
 
 // UNSUPPORTED : g_bus_watch_name_on_connection : parameter 'name_appeared_handler' is callback
 
-func Fn_g_bus_watch_name_on_connection_with_closures() {}
+func Fn_g_bus_watch_name_on_connection_with_closures(connection *DBusConnection, name string, flags int, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) {
+}
 
-func Fn_g_bus_watch_name_with_closures() {}
+func Fn_g_bus_watch_name_with_closures(busType int, name string, flags int, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) {
+}
 
-func Fn_g_content_type_can_be_executable() {}
+func Fn_g_content_type_can_be_executable(type_ string) {}
 
-func Fn_g_content_type_equals() {}
+func Fn_g_content_type_equals(type1 string, type2 string) {}
 
-func Fn_g_content_type_from_mime_type() {}
+func Fn_g_content_type_from_mime_type(mimeType string) {}
 
-func Fn_g_content_type_get_description() {}
+func Fn_g_content_type_get_description(type_ string) {}
 
-func Fn_g_content_type_get_generic_icon_name() {}
+func Fn_g_content_type_get_generic_icon_name(type_ string) {}
 
-func Fn_g_content_type_get_icon() {}
+func Fn_g_content_type_get_icon(type_ string) {}
 
 // UNSUPPORTED : g_content_type_get_mime_dirs : no array length
 
-func Fn_g_content_type_get_mime_type() {}
+func Fn_g_content_type_get_mime_type(type_ string) {}
 
-func Fn_g_content_type_get_symbolic_icon() {}
+func Fn_g_content_type_get_symbolic_icon(type_ string) {}
 
-func Fn_g_content_type_guess() {}
+// UNSUPPORTED : g_content_type_guess : has array param, data
 
 // UNSUPPORTED : g_content_type_guess_for_tree : no array length
 
-func Fn_g_content_type_is_a() {}
+func Fn_g_content_type_is_a(type_ string, supertype string) {}
 
-func Fn_g_content_type_is_unknown() {}
+func Fn_g_content_type_is_unknown(type_ string) {}
 
 // UNSUPPORTED : g_content_type_set_mime_dirs : parameter 'dirs' is array parameter without length parameter
 
 func Fn_g_content_types_get_registered() {}
 
-func Fn_g_dbus_address_get_for_bus_sync() {}
+func Fn_g_dbus_address_get_for_bus_sync(busType int, cancellable *Cancellable) {}
 
 // UNSUPPORTED : g_dbus_address_get_stream : parameter 'callback' is callback
 
-func Fn_g_dbus_address_get_stream_finish() {}
+func Fn_g_dbus_address_get_stream_finish(res *AsyncResult) {}
 
-func Fn_g_dbus_address_get_stream_sync() {}
+func Fn_g_dbus_address_get_stream_sync(address string, cancellable *Cancellable) {}
 
 // UNSUPPORTED : g_dbus_annotation_info_lookup : parameter 'annotations' is array parameter without length parameter
 
+// UNSUPPORTED : g_dbus_error_register_error_domain : has array param, entries
+
 func Fn_g_dbus_generate_guid() {}
 
-func Fn_g_dbus_gvalue_to_gvariant() {}
+func Fn_g_dbus_gvalue_to_gvariant(gvalue *gobject.Value, type_ *glib.VariantType) {}
 
-func Fn_g_dbus_gvariant_to_gvalue() {}
+func Fn_g_dbus_gvariant_to_gvalue(value *glib.Variant) {}
 
-func Fn_g_dbus_is_address() {}
+func Fn_g_dbus_is_address(string_ string) {}
 
-func Fn_g_dbus_is_guid() {}
+func Fn_g_dbus_is_guid(string_ string) {}
 
-func Fn_g_dbus_is_interface_name() {}
+func Fn_g_dbus_is_interface_name(string_ string) {}
 
-func Fn_g_dbus_is_member_name() {}
+func Fn_g_dbus_is_member_name(string_ string) {}
 
-func Fn_g_dbus_is_name() {}
+func Fn_g_dbus_is_name(string_ string) {}
 
-func Fn_g_dbus_is_supported_address() {}
+func Fn_g_dbus_is_supported_address(string_ string) {}
 
-func Fn_g_dbus_is_unique_name() {}
+func Fn_g_dbus_is_unique_name(string_ string) {}
 
-func Fn_g_io_error_from_errno() {}
+// UNSUPPORTED : g_initable_newv : has array param, parameters
+
+func Fn_g_io_error_from_errno(errNo int) {}
 
 func Fn_g_io_error_quark() {}
 
@@ -1768,27 +1780,28 @@ func Fn_g_io_scheduler_cancel_all_jobs() {}
 
 // UNSUPPORTED : g_null_settings_backend_new : blacklisted
 
-func Fn_g_pollable_source_new() {}
+func Fn_g_pollable_source_new(pollableStream *gobject.Object) {}
 
-func Fn_g_pollable_source_new_full() {}
+func Fn_g_pollable_source_new_full(pollableStream unsafe.Pointer, childSource *glib.Source, cancellable *Cancellable) {
+}
 
-func Fn_g_pollable_stream_read() {}
+// UNSUPPORTED : g_pollable_stream_read : has array param, buffer
 
-func Fn_g_pollable_stream_write() {}
+// UNSUPPORTED : g_pollable_stream_write : has array param, buffer
 
-func Fn_g_pollable_stream_write_all() {}
+// UNSUPPORTED : g_pollable_stream_write_all : has array param, buffer
 
 // UNSUPPORTED : g_resources_enumerate_children : no array length
 
-func Fn_g_resources_get_info() {}
+func Fn_g_resources_get_info(path string, lookupFlags int) {}
 
-func Fn_g_resources_lookup_data() {}
+func Fn_g_resources_lookup_data(path string, lookupFlags int) {}
 
-func Fn_g_resources_open_stream() {}
+func Fn_g_resources_open_stream(path string, lookupFlags int) {}
 
-func Fn_g_resources_register() {}
+func Fn_g_resources_register(resource *Resource) {}
 
-func Fn_g_resources_unregister() {}
+func Fn_g_resources_unregister(resource *Resource) {}
 
 // UNSUPPORTED : g_simple_async_report_error_in_idle : parameter 'callback' is callback
 
@@ -1796,39 +1809,39 @@ func Fn_g_resources_unregister() {}
 
 // UNSUPPORTED : g_simple_async_report_take_gerror_in_idle : parameter 'callback' is callback
 
-func Fn_g_unix_is_mount_path_system_internal() {}
+func Fn_g_unix_is_mount_path_system_internal(mountPath string) {}
 
-func Fn_g_unix_mount_at() {}
+func Fn_g_unix_mount_at(mountPath string) {}
 
-func Fn_g_unix_mount_compare() {}
+func Fn_g_unix_mount_compare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) {}
 
-func Fn_g_unix_mount_free() {}
+func Fn_g_unix_mount_free(mountEntry *UnixMountEntry) {}
 
-func Fn_g_unix_mount_get_device_path() {}
+func Fn_g_unix_mount_get_device_path(mountEntry *UnixMountEntry) {}
 
-func Fn_g_unix_mount_get_fs_type() {}
+func Fn_g_unix_mount_get_fs_type(mountEntry *UnixMountEntry) {}
 
-func Fn_g_unix_mount_get_mount_path() {}
+func Fn_g_unix_mount_get_mount_path(mountEntry *UnixMountEntry) {}
 
-func Fn_g_unix_mount_guess_can_eject() {}
+func Fn_g_unix_mount_guess_can_eject(mountEntry *UnixMountEntry) {}
 
-func Fn_g_unix_mount_guess_icon() {}
+func Fn_g_unix_mount_guess_icon(mountEntry *UnixMountEntry) {}
 
-func Fn_g_unix_mount_guess_name() {}
+func Fn_g_unix_mount_guess_name(mountEntry *UnixMountEntry) {}
 
-func Fn_g_unix_mount_guess_should_display() {}
+func Fn_g_unix_mount_guess_should_display(mountEntry *UnixMountEntry) {}
 
-func Fn_g_unix_mount_guess_symbolic_icon() {}
+func Fn_g_unix_mount_guess_symbolic_icon(mountEntry *UnixMountEntry) {}
 
-func Fn_g_unix_mount_is_readonly() {}
+func Fn_g_unix_mount_is_readonly(mountEntry *UnixMountEntry) {}
 
-func Fn_g_unix_mount_is_system_internal() {}
+func Fn_g_unix_mount_is_system_internal(mountEntry *UnixMountEntry) {}
 
-func Fn_g_unix_mount_points_changed_since() {}
+func Fn_g_unix_mount_points_changed_since(time uint64) {}
 
 func Fn_g_unix_mount_points_get() {}
 
-func Fn_g_unix_mounts_changed_since() {}
+func Fn_g_unix_mounts_changed_since(time uint64) {}
 
 func Fn_g_unix_mounts_get() {}
 

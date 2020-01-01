@@ -3,7 +3,14 @@
 
 package gdk
 
-import "unsafe"
+import (
+	cairo "github.com/pekim/gobbi/lib/cairo"
+	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	pango "github.com/pekim/gobbi/lib/pango"
+	"unsafe"
+)
 
 // UNSUPPORTED : XEvent : blacklisted
 
@@ -8192,55 +8199,60 @@ const WindowWindowClass_input_output = WindowWindowClass(0)
 // WindowWindowClass_input_only is a representation of the C enumeration member GDK_INPUT_ONLY.
 const WindowWindowClass_input_only = WindowWindowClass(1)
 
-func Fn_gdk_add_option_entries_libgtk_only() {}
+func Fn_gdk_add_option_entries_libgtk_only(group *glib.OptionGroup) {}
 
 func Fn_gdk_beep() {}
 
-func Fn_gdk_cairo_create() {}
+func Fn_gdk_cairo_create(window *Window) {}
 
-func Fn_gdk_cairo_draw_from_gl() {}
+func Fn_gdk_cairo_draw_from_gl(cr *cairo.Context, window *Window, source int, sourceType int, bufferScale int, x int, y int, width int, height int) {
+}
 
-func Fn_gdk_cairo_get_clip_rectangle() {}
+func Fn_gdk_cairo_get_clip_rectangle(cr *cairo.Context) {}
 
-func Fn_gdk_cairo_rectangle() {}
+func Fn_gdk_cairo_rectangle(cr *cairo.Context, rectangle *Rectangle) {}
 
-func Fn_gdk_cairo_region() {}
+func Fn_gdk_cairo_region(cr *cairo.Context, region *cairo.Region) {}
 
-func Fn_gdk_cairo_region_create_from_surface() {}
+func Fn_gdk_cairo_region_create_from_surface(surface *cairo.Surface) {}
 
-func Fn_gdk_cairo_set_source_color() {}
+func Fn_gdk_cairo_set_source_color(cr *cairo.Context, color *Color) {}
 
-func Fn_gdk_cairo_set_source_pixbuf() {}
+func Fn_gdk_cairo_set_source_pixbuf(cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, pixbufX float64, pixbufY float64) {
+}
 
-func Fn_gdk_cairo_set_source_rgba() {}
+func Fn_gdk_cairo_set_source_rgba(cr *cairo.Context, rgba *RGBA) {}
 
-func Fn_gdk_cairo_set_source_window() {}
+func Fn_gdk_cairo_set_source_window(cr *cairo.Context, window *Window, x float64, y float64) {}
 
-func Fn_gdk_cairo_surface_create_from_pixbuf() {}
+func Fn_gdk_cairo_surface_create_from_pixbuf(pixbuf *gdkpixbuf.Pixbuf, scale int, forWindow *Window) {
+}
 
 func Fn_gdk_disable_multidevice() {}
 
-func Fn_gdk_drag_abort() {}
+func Fn_gdk_drag_abort(context *DragContext, time uint32) {}
 
-func Fn_gdk_drag_begin() {}
+func Fn_gdk_drag_begin(window *Window, targets *glib.List) {}
 
-func Fn_gdk_drag_begin_for_device() {}
+func Fn_gdk_drag_begin_for_device(window *Window, device *Device, targets *glib.List) {}
 
-func Fn_gdk_drag_drop() {}
+func Fn_gdk_drag_drop(context *DragContext, time uint32) {}
 
-func Fn_gdk_drag_drop_succeeded() {}
+func Fn_gdk_drag_drop_succeeded(context *DragContext) {}
 
-func Fn_gdk_drag_find_window_for_screen() {}
+func Fn_gdk_drag_find_window_for_screen(context *DragContext, dragWindow *Window, screen *Screen, xRoot int, yRoot int) {
+}
 
-func Fn_gdk_drag_get_selection() {}
+func Fn_gdk_drag_get_selection(context *DragContext) {}
 
-func Fn_gdk_drag_motion() {}
+func Fn_gdk_drag_motion(context *DragContext, destWindow *Window, protocol int, xRoot int, yRoot int, suggestedAction int, possibleActions int, time uint32) {
+}
 
-func Fn_gdk_drag_status() {}
+func Fn_gdk_drag_status(context *DragContext, action int, time uint32) {}
 
-func Fn_gdk_drop_finish() {}
+func Fn_gdk_drop_finish(context *DragContext, success bool, time uint32) {}
 
-func Fn_gdk_drop_reply() {}
+func Fn_gdk_drop_reply(context *DragContext, accepted bool, time uint32) {}
 
 func Fn_gdk_error_trap_pop() {}
 
@@ -8250,11 +8262,11 @@ func Fn_gdk_error_trap_push() {}
 
 // UNSUPPORTED : gdk_event_handler_set : parameter 'func' is callback
 
-func Fn_gdk_events_get_angle() {}
+func Fn_gdk_events_get_angle(event1 *Event, event2 *Event) {}
 
-func Fn_gdk_events_get_center() {}
+func Fn_gdk_events_get_center(event1 *Event, event2 *Event) {}
 
-func Fn_gdk_events_get_distance() {}
+func Fn_gdk_events_get_distance(event1 *Event, event2 *Event) {}
 
 func Fn_gdk_events_pending() {}
 
@@ -8270,107 +8282,117 @@ func Fn_gdk_get_program_class() {}
 
 func Fn_gdk_get_show_events() {}
 
-func Fn_gdk_init() {}
+// UNSUPPORTED : gdk_init : has array param, argv
 
-func Fn_gdk_init_check() {}
+// UNSUPPORTED : gdk_init_check : has array param, argv
 
-func Fn_gdk_keyboard_grab() {}
+func Fn_gdk_keyboard_grab(window *Window, ownerEvents bool, time uint32) {}
 
-func Fn_gdk_keyboard_ungrab() {}
+func Fn_gdk_keyboard_ungrab(time uint32) {}
 
-func Fn_gdk_keyval_convert_case() {}
+func Fn_gdk_keyval_convert_case(symbol uint) {}
 
-func Fn_gdk_keyval_from_name() {}
+func Fn_gdk_keyval_from_name(keyvalName string) {}
 
-func Fn_gdk_keyval_is_lower() {}
+func Fn_gdk_keyval_is_lower(keyval uint) {}
 
-func Fn_gdk_keyval_is_upper() {}
+func Fn_gdk_keyval_is_upper(keyval uint) {}
 
-func Fn_gdk_keyval_name() {}
+func Fn_gdk_keyval_name(keyval uint) {}
 
-func Fn_gdk_keyval_to_lower() {}
+func Fn_gdk_keyval_to_lower(keyval uint) {}
 
-func Fn_gdk_keyval_to_unicode() {}
+func Fn_gdk_keyval_to_unicode(keyval uint) {}
 
-func Fn_gdk_keyval_to_upper() {}
+func Fn_gdk_keyval_to_upper(keyval uint) {}
 
 func Fn_gdk_list_visuals() {}
 
 func Fn_gdk_notify_startup_complete() {}
 
-func Fn_gdk_notify_startup_complete_with_id() {}
+func Fn_gdk_notify_startup_complete_with_id(startupId string) {}
 
-func Fn_gdk_offscreen_window_get_embedder() {}
+func Fn_gdk_offscreen_window_get_embedder(window *Window) {}
 
-func Fn_gdk_offscreen_window_get_surface() {}
+func Fn_gdk_offscreen_window_get_surface(window *Window) {}
 
-func Fn_gdk_offscreen_window_set_embedder() {}
+func Fn_gdk_offscreen_window_set_embedder(window *Window, embedder *Window) {}
 
 func Fn_gdk_pango_context_get() {}
 
-func Fn_gdk_pango_context_get_for_screen() {}
+func Fn_gdk_pango_context_get_for_screen(screen *Screen) {}
 
-func Fn_gdk_pango_layout_get_clip_region() {}
+func Fn_gdk_pango_layout_get_clip_region(layout *pango.Layout, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
+}
 
 // UNSUPPORTED : gdk_pango_layout_line_get_clip_region : parameter 'index_ranges' is array parameter without length parameter
 
-func Fn_gdk_parse_args() {}
+// UNSUPPORTED : gdk_parse_args : has array param, argv
 
-func Fn_gdk_pixbuf_get_from_surface() {}
+func Fn_gdk_pixbuf_get_from_surface(surface *cairo.Surface, srcX int, srcY int, width int, height int) {
+}
 
-func Fn_gdk_pixbuf_get_from_window() {}
+func Fn_gdk_pixbuf_get_from_window(window *Window, srcX int, srcY int, width int, height int) {}
 
-func Fn_gdk_pointer_grab() {}
+func Fn_gdk_pointer_grab(window *Window, ownerEvents bool, eventMask int, confineTo *Window, cursor *Cursor, time uint32) {
+}
 
 func Fn_gdk_pointer_is_grabbed() {}
 
-func Fn_gdk_pointer_ungrab() {}
+func Fn_gdk_pointer_ungrab(time uint32) {}
 
 func Fn_gdk_pre_parse_libgtk_only() {}
 
-func Fn_gdk_property_change() {}
+func Fn_gdk_property_change(window *Window, property Atom, type_ Atom, format int, mode int, data *uint8, nelements int) {
+}
 
-func Fn_gdk_property_delete() {}
+func Fn_gdk_property_delete(window *Window, property Atom) {}
 
-func Fn_gdk_property_get() {}
+// UNSUPPORTED : gdk_property_get : has array param, data
 
-func Fn_gdk_query_depths() {}
+// UNSUPPORTED : gdk_query_depths : has array param, depths
 
-func Fn_gdk_query_visual_types() {}
+// UNSUPPORTED : gdk_query_visual_types : has array param, visual_types
 
-func Fn_gdk_selection_convert() {}
+func Fn_gdk_selection_convert(requestor *Window, selection Atom, target Atom, time uint32) {}
 
-func Fn_gdk_selection_owner_get() {}
+func Fn_gdk_selection_owner_get(selection Atom) {}
 
-func Fn_gdk_selection_owner_get_for_display() {}
+func Fn_gdk_selection_owner_get_for_display(display *Display, selection Atom) {}
 
-func Fn_gdk_selection_owner_set() {}
+func Fn_gdk_selection_owner_set(owner *Window, selection Atom, time uint32, sendEvent bool) {}
 
-func Fn_gdk_selection_owner_set_for_display() {}
+func Fn_gdk_selection_owner_set_for_display(display *Display, owner *Window, selection Atom, time uint32, sendEvent bool) {
+}
 
-func Fn_gdk_selection_property_get() {}
+func Fn_gdk_selection_property_get(requestor *Window, data **uint8, propType *Atom, propFormat *int) {
+}
 
-func Fn_gdk_selection_send_notify() {}
+func Fn_gdk_selection_send_notify(requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
+}
 
-func Fn_gdk_selection_send_notify_for_display() {}
+func Fn_gdk_selection_send_notify_for_display(display *Display, requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
+}
 
-func Fn_gdk_set_allowed_backends() {}
+func Fn_gdk_set_allowed_backends(backends string) {}
 
-func Fn_gdk_set_double_click_time() {}
+func Fn_gdk_set_double_click_time(msec uint) {}
 
-func Fn_gdk_set_program_class() {}
+func Fn_gdk_set_program_class(programClass string) {}
 
-func Fn_gdk_set_show_events() {}
+func Fn_gdk_set_show_events(showEvents bool) {}
 
-func Fn_gdk_setting_get() {}
+func Fn_gdk_setting_get(name string, value *gobject.Value) {}
 
 // UNSUPPORTED : gdk_synthesize_window_state : blacklisted
 
-func Fn_gdk_test_render_sync() {}
+func Fn_gdk_test_render_sync(window *Window) {}
 
-func Fn_gdk_test_simulate_button() {}
+func Fn_gdk_test_simulate_button(window *Window, x int, y int, button uint, modifiers int, buttonPressrelease int) {
+}
 
-func Fn_gdk_test_simulate_key() {}
+func Fn_gdk_test_simulate_key(window *Window, x int, y int, keyval uint, modifiers int, keyPressrelease int) {
+}
 
 // UNSUPPORTED : gdk_text_property_to_utf8_list_for_display : parameter 'list' is array parameter without length parameter
 
@@ -8394,9 +8416,9 @@ func Fn_gdk_threads_leave() {}
 
 // UNSUPPORTED : gdk_threads_set_lock_functions : parameter 'enter_fn' is callback
 
-func Fn_gdk_unicode_to_keyval() {}
+func Fn_gdk_unicode_to_keyval(wc uint32) {}
 
-func Fn_gdk_utf8_to_string_target() {}
+func Fn_gdk_utf8_to_string_target(str string) {}
 
 // Atom is a representation of the C record GdkAtom.
 type Atom struct {

@@ -4,7 +4,12 @@
 package gtk
 
 import (
+	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
 
@@ -2630,45 +2635,47 @@ const WrapMode_word = WrapMode(2)
 // WrapMode_word_char is a representation of the C enumeration member GTK_WRAP_WORD_CHAR.
 const WrapMode_word_char = WrapMode(3)
 
-func Fn_gtk_accel_groups_activate() {}
+func Fn_gtk_accel_groups_activate(object *gobject.Object, accelKey uint, accelMods int) {}
 
-func Fn_gtk_accel_groups_from_object() {}
+func Fn_gtk_accel_groups_from_object(object *gobject.Object) {}
 
 func Fn_gtk_accelerator_get_default_mod_mask() {}
 
-func Fn_gtk_accelerator_name() {}
+func Fn_gtk_accelerator_name(acceleratorKey uint, acceleratorMods int) {}
 
-func Fn_gtk_accelerator_parse() {}
+func Fn_gtk_accelerator_parse(accelerator string) {}
 
 // UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
 
-func Fn_gtk_accelerator_set_default_mod_mask() {}
+func Fn_gtk_accelerator_set_default_mod_mask(defaultModMask int) {}
 
-func Fn_gtk_accelerator_valid() {}
+func Fn_gtk_accelerator_valid(keyval uint, modifiers int) {}
 
-func Fn_gtk_bindings_activate() {}
+func Fn_gtk_bindings_activate(object *gobject.Object, keyval uint, modifiers int) {}
 
-func Fn_gtk_bindings_activate_event() {}
+func Fn_gtk_bindings_activate_event(object *gobject.Object, event *gdk.EventKey) {}
 
-func Fn_gtk_check_version() {}
+func Fn_gtk_check_version(requiredMajor uint, requiredMinor uint, requiredMicro uint) {}
 
 func Fn_gtk_disable_setlocale() {}
 
-func Fn_gtk_distribute_natural_allocation() {}
+func Fn_gtk_distribute_natural_allocation(extraSpace int, nRequestedSizes uint, sizes *RequestedSize) {
+}
 
-func Fn_gtk_drag_finish() {}
+func Fn_gtk_drag_finish(context *gdk.DragContext, success bool, del bool, time uint32) {}
 
-func Fn_gtk_drag_get_source_widget() {}
+func Fn_gtk_drag_get_source_widget(context *gdk.DragContext) {}
 
-func Fn_gtk_drag_set_icon_default() {}
+func Fn_gtk_drag_set_icon_default(context *gdk.DragContext) {}
 
-func Fn_gtk_drag_set_icon_pixbuf() {}
+func Fn_gtk_drag_set_icon_pixbuf(context *gdk.DragContext, pixbuf *gdkpixbuf.Pixbuf, hotX int, hotY int) {
+}
 
-func Fn_gtk_drag_set_icon_stock() {}
+func Fn_gtk_drag_set_icon_stock(context *gdk.DragContext, stockId string, hotX int, hotY int) {}
 
-func Fn_gtk_drag_set_icon_surface() {}
+func Fn_gtk_drag_set_icon_surface(context *gdk.DragContext, surface *cairo.Surface) {}
 
-func Fn_gtk_drag_set_icon_widget() {}
+func Fn_gtk_drag_set_icon_widget(context *gdk.DragContext, widget *Widget, hotX int, hotY int) {}
 
 func Fn_gtk_events_pending() {}
 
@@ -2686,83 +2693,103 @@ func Fn_gtk_get_debug_flags() {}
 
 func Fn_gtk_get_default_language() {}
 
-func Fn_gtk_get_event_widget() {}
+func Fn_gtk_get_event_widget(event *gdk.Event) {}
 
 func Fn_gtk_grab_get_current() {}
 
-func Fn_gtk_init() {}
+// UNSUPPORTED : gtk_init : has array param, argv
 
-func Fn_gtk_init_check() {}
+// UNSUPPORTED : gtk_init_check : has array param, argv
 
 // UNSUPPORTED : gtk_init_with_args : parameter 'entries' is array parameter without length parameter
 
 // UNSUPPORTED : gtk_key_snooper_install : parameter 'snooper' is callback
 
-func Fn_gtk_key_snooper_remove() {}
+func Fn_gtk_key_snooper_remove(snooperHandlerId uint) {}
 
 func Fn_gtk_main() {}
 
-func Fn_gtk_main_do_event() {}
+func Fn_gtk_main_do_event(event *gdk.Event) {}
 
 func Fn_gtk_main_iteration() {}
 
-func Fn_gtk_main_iteration_do() {}
+func Fn_gtk_main_iteration_do(blocking bool) {}
 
 func Fn_gtk_main_level() {}
 
 func Fn_gtk_main_quit() {}
 
-func Fn_gtk_paint_arrow() {}
+func Fn_gtk_paint_arrow(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, arrowType int, fill bool, x int, y int, width int, height int) {
+}
 
-func Fn_gtk_paint_box() {}
+func Fn_gtk_paint_box(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+}
 
-func Fn_gtk_paint_box_gap() {}
+func Fn_gtk_paint_box_gap(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int, gapX int, gapWidth int) {
+}
 
-func Fn_gtk_paint_check() {}
+func Fn_gtk_paint_check(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+}
 
-func Fn_gtk_paint_diamond() {}
+func Fn_gtk_paint_diamond(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+}
 
-func Fn_gtk_paint_expander() {}
+func Fn_gtk_paint_expander(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x int, y int, expanderStyle int) {
+}
 
-func Fn_gtk_paint_extension() {}
+func Fn_gtk_paint_extension(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int) {
+}
 
-func Fn_gtk_paint_flat_box() {}
+func Fn_gtk_paint_flat_box(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+}
 
-func Fn_gtk_paint_focus() {}
+func Fn_gtk_paint_focus(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x int, y int, width int, height int) {
+}
 
-func Fn_gtk_paint_handle() {}
+func Fn_gtk_paint_handle(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, orientation int) {
+}
 
-func Fn_gtk_paint_hline() {}
+func Fn_gtk_paint_hline(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x1 int, x2 int, y int) {
+}
 
-func Fn_gtk_paint_layout() {}
+func Fn_gtk_paint_layout(style *Style, cr *cairo.Context, stateType int, useText bool, widget *Widget, detail string, x int, y int, layout *pango.Layout) {
+}
 
-func Fn_gtk_paint_option() {}
+func Fn_gtk_paint_option(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+}
 
-func Fn_gtk_paint_resize_grip() {}
+func Fn_gtk_paint_resize_grip(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, edge int, x int, y int, width int, height int) {
+}
 
-func Fn_gtk_paint_shadow() {}
+func Fn_gtk_paint_shadow(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+}
 
-func Fn_gtk_paint_shadow_gap() {}
+func Fn_gtk_paint_shadow_gap(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int, gapX int, gapWidth int) {
+}
 
-func Fn_gtk_paint_slider() {}
+func Fn_gtk_paint_slider(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, orientation int) {
+}
 
-func Fn_gtk_paint_spinner() {}
+func Fn_gtk_paint_spinner(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, step uint, x int, y int, width int, height int) {
+}
 
-func Fn_gtk_paint_tab() {}
+func Fn_gtk_paint_tab(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+}
 
-func Fn_gtk_paint_vline() {}
+func Fn_gtk_paint_vline(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, y1 int, y2 int, x int) {
+}
 
-func Fn_gtk_parse_args() {}
+// UNSUPPORTED : gtk_parse_args : has array param, argv
 
 // UNSUPPORTED : gtk_print_run_page_setup_dialog_async : parameter 'done_cb' is callback
 
-func Fn_gtk_propagate_event() {}
+func Fn_gtk_propagate_event(widget *Widget, event *gdk.Event) {}
 
-func Fn_gtk_rc_add_default_file() {}
+func Fn_gtk_rc_add_default_file(filename string) {}
 
-func Fn_gtk_rc_find_module_in_path() {}
+func Fn_gtk_rc_find_module_in_path(moduleFile string) {}
 
-func Fn_gtk_rc_find_pixmap_in_path() {}
+func Fn_gtk_rc_find_pixmap_in_path(settings *Settings, scanner *glib.Scanner, pixmapFile string) {}
 
 // UNSUPPORTED : gtk_rc_get_default_files : no array length
 
@@ -2772,63 +2799,78 @@ func Fn_gtk_rc_get_im_module_path() {}
 
 func Fn_gtk_rc_get_module_dir() {}
 
-func Fn_gtk_rc_get_style() {}
+func Fn_gtk_rc_get_style(widget *Widget) {}
 
-func Fn_gtk_rc_get_style_by_paths() {}
+func Fn_gtk_rc_get_style_by_paths(settings *Settings, widgetPath string, classPath string, type_ uint64) {
+}
 
 func Fn_gtk_rc_get_theme_dir() {}
 
-func Fn_gtk_rc_parse() {}
+func Fn_gtk_rc_parse(filename string) {}
 
-func Fn_gtk_rc_parse_color() {}
+func Fn_gtk_rc_parse_color(scanner *glib.Scanner) {}
 
-func Fn_gtk_rc_parse_priority() {}
+func Fn_gtk_rc_parse_priority(scanner *glib.Scanner, priority *int) {}
 
-func Fn_gtk_rc_parse_state() {}
+func Fn_gtk_rc_parse_state(scanner *glib.Scanner) {}
 
-func Fn_gtk_rc_parse_string() {}
+func Fn_gtk_rc_parse_string(rcString string) {}
 
 func Fn_gtk_rc_reparse_all() {}
 
-func Fn_gtk_rc_reparse_all_for_settings() {}
+func Fn_gtk_rc_reparse_all_for_settings(settings *Settings, forceLoad bool) {}
 
-func Fn_gtk_rc_reset_styles() {}
+func Fn_gtk_rc_reset_styles(settings *Settings) {}
 
 func Fn_gtk_rc_scanner_new() {}
 
 // UNSUPPORTED : gtk_rc_set_default_files : parameter 'filenames' is array parameter without length parameter
 
-func Fn_gtk_selection_add_target() {}
+func Fn_gtk_selection_add_target(widget *Widget, selection gdk.Atom, target gdk.Atom, info uint) {}
 
-func Fn_gtk_selection_add_targets() {}
+// UNSUPPORTED : gtk_selection_add_targets : has array param, targets
 
-func Fn_gtk_selection_clear_targets() {}
+func Fn_gtk_selection_clear_targets(widget *Widget, selection gdk.Atom) {}
 
-func Fn_gtk_selection_convert() {}
+func Fn_gtk_selection_convert(widget *Widget, selection gdk.Atom, target gdk.Atom, time uint32) {}
 
-func Fn_gtk_selection_owner_set() {}
+func Fn_gtk_selection_owner_set(widget *Widget, selection gdk.Atom, time uint32) {}
 
-func Fn_gtk_selection_owner_set_for_display() {}
+func Fn_gtk_selection_owner_set_for_display(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) {
+}
 
-func Fn_gtk_selection_remove_all() {}
+func Fn_gtk_selection_remove_all(widget *Widget) {}
 
-func Fn_gtk_set_debug_flags() {}
+func Fn_gtk_set_debug_flags(flags uint) {}
 
-func Fn_gtk_stock_add() {}
+// UNSUPPORTED : gtk_stock_add : has array param, items
 
-func Fn_gtk_stock_add_static() {}
+// UNSUPPORTED : gtk_stock_add_static : has array param, items
 
 func Fn_gtk_stock_list_ids() {}
 
-func Fn_gtk_stock_lookup() {}
+func Fn_gtk_stock_lookup(stockId string) {}
 
 // UNSUPPORTED : gtk_stock_set_translate_func : parameter 'func' is callback
 
-func Fn_gtk_tree_get_row_drag_data() {}
+// UNSUPPORTED : gtk_target_table_free : has array param, targets
+
+// UNSUPPORTED : gtk_targets_include_image : has array param, targets
+
+// UNSUPPORTED : gtk_targets_include_rich_text : has array param, targets
+
+// UNSUPPORTED : gtk_targets_include_text : has array param, targets
+
+// UNSUPPORTED : gtk_targets_include_uri : has array param, targets
+
+// UNSUPPORTED : gtk_test_init : has array param, argvp
+
+func Fn_gtk_tree_get_row_drag_data(selectionData *SelectionData) {}
 
 // UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
 
-func Fn_gtk_tree_set_row_drag_data() {}
+func Fn_gtk_tree_set_row_drag_data(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) {
+}
 
 func Fn_gtk_true() {}
 

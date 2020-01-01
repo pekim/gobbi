@@ -887,7 +887,7 @@ const ValueType_last_defined = ValueType(15)
 
 // UNSUPPORTED : atk_focus_tracker_init : parameter 'init' is callback
 
-func Fn_atk_focus_tracker_notify() {}
+func Fn_atk_focus_tracker_notify(object *Object) {}
 
 func Fn_atk_get_default_registry() {}
 
@@ -901,11 +901,11 @@ func Fn_atk_get_toolkit_version() {}
 
 func Fn_atk_get_version() {}
 
-func Fn_atk_remove_focus_tracker() {}
+func Fn_atk_remove_focus_tracker(trackerId uint) {}
 
-func Fn_atk_remove_global_event_listener() {}
+func Fn_atk_remove_global_event_listener(listenerId uint) {}
 
-func Fn_atk_remove_key_event_listener() {}
+func Fn_atk_remove_key_event_listener(listenerId uint) {}
 
 // UNSUPPORTED : atk_text_free_ranges : parameter 'ranges' is array parameter without length parameter
 

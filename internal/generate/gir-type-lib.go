@@ -66,8 +66,10 @@ func (t *Type) libParamGoType(decrementIndirectionCount bool) *jen.Statement {
 			return jenUnsafePointer()
 		}
 
-		stars := strings.Repeat("*", t.cType.indirectionCount-1)
-		return jen.Op(stars).Add(jenUnsafePointer())
+		if t.isQualifiedName() {
+			return jen.Op(t.cType.stars).Qual(t.foreignNamespace.goFullPackageName, t.foreignName)
+		}
+		return jen.Op(t.cType.stars).Id(t.Name)
 	}
 
 	panic(fmt.Sprintf("Unsupported type : %s %s (%s)", t.namespace.Name, t.Name, t.CType))
