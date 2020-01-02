@@ -2038,7 +2038,7 @@ func PollableSourceNew(pollableStream *gobject.Object) {
 
 // PollableSourceNewFull is analogous to the C function g_pollable_source_new_full.
 func PollableSourceNewFull(pollableStream unsafe.Pointer, childSource *glib.Source, cancellable *Cancellable) {
-	sys_pollableStream := pollableStream.ToC()
+	sys_pollableStream := pollableStream
 	sys_childSource := childSource.ToC()
 	sys_cancellable := cancellable.ToC()
 }

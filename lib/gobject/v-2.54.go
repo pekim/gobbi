@@ -606,12 +606,12 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 
 // SignalChainFromOverriddenHandler is analogous to the C function g_signal_chain_from_overridden_handler.
 func SignalChainFromOverriddenHandler(instance unsafe.Pointer) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 }
 
 // SignalConnectClosure is analogous to the C function g_signal_connect_closure.
 func SignalConnectClosure(instance unsafe.Pointer, detailedSignal string, closure *Closure, after bool) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_detailedSignal := detailedSignal
 	sys_closure := closure.ToC()
 	sys_after := after
@@ -619,7 +619,7 @@ func SignalConnectClosure(instance unsafe.Pointer, detailedSignal string, closur
 
 // SignalConnectClosureById is analogous to the C function g_signal_connect_closure_by_id.
 func SignalConnectClosureById(instance unsafe.Pointer, signalId uint, detail uint32, closure *Closure, after bool) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_signalId := signalId
 	sys_detail := detail
 	sys_closure := closure.ToC()
@@ -632,20 +632,20 @@ func SignalConnectClosureById(instance unsafe.Pointer, signalId uint, detail uin
 
 // SignalEmit is analogous to the C function g_signal_emit.
 func SignalEmit(instance unsafe.Pointer, signalId uint, detail uint32) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_signalId := signalId
 	sys_detail := detail
 }
 
 // SignalEmitByName is analogous to the C function g_signal_emit_by_name.
 func SignalEmitByName(instance unsafe.Pointer, detailedSignal string) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_detailedSignal := detailedSignal
 }
 
 // SignalEmitValist is analogous to the C function g_signal_emit_valist.
 func SignalEmitValist(instance unsafe.Pointer, signalId uint, detail uint32) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_signalId := signalId
 	sys_detail := detail
 }
@@ -654,24 +654,24 @@ func SignalEmitValist(instance unsafe.Pointer, signalId uint, detail uint32) {
 
 // SignalGetInvocationHint is analogous to the C function g_signal_get_invocation_hint.
 func SignalGetInvocationHint(instance unsafe.Pointer) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 }
 
 // SignalHandlerBlock is analogous to the C function g_signal_handler_block.
 func SignalHandlerBlock(instance unsafe.Pointer, handlerId uint64) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_handlerId := handlerId
 }
 
 // SignalHandlerDisconnect is analogous to the C function g_signal_handler_disconnect.
 func SignalHandlerDisconnect(instance unsafe.Pointer, handlerId uint64) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_handlerId := handlerId
 }
 
 // SignalHandlerFind is analogous to the C function g_signal_handler_find.
 func SignalHandlerFind(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_mask := mask
 	sys_signalId := signalId
 	sys_detail := detail
@@ -682,19 +682,19 @@ func SignalHandlerFind(instance unsafe.Pointer, mask int, signalId uint, detail 
 
 // SignalHandlerIsConnected is analogous to the C function g_signal_handler_is_connected.
 func SignalHandlerIsConnected(instance unsafe.Pointer, handlerId uint64) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_handlerId := handlerId
 }
 
 // SignalHandlerUnblock is analogous to the C function g_signal_handler_unblock.
 func SignalHandlerUnblock(instance unsafe.Pointer, handlerId uint64) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_handlerId := handlerId
 }
 
 // SignalHandlersBlockMatched is analogous to the C function g_signal_handlers_block_matched.
 func SignalHandlersBlockMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_mask := mask
 	sys_signalId := signalId
 	sys_detail := detail
@@ -705,12 +705,12 @@ func SignalHandlersBlockMatched(instance unsafe.Pointer, mask int, signalId uint
 
 // SignalHandlersDestroy is analogous to the C function g_signal_handlers_destroy.
 func SignalHandlersDestroy(instance unsafe.Pointer) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 }
 
 // SignalHandlersDisconnectMatched is analogous to the C function g_signal_handlers_disconnect_matched.
 func SignalHandlersDisconnectMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_mask := mask
 	sys_signalId := signalId
 	sys_detail := detail
@@ -721,7 +721,7 @@ func SignalHandlersDisconnectMatched(instance unsafe.Pointer, mask int, signalId
 
 // SignalHandlersUnblockMatched is analogous to the C function g_signal_handlers_unblock_matched.
 func SignalHandlersUnblockMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_mask := mask
 	sys_signalId := signalId
 	sys_detail := detail
@@ -732,7 +732,7 @@ func SignalHandlersUnblockMatched(instance unsafe.Pointer, mask int, signalId ui
 
 // SignalHasHandlerPending is analogous to the C function g_signal_has_handler_pending.
 func SignalHasHandlerPending(instance unsafe.Pointer, signalId uint, detail uint32, mayBeBlocked bool) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_signalId := signalId
 	sys_detail := detail
 	sys_mayBeBlocked := mayBeBlocked
@@ -793,14 +793,14 @@ func SignalRemoveEmissionHook(signalId uint, hookId uint64) {
 
 // SignalStopEmission is analogous to the C function g_signal_stop_emission.
 func SignalStopEmission(instance unsafe.Pointer, signalId uint, detail uint32) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_signalId := signalId
 	sys_detail := detail
 }
 
 // SignalStopEmissionByName is analogous to the C function g_signal_stop_emission_by_name.
 func SignalStopEmissionByName(instance unsafe.Pointer, detailedSignal string) {
-	sys_instance := instance.ToC()
+	sys_instance := instance
 	sys_detailedSignal := detailedSignal
 }
 
@@ -929,7 +929,7 @@ func TypeDefaultInterfaceRef(gType uint64) {
 
 // TypeDefaultInterfaceUnref is analogous to the C function g_type_default_interface_unref.
 func TypeDefaultInterfaceUnref(gIface unsafe.Pointer) {
-	sys_gIface := gIface.ToC()
+	sys_gIface := gIface
 }
 
 // TypeDepth is analogous to the C function g_type_depth.
