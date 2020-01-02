@@ -1503,6 +1503,11 @@ type TypePlugin struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTypePlugin that represents the TypePlugin.
+func (recv *TypePlugin) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TypeCValue is a representation of the C union GTypeCValue.
 type TypeCValue struct{}
 

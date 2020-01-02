@@ -3155,9 +3155,19 @@ type Action struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GAction that represents the Action.
+func (recv *Action) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ActionGroup is a representation of the C interface GActionGroup.
 type ActionGroup struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GActionGroup that represents the ActionGroup.
+func (recv *ActionGroup) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AppInfo is a representation of the C interface GAppInfo.
@@ -3165,9 +3175,19 @@ type AppInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GAppInfo that represents the AppInfo.
+func (recv *AppInfo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AsyncResult is a representation of the C interface GAsyncResult.
 type AsyncResult struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GAsyncResult that represents the AsyncResult.
+func (recv *AsyncResult) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DBusObject is a representation of the C interface GDBusObject.
@@ -3175,9 +3195,19 @@ type DBusObject struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDBusObject that represents the DBusObject.
+func (recv *DBusObject) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusObjectManager is a representation of the C interface GDBusObjectManager.
 type DBusObjectManager struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GDBusObjectManager that represents the DBusObjectManager.
+func (recv *DBusObjectManager) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DesktopAppInfoLookup is a representation of the C interface GDesktopAppInfoLookup.
@@ -3185,9 +3215,19 @@ type DesktopAppInfoLookup struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDesktopAppInfoLookup that represents the DesktopAppInfoLookup.
+func (recv *DesktopAppInfoLookup) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Drive is a representation of the C interface GDrive.
 type Drive struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GDrive that represents the Drive.
+func (recv *Drive) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // File is a representation of the C interface GFile.
@@ -3195,9 +3235,19 @@ type File struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFile that represents the File.
+func (recv *File) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Icon is a representation of the C interface GIcon.
 type Icon struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GIcon that represents the Icon.
+func (recv *Icon) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ListModel is a representation of the C interface GListModel.
@@ -3205,9 +3255,19 @@ type ListModel struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GListModel that represents the ListModel.
+func (recv *ListModel) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LoadableIcon is a representation of the C interface GLoadableIcon.
 type LoadableIcon struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GLoadableIcon that represents the LoadableIcon.
+func (recv *LoadableIcon) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Mount is a representation of the C interface GMount.
@@ -3215,9 +3275,19 @@ type Mount struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMount that represents the Mount.
+func (recv *Mount) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Seekable is a representation of the C interface GSeekable.
 type Seekable struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GSeekable that represents the Seekable.
+func (recv *Seekable) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketConnectable is a representation of the C interface GSocketConnectable.
@@ -3225,7 +3295,17 @@ type SocketConnectable struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketConnectable that represents the SocketConnectable.
+func (recv *SocketConnectable) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Volume is a representation of the C interface GVolume.
 type Volume struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GVolume that represents the Volume.
+func (recv *Volume) ToC() unsafe.Pointer {
+	return recv.native
 }

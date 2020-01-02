@@ -9225,5 +9225,10 @@ type DevicePad struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkDevicePad that represents the DevicePad.
+func (recv *DevicePad) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Event is a representation of the C union GdkEvent.
 type Event struct{}

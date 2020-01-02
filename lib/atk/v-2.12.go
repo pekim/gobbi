@@ -1449,9 +1449,19 @@ type Action struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkAction that represents the Action.
+func (recv *Action) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Component is a representation of the C interface AtkComponent.
 type Component struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C AtkComponent that represents the Component.
+func (recv *Component) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Document is a representation of the C interface AtkDocument.
@@ -1459,9 +1469,19 @@ type Document struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkDocument that represents the Document.
+func (recv *Document) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EditableText is a representation of the C interface AtkEditableText.
 type EditableText struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C AtkEditableText that represents the EditableText.
+func (recv *EditableText) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HyperlinkImpl is a representation of the C interface AtkHyperlinkImpl.
@@ -1469,9 +1489,19 @@ type HyperlinkImpl struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkHyperlinkImpl that represents the HyperlinkImpl.
+func (recv *HyperlinkImpl) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Hypertext is a representation of the C interface AtkHypertext.
 type Hypertext struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C AtkHypertext that represents the Hypertext.
+func (recv *Hypertext) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Image is a representation of the C interface AtkImage.
@@ -1479,9 +1509,19 @@ type Image struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkImage that represents the Image.
+func (recv *Image) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ImplementorIface is a representation of the C interface AtkImplementorIface.
 type ImplementorIface struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C AtkImplementorIface that represents the ImplementorIface.
+func (recv *ImplementorIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Selection is a representation of the C interface AtkSelection.
@@ -1489,9 +1529,19 @@ type Selection struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkSelection that represents the Selection.
+func (recv *Selection) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StreamableContent is a representation of the C interface AtkStreamableContent.
 type StreamableContent struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C AtkStreamableContent that represents the StreamableContent.
+func (recv *StreamableContent) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Table is a representation of the C interface AtkTable.
@@ -1499,9 +1549,19 @@ type Table struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkTable that represents the Table.
+func (recv *Table) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TableCell is a representation of the C interface AtkTableCell.
 type TableCell struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C AtkTableCell that represents the TableCell.
+func (recv *TableCell) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Text is a representation of the C interface AtkText.
@@ -1509,12 +1569,27 @@ type Text struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkText that represents the Text.
+func (recv *Text) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Value is a representation of the C interface AtkValue.
 type Value struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkValue that represents the Value.
+func (recv *Value) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Window is a representation of the C interface AtkWindow.
 type Window struct {
 	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C AtkWindow that represents the Window.
+func (recv *Window) ToC() unsafe.Pointer {
+	return recv.native
 }
