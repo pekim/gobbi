@@ -297,8 +297,8 @@ func FlagsRegisterStatic(name string, constStaticValues *FlagsValue) {
 // GtypeGetType is analogous to the C function g_gtype_get_type.
 func GtypeGetType() {}
 
-// ParamSpecBoolean is analogous to the C function g_param_spec_boolean.
-func ParamSpecBoolean(name string, nick string, blurb string, defaultValue bool, flags int) {
+// ParamSpecBoolean_ is analogous to the C function g_param_spec_boolean.
+func ParamSpecBoolean_(name string, nick string, blurb string, defaultValue bool, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -306,8 +306,8 @@ func ParamSpecBoolean(name string, nick string, blurb string, defaultValue bool,
 	sys_flags := flags
 }
 
-// ParamSpecBoxed is analogous to the C function g_param_spec_boxed.
-func ParamSpecBoxed(name string, nick string, blurb string, boxedType uint64, flags int) {
+// ParamSpecBoxed_ is analogous to the C function g_param_spec_boxed.
+func ParamSpecBoxed_(name string, nick string, blurb string, boxedType uint64, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -315,8 +315,8 @@ func ParamSpecBoxed(name string, nick string, blurb string, boxedType uint64, fl
 	sys_flags := flags
 }
 
-// ParamSpecChar is analogous to the C function g_param_spec_char.
-func ParamSpecChar(name string, nick string, blurb string, minimum int8, maximum int8, defaultValue int8, flags int) {
+// ParamSpecChar_ is analogous to the C function g_param_spec_char.
+func ParamSpecChar_(name string, nick string, blurb string, minimum int8, maximum int8, defaultValue int8, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -326,8 +326,8 @@ func ParamSpecChar(name string, nick string, blurb string, minimum int8, maximum
 	sys_flags := flags
 }
 
-// ParamSpecDouble is analogous to the C function g_param_spec_double.
-func ParamSpecDouble(name string, nick string, blurb string, minimum float64, maximum float64, defaultValue float64, flags int) {
+// ParamSpecDouble_ is analogous to the C function g_param_spec_double.
+func ParamSpecDouble_(name string, nick string, blurb string, minimum float64, maximum float64, defaultValue float64, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -337,8 +337,8 @@ func ParamSpecDouble(name string, nick string, blurb string, minimum float64, ma
 	sys_flags := flags
 }
 
-// ParamSpecEnum is analogous to the C function g_param_spec_enum.
-func ParamSpecEnum(name string, nick string, blurb string, enumType uint64, defaultValue int, flags int) {
+// ParamSpecEnum_ is analogous to the C function g_param_spec_enum.
+func ParamSpecEnum_(name string, nick string, blurb string, enumType uint64, defaultValue int, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -347,8 +347,8 @@ func ParamSpecEnum(name string, nick string, blurb string, enumType uint64, defa
 	sys_flags := flags
 }
 
-// ParamSpecFlags is analogous to the C function g_param_spec_flags.
-func ParamSpecFlags(name string, nick string, blurb string, flagsType uint64, defaultValue uint, flags int) {
+// ParamSpecFlags_ is analogous to the C function g_param_spec_flags.
+func ParamSpecFlags_(name string, nick string, blurb string, flagsType uint64, defaultValue uint, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -357,8 +357,8 @@ func ParamSpecFlags(name string, nick string, blurb string, flagsType uint64, de
 	sys_flags := flags
 }
 
-// ParamSpecFloat is analogous to the C function g_param_spec_float.
-func ParamSpecFloat(name string, nick string, blurb string, minimum float32, maximum float32, defaultValue float32, flags int) {
+// ParamSpecFloat_ is analogous to the C function g_param_spec_float.
+func ParamSpecFloat_(name string, nick string, blurb string, minimum float32, maximum float32, defaultValue float32, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -377,8 +377,8 @@ func ParamSpecGtype(name string, nick string, blurb string, isAType uint64, flag
 	sys_flags := flags
 }
 
-// ParamSpecInt is analogous to the C function g_param_spec_int.
-func ParamSpecInt(name string, nick string, blurb string, minimum int, maximum int, defaultValue int, flags int) {
+// ParamSpecInt_ is analogous to the C function g_param_spec_int.
+func ParamSpecInt_(name string, nick string, blurb string, minimum int, maximum int, defaultValue int, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -388,8 +388,8 @@ func ParamSpecInt(name string, nick string, blurb string, minimum int, maximum i
 	sys_flags := flags
 }
 
-// ParamSpecInt64 is analogous to the C function g_param_spec_int64.
-func ParamSpecInt64(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) {
+// ParamSpecInt64_ is analogous to the C function g_param_spec_int64.
+func ParamSpecInt64_(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -399,8 +399,8 @@ func ParamSpecInt64(name string, nick string, blurb string, minimum int64, maxim
 	sys_flags := flags
 }
 
-// ParamSpecLong is analogous to the C function g_param_spec_long.
-func ParamSpecLong(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) {
+// ParamSpecLong_ is analogous to the C function g_param_spec_long.
+func ParamSpecLong_(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -410,8 +410,8 @@ func ParamSpecLong(name string, nick string, blurb string, minimum int64, maximu
 	sys_flags := flags
 }
 
-// ParamSpecObject is analogous to the C function g_param_spec_object.
-func ParamSpecObject(name string, nick string, blurb string, objectType uint64, flags int) {
+// ParamSpecObject_ is analogous to the C function g_param_spec_object.
+func ParamSpecObject_(name string, nick string, blurb string, objectType uint64, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -419,14 +419,14 @@ func ParamSpecObject(name string, nick string, blurb string, objectType uint64, 
 	sys_flags := flags
 }
 
-// ParamSpecOverride is analogous to the C function g_param_spec_override.
-func ParamSpecOverride(name string, overridden *ParamSpec) {
+// ParamSpecOverride_ is analogous to the C function g_param_spec_override.
+func ParamSpecOverride_(name string, overridden *ParamSpec) {
 	sys_name := name
 	sys_overridden := overridden.ToC()
 }
 
-// ParamSpecParam is analogous to the C function g_param_spec_param.
-func ParamSpecParam(name string, nick string, blurb string, paramType uint64, flags int) {
+// ParamSpecParam_ is analogous to the C function g_param_spec_param.
+func ParamSpecParam_(name string, nick string, blurb string, paramType uint64, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -434,16 +434,16 @@ func ParamSpecParam(name string, nick string, blurb string, paramType uint64, fl
 	sys_flags := flags
 }
 
-// ParamSpecPointer is analogous to the C function g_param_spec_pointer.
-func ParamSpecPointer(name string, nick string, blurb string, flags int) {
+// ParamSpecPointer_ is analogous to the C function g_param_spec_pointer.
+func ParamSpecPointer_(name string, nick string, blurb string, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
 	sys_flags := flags
 }
 
-// ParamSpecString is analogous to the C function g_param_spec_string.
-func ParamSpecString(name string, nick string, blurb string, defaultValue string, flags int) {
+// ParamSpecString_ is analogous to the C function g_param_spec_string.
+func ParamSpecString_(name string, nick string, blurb string, defaultValue string, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -495,8 +495,8 @@ func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maxi
 	sys_flags := flags
 }
 
-// ParamSpecUnichar is analogous to the C function g_param_spec_unichar.
-func ParamSpecUnichar(name string, nick string, blurb string, defaultValue rune, flags int) {
+// ParamSpecUnichar_ is analogous to the C function g_param_spec_unichar.
+func ParamSpecUnichar_(name string, nick string, blurb string, defaultValue rune, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -504,8 +504,8 @@ func ParamSpecUnichar(name string, nick string, blurb string, defaultValue rune,
 	sys_flags := flags
 }
 
-// ParamSpecValueArray is analogous to the C function g_param_spec_value_array.
-func ParamSpecValueArray(name string, nick string, blurb string, elementSpec *ParamSpec, flags int) {
+// ParamSpecValueArray_ is analogous to the C function g_param_spec_value_array.
+func ParamSpecValueArray_(name string, nick string, blurb string, elementSpec *ParamSpec, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -513,8 +513,8 @@ func ParamSpecValueArray(name string, nick string, blurb string, elementSpec *Pa
 	sys_flags := flags
 }
 
-// ParamSpecVariant is analogous to the C function g_param_spec_variant.
-func ParamSpecVariant(name string, nick string, blurb string, type_ *glib.VariantType, defaultValue *glib.Variant, flags int) {
+// ParamSpecVariant_ is analogous to the C function g_param_spec_variant.
+func ParamSpecVariant_(name string, nick string, blurb string, type_ *glib.VariantType, defaultValue *glib.Variant, flags int) {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -753,8 +753,8 @@ func SignalParseName(detailedSignal string, itype uint64, forceDetailQuark bool)
 	sys_forceDetailQuark := forceDetailQuark
 }
 
-// SignalQuery is analogous to the C function g_signal_query.
-func SignalQuery(signalId uint) {
+// SignalQuery_ is analogous to the C function g_signal_query.
+func SignalQuery_(signalId uint) {
 	sys_signalId := signalId
 }
 
@@ -991,8 +991,8 @@ func TypeQname(type_ uint64) {
 	sys_type_ := type_
 }
 
-// TypeQuery is analogous to the C function g_type_query.
-func TypeQuery(type_ uint64) {
+// TypeQuery_ is analogous to the C function g_type_query.
+func TypeQuery_(type_ uint64) {
 	sys_type_ := type_
 }
 
