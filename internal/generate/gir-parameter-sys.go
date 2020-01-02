@@ -8,6 +8,11 @@ import (
 
 func (p *Parameter) sysParamGoType() *jen.Statement {
 	if p.Type != nil {
+		// Atoms are really pointers underneath.
+		if p.Type.CType == "GdkAtom" {
+			return jenUnsafePointer()
+		}
+
 		return jen.
 			Add(p.Type.sysParamGoType(false))
 	}
@@ -48,11 +53,6 @@ func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
 	}
 
 	if p.Type.cType.indirectionCount > 0 {
-		goValue = jenUnsafePointer().Call(goValue)
-	}
-
-	// Atoms are really pointers underneath.
-	if p.Type.CType == "GdkAtom" {
 		goValue = jenUnsafePointer().Call(goValue)
 	}
 

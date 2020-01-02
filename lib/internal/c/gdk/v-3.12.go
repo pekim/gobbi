@@ -59,8 +59,8 @@ type WindowAttr C.GdkWindowAttr
 type WindowClass C.GdkWindowClass
 type WindowRedirect C.GdkWindowRedirect
 
-func Fn_gdk_atom_name(paramInstance Atom) string {
-	cValueInstance := (C.GdkAtom)(unsafe.Pointer(paramInstance))
+func Fn_gdk_atom_name(paramInstance unsafe.Pointer) string {
+	cValueInstance := (C.GdkAtom)(paramInstance)
 
 	ret := C.gdk_atom_name(cValueInstance)
 
@@ -918,12 +918,12 @@ func Fn_gdk_pre_parse_libgtk_only() {
 	C.gdk_pre_parse_libgtk_only()
 }
 
-func Fn_gdk_property_change(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 int, param4 int, param5 *uint8, param6 int) {
+func Fn_gdk_property_change(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 int, param4 int, param5 *uint8, param6 int) {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
-	cValue2 := (C.GdkAtom)(unsafe.Pointer(param2))
+	cValue2 := (C.GdkAtom)(param2)
 
 	cValue3 := (C.gint)(param3)
 
@@ -936,20 +936,20 @@ func Fn_gdk_property_change(param0 unsafe.Pointer, param1 Atom, param2 Atom, par
 	C.gdk_property_change(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
 }
 
-func Fn_gdk_property_delete(param0 unsafe.Pointer, param1 Atom) {
+func Fn_gdk_property_delete(param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
 	C.gdk_property_delete(cValue0, cValue1)
 }
 
-func Fn_gdk_property_get(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint64, param4 uint64, param5 int, param6 unsafe.Pointer, param7 *int, param8 *int, param9 *[]uint8) bool {
+func Fn_gdk_property_get(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 uint64, param4 uint64, param5 int, param6 unsafe.Pointer, param7 *int, param8 *int, param9 *[]uint8) bool {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
-	cValue2 := (C.GdkAtom)(unsafe.Pointer(param2))
+	cValue2 := (C.GdkAtom)(param2)
 
 	cValue3 := (C.gulong)(param3)
 
@@ -1010,40 +1010,40 @@ func Fn_gdk_query_visual_types(param0 *[]int, param1 *int) {
 	*param0 = param0Out
 }
 
-func Fn_gdk_selection_convert(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 uint32) {
+func Fn_gdk_selection_convert(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 uint32) {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
-	cValue2 := (C.GdkAtom)(unsafe.Pointer(param2))
+	cValue2 := (C.GdkAtom)(param2)
 
 	cValue3 := (C.guint32)(param3)
 
 	C.gdk_selection_convert(cValue0, cValue1, cValue2, cValue3)
 }
 
-func Fn_gdk_selection_owner_get(param0 Atom) unsafe.Pointer {
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+func Fn_gdk_selection_owner_get(param0 unsafe.Pointer) unsafe.Pointer {
+	cValue0 := (C.GdkAtom)(param0)
 
 	ret := C.gdk_selection_owner_get(cValue0)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_selection_owner_get_for_display(param0 unsafe.Pointer, param1 Atom) unsafe.Pointer {
+func Fn_gdk_selection_owner_get_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
 	ret := C.gdk_selection_owner_get_for_display(cValue0, cValue1)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_selection_owner_set(param0 unsafe.Pointer, param1 Atom, param2 uint32, param3 bool) bool {
+func Fn_gdk_selection_owner_set(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint32, param3 bool) bool {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
 	cValue2 := (C.guint32)(param2)
 
@@ -1054,12 +1054,12 @@ func Fn_gdk_selection_owner_set(param0 unsafe.Pointer, param1 Atom, param2 uint3
 	return toGoBool(ret)
 }
 
-func Fn_gdk_selection_owner_set_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 Atom, param3 uint32, param4 bool) bool {
+func Fn_gdk_selection_owner_set_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 uint32, param4 bool) bool {
 	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.GdkWindow)(unsafe.Pointer(param1))
 
-	cValue2 := (C.GdkAtom)(unsafe.Pointer(param2))
+	cValue2 := (C.GdkAtom)(param2)
 
 	cValue3 := (C.guint32)(param3)
 
@@ -1084,30 +1084,30 @@ func Fn_gdk_selection_property_get(param0 unsafe.Pointer, param1 **uint8, param2
 	return (int)(ret)
 }
 
-func Fn_gdk_selection_send_notify(param0 unsafe.Pointer, param1 Atom, param2 Atom, param3 Atom, param4 uint32) {
+func Fn_gdk_selection_send_notify(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 unsafe.Pointer, param4 uint32) {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
-	cValue2 := (C.GdkAtom)(unsafe.Pointer(param2))
+	cValue2 := (C.GdkAtom)(param2)
 
-	cValue3 := (C.GdkAtom)(unsafe.Pointer(param3))
+	cValue3 := (C.GdkAtom)(param3)
 
 	cValue4 := (C.guint32)(param4)
 
 	C.gdk_selection_send_notify(cValue0, cValue1, cValue2, cValue3, cValue4)
 }
 
-func Fn_gdk_selection_send_notify_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 Atom, param3 Atom, param4 Atom, param5 uint32) {
+func Fn_gdk_selection_send_notify_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 uint32) {
 	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.GdkWindow)(unsafe.Pointer(param1))
 
-	cValue2 := (C.GdkAtom)(unsafe.Pointer(param2))
+	cValue2 := (C.GdkAtom)(param2)
 
-	cValue3 := (C.GdkAtom)(unsafe.Pointer(param3))
+	cValue3 := (C.GdkAtom)(param3)
 
-	cValue4 := (C.GdkAtom)(unsafe.Pointer(param4))
+	cValue4 := (C.GdkAtom)(param4)
 
 	cValue5 := (C.guint32)(param5)
 
@@ -1933,10 +1933,10 @@ func Fn_gdk_display_put_event(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 	C.gdk_display_put_event(cValueInstance, cValue0)
 }
 
-func Fn_gdk_display_request_selection_notification(paramInstance unsafe.Pointer, param0 Atom) bool {
+func Fn_gdk_display_request_selection_notification(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
 	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+	cValue0 := (C.GdkAtom)(param0)
 
 	ret := C.gdk_display_request_selection_notification(cValueInstance, cValue0)
 

@@ -8610,8 +8610,8 @@ func PreParseLibgtkOnly() {
 // PropertyChange is analogous to the C function gdk_property_change.
 func PropertyChange(window *Window, property Atom, type_ Atom, format int, mode int, data *uint8, nelements int) {
 	sys_window := window.ToC()
-	sys_property := gdk.Atom(property)
-	sys_type_ := gdk.Atom(type_)
+	sys_property := property.ToC()
+	sys_type_ := type_.ToC()
 	sys_format := format
 	sys_mode := mode
 	sys_data := data
@@ -8622,7 +8622,7 @@ func PropertyChange(window *Window, property Atom, type_ Atom, format int, mode 
 // PropertyDelete is analogous to the C function gdk_property_delete.
 func PropertyDelete(window *Window, property Atom) {
 	sys_window := window.ToC()
-	sys_property := gdk.Atom(property)
+	sys_property := property.ToC()
 	gdk.Fn_gdk_property_delete(sys_window, sys_property)
 }
 
@@ -8635,29 +8635,29 @@ func PropertyDelete(window *Window, property Atom) {
 // SelectionConvert is analogous to the C function gdk_selection_convert.
 func SelectionConvert(requestor *Window, selection Atom, target Atom, time uint32) {
 	sys_requestor := requestor.ToC()
-	sys_selection := gdk.Atom(selection)
-	sys_target := gdk.Atom(target)
+	sys_selection := selection.ToC()
+	sys_target := target.ToC()
 	sys_time := time
 	gdk.Fn_gdk_selection_convert(sys_requestor, sys_selection, sys_target, sys_time)
 }
 
 // SelectionOwnerGet is analogous to the C function gdk_selection_owner_get.
 func SelectionOwnerGet(selection Atom) {
-	sys_selection := gdk.Atom(selection)
+	sys_selection := selection.ToC()
 	gdk.Fn_gdk_selection_owner_get(sys_selection)
 }
 
 // SelectionOwnerGetForDisplay is analogous to the C function gdk_selection_owner_get_for_display.
 func SelectionOwnerGetForDisplay(display *Display, selection Atom) {
 	sys_display := display.ToC()
-	sys_selection := gdk.Atom(selection)
+	sys_selection := selection.ToC()
 	gdk.Fn_gdk_selection_owner_get_for_display(sys_display, sys_selection)
 }
 
 // SelectionOwnerSet is analogous to the C function gdk_selection_owner_set.
 func SelectionOwnerSet(owner *Window, selection Atom, time uint32, sendEvent bool) {
 	sys_owner := owner.ToC()
-	sys_selection := gdk.Atom(selection)
+	sys_selection := selection.ToC()
 	sys_time := time
 	sys_sendEvent := sendEvent
 	gdk.Fn_gdk_selection_owner_set(sys_owner, sys_selection, sys_time, sys_sendEvent)
@@ -8667,7 +8667,7 @@ func SelectionOwnerSet(owner *Window, selection Atom, time uint32, sendEvent boo
 func SelectionOwnerSetForDisplay(display *Display, owner *Window, selection Atom, time uint32, sendEvent bool) {
 	sys_display := display.ToC()
 	sys_owner := owner.ToC()
-	sys_selection := gdk.Atom(selection)
+	sys_selection := selection.ToC()
 	sys_time := time
 	sys_sendEvent := sendEvent
 	gdk.Fn_gdk_selection_owner_set_for_display(sys_display, sys_owner, sys_selection, sys_time, sys_sendEvent)
@@ -8685,9 +8685,9 @@ func SelectionPropertyGet(requestor *Window, data **uint8, propType *Atom, propF
 // SelectionSendNotify is analogous to the C function gdk_selection_send_notify.
 func SelectionSendNotify(requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
 	sys_requestor := requestor.ToC()
-	sys_selection := gdk.Atom(selection)
-	sys_target := gdk.Atom(target)
-	sys_property := gdk.Atom(property)
+	sys_selection := selection.ToC()
+	sys_target := target.ToC()
+	sys_property := property.ToC()
 	sys_time := time
 	gdk.Fn_gdk_selection_send_notify(sys_requestor, sys_selection, sys_target, sys_property, sys_time)
 }
@@ -8696,9 +8696,9 @@ func SelectionSendNotify(requestor *Window, selection Atom, target Atom, propert
 func SelectionSendNotifyForDisplay(display *Display, requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
 	sys_display := display.ToC()
 	sys_requestor := requestor.ToC()
-	sys_selection := gdk.Atom(selection)
-	sys_target := gdk.Atom(target)
-	sys_property := gdk.Atom(property)
+	sys_selection := selection.ToC()
+	sys_target := target.ToC()
+	sys_property := property.ToC()
 	sys_time := time
 	gdk.Fn_gdk_selection_send_notify_for_display(sys_display, sys_requestor, sys_selection, sys_target, sys_property, sys_time)
 }

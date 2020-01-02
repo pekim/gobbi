@@ -2227,10 +2227,10 @@ func Fn_gtk_selection_data_get_text(paramInstance unsafe.Pointer) string {
 
 // UNSUPPORTED : gtk_selection_data_get_uris : no array length
 
-func Fn_gtk_selection_data_set(paramInstance unsafe.Pointer, param0 gdk.Atom, param1 int, param2 []uint8, param3 int) {
+func Fn_gtk_selection_data_set(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 []uint8, param3 int) {
 	cValueInstance := (*C.GtkSelectionData)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+	cValue0 := (C.GdkAtom)(param0)
 
 	cValue1 := (C.gint)(param1)
 
@@ -2447,10 +2447,10 @@ func Fn_gtk_target_list_new(param0 []TargetEntry, param1 uint) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_target_list_add(paramInstance unsafe.Pointer, param0 gdk.Atom, param1 uint, param2 uint) {
+func Fn_gtk_target_list_add(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint, param2 uint) {
 	cValueInstance := (*C.GtkTargetList)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+	cValue0 := (C.GdkAtom)(param0)
 
 	cValue1 := (C.guint)(param1)
 
@@ -2507,10 +2507,10 @@ func Fn_gtk_target_list_add_uri_targets(paramInstance unsafe.Pointer, param0 uin
 	C.gtk_target_list_add_uri_targets(cValueInstance, cValue0)
 }
 
-func Fn_gtk_target_list_find(paramInstance unsafe.Pointer, param0 gdk.Atom, param1 *uint) bool {
+func Fn_gtk_target_list_find(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *uint) bool {
 	cValueInstance := (*C.GtkTargetList)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+	cValue0 := (C.GdkAtom)(param0)
 
 	cValue1 := (*C.guint)(unsafe.Pointer(param1))
 
@@ -2527,10 +2527,10 @@ func Fn_gtk_target_list_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_target_list_remove(paramInstance unsafe.Pointer, param0 gdk.Atom) {
+func Fn_gtk_target_list_remove(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GtkTargetList)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+	cValue0 := (C.GdkAtom)(param0)
 
 	C.gtk_target_list_remove(cValueInstance, cValue0)
 }
@@ -5632,22 +5632,22 @@ func Fn_gtk_rgb_to_hsv(param0 float64, param1 float64, param2 float64, param3 *f
 	C.gtk_rgb_to_hsv(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-func Fn_gtk_selection_add_target(param0 unsafe.Pointer, param1 gdk.Atom, param2 gdk.Atom, param3 uint) {
+func Fn_gtk_selection_add_target(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 uint) {
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
-	cValue2 := (C.GdkAtom)(unsafe.Pointer(param2))
+	cValue2 := (C.GdkAtom)(param2)
 
 	cValue3 := (C.guint)(param3)
 
 	C.gtk_selection_add_target(cValue0, cValue1, cValue2, cValue3)
 }
 
-func Fn_gtk_selection_add_targets(param0 unsafe.Pointer, param1 gdk.Atom, param2 []TargetEntry, param3 uint) {
+func Fn_gtk_selection_add_targets(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 []TargetEntry, param3 uint) {
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
 	cValue2 := (*C.GtkTargetEntry)(unsafe.Pointer(&param2[0]))
 
@@ -5656,20 +5656,20 @@ func Fn_gtk_selection_add_targets(param0 unsafe.Pointer, param1 gdk.Atom, param2
 	C.gtk_selection_add_targets(cValue0, cValue1, cValue2, cValue3)
 }
 
-func Fn_gtk_selection_clear_targets(param0 unsafe.Pointer, param1 gdk.Atom) {
+func Fn_gtk_selection_clear_targets(param0 unsafe.Pointer, param1 unsafe.Pointer) {
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
 	C.gtk_selection_clear_targets(cValue0, cValue1)
 }
 
-func Fn_gtk_selection_convert(param0 unsafe.Pointer, param1 gdk.Atom, param2 gdk.Atom, param3 uint32) bool {
+func Fn_gtk_selection_convert(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 uint32) bool {
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
-	cValue2 := (C.GdkAtom)(unsafe.Pointer(param2))
+	cValue2 := (C.GdkAtom)(param2)
 
 	cValue3 := (C.guint32)(param3)
 
@@ -5678,10 +5678,10 @@ func Fn_gtk_selection_convert(param0 unsafe.Pointer, param1 gdk.Atom, param2 gdk
 	return toGoBool(ret)
 }
 
-func Fn_gtk_selection_owner_set(param0 unsafe.Pointer, param1 gdk.Atom, param2 uint32) bool {
+func Fn_gtk_selection_owner_set(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint32) bool {
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
 	cValue2 := (C.guint32)(param2)
 
@@ -5690,12 +5690,12 @@ func Fn_gtk_selection_owner_set(param0 unsafe.Pointer, param1 gdk.Atom, param2 u
 	return toGoBool(ret)
 }
 
-func Fn_gtk_selection_owner_set_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 gdk.Atom, param3 uint32) bool {
+func Fn_gtk_selection_owner_set_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 uint32) bool {
 	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.GtkWidget)(unsafe.Pointer(param1))
 
-	cValue2 := (C.GdkAtom)(unsafe.Pointer(param2))
+	cValue2 := (C.GdkAtom)(param2)
 
 	cValue3 := (C.guint32)(param3)
 
@@ -10247,10 +10247,10 @@ func Fn_gtk_clipboard_store(paramInstance unsafe.Pointer) {
 	C.gtk_clipboard_store(cValueInstance)
 }
 
-func Fn_gtk_clipboard_wait_for_contents(paramInstance unsafe.Pointer, param0 gdk.Atom) unsafe.Pointer {
+func Fn_gtk_clipboard_wait_for_contents(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GtkClipboard)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+	cValue0 := (C.GdkAtom)(param0)
 
 	ret := C.gtk_clipboard_wait_for_contents(cValueInstance, cValue0)
 
@@ -10332,10 +10332,10 @@ func Fn_gtk_clipboard_wait_is_rich_text_available(paramInstance unsafe.Pointer, 
 	return toGoBool(ret)
 }
 
-func Fn_gtk_clipboard_wait_is_target_available(paramInstance unsafe.Pointer, param0 gdk.Atom) bool {
+func Fn_gtk_clipboard_wait_is_target_available(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
 	cValueInstance := (*C.GtkClipboard)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+	cValue0 := (C.GdkAtom)(param0)
 
 	ret := C.gtk_clipboard_wait_is_target_available(cValueInstance, cValue0)
 
@@ -10358,8 +10358,8 @@ func Fn_gtk_clipboard_wait_is_uris_available(paramInstance unsafe.Pointer) bool 
 	return toGoBool(ret)
 }
 
-func Fn_gtk_clipboard_get(param0 gdk.Atom) unsafe.Pointer {
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+func Fn_gtk_clipboard_get(param0 unsafe.Pointer) unsafe.Pointer {
+	cValue0 := (C.GdkAtom)(param0)
 
 	ret := C.gtk_clipboard_get(cValue0)
 
@@ -10374,10 +10374,10 @@ func Fn_gtk_clipboard_get_default(param0 unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_clipboard_get_for_display(param0 unsafe.Pointer, param1 gdk.Atom) unsafe.Pointer {
+func Fn_gtk_clipboard_get_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
 	ret := C.gtk_clipboard_get_for_display(cValue0, cValue1)
 
@@ -24599,12 +24599,12 @@ func Fn_gtk_text_buffer_delete_selection(paramInstance unsafe.Pointer, param0 bo
 	return toGoBool(ret)
 }
 
-func Fn_gtk_text_buffer_deserialize(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 gdk.Atom, param2 unsafe.Pointer, param3 []uint8, param4 uint64, error unsafe.Pointer) bool {
+func Fn_gtk_text_buffer_deserialize(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 []uint8, param4 uint64, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GtkTextBuffer)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
 	cValue2 := (*C.GtkTextIter)(unsafe.Pointer(param2))
 
@@ -24619,20 +24619,20 @@ func Fn_gtk_text_buffer_deserialize(paramInstance unsafe.Pointer, param0 unsafe.
 	return toGoBool(ret)
 }
 
-func Fn_gtk_text_buffer_deserialize_get_can_create_tags(paramInstance unsafe.Pointer, param0 gdk.Atom) bool {
+func Fn_gtk_text_buffer_deserialize_get_can_create_tags(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+	cValue0 := (C.GdkAtom)(param0)
 
 	ret := C.gtk_text_buffer_deserialize_get_can_create_tags(cValueInstance, cValue0)
 
 	return toGoBool(ret)
 }
 
-func Fn_gtk_text_buffer_deserialize_set_can_create_tags(paramInstance unsafe.Pointer, param0 gdk.Atom, param1 bool) {
+func Fn_gtk_text_buffer_deserialize_set_can_create_tags(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+	cValue0 := (C.GdkAtom)(param0)
 
 	cValue1 := toCBool(param1)
 
@@ -25156,12 +25156,12 @@ func Fn_gtk_text_buffer_select_range(paramInstance unsafe.Pointer, param0 unsafe
 	C.gtk_text_buffer_select_range(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_text_buffer_serialize(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 gdk.Atom, param2 unsafe.Pointer, param3 unsafe.Pointer, param4 *uint64) []uint8 {
+func Fn_gtk_text_buffer_serialize(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 unsafe.Pointer, param4 *uint64) []uint8 {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GtkTextBuffer)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
 	cValue2 := (*C.GtkTextIter)(unsafe.Pointer(param2))
 
@@ -25198,18 +25198,18 @@ func Fn_gtk_text_buffer_set_text(paramInstance unsafe.Pointer, param0 string, pa
 	C.gtk_text_buffer_set_text(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_text_buffer_unregister_deserialize_format(paramInstance unsafe.Pointer, param0 gdk.Atom) {
+func Fn_gtk_text_buffer_unregister_deserialize_format(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+	cValue0 := (C.GdkAtom)(param0)
 
 	C.gtk_text_buffer_unregister_deserialize_format(cValueInstance, cValue0)
 }
 
-func Fn_gtk_text_buffer_unregister_serialize_format(paramInstance unsafe.Pointer, param0 gdk.Atom) {
+func Fn_gtk_text_buffer_unregister_serialize_format(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+	cValue0 := (C.GdkAtom)(param0)
 
 	C.gtk_text_buffer_unregister_serialize_format(cValueInstance, cValue0)
 }
@@ -29829,12 +29829,12 @@ func Fn_gtk_drag_dest_unset(paramInstance unsafe.Pointer) {
 	C.gtk_drag_dest_unset(cValueInstance)
 }
 
-func Fn_gtk_drag_get_data(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 gdk.Atom, param2 uint32) {
+func Fn_gtk_drag_get_data(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint32) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
 
-	cValue1 := (C.GdkAtom)(unsafe.Pointer(param1))
+	cValue1 := (C.GdkAtom)(param1)
 
 	cValue2 := (C.guint32)(param2)
 
@@ -30086,10 +30086,10 @@ func Fn_gtk_widget_get_clip(paramInstance unsafe.Pointer, param0 *gdk.Rectangle)
 	C.gtk_widget_get_clip(cValueInstance, cValue0)
 }
 
-func Fn_gtk_widget_get_clipboard(paramInstance unsafe.Pointer, param0 gdk.Atom) unsafe.Pointer {
+func Fn_gtk_widget_get_clipboard(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (C.GdkAtom)(unsafe.Pointer(param0))
+	cValue0 := (C.GdkAtom)(param0)
 
 	ret := C.gtk_widget_get_clipboard(cValueInstance, cValue0)
 

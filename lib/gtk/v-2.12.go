@@ -3507,8 +3507,8 @@ func RcScannerNew() {
 // SelectionAddTarget is analogous to the C function gtk_selection_add_target.
 func SelectionAddTarget(widget *Widget, selection gdk.Atom, target gdk.Atom, info uint) {
 	sys_widget := widget.ToC()
-	sys_selection := gtk.Atom(selection)
-	sys_target := gtk.Atom(target)
+	sys_selection := selection.ToC()
+	sys_target := target.ToC()
 	sys_info := info
 	gtk.Fn_gtk_selection_add_target(sys_widget, sys_selection, sys_target, sys_info)
 }
@@ -3518,15 +3518,15 @@ func SelectionAddTarget(widget *Widget, selection gdk.Atom, target gdk.Atom, inf
 // SelectionClearTargets is analogous to the C function gtk_selection_clear_targets.
 func SelectionClearTargets(widget *Widget, selection gdk.Atom) {
 	sys_widget := widget.ToC()
-	sys_selection := gtk.Atom(selection)
+	sys_selection := selection.ToC()
 	gtk.Fn_gtk_selection_clear_targets(sys_widget, sys_selection)
 }
 
 // SelectionConvert is analogous to the C function gtk_selection_convert.
 func SelectionConvert(widget *Widget, selection gdk.Atom, target gdk.Atom, time uint32) {
 	sys_widget := widget.ToC()
-	sys_selection := gtk.Atom(selection)
-	sys_target := gtk.Atom(target)
+	sys_selection := selection.ToC()
+	sys_target := target.ToC()
 	sys_time := time
 	gtk.Fn_gtk_selection_convert(sys_widget, sys_selection, sys_target, sys_time)
 }
@@ -3534,7 +3534,7 @@ func SelectionConvert(widget *Widget, selection gdk.Atom, target gdk.Atom, time 
 // SelectionOwnerSet is analogous to the C function gtk_selection_owner_set.
 func SelectionOwnerSet(widget *Widget, selection gdk.Atom, time uint32) {
 	sys_widget := widget.ToC()
-	sys_selection := gtk.Atom(selection)
+	sys_selection := selection.ToC()
 	sys_time := time
 	gtk.Fn_gtk_selection_owner_set(sys_widget, sys_selection, sys_time)
 }
@@ -3543,7 +3543,7 @@ func SelectionOwnerSet(widget *Widget, selection gdk.Atom, time uint32) {
 func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) {
 	sys_display := display.ToC()
 	sys_widget := widget.ToC()
-	sys_selection := gtk.Atom(selection)
+	sys_selection := selection.ToC()
 	sys_time := time
 	gtk.Fn_gtk_selection_owner_set_for_display(sys_display, sys_widget, sys_selection, sys_time)
 }
