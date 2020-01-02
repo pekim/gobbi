@@ -599,9 +599,17 @@ type Context struct {
 	native unsafe.Pointer
 }
 
+func (recv *Context) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Device is a representation of the C record cairo_device_t.
 type Device struct {
 	native unsafe.Pointer
+}
+
+func (recv *Device) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Surface is a representation of the C record cairo_surface_t.
@@ -609,9 +617,17 @@ type Surface struct {
 	native unsafe.Pointer
 }
 
+func (recv *Surface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Matrix is a representation of the C record cairo_matrix_t.
 type Matrix struct {
 	native unsafe.Pointer
+}
+
+func (recv *Matrix) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Pattern is a representation of the C record cairo_pattern_t.
@@ -619,9 +635,17 @@ type Pattern struct {
 	native unsafe.Pointer
 }
 
+func (recv *Pattern) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Region is a representation of the C record cairo_region_t.
 type Region struct {
 	native unsafe.Pointer
+}
+
+func (recv *Region) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FontOptions is a representation of the C record cairo_font_options_t.
@@ -629,9 +653,17 @@ type FontOptions struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontOptions) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FontFace is a representation of the C record cairo_font_face_t.
 type FontFace struct {
 	native unsafe.Pointer
+}
+
+func (recv *FontFace) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ScaledFont is a representation of the C record cairo_scaled_font_t.
@@ -639,9 +671,17 @@ type ScaledFont struct {
 	native unsafe.Pointer
 }
 
+func (recv *ScaledFont) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Path is a representation of the C record cairo_path_t.
 type Path struct {
 	native unsafe.Pointer
+}
+
+func (recv *Path) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Rectangle is a representation of the C record cairo_rectangle_t.
@@ -649,7 +689,15 @@ type Rectangle struct {
 	native unsafe.Pointer
 }
 
+func (recv *Rectangle) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RectangleInt is a representation of the C record cairo_rectangle_int_t.
 type RectangleInt struct {
 	native unsafe.Pointer
+}
+
+func (recv *RectangleInt) ToC() unsafe.Pointer {
+	return recv.native
 }

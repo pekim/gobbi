@@ -17,6 +17,7 @@ func (r *Record) generateLib(f *jen.File, version semver.Version) {
 	}
 
 	r.generateLibType(f)
+	r.generateToC(f)
 }
 
 func (r *Record) generateLibType(f *jen.File) {
@@ -28,4 +29,14 @@ func (r *Record) generateLibType(f *jen.File) {
 	)
 
 	f.Line()
+}
+
+func (r *Record) generateToC(f *jen.File) {
+	f.
+		Func().
+		Parens(jen.Id("recv").Op("*").Id(r.goName)).
+		Id("ToC").
+		Params().
+		Add(jenUnsafePointer()).
+		Block(jen.Return().Id("recv").Dot("native"))
 }

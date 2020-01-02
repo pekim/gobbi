@@ -10,7 +10,6 @@ import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	gdk1 "github.com/pekim/gobbi/lib/internal/c/gdk"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
@@ -3279,173 +3278,173 @@ const WrapMode_word = WrapMode(2)
 const WrapMode_word_char = WrapMode(3)
 
 func AccelGroupsActivate(object *gobject.Object, accelKey uint, accelMods int) {
-	sys_object := unsafe.Pointer(object)
-	sys_accelKey := uint(accelKey)
-	sys_accelMods := int(accelMods)
+	sys_object := object.ToC()
+	sys_accelKey := accelKey
+	sys_accelMods := accelMods
 }
 
 func AccelGroupsFromObject(object *gobject.Object) {
-	sys_object := unsafe.Pointer(object)
+	sys_object := object.ToC()
 }
 
 func AcceleratorGetDefaultModMask() {}
 
 func AcceleratorGetLabel(acceleratorKey uint, acceleratorMods int) {
-	sys_acceleratorKey := uint(acceleratorKey)
-	sys_acceleratorMods := int(acceleratorMods)
+	sys_acceleratorKey := acceleratorKey
+	sys_acceleratorMods := acceleratorMods
 }
 
 func AcceleratorGetLabelWithKeycode(display *gdk.Display, acceleratorKey uint, keycode uint, acceleratorMods int) {
-	sys_display := unsafe.Pointer(display)
-	sys_acceleratorKey := uint(acceleratorKey)
-	sys_keycode := uint(keycode)
-	sys_acceleratorMods := int(acceleratorMods)
+	sys_display := display.ToC()
+	sys_acceleratorKey := acceleratorKey
+	sys_keycode := keycode
+	sys_acceleratorMods := acceleratorMods
 }
 
 func AcceleratorName(acceleratorKey uint, acceleratorMods int) {
-	sys_acceleratorKey := uint(acceleratorKey)
-	sys_acceleratorMods := int(acceleratorMods)
+	sys_acceleratorKey := acceleratorKey
+	sys_acceleratorMods := acceleratorMods
 }
 
 func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint, keycode uint, acceleratorMods int) {
-	sys_display := unsafe.Pointer(display)
-	sys_acceleratorKey := uint(acceleratorKey)
-	sys_keycode := uint(keycode)
-	sys_acceleratorMods := int(acceleratorMods)
+	sys_display := display.ToC()
+	sys_acceleratorKey := acceleratorKey
+	sys_keycode := keycode
+	sys_acceleratorMods := acceleratorMods
 }
 
 func AcceleratorParse(accelerator string) {
-	sys_accelerator := string(accelerator)
+	sys_accelerator := accelerator
 }
 
 // UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
 
 func AcceleratorSetDefaultModMask(defaultModMask int) {
-	sys_defaultModMask := int(defaultModMask)
+	sys_defaultModMask := defaultModMask
 }
 
 func AcceleratorValid(keyval uint, modifiers int) {
-	sys_keyval := uint(keyval)
-	sys_modifiers := int(modifiers)
+	sys_keyval := keyval
+	sys_modifiers := modifiers
 }
 
 func AlternativeDialogButtonOrder(screen *gdk.Screen) {
-	sys_screen := unsafe.Pointer(screen)
+	sys_screen := screen.ToC()
 }
 
 func BindingsActivate(object *gobject.Object, keyval uint, modifiers int) {
-	sys_object := unsafe.Pointer(object)
-	sys_keyval := uint(keyval)
-	sys_modifiers := int(modifiers)
+	sys_object := object.ToC()
+	sys_keyval := keyval
+	sys_modifiers := modifiers
 }
 
 func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) {
-	sys_object := unsafe.Pointer(object)
-	sys_event := unsafe.Pointer(event)
+	sys_object := object.ToC()
+	sys_event := event.ToC()
 }
 
 func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) {
-	sys_cr := unsafe.Pointer(cr)
-	sys_window := unsafe.Pointer(window)
+	sys_cr := cr.ToC()
+	sys_window := window.ToC()
 }
 
 func CairoTransformToWindow(cr *cairo.Context, widget *Widget, window *gdk.Window) {
-	sys_cr := unsafe.Pointer(cr)
-	sys_widget := unsafe.Pointer(widget)
-	sys_window := unsafe.Pointer(window)
+	sys_cr := cr.ToC()
+	sys_widget := widget.ToC()
+	sys_window := window.ToC()
 }
 
 func CheckVersion(requiredMajor uint, requiredMinor uint, requiredMicro uint) {
-	sys_requiredMajor := uint(requiredMajor)
-	sys_requiredMinor := uint(requiredMinor)
-	sys_requiredMicro := uint(requiredMicro)
+	sys_requiredMajor := requiredMajor
+	sys_requiredMinor := requiredMinor
+	sys_requiredMicro := requiredMicro
 }
 
 func DeviceGrabAdd(widget *Widget, device *gdk.Device, blockOthers bool) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_device := unsafe.Pointer(device)
-	sys_blockOthers := bool(blockOthers)
+	sys_widget := widget.ToC()
+	sys_device := device.ToC()
+	sys_blockOthers := blockOthers
 }
 
 func DeviceGrabRemove(widget *Widget, device *gdk.Device) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_device := unsafe.Pointer(device)
+	sys_widget := widget.ToC()
+	sys_device := device.ToC()
 }
 
 func DisableSetlocale() {}
 
 func DistributeNaturalAllocation(extraSpace int, nRequestedSizes uint, sizes *RequestedSize) {
-	sys_extraSpace := int(extraSpace)
-	sys_nRequestedSizes := uint(nRequestedSizes)
-	sys_sizes := unsafe.Pointer(sizes)
+	sys_extraSpace := extraSpace
+	sys_nRequestedSizes := nRequestedSizes
+	sys_sizes := sizes.ToC()
 }
 
 func DragCancel(context *gdk.DragContext) {
-	sys_context := unsafe.Pointer(context)
+	sys_context := context.ToC()
 }
 
 func DragFinish(context *gdk.DragContext, success bool, del bool, time uint32) {
-	sys_context := unsafe.Pointer(context)
-	sys_success := bool(success)
-	sys_del := bool(del)
-	sys_time := uint32(time)
+	sys_context := context.ToC()
+	sys_success := success
+	sys_del := del
+	sys_time := time
 }
 
 func DragGetSourceWidget(context *gdk.DragContext) {
-	sys_context := unsafe.Pointer(context)
+	sys_context := context.ToC()
 }
 
 func DragSetIconDefault(context *gdk.DragContext) {
-	sys_context := unsafe.Pointer(context)
+	sys_context := context.ToC()
 }
 
 func DragSetIconGicon(context *gdk.DragContext, icon *gio.Icon, hotX int, hotY int) {
-	sys_context := unsafe.Pointer(context)
-	sys_icon := unsafe.Pointer(icon)
-	sys_hotX := int(hotX)
-	sys_hotY := int(hotY)
+	sys_context := context.ToC()
+	sys_icon := icon.ToC()
+	sys_hotX := hotX
+	sys_hotY := hotY
 }
 
 func DragSetIconName(context *gdk.DragContext, iconName string, hotX int, hotY int) {
-	sys_context := unsafe.Pointer(context)
-	sys_iconName := string(iconName)
-	sys_hotX := int(hotX)
-	sys_hotY := int(hotY)
+	sys_context := context.ToC()
+	sys_iconName := iconName
+	sys_hotX := hotX
+	sys_hotY := hotY
 }
 
 func DragSetIconPixbuf(context *gdk.DragContext, pixbuf *gdkpixbuf.Pixbuf, hotX int, hotY int) {
-	sys_context := unsafe.Pointer(context)
-	sys_pixbuf := unsafe.Pointer(pixbuf)
-	sys_hotX := int(hotX)
-	sys_hotY := int(hotY)
+	sys_context := context.ToC()
+	sys_pixbuf := pixbuf.ToC()
+	sys_hotX := hotX
+	sys_hotY := hotY
 }
 
 func DragSetIconStock(context *gdk.DragContext, stockId string, hotX int, hotY int) {
-	sys_context := unsafe.Pointer(context)
-	sys_stockId := string(stockId)
-	sys_hotX := int(hotX)
-	sys_hotY := int(hotY)
+	sys_context := context.ToC()
+	sys_stockId := stockId
+	sys_hotX := hotX
+	sys_hotY := hotY
 }
 
 func DragSetIconSurface(context *gdk.DragContext, surface *cairo.Surface) {
-	sys_context := unsafe.Pointer(context)
-	sys_surface := unsafe.Pointer(surface)
+	sys_context := context.ToC()
+	sys_surface := surface.ToC()
 }
 
 func DragSetIconWidget(context *gdk.DragContext, widget *Widget, hotX int, hotY int) {
-	sys_context := unsafe.Pointer(context)
-	sys_widget := unsafe.Pointer(widget)
-	sys_hotX := int(hotX)
-	sys_hotY := int(hotY)
+	sys_context := context.ToC()
+	sys_widget := widget.ToC()
+	sys_hotX := hotX
+	sys_hotY := hotY
 }
 
 func DrawInsertionCursor(widget *Widget, cr *cairo.Context, location *gdk.Rectangle, isPrimary bool, direction int, drawArrow bool) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_cr := unsafe.Pointer(cr)
-	sys_location := unsafe.Pointer(location)
-	sys_isPrimary := bool(isPrimary)
-	sys_direction := int(direction)
-	sys_drawArrow := bool(drawArrow)
+	sys_widget := widget.ToC()
+	sys_cr := cr.ToC()
+	sys_location := location.ToC()
+	sys_isPrimary := isPrimary
+	sys_direction := direction
+	sys_drawArrow := drawArrow
 }
 
 func EventsPending() {}
@@ -3467,7 +3466,7 @@ func GetDebugFlags() {}
 func GetDefaultLanguage() {}
 
 func GetEventWidget(event *gdk.Event) {
-	sys_event := unsafe.Pointer(event)
+	sys_event := event.ToC()
 }
 
 func GetInterfaceAge() {}
@@ -3481,7 +3480,7 @@ func GetMicroVersion() {}
 func GetMinorVersion() {}
 
 func GetOptionGroup(openDefaultDisplay bool) {
-	sys_openDefaultDisplay := bool(openDefaultDisplay)
+	sys_openDefaultDisplay := openDefaultDisplay
 }
 
 func GrabGetCurrent() {}
@@ -3495,19 +3494,19 @@ func GrabGetCurrent() {}
 // UNSUPPORTED : gtk_key_snooper_install : parameter 'snooper' is callback
 
 func KeySnooperRemove(snooperHandlerId uint) {
-	sys_snooperHandlerId := uint(snooperHandlerId)
+	sys_snooperHandlerId := snooperHandlerId
 }
 
 func Main() {}
 
 func MainDoEvent(event *gdk.Event) {
-	sys_event := unsafe.Pointer(event)
+	sys_event := event.ToC()
 }
 
 func MainIteration() {}
 
 func MainIterationDo(blocking bool) {
-	sys_blocking := bool(blocking)
+	sys_blocking := blocking
 }
 
 func MainLevel() {}
@@ -3515,295 +3514,295 @@ func MainLevel() {}
 func MainQuit() {}
 
 func PaintArrow(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, arrowType int, fill bool, x int, y int, width int, height int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_arrowType := int(arrowType)
-	sys_fill := bool(fill)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_arrowType := arrowType
+	sys_fill := fill
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func PaintBox(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func PaintBoxGap(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int, gapX int, gapWidth int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
-	sys_gapSide := int(gapSide)
-	sys_gapX := int(gapX)
-	sys_gapWidth := int(gapWidth)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
+	sys_gapSide := gapSide
+	sys_gapX := gapX
+	sys_gapWidth := gapWidth
 }
 
 func PaintCheck(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func PaintDiamond(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func PaintExpander(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x int, y int, expanderStyle int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_expanderStyle := int(expanderStyle)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_expanderStyle := expanderStyle
 }
 
 func PaintExtension(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
-	sys_gapSide := int(gapSide)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
+	sys_gapSide := gapSide
 }
 
 func PaintFlatBox(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func PaintFocus(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x int, y int, width int, height int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func PaintHandle(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, orientation int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
-	sys_orientation := int(orientation)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
+	sys_orientation := orientation
 }
 
 func PaintHline(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x1 int, x2 int, y int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x1 := int(x1)
-	sys_x2 := int(x2)
-	sys_y := int(y)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x1 := x1
+	sys_x2 := x2
+	sys_y := y
 }
 
 func PaintLayout(style *Style, cr *cairo.Context, stateType int, useText bool, widget *Widget, detail string, x int, y int, layout *pango.Layout) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_useText := bool(useText)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_layout := unsafe.Pointer(layout)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_useText := useText
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_layout := layout.ToC()
 }
 
 func PaintOption(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func PaintResizeGrip(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, edge int, x int, y int, width int, height int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_edge := int(edge)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_edge := edge
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func PaintShadow(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func PaintShadowGap(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int, gapX int, gapWidth int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
-	sys_gapSide := int(gapSide)
-	sys_gapX := int(gapX)
-	sys_gapWidth := int(gapWidth)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
+	sys_gapSide := gapSide
+	sys_gapX := gapX
+	sys_gapWidth := gapWidth
 }
 
 func PaintSlider(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, orientation int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
-	sys_orientation := int(orientation)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
+	sys_orientation := orientation
 }
 
 func PaintSpinner(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, step uint, x int, y int, width int, height int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_step := uint(step)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_step := step
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func PaintTab(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_shadowType := int(shadowType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_x := int(x)
-	sys_y := int(y)
-	sys_width := int(width)
-	sys_height := int(height)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_shadowType := shadowType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func PaintVline(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, y1 int, y2 int, x int) {
-	sys_style := unsafe.Pointer(style)
-	sys_cr := unsafe.Pointer(cr)
-	sys_stateType := int(stateType)
-	sys_widget := unsafe.Pointer(widget)
-	sys_detail := string(detail)
-	sys_y1 := int(y1)
-	sys_y2 := int(y2)
-	sys_x := int(x)
+	sys_style := style.ToC()
+	sys_cr := cr.ToC()
+	sys_stateType := stateType
+	sys_widget := widget.ToC()
+	sys_detail := detail
+	sys_y1 := y1
+	sys_y2 := y2
+	sys_x := x
 }
 
 // UNSUPPORTED : gtk_parse_args : has array param, argv
 
 func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) {
-	sys_parent := unsafe.Pointer(parent)
-	sys_pageSetup := unsafe.Pointer(pageSetup)
-	sys_settings := unsafe.Pointer(settings)
+	sys_parent := parent.ToC()
+	sys_pageSetup := pageSetup.ToC()
+	sys_settings := settings.ToC()
 }
 
 // UNSUPPORTED : gtk_print_run_page_setup_dialog_async : parameter 'done_cb' is callback
 
 func PropagateEvent(widget *Widget, event *gdk.Event) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_event := unsafe.Pointer(event)
+	sys_widget := widget.ToC()
+	sys_event := event.ToC()
 }
 
 func RcAddDefaultFile(filename string) {
-	sys_filename := string(filename)
+	sys_filename := filename
 }
 
 func RcFindModuleInPath(moduleFile string) {
-	sys_moduleFile := string(moduleFile)
+	sys_moduleFile := moduleFile
 }
 
 func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile string) {
-	sys_settings := unsafe.Pointer(settings)
-	sys_scanner := unsafe.Pointer(scanner)
-	sys_pixmapFile := string(pixmapFile)
+	sys_settings := settings.ToC()
+	sys_scanner := scanner.ToC()
+	sys_pixmapFile := pixmapFile
 }
 
 // UNSUPPORTED : gtk_rc_get_default_files : no array length
@@ -3815,53 +3814,53 @@ func RcGetImModulePath() {}
 func RcGetModuleDir() {}
 
 func RcGetStyle(widget *Widget) {
-	sys_widget := unsafe.Pointer(widget)
+	sys_widget := widget.ToC()
 }
 
 func RcGetStyleByPaths(settings *Settings, widgetPath string, classPath string, type_ uint64) {
-	sys_settings := unsafe.Pointer(settings)
-	sys_widgetPath := string(widgetPath)
-	sys_classPath := string(classPath)
-	sys_type_ := uint64(type_)
+	sys_settings := settings.ToC()
+	sys_widgetPath := widgetPath
+	sys_classPath := classPath
+	sys_type_ := type_
 }
 
 func RcGetThemeDir() {}
 
 func RcParse(filename string) {
-	sys_filename := string(filename)
+	sys_filename := filename
 }
 
 func RcParseColor(scanner *glib.Scanner) {
-	sys_scanner := unsafe.Pointer(scanner)
+	sys_scanner := scanner.ToC()
 }
 
 func RcParseColorFull(scanner *glib.Scanner, style *RcStyle) {
-	sys_scanner := unsafe.Pointer(scanner)
-	sys_style := unsafe.Pointer(style)
+	sys_scanner := scanner.ToC()
+	sys_style := style.ToC()
 }
 
 func RcParsePriority(scanner *glib.Scanner, priority *int) {
-	sys_scanner := unsafe.Pointer(scanner)
-	sys_priority := *int(priority)
+	sys_scanner := scanner.ToC()
+	sys_priority := priority
 }
 
 func RcParseState(scanner *glib.Scanner) {
-	sys_scanner := unsafe.Pointer(scanner)
+	sys_scanner := scanner.ToC()
 }
 
 func RcParseString(rcString string) {
-	sys_rcString := string(rcString)
+	sys_rcString := rcString
 }
 
 func RcReparseAll() {}
 
 func RcReparseAllForSettings(settings *Settings, forceLoad bool) {
-	sys_settings := unsafe.Pointer(settings)
-	sys_forceLoad := bool(forceLoad)
+	sys_settings := settings.ToC()
+	sys_forceLoad := forceLoad
 }
 
 func RcResetStyles(settings *Settings) {
-	sys_settings := unsafe.Pointer(settings)
+	sys_settings := settings.ToC()
 }
 
 func RcScannerNew() {}
@@ -3869,238 +3868,238 @@ func RcScannerNew() {}
 // UNSUPPORTED : gtk_rc_set_default_files : parameter 'filenames' is array parameter without length parameter
 
 func RenderActivity(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_width := float64(width)
-	sys_height := float64(height)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func RenderArrow(context *StyleContext, cr *cairo.Context, angle float64, x float64, y float64, size float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_angle := float64(angle)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_size := float64(size)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_angle := angle
+	sys_x := x
+	sys_y := y
+	sys_size := size
 }
 
 func RenderBackground(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_width := float64(width)
-	sys_height := float64(height)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func RenderBackgroundGetClip(context *StyleContext, x float64, y float64, width float64, height float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_width := float64(width)
-	sys_height := float64(height)
+	sys_context := context.ToC()
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_width := float64(width)
-	sys_height := float64(height)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func RenderExpander(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_width := float64(width)
-	sys_height := float64(height)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func RenderExtension(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide int) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_width := float64(width)
-	sys_height := float64(height)
-	sys_gapSide := int(gapSide)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
+	sys_gapSide := gapSide
 }
 
 func RenderFocus(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_width := float64(width)
-	sys_height := float64(height)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func RenderFrame(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_width := float64(width)
-	sys_height := float64(height)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func RenderFrameGap(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide int, xy0Gap float64, xy1Gap float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_width := float64(width)
-	sys_height := float64(height)
-	sys_gapSide := int(gapSide)
-	sys_xy0Gap := float64(xy0Gap)
-	sys_xy1Gap := float64(xy1Gap)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
+	sys_gapSide := gapSide
+	sys_xy0Gap := xy0Gap
+	sys_xy1Gap := xy1Gap
 }
 
 func RenderHandle(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_width := float64(width)
-	sys_height := float64(height)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func RenderIcon(context *StyleContext, cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, x float64, y float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_pixbuf := unsafe.Pointer(pixbuf)
-	sys_x := float64(x)
-	sys_y := float64(y)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_pixbuf := pixbuf.ToC()
+	sys_x := x
+	sys_y := y
 }
 
 func RenderIconPixbuf(context *StyleContext, source *IconSource, size int) {
-	sys_context := unsafe.Pointer(context)
-	sys_source := unsafe.Pointer(source)
-	sys_size := int(size)
+	sys_context := context.ToC()
+	sys_source := source.ToC()
+	sys_size := size
 }
 
 func RenderIconSurface(context *StyleContext, cr *cairo.Context, surface *cairo.Surface, x float64, y float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_surface := unsafe.Pointer(surface)
-	sys_x := float64(x)
-	sys_y := float64(y)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_surface := surface.ToC()
+	sys_x := x
+	sys_y := y
 }
 
 func RenderInsertionCursor(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout, index int, direction int) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_layout := unsafe.Pointer(layout)
-	sys_index := int(index)
-	sys_direction := int(direction)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_layout := layout.ToC()
+	sys_index := index
+	sys_direction := direction
 }
 
 func RenderLayout(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_layout := unsafe.Pointer(layout)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_layout := layout.ToC()
 }
 
 func RenderLine(context *StyleContext, cr *cairo.Context, x0 float64, y0 float64, x1 float64, y1 float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x0 := float64(x0)
-	sys_y0 := float64(y0)
-	sys_x1 := float64(x1)
-	sys_y1 := float64(y1)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x0 := x0
+	sys_y0 := y0
+	sys_x1 := x1
+	sys_y1 := y1
 }
 
 func RenderOption(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_width := float64(width)
-	sys_height := float64(height)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
 }
 
 func RenderSlider(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, orientation int) {
-	sys_context := unsafe.Pointer(context)
-	sys_cr := unsafe.Pointer(cr)
-	sys_x := float64(x)
-	sys_y := float64(y)
-	sys_width := float64(width)
-	sys_height := float64(height)
-	sys_orientation := int(orientation)
+	sys_context := context.ToC()
+	sys_cr := cr.ToC()
+	sys_x := x
+	sys_y := y
+	sys_width := width
+	sys_height := height
+	sys_orientation := orientation
 }
 
 func RgbToHsv(r float64, g float64, b float64) {
-	sys_r := float64(r)
-	sys_g := float64(g)
-	sys_b := float64(b)
+	sys_r := r
+	sys_g := g
+	sys_b := b
 }
 
 func SelectionAddTarget(widget *Widget, selection gdk.Atom, target gdk.Atom, info uint) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_selection := gdk1.Atom(selection)
-	sys_target := gdk1.Atom(target)
-	sys_info := uint(info)
+	sys_widget := widget.ToC()
+	sys_selection := selection.ToC()
+	sys_target := target.ToC()
+	sys_info := info
 }
 
 // UNSUPPORTED : gtk_selection_add_targets : has array param, targets
 
 func SelectionClearTargets(widget *Widget, selection gdk.Atom) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_selection := gdk1.Atom(selection)
+	sys_widget := widget.ToC()
+	sys_selection := selection.ToC()
 }
 
 func SelectionConvert(widget *Widget, selection gdk.Atom, target gdk.Atom, time uint32) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_selection := gdk1.Atom(selection)
-	sys_target := gdk1.Atom(target)
-	sys_time := uint32(time)
+	sys_widget := widget.ToC()
+	sys_selection := selection.ToC()
+	sys_target := target.ToC()
+	sys_time := time
 }
 
 func SelectionOwnerSet(widget *Widget, selection gdk.Atom, time uint32) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_selection := gdk1.Atom(selection)
-	sys_time := uint32(time)
+	sys_widget := widget.ToC()
+	sys_selection := selection.ToC()
+	sys_time := time
 }
 
 func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) {
-	sys_display := unsafe.Pointer(display)
-	sys_widget := unsafe.Pointer(widget)
-	sys_selection := gdk1.Atom(selection)
-	sys_time := uint32(time)
+	sys_display := display.ToC()
+	sys_widget := widget.ToC()
+	sys_selection := selection.ToC()
+	sys_time := time
 }
 
 func SelectionRemoveAll(widget *Widget) {
-	sys_widget := unsafe.Pointer(widget)
+	sys_widget := widget.ToC()
 }
 
 func SetDebugFlags(flags uint) {
-	sys_flags := uint(flags)
+	sys_flags := flags
 }
 
 func ShowAboutDialog(parent *Window, firstPropertyName string) {
-	sys_parent := unsafe.Pointer(parent)
-	sys_firstPropertyName := string(firstPropertyName)
+	sys_parent := parent.ToC()
+	sys_firstPropertyName := firstPropertyName
 }
 
 func ShowUri(screen *gdk.Screen, uri string, timestamp uint32) {
-	sys_screen := unsafe.Pointer(screen)
-	sys_uri := string(uri)
-	sys_timestamp := uint32(timestamp)
+	sys_screen := screen.ToC()
+	sys_uri := uri
+	sys_timestamp := timestamp
 }
 
 func ShowUriOnWindow(parent *Window, uri string, timestamp uint32) {
-	sys_parent := unsafe.Pointer(parent)
-	sys_uri := string(uri)
-	sys_timestamp := uint32(timestamp)
+	sys_parent := parent.ToC()
+	sys_uri := uri
+	sys_timestamp := timestamp
 }
 
 // UNSUPPORTED : gtk_stock_add : has array param, items
@@ -4110,7 +4109,7 @@ func ShowUriOnWindow(parent *Window, uri string, timestamp uint32) {
 func StockListIds() {}
 
 func StockLookup(stockId string) {
-	sys_stockId := string(stockId)
+	sys_stockId := stockId
 }
 
 // UNSUPPORTED : gtk_stock_set_translate_func : parameter 'func' is callback
@@ -4118,7 +4117,7 @@ func StockLookup(stockId string) {
 // UNSUPPORTED : gtk_target_table_free : has array param, targets
 
 func TargetTableNewFromList(list *TargetList) {
-	sys_list := unsafe.Pointer(list)
+	sys_list := list.ToC()
 }
 
 // UNSUPPORTED : gtk_targets_include_image : has array param, targets
@@ -4130,34 +4129,34 @@ func TargetTableNewFromList(list *TargetList) {
 // UNSUPPORTED : gtk_targets_include_uri : has array param, targets
 
 func TestCreateSimpleWindow(windowTitle string, dialogText string) {
-	sys_windowTitle := string(windowTitle)
-	sys_dialogText := string(dialogText)
+	sys_windowTitle := windowTitle
+	sys_dialogText := dialogText
 }
 
 func TestCreateWidget(widgetType uint64, firstPropertyName string) {
-	sys_widgetType := uint64(widgetType)
-	sys_firstPropertyName := string(firstPropertyName)
+	sys_widgetType := widgetType
+	sys_firstPropertyName := firstPropertyName
 }
 
 func TestDisplayButtonWindow(windowTitle string, dialogText string) {
-	sys_windowTitle := string(windowTitle)
-	sys_dialogText := string(dialogText)
+	sys_windowTitle := windowTitle
+	sys_dialogText := dialogText
 }
 
 func TestFindLabel(widget *Widget, labelPattern string) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_labelPattern := string(labelPattern)
+	sys_widget := widget.ToC()
+	sys_labelPattern := labelPattern
 }
 
 func TestFindSibling(baseWidget *Widget, widgetType uint64) {
-	sys_baseWidget := unsafe.Pointer(baseWidget)
-	sys_widgetType := uint64(widgetType)
+	sys_baseWidget := baseWidget.ToC()
+	sys_widgetType := widgetType
 }
 
 func TestFindWidget(widget *Widget, labelPattern string, widgetType uint64) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_labelPattern := string(labelPattern)
-	sys_widgetType := uint64(widgetType)
+	sys_widget := widget.ToC()
+	sys_labelPattern := labelPattern
+	sys_widgetType := widgetType
 }
 
 // UNSUPPORTED : gtk_test_init : has array param, argvp
@@ -4167,55 +4166,55 @@ func TestListAllTypes() {}
 func TestRegisterAllTypes() {}
 
 func TestSliderGetValue(widget *Widget) {
-	sys_widget := unsafe.Pointer(widget)
+	sys_widget := widget.ToC()
 }
 
 func TestSliderSetPerc(widget *Widget, percentage float64) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_percentage := float64(percentage)
+	sys_widget := widget.ToC()
+	sys_percentage := percentage
 }
 
 func TestSpinButtonClick(spinner *SpinButton, button uint, upwards bool) {
-	sys_spinner := unsafe.Pointer(spinner)
-	sys_button := uint(button)
-	sys_upwards := bool(upwards)
+	sys_spinner := spinner.ToC()
+	sys_button := button
+	sys_upwards := upwards
 }
 
 func TestTextGet(widget *Widget) {
-	sys_widget := unsafe.Pointer(widget)
+	sys_widget := widget.ToC()
 }
 
 func TestTextSet(widget *Widget, string_ string) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_string_ := string(string_)
+	sys_widget := widget.ToC()
+	sys_string_ := string_
 }
 
 func TestWidgetClick(widget *Widget, button uint, modifiers int) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_button := uint(button)
-	sys_modifiers := int(modifiers)
+	sys_widget := widget.ToC()
+	sys_button := button
+	sys_modifiers := modifiers
 }
 
 func TestWidgetSendKey(widget *Widget, keyval uint, modifiers int) {
-	sys_widget := unsafe.Pointer(widget)
-	sys_keyval := uint(keyval)
-	sys_modifiers := int(modifiers)
+	sys_widget := widget.ToC()
+	sys_keyval := keyval
+	sys_modifiers := modifiers
 }
 
 func TestWidgetWaitForDraw(widget *Widget) {
-	sys_widget := unsafe.Pointer(widget)
+	sys_widget := widget.ToC()
 }
 
 func TreeGetRowDragData(selectionData *SelectionData) {
-	sys_selectionData := unsafe.Pointer(selectionData)
+	sys_selectionData := selectionData.ToC()
 }
 
 // UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
 
 func TreeSetRowDragData(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) {
-	sys_selectionData := unsafe.Pointer(selectionData)
-	sys_treeModel := unsafe.Pointer(treeModel)
-	sys_path := unsafe.Pointer(path)
+	sys_selectionData := selectionData.ToC()
+	sys_treeModel := treeModel.ToC()
+	sys_path := path.ToC()
 }
 
 func True() {}
@@ -4225,9 +4224,17 @@ type AboutDialogClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *AboutDialogClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AboutDialogPrivate is a representation of the C record GtkAboutDialogPrivate.
 type AboutDialogPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *AboutDialogPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AccelGroupClass is a representation of the C record GtkAccelGroupClass.
@@ -4235,9 +4242,17 @@ type AccelGroupClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *AccelGroupClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AccelGroupEntry is a representation of the C record GtkAccelGroupEntry.
 type AccelGroupEntry struct {
 	native unsafe.Pointer
+}
+
+func (recv *AccelGroupEntry) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AccelGroupPrivate is a representation of the C record GtkAccelGroupPrivate.
@@ -4245,9 +4260,17 @@ type AccelGroupPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *AccelGroupPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AccelKey is a representation of the C record GtkAccelKey.
 type AccelKey struct {
 	native unsafe.Pointer
+}
+
+func (recv *AccelKey) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AccelLabelClass is a representation of the C record GtkAccelLabelClass.
@@ -4255,9 +4278,17 @@ type AccelLabelClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *AccelLabelClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AccelLabelPrivate is a representation of the C record GtkAccelLabelPrivate.
 type AccelLabelPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *AccelLabelPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AccelMapClass is a representation of the C record GtkAccelMapClass.
@@ -4265,9 +4296,17 @@ type AccelMapClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *AccelMapClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AccessibleClass is a representation of the C record GtkAccessibleClass.
 type AccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *AccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AccessiblePrivate is a representation of the C record GtkAccessiblePrivate.
@@ -4275,9 +4314,17 @@ type AccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *AccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ActionBarClass is a representation of the C record GtkActionBarClass.
 type ActionBarClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ActionBarClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ActionBarPrivate is a representation of the C record GtkActionBarPrivate.
@@ -4285,9 +4332,17 @@ type ActionBarPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ActionBarPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ActionClass is a representation of the C record GtkActionClass.
 type ActionClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ActionClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ActionEntry is a representation of the C record GtkActionEntry.
@@ -4295,9 +4350,17 @@ type ActionEntry struct {
 	native unsafe.Pointer
 }
 
+func (recv *ActionEntry) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ActionGroupClass is a representation of the C record GtkActionGroupClass.
 type ActionGroupClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ActionGroupClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ActionGroupPrivate is a representation of the C record GtkActionGroupPrivate.
@@ -4305,14 +4368,26 @@ type ActionGroupPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ActionGroupPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ActionPrivate is a representation of the C record GtkActionPrivate.
 type ActionPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ActionPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ActionableInterface is a representation of the C record GtkActionableInterface.
 type ActionableInterface struct {
 	native unsafe.Pointer
+}
+
+func (recv *ActionableInterface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ActivatableIface is a representation of the C record GtkActivatableIface.
@@ -4322,9 +4397,17 @@ type ActivatableIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *ActivatableIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AdjustmentClass is a representation of the C record GtkAdjustmentClass.
 type AdjustmentClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *AdjustmentClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AdjustmentPrivate is a representation of the C record GtkAdjustmentPrivate.
@@ -4332,9 +4415,17 @@ type AdjustmentPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *AdjustmentPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AlignmentClass is a representation of the C record GtkAlignmentClass.
 type AlignmentClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *AlignmentClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AlignmentPrivate is a representation of the C record GtkAlignmentPrivate.
@@ -4342,9 +4433,17 @@ type AlignmentPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *AlignmentPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AppChooserButtonClass is a representation of the C record GtkAppChooserButtonClass.
 type AppChooserButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *AppChooserButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AppChooserButtonPrivate is a representation of the C record GtkAppChooserButtonPrivate.
@@ -4352,9 +4451,17 @@ type AppChooserButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *AppChooserButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AppChooserDialogClass is a representation of the C record GtkAppChooserDialogClass.
 type AppChooserDialogClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *AppChooserDialogClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AppChooserDialogPrivate is a representation of the C record GtkAppChooserDialogPrivate.
@@ -4362,9 +4469,17 @@ type AppChooserDialogPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *AppChooserDialogPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AppChooserWidgetClass is a representation of the C record GtkAppChooserWidgetClass.
 type AppChooserWidgetClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *AppChooserWidgetClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AppChooserWidgetPrivate is a representation of the C record GtkAppChooserWidgetPrivate.
@@ -4372,9 +4487,17 @@ type AppChooserWidgetPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *AppChooserWidgetPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ApplicationClass is a representation of the C record GtkApplicationClass.
 type ApplicationClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ApplicationClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ApplicationPrivate is a representation of the C record GtkApplicationPrivate.
@@ -4382,9 +4505,17 @@ type ApplicationPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ApplicationPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ApplicationWindowClass is a representation of the C record GtkApplicationWindowClass.
 type ApplicationWindowClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ApplicationWindowClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ApplicationWindowPrivate is a representation of the C record GtkApplicationWindowPrivate.
@@ -4392,9 +4523,17 @@ type ApplicationWindowPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ApplicationWindowPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ArrowAccessibleClass is a representation of the C record GtkArrowAccessibleClass.
 type ArrowAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ArrowAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ArrowAccessiblePrivate is a representation of the C record GtkArrowAccessiblePrivate.
@@ -4402,9 +4541,17 @@ type ArrowAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ArrowAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ArrowClass is a representation of the C record GtkArrowClass.
 type ArrowClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ArrowClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ArrowPrivate is a representation of the C record GtkArrowPrivate.
@@ -4412,9 +4559,17 @@ type ArrowPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ArrowPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AspectFrameClass is a representation of the C record GtkAspectFrameClass.
 type AspectFrameClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *AspectFrameClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AspectFramePrivate is a representation of the C record GtkAspectFramePrivate.
@@ -4422,9 +4577,17 @@ type AspectFramePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *AspectFramePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AssistantClass is a representation of the C record GtkAssistantClass.
 type AssistantClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *AssistantClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AssistantPrivate is a representation of the C record GtkAssistantPrivate.
@@ -4432,9 +4595,17 @@ type AssistantPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *AssistantPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // BinClass is a representation of the C record GtkBinClass.
 type BinClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *BinClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // BinPrivate is a representation of the C record GtkBinPrivate.
@@ -4442,9 +4613,17 @@ type BinPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *BinPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // BindingArg is a representation of the C record GtkBindingArg.
 type BindingArg struct {
 	native unsafe.Pointer
+}
+
+func (recv *BindingArg) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // BindingEntry is a representation of the C record GtkBindingEntry.
@@ -4452,9 +4631,17 @@ type BindingEntry struct {
 	native unsafe.Pointer
 }
 
+func (recv *BindingEntry) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // BindingSet is a representation of the C record GtkBindingSet.
 type BindingSet struct {
 	native unsafe.Pointer
+}
+
+func (recv *BindingSet) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // BindingSignal is a representation of the C record GtkBindingSignal.
@@ -4462,9 +4649,17 @@ type BindingSignal struct {
 	native unsafe.Pointer
 }
 
+func (recv *BindingSignal) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // BooleanCellAccessibleClass is a representation of the C record GtkBooleanCellAccessibleClass.
 type BooleanCellAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *BooleanCellAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // BooleanCellAccessiblePrivate is a representation of the C record GtkBooleanCellAccessiblePrivate.
@@ -4472,9 +4667,17 @@ type BooleanCellAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *BooleanCellAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Border is a representation of the C record GtkBorder.
 type Border struct {
 	native unsafe.Pointer
+}
+
+func (recv *Border) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // BoxClass is a representation of the C record GtkBoxClass.
@@ -4482,9 +4685,17 @@ type BoxClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *BoxClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // BoxPrivate is a representation of the C record GtkBoxPrivate.
 type BoxPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *BoxPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // BuildableIface is a representation of the C record GtkBuildableIface.
@@ -4492,9 +4703,17 @@ type BuildableIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *BuildableIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // BuilderClass is a representation of the C record GtkBuilderClass.
 type BuilderClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *BuilderClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // BuilderPrivate is a representation of the C record GtkBuilderPrivate.
@@ -4502,9 +4721,17 @@ type BuilderPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *BuilderPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ButtonAccessibleClass is a representation of the C record GtkButtonAccessibleClass.
 type ButtonAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ButtonAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ButtonAccessiblePrivate is a representation of the C record GtkButtonAccessiblePrivate.
@@ -4512,9 +4739,17 @@ type ButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ButtonAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ButtonBoxClass is a representation of the C record GtkButtonBoxClass.
 type ButtonBoxClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ButtonBoxClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ButtonBoxPrivate is a representation of the C record GtkButtonBoxPrivate.
@@ -4522,9 +4757,17 @@ type ButtonBoxPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ButtonBoxPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ButtonClass is a representation of the C record GtkButtonClass.
 type ButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ButtonPrivate is a representation of the C record GtkButtonPrivate.
@@ -4532,9 +4775,17 @@ type ButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CalendarClass is a representation of the C record GtkCalendarClass.
 type CalendarClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *CalendarClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CalendarPrivate is a representation of the C record GtkCalendarPrivate.
@@ -4542,9 +4793,17 @@ type CalendarPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *CalendarPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellAccessibleClass is a representation of the C record GtkCellAccessibleClass.
 type CellAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellAccessibleParentIface is a representation of the C record GtkCellAccessibleParentIface.
@@ -4552,9 +4811,17 @@ type CellAccessibleParentIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellAccessibleParentIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellAccessiblePrivate is a representation of the C record GtkCellAccessiblePrivate.
 type CellAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellAreaBoxClass is a representation of the C record GtkCellAreaBoxClass.
@@ -4562,9 +4829,17 @@ type CellAreaBoxClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellAreaBoxClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellAreaBoxPrivate is a representation of the C record GtkCellAreaBoxPrivate.
 type CellAreaBoxPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellAreaBoxPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellAreaClass is a representation of the C record GtkCellAreaClass.
@@ -4572,9 +4847,17 @@ type CellAreaClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellAreaClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellAreaContextClass is a representation of the C record GtkCellAreaContextClass.
 type CellAreaContextClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellAreaContextClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellAreaContextPrivate is a representation of the C record GtkCellAreaContextPrivate.
@@ -4582,9 +4865,17 @@ type CellAreaContextPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellAreaContextPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellAreaPrivate is a representation of the C record GtkCellAreaPrivate.
 type CellAreaPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellAreaPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellEditableIface is a representation of the C record GtkCellEditableIface.
@@ -4592,9 +4883,17 @@ type CellEditableIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellEditableIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellLayoutIface is a representation of the C record GtkCellLayoutIface.
 type CellLayoutIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellLayoutIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererAccelClass is a representation of the C record GtkCellRendererAccelClass.
@@ -4602,9 +4901,17 @@ type CellRendererAccelClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererAccelClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererAccelPrivate is a representation of the C record GtkCellRendererAccelPrivate.
 type CellRendererAccelPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererAccelPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererClass is a representation of the C record GtkCellRendererClass.
@@ -4612,9 +4919,17 @@ type CellRendererClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererClassPrivate is a representation of the C record GtkCellRendererClassPrivate.
 type CellRendererClassPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererClassPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererComboClass is a representation of the C record GtkCellRendererComboClass.
@@ -4622,9 +4937,17 @@ type CellRendererComboClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererComboClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererComboPrivate is a representation of the C record GtkCellRendererComboPrivate.
 type CellRendererComboPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererComboPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererPixbufClass is a representation of the C record GtkCellRendererPixbufClass.
@@ -4632,9 +4955,17 @@ type CellRendererPixbufClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererPixbufClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererPixbufPrivate is a representation of the C record GtkCellRendererPixbufPrivate.
 type CellRendererPixbufPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererPixbufPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererPrivate is a representation of the C record GtkCellRendererPrivate.
@@ -4642,9 +4973,17 @@ type CellRendererPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererProgressClass is a representation of the C record GtkCellRendererProgressClass.
 type CellRendererProgressClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererProgressClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererProgressPrivate is a representation of the C record GtkCellRendererProgressPrivate.
@@ -4652,9 +4991,17 @@ type CellRendererProgressPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererProgressPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererSpinClass is a representation of the C record GtkCellRendererSpinClass.
 type CellRendererSpinClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererSpinClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererSpinPrivate is a representation of the C record GtkCellRendererSpinPrivate.
@@ -4662,9 +5009,17 @@ type CellRendererSpinPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererSpinPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererSpinnerClass is a representation of the C record GtkCellRendererSpinnerClass.
 type CellRendererSpinnerClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererSpinnerClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererSpinnerPrivate is a representation of the C record GtkCellRendererSpinnerPrivate.
@@ -4672,9 +5027,17 @@ type CellRendererSpinnerPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererSpinnerPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererTextClass is a representation of the C record GtkCellRendererTextClass.
 type CellRendererTextClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererTextClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererTextPrivate is a representation of the C record GtkCellRendererTextPrivate.
@@ -4682,9 +5045,17 @@ type CellRendererTextPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererTextPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererToggleClass is a representation of the C record GtkCellRendererToggleClass.
 type CellRendererToggleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererToggleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererTogglePrivate is a representation of the C record GtkCellRendererTogglePrivate.
@@ -4692,9 +5063,17 @@ type CellRendererTogglePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererTogglePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellViewClass is a representation of the C record GtkCellViewClass.
 type CellViewClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellViewClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellViewPrivate is a representation of the C record GtkCellViewPrivate.
@@ -4702,9 +5081,17 @@ type CellViewPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellViewPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CheckButtonClass is a representation of the C record GtkCheckButtonClass.
 type CheckButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *CheckButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CheckMenuItemAccessibleClass is a representation of the C record GtkCheckMenuItemAccessibleClass.
@@ -4712,9 +5099,17 @@ type CheckMenuItemAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *CheckMenuItemAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CheckMenuItemAccessiblePrivate is a representation of the C record GtkCheckMenuItemAccessiblePrivate.
 type CheckMenuItemAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *CheckMenuItemAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CheckMenuItemClass is a representation of the C record GtkCheckMenuItemClass.
@@ -4722,9 +5117,17 @@ type CheckMenuItemClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *CheckMenuItemClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CheckMenuItemPrivate is a representation of the C record GtkCheckMenuItemPrivate.
 type CheckMenuItemPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *CheckMenuItemPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ColorButtonClass is a representation of the C record GtkColorButtonClass.
@@ -4732,9 +5135,17 @@ type ColorButtonClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ColorButtonClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ColorButtonPrivate is a representation of the C record GtkColorButtonPrivate.
 type ColorButtonPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ColorButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ColorChooserDialogClass is a representation of the C record GtkColorChooserDialogClass.
@@ -4742,9 +5153,17 @@ type ColorChooserDialogClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ColorChooserDialogClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ColorChooserDialogPrivate is a representation of the C record GtkColorChooserDialogPrivate.
 type ColorChooserDialogPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ColorChooserDialogPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ColorChooserInterface is a representation of the C record GtkColorChooserInterface.
@@ -4752,9 +5171,17 @@ type ColorChooserInterface struct {
 	native unsafe.Pointer
 }
 
+func (recv *ColorChooserInterface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ColorChooserWidgetClass is a representation of the C record GtkColorChooserWidgetClass.
 type ColorChooserWidgetClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ColorChooserWidgetClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ColorChooserWidgetPrivate is a representation of the C record GtkColorChooserWidgetPrivate.
@@ -4762,9 +5189,17 @@ type ColorChooserWidgetPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ColorChooserWidgetPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ColorSelectionClass is a representation of the C record GtkColorSelectionClass.
 type ColorSelectionClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ColorSelectionClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ColorSelectionDialogClass is a representation of the C record GtkColorSelectionDialogClass.
@@ -4772,9 +5207,17 @@ type ColorSelectionDialogClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ColorSelectionDialogClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ColorSelectionDialogPrivate is a representation of the C record GtkColorSelectionDialogPrivate.
 type ColorSelectionDialogPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ColorSelectionDialogPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ColorSelectionPrivate is a representation of the C record GtkColorSelectionPrivate.
@@ -4782,9 +5225,17 @@ type ColorSelectionPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ColorSelectionPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ComboBoxAccessibleClass is a representation of the C record GtkComboBoxAccessibleClass.
 type ComboBoxAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ComboBoxAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ComboBoxAccessiblePrivate is a representation of the C record GtkComboBoxAccessiblePrivate.
@@ -4792,9 +5243,17 @@ type ComboBoxAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ComboBoxAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ComboBoxClass is a representation of the C record GtkComboBoxClass.
 type ComboBoxClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ComboBoxClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ComboBoxPrivate is a representation of the C record GtkComboBoxPrivate.
@@ -4802,9 +5261,17 @@ type ComboBoxPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ComboBoxPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ComboBoxTextClass is a representation of the C record GtkComboBoxTextClass.
 type ComboBoxTextClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ComboBoxTextClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ComboBoxTextPrivate is a representation of the C record GtkComboBoxTextPrivate.
@@ -4812,9 +5279,17 @@ type ComboBoxTextPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ComboBoxTextPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ContainerAccessibleClass is a representation of the C record GtkContainerAccessibleClass.
 type ContainerAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ContainerAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ContainerAccessiblePrivate is a representation of the C record GtkContainerAccessiblePrivate.
@@ -4822,9 +5297,17 @@ type ContainerAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ContainerAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ContainerCellAccessibleClass is a representation of the C record GtkContainerCellAccessibleClass.
 type ContainerCellAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ContainerCellAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ContainerCellAccessiblePrivate is a representation of the C record GtkContainerCellAccessiblePrivate.
@@ -4832,9 +5315,17 @@ type ContainerCellAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ContainerCellAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ContainerClass is a representation of the C record GtkContainerClass.
 type ContainerClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ContainerClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ContainerPrivate is a representation of the C record GtkContainerPrivate.
@@ -4842,14 +5333,26 @@ type ContainerPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ContainerPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CssProviderClass is a representation of the C record GtkCssProviderClass.
 type CssProviderClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *CssProviderClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CssProviderPrivate is a representation of the C record GtkCssProviderPrivate.
 type CssProviderPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *CssProviderPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CssSection is a representation of the C record GtkCssSection.
@@ -4859,9 +5362,17 @@ type CssSection struct {
 	native unsafe.Pointer
 }
 
+func (recv *CssSection) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DialogClass is a representation of the C record GtkDialogClass.
 type DialogClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *DialogClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DialogPrivate is a representation of the C record GtkDialogPrivate.
@@ -4869,9 +5380,17 @@ type DialogPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *DialogPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DrawingAreaClass is a representation of the C record GtkDrawingAreaClass.
 type DrawingAreaClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *DrawingAreaClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // EditableInterface is a representation of the C record GtkEditableInterface.
@@ -4879,9 +5398,17 @@ type EditableInterface struct {
 	native unsafe.Pointer
 }
 
+func (recv *EditableInterface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EntryAccessibleClass is a representation of the C record GtkEntryAccessibleClass.
 type EntryAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *EntryAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // EntryAccessiblePrivate is a representation of the C record GtkEntryAccessiblePrivate.
@@ -4889,9 +5416,17 @@ type EntryAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *EntryAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EntryBufferClass is a representation of the C record GtkEntryBufferClass.
 type EntryBufferClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *EntryBufferClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // EntryBufferPrivate is a representation of the C record GtkEntryBufferPrivate.
@@ -4899,9 +5434,17 @@ type EntryBufferPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *EntryBufferPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EntryClass is a representation of the C record GtkEntryClass.
 type EntryClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *EntryClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // EntryCompletionClass is a representation of the C record GtkEntryCompletionClass.
@@ -4909,9 +5452,17 @@ type EntryCompletionClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *EntryCompletionClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EntryCompletionPrivate is a representation of the C record GtkEntryCompletionPrivate.
 type EntryCompletionPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *EntryCompletionPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // EntryPrivate is a representation of the C record GtkEntryPrivate.
@@ -4919,9 +5470,17 @@ type EntryPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *EntryPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EventBoxClass is a representation of the C record GtkEventBoxClass.
 type EventBoxClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *EventBoxClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // EventBoxPrivate is a representation of the C record GtkEventBoxPrivate.
@@ -4929,9 +5488,17 @@ type EventBoxPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *EventBoxPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EventControllerClass is a representation of the C record GtkEventControllerClass.
 type EventControllerClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *EventControllerClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // EventControllerKeyClass is a representation of the C record GtkEventControllerKeyClass.
@@ -4939,6 +5506,10 @@ type EventControllerClass struct {
 // since 3.24
 type EventControllerKeyClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *EventControllerKeyClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : EventControllerMotionClass : blacklisted
@@ -4950,9 +5521,17 @@ type ExpanderAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ExpanderAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ExpanderAccessiblePrivate is a representation of the C record GtkExpanderAccessiblePrivate.
 type ExpanderAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ExpanderAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ExpanderClass is a representation of the C record GtkExpanderClass.
@@ -4960,9 +5539,17 @@ type ExpanderClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ExpanderClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ExpanderPrivate is a representation of the C record GtkExpanderPrivate.
 type ExpanderPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ExpanderPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileChooserButtonClass is a representation of the C record GtkFileChooserButtonClass.
@@ -4970,9 +5557,17 @@ type FileChooserButtonClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileChooserButtonClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileChooserButtonPrivate is a representation of the C record GtkFileChooserButtonPrivate.
 type FileChooserButtonPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileChooserButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileChooserDialogClass is a representation of the C record GtkFileChooserDialogClass.
@@ -4980,9 +5575,17 @@ type FileChooserDialogClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileChooserDialogClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileChooserDialogPrivate is a representation of the C record GtkFileChooserDialogPrivate.
 type FileChooserDialogPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileChooserDialogPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileChooserNativeClass is a representation of the C record GtkFileChooserNativeClass.
@@ -4990,9 +5593,17 @@ type FileChooserNativeClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileChooserNativeClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileChooserWidgetClass is a representation of the C record GtkFileChooserWidgetClass.
 type FileChooserWidgetClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileChooserWidgetClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileChooserWidgetPrivate is a representation of the C record GtkFileChooserWidgetPrivate.
@@ -5000,9 +5611,17 @@ type FileChooserWidgetPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileChooserWidgetPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileFilterInfo is a representation of the C record GtkFileFilterInfo.
 type FileFilterInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileFilterInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FixedChild is a representation of the C record GtkFixedChild.
@@ -5010,9 +5629,17 @@ type FixedChild struct {
 	native unsafe.Pointer
 }
 
+func (recv *FixedChild) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FixedClass is a representation of the C record GtkFixedClass.
 type FixedClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FixedClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FixedPrivate is a representation of the C record GtkFixedPrivate.
@@ -5020,9 +5647,17 @@ type FixedPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *FixedPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FlowBoxAccessibleClass is a representation of the C record GtkFlowBoxAccessibleClass.
 type FlowBoxAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FlowBoxAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FlowBoxAccessiblePrivate is a representation of the C record GtkFlowBoxAccessiblePrivate.
@@ -5030,9 +5665,17 @@ type FlowBoxAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *FlowBoxAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FlowBoxChildAccessibleClass is a representation of the C record GtkFlowBoxChildAccessibleClass.
 type FlowBoxChildAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FlowBoxChildAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FlowBoxChildClass is a representation of the C record GtkFlowBoxChildClass.
@@ -5040,9 +5683,17 @@ type FlowBoxChildClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FlowBoxChildClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FlowBoxClass is a representation of the C record GtkFlowBoxClass.
 type FlowBoxClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FlowBoxClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FontButtonClass is a representation of the C record GtkFontButtonClass.
@@ -5050,9 +5701,17 @@ type FontButtonClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontButtonClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FontButtonPrivate is a representation of the C record GtkFontButtonPrivate.
 type FontButtonPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *FontButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FontChooserDialogClass is a representation of the C record GtkFontChooserDialogClass.
@@ -5060,9 +5719,17 @@ type FontChooserDialogClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontChooserDialogClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FontChooserDialogPrivate is a representation of the C record GtkFontChooserDialogPrivate.
 type FontChooserDialogPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *FontChooserDialogPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FontChooserIface is a representation of the C record GtkFontChooserIface.
@@ -5070,9 +5737,17 @@ type FontChooserIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontChooserIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FontChooserWidgetClass is a representation of the C record GtkFontChooserWidgetClass.
 type FontChooserWidgetClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FontChooserWidgetClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FontChooserWidgetPrivate is a representation of the C record GtkFontChooserWidgetPrivate.
@@ -5080,9 +5755,17 @@ type FontChooserWidgetPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontChooserWidgetPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FontSelectionClass is a representation of the C record GtkFontSelectionClass.
 type FontSelectionClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FontSelectionClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FontSelectionDialogClass is a representation of the C record GtkFontSelectionDialogClass.
@@ -5090,9 +5773,17 @@ type FontSelectionDialogClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontSelectionDialogClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FontSelectionDialogPrivate is a representation of the C record GtkFontSelectionDialogPrivate.
 type FontSelectionDialogPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *FontSelectionDialogPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FontSelectionPrivate is a representation of the C record GtkFontSelectionPrivate.
@@ -5100,9 +5791,17 @@ type FontSelectionPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontSelectionPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FrameAccessibleClass is a representation of the C record GtkFrameAccessibleClass.
 type FrameAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FrameAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FrameAccessiblePrivate is a representation of the C record GtkFrameAccessiblePrivate.
@@ -5110,14 +5809,26 @@ type FrameAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *FrameAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FrameClass is a representation of the C record GtkFrameClass.
 type FrameClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FrameClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FramePrivate is a representation of the C record GtkFramePrivate.
 type FramePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *FramePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // GLAreaClass is a representation of the C record GtkGLAreaClass.
@@ -5127,9 +5838,17 @@ type GLAreaClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *GLAreaClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GestureClass is a representation of the C record GtkGestureClass.
 type GestureClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *GestureClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // GestureDragClass is a representation of the C record GtkGestureDragClass.
@@ -5137,9 +5856,17 @@ type GestureDragClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *GestureDragClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GestureLongPressClass is a representation of the C record GtkGestureLongPressClass.
 type GestureLongPressClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *GestureLongPressClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // GestureMultiPressClass is a representation of the C record GtkGestureMultiPressClass.
@@ -5147,9 +5874,17 @@ type GestureMultiPressClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *GestureMultiPressClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GesturePanClass is a representation of the C record GtkGesturePanClass.
 type GesturePanClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *GesturePanClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // GestureRotateClass is a representation of the C record GtkGestureRotateClass.
@@ -5157,9 +5892,17 @@ type GestureRotateClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *GestureRotateClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GestureSingleClass is a representation of the C record GtkGestureSingleClass.
 type GestureSingleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *GestureSingleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : GestureStylusClass : blacklisted
@@ -5169,9 +5912,17 @@ type GestureSwipeClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *GestureSwipeClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GestureZoomClass is a representation of the C record GtkGestureZoomClass.
 type GestureZoomClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *GestureZoomClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Gradient is a representation of the C record GtkGradient.
@@ -5179,9 +5930,17 @@ type Gradient struct {
 	native unsafe.Pointer
 }
 
+func (recv *Gradient) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GridClass is a representation of the C record GtkGridClass.
 type GridClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *GridClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // GridPrivate is a representation of the C record GtkGridPrivate.
@@ -5189,9 +5948,17 @@ type GridPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *GridPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HBoxClass is a representation of the C record GtkHBoxClass.
 type HBoxClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *HBoxClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HButtonBoxClass is a representation of the C record GtkHButtonBoxClass.
@@ -5199,9 +5966,17 @@ type HButtonBoxClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *HButtonBoxClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HPanedClass is a representation of the C record GtkHPanedClass.
 type HPanedClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *HPanedClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HSVClass is a representation of the C record GtkHSVClass.
@@ -5209,9 +5984,17 @@ type HSVClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *HSVClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HSVPrivate is a representation of the C record GtkHSVPrivate.
 type HSVPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *HSVPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HScaleClass is a representation of the C record GtkHScaleClass.
@@ -5219,9 +6002,17 @@ type HScaleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *HScaleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HScrollbarClass is a representation of the C record GtkHScrollbarClass.
 type HScrollbarClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *HScrollbarClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HSeparatorClass is a representation of the C record GtkHSeparatorClass.
@@ -5229,14 +6020,26 @@ type HSeparatorClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *HSeparatorClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HandleBoxClass is a representation of the C record GtkHandleBoxClass.
 type HandleBoxClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *HandleBoxClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HandleBoxPrivate is a representation of the C record GtkHandleBoxPrivate.
 type HandleBoxPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *HandleBoxPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : HeaderBarAccessibleClass : blacklisted
@@ -5248,9 +6051,17 @@ type HeaderBarClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *HeaderBarClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HeaderBarPrivate is a representation of the C record GtkHeaderBarPrivate.
 type HeaderBarPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *HeaderBarPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IMContextClass is a representation of the C record GtkIMContextClass.
@@ -5258,9 +6069,17 @@ type IMContextClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *IMContextClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IMContextInfo is a representation of the C record GtkIMContextInfo.
 type IMContextInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *IMContextInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IMContextSimpleClass is a representation of the C record GtkIMContextSimpleClass.
@@ -5268,9 +6087,17 @@ type IMContextSimpleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *IMContextSimpleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IMContextSimplePrivate is a representation of the C record GtkIMContextSimplePrivate.
 type IMContextSimplePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *IMContextSimplePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IMMulticontextClass is a representation of the C record GtkIMMulticontextClass.
@@ -5278,9 +6105,17 @@ type IMMulticontextClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *IMMulticontextClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IMMulticontextPrivate is a representation of the C record GtkIMMulticontextPrivate.
 type IMMulticontextPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *IMMulticontextPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IconFactoryClass is a representation of the C record GtkIconFactoryClass.
@@ -5288,9 +6123,17 @@ type IconFactoryClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *IconFactoryClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IconFactoryPrivate is a representation of the C record GtkIconFactoryPrivate.
 type IconFactoryPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *IconFactoryPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IconInfoClass is a representation of the C record GtkIconInfoClass.
@@ -5298,9 +6141,17 @@ type IconInfoClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *IconInfoClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IconSet is a representation of the C record GtkIconSet.
 type IconSet struct {
 	native unsafe.Pointer
+}
+
+func (recv *IconSet) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IconSource is a representation of the C record GtkIconSource.
@@ -5308,9 +6159,17 @@ type IconSource struct {
 	native unsafe.Pointer
 }
 
+func (recv *IconSource) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IconThemeClass is a representation of the C record GtkIconThemeClass.
 type IconThemeClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *IconThemeClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IconThemePrivate is a representation of the C record GtkIconThemePrivate.
@@ -5318,9 +6177,17 @@ type IconThemePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *IconThemePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IconViewAccessibleClass is a representation of the C record GtkIconViewAccessibleClass.
 type IconViewAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *IconViewAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IconViewAccessiblePrivate is a representation of the C record GtkIconViewAccessiblePrivate.
@@ -5328,9 +6195,17 @@ type IconViewAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *IconViewAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IconViewClass is a representation of the C record GtkIconViewClass.
 type IconViewClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *IconViewClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IconViewPrivate is a representation of the C record GtkIconViewPrivate.
@@ -5338,9 +6213,17 @@ type IconViewPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *IconViewPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ImageAccessibleClass is a representation of the C record GtkImageAccessibleClass.
 type ImageAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ImageAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ImageAccessiblePrivate is a representation of the C record GtkImageAccessiblePrivate.
@@ -5348,9 +6231,17 @@ type ImageAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ImageAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ImageCellAccessibleClass is a representation of the C record GtkImageCellAccessibleClass.
 type ImageCellAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ImageCellAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ImageCellAccessiblePrivate is a representation of the C record GtkImageCellAccessiblePrivate.
@@ -5358,9 +6249,17 @@ type ImageCellAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ImageCellAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ImageClass is a representation of the C record GtkImageClass.
 type ImageClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ImageClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ImageMenuItemClass is a representation of the C record GtkImageMenuItemClass.
@@ -5368,9 +6267,17 @@ type ImageMenuItemClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ImageMenuItemClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ImageMenuItemPrivate is a representation of the C record GtkImageMenuItemPrivate.
 type ImageMenuItemPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ImageMenuItemPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ImagePrivate is a representation of the C record GtkImagePrivate.
@@ -5378,9 +6285,17 @@ type ImagePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ImagePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // InfoBarClass is a representation of the C record GtkInfoBarClass.
 type InfoBarClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *InfoBarClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // InfoBarPrivate is a representation of the C record GtkInfoBarPrivate.
@@ -5388,9 +6303,17 @@ type InfoBarPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *InfoBarPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // InvisibleClass is a representation of the C record GtkInvisibleClass.
 type InvisibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *InvisibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // InvisiblePrivate is a representation of the C record GtkInvisiblePrivate.
@@ -5398,9 +6321,17 @@ type InvisiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *InvisiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LabelAccessibleClass is a representation of the C record GtkLabelAccessibleClass.
 type LabelAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *LabelAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LabelAccessiblePrivate is a representation of the C record GtkLabelAccessiblePrivate.
@@ -5408,9 +6339,17 @@ type LabelAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *LabelAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LabelClass is a representation of the C record GtkLabelClass.
 type LabelClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *LabelClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LabelPrivate is a representation of the C record GtkLabelPrivate.
@@ -5418,9 +6357,17 @@ type LabelPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *LabelPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LabelSelectionInfo is a representation of the C record GtkLabelSelectionInfo.
 type LabelSelectionInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *LabelSelectionInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LayoutClass is a representation of the C record GtkLayoutClass.
@@ -5428,9 +6375,17 @@ type LayoutClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *LayoutClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LayoutPrivate is a representation of the C record GtkLayoutPrivate.
 type LayoutPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *LayoutPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LevelBarAccessibleClass is a representation of the C record GtkLevelBarAccessibleClass.
@@ -5438,9 +6393,17 @@ type LevelBarAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *LevelBarAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LevelBarAccessiblePrivate is a representation of the C record GtkLevelBarAccessiblePrivate.
 type LevelBarAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *LevelBarAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LevelBarClass is a representation of the C record GtkLevelBarClass.
@@ -5448,9 +6411,17 @@ type LevelBarClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *LevelBarClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LevelBarPrivate is a representation of the C record GtkLevelBarPrivate.
 type LevelBarPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *LevelBarPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LinkButtonAccessibleClass is a representation of the C record GtkLinkButtonAccessibleClass.
@@ -5458,9 +6429,17 @@ type LinkButtonAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *LinkButtonAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LinkButtonAccessiblePrivate is a representation of the C record GtkLinkButtonAccessiblePrivate.
 type LinkButtonAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *LinkButtonAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LinkButtonClass is a representation of the C record GtkLinkButtonClass.
@@ -5468,9 +6447,17 @@ type LinkButtonClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *LinkButtonClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LinkButtonPrivate is a representation of the C record GtkLinkButtonPrivate.
 type LinkButtonPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *LinkButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ListBoxAccessibleClass is a representation of the C record GtkListBoxAccessibleClass.
@@ -5478,9 +6465,17 @@ type ListBoxAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ListBoxAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ListBoxAccessiblePrivate is a representation of the C record GtkListBoxAccessiblePrivate.
 type ListBoxAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ListBoxAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ListBoxClass is a representation of the C record GtkListBoxClass.
@@ -5488,9 +6483,17 @@ type ListBoxClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ListBoxClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ListBoxRowAccessibleClass is a representation of the C record GtkListBoxRowAccessibleClass.
 type ListBoxRowAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ListBoxRowAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ListBoxRowClass is a representation of the C record GtkListBoxRowClass.
@@ -5498,9 +6501,17 @@ type ListBoxRowClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ListBoxRowClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ListStoreClass is a representation of the C record GtkListStoreClass.
 type ListStoreClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ListStoreClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ListStorePrivate is a representation of the C record GtkListStorePrivate.
@@ -5508,9 +6519,17 @@ type ListStorePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ListStorePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LockButtonAccessibleClass is a representation of the C record GtkLockButtonAccessibleClass.
 type LockButtonAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *LockButtonAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LockButtonAccessiblePrivate is a representation of the C record GtkLockButtonAccessiblePrivate.
@@ -5518,9 +6537,17 @@ type LockButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *LockButtonAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LockButtonClass is a representation of the C record GtkLockButtonClass.
 type LockButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *LockButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LockButtonPrivate is a representation of the C record GtkLockButtonPrivate.
@@ -5528,9 +6555,17 @@ type LockButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *LockButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuAccessibleClass is a representation of the C record GtkMenuAccessibleClass.
 type MenuAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuAccessiblePrivate is a representation of the C record GtkMenuAccessiblePrivate.
@@ -5538,9 +6573,17 @@ type MenuAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuBarClass is a representation of the C record GtkMenuBarClass.
 type MenuBarClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuBarClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuBarPrivate is a representation of the C record GtkMenuBarPrivate.
@@ -5548,9 +6591,17 @@ type MenuBarPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuBarPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuButtonAccessibleClass is a representation of the C record GtkMenuButtonAccessibleClass.
 type MenuButtonAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuButtonAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuButtonAccessiblePrivate is a representation of the C record GtkMenuButtonAccessiblePrivate.
@@ -5558,9 +6609,17 @@ type MenuButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuButtonAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuButtonClass is a representation of the C record GtkMenuButtonClass.
 type MenuButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuButtonPrivate is a representation of the C record GtkMenuButtonPrivate.
@@ -5568,9 +6627,17 @@ type MenuButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuClass is a representation of the C record GtkMenuClass.
 type MenuClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuItemAccessibleClass is a representation of the C record GtkMenuItemAccessibleClass.
@@ -5578,9 +6645,17 @@ type MenuItemAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuItemAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuItemAccessiblePrivate is a representation of the C record GtkMenuItemAccessiblePrivate.
 type MenuItemAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuItemAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuItemClass is a representation of the C record GtkMenuItemClass.
@@ -5588,9 +6663,17 @@ type MenuItemClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuItemClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuItemPrivate is a representation of the C record GtkMenuItemPrivate.
 type MenuItemPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuItemPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuPrivate is a representation of the C record GtkMenuPrivate.
@@ -5598,9 +6681,17 @@ type MenuPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuShellAccessibleClass is a representation of the C record GtkMenuShellAccessibleClass.
 type MenuShellAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuShellAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuShellAccessiblePrivate is a representation of the C record GtkMenuShellAccessiblePrivate.
@@ -5608,9 +6699,17 @@ type MenuShellAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuShellAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuShellClass is a representation of the C record GtkMenuShellClass.
 type MenuShellClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuShellClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuShellPrivate is a representation of the C record GtkMenuShellPrivate.
@@ -5618,9 +6717,17 @@ type MenuShellPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuShellPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuToolButtonClass is a representation of the C record GtkMenuToolButtonClass.
 type MenuToolButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuToolButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuToolButtonPrivate is a representation of the C record GtkMenuToolButtonPrivate.
@@ -5628,9 +6735,17 @@ type MenuToolButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuToolButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MessageDialogClass is a representation of the C record GtkMessageDialogClass.
 type MessageDialogClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MessageDialogClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MessageDialogPrivate is a representation of the C record GtkMessageDialogPrivate.
@@ -5638,9 +6753,17 @@ type MessageDialogPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MessageDialogPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MiscClass is a representation of the C record GtkMiscClass.
 type MiscClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MiscClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MiscPrivate is a representation of the C record GtkMiscPrivate.
@@ -5648,9 +6771,17 @@ type MiscPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MiscPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MountOperationClass is a representation of the C record GtkMountOperationClass.
 type MountOperationClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MountOperationClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MountOperationPrivate is a representation of the C record GtkMountOperationPrivate.
@@ -5658,9 +6789,17 @@ type MountOperationPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MountOperationPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // NativeDialogClass is a representation of the C record GtkNativeDialogClass.
 type NativeDialogClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *NativeDialogClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NotebookAccessibleClass is a representation of the C record GtkNotebookAccessibleClass.
@@ -5668,9 +6807,17 @@ type NotebookAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *NotebookAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // NotebookAccessiblePrivate is a representation of the C record GtkNotebookAccessiblePrivate.
 type NotebookAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *NotebookAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NotebookClass is a representation of the C record GtkNotebookClass.
@@ -5678,9 +6825,17 @@ type NotebookClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *NotebookClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // NotebookPageAccessibleClass is a representation of the C record GtkNotebookPageAccessibleClass.
 type NotebookPageAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *NotebookPageAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NotebookPageAccessiblePrivate is a representation of the C record GtkNotebookPageAccessiblePrivate.
@@ -5688,9 +6843,17 @@ type NotebookPageAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *NotebookPageAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // NotebookPrivate is a representation of the C record GtkNotebookPrivate.
 type NotebookPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *NotebookPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NumerableIconClass is a representation of the C record GtkNumerableIconClass.
@@ -5698,9 +6861,17 @@ type NumerableIconClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *NumerableIconClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // NumerableIconPrivate is a representation of the C record GtkNumerableIconPrivate.
 type NumerableIconPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *NumerableIconPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // OffscreenWindowClass is a representation of the C record GtkOffscreenWindowClass.
@@ -5708,9 +6879,17 @@ type OffscreenWindowClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *OffscreenWindowClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // OrientableIface is a representation of the C record GtkOrientableIface.
 type OrientableIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *OrientableIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // OverlayClass is a representation of the C record GtkOverlayClass.
@@ -5718,9 +6897,17 @@ type OverlayClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *OverlayClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // OverlayPrivate is a representation of the C record GtkOverlayPrivate.
 type OverlayPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *OverlayPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PadActionEntry is a representation of the C record GtkPadActionEntry.
@@ -5728,9 +6915,17 @@ type PadActionEntry struct {
 	native unsafe.Pointer
 }
 
+func (recv *PadActionEntry) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PadControllerClass is a representation of the C record GtkPadControllerClass.
 type PadControllerClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *PadControllerClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PageRange is a representation of the C record GtkPageRange.
@@ -5738,9 +6933,17 @@ type PageRange struct {
 	native unsafe.Pointer
 }
 
+func (recv *PageRange) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PanedAccessibleClass is a representation of the C record GtkPanedAccessibleClass.
 type PanedAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *PanedAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PanedAccessiblePrivate is a representation of the C record GtkPanedAccessiblePrivate.
@@ -5748,9 +6951,17 @@ type PanedAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *PanedAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PanedClass is a representation of the C record GtkPanedClass.
 type PanedClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *PanedClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PanedPrivate is a representation of the C record GtkPanedPrivate.
@@ -5758,9 +6969,17 @@ type PanedPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *PanedPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PaperSize is a representation of the C record GtkPaperSize.
 type PaperSize struct {
 	native unsafe.Pointer
+}
+
+func (recv *PaperSize) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PlacesSidebarClass is a representation of the C record GtkPlacesSidebarClass.
@@ -5768,9 +6987,17 @@ type PlacesSidebarClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *PlacesSidebarClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PlugClass is a representation of the C record GtkPlugClass.
 type PlugClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *PlugClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PlugPrivate is a representation of the C record GtkPlugPrivate.
@@ -5778,9 +7005,17 @@ type PlugPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *PlugPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PopoverAccessibleClass is a representation of the C record GtkPopoverAccessibleClass.
 type PopoverAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *PopoverAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PopoverClass is a representation of the C record GtkPopoverClass.
@@ -5788,9 +7023,17 @@ type PopoverClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *PopoverClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PopoverMenuClass is a representation of the C record GtkPopoverMenuClass.
 type PopoverMenuClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *PopoverMenuClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PopoverPrivate is a representation of the C record GtkPopoverPrivate.
@@ -5798,9 +7041,17 @@ type PopoverPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *PopoverPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PrintOperationClass is a representation of the C record GtkPrintOperationClass.
 type PrintOperationClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *PrintOperationClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PrintOperationPreviewIface is a representation of the C record GtkPrintOperationPreviewIface.
@@ -5808,9 +7059,17 @@ type PrintOperationPreviewIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *PrintOperationPreviewIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PrintOperationPrivate is a representation of the C record GtkPrintOperationPrivate.
 type PrintOperationPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *PrintOperationPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ProgressBarAccessibleClass is a representation of the C record GtkProgressBarAccessibleClass.
@@ -5818,9 +7077,17 @@ type ProgressBarAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ProgressBarAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ProgressBarAccessiblePrivate is a representation of the C record GtkProgressBarAccessiblePrivate.
 type ProgressBarAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ProgressBarAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ProgressBarClass is a representation of the C record GtkProgressBarClass.
@@ -5828,9 +7095,17 @@ type ProgressBarClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ProgressBarClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ProgressBarPrivate is a representation of the C record GtkProgressBarPrivate.
 type ProgressBarPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ProgressBarPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RadioActionClass is a representation of the C record GtkRadioActionClass.
@@ -5838,9 +7113,17 @@ type RadioActionClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *RadioActionClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RadioActionEntry is a representation of the C record GtkRadioActionEntry.
 type RadioActionEntry struct {
 	native unsafe.Pointer
+}
+
+func (recv *RadioActionEntry) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RadioActionPrivate is a representation of the C record GtkRadioActionPrivate.
@@ -5848,9 +7131,17 @@ type RadioActionPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *RadioActionPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RadioButtonAccessibleClass is a representation of the C record GtkRadioButtonAccessibleClass.
 type RadioButtonAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *RadioButtonAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RadioButtonAccessiblePrivate is a representation of the C record GtkRadioButtonAccessiblePrivate.
@@ -5858,9 +7149,17 @@ type RadioButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *RadioButtonAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RadioButtonClass is a representation of the C record GtkRadioButtonClass.
 type RadioButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *RadioButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RadioButtonPrivate is a representation of the C record GtkRadioButtonPrivate.
@@ -5868,9 +7167,17 @@ type RadioButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *RadioButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RadioMenuItemAccessibleClass is a representation of the C record GtkRadioMenuItemAccessibleClass.
 type RadioMenuItemAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *RadioMenuItemAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RadioMenuItemAccessiblePrivate is a representation of the C record GtkRadioMenuItemAccessiblePrivate.
@@ -5878,9 +7185,17 @@ type RadioMenuItemAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *RadioMenuItemAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RadioMenuItemClass is a representation of the C record GtkRadioMenuItemClass.
 type RadioMenuItemClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *RadioMenuItemClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RadioMenuItemPrivate is a representation of the C record GtkRadioMenuItemPrivate.
@@ -5888,9 +7203,17 @@ type RadioMenuItemPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *RadioMenuItemPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RadioToolButtonClass is a representation of the C record GtkRadioToolButtonClass.
 type RadioToolButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *RadioToolButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RangeAccessibleClass is a representation of the C record GtkRangeAccessibleClass.
@@ -5898,9 +7221,17 @@ type RangeAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *RangeAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RangeAccessiblePrivate is a representation of the C record GtkRangeAccessiblePrivate.
 type RangeAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *RangeAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RangeClass is a representation of the C record GtkRangeClass.
@@ -5908,9 +7239,17 @@ type RangeClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *RangeClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RangePrivate is a representation of the C record GtkRangePrivate.
 type RangePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *RangePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RcContext is a representation of the C record GtkRcContext.
@@ -5918,9 +7257,17 @@ type RcContext struct {
 	native unsafe.Pointer
 }
 
+func (recv *RcContext) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RcProperty is a representation of the C record GtkRcProperty.
 type RcProperty struct {
 	native unsafe.Pointer
+}
+
+func (recv *RcProperty) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RcStyleClass is a representation of the C record GtkRcStyleClass.
@@ -5928,9 +7275,17 @@ type RcStyleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *RcStyleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RecentActionClass is a representation of the C record GtkRecentActionClass.
 type RecentActionClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *RecentActionClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RecentActionPrivate is a representation of the C record GtkRecentActionPrivate.
@@ -5938,9 +7293,17 @@ type RecentActionPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *RecentActionPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RecentChooserDialogClass is a representation of the C record GtkRecentChooserDialogClass.
 type RecentChooserDialogClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *RecentChooserDialogClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RecentChooserDialogPrivate is a representation of the C record GtkRecentChooserDialogPrivate.
@@ -5948,9 +7311,17 @@ type RecentChooserDialogPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *RecentChooserDialogPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RecentChooserIface is a representation of the C record GtkRecentChooserIface.
 type RecentChooserIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *RecentChooserIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RecentChooserMenuClass is a representation of the C record GtkRecentChooserMenuClass.
@@ -5958,9 +7329,17 @@ type RecentChooserMenuClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *RecentChooserMenuClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RecentChooserMenuPrivate is a representation of the C record GtkRecentChooserMenuPrivate.
 type RecentChooserMenuPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *RecentChooserMenuPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RecentChooserWidgetClass is a representation of the C record GtkRecentChooserWidgetClass.
@@ -5968,9 +7347,17 @@ type RecentChooserWidgetClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *RecentChooserWidgetClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RecentChooserWidgetPrivate is a representation of the C record GtkRecentChooserWidgetPrivate.
 type RecentChooserWidgetPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *RecentChooserWidgetPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RecentData is a representation of the C record GtkRecentData.
@@ -5978,9 +7365,17 @@ type RecentData struct {
 	native unsafe.Pointer
 }
 
+func (recv *RecentData) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RecentFilterInfo is a representation of the C record GtkRecentFilterInfo.
 type RecentFilterInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *RecentFilterInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RecentInfo is a representation of the C record GtkRecentInfo.
@@ -5990,6 +7385,10 @@ type RecentInfo struct {
 	native unsafe.Pointer
 }
 
+func (recv *RecentInfo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RecentManagerClass is a representation of the C record GtkRecentManagerClass.
 //
 // since 2.10
@@ -5997,9 +7396,17 @@ type RecentManagerClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *RecentManagerClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RecentManagerPrivate is a representation of the C record GtkRecentManagerPrivate.
 type RecentManagerPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *RecentManagerPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RendererCellAccessibleClass is a representation of the C record GtkRendererCellAccessibleClass.
@@ -6007,9 +7414,17 @@ type RendererCellAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *RendererCellAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RendererCellAccessiblePrivate is a representation of the C record GtkRendererCellAccessiblePrivate.
 type RendererCellAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *RendererCellAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RequestedSize is a representation of the C record GtkRequestedSize.
@@ -6017,9 +7432,17 @@ type RequestedSize struct {
 	native unsafe.Pointer
 }
 
+func (recv *RequestedSize) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Requisition is a representation of the C record GtkRequisition.
 type Requisition struct {
 	native unsafe.Pointer
+}
+
+func (recv *Requisition) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RevealerClass is a representation of the C record GtkRevealerClass.
@@ -6027,9 +7450,17 @@ type RevealerClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *RevealerClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ScaleAccessibleClass is a representation of the C record GtkScaleAccessibleClass.
 type ScaleAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ScaleAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ScaleAccessiblePrivate is a representation of the C record GtkScaleAccessiblePrivate.
@@ -6037,9 +7468,17 @@ type ScaleAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ScaleAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ScaleButtonAccessibleClass is a representation of the C record GtkScaleButtonAccessibleClass.
 type ScaleButtonAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ScaleButtonAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ScaleButtonAccessiblePrivate is a representation of the C record GtkScaleButtonAccessiblePrivate.
@@ -6047,9 +7486,17 @@ type ScaleButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ScaleButtonAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ScaleButtonClass is a representation of the C record GtkScaleButtonClass.
 type ScaleButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ScaleButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ScaleButtonPrivate is a representation of the C record GtkScaleButtonPrivate.
@@ -6057,9 +7504,17 @@ type ScaleButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ScaleButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ScaleClass is a representation of the C record GtkScaleClass.
 type ScaleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ScaleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ScalePrivate is a representation of the C record GtkScalePrivate.
@@ -6067,9 +7522,17 @@ type ScalePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ScalePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ScrollableInterface is a representation of the C record GtkScrollableInterface.
 type ScrollableInterface struct {
 	native unsafe.Pointer
+}
+
+func (recv *ScrollableInterface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ScrollbarClass is a representation of the C record GtkScrollbarClass.
@@ -6077,9 +7540,17 @@ type ScrollbarClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ScrollbarClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ScrolledWindowAccessibleClass is a representation of the C record GtkScrolledWindowAccessibleClass.
 type ScrolledWindowAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ScrolledWindowAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ScrolledWindowAccessiblePrivate is a representation of the C record GtkScrolledWindowAccessiblePrivate.
@@ -6087,9 +7558,17 @@ type ScrolledWindowAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ScrolledWindowAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ScrolledWindowClass is a representation of the C record GtkScrolledWindowClass.
 type ScrolledWindowClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ScrolledWindowClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ScrolledWindowPrivate is a representation of the C record GtkScrolledWindowPrivate.
@@ -6097,9 +7576,17 @@ type ScrolledWindowPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ScrolledWindowPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SearchBarClass is a representation of the C record GtkSearchBarClass.
 type SearchBarClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SearchBarClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SearchEntryClass is a representation of the C record GtkSearchEntryClass.
@@ -6107,9 +7594,17 @@ type SearchEntryClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *SearchEntryClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SelectionData is a representation of the C record GtkSelectionData.
 type SelectionData struct {
 	native unsafe.Pointer
+}
+
+func (recv *SelectionData) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SeparatorClass is a representation of the C record GtkSeparatorClass.
@@ -6117,9 +7612,17 @@ type SeparatorClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *SeparatorClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SeparatorMenuItemClass is a representation of the C record GtkSeparatorMenuItemClass.
 type SeparatorMenuItemClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SeparatorMenuItemClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SeparatorPrivate is a representation of the C record GtkSeparatorPrivate.
@@ -6127,9 +7630,17 @@ type SeparatorPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SeparatorPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SeparatorToolItemClass is a representation of the C record GtkSeparatorToolItemClass.
 type SeparatorToolItemClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SeparatorToolItemClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SeparatorToolItemPrivate is a representation of the C record GtkSeparatorToolItemPrivate.
@@ -6137,9 +7648,17 @@ type SeparatorToolItemPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SeparatorToolItemPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SettingsClass is a representation of the C record GtkSettingsClass.
 type SettingsClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SettingsClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SettingsPrivate is a representation of the C record GtkSettingsPrivate.
@@ -6147,9 +7666,17 @@ type SettingsPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SettingsPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SettingsValue is a representation of the C record GtkSettingsValue.
 type SettingsValue struct {
 	native unsafe.Pointer
+}
+
+func (recv *SettingsValue) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ShortcutLabelClass is a representation of the C record GtkShortcutLabelClass.
@@ -6157,9 +7684,17 @@ type ShortcutLabelClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ShortcutLabelClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ShortcutsGroupClass is a representation of the C record GtkShortcutsGroupClass.
 type ShortcutsGroupClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ShortcutsGroupClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ShortcutsSectionClass is a representation of the C record GtkShortcutsSectionClass.
@@ -6167,9 +7702,17 @@ type ShortcutsSectionClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ShortcutsSectionClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ShortcutsShortcutClass is a representation of the C record GtkShortcutsShortcutClass.
 type ShortcutsShortcutClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ShortcutsShortcutClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ShortcutsWindowClass is a representation of the C record GtkShortcutsWindowClass.
@@ -6177,9 +7720,17 @@ type ShortcutsWindowClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ShortcutsWindowClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SizeGroupClass is a representation of the C record GtkSizeGroupClass.
 type SizeGroupClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SizeGroupClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SizeGroupPrivate is a representation of the C record GtkSizeGroupPrivate.
@@ -6187,9 +7738,17 @@ type SizeGroupPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SizeGroupPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketClass is a representation of the C record GtkSocketClass.
 type SocketClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SocketClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketPrivate is a representation of the C record GtkSocketPrivate.
@@ -6197,9 +7756,17 @@ type SocketPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SpinButtonAccessibleClass is a representation of the C record GtkSpinButtonAccessibleClass.
 type SpinButtonAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SpinButtonAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SpinButtonAccessiblePrivate is a representation of the C record GtkSpinButtonAccessiblePrivate.
@@ -6207,9 +7774,17 @@ type SpinButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SpinButtonAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SpinButtonClass is a representation of the C record GtkSpinButtonClass.
 type SpinButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SpinButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SpinButtonPrivate is a representation of the C record GtkSpinButtonPrivate.
@@ -6217,9 +7792,17 @@ type SpinButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SpinButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SpinnerAccessibleClass is a representation of the C record GtkSpinnerAccessibleClass.
 type SpinnerAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SpinnerAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SpinnerAccessiblePrivate is a representation of the C record GtkSpinnerAccessiblePrivate.
@@ -6227,14 +7810,26 @@ type SpinnerAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SpinnerAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SpinnerClass is a representation of the C record GtkSpinnerClass.
 type SpinnerClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *SpinnerClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SpinnerPrivate is a representation of the C record GtkSpinnerPrivate.
 type SpinnerPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *SpinnerPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : StackAccessibleClass : blacklisted
@@ -6244,9 +7839,17 @@ type StackClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *StackClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StackSidebarClass is a representation of the C record GtkStackSidebarClass.
 type StackSidebarClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *StackSidebarClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StackSidebarPrivate is a representation of the C record GtkStackSidebarPrivate.
@@ -6254,9 +7857,17 @@ type StackSidebarPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *StackSidebarPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StackSwitcherClass is a representation of the C record GtkStackSwitcherClass.
 type StackSwitcherClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *StackSwitcherClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StatusIconClass is a representation of the C record GtkStatusIconClass.
@@ -6264,9 +7875,17 @@ type StatusIconClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *StatusIconClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StatusIconPrivate is a representation of the C record GtkStatusIconPrivate.
 type StatusIconPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *StatusIconPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StatusbarAccessibleClass is a representation of the C record GtkStatusbarAccessibleClass.
@@ -6274,9 +7893,17 @@ type StatusbarAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *StatusbarAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StatusbarAccessiblePrivate is a representation of the C record GtkStatusbarAccessiblePrivate.
 type StatusbarAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *StatusbarAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StatusbarClass is a representation of the C record GtkStatusbarClass.
@@ -6284,9 +7911,17 @@ type StatusbarClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *StatusbarClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StatusbarPrivate is a representation of the C record GtkStatusbarPrivate.
 type StatusbarPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *StatusbarPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StockItem is a representation of the C record GtkStockItem.
@@ -6294,9 +7929,17 @@ type StockItem struct {
 	native unsafe.Pointer
 }
 
+func (recv *StockItem) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StyleClass is a representation of the C record GtkStyleClass.
 type StyleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *StyleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StyleContextClass is a representation of the C record GtkStyleContextClass.
@@ -6304,9 +7947,17 @@ type StyleContextClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *StyleContextClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StyleContextPrivate is a representation of the C record GtkStyleContextPrivate.
 type StyleContextPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *StyleContextPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StylePropertiesClass is a representation of the C record GtkStylePropertiesClass.
@@ -6314,9 +7965,17 @@ type StylePropertiesClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *StylePropertiesClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StylePropertiesPrivate is a representation of the C record GtkStylePropertiesPrivate.
 type StylePropertiesPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *StylePropertiesPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StyleProviderIface is a representation of the C record GtkStyleProviderIface.
@@ -6324,9 +7983,17 @@ type StyleProviderIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *StyleProviderIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SwitchAccessibleClass is a representation of the C record GtkSwitchAccessibleClass.
 type SwitchAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SwitchAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SwitchAccessiblePrivate is a representation of the C record GtkSwitchAccessiblePrivate.
@@ -6334,9 +8001,17 @@ type SwitchAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SwitchAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SwitchClass is a representation of the C record GtkSwitchClass.
 type SwitchClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SwitchClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SwitchPrivate is a representation of the C record GtkSwitchPrivate.
@@ -6344,9 +8019,17 @@ type SwitchPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SwitchPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SymbolicColor is a representation of the C record GtkSymbolicColor.
 type SymbolicColor struct {
 	native unsafe.Pointer
+}
+
+func (recv *SymbolicColor) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TableChild is a representation of the C record GtkTableChild.
@@ -6354,9 +8037,17 @@ type TableChild struct {
 	native unsafe.Pointer
 }
 
+func (recv *TableChild) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TableClass is a representation of the C record GtkTableClass.
 type TableClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TableClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TablePrivate is a representation of the C record GtkTablePrivate.
@@ -6364,9 +8055,17 @@ type TablePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *TablePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TableRowCol is a representation of the C record GtkTableRowCol.
 type TableRowCol struct {
 	native unsafe.Pointer
+}
+
+func (recv *TableRowCol) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TargetEntry is a representation of the C record GtkTargetEntry.
@@ -6374,9 +8073,17 @@ type TargetEntry struct {
 	native unsafe.Pointer
 }
 
+func (recv *TargetEntry) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TargetList is a representation of the C record GtkTargetList.
 type TargetList struct {
 	native unsafe.Pointer
+}
+
+func (recv *TargetList) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TargetPair is a representation of the C record GtkTargetPair.
@@ -6384,9 +8091,17 @@ type TargetPair struct {
 	native unsafe.Pointer
 }
 
+func (recv *TargetPair) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TearoffMenuItemClass is a representation of the C record GtkTearoffMenuItemClass.
 type TearoffMenuItemClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TearoffMenuItemClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TearoffMenuItemPrivate is a representation of the C record GtkTearoffMenuItemPrivate.
@@ -6394,9 +8109,17 @@ type TearoffMenuItemPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *TearoffMenuItemPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextAppearance is a representation of the C record GtkTextAppearance.
 type TextAppearance struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextAppearance) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextAttributes is a representation of the C record GtkTextAttributes.
@@ -6404,9 +8127,17 @@ type TextAttributes struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextAttributes) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextBTree is a representation of the C record GtkTextBTree.
 type TextBTree struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextBTree) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextBufferClass is a representation of the C record GtkTextBufferClass.
@@ -6414,9 +8145,17 @@ type TextBufferClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextBufferClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextBufferPrivate is a representation of the C record GtkTextBufferPrivate.
 type TextBufferPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextBufferPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextCellAccessibleClass is a representation of the C record GtkTextCellAccessibleClass.
@@ -6424,9 +8163,17 @@ type TextCellAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextCellAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextCellAccessiblePrivate is a representation of the C record GtkTextCellAccessiblePrivate.
 type TextCellAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextCellAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextChildAnchorClass is a representation of the C record GtkTextChildAnchorClass.
@@ -6434,9 +8181,17 @@ type TextChildAnchorClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextChildAnchorClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextIter is a representation of the C record GtkTextIter.
 type TextIter struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextIter) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextMarkClass is a representation of the C record GtkTextMarkClass.
@@ -6444,9 +8199,17 @@ type TextMarkClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextMarkClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextTagClass is a representation of the C record GtkTextTagClass.
 type TextTagClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextTagClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextTagPrivate is a representation of the C record GtkTextTagPrivate.
@@ -6454,9 +8217,17 @@ type TextTagPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextTagPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextTagTableClass is a representation of the C record GtkTextTagTableClass.
 type TextTagTableClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextTagTableClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextTagTablePrivate is a representation of the C record GtkTextTagTablePrivate.
@@ -6464,9 +8235,17 @@ type TextTagTablePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextTagTablePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextViewAccessibleClass is a representation of the C record GtkTextViewAccessibleClass.
 type TextViewAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextViewAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextViewAccessiblePrivate is a representation of the C record GtkTextViewAccessiblePrivate.
@@ -6474,9 +8253,17 @@ type TextViewAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextViewAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextViewClass is a representation of the C record GtkTextViewClass.
 type TextViewClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextViewClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextViewPrivate is a representation of the C record GtkTextViewPrivate.
@@ -6484,9 +8271,17 @@ type TextViewPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextViewPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ThemeEngine is a representation of the C record GtkThemeEngine.
 type ThemeEngine struct {
 	native unsafe.Pointer
+}
+
+func (recv *ThemeEngine) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ThemingEngineClass is a representation of the C record GtkThemingEngineClass.
@@ -6494,9 +8289,17 @@ type ThemingEngineClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ThemingEngineClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ThemingEnginePrivate is a representation of the C record GtkThemingEnginePrivate.
 type ThemingEnginePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ThemingEnginePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToggleActionClass is a representation of the C record GtkToggleActionClass.
@@ -6504,9 +8307,17 @@ type ToggleActionClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToggleActionClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToggleActionEntry is a representation of the C record GtkToggleActionEntry.
 type ToggleActionEntry struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToggleActionEntry) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToggleActionPrivate is a representation of the C record GtkToggleActionPrivate.
@@ -6514,9 +8325,17 @@ type ToggleActionPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToggleActionPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToggleButtonAccessibleClass is a representation of the C record GtkToggleButtonAccessibleClass.
 type ToggleButtonAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToggleButtonAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToggleButtonAccessiblePrivate is a representation of the C record GtkToggleButtonAccessiblePrivate.
@@ -6524,9 +8343,17 @@ type ToggleButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToggleButtonAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToggleButtonClass is a representation of the C record GtkToggleButtonClass.
 type ToggleButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToggleButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToggleButtonPrivate is a representation of the C record GtkToggleButtonPrivate.
@@ -6534,9 +8361,17 @@ type ToggleButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToggleButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToggleToolButtonClass is a representation of the C record GtkToggleToolButtonClass.
 type ToggleToolButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToggleToolButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToggleToolButtonPrivate is a representation of the C record GtkToggleToolButtonPrivate.
@@ -6544,9 +8379,17 @@ type ToggleToolButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToggleToolButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToolButtonClass is a representation of the C record GtkToolButtonClass.
 type ToolButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToolButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToolButtonPrivate is a representation of the C record GtkToolButtonPrivate.
@@ -6554,9 +8397,17 @@ type ToolButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToolButtonPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToolItemClass is a representation of the C record GtkToolItemClass.
 type ToolItemClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToolItemClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToolItemGroupClass is a representation of the C record GtkToolItemGroupClass.
@@ -6564,9 +8415,17 @@ type ToolItemGroupClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToolItemGroupClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToolItemGroupPrivate is a representation of the C record GtkToolItemGroupPrivate.
 type ToolItemGroupPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToolItemGroupPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToolItemPrivate is a representation of the C record GtkToolItemPrivate.
@@ -6574,9 +8433,17 @@ type ToolItemPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToolItemPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToolPaletteClass is a representation of the C record GtkToolPaletteClass.
 type ToolPaletteClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToolPaletteClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToolPalettePrivate is a representation of the C record GtkToolPalettePrivate.
@@ -6584,9 +8451,17 @@ type ToolPalettePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToolPalettePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToolShellIface is a representation of the C record GtkToolShellIface.
 type ToolShellIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToolShellIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToolbarClass is a representation of the C record GtkToolbarClass.
@@ -6594,9 +8469,17 @@ type ToolbarClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToolbarClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToolbarPrivate is a representation of the C record GtkToolbarPrivate.
 type ToolbarPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToolbarPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToplevelAccessibleClass is a representation of the C record GtkToplevelAccessibleClass.
@@ -6604,9 +8487,17 @@ type ToplevelAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToplevelAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToplevelAccessiblePrivate is a representation of the C record GtkToplevelAccessiblePrivate.
 type ToplevelAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToplevelAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeDragDestIface is a representation of the C record GtkTreeDragDestIface.
@@ -6614,9 +8505,17 @@ type TreeDragDestIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeDragDestIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeDragSourceIface is a representation of the C record GtkTreeDragSourceIface.
 type TreeDragSourceIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeDragSourceIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeIter is a representation of the C record GtkTreeIter.
@@ -6624,9 +8523,17 @@ type TreeIter struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeIter) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeModelFilterClass is a representation of the C record GtkTreeModelFilterClass.
 type TreeModelFilterClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeModelFilterClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeModelFilterPrivate is a representation of the C record GtkTreeModelFilterPrivate.
@@ -6634,9 +8541,17 @@ type TreeModelFilterPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeModelFilterPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeModelIface is a representation of the C record GtkTreeModelIface.
 type TreeModelIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeModelIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeModelSortClass is a representation of the C record GtkTreeModelSortClass.
@@ -6644,9 +8559,17 @@ type TreeModelSortClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeModelSortClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeModelSortPrivate is a representation of the C record GtkTreeModelSortPrivate.
 type TreeModelSortPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeModelSortPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreePath is a representation of the C record GtkTreePath.
@@ -6654,9 +8577,17 @@ type TreePath struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreePath) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeRowReference is a representation of the C record GtkTreeRowReference.
 type TreeRowReference struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeRowReference) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeSelectionClass is a representation of the C record GtkTreeSelectionClass.
@@ -6664,9 +8595,17 @@ type TreeSelectionClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeSelectionClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeSelectionPrivate is a representation of the C record GtkTreeSelectionPrivate.
 type TreeSelectionPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeSelectionPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeSortableIface is a representation of the C record GtkTreeSortableIface.
@@ -6674,9 +8613,17 @@ type TreeSortableIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeSortableIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeStoreClass is a representation of the C record GtkTreeStoreClass.
 type TreeStoreClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeStoreClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeStorePrivate is a representation of the C record GtkTreeStorePrivate.
@@ -6684,9 +8631,17 @@ type TreeStorePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeStorePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeViewAccessibleClass is a representation of the C record GtkTreeViewAccessibleClass.
 type TreeViewAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeViewAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeViewAccessiblePrivate is a representation of the C record GtkTreeViewAccessiblePrivate.
@@ -6694,9 +8649,17 @@ type TreeViewAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeViewAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeViewClass is a representation of the C record GtkTreeViewClass.
 type TreeViewClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeViewClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeViewColumnClass is a representation of the C record GtkTreeViewColumnClass.
@@ -6704,9 +8667,17 @@ type TreeViewColumnClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeViewColumnClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeViewColumnPrivate is a representation of the C record GtkTreeViewColumnPrivate.
 type TreeViewColumnPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeViewColumnPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeViewPrivate is a representation of the C record GtkTreeViewPrivate.
@@ -6714,9 +8685,17 @@ type TreeViewPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeViewPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UIManagerClass is a representation of the C record GtkUIManagerClass.
 type UIManagerClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *UIManagerClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UIManagerPrivate is a representation of the C record GtkUIManagerPrivate.
@@ -6724,9 +8703,17 @@ type UIManagerPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *UIManagerPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // VBoxClass is a representation of the C record GtkVBoxClass.
 type VBoxClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *VBoxClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // VButtonBoxClass is a representation of the C record GtkVButtonBoxClass.
@@ -6734,9 +8721,17 @@ type VButtonBoxClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *VButtonBoxClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // VPanedClass is a representation of the C record GtkVPanedClass.
 type VPanedClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *VPanedClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // VScaleClass is a representation of the C record GtkVScaleClass.
@@ -6744,9 +8739,17 @@ type VScaleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *VScaleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // VScrollbarClass is a representation of the C record GtkVScrollbarClass.
 type VScrollbarClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *VScrollbarClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // VSeparatorClass is a representation of the C record GtkVSeparatorClass.
@@ -6754,9 +8757,17 @@ type VSeparatorClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *VSeparatorClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ViewportClass is a representation of the C record GtkViewportClass.
 type ViewportClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ViewportClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ViewportPrivate is a representation of the C record GtkViewportPrivate.
@@ -6764,9 +8775,17 @@ type ViewportPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ViewportPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // VolumeButtonClass is a representation of the C record GtkVolumeButtonClass.
 type VolumeButtonClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *VolumeButtonClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // WidgetAccessibleClass is a representation of the C record GtkWidgetAccessibleClass.
@@ -6774,9 +8793,17 @@ type WidgetAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *WidgetAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // WidgetAccessiblePrivate is a representation of the C record GtkWidgetAccessiblePrivate.
 type WidgetAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *WidgetAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // WidgetClass is a representation of the C record GtkWidgetClass.
@@ -6784,9 +8811,17 @@ type WidgetClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *WidgetClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // WidgetClassPrivate is a representation of the C record GtkWidgetClassPrivate.
 type WidgetClassPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *WidgetClassPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // WidgetPath is a representation of the C record GtkWidgetPath.
@@ -6794,9 +8829,17 @@ type WidgetPath struct {
 	native unsafe.Pointer
 }
 
+func (recv *WidgetPath) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // WidgetPrivate is a representation of the C record GtkWidgetPrivate.
 type WidgetPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *WidgetPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // WindowAccessibleClass is a representation of the C record GtkWindowAccessibleClass.
@@ -6804,9 +8847,17 @@ type WindowAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *WindowAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // WindowAccessiblePrivate is a representation of the C record GtkWindowAccessiblePrivate.
 type WindowAccessiblePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *WindowAccessiblePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // WindowClass is a representation of the C record GtkWindowClass.
@@ -6814,9 +8865,17 @@ type WindowClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *WindowClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // WindowGeometryInfo is a representation of the C record GtkWindowGeometryInfo.
 type WindowGeometryInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *WindowGeometryInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // WindowGroupClass is a representation of the C record GtkWindowGroupClass.
@@ -6824,9 +8883,17 @@ type WindowGroupClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *WindowGroupClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // WindowGroupPrivate is a representation of the C record GtkWindowGroupPrivate.
 type WindowGroupPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *WindowGroupPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // WindowPrivate is a representation of the C record GtkWindowPrivate.
@@ -6834,9 +8901,17 @@ type WindowPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *WindowPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AboutDialog is a representation of the C record GtkAboutDialog.
 type AboutDialog struct {
 	native unsafe.Pointer
+}
+
+func (recv *AboutDialog) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AccelGroup is a representation of the C record GtkAccelGroup.
@@ -6844,9 +8919,17 @@ type AccelGroup struct {
 	native unsafe.Pointer
 }
 
+func (recv *AccelGroup) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AccelLabel is a representation of the C record GtkAccelLabel.
 type AccelLabel struct {
 	native unsafe.Pointer
+}
+
+func (recv *AccelLabel) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AccelMap is a representation of the C record GtkAccelMap.
@@ -6854,9 +8937,17 @@ type AccelMap struct {
 	native unsafe.Pointer
 }
 
+func (recv *AccelMap) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Accessible is a representation of the C record GtkAccessible.
 type Accessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *Accessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Action is a representation of the C record GtkAction.
@@ -6864,9 +8955,17 @@ type Action struct {
 	native unsafe.Pointer
 }
 
+func (recv *Action) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ActionBar is a representation of the C record GtkActionBar.
 type ActionBar struct {
 	native unsafe.Pointer
+}
+
+func (recv *ActionBar) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ActionGroup is a representation of the C record GtkActionGroup.
@@ -6874,9 +8973,17 @@ type ActionGroup struct {
 	native unsafe.Pointer
 }
 
+func (recv *ActionGroup) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Adjustment is a representation of the C record GtkAdjustment.
 type Adjustment struct {
 	native unsafe.Pointer
+}
+
+func (recv *Adjustment) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Alignment is a representation of the C record GtkAlignment.
@@ -6884,9 +8991,17 @@ type Alignment struct {
 	native unsafe.Pointer
 }
 
+func (recv *Alignment) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AppChooserButton is a representation of the C record GtkAppChooserButton.
 type AppChooserButton struct {
 	native unsafe.Pointer
+}
+
+func (recv *AppChooserButton) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AppChooserDialog is a representation of the C record GtkAppChooserDialog.
@@ -6894,9 +9009,17 @@ type AppChooserDialog struct {
 	native unsafe.Pointer
 }
 
+func (recv *AppChooserDialog) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AppChooserWidget is a representation of the C record GtkAppChooserWidget.
 type AppChooserWidget struct {
 	native unsafe.Pointer
+}
+
+func (recv *AppChooserWidget) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Application is a representation of the C record GtkApplication.
@@ -6904,9 +9027,17 @@ type Application struct {
 	native unsafe.Pointer
 }
 
+func (recv *Application) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ApplicationWindow is a representation of the C record GtkApplicationWindow.
 type ApplicationWindow struct {
 	native unsafe.Pointer
+}
+
+func (recv *ApplicationWindow) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Arrow is a representation of the C record GtkArrow.
@@ -6914,9 +9045,17 @@ type Arrow struct {
 	native unsafe.Pointer
 }
 
+func (recv *Arrow) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ArrowAccessible is a representation of the C record GtkArrowAccessible.
 type ArrowAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *ArrowAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AspectFrame is a representation of the C record GtkAspectFrame.
@@ -6924,9 +9063,17 @@ type AspectFrame struct {
 	native unsafe.Pointer
 }
 
+func (recv *AspectFrame) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Assistant is a representation of the C record GtkAssistant.
 type Assistant struct {
 	native unsafe.Pointer
+}
+
+func (recv *Assistant) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Bin is a representation of the C record GtkBin.
@@ -6934,9 +9081,17 @@ type Bin struct {
 	native unsafe.Pointer
 }
 
+func (recv *Bin) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // BooleanCellAccessible is a representation of the C record GtkBooleanCellAccessible.
 type BooleanCellAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *BooleanCellAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Box is a representation of the C record GtkBox.
@@ -6944,9 +9099,17 @@ type Box struct {
 	native unsafe.Pointer
 }
 
+func (recv *Box) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Builder is a representation of the C record GtkBuilder.
 type Builder struct {
 	native unsafe.Pointer
+}
+
+func (recv *Builder) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Button is a representation of the C record GtkButton.
@@ -6954,9 +9117,17 @@ type Button struct {
 	native unsafe.Pointer
 }
 
+func (recv *Button) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ButtonAccessible is a representation of the C record GtkButtonAccessible.
 type ButtonAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *ButtonAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ButtonBox is a representation of the C record GtkButtonBox.
@@ -6964,9 +9135,17 @@ type ButtonBox struct {
 	native unsafe.Pointer
 }
 
+func (recv *ButtonBox) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Calendar is a representation of the C record GtkCalendar.
 type Calendar struct {
 	native unsafe.Pointer
+}
+
+func (recv *Calendar) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellAccessible is a representation of the C record GtkCellAccessible.
@@ -6974,9 +9153,17 @@ type CellAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellArea is a representation of the C record GtkCellArea.
 type CellArea struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellArea) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellAreaBox is a representation of the C record GtkCellAreaBox.
@@ -6984,9 +9171,17 @@ type CellAreaBox struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellAreaBox) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellAreaContext is a representation of the C record GtkCellAreaContext.
 type CellAreaContext struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellAreaContext) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRenderer is a representation of the C record GtkCellRenderer.
@@ -6994,9 +9189,17 @@ type CellRenderer struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRenderer) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererAccel is a representation of the C record GtkCellRendererAccel.
 type CellRendererAccel struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererAccel) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererCombo is a representation of the C record GtkCellRendererCombo.
@@ -7004,9 +9207,17 @@ type CellRendererCombo struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererCombo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererPixbuf is a representation of the C record GtkCellRendererPixbuf.
 type CellRendererPixbuf struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererPixbuf) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererProgress is a representation of the C record GtkCellRendererProgress.
@@ -7014,9 +9225,17 @@ type CellRendererProgress struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererProgress) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererSpin is a representation of the C record GtkCellRendererSpin.
 type CellRendererSpin struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererSpin) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererSpinner is a representation of the C record GtkCellRendererSpinner.
@@ -7024,9 +9243,17 @@ type CellRendererSpinner struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererSpinner) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellRendererText is a representation of the C record GtkCellRendererText.
 type CellRendererText struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellRendererText) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CellRendererToggle is a representation of the C record GtkCellRendererToggle.
@@ -7034,9 +9261,17 @@ type CellRendererToggle struct {
 	native unsafe.Pointer
 }
 
+func (recv *CellRendererToggle) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CellView is a representation of the C record GtkCellView.
 type CellView struct {
 	native unsafe.Pointer
+}
+
+func (recv *CellView) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CheckButton is a representation of the C record GtkCheckButton.
@@ -7044,9 +9279,17 @@ type CheckButton struct {
 	native unsafe.Pointer
 }
 
+func (recv *CheckButton) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CheckMenuItem is a representation of the C record GtkCheckMenuItem.
 type CheckMenuItem struct {
 	native unsafe.Pointer
+}
+
+func (recv *CheckMenuItem) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CheckMenuItemAccessible is a representation of the C record GtkCheckMenuItemAccessible.
@@ -7054,14 +9297,26 @@ type CheckMenuItemAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *CheckMenuItemAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Clipboard is a representation of the C record GtkClipboard.
 type Clipboard struct {
 	native unsafe.Pointer
 }
 
+func (recv *Clipboard) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ColorButton is a representation of the C record GtkColorButton.
 type ColorButton struct {
 	native unsafe.Pointer
+}
+
+func (recv *ColorButton) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ColorChooserDialog is a representation of the C record GtkColorChooserDialog.
@@ -7071,6 +9326,10 @@ type ColorChooserDialog struct {
 	native unsafe.Pointer
 }
 
+func (recv *ColorChooserDialog) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ColorChooserWidget is a representation of the C record GtkColorChooserWidget.
 //
 // since 3.4
@@ -7078,9 +9337,17 @@ type ColorChooserWidget struct {
 	native unsafe.Pointer
 }
 
+func (recv *ColorChooserWidget) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ColorSelection is a representation of the C record GtkColorSelection.
 type ColorSelection struct {
 	native unsafe.Pointer
+}
+
+func (recv *ColorSelection) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ColorSelectionDialog is a representation of the C record GtkColorSelectionDialog.
@@ -7088,9 +9355,17 @@ type ColorSelectionDialog struct {
 	native unsafe.Pointer
 }
 
+func (recv *ColorSelectionDialog) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ComboBox is a representation of the C record GtkComboBox.
 type ComboBox struct {
 	native unsafe.Pointer
+}
+
+func (recv *ComboBox) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ComboBoxAccessible is a representation of the C record GtkComboBoxAccessible.
@@ -7098,9 +9373,17 @@ type ComboBoxAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *ComboBoxAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ComboBoxText is a representation of the C record GtkComboBoxText.
 type ComboBoxText struct {
 	native unsafe.Pointer
+}
+
+func (recv *ComboBoxText) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Container is a representation of the C record GtkContainer.
@@ -7108,9 +9391,17 @@ type Container struct {
 	native unsafe.Pointer
 }
 
+func (recv *Container) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ContainerAccessible is a representation of the C record GtkContainerAccessible.
 type ContainerAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *ContainerAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ContainerCellAccessible is a representation of the C record GtkContainerCellAccessible.
@@ -7118,9 +9409,17 @@ type ContainerCellAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *ContainerCellAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CssProvider is a representation of the C record GtkCssProvider.
 type CssProvider struct {
 	native unsafe.Pointer
+}
+
+func (recv *CssProvider) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Dialog is a representation of the C record GtkDialog.
@@ -7128,9 +9427,17 @@ type Dialog struct {
 	native unsafe.Pointer
 }
 
+func (recv *Dialog) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DrawingArea is a representation of the C record GtkDrawingArea.
 type DrawingArea struct {
 	native unsafe.Pointer
+}
+
+func (recv *DrawingArea) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Entry is a representation of the C record GtkEntry.
@@ -7138,9 +9445,17 @@ type Entry struct {
 	native unsafe.Pointer
 }
 
+func (recv *Entry) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EntryAccessible is a representation of the C record GtkEntryAccessible.
 type EntryAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *EntryAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // EntryBuffer is a representation of the C record GtkEntryBuffer.
@@ -7150,9 +9465,17 @@ type EntryBuffer struct {
 	native unsafe.Pointer
 }
 
+func (recv *EntryBuffer) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EntryCompletion is a representation of the C record GtkEntryCompletion.
 type EntryCompletion struct {
 	native unsafe.Pointer
+}
+
+func (recv *EntryCompletion) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : EntryIconAccessible : blacklisted
@@ -7162,9 +9485,17 @@ type EventBox struct {
 	native unsafe.Pointer
 }
 
+func (recv *EventBox) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EventController is a representation of the C record GtkEventController.
 type EventController struct {
 	native unsafe.Pointer
+}
+
+func (recv *EventController) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : EventControllerKey : blacklisted
@@ -7178,9 +9509,17 @@ type Expander struct {
 	native unsafe.Pointer
 }
 
+func (recv *Expander) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ExpanderAccessible is a representation of the C record GtkExpanderAccessible.
 type ExpanderAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *ExpanderAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileChooserButton is a representation of the C record GtkFileChooserButton.
@@ -7188,9 +9527,17 @@ type FileChooserButton struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileChooserButton) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileChooserDialog is a representation of the C record GtkFileChooserDialog.
 type FileChooserDialog struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileChooserDialog) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileChooserNative is a representation of the C record GtkFileChooserNative.
@@ -7198,9 +9545,17 @@ type FileChooserNative struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileChooserNative) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileChooserWidget is a representation of the C record GtkFileChooserWidget.
 type FileChooserWidget struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileChooserWidget) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileFilter is a representation of the C record GtkFileFilter.
@@ -7208,9 +9563,17 @@ type FileFilter struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileFilter) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Fixed is a representation of the C record GtkFixed.
 type Fixed struct {
 	native unsafe.Pointer
+}
+
+func (recv *Fixed) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FlowBox is a representation of the C record GtkFlowBox.
@@ -7218,9 +9581,17 @@ type FlowBox struct {
 	native unsafe.Pointer
 }
 
+func (recv *FlowBox) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FlowBoxAccessible is a representation of the C record GtkFlowBoxAccessible.
 type FlowBoxAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *FlowBoxAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FlowBoxChild is a representation of the C record GtkFlowBoxChild.
@@ -7228,14 +9599,26 @@ type FlowBoxChild struct {
 	native unsafe.Pointer
 }
 
+func (recv *FlowBoxChild) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FlowBoxChildAccessible is a representation of the C record GtkFlowBoxChildAccessible.
 type FlowBoxChildAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *FlowBoxChildAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FontButton is a representation of the C record GtkFontButton.
 type FontButton struct {
 	native unsafe.Pointer
+}
+
+func (recv *FontButton) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FontChooserDialog is a representation of the C record GtkFontChooserDialog.
@@ -7245,6 +9628,10 @@ type FontChooserDialog struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontChooserDialog) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FontChooserWidget is a representation of the C record GtkFontChooserWidget.
 //
 // since 3.2
@@ -7252,9 +9639,17 @@ type FontChooserWidget struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontChooserWidget) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FontSelection is a representation of the C record GtkFontSelection.
 type FontSelection struct {
 	native unsafe.Pointer
+}
+
+func (recv *FontSelection) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FontSelectionDialog is a representation of the C record GtkFontSelectionDialog.
@@ -7262,14 +9657,26 @@ type FontSelectionDialog struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontSelectionDialog) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Frame is a representation of the C record GtkFrame.
 type Frame struct {
 	native unsafe.Pointer
 }
 
+func (recv *Frame) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FrameAccessible is a representation of the C record GtkFrameAccessible.
 type FrameAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *FrameAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // GLArea is a representation of the C record GtkGLArea.
@@ -7279,9 +9686,17 @@ type GLArea struct {
 	native unsafe.Pointer
 }
 
+func (recv *GLArea) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Gesture is a representation of the C record GtkGesture.
 type Gesture struct {
 	native unsafe.Pointer
+}
+
+func (recv *Gesture) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // GestureDrag is a representation of the C record GtkGestureDrag.
@@ -7289,9 +9704,17 @@ type GestureDrag struct {
 	native unsafe.Pointer
 }
 
+func (recv *GestureDrag) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GestureLongPress is a representation of the C record GtkGestureLongPress.
 type GestureLongPress struct {
 	native unsafe.Pointer
+}
+
+func (recv *GestureLongPress) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // GestureMultiPress is a representation of the C record GtkGestureMultiPress.
@@ -7299,9 +9722,17 @@ type GestureMultiPress struct {
 	native unsafe.Pointer
 }
 
+func (recv *GestureMultiPress) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GesturePan is a representation of the C record GtkGesturePan.
 type GesturePan struct {
 	native unsafe.Pointer
+}
+
+func (recv *GesturePan) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // GestureRotate is a representation of the C record GtkGestureRotate.
@@ -7309,9 +9740,17 @@ type GestureRotate struct {
 	native unsafe.Pointer
 }
 
+func (recv *GestureRotate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GestureSingle is a representation of the C record GtkGestureSingle.
 type GestureSingle struct {
 	native unsafe.Pointer
+}
+
+func (recv *GestureSingle) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : GestureStylus : blacklisted
@@ -7321,9 +9760,17 @@ type GestureSwipe struct {
 	native unsafe.Pointer
 }
 
+func (recv *GestureSwipe) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GestureZoom is a representation of the C record GtkGestureZoom.
 type GestureZoom struct {
 	native unsafe.Pointer
+}
+
+func (recv *GestureZoom) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Grid is a representation of the C record GtkGrid.
@@ -7331,9 +9778,17 @@ type Grid struct {
 	native unsafe.Pointer
 }
 
+func (recv *Grid) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HBox is a representation of the C record GtkHBox.
 type HBox struct {
 	native unsafe.Pointer
+}
+
+func (recv *HBox) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HButtonBox is a representation of the C record GtkHButtonBox.
@@ -7341,9 +9796,17 @@ type HButtonBox struct {
 	native unsafe.Pointer
 }
 
+func (recv *HButtonBox) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HPaned is a representation of the C record GtkHPaned.
 type HPaned struct {
 	native unsafe.Pointer
+}
+
+func (recv *HPaned) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HSV is a representation of the C record GtkHSV.
@@ -7351,9 +9814,17 @@ type HSV struct {
 	native unsafe.Pointer
 }
 
+func (recv *HSV) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HScale is a representation of the C record GtkHScale.
 type HScale struct {
 	native unsafe.Pointer
+}
+
+func (recv *HScale) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HScrollbar is a representation of the C record GtkHScrollbar.
@@ -7361,9 +9832,17 @@ type HScrollbar struct {
 	native unsafe.Pointer
 }
 
+func (recv *HScrollbar) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HSeparator is a representation of the C record GtkHSeparator.
 type HSeparator struct {
 	native unsafe.Pointer
+}
+
+func (recv *HSeparator) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HandleBox is a representation of the C record GtkHandleBox.
@@ -7371,9 +9850,17 @@ type HandleBox struct {
 	native unsafe.Pointer
 }
 
+func (recv *HandleBox) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HeaderBar is a representation of the C record GtkHeaderBar.
 type HeaderBar struct {
 	native unsafe.Pointer
+}
+
+func (recv *HeaderBar) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : HeaderBarAccessible : blacklisted
@@ -7383,9 +9870,17 @@ type IMContext struct {
 	native unsafe.Pointer
 }
 
+func (recv *IMContext) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IMContextSimple is a representation of the C record GtkIMContextSimple.
 type IMContextSimple struct {
 	native unsafe.Pointer
+}
+
+func (recv *IMContextSimple) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IMMulticontext is a representation of the C record GtkIMMulticontext.
@@ -7393,9 +9888,17 @@ type IMMulticontext struct {
 	native unsafe.Pointer
 }
 
+func (recv *IMMulticontext) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IconFactory is a representation of the C record GtkIconFactory.
 type IconFactory struct {
 	native unsafe.Pointer
+}
+
+func (recv *IconFactory) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IconInfo is a representation of the C record GtkIconInfo.
@@ -7403,9 +9906,17 @@ type IconInfo struct {
 	native unsafe.Pointer
 }
 
+func (recv *IconInfo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IconTheme is a representation of the C record GtkIconTheme.
 type IconTheme struct {
 	native unsafe.Pointer
+}
+
+func (recv *IconTheme) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IconView is a representation of the C record GtkIconView.
@@ -7413,9 +9924,17 @@ type IconView struct {
 	native unsafe.Pointer
 }
 
+func (recv *IconView) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IconViewAccessible is a representation of the C record GtkIconViewAccessible.
 type IconViewAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *IconViewAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Image is a representation of the C record GtkImage.
@@ -7423,9 +9942,17 @@ type Image struct {
 	native unsafe.Pointer
 }
 
+func (recv *Image) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ImageAccessible is a representation of the C record GtkImageAccessible.
 type ImageAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *ImageAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ImageCellAccessible is a representation of the C record GtkImageCellAccessible.
@@ -7433,9 +9960,17 @@ type ImageCellAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *ImageCellAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ImageMenuItem is a representation of the C record GtkImageMenuItem.
 type ImageMenuItem struct {
 	native unsafe.Pointer
+}
+
+func (recv *ImageMenuItem) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // InfoBar is a representation of the C record GtkInfoBar.
@@ -7443,9 +9978,17 @@ type InfoBar struct {
 	native unsafe.Pointer
 }
 
+func (recv *InfoBar) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Invisible is a representation of the C record GtkInvisible.
 type Invisible struct {
 	native unsafe.Pointer
+}
+
+func (recv *Invisible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Label is a representation of the C record GtkLabel.
@@ -7453,9 +9996,17 @@ type Label struct {
 	native unsafe.Pointer
 }
 
+func (recv *Label) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LabelAccessible is a representation of the C record GtkLabelAccessible.
 type LabelAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *LabelAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Layout is a representation of the C record GtkLayout.
@@ -7463,9 +10014,17 @@ type Layout struct {
 	native unsafe.Pointer
 }
 
+func (recv *Layout) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LevelBar is a representation of the C record GtkLevelBar.
 type LevelBar struct {
 	native unsafe.Pointer
+}
+
+func (recv *LevelBar) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LevelBarAccessible is a representation of the C record GtkLevelBarAccessible.
@@ -7473,9 +10032,17 @@ type LevelBarAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *LevelBarAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LinkButton is a representation of the C record GtkLinkButton.
 type LinkButton struct {
 	native unsafe.Pointer
+}
+
+func (recv *LinkButton) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LinkButtonAccessible is a representation of the C record GtkLinkButtonAccessible.
@@ -7483,9 +10050,17 @@ type LinkButtonAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *LinkButtonAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ListBox is a representation of the C record GtkListBox.
 type ListBox struct {
 	native unsafe.Pointer
+}
+
+func (recv *ListBox) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ListBoxAccessible is a representation of the C record GtkListBoxAccessible.
@@ -7493,9 +10068,17 @@ type ListBoxAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *ListBoxAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ListBoxRow is a representation of the C record GtkListBoxRow.
 type ListBoxRow struct {
 	native unsafe.Pointer
+}
+
+func (recv *ListBoxRow) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ListBoxRowAccessible is a representation of the C record GtkListBoxRowAccessible.
@@ -7503,9 +10086,17 @@ type ListBoxRowAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *ListBoxRowAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ListStore is a representation of the C record GtkListStore.
 type ListStore struct {
 	native unsafe.Pointer
+}
+
+func (recv *ListStore) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LockButton is a representation of the C record GtkLockButton.
@@ -7513,9 +10104,17 @@ type LockButton struct {
 	native unsafe.Pointer
 }
 
+func (recv *LockButton) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LockButtonAccessible is a representation of the C record GtkLockButtonAccessible.
 type LockButtonAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *LockButtonAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Menu is a representation of the C record GtkMenu.
@@ -7523,9 +10122,17 @@ type Menu struct {
 	native unsafe.Pointer
 }
 
+func (recv *Menu) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuAccessible is a representation of the C record GtkMenuAccessible.
 type MenuAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuBar is a representation of the C record GtkMenuBar.
@@ -7533,9 +10140,17 @@ type MenuBar struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuBar) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuButton is a representation of the C record GtkMenuButton.
 type MenuButton struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuButton) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuButtonAccessible is a representation of the C record GtkMenuButtonAccessible.
@@ -7543,9 +10158,17 @@ type MenuButtonAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuButtonAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuItem is a representation of the C record GtkMenuItem.
 type MenuItem struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuItem) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuItemAccessible is a representation of the C record GtkMenuItemAccessible.
@@ -7553,9 +10176,17 @@ type MenuItemAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuItemAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuShell is a representation of the C record GtkMenuShell.
 type MenuShell struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuShell) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuShellAccessible is a representation of the C record GtkMenuShellAccessible.
@@ -7563,9 +10194,17 @@ type MenuShellAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuShellAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuToolButton is a representation of the C record GtkMenuToolButton.
 type MenuToolButton struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuToolButton) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MessageDialog is a representation of the C record GtkMessageDialog.
@@ -7573,9 +10212,17 @@ type MessageDialog struct {
 	native unsafe.Pointer
 }
 
+func (recv *MessageDialog) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Misc is a representation of the C record GtkMisc.
 type Misc struct {
 	native unsafe.Pointer
+}
+
+func (recv *Misc) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ModelButton is a representation of the C record GtkModelButton.
@@ -7583,9 +10230,17 @@ type ModelButton struct {
 	native unsafe.Pointer
 }
 
+func (recv *ModelButton) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MountOperation is a representation of the C record GtkMountOperation.
 type MountOperation struct {
 	native unsafe.Pointer
+}
+
+func (recv *MountOperation) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NativeDialog is a representation of the C record GtkNativeDialog.
@@ -7593,9 +10248,17 @@ type NativeDialog struct {
 	native unsafe.Pointer
 }
 
+func (recv *NativeDialog) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Notebook is a representation of the C record GtkNotebook.
 type Notebook struct {
 	native unsafe.Pointer
+}
+
+func (recv *Notebook) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NotebookAccessible is a representation of the C record GtkNotebookAccessible.
@@ -7603,9 +10266,17 @@ type NotebookAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *NotebookAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // NotebookPageAccessible is a representation of the C record GtkNotebookPageAccessible.
 type NotebookPageAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *NotebookPageAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NumerableIcon is a representation of the C record GtkNumerableIcon.
@@ -7613,9 +10284,17 @@ type NumerableIcon struct {
 	native unsafe.Pointer
 }
 
+func (recv *NumerableIcon) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // OffscreenWindow is a representation of the C record GtkOffscreenWindow.
 type OffscreenWindow struct {
 	native unsafe.Pointer
+}
+
+func (recv *OffscreenWindow) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Overlay is a representation of the C record GtkOverlay.
@@ -7623,9 +10302,17 @@ type Overlay struct {
 	native unsafe.Pointer
 }
 
+func (recv *Overlay) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PadController is a representation of the C record GtkPadController.
 type PadController struct {
 	native unsafe.Pointer
+}
+
+func (recv *PadController) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PageSetup is a representation of the C record GtkPageSetup.
@@ -7633,9 +10320,17 @@ type PageSetup struct {
 	native unsafe.Pointer
 }
 
+func (recv *PageSetup) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Paned is a representation of the C record GtkPaned.
 type Paned struct {
 	native unsafe.Pointer
+}
+
+func (recv *Paned) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PanedAccessible is a representation of the C record GtkPanedAccessible.
@@ -7643,14 +10338,26 @@ type PanedAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *PanedAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PlacesSidebar is a representation of the C record GtkPlacesSidebar.
 type PlacesSidebar struct {
 	native unsafe.Pointer
 }
 
+func (recv *PlacesSidebar) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Plug is a representation of the C record GtkPlug.
 type Plug struct {
 	native unsafe.Pointer
+}
+
+func (recv *Plug) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Popover is a representation of the C record GtkPopover.
@@ -7660,9 +10367,17 @@ type Popover struct {
 	native unsafe.Pointer
 }
 
+func (recv *Popover) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PopoverAccessible is a representation of the C record GtkPopoverAccessible.
 type PopoverAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *PopoverAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PopoverMenu is a representation of the C record GtkPopoverMenu.
@@ -7670,9 +10385,17 @@ type PopoverMenu struct {
 	native unsafe.Pointer
 }
 
+func (recv *PopoverMenu) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PrintContext is a representation of the C record GtkPrintContext.
 type PrintContext struct {
 	native unsafe.Pointer
+}
+
+func (recv *PrintContext) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PrintOperation is a representation of the C record GtkPrintOperation.
@@ -7680,9 +10403,17 @@ type PrintOperation struct {
 	native unsafe.Pointer
 }
 
+func (recv *PrintOperation) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PrintSettings is a representation of the C record GtkPrintSettings.
 type PrintSettings struct {
 	native unsafe.Pointer
+}
+
+func (recv *PrintSettings) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ProgressBar is a representation of the C record GtkProgressBar.
@@ -7690,9 +10421,17 @@ type ProgressBar struct {
 	native unsafe.Pointer
 }
 
+func (recv *ProgressBar) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ProgressBarAccessible is a representation of the C record GtkProgressBarAccessible.
 type ProgressBarAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *ProgressBarAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RadioAction is a representation of the C record GtkRadioAction.
@@ -7700,9 +10439,17 @@ type RadioAction struct {
 	native unsafe.Pointer
 }
 
+func (recv *RadioAction) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RadioButton is a representation of the C record GtkRadioButton.
 type RadioButton struct {
 	native unsafe.Pointer
+}
+
+func (recv *RadioButton) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RadioButtonAccessible is a representation of the C record GtkRadioButtonAccessible.
@@ -7710,9 +10457,17 @@ type RadioButtonAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *RadioButtonAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RadioMenuItem is a representation of the C record GtkRadioMenuItem.
 type RadioMenuItem struct {
 	native unsafe.Pointer
+}
+
+func (recv *RadioMenuItem) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RadioMenuItemAccessible is a representation of the C record GtkRadioMenuItemAccessible.
@@ -7720,9 +10475,17 @@ type RadioMenuItemAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *RadioMenuItemAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RadioToolButton is a representation of the C record GtkRadioToolButton.
 type RadioToolButton struct {
 	native unsafe.Pointer
+}
+
+func (recv *RadioToolButton) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Range is a representation of the C record GtkRange.
@@ -7730,9 +10493,17 @@ type Range struct {
 	native unsafe.Pointer
 }
 
+func (recv *Range) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RangeAccessible is a representation of the C record GtkRangeAccessible.
 type RangeAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *RangeAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RcStyle is a representation of the C record GtkRcStyle.
@@ -7740,9 +10511,17 @@ type RcStyle struct {
 	native unsafe.Pointer
 }
 
+func (recv *RcStyle) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RecentAction is a representation of the C record GtkRecentAction.
 type RecentAction struct {
 	native unsafe.Pointer
+}
+
+func (recv *RecentAction) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RecentChooserDialog is a representation of the C record GtkRecentChooserDialog.
@@ -7750,9 +10529,17 @@ type RecentChooserDialog struct {
 	native unsafe.Pointer
 }
 
+func (recv *RecentChooserDialog) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RecentChooserMenu is a representation of the C record GtkRecentChooserMenu.
 type RecentChooserMenu struct {
 	native unsafe.Pointer
+}
+
+func (recv *RecentChooserMenu) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RecentChooserWidget is a representation of the C record GtkRecentChooserWidget.
@@ -7760,9 +10547,17 @@ type RecentChooserWidget struct {
 	native unsafe.Pointer
 }
 
+func (recv *RecentChooserWidget) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RecentFilter is a representation of the C record GtkRecentFilter.
 type RecentFilter struct {
 	native unsafe.Pointer
+}
+
+func (recv *RecentFilter) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RecentManager is a representation of the C record GtkRecentManager.
@@ -7772,9 +10567,17 @@ type RecentManager struct {
 	native unsafe.Pointer
 }
 
+func (recv *RecentManager) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RendererCellAccessible is a representation of the C record GtkRendererCellAccessible.
 type RendererCellAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *RendererCellAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Revealer is a representation of the C record GtkRevealer.
@@ -7782,9 +10585,17 @@ type Revealer struct {
 	native unsafe.Pointer
 }
 
+func (recv *Revealer) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Scale is a representation of the C record GtkScale.
 type Scale struct {
 	native unsafe.Pointer
+}
+
+func (recv *Scale) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ScaleAccessible is a representation of the C record GtkScaleAccessible.
@@ -7792,9 +10603,17 @@ type ScaleAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *ScaleAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ScaleButton is a representation of the C record GtkScaleButton.
 type ScaleButton struct {
 	native unsafe.Pointer
+}
+
+func (recv *ScaleButton) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ScaleButtonAccessible is a representation of the C record GtkScaleButtonAccessible.
@@ -7802,9 +10621,17 @@ type ScaleButtonAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *ScaleButtonAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Scrollbar is a representation of the C record GtkScrollbar.
 type Scrollbar struct {
 	native unsafe.Pointer
+}
+
+func (recv *Scrollbar) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ScrolledWindow is a representation of the C record GtkScrolledWindow.
@@ -7812,9 +10639,17 @@ type ScrolledWindow struct {
 	native unsafe.Pointer
 }
 
+func (recv *ScrolledWindow) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ScrolledWindowAccessible is a representation of the C record GtkScrolledWindowAccessible.
 type ScrolledWindowAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *ScrolledWindowAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SearchBar is a representation of the C record GtkSearchBar.
@@ -7824,6 +10659,10 @@ type SearchBar struct {
 	native unsafe.Pointer
 }
 
+func (recv *SearchBar) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SearchEntry is a representation of the C record GtkSearchEntry.
 //
 // since 3.6
@@ -7831,9 +10670,17 @@ type SearchEntry struct {
 	native unsafe.Pointer
 }
 
+func (recv *SearchEntry) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Separator is a representation of the C record GtkSeparator.
 type Separator struct {
 	native unsafe.Pointer
+}
+
+func (recv *Separator) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SeparatorMenuItem is a representation of the C record GtkSeparatorMenuItem.
@@ -7841,9 +10688,17 @@ type SeparatorMenuItem struct {
 	native unsafe.Pointer
 }
 
+func (recv *SeparatorMenuItem) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SeparatorToolItem is a representation of the C record GtkSeparatorToolItem.
 type SeparatorToolItem struct {
 	native unsafe.Pointer
+}
+
+func (recv *SeparatorToolItem) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Settings is a representation of the C record GtkSettings.
@@ -7851,9 +10706,17 @@ type Settings struct {
 	native unsafe.Pointer
 }
 
+func (recv *Settings) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ShortcutLabel is a representation of the C record GtkShortcutLabel.
 type ShortcutLabel struct {
 	native unsafe.Pointer
+}
+
+func (recv *ShortcutLabel) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ShortcutsGroup is a representation of the C record GtkShortcutsGroup.
@@ -7861,9 +10724,17 @@ type ShortcutsGroup struct {
 	native unsafe.Pointer
 }
 
+func (recv *ShortcutsGroup) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ShortcutsSection is a representation of the C record GtkShortcutsSection.
 type ShortcutsSection struct {
 	native unsafe.Pointer
+}
+
+func (recv *ShortcutsSection) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ShortcutsShortcut is a representation of the C record GtkShortcutsShortcut.
@@ -7871,9 +10742,17 @@ type ShortcutsShortcut struct {
 	native unsafe.Pointer
 }
 
+func (recv *ShortcutsShortcut) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ShortcutsWindow is a representation of the C record GtkShortcutsWindow.
 type ShortcutsWindow struct {
 	native unsafe.Pointer
+}
+
+func (recv *ShortcutsWindow) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SizeGroup is a representation of the C record GtkSizeGroup.
@@ -7881,9 +10760,17 @@ type SizeGroup struct {
 	native unsafe.Pointer
 }
 
+func (recv *SizeGroup) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Socket is a representation of the C record GtkSocket.
 type Socket struct {
 	native unsafe.Pointer
+}
+
+func (recv *Socket) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SpinButton is a representation of the C record GtkSpinButton.
@@ -7891,9 +10778,17 @@ type SpinButton struct {
 	native unsafe.Pointer
 }
 
+func (recv *SpinButton) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SpinButtonAccessible is a representation of the C record GtkSpinButtonAccessible.
 type SpinButtonAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *SpinButtonAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Spinner is a representation of the C record GtkSpinner.
@@ -7901,14 +10796,26 @@ type Spinner struct {
 	native unsafe.Pointer
 }
 
+func (recv *Spinner) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SpinnerAccessible is a representation of the C record GtkSpinnerAccessible.
 type SpinnerAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *SpinnerAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Stack is a representation of the C record GtkStack.
 type Stack struct {
 	native unsafe.Pointer
+}
+
+func (recv *Stack) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : StackAccessible : blacklisted
@@ -7920,9 +10827,17 @@ type StackSidebar struct {
 	native unsafe.Pointer
 }
 
+func (recv *StackSidebar) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StackSwitcher is a representation of the C record GtkStackSwitcher.
 type StackSwitcher struct {
 	native unsafe.Pointer
+}
+
+func (recv *StackSwitcher) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StatusIcon is a representation of the C record GtkStatusIcon.
@@ -7930,9 +10845,17 @@ type StatusIcon struct {
 	native unsafe.Pointer
 }
 
+func (recv *StatusIcon) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Statusbar is a representation of the C record GtkStatusbar.
 type Statusbar struct {
 	native unsafe.Pointer
+}
+
+func (recv *Statusbar) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StatusbarAccessible is a representation of the C record GtkStatusbarAccessible.
@@ -7940,9 +10863,17 @@ type StatusbarAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *StatusbarAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Style is a representation of the C record GtkStyle.
 type Style struct {
 	native unsafe.Pointer
+}
+
+func (recv *Style) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StyleContext is a representation of the C record GtkStyleContext.
@@ -7950,9 +10881,17 @@ type StyleContext struct {
 	native unsafe.Pointer
 }
 
+func (recv *StyleContext) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StyleProperties is a representation of the C record GtkStyleProperties.
 type StyleProperties struct {
 	native unsafe.Pointer
+}
+
+func (recv *StyleProperties) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Switch is a representation of the C record GtkSwitch.
@@ -7960,9 +10899,17 @@ type Switch struct {
 	native unsafe.Pointer
 }
 
+func (recv *Switch) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SwitchAccessible is a representation of the C record GtkSwitchAccessible.
 type SwitchAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *SwitchAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Table is a representation of the C record GtkTable.
@@ -7970,9 +10917,17 @@ type Table struct {
 	native unsafe.Pointer
 }
 
+func (recv *Table) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TearoffMenuItem is a representation of the C record GtkTearoffMenuItem.
 type TearoffMenuItem struct {
 	native unsafe.Pointer
+}
+
+func (recv *TearoffMenuItem) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextBuffer is a representation of the C record GtkTextBuffer.
@@ -7980,9 +10935,17 @@ type TextBuffer struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextBuffer) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextCellAccessible is a representation of the C record GtkTextCellAccessible.
 type TextCellAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextCellAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextChildAnchor is a representation of the C record GtkTextChildAnchor.
@@ -7990,9 +10953,17 @@ type TextChildAnchor struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextChildAnchor) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextMark is a representation of the C record GtkTextMark.
 type TextMark struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextMark) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextTag is a representation of the C record GtkTextTag.
@@ -8000,9 +10971,17 @@ type TextTag struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextTag) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextTagTable is a representation of the C record GtkTextTagTable.
 type TextTagTable struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextTagTable) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextView is a representation of the C record GtkTextView.
@@ -8010,9 +10989,17 @@ type TextView struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextView) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextViewAccessible is a representation of the C record GtkTextViewAccessible.
 type TextViewAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextViewAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ThemingEngine is a representation of the C record GtkThemingEngine.
@@ -8020,9 +11007,17 @@ type ThemingEngine struct {
 	native unsafe.Pointer
 }
 
+func (recv *ThemingEngine) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToggleAction is a representation of the C record GtkToggleAction.
 type ToggleAction struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToggleAction) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToggleButton is a representation of the C record GtkToggleButton.
@@ -8030,9 +11025,17 @@ type ToggleButton struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToggleButton) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToggleButtonAccessible is a representation of the C record GtkToggleButtonAccessible.
 type ToggleButtonAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToggleButtonAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToggleToolButton is a representation of the C record GtkToggleToolButton.
@@ -8040,14 +11043,26 @@ type ToggleToolButton struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToggleToolButton) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToolButton is a representation of the C record GtkToolButton.
 type ToolButton struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToolButton) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToolItem is a representation of the C record GtkToolItem.
 type ToolItem struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToolItem) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ToolItemGroup is a representation of the C record GtkToolItemGroup.
@@ -8057,6 +11072,10 @@ type ToolItemGroup struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToolItemGroup) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToolPalette is a representation of the C record GtkToolPalette.
 //
 // since 2.20
@@ -8064,9 +11083,17 @@ type ToolPalette struct {
 	native unsafe.Pointer
 }
 
+func (recv *ToolPalette) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Toolbar is a representation of the C record GtkToolbar.
 type Toolbar struct {
 	native unsafe.Pointer
+}
+
+func (recv *Toolbar) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Tooltip is a representation of the C record GtkTooltip.
@@ -8074,9 +11101,17 @@ type Tooltip struct {
 	native unsafe.Pointer
 }
 
+func (recv *Tooltip) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ToplevelAccessible is a representation of the C record GtkToplevelAccessible.
 type ToplevelAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *ToplevelAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeModelFilter is a representation of the C record GtkTreeModelFilter.
@@ -8084,9 +11119,17 @@ type TreeModelFilter struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeModelFilter) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeModelSort is a representation of the C record GtkTreeModelSort.
 type TreeModelSort struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeModelSort) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeSelection is a representation of the C record GtkTreeSelection.
@@ -8094,9 +11137,17 @@ type TreeSelection struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeSelection) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeStore is a representation of the C record GtkTreeStore.
 type TreeStore struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeStore) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeView is a representation of the C record GtkTreeView.
@@ -8104,9 +11155,17 @@ type TreeView struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeView) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TreeViewAccessible is a representation of the C record GtkTreeViewAccessible.
 type TreeViewAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *TreeViewAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TreeViewColumn is a representation of the C record GtkTreeViewColumn.
@@ -8114,9 +11173,17 @@ type TreeViewColumn struct {
 	native unsafe.Pointer
 }
 
+func (recv *TreeViewColumn) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UIManager is a representation of the C record GtkUIManager.
 type UIManager struct {
 	native unsafe.Pointer
+}
+
+func (recv *UIManager) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // VBox is a representation of the C record GtkVBox.
@@ -8124,9 +11191,17 @@ type VBox struct {
 	native unsafe.Pointer
 }
 
+func (recv *VBox) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // VButtonBox is a representation of the C record GtkVButtonBox.
 type VButtonBox struct {
 	native unsafe.Pointer
+}
+
+func (recv *VButtonBox) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // VPaned is a representation of the C record GtkVPaned.
@@ -8134,9 +11209,17 @@ type VPaned struct {
 	native unsafe.Pointer
 }
 
+func (recv *VPaned) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // VScale is a representation of the C record GtkVScale.
 type VScale struct {
 	native unsafe.Pointer
+}
+
+func (recv *VScale) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // VScrollbar is a representation of the C record GtkVScrollbar.
@@ -8144,9 +11227,17 @@ type VScrollbar struct {
 	native unsafe.Pointer
 }
 
+func (recv *VScrollbar) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // VSeparator is a representation of the C record GtkVSeparator.
 type VSeparator struct {
 	native unsafe.Pointer
+}
+
+func (recv *VSeparator) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Viewport is a representation of the C record GtkViewport.
@@ -8154,9 +11245,17 @@ type Viewport struct {
 	native unsafe.Pointer
 }
 
+func (recv *Viewport) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // VolumeButton is a representation of the C record GtkVolumeButton.
 type VolumeButton struct {
 	native unsafe.Pointer
+}
+
+func (recv *VolumeButton) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Widget is a representation of the C record GtkWidget.
@@ -8164,9 +11263,17 @@ type Widget struct {
 	native unsafe.Pointer
 }
 
+func (recv *Widget) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // WidgetAccessible is a representation of the C record GtkWidgetAccessible.
 type WidgetAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *WidgetAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Window is a representation of the C record GtkWindow.
@@ -8174,14 +11281,26 @@ type Window struct {
 	native unsafe.Pointer
 }
 
+func (recv *Window) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // WindowAccessible is a representation of the C record GtkWindowAccessible.
 type WindowAccessible struct {
 	native unsafe.Pointer
 }
 
+func (recv *WindowAccessible) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // WindowGroup is a representation of the C record GtkWindowGroup.
 type WindowGroup struct {
 	native unsafe.Pointer
+}
+
+func (recv *WindowGroup) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Actionable is a representation of the C interface GtkActionable.

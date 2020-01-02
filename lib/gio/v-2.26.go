@@ -1353,12 +1353,12 @@ const ZlibCompressorFormat_raw = ZlibCompressorFormat(2)
 // UNSUPPORTED : g_bus_get : parameter 'callback' is callback
 
 func BusGetFinish(res *AsyncResult) {
-	sys_res := unsafe.Pointer(res)
+	sys_res := res.ToC()
 }
 
 func BusGetSync(busType int, cancellable *Cancellable) {
-	sys_busType := int(busType)
-	sys_cancellable := unsafe.Pointer(cancellable)
+	sys_busType := busType
+	sys_cancellable := cancellable.ToC()
 }
 
 // UNSUPPORTED : g_bus_own_name : parameter 'bus_acquired_handler' is callback
@@ -1366,28 +1366,28 @@ func BusGetSync(busType int, cancellable *Cancellable) {
 // UNSUPPORTED : g_bus_own_name_on_connection : parameter 'name_acquired_handler' is callback
 
 func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string, flags int, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) {
-	sys_connection := unsafe.Pointer(connection)
-	sys_name := string(name)
-	sys_flags := int(flags)
-	sys_nameAcquiredClosure := unsafe.Pointer(nameAcquiredClosure)
-	sys_nameLostClosure := unsafe.Pointer(nameLostClosure)
+	sys_connection := connection.ToC()
+	sys_name := name
+	sys_flags := flags
+	sys_nameAcquiredClosure := nameAcquiredClosure.ToC()
+	sys_nameLostClosure := nameLostClosure.ToC()
 }
 
 func BusOwnNameWithClosures(busType int, name string, flags int, busAcquiredClosure *gobject.Closure, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) {
-	sys_busType := int(busType)
-	sys_name := string(name)
-	sys_flags := int(flags)
-	sys_busAcquiredClosure := unsafe.Pointer(busAcquiredClosure)
-	sys_nameAcquiredClosure := unsafe.Pointer(nameAcquiredClosure)
-	sys_nameLostClosure := unsafe.Pointer(nameLostClosure)
+	sys_busType := busType
+	sys_name := name
+	sys_flags := flags
+	sys_busAcquiredClosure := busAcquiredClosure.ToC()
+	sys_nameAcquiredClosure := nameAcquiredClosure.ToC()
+	sys_nameLostClosure := nameLostClosure.ToC()
 }
 
 func BusUnownName(ownerId uint) {
-	sys_ownerId := uint(ownerId)
+	sys_ownerId := ownerId
 }
 
 func BusUnwatchName(watcherId uint) {
-	sys_watcherId := uint(watcherId)
+	sys_watcherId := watcherId
 }
 
 // UNSUPPORTED : g_bus_watch_name : parameter 'name_appeared_handler' is callback
@@ -1395,46 +1395,46 @@ func BusUnwatchName(watcherId uint) {
 // UNSUPPORTED : g_bus_watch_name_on_connection : parameter 'name_appeared_handler' is callback
 
 func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name string, flags int, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) {
-	sys_connection := unsafe.Pointer(connection)
-	sys_name := string(name)
-	sys_flags := int(flags)
-	sys_nameAppearedClosure := unsafe.Pointer(nameAppearedClosure)
-	sys_nameVanishedClosure := unsafe.Pointer(nameVanishedClosure)
+	sys_connection := connection.ToC()
+	sys_name := name
+	sys_flags := flags
+	sys_nameAppearedClosure := nameAppearedClosure.ToC()
+	sys_nameVanishedClosure := nameVanishedClosure.ToC()
 }
 
 func BusWatchNameWithClosures(busType int, name string, flags int, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) {
-	sys_busType := int(busType)
-	sys_name := string(name)
-	sys_flags := int(flags)
-	sys_nameAppearedClosure := unsafe.Pointer(nameAppearedClosure)
-	sys_nameVanishedClosure := unsafe.Pointer(nameVanishedClosure)
+	sys_busType := busType
+	sys_name := name
+	sys_flags := flags
+	sys_nameAppearedClosure := nameAppearedClosure.ToC()
+	sys_nameVanishedClosure := nameVanishedClosure.ToC()
 }
 
 func ContentTypeCanBeExecutable(type_ string) {
-	sys_type_ := string(type_)
+	sys_type_ := type_
 }
 
 func ContentTypeEquals(type1 string, type2 string) {
-	sys_type1 := string(type1)
-	sys_type2 := string(type2)
+	sys_type1 := type1
+	sys_type2 := type2
 }
 
 func ContentTypeFromMimeType(mimeType string) {
-	sys_mimeType := string(mimeType)
+	sys_mimeType := mimeType
 }
 
 func ContentTypeGetDescription(type_ string) {
-	sys_type_ := string(type_)
+	sys_type_ := type_
 }
 
 func ContentTypeGetIcon(type_ string) {
-	sys_type_ := string(type_)
+	sys_type_ := type_
 }
 
 // UNSUPPORTED : g_content_type_get_mime_dirs : no array length
 
 func ContentTypeGetMimeType(type_ string) {
-	sys_type_ := string(type_)
+	sys_type_ := type_
 }
 
 // UNSUPPORTED : g_content_type_guess : has array param, data
@@ -1442,12 +1442,12 @@ func ContentTypeGetMimeType(type_ string) {
 // UNSUPPORTED : g_content_type_guess_for_tree : no array length
 
 func ContentTypeIsA(type_ string, supertype string) {
-	sys_type_ := string(type_)
-	sys_supertype := string(supertype)
+	sys_type_ := type_
+	sys_supertype := supertype
 }
 
 func ContentTypeIsUnknown(type_ string) {
-	sys_type_ := string(type_)
+	sys_type_ := type_
 }
 
 // UNSUPPORTED : g_content_type_set_mime_dirs : parameter 'dirs' is array parameter without length parameter
@@ -1455,19 +1455,19 @@ func ContentTypeIsUnknown(type_ string) {
 func ContentTypesGetRegistered() {}
 
 func DbusAddressGetForBusSync(busType int, cancellable *Cancellable) {
-	sys_busType := int(busType)
-	sys_cancellable := unsafe.Pointer(cancellable)
+	sys_busType := busType
+	sys_cancellable := cancellable.ToC()
 }
 
 // UNSUPPORTED : g_dbus_address_get_stream : parameter 'callback' is callback
 
 func DbusAddressGetStreamFinish(res *AsyncResult) {
-	sys_res := unsafe.Pointer(res)
+	sys_res := res.ToC()
 }
 
 func DbusAddressGetStreamSync(address string, cancellable *Cancellable) {
-	sys_address := string(address)
-	sys_cancellable := unsafe.Pointer(cancellable)
+	sys_address := address
+	sys_cancellable := cancellable.ToC()
 }
 
 // UNSUPPORTED : g_dbus_annotation_info_lookup : parameter 'annotations' is array parameter without length parameter
@@ -1477,37 +1477,37 @@ func DbusAddressGetStreamSync(address string, cancellable *Cancellable) {
 func DbusGenerateGuid() {}
 
 func DbusIsAddress(string_ string) {
-	sys_string_ := string(string_)
+	sys_string_ := string_
 }
 
 func DbusIsGuid(string_ string) {
-	sys_string_ := string(string_)
+	sys_string_ := string_
 }
 
 func DbusIsInterfaceName(string_ string) {
-	sys_string_ := string(string_)
+	sys_string_ := string_
 }
 
 func DbusIsMemberName(string_ string) {
-	sys_string_ := string(string_)
+	sys_string_ := string_
 }
 
 func DbusIsName(string_ string) {
-	sys_string_ := string(string_)
+	sys_string_ := string_
 }
 
 func DbusIsSupportedAddress(string_ string) {
-	sys_string_ := string(string_)
+	sys_string_ := string_
 }
 
 func DbusIsUniqueName(string_ string) {
-	sys_string_ := string(string_)
+	sys_string_ := string_
 }
 
 // UNSUPPORTED : g_initable_newv : has array param, parameters
 
 func IoErrorFromErrno(errNo int) {
-	sys_errNo := int(errNo)
+	sys_errNo := errNo
 }
 
 func IoErrorQuark() {}
@@ -1545,66 +1545,66 @@ func IoSchedulerCancelAllJobs() {}
 // UNSUPPORTED : g_simple_async_report_take_gerror_in_idle : parameter 'callback' is callback
 
 func UnixIsMountPathSystemInternal(mountPath string) {
-	sys_mountPath := string(mountPath)
+	sys_mountPath := mountPath
 }
 
 func UnixMountAt(mountPath string) {
-	sys_mountPath := string(mountPath)
+	sys_mountPath := mountPath
 }
 
 func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) {
-	sys_mount1 := unsafe.Pointer(mount1)
-	sys_mount2 := unsafe.Pointer(mount2)
+	sys_mount1 := mount1.ToC()
+	sys_mount2 := mount2.ToC()
 }
 
 func UnixMountFree(mountEntry *UnixMountEntry) {
-	sys_mountEntry := unsafe.Pointer(mountEntry)
+	sys_mountEntry := mountEntry.ToC()
 }
 
 func UnixMountGetDevicePath(mountEntry *UnixMountEntry) {
-	sys_mountEntry := unsafe.Pointer(mountEntry)
+	sys_mountEntry := mountEntry.ToC()
 }
 
 func UnixMountGetFsType(mountEntry *UnixMountEntry) {
-	sys_mountEntry := unsafe.Pointer(mountEntry)
+	sys_mountEntry := mountEntry.ToC()
 }
 
 func UnixMountGetMountPath(mountEntry *UnixMountEntry) {
-	sys_mountEntry := unsafe.Pointer(mountEntry)
+	sys_mountEntry := mountEntry.ToC()
 }
 
 func UnixMountGuessCanEject(mountEntry *UnixMountEntry) {
-	sys_mountEntry := unsafe.Pointer(mountEntry)
+	sys_mountEntry := mountEntry.ToC()
 }
 
 func UnixMountGuessIcon(mountEntry *UnixMountEntry) {
-	sys_mountEntry := unsafe.Pointer(mountEntry)
+	sys_mountEntry := mountEntry.ToC()
 }
 
 func UnixMountGuessName(mountEntry *UnixMountEntry) {
-	sys_mountEntry := unsafe.Pointer(mountEntry)
+	sys_mountEntry := mountEntry.ToC()
 }
 
 func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) {
-	sys_mountEntry := unsafe.Pointer(mountEntry)
+	sys_mountEntry := mountEntry.ToC()
 }
 
 func UnixMountIsReadonly(mountEntry *UnixMountEntry) {
-	sys_mountEntry := unsafe.Pointer(mountEntry)
+	sys_mountEntry := mountEntry.ToC()
 }
 
 func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) {
-	sys_mountEntry := unsafe.Pointer(mountEntry)
+	sys_mountEntry := mountEntry.ToC()
 }
 
 func UnixMountPointsChangedSince(time uint64) {
-	sys_time := uint64(time)
+	sys_time := time
 }
 
 func UnixMountPointsGet() {}
 
 func UnixMountsChangedSince(time uint64) {
-	sys_time := uint64(time)
+	sys_time := time
 }
 
 func UnixMountsGet() {}
@@ -1614,9 +1614,17 @@ type ActionEntry struct {
 	native unsafe.Pointer
 }
 
+func (recv *ActionEntry) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AppInfoIface is a representation of the C record GAppInfoIface.
 type AppInfoIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *AppInfoIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AppLaunchContextClass is a representation of the C record GAppLaunchContextClass.
@@ -1624,9 +1632,17 @@ type AppLaunchContextClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *AppLaunchContextClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AppLaunchContextPrivate is a representation of the C record GAppLaunchContextPrivate.
 type AppLaunchContextPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *AppLaunchContextPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ApplicationCommandLinePrivate is a representation of the C record GApplicationCommandLinePrivate.
@@ -1634,9 +1650,17 @@ type ApplicationCommandLinePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ApplicationCommandLinePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ApplicationPrivate is a representation of the C record GApplicationPrivate.
 type ApplicationPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ApplicationPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AsyncInitableIface is a representation of the C record GAsyncInitableIface.
@@ -1646,9 +1670,17 @@ type AsyncInitableIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *AsyncInitableIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AsyncResultIface is a representation of the C record GAsyncResultIface.
 type AsyncResultIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *AsyncResultIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // BufferedInputStreamClass is a representation of the C record GBufferedInputStreamClass.
@@ -1656,9 +1688,17 @@ type BufferedInputStreamClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *BufferedInputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // BufferedInputStreamPrivate is a representation of the C record GBufferedInputStreamPrivate.
 type BufferedInputStreamPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *BufferedInputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // BufferedOutputStreamClass is a representation of the C record GBufferedOutputStreamClass.
@@ -1666,9 +1706,17 @@ type BufferedOutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *BufferedOutputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // BufferedOutputStreamPrivate is a representation of the C record GBufferedOutputStreamPrivate.
 type BufferedOutputStreamPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *BufferedOutputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CancellableClass is a representation of the C record GCancellableClass.
@@ -1676,14 +1724,26 @@ type CancellableClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *CancellableClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CancellablePrivate is a representation of the C record GCancellablePrivate.
 type CancellablePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *CancellablePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CharsetConverterClass is a representation of the C record GCharsetConverterClass.
 type CharsetConverterClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *CharsetConverterClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ConverterIface is a representation of the C record GConverterIface.
@@ -1693,9 +1753,17 @@ type ConverterIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *ConverterIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ConverterInputStreamClass is a representation of the C record GConverterInputStreamClass.
 type ConverterInputStreamClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ConverterInputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ConverterInputStreamPrivate is a representation of the C record GConverterInputStreamPrivate.
@@ -1703,14 +1771,26 @@ type ConverterInputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ConverterInputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ConverterOutputStreamClass is a representation of the C record GConverterOutputStreamClass.
 type ConverterOutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ConverterOutputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ConverterOutputStreamPrivate is a representation of the C record GConverterOutputStreamPrivate.
 type ConverterOutputStreamPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ConverterOutputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // CredentialsClass is a representation of the C record GCredentialsClass.
@@ -1720,11 +1800,19 @@ type CredentialsClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *CredentialsClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusAnnotationInfo is a representation of the C record GDBusAnnotationInfo.
 //
 // since 2.26
 type DBusAnnotationInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *DBusAnnotationInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DBusArgInfo is a representation of the C record GDBusArgInfo.
@@ -1734,11 +1822,19 @@ type DBusArgInfo struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusArgInfo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusErrorEntry is a representation of the C record GDBusErrorEntry.
 //
 // since 2.26
 type DBusErrorEntry struct {
 	native unsafe.Pointer
+}
+
+func (recv *DBusErrorEntry) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DBusInterfaceInfo is a representation of the C record GDBusInterfaceInfo.
@@ -1748,9 +1844,17 @@ type DBusInterfaceInfo struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusInterfaceInfo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusInterfaceSkeletonPrivate is a representation of the C record GDBusInterfaceSkeletonPrivate.
 type DBusInterfaceSkeletonPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *DBusInterfaceSkeletonPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DBusInterfaceVTable is a representation of the C record GDBusInterfaceVTable.
@@ -1760,11 +1864,19 @@ type DBusInterfaceVTable struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusInterfaceVTable) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusMethodInfo is a representation of the C record GDBusMethodInfo.
 //
 // since 2.26
 type DBusMethodInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *DBusMethodInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DBusNodeInfo is a representation of the C record GDBusNodeInfo.
@@ -1774,9 +1886,17 @@ type DBusNodeInfo struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusNodeInfo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusObjectManagerClientPrivate is a representation of the C record GDBusObjectManagerClientPrivate.
 type DBusObjectManagerClientPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *DBusObjectManagerClientPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DBusObjectManagerServerPrivate is a representation of the C record GDBusObjectManagerServerPrivate.
@@ -1784,14 +1904,26 @@ type DBusObjectManagerServerPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusObjectManagerServerPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusObjectProxyPrivate is a representation of the C record GDBusObjectProxyPrivate.
 type DBusObjectProxyPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusObjectProxyPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusObjectSkeletonPrivate is a representation of the C record GDBusObjectSkeletonPrivate.
 type DBusObjectSkeletonPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *DBusObjectSkeletonPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DBusPropertyInfo is a representation of the C record GDBusPropertyInfo.
@@ -1801,6 +1933,10 @@ type DBusPropertyInfo struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusPropertyInfo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusProxyClass is a representation of the C record GDBusProxyClass.
 //
 // since 2.26
@@ -1808,9 +1944,17 @@ type DBusProxyClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusProxyClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusProxyPrivate is a representation of the C record GDBusProxyPrivate.
 type DBusProxyPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *DBusProxyPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DBusSignalInfo is a representation of the C record GDBusSignalInfo.
@@ -1820,6 +1964,10 @@ type DBusSignalInfo struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusSignalInfo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusSubtreeVTable is a representation of the C record GDBusSubtreeVTable.
 //
 // since 2.26
@@ -1827,9 +1975,17 @@ type DBusSubtreeVTable struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusSubtreeVTable) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DataInputStreamClass is a representation of the C record GDataInputStreamClass.
 type DataInputStreamClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *DataInputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DataInputStreamPrivate is a representation of the C record GDataInputStreamPrivate.
@@ -1837,9 +1993,17 @@ type DataInputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *DataInputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DataOutputStreamClass is a representation of the C record GDataOutputStreamClass.
 type DataOutputStreamClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *DataOutputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DataOutputStreamPrivate is a representation of the C record GDataOutputStreamPrivate.
@@ -1847,9 +2011,17 @@ type DataOutputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *DataOutputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DesktopAppInfoClass is a representation of the C record GDesktopAppInfoClass.
 type DesktopAppInfoClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *DesktopAppInfoClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DesktopAppInfoLookupIface is a representation of the C record GDesktopAppInfoLookupIface.
@@ -1857,9 +2029,17 @@ type DesktopAppInfoLookupIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *DesktopAppInfoLookupIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DriveIface is a representation of the C record GDriveIface.
 type DriveIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *DriveIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // EmblemClass is a representation of the C record GEmblemClass.
@@ -1867,9 +2047,17 @@ type EmblemClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *EmblemClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EmblemedIconClass is a representation of the C record GEmblemedIconClass.
 type EmblemedIconClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *EmblemedIconClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // EmblemedIconPrivate is a representation of the C record GEmblemedIconPrivate.
@@ -1877,9 +2065,17 @@ type EmblemedIconPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *EmblemedIconPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileAttributeInfo is a representation of the C record GFileAttributeInfo.
 type FileAttributeInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileAttributeInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileAttributeInfoList is a representation of the C record GFileAttributeInfoList.
@@ -1887,9 +2083,17 @@ type FileAttributeInfoList struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileAttributeInfoList) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileAttributeMatcher is a representation of the C record GFileAttributeMatcher.
 type FileAttributeMatcher struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileAttributeMatcher) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileDescriptorBasedIface is a representation of the C record GFileDescriptorBasedIface.
@@ -1897,9 +2101,17 @@ type FileDescriptorBasedIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileDescriptorBasedIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileEnumeratorClass is a representation of the C record GFileEnumeratorClass.
 type FileEnumeratorClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileEnumeratorClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileEnumeratorPrivate is a representation of the C record GFileEnumeratorPrivate.
@@ -1907,9 +2119,17 @@ type FileEnumeratorPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileEnumeratorPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileIOStreamClass is a representation of the C record GFileIOStreamClass.
 type FileIOStreamClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileIOStreamClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileIOStreamPrivate is a representation of the C record GFileIOStreamPrivate.
@@ -1917,9 +2137,17 @@ type FileIOStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileIOStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileIconClass is a representation of the C record GFileIconClass.
 type FileIconClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileIconClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileIface is a representation of the C record GFileIface.
@@ -1927,9 +2155,17 @@ type FileIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileInfoClass is a representation of the C record GFileInfoClass.
 type FileInfoClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileInfoClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileInputStreamClass is a representation of the C record GFileInputStreamClass.
@@ -1937,9 +2173,17 @@ type FileInputStreamClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileInputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileInputStreamPrivate is a representation of the C record GFileInputStreamPrivate.
 type FileInputStreamPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileInputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileMonitorClass is a representation of the C record GFileMonitorClass.
@@ -1947,9 +2191,17 @@ type FileMonitorClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileMonitorClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileMonitorPrivate is a representation of the C record GFileMonitorPrivate.
 type FileMonitorPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileMonitorPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileOutputStreamClass is a representation of the C record GFileOutputStreamClass.
@@ -1957,9 +2209,17 @@ type FileOutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileOutputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileOutputStreamPrivate is a representation of the C record GFileOutputStreamPrivate.
 type FileOutputStreamPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileOutputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FilenameCompleterClass is a representation of the C record GFilenameCompleterClass.
@@ -1967,9 +2227,17 @@ type FilenameCompleterClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FilenameCompleterClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FilterInputStreamClass is a representation of the C record GFilterInputStreamClass.
 type FilterInputStreamClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FilterInputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FilterOutputStreamClass is a representation of the C record GFilterOutputStreamClass.
@@ -1977,9 +2245,17 @@ type FilterOutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *FilterOutputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IOExtension is a representation of the C record GIOExtension.
 type IOExtension struct {
 	native unsafe.Pointer
+}
+
+func (recv *IOExtension) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IOExtensionPoint is a representation of the C record GIOExtensionPoint.
@@ -1987,9 +2263,17 @@ type IOExtensionPoint struct {
 	native unsafe.Pointer
 }
 
+func (recv *IOExtensionPoint) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IOModuleClass is a representation of the C record GIOModuleClass.
 type IOModuleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *IOModuleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IOSchedulerJob is a representation of the C record GIOSchedulerJob.
@@ -1997,9 +2281,17 @@ type IOSchedulerJob struct {
 	native unsafe.Pointer
 }
 
+func (recv *IOSchedulerJob) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IOStreamAdapter is a representation of the C record GIOStreamAdapter.
 type IOStreamAdapter struct {
 	native unsafe.Pointer
+}
+
+func (recv *IOStreamAdapter) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IOStreamClass is a representation of the C record GIOStreamClass.
@@ -2007,9 +2299,17 @@ type IOStreamClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *IOStreamClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IOStreamPrivate is a representation of the C record GIOStreamPrivate.
 type IOStreamPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *IOStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IconIface is a representation of the C record GIconIface.
@@ -2017,9 +2317,17 @@ type IconIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *IconIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // InetAddressClass is a representation of the C record GInetAddressClass.
 type InetAddressClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *InetAddressClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // InetAddressMaskClass is a representation of the C record GInetAddressMaskClass.
@@ -2027,9 +2335,17 @@ type InetAddressMaskClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *InetAddressMaskClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // InetAddressMaskPrivate is a representation of the C record GInetAddressMaskPrivate.
 type InetAddressMaskPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *InetAddressMaskPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // InetAddressPrivate is a representation of the C record GInetAddressPrivate.
@@ -2037,14 +2353,26 @@ type InetAddressPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *InetAddressPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // InetSocketAddressClass is a representation of the C record GInetSocketAddressClass.
 type InetSocketAddressClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *InetSocketAddressClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // InetSocketAddressPrivate is a representation of the C record GInetSocketAddressPrivate.
 type InetSocketAddressPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *InetSocketAddressPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // InitableIface is a representation of the C record GInitableIface.
@@ -2054,14 +2382,26 @@ type InitableIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *InitableIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // InputStreamClass is a representation of the C record GInputStreamClass.
 type InputStreamClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *InputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // InputStreamPrivate is a representation of the C record GInputStreamPrivate.
 type InputStreamPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *InputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // InputVector is a representation of the C record GInputVector.
@@ -2071,9 +2411,17 @@ type InputVector struct {
 	native unsafe.Pointer
 }
 
+func (recv *InputVector) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ListStoreClass is a representation of the C record GListStoreClass.
 type ListStoreClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ListStoreClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LoadableIconIface is a representation of the C record GLoadableIconIface.
@@ -2081,9 +2429,17 @@ type LoadableIconIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *LoadableIconIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MemoryInputStreamClass is a representation of the C record GMemoryInputStreamClass.
 type MemoryInputStreamClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MemoryInputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MemoryInputStreamPrivate is a representation of the C record GMemoryInputStreamPrivate.
@@ -2091,9 +2447,17 @@ type MemoryInputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MemoryInputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MemoryOutputStreamClass is a representation of the C record GMemoryOutputStreamClass.
 type MemoryOutputStreamClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MemoryOutputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MemoryOutputStreamPrivate is a representation of the C record GMemoryOutputStreamPrivate.
@@ -2101,9 +2465,17 @@ type MemoryOutputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MemoryOutputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuAttributeIterClass is a representation of the C record GMenuAttributeIterClass.
 type MenuAttributeIterClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuAttributeIterClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuAttributeIterPrivate is a representation of the C record GMenuAttributeIterPrivate.
@@ -2111,9 +2483,17 @@ type MenuAttributeIterPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuAttributeIterPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuLinkIterClass is a representation of the C record GMenuLinkIterClass.
 type MenuLinkIterClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuLinkIterClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuLinkIterPrivate is a representation of the C record GMenuLinkIterPrivate.
@@ -2121,9 +2501,17 @@ type MenuLinkIterPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuLinkIterPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MenuModelClass is a representation of the C record GMenuModelClass.
 type MenuModelClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *MenuModelClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MenuModelPrivate is a representation of the C record GMenuModelPrivate.
@@ -2131,9 +2519,17 @@ type MenuModelPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *MenuModelPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MountIface is a representation of the C record GMountIface.
 type MountIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *MountIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MountOperationClass is a representation of the C record GMountOperationClass.
@@ -2141,9 +2537,17 @@ type MountOperationClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *MountOperationClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MountOperationPrivate is a representation of the C record GMountOperationPrivate.
 type MountOperationPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *MountOperationPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : NativeSocketAddressClass : blacklisted
@@ -2155,9 +2559,17 @@ type NativeVolumeMonitorClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *NativeVolumeMonitorClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // NetworkAddressClass is a representation of the C record GNetworkAddressClass.
 type NetworkAddressClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *NetworkAddressClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NetworkAddressPrivate is a representation of the C record GNetworkAddressPrivate.
@@ -2165,9 +2577,17 @@ type NetworkAddressPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *NetworkAddressPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // NetworkServiceClass is a representation of the C record GNetworkServiceClass.
 type NetworkServiceClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *NetworkServiceClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NetworkServicePrivate is a representation of the C record GNetworkServicePrivate.
@@ -2175,14 +2595,26 @@ type NetworkServicePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *NetworkServicePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // OutputStreamClass is a representation of the C record GOutputStreamClass.
 type OutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *OutputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // OutputStreamPrivate is a representation of the C record GOutputStreamPrivate.
 type OutputStreamPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *OutputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // OutputVector is a representation of the C record GOutputVector.
@@ -2192,14 +2624,26 @@ type OutputVector struct {
 	native unsafe.Pointer
 }
 
+func (recv *OutputVector) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PermissionClass is a representation of the C record GPermissionClass.
 type PermissionClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *PermissionClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PermissionPrivate is a representation of the C record GPermissionPrivate.
 type PermissionPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *PermissionPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ProxyAddressClass is a representation of the C record GProxyAddressClass.
@@ -2209,9 +2653,17 @@ type ProxyAddressClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ProxyAddressClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ProxyAddressEnumeratorClass is a representation of the C record GProxyAddressEnumeratorClass.
 type ProxyAddressEnumeratorClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ProxyAddressEnumeratorClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ProxyAddressEnumeratorPrivate is a representation of the C record GProxyAddressEnumeratorPrivate.
@@ -2219,9 +2671,17 @@ type ProxyAddressEnumeratorPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ProxyAddressEnumeratorPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ProxyAddressPrivate is a representation of the C record GProxyAddressPrivate.
 type ProxyAddressPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *ProxyAddressPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ProxyInterface is a representation of the C record GProxyInterface.
@@ -2231,9 +2691,17 @@ type ProxyInterface struct {
 	native unsafe.Pointer
 }
 
+func (recv *ProxyInterface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ProxyResolverInterface is a representation of the C record GProxyResolverInterface.
 type ProxyResolverInterface struct {
 	native unsafe.Pointer
+}
+
+func (recv *ProxyResolverInterface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ResolverClass is a representation of the C record GResolverClass.
@@ -2241,14 +2709,26 @@ type ResolverClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ResolverClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ResolverPrivate is a representation of the C record GResolverPrivate.
 type ResolverPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ResolverPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SeekableIface is a representation of the C record GSeekableIface.
 type SeekableIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *SeekableIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : SettingsBackendClass : blacklisted
@@ -2260,9 +2740,17 @@ type SettingsClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *SettingsClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SettingsPrivate is a representation of the C record GSettingsPrivate.
 type SettingsPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *SettingsPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SettingsSchemaKey is a representation of the C record GSettingsSchemaKey.
@@ -2270,9 +2758,17 @@ type SettingsSchemaKey struct {
 	native unsafe.Pointer
 }
 
+func (recv *SettingsSchemaKey) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SimpleActionGroupClass is a representation of the C record GSimpleActionGroupClass.
 type SimpleActionGroupClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SimpleActionGroupClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SimpleActionGroupPrivate is a representation of the C record GSimpleActionGroupPrivate.
@@ -2280,9 +2776,17 @@ type SimpleActionGroupPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SimpleActionGroupPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SimpleAsyncResultClass is a representation of the C record GSimpleAsyncResultClass.
 type SimpleAsyncResultClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SimpleAsyncResultClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SimpleProxyResolverClass is a representation of the C record GSimpleProxyResolverClass.
@@ -2290,9 +2794,17 @@ type SimpleProxyResolverClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *SimpleProxyResolverClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SimpleProxyResolverPrivate is a representation of the C record GSimpleProxyResolverPrivate.
 type SimpleProxyResolverPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *SimpleProxyResolverPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketAddressClass is a representation of the C record GSocketAddressClass.
@@ -2300,9 +2812,17 @@ type SocketAddressClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketAddressClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketAddressEnumeratorClass is a representation of the C record GSocketAddressEnumeratorClass.
 type SocketAddressEnumeratorClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SocketAddressEnumeratorClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketClass is a representation of the C record GSocketClass.
@@ -2310,9 +2830,17 @@ type SocketClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketClientClass is a representation of the C record GSocketClientClass.
 type SocketClientClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SocketClientClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketClientPrivate is a representation of the C record GSocketClientPrivate.
@@ -2320,9 +2848,17 @@ type SocketClientPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketClientPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketConnectableIface is a representation of the C record GSocketConnectableIface.
 type SocketConnectableIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *SocketConnectableIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketConnectionClass is a representation of the C record GSocketConnectionClass.
@@ -2330,9 +2866,17 @@ type SocketConnectionClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketConnectionClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketConnectionPrivate is a representation of the C record GSocketConnectionPrivate.
 type SocketConnectionPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *SocketConnectionPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketControlMessageClass is a representation of the C record GSocketControlMessageClass.
@@ -2340,9 +2884,17 @@ type SocketControlMessageClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketControlMessageClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketControlMessagePrivate is a representation of the C record GSocketControlMessagePrivate.
 type SocketControlMessagePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *SocketControlMessagePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketListenerClass is a representation of the C record GSocketListenerClass.
@@ -2350,9 +2902,17 @@ type SocketListenerClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketListenerClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketListenerPrivate is a representation of the C record GSocketListenerPrivate.
 type SocketListenerPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *SocketListenerPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketPrivate is a representation of the C record GSocketPrivate.
@@ -2360,9 +2920,17 @@ type SocketPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketServiceClass is a representation of the C record GSocketServiceClass.
 type SocketServiceClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SocketServiceClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketServicePrivate is a representation of the C record GSocketServicePrivate.
@@ -2370,9 +2938,17 @@ type SocketServicePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketServicePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SrvTarget is a representation of the C record GSrvTarget.
 type SrvTarget struct {
 	native unsafe.Pointer
+}
+
+func (recv *SrvTarget) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StaticResource is a representation of the C record GStaticResource.
@@ -2380,9 +2956,17 @@ type StaticResource struct {
 	native unsafe.Pointer
 }
 
+func (recv *StaticResource) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TaskClass is a representation of the C record GTaskClass.
 type TaskClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TaskClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TcpConnectionClass is a representation of the C record GTcpConnectionClass.
@@ -2390,9 +2974,17 @@ type TcpConnectionClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *TcpConnectionClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TcpConnectionPrivate is a representation of the C record GTcpConnectionPrivate.
 type TcpConnectionPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *TcpConnectionPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TcpWrapperConnectionClass is a representation of the C record GTcpWrapperConnectionClass.
@@ -2400,9 +2992,17 @@ type TcpWrapperConnectionClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *TcpWrapperConnectionClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TcpWrapperConnectionPrivate is a representation of the C record GTcpWrapperConnectionPrivate.
 type TcpWrapperConnectionPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *TcpWrapperConnectionPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ThemedIconClass is a representation of the C record GThemedIconClass.
@@ -2410,9 +3010,17 @@ type ThemedIconClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ThemedIconClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ThreadedSocketServiceClass is a representation of the C record GThreadedSocketServiceClass.
 type ThreadedSocketServiceClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ThreadedSocketServiceClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ThreadedSocketServicePrivate is a representation of the C record GThreadedSocketServicePrivate.
@@ -2420,14 +3028,26 @@ type ThreadedSocketServicePrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *ThreadedSocketServicePrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TlsCertificateClass is a representation of the C record GTlsCertificateClass.
 type TlsCertificateClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *TlsCertificateClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TlsCertificatePrivate is a representation of the C record GTlsCertificatePrivate.
 type TlsCertificatePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *TlsCertificatePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TlsClientConnectionInterface is a representation of the C record GTlsClientConnectionInterface.
@@ -2437,9 +3057,17 @@ type TlsClientConnectionInterface struct {
 	native unsafe.Pointer
 }
 
+func (recv *TlsClientConnectionInterface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TlsConnectionClass is a representation of the C record GTlsConnectionClass.
 type TlsConnectionClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TlsConnectionClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TlsConnectionPrivate is a representation of the C record GTlsConnectionPrivate.
@@ -2447,9 +3075,17 @@ type TlsConnectionPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *TlsConnectionPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TlsDatabasePrivate is a representation of the C record GTlsDatabasePrivate.
 type TlsDatabasePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *TlsDatabasePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TlsFileDatabaseInterface is a representation of the C record GTlsFileDatabaseInterface.
@@ -2457,9 +3093,17 @@ type TlsFileDatabaseInterface struct {
 	native unsafe.Pointer
 }
 
+func (recv *TlsFileDatabaseInterface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TlsInteractionPrivate is a representation of the C record GTlsInteractionPrivate.
 type TlsInteractionPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *TlsInteractionPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TlsPasswordClass is a representation of the C record GTlsPasswordClass.
@@ -2467,9 +3111,17 @@ type TlsPasswordClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *TlsPasswordClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TlsPasswordPrivate is a representation of the C record GTlsPasswordPrivate.
 type TlsPasswordPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *TlsPasswordPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TlsServerConnectionInterface is a representation of the C record GTlsServerConnectionInterface.
@@ -2479,14 +3131,26 @@ type TlsServerConnectionInterface struct {
 	native unsafe.Pointer
 }
 
+func (recv *TlsServerConnectionInterface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixConnectionClass is a representation of the C record GUnixConnectionClass.
 type UnixConnectionClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixConnectionClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixConnectionPrivate is a representation of the C record GUnixConnectionPrivate.
 type UnixConnectionPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *UnixConnectionPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixCredentialsMessageClass is a representation of the C record GUnixCredentialsMessageClass.
@@ -2496,9 +3160,17 @@ type UnixCredentialsMessageClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixCredentialsMessageClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixCredentialsMessagePrivate is a representation of the C record GUnixCredentialsMessagePrivate.
 type UnixCredentialsMessagePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *UnixCredentialsMessagePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixFDListClass is a representation of the C record GUnixFDListClass.
@@ -2506,9 +3178,17 @@ type UnixFDListClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixFDListClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixFDListPrivate is a representation of the C record GUnixFDListPrivate.
 type UnixFDListPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *UnixFDListPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixFDMessageClass is a representation of the C record GUnixFDMessageClass.
@@ -2516,9 +3196,17 @@ type UnixFDMessageClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixFDMessageClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixFDMessagePrivate is a representation of the C record GUnixFDMessagePrivate.
 type UnixFDMessagePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *UnixFDMessagePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixInputStreamClass is a representation of the C record GUnixInputStreamClass.
@@ -2526,9 +3214,17 @@ type UnixInputStreamClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixInputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixInputStreamPrivate is a representation of the C record GUnixInputStreamPrivate.
 type UnixInputStreamPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *UnixInputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixMountEntry is a representation of the C record GUnixMountEntry.
@@ -2536,9 +3232,17 @@ type UnixMountEntry struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixMountEntry) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixMountMonitorClass is a representation of the C record GUnixMountMonitorClass.
 type UnixMountMonitorClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *UnixMountMonitorClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixMountPoint is a representation of the C record GUnixMountPoint.
@@ -2546,9 +3250,17 @@ type UnixMountPoint struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixMountPoint) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixOutputStreamClass is a representation of the C record GUnixOutputStreamClass.
 type UnixOutputStreamClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *UnixOutputStreamClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixOutputStreamPrivate is a representation of the C record GUnixOutputStreamPrivate.
@@ -2556,9 +3268,17 @@ type UnixOutputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixOutputStreamPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixSocketAddressClass is a representation of the C record GUnixSocketAddressClass.
 type UnixSocketAddressClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *UnixSocketAddressClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixSocketAddressPrivate is a representation of the C record GUnixSocketAddressPrivate.
@@ -2566,9 +3286,17 @@ type UnixSocketAddressPrivate struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixSocketAddressPrivate) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // VfsClass is a representation of the C record GVfsClass.
 type VfsClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *VfsClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // VolumeIface is a representation of the C record GVolumeIface.
@@ -2576,9 +3304,17 @@ type VolumeIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *VolumeIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // VolumeMonitorClass is a representation of the C record GVolumeMonitorClass.
 type VolumeMonitorClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *VolumeMonitorClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ZlibCompressorClass is a representation of the C record GZlibCompressorClass.
@@ -2586,9 +3322,17 @@ type ZlibCompressorClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ZlibCompressorClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ZlibDecompressorClass is a representation of the C record GZlibDecompressorClass.
 type ZlibDecompressorClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ZlibDecompressorClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AppLaunchContext is a representation of the C record GAppLaunchContext.
@@ -2596,9 +3340,17 @@ type AppLaunchContext struct {
 	native unsafe.Pointer
 }
 
+func (recv *AppLaunchContext) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ApplicationCommandLine is a representation of the C record GApplicationCommandLine.
 type ApplicationCommandLine struct {
 	native unsafe.Pointer
+}
+
+func (recv *ApplicationCommandLine) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // BufferedInputStream is a representation of the C record GBufferedInputStream.
@@ -2606,9 +3358,17 @@ type BufferedInputStream struct {
 	native unsafe.Pointer
 }
 
+func (recv *BufferedInputStream) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // BufferedOutputStream is a representation of the C record GBufferedOutputStream.
 type BufferedOutputStream struct {
 	native unsafe.Pointer
+}
+
+func (recv *BufferedOutputStream) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Cancellable is a representation of the C record GCancellable.
@@ -2616,9 +3376,17 @@ type Cancellable struct {
 	native unsafe.Pointer
 }
 
+func (recv *Cancellable) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // CharsetConverter is a representation of the C record GCharsetConverter.
 type CharsetConverter struct {
 	native unsafe.Pointer
+}
+
+func (recv *CharsetConverter) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ConverterInputStream is a representation of the C record GConverterInputStream.
@@ -2626,9 +3394,17 @@ type ConverterInputStream struct {
 	native unsafe.Pointer
 }
 
+func (recv *ConverterInputStream) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ConverterOutputStream is a representation of the C record GConverterOutputStream.
 type ConverterOutputStream struct {
 	native unsafe.Pointer
+}
+
+func (recv *ConverterOutputStream) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Credentials is a representation of the C record GCredentials.
@@ -2638,9 +3414,17 @@ type Credentials struct {
 	native unsafe.Pointer
 }
 
+func (recv *Credentials) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusActionGroup is a representation of the C record GDBusActionGroup.
 type DBusActionGroup struct {
 	native unsafe.Pointer
+}
+
+func (recv *DBusActionGroup) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DBusAuthObserver is a representation of the C record GDBusAuthObserver.
@@ -2650,6 +3434,10 @@ type DBusAuthObserver struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusAuthObserver) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusConnection is a representation of the C record GDBusConnection.
 //
 // since 2.26
@@ -2657,9 +3445,17 @@ type DBusConnection struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusConnection) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusMenuModel is a representation of the C record GDBusMenuModel.
 type DBusMenuModel struct {
 	native unsafe.Pointer
+}
+
+func (recv *DBusMenuModel) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DBusMessage is a representation of the C record GDBusMessage.
@@ -2669,11 +3465,19 @@ type DBusMessage struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusMessage) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusMethodInvocation is a representation of the C record GDBusMethodInvocation.
 //
 // since 2.26
 type DBusMethodInvocation struct {
 	native unsafe.Pointer
+}
+
+func (recv *DBusMethodInvocation) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DBusProxy is a representation of the C record GDBusProxy.
@@ -2683,6 +3487,10 @@ type DBusProxy struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusProxy) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DBusServer is a representation of the C record GDBusServer.
 //
 // since 2.26
@@ -2690,9 +3498,17 @@ type DBusServer struct {
 	native unsafe.Pointer
 }
 
+func (recv *DBusServer) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DataInputStream is a representation of the C record GDataInputStream.
 type DataInputStream struct {
 	native unsafe.Pointer
+}
+
+func (recv *DataInputStream) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DataOutputStream is a representation of the C record GDataOutputStream.
@@ -2700,9 +3516,17 @@ type DataOutputStream struct {
 	native unsafe.Pointer
 }
 
+func (recv *DataOutputStream) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DesktopAppInfo is a representation of the C record GDesktopAppInfo.
 type DesktopAppInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *DesktopAppInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Emblem is a representation of the C record GEmblem.
@@ -2710,14 +3534,26 @@ type Emblem struct {
 	native unsafe.Pointer
 }
 
+func (recv *Emblem) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EmblemedIcon is a representation of the C record GEmblemedIcon.
 type EmblemedIcon struct {
 	native unsafe.Pointer
 }
 
+func (recv *EmblemedIcon) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileEnumerator is a representation of the C record GFileEnumerator.
 type FileEnumerator struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileEnumerator) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileIOStream is a representation of the C record GFileIOStream.
@@ -2727,9 +3563,17 @@ type FileIOStream struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileIOStream) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileIcon is a representation of the C record GFileIcon.
 type FileIcon struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileIcon) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileInfo is a representation of the C record GFileInfo.
@@ -2737,9 +3581,17 @@ type FileInfo struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileInfo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileInputStream is a representation of the C record GFileInputStream.
 type FileInputStream struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileInputStream) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FileMonitor is a representation of the C record GFileMonitor.
@@ -2747,9 +3599,17 @@ type FileMonitor struct {
 	native unsafe.Pointer
 }
 
+func (recv *FileMonitor) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FileOutputStream is a representation of the C record GFileOutputStream.
 type FileOutputStream struct {
 	native unsafe.Pointer
+}
+
+func (recv *FileOutputStream) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FilenameCompleter is a representation of the C record GFilenameCompleter.
@@ -2757,9 +3617,17 @@ type FilenameCompleter struct {
 	native unsafe.Pointer
 }
 
+func (recv *FilenameCompleter) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FilterInputStream is a representation of the C record GFilterInputStream.
 type FilterInputStream struct {
 	native unsafe.Pointer
+}
+
+func (recv *FilterInputStream) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FilterOutputStream is a representation of the C record GFilterOutputStream.
@@ -2767,9 +3635,17 @@ type FilterOutputStream struct {
 	native unsafe.Pointer
 }
 
+func (recv *FilterOutputStream) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IOModule is a representation of the C record GIOModule.
 type IOModule struct {
 	native unsafe.Pointer
+}
+
+func (recv *IOModule) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IOStream is a representation of the C record GIOStream.
@@ -2779,9 +3655,17 @@ type IOStream struct {
 	native unsafe.Pointer
 }
 
+func (recv *IOStream) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // InetAddress is a representation of the C record GInetAddress.
 type InetAddress struct {
 	native unsafe.Pointer
+}
+
+func (recv *InetAddress) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // InetSocketAddress is a representation of the C record GInetSocketAddress.
@@ -2789,9 +3673,17 @@ type InetSocketAddress struct {
 	native unsafe.Pointer
 }
 
+func (recv *InetSocketAddress) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // InputStream is a representation of the C record GInputStream.
 type InputStream struct {
 	native unsafe.Pointer
+}
+
+func (recv *InputStream) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ListStore is a representation of the C record GListStore.
@@ -2799,9 +3691,17 @@ type ListStore struct {
 	native unsafe.Pointer
 }
 
+func (recv *ListStore) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MemoryInputStream is a representation of the C record GMemoryInputStream.
 type MemoryInputStream struct {
 	native unsafe.Pointer
+}
+
+func (recv *MemoryInputStream) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MemoryOutputStream is a representation of the C record GMemoryOutputStream.
@@ -2809,9 +3709,17 @@ type MemoryOutputStream struct {
 	native unsafe.Pointer
 }
 
+func (recv *MemoryOutputStream) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MountOperation is a representation of the C record GMountOperation.
 type MountOperation struct {
 	native unsafe.Pointer
+}
+
+func (recv *MountOperation) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NativeSocketAddress is a representation of the C record GNativeSocketAddress.
@@ -2819,9 +3727,17 @@ type NativeSocketAddress struct {
 	native unsafe.Pointer
 }
 
+func (recv *NativeSocketAddress) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // NativeVolumeMonitor is a representation of the C record GNativeVolumeMonitor.
 type NativeVolumeMonitor struct {
 	native unsafe.Pointer
+}
+
+func (recv *NativeVolumeMonitor) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NetworkAddress is a representation of the C record GNetworkAddress.
@@ -2829,9 +3745,17 @@ type NetworkAddress struct {
 	native unsafe.Pointer
 }
 
+func (recv *NetworkAddress) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // NetworkService is a representation of the C record GNetworkService.
 type NetworkService struct {
 	native unsafe.Pointer
+}
+
+func (recv *NetworkService) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // OutputStream is a representation of the C record GOutputStream.
@@ -2839,9 +3763,17 @@ type OutputStream struct {
 	native unsafe.Pointer
 }
 
+func (recv *OutputStream) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Permission is a representation of the C record GPermission.
 type Permission struct {
 	native unsafe.Pointer
+}
+
+func (recv *Permission) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ProxyAddress is a representation of the C record GProxyAddress.
@@ -2851,9 +3783,17 @@ type ProxyAddress struct {
 	native unsafe.Pointer
 }
 
+func (recv *ProxyAddress) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ProxyAddressEnumerator is a representation of the C record GProxyAddressEnumerator.
 type ProxyAddressEnumerator struct {
 	native unsafe.Pointer
+}
+
+func (recv *ProxyAddressEnumerator) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Resolver is a representation of the C record GResolver.
@@ -2861,9 +3801,17 @@ type Resolver struct {
 	native unsafe.Pointer
 }
 
+func (recv *Resolver) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Settings is a representation of the C record GSettings.
 type Settings struct {
 	native unsafe.Pointer
+}
+
+func (recv *Settings) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SettingsBackend is a representation of the C record GSettingsBackend.
@@ -2871,9 +3819,17 @@ type SettingsBackend struct {
 	native unsafe.Pointer
 }
 
+func (recv *SettingsBackend) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SimpleAction is a representation of the C record GSimpleAction.
 type SimpleAction struct {
 	native unsafe.Pointer
+}
+
+func (recv *SimpleAction) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SimpleAsyncResult is a representation of the C record GSimpleAsyncResult.
@@ -2881,9 +3837,17 @@ type SimpleAsyncResult struct {
 	native unsafe.Pointer
 }
 
+func (recv *SimpleAsyncResult) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SimplePermission is a representation of the C record GSimplePermission.
 type SimplePermission struct {
 	native unsafe.Pointer
+}
+
+func (recv *SimplePermission) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Socket is a representation of the C record GSocket.
@@ -2893,14 +3857,26 @@ type Socket struct {
 	native unsafe.Pointer
 }
 
+func (recv *Socket) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketAddress is a representation of the C record GSocketAddress.
 type SocketAddress struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketAddress) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketAddressEnumerator is a representation of the C record GSocketAddressEnumerator.
 type SocketAddressEnumerator struct {
 	native unsafe.Pointer
+}
+
+func (recv *SocketAddressEnumerator) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketClient is a representation of the C record GSocketClient.
@@ -2910,11 +3886,19 @@ type SocketClient struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketClient) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketConnection is a representation of the C record GSocketConnection.
 //
 // since 2.22
 type SocketConnection struct {
 	native unsafe.Pointer
+}
+
+func (recv *SocketConnection) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketControlMessage is a representation of the C record GSocketControlMessage.
@@ -2924,11 +3908,19 @@ type SocketControlMessage struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketControlMessage) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketListener is a representation of the C record GSocketListener.
 //
 // since 2.22
 type SocketListener struct {
 	native unsafe.Pointer
+}
+
+func (recv *SocketListener) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SocketService is a representation of the C record GSocketService.
@@ -2938,9 +3930,17 @@ type SocketService struct {
 	native unsafe.Pointer
 }
 
+func (recv *SocketService) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Task is a representation of the C record GTask.
 type Task struct {
 	native unsafe.Pointer
+}
+
+func (recv *Task) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TcpConnection is a representation of the C record GTcpConnection.
@@ -2950,9 +3950,17 @@ type TcpConnection struct {
 	native unsafe.Pointer
 }
 
+func (recv *TcpConnection) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ThemedIcon is a representation of the C record GThemedIcon.
 type ThemedIcon struct {
 	native unsafe.Pointer
+}
+
+func (recv *ThemedIcon) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ThreadedSocketService is a representation of the C record GThreadedSocketService.
@@ -2962,11 +3970,19 @@ type ThreadedSocketService struct {
 	native unsafe.Pointer
 }
 
+func (recv *ThreadedSocketService) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixConnection is a representation of the C record GUnixConnection.
 //
 // since 2.22
 type UnixConnection struct {
 	native unsafe.Pointer
+}
+
+func (recv *UnixConnection) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixCredentialsMessage is a representation of the C record GUnixCredentialsMessage.
@@ -2976,9 +3992,17 @@ type UnixCredentialsMessage struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixCredentialsMessage) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixFDList is a representation of the C record GUnixFDList.
 type UnixFDList struct {
 	native unsafe.Pointer
+}
+
+func (recv *UnixFDList) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixFDMessage is a representation of the C record GUnixFDMessage.
@@ -2986,9 +4010,17 @@ type UnixFDMessage struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixFDMessage) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixInputStream is a representation of the C record GUnixInputStream.
 type UnixInputStream struct {
 	native unsafe.Pointer
+}
+
+func (recv *UnixInputStream) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixMountMonitor is a representation of the C record GUnixMountMonitor.
@@ -2996,9 +4028,17 @@ type UnixMountMonitor struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixMountMonitor) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UnixOutputStream is a representation of the C record GUnixOutputStream.
 type UnixOutputStream struct {
 	native unsafe.Pointer
+}
+
+func (recv *UnixOutputStream) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UnixSocketAddress is a representation of the C record GUnixSocketAddress.
@@ -3006,9 +4046,17 @@ type UnixSocketAddress struct {
 	native unsafe.Pointer
 }
 
+func (recv *UnixSocketAddress) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Vfs is a representation of the C record GVfs.
 type Vfs struct {
 	native unsafe.Pointer
+}
+
+func (recv *Vfs) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // VolumeMonitor is a representation of the C record GVolumeMonitor.
@@ -3016,14 +4064,26 @@ type VolumeMonitor struct {
 	native unsafe.Pointer
 }
 
+func (recv *VolumeMonitor) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ZlibCompressor is a representation of the C record GZlibCompressor.
 type ZlibCompressor struct {
 	native unsafe.Pointer
 }
 
+func (recv *ZlibCompressor) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ZlibDecompressor is a representation of the C record GZlibDecompressor.
 type ZlibDecompressor struct {
 	native unsafe.Pointer
+}
+
+func (recv *ZlibDecompressor) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Action is a representation of the C interface GAction.

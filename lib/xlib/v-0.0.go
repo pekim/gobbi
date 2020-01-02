@@ -50,9 +50,17 @@ type Display struct {
 	native unsafe.Pointer
 }
 
+func (recv *Display) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Screen is a representation of the C record Screen.
 type Screen struct {
 	native unsafe.Pointer
+}
+
+func (recv *Screen) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Visual is a representation of the C record Visual.
@@ -60,9 +68,17 @@ type Visual struct {
 	native unsafe.Pointer
 }
 
+func (recv *Visual) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // XConfigureEvent is a representation of the C record XConfigureEvent.
 type XConfigureEvent struct {
 	native unsafe.Pointer
+}
+
+func (recv *XConfigureEvent) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // XImage is a representation of the C record XImage.
@@ -70,9 +86,17 @@ type XImage struct {
 	native unsafe.Pointer
 }
 
+func (recv *XImage) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // XFontStruct is a representation of the C record XFontStruct.
 type XFontStruct struct {
 	native unsafe.Pointer
+}
+
+func (recv *XFontStruct) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // XTrapezoid is a representation of the C record XTrapezoid.
@@ -80,14 +104,26 @@ type XTrapezoid struct {
 	native unsafe.Pointer
 }
 
+func (recv *XTrapezoid) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // XVisualInfo is a representation of the C record XVisualInfo.
 type XVisualInfo struct {
 	native unsafe.Pointer
 }
 
+func (recv *XVisualInfo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // XWindowAttributes is a representation of the C record XWindowAttributes.
 type XWindowAttributes struct {
 	native unsafe.Pointer
+}
+
+func (recv *XWindowAttributes) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // XEvent is a representation of the C union XEvent.

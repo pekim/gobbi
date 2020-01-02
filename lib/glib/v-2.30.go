@@ -3854,9 +3854,17 @@ type Array struct {
 	native unsafe.Pointer
 }
 
+func (recv *Array) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AsyncQueue is a representation of the C record GAsyncQueue.
 type AsyncQueue struct {
 	native unsafe.Pointer
+}
+
+func (recv *AsyncQueue) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // BookmarkFile is a representation of the C record GBookmarkFile.
@@ -3864,9 +3872,17 @@ type BookmarkFile struct {
 	native unsafe.Pointer
 }
 
+func (recv *BookmarkFile) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ByteArray is a representation of the C record GByteArray.
 type ByteArray struct {
 	native unsafe.Pointer
+}
+
+func (recv *ByteArray) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Checksum is a representation of the C record GChecksum.
@@ -3876,9 +3892,17 @@ type Checksum struct {
 	native unsafe.Pointer
 }
 
+func (recv *Checksum) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Cond is a representation of the C record GCond.
 type Cond struct {
 	native unsafe.Pointer
+}
+
+func (recv *Cond) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Data is a representation of the C record GData.
@@ -3886,9 +3910,17 @@ type Data struct {
 	native unsafe.Pointer
 }
 
+func (recv *Data) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Date is a representation of the C record GDate.
 type Date struct {
 	native unsafe.Pointer
+}
+
+func (recv *Date) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DateTime is a representation of the C record GDateTime.
@@ -3898,9 +3930,17 @@ type DateTime struct {
 	native unsafe.Pointer
 }
 
+func (recv *DateTime) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DebugKey is a representation of the C record GDebugKey.
 type DebugKey struct {
 	native unsafe.Pointer
+}
+
+func (recv *DebugKey) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Dir is a representation of the C record GDir.
@@ -3908,9 +3948,17 @@ type Dir struct {
 	native unsafe.Pointer
 }
 
+func (recv *Dir) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Error is a representation of the C record GError.
 type Error struct {
 	native unsafe.Pointer
+}
+
+func (recv *Error) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HashTable is a representation of the C record GHashTable.
@@ -3918,9 +3966,17 @@ type HashTable struct {
 	native unsafe.Pointer
 }
 
+func (recv *HashTable) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HashTableIter is a representation of the C record GHashTableIter.
 type HashTableIter struct {
 	native unsafe.Pointer
+}
+
+func (recv *HashTableIter) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Hmac is a representation of the C record GHmac.
@@ -3930,9 +3986,17 @@ type Hmac struct {
 	native unsafe.Pointer
 }
 
+func (recv *Hmac) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Hook is a representation of the C record GHook.
 type Hook struct {
 	native unsafe.Pointer
+}
+
+func (recv *Hook) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HookList is a representation of the C record GHookList.
@@ -3940,9 +4004,17 @@ type HookList struct {
 	native unsafe.Pointer
 }
 
+func (recv *HookList) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IConv is a representation of the C record GIConv.
 type IConv struct {
 	native unsafe.Pointer
+}
+
+func (recv *IConv) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // IOChannel is a representation of the C record GIOChannel.
@@ -3950,9 +4022,17 @@ type IOChannel struct {
 	native unsafe.Pointer
 }
 
+func (recv *IOChannel) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // IOFuncs is a representation of the C record GIOFuncs.
 type IOFuncs struct {
 	native unsafe.Pointer
+}
+
+func (recv *IOFuncs) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // KeyFile is a representation of the C record GKeyFile.
@@ -3960,9 +4040,17 @@ type KeyFile struct {
 	native unsafe.Pointer
 }
 
+func (recv *KeyFile) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // List is a representation of the C record GList.
 type List struct {
 	native unsafe.Pointer
+}
+
+func (recv *List) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MainContext is a representation of the C record GMainContext.
@@ -3970,9 +4058,17 @@ type MainContext struct {
 	native unsafe.Pointer
 }
 
+func (recv *MainContext) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MainLoop is a representation of the C record GMainLoop.
 type MainLoop struct {
 	native unsafe.Pointer
+}
+
+func (recv *MainLoop) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MappedFile is a representation of the C record GMappedFile.
@@ -3980,9 +4076,17 @@ type MappedFile struct {
 	native unsafe.Pointer
 }
 
+func (recv *MappedFile) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MarkupParseContext is a representation of the C record GMarkupParseContext.
 type MarkupParseContext struct {
 	native unsafe.Pointer
+}
+
+func (recv *MarkupParseContext) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MarkupParser is a representation of the C record GMarkupParser.
@@ -3990,9 +4094,17 @@ type MarkupParser struct {
 	native unsafe.Pointer
 }
 
+func (recv *MarkupParser) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // MatchInfo is a representation of the C record GMatchInfo.
 type MatchInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *MatchInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MemVTable is a representation of the C record GMemVTable.
@@ -4000,9 +4112,17 @@ type MemVTable struct {
 	native unsafe.Pointer
 }
 
+func (recv *MemVTable) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Node is a representation of the C record GNode.
 type Node struct {
 	native unsafe.Pointer
+}
+
+func (recv *Node) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Once is a representation of the C record GOnce.
@@ -4012,9 +4132,17 @@ type Once struct {
 	native unsafe.Pointer
 }
 
+func (recv *Once) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // OptionContext is a representation of the C record GOptionContext.
 type OptionContext struct {
 	native unsafe.Pointer
+}
+
+func (recv *OptionContext) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // OptionEntry is a representation of the C record GOptionEntry.
@@ -4022,9 +4150,17 @@ type OptionEntry struct {
 	native unsafe.Pointer
 }
 
+func (recv *OptionEntry) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // OptionGroup is a representation of the C record GOptionGroup.
 type OptionGroup struct {
 	native unsafe.Pointer
+}
+
+func (recv *OptionGroup) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PatternSpec is a representation of the C record GPatternSpec.
@@ -4032,9 +4168,17 @@ type PatternSpec struct {
 	native unsafe.Pointer
 }
 
+func (recv *PatternSpec) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PollFD is a representation of the C record GPollFD.
 type PollFD struct {
 	native unsafe.Pointer
+}
+
+func (recv *PollFD) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Private is a representation of the C record GPrivate.
@@ -4042,9 +4186,17 @@ type Private struct {
 	native unsafe.Pointer
 }
 
+func (recv *Private) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PtrArray is a representation of the C record GPtrArray.
 type PtrArray struct {
 	native unsafe.Pointer
+}
+
+func (recv *PtrArray) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Queue is a representation of the C record GQueue.
@@ -4052,9 +4204,17 @@ type Queue struct {
 	native unsafe.Pointer
 }
 
+func (recv *Queue) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Rand is a representation of the C record GRand.
 type Rand struct {
 	native unsafe.Pointer
+}
+
+func (recv *Rand) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Regex is a representation of the C record GRegex.
@@ -4064,9 +4224,17 @@ type Regex struct {
 	native unsafe.Pointer
 }
 
+func (recv *Regex) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SList is a representation of the C record GSList.
 type SList struct {
 	native unsafe.Pointer
+}
+
+func (recv *SList) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Scanner is a representation of the C record GScanner.
@@ -4074,9 +4242,17 @@ type Scanner struct {
 	native unsafe.Pointer
 }
 
+func (recv *Scanner) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ScannerConfig is a representation of the C record GScannerConfig.
 type ScannerConfig struct {
 	native unsafe.Pointer
+}
+
+func (recv *ScannerConfig) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Sequence is a representation of the C record GSequence.
@@ -4084,9 +4260,17 @@ type Sequence struct {
 	native unsafe.Pointer
 }
 
+func (recv *Sequence) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SequenceIter is a representation of the C record GSequenceIter.
 type SequenceIter struct {
 	native unsafe.Pointer
+}
+
+func (recv *SequenceIter) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Source is a representation of the C record GSource.
@@ -4094,9 +4278,17 @@ type Source struct {
 	native unsafe.Pointer
 }
 
+func (recv *Source) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SourceCallbackFuncs is a representation of the C record GSourceCallbackFuncs.
 type SourceCallbackFuncs struct {
 	native unsafe.Pointer
+}
+
+func (recv *SourceCallbackFuncs) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SourceFuncs is a representation of the C record GSourceFuncs.
@@ -4104,9 +4296,17 @@ type SourceFuncs struct {
 	native unsafe.Pointer
 }
 
+func (recv *SourceFuncs) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SourcePrivate is a representation of the C record GSourcePrivate.
 type SourcePrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *SourcePrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StatBuf is a representation of the C record GStatBuf.
@@ -4116,9 +4316,17 @@ type StatBuf struct {
 	native unsafe.Pointer
 }
 
+func (recv *StatBuf) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // String is a representation of the C record GString.
 type String struct {
 	native unsafe.Pointer
+}
+
+func (recv *String) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StringChunk is a representation of the C record GStringChunk.
@@ -4126,9 +4334,17 @@ type StringChunk struct {
 	native unsafe.Pointer
 }
 
+func (recv *StringChunk) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TestCase is a representation of the C record GTestCase.
 type TestCase struct {
 	native unsafe.Pointer
+}
+
+func (recv *TestCase) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TestConfig is a representation of the C record GTestConfig.
@@ -4136,9 +4352,17 @@ type TestConfig struct {
 	native unsafe.Pointer
 }
 
+func (recv *TestConfig) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TestLogBuffer is a representation of the C record GTestLogBuffer.
 type TestLogBuffer struct {
 	native unsafe.Pointer
+}
+
+func (recv *TestLogBuffer) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : TestLogMsg : blacklisted
@@ -4148,9 +4372,17 @@ type TestSuite struct {
 	native unsafe.Pointer
 }
 
+func (recv *TestSuite) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Thread is a representation of the C record GThread.
 type Thread struct {
 	native unsafe.Pointer
+}
+
+func (recv *Thread) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ThreadPool is a representation of the C record GThreadPool.
@@ -4158,9 +4390,17 @@ type ThreadPool struct {
 	native unsafe.Pointer
 }
 
+func (recv *ThreadPool) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TimeVal is a representation of the C record GTimeVal.
 type TimeVal struct {
 	native unsafe.Pointer
+}
+
+func (recv *TimeVal) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TimeZone is a representation of the C record GTimeZone.
@@ -4170,9 +4410,17 @@ type TimeZone struct {
 	native unsafe.Pointer
 }
 
+func (recv *TimeZone) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Timer is a representation of the C record GTimer.
 type Timer struct {
 	native unsafe.Pointer
+}
+
+func (recv *Timer) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TrashStack is a representation of the C record GTrashStack.
@@ -4180,9 +4428,17 @@ type TrashStack struct {
 	native unsafe.Pointer
 }
 
+func (recv *TrashStack) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Tree is a representation of the C record GTree.
 type Tree struct {
 	native unsafe.Pointer
+}
+
+func (recv *Tree) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Variant is a representation of the C record GVariant.
@@ -4192,9 +4448,17 @@ type Variant struct {
 	native unsafe.Pointer
 }
 
+func (recv *Variant) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // VariantBuilder is a representation of the C record GVariantBuilder.
 type VariantBuilder struct {
 	native unsafe.Pointer
+}
+
+func (recv *VariantBuilder) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // VariantIter is a representation of the C record GVariantIter.
@@ -4202,9 +4466,17 @@ type VariantIter struct {
 	native unsafe.Pointer
 }
 
+func (recv *VariantIter) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // VariantType is a representation of the C record GVariantType.
 type VariantType struct {
 	native unsafe.Pointer
+}
+
+func (recv *VariantType) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // DoubleIEEE754 is a representation of the C union GDoubleIEEE754.

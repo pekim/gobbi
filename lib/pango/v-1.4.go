@@ -699,55 +699,55 @@ const WrapMode_char = WrapMode(1)
 const WrapMode_word_char = WrapMode(2)
 
 func AttrBackgroundNew(red uint16, green uint16, blue uint16) {
-	sys_red := uint16(red)
-	sys_green := uint16(green)
-	sys_blue := uint16(blue)
+	sys_red := red
+	sys_green := green
+	sys_blue := blue
 }
 
 func AttrFallbackNew(enableFallback bool) {
-	sys_enableFallback := bool(enableFallback)
+	sys_enableFallback := enableFallback
 }
 
 func AttrFamilyNew(family string) {
-	sys_family := string(family)
+	sys_family := family
 }
 
 func AttrForegroundNew(red uint16, green uint16, blue uint16) {
-	sys_red := uint16(red)
-	sys_green := uint16(green)
-	sys_blue := uint16(blue)
+	sys_red := red
+	sys_green := green
+	sys_blue := blue
 }
 
 func AttrRiseNew(rise int) {
-	sys_rise := int(rise)
+	sys_rise := rise
 }
 
 func AttrScaleNew(scaleFactor float64) {
-	sys_scaleFactor := float64(scaleFactor)
+	sys_scaleFactor := scaleFactor
 }
 
 func AttrStretchNew(stretch int) {
-	sys_stretch := int(stretch)
+	sys_stretch := stretch
 }
 
 func AttrStrikethroughNew(strikethrough bool) {
-	sys_strikethrough := bool(strikethrough)
+	sys_strikethrough := strikethrough
 }
 
 func AttrStyleNew(style int) {
-	sys_style := int(style)
+	sys_style := style
 }
 
 func AttrUnderlineNew(underline int) {
-	sys_underline := int(underline)
+	sys_underline := underline
 }
 
 func AttrVariantNew(variant int) {
-	sys_variant := int(variant)
+	sys_variant := variant
 }
 
 func AttrWeightNew(weight int) {
-	sys_weight := int(weight)
+	sys_weight := weight
 }
 
 // UNSUPPORTED : pango_break : has array param, attrs
@@ -759,15 +759,15 @@ func AttrWeightNew(weight int) {
 // UNSUPPORTED : pango_default_break : blacklisted
 
 func FindBaseDir(text string, length int) {
-	sys_text := string(text)
-	sys_length := int(length)
+	sys_text := text
+	sys_length := length
 }
 
 // UNSUPPORTED : pango_find_map : blacklisted
 
 func FindParagraphBoundary(text string, length int) {
-	sys_text := string(text)
-	sys_length := int(length)
+	sys_text := text
+	sys_length := length
 }
 
 // UNSUPPORTED : pango_get_lib_subdirectory : blacklisted
@@ -775,35 +775,35 @@ func FindParagraphBoundary(text string, length int) {
 // UNSUPPORTED : pango_get_log_attrs : has array param, log_attrs
 
 func GetMirrorChar(ch rune, mirroredCh *rune) {
-	sys_ch := rune(ch)
-	sys_mirroredCh := *rune(mirroredCh)
+	sys_ch := ch
+	sys_mirroredCh := mirroredCh
 }
 
 // UNSUPPORTED : pango_get_sysconf_subdirectory : blacklisted
 
 func Itemize(context *Context, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
-	sys_context := unsafe.Pointer(context)
-	sys_text := string(text)
-	sys_startIndex := int(startIndex)
-	sys_length := int(length)
-	sys_attrs := unsafe.Pointer(attrs)
-	sys_cachedIter := unsafe.Pointer(cachedIter)
+	sys_context := context.ToC()
+	sys_text := text
+	sys_startIndex := startIndex
+	sys_length := length
+	sys_attrs := attrs.ToC()
+	sys_cachedIter := cachedIter.ToC()
 }
 
 func ItemizeWithBaseDir(context *Context, baseDir int, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
-	sys_context := unsafe.Pointer(context)
-	sys_baseDir := int(baseDir)
-	sys_text := string(text)
-	sys_startIndex := int(startIndex)
-	sys_length := int(length)
-	sys_attrs := unsafe.Pointer(attrs)
-	sys_cachedIter := unsafe.Pointer(cachedIter)
+	sys_context := context.ToC()
+	sys_baseDir := baseDir
+	sys_text := text
+	sys_startIndex := startIndex
+	sys_length := length
+	sys_attrs := attrs.ToC()
+	sys_cachedIter := cachedIter.ToC()
 }
 
 func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *int) {
-	sys_text := string(text)
-	sys_length := int(length)
-	sys_pbaseDir := *int(pbaseDir)
+	sys_text := text
+	sys_length := length
+	sys_pbaseDir := pbaseDir
 }
 
 // UNSUPPORTED : pango_lookup_aliases : blacklisted
@@ -811,70 +811,70 @@ func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *int) {
 // UNSUPPORTED : pango_module_register : blacklisted
 
 func ParseMarkup(markupText string, length int, accelMarker rune) {
-	sys_markupText := string(markupText)
-	sys_length := int(length)
-	sys_accelMarker := rune(accelMarker)
+	sys_markupText := markupText
+	sys_length := length
+	sys_accelMarker := accelMarker
 }
 
 func ParseStretch(str string, warn bool) {
-	sys_str := string(str)
-	sys_warn := bool(warn)
+	sys_str := str
+	sys_warn := warn
 }
 
 func ParseStyle(str string, warn bool) {
-	sys_str := string(str)
-	sys_warn := bool(warn)
+	sys_str := str
+	sys_warn := warn
 }
 
 func ParseVariant(str string, warn bool) {
-	sys_str := string(str)
-	sys_warn := bool(warn)
+	sys_str := str
+	sys_warn := warn
 }
 
 func ParseWeight(str string, warn bool) {
-	sys_str := string(str)
-	sys_warn := bool(warn)
+	sys_str := str
+	sys_warn := warn
 }
 
 func ReadLine(stream unsafe.Pointer) {
-	sys_stream := unsafe.Pointer(stream)
+	sys_stream := stream
 }
 
 func ReorderItems(logicalItems *glib.List) {
-	sys_logicalItems := unsafe.Pointer(logicalItems)
+	sys_logicalItems := logicalItems.ToC()
 }
 
 func ScanInt(pos *string) {
-	sys_pos := *string(pos)
+	sys_pos := pos
 }
 
 func ScanString(pos *string) {
-	sys_pos := *string(pos)
+	sys_pos := pos
 }
 
 func ScanWord(pos *string) {
-	sys_pos := *string(pos)
+	sys_pos := pos
 }
 
 func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
-	sys_text := string(text)
-	sys_length := int(length)
-	sys_analysis := unsafe.Pointer(analysis)
-	sys_glyphs := unsafe.Pointer(glyphs)
+	sys_text := text
+	sys_length := length
+	sys_analysis := analysis.ToC()
+	sys_glyphs := glyphs.ToC()
 }
 
 func SkipSpace(pos *string) {
-	sys_pos := *string(pos)
+	sys_pos := pos
 }
 
 // UNSUPPORTED : pango_split_file_list : no array length
 
 func TrimString(str string) {
-	sys_str := string(str)
+	sys_str := str
 }
 
 func UnicharDirection(ch rune) {
-	sys_ch := rune(ch)
+	sys_ch := ch
 }
 
 // Analysis is a representation of the C record PangoAnalysis.
@@ -882,9 +882,17 @@ type Analysis struct {
 	native unsafe.Pointer
 }
 
+func (recv *Analysis) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AttrClass is a representation of the C record PangoAttrClass.
 type AttrClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *AttrClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AttrColor is a representation of the C record PangoAttrColor.
@@ -892,9 +900,17 @@ type AttrColor struct {
 	native unsafe.Pointer
 }
 
+func (recv *AttrColor) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AttrFloat is a representation of the C record PangoAttrFloat.
 type AttrFloat struct {
 	native unsafe.Pointer
+}
+
+func (recv *AttrFloat) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AttrFontDesc is a representation of the C record PangoAttrFontDesc.
@@ -902,9 +918,17 @@ type AttrFontDesc struct {
 	native unsafe.Pointer
 }
 
+func (recv *AttrFontDesc) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AttrInt is a representation of the C record PangoAttrInt.
 type AttrInt struct {
 	native unsafe.Pointer
+}
+
+func (recv *AttrInt) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AttrIterator is a representation of the C record PangoAttrIterator.
@@ -912,9 +936,17 @@ type AttrIterator struct {
 	native unsafe.Pointer
 }
 
+func (recv *AttrIterator) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AttrLanguage is a representation of the C record PangoAttrLanguage.
 type AttrLanguage struct {
 	native unsafe.Pointer
+}
+
+func (recv *AttrLanguage) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AttrList is a representation of the C record PangoAttrList.
@@ -922,9 +954,17 @@ type AttrList struct {
 	native unsafe.Pointer
 }
 
+func (recv *AttrList) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AttrShape is a representation of the C record PangoAttrShape.
 type AttrShape struct {
 	native unsafe.Pointer
+}
+
+func (recv *AttrShape) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // AttrSize is a representation of the C record PangoAttrSize.
@@ -932,9 +972,17 @@ type AttrSize struct {
 	native unsafe.Pointer
 }
 
+func (recv *AttrSize) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // AttrString is a representation of the C record PangoAttrString.
 type AttrString struct {
 	native unsafe.Pointer
+}
+
+func (recv *AttrString) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Attribute is a representation of the C record PangoAttribute.
@@ -942,9 +990,17 @@ type Attribute struct {
 	native unsafe.Pointer
 }
 
+func (recv *Attribute) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Color is a representation of the C record PangoColor.
 type Color struct {
 	native unsafe.Pointer
+}
+
+func (recv *Color) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ContextClass is a representation of the C record PangoContextClass.
@@ -952,9 +1008,17 @@ type ContextClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ContextClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Coverage is a representation of the C record PangoCoverage.
 type Coverage struct {
 	native unsafe.Pointer
+}
+
+func (recv *Coverage) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : EngineClass : blacklisted
@@ -974,6 +1038,10 @@ type FontDescription struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontDescription) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : FontFaceClass : blacklisted
 
 // UNSUPPORTED : FontFamilyClass : blacklisted
@@ -985,6 +1053,10 @@ type FontMetrics struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontMetrics) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : FontsetClass : blacklisted
 
 // UNSUPPORTED : FontsetSimpleClass : blacklisted
@@ -994,9 +1066,17 @@ type GlyphGeometry struct {
 	native unsafe.Pointer
 }
 
+func (recv *GlyphGeometry) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GlyphInfo is a representation of the C record PangoGlyphInfo.
 type GlyphInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *GlyphInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // GlyphItem is a representation of the C record PangoGlyphItem.
@@ -1004,14 +1084,26 @@ type GlyphItem struct {
 	native unsafe.Pointer
 }
 
+func (recv *GlyphItem) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GlyphString is a representation of the C record PangoGlyphString.
 type GlyphString struct {
 	native unsafe.Pointer
 }
 
+func (recv *GlyphString) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GlyphVisAttr is a representation of the C record PangoGlyphVisAttr.
 type GlyphVisAttr struct {
 	native unsafe.Pointer
+}
+
+func (recv *GlyphVisAttr) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : IncludedModule : blacklisted
@@ -1021,9 +1113,17 @@ type Item struct {
 	native unsafe.Pointer
 }
 
+func (recv *Item) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Language is a representation of the C record PangoLanguage.
 type Language struct {
 	native unsafe.Pointer
+}
+
+func (recv *Language) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LayoutClass is a representation of the C record PangoLayoutClass.
@@ -1031,9 +1131,17 @@ type LayoutClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *LayoutClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LayoutIter is a representation of the C record PangoLayoutIter.
 type LayoutIter struct {
 	native unsafe.Pointer
+}
+
+func (recv *LayoutIter) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // LayoutLine is a representation of the C record PangoLayoutLine.
@@ -1041,9 +1149,17 @@ type LayoutLine struct {
 	native unsafe.Pointer
 }
 
+func (recv *LayoutLine) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // LogAttr is a representation of the C record PangoLogAttr.
 type LogAttr struct {
 	native unsafe.Pointer
+}
+
+func (recv *LogAttr) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : Map : blacklisted
@@ -1055,9 +1171,17 @@ type Rectangle struct {
 	native unsafe.Pointer
 }
 
+func (recv *Rectangle) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RendererPrivate is a representation of the C record PangoRendererPrivate.
 type RendererPrivate struct {
 	native unsafe.Pointer
+}
+
+func (recv *RendererPrivate) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ScriptIter is a representation of the C record PangoScriptIter.
@@ -1065,14 +1189,26 @@ type ScriptIter struct {
 	native unsafe.Pointer
 }
 
+func (recv *ScriptIter) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TabArray is a representation of the C record PangoTabArray.
 type TabArray struct {
 	native unsafe.Pointer
 }
 
+func (recv *TabArray) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Context is a representation of the C record PangoContext.
 type Context struct {
 	native unsafe.Pointer
+}
+
+func (recv *Context) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : Engine : blacklisted
@@ -1082,9 +1218,17 @@ type EngineLang struct {
 	native unsafe.Pointer
 }
 
+func (recv *EngineLang) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EngineShape is a representation of the C record PangoEngineShape.
 type EngineShape struct {
 	native unsafe.Pointer
+}
+
+func (recv *EngineShape) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Font is a representation of the C record PangoFont.
@@ -1092,9 +1236,17 @@ type Font struct {
 	native unsafe.Pointer
 }
 
+func (recv *Font) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FontFace is a representation of the C record PangoFontFace.
 type FontFace struct {
 	native unsafe.Pointer
+}
+
+func (recv *FontFace) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FontFamily is a representation of the C record PangoFontFamily.
@@ -1102,9 +1254,17 @@ type FontFamily struct {
 	native unsafe.Pointer
 }
 
+func (recv *FontFamily) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FontMap is a representation of the C record PangoFontMap.
 type FontMap struct {
 	native unsafe.Pointer
+}
+
+func (recv *FontMap) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Fontset is a representation of the C record PangoFontset.
@@ -1112,9 +1272,17 @@ type Fontset struct {
 	native unsafe.Pointer
 }
 
+func (recv *Fontset) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // UNSUPPORTED : FontsetSimple : blacklisted
 
 // Layout is a representation of the C record PangoLayout.
 type Layout struct {
 	native unsafe.Pointer
+}
+
+func (recv *Layout) ToC() unsafe.Pointer {
+	return recv.native
 }

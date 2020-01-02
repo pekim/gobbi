@@ -888,7 +888,7 @@ const ValueType_last_defined = ValueType(15)
 // UNSUPPORTED : atk_focus_tracker_init : parameter 'init' is callback
 
 func FocusTrackerNotify(object *Object) {
-	sys_object := unsafe.Pointer(object)
+	sys_object := object.ToC()
 }
 
 func GetDefaultRegistry() {}
@@ -904,15 +904,15 @@ func GetToolkitVersion() {}
 func GetVersion() {}
 
 func RemoveFocusTracker(trackerId uint) {
-	sys_trackerId := uint(trackerId)
+	sys_trackerId := trackerId
 }
 
 func RemoveGlobalEventListener(listenerId uint) {
-	sys_listenerId := uint(listenerId)
+	sys_listenerId := listenerId
 }
 
 func RemoveKeyEventListener(listenerId uint) {
-	sys_listenerId := uint(listenerId)
+	sys_listenerId := listenerId
 }
 
 // UNSUPPORTED : atk_text_free_ranges : parameter 'ranges' is array parameter without length parameter
@@ -922,9 +922,17 @@ type ActionIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *ActionIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Attribute is a representation of the C record AtkAttribute.
 type Attribute struct {
 	native unsafe.Pointer
+}
+
+func (recv *Attribute) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ComponentIface is a representation of the C record AtkComponentIface.
@@ -932,9 +940,17 @@ type ComponentIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *ComponentIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // DocumentIface is a representation of the C record AtkDocumentIface.
 type DocumentIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *DocumentIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // EditableTextIface is a representation of the C record AtkEditableTextIface.
@@ -942,9 +958,17 @@ type EditableTextIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *EditableTextIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GObjectAccessibleClass is a representation of the C record AtkGObjectAccessibleClass.
 type GObjectAccessibleClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *GObjectAccessibleClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HyperlinkClass is a representation of the C record AtkHyperlinkClass.
@@ -952,9 +976,17 @@ type HyperlinkClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *HyperlinkClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // HyperlinkImplIface is a representation of the C record AtkHyperlinkImplIface.
 type HyperlinkImplIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *HyperlinkImplIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // HypertextIface is a representation of the C record AtkHypertextIface.
@@ -962,9 +994,17 @@ type HypertextIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *HypertextIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ImageIface is a representation of the C record AtkImageIface.
 type ImageIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *ImageIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Implementor is a representation of the C record AtkImplementor.
@@ -972,9 +1012,17 @@ type Implementor struct {
 	native unsafe.Pointer
 }
 
+func (recv *Implementor) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // KeyEventStruct is a representation of the C record AtkKeyEventStruct.
 type KeyEventStruct struct {
 	native unsafe.Pointer
+}
+
+func (recv *KeyEventStruct) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // MiscClass is a representation of the C record AtkMiscClass.
@@ -982,9 +1030,17 @@ type MiscClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *MiscClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // NoOpObjectClass is a representation of the C record AtkNoOpObjectClass.
 type NoOpObjectClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *NoOpObjectClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NoOpObjectFactoryClass is a representation of the C record AtkNoOpObjectFactoryClass.
@@ -992,9 +1048,17 @@ type NoOpObjectFactoryClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *NoOpObjectFactoryClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ObjectClass is a representation of the C record AtkObjectClass.
 type ObjectClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ObjectClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ObjectFactoryClass is a representation of the C record AtkObjectFactoryClass.
@@ -1002,9 +1066,17 @@ type ObjectFactoryClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *ObjectFactoryClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PlugClass is a representation of the C record AtkPlugClass.
 type PlugClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *PlugClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PropertyValues is a representation of the C record AtkPropertyValues.
@@ -1012,9 +1084,17 @@ type PropertyValues struct {
 	native unsafe.Pointer
 }
 
+func (recv *PropertyValues) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Range is a representation of the C record AtkRange.
 type Range struct {
 	native unsafe.Pointer
+}
+
+func (recv *Range) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Rectangle is a representation of the C record AtkRectangle.
@@ -1022,9 +1102,17 @@ type Rectangle struct {
 	native unsafe.Pointer
 }
 
+func (recv *Rectangle) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RegistryClass is a representation of the C record AtkRegistryClass.
 type RegistryClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *RegistryClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // RelationClass is a representation of the C record AtkRelationClass.
@@ -1032,9 +1120,17 @@ type RelationClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *RelationClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RelationSetClass is a representation of the C record AtkRelationSetClass.
 type RelationSetClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *RelationSetClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SelectionIface is a representation of the C record AtkSelectionIface.
@@ -1042,9 +1138,17 @@ type SelectionIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *SelectionIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SocketClass is a representation of the C record AtkSocketClass.
 type SocketClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *SocketClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // StateSetClass is a representation of the C record AtkStateSetClass.
@@ -1052,9 +1156,17 @@ type StateSetClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *StateSetClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StreamableContentIface is a representation of the C record AtkStreamableContentIface.
 type StreamableContentIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *StreamableContentIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TableIface is a representation of the C record AtkTableIface.
@@ -1062,9 +1174,17 @@ type TableIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *TableIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextIface is a representation of the C record AtkTextIface.
 type TextIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TextRange is a representation of the C record AtkTextRange.
@@ -1072,9 +1192,17 @@ type TextRange struct {
 	native unsafe.Pointer
 }
 
+func (recv *TextRange) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TextRectangle is a representation of the C record AtkTextRectangle.
 type TextRectangle struct {
 	native unsafe.Pointer
+}
+
+func (recv *TextRectangle) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UtilClass is a representation of the C record AtkUtilClass.
@@ -1082,9 +1210,17 @@ type UtilClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *UtilClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ValueIface is a representation of the C record AtkValueIface.
 type ValueIface struct {
 	native unsafe.Pointer
+}
+
+func (recv *ValueIface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // WindowIface is a representation of the C record AtkWindowIface.
@@ -1092,9 +1228,17 @@ type WindowIface struct {
 	native unsafe.Pointer
 }
 
+func (recv *WindowIface) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // GObjectAccessible is a representation of the C record AtkGObjectAccessible.
 type GObjectAccessible struct {
 	native unsafe.Pointer
+}
+
+func (recv *GObjectAccessible) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Hyperlink is a representation of the C record AtkHyperlink.
@@ -1102,9 +1246,17 @@ type Hyperlink struct {
 	native unsafe.Pointer
 }
 
+func (recv *Hyperlink) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Misc is a representation of the C record AtkMisc.
 type Misc struct {
 	native unsafe.Pointer
+}
+
+func (recv *Misc) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // NoOpObject is a representation of the C record AtkNoOpObject.
@@ -1112,9 +1264,17 @@ type NoOpObject struct {
 	native unsafe.Pointer
 }
 
+func (recv *NoOpObject) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // NoOpObjectFactory is a representation of the C record AtkNoOpObjectFactory.
 type NoOpObjectFactory struct {
 	native unsafe.Pointer
+}
+
+func (recv *NoOpObjectFactory) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Object is a representation of the C record AtkObject.
@@ -1122,9 +1282,17 @@ type Object struct {
 	native unsafe.Pointer
 }
 
+func (recv *Object) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ObjectFactory is a representation of the C record AtkObjectFactory.
 type ObjectFactory struct {
 	native unsafe.Pointer
+}
+
+func (recv *ObjectFactory) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Plug is a representation of the C record AtkPlug.
@@ -1132,9 +1300,17 @@ type Plug struct {
 	native unsafe.Pointer
 }
 
+func (recv *Plug) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Registry is a representation of the C record AtkRegistry.
 type Registry struct {
 	native unsafe.Pointer
+}
+
+func (recv *Registry) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Relation is a representation of the C record AtkRelation.
@@ -1142,9 +1318,17 @@ type Relation struct {
 	native unsafe.Pointer
 }
 
+func (recv *Relation) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // RelationSet is a representation of the C record AtkRelationSet.
 type RelationSet struct {
 	native unsafe.Pointer
+}
+
+func (recv *RelationSet) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Socket is a representation of the C record AtkSocket.
@@ -1152,14 +1336,26 @@ type Socket struct {
 	native unsafe.Pointer
 }
 
+func (recv *Socket) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // StateSet is a representation of the C record AtkStateSet.
 type StateSet struct {
 	native unsafe.Pointer
 }
 
+func (recv *StateSet) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Util is a representation of the C record AtkUtil.
 type Util struct {
 	native unsafe.Pointer
+}
+
+func (recv *Util) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Action is a representation of the C interface AtkAction.

@@ -94,9 +94,17 @@ type PixbufFormat struct {
 	native unsafe.Pointer
 }
 
+func (recv *PixbufFormat) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PixbufLoaderClass is a representation of the C record GdkPixbufLoaderClass.
 type PixbufLoaderClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *PixbufLoaderClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PixbufSimpleAnimClass is a representation of the C record GdkPixbufSimpleAnimClass.
@@ -104,9 +112,17 @@ type PixbufSimpleAnimClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *PixbufSimpleAnimClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Pixbuf is a representation of the C record GdkPixbuf.
 type Pixbuf struct {
 	native unsafe.Pointer
+}
+
+func (recv *Pixbuf) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PixbufAnimation is a representation of the C record GdkPixbufAnimation.
@@ -114,9 +130,17 @@ type PixbufAnimation struct {
 	native unsafe.Pointer
 }
 
+func (recv *PixbufAnimation) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PixbufAnimationIter is a representation of the C record GdkPixbufAnimationIter.
 type PixbufAnimationIter struct {
 	native unsafe.Pointer
+}
+
+func (recv *PixbufAnimationIter) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // PixbufLoader is a representation of the C record GdkPixbufLoader.
@@ -124,9 +148,17 @@ type PixbufLoader struct {
 	native unsafe.Pointer
 }
 
+func (recv *PixbufLoader) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // PixbufSimpleAnim is a representation of the C record GdkPixbufSimpleAnim.
 type PixbufSimpleAnim struct {
 	native unsafe.Pointer
+}
+
+func (recv *PixbufSimpleAnim) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // UNSUPPORTED : PixbufSimpleAnimIter : blacklisted

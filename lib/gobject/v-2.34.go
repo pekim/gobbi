@@ -213,13 +213,13 @@ const TypeFundamentalFlags_derivable = TypeFundamentalFlags(4)
 const TypeFundamentalFlags_deep_derivable = TypeFundamentalFlags(8)
 
 func BoxedCopy(boxedType uint64, srcBoxed unsafe.Pointer) {
-	sys_boxedType := uint64(boxedType)
-	sys_srcBoxed := unsafe.Pointer(srcBoxed)
+	sys_boxedType := boxedType
+	sys_srcBoxed := srcBoxed
 }
 
 func BoxedFree(boxedType uint64, boxed unsafe.Pointer) {
-	sys_boxedType := uint64(boxedType)
-	sys_boxed := unsafe.Pointer(boxed)
+	sys_boxedType := boxedType
+	sys_boxed := boxed
 }
 
 // UNSUPPORTED : g_boxed_type_register_static : parameter 'boxed_copy' is callback
@@ -233,313 +233,313 @@ func BoxedFree(boxedType uint64, boxed unsafe.Pointer) {
 // UNSUPPORTED : g_cclosure_new_swap : parameter 'callback_func' is callback
 
 func ClearObject(objectPtr **Object) {
-	sys_objectPtr := *unsafe.Pointer(objectPtr)
+	sys_objectPtr := objectPtr.ToC()
 }
 
 func EnumCompleteTypeInfo(gEnumType uint64, constValues *EnumValue) {
-	sys_gEnumType := uint64(gEnumType)
-	sys_constValues := unsafe.Pointer(constValues)
+	sys_gEnumType := gEnumType
+	sys_constValues := constValues.ToC()
 }
 
 func EnumGetValue(enumClass *EnumClass, value int) {
-	sys_enumClass := unsafe.Pointer(enumClass)
-	sys_value := int(value)
+	sys_enumClass := enumClass.ToC()
+	sys_value := value
 }
 
 func EnumGetValueByName(enumClass *EnumClass, name string) {
-	sys_enumClass := unsafe.Pointer(enumClass)
-	sys_name := string(name)
+	sys_enumClass := enumClass.ToC()
+	sys_name := name
 }
 
 func EnumGetValueByNick(enumClass *EnumClass, nick string) {
-	sys_enumClass := unsafe.Pointer(enumClass)
-	sys_nick := string(nick)
+	sys_enumClass := enumClass.ToC()
+	sys_nick := nick
 }
 
 func EnumRegisterStatic(name string, constStaticValues *EnumValue) {
-	sys_name := string(name)
-	sys_constStaticValues := unsafe.Pointer(constStaticValues)
+	sys_name := name
+	sys_constStaticValues := constStaticValues.ToC()
 }
 
 func FlagsCompleteTypeInfo(gFlagsType uint64, constValues *FlagsValue) {
-	sys_gFlagsType := uint64(gFlagsType)
-	sys_constValues := unsafe.Pointer(constValues)
+	sys_gFlagsType := gFlagsType
+	sys_constValues := constValues.ToC()
 }
 
 func FlagsGetFirstValue(flagsClass *FlagsClass, value uint) {
-	sys_flagsClass := unsafe.Pointer(flagsClass)
-	sys_value := uint(value)
+	sys_flagsClass := flagsClass.ToC()
+	sys_value := value
 }
 
 func FlagsGetValueByName(flagsClass *FlagsClass, name string) {
-	sys_flagsClass := unsafe.Pointer(flagsClass)
-	sys_name := string(name)
+	sys_flagsClass := flagsClass.ToC()
+	sys_name := name
 }
 
 func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) {
-	sys_flagsClass := unsafe.Pointer(flagsClass)
-	sys_nick := string(nick)
+	sys_flagsClass := flagsClass.ToC()
+	sys_nick := nick
 }
 
 func FlagsRegisterStatic(name string, constStaticValues *FlagsValue) {
-	sys_name := string(name)
-	sys_constStaticValues := unsafe.Pointer(constStaticValues)
+	sys_name := name
+	sys_constStaticValues := constStaticValues.ToC()
 }
 
 func GtypeGetType() {}
 
 func ParamSpecBoolean(name string, nick string, blurb string, defaultValue bool, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_defaultValue := bool(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecBoxed(name string, nick string, blurb string, boxedType uint64, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_boxedType := uint64(boxedType)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_boxedType := boxedType
+	sys_flags := flags
 }
 
 func ParamSpecChar(name string, nick string, blurb string, minimum int8, maximum int8, defaultValue int8, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_minimum := int8(minimum)
-	sys_maximum := int8(maximum)
-	sys_defaultValue := int8(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_minimum := minimum
+	sys_maximum := maximum
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecDouble(name string, nick string, blurb string, minimum float64, maximum float64, defaultValue float64, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_minimum := float64(minimum)
-	sys_maximum := float64(maximum)
-	sys_defaultValue := float64(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_minimum := minimum
+	sys_maximum := maximum
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecEnum(name string, nick string, blurb string, enumType uint64, defaultValue int, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_enumType := uint64(enumType)
-	sys_defaultValue := int(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_enumType := enumType
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecFlags(name string, nick string, blurb string, flagsType uint64, defaultValue uint, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_flagsType := uint64(flagsType)
-	sys_defaultValue := uint(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_flagsType := flagsType
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecFloat(name string, nick string, blurb string, minimum float32, maximum float32, defaultValue float32, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_minimum := float32(minimum)
-	sys_maximum := float32(maximum)
-	sys_defaultValue := float32(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_minimum := minimum
+	sys_maximum := maximum
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecGtype(name string, nick string, blurb string, isAType uint64, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_isAType := uint64(isAType)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_isAType := isAType
+	sys_flags := flags
 }
 
 func ParamSpecInt(name string, nick string, blurb string, minimum int, maximum int, defaultValue int, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_minimum := int(minimum)
-	sys_maximum := int(maximum)
-	sys_defaultValue := int(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_minimum := minimum
+	sys_maximum := maximum
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecInt64(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_minimum := int64(minimum)
-	sys_maximum := int64(maximum)
-	sys_defaultValue := int64(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_minimum := minimum
+	sys_maximum := maximum
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecLong(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_minimum := int64(minimum)
-	sys_maximum := int64(maximum)
-	sys_defaultValue := int64(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_minimum := minimum
+	sys_maximum := maximum
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecObject(name string, nick string, blurb string, objectType uint64, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_objectType := uint64(objectType)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_objectType := objectType
+	sys_flags := flags
 }
 
 func ParamSpecOverride(name string, overridden *ParamSpec) {
-	sys_name := string(name)
-	sys_overridden := unsafe.Pointer(overridden)
+	sys_name := name
+	sys_overridden := overridden.ToC()
 }
 
 func ParamSpecParam(name string, nick string, blurb string, paramType uint64, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_paramType := uint64(paramType)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_paramType := paramType
+	sys_flags := flags
 }
 
 func ParamSpecPointer(name string, nick string, blurb string, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_flags := flags
 }
 
 func ParamSpecString(name string, nick string, blurb string, defaultValue string, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_defaultValue := string(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maximum uint8, defaultValue uint8, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_minimum := uint8(minimum)
-	sys_maximum := uint8(maximum)
-	sys_defaultValue := uint8(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_minimum := minimum
+	sys_maximum := maximum
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecUint(name string, nick string, blurb string, minimum uint, maximum uint, defaultValue uint, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_minimum := uint(minimum)
-	sys_maximum := uint(maximum)
-	sys_defaultValue := uint(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_minimum := minimum
+	sys_maximum := maximum
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_minimum := uint64(minimum)
-	sys_maximum := uint64(maximum)
-	sys_defaultValue := uint64(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_minimum := minimum
+	sys_maximum := maximum
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_minimum := uint64(minimum)
-	sys_maximum := uint64(maximum)
-	sys_defaultValue := uint64(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_minimum := minimum
+	sys_maximum := maximum
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecUnichar(name string, nick string, blurb string, defaultValue rune, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_defaultValue := rune(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_defaultValue := defaultValue
+	sys_flags := flags
 }
 
 func ParamSpecValueArray(name string, nick string, blurb string, elementSpec *ParamSpec, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_elementSpec := unsafe.Pointer(elementSpec)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_elementSpec := elementSpec.ToC()
+	sys_flags := flags
 }
 
 func ParamSpecVariant(name string, nick string, blurb string, type_ *glib.VariantType, defaultValue *glib.Variant, flags int) {
-	sys_name := string(name)
-	sys_nick := string(nick)
-	sys_blurb := string(blurb)
-	sys_type_ := unsafe.Pointer(type_)
-	sys_defaultValue := unsafe.Pointer(defaultValue)
-	sys_flags := int(flags)
+	sys_name := name
+	sys_nick := nick
+	sys_blurb := blurb
+	sys_type_ := type_.ToC()
+	sys_defaultValue := defaultValue.ToC()
+	sys_flags := flags
 }
 
 func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) {
-	sys_name := string(name)
-	sys_pspecInfo := unsafe.Pointer(pspecInfo)
+	sys_name := name
+	sys_pspecInfo := pspecInfo.ToC()
 }
 
 func ParamValueConvert(pspec *ParamSpec, srcValue *Value, destValue *Value, strictValidation bool) {
-	sys_pspec := unsafe.Pointer(pspec)
-	sys_srcValue := unsafe.Pointer(srcValue)
-	sys_destValue := unsafe.Pointer(destValue)
-	sys_strictValidation := bool(strictValidation)
+	sys_pspec := pspec.ToC()
+	sys_srcValue := srcValue.ToC()
+	sys_destValue := destValue.ToC()
+	sys_strictValidation := strictValidation
 }
 
 func ParamValueDefaults(pspec *ParamSpec, value *Value) {
-	sys_pspec := unsafe.Pointer(pspec)
-	sys_value := unsafe.Pointer(value)
+	sys_pspec := pspec.ToC()
+	sys_value := value.ToC()
 }
 
 func ParamValueSetDefault(pspec *ParamSpec, value *Value) {
-	sys_pspec := unsafe.Pointer(pspec)
-	sys_value := unsafe.Pointer(value)
+	sys_pspec := pspec.ToC()
+	sys_value := value.ToC()
 }
 
 func ParamValueValidate(pspec *ParamSpec, value *Value) {
-	sys_pspec := unsafe.Pointer(pspec)
-	sys_value := unsafe.Pointer(value)
+	sys_pspec := pspec.ToC()
+	sys_value := value.ToC()
 }
 
 func ParamValuesCmp(pspec *ParamSpec, value1 *Value, value2 *Value) {
-	sys_pspec := unsafe.Pointer(pspec)
-	sys_value1 := unsafe.Pointer(value1)
-	sys_value2 := unsafe.Pointer(value2)
+	sys_pspec := pspec.ToC()
+	sys_value1 := value1.ToC()
+	sys_value2 := value2.ToC()
 }
 
 func PointerTypeRegisterStatic(name string) {
-	sys_name := string(name)
+	sys_name := name
 }
 
 func SignalAccumulatorFirstWins(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy unsafe.Pointer) {
-	sys_ihint := unsafe.Pointer(ihint)
-	sys_returnAccu := unsafe.Pointer(returnAccu)
-	sys_handlerReturn := unsafe.Pointer(handlerReturn)
-	sys_dummy := unsafe.Pointer(dummy)
+	sys_ihint := ihint.ToC()
+	sys_returnAccu := returnAccu.ToC()
+	sys_handlerReturn := handlerReturn.ToC()
+	sys_dummy := dummy
 }
 
 func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy unsafe.Pointer) {
-	sys_ihint := unsafe.Pointer(ihint)
-	sys_returnAccu := unsafe.Pointer(returnAccu)
-	sys_handlerReturn := unsafe.Pointer(handlerReturn)
-	sys_dummy := unsafe.Pointer(dummy)
+	sys_ihint := ihint.ToC()
+	sys_returnAccu := returnAccu.ToC()
+	sys_handlerReturn := handlerReturn.ToC()
+	sys_dummy := dummy
 }
 
 // UNSUPPORTED : g_signal_add_emission_hook : parameter 'hook_func' is callback
@@ -547,22 +547,22 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 // UNSUPPORTED : g_signal_chain_from_overridden : parameter 'instance_and_params' is array parameter without length parameter
 
 func SignalChainFromOverriddenHandler(instance unsafe.Pointer) {
-	sys_instance := unsafe.Pointer(instance)
+	sys_instance := instance.ToC()
 }
 
 func SignalConnectClosure(instance unsafe.Pointer, detailedSignal string, closure *Closure, after bool) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_detailedSignal := string(detailedSignal)
-	sys_closure := unsafe.Pointer(closure)
-	sys_after := bool(after)
+	sys_instance := instance.ToC()
+	sys_detailedSignal := detailedSignal
+	sys_closure := closure.ToC()
+	sys_after := after
 }
 
 func SignalConnectClosureById(instance unsafe.Pointer, signalId uint, detail uint32, closure *Closure, after bool) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_signalId := uint(signalId)
-	sys_detail := uint32(detail)
-	sys_closure := unsafe.Pointer(closure)
-	sys_after := bool(after)
+	sys_instance := instance.ToC()
+	sys_signalId := signalId
+	sys_detail := detail
+	sys_closure := closure.ToC()
+	sys_after := after
 }
 
 // UNSUPPORTED : g_signal_connect_data : parameter 'c_handler' is callback
@@ -570,110 +570,110 @@ func SignalConnectClosureById(instance unsafe.Pointer, signalId uint, detail uin
 // UNSUPPORTED : g_signal_connect_object : parameter 'c_handler' is callback
 
 func SignalEmit(instance unsafe.Pointer, signalId uint, detail uint32) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_signalId := uint(signalId)
-	sys_detail := uint32(detail)
+	sys_instance := instance.ToC()
+	sys_signalId := signalId
+	sys_detail := detail
 }
 
 func SignalEmitByName(instance unsafe.Pointer, detailedSignal string) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_detailedSignal := string(detailedSignal)
+	sys_instance := instance.ToC()
+	sys_detailedSignal := detailedSignal
 }
 
 func SignalEmitValist(instance unsafe.Pointer, signalId uint, detail uint32) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_signalId := uint(signalId)
-	sys_detail := uint32(detail)
+	sys_instance := instance.ToC()
+	sys_signalId := signalId
+	sys_detail := detail
 }
 
 // UNSUPPORTED : g_signal_emitv : parameter 'instance_and_params' is array parameter without length parameter
 
 func SignalGetInvocationHint(instance unsafe.Pointer) {
-	sys_instance := unsafe.Pointer(instance)
+	sys_instance := instance.ToC()
 }
 
 func SignalHandlerBlock(instance unsafe.Pointer, handlerId uint64) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_handlerId := uint64(handlerId)
+	sys_instance := instance.ToC()
+	sys_handlerId := handlerId
 }
 
 func SignalHandlerDisconnect(instance unsafe.Pointer, handlerId uint64) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_handlerId := uint64(handlerId)
+	sys_instance := instance.ToC()
+	sys_handlerId := handlerId
 }
 
 func SignalHandlerFind(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_mask := int(mask)
-	sys_signalId := uint(signalId)
-	sys_detail := uint32(detail)
-	sys_closure := unsafe.Pointer(closure)
-	sys_func_ := unsafe.Pointer(func_)
-	sys_data := unsafe.Pointer(data)
+	sys_instance := instance.ToC()
+	sys_mask := mask
+	sys_signalId := signalId
+	sys_detail := detail
+	sys_closure := closure.ToC()
+	sys_func_ := func_
+	sys_data := data
 }
 
 func SignalHandlerIsConnected(instance unsafe.Pointer, handlerId uint64) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_handlerId := uint64(handlerId)
+	sys_instance := instance.ToC()
+	sys_handlerId := handlerId
 }
 
 func SignalHandlerUnblock(instance unsafe.Pointer, handlerId uint64) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_handlerId := uint64(handlerId)
+	sys_instance := instance.ToC()
+	sys_handlerId := handlerId
 }
 
 func SignalHandlersBlockMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_mask := int(mask)
-	sys_signalId := uint(signalId)
-	sys_detail := uint32(detail)
-	sys_closure := unsafe.Pointer(closure)
-	sys_func_ := unsafe.Pointer(func_)
-	sys_data := unsafe.Pointer(data)
+	sys_instance := instance.ToC()
+	sys_mask := mask
+	sys_signalId := signalId
+	sys_detail := detail
+	sys_closure := closure.ToC()
+	sys_func_ := func_
+	sys_data := data
 }
 
 func SignalHandlersDestroy(instance unsafe.Pointer) {
-	sys_instance := unsafe.Pointer(instance)
+	sys_instance := instance.ToC()
 }
 
 func SignalHandlersDisconnectMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_mask := int(mask)
-	sys_signalId := uint(signalId)
-	sys_detail := uint32(detail)
-	sys_closure := unsafe.Pointer(closure)
-	sys_func_ := unsafe.Pointer(func_)
-	sys_data := unsafe.Pointer(data)
+	sys_instance := instance.ToC()
+	sys_mask := mask
+	sys_signalId := signalId
+	sys_detail := detail
+	sys_closure := closure.ToC()
+	sys_func_ := func_
+	sys_data := data
 }
 
 func SignalHandlersUnblockMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_mask := int(mask)
-	sys_signalId := uint(signalId)
-	sys_detail := uint32(detail)
-	sys_closure := unsafe.Pointer(closure)
-	sys_func_ := unsafe.Pointer(func_)
-	sys_data := unsafe.Pointer(data)
+	sys_instance := instance.ToC()
+	sys_mask := mask
+	sys_signalId := signalId
+	sys_detail := detail
+	sys_closure := closure.ToC()
+	sys_func_ := func_
+	sys_data := data
 }
 
 func SignalHasHandlerPending(instance unsafe.Pointer, signalId uint, detail uint32, mayBeBlocked bool) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_signalId := uint(signalId)
-	sys_detail := uint32(detail)
-	sys_mayBeBlocked := bool(mayBeBlocked)
+	sys_instance := instance.ToC()
+	sys_signalId := signalId
+	sys_detail := detail
+	sys_mayBeBlocked := mayBeBlocked
 }
 
 func SignalListIds(itype uint64) {
-	sys_itype := uint64(itype)
+	sys_itype := itype
 }
 
 func SignalLookup(name string, itype uint64) {
-	sys_name := string(name)
-	sys_itype := uint64(itype)
+	sys_name := name
+	sys_itype := itype
 }
 
 func SignalName(signalId uint) {
-	sys_signalId := uint(signalId)
+	sys_signalId := signalId
 }
 
 // UNSUPPORTED : g_signal_new : parameter 'accumulator' is callback
@@ -685,242 +685,242 @@ func SignalName(signalId uint) {
 // UNSUPPORTED : g_signal_newv : parameter 'accumulator' is callback
 
 func SignalOverrideClassClosure(signalId uint, instanceType uint64, classClosure *Closure) {
-	sys_signalId := uint(signalId)
-	sys_instanceType := uint64(instanceType)
-	sys_classClosure := unsafe.Pointer(classClosure)
+	sys_signalId := signalId
+	sys_instanceType := instanceType
+	sys_classClosure := classClosure.ToC()
 }
 
 // UNSUPPORTED : g_signal_override_class_handler : parameter 'class_handler' is callback
 
 func SignalParseName(detailedSignal string, itype uint64, forceDetailQuark bool) {
-	sys_detailedSignal := string(detailedSignal)
-	sys_itype := uint64(itype)
-	sys_forceDetailQuark := bool(forceDetailQuark)
+	sys_detailedSignal := detailedSignal
+	sys_itype := itype
+	sys_forceDetailQuark := forceDetailQuark
 }
 
 func SignalQuery(signalId uint) {
-	sys_signalId := uint(signalId)
+	sys_signalId := signalId
 }
 
 func SignalRemoveEmissionHook(signalId uint, hookId uint64) {
-	sys_signalId := uint(signalId)
-	sys_hookId := uint64(hookId)
+	sys_signalId := signalId
+	sys_hookId := hookId
 }
 
 // UNSUPPORTED : g_signal_set_va_marshaller : blacklisted
 
 func SignalStopEmission(instance unsafe.Pointer, signalId uint, detail uint32) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_signalId := uint(signalId)
-	sys_detail := uint32(detail)
+	sys_instance := instance.ToC()
+	sys_signalId := signalId
+	sys_detail := detail
 }
 
 func SignalStopEmissionByName(instance unsafe.Pointer, detailedSignal string) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_detailedSignal := string(detailedSignal)
+	sys_instance := instance.ToC()
+	sys_detailedSignal := detailedSignal
 }
 
 func SignalTypeCclosureNew(itype uint64, structOffset uint) {
-	sys_itype := uint64(itype)
-	sys_structOffset := uint(structOffset)
+	sys_itype := itype
+	sys_structOffset := structOffset
 }
 
 func SourceSetClosure(source *glib.Source, closure *Closure) {
-	sys_source := unsafe.Pointer(source)
-	sys_closure := unsafe.Pointer(closure)
+	sys_source := source.ToC()
+	sys_closure := closure.ToC()
 }
 
 func SourceSetDummyCallback(source *glib.Source) {
-	sys_source := unsafe.Pointer(source)
+	sys_source := source.ToC()
 }
 
 func StrdupValueContents(value *Value) {
-	sys_value := unsafe.Pointer(value)
+	sys_value := value.ToC()
 }
 
 // UNSUPPORTED : g_type_add_class_cache_func : parameter 'cache_func' is callback
 
 func TypeAddClassPrivate(classType uint64, privateSize uint64) {
-	sys_classType := uint64(classType)
-	sys_privateSize := uint64(privateSize)
+	sys_classType := classType
+	sys_privateSize := privateSize
 }
 
 func TypeAddInstancePrivate(classType uint64, privateSize uint64) {
-	sys_classType := uint64(classType)
-	sys_privateSize := uint64(privateSize)
+	sys_classType := classType
+	sys_privateSize := privateSize
 }
 
 // UNSUPPORTED : g_type_add_interface_check : parameter 'check_func' is callback
 
 func TypeAddInterfaceDynamic(instanceType uint64, interfaceType uint64, plugin *TypePlugin) {
-	sys_instanceType := uint64(instanceType)
-	sys_interfaceType := uint64(interfaceType)
-	sys_plugin := unsafe.Pointer(plugin)
+	sys_instanceType := instanceType
+	sys_interfaceType := interfaceType
+	sys_plugin := plugin.ToC()
 }
 
 func TypeAddInterfaceStatic(instanceType uint64, interfaceType uint64, info *InterfaceInfo) {
-	sys_instanceType := uint64(instanceType)
-	sys_interfaceType := uint64(interfaceType)
-	sys_info := unsafe.Pointer(info)
+	sys_instanceType := instanceType
+	sys_interfaceType := interfaceType
+	sys_info := info.ToC()
 }
 
 func TypeCheckClassCast(gClass *TypeClass, isAType uint64) {
-	sys_gClass := unsafe.Pointer(gClass)
-	sys_isAType := uint64(isAType)
+	sys_gClass := gClass.ToC()
+	sys_isAType := isAType
 }
 
 func TypeCheckClassIsA(gClass *TypeClass, isAType uint64) {
-	sys_gClass := unsafe.Pointer(gClass)
-	sys_isAType := uint64(isAType)
+	sys_gClass := gClass.ToC()
+	sys_isAType := isAType
 }
 
 func TypeCheckInstance(instance *TypeInstance) {
-	sys_instance := unsafe.Pointer(instance)
+	sys_instance := instance.ToC()
 }
 
 func TypeCheckInstanceCast(instance *TypeInstance, ifaceType uint64) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_ifaceType := uint64(ifaceType)
+	sys_instance := instance.ToC()
+	sys_ifaceType := ifaceType
 }
 
 func TypeCheckInstanceIsA(instance *TypeInstance, ifaceType uint64) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_ifaceType := uint64(ifaceType)
+	sys_instance := instance.ToC()
+	sys_ifaceType := ifaceType
 }
 
 func TypeCheckInstanceIsFundamentallyA(instance *TypeInstance, fundamentalType uint64) {
-	sys_instance := unsafe.Pointer(instance)
-	sys_fundamentalType := uint64(fundamentalType)
+	sys_instance := instance.ToC()
+	sys_fundamentalType := fundamentalType
 }
 
 func TypeCheckIsValueType(type_ uint64) {
-	sys_type_ := uint64(type_)
+	sys_type_ := type_
 }
 
 func TypeCheckValue(value *Value) {
-	sys_value := unsafe.Pointer(value)
+	sys_value := value.ToC()
 }
 
 func TypeCheckValueHolds(value *Value, type_ uint64) {
-	sys_value := unsafe.Pointer(value)
-	sys_type_ := uint64(type_)
+	sys_value := value.ToC()
+	sys_type_ := type_
 }
 
 func TypeChildren(type_ uint64) {
-	sys_type_ := uint64(type_)
+	sys_type_ := type_
 }
 
 func TypeCreateInstance(type_ uint64) {
-	sys_type_ := uint64(type_)
+	sys_type_ := type_
 }
 
 func TypeDefaultInterfacePeek(gType uint64) {
-	sys_gType := uint64(gType)
+	sys_gType := gType
 }
 
 func TypeDefaultInterfaceRef(gType uint64) {
-	sys_gType := uint64(gType)
+	sys_gType := gType
 }
 
 func TypeDefaultInterfaceUnref(gIface unsafe.Pointer) {
-	sys_gIface := unsafe.Pointer(gIface)
+	sys_gIface := gIface.ToC()
 }
 
 func TypeDepth(type_ uint64) {
-	sys_type_ := uint64(type_)
+	sys_type_ := type_
 }
 
 func TypeEnsure(type_ uint64) {
-	sys_type_ := uint64(type_)
+	sys_type_ := type_
 }
 
 func TypeFreeInstance(instance *TypeInstance) {
-	sys_instance := unsafe.Pointer(instance)
+	sys_instance := instance.ToC()
 }
 
 func TypeFromName(name string) {
-	sys_name := string(name)
+	sys_name := name
 }
 
 func TypeFundamental(typeId uint64) {
-	sys_typeId := uint64(typeId)
+	sys_typeId := typeId
 }
 
 func TypeFundamentalNext() {}
 
 func TypeGetPlugin(type_ uint64) {
-	sys_type_ := uint64(type_)
+	sys_type_ := type_
 }
 
 func TypeGetQdata(type_ uint64, quark uint32) {
-	sys_type_ := uint64(type_)
-	sys_quark := uint32(quark)
+	sys_type_ := type_
+	sys_quark := quark
 }
 
 func TypeInit() {}
 
 func TypeInitWithDebugFlags(debugFlags int) {
-	sys_debugFlags := int(debugFlags)
+	sys_debugFlags := debugFlags
 }
 
 func TypeInterfaces(type_ uint64) {
-	sys_type_ := uint64(type_)
+	sys_type_ := type_
 }
 
 func TypeIsA(type_ uint64, isAType uint64) {
-	sys_type_ := uint64(type_)
-	sys_isAType := uint64(isAType)
+	sys_type_ := type_
+	sys_isAType := isAType
 }
 
 func TypeName(type_ uint64) {
-	sys_type_ := uint64(type_)
+	sys_type_ := type_
 }
 
 func TypeNameFromClass(gClass *TypeClass) {
-	sys_gClass := unsafe.Pointer(gClass)
+	sys_gClass := gClass.ToC()
 }
 
 func TypeNameFromInstance(instance *TypeInstance) {
-	sys_instance := unsafe.Pointer(instance)
+	sys_instance := instance.ToC()
 }
 
 func TypeNextBase(leafType uint64, rootType uint64) {
-	sys_leafType := uint64(leafType)
-	sys_rootType := uint64(rootType)
+	sys_leafType := leafType
+	sys_rootType := rootType
 }
 
 func TypeParent(type_ uint64) {
-	sys_type_ := uint64(type_)
+	sys_type_ := type_
 }
 
 func TypeQname(type_ uint64) {
-	sys_type_ := uint64(type_)
+	sys_type_ := type_
 }
 
 func TypeQuery(type_ uint64) {
-	sys_type_ := uint64(type_)
+	sys_type_ := type_
 }
 
 func TypeRegisterDynamic(parentType uint64, typeName string, plugin *TypePlugin, flags int) {
-	sys_parentType := uint64(parentType)
-	sys_typeName := string(typeName)
-	sys_plugin := unsafe.Pointer(plugin)
-	sys_flags := int(flags)
+	sys_parentType := parentType
+	sys_typeName := typeName
+	sys_plugin := plugin.ToC()
+	sys_flags := flags
 }
 
 func TypeRegisterFundamental(typeId uint64, typeName string, info *TypeInfo, finfo *TypeFundamentalInfo, flags int) {
-	sys_typeId := uint64(typeId)
-	sys_typeName := string(typeName)
-	sys_info := unsafe.Pointer(info)
-	sys_finfo := unsafe.Pointer(finfo)
-	sys_flags := int(flags)
+	sys_typeId := typeId
+	sys_typeName := typeName
+	sys_info := info.ToC()
+	sys_finfo := finfo.ToC()
+	sys_flags := flags
 }
 
 func TypeRegisterStatic(parentType uint64, typeName string, info *TypeInfo, flags int) {
-	sys_parentType := uint64(parentType)
-	sys_typeName := string(typeName)
-	sys_info := unsafe.Pointer(info)
-	sys_flags := int(flags)
+	sys_parentType := parentType
+	sys_typeName := typeName
+	sys_info := info.ToC()
+	sys_flags := flags
 }
 
 // UNSUPPORTED : g_type_register_static_simple : parameter 'class_init' is callback
@@ -930,14 +930,14 @@ func TypeRegisterStatic(parentType uint64, typeName string, info *TypeInfo, flag
 // UNSUPPORTED : g_type_remove_interface_check : parameter 'check_func' is callback
 
 func TypeSetQdata(type_ uint64, quark uint32, data unsafe.Pointer) {
-	sys_type_ := uint64(type_)
-	sys_quark := uint32(quark)
-	sys_data := unsafe.Pointer(data)
+	sys_type_ := type_
+	sys_quark := quark
+	sys_data := data
 }
 
 func TypeTestFlags(type_ uint64, flags uint) {
-	sys_type_ := uint64(type_)
-	sys_flags := uint(flags)
+	sys_type_ := type_
+	sys_flags := flags
 }
 
 // UNSUPPORTED : g_value_register_transform_func : parameter 'transform_func' is callback
@@ -947,9 +947,17 @@ type CClosure struct {
 	native unsafe.Pointer
 }
 
+func (recv *CClosure) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // Closure is a representation of the C record GClosure.
 type Closure struct {
 	native unsafe.Pointer
+}
+
+func (recv *Closure) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ClosureNotifyData is a representation of the C record GClosureNotifyData.
@@ -957,9 +965,17 @@ type ClosureNotifyData struct {
 	native unsafe.Pointer
 }
 
+func (recv *ClosureNotifyData) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // EnumClass is a representation of the C record GEnumClass.
 type EnumClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *EnumClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // EnumValue is a representation of the C record GEnumValue.
@@ -967,9 +983,17 @@ type EnumValue struct {
 	native unsafe.Pointer
 }
 
+func (recv *EnumValue) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // FlagsClass is a representation of the C record GFlagsClass.
 type FlagsClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *FlagsClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // FlagsValue is a representation of the C record GFlagsValue.
@@ -977,9 +1001,17 @@ type FlagsValue struct {
 	native unsafe.Pointer
 }
 
+func (recv *FlagsValue) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // InitiallyUnownedClass is a representation of the C record GInitiallyUnownedClass.
 type InitiallyUnownedClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *InitiallyUnownedClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // InterfaceInfo is a representation of the C record GInterfaceInfo.
@@ -987,9 +1019,17 @@ type InterfaceInfo struct {
 	native unsafe.Pointer
 }
 
+func (recv *InterfaceInfo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ObjectClass is a representation of the C record GObjectClass.
 type ObjectClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ObjectClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ObjectConstructParam is a representation of the C record GObjectConstructParam.
@@ -997,9 +1037,17 @@ type ObjectConstructParam struct {
 	native unsafe.Pointer
 }
 
+func (recv *ObjectConstructParam) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecClass is a representation of the C record GParamSpecClass.
 type ParamSpecClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpecClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ParamSpecPool is a representation of the C record GParamSpecPool.
@@ -1007,9 +1055,17 @@ type ParamSpecPool struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecPool) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecTypeInfo is a representation of the C record GParamSpecTypeInfo.
 type ParamSpecTypeInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpecTypeInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Parameter is a representation of the C record GParameter.
@@ -1017,9 +1073,17 @@ type Parameter struct {
 	native unsafe.Pointer
 }
 
+func (recv *Parameter) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // SignalInvocationHint is a representation of the C record GSignalInvocationHint.
 type SignalInvocationHint struct {
 	native unsafe.Pointer
+}
+
+func (recv *SignalInvocationHint) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // SignalQuery is a representation of the C record GSignalQuery.
@@ -1027,9 +1091,17 @@ type SignalQuery struct {
 	native unsafe.Pointer
 }
 
+func (recv *SignalQuery) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TypeClass is a representation of the C record GTypeClass.
 type TypeClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TypeClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TypeFundamentalInfo is a representation of the C record GTypeFundamentalInfo.
@@ -1037,9 +1109,17 @@ type TypeFundamentalInfo struct {
 	native unsafe.Pointer
 }
 
+func (recv *TypeFundamentalInfo) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TypeInfo is a representation of the C record GTypeInfo.
 type TypeInfo struct {
 	native unsafe.Pointer
+}
+
+func (recv *TypeInfo) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TypeInstance is a representation of the C record GTypeInstance.
@@ -1047,9 +1127,17 @@ type TypeInstance struct {
 	native unsafe.Pointer
 }
 
+func (recv *TypeInstance) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TypeInterface is a representation of the C record GTypeInterface.
 type TypeInterface struct {
 	native unsafe.Pointer
+}
+
+func (recv *TypeInterface) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TypeModuleClass is a representation of the C record GTypeModuleClass.
@@ -1057,9 +1145,17 @@ type TypeModuleClass struct {
 	native unsafe.Pointer
 }
 
+func (recv *TypeModuleClass) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TypePluginClass is a representation of the C record GTypePluginClass.
 type TypePluginClass struct {
 	native unsafe.Pointer
+}
+
+func (recv *TypePluginClass) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TypeQuery is a representation of the C record GTypeQuery.
@@ -1067,9 +1163,17 @@ type TypeQuery struct {
 	native unsafe.Pointer
 }
 
+func (recv *TypeQuery) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TypeValueTable is a representation of the C record GTypeValueTable.
 type TypeValueTable struct {
 	native unsafe.Pointer
+}
+
+func (recv *TypeValueTable) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Value is a representation of the C record GValue.
@@ -1077,14 +1181,26 @@ type Value struct {
 	native unsafe.Pointer
 }
 
+func (recv *Value) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ValueArray is a representation of the C record GValueArray.
 type ValueArray struct {
 	native unsafe.Pointer
 }
 
+func (recv *ValueArray) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // WeakRef is a representation of the C record GWeakRef.
 type WeakRef struct {
 	native unsafe.Pointer
+}
+
+func (recv *WeakRef) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Binding is a representation of the C record GBinding.
@@ -1094,9 +1210,17 @@ type Binding struct {
 	native unsafe.Pointer
 }
 
+func (recv *Binding) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // InitiallyUnowned is a representation of the C record GInitiallyUnowned.
 type InitiallyUnowned struct {
 	native unsafe.Pointer
+}
+
+func (recv *InitiallyUnowned) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // Object is a representation of the C record GObject.
@@ -1104,9 +1228,17 @@ type Object struct {
 	native unsafe.Pointer
 }
 
+func (recv *Object) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpec is a representation of the C record GParamSpec.
 type ParamSpec struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpec) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ParamSpecBoolean is a representation of the C record GParamSpecBoolean.
@@ -1114,9 +1246,17 @@ type ParamSpecBoolean struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecBoolean) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecBoxed is a representation of the C record GParamSpecBoxed.
 type ParamSpecBoxed struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpecBoxed) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ParamSpecChar is a representation of the C record GParamSpecChar.
@@ -1124,9 +1264,17 @@ type ParamSpecChar struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecChar) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecDouble is a representation of the C record GParamSpecDouble.
 type ParamSpecDouble struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpecDouble) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ParamSpecEnum is a representation of the C record GParamSpecEnum.
@@ -1134,14 +1282,26 @@ type ParamSpecEnum struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecEnum) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecFlags is a representation of the C record GParamSpecFlags.
 type ParamSpecFlags struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecFlags) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecFloat is a representation of the C record GParamSpecFloat.
 type ParamSpecFloat struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpecFloat) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ParamSpecGType is a representation of the C record GParamSpecGType.
@@ -1151,9 +1311,17 @@ type ParamSpecGType struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecGType) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecInt is a representation of the C record GParamSpecInt.
 type ParamSpecInt struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpecInt) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ParamSpecInt64 is a representation of the C record GParamSpecInt64.
@@ -1161,14 +1329,26 @@ type ParamSpecInt64 struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecInt64) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecLong is a representation of the C record GParamSpecLong.
 type ParamSpecLong struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecLong) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecObject is a representation of the C record GParamSpecObject.
 type ParamSpecObject struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpecObject) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ParamSpecOverride is a representation of the C record GParamSpecOverride.
@@ -1178,9 +1358,17 @@ type ParamSpecOverride struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecOverride) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecParam is a representation of the C record GParamSpecParam.
 type ParamSpecParam struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpecParam) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ParamSpecPointer is a representation of the C record GParamSpecPointer.
@@ -1188,9 +1376,17 @@ type ParamSpecPointer struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecPointer) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecString is a representation of the C record GParamSpecString.
 type ParamSpecString struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpecString) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ParamSpecUChar is a representation of the C record GParamSpecUChar.
@@ -1198,9 +1394,17 @@ type ParamSpecUChar struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecUChar) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecUInt is a representation of the C record GParamSpecUInt.
 type ParamSpecUInt struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpecUInt) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ParamSpecUInt64 is a representation of the C record GParamSpecUInt64.
@@ -1208,9 +1412,17 @@ type ParamSpecUInt64 struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecUInt64) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecULong is a representation of the C record GParamSpecULong.
 type ParamSpecULong struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpecULong) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ParamSpecUnichar is a representation of the C record GParamSpecUnichar.
@@ -1218,9 +1430,17 @@ type ParamSpecUnichar struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecUnichar) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // ParamSpecValueArray is a representation of the C record GParamSpecValueArray.
 type ParamSpecValueArray struct {
 	native unsafe.Pointer
+}
+
+func (recv *ParamSpecValueArray) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // ParamSpecVariant is a representation of the C record GParamSpecVariant.
@@ -1230,9 +1450,17 @@ type ParamSpecVariant struct {
 	native unsafe.Pointer
 }
 
+func (recv *ParamSpecVariant) ToC() unsafe.Pointer {
+	return recv.native
+}
+
 // TypeModule is a representation of the C record GTypeModule.
 type TypeModule struct {
 	native unsafe.Pointer
+}
+
+func (recv *TypeModule) ToC() unsafe.Pointer {
+	return recv.native
 }
 
 // TypePlugin is a representation of the C interface GTypePlugin.

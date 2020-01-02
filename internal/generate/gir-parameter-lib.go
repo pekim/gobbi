@@ -23,7 +23,12 @@ func (p *Parameter) libParamGoType() *jen.Statement {
 
 func (p *Parameter) generateLibArg(g *jen.Group, varName string) {
 	if p.Type != nil {
-		argValue := p.Type.sysParamGoType(false).Parens(jen.Id(p.goVarName))
+		argValue := jen.Id(p.goVarName)
+
+		if p.Type.isRecord() || p.Type.isClass() || p.Type.isInterface() || p.Type.isUnion() {
+			argValue = jen.Id(p.goVarName).Dot("ToC").Call()
+		}
+
 		g.Id(varName).Op(":=").Add(argValue)
 	}
 
