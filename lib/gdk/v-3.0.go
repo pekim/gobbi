@@ -8102,86 +8102,86 @@ const WindowWindowClass_input_output = WindowWindowClass(0)
 // WindowWindowClass_input_only is a representation of the C enumeration member GDK_INPUT_ONLY.
 const WindowWindowClass_input_only = WindowWindowClass(1)
 
-func Fn_gdk_add_option_entries_libgtk_only(group *glib.OptionGroup) {
+func AddOptionEntriesLibgtkOnly(group *glib.OptionGroup) {
 	sys_group := unsafe.Pointer(group)
 }
 
-func Fn_gdk_beep() {}
+func Beep() {}
 
-func Fn_gdk_cairo_create(window *Window) {
+func CairoCreate(window *Window) {
 	sys_window := unsafe.Pointer(window)
 }
 
-func Fn_gdk_cairo_get_clip_rectangle(cr *cairo.Context) {
+func CairoGetClipRectangle(cr *cairo.Context) {
 	sys_cr := unsafe.Pointer(cr)
 }
 
-func Fn_gdk_cairo_rectangle(cr *cairo.Context, rectangle *Rectangle) {
+func CairoRectangle(cr *cairo.Context, rectangle *Rectangle) {
 	sys_cr := unsafe.Pointer(cr)
 	sys_rectangle := unsafe.Pointer(rectangle)
 }
 
-func Fn_gdk_cairo_region(cr *cairo.Context, region *cairo.Region) {
+func CairoRegion(cr *cairo.Context, region *cairo.Region) {
 	sys_cr := unsafe.Pointer(cr)
 	sys_region := unsafe.Pointer(region)
 }
 
-func Fn_gdk_cairo_region_create_from_surface(surface *cairo.Surface) {
+func CairoRegionCreateFromSurface(surface *cairo.Surface) {
 	sys_surface := unsafe.Pointer(surface)
 }
 
-func Fn_gdk_cairo_set_source_color(cr *cairo.Context, color *Color) {
+func CairoSetSourceColor(cr *cairo.Context, color *Color) {
 	sys_cr := unsafe.Pointer(cr)
 	sys_color := unsafe.Pointer(color)
 }
 
-func Fn_gdk_cairo_set_source_pixbuf(cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, pixbufX float64, pixbufY float64) {
+func CairoSetSourcePixbuf(cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, pixbufX float64, pixbufY float64) {
 	sys_cr := unsafe.Pointer(cr)
 	sys_pixbuf := unsafe.Pointer(pixbuf)
 	sys_pixbufX := float64(pixbufX)
 	sys_pixbufY := float64(pixbufY)
 }
 
-func Fn_gdk_cairo_set_source_rgba(cr *cairo.Context, rgba *RGBA) {
+func CairoSetSourceRgba(cr *cairo.Context, rgba *RGBA) {
 	sys_cr := unsafe.Pointer(cr)
 	sys_rgba := unsafe.Pointer(rgba)
 }
 
-func Fn_gdk_cairo_set_source_window(cr *cairo.Context, window *Window, x float64, y float64) {
+func CairoSetSourceWindow(cr *cairo.Context, window *Window, x float64, y float64) {
 	sys_cr := unsafe.Pointer(cr)
 	sys_window := unsafe.Pointer(window)
 	sys_x := float64(x)
 	sys_y := float64(y)
 }
 
-func Fn_gdk_disable_multidevice() {}
+func DisableMultidevice() {}
 
-func Fn_gdk_drag_abort(context *DragContext, time uint32) {
+func DragAbort(context *DragContext, time uint32) {
 	sys_context := unsafe.Pointer(context)
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_drag_begin(window *Window, targets *glib.List) {
+func DragBegin(window *Window, targets *glib.List) {
 	sys_window := unsafe.Pointer(window)
 	sys_targets := unsafe.Pointer(targets)
 }
 
-func Fn_gdk_drag_begin_for_device(window *Window, device *Device, targets *glib.List) {
+func DragBeginForDevice(window *Window, device *Device, targets *glib.List) {
 	sys_window := unsafe.Pointer(window)
 	sys_device := unsafe.Pointer(device)
 	sys_targets := unsafe.Pointer(targets)
 }
 
-func Fn_gdk_drag_drop(context *DragContext, time uint32) {
+func DragDrop(context *DragContext, time uint32) {
 	sys_context := unsafe.Pointer(context)
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_drag_drop_succeeded(context *DragContext) {
+func DragDropSucceeded(context *DragContext) {
 	sys_context := unsafe.Pointer(context)
 }
 
-func Fn_gdk_drag_find_window_for_screen(context *DragContext, dragWindow *Window, screen *Screen, xRoot int, yRoot int) {
+func DragFindWindowForScreen(context *DragContext, dragWindow *Window, screen *Screen, xRoot int, yRoot int) {
 	sys_context := unsafe.Pointer(context)
 	sys_dragWindow := unsafe.Pointer(dragWindow)
 	sys_screen := unsafe.Pointer(screen)
@@ -8189,11 +8189,11 @@ func Fn_gdk_drag_find_window_for_screen(context *DragContext, dragWindow *Window
 	sys_yRoot := int(yRoot)
 }
 
-func Fn_gdk_drag_get_selection(context *DragContext) {
+func DragGetSelection(context *DragContext) {
 	sys_context := unsafe.Pointer(context)
 }
 
-func Fn_gdk_drag_motion(context *DragContext, destWindow *Window, protocol int, xRoot int, yRoot int, suggestedAction int, possibleActions int, time uint32) {
+func DragMotion(context *DragContext, destWindow *Window, protocol int, xRoot int, yRoot int, suggestedAction int, possibleActions int, time uint32) {
 	sys_context := unsafe.Pointer(context)
 	sys_destWindow := unsafe.Pointer(destWindow)
 	sys_protocol := int(protocol)
@@ -8204,135 +8204,135 @@ func Fn_gdk_drag_motion(context *DragContext, destWindow *Window, protocol int, 
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_drag_status(context *DragContext, action int, time uint32) {
+func DragStatus(context *DragContext, action int, time uint32) {
 	sys_context := unsafe.Pointer(context)
 	sys_action := int(action)
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_drop_finish(context *DragContext, success bool, time uint32) {
+func DropFinish(context *DragContext, success bool, time uint32) {
 	sys_context := unsafe.Pointer(context)
 	sys_success := bool(success)
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_drop_reply(context *DragContext, accepted bool, time uint32) {
+func DropReply(context *DragContext, accepted bool, time uint32) {
 	sys_context := unsafe.Pointer(context)
 	sys_accepted := bool(accepted)
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_error_trap_pop() {}
+func ErrorTrapPop() {}
 
-func Fn_gdk_error_trap_pop_ignored() {}
+func ErrorTrapPopIgnored() {}
 
-func Fn_gdk_error_trap_push() {}
+func ErrorTrapPush() {}
 
 // UNSUPPORTED : gdk_event_handler_set : parameter 'func' is callback
 
-func Fn_gdk_events_get_angle(event1 *Event, event2 *Event) {
+func EventsGetAngle(event1 *Event, event2 *Event) {
 	sys_event1 := unsafe.Pointer(event1)
 	sys_event2 := unsafe.Pointer(event2)
 }
 
-func Fn_gdk_events_get_center(event1 *Event, event2 *Event) {
+func EventsGetCenter(event1 *Event, event2 *Event) {
 	sys_event1 := unsafe.Pointer(event1)
 	sys_event2 := unsafe.Pointer(event2)
 }
 
-func Fn_gdk_events_get_distance(event1 *Event, event2 *Event) {
+func EventsGetDistance(event1 *Event, event2 *Event) {
 	sys_event1 := unsafe.Pointer(event1)
 	sys_event2 := unsafe.Pointer(event2)
 }
 
-func Fn_gdk_events_pending() {}
+func EventsPending() {}
 
-func Fn_gdk_flush() {}
+func Flush() {}
 
-func Fn_gdk_get_default_root_window() {}
+func GetDefaultRootWindow() {}
 
-func Fn_gdk_get_display() {}
+func GetDisplay() {}
 
-func Fn_gdk_get_display_arg_name() {}
+func GetDisplayArgName() {}
 
-func Fn_gdk_get_program_class() {}
+func GetProgramClass() {}
 
-func Fn_gdk_get_show_events() {}
+func GetShowEvents() {}
 
 // UNSUPPORTED : gdk_init : has array param, argv
 
 // UNSUPPORTED : gdk_init_check : has array param, argv
 
-func Fn_gdk_keyboard_grab(window *Window, ownerEvents bool, time uint32) {
+func KeyboardGrab(window *Window, ownerEvents bool, time uint32) {
 	sys_window := unsafe.Pointer(window)
 	sys_ownerEvents := bool(ownerEvents)
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_keyboard_ungrab(time uint32) {
+func KeyboardUngrab(time uint32) {
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_keyval_convert_case(symbol uint) {
+func KeyvalConvertCase(symbol uint) {
 	sys_symbol := uint(symbol)
 }
 
-func Fn_gdk_keyval_from_name(keyvalName string) {
+func KeyvalFromName(keyvalName string) {
 	sys_keyvalName := string(keyvalName)
 }
 
-func Fn_gdk_keyval_is_lower(keyval uint) {
+func KeyvalIsLower(keyval uint) {
 	sys_keyval := uint(keyval)
 }
 
-func Fn_gdk_keyval_is_upper(keyval uint) {
+func KeyvalIsUpper(keyval uint) {
 	sys_keyval := uint(keyval)
 }
 
-func Fn_gdk_keyval_name(keyval uint) {
+func KeyvalName(keyval uint) {
 	sys_keyval := uint(keyval)
 }
 
-func Fn_gdk_keyval_to_lower(keyval uint) {
+func KeyvalToLower(keyval uint) {
 	sys_keyval := uint(keyval)
 }
 
-func Fn_gdk_keyval_to_unicode(keyval uint) {
+func KeyvalToUnicode(keyval uint) {
 	sys_keyval := uint(keyval)
 }
 
-func Fn_gdk_keyval_to_upper(keyval uint) {
+func KeyvalToUpper(keyval uint) {
 	sys_keyval := uint(keyval)
 }
 
-func Fn_gdk_list_visuals() {}
+func ListVisuals() {}
 
-func Fn_gdk_notify_startup_complete() {}
+func NotifyStartupComplete() {}
 
-func Fn_gdk_notify_startup_complete_with_id(startupId string) {
+func NotifyStartupCompleteWithId(startupId string) {
 	sys_startupId := string(startupId)
 }
 
-func Fn_gdk_offscreen_window_get_embedder(window *Window) {
+func OffscreenWindowGetEmbedder(window *Window) {
 	sys_window := unsafe.Pointer(window)
 }
 
-func Fn_gdk_offscreen_window_get_surface(window *Window) {
+func OffscreenWindowGetSurface(window *Window) {
 	sys_window := unsafe.Pointer(window)
 }
 
-func Fn_gdk_offscreen_window_set_embedder(window *Window, embedder *Window) {
+func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
 	sys_window := unsafe.Pointer(window)
 	sys_embedder := unsafe.Pointer(embedder)
 }
 
-func Fn_gdk_pango_context_get() {}
+func PangoContextGet() {}
 
-func Fn_gdk_pango_context_get_for_screen(screen *Screen) {
+func PangoContextGetForScreen(screen *Screen) {
 	sys_screen := unsafe.Pointer(screen)
 }
 
-func Fn_gdk_pango_layout_get_clip_region(layout *pango.Layout, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
+func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
 	sys_layout := unsafe.Pointer(layout)
 	sys_xOrigin := int(xOrigin)
 	sys_yOrigin := int(yOrigin)
@@ -8344,7 +8344,7 @@ func Fn_gdk_pango_layout_get_clip_region(layout *pango.Layout, xOrigin int, yOri
 
 // UNSUPPORTED : gdk_parse_args : has array param, argv
 
-func Fn_gdk_pixbuf_get_from_surface(surface *cairo.Surface, srcX int, srcY int, width int, height int) {
+func PixbufGetFromSurface(surface *cairo.Surface, srcX int, srcY int, width int, height int) {
 	sys_surface := unsafe.Pointer(surface)
 	sys_srcX := int(srcX)
 	sys_srcY := int(srcY)
@@ -8352,7 +8352,7 @@ func Fn_gdk_pixbuf_get_from_surface(surface *cairo.Surface, srcX int, srcY int, 
 	sys_height := int(height)
 }
 
-func Fn_gdk_pixbuf_get_from_window(window *Window, srcX int, srcY int, width int, height int) {
+func PixbufGetFromWindow(window *Window, srcX int, srcY int, width int, height int) {
 	sys_window := unsafe.Pointer(window)
 	sys_srcX := int(srcX)
 	sys_srcY := int(srcY)
@@ -8360,7 +8360,7 @@ func Fn_gdk_pixbuf_get_from_window(window *Window, srcX int, srcY int, width int
 	sys_height := int(height)
 }
 
-func Fn_gdk_pointer_grab(window *Window, ownerEvents bool, eventMask int, confineTo *Window, cursor *Cursor, time uint32) {
+func PointerGrab(window *Window, ownerEvents bool, eventMask int, confineTo *Window, cursor *Cursor, time uint32) {
 	sys_window := unsafe.Pointer(window)
 	sys_ownerEvents := bool(ownerEvents)
 	sys_eventMask := int(eventMask)
@@ -8369,15 +8369,15 @@ func Fn_gdk_pointer_grab(window *Window, ownerEvents bool, eventMask int, confin
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_pointer_is_grabbed() {}
+func PointerIsGrabbed() {}
 
-func Fn_gdk_pointer_ungrab(time uint32) {
+func PointerUngrab(time uint32) {
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_pre_parse_libgtk_only() {}
+func PreParseLibgtkOnly() {}
 
-func Fn_gdk_property_change(window *Window, property Atom, type_ Atom, format int, mode int, data *uint8, nelements int) {
+func PropertyChange(window *Window, property Atom, type_ Atom, format int, mode int, data *uint8, nelements int) {
 	sys_window := unsafe.Pointer(window)
 	sys_property := Atom(property)
 	sys_type_ := Atom(type_)
@@ -8387,7 +8387,7 @@ func Fn_gdk_property_change(window *Window, property Atom, type_ Atom, format in
 	sys_nelements := int(nelements)
 }
 
-func Fn_gdk_property_delete(window *Window, property Atom) {
+func PropertyDelete(window *Window, property Atom) {
 	sys_window := unsafe.Pointer(window)
 	sys_property := Atom(property)
 }
@@ -8398,30 +8398,30 @@ func Fn_gdk_property_delete(window *Window, property Atom) {
 
 // UNSUPPORTED : gdk_query_visual_types : has array param, visual_types
 
-func Fn_gdk_selection_convert(requestor *Window, selection Atom, target Atom, time uint32) {
+func SelectionConvert(requestor *Window, selection Atom, target Atom, time uint32) {
 	sys_requestor := unsafe.Pointer(requestor)
 	sys_selection := Atom(selection)
 	sys_target := Atom(target)
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_selection_owner_get(selection Atom) {
+func SelectionOwnerGet(selection Atom) {
 	sys_selection := Atom(selection)
 }
 
-func Fn_gdk_selection_owner_get_for_display(display *Display, selection Atom) {
+func SelectionOwnerGetForDisplay(display *Display, selection Atom) {
 	sys_display := unsafe.Pointer(display)
 	sys_selection := Atom(selection)
 }
 
-func Fn_gdk_selection_owner_set(owner *Window, selection Atom, time uint32, sendEvent bool) {
+func SelectionOwnerSet(owner *Window, selection Atom, time uint32, sendEvent bool) {
 	sys_owner := unsafe.Pointer(owner)
 	sys_selection := Atom(selection)
 	sys_time := uint32(time)
 	sys_sendEvent := bool(sendEvent)
 }
 
-func Fn_gdk_selection_owner_set_for_display(display *Display, owner *Window, selection Atom, time uint32, sendEvent bool) {
+func SelectionOwnerSetForDisplay(display *Display, owner *Window, selection Atom, time uint32, sendEvent bool) {
 	sys_display := unsafe.Pointer(display)
 	sys_owner := unsafe.Pointer(owner)
 	sys_selection := Atom(selection)
@@ -8429,14 +8429,14 @@ func Fn_gdk_selection_owner_set_for_display(display *Display, owner *Window, sel
 	sys_sendEvent := bool(sendEvent)
 }
 
-func Fn_gdk_selection_property_get(requestor *Window, data **uint8, propType *Atom, propFormat *int) {
+func SelectionPropertyGet(requestor *Window, data **uint8, propType *Atom, propFormat *int) {
 	sys_requestor := unsafe.Pointer(requestor)
 	sys_data := **uint8(data)
 	sys_propType := unsafe.Pointer(propType)
 	sys_propFormat := *int(propFormat)
 }
 
-func Fn_gdk_selection_send_notify(requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
+func SelectionSendNotify(requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
 	sys_requestor := unsafe.Pointer(requestor)
 	sys_selection := Atom(selection)
 	sys_target := Atom(target)
@@ -8444,7 +8444,7 @@ func Fn_gdk_selection_send_notify(requestor *Window, selection Atom, target Atom
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_selection_send_notify_for_display(display *Display, requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
+func SelectionSendNotifyForDisplay(display *Display, requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
 	sys_display := unsafe.Pointer(display)
 	sys_requestor := unsafe.Pointer(requestor)
 	sys_selection := Atom(selection)
@@ -8453,30 +8453,30 @@ func Fn_gdk_selection_send_notify_for_display(display *Display, requestor *Windo
 	sys_time := uint32(time)
 }
 
-func Fn_gdk_set_double_click_time(msec uint) {
+func SetDoubleClickTime(msec uint) {
 	sys_msec := uint(msec)
 }
 
-func Fn_gdk_set_program_class(programClass string) {
+func SetProgramClass(programClass string) {
 	sys_programClass := string(programClass)
 }
 
-func Fn_gdk_set_show_events(showEvents bool) {
+func SetShowEvents(showEvents bool) {
 	sys_showEvents := bool(showEvents)
 }
 
-func Fn_gdk_setting_get(name string, value *gobject.Value) {
+func SettingGet(name string, value *gobject.Value) {
 	sys_name := string(name)
 	sys_value := unsafe.Pointer(value)
 }
 
 // UNSUPPORTED : gdk_synthesize_window_state : blacklisted
 
-func Fn_gdk_test_render_sync(window *Window) {
+func TestRenderSync(window *Window) {
 	sys_window := unsafe.Pointer(window)
 }
 
-func Fn_gdk_test_simulate_button(window *Window, x int, y int, button uint, modifiers int, buttonPressrelease int) {
+func TestSimulateButton(window *Window, x int, y int, button uint, modifiers int, buttonPressrelease int) {
 	sys_window := unsafe.Pointer(window)
 	sys_x := int(x)
 	sys_y := int(y)
@@ -8485,7 +8485,7 @@ func Fn_gdk_test_simulate_button(window *Window, x int, y int, button uint, modi
 	sys_buttonPressrelease := int(buttonPressrelease)
 }
 
-func Fn_gdk_test_simulate_key(window *Window, x int, y int, keyval uint, modifiers int, keyPressrelease int) {
+func TestSimulateKey(window *Window, x int, y int, keyval uint, modifiers int, keyPressrelease int) {
 	sys_window := unsafe.Pointer(window)
 	sys_x := int(x)
 	sys_y := int(y)
@@ -8508,19 +8508,19 @@ func Fn_gdk_test_simulate_key(window *Window, x int, y int, keyval uint, modifie
 
 // UNSUPPORTED : gdk_threads_add_timeout_seconds_full : parameter 'function' is callback
 
-func Fn_gdk_threads_enter() {}
+func ThreadsEnter() {}
 
-func Fn_gdk_threads_init() {}
+func ThreadsInit() {}
 
-func Fn_gdk_threads_leave() {}
+func ThreadsLeave() {}
 
 // UNSUPPORTED : gdk_threads_set_lock_functions : parameter 'enter_fn' is callback
 
-func Fn_gdk_unicode_to_keyval(wc uint32) {
+func UnicodeToKeyval(wc uint32) {
 	sys_wc := uint32(wc)
 }
 
-func Fn_gdk_utf8_to_string_target(str string) {
+func Utf8ToStringTarget(str string) {
 	sys_str := string(str)
 }
 

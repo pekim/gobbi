@@ -887,41 +887,41 @@ const ValueType_last_defined = ValueType(15)
 
 // UNSUPPORTED : atk_focus_tracker_init : parameter 'init' is callback
 
-func Fn_atk_focus_tracker_notify(object *Object) {
+func FocusTrackerNotify(object *Object) {
 	sys_object := unsafe.Pointer(object)
 }
 
-func Fn_atk_get_binary_age() {}
+func GetBinaryAge() {}
 
-func Fn_atk_get_default_registry() {}
+func GetDefaultRegistry() {}
 
-func Fn_atk_get_focus_object() {}
+func GetFocusObject() {}
 
-func Fn_atk_get_interface_age() {}
+func GetInterfaceAge() {}
 
-func Fn_atk_get_major_version() {}
+func GetMajorVersion() {}
 
-func Fn_atk_get_micro_version() {}
+func GetMicroVersion() {}
 
-func Fn_atk_get_minor_version() {}
+func GetMinorVersion() {}
 
-func Fn_atk_get_root() {}
+func GetRoot() {}
 
-func Fn_atk_get_toolkit_name() {}
+func GetToolkitName() {}
 
-func Fn_atk_get_toolkit_version() {}
+func GetToolkitVersion() {}
 
-func Fn_atk_get_version() {}
+func GetVersion() {}
 
-func Fn_atk_remove_focus_tracker(trackerId uint) {
+func RemoveFocusTracker(trackerId uint) {
 	sys_trackerId := uint(trackerId)
 }
 
-func Fn_atk_remove_global_event_listener(listenerId uint) {
+func RemoveGlobalEventListener(listenerId uint) {
 	sys_listenerId := uint(listenerId)
 }
 
-func Fn_atk_remove_key_event_listener(listenerId uint) {
+func RemoveKeyEventListener(listenerId uint) {
 	sys_listenerId := uint(listenerId)
 }
 

@@ -2806,145 +2806,145 @@ const WrapMode_word = WrapMode(2)
 // WrapMode_word_char is a representation of the C enumeration member GTK_WRAP_WORD_CHAR.
 const WrapMode_word_char = WrapMode(3)
 
-func Fn_gtk_accel_groups_activate(object *gobject.Object, accelKey uint, accelMods int) {
+func AccelGroupsActivate(object *gobject.Object, accelKey uint, accelMods int) {
 	sys_object := unsafe.Pointer(object)
 	sys_accelKey := uint(accelKey)
 	sys_accelMods := int(accelMods)
 }
 
-func Fn_gtk_accel_groups_from_object(object *gobject.Object) {
+func AccelGroupsFromObject(object *gobject.Object) {
 	sys_object := unsafe.Pointer(object)
 }
 
-func Fn_gtk_accelerator_get_default_mod_mask() {}
+func AcceleratorGetDefaultModMask() {}
 
-func Fn_gtk_accelerator_get_label(acceleratorKey uint, acceleratorMods int) {
+func AcceleratorGetLabel(acceleratorKey uint, acceleratorMods int) {
 	sys_acceleratorKey := uint(acceleratorKey)
 	sys_acceleratorMods := int(acceleratorMods)
 }
 
-func Fn_gtk_accelerator_name(acceleratorKey uint, acceleratorMods int) {
+func AcceleratorName(acceleratorKey uint, acceleratorMods int) {
 	sys_acceleratorKey := uint(acceleratorKey)
 	sys_acceleratorMods := int(acceleratorMods)
 }
 
-func Fn_gtk_accelerator_parse(accelerator string) {
+func AcceleratorParse(accelerator string) {
 	sys_accelerator := string(accelerator)
 }
 
 // UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
 
-func Fn_gtk_accelerator_set_default_mod_mask(defaultModMask int) {
+func AcceleratorSetDefaultModMask(defaultModMask int) {
 	sys_defaultModMask := int(defaultModMask)
 }
 
-func Fn_gtk_accelerator_valid(keyval uint, modifiers int) {
+func AcceleratorValid(keyval uint, modifiers int) {
 	sys_keyval := uint(keyval)
 	sys_modifiers := int(modifiers)
 }
 
-func Fn_gtk_alternative_dialog_button_order(screen *gdk.Screen) {
+func AlternativeDialogButtonOrder(screen *gdk.Screen) {
 	sys_screen := unsafe.Pointer(screen)
 }
 
-func Fn_gtk_bindings_activate(object *gobject.Object, keyval uint, modifiers int) {
+func BindingsActivate(object *gobject.Object, keyval uint, modifiers int) {
 	sys_object := unsafe.Pointer(object)
 	sys_keyval := uint(keyval)
 	sys_modifiers := int(modifiers)
 }
 
-func Fn_gtk_bindings_activate_event(object *gobject.Object, event *gdk.EventKey) {
+func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) {
 	sys_object := unsafe.Pointer(object)
 	sys_event := unsafe.Pointer(event)
 }
 
-func Fn_gtk_check_version(requiredMajor uint, requiredMinor uint, requiredMicro uint) {
+func CheckVersion(requiredMajor uint, requiredMinor uint, requiredMicro uint) {
 	sys_requiredMajor := uint(requiredMajor)
 	sys_requiredMinor := uint(requiredMinor)
 	sys_requiredMicro := uint(requiredMicro)
 }
 
-func Fn_gtk_disable_setlocale() {}
+func DisableSetlocale() {}
 
-func Fn_gtk_distribute_natural_allocation(extraSpace int, nRequestedSizes uint, sizes *RequestedSize) {
+func DistributeNaturalAllocation(extraSpace int, nRequestedSizes uint, sizes *RequestedSize) {
 	sys_extraSpace := int(extraSpace)
 	sys_nRequestedSizes := uint(nRequestedSizes)
 	sys_sizes := unsafe.Pointer(sizes)
 }
 
-func Fn_gtk_drag_finish(context *gdk.DragContext, success bool, del bool, time uint32) {
+func DragFinish(context *gdk.DragContext, success bool, del bool, time uint32) {
 	sys_context := unsafe.Pointer(context)
 	sys_success := bool(success)
 	sys_del := bool(del)
 	sys_time := uint32(time)
 }
 
-func Fn_gtk_drag_get_source_widget(context *gdk.DragContext) {
+func DragGetSourceWidget(context *gdk.DragContext) {
 	sys_context := unsafe.Pointer(context)
 }
 
-func Fn_gtk_drag_set_icon_default(context *gdk.DragContext) {
+func DragSetIconDefault(context *gdk.DragContext) {
 	sys_context := unsafe.Pointer(context)
 }
 
-func Fn_gtk_drag_set_icon_name(context *gdk.DragContext, iconName string, hotX int, hotY int) {
+func DragSetIconName(context *gdk.DragContext, iconName string, hotX int, hotY int) {
 	sys_context := unsafe.Pointer(context)
 	sys_iconName := string(iconName)
 	sys_hotX := int(hotX)
 	sys_hotY := int(hotY)
 }
 
-func Fn_gtk_drag_set_icon_pixbuf(context *gdk.DragContext, pixbuf *gdkpixbuf.Pixbuf, hotX int, hotY int) {
+func DragSetIconPixbuf(context *gdk.DragContext, pixbuf *gdkpixbuf.Pixbuf, hotX int, hotY int) {
 	sys_context := unsafe.Pointer(context)
 	sys_pixbuf := unsafe.Pointer(pixbuf)
 	sys_hotX := int(hotX)
 	sys_hotY := int(hotY)
 }
 
-func Fn_gtk_drag_set_icon_stock(context *gdk.DragContext, stockId string, hotX int, hotY int) {
+func DragSetIconStock(context *gdk.DragContext, stockId string, hotX int, hotY int) {
 	sys_context := unsafe.Pointer(context)
 	sys_stockId := string(stockId)
 	sys_hotX := int(hotX)
 	sys_hotY := int(hotY)
 }
 
-func Fn_gtk_drag_set_icon_surface(context *gdk.DragContext, surface *cairo.Surface) {
+func DragSetIconSurface(context *gdk.DragContext, surface *cairo.Surface) {
 	sys_context := unsafe.Pointer(context)
 	sys_surface := unsafe.Pointer(surface)
 }
 
-func Fn_gtk_drag_set_icon_widget(context *gdk.DragContext, widget *Widget, hotX int, hotY int) {
+func DragSetIconWidget(context *gdk.DragContext, widget *Widget, hotX int, hotY int) {
 	sys_context := unsafe.Pointer(context)
 	sys_widget := unsafe.Pointer(widget)
 	sys_hotX := int(hotX)
 	sys_hotY := int(hotY)
 }
 
-func Fn_gtk_events_pending() {}
+func EventsPending() {}
 
-func Fn_gtk_false() {}
+func False() {}
 
-func Fn_gtk_get_current_event() {}
+func GetCurrentEvent() {}
 
-func Fn_gtk_get_current_event_device() {}
+func GetCurrentEventDevice() {}
 
-func Fn_gtk_get_current_event_state() {}
+func GetCurrentEventState() {}
 
-func Fn_gtk_get_current_event_time() {}
+func GetCurrentEventTime() {}
 
-func Fn_gtk_get_debug_flags() {}
+func GetDebugFlags() {}
 
-func Fn_gtk_get_default_language() {}
+func GetDefaultLanguage() {}
 
-func Fn_gtk_get_event_widget(event *gdk.Event) {
+func GetEventWidget(event *gdk.Event) {
 	sys_event := unsafe.Pointer(event)
 }
 
-func Fn_gtk_get_option_group(openDefaultDisplay bool) {
+func GetOptionGroup(openDefaultDisplay bool) {
 	sys_openDefaultDisplay := bool(openDefaultDisplay)
 }
 
-func Fn_gtk_grab_get_current() {}
+func GrabGetCurrent() {}
 
 // UNSUPPORTED : gtk_init : has array param, argv
 
@@ -2954,27 +2954,27 @@ func Fn_gtk_grab_get_current() {}
 
 // UNSUPPORTED : gtk_key_snooper_install : parameter 'snooper' is callback
 
-func Fn_gtk_key_snooper_remove(snooperHandlerId uint) {
+func KeySnooperRemove(snooperHandlerId uint) {
 	sys_snooperHandlerId := uint(snooperHandlerId)
 }
 
-func Fn_gtk_main() {}
+func Main() {}
 
-func Fn_gtk_main_do_event(event *gdk.Event) {
+func MainDoEvent(event *gdk.Event) {
 	sys_event := unsafe.Pointer(event)
 }
 
-func Fn_gtk_main_iteration() {}
+func MainIteration() {}
 
-func Fn_gtk_main_iteration_do(blocking bool) {
+func MainIterationDo(blocking bool) {
 	sys_blocking := bool(blocking)
 }
 
-func Fn_gtk_main_level() {}
+func MainLevel() {}
 
-func Fn_gtk_main_quit() {}
+func MainQuit() {}
 
-func Fn_gtk_paint_arrow(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, arrowType int, fill bool, x int, y int, width int, height int) {
+func PaintArrow(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, arrowType int, fill bool, x int, y int, width int, height int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -2989,7 +2989,7 @@ func Fn_gtk_paint_arrow(style *Style, cr *cairo.Context, stateType int, shadowTy
 	sys_height := int(height)
 }
 
-func Fn_gtk_paint_box(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintBox(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3002,7 +3002,7 @@ func Fn_gtk_paint_box(style *Style, cr *cairo.Context, stateType int, shadowType
 	sys_height := int(height)
 }
 
-func Fn_gtk_paint_box_gap(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int, gapX int, gapWidth int) {
+func PaintBoxGap(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int, gapX int, gapWidth int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3018,7 +3018,7 @@ func Fn_gtk_paint_box_gap(style *Style, cr *cairo.Context, stateType int, shadow
 	sys_gapWidth := int(gapWidth)
 }
 
-func Fn_gtk_paint_check(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintCheck(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3031,7 +3031,7 @@ func Fn_gtk_paint_check(style *Style, cr *cairo.Context, stateType int, shadowTy
 	sys_height := int(height)
 }
 
-func Fn_gtk_paint_diamond(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintDiamond(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3044,7 +3044,7 @@ func Fn_gtk_paint_diamond(style *Style, cr *cairo.Context, stateType int, shadow
 	sys_height := int(height)
 }
 
-func Fn_gtk_paint_expander(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x int, y int, expanderStyle int) {
+func PaintExpander(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x int, y int, expanderStyle int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3055,7 +3055,7 @@ func Fn_gtk_paint_expander(style *Style, cr *cairo.Context, stateType int, widge
 	sys_expanderStyle := int(expanderStyle)
 }
 
-func Fn_gtk_paint_extension(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int) {
+func PaintExtension(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3069,7 +3069,7 @@ func Fn_gtk_paint_extension(style *Style, cr *cairo.Context, stateType int, shad
 	sys_gapSide := int(gapSide)
 }
 
-func Fn_gtk_paint_flat_box(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintFlatBox(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3082,7 +3082,7 @@ func Fn_gtk_paint_flat_box(style *Style, cr *cairo.Context, stateType int, shado
 	sys_height := int(height)
 }
 
-func Fn_gtk_paint_focus(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintFocus(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3094,7 +3094,7 @@ func Fn_gtk_paint_focus(style *Style, cr *cairo.Context, stateType int, widget *
 	sys_height := int(height)
 }
 
-func Fn_gtk_paint_handle(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, orientation int) {
+func PaintHandle(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, orientation int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3108,7 +3108,7 @@ func Fn_gtk_paint_handle(style *Style, cr *cairo.Context, stateType int, shadowT
 	sys_orientation := int(orientation)
 }
 
-func Fn_gtk_paint_hline(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x1 int, x2 int, y int) {
+func PaintHline(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x1 int, x2 int, y int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3119,7 +3119,7 @@ func Fn_gtk_paint_hline(style *Style, cr *cairo.Context, stateType int, widget *
 	sys_y := int(y)
 }
 
-func Fn_gtk_paint_layout(style *Style, cr *cairo.Context, stateType int, useText bool, widget *Widget, detail string, x int, y int, layout *pango.Layout) {
+func PaintLayout(style *Style, cr *cairo.Context, stateType int, useText bool, widget *Widget, detail string, x int, y int, layout *pango.Layout) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3131,7 +3131,7 @@ func Fn_gtk_paint_layout(style *Style, cr *cairo.Context, stateType int, useText
 	sys_layout := unsafe.Pointer(layout)
 }
 
-func Fn_gtk_paint_option(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintOption(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3144,7 +3144,7 @@ func Fn_gtk_paint_option(style *Style, cr *cairo.Context, stateType int, shadowT
 	sys_height := int(height)
 }
 
-func Fn_gtk_paint_resize_grip(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, edge int, x int, y int, width int, height int) {
+func PaintResizeGrip(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, edge int, x int, y int, width int, height int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3157,7 +3157,7 @@ func Fn_gtk_paint_resize_grip(style *Style, cr *cairo.Context, stateType int, wi
 	sys_height := int(height)
 }
 
-func Fn_gtk_paint_shadow(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintShadow(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3170,7 +3170,7 @@ func Fn_gtk_paint_shadow(style *Style, cr *cairo.Context, stateType int, shadowT
 	sys_height := int(height)
 }
 
-func Fn_gtk_paint_shadow_gap(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int, gapX int, gapWidth int) {
+func PaintShadowGap(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int, gapX int, gapWidth int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3186,7 +3186,7 @@ func Fn_gtk_paint_shadow_gap(style *Style, cr *cairo.Context, stateType int, sha
 	sys_gapWidth := int(gapWidth)
 }
 
-func Fn_gtk_paint_slider(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, orientation int) {
+func PaintSlider(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, orientation int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3200,7 +3200,7 @@ func Fn_gtk_paint_slider(style *Style, cr *cairo.Context, stateType int, shadowT
 	sys_orientation := int(orientation)
 }
 
-func Fn_gtk_paint_spinner(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, step uint, x int, y int, width int, height int) {
+func PaintSpinner(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, step uint, x int, y int, width int, height int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3213,7 +3213,7 @@ func Fn_gtk_paint_spinner(style *Style, cr *cairo.Context, stateType int, widget
 	sys_height := int(height)
 }
 
-func Fn_gtk_paint_tab(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintTab(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3226,7 +3226,7 @@ func Fn_gtk_paint_tab(style *Style, cr *cairo.Context, stateType int, shadowType
 	sys_height := int(height)
 }
 
-func Fn_gtk_paint_vline(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, y1 int, y2 int, x int) {
+func PaintVline(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, y1 int, y2 int, x int) {
 	sys_style := unsafe.Pointer(style)
 	sys_cr := unsafe.Pointer(cr)
 	sys_stateType := int(stateType)
@@ -3239,7 +3239,7 @@ func Fn_gtk_paint_vline(style *Style, cr *cairo.Context, stateType int, widget *
 
 // UNSUPPORTED : gtk_parse_args : has array param, argv
 
-func Fn_gtk_print_run_page_setup_dialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) {
+func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) {
 	sys_parent := unsafe.Pointer(parent)
 	sys_pageSetup := unsafe.Pointer(pageSetup)
 	sys_settings := unsafe.Pointer(settings)
@@ -3247,20 +3247,20 @@ func Fn_gtk_print_run_page_setup_dialog(parent *Window, pageSetup *PageSetup, se
 
 // UNSUPPORTED : gtk_print_run_page_setup_dialog_async : parameter 'done_cb' is callback
 
-func Fn_gtk_propagate_event(widget *Widget, event *gdk.Event) {
+func PropagateEvent(widget *Widget, event *gdk.Event) {
 	sys_widget := unsafe.Pointer(widget)
 	sys_event := unsafe.Pointer(event)
 }
 
-func Fn_gtk_rc_add_default_file(filename string) {
+func RcAddDefaultFile(filename string) {
 	sys_filename := string(filename)
 }
 
-func Fn_gtk_rc_find_module_in_path(moduleFile string) {
+func RcFindModuleInPath(moduleFile string) {
 	sys_moduleFile := string(moduleFile)
 }
 
-func Fn_gtk_rc_find_pixmap_in_path(settings *Settings, scanner *glib.Scanner, pixmapFile string) {
+func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile string) {
 	sys_settings := unsafe.Pointer(settings)
 	sys_scanner := unsafe.Pointer(scanner)
 	sys_pixmapFile := string(pixmapFile)
@@ -3268,62 +3268,62 @@ func Fn_gtk_rc_find_pixmap_in_path(settings *Settings, scanner *glib.Scanner, pi
 
 // UNSUPPORTED : gtk_rc_get_default_files : no array length
 
-func Fn_gtk_rc_get_im_module_file() {}
+func RcGetImModuleFile() {}
 
-func Fn_gtk_rc_get_im_module_path() {}
+func RcGetImModulePath() {}
 
-func Fn_gtk_rc_get_module_dir() {}
+func RcGetModuleDir() {}
 
-func Fn_gtk_rc_get_style(widget *Widget) {
+func RcGetStyle(widget *Widget) {
 	sys_widget := unsafe.Pointer(widget)
 }
 
-func Fn_gtk_rc_get_style_by_paths(settings *Settings, widgetPath string, classPath string, type_ uint64) {
+func RcGetStyleByPaths(settings *Settings, widgetPath string, classPath string, type_ uint64) {
 	sys_settings := unsafe.Pointer(settings)
 	sys_widgetPath := string(widgetPath)
 	sys_classPath := string(classPath)
 	sys_type_ := uint64(type_)
 }
 
-func Fn_gtk_rc_get_theme_dir() {}
+func RcGetThemeDir() {}
 
-func Fn_gtk_rc_parse(filename string) {
+func RcParse(filename string) {
 	sys_filename := string(filename)
 }
 
-func Fn_gtk_rc_parse_color(scanner *glib.Scanner) {
+func RcParseColor(scanner *glib.Scanner) {
 	sys_scanner := unsafe.Pointer(scanner)
 }
 
-func Fn_gtk_rc_parse_priority(scanner *glib.Scanner, priority *int) {
+func RcParsePriority(scanner *glib.Scanner, priority *int) {
 	sys_scanner := unsafe.Pointer(scanner)
 	sys_priority := *int(priority)
 }
 
-func Fn_gtk_rc_parse_state(scanner *glib.Scanner) {
+func RcParseState(scanner *glib.Scanner) {
 	sys_scanner := unsafe.Pointer(scanner)
 }
 
-func Fn_gtk_rc_parse_string(rcString string) {
+func RcParseString(rcString string) {
 	sys_rcString := string(rcString)
 }
 
-func Fn_gtk_rc_reparse_all() {}
+func RcReparseAll() {}
 
-func Fn_gtk_rc_reparse_all_for_settings(settings *Settings, forceLoad bool) {
+func RcReparseAllForSettings(settings *Settings, forceLoad bool) {
 	sys_settings := unsafe.Pointer(settings)
 	sys_forceLoad := bool(forceLoad)
 }
 
-func Fn_gtk_rc_reset_styles(settings *Settings) {
+func RcResetStyles(settings *Settings) {
 	sys_settings := unsafe.Pointer(settings)
 }
 
-func Fn_gtk_rc_scanner_new() {}
+func RcScannerNew() {}
 
 // UNSUPPORTED : gtk_rc_set_default_files : parameter 'filenames' is array parameter without length parameter
 
-func Fn_gtk_selection_add_target(widget *Widget, selection gdk.Atom, target gdk.Atom, info uint) {
+func SelectionAddTarget(widget *Widget, selection gdk.Atom, target gdk.Atom, info uint) {
 	sys_widget := unsafe.Pointer(widget)
 	sys_selection := gdk1.Atom(selection)
 	sys_target := gdk1.Atom(target)
@@ -3332,40 +3332,40 @@ func Fn_gtk_selection_add_target(widget *Widget, selection gdk.Atom, target gdk.
 
 // UNSUPPORTED : gtk_selection_add_targets : has array param, targets
 
-func Fn_gtk_selection_clear_targets(widget *Widget, selection gdk.Atom) {
+func SelectionClearTargets(widget *Widget, selection gdk.Atom) {
 	sys_widget := unsafe.Pointer(widget)
 	sys_selection := gdk1.Atom(selection)
 }
 
-func Fn_gtk_selection_convert(widget *Widget, selection gdk.Atom, target gdk.Atom, time uint32) {
+func SelectionConvert(widget *Widget, selection gdk.Atom, target gdk.Atom, time uint32) {
 	sys_widget := unsafe.Pointer(widget)
 	sys_selection := gdk1.Atom(selection)
 	sys_target := gdk1.Atom(target)
 	sys_time := uint32(time)
 }
 
-func Fn_gtk_selection_owner_set(widget *Widget, selection gdk.Atom, time uint32) {
+func SelectionOwnerSet(widget *Widget, selection gdk.Atom, time uint32) {
 	sys_widget := unsafe.Pointer(widget)
 	sys_selection := gdk1.Atom(selection)
 	sys_time := uint32(time)
 }
 
-func Fn_gtk_selection_owner_set_for_display(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) {
+func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) {
 	sys_display := unsafe.Pointer(display)
 	sys_widget := unsafe.Pointer(widget)
 	sys_selection := gdk1.Atom(selection)
 	sys_time := uint32(time)
 }
 
-func Fn_gtk_selection_remove_all(widget *Widget) {
+func SelectionRemoveAll(widget *Widget) {
 	sys_widget := unsafe.Pointer(widget)
 }
 
-func Fn_gtk_set_debug_flags(flags uint) {
+func SetDebugFlags(flags uint) {
 	sys_flags := uint(flags)
 }
 
-func Fn_gtk_show_about_dialog(parent *Window, firstPropertyName string) {
+func ShowAboutDialog(parent *Window, firstPropertyName string) {
 	sys_parent := unsafe.Pointer(parent)
 	sys_firstPropertyName := string(firstPropertyName)
 }
@@ -3374,9 +3374,9 @@ func Fn_gtk_show_about_dialog(parent *Window, firstPropertyName string) {
 
 // UNSUPPORTED : gtk_stock_add_static : has array param, items
 
-func Fn_gtk_stock_list_ids() {}
+func StockListIds() {}
 
-func Fn_gtk_stock_lookup(stockId string) {
+func StockLookup(stockId string) {
 	sys_stockId := string(stockId)
 }
 
@@ -3384,7 +3384,7 @@ func Fn_gtk_stock_lookup(stockId string) {
 
 // UNSUPPORTED : gtk_target_table_free : has array param, targets
 
-func Fn_gtk_target_table_new_from_list(list *TargetList) {
+func TargetTableNewFromList(list *TargetList) {
 	sys_list := unsafe.Pointer(list)
 }
 
@@ -3398,19 +3398,19 @@ func Fn_gtk_target_table_new_from_list(list *TargetList) {
 
 // UNSUPPORTED : gtk_test_init : has array param, argvp
 
-func Fn_gtk_tree_get_row_drag_data(selectionData *SelectionData) {
+func TreeGetRowDragData(selectionData *SelectionData) {
 	sys_selectionData := unsafe.Pointer(selectionData)
 }
 
 // UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
 
-func Fn_gtk_tree_set_row_drag_data(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) {
+func TreeSetRowDragData(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) {
 	sys_selectionData := unsafe.Pointer(selectionData)
 	sys_treeModel := unsafe.Pointer(treeModel)
 	sys_path := unsafe.Pointer(path)
 }
 
-func Fn_gtk_true() {}
+func True() {}
 
 // AboutDialogClass is a representation of the C record GtkAboutDialogClass.
 type AboutDialogClass struct {

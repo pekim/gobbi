@@ -818,79 +818,79 @@ const WrapMode_char = WrapMode(1)
 // WrapMode_word_char is a representation of the C enumeration member PANGO_WRAP_WORD_CHAR.
 const WrapMode_word_char = WrapMode(2)
 
-func Fn_pango_attr_background_new(red uint16, green uint16, blue uint16) {
+func AttrBackgroundNew(red uint16, green uint16, blue uint16) {
 	sys_red := uint16(red)
 	sys_green := uint16(green)
 	sys_blue := uint16(blue)
 }
 
-func Fn_pango_attr_fallback_new(enableFallback bool) {
+func AttrFallbackNew(enableFallback bool) {
 	sys_enableFallback := bool(enableFallback)
 }
 
-func Fn_pango_attr_family_new(family string) {
+func AttrFamilyNew(family string) {
 	sys_family := string(family)
 }
 
-func Fn_pango_attr_foreground_new(red uint16, green uint16, blue uint16) {
+func AttrForegroundNew(red uint16, green uint16, blue uint16) {
 	sys_red := uint16(red)
 	sys_green := uint16(green)
 	sys_blue := uint16(blue)
 }
 
-func Fn_pango_attr_gravity_hint_new(hint int) {
+func AttrGravityHintNew(hint int) {
 	sys_hint := int(hint)
 }
 
-func Fn_pango_attr_gravity_new(gravity int) {
+func AttrGravityNew(gravity int) {
 	sys_gravity := int(gravity)
 }
 
-func Fn_pango_attr_letter_spacing_new(letterSpacing int) {
+func AttrLetterSpacingNew(letterSpacing int) {
 	sys_letterSpacing := int(letterSpacing)
 }
 
-func Fn_pango_attr_rise_new(rise int) {
+func AttrRiseNew(rise int) {
 	sys_rise := int(rise)
 }
 
-func Fn_pango_attr_scale_new(scaleFactor float64) {
+func AttrScaleNew(scaleFactor float64) {
 	sys_scaleFactor := float64(scaleFactor)
 }
 
-func Fn_pango_attr_stretch_new(stretch int) {
+func AttrStretchNew(stretch int) {
 	sys_stretch := int(stretch)
 }
 
-func Fn_pango_attr_strikethrough_color_new(red uint16, green uint16, blue uint16) {
+func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) {
 	sys_red := uint16(red)
 	sys_green := uint16(green)
 	sys_blue := uint16(blue)
 }
 
-func Fn_pango_attr_strikethrough_new(strikethrough bool) {
+func AttrStrikethroughNew(strikethrough bool) {
 	sys_strikethrough := bool(strikethrough)
 }
 
-func Fn_pango_attr_style_new(style int) {
+func AttrStyleNew(style int) {
 	sys_style := int(style)
 }
 
-func Fn_pango_attr_underline_color_new(red uint16, green uint16, blue uint16) {
+func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) {
 	sys_red := uint16(red)
 	sys_green := uint16(green)
 	sys_blue := uint16(blue)
 }
 
-func Fn_pango_attr_underline_new(underline int) {
+func AttrUnderlineNew(underline int) {
 	sys_underline := int(underline)
 }
 
-func Fn_pango_attr_variant_new(variant int) {
+func AttrVariantNew(variant int) {
 	sys_variant := int(variant)
 }
 
-func Fn_pango_attr_weight_new(weight int) {
+func AttrWeightNew(weight int) {
 	sys_weight := int(weight)
 }
 
@@ -902,19 +902,19 @@ func Fn_pango_attr_weight_new(weight int) {
 
 // UNSUPPORTED : pango_default_break : blacklisted
 
-func Fn_pango_extents_to_pixels(inclusive *Rectangle, nearest *Rectangle) {
+func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
 	sys_inclusive := unsafe.Pointer(inclusive)
 	sys_nearest := unsafe.Pointer(nearest)
 }
 
-func Fn_pango_find_base_dir(text string, length int) {
+func FindBaseDir(text string, length int) {
 	sys_text := string(text)
 	sys_length := int(length)
 }
 
 // UNSUPPORTED : pango_find_map : blacklisted
 
-func Fn_pango_find_paragraph_boundary(text string, length int) {
+func FindParagraphBoundary(text string, length int) {
 	sys_text := string(text)
 	sys_length := int(length)
 }
@@ -923,18 +923,18 @@ func Fn_pango_find_paragraph_boundary(text string, length int) {
 
 // UNSUPPORTED : pango_get_log_attrs : has array param, log_attrs
 
-func Fn_pango_get_mirror_char(ch rune, mirroredCh *rune) {
+func GetMirrorChar(ch rune, mirroredCh *rune) {
 	sys_ch := rune(ch)
 	sys_mirroredCh := *rune(mirroredCh)
 }
 
 // UNSUPPORTED : pango_get_sysconf_subdirectory : blacklisted
 
-func Fn_pango_is_zero_width(ch rune) {
+func IsZeroWidth(ch rune) {
 	sys_ch := rune(ch)
 }
 
-func Fn_pango_itemize(context *Context, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
+func Itemize(context *Context, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
 	sys_context := unsafe.Pointer(context)
 	sys_text := string(text)
 	sys_startIndex := int(startIndex)
@@ -943,7 +943,7 @@ func Fn_pango_itemize(context *Context, text string, startIndex int, length int,
 	sys_cachedIter := unsafe.Pointer(cachedIter)
 }
 
-func Fn_pango_itemize_with_base_dir(context *Context, baseDir int, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
+func ItemizeWithBaseDir(context *Context, baseDir int, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
 	sys_context := unsafe.Pointer(context)
 	sys_baseDir := int(baseDir)
 	sys_text := string(text)
@@ -953,7 +953,7 @@ func Fn_pango_itemize_with_base_dir(context *Context, baseDir int, text string, 
 	sys_cachedIter := unsafe.Pointer(cachedIter)
 }
 
-func Fn_pango_log2vis_get_embedding_levels(text string, length int, pbaseDir *int) {
+func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *int) {
 	sys_text := string(text)
 	sys_length := int(length)
 	sys_pbaseDir := *int(pbaseDir)
@@ -961,111 +961,111 @@ func Fn_pango_log2vis_get_embedding_levels(text string, length int, pbaseDir *in
 
 // UNSUPPORTED : pango_lookup_aliases : blacklisted
 
-func Fn_pango_markup_parser_finish(context *glib.MarkupParseContext) {
+func MarkupParserFinish(context *glib.MarkupParseContext) {
 	sys_context := unsafe.Pointer(context)
 }
 
-func Fn_pango_markup_parser_new(accelMarker rune) {
+func MarkupParserNew(accelMarker rune) {
 	sys_accelMarker := rune(accelMarker)
 }
 
 // UNSUPPORTED : pango_module_register : blacklisted
 
-func Fn_pango_parse_enum(type_ uint64, str string, warn bool) {
+func ParseEnum(type_ uint64, str string, warn bool) {
 	sys_type_ := uint64(type_)
 	sys_str := string(str)
 	sys_warn := bool(warn)
 }
 
-func Fn_pango_parse_markup(markupText string, length int, accelMarker rune) {
+func ParseMarkup(markupText string, length int, accelMarker rune) {
 	sys_markupText := string(markupText)
 	sys_length := int(length)
 	sys_accelMarker := rune(accelMarker)
 }
 
-func Fn_pango_parse_stretch(str string, warn bool) {
+func ParseStretch(str string, warn bool) {
 	sys_str := string(str)
 	sys_warn := bool(warn)
 }
 
-func Fn_pango_parse_style(str string, warn bool) {
+func ParseStyle(str string, warn bool) {
 	sys_str := string(str)
 	sys_warn := bool(warn)
 }
 
-func Fn_pango_parse_variant(str string, warn bool) {
+func ParseVariant(str string, warn bool) {
 	sys_str := string(str)
 	sys_warn := bool(warn)
 }
 
-func Fn_pango_parse_weight(str string, warn bool) {
+func ParseWeight(str string, warn bool) {
 	sys_str := string(str)
 	sys_warn := bool(warn)
 }
 
-func Fn_pango_quantize_line_geometry(thickness *int, position *int) {
+func QuantizeLineGeometry(thickness *int, position *int) {
 	sys_thickness := *int(thickness)
 	sys_position := *int(position)
 }
 
-func Fn_pango_read_line(stream unsafe.Pointer) {
+func ReadLine(stream unsafe.Pointer) {
 	sys_stream := unsafe.Pointer(stream)
 }
 
-func Fn_pango_reorder_items(logicalItems *glib.List) {
+func ReorderItems(logicalItems *glib.List) {
 	sys_logicalItems := unsafe.Pointer(logicalItems)
 }
 
-func Fn_pango_scan_int(pos *string) {
+func ScanInt(pos *string) {
 	sys_pos := *string(pos)
 }
 
-func Fn_pango_scan_string(pos *string) {
+func ScanString(pos *string) {
 	sys_pos := *string(pos)
 }
 
-func Fn_pango_scan_word(pos *string) {
+func ScanWord(pos *string) {
 	sys_pos := *string(pos)
 }
 
-func Fn_pango_shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
+func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
 	sys_text := string(text)
 	sys_length := int(length)
 	sys_analysis := unsafe.Pointer(analysis)
 	sys_glyphs := unsafe.Pointer(glyphs)
 }
 
-func Fn_pango_skip_space(pos *string) {
+func SkipSpace(pos *string) {
 	sys_pos := *string(pos)
 }
 
 // UNSUPPORTED : pango_split_file_list : no array length
 
-func Fn_pango_trim_string(str string) {
+func TrimString(str string) {
 	sys_str := string(str)
 }
 
-func Fn_pango_unichar_direction(ch rune) {
+func UnicharDirection(ch rune) {
 	sys_ch := rune(ch)
 }
 
-func Fn_pango_units_from_double(d float64) {
+func UnitsFromDouble(d float64) {
 	sys_d := float64(d)
 }
 
-func Fn_pango_units_to_double(i int) {
+func UnitsToDouble(i int) {
 	sys_i := int(i)
 }
 
-func Fn_pango_version() {}
+func Version() {}
 
-func Fn_pango_version_check(requiredMajor int, requiredMinor int, requiredMicro int) {
+func VersionCheck(requiredMajor int, requiredMinor int, requiredMicro int) {
 	sys_requiredMajor := int(requiredMajor)
 	sys_requiredMinor := int(requiredMinor)
 	sys_requiredMicro := int(requiredMicro)
 }
 
-func Fn_pango_version_string() {}
+func VersionString() {}
 
 // Analysis is a representation of the C record PangoAnalysis.
 type Analysis struct {

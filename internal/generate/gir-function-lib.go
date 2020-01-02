@@ -34,7 +34,7 @@ func (f *Function) generateLib(fi *jen.File, version semver.Version) {
 	fi.
 		Func().
 		Do(f.generateLibReceiverDeclaration).
-		Id(f.sysName).
+		Id(f.goName).
 		ParamsFunc(f.generateLibParamsDeclaration).
 		Do(f.generateLibReturnTypeDeclaration).
 		BlockFunc(f.generateLibBody)
