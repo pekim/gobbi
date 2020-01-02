@@ -9240,4 +9240,11 @@ func (recv *DevicePad) ToC() unsafe.Pointer {
 }
 
 // Event is a representation of the C union GdkEvent.
-type Event struct{}
+type Event struct {
+	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GdkEvent that represents the Event.
+func (recv *Event) ToC() unsafe.Pointer {
+	return recv.native
+}

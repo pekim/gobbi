@@ -4623,13 +4623,41 @@ func (recv *VariantType) ToC() unsafe.Pointer {
 }
 
 // DoubleIEEE754 is a representation of the C union GDoubleIEEE754.
-type DoubleIEEE754 struct{}
+type DoubleIEEE754 struct {
+	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GDoubleIEEE754 that represents the DoubleIEEE754.
+func (recv *DoubleIEEE754) ToC() unsafe.Pointer {
+	return recv.native
+}
 
 // FloatIEEE754 is a representation of the C union GFloatIEEE754.
-type FloatIEEE754 struct{}
+type FloatIEEE754 struct {
+	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GFloatIEEE754 that represents the FloatIEEE754.
+func (recv *FloatIEEE754) ToC() unsafe.Pointer {
+	return recv.native
+}
 
 // Mutex is a representation of the C union GMutex.
-type Mutex struct{}
+type Mutex struct {
+	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GMutex that represents the Mutex.
+func (recv *Mutex) ToC() unsafe.Pointer {
+	return recv.native
+}
 
 // TokenValue is a representation of the C union GTokenValue.
-type TokenValue struct{}
+type TokenValue struct {
+	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C GTokenValue that represents the TokenValue.
+func (recv *TokenValue) ToC() unsafe.Pointer {
+	return recv.native
+}

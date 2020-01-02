@@ -24,15 +24,33 @@ func (u *Union) init(ns *Namespace) {
 }
 
 func (u *Union) generateLib(f *jen.File, version semver.Version) {
+	if u.blacklist {
+		f.Commentf("UNSUPPORTED : %s : blacklisted", u.Name)
+		return
+	}
+
 	u.generateLibType(f, version)
+	u.generateToC(f)
 }
 
 func (u *Union) generateLibType(f *jen.File, version semver.Version) {
 	f.Commentf("%s is a representation of the C union %s.", u.Name, u.CType)
 
 	f.Type().Id(u.Name).Struct(
-	//jen.Id("native").Add(jenUnsafePointer()),
+		jen.Id("native").Add(jenUnsafePointer()),
 	)
 
 	f.Line()
+}
+
+func (u *Union) generateToC(f *jen.File) {
+	f.Commentf("ToC returns a pointer to the C %s that represents the %s.", u.CType, u.Name)
+
+	f.
+		Func().
+		Parens(jen.Id("recv").Op("*").Id(u.Name)).
+		Id("ToC").
+		Params().
+		Add(jenUnsafePointer()).
+		Block(jen.Return().Id("recv").Dot("native"))
 }

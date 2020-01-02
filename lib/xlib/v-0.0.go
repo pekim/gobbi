@@ -136,4 +136,11 @@ func (recv *XWindowAttributes) ToC() unsafe.Pointer {
 }
 
 // XEvent is a representation of the C union XEvent.
-type XEvent struct{}
+type XEvent struct {
+	native unsafe.Pointer
+}
+
+// ToC returns a pointer to the C XEvent that represents the XEvent.
+func (recv *XEvent) ToC() unsafe.Pointer {
+	return recv.native
+}

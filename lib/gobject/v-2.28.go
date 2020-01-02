@@ -1731,7 +1731,13 @@ func (recv *TypePlugin) ToC() unsafe.Pointer {
 }
 
 // TypeCValue is a representation of the C union GTypeCValue.
-type TypeCValue struct{}
+type TypeCValue struct {
+	native unsafe.Pointer
+}
 
-// _Value__data__union is a representation of the C union .
-type _Value__data__union struct{}
+// ToC returns a pointer to the C GTypeCValue that represents the TypeCValue.
+func (recv *TypeCValue) ToC() unsafe.Pointer {
+	return recv.native
+}
+
+// UNSUPPORTED : _Value__data__union : blacklisted
