@@ -5,6 +5,7 @@ package atk
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	atk "github.com/pekim/gobbi/lib/internal/c/atk"
 	"unsafe"
 )
 
@@ -865,39 +866,55 @@ const ValueType_last_defined = ValueType(15)
 // FocusTrackerNotify is analogous to the C function atk_focus_tracker_notify.
 func FocusTrackerNotify(object *Object) {
 	sys_object := object.ToC()
+	atk.Fn_atk_focus_tracker_notify(sys_object)
 }
 
 // GetDefaultRegistry is analogous to the C function atk_get_default_registry.
-func GetDefaultRegistry() {}
+func GetDefaultRegistry() {
+	atk.Fn_atk_get_default_registry()
+}
 
 // GetFocusObject is analogous to the C function atk_get_focus_object.
-func GetFocusObject() {}
+func GetFocusObject() {
+	atk.Fn_atk_get_focus_object()
+}
 
 // GetRoot is analogous to the C function atk_get_root.
-func GetRoot() {}
+func GetRoot() {
+	atk.Fn_atk_get_root()
+}
 
 // GetToolkitName is analogous to the C function atk_get_toolkit_name.
-func GetToolkitName() {}
+func GetToolkitName() {
+	atk.Fn_atk_get_toolkit_name()
+}
 
 // GetToolkitVersion is analogous to the C function atk_get_toolkit_version.
-func GetToolkitVersion() {}
+func GetToolkitVersion() {
+	atk.Fn_atk_get_toolkit_version()
+}
 
 // GetVersion is analogous to the C function atk_get_version.
-func GetVersion() {}
+func GetVersion() {
+	atk.Fn_atk_get_version()
+}
 
 // RemoveFocusTracker is analogous to the C function atk_remove_focus_tracker.
 func RemoveFocusTracker(trackerId uint) {
 	sys_trackerId := trackerId
+	atk.Fn_atk_remove_focus_tracker(sys_trackerId)
 }
 
 // RemoveGlobalEventListener is analogous to the C function atk_remove_global_event_listener.
 func RemoveGlobalEventListener(listenerId uint) {
 	sys_listenerId := listenerId
+	atk.Fn_atk_remove_global_event_listener(sys_listenerId)
 }
 
 // RemoveKeyEventListener is analogous to the C function atk_remove_key_event_listener.
 func RemoveKeyEventListener(listenerId uint) {
 	sys_listenerId := listenerId
+	atk.Fn_atk_remove_key_event_listener(sys_listenerId)
 }
 
 // UNSUPPORTED : atk_text_free_ranges : parameter 'ranges' is array parameter without length parameter

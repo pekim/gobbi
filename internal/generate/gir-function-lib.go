@@ -14,9 +14,22 @@ func (f *Function) generateLib(fi *jen.File, version semver.Version) {
 	}
 
 	// TODO
+	if f.Throws {
+		fi.Commentf("UNSUPPORTED : %s : throws", f.CIdentifier)
+		fi.Line()
+		return
+	}
+
+	// TODO
 	for _, p := range f.Parameters {
 		if p.Array != nil {
 			fi.Commentf("UNSUPPORTED : %s : has array param, %s", f.CIdentifier, p.Name)
+			fi.Line()
+			return
+		}
+
+		if !p.isIn() {
+			fi.Commentf("UNSUPPORTED : %s : has array [in]out, %s", f.CIdentifier, p.Name)
 			fi.Line()
 			return
 		}
@@ -93,13 +106,9 @@ func (f *Function) generateLibBody(g *jen.Group) {
 		p.generateLibArg(g, argVarName)
 	}
 
-	//f.generateSysCArgs(g)
-	//
-	//cIdentifier := f.CIdentifier
-	//if f.Parameters.hasVaList() || f.Parameters.hasVarargs() {
-	//	cIdentifier = "c_" + cIdentifier
-	//}
-	//
+	// call sys function
+	g.Qual(f.namespace.goFullSysPackageName, f.sysName).CallFunc(f.generateLibCallParams)
+
 	//// [ret :=] C.somefunction(...)
 	//g.
 	//	Do(func(s *jen.Statement) {
@@ -114,59 +123,28 @@ func (f *Function) generateLibBody(g *jen.Group) {
 	//f.generateSysReturn(g)
 }
 
-//func (f *Function) generateLibCArgs(g *jen.Group) {
-//	if f.InstanceParameter != nil {
-//		f.InstanceParameter.generateLibCArg(g, "paramInstance", "cValueInstance")
-//		g.Line()
-//	}
-//
-//	for i, param := range f.Parameters {
-//		if param.isVarargsOrValist() {
-//			continue
-//		}
-//
-//		paramName := "param" + strconv.Itoa(i)
-//		cVarName := "cValue" + strconv.Itoa(i)
-//
-//		param.generateLibCArg(g, paramName, cVarName)
-//		g.Line()
-//	}
-//
-//	if f.Throws {
-//		g.Id("cError").Op(":=").
-//			Parens(jen.Op("**").Qual("C", "GError")).
-//			Parens(jen.Id("error"))
-//		g.Line()
-//	}
-//}
-//
-//func (f *Function) generateLibCArgsOut(g *jen.Group) {
-//	for i, param := range f.Parameters {
-//		paramName := "param" + strconv.Itoa(i)
-//		cVarName := "cValue" + strconv.Itoa(i)
-//
-//		param.generateLibCArgOut(g, paramName, cVarName)
-//	}
-//}
-//
-//func (f *Function) generateLibCallParams(g *jen.Group) {
-//	if f.InstanceParameter != nil {
-//		g.Id("cValueInstance")
-//	}
-//
-//	for i, param := range f.Parameters {
-//		if param.isVarargsOrValist() {
-//			continue
-//		}
-//
-//		g.Id("cValue" + strconv.Itoa(i))
-//	}
-//
-//	if f.Throws {
-//		g.Id("cError")
-//	}
-//}
-//
+func (f *Function) generateLibCallParams(g *jen.Group) {
+	//if f.InstanceParameter != nil {
+	//	g.Id("cValueInstance")
+	//}
+
+	for _, param := range f.Parameters {
+		if param.isVarargsOrValist() {
+			continue
+		}
+
+		if !param.isIn() {
+			continue
+		}
+
+		g.Id("sys_" + param.goVarName)
+	}
+
+	//if f.Throws {
+	//	g.Id("cError")
+	//}
+}
+
 //func (f *Function) generateLibReturn(g *jen.Group) {
 //	if f.ReturnValue.isVoid() {
 //		return

@@ -7,6 +7,7 @@ import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	gdk "github.com/pekim/gobbi/lib/internal/c/gdk"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
@@ -8104,31 +8105,36 @@ const WindowWindowClass_input_only = WindowWindowClass(1)
 // AddOptionEntriesLibgtkOnly is analogous to the C function gdk_add_option_entries_libgtk_only.
 func AddOptionEntriesLibgtkOnly(group *glib.OptionGroup) {
 	sys_group := group.ToC()
+	gdk.Fn_gdk_add_option_entries_libgtk_only(sys_group)
 }
 
 // Beep is analogous to the C function gdk_beep.
-func Beep() {}
-
-// CairoGetClipRectangle is analogous to the C function gdk_cairo_get_clip_rectangle.
-func CairoGetClipRectangle(cr *cairo.Context) {
-	sys_cr := cr.ToC()
+func Beep() {
+	gdk.Fn_gdk_beep()
 }
+
+// UNSUPPORTED : gdk_cairo_get_clip_rectangle : has array [in]out, rect
 
 // CairoRegionCreateFromSurface is analogous to the C function gdk_cairo_region_create_from_surface.
 func CairoRegionCreateFromSurface(surface *cairo.Surface) {
 	sys_surface := surface.ToC()
+	gdk.Fn_gdk_cairo_region_create_from_surface(sys_surface)
 }
+
+// UNSUPPORTED : gdk_color_parse : has array [in]out, color
 
 // DragAbort is analogous to the C function gdk_drag_abort.
 func DragAbort(context *DragContext, time uint32) {
 	sys_context := context.ToC()
 	sys_time := time
+	gdk.Fn_gdk_drag_abort(sys_context, sys_time)
 }
 
 // DragBegin is analogous to the C function gdk_drag_begin.
 func DragBegin(window *Window, targets *glib.List) {
 	sys_window := window.ToC()
 	sys_targets := targets.ToC()
+	gdk.Fn_gdk_drag_begin(sys_window, sys_targets)
 }
 
 // DragBeginForDevice is analogous to the C function gdk_drag_begin_for_device.
@@ -8136,17 +8142,22 @@ func DragBeginForDevice(window *Window, device *Device, targets *glib.List) {
 	sys_window := window.ToC()
 	sys_device := device.ToC()
 	sys_targets := targets.ToC()
+	gdk.Fn_gdk_drag_begin_for_device(sys_window, sys_device, sys_targets)
 }
 
 // DragDrop is analogous to the C function gdk_drag_drop.
 func DragDrop(context *DragContext, time uint32) {
 	sys_context := context.ToC()
 	sys_time := time
+	gdk.Fn_gdk_drag_drop(sys_context, sys_time)
 }
+
+// UNSUPPORTED : gdk_drag_find_window_for_screen : has array [in]out, dest_window
 
 // DragGetSelection is analogous to the C function gdk_drag_get_selection.
 func DragGetSelection(context *DragContext) {
 	sys_context := context.ToC()
+	gdk.Fn_gdk_drag_get_selection(sys_context)
 }
 
 // DragMotion is analogous to the C function gdk_drag_motion.
@@ -8159,6 +8170,7 @@ func DragMotion(context *DragContext, destWindow *Window, protocol int, xRoot in
 	sys_suggestedAction := suggestedAction
 	sys_possibleActions := possibleActions
 	sys_time := time
+	gdk.Fn_gdk_drag_motion(sys_context, sys_destWindow, sys_protocol, sys_xRoot, sys_yRoot, sys_suggestedAction, sys_possibleActions, sys_time)
 }
 
 // DragStatus is analogous to the C function gdk_drag_status.
@@ -8166,6 +8178,7 @@ func DragStatus(context *DragContext, action int, time uint32) {
 	sys_context := context.ToC()
 	sys_action := action
 	sys_time := time
+	gdk.Fn_gdk_drag_status(sys_context, sys_action, sys_time)
 }
 
 // DropFinish is analogous to the C function gdk_drop_finish.
@@ -8173,6 +8186,7 @@ func DropFinish(context *DragContext, success bool, time uint32) {
 	sys_context := context.ToC()
 	sys_success := success
 	sys_time := time
+	gdk.Fn_gdk_drop_finish(sys_context, sys_success, sys_time)
 }
 
 // DropReply is analogous to the C function gdk_drop_reply.
@@ -8180,33 +8194,56 @@ func DropReply(context *DragContext, accepted bool, time uint32) {
 	sys_context := context.ToC()
 	sys_accepted := accepted
 	sys_time := time
+	gdk.Fn_gdk_drop_reply(sys_context, sys_accepted, sys_time)
 }
 
 // ErrorTrapPop is analogous to the C function gdk_error_trap_pop.
-func ErrorTrapPop() {}
+func ErrorTrapPop() {
+	gdk.Fn_gdk_error_trap_pop()
+}
 
 // ErrorTrapPush is analogous to the C function gdk_error_trap_push.
-func ErrorTrapPush() {}
+func ErrorTrapPush() {
+	gdk.Fn_gdk_error_trap_push()
+}
 
 // UNSUPPORTED : gdk_event_handler_set : parameter 'func' is callback
 
+// UNSUPPORTED : gdk_events_get_angle : has array [in]out, angle
+
+// UNSUPPORTED : gdk_events_get_center : has array [in]out, x
+
+// UNSUPPORTED : gdk_events_get_distance : has array [in]out, distance
+
 // EventsPending is analogous to the C function gdk_events_pending.
-func EventsPending() {}
+func EventsPending() {
+	gdk.Fn_gdk_events_pending()
+}
 
 // Flush is analogous to the C function gdk_flush.
-func Flush() {}
+func Flush() {
+	gdk.Fn_gdk_flush()
+}
 
 // GetDefaultRootWindow is analogous to the C function gdk_get_default_root_window.
-func GetDefaultRootWindow() {}
+func GetDefaultRootWindow() {
+	gdk.Fn_gdk_get_default_root_window()
+}
 
 // GetDisplay is analogous to the C function gdk_get_display.
-func GetDisplay() {}
+func GetDisplay() {
+	gdk.Fn_gdk_get_display()
+}
 
 // GetProgramClass is analogous to the C function gdk_get_program_class.
-func GetProgramClass() {}
+func GetProgramClass() {
+	gdk.Fn_gdk_get_program_class()
+}
 
 // GetShowEvents is analogous to the C function gdk_get_show_events.
-func GetShowEvents() {}
+func GetShowEvents() {
+	gdk.Fn_gdk_get_show_events()
+}
 
 // UNSUPPORTED : gdk_init : has array param, argv
 
@@ -8217,63 +8254,74 @@ func KeyboardGrab(window *Window, ownerEvents bool, time uint32) {
 	sys_window := window.ToC()
 	sys_ownerEvents := ownerEvents
 	sys_time := time
+	gdk.Fn_gdk_keyboard_grab(sys_window, sys_ownerEvents, sys_time)
 }
 
 // KeyboardUngrab is analogous to the C function gdk_keyboard_ungrab.
 func KeyboardUngrab(time uint32) {
 	sys_time := time
+	gdk.Fn_gdk_keyboard_ungrab(sys_time)
 }
 
-// KeyvalConvertCase is analogous to the C function gdk_keyval_convert_case.
-func KeyvalConvertCase(symbol uint) {
-	sys_symbol := symbol
-}
+// UNSUPPORTED : gdk_keyval_convert_case : has array [in]out, lower
 
 // KeyvalFromName is analogous to the C function gdk_keyval_from_name.
 func KeyvalFromName(keyvalName string) {
 	sys_keyvalName := keyvalName
+	gdk.Fn_gdk_keyval_from_name(sys_keyvalName)
 }
 
 // KeyvalIsLower is analogous to the C function gdk_keyval_is_lower.
 func KeyvalIsLower(keyval uint) {
 	sys_keyval := keyval
+	gdk.Fn_gdk_keyval_is_lower(sys_keyval)
 }
 
 // KeyvalIsUpper is analogous to the C function gdk_keyval_is_upper.
 func KeyvalIsUpper(keyval uint) {
 	sys_keyval := keyval
+	gdk.Fn_gdk_keyval_is_upper(sys_keyval)
 }
 
 // KeyvalName is analogous to the C function gdk_keyval_name.
 func KeyvalName(keyval uint) {
 	sys_keyval := keyval
+	gdk.Fn_gdk_keyval_name(sys_keyval)
 }
 
 // KeyvalToLower is analogous to the C function gdk_keyval_to_lower.
 func KeyvalToLower(keyval uint) {
 	sys_keyval := keyval
+	gdk.Fn_gdk_keyval_to_lower(sys_keyval)
 }
 
 // KeyvalToUnicode is analogous to the C function gdk_keyval_to_unicode.
 func KeyvalToUnicode(keyval uint) {
 	sys_keyval := keyval
+	gdk.Fn_gdk_keyval_to_unicode(sys_keyval)
 }
 
 // KeyvalToUpper is analogous to the C function gdk_keyval_to_upper.
 func KeyvalToUpper(keyval uint) {
 	sys_keyval := keyval
+	gdk.Fn_gdk_keyval_to_upper(sys_keyval)
 }
 
 // ListVisuals is analogous to the C function gdk_list_visuals.
-func ListVisuals() {}
+func ListVisuals() {
+	gdk.Fn_gdk_list_visuals()
+}
 
 // OffscreenWindowGetSurface is analogous to the C function gdk_offscreen_window_get_surface.
 func OffscreenWindowGetSurface(window *Window) {
 	sys_window := window.ToC()
+	gdk.Fn_gdk_offscreen_window_get_surface(sys_window)
 }
 
 // PangoContextGet is analogous to the C function gdk_pango_context_get.
-func PangoContextGet() {}
+func PangoContextGet() {
+	gdk.Fn_gdk_pango_context_get()
+}
 
 // PangoLayoutGetClipRegion is analogous to the C function gdk_pango_layout_get_clip_region.
 func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
@@ -8282,6 +8330,7 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int, yOrigin int, in
 	sys_yOrigin := yOrigin
 	sys_indexRanges := indexRanges
 	sys_nRanges := nRanges
+	gdk.Fn_gdk_pango_layout_get_clip_region(sys_layout, sys_xOrigin, sys_yOrigin, sys_indexRanges, sys_nRanges)
 }
 
 // UNSUPPORTED : gdk_pango_layout_line_get_clip_region : parameter 'index_ranges' is array parameter without length parameter
@@ -8295,6 +8344,7 @@ func PixbufGetFromSurface(surface *cairo.Surface, srcX int, srcY int, width int,
 	sys_srcY := srcY
 	sys_width := width
 	sys_height := height
+	gdk.Fn_gdk_pixbuf_get_from_surface(sys_surface, sys_srcX, sys_srcY, sys_width, sys_height)
 }
 
 // PixbufGetFromWindow is analogous to the C function gdk_pixbuf_get_from_window.
@@ -8304,6 +8354,7 @@ func PixbufGetFromWindow(window *Window, srcX int, srcY int, width int, height i
 	sys_srcY := srcY
 	sys_width := width
 	sys_height := height
+	gdk.Fn_gdk_pixbuf_get_from_window(sys_window, sys_srcX, sys_srcY, sys_width, sys_height)
 }
 
 // PointerGrab is analogous to the C function gdk_pointer_grab.
@@ -8314,37 +8365,45 @@ func PointerGrab(window *Window, ownerEvents bool, eventMask int, confineTo *Win
 	sys_confineTo := confineTo.ToC()
 	sys_cursor := cursor.ToC()
 	sys_time := time
+	gdk.Fn_gdk_pointer_grab(sys_window, sys_ownerEvents, sys_eventMask, sys_confineTo, sys_cursor, sys_time)
 }
 
 // PointerIsGrabbed is analogous to the C function gdk_pointer_is_grabbed.
-func PointerIsGrabbed() {}
+func PointerIsGrabbed() {
+	gdk.Fn_gdk_pointer_is_grabbed()
+}
 
 // PointerUngrab is analogous to the C function gdk_pointer_ungrab.
 func PointerUngrab(time uint32) {
 	sys_time := time
+	gdk.Fn_gdk_pointer_ungrab(sys_time)
 }
 
 // PreParseLibgtkOnly is analogous to the C function gdk_pre_parse_libgtk_only.
-func PreParseLibgtkOnly() {}
+func PreParseLibgtkOnly() {
+	gdk.Fn_gdk_pre_parse_libgtk_only()
+}
 
 // PropertyChange is analogous to the C function gdk_property_change.
 func PropertyChange(window *Window, property Atom, type_ Atom, format int, mode int, data *uint8, nelements int) {
 	sys_window := window.ToC()
-	sys_property := property.ToC()
-	sys_type_ := type_.ToC()
+	sys_property := gdk.Atom(property)
+	sys_type_ := gdk.Atom(type_)
 	sys_format := format
 	sys_mode := mode
 	sys_data := data
 	sys_nelements := nelements
+	gdk.Fn_gdk_property_change(sys_window, sys_property, sys_type_, sys_format, sys_mode, sys_data, sys_nelements)
 }
 
 // PropertyDelete is analogous to the C function gdk_property_delete.
 func PropertyDelete(window *Window, property Atom) {
 	sys_window := window.ToC()
-	sys_property := property.ToC()
+	sys_property := gdk.Atom(property)
+	gdk.Fn_gdk_property_delete(sys_window, sys_property)
 }
 
-// UNSUPPORTED : gdk_property_get : has array param, data
+// UNSUPPORTED : gdk_property_get : has array [in]out, actual_property_type
 
 // UNSUPPORTED : gdk_query_depths : has array param, depths
 
@@ -8353,22 +8412,25 @@ func PropertyDelete(window *Window, property Atom) {
 // SelectionConvert is analogous to the C function gdk_selection_convert.
 func SelectionConvert(requestor *Window, selection Atom, target Atom, time uint32) {
 	sys_requestor := requestor.ToC()
-	sys_selection := selection.ToC()
-	sys_target := target.ToC()
+	sys_selection := gdk.Atom(selection)
+	sys_target := gdk.Atom(target)
 	sys_time := time
+	gdk.Fn_gdk_selection_convert(sys_requestor, sys_selection, sys_target, sys_time)
 }
 
 // SelectionOwnerGet is analogous to the C function gdk_selection_owner_get.
 func SelectionOwnerGet(selection Atom) {
-	sys_selection := selection.ToC()
+	sys_selection := gdk.Atom(selection)
+	gdk.Fn_gdk_selection_owner_get(sys_selection)
 }
 
 // SelectionOwnerSet is analogous to the C function gdk_selection_owner_set.
 func SelectionOwnerSet(owner *Window, selection Atom, time uint32, sendEvent bool) {
 	sys_owner := owner.ToC()
-	sys_selection := selection.ToC()
+	sys_selection := gdk.Atom(selection)
 	sys_time := time
 	sys_sendEvent := sendEvent
+	gdk.Fn_gdk_selection_owner_set(sys_owner, sys_selection, sys_time, sys_sendEvent)
 }
 
 // SelectionPropertyGet is analogous to the C function gdk_selection_property_get.
@@ -8377,36 +8439,42 @@ func SelectionPropertyGet(requestor *Window, data **uint8, propType *Atom, propF
 	sys_data := data
 	sys_propType := propType.ToC()
 	sys_propFormat := propFormat
+	gdk.Fn_gdk_selection_property_get(sys_requestor, sys_data, sys_propType, sys_propFormat)
 }
 
 // SelectionSendNotify is analogous to the C function gdk_selection_send_notify.
 func SelectionSendNotify(requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
 	sys_requestor := requestor.ToC()
-	sys_selection := selection.ToC()
-	sys_target := target.ToC()
-	sys_property := property.ToC()
+	sys_selection := gdk.Atom(selection)
+	sys_target := gdk.Atom(target)
+	sys_property := gdk.Atom(property)
 	sys_time := time
+	gdk.Fn_gdk_selection_send_notify(sys_requestor, sys_selection, sys_target, sys_property, sys_time)
 }
 
 // SetDoubleClickTime is analogous to the C function gdk_set_double_click_time.
 func SetDoubleClickTime(msec uint) {
 	sys_msec := msec
+	gdk.Fn_gdk_set_double_click_time(sys_msec)
 }
 
 // SetProgramClass is analogous to the C function gdk_set_program_class.
 func SetProgramClass(programClass string) {
 	sys_programClass := programClass
+	gdk.Fn_gdk_set_program_class(sys_programClass)
 }
 
 // SetShowEvents is analogous to the C function gdk_set_show_events.
 func SetShowEvents(showEvents bool) {
 	sys_showEvents := showEvents
+	gdk.Fn_gdk_set_show_events(sys_showEvents)
 }
 
 // SettingGet is analogous to the C function gdk_setting_get.
 func SettingGet(name string, value *gobject.Value) {
 	sys_name := name
 	sys_value := value.ToC()
+	gdk.Fn_gdk_setting_get(sys_name, sys_value)
 }
 
 // UNSUPPORTED : gdk_synthesize_window_state : blacklisted
@@ -8426,24 +8494,32 @@ func SettingGet(name string, value *gobject.Value) {
 // UNSUPPORTED : gdk_threads_add_timeout_seconds_full : parameter 'function' is callback
 
 // ThreadsEnter is analogous to the C function gdk_threads_enter.
-func ThreadsEnter() {}
+func ThreadsEnter() {
+	gdk.Fn_gdk_threads_enter()
+}
 
 // ThreadsInit is analogous to the C function gdk_threads_init.
-func ThreadsInit() {}
+func ThreadsInit() {
+	gdk.Fn_gdk_threads_init()
+}
 
 // ThreadsLeave is analogous to the C function gdk_threads_leave.
-func ThreadsLeave() {}
+func ThreadsLeave() {
+	gdk.Fn_gdk_threads_leave()
+}
 
 // UNSUPPORTED : gdk_threads_set_lock_functions : parameter 'enter_fn' is callback
 
 // UnicodeToKeyval is analogous to the C function gdk_unicode_to_keyval.
 func UnicodeToKeyval(wc uint32) {
 	sys_wc := wc
+	gdk.Fn_gdk_unicode_to_keyval(sys_wc)
 }
 
 // Utf8ToStringTarget is analogous to the C function gdk_utf8_to_string_target.
 func Utf8ToStringTarget(str string) {
 	sys_str := str
+	gdk.Fn_gdk_utf8_to_string_target(sys_str)
 }
 
 // Atom is a representation of the C record GdkAtom.
