@@ -3739,6 +3739,7 @@ type Array struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GArray that represents the Array.
 func (recv *Array) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3748,6 +3749,7 @@ type AsyncQueue struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GAsyncQueue that represents the AsyncQueue.
 func (recv *AsyncQueue) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3757,6 +3759,7 @@ type BookmarkFile struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GBookmarkFile that represents the BookmarkFile.
 func (recv *BookmarkFile) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3766,6 +3769,7 @@ type ByteArray struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GByteArray that represents the ByteArray.
 func (recv *ByteArray) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3775,6 +3779,7 @@ type Cond struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GCond that represents the Cond.
 func (recv *Cond) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3784,6 +3789,7 @@ type Data struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GData that represents the Data.
 func (recv *Data) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3793,6 +3799,7 @@ type Date struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDate that represents the Date.
 func (recv *Date) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3802,6 +3809,7 @@ type DebugKey struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDebugKey that represents the DebugKey.
 func (recv *DebugKey) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3811,6 +3819,7 @@ type Dir struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDir that represents the Dir.
 func (recv *Dir) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3820,6 +3829,7 @@ type Error struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GError that represents the Error.
 func (recv *Error) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3829,6 +3839,7 @@ type HashTable struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GHashTable that represents the HashTable.
 func (recv *HashTable) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3838,6 +3849,7 @@ type HashTableIter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GHashTableIter that represents the HashTableIter.
 func (recv *HashTableIter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3847,6 +3859,7 @@ type Hook struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GHook that represents the Hook.
 func (recv *Hook) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3856,6 +3869,7 @@ type HookList struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GHookList that represents the HookList.
 func (recv *HookList) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3865,6 +3879,7 @@ type IConv struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GIConv that represents the IConv.
 func (recv *IConv) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3874,6 +3889,7 @@ type IOChannel struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GIOChannel that represents the IOChannel.
 func (recv *IOChannel) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3883,6 +3899,7 @@ type IOFuncs struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GIOFuncs that represents the IOFuncs.
 func (recv *IOFuncs) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3892,6 +3909,7 @@ type KeyFile struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GKeyFile that represents the KeyFile.
 func (recv *KeyFile) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3901,6 +3919,7 @@ type List struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GList that represents the List.
 func (recv *List) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3910,6 +3929,7 @@ type MainContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMainContext that represents the MainContext.
 func (recv *MainContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3919,6 +3939,7 @@ type MainLoop struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMainLoop that represents the MainLoop.
 func (recv *MainLoop) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3928,6 +3949,7 @@ type MappedFile struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMappedFile that represents the MappedFile.
 func (recv *MappedFile) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3937,6 +3959,7 @@ type MarkupParseContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMarkupParseContext that represents the MarkupParseContext.
 func (recv *MarkupParseContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3946,6 +3969,7 @@ type MarkupParser struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMarkupParser that represents the MarkupParser.
 func (recv *MarkupParser) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3955,6 +3979,7 @@ type MatchInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMatchInfo that represents the MatchInfo.
 func (recv *MatchInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3964,6 +3989,7 @@ type MemVTable struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMemVTable that represents the MemVTable.
 func (recv *MemVTable) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3973,6 +3999,7 @@ type Node struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GNode that represents the Node.
 func (recv *Node) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3984,6 +4011,7 @@ type Once struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GOnce that represents the Once.
 func (recv *Once) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3993,6 +4021,7 @@ type OptionContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GOptionContext that represents the OptionContext.
 func (recv *OptionContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4002,6 +4031,7 @@ type OptionEntry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GOptionEntry that represents the OptionEntry.
 func (recv *OptionEntry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4011,6 +4041,7 @@ type OptionGroup struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GOptionGroup that represents the OptionGroup.
 func (recv *OptionGroup) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4020,6 +4051,7 @@ type PatternSpec struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GPatternSpec that represents the PatternSpec.
 func (recv *PatternSpec) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4029,6 +4061,7 @@ type PollFD struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GPollFD that represents the PollFD.
 func (recv *PollFD) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4038,6 +4071,7 @@ type Private struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GPrivate that represents the Private.
 func (recv *Private) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4047,6 +4081,7 @@ type PtrArray struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GPtrArray that represents the PtrArray.
 func (recv *PtrArray) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4056,6 +4091,7 @@ type Queue struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GQueue that represents the Queue.
 func (recv *Queue) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4065,6 +4101,7 @@ type Rand struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GRand that represents the Rand.
 func (recv *Rand) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4076,6 +4113,7 @@ type Regex struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GRegex that represents the Regex.
 func (recv *Regex) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4085,6 +4123,7 @@ type SList struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSList that represents the SList.
 func (recv *SList) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4094,6 +4133,7 @@ type Scanner struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GScanner that represents the Scanner.
 func (recv *Scanner) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4103,6 +4143,7 @@ type ScannerConfig struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GScannerConfig that represents the ScannerConfig.
 func (recv *ScannerConfig) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4112,6 +4153,7 @@ type Sequence struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSequence that represents the Sequence.
 func (recv *Sequence) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4121,6 +4163,7 @@ type SequenceIter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSequenceIter that represents the SequenceIter.
 func (recv *SequenceIter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4130,6 +4173,7 @@ type Source struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSource that represents the Source.
 func (recv *Source) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4139,6 +4183,7 @@ type SourceCallbackFuncs struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSourceCallbackFuncs that represents the SourceCallbackFuncs.
 func (recv *SourceCallbackFuncs) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4148,6 +4193,7 @@ type SourceFuncs struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSourceFuncs that represents the SourceFuncs.
 func (recv *SourceFuncs) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4157,6 +4203,7 @@ type SourcePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSourcePrivate that represents the SourcePrivate.
 func (recv *SourcePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4168,6 +4215,7 @@ type StatBuf struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GStatBuf that represents the StatBuf.
 func (recv *StatBuf) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4177,6 +4225,7 @@ type String struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GString that represents the String.
 func (recv *String) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4186,6 +4235,7 @@ type StringChunk struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GStringChunk that represents the StringChunk.
 func (recv *StringChunk) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4195,6 +4245,7 @@ type TestCase struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTestCase that represents the TestCase.
 func (recv *TestCase) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4204,6 +4255,7 @@ type TestConfig struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTestConfig that represents the TestConfig.
 func (recv *TestConfig) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4213,6 +4265,7 @@ type TestLogBuffer struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTestLogBuffer that represents the TestLogBuffer.
 func (recv *TestLogBuffer) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4224,6 +4277,7 @@ type TestSuite struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTestSuite that represents the TestSuite.
 func (recv *TestSuite) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4233,6 +4287,7 @@ type Thread struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GThread that represents the Thread.
 func (recv *Thread) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4242,6 +4297,7 @@ type ThreadPool struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GThreadPool that represents the ThreadPool.
 func (recv *ThreadPool) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4251,6 +4307,7 @@ type TimeVal struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTimeVal that represents the TimeVal.
 func (recv *TimeVal) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4260,6 +4317,7 @@ type Timer struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTimer that represents the Timer.
 func (recv *Timer) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4269,6 +4327,7 @@ type TrashStack struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTrashStack that represents the TrashStack.
 func (recv *TrashStack) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4278,6 +4337,7 @@ type Tree struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTree that represents the Tree.
 func (recv *Tree) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4287,6 +4347,7 @@ type VariantBuilder struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GVariantBuilder that represents the VariantBuilder.
 func (recv *VariantBuilder) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4296,6 +4357,7 @@ type VariantIter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GVariantIter that represents the VariantIter.
 func (recv *VariantIter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4305,6 +4367,7 @@ type VariantType struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GVariantType that represents the VariantType.
 func (recv *VariantType) ToC() unsafe.Pointer {
 	return recv.native
 }

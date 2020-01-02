@@ -50,6 +50,7 @@ type Display struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C Display that represents the Display.
 func (recv *Display) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -59,6 +60,7 @@ type Screen struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C Screen that represents the Screen.
 func (recv *Screen) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -68,6 +70,7 @@ type Visual struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C Visual that represents the Visual.
 func (recv *Visual) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -77,6 +80,7 @@ type XConfigureEvent struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C XConfigureEvent that represents the XConfigureEvent.
 func (recv *XConfigureEvent) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -86,6 +90,7 @@ type XImage struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C XImage that represents the XImage.
 func (recv *XImage) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -95,6 +100,7 @@ type XFontStruct struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C XFontStruct that represents the XFontStruct.
 func (recv *XFontStruct) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -104,6 +110,7 @@ type XTrapezoid struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C XTrapezoid that represents the XTrapezoid.
 func (recv *XTrapezoid) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -113,6 +120,7 @@ type XVisualInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C XVisualInfo that represents the XVisualInfo.
 func (recv *XVisualInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -122,6 +130,7 @@ type XWindowAttributes struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C XWindowAttributes that represents the XWindowAttributes.
 func (recv *XWindowAttributes) ToC() unsafe.Pointer {
 	return recv.native
 }

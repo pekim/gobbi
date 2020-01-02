@@ -599,6 +599,7 @@ type Context struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C cairo_t that represents the Context.
 func (recv *Context) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -608,6 +609,7 @@ type Device struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C cairo_device_t that represents the Device.
 func (recv *Device) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -617,6 +619,7 @@ type Surface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C cairo_surface_t that represents the Surface.
 func (recv *Surface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -626,6 +629,7 @@ type Matrix struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C cairo_matrix_t that represents the Matrix.
 func (recv *Matrix) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -635,6 +639,7 @@ type Pattern struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C cairo_pattern_t that represents the Pattern.
 func (recv *Pattern) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -644,6 +649,7 @@ type Region struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C cairo_region_t that represents the Region.
 func (recv *Region) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -653,6 +659,7 @@ type FontOptions struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C cairo_font_options_t that represents the FontOptions.
 func (recv *FontOptions) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -662,6 +669,7 @@ type FontFace struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C cairo_font_face_t that represents the FontFace.
 func (recv *FontFace) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -671,6 +679,7 @@ type ScaledFont struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C cairo_scaled_font_t that represents the ScaledFont.
 func (recv *ScaledFont) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -680,6 +689,7 @@ type Path struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C cairo_path_t that represents the Path.
 func (recv *Path) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -689,6 +699,7 @@ type Rectangle struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C cairo_rectangle_t that represents the Rectangle.
 func (recv *Rectangle) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -698,6 +709,7 @@ type RectangleInt struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C cairo_rectangle_int_t that represents the RectangleInt.
 func (recv *RectangleInt) ToC() unsafe.Pointer {
 	return recv.native
 }

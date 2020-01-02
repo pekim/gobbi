@@ -32,6 +32,8 @@ func (r *Record) generateLibType(f *jen.File) {
 }
 
 func (r *Record) generateToC(f *jen.File) {
+	f.Commentf("ToC returns a pointer to the C %s that represents the %s.", r.CType, r.goName)
+
 	f.
 		Func().
 		Parens(jen.Id("recv").Op("*").Id(r.goName)).

@@ -823,86 +823,105 @@ const WrapMode_char = WrapMode(1)
 // WrapMode_word_char is a representation of the C enumeration member PANGO_WRAP_WORD_CHAR.
 const WrapMode_word_char = WrapMode(2)
 
+// AttrBackgroundAlphaNew is analogous to the C function pango_attr_background_alpha_new.
 func AttrBackgroundAlphaNew(alpha uint16) {
 	sys_alpha := alpha
 }
 
+// AttrBackgroundNew is analogous to the C function pango_attr_background_new.
 func AttrBackgroundNew(red uint16, green uint16, blue uint16) {
 	sys_red := red
 	sys_green := green
 	sys_blue := blue
 }
 
+// AttrFallbackNew is analogous to the C function pango_attr_fallback_new.
 func AttrFallbackNew(enableFallback bool) {
 	sys_enableFallback := enableFallback
 }
 
+// AttrFamilyNew is analogous to the C function pango_attr_family_new.
 func AttrFamilyNew(family string) {
 	sys_family := family
 }
 
+// AttrForegroundAlphaNew is analogous to the C function pango_attr_foreground_alpha_new.
 func AttrForegroundAlphaNew(alpha uint16) {
 	sys_alpha := alpha
 }
 
+// AttrForegroundNew is analogous to the C function pango_attr_foreground_new.
 func AttrForegroundNew(red uint16, green uint16, blue uint16) {
 	sys_red := red
 	sys_green := green
 	sys_blue := blue
 }
 
+// AttrGravityHintNew is analogous to the C function pango_attr_gravity_hint_new.
 func AttrGravityHintNew(hint int) {
 	sys_hint := hint
 }
 
+// AttrGravityNew is analogous to the C function pango_attr_gravity_new.
 func AttrGravityNew(gravity int) {
 	sys_gravity := gravity
 }
 
+// AttrLetterSpacingNew is analogous to the C function pango_attr_letter_spacing_new.
 func AttrLetterSpacingNew(letterSpacing int) {
 	sys_letterSpacing := letterSpacing
 }
 
+// AttrRiseNew is analogous to the C function pango_attr_rise_new.
 func AttrRiseNew(rise int) {
 	sys_rise := rise
 }
 
+// AttrScaleNew is analogous to the C function pango_attr_scale_new.
 func AttrScaleNew(scaleFactor float64) {
 	sys_scaleFactor := scaleFactor
 }
 
+// AttrStretchNew is analogous to the C function pango_attr_stretch_new.
 func AttrStretchNew(stretch int) {
 	sys_stretch := stretch
 }
 
+// AttrStrikethroughColorNew is analogous to the C function pango_attr_strikethrough_color_new.
 func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) {
 	sys_red := red
 	sys_green := green
 	sys_blue := blue
 }
 
+// AttrStrikethroughNew is analogous to the C function pango_attr_strikethrough_new.
 func AttrStrikethroughNew(strikethrough bool) {
 	sys_strikethrough := strikethrough
 }
 
+// AttrStyleNew is analogous to the C function pango_attr_style_new.
 func AttrStyleNew(style int) {
 	sys_style := style
 }
 
+// AttrUnderlineColorNew is analogous to the C function pango_attr_underline_color_new.
 func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) {
 	sys_red := red
 	sys_green := green
 	sys_blue := blue
 }
 
+// AttrUnderlineNew is analogous to the C function pango_attr_underline_new.
 func AttrUnderlineNew(underline int) {
 	sys_underline := underline
 }
 
+// AttrVariantNew is analogous to the C function pango_attr_variant_new.
 func AttrVariantNew(variant int) {
 	sys_variant := variant
 }
 
+// AttrWeightNew is analogous to the C function pango_attr_weight_new.
 func AttrWeightNew(weight int) {
 	sys_weight := weight
 }
@@ -915,11 +934,13 @@ func AttrWeightNew(weight int) {
 
 // UNSUPPORTED : pango_default_break : blacklisted
 
+// ExtentsToPixels is analogous to the C function pango_extents_to_pixels.
 func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
 	sys_inclusive := inclusive.ToC()
 	sys_nearest := nearest.ToC()
 }
 
+// FindBaseDir is analogous to the C function pango_find_base_dir.
 func FindBaseDir(text string, length int) {
 	sys_text := text
 	sys_length := length
@@ -927,6 +948,7 @@ func FindBaseDir(text string, length int) {
 
 // UNSUPPORTED : pango_find_map : blacklisted
 
+// FindParagraphBoundary is analogous to the C function pango_find_paragraph_boundary.
 func FindParagraphBoundary(text string, length int) {
 	sys_text := text
 	sys_length := length
@@ -936,6 +958,7 @@ func FindParagraphBoundary(text string, length int) {
 
 // UNSUPPORTED : pango_get_log_attrs : has array param, log_attrs
 
+// GetMirrorChar is analogous to the C function pango_get_mirror_char.
 func GetMirrorChar(ch rune, mirroredCh *rune) {
 	sys_ch := ch
 	sys_mirroredCh := mirroredCh
@@ -943,10 +966,12 @@ func GetMirrorChar(ch rune, mirroredCh *rune) {
 
 // UNSUPPORTED : pango_get_sysconf_subdirectory : blacklisted
 
+// IsZeroWidth is analogous to the C function pango_is_zero_width.
 func IsZeroWidth(ch rune) {
 	sys_ch := ch
 }
 
+// Itemize is analogous to the C function pango_itemize.
 func Itemize(context *Context, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
 	sys_context := context.ToC()
 	sys_text := text
@@ -956,6 +981,7 @@ func Itemize(context *Context, text string, startIndex int, length int, attrs *A
 	sys_cachedIter := cachedIter.ToC()
 }
 
+// ItemizeWithBaseDir is analogous to the C function pango_itemize_with_base_dir.
 func ItemizeWithBaseDir(context *Context, baseDir int, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
 	sys_context := context.ToC()
 	sys_baseDir := baseDir
@@ -966,6 +992,7 @@ func ItemizeWithBaseDir(context *Context, baseDir int, text string, startIndex i
 	sys_cachedIter := cachedIter.ToC()
 }
 
+// Log2visGetEmbeddingLevels is analogous to the C function pango_log2vis_get_embedding_levels.
 func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *int) {
 	sys_text := text
 	sys_length := length
@@ -974,73 +1001,88 @@ func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *int) {
 
 // UNSUPPORTED : pango_lookup_aliases : blacklisted
 
+// MarkupParserFinish is analogous to the C function pango_markup_parser_finish.
 func MarkupParserFinish(context *glib.MarkupParseContext) {
 	sys_context := context.ToC()
 }
 
+// MarkupParserNew is analogous to the C function pango_markup_parser_new.
 func MarkupParserNew(accelMarker rune) {
 	sys_accelMarker := accelMarker
 }
 
 // UNSUPPORTED : pango_module_register : blacklisted
 
+// ParseEnum is analogous to the C function pango_parse_enum.
 func ParseEnum(type_ uint64, str string, warn bool) {
 	sys_type_ := type_
 	sys_str := str
 	sys_warn := warn
 }
 
+// ParseMarkup is analogous to the C function pango_parse_markup.
 func ParseMarkup(markupText string, length int, accelMarker rune) {
 	sys_markupText := markupText
 	sys_length := length
 	sys_accelMarker := accelMarker
 }
 
+// ParseStretch is analogous to the C function pango_parse_stretch.
 func ParseStretch(str string, warn bool) {
 	sys_str := str
 	sys_warn := warn
 }
 
+// ParseStyle is analogous to the C function pango_parse_style.
 func ParseStyle(str string, warn bool) {
 	sys_str := str
 	sys_warn := warn
 }
 
+// ParseVariant is analogous to the C function pango_parse_variant.
 func ParseVariant(str string, warn bool) {
 	sys_str := str
 	sys_warn := warn
 }
 
+// ParseWeight is analogous to the C function pango_parse_weight.
 func ParseWeight(str string, warn bool) {
 	sys_str := str
 	sys_warn := warn
 }
 
+// QuantizeLineGeometry is analogous to the C function pango_quantize_line_geometry.
 func QuantizeLineGeometry(thickness *int, position *int) {
 	sys_thickness := thickness
 	sys_position := position
 }
 
+// ReadLine is analogous to the C function pango_read_line.
 func ReadLine(stream unsafe.Pointer) {
 	sys_stream := stream
 }
 
+// ReorderItems is analogous to the C function pango_reorder_items.
 func ReorderItems(logicalItems *glib.List) {
 	sys_logicalItems := logicalItems.ToC()
 }
 
+// ScanInt is analogous to the C function pango_scan_int.
 func ScanInt(pos *string) {
 	sys_pos := pos
 }
 
+// ScanString is analogous to the C function pango_scan_string.
 func ScanString(pos *string) {
 	sys_pos := pos
 }
 
+// ScanWord is analogous to the C function pango_scan_word.
 func ScanWord(pos *string) {
 	sys_pos := pos
 }
 
+// Shape is analogous to the C function pango_shape.
 func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
 	sys_text := text
 	sys_length := length
@@ -1048,6 +1090,7 @@ func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
 	sys_glyphs := glyphs.ToC()
 }
 
+// ShapeFull is analogous to the C function pango_shape_full.
 func ShapeFull(itemText string, itemLength int, paragraphText string, paragraphLength int, analysis *Analysis, glyphs *GlyphString) {
 	sys_itemText := itemText
 	sys_itemLength := itemLength
@@ -1057,36 +1100,44 @@ func ShapeFull(itemText string, itemLength int, paragraphText string, paragraphL
 	sys_glyphs := glyphs.ToC()
 }
 
+// SkipSpace is analogous to the C function pango_skip_space.
 func SkipSpace(pos *string) {
 	sys_pos := pos
 }
 
 // UNSUPPORTED : pango_split_file_list : no array length
 
+// TrimString is analogous to the C function pango_trim_string.
 func TrimString(str string) {
 	sys_str := str
 }
 
+// UnicharDirection is analogous to the C function pango_unichar_direction.
 func UnicharDirection(ch rune) {
 	sys_ch := ch
 }
 
+// UnitsFromDouble is analogous to the C function pango_units_from_double.
 func UnitsFromDouble(d float64) {
 	sys_d := d
 }
 
+// UnitsToDouble is analogous to the C function pango_units_to_double.
 func UnitsToDouble(i int) {
 	sys_i := i
 }
 
+// Version is analogous to the C function pango_version.
 func Version() {}
 
+// VersionCheck is analogous to the C function pango_version_check.
 func VersionCheck(requiredMajor int, requiredMinor int, requiredMicro int) {
 	sys_requiredMajor := requiredMajor
 	sys_requiredMinor := requiredMinor
 	sys_requiredMicro := requiredMicro
 }
 
+// VersionString is analogous to the C function pango_version_string.
 func VersionString() {}
 
 // Analysis is a representation of the C record PangoAnalysis.
@@ -1094,6 +1145,7 @@ type Analysis struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAnalysis that represents the Analysis.
 func (recv *Analysis) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1103,6 +1155,7 @@ type AttrClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttrClass that represents the AttrClass.
 func (recv *AttrClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1112,6 +1165,7 @@ type AttrColor struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttrColor that represents the AttrColor.
 func (recv *AttrColor) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1121,6 +1175,7 @@ type AttrFloat struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttrFloat that represents the AttrFloat.
 func (recv *AttrFloat) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1130,6 +1185,7 @@ type AttrFontDesc struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttrFontDesc that represents the AttrFontDesc.
 func (recv *AttrFontDesc) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1141,6 +1197,7 @@ type AttrFontFeatures struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttrFontFeatures that represents the AttrFontFeatures.
 func (recv *AttrFontFeatures) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1150,6 +1207,7 @@ type AttrInt struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttrInt that represents the AttrInt.
 func (recv *AttrInt) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1159,6 +1217,7 @@ type AttrIterator struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttrIterator that represents the AttrIterator.
 func (recv *AttrIterator) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1168,6 +1227,7 @@ type AttrLanguage struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttrLanguage that represents the AttrLanguage.
 func (recv *AttrLanguage) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1177,6 +1237,7 @@ type AttrList struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttrList that represents the AttrList.
 func (recv *AttrList) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1186,6 +1247,7 @@ type AttrShape struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttrShape that represents the AttrShape.
 func (recv *AttrShape) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1195,6 +1257,7 @@ type AttrSize struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttrSize that represents the AttrSize.
 func (recv *AttrSize) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1204,6 +1267,7 @@ type AttrString struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttrString that represents the AttrString.
 func (recv *AttrString) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1213,6 +1277,7 @@ type Attribute struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoAttribute that represents the Attribute.
 func (recv *Attribute) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1222,6 +1287,7 @@ type Color struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoColor that represents the Color.
 func (recv *Color) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1231,6 +1297,7 @@ type ContextClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoContextClass that represents the ContextClass.
 func (recv *ContextClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1240,6 +1307,7 @@ type Coverage struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoCoverage that represents the Coverage.
 func (recv *Coverage) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1261,6 +1329,7 @@ type FontDescription struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoFontDescription that represents the FontDescription.
 func (recv *FontDescription) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1276,6 +1345,7 @@ type FontMetrics struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoFontMetrics that represents the FontMetrics.
 func (recv *FontMetrics) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1289,6 +1359,7 @@ type GlyphGeometry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoGlyphGeometry that represents the GlyphGeometry.
 func (recv *GlyphGeometry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1298,6 +1369,7 @@ type GlyphInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoGlyphInfo that represents the GlyphInfo.
 func (recv *GlyphInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1307,6 +1379,7 @@ type GlyphItem struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoGlyphItem that represents the GlyphItem.
 func (recv *GlyphItem) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1318,6 +1391,7 @@ type GlyphItemIter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoGlyphItemIter that represents the GlyphItemIter.
 func (recv *GlyphItemIter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1327,6 +1401,7 @@ type GlyphString struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoGlyphString that represents the GlyphString.
 func (recv *GlyphString) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1336,6 +1411,7 @@ type GlyphVisAttr struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoGlyphVisAttr that represents the GlyphVisAttr.
 func (recv *GlyphVisAttr) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1347,6 +1423,7 @@ type Item struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoItem that represents the Item.
 func (recv *Item) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1356,6 +1433,7 @@ type Language struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoLanguage that represents the Language.
 func (recv *Language) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1365,6 +1443,7 @@ type LayoutClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoLayoutClass that represents the LayoutClass.
 func (recv *LayoutClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1374,6 +1453,7 @@ type LayoutIter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoLayoutIter that represents the LayoutIter.
 func (recv *LayoutIter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1383,6 +1463,7 @@ type LayoutLine struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoLayoutLine that represents the LayoutLine.
 func (recv *LayoutLine) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1392,6 +1473,7 @@ type LogAttr struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoLogAttr that represents the LogAttr.
 func (recv *LogAttr) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1407,6 +1489,7 @@ type Matrix struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoMatrix that represents the Matrix.
 func (recv *Matrix) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1416,6 +1499,7 @@ type Rectangle struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoRectangle that represents the Rectangle.
 func (recv *Rectangle) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1427,6 +1511,7 @@ type RendererClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoRendererClass that represents the RendererClass.
 func (recv *RendererClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1436,6 +1521,7 @@ type RendererPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoRendererPrivate that represents the RendererPrivate.
 func (recv *RendererPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1445,6 +1531,7 @@ type ScriptIter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoScriptIter that represents the ScriptIter.
 func (recv *ScriptIter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1454,6 +1541,7 @@ type TabArray struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoTabArray that represents the TabArray.
 func (recv *TabArray) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1463,6 +1551,7 @@ type Context struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoContext that represents the Context.
 func (recv *Context) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1474,6 +1563,7 @@ type EngineLang struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoEngineLang that represents the EngineLang.
 func (recv *EngineLang) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1483,6 +1573,7 @@ type EngineShape struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoEngineShape that represents the EngineShape.
 func (recv *EngineShape) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1492,6 +1583,7 @@ type Font struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoFont that represents the Font.
 func (recv *Font) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1501,6 +1593,7 @@ type FontFace struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoFontFace that represents the FontFace.
 func (recv *FontFace) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1510,6 +1603,7 @@ type FontFamily struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoFontFamily that represents the FontFamily.
 func (recv *FontFamily) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1519,6 +1613,7 @@ type FontMap struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoFontMap that represents the FontMap.
 func (recv *FontMap) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1528,6 +1623,7 @@ type Fontset struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoFontset that represents the Fontset.
 func (recv *Fontset) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1539,6 +1635,7 @@ type Layout struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoLayout that represents the Layout.
 func (recv *Layout) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1550,6 +1647,7 @@ type Renderer struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C PangoRenderer that represents the Renderer.
 func (recv *Renderer) ToC() unsafe.Pointer {
 	return recv.native
 }

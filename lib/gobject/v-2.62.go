@@ -212,11 +212,13 @@ const TypeFundamentalFlags_derivable = TypeFundamentalFlags(4)
 // TypeFundamentalFlags_deep_derivable is a representation of the C bitfield member G_TYPE_FLAG_DEEP_DERIVABLE.
 const TypeFundamentalFlags_deep_derivable = TypeFundamentalFlags(8)
 
+// BoxedCopy is analogous to the C function g_boxed_copy.
 func BoxedCopy(boxedType uint64, srcBoxed unsafe.Pointer) {
 	sys_boxedType := boxedType
 	sys_srcBoxed := srcBoxed
 }
 
+// BoxedFree is analogous to the C function g_boxed_free.
 func BoxedFree(boxedType uint64, boxed unsafe.Pointer) {
 	sys_boxedType := boxedType
 	sys_boxed := boxed
@@ -232,77 +234,93 @@ func BoxedFree(boxedType uint64, boxed unsafe.Pointer) {
 
 // UNSUPPORTED : g_cclosure_new_swap : parameter 'callback_func' is callback
 
+// ClearObject is analogous to the C function g_clear_object.
 func ClearObject(objectPtr **Object) {
 	sys_objectPtr := objectPtr.ToC()
 }
 
+// ClearSignalHandler is analogous to the C function g_clear_signal_handler.
 func ClearSignalHandler(handlerIdPtr *uint64, instance unsafe.Pointer) {
 	sys_handlerIdPtr := handlerIdPtr
 	sys_instance := instance.ToC()
 }
 
+// EnumCompleteTypeInfo is analogous to the C function g_enum_complete_type_info.
 func EnumCompleteTypeInfo(gEnumType uint64, constValues *EnumValue) {
 	sys_gEnumType := gEnumType
 	sys_constValues := constValues.ToC()
 }
 
+// EnumGetValue is analogous to the C function g_enum_get_value.
 func EnumGetValue(enumClass *EnumClass, value int) {
 	sys_enumClass := enumClass.ToC()
 	sys_value := value
 }
 
+// EnumGetValueByName is analogous to the C function g_enum_get_value_by_name.
 func EnumGetValueByName(enumClass *EnumClass, name string) {
 	sys_enumClass := enumClass.ToC()
 	sys_name := name
 }
 
+// EnumGetValueByNick is analogous to the C function g_enum_get_value_by_nick.
 func EnumGetValueByNick(enumClass *EnumClass, nick string) {
 	sys_enumClass := enumClass.ToC()
 	sys_nick := nick
 }
 
+// EnumRegisterStatic is analogous to the C function g_enum_register_static.
 func EnumRegisterStatic(name string, constStaticValues *EnumValue) {
 	sys_name := name
 	sys_constStaticValues := constStaticValues.ToC()
 }
 
+// EnumToString is analogous to the C function g_enum_to_string.
 func EnumToString(gEnumType uint64, value int) {
 	sys_gEnumType := gEnumType
 	sys_value := value
 }
 
+// FlagsCompleteTypeInfo is analogous to the C function g_flags_complete_type_info.
 func FlagsCompleteTypeInfo(gFlagsType uint64, constValues *FlagsValue) {
 	sys_gFlagsType := gFlagsType
 	sys_constValues := constValues.ToC()
 }
 
+// FlagsGetFirstValue is analogous to the C function g_flags_get_first_value.
 func FlagsGetFirstValue(flagsClass *FlagsClass, value uint) {
 	sys_flagsClass := flagsClass.ToC()
 	sys_value := value
 }
 
+// FlagsGetValueByName is analogous to the C function g_flags_get_value_by_name.
 func FlagsGetValueByName(flagsClass *FlagsClass, name string) {
 	sys_flagsClass := flagsClass.ToC()
 	sys_name := name
 }
 
+// FlagsGetValueByNick is analogous to the C function g_flags_get_value_by_nick.
 func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) {
 	sys_flagsClass := flagsClass.ToC()
 	sys_nick := nick
 }
 
+// FlagsRegisterStatic is analogous to the C function g_flags_register_static.
 func FlagsRegisterStatic(name string, constStaticValues *FlagsValue) {
 	sys_name := name
 	sys_constStaticValues := constStaticValues.ToC()
 }
 
+// FlagsToString is analogous to the C function g_flags_to_string.
 func FlagsToString(flagsType uint64, value uint) {
 	sys_flagsType := flagsType
 	sys_value := value
 }
 
+// GtypeGetType is analogous to the C function g_gtype_get_type.
 func GtypeGetType() {}
 
+// ParamSpecBoolean is analogous to the C function g_param_spec_boolean.
 func ParamSpecBoolean(name string, nick string, blurb string, defaultValue bool, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -311,6 +329,7 @@ func ParamSpecBoolean(name string, nick string, blurb string, defaultValue bool,
 	sys_flags := flags
 }
 
+// ParamSpecBoxed is analogous to the C function g_param_spec_boxed.
 func ParamSpecBoxed(name string, nick string, blurb string, boxedType uint64, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -319,6 +338,7 @@ func ParamSpecBoxed(name string, nick string, blurb string, boxedType uint64, fl
 	sys_flags := flags
 }
 
+// ParamSpecChar is analogous to the C function g_param_spec_char.
 func ParamSpecChar(name string, nick string, blurb string, minimum int8, maximum int8, defaultValue int8, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -329,6 +349,7 @@ func ParamSpecChar(name string, nick string, blurb string, minimum int8, maximum
 	sys_flags := flags
 }
 
+// ParamSpecDouble is analogous to the C function g_param_spec_double.
 func ParamSpecDouble(name string, nick string, blurb string, minimum float64, maximum float64, defaultValue float64, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -339,6 +360,7 @@ func ParamSpecDouble(name string, nick string, blurb string, minimum float64, ma
 	sys_flags := flags
 }
 
+// ParamSpecEnum is analogous to the C function g_param_spec_enum.
 func ParamSpecEnum(name string, nick string, blurb string, enumType uint64, defaultValue int, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -348,6 +370,7 @@ func ParamSpecEnum(name string, nick string, blurb string, enumType uint64, defa
 	sys_flags := flags
 }
 
+// ParamSpecFlags is analogous to the C function g_param_spec_flags.
 func ParamSpecFlags(name string, nick string, blurb string, flagsType uint64, defaultValue uint, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -357,6 +380,7 @@ func ParamSpecFlags(name string, nick string, blurb string, flagsType uint64, de
 	sys_flags := flags
 }
 
+// ParamSpecFloat is analogous to the C function g_param_spec_float.
 func ParamSpecFloat(name string, nick string, blurb string, minimum float32, maximum float32, defaultValue float32, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -367,6 +391,7 @@ func ParamSpecFloat(name string, nick string, blurb string, minimum float32, max
 	sys_flags := flags
 }
 
+// ParamSpecGtype is analogous to the C function g_param_spec_gtype.
 func ParamSpecGtype(name string, nick string, blurb string, isAType uint64, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -375,6 +400,7 @@ func ParamSpecGtype(name string, nick string, blurb string, isAType uint64, flag
 	sys_flags := flags
 }
 
+// ParamSpecInt is analogous to the C function g_param_spec_int.
 func ParamSpecInt(name string, nick string, blurb string, minimum int, maximum int, defaultValue int, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -385,6 +411,7 @@ func ParamSpecInt(name string, nick string, blurb string, minimum int, maximum i
 	sys_flags := flags
 }
 
+// ParamSpecInt64 is analogous to the C function g_param_spec_int64.
 func ParamSpecInt64(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -395,6 +422,7 @@ func ParamSpecInt64(name string, nick string, blurb string, minimum int64, maxim
 	sys_flags := flags
 }
 
+// ParamSpecLong is analogous to the C function g_param_spec_long.
 func ParamSpecLong(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -405,6 +433,7 @@ func ParamSpecLong(name string, nick string, blurb string, minimum int64, maximu
 	sys_flags := flags
 }
 
+// ParamSpecObject is analogous to the C function g_param_spec_object.
 func ParamSpecObject(name string, nick string, blurb string, objectType uint64, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -413,11 +442,13 @@ func ParamSpecObject(name string, nick string, blurb string, objectType uint64, 
 	sys_flags := flags
 }
 
+// ParamSpecOverride is analogous to the C function g_param_spec_override.
 func ParamSpecOverride(name string, overridden *ParamSpec) {
 	sys_name := name
 	sys_overridden := overridden.ToC()
 }
 
+// ParamSpecParam is analogous to the C function g_param_spec_param.
 func ParamSpecParam(name string, nick string, blurb string, paramType uint64, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -426,6 +457,7 @@ func ParamSpecParam(name string, nick string, blurb string, paramType uint64, fl
 	sys_flags := flags
 }
 
+// ParamSpecPointer is analogous to the C function g_param_spec_pointer.
 func ParamSpecPointer(name string, nick string, blurb string, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -433,6 +465,7 @@ func ParamSpecPointer(name string, nick string, blurb string, flags int) {
 	sys_flags := flags
 }
 
+// ParamSpecString is analogous to the C function g_param_spec_string.
 func ParamSpecString(name string, nick string, blurb string, defaultValue string, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -441,6 +474,7 @@ func ParamSpecString(name string, nick string, blurb string, defaultValue string
 	sys_flags := flags
 }
 
+// ParamSpecUchar is analogous to the C function g_param_spec_uchar.
 func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maximum uint8, defaultValue uint8, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -451,6 +485,7 @@ func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maxim
 	sys_flags := flags
 }
 
+// ParamSpecUint is analogous to the C function g_param_spec_uint.
 func ParamSpecUint(name string, nick string, blurb string, minimum uint, maximum uint, defaultValue uint, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -461,6 +496,7 @@ func ParamSpecUint(name string, nick string, blurb string, minimum uint, maximum
 	sys_flags := flags
 }
 
+// ParamSpecUint64 is analogous to the C function g_param_spec_uint64.
 func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -471,6 +507,7 @@ func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, max
 	sys_flags := flags
 }
 
+// ParamSpecUlong is analogous to the C function g_param_spec_ulong.
 func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -481,6 +518,7 @@ func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maxi
 	sys_flags := flags
 }
 
+// ParamSpecUnichar is analogous to the C function g_param_spec_unichar.
 func ParamSpecUnichar(name string, nick string, blurb string, defaultValue rune, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -489,6 +527,7 @@ func ParamSpecUnichar(name string, nick string, blurb string, defaultValue rune,
 	sys_flags := flags
 }
 
+// ParamSpecValueArray is analogous to the C function g_param_spec_value_array.
 func ParamSpecValueArray(name string, nick string, blurb string, elementSpec *ParamSpec, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -497,6 +536,7 @@ func ParamSpecValueArray(name string, nick string, blurb string, elementSpec *Pa
 	sys_flags := flags
 }
 
+// ParamSpecVariant is analogous to the C function g_param_spec_variant.
 func ParamSpecVariant(name string, nick string, blurb string, type_ *glib.VariantType, defaultValue *glib.Variant, flags int) {
 	sys_name := name
 	sys_nick := nick
@@ -506,11 +546,13 @@ func ParamSpecVariant(name string, nick string, blurb string, type_ *glib.Varian
 	sys_flags := flags
 }
 
+// ParamTypeRegisterStatic is analogous to the C function g_param_type_register_static.
 func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) {
 	sys_name := name
 	sys_pspecInfo := pspecInfo.ToC()
 }
 
+// ParamValueConvert is analogous to the C function g_param_value_convert.
 func ParamValueConvert(pspec *ParamSpec, srcValue *Value, destValue *Value, strictValidation bool) {
 	sys_pspec := pspec.ToC()
 	sys_srcValue := srcValue.ToC()
@@ -518,31 +560,37 @@ func ParamValueConvert(pspec *ParamSpec, srcValue *Value, destValue *Value, stri
 	sys_strictValidation := strictValidation
 }
 
+// ParamValueDefaults is analogous to the C function g_param_value_defaults.
 func ParamValueDefaults(pspec *ParamSpec, value *Value) {
 	sys_pspec := pspec.ToC()
 	sys_value := value.ToC()
 }
 
+// ParamValueSetDefault is analogous to the C function g_param_value_set_default.
 func ParamValueSetDefault(pspec *ParamSpec, value *Value) {
 	sys_pspec := pspec.ToC()
 	sys_value := value.ToC()
 }
 
+// ParamValueValidate is analogous to the C function g_param_value_validate.
 func ParamValueValidate(pspec *ParamSpec, value *Value) {
 	sys_pspec := pspec.ToC()
 	sys_value := value.ToC()
 }
 
+// ParamValuesCmp is analogous to the C function g_param_values_cmp.
 func ParamValuesCmp(pspec *ParamSpec, value1 *Value, value2 *Value) {
 	sys_pspec := pspec.ToC()
 	sys_value1 := value1.ToC()
 	sys_value2 := value2.ToC()
 }
 
+// PointerTypeRegisterStatic is analogous to the C function g_pointer_type_register_static.
 func PointerTypeRegisterStatic(name string) {
 	sys_name := name
 }
 
+// SignalAccumulatorFirstWins is analogous to the C function g_signal_accumulator_first_wins.
 func SignalAccumulatorFirstWins(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy unsafe.Pointer) {
 	sys_ihint := ihint.ToC()
 	sys_returnAccu := returnAccu.ToC()
@@ -550,6 +598,7 @@ func SignalAccumulatorFirstWins(ihint *SignalInvocationHint, returnAccu *Value, 
 	sys_dummy := dummy
 }
 
+// SignalAccumulatorTrueHandled is analogous to the C function g_signal_accumulator_true_handled.
 func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy unsafe.Pointer) {
 	sys_ihint := ihint.ToC()
 	sys_returnAccu := returnAccu.ToC()
@@ -561,10 +610,12 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 
 // UNSUPPORTED : g_signal_chain_from_overridden : parameter 'instance_and_params' is array parameter without length parameter
 
+// SignalChainFromOverriddenHandler is analogous to the C function g_signal_chain_from_overridden_handler.
 func SignalChainFromOverriddenHandler(instance unsafe.Pointer) {
 	sys_instance := instance.ToC()
 }
 
+// SignalConnectClosure is analogous to the C function g_signal_connect_closure.
 func SignalConnectClosure(instance unsafe.Pointer, detailedSignal string, closure *Closure, after bool) {
 	sys_instance := instance.ToC()
 	sys_detailedSignal := detailedSignal
@@ -572,6 +623,7 @@ func SignalConnectClosure(instance unsafe.Pointer, detailedSignal string, closur
 	sys_after := after
 }
 
+// SignalConnectClosureById is analogous to the C function g_signal_connect_closure_by_id.
 func SignalConnectClosureById(instance unsafe.Pointer, signalId uint, detail uint32, closure *Closure, after bool) {
 	sys_instance := instance.ToC()
 	sys_signalId := signalId
@@ -584,17 +636,20 @@ func SignalConnectClosureById(instance unsafe.Pointer, signalId uint, detail uin
 
 // UNSUPPORTED : g_signal_connect_object : parameter 'c_handler' is callback
 
+// SignalEmit is analogous to the C function g_signal_emit.
 func SignalEmit(instance unsafe.Pointer, signalId uint, detail uint32) {
 	sys_instance := instance.ToC()
 	sys_signalId := signalId
 	sys_detail := detail
 }
 
+// SignalEmitByName is analogous to the C function g_signal_emit_by_name.
 func SignalEmitByName(instance unsafe.Pointer, detailedSignal string) {
 	sys_instance := instance.ToC()
 	sys_detailedSignal := detailedSignal
 }
 
+// SignalEmitValist is analogous to the C function g_signal_emit_valist.
 func SignalEmitValist(instance unsafe.Pointer, signalId uint, detail uint32) {
 	sys_instance := instance.ToC()
 	sys_signalId := signalId
@@ -603,20 +658,24 @@ func SignalEmitValist(instance unsafe.Pointer, signalId uint, detail uint32) {
 
 // UNSUPPORTED : g_signal_emitv : parameter 'instance_and_params' is array parameter without length parameter
 
+// SignalGetInvocationHint is analogous to the C function g_signal_get_invocation_hint.
 func SignalGetInvocationHint(instance unsafe.Pointer) {
 	sys_instance := instance.ToC()
 }
 
+// SignalHandlerBlock is analogous to the C function g_signal_handler_block.
 func SignalHandlerBlock(instance unsafe.Pointer, handlerId uint64) {
 	sys_instance := instance.ToC()
 	sys_handlerId := handlerId
 }
 
+// SignalHandlerDisconnect is analogous to the C function g_signal_handler_disconnect.
 func SignalHandlerDisconnect(instance unsafe.Pointer, handlerId uint64) {
 	sys_instance := instance.ToC()
 	sys_handlerId := handlerId
 }
 
+// SignalHandlerFind is analogous to the C function g_signal_handler_find.
 func SignalHandlerFind(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
 	sys_instance := instance.ToC()
 	sys_mask := mask
@@ -627,16 +686,19 @@ func SignalHandlerFind(instance unsafe.Pointer, mask int, signalId uint, detail 
 	sys_data := data
 }
 
+// SignalHandlerIsConnected is analogous to the C function g_signal_handler_is_connected.
 func SignalHandlerIsConnected(instance unsafe.Pointer, handlerId uint64) {
 	sys_instance := instance.ToC()
 	sys_handlerId := handlerId
 }
 
+// SignalHandlerUnblock is analogous to the C function g_signal_handler_unblock.
 func SignalHandlerUnblock(instance unsafe.Pointer, handlerId uint64) {
 	sys_instance := instance.ToC()
 	sys_handlerId := handlerId
 }
 
+// SignalHandlersBlockMatched is analogous to the C function g_signal_handlers_block_matched.
 func SignalHandlersBlockMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
 	sys_instance := instance.ToC()
 	sys_mask := mask
@@ -647,10 +709,12 @@ func SignalHandlersBlockMatched(instance unsafe.Pointer, mask int, signalId uint
 	sys_data := data
 }
 
+// SignalHandlersDestroy is analogous to the C function g_signal_handlers_destroy.
 func SignalHandlersDestroy(instance unsafe.Pointer) {
 	sys_instance := instance.ToC()
 }
 
+// SignalHandlersDisconnectMatched is analogous to the C function g_signal_handlers_disconnect_matched.
 func SignalHandlersDisconnectMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
 	sys_instance := instance.ToC()
 	sys_mask := mask
@@ -661,6 +725,7 @@ func SignalHandlersDisconnectMatched(instance unsafe.Pointer, mask int, signalId
 	sys_data := data
 }
 
+// SignalHandlersUnblockMatched is analogous to the C function g_signal_handlers_unblock_matched.
 func SignalHandlersUnblockMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
 	sys_instance := instance.ToC()
 	sys_mask := mask
@@ -671,6 +736,7 @@ func SignalHandlersUnblockMatched(instance unsafe.Pointer, mask int, signalId ui
 	sys_data := data
 }
 
+// SignalHasHandlerPending is analogous to the C function g_signal_has_handler_pending.
 func SignalHasHandlerPending(instance unsafe.Pointer, signalId uint, detail uint32, mayBeBlocked bool) {
 	sys_instance := instance.ToC()
 	sys_signalId := signalId
@@ -678,15 +744,18 @@ func SignalHasHandlerPending(instance unsafe.Pointer, signalId uint, detail uint
 	sys_mayBeBlocked := mayBeBlocked
 }
 
+// SignalListIds is analogous to the C function g_signal_list_ids.
 func SignalListIds(itype uint64) {
 	sys_itype := itype
 }
 
+// SignalLookup is analogous to the C function g_signal_lookup.
 func SignalLookup(name string, itype uint64) {
 	sys_name := name
 	sys_itype := itype
 }
 
+// SignalName is analogous to the C function g_signal_name.
 func SignalName(signalId uint) {
 	sys_signalId := signalId
 }
@@ -699,6 +768,7 @@ func SignalName(signalId uint) {
 
 // UNSUPPORTED : g_signal_newv : parameter 'accumulator' is callback
 
+// SignalOverrideClassClosure is analogous to the C function g_signal_override_class_closure.
 func SignalOverrideClassClosure(signalId uint, instanceType uint64, classClosure *Closure) {
 	sys_signalId := signalId
 	sys_instanceType := instanceType
@@ -707,16 +777,19 @@ func SignalOverrideClassClosure(signalId uint, instanceType uint64, classClosure
 
 // UNSUPPORTED : g_signal_override_class_handler : parameter 'class_handler' is callback
 
+// SignalParseName is analogous to the C function g_signal_parse_name.
 func SignalParseName(detailedSignal string, itype uint64, forceDetailQuark bool) {
 	sys_detailedSignal := detailedSignal
 	sys_itype := itype
 	sys_forceDetailQuark := forceDetailQuark
 }
 
+// SignalQuery is analogous to the C function g_signal_query.
 func SignalQuery(signalId uint) {
 	sys_signalId := signalId
 }
 
+// SignalRemoveEmissionHook is analogous to the C function g_signal_remove_emission_hook.
 func SignalRemoveEmissionHook(signalId uint, hookId uint64) {
 	sys_signalId := signalId
 	sys_hookId := hookId
@@ -724,42 +797,50 @@ func SignalRemoveEmissionHook(signalId uint, hookId uint64) {
 
 // UNSUPPORTED : g_signal_set_va_marshaller : blacklisted
 
+// SignalStopEmission is analogous to the C function g_signal_stop_emission.
 func SignalStopEmission(instance unsafe.Pointer, signalId uint, detail uint32) {
 	sys_instance := instance.ToC()
 	sys_signalId := signalId
 	sys_detail := detail
 }
 
+// SignalStopEmissionByName is analogous to the C function g_signal_stop_emission_by_name.
 func SignalStopEmissionByName(instance unsafe.Pointer, detailedSignal string) {
 	sys_instance := instance.ToC()
 	sys_detailedSignal := detailedSignal
 }
 
+// SignalTypeCclosureNew is analogous to the C function g_signal_type_cclosure_new.
 func SignalTypeCclosureNew(itype uint64, structOffset uint) {
 	sys_itype := itype
 	sys_structOffset := structOffset
 }
 
+// SourceSetClosure is analogous to the C function g_source_set_closure.
 func SourceSetClosure(source *glib.Source, closure *Closure) {
 	sys_source := source.ToC()
 	sys_closure := closure.ToC()
 }
 
+// SourceSetDummyCallback is analogous to the C function g_source_set_dummy_callback.
 func SourceSetDummyCallback(source *glib.Source) {
 	sys_source := source.ToC()
 }
 
+// StrdupValueContents is analogous to the C function g_strdup_value_contents.
 func StrdupValueContents(value *Value) {
 	sys_value := value.ToC()
 }
 
 // UNSUPPORTED : g_type_add_class_cache_func : parameter 'cache_func' is callback
 
+// TypeAddClassPrivate is analogous to the C function g_type_add_class_private.
 func TypeAddClassPrivate(classType uint64, privateSize uint64) {
 	sys_classType := classType
 	sys_privateSize := privateSize
 }
 
+// TypeAddInstancePrivate is analogous to the C function g_type_add_instance_private.
 func TypeAddInstancePrivate(classType uint64, privateSize uint64) {
 	sys_classType := classType
 	sys_privateSize := privateSize
@@ -767,161 +848,199 @@ func TypeAddInstancePrivate(classType uint64, privateSize uint64) {
 
 // UNSUPPORTED : g_type_add_interface_check : parameter 'check_func' is callback
 
+// TypeAddInterfaceDynamic is analogous to the C function g_type_add_interface_dynamic.
 func TypeAddInterfaceDynamic(instanceType uint64, interfaceType uint64, plugin *TypePlugin) {
 	sys_instanceType := instanceType
 	sys_interfaceType := interfaceType
 	sys_plugin := plugin.ToC()
 }
 
+// TypeAddInterfaceStatic is analogous to the C function g_type_add_interface_static.
 func TypeAddInterfaceStatic(instanceType uint64, interfaceType uint64, info *InterfaceInfo) {
 	sys_instanceType := instanceType
 	sys_interfaceType := interfaceType
 	sys_info := info.ToC()
 }
 
+// TypeCheckClassCast is analogous to the C function g_type_check_class_cast.
 func TypeCheckClassCast(gClass *TypeClass, isAType uint64) {
 	sys_gClass := gClass.ToC()
 	sys_isAType := isAType
 }
 
+// TypeCheckClassIsA is analogous to the C function g_type_check_class_is_a.
 func TypeCheckClassIsA(gClass *TypeClass, isAType uint64) {
 	sys_gClass := gClass.ToC()
 	sys_isAType := isAType
 }
 
+// TypeCheckInstance is analogous to the C function g_type_check_instance.
 func TypeCheckInstance(instance *TypeInstance) {
 	sys_instance := instance.ToC()
 }
 
+// TypeCheckInstanceCast is analogous to the C function g_type_check_instance_cast.
 func TypeCheckInstanceCast(instance *TypeInstance, ifaceType uint64) {
 	sys_instance := instance.ToC()
 	sys_ifaceType := ifaceType
 }
 
+// TypeCheckInstanceIsA is analogous to the C function g_type_check_instance_is_a.
 func TypeCheckInstanceIsA(instance *TypeInstance, ifaceType uint64) {
 	sys_instance := instance.ToC()
 	sys_ifaceType := ifaceType
 }
 
+// TypeCheckInstanceIsFundamentallyA is analogous to the C function g_type_check_instance_is_fundamentally_a.
 func TypeCheckInstanceIsFundamentallyA(instance *TypeInstance, fundamentalType uint64) {
 	sys_instance := instance.ToC()
 	sys_fundamentalType := fundamentalType
 }
 
+// TypeCheckIsValueType is analogous to the C function g_type_check_is_value_type.
 func TypeCheckIsValueType(type_ uint64) {
 	sys_type_ := type_
 }
 
+// TypeCheckValue is analogous to the C function g_type_check_value.
 func TypeCheckValue(value *Value) {
 	sys_value := value.ToC()
 }
 
+// TypeCheckValueHolds is analogous to the C function g_type_check_value_holds.
 func TypeCheckValueHolds(value *Value, type_ uint64) {
 	sys_value := value.ToC()
 	sys_type_ := type_
 }
 
+// TypeChildren is analogous to the C function g_type_children.
 func TypeChildren(type_ uint64) {
 	sys_type_ := type_
 }
 
+// TypeCreateInstance is analogous to the C function g_type_create_instance.
 func TypeCreateInstance(type_ uint64) {
 	sys_type_ := type_
 }
 
+// TypeDefaultInterfacePeek is analogous to the C function g_type_default_interface_peek.
 func TypeDefaultInterfacePeek(gType uint64) {
 	sys_gType := gType
 }
 
+// TypeDefaultInterfaceRef is analogous to the C function g_type_default_interface_ref.
 func TypeDefaultInterfaceRef(gType uint64) {
 	sys_gType := gType
 }
 
+// TypeDefaultInterfaceUnref is analogous to the C function g_type_default_interface_unref.
 func TypeDefaultInterfaceUnref(gIface unsafe.Pointer) {
 	sys_gIface := gIface.ToC()
 }
 
+// TypeDepth is analogous to the C function g_type_depth.
 func TypeDepth(type_ uint64) {
 	sys_type_ := type_
 }
 
+// TypeEnsure is analogous to the C function g_type_ensure.
 func TypeEnsure(type_ uint64) {
 	sys_type_ := type_
 }
 
+// TypeFreeInstance is analogous to the C function g_type_free_instance.
 func TypeFreeInstance(instance *TypeInstance) {
 	sys_instance := instance.ToC()
 }
 
+// TypeFromName is analogous to the C function g_type_from_name.
 func TypeFromName(name string) {
 	sys_name := name
 }
 
+// TypeFundamental is analogous to the C function g_type_fundamental.
 func TypeFundamental(typeId uint64) {
 	sys_typeId := typeId
 }
 
+// TypeFundamentalNext is analogous to the C function g_type_fundamental_next.
 func TypeFundamentalNext() {}
 
+// TypeGetInstanceCount is analogous to the C function g_type_get_instance_count.
 func TypeGetInstanceCount(type_ uint64) {
 	sys_type_ := type_
 }
 
+// TypeGetPlugin is analogous to the C function g_type_get_plugin.
 func TypeGetPlugin(type_ uint64) {
 	sys_type_ := type_
 }
 
+// TypeGetQdata is analogous to the C function g_type_get_qdata.
 func TypeGetQdata(type_ uint64, quark uint32) {
 	sys_type_ := type_
 	sys_quark := quark
 }
 
+// TypeGetTypeRegistrationSerial is analogous to the C function g_type_get_type_registration_serial.
 func TypeGetTypeRegistrationSerial() {}
 
+// TypeInit is analogous to the C function g_type_init.
 func TypeInit() {}
 
+// TypeInitWithDebugFlags is analogous to the C function g_type_init_with_debug_flags.
 func TypeInitWithDebugFlags(debugFlags int) {
 	sys_debugFlags := debugFlags
 }
 
+// TypeInterfaces is analogous to the C function g_type_interfaces.
 func TypeInterfaces(type_ uint64) {
 	sys_type_ := type_
 }
 
+// TypeIsA is analogous to the C function g_type_is_a.
 func TypeIsA(type_ uint64, isAType uint64) {
 	sys_type_ := type_
 	sys_isAType := isAType
 }
 
+// TypeName is analogous to the C function g_type_name.
 func TypeName(type_ uint64) {
 	sys_type_ := type_
 }
 
+// TypeNameFromClass is analogous to the C function g_type_name_from_class.
 func TypeNameFromClass(gClass *TypeClass) {
 	sys_gClass := gClass.ToC()
 }
 
+// TypeNameFromInstance is analogous to the C function g_type_name_from_instance.
 func TypeNameFromInstance(instance *TypeInstance) {
 	sys_instance := instance.ToC()
 }
 
+// TypeNextBase is analogous to the C function g_type_next_base.
 func TypeNextBase(leafType uint64, rootType uint64) {
 	sys_leafType := leafType
 	sys_rootType := rootType
 }
 
+// TypeParent is analogous to the C function g_type_parent.
 func TypeParent(type_ uint64) {
 	sys_type_ := type_
 }
 
+// TypeQname is analogous to the C function g_type_qname.
 func TypeQname(type_ uint64) {
 	sys_type_ := type_
 }
 
+// TypeQuery is analogous to the C function g_type_query.
 func TypeQuery(type_ uint64) {
 	sys_type_ := type_
 }
 
+// TypeRegisterDynamic is analogous to the C function g_type_register_dynamic.
 func TypeRegisterDynamic(parentType uint64, typeName string, plugin *TypePlugin, flags int) {
 	sys_parentType := parentType
 	sys_typeName := typeName
@@ -929,6 +1048,7 @@ func TypeRegisterDynamic(parentType uint64, typeName string, plugin *TypePlugin,
 	sys_flags := flags
 }
 
+// TypeRegisterFundamental is analogous to the C function g_type_register_fundamental.
 func TypeRegisterFundamental(typeId uint64, typeName string, info *TypeInfo, finfo *TypeFundamentalInfo, flags int) {
 	sys_typeId := typeId
 	sys_typeName := typeName
@@ -937,6 +1057,7 @@ func TypeRegisterFundamental(typeId uint64, typeName string, info *TypeInfo, fin
 	sys_flags := flags
 }
 
+// TypeRegisterStatic is analogous to the C function g_type_register_static.
 func TypeRegisterStatic(parentType uint64, typeName string, info *TypeInfo, flags int) {
 	sys_parentType := parentType
 	sys_typeName := typeName
@@ -950,12 +1071,14 @@ func TypeRegisterStatic(parentType uint64, typeName string, info *TypeInfo, flag
 
 // UNSUPPORTED : g_type_remove_interface_check : parameter 'check_func' is callback
 
+// TypeSetQdata is analogous to the C function g_type_set_qdata.
 func TypeSetQdata(type_ uint64, quark uint32, data unsafe.Pointer) {
 	sys_type_ := type_
 	sys_quark := quark
 	sys_data := data
 }
 
+// TypeTestFlags is analogous to the C function g_type_test_flags.
 func TypeTestFlags(type_ uint64, flags uint) {
 	sys_type_ := type_
 	sys_flags := flags
@@ -968,6 +1091,7 @@ type CClosure struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GCClosure that represents the CClosure.
 func (recv *CClosure) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -977,6 +1101,7 @@ type Closure struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GClosure that represents the Closure.
 func (recv *Closure) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -986,6 +1111,7 @@ type ClosureNotifyData struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GClosureNotifyData that represents the ClosureNotifyData.
 func (recv *ClosureNotifyData) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -995,6 +1121,7 @@ type EnumClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GEnumClass that represents the EnumClass.
 func (recv *EnumClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1004,6 +1131,7 @@ type EnumValue struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GEnumValue that represents the EnumValue.
 func (recv *EnumValue) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1013,6 +1141,7 @@ type FlagsClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFlagsClass that represents the FlagsClass.
 func (recv *FlagsClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1022,6 +1151,7 @@ type FlagsValue struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFlagsValue that represents the FlagsValue.
 func (recv *FlagsValue) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1031,6 +1161,7 @@ type InitiallyUnownedClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInitiallyUnownedClass that represents the InitiallyUnownedClass.
 func (recv *InitiallyUnownedClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1040,6 +1171,7 @@ type InterfaceInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInterfaceInfo that represents the InterfaceInfo.
 func (recv *InterfaceInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1049,6 +1181,7 @@ type ObjectClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GObjectClass that represents the ObjectClass.
 func (recv *ObjectClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1058,6 +1191,7 @@ type ObjectConstructParam struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GObjectConstructParam that represents the ObjectConstructParam.
 func (recv *ObjectConstructParam) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1067,6 +1201,7 @@ type ParamSpecClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecClass that represents the ParamSpecClass.
 func (recv *ParamSpecClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1076,6 +1211,7 @@ type ParamSpecPool struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecPool that represents the ParamSpecPool.
 func (recv *ParamSpecPool) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1085,6 +1221,7 @@ type ParamSpecTypeInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecTypeInfo that represents the ParamSpecTypeInfo.
 func (recv *ParamSpecTypeInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1094,6 +1231,7 @@ type Parameter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParameter that represents the Parameter.
 func (recv *Parameter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1103,6 +1241,7 @@ type SignalInvocationHint struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSignalInvocationHint that represents the SignalInvocationHint.
 func (recv *SignalInvocationHint) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1112,6 +1251,7 @@ type SignalQuery struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSignalQuery that represents the SignalQuery.
 func (recv *SignalQuery) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1121,6 +1261,7 @@ type TypeClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTypeClass that represents the TypeClass.
 func (recv *TypeClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1130,6 +1271,7 @@ type TypeFundamentalInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTypeFundamentalInfo that represents the TypeFundamentalInfo.
 func (recv *TypeFundamentalInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1139,6 +1281,7 @@ type TypeInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTypeInfo that represents the TypeInfo.
 func (recv *TypeInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1148,6 +1291,7 @@ type TypeInstance struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTypeInstance that represents the TypeInstance.
 func (recv *TypeInstance) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1157,6 +1301,7 @@ type TypeInterface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTypeInterface that represents the TypeInterface.
 func (recv *TypeInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1166,6 +1311,7 @@ type TypeModuleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTypeModuleClass that represents the TypeModuleClass.
 func (recv *TypeModuleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1175,6 +1321,7 @@ type TypePluginClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTypePluginClass that represents the TypePluginClass.
 func (recv *TypePluginClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1184,6 +1331,7 @@ type TypeQuery struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTypeQuery that represents the TypeQuery.
 func (recv *TypeQuery) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1193,6 +1341,7 @@ type TypeValueTable struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTypeValueTable that represents the TypeValueTable.
 func (recv *TypeValueTable) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1202,6 +1351,7 @@ type Value struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GValue that represents the Value.
 func (recv *Value) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1211,6 +1361,7 @@ type ValueArray struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GValueArray that represents the ValueArray.
 func (recv *ValueArray) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1220,6 +1371,7 @@ type WeakRef struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GWeakRef that represents the WeakRef.
 func (recv *WeakRef) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1231,6 +1383,7 @@ type Binding struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GBinding that represents the Binding.
 func (recv *Binding) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1240,6 +1393,7 @@ type InitiallyUnowned struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInitiallyUnowned that represents the InitiallyUnowned.
 func (recv *InitiallyUnowned) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1249,6 +1403,7 @@ type Object struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GObject that represents the Object.
 func (recv *Object) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1258,6 +1413,7 @@ type ParamSpec struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpec that represents the ParamSpec.
 func (recv *ParamSpec) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1267,6 +1423,7 @@ type ParamSpecBoolean struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecBoolean that represents the ParamSpecBoolean.
 func (recv *ParamSpecBoolean) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1276,6 +1433,7 @@ type ParamSpecBoxed struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecBoxed that represents the ParamSpecBoxed.
 func (recv *ParamSpecBoxed) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1285,6 +1443,7 @@ type ParamSpecChar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecChar that represents the ParamSpecChar.
 func (recv *ParamSpecChar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1294,6 +1453,7 @@ type ParamSpecDouble struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecDouble that represents the ParamSpecDouble.
 func (recv *ParamSpecDouble) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1303,6 +1463,7 @@ type ParamSpecEnum struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecEnum that represents the ParamSpecEnum.
 func (recv *ParamSpecEnum) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1312,6 +1473,7 @@ type ParamSpecFlags struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecFlags that represents the ParamSpecFlags.
 func (recv *ParamSpecFlags) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1321,6 +1483,7 @@ type ParamSpecFloat struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecFloat that represents the ParamSpecFloat.
 func (recv *ParamSpecFloat) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1332,6 +1495,7 @@ type ParamSpecGType struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecGType that represents the ParamSpecGType.
 func (recv *ParamSpecGType) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1341,6 +1505,7 @@ type ParamSpecInt struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecInt that represents the ParamSpecInt.
 func (recv *ParamSpecInt) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1350,6 +1515,7 @@ type ParamSpecInt64 struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecInt64 that represents the ParamSpecInt64.
 func (recv *ParamSpecInt64) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1359,6 +1525,7 @@ type ParamSpecLong struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecLong that represents the ParamSpecLong.
 func (recv *ParamSpecLong) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1368,6 +1535,7 @@ type ParamSpecObject struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecObject that represents the ParamSpecObject.
 func (recv *ParamSpecObject) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1379,6 +1547,7 @@ type ParamSpecOverride struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecOverride that represents the ParamSpecOverride.
 func (recv *ParamSpecOverride) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1388,6 +1557,7 @@ type ParamSpecParam struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecParam that represents the ParamSpecParam.
 func (recv *ParamSpecParam) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1397,6 +1567,7 @@ type ParamSpecPointer struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecPointer that represents the ParamSpecPointer.
 func (recv *ParamSpecPointer) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1406,6 +1577,7 @@ type ParamSpecString struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecString that represents the ParamSpecString.
 func (recv *ParamSpecString) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1415,6 +1587,7 @@ type ParamSpecUChar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecUChar that represents the ParamSpecUChar.
 func (recv *ParamSpecUChar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1424,6 +1597,7 @@ type ParamSpecUInt struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecUInt that represents the ParamSpecUInt.
 func (recv *ParamSpecUInt) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1433,6 +1607,7 @@ type ParamSpecUInt64 struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecUInt64 that represents the ParamSpecUInt64.
 func (recv *ParamSpecUInt64) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1442,6 +1617,7 @@ type ParamSpecULong struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecULong that represents the ParamSpecULong.
 func (recv *ParamSpecULong) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1451,6 +1627,7 @@ type ParamSpecUnichar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecUnichar that represents the ParamSpecUnichar.
 func (recv *ParamSpecUnichar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1460,6 +1637,7 @@ type ParamSpecValueArray struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecValueArray that represents the ParamSpecValueArray.
 func (recv *ParamSpecValueArray) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1471,6 +1649,7 @@ type ParamSpecVariant struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GParamSpecVariant that represents the ParamSpecVariant.
 func (recv *ParamSpecVariant) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1480,6 +1659,7 @@ type TypeModule struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTypeModule that represents the TypeModule.
 func (recv *TypeModule) ToC() unsafe.Pointer {
 	return recv.native
 }

@@ -8101,45 +8101,55 @@ const WindowWindowClass_input_output = WindowWindowClass(0)
 // WindowWindowClass_input_only is a representation of the C enumeration member GDK_INPUT_ONLY.
 const WindowWindowClass_input_only = WindowWindowClass(1)
 
+// AddOptionEntriesLibgtkOnly is analogous to the C function gdk_add_option_entries_libgtk_only.
 func AddOptionEntriesLibgtkOnly(group *glib.OptionGroup) {
 	sys_group := group.ToC()
 }
 
+// Beep is analogous to the C function gdk_beep.
 func Beep() {}
 
+// CairoGetClipRectangle is analogous to the C function gdk_cairo_get_clip_rectangle.
 func CairoGetClipRectangle(cr *cairo.Context) {
 	sys_cr := cr.ToC()
 }
 
+// CairoRegionCreateFromSurface is analogous to the C function gdk_cairo_region_create_from_surface.
 func CairoRegionCreateFromSurface(surface *cairo.Surface) {
 	sys_surface := surface.ToC()
 }
 
+// DragAbort is analogous to the C function gdk_drag_abort.
 func DragAbort(context *DragContext, time uint32) {
 	sys_context := context.ToC()
 	sys_time := time
 }
 
+// DragBegin is analogous to the C function gdk_drag_begin.
 func DragBegin(window *Window, targets *glib.List) {
 	sys_window := window.ToC()
 	sys_targets := targets.ToC()
 }
 
+// DragBeginForDevice is analogous to the C function gdk_drag_begin_for_device.
 func DragBeginForDevice(window *Window, device *Device, targets *glib.List) {
 	sys_window := window.ToC()
 	sys_device := device.ToC()
 	sys_targets := targets.ToC()
 }
 
+// DragDrop is analogous to the C function gdk_drag_drop.
 func DragDrop(context *DragContext, time uint32) {
 	sys_context := context.ToC()
 	sys_time := time
 }
 
+// DragGetSelection is analogous to the C function gdk_drag_get_selection.
 func DragGetSelection(context *DragContext) {
 	sys_context := context.ToC()
 }
 
+// DragMotion is analogous to the C function gdk_drag_motion.
 func DragMotion(context *DragContext, destWindow *Window, protocol int, xRoot int, yRoot int, suggestedAction int, possibleActions int, time uint32) {
 	sys_context := context.ToC()
 	sys_destWindow := destWindow.ToC()
@@ -8151,96 +8161,121 @@ func DragMotion(context *DragContext, destWindow *Window, protocol int, xRoot in
 	sys_time := time
 }
 
+// DragStatus is analogous to the C function gdk_drag_status.
 func DragStatus(context *DragContext, action int, time uint32) {
 	sys_context := context.ToC()
 	sys_action := action
 	sys_time := time
 }
 
+// DropFinish is analogous to the C function gdk_drop_finish.
 func DropFinish(context *DragContext, success bool, time uint32) {
 	sys_context := context.ToC()
 	sys_success := success
 	sys_time := time
 }
 
+// DropReply is analogous to the C function gdk_drop_reply.
 func DropReply(context *DragContext, accepted bool, time uint32) {
 	sys_context := context.ToC()
 	sys_accepted := accepted
 	sys_time := time
 }
 
+// ErrorTrapPop is analogous to the C function gdk_error_trap_pop.
 func ErrorTrapPop() {}
 
+// ErrorTrapPush is analogous to the C function gdk_error_trap_push.
 func ErrorTrapPush() {}
 
 // UNSUPPORTED : gdk_event_handler_set : parameter 'func' is callback
 
+// EventsPending is analogous to the C function gdk_events_pending.
 func EventsPending() {}
 
+// Flush is analogous to the C function gdk_flush.
 func Flush() {}
 
+// GetDefaultRootWindow is analogous to the C function gdk_get_default_root_window.
 func GetDefaultRootWindow() {}
 
+// GetDisplay is analogous to the C function gdk_get_display.
 func GetDisplay() {}
 
+// GetProgramClass is analogous to the C function gdk_get_program_class.
 func GetProgramClass() {}
 
+// GetShowEvents is analogous to the C function gdk_get_show_events.
 func GetShowEvents() {}
 
 // UNSUPPORTED : gdk_init : has array param, argv
 
 // UNSUPPORTED : gdk_init_check : has array param, argv
 
+// KeyboardGrab is analogous to the C function gdk_keyboard_grab.
 func KeyboardGrab(window *Window, ownerEvents bool, time uint32) {
 	sys_window := window.ToC()
 	sys_ownerEvents := ownerEvents
 	sys_time := time
 }
 
+// KeyboardUngrab is analogous to the C function gdk_keyboard_ungrab.
 func KeyboardUngrab(time uint32) {
 	sys_time := time
 }
 
+// KeyvalConvertCase is analogous to the C function gdk_keyval_convert_case.
 func KeyvalConvertCase(symbol uint) {
 	sys_symbol := symbol
 }
 
+// KeyvalFromName is analogous to the C function gdk_keyval_from_name.
 func KeyvalFromName(keyvalName string) {
 	sys_keyvalName := keyvalName
 }
 
+// KeyvalIsLower is analogous to the C function gdk_keyval_is_lower.
 func KeyvalIsLower(keyval uint) {
 	sys_keyval := keyval
 }
 
+// KeyvalIsUpper is analogous to the C function gdk_keyval_is_upper.
 func KeyvalIsUpper(keyval uint) {
 	sys_keyval := keyval
 }
 
+// KeyvalName is analogous to the C function gdk_keyval_name.
 func KeyvalName(keyval uint) {
 	sys_keyval := keyval
 }
 
+// KeyvalToLower is analogous to the C function gdk_keyval_to_lower.
 func KeyvalToLower(keyval uint) {
 	sys_keyval := keyval
 }
 
+// KeyvalToUnicode is analogous to the C function gdk_keyval_to_unicode.
 func KeyvalToUnicode(keyval uint) {
 	sys_keyval := keyval
 }
 
+// KeyvalToUpper is analogous to the C function gdk_keyval_to_upper.
 func KeyvalToUpper(keyval uint) {
 	sys_keyval := keyval
 }
 
+// ListVisuals is analogous to the C function gdk_list_visuals.
 func ListVisuals() {}
 
+// OffscreenWindowGetSurface is analogous to the C function gdk_offscreen_window_get_surface.
 func OffscreenWindowGetSurface(window *Window) {
 	sys_window := window.ToC()
 }
 
+// PangoContextGet is analogous to the C function gdk_pango_context_get.
 func PangoContextGet() {}
 
+// PangoLayoutGetClipRegion is analogous to the C function gdk_pango_layout_get_clip_region.
 func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int, yOrigin int, indexRanges *int, nRanges int) {
 	sys_layout := layout.ToC()
 	sys_xOrigin := xOrigin
@@ -8253,6 +8288,7 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int, yOrigin int, in
 
 // UNSUPPORTED : gdk_parse_args : has array param, argv
 
+// PixbufGetFromSurface is analogous to the C function gdk_pixbuf_get_from_surface.
 func PixbufGetFromSurface(surface *cairo.Surface, srcX int, srcY int, width int, height int) {
 	sys_surface := surface.ToC()
 	sys_srcX := srcX
@@ -8261,6 +8297,7 @@ func PixbufGetFromSurface(surface *cairo.Surface, srcX int, srcY int, width int,
 	sys_height := height
 }
 
+// PixbufGetFromWindow is analogous to the C function gdk_pixbuf_get_from_window.
 func PixbufGetFromWindow(window *Window, srcX int, srcY int, width int, height int) {
 	sys_window := window.ToC()
 	sys_srcX := srcX
@@ -8269,6 +8306,7 @@ func PixbufGetFromWindow(window *Window, srcX int, srcY int, width int, height i
 	sys_height := height
 }
 
+// PointerGrab is analogous to the C function gdk_pointer_grab.
 func PointerGrab(window *Window, ownerEvents bool, eventMask int, confineTo *Window, cursor *Cursor, time uint32) {
 	sys_window := window.ToC()
 	sys_ownerEvents := ownerEvents
@@ -8278,14 +8316,18 @@ func PointerGrab(window *Window, ownerEvents bool, eventMask int, confineTo *Win
 	sys_time := time
 }
 
+// PointerIsGrabbed is analogous to the C function gdk_pointer_is_grabbed.
 func PointerIsGrabbed() {}
 
+// PointerUngrab is analogous to the C function gdk_pointer_ungrab.
 func PointerUngrab(time uint32) {
 	sys_time := time
 }
 
+// PreParseLibgtkOnly is analogous to the C function gdk_pre_parse_libgtk_only.
 func PreParseLibgtkOnly() {}
 
+// PropertyChange is analogous to the C function gdk_property_change.
 func PropertyChange(window *Window, property Atom, type_ Atom, format int, mode int, data *uint8, nelements int) {
 	sys_window := window.ToC()
 	sys_property := property.ToC()
@@ -8296,6 +8338,7 @@ func PropertyChange(window *Window, property Atom, type_ Atom, format int, mode 
 	sys_nelements := nelements
 }
 
+// PropertyDelete is analogous to the C function gdk_property_delete.
 func PropertyDelete(window *Window, property Atom) {
 	sys_window := window.ToC()
 	sys_property := property.ToC()
@@ -8307,6 +8350,7 @@ func PropertyDelete(window *Window, property Atom) {
 
 // UNSUPPORTED : gdk_query_visual_types : has array param, visual_types
 
+// SelectionConvert is analogous to the C function gdk_selection_convert.
 func SelectionConvert(requestor *Window, selection Atom, target Atom, time uint32) {
 	sys_requestor := requestor.ToC()
 	sys_selection := selection.ToC()
@@ -8314,10 +8358,12 @@ func SelectionConvert(requestor *Window, selection Atom, target Atom, time uint3
 	sys_time := time
 }
 
+// SelectionOwnerGet is analogous to the C function gdk_selection_owner_get.
 func SelectionOwnerGet(selection Atom) {
 	sys_selection := selection.ToC()
 }
 
+// SelectionOwnerSet is analogous to the C function gdk_selection_owner_set.
 func SelectionOwnerSet(owner *Window, selection Atom, time uint32, sendEvent bool) {
 	sys_owner := owner.ToC()
 	sys_selection := selection.ToC()
@@ -8325,6 +8371,7 @@ func SelectionOwnerSet(owner *Window, selection Atom, time uint32, sendEvent boo
 	sys_sendEvent := sendEvent
 }
 
+// SelectionPropertyGet is analogous to the C function gdk_selection_property_get.
 func SelectionPropertyGet(requestor *Window, data **uint8, propType *Atom, propFormat *int) {
 	sys_requestor := requestor.ToC()
 	sys_data := data
@@ -8332,6 +8379,7 @@ func SelectionPropertyGet(requestor *Window, data **uint8, propType *Atom, propF
 	sys_propFormat := propFormat
 }
 
+// SelectionSendNotify is analogous to the C function gdk_selection_send_notify.
 func SelectionSendNotify(requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
 	sys_requestor := requestor.ToC()
 	sys_selection := selection.ToC()
@@ -8340,18 +8388,22 @@ func SelectionSendNotify(requestor *Window, selection Atom, target Atom, propert
 	sys_time := time
 }
 
+// SetDoubleClickTime is analogous to the C function gdk_set_double_click_time.
 func SetDoubleClickTime(msec uint) {
 	sys_msec := msec
 }
 
+// SetProgramClass is analogous to the C function gdk_set_program_class.
 func SetProgramClass(programClass string) {
 	sys_programClass := programClass
 }
 
+// SetShowEvents is analogous to the C function gdk_set_show_events.
 func SetShowEvents(showEvents bool) {
 	sys_showEvents := showEvents
 }
 
+// SettingGet is analogous to the C function gdk_setting_get.
 func SettingGet(name string, value *gobject.Value) {
 	sys_name := name
 	sys_value := value.ToC()
@@ -8373,18 +8425,23 @@ func SettingGet(name string, value *gobject.Value) {
 
 // UNSUPPORTED : gdk_threads_add_timeout_seconds_full : parameter 'function' is callback
 
+// ThreadsEnter is analogous to the C function gdk_threads_enter.
 func ThreadsEnter() {}
 
+// ThreadsInit is analogous to the C function gdk_threads_init.
 func ThreadsInit() {}
 
+// ThreadsLeave is analogous to the C function gdk_threads_leave.
 func ThreadsLeave() {}
 
 // UNSUPPORTED : gdk_threads_set_lock_functions : parameter 'enter_fn' is callback
 
+// UnicodeToKeyval is analogous to the C function gdk_unicode_to_keyval.
 func UnicodeToKeyval(wc uint32) {
 	sys_wc := wc
 }
 
+// Utf8ToStringTarget is analogous to the C function gdk_utf8_to_string_target.
 func Utf8ToStringTarget(str string) {
 	sys_str := str
 }
@@ -8394,6 +8451,7 @@ type Atom struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkAtom that represents the Atom.
 func (recv *Atom) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8403,6 +8461,7 @@ type Color struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkColor that represents the Color.
 func (recv *Color) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8412,6 +8471,7 @@ type DevicePadInterface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkDevicePadInterface that represents the DevicePadInterface.
 func (recv *DevicePadInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8421,6 +8481,7 @@ type DrawingContextClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkDrawingContextClass that represents the DrawingContextClass.
 func (recv *DrawingContextClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8430,6 +8491,7 @@ type EventAny struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventAny that represents the EventAny.
 func (recv *EventAny) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8439,6 +8501,7 @@ type EventButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventButton that represents the EventButton.
 func (recv *EventButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8448,6 +8511,7 @@ type EventConfigure struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventConfigure that represents the EventConfigure.
 func (recv *EventConfigure) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8457,6 +8521,7 @@ type EventCrossing struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventCrossing that represents the EventCrossing.
 func (recv *EventCrossing) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8466,6 +8531,7 @@ type EventDND struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventDND that represents the EventDND.
 func (recv *EventDND) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8475,6 +8541,7 @@ type EventExpose struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventExpose that represents the EventExpose.
 func (recv *EventExpose) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8484,6 +8551,7 @@ type EventFocus struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventFocus that represents the EventFocus.
 func (recv *EventFocus) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8493,6 +8561,7 @@ type EventKey struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventKey that represents the EventKey.
 func (recv *EventKey) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8502,6 +8571,7 @@ type EventMotion struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventMotion that represents the EventMotion.
 func (recv *EventMotion) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8511,6 +8581,7 @@ type EventProperty struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventProperty that represents the EventProperty.
 func (recv *EventProperty) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8520,6 +8591,7 @@ type EventProximity struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventProximity that represents the EventProximity.
 func (recv *EventProximity) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8529,6 +8601,7 @@ type EventScroll struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventScroll that represents the EventScroll.
 func (recv *EventScroll) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8538,6 +8611,7 @@ type EventSelection struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventSelection that represents the EventSelection.
 func (recv *EventSelection) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8547,6 +8621,7 @@ type EventSequence struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventSequence that represents the EventSequence.
 func (recv *EventSequence) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8556,6 +8631,7 @@ type EventSetting struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventSetting that represents the EventSetting.
 func (recv *EventSetting) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8565,6 +8641,7 @@ type EventTouch struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventTouch that represents the EventTouch.
 func (recv *EventTouch) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8574,6 +8651,7 @@ type EventTouchpadPinch struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventTouchpadPinch that represents the EventTouchpadPinch.
 func (recv *EventTouchpadPinch) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8583,6 +8661,7 @@ type EventTouchpadSwipe struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventTouchpadSwipe that represents the EventTouchpadSwipe.
 func (recv *EventTouchpadSwipe) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8592,6 +8671,7 @@ type EventVisibility struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventVisibility that represents the EventVisibility.
 func (recv *EventVisibility) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8601,6 +8681,7 @@ type EventWindowState struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkEventWindowState that represents the EventWindowState.
 func (recv *EventWindowState) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8610,6 +8691,7 @@ type FrameClockClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkFrameClockClass that represents the FrameClockClass.
 func (recv *FrameClockClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8619,6 +8701,7 @@ type FrameClockPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkFrameClockPrivate that represents the FrameClockPrivate.
 func (recv *FrameClockPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8628,6 +8711,7 @@ type FrameTimings struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkFrameTimings that represents the FrameTimings.
 func (recv *FrameTimings) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8637,6 +8721,7 @@ type Geometry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkGeometry that represents the Geometry.
 func (recv *Geometry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8646,6 +8731,7 @@ type KeymapKey struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkKeymapKey that represents the KeymapKey.
 func (recv *KeymapKey) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8655,6 +8741,7 @@ type MonitorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkMonitorClass that represents the MonitorClass.
 func (recv *MonitorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8664,6 +8751,7 @@ type Point struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkPoint that represents the Point.
 func (recv *Point) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8673,6 +8761,7 @@ type RGBA struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkRGBA that represents the RGBA.
 func (recv *RGBA) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8682,6 +8771,7 @@ type Rectangle struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkRectangle that represents the Rectangle.
 func (recv *Rectangle) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8691,6 +8781,7 @@ type TimeCoord struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkTimeCoord that represents the TimeCoord.
 func (recv *TimeCoord) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8700,6 +8791,7 @@ type WindowAttr struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkWindowAttr that represents the WindowAttr.
 func (recv *WindowAttr) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8709,6 +8801,7 @@ type WindowClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkWindowClass that represents the WindowClass.
 func (recv *WindowClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8718,6 +8811,7 @@ type WindowRedirect struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkWindowRedirect that represents the WindowRedirect.
 func (recv *WindowRedirect) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8727,6 +8821,7 @@ type AppLaunchContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkAppLaunchContext that represents the AppLaunchContext.
 func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8736,6 +8831,7 @@ type Cursor struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkCursor that represents the Cursor.
 func (recv *Cursor) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8745,6 +8841,7 @@ type Device struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkDevice that represents the Device.
 func (recv *Device) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8754,6 +8851,7 @@ type DeviceManager struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkDeviceManager that represents the DeviceManager.
 func (recv *DeviceManager) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8763,6 +8861,7 @@ type DeviceTool struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkDeviceTool that represents the DeviceTool.
 func (recv *DeviceTool) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8772,6 +8871,7 @@ type Display struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkDisplay that represents the Display.
 func (recv *Display) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8781,6 +8881,7 @@ type DisplayManager struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkDisplayManager that represents the DisplayManager.
 func (recv *DisplayManager) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8790,6 +8891,7 @@ type DragContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkDragContext that represents the DragContext.
 func (recv *DragContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8799,6 +8901,7 @@ type DrawingContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkDrawingContext that represents the DrawingContext.
 func (recv *DrawingContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8808,6 +8911,7 @@ type FrameClock struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkFrameClock that represents the FrameClock.
 func (recv *FrameClock) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8817,6 +8921,7 @@ type GLContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkGLContext that represents the GLContext.
 func (recv *GLContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8826,6 +8931,7 @@ type Keymap struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkKeymap that represents the Keymap.
 func (recv *Keymap) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8835,6 +8941,7 @@ type Monitor struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkMonitor that represents the Monitor.
 func (recv *Monitor) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8844,6 +8951,7 @@ type Screen struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkScreen that represents the Screen.
 func (recv *Screen) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8853,6 +8961,7 @@ type Seat struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkSeat that represents the Seat.
 func (recv *Seat) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8862,6 +8971,7 @@ type Visual struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkVisual that represents the Visual.
 func (recv *Visual) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8871,6 +8981,7 @@ type Window struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkWindow that represents the Window.
 func (recv *Window) ToC() unsafe.Pointer {
 	return recv.native
 }

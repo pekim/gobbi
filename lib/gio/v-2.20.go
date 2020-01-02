@@ -758,29 +758,35 @@ const PasswordSave_permanently = PasswordSave(2)
 
 // UNSUPPORTED : g_bus_watch_name_on_connection : parameter 'name_appeared_handler' is callback
 
+// ContentTypeCanBeExecutable is analogous to the C function g_content_type_can_be_executable.
 func ContentTypeCanBeExecutable(type_ string) {
 	sys_type_ := type_
 }
 
+// ContentTypeEquals is analogous to the C function g_content_type_equals.
 func ContentTypeEquals(type1 string, type2 string) {
 	sys_type1 := type1
 	sys_type2 := type2
 }
 
+// ContentTypeFromMimeType is analogous to the C function g_content_type_from_mime_type.
 func ContentTypeFromMimeType(mimeType string) {
 	sys_mimeType := mimeType
 }
 
+// ContentTypeGetDescription is analogous to the C function g_content_type_get_description.
 func ContentTypeGetDescription(type_ string) {
 	sys_type_ := type_
 }
 
+// ContentTypeGetIcon is analogous to the C function g_content_type_get_icon.
 func ContentTypeGetIcon(type_ string) {
 	sys_type_ := type_
 }
 
 // UNSUPPORTED : g_content_type_get_mime_dirs : no array length
 
+// ContentTypeGetMimeType is analogous to the C function g_content_type_get_mime_type.
 func ContentTypeGetMimeType(type_ string) {
 	sys_type_ := type_
 }
@@ -789,17 +795,20 @@ func ContentTypeGetMimeType(type_ string) {
 
 // UNSUPPORTED : g_content_type_guess_for_tree : no array length
 
+// ContentTypeIsA is analogous to the C function g_content_type_is_a.
 func ContentTypeIsA(type_ string, supertype string) {
 	sys_type_ := type_
 	sys_supertype := supertype
 }
 
+// ContentTypeIsUnknown is analogous to the C function g_content_type_is_unknown.
 func ContentTypeIsUnknown(type_ string) {
 	sys_type_ := type_
 }
 
 // UNSUPPORTED : g_content_type_set_mime_dirs : parameter 'dirs' is array parameter without length parameter
 
+// ContentTypesGetRegistered is analogous to the C function g_content_types_get_registered.
 func ContentTypesGetRegistered() {}
 
 // UNSUPPORTED : g_dbus_address_get_stream : parameter 'callback' is callback
@@ -810,10 +819,12 @@ func ContentTypesGetRegistered() {}
 
 // UNSUPPORTED : g_initable_newv : has array param, parameters
 
+// IoErrorFromErrno is analogous to the C function g_io_error_from_errno.
 func IoErrorFromErrno(errNo int) {
 	sys_errNo := errNo
 }
 
+// IoErrorQuark is analogous to the C function g_io_error_quark.
 func IoErrorQuark() {}
 
 // UNSUPPORTED : g_io_modules_load_all_in_directory : blacklisted
@@ -824,6 +835,7 @@ func IoErrorQuark() {}
 
 // UNSUPPORTED : g_io_modules_scan_all_in_directory_with_scope : blacklisted
 
+// IoSchedulerCancelAllJobs is analogous to the C function g_io_scheduler_cancel_all_jobs.
 func IoSchedulerCancelAllJobs() {}
 
 // UNSUPPORTED : g_io_scheduler_push_job : parameter 'job_func' is callback
@@ -848,69 +860,86 @@ func IoSchedulerCancelAllJobs() {}
 
 // UNSUPPORTED : g_simple_async_report_take_gerror_in_idle : parameter 'callback' is callback
 
+// UnixIsMountPathSystemInternal is analogous to the C function g_unix_is_mount_path_system_internal.
 func UnixIsMountPathSystemInternal(mountPath string) {
 	sys_mountPath := mountPath
 }
 
+// UnixMountAt is analogous to the C function g_unix_mount_at.
 func UnixMountAt(mountPath string) {
 	sys_mountPath := mountPath
 }
 
+// UnixMountCompare is analogous to the C function g_unix_mount_compare.
 func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) {
 	sys_mount1 := mount1.ToC()
 	sys_mount2 := mount2.ToC()
 }
 
+// UnixMountFree is analogous to the C function g_unix_mount_free.
 func UnixMountFree(mountEntry *UnixMountEntry) {
 	sys_mountEntry := mountEntry.ToC()
 }
 
+// UnixMountGetDevicePath is analogous to the C function g_unix_mount_get_device_path.
 func UnixMountGetDevicePath(mountEntry *UnixMountEntry) {
 	sys_mountEntry := mountEntry.ToC()
 }
 
+// UnixMountGetFsType is analogous to the C function g_unix_mount_get_fs_type.
 func UnixMountGetFsType(mountEntry *UnixMountEntry) {
 	sys_mountEntry := mountEntry.ToC()
 }
 
+// UnixMountGetMountPath is analogous to the C function g_unix_mount_get_mount_path.
 func UnixMountGetMountPath(mountEntry *UnixMountEntry) {
 	sys_mountEntry := mountEntry.ToC()
 }
 
+// UnixMountGuessCanEject is analogous to the C function g_unix_mount_guess_can_eject.
 func UnixMountGuessCanEject(mountEntry *UnixMountEntry) {
 	sys_mountEntry := mountEntry.ToC()
 }
 
+// UnixMountGuessIcon is analogous to the C function g_unix_mount_guess_icon.
 func UnixMountGuessIcon(mountEntry *UnixMountEntry) {
 	sys_mountEntry := mountEntry.ToC()
 }
 
+// UnixMountGuessName is analogous to the C function g_unix_mount_guess_name.
 func UnixMountGuessName(mountEntry *UnixMountEntry) {
 	sys_mountEntry := mountEntry.ToC()
 }
 
+// UnixMountGuessShouldDisplay is analogous to the C function g_unix_mount_guess_should_display.
 func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) {
 	sys_mountEntry := mountEntry.ToC()
 }
 
+// UnixMountIsReadonly is analogous to the C function g_unix_mount_is_readonly.
 func UnixMountIsReadonly(mountEntry *UnixMountEntry) {
 	sys_mountEntry := mountEntry.ToC()
 }
 
+// UnixMountIsSystemInternal is analogous to the C function g_unix_mount_is_system_internal.
 func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) {
 	sys_mountEntry := mountEntry.ToC()
 }
 
+// UnixMountPointsChangedSince is analogous to the C function g_unix_mount_points_changed_since.
 func UnixMountPointsChangedSince(time uint64) {
 	sys_time := time
 }
 
+// UnixMountPointsGet is analogous to the C function g_unix_mount_points_get.
 func UnixMountPointsGet() {}
 
+// UnixMountsChangedSince is analogous to the C function g_unix_mounts_changed_since.
 func UnixMountsChangedSince(time uint64) {
 	sys_time := time
 }
 
+// UnixMountsGet is analogous to the C function g_unix_mounts_get.
 func UnixMountsGet() {}
 
 // ActionEntry is a representation of the C record GActionEntry.
@@ -918,6 +947,7 @@ type ActionEntry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GActionEntry that represents the ActionEntry.
 func (recv *ActionEntry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -927,6 +957,7 @@ type AppInfoIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GAppInfoIface that represents the AppInfoIface.
 func (recv *AppInfoIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -936,6 +967,7 @@ type AppLaunchContextClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GAppLaunchContextClass that represents the AppLaunchContextClass.
 func (recv *AppLaunchContextClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -945,6 +977,7 @@ type AppLaunchContextPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GAppLaunchContextPrivate that represents the AppLaunchContextPrivate.
 func (recv *AppLaunchContextPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -954,6 +987,7 @@ type ApplicationCommandLinePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GApplicationCommandLinePrivate that represents the ApplicationCommandLinePrivate.
 func (recv *ApplicationCommandLinePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -963,6 +997,7 @@ type ApplicationPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GApplicationPrivate that represents the ApplicationPrivate.
 func (recv *ApplicationPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -972,6 +1007,7 @@ type AsyncResultIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GAsyncResultIface that represents the AsyncResultIface.
 func (recv *AsyncResultIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -981,6 +1017,7 @@ type BufferedInputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GBufferedInputStreamClass that represents the BufferedInputStreamClass.
 func (recv *BufferedInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -990,6 +1027,7 @@ type BufferedInputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GBufferedInputStreamPrivate that represents the BufferedInputStreamPrivate.
 func (recv *BufferedInputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -999,6 +1037,7 @@ type BufferedOutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GBufferedOutputStreamClass that represents the BufferedOutputStreamClass.
 func (recv *BufferedOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1008,6 +1047,7 @@ type BufferedOutputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GBufferedOutputStreamPrivate that represents the BufferedOutputStreamPrivate.
 func (recv *BufferedOutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1017,6 +1057,7 @@ type CancellableClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GCancellableClass that represents the CancellableClass.
 func (recv *CancellableClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1026,6 +1067,7 @@ type CancellablePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GCancellablePrivate that represents the CancellablePrivate.
 func (recv *CancellablePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1035,6 +1077,7 @@ type CharsetConverterClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GCharsetConverterClass that represents the CharsetConverterClass.
 func (recv *CharsetConverterClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1044,6 +1087,7 @@ type ConverterInputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GConverterInputStreamClass that represents the ConverterInputStreamClass.
 func (recv *ConverterInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1053,6 +1097,7 @@ type ConverterInputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GConverterInputStreamPrivate that represents the ConverterInputStreamPrivate.
 func (recv *ConverterInputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1062,6 +1107,7 @@ type ConverterOutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GConverterOutputStreamClass that represents the ConverterOutputStreamClass.
 func (recv *ConverterOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1071,6 +1117,7 @@ type ConverterOutputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GConverterOutputStreamPrivate that represents the ConverterOutputStreamPrivate.
 func (recv *ConverterOutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1080,6 +1127,7 @@ type DBusInterfaceSkeletonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDBusInterfaceSkeletonPrivate that represents the DBusInterfaceSkeletonPrivate.
 func (recv *DBusInterfaceSkeletonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1089,6 +1137,7 @@ type DBusObjectManagerClientPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDBusObjectManagerClientPrivate that represents the DBusObjectManagerClientPrivate.
 func (recv *DBusObjectManagerClientPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1098,6 +1147,7 @@ type DBusObjectManagerServerPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDBusObjectManagerServerPrivate that represents the DBusObjectManagerServerPrivate.
 func (recv *DBusObjectManagerServerPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1107,6 +1157,7 @@ type DBusObjectProxyPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDBusObjectProxyPrivate that represents the DBusObjectProxyPrivate.
 func (recv *DBusObjectProxyPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1116,6 +1167,7 @@ type DBusObjectSkeletonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDBusObjectSkeletonPrivate that represents the DBusObjectSkeletonPrivate.
 func (recv *DBusObjectSkeletonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1125,6 +1177,7 @@ type DBusProxyPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDBusProxyPrivate that represents the DBusProxyPrivate.
 func (recv *DBusProxyPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1134,6 +1187,7 @@ type DataInputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDataInputStreamClass that represents the DataInputStreamClass.
 func (recv *DataInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1143,6 +1197,7 @@ type DataInputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDataInputStreamPrivate that represents the DataInputStreamPrivate.
 func (recv *DataInputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1152,6 +1207,7 @@ type DataOutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDataOutputStreamClass that represents the DataOutputStreamClass.
 func (recv *DataOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1161,6 +1217,7 @@ type DataOutputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDataOutputStreamPrivate that represents the DataOutputStreamPrivate.
 func (recv *DataOutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1170,6 +1227,7 @@ type DesktopAppInfoClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDesktopAppInfoClass that represents the DesktopAppInfoClass.
 func (recv *DesktopAppInfoClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1179,6 +1237,7 @@ type DesktopAppInfoLookupIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDesktopAppInfoLookupIface that represents the DesktopAppInfoLookupIface.
 func (recv *DesktopAppInfoLookupIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1188,6 +1247,7 @@ type DriveIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDriveIface that represents the DriveIface.
 func (recv *DriveIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1197,6 +1257,7 @@ type EmblemClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GEmblemClass that represents the EmblemClass.
 func (recv *EmblemClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1206,6 +1267,7 @@ type EmblemedIconClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GEmblemedIconClass that represents the EmblemedIconClass.
 func (recv *EmblemedIconClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1215,6 +1277,7 @@ type EmblemedIconPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GEmblemedIconPrivate that represents the EmblemedIconPrivate.
 func (recv *EmblemedIconPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1224,6 +1287,7 @@ type FileAttributeInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileAttributeInfo that represents the FileAttributeInfo.
 func (recv *FileAttributeInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1233,6 +1297,7 @@ type FileAttributeInfoList struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileAttributeInfoList that represents the FileAttributeInfoList.
 func (recv *FileAttributeInfoList) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1242,6 +1307,7 @@ type FileAttributeMatcher struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileAttributeMatcher that represents the FileAttributeMatcher.
 func (recv *FileAttributeMatcher) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1251,6 +1317,7 @@ type FileDescriptorBasedIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileDescriptorBasedIface that represents the FileDescriptorBasedIface.
 func (recv *FileDescriptorBasedIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1260,6 +1327,7 @@ type FileEnumeratorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileEnumeratorClass that represents the FileEnumeratorClass.
 func (recv *FileEnumeratorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1269,6 +1337,7 @@ type FileEnumeratorPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileEnumeratorPrivate that represents the FileEnumeratorPrivate.
 func (recv *FileEnumeratorPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1278,6 +1347,7 @@ type FileIOStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileIOStreamClass that represents the FileIOStreamClass.
 func (recv *FileIOStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1287,6 +1357,7 @@ type FileIOStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileIOStreamPrivate that represents the FileIOStreamPrivate.
 func (recv *FileIOStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1296,6 +1367,7 @@ type FileIconClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileIconClass that represents the FileIconClass.
 func (recv *FileIconClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1305,6 +1377,7 @@ type FileIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileIface that represents the FileIface.
 func (recv *FileIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1314,6 +1387,7 @@ type FileInfoClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileInfoClass that represents the FileInfoClass.
 func (recv *FileInfoClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1323,6 +1397,7 @@ type FileInputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileInputStreamClass that represents the FileInputStreamClass.
 func (recv *FileInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1332,6 +1407,7 @@ type FileInputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileInputStreamPrivate that represents the FileInputStreamPrivate.
 func (recv *FileInputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1341,6 +1417,7 @@ type FileMonitorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileMonitorClass that represents the FileMonitorClass.
 func (recv *FileMonitorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1350,6 +1427,7 @@ type FileMonitorPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileMonitorPrivate that represents the FileMonitorPrivate.
 func (recv *FileMonitorPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1359,6 +1437,7 @@ type FileOutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileOutputStreamClass that represents the FileOutputStreamClass.
 func (recv *FileOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1368,6 +1447,7 @@ type FileOutputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileOutputStreamPrivate that represents the FileOutputStreamPrivate.
 func (recv *FileOutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1377,6 +1457,7 @@ type FilenameCompleterClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFilenameCompleterClass that represents the FilenameCompleterClass.
 func (recv *FilenameCompleterClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1386,6 +1467,7 @@ type FilterInputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFilterInputStreamClass that represents the FilterInputStreamClass.
 func (recv *FilterInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1395,6 +1477,7 @@ type FilterOutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFilterOutputStreamClass that represents the FilterOutputStreamClass.
 func (recv *FilterOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1404,6 +1487,7 @@ type IOExtension struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GIOExtension that represents the IOExtension.
 func (recv *IOExtension) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1413,6 +1497,7 @@ type IOExtensionPoint struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GIOExtensionPoint that represents the IOExtensionPoint.
 func (recv *IOExtensionPoint) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1422,6 +1507,7 @@ type IOModuleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GIOModuleClass that represents the IOModuleClass.
 func (recv *IOModuleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1431,6 +1517,7 @@ type IOSchedulerJob struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GIOSchedulerJob that represents the IOSchedulerJob.
 func (recv *IOSchedulerJob) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1440,6 +1527,7 @@ type IOStreamAdapter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GIOStreamAdapter that represents the IOStreamAdapter.
 func (recv *IOStreamAdapter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1449,6 +1537,7 @@ type IOStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GIOStreamClass that represents the IOStreamClass.
 func (recv *IOStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1458,6 +1547,7 @@ type IOStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GIOStreamPrivate that represents the IOStreamPrivate.
 func (recv *IOStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1467,6 +1557,7 @@ type IconIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GIconIface that represents the IconIface.
 func (recv *IconIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1476,6 +1567,7 @@ type InetAddressClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInetAddressClass that represents the InetAddressClass.
 func (recv *InetAddressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1485,6 +1577,7 @@ type InetAddressMaskClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInetAddressMaskClass that represents the InetAddressMaskClass.
 func (recv *InetAddressMaskClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1494,6 +1587,7 @@ type InetAddressMaskPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInetAddressMaskPrivate that represents the InetAddressMaskPrivate.
 func (recv *InetAddressMaskPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1503,6 +1597,7 @@ type InetAddressPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInetAddressPrivate that represents the InetAddressPrivate.
 func (recv *InetAddressPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1512,6 +1607,7 @@ type InetSocketAddressClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInetSocketAddressClass that represents the InetSocketAddressClass.
 func (recv *InetSocketAddressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1521,6 +1617,7 @@ type InetSocketAddressPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInetSocketAddressPrivate that represents the InetSocketAddressPrivate.
 func (recv *InetSocketAddressPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1530,6 +1627,7 @@ type InputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInputStreamClass that represents the InputStreamClass.
 func (recv *InputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1539,6 +1637,7 @@ type InputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInputStreamPrivate that represents the InputStreamPrivate.
 func (recv *InputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1548,6 +1647,7 @@ type ListStoreClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GListStoreClass that represents the ListStoreClass.
 func (recv *ListStoreClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1557,6 +1657,7 @@ type LoadableIconIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GLoadableIconIface that represents the LoadableIconIface.
 func (recv *LoadableIconIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1566,6 +1667,7 @@ type MemoryInputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMemoryInputStreamClass that represents the MemoryInputStreamClass.
 func (recv *MemoryInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1575,6 +1677,7 @@ type MemoryInputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMemoryInputStreamPrivate that represents the MemoryInputStreamPrivate.
 func (recv *MemoryInputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1584,6 +1687,7 @@ type MemoryOutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMemoryOutputStreamClass that represents the MemoryOutputStreamClass.
 func (recv *MemoryOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1593,6 +1697,7 @@ type MemoryOutputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMemoryOutputStreamPrivate that represents the MemoryOutputStreamPrivate.
 func (recv *MemoryOutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1602,6 +1707,7 @@ type MenuAttributeIterClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMenuAttributeIterClass that represents the MenuAttributeIterClass.
 func (recv *MenuAttributeIterClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1611,6 +1717,7 @@ type MenuAttributeIterPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMenuAttributeIterPrivate that represents the MenuAttributeIterPrivate.
 func (recv *MenuAttributeIterPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1620,6 +1727,7 @@ type MenuLinkIterClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMenuLinkIterClass that represents the MenuLinkIterClass.
 func (recv *MenuLinkIterClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1629,6 +1737,7 @@ type MenuLinkIterPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMenuLinkIterPrivate that represents the MenuLinkIterPrivate.
 func (recv *MenuLinkIterPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1638,6 +1747,7 @@ type MenuModelClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMenuModelClass that represents the MenuModelClass.
 func (recv *MenuModelClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1647,6 +1757,7 @@ type MenuModelPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMenuModelPrivate that represents the MenuModelPrivate.
 func (recv *MenuModelPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1656,6 +1767,7 @@ type MountIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMountIface that represents the MountIface.
 func (recv *MountIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1665,6 +1777,7 @@ type MountOperationClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMountOperationClass that represents the MountOperationClass.
 func (recv *MountOperationClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1674,6 +1787,7 @@ type MountOperationPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMountOperationPrivate that represents the MountOperationPrivate.
 func (recv *MountOperationPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1687,6 +1801,7 @@ type NativeVolumeMonitorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GNativeVolumeMonitorClass that represents the NativeVolumeMonitorClass.
 func (recv *NativeVolumeMonitorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1696,6 +1811,7 @@ type NetworkAddressClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GNetworkAddressClass that represents the NetworkAddressClass.
 func (recv *NetworkAddressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1705,6 +1821,7 @@ type NetworkAddressPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GNetworkAddressPrivate that represents the NetworkAddressPrivate.
 func (recv *NetworkAddressPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1714,6 +1831,7 @@ type NetworkServiceClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GNetworkServiceClass that represents the NetworkServiceClass.
 func (recv *NetworkServiceClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1723,6 +1841,7 @@ type NetworkServicePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GNetworkServicePrivate that represents the NetworkServicePrivate.
 func (recv *NetworkServicePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1732,6 +1851,7 @@ type OutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GOutputStreamClass that represents the OutputStreamClass.
 func (recv *OutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1741,6 +1861,7 @@ type OutputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GOutputStreamPrivate that represents the OutputStreamPrivate.
 func (recv *OutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1750,6 +1871,7 @@ type PermissionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GPermissionClass that represents the PermissionClass.
 func (recv *PermissionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1759,6 +1881,7 @@ type PermissionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GPermissionPrivate that represents the PermissionPrivate.
 func (recv *PermissionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1768,6 +1891,7 @@ type ProxyAddressEnumeratorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GProxyAddressEnumeratorClass that represents the ProxyAddressEnumeratorClass.
 func (recv *ProxyAddressEnumeratorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1777,6 +1901,7 @@ type ProxyAddressEnumeratorPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GProxyAddressEnumeratorPrivate that represents the ProxyAddressEnumeratorPrivate.
 func (recv *ProxyAddressEnumeratorPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1786,6 +1911,7 @@ type ProxyAddressPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GProxyAddressPrivate that represents the ProxyAddressPrivate.
 func (recv *ProxyAddressPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1795,6 +1921,7 @@ type ProxyResolverInterface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GProxyResolverInterface that represents the ProxyResolverInterface.
 func (recv *ProxyResolverInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1804,6 +1931,7 @@ type ResolverClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GResolverClass that represents the ResolverClass.
 func (recv *ResolverClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1813,6 +1941,7 @@ type ResolverPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GResolverPrivate that represents the ResolverPrivate.
 func (recv *ResolverPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1822,6 +1951,7 @@ type SeekableIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSeekableIface that represents the SeekableIface.
 func (recv *SeekableIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1835,6 +1965,7 @@ type SettingsClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSettingsClass that represents the SettingsClass.
 func (recv *SettingsClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1844,6 +1975,7 @@ type SettingsPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSettingsPrivate that represents the SettingsPrivate.
 func (recv *SettingsPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1853,6 +1985,7 @@ type SettingsSchemaKey struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSettingsSchemaKey that represents the SettingsSchemaKey.
 func (recv *SettingsSchemaKey) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1862,6 +1995,7 @@ type SimpleActionGroupClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSimpleActionGroupClass that represents the SimpleActionGroupClass.
 func (recv *SimpleActionGroupClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1871,6 +2005,7 @@ type SimpleActionGroupPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSimpleActionGroupPrivate that represents the SimpleActionGroupPrivate.
 func (recv *SimpleActionGroupPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1880,6 +2015,7 @@ type SimpleAsyncResultClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSimpleAsyncResultClass that represents the SimpleAsyncResultClass.
 func (recv *SimpleAsyncResultClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1889,6 +2025,7 @@ type SimpleProxyResolverClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSimpleProxyResolverClass that represents the SimpleProxyResolverClass.
 func (recv *SimpleProxyResolverClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1898,6 +2035,7 @@ type SimpleProxyResolverPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSimpleProxyResolverPrivate that represents the SimpleProxyResolverPrivate.
 func (recv *SimpleProxyResolverPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1907,6 +2045,7 @@ type SocketAddressClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketAddressClass that represents the SocketAddressClass.
 func (recv *SocketAddressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1916,6 +2055,7 @@ type SocketAddressEnumeratorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketAddressEnumeratorClass that represents the SocketAddressEnumeratorClass.
 func (recv *SocketAddressEnumeratorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1925,6 +2065,7 @@ type SocketClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketClass that represents the SocketClass.
 func (recv *SocketClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1934,6 +2075,7 @@ type SocketClientClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketClientClass that represents the SocketClientClass.
 func (recv *SocketClientClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1943,6 +2085,7 @@ type SocketClientPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketClientPrivate that represents the SocketClientPrivate.
 func (recv *SocketClientPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1952,6 +2095,7 @@ type SocketConnectableIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketConnectableIface that represents the SocketConnectableIface.
 func (recv *SocketConnectableIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1961,6 +2105,7 @@ type SocketConnectionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketConnectionClass that represents the SocketConnectionClass.
 func (recv *SocketConnectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1970,6 +2115,7 @@ type SocketConnectionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketConnectionPrivate that represents the SocketConnectionPrivate.
 func (recv *SocketConnectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1979,6 +2125,7 @@ type SocketControlMessageClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketControlMessageClass that represents the SocketControlMessageClass.
 func (recv *SocketControlMessageClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1988,6 +2135,7 @@ type SocketControlMessagePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketControlMessagePrivate that represents the SocketControlMessagePrivate.
 func (recv *SocketControlMessagePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1997,6 +2145,7 @@ type SocketListenerClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketListenerClass that represents the SocketListenerClass.
 func (recv *SocketListenerClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2006,6 +2155,7 @@ type SocketListenerPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketListenerPrivate that represents the SocketListenerPrivate.
 func (recv *SocketListenerPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2015,6 +2165,7 @@ type SocketPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketPrivate that represents the SocketPrivate.
 func (recv *SocketPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2024,6 +2175,7 @@ type SocketServiceClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketServiceClass that represents the SocketServiceClass.
 func (recv *SocketServiceClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2033,6 +2185,7 @@ type SocketServicePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketServicePrivate that represents the SocketServicePrivate.
 func (recv *SocketServicePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2042,6 +2195,7 @@ type SrvTarget struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSrvTarget that represents the SrvTarget.
 func (recv *SrvTarget) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2051,6 +2205,7 @@ type StaticResource struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GStaticResource that represents the StaticResource.
 func (recv *StaticResource) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2060,6 +2215,7 @@ type TaskClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTaskClass that represents the TaskClass.
 func (recv *TaskClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2069,6 +2225,7 @@ type TcpConnectionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTcpConnectionClass that represents the TcpConnectionClass.
 func (recv *TcpConnectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2078,6 +2235,7 @@ type TcpConnectionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTcpConnectionPrivate that represents the TcpConnectionPrivate.
 func (recv *TcpConnectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2087,6 +2245,7 @@ type TcpWrapperConnectionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTcpWrapperConnectionClass that represents the TcpWrapperConnectionClass.
 func (recv *TcpWrapperConnectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2096,6 +2255,7 @@ type TcpWrapperConnectionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTcpWrapperConnectionPrivate that represents the TcpWrapperConnectionPrivate.
 func (recv *TcpWrapperConnectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2105,6 +2265,7 @@ type ThemedIconClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GThemedIconClass that represents the ThemedIconClass.
 func (recv *ThemedIconClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2114,6 +2275,7 @@ type ThreadedSocketServiceClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GThreadedSocketServiceClass that represents the ThreadedSocketServiceClass.
 func (recv *ThreadedSocketServiceClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2123,6 +2285,7 @@ type ThreadedSocketServicePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GThreadedSocketServicePrivate that represents the ThreadedSocketServicePrivate.
 func (recv *ThreadedSocketServicePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2132,6 +2295,7 @@ type TlsCertificateClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTlsCertificateClass that represents the TlsCertificateClass.
 func (recv *TlsCertificateClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2141,6 +2305,7 @@ type TlsCertificatePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTlsCertificatePrivate that represents the TlsCertificatePrivate.
 func (recv *TlsCertificatePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2150,6 +2315,7 @@ type TlsConnectionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTlsConnectionClass that represents the TlsConnectionClass.
 func (recv *TlsConnectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2159,6 +2325,7 @@ type TlsConnectionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTlsConnectionPrivate that represents the TlsConnectionPrivate.
 func (recv *TlsConnectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2168,6 +2335,7 @@ type TlsDatabasePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTlsDatabasePrivate that represents the TlsDatabasePrivate.
 func (recv *TlsDatabasePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2177,6 +2345,7 @@ type TlsFileDatabaseInterface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTlsFileDatabaseInterface that represents the TlsFileDatabaseInterface.
 func (recv *TlsFileDatabaseInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2186,6 +2355,7 @@ type TlsInteractionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTlsInteractionPrivate that represents the TlsInteractionPrivate.
 func (recv *TlsInteractionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2195,6 +2365,7 @@ type TlsPasswordClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTlsPasswordClass that represents the TlsPasswordClass.
 func (recv *TlsPasswordClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2204,6 +2375,7 @@ type TlsPasswordPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTlsPasswordPrivate that represents the TlsPasswordPrivate.
 func (recv *TlsPasswordPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2213,6 +2385,7 @@ type UnixConnectionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixConnectionClass that represents the UnixConnectionClass.
 func (recv *UnixConnectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2222,6 +2395,7 @@ type UnixConnectionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixConnectionPrivate that represents the UnixConnectionPrivate.
 func (recv *UnixConnectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2231,6 +2405,7 @@ type UnixCredentialsMessagePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixCredentialsMessagePrivate that represents the UnixCredentialsMessagePrivate.
 func (recv *UnixCredentialsMessagePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2240,6 +2415,7 @@ type UnixFDListClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixFDListClass that represents the UnixFDListClass.
 func (recv *UnixFDListClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2249,6 +2425,7 @@ type UnixFDListPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixFDListPrivate that represents the UnixFDListPrivate.
 func (recv *UnixFDListPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2258,6 +2435,7 @@ type UnixFDMessageClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixFDMessageClass that represents the UnixFDMessageClass.
 func (recv *UnixFDMessageClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2267,6 +2445,7 @@ type UnixFDMessagePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixFDMessagePrivate that represents the UnixFDMessagePrivate.
 func (recv *UnixFDMessagePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2276,6 +2455,7 @@ type UnixInputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixInputStreamClass that represents the UnixInputStreamClass.
 func (recv *UnixInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2285,6 +2465,7 @@ type UnixInputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixInputStreamPrivate that represents the UnixInputStreamPrivate.
 func (recv *UnixInputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2294,6 +2475,7 @@ type UnixMountEntry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixMountEntry that represents the UnixMountEntry.
 func (recv *UnixMountEntry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2303,6 +2485,7 @@ type UnixMountMonitorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixMountMonitorClass that represents the UnixMountMonitorClass.
 func (recv *UnixMountMonitorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2312,6 +2495,7 @@ type UnixMountPoint struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixMountPoint that represents the UnixMountPoint.
 func (recv *UnixMountPoint) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2321,6 +2505,7 @@ type UnixOutputStreamClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixOutputStreamClass that represents the UnixOutputStreamClass.
 func (recv *UnixOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2330,6 +2515,7 @@ type UnixOutputStreamPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixOutputStreamPrivate that represents the UnixOutputStreamPrivate.
 func (recv *UnixOutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2339,6 +2525,7 @@ type UnixSocketAddressClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixSocketAddressClass that represents the UnixSocketAddressClass.
 func (recv *UnixSocketAddressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2348,6 +2535,7 @@ type UnixSocketAddressPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixSocketAddressPrivate that represents the UnixSocketAddressPrivate.
 func (recv *UnixSocketAddressPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2357,6 +2545,7 @@ type VfsClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GVfsClass that represents the VfsClass.
 func (recv *VfsClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2366,6 +2555,7 @@ type VolumeIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GVolumeIface that represents the VolumeIface.
 func (recv *VolumeIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2375,6 +2565,7 @@ type VolumeMonitorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GVolumeMonitorClass that represents the VolumeMonitorClass.
 func (recv *VolumeMonitorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2384,6 +2575,7 @@ type ZlibCompressorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GZlibCompressorClass that represents the ZlibCompressorClass.
 func (recv *ZlibCompressorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2393,6 +2585,7 @@ type ZlibDecompressorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GZlibDecompressorClass that represents the ZlibDecompressorClass.
 func (recv *ZlibDecompressorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2402,6 +2595,7 @@ type AppLaunchContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GAppLaunchContext that represents the AppLaunchContext.
 func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2411,6 +2605,7 @@ type ApplicationCommandLine struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GApplicationCommandLine that represents the ApplicationCommandLine.
 func (recv *ApplicationCommandLine) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2420,6 +2615,7 @@ type BufferedInputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GBufferedInputStream that represents the BufferedInputStream.
 func (recv *BufferedInputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2429,6 +2625,7 @@ type BufferedOutputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GBufferedOutputStream that represents the BufferedOutputStream.
 func (recv *BufferedOutputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2438,6 +2635,7 @@ type Cancellable struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GCancellable that represents the Cancellable.
 func (recv *Cancellable) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2447,6 +2645,7 @@ type CharsetConverter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GCharsetConverter that represents the CharsetConverter.
 func (recv *CharsetConverter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2456,6 +2655,7 @@ type ConverterInputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GConverterInputStream that represents the ConverterInputStream.
 func (recv *ConverterInputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2465,6 +2665,7 @@ type ConverterOutputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GConverterOutputStream that represents the ConverterOutputStream.
 func (recv *ConverterOutputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2474,6 +2675,7 @@ type DBusActionGroup struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDBusActionGroup that represents the DBusActionGroup.
 func (recv *DBusActionGroup) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2483,6 +2685,7 @@ type DBusMenuModel struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDBusMenuModel that represents the DBusMenuModel.
 func (recv *DBusMenuModel) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2492,6 +2695,7 @@ type DataInputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDataInputStream that represents the DataInputStream.
 func (recv *DataInputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2501,6 +2705,7 @@ type DataOutputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDataOutputStream that represents the DataOutputStream.
 func (recv *DataOutputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2510,6 +2715,7 @@ type DesktopAppInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GDesktopAppInfo that represents the DesktopAppInfo.
 func (recv *DesktopAppInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2519,6 +2725,7 @@ type Emblem struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GEmblem that represents the Emblem.
 func (recv *Emblem) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2528,6 +2735,7 @@ type EmblemedIcon struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GEmblemedIcon that represents the EmblemedIcon.
 func (recv *EmblemedIcon) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2537,6 +2745,7 @@ type FileEnumerator struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileEnumerator that represents the FileEnumerator.
 func (recv *FileEnumerator) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2546,6 +2755,7 @@ type FileIcon struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileIcon that represents the FileIcon.
 func (recv *FileIcon) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2555,6 +2765,7 @@ type FileInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileInfo that represents the FileInfo.
 func (recv *FileInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2564,6 +2775,7 @@ type FileInputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileInputStream that represents the FileInputStream.
 func (recv *FileInputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2573,6 +2785,7 @@ type FileMonitor struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileMonitor that represents the FileMonitor.
 func (recv *FileMonitor) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2582,6 +2795,7 @@ type FileOutputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFileOutputStream that represents the FileOutputStream.
 func (recv *FileOutputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2591,6 +2805,7 @@ type FilenameCompleter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFilenameCompleter that represents the FilenameCompleter.
 func (recv *FilenameCompleter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2600,6 +2815,7 @@ type FilterInputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFilterInputStream that represents the FilterInputStream.
 func (recv *FilterInputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2609,6 +2825,7 @@ type FilterOutputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GFilterOutputStream that represents the FilterOutputStream.
 func (recv *FilterOutputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2618,6 +2835,7 @@ type IOModule struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GIOModule that represents the IOModule.
 func (recv *IOModule) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2627,6 +2845,7 @@ type InetAddress struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInetAddress that represents the InetAddress.
 func (recv *InetAddress) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2636,6 +2855,7 @@ type InetSocketAddress struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInetSocketAddress that represents the InetSocketAddress.
 func (recv *InetSocketAddress) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2645,6 +2865,7 @@ type InputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GInputStream that represents the InputStream.
 func (recv *InputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2654,6 +2875,7 @@ type ListStore struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GListStore that represents the ListStore.
 func (recv *ListStore) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2663,6 +2885,7 @@ type MemoryInputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMemoryInputStream that represents the MemoryInputStream.
 func (recv *MemoryInputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2672,6 +2895,7 @@ type MemoryOutputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMemoryOutputStream that represents the MemoryOutputStream.
 func (recv *MemoryOutputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2681,6 +2905,7 @@ type MountOperation struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GMountOperation that represents the MountOperation.
 func (recv *MountOperation) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2690,6 +2915,7 @@ type NativeSocketAddress struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GNativeSocketAddress that represents the NativeSocketAddress.
 func (recv *NativeSocketAddress) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2699,6 +2925,7 @@ type NativeVolumeMonitor struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GNativeVolumeMonitor that represents the NativeVolumeMonitor.
 func (recv *NativeVolumeMonitor) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2708,6 +2935,7 @@ type NetworkAddress struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GNetworkAddress that represents the NetworkAddress.
 func (recv *NetworkAddress) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2717,6 +2945,7 @@ type NetworkService struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GNetworkService that represents the NetworkService.
 func (recv *NetworkService) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2726,6 +2955,7 @@ type OutputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GOutputStream that represents the OutputStream.
 func (recv *OutputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2735,6 +2965,7 @@ type Permission struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GPermission that represents the Permission.
 func (recv *Permission) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2744,6 +2975,7 @@ type ProxyAddressEnumerator struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GProxyAddressEnumerator that represents the ProxyAddressEnumerator.
 func (recv *ProxyAddressEnumerator) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2753,6 +2985,7 @@ type Resolver struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GResolver that represents the Resolver.
 func (recv *Resolver) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2762,6 +2995,7 @@ type Settings struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSettings that represents the Settings.
 func (recv *Settings) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2771,6 +3005,7 @@ type SettingsBackend struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSettingsBackend that represents the SettingsBackend.
 func (recv *SettingsBackend) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2780,6 +3015,7 @@ type SimpleAction struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSimpleAction that represents the SimpleAction.
 func (recv *SimpleAction) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2789,6 +3025,7 @@ type SimpleAsyncResult struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSimpleAsyncResult that represents the SimpleAsyncResult.
 func (recv *SimpleAsyncResult) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2798,6 +3035,7 @@ type SimplePermission struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSimplePermission that represents the SimplePermission.
 func (recv *SimplePermission) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2807,6 +3045,7 @@ type SocketAddress struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketAddress that represents the SocketAddress.
 func (recv *SocketAddress) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2816,6 +3055,7 @@ type SocketAddressEnumerator struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GSocketAddressEnumerator that represents the SocketAddressEnumerator.
 func (recv *SocketAddressEnumerator) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2825,6 +3065,7 @@ type Task struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GTask that represents the Task.
 func (recv *Task) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2834,6 +3075,7 @@ type ThemedIcon struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GThemedIcon that represents the ThemedIcon.
 func (recv *ThemedIcon) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2843,6 +3085,7 @@ type UnixFDList struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixFDList that represents the UnixFDList.
 func (recv *UnixFDList) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2852,6 +3095,7 @@ type UnixFDMessage struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixFDMessage that represents the UnixFDMessage.
 func (recv *UnixFDMessage) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2861,6 +3105,7 @@ type UnixInputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixInputStream that represents the UnixInputStream.
 func (recv *UnixInputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2870,6 +3115,7 @@ type UnixMountMonitor struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixMountMonitor that represents the UnixMountMonitor.
 func (recv *UnixMountMonitor) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2879,6 +3125,7 @@ type UnixOutputStream struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixOutputStream that represents the UnixOutputStream.
 func (recv *UnixOutputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2888,6 +3135,7 @@ type UnixSocketAddress struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GUnixSocketAddress that represents the UnixSocketAddress.
 func (recv *UnixSocketAddress) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2897,6 +3145,7 @@ type Vfs struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GVfs that represents the Vfs.
 func (recv *Vfs) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2906,6 +3155,7 @@ type VolumeMonitor struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GVolumeMonitor that represents the VolumeMonitor.
 func (recv *VolumeMonitor) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2915,6 +3165,7 @@ type ZlibCompressor struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GZlibCompressor that represents the ZlibCompressor.
 func (recv *ZlibCompressor) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -2924,6 +3175,7 @@ type ZlibDecompressor struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GZlibDecompressor that represents the ZlibDecompressor.
 func (recv *ZlibDecompressor) ToC() unsafe.Pointer {
 	return recv.native
 }

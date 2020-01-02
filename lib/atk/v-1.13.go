@@ -862,28 +862,37 @@ const ValueType_last_defined = ValueType(15)
 
 // UNSUPPORTED : atk_focus_tracker_init : parameter 'init' is callback
 
+// FocusTrackerNotify is analogous to the C function atk_focus_tracker_notify.
 func FocusTrackerNotify(object *Object) {
 	sys_object := object.ToC()
 }
 
+// GetDefaultRegistry is analogous to the C function atk_get_default_registry.
 func GetDefaultRegistry() {}
 
+// GetFocusObject is analogous to the C function atk_get_focus_object.
 func GetFocusObject() {}
 
+// GetRoot is analogous to the C function atk_get_root.
 func GetRoot() {}
 
+// GetToolkitName is analogous to the C function atk_get_toolkit_name.
 func GetToolkitName() {}
 
+// GetToolkitVersion is analogous to the C function atk_get_toolkit_version.
 func GetToolkitVersion() {}
 
+// RemoveFocusTracker is analogous to the C function atk_remove_focus_tracker.
 func RemoveFocusTracker(trackerId uint) {
 	sys_trackerId := trackerId
 }
 
+// RemoveGlobalEventListener is analogous to the C function atk_remove_global_event_listener.
 func RemoveGlobalEventListener(listenerId uint) {
 	sys_listenerId := listenerId
 }
 
+// RemoveKeyEventListener is analogous to the C function atk_remove_key_event_listener.
 func RemoveKeyEventListener(listenerId uint) {
 	sys_listenerId := listenerId
 }
@@ -895,6 +904,7 @@ type ActionIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkActionIface that represents the ActionIface.
 func (recv *ActionIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -904,6 +914,7 @@ type Attribute struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkAttribute that represents the Attribute.
 func (recv *Attribute) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -913,6 +924,7 @@ type ComponentIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkComponentIface that represents the ComponentIface.
 func (recv *ComponentIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -922,6 +934,7 @@ type DocumentIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkDocumentIface that represents the DocumentIface.
 func (recv *DocumentIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -931,6 +944,7 @@ type EditableTextIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkEditableTextIface that represents the EditableTextIface.
 func (recv *EditableTextIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -940,6 +954,7 @@ type GObjectAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkGObjectAccessibleClass that represents the GObjectAccessibleClass.
 func (recv *GObjectAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -949,6 +964,7 @@ type HyperlinkClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkHyperlinkClass that represents the HyperlinkClass.
 func (recv *HyperlinkClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -958,6 +974,7 @@ type HyperlinkImplIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkHyperlinkImplIface that represents the HyperlinkImplIface.
 func (recv *HyperlinkImplIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -967,6 +984,7 @@ type HypertextIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkHypertextIface that represents the HypertextIface.
 func (recv *HypertextIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -976,6 +994,7 @@ type ImageIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkImageIface that represents the ImageIface.
 func (recv *ImageIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -985,6 +1004,7 @@ type Implementor struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkImplementor that represents the Implementor.
 func (recv *Implementor) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -994,6 +1014,7 @@ type KeyEventStruct struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkKeyEventStruct that represents the KeyEventStruct.
 func (recv *KeyEventStruct) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1003,6 +1024,7 @@ type MiscClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkMiscClass that represents the MiscClass.
 func (recv *MiscClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1012,6 +1034,7 @@ type NoOpObjectClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkNoOpObjectClass that represents the NoOpObjectClass.
 func (recv *NoOpObjectClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1021,6 +1044,7 @@ type NoOpObjectFactoryClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkNoOpObjectFactoryClass that represents the NoOpObjectFactoryClass.
 func (recv *NoOpObjectFactoryClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1030,6 +1054,7 @@ type ObjectClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkObjectClass that represents the ObjectClass.
 func (recv *ObjectClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1039,6 +1064,7 @@ type ObjectFactoryClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkObjectFactoryClass that represents the ObjectFactoryClass.
 func (recv *ObjectFactoryClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1048,6 +1074,7 @@ type PlugClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkPlugClass that represents the PlugClass.
 func (recv *PlugClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1057,6 +1084,7 @@ type PropertyValues struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkPropertyValues that represents the PropertyValues.
 func (recv *PropertyValues) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1066,6 +1094,7 @@ type Range struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkRange that represents the Range.
 func (recv *Range) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1075,6 +1104,7 @@ type Rectangle struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkRectangle that represents the Rectangle.
 func (recv *Rectangle) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1084,6 +1114,7 @@ type RegistryClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkRegistryClass that represents the RegistryClass.
 func (recv *RegistryClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1093,6 +1124,7 @@ type RelationClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkRelationClass that represents the RelationClass.
 func (recv *RelationClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1102,6 +1134,7 @@ type RelationSetClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkRelationSetClass that represents the RelationSetClass.
 func (recv *RelationSetClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1111,6 +1144,7 @@ type SelectionIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkSelectionIface that represents the SelectionIface.
 func (recv *SelectionIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1120,6 +1154,7 @@ type SocketClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkSocketClass that represents the SocketClass.
 func (recv *SocketClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1129,6 +1164,7 @@ type StateSetClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkStateSetClass that represents the StateSetClass.
 func (recv *StateSetClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1138,6 +1174,7 @@ type StreamableContentIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkStreamableContentIface that represents the StreamableContentIface.
 func (recv *StreamableContentIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1147,6 +1184,7 @@ type TableIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkTableIface that represents the TableIface.
 func (recv *TableIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1156,6 +1194,7 @@ type TextIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkTextIface that represents the TextIface.
 func (recv *TextIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1165,6 +1204,7 @@ type TextRange struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkTextRange that represents the TextRange.
 func (recv *TextRange) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1174,6 +1214,7 @@ type TextRectangle struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkTextRectangle that represents the TextRectangle.
 func (recv *TextRectangle) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1183,6 +1224,7 @@ type UtilClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkUtilClass that represents the UtilClass.
 func (recv *UtilClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1192,6 +1234,7 @@ type ValueIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkValueIface that represents the ValueIface.
 func (recv *ValueIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1201,6 +1244,7 @@ type WindowIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkWindowIface that represents the WindowIface.
 func (recv *WindowIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1210,6 +1254,7 @@ type GObjectAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkGObjectAccessible that represents the GObjectAccessible.
 func (recv *GObjectAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1219,6 +1264,7 @@ type Hyperlink struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkHyperlink that represents the Hyperlink.
 func (recv *Hyperlink) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1228,6 +1274,7 @@ type Misc struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkMisc that represents the Misc.
 func (recv *Misc) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1237,6 +1284,7 @@ type NoOpObject struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkNoOpObject that represents the NoOpObject.
 func (recv *NoOpObject) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1246,6 +1294,7 @@ type NoOpObjectFactory struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkNoOpObjectFactory that represents the NoOpObjectFactory.
 func (recv *NoOpObjectFactory) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1255,6 +1304,7 @@ type Object struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkObject that represents the Object.
 func (recv *Object) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1264,6 +1314,7 @@ type ObjectFactory struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkObjectFactory that represents the ObjectFactory.
 func (recv *ObjectFactory) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1273,6 +1324,7 @@ type Plug struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkPlug that represents the Plug.
 func (recv *Plug) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1282,6 +1334,7 @@ type Registry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkRegistry that represents the Registry.
 func (recv *Registry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1291,6 +1344,7 @@ type Relation struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkRelation that represents the Relation.
 func (recv *Relation) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1300,6 +1354,7 @@ type RelationSet struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkRelationSet that represents the RelationSet.
 func (recv *RelationSet) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1309,6 +1364,7 @@ type Socket struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkSocket that represents the Socket.
 func (recv *Socket) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1318,6 +1374,7 @@ type StateSet struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkStateSet that represents the StateSet.
 func (recv *StateSet) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -1327,6 +1384,7 @@ type Util struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C AtkUtil that represents the Util.
 func (recv *Util) ToC() unsafe.Pointer {
 	return recv.native
 }

@@ -94,6 +94,7 @@ type PixbufFormat struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkPixbufFormat that represents the PixbufFormat.
 func (recv *PixbufFormat) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -103,6 +104,7 @@ type PixbufLoaderClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkPixbufLoaderClass that represents the PixbufLoaderClass.
 func (recv *PixbufLoaderClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -112,6 +114,7 @@ type PixbufSimpleAnimClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkPixbufSimpleAnimClass that represents the PixbufSimpleAnimClass.
 func (recv *PixbufSimpleAnimClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -121,6 +124,7 @@ type Pixbuf struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkPixbuf that represents the Pixbuf.
 func (recv *Pixbuf) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -130,6 +134,7 @@ type PixbufAnimation struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkPixbufAnimation that represents the PixbufAnimation.
 func (recv *PixbufAnimation) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -139,6 +144,7 @@ type PixbufAnimationIter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkPixbufAnimationIter that represents the PixbufAnimationIter.
 func (recv *PixbufAnimationIter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -148,6 +154,7 @@ type PixbufLoader struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkPixbufLoader that represents the PixbufLoader.
 func (recv *PixbufLoader) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -157,6 +164,7 @@ type PixbufSimpleAnim struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GdkPixbufSimpleAnim that represents the PixbufSimpleAnim.
 func (recv *PixbufSimpleAnim) ToC() unsafe.Pointer {
 	return recv.native
 }

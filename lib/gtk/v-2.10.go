@@ -2805,72 +2805,87 @@ const WrapMode_word = WrapMode(2)
 // WrapMode_word_char is a representation of the C enumeration member GTK_WRAP_WORD_CHAR.
 const WrapMode_word_char = WrapMode(3)
 
+// AccelGroupsActivate is analogous to the C function gtk_accel_groups_activate.
 func AccelGroupsActivate(object *gobject.Object, accelKey uint, accelMods int) {
 	sys_object := object.ToC()
 	sys_accelKey := accelKey
 	sys_accelMods := accelMods
 }
 
+// AccelGroupsFromObject is analogous to the C function gtk_accel_groups_from_object.
 func AccelGroupsFromObject(object *gobject.Object) {
 	sys_object := object.ToC()
 }
 
+// AcceleratorGetDefaultModMask is analogous to the C function gtk_accelerator_get_default_mod_mask.
 func AcceleratorGetDefaultModMask() {}
 
+// AcceleratorGetLabel is analogous to the C function gtk_accelerator_get_label.
 func AcceleratorGetLabel(acceleratorKey uint, acceleratorMods int) {
 	sys_acceleratorKey := acceleratorKey
 	sys_acceleratorMods := acceleratorMods
 }
 
+// AcceleratorName is analogous to the C function gtk_accelerator_name.
 func AcceleratorName(acceleratorKey uint, acceleratorMods int) {
 	sys_acceleratorKey := acceleratorKey
 	sys_acceleratorMods := acceleratorMods
 }
 
+// AcceleratorParse is analogous to the C function gtk_accelerator_parse.
 func AcceleratorParse(accelerator string) {
 	sys_accelerator := accelerator
 }
 
 // UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
 
+// AcceleratorSetDefaultModMask is analogous to the C function gtk_accelerator_set_default_mod_mask.
 func AcceleratorSetDefaultModMask(defaultModMask int) {
 	sys_defaultModMask := defaultModMask
 }
 
+// AcceleratorValid is analogous to the C function gtk_accelerator_valid.
 func AcceleratorValid(keyval uint, modifiers int) {
 	sys_keyval := keyval
 	sys_modifiers := modifiers
 }
 
+// AlternativeDialogButtonOrder is analogous to the C function gtk_alternative_dialog_button_order.
 func AlternativeDialogButtonOrder(screen *gdk.Screen) {
 	sys_screen := screen.ToC()
 }
 
+// BindingsActivate is analogous to the C function gtk_bindings_activate.
 func BindingsActivate(object *gobject.Object, keyval uint, modifiers int) {
 	sys_object := object.ToC()
 	sys_keyval := keyval
 	sys_modifiers := modifiers
 }
 
+// BindingsActivateEvent is analogous to the C function gtk_bindings_activate_event.
 func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) {
 	sys_object := object.ToC()
 	sys_event := event.ToC()
 }
 
+// CheckVersion is analogous to the C function gtk_check_version.
 func CheckVersion(requiredMajor uint, requiredMinor uint, requiredMicro uint) {
 	sys_requiredMajor := requiredMajor
 	sys_requiredMinor := requiredMinor
 	sys_requiredMicro := requiredMicro
 }
 
+// DisableSetlocale is analogous to the C function gtk_disable_setlocale.
 func DisableSetlocale() {}
 
+// DistributeNaturalAllocation is analogous to the C function gtk_distribute_natural_allocation.
 func DistributeNaturalAllocation(extraSpace int, nRequestedSizes uint, sizes *RequestedSize) {
 	sys_extraSpace := extraSpace
 	sys_nRequestedSizes := nRequestedSizes
 	sys_sizes := sizes.ToC()
 }
 
+// DragFinish is analogous to the C function gtk_drag_finish.
 func DragFinish(context *gdk.DragContext, success bool, del bool, time uint32) {
 	sys_context := context.ToC()
 	sys_success := success
@@ -2878,14 +2893,17 @@ func DragFinish(context *gdk.DragContext, success bool, del bool, time uint32) {
 	sys_time := time
 }
 
+// DragGetSourceWidget is analogous to the C function gtk_drag_get_source_widget.
 func DragGetSourceWidget(context *gdk.DragContext) {
 	sys_context := context.ToC()
 }
 
+// DragSetIconDefault is analogous to the C function gtk_drag_set_icon_default.
 func DragSetIconDefault(context *gdk.DragContext) {
 	sys_context := context.ToC()
 }
 
+// DragSetIconName is analogous to the C function gtk_drag_set_icon_name.
 func DragSetIconName(context *gdk.DragContext, iconName string, hotX int, hotY int) {
 	sys_context := context.ToC()
 	sys_iconName := iconName
@@ -2893,6 +2911,7 @@ func DragSetIconName(context *gdk.DragContext, iconName string, hotX int, hotY i
 	sys_hotY := hotY
 }
 
+// DragSetIconPixbuf is analogous to the C function gtk_drag_set_icon_pixbuf.
 func DragSetIconPixbuf(context *gdk.DragContext, pixbuf *gdkpixbuf.Pixbuf, hotX int, hotY int) {
 	sys_context := context.ToC()
 	sys_pixbuf := pixbuf.ToC()
@@ -2900,6 +2919,7 @@ func DragSetIconPixbuf(context *gdk.DragContext, pixbuf *gdkpixbuf.Pixbuf, hotX 
 	sys_hotY := hotY
 }
 
+// DragSetIconStock is analogous to the C function gtk_drag_set_icon_stock.
 func DragSetIconStock(context *gdk.DragContext, stockId string, hotX int, hotY int) {
 	sys_context := context.ToC()
 	sys_stockId := stockId
@@ -2907,11 +2927,13 @@ func DragSetIconStock(context *gdk.DragContext, stockId string, hotX int, hotY i
 	sys_hotY := hotY
 }
 
+// DragSetIconSurface is analogous to the C function gtk_drag_set_icon_surface.
 func DragSetIconSurface(context *gdk.DragContext, surface *cairo.Surface) {
 	sys_context := context.ToC()
 	sys_surface := surface.ToC()
 }
 
+// DragSetIconWidget is analogous to the C function gtk_drag_set_icon_widget.
 func DragSetIconWidget(context *gdk.DragContext, widget *Widget, hotX int, hotY int) {
 	sys_context := context.ToC()
 	sys_widget := widget.ToC()
@@ -2919,30 +2941,41 @@ func DragSetIconWidget(context *gdk.DragContext, widget *Widget, hotX int, hotY 
 	sys_hotY := hotY
 }
 
+// EventsPending is analogous to the C function gtk_events_pending.
 func EventsPending() {}
 
+// False is analogous to the C function gtk_false.
 func False() {}
 
+// GetCurrentEvent is analogous to the C function gtk_get_current_event.
 func GetCurrentEvent() {}
 
+// GetCurrentEventDevice is analogous to the C function gtk_get_current_event_device.
 func GetCurrentEventDevice() {}
 
+// GetCurrentEventState is analogous to the C function gtk_get_current_event_state.
 func GetCurrentEventState() {}
 
+// GetCurrentEventTime is analogous to the C function gtk_get_current_event_time.
 func GetCurrentEventTime() {}
 
+// GetDebugFlags is analogous to the C function gtk_get_debug_flags.
 func GetDebugFlags() {}
 
+// GetDefaultLanguage is analogous to the C function gtk_get_default_language.
 func GetDefaultLanguage() {}
 
+// GetEventWidget is analogous to the C function gtk_get_event_widget.
 func GetEventWidget(event *gdk.Event) {
 	sys_event := event.ToC()
 }
 
+// GetOptionGroup is analogous to the C function gtk_get_option_group.
 func GetOptionGroup(openDefaultDisplay bool) {
 	sys_openDefaultDisplay := openDefaultDisplay
 }
 
+// GrabGetCurrent is analogous to the C function gtk_grab_get_current.
 func GrabGetCurrent() {}
 
 // UNSUPPORTED : gtk_init : has array param, argv
@@ -2953,26 +2986,34 @@ func GrabGetCurrent() {}
 
 // UNSUPPORTED : gtk_key_snooper_install : parameter 'snooper' is callback
 
+// KeySnooperRemove is analogous to the C function gtk_key_snooper_remove.
 func KeySnooperRemove(snooperHandlerId uint) {
 	sys_snooperHandlerId := snooperHandlerId
 }
 
+// Main is analogous to the C function gtk_main.
 func Main() {}
 
+// MainDoEvent is analogous to the C function gtk_main_do_event.
 func MainDoEvent(event *gdk.Event) {
 	sys_event := event.ToC()
 }
 
+// MainIteration is analogous to the C function gtk_main_iteration.
 func MainIteration() {}
 
+// MainIterationDo is analogous to the C function gtk_main_iteration_do.
 func MainIterationDo(blocking bool) {
 	sys_blocking := blocking
 }
 
+// MainLevel is analogous to the C function gtk_main_level.
 func MainLevel() {}
 
+// MainQuit is analogous to the C function gtk_main_quit.
 func MainQuit() {}
 
+// PaintArrow is analogous to the C function gtk_paint_arrow.
 func PaintArrow(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, arrowType int, fill bool, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -2988,6 +3029,7 @@ func PaintArrow(style *Style, cr *cairo.Context, stateType int, shadowType int, 
 	sys_height := height
 }
 
+// PaintBox is analogous to the C function gtk_paint_box.
 func PaintBox(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3001,6 +3043,7 @@ func PaintBox(style *Style, cr *cairo.Context, stateType int, shadowType int, wi
 	sys_height := height
 }
 
+// PaintBoxGap is analogous to the C function gtk_paint_box_gap.
 func PaintBoxGap(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int, gapX int, gapWidth int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3017,6 +3060,7 @@ func PaintBoxGap(style *Style, cr *cairo.Context, stateType int, shadowType int,
 	sys_gapWidth := gapWidth
 }
 
+// PaintCheck is analogous to the C function gtk_paint_check.
 func PaintCheck(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3030,6 +3074,7 @@ func PaintCheck(style *Style, cr *cairo.Context, stateType int, shadowType int, 
 	sys_height := height
 }
 
+// PaintDiamond is analogous to the C function gtk_paint_diamond.
 func PaintDiamond(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3043,6 +3088,7 @@ func PaintDiamond(style *Style, cr *cairo.Context, stateType int, shadowType int
 	sys_height := height
 }
 
+// PaintExpander is analogous to the C function gtk_paint_expander.
 func PaintExpander(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x int, y int, expanderStyle int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3054,6 +3100,7 @@ func PaintExpander(style *Style, cr *cairo.Context, stateType int, widget *Widge
 	sys_expanderStyle := expanderStyle
 }
 
+// PaintExtension is analogous to the C function gtk_paint_extension.
 func PaintExtension(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3068,6 +3115,7 @@ func PaintExtension(style *Style, cr *cairo.Context, stateType int, shadowType i
 	sys_gapSide := gapSide
 }
 
+// PaintFlatBox is analogous to the C function gtk_paint_flat_box.
 func PaintFlatBox(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3081,6 +3129,7 @@ func PaintFlatBox(style *Style, cr *cairo.Context, stateType int, shadowType int
 	sys_height := height
 }
 
+// PaintFocus is analogous to the C function gtk_paint_focus.
 func PaintFocus(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3093,6 +3142,7 @@ func PaintFocus(style *Style, cr *cairo.Context, stateType int, widget *Widget, 
 	sys_height := height
 }
 
+// PaintHandle is analogous to the C function gtk_paint_handle.
 func PaintHandle(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, orientation int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3107,6 +3157,7 @@ func PaintHandle(style *Style, cr *cairo.Context, stateType int, shadowType int,
 	sys_orientation := orientation
 }
 
+// PaintHline is analogous to the C function gtk_paint_hline.
 func PaintHline(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x1 int, x2 int, y int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3118,6 +3169,7 @@ func PaintHline(style *Style, cr *cairo.Context, stateType int, widget *Widget, 
 	sys_y := y
 }
 
+// PaintLayout is analogous to the C function gtk_paint_layout.
 func PaintLayout(style *Style, cr *cairo.Context, stateType int, useText bool, widget *Widget, detail string, x int, y int, layout *pango.Layout) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3130,6 +3182,7 @@ func PaintLayout(style *Style, cr *cairo.Context, stateType int, useText bool, w
 	sys_layout := layout.ToC()
 }
 
+// PaintOption is analogous to the C function gtk_paint_option.
 func PaintOption(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3143,6 +3196,7 @@ func PaintOption(style *Style, cr *cairo.Context, stateType int, shadowType int,
 	sys_height := height
 }
 
+// PaintResizeGrip is analogous to the C function gtk_paint_resize_grip.
 func PaintResizeGrip(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, edge int, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3156,6 +3210,7 @@ func PaintResizeGrip(style *Style, cr *cairo.Context, stateType int, widget *Wid
 	sys_height := height
 }
 
+// PaintShadow is analogous to the C function gtk_paint_shadow.
 func PaintShadow(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3169,6 +3224,7 @@ func PaintShadow(style *Style, cr *cairo.Context, stateType int, shadowType int,
 	sys_height := height
 }
 
+// PaintShadowGap is analogous to the C function gtk_paint_shadow_gap.
 func PaintShadowGap(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int, gapX int, gapWidth int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3185,6 +3241,7 @@ func PaintShadowGap(style *Style, cr *cairo.Context, stateType int, shadowType i
 	sys_gapWidth := gapWidth
 }
 
+// PaintSlider is analogous to the C function gtk_paint_slider.
 func PaintSlider(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, orientation int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3199,6 +3256,7 @@ func PaintSlider(style *Style, cr *cairo.Context, stateType int, shadowType int,
 	sys_orientation := orientation
 }
 
+// PaintSpinner is analogous to the C function gtk_paint_spinner.
 func PaintSpinner(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, step uint, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3212,6 +3270,7 @@ func PaintSpinner(style *Style, cr *cairo.Context, stateType int, widget *Widget
 	sys_height := height
 }
 
+// PaintTab is analogous to the C function gtk_paint_tab.
 func PaintTab(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3225,6 +3284,7 @@ func PaintTab(style *Style, cr *cairo.Context, stateType int, shadowType int, wi
 	sys_height := height
 }
 
+// PaintVline is analogous to the C function gtk_paint_vline.
 func PaintVline(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, y1 int, y2 int, x int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
@@ -3238,6 +3298,7 @@ func PaintVline(style *Style, cr *cairo.Context, stateType int, widget *Widget, 
 
 // UNSUPPORTED : gtk_parse_args : has array param, argv
 
+// PrintRunPageSetupDialog is analogous to the C function gtk_print_run_page_setup_dialog.
 func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) {
 	sys_parent := parent.ToC()
 	sys_pageSetup := pageSetup.ToC()
@@ -3246,19 +3307,23 @@ func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *Pri
 
 // UNSUPPORTED : gtk_print_run_page_setup_dialog_async : parameter 'done_cb' is callback
 
+// PropagateEvent is analogous to the C function gtk_propagate_event.
 func PropagateEvent(widget *Widget, event *gdk.Event) {
 	sys_widget := widget.ToC()
 	sys_event := event.ToC()
 }
 
+// RcAddDefaultFile is analogous to the C function gtk_rc_add_default_file.
 func RcAddDefaultFile(filename string) {
 	sys_filename := filename
 }
 
+// RcFindModuleInPath is analogous to the C function gtk_rc_find_module_in_path.
 func RcFindModuleInPath(moduleFile string) {
 	sys_moduleFile := moduleFile
 }
 
+// RcFindPixmapInPath is analogous to the C function gtk_rc_find_pixmap_in_path.
 func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile string) {
 	sys_settings := settings.ToC()
 	sys_scanner := scanner.ToC()
@@ -3267,16 +3332,21 @@ func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile st
 
 // UNSUPPORTED : gtk_rc_get_default_files : no array length
 
+// RcGetImModuleFile is analogous to the C function gtk_rc_get_im_module_file.
 func RcGetImModuleFile() {}
 
+// RcGetImModulePath is analogous to the C function gtk_rc_get_im_module_path.
 func RcGetImModulePath() {}
 
+// RcGetModuleDir is analogous to the C function gtk_rc_get_module_dir.
 func RcGetModuleDir() {}
 
+// RcGetStyle is analogous to the C function gtk_rc_get_style.
 func RcGetStyle(widget *Widget) {
 	sys_widget := widget.ToC()
 }
 
+// RcGetStyleByPaths is analogous to the C function gtk_rc_get_style_by_paths.
 func RcGetStyleByPaths(settings *Settings, widgetPath string, classPath string, type_ uint64) {
 	sys_settings := settings.ToC()
 	sys_widgetPath := widgetPath
@@ -3284,44 +3354,55 @@ func RcGetStyleByPaths(settings *Settings, widgetPath string, classPath string, 
 	sys_type_ := type_
 }
 
+// RcGetThemeDir is analogous to the C function gtk_rc_get_theme_dir.
 func RcGetThemeDir() {}
 
+// RcParse is analogous to the C function gtk_rc_parse.
 func RcParse(filename string) {
 	sys_filename := filename
 }
 
+// RcParseColor is analogous to the C function gtk_rc_parse_color.
 func RcParseColor(scanner *glib.Scanner) {
 	sys_scanner := scanner.ToC()
 }
 
+// RcParsePriority is analogous to the C function gtk_rc_parse_priority.
 func RcParsePriority(scanner *glib.Scanner, priority *int) {
 	sys_scanner := scanner.ToC()
 	sys_priority := priority
 }
 
+// RcParseState is analogous to the C function gtk_rc_parse_state.
 func RcParseState(scanner *glib.Scanner) {
 	sys_scanner := scanner.ToC()
 }
 
+// RcParseString is analogous to the C function gtk_rc_parse_string.
 func RcParseString(rcString string) {
 	sys_rcString := rcString
 }
 
+// RcReparseAll is analogous to the C function gtk_rc_reparse_all.
 func RcReparseAll() {}
 
+// RcReparseAllForSettings is analogous to the C function gtk_rc_reparse_all_for_settings.
 func RcReparseAllForSettings(settings *Settings, forceLoad bool) {
 	sys_settings := settings.ToC()
 	sys_forceLoad := forceLoad
 }
 
+// RcResetStyles is analogous to the C function gtk_rc_reset_styles.
 func RcResetStyles(settings *Settings) {
 	sys_settings := settings.ToC()
 }
 
+// RcScannerNew is analogous to the C function gtk_rc_scanner_new.
 func RcScannerNew() {}
 
 // UNSUPPORTED : gtk_rc_set_default_files : parameter 'filenames' is array parameter without length parameter
 
+// SelectionAddTarget is analogous to the C function gtk_selection_add_target.
 func SelectionAddTarget(widget *Widget, selection gdk.Atom, target gdk.Atom, info uint) {
 	sys_widget := widget.ToC()
 	sys_selection := selection.ToC()
@@ -3331,11 +3412,13 @@ func SelectionAddTarget(widget *Widget, selection gdk.Atom, target gdk.Atom, inf
 
 // UNSUPPORTED : gtk_selection_add_targets : has array param, targets
 
+// SelectionClearTargets is analogous to the C function gtk_selection_clear_targets.
 func SelectionClearTargets(widget *Widget, selection gdk.Atom) {
 	sys_widget := widget.ToC()
 	sys_selection := selection.ToC()
 }
 
+// SelectionConvert is analogous to the C function gtk_selection_convert.
 func SelectionConvert(widget *Widget, selection gdk.Atom, target gdk.Atom, time uint32) {
 	sys_widget := widget.ToC()
 	sys_selection := selection.ToC()
@@ -3343,12 +3426,14 @@ func SelectionConvert(widget *Widget, selection gdk.Atom, target gdk.Atom, time 
 	sys_time := time
 }
 
+// SelectionOwnerSet is analogous to the C function gtk_selection_owner_set.
 func SelectionOwnerSet(widget *Widget, selection gdk.Atom, time uint32) {
 	sys_widget := widget.ToC()
 	sys_selection := selection.ToC()
 	sys_time := time
 }
 
+// SelectionOwnerSetForDisplay is analogous to the C function gtk_selection_owner_set_for_display.
 func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) {
 	sys_display := display.ToC()
 	sys_widget := widget.ToC()
@@ -3356,14 +3441,17 @@ func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection
 	sys_time := time
 }
 
+// SelectionRemoveAll is analogous to the C function gtk_selection_remove_all.
 func SelectionRemoveAll(widget *Widget) {
 	sys_widget := widget.ToC()
 }
 
+// SetDebugFlags is analogous to the C function gtk_set_debug_flags.
 func SetDebugFlags(flags uint) {
 	sys_flags := flags
 }
 
+// ShowAboutDialog is analogous to the C function gtk_show_about_dialog.
 func ShowAboutDialog(parent *Window, firstPropertyName string) {
 	sys_parent := parent.ToC()
 	sys_firstPropertyName := firstPropertyName
@@ -3373,8 +3461,10 @@ func ShowAboutDialog(parent *Window, firstPropertyName string) {
 
 // UNSUPPORTED : gtk_stock_add_static : has array param, items
 
+// StockListIds is analogous to the C function gtk_stock_list_ids.
 func StockListIds() {}
 
+// StockLookup is analogous to the C function gtk_stock_lookup.
 func StockLookup(stockId string) {
 	sys_stockId := stockId
 }
@@ -3383,6 +3473,7 @@ func StockLookup(stockId string) {
 
 // UNSUPPORTED : gtk_target_table_free : has array param, targets
 
+// TargetTableNewFromList is analogous to the C function gtk_target_table_new_from_list.
 func TargetTableNewFromList(list *TargetList) {
 	sys_list := list.ToC()
 }
@@ -3397,18 +3488,21 @@ func TargetTableNewFromList(list *TargetList) {
 
 // UNSUPPORTED : gtk_test_init : has array param, argvp
 
+// TreeGetRowDragData is analogous to the C function gtk_tree_get_row_drag_data.
 func TreeGetRowDragData(selectionData *SelectionData) {
 	sys_selectionData := selectionData.ToC()
 }
 
 // UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
 
+// TreeSetRowDragData is analogous to the C function gtk_tree_set_row_drag_data.
 func TreeSetRowDragData(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) {
 	sys_selectionData := selectionData.ToC()
 	sys_treeModel := treeModel.ToC()
 	sys_path := path.ToC()
 }
 
+// True is analogous to the C function gtk_true.
 func True() {}
 
 // AboutDialogClass is a representation of the C record GtkAboutDialogClass.
@@ -3416,6 +3510,7 @@ type AboutDialogClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAboutDialogClass that represents the AboutDialogClass.
 func (recv *AboutDialogClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3425,6 +3520,7 @@ type AboutDialogPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAboutDialogPrivate that represents the AboutDialogPrivate.
 func (recv *AboutDialogPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3434,6 +3530,7 @@ type AccelGroupClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccelGroupClass that represents the AccelGroupClass.
 func (recv *AccelGroupClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3443,6 +3540,7 @@ type AccelGroupEntry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccelGroupEntry that represents the AccelGroupEntry.
 func (recv *AccelGroupEntry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3452,6 +3550,7 @@ type AccelGroupPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccelGroupPrivate that represents the AccelGroupPrivate.
 func (recv *AccelGroupPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3461,6 +3560,7 @@ type AccelKey struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccelKey that represents the AccelKey.
 func (recv *AccelKey) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3470,6 +3570,7 @@ type AccelLabelClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccelLabelClass that represents the AccelLabelClass.
 func (recv *AccelLabelClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3479,6 +3580,7 @@ type AccelLabelPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccelLabelPrivate that represents the AccelLabelPrivate.
 func (recv *AccelLabelPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3488,6 +3590,7 @@ type AccelMapClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccelMapClass that represents the AccelMapClass.
 func (recv *AccelMapClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3497,6 +3600,7 @@ type AccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccessibleClass that represents the AccessibleClass.
 func (recv *AccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3506,6 +3610,7 @@ type AccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccessiblePrivate that represents the AccessiblePrivate.
 func (recv *AccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3515,6 +3620,7 @@ type ActionBarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkActionBarClass that represents the ActionBarClass.
 func (recv *ActionBarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3524,6 +3630,7 @@ type ActionBarPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkActionBarPrivate that represents the ActionBarPrivate.
 func (recv *ActionBarPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3533,6 +3640,7 @@ type ActionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkActionClass that represents the ActionClass.
 func (recv *ActionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3542,6 +3650,7 @@ type ActionEntry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkActionEntry that represents the ActionEntry.
 func (recv *ActionEntry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3551,6 +3660,7 @@ type ActionGroupClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkActionGroupClass that represents the ActionGroupClass.
 func (recv *ActionGroupClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3560,6 +3670,7 @@ type ActionGroupPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkActionGroupPrivate that represents the ActionGroupPrivate.
 func (recv *ActionGroupPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3569,6 +3680,7 @@ type ActionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkActionPrivate that represents the ActionPrivate.
 func (recv *ActionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3578,6 +3690,7 @@ type ActionableInterface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkActionableInterface that represents the ActionableInterface.
 func (recv *ActionableInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3587,6 +3700,7 @@ type AdjustmentClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAdjustmentClass that represents the AdjustmentClass.
 func (recv *AdjustmentClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3596,6 +3710,7 @@ type AdjustmentPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAdjustmentPrivate that represents the AdjustmentPrivate.
 func (recv *AdjustmentPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3605,6 +3720,7 @@ type AlignmentClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAlignmentClass that represents the AlignmentClass.
 func (recv *AlignmentClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3614,6 +3730,7 @@ type AlignmentPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAlignmentPrivate that represents the AlignmentPrivate.
 func (recv *AlignmentPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3623,6 +3740,7 @@ type AppChooserButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAppChooserButtonClass that represents the AppChooserButtonClass.
 func (recv *AppChooserButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3632,6 +3750,7 @@ type AppChooserButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAppChooserButtonPrivate that represents the AppChooserButtonPrivate.
 func (recv *AppChooserButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3641,6 +3760,7 @@ type AppChooserDialogClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAppChooserDialogClass that represents the AppChooserDialogClass.
 func (recv *AppChooserDialogClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3650,6 +3770,7 @@ type AppChooserDialogPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAppChooserDialogPrivate that represents the AppChooserDialogPrivate.
 func (recv *AppChooserDialogPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3659,6 +3780,7 @@ type AppChooserWidgetClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAppChooserWidgetClass that represents the AppChooserWidgetClass.
 func (recv *AppChooserWidgetClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3668,6 +3790,7 @@ type AppChooserWidgetPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAppChooserWidgetPrivate that represents the AppChooserWidgetPrivate.
 func (recv *AppChooserWidgetPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3677,6 +3800,7 @@ type ApplicationClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkApplicationClass that represents the ApplicationClass.
 func (recv *ApplicationClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3686,6 +3810,7 @@ type ApplicationPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkApplicationPrivate that represents the ApplicationPrivate.
 func (recv *ApplicationPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3695,6 +3820,7 @@ type ApplicationWindowClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkApplicationWindowClass that represents the ApplicationWindowClass.
 func (recv *ApplicationWindowClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3704,6 +3830,7 @@ type ApplicationWindowPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkApplicationWindowPrivate that represents the ApplicationWindowPrivate.
 func (recv *ApplicationWindowPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3713,6 +3840,7 @@ type ArrowAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkArrowAccessibleClass that represents the ArrowAccessibleClass.
 func (recv *ArrowAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3722,6 +3850,7 @@ type ArrowAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkArrowAccessiblePrivate that represents the ArrowAccessiblePrivate.
 func (recv *ArrowAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3731,6 +3860,7 @@ type ArrowClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkArrowClass that represents the ArrowClass.
 func (recv *ArrowClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3740,6 +3870,7 @@ type ArrowPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkArrowPrivate that represents the ArrowPrivate.
 func (recv *ArrowPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3749,6 +3880,7 @@ type AspectFrameClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAspectFrameClass that represents the AspectFrameClass.
 func (recv *AspectFrameClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3758,6 +3890,7 @@ type AspectFramePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAspectFramePrivate that represents the AspectFramePrivate.
 func (recv *AspectFramePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3767,6 +3900,7 @@ type AssistantClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAssistantClass that represents the AssistantClass.
 func (recv *AssistantClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3776,6 +3910,7 @@ type AssistantPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAssistantPrivate that represents the AssistantPrivate.
 func (recv *AssistantPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3785,6 +3920,7 @@ type BinClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBinClass that represents the BinClass.
 func (recv *BinClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3794,6 +3930,7 @@ type BinPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBinPrivate that represents the BinPrivate.
 func (recv *BinPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3803,6 +3940,7 @@ type BindingArg struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBindingArg that represents the BindingArg.
 func (recv *BindingArg) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3812,6 +3950,7 @@ type BindingEntry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBindingEntry that represents the BindingEntry.
 func (recv *BindingEntry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3821,6 +3960,7 @@ type BindingSet struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBindingSet that represents the BindingSet.
 func (recv *BindingSet) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3830,6 +3970,7 @@ type BindingSignal struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBindingSignal that represents the BindingSignal.
 func (recv *BindingSignal) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3839,6 +3980,7 @@ type BooleanCellAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBooleanCellAccessibleClass that represents the BooleanCellAccessibleClass.
 func (recv *BooleanCellAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3848,6 +3990,7 @@ type BooleanCellAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBooleanCellAccessiblePrivate that represents the BooleanCellAccessiblePrivate.
 func (recv *BooleanCellAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3857,6 +4000,7 @@ type Border struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBorder that represents the Border.
 func (recv *Border) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3866,6 +4010,7 @@ type BoxClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBoxClass that represents the BoxClass.
 func (recv *BoxClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3875,6 +4020,7 @@ type BoxPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBoxPrivate that represents the BoxPrivate.
 func (recv *BoxPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3884,6 +4030,7 @@ type BuildableIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBuildableIface that represents the BuildableIface.
 func (recv *BuildableIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3893,6 +4040,7 @@ type BuilderClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBuilderClass that represents the BuilderClass.
 func (recv *BuilderClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3902,6 +4050,7 @@ type BuilderPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBuilderPrivate that represents the BuilderPrivate.
 func (recv *BuilderPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3911,6 +4060,7 @@ type ButtonAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkButtonAccessibleClass that represents the ButtonAccessibleClass.
 func (recv *ButtonAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3920,6 +4070,7 @@ type ButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkButtonAccessiblePrivate that represents the ButtonAccessiblePrivate.
 func (recv *ButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3929,6 +4080,7 @@ type ButtonBoxClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkButtonBoxClass that represents the ButtonBoxClass.
 func (recv *ButtonBoxClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3938,6 +4090,7 @@ type ButtonBoxPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkButtonBoxPrivate that represents the ButtonBoxPrivate.
 func (recv *ButtonBoxPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3947,6 +4100,7 @@ type ButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkButtonClass that represents the ButtonClass.
 func (recv *ButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3956,6 +4110,7 @@ type ButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkButtonPrivate that represents the ButtonPrivate.
 func (recv *ButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3965,6 +4120,7 @@ type CalendarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCalendarClass that represents the CalendarClass.
 func (recv *CalendarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3974,6 +4130,7 @@ type CalendarPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCalendarPrivate that represents the CalendarPrivate.
 func (recv *CalendarPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3983,6 +4140,7 @@ type CellAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellAccessibleClass that represents the CellAccessibleClass.
 func (recv *CellAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -3992,6 +4150,7 @@ type CellAccessibleParentIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellAccessibleParentIface that represents the CellAccessibleParentIface.
 func (recv *CellAccessibleParentIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4001,6 +4160,7 @@ type CellAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellAccessiblePrivate that represents the CellAccessiblePrivate.
 func (recv *CellAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4010,6 +4170,7 @@ type CellAreaBoxClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellAreaBoxClass that represents the CellAreaBoxClass.
 func (recv *CellAreaBoxClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4019,6 +4180,7 @@ type CellAreaBoxPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellAreaBoxPrivate that represents the CellAreaBoxPrivate.
 func (recv *CellAreaBoxPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4028,6 +4190,7 @@ type CellAreaClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellAreaClass that represents the CellAreaClass.
 func (recv *CellAreaClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4037,6 +4200,7 @@ type CellAreaContextClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellAreaContextClass that represents the CellAreaContextClass.
 func (recv *CellAreaContextClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4046,6 +4210,7 @@ type CellAreaContextPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellAreaContextPrivate that represents the CellAreaContextPrivate.
 func (recv *CellAreaContextPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4055,6 +4220,7 @@ type CellAreaPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellAreaPrivate that represents the CellAreaPrivate.
 func (recv *CellAreaPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4064,6 +4230,7 @@ type CellEditableIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellEditableIface that represents the CellEditableIface.
 func (recv *CellEditableIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4073,6 +4240,7 @@ type CellLayoutIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellLayoutIface that represents the CellLayoutIface.
 func (recv *CellLayoutIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4082,6 +4250,7 @@ type CellRendererAccelClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererAccelClass that represents the CellRendererAccelClass.
 func (recv *CellRendererAccelClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4091,6 +4260,7 @@ type CellRendererAccelPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererAccelPrivate that represents the CellRendererAccelPrivate.
 func (recv *CellRendererAccelPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4100,6 +4270,7 @@ type CellRendererClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererClass that represents the CellRendererClass.
 func (recv *CellRendererClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4109,6 +4280,7 @@ type CellRendererClassPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererClassPrivate that represents the CellRendererClassPrivate.
 func (recv *CellRendererClassPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4118,6 +4290,7 @@ type CellRendererComboClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererComboClass that represents the CellRendererComboClass.
 func (recv *CellRendererComboClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4127,6 +4300,7 @@ type CellRendererComboPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererComboPrivate that represents the CellRendererComboPrivate.
 func (recv *CellRendererComboPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4136,6 +4310,7 @@ type CellRendererPixbufClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererPixbufClass that represents the CellRendererPixbufClass.
 func (recv *CellRendererPixbufClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4145,6 +4320,7 @@ type CellRendererPixbufPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererPixbufPrivate that represents the CellRendererPixbufPrivate.
 func (recv *CellRendererPixbufPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4154,6 +4330,7 @@ type CellRendererPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererPrivate that represents the CellRendererPrivate.
 func (recv *CellRendererPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4163,6 +4340,7 @@ type CellRendererProgressClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererProgressClass that represents the CellRendererProgressClass.
 func (recv *CellRendererProgressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4172,6 +4350,7 @@ type CellRendererProgressPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererProgressPrivate that represents the CellRendererProgressPrivate.
 func (recv *CellRendererProgressPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4181,6 +4360,7 @@ type CellRendererSpinClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererSpinClass that represents the CellRendererSpinClass.
 func (recv *CellRendererSpinClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4190,6 +4370,7 @@ type CellRendererSpinPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererSpinPrivate that represents the CellRendererSpinPrivate.
 func (recv *CellRendererSpinPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4199,6 +4380,7 @@ type CellRendererSpinnerClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererSpinnerClass that represents the CellRendererSpinnerClass.
 func (recv *CellRendererSpinnerClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4208,6 +4390,7 @@ type CellRendererSpinnerPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererSpinnerPrivate that represents the CellRendererSpinnerPrivate.
 func (recv *CellRendererSpinnerPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4217,6 +4400,7 @@ type CellRendererTextClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererTextClass that represents the CellRendererTextClass.
 func (recv *CellRendererTextClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4226,6 +4410,7 @@ type CellRendererTextPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererTextPrivate that represents the CellRendererTextPrivate.
 func (recv *CellRendererTextPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4235,6 +4420,7 @@ type CellRendererToggleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererToggleClass that represents the CellRendererToggleClass.
 func (recv *CellRendererToggleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4244,6 +4430,7 @@ type CellRendererTogglePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererTogglePrivate that represents the CellRendererTogglePrivate.
 func (recv *CellRendererTogglePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4253,6 +4440,7 @@ type CellViewClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellViewClass that represents the CellViewClass.
 func (recv *CellViewClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4262,6 +4450,7 @@ type CellViewPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellViewPrivate that represents the CellViewPrivate.
 func (recv *CellViewPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4271,6 +4460,7 @@ type CheckButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCheckButtonClass that represents the CheckButtonClass.
 func (recv *CheckButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4280,6 +4470,7 @@ type CheckMenuItemAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCheckMenuItemAccessibleClass that represents the CheckMenuItemAccessibleClass.
 func (recv *CheckMenuItemAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4289,6 +4480,7 @@ type CheckMenuItemAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCheckMenuItemAccessiblePrivate that represents the CheckMenuItemAccessiblePrivate.
 func (recv *CheckMenuItemAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4298,6 +4490,7 @@ type CheckMenuItemClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCheckMenuItemClass that represents the CheckMenuItemClass.
 func (recv *CheckMenuItemClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4307,6 +4500,7 @@ type CheckMenuItemPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCheckMenuItemPrivate that represents the CheckMenuItemPrivate.
 func (recv *CheckMenuItemPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4316,6 +4510,7 @@ type ColorButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorButtonClass that represents the ColorButtonClass.
 func (recv *ColorButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4325,6 +4520,7 @@ type ColorButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorButtonPrivate that represents the ColorButtonPrivate.
 func (recv *ColorButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4334,6 +4530,7 @@ type ColorChooserDialogClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorChooserDialogClass that represents the ColorChooserDialogClass.
 func (recv *ColorChooserDialogClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4343,6 +4540,7 @@ type ColorChooserDialogPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorChooserDialogPrivate that represents the ColorChooserDialogPrivate.
 func (recv *ColorChooserDialogPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4352,6 +4550,7 @@ type ColorChooserInterface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorChooserInterface that represents the ColorChooserInterface.
 func (recv *ColorChooserInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4361,6 +4560,7 @@ type ColorChooserWidgetClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorChooserWidgetClass that represents the ColorChooserWidgetClass.
 func (recv *ColorChooserWidgetClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4370,6 +4570,7 @@ type ColorChooserWidgetPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorChooserWidgetPrivate that represents the ColorChooserWidgetPrivate.
 func (recv *ColorChooserWidgetPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4379,6 +4580,7 @@ type ColorSelectionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorSelectionClass that represents the ColorSelectionClass.
 func (recv *ColorSelectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4388,6 +4590,7 @@ type ColorSelectionDialogClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorSelectionDialogClass that represents the ColorSelectionDialogClass.
 func (recv *ColorSelectionDialogClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4397,6 +4600,7 @@ type ColorSelectionDialogPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorSelectionDialogPrivate that represents the ColorSelectionDialogPrivate.
 func (recv *ColorSelectionDialogPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4406,6 +4610,7 @@ type ColorSelectionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorSelectionPrivate that represents the ColorSelectionPrivate.
 func (recv *ColorSelectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4415,6 +4620,7 @@ type ComboBoxAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkComboBoxAccessibleClass that represents the ComboBoxAccessibleClass.
 func (recv *ComboBoxAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4424,6 +4630,7 @@ type ComboBoxAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkComboBoxAccessiblePrivate that represents the ComboBoxAccessiblePrivate.
 func (recv *ComboBoxAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4433,6 +4640,7 @@ type ComboBoxClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkComboBoxClass that represents the ComboBoxClass.
 func (recv *ComboBoxClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4442,6 +4650,7 @@ type ComboBoxPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkComboBoxPrivate that represents the ComboBoxPrivate.
 func (recv *ComboBoxPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4451,6 +4660,7 @@ type ComboBoxTextClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkComboBoxTextClass that represents the ComboBoxTextClass.
 func (recv *ComboBoxTextClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4460,6 +4670,7 @@ type ComboBoxTextPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkComboBoxTextPrivate that represents the ComboBoxTextPrivate.
 func (recv *ComboBoxTextPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4469,6 +4680,7 @@ type ContainerAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkContainerAccessibleClass that represents the ContainerAccessibleClass.
 func (recv *ContainerAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4478,6 +4690,7 @@ type ContainerAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkContainerAccessiblePrivate that represents the ContainerAccessiblePrivate.
 func (recv *ContainerAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4487,6 +4700,7 @@ type ContainerCellAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkContainerCellAccessibleClass that represents the ContainerCellAccessibleClass.
 func (recv *ContainerCellAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4496,6 +4710,7 @@ type ContainerCellAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkContainerCellAccessiblePrivate that represents the ContainerCellAccessiblePrivate.
 func (recv *ContainerCellAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4505,6 +4720,7 @@ type ContainerClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkContainerClass that represents the ContainerClass.
 func (recv *ContainerClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4514,6 +4730,7 @@ type ContainerPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkContainerPrivate that represents the ContainerPrivate.
 func (recv *ContainerPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4523,6 +4740,7 @@ type CssProviderClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCssProviderClass that represents the CssProviderClass.
 func (recv *CssProviderClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4532,6 +4750,7 @@ type CssProviderPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCssProviderPrivate that represents the CssProviderPrivate.
 func (recv *CssProviderPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4541,6 +4760,7 @@ type DialogClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkDialogClass that represents the DialogClass.
 func (recv *DialogClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4550,6 +4770,7 @@ type DialogPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkDialogPrivate that represents the DialogPrivate.
 func (recv *DialogPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4559,6 +4780,7 @@ type DrawingAreaClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkDrawingAreaClass that represents the DrawingAreaClass.
 func (recv *DrawingAreaClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4568,6 +4790,7 @@ type EditableInterface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEditableInterface that represents the EditableInterface.
 func (recv *EditableInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4577,6 +4800,7 @@ type EntryAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEntryAccessibleClass that represents the EntryAccessibleClass.
 func (recv *EntryAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4586,6 +4810,7 @@ type EntryAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEntryAccessiblePrivate that represents the EntryAccessiblePrivate.
 func (recv *EntryAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4595,6 +4820,7 @@ type EntryBufferClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEntryBufferClass that represents the EntryBufferClass.
 func (recv *EntryBufferClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4604,6 +4830,7 @@ type EntryBufferPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEntryBufferPrivate that represents the EntryBufferPrivate.
 func (recv *EntryBufferPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4613,6 +4840,7 @@ type EntryClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEntryClass that represents the EntryClass.
 func (recv *EntryClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4622,6 +4850,7 @@ type EntryCompletionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEntryCompletionClass that represents the EntryCompletionClass.
 func (recv *EntryCompletionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4631,6 +4860,7 @@ type EntryCompletionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEntryCompletionPrivate that represents the EntryCompletionPrivate.
 func (recv *EntryCompletionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4640,6 +4870,7 @@ type EntryPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEntryPrivate that represents the EntryPrivate.
 func (recv *EntryPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4649,6 +4880,7 @@ type EventBoxClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEventBoxClass that represents the EventBoxClass.
 func (recv *EventBoxClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4658,6 +4890,7 @@ type EventBoxPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEventBoxPrivate that represents the EventBoxPrivate.
 func (recv *EventBoxPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4667,6 +4900,7 @@ type EventControllerClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEventControllerClass that represents the EventControllerClass.
 func (recv *EventControllerClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4680,6 +4914,7 @@ type ExpanderAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkExpanderAccessibleClass that represents the ExpanderAccessibleClass.
 func (recv *ExpanderAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4689,6 +4924,7 @@ type ExpanderAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkExpanderAccessiblePrivate that represents the ExpanderAccessiblePrivate.
 func (recv *ExpanderAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4698,6 +4934,7 @@ type ExpanderClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkExpanderClass that represents the ExpanderClass.
 func (recv *ExpanderClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4707,6 +4944,7 @@ type ExpanderPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkExpanderPrivate that represents the ExpanderPrivate.
 func (recv *ExpanderPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4716,6 +4954,7 @@ type FileChooserButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileChooserButtonClass that represents the FileChooserButtonClass.
 func (recv *FileChooserButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4725,6 +4964,7 @@ type FileChooserButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileChooserButtonPrivate that represents the FileChooserButtonPrivate.
 func (recv *FileChooserButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4734,6 +4974,7 @@ type FileChooserDialogClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileChooserDialogClass that represents the FileChooserDialogClass.
 func (recv *FileChooserDialogClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4743,6 +4984,7 @@ type FileChooserDialogPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileChooserDialogPrivate that represents the FileChooserDialogPrivate.
 func (recv *FileChooserDialogPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4752,6 +4994,7 @@ type FileChooserNativeClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileChooserNativeClass that represents the FileChooserNativeClass.
 func (recv *FileChooserNativeClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4761,6 +5004,7 @@ type FileChooserWidgetClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileChooserWidgetClass that represents the FileChooserWidgetClass.
 func (recv *FileChooserWidgetClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4770,6 +5014,7 @@ type FileChooserWidgetPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileChooserWidgetPrivate that represents the FileChooserWidgetPrivate.
 func (recv *FileChooserWidgetPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4779,6 +5024,7 @@ type FileFilterInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileFilterInfo that represents the FileFilterInfo.
 func (recv *FileFilterInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4788,6 +5034,7 @@ type FixedChild struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFixedChild that represents the FixedChild.
 func (recv *FixedChild) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4797,6 +5044,7 @@ type FixedClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFixedClass that represents the FixedClass.
 func (recv *FixedClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4806,6 +5054,7 @@ type FixedPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFixedPrivate that represents the FixedPrivate.
 func (recv *FixedPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4815,6 +5064,7 @@ type FlowBoxAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFlowBoxAccessibleClass that represents the FlowBoxAccessibleClass.
 func (recv *FlowBoxAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4824,6 +5074,7 @@ type FlowBoxAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFlowBoxAccessiblePrivate that represents the FlowBoxAccessiblePrivate.
 func (recv *FlowBoxAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4833,6 +5084,7 @@ type FlowBoxChildAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFlowBoxChildAccessibleClass that represents the FlowBoxChildAccessibleClass.
 func (recv *FlowBoxChildAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4842,6 +5094,7 @@ type FlowBoxChildClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFlowBoxChildClass that represents the FlowBoxChildClass.
 func (recv *FlowBoxChildClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4851,6 +5104,7 @@ type FlowBoxClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFlowBoxClass that represents the FlowBoxClass.
 func (recv *FlowBoxClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4860,6 +5114,7 @@ type FontButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontButtonClass that represents the FontButtonClass.
 func (recv *FontButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4869,6 +5124,7 @@ type FontButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontButtonPrivate that represents the FontButtonPrivate.
 func (recv *FontButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4878,6 +5134,7 @@ type FontChooserDialogClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontChooserDialogClass that represents the FontChooserDialogClass.
 func (recv *FontChooserDialogClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4887,6 +5144,7 @@ type FontChooserDialogPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontChooserDialogPrivate that represents the FontChooserDialogPrivate.
 func (recv *FontChooserDialogPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4896,6 +5154,7 @@ type FontChooserIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontChooserIface that represents the FontChooserIface.
 func (recv *FontChooserIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4905,6 +5164,7 @@ type FontChooserWidgetClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontChooserWidgetClass that represents the FontChooserWidgetClass.
 func (recv *FontChooserWidgetClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4914,6 +5174,7 @@ type FontChooserWidgetPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontChooserWidgetPrivate that represents the FontChooserWidgetPrivate.
 func (recv *FontChooserWidgetPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4923,6 +5184,7 @@ type FontSelectionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontSelectionClass that represents the FontSelectionClass.
 func (recv *FontSelectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4932,6 +5194,7 @@ type FontSelectionDialogClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontSelectionDialogClass that represents the FontSelectionDialogClass.
 func (recv *FontSelectionDialogClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4941,6 +5204,7 @@ type FontSelectionDialogPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontSelectionDialogPrivate that represents the FontSelectionDialogPrivate.
 func (recv *FontSelectionDialogPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4950,6 +5214,7 @@ type FontSelectionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontSelectionPrivate that represents the FontSelectionPrivate.
 func (recv *FontSelectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4959,6 +5224,7 @@ type FrameAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFrameAccessibleClass that represents the FrameAccessibleClass.
 func (recv *FrameAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4968,6 +5234,7 @@ type FrameAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFrameAccessiblePrivate that represents the FrameAccessiblePrivate.
 func (recv *FrameAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4977,6 +5244,7 @@ type FrameClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFrameClass that represents the FrameClass.
 func (recv *FrameClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4986,6 +5254,7 @@ type FramePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFramePrivate that represents the FramePrivate.
 func (recv *FramePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -4995,6 +5264,7 @@ type GestureClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureClass that represents the GestureClass.
 func (recv *GestureClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5004,6 +5274,7 @@ type GestureDragClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureDragClass that represents the GestureDragClass.
 func (recv *GestureDragClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5013,6 +5284,7 @@ type GestureLongPressClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureLongPressClass that represents the GestureLongPressClass.
 func (recv *GestureLongPressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5022,6 +5294,7 @@ type GestureMultiPressClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureMultiPressClass that represents the GestureMultiPressClass.
 func (recv *GestureMultiPressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5031,6 +5304,7 @@ type GesturePanClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGesturePanClass that represents the GesturePanClass.
 func (recv *GesturePanClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5040,6 +5314,7 @@ type GestureRotateClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureRotateClass that represents the GestureRotateClass.
 func (recv *GestureRotateClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5049,6 +5324,7 @@ type GestureSingleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureSingleClass that represents the GestureSingleClass.
 func (recv *GestureSingleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5060,6 +5336,7 @@ type GestureSwipeClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureSwipeClass that represents the GestureSwipeClass.
 func (recv *GestureSwipeClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5069,6 +5346,7 @@ type GestureZoomClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureZoomClass that represents the GestureZoomClass.
 func (recv *GestureZoomClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5078,6 +5356,7 @@ type Gradient struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGradient that represents the Gradient.
 func (recv *Gradient) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5087,6 +5366,7 @@ type GridClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGridClass that represents the GridClass.
 func (recv *GridClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5096,6 +5376,7 @@ type GridPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGridPrivate that represents the GridPrivate.
 func (recv *GridPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5105,6 +5386,7 @@ type HBoxClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHBoxClass that represents the HBoxClass.
 func (recv *HBoxClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5114,6 +5396,7 @@ type HButtonBoxClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHButtonBoxClass that represents the HButtonBoxClass.
 func (recv *HButtonBoxClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5123,6 +5406,7 @@ type HPanedClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHPanedClass that represents the HPanedClass.
 func (recv *HPanedClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5132,6 +5416,7 @@ type HSVClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHSVClass that represents the HSVClass.
 func (recv *HSVClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5141,6 +5426,7 @@ type HSVPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHSVPrivate that represents the HSVPrivate.
 func (recv *HSVPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5150,6 +5436,7 @@ type HScaleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHScaleClass that represents the HScaleClass.
 func (recv *HScaleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5159,6 +5446,7 @@ type HScrollbarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHScrollbarClass that represents the HScrollbarClass.
 func (recv *HScrollbarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5168,6 +5456,7 @@ type HSeparatorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHSeparatorClass that represents the HSeparatorClass.
 func (recv *HSeparatorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5177,6 +5466,7 @@ type HandleBoxClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHandleBoxClass that represents the HandleBoxClass.
 func (recv *HandleBoxClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5186,6 +5476,7 @@ type HandleBoxPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHandleBoxPrivate that represents the HandleBoxPrivate.
 func (recv *HandleBoxPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5199,6 +5490,7 @@ type HeaderBarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHeaderBarClass that represents the HeaderBarClass.
 func (recv *HeaderBarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5208,6 +5500,7 @@ type HeaderBarPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHeaderBarPrivate that represents the HeaderBarPrivate.
 func (recv *HeaderBarPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5217,6 +5510,7 @@ type IMContextClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIMContextClass that represents the IMContextClass.
 func (recv *IMContextClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5226,6 +5520,7 @@ type IMContextInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIMContextInfo that represents the IMContextInfo.
 func (recv *IMContextInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5235,6 +5530,7 @@ type IMContextSimpleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIMContextSimpleClass that represents the IMContextSimpleClass.
 func (recv *IMContextSimpleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5244,6 +5540,7 @@ type IMContextSimplePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIMContextSimplePrivate that represents the IMContextSimplePrivate.
 func (recv *IMContextSimplePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5253,6 +5550,7 @@ type IMMulticontextClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIMMulticontextClass that represents the IMMulticontextClass.
 func (recv *IMMulticontextClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5262,6 +5560,7 @@ type IMMulticontextPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIMMulticontextPrivate that represents the IMMulticontextPrivate.
 func (recv *IMMulticontextPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5271,6 +5570,7 @@ type IconFactoryClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconFactoryClass that represents the IconFactoryClass.
 func (recv *IconFactoryClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5280,6 +5580,7 @@ type IconFactoryPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconFactoryPrivate that represents the IconFactoryPrivate.
 func (recv *IconFactoryPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5289,6 +5590,7 @@ type IconInfoClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconInfoClass that represents the IconInfoClass.
 func (recv *IconInfoClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5298,6 +5600,7 @@ type IconSet struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconSet that represents the IconSet.
 func (recv *IconSet) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5307,6 +5610,7 @@ type IconSource struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconSource that represents the IconSource.
 func (recv *IconSource) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5316,6 +5620,7 @@ type IconThemeClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconThemeClass that represents the IconThemeClass.
 func (recv *IconThemeClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5325,6 +5630,7 @@ type IconThemePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconThemePrivate that represents the IconThemePrivate.
 func (recv *IconThemePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5334,6 +5640,7 @@ type IconViewAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconViewAccessibleClass that represents the IconViewAccessibleClass.
 func (recv *IconViewAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5343,6 +5650,7 @@ type IconViewAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconViewAccessiblePrivate that represents the IconViewAccessiblePrivate.
 func (recv *IconViewAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5352,6 +5660,7 @@ type IconViewClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconViewClass that represents the IconViewClass.
 func (recv *IconViewClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5361,6 +5670,7 @@ type IconViewPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconViewPrivate that represents the IconViewPrivate.
 func (recv *IconViewPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5370,6 +5680,7 @@ type ImageAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkImageAccessibleClass that represents the ImageAccessibleClass.
 func (recv *ImageAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5379,6 +5690,7 @@ type ImageAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkImageAccessiblePrivate that represents the ImageAccessiblePrivate.
 func (recv *ImageAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5388,6 +5700,7 @@ type ImageCellAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkImageCellAccessibleClass that represents the ImageCellAccessibleClass.
 func (recv *ImageCellAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5397,6 +5710,7 @@ type ImageCellAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkImageCellAccessiblePrivate that represents the ImageCellAccessiblePrivate.
 func (recv *ImageCellAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5406,6 +5720,7 @@ type ImageClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkImageClass that represents the ImageClass.
 func (recv *ImageClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5415,6 +5730,7 @@ type ImageMenuItemClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkImageMenuItemClass that represents the ImageMenuItemClass.
 func (recv *ImageMenuItemClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5424,6 +5740,7 @@ type ImageMenuItemPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkImageMenuItemPrivate that represents the ImageMenuItemPrivate.
 func (recv *ImageMenuItemPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5433,6 +5750,7 @@ type ImagePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkImagePrivate that represents the ImagePrivate.
 func (recv *ImagePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5442,6 +5760,7 @@ type InfoBarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkInfoBarClass that represents the InfoBarClass.
 func (recv *InfoBarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5451,6 +5770,7 @@ type InfoBarPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkInfoBarPrivate that represents the InfoBarPrivate.
 func (recv *InfoBarPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5460,6 +5780,7 @@ type InvisibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkInvisibleClass that represents the InvisibleClass.
 func (recv *InvisibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5469,6 +5790,7 @@ type InvisiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkInvisiblePrivate that represents the InvisiblePrivate.
 func (recv *InvisiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5478,6 +5800,7 @@ type LabelAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLabelAccessibleClass that represents the LabelAccessibleClass.
 func (recv *LabelAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5487,6 +5810,7 @@ type LabelAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLabelAccessiblePrivate that represents the LabelAccessiblePrivate.
 func (recv *LabelAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5496,6 +5820,7 @@ type LabelClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLabelClass that represents the LabelClass.
 func (recv *LabelClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5505,6 +5830,7 @@ type LabelPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLabelPrivate that represents the LabelPrivate.
 func (recv *LabelPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5514,6 +5840,7 @@ type LabelSelectionInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLabelSelectionInfo that represents the LabelSelectionInfo.
 func (recv *LabelSelectionInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5523,6 +5850,7 @@ type LayoutClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLayoutClass that represents the LayoutClass.
 func (recv *LayoutClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5532,6 +5860,7 @@ type LayoutPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLayoutPrivate that represents the LayoutPrivate.
 func (recv *LayoutPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5541,6 +5870,7 @@ type LevelBarAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLevelBarAccessibleClass that represents the LevelBarAccessibleClass.
 func (recv *LevelBarAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5550,6 +5880,7 @@ type LevelBarAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLevelBarAccessiblePrivate that represents the LevelBarAccessiblePrivate.
 func (recv *LevelBarAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5559,6 +5890,7 @@ type LevelBarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLevelBarClass that represents the LevelBarClass.
 func (recv *LevelBarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5568,6 +5900,7 @@ type LevelBarPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLevelBarPrivate that represents the LevelBarPrivate.
 func (recv *LevelBarPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5577,6 +5910,7 @@ type LinkButtonAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLinkButtonAccessibleClass that represents the LinkButtonAccessibleClass.
 func (recv *LinkButtonAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5586,6 +5920,7 @@ type LinkButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLinkButtonAccessiblePrivate that represents the LinkButtonAccessiblePrivate.
 func (recv *LinkButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5595,6 +5930,7 @@ type LinkButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLinkButtonClass that represents the LinkButtonClass.
 func (recv *LinkButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5604,6 +5940,7 @@ type LinkButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLinkButtonPrivate that represents the LinkButtonPrivate.
 func (recv *LinkButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5613,6 +5950,7 @@ type ListBoxAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkListBoxAccessibleClass that represents the ListBoxAccessibleClass.
 func (recv *ListBoxAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5622,6 +5960,7 @@ type ListBoxAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkListBoxAccessiblePrivate that represents the ListBoxAccessiblePrivate.
 func (recv *ListBoxAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5631,6 +5970,7 @@ type ListBoxClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkListBoxClass that represents the ListBoxClass.
 func (recv *ListBoxClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5640,6 +5980,7 @@ type ListBoxRowAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkListBoxRowAccessibleClass that represents the ListBoxRowAccessibleClass.
 func (recv *ListBoxRowAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5649,6 +5990,7 @@ type ListBoxRowClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkListBoxRowClass that represents the ListBoxRowClass.
 func (recv *ListBoxRowClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5658,6 +6000,7 @@ type ListStoreClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkListStoreClass that represents the ListStoreClass.
 func (recv *ListStoreClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5667,6 +6010,7 @@ type ListStorePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkListStorePrivate that represents the ListStorePrivate.
 func (recv *ListStorePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5676,6 +6020,7 @@ type LockButtonAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLockButtonAccessibleClass that represents the LockButtonAccessibleClass.
 func (recv *LockButtonAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5685,6 +6030,7 @@ type LockButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLockButtonAccessiblePrivate that represents the LockButtonAccessiblePrivate.
 func (recv *LockButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5694,6 +6040,7 @@ type LockButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLockButtonClass that represents the LockButtonClass.
 func (recv *LockButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5703,6 +6050,7 @@ type LockButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLockButtonPrivate that represents the LockButtonPrivate.
 func (recv *LockButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5712,6 +6060,7 @@ type MenuAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuAccessibleClass that represents the MenuAccessibleClass.
 func (recv *MenuAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5721,6 +6070,7 @@ type MenuAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuAccessiblePrivate that represents the MenuAccessiblePrivate.
 func (recv *MenuAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5730,6 +6080,7 @@ type MenuBarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuBarClass that represents the MenuBarClass.
 func (recv *MenuBarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5739,6 +6090,7 @@ type MenuBarPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuBarPrivate that represents the MenuBarPrivate.
 func (recv *MenuBarPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5748,6 +6100,7 @@ type MenuButtonAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuButtonAccessibleClass that represents the MenuButtonAccessibleClass.
 func (recv *MenuButtonAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5757,6 +6110,7 @@ type MenuButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuButtonAccessiblePrivate that represents the MenuButtonAccessiblePrivate.
 func (recv *MenuButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5766,6 +6120,7 @@ type MenuButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuButtonClass that represents the MenuButtonClass.
 func (recv *MenuButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5775,6 +6130,7 @@ type MenuButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuButtonPrivate that represents the MenuButtonPrivate.
 func (recv *MenuButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5784,6 +6140,7 @@ type MenuClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuClass that represents the MenuClass.
 func (recv *MenuClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5793,6 +6150,7 @@ type MenuItemAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuItemAccessibleClass that represents the MenuItemAccessibleClass.
 func (recv *MenuItemAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5802,6 +6160,7 @@ type MenuItemAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuItemAccessiblePrivate that represents the MenuItemAccessiblePrivate.
 func (recv *MenuItemAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5811,6 +6170,7 @@ type MenuItemClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuItemClass that represents the MenuItemClass.
 func (recv *MenuItemClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5820,6 +6180,7 @@ type MenuItemPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuItemPrivate that represents the MenuItemPrivate.
 func (recv *MenuItemPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5829,6 +6190,7 @@ type MenuPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuPrivate that represents the MenuPrivate.
 func (recv *MenuPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5838,6 +6200,7 @@ type MenuShellAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuShellAccessibleClass that represents the MenuShellAccessibleClass.
 func (recv *MenuShellAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5847,6 +6210,7 @@ type MenuShellAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuShellAccessiblePrivate that represents the MenuShellAccessiblePrivate.
 func (recv *MenuShellAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5856,6 +6220,7 @@ type MenuShellClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuShellClass that represents the MenuShellClass.
 func (recv *MenuShellClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5865,6 +6230,7 @@ type MenuShellPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuShellPrivate that represents the MenuShellPrivate.
 func (recv *MenuShellPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5874,6 +6240,7 @@ type MenuToolButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuToolButtonClass that represents the MenuToolButtonClass.
 func (recv *MenuToolButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5883,6 +6250,7 @@ type MenuToolButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuToolButtonPrivate that represents the MenuToolButtonPrivate.
 func (recv *MenuToolButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5892,6 +6260,7 @@ type MessageDialogClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMessageDialogClass that represents the MessageDialogClass.
 func (recv *MessageDialogClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5901,6 +6270,7 @@ type MessageDialogPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMessageDialogPrivate that represents the MessageDialogPrivate.
 func (recv *MessageDialogPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5910,6 +6280,7 @@ type MiscClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMiscClass that represents the MiscClass.
 func (recv *MiscClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5919,6 +6290,7 @@ type MiscPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMiscPrivate that represents the MiscPrivate.
 func (recv *MiscPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5928,6 +6300,7 @@ type MountOperationClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMountOperationClass that represents the MountOperationClass.
 func (recv *MountOperationClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5937,6 +6310,7 @@ type MountOperationPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMountOperationPrivate that represents the MountOperationPrivate.
 func (recv *MountOperationPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5946,6 +6320,7 @@ type NativeDialogClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNativeDialogClass that represents the NativeDialogClass.
 func (recv *NativeDialogClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5955,6 +6330,7 @@ type NotebookAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNotebookAccessibleClass that represents the NotebookAccessibleClass.
 func (recv *NotebookAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5964,6 +6340,7 @@ type NotebookAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNotebookAccessiblePrivate that represents the NotebookAccessiblePrivate.
 func (recv *NotebookAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5973,6 +6350,7 @@ type NotebookClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNotebookClass that represents the NotebookClass.
 func (recv *NotebookClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5982,6 +6360,7 @@ type NotebookPageAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNotebookPageAccessibleClass that represents the NotebookPageAccessibleClass.
 func (recv *NotebookPageAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -5991,6 +6370,7 @@ type NotebookPageAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNotebookPageAccessiblePrivate that represents the NotebookPageAccessiblePrivate.
 func (recv *NotebookPageAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6000,6 +6380,7 @@ type NotebookPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNotebookPrivate that represents the NotebookPrivate.
 func (recv *NotebookPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6009,6 +6390,7 @@ type NumerableIconClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNumerableIconClass that represents the NumerableIconClass.
 func (recv *NumerableIconClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6018,6 +6400,7 @@ type NumerableIconPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNumerableIconPrivate that represents the NumerableIconPrivate.
 func (recv *NumerableIconPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6027,6 +6410,7 @@ type OffscreenWindowClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkOffscreenWindowClass that represents the OffscreenWindowClass.
 func (recv *OffscreenWindowClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6036,6 +6420,7 @@ type OrientableIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkOrientableIface that represents the OrientableIface.
 func (recv *OrientableIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6045,6 +6430,7 @@ type OverlayClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkOverlayClass that represents the OverlayClass.
 func (recv *OverlayClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6054,6 +6440,7 @@ type OverlayPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkOverlayPrivate that represents the OverlayPrivate.
 func (recv *OverlayPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6063,6 +6450,7 @@ type PadActionEntry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPadActionEntry that represents the PadActionEntry.
 func (recv *PadActionEntry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6072,6 +6460,7 @@ type PadControllerClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPadControllerClass that represents the PadControllerClass.
 func (recv *PadControllerClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6081,6 +6470,7 @@ type PageRange struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPageRange that represents the PageRange.
 func (recv *PageRange) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6090,6 +6480,7 @@ type PanedAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPanedAccessibleClass that represents the PanedAccessibleClass.
 func (recv *PanedAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6099,6 +6490,7 @@ type PanedAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPanedAccessiblePrivate that represents the PanedAccessiblePrivate.
 func (recv *PanedAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6108,6 +6500,7 @@ type PanedClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPanedClass that represents the PanedClass.
 func (recv *PanedClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6117,6 +6510,7 @@ type PanedPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPanedPrivate that represents the PanedPrivate.
 func (recv *PanedPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6126,6 +6520,7 @@ type PaperSize struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPaperSize that represents the PaperSize.
 func (recv *PaperSize) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6135,6 +6530,7 @@ type PlacesSidebarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPlacesSidebarClass that represents the PlacesSidebarClass.
 func (recv *PlacesSidebarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6144,6 +6540,7 @@ type PlugClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPlugClass that represents the PlugClass.
 func (recv *PlugClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6153,6 +6550,7 @@ type PlugPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPlugPrivate that represents the PlugPrivate.
 func (recv *PlugPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6162,6 +6560,7 @@ type PopoverAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPopoverAccessibleClass that represents the PopoverAccessibleClass.
 func (recv *PopoverAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6171,6 +6570,7 @@ type PopoverClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPopoverClass that represents the PopoverClass.
 func (recv *PopoverClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6180,6 +6580,7 @@ type PopoverMenuClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPopoverMenuClass that represents the PopoverMenuClass.
 func (recv *PopoverMenuClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6189,6 +6590,7 @@ type PopoverPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPopoverPrivate that represents the PopoverPrivate.
 func (recv *PopoverPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6198,6 +6600,7 @@ type PrintOperationClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPrintOperationClass that represents the PrintOperationClass.
 func (recv *PrintOperationClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6207,6 +6610,7 @@ type PrintOperationPreviewIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPrintOperationPreviewIface that represents the PrintOperationPreviewIface.
 func (recv *PrintOperationPreviewIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6216,6 +6620,7 @@ type PrintOperationPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPrintOperationPrivate that represents the PrintOperationPrivate.
 func (recv *PrintOperationPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6225,6 +6630,7 @@ type ProgressBarAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkProgressBarAccessibleClass that represents the ProgressBarAccessibleClass.
 func (recv *ProgressBarAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6234,6 +6640,7 @@ type ProgressBarAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkProgressBarAccessiblePrivate that represents the ProgressBarAccessiblePrivate.
 func (recv *ProgressBarAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6243,6 +6650,7 @@ type ProgressBarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkProgressBarClass that represents the ProgressBarClass.
 func (recv *ProgressBarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6252,6 +6660,7 @@ type ProgressBarPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkProgressBarPrivate that represents the ProgressBarPrivate.
 func (recv *ProgressBarPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6261,6 +6670,7 @@ type RadioActionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioActionClass that represents the RadioActionClass.
 func (recv *RadioActionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6270,6 +6680,7 @@ type RadioActionEntry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioActionEntry that represents the RadioActionEntry.
 func (recv *RadioActionEntry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6279,6 +6690,7 @@ type RadioActionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioActionPrivate that represents the RadioActionPrivate.
 func (recv *RadioActionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6288,6 +6700,7 @@ type RadioButtonAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioButtonAccessibleClass that represents the RadioButtonAccessibleClass.
 func (recv *RadioButtonAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6297,6 +6710,7 @@ type RadioButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioButtonAccessiblePrivate that represents the RadioButtonAccessiblePrivate.
 func (recv *RadioButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6306,6 +6720,7 @@ type RadioButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioButtonClass that represents the RadioButtonClass.
 func (recv *RadioButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6315,6 +6730,7 @@ type RadioButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioButtonPrivate that represents the RadioButtonPrivate.
 func (recv *RadioButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6324,6 +6740,7 @@ type RadioMenuItemAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioMenuItemAccessibleClass that represents the RadioMenuItemAccessibleClass.
 func (recv *RadioMenuItemAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6333,6 +6750,7 @@ type RadioMenuItemAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioMenuItemAccessiblePrivate that represents the RadioMenuItemAccessiblePrivate.
 func (recv *RadioMenuItemAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6342,6 +6760,7 @@ type RadioMenuItemClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioMenuItemClass that represents the RadioMenuItemClass.
 func (recv *RadioMenuItemClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6351,6 +6770,7 @@ type RadioMenuItemPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioMenuItemPrivate that represents the RadioMenuItemPrivate.
 func (recv *RadioMenuItemPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6360,6 +6780,7 @@ type RadioToolButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioToolButtonClass that represents the RadioToolButtonClass.
 func (recv *RadioToolButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6369,6 +6790,7 @@ type RangeAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRangeAccessibleClass that represents the RangeAccessibleClass.
 func (recv *RangeAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6378,6 +6800,7 @@ type RangeAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRangeAccessiblePrivate that represents the RangeAccessiblePrivate.
 func (recv *RangeAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6387,6 +6810,7 @@ type RangeClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRangeClass that represents the RangeClass.
 func (recv *RangeClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6396,6 +6820,7 @@ type RangePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRangePrivate that represents the RangePrivate.
 func (recv *RangePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6405,6 +6830,7 @@ type RcContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRcContext that represents the RcContext.
 func (recv *RcContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6414,6 +6840,7 @@ type RcProperty struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRcProperty that represents the RcProperty.
 func (recv *RcProperty) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6423,6 +6850,7 @@ type RcStyleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRcStyleClass that represents the RcStyleClass.
 func (recv *RcStyleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6432,6 +6860,7 @@ type RecentActionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentActionClass that represents the RecentActionClass.
 func (recv *RecentActionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6441,6 +6870,7 @@ type RecentActionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentActionPrivate that represents the RecentActionPrivate.
 func (recv *RecentActionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6450,6 +6880,7 @@ type RecentChooserDialogClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentChooserDialogClass that represents the RecentChooserDialogClass.
 func (recv *RecentChooserDialogClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6459,6 +6890,7 @@ type RecentChooserDialogPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentChooserDialogPrivate that represents the RecentChooserDialogPrivate.
 func (recv *RecentChooserDialogPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6468,6 +6900,7 @@ type RecentChooserIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentChooserIface that represents the RecentChooserIface.
 func (recv *RecentChooserIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6477,6 +6910,7 @@ type RecentChooserMenuClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentChooserMenuClass that represents the RecentChooserMenuClass.
 func (recv *RecentChooserMenuClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6486,6 +6920,7 @@ type RecentChooserMenuPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentChooserMenuPrivate that represents the RecentChooserMenuPrivate.
 func (recv *RecentChooserMenuPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6495,6 +6930,7 @@ type RecentChooserWidgetClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentChooserWidgetClass that represents the RecentChooserWidgetClass.
 func (recv *RecentChooserWidgetClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6504,6 +6940,7 @@ type RecentChooserWidgetPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentChooserWidgetPrivate that represents the RecentChooserWidgetPrivate.
 func (recv *RecentChooserWidgetPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6513,6 +6950,7 @@ type RecentData struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentData that represents the RecentData.
 func (recv *RecentData) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6522,6 +6960,7 @@ type RecentFilterInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentFilterInfo that represents the RecentFilterInfo.
 func (recv *RecentFilterInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6533,6 +6972,7 @@ type RecentInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentInfo that represents the RecentInfo.
 func (recv *RecentInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6544,6 +6984,7 @@ type RecentManagerClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentManagerClass that represents the RecentManagerClass.
 func (recv *RecentManagerClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6553,6 +6994,7 @@ type RecentManagerPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentManagerPrivate that represents the RecentManagerPrivate.
 func (recv *RecentManagerPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6562,6 +7004,7 @@ type RendererCellAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRendererCellAccessibleClass that represents the RendererCellAccessibleClass.
 func (recv *RendererCellAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6571,6 +7014,7 @@ type RendererCellAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRendererCellAccessiblePrivate that represents the RendererCellAccessiblePrivate.
 func (recv *RendererCellAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6580,6 +7024,7 @@ type RequestedSize struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRequestedSize that represents the RequestedSize.
 func (recv *RequestedSize) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6589,6 +7034,7 @@ type Requisition struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRequisition that represents the Requisition.
 func (recv *Requisition) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6598,6 +7044,7 @@ type RevealerClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRevealerClass that represents the RevealerClass.
 func (recv *RevealerClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6607,6 +7054,7 @@ type ScaleAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScaleAccessibleClass that represents the ScaleAccessibleClass.
 func (recv *ScaleAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6616,6 +7064,7 @@ type ScaleAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScaleAccessiblePrivate that represents the ScaleAccessiblePrivate.
 func (recv *ScaleAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6625,6 +7074,7 @@ type ScaleButtonAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScaleButtonAccessibleClass that represents the ScaleButtonAccessibleClass.
 func (recv *ScaleButtonAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6634,6 +7084,7 @@ type ScaleButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScaleButtonAccessiblePrivate that represents the ScaleButtonAccessiblePrivate.
 func (recv *ScaleButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6643,6 +7094,7 @@ type ScaleButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScaleButtonClass that represents the ScaleButtonClass.
 func (recv *ScaleButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6652,6 +7104,7 @@ type ScaleButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScaleButtonPrivate that represents the ScaleButtonPrivate.
 func (recv *ScaleButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6661,6 +7114,7 @@ type ScaleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScaleClass that represents the ScaleClass.
 func (recv *ScaleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6670,6 +7124,7 @@ type ScalePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScalePrivate that represents the ScalePrivate.
 func (recv *ScalePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6679,6 +7134,7 @@ type ScrollableInterface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScrollableInterface that represents the ScrollableInterface.
 func (recv *ScrollableInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6688,6 +7144,7 @@ type ScrollbarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScrollbarClass that represents the ScrollbarClass.
 func (recv *ScrollbarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6697,6 +7154,7 @@ type ScrolledWindowAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScrolledWindowAccessibleClass that represents the ScrolledWindowAccessibleClass.
 func (recv *ScrolledWindowAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6706,6 +7164,7 @@ type ScrolledWindowAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScrolledWindowAccessiblePrivate that represents the ScrolledWindowAccessiblePrivate.
 func (recv *ScrolledWindowAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6715,6 +7174,7 @@ type ScrolledWindowClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScrolledWindowClass that represents the ScrolledWindowClass.
 func (recv *ScrolledWindowClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6724,6 +7184,7 @@ type ScrolledWindowPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScrolledWindowPrivate that represents the ScrolledWindowPrivate.
 func (recv *ScrolledWindowPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6733,6 +7194,7 @@ type SearchBarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSearchBarClass that represents the SearchBarClass.
 func (recv *SearchBarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6742,6 +7204,7 @@ type SearchEntryClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSearchEntryClass that represents the SearchEntryClass.
 func (recv *SearchEntryClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6751,6 +7214,7 @@ type SelectionData struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSelectionData that represents the SelectionData.
 func (recv *SelectionData) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6760,6 +7224,7 @@ type SeparatorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSeparatorClass that represents the SeparatorClass.
 func (recv *SeparatorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6769,6 +7234,7 @@ type SeparatorMenuItemClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSeparatorMenuItemClass that represents the SeparatorMenuItemClass.
 func (recv *SeparatorMenuItemClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6778,6 +7244,7 @@ type SeparatorPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSeparatorPrivate that represents the SeparatorPrivate.
 func (recv *SeparatorPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6787,6 +7254,7 @@ type SeparatorToolItemClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSeparatorToolItemClass that represents the SeparatorToolItemClass.
 func (recv *SeparatorToolItemClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6796,6 +7264,7 @@ type SeparatorToolItemPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSeparatorToolItemPrivate that represents the SeparatorToolItemPrivate.
 func (recv *SeparatorToolItemPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6805,6 +7274,7 @@ type SettingsClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSettingsClass that represents the SettingsClass.
 func (recv *SettingsClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6814,6 +7284,7 @@ type SettingsPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSettingsPrivate that represents the SettingsPrivate.
 func (recv *SettingsPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6823,6 +7294,7 @@ type SettingsValue struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSettingsValue that represents the SettingsValue.
 func (recv *SettingsValue) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6832,6 +7304,7 @@ type ShortcutLabelClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkShortcutLabelClass that represents the ShortcutLabelClass.
 func (recv *ShortcutLabelClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6841,6 +7314,7 @@ type ShortcutsGroupClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkShortcutsGroupClass that represents the ShortcutsGroupClass.
 func (recv *ShortcutsGroupClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6850,6 +7324,7 @@ type ShortcutsSectionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkShortcutsSectionClass that represents the ShortcutsSectionClass.
 func (recv *ShortcutsSectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6859,6 +7334,7 @@ type ShortcutsShortcutClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkShortcutsShortcutClass that represents the ShortcutsShortcutClass.
 func (recv *ShortcutsShortcutClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6868,6 +7344,7 @@ type ShortcutsWindowClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkShortcutsWindowClass that represents the ShortcutsWindowClass.
 func (recv *ShortcutsWindowClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6877,6 +7354,7 @@ type SizeGroupClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSizeGroupClass that represents the SizeGroupClass.
 func (recv *SizeGroupClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6886,6 +7364,7 @@ type SizeGroupPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSizeGroupPrivate that represents the SizeGroupPrivate.
 func (recv *SizeGroupPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6895,6 +7374,7 @@ type SocketClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSocketClass that represents the SocketClass.
 func (recv *SocketClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6904,6 +7384,7 @@ type SocketPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSocketPrivate that represents the SocketPrivate.
 func (recv *SocketPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6913,6 +7394,7 @@ type SpinButtonAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSpinButtonAccessibleClass that represents the SpinButtonAccessibleClass.
 func (recv *SpinButtonAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6922,6 +7404,7 @@ type SpinButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSpinButtonAccessiblePrivate that represents the SpinButtonAccessiblePrivate.
 func (recv *SpinButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6931,6 +7414,7 @@ type SpinButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSpinButtonClass that represents the SpinButtonClass.
 func (recv *SpinButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6940,6 +7424,7 @@ type SpinButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSpinButtonPrivate that represents the SpinButtonPrivate.
 func (recv *SpinButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6949,6 +7434,7 @@ type SpinnerAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSpinnerAccessibleClass that represents the SpinnerAccessibleClass.
 func (recv *SpinnerAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6958,6 +7444,7 @@ type SpinnerAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSpinnerAccessiblePrivate that represents the SpinnerAccessiblePrivate.
 func (recv *SpinnerAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6967,6 +7454,7 @@ type SpinnerClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSpinnerClass that represents the SpinnerClass.
 func (recv *SpinnerClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6976,6 +7464,7 @@ type SpinnerPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSpinnerPrivate that represents the SpinnerPrivate.
 func (recv *SpinnerPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6987,6 +7476,7 @@ type StackClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStackClass that represents the StackClass.
 func (recv *StackClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -6996,6 +7486,7 @@ type StackSidebarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStackSidebarClass that represents the StackSidebarClass.
 func (recv *StackSidebarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7005,6 +7496,7 @@ type StackSidebarPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStackSidebarPrivate that represents the StackSidebarPrivate.
 func (recv *StackSidebarPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7014,6 +7506,7 @@ type StackSwitcherClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStackSwitcherClass that represents the StackSwitcherClass.
 func (recv *StackSwitcherClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7023,6 +7516,7 @@ type StatusIconClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStatusIconClass that represents the StatusIconClass.
 func (recv *StatusIconClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7032,6 +7526,7 @@ type StatusIconPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStatusIconPrivate that represents the StatusIconPrivate.
 func (recv *StatusIconPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7041,6 +7536,7 @@ type StatusbarAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStatusbarAccessibleClass that represents the StatusbarAccessibleClass.
 func (recv *StatusbarAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7050,6 +7546,7 @@ type StatusbarAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStatusbarAccessiblePrivate that represents the StatusbarAccessiblePrivate.
 func (recv *StatusbarAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7059,6 +7556,7 @@ type StatusbarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStatusbarClass that represents the StatusbarClass.
 func (recv *StatusbarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7068,6 +7566,7 @@ type StatusbarPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStatusbarPrivate that represents the StatusbarPrivate.
 func (recv *StatusbarPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7077,6 +7576,7 @@ type StockItem struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStockItem that represents the StockItem.
 func (recv *StockItem) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7086,6 +7586,7 @@ type StyleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStyleClass that represents the StyleClass.
 func (recv *StyleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7095,6 +7596,7 @@ type StyleContextClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStyleContextClass that represents the StyleContextClass.
 func (recv *StyleContextClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7104,6 +7606,7 @@ type StyleContextPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStyleContextPrivate that represents the StyleContextPrivate.
 func (recv *StyleContextPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7113,6 +7616,7 @@ type StylePropertiesClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStylePropertiesClass that represents the StylePropertiesClass.
 func (recv *StylePropertiesClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7122,6 +7626,7 @@ type StylePropertiesPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStylePropertiesPrivate that represents the StylePropertiesPrivate.
 func (recv *StylePropertiesPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7131,6 +7636,7 @@ type StyleProviderIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStyleProviderIface that represents the StyleProviderIface.
 func (recv *StyleProviderIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7140,6 +7646,7 @@ type SwitchAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSwitchAccessibleClass that represents the SwitchAccessibleClass.
 func (recv *SwitchAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7149,6 +7656,7 @@ type SwitchAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSwitchAccessiblePrivate that represents the SwitchAccessiblePrivate.
 func (recv *SwitchAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7158,6 +7666,7 @@ type SwitchClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSwitchClass that represents the SwitchClass.
 func (recv *SwitchClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7167,6 +7676,7 @@ type SwitchPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSwitchPrivate that represents the SwitchPrivate.
 func (recv *SwitchPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7176,6 +7686,7 @@ type SymbolicColor struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSymbolicColor that represents the SymbolicColor.
 func (recv *SymbolicColor) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7185,6 +7696,7 @@ type TableChild struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTableChild that represents the TableChild.
 func (recv *TableChild) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7194,6 +7706,7 @@ type TableClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTableClass that represents the TableClass.
 func (recv *TableClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7203,6 +7716,7 @@ type TablePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTablePrivate that represents the TablePrivate.
 func (recv *TablePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7212,6 +7726,7 @@ type TableRowCol struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTableRowCol that represents the TableRowCol.
 func (recv *TableRowCol) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7221,6 +7736,7 @@ type TargetEntry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTargetEntry that represents the TargetEntry.
 func (recv *TargetEntry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7230,6 +7746,7 @@ type TargetList struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTargetList that represents the TargetList.
 func (recv *TargetList) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7239,6 +7756,7 @@ type TargetPair struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTargetPair that represents the TargetPair.
 func (recv *TargetPair) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7248,6 +7766,7 @@ type TearoffMenuItemClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTearoffMenuItemClass that represents the TearoffMenuItemClass.
 func (recv *TearoffMenuItemClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7257,6 +7776,7 @@ type TearoffMenuItemPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTearoffMenuItemPrivate that represents the TearoffMenuItemPrivate.
 func (recv *TearoffMenuItemPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7266,6 +7786,7 @@ type TextAppearance struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextAppearance that represents the TextAppearance.
 func (recv *TextAppearance) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7275,6 +7796,7 @@ type TextAttributes struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextAttributes that represents the TextAttributes.
 func (recv *TextAttributes) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7284,6 +7806,7 @@ type TextBTree struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextBTree that represents the TextBTree.
 func (recv *TextBTree) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7293,6 +7816,7 @@ type TextBufferClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextBufferClass that represents the TextBufferClass.
 func (recv *TextBufferClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7302,6 +7826,7 @@ type TextBufferPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextBufferPrivate that represents the TextBufferPrivate.
 func (recv *TextBufferPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7311,6 +7836,7 @@ type TextCellAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextCellAccessibleClass that represents the TextCellAccessibleClass.
 func (recv *TextCellAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7320,6 +7846,7 @@ type TextCellAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextCellAccessiblePrivate that represents the TextCellAccessiblePrivate.
 func (recv *TextCellAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7329,6 +7856,7 @@ type TextChildAnchorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextChildAnchorClass that represents the TextChildAnchorClass.
 func (recv *TextChildAnchorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7338,6 +7866,7 @@ type TextIter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextIter that represents the TextIter.
 func (recv *TextIter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7347,6 +7876,7 @@ type TextMarkClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextMarkClass that represents the TextMarkClass.
 func (recv *TextMarkClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7356,6 +7886,7 @@ type TextTagClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextTagClass that represents the TextTagClass.
 func (recv *TextTagClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7365,6 +7896,7 @@ type TextTagPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextTagPrivate that represents the TextTagPrivate.
 func (recv *TextTagPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7374,6 +7906,7 @@ type TextTagTableClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextTagTableClass that represents the TextTagTableClass.
 func (recv *TextTagTableClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7383,6 +7916,7 @@ type TextTagTablePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextTagTablePrivate that represents the TextTagTablePrivate.
 func (recv *TextTagTablePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7392,6 +7926,7 @@ type TextViewAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextViewAccessibleClass that represents the TextViewAccessibleClass.
 func (recv *TextViewAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7401,6 +7936,7 @@ type TextViewAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextViewAccessiblePrivate that represents the TextViewAccessiblePrivate.
 func (recv *TextViewAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7410,6 +7946,7 @@ type TextViewClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextViewClass that represents the TextViewClass.
 func (recv *TextViewClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7419,6 +7956,7 @@ type TextViewPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextViewPrivate that represents the TextViewPrivate.
 func (recv *TextViewPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7428,6 +7966,7 @@ type ThemeEngine struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkThemeEngine that represents the ThemeEngine.
 func (recv *ThemeEngine) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7437,6 +7976,7 @@ type ThemingEngineClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkThemingEngineClass that represents the ThemingEngineClass.
 func (recv *ThemingEngineClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7446,6 +7986,7 @@ type ThemingEnginePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkThemingEnginePrivate that represents the ThemingEnginePrivate.
 func (recv *ThemingEnginePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7455,6 +7996,7 @@ type ToggleActionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleActionClass that represents the ToggleActionClass.
 func (recv *ToggleActionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7464,6 +8006,7 @@ type ToggleActionEntry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleActionEntry that represents the ToggleActionEntry.
 func (recv *ToggleActionEntry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7473,6 +8016,7 @@ type ToggleActionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleActionPrivate that represents the ToggleActionPrivate.
 func (recv *ToggleActionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7482,6 +8026,7 @@ type ToggleButtonAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleButtonAccessibleClass that represents the ToggleButtonAccessibleClass.
 func (recv *ToggleButtonAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7491,6 +8036,7 @@ type ToggleButtonAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleButtonAccessiblePrivate that represents the ToggleButtonAccessiblePrivate.
 func (recv *ToggleButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7500,6 +8046,7 @@ type ToggleButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleButtonClass that represents the ToggleButtonClass.
 func (recv *ToggleButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7509,6 +8056,7 @@ type ToggleButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleButtonPrivate that represents the ToggleButtonPrivate.
 func (recv *ToggleButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7518,6 +8066,7 @@ type ToggleToolButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleToolButtonClass that represents the ToggleToolButtonClass.
 func (recv *ToggleToolButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7527,6 +8076,7 @@ type ToggleToolButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleToolButtonPrivate that represents the ToggleToolButtonPrivate.
 func (recv *ToggleToolButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7536,6 +8086,7 @@ type ToolButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolButtonClass that represents the ToolButtonClass.
 func (recv *ToolButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7545,6 +8096,7 @@ type ToolButtonPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolButtonPrivate that represents the ToolButtonPrivate.
 func (recv *ToolButtonPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7554,6 +8106,7 @@ type ToolItemClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolItemClass that represents the ToolItemClass.
 func (recv *ToolItemClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7563,6 +8116,7 @@ type ToolItemGroupClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolItemGroupClass that represents the ToolItemGroupClass.
 func (recv *ToolItemGroupClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7572,6 +8126,7 @@ type ToolItemGroupPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolItemGroupPrivate that represents the ToolItemGroupPrivate.
 func (recv *ToolItemGroupPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7581,6 +8136,7 @@ type ToolItemPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolItemPrivate that represents the ToolItemPrivate.
 func (recv *ToolItemPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7590,6 +8146,7 @@ type ToolPaletteClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolPaletteClass that represents the ToolPaletteClass.
 func (recv *ToolPaletteClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7599,6 +8156,7 @@ type ToolPalettePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolPalettePrivate that represents the ToolPalettePrivate.
 func (recv *ToolPalettePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7608,6 +8166,7 @@ type ToolShellIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolShellIface that represents the ToolShellIface.
 func (recv *ToolShellIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7617,6 +8176,7 @@ type ToolbarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolbarClass that represents the ToolbarClass.
 func (recv *ToolbarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7626,6 +8186,7 @@ type ToolbarPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolbarPrivate that represents the ToolbarPrivate.
 func (recv *ToolbarPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7635,6 +8196,7 @@ type ToplevelAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToplevelAccessibleClass that represents the ToplevelAccessibleClass.
 func (recv *ToplevelAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7644,6 +8206,7 @@ type ToplevelAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToplevelAccessiblePrivate that represents the ToplevelAccessiblePrivate.
 func (recv *ToplevelAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7653,6 +8216,7 @@ type TreeDragDestIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeDragDestIface that represents the TreeDragDestIface.
 func (recv *TreeDragDestIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7662,6 +8226,7 @@ type TreeDragSourceIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeDragSourceIface that represents the TreeDragSourceIface.
 func (recv *TreeDragSourceIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7671,6 +8236,7 @@ type TreeIter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeIter that represents the TreeIter.
 func (recv *TreeIter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7680,6 +8246,7 @@ type TreeModelFilterClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeModelFilterClass that represents the TreeModelFilterClass.
 func (recv *TreeModelFilterClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7689,6 +8256,7 @@ type TreeModelFilterPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeModelFilterPrivate that represents the TreeModelFilterPrivate.
 func (recv *TreeModelFilterPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7698,6 +8266,7 @@ type TreeModelIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeModelIface that represents the TreeModelIface.
 func (recv *TreeModelIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7707,6 +8276,7 @@ type TreeModelSortClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeModelSortClass that represents the TreeModelSortClass.
 func (recv *TreeModelSortClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7716,6 +8286,7 @@ type TreeModelSortPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeModelSortPrivate that represents the TreeModelSortPrivate.
 func (recv *TreeModelSortPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7725,6 +8296,7 @@ type TreePath struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreePath that represents the TreePath.
 func (recv *TreePath) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7734,6 +8306,7 @@ type TreeRowReference struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeRowReference that represents the TreeRowReference.
 func (recv *TreeRowReference) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7743,6 +8316,7 @@ type TreeSelectionClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeSelectionClass that represents the TreeSelectionClass.
 func (recv *TreeSelectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7752,6 +8326,7 @@ type TreeSelectionPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeSelectionPrivate that represents the TreeSelectionPrivate.
 func (recv *TreeSelectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7761,6 +8336,7 @@ type TreeSortableIface struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeSortableIface that represents the TreeSortableIface.
 func (recv *TreeSortableIface) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7770,6 +8346,7 @@ type TreeStoreClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeStoreClass that represents the TreeStoreClass.
 func (recv *TreeStoreClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7779,6 +8356,7 @@ type TreeStorePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeStorePrivate that represents the TreeStorePrivate.
 func (recv *TreeStorePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7788,6 +8366,7 @@ type TreeViewAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeViewAccessibleClass that represents the TreeViewAccessibleClass.
 func (recv *TreeViewAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7797,6 +8376,7 @@ type TreeViewAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeViewAccessiblePrivate that represents the TreeViewAccessiblePrivate.
 func (recv *TreeViewAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7806,6 +8386,7 @@ type TreeViewClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeViewClass that represents the TreeViewClass.
 func (recv *TreeViewClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7815,6 +8396,7 @@ type TreeViewColumnClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeViewColumnClass that represents the TreeViewColumnClass.
 func (recv *TreeViewColumnClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7824,6 +8406,7 @@ type TreeViewColumnPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeViewColumnPrivate that represents the TreeViewColumnPrivate.
 func (recv *TreeViewColumnPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7833,6 +8416,7 @@ type TreeViewPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeViewPrivate that represents the TreeViewPrivate.
 func (recv *TreeViewPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7842,6 +8426,7 @@ type UIManagerClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkUIManagerClass that represents the UIManagerClass.
 func (recv *UIManagerClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7851,6 +8436,7 @@ type UIManagerPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkUIManagerPrivate that represents the UIManagerPrivate.
 func (recv *UIManagerPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7860,6 +8446,7 @@ type VBoxClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVBoxClass that represents the VBoxClass.
 func (recv *VBoxClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7869,6 +8456,7 @@ type VButtonBoxClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVButtonBoxClass that represents the VButtonBoxClass.
 func (recv *VButtonBoxClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7878,6 +8466,7 @@ type VPanedClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVPanedClass that represents the VPanedClass.
 func (recv *VPanedClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7887,6 +8476,7 @@ type VScaleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVScaleClass that represents the VScaleClass.
 func (recv *VScaleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7896,6 +8486,7 @@ type VScrollbarClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVScrollbarClass that represents the VScrollbarClass.
 func (recv *VScrollbarClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7905,6 +8496,7 @@ type VSeparatorClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVSeparatorClass that represents the VSeparatorClass.
 func (recv *VSeparatorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7914,6 +8506,7 @@ type ViewportClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkViewportClass that represents the ViewportClass.
 func (recv *ViewportClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7923,6 +8516,7 @@ type ViewportPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkViewportPrivate that represents the ViewportPrivate.
 func (recv *ViewportPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7932,6 +8526,7 @@ type VolumeButtonClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVolumeButtonClass that represents the VolumeButtonClass.
 func (recv *VolumeButtonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7941,6 +8536,7 @@ type WidgetAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWidgetAccessibleClass that represents the WidgetAccessibleClass.
 func (recv *WidgetAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7950,6 +8546,7 @@ type WidgetAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWidgetAccessiblePrivate that represents the WidgetAccessiblePrivate.
 func (recv *WidgetAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7959,6 +8556,7 @@ type WidgetClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWidgetClass that represents the WidgetClass.
 func (recv *WidgetClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7968,6 +8566,7 @@ type WidgetClassPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWidgetClassPrivate that represents the WidgetClassPrivate.
 func (recv *WidgetClassPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7977,6 +8576,7 @@ type WidgetPath struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWidgetPath that represents the WidgetPath.
 func (recv *WidgetPath) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7986,6 +8586,7 @@ type WidgetPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWidgetPrivate that represents the WidgetPrivate.
 func (recv *WidgetPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -7995,6 +8596,7 @@ type WindowAccessibleClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWindowAccessibleClass that represents the WindowAccessibleClass.
 func (recv *WindowAccessibleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8004,6 +8606,7 @@ type WindowAccessiblePrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWindowAccessiblePrivate that represents the WindowAccessiblePrivate.
 func (recv *WindowAccessiblePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8013,6 +8616,7 @@ type WindowClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWindowClass that represents the WindowClass.
 func (recv *WindowClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8022,6 +8626,7 @@ type WindowGeometryInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWindowGeometryInfo that represents the WindowGeometryInfo.
 func (recv *WindowGeometryInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8031,6 +8636,7 @@ type WindowGroupClass struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWindowGroupClass that represents the WindowGroupClass.
 func (recv *WindowGroupClass) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8040,6 +8646,7 @@ type WindowGroupPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWindowGroupPrivate that represents the WindowGroupPrivate.
 func (recv *WindowGroupPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8049,6 +8656,7 @@ type WindowPrivate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWindowPrivate that represents the WindowPrivate.
 func (recv *WindowPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8058,6 +8666,7 @@ type AboutDialog struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAboutDialog that represents the AboutDialog.
 func (recv *AboutDialog) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8067,6 +8676,7 @@ type AccelGroup struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccelGroup that represents the AccelGroup.
 func (recv *AccelGroup) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8076,6 +8686,7 @@ type AccelLabel struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccelLabel that represents the AccelLabel.
 func (recv *AccelLabel) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8085,6 +8696,7 @@ type AccelMap struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccelMap that represents the AccelMap.
 func (recv *AccelMap) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8094,6 +8706,7 @@ type Accessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAccessible that represents the Accessible.
 func (recv *Accessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8103,6 +8716,7 @@ type Action struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAction that represents the Action.
 func (recv *Action) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8112,6 +8726,7 @@ type ActionBar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkActionBar that represents the ActionBar.
 func (recv *ActionBar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8121,6 +8736,7 @@ type ActionGroup struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkActionGroup that represents the ActionGroup.
 func (recv *ActionGroup) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8130,6 +8746,7 @@ type Adjustment struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAdjustment that represents the Adjustment.
 func (recv *Adjustment) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8139,6 +8756,7 @@ type Alignment struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAlignment that represents the Alignment.
 func (recv *Alignment) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8148,6 +8766,7 @@ type AppChooserButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAppChooserButton that represents the AppChooserButton.
 func (recv *AppChooserButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8157,6 +8776,7 @@ type AppChooserDialog struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAppChooserDialog that represents the AppChooserDialog.
 func (recv *AppChooserDialog) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8166,6 +8786,7 @@ type AppChooserWidget struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAppChooserWidget that represents the AppChooserWidget.
 func (recv *AppChooserWidget) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8175,6 +8796,7 @@ type Application struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkApplication that represents the Application.
 func (recv *Application) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8184,6 +8806,7 @@ type ApplicationWindow struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkApplicationWindow that represents the ApplicationWindow.
 func (recv *ApplicationWindow) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8193,6 +8816,7 @@ type Arrow struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkArrow that represents the Arrow.
 func (recv *Arrow) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8202,6 +8826,7 @@ type ArrowAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkArrowAccessible that represents the ArrowAccessible.
 func (recv *ArrowAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8211,6 +8836,7 @@ type AspectFrame struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAspectFrame that represents the AspectFrame.
 func (recv *AspectFrame) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8220,6 +8846,7 @@ type Assistant struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkAssistant that represents the Assistant.
 func (recv *Assistant) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8229,6 +8856,7 @@ type Bin struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBin that represents the Bin.
 func (recv *Bin) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8238,6 +8866,7 @@ type BooleanCellAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBooleanCellAccessible that represents the BooleanCellAccessible.
 func (recv *BooleanCellAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8247,6 +8876,7 @@ type Box struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBox that represents the Box.
 func (recv *Box) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8256,6 +8886,7 @@ type Builder struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkBuilder that represents the Builder.
 func (recv *Builder) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8265,6 +8896,7 @@ type Button struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkButton that represents the Button.
 func (recv *Button) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8274,6 +8906,7 @@ type ButtonAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkButtonAccessible that represents the ButtonAccessible.
 func (recv *ButtonAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8283,6 +8916,7 @@ type ButtonBox struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkButtonBox that represents the ButtonBox.
 func (recv *ButtonBox) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8292,6 +8926,7 @@ type Calendar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCalendar that represents the Calendar.
 func (recv *Calendar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8301,6 +8936,7 @@ type CellAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellAccessible that represents the CellAccessible.
 func (recv *CellAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8310,6 +8946,7 @@ type CellArea struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellArea that represents the CellArea.
 func (recv *CellArea) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8319,6 +8956,7 @@ type CellAreaBox struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellAreaBox that represents the CellAreaBox.
 func (recv *CellAreaBox) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8328,6 +8966,7 @@ type CellAreaContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellAreaContext that represents the CellAreaContext.
 func (recv *CellAreaContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8337,6 +8976,7 @@ type CellRenderer struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRenderer that represents the CellRenderer.
 func (recv *CellRenderer) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8346,6 +8986,7 @@ type CellRendererAccel struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererAccel that represents the CellRendererAccel.
 func (recv *CellRendererAccel) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8355,6 +8996,7 @@ type CellRendererCombo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererCombo that represents the CellRendererCombo.
 func (recv *CellRendererCombo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8364,6 +9006,7 @@ type CellRendererPixbuf struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererPixbuf that represents the CellRendererPixbuf.
 func (recv *CellRendererPixbuf) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8373,6 +9016,7 @@ type CellRendererProgress struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererProgress that represents the CellRendererProgress.
 func (recv *CellRendererProgress) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8382,6 +9026,7 @@ type CellRendererSpin struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererSpin that represents the CellRendererSpin.
 func (recv *CellRendererSpin) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8391,6 +9036,7 @@ type CellRendererSpinner struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererSpinner that represents the CellRendererSpinner.
 func (recv *CellRendererSpinner) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8400,6 +9046,7 @@ type CellRendererText struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererText that represents the CellRendererText.
 func (recv *CellRendererText) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8409,6 +9056,7 @@ type CellRendererToggle struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellRendererToggle that represents the CellRendererToggle.
 func (recv *CellRendererToggle) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8418,6 +9066,7 @@ type CellView struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCellView that represents the CellView.
 func (recv *CellView) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8427,6 +9076,7 @@ type CheckButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCheckButton that represents the CheckButton.
 func (recv *CheckButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8436,6 +9086,7 @@ type CheckMenuItem struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCheckMenuItem that represents the CheckMenuItem.
 func (recv *CheckMenuItem) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8445,6 +9096,7 @@ type CheckMenuItemAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCheckMenuItemAccessible that represents the CheckMenuItemAccessible.
 func (recv *CheckMenuItemAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8454,6 +9106,7 @@ type Clipboard struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkClipboard that represents the Clipboard.
 func (recv *Clipboard) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8463,6 +9116,7 @@ type ColorButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorButton that represents the ColorButton.
 func (recv *ColorButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8472,6 +9126,7 @@ type ColorSelection struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorSelection that represents the ColorSelection.
 func (recv *ColorSelection) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8481,6 +9136,7 @@ type ColorSelectionDialog struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkColorSelectionDialog that represents the ColorSelectionDialog.
 func (recv *ColorSelectionDialog) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8490,6 +9146,7 @@ type ComboBox struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkComboBox that represents the ComboBox.
 func (recv *ComboBox) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8499,6 +9156,7 @@ type ComboBoxAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkComboBoxAccessible that represents the ComboBoxAccessible.
 func (recv *ComboBoxAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8508,6 +9166,7 @@ type ComboBoxText struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkComboBoxText that represents the ComboBoxText.
 func (recv *ComboBoxText) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8517,6 +9176,7 @@ type Container struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkContainer that represents the Container.
 func (recv *Container) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8526,6 +9186,7 @@ type ContainerAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkContainerAccessible that represents the ContainerAccessible.
 func (recv *ContainerAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8535,6 +9196,7 @@ type ContainerCellAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkContainerCellAccessible that represents the ContainerCellAccessible.
 func (recv *ContainerCellAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8544,6 +9206,7 @@ type CssProvider struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkCssProvider that represents the CssProvider.
 func (recv *CssProvider) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8553,6 +9216,7 @@ type Dialog struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkDialog that represents the Dialog.
 func (recv *Dialog) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8562,6 +9226,7 @@ type DrawingArea struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkDrawingArea that represents the DrawingArea.
 func (recv *DrawingArea) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8571,6 +9236,7 @@ type Entry struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEntry that represents the Entry.
 func (recv *Entry) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8580,6 +9246,7 @@ type EntryAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEntryAccessible that represents the EntryAccessible.
 func (recv *EntryAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8589,6 +9256,7 @@ type EntryCompletion struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEntryCompletion that represents the EntryCompletion.
 func (recv *EntryCompletion) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8600,6 +9268,7 @@ type EventBox struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEventBox that represents the EventBox.
 func (recv *EventBox) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8609,6 +9278,7 @@ type EventController struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkEventController that represents the EventController.
 func (recv *EventController) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8624,6 +9294,7 @@ type Expander struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkExpander that represents the Expander.
 func (recv *Expander) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8633,6 +9304,7 @@ type ExpanderAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkExpanderAccessible that represents the ExpanderAccessible.
 func (recv *ExpanderAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8642,6 +9314,7 @@ type FileChooserButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileChooserButton that represents the FileChooserButton.
 func (recv *FileChooserButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8651,6 +9324,7 @@ type FileChooserDialog struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileChooserDialog that represents the FileChooserDialog.
 func (recv *FileChooserDialog) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8660,6 +9334,7 @@ type FileChooserNative struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileChooserNative that represents the FileChooserNative.
 func (recv *FileChooserNative) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8669,6 +9344,7 @@ type FileChooserWidget struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileChooserWidget that represents the FileChooserWidget.
 func (recv *FileChooserWidget) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8678,6 +9354,7 @@ type FileFilter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFileFilter that represents the FileFilter.
 func (recv *FileFilter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8687,6 +9364,7 @@ type Fixed struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFixed that represents the Fixed.
 func (recv *Fixed) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8696,6 +9374,7 @@ type FlowBox struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFlowBox that represents the FlowBox.
 func (recv *FlowBox) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8705,6 +9384,7 @@ type FlowBoxAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFlowBoxAccessible that represents the FlowBoxAccessible.
 func (recv *FlowBoxAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8714,6 +9394,7 @@ type FlowBoxChild struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFlowBoxChild that represents the FlowBoxChild.
 func (recv *FlowBoxChild) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8723,6 +9404,7 @@ type FlowBoxChildAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFlowBoxChildAccessible that represents the FlowBoxChildAccessible.
 func (recv *FlowBoxChildAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8732,6 +9414,7 @@ type FontButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontButton that represents the FontButton.
 func (recv *FontButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8741,6 +9424,7 @@ type FontSelection struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontSelection that represents the FontSelection.
 func (recv *FontSelection) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8750,6 +9434,7 @@ type FontSelectionDialog struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFontSelectionDialog that represents the FontSelectionDialog.
 func (recv *FontSelectionDialog) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8759,6 +9444,7 @@ type Frame struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFrame that represents the Frame.
 func (recv *Frame) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8768,6 +9454,7 @@ type FrameAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkFrameAccessible that represents the FrameAccessible.
 func (recv *FrameAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8777,6 +9464,7 @@ type Gesture struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGesture that represents the Gesture.
 func (recv *Gesture) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8786,6 +9474,7 @@ type GestureDrag struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureDrag that represents the GestureDrag.
 func (recv *GestureDrag) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8795,6 +9484,7 @@ type GestureLongPress struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureLongPress that represents the GestureLongPress.
 func (recv *GestureLongPress) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8804,6 +9494,7 @@ type GestureMultiPress struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureMultiPress that represents the GestureMultiPress.
 func (recv *GestureMultiPress) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8813,6 +9504,7 @@ type GesturePan struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGesturePan that represents the GesturePan.
 func (recv *GesturePan) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8822,6 +9514,7 @@ type GestureRotate struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureRotate that represents the GestureRotate.
 func (recv *GestureRotate) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8831,6 +9524,7 @@ type GestureSingle struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureSingle that represents the GestureSingle.
 func (recv *GestureSingle) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8842,6 +9536,7 @@ type GestureSwipe struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureSwipe that represents the GestureSwipe.
 func (recv *GestureSwipe) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8851,6 +9546,7 @@ type GestureZoom struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGestureZoom that represents the GestureZoom.
 func (recv *GestureZoom) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8860,6 +9556,7 @@ type Grid struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkGrid that represents the Grid.
 func (recv *Grid) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8869,6 +9566,7 @@ type HBox struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHBox that represents the HBox.
 func (recv *HBox) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8878,6 +9576,7 @@ type HButtonBox struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHButtonBox that represents the HButtonBox.
 func (recv *HButtonBox) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8887,6 +9586,7 @@ type HPaned struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHPaned that represents the HPaned.
 func (recv *HPaned) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8896,6 +9596,7 @@ type HSV struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHSV that represents the HSV.
 func (recv *HSV) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8905,6 +9606,7 @@ type HScale struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHScale that represents the HScale.
 func (recv *HScale) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8914,6 +9616,7 @@ type HScrollbar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHScrollbar that represents the HScrollbar.
 func (recv *HScrollbar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8923,6 +9626,7 @@ type HSeparator struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHSeparator that represents the HSeparator.
 func (recv *HSeparator) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8932,6 +9636,7 @@ type HandleBox struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHandleBox that represents the HandleBox.
 func (recv *HandleBox) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8941,6 +9646,7 @@ type HeaderBar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkHeaderBar that represents the HeaderBar.
 func (recv *HeaderBar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8952,6 +9658,7 @@ type IMContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIMContext that represents the IMContext.
 func (recv *IMContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8961,6 +9668,7 @@ type IMContextSimple struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIMContextSimple that represents the IMContextSimple.
 func (recv *IMContextSimple) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8970,6 +9678,7 @@ type IMMulticontext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIMMulticontext that represents the IMMulticontext.
 func (recv *IMMulticontext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8979,6 +9688,7 @@ type IconFactory struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconFactory that represents the IconFactory.
 func (recv *IconFactory) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8988,6 +9698,7 @@ type IconInfo struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconInfo that represents the IconInfo.
 func (recv *IconInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -8997,6 +9708,7 @@ type IconTheme struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconTheme that represents the IconTheme.
 func (recv *IconTheme) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9006,6 +9718,7 @@ type IconView struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconView that represents the IconView.
 func (recv *IconView) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9015,6 +9728,7 @@ type IconViewAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkIconViewAccessible that represents the IconViewAccessible.
 func (recv *IconViewAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9024,6 +9738,7 @@ type Image struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkImage that represents the Image.
 func (recv *Image) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9033,6 +9748,7 @@ type ImageAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkImageAccessible that represents the ImageAccessible.
 func (recv *ImageAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9042,6 +9758,7 @@ type ImageCellAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkImageCellAccessible that represents the ImageCellAccessible.
 func (recv *ImageCellAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9051,6 +9768,7 @@ type ImageMenuItem struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkImageMenuItem that represents the ImageMenuItem.
 func (recv *ImageMenuItem) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9060,6 +9778,7 @@ type InfoBar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkInfoBar that represents the InfoBar.
 func (recv *InfoBar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9069,6 +9788,7 @@ type Invisible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkInvisible that represents the Invisible.
 func (recv *Invisible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9078,6 +9798,7 @@ type Label struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLabel that represents the Label.
 func (recv *Label) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9087,6 +9808,7 @@ type LabelAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLabelAccessible that represents the LabelAccessible.
 func (recv *LabelAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9096,6 +9818,7 @@ type Layout struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLayout that represents the Layout.
 func (recv *Layout) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9105,6 +9828,7 @@ type LevelBar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLevelBar that represents the LevelBar.
 func (recv *LevelBar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9114,6 +9838,7 @@ type LevelBarAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLevelBarAccessible that represents the LevelBarAccessible.
 func (recv *LevelBarAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9123,6 +9848,7 @@ type LinkButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLinkButton that represents the LinkButton.
 func (recv *LinkButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9132,6 +9858,7 @@ type LinkButtonAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLinkButtonAccessible that represents the LinkButtonAccessible.
 func (recv *LinkButtonAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9141,6 +9868,7 @@ type ListBox struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkListBox that represents the ListBox.
 func (recv *ListBox) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9150,6 +9878,7 @@ type ListBoxAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkListBoxAccessible that represents the ListBoxAccessible.
 func (recv *ListBoxAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9159,6 +9888,7 @@ type ListBoxRow struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkListBoxRow that represents the ListBoxRow.
 func (recv *ListBoxRow) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9168,6 +9898,7 @@ type ListBoxRowAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkListBoxRowAccessible that represents the ListBoxRowAccessible.
 func (recv *ListBoxRowAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9177,6 +9908,7 @@ type ListStore struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkListStore that represents the ListStore.
 func (recv *ListStore) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9186,6 +9918,7 @@ type LockButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLockButton that represents the LockButton.
 func (recv *LockButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9195,6 +9928,7 @@ type LockButtonAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkLockButtonAccessible that represents the LockButtonAccessible.
 func (recv *LockButtonAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9204,6 +9938,7 @@ type Menu struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenu that represents the Menu.
 func (recv *Menu) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9213,6 +9948,7 @@ type MenuAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuAccessible that represents the MenuAccessible.
 func (recv *MenuAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9222,6 +9958,7 @@ type MenuBar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuBar that represents the MenuBar.
 func (recv *MenuBar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9231,6 +9968,7 @@ type MenuButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuButton that represents the MenuButton.
 func (recv *MenuButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9240,6 +9978,7 @@ type MenuButtonAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuButtonAccessible that represents the MenuButtonAccessible.
 func (recv *MenuButtonAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9249,6 +9988,7 @@ type MenuItem struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuItem that represents the MenuItem.
 func (recv *MenuItem) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9258,6 +9998,7 @@ type MenuItemAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuItemAccessible that represents the MenuItemAccessible.
 func (recv *MenuItemAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9267,6 +10008,7 @@ type MenuShell struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuShell that represents the MenuShell.
 func (recv *MenuShell) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9276,6 +10018,7 @@ type MenuShellAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuShellAccessible that represents the MenuShellAccessible.
 func (recv *MenuShellAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9285,6 +10028,7 @@ type MenuToolButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMenuToolButton that represents the MenuToolButton.
 func (recv *MenuToolButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9294,6 +10038,7 @@ type MessageDialog struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMessageDialog that represents the MessageDialog.
 func (recv *MessageDialog) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9303,6 +10048,7 @@ type Misc struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMisc that represents the Misc.
 func (recv *Misc) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9312,6 +10058,7 @@ type ModelButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkModelButton that represents the ModelButton.
 func (recv *ModelButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9321,6 +10068,7 @@ type MountOperation struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkMountOperation that represents the MountOperation.
 func (recv *MountOperation) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9330,6 +10078,7 @@ type NativeDialog struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNativeDialog that represents the NativeDialog.
 func (recv *NativeDialog) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9339,6 +10088,7 @@ type Notebook struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNotebook that represents the Notebook.
 func (recv *Notebook) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9348,6 +10098,7 @@ type NotebookAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNotebookAccessible that represents the NotebookAccessible.
 func (recv *NotebookAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9357,6 +10108,7 @@ type NotebookPageAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNotebookPageAccessible that represents the NotebookPageAccessible.
 func (recv *NotebookPageAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9366,6 +10118,7 @@ type NumerableIcon struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkNumerableIcon that represents the NumerableIcon.
 func (recv *NumerableIcon) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9375,6 +10128,7 @@ type OffscreenWindow struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkOffscreenWindow that represents the OffscreenWindow.
 func (recv *OffscreenWindow) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9384,6 +10138,7 @@ type Overlay struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkOverlay that represents the Overlay.
 func (recv *Overlay) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9393,6 +10148,7 @@ type PadController struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPadController that represents the PadController.
 func (recv *PadController) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9402,6 +10158,7 @@ type PageSetup struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPageSetup that represents the PageSetup.
 func (recv *PageSetup) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9411,6 +10168,7 @@ type Paned struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPaned that represents the Paned.
 func (recv *Paned) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9420,6 +10178,7 @@ type PanedAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPanedAccessible that represents the PanedAccessible.
 func (recv *PanedAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9429,6 +10188,7 @@ type PlacesSidebar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPlacesSidebar that represents the PlacesSidebar.
 func (recv *PlacesSidebar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9438,6 +10198,7 @@ type Plug struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPlug that represents the Plug.
 func (recv *Plug) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9447,6 +10208,7 @@ type PopoverAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPopoverAccessible that represents the PopoverAccessible.
 func (recv *PopoverAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9456,6 +10218,7 @@ type PopoverMenu struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPopoverMenu that represents the PopoverMenu.
 func (recv *PopoverMenu) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9465,6 +10228,7 @@ type PrintContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPrintContext that represents the PrintContext.
 func (recv *PrintContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9474,6 +10238,7 @@ type PrintOperation struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPrintOperation that represents the PrintOperation.
 func (recv *PrintOperation) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9483,6 +10248,7 @@ type PrintSettings struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkPrintSettings that represents the PrintSettings.
 func (recv *PrintSettings) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9492,6 +10258,7 @@ type ProgressBar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkProgressBar that represents the ProgressBar.
 func (recv *ProgressBar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9501,6 +10268,7 @@ type ProgressBarAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkProgressBarAccessible that represents the ProgressBarAccessible.
 func (recv *ProgressBarAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9510,6 +10278,7 @@ type RadioAction struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioAction that represents the RadioAction.
 func (recv *RadioAction) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9519,6 +10288,7 @@ type RadioButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioButton that represents the RadioButton.
 func (recv *RadioButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9528,6 +10298,7 @@ type RadioButtonAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioButtonAccessible that represents the RadioButtonAccessible.
 func (recv *RadioButtonAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9537,6 +10308,7 @@ type RadioMenuItem struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioMenuItem that represents the RadioMenuItem.
 func (recv *RadioMenuItem) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9546,6 +10318,7 @@ type RadioMenuItemAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioMenuItemAccessible that represents the RadioMenuItemAccessible.
 func (recv *RadioMenuItemAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9555,6 +10328,7 @@ type RadioToolButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRadioToolButton that represents the RadioToolButton.
 func (recv *RadioToolButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9564,6 +10338,7 @@ type Range struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRange that represents the Range.
 func (recv *Range) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9573,6 +10348,7 @@ type RangeAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRangeAccessible that represents the RangeAccessible.
 func (recv *RangeAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9582,6 +10358,7 @@ type RcStyle struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRcStyle that represents the RcStyle.
 func (recv *RcStyle) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9591,6 +10368,7 @@ type RecentAction struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentAction that represents the RecentAction.
 func (recv *RecentAction) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9600,6 +10378,7 @@ type RecentChooserDialog struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentChooserDialog that represents the RecentChooserDialog.
 func (recv *RecentChooserDialog) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9609,6 +10388,7 @@ type RecentChooserMenu struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentChooserMenu that represents the RecentChooserMenu.
 func (recv *RecentChooserMenu) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9618,6 +10398,7 @@ type RecentChooserWidget struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentChooserWidget that represents the RecentChooserWidget.
 func (recv *RecentChooserWidget) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9627,6 +10408,7 @@ type RecentFilter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentFilter that represents the RecentFilter.
 func (recv *RecentFilter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9638,6 +10420,7 @@ type RecentManager struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRecentManager that represents the RecentManager.
 func (recv *RecentManager) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9647,6 +10430,7 @@ type RendererCellAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRendererCellAccessible that represents the RendererCellAccessible.
 func (recv *RendererCellAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9656,6 +10440,7 @@ type Revealer struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkRevealer that represents the Revealer.
 func (recv *Revealer) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9665,6 +10450,7 @@ type Scale struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScale that represents the Scale.
 func (recv *Scale) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9674,6 +10460,7 @@ type ScaleAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScaleAccessible that represents the ScaleAccessible.
 func (recv *ScaleAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9683,6 +10470,7 @@ type ScaleButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScaleButton that represents the ScaleButton.
 func (recv *ScaleButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9692,6 +10480,7 @@ type ScaleButtonAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScaleButtonAccessible that represents the ScaleButtonAccessible.
 func (recv *ScaleButtonAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9701,6 +10490,7 @@ type Scrollbar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScrollbar that represents the Scrollbar.
 func (recv *Scrollbar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9710,6 +10500,7 @@ type ScrolledWindow struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScrolledWindow that represents the ScrolledWindow.
 func (recv *ScrolledWindow) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9719,6 +10510,7 @@ type ScrolledWindowAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkScrolledWindowAccessible that represents the ScrolledWindowAccessible.
 func (recv *ScrolledWindowAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9728,6 +10520,7 @@ type Separator struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSeparator that represents the Separator.
 func (recv *Separator) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9737,6 +10530,7 @@ type SeparatorMenuItem struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSeparatorMenuItem that represents the SeparatorMenuItem.
 func (recv *SeparatorMenuItem) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9746,6 +10540,7 @@ type SeparatorToolItem struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSeparatorToolItem that represents the SeparatorToolItem.
 func (recv *SeparatorToolItem) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9755,6 +10550,7 @@ type Settings struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSettings that represents the Settings.
 func (recv *Settings) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9764,6 +10560,7 @@ type ShortcutLabel struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkShortcutLabel that represents the ShortcutLabel.
 func (recv *ShortcutLabel) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9773,6 +10570,7 @@ type ShortcutsGroup struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkShortcutsGroup that represents the ShortcutsGroup.
 func (recv *ShortcutsGroup) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9782,6 +10580,7 @@ type ShortcutsSection struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkShortcutsSection that represents the ShortcutsSection.
 func (recv *ShortcutsSection) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9791,6 +10590,7 @@ type ShortcutsShortcut struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkShortcutsShortcut that represents the ShortcutsShortcut.
 func (recv *ShortcutsShortcut) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9800,6 +10600,7 @@ type ShortcutsWindow struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkShortcutsWindow that represents the ShortcutsWindow.
 func (recv *ShortcutsWindow) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9809,6 +10610,7 @@ type SizeGroup struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSizeGroup that represents the SizeGroup.
 func (recv *SizeGroup) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9818,6 +10620,7 @@ type Socket struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSocket that represents the Socket.
 func (recv *Socket) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9827,6 +10630,7 @@ type SpinButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSpinButton that represents the SpinButton.
 func (recv *SpinButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9836,6 +10640,7 @@ type SpinButtonAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSpinButtonAccessible that represents the SpinButtonAccessible.
 func (recv *SpinButtonAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9845,6 +10650,7 @@ type Spinner struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSpinner that represents the Spinner.
 func (recv *Spinner) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9854,6 +10660,7 @@ type SpinnerAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSpinnerAccessible that represents the SpinnerAccessible.
 func (recv *SpinnerAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9863,6 +10670,7 @@ type Stack struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStack that represents the Stack.
 func (recv *Stack) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9874,6 +10682,7 @@ type StackSwitcher struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStackSwitcher that represents the StackSwitcher.
 func (recv *StackSwitcher) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9883,6 +10692,7 @@ type StatusIcon struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStatusIcon that represents the StatusIcon.
 func (recv *StatusIcon) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9892,6 +10702,7 @@ type Statusbar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStatusbar that represents the Statusbar.
 func (recv *Statusbar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9901,6 +10712,7 @@ type StatusbarAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStatusbarAccessible that represents the StatusbarAccessible.
 func (recv *StatusbarAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9910,6 +10722,7 @@ type Style struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStyle that represents the Style.
 func (recv *Style) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9919,6 +10732,7 @@ type StyleContext struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStyleContext that represents the StyleContext.
 func (recv *StyleContext) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9928,6 +10742,7 @@ type StyleProperties struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkStyleProperties that represents the StyleProperties.
 func (recv *StyleProperties) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9937,6 +10752,7 @@ type Switch struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSwitch that represents the Switch.
 func (recv *Switch) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9946,6 +10762,7 @@ type SwitchAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkSwitchAccessible that represents the SwitchAccessible.
 func (recv *SwitchAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9955,6 +10772,7 @@ type Table struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTable that represents the Table.
 func (recv *Table) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9964,6 +10782,7 @@ type TearoffMenuItem struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTearoffMenuItem that represents the TearoffMenuItem.
 func (recv *TearoffMenuItem) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9973,6 +10792,7 @@ type TextBuffer struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextBuffer that represents the TextBuffer.
 func (recv *TextBuffer) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9982,6 +10802,7 @@ type TextCellAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextCellAccessible that represents the TextCellAccessible.
 func (recv *TextCellAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -9991,6 +10812,7 @@ type TextChildAnchor struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextChildAnchor that represents the TextChildAnchor.
 func (recv *TextChildAnchor) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10000,6 +10822,7 @@ type TextMark struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextMark that represents the TextMark.
 func (recv *TextMark) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10009,6 +10832,7 @@ type TextTag struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextTag that represents the TextTag.
 func (recv *TextTag) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10018,6 +10842,7 @@ type TextTagTable struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextTagTable that represents the TextTagTable.
 func (recv *TextTagTable) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10027,6 +10852,7 @@ type TextView struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextView that represents the TextView.
 func (recv *TextView) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10036,6 +10862,7 @@ type TextViewAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTextViewAccessible that represents the TextViewAccessible.
 func (recv *TextViewAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10045,6 +10872,7 @@ type ThemingEngine struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkThemingEngine that represents the ThemingEngine.
 func (recv *ThemingEngine) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10054,6 +10882,7 @@ type ToggleAction struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleAction that represents the ToggleAction.
 func (recv *ToggleAction) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10063,6 +10892,7 @@ type ToggleButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleButton that represents the ToggleButton.
 func (recv *ToggleButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10072,6 +10902,7 @@ type ToggleButtonAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleButtonAccessible that represents the ToggleButtonAccessible.
 func (recv *ToggleButtonAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10081,6 +10912,7 @@ type ToggleToolButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToggleToolButton that represents the ToggleToolButton.
 func (recv *ToggleToolButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10090,6 +10922,7 @@ type ToolButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolButton that represents the ToolButton.
 func (recv *ToolButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10099,6 +10932,7 @@ type ToolItem struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolItem that represents the ToolItem.
 func (recv *ToolItem) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10108,6 +10942,7 @@ type Toolbar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToolbar that represents the Toolbar.
 func (recv *Toolbar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10117,6 +10952,7 @@ type Tooltip struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTooltip that represents the Tooltip.
 func (recv *Tooltip) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10126,6 +10962,7 @@ type ToplevelAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkToplevelAccessible that represents the ToplevelAccessible.
 func (recv *ToplevelAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10135,6 +10972,7 @@ type TreeModelFilter struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeModelFilter that represents the TreeModelFilter.
 func (recv *TreeModelFilter) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10144,6 +10982,7 @@ type TreeModelSort struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeModelSort that represents the TreeModelSort.
 func (recv *TreeModelSort) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10153,6 +10992,7 @@ type TreeSelection struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeSelection that represents the TreeSelection.
 func (recv *TreeSelection) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10162,6 +11002,7 @@ type TreeStore struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeStore that represents the TreeStore.
 func (recv *TreeStore) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10171,6 +11012,7 @@ type TreeView struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeView that represents the TreeView.
 func (recv *TreeView) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10180,6 +11022,7 @@ type TreeViewAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeViewAccessible that represents the TreeViewAccessible.
 func (recv *TreeViewAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10189,6 +11032,7 @@ type TreeViewColumn struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkTreeViewColumn that represents the TreeViewColumn.
 func (recv *TreeViewColumn) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10198,6 +11042,7 @@ type UIManager struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkUIManager that represents the UIManager.
 func (recv *UIManager) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10207,6 +11052,7 @@ type VBox struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVBox that represents the VBox.
 func (recv *VBox) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10216,6 +11062,7 @@ type VButtonBox struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVButtonBox that represents the VButtonBox.
 func (recv *VButtonBox) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10225,6 +11072,7 @@ type VPaned struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVPaned that represents the VPaned.
 func (recv *VPaned) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10234,6 +11082,7 @@ type VScale struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVScale that represents the VScale.
 func (recv *VScale) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10243,6 +11092,7 @@ type VScrollbar struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVScrollbar that represents the VScrollbar.
 func (recv *VScrollbar) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10252,6 +11102,7 @@ type VSeparator struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVSeparator that represents the VSeparator.
 func (recv *VSeparator) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10261,6 +11112,7 @@ type Viewport struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkViewport that represents the Viewport.
 func (recv *Viewport) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10270,6 +11122,7 @@ type VolumeButton struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkVolumeButton that represents the VolumeButton.
 func (recv *VolumeButton) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10279,6 +11132,7 @@ type Widget struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWidget that represents the Widget.
 func (recv *Widget) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10288,6 +11142,7 @@ type WidgetAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWidgetAccessible that represents the WidgetAccessible.
 func (recv *WidgetAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10297,6 +11152,7 @@ type Window struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWindow that represents the Window.
 func (recv *Window) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10306,6 +11162,7 @@ type WindowAccessible struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWindowAccessible that represents the WindowAccessible.
 func (recv *WindowAccessible) ToC() unsafe.Pointer {
 	return recv.native
 }
@@ -10315,6 +11172,7 @@ type WindowGroup struct {
 	native unsafe.Pointer
 }
 
+// ToC returns a pointer to the C GtkWindowGroup that represents the WindowGroup.
 func (recv *WindowGroup) ToC() unsafe.Pointer {
 	return recv.native
 }
