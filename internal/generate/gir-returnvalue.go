@@ -72,13 +72,6 @@ func (r *ReturnValue) generateSysGoValue(g *jen.Group, cVarName string) *jen.Sta
 }
 
 func (r *ReturnValue) generateSysGoTypeValue(cVarName string) *jen.Statement {
-	if r.Type.CType == "GdkAtom" {
-		if r.Type.isQualifiedName() {
-			return jen.Qual(r.Type.foreignNamespace.goFullSysPackageName, r.Type.foreignName).Parens(jenUnsafePointer().Call(jen.Id(cVarName)))
-		}
-		return jen.Id(r.Type.Name).Parens(jen.Id(cVarName))
-	}
-
 	if r.Type.isString() {
 		if r.Type.cType.typ == "guchar" {
 			return jen.Qual("C", "GoString").Call(

@@ -15176,7 +15176,7 @@ func Fn_gtk_text_buffer_place_cursor(paramInstance unsafe.Pointer, param0 unsafe
 
 // UNSUPPORTED : gtk_text_buffer_register_deserialize_format : parameter 'function' is callback
 
-func Fn_gtk_text_buffer_register_deserialize_tagset(paramInstance unsafe.Pointer, param0 string) gdk.Atom {
+func Fn_gtk_text_buffer_register_deserialize_tagset(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -15184,12 +15184,12 @@ func Fn_gtk_text_buffer_register_deserialize_tagset(paramInstance unsafe.Pointer
 
 	ret := C.gtk_text_buffer_register_deserialize_tagset(cValueInstance, cValue0)
 
-	return gdk.Atom(unsafe.Pointer(ret))
+	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : gtk_text_buffer_register_serialize_format : parameter 'function' is callback
 
-func Fn_gtk_text_buffer_register_serialize_tagset(paramInstance unsafe.Pointer, param0 string) gdk.Atom {
+func Fn_gtk_text_buffer_register_serialize_tagset(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -15197,7 +15197,7 @@ func Fn_gtk_text_buffer_register_serialize_tagset(paramInstance unsafe.Pointer, 
 
 	ret := C.gtk_text_buffer_register_serialize_tagset(cValueInstance, cValue0)
 
-	return gdk.Atom(unsafe.Pointer(ret))
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gtk_text_buffer_remove_all_tags(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
@@ -18683,7 +18683,7 @@ func Fn_gtk_drag_dest_add_uri_targets(paramInstance unsafe.Pointer) {
 	C.gtk_drag_dest_add_uri_targets(cValueInstance)
 }
 
-func Fn_gtk_drag_dest_find_target(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) gdk.Atom {
+func Fn_gtk_drag_dest_find_target(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
@@ -18692,7 +18692,7 @@ func Fn_gtk_drag_dest_find_target(paramInstance unsafe.Pointer, param0 unsafe.Po
 
 	ret := C.gtk_drag_dest_find_target(cValueInstance, cValue0, cValue1)
 
-	return gdk.Atom(unsafe.Pointer(ret))
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gtk_drag_dest_get_target_list(paramInstance unsafe.Pointer) unsafe.Pointer {

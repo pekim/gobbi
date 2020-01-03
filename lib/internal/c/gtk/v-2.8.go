@@ -16034,7 +16034,7 @@ func Fn_gtk_drag_dest_add_uri_targets(paramInstance unsafe.Pointer) {
 	C.gtk_drag_dest_add_uri_targets(cValueInstance)
 }
 
-func Fn_gtk_drag_dest_find_target(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) gdk.Atom {
+func Fn_gtk_drag_dest_find_target(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
@@ -16043,7 +16043,7 @@ func Fn_gtk_drag_dest_find_target(paramInstance unsafe.Pointer, param0 unsafe.Po
 
 	ret := C.gtk_drag_dest_find_target(cValueInstance, cValue0, cValue1)
 
-	return gdk.Atom(unsafe.Pointer(ret))
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gtk_drag_dest_get_target_list(paramInstance unsafe.Pointer) unsafe.Pointer {

@@ -65,7 +65,7 @@ func Fn_gdk_atom_name(paramInstance unsafe.Pointer) string {
 	return C.GoString(ret)
 }
 
-func Fn_gdk_atom_intern(param0 string, param1 bool) Atom {
+func Fn_gdk_atom_intern(param0 string, param1 bool) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -73,7 +73,7 @@ func Fn_gdk_atom_intern(param0 string, param1 bool) Atom {
 
 	ret := C.gdk_atom_intern(cValue0, cValue1)
 
-	return Atom(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_color_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -215,12 +215,12 @@ func Fn_gdk_drag_drop(param0 unsafe.Pointer, param1 uint32) {
 	C.gdk_drag_drop(cValue0, cValue1)
 }
 
-func Fn_gdk_drag_get_selection(param0 unsafe.Pointer) Atom {
+func Fn_gdk_drag_get_selection(param0 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
 
 	ret := C.gdk_drag_get_selection(cValue0)
 
-	return Atom(ret)
+	return unsafe.Pointer(ret)
 }
 
 func Fn_gdk_drag_motion(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 int, param5 int, param6 int, param7 uint32) bool {

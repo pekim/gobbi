@@ -60,6 +60,10 @@ func (t *Type) sysParamGoPlainType() *jen.Statement {
 }
 
 func (t *Type) sysParamGoType(decrementIndirectionCount bool) *jen.Statement {
+	if t.CType == "GdkAtom" {
+		return jenUnsafePointer()
+	}
+
 	if t.isString() {
 		stars := ""
 		if t.cType.indirectionCount > 0 {
