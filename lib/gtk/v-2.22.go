@@ -15489,6 +15489,11 @@ func (recv *Activatable) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ActivatableNewFromC creates a new Activatable from a pointer to the C GtkActivatable that represents the Activatable.
+func ActivatableNewFromC(native unsafe.Pointer) *Activatable {
+	return &Activatable{native: native}
+}
+
 // AppChooser is a representation of the C interface GtkAppChooser.
 type AppChooser struct {
 	native unsafe.Pointer
@@ -15497,6 +15502,11 @@ type AppChooser struct {
 // ToC returns a pointer to the C GtkAppChooser that represents the AppChooser.
 func (recv *AppChooser) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AppChooserNewFromC creates a new AppChooser from a pointer to the C GtkAppChooser that represents the AppChooser.
+func AppChooserNewFromC(native unsafe.Pointer) *AppChooser {
+	return &AppChooser{native: native}
 }
 
 // Buildable is a representation of the C interface GtkBuildable.
@@ -15509,6 +15519,11 @@ func (recv *Buildable) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// BuildableNewFromC creates a new Buildable from a pointer to the C GtkBuildable that represents the Buildable.
+func BuildableNewFromC(native unsafe.Pointer) *Buildable {
+	return &Buildable{native: native}
+}
+
 // CellAccessibleParent is a representation of the C interface GtkCellAccessibleParent.
 type CellAccessibleParent struct {
 	native unsafe.Pointer
@@ -15517,6 +15532,11 @@ type CellAccessibleParent struct {
 // ToC returns a pointer to the C GtkCellAccessibleParent that represents the CellAccessibleParent.
 func (recv *CellAccessibleParent) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// CellAccessibleParentNewFromC creates a new CellAccessibleParent from a pointer to the C GtkCellAccessibleParent that represents the CellAccessibleParent.
+func CellAccessibleParentNewFromC(native unsafe.Pointer) *CellAccessibleParent {
+	return &CellAccessibleParent{native: native}
 }
 
 // CellEditable is a representation of the C interface GtkCellEditable.
@@ -15529,6 +15549,11 @@ func (recv *CellEditable) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// CellEditableNewFromC creates a new CellEditable from a pointer to the C GtkCellEditable that represents the CellEditable.
+func CellEditableNewFromC(native unsafe.Pointer) *CellEditable {
+	return &CellEditable{native: native}
+}
+
 // CellLayout is a representation of the C interface GtkCellLayout.
 type CellLayout struct {
 	native unsafe.Pointer
@@ -15537,6 +15562,11 @@ type CellLayout struct {
 // ToC returns a pointer to the C GtkCellLayout that represents the CellLayout.
 func (recv *CellLayout) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// CellLayoutNewFromC creates a new CellLayout from a pointer to the C GtkCellLayout that represents the CellLayout.
+func CellLayoutNewFromC(native unsafe.Pointer) *CellLayout {
+	return &CellLayout{native: native}
 }
 
 // Editable is a representation of the C interface GtkEditable.
@@ -15549,6 +15579,11 @@ func (recv *Editable) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EditableNewFromC creates a new Editable from a pointer to the C GtkEditable that represents the Editable.
+func EditableNewFromC(native unsafe.Pointer) *Editable {
+	return &Editable{native: native}
+}
+
 // FileChooser is a representation of the C interface GtkFileChooser.
 type FileChooser struct {
 	native unsafe.Pointer
@@ -15557,6 +15592,11 @@ type FileChooser struct {
 // ToC returns a pointer to the C GtkFileChooser that represents the FileChooser.
 func (recv *FileChooser) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileChooserNewFromC creates a new FileChooser from a pointer to the C GtkFileChooser that represents the FileChooser.
+func FileChooserNewFromC(native unsafe.Pointer) *FileChooser {
+	return &FileChooser{native: native}
 }
 
 // FontChooser is a representation of the C interface GtkFontChooser.
@@ -15569,6 +15609,11 @@ func (recv *FontChooser) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FontChooserNewFromC creates a new FontChooser from a pointer to the C GtkFontChooser that represents the FontChooser.
+func FontChooserNewFromC(native unsafe.Pointer) *FontChooser {
+	return &FontChooser{native: native}
+}
+
 // Orientable is a representation of the C interface GtkOrientable.
 type Orientable struct {
 	native unsafe.Pointer
@@ -15577,6 +15622,11 @@ type Orientable struct {
 // ToC returns a pointer to the C GtkOrientable that represents the Orientable.
 func (recv *Orientable) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// OrientableNewFromC creates a new Orientable from a pointer to the C GtkOrientable that represents the Orientable.
+func OrientableNewFromC(native unsafe.Pointer) *Orientable {
+	return &Orientable{native: native}
 }
 
 // PrintOperationPreview is a representation of the C interface GtkPrintOperationPreview.
@@ -15589,6 +15639,11 @@ func (recv *PrintOperationPreview) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// PrintOperationPreviewNewFromC creates a new PrintOperationPreview from a pointer to the C GtkPrintOperationPreview that represents the PrintOperationPreview.
+func PrintOperationPreviewNewFromC(native unsafe.Pointer) *PrintOperationPreview {
+	return &PrintOperationPreview{native: native}
+}
+
 // RecentChooser is a representation of the C interface GtkRecentChooser.
 type RecentChooser struct {
 	native unsafe.Pointer
@@ -15597,6 +15652,11 @@ type RecentChooser struct {
 // ToC returns a pointer to the C GtkRecentChooser that represents the RecentChooser.
 func (recv *RecentChooser) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// RecentChooserNewFromC creates a new RecentChooser from a pointer to the C GtkRecentChooser that represents the RecentChooser.
+func RecentChooserNewFromC(native unsafe.Pointer) *RecentChooser {
+	return &RecentChooser{native: native}
 }
 
 // Scrollable is a representation of the C interface GtkScrollable.
@@ -15609,6 +15669,11 @@ func (recv *Scrollable) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ScrollableNewFromC creates a new Scrollable from a pointer to the C GtkScrollable that represents the Scrollable.
+func ScrollableNewFromC(native unsafe.Pointer) *Scrollable {
+	return &Scrollable{native: native}
+}
+
 // StyleProvider is a representation of the C interface GtkStyleProvider.
 type StyleProvider struct {
 	native unsafe.Pointer
@@ -15617,6 +15682,11 @@ type StyleProvider struct {
 // ToC returns a pointer to the C GtkStyleProvider that represents the StyleProvider.
 func (recv *StyleProvider) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// StyleProviderNewFromC creates a new StyleProvider from a pointer to the C GtkStyleProvider that represents the StyleProvider.
+func StyleProviderNewFromC(native unsafe.Pointer) *StyleProvider {
+	return &StyleProvider{native: native}
 }
 
 // ToolShell is a representation of the C interface GtkToolShell.
@@ -15629,6 +15699,11 @@ func (recv *ToolShell) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ToolShellNewFromC creates a new ToolShell from a pointer to the C GtkToolShell that represents the ToolShell.
+func ToolShellNewFromC(native unsafe.Pointer) *ToolShell {
+	return &ToolShell{native: native}
+}
+
 // TreeDragDest is a representation of the C interface GtkTreeDragDest.
 type TreeDragDest struct {
 	native unsafe.Pointer
@@ -15637,6 +15712,11 @@ type TreeDragDest struct {
 // ToC returns a pointer to the C GtkTreeDragDest that represents the TreeDragDest.
 func (recv *TreeDragDest) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TreeDragDestNewFromC creates a new TreeDragDest from a pointer to the C GtkTreeDragDest that represents the TreeDragDest.
+func TreeDragDestNewFromC(native unsafe.Pointer) *TreeDragDest {
+	return &TreeDragDest{native: native}
 }
 
 // TreeDragSource is a representation of the C interface GtkTreeDragSource.
@@ -15649,6 +15729,11 @@ func (recv *TreeDragSource) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TreeDragSourceNewFromC creates a new TreeDragSource from a pointer to the C GtkTreeDragSource that represents the TreeDragSource.
+func TreeDragSourceNewFromC(native unsafe.Pointer) *TreeDragSource {
+	return &TreeDragSource{native: native}
+}
+
 // TreeModel is a representation of the C interface GtkTreeModel.
 type TreeModel struct {
 	native unsafe.Pointer
@@ -15659,6 +15744,11 @@ func (recv *TreeModel) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TreeModelNewFromC creates a new TreeModel from a pointer to the C GtkTreeModel that represents the TreeModel.
+func TreeModelNewFromC(native unsafe.Pointer) *TreeModel {
+	return &TreeModel{native: native}
+}
+
 // TreeSortable is a representation of the C interface GtkTreeSortable.
 type TreeSortable struct {
 	native unsafe.Pointer
@@ -15667,4 +15757,9 @@ type TreeSortable struct {
 // ToC returns a pointer to the C GtkTreeSortable that represents the TreeSortable.
 func (recv *TreeSortable) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TreeSortableNewFromC creates a new TreeSortable from a pointer to the C GtkTreeSortable that represents the TreeSortable.
+func TreeSortableNewFromC(native unsafe.Pointer) *TreeSortable {
+	return &TreeSortable{native: native}
 }

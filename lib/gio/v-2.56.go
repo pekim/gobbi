@@ -7449,6 +7449,11 @@ func (recv *Action) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ActionNewFromC creates a new Action from a pointer to the C GAction that represents the Action.
+func ActionNewFromC(native unsafe.Pointer) *Action {
+	return &Action{native: native}
+}
+
 // ActionGroup is a representation of the C interface GActionGroup.
 type ActionGroup struct {
 	native unsafe.Pointer
@@ -7457,6 +7462,11 @@ type ActionGroup struct {
 // ToC returns a pointer to the C GActionGroup that represents the ActionGroup.
 func (recv *ActionGroup) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ActionGroupNewFromC creates a new ActionGroup from a pointer to the C GActionGroup that represents the ActionGroup.
+func ActionGroupNewFromC(native unsafe.Pointer) *ActionGroup {
+	return &ActionGroup{native: native}
 }
 
 // ActionMap is a representation of the C interface GActionMap.
@@ -7471,6 +7481,11 @@ func (recv *ActionMap) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ActionMapNewFromC creates a new ActionMap from a pointer to the C GActionMap that represents the ActionMap.
+func ActionMapNewFromC(native unsafe.Pointer) *ActionMap {
+	return &ActionMap{native: native}
+}
+
 // AppInfo is a representation of the C interface GAppInfo.
 type AppInfo struct {
 	native unsafe.Pointer
@@ -7479,6 +7494,11 @@ type AppInfo struct {
 // ToC returns a pointer to the C GAppInfo that represents the AppInfo.
 func (recv *AppInfo) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AppInfoNewFromC creates a new AppInfo from a pointer to the C GAppInfo that represents the AppInfo.
+func AppInfoNewFromC(native unsafe.Pointer) *AppInfo {
+	return &AppInfo{native: native}
 }
 
 // AsyncInitable is a representation of the C interface GAsyncInitable.
@@ -7493,6 +7513,11 @@ func (recv *AsyncInitable) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// AsyncInitableNewFromC creates a new AsyncInitable from a pointer to the C GAsyncInitable that represents the AsyncInitable.
+func AsyncInitableNewFromC(native unsafe.Pointer) *AsyncInitable {
+	return &AsyncInitable{native: native}
+}
+
 // AsyncResult is a representation of the C interface GAsyncResult.
 type AsyncResult struct {
 	native unsafe.Pointer
@@ -7501,6 +7526,11 @@ type AsyncResult struct {
 // ToC returns a pointer to the C GAsyncResult that represents the AsyncResult.
 func (recv *AsyncResult) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AsyncResultNewFromC creates a new AsyncResult from a pointer to the C GAsyncResult that represents the AsyncResult.
+func AsyncResultNewFromC(native unsafe.Pointer) *AsyncResult {
+	return &AsyncResult{native: native}
 }
 
 // Converter is a representation of the C interface GConverter.
@@ -7515,6 +7545,11 @@ func (recv *Converter) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ConverterNewFromC creates a new Converter from a pointer to the C GConverter that represents the Converter.
+func ConverterNewFromC(native unsafe.Pointer) *Converter {
+	return &Converter{native: native}
+}
+
 // DBusInterface is a representation of the C interface GDBusInterface.
 //
 // since 2.30
@@ -7527,6 +7562,11 @@ func (recv *DBusInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusInterfaceNewFromC creates a new DBusInterface from a pointer to the C GDBusInterface that represents the DBusInterface.
+func DBusInterfaceNewFromC(native unsafe.Pointer) *DBusInterface {
+	return &DBusInterface{native: native}
+}
+
 // DBusObject is a representation of the C interface GDBusObject.
 type DBusObject struct {
 	native unsafe.Pointer
@@ -7537,6 +7577,11 @@ func (recv *DBusObject) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusObjectNewFromC creates a new DBusObject from a pointer to the C GDBusObject that represents the DBusObject.
+func DBusObjectNewFromC(native unsafe.Pointer) *DBusObject {
+	return &DBusObject{native: native}
+}
+
 // DBusObjectManager is a representation of the C interface GDBusObjectManager.
 type DBusObjectManager struct {
 	native unsafe.Pointer
@@ -7545,6 +7590,11 @@ type DBusObjectManager struct {
 // ToC returns a pointer to the C GDBusObjectManager that represents the DBusObjectManager.
 func (recv *DBusObjectManager) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusObjectManagerNewFromC creates a new DBusObjectManager from a pointer to the C GDBusObjectManager that represents the DBusObjectManager.
+func DBusObjectManagerNewFromC(native unsafe.Pointer) *DBusObjectManager {
+	return &DBusObjectManager{native: native}
 }
 
 // DatagramBased is a representation of the C interface GDatagramBased.
@@ -7559,6 +7609,11 @@ func (recv *DatagramBased) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DatagramBasedNewFromC creates a new DatagramBased from a pointer to the C GDatagramBased that represents the DatagramBased.
+func DatagramBasedNewFromC(native unsafe.Pointer) *DatagramBased {
+	return &DatagramBased{native: native}
+}
+
 // DesktopAppInfoLookup is a representation of the C interface GDesktopAppInfoLookup.
 type DesktopAppInfoLookup struct {
 	native unsafe.Pointer
@@ -7569,6 +7624,11 @@ func (recv *DesktopAppInfoLookup) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DesktopAppInfoLookupNewFromC creates a new DesktopAppInfoLookup from a pointer to the C GDesktopAppInfoLookup that represents the DesktopAppInfoLookup.
+func DesktopAppInfoLookupNewFromC(native unsafe.Pointer) *DesktopAppInfoLookup {
+	return &DesktopAppInfoLookup{native: native}
+}
+
 // Drive is a representation of the C interface GDrive.
 type Drive struct {
 	native unsafe.Pointer
@@ -7577,6 +7637,11 @@ type Drive struct {
 // ToC returns a pointer to the C GDrive that represents the Drive.
 func (recv *Drive) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DriveNewFromC creates a new Drive from a pointer to the C GDrive that represents the Drive.
+func DriveNewFromC(native unsafe.Pointer) *Drive {
+	return &Drive{native: native}
 }
 
 // DtlsClientConnection is a representation of the C interface GDtlsClientConnection.
@@ -7591,6 +7656,11 @@ func (recv *DtlsClientConnection) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DtlsClientConnectionNewFromC creates a new DtlsClientConnection from a pointer to the C GDtlsClientConnection that represents the DtlsClientConnection.
+func DtlsClientConnectionNewFromC(native unsafe.Pointer) *DtlsClientConnection {
+	return &DtlsClientConnection{native: native}
+}
+
 // DtlsConnection is a representation of the C interface GDtlsConnection.
 //
 // since 2.48
@@ -7601,6 +7671,11 @@ type DtlsConnection struct {
 // ToC returns a pointer to the C GDtlsConnection that represents the DtlsConnection.
 func (recv *DtlsConnection) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DtlsConnectionNewFromC creates a new DtlsConnection from a pointer to the C GDtlsConnection that represents the DtlsConnection.
+func DtlsConnectionNewFromC(native unsafe.Pointer) *DtlsConnection {
+	return &DtlsConnection{native: native}
 }
 
 // DtlsServerConnection is a representation of the C interface GDtlsServerConnection.
@@ -7615,6 +7690,11 @@ func (recv *DtlsServerConnection) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DtlsServerConnectionNewFromC creates a new DtlsServerConnection from a pointer to the C GDtlsServerConnection that represents the DtlsServerConnection.
+func DtlsServerConnectionNewFromC(native unsafe.Pointer) *DtlsServerConnection {
+	return &DtlsServerConnection{native: native}
+}
+
 // File is a representation of the C interface GFile.
 type File struct {
 	native unsafe.Pointer
@@ -7623,6 +7703,11 @@ type File struct {
 // ToC returns a pointer to the C GFile that represents the File.
 func (recv *File) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileNewFromC creates a new File from a pointer to the C GFile that represents the File.
+func FileNewFromC(native unsafe.Pointer) *File {
+	return &File{native: native}
 }
 
 // FileDescriptorBased is a representation of the C interface GFileDescriptorBased.
@@ -7637,6 +7722,11 @@ func (recv *FileDescriptorBased) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FileDescriptorBasedNewFromC creates a new FileDescriptorBased from a pointer to the C GFileDescriptorBased that represents the FileDescriptorBased.
+func FileDescriptorBasedNewFromC(native unsafe.Pointer) *FileDescriptorBased {
+	return &FileDescriptorBased{native: native}
+}
+
 // Icon is a representation of the C interface GIcon.
 type Icon struct {
 	native unsafe.Pointer
@@ -7645,6 +7735,11 @@ type Icon struct {
 // ToC returns a pointer to the C GIcon that represents the Icon.
 func (recv *Icon) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// IconNewFromC creates a new Icon from a pointer to the C GIcon that represents the Icon.
+func IconNewFromC(native unsafe.Pointer) *Icon {
+	return &Icon{native: native}
 }
 
 // Initable is a representation of the C interface GInitable.
@@ -7659,6 +7754,11 @@ func (recv *Initable) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// InitableNewFromC creates a new Initable from a pointer to the C GInitable that represents the Initable.
+func InitableNewFromC(native unsafe.Pointer) *Initable {
+	return &Initable{native: native}
+}
+
 // ListModel is a representation of the C interface GListModel.
 type ListModel struct {
 	native unsafe.Pointer
@@ -7667,6 +7767,11 @@ type ListModel struct {
 // ToC returns a pointer to the C GListModel that represents the ListModel.
 func (recv *ListModel) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ListModelNewFromC creates a new ListModel from a pointer to the C GListModel that represents the ListModel.
+func ListModelNewFromC(native unsafe.Pointer) *ListModel {
+	return &ListModel{native: native}
 }
 
 // LoadableIcon is a representation of the C interface GLoadableIcon.
@@ -7679,6 +7784,11 @@ func (recv *LoadableIcon) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// LoadableIconNewFromC creates a new LoadableIcon from a pointer to the C GLoadableIcon that represents the LoadableIcon.
+func LoadableIconNewFromC(native unsafe.Pointer) *LoadableIcon {
+	return &LoadableIcon{native: native}
+}
+
 // Mount is a representation of the C interface GMount.
 type Mount struct {
 	native unsafe.Pointer
@@ -7687,6 +7797,11 @@ type Mount struct {
 // ToC returns a pointer to the C GMount that represents the Mount.
 func (recv *Mount) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MountNewFromC creates a new Mount from a pointer to the C GMount that represents the Mount.
+func MountNewFromC(native unsafe.Pointer) *Mount {
+	return &Mount{native: native}
 }
 
 // NetworkMonitor is a representation of the C interface GNetworkMonitor.
@@ -7701,6 +7816,11 @@ func (recv *NetworkMonitor) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// NetworkMonitorNewFromC creates a new NetworkMonitor from a pointer to the C GNetworkMonitor that represents the NetworkMonitor.
+func NetworkMonitorNewFromC(native unsafe.Pointer) *NetworkMonitor {
+	return &NetworkMonitor{native: native}
+}
+
 // PollableInputStream is a representation of the C interface GPollableInputStream.
 //
 // since 2.28
@@ -7711,6 +7831,11 @@ type PollableInputStream struct {
 // ToC returns a pointer to the C GPollableInputStream that represents the PollableInputStream.
 func (recv *PollableInputStream) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// PollableInputStreamNewFromC creates a new PollableInputStream from a pointer to the C GPollableInputStream that represents the PollableInputStream.
+func PollableInputStreamNewFromC(native unsafe.Pointer) *PollableInputStream {
+	return &PollableInputStream{native: native}
 }
 
 // PollableOutputStream is a representation of the C interface GPollableOutputStream.
@@ -7725,6 +7850,11 @@ func (recv *PollableOutputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// PollableOutputStreamNewFromC creates a new PollableOutputStream from a pointer to the C GPollableOutputStream that represents the PollableOutputStream.
+func PollableOutputStreamNewFromC(native unsafe.Pointer) *PollableOutputStream {
+	return &PollableOutputStream{native: native}
+}
+
 // Proxy is a representation of the C interface GProxy.
 //
 // since 2.26
@@ -7735,6 +7865,11 @@ type Proxy struct {
 // ToC returns a pointer to the C GProxy that represents the Proxy.
 func (recv *Proxy) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ProxyNewFromC creates a new Proxy from a pointer to the C GProxy that represents the Proxy.
+func ProxyNewFromC(native unsafe.Pointer) *Proxy {
+	return &Proxy{native: native}
 }
 
 // ProxyResolver is a representation of the C interface GProxyResolver.
@@ -7749,6 +7884,11 @@ func (recv *ProxyResolver) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ProxyResolverNewFromC creates a new ProxyResolver from a pointer to the C GProxyResolver that represents the ProxyResolver.
+func ProxyResolverNewFromC(native unsafe.Pointer) *ProxyResolver {
+	return &ProxyResolver{native: native}
+}
+
 // RemoteActionGroup is a representation of the C interface GRemoteActionGroup.
 //
 // since 2.32
@@ -7761,6 +7901,11 @@ func (recv *RemoteActionGroup) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// RemoteActionGroupNewFromC creates a new RemoteActionGroup from a pointer to the C GRemoteActionGroup that represents the RemoteActionGroup.
+func RemoteActionGroupNewFromC(native unsafe.Pointer) *RemoteActionGroup {
+	return &RemoteActionGroup{native: native}
+}
+
 // Seekable is a representation of the C interface GSeekable.
 type Seekable struct {
 	native unsafe.Pointer
@@ -7771,6 +7916,11 @@ func (recv *Seekable) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SeekableNewFromC creates a new Seekable from a pointer to the C GSeekable that represents the Seekable.
+func SeekableNewFromC(native unsafe.Pointer) *Seekable {
+	return &Seekable{native: native}
+}
+
 // SocketConnectable is a representation of the C interface GSocketConnectable.
 type SocketConnectable struct {
 	native unsafe.Pointer
@@ -7779,6 +7929,11 @@ type SocketConnectable struct {
 // ToC returns a pointer to the C GSocketConnectable that represents the SocketConnectable.
 func (recv *SocketConnectable) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SocketConnectableNewFromC creates a new SocketConnectable from a pointer to the C GSocketConnectable that represents the SocketConnectable.
+func SocketConnectableNewFromC(native unsafe.Pointer) *SocketConnectable {
+	return &SocketConnectable{native: native}
 }
 
 // TlsBackend is a representation of the C interface GTlsBackend.
@@ -7793,6 +7948,11 @@ func (recv *TlsBackend) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsBackendNewFromC creates a new TlsBackend from a pointer to the C GTlsBackend that represents the TlsBackend.
+func TlsBackendNewFromC(native unsafe.Pointer) *TlsBackend {
+	return &TlsBackend{native: native}
+}
+
 // TlsClientConnection is a representation of the C interface GTlsClientConnection.
 //
 // since 2.28
@@ -7803,6 +7963,11 @@ type TlsClientConnection struct {
 // ToC returns a pointer to the C GTlsClientConnection that represents the TlsClientConnection.
 func (recv *TlsClientConnection) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TlsClientConnectionNewFromC creates a new TlsClientConnection from a pointer to the C GTlsClientConnection that represents the TlsClientConnection.
+func TlsClientConnectionNewFromC(native unsafe.Pointer) *TlsClientConnection {
+	return &TlsClientConnection{native: native}
 }
 
 // TlsFileDatabase is a representation of the C interface GTlsFileDatabase.
@@ -7817,6 +7982,11 @@ func (recv *TlsFileDatabase) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsFileDatabaseNewFromC creates a new TlsFileDatabase from a pointer to the C GTlsFileDatabase that represents the TlsFileDatabase.
+func TlsFileDatabaseNewFromC(native unsafe.Pointer) *TlsFileDatabase {
+	return &TlsFileDatabase{native: native}
+}
+
 // TlsServerConnection is a representation of the C interface GTlsServerConnection.
 //
 // since 2.28
@@ -7829,6 +7999,11 @@ func (recv *TlsServerConnection) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsServerConnectionNewFromC creates a new TlsServerConnection from a pointer to the C GTlsServerConnection that represents the TlsServerConnection.
+func TlsServerConnectionNewFromC(native unsafe.Pointer) *TlsServerConnection {
+	return &TlsServerConnection{native: native}
+}
+
 // Volume is a representation of the C interface GVolume.
 type Volume struct {
 	native unsafe.Pointer
@@ -7837,4 +8012,9 @@ type Volume struct {
 // ToC returns a pointer to the C GVolume that represents the Volume.
 func (recv *Volume) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// VolumeNewFromC creates a new Volume from a pointer to the C GVolume that represents the Volume.
+func VolumeNewFromC(native unsafe.Pointer) *Volume {
+	return &Volume{native: native}
 }

@@ -2143,6 +2143,11 @@ func (recv *TypePlugin) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TypePluginNewFromC creates a new TypePlugin from a pointer to the C GTypePlugin that represents the TypePlugin.
+func TypePluginNewFromC(native unsafe.Pointer) *TypePlugin {
+	return &TypePlugin{native: native}
+}
+
 // TypeCValue is a representation of the C union GTypeCValue.
 type TypeCValue struct {
 	native unsafe.Pointer

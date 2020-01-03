@@ -21,5 +21,6 @@ func (i *Interface) generateLib(f *jen.File, version semver.Version) {
 
 	generateLibStructType(f, "interface", i.Name, i.CType, i.Version)
 	generateLibToC(f, i.Name, i.CType)
+	generateLibNewFromC(f, i.Name, i.CType)
 	//i.Methods.generateLib(f, version)
 }

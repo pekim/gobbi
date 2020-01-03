@@ -1747,6 +1747,11 @@ func (recv *Action) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ActionNewFromC creates a new Action from a pointer to the C AtkAction that represents the Action.
+func ActionNewFromC(native unsafe.Pointer) *Action {
+	return &Action{native: native}
+}
+
 // Component is a representation of the C interface AtkComponent.
 type Component struct {
 	native unsafe.Pointer
@@ -1755,6 +1760,11 @@ type Component struct {
 // ToC returns a pointer to the C AtkComponent that represents the Component.
 func (recv *Component) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ComponentNewFromC creates a new Component from a pointer to the C AtkComponent that represents the Component.
+func ComponentNewFromC(native unsafe.Pointer) *Component {
+	return &Component{native: native}
 }
 
 // Document is a representation of the C interface AtkDocument.
@@ -1767,6 +1777,11 @@ func (recv *Document) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DocumentNewFromC creates a new Document from a pointer to the C AtkDocument that represents the Document.
+func DocumentNewFromC(native unsafe.Pointer) *Document {
+	return &Document{native: native}
+}
+
 // EditableText is a representation of the C interface AtkEditableText.
 type EditableText struct {
 	native unsafe.Pointer
@@ -1775,6 +1790,11 @@ type EditableText struct {
 // ToC returns a pointer to the C AtkEditableText that represents the EditableText.
 func (recv *EditableText) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EditableTextNewFromC creates a new EditableText from a pointer to the C AtkEditableText that represents the EditableText.
+func EditableTextNewFromC(native unsafe.Pointer) *EditableText {
+	return &EditableText{native: native}
 }
 
 // HyperlinkImpl is a representation of the C interface AtkHyperlinkImpl.
@@ -1787,6 +1807,11 @@ func (recv *HyperlinkImpl) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// HyperlinkImplNewFromC creates a new HyperlinkImpl from a pointer to the C AtkHyperlinkImpl that represents the HyperlinkImpl.
+func HyperlinkImplNewFromC(native unsafe.Pointer) *HyperlinkImpl {
+	return &HyperlinkImpl{native: native}
+}
+
 // Hypertext is a representation of the C interface AtkHypertext.
 type Hypertext struct {
 	native unsafe.Pointer
@@ -1795,6 +1820,11 @@ type Hypertext struct {
 // ToC returns a pointer to the C AtkHypertext that represents the Hypertext.
 func (recv *Hypertext) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// HypertextNewFromC creates a new Hypertext from a pointer to the C AtkHypertext that represents the Hypertext.
+func HypertextNewFromC(native unsafe.Pointer) *Hypertext {
+	return &Hypertext{native: native}
 }
 
 // Image is a representation of the C interface AtkImage.
@@ -1807,6 +1837,11 @@ func (recv *Image) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ImageNewFromC creates a new Image from a pointer to the C AtkImage that represents the Image.
+func ImageNewFromC(native unsafe.Pointer) *Image {
+	return &Image{native: native}
+}
+
 // ImplementorIface is a representation of the C interface AtkImplementorIface.
 type ImplementorIface struct {
 	native unsafe.Pointer
@@ -1815,6 +1850,11 @@ type ImplementorIface struct {
 // ToC returns a pointer to the C AtkImplementorIface that represents the ImplementorIface.
 func (recv *ImplementorIface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ImplementorIfaceNewFromC creates a new ImplementorIface from a pointer to the C AtkImplementorIface that represents the ImplementorIface.
+func ImplementorIfaceNewFromC(native unsafe.Pointer) *ImplementorIface {
+	return &ImplementorIface{native: native}
 }
 
 // Selection is a representation of the C interface AtkSelection.
@@ -1827,6 +1867,11 @@ func (recv *Selection) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SelectionNewFromC creates a new Selection from a pointer to the C AtkSelection that represents the Selection.
+func SelectionNewFromC(native unsafe.Pointer) *Selection {
+	return &Selection{native: native}
+}
+
 // StreamableContent is a representation of the C interface AtkStreamableContent.
 type StreamableContent struct {
 	native unsafe.Pointer
@@ -1835,6 +1880,11 @@ type StreamableContent struct {
 // ToC returns a pointer to the C AtkStreamableContent that represents the StreamableContent.
 func (recv *StreamableContent) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// StreamableContentNewFromC creates a new StreamableContent from a pointer to the C AtkStreamableContent that represents the StreamableContent.
+func StreamableContentNewFromC(native unsafe.Pointer) *StreamableContent {
+	return &StreamableContent{native: native}
 }
 
 // Table is a representation of the C interface AtkTable.
@@ -1847,6 +1897,11 @@ func (recv *Table) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TableNewFromC creates a new Table from a pointer to the C AtkTable that represents the Table.
+func TableNewFromC(native unsafe.Pointer) *Table {
+	return &Table{native: native}
+}
+
 // TableCell is a representation of the C interface AtkTableCell.
 type TableCell struct {
 	native unsafe.Pointer
@@ -1855,6 +1910,11 @@ type TableCell struct {
 // ToC returns a pointer to the C AtkTableCell that represents the TableCell.
 func (recv *TableCell) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TableCellNewFromC creates a new TableCell from a pointer to the C AtkTableCell that represents the TableCell.
+func TableCellNewFromC(native unsafe.Pointer) *TableCell {
+	return &TableCell{native: native}
 }
 
 // Text is a representation of the C interface AtkText.
@@ -1867,6 +1927,11 @@ func (recv *Text) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TextNewFromC creates a new Text from a pointer to the C AtkText that represents the Text.
+func TextNewFromC(native unsafe.Pointer) *Text {
+	return &Text{native: native}
+}
+
 // Value is a representation of the C interface AtkValue.
 type Value struct {
 	native unsafe.Pointer
@@ -1877,6 +1942,11 @@ func (recv *Value) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ValueNewFromC creates a new Value from a pointer to the C AtkValue that represents the Value.
+func ValueNewFromC(native unsafe.Pointer) *Value {
+	return &Value{native: native}
+}
+
 // Window is a representation of the C interface AtkWindow.
 type Window struct {
 	native unsafe.Pointer
@@ -1885,4 +1955,9 @@ type Window struct {
 // ToC returns a pointer to the C AtkWindow that represents the Window.
 func (recv *Window) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// WindowNewFromC creates a new Window from a pointer to the C AtkWindow that represents the Window.
+func WindowNewFromC(native unsafe.Pointer) *Window {
+	return &Window{native: native}
 }

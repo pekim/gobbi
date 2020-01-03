@@ -9662,6 +9662,11 @@ func (recv *DevicePad) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DevicePadNewFromC creates a new DevicePad from a pointer to the C GdkDevicePad that represents the DevicePad.
+func DevicePadNewFromC(native unsafe.Pointer) *DevicePad {
+	return &DevicePad{native: native}
+}
+
 // Event is a representation of the C union GdkEvent.
 type Event struct {
 	native unsafe.Pointer
