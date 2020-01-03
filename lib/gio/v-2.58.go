@@ -1816,7 +1816,8 @@ func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string,
 	sys_flags := flags
 	sys_nameAcquiredClosure := nameAcquiredClosure.ToC()
 	sys_nameLostClosure := nameLostClosure.ToC()
-	ret := gio.Fn_g_bus_own_name_on_connection_with_closures(sys_connection, sys_name, sys_flags, sys_nameAcquiredClosure, sys_nameLostClosure)
+	retSys := gio.Fn_g_bus_own_name_on_connection_with_closures(sys_connection, sys_name, sys_flags, sys_nameAcquiredClosure, sys_nameLostClosure)
+	ret := retSys
 
 	return ret
 }
@@ -1829,7 +1830,8 @@ func BusOwnNameWithClosures(busType int, name string, flags int, busAcquiredClos
 	sys_busAcquiredClosure := busAcquiredClosure.ToC()
 	sys_nameAcquiredClosure := nameAcquiredClosure.ToC()
 	sys_nameLostClosure := nameLostClosure.ToC()
-	ret := gio.Fn_g_bus_own_name_with_closures(sys_busType, sys_name, sys_flags, sys_busAcquiredClosure, sys_nameAcquiredClosure, sys_nameLostClosure)
+	retSys := gio.Fn_g_bus_own_name_with_closures(sys_busType, sys_name, sys_flags, sys_busAcquiredClosure, sys_nameAcquiredClosure, sys_nameLostClosure)
+	ret := retSys
 
 	return ret
 }
@@ -1857,7 +1859,8 @@ func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name strin
 	sys_flags := flags
 	sys_nameAppearedClosure := nameAppearedClosure.ToC()
 	sys_nameVanishedClosure := nameVanishedClosure.ToC()
-	ret := gio.Fn_g_bus_watch_name_on_connection_with_closures(sys_connection, sys_name, sys_flags, sys_nameAppearedClosure, sys_nameVanishedClosure)
+	retSys := gio.Fn_g_bus_watch_name_on_connection_with_closures(sys_connection, sys_name, sys_flags, sys_nameAppearedClosure, sys_nameVanishedClosure)
+	ret := retSys
 
 	return ret
 }
@@ -1869,7 +1872,8 @@ func BusWatchNameWithClosures(busType int, name string, flags int, nameAppearedC
 	sys_flags := flags
 	sys_nameAppearedClosure := nameAppearedClosure.ToC()
 	sys_nameVanishedClosure := nameVanishedClosure.ToC()
-	ret := gio.Fn_g_bus_watch_name_with_closures(sys_busType, sys_name, sys_flags, sys_nameAppearedClosure, sys_nameVanishedClosure)
+	retSys := gio.Fn_g_bus_watch_name_with_closures(sys_busType, sys_name, sys_flags, sys_nameAppearedClosure, sys_nameVanishedClosure)
+	ret := retSys
 
 	return ret
 }
@@ -1877,7 +1881,8 @@ func BusWatchNameWithClosures(busType int, name string, flags int, nameAppearedC
 // ContentTypeCanBeExecutable is analogous to the C function g_content_type_can_be_executable.
 func ContentTypeCanBeExecutable(type_ string) bool {
 	sys_type_ := type_
-	ret := gio.Fn_g_content_type_can_be_executable(sys_type_)
+	retSys := gio.Fn_g_content_type_can_be_executable(sys_type_)
+	ret := retSys
 
 	return ret
 }
@@ -1886,7 +1891,8 @@ func ContentTypeCanBeExecutable(type_ string) bool {
 func ContentTypeEquals(type1 string, type2 string) bool {
 	sys_type1 := type1
 	sys_type2 := type2
-	ret := gio.Fn_g_content_type_equals(sys_type1, sys_type2)
+	retSys := gio.Fn_g_content_type_equals(sys_type1, sys_type2)
+	ret := retSys
 
 	return ret
 }
@@ -1894,7 +1900,8 @@ func ContentTypeEquals(type1 string, type2 string) bool {
 // ContentTypeFromMimeType is analogous to the C function g_content_type_from_mime_type.
 func ContentTypeFromMimeType(mimeType string) string {
 	sys_mimeType := mimeType
-	ret := gio.Fn_g_content_type_from_mime_type(sys_mimeType)
+	retSys := gio.Fn_g_content_type_from_mime_type(sys_mimeType)
+	ret := retSys
 
 	return ret
 }
@@ -1902,7 +1909,8 @@ func ContentTypeFromMimeType(mimeType string) string {
 // ContentTypeGetDescription is analogous to the C function g_content_type_get_description.
 func ContentTypeGetDescription(type_ string) string {
 	sys_type_ := type_
-	ret := gio.Fn_g_content_type_get_description(sys_type_)
+	retSys := gio.Fn_g_content_type_get_description(sys_type_)
+	ret := retSys
 
 	return ret
 }
@@ -1910,15 +1918,17 @@ func ContentTypeGetDescription(type_ string) string {
 // ContentTypeGetGenericIconName is analogous to the C function g_content_type_get_generic_icon_name.
 func ContentTypeGetGenericIconName(type_ string) string {
 	sys_type_ := type_
-	ret := gio.Fn_g_content_type_get_generic_icon_name(sys_type_)
+	retSys := gio.Fn_g_content_type_get_generic_icon_name(sys_type_)
+	ret := retSys
 
 	return ret
 }
 
 // ContentTypeGetIcon is analogous to the C function g_content_type_get_icon.
-func ContentTypeGetIcon(type_ string) unsafe.Pointer {
+func ContentTypeGetIcon(type_ string) *Icon {
 	sys_type_ := type_
-	ret := gio.Fn_g_content_type_get_icon(sys_type_)
+	retSys := gio.Fn_g_content_type_get_icon(sys_type_)
+	ret := IconNewFromC(retSys)
 
 	return ret
 }
@@ -1928,15 +1938,17 @@ func ContentTypeGetIcon(type_ string) unsafe.Pointer {
 // ContentTypeGetMimeType is analogous to the C function g_content_type_get_mime_type.
 func ContentTypeGetMimeType(type_ string) string {
 	sys_type_ := type_
-	ret := gio.Fn_g_content_type_get_mime_type(sys_type_)
+	retSys := gio.Fn_g_content_type_get_mime_type(sys_type_)
+	ret := retSys
 
 	return ret
 }
 
 // ContentTypeGetSymbolicIcon is analogous to the C function g_content_type_get_symbolic_icon.
-func ContentTypeGetSymbolicIcon(type_ string) unsafe.Pointer {
+func ContentTypeGetSymbolicIcon(type_ string) *Icon {
 	sys_type_ := type_
-	ret := gio.Fn_g_content_type_get_symbolic_icon(sys_type_)
+	retSys := gio.Fn_g_content_type_get_symbolic_icon(sys_type_)
+	ret := IconNewFromC(retSys)
 
 	return ret
 }
@@ -1949,7 +1961,8 @@ func ContentTypeGetSymbolicIcon(type_ string) unsafe.Pointer {
 func ContentTypeIsA(type_ string, supertype string) bool {
 	sys_type_ := type_
 	sys_supertype := supertype
-	ret := gio.Fn_g_content_type_is_a(sys_type_, sys_supertype)
+	retSys := gio.Fn_g_content_type_is_a(sys_type_, sys_supertype)
+	ret := retSys
 
 	return ret
 }
@@ -1958,7 +1971,8 @@ func ContentTypeIsA(type_ string, supertype string) bool {
 func ContentTypeIsMimeType(type_ string, mimeType string) bool {
 	sys_type_ := type_
 	sys_mimeType := mimeType
-	ret := gio.Fn_g_content_type_is_mime_type(sys_type_, sys_mimeType)
+	retSys := gio.Fn_g_content_type_is_mime_type(sys_type_, sys_mimeType)
+	ret := retSys
 
 	return ret
 }
@@ -1966,7 +1980,8 @@ func ContentTypeIsMimeType(type_ string, mimeType string) bool {
 // ContentTypeIsUnknown is analogous to the C function g_content_type_is_unknown.
 func ContentTypeIsUnknown(type_ string) bool {
 	sys_type_ := type_
-	ret := gio.Fn_g_content_type_is_unknown(sys_type_)
+	retSys := gio.Fn_g_content_type_is_unknown(sys_type_)
+	ret := retSys
 
 	return ret
 }
@@ -1974,8 +1989,9 @@ func ContentTypeIsUnknown(type_ string) bool {
 // UNSUPPORTED : g_content_type_set_mime_dirs : parameter 'dirs' is array parameter without length parameter
 
 // ContentTypesGetRegistered is analogous to the C function g_content_types_get_registered.
-func ContentTypesGetRegistered() unsafe.Pointer {
-	ret := gio.Fn_g_content_types_get_registered()
+func ContentTypesGetRegistered() *glib.List {
+	retSys := gio.Fn_g_content_types_get_registered()
+	ret := glib.ListNewFromC(retSys)
 
 	return ret
 }
@@ -1983,7 +1999,8 @@ func ContentTypesGetRegistered() unsafe.Pointer {
 // DbusAddressEscapeValue is analogous to the C function g_dbus_address_escape_value.
 func DbusAddressEscapeValue(string_ string) string {
 	sys_string_ := string_
-	ret := gio.Fn_g_dbus_address_escape_value(sys_string_)
+	retSys := gio.Fn_g_dbus_address_escape_value(sys_string_)
+	ret := retSys
 
 	return ret
 }
@@ -2002,16 +2019,18 @@ func DbusAddressEscapeValue(string_ string) string {
 
 // DbusGenerateGuid is analogous to the C function g_dbus_generate_guid.
 func DbusGenerateGuid() string {
-	ret := gio.Fn_g_dbus_generate_guid()
+	retSys := gio.Fn_g_dbus_generate_guid()
+	ret := retSys
 
 	return ret
 }
 
 // DbusGvalueToGvariant is analogous to the C function g_dbus_gvalue_to_gvariant.
-func DbusGvalueToGvariant(gvalue *gobject.Value, type_ *glib.VariantType) unsafe.Pointer {
+func DbusGvalueToGvariant(gvalue *gobject.Value, type_ *glib.VariantType) *glib.Variant {
 	sys_gvalue := gvalue.ToC()
 	sys_type_ := type_.ToC()
-	ret := gio.Fn_g_dbus_gvalue_to_gvariant(sys_gvalue, sys_type_)
+	retSys := gio.Fn_g_dbus_gvalue_to_gvariant(sys_gvalue, sys_type_)
+	ret := glib.VariantNewFromC(retSys)
 
 	return ret
 }
@@ -2021,7 +2040,8 @@ func DbusGvalueToGvariant(gvalue *gobject.Value, type_ *glib.VariantType) unsafe
 // DbusIsAddress is analogous to the C function g_dbus_is_address.
 func DbusIsAddress(string_ string) bool {
 	sys_string_ := string_
-	ret := gio.Fn_g_dbus_is_address(sys_string_)
+	retSys := gio.Fn_g_dbus_is_address(sys_string_)
+	ret := retSys
 
 	return ret
 }
@@ -2029,7 +2049,8 @@ func DbusIsAddress(string_ string) bool {
 // DbusIsGuid is analogous to the C function g_dbus_is_guid.
 func DbusIsGuid(string_ string) bool {
 	sys_string_ := string_
-	ret := gio.Fn_g_dbus_is_guid(sys_string_)
+	retSys := gio.Fn_g_dbus_is_guid(sys_string_)
+	ret := retSys
 
 	return ret
 }
@@ -2037,7 +2058,8 @@ func DbusIsGuid(string_ string) bool {
 // DbusIsInterfaceName is analogous to the C function g_dbus_is_interface_name.
 func DbusIsInterfaceName(string_ string) bool {
 	sys_string_ := string_
-	ret := gio.Fn_g_dbus_is_interface_name(sys_string_)
+	retSys := gio.Fn_g_dbus_is_interface_name(sys_string_)
+	ret := retSys
 
 	return ret
 }
@@ -2045,7 +2067,8 @@ func DbusIsInterfaceName(string_ string) bool {
 // DbusIsMemberName is analogous to the C function g_dbus_is_member_name.
 func DbusIsMemberName(string_ string) bool {
 	sys_string_ := string_
-	ret := gio.Fn_g_dbus_is_member_name(sys_string_)
+	retSys := gio.Fn_g_dbus_is_member_name(sys_string_)
+	ret := retSys
 
 	return ret
 }
@@ -2053,7 +2076,8 @@ func DbusIsMemberName(string_ string) bool {
 // DbusIsName is analogous to the C function g_dbus_is_name.
 func DbusIsName(string_ string) bool {
 	sys_string_ := string_
-	ret := gio.Fn_g_dbus_is_name(sys_string_)
+	retSys := gio.Fn_g_dbus_is_name(sys_string_)
+	ret := retSys
 
 	return ret
 }
@@ -2063,7 +2087,8 @@ func DbusIsName(string_ string) bool {
 // DbusIsUniqueName is analogous to the C function g_dbus_is_unique_name.
 func DbusIsUniqueName(string_ string) bool {
 	sys_string_ := string_
-	ret := gio.Fn_g_dbus_is_unique_name(sys_string_)
+	retSys := gio.Fn_g_dbus_is_unique_name(sys_string_)
+	ret := retSys
 
 	return ret
 }
@@ -2081,14 +2106,16 @@ func DbusIsUniqueName(string_ string) bool {
 // IoErrorFromErrno is analogous to the C function g_io_error_from_errno.
 func IoErrorFromErrno(errNo int) int {
 	sys_errNo := errNo
-	ret := gio.Fn_g_io_error_from_errno(sys_errNo)
+	retSys := gio.Fn_g_io_error_from_errno(sys_errNo)
+	ret := retSys
 
 	return ret
 }
 
 // IoErrorQuark is analogous to the C function g_io_error_quark.
 func IoErrorQuark() uint32 {
-	ret := gio.Fn_g_io_error_quark()
+	retSys := gio.Fn_g_io_error_quark()
+	ret := retSys
 
 	return ret
 }
@@ -2120,19 +2147,21 @@ func NetworkingInit() {
 // UNSUPPORTED : g_null_settings_backend_new : blacklisted
 
 // PollableSourceNew is analogous to the C function g_pollable_source_new.
-func PollableSourceNew(pollableStream *gobject.Object) unsafe.Pointer {
+func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
 	sys_pollableStream := pollableStream.ToC()
-	ret := gio.Fn_g_pollable_source_new(sys_pollableStream)
+	retSys := gio.Fn_g_pollable_source_new(sys_pollableStream)
+	ret := glib.SourceNewFromC(retSys)
 
 	return ret
 }
 
 // PollableSourceNewFull is analogous to the C function g_pollable_source_new_full.
-func PollableSourceNewFull(pollableStream unsafe.Pointer, childSource *glib.Source, cancellable *Cancellable) unsafe.Pointer {
+func PollableSourceNewFull(pollableStream unsafe.Pointer, childSource *glib.Source, cancellable *Cancellable) *glib.Source {
 	sys_pollableStream := pollableStream
 	sys_childSource := childSource.ToC()
 	sys_cancellable := cancellable.ToC()
-	ret := gio.Fn_g_pollable_source_new_full(sys_pollableStream, sys_childSource, sys_cancellable)
+	retSys := gio.Fn_g_pollable_source_new_full(sys_pollableStream, sys_childSource, sys_cancellable)
+	ret := glib.SourceNewFromC(retSys)
 
 	return ret
 }
@@ -2180,7 +2209,8 @@ func ResourcesUnregister(resource *Resource) {
 // UnixIsMountPathSystemInternal is analogous to the C function g_unix_is_mount_path_system_internal.
 func UnixIsMountPathSystemInternal(mountPath string) bool {
 	sys_mountPath := mountPath
-	ret := gio.Fn_g_unix_is_mount_path_system_internal(sys_mountPath)
+	retSys := gio.Fn_g_unix_is_mount_path_system_internal(sys_mountPath)
+	ret := retSys
 
 	return ret
 }
@@ -2188,7 +2218,8 @@ func UnixIsMountPathSystemInternal(mountPath string) bool {
 // UnixIsSystemDevicePath is analogous to the C function g_unix_is_system_device_path.
 func UnixIsSystemDevicePath(devicePath string) bool {
 	sys_devicePath := devicePath
-	ret := gio.Fn_g_unix_is_system_device_path(sys_devicePath)
+	retSys := gio.Fn_g_unix_is_system_device_path(sys_devicePath)
+	ret := retSys
 
 	return ret
 }
@@ -2196,7 +2227,8 @@ func UnixIsSystemDevicePath(devicePath string) bool {
 // UnixIsSystemFsType is analogous to the C function g_unix_is_system_fs_type.
 func UnixIsSystemFsType(fsType string) bool {
 	sys_fsType := fsType
-	ret := gio.Fn_g_unix_is_system_fs_type(sys_fsType)
+	retSys := gio.Fn_g_unix_is_system_fs_type(sys_fsType)
+	ret := retSys
 
 	return ret
 }
@@ -2207,15 +2239,17 @@ func UnixIsSystemFsType(fsType string) bool {
 func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int {
 	sys_mount1 := mount1.ToC()
 	sys_mount2 := mount2.ToC()
-	ret := gio.Fn_g_unix_mount_compare(sys_mount1, sys_mount2)
+	retSys := gio.Fn_g_unix_mount_compare(sys_mount1, sys_mount2)
+	ret := retSys
 
 	return ret
 }
 
 // UnixMountCopy is analogous to the C function g_unix_mount_copy.
-func UnixMountCopy(mountEntry *UnixMountEntry) unsafe.Pointer {
+func UnixMountCopy(mountEntry *UnixMountEntry) *UnixMountEntry {
 	sys_mountEntry := mountEntry.ToC()
-	ret := gio.Fn_g_unix_mount_copy(sys_mountEntry)
+	retSys := gio.Fn_g_unix_mount_copy(sys_mountEntry)
+	ret := UnixMountEntryNewFromC(retSys)
 
 	return ret
 }
@@ -2231,7 +2265,8 @@ func UnixMountFree(mountEntry *UnixMountEntry) {
 // UnixMountGetDevicePath is analogous to the C function g_unix_mount_get_device_path.
 func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
 	sys_mountEntry := mountEntry.ToC()
-	ret := gio.Fn_g_unix_mount_get_device_path(sys_mountEntry)
+	retSys := gio.Fn_g_unix_mount_get_device_path(sys_mountEntry)
+	ret := retSys
 
 	return ret
 }
@@ -2239,7 +2274,8 @@ func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
 // UnixMountGetFsType is analogous to the C function g_unix_mount_get_fs_type.
 func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
 	sys_mountEntry := mountEntry.ToC()
-	ret := gio.Fn_g_unix_mount_get_fs_type(sys_mountEntry)
+	retSys := gio.Fn_g_unix_mount_get_fs_type(sys_mountEntry)
+	ret := retSys
 
 	return ret
 }
@@ -2247,7 +2283,8 @@ func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
 // UnixMountGetMountPath is analogous to the C function g_unix_mount_get_mount_path.
 func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
 	sys_mountEntry := mountEntry.ToC()
-	ret := gio.Fn_g_unix_mount_get_mount_path(sys_mountEntry)
+	retSys := gio.Fn_g_unix_mount_get_mount_path(sys_mountEntry)
+	ret := retSys
 
 	return ret
 }
@@ -2255,7 +2292,8 @@ func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
 // UnixMountGetOptions is analogous to the C function g_unix_mount_get_options.
 func UnixMountGetOptions(mountEntry *UnixMountEntry) string {
 	sys_mountEntry := mountEntry.ToC()
-	ret := gio.Fn_g_unix_mount_get_options(sys_mountEntry)
+	retSys := gio.Fn_g_unix_mount_get_options(sys_mountEntry)
+	ret := retSys
 
 	return ret
 }
@@ -2263,15 +2301,17 @@ func UnixMountGetOptions(mountEntry *UnixMountEntry) string {
 // UnixMountGuessCanEject is analogous to the C function g_unix_mount_guess_can_eject.
 func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 	sys_mountEntry := mountEntry.ToC()
-	ret := gio.Fn_g_unix_mount_guess_can_eject(sys_mountEntry)
+	retSys := gio.Fn_g_unix_mount_guess_can_eject(sys_mountEntry)
+	ret := retSys
 
 	return ret
 }
 
 // UnixMountGuessIcon is analogous to the C function g_unix_mount_guess_icon.
-func UnixMountGuessIcon(mountEntry *UnixMountEntry) unsafe.Pointer {
+func UnixMountGuessIcon(mountEntry *UnixMountEntry) *Icon {
 	sys_mountEntry := mountEntry.ToC()
-	ret := gio.Fn_g_unix_mount_guess_icon(sys_mountEntry)
+	retSys := gio.Fn_g_unix_mount_guess_icon(sys_mountEntry)
+	ret := IconNewFromC(retSys)
 
 	return ret
 }
@@ -2279,7 +2319,8 @@ func UnixMountGuessIcon(mountEntry *UnixMountEntry) unsafe.Pointer {
 // UnixMountGuessName is analogous to the C function g_unix_mount_guess_name.
 func UnixMountGuessName(mountEntry *UnixMountEntry) string {
 	sys_mountEntry := mountEntry.ToC()
-	ret := gio.Fn_g_unix_mount_guess_name(sys_mountEntry)
+	retSys := gio.Fn_g_unix_mount_guess_name(sys_mountEntry)
+	ret := retSys
 
 	return ret
 }
@@ -2287,15 +2328,17 @@ func UnixMountGuessName(mountEntry *UnixMountEntry) string {
 // UnixMountGuessShouldDisplay is analogous to the C function g_unix_mount_guess_should_display.
 func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 	sys_mountEntry := mountEntry.ToC()
-	ret := gio.Fn_g_unix_mount_guess_should_display(sys_mountEntry)
+	retSys := gio.Fn_g_unix_mount_guess_should_display(sys_mountEntry)
+	ret := retSys
 
 	return ret
 }
 
 // UnixMountGuessSymbolicIcon is analogous to the C function g_unix_mount_guess_symbolic_icon.
-func UnixMountGuessSymbolicIcon(mountEntry *UnixMountEntry) unsafe.Pointer {
+func UnixMountGuessSymbolicIcon(mountEntry *UnixMountEntry) *Icon {
 	sys_mountEntry := mountEntry.ToC()
-	ret := gio.Fn_g_unix_mount_guess_symbolic_icon(sys_mountEntry)
+	retSys := gio.Fn_g_unix_mount_guess_symbolic_icon(sys_mountEntry)
+	ret := IconNewFromC(retSys)
 
 	return ret
 }
@@ -2303,7 +2346,8 @@ func UnixMountGuessSymbolicIcon(mountEntry *UnixMountEntry) unsafe.Pointer {
 // UnixMountIsReadonly is analogous to the C function g_unix_mount_is_readonly.
 func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
 	sys_mountEntry := mountEntry.ToC()
-	ret := gio.Fn_g_unix_mount_is_readonly(sys_mountEntry)
+	retSys := gio.Fn_g_unix_mount_is_readonly(sys_mountEntry)
+	ret := retSys
 
 	return ret
 }
@@ -2311,7 +2355,8 @@ func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
 // UnixMountIsSystemInternal is analogous to the C function g_unix_mount_is_system_internal.
 func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
 	sys_mountEntry := mountEntry.ToC()
-	ret := gio.Fn_g_unix_mount_is_system_internal(sys_mountEntry)
+	retSys := gio.Fn_g_unix_mount_is_system_internal(sys_mountEntry)
+	ret := retSys
 
 	return ret
 }
@@ -2319,7 +2364,8 @@ func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
 // UnixMountPointsChangedSince is analogous to the C function g_unix_mount_points_changed_since.
 func UnixMountPointsChangedSince(time uint64) bool {
 	sys_time := time
-	ret := gio.Fn_g_unix_mount_points_changed_since(sys_time)
+	retSys := gio.Fn_g_unix_mount_points_changed_since(sys_time)
+	ret := retSys
 
 	return ret
 }
@@ -2329,7 +2375,8 @@ func UnixMountPointsChangedSince(time uint64) bool {
 // UnixMountsChangedSince is analogous to the C function g_unix_mounts_changed_since.
 func UnixMountsChangedSince(time uint64) bool {
 	sys_time := time
-	ret := gio.Fn_g_unix_mounts_changed_since(sys_time)
+	retSys := gio.Fn_g_unix_mounts_changed_since(sys_time)
+	ret := retSys
 
 	return ret
 }

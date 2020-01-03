@@ -89,6 +89,23 @@ func (f *Function) generateLibReturnTypeDeclaration(g *jen.Group) {
 		return
 	}
 
+	typ := f.ReturnValue.Type
+
+	// TODO below belongs in Type.sysParamGoType ???
+	if typ.isUnion() ||
+		typ.isRecord() ||
+		typ.isClass() ||
+		typ.isInterface() {
+
+		if typ.isQualifiedName() {
+			g.Op("*").Qual(typ.foreignNamespace.goFullPackageName, typ.foreignName)
+		} else {
+			g.Op("*").Id(typ.Name)
+		}
+
+		return
+	}
+
 	g.Add(f.ReturnValue.sysParamGoType())
 }
 
@@ -110,11 +127,12 @@ func (f *Function) generateLibBody(g *jen.Group) {
 	g.
 		Do(func(s *jen.Statement) {
 			if !f.ReturnValue.isVoid() {
-				s.Id("ret").Op(":=")
+				s.Id("retSys").Op(":=")
 			}
 		}).
 		Qual(f.namespace.goFullSysPackageName, f.sysName).CallFunc(f.generateLibCallParams)
 
+	f.generateMarhsalReturnValue(g)
 	f.generateLibReturn(g)
 }
 
@@ -138,6 +156,30 @@ func (f *Function) generateLibCallParams(g *jen.Group) {
 	//if f.Throws {
 	//	g.Id("cError")
 	//}
+}
+
+func (f *Function) generateMarhsalReturnValue(g *jen.Group) {
+	if f.ReturnValue.isVoid() {
+		return
+	}
+
+	if f.ReturnValue.Type.isUnion() ||
+		f.ReturnValue.Type.isRecord() ||
+		f.ReturnValue.Type.isClass() ||
+		f.ReturnValue.Type.isInterface() {
+
+		if f.ReturnValue.Type.isQualifiedName() {
+			ctorName := f.ReturnValue.Type.foreignName + "NewFromC"
+			g.Id("ret").Op(":=").Qual(f.ReturnValue.Type.foreignNamespace.goFullPackageName, ctorName).Call(jen.Id("retSys"))
+			return
+		}
+
+		ctorName := f.ReturnValue.Type.Name + "NewFromC"
+		g.Id("ret").Op(":=").Id(ctorName).Call(jen.Id("retSys"))
+		return
+	}
+
+	g.Id("ret").Op(":=").Id("retSys")
 }
 
 func (f *Function) generateLibReturn(g *jen.Group) {

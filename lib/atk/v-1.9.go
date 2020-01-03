@@ -870,36 +870,41 @@ func FocusTrackerNotify(object *Object) {
 }
 
 // GetDefaultRegistry is analogous to the C function atk_get_default_registry.
-func GetDefaultRegistry() unsafe.Pointer {
-	ret := atk.Fn_atk_get_default_registry()
+func GetDefaultRegistry() *Registry {
+	retSys := atk.Fn_atk_get_default_registry()
+	ret := RegistryNewFromC(retSys)
 
 	return ret
 }
 
 // GetFocusObject is analogous to the C function atk_get_focus_object.
-func GetFocusObject() unsafe.Pointer {
-	ret := atk.Fn_atk_get_focus_object()
+func GetFocusObject() *Object {
+	retSys := atk.Fn_atk_get_focus_object()
+	ret := ObjectNewFromC(retSys)
 
 	return ret
 }
 
 // GetRoot is analogous to the C function atk_get_root.
-func GetRoot() unsafe.Pointer {
-	ret := atk.Fn_atk_get_root()
+func GetRoot() *Object {
+	retSys := atk.Fn_atk_get_root()
+	ret := ObjectNewFromC(retSys)
 
 	return ret
 }
 
 // GetToolkitName is analogous to the C function atk_get_toolkit_name.
 func GetToolkitName() string {
-	ret := atk.Fn_atk_get_toolkit_name()
+	retSys := atk.Fn_atk_get_toolkit_name()
+	ret := retSys
 
 	return ret
 }
 
 // GetToolkitVersion is analogous to the C function atk_get_toolkit_version.
 func GetToolkitVersion() string {
-	ret := atk.Fn_atk_get_toolkit_version()
+	retSys := atk.Fn_atk_get_toolkit_version()
+	ret := retSys
 
 	return ret
 }
