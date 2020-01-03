@@ -199,10 +199,12 @@ const TypeFundamentalFlags_derivable = TypeFundamentalFlags(4)
 const TypeFundamentalFlags_deep_derivable = TypeFundamentalFlags(8)
 
 // BoxedCopy is analogous to the C function g_boxed_copy.
-func BoxedCopy(boxedType uint64, srcBoxed unsafe.Pointer) {
+func BoxedCopy(boxedType uint64, srcBoxed unsafe.Pointer) unsafe.Pointer {
 	sys_boxedType := boxedType
 	sys_srcBoxed := srcBoxed
-	gobject.Fn_g_boxed_copy(sys_boxedType, sys_srcBoxed)
+	ret := gobject.Fn_g_boxed_copy(sys_boxedType, sys_srcBoxed)
+
+	return ret
 }
 
 // BoxedFree is analogous to the C function g_boxed_free.
@@ -225,90 +227,112 @@ func BoxedFree(boxedType uint64, boxed unsafe.Pointer) {
 // UNSUPPORTED : g_enum_complete_type_info : has array [in]out, info
 
 // EnumGetValue is analogous to the C function g_enum_get_value.
-func EnumGetValue(enumClass *EnumClass, value int) {
+func EnumGetValue(enumClass *EnumClass, value int) unsafe.Pointer {
 	sys_enumClass := enumClass.ToC()
 	sys_value := value
-	gobject.Fn_g_enum_get_value(sys_enumClass, sys_value)
+	ret := gobject.Fn_g_enum_get_value(sys_enumClass, sys_value)
+
+	return ret
 }
 
 // EnumGetValueByName is analogous to the C function g_enum_get_value_by_name.
-func EnumGetValueByName(enumClass *EnumClass, name string) {
+func EnumGetValueByName(enumClass *EnumClass, name string) unsafe.Pointer {
 	sys_enumClass := enumClass.ToC()
 	sys_name := name
-	gobject.Fn_g_enum_get_value_by_name(sys_enumClass, sys_name)
+	ret := gobject.Fn_g_enum_get_value_by_name(sys_enumClass, sys_name)
+
+	return ret
 }
 
 // EnumGetValueByNick is analogous to the C function g_enum_get_value_by_nick.
-func EnumGetValueByNick(enumClass *EnumClass, nick string) {
+func EnumGetValueByNick(enumClass *EnumClass, nick string) unsafe.Pointer {
 	sys_enumClass := enumClass.ToC()
 	sys_nick := nick
-	gobject.Fn_g_enum_get_value_by_nick(sys_enumClass, sys_nick)
+	ret := gobject.Fn_g_enum_get_value_by_nick(sys_enumClass, sys_nick)
+
+	return ret
 }
 
 // EnumRegisterStatic is analogous to the C function g_enum_register_static.
-func EnumRegisterStatic(name string, constStaticValues *EnumValue) {
+func EnumRegisterStatic(name string, constStaticValues *EnumValue) uint64 {
 	sys_name := name
 	sys_constStaticValues := constStaticValues.ToC()
-	gobject.Fn_g_enum_register_static(sys_name, sys_constStaticValues)
+	ret := gobject.Fn_g_enum_register_static(sys_name, sys_constStaticValues)
+
+	return ret
 }
 
 // UNSUPPORTED : g_flags_complete_type_info : has array [in]out, info
 
 // FlagsGetFirstValue is analogous to the C function g_flags_get_first_value.
-func FlagsGetFirstValue(flagsClass *FlagsClass, value uint) {
+func FlagsGetFirstValue(flagsClass *FlagsClass, value uint) unsafe.Pointer {
 	sys_flagsClass := flagsClass.ToC()
 	sys_value := value
-	gobject.Fn_g_flags_get_first_value(sys_flagsClass, sys_value)
+	ret := gobject.Fn_g_flags_get_first_value(sys_flagsClass, sys_value)
+
+	return ret
 }
 
 // FlagsGetValueByName is analogous to the C function g_flags_get_value_by_name.
-func FlagsGetValueByName(flagsClass *FlagsClass, name string) {
+func FlagsGetValueByName(flagsClass *FlagsClass, name string) unsafe.Pointer {
 	sys_flagsClass := flagsClass.ToC()
 	sys_name := name
-	gobject.Fn_g_flags_get_value_by_name(sys_flagsClass, sys_name)
+	ret := gobject.Fn_g_flags_get_value_by_name(sys_flagsClass, sys_name)
+
+	return ret
 }
 
 // FlagsGetValueByNick is analogous to the C function g_flags_get_value_by_nick.
-func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) {
+func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) unsafe.Pointer {
 	sys_flagsClass := flagsClass.ToC()
 	sys_nick := nick
-	gobject.Fn_g_flags_get_value_by_nick(sys_flagsClass, sys_nick)
+	ret := gobject.Fn_g_flags_get_value_by_nick(sys_flagsClass, sys_nick)
+
+	return ret
 }
 
 // FlagsRegisterStatic is analogous to the C function g_flags_register_static.
-func FlagsRegisterStatic(name string, constStaticValues *FlagsValue) {
+func FlagsRegisterStatic(name string, constStaticValues *FlagsValue) uint64 {
 	sys_name := name
 	sys_constStaticValues := constStaticValues.ToC()
-	gobject.Fn_g_flags_register_static(sys_name, sys_constStaticValues)
+	ret := gobject.Fn_g_flags_register_static(sys_name, sys_constStaticValues)
+
+	return ret
 }
 
 // GtypeGetType is analogous to the C function g_gtype_get_type.
-func GtypeGetType() {
-	gobject.Fn_g_gtype_get_type()
+func GtypeGetType() uint64 {
+	ret := gobject.Fn_g_gtype_get_type()
+
+	return ret
 }
 
 // ParamSpecBoolean_ is analogous to the C function g_param_spec_boolean.
-func ParamSpecBoolean_(name string, nick string, blurb string, defaultValue bool, flags int) {
+func ParamSpecBoolean_(name string, nick string, blurb string, defaultValue bool, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_boolean(sys_name, sys_nick, sys_blurb, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_boolean(sys_name, sys_nick, sys_blurb, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecBoxed_ is analogous to the C function g_param_spec_boxed.
-func ParamSpecBoxed_(name string, nick string, blurb string, boxedType uint64, flags int) {
+func ParamSpecBoxed_(name string, nick string, blurb string, boxedType uint64, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
 	sys_boxedType := boxedType
 	sys_flags := flags
-	gobject.Fn_g_param_spec_boxed(sys_name, sys_nick, sys_blurb, sys_boxedType, sys_flags)
+	ret := gobject.Fn_g_param_spec_boxed(sys_name, sys_nick, sys_blurb, sys_boxedType, sys_flags)
+
+	return ret
 }
 
 // ParamSpecChar_ is analogous to the C function g_param_spec_char.
-func ParamSpecChar_(name string, nick string, blurb string, minimum int8, maximum int8, defaultValue int8, flags int) {
+func ParamSpecChar_(name string, nick string, blurb string, minimum int8, maximum int8, defaultValue int8, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -316,11 +340,13 @@ func ParamSpecChar_(name string, nick string, blurb string, minimum int8, maximu
 	sys_maximum := maximum
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_char(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_char(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecDouble_ is analogous to the C function g_param_spec_double.
-func ParamSpecDouble_(name string, nick string, blurb string, minimum float64, maximum float64, defaultValue float64, flags int) {
+func ParamSpecDouble_(name string, nick string, blurb string, minimum float64, maximum float64, defaultValue float64, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -328,33 +354,39 @@ func ParamSpecDouble_(name string, nick string, blurb string, minimum float64, m
 	sys_maximum := maximum
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_double(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_double(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecEnum_ is analogous to the C function g_param_spec_enum.
-func ParamSpecEnum_(name string, nick string, blurb string, enumType uint64, defaultValue int, flags int) {
+func ParamSpecEnum_(name string, nick string, blurb string, enumType uint64, defaultValue int, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
 	sys_enumType := enumType
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_enum(sys_name, sys_nick, sys_blurb, sys_enumType, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_enum(sys_name, sys_nick, sys_blurb, sys_enumType, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecFlags_ is analogous to the C function g_param_spec_flags.
-func ParamSpecFlags_(name string, nick string, blurb string, flagsType uint64, defaultValue uint, flags int) {
+func ParamSpecFlags_(name string, nick string, blurb string, flagsType uint64, defaultValue uint, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
 	sys_flagsType := flagsType
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_flags(sys_name, sys_nick, sys_blurb, sys_flagsType, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_flags(sys_name, sys_nick, sys_blurb, sys_flagsType, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecFloat_ is analogous to the C function g_param_spec_float.
-func ParamSpecFloat_(name string, nick string, blurb string, minimum float32, maximum float32, defaultValue float32, flags int) {
+func ParamSpecFloat_(name string, nick string, blurb string, minimum float32, maximum float32, defaultValue float32, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -362,11 +394,13 @@ func ParamSpecFloat_(name string, nick string, blurb string, minimum float32, ma
 	sys_maximum := maximum
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_float(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_float(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecInt_ is analogous to the C function g_param_spec_int.
-func ParamSpecInt_(name string, nick string, blurb string, minimum int, maximum int, defaultValue int, flags int) {
+func ParamSpecInt_(name string, nick string, blurb string, minimum int, maximum int, defaultValue int, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -374,11 +408,13 @@ func ParamSpecInt_(name string, nick string, blurb string, minimum int, maximum 
 	sys_maximum := maximum
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_int(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_int(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecInt64_ is analogous to the C function g_param_spec_int64.
-func ParamSpecInt64_(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) {
+func ParamSpecInt64_(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -386,11 +422,13 @@ func ParamSpecInt64_(name string, nick string, blurb string, minimum int64, maxi
 	sys_maximum := maximum
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_int64(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_int64(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecLong_ is analogous to the C function g_param_spec_long.
-func ParamSpecLong_(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) {
+func ParamSpecLong_(name string, nick string, blurb string, minimum int64, maximum int64, defaultValue int64, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -398,57 +436,69 @@ func ParamSpecLong_(name string, nick string, blurb string, minimum int64, maxim
 	sys_maximum := maximum
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_long(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_long(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecObject_ is analogous to the C function g_param_spec_object.
-func ParamSpecObject_(name string, nick string, blurb string, objectType uint64, flags int) {
+func ParamSpecObject_(name string, nick string, blurb string, objectType uint64, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
 	sys_objectType := objectType
 	sys_flags := flags
-	gobject.Fn_g_param_spec_object(sys_name, sys_nick, sys_blurb, sys_objectType, sys_flags)
+	ret := gobject.Fn_g_param_spec_object(sys_name, sys_nick, sys_blurb, sys_objectType, sys_flags)
+
+	return ret
 }
 
 // ParamSpecOverride_ is analogous to the C function g_param_spec_override.
-func ParamSpecOverride_(name string, overridden *ParamSpec) {
+func ParamSpecOverride_(name string, overridden *ParamSpec) unsafe.Pointer {
 	sys_name := name
 	sys_overridden := overridden.ToC()
-	gobject.Fn_g_param_spec_override(sys_name, sys_overridden)
+	ret := gobject.Fn_g_param_spec_override(sys_name, sys_overridden)
+
+	return ret
 }
 
 // ParamSpecParam_ is analogous to the C function g_param_spec_param.
-func ParamSpecParam_(name string, nick string, blurb string, paramType uint64, flags int) {
+func ParamSpecParam_(name string, nick string, blurb string, paramType uint64, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
 	sys_paramType := paramType
 	sys_flags := flags
-	gobject.Fn_g_param_spec_param(sys_name, sys_nick, sys_blurb, sys_paramType, sys_flags)
+	ret := gobject.Fn_g_param_spec_param(sys_name, sys_nick, sys_blurb, sys_paramType, sys_flags)
+
+	return ret
 }
 
 // ParamSpecPointer_ is analogous to the C function g_param_spec_pointer.
-func ParamSpecPointer_(name string, nick string, blurb string, flags int) {
+func ParamSpecPointer_(name string, nick string, blurb string, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
 	sys_flags := flags
-	gobject.Fn_g_param_spec_pointer(sys_name, sys_nick, sys_blurb, sys_flags)
+	ret := gobject.Fn_g_param_spec_pointer(sys_name, sys_nick, sys_blurb, sys_flags)
+
+	return ret
 }
 
 // ParamSpecString_ is analogous to the C function g_param_spec_string.
-func ParamSpecString_(name string, nick string, blurb string, defaultValue string, flags int) {
+func ParamSpecString_(name string, nick string, blurb string, defaultValue string, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_string(sys_name, sys_nick, sys_blurb, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_string(sys_name, sys_nick, sys_blurb, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecUchar is analogous to the C function g_param_spec_uchar.
-func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maximum uint8, defaultValue uint8, flags int) {
+func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maximum uint8, defaultValue uint8, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -456,11 +506,13 @@ func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maxim
 	sys_maximum := maximum
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_uchar(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_uchar(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecUint is analogous to the C function g_param_spec_uint.
-func ParamSpecUint(name string, nick string, blurb string, minimum uint, maximum uint, defaultValue uint, flags int) {
+func ParamSpecUint(name string, nick string, blurb string, minimum uint, maximum uint, defaultValue uint, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -468,11 +520,13 @@ func ParamSpecUint(name string, nick string, blurb string, minimum uint, maximum
 	sys_maximum := maximum
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_uint(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_uint(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecUint64 is analogous to the C function g_param_spec_uint64.
-func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags int) {
+func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -480,11 +534,13 @@ func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, max
 	sys_maximum := maximum
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_uint64(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_uint64(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecUlong is analogous to the C function g_param_spec_ulong.
-func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags int) {
+func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maximum uint64, defaultValue uint64, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
@@ -492,50 +548,62 @@ func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maxi
 	sys_maximum := maximum
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_ulong(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_ulong(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecUnichar_ is analogous to the C function g_param_spec_unichar.
-func ParamSpecUnichar_(name string, nick string, blurb string, defaultValue rune, flags int) {
+func ParamSpecUnichar_(name string, nick string, blurb string, defaultValue rune, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
 	sys_defaultValue := defaultValue
 	sys_flags := flags
-	gobject.Fn_g_param_spec_unichar(sys_name, sys_nick, sys_blurb, sys_defaultValue, sys_flags)
+	ret := gobject.Fn_g_param_spec_unichar(sys_name, sys_nick, sys_blurb, sys_defaultValue, sys_flags)
+
+	return ret
 }
 
 // ParamSpecValueArray_ is analogous to the C function g_param_spec_value_array.
-func ParamSpecValueArray_(name string, nick string, blurb string, elementSpec *ParamSpec, flags int) {
+func ParamSpecValueArray_(name string, nick string, blurb string, elementSpec *ParamSpec, flags int) unsafe.Pointer {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb
 	sys_elementSpec := elementSpec.ToC()
 	sys_flags := flags
-	gobject.Fn_g_param_spec_value_array(sys_name, sys_nick, sys_blurb, sys_elementSpec, sys_flags)
+	ret := gobject.Fn_g_param_spec_value_array(sys_name, sys_nick, sys_blurb, sys_elementSpec, sys_flags)
+
+	return ret
 }
 
 // ParamTypeRegisterStatic is analogous to the C function g_param_type_register_static.
-func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) {
+func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) uint64 {
 	sys_name := name
 	sys_pspecInfo := pspecInfo.ToC()
-	gobject.Fn_g_param_type_register_static(sys_name, sys_pspecInfo)
+	ret := gobject.Fn_g_param_type_register_static(sys_name, sys_pspecInfo)
+
+	return ret
 }
 
 // ParamValueConvert is analogous to the C function g_param_value_convert.
-func ParamValueConvert(pspec *ParamSpec, srcValue *Value, destValue *Value, strictValidation bool) {
+func ParamValueConvert(pspec *ParamSpec, srcValue *Value, destValue *Value, strictValidation bool) bool {
 	sys_pspec := pspec.ToC()
 	sys_srcValue := srcValue.ToC()
 	sys_destValue := destValue.ToC()
 	sys_strictValidation := strictValidation
-	gobject.Fn_g_param_value_convert(sys_pspec, sys_srcValue, sys_destValue, sys_strictValidation)
+	ret := gobject.Fn_g_param_value_convert(sys_pspec, sys_srcValue, sys_destValue, sys_strictValidation)
+
+	return ret
 }
 
 // ParamValueDefaults is analogous to the C function g_param_value_defaults.
-func ParamValueDefaults(pspec *ParamSpec, value *Value) {
+func ParamValueDefaults(pspec *ParamSpec, value *Value) bool {
 	sys_pspec := pspec.ToC()
 	sys_value := value.ToC()
-	gobject.Fn_g_param_value_defaults(sys_pspec, sys_value)
+	ret := gobject.Fn_g_param_value_defaults(sys_pspec, sys_value)
+
+	return ret
 }
 
 // ParamValueSetDefault is analogous to the C function g_param_value_set_default.
@@ -546,33 +614,41 @@ func ParamValueSetDefault(pspec *ParamSpec, value *Value) {
 }
 
 // ParamValueValidate is analogous to the C function g_param_value_validate.
-func ParamValueValidate(pspec *ParamSpec, value *Value) {
+func ParamValueValidate(pspec *ParamSpec, value *Value) bool {
 	sys_pspec := pspec.ToC()
 	sys_value := value.ToC()
-	gobject.Fn_g_param_value_validate(sys_pspec, sys_value)
+	ret := gobject.Fn_g_param_value_validate(sys_pspec, sys_value)
+
+	return ret
 }
 
 // ParamValuesCmp is analogous to the C function g_param_values_cmp.
-func ParamValuesCmp(pspec *ParamSpec, value1 *Value, value2 *Value) {
+func ParamValuesCmp(pspec *ParamSpec, value1 *Value, value2 *Value) int {
 	sys_pspec := pspec.ToC()
 	sys_value1 := value1.ToC()
 	sys_value2 := value2.ToC()
-	gobject.Fn_g_param_values_cmp(sys_pspec, sys_value1, sys_value2)
+	ret := gobject.Fn_g_param_values_cmp(sys_pspec, sys_value1, sys_value2)
+
+	return ret
 }
 
 // PointerTypeRegisterStatic is analogous to the C function g_pointer_type_register_static.
-func PointerTypeRegisterStatic(name string) {
+func PointerTypeRegisterStatic(name string) uint64 {
 	sys_name := name
-	gobject.Fn_g_pointer_type_register_static(sys_name)
+	ret := gobject.Fn_g_pointer_type_register_static(sys_name)
+
+	return ret
 }
 
 // SignalAccumulatorTrueHandled is analogous to the C function g_signal_accumulator_true_handled.
-func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy unsafe.Pointer) {
+func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy unsafe.Pointer) bool {
 	sys_ihint := ihint.ToC()
 	sys_returnAccu := returnAccu.ToC()
 	sys_handlerReturn := handlerReturn.ToC()
 	sys_dummy := dummy
-	gobject.Fn_g_signal_accumulator_true_handled(sys_ihint, sys_returnAccu, sys_handlerReturn, sys_dummy)
+	ret := gobject.Fn_g_signal_accumulator_true_handled(sys_ihint, sys_returnAccu, sys_handlerReturn, sys_dummy)
+
+	return ret
 }
 
 // UNSUPPORTED : g_signal_add_emission_hook : parameter 'hook_func' is callback
@@ -580,22 +656,26 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 // UNSUPPORTED : g_signal_chain_from_overridden : parameter 'instance_and_params' is array parameter without length parameter
 
 // SignalConnectClosure is analogous to the C function g_signal_connect_closure.
-func SignalConnectClosure(instance unsafe.Pointer, detailedSignal string, closure *Closure, after bool) {
+func SignalConnectClosure(instance unsafe.Pointer, detailedSignal string, closure *Closure, after bool) uint64 {
 	sys_instance := instance
 	sys_detailedSignal := detailedSignal
 	sys_closure := closure.ToC()
 	sys_after := after
-	gobject.Fn_g_signal_connect_closure(sys_instance, sys_detailedSignal, sys_closure, sys_after)
+	ret := gobject.Fn_g_signal_connect_closure(sys_instance, sys_detailedSignal, sys_closure, sys_after)
+
+	return ret
 }
 
 // SignalConnectClosureById is analogous to the C function g_signal_connect_closure_by_id.
-func SignalConnectClosureById(instance unsafe.Pointer, signalId uint, detail uint32, closure *Closure, after bool) {
+func SignalConnectClosureById(instance unsafe.Pointer, signalId uint, detail uint32, closure *Closure, after bool) uint64 {
 	sys_instance := instance
 	sys_signalId := signalId
 	sys_detail := detail
 	sys_closure := closure.ToC()
 	sys_after := after
-	gobject.Fn_g_signal_connect_closure_by_id(sys_instance, sys_signalId, sys_detail, sys_closure, sys_after)
+	ret := gobject.Fn_g_signal_connect_closure_by_id(sys_instance, sys_signalId, sys_detail, sys_closure, sys_after)
+
+	return ret
 }
 
 // UNSUPPORTED : g_signal_connect_data : parameter 'c_handler' is callback
@@ -628,9 +708,11 @@ func SignalEmitValist(instance unsafe.Pointer, signalId uint, detail uint32) {
 // UNSUPPORTED : g_signal_emitv : parameter 'instance_and_params' is array parameter without length parameter
 
 // SignalGetInvocationHint is analogous to the C function g_signal_get_invocation_hint.
-func SignalGetInvocationHint(instance unsafe.Pointer) {
+func SignalGetInvocationHint(instance unsafe.Pointer) unsafe.Pointer {
 	sys_instance := instance
-	gobject.Fn_g_signal_get_invocation_hint(sys_instance)
+	ret := gobject.Fn_g_signal_get_invocation_hint(sys_instance)
+
+	return ret
 }
 
 // SignalHandlerBlock is analogous to the C function g_signal_handler_block.
@@ -648,7 +730,7 @@ func SignalHandlerDisconnect(instance unsafe.Pointer, handlerId uint64) {
 }
 
 // SignalHandlerFind is analogous to the C function g_signal_handler_find.
-func SignalHandlerFind(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
+func SignalHandlerFind(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) uint64 {
 	sys_instance := instance
 	sys_mask := mask
 	sys_signalId := signalId
@@ -656,14 +738,18 @@ func SignalHandlerFind(instance unsafe.Pointer, mask int, signalId uint, detail 
 	sys_closure := closure.ToC()
 	sys_func_ := func_
 	sys_data := data
-	gobject.Fn_g_signal_handler_find(sys_instance, sys_mask, sys_signalId, sys_detail, sys_closure, sys_func_, sys_data)
+	ret := gobject.Fn_g_signal_handler_find(sys_instance, sys_mask, sys_signalId, sys_detail, sys_closure, sys_func_, sys_data)
+
+	return ret
 }
 
 // SignalHandlerIsConnected is analogous to the C function g_signal_handler_is_connected.
-func SignalHandlerIsConnected(instance unsafe.Pointer, handlerId uint64) {
+func SignalHandlerIsConnected(instance unsafe.Pointer, handlerId uint64) bool {
 	sys_instance := instance
 	sys_handlerId := handlerId
-	gobject.Fn_g_signal_handler_is_connected(sys_instance, sys_handlerId)
+	ret := gobject.Fn_g_signal_handler_is_connected(sys_instance, sys_handlerId)
+
+	return ret
 }
 
 // SignalHandlerUnblock is analogous to the C function g_signal_handler_unblock.
@@ -674,7 +760,7 @@ func SignalHandlerUnblock(instance unsafe.Pointer, handlerId uint64) {
 }
 
 // SignalHandlersBlockMatched is analogous to the C function g_signal_handlers_block_matched.
-func SignalHandlersBlockMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
+func SignalHandlersBlockMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) uint {
 	sys_instance := instance
 	sys_mask := mask
 	sys_signalId := signalId
@@ -682,7 +768,9 @@ func SignalHandlersBlockMatched(instance unsafe.Pointer, mask int, signalId uint
 	sys_closure := closure.ToC()
 	sys_func_ := func_
 	sys_data := data
-	gobject.Fn_g_signal_handlers_block_matched(sys_instance, sys_mask, sys_signalId, sys_detail, sys_closure, sys_func_, sys_data)
+	ret := gobject.Fn_g_signal_handlers_block_matched(sys_instance, sys_mask, sys_signalId, sys_detail, sys_closure, sys_func_, sys_data)
+
+	return ret
 }
 
 // SignalHandlersDestroy is analogous to the C function g_signal_handlers_destroy.
@@ -692,7 +780,7 @@ func SignalHandlersDestroy(instance unsafe.Pointer) {
 }
 
 // SignalHandlersDisconnectMatched is analogous to the C function g_signal_handlers_disconnect_matched.
-func SignalHandlersDisconnectMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
+func SignalHandlersDisconnectMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) uint {
 	sys_instance := instance
 	sys_mask := mask
 	sys_signalId := signalId
@@ -700,11 +788,13 @@ func SignalHandlersDisconnectMatched(instance unsafe.Pointer, mask int, signalId
 	sys_closure := closure.ToC()
 	sys_func_ := func_
 	sys_data := data
-	gobject.Fn_g_signal_handlers_disconnect_matched(sys_instance, sys_mask, sys_signalId, sys_detail, sys_closure, sys_func_, sys_data)
+	ret := gobject.Fn_g_signal_handlers_disconnect_matched(sys_instance, sys_mask, sys_signalId, sys_detail, sys_closure, sys_func_, sys_data)
+
+	return ret
 }
 
 // SignalHandlersUnblockMatched is analogous to the C function g_signal_handlers_unblock_matched.
-func SignalHandlersUnblockMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) {
+func SignalHandlersUnblockMatched(instance unsafe.Pointer, mask int, signalId uint, detail uint32, closure *Closure, func_ unsafe.Pointer, data unsafe.Pointer) uint {
 	sys_instance := instance
 	sys_mask := mask
 	sys_signalId := signalId
@@ -712,31 +802,39 @@ func SignalHandlersUnblockMatched(instance unsafe.Pointer, mask int, signalId ui
 	sys_closure := closure.ToC()
 	sys_func_ := func_
 	sys_data := data
-	gobject.Fn_g_signal_handlers_unblock_matched(sys_instance, sys_mask, sys_signalId, sys_detail, sys_closure, sys_func_, sys_data)
+	ret := gobject.Fn_g_signal_handlers_unblock_matched(sys_instance, sys_mask, sys_signalId, sys_detail, sys_closure, sys_func_, sys_data)
+
+	return ret
 }
 
 // SignalHasHandlerPending is analogous to the C function g_signal_has_handler_pending.
-func SignalHasHandlerPending(instance unsafe.Pointer, signalId uint, detail uint32, mayBeBlocked bool) {
+func SignalHasHandlerPending(instance unsafe.Pointer, signalId uint, detail uint32, mayBeBlocked bool) bool {
 	sys_instance := instance
 	sys_signalId := signalId
 	sys_detail := detail
 	sys_mayBeBlocked := mayBeBlocked
-	gobject.Fn_g_signal_has_handler_pending(sys_instance, sys_signalId, sys_detail, sys_mayBeBlocked)
+	ret := gobject.Fn_g_signal_has_handler_pending(sys_instance, sys_signalId, sys_detail, sys_mayBeBlocked)
+
+	return ret
 }
 
 // UNSUPPORTED : g_signal_list_ids : has array [in]out, n_ids
 
 // SignalLookup is analogous to the C function g_signal_lookup.
-func SignalLookup(name string, itype uint64) {
+func SignalLookup(name string, itype uint64) uint {
 	sys_name := name
 	sys_itype := itype
-	gobject.Fn_g_signal_lookup(sys_name, sys_itype)
+	ret := gobject.Fn_g_signal_lookup(sys_name, sys_itype)
+
+	return ret
 }
 
 // SignalName is analogous to the C function g_signal_name.
-func SignalName(signalId uint) {
+func SignalName(signalId uint) string {
 	sys_signalId := signalId
-	gobject.Fn_g_signal_name(sys_signalId)
+	ret := gobject.Fn_g_signal_name(sys_signalId)
+
+	return ret
 }
 
 // UNSUPPORTED : g_signal_new : parameter 'accumulator' is callback
@@ -786,10 +884,12 @@ func SignalStopEmissionByName(instance unsafe.Pointer, detailedSignal string) {
 }
 
 // SignalTypeCclosureNew is analogous to the C function g_signal_type_cclosure_new.
-func SignalTypeCclosureNew(itype uint64, structOffset uint) {
+func SignalTypeCclosureNew(itype uint64, structOffset uint) unsafe.Pointer {
 	sys_itype := itype
 	sys_structOffset := structOffset
-	gobject.Fn_g_signal_type_cclosure_new(sys_itype, sys_structOffset)
+	ret := gobject.Fn_g_signal_type_cclosure_new(sys_itype, sys_structOffset)
+
+	return ret
 }
 
 // SourceSetClosure is analogous to the C function g_source_set_closure.
@@ -806,18 +906,22 @@ func SourceSetDummyCallback(source *glib.Source) {
 }
 
 // StrdupValueContents is analogous to the C function g_strdup_value_contents.
-func StrdupValueContents(value *Value) {
+func StrdupValueContents(value *Value) string {
 	sys_value := value.ToC()
-	gobject.Fn_g_strdup_value_contents(sys_value)
+	ret := gobject.Fn_g_strdup_value_contents(sys_value)
+
+	return ret
 }
 
 // UNSUPPORTED : g_type_add_class_cache_func : parameter 'cache_func' is callback
 
 // TypeAddInstancePrivate is analogous to the C function g_type_add_instance_private.
-func TypeAddInstancePrivate(classType uint64, privateSize uint64) {
+func TypeAddInstancePrivate(classType uint64, privateSize uint64) int {
 	sys_classType := classType
 	sys_privateSize := privateSize
-	gobject.Fn_g_type_add_instance_private(sys_classType, sys_privateSize)
+	ret := gobject.Fn_g_type_add_instance_private(sys_classType, sys_privateSize)
+
+	return ret
 }
 
 // UNSUPPORTED : g_type_add_interface_check : parameter 'check_func' is callback
@@ -839,83 +943,107 @@ func TypeAddInterfaceStatic(instanceType uint64, interfaceType uint64, info *Int
 }
 
 // TypeCheckClassCast is analogous to the C function g_type_check_class_cast.
-func TypeCheckClassCast(gClass *TypeClass, isAType uint64) {
+func TypeCheckClassCast(gClass *TypeClass, isAType uint64) unsafe.Pointer {
 	sys_gClass := gClass.ToC()
 	sys_isAType := isAType
-	gobject.Fn_g_type_check_class_cast(sys_gClass, sys_isAType)
+	ret := gobject.Fn_g_type_check_class_cast(sys_gClass, sys_isAType)
+
+	return ret
 }
 
 // TypeCheckClassIsA is analogous to the C function g_type_check_class_is_a.
-func TypeCheckClassIsA(gClass *TypeClass, isAType uint64) {
+func TypeCheckClassIsA(gClass *TypeClass, isAType uint64) bool {
 	sys_gClass := gClass.ToC()
 	sys_isAType := isAType
-	gobject.Fn_g_type_check_class_is_a(sys_gClass, sys_isAType)
+	ret := gobject.Fn_g_type_check_class_is_a(sys_gClass, sys_isAType)
+
+	return ret
 }
 
 // TypeCheckInstance is analogous to the C function g_type_check_instance.
-func TypeCheckInstance(instance *TypeInstance) {
+func TypeCheckInstance(instance *TypeInstance) bool {
 	sys_instance := instance.ToC()
-	gobject.Fn_g_type_check_instance(sys_instance)
+	ret := gobject.Fn_g_type_check_instance(sys_instance)
+
+	return ret
 }
 
 // TypeCheckInstanceCast is analogous to the C function g_type_check_instance_cast.
-func TypeCheckInstanceCast(instance *TypeInstance, ifaceType uint64) {
+func TypeCheckInstanceCast(instance *TypeInstance, ifaceType uint64) unsafe.Pointer {
 	sys_instance := instance.ToC()
 	sys_ifaceType := ifaceType
-	gobject.Fn_g_type_check_instance_cast(sys_instance, sys_ifaceType)
+	ret := gobject.Fn_g_type_check_instance_cast(sys_instance, sys_ifaceType)
+
+	return ret
 }
 
 // TypeCheckInstanceIsA is analogous to the C function g_type_check_instance_is_a.
-func TypeCheckInstanceIsA(instance *TypeInstance, ifaceType uint64) {
+func TypeCheckInstanceIsA(instance *TypeInstance, ifaceType uint64) bool {
 	sys_instance := instance.ToC()
 	sys_ifaceType := ifaceType
-	gobject.Fn_g_type_check_instance_is_a(sys_instance, sys_ifaceType)
+	ret := gobject.Fn_g_type_check_instance_is_a(sys_instance, sys_ifaceType)
+
+	return ret
 }
 
 // TypeCheckInstanceIsFundamentallyA is analogous to the C function g_type_check_instance_is_fundamentally_a.
-func TypeCheckInstanceIsFundamentallyA(instance *TypeInstance, fundamentalType uint64) {
+func TypeCheckInstanceIsFundamentallyA(instance *TypeInstance, fundamentalType uint64) bool {
 	sys_instance := instance.ToC()
 	sys_fundamentalType := fundamentalType
-	gobject.Fn_g_type_check_instance_is_fundamentally_a(sys_instance, sys_fundamentalType)
+	ret := gobject.Fn_g_type_check_instance_is_fundamentally_a(sys_instance, sys_fundamentalType)
+
+	return ret
 }
 
 // TypeCheckIsValueType is analogous to the C function g_type_check_is_value_type.
-func TypeCheckIsValueType(type_ uint64) {
+func TypeCheckIsValueType(type_ uint64) bool {
 	sys_type_ := type_
-	gobject.Fn_g_type_check_is_value_type(sys_type_)
+	ret := gobject.Fn_g_type_check_is_value_type(sys_type_)
+
+	return ret
 }
 
 // TypeCheckValue is analogous to the C function g_type_check_value.
-func TypeCheckValue(value *Value) {
+func TypeCheckValue(value *Value) bool {
 	sys_value := value.ToC()
-	gobject.Fn_g_type_check_value(sys_value)
+	ret := gobject.Fn_g_type_check_value(sys_value)
+
+	return ret
 }
 
 // TypeCheckValueHolds is analogous to the C function g_type_check_value_holds.
-func TypeCheckValueHolds(value *Value, type_ uint64) {
+func TypeCheckValueHolds(value *Value, type_ uint64) bool {
 	sys_value := value.ToC()
 	sys_type_ := type_
-	gobject.Fn_g_type_check_value_holds(sys_value, sys_type_)
+	ret := gobject.Fn_g_type_check_value_holds(sys_value, sys_type_)
+
+	return ret
 }
 
 // UNSUPPORTED : g_type_children : has array [in]out, n_children
 
 // TypeCreateInstance is analogous to the C function g_type_create_instance.
-func TypeCreateInstance(type_ uint64) {
+func TypeCreateInstance(type_ uint64) unsafe.Pointer {
 	sys_type_ := type_
-	gobject.Fn_g_type_create_instance(sys_type_)
+	ret := gobject.Fn_g_type_create_instance(sys_type_)
+
+	return ret
 }
 
 // TypeDefaultInterfacePeek is analogous to the C function g_type_default_interface_peek.
-func TypeDefaultInterfacePeek(gType uint64) {
+func TypeDefaultInterfacePeek(gType uint64) unsafe.Pointer {
 	sys_gType := gType
-	gobject.Fn_g_type_default_interface_peek(sys_gType)
+	ret := gobject.Fn_g_type_default_interface_peek(sys_gType)
+
+	return ret
 }
 
 // TypeDefaultInterfaceRef is analogous to the C function g_type_default_interface_ref.
-func TypeDefaultInterfaceRef(gType uint64) {
+func TypeDefaultInterfaceRef(gType uint64) unsafe.Pointer {
 	sys_gType := gType
-	gobject.Fn_g_type_default_interface_ref(sys_gType)
+	ret := gobject.Fn_g_type_default_interface_ref(sys_gType)
+
+	return ret
 }
 
 // TypeDefaultInterfaceUnref is analogous to the C function g_type_default_interface_unref.
@@ -925,9 +1053,11 @@ func TypeDefaultInterfaceUnref(gIface unsafe.Pointer) {
 }
 
 // TypeDepth is analogous to the C function g_type_depth.
-func TypeDepth(type_ uint64) {
+func TypeDepth(type_ uint64) uint {
 	sys_type_ := type_
-	gobject.Fn_g_type_depth(sys_type_)
+	ret := gobject.Fn_g_type_depth(sys_type_)
+
+	return ret
 }
 
 // TypeFreeInstance is analogous to the C function g_type_free_instance.
@@ -937,33 +1067,43 @@ func TypeFreeInstance(instance *TypeInstance) {
 }
 
 // TypeFromName is analogous to the C function g_type_from_name.
-func TypeFromName(name string) {
+func TypeFromName(name string) uint64 {
 	sys_name := name
-	gobject.Fn_g_type_from_name(sys_name)
+	ret := gobject.Fn_g_type_from_name(sys_name)
+
+	return ret
 }
 
 // TypeFundamental is analogous to the C function g_type_fundamental.
-func TypeFundamental(typeId uint64) {
+func TypeFundamental(typeId uint64) uint64 {
 	sys_typeId := typeId
-	gobject.Fn_g_type_fundamental(sys_typeId)
+	ret := gobject.Fn_g_type_fundamental(sys_typeId)
+
+	return ret
 }
 
 // TypeFundamentalNext is analogous to the C function g_type_fundamental_next.
-func TypeFundamentalNext() {
-	gobject.Fn_g_type_fundamental_next()
+func TypeFundamentalNext() uint64 {
+	ret := gobject.Fn_g_type_fundamental_next()
+
+	return ret
 }
 
 // TypeGetPlugin is analogous to the C function g_type_get_plugin.
-func TypeGetPlugin(type_ uint64) {
+func TypeGetPlugin(type_ uint64) unsafe.Pointer {
 	sys_type_ := type_
-	gobject.Fn_g_type_get_plugin(sys_type_)
+	ret := gobject.Fn_g_type_get_plugin(sys_type_)
+
+	return ret
 }
 
 // TypeGetQdata is analogous to the C function g_type_get_qdata.
-func TypeGetQdata(type_ uint64, quark uint32) {
+func TypeGetQdata(type_ uint64, quark uint32) unsafe.Pointer {
 	sys_type_ := type_
 	sys_quark := quark
-	gobject.Fn_g_type_get_qdata(sys_type_, sys_quark)
+	ret := gobject.Fn_g_type_get_qdata(sys_type_, sys_quark)
+
+	return ret
 }
 
 // TypeInit is analogous to the C function g_type_init.
@@ -982,77 +1122,97 @@ func TypeInitWithDebugFlags(debugFlags int) {
 // UNSUPPORTED : g_type_interfaces : has array [in]out, n_interfaces
 
 // TypeIsA is analogous to the C function g_type_is_a.
-func TypeIsA(type_ uint64, isAType uint64) {
+func TypeIsA(type_ uint64, isAType uint64) bool {
 	sys_type_ := type_
 	sys_isAType := isAType
-	gobject.Fn_g_type_is_a(sys_type_, sys_isAType)
+	ret := gobject.Fn_g_type_is_a(sys_type_, sys_isAType)
+
+	return ret
 }
 
 // TypeName is analogous to the C function g_type_name.
-func TypeName(type_ uint64) {
+func TypeName(type_ uint64) string {
 	sys_type_ := type_
-	gobject.Fn_g_type_name(sys_type_)
+	ret := gobject.Fn_g_type_name(sys_type_)
+
+	return ret
 }
 
 // TypeNameFromClass is analogous to the C function g_type_name_from_class.
-func TypeNameFromClass(gClass *TypeClass) {
+func TypeNameFromClass(gClass *TypeClass) string {
 	sys_gClass := gClass.ToC()
-	gobject.Fn_g_type_name_from_class(sys_gClass)
+	ret := gobject.Fn_g_type_name_from_class(sys_gClass)
+
+	return ret
 }
 
 // TypeNameFromInstance is analogous to the C function g_type_name_from_instance.
-func TypeNameFromInstance(instance *TypeInstance) {
+func TypeNameFromInstance(instance *TypeInstance) string {
 	sys_instance := instance.ToC()
-	gobject.Fn_g_type_name_from_instance(sys_instance)
+	ret := gobject.Fn_g_type_name_from_instance(sys_instance)
+
+	return ret
 }
 
 // TypeNextBase is analogous to the C function g_type_next_base.
-func TypeNextBase(leafType uint64, rootType uint64) {
+func TypeNextBase(leafType uint64, rootType uint64) uint64 {
 	sys_leafType := leafType
 	sys_rootType := rootType
-	gobject.Fn_g_type_next_base(sys_leafType, sys_rootType)
+	ret := gobject.Fn_g_type_next_base(sys_leafType, sys_rootType)
+
+	return ret
 }
 
 // TypeParent is analogous to the C function g_type_parent.
-func TypeParent(type_ uint64) {
+func TypeParent(type_ uint64) uint64 {
 	sys_type_ := type_
-	gobject.Fn_g_type_parent(sys_type_)
+	ret := gobject.Fn_g_type_parent(sys_type_)
+
+	return ret
 }
 
 // TypeQname is analogous to the C function g_type_qname.
-func TypeQname(type_ uint64) {
+func TypeQname(type_ uint64) uint32 {
 	sys_type_ := type_
-	gobject.Fn_g_type_qname(sys_type_)
+	ret := gobject.Fn_g_type_qname(sys_type_)
+
+	return ret
 }
 
 // UNSUPPORTED : g_type_query : has array [in]out, query
 
 // TypeRegisterDynamic is analogous to the C function g_type_register_dynamic.
-func TypeRegisterDynamic(parentType uint64, typeName string, plugin *TypePlugin, flags int) {
+func TypeRegisterDynamic(parentType uint64, typeName string, plugin *TypePlugin, flags int) uint64 {
 	sys_parentType := parentType
 	sys_typeName := typeName
 	sys_plugin := plugin.ToC()
 	sys_flags := flags
-	gobject.Fn_g_type_register_dynamic(sys_parentType, sys_typeName, sys_plugin, sys_flags)
+	ret := gobject.Fn_g_type_register_dynamic(sys_parentType, sys_typeName, sys_plugin, sys_flags)
+
+	return ret
 }
 
 // TypeRegisterFundamental is analogous to the C function g_type_register_fundamental.
-func TypeRegisterFundamental(typeId uint64, typeName string, info *TypeInfo, finfo *TypeFundamentalInfo, flags int) {
+func TypeRegisterFundamental(typeId uint64, typeName string, info *TypeInfo, finfo *TypeFundamentalInfo, flags int) uint64 {
 	sys_typeId := typeId
 	sys_typeName := typeName
 	sys_info := info.ToC()
 	sys_finfo := finfo.ToC()
 	sys_flags := flags
-	gobject.Fn_g_type_register_fundamental(sys_typeId, sys_typeName, sys_info, sys_finfo, sys_flags)
+	ret := gobject.Fn_g_type_register_fundamental(sys_typeId, sys_typeName, sys_info, sys_finfo, sys_flags)
+
+	return ret
 }
 
 // TypeRegisterStatic is analogous to the C function g_type_register_static.
-func TypeRegisterStatic(parentType uint64, typeName string, info *TypeInfo, flags int) {
+func TypeRegisterStatic(parentType uint64, typeName string, info *TypeInfo, flags int) uint64 {
 	sys_parentType := parentType
 	sys_typeName := typeName
 	sys_info := info.ToC()
 	sys_flags := flags
-	gobject.Fn_g_type_register_static(sys_parentType, sys_typeName, sys_info, sys_flags)
+	ret := gobject.Fn_g_type_register_static(sys_parentType, sys_typeName, sys_info, sys_flags)
+
+	return ret
 }
 
 // UNSUPPORTED : g_type_register_static_simple : parameter 'class_init' is callback
@@ -1070,10 +1230,12 @@ func TypeSetQdata(type_ uint64, quark uint32, data unsafe.Pointer) {
 }
 
 // TypeTestFlags is analogous to the C function g_type_test_flags.
-func TypeTestFlags(type_ uint64, flags uint) {
+func TypeTestFlags(type_ uint64, flags uint) bool {
 	sys_type_ := type_
 	sys_flags := flags
-	gobject.Fn_g_type_test_flags(sys_type_, sys_flags)
+	ret := gobject.Fn_g_type_test_flags(sys_type_, sys_flags)
+
+	return ret
 }
 
 // UNSUPPORTED : g_value_register_transform_func : parameter 'transform_func' is callback

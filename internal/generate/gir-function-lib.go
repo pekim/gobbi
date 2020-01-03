@@ -51,7 +51,7 @@ func (f *Function) generateLib(fi *jen.File, version semver.Version) {
 		Do(f.generateLibReceiverDeclaration).
 		Id(f.goName).
 		ParamsFunc(f.generateLibParamsDeclaration).
-		Do(f.generateLibReturnTypeDeclaration).
+		ParamsFunc(f.generateLibReturnTypeDeclaration).
 		BlockFunc(f.generateLibBody)
 
 	fi.Line()
@@ -84,12 +84,12 @@ func (f *Function) generateLibParamsDeclaration(g *jen.Group) {
 	//}
 }
 
-func (f *Function) generateLibReturnTypeDeclaration(s *jen.Statement) {
+func (f *Function) generateLibReturnTypeDeclaration(g *jen.Group) {
 	if f.ReturnValue.isVoid() {
 		return
 	}
 
-	//s.Add(f.ReturnValue.sysParamGoType())
+	g.Add(f.ReturnValue.sysParamGoType())
 }
 
 func (f *Function) generateLibBody(g *jen.Group) {
@@ -107,20 +107,15 @@ func (f *Function) generateLibBody(g *jen.Group) {
 	}
 
 	// call sys function
-	g.Qual(f.namespace.goFullSysPackageName, f.sysName).CallFunc(f.generateLibCallParams)
+	g.
+		Do(func(s *jen.Statement) {
+			if !f.ReturnValue.isVoid() {
+				s.Id("ret").Op(":=")
+			}
+		}).
+		Qual(f.namespace.goFullSysPackageName, f.sysName).CallFunc(f.generateLibCallParams)
 
-	//// [ret :=] C.somefunction(...)
-	//g.
-	//	Do(func(s *jen.Statement) {
-	//		if !f.ReturnValue.isVoid() {
-	//			s.Id("ret").Op(":=")
-	//		}
-	//	}).
-	//	Qual("C", cIdentifier).
-	//	CallFunc(f.generateSysCallParams)
-	//
-	//f.generateSysCArgsOut(g)
-	//f.generateSysReturn(g)
+	f.generateLibReturn(g)
 }
 
 func (f *Function) generateLibCallParams(g *jen.Group) {
@@ -145,16 +140,20 @@ func (f *Function) generateLibCallParams(g *jen.Group) {
 	//}
 }
 
-//func (f *Function) generateLibReturn(g *jen.Group) {
-//	if f.ReturnValue.isVoid() {
-//		return
-//	}
-//
-//	g.Line()
-//	retValue := f.ReturnValue.generateLibGoValue(g, "ret")
-//	g.Return().Add(retValue)
-//}
-//
+func (f *Function) generateLibReturn(g *jen.Group) {
+	if f.ReturnValue.isVoid() {
+		return
+	}
+
+	g.Line()
+
+	g.Return().Do(func(s *jen.Statement) {
+		if !f.ReturnValue.isVoid() {
+			s.Id("ret")
+		}
+	})
+}
+
 //func (f *Function) generateLibVarArgsCFunction(fi *jen.File) {
 //	params := []string{}
 //	args := []string{}

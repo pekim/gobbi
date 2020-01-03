@@ -2707,36 +2707,46 @@ const WrapMode_word = WrapMode(2)
 const WrapMode_word_char = WrapMode(3)
 
 // AccelGroupsActivate is analogous to the C function gtk_accel_groups_activate.
-func AccelGroupsActivate(object *gobject.Object, accelKey uint, accelMods int) {
+func AccelGroupsActivate(object *gobject.Object, accelKey uint, accelMods int) bool {
 	sys_object := object.ToC()
 	sys_accelKey := accelKey
 	sys_accelMods := accelMods
-	gtk.Fn_gtk_accel_groups_activate(sys_object, sys_accelKey, sys_accelMods)
+	ret := gtk.Fn_gtk_accel_groups_activate(sys_object, sys_accelKey, sys_accelMods)
+
+	return ret
 }
 
 // AccelGroupsFromObject is analogous to the C function gtk_accel_groups_from_object.
-func AccelGroupsFromObject(object *gobject.Object) {
+func AccelGroupsFromObject(object *gobject.Object) unsafe.Pointer {
 	sys_object := object.ToC()
-	gtk.Fn_gtk_accel_groups_from_object(sys_object)
+	ret := gtk.Fn_gtk_accel_groups_from_object(sys_object)
+
+	return ret
 }
 
 // AcceleratorGetDefaultModMask is analogous to the C function gtk_accelerator_get_default_mod_mask.
-func AcceleratorGetDefaultModMask() {
-	gtk.Fn_gtk_accelerator_get_default_mod_mask()
+func AcceleratorGetDefaultModMask() int {
+	ret := gtk.Fn_gtk_accelerator_get_default_mod_mask()
+
+	return ret
 }
 
 // AcceleratorGetLabel is analogous to the C function gtk_accelerator_get_label.
-func AcceleratorGetLabel(acceleratorKey uint, acceleratorMods int) {
+func AcceleratorGetLabel(acceleratorKey uint, acceleratorMods int) string {
 	sys_acceleratorKey := acceleratorKey
 	sys_acceleratorMods := acceleratorMods
-	gtk.Fn_gtk_accelerator_get_label(sys_acceleratorKey, sys_acceleratorMods)
+	ret := gtk.Fn_gtk_accelerator_get_label(sys_acceleratorKey, sys_acceleratorMods)
+
+	return ret
 }
 
 // AcceleratorName is analogous to the C function gtk_accelerator_name.
-func AcceleratorName(acceleratorKey uint, acceleratorMods int) {
+func AcceleratorName(acceleratorKey uint, acceleratorMods int) string {
 	sys_acceleratorKey := acceleratorKey
 	sys_acceleratorMods := acceleratorMods
-	gtk.Fn_gtk_accelerator_name(sys_acceleratorKey, sys_acceleratorMods)
+	ret := gtk.Fn_gtk_accelerator_name(sys_acceleratorKey, sys_acceleratorMods)
+
+	return ret
 }
 
 // UNSUPPORTED : gtk_accelerator_parse : has array [in]out, accelerator_key
@@ -2750,39 +2760,49 @@ func AcceleratorSetDefaultModMask(defaultModMask int) {
 }
 
 // AcceleratorValid is analogous to the C function gtk_accelerator_valid.
-func AcceleratorValid(keyval uint, modifiers int) {
+func AcceleratorValid(keyval uint, modifiers int) bool {
 	sys_keyval := keyval
 	sys_modifiers := modifiers
-	gtk.Fn_gtk_accelerator_valid(sys_keyval, sys_modifiers)
+	ret := gtk.Fn_gtk_accelerator_valid(sys_keyval, sys_modifiers)
+
+	return ret
 }
 
 // AlternativeDialogButtonOrder is analogous to the C function gtk_alternative_dialog_button_order.
-func AlternativeDialogButtonOrder(screen *gdk.Screen) {
+func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
 	sys_screen := screen.ToC()
-	gtk.Fn_gtk_alternative_dialog_button_order(sys_screen)
+	ret := gtk.Fn_gtk_alternative_dialog_button_order(sys_screen)
+
+	return ret
 }
 
 // BindingsActivate is analogous to the C function gtk_bindings_activate.
-func BindingsActivate(object *gobject.Object, keyval uint, modifiers int) {
+func BindingsActivate(object *gobject.Object, keyval uint, modifiers int) bool {
 	sys_object := object.ToC()
 	sys_keyval := keyval
 	sys_modifiers := modifiers
-	gtk.Fn_gtk_bindings_activate(sys_object, sys_keyval, sys_modifiers)
+	ret := gtk.Fn_gtk_bindings_activate(sys_object, sys_keyval, sys_modifiers)
+
+	return ret
 }
 
 // BindingsActivateEvent is analogous to the C function gtk_bindings_activate_event.
-func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) {
+func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) bool {
 	sys_object := object.ToC()
 	sys_event := event.ToC()
-	gtk.Fn_gtk_bindings_activate_event(sys_object, sys_event)
+	ret := gtk.Fn_gtk_bindings_activate_event(sys_object, sys_event)
+
+	return ret
 }
 
 // CheckVersion is analogous to the C function gtk_check_version.
-func CheckVersion(requiredMajor uint, requiredMinor uint, requiredMicro uint) {
+func CheckVersion(requiredMajor uint, requiredMinor uint, requiredMicro uint) string {
 	sys_requiredMajor := requiredMajor
 	sys_requiredMinor := requiredMinor
 	sys_requiredMicro := requiredMicro
-	gtk.Fn_gtk_check_version(sys_requiredMajor, sys_requiredMinor, sys_requiredMicro)
+	ret := gtk.Fn_gtk_check_version(sys_requiredMajor, sys_requiredMinor, sys_requiredMicro)
+
+	return ret
 }
 
 // DisableSetlocale is analogous to the C function gtk_disable_setlocale.
@@ -2791,11 +2811,13 @@ func DisableSetlocale() {
 }
 
 // DistributeNaturalAllocation is analogous to the C function gtk_distribute_natural_allocation.
-func DistributeNaturalAllocation(extraSpace int, nRequestedSizes uint, sizes *RequestedSize) {
+func DistributeNaturalAllocation(extraSpace int, nRequestedSizes uint, sizes *RequestedSize) int {
 	sys_extraSpace := extraSpace
 	sys_nRequestedSizes := nRequestedSizes
 	sys_sizes := sizes.ToC()
-	gtk.Fn_gtk_distribute_natural_allocation(sys_extraSpace, sys_nRequestedSizes, sys_sizes)
+	ret := gtk.Fn_gtk_distribute_natural_allocation(sys_extraSpace, sys_nRequestedSizes, sys_sizes)
+
+	return ret
 }
 
 // DragFinish is analogous to the C function gtk_drag_finish.
@@ -2808,9 +2830,11 @@ func DragFinish(context *gdk.DragContext, success bool, del bool, time uint32) {
 }
 
 // DragGetSourceWidget is analogous to the C function gtk_drag_get_source_widget.
-func DragGetSourceWidget(context *gdk.DragContext) {
+func DragGetSourceWidget(context *gdk.DragContext) unsafe.Pointer {
 	sys_context := context.ToC()
-	gtk.Fn_gtk_drag_get_source_widget(sys_context)
+	ret := gtk.Fn_gtk_drag_get_source_widget(sys_context)
+
+	return ret
 }
 
 // DragSetIconDefault is analogous to the C function gtk_drag_set_icon_default.
@@ -2854,57 +2878,77 @@ func DragSetIconWidget(context *gdk.DragContext, widget *Widget, hotX int, hotY 
 }
 
 // EventsPending is analogous to the C function gtk_events_pending.
-func EventsPending() {
-	gtk.Fn_gtk_events_pending()
+func EventsPending() bool {
+	ret := gtk.Fn_gtk_events_pending()
+
+	return ret
 }
 
 // False is analogous to the C function gtk_false.
-func False() {
-	gtk.Fn_gtk_false()
+func False() bool {
+	ret := gtk.Fn_gtk_false()
+
+	return ret
 }
 
 // GetCurrentEvent is analogous to the C function gtk_get_current_event.
-func GetCurrentEvent() {
-	gtk.Fn_gtk_get_current_event()
+func GetCurrentEvent() unsafe.Pointer {
+	ret := gtk.Fn_gtk_get_current_event()
+
+	return ret
 }
 
 // GetCurrentEventDevice is analogous to the C function gtk_get_current_event_device.
-func GetCurrentEventDevice() {
-	gtk.Fn_gtk_get_current_event_device()
+func GetCurrentEventDevice() unsafe.Pointer {
+	ret := gtk.Fn_gtk_get_current_event_device()
+
+	return ret
 }
 
 // UNSUPPORTED : gtk_get_current_event_state : has array [in]out, state
 
 // GetCurrentEventTime is analogous to the C function gtk_get_current_event_time.
-func GetCurrentEventTime() {
-	gtk.Fn_gtk_get_current_event_time()
+func GetCurrentEventTime() uint32 {
+	ret := gtk.Fn_gtk_get_current_event_time()
+
+	return ret
 }
 
 // GetDebugFlags is analogous to the C function gtk_get_debug_flags.
-func GetDebugFlags() {
-	gtk.Fn_gtk_get_debug_flags()
+func GetDebugFlags() uint {
+	ret := gtk.Fn_gtk_get_debug_flags()
+
+	return ret
 }
 
 // GetDefaultLanguage is analogous to the C function gtk_get_default_language.
-func GetDefaultLanguage() {
-	gtk.Fn_gtk_get_default_language()
+func GetDefaultLanguage() unsafe.Pointer {
+	ret := gtk.Fn_gtk_get_default_language()
+
+	return ret
 }
 
 // GetEventWidget is analogous to the C function gtk_get_event_widget.
-func GetEventWidget(event *gdk.Event) {
+func GetEventWidget(event *gdk.Event) unsafe.Pointer {
 	sys_event := event.ToC()
-	gtk.Fn_gtk_get_event_widget(sys_event)
+	ret := gtk.Fn_gtk_get_event_widget(sys_event)
+
+	return ret
 }
 
 // GetOptionGroup is analogous to the C function gtk_get_option_group.
-func GetOptionGroup(openDefaultDisplay bool) {
+func GetOptionGroup(openDefaultDisplay bool) unsafe.Pointer {
 	sys_openDefaultDisplay := openDefaultDisplay
-	gtk.Fn_gtk_get_option_group(sys_openDefaultDisplay)
+	ret := gtk.Fn_gtk_get_option_group(sys_openDefaultDisplay)
+
+	return ret
 }
 
 // GrabGetCurrent is analogous to the C function gtk_grab_get_current.
-func GrabGetCurrent() {
-	gtk.Fn_gtk_grab_get_current()
+func GrabGetCurrent() unsafe.Pointer {
+	ret := gtk.Fn_gtk_grab_get_current()
+
+	return ret
 }
 
 // UNSUPPORTED : gtk_icon_size_lookup : has array [in]out, width
@@ -2937,19 +2981,25 @@ func MainDoEvent(event *gdk.Event) {
 }
 
 // MainIteration is analogous to the C function gtk_main_iteration.
-func MainIteration() {
-	gtk.Fn_gtk_main_iteration()
+func MainIteration() bool {
+	ret := gtk.Fn_gtk_main_iteration()
+
+	return ret
 }
 
 // MainIterationDo is analogous to the C function gtk_main_iteration_do.
-func MainIterationDo(blocking bool) {
+func MainIterationDo(blocking bool) bool {
 	sys_blocking := blocking
-	gtk.Fn_gtk_main_iteration_do(sys_blocking)
+	ret := gtk.Fn_gtk_main_iteration_do(sys_blocking)
+
+	return ret
 }
 
 // MainLevel is analogous to the C function gtk_main_level.
-func MainLevel() {
-	gtk.Fn_gtk_main_level()
+func MainLevel() uint {
+	ret := gtk.Fn_gtk_main_level()
+
+	return ret
 }
 
 // MainQuit is analogous to the C function gtk_main_quit.
@@ -3278,54 +3328,70 @@ func RcAddDefaultFile(filename string) {
 }
 
 // RcFindModuleInPath is analogous to the C function gtk_rc_find_module_in_path.
-func RcFindModuleInPath(moduleFile string) {
+func RcFindModuleInPath(moduleFile string) string {
 	sys_moduleFile := moduleFile
-	gtk.Fn_gtk_rc_find_module_in_path(sys_moduleFile)
+	ret := gtk.Fn_gtk_rc_find_module_in_path(sys_moduleFile)
+
+	return ret
 }
 
 // RcFindPixmapInPath is analogous to the C function gtk_rc_find_pixmap_in_path.
-func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile string) {
+func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile string) string {
 	sys_settings := settings.ToC()
 	sys_scanner := scanner.ToC()
 	sys_pixmapFile := pixmapFile
-	gtk.Fn_gtk_rc_find_pixmap_in_path(sys_settings, sys_scanner, sys_pixmapFile)
+	ret := gtk.Fn_gtk_rc_find_pixmap_in_path(sys_settings, sys_scanner, sys_pixmapFile)
+
+	return ret
 }
 
 // UNSUPPORTED : gtk_rc_get_default_files : no array length
 
 // RcGetImModuleFile is analogous to the C function gtk_rc_get_im_module_file.
-func RcGetImModuleFile() {
-	gtk.Fn_gtk_rc_get_im_module_file()
+func RcGetImModuleFile() string {
+	ret := gtk.Fn_gtk_rc_get_im_module_file()
+
+	return ret
 }
 
 // RcGetImModulePath is analogous to the C function gtk_rc_get_im_module_path.
-func RcGetImModulePath() {
-	gtk.Fn_gtk_rc_get_im_module_path()
+func RcGetImModulePath() string {
+	ret := gtk.Fn_gtk_rc_get_im_module_path()
+
+	return ret
 }
 
 // RcGetModuleDir is analogous to the C function gtk_rc_get_module_dir.
-func RcGetModuleDir() {
-	gtk.Fn_gtk_rc_get_module_dir()
+func RcGetModuleDir() string {
+	ret := gtk.Fn_gtk_rc_get_module_dir()
+
+	return ret
 }
 
 // RcGetStyle is analogous to the C function gtk_rc_get_style.
-func RcGetStyle(widget *Widget) {
+func RcGetStyle(widget *Widget) unsafe.Pointer {
 	sys_widget := widget.ToC()
-	gtk.Fn_gtk_rc_get_style(sys_widget)
+	ret := gtk.Fn_gtk_rc_get_style(sys_widget)
+
+	return ret
 }
 
 // RcGetStyleByPaths is analogous to the C function gtk_rc_get_style_by_paths.
-func RcGetStyleByPaths(settings *Settings, widgetPath string, classPath string, type_ uint64) {
+func RcGetStyleByPaths(settings *Settings, widgetPath string, classPath string, type_ uint64) unsafe.Pointer {
 	sys_settings := settings.ToC()
 	sys_widgetPath := widgetPath
 	sys_classPath := classPath
 	sys_type_ := type_
-	gtk.Fn_gtk_rc_get_style_by_paths(sys_settings, sys_widgetPath, sys_classPath, sys_type_)
+	ret := gtk.Fn_gtk_rc_get_style_by_paths(sys_settings, sys_widgetPath, sys_classPath, sys_type_)
+
+	return ret
 }
 
 // RcGetThemeDir is analogous to the C function gtk_rc_get_theme_dir.
-func RcGetThemeDir() {
-	gtk.Fn_gtk_rc_get_theme_dir()
+func RcGetThemeDir() string {
+	ret := gtk.Fn_gtk_rc_get_theme_dir()
+
+	return ret
 }
 
 // RcParse is analogous to the C function gtk_rc_parse.
@@ -3339,10 +3405,12 @@ func RcParse(filename string) {
 // UNSUPPORTED : gtk_rc_parse_color_full : has array [in]out, color
 
 // RcParsePriority is analogous to the C function gtk_rc_parse_priority.
-func RcParsePriority(scanner *glib.Scanner, priority *int) {
+func RcParsePriority(scanner *glib.Scanner, priority *int) uint {
 	sys_scanner := scanner.ToC()
 	sys_priority := priority
-	gtk.Fn_gtk_rc_parse_priority(sys_scanner, sys_priority)
+	ret := gtk.Fn_gtk_rc_parse_priority(sys_scanner, sys_priority)
+
+	return ret
 }
 
 // UNSUPPORTED : gtk_rc_parse_state : has array [in]out, state
@@ -3354,15 +3422,19 @@ func RcParseString(rcString string) {
 }
 
 // RcReparseAll is analogous to the C function gtk_rc_reparse_all.
-func RcReparseAll() {
-	gtk.Fn_gtk_rc_reparse_all()
+func RcReparseAll() bool {
+	ret := gtk.Fn_gtk_rc_reparse_all()
+
+	return ret
 }
 
 // RcReparseAllForSettings is analogous to the C function gtk_rc_reparse_all_for_settings.
-func RcReparseAllForSettings(settings *Settings, forceLoad bool) {
+func RcReparseAllForSettings(settings *Settings, forceLoad bool) bool {
 	sys_settings := settings.ToC()
 	sys_forceLoad := forceLoad
-	gtk.Fn_gtk_rc_reparse_all_for_settings(sys_settings, sys_forceLoad)
+	ret := gtk.Fn_gtk_rc_reparse_all_for_settings(sys_settings, sys_forceLoad)
+
+	return ret
 }
 
 // RcResetStyles is analogous to the C function gtk_rc_reset_styles.
@@ -3372,8 +3444,10 @@ func RcResetStyles(settings *Settings) {
 }
 
 // RcScannerNew is analogous to the C function gtk_rc_scanner_new.
-func RcScannerNew() {
-	gtk.Fn_gtk_rc_scanner_new()
+func RcScannerNew() unsafe.Pointer {
+	ret := gtk.Fn_gtk_rc_scanner_new()
+
+	return ret
 }
 
 // UNSUPPORTED : gtk_rc_set_default_files : parameter 'filenames' is array parameter without length parameter
@@ -3401,29 +3475,35 @@ func SelectionClearTargets(widget *Widget, selection gdk.Atom) {
 }
 
 // SelectionConvert is analogous to the C function gtk_selection_convert.
-func SelectionConvert(widget *Widget, selection gdk.Atom, target gdk.Atom, time uint32) {
+func SelectionConvert(widget *Widget, selection gdk.Atom, target gdk.Atom, time uint32) bool {
 	sys_widget := widget.ToC()
 	sys_selection := selection.ToC()
 	sys_target := target.ToC()
 	sys_time := time
-	gtk.Fn_gtk_selection_convert(sys_widget, sys_selection, sys_target, sys_time)
+	ret := gtk.Fn_gtk_selection_convert(sys_widget, sys_selection, sys_target, sys_time)
+
+	return ret
 }
 
 // SelectionOwnerSet is analogous to the C function gtk_selection_owner_set.
-func SelectionOwnerSet(widget *Widget, selection gdk.Atom, time uint32) {
+func SelectionOwnerSet(widget *Widget, selection gdk.Atom, time uint32) bool {
 	sys_widget := widget.ToC()
 	sys_selection := selection.ToC()
 	sys_time := time
-	gtk.Fn_gtk_selection_owner_set(sys_widget, sys_selection, sys_time)
+	ret := gtk.Fn_gtk_selection_owner_set(sys_widget, sys_selection, sys_time)
+
+	return ret
 }
 
 // SelectionOwnerSetForDisplay is analogous to the C function gtk_selection_owner_set_for_display.
-func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) {
+func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) bool {
 	sys_display := display.ToC()
 	sys_widget := widget.ToC()
 	sys_selection := selection.ToC()
 	sys_time := time
-	gtk.Fn_gtk_selection_owner_set_for_display(sys_display, sys_widget, sys_selection, sys_time)
+	ret := gtk.Fn_gtk_selection_owner_set_for_display(sys_display, sys_widget, sys_selection, sys_time)
+
+	return ret
 }
 
 // SelectionRemoveAll is analogous to the C function gtk_selection_remove_all.
@@ -3454,8 +3534,10 @@ func ShowAboutDialog(parent *Window, firstPropertyName string) {
 // UNSUPPORTED : gtk_stock_add_static : has array param, items
 
 // StockListIds is analogous to the C function gtk_stock_list_ids.
-func StockListIds() {
-	gtk.Fn_gtk_stock_list_ids()
+func StockListIds() unsafe.Pointer {
+	ret := gtk.Fn_gtk_stock_list_ids()
+
+	return ret
 }
 
 // UNSUPPORTED : gtk_stock_lookup : has array [in]out, item
@@ -3483,16 +3565,20 @@ func StockListIds() {
 // UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
 
 // TreeSetRowDragData is analogous to the C function gtk_tree_set_row_drag_data.
-func TreeSetRowDragData(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) {
+func TreeSetRowDragData(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) bool {
 	sys_selectionData := selectionData.ToC()
 	sys_treeModel := treeModel.ToC()
 	sys_path := path.ToC()
-	gtk.Fn_gtk_tree_set_row_drag_data(sys_selectionData, sys_treeModel, sys_path)
+	ret := gtk.Fn_gtk_tree_set_row_drag_data(sys_selectionData, sys_treeModel, sys_path)
+
+	return ret
 }
 
 // True is analogous to the C function gtk_true.
-func True() {
-	gtk.Fn_gtk_true()
+func True() bool {
+	ret := gtk.Fn_gtk_true()
+
+	return ret
 }
 
 // AboutDialogClass is a representation of the C record GtkAboutDialogClass.

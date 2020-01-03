@@ -755,113 +755,147 @@ const WrapMode_char = WrapMode(1)
 const WrapMode_word_char = WrapMode(2)
 
 // AttrBackgroundNew is analogous to the C function pango_attr_background_new.
-func AttrBackgroundNew(red uint16, green uint16, blue uint16) {
+func AttrBackgroundNew(red uint16, green uint16, blue uint16) unsafe.Pointer {
 	sys_red := red
 	sys_green := green
 	sys_blue := blue
-	pango.Fn_pango_attr_background_new(sys_red, sys_green, sys_blue)
+	ret := pango.Fn_pango_attr_background_new(sys_red, sys_green, sys_blue)
+
+	return ret
 }
 
 // AttrFallbackNew is analogous to the C function pango_attr_fallback_new.
-func AttrFallbackNew(enableFallback bool) {
+func AttrFallbackNew(enableFallback bool) unsafe.Pointer {
 	sys_enableFallback := enableFallback
-	pango.Fn_pango_attr_fallback_new(sys_enableFallback)
+	ret := pango.Fn_pango_attr_fallback_new(sys_enableFallback)
+
+	return ret
 }
 
 // AttrFamilyNew is analogous to the C function pango_attr_family_new.
-func AttrFamilyNew(family string) {
+func AttrFamilyNew(family string) unsafe.Pointer {
 	sys_family := family
-	pango.Fn_pango_attr_family_new(sys_family)
+	ret := pango.Fn_pango_attr_family_new(sys_family)
+
+	return ret
 }
 
 // AttrForegroundNew is analogous to the C function pango_attr_foreground_new.
-func AttrForegroundNew(red uint16, green uint16, blue uint16) {
+func AttrForegroundNew(red uint16, green uint16, blue uint16) unsafe.Pointer {
 	sys_red := red
 	sys_green := green
 	sys_blue := blue
-	pango.Fn_pango_attr_foreground_new(sys_red, sys_green, sys_blue)
+	ret := pango.Fn_pango_attr_foreground_new(sys_red, sys_green, sys_blue)
+
+	return ret
 }
 
 // AttrGravityHintNew is analogous to the C function pango_attr_gravity_hint_new.
-func AttrGravityHintNew(hint int) {
+func AttrGravityHintNew(hint int) unsafe.Pointer {
 	sys_hint := hint
-	pango.Fn_pango_attr_gravity_hint_new(sys_hint)
+	ret := pango.Fn_pango_attr_gravity_hint_new(sys_hint)
+
+	return ret
 }
 
 // AttrGravityNew is analogous to the C function pango_attr_gravity_new.
-func AttrGravityNew(gravity int) {
+func AttrGravityNew(gravity int) unsafe.Pointer {
 	sys_gravity := gravity
-	pango.Fn_pango_attr_gravity_new(sys_gravity)
+	ret := pango.Fn_pango_attr_gravity_new(sys_gravity)
+
+	return ret
 }
 
 // AttrLetterSpacingNew is analogous to the C function pango_attr_letter_spacing_new.
-func AttrLetterSpacingNew(letterSpacing int) {
+func AttrLetterSpacingNew(letterSpacing int) unsafe.Pointer {
 	sys_letterSpacing := letterSpacing
-	pango.Fn_pango_attr_letter_spacing_new(sys_letterSpacing)
+	ret := pango.Fn_pango_attr_letter_spacing_new(sys_letterSpacing)
+
+	return ret
 }
 
 // AttrRiseNew is analogous to the C function pango_attr_rise_new.
-func AttrRiseNew(rise int) {
+func AttrRiseNew(rise int) unsafe.Pointer {
 	sys_rise := rise
-	pango.Fn_pango_attr_rise_new(sys_rise)
+	ret := pango.Fn_pango_attr_rise_new(sys_rise)
+
+	return ret
 }
 
 // AttrScaleNew is analogous to the C function pango_attr_scale_new.
-func AttrScaleNew(scaleFactor float64) {
+func AttrScaleNew(scaleFactor float64) unsafe.Pointer {
 	sys_scaleFactor := scaleFactor
-	pango.Fn_pango_attr_scale_new(sys_scaleFactor)
+	ret := pango.Fn_pango_attr_scale_new(sys_scaleFactor)
+
+	return ret
 }
 
 // AttrStretchNew is analogous to the C function pango_attr_stretch_new.
-func AttrStretchNew(stretch int) {
+func AttrStretchNew(stretch int) unsafe.Pointer {
 	sys_stretch := stretch
-	pango.Fn_pango_attr_stretch_new(sys_stretch)
+	ret := pango.Fn_pango_attr_stretch_new(sys_stretch)
+
+	return ret
 }
 
 // AttrStrikethroughColorNew is analogous to the C function pango_attr_strikethrough_color_new.
-func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) {
+func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) unsafe.Pointer {
 	sys_red := red
 	sys_green := green
 	sys_blue := blue
-	pango.Fn_pango_attr_strikethrough_color_new(sys_red, sys_green, sys_blue)
+	ret := pango.Fn_pango_attr_strikethrough_color_new(sys_red, sys_green, sys_blue)
+
+	return ret
 }
 
 // AttrStrikethroughNew is analogous to the C function pango_attr_strikethrough_new.
-func AttrStrikethroughNew(strikethrough bool) {
+func AttrStrikethroughNew(strikethrough bool) unsafe.Pointer {
 	sys_strikethrough := strikethrough
-	pango.Fn_pango_attr_strikethrough_new(sys_strikethrough)
+	ret := pango.Fn_pango_attr_strikethrough_new(sys_strikethrough)
+
+	return ret
 }
 
 // AttrStyleNew is analogous to the C function pango_attr_style_new.
-func AttrStyleNew(style int) {
+func AttrStyleNew(style int) unsafe.Pointer {
 	sys_style := style
-	pango.Fn_pango_attr_style_new(sys_style)
+	ret := pango.Fn_pango_attr_style_new(sys_style)
+
+	return ret
 }
 
 // AttrUnderlineColorNew is analogous to the C function pango_attr_underline_color_new.
-func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) {
+func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) unsafe.Pointer {
 	sys_red := red
 	sys_green := green
 	sys_blue := blue
-	pango.Fn_pango_attr_underline_color_new(sys_red, sys_green, sys_blue)
+	ret := pango.Fn_pango_attr_underline_color_new(sys_red, sys_green, sys_blue)
+
+	return ret
 }
 
 // AttrUnderlineNew is analogous to the C function pango_attr_underline_new.
-func AttrUnderlineNew(underline int) {
+func AttrUnderlineNew(underline int) unsafe.Pointer {
 	sys_underline := underline
-	pango.Fn_pango_attr_underline_new(sys_underline)
+	ret := pango.Fn_pango_attr_underline_new(sys_underline)
+
+	return ret
 }
 
 // AttrVariantNew is analogous to the C function pango_attr_variant_new.
-func AttrVariantNew(variant int) {
+func AttrVariantNew(variant int) unsafe.Pointer {
 	sys_variant := variant
-	pango.Fn_pango_attr_variant_new(sys_variant)
+	ret := pango.Fn_pango_attr_variant_new(sys_variant)
+
+	return ret
 }
 
 // AttrWeightNew is analogous to the C function pango_attr_weight_new.
-func AttrWeightNew(weight int) {
+func AttrWeightNew(weight int) unsafe.Pointer {
 	sys_weight := weight
-	pango.Fn_pango_attr_weight_new(sys_weight)
+	ret := pango.Fn_pango_attr_weight_new(sys_weight)
+
+	return ret
 }
 
 // UNSUPPORTED : pango_break : has array param, attrs
@@ -880,10 +914,12 @@ func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
 }
 
 // FindBaseDir is analogous to the C function pango_find_base_dir.
-func FindBaseDir(text string, length int) {
+func FindBaseDir(text string, length int) int {
 	sys_text := text
 	sys_length := length
-	pango.Fn_pango_find_base_dir(sys_text, sys_length)
+	ret := pango.Fn_pango_find_base_dir(sys_text, sys_length)
+
+	return ret
 }
 
 // UNSUPPORTED : pango_find_map : blacklisted
@@ -895,33 +931,39 @@ func FindBaseDir(text string, length int) {
 // UNSUPPORTED : pango_get_log_attrs : has array param, log_attrs
 
 // GetMirrorChar is analogous to the C function pango_get_mirror_char.
-func GetMirrorChar(ch rune, mirroredCh *rune) {
+func GetMirrorChar(ch rune, mirroredCh *rune) bool {
 	sys_ch := ch
 	sys_mirroredCh := mirroredCh
-	pango.Fn_pango_get_mirror_char(sys_ch, sys_mirroredCh)
+	ret := pango.Fn_pango_get_mirror_char(sys_ch, sys_mirroredCh)
+
+	return ret
 }
 
 // UNSUPPORTED : pango_get_sysconf_subdirectory : blacklisted
 
 // IsZeroWidth is analogous to the C function pango_is_zero_width.
-func IsZeroWidth(ch rune) {
+func IsZeroWidth(ch rune) bool {
 	sys_ch := ch
-	pango.Fn_pango_is_zero_width(sys_ch)
+	ret := pango.Fn_pango_is_zero_width(sys_ch)
+
+	return ret
 }
 
 // Itemize is analogous to the C function pango_itemize.
-func Itemize(context *Context, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
+func Itemize(context *Context, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) unsafe.Pointer {
 	sys_context := context.ToC()
 	sys_text := text
 	sys_startIndex := startIndex
 	sys_length := length
 	sys_attrs := attrs.ToC()
 	sys_cachedIter := cachedIter.ToC()
-	pango.Fn_pango_itemize(sys_context, sys_text, sys_startIndex, sys_length, sys_attrs, sys_cachedIter)
+	ret := pango.Fn_pango_itemize(sys_context, sys_text, sys_startIndex, sys_length, sys_attrs, sys_cachedIter)
+
+	return ret
 }
 
 // ItemizeWithBaseDir is analogous to the C function pango_itemize_with_base_dir.
-func ItemizeWithBaseDir(context *Context, baseDir int, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) {
+func ItemizeWithBaseDir(context *Context, baseDir int, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) unsafe.Pointer {
 	sys_context := context.ToC()
 	sys_baseDir := baseDir
 	sys_text := text
@@ -929,15 +971,19 @@ func ItemizeWithBaseDir(context *Context, baseDir int, text string, startIndex i
 	sys_length := length
 	sys_attrs := attrs.ToC()
 	sys_cachedIter := cachedIter.ToC()
-	pango.Fn_pango_itemize_with_base_dir(sys_context, sys_baseDir, sys_text, sys_startIndex, sys_length, sys_attrs, sys_cachedIter)
+	ret := pango.Fn_pango_itemize_with_base_dir(sys_context, sys_baseDir, sys_text, sys_startIndex, sys_length, sys_attrs, sys_cachedIter)
+
+	return ret
 }
 
 // Log2visGetEmbeddingLevels is analogous to the C function pango_log2vis_get_embedding_levels.
-func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *int) {
+func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *int) *uint8 {
 	sys_text := text
 	sys_length := length
 	sys_pbaseDir := pbaseDir
-	pango.Fn_pango_log2vis_get_embedding_levels(sys_text, sys_length, sys_pbaseDir)
+	ret := pango.Fn_pango_log2vis_get_embedding_levels(sys_text, sys_length, sys_pbaseDir)
+
+	return ret
 }
 
 // UNSUPPORTED : pango_lookup_aliases : blacklisted
@@ -968,9 +1014,11 @@ func QuantizeLineGeometry(thickness *int, position *int) {
 // UNSUPPORTED : pango_read_line : has array [in]out, str
 
 // ReorderItems is analogous to the C function pango_reorder_items.
-func ReorderItems(logicalItems *glib.List) {
+func ReorderItems(logicalItems *glib.List) unsafe.Pointer {
 	sys_logicalItems := logicalItems.ToC()
-	pango.Fn_pango_reorder_items(sys_logicalItems)
+	ret := pango.Fn_pango_reorder_items(sys_logicalItems)
+
+	return ret
 }
 
 // UNSUPPORTED : pango_scan_int : has array [in]out, out
@@ -989,53 +1037,69 @@ func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
 }
 
 // SkipSpace is analogous to the C function pango_skip_space.
-func SkipSpace(pos *string) {
+func SkipSpace(pos *string) bool {
 	sys_pos := pos
-	pango.Fn_pango_skip_space(sys_pos)
+	ret := pango.Fn_pango_skip_space(sys_pos)
+
+	return ret
 }
 
 // UNSUPPORTED : pango_split_file_list : no array length
 
 // TrimString is analogous to the C function pango_trim_string.
-func TrimString(str string) {
+func TrimString(str string) string {
 	sys_str := str
-	pango.Fn_pango_trim_string(sys_str)
+	ret := pango.Fn_pango_trim_string(sys_str)
+
+	return ret
 }
 
 // UnicharDirection is analogous to the C function pango_unichar_direction.
-func UnicharDirection(ch rune) {
+func UnicharDirection(ch rune) int {
 	sys_ch := ch
-	pango.Fn_pango_unichar_direction(sys_ch)
+	ret := pango.Fn_pango_unichar_direction(sys_ch)
+
+	return ret
 }
 
 // UnitsFromDouble is analogous to the C function pango_units_from_double.
-func UnitsFromDouble(d float64) {
+func UnitsFromDouble(d float64) int {
 	sys_d := d
-	pango.Fn_pango_units_from_double(sys_d)
+	ret := pango.Fn_pango_units_from_double(sys_d)
+
+	return ret
 }
 
 // UnitsToDouble is analogous to the C function pango_units_to_double.
-func UnitsToDouble(i int) {
+func UnitsToDouble(i int) float64 {
 	sys_i := i
-	pango.Fn_pango_units_to_double(sys_i)
+	ret := pango.Fn_pango_units_to_double(sys_i)
+
+	return ret
 }
 
 // Version is analogous to the C function pango_version.
-func Version() {
-	pango.Fn_pango_version()
+func Version() int {
+	ret := pango.Fn_pango_version()
+
+	return ret
 }
 
 // VersionCheck is analogous to the C function pango_version_check.
-func VersionCheck(requiredMajor int, requiredMinor int, requiredMicro int) {
+func VersionCheck(requiredMajor int, requiredMinor int, requiredMicro int) string {
 	sys_requiredMajor := requiredMajor
 	sys_requiredMinor := requiredMinor
 	sys_requiredMicro := requiredMicro
-	pango.Fn_pango_version_check(sys_requiredMajor, sys_requiredMinor, sys_requiredMicro)
+	ret := pango.Fn_pango_version_check(sys_requiredMajor, sys_requiredMinor, sys_requiredMicro)
+
+	return ret
 }
 
 // VersionString is analogous to the C function pango_version_string.
-func VersionString() {
-	pango.Fn_pango_version_string()
+func VersionString() string {
+	ret := pango.Fn_pango_version_string()
+
+	return ret
 }
 
 // Analysis is a representation of the C record PangoAnalysis.
