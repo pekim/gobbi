@@ -189,3 +189,8 @@ type XEvent struct {
 func (recv *XEvent) ToC() unsafe.Pointer {
 	return recv.native
 }
+
+// XEventNewFromC creates a new XEvent from a pointer to the C XEvent that represents the XEvent.
+func XEventNewFromC(native unsafe.Pointer) *XEvent {
+	return &XEvent{native: native}
+}

@@ -2201,4 +2201,9 @@ func (recv *TypeCValue) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TypeCValueNewFromC creates a new TypeCValue from a pointer to the C GTypeCValue that represents the TypeCValue.
+func TypeCValueNewFromC(native unsafe.Pointer) *TypeCValue {
+	return &TypeCValue{native: native}
+}
+
 // UNSUPPORTED : _Value__data__union : blacklisted

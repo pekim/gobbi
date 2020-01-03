@@ -9659,3 +9659,8 @@ type Event struct {
 func (recv *Event) ToC() unsafe.Pointer {
 	return recv.native
 }
+
+// EventNewFromC creates a new Event from a pointer to the C GdkEvent that represents the Event.
+func EventNewFromC(native unsafe.Pointer) *Event {
+	return &Event{native: native}
+}

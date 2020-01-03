@@ -31,4 +31,5 @@ func (u *Union) generateLib(f *jen.File, version semver.Version) {
 
 	generateLibStructType(f, "union", u.Name, u.CType, "")
 	generateLibToC(f, u.Name, u.CType)
+	generateLibNewFromC(f, u.Name, u.CType)
 }
