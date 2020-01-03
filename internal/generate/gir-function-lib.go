@@ -29,7 +29,7 @@ func (f *Function) generateLib(fi *jen.File, version semver.Version) {
 		}
 
 		if !p.isIn() {
-			fi.Commentf("UNSUPPORTED : %s : has array [in]out, %s", f.CIdentifier, p.Name)
+			fi.Commentf("UNSUPPORTED : %s : has [in]out param, %s", f.CIdentifier, p.Name)
 			fi.Line()
 			return
 		}

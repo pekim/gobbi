@@ -1904,7 +1904,7 @@ func DbusGvalueToGvariant(gvalue *gobject.Value, type_ *glib.VariantType) *glib.
 	return ret
 }
 
-// UNSUPPORTED : g_dbus_gvariant_to_gvalue : has array [in]out, out_gvalue
+// UNSUPPORTED : g_dbus_gvariant_to_gvalue : has [in]out param, out_gvalue
 
 // DbusIsAddress is analogous to the C function g_dbus_is_address.
 func DbusIsAddress(string_ string) bool {
@@ -2084,7 +2084,7 @@ func UnixIsMountPathSystemInternal(mountPath string) bool {
 	return ret
 }
 
-// UNSUPPORTED : g_unix_mount_at : has array [in]out, time_read
+// UNSUPPORTED : g_unix_mount_at : has [in]out param, time_read
 
 // UnixMountCompare is analogous to the C function g_unix_mount_compare.
 func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int {
@@ -2096,7 +2096,7 @@ func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int {
 	return ret
 }
 
-// UNSUPPORTED : g_unix_mount_for : has array [in]out, time_read
+// UNSUPPORTED : g_unix_mount_for : has [in]out param, time_read
 
 // UnixMountFree is analogous to the C function g_unix_mount_free.
 func UnixMountFree(mountEntry *UnixMountEntry) {
@@ -2203,7 +2203,7 @@ func UnixMountPointsChangedSince(time uint64) bool {
 	return ret
 }
 
-// UNSUPPORTED : g_unix_mount_points_get : has array [in]out, time_read
+// UNSUPPORTED : g_unix_mount_points_get : has [in]out param, time_read
 
 // UnixMountsChangedSince is analogous to the C function g_unix_mounts_changed_since.
 func UnixMountsChangedSince(time uint64) bool {
@@ -2214,7 +2214,7 @@ func UnixMountsChangedSince(time uint64) bool {
 	return ret
 }
 
-// UNSUPPORTED : g_unix_mounts_get : has array [in]out, time_read
+// UNSUPPORTED : g_unix_mounts_get : has [in]out param, time_read
 
 // ActionEntry is a representation of the C record GActionEntry.
 type ActionEntry struct {

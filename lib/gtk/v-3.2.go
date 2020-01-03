@@ -2977,7 +2977,7 @@ func AcceleratorName(acceleratorKey uint, acceleratorMods int) string {
 	return ret
 }
 
-// UNSUPPORTED : gtk_accelerator_parse : has array [in]out, accelerator_key
+// UNSUPPORTED : gtk_accelerator_parse : has [in]out param, accelerator_key
 
 // UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
 
@@ -3214,7 +3214,7 @@ func GetCurrentEventDevice() *gdk.Device {
 	return ret
 }
 
-// UNSUPPORTED : gtk_get_current_event_state : has array [in]out, state
+// UNSUPPORTED : gtk_get_current_event_state : has [in]out param, state
 
 // GetCurrentEventTime is analogous to the C function gtk_get_current_event_time.
 func GetCurrentEventTime() uint32 {
@@ -3298,9 +3298,9 @@ func GrabGetCurrent() *Widget {
 	return ret
 }
 
-// UNSUPPORTED : gtk_icon_size_lookup : has array [in]out, width
+// UNSUPPORTED : gtk_icon_size_lookup : has [in]out param, width
 
-// UNSUPPORTED : gtk_icon_size_lookup_for_settings : has array [in]out, width
+// UNSUPPORTED : gtk_icon_size_lookup_for_settings : has [in]out param, width
 
 // UNSUPPORTED : gtk_init : has array param, argv
 
@@ -3769,9 +3769,9 @@ func RcParse(filename string) {
 	gtk.Fn_gtk_rc_parse(sys_filename)
 }
 
-// UNSUPPORTED : gtk_rc_parse_color : has array [in]out, color
+// UNSUPPORTED : gtk_rc_parse_color : has [in]out param, color
 
-// UNSUPPORTED : gtk_rc_parse_color_full : has array [in]out, color
+// UNSUPPORTED : gtk_rc_parse_color_full : has [in]out param, color
 
 // RcParsePriority is analogous to the C function gtk_rc_parse_priority.
 func RcParsePriority(scanner *glib.Scanner, priority *int) uint {
@@ -3783,7 +3783,7 @@ func RcParsePriority(scanner *glib.Scanner, priority *int) uint {
 	return ret
 }
 
-// UNSUPPORTED : gtk_rc_parse_state : has array [in]out, state
+// UNSUPPORTED : gtk_rc_parse_state : has [in]out param, state
 
 // RcParseString is analogous to the C function gtk_rc_parse_string.
 func RcParseString(rcString string) {
@@ -3858,7 +3858,7 @@ func RenderBackground(context *StyleContext, cr *cairo.Context, x float64, y flo
 	gtk.Fn_gtk_render_background(sys_context, sys_cr, sys_x, sys_y, sys_width, sys_height)
 }
 
-// UNSUPPORTED : gtk_render_background_get_clip : has array [in]out, out_clip
+// UNSUPPORTED : gtk_render_background_get_clip : has [in]out param, out_clip
 
 // RenderCheck is analogous to the C function gtk_render_check.
 func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
@@ -4006,7 +4006,7 @@ func RenderSlider(context *StyleContext, cr *cairo.Context, x float64, y float64
 	gtk.Fn_gtk_render_slider(sys_context, sys_cr, sys_x, sys_y, sys_width, sys_height, sys_orientation)
 }
 
-// UNSUPPORTED : gtk_rgb_to_hsv : has array [in]out, h
+// UNSUPPORTED : gtk_rgb_to_hsv : has [in]out param, h
 
 // SelectionAddTarget is analogous to the C function gtk_selection_add_target.
 func SelectionAddTarget(widget *Widget, selection gdk.Atom, target gdk.Atom, info uint) {
@@ -4096,13 +4096,13 @@ func StockListIds() *glib.SList {
 	return ret
 }
 
-// UNSUPPORTED : gtk_stock_lookup : has array [in]out, item
+// UNSUPPORTED : gtk_stock_lookup : has [in]out param, item
 
 // UNSUPPORTED : gtk_stock_set_translate_func : parameter 'func' is callback
 
 // UNSUPPORTED : gtk_target_table_free : has array param, targets
 
-// UNSUPPORTED : gtk_target_table_new_from_list : has array [in]out, n_targets
+// UNSUPPORTED : gtk_target_table_new_from_list : has [in]out param, n_targets
 
 // UNSUPPORTED : gtk_targets_include_image : has array param, targets
 
@@ -4175,7 +4175,7 @@ func TestFindWidget(widget *Widget, labelPattern string, widgetType uint64) *Wid
 
 // UNSUPPORTED : gtk_test_init : has array param, argvp
 
-// UNSUPPORTED : gtk_test_list_all_types : has array [in]out, n_types
+// UNSUPPORTED : gtk_test_list_all_types : has [in]out param, n_types
 
 // TestRegisterAllTypes is analogous to the C function gtk_test_register_all_types.
 func TestRegisterAllTypes() {
@@ -4247,7 +4247,7 @@ func TestWidgetSendKey(widget *Widget, keyval uint, modifiers int) bool {
 	return ret
 }
 
-// UNSUPPORTED : gtk_tree_get_row_drag_data : has array [in]out, tree_model
+// UNSUPPORTED : gtk_tree_get_row_drag_data : has [in]out param, tree_model
 
 // UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
 

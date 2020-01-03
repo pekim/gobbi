@@ -246,7 +246,7 @@ func ClearObject(objectPtr **Object) {
 	gobject.Fn_g_clear_object(sys_objectPtr)
 }
 
-// UNSUPPORTED : g_enum_complete_type_info : has array [in]out, info
+// UNSUPPORTED : g_enum_complete_type_info : has [in]out param, info
 
 // EnumGetValue is analogous to the C function g_enum_get_value.
 func EnumGetValue(enumClass *EnumClass, value int) *EnumValue {
@@ -288,7 +288,7 @@ func EnumRegisterStatic(name string, constStaticValues *EnumValue) uint64 {
 	return ret
 }
 
-// UNSUPPORTED : g_flags_complete_type_info : has array [in]out, info
+// UNSUPPORTED : g_flags_complete_type_info : has [in]out param, info
 
 // FlagsGetFirstValue is analogous to the C function g_flags_get_first_value.
 func FlagsGetFirstValue(flagsClass *FlagsClass, value uint) *FlagsValue {
@@ -931,7 +931,7 @@ func SignalHasHandlerPending(instance unsafe.Pointer, signalId uint, detail uint
 	return ret
 }
 
-// UNSUPPORTED : g_signal_list_ids : has array [in]out, n_ids
+// UNSUPPORTED : g_signal_list_ids : has [in]out param, n_ids
 
 // SignalLookup is analogous to the C function g_signal_lookup.
 func SignalLookup(name string, itype uint64) uint {
@@ -970,9 +970,9 @@ func SignalOverrideClassClosure(signalId uint, instanceType uint64, classClosure
 
 // UNSUPPORTED : g_signal_override_class_handler : parameter 'class_handler' is callback
 
-// UNSUPPORTED : g_signal_parse_name : has array [in]out, signal_id_p
+// UNSUPPORTED : g_signal_parse_name : has [in]out param, signal_id_p
 
-// UNSUPPORTED : g_signal_query : has array [in]out, query
+// UNSUPPORTED : g_signal_query : has [in]out param, query
 
 // SignalRemoveEmissionHook is analogous to the C function g_signal_remove_emission_hook.
 func SignalRemoveEmissionHook(signalId uint, hookId uint64) {
@@ -1154,7 +1154,7 @@ func TypeCheckValueHolds(value *Value, type_ uint64) bool {
 	return ret
 }
 
-// UNSUPPORTED : g_type_children : has array [in]out, n_children
+// UNSUPPORTED : g_type_children : has [in]out param, n_children
 
 // TypeCreateInstance is analogous to the C function g_type_create_instance.
 func TypeCreateInstance(type_ uint64) *TypeInstance {
@@ -1274,9 +1274,9 @@ func TypeInitWithDebugFlags(debugFlags int) {
 	gobject.Fn_g_type_init_with_debug_flags(sys_debugFlags)
 }
 
-// UNSUPPORTED : g_type_interface_prerequisites : has array [in]out, n_prerequisites
+// UNSUPPORTED : g_type_interface_prerequisites : has [in]out param, n_prerequisites
 
-// UNSUPPORTED : g_type_interfaces : has array [in]out, n_interfaces
+// UNSUPPORTED : g_type_interfaces : has [in]out param, n_interfaces
 
 // TypeIsA is analogous to the C function g_type_is_a.
 func TypeIsA(type_ uint64, isAType uint64) bool {
@@ -1343,7 +1343,7 @@ func TypeQname(type_ uint64) uint32 {
 	return ret
 }
 
-// UNSUPPORTED : g_type_query : has array [in]out, query
+// UNSUPPORTED : g_type_query : has [in]out param, query
 
 // TypeRegisterDynamic is analogous to the C function g_type_register_dynamic.
 func TypeRegisterDynamic(parentType uint64, typeName string, plugin *TypePlugin, flags int) uint64 {

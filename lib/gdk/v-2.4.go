@@ -8114,7 +8114,7 @@ func Beep() {
 	gdk.Fn_gdk_beep()
 }
 
-// UNSUPPORTED : gdk_cairo_get_clip_rectangle : has array [in]out, rect
+// UNSUPPORTED : gdk_cairo_get_clip_rectangle : has [in]out param, rect
 
 // CairoRegionCreateFromSurface is analogous to the C function gdk_cairo_region_create_from_surface.
 func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
@@ -8125,7 +8125,7 @@ func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
 	return ret
 }
 
-// UNSUPPORTED : gdk_color_parse : has array [in]out, color
+// UNSUPPORTED : gdk_color_parse : has [in]out param, color
 
 // DragAbort is analogous to the C function gdk_drag_abort.
 func DragAbort(context *DragContext, time uint32) {
@@ -8162,7 +8162,7 @@ func DragDrop(context *DragContext, time uint32) {
 	gdk.Fn_gdk_drag_drop(sys_context, sys_time)
 }
 
-// UNSUPPORTED : gdk_drag_find_window_for_screen : has array [in]out, dest_window
+// UNSUPPORTED : gdk_drag_find_window_for_screen : has [in]out param, dest_window
 
 // DragGetSelection is analogous to the C function gdk_drag_get_selection.
 func DragGetSelection(context *DragContext) *Atom {
@@ -8228,11 +8228,11 @@ func ErrorTrapPush() {
 
 // UNSUPPORTED : gdk_event_handler_set : parameter 'func' is callback
 
-// UNSUPPORTED : gdk_events_get_angle : has array [in]out, angle
+// UNSUPPORTED : gdk_events_get_angle : has [in]out param, angle
 
-// UNSUPPORTED : gdk_events_get_center : has array [in]out, x
+// UNSUPPORTED : gdk_events_get_center : has [in]out param, x
 
-// UNSUPPORTED : gdk_events_get_distance : has array [in]out, distance
+// UNSUPPORTED : gdk_events_get_distance : has [in]out param, distance
 
 // EventsPending is analogous to the C function gdk_events_pending.
 func EventsPending() bool {
@@ -8308,7 +8308,7 @@ func KeyboardUngrab(time uint32) {
 	gdk.Fn_gdk_keyboard_ungrab(sys_time)
 }
 
-// UNSUPPORTED : gdk_keyval_convert_case : has array [in]out, lower
+// UNSUPPORTED : gdk_keyval_convert_case : has [in]out param, lower
 
 // KeyvalFromName is analogous to the C function gdk_keyval_from_name.
 func KeyvalFromName(keyvalName string) uint {
@@ -8507,7 +8507,7 @@ func PropertyDelete(window *Window, property Atom) {
 	gdk.Fn_gdk_property_delete(sys_window, sys_property)
 }
 
-// UNSUPPORTED : gdk_property_get : has array [in]out, actual_property_type
+// UNSUPPORTED : gdk_property_get : has [in]out param, actual_property_type
 
 // UNSUPPORTED : gdk_query_depths : has array param, depths
 

@@ -942,7 +942,7 @@ func FindBaseDir(text string, length int) int {
 
 // UNSUPPORTED : pango_find_map : blacklisted
 
-// UNSUPPORTED : pango_find_paragraph_boundary : has array [in]out, paragraph_delimiter_index
+// UNSUPPORTED : pango_find_paragraph_boundary : has [in]out param, paragraph_delimiter_index
 
 // UNSUPPORTED : pango_get_lib_subdirectory : blacklisted
 
@@ -1015,17 +1015,17 @@ func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *int) *uint8 {
 
 // UNSUPPORTED : pango_module_register : blacklisted
 
-// UNSUPPORTED : pango_parse_enum : has array [in]out, value
+// UNSUPPORTED : pango_parse_enum : has [in]out param, value
 
 // UNSUPPORTED : pango_parse_markup : throws
 
-// UNSUPPORTED : pango_parse_stretch : has array [in]out, stretch
+// UNSUPPORTED : pango_parse_stretch : has [in]out param, stretch
 
-// UNSUPPORTED : pango_parse_style : has array [in]out, style
+// UNSUPPORTED : pango_parse_style : has [in]out param, style
 
-// UNSUPPORTED : pango_parse_variant : has array [in]out, variant
+// UNSUPPORTED : pango_parse_variant : has [in]out param, variant
 
-// UNSUPPORTED : pango_parse_weight : has array [in]out, weight
+// UNSUPPORTED : pango_parse_weight : has [in]out param, weight
 
 // QuantizeLineGeometry is analogous to the C function pango_quantize_line_geometry.
 func QuantizeLineGeometry(thickness *int, position *int) {
@@ -1034,7 +1034,7 @@ func QuantizeLineGeometry(thickness *int, position *int) {
 	pango.Fn_pango_quantize_line_geometry(sys_thickness, sys_position)
 }
 
-// UNSUPPORTED : pango_read_line : has array [in]out, str
+// UNSUPPORTED : pango_read_line : has [in]out param, str
 
 // ReorderItems is analogous to the C function pango_reorder_items.
 func ReorderItems(logicalItems *glib.List) *glib.List {
@@ -1045,11 +1045,11 @@ func ReorderItems(logicalItems *glib.List) *glib.List {
 	return ret
 }
 
-// UNSUPPORTED : pango_scan_int : has array [in]out, out
+// UNSUPPORTED : pango_scan_int : has [in]out param, out
 
-// UNSUPPORTED : pango_scan_string : has array [in]out, out
+// UNSUPPORTED : pango_scan_string : has [in]out param, out
 
-// UNSUPPORTED : pango_scan_word : has array [in]out, out
+// UNSUPPORTED : pango_scan_word : has [in]out param, out
 
 // Shape is analogous to the C function pango_shape.
 func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
