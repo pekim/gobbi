@@ -27,7 +27,7 @@ func (p *Parameter) generateLibArg(g *jen.Group, varName string) {
 	if p.Type != nil {
 		argValue := jen.Id(p.goVarName)
 
-		if p.Type.isRecord() || p.Type.isClass() || p.Type.isInterface() || p.Type.isUnion() {
+		if p.Type.isStruct() {
 			// A few strange cases in GObject.
 			if p.Type.CType != "gpointer" {
 				argValue = jen.Id(p.goVarName).Dot("ToC").Call()

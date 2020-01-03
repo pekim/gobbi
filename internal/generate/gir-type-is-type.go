@@ -84,6 +84,13 @@ func (t *Type) isUnion() bool {
 	return found
 }
 
+func (t *Type) isStruct() bool {
+	return t.isClass() ||
+		t.isRecord() ||
+		t.isInterface() ||
+		t.isUnion()
+}
+
 func (t *Type) isVaList() bool {
 	return t.Name == "va_list"
 }

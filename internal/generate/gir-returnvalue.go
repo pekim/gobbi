@@ -80,7 +80,7 @@ func (r *ReturnValue) generateSysGoTypeValue(cVarName string) *jen.Statement {
 		return jen.Qual("C", "GoString").Call(jen.Id(cVarName))
 	}
 
-	if r.Type.isClass() || r.Type.isRecord() || r.Type.isInterface() || r.Type.isUnion() {
+	if r.Type.isStruct() {
 		return jenUnsafePointer().Call(jen.Id(cVarName))
 	}
 

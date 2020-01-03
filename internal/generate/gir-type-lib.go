@@ -57,11 +57,7 @@ func (t *Type) libParamGoType(decrementIndirectionCount bool) *jen.Statement {
 		return jen.Op(stars).Id(t.Name)
 	}
 
-	if t.isClass() ||
-		t.isRecord() ||
-		t.isInterface() ||
-		t.isUnion() {
-
+	if t.isStruct() {
 		if t.cType.indirectionCount == 0 {
 			return jenUnsafePointer()
 		}

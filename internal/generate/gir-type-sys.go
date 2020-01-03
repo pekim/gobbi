@@ -48,11 +48,7 @@ func (t *Type) sysParamGoPlainType() *jen.Statement {
 		return jen.Id(t.Name)
 	}
 
-	if t.isClass() ||
-		t.isRecord() ||
-		t.isInterface() ||
-		t.isUnion() {
-
+	if t.isStruct() {
 		return jenUnsafePointer()
 	}
 
@@ -114,11 +110,7 @@ func (t *Type) sysParamGoType(decrementIndirectionCount bool) *jen.Statement {
 		return jen.Op(stars).Id(t.Name)
 	}
 
-	if t.isClass() ||
-		t.isRecord() ||
-		t.isInterface() ||
-		t.isUnion() {
-
+	if t.isStruct() {
 		if t.cType.indirectionCount == 0 {
 			return jenUnsafePointer()
 		}

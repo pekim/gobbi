@@ -89,14 +89,9 @@ func (f *Function) generateLibReturnTypeDeclaration(g *jen.Group) {
 		return
 	}
 
-	typ := f.ReturnValue.Type
-
 	// TODO below belongs in Type.sysParamGoType ???
-	if typ.isUnion() ||
-		typ.isRecord() ||
-		typ.isClass() ||
-		typ.isInterface() {
-
+	typ := f.ReturnValue.Type
+	if typ.isStruct() {
 		if typ.isQualifiedName() {
 			g.Op("*").Qual(typ.foreignNamespace.goFullPackageName, typ.foreignName)
 		} else {
@@ -163,11 +158,7 @@ func (f *Function) generateMarhsalReturnValue(g *jen.Group) {
 		return
 	}
 
-	if f.ReturnValue.Type.isUnion() ||
-		f.ReturnValue.Type.isRecord() ||
-		f.ReturnValue.Type.isClass() ||
-		f.ReturnValue.Type.isInterface() {
-
+	if f.ReturnValue.Type.isStruct() {
 		if f.ReturnValue.Type.isQualifiedName() {
 			ctorName := f.ReturnValue.Type.foreignName + "NewFromC"
 			g.Id("ret").Op(":=").Qual(f.ReturnValue.Type.foreignNamespace.goFullPackageName, ctorName).Call(jen.Id("retSys"))
