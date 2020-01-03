@@ -9082,6 +9082,11 @@ func (recv *Atom) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// AtomNewFromC creates a new Atom from a pointer to the C GdkAtom that represents the Atom.
+func AtomNewFromC(native unsafe.Pointer) *Atom {
+	return &Atom{native: native}
+}
+
 // Color is a representation of the C record GdkColor.
 type Color struct {
 	native unsafe.Pointer
@@ -9090,6 +9095,11 @@ type Color struct {
 // ToC returns a pointer to the C GdkColor that represents the Color.
 func (recv *Color) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ColorNewFromC creates a new Color from a pointer to the C GdkColor that represents the Color.
+func ColorNewFromC(native unsafe.Pointer) *Color {
+	return &Color{native: native}
 }
 
 // DevicePadInterface is a representation of the C record GdkDevicePadInterface.
@@ -9102,6 +9112,11 @@ func (recv *DevicePadInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DevicePadInterfaceNewFromC creates a new DevicePadInterface from a pointer to the C GdkDevicePadInterface that represents the DevicePadInterface.
+func DevicePadInterfaceNewFromC(native unsafe.Pointer) *DevicePadInterface {
+	return &DevicePadInterface{native: native}
+}
+
 // DrawingContextClass is a representation of the C record GdkDrawingContextClass.
 type DrawingContextClass struct {
 	native unsafe.Pointer
@@ -9110,6 +9125,11 @@ type DrawingContextClass struct {
 // ToC returns a pointer to the C GdkDrawingContextClass that represents the DrawingContextClass.
 func (recv *DrawingContextClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DrawingContextClassNewFromC creates a new DrawingContextClass from a pointer to the C GdkDrawingContextClass that represents the DrawingContextClass.
+func DrawingContextClassNewFromC(native unsafe.Pointer) *DrawingContextClass {
+	return &DrawingContextClass{native: native}
 }
 
 // EventAny is a representation of the C record GdkEventAny.
@@ -9122,6 +9142,11 @@ func (recv *EventAny) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventAnyNewFromC creates a new EventAny from a pointer to the C GdkEventAny that represents the EventAny.
+func EventAnyNewFromC(native unsafe.Pointer) *EventAny {
+	return &EventAny{native: native}
+}
+
 // EventButton is a representation of the C record GdkEventButton.
 type EventButton struct {
 	native unsafe.Pointer
@@ -9130,6 +9155,11 @@ type EventButton struct {
 // ToC returns a pointer to the C GdkEventButton that represents the EventButton.
 func (recv *EventButton) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EventButtonNewFromC creates a new EventButton from a pointer to the C GdkEventButton that represents the EventButton.
+func EventButtonNewFromC(native unsafe.Pointer) *EventButton {
+	return &EventButton{native: native}
 }
 
 // EventConfigure is a representation of the C record GdkEventConfigure.
@@ -9142,6 +9172,11 @@ func (recv *EventConfigure) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventConfigureNewFromC creates a new EventConfigure from a pointer to the C GdkEventConfigure that represents the EventConfigure.
+func EventConfigureNewFromC(native unsafe.Pointer) *EventConfigure {
+	return &EventConfigure{native: native}
+}
+
 // EventCrossing is a representation of the C record GdkEventCrossing.
 type EventCrossing struct {
 	native unsafe.Pointer
@@ -9150,6 +9185,11 @@ type EventCrossing struct {
 // ToC returns a pointer to the C GdkEventCrossing that represents the EventCrossing.
 func (recv *EventCrossing) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EventCrossingNewFromC creates a new EventCrossing from a pointer to the C GdkEventCrossing that represents the EventCrossing.
+func EventCrossingNewFromC(native unsafe.Pointer) *EventCrossing {
+	return &EventCrossing{native: native}
 }
 
 // EventDND is a representation of the C record GdkEventDND.
@@ -9162,6 +9202,11 @@ func (recv *EventDND) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventDNDNewFromC creates a new EventDND from a pointer to the C GdkEventDND that represents the EventDND.
+func EventDNDNewFromC(native unsafe.Pointer) *EventDND {
+	return &EventDND{native: native}
+}
+
 // EventExpose is a representation of the C record GdkEventExpose.
 type EventExpose struct {
 	native unsafe.Pointer
@@ -9172,6 +9217,11 @@ func (recv *EventExpose) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventExposeNewFromC creates a new EventExpose from a pointer to the C GdkEventExpose that represents the EventExpose.
+func EventExposeNewFromC(native unsafe.Pointer) *EventExpose {
+	return &EventExpose{native: native}
+}
+
 // EventFocus is a representation of the C record GdkEventFocus.
 type EventFocus struct {
 	native unsafe.Pointer
@@ -9180,6 +9230,11 @@ type EventFocus struct {
 // ToC returns a pointer to the C GdkEventFocus that represents the EventFocus.
 func (recv *EventFocus) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EventFocusNewFromC creates a new EventFocus from a pointer to the C GdkEventFocus that represents the EventFocus.
+func EventFocusNewFromC(native unsafe.Pointer) *EventFocus {
+	return &EventFocus{native: native}
 }
 
 // EventGrabBroken is a representation of the C record GdkEventGrabBroken.
@@ -9194,6 +9249,11 @@ func (recv *EventGrabBroken) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventGrabBrokenNewFromC creates a new EventGrabBroken from a pointer to the C GdkEventGrabBroken that represents the EventGrabBroken.
+func EventGrabBrokenNewFromC(native unsafe.Pointer) *EventGrabBroken {
+	return &EventGrabBroken{native: native}
+}
+
 // EventKey is a representation of the C record GdkEventKey.
 type EventKey struct {
 	native unsafe.Pointer
@@ -9204,6 +9264,11 @@ func (recv *EventKey) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventKeyNewFromC creates a new EventKey from a pointer to the C GdkEventKey that represents the EventKey.
+func EventKeyNewFromC(native unsafe.Pointer) *EventKey {
+	return &EventKey{native: native}
+}
+
 // EventMotion is a representation of the C record GdkEventMotion.
 type EventMotion struct {
 	native unsafe.Pointer
@@ -9212,6 +9277,11 @@ type EventMotion struct {
 // ToC returns a pointer to the C GdkEventMotion that represents the EventMotion.
 func (recv *EventMotion) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EventMotionNewFromC creates a new EventMotion from a pointer to the C GdkEventMotion that represents the EventMotion.
+func EventMotionNewFromC(native unsafe.Pointer) *EventMotion {
+	return &EventMotion{native: native}
 }
 
 // EventOwnerChange is a representation of the C record GdkEventOwnerChange.
@@ -9226,6 +9296,11 @@ func (recv *EventOwnerChange) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventOwnerChangeNewFromC creates a new EventOwnerChange from a pointer to the C GdkEventOwnerChange that represents the EventOwnerChange.
+func EventOwnerChangeNewFromC(native unsafe.Pointer) *EventOwnerChange {
+	return &EventOwnerChange{native: native}
+}
+
 // EventPadAxis is a representation of the C record GdkEventPadAxis.
 //
 // since 3.22
@@ -9236,6 +9311,11 @@ type EventPadAxis struct {
 // ToC returns a pointer to the C GdkEventPadAxis that represents the EventPadAxis.
 func (recv *EventPadAxis) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EventPadAxisNewFromC creates a new EventPadAxis from a pointer to the C GdkEventPadAxis that represents the EventPadAxis.
+func EventPadAxisNewFromC(native unsafe.Pointer) *EventPadAxis {
+	return &EventPadAxis{native: native}
 }
 
 // EventPadButton is a representation of the C record GdkEventPadButton.
@@ -9250,6 +9330,11 @@ func (recv *EventPadButton) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventPadButtonNewFromC creates a new EventPadButton from a pointer to the C GdkEventPadButton that represents the EventPadButton.
+func EventPadButtonNewFromC(native unsafe.Pointer) *EventPadButton {
+	return &EventPadButton{native: native}
+}
+
 // EventPadGroupMode is a representation of the C record GdkEventPadGroupMode.
 //
 // since 3.22
@@ -9262,6 +9347,11 @@ func (recv *EventPadGroupMode) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventPadGroupModeNewFromC creates a new EventPadGroupMode from a pointer to the C GdkEventPadGroupMode that represents the EventPadGroupMode.
+func EventPadGroupModeNewFromC(native unsafe.Pointer) *EventPadGroupMode {
+	return &EventPadGroupMode{native: native}
+}
+
 // EventProperty is a representation of the C record GdkEventProperty.
 type EventProperty struct {
 	native unsafe.Pointer
@@ -9270,6 +9360,11 @@ type EventProperty struct {
 // ToC returns a pointer to the C GdkEventProperty that represents the EventProperty.
 func (recv *EventProperty) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EventPropertyNewFromC creates a new EventProperty from a pointer to the C GdkEventProperty that represents the EventProperty.
+func EventPropertyNewFromC(native unsafe.Pointer) *EventProperty {
+	return &EventProperty{native: native}
 }
 
 // EventProximity is a representation of the C record GdkEventProximity.
@@ -9282,6 +9377,11 @@ func (recv *EventProximity) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventProximityNewFromC creates a new EventProximity from a pointer to the C GdkEventProximity that represents the EventProximity.
+func EventProximityNewFromC(native unsafe.Pointer) *EventProximity {
+	return &EventProximity{native: native}
+}
+
 // EventScroll is a representation of the C record GdkEventScroll.
 type EventScroll struct {
 	native unsafe.Pointer
@@ -9290,6 +9390,11 @@ type EventScroll struct {
 // ToC returns a pointer to the C GdkEventScroll that represents the EventScroll.
 func (recv *EventScroll) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EventScrollNewFromC creates a new EventScroll from a pointer to the C GdkEventScroll that represents the EventScroll.
+func EventScrollNewFromC(native unsafe.Pointer) *EventScroll {
+	return &EventScroll{native: native}
 }
 
 // EventSelection is a representation of the C record GdkEventSelection.
@@ -9302,6 +9407,11 @@ func (recv *EventSelection) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventSelectionNewFromC creates a new EventSelection from a pointer to the C GdkEventSelection that represents the EventSelection.
+func EventSelectionNewFromC(native unsafe.Pointer) *EventSelection {
+	return &EventSelection{native: native}
+}
+
 // EventSequence is a representation of the C record GdkEventSequence.
 type EventSequence struct {
 	native unsafe.Pointer
@@ -9310,6 +9420,11 @@ type EventSequence struct {
 // ToC returns a pointer to the C GdkEventSequence that represents the EventSequence.
 func (recv *EventSequence) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EventSequenceNewFromC creates a new EventSequence from a pointer to the C GdkEventSequence that represents the EventSequence.
+func EventSequenceNewFromC(native unsafe.Pointer) *EventSequence {
+	return &EventSequence{native: native}
 }
 
 // EventSetting is a representation of the C record GdkEventSetting.
@@ -9322,6 +9437,11 @@ func (recv *EventSetting) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventSettingNewFromC creates a new EventSetting from a pointer to the C GdkEventSetting that represents the EventSetting.
+func EventSettingNewFromC(native unsafe.Pointer) *EventSetting {
+	return &EventSetting{native: native}
+}
+
 // EventTouch is a representation of the C record GdkEventTouch.
 type EventTouch struct {
 	native unsafe.Pointer
@@ -9330,6 +9450,11 @@ type EventTouch struct {
 // ToC returns a pointer to the C GdkEventTouch that represents the EventTouch.
 func (recv *EventTouch) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EventTouchNewFromC creates a new EventTouch from a pointer to the C GdkEventTouch that represents the EventTouch.
+func EventTouchNewFromC(native unsafe.Pointer) *EventTouch {
+	return &EventTouch{native: native}
 }
 
 // EventTouchpadPinch is a representation of the C record GdkEventTouchpadPinch.
@@ -9342,6 +9467,11 @@ func (recv *EventTouchpadPinch) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventTouchpadPinchNewFromC creates a new EventTouchpadPinch from a pointer to the C GdkEventTouchpadPinch that represents the EventTouchpadPinch.
+func EventTouchpadPinchNewFromC(native unsafe.Pointer) *EventTouchpadPinch {
+	return &EventTouchpadPinch{native: native}
+}
+
 // EventTouchpadSwipe is a representation of the C record GdkEventTouchpadSwipe.
 type EventTouchpadSwipe struct {
 	native unsafe.Pointer
@@ -9350,6 +9480,11 @@ type EventTouchpadSwipe struct {
 // ToC returns a pointer to the C GdkEventTouchpadSwipe that represents the EventTouchpadSwipe.
 func (recv *EventTouchpadSwipe) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EventTouchpadSwipeNewFromC creates a new EventTouchpadSwipe from a pointer to the C GdkEventTouchpadSwipe that represents the EventTouchpadSwipe.
+func EventTouchpadSwipeNewFromC(native unsafe.Pointer) *EventTouchpadSwipe {
+	return &EventTouchpadSwipe{native: native}
 }
 
 // EventVisibility is a representation of the C record GdkEventVisibility.
@@ -9362,6 +9497,11 @@ func (recv *EventVisibility) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EventVisibilityNewFromC creates a new EventVisibility from a pointer to the C GdkEventVisibility that represents the EventVisibility.
+func EventVisibilityNewFromC(native unsafe.Pointer) *EventVisibility {
+	return &EventVisibility{native: native}
+}
+
 // EventWindowState is a representation of the C record GdkEventWindowState.
 type EventWindowState struct {
 	native unsafe.Pointer
@@ -9370,6 +9510,11 @@ type EventWindowState struct {
 // ToC returns a pointer to the C GdkEventWindowState that represents the EventWindowState.
 func (recv *EventWindowState) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EventWindowStateNewFromC creates a new EventWindowState from a pointer to the C GdkEventWindowState that represents the EventWindowState.
+func EventWindowStateNewFromC(native unsafe.Pointer) *EventWindowState {
+	return &EventWindowState{native: native}
 }
 
 // FrameClockClass is a representation of the C record GdkFrameClockClass.
@@ -9382,6 +9527,11 @@ func (recv *FrameClockClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FrameClockClassNewFromC creates a new FrameClockClass from a pointer to the C GdkFrameClockClass that represents the FrameClockClass.
+func FrameClockClassNewFromC(native unsafe.Pointer) *FrameClockClass {
+	return &FrameClockClass{native: native}
+}
+
 // FrameClockPrivate is a representation of the C record GdkFrameClockPrivate.
 type FrameClockPrivate struct {
 	native unsafe.Pointer
@@ -9390,6 +9540,11 @@ type FrameClockPrivate struct {
 // ToC returns a pointer to the C GdkFrameClockPrivate that represents the FrameClockPrivate.
 func (recv *FrameClockPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FrameClockPrivateNewFromC creates a new FrameClockPrivate from a pointer to the C GdkFrameClockPrivate that represents the FrameClockPrivate.
+func FrameClockPrivateNewFromC(native unsafe.Pointer) *FrameClockPrivate {
+	return &FrameClockPrivate{native: native}
 }
 
 // FrameTimings is a representation of the C record GdkFrameTimings.
@@ -9402,6 +9557,11 @@ func (recv *FrameTimings) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FrameTimingsNewFromC creates a new FrameTimings from a pointer to the C GdkFrameTimings that represents the FrameTimings.
+func FrameTimingsNewFromC(native unsafe.Pointer) *FrameTimings {
+	return &FrameTimings{native: native}
+}
+
 // Geometry is a representation of the C record GdkGeometry.
 type Geometry struct {
 	native unsafe.Pointer
@@ -9410,6 +9570,11 @@ type Geometry struct {
 // ToC returns a pointer to the C GdkGeometry that represents the Geometry.
 func (recv *Geometry) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// GeometryNewFromC creates a new Geometry from a pointer to the C GdkGeometry that represents the Geometry.
+func GeometryNewFromC(native unsafe.Pointer) *Geometry {
+	return &Geometry{native: native}
 }
 
 // KeymapKey is a representation of the C record GdkKeymapKey.
@@ -9422,6 +9587,11 @@ func (recv *KeymapKey) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// KeymapKeyNewFromC creates a new KeymapKey from a pointer to the C GdkKeymapKey that represents the KeymapKey.
+func KeymapKeyNewFromC(native unsafe.Pointer) *KeymapKey {
+	return &KeymapKey{native: native}
+}
+
 // MonitorClass is a representation of the C record GdkMonitorClass.
 type MonitorClass struct {
 	native unsafe.Pointer
@@ -9430,6 +9600,11 @@ type MonitorClass struct {
 // ToC returns a pointer to the C GdkMonitorClass that represents the MonitorClass.
 func (recv *MonitorClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MonitorClassNewFromC creates a new MonitorClass from a pointer to the C GdkMonitorClass that represents the MonitorClass.
+func MonitorClassNewFromC(native unsafe.Pointer) *MonitorClass {
+	return &MonitorClass{native: native}
 }
 
 // Point is a representation of the C record GdkPoint.
@@ -9442,6 +9617,11 @@ func (recv *Point) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// PointNewFromC creates a new Point from a pointer to the C GdkPoint that represents the Point.
+func PointNewFromC(native unsafe.Pointer) *Point {
+	return &Point{native: native}
+}
+
 // RGBA is a representation of the C record GdkRGBA.
 type RGBA struct {
 	native unsafe.Pointer
@@ -9450,6 +9630,11 @@ type RGBA struct {
 // ToC returns a pointer to the C GdkRGBA that represents the RGBA.
 func (recv *RGBA) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// RGBANewFromC creates a new RGBA from a pointer to the C GdkRGBA that represents the RGBA.
+func RGBANewFromC(native unsafe.Pointer) *RGBA {
+	return &RGBA{native: native}
 }
 
 // Rectangle is a representation of the C record GdkRectangle.
@@ -9462,6 +9647,11 @@ func (recv *Rectangle) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// RectangleNewFromC creates a new Rectangle from a pointer to the C GdkRectangle that represents the Rectangle.
+func RectangleNewFromC(native unsafe.Pointer) *Rectangle {
+	return &Rectangle{native: native}
+}
+
 // TimeCoord is a representation of the C record GdkTimeCoord.
 type TimeCoord struct {
 	native unsafe.Pointer
@@ -9470,6 +9660,11 @@ type TimeCoord struct {
 // ToC returns a pointer to the C GdkTimeCoord that represents the TimeCoord.
 func (recv *TimeCoord) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TimeCoordNewFromC creates a new TimeCoord from a pointer to the C GdkTimeCoord that represents the TimeCoord.
+func TimeCoordNewFromC(native unsafe.Pointer) *TimeCoord {
+	return &TimeCoord{native: native}
 }
 
 // WindowAttr is a representation of the C record GdkWindowAttr.
@@ -9482,6 +9677,11 @@ func (recv *WindowAttr) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// WindowAttrNewFromC creates a new WindowAttr from a pointer to the C GdkWindowAttr that represents the WindowAttr.
+func WindowAttrNewFromC(native unsafe.Pointer) *WindowAttr {
+	return &WindowAttr{native: native}
+}
+
 // WindowClass is a representation of the C record GdkWindowClass.
 type WindowClass struct {
 	native unsafe.Pointer
@@ -9490,6 +9690,11 @@ type WindowClass struct {
 // ToC returns a pointer to the C GdkWindowClass that represents the WindowClass.
 func (recv *WindowClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// WindowClassNewFromC creates a new WindowClass from a pointer to the C GdkWindowClass that represents the WindowClass.
+func WindowClassNewFromC(native unsafe.Pointer) *WindowClass {
+	return &WindowClass{native: native}
 }
 
 // WindowRedirect is a representation of the C record GdkWindowRedirect.
@@ -9502,6 +9707,11 @@ func (recv *WindowRedirect) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// WindowRedirectNewFromC creates a new WindowRedirect from a pointer to the C GdkWindowRedirect that represents the WindowRedirect.
+func WindowRedirectNewFromC(native unsafe.Pointer) *WindowRedirect {
+	return &WindowRedirect{native: native}
+}
+
 // AppLaunchContext is a representation of the C record GdkAppLaunchContext.
 type AppLaunchContext struct {
 	native unsafe.Pointer
@@ -9510,6 +9720,11 @@ type AppLaunchContext struct {
 // ToC returns a pointer to the C GdkAppLaunchContext that represents the AppLaunchContext.
 func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AppLaunchContextNewFromC creates a new AppLaunchContext from a pointer to the C GdkAppLaunchContext that represents the AppLaunchContext.
+func AppLaunchContextNewFromC(native unsafe.Pointer) *AppLaunchContext {
+	return &AppLaunchContext{native: native}
 }
 
 // Cursor is a representation of the C record GdkCursor.
@@ -9522,6 +9737,11 @@ func (recv *Cursor) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// CursorNewFromC creates a new Cursor from a pointer to the C GdkCursor that represents the Cursor.
+func CursorNewFromC(native unsafe.Pointer) *Cursor {
+	return &Cursor{native: native}
+}
+
 // Device is a representation of the C record GdkDevice.
 type Device struct {
 	native unsafe.Pointer
@@ -9530,6 +9750,11 @@ type Device struct {
 // ToC returns a pointer to the C GdkDevice that represents the Device.
 func (recv *Device) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DeviceNewFromC creates a new Device from a pointer to the C GdkDevice that represents the Device.
+func DeviceNewFromC(native unsafe.Pointer) *Device {
+	return &Device{native: native}
 }
 
 // DeviceManager is a representation of the C record GdkDeviceManager.
@@ -9542,6 +9767,11 @@ func (recv *DeviceManager) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DeviceManagerNewFromC creates a new DeviceManager from a pointer to the C GdkDeviceManager that represents the DeviceManager.
+func DeviceManagerNewFromC(native unsafe.Pointer) *DeviceManager {
+	return &DeviceManager{native: native}
+}
+
 // DeviceTool is a representation of the C record GdkDeviceTool.
 type DeviceTool struct {
 	native unsafe.Pointer
@@ -9550,6 +9780,11 @@ type DeviceTool struct {
 // ToC returns a pointer to the C GdkDeviceTool that represents the DeviceTool.
 func (recv *DeviceTool) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DeviceToolNewFromC creates a new DeviceTool from a pointer to the C GdkDeviceTool that represents the DeviceTool.
+func DeviceToolNewFromC(native unsafe.Pointer) *DeviceTool {
+	return &DeviceTool{native: native}
 }
 
 // Display is a representation of the C record GdkDisplay.
@@ -9562,6 +9797,11 @@ func (recv *Display) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DisplayNewFromC creates a new Display from a pointer to the C GdkDisplay that represents the Display.
+func DisplayNewFromC(native unsafe.Pointer) *Display {
+	return &Display{native: native}
+}
+
 // DisplayManager is a representation of the C record GdkDisplayManager.
 type DisplayManager struct {
 	native unsafe.Pointer
@@ -9570,6 +9810,11 @@ type DisplayManager struct {
 // ToC returns a pointer to the C GdkDisplayManager that represents the DisplayManager.
 func (recv *DisplayManager) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DisplayManagerNewFromC creates a new DisplayManager from a pointer to the C GdkDisplayManager that represents the DisplayManager.
+func DisplayManagerNewFromC(native unsafe.Pointer) *DisplayManager {
+	return &DisplayManager{native: native}
 }
 
 // DragContext is a representation of the C record GdkDragContext.
@@ -9582,6 +9827,11 @@ func (recv *DragContext) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DragContextNewFromC creates a new DragContext from a pointer to the C GdkDragContext that represents the DragContext.
+func DragContextNewFromC(native unsafe.Pointer) *DragContext {
+	return &DragContext{native: native}
+}
+
 // DrawingContext is a representation of the C record GdkDrawingContext.
 type DrawingContext struct {
 	native unsafe.Pointer
@@ -9590,6 +9840,11 @@ type DrawingContext struct {
 // ToC returns a pointer to the C GdkDrawingContext that represents the DrawingContext.
 func (recv *DrawingContext) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DrawingContextNewFromC creates a new DrawingContext from a pointer to the C GdkDrawingContext that represents the DrawingContext.
+func DrawingContextNewFromC(native unsafe.Pointer) *DrawingContext {
+	return &DrawingContext{native: native}
 }
 
 // FrameClock is a representation of the C record GdkFrameClock.
@@ -9602,6 +9857,11 @@ func (recv *FrameClock) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FrameClockNewFromC creates a new FrameClock from a pointer to the C GdkFrameClock that represents the FrameClock.
+func FrameClockNewFromC(native unsafe.Pointer) *FrameClock {
+	return &FrameClock{native: native}
+}
+
 // GLContext is a representation of the C record GdkGLContext.
 type GLContext struct {
 	native unsafe.Pointer
@@ -9610,6 +9870,11 @@ type GLContext struct {
 // ToC returns a pointer to the C GdkGLContext that represents the GLContext.
 func (recv *GLContext) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// GLContextNewFromC creates a new GLContext from a pointer to the C GdkGLContext that represents the GLContext.
+func GLContextNewFromC(native unsafe.Pointer) *GLContext {
+	return &GLContext{native: native}
 }
 
 // Keymap is a representation of the C record GdkKeymap.
@@ -9622,6 +9887,11 @@ func (recv *Keymap) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// KeymapNewFromC creates a new Keymap from a pointer to the C GdkKeymap that represents the Keymap.
+func KeymapNewFromC(native unsafe.Pointer) *Keymap {
+	return &Keymap{native: native}
+}
+
 // Monitor is a representation of the C record GdkMonitor.
 type Monitor struct {
 	native unsafe.Pointer
@@ -9630,6 +9900,11 @@ type Monitor struct {
 // ToC returns a pointer to the C GdkMonitor that represents the Monitor.
 func (recv *Monitor) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MonitorNewFromC creates a new Monitor from a pointer to the C GdkMonitor that represents the Monitor.
+func MonitorNewFromC(native unsafe.Pointer) *Monitor {
+	return &Monitor{native: native}
 }
 
 // Screen is a representation of the C record GdkScreen.
@@ -9642,6 +9917,11 @@ func (recv *Screen) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ScreenNewFromC creates a new Screen from a pointer to the C GdkScreen that represents the Screen.
+func ScreenNewFromC(native unsafe.Pointer) *Screen {
+	return &Screen{native: native}
+}
+
 // Seat is a representation of the C record GdkSeat.
 type Seat struct {
 	native unsafe.Pointer
@@ -9650,6 +9930,11 @@ type Seat struct {
 // ToC returns a pointer to the C GdkSeat that represents the Seat.
 func (recv *Seat) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SeatNewFromC creates a new Seat from a pointer to the C GdkSeat that represents the Seat.
+func SeatNewFromC(native unsafe.Pointer) *Seat {
+	return &Seat{native: native}
 }
 
 // Visual is a representation of the C record GdkVisual.
@@ -9662,6 +9947,11 @@ func (recv *Visual) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// VisualNewFromC creates a new Visual from a pointer to the C GdkVisual that represents the Visual.
+func VisualNewFromC(native unsafe.Pointer) *Visual {
+	return &Visual{native: native}
+}
+
 // Window is a representation of the C record GdkWindow.
 type Window struct {
 	native unsafe.Pointer
@@ -9670,6 +9960,11 @@ type Window struct {
 // ToC returns a pointer to the C GdkWindow that represents the Window.
 func (recv *Window) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// WindowNewFromC creates a new Window from a pointer to the C GdkWindow that represents the Window.
+func WindowNewFromC(native unsafe.Pointer) *Window {
+	return &Window{native: native}
 }
 
 // DevicePad is a representation of the C interface GdkDevicePad.

@@ -99,6 +99,11 @@ func (recv *PixbufFormat) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// PixbufFormatNewFromC creates a new PixbufFormat from a pointer to the C GdkPixbufFormat that represents the PixbufFormat.
+func PixbufFormatNewFromC(native unsafe.Pointer) *PixbufFormat {
+	return &PixbufFormat{native: native}
+}
+
 // PixbufLoaderClass is a representation of the C record GdkPixbufLoaderClass.
 type PixbufLoaderClass struct {
 	native unsafe.Pointer
@@ -107,6 +112,11 @@ type PixbufLoaderClass struct {
 // ToC returns a pointer to the C GdkPixbufLoaderClass that represents the PixbufLoaderClass.
 func (recv *PixbufLoaderClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// PixbufLoaderClassNewFromC creates a new PixbufLoaderClass from a pointer to the C GdkPixbufLoaderClass that represents the PixbufLoaderClass.
+func PixbufLoaderClassNewFromC(native unsafe.Pointer) *PixbufLoaderClass {
+	return &PixbufLoaderClass{native: native}
 }
 
 // PixbufSimpleAnimClass is a representation of the C record GdkPixbufSimpleAnimClass.
@@ -119,6 +129,11 @@ func (recv *PixbufSimpleAnimClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// PixbufSimpleAnimClassNewFromC creates a new PixbufSimpleAnimClass from a pointer to the C GdkPixbufSimpleAnimClass that represents the PixbufSimpleAnimClass.
+func PixbufSimpleAnimClassNewFromC(native unsafe.Pointer) *PixbufSimpleAnimClass {
+	return &PixbufSimpleAnimClass{native: native}
+}
+
 // Pixbuf is a representation of the C record GdkPixbuf.
 type Pixbuf struct {
 	native unsafe.Pointer
@@ -127,6 +142,11 @@ type Pixbuf struct {
 // ToC returns a pointer to the C GdkPixbuf that represents the Pixbuf.
 func (recv *Pixbuf) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// PixbufNewFromC creates a new Pixbuf from a pointer to the C GdkPixbuf that represents the Pixbuf.
+func PixbufNewFromC(native unsafe.Pointer) *Pixbuf {
+	return &Pixbuf{native: native}
 }
 
 // PixbufAnimation is a representation of the C record GdkPixbufAnimation.
@@ -139,6 +159,11 @@ func (recv *PixbufAnimation) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// PixbufAnimationNewFromC creates a new PixbufAnimation from a pointer to the C GdkPixbufAnimation that represents the PixbufAnimation.
+func PixbufAnimationNewFromC(native unsafe.Pointer) *PixbufAnimation {
+	return &PixbufAnimation{native: native}
+}
+
 // PixbufAnimationIter is a representation of the C record GdkPixbufAnimationIter.
 type PixbufAnimationIter struct {
 	native unsafe.Pointer
@@ -147,6 +172,11 @@ type PixbufAnimationIter struct {
 // ToC returns a pointer to the C GdkPixbufAnimationIter that represents the PixbufAnimationIter.
 func (recv *PixbufAnimationIter) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// PixbufAnimationIterNewFromC creates a new PixbufAnimationIter from a pointer to the C GdkPixbufAnimationIter that represents the PixbufAnimationIter.
+func PixbufAnimationIterNewFromC(native unsafe.Pointer) *PixbufAnimationIter {
+	return &PixbufAnimationIter{native: native}
 }
 
 // PixbufLoader is a representation of the C record GdkPixbufLoader.
@@ -159,6 +189,11 @@ func (recv *PixbufLoader) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// PixbufLoaderNewFromC creates a new PixbufLoader from a pointer to the C GdkPixbufLoader that represents the PixbufLoader.
+func PixbufLoaderNewFromC(native unsafe.Pointer) *PixbufLoader {
+	return &PixbufLoader{native: native}
+}
+
 // PixbufSimpleAnim is a representation of the C record GdkPixbufSimpleAnim.
 type PixbufSimpleAnim struct {
 	native unsafe.Pointer
@@ -167,6 +202,11 @@ type PixbufSimpleAnim struct {
 // ToC returns a pointer to the C GdkPixbufSimpleAnim that represents the PixbufSimpleAnim.
 func (recv *PixbufSimpleAnim) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// PixbufSimpleAnimNewFromC creates a new PixbufSimpleAnim from a pointer to the C GdkPixbufSimpleAnim that represents the PixbufSimpleAnim.
+func PixbufSimpleAnimNewFromC(native unsafe.Pointer) *PixbufSimpleAnim {
+	return &PixbufSimpleAnim{native: native}
 }
 
 // UNSUPPORTED : PixbufSimpleAnimIter : blacklisted

@@ -55,6 +55,11 @@ func (recv *Display) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DisplayNewFromC creates a new Display from a pointer to the C Display that represents the Display.
+func DisplayNewFromC(native unsafe.Pointer) *Display {
+	return &Display{native: native}
+}
+
 // Screen is a representation of the C record Screen.
 type Screen struct {
 	native unsafe.Pointer
@@ -63,6 +68,11 @@ type Screen struct {
 // ToC returns a pointer to the C Screen that represents the Screen.
 func (recv *Screen) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ScreenNewFromC creates a new Screen from a pointer to the C Screen that represents the Screen.
+func ScreenNewFromC(native unsafe.Pointer) *Screen {
+	return &Screen{native: native}
 }
 
 // Visual is a representation of the C record Visual.
@@ -75,6 +85,11 @@ func (recv *Visual) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// VisualNewFromC creates a new Visual from a pointer to the C Visual that represents the Visual.
+func VisualNewFromC(native unsafe.Pointer) *Visual {
+	return &Visual{native: native}
+}
+
 // XConfigureEvent is a representation of the C record XConfigureEvent.
 type XConfigureEvent struct {
 	native unsafe.Pointer
@@ -83,6 +98,11 @@ type XConfigureEvent struct {
 // ToC returns a pointer to the C XConfigureEvent that represents the XConfigureEvent.
 func (recv *XConfigureEvent) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// XConfigureEventNewFromC creates a new XConfigureEvent from a pointer to the C XConfigureEvent that represents the XConfigureEvent.
+func XConfigureEventNewFromC(native unsafe.Pointer) *XConfigureEvent {
+	return &XConfigureEvent{native: native}
 }
 
 // XImage is a representation of the C record XImage.
@@ -95,6 +115,11 @@ func (recv *XImage) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// XImageNewFromC creates a new XImage from a pointer to the C XImage that represents the XImage.
+func XImageNewFromC(native unsafe.Pointer) *XImage {
+	return &XImage{native: native}
+}
+
 // XFontStruct is a representation of the C record XFontStruct.
 type XFontStruct struct {
 	native unsafe.Pointer
@@ -103,6 +128,11 @@ type XFontStruct struct {
 // ToC returns a pointer to the C XFontStruct that represents the XFontStruct.
 func (recv *XFontStruct) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// XFontStructNewFromC creates a new XFontStruct from a pointer to the C XFontStruct that represents the XFontStruct.
+func XFontStructNewFromC(native unsafe.Pointer) *XFontStruct {
+	return &XFontStruct{native: native}
 }
 
 // XTrapezoid is a representation of the C record XTrapezoid.
@@ -115,6 +145,11 @@ func (recv *XTrapezoid) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// XTrapezoidNewFromC creates a new XTrapezoid from a pointer to the C XTrapezoid that represents the XTrapezoid.
+func XTrapezoidNewFromC(native unsafe.Pointer) *XTrapezoid {
+	return &XTrapezoid{native: native}
+}
+
 // XVisualInfo is a representation of the C record XVisualInfo.
 type XVisualInfo struct {
 	native unsafe.Pointer
@@ -125,6 +160,11 @@ func (recv *XVisualInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// XVisualInfoNewFromC creates a new XVisualInfo from a pointer to the C XVisualInfo that represents the XVisualInfo.
+func XVisualInfoNewFromC(native unsafe.Pointer) *XVisualInfo {
+	return &XVisualInfo{native: native}
+}
+
 // XWindowAttributes is a representation of the C record XWindowAttributes.
 type XWindowAttributes struct {
 	native unsafe.Pointer
@@ -133,6 +173,11 @@ type XWindowAttributes struct {
 // ToC returns a pointer to the C XWindowAttributes that represents the XWindowAttributes.
 func (recv *XWindowAttributes) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// XWindowAttributesNewFromC creates a new XWindowAttributes from a pointer to the C XWindowAttributes that represents the XWindowAttributes.
+func XWindowAttributesNewFromC(native unsafe.Pointer) *XWindowAttributes {
+	return &XWindowAttributes{native: native}
 }
 
 // XEvent is a representation of the C union XEvent.

@@ -1009,6 +1009,11 @@ func (recv *Analysis) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// AnalysisNewFromC creates a new Analysis from a pointer to the C PangoAnalysis that represents the Analysis.
+func AnalysisNewFromC(native unsafe.Pointer) *Analysis {
+	return &Analysis{native: native}
+}
+
 // AttrClass is a representation of the C record PangoAttrClass.
 type AttrClass struct {
 	native unsafe.Pointer
@@ -1017,6 +1022,11 @@ type AttrClass struct {
 // ToC returns a pointer to the C PangoAttrClass that represents the AttrClass.
 func (recv *AttrClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AttrClassNewFromC creates a new AttrClass from a pointer to the C PangoAttrClass that represents the AttrClass.
+func AttrClassNewFromC(native unsafe.Pointer) *AttrClass {
+	return &AttrClass{native: native}
 }
 
 // AttrColor is a representation of the C record PangoAttrColor.
@@ -1029,6 +1039,11 @@ func (recv *AttrColor) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// AttrColorNewFromC creates a new AttrColor from a pointer to the C PangoAttrColor that represents the AttrColor.
+func AttrColorNewFromC(native unsafe.Pointer) *AttrColor {
+	return &AttrColor{native: native}
+}
+
 // AttrFloat is a representation of the C record PangoAttrFloat.
 type AttrFloat struct {
 	native unsafe.Pointer
@@ -1037,6 +1052,11 @@ type AttrFloat struct {
 // ToC returns a pointer to the C PangoAttrFloat that represents the AttrFloat.
 func (recv *AttrFloat) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AttrFloatNewFromC creates a new AttrFloat from a pointer to the C PangoAttrFloat that represents the AttrFloat.
+func AttrFloatNewFromC(native unsafe.Pointer) *AttrFloat {
+	return &AttrFloat{native: native}
 }
 
 // AttrFontDesc is a representation of the C record PangoAttrFontDesc.
@@ -1049,6 +1069,11 @@ func (recv *AttrFontDesc) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// AttrFontDescNewFromC creates a new AttrFontDesc from a pointer to the C PangoAttrFontDesc that represents the AttrFontDesc.
+func AttrFontDescNewFromC(native unsafe.Pointer) *AttrFontDesc {
+	return &AttrFontDesc{native: native}
+}
+
 // AttrInt is a representation of the C record PangoAttrInt.
 type AttrInt struct {
 	native unsafe.Pointer
@@ -1057,6 +1082,11 @@ type AttrInt struct {
 // ToC returns a pointer to the C PangoAttrInt that represents the AttrInt.
 func (recv *AttrInt) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AttrIntNewFromC creates a new AttrInt from a pointer to the C PangoAttrInt that represents the AttrInt.
+func AttrIntNewFromC(native unsafe.Pointer) *AttrInt {
+	return &AttrInt{native: native}
 }
 
 // AttrIterator is a representation of the C record PangoAttrIterator.
@@ -1069,6 +1099,11 @@ func (recv *AttrIterator) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// AttrIteratorNewFromC creates a new AttrIterator from a pointer to the C PangoAttrIterator that represents the AttrIterator.
+func AttrIteratorNewFromC(native unsafe.Pointer) *AttrIterator {
+	return &AttrIterator{native: native}
+}
+
 // AttrLanguage is a representation of the C record PangoAttrLanguage.
 type AttrLanguage struct {
 	native unsafe.Pointer
@@ -1077,6 +1112,11 @@ type AttrLanguage struct {
 // ToC returns a pointer to the C PangoAttrLanguage that represents the AttrLanguage.
 func (recv *AttrLanguage) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AttrLanguageNewFromC creates a new AttrLanguage from a pointer to the C PangoAttrLanguage that represents the AttrLanguage.
+func AttrLanguageNewFromC(native unsafe.Pointer) *AttrLanguage {
+	return &AttrLanguage{native: native}
 }
 
 // AttrList is a representation of the C record PangoAttrList.
@@ -1089,6 +1129,11 @@ func (recv *AttrList) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// AttrListNewFromC creates a new AttrList from a pointer to the C PangoAttrList that represents the AttrList.
+func AttrListNewFromC(native unsafe.Pointer) *AttrList {
+	return &AttrList{native: native}
+}
+
 // AttrShape is a representation of the C record PangoAttrShape.
 type AttrShape struct {
 	native unsafe.Pointer
@@ -1097,6 +1142,11 @@ type AttrShape struct {
 // ToC returns a pointer to the C PangoAttrShape that represents the AttrShape.
 func (recv *AttrShape) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AttrShapeNewFromC creates a new AttrShape from a pointer to the C PangoAttrShape that represents the AttrShape.
+func AttrShapeNewFromC(native unsafe.Pointer) *AttrShape {
+	return &AttrShape{native: native}
 }
 
 // AttrSize is a representation of the C record PangoAttrSize.
@@ -1109,6 +1159,11 @@ func (recv *AttrSize) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// AttrSizeNewFromC creates a new AttrSize from a pointer to the C PangoAttrSize that represents the AttrSize.
+func AttrSizeNewFromC(native unsafe.Pointer) *AttrSize {
+	return &AttrSize{native: native}
+}
+
 // AttrString is a representation of the C record PangoAttrString.
 type AttrString struct {
 	native unsafe.Pointer
@@ -1117,6 +1172,11 @@ type AttrString struct {
 // ToC returns a pointer to the C PangoAttrString that represents the AttrString.
 func (recv *AttrString) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AttrStringNewFromC creates a new AttrString from a pointer to the C PangoAttrString that represents the AttrString.
+func AttrStringNewFromC(native unsafe.Pointer) *AttrString {
+	return &AttrString{native: native}
 }
 
 // Attribute is a representation of the C record PangoAttribute.
@@ -1129,6 +1189,11 @@ func (recv *Attribute) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// AttributeNewFromC creates a new Attribute from a pointer to the C PangoAttribute that represents the Attribute.
+func AttributeNewFromC(native unsafe.Pointer) *Attribute {
+	return &Attribute{native: native}
+}
+
 // Color is a representation of the C record PangoColor.
 type Color struct {
 	native unsafe.Pointer
@@ -1137,6 +1202,11 @@ type Color struct {
 // ToC returns a pointer to the C PangoColor that represents the Color.
 func (recv *Color) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ColorNewFromC creates a new Color from a pointer to the C PangoColor that represents the Color.
+func ColorNewFromC(native unsafe.Pointer) *Color {
+	return &Color{native: native}
 }
 
 // ContextClass is a representation of the C record PangoContextClass.
@@ -1149,6 +1219,11 @@ func (recv *ContextClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ContextClassNewFromC creates a new ContextClass from a pointer to the C PangoContextClass that represents the ContextClass.
+func ContextClassNewFromC(native unsafe.Pointer) *ContextClass {
+	return &ContextClass{native: native}
+}
+
 // Coverage is a representation of the C record PangoCoverage.
 type Coverage struct {
 	native unsafe.Pointer
@@ -1157,6 +1232,11 @@ type Coverage struct {
 // ToC returns a pointer to the C PangoCoverage that represents the Coverage.
 func (recv *Coverage) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// CoverageNewFromC creates a new Coverage from a pointer to the C PangoCoverage that represents the Coverage.
+func CoverageNewFromC(native unsafe.Pointer) *Coverage {
+	return &Coverage{native: native}
 }
 
 // UNSUPPORTED : EngineClass : blacklisted
@@ -1181,6 +1261,11 @@ func (recv *FontDescription) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FontDescriptionNewFromC creates a new FontDescription from a pointer to the C PangoFontDescription that represents the FontDescription.
+func FontDescriptionNewFromC(native unsafe.Pointer) *FontDescription {
+	return &FontDescription{native: native}
+}
+
 // UNSUPPORTED : FontFaceClass : blacklisted
 
 // UNSUPPORTED : FontFamilyClass : blacklisted
@@ -1197,6 +1282,11 @@ func (recv *FontMetrics) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FontMetricsNewFromC creates a new FontMetrics from a pointer to the C PangoFontMetrics that represents the FontMetrics.
+func FontMetricsNewFromC(native unsafe.Pointer) *FontMetrics {
+	return &FontMetrics{native: native}
+}
+
 // UNSUPPORTED : FontsetClass : blacklisted
 
 // UNSUPPORTED : FontsetSimpleClass : blacklisted
@@ -1211,6 +1301,11 @@ func (recv *GlyphGeometry) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// GlyphGeometryNewFromC creates a new GlyphGeometry from a pointer to the C PangoGlyphGeometry that represents the GlyphGeometry.
+func GlyphGeometryNewFromC(native unsafe.Pointer) *GlyphGeometry {
+	return &GlyphGeometry{native: native}
+}
+
 // GlyphInfo is a representation of the C record PangoGlyphInfo.
 type GlyphInfo struct {
 	native unsafe.Pointer
@@ -1219,6 +1314,11 @@ type GlyphInfo struct {
 // ToC returns a pointer to the C PangoGlyphInfo that represents the GlyphInfo.
 func (recv *GlyphInfo) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// GlyphInfoNewFromC creates a new GlyphInfo from a pointer to the C PangoGlyphInfo that represents the GlyphInfo.
+func GlyphInfoNewFromC(native unsafe.Pointer) *GlyphInfo {
+	return &GlyphInfo{native: native}
 }
 
 // GlyphItem is a representation of the C record PangoGlyphItem.
@@ -1231,6 +1331,11 @@ func (recv *GlyphItem) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// GlyphItemNewFromC creates a new GlyphItem from a pointer to the C PangoGlyphItem that represents the GlyphItem.
+func GlyphItemNewFromC(native unsafe.Pointer) *GlyphItem {
+	return &GlyphItem{native: native}
+}
+
 // GlyphString is a representation of the C record PangoGlyphString.
 type GlyphString struct {
 	native unsafe.Pointer
@@ -1241,6 +1346,11 @@ func (recv *GlyphString) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// GlyphStringNewFromC creates a new GlyphString from a pointer to the C PangoGlyphString that represents the GlyphString.
+func GlyphStringNewFromC(native unsafe.Pointer) *GlyphString {
+	return &GlyphString{native: native}
+}
+
 // GlyphVisAttr is a representation of the C record PangoGlyphVisAttr.
 type GlyphVisAttr struct {
 	native unsafe.Pointer
@@ -1249,6 +1359,11 @@ type GlyphVisAttr struct {
 // ToC returns a pointer to the C PangoGlyphVisAttr that represents the GlyphVisAttr.
 func (recv *GlyphVisAttr) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// GlyphVisAttrNewFromC creates a new GlyphVisAttr from a pointer to the C PangoGlyphVisAttr that represents the GlyphVisAttr.
+func GlyphVisAttrNewFromC(native unsafe.Pointer) *GlyphVisAttr {
+	return &GlyphVisAttr{native: native}
 }
 
 // UNSUPPORTED : IncludedModule : blacklisted
@@ -1263,6 +1378,11 @@ func (recv *Item) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ItemNewFromC creates a new Item from a pointer to the C PangoItem that represents the Item.
+func ItemNewFromC(native unsafe.Pointer) *Item {
+	return &Item{native: native}
+}
+
 // Language is a representation of the C record PangoLanguage.
 type Language struct {
 	native unsafe.Pointer
@@ -1271,6 +1391,11 @@ type Language struct {
 // ToC returns a pointer to the C PangoLanguage that represents the Language.
 func (recv *Language) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// LanguageNewFromC creates a new Language from a pointer to the C PangoLanguage that represents the Language.
+func LanguageNewFromC(native unsafe.Pointer) *Language {
+	return &Language{native: native}
 }
 
 // LayoutClass is a representation of the C record PangoLayoutClass.
@@ -1283,6 +1408,11 @@ func (recv *LayoutClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// LayoutClassNewFromC creates a new LayoutClass from a pointer to the C PangoLayoutClass that represents the LayoutClass.
+func LayoutClassNewFromC(native unsafe.Pointer) *LayoutClass {
+	return &LayoutClass{native: native}
+}
+
 // LayoutIter is a representation of the C record PangoLayoutIter.
 type LayoutIter struct {
 	native unsafe.Pointer
@@ -1291,6 +1421,11 @@ type LayoutIter struct {
 // ToC returns a pointer to the C PangoLayoutIter that represents the LayoutIter.
 func (recv *LayoutIter) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// LayoutIterNewFromC creates a new LayoutIter from a pointer to the C PangoLayoutIter that represents the LayoutIter.
+func LayoutIterNewFromC(native unsafe.Pointer) *LayoutIter {
+	return &LayoutIter{native: native}
 }
 
 // LayoutLine is a representation of the C record PangoLayoutLine.
@@ -1303,6 +1438,11 @@ func (recv *LayoutLine) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// LayoutLineNewFromC creates a new LayoutLine from a pointer to the C PangoLayoutLine that represents the LayoutLine.
+func LayoutLineNewFromC(native unsafe.Pointer) *LayoutLine {
+	return &LayoutLine{native: native}
+}
+
 // LogAttr is a representation of the C record PangoLogAttr.
 type LogAttr struct {
 	native unsafe.Pointer
@@ -1311,6 +1451,11 @@ type LogAttr struct {
 // ToC returns a pointer to the C PangoLogAttr that represents the LogAttr.
 func (recv *LogAttr) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// LogAttrNewFromC creates a new LogAttr from a pointer to the C PangoLogAttr that represents the LogAttr.
+func LogAttrNewFromC(native unsafe.Pointer) *LogAttr {
+	return &LogAttr{native: native}
 }
 
 // UNSUPPORTED : Map : blacklisted
@@ -1329,6 +1474,11 @@ func (recv *Matrix) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// MatrixNewFromC creates a new Matrix from a pointer to the C PangoMatrix that represents the Matrix.
+func MatrixNewFromC(native unsafe.Pointer) *Matrix {
+	return &Matrix{native: native}
+}
+
 // Rectangle is a representation of the C record PangoRectangle.
 type Rectangle struct {
 	native unsafe.Pointer
@@ -1337,6 +1487,11 @@ type Rectangle struct {
 // ToC returns a pointer to the C PangoRectangle that represents the Rectangle.
 func (recv *Rectangle) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// RectangleNewFromC creates a new Rectangle from a pointer to the C PangoRectangle that represents the Rectangle.
+func RectangleNewFromC(native unsafe.Pointer) *Rectangle {
+	return &Rectangle{native: native}
 }
 
 // RendererClass is a representation of the C record PangoRendererClass.
@@ -1351,6 +1506,11 @@ func (recv *RendererClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// RendererClassNewFromC creates a new RendererClass from a pointer to the C PangoRendererClass that represents the RendererClass.
+func RendererClassNewFromC(native unsafe.Pointer) *RendererClass {
+	return &RendererClass{native: native}
+}
+
 // RendererPrivate is a representation of the C record PangoRendererPrivate.
 type RendererPrivate struct {
 	native unsafe.Pointer
@@ -1359,6 +1519,11 @@ type RendererPrivate struct {
 // ToC returns a pointer to the C PangoRendererPrivate that represents the RendererPrivate.
 func (recv *RendererPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// RendererPrivateNewFromC creates a new RendererPrivate from a pointer to the C PangoRendererPrivate that represents the RendererPrivate.
+func RendererPrivateNewFromC(native unsafe.Pointer) *RendererPrivate {
+	return &RendererPrivate{native: native}
 }
 
 // ScriptIter is a representation of the C record PangoScriptIter.
@@ -1371,6 +1536,11 @@ func (recv *ScriptIter) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ScriptIterNewFromC creates a new ScriptIter from a pointer to the C PangoScriptIter that represents the ScriptIter.
+func ScriptIterNewFromC(native unsafe.Pointer) *ScriptIter {
+	return &ScriptIter{native: native}
+}
+
 // TabArray is a representation of the C record PangoTabArray.
 type TabArray struct {
 	native unsafe.Pointer
@@ -1381,6 +1551,11 @@ func (recv *TabArray) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TabArrayNewFromC creates a new TabArray from a pointer to the C PangoTabArray that represents the TabArray.
+func TabArrayNewFromC(native unsafe.Pointer) *TabArray {
+	return &TabArray{native: native}
+}
+
 // Context is a representation of the C record PangoContext.
 type Context struct {
 	native unsafe.Pointer
@@ -1389,6 +1564,11 @@ type Context struct {
 // ToC returns a pointer to the C PangoContext that represents the Context.
 func (recv *Context) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ContextNewFromC creates a new Context from a pointer to the C PangoContext that represents the Context.
+func ContextNewFromC(native unsafe.Pointer) *Context {
+	return &Context{native: native}
 }
 
 // UNSUPPORTED : Engine : blacklisted
@@ -1403,6 +1583,11 @@ func (recv *EngineLang) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EngineLangNewFromC creates a new EngineLang from a pointer to the C PangoEngineLang that represents the EngineLang.
+func EngineLangNewFromC(native unsafe.Pointer) *EngineLang {
+	return &EngineLang{native: native}
+}
+
 // EngineShape is a representation of the C record PangoEngineShape.
 type EngineShape struct {
 	native unsafe.Pointer
@@ -1411,6 +1596,11 @@ type EngineShape struct {
 // ToC returns a pointer to the C PangoEngineShape that represents the EngineShape.
 func (recv *EngineShape) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EngineShapeNewFromC creates a new EngineShape from a pointer to the C PangoEngineShape that represents the EngineShape.
+func EngineShapeNewFromC(native unsafe.Pointer) *EngineShape {
+	return &EngineShape{native: native}
 }
 
 // Font is a representation of the C record PangoFont.
@@ -1423,6 +1613,11 @@ func (recv *Font) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FontNewFromC creates a new Font from a pointer to the C PangoFont that represents the Font.
+func FontNewFromC(native unsafe.Pointer) *Font {
+	return &Font{native: native}
+}
+
 // FontFace is a representation of the C record PangoFontFace.
 type FontFace struct {
 	native unsafe.Pointer
@@ -1431,6 +1626,11 @@ type FontFace struct {
 // ToC returns a pointer to the C PangoFontFace that represents the FontFace.
 func (recv *FontFace) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FontFaceNewFromC creates a new FontFace from a pointer to the C PangoFontFace that represents the FontFace.
+func FontFaceNewFromC(native unsafe.Pointer) *FontFace {
+	return &FontFace{native: native}
 }
 
 // FontFamily is a representation of the C record PangoFontFamily.
@@ -1443,6 +1643,11 @@ func (recv *FontFamily) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FontFamilyNewFromC creates a new FontFamily from a pointer to the C PangoFontFamily that represents the FontFamily.
+func FontFamilyNewFromC(native unsafe.Pointer) *FontFamily {
+	return &FontFamily{native: native}
+}
+
 // FontMap is a representation of the C record PangoFontMap.
 type FontMap struct {
 	native unsafe.Pointer
@@ -1453,6 +1658,11 @@ func (recv *FontMap) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FontMapNewFromC creates a new FontMap from a pointer to the C PangoFontMap that represents the FontMap.
+func FontMapNewFromC(native unsafe.Pointer) *FontMap {
+	return &FontMap{native: native}
+}
+
 // Fontset is a representation of the C record PangoFontset.
 type Fontset struct {
 	native unsafe.Pointer
@@ -1461,6 +1671,11 @@ type Fontset struct {
 // ToC returns a pointer to the C PangoFontset that represents the Fontset.
 func (recv *Fontset) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FontsetNewFromC creates a new Fontset from a pointer to the C PangoFontset that represents the Fontset.
+func FontsetNewFromC(native unsafe.Pointer) *Fontset {
+	return &Fontset{native: native}
 }
 
 // UNSUPPORTED : FontsetSimple : blacklisted
@@ -1475,6 +1690,11 @@ func (recv *Layout) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// LayoutNewFromC creates a new Layout from a pointer to the C PangoLayout that represents the Layout.
+func LayoutNewFromC(native unsafe.Pointer) *Layout {
+	return &Layout{native: native}
+}
+
 // Renderer is a representation of the C record PangoRenderer.
 //
 // since 1.8
@@ -1485,4 +1705,9 @@ type Renderer struct {
 // ToC returns a pointer to the C PangoRenderer that represents the Renderer.
 func (recv *Renderer) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// RendererNewFromC creates a new Renderer from a pointer to the C PangoRenderer that represents the Renderer.
+func RendererNewFromC(native unsafe.Pointer) *Renderer {
+	return &Renderer{native: native}
 }

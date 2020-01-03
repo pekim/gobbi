@@ -604,6 +604,11 @@ func (recv *Context) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ContextNewFromC creates a new Context from a pointer to the C cairo_t that represents the Context.
+func ContextNewFromC(native unsafe.Pointer) *Context {
+	return &Context{native: native}
+}
+
 // Device is a representation of the C record cairo_device_t.
 type Device struct {
 	native unsafe.Pointer
@@ -612,6 +617,11 @@ type Device struct {
 // ToC returns a pointer to the C cairo_device_t that represents the Device.
 func (recv *Device) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DeviceNewFromC creates a new Device from a pointer to the C cairo_device_t that represents the Device.
+func DeviceNewFromC(native unsafe.Pointer) *Device {
+	return &Device{native: native}
 }
 
 // Surface is a representation of the C record cairo_surface_t.
@@ -624,6 +634,11 @@ func (recv *Surface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SurfaceNewFromC creates a new Surface from a pointer to the C cairo_surface_t that represents the Surface.
+func SurfaceNewFromC(native unsafe.Pointer) *Surface {
+	return &Surface{native: native}
+}
+
 // Matrix is a representation of the C record cairo_matrix_t.
 type Matrix struct {
 	native unsafe.Pointer
@@ -632,6 +647,11 @@ type Matrix struct {
 // ToC returns a pointer to the C cairo_matrix_t that represents the Matrix.
 func (recv *Matrix) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MatrixNewFromC creates a new Matrix from a pointer to the C cairo_matrix_t that represents the Matrix.
+func MatrixNewFromC(native unsafe.Pointer) *Matrix {
+	return &Matrix{native: native}
 }
 
 // Pattern is a representation of the C record cairo_pattern_t.
@@ -644,6 +664,11 @@ func (recv *Pattern) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// PatternNewFromC creates a new Pattern from a pointer to the C cairo_pattern_t that represents the Pattern.
+func PatternNewFromC(native unsafe.Pointer) *Pattern {
+	return &Pattern{native: native}
+}
+
 // Region is a representation of the C record cairo_region_t.
 type Region struct {
 	native unsafe.Pointer
@@ -652,6 +677,11 @@ type Region struct {
 // ToC returns a pointer to the C cairo_region_t that represents the Region.
 func (recv *Region) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// RegionNewFromC creates a new Region from a pointer to the C cairo_region_t that represents the Region.
+func RegionNewFromC(native unsafe.Pointer) *Region {
+	return &Region{native: native}
 }
 
 // FontOptions is a representation of the C record cairo_font_options_t.
@@ -664,6 +694,11 @@ func (recv *FontOptions) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FontOptionsNewFromC creates a new FontOptions from a pointer to the C cairo_font_options_t that represents the FontOptions.
+func FontOptionsNewFromC(native unsafe.Pointer) *FontOptions {
+	return &FontOptions{native: native}
+}
+
 // FontFace is a representation of the C record cairo_font_face_t.
 type FontFace struct {
 	native unsafe.Pointer
@@ -672,6 +707,11 @@ type FontFace struct {
 // ToC returns a pointer to the C cairo_font_face_t that represents the FontFace.
 func (recv *FontFace) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FontFaceNewFromC creates a new FontFace from a pointer to the C cairo_font_face_t that represents the FontFace.
+func FontFaceNewFromC(native unsafe.Pointer) *FontFace {
+	return &FontFace{native: native}
 }
 
 // ScaledFont is a representation of the C record cairo_scaled_font_t.
@@ -684,6 +724,11 @@ func (recv *ScaledFont) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ScaledFontNewFromC creates a new ScaledFont from a pointer to the C cairo_scaled_font_t that represents the ScaledFont.
+func ScaledFontNewFromC(native unsafe.Pointer) *ScaledFont {
+	return &ScaledFont{native: native}
+}
+
 // Path is a representation of the C record cairo_path_t.
 type Path struct {
 	native unsafe.Pointer
@@ -692,6 +737,11 @@ type Path struct {
 // ToC returns a pointer to the C cairo_path_t that represents the Path.
 func (recv *Path) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// PathNewFromC creates a new Path from a pointer to the C cairo_path_t that represents the Path.
+func PathNewFromC(native unsafe.Pointer) *Path {
+	return &Path{native: native}
 }
 
 // Rectangle is a representation of the C record cairo_rectangle_t.
@@ -704,6 +754,11 @@ func (recv *Rectangle) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// RectangleNewFromC creates a new Rectangle from a pointer to the C cairo_rectangle_t that represents the Rectangle.
+func RectangleNewFromC(native unsafe.Pointer) *Rectangle {
+	return &Rectangle{native: native}
+}
+
 // RectangleInt is a representation of the C record cairo_rectangle_int_t.
 type RectangleInt struct {
 	native unsafe.Pointer
@@ -712,4 +767,9 @@ type RectangleInt struct {
 // ToC returns a pointer to the C cairo_rectangle_int_t that represents the RectangleInt.
 func (recv *RectangleInt) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// RectangleIntNewFromC creates a new RectangleInt from a pointer to the C cairo_rectangle_int_t that represents the RectangleInt.
+func RectangleIntNewFromC(native unsafe.Pointer) *RectangleInt {
+	return &RectangleInt{native: native}
 }

@@ -2103,6 +2103,11 @@ func (recv *ActionEntry) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ActionEntryNewFromC creates a new ActionEntry from a pointer to the C GActionEntry that represents the ActionEntry.
+func ActionEntryNewFromC(native unsafe.Pointer) *ActionEntry {
+	return &ActionEntry{native: native}
+}
+
 // ActionGroupInterface is a representation of the C record GActionGroupInterface.
 //
 // since 2.28
@@ -2113,6 +2118,11 @@ type ActionGroupInterface struct {
 // ToC returns a pointer to the C GActionGroupInterface that represents the ActionGroupInterface.
 func (recv *ActionGroupInterface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ActionGroupInterfaceNewFromC creates a new ActionGroupInterface from a pointer to the C GActionGroupInterface that represents the ActionGroupInterface.
+func ActionGroupInterfaceNewFromC(native unsafe.Pointer) *ActionGroupInterface {
+	return &ActionGroupInterface{native: native}
 }
 
 // ActionInterface is a representation of the C record GActionInterface.
@@ -2127,6 +2137,11 @@ func (recv *ActionInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ActionInterfaceNewFromC creates a new ActionInterface from a pointer to the C GActionInterface that represents the ActionInterface.
+func ActionInterfaceNewFromC(native unsafe.Pointer) *ActionInterface {
+	return &ActionInterface{native: native}
+}
+
 // ActionMapInterface is a representation of the C record GActionMapInterface.
 //
 // since 2.32
@@ -2139,6 +2154,11 @@ func (recv *ActionMapInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ActionMapInterfaceNewFromC creates a new ActionMapInterface from a pointer to the C GActionMapInterface that represents the ActionMapInterface.
+func ActionMapInterfaceNewFromC(native unsafe.Pointer) *ActionMapInterface {
+	return &ActionMapInterface{native: native}
+}
+
 // AppInfoIface is a representation of the C record GAppInfoIface.
 type AppInfoIface struct {
 	native unsafe.Pointer
@@ -2147,6 +2167,11 @@ type AppInfoIface struct {
 // ToC returns a pointer to the C GAppInfoIface that represents the AppInfoIface.
 func (recv *AppInfoIface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AppInfoIfaceNewFromC creates a new AppInfoIface from a pointer to the C GAppInfoIface that represents the AppInfoIface.
+func AppInfoIfaceNewFromC(native unsafe.Pointer) *AppInfoIface {
+	return &AppInfoIface{native: native}
 }
 
 // AppLaunchContextClass is a representation of the C record GAppLaunchContextClass.
@@ -2159,6 +2184,11 @@ func (recv *AppLaunchContextClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// AppLaunchContextClassNewFromC creates a new AppLaunchContextClass from a pointer to the C GAppLaunchContextClass that represents the AppLaunchContextClass.
+func AppLaunchContextClassNewFromC(native unsafe.Pointer) *AppLaunchContextClass {
+	return &AppLaunchContextClass{native: native}
+}
+
 // AppLaunchContextPrivate is a representation of the C record GAppLaunchContextPrivate.
 type AppLaunchContextPrivate struct {
 	native unsafe.Pointer
@@ -2167,6 +2197,11 @@ type AppLaunchContextPrivate struct {
 // ToC returns a pointer to the C GAppLaunchContextPrivate that represents the AppLaunchContextPrivate.
 func (recv *AppLaunchContextPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AppLaunchContextPrivateNewFromC creates a new AppLaunchContextPrivate from a pointer to the C GAppLaunchContextPrivate that represents the AppLaunchContextPrivate.
+func AppLaunchContextPrivateNewFromC(native unsafe.Pointer) *AppLaunchContextPrivate {
+	return &AppLaunchContextPrivate{native: native}
 }
 
 // ApplicationClass is a representation of the C record GApplicationClass.
@@ -2181,6 +2216,11 @@ func (recv *ApplicationClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ApplicationClassNewFromC creates a new ApplicationClass from a pointer to the C GApplicationClass that represents the ApplicationClass.
+func ApplicationClassNewFromC(native unsafe.Pointer) *ApplicationClass {
+	return &ApplicationClass{native: native}
+}
+
 // ApplicationCommandLineClass is a representation of the C record GApplicationCommandLineClass.
 //
 // since 2.28
@@ -2193,6 +2233,11 @@ func (recv *ApplicationCommandLineClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ApplicationCommandLineClassNewFromC creates a new ApplicationCommandLineClass from a pointer to the C GApplicationCommandLineClass that represents the ApplicationCommandLineClass.
+func ApplicationCommandLineClassNewFromC(native unsafe.Pointer) *ApplicationCommandLineClass {
+	return &ApplicationCommandLineClass{native: native}
+}
+
 // ApplicationCommandLinePrivate is a representation of the C record GApplicationCommandLinePrivate.
 type ApplicationCommandLinePrivate struct {
 	native unsafe.Pointer
@@ -2203,6 +2248,11 @@ func (recv *ApplicationCommandLinePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ApplicationCommandLinePrivateNewFromC creates a new ApplicationCommandLinePrivate from a pointer to the C GApplicationCommandLinePrivate that represents the ApplicationCommandLinePrivate.
+func ApplicationCommandLinePrivateNewFromC(native unsafe.Pointer) *ApplicationCommandLinePrivate {
+	return &ApplicationCommandLinePrivate{native: native}
+}
+
 // ApplicationPrivate is a representation of the C record GApplicationPrivate.
 type ApplicationPrivate struct {
 	native unsafe.Pointer
@@ -2211,6 +2261,11 @@ type ApplicationPrivate struct {
 // ToC returns a pointer to the C GApplicationPrivate that represents the ApplicationPrivate.
 func (recv *ApplicationPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ApplicationPrivateNewFromC creates a new ApplicationPrivate from a pointer to the C GApplicationPrivate that represents the ApplicationPrivate.
+func ApplicationPrivateNewFromC(native unsafe.Pointer) *ApplicationPrivate {
+	return &ApplicationPrivate{native: native}
 }
 
 // AsyncInitableIface is a representation of the C record GAsyncInitableIface.
@@ -2225,6 +2280,11 @@ func (recv *AsyncInitableIface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// AsyncInitableIfaceNewFromC creates a new AsyncInitableIface from a pointer to the C GAsyncInitableIface that represents the AsyncInitableIface.
+func AsyncInitableIfaceNewFromC(native unsafe.Pointer) *AsyncInitableIface {
+	return &AsyncInitableIface{native: native}
+}
+
 // AsyncResultIface is a representation of the C record GAsyncResultIface.
 type AsyncResultIface struct {
 	native unsafe.Pointer
@@ -2233,6 +2293,11 @@ type AsyncResultIface struct {
 // ToC returns a pointer to the C GAsyncResultIface that represents the AsyncResultIface.
 func (recv *AsyncResultIface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AsyncResultIfaceNewFromC creates a new AsyncResultIface from a pointer to the C GAsyncResultIface that represents the AsyncResultIface.
+func AsyncResultIfaceNewFromC(native unsafe.Pointer) *AsyncResultIface {
+	return &AsyncResultIface{native: native}
 }
 
 // BufferedInputStreamClass is a representation of the C record GBufferedInputStreamClass.
@@ -2245,6 +2310,11 @@ func (recv *BufferedInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// BufferedInputStreamClassNewFromC creates a new BufferedInputStreamClass from a pointer to the C GBufferedInputStreamClass that represents the BufferedInputStreamClass.
+func BufferedInputStreamClassNewFromC(native unsafe.Pointer) *BufferedInputStreamClass {
+	return &BufferedInputStreamClass{native: native}
+}
+
 // BufferedInputStreamPrivate is a representation of the C record GBufferedInputStreamPrivate.
 type BufferedInputStreamPrivate struct {
 	native unsafe.Pointer
@@ -2253,6 +2323,11 @@ type BufferedInputStreamPrivate struct {
 // ToC returns a pointer to the C GBufferedInputStreamPrivate that represents the BufferedInputStreamPrivate.
 func (recv *BufferedInputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// BufferedInputStreamPrivateNewFromC creates a new BufferedInputStreamPrivate from a pointer to the C GBufferedInputStreamPrivate that represents the BufferedInputStreamPrivate.
+func BufferedInputStreamPrivateNewFromC(native unsafe.Pointer) *BufferedInputStreamPrivate {
+	return &BufferedInputStreamPrivate{native: native}
 }
 
 // BufferedOutputStreamClass is a representation of the C record GBufferedOutputStreamClass.
@@ -2265,6 +2340,11 @@ func (recv *BufferedOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// BufferedOutputStreamClassNewFromC creates a new BufferedOutputStreamClass from a pointer to the C GBufferedOutputStreamClass that represents the BufferedOutputStreamClass.
+func BufferedOutputStreamClassNewFromC(native unsafe.Pointer) *BufferedOutputStreamClass {
+	return &BufferedOutputStreamClass{native: native}
+}
+
 // BufferedOutputStreamPrivate is a representation of the C record GBufferedOutputStreamPrivate.
 type BufferedOutputStreamPrivate struct {
 	native unsafe.Pointer
@@ -2273,6 +2353,11 @@ type BufferedOutputStreamPrivate struct {
 // ToC returns a pointer to the C GBufferedOutputStreamPrivate that represents the BufferedOutputStreamPrivate.
 func (recv *BufferedOutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// BufferedOutputStreamPrivateNewFromC creates a new BufferedOutputStreamPrivate from a pointer to the C GBufferedOutputStreamPrivate that represents the BufferedOutputStreamPrivate.
+func BufferedOutputStreamPrivateNewFromC(native unsafe.Pointer) *BufferedOutputStreamPrivate {
+	return &BufferedOutputStreamPrivate{native: native}
 }
 
 // CancellableClass is a representation of the C record GCancellableClass.
@@ -2285,6 +2370,11 @@ func (recv *CancellableClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// CancellableClassNewFromC creates a new CancellableClass from a pointer to the C GCancellableClass that represents the CancellableClass.
+func CancellableClassNewFromC(native unsafe.Pointer) *CancellableClass {
+	return &CancellableClass{native: native}
+}
+
 // CancellablePrivate is a representation of the C record GCancellablePrivate.
 type CancellablePrivate struct {
 	native unsafe.Pointer
@@ -2295,6 +2385,11 @@ func (recv *CancellablePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// CancellablePrivateNewFromC creates a new CancellablePrivate from a pointer to the C GCancellablePrivate that represents the CancellablePrivate.
+func CancellablePrivateNewFromC(native unsafe.Pointer) *CancellablePrivate {
+	return &CancellablePrivate{native: native}
+}
+
 // CharsetConverterClass is a representation of the C record GCharsetConverterClass.
 type CharsetConverterClass struct {
 	native unsafe.Pointer
@@ -2303,6 +2398,11 @@ type CharsetConverterClass struct {
 // ToC returns a pointer to the C GCharsetConverterClass that represents the CharsetConverterClass.
 func (recv *CharsetConverterClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// CharsetConverterClassNewFromC creates a new CharsetConverterClass from a pointer to the C GCharsetConverterClass that represents the CharsetConverterClass.
+func CharsetConverterClassNewFromC(native unsafe.Pointer) *CharsetConverterClass {
+	return &CharsetConverterClass{native: native}
 }
 
 // ConverterIface is a representation of the C record GConverterIface.
@@ -2317,6 +2417,11 @@ func (recv *ConverterIface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ConverterIfaceNewFromC creates a new ConverterIface from a pointer to the C GConverterIface that represents the ConverterIface.
+func ConverterIfaceNewFromC(native unsafe.Pointer) *ConverterIface {
+	return &ConverterIface{native: native}
+}
+
 // ConverterInputStreamClass is a representation of the C record GConverterInputStreamClass.
 type ConverterInputStreamClass struct {
 	native unsafe.Pointer
@@ -2325,6 +2430,11 @@ type ConverterInputStreamClass struct {
 // ToC returns a pointer to the C GConverterInputStreamClass that represents the ConverterInputStreamClass.
 func (recv *ConverterInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ConverterInputStreamClassNewFromC creates a new ConverterInputStreamClass from a pointer to the C GConverterInputStreamClass that represents the ConverterInputStreamClass.
+func ConverterInputStreamClassNewFromC(native unsafe.Pointer) *ConverterInputStreamClass {
+	return &ConverterInputStreamClass{native: native}
 }
 
 // ConverterInputStreamPrivate is a representation of the C record GConverterInputStreamPrivate.
@@ -2337,6 +2447,11 @@ func (recv *ConverterInputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ConverterInputStreamPrivateNewFromC creates a new ConverterInputStreamPrivate from a pointer to the C GConverterInputStreamPrivate that represents the ConverterInputStreamPrivate.
+func ConverterInputStreamPrivateNewFromC(native unsafe.Pointer) *ConverterInputStreamPrivate {
+	return &ConverterInputStreamPrivate{native: native}
+}
+
 // ConverterOutputStreamClass is a representation of the C record GConverterOutputStreamClass.
 type ConverterOutputStreamClass struct {
 	native unsafe.Pointer
@@ -2347,6 +2462,11 @@ func (recv *ConverterOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ConverterOutputStreamClassNewFromC creates a new ConverterOutputStreamClass from a pointer to the C GConverterOutputStreamClass that represents the ConverterOutputStreamClass.
+func ConverterOutputStreamClassNewFromC(native unsafe.Pointer) *ConverterOutputStreamClass {
+	return &ConverterOutputStreamClass{native: native}
+}
+
 // ConverterOutputStreamPrivate is a representation of the C record GConverterOutputStreamPrivate.
 type ConverterOutputStreamPrivate struct {
 	native unsafe.Pointer
@@ -2355,6 +2475,11 @@ type ConverterOutputStreamPrivate struct {
 // ToC returns a pointer to the C GConverterOutputStreamPrivate that represents the ConverterOutputStreamPrivate.
 func (recv *ConverterOutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ConverterOutputStreamPrivateNewFromC creates a new ConverterOutputStreamPrivate from a pointer to the C GConverterOutputStreamPrivate that represents the ConverterOutputStreamPrivate.
+func ConverterOutputStreamPrivateNewFromC(native unsafe.Pointer) *ConverterOutputStreamPrivate {
+	return &ConverterOutputStreamPrivate{native: native}
 }
 
 // CredentialsClass is a representation of the C record GCredentialsClass.
@@ -2369,6 +2494,11 @@ func (recv *CredentialsClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// CredentialsClassNewFromC creates a new CredentialsClass from a pointer to the C GCredentialsClass that represents the CredentialsClass.
+func CredentialsClassNewFromC(native unsafe.Pointer) *CredentialsClass {
+	return &CredentialsClass{native: native}
+}
+
 // DBusAnnotationInfo is a representation of the C record GDBusAnnotationInfo.
 //
 // since 2.26
@@ -2379,6 +2509,11 @@ type DBusAnnotationInfo struct {
 // ToC returns a pointer to the C GDBusAnnotationInfo that represents the DBusAnnotationInfo.
 func (recv *DBusAnnotationInfo) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusAnnotationInfoNewFromC creates a new DBusAnnotationInfo from a pointer to the C GDBusAnnotationInfo that represents the DBusAnnotationInfo.
+func DBusAnnotationInfoNewFromC(native unsafe.Pointer) *DBusAnnotationInfo {
+	return &DBusAnnotationInfo{native: native}
 }
 
 // DBusArgInfo is a representation of the C record GDBusArgInfo.
@@ -2393,6 +2528,11 @@ func (recv *DBusArgInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusArgInfoNewFromC creates a new DBusArgInfo from a pointer to the C GDBusArgInfo that represents the DBusArgInfo.
+func DBusArgInfoNewFromC(native unsafe.Pointer) *DBusArgInfo {
+	return &DBusArgInfo{native: native}
+}
+
 // DBusErrorEntry is a representation of the C record GDBusErrorEntry.
 //
 // since 2.26
@@ -2403,6 +2543,11 @@ type DBusErrorEntry struct {
 // ToC returns a pointer to the C GDBusErrorEntry that represents the DBusErrorEntry.
 func (recv *DBusErrorEntry) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusErrorEntryNewFromC creates a new DBusErrorEntry from a pointer to the C GDBusErrorEntry that represents the DBusErrorEntry.
+func DBusErrorEntryNewFromC(native unsafe.Pointer) *DBusErrorEntry {
+	return &DBusErrorEntry{native: native}
 }
 
 // DBusInterfaceIface is a representation of the C record GDBusInterfaceIface.
@@ -2417,6 +2562,11 @@ func (recv *DBusInterfaceIface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusInterfaceIfaceNewFromC creates a new DBusInterfaceIface from a pointer to the C GDBusInterfaceIface that represents the DBusInterfaceIface.
+func DBusInterfaceIfaceNewFromC(native unsafe.Pointer) *DBusInterfaceIface {
+	return &DBusInterfaceIface{native: native}
+}
+
 // DBusInterfaceInfo is a representation of the C record GDBusInterfaceInfo.
 //
 // since 2.26
@@ -2427,6 +2577,11 @@ type DBusInterfaceInfo struct {
 // ToC returns a pointer to the C GDBusInterfaceInfo that represents the DBusInterfaceInfo.
 func (recv *DBusInterfaceInfo) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusInterfaceInfoNewFromC creates a new DBusInterfaceInfo from a pointer to the C GDBusInterfaceInfo that represents the DBusInterfaceInfo.
+func DBusInterfaceInfoNewFromC(native unsafe.Pointer) *DBusInterfaceInfo {
+	return &DBusInterfaceInfo{native: native}
 }
 
 // DBusInterfaceSkeletonClass is a representation of the C record GDBusInterfaceSkeletonClass.
@@ -2441,6 +2596,11 @@ func (recv *DBusInterfaceSkeletonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusInterfaceSkeletonClassNewFromC creates a new DBusInterfaceSkeletonClass from a pointer to the C GDBusInterfaceSkeletonClass that represents the DBusInterfaceSkeletonClass.
+func DBusInterfaceSkeletonClassNewFromC(native unsafe.Pointer) *DBusInterfaceSkeletonClass {
+	return &DBusInterfaceSkeletonClass{native: native}
+}
+
 // DBusInterfaceSkeletonPrivate is a representation of the C record GDBusInterfaceSkeletonPrivate.
 type DBusInterfaceSkeletonPrivate struct {
 	native unsafe.Pointer
@@ -2449,6 +2609,11 @@ type DBusInterfaceSkeletonPrivate struct {
 // ToC returns a pointer to the C GDBusInterfaceSkeletonPrivate that represents the DBusInterfaceSkeletonPrivate.
 func (recv *DBusInterfaceSkeletonPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusInterfaceSkeletonPrivateNewFromC creates a new DBusInterfaceSkeletonPrivate from a pointer to the C GDBusInterfaceSkeletonPrivate that represents the DBusInterfaceSkeletonPrivate.
+func DBusInterfaceSkeletonPrivateNewFromC(native unsafe.Pointer) *DBusInterfaceSkeletonPrivate {
+	return &DBusInterfaceSkeletonPrivate{native: native}
 }
 
 // DBusInterfaceVTable is a representation of the C record GDBusInterfaceVTable.
@@ -2463,6 +2628,11 @@ func (recv *DBusInterfaceVTable) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusInterfaceVTableNewFromC creates a new DBusInterfaceVTable from a pointer to the C GDBusInterfaceVTable that represents the DBusInterfaceVTable.
+func DBusInterfaceVTableNewFromC(native unsafe.Pointer) *DBusInterfaceVTable {
+	return &DBusInterfaceVTable{native: native}
+}
+
 // DBusMethodInfo is a representation of the C record GDBusMethodInfo.
 //
 // since 2.26
@@ -2473,6 +2643,11 @@ type DBusMethodInfo struct {
 // ToC returns a pointer to the C GDBusMethodInfo that represents the DBusMethodInfo.
 func (recv *DBusMethodInfo) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusMethodInfoNewFromC creates a new DBusMethodInfo from a pointer to the C GDBusMethodInfo that represents the DBusMethodInfo.
+func DBusMethodInfoNewFromC(native unsafe.Pointer) *DBusMethodInfo {
+	return &DBusMethodInfo{native: native}
 }
 
 // DBusNodeInfo is a representation of the C record GDBusNodeInfo.
@@ -2487,6 +2662,11 @@ func (recv *DBusNodeInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusNodeInfoNewFromC creates a new DBusNodeInfo from a pointer to the C GDBusNodeInfo that represents the DBusNodeInfo.
+func DBusNodeInfoNewFromC(native unsafe.Pointer) *DBusNodeInfo {
+	return &DBusNodeInfo{native: native}
+}
+
 // DBusObjectIface is a representation of the C record GDBusObjectIface.
 //
 // since 2.30
@@ -2497,6 +2677,11 @@ type DBusObjectIface struct {
 // ToC returns a pointer to the C GDBusObjectIface that represents the DBusObjectIface.
 func (recv *DBusObjectIface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusObjectIfaceNewFromC creates a new DBusObjectIface from a pointer to the C GDBusObjectIface that represents the DBusObjectIface.
+func DBusObjectIfaceNewFromC(native unsafe.Pointer) *DBusObjectIface {
+	return &DBusObjectIface{native: native}
 }
 
 // DBusObjectManagerClientClass is a representation of the C record GDBusObjectManagerClientClass.
@@ -2511,6 +2696,11 @@ func (recv *DBusObjectManagerClientClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusObjectManagerClientClassNewFromC creates a new DBusObjectManagerClientClass from a pointer to the C GDBusObjectManagerClientClass that represents the DBusObjectManagerClientClass.
+func DBusObjectManagerClientClassNewFromC(native unsafe.Pointer) *DBusObjectManagerClientClass {
+	return &DBusObjectManagerClientClass{native: native}
+}
+
 // DBusObjectManagerClientPrivate is a representation of the C record GDBusObjectManagerClientPrivate.
 type DBusObjectManagerClientPrivate struct {
 	native unsafe.Pointer
@@ -2519,6 +2709,11 @@ type DBusObjectManagerClientPrivate struct {
 // ToC returns a pointer to the C GDBusObjectManagerClientPrivate that represents the DBusObjectManagerClientPrivate.
 func (recv *DBusObjectManagerClientPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusObjectManagerClientPrivateNewFromC creates a new DBusObjectManagerClientPrivate from a pointer to the C GDBusObjectManagerClientPrivate that represents the DBusObjectManagerClientPrivate.
+func DBusObjectManagerClientPrivateNewFromC(native unsafe.Pointer) *DBusObjectManagerClientPrivate {
+	return &DBusObjectManagerClientPrivate{native: native}
 }
 
 // DBusObjectManagerIface is a representation of the C record GDBusObjectManagerIface.
@@ -2533,6 +2728,11 @@ func (recv *DBusObjectManagerIface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusObjectManagerIfaceNewFromC creates a new DBusObjectManagerIface from a pointer to the C GDBusObjectManagerIface that represents the DBusObjectManagerIface.
+func DBusObjectManagerIfaceNewFromC(native unsafe.Pointer) *DBusObjectManagerIface {
+	return &DBusObjectManagerIface{native: native}
+}
+
 // DBusObjectManagerServerClass is a representation of the C record GDBusObjectManagerServerClass.
 //
 // since 2.30
@@ -2545,6 +2745,11 @@ func (recv *DBusObjectManagerServerClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusObjectManagerServerClassNewFromC creates a new DBusObjectManagerServerClass from a pointer to the C GDBusObjectManagerServerClass that represents the DBusObjectManagerServerClass.
+func DBusObjectManagerServerClassNewFromC(native unsafe.Pointer) *DBusObjectManagerServerClass {
+	return &DBusObjectManagerServerClass{native: native}
+}
+
 // DBusObjectManagerServerPrivate is a representation of the C record GDBusObjectManagerServerPrivate.
 type DBusObjectManagerServerPrivate struct {
 	native unsafe.Pointer
@@ -2553,6 +2758,11 @@ type DBusObjectManagerServerPrivate struct {
 // ToC returns a pointer to the C GDBusObjectManagerServerPrivate that represents the DBusObjectManagerServerPrivate.
 func (recv *DBusObjectManagerServerPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusObjectManagerServerPrivateNewFromC creates a new DBusObjectManagerServerPrivate from a pointer to the C GDBusObjectManagerServerPrivate that represents the DBusObjectManagerServerPrivate.
+func DBusObjectManagerServerPrivateNewFromC(native unsafe.Pointer) *DBusObjectManagerServerPrivate {
+	return &DBusObjectManagerServerPrivate{native: native}
 }
 
 // DBusObjectProxyClass is a representation of the C record GDBusObjectProxyClass.
@@ -2567,6 +2777,11 @@ func (recv *DBusObjectProxyClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusObjectProxyClassNewFromC creates a new DBusObjectProxyClass from a pointer to the C GDBusObjectProxyClass that represents the DBusObjectProxyClass.
+func DBusObjectProxyClassNewFromC(native unsafe.Pointer) *DBusObjectProxyClass {
+	return &DBusObjectProxyClass{native: native}
+}
+
 // DBusObjectProxyPrivate is a representation of the C record GDBusObjectProxyPrivate.
 type DBusObjectProxyPrivate struct {
 	native unsafe.Pointer
@@ -2575,6 +2790,11 @@ type DBusObjectProxyPrivate struct {
 // ToC returns a pointer to the C GDBusObjectProxyPrivate that represents the DBusObjectProxyPrivate.
 func (recv *DBusObjectProxyPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusObjectProxyPrivateNewFromC creates a new DBusObjectProxyPrivate from a pointer to the C GDBusObjectProxyPrivate that represents the DBusObjectProxyPrivate.
+func DBusObjectProxyPrivateNewFromC(native unsafe.Pointer) *DBusObjectProxyPrivate {
+	return &DBusObjectProxyPrivate{native: native}
 }
 
 // DBusObjectSkeletonClass is a representation of the C record GDBusObjectSkeletonClass.
@@ -2589,6 +2809,11 @@ func (recv *DBusObjectSkeletonClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusObjectSkeletonClassNewFromC creates a new DBusObjectSkeletonClass from a pointer to the C GDBusObjectSkeletonClass that represents the DBusObjectSkeletonClass.
+func DBusObjectSkeletonClassNewFromC(native unsafe.Pointer) *DBusObjectSkeletonClass {
+	return &DBusObjectSkeletonClass{native: native}
+}
+
 // DBusObjectSkeletonPrivate is a representation of the C record GDBusObjectSkeletonPrivate.
 type DBusObjectSkeletonPrivate struct {
 	native unsafe.Pointer
@@ -2597,6 +2822,11 @@ type DBusObjectSkeletonPrivate struct {
 // ToC returns a pointer to the C GDBusObjectSkeletonPrivate that represents the DBusObjectSkeletonPrivate.
 func (recv *DBusObjectSkeletonPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusObjectSkeletonPrivateNewFromC creates a new DBusObjectSkeletonPrivate from a pointer to the C GDBusObjectSkeletonPrivate that represents the DBusObjectSkeletonPrivate.
+func DBusObjectSkeletonPrivateNewFromC(native unsafe.Pointer) *DBusObjectSkeletonPrivate {
+	return &DBusObjectSkeletonPrivate{native: native}
 }
 
 // DBusPropertyInfo is a representation of the C record GDBusPropertyInfo.
@@ -2611,6 +2841,11 @@ func (recv *DBusPropertyInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusPropertyInfoNewFromC creates a new DBusPropertyInfo from a pointer to the C GDBusPropertyInfo that represents the DBusPropertyInfo.
+func DBusPropertyInfoNewFromC(native unsafe.Pointer) *DBusPropertyInfo {
+	return &DBusPropertyInfo{native: native}
+}
+
 // DBusProxyClass is a representation of the C record GDBusProxyClass.
 //
 // since 2.26
@@ -2623,6 +2858,11 @@ func (recv *DBusProxyClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusProxyClassNewFromC creates a new DBusProxyClass from a pointer to the C GDBusProxyClass that represents the DBusProxyClass.
+func DBusProxyClassNewFromC(native unsafe.Pointer) *DBusProxyClass {
+	return &DBusProxyClass{native: native}
+}
+
 // DBusProxyPrivate is a representation of the C record GDBusProxyPrivate.
 type DBusProxyPrivate struct {
 	native unsafe.Pointer
@@ -2631,6 +2871,11 @@ type DBusProxyPrivate struct {
 // ToC returns a pointer to the C GDBusProxyPrivate that represents the DBusProxyPrivate.
 func (recv *DBusProxyPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusProxyPrivateNewFromC creates a new DBusProxyPrivate from a pointer to the C GDBusProxyPrivate that represents the DBusProxyPrivate.
+func DBusProxyPrivateNewFromC(native unsafe.Pointer) *DBusProxyPrivate {
+	return &DBusProxyPrivate{native: native}
 }
 
 // DBusSignalInfo is a representation of the C record GDBusSignalInfo.
@@ -2645,6 +2890,11 @@ func (recv *DBusSignalInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusSignalInfoNewFromC creates a new DBusSignalInfo from a pointer to the C GDBusSignalInfo that represents the DBusSignalInfo.
+func DBusSignalInfoNewFromC(native unsafe.Pointer) *DBusSignalInfo {
+	return &DBusSignalInfo{native: native}
+}
+
 // DBusSubtreeVTable is a representation of the C record GDBusSubtreeVTable.
 //
 // since 2.26
@@ -2657,6 +2907,11 @@ func (recv *DBusSubtreeVTable) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusSubtreeVTableNewFromC creates a new DBusSubtreeVTable from a pointer to the C GDBusSubtreeVTable that represents the DBusSubtreeVTable.
+func DBusSubtreeVTableNewFromC(native unsafe.Pointer) *DBusSubtreeVTable {
+	return &DBusSubtreeVTable{native: native}
+}
+
 // DataInputStreamClass is a representation of the C record GDataInputStreamClass.
 type DataInputStreamClass struct {
 	native unsafe.Pointer
@@ -2665,6 +2920,11 @@ type DataInputStreamClass struct {
 // ToC returns a pointer to the C GDataInputStreamClass that represents the DataInputStreamClass.
 func (recv *DataInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DataInputStreamClassNewFromC creates a new DataInputStreamClass from a pointer to the C GDataInputStreamClass that represents the DataInputStreamClass.
+func DataInputStreamClassNewFromC(native unsafe.Pointer) *DataInputStreamClass {
+	return &DataInputStreamClass{native: native}
 }
 
 // DataInputStreamPrivate is a representation of the C record GDataInputStreamPrivate.
@@ -2677,6 +2937,11 @@ func (recv *DataInputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DataInputStreamPrivateNewFromC creates a new DataInputStreamPrivate from a pointer to the C GDataInputStreamPrivate that represents the DataInputStreamPrivate.
+func DataInputStreamPrivateNewFromC(native unsafe.Pointer) *DataInputStreamPrivate {
+	return &DataInputStreamPrivate{native: native}
+}
+
 // DataOutputStreamClass is a representation of the C record GDataOutputStreamClass.
 type DataOutputStreamClass struct {
 	native unsafe.Pointer
@@ -2685,6 +2950,11 @@ type DataOutputStreamClass struct {
 // ToC returns a pointer to the C GDataOutputStreamClass that represents the DataOutputStreamClass.
 func (recv *DataOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DataOutputStreamClassNewFromC creates a new DataOutputStreamClass from a pointer to the C GDataOutputStreamClass that represents the DataOutputStreamClass.
+func DataOutputStreamClassNewFromC(native unsafe.Pointer) *DataOutputStreamClass {
+	return &DataOutputStreamClass{native: native}
 }
 
 // DataOutputStreamPrivate is a representation of the C record GDataOutputStreamPrivate.
@@ -2697,6 +2967,11 @@ func (recv *DataOutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DataOutputStreamPrivateNewFromC creates a new DataOutputStreamPrivate from a pointer to the C GDataOutputStreamPrivate that represents the DataOutputStreamPrivate.
+func DataOutputStreamPrivateNewFromC(native unsafe.Pointer) *DataOutputStreamPrivate {
+	return &DataOutputStreamPrivate{native: native}
+}
+
 // DesktopAppInfoClass is a representation of the C record GDesktopAppInfoClass.
 type DesktopAppInfoClass struct {
 	native unsafe.Pointer
@@ -2705,6 +2980,11 @@ type DesktopAppInfoClass struct {
 // ToC returns a pointer to the C GDesktopAppInfoClass that represents the DesktopAppInfoClass.
 func (recv *DesktopAppInfoClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DesktopAppInfoClassNewFromC creates a new DesktopAppInfoClass from a pointer to the C GDesktopAppInfoClass that represents the DesktopAppInfoClass.
+func DesktopAppInfoClassNewFromC(native unsafe.Pointer) *DesktopAppInfoClass {
+	return &DesktopAppInfoClass{native: native}
 }
 
 // DesktopAppInfoLookupIface is a representation of the C record GDesktopAppInfoLookupIface.
@@ -2717,6 +2997,11 @@ func (recv *DesktopAppInfoLookupIface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DesktopAppInfoLookupIfaceNewFromC creates a new DesktopAppInfoLookupIface from a pointer to the C GDesktopAppInfoLookupIface that represents the DesktopAppInfoLookupIface.
+func DesktopAppInfoLookupIfaceNewFromC(native unsafe.Pointer) *DesktopAppInfoLookupIface {
+	return &DesktopAppInfoLookupIface{native: native}
+}
+
 // DriveIface is a representation of the C record GDriveIface.
 type DriveIface struct {
 	native unsafe.Pointer
@@ -2725,6 +3010,11 @@ type DriveIface struct {
 // ToC returns a pointer to the C GDriveIface that represents the DriveIface.
 func (recv *DriveIface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DriveIfaceNewFromC creates a new DriveIface from a pointer to the C GDriveIface that represents the DriveIface.
+func DriveIfaceNewFromC(native unsafe.Pointer) *DriveIface {
+	return &DriveIface{native: native}
 }
 
 // EmblemClass is a representation of the C record GEmblemClass.
@@ -2737,6 +3027,11 @@ func (recv *EmblemClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EmblemClassNewFromC creates a new EmblemClass from a pointer to the C GEmblemClass that represents the EmblemClass.
+func EmblemClassNewFromC(native unsafe.Pointer) *EmblemClass {
+	return &EmblemClass{native: native}
+}
+
 // EmblemedIconClass is a representation of the C record GEmblemedIconClass.
 type EmblemedIconClass struct {
 	native unsafe.Pointer
@@ -2745,6 +3040,11 @@ type EmblemedIconClass struct {
 // ToC returns a pointer to the C GEmblemedIconClass that represents the EmblemedIconClass.
 func (recv *EmblemedIconClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EmblemedIconClassNewFromC creates a new EmblemedIconClass from a pointer to the C GEmblemedIconClass that represents the EmblemedIconClass.
+func EmblemedIconClassNewFromC(native unsafe.Pointer) *EmblemedIconClass {
+	return &EmblemedIconClass{native: native}
 }
 
 // EmblemedIconPrivate is a representation of the C record GEmblemedIconPrivate.
@@ -2757,6 +3057,11 @@ func (recv *EmblemedIconPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EmblemedIconPrivateNewFromC creates a new EmblemedIconPrivate from a pointer to the C GEmblemedIconPrivate that represents the EmblemedIconPrivate.
+func EmblemedIconPrivateNewFromC(native unsafe.Pointer) *EmblemedIconPrivate {
+	return &EmblemedIconPrivate{native: native}
+}
+
 // FileAttributeInfo is a representation of the C record GFileAttributeInfo.
 type FileAttributeInfo struct {
 	native unsafe.Pointer
@@ -2765,6 +3070,11 @@ type FileAttributeInfo struct {
 // ToC returns a pointer to the C GFileAttributeInfo that represents the FileAttributeInfo.
 func (recv *FileAttributeInfo) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileAttributeInfoNewFromC creates a new FileAttributeInfo from a pointer to the C GFileAttributeInfo that represents the FileAttributeInfo.
+func FileAttributeInfoNewFromC(native unsafe.Pointer) *FileAttributeInfo {
+	return &FileAttributeInfo{native: native}
 }
 
 // FileAttributeInfoList is a representation of the C record GFileAttributeInfoList.
@@ -2777,6 +3087,11 @@ func (recv *FileAttributeInfoList) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FileAttributeInfoListNewFromC creates a new FileAttributeInfoList from a pointer to the C GFileAttributeInfoList that represents the FileAttributeInfoList.
+func FileAttributeInfoListNewFromC(native unsafe.Pointer) *FileAttributeInfoList {
+	return &FileAttributeInfoList{native: native}
+}
+
 // FileAttributeMatcher is a representation of the C record GFileAttributeMatcher.
 type FileAttributeMatcher struct {
 	native unsafe.Pointer
@@ -2785,6 +3100,11 @@ type FileAttributeMatcher struct {
 // ToC returns a pointer to the C GFileAttributeMatcher that represents the FileAttributeMatcher.
 func (recv *FileAttributeMatcher) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileAttributeMatcherNewFromC creates a new FileAttributeMatcher from a pointer to the C GFileAttributeMatcher that represents the FileAttributeMatcher.
+func FileAttributeMatcherNewFromC(native unsafe.Pointer) *FileAttributeMatcher {
+	return &FileAttributeMatcher{native: native}
 }
 
 // FileDescriptorBasedIface is a representation of the C record GFileDescriptorBasedIface.
@@ -2797,6 +3117,11 @@ func (recv *FileDescriptorBasedIface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FileDescriptorBasedIfaceNewFromC creates a new FileDescriptorBasedIface from a pointer to the C GFileDescriptorBasedIface that represents the FileDescriptorBasedIface.
+func FileDescriptorBasedIfaceNewFromC(native unsafe.Pointer) *FileDescriptorBasedIface {
+	return &FileDescriptorBasedIface{native: native}
+}
+
 // FileEnumeratorClass is a representation of the C record GFileEnumeratorClass.
 type FileEnumeratorClass struct {
 	native unsafe.Pointer
@@ -2805,6 +3130,11 @@ type FileEnumeratorClass struct {
 // ToC returns a pointer to the C GFileEnumeratorClass that represents the FileEnumeratorClass.
 func (recv *FileEnumeratorClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileEnumeratorClassNewFromC creates a new FileEnumeratorClass from a pointer to the C GFileEnumeratorClass that represents the FileEnumeratorClass.
+func FileEnumeratorClassNewFromC(native unsafe.Pointer) *FileEnumeratorClass {
+	return &FileEnumeratorClass{native: native}
 }
 
 // FileEnumeratorPrivate is a representation of the C record GFileEnumeratorPrivate.
@@ -2817,6 +3147,11 @@ func (recv *FileEnumeratorPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FileEnumeratorPrivateNewFromC creates a new FileEnumeratorPrivate from a pointer to the C GFileEnumeratorPrivate that represents the FileEnumeratorPrivate.
+func FileEnumeratorPrivateNewFromC(native unsafe.Pointer) *FileEnumeratorPrivate {
+	return &FileEnumeratorPrivate{native: native}
+}
+
 // FileIOStreamClass is a representation of the C record GFileIOStreamClass.
 type FileIOStreamClass struct {
 	native unsafe.Pointer
@@ -2825,6 +3160,11 @@ type FileIOStreamClass struct {
 // ToC returns a pointer to the C GFileIOStreamClass that represents the FileIOStreamClass.
 func (recv *FileIOStreamClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileIOStreamClassNewFromC creates a new FileIOStreamClass from a pointer to the C GFileIOStreamClass that represents the FileIOStreamClass.
+func FileIOStreamClassNewFromC(native unsafe.Pointer) *FileIOStreamClass {
+	return &FileIOStreamClass{native: native}
 }
 
 // FileIOStreamPrivate is a representation of the C record GFileIOStreamPrivate.
@@ -2837,6 +3177,11 @@ func (recv *FileIOStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FileIOStreamPrivateNewFromC creates a new FileIOStreamPrivate from a pointer to the C GFileIOStreamPrivate that represents the FileIOStreamPrivate.
+func FileIOStreamPrivateNewFromC(native unsafe.Pointer) *FileIOStreamPrivate {
+	return &FileIOStreamPrivate{native: native}
+}
+
 // FileIconClass is a representation of the C record GFileIconClass.
 type FileIconClass struct {
 	native unsafe.Pointer
@@ -2845,6 +3190,11 @@ type FileIconClass struct {
 // ToC returns a pointer to the C GFileIconClass that represents the FileIconClass.
 func (recv *FileIconClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileIconClassNewFromC creates a new FileIconClass from a pointer to the C GFileIconClass that represents the FileIconClass.
+func FileIconClassNewFromC(native unsafe.Pointer) *FileIconClass {
+	return &FileIconClass{native: native}
 }
 
 // FileIface is a representation of the C record GFileIface.
@@ -2857,6 +3207,11 @@ func (recv *FileIface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FileIfaceNewFromC creates a new FileIface from a pointer to the C GFileIface that represents the FileIface.
+func FileIfaceNewFromC(native unsafe.Pointer) *FileIface {
+	return &FileIface{native: native}
+}
+
 // FileInfoClass is a representation of the C record GFileInfoClass.
 type FileInfoClass struct {
 	native unsafe.Pointer
@@ -2865,6 +3220,11 @@ type FileInfoClass struct {
 // ToC returns a pointer to the C GFileInfoClass that represents the FileInfoClass.
 func (recv *FileInfoClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileInfoClassNewFromC creates a new FileInfoClass from a pointer to the C GFileInfoClass that represents the FileInfoClass.
+func FileInfoClassNewFromC(native unsafe.Pointer) *FileInfoClass {
+	return &FileInfoClass{native: native}
 }
 
 // FileInputStreamClass is a representation of the C record GFileInputStreamClass.
@@ -2877,6 +3237,11 @@ func (recv *FileInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FileInputStreamClassNewFromC creates a new FileInputStreamClass from a pointer to the C GFileInputStreamClass that represents the FileInputStreamClass.
+func FileInputStreamClassNewFromC(native unsafe.Pointer) *FileInputStreamClass {
+	return &FileInputStreamClass{native: native}
+}
+
 // FileInputStreamPrivate is a representation of the C record GFileInputStreamPrivate.
 type FileInputStreamPrivate struct {
 	native unsafe.Pointer
@@ -2885,6 +3250,11 @@ type FileInputStreamPrivate struct {
 // ToC returns a pointer to the C GFileInputStreamPrivate that represents the FileInputStreamPrivate.
 func (recv *FileInputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileInputStreamPrivateNewFromC creates a new FileInputStreamPrivate from a pointer to the C GFileInputStreamPrivate that represents the FileInputStreamPrivate.
+func FileInputStreamPrivateNewFromC(native unsafe.Pointer) *FileInputStreamPrivate {
+	return &FileInputStreamPrivate{native: native}
 }
 
 // FileMonitorClass is a representation of the C record GFileMonitorClass.
@@ -2897,6 +3267,11 @@ func (recv *FileMonitorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FileMonitorClassNewFromC creates a new FileMonitorClass from a pointer to the C GFileMonitorClass that represents the FileMonitorClass.
+func FileMonitorClassNewFromC(native unsafe.Pointer) *FileMonitorClass {
+	return &FileMonitorClass{native: native}
+}
+
 // FileMonitorPrivate is a representation of the C record GFileMonitorPrivate.
 type FileMonitorPrivate struct {
 	native unsafe.Pointer
@@ -2905,6 +3280,11 @@ type FileMonitorPrivate struct {
 // ToC returns a pointer to the C GFileMonitorPrivate that represents the FileMonitorPrivate.
 func (recv *FileMonitorPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileMonitorPrivateNewFromC creates a new FileMonitorPrivate from a pointer to the C GFileMonitorPrivate that represents the FileMonitorPrivate.
+func FileMonitorPrivateNewFromC(native unsafe.Pointer) *FileMonitorPrivate {
+	return &FileMonitorPrivate{native: native}
 }
 
 // FileOutputStreamClass is a representation of the C record GFileOutputStreamClass.
@@ -2917,6 +3297,11 @@ func (recv *FileOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FileOutputStreamClassNewFromC creates a new FileOutputStreamClass from a pointer to the C GFileOutputStreamClass that represents the FileOutputStreamClass.
+func FileOutputStreamClassNewFromC(native unsafe.Pointer) *FileOutputStreamClass {
+	return &FileOutputStreamClass{native: native}
+}
+
 // FileOutputStreamPrivate is a representation of the C record GFileOutputStreamPrivate.
 type FileOutputStreamPrivate struct {
 	native unsafe.Pointer
@@ -2925,6 +3310,11 @@ type FileOutputStreamPrivate struct {
 // ToC returns a pointer to the C GFileOutputStreamPrivate that represents the FileOutputStreamPrivate.
 func (recv *FileOutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileOutputStreamPrivateNewFromC creates a new FileOutputStreamPrivate from a pointer to the C GFileOutputStreamPrivate that represents the FileOutputStreamPrivate.
+func FileOutputStreamPrivateNewFromC(native unsafe.Pointer) *FileOutputStreamPrivate {
+	return &FileOutputStreamPrivate{native: native}
 }
 
 // FilenameCompleterClass is a representation of the C record GFilenameCompleterClass.
@@ -2937,6 +3327,11 @@ func (recv *FilenameCompleterClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FilenameCompleterClassNewFromC creates a new FilenameCompleterClass from a pointer to the C GFilenameCompleterClass that represents the FilenameCompleterClass.
+func FilenameCompleterClassNewFromC(native unsafe.Pointer) *FilenameCompleterClass {
+	return &FilenameCompleterClass{native: native}
+}
+
 // FilterInputStreamClass is a representation of the C record GFilterInputStreamClass.
 type FilterInputStreamClass struct {
 	native unsafe.Pointer
@@ -2945,6 +3340,11 @@ type FilterInputStreamClass struct {
 // ToC returns a pointer to the C GFilterInputStreamClass that represents the FilterInputStreamClass.
 func (recv *FilterInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FilterInputStreamClassNewFromC creates a new FilterInputStreamClass from a pointer to the C GFilterInputStreamClass that represents the FilterInputStreamClass.
+func FilterInputStreamClassNewFromC(native unsafe.Pointer) *FilterInputStreamClass {
+	return &FilterInputStreamClass{native: native}
 }
 
 // FilterOutputStreamClass is a representation of the C record GFilterOutputStreamClass.
@@ -2957,6 +3357,11 @@ func (recv *FilterOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FilterOutputStreamClassNewFromC creates a new FilterOutputStreamClass from a pointer to the C GFilterOutputStreamClass that represents the FilterOutputStreamClass.
+func FilterOutputStreamClassNewFromC(native unsafe.Pointer) *FilterOutputStreamClass {
+	return &FilterOutputStreamClass{native: native}
+}
+
 // IOExtension is a representation of the C record GIOExtension.
 type IOExtension struct {
 	native unsafe.Pointer
@@ -2965,6 +3370,11 @@ type IOExtension struct {
 // ToC returns a pointer to the C GIOExtension that represents the IOExtension.
 func (recv *IOExtension) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// IOExtensionNewFromC creates a new IOExtension from a pointer to the C GIOExtension that represents the IOExtension.
+func IOExtensionNewFromC(native unsafe.Pointer) *IOExtension {
+	return &IOExtension{native: native}
 }
 
 // IOExtensionPoint is a representation of the C record GIOExtensionPoint.
@@ -2977,6 +3387,11 @@ func (recv *IOExtensionPoint) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// IOExtensionPointNewFromC creates a new IOExtensionPoint from a pointer to the C GIOExtensionPoint that represents the IOExtensionPoint.
+func IOExtensionPointNewFromC(native unsafe.Pointer) *IOExtensionPoint {
+	return &IOExtensionPoint{native: native}
+}
+
 // IOModuleClass is a representation of the C record GIOModuleClass.
 type IOModuleClass struct {
 	native unsafe.Pointer
@@ -2985,6 +3400,11 @@ type IOModuleClass struct {
 // ToC returns a pointer to the C GIOModuleClass that represents the IOModuleClass.
 func (recv *IOModuleClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// IOModuleClassNewFromC creates a new IOModuleClass from a pointer to the C GIOModuleClass that represents the IOModuleClass.
+func IOModuleClassNewFromC(native unsafe.Pointer) *IOModuleClass {
+	return &IOModuleClass{native: native}
 }
 
 // IOModuleScope is a representation of the C record GIOModuleScope.
@@ -2999,6 +3419,11 @@ func (recv *IOModuleScope) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// IOModuleScopeNewFromC creates a new IOModuleScope from a pointer to the C GIOModuleScope that represents the IOModuleScope.
+func IOModuleScopeNewFromC(native unsafe.Pointer) *IOModuleScope {
+	return &IOModuleScope{native: native}
+}
+
 // IOSchedulerJob is a representation of the C record GIOSchedulerJob.
 type IOSchedulerJob struct {
 	native unsafe.Pointer
@@ -3007,6 +3432,11 @@ type IOSchedulerJob struct {
 // ToC returns a pointer to the C GIOSchedulerJob that represents the IOSchedulerJob.
 func (recv *IOSchedulerJob) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// IOSchedulerJobNewFromC creates a new IOSchedulerJob from a pointer to the C GIOSchedulerJob that represents the IOSchedulerJob.
+func IOSchedulerJobNewFromC(native unsafe.Pointer) *IOSchedulerJob {
+	return &IOSchedulerJob{native: native}
 }
 
 // IOStreamAdapter is a representation of the C record GIOStreamAdapter.
@@ -3019,6 +3449,11 @@ func (recv *IOStreamAdapter) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// IOStreamAdapterNewFromC creates a new IOStreamAdapter from a pointer to the C GIOStreamAdapter that represents the IOStreamAdapter.
+func IOStreamAdapterNewFromC(native unsafe.Pointer) *IOStreamAdapter {
+	return &IOStreamAdapter{native: native}
+}
+
 // IOStreamClass is a representation of the C record GIOStreamClass.
 type IOStreamClass struct {
 	native unsafe.Pointer
@@ -3027,6 +3462,11 @@ type IOStreamClass struct {
 // ToC returns a pointer to the C GIOStreamClass that represents the IOStreamClass.
 func (recv *IOStreamClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// IOStreamClassNewFromC creates a new IOStreamClass from a pointer to the C GIOStreamClass that represents the IOStreamClass.
+func IOStreamClassNewFromC(native unsafe.Pointer) *IOStreamClass {
+	return &IOStreamClass{native: native}
 }
 
 // IOStreamPrivate is a representation of the C record GIOStreamPrivate.
@@ -3039,6 +3479,11 @@ func (recv *IOStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// IOStreamPrivateNewFromC creates a new IOStreamPrivate from a pointer to the C GIOStreamPrivate that represents the IOStreamPrivate.
+func IOStreamPrivateNewFromC(native unsafe.Pointer) *IOStreamPrivate {
+	return &IOStreamPrivate{native: native}
+}
+
 // IconIface is a representation of the C record GIconIface.
 type IconIface struct {
 	native unsafe.Pointer
@@ -3047,6 +3492,11 @@ type IconIface struct {
 // ToC returns a pointer to the C GIconIface that represents the IconIface.
 func (recv *IconIface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// IconIfaceNewFromC creates a new IconIface from a pointer to the C GIconIface that represents the IconIface.
+func IconIfaceNewFromC(native unsafe.Pointer) *IconIface {
+	return &IconIface{native: native}
 }
 
 // InetAddressClass is a representation of the C record GInetAddressClass.
@@ -3059,6 +3509,11 @@ func (recv *InetAddressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// InetAddressClassNewFromC creates a new InetAddressClass from a pointer to the C GInetAddressClass that represents the InetAddressClass.
+func InetAddressClassNewFromC(native unsafe.Pointer) *InetAddressClass {
+	return &InetAddressClass{native: native}
+}
+
 // InetAddressMaskClass is a representation of the C record GInetAddressMaskClass.
 type InetAddressMaskClass struct {
 	native unsafe.Pointer
@@ -3067,6 +3522,11 @@ type InetAddressMaskClass struct {
 // ToC returns a pointer to the C GInetAddressMaskClass that represents the InetAddressMaskClass.
 func (recv *InetAddressMaskClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// InetAddressMaskClassNewFromC creates a new InetAddressMaskClass from a pointer to the C GInetAddressMaskClass that represents the InetAddressMaskClass.
+func InetAddressMaskClassNewFromC(native unsafe.Pointer) *InetAddressMaskClass {
+	return &InetAddressMaskClass{native: native}
 }
 
 // InetAddressMaskPrivate is a representation of the C record GInetAddressMaskPrivate.
@@ -3079,6 +3539,11 @@ func (recv *InetAddressMaskPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// InetAddressMaskPrivateNewFromC creates a new InetAddressMaskPrivate from a pointer to the C GInetAddressMaskPrivate that represents the InetAddressMaskPrivate.
+func InetAddressMaskPrivateNewFromC(native unsafe.Pointer) *InetAddressMaskPrivate {
+	return &InetAddressMaskPrivate{native: native}
+}
+
 // InetAddressPrivate is a representation of the C record GInetAddressPrivate.
 type InetAddressPrivate struct {
 	native unsafe.Pointer
@@ -3087,6 +3552,11 @@ type InetAddressPrivate struct {
 // ToC returns a pointer to the C GInetAddressPrivate that represents the InetAddressPrivate.
 func (recv *InetAddressPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// InetAddressPrivateNewFromC creates a new InetAddressPrivate from a pointer to the C GInetAddressPrivate that represents the InetAddressPrivate.
+func InetAddressPrivateNewFromC(native unsafe.Pointer) *InetAddressPrivate {
+	return &InetAddressPrivate{native: native}
 }
 
 // InetSocketAddressClass is a representation of the C record GInetSocketAddressClass.
@@ -3099,6 +3569,11 @@ func (recv *InetSocketAddressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// InetSocketAddressClassNewFromC creates a new InetSocketAddressClass from a pointer to the C GInetSocketAddressClass that represents the InetSocketAddressClass.
+func InetSocketAddressClassNewFromC(native unsafe.Pointer) *InetSocketAddressClass {
+	return &InetSocketAddressClass{native: native}
+}
+
 // InetSocketAddressPrivate is a representation of the C record GInetSocketAddressPrivate.
 type InetSocketAddressPrivate struct {
 	native unsafe.Pointer
@@ -3107,6 +3582,11 @@ type InetSocketAddressPrivate struct {
 // ToC returns a pointer to the C GInetSocketAddressPrivate that represents the InetSocketAddressPrivate.
 func (recv *InetSocketAddressPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// InetSocketAddressPrivateNewFromC creates a new InetSocketAddressPrivate from a pointer to the C GInetSocketAddressPrivate that represents the InetSocketAddressPrivate.
+func InetSocketAddressPrivateNewFromC(native unsafe.Pointer) *InetSocketAddressPrivate {
+	return &InetSocketAddressPrivate{native: native}
 }
 
 // InitableIface is a representation of the C record GInitableIface.
@@ -3121,6 +3601,11 @@ func (recv *InitableIface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// InitableIfaceNewFromC creates a new InitableIface from a pointer to the C GInitableIface that represents the InitableIface.
+func InitableIfaceNewFromC(native unsafe.Pointer) *InitableIface {
+	return &InitableIface{native: native}
+}
+
 // InputStreamClass is a representation of the C record GInputStreamClass.
 type InputStreamClass struct {
 	native unsafe.Pointer
@@ -3131,6 +3616,11 @@ func (recv *InputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// InputStreamClassNewFromC creates a new InputStreamClass from a pointer to the C GInputStreamClass that represents the InputStreamClass.
+func InputStreamClassNewFromC(native unsafe.Pointer) *InputStreamClass {
+	return &InputStreamClass{native: native}
+}
+
 // InputStreamPrivate is a representation of the C record GInputStreamPrivate.
 type InputStreamPrivate struct {
 	native unsafe.Pointer
@@ -3139,6 +3629,11 @@ type InputStreamPrivate struct {
 // ToC returns a pointer to the C GInputStreamPrivate that represents the InputStreamPrivate.
 func (recv *InputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// InputStreamPrivateNewFromC creates a new InputStreamPrivate from a pointer to the C GInputStreamPrivate that represents the InputStreamPrivate.
+func InputStreamPrivateNewFromC(native unsafe.Pointer) *InputStreamPrivate {
+	return &InputStreamPrivate{native: native}
 }
 
 // InputVector is a representation of the C record GInputVector.
@@ -3153,6 +3648,11 @@ func (recv *InputVector) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// InputVectorNewFromC creates a new InputVector from a pointer to the C GInputVector that represents the InputVector.
+func InputVectorNewFromC(native unsafe.Pointer) *InputVector {
+	return &InputVector{native: native}
+}
+
 // ListStoreClass is a representation of the C record GListStoreClass.
 type ListStoreClass struct {
 	native unsafe.Pointer
@@ -3161,6 +3661,11 @@ type ListStoreClass struct {
 // ToC returns a pointer to the C GListStoreClass that represents the ListStoreClass.
 func (recv *ListStoreClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ListStoreClassNewFromC creates a new ListStoreClass from a pointer to the C GListStoreClass that represents the ListStoreClass.
+func ListStoreClassNewFromC(native unsafe.Pointer) *ListStoreClass {
+	return &ListStoreClass{native: native}
 }
 
 // LoadableIconIface is a representation of the C record GLoadableIconIface.
@@ -3173,6 +3678,11 @@ func (recv *LoadableIconIface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// LoadableIconIfaceNewFromC creates a new LoadableIconIface from a pointer to the C GLoadableIconIface that represents the LoadableIconIface.
+func LoadableIconIfaceNewFromC(native unsafe.Pointer) *LoadableIconIface {
+	return &LoadableIconIface{native: native}
+}
+
 // MemoryInputStreamClass is a representation of the C record GMemoryInputStreamClass.
 type MemoryInputStreamClass struct {
 	native unsafe.Pointer
@@ -3181,6 +3691,11 @@ type MemoryInputStreamClass struct {
 // ToC returns a pointer to the C GMemoryInputStreamClass that represents the MemoryInputStreamClass.
 func (recv *MemoryInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MemoryInputStreamClassNewFromC creates a new MemoryInputStreamClass from a pointer to the C GMemoryInputStreamClass that represents the MemoryInputStreamClass.
+func MemoryInputStreamClassNewFromC(native unsafe.Pointer) *MemoryInputStreamClass {
+	return &MemoryInputStreamClass{native: native}
 }
 
 // MemoryInputStreamPrivate is a representation of the C record GMemoryInputStreamPrivate.
@@ -3193,6 +3708,11 @@ func (recv *MemoryInputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// MemoryInputStreamPrivateNewFromC creates a new MemoryInputStreamPrivate from a pointer to the C GMemoryInputStreamPrivate that represents the MemoryInputStreamPrivate.
+func MemoryInputStreamPrivateNewFromC(native unsafe.Pointer) *MemoryInputStreamPrivate {
+	return &MemoryInputStreamPrivate{native: native}
+}
+
 // MemoryOutputStreamClass is a representation of the C record GMemoryOutputStreamClass.
 type MemoryOutputStreamClass struct {
 	native unsafe.Pointer
@@ -3201,6 +3721,11 @@ type MemoryOutputStreamClass struct {
 // ToC returns a pointer to the C GMemoryOutputStreamClass that represents the MemoryOutputStreamClass.
 func (recv *MemoryOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MemoryOutputStreamClassNewFromC creates a new MemoryOutputStreamClass from a pointer to the C GMemoryOutputStreamClass that represents the MemoryOutputStreamClass.
+func MemoryOutputStreamClassNewFromC(native unsafe.Pointer) *MemoryOutputStreamClass {
+	return &MemoryOutputStreamClass{native: native}
 }
 
 // MemoryOutputStreamPrivate is a representation of the C record GMemoryOutputStreamPrivate.
@@ -3213,6 +3738,11 @@ func (recv *MemoryOutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// MemoryOutputStreamPrivateNewFromC creates a new MemoryOutputStreamPrivate from a pointer to the C GMemoryOutputStreamPrivate that represents the MemoryOutputStreamPrivate.
+func MemoryOutputStreamPrivateNewFromC(native unsafe.Pointer) *MemoryOutputStreamPrivate {
+	return &MemoryOutputStreamPrivate{native: native}
+}
+
 // MenuAttributeIterClass is a representation of the C record GMenuAttributeIterClass.
 type MenuAttributeIterClass struct {
 	native unsafe.Pointer
@@ -3221,6 +3751,11 @@ type MenuAttributeIterClass struct {
 // ToC returns a pointer to the C GMenuAttributeIterClass that represents the MenuAttributeIterClass.
 func (recv *MenuAttributeIterClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MenuAttributeIterClassNewFromC creates a new MenuAttributeIterClass from a pointer to the C GMenuAttributeIterClass that represents the MenuAttributeIterClass.
+func MenuAttributeIterClassNewFromC(native unsafe.Pointer) *MenuAttributeIterClass {
+	return &MenuAttributeIterClass{native: native}
 }
 
 // MenuAttributeIterPrivate is a representation of the C record GMenuAttributeIterPrivate.
@@ -3233,6 +3768,11 @@ func (recv *MenuAttributeIterPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// MenuAttributeIterPrivateNewFromC creates a new MenuAttributeIterPrivate from a pointer to the C GMenuAttributeIterPrivate that represents the MenuAttributeIterPrivate.
+func MenuAttributeIterPrivateNewFromC(native unsafe.Pointer) *MenuAttributeIterPrivate {
+	return &MenuAttributeIterPrivate{native: native}
+}
+
 // MenuLinkIterClass is a representation of the C record GMenuLinkIterClass.
 type MenuLinkIterClass struct {
 	native unsafe.Pointer
@@ -3241,6 +3781,11 @@ type MenuLinkIterClass struct {
 // ToC returns a pointer to the C GMenuLinkIterClass that represents the MenuLinkIterClass.
 func (recv *MenuLinkIterClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MenuLinkIterClassNewFromC creates a new MenuLinkIterClass from a pointer to the C GMenuLinkIterClass that represents the MenuLinkIterClass.
+func MenuLinkIterClassNewFromC(native unsafe.Pointer) *MenuLinkIterClass {
+	return &MenuLinkIterClass{native: native}
 }
 
 // MenuLinkIterPrivate is a representation of the C record GMenuLinkIterPrivate.
@@ -3253,6 +3798,11 @@ func (recv *MenuLinkIterPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// MenuLinkIterPrivateNewFromC creates a new MenuLinkIterPrivate from a pointer to the C GMenuLinkIterPrivate that represents the MenuLinkIterPrivate.
+func MenuLinkIterPrivateNewFromC(native unsafe.Pointer) *MenuLinkIterPrivate {
+	return &MenuLinkIterPrivate{native: native}
+}
+
 // MenuModelClass is a representation of the C record GMenuModelClass.
 type MenuModelClass struct {
 	native unsafe.Pointer
@@ -3261,6 +3811,11 @@ type MenuModelClass struct {
 // ToC returns a pointer to the C GMenuModelClass that represents the MenuModelClass.
 func (recv *MenuModelClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MenuModelClassNewFromC creates a new MenuModelClass from a pointer to the C GMenuModelClass that represents the MenuModelClass.
+func MenuModelClassNewFromC(native unsafe.Pointer) *MenuModelClass {
+	return &MenuModelClass{native: native}
 }
 
 // MenuModelPrivate is a representation of the C record GMenuModelPrivate.
@@ -3273,6 +3828,11 @@ func (recv *MenuModelPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// MenuModelPrivateNewFromC creates a new MenuModelPrivate from a pointer to the C GMenuModelPrivate that represents the MenuModelPrivate.
+func MenuModelPrivateNewFromC(native unsafe.Pointer) *MenuModelPrivate {
+	return &MenuModelPrivate{native: native}
+}
+
 // MountIface is a representation of the C record GMountIface.
 type MountIface struct {
 	native unsafe.Pointer
@@ -3281,6 +3841,11 @@ type MountIface struct {
 // ToC returns a pointer to the C GMountIface that represents the MountIface.
 func (recv *MountIface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MountIfaceNewFromC creates a new MountIface from a pointer to the C GMountIface that represents the MountIface.
+func MountIfaceNewFromC(native unsafe.Pointer) *MountIface {
+	return &MountIface{native: native}
 }
 
 // MountOperationClass is a representation of the C record GMountOperationClass.
@@ -3293,6 +3858,11 @@ func (recv *MountOperationClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// MountOperationClassNewFromC creates a new MountOperationClass from a pointer to the C GMountOperationClass that represents the MountOperationClass.
+func MountOperationClassNewFromC(native unsafe.Pointer) *MountOperationClass {
+	return &MountOperationClass{native: native}
+}
+
 // MountOperationPrivate is a representation of the C record GMountOperationPrivate.
 type MountOperationPrivate struct {
 	native unsafe.Pointer
@@ -3301,6 +3871,11 @@ type MountOperationPrivate struct {
 // ToC returns a pointer to the C GMountOperationPrivate that represents the MountOperationPrivate.
 func (recv *MountOperationPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MountOperationPrivateNewFromC creates a new MountOperationPrivate from a pointer to the C GMountOperationPrivate that represents the MountOperationPrivate.
+func MountOperationPrivateNewFromC(native unsafe.Pointer) *MountOperationPrivate {
+	return &MountOperationPrivate{native: native}
 }
 
 // UNSUPPORTED : NativeSocketAddressClass : blacklisted
@@ -3317,6 +3892,11 @@ func (recv *NativeVolumeMonitorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// NativeVolumeMonitorClassNewFromC creates a new NativeVolumeMonitorClass from a pointer to the C GNativeVolumeMonitorClass that represents the NativeVolumeMonitorClass.
+func NativeVolumeMonitorClassNewFromC(native unsafe.Pointer) *NativeVolumeMonitorClass {
+	return &NativeVolumeMonitorClass{native: native}
+}
+
 // NetworkAddressClass is a representation of the C record GNetworkAddressClass.
 type NetworkAddressClass struct {
 	native unsafe.Pointer
@@ -3327,6 +3907,11 @@ func (recv *NetworkAddressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// NetworkAddressClassNewFromC creates a new NetworkAddressClass from a pointer to the C GNetworkAddressClass that represents the NetworkAddressClass.
+func NetworkAddressClassNewFromC(native unsafe.Pointer) *NetworkAddressClass {
+	return &NetworkAddressClass{native: native}
+}
+
 // NetworkAddressPrivate is a representation of the C record GNetworkAddressPrivate.
 type NetworkAddressPrivate struct {
 	native unsafe.Pointer
@@ -3335,6 +3920,11 @@ type NetworkAddressPrivate struct {
 // ToC returns a pointer to the C GNetworkAddressPrivate that represents the NetworkAddressPrivate.
 func (recv *NetworkAddressPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// NetworkAddressPrivateNewFromC creates a new NetworkAddressPrivate from a pointer to the C GNetworkAddressPrivate that represents the NetworkAddressPrivate.
+func NetworkAddressPrivateNewFromC(native unsafe.Pointer) *NetworkAddressPrivate {
+	return &NetworkAddressPrivate{native: native}
 }
 
 // NetworkMonitorInterface is a representation of the C record GNetworkMonitorInterface.
@@ -3349,6 +3939,11 @@ func (recv *NetworkMonitorInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// NetworkMonitorInterfaceNewFromC creates a new NetworkMonitorInterface from a pointer to the C GNetworkMonitorInterface that represents the NetworkMonitorInterface.
+func NetworkMonitorInterfaceNewFromC(native unsafe.Pointer) *NetworkMonitorInterface {
+	return &NetworkMonitorInterface{native: native}
+}
+
 // NetworkServiceClass is a representation of the C record GNetworkServiceClass.
 type NetworkServiceClass struct {
 	native unsafe.Pointer
@@ -3357,6 +3952,11 @@ type NetworkServiceClass struct {
 // ToC returns a pointer to the C GNetworkServiceClass that represents the NetworkServiceClass.
 func (recv *NetworkServiceClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// NetworkServiceClassNewFromC creates a new NetworkServiceClass from a pointer to the C GNetworkServiceClass that represents the NetworkServiceClass.
+func NetworkServiceClassNewFromC(native unsafe.Pointer) *NetworkServiceClass {
+	return &NetworkServiceClass{native: native}
 }
 
 // NetworkServicePrivate is a representation of the C record GNetworkServicePrivate.
@@ -3369,6 +3969,11 @@ func (recv *NetworkServicePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// NetworkServicePrivateNewFromC creates a new NetworkServicePrivate from a pointer to the C GNetworkServicePrivate that represents the NetworkServicePrivate.
+func NetworkServicePrivateNewFromC(native unsafe.Pointer) *NetworkServicePrivate {
+	return &NetworkServicePrivate{native: native}
+}
+
 // OutputStreamClass is a representation of the C record GOutputStreamClass.
 type OutputStreamClass struct {
 	native unsafe.Pointer
@@ -3379,6 +3984,11 @@ func (recv *OutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// OutputStreamClassNewFromC creates a new OutputStreamClass from a pointer to the C GOutputStreamClass that represents the OutputStreamClass.
+func OutputStreamClassNewFromC(native unsafe.Pointer) *OutputStreamClass {
+	return &OutputStreamClass{native: native}
+}
+
 // OutputStreamPrivate is a representation of the C record GOutputStreamPrivate.
 type OutputStreamPrivate struct {
 	native unsafe.Pointer
@@ -3387,6 +3997,11 @@ type OutputStreamPrivate struct {
 // ToC returns a pointer to the C GOutputStreamPrivate that represents the OutputStreamPrivate.
 func (recv *OutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// OutputStreamPrivateNewFromC creates a new OutputStreamPrivate from a pointer to the C GOutputStreamPrivate that represents the OutputStreamPrivate.
+func OutputStreamPrivateNewFromC(native unsafe.Pointer) *OutputStreamPrivate {
+	return &OutputStreamPrivate{native: native}
 }
 
 // OutputVector is a representation of the C record GOutputVector.
@@ -3401,6 +4016,11 @@ func (recv *OutputVector) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// OutputVectorNewFromC creates a new OutputVector from a pointer to the C GOutputVector that represents the OutputVector.
+func OutputVectorNewFromC(native unsafe.Pointer) *OutputVector {
+	return &OutputVector{native: native}
+}
+
 // PermissionClass is a representation of the C record GPermissionClass.
 type PermissionClass struct {
 	native unsafe.Pointer
@@ -3411,6 +4031,11 @@ func (recv *PermissionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// PermissionClassNewFromC creates a new PermissionClass from a pointer to the C GPermissionClass that represents the PermissionClass.
+func PermissionClassNewFromC(native unsafe.Pointer) *PermissionClass {
+	return &PermissionClass{native: native}
+}
+
 // PermissionPrivate is a representation of the C record GPermissionPrivate.
 type PermissionPrivate struct {
 	native unsafe.Pointer
@@ -3419,6 +4044,11 @@ type PermissionPrivate struct {
 // ToC returns a pointer to the C GPermissionPrivate that represents the PermissionPrivate.
 func (recv *PermissionPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// PermissionPrivateNewFromC creates a new PermissionPrivate from a pointer to the C GPermissionPrivate that represents the PermissionPrivate.
+func PermissionPrivateNewFromC(native unsafe.Pointer) *PermissionPrivate {
+	return &PermissionPrivate{native: native}
 }
 
 // PollableInputStreamInterface is a representation of the C record GPollableInputStreamInterface.
@@ -3433,6 +4063,11 @@ func (recv *PollableInputStreamInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// PollableInputStreamInterfaceNewFromC creates a new PollableInputStreamInterface from a pointer to the C GPollableInputStreamInterface that represents the PollableInputStreamInterface.
+func PollableInputStreamInterfaceNewFromC(native unsafe.Pointer) *PollableInputStreamInterface {
+	return &PollableInputStreamInterface{native: native}
+}
+
 // PollableOutputStreamInterface is a representation of the C record GPollableOutputStreamInterface.
 //
 // since 2.28
@@ -3443,6 +4078,11 @@ type PollableOutputStreamInterface struct {
 // ToC returns a pointer to the C GPollableOutputStreamInterface that represents the PollableOutputStreamInterface.
 func (recv *PollableOutputStreamInterface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// PollableOutputStreamInterfaceNewFromC creates a new PollableOutputStreamInterface from a pointer to the C GPollableOutputStreamInterface that represents the PollableOutputStreamInterface.
+func PollableOutputStreamInterfaceNewFromC(native unsafe.Pointer) *PollableOutputStreamInterface {
+	return &PollableOutputStreamInterface{native: native}
 }
 
 // ProxyAddressClass is a representation of the C record GProxyAddressClass.
@@ -3457,6 +4097,11 @@ func (recv *ProxyAddressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ProxyAddressClassNewFromC creates a new ProxyAddressClass from a pointer to the C GProxyAddressClass that represents the ProxyAddressClass.
+func ProxyAddressClassNewFromC(native unsafe.Pointer) *ProxyAddressClass {
+	return &ProxyAddressClass{native: native}
+}
+
 // ProxyAddressEnumeratorClass is a representation of the C record GProxyAddressEnumeratorClass.
 type ProxyAddressEnumeratorClass struct {
 	native unsafe.Pointer
@@ -3465,6 +4110,11 @@ type ProxyAddressEnumeratorClass struct {
 // ToC returns a pointer to the C GProxyAddressEnumeratorClass that represents the ProxyAddressEnumeratorClass.
 func (recv *ProxyAddressEnumeratorClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ProxyAddressEnumeratorClassNewFromC creates a new ProxyAddressEnumeratorClass from a pointer to the C GProxyAddressEnumeratorClass that represents the ProxyAddressEnumeratorClass.
+func ProxyAddressEnumeratorClassNewFromC(native unsafe.Pointer) *ProxyAddressEnumeratorClass {
+	return &ProxyAddressEnumeratorClass{native: native}
 }
 
 // ProxyAddressEnumeratorPrivate is a representation of the C record GProxyAddressEnumeratorPrivate.
@@ -3477,6 +4127,11 @@ func (recv *ProxyAddressEnumeratorPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ProxyAddressEnumeratorPrivateNewFromC creates a new ProxyAddressEnumeratorPrivate from a pointer to the C GProxyAddressEnumeratorPrivate that represents the ProxyAddressEnumeratorPrivate.
+func ProxyAddressEnumeratorPrivateNewFromC(native unsafe.Pointer) *ProxyAddressEnumeratorPrivate {
+	return &ProxyAddressEnumeratorPrivate{native: native}
+}
+
 // ProxyAddressPrivate is a representation of the C record GProxyAddressPrivate.
 type ProxyAddressPrivate struct {
 	native unsafe.Pointer
@@ -3485,6 +4140,11 @@ type ProxyAddressPrivate struct {
 // ToC returns a pointer to the C GProxyAddressPrivate that represents the ProxyAddressPrivate.
 func (recv *ProxyAddressPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ProxyAddressPrivateNewFromC creates a new ProxyAddressPrivate from a pointer to the C GProxyAddressPrivate that represents the ProxyAddressPrivate.
+func ProxyAddressPrivateNewFromC(native unsafe.Pointer) *ProxyAddressPrivate {
+	return &ProxyAddressPrivate{native: native}
 }
 
 // ProxyInterface is a representation of the C record GProxyInterface.
@@ -3499,6 +4159,11 @@ func (recv *ProxyInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ProxyInterfaceNewFromC creates a new ProxyInterface from a pointer to the C GProxyInterface that represents the ProxyInterface.
+func ProxyInterfaceNewFromC(native unsafe.Pointer) *ProxyInterface {
+	return &ProxyInterface{native: native}
+}
+
 // ProxyResolverInterface is a representation of the C record GProxyResolverInterface.
 type ProxyResolverInterface struct {
 	native unsafe.Pointer
@@ -3507,6 +4172,11 @@ type ProxyResolverInterface struct {
 // ToC returns a pointer to the C GProxyResolverInterface that represents the ProxyResolverInterface.
 func (recv *ProxyResolverInterface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ProxyResolverInterfaceNewFromC creates a new ProxyResolverInterface from a pointer to the C GProxyResolverInterface that represents the ProxyResolverInterface.
+func ProxyResolverInterfaceNewFromC(native unsafe.Pointer) *ProxyResolverInterface {
+	return &ProxyResolverInterface{native: native}
 }
 
 // RemoteActionGroupInterface is a representation of the C record GRemoteActionGroupInterface.
@@ -3521,6 +4191,11 @@ func (recv *RemoteActionGroupInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// RemoteActionGroupInterfaceNewFromC creates a new RemoteActionGroupInterface from a pointer to the C GRemoteActionGroupInterface that represents the RemoteActionGroupInterface.
+func RemoteActionGroupInterfaceNewFromC(native unsafe.Pointer) *RemoteActionGroupInterface {
+	return &RemoteActionGroupInterface{native: native}
+}
+
 // ResolverClass is a representation of the C record GResolverClass.
 type ResolverClass struct {
 	native unsafe.Pointer
@@ -3531,6 +4206,11 @@ func (recv *ResolverClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ResolverClassNewFromC creates a new ResolverClass from a pointer to the C GResolverClass that represents the ResolverClass.
+func ResolverClassNewFromC(native unsafe.Pointer) *ResolverClass {
+	return &ResolverClass{native: native}
+}
+
 // ResolverPrivate is a representation of the C record GResolverPrivate.
 type ResolverPrivate struct {
 	native unsafe.Pointer
@@ -3539,6 +4219,11 @@ type ResolverPrivate struct {
 // ToC returns a pointer to the C GResolverPrivate that represents the ResolverPrivate.
 func (recv *ResolverPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ResolverPrivateNewFromC creates a new ResolverPrivate from a pointer to the C GResolverPrivate that represents the ResolverPrivate.
+func ResolverPrivateNewFromC(native unsafe.Pointer) *ResolverPrivate {
+	return &ResolverPrivate{native: native}
 }
 
 // Resource is a representation of the C record GResource.
@@ -3553,6 +4238,11 @@ func (recv *Resource) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ResourceNewFromC creates a new Resource from a pointer to the C GResource that represents the Resource.
+func ResourceNewFromC(native unsafe.Pointer) *Resource {
+	return &Resource{native: native}
+}
+
 // SeekableIface is a representation of the C record GSeekableIface.
 type SeekableIface struct {
 	native unsafe.Pointer
@@ -3561,6 +4251,11 @@ type SeekableIface struct {
 // ToC returns a pointer to the C GSeekableIface that represents the SeekableIface.
 func (recv *SeekableIface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SeekableIfaceNewFromC creates a new SeekableIface from a pointer to the C GSeekableIface that represents the SeekableIface.
+func SeekableIfaceNewFromC(native unsafe.Pointer) *SeekableIface {
+	return &SeekableIface{native: native}
 }
 
 // UNSUPPORTED : SettingsBackendClass : blacklisted
@@ -3577,6 +4272,11 @@ func (recv *SettingsClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SettingsClassNewFromC creates a new SettingsClass from a pointer to the C GSettingsClass that represents the SettingsClass.
+func SettingsClassNewFromC(native unsafe.Pointer) *SettingsClass {
+	return &SettingsClass{native: native}
+}
+
 // SettingsPrivate is a representation of the C record GSettingsPrivate.
 type SettingsPrivate struct {
 	native unsafe.Pointer
@@ -3585,6 +4285,11 @@ type SettingsPrivate struct {
 // ToC returns a pointer to the C GSettingsPrivate that represents the SettingsPrivate.
 func (recv *SettingsPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SettingsPrivateNewFromC creates a new SettingsPrivate from a pointer to the C GSettingsPrivate that represents the SettingsPrivate.
+func SettingsPrivateNewFromC(native unsafe.Pointer) *SettingsPrivate {
+	return &SettingsPrivate{native: native}
 }
 
 // SettingsSchema is a representation of the C record GSettingsSchema.
@@ -3599,6 +4304,11 @@ func (recv *SettingsSchema) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SettingsSchemaNewFromC creates a new SettingsSchema from a pointer to the C GSettingsSchema that represents the SettingsSchema.
+func SettingsSchemaNewFromC(native unsafe.Pointer) *SettingsSchema {
+	return &SettingsSchema{native: native}
+}
+
 // SettingsSchemaKey is a representation of the C record GSettingsSchemaKey.
 type SettingsSchemaKey struct {
 	native unsafe.Pointer
@@ -3607,6 +4317,11 @@ type SettingsSchemaKey struct {
 // ToC returns a pointer to the C GSettingsSchemaKey that represents the SettingsSchemaKey.
 func (recv *SettingsSchemaKey) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SettingsSchemaKeyNewFromC creates a new SettingsSchemaKey from a pointer to the C GSettingsSchemaKey that represents the SettingsSchemaKey.
+func SettingsSchemaKeyNewFromC(native unsafe.Pointer) *SettingsSchemaKey {
+	return &SettingsSchemaKey{native: native}
 }
 
 // SettingsSchemaSource is a representation of the C record GSettingsSchemaSource.
@@ -3621,6 +4336,11 @@ func (recv *SettingsSchemaSource) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SettingsSchemaSourceNewFromC creates a new SettingsSchemaSource from a pointer to the C GSettingsSchemaSource that represents the SettingsSchemaSource.
+func SettingsSchemaSourceNewFromC(native unsafe.Pointer) *SettingsSchemaSource {
+	return &SettingsSchemaSource{native: native}
+}
+
 // SimpleActionGroupClass is a representation of the C record GSimpleActionGroupClass.
 type SimpleActionGroupClass struct {
 	native unsafe.Pointer
@@ -3629,6 +4349,11 @@ type SimpleActionGroupClass struct {
 // ToC returns a pointer to the C GSimpleActionGroupClass that represents the SimpleActionGroupClass.
 func (recv *SimpleActionGroupClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SimpleActionGroupClassNewFromC creates a new SimpleActionGroupClass from a pointer to the C GSimpleActionGroupClass that represents the SimpleActionGroupClass.
+func SimpleActionGroupClassNewFromC(native unsafe.Pointer) *SimpleActionGroupClass {
+	return &SimpleActionGroupClass{native: native}
 }
 
 // SimpleActionGroupPrivate is a representation of the C record GSimpleActionGroupPrivate.
@@ -3641,6 +4366,11 @@ func (recv *SimpleActionGroupPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SimpleActionGroupPrivateNewFromC creates a new SimpleActionGroupPrivate from a pointer to the C GSimpleActionGroupPrivate that represents the SimpleActionGroupPrivate.
+func SimpleActionGroupPrivateNewFromC(native unsafe.Pointer) *SimpleActionGroupPrivate {
+	return &SimpleActionGroupPrivate{native: native}
+}
+
 // SimpleAsyncResultClass is a representation of the C record GSimpleAsyncResultClass.
 type SimpleAsyncResultClass struct {
 	native unsafe.Pointer
@@ -3649,6 +4379,11 @@ type SimpleAsyncResultClass struct {
 // ToC returns a pointer to the C GSimpleAsyncResultClass that represents the SimpleAsyncResultClass.
 func (recv *SimpleAsyncResultClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SimpleAsyncResultClassNewFromC creates a new SimpleAsyncResultClass from a pointer to the C GSimpleAsyncResultClass that represents the SimpleAsyncResultClass.
+func SimpleAsyncResultClassNewFromC(native unsafe.Pointer) *SimpleAsyncResultClass {
+	return &SimpleAsyncResultClass{native: native}
 }
 
 // SimpleProxyResolverClass is a representation of the C record GSimpleProxyResolverClass.
@@ -3661,6 +4396,11 @@ func (recv *SimpleProxyResolverClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SimpleProxyResolverClassNewFromC creates a new SimpleProxyResolverClass from a pointer to the C GSimpleProxyResolverClass that represents the SimpleProxyResolverClass.
+func SimpleProxyResolverClassNewFromC(native unsafe.Pointer) *SimpleProxyResolverClass {
+	return &SimpleProxyResolverClass{native: native}
+}
+
 // SimpleProxyResolverPrivate is a representation of the C record GSimpleProxyResolverPrivate.
 type SimpleProxyResolverPrivate struct {
 	native unsafe.Pointer
@@ -3669,6 +4409,11 @@ type SimpleProxyResolverPrivate struct {
 // ToC returns a pointer to the C GSimpleProxyResolverPrivate that represents the SimpleProxyResolverPrivate.
 func (recv *SimpleProxyResolverPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SimpleProxyResolverPrivateNewFromC creates a new SimpleProxyResolverPrivate from a pointer to the C GSimpleProxyResolverPrivate that represents the SimpleProxyResolverPrivate.
+func SimpleProxyResolverPrivateNewFromC(native unsafe.Pointer) *SimpleProxyResolverPrivate {
+	return &SimpleProxyResolverPrivate{native: native}
 }
 
 // SocketAddressClass is a representation of the C record GSocketAddressClass.
@@ -3681,6 +4426,11 @@ func (recv *SocketAddressClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketAddressClassNewFromC creates a new SocketAddressClass from a pointer to the C GSocketAddressClass that represents the SocketAddressClass.
+func SocketAddressClassNewFromC(native unsafe.Pointer) *SocketAddressClass {
+	return &SocketAddressClass{native: native}
+}
+
 // SocketAddressEnumeratorClass is a representation of the C record GSocketAddressEnumeratorClass.
 type SocketAddressEnumeratorClass struct {
 	native unsafe.Pointer
@@ -3689,6 +4439,11 @@ type SocketAddressEnumeratorClass struct {
 // ToC returns a pointer to the C GSocketAddressEnumeratorClass that represents the SocketAddressEnumeratorClass.
 func (recv *SocketAddressEnumeratorClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SocketAddressEnumeratorClassNewFromC creates a new SocketAddressEnumeratorClass from a pointer to the C GSocketAddressEnumeratorClass that represents the SocketAddressEnumeratorClass.
+func SocketAddressEnumeratorClassNewFromC(native unsafe.Pointer) *SocketAddressEnumeratorClass {
+	return &SocketAddressEnumeratorClass{native: native}
 }
 
 // SocketClass is a representation of the C record GSocketClass.
@@ -3701,6 +4456,11 @@ func (recv *SocketClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketClassNewFromC creates a new SocketClass from a pointer to the C GSocketClass that represents the SocketClass.
+func SocketClassNewFromC(native unsafe.Pointer) *SocketClass {
+	return &SocketClass{native: native}
+}
+
 // SocketClientClass is a representation of the C record GSocketClientClass.
 type SocketClientClass struct {
 	native unsafe.Pointer
@@ -3709,6 +4469,11 @@ type SocketClientClass struct {
 // ToC returns a pointer to the C GSocketClientClass that represents the SocketClientClass.
 func (recv *SocketClientClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SocketClientClassNewFromC creates a new SocketClientClass from a pointer to the C GSocketClientClass that represents the SocketClientClass.
+func SocketClientClassNewFromC(native unsafe.Pointer) *SocketClientClass {
+	return &SocketClientClass{native: native}
 }
 
 // SocketClientPrivate is a representation of the C record GSocketClientPrivate.
@@ -3721,6 +4486,11 @@ func (recv *SocketClientPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketClientPrivateNewFromC creates a new SocketClientPrivate from a pointer to the C GSocketClientPrivate that represents the SocketClientPrivate.
+func SocketClientPrivateNewFromC(native unsafe.Pointer) *SocketClientPrivate {
+	return &SocketClientPrivate{native: native}
+}
+
 // SocketConnectableIface is a representation of the C record GSocketConnectableIface.
 type SocketConnectableIface struct {
 	native unsafe.Pointer
@@ -3729,6 +4499,11 @@ type SocketConnectableIface struct {
 // ToC returns a pointer to the C GSocketConnectableIface that represents the SocketConnectableIface.
 func (recv *SocketConnectableIface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SocketConnectableIfaceNewFromC creates a new SocketConnectableIface from a pointer to the C GSocketConnectableIface that represents the SocketConnectableIface.
+func SocketConnectableIfaceNewFromC(native unsafe.Pointer) *SocketConnectableIface {
+	return &SocketConnectableIface{native: native}
 }
 
 // SocketConnectionClass is a representation of the C record GSocketConnectionClass.
@@ -3741,6 +4516,11 @@ func (recv *SocketConnectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketConnectionClassNewFromC creates a new SocketConnectionClass from a pointer to the C GSocketConnectionClass that represents the SocketConnectionClass.
+func SocketConnectionClassNewFromC(native unsafe.Pointer) *SocketConnectionClass {
+	return &SocketConnectionClass{native: native}
+}
+
 // SocketConnectionPrivate is a representation of the C record GSocketConnectionPrivate.
 type SocketConnectionPrivate struct {
 	native unsafe.Pointer
@@ -3749,6 +4529,11 @@ type SocketConnectionPrivate struct {
 // ToC returns a pointer to the C GSocketConnectionPrivate that represents the SocketConnectionPrivate.
 func (recv *SocketConnectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SocketConnectionPrivateNewFromC creates a new SocketConnectionPrivate from a pointer to the C GSocketConnectionPrivate that represents the SocketConnectionPrivate.
+func SocketConnectionPrivateNewFromC(native unsafe.Pointer) *SocketConnectionPrivate {
+	return &SocketConnectionPrivate{native: native}
 }
 
 // SocketControlMessageClass is a representation of the C record GSocketControlMessageClass.
@@ -3761,6 +4546,11 @@ func (recv *SocketControlMessageClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketControlMessageClassNewFromC creates a new SocketControlMessageClass from a pointer to the C GSocketControlMessageClass that represents the SocketControlMessageClass.
+func SocketControlMessageClassNewFromC(native unsafe.Pointer) *SocketControlMessageClass {
+	return &SocketControlMessageClass{native: native}
+}
+
 // SocketControlMessagePrivate is a representation of the C record GSocketControlMessagePrivate.
 type SocketControlMessagePrivate struct {
 	native unsafe.Pointer
@@ -3769,6 +4559,11 @@ type SocketControlMessagePrivate struct {
 // ToC returns a pointer to the C GSocketControlMessagePrivate that represents the SocketControlMessagePrivate.
 func (recv *SocketControlMessagePrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SocketControlMessagePrivateNewFromC creates a new SocketControlMessagePrivate from a pointer to the C GSocketControlMessagePrivate that represents the SocketControlMessagePrivate.
+func SocketControlMessagePrivateNewFromC(native unsafe.Pointer) *SocketControlMessagePrivate {
+	return &SocketControlMessagePrivate{native: native}
 }
 
 // SocketListenerClass is a representation of the C record GSocketListenerClass.
@@ -3781,6 +4576,11 @@ func (recv *SocketListenerClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketListenerClassNewFromC creates a new SocketListenerClass from a pointer to the C GSocketListenerClass that represents the SocketListenerClass.
+func SocketListenerClassNewFromC(native unsafe.Pointer) *SocketListenerClass {
+	return &SocketListenerClass{native: native}
+}
+
 // SocketListenerPrivate is a representation of the C record GSocketListenerPrivate.
 type SocketListenerPrivate struct {
 	native unsafe.Pointer
@@ -3789,6 +4589,11 @@ type SocketListenerPrivate struct {
 // ToC returns a pointer to the C GSocketListenerPrivate that represents the SocketListenerPrivate.
 func (recv *SocketListenerPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SocketListenerPrivateNewFromC creates a new SocketListenerPrivate from a pointer to the C GSocketListenerPrivate that represents the SocketListenerPrivate.
+func SocketListenerPrivateNewFromC(native unsafe.Pointer) *SocketListenerPrivate {
+	return &SocketListenerPrivate{native: native}
 }
 
 // SocketPrivate is a representation of the C record GSocketPrivate.
@@ -3801,6 +4606,11 @@ func (recv *SocketPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketPrivateNewFromC creates a new SocketPrivate from a pointer to the C GSocketPrivate that represents the SocketPrivate.
+func SocketPrivateNewFromC(native unsafe.Pointer) *SocketPrivate {
+	return &SocketPrivate{native: native}
+}
+
 // SocketServiceClass is a representation of the C record GSocketServiceClass.
 type SocketServiceClass struct {
 	native unsafe.Pointer
@@ -3809,6 +4619,11 @@ type SocketServiceClass struct {
 // ToC returns a pointer to the C GSocketServiceClass that represents the SocketServiceClass.
 func (recv *SocketServiceClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SocketServiceClassNewFromC creates a new SocketServiceClass from a pointer to the C GSocketServiceClass that represents the SocketServiceClass.
+func SocketServiceClassNewFromC(native unsafe.Pointer) *SocketServiceClass {
+	return &SocketServiceClass{native: native}
 }
 
 // SocketServicePrivate is a representation of the C record GSocketServicePrivate.
@@ -3821,6 +4636,11 @@ func (recv *SocketServicePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketServicePrivateNewFromC creates a new SocketServicePrivate from a pointer to the C GSocketServicePrivate that represents the SocketServicePrivate.
+func SocketServicePrivateNewFromC(native unsafe.Pointer) *SocketServicePrivate {
+	return &SocketServicePrivate{native: native}
+}
+
 // SrvTarget is a representation of the C record GSrvTarget.
 type SrvTarget struct {
 	native unsafe.Pointer
@@ -3829,6 +4649,11 @@ type SrvTarget struct {
 // ToC returns a pointer to the C GSrvTarget that represents the SrvTarget.
 func (recv *SrvTarget) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SrvTargetNewFromC creates a new SrvTarget from a pointer to the C GSrvTarget that represents the SrvTarget.
+func SrvTargetNewFromC(native unsafe.Pointer) *SrvTarget {
+	return &SrvTarget{native: native}
 }
 
 // StaticResource is a representation of the C record GStaticResource.
@@ -3841,6 +4666,11 @@ func (recv *StaticResource) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// StaticResourceNewFromC creates a new StaticResource from a pointer to the C GStaticResource that represents the StaticResource.
+func StaticResourceNewFromC(native unsafe.Pointer) *StaticResource {
+	return &StaticResource{native: native}
+}
+
 // TaskClass is a representation of the C record GTaskClass.
 type TaskClass struct {
 	native unsafe.Pointer
@@ -3849,6 +4679,11 @@ type TaskClass struct {
 // ToC returns a pointer to the C GTaskClass that represents the TaskClass.
 func (recv *TaskClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TaskClassNewFromC creates a new TaskClass from a pointer to the C GTaskClass that represents the TaskClass.
+func TaskClassNewFromC(native unsafe.Pointer) *TaskClass {
+	return &TaskClass{native: native}
 }
 
 // TcpConnectionClass is a representation of the C record GTcpConnectionClass.
@@ -3861,6 +4696,11 @@ func (recv *TcpConnectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TcpConnectionClassNewFromC creates a new TcpConnectionClass from a pointer to the C GTcpConnectionClass that represents the TcpConnectionClass.
+func TcpConnectionClassNewFromC(native unsafe.Pointer) *TcpConnectionClass {
+	return &TcpConnectionClass{native: native}
+}
+
 // TcpConnectionPrivate is a representation of the C record GTcpConnectionPrivate.
 type TcpConnectionPrivate struct {
 	native unsafe.Pointer
@@ -3869,6 +4709,11 @@ type TcpConnectionPrivate struct {
 // ToC returns a pointer to the C GTcpConnectionPrivate that represents the TcpConnectionPrivate.
 func (recv *TcpConnectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TcpConnectionPrivateNewFromC creates a new TcpConnectionPrivate from a pointer to the C GTcpConnectionPrivate that represents the TcpConnectionPrivate.
+func TcpConnectionPrivateNewFromC(native unsafe.Pointer) *TcpConnectionPrivate {
+	return &TcpConnectionPrivate{native: native}
 }
 
 // TcpWrapperConnectionClass is a representation of the C record GTcpWrapperConnectionClass.
@@ -3881,6 +4726,11 @@ func (recv *TcpWrapperConnectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TcpWrapperConnectionClassNewFromC creates a new TcpWrapperConnectionClass from a pointer to the C GTcpWrapperConnectionClass that represents the TcpWrapperConnectionClass.
+func TcpWrapperConnectionClassNewFromC(native unsafe.Pointer) *TcpWrapperConnectionClass {
+	return &TcpWrapperConnectionClass{native: native}
+}
+
 // TcpWrapperConnectionPrivate is a representation of the C record GTcpWrapperConnectionPrivate.
 type TcpWrapperConnectionPrivate struct {
 	native unsafe.Pointer
@@ -3889,6 +4739,11 @@ type TcpWrapperConnectionPrivate struct {
 // ToC returns a pointer to the C GTcpWrapperConnectionPrivate that represents the TcpWrapperConnectionPrivate.
 func (recv *TcpWrapperConnectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TcpWrapperConnectionPrivateNewFromC creates a new TcpWrapperConnectionPrivate from a pointer to the C GTcpWrapperConnectionPrivate that represents the TcpWrapperConnectionPrivate.
+func TcpWrapperConnectionPrivateNewFromC(native unsafe.Pointer) *TcpWrapperConnectionPrivate {
+	return &TcpWrapperConnectionPrivate{native: native}
 }
 
 // ThemedIconClass is a representation of the C record GThemedIconClass.
@@ -3901,6 +4756,11 @@ func (recv *ThemedIconClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ThemedIconClassNewFromC creates a new ThemedIconClass from a pointer to the C GThemedIconClass that represents the ThemedIconClass.
+func ThemedIconClassNewFromC(native unsafe.Pointer) *ThemedIconClass {
+	return &ThemedIconClass{native: native}
+}
+
 // ThreadedSocketServiceClass is a representation of the C record GThreadedSocketServiceClass.
 type ThreadedSocketServiceClass struct {
 	native unsafe.Pointer
@@ -3911,6 +4771,11 @@ func (recv *ThreadedSocketServiceClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ThreadedSocketServiceClassNewFromC creates a new ThreadedSocketServiceClass from a pointer to the C GThreadedSocketServiceClass that represents the ThreadedSocketServiceClass.
+func ThreadedSocketServiceClassNewFromC(native unsafe.Pointer) *ThreadedSocketServiceClass {
+	return &ThreadedSocketServiceClass{native: native}
+}
+
 // ThreadedSocketServicePrivate is a representation of the C record GThreadedSocketServicePrivate.
 type ThreadedSocketServicePrivate struct {
 	native unsafe.Pointer
@@ -3919,6 +4784,11 @@ type ThreadedSocketServicePrivate struct {
 // ToC returns a pointer to the C GThreadedSocketServicePrivate that represents the ThreadedSocketServicePrivate.
 func (recv *ThreadedSocketServicePrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ThreadedSocketServicePrivateNewFromC creates a new ThreadedSocketServicePrivate from a pointer to the C GThreadedSocketServicePrivate that represents the ThreadedSocketServicePrivate.
+func ThreadedSocketServicePrivateNewFromC(native unsafe.Pointer) *ThreadedSocketServicePrivate {
+	return &ThreadedSocketServicePrivate{native: native}
 }
 
 // TlsBackendInterface is a representation of the C record GTlsBackendInterface.
@@ -3933,6 +4803,11 @@ func (recv *TlsBackendInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsBackendInterfaceNewFromC creates a new TlsBackendInterface from a pointer to the C GTlsBackendInterface that represents the TlsBackendInterface.
+func TlsBackendInterfaceNewFromC(native unsafe.Pointer) *TlsBackendInterface {
+	return &TlsBackendInterface{native: native}
+}
+
 // TlsCertificateClass is a representation of the C record GTlsCertificateClass.
 type TlsCertificateClass struct {
 	native unsafe.Pointer
@@ -3943,6 +4818,11 @@ func (recv *TlsCertificateClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsCertificateClassNewFromC creates a new TlsCertificateClass from a pointer to the C GTlsCertificateClass that represents the TlsCertificateClass.
+func TlsCertificateClassNewFromC(native unsafe.Pointer) *TlsCertificateClass {
+	return &TlsCertificateClass{native: native}
+}
+
 // TlsCertificatePrivate is a representation of the C record GTlsCertificatePrivate.
 type TlsCertificatePrivate struct {
 	native unsafe.Pointer
@@ -3951,6 +4831,11 @@ type TlsCertificatePrivate struct {
 // ToC returns a pointer to the C GTlsCertificatePrivate that represents the TlsCertificatePrivate.
 func (recv *TlsCertificatePrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TlsCertificatePrivateNewFromC creates a new TlsCertificatePrivate from a pointer to the C GTlsCertificatePrivate that represents the TlsCertificatePrivate.
+func TlsCertificatePrivateNewFromC(native unsafe.Pointer) *TlsCertificatePrivate {
+	return &TlsCertificatePrivate{native: native}
 }
 
 // TlsClientConnectionInterface is a representation of the C record GTlsClientConnectionInterface.
@@ -3965,6 +4850,11 @@ func (recv *TlsClientConnectionInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsClientConnectionInterfaceNewFromC creates a new TlsClientConnectionInterface from a pointer to the C GTlsClientConnectionInterface that represents the TlsClientConnectionInterface.
+func TlsClientConnectionInterfaceNewFromC(native unsafe.Pointer) *TlsClientConnectionInterface {
+	return &TlsClientConnectionInterface{native: native}
+}
+
 // TlsConnectionClass is a representation of the C record GTlsConnectionClass.
 type TlsConnectionClass struct {
 	native unsafe.Pointer
@@ -3975,6 +4865,11 @@ func (recv *TlsConnectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsConnectionClassNewFromC creates a new TlsConnectionClass from a pointer to the C GTlsConnectionClass that represents the TlsConnectionClass.
+func TlsConnectionClassNewFromC(native unsafe.Pointer) *TlsConnectionClass {
+	return &TlsConnectionClass{native: native}
+}
+
 // TlsConnectionPrivate is a representation of the C record GTlsConnectionPrivate.
 type TlsConnectionPrivate struct {
 	native unsafe.Pointer
@@ -3983,6 +4878,11 @@ type TlsConnectionPrivate struct {
 // ToC returns a pointer to the C GTlsConnectionPrivate that represents the TlsConnectionPrivate.
 func (recv *TlsConnectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TlsConnectionPrivateNewFromC creates a new TlsConnectionPrivate from a pointer to the C GTlsConnectionPrivate that represents the TlsConnectionPrivate.
+func TlsConnectionPrivateNewFromC(native unsafe.Pointer) *TlsConnectionPrivate {
+	return &TlsConnectionPrivate{native: native}
 }
 
 // TlsDatabaseClass is a representation of the C record GTlsDatabaseClass.
@@ -3997,6 +4897,11 @@ func (recv *TlsDatabaseClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsDatabaseClassNewFromC creates a new TlsDatabaseClass from a pointer to the C GTlsDatabaseClass that represents the TlsDatabaseClass.
+func TlsDatabaseClassNewFromC(native unsafe.Pointer) *TlsDatabaseClass {
+	return &TlsDatabaseClass{native: native}
+}
+
 // TlsDatabasePrivate is a representation of the C record GTlsDatabasePrivate.
 type TlsDatabasePrivate struct {
 	native unsafe.Pointer
@@ -4007,6 +4912,11 @@ func (recv *TlsDatabasePrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsDatabasePrivateNewFromC creates a new TlsDatabasePrivate from a pointer to the C GTlsDatabasePrivate that represents the TlsDatabasePrivate.
+func TlsDatabasePrivateNewFromC(native unsafe.Pointer) *TlsDatabasePrivate {
+	return &TlsDatabasePrivate{native: native}
+}
+
 // TlsFileDatabaseInterface is a representation of the C record GTlsFileDatabaseInterface.
 type TlsFileDatabaseInterface struct {
 	native unsafe.Pointer
@@ -4015,6 +4925,11 @@ type TlsFileDatabaseInterface struct {
 // ToC returns a pointer to the C GTlsFileDatabaseInterface that represents the TlsFileDatabaseInterface.
 func (recv *TlsFileDatabaseInterface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TlsFileDatabaseInterfaceNewFromC creates a new TlsFileDatabaseInterface from a pointer to the C GTlsFileDatabaseInterface that represents the TlsFileDatabaseInterface.
+func TlsFileDatabaseInterfaceNewFromC(native unsafe.Pointer) *TlsFileDatabaseInterface {
+	return &TlsFileDatabaseInterface{native: native}
 }
 
 // TlsInteractionClass is a representation of the C record GTlsInteractionClass.
@@ -4029,6 +4944,11 @@ func (recv *TlsInteractionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsInteractionClassNewFromC creates a new TlsInteractionClass from a pointer to the C GTlsInteractionClass that represents the TlsInteractionClass.
+func TlsInteractionClassNewFromC(native unsafe.Pointer) *TlsInteractionClass {
+	return &TlsInteractionClass{native: native}
+}
+
 // TlsInteractionPrivate is a representation of the C record GTlsInteractionPrivate.
 type TlsInteractionPrivate struct {
 	native unsafe.Pointer
@@ -4037,6 +4957,11 @@ type TlsInteractionPrivate struct {
 // ToC returns a pointer to the C GTlsInteractionPrivate that represents the TlsInteractionPrivate.
 func (recv *TlsInteractionPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TlsInteractionPrivateNewFromC creates a new TlsInteractionPrivate from a pointer to the C GTlsInteractionPrivate that represents the TlsInteractionPrivate.
+func TlsInteractionPrivateNewFromC(native unsafe.Pointer) *TlsInteractionPrivate {
+	return &TlsInteractionPrivate{native: native}
 }
 
 // TlsPasswordClass is a representation of the C record GTlsPasswordClass.
@@ -4049,6 +4974,11 @@ func (recv *TlsPasswordClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsPasswordClassNewFromC creates a new TlsPasswordClass from a pointer to the C GTlsPasswordClass that represents the TlsPasswordClass.
+func TlsPasswordClassNewFromC(native unsafe.Pointer) *TlsPasswordClass {
+	return &TlsPasswordClass{native: native}
+}
+
 // TlsPasswordPrivate is a representation of the C record GTlsPasswordPrivate.
 type TlsPasswordPrivate struct {
 	native unsafe.Pointer
@@ -4057,6 +4987,11 @@ type TlsPasswordPrivate struct {
 // ToC returns a pointer to the C GTlsPasswordPrivate that represents the TlsPasswordPrivate.
 func (recv *TlsPasswordPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TlsPasswordPrivateNewFromC creates a new TlsPasswordPrivate from a pointer to the C GTlsPasswordPrivate that represents the TlsPasswordPrivate.
+func TlsPasswordPrivateNewFromC(native unsafe.Pointer) *TlsPasswordPrivate {
+	return &TlsPasswordPrivate{native: native}
 }
 
 // TlsServerConnectionInterface is a representation of the C record GTlsServerConnectionInterface.
@@ -4071,6 +5006,11 @@ func (recv *TlsServerConnectionInterface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsServerConnectionInterfaceNewFromC creates a new TlsServerConnectionInterface from a pointer to the C GTlsServerConnectionInterface that represents the TlsServerConnectionInterface.
+func TlsServerConnectionInterfaceNewFromC(native unsafe.Pointer) *TlsServerConnectionInterface {
+	return &TlsServerConnectionInterface{native: native}
+}
+
 // UnixConnectionClass is a representation of the C record GUnixConnectionClass.
 type UnixConnectionClass struct {
 	native unsafe.Pointer
@@ -4081,6 +5021,11 @@ func (recv *UnixConnectionClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixConnectionClassNewFromC creates a new UnixConnectionClass from a pointer to the C GUnixConnectionClass that represents the UnixConnectionClass.
+func UnixConnectionClassNewFromC(native unsafe.Pointer) *UnixConnectionClass {
+	return &UnixConnectionClass{native: native}
+}
+
 // UnixConnectionPrivate is a representation of the C record GUnixConnectionPrivate.
 type UnixConnectionPrivate struct {
 	native unsafe.Pointer
@@ -4089,6 +5034,11 @@ type UnixConnectionPrivate struct {
 // ToC returns a pointer to the C GUnixConnectionPrivate that represents the UnixConnectionPrivate.
 func (recv *UnixConnectionPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// UnixConnectionPrivateNewFromC creates a new UnixConnectionPrivate from a pointer to the C GUnixConnectionPrivate that represents the UnixConnectionPrivate.
+func UnixConnectionPrivateNewFromC(native unsafe.Pointer) *UnixConnectionPrivate {
+	return &UnixConnectionPrivate{native: native}
 }
 
 // UnixCredentialsMessageClass is a representation of the C record GUnixCredentialsMessageClass.
@@ -4103,6 +5053,11 @@ func (recv *UnixCredentialsMessageClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixCredentialsMessageClassNewFromC creates a new UnixCredentialsMessageClass from a pointer to the C GUnixCredentialsMessageClass that represents the UnixCredentialsMessageClass.
+func UnixCredentialsMessageClassNewFromC(native unsafe.Pointer) *UnixCredentialsMessageClass {
+	return &UnixCredentialsMessageClass{native: native}
+}
+
 // UnixCredentialsMessagePrivate is a representation of the C record GUnixCredentialsMessagePrivate.
 type UnixCredentialsMessagePrivate struct {
 	native unsafe.Pointer
@@ -4111,6 +5066,11 @@ type UnixCredentialsMessagePrivate struct {
 // ToC returns a pointer to the C GUnixCredentialsMessagePrivate that represents the UnixCredentialsMessagePrivate.
 func (recv *UnixCredentialsMessagePrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// UnixCredentialsMessagePrivateNewFromC creates a new UnixCredentialsMessagePrivate from a pointer to the C GUnixCredentialsMessagePrivate that represents the UnixCredentialsMessagePrivate.
+func UnixCredentialsMessagePrivateNewFromC(native unsafe.Pointer) *UnixCredentialsMessagePrivate {
+	return &UnixCredentialsMessagePrivate{native: native}
 }
 
 // UnixFDListClass is a representation of the C record GUnixFDListClass.
@@ -4123,6 +5083,11 @@ func (recv *UnixFDListClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixFDListClassNewFromC creates a new UnixFDListClass from a pointer to the C GUnixFDListClass that represents the UnixFDListClass.
+func UnixFDListClassNewFromC(native unsafe.Pointer) *UnixFDListClass {
+	return &UnixFDListClass{native: native}
+}
+
 // UnixFDListPrivate is a representation of the C record GUnixFDListPrivate.
 type UnixFDListPrivate struct {
 	native unsafe.Pointer
@@ -4131,6 +5096,11 @@ type UnixFDListPrivate struct {
 // ToC returns a pointer to the C GUnixFDListPrivate that represents the UnixFDListPrivate.
 func (recv *UnixFDListPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// UnixFDListPrivateNewFromC creates a new UnixFDListPrivate from a pointer to the C GUnixFDListPrivate that represents the UnixFDListPrivate.
+func UnixFDListPrivateNewFromC(native unsafe.Pointer) *UnixFDListPrivate {
+	return &UnixFDListPrivate{native: native}
 }
 
 // UnixFDMessageClass is a representation of the C record GUnixFDMessageClass.
@@ -4143,6 +5113,11 @@ func (recv *UnixFDMessageClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixFDMessageClassNewFromC creates a new UnixFDMessageClass from a pointer to the C GUnixFDMessageClass that represents the UnixFDMessageClass.
+func UnixFDMessageClassNewFromC(native unsafe.Pointer) *UnixFDMessageClass {
+	return &UnixFDMessageClass{native: native}
+}
+
 // UnixFDMessagePrivate is a representation of the C record GUnixFDMessagePrivate.
 type UnixFDMessagePrivate struct {
 	native unsafe.Pointer
@@ -4151,6 +5126,11 @@ type UnixFDMessagePrivate struct {
 // ToC returns a pointer to the C GUnixFDMessagePrivate that represents the UnixFDMessagePrivate.
 func (recv *UnixFDMessagePrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// UnixFDMessagePrivateNewFromC creates a new UnixFDMessagePrivate from a pointer to the C GUnixFDMessagePrivate that represents the UnixFDMessagePrivate.
+func UnixFDMessagePrivateNewFromC(native unsafe.Pointer) *UnixFDMessagePrivate {
+	return &UnixFDMessagePrivate{native: native}
 }
 
 // UnixInputStreamClass is a representation of the C record GUnixInputStreamClass.
@@ -4163,6 +5143,11 @@ func (recv *UnixInputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixInputStreamClassNewFromC creates a new UnixInputStreamClass from a pointer to the C GUnixInputStreamClass that represents the UnixInputStreamClass.
+func UnixInputStreamClassNewFromC(native unsafe.Pointer) *UnixInputStreamClass {
+	return &UnixInputStreamClass{native: native}
+}
+
 // UnixInputStreamPrivate is a representation of the C record GUnixInputStreamPrivate.
 type UnixInputStreamPrivate struct {
 	native unsafe.Pointer
@@ -4171,6 +5156,11 @@ type UnixInputStreamPrivate struct {
 // ToC returns a pointer to the C GUnixInputStreamPrivate that represents the UnixInputStreamPrivate.
 func (recv *UnixInputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// UnixInputStreamPrivateNewFromC creates a new UnixInputStreamPrivate from a pointer to the C GUnixInputStreamPrivate that represents the UnixInputStreamPrivate.
+func UnixInputStreamPrivateNewFromC(native unsafe.Pointer) *UnixInputStreamPrivate {
+	return &UnixInputStreamPrivate{native: native}
 }
 
 // UnixMountEntry is a representation of the C record GUnixMountEntry.
@@ -4183,6 +5173,11 @@ func (recv *UnixMountEntry) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixMountEntryNewFromC creates a new UnixMountEntry from a pointer to the C GUnixMountEntry that represents the UnixMountEntry.
+func UnixMountEntryNewFromC(native unsafe.Pointer) *UnixMountEntry {
+	return &UnixMountEntry{native: native}
+}
+
 // UnixMountMonitorClass is a representation of the C record GUnixMountMonitorClass.
 type UnixMountMonitorClass struct {
 	native unsafe.Pointer
@@ -4191,6 +5186,11 @@ type UnixMountMonitorClass struct {
 // ToC returns a pointer to the C GUnixMountMonitorClass that represents the UnixMountMonitorClass.
 func (recv *UnixMountMonitorClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// UnixMountMonitorClassNewFromC creates a new UnixMountMonitorClass from a pointer to the C GUnixMountMonitorClass that represents the UnixMountMonitorClass.
+func UnixMountMonitorClassNewFromC(native unsafe.Pointer) *UnixMountMonitorClass {
+	return &UnixMountMonitorClass{native: native}
 }
 
 // UnixMountPoint is a representation of the C record GUnixMountPoint.
@@ -4203,6 +5203,11 @@ func (recv *UnixMountPoint) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixMountPointNewFromC creates a new UnixMountPoint from a pointer to the C GUnixMountPoint that represents the UnixMountPoint.
+func UnixMountPointNewFromC(native unsafe.Pointer) *UnixMountPoint {
+	return &UnixMountPoint{native: native}
+}
+
 // UnixOutputStreamClass is a representation of the C record GUnixOutputStreamClass.
 type UnixOutputStreamClass struct {
 	native unsafe.Pointer
@@ -4211,6 +5216,11 @@ type UnixOutputStreamClass struct {
 // ToC returns a pointer to the C GUnixOutputStreamClass that represents the UnixOutputStreamClass.
 func (recv *UnixOutputStreamClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// UnixOutputStreamClassNewFromC creates a new UnixOutputStreamClass from a pointer to the C GUnixOutputStreamClass that represents the UnixOutputStreamClass.
+func UnixOutputStreamClassNewFromC(native unsafe.Pointer) *UnixOutputStreamClass {
+	return &UnixOutputStreamClass{native: native}
 }
 
 // UnixOutputStreamPrivate is a representation of the C record GUnixOutputStreamPrivate.
@@ -4223,6 +5233,11 @@ func (recv *UnixOutputStreamPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixOutputStreamPrivateNewFromC creates a new UnixOutputStreamPrivate from a pointer to the C GUnixOutputStreamPrivate that represents the UnixOutputStreamPrivate.
+func UnixOutputStreamPrivateNewFromC(native unsafe.Pointer) *UnixOutputStreamPrivate {
+	return &UnixOutputStreamPrivate{native: native}
+}
+
 // UnixSocketAddressClass is a representation of the C record GUnixSocketAddressClass.
 type UnixSocketAddressClass struct {
 	native unsafe.Pointer
@@ -4231,6 +5246,11 @@ type UnixSocketAddressClass struct {
 // ToC returns a pointer to the C GUnixSocketAddressClass that represents the UnixSocketAddressClass.
 func (recv *UnixSocketAddressClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// UnixSocketAddressClassNewFromC creates a new UnixSocketAddressClass from a pointer to the C GUnixSocketAddressClass that represents the UnixSocketAddressClass.
+func UnixSocketAddressClassNewFromC(native unsafe.Pointer) *UnixSocketAddressClass {
+	return &UnixSocketAddressClass{native: native}
 }
 
 // UnixSocketAddressPrivate is a representation of the C record GUnixSocketAddressPrivate.
@@ -4243,6 +5263,11 @@ func (recv *UnixSocketAddressPrivate) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixSocketAddressPrivateNewFromC creates a new UnixSocketAddressPrivate from a pointer to the C GUnixSocketAddressPrivate that represents the UnixSocketAddressPrivate.
+func UnixSocketAddressPrivateNewFromC(native unsafe.Pointer) *UnixSocketAddressPrivate {
+	return &UnixSocketAddressPrivate{native: native}
+}
+
 // VfsClass is a representation of the C record GVfsClass.
 type VfsClass struct {
 	native unsafe.Pointer
@@ -4251,6 +5276,11 @@ type VfsClass struct {
 // ToC returns a pointer to the C GVfsClass that represents the VfsClass.
 func (recv *VfsClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// VfsClassNewFromC creates a new VfsClass from a pointer to the C GVfsClass that represents the VfsClass.
+func VfsClassNewFromC(native unsafe.Pointer) *VfsClass {
+	return &VfsClass{native: native}
 }
 
 // VolumeIface is a representation of the C record GVolumeIface.
@@ -4263,6 +5293,11 @@ func (recv *VolumeIface) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// VolumeIfaceNewFromC creates a new VolumeIface from a pointer to the C GVolumeIface that represents the VolumeIface.
+func VolumeIfaceNewFromC(native unsafe.Pointer) *VolumeIface {
+	return &VolumeIface{native: native}
+}
+
 // VolumeMonitorClass is a representation of the C record GVolumeMonitorClass.
 type VolumeMonitorClass struct {
 	native unsafe.Pointer
@@ -4271,6 +5306,11 @@ type VolumeMonitorClass struct {
 // ToC returns a pointer to the C GVolumeMonitorClass that represents the VolumeMonitorClass.
 func (recv *VolumeMonitorClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// VolumeMonitorClassNewFromC creates a new VolumeMonitorClass from a pointer to the C GVolumeMonitorClass that represents the VolumeMonitorClass.
+func VolumeMonitorClassNewFromC(native unsafe.Pointer) *VolumeMonitorClass {
+	return &VolumeMonitorClass{native: native}
 }
 
 // ZlibCompressorClass is a representation of the C record GZlibCompressorClass.
@@ -4283,6 +5323,11 @@ func (recv *ZlibCompressorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ZlibCompressorClassNewFromC creates a new ZlibCompressorClass from a pointer to the C GZlibCompressorClass that represents the ZlibCompressorClass.
+func ZlibCompressorClassNewFromC(native unsafe.Pointer) *ZlibCompressorClass {
+	return &ZlibCompressorClass{native: native}
+}
+
 // ZlibDecompressorClass is a representation of the C record GZlibDecompressorClass.
 type ZlibDecompressorClass struct {
 	native unsafe.Pointer
@@ -4293,6 +5338,11 @@ func (recv *ZlibDecompressorClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ZlibDecompressorClassNewFromC creates a new ZlibDecompressorClass from a pointer to the C GZlibDecompressorClass that represents the ZlibDecompressorClass.
+func ZlibDecompressorClassNewFromC(native unsafe.Pointer) *ZlibDecompressorClass {
+	return &ZlibDecompressorClass{native: native}
+}
+
 // AppLaunchContext is a representation of the C record GAppLaunchContext.
 type AppLaunchContext struct {
 	native unsafe.Pointer
@@ -4301,6 +5351,11 @@ type AppLaunchContext struct {
 // ToC returns a pointer to the C GAppLaunchContext that represents the AppLaunchContext.
 func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// AppLaunchContextNewFromC creates a new AppLaunchContext from a pointer to the C GAppLaunchContext that represents the AppLaunchContext.
+func AppLaunchContextNewFromC(native unsafe.Pointer) *AppLaunchContext {
+	return &AppLaunchContext{native: native}
 }
 
 // Application is a representation of the C record GApplication.
@@ -4315,6 +5370,11 @@ func (recv *Application) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ApplicationNewFromC creates a new Application from a pointer to the C GApplication that represents the Application.
+func ApplicationNewFromC(native unsafe.Pointer) *Application {
+	return &Application{native: native}
+}
+
 // ApplicationCommandLine is a representation of the C record GApplicationCommandLine.
 type ApplicationCommandLine struct {
 	native unsafe.Pointer
@@ -4323,6 +5383,11 @@ type ApplicationCommandLine struct {
 // ToC returns a pointer to the C GApplicationCommandLine that represents the ApplicationCommandLine.
 func (recv *ApplicationCommandLine) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ApplicationCommandLineNewFromC creates a new ApplicationCommandLine from a pointer to the C GApplicationCommandLine that represents the ApplicationCommandLine.
+func ApplicationCommandLineNewFromC(native unsafe.Pointer) *ApplicationCommandLine {
+	return &ApplicationCommandLine{native: native}
 }
 
 // BufferedInputStream is a representation of the C record GBufferedInputStream.
@@ -4335,6 +5400,11 @@ func (recv *BufferedInputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// BufferedInputStreamNewFromC creates a new BufferedInputStream from a pointer to the C GBufferedInputStream that represents the BufferedInputStream.
+func BufferedInputStreamNewFromC(native unsafe.Pointer) *BufferedInputStream {
+	return &BufferedInputStream{native: native}
+}
+
 // BufferedOutputStream is a representation of the C record GBufferedOutputStream.
 type BufferedOutputStream struct {
 	native unsafe.Pointer
@@ -4343,6 +5413,11 @@ type BufferedOutputStream struct {
 // ToC returns a pointer to the C GBufferedOutputStream that represents the BufferedOutputStream.
 func (recv *BufferedOutputStream) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// BufferedOutputStreamNewFromC creates a new BufferedOutputStream from a pointer to the C GBufferedOutputStream that represents the BufferedOutputStream.
+func BufferedOutputStreamNewFromC(native unsafe.Pointer) *BufferedOutputStream {
+	return &BufferedOutputStream{native: native}
 }
 
 // Cancellable is a representation of the C record GCancellable.
@@ -4355,6 +5430,11 @@ func (recv *Cancellable) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// CancellableNewFromC creates a new Cancellable from a pointer to the C GCancellable that represents the Cancellable.
+func CancellableNewFromC(native unsafe.Pointer) *Cancellable {
+	return &Cancellable{native: native}
+}
+
 // CharsetConverter is a representation of the C record GCharsetConverter.
 type CharsetConverter struct {
 	native unsafe.Pointer
@@ -4363,6 +5443,11 @@ type CharsetConverter struct {
 // ToC returns a pointer to the C GCharsetConverter that represents the CharsetConverter.
 func (recv *CharsetConverter) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// CharsetConverterNewFromC creates a new CharsetConverter from a pointer to the C GCharsetConverter that represents the CharsetConverter.
+func CharsetConverterNewFromC(native unsafe.Pointer) *CharsetConverter {
+	return &CharsetConverter{native: native}
 }
 
 // ConverterInputStream is a representation of the C record GConverterInputStream.
@@ -4375,6 +5460,11 @@ func (recv *ConverterInputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ConverterInputStreamNewFromC creates a new ConverterInputStream from a pointer to the C GConverterInputStream that represents the ConverterInputStream.
+func ConverterInputStreamNewFromC(native unsafe.Pointer) *ConverterInputStream {
+	return &ConverterInputStream{native: native}
+}
+
 // ConverterOutputStream is a representation of the C record GConverterOutputStream.
 type ConverterOutputStream struct {
 	native unsafe.Pointer
@@ -4383,6 +5473,11 @@ type ConverterOutputStream struct {
 // ToC returns a pointer to the C GConverterOutputStream that represents the ConverterOutputStream.
 func (recv *ConverterOutputStream) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ConverterOutputStreamNewFromC creates a new ConverterOutputStream from a pointer to the C GConverterOutputStream that represents the ConverterOutputStream.
+func ConverterOutputStreamNewFromC(native unsafe.Pointer) *ConverterOutputStream {
+	return &ConverterOutputStream{native: native}
 }
 
 // Credentials is a representation of the C record GCredentials.
@@ -4397,6 +5492,11 @@ func (recv *Credentials) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// CredentialsNewFromC creates a new Credentials from a pointer to the C GCredentials that represents the Credentials.
+func CredentialsNewFromC(native unsafe.Pointer) *Credentials {
+	return &Credentials{native: native}
+}
+
 // DBusActionGroup is a representation of the C record GDBusActionGroup.
 type DBusActionGroup struct {
 	native unsafe.Pointer
@@ -4405,6 +5505,11 @@ type DBusActionGroup struct {
 // ToC returns a pointer to the C GDBusActionGroup that represents the DBusActionGroup.
 func (recv *DBusActionGroup) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusActionGroupNewFromC creates a new DBusActionGroup from a pointer to the C GDBusActionGroup that represents the DBusActionGroup.
+func DBusActionGroupNewFromC(native unsafe.Pointer) *DBusActionGroup {
+	return &DBusActionGroup{native: native}
 }
 
 // DBusAuthObserver is a representation of the C record GDBusAuthObserver.
@@ -4419,6 +5524,11 @@ func (recv *DBusAuthObserver) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusAuthObserverNewFromC creates a new DBusAuthObserver from a pointer to the C GDBusAuthObserver that represents the DBusAuthObserver.
+func DBusAuthObserverNewFromC(native unsafe.Pointer) *DBusAuthObserver {
+	return &DBusAuthObserver{native: native}
+}
+
 // DBusConnection is a representation of the C record GDBusConnection.
 //
 // since 2.26
@@ -4429,6 +5539,11 @@ type DBusConnection struct {
 // ToC returns a pointer to the C GDBusConnection that represents the DBusConnection.
 func (recv *DBusConnection) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusConnectionNewFromC creates a new DBusConnection from a pointer to the C GDBusConnection that represents the DBusConnection.
+func DBusConnectionNewFromC(native unsafe.Pointer) *DBusConnection {
+	return &DBusConnection{native: native}
 }
 
 // DBusInterfaceSkeleton is a representation of the C record GDBusInterfaceSkeleton.
@@ -4443,6 +5558,11 @@ func (recv *DBusInterfaceSkeleton) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusInterfaceSkeletonNewFromC creates a new DBusInterfaceSkeleton from a pointer to the C GDBusInterfaceSkeleton that represents the DBusInterfaceSkeleton.
+func DBusInterfaceSkeletonNewFromC(native unsafe.Pointer) *DBusInterfaceSkeleton {
+	return &DBusInterfaceSkeleton{native: native}
+}
+
 // DBusMenuModel is a representation of the C record GDBusMenuModel.
 type DBusMenuModel struct {
 	native unsafe.Pointer
@@ -4451,6 +5571,11 @@ type DBusMenuModel struct {
 // ToC returns a pointer to the C GDBusMenuModel that represents the DBusMenuModel.
 func (recv *DBusMenuModel) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusMenuModelNewFromC creates a new DBusMenuModel from a pointer to the C GDBusMenuModel that represents the DBusMenuModel.
+func DBusMenuModelNewFromC(native unsafe.Pointer) *DBusMenuModel {
+	return &DBusMenuModel{native: native}
 }
 
 // DBusMessage is a representation of the C record GDBusMessage.
@@ -4465,6 +5590,11 @@ func (recv *DBusMessage) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusMessageNewFromC creates a new DBusMessage from a pointer to the C GDBusMessage that represents the DBusMessage.
+func DBusMessageNewFromC(native unsafe.Pointer) *DBusMessage {
+	return &DBusMessage{native: native}
+}
+
 // DBusMethodInvocation is a representation of the C record GDBusMethodInvocation.
 //
 // since 2.26
@@ -4475,6 +5605,11 @@ type DBusMethodInvocation struct {
 // ToC returns a pointer to the C GDBusMethodInvocation that represents the DBusMethodInvocation.
 func (recv *DBusMethodInvocation) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusMethodInvocationNewFromC creates a new DBusMethodInvocation from a pointer to the C GDBusMethodInvocation that represents the DBusMethodInvocation.
+func DBusMethodInvocationNewFromC(native unsafe.Pointer) *DBusMethodInvocation {
+	return &DBusMethodInvocation{native: native}
 }
 
 // DBusObjectManagerClient is a representation of the C record GDBusObjectManagerClient.
@@ -4489,6 +5624,11 @@ func (recv *DBusObjectManagerClient) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusObjectManagerClientNewFromC creates a new DBusObjectManagerClient from a pointer to the C GDBusObjectManagerClient that represents the DBusObjectManagerClient.
+func DBusObjectManagerClientNewFromC(native unsafe.Pointer) *DBusObjectManagerClient {
+	return &DBusObjectManagerClient{native: native}
+}
+
 // DBusObjectManagerServer is a representation of the C record GDBusObjectManagerServer.
 //
 // since 2.30
@@ -4499,6 +5639,11 @@ type DBusObjectManagerServer struct {
 // ToC returns a pointer to the C GDBusObjectManagerServer that represents the DBusObjectManagerServer.
 func (recv *DBusObjectManagerServer) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusObjectManagerServerNewFromC creates a new DBusObjectManagerServer from a pointer to the C GDBusObjectManagerServer that represents the DBusObjectManagerServer.
+func DBusObjectManagerServerNewFromC(native unsafe.Pointer) *DBusObjectManagerServer {
+	return &DBusObjectManagerServer{native: native}
 }
 
 // DBusObjectProxy is a representation of the C record GDBusObjectProxy.
@@ -4513,6 +5658,11 @@ func (recv *DBusObjectProxy) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusObjectProxyNewFromC creates a new DBusObjectProxy from a pointer to the C GDBusObjectProxy that represents the DBusObjectProxy.
+func DBusObjectProxyNewFromC(native unsafe.Pointer) *DBusObjectProxy {
+	return &DBusObjectProxy{native: native}
+}
+
 // DBusObjectSkeleton is a representation of the C record GDBusObjectSkeleton.
 //
 // since 2.30
@@ -4523,6 +5673,11 @@ type DBusObjectSkeleton struct {
 // ToC returns a pointer to the C GDBusObjectSkeleton that represents the DBusObjectSkeleton.
 func (recv *DBusObjectSkeleton) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DBusObjectSkeletonNewFromC creates a new DBusObjectSkeleton from a pointer to the C GDBusObjectSkeleton that represents the DBusObjectSkeleton.
+func DBusObjectSkeletonNewFromC(native unsafe.Pointer) *DBusObjectSkeleton {
+	return &DBusObjectSkeleton{native: native}
 }
 
 // DBusProxy is a representation of the C record GDBusProxy.
@@ -4537,6 +5692,11 @@ func (recv *DBusProxy) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusProxyNewFromC creates a new DBusProxy from a pointer to the C GDBusProxy that represents the DBusProxy.
+func DBusProxyNewFromC(native unsafe.Pointer) *DBusProxy {
+	return &DBusProxy{native: native}
+}
+
 // DBusServer is a representation of the C record GDBusServer.
 //
 // since 2.26
@@ -4549,6 +5709,11 @@ func (recv *DBusServer) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DBusServerNewFromC creates a new DBusServer from a pointer to the C GDBusServer that represents the DBusServer.
+func DBusServerNewFromC(native unsafe.Pointer) *DBusServer {
+	return &DBusServer{native: native}
+}
+
 // DataInputStream is a representation of the C record GDataInputStream.
 type DataInputStream struct {
 	native unsafe.Pointer
@@ -4557,6 +5722,11 @@ type DataInputStream struct {
 // ToC returns a pointer to the C GDataInputStream that represents the DataInputStream.
 func (recv *DataInputStream) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DataInputStreamNewFromC creates a new DataInputStream from a pointer to the C GDataInputStream that represents the DataInputStream.
+func DataInputStreamNewFromC(native unsafe.Pointer) *DataInputStream {
+	return &DataInputStream{native: native}
 }
 
 // DataOutputStream is a representation of the C record GDataOutputStream.
@@ -4569,6 +5739,11 @@ func (recv *DataOutputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// DataOutputStreamNewFromC creates a new DataOutputStream from a pointer to the C GDataOutputStream that represents the DataOutputStream.
+func DataOutputStreamNewFromC(native unsafe.Pointer) *DataOutputStream {
+	return &DataOutputStream{native: native}
+}
+
 // DesktopAppInfo is a representation of the C record GDesktopAppInfo.
 type DesktopAppInfo struct {
 	native unsafe.Pointer
@@ -4577,6 +5752,11 @@ type DesktopAppInfo struct {
 // ToC returns a pointer to the C GDesktopAppInfo that represents the DesktopAppInfo.
 func (recv *DesktopAppInfo) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// DesktopAppInfoNewFromC creates a new DesktopAppInfo from a pointer to the C GDesktopAppInfo that represents the DesktopAppInfo.
+func DesktopAppInfoNewFromC(native unsafe.Pointer) *DesktopAppInfo {
+	return &DesktopAppInfo{native: native}
 }
 
 // Emblem is a representation of the C record GEmblem.
@@ -4589,6 +5769,11 @@ func (recv *Emblem) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EmblemNewFromC creates a new Emblem from a pointer to the C GEmblem that represents the Emblem.
+func EmblemNewFromC(native unsafe.Pointer) *Emblem {
+	return &Emblem{native: native}
+}
+
 // EmblemedIcon is a representation of the C record GEmblemedIcon.
 type EmblemedIcon struct {
 	native unsafe.Pointer
@@ -4599,6 +5784,11 @@ func (recv *EmblemedIcon) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EmblemedIconNewFromC creates a new EmblemedIcon from a pointer to the C GEmblemedIcon that represents the EmblemedIcon.
+func EmblemedIconNewFromC(native unsafe.Pointer) *EmblemedIcon {
+	return &EmblemedIcon{native: native}
+}
+
 // FileEnumerator is a representation of the C record GFileEnumerator.
 type FileEnumerator struct {
 	native unsafe.Pointer
@@ -4607,6 +5797,11 @@ type FileEnumerator struct {
 // ToC returns a pointer to the C GFileEnumerator that represents the FileEnumerator.
 func (recv *FileEnumerator) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileEnumeratorNewFromC creates a new FileEnumerator from a pointer to the C GFileEnumerator that represents the FileEnumerator.
+func FileEnumeratorNewFromC(native unsafe.Pointer) *FileEnumerator {
+	return &FileEnumerator{native: native}
 }
 
 // FileIOStream is a representation of the C record GFileIOStream.
@@ -4621,6 +5816,11 @@ func (recv *FileIOStream) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FileIOStreamNewFromC creates a new FileIOStream from a pointer to the C GFileIOStream that represents the FileIOStream.
+func FileIOStreamNewFromC(native unsafe.Pointer) *FileIOStream {
+	return &FileIOStream{native: native}
+}
+
 // FileIcon is a representation of the C record GFileIcon.
 type FileIcon struct {
 	native unsafe.Pointer
@@ -4629,6 +5829,11 @@ type FileIcon struct {
 // ToC returns a pointer to the C GFileIcon that represents the FileIcon.
 func (recv *FileIcon) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileIconNewFromC creates a new FileIcon from a pointer to the C GFileIcon that represents the FileIcon.
+func FileIconNewFromC(native unsafe.Pointer) *FileIcon {
+	return &FileIcon{native: native}
 }
 
 // FileInfo is a representation of the C record GFileInfo.
@@ -4641,6 +5846,11 @@ func (recv *FileInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FileInfoNewFromC creates a new FileInfo from a pointer to the C GFileInfo that represents the FileInfo.
+func FileInfoNewFromC(native unsafe.Pointer) *FileInfo {
+	return &FileInfo{native: native}
+}
+
 // FileInputStream is a representation of the C record GFileInputStream.
 type FileInputStream struct {
 	native unsafe.Pointer
@@ -4649,6 +5859,11 @@ type FileInputStream struct {
 // ToC returns a pointer to the C GFileInputStream that represents the FileInputStream.
 func (recv *FileInputStream) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileInputStreamNewFromC creates a new FileInputStream from a pointer to the C GFileInputStream that represents the FileInputStream.
+func FileInputStreamNewFromC(native unsafe.Pointer) *FileInputStream {
+	return &FileInputStream{native: native}
 }
 
 // FileMonitor is a representation of the C record GFileMonitor.
@@ -4661,6 +5876,11 @@ func (recv *FileMonitor) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FileMonitorNewFromC creates a new FileMonitor from a pointer to the C GFileMonitor that represents the FileMonitor.
+func FileMonitorNewFromC(native unsafe.Pointer) *FileMonitor {
+	return &FileMonitor{native: native}
+}
+
 // FileOutputStream is a representation of the C record GFileOutputStream.
 type FileOutputStream struct {
 	native unsafe.Pointer
@@ -4669,6 +5889,11 @@ type FileOutputStream struct {
 // ToC returns a pointer to the C GFileOutputStream that represents the FileOutputStream.
 func (recv *FileOutputStream) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FileOutputStreamNewFromC creates a new FileOutputStream from a pointer to the C GFileOutputStream that represents the FileOutputStream.
+func FileOutputStreamNewFromC(native unsafe.Pointer) *FileOutputStream {
+	return &FileOutputStream{native: native}
 }
 
 // FilenameCompleter is a representation of the C record GFilenameCompleter.
@@ -4681,6 +5906,11 @@ func (recv *FilenameCompleter) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FilenameCompleterNewFromC creates a new FilenameCompleter from a pointer to the C GFilenameCompleter that represents the FilenameCompleter.
+func FilenameCompleterNewFromC(native unsafe.Pointer) *FilenameCompleter {
+	return &FilenameCompleter{native: native}
+}
+
 // FilterInputStream is a representation of the C record GFilterInputStream.
 type FilterInputStream struct {
 	native unsafe.Pointer
@@ -4689,6 +5919,11 @@ type FilterInputStream struct {
 // ToC returns a pointer to the C GFilterInputStream that represents the FilterInputStream.
 func (recv *FilterInputStream) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FilterInputStreamNewFromC creates a new FilterInputStream from a pointer to the C GFilterInputStream that represents the FilterInputStream.
+func FilterInputStreamNewFromC(native unsafe.Pointer) *FilterInputStream {
+	return &FilterInputStream{native: native}
 }
 
 // FilterOutputStream is a representation of the C record GFilterOutputStream.
@@ -4701,6 +5936,11 @@ func (recv *FilterOutputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FilterOutputStreamNewFromC creates a new FilterOutputStream from a pointer to the C GFilterOutputStream that represents the FilterOutputStream.
+func FilterOutputStreamNewFromC(native unsafe.Pointer) *FilterOutputStream {
+	return &FilterOutputStream{native: native}
+}
+
 // IOModule is a representation of the C record GIOModule.
 type IOModule struct {
 	native unsafe.Pointer
@@ -4709,6 +5949,11 @@ type IOModule struct {
 // ToC returns a pointer to the C GIOModule that represents the IOModule.
 func (recv *IOModule) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// IOModuleNewFromC creates a new IOModule from a pointer to the C GIOModule that represents the IOModule.
+func IOModuleNewFromC(native unsafe.Pointer) *IOModule {
+	return &IOModule{native: native}
 }
 
 // IOStream is a representation of the C record GIOStream.
@@ -4723,6 +5968,11 @@ func (recv *IOStream) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// IOStreamNewFromC creates a new IOStream from a pointer to the C GIOStream that represents the IOStream.
+func IOStreamNewFromC(native unsafe.Pointer) *IOStream {
+	return &IOStream{native: native}
+}
+
 // InetAddress is a representation of the C record GInetAddress.
 type InetAddress struct {
 	native unsafe.Pointer
@@ -4731,6 +5981,11 @@ type InetAddress struct {
 // ToC returns a pointer to the C GInetAddress that represents the InetAddress.
 func (recv *InetAddress) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// InetAddressNewFromC creates a new InetAddress from a pointer to the C GInetAddress that represents the InetAddress.
+func InetAddressNewFromC(native unsafe.Pointer) *InetAddress {
+	return &InetAddress{native: native}
 }
 
 // InetAddressMask is a representation of the C record GInetAddressMask.
@@ -4745,6 +6000,11 @@ func (recv *InetAddressMask) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// InetAddressMaskNewFromC creates a new InetAddressMask from a pointer to the C GInetAddressMask that represents the InetAddressMask.
+func InetAddressMaskNewFromC(native unsafe.Pointer) *InetAddressMask {
+	return &InetAddressMask{native: native}
+}
+
 // InetSocketAddress is a representation of the C record GInetSocketAddress.
 type InetSocketAddress struct {
 	native unsafe.Pointer
@@ -4753,6 +6013,11 @@ type InetSocketAddress struct {
 // ToC returns a pointer to the C GInetSocketAddress that represents the InetSocketAddress.
 func (recv *InetSocketAddress) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// InetSocketAddressNewFromC creates a new InetSocketAddress from a pointer to the C GInetSocketAddress that represents the InetSocketAddress.
+func InetSocketAddressNewFromC(native unsafe.Pointer) *InetSocketAddress {
+	return &InetSocketAddress{native: native}
 }
 
 // InputStream is a representation of the C record GInputStream.
@@ -4765,6 +6030,11 @@ func (recv *InputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// InputStreamNewFromC creates a new InputStream from a pointer to the C GInputStream that represents the InputStream.
+func InputStreamNewFromC(native unsafe.Pointer) *InputStream {
+	return &InputStream{native: native}
+}
+
 // ListStore is a representation of the C record GListStore.
 type ListStore struct {
 	native unsafe.Pointer
@@ -4773,6 +6043,11 @@ type ListStore struct {
 // ToC returns a pointer to the C GListStore that represents the ListStore.
 func (recv *ListStore) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ListStoreNewFromC creates a new ListStore from a pointer to the C GListStore that represents the ListStore.
+func ListStoreNewFromC(native unsafe.Pointer) *ListStore {
+	return &ListStore{native: native}
 }
 
 // MemoryInputStream is a representation of the C record GMemoryInputStream.
@@ -4785,6 +6060,11 @@ func (recv *MemoryInputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// MemoryInputStreamNewFromC creates a new MemoryInputStream from a pointer to the C GMemoryInputStream that represents the MemoryInputStream.
+func MemoryInputStreamNewFromC(native unsafe.Pointer) *MemoryInputStream {
+	return &MemoryInputStream{native: native}
+}
+
 // MemoryOutputStream is a representation of the C record GMemoryOutputStream.
 type MemoryOutputStream struct {
 	native unsafe.Pointer
@@ -4793,6 +6073,11 @@ type MemoryOutputStream struct {
 // ToC returns a pointer to the C GMemoryOutputStream that represents the MemoryOutputStream.
 func (recv *MemoryOutputStream) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MemoryOutputStreamNewFromC creates a new MemoryOutputStream from a pointer to the C GMemoryOutputStream that represents the MemoryOutputStream.
+func MemoryOutputStreamNewFromC(native unsafe.Pointer) *MemoryOutputStream {
+	return &MemoryOutputStream{native: native}
 }
 
 // Menu is a representation of the C record GMenu.
@@ -4807,6 +6092,11 @@ func (recv *Menu) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// MenuNewFromC creates a new Menu from a pointer to the C GMenu that represents the Menu.
+func MenuNewFromC(native unsafe.Pointer) *Menu {
+	return &Menu{native: native}
+}
+
 // MenuAttributeIter is a representation of the C record GMenuAttributeIter.
 //
 // since 2.32
@@ -4817,6 +6107,11 @@ type MenuAttributeIter struct {
 // ToC returns a pointer to the C GMenuAttributeIter that represents the MenuAttributeIter.
 func (recv *MenuAttributeIter) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MenuAttributeIterNewFromC creates a new MenuAttributeIter from a pointer to the C GMenuAttributeIter that represents the MenuAttributeIter.
+func MenuAttributeIterNewFromC(native unsafe.Pointer) *MenuAttributeIter {
+	return &MenuAttributeIter{native: native}
 }
 
 // MenuItem is a representation of the C record GMenuItem.
@@ -4831,6 +6126,11 @@ func (recv *MenuItem) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// MenuItemNewFromC creates a new MenuItem from a pointer to the C GMenuItem that represents the MenuItem.
+func MenuItemNewFromC(native unsafe.Pointer) *MenuItem {
+	return &MenuItem{native: native}
+}
+
 // MenuLinkIter is a representation of the C record GMenuLinkIter.
 //
 // since 2.32
@@ -4841,6 +6141,11 @@ type MenuLinkIter struct {
 // ToC returns a pointer to the C GMenuLinkIter that represents the MenuLinkIter.
 func (recv *MenuLinkIter) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MenuLinkIterNewFromC creates a new MenuLinkIter from a pointer to the C GMenuLinkIter that represents the MenuLinkIter.
+func MenuLinkIterNewFromC(native unsafe.Pointer) *MenuLinkIter {
+	return &MenuLinkIter{native: native}
 }
 
 // MenuModel is a representation of the C record GMenuModel.
@@ -4855,6 +6160,11 @@ func (recv *MenuModel) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// MenuModelNewFromC creates a new MenuModel from a pointer to the C GMenuModel that represents the MenuModel.
+func MenuModelNewFromC(native unsafe.Pointer) *MenuModel {
+	return &MenuModel{native: native}
+}
+
 // MountOperation is a representation of the C record GMountOperation.
 type MountOperation struct {
 	native unsafe.Pointer
@@ -4863,6 +6173,11 @@ type MountOperation struct {
 // ToC returns a pointer to the C GMountOperation that represents the MountOperation.
 func (recv *MountOperation) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// MountOperationNewFromC creates a new MountOperation from a pointer to the C GMountOperation that represents the MountOperation.
+func MountOperationNewFromC(native unsafe.Pointer) *MountOperation {
+	return &MountOperation{native: native}
 }
 
 // NativeSocketAddress is a representation of the C record GNativeSocketAddress.
@@ -4875,6 +6190,11 @@ func (recv *NativeSocketAddress) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// NativeSocketAddressNewFromC creates a new NativeSocketAddress from a pointer to the C GNativeSocketAddress that represents the NativeSocketAddress.
+func NativeSocketAddressNewFromC(native unsafe.Pointer) *NativeSocketAddress {
+	return &NativeSocketAddress{native: native}
+}
+
 // NativeVolumeMonitor is a representation of the C record GNativeVolumeMonitor.
 type NativeVolumeMonitor struct {
 	native unsafe.Pointer
@@ -4883,6 +6203,11 @@ type NativeVolumeMonitor struct {
 // ToC returns a pointer to the C GNativeVolumeMonitor that represents the NativeVolumeMonitor.
 func (recv *NativeVolumeMonitor) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// NativeVolumeMonitorNewFromC creates a new NativeVolumeMonitor from a pointer to the C GNativeVolumeMonitor that represents the NativeVolumeMonitor.
+func NativeVolumeMonitorNewFromC(native unsafe.Pointer) *NativeVolumeMonitor {
+	return &NativeVolumeMonitor{native: native}
 }
 
 // NetworkAddress is a representation of the C record GNetworkAddress.
@@ -4895,6 +6220,11 @@ func (recv *NetworkAddress) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// NetworkAddressNewFromC creates a new NetworkAddress from a pointer to the C GNetworkAddress that represents the NetworkAddress.
+func NetworkAddressNewFromC(native unsafe.Pointer) *NetworkAddress {
+	return &NetworkAddress{native: native}
+}
+
 // NetworkService is a representation of the C record GNetworkService.
 type NetworkService struct {
 	native unsafe.Pointer
@@ -4903,6 +6233,11 @@ type NetworkService struct {
 // ToC returns a pointer to the C GNetworkService that represents the NetworkService.
 func (recv *NetworkService) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// NetworkServiceNewFromC creates a new NetworkService from a pointer to the C GNetworkService that represents the NetworkService.
+func NetworkServiceNewFromC(native unsafe.Pointer) *NetworkService {
+	return &NetworkService{native: native}
 }
 
 // OutputStream is a representation of the C record GOutputStream.
@@ -4915,6 +6250,11 @@ func (recv *OutputStream) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// OutputStreamNewFromC creates a new OutputStream from a pointer to the C GOutputStream that represents the OutputStream.
+func OutputStreamNewFromC(native unsafe.Pointer) *OutputStream {
+	return &OutputStream{native: native}
+}
+
 // Permission is a representation of the C record GPermission.
 type Permission struct {
 	native unsafe.Pointer
@@ -4923,6 +6263,11 @@ type Permission struct {
 // ToC returns a pointer to the C GPermission that represents the Permission.
 func (recv *Permission) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// PermissionNewFromC creates a new Permission from a pointer to the C GPermission that represents the Permission.
+func PermissionNewFromC(native unsafe.Pointer) *Permission {
+	return &Permission{native: native}
 }
 
 // ProxyAddress is a representation of the C record GProxyAddress.
@@ -4937,6 +6282,11 @@ func (recv *ProxyAddress) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ProxyAddressNewFromC creates a new ProxyAddress from a pointer to the C GProxyAddress that represents the ProxyAddress.
+func ProxyAddressNewFromC(native unsafe.Pointer) *ProxyAddress {
+	return &ProxyAddress{native: native}
+}
+
 // ProxyAddressEnumerator is a representation of the C record GProxyAddressEnumerator.
 type ProxyAddressEnumerator struct {
 	native unsafe.Pointer
@@ -4945,6 +6295,11 @@ type ProxyAddressEnumerator struct {
 // ToC returns a pointer to the C GProxyAddressEnumerator that represents the ProxyAddressEnumerator.
 func (recv *ProxyAddressEnumerator) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ProxyAddressEnumeratorNewFromC creates a new ProxyAddressEnumerator from a pointer to the C GProxyAddressEnumerator that represents the ProxyAddressEnumerator.
+func ProxyAddressEnumeratorNewFromC(native unsafe.Pointer) *ProxyAddressEnumerator {
+	return &ProxyAddressEnumerator{native: native}
 }
 
 // Resolver is a representation of the C record GResolver.
@@ -4957,6 +6312,11 @@ func (recv *Resolver) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ResolverNewFromC creates a new Resolver from a pointer to the C GResolver that represents the Resolver.
+func ResolverNewFromC(native unsafe.Pointer) *Resolver {
+	return &Resolver{native: native}
+}
+
 // Settings is a representation of the C record GSettings.
 type Settings struct {
 	native unsafe.Pointer
@@ -4965,6 +6325,11 @@ type Settings struct {
 // ToC returns a pointer to the C GSettings that represents the Settings.
 func (recv *Settings) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SettingsNewFromC creates a new Settings from a pointer to the C GSettings that represents the Settings.
+func SettingsNewFromC(native unsafe.Pointer) *Settings {
+	return &Settings{native: native}
 }
 
 // SettingsBackend is a representation of the C record GSettingsBackend.
@@ -4977,6 +6342,11 @@ func (recv *SettingsBackend) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SettingsBackendNewFromC creates a new SettingsBackend from a pointer to the C GSettingsBackend that represents the SettingsBackend.
+func SettingsBackendNewFromC(native unsafe.Pointer) *SettingsBackend {
+	return &SettingsBackend{native: native}
+}
+
 // SimpleAction is a representation of the C record GSimpleAction.
 type SimpleAction struct {
 	native unsafe.Pointer
@@ -4985,6 +6355,11 @@ type SimpleAction struct {
 // ToC returns a pointer to the C GSimpleAction that represents the SimpleAction.
 func (recv *SimpleAction) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SimpleActionNewFromC creates a new SimpleAction from a pointer to the C GSimpleAction that represents the SimpleAction.
+func SimpleActionNewFromC(native unsafe.Pointer) *SimpleAction {
+	return &SimpleAction{native: native}
 }
 
 // SimpleActionGroup is a representation of the C record GSimpleActionGroup.
@@ -4999,6 +6374,11 @@ func (recv *SimpleActionGroup) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SimpleActionGroupNewFromC creates a new SimpleActionGroup from a pointer to the C GSimpleActionGroup that represents the SimpleActionGroup.
+func SimpleActionGroupNewFromC(native unsafe.Pointer) *SimpleActionGroup {
+	return &SimpleActionGroup{native: native}
+}
+
 // SimpleAsyncResult is a representation of the C record GSimpleAsyncResult.
 type SimpleAsyncResult struct {
 	native unsafe.Pointer
@@ -5009,6 +6389,11 @@ func (recv *SimpleAsyncResult) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SimpleAsyncResultNewFromC creates a new SimpleAsyncResult from a pointer to the C GSimpleAsyncResult that represents the SimpleAsyncResult.
+func SimpleAsyncResultNewFromC(native unsafe.Pointer) *SimpleAsyncResult {
+	return &SimpleAsyncResult{native: native}
+}
+
 // SimplePermission is a representation of the C record GSimplePermission.
 type SimplePermission struct {
 	native unsafe.Pointer
@@ -5017,6 +6402,11 @@ type SimplePermission struct {
 // ToC returns a pointer to the C GSimplePermission that represents the SimplePermission.
 func (recv *SimplePermission) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SimplePermissionNewFromC creates a new SimplePermission from a pointer to the C GSimplePermission that represents the SimplePermission.
+func SimplePermissionNewFromC(native unsafe.Pointer) *SimplePermission {
+	return &SimplePermission{native: native}
 }
 
 // Socket is a representation of the C record GSocket.
@@ -5031,6 +6421,11 @@ func (recv *Socket) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketNewFromC creates a new Socket from a pointer to the C GSocket that represents the Socket.
+func SocketNewFromC(native unsafe.Pointer) *Socket {
+	return &Socket{native: native}
+}
+
 // SocketAddress is a representation of the C record GSocketAddress.
 type SocketAddress struct {
 	native unsafe.Pointer
@@ -5041,6 +6436,11 @@ func (recv *SocketAddress) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketAddressNewFromC creates a new SocketAddress from a pointer to the C GSocketAddress that represents the SocketAddress.
+func SocketAddressNewFromC(native unsafe.Pointer) *SocketAddress {
+	return &SocketAddress{native: native}
+}
+
 // SocketAddressEnumerator is a representation of the C record GSocketAddressEnumerator.
 type SocketAddressEnumerator struct {
 	native unsafe.Pointer
@@ -5049,6 +6449,11 @@ type SocketAddressEnumerator struct {
 // ToC returns a pointer to the C GSocketAddressEnumerator that represents the SocketAddressEnumerator.
 func (recv *SocketAddressEnumerator) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SocketAddressEnumeratorNewFromC creates a new SocketAddressEnumerator from a pointer to the C GSocketAddressEnumerator that represents the SocketAddressEnumerator.
+func SocketAddressEnumeratorNewFromC(native unsafe.Pointer) *SocketAddressEnumerator {
+	return &SocketAddressEnumerator{native: native}
 }
 
 // SocketClient is a representation of the C record GSocketClient.
@@ -5063,6 +6468,11 @@ func (recv *SocketClient) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketClientNewFromC creates a new SocketClient from a pointer to the C GSocketClient that represents the SocketClient.
+func SocketClientNewFromC(native unsafe.Pointer) *SocketClient {
+	return &SocketClient{native: native}
+}
+
 // SocketConnection is a representation of the C record GSocketConnection.
 //
 // since 2.22
@@ -5073,6 +6483,11 @@ type SocketConnection struct {
 // ToC returns a pointer to the C GSocketConnection that represents the SocketConnection.
 func (recv *SocketConnection) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SocketConnectionNewFromC creates a new SocketConnection from a pointer to the C GSocketConnection that represents the SocketConnection.
+func SocketConnectionNewFromC(native unsafe.Pointer) *SocketConnection {
+	return &SocketConnection{native: native}
 }
 
 // SocketControlMessage is a representation of the C record GSocketControlMessage.
@@ -5087,6 +6502,11 @@ func (recv *SocketControlMessage) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketControlMessageNewFromC creates a new SocketControlMessage from a pointer to the C GSocketControlMessage that represents the SocketControlMessage.
+func SocketControlMessageNewFromC(native unsafe.Pointer) *SocketControlMessage {
+	return &SocketControlMessage{native: native}
+}
+
 // SocketListener is a representation of the C record GSocketListener.
 //
 // since 2.22
@@ -5097,6 +6517,11 @@ type SocketListener struct {
 // ToC returns a pointer to the C GSocketListener that represents the SocketListener.
 func (recv *SocketListener) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SocketListenerNewFromC creates a new SocketListener from a pointer to the C GSocketListener that represents the SocketListener.
+func SocketListenerNewFromC(native unsafe.Pointer) *SocketListener {
+	return &SocketListener{native: native}
 }
 
 // SocketService is a representation of the C record GSocketService.
@@ -5111,6 +6536,11 @@ func (recv *SocketService) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SocketServiceNewFromC creates a new SocketService from a pointer to the C GSocketService that represents the SocketService.
+func SocketServiceNewFromC(native unsafe.Pointer) *SocketService {
+	return &SocketService{native: native}
+}
+
 // Task is a representation of the C record GTask.
 type Task struct {
 	native unsafe.Pointer
@@ -5119,6 +6549,11 @@ type Task struct {
 // ToC returns a pointer to the C GTask that represents the Task.
 func (recv *Task) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TaskNewFromC creates a new Task from a pointer to the C GTask that represents the Task.
+func TaskNewFromC(native unsafe.Pointer) *Task {
+	return &Task{native: native}
 }
 
 // TcpConnection is a representation of the C record GTcpConnection.
@@ -5133,6 +6568,11 @@ func (recv *TcpConnection) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TcpConnectionNewFromC creates a new TcpConnection from a pointer to the C GTcpConnection that represents the TcpConnection.
+func TcpConnectionNewFromC(native unsafe.Pointer) *TcpConnection {
+	return &TcpConnection{native: native}
+}
+
 // TcpWrapperConnection is a representation of the C record GTcpWrapperConnection.
 //
 // since 2.28
@@ -5145,6 +6585,11 @@ func (recv *TcpWrapperConnection) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TcpWrapperConnectionNewFromC creates a new TcpWrapperConnection from a pointer to the C GTcpWrapperConnection that represents the TcpWrapperConnection.
+func TcpWrapperConnectionNewFromC(native unsafe.Pointer) *TcpWrapperConnection {
+	return &TcpWrapperConnection{native: native}
+}
+
 // ThemedIcon is a representation of the C record GThemedIcon.
 type ThemedIcon struct {
 	native unsafe.Pointer
@@ -5153,6 +6598,11 @@ type ThemedIcon struct {
 // ToC returns a pointer to the C GThemedIcon that represents the ThemedIcon.
 func (recv *ThemedIcon) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ThemedIconNewFromC creates a new ThemedIcon from a pointer to the C GThemedIcon that represents the ThemedIcon.
+func ThemedIconNewFromC(native unsafe.Pointer) *ThemedIcon {
+	return &ThemedIcon{native: native}
 }
 
 // ThreadedSocketService is a representation of the C record GThreadedSocketService.
@@ -5167,6 +6617,11 @@ func (recv *ThreadedSocketService) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ThreadedSocketServiceNewFromC creates a new ThreadedSocketService from a pointer to the C GThreadedSocketService that represents the ThreadedSocketService.
+func ThreadedSocketServiceNewFromC(native unsafe.Pointer) *ThreadedSocketService {
+	return &ThreadedSocketService{native: native}
+}
+
 // TlsCertificate is a representation of the C record GTlsCertificate.
 //
 // since 2.28
@@ -5177,6 +6632,11 @@ type TlsCertificate struct {
 // ToC returns a pointer to the C GTlsCertificate that represents the TlsCertificate.
 func (recv *TlsCertificate) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TlsCertificateNewFromC creates a new TlsCertificate from a pointer to the C GTlsCertificate that represents the TlsCertificate.
+func TlsCertificateNewFromC(native unsafe.Pointer) *TlsCertificate {
+	return &TlsCertificate{native: native}
 }
 
 // TlsConnection is a representation of the C record GTlsConnection.
@@ -5191,6 +6651,11 @@ func (recv *TlsConnection) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsConnectionNewFromC creates a new TlsConnection from a pointer to the C GTlsConnection that represents the TlsConnection.
+func TlsConnectionNewFromC(native unsafe.Pointer) *TlsConnection {
+	return &TlsConnection{native: native}
+}
+
 // TlsDatabase is a representation of the C record GTlsDatabase.
 //
 // since 2.30
@@ -5201,6 +6666,11 @@ type TlsDatabase struct {
 // ToC returns a pointer to the C GTlsDatabase that represents the TlsDatabase.
 func (recv *TlsDatabase) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TlsDatabaseNewFromC creates a new TlsDatabase from a pointer to the C GTlsDatabase that represents the TlsDatabase.
+func TlsDatabaseNewFromC(native unsafe.Pointer) *TlsDatabase {
+	return &TlsDatabase{native: native}
 }
 
 // TlsInteraction is a representation of the C record GTlsInteraction.
@@ -5215,6 +6685,11 @@ func (recv *TlsInteraction) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TlsInteractionNewFromC creates a new TlsInteraction from a pointer to the C GTlsInteraction that represents the TlsInteraction.
+func TlsInteractionNewFromC(native unsafe.Pointer) *TlsInteraction {
+	return &TlsInteraction{native: native}
+}
+
 // TlsPassword is a representation of the C record GTlsPassword.
 //
 // since 2.30
@@ -5225,6 +6700,11 @@ type TlsPassword struct {
 // ToC returns a pointer to the C GTlsPassword that represents the TlsPassword.
 func (recv *TlsPassword) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TlsPasswordNewFromC creates a new TlsPassword from a pointer to the C GTlsPassword that represents the TlsPassword.
+func TlsPasswordNewFromC(native unsafe.Pointer) *TlsPassword {
+	return &TlsPassword{native: native}
 }
 
 // UnixConnection is a representation of the C record GUnixConnection.
@@ -5239,6 +6719,11 @@ func (recv *UnixConnection) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixConnectionNewFromC creates a new UnixConnection from a pointer to the C GUnixConnection that represents the UnixConnection.
+func UnixConnectionNewFromC(native unsafe.Pointer) *UnixConnection {
+	return &UnixConnection{native: native}
+}
+
 // UnixCredentialsMessage is a representation of the C record GUnixCredentialsMessage.
 //
 // since 2.26
@@ -5251,6 +6736,11 @@ func (recv *UnixCredentialsMessage) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixCredentialsMessageNewFromC creates a new UnixCredentialsMessage from a pointer to the C GUnixCredentialsMessage that represents the UnixCredentialsMessage.
+func UnixCredentialsMessageNewFromC(native unsafe.Pointer) *UnixCredentialsMessage {
+	return &UnixCredentialsMessage{native: native}
+}
+
 // UnixFDList is a representation of the C record GUnixFDList.
 type UnixFDList struct {
 	native unsafe.Pointer
@@ -5259,6 +6749,11 @@ type UnixFDList struct {
 // ToC returns a pointer to the C GUnixFDList that represents the UnixFDList.
 func (recv *UnixFDList) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// UnixFDListNewFromC creates a new UnixFDList from a pointer to the C GUnixFDList that represents the UnixFDList.
+func UnixFDListNewFromC(native unsafe.Pointer) *UnixFDList {
+	return &UnixFDList{native: native}
 }
 
 // UnixFDMessage is a representation of the C record GUnixFDMessage.
@@ -5271,6 +6766,11 @@ func (recv *UnixFDMessage) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixFDMessageNewFromC creates a new UnixFDMessage from a pointer to the C GUnixFDMessage that represents the UnixFDMessage.
+func UnixFDMessageNewFromC(native unsafe.Pointer) *UnixFDMessage {
+	return &UnixFDMessage{native: native}
+}
+
 // UnixInputStream is a representation of the C record GUnixInputStream.
 type UnixInputStream struct {
 	native unsafe.Pointer
@@ -5279,6 +6779,11 @@ type UnixInputStream struct {
 // ToC returns a pointer to the C GUnixInputStream that represents the UnixInputStream.
 func (recv *UnixInputStream) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// UnixInputStreamNewFromC creates a new UnixInputStream from a pointer to the C GUnixInputStream that represents the UnixInputStream.
+func UnixInputStreamNewFromC(native unsafe.Pointer) *UnixInputStream {
+	return &UnixInputStream{native: native}
 }
 
 // UnixMountMonitor is a representation of the C record GUnixMountMonitor.
@@ -5291,6 +6796,11 @@ func (recv *UnixMountMonitor) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixMountMonitorNewFromC creates a new UnixMountMonitor from a pointer to the C GUnixMountMonitor that represents the UnixMountMonitor.
+func UnixMountMonitorNewFromC(native unsafe.Pointer) *UnixMountMonitor {
+	return &UnixMountMonitor{native: native}
+}
+
 // UnixOutputStream is a representation of the C record GUnixOutputStream.
 type UnixOutputStream struct {
 	native unsafe.Pointer
@@ -5299,6 +6809,11 @@ type UnixOutputStream struct {
 // ToC returns a pointer to the C GUnixOutputStream that represents the UnixOutputStream.
 func (recv *UnixOutputStream) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// UnixOutputStreamNewFromC creates a new UnixOutputStream from a pointer to the C GUnixOutputStream that represents the UnixOutputStream.
+func UnixOutputStreamNewFromC(native unsafe.Pointer) *UnixOutputStream {
+	return &UnixOutputStream{native: native}
 }
 
 // UnixSocketAddress is a representation of the C record GUnixSocketAddress.
@@ -5311,6 +6826,11 @@ func (recv *UnixSocketAddress) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// UnixSocketAddressNewFromC creates a new UnixSocketAddress from a pointer to the C GUnixSocketAddress that represents the UnixSocketAddress.
+func UnixSocketAddressNewFromC(native unsafe.Pointer) *UnixSocketAddress {
+	return &UnixSocketAddress{native: native}
+}
+
 // Vfs is a representation of the C record GVfs.
 type Vfs struct {
 	native unsafe.Pointer
@@ -5319,6 +6839,11 @@ type Vfs struct {
 // ToC returns a pointer to the C GVfs that represents the Vfs.
 func (recv *Vfs) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// VfsNewFromC creates a new Vfs from a pointer to the C GVfs that represents the Vfs.
+func VfsNewFromC(native unsafe.Pointer) *Vfs {
+	return &Vfs{native: native}
 }
 
 // VolumeMonitor is a representation of the C record GVolumeMonitor.
@@ -5331,6 +6856,11 @@ func (recv *VolumeMonitor) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// VolumeMonitorNewFromC creates a new VolumeMonitor from a pointer to the C GVolumeMonitor that represents the VolumeMonitor.
+func VolumeMonitorNewFromC(native unsafe.Pointer) *VolumeMonitor {
+	return &VolumeMonitor{native: native}
+}
+
 // ZlibCompressor is a representation of the C record GZlibCompressor.
 type ZlibCompressor struct {
 	native unsafe.Pointer
@@ -5341,6 +6871,11 @@ func (recv *ZlibCompressor) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ZlibCompressorNewFromC creates a new ZlibCompressor from a pointer to the C GZlibCompressor that represents the ZlibCompressor.
+func ZlibCompressorNewFromC(native unsafe.Pointer) *ZlibCompressor {
+	return &ZlibCompressor{native: native}
+}
+
 // ZlibDecompressor is a representation of the C record GZlibDecompressor.
 type ZlibDecompressor struct {
 	native unsafe.Pointer
@@ -5349,6 +6884,11 @@ type ZlibDecompressor struct {
 // ToC returns a pointer to the C GZlibDecompressor that represents the ZlibDecompressor.
 func (recv *ZlibDecompressor) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ZlibDecompressorNewFromC creates a new ZlibDecompressor from a pointer to the C GZlibDecompressor that represents the ZlibDecompressor.
+func ZlibDecompressorNewFromC(native unsafe.Pointer) *ZlibDecompressor {
+	return &ZlibDecompressor{native: native}
 }
 
 // Action is a representation of the C interface GAction.

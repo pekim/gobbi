@@ -26,3 +26,18 @@ func generateLibToC(f *jen.File, name string, cType string) {
 		Add(jenUnsafePointer()).
 		Block(jen.Return().Id("recv").Dot("native"))
 }
+
+func generateLibNewFromC(f *jen.File, name string, cType string) {
+	f.Commentf("%sNewFromC creates a new %s from a pointer to the C %s that represents the %s.",
+		name, name, cType, name)
+
+	f.
+		Func().
+		Id(name + "NewFromC").
+		Params(jen.Id("native").Add(jenUnsafePointer())).
+		Op("*").Id(name).
+		Block(jen.
+			Return().Op("&").Id(name).Values(jen.Dict{
+			jen.Id("native"): jen.Id("native"),
+		}))
+}

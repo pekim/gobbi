@@ -1359,6 +1359,11 @@ func (recv *CClosure) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// CClosureNewFromC creates a new CClosure from a pointer to the C GCClosure that represents the CClosure.
+func CClosureNewFromC(native unsafe.Pointer) *CClosure {
+	return &CClosure{native: native}
+}
+
 // Closure is a representation of the C record GClosure.
 type Closure struct {
 	native unsafe.Pointer
@@ -1367,6 +1372,11 @@ type Closure struct {
 // ToC returns a pointer to the C GClosure that represents the Closure.
 func (recv *Closure) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ClosureNewFromC creates a new Closure from a pointer to the C GClosure that represents the Closure.
+func ClosureNewFromC(native unsafe.Pointer) *Closure {
+	return &Closure{native: native}
 }
 
 // ClosureNotifyData is a representation of the C record GClosureNotifyData.
@@ -1379,6 +1389,11 @@ func (recv *ClosureNotifyData) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ClosureNotifyDataNewFromC creates a new ClosureNotifyData from a pointer to the C GClosureNotifyData that represents the ClosureNotifyData.
+func ClosureNotifyDataNewFromC(native unsafe.Pointer) *ClosureNotifyData {
+	return &ClosureNotifyData{native: native}
+}
+
 // EnumClass is a representation of the C record GEnumClass.
 type EnumClass struct {
 	native unsafe.Pointer
@@ -1387,6 +1402,11 @@ type EnumClass struct {
 // ToC returns a pointer to the C GEnumClass that represents the EnumClass.
 func (recv *EnumClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// EnumClassNewFromC creates a new EnumClass from a pointer to the C GEnumClass that represents the EnumClass.
+func EnumClassNewFromC(native unsafe.Pointer) *EnumClass {
+	return &EnumClass{native: native}
 }
 
 // EnumValue is a representation of the C record GEnumValue.
@@ -1399,6 +1419,11 @@ func (recv *EnumValue) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// EnumValueNewFromC creates a new EnumValue from a pointer to the C GEnumValue that represents the EnumValue.
+func EnumValueNewFromC(native unsafe.Pointer) *EnumValue {
+	return &EnumValue{native: native}
+}
+
 // FlagsClass is a representation of the C record GFlagsClass.
 type FlagsClass struct {
 	native unsafe.Pointer
@@ -1407,6 +1432,11 @@ type FlagsClass struct {
 // ToC returns a pointer to the C GFlagsClass that represents the FlagsClass.
 func (recv *FlagsClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// FlagsClassNewFromC creates a new FlagsClass from a pointer to the C GFlagsClass that represents the FlagsClass.
+func FlagsClassNewFromC(native unsafe.Pointer) *FlagsClass {
+	return &FlagsClass{native: native}
 }
 
 // FlagsValue is a representation of the C record GFlagsValue.
@@ -1419,6 +1449,11 @@ func (recv *FlagsValue) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// FlagsValueNewFromC creates a new FlagsValue from a pointer to the C GFlagsValue that represents the FlagsValue.
+func FlagsValueNewFromC(native unsafe.Pointer) *FlagsValue {
+	return &FlagsValue{native: native}
+}
+
 // InitiallyUnownedClass is a representation of the C record GInitiallyUnownedClass.
 type InitiallyUnownedClass struct {
 	native unsafe.Pointer
@@ -1427,6 +1462,11 @@ type InitiallyUnownedClass struct {
 // ToC returns a pointer to the C GInitiallyUnownedClass that represents the InitiallyUnownedClass.
 func (recv *InitiallyUnownedClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// InitiallyUnownedClassNewFromC creates a new InitiallyUnownedClass from a pointer to the C GInitiallyUnownedClass that represents the InitiallyUnownedClass.
+func InitiallyUnownedClassNewFromC(native unsafe.Pointer) *InitiallyUnownedClass {
+	return &InitiallyUnownedClass{native: native}
 }
 
 // InterfaceInfo is a representation of the C record GInterfaceInfo.
@@ -1439,6 +1479,11 @@ func (recv *InterfaceInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// InterfaceInfoNewFromC creates a new InterfaceInfo from a pointer to the C GInterfaceInfo that represents the InterfaceInfo.
+func InterfaceInfoNewFromC(native unsafe.Pointer) *InterfaceInfo {
+	return &InterfaceInfo{native: native}
+}
+
 // ObjectClass is a representation of the C record GObjectClass.
 type ObjectClass struct {
 	native unsafe.Pointer
@@ -1447,6 +1492,11 @@ type ObjectClass struct {
 // ToC returns a pointer to the C GObjectClass that represents the ObjectClass.
 func (recv *ObjectClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ObjectClassNewFromC creates a new ObjectClass from a pointer to the C GObjectClass that represents the ObjectClass.
+func ObjectClassNewFromC(native unsafe.Pointer) *ObjectClass {
+	return &ObjectClass{native: native}
 }
 
 // ObjectConstructParam is a representation of the C record GObjectConstructParam.
@@ -1459,6 +1509,11 @@ func (recv *ObjectConstructParam) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ObjectConstructParamNewFromC creates a new ObjectConstructParam from a pointer to the C GObjectConstructParam that represents the ObjectConstructParam.
+func ObjectConstructParamNewFromC(native unsafe.Pointer) *ObjectConstructParam {
+	return &ObjectConstructParam{native: native}
+}
+
 // ParamSpecClass is a representation of the C record GParamSpecClass.
 type ParamSpecClass struct {
 	native unsafe.Pointer
@@ -1467,6 +1522,11 @@ type ParamSpecClass struct {
 // ToC returns a pointer to the C GParamSpecClass that represents the ParamSpecClass.
 func (recv *ParamSpecClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecClassNewFromC creates a new ParamSpecClass from a pointer to the C GParamSpecClass that represents the ParamSpecClass.
+func ParamSpecClassNewFromC(native unsafe.Pointer) *ParamSpecClass {
+	return &ParamSpecClass{native: native}
 }
 
 // ParamSpecPool is a representation of the C record GParamSpecPool.
@@ -1479,6 +1539,11 @@ func (recv *ParamSpecPool) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecPoolNewFromC creates a new ParamSpecPool from a pointer to the C GParamSpecPool that represents the ParamSpecPool.
+func ParamSpecPoolNewFromC(native unsafe.Pointer) *ParamSpecPool {
+	return &ParamSpecPool{native: native}
+}
+
 // ParamSpecTypeInfo is a representation of the C record GParamSpecTypeInfo.
 type ParamSpecTypeInfo struct {
 	native unsafe.Pointer
@@ -1487,6 +1552,11 @@ type ParamSpecTypeInfo struct {
 // ToC returns a pointer to the C GParamSpecTypeInfo that represents the ParamSpecTypeInfo.
 func (recv *ParamSpecTypeInfo) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecTypeInfoNewFromC creates a new ParamSpecTypeInfo from a pointer to the C GParamSpecTypeInfo that represents the ParamSpecTypeInfo.
+func ParamSpecTypeInfoNewFromC(native unsafe.Pointer) *ParamSpecTypeInfo {
+	return &ParamSpecTypeInfo{native: native}
 }
 
 // Parameter is a representation of the C record GParameter.
@@ -1499,6 +1569,11 @@ func (recv *Parameter) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParameterNewFromC creates a new Parameter from a pointer to the C GParameter that represents the Parameter.
+func ParameterNewFromC(native unsafe.Pointer) *Parameter {
+	return &Parameter{native: native}
+}
+
 // SignalInvocationHint is a representation of the C record GSignalInvocationHint.
 type SignalInvocationHint struct {
 	native unsafe.Pointer
@@ -1507,6 +1582,11 @@ type SignalInvocationHint struct {
 // ToC returns a pointer to the C GSignalInvocationHint that represents the SignalInvocationHint.
 func (recv *SignalInvocationHint) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// SignalInvocationHintNewFromC creates a new SignalInvocationHint from a pointer to the C GSignalInvocationHint that represents the SignalInvocationHint.
+func SignalInvocationHintNewFromC(native unsafe.Pointer) *SignalInvocationHint {
+	return &SignalInvocationHint{native: native}
 }
 
 // SignalQuery is a representation of the C record GSignalQuery.
@@ -1519,6 +1599,11 @@ func (recv *SignalQuery) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// SignalQueryNewFromC creates a new SignalQuery from a pointer to the C GSignalQuery that represents the SignalQuery.
+func SignalQueryNewFromC(native unsafe.Pointer) *SignalQuery {
+	return &SignalQuery{native: native}
+}
+
 // TypeClass is a representation of the C record GTypeClass.
 type TypeClass struct {
 	native unsafe.Pointer
@@ -1527,6 +1612,11 @@ type TypeClass struct {
 // ToC returns a pointer to the C GTypeClass that represents the TypeClass.
 func (recv *TypeClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TypeClassNewFromC creates a new TypeClass from a pointer to the C GTypeClass that represents the TypeClass.
+func TypeClassNewFromC(native unsafe.Pointer) *TypeClass {
+	return &TypeClass{native: native}
 }
 
 // TypeFundamentalInfo is a representation of the C record GTypeFundamentalInfo.
@@ -1539,6 +1629,11 @@ func (recv *TypeFundamentalInfo) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TypeFundamentalInfoNewFromC creates a new TypeFundamentalInfo from a pointer to the C GTypeFundamentalInfo that represents the TypeFundamentalInfo.
+func TypeFundamentalInfoNewFromC(native unsafe.Pointer) *TypeFundamentalInfo {
+	return &TypeFundamentalInfo{native: native}
+}
+
 // TypeInfo is a representation of the C record GTypeInfo.
 type TypeInfo struct {
 	native unsafe.Pointer
@@ -1547,6 +1642,11 @@ type TypeInfo struct {
 // ToC returns a pointer to the C GTypeInfo that represents the TypeInfo.
 func (recv *TypeInfo) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TypeInfoNewFromC creates a new TypeInfo from a pointer to the C GTypeInfo that represents the TypeInfo.
+func TypeInfoNewFromC(native unsafe.Pointer) *TypeInfo {
+	return &TypeInfo{native: native}
 }
 
 // TypeInstance is a representation of the C record GTypeInstance.
@@ -1559,6 +1659,11 @@ func (recv *TypeInstance) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TypeInstanceNewFromC creates a new TypeInstance from a pointer to the C GTypeInstance that represents the TypeInstance.
+func TypeInstanceNewFromC(native unsafe.Pointer) *TypeInstance {
+	return &TypeInstance{native: native}
+}
+
 // TypeInterface is a representation of the C record GTypeInterface.
 type TypeInterface struct {
 	native unsafe.Pointer
@@ -1567,6 +1672,11 @@ type TypeInterface struct {
 // ToC returns a pointer to the C GTypeInterface that represents the TypeInterface.
 func (recv *TypeInterface) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TypeInterfaceNewFromC creates a new TypeInterface from a pointer to the C GTypeInterface that represents the TypeInterface.
+func TypeInterfaceNewFromC(native unsafe.Pointer) *TypeInterface {
+	return &TypeInterface{native: native}
 }
 
 // TypeModuleClass is a representation of the C record GTypeModuleClass.
@@ -1579,6 +1689,11 @@ func (recv *TypeModuleClass) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TypeModuleClassNewFromC creates a new TypeModuleClass from a pointer to the C GTypeModuleClass that represents the TypeModuleClass.
+func TypeModuleClassNewFromC(native unsafe.Pointer) *TypeModuleClass {
+	return &TypeModuleClass{native: native}
+}
+
 // TypePluginClass is a representation of the C record GTypePluginClass.
 type TypePluginClass struct {
 	native unsafe.Pointer
@@ -1587,6 +1702,11 @@ type TypePluginClass struct {
 // ToC returns a pointer to the C GTypePluginClass that represents the TypePluginClass.
 func (recv *TypePluginClass) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TypePluginClassNewFromC creates a new TypePluginClass from a pointer to the C GTypePluginClass that represents the TypePluginClass.
+func TypePluginClassNewFromC(native unsafe.Pointer) *TypePluginClass {
+	return &TypePluginClass{native: native}
 }
 
 // TypeQuery is a representation of the C record GTypeQuery.
@@ -1599,6 +1719,11 @@ func (recv *TypeQuery) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// TypeQueryNewFromC creates a new TypeQuery from a pointer to the C GTypeQuery that represents the TypeQuery.
+func TypeQueryNewFromC(native unsafe.Pointer) *TypeQuery {
+	return &TypeQuery{native: native}
+}
+
 // TypeValueTable is a representation of the C record GTypeValueTable.
 type TypeValueTable struct {
 	native unsafe.Pointer
@@ -1607,6 +1732,11 @@ type TypeValueTable struct {
 // ToC returns a pointer to the C GTypeValueTable that represents the TypeValueTable.
 func (recv *TypeValueTable) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TypeValueTableNewFromC creates a new TypeValueTable from a pointer to the C GTypeValueTable that represents the TypeValueTable.
+func TypeValueTableNewFromC(native unsafe.Pointer) *TypeValueTable {
+	return &TypeValueTable{native: native}
 }
 
 // Value is a representation of the C record GValue.
@@ -1619,6 +1749,11 @@ func (recv *Value) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ValueNewFromC creates a new Value from a pointer to the C GValue that represents the Value.
+func ValueNewFromC(native unsafe.Pointer) *Value {
+	return &Value{native: native}
+}
+
 // ValueArray is a representation of the C record GValueArray.
 type ValueArray struct {
 	native unsafe.Pointer
@@ -1629,6 +1764,11 @@ func (recv *ValueArray) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ValueArrayNewFromC creates a new ValueArray from a pointer to the C GValueArray that represents the ValueArray.
+func ValueArrayNewFromC(native unsafe.Pointer) *ValueArray {
+	return &ValueArray{native: native}
+}
+
 // WeakRef is a representation of the C record GWeakRef.
 type WeakRef struct {
 	native unsafe.Pointer
@@ -1637,6 +1777,11 @@ type WeakRef struct {
 // ToC returns a pointer to the C GWeakRef that represents the WeakRef.
 func (recv *WeakRef) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// WeakRefNewFromC creates a new WeakRef from a pointer to the C GWeakRef that represents the WeakRef.
+func WeakRefNewFromC(native unsafe.Pointer) *WeakRef {
+	return &WeakRef{native: native}
 }
 
 // Binding is a representation of the C record GBinding.
@@ -1651,6 +1796,11 @@ func (recv *Binding) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// BindingNewFromC creates a new Binding from a pointer to the C GBinding that represents the Binding.
+func BindingNewFromC(native unsafe.Pointer) *Binding {
+	return &Binding{native: native}
+}
+
 // InitiallyUnowned is a representation of the C record GInitiallyUnowned.
 type InitiallyUnowned struct {
 	native unsafe.Pointer
@@ -1659,6 +1809,11 @@ type InitiallyUnowned struct {
 // ToC returns a pointer to the C GInitiallyUnowned that represents the InitiallyUnowned.
 func (recv *InitiallyUnowned) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// InitiallyUnownedNewFromC creates a new InitiallyUnowned from a pointer to the C GInitiallyUnowned that represents the InitiallyUnowned.
+func InitiallyUnownedNewFromC(native unsafe.Pointer) *InitiallyUnowned {
+	return &InitiallyUnowned{native: native}
 }
 
 // Object is a representation of the C record GObject.
@@ -1671,6 +1826,11 @@ func (recv *Object) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ObjectNewFromC creates a new Object from a pointer to the C GObject that represents the Object.
+func ObjectNewFromC(native unsafe.Pointer) *Object {
+	return &Object{native: native}
+}
+
 // ParamSpec is a representation of the C record GParamSpec.
 type ParamSpec struct {
 	native unsafe.Pointer
@@ -1679,6 +1839,11 @@ type ParamSpec struct {
 // ToC returns a pointer to the C GParamSpec that represents the ParamSpec.
 func (recv *ParamSpec) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecNewFromC creates a new ParamSpec from a pointer to the C GParamSpec that represents the ParamSpec.
+func ParamSpecNewFromC(native unsafe.Pointer) *ParamSpec {
+	return &ParamSpec{native: native}
 }
 
 // ParamSpecBoolean is a representation of the C record GParamSpecBoolean.
@@ -1691,6 +1856,11 @@ func (recv *ParamSpecBoolean) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecBooleanNewFromC creates a new ParamSpecBoolean from a pointer to the C GParamSpecBoolean that represents the ParamSpecBoolean.
+func ParamSpecBooleanNewFromC(native unsafe.Pointer) *ParamSpecBoolean {
+	return &ParamSpecBoolean{native: native}
+}
+
 // ParamSpecBoxed is a representation of the C record GParamSpecBoxed.
 type ParamSpecBoxed struct {
 	native unsafe.Pointer
@@ -1699,6 +1869,11 @@ type ParamSpecBoxed struct {
 // ToC returns a pointer to the C GParamSpecBoxed that represents the ParamSpecBoxed.
 func (recv *ParamSpecBoxed) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecBoxedNewFromC creates a new ParamSpecBoxed from a pointer to the C GParamSpecBoxed that represents the ParamSpecBoxed.
+func ParamSpecBoxedNewFromC(native unsafe.Pointer) *ParamSpecBoxed {
+	return &ParamSpecBoxed{native: native}
 }
 
 // ParamSpecChar is a representation of the C record GParamSpecChar.
@@ -1711,6 +1886,11 @@ func (recv *ParamSpecChar) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecCharNewFromC creates a new ParamSpecChar from a pointer to the C GParamSpecChar that represents the ParamSpecChar.
+func ParamSpecCharNewFromC(native unsafe.Pointer) *ParamSpecChar {
+	return &ParamSpecChar{native: native}
+}
+
 // ParamSpecDouble is a representation of the C record GParamSpecDouble.
 type ParamSpecDouble struct {
 	native unsafe.Pointer
@@ -1719,6 +1899,11 @@ type ParamSpecDouble struct {
 // ToC returns a pointer to the C GParamSpecDouble that represents the ParamSpecDouble.
 func (recv *ParamSpecDouble) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecDoubleNewFromC creates a new ParamSpecDouble from a pointer to the C GParamSpecDouble that represents the ParamSpecDouble.
+func ParamSpecDoubleNewFromC(native unsafe.Pointer) *ParamSpecDouble {
+	return &ParamSpecDouble{native: native}
 }
 
 // ParamSpecEnum is a representation of the C record GParamSpecEnum.
@@ -1731,6 +1916,11 @@ func (recv *ParamSpecEnum) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecEnumNewFromC creates a new ParamSpecEnum from a pointer to the C GParamSpecEnum that represents the ParamSpecEnum.
+func ParamSpecEnumNewFromC(native unsafe.Pointer) *ParamSpecEnum {
+	return &ParamSpecEnum{native: native}
+}
+
 // ParamSpecFlags is a representation of the C record GParamSpecFlags.
 type ParamSpecFlags struct {
 	native unsafe.Pointer
@@ -1741,6 +1931,11 @@ func (recv *ParamSpecFlags) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecFlagsNewFromC creates a new ParamSpecFlags from a pointer to the C GParamSpecFlags that represents the ParamSpecFlags.
+func ParamSpecFlagsNewFromC(native unsafe.Pointer) *ParamSpecFlags {
+	return &ParamSpecFlags{native: native}
+}
+
 // ParamSpecFloat is a representation of the C record GParamSpecFloat.
 type ParamSpecFloat struct {
 	native unsafe.Pointer
@@ -1749,6 +1944,11 @@ type ParamSpecFloat struct {
 // ToC returns a pointer to the C GParamSpecFloat that represents the ParamSpecFloat.
 func (recv *ParamSpecFloat) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecFloatNewFromC creates a new ParamSpecFloat from a pointer to the C GParamSpecFloat that represents the ParamSpecFloat.
+func ParamSpecFloatNewFromC(native unsafe.Pointer) *ParamSpecFloat {
+	return &ParamSpecFloat{native: native}
 }
 
 // ParamSpecGType is a representation of the C record GParamSpecGType.
@@ -1763,6 +1963,11 @@ func (recv *ParamSpecGType) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecGTypeNewFromC creates a new ParamSpecGType from a pointer to the C GParamSpecGType that represents the ParamSpecGType.
+func ParamSpecGTypeNewFromC(native unsafe.Pointer) *ParamSpecGType {
+	return &ParamSpecGType{native: native}
+}
+
 // ParamSpecInt is a representation of the C record GParamSpecInt.
 type ParamSpecInt struct {
 	native unsafe.Pointer
@@ -1771,6 +1976,11 @@ type ParamSpecInt struct {
 // ToC returns a pointer to the C GParamSpecInt that represents the ParamSpecInt.
 func (recv *ParamSpecInt) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecIntNewFromC creates a new ParamSpecInt from a pointer to the C GParamSpecInt that represents the ParamSpecInt.
+func ParamSpecIntNewFromC(native unsafe.Pointer) *ParamSpecInt {
+	return &ParamSpecInt{native: native}
 }
 
 // ParamSpecInt64 is a representation of the C record GParamSpecInt64.
@@ -1783,6 +1993,11 @@ func (recv *ParamSpecInt64) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecInt64NewFromC creates a new ParamSpecInt64 from a pointer to the C GParamSpecInt64 that represents the ParamSpecInt64.
+func ParamSpecInt64NewFromC(native unsafe.Pointer) *ParamSpecInt64 {
+	return &ParamSpecInt64{native: native}
+}
+
 // ParamSpecLong is a representation of the C record GParamSpecLong.
 type ParamSpecLong struct {
 	native unsafe.Pointer
@@ -1793,6 +2008,11 @@ func (recv *ParamSpecLong) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecLongNewFromC creates a new ParamSpecLong from a pointer to the C GParamSpecLong that represents the ParamSpecLong.
+func ParamSpecLongNewFromC(native unsafe.Pointer) *ParamSpecLong {
+	return &ParamSpecLong{native: native}
+}
+
 // ParamSpecObject is a representation of the C record GParamSpecObject.
 type ParamSpecObject struct {
 	native unsafe.Pointer
@@ -1801,6 +2021,11 @@ type ParamSpecObject struct {
 // ToC returns a pointer to the C GParamSpecObject that represents the ParamSpecObject.
 func (recv *ParamSpecObject) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecObjectNewFromC creates a new ParamSpecObject from a pointer to the C GParamSpecObject that represents the ParamSpecObject.
+func ParamSpecObjectNewFromC(native unsafe.Pointer) *ParamSpecObject {
+	return &ParamSpecObject{native: native}
 }
 
 // ParamSpecOverride is a representation of the C record GParamSpecOverride.
@@ -1815,6 +2040,11 @@ func (recv *ParamSpecOverride) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecOverrideNewFromC creates a new ParamSpecOverride from a pointer to the C GParamSpecOverride that represents the ParamSpecOverride.
+func ParamSpecOverrideNewFromC(native unsafe.Pointer) *ParamSpecOverride {
+	return &ParamSpecOverride{native: native}
+}
+
 // ParamSpecParam is a representation of the C record GParamSpecParam.
 type ParamSpecParam struct {
 	native unsafe.Pointer
@@ -1823,6 +2053,11 @@ type ParamSpecParam struct {
 // ToC returns a pointer to the C GParamSpecParam that represents the ParamSpecParam.
 func (recv *ParamSpecParam) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecParamNewFromC creates a new ParamSpecParam from a pointer to the C GParamSpecParam that represents the ParamSpecParam.
+func ParamSpecParamNewFromC(native unsafe.Pointer) *ParamSpecParam {
+	return &ParamSpecParam{native: native}
 }
 
 // ParamSpecPointer is a representation of the C record GParamSpecPointer.
@@ -1835,6 +2070,11 @@ func (recv *ParamSpecPointer) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecPointerNewFromC creates a new ParamSpecPointer from a pointer to the C GParamSpecPointer that represents the ParamSpecPointer.
+func ParamSpecPointerNewFromC(native unsafe.Pointer) *ParamSpecPointer {
+	return &ParamSpecPointer{native: native}
+}
+
 // ParamSpecString is a representation of the C record GParamSpecString.
 type ParamSpecString struct {
 	native unsafe.Pointer
@@ -1843,6 +2083,11 @@ type ParamSpecString struct {
 // ToC returns a pointer to the C GParamSpecString that represents the ParamSpecString.
 func (recv *ParamSpecString) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecStringNewFromC creates a new ParamSpecString from a pointer to the C GParamSpecString that represents the ParamSpecString.
+func ParamSpecStringNewFromC(native unsafe.Pointer) *ParamSpecString {
+	return &ParamSpecString{native: native}
 }
 
 // ParamSpecUChar is a representation of the C record GParamSpecUChar.
@@ -1855,6 +2100,11 @@ func (recv *ParamSpecUChar) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecUCharNewFromC creates a new ParamSpecUChar from a pointer to the C GParamSpecUChar that represents the ParamSpecUChar.
+func ParamSpecUCharNewFromC(native unsafe.Pointer) *ParamSpecUChar {
+	return &ParamSpecUChar{native: native}
+}
+
 // ParamSpecUInt is a representation of the C record GParamSpecUInt.
 type ParamSpecUInt struct {
 	native unsafe.Pointer
@@ -1863,6 +2113,11 @@ type ParamSpecUInt struct {
 // ToC returns a pointer to the C GParamSpecUInt that represents the ParamSpecUInt.
 func (recv *ParamSpecUInt) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecUIntNewFromC creates a new ParamSpecUInt from a pointer to the C GParamSpecUInt that represents the ParamSpecUInt.
+func ParamSpecUIntNewFromC(native unsafe.Pointer) *ParamSpecUInt {
+	return &ParamSpecUInt{native: native}
 }
 
 // ParamSpecUInt64 is a representation of the C record GParamSpecUInt64.
@@ -1875,6 +2130,11 @@ func (recv *ParamSpecUInt64) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecUInt64NewFromC creates a new ParamSpecUInt64 from a pointer to the C GParamSpecUInt64 that represents the ParamSpecUInt64.
+func ParamSpecUInt64NewFromC(native unsafe.Pointer) *ParamSpecUInt64 {
+	return &ParamSpecUInt64{native: native}
+}
+
 // ParamSpecULong is a representation of the C record GParamSpecULong.
 type ParamSpecULong struct {
 	native unsafe.Pointer
@@ -1883,6 +2143,11 @@ type ParamSpecULong struct {
 // ToC returns a pointer to the C GParamSpecULong that represents the ParamSpecULong.
 func (recv *ParamSpecULong) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecULongNewFromC creates a new ParamSpecULong from a pointer to the C GParamSpecULong that represents the ParamSpecULong.
+func ParamSpecULongNewFromC(native unsafe.Pointer) *ParamSpecULong {
+	return &ParamSpecULong{native: native}
 }
 
 // ParamSpecUnichar is a representation of the C record GParamSpecUnichar.
@@ -1895,6 +2160,11 @@ func (recv *ParamSpecUnichar) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecUnicharNewFromC creates a new ParamSpecUnichar from a pointer to the C GParamSpecUnichar that represents the ParamSpecUnichar.
+func ParamSpecUnicharNewFromC(native unsafe.Pointer) *ParamSpecUnichar {
+	return &ParamSpecUnichar{native: native}
+}
+
 // ParamSpecValueArray is a representation of the C record GParamSpecValueArray.
 type ParamSpecValueArray struct {
 	native unsafe.Pointer
@@ -1903,6 +2173,11 @@ type ParamSpecValueArray struct {
 // ToC returns a pointer to the C GParamSpecValueArray that represents the ParamSpecValueArray.
 func (recv *ParamSpecValueArray) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// ParamSpecValueArrayNewFromC creates a new ParamSpecValueArray from a pointer to the C GParamSpecValueArray that represents the ParamSpecValueArray.
+func ParamSpecValueArrayNewFromC(native unsafe.Pointer) *ParamSpecValueArray {
+	return &ParamSpecValueArray{native: native}
 }
 
 // ParamSpecVariant is a representation of the C record GParamSpecVariant.
@@ -1917,6 +2192,11 @@ func (recv *ParamSpecVariant) ToC() unsafe.Pointer {
 	return recv.native
 }
 
+// ParamSpecVariantNewFromC creates a new ParamSpecVariant from a pointer to the C GParamSpecVariant that represents the ParamSpecVariant.
+func ParamSpecVariantNewFromC(native unsafe.Pointer) *ParamSpecVariant {
+	return &ParamSpecVariant{native: native}
+}
+
 // TypeModule is a representation of the C record GTypeModule.
 type TypeModule struct {
 	native unsafe.Pointer
@@ -1925,6 +2205,11 @@ type TypeModule struct {
 // ToC returns a pointer to the C GTypeModule that represents the TypeModule.
 func (recv *TypeModule) ToC() unsafe.Pointer {
 	return recv.native
+}
+
+// TypeModuleNewFromC creates a new TypeModule from a pointer to the C GTypeModule that represents the TypeModule.
+func TypeModuleNewFromC(native unsafe.Pointer) *TypeModule {
+	return &TypeModule{native: native}
 }
 
 // TypePlugin is a representation of the C interface GTypePlugin.

@@ -18,4 +18,5 @@ func (r *Record) generateLib(f *jen.File, version semver.Version) {
 
 	generateLibStructType(f, "record", r.Name, r.CType, r.Version)
 	generateLibToC(f, r.Name, r.CType)
+	generateLibNewFromC(f, r.Name, r.CType)
 }
