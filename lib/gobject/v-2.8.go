@@ -475,6 +475,8 @@ func ParamSpecObject_(name string, nick string, blurb string, objectType uint64,
 }
 
 // ParamSpecOverride_ is analogous to the C function g_param_spec_override.
+//
+// since 2.4
 func ParamSpecOverride_(name string, overridden *ParamSpec) *ParamSpec {
 	sys_name := name
 	sys_overridden := overridden.ToC()
@@ -678,6 +680,8 @@ func PointerTypeRegisterStatic(name string) uint64 {
 }
 
 // SignalAccumulatorTrueHandled is analogous to the C function g_signal_accumulator_true_handled.
+//
+// since 2.4
 func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy unsafe.Pointer) bool {
 	sys_ihint := ihint.ToC()
 	sys_returnAccu := returnAccu.ToC()
@@ -1093,6 +1097,8 @@ func TypeCreateInstance(type_ uint64) *TypeInstance {
 }
 
 // TypeDefaultInterfacePeek is analogous to the C function g_type_default_interface_peek.
+//
+// since 2.4
 func TypeDefaultInterfacePeek(gType uint64) *TypeInterface {
 	sys_gType := gType
 	retSys := gobject.Fn_g_type_default_interface_peek(sys_gType)
@@ -1102,6 +1108,8 @@ func TypeDefaultInterfacePeek(gType uint64) *TypeInterface {
 }
 
 // TypeDefaultInterfaceRef is analogous to the C function g_type_default_interface_ref.
+//
+// since 2.4
 func TypeDefaultInterfaceRef(gType uint64) *TypeInterface {
 	sys_gType := gType
 	retSys := gobject.Fn_g_type_default_interface_ref(sys_gType)
@@ -1111,6 +1119,8 @@ func TypeDefaultInterfaceRef(gType uint64) *TypeInterface {
 }
 
 // TypeDefaultInterfaceUnref is analogous to the C function g_type_default_interface_unref.
+//
+// since 2.4
 func TypeDefaultInterfaceUnref(gIface unsafe.Pointer) {
 	sys_gIface := gIface
 	gobject.Fn_g_type_default_interface_unref(sys_gIface)

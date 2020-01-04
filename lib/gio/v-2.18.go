@@ -784,6 +784,8 @@ func ContentTypeEquals(type1 string, type2 string) bool {
 }
 
 // ContentTypeFromMimeType is analogous to the C function g_content_type_from_mime_type.
+//
+// since 2.18
 func ContentTypeFromMimeType(mimeType string) string {
 	sys_mimeType := mimeType
 	retSys := gio.Fn_g_content_type_from_mime_type(sys_mimeType)

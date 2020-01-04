@@ -2973,6 +2973,8 @@ func AcceleratorGetDefaultModMask() int {
 }
 
 // AcceleratorGetLabel is analogous to the C function gtk_accelerator_get_label.
+//
+// since 2.6
 func AcceleratorGetLabel(acceleratorKey uint, acceleratorMods gdk.ModifierType) string {
 	sys_acceleratorKey := acceleratorKey
 	sys_acceleratorMods := (int)(acceleratorMods)
@@ -2983,6 +2985,8 @@ func AcceleratorGetLabel(acceleratorKey uint, acceleratorMods gdk.ModifierType) 
 }
 
 // AcceleratorGetLabelWithKeycode is analogous to the C function gtk_accelerator_get_label_with_keycode.
+//
+// since 3.4
 func AcceleratorGetLabelWithKeycode(display *gdk.Display, acceleratorKey uint, keycode uint, acceleratorMods gdk.ModifierType) string {
 	sys_display := display.ToC()
 	sys_acceleratorKey := acceleratorKey
@@ -3005,6 +3009,8 @@ func AcceleratorName(acceleratorKey uint, acceleratorMods gdk.ModifierType) stri
 }
 
 // AcceleratorNameWithKeycode is analogous to the C function gtk_accelerator_name_with_keycode.
+//
+// since 3.4
 func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint, keycode uint, acceleratorMods gdk.ModifierType) string {
 	sys_display := display.ToC()
 	sys_acceleratorKey := acceleratorKey
@@ -3037,6 +3043,8 @@ func AcceleratorValid(keyval uint, modifiers gdk.ModifierType) bool {
 }
 
 // AlternativeDialogButtonOrder is analogous to the C function gtk_alternative_dialog_button_order.
+//
+// since 2.6
 func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
 	sys_screen := screen.ToC()
 	retSys := gtk.Fn_gtk_alternative_dialog_button_order(sys_screen)
@@ -3057,6 +3065,8 @@ func BindingsActivate(object *gobject.Object, keyval uint, modifiers gdk.Modifie
 }
 
 // BindingsActivateEvent is analogous to the C function gtk_bindings_activate_event.
+//
+// since 2.4
 func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) bool {
 	sys_object := object.ToC()
 	sys_event := event.ToC()
@@ -3067,6 +3077,8 @@ func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) bool {
 }
 
 // CairoShouldDrawWindow is analogous to the C function gtk_cairo_should_draw_window.
+//
+// since 3.0
 func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {
 	sys_cr := cr.ToC()
 	sys_window := window.ToC()
@@ -3077,6 +3089,8 @@ func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {
 }
 
 // CairoTransformToWindow is analogous to the C function gtk_cairo_transform_to_window.
+//
+// since 3.0
 func CairoTransformToWindow(cr *cairo.Context, widget *Widget, window *gdk.Window) {
 	sys_cr := cr.ToC()
 	sys_widget := widget.ToC()
@@ -3096,6 +3110,8 @@ func CheckVersion(requiredMajor uint, requiredMinor uint, requiredMicro uint) st
 }
 
 // DeviceGrabAdd is analogous to the C function gtk_device_grab_add.
+//
+// since 3.0
 func DeviceGrabAdd(widget *Widget, device *gdk.Device, blockOthers bool) {
 	sys_widget := widget.ToC()
 	sys_device := device.ToC()
@@ -3104,6 +3120,8 @@ func DeviceGrabAdd(widget *Widget, device *gdk.Device, blockOthers bool) {
 }
 
 // DeviceGrabRemove is analogous to the C function gtk_device_grab_remove.
+//
+// since 3.0
 func DeviceGrabRemove(widget *Widget, device *gdk.Device) {
 	sys_widget := widget.ToC()
 	sys_device := device.ToC()
@@ -3151,6 +3169,8 @@ func DragSetIconDefault(context *gdk.DragContext) {
 }
 
 // DragSetIconGicon is analogous to the C function gtk_drag_set_icon_gicon.
+//
+// since 3.2
 func DragSetIconGicon(context *gdk.DragContext, icon *gio.Icon, hotX int, hotY int) {
 	sys_context := context.ToC()
 	sys_icon := icon.ToC()
@@ -3160,6 +3180,8 @@ func DragSetIconGicon(context *gdk.DragContext, icon *gio.Icon, hotX int, hotY i
 }
 
 // DragSetIconName is analogous to the C function gtk_drag_set_icon_name.
+//
+// since 2.8
 func DragSetIconName(context *gdk.DragContext, iconName string, hotX int, hotY int) {
 	sys_context := context.ToC()
 	sys_iconName := iconName
@@ -3203,6 +3225,8 @@ func DragSetIconWidget(context *gdk.DragContext, widget *Widget, hotX int, hotY 
 }
 
 // DrawInsertionCursor is analogous to the C function gtk_draw_insertion_cursor.
+//
+// since 3.0
 func DrawInsertionCursor(widget *Widget, cr *cairo.Context, location *gdk.Rectangle, isPrimary bool, direction TextDirection, drawArrow bool) {
 	sys_widget := widget.ToC()
 	sys_cr := cr.ToC()
@@ -3230,6 +3254,8 @@ func False() bool {
 }
 
 // GetBinaryAge is analogous to the C function gtk_get_binary_age.
+//
+// since 3.0
 func GetBinaryAge() uint {
 	retSys := gtk.Fn_gtk_get_binary_age()
 	ret := retSys
@@ -3289,6 +3315,8 @@ func GetEventWidget(event *gdk.Event) *Widget {
 }
 
 // GetInterfaceAge is analogous to the C function gtk_get_interface_age.
+//
+// since 3.0
 func GetInterfaceAge() uint {
 	retSys := gtk.Fn_gtk_get_interface_age()
 	ret := retSys
@@ -3297,6 +3325,8 @@ func GetInterfaceAge() uint {
 }
 
 // GetMajorVersion is analogous to the C function gtk_get_major_version.
+//
+// since 3.0
 func GetMajorVersion() uint {
 	retSys := gtk.Fn_gtk_get_major_version()
 	ret := retSys
@@ -3305,6 +3335,8 @@ func GetMajorVersion() uint {
 }
 
 // GetMicroVersion is analogous to the C function gtk_get_micro_version.
+//
+// since 3.0
 func GetMicroVersion() uint {
 	retSys := gtk.Fn_gtk_get_micro_version()
 	ret := retSys
@@ -3313,6 +3345,8 @@ func GetMicroVersion() uint {
 }
 
 // GetMinorVersion is analogous to the C function gtk_get_minor_version.
+//
+// since 3.0
 func GetMinorVersion() uint {
 	retSys := gtk.Fn_gtk_get_minor_version()
 	ret := retSys
@@ -3321,6 +3355,8 @@ func GetMinorVersion() uint {
 }
 
 // GetOptionGroup is analogous to the C function gtk_get_option_group.
+//
+// since 2.6
 func GetOptionGroup(openDefaultDisplay bool) *glib.OptionGroup {
 	sys_openDefaultDisplay := openDefaultDisplay
 	retSys := gtk.Fn_gtk_get_option_group(sys_openDefaultDisplay)
@@ -3702,6 +3738,8 @@ func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Wi
 // UNSUPPORTED : gtk_parse_args : has array param, argv
 
 // PrintRunPageSetupDialog is analogous to the C function gtk_print_run_page_setup_dialog.
+//
+// since 2.10
 func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) *PageSetup {
 	sys_parent := parent.ToC()
 	sys_pageSetup := pageSetup.ToC()
@@ -3849,6 +3887,8 @@ func RcReparseAllForSettings(settings *Settings, forceLoad bool) bool {
 }
 
 // RcResetStyles is analogous to the C function gtk_rc_reset_styles.
+//
+// since 2.4
 func RcResetStyles(settings *Settings) {
 	sys_settings := settings.ToC()
 	gtk.Fn_gtk_rc_reset_styles(sys_settings)
@@ -3865,6 +3905,8 @@ func RcScannerNew() *glib.Scanner {
 // UNSUPPORTED : gtk_rc_set_default_files : parameter 'filenames' is array parameter without length parameter
 
 // RenderActivity is analogous to the C function gtk_render_activity.
+//
+// since 3.0
 func RenderActivity(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -3876,6 +3918,8 @@ func RenderActivity(context *StyleContext, cr *cairo.Context, x float64, y float
 }
 
 // RenderArrow is analogous to the C function gtk_render_arrow.
+//
+// since 3.0
 func RenderArrow(context *StyleContext, cr *cairo.Context, angle float64, x float64, y float64, size float64) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -3887,6 +3931,8 @@ func RenderArrow(context *StyleContext, cr *cairo.Context, angle float64, x floa
 }
 
 // RenderBackground is analogous to the C function gtk_render_background.
+//
+// since 3.0.
 func RenderBackground(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -3900,6 +3946,8 @@ func RenderBackground(context *StyleContext, cr *cairo.Context, x float64, y flo
 // UNSUPPORTED : gtk_render_background_get_clip : has [in]out param, out_clip
 
 // RenderCheck is analogous to the C function gtk_render_check.
+//
+// since 3.0
 func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -3911,6 +3959,8 @@ func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64,
 }
 
 // RenderExpander is analogous to the C function gtk_render_expander.
+//
+// since 3.0
 func RenderExpander(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -3922,6 +3972,8 @@ func RenderExpander(context *StyleContext, cr *cairo.Context, x float64, y float
 }
 
 // RenderExtension is analogous to the C function gtk_render_extension.
+//
+// since 3.0
 func RenderExtension(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide PositionType) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -3934,6 +3986,8 @@ func RenderExtension(context *StyleContext, cr *cairo.Context, x float64, y floa
 }
 
 // RenderFocus is analogous to the C function gtk_render_focus.
+//
+// since 3.0
 func RenderFocus(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -3945,6 +3999,8 @@ func RenderFocus(context *StyleContext, cr *cairo.Context, x float64, y float64,
 }
 
 // RenderFrame is analogous to the C function gtk_render_frame.
+//
+// since 3.0
 func RenderFrame(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -3956,6 +4012,8 @@ func RenderFrame(context *StyleContext, cr *cairo.Context, x float64, y float64,
 }
 
 // RenderFrameGap is analogous to the C function gtk_render_frame_gap.
+//
+// since 3.0
 func RenderFrameGap(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide PositionType, xy0Gap float64, xy1Gap float64) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -3970,6 +4028,8 @@ func RenderFrameGap(context *StyleContext, cr *cairo.Context, x float64, y float
 }
 
 // RenderHandle is analogous to the C function gtk_render_handle.
+//
+// since 3.0
 func RenderHandle(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -3981,6 +4041,8 @@ func RenderHandle(context *StyleContext, cr *cairo.Context, x float64, y float64
 }
 
 // RenderIcon is analogous to the C function gtk_render_icon.
+//
+// since 3.2
 func RenderIcon(context *StyleContext, cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, x float64, y float64) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -3991,6 +4053,8 @@ func RenderIcon(context *StyleContext, cr *cairo.Context, pixbuf *gdkpixbuf.Pixb
 }
 
 // RenderIconPixbuf is analogous to the C function gtk_render_icon_pixbuf.
+//
+// since 3.0
 func RenderIconPixbuf(context *StyleContext, source *IconSource, size IconSize) *gdkpixbuf.Pixbuf {
 	sys_context := context.ToC()
 	sys_source := source.ToC()
@@ -4002,6 +4066,8 @@ func RenderIconPixbuf(context *StyleContext, source *IconSource, size IconSize) 
 }
 
 // RenderInsertionCursor is analogous to the C function gtk_render_insertion_cursor.
+//
+// since 3.4
 func RenderInsertionCursor(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout, index int, direction pango.Direction) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -4014,6 +4080,8 @@ func RenderInsertionCursor(context *StyleContext, cr *cairo.Context, x float64, 
 }
 
 // RenderLayout is analogous to the C function gtk_render_layout.
+//
+// since 3.0
 func RenderLayout(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -4024,6 +4092,8 @@ func RenderLayout(context *StyleContext, cr *cairo.Context, x float64, y float64
 }
 
 // RenderLine is analogous to the C function gtk_render_line.
+//
+// since 3.0
 func RenderLine(context *StyleContext, cr *cairo.Context, x0 float64, y0 float64, x1 float64, y1 float64) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -4035,6 +4105,8 @@ func RenderLine(context *StyleContext, cr *cairo.Context, x0 float64, y0 float64
 }
 
 // RenderOption is analogous to the C function gtk_render_option.
+//
+// since 3.0
 func RenderOption(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -4046,6 +4118,8 @@ func RenderOption(context *StyleContext, cr *cairo.Context, x float64, y float64
 }
 
 // RenderSlider is analogous to the C function gtk_render_slider.
+//
+// since 3.0
 func RenderSlider(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, orientation Orientation) {
 	sys_context := context.ToC()
 	sys_cr := cr.ToC()
@@ -4101,6 +4175,8 @@ func SelectionOwnerSet(widget *Widget, selection gdk.Atom, time uint32) bool {
 }
 
 // SelectionOwnerSetForDisplay is analogous to the C function gtk_selection_owner_set_for_display.
+//
+// since 2.2
 func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) bool {
 	sys_display := display.ToC()
 	sys_widget := widget.ToC()
@@ -4125,6 +4201,8 @@ func SetDebugFlags(flags uint) {
 }
 
 // ShowAboutDialog is analogous to the C function gtk_show_about_dialog.
+//
+// since 2.6
 func ShowAboutDialog(parent *Window, firstPropertyName string) {
 	sys_parent := parent.ToC()
 	sys_firstPropertyName := firstPropertyName
@@ -4164,6 +4242,8 @@ func StockListIds() *glib.SList {
 // UNSUPPORTED : gtk_targets_include_uri : has array param, targets
 
 // TestCreateSimpleWindow is analogous to the C function gtk_test_create_simple_window.
+//
+// since 2.14
 func TestCreateSimpleWindow(windowTitle string, dialogText string) *Widget {
 	sys_windowTitle := windowTitle
 	sys_dialogText := dialogText
@@ -4174,6 +4254,8 @@ func TestCreateSimpleWindow(windowTitle string, dialogText string) *Widget {
 }
 
 // TestCreateWidget is analogous to the C function gtk_test_create_widget.
+//
+// since 2.14
 func TestCreateWidget(widgetType uint64, firstPropertyName string) *Widget {
 	sys_widgetType := widgetType
 	sys_firstPropertyName := firstPropertyName
@@ -4184,6 +4266,8 @@ func TestCreateWidget(widgetType uint64, firstPropertyName string) *Widget {
 }
 
 // TestDisplayButtonWindow is analogous to the C function gtk_test_display_button_window.
+//
+// since 2.14
 func TestDisplayButtonWindow(windowTitle string, dialogText string) *Widget {
 	sys_windowTitle := windowTitle
 	sys_dialogText := dialogText
@@ -4194,6 +4278,8 @@ func TestDisplayButtonWindow(windowTitle string, dialogText string) *Widget {
 }
 
 // TestFindLabel is analogous to the C function gtk_test_find_label.
+//
+// since 2.14
 func TestFindLabel(widget *Widget, labelPattern string) *Widget {
 	sys_widget := widget.ToC()
 	sys_labelPattern := labelPattern
@@ -4204,6 +4290,8 @@ func TestFindLabel(widget *Widget, labelPattern string) *Widget {
 }
 
 // TestFindSibling is analogous to the C function gtk_test_find_sibling.
+//
+// since 2.14
 func TestFindSibling(baseWidget *Widget, widgetType uint64) *Widget {
 	sys_baseWidget := baseWidget.ToC()
 	sys_widgetType := widgetType
@@ -4214,6 +4302,8 @@ func TestFindSibling(baseWidget *Widget, widgetType uint64) *Widget {
 }
 
 // TestFindWidget is analogous to the C function gtk_test_find_widget.
+//
+// since 2.14
 func TestFindWidget(widget *Widget, labelPattern string, widgetType uint64) *Widget {
 	sys_widget := widget.ToC()
 	sys_labelPattern := labelPattern
@@ -4229,11 +4319,15 @@ func TestFindWidget(widget *Widget, labelPattern string, widgetType uint64) *Wid
 // UNSUPPORTED : gtk_test_list_all_types : has [in]out param, n_types
 
 // TestRegisterAllTypes is analogous to the C function gtk_test_register_all_types.
+//
+// since 2.14
 func TestRegisterAllTypes() {
 	gtk.Fn_gtk_test_register_all_types()
 }
 
 // TestSliderGetValue is analogous to the C function gtk_test_slider_get_value.
+//
+// since 2.14
 func TestSliderGetValue(widget *Widget) float64 {
 	sys_widget := widget.ToC()
 	retSys := gtk.Fn_gtk_test_slider_get_value(sys_widget)
@@ -4243,6 +4337,8 @@ func TestSliderGetValue(widget *Widget) float64 {
 }
 
 // TestSliderSetPerc is analogous to the C function gtk_test_slider_set_perc.
+//
+// since 2.14
 func TestSliderSetPerc(widget *Widget, percentage float64) {
 	sys_widget := widget.ToC()
 	sys_percentage := percentage
@@ -4250,6 +4346,8 @@ func TestSliderSetPerc(widget *Widget, percentage float64) {
 }
 
 // TestSpinButtonClick is analogous to the C function gtk_test_spin_button_click.
+//
+// since 2.14
 func TestSpinButtonClick(spinner *SpinButton, button uint, upwards bool) bool {
 	sys_spinner := spinner.ToC()
 	sys_button := button
@@ -4261,6 +4359,8 @@ func TestSpinButtonClick(spinner *SpinButton, button uint, upwards bool) bool {
 }
 
 // TestTextGet is analogous to the C function gtk_test_text_get.
+//
+// since 2.14
 func TestTextGet(widget *Widget) string {
 	sys_widget := widget.ToC()
 	retSys := gtk.Fn_gtk_test_text_get(sys_widget)
@@ -4270,6 +4370,8 @@ func TestTextGet(widget *Widget) string {
 }
 
 // TestTextSet is analogous to the C function gtk_test_text_set.
+//
+// since 2.14
 func TestTextSet(widget *Widget, string_ string) {
 	sys_widget := widget.ToC()
 	sys_string_ := string_
@@ -4277,6 +4379,8 @@ func TestTextSet(widget *Widget, string_ string) {
 }
 
 // TestWidgetClick is analogous to the C function gtk_test_widget_click.
+//
+// since 2.14
 func TestWidgetClick(widget *Widget, button uint, modifiers gdk.ModifierType) bool {
 	sys_widget := widget.ToC()
 	sys_button := button
@@ -4288,6 +4392,8 @@ func TestWidgetClick(widget *Widget, button uint, modifiers gdk.ModifierType) bo
 }
 
 // TestWidgetSendKey is analogous to the C function gtk_test_widget_send_key.
+//
+// since 2.14
 func TestWidgetSendKey(widget *Widget, keyval uint, modifiers gdk.ModifierType) bool {
 	sys_widget := widget.ToC()
 	sys_keyval := keyval

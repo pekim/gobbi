@@ -1655,6 +1655,8 @@ const ZlibCompressorFormat_raw = ZlibCompressorFormat(2)
 // UNSUPPORTED : g_bus_own_name_on_connection : parameter 'name_acquired_handler' is callback
 
 // BusOwnNameOnConnectionWithClosures is analogous to the C function g_bus_own_name_on_connection_with_closures.
+//
+// since 2.26
 func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameOwnerFlags, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint {
 	sys_connection := connection.ToC()
 	sys_name := name
@@ -1668,6 +1670,8 @@ func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string,
 }
 
 // BusOwnNameWithClosures is analogous to the C function g_bus_own_name_with_closures.
+//
+// since 2.26
 func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlags, busAcquiredClosure *gobject.Closure, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint {
 	sys_busType := (int)(busType)
 	sys_name := name
@@ -1682,12 +1686,16 @@ func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlag
 }
 
 // BusUnownName is analogous to the C function g_bus_unown_name.
+//
+// since 2.26
 func BusUnownName(ownerId uint) {
 	sys_ownerId := ownerId
 	gio.Fn_g_bus_unown_name(sys_ownerId)
 }
 
 // BusUnwatchName is analogous to the C function g_bus_unwatch_name.
+//
+// since 2.26
 func BusUnwatchName(watcherId uint) {
 	sys_watcherId := watcherId
 	gio.Fn_g_bus_unwatch_name(sys_watcherId)
@@ -1698,6 +1706,8 @@ func BusUnwatchName(watcherId uint) {
 // UNSUPPORTED : g_bus_watch_name_on_connection : parameter 'name_appeared_handler' is callback
 
 // BusWatchNameOnConnectionWithClosures is analogous to the C function g_bus_watch_name_on_connection_with_closures.
+//
+// since 2.26
 func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint {
 	sys_connection := connection.ToC()
 	sys_name := name
@@ -1711,6 +1721,8 @@ func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name strin
 }
 
 // BusWatchNameWithClosures is analogous to the C function g_bus_watch_name_with_closures.
+//
+// since 2.26
 func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint {
 	sys_busType := (int)(busType)
 	sys_name := name
@@ -1743,6 +1755,8 @@ func ContentTypeEquals(type1 string, type2 string) bool {
 }
 
 // ContentTypeFromMimeType is analogous to the C function g_content_type_from_mime_type.
+//
+// since 2.18
 func ContentTypeFromMimeType(mimeType string) string {
 	sys_mimeType := mimeType
 	retSys := gio.Fn_g_content_type_from_mime_type(sys_mimeType)
@@ -1826,6 +1840,8 @@ func ContentTypesGetRegistered() *glib.List {
 // UNSUPPORTED : g_dbus_error_register_error_domain : has array param, entries
 
 // DbusGenerateGuid is analogous to the C function g_dbus_generate_guid.
+//
+// since 2.26
 func DbusGenerateGuid() string {
 	retSys := gio.Fn_g_dbus_generate_guid()
 	ret := retSys
@@ -1834,6 +1850,8 @@ func DbusGenerateGuid() string {
 }
 
 // DbusGvalueToGvariant is analogous to the C function g_dbus_gvalue_to_gvariant.
+//
+// since 2.30
 func DbusGvalueToGvariant(gvalue *gobject.Value, type_ *glib.VariantType) *glib.Variant {
 	sys_gvalue := gvalue.ToC()
 	sys_type_ := type_.ToC()
@@ -1846,6 +1864,8 @@ func DbusGvalueToGvariant(gvalue *gobject.Value, type_ *glib.VariantType) *glib.
 // UNSUPPORTED : g_dbus_gvariant_to_gvalue : has [in]out param, out_gvalue
 
 // DbusIsAddress is analogous to the C function g_dbus_is_address.
+//
+// since 2.26
 func DbusIsAddress(string_ string) bool {
 	sys_string_ := string_
 	retSys := gio.Fn_g_dbus_is_address(sys_string_)
@@ -1855,6 +1875,8 @@ func DbusIsAddress(string_ string) bool {
 }
 
 // DbusIsGuid is analogous to the C function g_dbus_is_guid.
+//
+// since 2.26
 func DbusIsGuid(string_ string) bool {
 	sys_string_ := string_
 	retSys := gio.Fn_g_dbus_is_guid(sys_string_)
@@ -1864,6 +1886,8 @@ func DbusIsGuid(string_ string) bool {
 }
 
 // DbusIsInterfaceName is analogous to the C function g_dbus_is_interface_name.
+//
+// since 2.26
 func DbusIsInterfaceName(string_ string) bool {
 	sys_string_ := string_
 	retSys := gio.Fn_g_dbus_is_interface_name(sys_string_)
@@ -1873,6 +1897,8 @@ func DbusIsInterfaceName(string_ string) bool {
 }
 
 // DbusIsMemberName is analogous to the C function g_dbus_is_member_name.
+//
+// since 2.26
 func DbusIsMemberName(string_ string) bool {
 	sys_string_ := string_
 	retSys := gio.Fn_g_dbus_is_member_name(sys_string_)
@@ -1882,6 +1908,8 @@ func DbusIsMemberName(string_ string) bool {
 }
 
 // DbusIsName is analogous to the C function g_dbus_is_name.
+//
+// since 2.26
 func DbusIsName(string_ string) bool {
 	sys_string_ := string_
 	retSys := gio.Fn_g_dbus_is_name(sys_string_)
@@ -1893,6 +1921,8 @@ func DbusIsName(string_ string) bool {
 // UNSUPPORTED : g_dbus_is_supported_address : throws
 
 // DbusIsUniqueName is analogous to the C function g_dbus_is_unique_name.
+//
+// since 2.26
 func DbusIsUniqueName(string_ string) bool {
 	sys_string_ := string_
 	retSys := gio.Fn_g_dbus_is_unique_name(sys_string_)
@@ -1950,6 +1980,8 @@ func IoSchedulerCancelAllJobs() {
 // UNSUPPORTED : g_null_settings_backend_new : blacklisted
 
 // PollableSourceNew is analogous to the C function g_pollable_source_new.
+//
+// since 2.28
 func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
 	sys_pollableStream := pollableStream.ToC()
 	retSys := gio.Fn_g_pollable_source_new(sys_pollableStream)
@@ -1975,12 +2007,16 @@ func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
 // UNSUPPORTED : g_resources_open_stream : throws
 
 // ResourcesRegister is analogous to the C function g_resources_register.
+//
+// since 2.32
 func ResourcesRegister(resource *Resource) {
 	sys_resource := resource.ToC()
 	gio.Fn_g_resources_register(sys_resource)
 }
 
 // ResourcesUnregister is analogous to the C function g_resources_unregister.
+//
+// since 2.32
 func ResourcesUnregister(resource *Resource) {
 	sys_resource := resource.ToC()
 	gio.Fn_g_resources_unregister(sys_resource)

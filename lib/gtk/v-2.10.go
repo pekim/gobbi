@@ -2835,6 +2835,8 @@ func AcceleratorGetDefaultModMask() int {
 }
 
 // AcceleratorGetLabel is analogous to the C function gtk_accelerator_get_label.
+//
+// since 2.6
 func AcceleratorGetLabel(acceleratorKey uint, acceleratorMods gdk.ModifierType) string {
 	sys_acceleratorKey := acceleratorKey
 	sys_acceleratorMods := (int)(acceleratorMods)
@@ -2875,6 +2877,8 @@ func AcceleratorValid(keyval uint, modifiers gdk.ModifierType) bool {
 }
 
 // AlternativeDialogButtonOrder is analogous to the C function gtk_alternative_dialog_button_order.
+//
+// since 2.6
 func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
 	sys_screen := screen.ToC()
 	retSys := gtk.Fn_gtk_alternative_dialog_button_order(sys_screen)
@@ -2895,6 +2899,8 @@ func BindingsActivate(object *gobject.Object, keyval uint, modifiers gdk.Modifie
 }
 
 // BindingsActivateEvent is analogous to the C function gtk_bindings_activate_event.
+//
+// since 2.4
 func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) bool {
 	sys_object := object.ToC()
 	sys_event := event.ToC()
@@ -2956,6 +2962,8 @@ func DragSetIconDefault(context *gdk.DragContext) {
 }
 
 // DragSetIconName is analogous to the C function gtk_drag_set_icon_name.
+//
+// since 2.8
 func DragSetIconName(context *gdk.DragContext, iconName string, hotX int, hotY int) {
 	sys_context := context.ToC()
 	sys_iconName := iconName
@@ -3066,6 +3074,8 @@ func GetEventWidget(event *gdk.Event) *Widget {
 }
 
 // GetOptionGroup is analogous to the C function gtk_get_option_group.
+//
+// since 2.6
 func GetOptionGroup(openDefaultDisplay bool) *glib.OptionGroup {
 	sys_openDefaultDisplay := openDefaultDisplay
 	retSys := gtk.Fn_gtk_get_option_group(sys_openDefaultDisplay)
@@ -3447,6 +3457,8 @@ func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Wi
 // UNSUPPORTED : gtk_parse_args : has array param, argv
 
 // PrintRunPageSetupDialog is analogous to the C function gtk_print_run_page_setup_dialog.
+//
+// since 2.10
 func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) *PageSetup {
 	sys_parent := parent.ToC()
 	sys_pageSetup := pageSetup.ToC()
@@ -3594,6 +3606,8 @@ func RcReparseAllForSettings(settings *Settings, forceLoad bool) bool {
 }
 
 // RcResetStyles is analogous to the C function gtk_rc_reset_styles.
+//
+// since 2.4
 func RcResetStyles(settings *Settings) {
 	sys_settings := settings.ToC()
 	gtk.Fn_gtk_rc_reset_styles(sys_settings)
@@ -3655,6 +3669,8 @@ func SelectionOwnerSet(widget *Widget, selection gdk.Atom, time uint32) bool {
 }
 
 // SelectionOwnerSetForDisplay is analogous to the C function gtk_selection_owner_set_for_display.
+//
+// since 2.2
 func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) bool {
 	sys_display := display.ToC()
 	sys_widget := widget.ToC()
@@ -3679,6 +3695,8 @@ func SetDebugFlags(flags uint) {
 }
 
 // ShowAboutDialog is analogous to the C function gtk_show_about_dialog.
+//
+// since 2.6
 func ShowAboutDialog(parent *Window, firstPropertyName string) {
 	sys_parent := parent.ToC()
 	sys_firstPropertyName := firstPropertyName

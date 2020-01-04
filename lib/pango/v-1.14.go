@@ -726,6 +726,8 @@ func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
 }
 
 // AttrFallbackNew is analogous to the C function pango_attr_fallback_new.
+//
+// since 1.4
 func AttrFallbackNew(enableFallback bool) *Attribute {
 	sys_enableFallback := enableFallback
 	retSys := pango.Fn_pango_attr_fallback_new(sys_enableFallback)
@@ -755,6 +757,8 @@ func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
 }
 
 // AttrLetterSpacingNew is analogous to the C function pango_attr_letter_spacing_new.
+//
+// since 1.6
 func AttrLetterSpacingNew(letterSpacing int) *Attribute {
 	sys_letterSpacing := letterSpacing
 	retSys := pango.Fn_pango_attr_letter_spacing_new(sys_letterSpacing)
@@ -791,6 +795,8 @@ func AttrStretchNew(stretch Stretch) *Attribute {
 }
 
 // AttrStrikethroughColorNew is analogous to the C function pango_attr_strikethrough_color_new.
+//
+// since 1.8
 func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute {
 	sys_red := red
 	sys_green := green
@@ -820,6 +826,8 @@ func AttrStyleNew(style Style) *Attribute {
 }
 
 // AttrUnderlineColorNew is analogous to the C function pango_attr_underline_color_new.
+//
+// since 1.8
 func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
 	sys_red := red
 	sys_green := green
@@ -866,6 +874,8 @@ func AttrWeightNew(weight Weight) *Attribute {
 // UNSUPPORTED : pango_default_break : blacklisted
 
 // FindBaseDir is analogous to the C function pango_find_base_dir.
+//
+// since 1.4
 func FindBaseDir(text string, length int) int {
 	sys_text := text
 	sys_length := length
@@ -896,6 +906,8 @@ func GetMirrorChar(ch rune, mirroredCh *rune) bool {
 // UNSUPPORTED : pango_get_sysconf_subdirectory : blacklisted
 
 // IsZeroWidth is analogous to the C function pango_is_zero_width.
+//
+// since 1.10
 func IsZeroWidth(ch rune) bool {
 	sys_ch := ch
 	retSys := pango.Fn_pango_is_zero_width(sys_ch)
@@ -919,6 +931,8 @@ func Itemize(context *Context, text string, startIndex int, length int, attrs *A
 }
 
 // ItemizeWithBaseDir is analogous to the C function pango_itemize_with_base_dir.
+//
+// since 1.4
 func ItemizeWithBaseDir(context *Context, baseDir Direction, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) *glib.List {
 	sys_context := context.ToC()
 	sys_baseDir := (int)(baseDir)
@@ -934,6 +948,8 @@ func ItemizeWithBaseDir(context *Context, baseDir Direction, text string, startI
 }
 
 // Log2visGetEmbeddingLevels is analogous to the C function pango_log2vis_get_embedding_levels.
+//
+// since 1.4
 func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *Direction) *uint8 {
 	sys_text := text
 	sys_length := length
@@ -963,6 +979,8 @@ func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *Direction) *ui
 // UNSUPPORTED : pango_parse_weight : has [in]out param, weight
 
 // QuantizeLineGeometry is analogous to the C function pango_quantize_line_geometry.
+//
+// since 1.12
 func QuantizeLineGeometry(thickness *int, position *int) {
 	sys_thickness := thickness
 	sys_position := position

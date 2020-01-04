@@ -2706,6 +2706,8 @@ func BindingsActivate(object *gobject.Object, keyval uint, modifiers gdk.Modifie
 }
 
 // BindingsActivateEvent is analogous to the C function gtk_bindings_activate_event.
+//
+// since 2.4
 func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) bool {
 	sys_object := object.ToC()
 	sys_event := event.ToC()
@@ -3376,6 +3378,8 @@ func RcReparseAllForSettings(settings *Settings, forceLoad bool) bool {
 }
 
 // RcResetStyles is analogous to the C function gtk_rc_reset_styles.
+//
+// since 2.4
 func RcResetStyles(settings *Settings) {
 	sys_settings := settings.ToC()
 	gtk.Fn_gtk_rc_reset_styles(sys_settings)
@@ -3437,6 +3441,8 @@ func SelectionOwnerSet(widget *Widget, selection gdk.Atom, time uint32) bool {
 }
 
 // SelectionOwnerSetForDisplay is analogous to the C function gtk_selection_owner_set_for_display.
+//
+// since 2.2
 func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) bool {
 	sys_display := display.ToC()
 	sys_widget := widget.ToC()

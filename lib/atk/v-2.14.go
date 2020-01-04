@@ -900,6 +900,8 @@ func FocusTrackerNotify(object *Object) {
 }
 
 // GetBinaryAge is analogous to the C function atk_get_binary_age.
+//
+// since 2.8
 func GetBinaryAge() uint {
 	retSys := atk.Fn_atk_get_binary_age()
 	ret := retSys
@@ -916,6 +918,8 @@ func GetDefaultRegistry() *Registry {
 }
 
 // GetFocusObject is analogous to the C function atk_get_focus_object.
+//
+// since 1.6
 func GetFocusObject() *Object {
 	retSys := atk.Fn_atk_get_focus_object()
 	ret := ObjectNewFromC(retSys)
@@ -924,6 +928,8 @@ func GetFocusObject() *Object {
 }
 
 // GetInterfaceAge is analogous to the C function atk_get_interface_age.
+//
+// since 2.8
 func GetInterfaceAge() uint {
 	retSys := atk.Fn_atk_get_interface_age()
 	ret := retSys
@@ -932,6 +938,8 @@ func GetInterfaceAge() uint {
 }
 
 // GetMajorVersion is analogous to the C function atk_get_major_version.
+//
+// since 2.8
 func GetMajorVersion() uint {
 	retSys := atk.Fn_atk_get_major_version()
 	ret := retSys
@@ -940,6 +948,8 @@ func GetMajorVersion() uint {
 }
 
 // GetMicroVersion is analogous to the C function atk_get_micro_version.
+//
+// since 2.8
 func GetMicroVersion() uint {
 	retSys := atk.Fn_atk_get_micro_version()
 	ret := retSys
@@ -948,6 +958,8 @@ func GetMicroVersion() uint {
 }
 
 // GetMinorVersion is analogous to the C function atk_get_minor_version.
+//
+// since 2.8
 func GetMinorVersion() uint {
 	retSys := atk.Fn_atk_get_minor_version()
 	ret := retSys
@@ -980,6 +992,8 @@ func GetToolkitVersion() string {
 }
 
 // GetVersion is analogous to the C function atk_get_version.
+//
+// since 1.20
 func GetVersion() string {
 	retSys := atk.Fn_atk_get_version()
 	ret := retSys

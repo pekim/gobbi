@@ -8264,6 +8264,8 @@ func GetDisplay() string {
 }
 
 // GetDisplayArgName is analogous to the C function gdk_get_display_arg_name.
+//
+// since 2.2
 func GetDisplayArgName() string {
 	retSys := gdk.Fn_gdk_get_display_arg_name()
 	ret := retSys
@@ -8382,6 +8384,8 @@ func ListVisuals() *glib.List {
 }
 
 // NotifyStartupComplete is analogous to the C function gdk_notify_startup_complete.
+//
+// since 2.2
 func NotifyStartupComplete() {
 	gdk.Fn_gdk_notify_startup_complete()
 }
@@ -8404,6 +8408,8 @@ func PangoContextGet() *pango.Context {
 }
 
 // PangoContextGetForScreen is analogous to the C function gdk_pango_context_get_for_screen.
+//
+// since 2.2
 func PangoContextGetForScreen(screen *Screen) *pango.Context {
 	sys_screen := screen.ToC()
 	retSys := gdk.Fn_gdk_pango_context_get_for_screen(sys_screen)
@@ -8532,6 +8538,8 @@ func SelectionOwnerGet(selection Atom) *Window {
 }
 
 // SelectionOwnerGetForDisplay is analogous to the C function gdk_selection_owner_get_for_display.
+//
+// since 2.2
 func SelectionOwnerGetForDisplay(display *Display, selection Atom) *Window {
 	sys_display := display.ToC()
 	sys_selection := selection.ToC()
@@ -8554,6 +8562,8 @@ func SelectionOwnerSet(owner *Window, selection Atom, time uint32, sendEvent boo
 }
 
 // SelectionOwnerSetForDisplay is analogous to the C function gdk_selection_owner_set_for_display.
+//
+// since 2.2
 func SelectionOwnerSetForDisplay(display *Display, owner *Window, selection Atom, time uint32, sendEvent bool) bool {
 	sys_display := display.ToC()
 	sys_owner := owner.ToC()
@@ -8589,6 +8599,8 @@ func SelectionSendNotify(requestor *Window, selection Atom, target Atom, propert
 }
 
 // SelectionSendNotifyForDisplay is analogous to the C function gdk_selection_send_notify_for_display.
+//
+// since 2.2
 func SelectionSendNotifyForDisplay(display *Display, requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
 	sys_display := display.ToC()
 	sys_requestor := requestor.ToC()

@@ -903,6 +903,8 @@ func GetDefaultRegistry() *Registry {
 }
 
 // GetFocusObject is analogous to the C function atk_get_focus_object.
+//
+// since 1.6
 func GetFocusObject() *Object {
 	retSys := atk.Fn_atk_get_focus_object()
 	ret := ObjectNewFromC(retSys)
@@ -935,6 +937,8 @@ func GetToolkitVersion() string {
 }
 
 // GetVersion is analogous to the C function atk_get_version.
+//
+// since 1.20
 func GetVersion() string {
 	retSys := atk.Fn_atk_get_version()
 	ret := retSys

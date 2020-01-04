@@ -44,6 +44,7 @@ func (f *Function) generateLib(fi *jen.File, version semver.Version) {
 	}
 
 	fi.Commentf("%s is analogous to the C function %s.", f.goName, f.CIdentifier)
+	docVersion(fi, f.Version)
 
 	// func Fn_some_function(...) [return type] {...}
 	fi.

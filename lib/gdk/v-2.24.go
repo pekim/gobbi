@@ -8115,6 +8115,8 @@ func Beep() {
 }
 
 // CairoCreate is analogous to the C function gdk_cairo_create.
+//
+// since 2.8
 func CairoCreate(window *Window) *cairo.Context {
 	sys_window := window.ToC()
 	retSys := gdk.Fn_gdk_cairo_create(sys_window)
@@ -8126,6 +8128,8 @@ func CairoCreate(window *Window) *cairo.Context {
 // UNSUPPORTED : gdk_cairo_get_clip_rectangle : has [in]out param, rect
 
 // CairoRectangle is analogous to the C function gdk_cairo_rectangle.
+//
+// since 2.8
 func CairoRectangle(cr *cairo.Context, rectangle *Rectangle) {
 	sys_cr := cr.ToC()
 	sys_rectangle := rectangle.ToC()
@@ -8133,6 +8137,8 @@ func CairoRectangle(cr *cairo.Context, rectangle *Rectangle) {
 }
 
 // CairoRegion is analogous to the C function gdk_cairo_region.
+//
+// since 2.8
 func CairoRegion(cr *cairo.Context, region *cairo.Region) {
 	sys_cr := cr.ToC()
 	sys_region := region.ToC()
@@ -8149,6 +8155,8 @@ func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
 }
 
 // CairoSetSourceColor is analogous to the C function gdk_cairo_set_source_color.
+//
+// since 2.8
 func CairoSetSourceColor(cr *cairo.Context, color *Color) {
 	sys_cr := cr.ToC()
 	sys_color := color.ToC()
@@ -8156,6 +8164,8 @@ func CairoSetSourceColor(cr *cairo.Context, color *Color) {
 }
 
 // CairoSetSourcePixbuf is analogous to the C function gdk_cairo_set_source_pixbuf.
+//
+// since 2.8
 func CairoSetSourcePixbuf(cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, pixbufX float64, pixbufY float64) {
 	sys_cr := cr.ToC()
 	sys_pixbuf := pixbuf.ToC()
@@ -8165,6 +8175,8 @@ func CairoSetSourcePixbuf(cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, pixbufX f
 }
 
 // CairoSetSourceWindow is analogous to the C function gdk_cairo_set_source_window.
+//
+// since 2.24
 func CairoSetSourceWindow(cr *cairo.Context, window *Window, x float64, y float64) {
 	sys_cr := cr.ToC()
 	sys_window := window.ToC()
@@ -8211,6 +8223,8 @@ func DragDrop(context *DragContext, time uint32) {
 }
 
 // DragDropSucceeded is analogous to the C function gdk_drag_drop_succeeded.
+//
+// since 2.6
 func DragDropSucceeded(context *DragContext) bool {
 	sys_context := context.ToC()
 	retSys := gdk.Fn_gdk_drag_drop_succeeded(sys_context)
@@ -8321,6 +8335,8 @@ func GetDisplay() string {
 }
 
 // GetDisplayArgName is analogous to the C function gdk_get_display_arg_name.
+//
+// since 2.2
 func GetDisplayArgName() string {
 	retSys := gdk.Fn_gdk_get_display_arg_name()
 	ret := retSys
@@ -8439,17 +8455,23 @@ func ListVisuals() *glib.List {
 }
 
 // NotifyStartupComplete is analogous to the C function gdk_notify_startup_complete.
+//
+// since 2.2
 func NotifyStartupComplete() {
 	gdk.Fn_gdk_notify_startup_complete()
 }
 
 // NotifyStartupCompleteWithId is analogous to the C function gdk_notify_startup_complete_with_id.
+//
+// since 2.12
 func NotifyStartupCompleteWithId(startupId string) {
 	sys_startupId := startupId
 	gdk.Fn_gdk_notify_startup_complete_with_id(sys_startupId)
 }
 
 // OffscreenWindowGetEmbedder is analogous to the C function gdk_offscreen_window_get_embedder.
+//
+// since 2.18
 func OffscreenWindowGetEmbedder(window *Window) *Window {
 	sys_window := window.ToC()
 	retSys := gdk.Fn_gdk_offscreen_window_get_embedder(sys_window)
@@ -8468,6 +8490,8 @@ func OffscreenWindowGetSurface(window *Window) *cairo.Surface {
 }
 
 // OffscreenWindowSetEmbedder is analogous to the C function gdk_offscreen_window_set_embedder.
+//
+// since 2.18
 func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
 	sys_window := window.ToC()
 	sys_embedder := embedder.ToC()
@@ -8483,6 +8507,8 @@ func PangoContextGet() *pango.Context {
 }
 
 // PangoContextGetForScreen is analogous to the C function gdk_pango_context_get_for_screen.
+//
+// since 2.2
 func PangoContextGetForScreen(screen *Screen) *pango.Context {
 	sys_screen := screen.ToC()
 	retSys := gdk.Fn_gdk_pango_context_get_for_screen(sys_screen)
@@ -8611,6 +8637,8 @@ func SelectionOwnerGet(selection Atom) *Window {
 }
 
 // SelectionOwnerGetForDisplay is analogous to the C function gdk_selection_owner_get_for_display.
+//
+// since 2.2
 func SelectionOwnerGetForDisplay(display *Display, selection Atom) *Window {
 	sys_display := display.ToC()
 	sys_selection := selection.ToC()
@@ -8633,6 +8661,8 @@ func SelectionOwnerSet(owner *Window, selection Atom, time uint32, sendEvent boo
 }
 
 // SelectionOwnerSetForDisplay is analogous to the C function gdk_selection_owner_set_for_display.
+//
+// since 2.2
 func SelectionOwnerSetForDisplay(display *Display, owner *Window, selection Atom, time uint32, sendEvent bool) bool {
 	sys_display := display.ToC()
 	sys_owner := owner.ToC()
@@ -8668,6 +8698,8 @@ func SelectionSendNotify(requestor *Window, selection Atom, target Atom, propert
 }
 
 // SelectionSendNotifyForDisplay is analogous to the C function gdk_selection_send_notify_for_display.
+//
+// since 2.2
 func SelectionSendNotifyForDisplay(display *Display, requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
 	sys_display := display.ToC()
 	sys_requestor := requestor.ToC()
@@ -8709,12 +8741,16 @@ func SettingGet(name string, value *gobject.Value) bool {
 // UNSUPPORTED : gdk_synthesize_window_state : blacklisted
 
 // TestRenderSync is analogous to the C function gdk_test_render_sync.
+//
+// since 2.14
 func TestRenderSync(window *Window) {
 	sys_window := window.ToC()
 	gdk.Fn_gdk_test_render_sync(sys_window)
 }
 
 // TestSimulateButton is analogous to the C function gdk_test_simulate_button.
+//
+// since 2.14
 func TestSimulateButton(window *Window, x int, y int, button uint, modifiers ModifierType, buttonPressrelease EventType) bool {
 	sys_window := window.ToC()
 	sys_x := x
@@ -8729,6 +8765,8 @@ func TestSimulateButton(window *Window, x int, y int, button uint, modifiers Mod
 }
 
 // TestSimulateKey is analogous to the C function gdk_test_simulate_key.
+//
+// since 2.14
 func TestSimulateKey(window *Window, x int, y int, keyval uint, modifiers ModifierType, keyPressrelease EventType) bool {
 	sys_window := window.ToC()
 	sys_x := x

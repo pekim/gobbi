@@ -3396,6 +3396,8 @@ func SelectionOwnerSet(widget *Widget, selection gdk.Atom, time uint32) bool {
 }
 
 // SelectionOwnerSetForDisplay is analogous to the C function gtk_selection_owner_set_for_display.
+//
+// since 2.2
 func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection gdk.Atom, time uint32) bool {
 	sys_display := display.ToC()
 	sys_widget := widget.ToC()
