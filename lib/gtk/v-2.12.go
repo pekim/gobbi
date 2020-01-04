@@ -2812,10 +2812,10 @@ const WrapMode_word = WrapMode(2)
 const WrapMode_word_char = WrapMode(3)
 
 // AccelGroupsActivate is analogous to the C function gtk_accel_groups_activate.
-func AccelGroupsActivate(object *gobject.Object, accelKey uint, accelMods int) bool {
+func AccelGroupsActivate(object *gobject.Object, accelKey uint, accelMods gdk.ModifierType) bool {
 	sys_object := object.ToC()
 	sys_accelKey := accelKey
-	sys_accelMods := accelMods
+	sys_accelMods := (int)(accelMods)
 	retSys := gtk.Fn_gtk_accel_groups_activate(sys_object, sys_accelKey, sys_accelMods)
 	ret := retSys
 
@@ -2840,9 +2840,9 @@ func AcceleratorGetDefaultModMask() int {
 }
 
 // AcceleratorGetLabel is analogous to the C function gtk_accelerator_get_label.
-func AcceleratorGetLabel(acceleratorKey uint, acceleratorMods int) string {
+func AcceleratorGetLabel(acceleratorKey uint, acceleratorMods gdk.ModifierType) string {
 	sys_acceleratorKey := acceleratorKey
-	sys_acceleratorMods := acceleratorMods
+	sys_acceleratorMods := (int)(acceleratorMods)
 	retSys := gtk.Fn_gtk_accelerator_get_label(sys_acceleratorKey, sys_acceleratorMods)
 	ret := retSys
 
@@ -2850,9 +2850,9 @@ func AcceleratorGetLabel(acceleratorKey uint, acceleratorMods int) string {
 }
 
 // AcceleratorName is analogous to the C function gtk_accelerator_name.
-func AcceleratorName(acceleratorKey uint, acceleratorMods int) string {
+func AcceleratorName(acceleratorKey uint, acceleratorMods gdk.ModifierType) string {
 	sys_acceleratorKey := acceleratorKey
-	sys_acceleratorMods := acceleratorMods
+	sys_acceleratorMods := (int)(acceleratorMods)
 	retSys := gtk.Fn_gtk_accelerator_name(sys_acceleratorKey, sys_acceleratorMods)
 	ret := retSys
 
@@ -2864,15 +2864,15 @@ func AcceleratorName(acceleratorKey uint, acceleratorMods int) string {
 // UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
 
 // AcceleratorSetDefaultModMask is analogous to the C function gtk_accelerator_set_default_mod_mask.
-func AcceleratorSetDefaultModMask(defaultModMask int) {
-	sys_defaultModMask := defaultModMask
+func AcceleratorSetDefaultModMask(defaultModMask gdk.ModifierType) {
+	sys_defaultModMask := (int)(defaultModMask)
 	gtk.Fn_gtk_accelerator_set_default_mod_mask(sys_defaultModMask)
 }
 
 // AcceleratorValid is analogous to the C function gtk_accelerator_valid.
-func AcceleratorValid(keyval uint, modifiers int) bool {
+func AcceleratorValid(keyval uint, modifiers gdk.ModifierType) bool {
 	sys_keyval := keyval
-	sys_modifiers := modifiers
+	sys_modifiers := (int)(modifiers)
 	retSys := gtk.Fn_gtk_accelerator_valid(sys_keyval, sys_modifiers)
 	ret := retSys
 
@@ -2889,10 +2889,10 @@ func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
 }
 
 // BindingsActivate is analogous to the C function gtk_bindings_activate.
-func BindingsActivate(object *gobject.Object, keyval uint, modifiers int) bool {
+func BindingsActivate(object *gobject.Object, keyval uint, modifiers gdk.ModifierType) bool {
 	sys_object := object.ToC()
 	sys_keyval := keyval
-	sys_modifiers := modifiers
+	sys_modifiers := (int)(modifiers)
 	retSys := gtk.Fn_gtk_bindings_activate(sys_object, sys_keyval, sys_modifiers)
 	ret := retSys
 
@@ -3147,14 +3147,14 @@ func MainQuit() {
 }
 
 // PaintArrow is analogous to the C function gtk_paint_arrow.
-func PaintArrow(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, arrowType int, fill bool, x int, y int, width int, height int) {
+func PaintArrow(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, arrowType ArrowType, fill bool, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
-	sys_arrowType := arrowType
+	sys_arrowType := (int)(arrowType)
 	sys_fill := fill
 	sys_x := x
 	sys_y := y
@@ -3164,11 +3164,11 @@ func PaintArrow(style *Style, cr *cairo.Context, stateType int, shadowType int, 
 }
 
 // PaintBox is analogous to the C function gtk_paint_box.
-func PaintBox(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintBox(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
@@ -3179,29 +3179,29 @@ func PaintBox(style *Style, cr *cairo.Context, stateType int, shadowType int, wi
 }
 
 // PaintBoxGap is analogous to the C function gtk_paint_box_gap.
-func PaintBoxGap(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int, gapX int, gapWidth int) {
+func PaintBoxGap(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int, gapSide PositionType, gapX int, gapWidth int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
 	sys_y := y
 	sys_width := width
 	sys_height := height
-	sys_gapSide := gapSide
+	sys_gapSide := (int)(gapSide)
 	sys_gapX := gapX
 	sys_gapWidth := gapWidth
 	gtk.Fn_gtk_paint_box_gap(sys_style, sys_cr, sys_stateType, sys_shadowType, sys_widget, sys_detail, sys_x, sys_y, sys_width, sys_height, sys_gapSide, sys_gapX, sys_gapWidth)
 }
 
 // PaintCheck is analogous to the C function gtk_paint_check.
-func PaintCheck(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintCheck(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
@@ -3212,11 +3212,11 @@ func PaintCheck(style *Style, cr *cairo.Context, stateType int, shadowType int, 
 }
 
 // PaintDiamond is analogous to the C function gtk_paint_diamond.
-func PaintDiamond(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintDiamond(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
@@ -3227,40 +3227,40 @@ func PaintDiamond(style *Style, cr *cairo.Context, stateType int, shadowType int
 }
 
 // PaintExpander is analogous to the C function gtk_paint_expander.
-func PaintExpander(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x int, y int, expanderStyle int) {
+func PaintExpander(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x int, y int, expanderStyle ExpanderStyle) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
+	sys_stateType := (int)(stateType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
 	sys_y := y
-	sys_expanderStyle := expanderStyle
+	sys_expanderStyle := (int)(expanderStyle)
 	gtk.Fn_gtk_paint_expander(sys_style, sys_cr, sys_stateType, sys_widget, sys_detail, sys_x, sys_y, sys_expanderStyle)
 }
 
 // PaintExtension is analogous to the C function gtk_paint_extension.
-func PaintExtension(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int) {
+func PaintExtension(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int, gapSide PositionType) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
 	sys_y := y
 	sys_width := width
 	sys_height := height
-	sys_gapSide := gapSide
+	sys_gapSide := (int)(gapSide)
 	gtk.Fn_gtk_paint_extension(sys_style, sys_cr, sys_stateType, sys_shadowType, sys_widget, sys_detail, sys_x, sys_y, sys_width, sys_height, sys_gapSide)
 }
 
 // PaintFlatBox is analogous to the C function gtk_paint_flat_box.
-func PaintFlatBox(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintFlatBox(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
@@ -3271,10 +3271,10 @@ func PaintFlatBox(style *Style, cr *cairo.Context, stateType int, shadowType int
 }
 
 // PaintFocus is analogous to the C function gtk_paint_focus.
-func PaintFocus(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintFocus(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
+	sys_stateType := (int)(stateType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
@@ -3285,26 +3285,26 @@ func PaintFocus(style *Style, cr *cairo.Context, stateType int, widget *Widget, 
 }
 
 // PaintHandle is analogous to the C function gtk_paint_handle.
-func PaintHandle(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, orientation int) {
+func PaintHandle(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int, orientation Orientation) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
 	sys_y := y
 	sys_width := width
 	sys_height := height
-	sys_orientation := orientation
+	sys_orientation := (int)(orientation)
 	gtk.Fn_gtk_paint_handle(sys_style, sys_cr, sys_stateType, sys_shadowType, sys_widget, sys_detail, sys_x, sys_y, sys_width, sys_height, sys_orientation)
 }
 
 // PaintHline is analogous to the C function gtk_paint_hline.
-func PaintHline(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, x1 int, x2 int, y int) {
+func PaintHline(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x1 int, x2 int, y int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
+	sys_stateType := (int)(stateType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x1 := x1
@@ -3314,10 +3314,10 @@ func PaintHline(style *Style, cr *cairo.Context, stateType int, widget *Widget, 
 }
 
 // PaintLayout is analogous to the C function gtk_paint_layout.
-func PaintLayout(style *Style, cr *cairo.Context, stateType int, useText bool, widget *Widget, detail string, x int, y int, layout *pango.Layout) {
+func PaintLayout(style *Style, cr *cairo.Context, stateType StateType, useText bool, widget *Widget, detail string, x int, y int, layout *pango.Layout) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
+	sys_stateType := (int)(stateType)
 	sys_useText := useText
 	sys_widget := widget.ToC()
 	sys_detail := detail
@@ -3328,11 +3328,11 @@ func PaintLayout(style *Style, cr *cairo.Context, stateType int, useText bool, w
 }
 
 // PaintOption is analogous to the C function gtk_paint_option.
-func PaintOption(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintOption(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
@@ -3343,13 +3343,13 @@ func PaintOption(style *Style, cr *cairo.Context, stateType int, shadowType int,
 }
 
 // PaintResizeGrip is analogous to the C function gtk_paint_resize_grip.
-func PaintResizeGrip(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, edge int, x int, y int, width int, height int) {
+func PaintResizeGrip(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, edge gdk.WindowEdge, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
+	sys_stateType := (int)(stateType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
-	sys_edge := edge
+	sys_edge := (int)(edge)
 	sys_x := x
 	sys_y := y
 	sys_width := width
@@ -3358,11 +3358,11 @@ func PaintResizeGrip(style *Style, cr *cairo.Context, stateType int, widget *Wid
 }
 
 // PaintShadow is analogous to the C function gtk_paint_shadow.
-func PaintShadow(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintShadow(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
@@ -3373,44 +3373,44 @@ func PaintShadow(style *Style, cr *cairo.Context, stateType int, shadowType int,
 }
 
 // PaintShadowGap is analogous to the C function gtk_paint_shadow_gap.
-func PaintShadowGap(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, gapSide int, gapX int, gapWidth int) {
+func PaintShadowGap(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int, gapSide PositionType, gapX int, gapWidth int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
 	sys_y := y
 	sys_width := width
 	sys_height := height
-	sys_gapSide := gapSide
+	sys_gapSide := (int)(gapSide)
 	sys_gapX := gapX
 	sys_gapWidth := gapWidth
 	gtk.Fn_gtk_paint_shadow_gap(sys_style, sys_cr, sys_stateType, sys_shadowType, sys_widget, sys_detail, sys_x, sys_y, sys_width, sys_height, sys_gapSide, sys_gapX, sys_gapWidth)
 }
 
 // PaintSlider is analogous to the C function gtk_paint_slider.
-func PaintSlider(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int, orientation int) {
+func PaintSlider(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int, orientation Orientation) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
 	sys_y := y
 	sys_width := width
 	sys_height := height
-	sys_orientation := orientation
+	sys_orientation := (int)(orientation)
 	gtk.Fn_gtk_paint_slider(sys_style, sys_cr, sys_stateType, sys_shadowType, sys_widget, sys_detail, sys_x, sys_y, sys_width, sys_height, sys_orientation)
 }
 
 // PaintSpinner is analogous to the C function gtk_paint_spinner.
-func PaintSpinner(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, step uint, x int, y int, width int, height int) {
+func PaintSpinner(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, step uint, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
+	sys_stateType := (int)(stateType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_step := step
@@ -3422,11 +3422,11 @@ func PaintSpinner(style *Style, cr *cairo.Context, stateType int, widget *Widget
 }
 
 // PaintTab is analogous to the C function gtk_paint_tab.
-func PaintTab(style *Style, cr *cairo.Context, stateType int, shadowType int, widget *Widget, detail string, x int, y int, width int, height int) {
+func PaintTab(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int, y int, width int, height int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
-	sys_shadowType := shadowType
+	sys_stateType := (int)(stateType)
+	sys_shadowType := (int)(shadowType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_x := x
@@ -3437,10 +3437,10 @@ func PaintTab(style *Style, cr *cairo.Context, stateType int, shadowType int, wi
 }
 
 // PaintVline is analogous to the C function gtk_paint_vline.
-func PaintVline(style *Style, cr *cairo.Context, stateType int, widget *Widget, detail string, y1 int, y2 int, x int) {
+func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, y1 int, y2 int, x int) {
 	sys_style := style.ToC()
 	sys_cr := cr.ToC()
-	sys_stateType := stateType
+	sys_stateType := (int)(stateType)
 	sys_widget := widget.ToC()
 	sys_detail := detail
 	sys_y1 := y1
@@ -3563,9 +3563,9 @@ func RcParse(filename string) {
 // UNSUPPORTED : gtk_rc_parse_color_full : has [in]out param, color
 
 // RcParsePriority is analogous to the C function gtk_rc_parse_priority.
-func RcParsePriority(scanner *glib.Scanner, priority *int) uint {
+func RcParsePriority(scanner *glib.Scanner, priority *PathPriorityType) uint {
 	sys_scanner := scanner.ToC()
-	sys_priority := priority
+	sys_priority := (*int)(priority)
 	retSys := gtk.Fn_gtk_rc_parse_priority(sys_scanner, sys_priority)
 	ret := retSys
 

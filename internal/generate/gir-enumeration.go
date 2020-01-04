@@ -40,6 +40,7 @@ func (e *Enumeration) init(ns *Namespace) {
 	e.applyAddenda()
 	e.version = versionNew(e.Version)
 	e.namespace.versions.add(e.version)
+	e.goTypeName = makeExportedGoName(e.Name)
 }
 
 func (e *Enumeration) generateLib(f *jen.File, version semver.Version, typeName string) {

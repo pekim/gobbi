@@ -767,8 +767,8 @@ func AttrScaleNew(scaleFactor float64) *Attribute {
 }
 
 // AttrStretchNew is analogous to the C function pango_attr_stretch_new.
-func AttrStretchNew(stretch int) *Attribute {
-	sys_stretch := stretch
+func AttrStretchNew(stretch Stretch) *Attribute {
+	sys_stretch := (int)(stretch)
 	retSys := pango.Fn_pango_attr_stretch_new(sys_stretch)
 	ret := AttributeNewFromC(retSys)
 
@@ -785,8 +785,8 @@ func AttrStrikethroughNew(strikethrough bool) *Attribute {
 }
 
 // AttrStyleNew is analogous to the C function pango_attr_style_new.
-func AttrStyleNew(style int) *Attribute {
-	sys_style := style
+func AttrStyleNew(style Style) *Attribute {
+	sys_style := (int)(style)
 	retSys := pango.Fn_pango_attr_style_new(sys_style)
 	ret := AttributeNewFromC(retSys)
 
@@ -794,8 +794,8 @@ func AttrStyleNew(style int) *Attribute {
 }
 
 // AttrUnderlineNew is analogous to the C function pango_attr_underline_new.
-func AttrUnderlineNew(underline int) *Attribute {
-	sys_underline := underline
+func AttrUnderlineNew(underline Underline) *Attribute {
+	sys_underline := (int)(underline)
 	retSys := pango.Fn_pango_attr_underline_new(sys_underline)
 	ret := AttributeNewFromC(retSys)
 
@@ -803,8 +803,8 @@ func AttrUnderlineNew(underline int) *Attribute {
 }
 
 // AttrVariantNew is analogous to the C function pango_attr_variant_new.
-func AttrVariantNew(variant int) *Attribute {
-	sys_variant := variant
+func AttrVariantNew(variant Variant) *Attribute {
+	sys_variant := (int)(variant)
 	retSys := pango.Fn_pango_attr_variant_new(sys_variant)
 	ret := AttributeNewFromC(retSys)
 
@@ -812,8 +812,8 @@ func AttrVariantNew(variant int) *Attribute {
 }
 
 // AttrWeightNew is analogous to the C function pango_attr_weight_new.
-func AttrWeightNew(weight int) *Attribute {
-	sys_weight := weight
+func AttrWeightNew(weight Weight) *Attribute {
+	sys_weight := (int)(weight)
 	retSys := pango.Fn_pango_attr_weight_new(sys_weight)
 	ret := AttributeNewFromC(retSys)
 
@@ -873,9 +873,9 @@ func Itemize(context *Context, text string, startIndex int, length int, attrs *A
 }
 
 // ItemizeWithBaseDir is analogous to the C function pango_itemize_with_base_dir.
-func ItemizeWithBaseDir(context *Context, baseDir int, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) *glib.List {
+func ItemizeWithBaseDir(context *Context, baseDir Direction, text string, startIndex int, length int, attrs *AttrList, cachedIter *AttrIterator) *glib.List {
 	sys_context := context.ToC()
-	sys_baseDir := baseDir
+	sys_baseDir := (int)(baseDir)
 	sys_text := text
 	sys_startIndex := startIndex
 	sys_length := length
@@ -888,10 +888,10 @@ func ItemizeWithBaseDir(context *Context, baseDir int, text string, startIndex i
 }
 
 // Log2visGetEmbeddingLevels is analogous to the C function pango_log2vis_get_embedding_levels.
-func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *int) *uint8 {
+func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *Direction) *uint8 {
 	sys_text := text
 	sys_length := length
-	sys_pbaseDir := pbaseDir
+	sys_pbaseDir := (*int)(pbaseDir)
 	retSys := pango.Fn_pango_log2vis_get_embedding_levels(sys_text, sys_length, sys_pbaseDir)
 	ret := retSys
 

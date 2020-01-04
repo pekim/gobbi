@@ -34,6 +34,10 @@ func (p *Parameter) generateLibArg(g *jen.Group, varName string) {
 			}
 		}
 
+		if p.Type.isBitfield() || p.Type.isEnumeration() {
+			argValue = jen.Parens(jen.Op(p.Type.cType.stars).Int()).Parens(argValue)
+		}
+
 		g.Id(varName).Op(":=").Add(argValue)
 	}
 

@@ -8222,14 +8222,14 @@ func DragGetSelection(context *DragContext) *Atom {
 }
 
 // DragMotion is analogous to the C function gdk_drag_motion.
-func DragMotion(context *DragContext, destWindow *Window, protocol int, xRoot int, yRoot int, suggestedAction int, possibleActions int, time uint32) bool {
+func DragMotion(context *DragContext, destWindow *Window, protocol DragProtocol, xRoot int, yRoot int, suggestedAction DragAction, possibleActions DragAction, time uint32) bool {
 	sys_context := context.ToC()
 	sys_destWindow := destWindow.ToC()
-	sys_protocol := protocol
+	sys_protocol := (int)(protocol)
 	sys_xRoot := xRoot
 	sys_yRoot := yRoot
-	sys_suggestedAction := suggestedAction
-	sys_possibleActions := possibleActions
+	sys_suggestedAction := (int)(suggestedAction)
+	sys_possibleActions := (int)(possibleActions)
 	sys_time := time
 	retSys := gdk.Fn_gdk_drag_motion(sys_context, sys_destWindow, sys_protocol, sys_xRoot, sys_yRoot, sys_suggestedAction, sys_possibleActions, sys_time)
 	ret := retSys
@@ -8238,9 +8238,9 @@ func DragMotion(context *DragContext, destWindow *Window, protocol int, xRoot in
 }
 
 // DragStatus is analogous to the C function gdk_drag_status.
-func DragStatus(context *DragContext, action int, time uint32) {
+func DragStatus(context *DragContext, action DragAction, time uint32) {
 	sys_context := context.ToC()
-	sys_action := action
+	sys_action := (int)(action)
 	sys_time := time
 	gdk.Fn_gdk_drag_status(sys_context, sys_action, sys_time)
 }
@@ -8504,10 +8504,10 @@ func PixbufGetFromWindow(window *Window, srcX int, srcY int, width int, height i
 }
 
 // PointerGrab is analogous to the C function gdk_pointer_grab.
-func PointerGrab(window *Window, ownerEvents bool, eventMask int, confineTo *Window, cursor *Cursor, time uint32) int {
+func PointerGrab(window *Window, ownerEvents bool, eventMask EventMask, confineTo *Window, cursor *Cursor, time uint32) int {
 	sys_window := window.ToC()
 	sys_ownerEvents := ownerEvents
-	sys_eventMask := eventMask
+	sys_eventMask := (int)(eventMask)
 	sys_confineTo := confineTo.ToC()
 	sys_cursor := cursor.ToC()
 	sys_time := time
@@ -8537,12 +8537,12 @@ func PreParseLibgtkOnly() {
 }
 
 // PropertyChange is analogous to the C function gdk_property_change.
-func PropertyChange(window *Window, property Atom, type_ Atom, format int, mode int, data *uint8, nelements int) {
+func PropertyChange(window *Window, property Atom, type_ Atom, format int, mode PropMode, data *uint8, nelements int) {
 	sys_window := window.ToC()
 	sys_property := property.ToC()
 	sys_type_ := type_.ToC()
 	sys_format := format
-	sys_mode := mode
+	sys_mode := (int)(mode)
 	sys_data := data
 	sys_nelements := nelements
 	gdk.Fn_gdk_property_change(sys_window, sys_property, sys_type_, sys_format, sys_mode, sys_data, sys_nelements)

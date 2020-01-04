@@ -1689,10 +1689,10 @@ const ZlibCompressorFormat_raw = ZlibCompressorFormat(2)
 // UNSUPPORTED : g_bus_own_name_on_connection : parameter 'name_acquired_handler' is callback
 
 // BusOwnNameOnConnectionWithClosures is analogous to the C function g_bus_own_name_on_connection_with_closures.
-func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string, flags int, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint {
+func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameOwnerFlags, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint {
 	sys_connection := connection.ToC()
 	sys_name := name
-	sys_flags := flags
+	sys_flags := (int)(flags)
 	sys_nameAcquiredClosure := nameAcquiredClosure.ToC()
 	sys_nameLostClosure := nameLostClosure.ToC()
 	retSys := gio.Fn_g_bus_own_name_on_connection_with_closures(sys_connection, sys_name, sys_flags, sys_nameAcquiredClosure, sys_nameLostClosure)
@@ -1702,10 +1702,10 @@ func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string,
 }
 
 // BusOwnNameWithClosures is analogous to the C function g_bus_own_name_with_closures.
-func BusOwnNameWithClosures(busType int, name string, flags int, busAcquiredClosure *gobject.Closure, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint {
-	sys_busType := busType
+func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlags, busAcquiredClosure *gobject.Closure, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint {
+	sys_busType := (int)(busType)
 	sys_name := name
-	sys_flags := flags
+	sys_flags := (int)(flags)
 	sys_busAcquiredClosure := busAcquiredClosure.ToC()
 	sys_nameAcquiredClosure := nameAcquiredClosure.ToC()
 	sys_nameLostClosure := nameLostClosure.ToC()
@@ -1732,10 +1732,10 @@ func BusUnwatchName(watcherId uint) {
 // UNSUPPORTED : g_bus_watch_name_on_connection : parameter 'name_appeared_handler' is callback
 
 // BusWatchNameOnConnectionWithClosures is analogous to the C function g_bus_watch_name_on_connection_with_closures.
-func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name string, flags int, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint {
+func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint {
 	sys_connection := connection.ToC()
 	sys_name := name
-	sys_flags := flags
+	sys_flags := (int)(flags)
 	sys_nameAppearedClosure := nameAppearedClosure.ToC()
 	sys_nameVanishedClosure := nameVanishedClosure.ToC()
 	retSys := gio.Fn_g_bus_watch_name_on_connection_with_closures(sys_connection, sys_name, sys_flags, sys_nameAppearedClosure, sys_nameVanishedClosure)
@@ -1745,10 +1745,10 @@ func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name strin
 }
 
 // BusWatchNameWithClosures is analogous to the C function g_bus_watch_name_with_closures.
-func BusWatchNameWithClosures(busType int, name string, flags int, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint {
-	sys_busType := busType
+func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint {
+	sys_busType := (int)(busType)
 	sys_name := name
-	sys_flags := flags
+	sys_flags := (int)(flags)
 	sys_nameAppearedClosure := nameAppearedClosure.ToC()
 	sys_nameVanishedClosure := nameVanishedClosure.ToC()
 	retSys := gio.Fn_g_bus_watch_name_with_closures(sys_busType, sys_name, sys_flags, sys_nameAppearedClosure, sys_nameVanishedClosure)
