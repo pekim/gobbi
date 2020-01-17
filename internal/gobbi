@@ -42,7 +42,7 @@ buildExamples () {
 }
 
 generate () {
-    go run cmd/generate/*.go $@ 2>&1
+    GOGC=off go run cmd/generate/*.go $@ 2>&1
 }
 
 generateClean () {
