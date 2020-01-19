@@ -18,6 +18,11 @@
     <constant blacklist="true" name="KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX"/>
     <constant blacklist="true" name="WIN32_MSG_HANDLE"/>
 
+    <!-- undocumented and unclear which version introduced -->
+    <constant blacklist="true" name="KEY_FILE_DESKTOP_KEY_FULLNAME"/>
+    <constant blacklist="true" name="KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN"/>
+    <constant blacklist="true" name="KEY_FILE_DESKTOP_KEY_KEYWORDS"/>
+
     <!-- is a macro -->
     <constant blacklist="true" name="LOG_DOMAIN"/>
 
