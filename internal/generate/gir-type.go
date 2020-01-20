@@ -91,3 +91,19 @@ func (t *Type) isQualifiedName() bool {
 func (t *Type) jenGoCType() *jen.Statement {
 	return jen.Parens(jen.Op(t.cType.stars).Qual("C", t.cType.typ))
 }
+
+func (t *Type) idOrQual() *jen.Statement {
+	if t.isQualifiedName() {
+		return jen.Qual(t.foreignNamespace.goFullPackageName, t.foreignName)
+	} else {
+		return jen.Id(t.Name)
+	}
+}
+
+func (t *Type) idOrQualSys() *jen.Statement {
+	if t.isQualifiedName() {
+		return jen.Qual(t.foreignNamespace.goFullSysPackageName, t.foreignName)
+	} else {
+		return jen.Id(t.Name)
+	}
+}

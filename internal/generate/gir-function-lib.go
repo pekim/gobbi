@@ -93,12 +93,7 @@ func (f *Function) generateLibReturnTypeDeclaration(g *jen.Group) {
 	// TODO below belongs in Type.sysParamGoType ???
 	typ := f.ReturnValue.Type
 	if typ.isStruct() {
-		if typ.isQualifiedName() {
-			g.Op("*").Qual(typ.foreignNamespace.goFullPackageName, typ.foreignName)
-		} else {
-			g.Op("*").Id(typ.Name)
-		}
-
+		g.Op("*").Add(typ.idOrQual())
 		return
 	}
 

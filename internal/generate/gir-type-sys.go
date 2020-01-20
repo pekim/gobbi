@@ -42,10 +42,7 @@ func (t *Type) sysParamGoPlainType() *jen.Statement {
 	}
 
 	if t.isRecord() && t.cType.indirectionCount == 0 {
-		if t.isQualifiedName() {
-			return jen.Qual(t.foreignNamespace.goFullSysPackageName, t.foreignName)
-		}
-		return jen.Id(t.Name)
+		return t.idOrQualSys()
 	}
 
 	if t.isStruct() {
