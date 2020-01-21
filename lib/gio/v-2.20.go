@@ -1277,25 +1277,6 @@ func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
 	return ConverterInputStreamNewFromC(object.ToC())
 }
 
-// ConverterInputStreamNew is a wrapper around the C function g_converter_input_stream_new.
-func ConverterInputStreamNew(baseStream *InputStream, converter *Converter) *ConverterInputStream {
-	c_base_stream := (*C.GInputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GInputStream)(baseStream.ToC())
-	}
-
-	c_converter := (*C.GConverter)(converter.ToC())
-
-	retC := C.g_converter_input_stream_new(c_base_stream, c_converter)
-	retGo := ConverterInputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // PollableInputStream returns the PollableInputStream interface implemented by ConverterInputStream
 func (recv *ConverterInputStream) PollableInputStream() *PollableInputStream {
 	return PollableInputStreamNewFromC(recv.ToC())
@@ -1358,25 +1339,6 @@ func (recv *ConverterOutputStream) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ConverterOutputStream.
 func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream {
 	return ConverterOutputStreamNewFromC(object.ToC())
-}
-
-// ConverterOutputStreamNew is a wrapper around the C function g_converter_output_stream_new.
-func ConverterOutputStreamNew(baseStream *OutputStream, converter *Converter) *ConverterOutputStream {
-	c_base_stream := (*C.GOutputStream)(C.NULL)
-	if baseStream != nil {
-		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
-	}
-
-	c_converter := (*C.GConverter)(converter.ToC())
-
-	retC := C.g_converter_output_stream_new(c_base_stream, c_converter)
-	retGo := ConverterOutputStreamNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
 }
 
 // PollableOutputStream returns the PollableOutputStream interface implemented by ConverterOutputStream

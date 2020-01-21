@@ -235,3 +235,7 @@ func (t *TypeGeneratorString) generateGoToC(g *jen.Group, goVarReference *jen.St
 		Qual("C", "CString").
 		Call(goVarReference)
 }
+
+func (t *TypeGeneratorString) isSupportedByVersion(version *Version) bool {
+	return true
+}

@@ -124,3 +124,7 @@ func (t *TypeGeneratorArgcArgv) generateGoToC(g *jen.Group, goVarReference *jen.
 
 func (t *TypeGeneratorArgcArgv) generateCallBoolToGboolean(g *jen.Group, goVarReference *jen.Statement) {
 }
+
+func (t *TypeGeneratorArgcArgv) isSupportedByVersion(version *Version) bool {
+	return true
+}

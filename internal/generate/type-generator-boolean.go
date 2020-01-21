@@ -131,3 +131,7 @@ func (t *TypeGeneratorBoolean) generateCallBoolToGboolean(g *jen.Group, goVarRef
 		Id("boolToGboolean").
 		Call(goVarReference)
 }
+
+func (t *TypeGeneratorBoolean) isSupportedByVersion(version *Version) bool {
+	return true
+}

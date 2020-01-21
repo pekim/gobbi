@@ -173,3 +173,7 @@ func (t *TypeGeneratorNumber) generateGoToC(g *jen.Group, goVarReference *jen.St
 		Parens(jen.Qual("C", t.typ.cTypeName)).
 		Parens(goVarReference)
 }
+
+func (t *TypeGeneratorNumber) isSupportedByVersion(version *Version) bool {
+	return true
+}

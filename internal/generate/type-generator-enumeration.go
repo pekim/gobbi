@@ -172,3 +172,7 @@ func (t *TypeGeneratorEnumeration) generateGoToC(g *jen.Group, goVarReference *j
 		Parens(jen.Qual("C", ctype)).
 		Parens(goVarReference)
 }
+
+func (t *TypeGeneratorEnumeration) isSupportedByVersion(version *Version) bool {
+	return true
+}

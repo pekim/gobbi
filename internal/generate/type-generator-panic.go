@@ -97,3 +97,7 @@ func (t *TypeGeneratorPanic) generateReturnCToGo(g *jen.Group, isParam bool, cVa
 func (t *TypeGeneratorPanic) generateArrayReturnCToGo(g *jen.Group, isParam bool, cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
 	panic("not supported by type generator")
 }
+
+func (t *TypeGeneratorPanic) isSupportedByVersion(version *Version) bool {
+	return true
+}

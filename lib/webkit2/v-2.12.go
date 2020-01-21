@@ -1361,18 +1361,6 @@ func (recv *ContextMenu) RemoveAll() {
 	return
 }
 
-// SetUserData is a wrapper around the C function webkit_context_menu_set_user_data.
-func (recv *ContextMenu) SetUserData(userData *glib.Variant) {
-	c_user_data := (*C.GVariant)(C.NULL)
-	if userData != nil {
-		c_user_data = (*C.GVariant)(userData.ToC())
-	}
-
-	C.webkit_context_menu_set_user_data((*C.WebKitContextMenu)(recv.native), c_user_data)
-
-	return
-}
-
 // ContextMenuItem is a wrapper around the C record WebKitContextMenuItem.
 type ContextMenuItem struct {
 	native *C.WebKitContextMenuItem
@@ -6173,21 +6161,6 @@ func WebContextGetDefault() *WebContext {
 	return retGo
 }
 
-// AllowTlsCertificateForHost is a wrapper around the C function webkit_web_context_allow_tls_certificate_for_host.
-func (recv *WebContext) AllowTlsCertificateForHost(certificate *gio.TlsCertificate, host string) {
-	c_certificate := (*C.GTlsCertificate)(C.NULL)
-	if certificate != nil {
-		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
-	}
-
-	c_host := C.CString(host)
-	defer C.free(unsafe.Pointer(c_host))
-
-	C.webkit_web_context_allow_tls_certificate_for_host((*C.WebKitWebContext)(recv.native), c_certificate, c_host)
-
-	return
-}
-
 // ClearCache is a wrapper around the C function webkit_web_context_clear_cache.
 func (recv *WebContext) ClearCache() {
 	C.webkit_web_context_clear_cache((*C.WebKitWebContext)(recv.native))
@@ -6439,18 +6412,6 @@ func (recv *WebContext) SetWebExtensionsDirectory(directory string) {
 	defer C.free(unsafe.Pointer(c_directory))
 
 	C.webkit_web_context_set_web_extensions_directory((*C.WebKitWebContext)(recv.native), c_directory)
-
-	return
-}
-
-// SetWebExtensionsInitializationUserData is a wrapper around the C function webkit_web_context_set_web_extensions_initialization_user_data.
-func (recv *WebContext) SetWebExtensionsInitializationUserData(userData *glib.Variant) {
-	c_user_data := (*C.GVariant)(C.NULL)
-	if userData != nil {
-		c_user_data = (*C.GVariant)(userData.ToC())
-	}
-
-	C.webkit_web_context_set_web_extensions_initialization_user_data((*C.WebKitWebContext)(recv.native), c_user_data)
 
 	return
 }
@@ -9163,22 +9124,6 @@ func (recv *WebView) GetTitle() string {
 	return retGo
 }
 
-// GetTlsInfo is a wrapper around the C function webkit_web_view_get_tls_info.
-func (recv *WebView) GetTlsInfo() (bool, *gio.TlsCertificate, gio.TlsCertificateFlags) {
-	var c_certificate *C.GTlsCertificate
-
-	var c_errors C.GTlsCertificateFlags
-
-	retC := C.webkit_web_view_get_tls_info((*C.WebKitWebView)(recv.native), &c_certificate, &c_errors)
-	retGo := retC == C.TRUE
-
-	certificate := gio.TlsCertificateNewFromC(unsafe.Pointer(c_certificate))
-
-	errors := (gio.TlsCertificateFlags)(c_errors)
-
-	return retGo, certificate, errors
-}
-
 // GetUri is a wrapper around the C function webkit_web_view_get_uri.
 func (recv *WebView) GetUri() string {
 	retC := C.webkit_web_view_get_uri((*C.WebKitWebView)(recv.native))
@@ -9273,27 +9218,6 @@ func (recv *WebView) LoadAlternateHtml(content string, contentUri string, baseUr
 	defer C.free(unsafe.Pointer(c_base_uri))
 
 	C.webkit_web_view_load_alternate_html((*C.WebKitWebView)(recv.native), c_content, c_content_uri, c_base_uri)
-
-	return
-}
-
-// LoadBytes is a wrapper around the C function webkit_web_view_load_bytes.
-func (recv *WebView) LoadBytes(bytes *glib.Bytes, mimeType string, encoding string, baseUri string) {
-	c_bytes := (*C.GBytes)(C.NULL)
-	if bytes != nil {
-		c_bytes = (*C.GBytes)(bytes.ToC())
-	}
-
-	c_mime_type := C.CString(mimeType)
-	defer C.free(unsafe.Pointer(c_mime_type))
-
-	c_encoding := C.CString(encoding)
-	defer C.free(unsafe.Pointer(c_encoding))
-
-	c_base_uri := C.CString(baseUri)
-	defer C.free(unsafe.Pointer(c_base_uri))
-
-	C.webkit_web_view_load_bytes((*C.WebKitWebView)(recv.native), c_bytes, c_mime_type, c_encoding, c_base_uri)
 
 	return
 }
@@ -13310,19 +13234,6 @@ func (recv *WebViewSessionState) ToC() unsafe.Pointer {
 // Equals compares this WebViewSessionState with another WebViewSessionState, and returns true if they represent the same GObject.
 func (recv *WebViewSessionState) Equals(other *WebViewSessionState) bool {
 	return other.ToC() == recv.ToC()
-}
-
-// WebViewSessionStateNew is a wrapper around the C function webkit_web_view_session_state_new.
-func WebViewSessionStateNew(data *glib.Bytes) *WebViewSessionState {
-	c_data := (*C.GBytes)(C.NULL)
-	if data != nil {
-		c_data = (*C.GBytes)(data.ToC())
-	}
-
-	retC := C.webkit_web_view_session_state_new(c_data)
-	retGo := WebViewSessionStateNewFromC(unsafe.Pointer(retC))
-
-	return retGo
 }
 
 // Ref is a wrapper around the C function webkit_web_view_session_state_ref.

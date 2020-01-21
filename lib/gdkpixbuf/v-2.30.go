@@ -1672,29 +1672,6 @@ func (recv *PixbufLoader) Write(buf []uint8) (bool, error) {
 	return retGo, goError
 }
 
-// WriteBytes is a wrapper around the C function gdk_pixbuf_loader_write_bytes.
-func (recv *PixbufLoader) WriteBytes(buffer *glib.Bytes) (bool, error) {
-	c_buffer := (*C.GBytes)(C.NULL)
-	if buffer != nil {
-		c_buffer = (*C.GBytes)(buffer.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.gdk_pixbuf_loader_write_bytes((*C.GdkPixbufLoader)(recv.native), c_buffer, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	var goError error = nil
-	if cThrowableError != nil {
-		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-		goError = goThrowableError
-
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goError
-}
-
 // PixbufSimpleAnim is a wrapper around the C record GdkPixbufSimpleAnim.
 type PixbufSimpleAnim struct {
 	native *C.GdkPixbufSimpleAnim

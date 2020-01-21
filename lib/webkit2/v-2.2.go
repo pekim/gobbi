@@ -7989,22 +7989,6 @@ func (recv *WebView) GetTitle() string {
 	return retGo
 }
 
-// GetTlsInfo is a wrapper around the C function webkit_web_view_get_tls_info.
-func (recv *WebView) GetTlsInfo() (bool, *gio.TlsCertificate, gio.TlsCertificateFlags) {
-	var c_certificate *C.GTlsCertificate
-
-	var c_errors C.GTlsCertificateFlags
-
-	retC := C.webkit_web_view_get_tls_info((*C.WebKitWebView)(recv.native), &c_certificate, &c_errors)
-	retGo := retC == C.TRUE
-
-	certificate := gio.TlsCertificateNewFromC(unsafe.Pointer(c_certificate))
-
-	errors := (gio.TlsCertificateFlags)(c_errors)
-
-	return retGo, certificate, errors
-}
-
 // GetUri is a wrapper around the C function webkit_web_view_get_uri.
 func (recv *WebView) GetUri() string {
 	retC := C.webkit_web_view_get_uri((*C.WebKitWebView)(recv.native))

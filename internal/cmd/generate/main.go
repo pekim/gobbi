@@ -31,6 +31,8 @@ var libraries = []library{
 	{version: "1.0", name: "PangoFT2"},
 	{version: "2.4", name: "Soup"},
 	{version: "4.0", name: "WebKit2"},
+
+	{version: "2.0", name: "GIRepository"},
 }
 
 func main() {

@@ -248,3 +248,11 @@ func (t *TypeGeneratorInterface) generateGoToC(g *jen.Group, goVarReference *jen
 		Parens(jen.Op("*").Qual("C", t.iface.CType)).
 		Parens(goVarReference.Dot("ToC").Call())
 }
+
+func (t *TypeGeneratorInterface) isSupportedByVersion(version *Version) bool {
+	return supportedByVersion(t, version)
+}
+
+func (t *TypeGeneratorInterface) version() string {
+	return t.iface.Version
+}

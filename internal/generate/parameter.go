@@ -67,6 +67,13 @@ func (p *Parameter) initAlias(ns *Namespace, alias *Alias) {
 	}
 }
 
+func (p *Parameter) isSupportedByVersion(version *Version) bool {
+	if p.Type == nil || p.Type.generator == nil {
+		return true
+	}
+	return p.Type.generator.isSupportedByVersion(version)
+}
+
 func (p *Parameter) isSupported() (bool, string) {
 	if p.formatString || p.formatArgs {
 		return true, ""

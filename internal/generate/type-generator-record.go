@@ -262,3 +262,7 @@ func (t *TypeGeneratorRecord) generateGoToC(g *jen.Group, goVarReference *jen.St
 		Parens(jen.Op("*").Qual("C", t.record.CType)).
 		Parens(goVarReference.Dot("ToC").Call())
 }
+
+func (t *TypeGeneratorRecord) isSupportedByVersion(version *Version) bool {
+	return supportedByVersion(t.record, version)
+}

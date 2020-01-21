@@ -90,3 +90,7 @@ func (t *TypeGeneratorIgnore) generateGoToC(g *jen.Group, goVarReference *jen.St
 
 func (t *TypeGeneratorIgnore) generateCallBoolToGboolean(g *jen.Group, goVarReference *jen.Statement) {
 }
+
+func (t *TypeGeneratorIgnore) isSupportedByVersion(version *Version) bool {
+	return true
+}

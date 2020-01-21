@@ -5790,18 +5790,6 @@ func (recv *WebContext) SetWebExtensionsDirectory(directory string) {
 	return
 }
 
-// SetWebExtensionsInitializationUserData is a wrapper around the C function webkit_web_context_set_web_extensions_initialization_user_data.
-func (recv *WebContext) SetWebExtensionsInitializationUserData(userData *glib.Variant) {
-	c_user_data := (*C.GVariant)(C.NULL)
-	if userData != nil {
-		c_user_data = (*C.GVariant)(userData.ToC())
-	}
-
-	C.webkit_web_context_set_web_extensions_initialization_user_data((*C.WebKitWebContext)(recv.native), c_user_data)
-
-	return
-}
-
 // WebInspector is a wrapper around the C record WebKitWebInspector.
 type WebInspector struct {
 	native *C.WebKitWebInspector
@@ -8154,22 +8142,6 @@ func (recv *WebView) GetTitle() string {
 	retGo := C.GoString(retC)
 
 	return retGo
-}
-
-// GetTlsInfo is a wrapper around the C function webkit_web_view_get_tls_info.
-func (recv *WebView) GetTlsInfo() (bool, *gio.TlsCertificate, gio.TlsCertificateFlags) {
-	var c_certificate *C.GTlsCertificate
-
-	var c_errors C.GTlsCertificateFlags
-
-	retC := C.webkit_web_view_get_tls_info((*C.WebKitWebView)(recv.native), &c_certificate, &c_errors)
-	retGo := retC == C.TRUE
-
-	certificate := gio.TlsCertificateNewFromC(unsafe.Pointer(c_certificate))
-
-	errors := (gio.TlsCertificateFlags)(c_errors)
-
-	return retGo, certificate, errors
 }
 
 // GetUri is a wrapper around the C function webkit_web_view_get_uri.

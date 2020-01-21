@@ -107,6 +107,12 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 		return
 	}
 
+	for _, param := range f.Parameters {
+		if !param.isSupportedByVersion(version) {
+			return
+		}
+	}
+
 	if f.MovedTo != "" {
 		return
 	}

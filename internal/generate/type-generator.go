@@ -7,6 +7,8 @@ import (
 // TypeGenerator is an interface where implementors provide generator
 // support for a type or types.
 type TypeGenerator interface {
+	isSupportedByVersion(version *Version) bool
+
 	isSupportedAsField() (supported bool, reason string)
 	isSupportedAsParam(direction string) (supported bool, reason string)
 	isSupportedAsParamC() (supported bool, reason string)

@@ -838,28 +838,6 @@ func ValueNewString(context *Context, string_ string) *Value {
 	return retGo
 }
 
-// ValueNewStringFromBytes is a wrapper around the C function jsc_value_new_string_from_bytes.
-func ValueNewStringFromBytes(context *Context, bytes *glib.Bytes) *Value {
-	c_context := (*C.JSCContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.JSCContext)(context.ToC())
-	}
-
-	c_bytes := (*C.GBytes)(C.NULL)
-	if bytes != nil {
-		c_bytes = (*C.GBytes)(bytes.ToC())
-	}
-
-	retC := C.jsc_value_new_string_from_bytes(c_context, c_bytes)
-	retGo := ValueNewFromC(unsafe.Pointer(retC))
-
-	if retC != nil {
-		C.g_object_unref((C.gpointer)(retC))
-	}
-
-	return retGo
-}
-
 // ValueNewUndefined is a wrapper around the C function jsc_value_new_undefined.
 func ValueNewUndefined(context *Context) *Value {
 	c_context := (*C.JSCContext)(C.NULL)
