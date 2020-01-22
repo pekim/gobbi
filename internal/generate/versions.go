@@ -40,6 +40,18 @@ func versionIsNone(version semver.Version) bool {
 	return version.EQ(noVersion)
 }
 
+func generateEntityForVersion(targetVersion semver.Version, entityVersion semver.Version) bool {
+	if versionIsNone(targetVersion) && versionIsNone(entityVersion) {
+		return true
+	}
+
+	if entityVersion.EQ(targetVersion) {
+		return true
+	}
+
+	return false
+}
+
 func versionString(version semver.Version) string {
 	if version.Patch == 0 {
 		return strings.TrimSuffix(version.String(), ".0")

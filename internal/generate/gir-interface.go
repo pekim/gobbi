@@ -15,7 +15,7 @@ func (i *Interface) generateSys(f *jen.File, version semver.Version) {
 }
 
 func (i *Interface) generateLib(f *jen.File, version semver.Version) {
-	if i.version.GT(version) {
+	if !generateEntityForVersion(version, i.version) {
 		return
 	}
 

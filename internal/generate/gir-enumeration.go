@@ -49,7 +49,7 @@ func (e *Enumeration) generateLib(f *jen.File, version semver.Version, typeName 
 		return
 	}
 
-	if e.version.GT(version) {
+	if !generateEntityForVersion(version, e.version) {
 		return
 	}
 

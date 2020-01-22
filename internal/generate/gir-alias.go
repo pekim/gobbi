@@ -33,7 +33,7 @@ func (a *Alias) generateLib(f *jen.File, version semver.Version) {
 		return
 	}
 
-	if a.version.GT(version) {
+	if !generateEntityForVersion(version, a.version) {
 		return
 	}
 

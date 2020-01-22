@@ -50,7 +50,7 @@ func (c *Constant) init(ns *Namespace) {
 }
 
 func (c *Constant) generateLib(f *jen.File, version semver.Version) {
-	if c.version.GT(version) {
+	if !generateEntityForVersion(version, c.version) {
 		return
 	}
 
