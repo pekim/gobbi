@@ -24,6 +24,10 @@ func (u *Union) init(ns *Namespace) {
 }
 
 func (u *Union) generateLib(f *jen.File, version semver.Version) {
+	if !versionIsNone(version) {
+		return
+	}
+
 	if u.blacklist {
 		f.Commentf("UNSUPPORTED : %s : blacklisted", u.Name)
 		return

@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gdk_3.18
+// +build gdk_3.18 gdk_3.20 gdk_3.22 gdk_3.24
 
 package gdk
 
@@ -8,16 +8,6 @@ import "unsafe"
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 // UNSUPPORTED : gdk_event_handler_set : parameter 'func' is callback
 

@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gtk_3.4
+// +build gtk_3.4 gtk_3.6 gtk_3.8 gtk_3.10 gtk_3.12 gtk_3.14 gtk_3.16 gtk_3.18 gtk_3.20 gtk_3.22 gtk_3.22.6 gtk_3.22.26 gtk_3.22.29 gtk_3.24
 
 package gtk
 
@@ -19,16 +19,6 @@ static void c_gtk_actionable_set_action_target(GtkActionable* actionable, const 
 }
 */
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 // UNSUPPORTED : EventControllerMotionClass : blacklisted
 // UNSUPPORTED : EventControllerScrollClass : blacklisted

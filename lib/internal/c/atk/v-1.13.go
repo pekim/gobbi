@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build atk_1.13
+// +build atk_1.13 atk_1.20 atk_1.30 atk_2.7.4 atk_2.8 atk_2.10 atk_2.12 atk_2.14 atk_2.30 atk_2.32 atk_2.34
 
 package atk
 
@@ -8,16 +8,6 @@ import "unsafe"
 // #include <atk/atk.h>
 // #include <stdlib.h>
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 // UNSUPPORTED : atk_add_focus_tracker : parameter 'focus_tracker' is callback
 

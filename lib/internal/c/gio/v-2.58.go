@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gio_2.58
+// +build gio_2.58 gio_2.60 gio_2.62
 
 package gio
 
@@ -19,16 +19,6 @@ import "unsafe"
 // #include <gio/gnetworking.h>
 // #include <stdlib.h>
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 // UNSUPPORTED : NativeSocketAddressClass : blacklisted
 // UNSUPPORTED : NativeSocketAddressPrivate : blacklisted

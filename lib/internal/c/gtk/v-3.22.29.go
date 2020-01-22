@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gtk_3.22.29
+// +build gtk_3.22.29 gtk_3.24
 
 package gtk
 
@@ -10,16 +10,6 @@ import "unsafe"
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 // UNSUPPORTED : EventControllerMotionClass : blacklisted
 // UNSUPPORTED : EventControllerScrollClass : blacklisted

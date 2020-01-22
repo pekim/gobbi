@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build glib_2.56
+// +build glib_2.56 glib_2.58 glib_2.60 glib_2.62
 
 package glib
 
@@ -8,16 +8,6 @@ package glib
 // #include <glib-object.h>
 // #include <stdlib.h>
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 // UNSUPPORTED : TestLogMsg : blacklisted
 // UNSUPPORTED : g_array_append_vals : blacklisted

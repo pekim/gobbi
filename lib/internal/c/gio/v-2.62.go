@@ -20,16 +20,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
-
 // UNSUPPORTED : NativeSocketAddressClass : blacklisted
 // UNSUPPORTED : NativeSocketAddressPrivate : blacklisted
 // UNSUPPORTED : SettingsBackendClass : blacklisted

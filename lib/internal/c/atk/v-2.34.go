@@ -9,16 +9,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
-
 // UNSUPPORTED : atk_add_focus_tracker : parameter 'focus_tracker' is callback
 
 // UNSUPPORTED : atk_add_global_event_listener : parameter 'listener' is callback

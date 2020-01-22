@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gtk_3.22.26
+// +build gtk_3.22.26 gtk_3.22.29 gtk_3.24
 
 package gtk
 

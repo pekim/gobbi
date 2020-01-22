@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gio_2.52
+// +build gio_2.52 gio_2.54 gio_2.56 gio_2.58 gio_2.60 gio_2.62
 
 package gio
 

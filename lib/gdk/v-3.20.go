@@ -1,12 +1,11 @@
 // Code generated - DO NOT EDIT.
-// +build gdk_3.20
+// +build gdk_3.20 gdk_3.22 gdk_3.24
 
 package gdk
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gdk "github.com/pekim/gobbi/lib/internal/c/gdk"
-	"unsafe"
 )
 
 // UNSUPPORTED : XEvent : blacklisted
@@ -118,18 +117,3 @@ func DragDropDone(context *DragContext, success bool) {
 // UNSUPPORTED : gdk_threads_add_timeout_seconds_full : parameter 'function' is callback
 
 // UNSUPPORTED : gdk_threads_set_lock_functions : parameter 'enter_fn' is callback
-
-// Event is a representation of the C union GdkEvent.
-type Event struct {
-	native unsafe.Pointer
-}
-
-// ToC returns a pointer to the C GdkEvent that represents the Event.
-func (recv *Event) ToC() unsafe.Pointer {
-	return recv.native
-}
-
-// EventNewFromC creates a new Event from a pointer to the C GdkEvent that represents the Event.
-func EventNewFromC(native unsafe.Pointer) *Event {
-	return &Event{native: native}
-}

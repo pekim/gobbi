@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build pango_1.32.4
+// +build pango_1.32.4 pango_1.34 pango_1.36.7 pango_1.38 pango_1.42
 
 package pango
 
@@ -10,16 +10,6 @@ import "unsafe"
 // #include <pango/pango-modules.h>
 // #include <stdlib.h>
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 // UNSUPPORTED : EngineClass : blacklisted
 // UNSUPPORTED : EngineInfo : blacklisted

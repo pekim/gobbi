@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gdkpixbuf_2.22
+// +build gdkpixbuf_2.22 gdkpixbuf_2.24 gdkpixbuf_2.26 gdkpixbuf_2.28 gdkpixbuf_2.30 gdkpixbuf_2.32 gdkpixbuf_2.36 gdkpixbuf_2.36.8 gdkpixbuf_2.40
 
 package gdkpixbuf
 
@@ -9,15 +9,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 func Fn_gdk_pixbuf_format_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GdkPixbufFormat)(unsafe.Pointer(paramInstance))
 

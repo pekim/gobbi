@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build pango_1.38
+// +build pango_1.38 pango_1.42
 
 package pango
 

@@ -9,16 +9,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
-
 // UNSUPPORTED : gdk_pixbuf_format_get_extensions : no array length
 
 // UNSUPPORTED : gdk_pixbuf_format_get_mime_types : no array length

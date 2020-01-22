@@ -1,21 +1,11 @@
 // Code generated - DO NOT EDIT.
-// +build gdkpixbuf_2.36.8
+// +build gdkpixbuf_2.36.8 gdkpixbuf_2.40
 
 package gdkpixbuf
 
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 // UNSUPPORTED : gdk_pixbuf_format_get_extensions : no array length
 

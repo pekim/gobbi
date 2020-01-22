@@ -9,16 +9,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
-
 // UNSUPPORTED : gdk_event_handler_set : parameter 'func' is callback
 
 // UNSUPPORTED : gdk_pango_layout_line_get_clip_region : parameter 'index_ranges' is array parameter without length parameter

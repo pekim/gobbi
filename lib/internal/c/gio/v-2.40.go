@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gio_2.40
+// +build gio_2.40 gio_2.42 gio_2.44 gio_2.46 gio_2.48 gio_2.50 gio_2.52 gio_2.54 gio_2.56 gio_2.58 gio_2.60 gio_2.62
 
 package gio
 
@@ -37,16 +37,6 @@ static GSubprocess* c_g_subprocess_launcher_spawn(GSubprocessLauncher* self, GEr
 }
 */
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 // UNSUPPORTED : NativeSocketAddressClass : blacklisted
 // UNSUPPORTED : NativeSocketAddressPrivate : blacklisted

@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gobject_2.26
+// +build gobject_2.26 gobject_2.28 gobject_2.30 gobject_2.32 gobject_2.34 gobject_2.36 gobject_2.38 gobject_2.42 gobject_2.44 gobject_2.46 gobject_2.54 gobject_2.62
 
 package gobject
 
@@ -9,15 +9,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 func Fn_g_cclosure_marshal_VOID__VARIANT(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 unsafe.Pointer) {
 	cValue0 := (*C.GClosure)(unsafe.Pointer(param0))
 

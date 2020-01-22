@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build glib_2.24
+// +build glib_2.24 glib_2.26 glib_2.28 glib_2.30 glib_2.32 glib_2.34 glib_2.36 glib_2.38 glib_2.40 glib_2.44 glib_2.46 glib_2.48 glib_2.50 glib_2.52 glib_2.54 glib_2.56 glib_2.58 glib_2.60 glib_2.62
 
 package glib
 
@@ -8,16 +8,6 @@ package glib
 // #include <glib-object.h>
 // #include <stdlib.h>
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 // UNSUPPORTED : TestLogMsg : blacklisted
 type Variant C.GVariant

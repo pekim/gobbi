@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gdk_3.20
+// +build gdk_3.20 gdk_3.22 gdk_3.24
 
 package gdk
 
@@ -9,15 +9,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 func Fn_gdk_rectangle_equal(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
 	cValueInstance := (*C.GdkRectangle)(unsafe.Pointer(paramInstance))
 

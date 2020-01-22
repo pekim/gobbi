@@ -9,16 +9,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
-
 // UNSUPPORTED : g_cclosure_new : parameter 'callback_func' is callback
 
 // UNSUPPORTED : g_cclosure_new_object : parameter 'callback_func' is callback

@@ -150,27 +150,26 @@ func (n *Namespace) getUnsupportedCount(dir string) int {
 }
 
 func (ns *Namespace) generateFileBuildTags(f *jen.File, version semver.Version) {
-	var buildTags string
-
 	if versionIsNone(version) {
-		versions := []string{}
-		for _, v := range ns.versions.versions {
-			if versionIsNone(v) {
-				continue
-			}
-
-			versions = append(versions, "!"+ns.goPackageName+"_"+versionString(v))
-		}
-
-		// !pkg_1.20,!pkg_1.22,!pgk_1.30,..
-		buildTags = strings.Join(versions, ",")
-	} else {
-		buildTags = fmt.Sprintf("%s_%s", ns.goPackageName, versionString(version))
-	}
-
-	if buildTags == "" {
 		return
 	}
+
+	versions := []string{}
+	for _, v := range ns.versions.versions {
+		if versionIsNone(v) {
+			continue
+		}
+
+		if v.GE(version) {
+			versions = append(versions, ns.goPackageName+"_"+versionString(v))
+		}
+	}
+
+	// pkg_1.20 pkg_1.22 pgk_1.30,...
+	//
+	// Which will be used like this when building.
+	//     pkg_1.20 OR pkg_1.22 OR pgk_1.30 OR ...
+	buildTags := strings.Join(versions, " ")
 
 	f.HeaderComment(fmt.Sprintf("+build %s", buildTags))
 	f.Line()

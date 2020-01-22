@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build pango_1.26
+// +build pango_1.26 pango_1.30 pango_1.31 pango_1.32 pango_1.32.4 pango_1.34 pango_1.36.7 pango_1.38 pango_1.42
 
 package pango
 
@@ -8,16 +8,6 @@ package pango
 // #include <pango/pango-modules.h>
 // #include <stdlib.h>
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 // UNSUPPORTED : EngineClass : blacklisted
 // UNSUPPORTED : EngineInfo : blacklisted

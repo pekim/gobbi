@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build glib_2.14
+// +build glib_2.14 glib_2.16 glib_2.18 glib_2.20 glib_2.22 glib_2.24 glib_2.26 glib_2.28 glib_2.30 glib_2.32 glib_2.34 glib_2.36 glib_2.38 glib_2.40 glib_2.44 glib_2.46 glib_2.48 glib_2.50 glib_2.52 glib_2.54 glib_2.56 glib_2.58 glib_2.60 glib_2.62
 
 package glib
 
@@ -1672,63 +1672,3 @@ func RegexNewFromC(native unsafe.Pointer) *Regex {
 }
 
 // UNSUPPORTED : TestLogMsg : blacklisted
-
-// DoubleIEEE754 is a representation of the C union GDoubleIEEE754.
-type DoubleIEEE754 struct {
-	native unsafe.Pointer
-}
-
-// ToC returns a pointer to the C GDoubleIEEE754 that represents the DoubleIEEE754.
-func (recv *DoubleIEEE754) ToC() unsafe.Pointer {
-	return recv.native
-}
-
-// DoubleIEEE754NewFromC creates a new DoubleIEEE754 from a pointer to the C GDoubleIEEE754 that represents the DoubleIEEE754.
-func DoubleIEEE754NewFromC(native unsafe.Pointer) *DoubleIEEE754 {
-	return &DoubleIEEE754{native: native}
-}
-
-// FloatIEEE754 is a representation of the C union GFloatIEEE754.
-type FloatIEEE754 struct {
-	native unsafe.Pointer
-}
-
-// ToC returns a pointer to the C GFloatIEEE754 that represents the FloatIEEE754.
-func (recv *FloatIEEE754) ToC() unsafe.Pointer {
-	return recv.native
-}
-
-// FloatIEEE754NewFromC creates a new FloatIEEE754 from a pointer to the C GFloatIEEE754 that represents the FloatIEEE754.
-func FloatIEEE754NewFromC(native unsafe.Pointer) *FloatIEEE754 {
-	return &FloatIEEE754{native: native}
-}
-
-// Mutex is a representation of the C union GMutex.
-type Mutex struct {
-	native unsafe.Pointer
-}
-
-// ToC returns a pointer to the C GMutex that represents the Mutex.
-func (recv *Mutex) ToC() unsafe.Pointer {
-	return recv.native
-}
-
-// MutexNewFromC creates a new Mutex from a pointer to the C GMutex that represents the Mutex.
-func MutexNewFromC(native unsafe.Pointer) *Mutex {
-	return &Mutex{native: native}
-}
-
-// TokenValue is a representation of the C union GTokenValue.
-type TokenValue struct {
-	native unsafe.Pointer
-}
-
-// ToC returns a pointer to the C GTokenValue that represents the TokenValue.
-func (recv *TokenValue) ToC() unsafe.Pointer {
-	return recv.native
-}
-
-// TokenValueNewFromC creates a new TokenValue from a pointer to the C GTokenValue that represents the TokenValue.
-func TokenValueNewFromC(native unsafe.Pointer) *TokenValue {
-	return &TokenValue{native: native}
-}

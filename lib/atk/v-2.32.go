@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build atk_2.32
+// +build atk_2.32 atk_2.34
 
 package atk
 

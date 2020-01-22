@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gdk_3.16
+// +build gdk_3.16 gdk_3.18 gdk_3.20 gdk_3.22 gdk_3.24
 
 package gdk
 
@@ -8,16 +8,6 @@ import "unsafe"
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 func Fn_gdk_cairo_draw_from_gl(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 int, param5 int, param6 int, param7 int, param8 int) {
 	cValue0 := (*C.cairo_t)(unsafe.Pointer(param0))

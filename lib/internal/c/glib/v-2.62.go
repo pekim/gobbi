@@ -9,16 +9,6 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
-
 // UNSUPPORTED : TestLogMsg : blacklisted
 // UNSUPPORTED : g_array_append_vals : blacklisted
 

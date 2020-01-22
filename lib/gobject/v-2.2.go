@@ -1,9 +1,7 @@
 // Code generated - DO NOT EDIT.
-// +build gobject_2.2
+// +build gobject_2.2 gobject_2.4 gobject_2.6 gobject_2.8 gobject_2.10 gobject_2.12 gobject_2.18 gobject_2.24 gobject_2.26 gobject_2.28 gobject_2.30 gobject_2.32 gobject_2.34 gobject_2.36 gobject_2.38 gobject_2.42 gobject_2.44 gobject_2.46 gobject_2.54 gobject_2.62
 
 package gobject
-
-import "unsafe"
 
 // UNSUPPORTED : SignalCMarshaller : blacklisted
 
@@ -70,20 +68,3 @@ import "unsafe"
 // UNSUPPORTED : g_type_remove_interface_check : parameter 'check_func' is callback
 
 // UNSUPPORTED : g_value_register_transform_func : parameter 'transform_func' is callback
-
-// TypeCValue is a representation of the C union GTypeCValue.
-type TypeCValue struct {
-	native unsafe.Pointer
-}
-
-// ToC returns a pointer to the C GTypeCValue that represents the TypeCValue.
-func (recv *TypeCValue) ToC() unsafe.Pointer {
-	return recv.native
-}
-
-// TypeCValueNewFromC creates a new TypeCValue from a pointer to the C GTypeCValue that represents the TypeCValue.
-func TypeCValueNewFromC(native unsafe.Pointer) *TypeCValue {
-	return &TypeCValue{native: native}
-}
-
-// UNSUPPORTED : _Value__data__union : blacklisted

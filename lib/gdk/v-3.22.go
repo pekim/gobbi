@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gdk_3.22
+// +build gdk_3.22 gdk_3.24
 
 package gdk
 
@@ -239,19 +239,4 @@ func (recv *EventPadGroupMode) ToC() unsafe.Pointer {
 // EventPadGroupModeNewFromC creates a new EventPadGroupMode from a pointer to the C GdkEventPadGroupMode that represents the EventPadGroupMode.
 func EventPadGroupModeNewFromC(native unsafe.Pointer) *EventPadGroupMode {
 	return &EventPadGroupMode{native: native}
-}
-
-// Event is a representation of the C union GdkEvent.
-type Event struct {
-	native unsafe.Pointer
-}
-
-// ToC returns a pointer to the C GdkEvent that represents the Event.
-func (recv *Event) ToC() unsafe.Pointer {
-	return recv.native
-}
-
-// EventNewFromC creates a new Event from a pointer to the C GdkEvent that represents the Event.
-func EventNewFromC(native unsafe.Pointer) *Event {
-	return &Event{native: native}
 }

@@ -1,9 +1,7 @@
 // Code generated - DO NOT EDIT.
-// +build gdk_2.16
+// +build gdk_2.16 gdk_2.18 gdk_2.20 gdk_2.22 gdk_2.24 gdk_3.0 gdk_3.4 gdk_3.8 gdk_3.10 gdk_3.12 gdk_3.14 gdk_3.16 gdk_3.18 gdk_3.20 gdk_3.22 gdk_3.24
 
 package gdk
-
-import "unsafe"
 
 // UNSUPPORTED : XEvent : blacklisted
 
@@ -54,18 +52,3 @@ import "unsafe"
 // UNSUPPORTED : gdk_threads_add_timeout_seconds_full : parameter 'function' is callback
 
 // UNSUPPORTED : gdk_threads_set_lock_functions : parameter 'enter_fn' is callback
-
-// Event is a representation of the C union GdkEvent.
-type Event struct {
-	native unsafe.Pointer
-}
-
-// ToC returns a pointer to the C GdkEvent that represents the Event.
-func (recv *Event) ToC() unsafe.Pointer {
-	return recv.native
-}
-
-// EventNewFromC creates a new Event from a pointer to the C GdkEvent that represents the Event.
-func EventNewFromC(native unsafe.Pointer) *Event {
-	return &Event{native: native}
-}

@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gobject_2.32
+// +build gobject_2.32 gobject_2.34 gobject_2.36 gobject_2.38 gobject_2.42 gobject_2.44 gobject_2.46 gobject_2.54 gobject_2.62
 
 package gobject
 
@@ -8,16 +8,6 @@ import "unsafe"
 // #include <glib-object.h>
 // #include <stdlib.h>
 import "C"
-
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 
 // UNSUPPORTED : g_cclosure_new : parameter 'callback_func' is callback
 

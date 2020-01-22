@@ -1,5 +1,5 @@
 // Code generated - DO NOT EDIT.
-// +build gdk_2.10
+// +build gdk_2.10 gdk_2.12 gdk_2.14 gdk_2.16 gdk_2.18 gdk_2.20 gdk_2.22 gdk_2.24 gdk_3.0 gdk_3.4 gdk_3.8 gdk_3.10 gdk_3.12 gdk_3.14 gdk_3.16 gdk_3.18 gdk_3.20 gdk_3.22 gdk_3.24
 
 package gdk
 
@@ -9,15 +9,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-func toCBool(b bool) C.gboolean {
-	if b {
-		return C.TRUE
-	}
-	return C.FALSE
-}
-func toGoBool(b C.gboolean) bool {
-	return b == C.TRUE
-}
 func Fn_gdk_atom_intern_static_string(param0 string) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
