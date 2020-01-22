@@ -917,13 +917,13 @@ const ValueType_last_defined = ValueType(15)
 
 // UNSUPPORTED : atk_focus_tracker_init : parameter 'init' is callback
 
-// FocusTrackerNotify is analogous to the C function atk_focus_tracker_notify.
+// FocusTrackerNotify wraps the C function atk_focus_tracker_notify.
 func FocusTrackerNotify(object *Object) {
 	sys_object := object.ToC()
 	atk.Fn_atk_focus_tracker_notify(sys_object)
 }
 
-// GetBinaryAge is analogous to the C function atk_get_binary_age.
+// GetBinaryAge wraps the C function atk_get_binary_age.
 //
 // since 2.8
 func GetBinaryAge() uint {
@@ -933,7 +933,7 @@ func GetBinaryAge() uint {
 	return ret
 }
 
-// GetDefaultRegistry is analogous to the C function atk_get_default_registry.
+// GetDefaultRegistry wraps the C function atk_get_default_registry.
 func GetDefaultRegistry() *Registry {
 	retSys := atk.Fn_atk_get_default_registry()
 	ret := RegistryNewFromC(retSys)
@@ -941,7 +941,7 @@ func GetDefaultRegistry() *Registry {
 	return ret
 }
 
-// GetFocusObject is analogous to the C function atk_get_focus_object.
+// GetFocusObject wraps the C function atk_get_focus_object.
 //
 // since 1.6
 func GetFocusObject() *Object {
@@ -951,7 +951,7 @@ func GetFocusObject() *Object {
 	return ret
 }
 
-// GetInterfaceAge is analogous to the C function atk_get_interface_age.
+// GetInterfaceAge wraps the C function atk_get_interface_age.
 //
 // since 2.8
 func GetInterfaceAge() uint {
@@ -961,7 +961,7 @@ func GetInterfaceAge() uint {
 	return ret
 }
 
-// GetMajorVersion is analogous to the C function atk_get_major_version.
+// GetMajorVersion wraps the C function atk_get_major_version.
 //
 // since 2.8
 func GetMajorVersion() uint {
@@ -971,7 +971,7 @@ func GetMajorVersion() uint {
 	return ret
 }
 
-// GetMicroVersion is analogous to the C function atk_get_micro_version.
+// GetMicroVersion wraps the C function atk_get_micro_version.
 //
 // since 2.8
 func GetMicroVersion() uint {
@@ -981,7 +981,7 @@ func GetMicroVersion() uint {
 	return ret
 }
 
-// GetMinorVersion is analogous to the C function atk_get_minor_version.
+// GetMinorVersion wraps the C function atk_get_minor_version.
 //
 // since 2.8
 func GetMinorVersion() uint {
@@ -991,7 +991,7 @@ func GetMinorVersion() uint {
 	return ret
 }
 
-// GetRoot is analogous to the C function atk_get_root.
+// GetRoot wraps the C function atk_get_root.
 func GetRoot() *Object {
 	retSys := atk.Fn_atk_get_root()
 	ret := ObjectNewFromC(retSys)
@@ -999,7 +999,7 @@ func GetRoot() *Object {
 	return ret
 }
 
-// GetToolkitName is analogous to the C function atk_get_toolkit_name.
+// GetToolkitName wraps the C function atk_get_toolkit_name.
 func GetToolkitName() string {
 	retSys := atk.Fn_atk_get_toolkit_name()
 	ret := retSys
@@ -1007,7 +1007,7 @@ func GetToolkitName() string {
 	return ret
 }
 
-// GetToolkitVersion is analogous to the C function atk_get_toolkit_version.
+// GetToolkitVersion wraps the C function atk_get_toolkit_version.
 func GetToolkitVersion() string {
 	retSys := atk.Fn_atk_get_toolkit_version()
 	ret := retSys
@@ -1015,7 +1015,7 @@ func GetToolkitVersion() string {
 	return ret
 }
 
-// GetVersion is analogous to the C function atk_get_version.
+// GetVersion wraps the C function atk_get_version.
 //
 // since 1.20
 func GetVersion() string {
@@ -1025,19 +1025,19 @@ func GetVersion() string {
 	return ret
 }
 
-// RemoveFocusTracker is analogous to the C function atk_remove_focus_tracker.
+// RemoveFocusTracker wraps the C function atk_remove_focus_tracker.
 func RemoveFocusTracker(trackerId uint) {
 	sys_trackerId := trackerId
 	atk.Fn_atk_remove_focus_tracker(sys_trackerId)
 }
 
-// RemoveGlobalEventListener is analogous to the C function atk_remove_global_event_listener.
+// RemoveGlobalEventListener wraps the C function atk_remove_global_event_listener.
 func RemoveGlobalEventListener(listenerId uint) {
 	sys_listenerId := listenerId
 	atk.Fn_atk_remove_global_event_listener(sys_listenerId)
 }
 
-// RemoveKeyEventListener is analogous to the C function atk_remove_key_event_listener.
+// RemoveKeyEventListener wraps the C function atk_remove_key_event_listener.
 func RemoveKeyEventListener(listenerId uint) {
 	sys_listenerId := listenerId
 	atk.Fn_atk_remove_key_event_listener(sys_listenerId)
