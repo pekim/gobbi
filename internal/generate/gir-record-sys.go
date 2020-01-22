@@ -11,7 +11,7 @@ func (r Record) generateSysType(f *jen.File, version semver.Version) {
 		return
 	}
 
-	if !generateEntityForVersion(version, r.version) {
+	if r.version.GT(version) {
 		return
 	}
 

@@ -48,10 +48,10 @@ func (ns *Namespace) generateSysPackageFile(f *jen.File) {
 }
 
 func (ns *Namespace) generateSysFile(f *jen.File, version semver.Version) {
-	ns.generateFileBuildTags(f, version)
+	ns.generateFileBuildTagsSys(f, version)
 	ns.repository.CIncludes.generate(f)
 
-	ns.generateSysToCBoolFunction(f, version)
+	ns.generateSysToCBoolFunction(f)
 
 	ns.Records.generateSys(f, version)
 	ns.Functions.generateSys(f, version)
@@ -59,11 +59,7 @@ func (ns *Namespace) generateSysFile(f *jen.File, version semver.Version) {
 	ns.Interfaces.generateSys(f, version)
 }
 
-func (ns *Namespace) generateSysToCBoolFunction(f *jen.File, version semver.Version) {
-	if !versionIsNone(version) {
-		return
-	}
-
+func (ns *Namespace) generateSysToCBoolFunction(f *jen.File) {
 	if ns.Name == "xlib" {
 		return
 	}

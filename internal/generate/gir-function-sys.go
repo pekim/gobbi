@@ -21,7 +21,7 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 		return
 	}
 
-	if !generateEntityForVersion(version, f.version) {
+	if f.version.GT(version) {
 		return
 	}
 
