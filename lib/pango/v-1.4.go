@@ -915,6 +915,8 @@ func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *Direction) *ui
 
 // UNSUPPORTED : pango_parse_weight : has [in]out param, weight
 
+// UNSUPPORTED : pango_quantize_line_geometry : has [in]out param, thickness
+
 // UNSUPPORTED : pango_read_line : has [in]out param, str
 
 // ReorderItems wraps the C function pango_reorder_items.
@@ -926,11 +928,11 @@ func ReorderItems(logicalItems *glib.List) *glib.List {
 	return ret
 }
 
-// UNSUPPORTED : pango_scan_int : has [in]out param, out
+// UNSUPPORTED : pango_scan_int : has [in]out param, pos
 
-// UNSUPPORTED : pango_scan_string : has [in]out param, out
+// UNSUPPORTED : pango_scan_string : has [in]out param, pos
 
-// UNSUPPORTED : pango_scan_word : has [in]out param, out
+// UNSUPPORTED : pango_scan_word : has [in]out param, pos
 
 // Shape wraps the C function pango_shape.
 func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
@@ -941,14 +943,7 @@ func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
 	pango.Fn_pango_shape(sys_text, sys_length, sys_analysis, sys_glyphs)
 }
 
-// SkipSpace wraps the C function pango_skip_space.
-func SkipSpace(pos *string) bool {
-	sys_pos := pos
-	retSys := pango.Fn_pango_skip_space(sys_pos)
-	ret := retSys
-
-	return ret
-}
+// UNSUPPORTED : pango_skip_space : has [in]out param, pos
 
 // UNSUPPORTED : pango_split_file_list : no array length
 

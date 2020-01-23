@@ -3377,9 +3377,9 @@ func GrabGetCurrent() *Widget {
 
 // UNSUPPORTED : gtk_icon_size_lookup_for_settings : has [in]out param, width
 
-// UNSUPPORTED : gtk_init : has array param, argv
+// UNSUPPORTED : gtk_init : has [in]out param, argc
 
-// UNSUPPORTED : gtk_init_check : has array param, argv
+// UNSUPPORTED : gtk_init_check : has [in]out param, argc
 
 // UNSUPPORTED : gtk_init_with_args : parameter 'entries' is array parameter without length parameter
 
@@ -3735,7 +3735,7 @@ func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Wi
 	gtk.Fn_gtk_paint_vline(sys_style, sys_cr, sys_stateType, sys_widget, sys_detail, sys_y1, sys_y2, sys_x)
 }
 
-// UNSUPPORTED : gtk_parse_args : has array param, argv
+// UNSUPPORTED : gtk_parse_args : has [in]out param, argc
 
 // PrintRunPageSetupDialog wraps the C function gtk_print_run_page_setup_dialog.
 //
@@ -4314,7 +4314,7 @@ func TestFindWidget(widget *Widget, labelPattern string, widgetType uint64) *Wid
 	return ret
 }
 
-// UNSUPPORTED : gtk_test_init : has array param, argvp
+// UNSUPPORTED : gtk_test_init : has [in]out param, argcp
 
 // UNSUPPORTED : gtk_test_list_all_types : has [in]out param, n_types
 

@@ -1152,14 +1152,7 @@ func MarkupParserNew(accelMarker rune) *glib.MarkupParseContext {
 
 // UNSUPPORTED : pango_parse_weight : has [in]out param, weight
 
-// QuantizeLineGeometry wraps the C function pango_quantize_line_geometry.
-//
-// since 1.12
-func QuantizeLineGeometry(thickness *int, position *int) {
-	sys_thickness := thickness
-	sys_position := position
-	pango.Fn_pango_quantize_line_geometry(sys_thickness, sys_position)
-}
+// UNSUPPORTED : pango_quantize_line_geometry : has [in]out param, thickness
 
 // UNSUPPORTED : pango_read_line : has [in]out param, str
 
@@ -1172,11 +1165,11 @@ func ReorderItems(logicalItems *glib.List) *glib.List {
 	return ret
 }
 
-// UNSUPPORTED : pango_scan_int : has [in]out param, out
+// UNSUPPORTED : pango_scan_int : has [in]out param, pos
 
-// UNSUPPORTED : pango_scan_string : has [in]out param, out
+// UNSUPPORTED : pango_scan_string : has [in]out param, pos
 
-// UNSUPPORTED : pango_scan_word : has [in]out param, out
+// UNSUPPORTED : pango_scan_word : has [in]out param, pos
 
 // Shape wraps the C function pango_shape.
 func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
@@ -1200,14 +1193,7 @@ func ShapeFull(itemText string, itemLength int, paragraphText string, paragraphL
 	pango.Fn_pango_shape_full(sys_itemText, sys_itemLength, sys_paragraphText, sys_paragraphLength, sys_analysis, sys_glyphs)
 }
 
-// SkipSpace wraps the C function pango_skip_space.
-func SkipSpace(pos *string) bool {
-	sys_pos := pos
-	retSys := pango.Fn_pango_skip_space(sys_pos)
-	ret := retSys
-
-	return ret
-}
+// UNSUPPORTED : pango_skip_space : has [in]out param, pos
 
 // UNSUPPORTED : pango_split_file_list : no array length
 

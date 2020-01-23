@@ -8383,9 +8383,9 @@ func GetShowEvents() bool {
 	return ret
 }
 
-// UNSUPPORTED : gdk_init : has array param, argv
+// UNSUPPORTED : gdk_init : has [in]out param, argc
 
-// UNSUPPORTED : gdk_init_check : has array param, argv
+// UNSUPPORTED : gdk_init_check : has [in]out param, argc
 
 // KeyboardGrab wraps the C function gdk_keyboard_grab.
 func KeyboardGrab(window *Window, ownerEvents bool, time uint32) int {
@@ -8555,7 +8555,7 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int, yOrigin int, in
 
 // UNSUPPORTED : gdk_pango_layout_line_get_clip_region : parameter 'index_ranges' is array parameter without length parameter
 
-// UNSUPPORTED : gdk_parse_args : has array param, argv
+// UNSUPPORTED : gdk_parse_args : has [in]out param, argc
 
 // PixbufGetFromSurface wraps the C function gdk_pixbuf_get_from_surface.
 func PixbufGetFromSurface(surface *cairo.Surface, srcX int, srcY int, width int, height int) *gdkpixbuf.Pixbuf {

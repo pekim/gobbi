@@ -28,7 +28,7 @@ func (f *Function) generateLib(fi *jen.File, version semver.Version) {
 			return
 		}
 
-		if !p.isIn() {
+		if p.isOut() {
 			fi.Commentf("UNSUPPORTED : %s : has [in]out param, %s", f.CIdentifier, p.Name)
 			fi.Line()
 			return
