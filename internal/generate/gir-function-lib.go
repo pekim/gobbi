@@ -28,11 +28,16 @@ func (f *Function) generateLib(fi *jen.File, version semver.Version) {
 			return
 		}
 
-		if p.isOut() {
-			fi.Commentf("UNSUPPORTED : %s : has [in]out param, %s", f.CIdentifier, p.Name)
-			fi.Line()
-			return
-		}
+		//if p.isOut() {
+		//	fi.Commentf("UNSUPPORTED : %s : has [in]out param, %s", f.CIdentifier, p.Name)
+		//	fi.Line()
+		//	return
+		//}
+	}
+	if f.ReturnValue.Array != nil {
+		fi.Commentf("UNSUPPORTED : %s : has array return", f.CIdentifier)
+		fi.Line()
+		return
 	}
 
 	if f.MovedTo != "" || f.ShadowedBy != "" {

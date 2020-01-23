@@ -887,7 +887,12 @@ func FindBaseDir(text string, length int) int {
 
 // UNSUPPORTED : pango_find_map : blacklisted
 
-// UNSUPPORTED : pango_find_paragraph_boundary : has [in]out param, paragraph_delimiter_index
+// FindParagraphBoundary wraps the C function pango_find_paragraph_boundary.
+func FindParagraphBoundary(text string, length int) {
+	sys_text := text
+	sys_length := length
+	pango.Fn_pango_find_paragraph_boundary(sys_text, sys_length)
+}
 
 // UNSUPPORTED : pango_get_lib_subdirectory : blacklisted
 
@@ -966,21 +971,65 @@ func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *Direction) *ui
 
 // UNSUPPORTED : pango_module_register : blacklisted
 
-// UNSUPPORTED : pango_parse_enum : has [in]out param, value
-
 // UNSUPPORTED : pango_parse_markup : throws
 
-// UNSUPPORTED : pango_parse_stretch : has [in]out param, stretch
+// ParseStretch wraps the C function pango_parse_stretch.
+func ParseStretch(str string, warn bool) bool {
+	sys_str := str
+	sys_warn := warn
+	retSys := pango.Fn_pango_parse_stretch(sys_str, sys_warn)
+	ret := retSys
 
-// UNSUPPORTED : pango_parse_style : has [in]out param, style
+	return ret
+}
 
-// UNSUPPORTED : pango_parse_variant : has [in]out param, variant
+// ParseStyle wraps the C function pango_parse_style.
+func ParseStyle(str string, warn bool) bool {
+	sys_str := str
+	sys_warn := warn
+	retSys := pango.Fn_pango_parse_style(sys_str, sys_warn)
+	ret := retSys
 
-// UNSUPPORTED : pango_parse_weight : has [in]out param, weight
+	return ret
+}
 
-// UNSUPPORTED : pango_quantize_line_geometry : has [in]out param, thickness
+// ParseVariant wraps the C function pango_parse_variant.
+func ParseVariant(str string, warn bool) bool {
+	sys_str := str
+	sys_warn := warn
+	retSys := pango.Fn_pango_parse_variant(sys_str, sys_warn)
+	ret := retSys
 
-// UNSUPPORTED : pango_read_line : has [in]out param, str
+	return ret
+}
+
+// ParseWeight wraps the C function pango_parse_weight.
+func ParseWeight(str string, warn bool) bool {
+	sys_str := str
+	sys_warn := warn
+	retSys := pango.Fn_pango_parse_weight(sys_str, sys_warn)
+	ret := retSys
+
+	return ret
+}
+
+// QuantizeLineGeometry wraps the C function pango_quantize_line_geometry.
+//
+// since 1.12
+func QuantizeLineGeometry(thickness *int, position *int) {
+	sys_thickness := thickness
+	sys_position := position
+	pango.Fn_pango_quantize_line_geometry(sys_thickness, sys_position)
+}
+
+// ReadLine wraps the C function pango_read_line.
+func ReadLine(stream unsafe.Pointer) int {
+	sys_stream := stream
+	retSys := pango.Fn_pango_read_line(sys_stream)
+	ret := retSys
+
+	return ret
+}
 
 // ReorderItems wraps the C function pango_reorder_items.
 func ReorderItems(logicalItems *glib.List) *glib.List {
@@ -991,11 +1040,32 @@ func ReorderItems(logicalItems *glib.List) *glib.List {
 	return ret
 }
 
-// UNSUPPORTED : pango_scan_int : has [in]out param, pos
+// ScanInt wraps the C function pango_scan_int.
+func ScanInt(pos *string) bool {
+	sys_pos := pos
+	retSys := pango.Fn_pango_scan_int(sys_pos)
+	ret := retSys
 
-// UNSUPPORTED : pango_scan_string : has [in]out param, pos
+	return ret
+}
 
-// UNSUPPORTED : pango_scan_word : has [in]out param, pos
+// ScanString wraps the C function pango_scan_string.
+func ScanString(pos *string) bool {
+	sys_pos := pos
+	retSys := pango.Fn_pango_scan_string(sys_pos)
+	ret := retSys
+
+	return ret
+}
+
+// ScanWord wraps the C function pango_scan_word.
+func ScanWord(pos *string) bool {
+	sys_pos := pos
+	retSys := pango.Fn_pango_scan_word(sys_pos)
+	ret := retSys
+
+	return ret
+}
 
 // Shape wraps the C function pango_shape.
 func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
@@ -1006,7 +1076,14 @@ func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
 	pango.Fn_pango_shape(sys_text, sys_length, sys_analysis, sys_glyphs)
 }
 
-// UNSUPPORTED : pango_skip_space : has [in]out param, pos
+// SkipSpace wraps the C function pango_skip_space.
+func SkipSpace(pos *string) bool {
+	sys_pos := pos
+	retSys := pango.Fn_pango_skip_space(sys_pos)
+	ret := retSys
+
+	return ret
+}
 
 // UNSUPPORTED : pango_split_file_list : no array length
 

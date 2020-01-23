@@ -248,7 +248,12 @@ func ClearObject(objectPtr **Object) {
 	gobject.Fn_g_clear_object(sys_objectPtr)
 }
 
-// UNSUPPORTED : g_enum_complete_type_info : has [in]out param, info
+// EnumCompleteTypeInfo wraps the C function g_enum_complete_type_info.
+func EnumCompleteTypeInfo(gEnumType uint64, constValues *EnumValue) {
+	sys_gEnumType := gEnumType
+	sys_constValues := constValues.ToC()
+	gobject.Fn_g_enum_complete_type_info(sys_gEnumType, sys_constValues)
+}
 
 // EnumGetValue wraps the C function g_enum_get_value.
 func EnumGetValue(enumClass *EnumClass, value int) *EnumValue {
@@ -290,7 +295,12 @@ func EnumRegisterStatic(name string, constStaticValues *EnumValue) uint64 {
 	return ret
 }
 
-// UNSUPPORTED : g_flags_complete_type_info : has [in]out param, info
+// FlagsCompleteTypeInfo wraps the C function g_flags_complete_type_info.
+func FlagsCompleteTypeInfo(gFlagsType uint64, constValues *FlagsValue) {
+	sys_gFlagsType := gFlagsType
+	sys_constValues := constValues.ToC()
+	gobject.Fn_g_flags_complete_type_info(sys_gFlagsType, sys_constValues)
+}
 
 // FlagsGetFirstValue wraps the C function g_flags_get_first_value.
 func FlagsGetFirstValue(flagsClass *FlagsClass, value uint) *FlagsValue {
@@ -945,7 +955,7 @@ func SignalHasHandlerPending(instance unsafe.Pointer, signalId uint, detail uint
 	return ret
 }
 
-// UNSUPPORTED : g_signal_list_ids : has [in]out param, n_ids
+// UNSUPPORTED : g_signal_list_ids : has array return
 
 // SignalLookup wraps the C function g_signal_lookup.
 func SignalLookup(name string, itype uint64) uint {
@@ -984,9 +994,22 @@ func SignalOverrideClassClosure(signalId uint, instanceType uint64, classClosure
 
 // UNSUPPORTED : g_signal_override_class_handler : parameter 'class_handler' is callback
 
-// UNSUPPORTED : g_signal_parse_name : has [in]out param, signal_id_p
+// SignalParseName wraps the C function g_signal_parse_name.
+func SignalParseName(detailedSignal string, itype uint64, forceDetailQuark bool) bool {
+	sys_detailedSignal := detailedSignal
+	sys_itype := itype
+	sys_forceDetailQuark := forceDetailQuark
+	retSys := gobject.Fn_g_signal_parse_name(sys_detailedSignal, sys_itype, sys_forceDetailQuark)
+	ret := retSys
 
-// UNSUPPORTED : g_signal_query : has [in]out param, query
+	return ret
+}
+
+// SignalQuery_ wraps the C function g_signal_query.
+func SignalQuery_(signalId uint) {
+	sys_signalId := signalId
+	gobject.Fn_g_signal_query(sys_signalId)
+}
 
 // SignalRemoveEmissionHook wraps the C function g_signal_remove_emission_hook.
 func SignalRemoveEmissionHook(signalId uint, hookId uint64) {
@@ -1170,7 +1193,7 @@ func TypeCheckValueHolds(value *Value, type_ uint64) bool {
 	return ret
 }
 
-// UNSUPPORTED : g_type_children : has [in]out param, n_children
+// UNSUPPORTED : g_type_children : has array return
 
 // TypeCreateInstance wraps the C function g_type_create_instance.
 func TypeCreateInstance(type_ uint64) *TypeInstance {
@@ -1300,9 +1323,9 @@ func TypeInitWithDebugFlags(debugFlags TypeDebugFlags) {
 	gobject.Fn_g_type_init_with_debug_flags(sys_debugFlags)
 }
 
-// UNSUPPORTED : g_type_interface_prerequisites : has [in]out param, n_prerequisites
+// UNSUPPORTED : g_type_interface_prerequisites : has array return
 
-// UNSUPPORTED : g_type_interfaces : has [in]out param, n_interfaces
+// UNSUPPORTED : g_type_interfaces : has array return
 
 // TypeIsA wraps the C function g_type_is_a.
 func TypeIsA(type_ uint64, isAType uint64) bool {
@@ -1369,7 +1392,11 @@ func TypeQname(type_ uint64) uint32 {
 	return ret
 }
 
-// UNSUPPORTED : g_type_query : has [in]out param, query
+// TypeQuery_ wraps the C function g_type_query.
+func TypeQuery_(type_ uint64) {
+	sys_type_ := type_
+	gobject.Fn_g_type_query(sys_type_)
+}
 
 // TypeRegisterDynamic wraps the C function g_type_register_dynamic.
 func TypeRegisterDynamic(parentType uint64, typeName string, plugin *TypePlugin, flags TypeFlags) uint64 {

@@ -1912,7 +1912,13 @@ func DbusGvalueToGvariant(gvalue *gobject.Value, type_ *glib.VariantType) *glib.
 	return ret
 }
 
-// UNSUPPORTED : g_dbus_gvariant_to_gvalue : has [in]out param, out_gvalue
+// DbusGvariantToGvalue wraps the C function g_dbus_gvariant_to_gvalue.
+//
+// since 2.30
+func DbusGvariantToGvalue(value *glib.Variant) {
+	sys_value := value.ToC()
+	gio.Fn_g_dbus_gvariant_to_gvalue(sys_value)
+}
 
 // DbusIsAddress wraps the C function g_dbus_is_address.
 //
@@ -2107,7 +2113,14 @@ func UnixIsMountPathSystemInternal(mountPath string) bool {
 	return ret
 }
 
-// UNSUPPORTED : g_unix_mount_at : has [in]out param, time_read
+// UnixMountAt wraps the C function g_unix_mount_at.
+func UnixMountAt(mountPath string) *UnixMountEntry {
+	sys_mountPath := mountPath
+	retSys := gio.Fn_g_unix_mount_at(sys_mountPath)
+	ret := UnixMountEntryNewFromC(retSys)
+
+	return ret
+}
 
 // UnixMountCompare wraps the C function g_unix_mount_compare.
 func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int {
@@ -2118,8 +2131,6 @@ func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int {
 
 	return ret
 }
-
-// UNSUPPORTED : g_unix_mount_for : has [in]out param, time_read
 
 // UnixMountFree wraps the C function g_unix_mount_free.
 func UnixMountFree(mountEntry *UnixMountEntry) {
@@ -2228,7 +2239,13 @@ func UnixMountPointsChangedSince(time uint64) bool {
 	return ret
 }
 
-// UNSUPPORTED : g_unix_mount_points_get : has [in]out param, time_read
+// UnixMountPointsGet wraps the C function g_unix_mount_points_get.
+func UnixMountPointsGet() *glib.List {
+	retSys := gio.Fn_g_unix_mount_points_get()
+	ret := glib.ListNewFromC(retSys)
+
+	return ret
+}
 
 // UnixMountsChangedSince wraps the C function g_unix_mounts_changed_since.
 func UnixMountsChangedSince(time uint64) bool {
@@ -2239,7 +2256,13 @@ func UnixMountsChangedSince(time uint64) bool {
 	return ret
 }
 
-// UNSUPPORTED : g_unix_mounts_get : has [in]out param, time_read
+// UnixMountsGet wraps the C function g_unix_mounts_get.
+func UnixMountsGet() *glib.List {
+	retSys := gio.Fn_g_unix_mounts_get()
+	ret := glib.ListNewFromC(retSys)
+
+	return ret
+}
 
 // ActionEntry is a representation of the C record GActionEntry.
 type ActionEntry struct {

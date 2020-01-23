@@ -2756,7 +2756,11 @@ func AcceleratorName(acceleratorKey uint, acceleratorMods gdk.ModifierType) stri
 	return ret
 }
 
-// UNSUPPORTED : gtk_accelerator_parse : has [in]out param, accelerator_key
+// AcceleratorParse wraps the C function gtk_accelerator_parse.
+func AcceleratorParse(accelerator string) {
+	sys_accelerator := accelerator
+	gtk.Fn_gtk_accelerator_parse(sys_accelerator)
+}
 
 // UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
 
@@ -2927,7 +2931,13 @@ func GetCurrentEventDevice() *gdk.Device {
 	return ret
 }
 
-// UNSUPPORTED : gtk_get_current_event_state : has [in]out param, state
+// GetCurrentEventState wraps the C function gtk_get_current_event_state.
+func GetCurrentEventState() bool {
+	retSys := gtk.Fn_gtk_get_current_event_state()
+	ret := retSys
+
+	return ret
+}
 
 // GetCurrentEventTime wraps the C function gtk_get_current_event_time.
 func GetCurrentEventTime() uint32 {
@@ -2981,13 +2991,9 @@ func GrabGetCurrent() *Widget {
 	return ret
 }
 
-// UNSUPPORTED : gtk_icon_size_lookup : has [in]out param, width
+// UNSUPPORTED : gtk_init : has array param, argv
 
-// UNSUPPORTED : gtk_icon_size_lookup_for_settings : has [in]out param, width
-
-// UNSUPPORTED : gtk_init : has [in]out param, argc
-
-// UNSUPPORTED : gtk_init_check : has [in]out param, argc
+// UNSUPPORTED : gtk_init_check : has array param, argv
 
 // UNSUPPORTED : gtk_init_with_args : parameter 'entries' is array parameter without length parameter
 
@@ -3343,7 +3349,7 @@ func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Wi
 	gtk.Fn_gtk_paint_vline(sys_style, sys_cr, sys_stateType, sys_widget, sys_detail, sys_y1, sys_y2, sys_x)
 }
 
-// UNSUPPORTED : gtk_parse_args : has [in]out param, argc
+// UNSUPPORTED : gtk_parse_args : has array param, argv
 
 // UNSUPPORTED : gtk_print_run_page_setup_dialog_async : parameter 'done_cb' is callback
 
@@ -3441,9 +3447,14 @@ func RcParse(filename string) {
 	gtk.Fn_gtk_rc_parse(sys_filename)
 }
 
-// UNSUPPORTED : gtk_rc_parse_color : has [in]out param, color
+// RcParseColor wraps the C function gtk_rc_parse_color.
+func RcParseColor(scanner *glib.Scanner) uint {
+	sys_scanner := scanner.ToC()
+	retSys := gtk.Fn_gtk_rc_parse_color(sys_scanner)
+	ret := retSys
 
-// UNSUPPORTED : gtk_rc_parse_color_full : has [in]out param, color
+	return ret
+}
 
 // RcParsePriority wraps the C function gtk_rc_parse_priority.
 func RcParsePriority(scanner *glib.Scanner, priority *PathPriorityType) uint {
@@ -3455,7 +3466,14 @@ func RcParsePriority(scanner *glib.Scanner, priority *PathPriorityType) uint {
 	return ret
 }
 
-// UNSUPPORTED : gtk_rc_parse_state : has [in]out param, state
+// RcParseState wraps the C function gtk_rc_parse_state.
+func RcParseState(scanner *glib.Scanner) uint {
+	sys_scanner := scanner.ToC()
+	retSys := gtk.Fn_gtk_rc_parse_state(sys_scanner)
+	ret := retSys
+
+	return ret
+}
 
 // RcParseString wraps the C function gtk_rc_parse_string.
 func RcParseString(rcString string) {
@@ -3498,10 +3516,6 @@ func RcScannerNew() *glib.Scanner {
 }
 
 // UNSUPPORTED : gtk_rc_set_default_files : parameter 'filenames' is array parameter without length parameter
-
-// UNSUPPORTED : gtk_render_background_get_clip : has [in]out param, out_clip
-
-// UNSUPPORTED : gtk_rgb_to_hsv : has [in]out param, h
 
 // SelectionAddTarget wraps the C function gtk_selection_add_target.
 func SelectionAddTarget(widget *Widget, selection gdk.Atom, target gdk.Atom, info uint) {
@@ -3595,13 +3609,20 @@ func StockListIds() *glib.SList {
 	return ret
 }
 
-// UNSUPPORTED : gtk_stock_lookup : has [in]out param, item
+// StockLookup wraps the C function gtk_stock_lookup.
+func StockLookup(stockId string) bool {
+	sys_stockId := stockId
+	retSys := gtk.Fn_gtk_stock_lookup(sys_stockId)
+	ret := retSys
+
+	return ret
+}
 
 // UNSUPPORTED : gtk_stock_set_translate_func : parameter 'func' is callback
 
 // UNSUPPORTED : gtk_target_table_free : has array param, targets
 
-// UNSUPPORTED : gtk_target_table_new_from_list : has [in]out param, n_targets
+// UNSUPPORTED : gtk_target_table_new_from_list : has array return
 
 // UNSUPPORTED : gtk_targets_include_image : has array param, targets
 
@@ -3611,11 +3632,18 @@ func StockListIds() *glib.SList {
 
 // UNSUPPORTED : gtk_targets_include_uri : has array param, targets
 
-// UNSUPPORTED : gtk_test_init : has [in]out param, argcp
+// UNSUPPORTED : gtk_test_init : has array param, argvp
 
-// UNSUPPORTED : gtk_test_list_all_types : has [in]out param, n_types
+// UNSUPPORTED : gtk_test_list_all_types : has array return
 
-// UNSUPPORTED : gtk_tree_get_row_drag_data : has [in]out param, tree_model
+// TreeGetRowDragData wraps the C function gtk_tree_get_row_drag_data.
+func TreeGetRowDragData(selectionData *SelectionData) bool {
+	sys_selectionData := selectionData.ToC()
+	retSys := gtk.Fn_gtk_tree_get_row_drag_data(sys_selectionData)
+	ret := retSys
+
+	return ret
+}
 
 // UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
 

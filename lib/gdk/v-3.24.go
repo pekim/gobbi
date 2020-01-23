@@ -8382,7 +8382,14 @@ func CairoDrawFromGl(cr *cairo.Context, window *Window, source int, sourceType i
 	gdk.Fn_gdk_cairo_draw_from_gl(sys_cr, sys_window, sys_source, sys_sourceType, sys_bufferScale, sys_x, sys_y, sys_width, sys_height)
 }
 
-// UNSUPPORTED : gdk_cairo_get_clip_rectangle : has [in]out param, rect
+// CairoGetClipRectangle wraps the C function gdk_cairo_get_clip_rectangle.
+func CairoGetClipRectangle(cr *cairo.Context) bool {
+	sys_cr := cr.ToC()
+	retSys := gdk.Fn_gdk_cairo_get_clip_rectangle(sys_cr)
+	ret := retSys
+
+	return ret
+}
 
 // CairoGetDrawingContext wraps the C function gdk_cairo_get_drawing_context.
 //
@@ -8475,8 +8482,6 @@ func CairoSurfaceCreateFromPixbuf(pixbuf *gdkpixbuf.Pixbuf, scale int, forWindow
 	return ret
 }
 
-// UNSUPPORTED : gdk_color_parse : has [in]out param, color
-
 // DisableMultidevice wraps the C function gdk_disable_multidevice.
 //
 // since 3.0
@@ -8554,7 +8559,17 @@ func DragDropSucceeded(context *DragContext) bool {
 	return ret
 }
 
-// UNSUPPORTED : gdk_drag_find_window_for_screen : has [in]out param, dest_window
+// DragFindWindowForScreen wraps the C function gdk_drag_find_window_for_screen.
+//
+// since 2.2
+func DragFindWindowForScreen(context *DragContext, dragWindow *Window, screen *Screen, xRoot int, yRoot int) {
+	sys_context := context.ToC()
+	sys_dragWindow := dragWindow.ToC()
+	sys_screen := screen.ToC()
+	sys_xRoot := xRoot
+	sys_yRoot := yRoot
+	gdk.Fn_gdk_drag_find_window_for_screen(sys_context, sys_dragWindow, sys_screen, sys_xRoot, sys_yRoot)
+}
 
 // DragGetSelection wraps the C function gdk_drag_get_selection.
 func DragGetSelection(context *DragContext) *Atom {
@@ -8627,11 +8642,41 @@ func ErrorTrapPush() {
 
 // UNSUPPORTED : gdk_event_handler_set : parameter 'func' is callback
 
-// UNSUPPORTED : gdk_events_get_angle : has [in]out param, angle
+// EventsGetAngle wraps the C function gdk_events_get_angle.
+//
+// since 3.0
+func EventsGetAngle(event1 *Event, event2 *Event) bool {
+	sys_event1 := event1.ToC()
+	sys_event2 := event2.ToC()
+	retSys := gdk.Fn_gdk_events_get_angle(sys_event1, sys_event2)
+	ret := retSys
 
-// UNSUPPORTED : gdk_events_get_center : has [in]out param, x
+	return ret
+}
 
-// UNSUPPORTED : gdk_events_get_distance : has [in]out param, distance
+// EventsGetCenter wraps the C function gdk_events_get_center.
+//
+// since 3.0
+func EventsGetCenter(event1 *Event, event2 *Event) bool {
+	sys_event1 := event1.ToC()
+	sys_event2 := event2.ToC()
+	retSys := gdk.Fn_gdk_events_get_center(sys_event1, sys_event2)
+	ret := retSys
+
+	return ret
+}
+
+// EventsGetDistance wraps the C function gdk_events_get_distance.
+//
+// since 3.0
+func EventsGetDistance(event1 *Event, event2 *Event) bool {
+	sys_event1 := event1.ToC()
+	sys_event2 := event2.ToC()
+	retSys := gdk.Fn_gdk_events_get_distance(sys_event1, sys_event2)
+	ret := retSys
+
+	return ret
+}
 
 // EventsPending wraps the C function gdk_events_pending.
 func EventsPending() bool {
@@ -8688,9 +8733,9 @@ func GetShowEvents() bool {
 	return ret
 }
 
-// UNSUPPORTED : gdk_init : has [in]out param, argc
+// UNSUPPORTED : gdk_init : has array param, argv
 
-// UNSUPPORTED : gdk_init_check : has [in]out param, argc
+// UNSUPPORTED : gdk_init_check : has array param, argv
 
 // KeyboardGrab wraps the C function gdk_keyboard_grab.
 func KeyboardGrab(window *Window, ownerEvents bool, time uint32) int {
@@ -8709,7 +8754,11 @@ func KeyboardUngrab(time uint32) {
 	gdk.Fn_gdk_keyboard_ungrab(sys_time)
 }
 
-// UNSUPPORTED : gdk_keyval_convert_case : has [in]out param, lower
+// KeyvalConvertCase wraps the C function gdk_keyval_convert_case.
+func KeyvalConvertCase(symbol uint) {
+	sys_symbol := symbol
+	gdk.Fn_gdk_keyval_convert_case(sys_symbol)
+}
 
 // KeyvalFromName wraps the C function gdk_keyval_from_name.
 func KeyvalFromName(keyvalName string) uint {
@@ -8871,7 +8920,7 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int, yOrigin int, in
 
 // UNSUPPORTED : gdk_pango_layout_line_get_clip_region : parameter 'index_ranges' is array parameter without length parameter
 
-// UNSUPPORTED : gdk_parse_args : has [in]out param, argc
+// UNSUPPORTED : gdk_parse_args : has array param, argv
 
 // PixbufGetFromSurface wraps the C function gdk_pixbuf_get_from_surface.
 func PixbufGetFromSurface(surface *cairo.Surface, srcX int, srcY int, width int, height int) *gdkpixbuf.Pixbuf {
@@ -8951,7 +9000,7 @@ func PropertyDelete(window *Window, property Atom) {
 	gdk.Fn_gdk_property_delete(sys_window, sys_property)
 }
 
-// UNSUPPORTED : gdk_property_get : has [in]out param, actual_property_type
+// UNSUPPORTED : gdk_property_get : has array param, data
 
 // UNSUPPORTED : gdk_query_depths : has array param, depths
 
