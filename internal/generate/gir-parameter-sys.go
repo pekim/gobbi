@@ -30,6 +30,24 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 	panic(fmt.Sprintf("Parameter is not a type or an array: %s", p.Name))
 }
 
+func (p *Parameter) sysReturnGoType() *jen.Statement {
+	if p.Type != nil {
+		// Atoms are really pointers underneath.
+		if p.Type.CType == "GdkAtom" {
+			return jenUnsafePointer()
+		}
+
+		return jen.
+			Add(p.Type.sysParamGoType(true))
+	}
+
+	if p.Array != nil {
+		panic("TODO")
+	}
+
+	panic(fmt.Sprintf("Out parameter is not a type or an array: %s", p.Name))
+}
+
 func (p *Parameter) generateSysCArg(g *jen.Group, goVarName string, cVarName string) {
 	if p.Array != nil {
 		p.generateSysCArgArray(g, goVarName, cVarName)

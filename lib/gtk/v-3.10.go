@@ -3397,7 +3397,7 @@ func GetCurrentEventDevice() *gdk.Device {
 }
 
 // GetCurrentEventState wraps the C function gtk_get_current_event_state.
-func GetCurrentEventState() (bool, *int) {
+func GetCurrentEventState() (bool, int) {
 	retSys := gtk.Fn_gtk_get_current_event_state()
 	ret := retSys
 
@@ -3997,7 +3997,7 @@ func RcParsePriority(scanner *glib.Scanner, priority *PathPriorityType) uint {
 }
 
 // RcParseState wraps the C function gtk_rc_parse_state.
-func RcParseState(scanner *glib.Scanner) (uint, *int) {
+func RcParseState(scanner *glib.Scanner) (uint, int) {
 	sys_scanner := scanner.ToC()
 	retSys := gtk.Fn_gtk_rc_parse_state(sys_scanner)
 	ret := retSys

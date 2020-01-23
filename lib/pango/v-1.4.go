@@ -911,7 +911,7 @@ func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *Direction) *ui
 // UNSUPPORTED : pango_parse_markup : throws
 
 // ParseStretch wraps the C function pango_parse_stretch.
-func ParseStretch(str string, warn bool) (bool, *int) {
+func ParseStretch(str string, warn bool) (bool, int) {
 	sys_str := str
 	sys_warn := warn
 	retSys := pango.Fn_pango_parse_stretch(sys_str, sys_warn)
@@ -921,7 +921,7 @@ func ParseStretch(str string, warn bool) (bool, *int) {
 }
 
 // ParseStyle wraps the C function pango_parse_style.
-func ParseStyle(str string, warn bool) (bool, *int) {
+func ParseStyle(str string, warn bool) (bool, int) {
 	sys_str := str
 	sys_warn := warn
 	retSys := pango.Fn_pango_parse_style(sys_str, sys_warn)
@@ -931,7 +931,7 @@ func ParseStyle(str string, warn bool) (bool, *int) {
 }
 
 // ParseVariant wraps the C function pango_parse_variant.
-func ParseVariant(str string, warn bool) (bool, *int) {
+func ParseVariant(str string, warn bool) (bool, int) {
 	sys_str := str
 	sys_warn := warn
 	retSys := pango.Fn_pango_parse_variant(sys_str, sys_warn)
@@ -941,7 +941,7 @@ func ParseVariant(str string, warn bool) (bool, *int) {
 }
 
 // ParseWeight wraps the C function pango_parse_weight.
-func ParseWeight(str string, warn bool) (bool, *int) {
+func ParseWeight(str string, warn bool) (bool, int) {
 	sys_str := str
 	sys_warn := warn
 	retSys := pango.Fn_pango_parse_weight(sys_str, sys_warn)
@@ -969,7 +969,7 @@ func ReorderItems(logicalItems *glib.List) *glib.List {
 }
 
 // ScanInt wraps the C function pango_scan_int.
-func ScanInt(pos *string) (bool, *string, *int) {
+func ScanInt(pos *string) (bool, string, int) {
 	sys_pos := pos
 	retSys := pango.Fn_pango_scan_int(sys_pos)
 	ret := retSys
@@ -978,7 +978,7 @@ func ScanInt(pos *string) (bool, *string, *int) {
 }
 
 // ScanString wraps the C function pango_scan_string.
-func ScanString(pos *string) (bool, *string, *glib.String) {
+func ScanString(pos *string) (bool, string, *glib.String) {
 	sys_pos := pos
 	retSys := pango.Fn_pango_scan_string(sys_pos)
 	ret := retSys
@@ -987,7 +987,7 @@ func ScanString(pos *string) (bool, *string, *glib.String) {
 }
 
 // ScanWord wraps the C function pango_scan_word.
-func ScanWord(pos *string) (bool, *string, *glib.String) {
+func ScanWord(pos *string) (bool, string, *glib.String) {
 	sys_pos := pos
 	retSys := pango.Fn_pango_scan_word(sys_pos)
 	ret := retSys
@@ -1005,7 +1005,7 @@ func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
 }
 
 // SkipSpace wraps the C function pango_skip_space.
-func SkipSpace(pos *string) (bool, *string) {
+func SkipSpace(pos *string) (bool, string) {
 	sys_pos := pos
 	retSys := pango.Fn_pango_skip_space(sys_pos)
 	ret := retSys

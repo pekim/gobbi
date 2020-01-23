@@ -114,7 +114,7 @@ func (f *Function) generateLibReturnTypeDeclaration(g *jen.Group) {
 			// TODO below belongs in Type.sysParamGoType ???
 			g.Op("*").Add(param.Type.idOrQual())
 		} else {
-			g.Add(param.sysParamGoType())
+			g.Add(param.sysReturnGoType())
 		}
 	}
 }

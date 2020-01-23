@@ -60,7 +60,11 @@ func (t *Type) sysParamGoType(decrementIndirectionCount bool) *jen.Statement {
 	if t.isString() {
 		stars := ""
 		if t.cType.indirectionCount > 0 {
-			stars = strings.Repeat("*", t.cType.indirectionCount-1)
+			if decrementIndirectionCount {
+				stars = strings.Repeat("*", t.cType.indirectionCount-2)
+			} else {
+				stars = strings.Repeat("*", t.cType.indirectionCount-1)
+			}
 		}
 		return jen.Op(stars).String()
 	}

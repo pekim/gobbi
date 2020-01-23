@@ -8466,7 +8466,7 @@ func ErrorTrapPush() {
 // EventsGetAngle wraps the C function gdk_events_get_angle.
 //
 // since 3.0
-func EventsGetAngle(event1 *Event, event2 *Event) (bool, *float64) {
+func EventsGetAngle(event1 *Event, event2 *Event) (bool, float64) {
 	sys_event1 := event1.ToC()
 	sys_event2 := event2.ToC()
 	retSys := gdk.Fn_gdk_events_get_angle(sys_event1, sys_event2)
@@ -8478,7 +8478,7 @@ func EventsGetAngle(event1 *Event, event2 *Event) (bool, *float64) {
 // EventsGetCenter wraps the C function gdk_events_get_center.
 //
 // since 3.0
-func EventsGetCenter(event1 *Event, event2 *Event) (bool, *float64, *float64) {
+func EventsGetCenter(event1 *Event, event2 *Event) (bool, float64, float64) {
 	sys_event1 := event1.ToC()
 	sys_event2 := event2.ToC()
 	retSys := gdk.Fn_gdk_events_get_center(sys_event1, sys_event2)
@@ -8490,7 +8490,7 @@ func EventsGetCenter(event1 *Event, event2 *Event) (bool, *float64, *float64) {
 // EventsGetDistance wraps the C function gdk_events_get_distance.
 //
 // since 3.0
-func EventsGetDistance(event1 *Event, event2 *Event) (bool, *float64) {
+func EventsGetDistance(event1 *Event, event2 *Event) (bool, float64) {
 	sys_event1 := event1.ToC()
 	sys_event2 := event2.ToC()
 	retSys := gdk.Fn_gdk_events_get_distance(sys_event1, sys_event2)
