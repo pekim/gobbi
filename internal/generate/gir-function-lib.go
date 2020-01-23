@@ -95,14 +95,28 @@ func (f *Function) generateLibReturnTypeDeclaration(g *jen.Group) {
 		return
 	}
 
-	// TODO below belongs in Type.sysParamGoType ???
+	// return value
 	typ := f.ReturnValue.Type
 	if typ.isStruct() {
+		// TODO below belongs in Type.sysParamGoType ???
 		g.Op("*").Add(typ.idOrQual())
-		return
+	} else {
+		g.Add(f.ReturnValue.sysParamGoType())
 	}
 
-	g.Add(f.ReturnValue.sysParamGoType())
+	// out params
+	for _, param := range f.Parameters {
+		if !param.isOut() {
+			continue
+		}
+
+		if param.Type.isStruct() {
+			// TODO below belongs in Type.sysParamGoType ???
+			g.Op("*").Add(param.Type.idOrQual())
+		} else {
+			g.Add(param.sysParamGoType())
+		}
+	}
 }
 
 func (f *Function) generateLibBody(g *jen.Group) {

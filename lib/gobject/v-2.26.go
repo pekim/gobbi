@@ -973,7 +973,7 @@ func SignalOverrideClassClosure(signalId uint, instanceType uint64, classClosure
 // UNSUPPORTED : g_signal_override_class_handler : parameter 'class_handler' is callback
 
 // SignalParseName wraps the C function g_signal_parse_name.
-func SignalParseName(detailedSignal string, itype uint64, forceDetailQuark bool) bool {
+func SignalParseName(detailedSignal string, itype uint64, forceDetailQuark bool) (bool, *uint, *uint32) {
 	sys_detailedSignal := detailedSignal
 	sys_itype := itype
 	sys_forceDetailQuark := forceDetailQuark

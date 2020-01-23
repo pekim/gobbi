@@ -8126,7 +8126,7 @@ func CairoCreate(window *Window) *cairo.Context {
 }
 
 // CairoGetClipRectangle wraps the C function gdk_cairo_get_clip_rectangle.
-func CairoGetClipRectangle(cr *cairo.Context) bool {
+func CairoGetClipRectangle(cr *cairo.Context) (bool, *Rectangle) {
 	sys_cr := cr.ToC()
 	retSys := gdk.Fn_gdk_cairo_get_clip_rectangle(sys_cr)
 	ret := retSys

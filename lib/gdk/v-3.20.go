@@ -8275,7 +8275,7 @@ func CairoDrawFromGl(cr *cairo.Context, window *Window, source int, sourceType i
 }
 
 // CairoGetClipRectangle wraps the C function gdk_cairo_get_clip_rectangle.
-func CairoGetClipRectangle(cr *cairo.Context) bool {
+func CairoGetClipRectangle(cr *cairo.Context) (bool, *Rectangle) {
 	sys_cr := cr.ToC()
 	retSys := gdk.Fn_gdk_cairo_get_clip_rectangle(sys_cr)
 	ret := retSys
@@ -8526,7 +8526,7 @@ func ErrorTrapPush() {
 // EventsGetAngle wraps the C function gdk_events_get_angle.
 //
 // since 3.0
-func EventsGetAngle(event1 *Event, event2 *Event) bool {
+func EventsGetAngle(event1 *Event, event2 *Event) (bool, *float64) {
 	sys_event1 := event1.ToC()
 	sys_event2 := event2.ToC()
 	retSys := gdk.Fn_gdk_events_get_angle(sys_event1, sys_event2)
@@ -8538,7 +8538,7 @@ func EventsGetAngle(event1 *Event, event2 *Event) bool {
 // EventsGetCenter wraps the C function gdk_events_get_center.
 //
 // since 3.0
-func EventsGetCenter(event1 *Event, event2 *Event) bool {
+func EventsGetCenter(event1 *Event, event2 *Event) (bool, *float64, *float64) {
 	sys_event1 := event1.ToC()
 	sys_event2 := event2.ToC()
 	retSys := gdk.Fn_gdk_events_get_center(sys_event1, sys_event2)
@@ -8550,7 +8550,7 @@ func EventsGetCenter(event1 *Event, event2 *Event) bool {
 // EventsGetDistance wraps the C function gdk_events_get_distance.
 //
 // since 3.0
-func EventsGetDistance(event1 *Event, event2 *Event) bool {
+func EventsGetDistance(event1 *Event, event2 *Event) (bool, *float64) {
 	sys_event1 := event1.ToC()
 	sys_event2 := event2.ToC()
 	retSys := gdk.Fn_gdk_events_get_distance(sys_event1, sys_event2)

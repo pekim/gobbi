@@ -2932,7 +2932,7 @@ func GetCurrentEventDevice() *gdk.Device {
 }
 
 // GetCurrentEventState wraps the C function gtk_get_current_event_state.
-func GetCurrentEventState() bool {
+func GetCurrentEventState() (bool, *int) {
 	retSys := gtk.Fn_gtk_get_current_event_state()
 	ret := retSys
 
@@ -3448,7 +3448,7 @@ func RcParse(filename string) {
 }
 
 // RcParseColor wraps the C function gtk_rc_parse_color.
-func RcParseColor(scanner *glib.Scanner) uint {
+func RcParseColor(scanner *glib.Scanner) (uint, *gdk.Color) {
 	sys_scanner := scanner.ToC()
 	retSys := gtk.Fn_gtk_rc_parse_color(sys_scanner)
 	ret := retSys
@@ -3467,7 +3467,7 @@ func RcParsePriority(scanner *glib.Scanner, priority *PathPriorityType) uint {
 }
 
 // RcParseState wraps the C function gtk_rc_parse_state.
-func RcParseState(scanner *glib.Scanner) uint {
+func RcParseState(scanner *glib.Scanner) (uint, *int) {
 	sys_scanner := scanner.ToC()
 	retSys := gtk.Fn_gtk_rc_parse_state(sys_scanner)
 	ret := retSys
@@ -3610,7 +3610,7 @@ func StockListIds() *glib.SList {
 }
 
 // StockLookup wraps the C function gtk_stock_lookup.
-func StockLookup(stockId string) bool {
+func StockLookup(stockId string) (bool, *StockItem) {
 	sys_stockId := stockId
 	retSys := gtk.Fn_gtk_stock_lookup(sys_stockId)
 	ret := retSys
@@ -3637,7 +3637,7 @@ func StockLookup(stockId string) bool {
 // UNSUPPORTED : gtk_test_list_all_types : has array return
 
 // TreeGetRowDragData wraps the C function gtk_tree_get_row_drag_data.
-func TreeGetRowDragData(selectionData *SelectionData) bool {
+func TreeGetRowDragData(selectionData *SelectionData) (bool, *TreeModel, *TreePath) {
 	sys_selectionData := selectionData.ToC()
 	retSys := gtk.Fn_gtk_tree_get_row_drag_data(sys_selectionData)
 	ret := retSys
