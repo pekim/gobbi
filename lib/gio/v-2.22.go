@@ -912,9 +912,8 @@ const SocketType_seqpacket = SocketType(3)
 func ContentTypeCanBeExecutable(type_ string) bool {
 	sys_type_ := type_
 	retSys := gio.Fn_g_content_type_can_be_executable(sys_type_)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // ContentTypeEquals wraps the C function g_content_type_equals.
@@ -922,9 +921,8 @@ func ContentTypeEquals(type1 string, type2 string) bool {
 	sys_type1 := type1
 	sys_type2 := type2
 	retSys := gio.Fn_g_content_type_equals(sys_type1, sys_type2)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // ContentTypeFromMimeType wraps the C function g_content_type_from_mime_type.
@@ -933,27 +931,24 @@ func ContentTypeEquals(type1 string, type2 string) bool {
 func ContentTypeFromMimeType(mimeType string) string {
 	sys_mimeType := mimeType
 	retSys := gio.Fn_g_content_type_from_mime_type(sys_mimeType)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // ContentTypeGetDescription wraps the C function g_content_type_get_description.
 func ContentTypeGetDescription(type_ string) string {
 	sys_type_ := type_
 	retSys := gio.Fn_g_content_type_get_description(sys_type_)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // ContentTypeGetIcon wraps the C function g_content_type_get_icon.
 func ContentTypeGetIcon(type_ string) *Icon {
 	sys_type_ := type_
 	retSys := gio.Fn_g_content_type_get_icon(sys_type_)
-	ret := IconNewFromC(retSys)
 
-	return ret
+	return IconNewFromC(retSys)
 }
 
 // UNSUPPORTED : g_content_type_get_mime_dirs : no array length
@@ -962,9 +957,8 @@ func ContentTypeGetIcon(type_ string) *Icon {
 func ContentTypeGetMimeType(type_ string) string {
 	sys_type_ := type_
 	retSys := gio.Fn_g_content_type_get_mime_type(sys_type_)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : g_content_type_guess : has array param, data
@@ -976,18 +970,16 @@ func ContentTypeIsA(type_ string, supertype string) bool {
 	sys_type_ := type_
 	sys_supertype := supertype
 	retSys := gio.Fn_g_content_type_is_a(sys_type_, sys_supertype)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // ContentTypeIsUnknown wraps the C function g_content_type_is_unknown.
 func ContentTypeIsUnknown(type_ string) bool {
 	sys_type_ := type_
 	retSys := gio.Fn_g_content_type_is_unknown(sys_type_)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : g_content_type_set_mime_dirs : parameter 'dirs' is array parameter without length parameter
@@ -995,9 +987,8 @@ func ContentTypeIsUnknown(type_ string) bool {
 // ContentTypesGetRegistered wraps the C function g_content_types_get_registered.
 func ContentTypesGetRegistered() *glib.List {
 	retSys := gio.Fn_g_content_types_get_registered()
-	ret := glib.ListNewFromC(retSys)
 
-	return ret
+	return glib.ListNewFromC(retSys)
 }
 
 // UNSUPPORTED : g_dbus_address_get_for_bus_sync : throws
@@ -1028,17 +1019,15 @@ func ContentTypesGetRegistered() *glib.List {
 func IoErrorFromErrno(errNo int) int {
 	sys_errNo := errNo
 	retSys := gio.Fn_g_io_error_from_errno(sys_errNo)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // IoErrorQuark wraps the C function g_io_error_quark.
 func IoErrorQuark() uint32 {
 	retSys := gio.Fn_g_io_error_quark()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : g_io_modules_load_all_in_directory : blacklisted
@@ -1094,9 +1083,8 @@ func IoSchedulerCancelAllJobs() {
 func UnixIsMountPathSystemInternal(mountPath string) bool {
 	sys_mountPath := mountPath
 	retSys := gio.Fn_g_unix_is_mount_path_system_internal(sys_mountPath)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnixMountAt wraps the C function g_unix_mount_at.
@@ -1104,9 +1092,8 @@ func UnixMountAt(mountPath string) (*UnixMountEntry, uint64) {
 	sys_mountPath := mountPath
 	var sys_timeRead uint64
 	retSys := gio.Fn_g_unix_mount_at(sys_mountPath, &sys_timeRead)
-	ret := UnixMountEntryNewFromC(retSys)
 
-	return ret
+	return UnixMountEntryNewFromC(retSys), UnixMountEntryNewFromC(retSys)
 }
 
 // UnixMountCompare wraps the C function g_unix_mount_compare.
@@ -1114,9 +1101,8 @@ func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int {
 	sys_mount1 := mount1.ToC()
 	sys_mount2 := mount2.ToC()
 	retSys := gio.Fn_g_unix_mount_compare(sys_mount1, sys_mount2)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnixMountFree wraps the C function g_unix_mount_free.
@@ -1129,117 +1115,104 @@ func UnixMountFree(mountEntry *UnixMountEntry) {
 func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
 	sys_mountEntry := mountEntry.ToC()
 	retSys := gio.Fn_g_unix_mount_get_device_path(sys_mountEntry)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnixMountGetFsType wraps the C function g_unix_mount_get_fs_type.
 func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
 	sys_mountEntry := mountEntry.ToC()
 	retSys := gio.Fn_g_unix_mount_get_fs_type(sys_mountEntry)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnixMountGetMountPath wraps the C function g_unix_mount_get_mount_path.
 func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
 	sys_mountEntry := mountEntry.ToC()
 	retSys := gio.Fn_g_unix_mount_get_mount_path(sys_mountEntry)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnixMountGuessCanEject wraps the C function g_unix_mount_guess_can_eject.
 func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 	sys_mountEntry := mountEntry.ToC()
 	retSys := gio.Fn_g_unix_mount_guess_can_eject(sys_mountEntry)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnixMountGuessIcon wraps the C function g_unix_mount_guess_icon.
 func UnixMountGuessIcon(mountEntry *UnixMountEntry) *Icon {
 	sys_mountEntry := mountEntry.ToC()
 	retSys := gio.Fn_g_unix_mount_guess_icon(sys_mountEntry)
-	ret := IconNewFromC(retSys)
 
-	return ret
+	return IconNewFromC(retSys)
 }
 
 // UnixMountGuessName wraps the C function g_unix_mount_guess_name.
 func UnixMountGuessName(mountEntry *UnixMountEntry) string {
 	sys_mountEntry := mountEntry.ToC()
 	retSys := gio.Fn_g_unix_mount_guess_name(sys_mountEntry)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnixMountGuessShouldDisplay wraps the C function g_unix_mount_guess_should_display.
 func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 	sys_mountEntry := mountEntry.ToC()
 	retSys := gio.Fn_g_unix_mount_guess_should_display(sys_mountEntry)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnixMountIsReadonly wraps the C function g_unix_mount_is_readonly.
 func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
 	sys_mountEntry := mountEntry.ToC()
 	retSys := gio.Fn_g_unix_mount_is_readonly(sys_mountEntry)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnixMountIsSystemInternal wraps the C function g_unix_mount_is_system_internal.
 func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
 	sys_mountEntry := mountEntry.ToC()
 	retSys := gio.Fn_g_unix_mount_is_system_internal(sys_mountEntry)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnixMountPointsChangedSince wraps the C function g_unix_mount_points_changed_since.
 func UnixMountPointsChangedSince(time uint64) bool {
 	sys_time := time
 	retSys := gio.Fn_g_unix_mount_points_changed_since(sys_time)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnixMountPointsGet wraps the C function g_unix_mount_points_get.
 func UnixMountPointsGet() (*glib.List, uint64) {
 	var sys_timeRead uint64
 	retSys := gio.Fn_g_unix_mount_points_get(&sys_timeRead)
-	ret := glib.ListNewFromC(retSys)
 
-	return ret
+	return glib.ListNewFromC(retSys), glib.ListNewFromC(retSys)
 }
 
 // UnixMountsChangedSince wraps the C function g_unix_mounts_changed_since.
 func UnixMountsChangedSince(time uint64) bool {
 	sys_time := time
 	retSys := gio.Fn_g_unix_mounts_changed_since(sys_time)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnixMountsGet wraps the C function g_unix_mounts_get.
 func UnixMountsGet() (*glib.List, uint64) {
 	var sys_timeRead uint64
 	retSys := gio.Fn_g_unix_mounts_get(&sys_timeRead)
-	ret := glib.ListNewFromC(retSys)
 
-	return ret
+	return glib.ListNewFromC(retSys), glib.ListNewFromC(retSys)
 }
 
 // ActionEntry is a representation of the C record GActionEntry.

@@ -218,9 +218,8 @@ func BoxedCopy(boxedType uint64, srcBoxed unsafe.Pointer) unsafe.Pointer {
 	sys_boxedType := boxedType
 	sys_srcBoxed := srcBoxed
 	retSys := gobject.Fn_g_boxed_copy(sys_boxedType, sys_srcBoxed)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // BoxedFree wraps the C function g_boxed_free.
@@ -254,6 +253,8 @@ func EnumCompleteTypeInfo(gEnumType uint64, constValues *EnumValue) *TypeInfo {
 	var sys_info unsafe.Pointer
 	sys_constValues := constValues.ToC()
 	gobject.Fn_g_enum_complete_type_info(sys_gEnumType, &sys_info, sys_constValues)
+
+	return retSys
 }
 
 // EnumGetValue wraps the C function g_enum_get_value.
@@ -261,9 +262,8 @@ func EnumGetValue(enumClass *EnumClass, value int) *EnumValue {
 	sys_enumClass := enumClass.ToC()
 	sys_value := value
 	retSys := gobject.Fn_g_enum_get_value(sys_enumClass, sys_value)
-	ret := EnumValueNewFromC(retSys)
 
-	return ret
+	return EnumValueNewFromC(retSys)
 }
 
 // EnumGetValueByName wraps the C function g_enum_get_value_by_name.
@@ -271,9 +271,8 @@ func EnumGetValueByName(enumClass *EnumClass, name string) *EnumValue {
 	sys_enumClass := enumClass.ToC()
 	sys_name := name
 	retSys := gobject.Fn_g_enum_get_value_by_name(sys_enumClass, sys_name)
-	ret := EnumValueNewFromC(retSys)
 
-	return ret
+	return EnumValueNewFromC(retSys)
 }
 
 // EnumGetValueByNick wraps the C function g_enum_get_value_by_nick.
@@ -281,9 +280,8 @@ func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
 	sys_enumClass := enumClass.ToC()
 	sys_nick := nick
 	retSys := gobject.Fn_g_enum_get_value_by_nick(sys_enumClass, sys_nick)
-	ret := EnumValueNewFromC(retSys)
 
-	return ret
+	return EnumValueNewFromC(retSys)
 }
 
 // EnumRegisterStatic wraps the C function g_enum_register_static.
@@ -291,9 +289,8 @@ func EnumRegisterStatic(name string, constStaticValues *EnumValue) uint64 {
 	sys_name := name
 	sys_constStaticValues := constStaticValues.ToC()
 	retSys := gobject.Fn_g_enum_register_static(sys_name, sys_constStaticValues)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // FlagsCompleteTypeInfo wraps the C function g_flags_complete_type_info.
@@ -302,6 +299,8 @@ func FlagsCompleteTypeInfo(gFlagsType uint64, constValues *FlagsValue) *TypeInfo
 	var sys_info unsafe.Pointer
 	sys_constValues := constValues.ToC()
 	gobject.Fn_g_flags_complete_type_info(sys_gFlagsType, &sys_info, sys_constValues)
+
+	return retSys
 }
 
 // FlagsGetFirstValue wraps the C function g_flags_get_first_value.
@@ -309,9 +308,8 @@ func FlagsGetFirstValue(flagsClass *FlagsClass, value uint) *FlagsValue {
 	sys_flagsClass := flagsClass.ToC()
 	sys_value := value
 	retSys := gobject.Fn_g_flags_get_first_value(sys_flagsClass, sys_value)
-	ret := FlagsValueNewFromC(retSys)
 
-	return ret
+	return FlagsValueNewFromC(retSys)
 }
 
 // FlagsGetValueByName wraps the C function g_flags_get_value_by_name.
@@ -319,9 +317,8 @@ func FlagsGetValueByName(flagsClass *FlagsClass, name string) *FlagsValue {
 	sys_flagsClass := flagsClass.ToC()
 	sys_name := name
 	retSys := gobject.Fn_g_flags_get_value_by_name(sys_flagsClass, sys_name)
-	ret := FlagsValueNewFromC(retSys)
 
-	return ret
+	return FlagsValueNewFromC(retSys)
 }
 
 // FlagsGetValueByNick wraps the C function g_flags_get_value_by_nick.
@@ -329,9 +326,8 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 	sys_flagsClass := flagsClass.ToC()
 	sys_nick := nick
 	retSys := gobject.Fn_g_flags_get_value_by_nick(sys_flagsClass, sys_nick)
-	ret := FlagsValueNewFromC(retSys)
 
-	return ret
+	return FlagsValueNewFromC(retSys)
 }
 
 // FlagsRegisterStatic wraps the C function g_flags_register_static.
@@ -339,17 +335,15 @@ func FlagsRegisterStatic(name string, constStaticValues *FlagsValue) uint64 {
 	sys_name := name
 	sys_constStaticValues := constStaticValues.ToC()
 	retSys := gobject.Fn_g_flags_register_static(sys_name, sys_constStaticValues)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GtypeGetType wraps the C function g_gtype_get_type.
 func GtypeGetType() uint64 {
 	retSys := gobject.Fn_g_gtype_get_type()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // ParamSpecBoolean_ wraps the C function g_param_spec_boolean.
@@ -360,9 +354,8 @@ func ParamSpecBoolean_(name string, nick string, blurb string, defaultValue bool
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_boolean(sys_name, sys_nick, sys_blurb, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecBoxed_ wraps the C function g_param_spec_boxed.
@@ -373,9 +366,8 @@ func ParamSpecBoxed_(name string, nick string, blurb string, boxedType uint64, f
 	sys_boxedType := boxedType
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_boxed(sys_name, sys_nick, sys_blurb, sys_boxedType, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecChar_ wraps the C function g_param_spec_char.
@@ -388,9 +380,8 @@ func ParamSpecChar_(name string, nick string, blurb string, minimum int8, maximu
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_char(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecDouble_ wraps the C function g_param_spec_double.
@@ -403,9 +394,8 @@ func ParamSpecDouble_(name string, nick string, blurb string, minimum float64, m
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_double(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecEnum_ wraps the C function g_param_spec_enum.
@@ -417,9 +407,8 @@ func ParamSpecEnum_(name string, nick string, blurb string, enumType uint64, def
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_enum(sys_name, sys_nick, sys_blurb, sys_enumType, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecFlags_ wraps the C function g_param_spec_flags.
@@ -431,9 +420,8 @@ func ParamSpecFlags_(name string, nick string, blurb string, flagsType uint64, d
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_flags(sys_name, sys_nick, sys_blurb, sys_flagsType, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecFloat_ wraps the C function g_param_spec_float.
@@ -446,9 +434,8 @@ func ParamSpecFloat_(name string, nick string, blurb string, minimum float32, ma
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_float(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecGtype wraps the C function g_param_spec_gtype.
@@ -461,9 +448,8 @@ func ParamSpecGtype(name string, nick string, blurb string, isAType uint64, flag
 	sys_isAType := isAType
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_gtype(sys_name, sys_nick, sys_blurb, sys_isAType, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecInt_ wraps the C function g_param_spec_int.
@@ -476,9 +462,8 @@ func ParamSpecInt_(name string, nick string, blurb string, minimum int, maximum 
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_int(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecInt64_ wraps the C function g_param_spec_int64.
@@ -491,9 +476,8 @@ func ParamSpecInt64_(name string, nick string, blurb string, minimum int64, maxi
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_int64(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecLong_ wraps the C function g_param_spec_long.
@@ -506,9 +490,8 @@ func ParamSpecLong_(name string, nick string, blurb string, minimum int64, maxim
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_long(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecObject_ wraps the C function g_param_spec_object.
@@ -519,9 +502,8 @@ func ParamSpecObject_(name string, nick string, blurb string, objectType uint64,
 	sys_objectType := objectType
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_object(sys_name, sys_nick, sys_blurb, sys_objectType, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecOverride_ wraps the C function g_param_spec_override.
@@ -531,9 +513,8 @@ func ParamSpecOverride_(name string, overridden *ParamSpec) *ParamSpec {
 	sys_name := name
 	sys_overridden := overridden.ToC()
 	retSys := gobject.Fn_g_param_spec_override(sys_name, sys_overridden)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecParam_ wraps the C function g_param_spec_param.
@@ -544,9 +525,8 @@ func ParamSpecParam_(name string, nick string, blurb string, paramType uint64, f
 	sys_paramType := paramType
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_param(sys_name, sys_nick, sys_blurb, sys_paramType, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecPointer_ wraps the C function g_param_spec_pointer.
@@ -556,9 +536,8 @@ func ParamSpecPointer_(name string, nick string, blurb string, flags ParamFlags)
 	sys_blurb := blurb
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_pointer(sys_name, sys_nick, sys_blurb, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecString_ wraps the C function g_param_spec_string.
@@ -569,9 +548,8 @@ func ParamSpecString_(name string, nick string, blurb string, defaultValue strin
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_string(sys_name, sys_nick, sys_blurb, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecUchar wraps the C function g_param_spec_uchar.
@@ -584,9 +562,8 @@ func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maxim
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_uchar(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecUint wraps the C function g_param_spec_uint.
@@ -599,9 +576,8 @@ func ParamSpecUint(name string, nick string, blurb string, minimum uint, maximum
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_uint(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecUint64 wraps the C function g_param_spec_uint64.
@@ -614,9 +590,8 @@ func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, max
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_uint64(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecUlong wraps the C function g_param_spec_ulong.
@@ -629,9 +604,8 @@ func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maxi
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_ulong(sys_name, sys_nick, sys_blurb, sys_minimum, sys_maximum, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecUnichar_ wraps the C function g_param_spec_unichar.
@@ -642,9 +616,8 @@ func ParamSpecUnichar_(name string, nick string, blurb string, defaultValue rune
 	sys_defaultValue := defaultValue
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_unichar(sys_name, sys_nick, sys_blurb, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecValueArray_ wraps the C function g_param_spec_value_array.
@@ -655,9 +628,8 @@ func ParamSpecValueArray_(name string, nick string, blurb string, elementSpec *P
 	sys_elementSpec := elementSpec.ToC()
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_value_array(sys_name, sys_nick, sys_blurb, sys_elementSpec, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamSpecVariant_ wraps the C function g_param_spec_variant.
@@ -671,9 +643,8 @@ func ParamSpecVariant_(name string, nick string, blurb string, type_ *glib.Varia
 	sys_defaultValue := defaultValue.ToC()
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_param_spec_variant(sys_name, sys_nick, sys_blurb, sys_type_, sys_defaultValue, sys_flags)
-	ret := ParamSpecNewFromC(retSys)
 
-	return ret
+	return ParamSpecNewFromC(retSys)
 }
 
 // ParamTypeRegisterStatic wraps the C function g_param_type_register_static.
@@ -681,9 +652,8 @@ func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) uint64 {
 	sys_name := name
 	sys_pspecInfo := pspecInfo.ToC()
 	retSys := gobject.Fn_g_param_type_register_static(sys_name, sys_pspecInfo)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // ParamValueConvert wraps the C function g_param_value_convert.
@@ -693,9 +663,8 @@ func ParamValueConvert(pspec *ParamSpec, srcValue *Value, destValue *Value, stri
 	sys_destValue := destValue.ToC()
 	sys_strictValidation := strictValidation
 	retSys := gobject.Fn_g_param_value_convert(sys_pspec, sys_srcValue, sys_destValue, sys_strictValidation)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // ParamValueDefaults wraps the C function g_param_value_defaults.
@@ -703,9 +672,8 @@ func ParamValueDefaults(pspec *ParamSpec, value *Value) bool {
 	sys_pspec := pspec.ToC()
 	sys_value := value.ToC()
 	retSys := gobject.Fn_g_param_value_defaults(sys_pspec, sys_value)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // ParamValueSetDefault wraps the C function g_param_value_set_default.
@@ -720,9 +688,8 @@ func ParamValueValidate(pspec *ParamSpec, value *Value) bool {
 	sys_pspec := pspec.ToC()
 	sys_value := value.ToC()
 	retSys := gobject.Fn_g_param_value_validate(sys_pspec, sys_value)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // ParamValuesCmp wraps the C function g_param_values_cmp.
@@ -731,18 +698,16 @@ func ParamValuesCmp(pspec *ParamSpec, value1 *Value, value2 *Value) int {
 	sys_value1 := value1.ToC()
 	sys_value2 := value2.ToC()
 	retSys := gobject.Fn_g_param_values_cmp(sys_pspec, sys_value1, sys_value2)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // PointerTypeRegisterStatic wraps the C function g_pointer_type_register_static.
 func PointerTypeRegisterStatic(name string) uint64 {
 	sys_name := name
 	retSys := gobject.Fn_g_pointer_type_register_static(sys_name)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SignalAccumulatorFirstWins wraps the C function g_signal_accumulator_first_wins.
@@ -754,9 +719,8 @@ func SignalAccumulatorFirstWins(ihint *SignalInvocationHint, returnAccu *Value, 
 	sys_handlerReturn := handlerReturn.ToC()
 	sys_dummy := dummy
 	retSys := gobject.Fn_g_signal_accumulator_first_wins(sys_ihint, sys_returnAccu, sys_handlerReturn, sys_dummy)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SignalAccumulatorTrueHandled wraps the C function g_signal_accumulator_true_handled.
@@ -768,9 +732,8 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 	sys_handlerReturn := handlerReturn.ToC()
 	sys_dummy := dummy
 	retSys := gobject.Fn_g_signal_accumulator_true_handled(sys_ihint, sys_returnAccu, sys_handlerReturn, sys_dummy)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : g_signal_add_emission_hook : parameter 'hook_func' is callback
@@ -792,9 +755,8 @@ func SignalConnectClosure(instance unsafe.Pointer, detailedSignal string, closur
 	sys_closure := closure.ToC()
 	sys_after := after
 	retSys := gobject.Fn_g_signal_connect_closure(sys_instance, sys_detailedSignal, sys_closure, sys_after)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SignalConnectClosureById wraps the C function g_signal_connect_closure_by_id.
@@ -805,9 +767,8 @@ func SignalConnectClosureById(instance unsafe.Pointer, signalId uint, detail uin
 	sys_closure := closure.ToC()
 	sys_after := after
 	retSys := gobject.Fn_g_signal_connect_closure_by_id(sys_instance, sys_signalId, sys_detail, sys_closure, sys_after)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : g_signal_connect_data : parameter 'c_handler' is callback
@@ -843,9 +804,8 @@ func SignalEmitValist(instance unsafe.Pointer, signalId uint, detail uint32) {
 func SignalGetInvocationHint(instance unsafe.Pointer) *SignalInvocationHint {
 	sys_instance := instance
 	retSys := gobject.Fn_g_signal_get_invocation_hint(sys_instance)
-	ret := SignalInvocationHintNewFromC(retSys)
 
-	return ret
+	return SignalInvocationHintNewFromC(retSys)
 }
 
 // SignalHandlerBlock wraps the C function g_signal_handler_block.
@@ -872,9 +832,8 @@ func SignalHandlerFind(instance unsafe.Pointer, mask SignalMatchType, signalId u
 	sys_func_ := func_
 	sys_data := data
 	retSys := gobject.Fn_g_signal_handler_find(sys_instance, sys_mask, sys_signalId, sys_detail, sys_closure, sys_func_, sys_data)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SignalHandlerIsConnected wraps the C function g_signal_handler_is_connected.
@@ -882,9 +841,8 @@ func SignalHandlerIsConnected(instance unsafe.Pointer, handlerId uint64) bool {
 	sys_instance := instance
 	sys_handlerId := handlerId
 	retSys := gobject.Fn_g_signal_handler_is_connected(sys_instance, sys_handlerId)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SignalHandlerUnblock wraps the C function g_signal_handler_unblock.
@@ -904,9 +862,8 @@ func SignalHandlersBlockMatched(instance unsafe.Pointer, mask SignalMatchType, s
 	sys_func_ := func_
 	sys_data := data
 	retSys := gobject.Fn_g_signal_handlers_block_matched(sys_instance, sys_mask, sys_signalId, sys_detail, sys_closure, sys_func_, sys_data)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SignalHandlersDestroy wraps the C function g_signal_handlers_destroy.
@@ -925,9 +882,8 @@ func SignalHandlersDisconnectMatched(instance unsafe.Pointer, mask SignalMatchTy
 	sys_func_ := func_
 	sys_data := data
 	retSys := gobject.Fn_g_signal_handlers_disconnect_matched(sys_instance, sys_mask, sys_signalId, sys_detail, sys_closure, sys_func_, sys_data)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SignalHandlersUnblockMatched wraps the C function g_signal_handlers_unblock_matched.
@@ -940,9 +896,8 @@ func SignalHandlersUnblockMatched(instance unsafe.Pointer, mask SignalMatchType,
 	sys_func_ := func_
 	sys_data := data
 	retSys := gobject.Fn_g_signal_handlers_unblock_matched(sys_instance, sys_mask, sys_signalId, sys_detail, sys_closure, sys_func_, sys_data)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SignalHasHandlerPending wraps the C function g_signal_has_handler_pending.
@@ -952,9 +907,8 @@ func SignalHasHandlerPending(instance unsafe.Pointer, signalId uint, detail uint
 	sys_detail := detail
 	sys_mayBeBlocked := mayBeBlocked
 	retSys := gobject.Fn_g_signal_has_handler_pending(sys_instance, sys_signalId, sys_detail, sys_mayBeBlocked)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : g_signal_list_ids : has array return
@@ -964,18 +918,16 @@ func SignalLookup(name string, itype uint64) uint {
 	sys_name := name
 	sys_itype := itype
 	retSys := gobject.Fn_g_signal_lookup(sys_name, sys_itype)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SignalName wraps the C function g_signal_name.
 func SignalName(signalId uint) string {
 	sys_signalId := signalId
 	retSys := gobject.Fn_g_signal_name(sys_signalId)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : g_signal_new : parameter 'accumulator' is callback
@@ -1004,9 +956,8 @@ func SignalParseName(detailedSignal string, itype uint64, forceDetailQuark bool)
 	var sys_detailP uint32
 	sys_forceDetailQuark := forceDetailQuark
 	retSys := gobject.Fn_g_signal_parse_name(sys_detailedSignal, sys_itype, &sys_signalIdP, &sys_detailP, sys_forceDetailQuark)
-	ret := retSys
 
-	return ret
+	return retSys, retSys, retSys
 }
 
 // SignalQuery_ wraps the C function g_signal_query.
@@ -1014,6 +965,8 @@ func SignalQuery_(signalId uint) *SignalQuery {
 	sys_signalId := signalId
 	var sys_query unsafe.Pointer
 	gobject.Fn_g_signal_query(sys_signalId, &sys_query)
+
+	return retSys
 }
 
 // SignalRemoveEmissionHook wraps the C function g_signal_remove_emission_hook.
@@ -1045,9 +998,8 @@ func SignalTypeCclosureNew(itype uint64, structOffset uint) *Closure {
 	sys_itype := itype
 	sys_structOffset := structOffset
 	retSys := gobject.Fn_g_signal_type_cclosure_new(sys_itype, sys_structOffset)
-	ret := ClosureNewFromC(retSys)
 
-	return ret
+	return ClosureNewFromC(retSys)
 }
 
 // SourceSetClosure wraps the C function g_source_set_closure.
@@ -1067,9 +1019,8 @@ func SourceSetDummyCallback(source *glib.Source) {
 func StrdupValueContents(value *Value) string {
 	sys_value := value.ToC()
 	retSys := gobject.Fn_g_strdup_value_contents(sys_value)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : g_type_add_class_cache_func : parameter 'cache_func' is callback
@@ -1088,9 +1039,8 @@ func TypeAddInstancePrivate(classType uint64, privateSize uint64) int {
 	sys_classType := classType
 	sys_privateSize := privateSize
 	retSys := gobject.Fn_g_type_add_instance_private(sys_classType, sys_privateSize)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : g_type_add_interface_check : parameter 'check_func' is callback
@@ -1116,9 +1066,8 @@ func TypeCheckClassCast(gClass *TypeClass, isAType uint64) *TypeClass {
 	sys_gClass := gClass.ToC()
 	sys_isAType := isAType
 	retSys := gobject.Fn_g_type_check_class_cast(sys_gClass, sys_isAType)
-	ret := TypeClassNewFromC(retSys)
 
-	return ret
+	return TypeClassNewFromC(retSys)
 }
 
 // TypeCheckClassIsA wraps the C function g_type_check_class_is_a.
@@ -1126,18 +1075,16 @@ func TypeCheckClassIsA(gClass *TypeClass, isAType uint64) bool {
 	sys_gClass := gClass.ToC()
 	sys_isAType := isAType
 	retSys := gobject.Fn_g_type_check_class_is_a(sys_gClass, sys_isAType)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeCheckInstance wraps the C function g_type_check_instance.
 func TypeCheckInstance(instance *TypeInstance) bool {
 	sys_instance := instance.ToC()
 	retSys := gobject.Fn_g_type_check_instance(sys_instance)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeCheckInstanceCast wraps the C function g_type_check_instance_cast.
@@ -1145,9 +1092,8 @@ func TypeCheckInstanceCast(instance *TypeInstance, ifaceType uint64) *TypeInstan
 	sys_instance := instance.ToC()
 	sys_ifaceType := ifaceType
 	retSys := gobject.Fn_g_type_check_instance_cast(sys_instance, sys_ifaceType)
-	ret := TypeInstanceNewFromC(retSys)
 
-	return ret
+	return TypeInstanceNewFromC(retSys)
 }
 
 // TypeCheckInstanceIsA wraps the C function g_type_check_instance_is_a.
@@ -1155,9 +1101,8 @@ func TypeCheckInstanceIsA(instance *TypeInstance, ifaceType uint64) bool {
 	sys_instance := instance.ToC()
 	sys_ifaceType := ifaceType
 	retSys := gobject.Fn_g_type_check_instance_is_a(sys_instance, sys_ifaceType)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeCheckInstanceIsFundamentallyA wraps the C function g_type_check_instance_is_fundamentally_a.
@@ -1165,27 +1110,24 @@ func TypeCheckInstanceIsFundamentallyA(instance *TypeInstance, fundamentalType u
 	sys_instance := instance.ToC()
 	sys_fundamentalType := fundamentalType
 	retSys := gobject.Fn_g_type_check_instance_is_fundamentally_a(sys_instance, sys_fundamentalType)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeCheckIsValueType wraps the C function g_type_check_is_value_type.
 func TypeCheckIsValueType(type_ uint64) bool {
 	sys_type_ := type_
 	retSys := gobject.Fn_g_type_check_is_value_type(sys_type_)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeCheckValue wraps the C function g_type_check_value.
 func TypeCheckValue(value *Value) bool {
 	sys_value := value.ToC()
 	retSys := gobject.Fn_g_type_check_value(sys_value)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeCheckValueHolds wraps the C function g_type_check_value_holds.
@@ -1193,9 +1135,8 @@ func TypeCheckValueHolds(value *Value, type_ uint64) bool {
 	sys_value := value.ToC()
 	sys_type_ := type_
 	retSys := gobject.Fn_g_type_check_value_holds(sys_value, sys_type_)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : g_type_children : has array return
@@ -1204,9 +1145,8 @@ func TypeCheckValueHolds(value *Value, type_ uint64) bool {
 func TypeCreateInstance(type_ uint64) *TypeInstance {
 	sys_type_ := type_
 	retSys := gobject.Fn_g_type_create_instance(sys_type_)
-	ret := TypeInstanceNewFromC(retSys)
 
-	return ret
+	return TypeInstanceNewFromC(retSys)
 }
 
 // TypeDefaultInterfacePeek wraps the C function g_type_default_interface_peek.
@@ -1215,9 +1155,8 @@ func TypeCreateInstance(type_ uint64) *TypeInstance {
 func TypeDefaultInterfacePeek(gType uint64) *TypeInterface {
 	sys_gType := gType
 	retSys := gobject.Fn_g_type_default_interface_peek(sys_gType)
-	ret := TypeInterfaceNewFromC(retSys)
 
-	return ret
+	return TypeInterfaceNewFromC(retSys)
 }
 
 // TypeDefaultInterfaceRef wraps the C function g_type_default_interface_ref.
@@ -1226,9 +1165,8 @@ func TypeDefaultInterfacePeek(gType uint64) *TypeInterface {
 func TypeDefaultInterfaceRef(gType uint64) *TypeInterface {
 	sys_gType := gType
 	retSys := gobject.Fn_g_type_default_interface_ref(sys_gType)
-	ret := TypeInterfaceNewFromC(retSys)
 
-	return ret
+	return TypeInterfaceNewFromC(retSys)
 }
 
 // TypeDefaultInterfaceUnref wraps the C function g_type_default_interface_unref.
@@ -1243,9 +1181,8 @@ func TypeDefaultInterfaceUnref(gIface unsafe.Pointer) {
 func TypeDepth(type_ uint64) uint {
 	sys_type_ := type_
 	retSys := gobject.Fn_g_type_depth(sys_type_)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeEnsure wraps the C function g_type_ensure.
@@ -1266,35 +1203,31 @@ func TypeFreeInstance(instance *TypeInstance) {
 func TypeFromName(name string) uint64 {
 	sys_name := name
 	retSys := gobject.Fn_g_type_from_name(sys_name)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeFundamental wraps the C function g_type_fundamental.
 func TypeFundamental(typeId uint64) uint64 {
 	sys_typeId := typeId
 	retSys := gobject.Fn_g_type_fundamental(sys_typeId)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeFundamentalNext wraps the C function g_type_fundamental_next.
 func TypeFundamentalNext() uint64 {
 	retSys := gobject.Fn_g_type_fundamental_next()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeGetPlugin wraps the C function g_type_get_plugin.
 func TypeGetPlugin(type_ uint64) *TypePlugin {
 	sys_type_ := type_
 	retSys := gobject.Fn_g_type_get_plugin(sys_type_)
-	ret := TypePluginNewFromC(retSys)
 
-	return ret
+	return TypePluginNewFromC(retSys)
 }
 
 // TypeGetQdata wraps the C function g_type_get_qdata.
@@ -1302,9 +1235,8 @@ func TypeGetQdata(type_ uint64, quark uint32) unsafe.Pointer {
 	sys_type_ := type_
 	sys_quark := quark
 	retSys := gobject.Fn_g_type_get_qdata(sys_type_, sys_quark)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeInit wraps the C function g_type_init.
@@ -1327,36 +1259,32 @@ func TypeIsA(type_ uint64, isAType uint64) bool {
 	sys_type_ := type_
 	sys_isAType := isAType
 	retSys := gobject.Fn_g_type_is_a(sys_type_, sys_isAType)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeName wraps the C function g_type_name.
 func TypeName(type_ uint64) string {
 	sys_type_ := type_
 	retSys := gobject.Fn_g_type_name(sys_type_)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeNameFromClass wraps the C function g_type_name_from_class.
 func TypeNameFromClass(gClass *TypeClass) string {
 	sys_gClass := gClass.ToC()
 	retSys := gobject.Fn_g_type_name_from_class(sys_gClass)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeNameFromInstance wraps the C function g_type_name_from_instance.
 func TypeNameFromInstance(instance *TypeInstance) string {
 	sys_instance := instance.ToC()
 	retSys := gobject.Fn_g_type_name_from_instance(sys_instance)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeNextBase wraps the C function g_type_next_base.
@@ -1364,27 +1292,24 @@ func TypeNextBase(leafType uint64, rootType uint64) uint64 {
 	sys_leafType := leafType
 	sys_rootType := rootType
 	retSys := gobject.Fn_g_type_next_base(sys_leafType, sys_rootType)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeParent wraps the C function g_type_parent.
 func TypeParent(type_ uint64) uint64 {
 	sys_type_ := type_
 	retSys := gobject.Fn_g_type_parent(sys_type_)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeQname wraps the C function g_type_qname.
 func TypeQname(type_ uint64) uint32 {
 	sys_type_ := type_
 	retSys := gobject.Fn_g_type_qname(sys_type_)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeQuery_ wraps the C function g_type_query.
@@ -1392,6 +1317,8 @@ func TypeQuery_(type_ uint64) *TypeQuery {
 	sys_type_ := type_
 	var sys_query unsafe.Pointer
 	gobject.Fn_g_type_query(sys_type_, &sys_query)
+
+	return retSys
 }
 
 // TypeRegisterDynamic wraps the C function g_type_register_dynamic.
@@ -1401,9 +1328,8 @@ func TypeRegisterDynamic(parentType uint64, typeName string, plugin *TypePlugin,
 	sys_plugin := plugin.ToC()
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_type_register_dynamic(sys_parentType, sys_typeName, sys_plugin, sys_flags)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeRegisterFundamental wraps the C function g_type_register_fundamental.
@@ -1414,9 +1340,8 @@ func TypeRegisterFundamental(typeId uint64, typeName string, info *TypeInfo, fin
 	sys_finfo := finfo.ToC()
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_type_register_fundamental(sys_typeId, sys_typeName, sys_info, sys_finfo, sys_flags)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TypeRegisterStatic wraps the C function g_type_register_static.
@@ -1426,9 +1351,8 @@ func TypeRegisterStatic(parentType uint64, typeName string, info *TypeInfo, flag
 	sys_info := info.ToC()
 	sys_flags := (int)(flags)
 	retSys := gobject.Fn_g_type_register_static(sys_parentType, sys_typeName, sys_info, sys_flags)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : g_type_register_static_simple : parameter 'class_init' is callback
@@ -1450,9 +1374,8 @@ func TypeTestFlags(type_ uint64, flags uint) bool {
 	sys_type_ := type_
 	sys_flags := flags
 	retSys := gobject.Fn_g_type_test_flags(sys_type_, sys_flags)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : g_value_register_transform_func : parameter 'transform_func' is callback

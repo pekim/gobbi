@@ -137,8 +137,7 @@ func (f *Function) generateLibBody(g *jen.Group) {
 		}).
 		Qual(f.namespace.goFullSysPackageName, f.sysName).CallFunc(f.generateLibCallParams)
 
-	f.generateMarhsalReturnValue(g)
-	f.generateLibReturn(g)
+	f.generateReturn(g)
 }
 
 func (f *Function) generateLibCallParams(g *jen.Group) {
@@ -163,38 +162,43 @@ func (f *Function) generateLibCallParams(g *jen.Group) {
 	//}
 }
 
-func (f *Function) generateMarhsalReturnValue(g *jen.Group) {
-	if f.ReturnValue.isVoid() {
-		return
-	}
-
-	if f.ReturnValue.Type.isStruct() {
-		if f.ReturnValue.Type.isQualifiedName() {
-			ctorName := f.ReturnValue.Type.foreignName + "NewFromC"
-			g.Id("ret").Op(":=").Qual(f.ReturnValue.Type.foreignNamespace.goFullPackageName, ctorName).Call(jen.Id("retSys"))
-			return
-		}
-
-		ctorName := f.ReturnValue.Type.Name + "NewFromC"
-		g.Id("ret").Op(":=").Id(ctorName).Call(jen.Id("retSys"))
-		return
-	}
-
-	g.Id("ret").Op(":=").Id("retSys")
-}
-
-func (f *Function) generateLibReturn(g *jen.Group) {
-	if f.ReturnValue.isVoid() {
+func (f *Function) generateReturn(g *jen.Group) {
+	if f.ReturnValue.isVoid() && f.Parameters.outCount() == 0 {
 		return
 	}
 
 	g.Line()
 
-	g.Return().Do(func(s *jen.Statement) {
+	g.ReturnFunc(func(g *jen.Group) {
 		if !f.ReturnValue.isVoid() {
-			s.Id("ret")
+			f.generateMarshalReturnValue(g, "retSys", f.ReturnValue.Type)
+		}
+
+		for _, param := range f.Parameters {
+			if !param.isOut() {
+				continue
+			}
+
+			argVarName := "sys_" + param.goVarName
+			f.generateMarshalReturnValue(g, argVarName, param.Type)
 		}
 	})
+}
+
+func (f *Function) generateMarshalReturnValue(g *jen.Group, varName string, typ *Type) {
+	if f.ReturnValue.Type.isStruct() {
+		if f.ReturnValue.Type.isQualifiedName() {
+			ctorName := f.ReturnValue.Type.foreignName + "NewFromC"
+			g.Qual(f.ReturnValue.Type.foreignNamespace.goFullPackageName, ctorName).Call(jen.Id("retSys"))
+			return
+		}
+
+		ctorName := f.ReturnValue.Type.Name + "NewFromC"
+		g.Id(ctorName).Call(jen.Id("retSys"))
+		return
+	}
+
+	g.Id("retSys")
 }
 
 //func (f *Function) generateLibVarArgsCFunction(fi *jen.File) {

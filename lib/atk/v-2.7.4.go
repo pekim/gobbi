@@ -897,9 +897,8 @@ func FocusTrackerNotify(object *Object) {
 // GetDefaultRegistry wraps the C function atk_get_default_registry.
 func GetDefaultRegistry() *Registry {
 	retSys := atk.Fn_atk_get_default_registry()
-	ret := RegistryNewFromC(retSys)
 
-	return ret
+	return RegistryNewFromC(retSys)
 }
 
 // GetFocusObject wraps the C function atk_get_focus_object.
@@ -907,33 +906,29 @@ func GetDefaultRegistry() *Registry {
 // since 1.6
 func GetFocusObject() *Object {
 	retSys := atk.Fn_atk_get_focus_object()
-	ret := ObjectNewFromC(retSys)
 
-	return ret
+	return ObjectNewFromC(retSys)
 }
 
 // GetRoot wraps the C function atk_get_root.
 func GetRoot() *Object {
 	retSys := atk.Fn_atk_get_root()
-	ret := ObjectNewFromC(retSys)
 
-	return ret
+	return ObjectNewFromC(retSys)
 }
 
 // GetToolkitName wraps the C function atk_get_toolkit_name.
 func GetToolkitName() string {
 	retSys := atk.Fn_atk_get_toolkit_name()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetToolkitVersion wraps the C function atk_get_toolkit_version.
 func GetToolkitVersion() string {
 	retSys := atk.Fn_atk_get_toolkit_version()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetVersion wraps the C function atk_get_version.
@@ -941,9 +936,8 @@ func GetToolkitVersion() string {
 // since 1.20
 func GetVersion() string {
 	retSys := atk.Fn_atk_get_version()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // RemoveFocusTracker wraps the C function atk_remove_focus_tracker.

@@ -8119,18 +8119,16 @@ func CairoGetClipRectangle(cr *cairo.Context) (bool, *Rectangle) {
 	sys_cr := cr.ToC()
 	var sys_rect unsafe.Pointer
 	retSys := gdk.Fn_gdk_cairo_get_clip_rectangle(sys_cr, &sys_rect)
-	ret := retSys
 
-	return ret
+	return retSys, retSys
 }
 
 // CairoRegionCreateFromSurface wraps the C function gdk_cairo_region_create_from_surface.
 func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
 	sys_surface := surface.ToC()
 	retSys := gdk.Fn_gdk_cairo_region_create_from_surface(sys_surface)
-	ret := cairo.RegionNewFromC(retSys)
 
-	return ret
+	return cairo.RegionNewFromC(retSys)
 }
 
 // DragAbort wraps the C function gdk_drag_abort.
@@ -8145,9 +8143,8 @@ func DragBegin(window *Window, targets *glib.List) *DragContext {
 	sys_window := window.ToC()
 	sys_targets := targets.ToC()
 	retSys := gdk.Fn_gdk_drag_begin(sys_window, sys_targets)
-	ret := DragContextNewFromC(retSys)
 
-	return ret
+	return DragContextNewFromC(retSys)
 }
 
 // DragBeginForDevice wraps the C function gdk_drag_begin_for_device.
@@ -8156,9 +8153,8 @@ func DragBeginForDevice(window *Window, device *Device, targets *glib.List) *Dra
 	sys_device := device.ToC()
 	sys_targets := targets.ToC()
 	retSys := gdk.Fn_gdk_drag_begin_for_device(sys_window, sys_device, sys_targets)
-	ret := DragContextNewFromC(retSys)
 
-	return ret
+	return DragContextNewFromC(retSys)
 }
 
 // DragDrop wraps the C function gdk_drag_drop.
@@ -8172,9 +8168,8 @@ func DragDrop(context *DragContext, time uint32) {
 func DragGetSelection(context *DragContext) *Atom {
 	sys_context := context.ToC()
 	retSys := gdk.Fn_gdk_drag_get_selection(sys_context)
-	ret := AtomNewFromC(retSys)
 
-	return ret
+	return AtomNewFromC(retSys)
 }
 
 // DragMotion wraps the C function gdk_drag_motion.
@@ -8188,9 +8183,8 @@ func DragMotion(context *DragContext, destWindow *Window, protocol DragProtocol,
 	sys_possibleActions := (int)(possibleActions)
 	sys_time := time
 	retSys := gdk.Fn_gdk_drag_motion(sys_context, sys_destWindow, sys_protocol, sys_xRoot, sys_yRoot, sys_suggestedAction, sys_possibleActions, sys_time)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // DragStatus wraps the C function gdk_drag_status.
@@ -8220,9 +8214,8 @@ func DropReply(context *DragContext, accepted bool, time uint32) {
 // ErrorTrapPop wraps the C function gdk_error_trap_pop.
 func ErrorTrapPop() int {
 	retSys := gdk.Fn_gdk_error_trap_pop()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // ErrorTrapPush wraps the C function gdk_error_trap_push.
@@ -8235,9 +8228,8 @@ func ErrorTrapPush() {
 // EventsPending wraps the C function gdk_events_pending.
 func EventsPending() bool {
 	retSys := gdk.Fn_gdk_events_pending()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // Flush wraps the C function gdk_flush.
@@ -8248,33 +8240,29 @@ func Flush() {
 // GetDefaultRootWindow wraps the C function gdk_get_default_root_window.
 func GetDefaultRootWindow() *Window {
 	retSys := gdk.Fn_gdk_get_default_root_window()
-	ret := WindowNewFromC(retSys)
 
-	return ret
+	return WindowNewFromC(retSys)
 }
 
 // GetDisplay wraps the C function gdk_get_display.
 func GetDisplay() string {
 	retSys := gdk.Fn_gdk_get_display()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetProgramClass wraps the C function gdk_get_program_class.
 func GetProgramClass() string {
 	retSys := gdk.Fn_gdk_get_program_class()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetShowEvents wraps the C function gdk_get_show_events.
 func GetShowEvents() bool {
 	retSys := gdk.Fn_gdk_get_show_events()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : gdk_init : has array param, argv
@@ -8287,9 +8275,8 @@ func KeyboardGrab(window *Window, ownerEvents bool, time uint32) int {
 	sys_ownerEvents := ownerEvents
 	sys_time := time
 	retSys := gdk.Fn_gdk_keyboard_grab(sys_window, sys_ownerEvents, sys_time)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // KeyboardUngrab wraps the C function gdk_keyboard_ungrab.
@@ -8304,94 +8291,86 @@ func KeyvalConvertCase(symbol uint) (uint, uint) {
 	var sys_lower uint
 	var sys_upper uint
 	gdk.Fn_gdk_keyval_convert_case(sys_symbol, &sys_lower, &sys_upper)
+
+	return retSys, retSys
 }
 
 // KeyvalFromName wraps the C function gdk_keyval_from_name.
 func KeyvalFromName(keyvalName string) uint {
 	sys_keyvalName := keyvalName
 	retSys := gdk.Fn_gdk_keyval_from_name(sys_keyvalName)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // KeyvalIsLower wraps the C function gdk_keyval_is_lower.
 func KeyvalIsLower(keyval uint) bool {
 	sys_keyval := keyval
 	retSys := gdk.Fn_gdk_keyval_is_lower(sys_keyval)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // KeyvalIsUpper wraps the C function gdk_keyval_is_upper.
 func KeyvalIsUpper(keyval uint) bool {
 	sys_keyval := keyval
 	retSys := gdk.Fn_gdk_keyval_is_upper(sys_keyval)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // KeyvalName wraps the C function gdk_keyval_name.
 func KeyvalName(keyval uint) string {
 	sys_keyval := keyval
 	retSys := gdk.Fn_gdk_keyval_name(sys_keyval)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // KeyvalToLower wraps the C function gdk_keyval_to_lower.
 func KeyvalToLower(keyval uint) uint {
 	sys_keyval := keyval
 	retSys := gdk.Fn_gdk_keyval_to_lower(sys_keyval)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // KeyvalToUnicode wraps the C function gdk_keyval_to_unicode.
 func KeyvalToUnicode(keyval uint) uint32 {
 	sys_keyval := keyval
 	retSys := gdk.Fn_gdk_keyval_to_unicode(sys_keyval)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // KeyvalToUpper wraps the C function gdk_keyval_to_upper.
 func KeyvalToUpper(keyval uint) uint {
 	sys_keyval := keyval
 	retSys := gdk.Fn_gdk_keyval_to_upper(sys_keyval)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // ListVisuals wraps the C function gdk_list_visuals.
 func ListVisuals() *glib.List {
 	retSys := gdk.Fn_gdk_list_visuals()
-	ret := glib.ListNewFromC(retSys)
 
-	return ret
+	return glib.ListNewFromC(retSys)
 }
 
 // OffscreenWindowGetSurface wraps the C function gdk_offscreen_window_get_surface.
 func OffscreenWindowGetSurface(window *Window) *cairo.Surface {
 	sys_window := window.ToC()
 	retSys := gdk.Fn_gdk_offscreen_window_get_surface(sys_window)
-	ret := cairo.SurfaceNewFromC(retSys)
 
-	return ret
+	return cairo.SurfaceNewFromC(retSys)
 }
 
 // PangoContextGet wraps the C function gdk_pango_context_get.
 func PangoContextGet() *pango.Context {
 	retSys := gdk.Fn_gdk_pango_context_get()
-	ret := pango.ContextNewFromC(retSys)
 
-	return ret
+	return pango.ContextNewFromC(retSys)
 }
 
 // PangoLayoutGetClipRegion wraps the C function gdk_pango_layout_get_clip_region.
@@ -8402,9 +8381,8 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int, yOrigin int, in
 	sys_indexRanges := indexRanges
 	sys_nRanges := nRanges
 	retSys := gdk.Fn_gdk_pango_layout_get_clip_region(sys_layout, sys_xOrigin, sys_yOrigin, sys_indexRanges, sys_nRanges)
-	ret := cairo.RegionNewFromC(retSys)
 
-	return ret
+	return cairo.RegionNewFromC(retSys)
 }
 
 // UNSUPPORTED : gdk_pango_layout_line_get_clip_region : parameter 'index_ranges' is array parameter without length parameter
@@ -8419,9 +8397,8 @@ func PixbufGetFromSurface(surface *cairo.Surface, srcX int, srcY int, width int,
 	sys_width := width
 	sys_height := height
 	retSys := gdk.Fn_gdk_pixbuf_get_from_surface(sys_surface, sys_srcX, sys_srcY, sys_width, sys_height)
-	ret := gdkpixbuf.PixbufNewFromC(retSys)
 
-	return ret
+	return gdkpixbuf.PixbufNewFromC(retSys)
 }
 
 // PixbufGetFromWindow wraps the C function gdk_pixbuf_get_from_window.
@@ -8432,9 +8409,8 @@ func PixbufGetFromWindow(window *Window, srcX int, srcY int, width int, height i
 	sys_width := width
 	sys_height := height
 	retSys := gdk.Fn_gdk_pixbuf_get_from_window(sys_window, sys_srcX, sys_srcY, sys_width, sys_height)
-	ret := gdkpixbuf.PixbufNewFromC(retSys)
 
-	return ret
+	return gdkpixbuf.PixbufNewFromC(retSys)
 }
 
 // PointerGrab wraps the C function gdk_pointer_grab.
@@ -8446,17 +8422,15 @@ func PointerGrab(window *Window, ownerEvents bool, eventMask EventMask, confineT
 	sys_cursor := cursor.ToC()
 	sys_time := time
 	retSys := gdk.Fn_gdk_pointer_grab(sys_window, sys_ownerEvents, sys_eventMask, sys_confineTo, sys_cursor, sys_time)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // PointerIsGrabbed wraps the C function gdk_pointer_is_grabbed.
 func PointerIsGrabbed() bool {
 	retSys := gdk.Fn_gdk_pointer_is_grabbed()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // PointerUngrab wraps the C function gdk_pointer_ungrab.
@@ -8508,9 +8482,8 @@ func SelectionConvert(requestor *Window, selection Atom, target Atom, time uint3
 func SelectionOwnerGet(selection Atom) *Window {
 	sys_selection := selection.ToC()
 	retSys := gdk.Fn_gdk_selection_owner_get(sys_selection)
-	ret := WindowNewFromC(retSys)
 
-	return ret
+	return WindowNewFromC(retSys)
 }
 
 // SelectionOwnerSet wraps the C function gdk_selection_owner_set.
@@ -8520,9 +8493,8 @@ func SelectionOwnerSet(owner *Window, selection Atom, time uint32, sendEvent boo
 	sys_time := time
 	sys_sendEvent := sendEvent
 	retSys := gdk.Fn_gdk_selection_owner_set(sys_owner, sys_selection, sys_time, sys_sendEvent)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SelectionPropertyGet wraps the C function gdk_selection_property_get.
@@ -8532,9 +8504,8 @@ func SelectionPropertyGet(requestor *Window, data **uint8, propType *Atom, propF
 	sys_propType := propType.ToC()
 	sys_propFormat := propFormat
 	retSys := gdk.Fn_gdk_selection_property_get(sys_requestor, sys_data, sys_propType, sys_propFormat)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SelectionSendNotify wraps the C function gdk_selection_send_notify.
@@ -8570,9 +8541,8 @@ func SettingGet(name string, value *gobject.Value) bool {
 	sys_name := name
 	sys_value := value.ToC()
 	retSys := gdk.Fn_gdk_setting_get(sys_name, sys_value)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : gdk_synthesize_window_state : blacklisted
@@ -8612,18 +8582,16 @@ func ThreadsLeave() {
 func UnicodeToKeyval(wc uint32) uint {
 	sys_wc := wc
 	retSys := gdk.Fn_gdk_unicode_to_keyval(sys_wc)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // Utf8ToStringTarget wraps the C function gdk_utf8_to_string_target.
 func Utf8ToStringTarget(str string) string {
 	sys_str := str
 	retSys := gdk.Fn_gdk_utf8_to_string_target(sys_str)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // Atom is a representation of the C record GdkAtom.

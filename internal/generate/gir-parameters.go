@@ -67,3 +67,15 @@ func (pp Parameters) hasVaList() bool {
 
 	return false
 }
+
+func (pp Parameters) outCount() int {
+	count := 0
+
+	for _, p := range pp {
+		if p.isOut() {
+			count++
+		}
+	}
+
+	return count
+}

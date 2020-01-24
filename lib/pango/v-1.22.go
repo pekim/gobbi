@@ -820,9 +820,8 @@ func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
 	sys_green := green
 	sys_blue := blue
 	retSys := pango.Fn_pango_attr_background_new(sys_red, sys_green, sys_blue)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrFallbackNew wraps the C function pango_attr_fallback_new.
@@ -831,18 +830,16 @@ func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
 func AttrFallbackNew(enableFallback bool) *Attribute {
 	sys_enableFallback := enableFallback
 	retSys := pango.Fn_pango_attr_fallback_new(sys_enableFallback)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrFamilyNew wraps the C function pango_attr_family_new.
 func AttrFamilyNew(family string) *Attribute {
 	sys_family := family
 	retSys := pango.Fn_pango_attr_family_new(sys_family)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrForegroundNew wraps the C function pango_attr_foreground_new.
@@ -851,9 +848,8 @@ func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
 	sys_green := green
 	sys_blue := blue
 	retSys := pango.Fn_pango_attr_foreground_new(sys_red, sys_green, sys_blue)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrGravityHintNew wraps the C function pango_attr_gravity_hint_new.
@@ -862,9 +858,8 @@ func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
 func AttrGravityHintNew(hint GravityHint) *Attribute {
 	sys_hint := (int)(hint)
 	retSys := pango.Fn_pango_attr_gravity_hint_new(sys_hint)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrGravityNew wraps the C function pango_attr_gravity_new.
@@ -873,9 +868,8 @@ func AttrGravityHintNew(hint GravityHint) *Attribute {
 func AttrGravityNew(gravity Gravity) *Attribute {
 	sys_gravity := (int)(gravity)
 	retSys := pango.Fn_pango_attr_gravity_new(sys_gravity)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrLetterSpacingNew wraps the C function pango_attr_letter_spacing_new.
@@ -884,36 +878,32 @@ func AttrGravityNew(gravity Gravity) *Attribute {
 func AttrLetterSpacingNew(letterSpacing int) *Attribute {
 	sys_letterSpacing := letterSpacing
 	retSys := pango.Fn_pango_attr_letter_spacing_new(sys_letterSpacing)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrRiseNew wraps the C function pango_attr_rise_new.
 func AttrRiseNew(rise int) *Attribute {
 	sys_rise := rise
 	retSys := pango.Fn_pango_attr_rise_new(sys_rise)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrScaleNew wraps the C function pango_attr_scale_new.
 func AttrScaleNew(scaleFactor float64) *Attribute {
 	sys_scaleFactor := scaleFactor
 	retSys := pango.Fn_pango_attr_scale_new(sys_scaleFactor)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrStretchNew wraps the C function pango_attr_stretch_new.
 func AttrStretchNew(stretch Stretch) *Attribute {
 	sys_stretch := (int)(stretch)
 	retSys := pango.Fn_pango_attr_stretch_new(sys_stretch)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrStrikethroughColorNew wraps the C function pango_attr_strikethrough_color_new.
@@ -924,27 +914,24 @@ func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute
 	sys_green := green
 	sys_blue := blue
 	retSys := pango.Fn_pango_attr_strikethrough_color_new(sys_red, sys_green, sys_blue)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrStrikethroughNew wraps the C function pango_attr_strikethrough_new.
 func AttrStrikethroughNew(strikethrough bool) *Attribute {
 	sys_strikethrough := strikethrough
 	retSys := pango.Fn_pango_attr_strikethrough_new(sys_strikethrough)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrStyleNew wraps the C function pango_attr_style_new.
 func AttrStyleNew(style Style) *Attribute {
 	sys_style := (int)(style)
 	retSys := pango.Fn_pango_attr_style_new(sys_style)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrUnderlineColorNew wraps the C function pango_attr_underline_color_new.
@@ -955,36 +942,32 @@ func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
 	sys_green := green
 	sys_blue := blue
 	retSys := pango.Fn_pango_attr_underline_color_new(sys_red, sys_green, sys_blue)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrUnderlineNew wraps the C function pango_attr_underline_new.
 func AttrUnderlineNew(underline Underline) *Attribute {
 	sys_underline := (int)(underline)
 	retSys := pango.Fn_pango_attr_underline_new(sys_underline)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrVariantNew wraps the C function pango_attr_variant_new.
 func AttrVariantNew(variant Variant) *Attribute {
 	sys_variant := (int)(variant)
 	retSys := pango.Fn_pango_attr_variant_new(sys_variant)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // AttrWeightNew wraps the C function pango_attr_weight_new.
 func AttrWeightNew(weight Weight) *Attribute {
 	sys_weight := (int)(weight)
 	retSys := pango.Fn_pango_attr_weight_new(sys_weight)
-	ret := AttributeNewFromC(retSys)
 
-	return ret
+	return AttributeNewFromC(retSys)
 }
 
 // UNSUPPORTED : pango_break : has array param, attrs
@@ -1011,9 +994,8 @@ func FindBaseDir(text string, length int) int {
 	sys_text := text
 	sys_length := length
 	retSys := pango.Fn_pango_find_base_dir(sys_text, sys_length)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : pango_find_map : blacklisted
@@ -1025,6 +1007,8 @@ func FindParagraphBoundary(text string, length int) (int, int) {
 	var sys_paragraphDelimiterIndex int
 	var sys_nextParagraphStart int
 	pango.Fn_pango_find_paragraph_boundary(sys_text, sys_length, &sys_paragraphDelimiterIndex, &sys_nextParagraphStart)
+
+	return retSys, retSys
 }
 
 // UNSUPPORTED : pango_get_lib_subdirectory : blacklisted
@@ -1036,9 +1020,8 @@ func GetMirrorChar(ch rune, mirroredCh *rune) bool {
 	sys_ch := ch
 	sys_mirroredCh := mirroredCh
 	retSys := pango.Fn_pango_get_mirror_char(sys_ch, sys_mirroredCh)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : pango_get_sysconf_subdirectory : blacklisted
@@ -1049,9 +1032,8 @@ func GetMirrorChar(ch rune, mirroredCh *rune) bool {
 func IsZeroWidth(ch rune) bool {
 	sys_ch := ch
 	retSys := pango.Fn_pango_is_zero_width(sys_ch)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // Itemize wraps the C function pango_itemize.
@@ -1063,9 +1045,8 @@ func Itemize(context *Context, text string, startIndex int, length int, attrs *A
 	sys_attrs := attrs.ToC()
 	sys_cachedIter := cachedIter.ToC()
 	retSys := pango.Fn_pango_itemize(sys_context, sys_text, sys_startIndex, sys_length, sys_attrs, sys_cachedIter)
-	ret := glib.ListNewFromC(retSys)
 
-	return ret
+	return glib.ListNewFromC(retSys)
 }
 
 // ItemizeWithBaseDir wraps the C function pango_itemize_with_base_dir.
@@ -1080,9 +1061,8 @@ func ItemizeWithBaseDir(context *Context, baseDir Direction, text string, startI
 	sys_attrs := attrs.ToC()
 	sys_cachedIter := cachedIter.ToC()
 	retSys := pango.Fn_pango_itemize_with_base_dir(sys_context, sys_baseDir, sys_text, sys_startIndex, sys_length, sys_attrs, sys_cachedIter)
-	ret := glib.ListNewFromC(retSys)
 
-	return ret
+	return glib.ListNewFromC(retSys)
 }
 
 // Log2visGetEmbeddingLevels wraps the C function pango_log2vis_get_embedding_levels.
@@ -1093,9 +1073,8 @@ func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *Direction) *ui
 	sys_length := length
 	sys_pbaseDir := (*int)(pbaseDir)
 	retSys := pango.Fn_pango_log2vis_get_embedding_levels(sys_text, sys_length, sys_pbaseDir)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : pango_lookup_aliases : blacklisted
@@ -1114,9 +1093,8 @@ func ParseEnum(type_ uint64, str string, warn bool) (bool, int, string) {
 	sys_warn := warn
 	var sys_possibleValues string
 	retSys := pango.Fn_pango_parse_enum(sys_type_, sys_str, &sys_value, sys_warn, &sys_possibleValues)
-	ret := retSys
 
-	return ret
+	return retSys, retSys, retSys
 }
 
 // UNSUPPORTED : pango_parse_markup : throws
@@ -1127,9 +1105,8 @@ func ParseStretch(str string, warn bool) (bool, int) {
 	var sys_stretch int
 	sys_warn := warn
 	retSys := pango.Fn_pango_parse_stretch(sys_str, &sys_stretch, sys_warn)
-	ret := retSys
 
-	return ret
+	return retSys, retSys
 }
 
 // ParseStyle wraps the C function pango_parse_style.
@@ -1138,9 +1115,8 @@ func ParseStyle(str string, warn bool) (bool, int) {
 	var sys_style int
 	sys_warn := warn
 	retSys := pango.Fn_pango_parse_style(sys_str, &sys_style, sys_warn)
-	ret := retSys
 
-	return ret
+	return retSys, retSys
 }
 
 // ParseVariant wraps the C function pango_parse_variant.
@@ -1149,9 +1125,8 @@ func ParseVariant(str string, warn bool) (bool, int) {
 	var sys_variant int
 	sys_warn := warn
 	retSys := pango.Fn_pango_parse_variant(sys_str, &sys_variant, sys_warn)
-	ret := retSys
 
-	return ret
+	return retSys, retSys
 }
 
 // ParseWeight wraps the C function pango_parse_weight.
@@ -1160,9 +1135,8 @@ func ParseWeight(str string, warn bool) (bool, int) {
 	var sys_weight int
 	sys_warn := warn
 	retSys := pango.Fn_pango_parse_weight(sys_str, &sys_weight, sys_warn)
-	ret := retSys
 
-	return ret
+	return retSys, retSys
 }
 
 // QuantizeLineGeometry wraps the C function pango_quantize_line_geometry.
@@ -1172,6 +1146,8 @@ func QuantizeLineGeometry(thickness int, position int) (int, int) {
 	var sys_thickness int
 	var sys_position int
 	pango.Fn_pango_quantize_line_geometry(&sys_thickness, &sys_position)
+
+	return retSys, retSys
 }
 
 // ReadLine wraps the C function pango_read_line.
@@ -1179,18 +1155,16 @@ func ReadLine(stream unsafe.Pointer) (int, *glib.String) {
 	sys_stream := stream
 	var sys_str unsafe.Pointer
 	retSys := pango.Fn_pango_read_line(sys_stream, &sys_str)
-	ret := retSys
 
-	return ret
+	return retSys, retSys
 }
 
 // ReorderItems wraps the C function pango_reorder_items.
 func ReorderItems(logicalItems *glib.List) *glib.List {
 	sys_logicalItems := logicalItems.ToC()
 	retSys := pango.Fn_pango_reorder_items(sys_logicalItems)
-	ret := glib.ListNewFromC(retSys)
 
-	return ret
+	return glib.ListNewFromC(retSys)
 }
 
 // ScanInt wraps the C function pango_scan_int.
@@ -1198,9 +1172,8 @@ func ScanInt(pos *string) (bool, string, int) {
 	var sys_pos string
 	var sys_out int
 	retSys := pango.Fn_pango_scan_int(&sys_pos, &sys_out)
-	ret := retSys
 
-	return ret
+	return retSys, retSys, retSys
 }
 
 // ScanString wraps the C function pango_scan_string.
@@ -1208,9 +1181,8 @@ func ScanString(pos *string) (bool, string, *glib.String) {
 	var sys_pos string
 	var sys_out unsafe.Pointer
 	retSys := pango.Fn_pango_scan_string(&sys_pos, &sys_out)
-	ret := retSys
 
-	return ret
+	return retSys, retSys, retSys
 }
 
 // ScanWord wraps the C function pango_scan_word.
@@ -1218,9 +1190,8 @@ func ScanWord(pos *string) (bool, string, *glib.String) {
 	var sys_pos string
 	var sys_out unsafe.Pointer
 	retSys := pango.Fn_pango_scan_word(&sys_pos, &sys_out)
-	ret := retSys
 
-	return ret
+	return retSys, retSys, retSys
 }
 
 // Shape wraps the C function pango_shape.
@@ -1236,9 +1207,8 @@ func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
 func SkipSpace(pos *string) (bool, string) {
 	var sys_pos string
 	retSys := pango.Fn_pango_skip_space(&sys_pos)
-	ret := retSys
 
-	return ret
+	return retSys, retSys
 }
 
 // UNSUPPORTED : pango_split_file_list : no array length
@@ -1247,18 +1217,16 @@ func SkipSpace(pos *string) (bool, string) {
 func TrimString(str string) string {
 	sys_str := str
 	retSys := pango.Fn_pango_trim_string(sys_str)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnicharDirection wraps the C function pango_unichar_direction.
 func UnicharDirection(ch rune) int {
 	sys_ch := ch
 	retSys := pango.Fn_pango_unichar_direction(sys_ch)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnitsFromDouble wraps the C function pango_units_from_double.
@@ -1267,9 +1235,8 @@ func UnicharDirection(ch rune) int {
 func UnitsFromDouble(d float64) int {
 	sys_d := d
 	retSys := pango.Fn_pango_units_from_double(sys_d)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UnitsToDouble wraps the C function pango_units_to_double.
@@ -1278,9 +1245,8 @@ func UnitsFromDouble(d float64) int {
 func UnitsToDouble(i int) float64 {
 	sys_i := i
 	retSys := pango.Fn_pango_units_to_double(sys_i)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // Version wraps the C function pango_version.
@@ -1288,9 +1254,8 @@ func UnitsToDouble(i int) float64 {
 // since 1.16
 func Version() int {
 	retSys := pango.Fn_pango_version()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // VersionCheck wraps the C function pango_version_check.
@@ -1301,9 +1266,8 @@ func VersionCheck(requiredMajor int, requiredMinor int, requiredMicro int) strin
 	sys_requiredMinor := requiredMinor
 	sys_requiredMicro := requiredMicro
 	retSys := pango.Fn_pango_version_check(sys_requiredMajor, sys_requiredMinor, sys_requiredMicro)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // VersionString wraps the C function pango_version_string.
@@ -1311,9 +1275,8 @@ func VersionCheck(requiredMajor int, requiredMinor int, requiredMicro int) strin
 // since 1.16
 func VersionString() string {
 	retSys := pango.Fn_pango_version_string()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // Analysis is a representation of the C record PangoAnalysis.

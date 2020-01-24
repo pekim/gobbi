@@ -904,17 +904,15 @@ func FocusTrackerNotify(object *Object) {
 // since 2.8
 func GetBinaryAge() uint {
 	retSys := atk.Fn_atk_get_binary_age()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetDefaultRegistry wraps the C function atk_get_default_registry.
 func GetDefaultRegistry() *Registry {
 	retSys := atk.Fn_atk_get_default_registry()
-	ret := RegistryNewFromC(retSys)
 
-	return ret
+	return RegistryNewFromC(retSys)
 }
 
 // GetFocusObject wraps the C function atk_get_focus_object.
@@ -922,9 +920,8 @@ func GetDefaultRegistry() *Registry {
 // since 1.6
 func GetFocusObject() *Object {
 	retSys := atk.Fn_atk_get_focus_object()
-	ret := ObjectNewFromC(retSys)
 
-	return ret
+	return ObjectNewFromC(retSys)
 }
 
 // GetInterfaceAge wraps the C function atk_get_interface_age.
@@ -932,9 +929,8 @@ func GetFocusObject() *Object {
 // since 2.8
 func GetInterfaceAge() uint {
 	retSys := atk.Fn_atk_get_interface_age()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetMajorVersion wraps the C function atk_get_major_version.
@@ -942,9 +938,8 @@ func GetInterfaceAge() uint {
 // since 2.8
 func GetMajorVersion() uint {
 	retSys := atk.Fn_atk_get_major_version()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetMicroVersion wraps the C function atk_get_micro_version.
@@ -952,9 +947,8 @@ func GetMajorVersion() uint {
 // since 2.8
 func GetMicroVersion() uint {
 	retSys := atk.Fn_atk_get_micro_version()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetMinorVersion wraps the C function atk_get_minor_version.
@@ -962,33 +956,29 @@ func GetMicroVersion() uint {
 // since 2.8
 func GetMinorVersion() uint {
 	retSys := atk.Fn_atk_get_minor_version()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetRoot wraps the C function atk_get_root.
 func GetRoot() *Object {
 	retSys := atk.Fn_atk_get_root()
-	ret := ObjectNewFromC(retSys)
 
-	return ret
+	return ObjectNewFromC(retSys)
 }
 
 // GetToolkitName wraps the C function atk_get_toolkit_name.
 func GetToolkitName() string {
 	retSys := atk.Fn_atk_get_toolkit_name()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetToolkitVersion wraps the C function atk_get_toolkit_version.
 func GetToolkitVersion() string {
 	retSys := atk.Fn_atk_get_toolkit_version()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetVersion wraps the C function atk_get_version.
@@ -996,9 +986,8 @@ func GetToolkitVersion() string {
 // since 1.20
 func GetVersion() string {
 	retSys := atk.Fn_atk_get_version()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // RemoveFocusTracker wraps the C function atk_remove_focus_tracker.

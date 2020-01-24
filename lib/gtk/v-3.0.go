@@ -2904,26 +2904,23 @@ func AccelGroupsActivate(object *gobject.Object, accelKey uint, accelMods gdk.Mo
 	sys_accelKey := accelKey
 	sys_accelMods := (int)(accelMods)
 	retSys := gtk.Fn_gtk_accel_groups_activate(sys_object, sys_accelKey, sys_accelMods)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // AccelGroupsFromObject wraps the C function gtk_accel_groups_from_object.
 func AccelGroupsFromObject(object *gobject.Object) *glib.SList {
 	sys_object := object.ToC()
 	retSys := gtk.Fn_gtk_accel_groups_from_object(sys_object)
-	ret := glib.SListNewFromC(retSys)
 
-	return ret
+	return glib.SListNewFromC(retSys)
 }
 
 // AcceleratorGetDefaultModMask wraps the C function gtk_accelerator_get_default_mod_mask.
 func AcceleratorGetDefaultModMask() int {
 	retSys := gtk.Fn_gtk_accelerator_get_default_mod_mask()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // AcceleratorGetLabel wraps the C function gtk_accelerator_get_label.
@@ -2933,9 +2930,8 @@ func AcceleratorGetLabel(acceleratorKey uint, acceleratorMods gdk.ModifierType) 
 	sys_acceleratorKey := acceleratorKey
 	sys_acceleratorMods := (int)(acceleratorMods)
 	retSys := gtk.Fn_gtk_accelerator_get_label(sys_acceleratorKey, sys_acceleratorMods)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // AcceleratorName wraps the C function gtk_accelerator_name.
@@ -2943,9 +2939,8 @@ func AcceleratorName(acceleratorKey uint, acceleratorMods gdk.ModifierType) stri
 	sys_acceleratorKey := acceleratorKey
 	sys_acceleratorMods := (int)(acceleratorMods)
 	retSys := gtk.Fn_gtk_accelerator_name(sys_acceleratorKey, sys_acceleratorMods)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // AcceleratorParse wraps the C function gtk_accelerator_parse.
@@ -2954,6 +2949,8 @@ func AcceleratorParse(accelerator string) (uint, int) {
 	var sys_acceleratorKey uint
 	var sys_acceleratorMods int
 	gtk.Fn_gtk_accelerator_parse(sys_accelerator, &sys_acceleratorKey, &sys_acceleratorMods)
+
+	return retSys, retSys
 }
 
 // UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
@@ -2969,9 +2966,8 @@ func AcceleratorValid(keyval uint, modifiers gdk.ModifierType) bool {
 	sys_keyval := keyval
 	sys_modifiers := (int)(modifiers)
 	retSys := gtk.Fn_gtk_accelerator_valid(sys_keyval, sys_modifiers)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // AlternativeDialogButtonOrder wraps the C function gtk_alternative_dialog_button_order.
@@ -2980,9 +2976,8 @@ func AcceleratorValid(keyval uint, modifiers gdk.ModifierType) bool {
 func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
 	sys_screen := screen.ToC()
 	retSys := gtk.Fn_gtk_alternative_dialog_button_order(sys_screen)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // BindingsActivate wraps the C function gtk_bindings_activate.
@@ -2991,9 +2986,8 @@ func BindingsActivate(object *gobject.Object, keyval uint, modifiers gdk.Modifie
 	sys_keyval := keyval
 	sys_modifiers := (int)(modifiers)
 	retSys := gtk.Fn_gtk_bindings_activate(sys_object, sys_keyval, sys_modifiers)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // BindingsActivateEvent wraps the C function gtk_bindings_activate_event.
@@ -3003,9 +2997,8 @@ func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) bool {
 	sys_object := object.ToC()
 	sys_event := event.ToC()
 	retSys := gtk.Fn_gtk_bindings_activate_event(sys_object, sys_event)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // CairoShouldDrawWindow wraps the C function gtk_cairo_should_draw_window.
@@ -3015,9 +3008,8 @@ func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {
 	sys_cr := cr.ToC()
 	sys_window := window.ToC()
 	retSys := gtk.Fn_gtk_cairo_should_draw_window(sys_cr, sys_window)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // CairoTransformToWindow wraps the C function gtk_cairo_transform_to_window.
@@ -3036,9 +3028,8 @@ func CheckVersion(requiredMajor uint, requiredMinor uint, requiredMicro uint) st
 	sys_requiredMinor := requiredMinor
 	sys_requiredMicro := requiredMicro
 	retSys := gtk.Fn_gtk_check_version(sys_requiredMajor, sys_requiredMinor, sys_requiredMicro)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // DeviceGrabAdd wraps the C function gtk_device_grab_add.
@@ -3071,9 +3062,8 @@ func DistributeNaturalAllocation(extraSpace int, nRequestedSizes uint, sizes *Re
 	sys_nRequestedSizes := nRequestedSizes
 	sys_sizes := sizes.ToC()
 	retSys := gtk.Fn_gtk_distribute_natural_allocation(sys_extraSpace, sys_nRequestedSizes, sys_sizes)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // DragFinish wraps the C function gtk_drag_finish.
@@ -3089,9 +3079,8 @@ func DragFinish(context *gdk.DragContext, success bool, del bool, time uint32) {
 func DragGetSourceWidget(context *gdk.DragContext) *Widget {
 	sys_context := context.ToC()
 	retSys := gtk.Fn_gtk_drag_get_source_widget(sys_context)
-	ret := WidgetNewFromC(retSys)
 
-	return ret
+	return WidgetNewFromC(retSys)
 }
 
 // DragSetIconDefault wraps the C function gtk_drag_set_icon_default.
@@ -3161,17 +3150,15 @@ func DrawInsertionCursor(widget *Widget, cr *cairo.Context, location *gdk.Rectan
 // EventsPending wraps the C function gtk_events_pending.
 func EventsPending() bool {
 	retSys := gtk.Fn_gtk_events_pending()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // False wraps the C function gtk_false.
 func False() bool {
 	retSys := gtk.Fn_gtk_false()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetBinaryAge wraps the C function gtk_get_binary_age.
@@ -3179,67 +3166,59 @@ func False() bool {
 // since 3.0
 func GetBinaryAge() uint {
 	retSys := gtk.Fn_gtk_get_binary_age()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetCurrentEvent wraps the C function gtk_get_current_event.
 func GetCurrentEvent() *gdk.Event {
 	retSys := gtk.Fn_gtk_get_current_event()
-	ret := gdk.EventNewFromC(retSys)
 
-	return ret
+	return gdk.EventNewFromC(retSys)
 }
 
 // GetCurrentEventDevice wraps the C function gtk_get_current_event_device.
 func GetCurrentEventDevice() *gdk.Device {
 	retSys := gtk.Fn_gtk_get_current_event_device()
-	ret := gdk.DeviceNewFromC(retSys)
 
-	return ret
+	return gdk.DeviceNewFromC(retSys)
 }
 
 // GetCurrentEventState wraps the C function gtk_get_current_event_state.
 func GetCurrentEventState() (bool, int) {
 	var sys_state int
 	retSys := gtk.Fn_gtk_get_current_event_state(&sys_state)
-	ret := retSys
 
-	return ret
+	return retSys, retSys
 }
 
 // GetCurrentEventTime wraps the C function gtk_get_current_event_time.
 func GetCurrentEventTime() uint32 {
 	retSys := gtk.Fn_gtk_get_current_event_time()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetDebugFlags wraps the C function gtk_get_debug_flags.
 func GetDebugFlags() uint {
 	retSys := gtk.Fn_gtk_get_debug_flags()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetDefaultLanguage wraps the C function gtk_get_default_language.
 func GetDefaultLanguage() *pango.Language {
 	retSys := gtk.Fn_gtk_get_default_language()
-	ret := pango.LanguageNewFromC(retSys)
 
-	return ret
+	return pango.LanguageNewFromC(retSys)
 }
 
 // GetEventWidget wraps the C function gtk_get_event_widget.
 func GetEventWidget(event *gdk.Event) *Widget {
 	sys_event := event.ToC()
 	retSys := gtk.Fn_gtk_get_event_widget(sys_event)
-	ret := WidgetNewFromC(retSys)
 
-	return ret
+	return WidgetNewFromC(retSys)
 }
 
 // GetInterfaceAge wraps the C function gtk_get_interface_age.
@@ -3247,9 +3226,8 @@ func GetEventWidget(event *gdk.Event) *Widget {
 // since 3.0
 func GetInterfaceAge() uint {
 	retSys := gtk.Fn_gtk_get_interface_age()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetMajorVersion wraps the C function gtk_get_major_version.
@@ -3257,9 +3235,8 @@ func GetInterfaceAge() uint {
 // since 3.0
 func GetMajorVersion() uint {
 	retSys := gtk.Fn_gtk_get_major_version()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetMicroVersion wraps the C function gtk_get_micro_version.
@@ -3267,9 +3244,8 @@ func GetMajorVersion() uint {
 // since 3.0
 func GetMicroVersion() uint {
 	retSys := gtk.Fn_gtk_get_micro_version()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetMinorVersion wraps the C function gtk_get_minor_version.
@@ -3277,9 +3253,8 @@ func GetMicroVersion() uint {
 // since 3.0
 func GetMinorVersion() uint {
 	retSys := gtk.Fn_gtk_get_minor_version()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // GetOptionGroup wraps the C function gtk_get_option_group.
@@ -3288,17 +3263,15 @@ func GetMinorVersion() uint {
 func GetOptionGroup(openDefaultDisplay bool) *glib.OptionGroup {
 	sys_openDefaultDisplay := openDefaultDisplay
 	retSys := gtk.Fn_gtk_get_option_group(sys_openDefaultDisplay)
-	ret := glib.OptionGroupNewFromC(retSys)
 
-	return ret
+	return glib.OptionGroupNewFromC(retSys)
 }
 
 // GrabGetCurrent wraps the C function gtk_grab_get_current.
 func GrabGetCurrent() *Widget {
 	retSys := gtk.Fn_gtk_grab_get_current()
-	ret := WidgetNewFromC(retSys)
 
-	return ret
+	return WidgetNewFromC(retSys)
 }
 
 // UNSUPPORTED : gtk_init : has array param, argv
@@ -3329,26 +3302,23 @@ func MainDoEvent(event *gdk.Event) {
 // MainIteration wraps the C function gtk_main_iteration.
 func MainIteration() bool {
 	retSys := gtk.Fn_gtk_main_iteration()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // MainIterationDo wraps the C function gtk_main_iteration_do.
 func MainIterationDo(blocking bool) bool {
 	sys_blocking := blocking
 	retSys := gtk.Fn_gtk_main_iteration_do(sys_blocking)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // MainLevel wraps the C function gtk_main_level.
 func MainLevel() uint {
 	retSys := gtk.Fn_gtk_main_level()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // MainQuit wraps the C function gtk_main_quit.
@@ -3669,9 +3639,8 @@ func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *Pri
 	sys_pageSetup := pageSetup.ToC()
 	sys_settings := settings.ToC()
 	retSys := gtk.Fn_gtk_print_run_page_setup_dialog(sys_parent, sys_pageSetup, sys_settings)
-	ret := PageSetupNewFromC(retSys)
 
-	return ret
+	return PageSetupNewFromC(retSys)
 }
 
 // UNSUPPORTED : gtk_print_run_page_setup_dialog_async : parameter 'done_cb' is callback
@@ -3693,9 +3662,8 @@ func RcAddDefaultFile(filename string) {
 func RcFindModuleInPath(moduleFile string) string {
 	sys_moduleFile := moduleFile
 	retSys := gtk.Fn_gtk_rc_find_module_in_path(sys_moduleFile)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // RcFindPixmapInPath wraps the C function gtk_rc_find_pixmap_in_path.
@@ -3704,9 +3672,8 @@ func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile st
 	sys_scanner := scanner.ToC()
 	sys_pixmapFile := pixmapFile
 	retSys := gtk.Fn_gtk_rc_find_pixmap_in_path(sys_settings, sys_scanner, sys_pixmapFile)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // UNSUPPORTED : gtk_rc_get_default_files : no array length
@@ -3714,34 +3681,30 @@ func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile st
 // RcGetImModuleFile wraps the C function gtk_rc_get_im_module_file.
 func RcGetImModuleFile() string {
 	retSys := gtk.Fn_gtk_rc_get_im_module_file()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // RcGetImModulePath wraps the C function gtk_rc_get_im_module_path.
 func RcGetImModulePath() string {
 	retSys := gtk.Fn_gtk_rc_get_im_module_path()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // RcGetModuleDir wraps the C function gtk_rc_get_module_dir.
 func RcGetModuleDir() string {
 	retSys := gtk.Fn_gtk_rc_get_module_dir()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // RcGetStyle wraps the C function gtk_rc_get_style.
 func RcGetStyle(widget *Widget) *Style {
 	sys_widget := widget.ToC()
 	retSys := gtk.Fn_gtk_rc_get_style(sys_widget)
-	ret := StyleNewFromC(retSys)
 
-	return ret
+	return StyleNewFromC(retSys)
 }
 
 // RcGetStyleByPaths wraps the C function gtk_rc_get_style_by_paths.
@@ -3751,17 +3714,15 @@ func RcGetStyleByPaths(settings *Settings, widgetPath string, classPath string, 
 	sys_classPath := classPath
 	sys_type_ := type_
 	retSys := gtk.Fn_gtk_rc_get_style_by_paths(sys_settings, sys_widgetPath, sys_classPath, sys_type_)
-	ret := StyleNewFromC(retSys)
 
-	return ret
+	return StyleNewFromC(retSys)
 }
 
 // RcGetThemeDir wraps the C function gtk_rc_get_theme_dir.
 func RcGetThemeDir() string {
 	retSys := gtk.Fn_gtk_rc_get_theme_dir()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // RcParse wraps the C function gtk_rc_parse.
@@ -3775,9 +3736,8 @@ func RcParseColor(scanner *glib.Scanner) (uint, *gdk.Color) {
 	sys_scanner := scanner.ToC()
 	var sys_color unsafe.Pointer
 	retSys := gtk.Fn_gtk_rc_parse_color(sys_scanner, &sys_color)
-	ret := retSys
 
-	return ret
+	return retSys, retSys
 }
 
 // RcParseColorFull wraps the C function gtk_rc_parse_color_full.
@@ -3788,9 +3748,8 @@ func RcParseColorFull(scanner *glib.Scanner, style *RcStyle) (uint, *gdk.Color) 
 	sys_style := style.ToC()
 	var sys_color unsafe.Pointer
 	retSys := gtk.Fn_gtk_rc_parse_color_full(sys_scanner, sys_style, &sys_color)
-	ret := retSys
 
-	return ret
+	return retSys, retSys
 }
 
 // RcParsePriority wraps the C function gtk_rc_parse_priority.
@@ -3798,9 +3757,8 @@ func RcParsePriority(scanner *glib.Scanner, priority *PathPriorityType) uint {
 	sys_scanner := scanner.ToC()
 	sys_priority := (*int)(priority)
 	retSys := gtk.Fn_gtk_rc_parse_priority(sys_scanner, sys_priority)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // RcParseState wraps the C function gtk_rc_parse_state.
@@ -3808,9 +3766,8 @@ func RcParseState(scanner *glib.Scanner) (uint, int) {
 	sys_scanner := scanner.ToC()
 	var sys_state int
 	retSys := gtk.Fn_gtk_rc_parse_state(sys_scanner, &sys_state)
-	ret := retSys
 
-	return ret
+	return retSys, retSys
 }
 
 // RcParseString wraps the C function gtk_rc_parse_string.
@@ -3822,9 +3779,8 @@ func RcParseString(rcString string) {
 // RcReparseAll wraps the C function gtk_rc_reparse_all.
 func RcReparseAll() bool {
 	retSys := gtk.Fn_gtk_rc_reparse_all()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // RcReparseAllForSettings wraps the C function gtk_rc_reparse_all_for_settings.
@@ -3832,9 +3788,8 @@ func RcReparseAllForSettings(settings *Settings, forceLoad bool) bool {
 	sys_settings := settings.ToC()
 	sys_forceLoad := forceLoad
 	retSys := gtk.Fn_gtk_rc_reparse_all_for_settings(sys_settings, sys_forceLoad)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // RcResetStyles wraps the C function gtk_rc_reset_styles.
@@ -3848,9 +3803,8 @@ func RcResetStyles(settings *Settings) {
 // RcScannerNew wraps the C function gtk_rc_scanner_new.
 func RcScannerNew() *glib.Scanner {
 	retSys := gtk.Fn_gtk_rc_scanner_new()
-	ret := glib.ScannerNewFromC(retSys)
 
-	return ret
+	return glib.ScannerNewFromC(retSys)
 }
 
 // UNSUPPORTED : gtk_rc_set_default_files : parameter 'filenames' is array parameter without length parameter
@@ -3997,9 +3951,8 @@ func RenderIconPixbuf(context *StyleContext, source *IconSource, size IconSize) 
 	sys_source := source.ToC()
 	sys_size := (int)(size)
 	retSys := gtk.Fn_gtk_render_icon_pixbuf(sys_context, sys_source, sys_size)
-	ret := gdkpixbuf.PixbufNewFromC(retSys)
 
-	return ret
+	return gdkpixbuf.PixbufNewFromC(retSys)
 }
 
 // RenderLayout wraps the C function gtk_render_layout.
@@ -4065,6 +4018,8 @@ func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64) {
 	var sys_s float64
 	var sys_v float64
 	gtk.Fn_gtk_rgb_to_hsv(sys_r, sys_g, sys_b, &sys_h, &sys_s, &sys_v)
+
+	return retSys, retSys, retSys
 }
 
 // SelectionAddTarget wraps the C function gtk_selection_add_target.
@@ -4092,9 +4047,8 @@ func SelectionConvert(widget *Widget, selection gdk.Atom, target gdk.Atom, time 
 	sys_target := target.ToC()
 	sys_time := time
 	retSys := gtk.Fn_gtk_selection_convert(sys_widget, sys_selection, sys_target, sys_time)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SelectionOwnerSet wraps the C function gtk_selection_owner_set.
@@ -4103,9 +4057,8 @@ func SelectionOwnerSet(widget *Widget, selection gdk.Atom, time uint32) bool {
 	sys_selection := selection.ToC()
 	sys_time := time
 	retSys := gtk.Fn_gtk_selection_owner_set(sys_widget, sys_selection, sys_time)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SelectionOwnerSetForDisplay wraps the C function gtk_selection_owner_set_for_display.
@@ -4117,9 +4070,8 @@ func SelectionOwnerSetForDisplay(display *gdk.Display, widget *Widget, selection
 	sys_selection := selection.ToC()
 	sys_time := time
 	retSys := gtk.Fn_gtk_selection_owner_set_for_display(sys_display, sys_widget, sys_selection, sys_time)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // SelectionRemoveAll wraps the C function gtk_selection_remove_all.
@@ -4154,9 +4106,8 @@ func ShowAboutDialog(parent *Window, firstPropertyName string) {
 // StockListIds wraps the C function gtk_stock_list_ids.
 func StockListIds() *glib.SList {
 	retSys := gtk.Fn_gtk_stock_list_ids()
-	ret := glib.SListNewFromC(retSys)
 
-	return ret
+	return glib.SListNewFromC(retSys)
 }
 
 // StockLookup wraps the C function gtk_stock_lookup.
@@ -4164,9 +4115,8 @@ func StockLookup(stockId string) (bool, *StockItem) {
 	sys_stockId := stockId
 	var sys_item unsafe.Pointer
 	retSys := gtk.Fn_gtk_stock_lookup(sys_stockId, &sys_item)
-	ret := retSys
 
-	return ret
+	return retSys, retSys
 }
 
 // UNSUPPORTED : gtk_stock_set_translate_func : parameter 'func' is callback
@@ -4190,9 +4140,8 @@ func TestCreateSimpleWindow(windowTitle string, dialogText string) *Widget {
 	sys_windowTitle := windowTitle
 	sys_dialogText := dialogText
 	retSys := gtk.Fn_gtk_test_create_simple_window(sys_windowTitle, sys_dialogText)
-	ret := WidgetNewFromC(retSys)
 
-	return ret
+	return WidgetNewFromC(retSys)
 }
 
 // TestCreateWidget wraps the C function gtk_test_create_widget.
@@ -4202,9 +4151,8 @@ func TestCreateWidget(widgetType uint64, firstPropertyName string) *Widget {
 	sys_widgetType := widgetType
 	sys_firstPropertyName := firstPropertyName
 	retSys := gtk.Fn_gtk_test_create_widget(sys_widgetType, sys_firstPropertyName)
-	ret := WidgetNewFromC(retSys)
 
-	return ret
+	return WidgetNewFromC(retSys)
 }
 
 // TestDisplayButtonWindow wraps the C function gtk_test_display_button_window.
@@ -4214,9 +4162,8 @@ func TestDisplayButtonWindow(windowTitle string, dialogText string) *Widget {
 	sys_windowTitle := windowTitle
 	sys_dialogText := dialogText
 	retSys := gtk.Fn_gtk_test_display_button_window(sys_windowTitle, sys_dialogText)
-	ret := WidgetNewFromC(retSys)
 
-	return ret
+	return WidgetNewFromC(retSys)
 }
 
 // TestFindLabel wraps the C function gtk_test_find_label.
@@ -4226,9 +4173,8 @@ func TestFindLabel(widget *Widget, labelPattern string) *Widget {
 	sys_widget := widget.ToC()
 	sys_labelPattern := labelPattern
 	retSys := gtk.Fn_gtk_test_find_label(sys_widget, sys_labelPattern)
-	ret := WidgetNewFromC(retSys)
 
-	return ret
+	return WidgetNewFromC(retSys)
 }
 
 // TestFindSibling wraps the C function gtk_test_find_sibling.
@@ -4238,9 +4184,8 @@ func TestFindSibling(baseWidget *Widget, widgetType uint64) *Widget {
 	sys_baseWidget := baseWidget.ToC()
 	sys_widgetType := widgetType
 	retSys := gtk.Fn_gtk_test_find_sibling(sys_baseWidget, sys_widgetType)
-	ret := WidgetNewFromC(retSys)
 
-	return ret
+	return WidgetNewFromC(retSys)
 }
 
 // TestFindWidget wraps the C function gtk_test_find_widget.
@@ -4251,9 +4196,8 @@ func TestFindWidget(widget *Widget, labelPattern string, widgetType uint64) *Wid
 	sys_labelPattern := labelPattern
 	sys_widgetType := widgetType
 	retSys := gtk.Fn_gtk_test_find_widget(sys_widget, sys_labelPattern, sys_widgetType)
-	ret := WidgetNewFromC(retSys)
 
-	return ret
+	return WidgetNewFromC(retSys)
 }
 
 // UNSUPPORTED : gtk_test_init : has array param, argvp
@@ -4273,9 +4217,8 @@ func TestRegisterAllTypes() {
 func TestSliderGetValue(widget *Widget) float64 {
 	sys_widget := widget.ToC()
 	retSys := gtk.Fn_gtk_test_slider_get_value(sys_widget)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TestSliderSetPerc wraps the C function gtk_test_slider_set_perc.
@@ -4295,9 +4238,8 @@ func TestSpinButtonClick(spinner *SpinButton, button uint, upwards bool) bool {
 	sys_button := button
 	sys_upwards := upwards
 	retSys := gtk.Fn_gtk_test_spin_button_click(sys_spinner, sys_button, sys_upwards)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TestTextGet wraps the C function gtk_test_text_get.
@@ -4306,9 +4248,8 @@ func TestSpinButtonClick(spinner *SpinButton, button uint, upwards bool) bool {
 func TestTextGet(widget *Widget) string {
 	sys_widget := widget.ToC()
 	retSys := gtk.Fn_gtk_test_text_get(sys_widget)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TestTextSet wraps the C function gtk_test_text_set.
@@ -4328,9 +4269,8 @@ func TestWidgetClick(widget *Widget, button uint, modifiers gdk.ModifierType) bo
 	sys_button := button
 	sys_modifiers := (int)(modifiers)
 	retSys := gtk.Fn_gtk_test_widget_click(sys_widget, sys_button, sys_modifiers)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TestWidgetSendKey wraps the C function gtk_test_widget_send_key.
@@ -4341,9 +4281,8 @@ func TestWidgetSendKey(widget *Widget, keyval uint, modifiers gdk.ModifierType) 
 	sys_keyval := keyval
 	sys_modifiers := (int)(modifiers)
 	retSys := gtk.Fn_gtk_test_widget_send_key(sys_widget, sys_keyval, sys_modifiers)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // TreeGetRowDragData wraps the C function gtk_tree_get_row_drag_data.
@@ -4352,9 +4291,8 @@ func TreeGetRowDragData(selectionData *SelectionData) (bool, *TreeModel, *TreePa
 	var sys_treeModel *unsafe.Pointer
 	var sys_path *unsafe.Pointer
 	retSys := gtk.Fn_gtk_tree_get_row_drag_data(sys_selectionData, &sys_treeModel, &sys_path)
-	ret := retSys
 
-	return ret
+	return retSys, retSys, retSys
 }
 
 // UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
@@ -4365,17 +4303,15 @@ func TreeSetRowDragData(selectionData *SelectionData, treeModel *TreeModel, path
 	sys_treeModel := treeModel.ToC()
 	sys_path := path.ToC()
 	retSys := gtk.Fn_gtk_tree_set_row_drag_data(sys_selectionData, sys_treeModel, sys_path)
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // True wraps the C function gtk_true.
 func True() bool {
 	retSys := gtk.Fn_gtk_true()
-	ret := retSys
 
-	return ret
+	return retSys
 }
 
 // AboutDialogClass is a representation of the C record GtkAboutDialogClass.
