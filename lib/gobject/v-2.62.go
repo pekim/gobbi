@@ -258,7 +258,7 @@ func ClearSignalHandler(handlerIdPtr *uint64, instance unsafe.Pointer) {
 }
 
 // EnumCompleteTypeInfo wraps the C function g_enum_complete_type_info.
-func EnumCompleteTypeInfo(gEnumType uint64, constValues *EnumValue) {
+func EnumCompleteTypeInfo(gEnumType uint64, constValues *EnumValue) *TypeInfo {
 	sys_gEnumType := gEnumType
 	sys_constValues := constValues.ToC()
 	gobject.Fn_g_enum_complete_type_info(sys_gEnumType, sys_constValues)
@@ -317,7 +317,7 @@ func EnumToString(gEnumType uint64, value int) string {
 }
 
 // FlagsCompleteTypeInfo wraps the C function g_flags_complete_type_info.
-func FlagsCompleteTypeInfo(gFlagsType uint64, constValues *FlagsValue) {
+func FlagsCompleteTypeInfo(gFlagsType uint64, constValues *FlagsValue) *TypeInfo {
 	sys_gFlagsType := gFlagsType
 	sys_constValues := constValues.ToC()
 	gobject.Fn_g_flags_complete_type_info(sys_gFlagsType, sys_constValues)
@@ -1039,7 +1039,7 @@ func SignalParseName(detailedSignal string, itype uint64, forceDetailQuark bool)
 }
 
 // SignalQuery_ wraps the C function g_signal_query.
-func SignalQuery_(signalId uint) {
+func SignalQuery_(signalId uint) *SignalQuery {
 	sys_signalId := signalId
 	gobject.Fn_g_signal_query(sys_signalId)
 }
@@ -1437,7 +1437,7 @@ func TypeQname(type_ uint64) uint32 {
 }
 
 // TypeQuery_ wraps the C function g_type_query.
-func TypeQuery_(type_ uint64) {
+func TypeQuery_(type_ uint64) *TypeQuery {
 	sys_type_ := type_
 	gobject.Fn_g_type_query(sys_type_)
 }

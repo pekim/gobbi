@@ -57,7 +57,7 @@ func (f *Function) generateLib(fi *jen.File, version semver.Version) {
 		Do(f.generateLibReceiverDeclaration).
 		Id(f.goName).
 		ParamsFunc(f.generateLibParamsDeclaration).
-		ParamsFunc(f.generateLibReturnTypeDeclaration).
+		ParamsFunc(f.generateLibReturnTypesDeclaration).
 		BlockFunc(f.generateLibBody)
 
 	fi.Line()
@@ -90,18 +90,16 @@ func (f *Function) generateLibParamsDeclaration(g *jen.Group) {
 	//}
 }
 
-func (f *Function) generateLibReturnTypeDeclaration(g *jen.Group) {
-	if f.ReturnValue.isVoid() {
-		return
-	}
-
-	// return value
-	typ := f.ReturnValue.Type
-	if typ.isStruct() {
-		// TODO below belongs in Type.sysParamGoType ???
-		g.Op("*").Add(typ.idOrQual())
-	} else {
-		g.Add(f.ReturnValue.sysParamGoType())
+func (f *Function) generateLibReturnTypesDeclaration(g *jen.Group) {
+	if !f.ReturnValue.isVoid() {
+		// return value
+		typ := f.ReturnValue.Type
+		if typ.isStruct() {
+			// TODO below belongs in Type.sysParamGoType ???
+			g.Op("*").Add(typ.idOrQual())
+		} else {
+			g.Add(f.ReturnValue.sysParamGoType())
+		}
 	}
 
 	// out params

@@ -813,7 +813,7 @@ func AttrWeightNew(weight Weight) *Attribute {
 // UNSUPPORTED : pango_find_map : blacklisted
 
 // FindParagraphBoundary wraps the C function pango_find_paragraph_boundary.
-func FindParagraphBoundary(text string, length int) {
+func FindParagraphBoundary(text string, length int) (int, int) {
 	sys_text := text
 	sys_length := length
 	pango.Fn_pango_find_paragraph_boundary(sys_text, sys_length)

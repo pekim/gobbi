@@ -3318,7 +3318,7 @@ func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint, keyco
 }
 
 // AcceleratorParse wraps the C function gtk_accelerator_parse.
-func AcceleratorParse(accelerator string) {
+func AcceleratorParse(accelerator string) (uint, int) {
 	sys_accelerator := accelerator
 	gtk.Fn_gtk_accelerator_parse(sys_accelerator)
 }
@@ -4289,7 +4289,7 @@ func RenderBackground(context *StyleContext, cr *cairo.Context, x float64, y flo
 // RenderBackgroundGetClip wraps the C function gtk_render_background_get_clip.
 //
 // since 3.20
-func RenderBackgroundGetClip(context *StyleContext, x float64, y float64, width float64, height float64) {
+func RenderBackgroundGetClip(context *StyleContext, x float64, y float64, width float64, height float64) *gdk.Rectangle {
 	sys_context := context.ToC()
 	sys_x := x
 	sys_y := y
@@ -4499,7 +4499,7 @@ func RenderSlider(context *StyleContext, cr *cairo.Context, x float64, y float64
 // RgbToHsv wraps the C function gtk_rgb_to_hsv.
 //
 // since 2.14
-func RgbToHsv(r float64, g float64, b float64) {
+func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64) {
 	sys_r := r
 	sys_g := g
 	sys_b := b

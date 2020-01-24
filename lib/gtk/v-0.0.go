@@ -2645,7 +2645,7 @@ func AcceleratorName(acceleratorKey uint, acceleratorMods gdk.ModifierType) stri
 }
 
 // AcceleratorParse wraps the C function gtk_accelerator_parse.
-func AcceleratorParse(accelerator string) {
+func AcceleratorParse(accelerator string) (uint, int) {
 	sys_accelerator := accelerator
 	gtk.Fn_gtk_accelerator_parse(sys_accelerator)
 }

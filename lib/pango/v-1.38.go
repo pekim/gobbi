@@ -1051,7 +1051,7 @@ func FindBaseDir(text string, length int) int {
 // UNSUPPORTED : pango_find_map : blacklisted
 
 // FindParagraphBoundary wraps the C function pango_find_paragraph_boundary.
-func FindParagraphBoundary(text string, length int) {
+func FindParagraphBoundary(text string, length int) (int, int) {
 	sys_text := text
 	sys_length := length
 	pango.Fn_pango_find_paragraph_boundary(sys_text, sys_length)
@@ -1203,7 +1203,7 @@ func ParseWeight(str string, warn bool) (bool, int) {
 // QuantizeLineGeometry wraps the C function pango_quantize_line_geometry.
 //
 // since 1.12
-func QuantizeLineGeometry(thickness *int, position *int) {
+func QuantizeLineGeometry(thickness int, position int) (int, int) {
 	sys_thickness := thickness
 	sys_position := position
 	pango.Fn_pango_quantize_line_geometry(sys_thickness, sys_position)

@@ -7,7 +7,7 @@ import (
 func (p *Parameter) libParamGoType() *jen.Statement {
 
 	if p.Type != nil {
-		return jen.Add(p.Type.libParamGoType(false))
+		return jen.Add(p.Type.libParamGoType(p.isOut()))
 	}
 
 	//star := ""

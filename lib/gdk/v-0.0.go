@@ -8298,7 +8298,7 @@ func KeyboardUngrab(time uint32) {
 }
 
 // KeyvalConvertCase wraps the C function gdk_keyval_convert_case.
-func KeyvalConvertCase(symbol uint) {
+func KeyvalConvertCase(symbol uint) (uint, uint) {
 	sys_symbol := symbol
 	gdk.Fn_gdk_keyval_convert_case(sys_symbol)
 }

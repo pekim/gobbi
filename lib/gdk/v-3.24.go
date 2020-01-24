@@ -8562,7 +8562,7 @@ func DragDropSucceeded(context *DragContext) bool {
 // DragFindWindowForScreen wraps the C function gdk_drag_find_window_for_screen.
 //
 // since 2.2
-func DragFindWindowForScreen(context *DragContext, dragWindow *Window, screen *Screen, xRoot int, yRoot int) {
+func DragFindWindowForScreen(context *DragContext, dragWindow *Window, screen *Screen, xRoot int, yRoot int) (*Window, int) {
 	sys_context := context.ToC()
 	sys_dragWindow := dragWindow.ToC()
 	sys_screen := screen.ToC()
@@ -8755,7 +8755,7 @@ func KeyboardUngrab(time uint32) {
 }
 
 // KeyvalConvertCase wraps the C function gdk_keyval_convert_case.
-func KeyvalConvertCase(symbol uint) {
+func KeyvalConvertCase(symbol uint) (uint, uint) {
 	sys_symbol := symbol
 	gdk.Fn_gdk_keyval_convert_case(sys_symbol)
 }

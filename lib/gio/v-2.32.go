@@ -1864,7 +1864,7 @@ func DbusGvalueToGvariant(gvalue *gobject.Value, type_ *glib.VariantType) *glib.
 // DbusGvariantToGvalue wraps the C function g_dbus_gvariant_to_gvalue.
 //
 // since 2.30
-func DbusGvariantToGvalue(value *glib.Variant) {
+func DbusGvariantToGvalue(value *glib.Variant) *gobject.Value {
 	sys_value := value.ToC()
 	gio.Fn_g_dbus_gvariant_to_gvalue(sys_value)
 }

@@ -3023,7 +3023,7 @@ func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint, keyco
 }
 
 // AcceleratorParse wraps the C function gtk_accelerator_parse.
-func AcceleratorParse(accelerator string) {
+func AcceleratorParse(accelerator string) (uint, int) {
 	sys_accelerator := accelerator
 	gtk.Fn_gtk_accelerator_parse(sys_accelerator)
 }
@@ -4162,7 +4162,7 @@ func RenderSlider(context *StyleContext, cr *cairo.Context, x float64, y float64
 // RgbToHsv wraps the C function gtk_rgb_to_hsv.
 //
 // since 2.14
-func RgbToHsv(r float64, g float64, b float64) {
+func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64) {
 	sys_r := r
 	sys_g := g
 	sys_b := b
