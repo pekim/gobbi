@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func (p *Parameter) sysParamGoType() *jen.Statement {
+func (p *Parameter) sysParamGoType(decrementIndirectionCount bool) *jen.Statement {
 	if p.Type != nil {
 		// Atoms are really pointers underneath.
 		if p.Type.CType == "GdkAtom" {
@@ -14,7 +14,7 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 		}
 
 		return jen.
-			Add(p.Type.sysParamGoType(false))
+			Add(p.Type.sysParamGoType(decrementIndirectionCount))
 	}
 
 	star := ""

@@ -8177,7 +8177,8 @@ func CairoCreate(window *Window) *cairo.Context {
 // CairoGetClipRectangle wraps the C function gdk_cairo_get_clip_rectangle.
 func CairoGetClipRectangle(cr *cairo.Context) (bool, *Rectangle) {
 	sys_cr := cr.ToC()
-	retSys := gdk.Fn_gdk_cairo_get_clip_rectangle(sys_cr)
+	var sys_rect unsafe.Pointer
+	retSys := gdk.Fn_gdk_cairo_get_clip_rectangle(sys_cr, &sys_rect)
 	ret := retSys
 
 	return ret
@@ -8312,7 +8313,9 @@ func DragFindWindowForScreen(context *DragContext, dragWindow *Window, screen *S
 	sys_screen := screen.ToC()
 	sys_xRoot := xRoot
 	sys_yRoot := yRoot
-	gdk.Fn_gdk_drag_find_window_for_screen(sys_context, sys_dragWindow, sys_screen, sys_xRoot, sys_yRoot)
+	var sys_destWindow *unsafe.Pointer
+	var sys_protocol int
+	gdk.Fn_gdk_drag_find_window_for_screen(sys_context, sys_dragWindow, sys_screen, sys_xRoot, sys_yRoot, &sys_destWindow, &sys_protocol)
 }
 
 // DragGetSelection wraps the C function gdk_drag_get_selection.
@@ -8392,7 +8395,8 @@ func ErrorTrapPush() {
 func EventsGetAngle(event1 *Event, event2 *Event) (bool, float64) {
 	sys_event1 := event1.ToC()
 	sys_event2 := event2.ToC()
-	retSys := gdk.Fn_gdk_events_get_angle(sys_event1, sys_event2)
+	var sys_angle float64
+	retSys := gdk.Fn_gdk_events_get_angle(sys_event1, sys_event2, &sys_angle)
 	ret := retSys
 
 	return ret
@@ -8404,7 +8408,9 @@ func EventsGetAngle(event1 *Event, event2 *Event) (bool, float64) {
 func EventsGetCenter(event1 *Event, event2 *Event) (bool, float64, float64) {
 	sys_event1 := event1.ToC()
 	sys_event2 := event2.ToC()
-	retSys := gdk.Fn_gdk_events_get_center(sys_event1, sys_event2)
+	var sys_x float64
+	var sys_y float64
+	retSys := gdk.Fn_gdk_events_get_center(sys_event1, sys_event2, &sys_x, &sys_y)
 	ret := retSys
 
 	return ret
@@ -8416,7 +8422,8 @@ func EventsGetCenter(event1 *Event, event2 *Event) (bool, float64, float64) {
 func EventsGetDistance(event1 *Event, event2 *Event) (bool, float64) {
 	sys_event1 := event1.ToC()
 	sys_event2 := event2.ToC()
-	retSys := gdk.Fn_gdk_events_get_distance(sys_event1, sys_event2)
+	var sys_distance float64
+	retSys := gdk.Fn_gdk_events_get_distance(sys_event1, sys_event2, &sys_distance)
 	ret := retSys
 
 	return ret
@@ -8501,7 +8508,9 @@ func KeyboardUngrab(time uint32) {
 // KeyvalConvertCase wraps the C function gdk_keyval_convert_case.
 func KeyvalConvertCase(symbol uint) (uint, uint) {
 	sys_symbol := symbol
-	gdk.Fn_gdk_keyval_convert_case(sys_symbol)
+	var sys_lower uint
+	var sys_upper uint
+	gdk.Fn_gdk_keyval_convert_case(sys_symbol, &sys_lower, &sys_upper)
 }
 
 // KeyvalFromName wraps the C function gdk_keyval_from_name.

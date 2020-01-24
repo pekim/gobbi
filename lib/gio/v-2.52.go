@@ -2061,7 +2061,8 @@ func DbusGvalueToGvariant(gvalue *gobject.Value, type_ *glib.VariantType) *glib.
 // since 2.30
 func DbusGvariantToGvalue(value *glib.Variant) *gobject.Value {
 	sys_value := value.ToC()
-	gio.Fn_g_dbus_gvariant_to_gvalue(sys_value)
+	var sys_outGvalue unsafe.Pointer
+	gio.Fn_g_dbus_gvariant_to_gvalue(sys_value, &sys_outGvalue)
 }
 
 // DbusIsAddress wraps the C function g_dbus_is_address.
@@ -2267,7 +2268,8 @@ func UnixIsMountPathSystemInternal(mountPath string) bool {
 // UnixMountAt wraps the C function g_unix_mount_at.
 func UnixMountAt(mountPath string) (*UnixMountEntry, uint64) {
 	sys_mountPath := mountPath
-	retSys := gio.Fn_g_unix_mount_at(sys_mountPath)
+	var sys_timeRead uint64
+	retSys := gio.Fn_g_unix_mount_at(sys_mountPath, &sys_timeRead)
 	ret := UnixMountEntryNewFromC(retSys)
 
 	return ret
@@ -2288,7 +2290,8 @@ func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int {
 // since 2.52
 func UnixMountFor(filePath string) (*UnixMountEntry, uint64) {
 	sys_filePath := filePath
-	retSys := gio.Fn_g_unix_mount_for(sys_filePath)
+	var sys_timeRead uint64
+	retSys := gio.Fn_g_unix_mount_for(sys_filePath, &sys_timeRead)
 	ret := UnixMountEntryNewFromC(retSys)
 
 	return ret
@@ -2403,7 +2406,8 @@ func UnixMountPointsChangedSince(time uint64) bool {
 
 // UnixMountPointsGet wraps the C function g_unix_mount_points_get.
 func UnixMountPointsGet() (*glib.List, uint64) {
-	retSys := gio.Fn_g_unix_mount_points_get()
+	var sys_timeRead uint64
+	retSys := gio.Fn_g_unix_mount_points_get(&sys_timeRead)
 	ret := glib.ListNewFromC(retSys)
 
 	return ret
@@ -2420,7 +2424,8 @@ func UnixMountsChangedSince(time uint64) bool {
 
 // UnixMountsGet wraps the C function g_unix_mounts_get.
 func UnixMountsGet() (*glib.List, uint64) {
-	retSys := gio.Fn_g_unix_mounts_get()
+	var sys_timeRead uint64
+	retSys := gio.Fn_g_unix_mounts_get(&sys_timeRead)
 	ret := glib.ListNewFromC(retSys)
 
 	return ret

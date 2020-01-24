@@ -118,12 +118,9 @@ func (f *Function) generateLibReturnTypesDeclaration(g *jen.Group) {
 }
 
 func (f *Function) generateLibBody(g *jen.Group) {
+	// create args for sys function
 	for _, p := range f.Parameters {
 		if p.isVarargsOrValist() {
-			continue
-		}
-
-		if !p.isIn() {
 			continue
 		}
 
@@ -154,11 +151,11 @@ func (f *Function) generateLibCallParams(g *jen.Group) {
 			continue
 		}
 
-		if !param.isIn() {
-			continue
+		if param.isOut() {
+			g.Op("&").Id("sys_" + param.goVarName)
+		} else {
+			g.Id("sys_" + param.goVarName)
 		}
-
-		g.Id("sys_" + param.goVarName)
 	}
 
 	//if f.Throws {

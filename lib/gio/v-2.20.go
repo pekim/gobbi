@@ -968,7 +968,8 @@ func UnixIsMountPathSystemInternal(mountPath string) bool {
 // UnixMountAt wraps the C function g_unix_mount_at.
 func UnixMountAt(mountPath string) (*UnixMountEntry, uint64) {
 	sys_mountPath := mountPath
-	retSys := gio.Fn_g_unix_mount_at(sys_mountPath)
+	var sys_timeRead uint64
+	retSys := gio.Fn_g_unix_mount_at(sys_mountPath, &sys_timeRead)
 	ret := UnixMountEntryNewFromC(retSys)
 
 	return ret
@@ -1082,7 +1083,8 @@ func UnixMountPointsChangedSince(time uint64) bool {
 
 // UnixMountPointsGet wraps the C function g_unix_mount_points_get.
 func UnixMountPointsGet() (*glib.List, uint64) {
-	retSys := gio.Fn_g_unix_mount_points_get()
+	var sys_timeRead uint64
+	retSys := gio.Fn_g_unix_mount_points_get(&sys_timeRead)
 	ret := glib.ListNewFromC(retSys)
 
 	return ret
@@ -1099,7 +1101,8 @@ func UnixMountsChangedSince(time uint64) bool {
 
 // UnixMountsGet wraps the C function g_unix_mounts_get.
 func UnixMountsGet() (*glib.List, uint64) {
-	retSys := gio.Fn_g_unix_mounts_get()
+	var sys_timeRead uint64
+	retSys := gio.Fn_g_unix_mounts_get(&sys_timeRead)
 	ret := glib.ListNewFromC(retSys)
 
 	return ret

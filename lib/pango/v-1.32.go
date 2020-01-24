@@ -1027,7 +1027,9 @@ func FindBaseDir(text string, length int) int {
 func FindParagraphBoundary(text string, length int) (int, int) {
 	sys_text := text
 	sys_length := length
-	pango.Fn_pango_find_paragraph_boundary(sys_text, sys_length)
+	var sys_paragraphDelimiterIndex int
+	var sys_nextParagraphStart int
+	pango.Fn_pango_find_paragraph_boundary(sys_text, sys_length, &sys_paragraphDelimiterIndex, &sys_nextParagraphStart)
 }
 
 // UNSUPPORTED : pango_get_lib_subdirectory : blacklisted
@@ -1124,8 +1126,10 @@ func MarkupParserNew(accelMarker rune) *glib.MarkupParseContext {
 func ParseEnum(type_ uint64, str string, warn bool) (bool, int, string) {
 	sys_type_ := type_
 	sys_str := str
+	var sys_value int
 	sys_warn := warn
-	retSys := pango.Fn_pango_parse_enum(sys_type_, sys_str, sys_warn)
+	var sys_possibleValues string
+	retSys := pango.Fn_pango_parse_enum(sys_type_, sys_str, &sys_value, sys_warn, &sys_possibleValues)
 	ret := retSys
 
 	return ret
@@ -1136,8 +1140,9 @@ func ParseEnum(type_ uint64, str string, warn bool) (bool, int, string) {
 // ParseStretch wraps the C function pango_parse_stretch.
 func ParseStretch(str string, warn bool) (bool, int) {
 	sys_str := str
+	var sys_stretch int
 	sys_warn := warn
-	retSys := pango.Fn_pango_parse_stretch(sys_str, sys_warn)
+	retSys := pango.Fn_pango_parse_stretch(sys_str, &sys_stretch, sys_warn)
 	ret := retSys
 
 	return ret
@@ -1146,8 +1151,9 @@ func ParseStretch(str string, warn bool) (bool, int) {
 // ParseStyle wraps the C function pango_parse_style.
 func ParseStyle(str string, warn bool) (bool, int) {
 	sys_str := str
+	var sys_style int
 	sys_warn := warn
-	retSys := pango.Fn_pango_parse_style(sys_str, sys_warn)
+	retSys := pango.Fn_pango_parse_style(sys_str, &sys_style, sys_warn)
 	ret := retSys
 
 	return ret
@@ -1156,8 +1162,9 @@ func ParseStyle(str string, warn bool) (bool, int) {
 // ParseVariant wraps the C function pango_parse_variant.
 func ParseVariant(str string, warn bool) (bool, int) {
 	sys_str := str
+	var sys_variant int
 	sys_warn := warn
-	retSys := pango.Fn_pango_parse_variant(sys_str, sys_warn)
+	retSys := pango.Fn_pango_parse_variant(sys_str, &sys_variant, sys_warn)
 	ret := retSys
 
 	return ret
@@ -1166,8 +1173,9 @@ func ParseVariant(str string, warn bool) (bool, int) {
 // ParseWeight wraps the C function pango_parse_weight.
 func ParseWeight(str string, warn bool) (bool, int) {
 	sys_str := str
+	var sys_weight int
 	sys_warn := warn
-	retSys := pango.Fn_pango_parse_weight(sys_str, sys_warn)
+	retSys := pango.Fn_pango_parse_weight(sys_str, &sys_weight, sys_warn)
 	ret := retSys
 
 	return ret
@@ -1177,15 +1185,16 @@ func ParseWeight(str string, warn bool) (bool, int) {
 //
 // since 1.12
 func QuantizeLineGeometry(thickness int, position int) (int, int) {
-	sys_thickness := thickness
-	sys_position := position
-	pango.Fn_pango_quantize_line_geometry(sys_thickness, sys_position)
+	var sys_thickness int
+	var sys_position int
+	pango.Fn_pango_quantize_line_geometry(&sys_thickness, &sys_position)
 }
 
 // ReadLine wraps the C function pango_read_line.
 func ReadLine(stream unsafe.Pointer) (int, *glib.String) {
 	sys_stream := stream
-	retSys := pango.Fn_pango_read_line(sys_stream)
+	var sys_str unsafe.Pointer
+	retSys := pango.Fn_pango_read_line(sys_stream, &sys_str)
 	ret := retSys
 
 	return ret
@@ -1202,8 +1211,9 @@ func ReorderItems(logicalItems *glib.List) *glib.List {
 
 // ScanInt wraps the C function pango_scan_int.
 func ScanInt(pos *string) (bool, string, int) {
-	sys_pos := pos
-	retSys := pango.Fn_pango_scan_int(sys_pos)
+	var sys_pos string
+	var sys_out int
+	retSys := pango.Fn_pango_scan_int(&sys_pos, &sys_out)
 	ret := retSys
 
 	return ret
@@ -1211,8 +1221,9 @@ func ScanInt(pos *string) (bool, string, int) {
 
 // ScanString wraps the C function pango_scan_string.
 func ScanString(pos *string) (bool, string, *glib.String) {
-	sys_pos := pos
-	retSys := pango.Fn_pango_scan_string(sys_pos)
+	var sys_pos string
+	var sys_out unsafe.Pointer
+	retSys := pango.Fn_pango_scan_string(&sys_pos, &sys_out)
 	ret := retSys
 
 	return ret
@@ -1220,8 +1231,9 @@ func ScanString(pos *string) (bool, string, *glib.String) {
 
 // ScanWord wraps the C function pango_scan_word.
 func ScanWord(pos *string) (bool, string, *glib.String) {
-	sys_pos := pos
-	retSys := pango.Fn_pango_scan_word(sys_pos)
+	var sys_pos string
+	var sys_out unsafe.Pointer
+	retSys := pango.Fn_pango_scan_word(&sys_pos, &sys_out)
 	ret := retSys
 
 	return ret
@@ -1251,8 +1263,8 @@ func ShapeFull(itemText string, itemLength int, paragraphText string, paragraphL
 
 // SkipSpace wraps the C function pango_skip_space.
 func SkipSpace(pos *string) (bool, string) {
-	sys_pos := pos
-	retSys := pango.Fn_pango_skip_space(sys_pos)
+	var sys_pos string
+	retSys := pango.Fn_pango_skip_space(&sys_pos)
 	ret := retSys
 
 	return ret

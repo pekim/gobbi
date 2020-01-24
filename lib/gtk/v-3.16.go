@@ -3279,7 +3279,9 @@ func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint, keyco
 // AcceleratorParse wraps the C function gtk_accelerator_parse.
 func AcceleratorParse(accelerator string) (uint, int) {
 	sys_accelerator := accelerator
-	gtk.Fn_gtk_accelerator_parse(sys_accelerator)
+	var sys_acceleratorKey uint
+	var sys_acceleratorMods int
+	gtk.Fn_gtk_accelerator_parse(sys_accelerator, &sys_acceleratorKey, &sys_acceleratorMods)
 }
 
 // UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
@@ -3547,7 +3549,8 @@ func GetCurrentEventDevice() *gdk.Device {
 
 // GetCurrentEventState wraps the C function gtk_get_current_event_state.
 func GetCurrentEventState() (bool, int) {
-	retSys := gtk.Fn_gtk_get_current_event_state()
+	var sys_state int
+	retSys := gtk.Fn_gtk_get_current_event_state(&sys_state)
 	ret := retSys
 
 	return ret
@@ -4127,7 +4130,8 @@ func RcParse(filename string) {
 // RcParseColor wraps the C function gtk_rc_parse_color.
 func RcParseColor(scanner *glib.Scanner) (uint, *gdk.Color) {
 	sys_scanner := scanner.ToC()
-	retSys := gtk.Fn_gtk_rc_parse_color(sys_scanner)
+	var sys_color unsafe.Pointer
+	retSys := gtk.Fn_gtk_rc_parse_color(sys_scanner, &sys_color)
 	ret := retSys
 
 	return ret
@@ -4139,7 +4143,8 @@ func RcParseColor(scanner *glib.Scanner) (uint, *gdk.Color) {
 func RcParseColorFull(scanner *glib.Scanner, style *RcStyle) (uint, *gdk.Color) {
 	sys_scanner := scanner.ToC()
 	sys_style := style.ToC()
-	retSys := gtk.Fn_gtk_rc_parse_color_full(sys_scanner, sys_style)
+	var sys_color unsafe.Pointer
+	retSys := gtk.Fn_gtk_rc_parse_color_full(sys_scanner, sys_style, &sys_color)
 	ret := retSys
 
 	return ret
@@ -4158,7 +4163,8 @@ func RcParsePriority(scanner *glib.Scanner, priority *PathPriorityType) uint {
 // RcParseState wraps the C function gtk_rc_parse_state.
 func RcParseState(scanner *glib.Scanner) (uint, int) {
 	sys_scanner := scanner.ToC()
-	retSys := gtk.Fn_gtk_rc_parse_state(sys_scanner)
+	var sys_state int
+	retSys := gtk.Fn_gtk_rc_parse_state(sys_scanner, &sys_state)
 	ret := retSys
 
 	return ret
@@ -4450,7 +4456,10 @@ func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64) {
 	sys_r := r
 	sys_g := g
 	sys_b := b
-	gtk.Fn_gtk_rgb_to_hsv(sys_r, sys_g, sys_b)
+	var sys_h float64
+	var sys_s float64
+	var sys_v float64
+	gtk.Fn_gtk_rgb_to_hsv(sys_r, sys_g, sys_b, &sys_h, &sys_s, &sys_v)
 }
 
 // SelectionAddTarget wraps the C function gtk_selection_add_target.
@@ -4548,7 +4557,8 @@ func StockListIds() *glib.SList {
 // StockLookup wraps the C function gtk_stock_lookup.
 func StockLookup(stockId string) (bool, *StockItem) {
 	sys_stockId := stockId
-	retSys := gtk.Fn_gtk_stock_lookup(sys_stockId)
+	var sys_item unsafe.Pointer
+	retSys := gtk.Fn_gtk_stock_lookup(sys_stockId, &sys_item)
 	ret := retSys
 
 	return ret
@@ -4742,7 +4752,9 @@ func TestWidgetWaitForDraw(widget *Widget) {
 // TreeGetRowDragData wraps the C function gtk_tree_get_row_drag_data.
 func TreeGetRowDragData(selectionData *SelectionData) (bool, *TreeModel, *TreePath) {
 	sys_selectionData := selectionData.ToC()
-	retSys := gtk.Fn_gtk_tree_get_row_drag_data(sys_selectionData)
+	var sys_treeModel *unsafe.Pointer
+	var sys_path *unsafe.Pointer
+	retSys := gtk.Fn_gtk_tree_get_row_drag_data(sys_selectionData, &sys_treeModel, &sys_path)
 	ret := retSys
 
 	return ret

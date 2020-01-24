@@ -8117,7 +8117,8 @@ func Beep() {
 // CairoGetClipRectangle wraps the C function gdk_cairo_get_clip_rectangle.
 func CairoGetClipRectangle(cr *cairo.Context) (bool, *Rectangle) {
 	sys_cr := cr.ToC()
-	retSys := gdk.Fn_gdk_cairo_get_clip_rectangle(sys_cr)
+	var sys_rect unsafe.Pointer
+	retSys := gdk.Fn_gdk_cairo_get_clip_rectangle(sys_cr, &sys_rect)
 	ret := retSys
 
 	return ret
@@ -8300,7 +8301,9 @@ func KeyboardUngrab(time uint32) {
 // KeyvalConvertCase wraps the C function gdk_keyval_convert_case.
 func KeyvalConvertCase(symbol uint) (uint, uint) {
 	sys_symbol := symbol
-	gdk.Fn_gdk_keyval_convert_case(sys_symbol)
+	var sys_lower uint
+	var sys_upper uint
+	gdk.Fn_gdk_keyval_convert_case(sys_symbol, &sys_lower, &sys_upper)
 }
 
 // KeyvalFromName wraps the C function gdk_keyval_from_name.

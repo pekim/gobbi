@@ -42,7 +42,7 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 
 func (f *Function) generateSysParamsDeclaration(g *jen.Group) {
 	if f.InstanceParameter != nil {
-		goType := f.InstanceParameter.sysParamGoType()
+		goType := f.InstanceParameter.sysParamGoType(false)
 		g.Id("paramInstance").Add(goType)
 
 	}
@@ -53,7 +53,7 @@ func (f *Function) generateSysParamsDeclaration(g *jen.Group) {
 		}
 
 		paramName := "param" + strconv.Itoa(i)
-		goType := param.sysParamGoType()
+		goType := param.sysParamGoType(false)
 
 		g.Id(paramName).Add(goType)
 	}

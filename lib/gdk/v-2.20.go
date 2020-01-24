@@ -8128,7 +8128,8 @@ func CairoCreate(window *Window) *cairo.Context {
 // CairoGetClipRectangle wraps the C function gdk_cairo_get_clip_rectangle.
 func CairoGetClipRectangle(cr *cairo.Context) (bool, *Rectangle) {
 	sys_cr := cr.ToC()
-	retSys := gdk.Fn_gdk_cairo_get_clip_rectangle(sys_cr)
+	var sys_rect unsafe.Pointer
+	retSys := gdk.Fn_gdk_cairo_get_clip_rectangle(sys_cr, &sys_rect)
 	ret := retSys
 
 	return ret
@@ -8236,7 +8237,9 @@ func DragFindWindowForScreen(context *DragContext, dragWindow *Window, screen *S
 	sys_screen := screen.ToC()
 	sys_xRoot := xRoot
 	sys_yRoot := yRoot
-	gdk.Fn_gdk_drag_find_window_for_screen(sys_context, sys_dragWindow, sys_screen, sys_xRoot, sys_yRoot)
+	var sys_destWindow *unsafe.Pointer
+	var sys_protocol int
+	gdk.Fn_gdk_drag_find_window_for_screen(sys_context, sys_dragWindow, sys_screen, sys_xRoot, sys_yRoot, &sys_destWindow, &sys_protocol)
 }
 
 // DragGetSelection wraps the C function gdk_drag_get_selection.
@@ -8382,7 +8385,9 @@ func KeyboardUngrab(time uint32) {
 // KeyvalConvertCase wraps the C function gdk_keyval_convert_case.
 func KeyvalConvertCase(symbol uint) (uint, uint) {
 	sys_symbol := symbol
-	gdk.Fn_gdk_keyval_convert_case(sys_symbol)
+	var sys_lower uint
+	var sys_upper uint
+	gdk.Fn_gdk_keyval_convert_case(sys_symbol, &sys_lower, &sys_upper)
 }
 
 // KeyvalFromName wraps the C function gdk_keyval_from_name.

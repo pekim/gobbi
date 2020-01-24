@@ -38,7 +38,11 @@ func (p *Parameter) generateLibArg(g *jen.Group, varName string) {
 			argValue = jen.Parens(jen.Op(p.Type.cType.stars).Int()).Parens(argValue)
 		}
 
-		g.Id(varName).Op(":=").Add(argValue)
+		if p.isOut() {
+			g.Var().Id(varName).Add(p.sysParamGoType(true))
+		} else {
+			g.Id(varName).Op(":=").Add(argValue)
+		}
 	}
 
 	//if p.Array != nil {
