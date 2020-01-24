@@ -2785,7 +2785,7 @@ func AcceleratorParse(accelerator string) (uint, int) {
 	var sys_acceleratorMods int
 	gtk.Fn_gtk_accelerator_parse(sys_accelerator, &sys_acceleratorKey, &sys_acceleratorMods)
 
-	return retSys, retSys
+	return sys_acceleratorKey, sys_acceleratorMods
 }
 
 // UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
@@ -2962,7 +2962,7 @@ func GetCurrentEventState() (bool, int) {
 	var sys_state int
 	retSys := gtk.Fn_gtk_get_current_event_state(&sys_state)
 
-	return retSys, retSys
+	return retSys, sys_state
 }
 
 // GetCurrentEventTime wraps the C function gtk_get_current_event_time.
@@ -3462,7 +3462,7 @@ func RcParseColor(scanner *glib.Scanner) (uint, *gdk.Color) {
 	var sys_color unsafe.Pointer
 	retSys := gtk.Fn_gtk_rc_parse_color(sys_scanner, &sys_color)
 
-	return retSys, retSys
+	return retSys, gdk.ColorNewFromC(sys_color)
 }
 
 // RcParsePriority wraps the C function gtk_rc_parse_priority.
@@ -3480,7 +3480,7 @@ func RcParseState(scanner *glib.Scanner) (uint, int) {
 	var sys_state int
 	retSys := gtk.Fn_gtk_rc_parse_state(sys_scanner, &sys_state)
 
-	return retSys, retSys
+	return retSys, sys_state
 }
 
 // RcParseString wraps the C function gtk_rc_parse_string.
@@ -3616,7 +3616,7 @@ func StockLookup(stockId string) (bool, *StockItem) {
 	var sys_item unsafe.Pointer
 	retSys := gtk.Fn_gtk_stock_lookup(sys_stockId, &sys_item)
 
-	return retSys, retSys
+	return retSys, StockItemNewFromC(sys_item)
 }
 
 // UNSUPPORTED : gtk_stock_set_translate_func : parameter 'func' is callback
@@ -3644,7 +3644,7 @@ func TreeGetRowDragData(selectionData *SelectionData) (bool, *TreeModel, *TreePa
 	var sys_path *unsafe.Pointer
 	retSys := gtk.Fn_gtk_tree_get_row_drag_data(sys_selectionData, &sys_treeModel, &sys_path)
 
-	return retSys, retSys, retSys
+	return retSys, TreeModelNewFromC(sys_treeModel), TreePathNewFromC(sys_path)
 }
 
 // UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter

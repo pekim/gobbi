@@ -8215,7 +8215,7 @@ func CairoGetClipRectangle(cr *cairo.Context) (bool, *Rectangle) {
 	var sys_rect unsafe.Pointer
 	retSys := gdk.Fn_gdk_cairo_get_clip_rectangle(sys_cr, &sys_rect)
 
-	return retSys, retSys
+	return retSys, RectangleNewFromC(sys_rect)
 }
 
 // CairoRectangle wraps the C function gdk_cairo_rectangle.
@@ -8359,7 +8359,7 @@ func DragFindWindowForScreen(context *DragContext, dragWindow *Window, screen *S
 	var sys_protocol int
 	gdk.Fn_gdk_drag_find_window_for_screen(sys_context, sys_dragWindow, sys_screen, sys_xRoot, sys_yRoot, &sys_destWindow, &sys_protocol)
 
-	return retSys, retSys
+	return WindowNewFromC(sys_destWindow), sys_protocol
 }
 
 // DragGetSelection wraps the C function gdk_drag_get_selection.
@@ -8439,7 +8439,7 @@ func EventsGetAngle(event1 *Event, event2 *Event) (bool, float64) {
 	var sys_angle float64
 	retSys := gdk.Fn_gdk_events_get_angle(sys_event1, sys_event2, &sys_angle)
 
-	return retSys, retSys
+	return retSys, sys_angle
 }
 
 // EventsGetCenter wraps the C function gdk_events_get_center.
@@ -8452,7 +8452,7 @@ func EventsGetCenter(event1 *Event, event2 *Event) (bool, float64, float64) {
 	var sys_y float64
 	retSys := gdk.Fn_gdk_events_get_center(sys_event1, sys_event2, &sys_x, &sys_y)
 
-	return retSys, retSys, retSys
+	return retSys, sys_x, sys_y
 }
 
 // EventsGetDistance wraps the C function gdk_events_get_distance.
@@ -8464,7 +8464,7 @@ func EventsGetDistance(event1 *Event, event2 *Event) (bool, float64) {
 	var sys_distance float64
 	retSys := gdk.Fn_gdk_events_get_distance(sys_event1, sys_event2, &sys_distance)
 
-	return retSys, retSys
+	return retSys, sys_distance
 }
 
 // EventsPending wraps the C function gdk_events_pending.
@@ -8543,7 +8543,7 @@ func KeyvalConvertCase(symbol uint) (uint, uint) {
 	var sys_upper uint
 	gdk.Fn_gdk_keyval_convert_case(sys_symbol, &sys_lower, &sys_upper)
 
-	return retSys, retSys
+	return sys_lower, sys_upper
 }
 
 // KeyvalFromName wraps the C function gdk_keyval_from_name.

@@ -8120,7 +8120,7 @@ func CairoGetClipRectangle(cr *cairo.Context) (bool, *Rectangle) {
 	var sys_rect unsafe.Pointer
 	retSys := gdk.Fn_gdk_cairo_get_clip_rectangle(sys_cr, &sys_rect)
 
-	return retSys, retSys
+	return retSys, RectangleNewFromC(sys_rect)
 }
 
 // CairoRegionCreateFromSurface wraps the C function gdk_cairo_region_create_from_surface.
@@ -8292,7 +8292,7 @@ func KeyvalConvertCase(symbol uint) (uint, uint) {
 	var sys_upper uint
 	gdk.Fn_gdk_keyval_convert_case(sys_symbol, &sys_lower, &sys_upper)
 
-	return retSys, retSys
+	return sys_lower, sys_upper
 }
 
 // KeyvalFromName wraps the C function gdk_keyval_from_name.

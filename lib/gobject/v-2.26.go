@@ -246,7 +246,7 @@ func EnumCompleteTypeInfo(gEnumType uint64, constValues *EnumValue) *TypeInfo {
 	sys_constValues := constValues.ToC()
 	gobject.Fn_g_enum_complete_type_info(sys_gEnumType, &sys_info, sys_constValues)
 
-	return retSys
+	return TypeInfoNewFromC(sys_info)
 }
 
 // EnumGetValue wraps the C function g_enum_get_value.
@@ -292,7 +292,7 @@ func FlagsCompleteTypeInfo(gFlagsType uint64, constValues *FlagsValue) *TypeInfo
 	sys_constValues := constValues.ToC()
 	gobject.Fn_g_flags_complete_type_info(sys_gFlagsType, &sys_info, sys_constValues)
 
-	return retSys
+	return TypeInfoNewFromC(sys_info)
 }
 
 // FlagsGetFirstValue wraps the C function g_flags_get_first_value.
@@ -936,7 +936,7 @@ func SignalParseName(detailedSignal string, itype uint64, forceDetailQuark bool)
 	sys_forceDetailQuark := forceDetailQuark
 	retSys := gobject.Fn_g_signal_parse_name(sys_detailedSignal, sys_itype, &sys_signalIdP, &sys_detailP, sys_forceDetailQuark)
 
-	return retSys, retSys, retSys
+	return retSys, sys_signalIdP, sys_detailP
 }
 
 // SignalQuery_ wraps the C function g_signal_query.
@@ -945,7 +945,7 @@ func SignalQuery_(signalId uint) *SignalQuery {
 	var sys_query unsafe.Pointer
 	gobject.Fn_g_signal_query(sys_signalId, &sys_query)
 
-	return retSys
+	return SignalQueryNewFromC(sys_query)
 }
 
 // SignalRemoveEmissionHook wraps the C function g_signal_remove_emission_hook.
@@ -1289,7 +1289,7 @@ func TypeQuery_(type_ uint64) *TypeQuery {
 	var sys_query unsafe.Pointer
 	gobject.Fn_g_type_query(sys_type_, &sys_query)
 
-	return retSys
+	return TypeQueryNewFromC(sys_query)
 }
 
 // TypeRegisterDynamic wraps the C function g_type_register_dynamic.

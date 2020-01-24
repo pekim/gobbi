@@ -943,7 +943,7 @@ func FindParagraphBoundary(text string, length int) (int, int) {
 	var sys_nextParagraphStart int
 	pango.Fn_pango_find_paragraph_boundary(sys_text, sys_length, &sys_paragraphDelimiterIndex, &sys_nextParagraphStart)
 
-	return retSys, retSys
+	return sys_paragraphDelimiterIndex, sys_nextParagraphStart
 }
 
 // UNSUPPORTED : pango_get_lib_subdirectory : blacklisted
@@ -1029,7 +1029,7 @@ func ParseEnum(type_ uint64, str string, warn bool) (bool, int, string) {
 	var sys_possibleValues string
 	retSys := pango.Fn_pango_parse_enum(sys_type_, sys_str, &sys_value, sys_warn, &sys_possibleValues)
 
-	return retSys, retSys, retSys
+	return retSys, sys_value, sys_possibleValues
 }
 
 // UNSUPPORTED : pango_parse_markup : throws
@@ -1041,7 +1041,7 @@ func ParseStretch(str string, warn bool) (bool, int) {
 	sys_warn := warn
 	retSys := pango.Fn_pango_parse_stretch(sys_str, &sys_stretch, sys_warn)
 
-	return retSys, retSys
+	return retSys, sys_stretch
 }
 
 // ParseStyle wraps the C function pango_parse_style.
@@ -1051,7 +1051,7 @@ func ParseStyle(str string, warn bool) (bool, int) {
 	sys_warn := warn
 	retSys := pango.Fn_pango_parse_style(sys_str, &sys_style, sys_warn)
 
-	return retSys, retSys
+	return retSys, sys_style
 }
 
 // ParseVariant wraps the C function pango_parse_variant.
@@ -1061,7 +1061,7 @@ func ParseVariant(str string, warn bool) (bool, int) {
 	sys_warn := warn
 	retSys := pango.Fn_pango_parse_variant(sys_str, &sys_variant, sys_warn)
 
-	return retSys, retSys
+	return retSys, sys_variant
 }
 
 // ParseWeight wraps the C function pango_parse_weight.
@@ -1071,7 +1071,7 @@ func ParseWeight(str string, warn bool) (bool, int) {
 	sys_warn := warn
 	retSys := pango.Fn_pango_parse_weight(sys_str, &sys_weight, sys_warn)
 
-	return retSys, retSys
+	return retSys, sys_weight
 }
 
 // QuantizeLineGeometry wraps the C function pango_quantize_line_geometry.
@@ -1082,7 +1082,7 @@ func QuantizeLineGeometry(thickness int, position int) (int, int) {
 	var sys_position int
 	pango.Fn_pango_quantize_line_geometry(&sys_thickness, &sys_position)
 
-	return retSys, retSys
+	return sys_thickness, sys_position
 }
 
 // ReadLine wraps the C function pango_read_line.
@@ -1091,7 +1091,7 @@ func ReadLine(stream unsafe.Pointer) (int, *glib.String) {
 	var sys_str unsafe.Pointer
 	retSys := pango.Fn_pango_read_line(sys_stream, &sys_str)
 
-	return retSys, retSys
+	return retSys, glib.StringNewFromC(sys_str)
 }
 
 // ReorderItems wraps the C function pango_reorder_items.
@@ -1108,7 +1108,7 @@ func ScanInt(pos *string) (bool, string, int) {
 	var sys_out int
 	retSys := pango.Fn_pango_scan_int(&sys_pos, &sys_out)
 
-	return retSys, retSys, retSys
+	return retSys, sys_pos, sys_out
 }
 
 // ScanString wraps the C function pango_scan_string.
@@ -1117,7 +1117,7 @@ func ScanString(pos *string) (bool, string, *glib.String) {
 	var sys_out unsafe.Pointer
 	retSys := pango.Fn_pango_scan_string(&sys_pos, &sys_out)
 
-	return retSys, retSys, retSys
+	return retSys, sys_pos, glib.StringNewFromC(sys_out)
 }
 
 // ScanWord wraps the C function pango_scan_word.
@@ -1126,7 +1126,7 @@ func ScanWord(pos *string) (bool, string, *glib.String) {
 	var sys_out unsafe.Pointer
 	retSys := pango.Fn_pango_scan_word(&sys_pos, &sys_out)
 
-	return retSys, retSys, retSys
+	return retSys, sys_pos, glib.StringNewFromC(sys_out)
 }
 
 // Shape wraps the C function pango_shape.
@@ -1143,7 +1143,7 @@ func SkipSpace(pos *string) (bool, string) {
 	var sys_pos string
 	retSys := pango.Fn_pango_skip_space(&sys_pos)
 
-	return retSys, retSys
+	return retSys, sys_pos
 }
 
 // UNSUPPORTED : pango_split_file_list : no array length

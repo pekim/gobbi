@@ -2029,7 +2029,7 @@ func DbusGvariantToGvalue(value *glib.Variant) *gobject.Value {
 	var sys_outGvalue unsafe.Pointer
 	gio.Fn_g_dbus_gvariant_to_gvalue(sys_value, &sys_outGvalue)
 
-	return retSys
+	return gobject.ValueNewFromC(sys_outGvalue)
 }
 
 // DbusIsAddress wraps the C function g_dbus_is_address.
@@ -2227,7 +2227,7 @@ func UnixMountAt(mountPath string) (*UnixMountEntry, uint64) {
 	var sys_timeRead uint64
 	retSys := gio.Fn_g_unix_mount_at(sys_mountPath, &sys_timeRead)
 
-	return UnixMountEntryNewFromC(retSys), UnixMountEntryNewFromC(retSys)
+	return UnixMountEntryNewFromC(retSys), sys_timeRead
 }
 
 // UnixMountCompare wraps the C function g_unix_mount_compare.
@@ -2340,7 +2340,7 @@ func UnixMountPointsGet() (*glib.List, uint64) {
 	var sys_timeRead uint64
 	retSys := gio.Fn_g_unix_mount_points_get(&sys_timeRead)
 
-	return glib.ListNewFromC(retSys), glib.ListNewFromC(retSys)
+	return glib.ListNewFromC(retSys), sys_timeRead
 }
 
 // UnixMountsChangedSince wraps the C function g_unix_mounts_changed_since.
@@ -2356,7 +2356,7 @@ func UnixMountsGet() (*glib.List, uint64) {
 	var sys_timeRead uint64
 	retSys := gio.Fn_g_unix_mounts_get(&sys_timeRead)
 
-	return glib.ListNewFromC(retSys), glib.ListNewFromC(retSys)
+	return glib.ListNewFromC(retSys), sys_timeRead
 }
 
 // ActionEntry is a representation of the C record GActionEntry.

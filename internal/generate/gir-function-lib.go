@@ -186,19 +186,19 @@ func (f *Function) generateReturn(g *jen.Group) {
 }
 
 func (f *Function) generateMarshalReturnValue(g *jen.Group, varName string, typ *Type) {
-	if f.ReturnValue.Type.isStruct() {
-		if f.ReturnValue.Type.isQualifiedName() {
-			ctorName := f.ReturnValue.Type.foreignName + "NewFromC"
-			g.Qual(f.ReturnValue.Type.foreignNamespace.goFullPackageName, ctorName).Call(jen.Id("retSys"))
+	if typ.isStruct() {
+		if typ.isQualifiedName() {
+			ctorName := typ.foreignName + "NewFromC"
+			g.Qual(typ.foreignNamespace.goFullPackageName, ctorName).Call(jen.Id(varName))
 			return
 		}
 
-		ctorName := f.ReturnValue.Type.Name + "NewFromC"
-		g.Id(ctorName).Call(jen.Id("retSys"))
+		ctorName := typ.Name + "NewFromC"
+		g.Id(ctorName).Call(jen.Id(varName))
 		return
 	}
 
-	g.Id("retSys")
+	g.Id(varName)
 }
 
 //func (f *Function) generateLibVarArgsCFunction(fi *jen.File) {
