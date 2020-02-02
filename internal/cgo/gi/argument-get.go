@@ -63,6 +63,26 @@ func (a Argument) String(transferOwnership bool) string {
 	return goString
 }
 
+func (a Argument) StringArray(transferOwnership bool) []string {
+	var strings []string
+
+	cArray := *(**C.gchar)(unsafe.Pointer(&a))
+	for cArray != nil {
+		string := C.GoString(cArray)
+		strings = append(strings, string)
+
+		// advance to next string
+		cArray = (*C.gchar)(incptr(unsafe.Pointer(cArray), C.sizeof_gpointer))
+	}
+
+	return strings
+}
+
 func (a Argument) Pointer() unsafe.Pointer {
 	return unsafe.Pointer(*(*C.gpointer)(unsafe.Pointer(&a)))
+}
+
+func incptr(ptr unsafe.Pointer, inc int) unsafe.Pointer {
+	newPtr := uintptr(ptr) + uintptr(inc)
+	return unsafe.Pointer(newPtr)
 }

@@ -45129,7 +45129,39 @@ func (recv *IconTheme) GetIconSizes(iconName string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_theme_get_search_path' : parameter 'path' of type 'nil' not supported
+var iconThemeGetSearchPathFunction *gi.Function
+var iconThemeGetSearchPathFunction_Once sync.Once
+
+func iconThemeGetSearchPathFunction_Set() error {
+	var err error
+	iconThemeGetSearchPathFunction_Once.Do(func() {
+		err = iconThemeObject_Set()
+		if err != nil {
+			return
+		}
+		iconThemeGetSearchPathFunction, err = iconThemeObject.InvokerNew("get_search_path")
+	})
+	return err
+}
+
+// GetSearchPath is a representation of the C type gtk_icon_theme_get_search_path.
+func (recv *IconTheme) GetSearchPath() ([]string, int32) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [2]gi.Argument
+
+	err := iconThemeGetSearchPathFunction_Set()
+	if err == nil {
+		iconThemeGetSearchPathFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	// TODO
+	out0 := outArgs[0].StringArray(true)
+	out1 := outArgs[1].Int32()
+
+	return out0, out1
+}
 
 var iconThemeHasIconFunction *gi.Function
 var iconThemeHasIconFunction_Once sync.Once

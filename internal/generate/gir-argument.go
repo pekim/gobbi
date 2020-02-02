@@ -18,6 +18,12 @@ func (a *Argument) generateValue(g *jen.Group, argName *jen.Statement, argVar *j
 		return
 	}
 
+	if a.Array != nil && strings.HasSuffix(a.Array.CType, "gchar***") {
+		g.Comment("TODO")
+		g.Add(argName).Op(":=").Add(argVar).Dot("StringArray").Call(jen.Lit(*a.transferOwnership()))
+		return
+	}
+
 	a.Type.generateOutArgValue(g, argName, argVar, a.transferOwnership())
 }
 
@@ -44,11 +50,11 @@ func (a Argument) supportedAsOutParameter() bool {
 		}
 	}
 
-	return a.isSupported()
+	return a.isSupported(false, true)
 }
 
-func (a Argument) isSupported() bool {
-	if a.Array != nil && strings.HasSuffix(a.Array.CType, "gchar*") {
+func (a Argument) isSupported(in bool, out bool) bool {
+	if a.Array != nil && a.Array.isSupported(in, out) {
 		return true
 	}
 
@@ -72,6 +78,11 @@ func (a Argument) isSupported() bool {
 func (a Argument) generateReturnDeclaration(g *jen.Group) {
 	if a.Array != nil && strings.HasSuffix(a.Array.CType, "gchar*") {
 		g.String()
+		return
+	}
+
+	if a.Array != nil && strings.HasSuffix(a.Array.CType, "gchar***") {
+		g.Index().String()
 		return
 	}
 

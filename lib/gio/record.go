@@ -15444,7 +15444,41 @@ func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSche
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_settings_schema_source_list_schemas' : parameter 'non_relocatable' of type 'nil' not supported
+var settingsSchemaSourceListSchemasFunction *gi.Function
+var settingsSchemaSourceListSchemasFunction_Once sync.Once
+
+func settingsSchemaSourceListSchemasFunction_Set() error {
+	var err error
+	settingsSchemaSourceListSchemasFunction_Once.Do(func() {
+		err = settingsSchemaSourceStruct_Set()
+		if err != nil {
+			return
+		}
+		settingsSchemaSourceListSchemasFunction, err = settingsSchemaSourceStruct.InvokerNew("list_schemas")
+	})
+	return err
+}
+
+// ListSchemas is a representation of the C type g_settings_schema_source_list_schemas.
+func (recv *SettingsSchemaSource) ListSchemas(recursive bool) ([]string, []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetBoolean(recursive)
+
+	var outArgs [2]gi.Argument
+
+	err := settingsSchemaSourceListSchemasFunction_Set()
+	if err == nil {
+		settingsSchemaSourceListSchemasFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	// TODO
+	out0 := outArgs[0].StringArray(true)
+	// TODO
+	out1 := outArgs[1].StringArray(true)
+
+	return out0, out1
+}
 
 var settingsSchemaSourceLookupFunction *gi.Function
 var settingsSchemaSourceLookupFunction_Once sync.Once

@@ -3839,7 +3839,34 @@ func GetEnviron() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_get_filename_charsets' : parameter 'filename_charsets' of type 'nil' not supported
+var getFilenameCharsetsFunction *gi.Function
+var getFilenameCharsetsFunction_Once sync.Once
+
+func getFilenameCharsetsFunction_Set() error {
+	var err error
+	getFilenameCharsetsFunction_Once.Do(func() {
+		getFilenameCharsetsFunction, err = gi.FunctionInvokerNew("GLib", "get_filename_charsets")
+	})
+	return err
+}
+
+// GetFilenameCharsets is a representation of the C type g_get_filename_charsets.
+func GetFilenameCharsets() (bool, []string) {
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := getFilenameCharsetsFunction_Set()
+	if err == nil {
+		ret = getFilenameCharsetsFunction.Invoke(nil, outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	// TODO
+	out0 := outArgs[0].StringArray(false)
+
+	return retGo, out0
+}
 
 var getHomeDirFunction *gi.Function
 var getHomeDirFunction_Once sync.Once
@@ -7826,7 +7853,37 @@ func ShellErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_shell_parse_argv' : parameter 'argvp' of type 'nil' not supported
+var shellParseArgvFunction *gi.Function
+var shellParseArgvFunction_Once sync.Once
+
+func shellParseArgvFunction_Set() error {
+	var err error
+	shellParseArgvFunction_Once.Do(func() {
+		shellParseArgvFunction, err = gi.FunctionInvokerNew("GLib", "shell_parse_argv")
+	})
+	return err
+}
+
+// ShellParseArgv is a representation of the C type g_shell_parse_argv.
+func ShellParseArgv(commandLine string) (bool, int32, []string) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(commandLine)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := shellParseArgvFunction_Set()
+	if err == nil {
+		ret = shellParseArgvFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	// TODO
+	out1 := outArgs[1].StringArray(true)
+
+	return retGo, out0, out1
+}
 
 var shellQuoteFunction *gi.Function
 var shellQuoteFunction_Once sync.Once
@@ -8618,7 +8675,35 @@ func StrToAscii(str string, fromLocale string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_str_tokenize_and_fold' : parameter 'ascii_alternates' of type 'nil' not supported
+var strTokenizeAndFoldFunction *gi.Function
+var strTokenizeAndFoldFunction_Once sync.Once
+
+func strTokenizeAndFoldFunction_Set() error {
+	var err error
+	strTokenizeAndFoldFunction_Once.Do(func() {
+		strTokenizeAndFoldFunction, err = gi.FunctionInvokerNew("GLib", "str_tokenize_and_fold")
+	})
+	return err
+}
+
+// StrTokenizeAndFold is a representation of the C type g_str_tokenize_and_fold.
+func StrTokenizeAndFold(string_ string, translitLocale string) []string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(string_)
+	inArgs[1].SetString(translitLocale)
+
+	var outArgs [1]gi.Argument
+
+	err := strTokenizeAndFoldFunction_Set()
+	if err == nil {
+		strTokenizeAndFoldFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	// TODO
+	out0 := outArgs[0].StringArray(true)
+
+	return out0
+}
 
 var strcanonFunction *gi.Function
 var strcanonFunction_Once sync.Once

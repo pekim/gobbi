@@ -1,5 +1,9 @@
 package generate
 
+import (
+	"strings"
+)
+
 type Array struct {
 	Namespace *Namespace
 
@@ -14,6 +18,7 @@ type Array struct {
 
 func (a *Array) init(ns *Namespace) {
 	a.Namespace = ns
+	a.Type.init(ns)
 
 	//// Some array's Type has a Name but no CType.
 	//// In all observed cases this is an integer type, usually 'guint8'.
@@ -24,4 +29,24 @@ func (a *Array) init(ns *Namespace) {
 	//}
 	//
 	//a.Type.init(ns)
+}
+
+func (a *Array) isSupported(in bool, out bool) bool {
+	if strings.HasSuffix(a.CType, "gchar*") {
+		// a simple string
+		return true
+	}
+
+	//if strings.HasSuffix(a.CType, "gchar**") {
+	//	fmt.Println("**", a.Type.isString(), out)
+	//}
+	//if strings.HasSuffix(a.CType, "gchar***") {
+	//	fmt.Println("***", a.Type.isString(), out)
+	//}
+	if strings.HasSuffix(a.CType, "gchar***") && a.Type.isString() && !in && out {
+		// an array of strings
+		return true
+	}
+
+	return false
 }

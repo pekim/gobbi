@@ -49,6 +49,15 @@ func TestRecordMethod(t *testing.T) {
 	assert.Equal(t, uint32(102), dayOfYear)
 }
 
+func TestReturnArrayOfStrings(t *testing.T) {
+	//ok, charsets := GetFilenameCharsets()
+	//assert.True(t, ok)
+	//assert.Equal(t, 3, len(charsets))
+
+	//b, i32, strings := ShellParseArgv("$PATH gobbi")
+	//fmt.Println(b, i32, strings)
+}
+
 func BenchmarkReturnedTransferOwnershipSring(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		GetCodeset()

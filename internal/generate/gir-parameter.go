@@ -46,7 +46,7 @@ func (p *Parameter) init(ns *Namespace) {
 }
 
 func (p Parameter) supported() (bool, string) {
-	if !p.isSupported() {
+	if !p.isSupported(p.isIn(), p.isOut()) {
 		return false, fmt.Sprintf("parameter '%s' of type '%s' not supported", p.Name, p.Type)
 	}
 
@@ -66,6 +66,12 @@ func (p *Parameter) generateInDeclaration(g *jen.Group) {
 		g.Id(p.goVarName).String()
 		return
 	}
+
+	//if p.Array != nil && strings.HasSuffix(p.Array.CType, "gchar***") {
+	//	//g.Commentf("TODO - array of strings")
+	//	g.Id(p.goVarName).String()
+	//	return
+	//}
 
 	if p.lengthForParam != nil && p.lengthForParam.isIn() {
 		return
@@ -97,6 +103,16 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 
 		return
 	}
+
+	//if p.Array != nil && strings.HasSuffix(p.Array.CType, "gchar**") {
+	//	//g.Commentf("TODO - array of strings")
+	//	g.
+	//		Id("inArgs").
+	//		Index(jen.Lit(index)).
+	//		Dot("SetString").
+	//		Call(goVar)
+	//	return
+	//}
 
 	if p.Type.isAlias() {
 		typ := p.Type.resolvedType()
