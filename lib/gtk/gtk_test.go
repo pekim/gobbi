@@ -19,7 +19,7 @@ func TestFunctionCall(t *testing.T) {
 }
 
 func TestClass(t *testing.T) {
-	Init()
+	Init([]string{})
 
 	label := LabelNew("test")
 	assert.Equal(t, "test", label.GetText())
@@ -29,7 +29,7 @@ func TestClass(t *testing.T) {
 }
 
 func TestSignalConnect(t *testing.T) {
-	Init()
+	Init([]string{})
 
 	callbackCalled := false
 
@@ -46,7 +46,7 @@ func TestSignalConnect(t *testing.T) {
 }
 
 func TestSignalDisconnect(t *testing.T) {
-	Init()
+	Init([]string{})
 
 	calledCount := 0
 
@@ -66,7 +66,7 @@ func TestSignalDisconnect(t *testing.T) {
 }
 
 func TestSignalMultipleHandlers(t *testing.T) {
-	Init()
+	Init([]string{})
 
 	calledCount := 0
 
@@ -83,4 +83,12 @@ func TestSignalMultipleHandlers(t *testing.T) {
 	button.Widget().Show()
 
 	assert.Equal(t, 2, calledCount)
+}
+
+func TestInit(t *testing.T) {
+	argsIn := []string{"one", "--g-fatal-warnings", "two", "--class", "cls", "three"}
+
+	argc, argsOut := Init(argsIn)
+	assert.Equal(t, 3, argc)
+	assert.Equal(t, []string{"one", "two", "three"}, argsOut)
 }

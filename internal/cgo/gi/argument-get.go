@@ -81,8 +81,3 @@ func (a Argument) StringArray(transferOwnership bool) []string {
 func (a Argument) Pointer() unsafe.Pointer {
 	return unsafe.Pointer(*(*C.gpointer)(unsafe.Pointer(&a)))
 }
-
-func incptr(ptr unsafe.Pointer, inc int) unsafe.Pointer {
-	newPtr := uintptr(ptr) + uintptr(inc)
-	return unsafe.Pointer(newPtr)
-}

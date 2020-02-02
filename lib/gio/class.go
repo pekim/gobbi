@@ -6367,7 +6367,41 @@ func DBusMessageNew() *DBusMessage {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dbus_message_new_from_blob' : parameter 'blob' of type 'nil' not supported
+var dBusMessageNewFromBlobFunction *gi.Function
+var dBusMessageNewFromBlobFunction_Once sync.Once
+
+func dBusMessageNewFromBlobFunction_Set() error {
+	var err error
+	dBusMessageNewFromBlobFunction_Once.Do(func() {
+		err = dBusMessageObject_Set()
+		if err != nil {
+			return
+		}
+		dBusMessageNewFromBlobFunction, err = dBusMessageObject.InvokerNew("new_from_blob")
+	})
+	return err
+}
+
+// DBusMessageNewFromBlob is a representation of the C type g_dbus_message_new_from_blob.
+func DBusMessageNewFromBlob(blob string, capabilities DBusCapabilityFlags) *DBusMessage {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(blob)
+	inArgs[1].SetUint64(uint64(len(blob)))
+	inArgs[2].SetInt32(int32(capabilities))
+
+	var ret gi.Argument
+
+	err := dBusMessageNewFromBlobFunction_Set()
+	if err == nil {
+		ret = dBusMessageNewFromBlobFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := DBusMessageNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var dBusMessageNewMethodCallFunction *gi.Function
 var dBusMessageNewMethodCallFunction_Once sync.Once
@@ -37678,9 +37712,37 @@ func (recv *TlsPassword) SetFlags(flags TlsPasswordFlags) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_tls_password_set_value' : parameter 'value' of type 'nil' not supported
+var tlsPasswordSetValueFunction *gi.Function
+var tlsPasswordSetValueFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_tls_password_set_value_full' : parameter 'value' of type 'nil' not supported
+func tlsPasswordSetValueFunction_Set() error {
+	var err error
+	tlsPasswordSetValueFunction_Once.Do(func() {
+		err = tlsPasswordObject_Set()
+		if err != nil {
+			return
+		}
+		tlsPasswordSetValueFunction, err = tlsPasswordObject.InvokerNew("set_value")
+	})
+	return err
+}
+
+// SetValue is a representation of the C type g_tls_password_set_value.
+func (recv *TlsPassword) SetValue(value string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(value)
+	inArgs[2].SetInt32(int32(len(value)))
+
+	err := tlsPasswordSetValueFunction_Set()
+	if err == nil {
+		tlsPasswordSetValueFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'g_tls_password_set_value_full' : parameter 'destroy' of type 'GLib.DestroyNotify' not supported
 
 var tlsPasswordSetWarningFunction *gi.Function
 var tlsPasswordSetWarningFunction_Once sync.Once

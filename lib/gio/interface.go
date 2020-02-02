@@ -6928,9 +6928,47 @@ func (recv *File) Replace(etag string, makeBackup bool, flags FileCreateFlags, c
 
 // UNSUPPORTED : C value 'g_file_replace_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'g_file_replace_contents' : parameter 'contents' of type 'nil' not supported
+var fileReplaceContentsFunction *gi.Function
+var fileReplaceContentsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_file_replace_contents_async' : parameter 'contents' of type 'nil' not supported
+func fileReplaceContentsFunction_Set() error {
+	var err error
+	fileReplaceContentsFunction_Once.Do(func() {
+		err = fileInterface_Set()
+		if err != nil {
+			return
+		}
+		fileReplaceContentsFunction, err = fileInterface.InvokerNew("replace_contents")
+	})
+	return err
+}
+
+// ReplaceContents is a representation of the C type g_file_replace_contents.
+func (recv *File) ReplaceContents(contents string, etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) (bool, string) {
+	var inArgs [7]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(contents)
+	inArgs[2].SetUint64(uint64(len(contents)))
+	inArgs[3].SetString(etag)
+	inArgs[4].SetBoolean(makeBackup)
+	inArgs[5].SetInt32(int32(flags))
+	inArgs[6].SetPointer(cancellable.Native())
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := fileReplaceContentsFunction_Set()
+	if err == nil {
+		ret = fileReplaceContentsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0
+}
+
+// UNSUPPORTED : C value 'g_file_replace_contents_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 
 // UNSUPPORTED : C value 'g_file_replace_contents_bytes_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
 

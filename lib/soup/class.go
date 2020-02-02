@@ -5090,9 +5090,69 @@ func (recv *Message) SetRedirect(statusCode uint32, redirectUri string) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_message_set_request' : parameter 'req_body' of type 'nil' not supported
+var messageSetRequestFunction *gi.Function
+var messageSetRequestFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_message_set_response' : parameter 'resp_body' of type 'nil' not supported
+func messageSetRequestFunction_Set() error {
+	var err error
+	messageSetRequestFunction_Once.Do(func() {
+		err = messageObject_Set()
+		if err != nil {
+			return
+		}
+		messageSetRequestFunction, err = messageObject.InvokerNew("set_request")
+	})
+	return err
+}
+
+// SetRequest is a representation of the C type soup_message_set_request.
+func (recv *Message) SetRequest(contentType string, reqUse MemoryUse, reqBody string) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(contentType)
+	inArgs[2].SetInt32(int32(reqUse))
+	inArgs[3].SetString(reqBody)
+	inArgs[4].SetUint64(uint64(len(reqBody)))
+
+	err := messageSetRequestFunction_Set()
+	if err == nil {
+		messageSetRequestFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var messageSetResponseFunction *gi.Function
+var messageSetResponseFunction_Once sync.Once
+
+func messageSetResponseFunction_Set() error {
+	var err error
+	messageSetResponseFunction_Once.Do(func() {
+		err = messageObject_Set()
+		if err != nil {
+			return
+		}
+		messageSetResponseFunction, err = messageObject.InvokerNew("set_response")
+	})
+	return err
+}
+
+// SetResponse is a representation of the C type soup_message_set_response.
+func (recv *Message) SetResponse(contentType string, respUse MemoryUse, respBody string) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(contentType)
+	inArgs[2].SetInt32(int32(respUse))
+	inArgs[3].SetString(respBody)
+	inArgs[4].SetUint64(uint64(len(respBody)))
+
+	err := messageSetResponseFunction_Set()
+	if err == nil {
+		messageSetResponseFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var messageSetStatusFunction *gi.Function
 var messageSetStatusFunction_Once sync.Once

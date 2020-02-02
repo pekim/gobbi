@@ -62,16 +62,15 @@ func (p *Parameter) isOut() bool {
 }
 
 func (p *Parameter) generateInDeclaration(g *jen.Group) {
-	if p.Array != nil && strings.HasSuffix(p.Array.CType, "gchar*") {
+	if p.Array != nil && strings.HasSuffix(p.Array.CType, "char*") {
 		g.Id(p.goVarName).String()
 		return
 	}
 
-	//if p.Array != nil && strings.HasSuffix(p.Array.CType, "gchar***") {
-	//	//g.Commentf("TODO - array of strings")
-	//	g.Id(p.goVarName).String()
-	//	return
-	//}
+	if p.Array != nil && strings.HasSuffix(p.Array.CType, "char***") {
+		g.Id(p.goVarName).Index().String()
+		return
+	}
 
 	if p.lengthForParam != nil && p.lengthForParam.isIn() {
 		return
@@ -93,7 +92,7 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 		goVar = jen.Add(goType).Params(jen.Len(jen.Id(p.lengthForParam.goVarName)))
 	}
 
-	if p.Array != nil && strings.HasSuffix(p.Array.CType, "gchar*") {
+	if p.Array != nil && strings.HasSuffix(p.Array.CType, "char*") {
 		// inArgs[<index>].Set...(<goVar>)
 		g.
 			Id("inArgs").
@@ -104,15 +103,14 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 		return
 	}
 
-	//if p.Array != nil && strings.HasSuffix(p.Array.CType, "gchar**") {
-	//	//g.Commentf("TODO - array of strings")
-	//	g.
-	//		Id("inArgs").
-	//		Index(jen.Lit(index)).
-	//		Dot("SetString").
-	//		Call(goVar)
-	//	return
-	//}
+	if p.Array != nil && strings.HasSuffix(p.Array.CType, "char***") {
+		g.
+			Id("inArgs").
+			Index(jen.Lit(index)).
+			Dot("SetStringArray").
+			Call(goVar)
+		return
+	}
 
 	if p.Type.isAlias() {
 		typ := p.Type.resolvedType()

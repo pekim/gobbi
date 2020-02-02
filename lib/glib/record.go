@@ -2706,7 +2706,35 @@ func (recv *Checksum) Reset() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_checksum_update' : parameter 'data' of type 'nil' not supported
+var checksumUpdateFunction *gi.Function
+var checksumUpdateFunction_Once sync.Once
+
+func checksumUpdateFunction_Set() error {
+	var err error
+	checksumUpdateFunction_Once.Do(func() {
+		err = checksumStruct_Set()
+		if err != nil {
+			return
+		}
+		checksumUpdateFunction, err = checksumStruct.InvokerNew("update")
+	})
+	return err
+}
+
+// Update is a representation of the C type g_checksum_update.
+func (recv *Checksum) Update(data string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(data)
+	inArgs[2].SetInt32(int32(len(data)))
+
+	err := checksumUpdateFunction_Set()
+	if err == nil {
+		checksumUpdateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var condStruct *gi.Struct
 var condStruct_Once sync.Once
@@ -6581,7 +6609,35 @@ func (recv *Hmac) Unref() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_hmac_update' : parameter 'data' of type 'nil' not supported
+var hmacUpdateFunction *gi.Function
+var hmacUpdateFunction_Once sync.Once
+
+func hmacUpdateFunction_Set() error {
+	var err error
+	hmacUpdateFunction_Once.Do(func() {
+		err = hmacStruct_Set()
+		if err != nil {
+			return
+		}
+		hmacUpdateFunction, err = hmacStruct.InvokerNew("update")
+	})
+	return err
+}
+
+// Update is a representation of the C type g_hmac_update.
+func (recv *Hmac) Update(data string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(data)
+	inArgs[2].SetInt32(int32(len(data)))
+
+	err := hmacUpdateFunction_Set()
+	if err == nil {
+		hmacUpdateFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 // HmacStruct creates an uninitialised Hmac.
 func HmacStruct() *Hmac {
@@ -13248,9 +13304,77 @@ func (recv *OptionContext) GetSummary() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_option_context_parse' : parameter 'argv' of type 'nil' not supported
+var optionContextParseFunction *gi.Function
+var optionContextParseFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_option_context_parse_strv' : parameter 'arguments' of type 'nil' not supported
+func optionContextParseFunction_Set() error {
+	var err error
+	optionContextParseFunction_Once.Do(func() {
+		err = optionContextStruct_Set()
+		if err != nil {
+			return
+		}
+		optionContextParseFunction, err = optionContextStruct.InvokerNew("parse")
+	})
+	return err
+}
+
+// Parse is a representation of the C type g_option_context_parse.
+func (recv *OptionContext) Parse(argv []string) (bool, int32, []string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(len(argv)))
+	inArgs[2].SetStringArray(argv)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := optionContextParseFunction_Set()
+	if err == nil {
+		ret = optionContextParseFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].StringArray(true)
+
+	return retGo, out0, out1
+}
+
+var optionContextParseStrvFunction *gi.Function
+var optionContextParseStrvFunction_Once sync.Once
+
+func optionContextParseStrvFunction_Set() error {
+	var err error
+	optionContextParseStrvFunction_Once.Do(func() {
+		err = optionContextStruct_Set()
+		if err != nil {
+			return
+		}
+		optionContextParseStrvFunction, err = optionContextStruct.InvokerNew("parse_strv")
+	})
+	return err
+}
+
+// ParseStrv is a representation of the C type g_option_context_parse_strv.
+func (recv *OptionContext) ParseStrv(arguments []string) (bool, []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(arguments)
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := optionContextParseStrvFunction_Set()
+	if err == nil {
+		ret = optionContextParseStrvFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].StringArray(true)
+
+	return retGo, out0
+}
 
 var optionContextSetDescriptionFunction *gi.Function
 var optionContextSetDescriptionFunction_Once sync.Once

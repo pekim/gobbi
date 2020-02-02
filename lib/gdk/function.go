@@ -1175,9 +1175,67 @@ func GlErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_init' : parameter 'argv' of type 'nil' not supported
+var initFunction *gi.Function
+var initFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_init_check' : parameter 'argv' of type 'nil' not supported
+func initFunction_Set() error {
+	var err error
+	initFunction_Once.Do(func() {
+		initFunction, err = gi.FunctionInvokerNew("Gdk", "init")
+	})
+	return err
+}
+
+// Init is a representation of the C type gdk_init.
+func Init(argv []string) (int32, []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(len(argv)))
+	inArgs[1].SetStringArray(argv)
+
+	var outArgs [2]gi.Argument
+
+	err := initFunction_Set()
+	if err == nil {
+		initFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].StringArray(true)
+
+	return out0, out1
+}
+
+var initCheckFunction *gi.Function
+var initCheckFunction_Once sync.Once
+
+func initCheckFunction_Set() error {
+	var err error
+	initCheckFunction_Once.Do(func() {
+		initCheckFunction, err = gi.FunctionInvokerNew("Gdk", "init_check")
+	})
+	return err
+}
+
+// InitCheck is a representation of the C type gdk_init_check.
+func InitCheck(argv []string) (bool, int32, []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(len(argv)))
+	inArgs[1].SetStringArray(argv)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := initCheckFunction_Set()
+	if err == nil {
+		ret = initCheckFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].StringArray(true)
+
+	return retGo, out0, out1
+}
 
 var keyboardGrabFunction *gi.Function
 var keyboardGrabFunction_Once sync.Once
@@ -1727,7 +1785,35 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32
 
 // UNSUPPORTED : C value 'gdk_pango_layout_line_get_clip_region' : parameter 'index_ranges' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'gdk_parse_args' : parameter 'argv' of type 'nil' not supported
+var parseArgsFunction *gi.Function
+var parseArgsFunction_Once sync.Once
+
+func parseArgsFunction_Set() error {
+	var err error
+	parseArgsFunction_Once.Do(func() {
+		parseArgsFunction, err = gi.FunctionInvokerNew("Gdk", "parse_args")
+	})
+	return err
+}
+
+// ParseArgs is a representation of the C type gdk_parse_args.
+func ParseArgs(argv []string) (int32, []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(len(argv)))
+	inArgs[1].SetStringArray(argv)
+
+	var outArgs [2]gi.Argument
+
+	err := parseArgsFunction_Set()
+	if err == nil {
+		parseArgsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].StringArray(true)
+
+	return out0, out1
+}
 
 var pixbufGetFromSurfaceFunction *gi.Function
 var pixbufGetFromSurfaceFunction_Once sync.Once
@@ -2435,7 +2521,39 @@ func TestSimulateKey(window *Window, x int32, y int32, keyval uint32, modifiers 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_text_property_to_utf8_list_for_display' : parameter 'text' of type 'nil' not supported
+var textPropertyToUtf8ListForDisplayFunction *gi.Function
+var textPropertyToUtf8ListForDisplayFunction_Once sync.Once
+
+func textPropertyToUtf8ListForDisplayFunction_Set() error {
+	var err error
+	textPropertyToUtf8ListForDisplayFunction_Once.Do(func() {
+		textPropertyToUtf8ListForDisplayFunction, err = gi.FunctionInvokerNew("Gdk", "text_property_to_utf8_list_for_display")
+	})
+	return err
+}
+
+// TextPropertyToUtf8ListForDisplay is a representation of the C type gdk_text_property_to_utf8_list_for_display.
+func TextPropertyToUtf8ListForDisplay(display *Display, encoding *Atom, format int32, text string) (int32, []string) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(display.Native())
+	inArgs[1].SetPointer(encoding.Native())
+	inArgs[2].SetInt32(format)
+	inArgs[3].SetString(text)
+	inArgs[4].SetInt32(int32(len(text)))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := textPropertyToUtf8ListForDisplayFunction_Set()
+	if err == nil {
+		ret = textPropertyToUtf8ListForDisplayFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Int32()
+	out0 := outArgs[0].StringArray(true)
+
+	return retGo, out0
+}
 
 // UNSUPPORTED : C value 'gdk_threads_add_idle' : parameter 'function' of type 'GLib.SourceFunc' not supported
 

@@ -15472,9 +15472,7 @@ func (recv *SettingsSchemaSource) ListSchemas(recursive bool) ([]string, []strin
 		settingsSchemaSourceListSchemasFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	// TODO
 	out0 := outArgs[0].StringArray(true)
-	// TODO
 	out1 := outArgs[1].StringArray(true)
 
 	return out0, out1

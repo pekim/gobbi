@@ -723,7 +723,38 @@ func (recv *Buffer) SetFieldLength(value uint64) {
 
 // UNSUPPORTED : C value 'soup_buffer_new' : parameter 'data' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_buffer_new_take' : parameter 'data' of type 'nil' not supported
+var bufferNewTakeFunction *gi.Function
+var bufferNewTakeFunction_Once sync.Once
+
+func bufferNewTakeFunction_Set() error {
+	var err error
+	bufferNewTakeFunction_Once.Do(func() {
+		err = bufferStruct_Set()
+		if err != nil {
+			return
+		}
+		bufferNewTakeFunction, err = bufferStruct.InvokerNew("new_take")
+	})
+	return err
+}
+
+// BufferNewTake is a representation of the C type soup_buffer_new_take.
+func BufferNewTake(data string) *Buffer {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(data)
+	inArgs[1].SetUint64(uint64(len(data)))
+
+	var ret gi.Argument
+
+	err := bufferNewTakeFunction_Set()
+	if err == nil {
+		ret = bufferNewTakeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := BufferNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'soup_buffer_new_with_owner' : parameter 'data' of type 'nil' not supported
 
@@ -4604,7 +4635,35 @@ func (recv *MessageBody) AppendBuffer(buffer *Buffer) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_message_body_append_take' : parameter 'data' of type 'nil' not supported
+var messageBodyAppendTakeFunction *gi.Function
+var messageBodyAppendTakeFunction_Once sync.Once
+
+func messageBodyAppendTakeFunction_Set() error {
+	var err error
+	messageBodyAppendTakeFunction_Once.Do(func() {
+		err = messageBodyStruct_Set()
+		if err != nil {
+			return
+		}
+		messageBodyAppendTakeFunction, err = messageBodyStruct.InvokerNew("append_take")
+	})
+	return err
+}
+
+// AppendTake is a representation of the C type soup_message_body_append_take.
+func (recv *MessageBody) AppendTake(data string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(data)
+	inArgs[2].SetUint64(uint64(len(data)))
+
+	err := messageBodyAppendTakeFunction_Set()
+	if err == nil {
+		messageBodyAppendTakeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var messageBodyCompleteFunction *gi.Function
 var messageBodyCompleteFunction_Once sync.Once

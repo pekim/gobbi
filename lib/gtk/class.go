@@ -45156,7 +45156,6 @@ func (recv *IconTheme) GetSearchPath() ([]string, int32) {
 		iconThemeGetSearchPathFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	// TODO
 	out0 := outArgs[0].StringArray(true)
 	out1 := outArgs[1].Int32()
 

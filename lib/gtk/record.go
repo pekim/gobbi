@@ -33287,7 +33287,37 @@ func (recv *SelectionData) GetUris() {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_selection_data_set' : parameter 'data' of type 'nil' not supported
+var selectionDataSetFunction *gi.Function
+var selectionDataSetFunction_Once sync.Once
+
+func selectionDataSetFunction_Set() error {
+	var err error
+	selectionDataSetFunction_Once.Do(func() {
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataSetFunction, err = selectionDataStruct.InvokerNew("set")
+	})
+	return err
+}
+
+// Set is a representation of the C type gtk_selection_data_set.
+func (recv *SelectionData) Set(type_ *gdk.Atom, format int32, data string) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(type_.Native())
+	inArgs[2].SetInt32(format)
+	inArgs[3].SetString(data)
+	inArgs[4].SetInt32(int32(len(data)))
+
+	err := selectionDataSetFunction_Set()
+	if err == nil {
+		selectionDataSetFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var selectionDataSetPixbufFunction *gi.Function
 var selectionDataSetPixbufFunction_Once sync.Once

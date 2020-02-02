@@ -151,7 +151,7 @@ func PixbufNewFromBytes(data *glib.Bytes, colorspace Colorspace, hasAlpha bool, 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_data' : parameter 'data' of type 'nil' not supported
+// UNSUPPORTED : C value 'gdk_pixbuf_new_from_data' : parameter 'destroy_fn' of type 'PixbufDestroyNotify' not supported
 
 var pixbufNewFromFileFunction *gi.Function
 var pixbufNewFromFileFunction_Once sync.Once
@@ -2508,7 +2508,39 @@ func (recv *PixbufLoader) SetSize(width int32, height int32) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_loader_write' : parameter 'buf' of type 'nil' not supported
+var pixbufLoaderWriteFunction *gi.Function
+var pixbufLoaderWriteFunction_Once sync.Once
+
+func pixbufLoaderWriteFunction_Set() error {
+	var err error
+	pixbufLoaderWriteFunction_Once.Do(func() {
+		err = pixbufLoaderObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufLoaderWriteFunction, err = pixbufLoaderObject.InvokerNew("write")
+	})
+	return err
+}
+
+// Write is a representation of the C type gdk_pixbuf_loader_write.
+func (recv *PixbufLoader) Write(buf string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(buf)
+	inArgs[2].SetUint64(uint64(len(buf)))
+
+	var ret gi.Argument
+
+	err := pixbufLoaderWriteFunction_Set()
+	if err == nil {
+		ret = pixbufLoaderWriteFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var pixbufLoaderWriteBytesFunction *gi.Function
 var pixbufLoaderWriteBytesFunction_Once sync.Once

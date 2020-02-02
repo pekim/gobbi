@@ -871,7 +871,37 @@ func ContentTypeGetSymbolicIcon(type_ string) *Icon {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_content_type_guess' : parameter 'data' of type 'nil' not supported
+var contentTypeGuessFunction *gi.Function
+var contentTypeGuessFunction_Once sync.Once
+
+func contentTypeGuessFunction_Set() error {
+	var err error
+	contentTypeGuessFunction_Once.Do(func() {
+		contentTypeGuessFunction, err = gi.FunctionInvokerNew("Gio", "content_type_guess")
+	})
+	return err
+}
+
+// ContentTypeGuess is a representation of the C type g_content_type_guess.
+func ContentTypeGuess(filename string, data string) (string, bool) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetString(filename)
+	inArgs[1].SetString(data)
+	inArgs[2].SetUint64(uint64(len(data)))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := contentTypeGuessFunction_Set()
+	if err == nil {
+		ret = contentTypeGuessFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.String(true)
+	out0 := outArgs[0].Boolean()
+
+	return retGo, out0
+}
 
 var contentTypeGuessForTreeFunction *gi.Function
 var contentTypeGuessForTreeFunction_Once sync.Once

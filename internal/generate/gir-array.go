@@ -32,18 +32,12 @@ func (a *Array) init(ns *Namespace) {
 }
 
 func (a *Array) isSupported(in bool, out bool) bool {
-	if strings.HasSuffix(a.CType, "gchar*") {
+	if strings.HasSuffix(a.CType, "char*") {
 		// a simple string
 		return true
 	}
 
-	//if strings.HasSuffix(a.CType, "gchar**") {
-	//	fmt.Println("**", a.Type.isString(), out)
-	//}
-	//if strings.HasSuffix(a.CType, "gchar***") {
-	//	fmt.Println("***", a.Type.isString(), out)
-	//}
-	if strings.HasSuffix(a.CType, "gchar***") && a.Type.isString() && !in && out {
+	if strings.HasSuffix(a.CType, "char***") && a.Type.isString() {
 		// an array of strings
 		return true
 	}

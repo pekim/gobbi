@@ -1446,9 +1446,69 @@ func Base64DecodeInplace(text string) (uint8, string, uint64) {
 	return retGo, out0, out1
 }
 
-// UNSUPPORTED : C value 'g_base64_decode_step' : parameter 'out' of type 'nil' not supported
+var base64DecodeStepFunction *gi.Function
+var base64DecodeStepFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_base64_encode' : parameter 'data' of type 'nil' not supported
+func base64DecodeStepFunction_Set() error {
+	var err error
+	base64DecodeStepFunction_Once.Do(func() {
+		base64DecodeStepFunction, err = gi.FunctionInvokerNew("GLib", "base64_decode_step")
+	})
+	return err
+}
+
+// Base64DecodeStep is a representation of the C type g_base64_decode_step.
+func Base64DecodeStep(in string, state int32, save uint32) (uint64, string, int32, uint32) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetString(in)
+	inArgs[1].SetUint64(uint64(len(in)))
+	inArgs[2].SetInt32(state)
+	inArgs[3].SetUint32(save)
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := base64DecodeStepFunction_Set()
+	if err == nil {
+		ret = base64DecodeStepFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Uint64()
+	out0 := outArgs[0].String(false)
+	out1 := outArgs[1].Int32()
+	out2 := outArgs[2].Uint32()
+
+	return retGo, out0, out1, out2
+}
+
+var base64EncodeFunction *gi.Function
+var base64EncodeFunction_Once sync.Once
+
+func base64EncodeFunction_Set() error {
+	var err error
+	base64EncodeFunction_Once.Do(func() {
+		base64EncodeFunction, err = gi.FunctionInvokerNew("GLib", "base64_encode")
+	})
+	return err
+}
+
+// Base64Encode is a representation of the C type g_base64_encode.
+func Base64Encode(data string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(data)
+	inArgs[1].SetUint64(uint64(len(data)))
+
+	var ret gi.Argument
+
+	err := base64EncodeFunction_Set()
+	if err == nil {
+		ret = base64EncodeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var base64EncodeCloseFunction *gi.Function
 var base64EncodeCloseFunction_Once sync.Once
@@ -1484,7 +1544,41 @@ func Base64EncodeClose(breakLines bool, state int32, save int32) (uint64, string
 	return retGo, out0, out1, out2
 }
 
-// UNSUPPORTED : C value 'g_base64_encode_step' : parameter 'in' of type 'nil' not supported
+var base64EncodeStepFunction *gi.Function
+var base64EncodeStepFunction_Once sync.Once
+
+func base64EncodeStepFunction_Set() error {
+	var err error
+	base64EncodeStepFunction_Once.Do(func() {
+		base64EncodeStepFunction, err = gi.FunctionInvokerNew("GLib", "base64_encode_step")
+	})
+	return err
+}
+
+// Base64EncodeStep is a representation of the C type g_base64_encode_step.
+func Base64EncodeStep(in string, breakLines bool, state int32, save int32) (uint64, string, int32, int32) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(in)
+	inArgs[1].SetUint64(uint64(len(in)))
+	inArgs[2].SetBoolean(breakLines)
+	inArgs[3].SetInt32(state)
+	inArgs[4].SetInt32(save)
+
+	var outArgs [3]gi.Argument
+	var ret gi.Argument
+
+	err := base64EncodeStepFunction_Set()
+	if err == nil {
+		ret = base64EncodeStepFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Uint64()
+	out0 := outArgs[0].String(true)
+	out1 := outArgs[1].Int32()
+	out2 := outArgs[2].Int32()
+
+	return retGo, out0, out1, out2
+}
 
 var basenameFunction *gi.Function
 var basenameFunction_Once sync.Once
@@ -1975,7 +2069,35 @@ func ComputeChecksumForBytes(checksumType ChecksumType, data *Bytes) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_compute_checksum_for_data' : parameter 'data' of type 'nil' not supported
+var computeChecksumForDataFunction *gi.Function
+var computeChecksumForDataFunction_Once sync.Once
+
+func computeChecksumForDataFunction_Set() error {
+	var err error
+	computeChecksumForDataFunction_Once.Do(func() {
+		computeChecksumForDataFunction, err = gi.FunctionInvokerNew("GLib", "compute_checksum_for_data")
+	})
+	return err
+}
+
+// ComputeChecksumForData is a representation of the C type g_compute_checksum_for_data.
+func ComputeChecksumForData(checksumType ChecksumType, data string) string {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetInt32(int32(checksumType))
+	inArgs[1].SetString(data)
+	inArgs[2].SetUint64(uint64(len(data)))
+
+	var ret gi.Argument
+
+	err := computeChecksumForDataFunction_Set()
+	if err == nil {
+		ret = computeChecksumForDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var computeChecksumForStringFunction *gi.Function
 var computeChecksumForStringFunction_Once sync.Once
@@ -2037,9 +2159,69 @@ func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) strin
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_compute_hmac_for_data' : parameter 'key' of type 'nil' not supported
+var computeHmacForDataFunction *gi.Function
+var computeHmacForDataFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_compute_hmac_for_string' : parameter 'key' of type 'nil' not supported
+func computeHmacForDataFunction_Set() error {
+	var err error
+	computeHmacForDataFunction_Once.Do(func() {
+		computeHmacForDataFunction, err = gi.FunctionInvokerNew("GLib", "compute_hmac_for_data")
+	})
+	return err
+}
+
+// ComputeHmacForData is a representation of the C type g_compute_hmac_for_data.
+func ComputeHmacForData(digestType ChecksumType, key string, data string) string {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetInt32(int32(digestType))
+	inArgs[1].SetString(key)
+	inArgs[2].SetUint64(uint64(len(key)))
+	inArgs[3].SetString(data)
+	inArgs[4].SetUint64(uint64(len(data)))
+
+	var ret gi.Argument
+
+	err := computeHmacForDataFunction_Set()
+	if err == nil {
+		ret = computeHmacForDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
+
+var computeHmacForStringFunction *gi.Function
+var computeHmacForStringFunction_Once sync.Once
+
+func computeHmacForStringFunction_Set() error {
+	var err error
+	computeHmacForStringFunction_Once.Do(func() {
+		computeHmacForStringFunction, err = gi.FunctionInvokerNew("GLib", "compute_hmac_for_string")
+	})
+	return err
+}
+
+// ComputeHmacForString is a representation of the C type g_compute_hmac_for_string.
+func ComputeHmacForString(digestType ChecksumType, key string, str string, length int32) string {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetInt32(int32(digestType))
+	inArgs[1].SetString(key)
+	inArgs[2].SetUint64(uint64(len(key)))
+	inArgs[3].SetString(str)
+	inArgs[4].SetInt32(length)
+
+	var ret gi.Argument
+
+	err := computeHmacForStringFunction_Set()
+	if err == nil {
+		ret = computeHmacForStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 var convertFunction *gi.Function
 var convertFunction_Once sync.Once
@@ -3862,7 +4044,6 @@ func GetFilenameCharsets() (bool, []string) {
 	}
 
 	retGo := ret.Boolean()
-	// TODO
 	out0 := outArgs[0].StringArray(false)
 
 	return retGo, out0
@@ -7879,7 +8060,6 @@ func ShellParseArgv(commandLine string) (bool, int32, []string) {
 
 	retGo := ret.Boolean()
 	out0 := outArgs[0].Int32()
-	// TODO
 	out1 := outArgs[1].StringArray(true)
 
 	return retGo, out0, out1
@@ -8699,7 +8879,6 @@ func StrTokenizeAndFold(string_ string, translitLocale string) []string {
 		strTokenizeAndFoldFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	// TODO
 	out0 := outArgs[0].StringArray(true)
 
 	return out0

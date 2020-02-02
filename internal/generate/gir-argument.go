@@ -13,13 +13,12 @@ type Argument struct {
 }
 
 func (a *Argument) generateValue(g *jen.Group, argName *jen.Statement, argVar *jen.Statement) {
-	if a.Array != nil && strings.HasSuffix(a.Array.CType, "gchar*") {
+	if a.Array != nil && strings.HasSuffix(a.Array.CType, "char*") {
 		g.Add(argName).Op(":=").Add(argVar).Dot("String").Call(jen.Lit(*a.transferOwnership()))
 		return
 	}
 
-	if a.Array != nil && strings.HasSuffix(a.Array.CType, "gchar***") {
-		g.Comment("TODO")
+	if a.Array != nil && strings.HasSuffix(a.Array.CType, "char***") {
 		g.Add(argName).Op(":=").Add(argVar).Dot("StringArray").Call(jen.Lit(*a.transferOwnership()))
 		return
 	}
@@ -76,12 +75,12 @@ func (a Argument) isSupported(in bool, out bool) bool {
 }
 
 func (a Argument) generateReturnDeclaration(g *jen.Group) {
-	if a.Array != nil && strings.HasSuffix(a.Array.CType, "gchar*") {
+	if a.Array != nil && strings.HasSuffix(a.Array.CType, "char*") {
 		g.String()
 		return
 	}
 
-	if a.Array != nil && strings.HasSuffix(a.Array.CType, "gchar***") {
+	if a.Array != nil && strings.HasSuffix(a.Array.CType, "char***") {
 		g.Index().String()
 		return
 	}

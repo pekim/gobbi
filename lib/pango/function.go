@@ -1161,7 +1161,34 @@ func Log2visGetEmbeddingLevels(text string, length int32, pbaseDir Direction) ui
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_lookup_aliases' : parameter 'families' of type 'nil' not supported
+var lookupAliasesFunction *gi.Function
+var lookupAliasesFunction_Once sync.Once
+
+func lookupAliasesFunction_Set() error {
+	var err error
+	lookupAliasesFunction_Once.Do(func() {
+		lookupAliasesFunction, err = gi.FunctionInvokerNew("Pango", "lookup_aliases")
+	})
+	return err
+}
+
+// LookupAliases is a representation of the C type pango_lookup_aliases.
+func LookupAliases(fontname string) ([]string, int32) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetString(fontname)
+
+	var outArgs [2]gi.Argument
+
+	err := lookupAliasesFunction_Set()
+	if err == nil {
+		lookupAliasesFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].StringArray(true)
+	out1 := outArgs[1].Int32()
+
+	return out0, out1
+}
 
 // UNSUPPORTED : C value 'pango_markup_parser_finish' : parameter 'accel_char' of type 'gunichar' not supported
 

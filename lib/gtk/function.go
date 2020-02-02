@@ -1344,11 +1344,69 @@ func IconThemeErrorQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_init' : parameter 'argv' of type 'nil' not supported
+var initFunction *gi.Function
+var initFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_init_check' : parameter 'argv' of type 'nil' not supported
+func initFunction_Set() error {
+	var err error
+	initFunction_Once.Do(func() {
+		initFunction, err = gi.FunctionInvokerNew("Gtk", "init")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_init_with_args' : parameter 'argv' of type 'nil' not supported
+// Init is a representation of the C type gtk_init.
+func Init(argv []string) (int32, []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(len(argv)))
+	inArgs[1].SetStringArray(argv)
+
+	var outArgs [2]gi.Argument
+
+	err := initFunction_Set()
+	if err == nil {
+		initFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].StringArray(true)
+
+	return out0, out1
+}
+
+var initCheckFunction *gi.Function
+var initCheckFunction_Once sync.Once
+
+func initCheckFunction_Set() error {
+	var err error
+	initCheckFunction_Once.Do(func() {
+		initCheckFunction, err = gi.FunctionInvokerNew("Gtk", "init_check")
+	})
+	return err
+}
+
+// InitCheck is a representation of the C type gtk_init_check.
+func InitCheck(argv []string) (bool, int32, []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(len(argv)))
+	inArgs[1].SetStringArray(argv)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := initCheckFunction_Set()
+	if err == nil {
+		ret = initCheckFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].StringArray(true)
+
+	return retGo, out0, out1
+}
+
+// UNSUPPORTED : C value 'gtk_init_with_args' : parameter 'entries' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'gtk_key_snooper_install' : parameter 'snooper' of type 'KeySnoopFunc' not supported
 
@@ -2188,7 +2246,37 @@ func PaperSizeGetPaperSizes(includeCustom bool) *glib.List {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_parse_args' : parameter 'argv' of type 'nil' not supported
+var parseArgsFunction *gi.Function
+var parseArgsFunction_Once sync.Once
+
+func parseArgsFunction_Set() error {
+	var err error
+	parseArgsFunction_Once.Do(func() {
+		parseArgsFunction, err = gi.FunctionInvokerNew("Gtk", "parse_args")
+	})
+	return err
+}
+
+// ParseArgs is a representation of the C type gtk_parse_args.
+func ParseArgs(argv []string) (bool, int32, []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetInt32(int32(len(argv)))
+	inArgs[1].SetStringArray(argv)
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := parseArgsFunction_Set()
+	if err == nil {
+		ret = parseArgsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].StringArray(true)
+
+	return retGo, out0, out1
+}
 
 var printErrorQuarkFunction *gi.Function
 var printErrorQuarkFunction_Once sync.Once
@@ -4033,7 +4121,7 @@ func TestFindWidget(widget *Widget, labelPattern string, widgetType int64) *Widg
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_test_init' : parameter 'argvp' of type 'nil' not supported
+// UNSUPPORTED : C value 'gtk_test_init' : parameter '...' of type 'nil' not supported
 
 var testListAllTypesFunction *gi.Function
 var testListAllTypesFunction_Once sync.Once
