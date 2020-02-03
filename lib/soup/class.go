@@ -6974,7 +6974,7 @@ func (recv *Server) AddWebsocketExtension(extensionType int64) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_server_add_websocket_handler' : parameter 'protocols' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_server_add_websocket_handler' : parameter 'callback' of type 'ServerWebsocketCallback' not supported
 
 var serverDisconnectFunction *gi.Function
 var serverDisconnectFunction_Once sync.Once
@@ -8634,7 +8634,7 @@ func (recv *Session) UnpauseMessage(msg *Message) {
 	return
 }
 
-// UNSUPPORTED : C value 'soup_session_websocket_connect_async' : parameter 'protocols' of type 'nil' not supported
+// UNSUPPORTED : C value 'soup_session_websocket_connect_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
 var sessionWebsocketConnectFinishFunction *gi.Function
 var sessionWebsocketConnectFinishFunction_Once sync.Once

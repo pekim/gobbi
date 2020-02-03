@@ -1237,7 +1237,40 @@ func (recv *Value) SetFieldParent(value *gobject.Object) {
 
 // UNSUPPORTED : C value 'jsc_value_new_array_from_garray' : parameter 'array' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'jsc_value_new_array_from_strv' : parameter 'strv' of type 'nil' not supported
+var valueNewArrayFromStrvFunction *gi.Function
+var valueNewArrayFromStrvFunction_Once sync.Once
+
+func valueNewArrayFromStrvFunction_Set() error {
+	var err error
+	valueNewArrayFromStrvFunction_Once.Do(func() {
+		err = valueObject_Set()
+		if err != nil {
+			return
+		}
+		valueNewArrayFromStrvFunction, err = valueObject.InvokerNew("new_array_from_strv")
+	})
+	return err
+}
+
+// ValueNewArrayFromStrv is a representation of the C type jsc_value_new_array_from_strv.
+func ValueNewArrayFromStrv(context *Context, strv []string) *Value {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(context.Native())
+	inArgs[1].SetStringArray(strv)
+
+	var ret gi.Argument
+
+	err := valueNewArrayFromStrvFunction_Set()
+	if err == nil {
+		ret = valueNewArrayFromStrvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ValueNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var valueNewBooleanFunction *gi.Function
 var valueNewBooleanFunction_Once sync.Once

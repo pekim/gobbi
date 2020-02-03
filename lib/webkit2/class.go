@@ -4255,7 +4255,34 @@ func (recv *FileChooserRequest) GetSelectedFiles() {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_file_chooser_request_select_files' : parameter 'files' of type 'nil' not supported
+var fileChooserRequestSelectFilesFunction *gi.Function
+var fileChooserRequestSelectFilesFunction_Once sync.Once
+
+func fileChooserRequestSelectFilesFunction_Set() error {
+	var err error
+	fileChooserRequestSelectFilesFunction_Once.Do(func() {
+		err = fileChooserRequestObject_Set()
+		if err != nil {
+			return
+		}
+		fileChooserRequestSelectFilesFunction, err = fileChooserRequestObject.InvokerNew("select_files")
+	})
+	return err
+}
+
+// SelectFiles is a representation of the C type webkit_file_chooser_request_select_files.
+func (recv *FileChooserRequest) SelectFiles(files []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(files)
+
+	err := fileChooserRequestSelectFilesFunction_Set()
+	if err == nil {
+		fileChooserRequestSelectFilesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var findControllerObject *gi.Object
 var findControllerObject_Once sync.Once
@@ -4777,7 +4804,40 @@ func (recv *FormSubmissionRequest) GetTextFields() *glib.HashTable {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'webkit_form_submission_request_list_text_fields' : parameter 'field_names' of type 'nil' not supported
+var formSubmissionRequestListTextFieldsFunction *gi.Function
+var formSubmissionRequestListTextFieldsFunction_Once sync.Once
+
+func formSubmissionRequestListTextFieldsFunction_Set() error {
+	var err error
+	formSubmissionRequestListTextFieldsFunction_Once.Do(func() {
+		err = formSubmissionRequestObject_Set()
+		if err != nil {
+			return
+		}
+		formSubmissionRequestListTextFieldsFunction, err = formSubmissionRequestObject.InvokerNew("list_text_fields")
+	})
+	return err
+}
+
+// ListTextFields is a representation of the C type webkit_form_submission_request_list_text_fields.
+func (recv *FormSubmissionRequest) ListTextFields() (bool, []string, []string) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+
+	var outArgs [2]gi.Argument
+	var ret gi.Argument
+
+	err := formSubmissionRequestListTextFieldsFunction_Set()
+	if err == nil {
+		ret = formSubmissionRequestListTextFieldsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].StringArray(false)
+	out1 := outArgs[1].StringArray(false)
+
+	return retGo, out0, out1
+}
 
 var formSubmissionRequestSubmitFunction *gi.Function
 var formSubmissionRequestSubmitFunction_Once sync.Once
@@ -14563,7 +14623,34 @@ func (recv *WebContext) SetNetworkProxySettings(proxyMode NetworkProxyMode, prox
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_set_preferred_languages' : parameter 'languages' of type 'nil' not supported
+var webContextSetPreferredLanguagesFunction *gi.Function
+var webContextSetPreferredLanguagesFunction_Once sync.Once
+
+func webContextSetPreferredLanguagesFunction_Set() error {
+	var err error
+	webContextSetPreferredLanguagesFunction_Once.Do(func() {
+		err = webContextObject_Set()
+		if err != nil {
+			return
+		}
+		webContextSetPreferredLanguagesFunction, err = webContextObject.InvokerNew("set_preferred_languages")
+	})
+	return err
+}
+
+// SetPreferredLanguages is a representation of the C type webkit_web_context_set_preferred_languages.
+func (recv *WebContext) SetPreferredLanguages(languages []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(languages)
+
+	err := webContextSetPreferredLanguagesFunction_Set()
+	if err == nil {
+		webContextSetPreferredLanguagesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webContextSetProcessModelFunction *gi.Function
 var webContextSetProcessModelFunction_Once sync.Once
@@ -14652,7 +14739,34 @@ func (recv *WebContext) SetSpellCheckingEnabled(enabled bool) {
 	return
 }
 
-// UNSUPPORTED : C value 'webkit_web_context_set_spell_checking_languages' : parameter 'languages' of type 'nil' not supported
+var webContextSetSpellCheckingLanguagesFunction *gi.Function
+var webContextSetSpellCheckingLanguagesFunction_Once sync.Once
+
+func webContextSetSpellCheckingLanguagesFunction_Set() error {
+	var err error
+	webContextSetSpellCheckingLanguagesFunction_Once.Do(func() {
+		err = webContextObject_Set()
+		if err != nil {
+			return
+		}
+		webContextSetSpellCheckingLanguagesFunction, err = webContextObject.InvokerNew("set_spell_checking_languages")
+	})
+	return err
+}
+
+// SetSpellCheckingLanguages is a representation of the C type webkit_web_context_set_spell_checking_languages.
+func (recv *WebContext) SetSpellCheckingLanguages(languages []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(languages)
+
+	err := webContextSetSpellCheckingLanguagesFunction_Set()
+	if err == nil {
+		webContextSetSpellCheckingLanguagesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var webContextSetTlsErrorsPolicyFunction *gi.Function
 var webContextSetTlsErrorsPolicyFunction_Once sync.Once

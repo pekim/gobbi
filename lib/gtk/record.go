@@ -33386,7 +33386,38 @@ func (recv *SelectionData) SetText(str string, len int32) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_selection_data_set_uris' : parameter 'uris' of type 'nil' not supported
+var selectionDataSetUrisFunction *gi.Function
+var selectionDataSetUrisFunction_Once sync.Once
+
+func selectionDataSetUrisFunction_Set() error {
+	var err error
+	selectionDataSetUrisFunction_Once.Do(func() {
+		err = selectionDataStruct_Set()
+		if err != nil {
+			return
+		}
+		selectionDataSetUrisFunction, err = selectionDataStruct.InvokerNew("set_uris")
+	})
+	return err
+}
+
+// SetUris is a representation of the C type gtk_selection_data_set_uris.
+func (recv *SelectionData) SetUris(uris []string) bool {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(uris)
+
+	var ret gi.Argument
+
+	err := selectionDataSetUrisFunction_Set()
+	if err == nil {
+		ret = selectionDataSetUrisFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var selectionDataTargetsIncludeImageFunction *gi.Function
 var selectionDataTargetsIncludeImageFunction_Once sync.Once

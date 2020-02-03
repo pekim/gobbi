@@ -18,7 +18,7 @@ func (a *Argument) generateValue(g *jen.Group, argName *jen.Statement, argVar *j
 		return
 	}
 
-	if a.Array != nil && strings.HasSuffix(a.Array.CType, "char***") {
+	if a.Array != nil && a.Array.Type.isString() {
 		g.Add(argName).Op(":=").Add(argVar).Dot("StringArray").Call(jen.Lit(*a.transferOwnership()))
 		return
 	}
@@ -80,7 +80,7 @@ func (a Argument) generateReturnDeclaration(g *jen.Group) {
 		return
 	}
 
-	if a.Array != nil && strings.HasSuffix(a.Array.CType, "char***") {
+	if a.Array != nil && a.Array.Type != nil && a.Array.Type.isString() {
 		g.Index().String()
 		return
 	}

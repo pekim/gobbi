@@ -67,7 +67,7 @@ func (p *Parameter) generateInDeclaration(g *jen.Group) {
 		return
 	}
 
-	if p.Array != nil && strings.HasSuffix(p.Array.CType, "char***") {
+	if p.Array != nil && p.Array.Type.isString() {
 		g.Id(p.goVarName).Index().String()
 		return
 	}
@@ -103,7 +103,7 @@ func (p Parameter) generateInArg(g *jen.Group, index int) {
 		return
 	}
 
-	if p.Array != nil && strings.HasSuffix(p.Array.CType, "char***") {
+	if p.Array != nil && p.Array.Type.isString() {
 		g.
 			Id("inArgs").
 			Index(jen.Lit(index)).

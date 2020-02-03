@@ -153,7 +153,35 @@ func AboutDialogNew() *AboutDialog {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_about_dialog_add_credit_section' : parameter 'people' of type 'nil' not supported
+var aboutDialogAddCreditSectionFunction *gi.Function
+var aboutDialogAddCreditSectionFunction_Once sync.Once
+
+func aboutDialogAddCreditSectionFunction_Set() error {
+	var err error
+	aboutDialogAddCreditSectionFunction_Once.Do(func() {
+		err = aboutDialogObject_Set()
+		if err != nil {
+			return
+		}
+		aboutDialogAddCreditSectionFunction, err = aboutDialogObject.InvokerNew("add_credit_section")
+	})
+	return err
+}
+
+// AddCreditSection is a representation of the C type gtk_about_dialog_add_credit_section.
+func (recv *AboutDialog) AddCreditSection(sectionName string, people []string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(sectionName)
+	inArgs[2].SetStringArray(people)
+
+	err := aboutDialogAddCreditSectionFunction_Set()
+	if err == nil {
+		aboutDialogAddCreditSectionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var aboutDialogGetArtistsFunction *gi.Function
 var aboutDialogGetArtistsFunction_Once sync.Once
@@ -623,9 +651,63 @@ func (recv *AboutDialog) GetWrapLicense() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_about_dialog_set_artists' : parameter 'artists' of type 'nil' not supported
+var aboutDialogSetArtistsFunction *gi.Function
+var aboutDialogSetArtistsFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_about_dialog_set_authors' : parameter 'authors' of type 'nil' not supported
+func aboutDialogSetArtistsFunction_Set() error {
+	var err error
+	aboutDialogSetArtistsFunction_Once.Do(func() {
+		err = aboutDialogObject_Set()
+		if err != nil {
+			return
+		}
+		aboutDialogSetArtistsFunction, err = aboutDialogObject.InvokerNew("set_artists")
+	})
+	return err
+}
+
+// SetArtists is a representation of the C type gtk_about_dialog_set_artists.
+func (recv *AboutDialog) SetArtists(artists []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(artists)
+
+	err := aboutDialogSetArtistsFunction_Set()
+	if err == nil {
+		aboutDialogSetArtistsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var aboutDialogSetAuthorsFunction *gi.Function
+var aboutDialogSetAuthorsFunction_Once sync.Once
+
+func aboutDialogSetAuthorsFunction_Set() error {
+	var err error
+	aboutDialogSetAuthorsFunction_Once.Do(func() {
+		err = aboutDialogObject_Set()
+		if err != nil {
+			return
+		}
+		aboutDialogSetAuthorsFunction, err = aboutDialogObject.InvokerNew("set_authors")
+	})
+	return err
+}
+
+// SetAuthors is a representation of the C type gtk_about_dialog_set_authors.
+func (recv *AboutDialog) SetAuthors(authors []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(authors)
+
+	err := aboutDialogSetAuthorsFunction_Set()
+	if err == nil {
+		aboutDialogSetAuthorsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var aboutDialogSetCommentsFunction *gi.Function
 var aboutDialogSetCommentsFunction_Once sync.Once
@@ -685,7 +767,34 @@ func (recv *AboutDialog) SetCopyright(copyright string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_about_dialog_set_documenters' : parameter 'documenters' of type 'nil' not supported
+var aboutDialogSetDocumentersFunction *gi.Function
+var aboutDialogSetDocumentersFunction_Once sync.Once
+
+func aboutDialogSetDocumentersFunction_Set() error {
+	var err error
+	aboutDialogSetDocumentersFunction_Once.Do(func() {
+		err = aboutDialogObject_Set()
+		if err != nil {
+			return
+		}
+		aboutDialogSetDocumentersFunction, err = aboutDialogObject.InvokerNew("set_documenters")
+	})
+	return err
+}
+
+// SetDocumenters is a representation of the C type gtk_about_dialog_set_documenters.
+func (recv *AboutDialog) SetDocumenters(documenters []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(documenters)
+
+	err := aboutDialogSetDocumentersFunction_Set()
+	if err == nil {
+		aboutDialogSetDocumentersFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var aboutDialogSetLicenseFunction *gi.Function
 var aboutDialogSetLicenseFunction_Once sync.Once
@@ -6975,7 +7084,35 @@ func (recv *Application) RemoveWindow(window *Window) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_application_set_accels_for_action' : parameter 'accels' of type 'nil' not supported
+var applicationSetAccelsForActionFunction *gi.Function
+var applicationSetAccelsForActionFunction_Once sync.Once
+
+func applicationSetAccelsForActionFunction_Set() error {
+	var err error
+	applicationSetAccelsForActionFunction_Once.Do(func() {
+		err = applicationObject_Set()
+		if err != nil {
+			return
+		}
+		applicationSetAccelsForActionFunction, err = applicationObject.InvokerNew("set_accels_for_action")
+	})
+	return err
+}
+
+// SetAccelsForAction is a representation of the C type gtk_application_set_accels_for_action.
+func (recv *Application) SetAccelsForAction(detailedActionName string, accels []string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(detailedActionName)
+	inArgs[2].SetStringArray(accels)
+
+	err := applicationSetAccelsForActionFunction_Set()
+	if err == nil {
+		applicationSetAccelsForActionFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var applicationSetAppMenuFunction *gi.Function
 var applicationSetAppMenuFunction_Once sync.Once
@@ -10063,11 +10200,108 @@ func (recv *Builder) AddFromString(buffer string, length uint64) uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_builder_add_objects_from_file' : parameter 'object_ids' of type 'nil' not supported
+var builderAddObjectsFromFileFunction *gi.Function
+var builderAddObjectsFromFileFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_builder_add_objects_from_resource' : parameter 'object_ids' of type 'nil' not supported
+func builderAddObjectsFromFileFunction_Set() error {
+	var err error
+	builderAddObjectsFromFileFunction_Once.Do(func() {
+		err = builderObject_Set()
+		if err != nil {
+			return
+		}
+		builderAddObjectsFromFileFunction, err = builderObject.InvokerNew("add_objects_from_file")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gtk_builder_add_objects_from_string' : parameter 'object_ids' of type 'nil' not supported
+// AddObjectsFromFile is a representation of the C type gtk_builder_add_objects_from_file.
+func (recv *Builder) AddObjectsFromFile(filename string, objectIds []string) uint32 {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(filename)
+	inArgs[2].SetStringArray(objectIds)
+
+	var ret gi.Argument
+
+	err := builderAddObjectsFromFileFunction_Set()
+	if err == nil {
+		ret = builderAddObjectsFromFileFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var builderAddObjectsFromResourceFunction *gi.Function
+var builderAddObjectsFromResourceFunction_Once sync.Once
+
+func builderAddObjectsFromResourceFunction_Set() error {
+	var err error
+	builderAddObjectsFromResourceFunction_Once.Do(func() {
+		err = builderObject_Set()
+		if err != nil {
+			return
+		}
+		builderAddObjectsFromResourceFunction, err = builderObject.InvokerNew("add_objects_from_resource")
+	})
+	return err
+}
+
+// AddObjectsFromResource is a representation of the C type gtk_builder_add_objects_from_resource.
+func (recv *Builder) AddObjectsFromResource(resourcePath string, objectIds []string) uint32 {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(resourcePath)
+	inArgs[2].SetStringArray(objectIds)
+
+	var ret gi.Argument
+
+	err := builderAddObjectsFromResourceFunction_Set()
+	if err == nil {
+		ret = builderAddObjectsFromResourceFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
+
+var builderAddObjectsFromStringFunction *gi.Function
+var builderAddObjectsFromStringFunction_Once sync.Once
+
+func builderAddObjectsFromStringFunction_Set() error {
+	var err error
+	builderAddObjectsFromStringFunction_Once.Do(func() {
+		err = builderObject_Set()
+		if err != nil {
+			return
+		}
+		builderAddObjectsFromStringFunction, err = builderObject.InvokerNew("add_objects_from_string")
+	})
+	return err
+}
+
+// AddObjectsFromString is a representation of the C type gtk_builder_add_objects_from_string.
+func (recv *Builder) AddObjectsFromString(buffer string, length uint64, objectIds []string) uint32 {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(buffer)
+	inArgs[2].SetUint64(length)
+	inArgs[3].SetStringArray(objectIds)
+
+	var ret gi.Argument
+
+	err := builderAddObjectsFromStringFunction_Set()
+	if err == nil {
+		ret = builderAddObjectsFromStringFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Uint32()
+
+	return retGo
+}
 
 var builderConnectSignalsFunction *gi.Function
 var builderConnectSignalsFunction_Once sync.Once
@@ -45064,9 +45298,76 @@ func (recv *IconTheme) AppendSearchPath(path string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_theme_choose_icon' : parameter 'icon_names' of type 'nil' not supported
+var iconThemeChooseIconFunction *gi.Function
+var iconThemeChooseIconFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gtk_icon_theme_choose_icon_for_scale' : parameter 'icon_names' of type 'nil' not supported
+func iconThemeChooseIconFunction_Set() error {
+	var err error
+	iconThemeChooseIconFunction_Once.Do(func() {
+		err = iconThemeObject_Set()
+		if err != nil {
+			return
+		}
+		iconThemeChooseIconFunction, err = iconThemeObject.InvokerNew("choose_icon")
+	})
+	return err
+}
+
+// ChooseIcon is a representation of the C type gtk_icon_theme_choose_icon.
+func (recv *IconTheme) ChooseIcon(iconNames []string, size int32, flags IconLookupFlags) *IconInfo {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(iconNames)
+	inArgs[2].SetInt32(size)
+	inArgs[3].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := iconThemeChooseIconFunction_Set()
+	if err == nil {
+		ret = iconThemeChooseIconFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var iconThemeChooseIconForScaleFunction *gi.Function
+var iconThemeChooseIconForScaleFunction_Once sync.Once
+
+func iconThemeChooseIconForScaleFunction_Set() error {
+	var err error
+	iconThemeChooseIconForScaleFunction_Once.Do(func() {
+		err = iconThemeObject_Set()
+		if err != nil {
+			return
+		}
+		iconThemeChooseIconForScaleFunction, err = iconThemeObject.InvokerNew("choose_icon_for_scale")
+	})
+	return err
+}
+
+// ChooseIconForScale is a representation of the C type gtk_icon_theme_choose_icon_for_scale.
+func (recv *IconTheme) ChooseIconForScale(iconNames []string, size int32, scale int32, flags IconLookupFlags) *IconInfo {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(iconNames)
+	inArgs[2].SetInt32(size)
+	inArgs[3].SetInt32(scale)
+	inArgs[4].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := iconThemeChooseIconForScaleFunction_Set()
+	if err == nil {
+		ret = iconThemeChooseIconForScaleFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := IconInfoNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var iconThemeGetExampleIconNameFunction *gi.Function
 var iconThemeGetExampleIconNameFunction_Once sync.Once
@@ -45629,7 +45930,35 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_icon_theme_set_search_path' : parameter 'path' of type 'nil' not supported
+var iconThemeSetSearchPathFunction *gi.Function
+var iconThemeSetSearchPathFunction_Once sync.Once
+
+func iconThemeSetSearchPathFunction_Set() error {
+	var err error
+	iconThemeSetSearchPathFunction_Once.Do(func() {
+		err = iconThemeObject_Set()
+		if err != nil {
+			return
+		}
+		iconThemeSetSearchPathFunction, err = iconThemeObject.InvokerNew("set_search_path")
+	})
+	return err
+}
+
+// SetSearchPath is a representation of the C type gtk_icon_theme_set_search_path.
+func (recv *IconTheme) SetSearchPath(path []string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(path)
+	inArgs[2].SetInt32(int32(len(path)))
+
+	err := iconThemeSetSearchPathFunction_Set()
+	if err == nil {
+		iconThemeSetSearchPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 /*
 ConnectChanged connects a callback to the 'changed' signal of the IconTheme.
@@ -79420,7 +79749,41 @@ func (recv *ScaleButton) SetFieldParent(value *Button) {
 	gi.ObjectFieldSet(scaleButtonObject, recv.Native(), "parent", argValue)
 }
 
-// UNSUPPORTED : C value 'gtk_scale_button_new' : parameter 'icons' of type 'nil' not supported
+var scaleButtonNewFunction *gi.Function
+var scaleButtonNewFunction_Once sync.Once
+
+func scaleButtonNewFunction_Set() error {
+	var err error
+	scaleButtonNewFunction_Once.Do(func() {
+		err = scaleButtonObject_Set()
+		if err != nil {
+			return
+		}
+		scaleButtonNewFunction, err = scaleButtonObject.InvokerNew("new")
+	})
+	return err
+}
+
+// ScaleButtonNew is a representation of the C type gtk_scale_button_new.
+func ScaleButtonNew(size IconSize, min float64, max float64, step float64, icons []string) *ScaleButton {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetInt32(int32(size))
+	inArgs[1].SetFloat64(min)
+	inArgs[2].SetFloat64(max)
+	inArgs[3].SetFloat64(step)
+	inArgs[4].SetStringArray(icons)
+
+	var ret gi.Argument
+
+	err := scaleButtonNewFunction_Set()
+	if err == nil {
+		ret = scaleButtonNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ScaleButtonNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var scaleButtonGetAdjustmentFunction *gi.Function
 var scaleButtonGetAdjustmentFunction_Once sync.Once
@@ -79611,7 +79974,34 @@ func (recv *ScaleButton) SetAdjustment(adjustment *Adjustment) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_scale_button_set_icons' : parameter 'icons' of type 'nil' not supported
+var scaleButtonSetIconsFunction *gi.Function
+var scaleButtonSetIconsFunction_Once sync.Once
+
+func scaleButtonSetIconsFunction_Set() error {
+	var err error
+	scaleButtonSetIconsFunction_Once.Do(func() {
+		err = scaleButtonObject_Set()
+		if err != nil {
+			return
+		}
+		scaleButtonSetIconsFunction, err = scaleButtonObject.InvokerNew("set_icons")
+	})
+	return err
+}
+
+// SetIcons is a representation of the C type gtk_scale_button_set_icons.
+func (recv *ScaleButton) SetIcons(icons []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(icons)
+
+	err := scaleButtonSetIconsFunction_Set()
+	if err == nil {
+		scaleButtonSetIconsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var scaleButtonSetValueFunction *gi.Function
 var scaleButtonSetValueFunction_Once sync.Once

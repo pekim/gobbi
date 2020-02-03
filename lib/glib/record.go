@@ -1817,7 +1817,36 @@ func (recv *BookmarkFile) SetDescription(uri string, description string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_bookmark_file_set_groups' : parameter 'groups' of type 'nil' not supported
+var bookmarkFileSetGroupsFunction *gi.Function
+var bookmarkFileSetGroupsFunction_Once sync.Once
+
+func bookmarkFileSetGroupsFunction_Set() error {
+	var err error
+	bookmarkFileSetGroupsFunction_Once.Do(func() {
+		err = bookmarkFileStruct_Set()
+		if err != nil {
+			return
+		}
+		bookmarkFileSetGroupsFunction, err = bookmarkFileStruct.InvokerNew("set_groups")
+	})
+	return err
+}
+
+// SetGroups is a representation of the C type g_bookmark_file_set_groups.
+func (recv *BookmarkFile) SetGroups(uri string, groups []string) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(uri)
+	inArgs[2].SetStringArray(groups)
+	inArgs[3].SetUint64(uint64(len(groups)))
+
+	err := bookmarkFileSetGroupsFunction_Set()
+	if err == nil {
+		bookmarkFileSetGroupsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var bookmarkFileSetIconFunction *gi.Function
 var bookmarkFileSetIconFunction_Once sync.Once
@@ -9134,7 +9163,42 @@ func (recv *KeyFile) LoadFromDataDirs(file string, flags KeyFileFlags) (bool, st
 	return retGo, out0
 }
 
-// UNSUPPORTED : C value 'g_key_file_load_from_dirs' : parameter 'search_dirs' of type 'nil' not supported
+var keyFileLoadFromDirsFunction *gi.Function
+var keyFileLoadFromDirsFunction_Once sync.Once
+
+func keyFileLoadFromDirsFunction_Set() error {
+	var err error
+	keyFileLoadFromDirsFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileLoadFromDirsFunction, err = keyFileStruct.InvokerNew("load_from_dirs")
+	})
+	return err
+}
+
+// LoadFromDirs is a representation of the C type g_key_file_load_from_dirs.
+func (recv *KeyFile) LoadFromDirs(file string, searchDirs []string, flags KeyFileFlags) (bool, string) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(file)
+	inArgs[2].SetStringArray(searchDirs)
+	inArgs[3].SetInt32(int32(flags))
+
+	var outArgs [1]gi.Argument
+	var ret gi.Argument
+
+	err := keyFileLoadFromDirsFunction_Set()
+	if err == nil {
+		ret = keyFileLoadFromDirsFunction.Invoke(inArgs[:], outArgs[:])
+	}
+
+	retGo := ret.Boolean()
+	out0 := outArgs[0].String(true)
+
+	return retGo, out0
+}
 
 var keyFileLoadFromFileFunction *gi.Function
 var keyFileLoadFromFileFunction_Once sync.Once
@@ -9562,7 +9626,38 @@ func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string
 	return
 }
 
-// UNSUPPORTED : C value 'g_key_file_set_locale_string_list' : parameter 'list' of type 'nil' not supported
+var keyFileSetLocaleStringListFunction *gi.Function
+var keyFileSetLocaleStringListFunction_Once sync.Once
+
+func keyFileSetLocaleStringListFunction_Set() error {
+	var err error
+	keyFileSetLocaleStringListFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileSetLocaleStringListFunction, err = keyFileStruct.InvokerNew("set_locale_string_list")
+	})
+	return err
+}
+
+// SetLocaleStringList is a representation of the C type g_key_file_set_locale_string_list.
+func (recv *KeyFile) SetLocaleStringList(groupName string, key string, locale string, list []string) {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+	inArgs[3].SetString(locale)
+	inArgs[4].SetStringArray(list)
+	inArgs[5].SetUint64(uint64(len(list)))
+
+	err := keyFileSetLocaleStringListFunction_Set()
+	if err == nil {
+		keyFileSetLocaleStringListFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var keyFileSetStringFunction *gi.Function
 var keyFileSetStringFunction_Once sync.Once
@@ -9595,7 +9690,37 @@ func (recv *KeyFile) SetString(groupName string, key string, string_ string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_key_file_set_string_list' : parameter 'list' of type 'nil' not supported
+var keyFileSetStringListFunction *gi.Function
+var keyFileSetStringListFunction_Once sync.Once
+
+func keyFileSetStringListFunction_Set() error {
+	var err error
+	keyFileSetStringListFunction_Once.Do(func() {
+		err = keyFileStruct_Set()
+		if err != nil {
+			return
+		}
+		keyFileSetStringListFunction, err = keyFileStruct.InvokerNew("set_string_list")
+	})
+	return err
+}
+
+// SetStringList is a representation of the C type g_key_file_set_string_list.
+func (recv *KeyFile) SetStringList(groupName string, key string, list []string) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(groupName)
+	inArgs[2].SetString(key)
+	inArgs[3].SetStringArray(list)
+	inArgs[4].SetUint64(uint64(len(list)))
+
+	err := keyFileSetStringListFunction_Set()
+	if err == nil {
+		keyFileSetStringListFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var keyFileSetUint64Function *gi.Function
 var keyFileSetUint64Function_Once sync.Once
@@ -23019,7 +23144,38 @@ func VariantNewBytestring(string_ string) *Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_new_bytestring_array' : parameter 'strv' of type 'nil' not supported
+var variantNewBytestringArrayFunction *gi.Function
+var variantNewBytestringArrayFunction_Once sync.Once
+
+func variantNewBytestringArrayFunction_Set() error {
+	var err error
+	variantNewBytestringArrayFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantNewBytestringArrayFunction, err = variantStruct.InvokerNew("new_bytestring_array")
+	})
+	return err
+}
+
+// VariantNewBytestringArray is a representation of the C type g_variant_new_bytestring_array.
+func VariantNewBytestringArray(strv []string) *Variant {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetStringArray(strv)
+	inArgs[1].SetInt32(int32(len(strv)))
+
+	var ret gi.Argument
+
+	err := variantNewBytestringArrayFunction_Set()
+	if err == nil {
+		ret = variantNewBytestringArrayFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var variantNewDictEntryFunction *gi.Function
 var variantNewDictEntryFunction_Once sync.Once
@@ -23350,7 +23506,38 @@ func VariantNewObjectPath(objectPath string) *Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_new_objv' : parameter 'strv' of type 'nil' not supported
+var variantNewObjvFunction *gi.Function
+var variantNewObjvFunction_Once sync.Once
+
+func variantNewObjvFunction_Set() error {
+	var err error
+	variantNewObjvFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantNewObjvFunction, err = variantStruct.InvokerNew("new_objv")
+	})
+	return err
+}
+
+// VariantNewObjv is a representation of the C type g_variant_new_objv.
+func VariantNewObjv(strv []string) *Variant {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetStringArray(strv)
+	inArgs[1].SetInt32(int32(len(strv)))
+
+	var ret gi.Argument
+
+	err := variantNewObjvFunction_Set()
+	if err == nil {
+		ret = variantNewObjvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_variant_new_parsed' : parameter '...' of type 'nil' not supported
 
@@ -23422,7 +23609,38 @@ func VariantNewString(string_ string) *Variant {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_variant_new_strv' : parameter 'strv' of type 'nil' not supported
+var variantNewStrvFunction *gi.Function
+var variantNewStrvFunction_Once sync.Once
+
+func variantNewStrvFunction_Set() error {
+	var err error
+	variantNewStrvFunction_Once.Do(func() {
+		err = variantStruct_Set()
+		if err != nil {
+			return
+		}
+		variantNewStrvFunction, err = variantStruct.InvokerNew("new_strv")
+	})
+	return err
+}
+
+// VariantNewStrv is a representation of the C type g_variant_new_strv.
+func VariantNewStrv(strv []string) *Variant {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetStringArray(strv)
+	inArgs[1].SetInt32(int32(len(strv)))
+
+	var ret gi.Argument
+
+	err := variantNewStrvFunction_Set()
+	if err == nil {
+		ret = variantNewStrvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := VariantNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var variantNewTakeStringFunction *gi.Function
 var variantNewTakeStringFunction_Once sync.Once

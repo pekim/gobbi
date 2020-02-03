@@ -440,7 +440,39 @@ func PixbufNewFromStreamFinish(asyncResult *gio.AsyncResult) *Pixbuf {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_pixbuf_new_from_xpm_data' : parameter 'data' of type 'nil' not supported
+var pixbufNewFromXpmDataFunction *gi.Function
+var pixbufNewFromXpmDataFunction_Once sync.Once
+
+func pixbufNewFromXpmDataFunction_Set() error {
+	var err error
+	pixbufNewFromXpmDataFunction_Once.Do(func() {
+		err = pixbufObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufNewFromXpmDataFunction, err = pixbufObject.InvokerNew("new_from_xpm_data")
+	})
+	return err
+}
+
+// PixbufNewFromXpmData is a representation of the C type gdk_pixbuf_new_from_xpm_data.
+func PixbufNewFromXpmData(data []string) *Pixbuf {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetStringArray(data)
+
+	var ret gi.Argument
+
+	err := pixbufNewFromXpmDataFunction_Set()
+	if err == nil {
+		ret = pixbufNewFromXpmDataFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := PixbufNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var pixbufAddAlphaFunction *gi.Function
 var pixbufAddAlphaFunction_Once sync.Once
@@ -1418,11 +1450,80 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 
 // UNSUPPORTED : C value 'gdk_pixbuf_save_to_stream_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
 
-// UNSUPPORTED : C value 'gdk_pixbuf_save_to_streamv' : parameter 'option_keys' of type 'nil' not supported
+var pixbufSaveToStreamvFunction *gi.Function
+var pixbufSaveToStreamvFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'gdk_pixbuf_save_to_streamv_async' : parameter 'option_keys' of type 'nil' not supported
+func pixbufSaveToStreamvFunction_Set() error {
+	var err error
+	pixbufSaveToStreamvFunction_Once.Do(func() {
+		err = pixbufObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufSaveToStreamvFunction, err = pixbufObject.InvokerNew("save_to_streamv")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'gdk_pixbuf_savev' : parameter 'option_keys' of type 'nil' not supported
+// SaveToStreamv is a representation of the C type gdk_pixbuf_save_to_streamv.
+func (recv *Pixbuf) SaveToStreamv(stream *gio.OutputStream, type_ string, optionKeys []string, optionValues []string, cancellable *gio.Cancellable) bool {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetPointer(stream.Native())
+	inArgs[2].SetString(type_)
+	inArgs[3].SetStringArray(optionKeys)
+	inArgs[4].SetStringArray(optionValues)
+	inArgs[5].SetPointer(cancellable.Native())
+
+	var ret gi.Argument
+
+	err := pixbufSaveToStreamvFunction_Set()
+	if err == nil {
+		ret = pixbufSaveToStreamvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'gdk_pixbuf_save_to_streamv_async' : parameter 'callback' of type 'Gio.AsyncReadyCallback' not supported
+
+var pixbufSavevFunction *gi.Function
+var pixbufSavevFunction_Once sync.Once
+
+func pixbufSavevFunction_Set() error {
+	var err error
+	pixbufSavevFunction_Once.Do(func() {
+		err = pixbufObject_Set()
+		if err != nil {
+			return
+		}
+		pixbufSavevFunction, err = pixbufObject.InvokerNew("savev")
+	})
+	return err
+}
+
+// Savev is a representation of the C type gdk_pixbuf_savev.
+func (recv *Pixbuf) Savev(filename string, type_ string, optionKeys []string, optionValues []string) bool {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(filename)
+	inArgs[2].SetString(type_)
+	inArgs[3].SetStringArray(optionKeys)
+	inArgs[4].SetStringArray(optionValues)
+
+	var ret gi.Argument
+
+	err := pixbufSavevFunction_Set()
+	if err == nil {
+		ret = pixbufSavevFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var pixbufScaleFunction *gi.Function
 var pixbufScaleFunction_Once sync.Once

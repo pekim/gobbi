@@ -2521,7 +2521,37 @@ func (recv *FileChooser) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_file_chooser_add_choice' : parameter 'options' of type 'nil' not supported
+var fileChooserAddChoiceFunction *gi.Function
+var fileChooserAddChoiceFunction_Once sync.Once
+
+func fileChooserAddChoiceFunction_Set() error {
+	var err error
+	fileChooserAddChoiceFunction_Once.Do(func() {
+		err = fileChooserInterface_Set()
+		if err != nil {
+			return
+		}
+		fileChooserAddChoiceFunction, err = fileChooserInterface.InvokerNew("add_choice")
+	})
+	return err
+}
+
+// AddChoice is a representation of the C type gtk_file_chooser_add_choice.
+func (recv *FileChooser) AddChoice(id string, label string, options []string, optionLabels []string) {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(id)
+	inArgs[2].SetString(label)
+	inArgs[3].SetStringArray(options)
+	inArgs[4].SetStringArray(optionLabels)
+
+	err := fileChooserAddChoiceFunction_Set()
+	if err == nil {
+		fileChooserAddChoiceFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fileChooserAddFilterFunction *gi.Function
 var fileChooserAddFilterFunction_Once sync.Once

@@ -4551,7 +4551,38 @@ func (recv *NetworkProxySettings) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'webkit_network_proxy_settings_new' : parameter 'ignore_hosts' of type 'nil' not supported
+var networkProxySettingsNewFunction *gi.Function
+var networkProxySettingsNewFunction_Once sync.Once
+
+func networkProxySettingsNewFunction_Set() error {
+	var err error
+	networkProxySettingsNewFunction_Once.Do(func() {
+		err = networkProxySettingsStruct_Set()
+		if err != nil {
+			return
+		}
+		networkProxySettingsNewFunction, err = networkProxySettingsStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// NetworkProxySettingsNew is a representation of the C type webkit_network_proxy_settings_new.
+func NetworkProxySettingsNew(defaultProxyUri string, ignoreHosts []string) *NetworkProxySettings {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(defaultProxyUri)
+	inArgs[1].SetStringArray(ignoreHosts)
+
+	var ret gi.Argument
+
+	err := networkProxySettingsNewFunction_Set()
+	if err == nil {
+		ret = networkProxySettingsNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := NetworkProxySettingsNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var networkProxySettingsAddProxyForSchemeFunction *gi.Function
 var networkProxySettingsAddProxyForSchemeFunction_Once sync.Once
@@ -8229,9 +8260,78 @@ func (recv *UserScript) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'webkit_user_script_new' : parameter 'whitelist' of type 'nil' not supported
+var userScriptNewFunction *gi.Function
+var userScriptNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_user_script_new_for_world' : parameter 'whitelist' of type 'nil' not supported
+func userScriptNewFunction_Set() error {
+	var err error
+	userScriptNewFunction_Once.Do(func() {
+		err = userScriptStruct_Set()
+		if err != nil {
+			return
+		}
+		userScriptNewFunction, err = userScriptStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// UserScriptNew is a representation of the C type webkit_user_script_new.
+func UserScriptNew(source string, injectedFrames UserContentInjectedFrames, injectionTime UserScriptInjectionTime, whitelist []string, blacklist []string) *UserScript {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(source)
+	inArgs[1].SetInt32(int32(injectedFrames))
+	inArgs[2].SetInt32(int32(injectionTime))
+	inArgs[3].SetStringArray(whitelist)
+	inArgs[4].SetStringArray(blacklist)
+
+	var ret gi.Argument
+
+	err := userScriptNewFunction_Set()
+	if err == nil {
+		ret = userScriptNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := UserScriptNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var userScriptNewForWorldFunction *gi.Function
+var userScriptNewForWorldFunction_Once sync.Once
+
+func userScriptNewForWorldFunction_Set() error {
+	var err error
+	userScriptNewForWorldFunction_Once.Do(func() {
+		err = userScriptStruct_Set()
+		if err != nil {
+			return
+		}
+		userScriptNewForWorldFunction, err = userScriptStruct.InvokerNew("new_for_world")
+	})
+	return err
+}
+
+// UserScriptNewForWorld is a representation of the C type webkit_user_script_new_for_world.
+func UserScriptNewForWorld(source string, injectedFrames UserContentInjectedFrames, injectionTime UserScriptInjectionTime, worldName string, whitelist []string, blacklist []string) *UserScript {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetString(source)
+	inArgs[1].SetInt32(int32(injectedFrames))
+	inArgs[2].SetInt32(int32(injectionTime))
+	inArgs[3].SetString(worldName)
+	inArgs[4].SetStringArray(whitelist)
+	inArgs[5].SetStringArray(blacklist)
+
+	var ret gi.Argument
+
+	err := userScriptNewForWorldFunction_Set()
+	if err == nil {
+		ret = userScriptNewForWorldFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := UserScriptNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var userScriptRefFunction *gi.Function
 var userScriptRefFunction_Once sync.Once
@@ -8337,9 +8437,78 @@ func (recv *UserStyleSheet) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'webkit_user_style_sheet_new' : parameter 'whitelist' of type 'nil' not supported
+var userStyleSheetNewFunction *gi.Function
+var userStyleSheetNewFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'webkit_user_style_sheet_new_for_world' : parameter 'whitelist' of type 'nil' not supported
+func userStyleSheetNewFunction_Set() error {
+	var err error
+	userStyleSheetNewFunction_Once.Do(func() {
+		err = userStyleSheetStruct_Set()
+		if err != nil {
+			return
+		}
+		userStyleSheetNewFunction, err = userStyleSheetStruct.InvokerNew("new")
+	})
+	return err
+}
+
+// UserStyleSheetNew is a representation of the C type webkit_user_style_sheet_new.
+func UserStyleSheetNew(source string, injectedFrames UserContentInjectedFrames, level UserStyleLevel, whitelist []string, blacklist []string) *UserStyleSheet {
+	var inArgs [5]gi.Argument
+	inArgs[0].SetString(source)
+	inArgs[1].SetInt32(int32(injectedFrames))
+	inArgs[2].SetInt32(int32(level))
+	inArgs[3].SetStringArray(whitelist)
+	inArgs[4].SetStringArray(blacklist)
+
+	var ret gi.Argument
+
+	err := userStyleSheetNewFunction_Set()
+	if err == nil {
+		ret = userStyleSheetNewFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := UserStyleSheetNewFromNative(ret.Pointer())
+
+	return retGo
+}
+
+var userStyleSheetNewForWorldFunction *gi.Function
+var userStyleSheetNewForWorldFunction_Once sync.Once
+
+func userStyleSheetNewForWorldFunction_Set() error {
+	var err error
+	userStyleSheetNewForWorldFunction_Once.Do(func() {
+		err = userStyleSheetStruct_Set()
+		if err != nil {
+			return
+		}
+		userStyleSheetNewForWorldFunction, err = userStyleSheetStruct.InvokerNew("new_for_world")
+	})
+	return err
+}
+
+// UserStyleSheetNewForWorld is a representation of the C type webkit_user_style_sheet_new_for_world.
+func UserStyleSheetNewForWorld(source string, injectedFrames UserContentInjectedFrames, level UserStyleLevel, worldName string, whitelist []string, blacklist []string) *UserStyleSheet {
+	var inArgs [6]gi.Argument
+	inArgs[0].SetString(source)
+	inArgs[1].SetInt32(int32(injectedFrames))
+	inArgs[2].SetInt32(int32(level))
+	inArgs[3].SetString(worldName)
+	inArgs[4].SetStringArray(whitelist)
+	inArgs[5].SetStringArray(blacklist)
+
+	var ret gi.Argument
+
+	err := userStyleSheetNewForWorldFunction_Set()
+	if err == nil {
+		ret = userStyleSheetNewForWorldFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := UserStyleSheetNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var userStyleSheetRefFunction *gi.Function
 var userStyleSheetRefFunction_Once sync.Once

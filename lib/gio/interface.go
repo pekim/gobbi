@@ -4501,7 +4501,34 @@ func (recv *DtlsConnection) HandshakeFinish(result *AsyncResult) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_dtls_connection_set_advertised_protocols' : parameter 'protocols' of type 'nil' not supported
+var dtlsConnectionSetAdvertisedProtocolsFunction *gi.Function
+var dtlsConnectionSetAdvertisedProtocolsFunction_Once sync.Once
+
+func dtlsConnectionSetAdvertisedProtocolsFunction_Set() error {
+	var err error
+	dtlsConnectionSetAdvertisedProtocolsFunction_Once.Do(func() {
+		err = dtlsConnectionInterface_Set()
+		if err != nil {
+			return
+		}
+		dtlsConnectionSetAdvertisedProtocolsFunction, err = dtlsConnectionInterface.InvokerNew("set_advertised_protocols")
+	})
+	return err
+}
+
+// SetAdvertisedProtocols is a representation of the C type g_dtls_connection_set_advertised_protocols.
+func (recv *DtlsConnection) SetAdvertisedProtocols(protocols []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(protocols)
+
+	err := dtlsConnectionSetAdvertisedProtocolsFunction_Set()
+	if err == nil {
+		dtlsConnectionSetAdvertisedProtocolsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var dtlsConnectionSetCertificateFunction *gi.Function
 var dtlsConnectionSetCertificateFunction_Once sync.Once

@@ -3028,7 +3028,29 @@ func RcScannerNew() *glib.Scanner {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_rc_set_default_files' : parameter 'filenames' of type 'nil' not supported
+var rcSetDefaultFilesFunction *gi.Function
+var rcSetDefaultFilesFunction_Once sync.Once
+
+func rcSetDefaultFilesFunction_Set() error {
+	var err error
+	rcSetDefaultFilesFunction_Once.Do(func() {
+		rcSetDefaultFilesFunction, err = gi.FunctionInvokerNew("Gtk", "rc_set_default_files")
+	})
+	return err
+}
+
+// RcSetDefaultFiles is a representation of the C type gtk_rc_set_default_files.
+func RcSetDefaultFiles(filenames []string) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetStringArray(filenames)
+
+	err := rcSetDefaultFilesFunction_Set()
+	if err == nil {
+		rcSetDefaultFilesFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var recentChooserErrorQuarkFunction *gi.Function
 var recentChooserErrorQuarkFunction_Once sync.Once

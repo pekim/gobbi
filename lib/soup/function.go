@@ -1443,9 +1443,33 @@ func ValueHashNew() *glib.HashTable {
 
 // UNSUPPORTED : C value 'soup_value_hash_new_with_vals' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake' : parameter 'protocols' of type 'nil' not supported
+var websocketClientPrepareHandshakeFunction *gi.Function
+var websocketClientPrepareHandshakeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake_with_extensions' : parameter 'protocols' of type 'nil' not supported
+func websocketClientPrepareHandshakeFunction_Set() error {
+	var err error
+	websocketClientPrepareHandshakeFunction_Once.Do(func() {
+		websocketClientPrepareHandshakeFunction, err = gi.FunctionInvokerNew("Soup", "websocket_client_prepare_handshake")
+	})
+	return err
+}
+
+// WebsocketClientPrepareHandshake is a representation of the C type soup_websocket_client_prepare_handshake.
+func WebsocketClientPrepareHandshake(msg *Message, origin string, protocols []string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(msg.Native())
+	inArgs[1].SetString(origin)
+	inArgs[2].SetStringArray(protocols)
+
+	err := websocketClientPrepareHandshakeFunction_Set()
+	if err == nil {
+		websocketClientPrepareHandshakeFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+// UNSUPPORTED : C value 'soup_websocket_client_prepare_handshake_with_extensions' : parameter 'supported_extensions' of type 'nil' not supported
 
 var websocketClientVerifyHandshakeFunction *gi.Function
 var websocketClientVerifyHandshakeFunction_Once sync.Once
@@ -1503,13 +1527,69 @@ func WebsocketErrorGetQuark() glib.Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'soup_websocket_server_check_handshake' : parameter 'protocols' of type 'nil' not supported
+var websocketServerCheckHandshakeFunction *gi.Function
+var websocketServerCheckHandshakeFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'soup_websocket_server_check_handshake_with_extensions' : parameter 'protocols' of type 'nil' not supported
+func websocketServerCheckHandshakeFunction_Set() error {
+	var err error
+	websocketServerCheckHandshakeFunction_Once.Do(func() {
+		websocketServerCheckHandshakeFunction, err = gi.FunctionInvokerNew("Soup", "websocket_server_check_handshake")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'soup_websocket_server_process_handshake' : parameter 'protocols' of type 'nil' not supported
+// WebsocketServerCheckHandshake is a representation of the C type soup_websocket_server_check_handshake.
+func WebsocketServerCheckHandshake(msg *Message, origin string, protocols []string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(msg.Native())
+	inArgs[1].SetString(origin)
+	inArgs[2].SetStringArray(protocols)
 
-// UNSUPPORTED : C value 'soup_websocket_server_process_handshake_with_extensions' : parameter 'protocols' of type 'nil' not supported
+	var ret gi.Argument
+
+	err := websocketServerCheckHandshakeFunction_Set()
+	if err == nil {
+		ret = websocketServerCheckHandshakeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'soup_websocket_server_check_handshake_with_extensions' : parameter 'supported_extensions' of type 'nil' not supported
+
+var websocketServerProcessHandshakeFunction *gi.Function
+var websocketServerProcessHandshakeFunction_Once sync.Once
+
+func websocketServerProcessHandshakeFunction_Set() error {
+	var err error
+	websocketServerProcessHandshakeFunction_Once.Do(func() {
+		websocketServerProcessHandshakeFunction, err = gi.FunctionInvokerNew("Soup", "websocket_server_process_handshake")
+	})
+	return err
+}
+
+// WebsocketServerProcessHandshake is a representation of the C type soup_websocket_server_process_handshake.
+func WebsocketServerProcessHandshake(msg *Message, expectedOrigin string, protocols []string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(msg.Native())
+	inArgs[1].SetString(expectedOrigin)
+	inArgs[2].SetStringArray(protocols)
+
+	var ret gi.Argument
+
+	err := websocketServerProcessHandshakeFunction_Set()
+	if err == nil {
+		ret = websocketServerProcessHandshakeFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
+
+// UNSUPPORTED : C value 'soup_websocket_server_process_handshake_with_extensions' : parameter 'supported_extensions' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'soup_xmlrpc_build_fault' : parameter '...' of type 'nil' not supported
 

@@ -1013,7 +1013,29 @@ func ContentTypeIsUnknown(type_ string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_content_type_set_mime_dirs' : parameter 'dirs' of type 'nil' not supported
+var contentTypeSetMimeDirsFunction *gi.Function
+var contentTypeSetMimeDirsFunction_Once sync.Once
+
+func contentTypeSetMimeDirsFunction_Set() error {
+	var err error
+	contentTypeSetMimeDirsFunction_Once.Do(func() {
+		contentTypeSetMimeDirsFunction, err = gi.FunctionInvokerNew("Gio", "content_type_set_mime_dirs")
+	})
+	return err
+}
+
+// ContentTypeSetMimeDirs is a representation of the C type g_content_type_set_mime_dirs.
+func ContentTypeSetMimeDirs(dirs []string) {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetStringArray(dirs)
+
+	err := contentTypeSetMimeDirsFunction_Set()
+	if err == nil {
+		contentTypeSetMimeDirsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var contentTypesGetRegisteredFunction *gi.Function
 var contentTypesGetRegisteredFunction_Once sync.Once

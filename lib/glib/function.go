@@ -1803,11 +1803,64 @@ func BookmarkFileErrorQuark() Quark {
 
 // UNSUPPORTED : C value 'g_build_filename_valist' : parameter 'args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_build_filenamev' : parameter 'args' of type 'nil' not supported
+var buildFilenamevFunction *gi.Function
+var buildFilenamevFunction_Once sync.Once
+
+func buildFilenamevFunction_Set() error {
+	var err error
+	buildFilenamevFunction_Once.Do(func() {
+		buildFilenamevFunction, err = gi.FunctionInvokerNew("GLib", "build_filenamev")
+	})
+	return err
+}
+
+// BuildFilenamev is a representation of the C type g_build_filenamev.
+func BuildFilenamev(args []string) string {
+	var inArgs [1]gi.Argument
+	inArgs[0].SetStringArray(args)
+
+	var ret gi.Argument
+
+	err := buildFilenamevFunction_Set()
+	if err == nil {
+		ret = buildFilenamevFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_build_path' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_build_pathv' : parameter 'args' of type 'nil' not supported
+var buildPathvFunction *gi.Function
+var buildPathvFunction_Once sync.Once
+
+func buildPathvFunction_Set() error {
+	var err error
+	buildPathvFunction_Once.Do(func() {
+		buildPathvFunction, err = gi.FunctionInvokerNew("GLib", "build_pathv")
+	})
+	return err
+}
+
+// BuildPathv is a representation of the C type g_build_pathv.
+func BuildPathv(separator string, args []string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetString(separator)
+	inArgs[1].SetStringArray(args)
+
+	var ret gi.Argument
+
+	err := buildPathvFunction_Set()
+	if err == nil {
+		ret = buildPathvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(true)
+
+	return retGo
+}
 
 // UNSUPPORTED : C value 'g_byte_array_free' : parameter 'array' of type 'nil' not supported
 
@@ -3344,11 +3397,86 @@ func Dpgettext2(domain string, context string, msgid string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_environ_getenv' : parameter 'envp' of type 'nil' not supported
+var environGetenvFunction *gi.Function
+var environGetenvFunction_Once sync.Once
 
-// UNSUPPORTED : C value 'g_environ_setenv' : parameter 'envp' of type 'nil' not supported
+func environGetenvFunction_Set() error {
+	var err error
+	environGetenvFunction_Once.Do(func() {
+		environGetenvFunction, err = gi.FunctionInvokerNew("GLib", "environ_getenv")
+	})
+	return err
+}
 
-// UNSUPPORTED : C value 'g_environ_unsetenv' : parameter 'envp' of type 'nil' not supported
+// EnvironGetenv is a representation of the C type g_environ_getenv.
+func EnvironGetenv(envp []string, variable string) string {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetStringArray(envp)
+	inArgs[1].SetString(variable)
+
+	var ret gi.Argument
+
+	err := environGetenvFunction_Set()
+	if err == nil {
+		ret = environGetenvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.String(false)
+
+	return retGo
+}
+
+var environSetenvFunction *gi.Function
+var environSetenvFunction_Once sync.Once
+
+func environSetenvFunction_Set() error {
+	var err error
+	environSetenvFunction_Once.Do(func() {
+		environSetenvFunction, err = gi.FunctionInvokerNew("GLib", "environ_setenv")
+	})
+	return err
+}
+
+// EnvironSetenv is a representation of the C type g_environ_setenv.
+func EnvironSetenv(envp []string, variable string, value string, overwrite bool) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetStringArray(envp)
+	inArgs[1].SetString(variable)
+	inArgs[2].SetString(value)
+	inArgs[3].SetBoolean(overwrite)
+
+	err := environSetenvFunction_Set()
+	if err == nil {
+		environSetenvFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
+
+var environUnsetenvFunction *gi.Function
+var environUnsetenvFunction_Once sync.Once
+
+func environUnsetenvFunction_Set() error {
+	var err error
+	environUnsetenvFunction_Once.Do(func() {
+		environUnsetenvFunction, err = gi.FunctionInvokerNew("GLib", "environ_unsetenv")
+	})
+	return err
+}
+
+// EnvironUnsetenv is a representation of the C type g_environ_unsetenv.
+func EnvironUnsetenv(envp []string, variable string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetStringArray(envp)
+	inArgs[1].SetString(variable)
+
+	err := environUnsetenvFunction_Set()
+	if err == nil {
+		environUnsetenvFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fileErrorFromErrnoFunction *gi.Function
 var fileErrorFromErrnoFunction_Once sync.Once
@@ -8480,11 +8608,11 @@ func SpacedPrimesClosest(num uint32) uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_spawn_async' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_spawn_async' : parameter 'child_setup' of type 'SpawnChildSetupFunc' not supported
 
-// UNSUPPORTED : C value 'g_spawn_async_with_fds' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_spawn_async_with_fds' : parameter 'child_setup' of type 'SpawnChildSetupFunc' not supported
 
-// UNSUPPORTED : C value 'g_spawn_async_with_pipes' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_spawn_async_with_pipes' : parameter 'child_setup' of type 'SpawnChildSetupFunc' not supported
 
 var spawnCheckExitStatusFunction *gi.Function
 var spawnCheckExitStatusFunction_Once sync.Once
@@ -8620,7 +8748,7 @@ func SpawnExitErrorQuark() Quark {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_spawn_sync' : parameter 'argv' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_spawn_sync' : parameter 'child_setup' of type 'SpawnChildSetupFunc' not supported
 
 // UNSUPPORTED : C value 'g_sprintf' : parameter '...' of type 'nil' not supported
 

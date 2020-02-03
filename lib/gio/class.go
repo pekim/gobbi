@@ -1061,7 +1061,39 @@ func (recv *Application) Release() {
 	return
 }
 
-// UNSUPPORTED : C value 'g_application_run' : parameter 'argv' of type 'nil' not supported
+var applicationRunFunction *gi.Function
+var applicationRunFunction_Once sync.Once
+
+func applicationRunFunction_Set() error {
+	var err error
+	applicationRunFunction_Once.Do(func() {
+		err = applicationObject_Set()
+		if err != nil {
+			return
+		}
+		applicationRunFunction, err = applicationObject.InvokerNew("run")
+	})
+	return err
+}
+
+// Run is a representation of the C type g_application_run.
+func (recv *Application) Run(argv []string) int32 {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetInt32(int32(len(argv)))
+	inArgs[2].SetStringArray(argv)
+
+	var ret gi.Argument
+
+	err := applicationRunFunction_Set()
+	if err == nil {
+		ret = applicationRunFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Int32()
+
+	return retGo
+}
 
 var applicationSendNotificationFunction *gi.Function
 var applicationSendNotificationFunction_Once sync.Once
@@ -15093,7 +15125,35 @@ func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_file_info_set_attribute_stringv' : parameter 'attr_value' of type 'nil' not supported
+var fileInfoSetAttributeStringvFunction *gi.Function
+var fileInfoSetAttributeStringvFunction_Once sync.Once
+
+func fileInfoSetAttributeStringvFunction_Set() error {
+	var err error
+	fileInfoSetAttributeStringvFunction_Once.Do(func() {
+		err = fileInfoObject_Set()
+		if err != nil {
+			return
+		}
+		fileInfoSetAttributeStringvFunction, err = fileInfoObject.InvokerNew("set_attribute_stringv")
+	})
+	return err
+}
+
+// SetAttributeStringv is a representation of the C type g_file_info_set_attribute_stringv.
+func (recv *FileInfo) SetAttributeStringv(attribute string, attrValue []string) {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(attribute)
+	inArgs[2].SetStringArray(attrValue)
+
+	err := fileInfoSetAttributeStringvFunction_Set()
+	if err == nil {
+		fileInfoSetAttributeStringvFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var fileInfoSetAttributeUint32Function *gi.Function
 var fileInfoSetAttributeUint32Function_Once sync.Once
@@ -26788,7 +26848,39 @@ func (recv *Settings) SetString(key string, value string) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_settings_set_strv' : parameter 'value' of type 'nil' not supported
+var settingsSetStrvFunction *gi.Function
+var settingsSetStrvFunction_Once sync.Once
+
+func settingsSetStrvFunction_Set() error {
+	var err error
+	settingsSetStrvFunction_Once.Do(func() {
+		err = settingsObject_Set()
+		if err != nil {
+			return
+		}
+		settingsSetStrvFunction, err = settingsObject.InvokerNew("set_strv")
+	})
+	return err
+}
+
+// SetStrv is a representation of the C type g_settings_set_strv.
+func (recv *Settings) SetStrv(key string, value []string) bool {
+	var inArgs [3]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(key)
+	inArgs[2].SetStringArray(value)
+
+	var ret gi.Argument
+
+	err := settingsSetStrvFunction_Set()
+	if err == nil {
+		ret = settingsSetStrvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ret.Boolean()
+
+	return retGo
+}
 
 var settingsSetUintFunction *gi.Function
 var settingsSetUintFunction_Once sync.Once
@@ -27100,7 +27192,36 @@ func (recv *SettingsBackend) ChangedTree(tree *glib.Tree, originTag unsafe.Point
 	return
 }
 
-// UNSUPPORTED : C value 'g_settings_backend_keys_changed' : parameter 'items' of type 'nil' not supported
+var settingsBackendKeysChangedFunction *gi.Function
+var settingsBackendKeysChangedFunction_Once sync.Once
+
+func settingsBackendKeysChangedFunction_Set() error {
+	var err error
+	settingsBackendKeysChangedFunction_Once.Do(func() {
+		err = settingsBackendObject_Set()
+		if err != nil {
+			return
+		}
+		settingsBackendKeysChangedFunction, err = settingsBackendObject.InvokerNew("keys_changed")
+	})
+	return err
+}
+
+// KeysChanged is a representation of the C type g_settings_backend_keys_changed.
+func (recv *SettingsBackend) KeysChanged(path string, items []string, originTag unsafe.Pointer) {
+	var inArgs [4]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetString(path)
+	inArgs[2].SetStringArray(items)
+	inArgs[3].SetPointer(originTag)
+
+	err := settingsBackendKeysChangedFunction_Set()
+	if err == nil {
+		settingsBackendKeysChangedFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var settingsBackendPathChangedFunction *gi.Function
 var settingsBackendPathChangedFunction_Once sync.Once
@@ -32866,7 +32987,40 @@ func (recv *Subprocess) Native() unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_subprocess_new' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_subprocess_newv' : parameter 'argv' of type 'nil' not supported
+var subprocessNewvFunction *gi.Function
+var subprocessNewvFunction_Once sync.Once
+
+func subprocessNewvFunction_Set() error {
+	var err error
+	subprocessNewvFunction_Once.Do(func() {
+		err = subprocessObject_Set()
+		if err != nil {
+			return
+		}
+		subprocessNewvFunction, err = subprocessObject.InvokerNew("newv")
+	})
+	return err
+}
+
+// SubprocessNewv is a representation of the C type g_subprocess_newv.
+func SubprocessNewv(argv []string, flags SubprocessFlags) *Subprocess {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetStringArray(argv)
+	inArgs[1].SetInt32(int32(flags))
+
+	var ret gi.Argument
+
+	err := subprocessNewvFunction_Set()
+	if err == nil {
+		ret = subprocessNewvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SubprocessNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var subprocessCommunicateFunction *gi.Function
 var subprocessCommunicateFunction_Once sync.Once
@@ -33694,7 +33848,34 @@ func (recv *SubprocessLauncher) SetCwd(cwd string) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_subprocess_launcher_set_environ' : parameter 'env' of type 'nil' not supported
+var subprocessLauncherSetEnvironFunction *gi.Function
+var subprocessLauncherSetEnvironFunction_Once sync.Once
+
+func subprocessLauncherSetEnvironFunction_Set() error {
+	var err error
+	subprocessLauncherSetEnvironFunction_Once.Do(func() {
+		err = subprocessLauncherObject_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherSetEnvironFunction, err = subprocessLauncherObject.InvokerNew("set_environ")
+	})
+	return err
+}
+
+// SetEnviron is a representation of the C type g_subprocess_launcher_set_environ.
+func (recv *SubprocessLauncher) SetEnviron(env []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(env)
+
+	err := subprocessLauncherSetEnvironFunction_Set()
+	if err == nil {
+		subprocessLauncherSetEnvironFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var subprocessLauncherSetFlagsFunction *gi.Function
 var subprocessLauncherSetFlagsFunction_Once sync.Once
@@ -33845,7 +34026,38 @@ func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite 
 
 // UNSUPPORTED : C value 'g_subprocess_launcher_spawn' : parameter '...' of type 'nil' not supported
 
-// UNSUPPORTED : C value 'g_subprocess_launcher_spawnv' : parameter 'argv' of type 'nil' not supported
+var subprocessLauncherSpawnvFunction *gi.Function
+var subprocessLauncherSpawnvFunction_Once sync.Once
+
+func subprocessLauncherSpawnvFunction_Set() error {
+	var err error
+	subprocessLauncherSpawnvFunction_Once.Do(func() {
+		err = subprocessLauncherObject_Set()
+		if err != nil {
+			return
+		}
+		subprocessLauncherSpawnvFunction, err = subprocessLauncherObject.InvokerNew("spawnv")
+	})
+	return err
+}
+
+// Spawnv is a representation of the C type g_subprocess_launcher_spawnv.
+func (recv *SubprocessLauncher) Spawnv(argv []string) *Subprocess {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(argv)
+
+	var ret gi.Argument
+
+	err := subprocessLauncherSpawnvFunction_Set()
+	if err == nil {
+		ret = subprocessLauncherSpawnvFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := SubprocessNewFromNative(ret.Pointer())
+
+	return retGo
+}
 
 var subprocessLauncherTakeFdFunction *gi.Function
 var subprocessLauncherTakeFdFunction_Once sync.Once
@@ -35482,7 +35694,40 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_themed_icon_new_from_names' : parameter 'iconnames' of type 'nil' not supported
+var themedIconNewFromNamesFunction *gi.Function
+var themedIconNewFromNamesFunction_Once sync.Once
+
+func themedIconNewFromNamesFunction_Set() error {
+	var err error
+	themedIconNewFromNamesFunction_Once.Do(func() {
+		err = themedIconObject_Set()
+		if err != nil {
+			return
+		}
+		themedIconNewFromNamesFunction, err = themedIconObject.InvokerNew("new_from_names")
+	})
+	return err
+}
+
+// ThemedIconNewFromNames is a representation of the C type g_themed_icon_new_from_names.
+func ThemedIconNewFromNames(iconnames []string) *ThemedIcon {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetStringArray(iconnames)
+	inArgs[1].SetInt32(int32(len(iconnames)))
+
+	var ret gi.Argument
+
+	err := themedIconNewFromNamesFunction_Set()
+	if err == nil {
+		ret = themedIconNewFromNamesFunction.Invoke(inArgs[:], nil)
+	}
+
+	retGo := ThemedIconNewFromNative(ret.Pointer())
+	object := retGo.Object()
+	object.RefSink()
+
+	return retGo
+}
 
 var themedIconNewWithDefaultFallbacksFunction *gi.Function
 var themedIconNewWithDefaultFallbacksFunction_Once sync.Once
@@ -36550,7 +36795,34 @@ func (recv *TlsConnection) HandshakeFinish(result *AsyncResult) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_tls_connection_set_advertised_protocols' : parameter 'protocols' of type 'nil' not supported
+var tlsConnectionSetAdvertisedProtocolsFunction *gi.Function
+var tlsConnectionSetAdvertisedProtocolsFunction_Once sync.Once
+
+func tlsConnectionSetAdvertisedProtocolsFunction_Set() error {
+	var err error
+	tlsConnectionSetAdvertisedProtocolsFunction_Once.Do(func() {
+		err = tlsConnectionObject_Set()
+		if err != nil {
+			return
+		}
+		tlsConnectionSetAdvertisedProtocolsFunction, err = tlsConnectionObject.InvokerNew("set_advertised_protocols")
+	})
+	return err
+}
+
+// SetAdvertisedProtocols is a representation of the C type g_tls_connection_set_advertised_protocols.
+func (recv *TlsConnection) SetAdvertisedProtocols(protocols []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(protocols)
+
+	err := tlsConnectionSetAdvertisedProtocolsFunction_Set()
+	if err == nil {
+		tlsConnectionSetAdvertisedProtocolsFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var tlsConnectionSetCertificateFunction *gi.Function
 var tlsConnectionSetCertificateFunction_Once sync.Once

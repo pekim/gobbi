@@ -345,7 +345,7 @@ func (recv *Object) SetFieldGTypeInstance(value *TypeInstance) {
 
 // UNSUPPORTED : C value 'g_object_new_valist' : parameter 'var_args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_object_new_with_properties' : parameter 'names' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_object_new_with_properties' : parameter 'values' of type 'nil' not supported
 
 // UNSUPPORTED : C value 'g_object_newv' : parameter 'parameters' of type 'nil' not supported
 
@@ -624,7 +624,7 @@ func (recv *Object) GetQdata(quark glib.Quark) unsafe.Pointer {
 
 // UNSUPPORTED : C value 'g_object_get_valist' : parameter 'var_args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_object_getv' : parameter 'names' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_object_getv' : parameter 'values' of type 'nil' not supported
 
 var objectIsFloatingFunction *gi.Function
 var objectIsFloatingFunction_Once sync.Once
@@ -945,7 +945,7 @@ func (recv *Object) SetQdata(quark glib.Quark, data unsafe.Pointer) {
 
 // UNSUPPORTED : C value 'g_object_set_valist' : parameter 'var_args' of type 'va_list' not supported
 
-// UNSUPPORTED : C value 'g_object_setv' : parameter 'names' of type 'nil' not supported
+// UNSUPPORTED : C value 'g_object_setv' : parameter 'values' of type 'nil' not supported
 
 var objectStealDataFunction *gi.Function
 var objectStealDataFunction_Once sync.Once

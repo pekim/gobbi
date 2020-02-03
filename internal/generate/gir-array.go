@@ -37,7 +37,7 @@ func (a *Array) isSupported(in bool, out bool) bool {
 		return true
 	}
 
-	if strings.HasSuffix(a.CType, "char***") && a.Type.isString() {
+	if a.CType != "" && a.Type.isString() {
 		// an array of strings
 		return true
 	}

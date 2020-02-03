@@ -6717,7 +6717,34 @@ func (recv *LanguageManager) GuessLanguage(filename string, contentType string) 
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_language_manager_set_search_path' : parameter 'dirs' of type 'nil' not supported
+var languageManagerSetSearchPathFunction *gi.Function
+var languageManagerSetSearchPathFunction_Once sync.Once
+
+func languageManagerSetSearchPathFunction_Set() error {
+	var err error
+	languageManagerSetSearchPathFunction_Once.Do(func() {
+		err = languageManagerObject_Set()
+		if err != nil {
+			return
+		}
+		languageManagerSetSearchPathFunction, err = languageManagerObject.InvokerNew("set_search_path")
+	})
+	return err
+}
+
+// SetSearchPath is a representation of the C type gtk_source_language_manager_set_search_path.
+func (recv *LanguageManager) SetSearchPath(dirs []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(dirs)
+
+	err := languageManagerSetSearchPathFunction_Set()
+	if err == nil {
+		languageManagerSetSearchPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var mapObject *gi.Object
 var mapObject_Once sync.Once
@@ -11664,7 +11691,34 @@ func (recv *StyleSchemeManager) PrependSearchPath(path string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gtk_source_style_scheme_manager_set_search_path' : parameter 'path' of type 'nil' not supported
+var styleSchemeManagerSetSearchPathFunction *gi.Function
+var styleSchemeManagerSetSearchPathFunction_Once sync.Once
+
+func styleSchemeManagerSetSearchPathFunction_Set() error {
+	var err error
+	styleSchemeManagerSetSearchPathFunction_Once.Do(func() {
+		err = styleSchemeManagerObject_Set()
+		if err != nil {
+			return
+		}
+		styleSchemeManagerSetSearchPathFunction, err = styleSchemeManagerObject.InvokerNew("set_search_path")
+	})
+	return err
+}
+
+// SetSearchPath is a representation of the C type gtk_source_style_scheme_manager_set_search_path.
+func (recv *StyleSchemeManager) SetSearchPath(path []string) {
+	var inArgs [2]gi.Argument
+	inArgs[0].SetPointer(recv.Native())
+	inArgs[1].SetStringArray(path)
+
+	err := styleSchemeManagerSetSearchPathFunction_Set()
+	if err == nil {
+		styleSchemeManagerSetSearchPathFunction.Invoke(inArgs[:], nil)
+	}
+
+	return
+}
 
 var tagObject *gi.Object
 var tagObject_Once sync.Once
