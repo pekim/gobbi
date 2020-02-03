@@ -66,13 +66,15 @@ func (a Argument) String(transferOwnership bool) string {
 func (a Argument) StringArray(transferOwnership bool) []string {
 	var strings []string
 
-	cArray := *(**C.gchar)(unsafe.Pointer(&a))
-	for cArray != nil {
-		string := C.GoString(cArray)
-		strings = append(strings, string)
+	arrayPointer := a.Pointer()
+	stringPointer := *(**C.char)(arrayPointer)
 
-		// advance to next string
-		cArray = (*C.gchar)(incptr(unsafe.Pointer(cArray), C.sizeof_gpointer))
+	for stringPointer != nil {
+		str := C.GoString((*C.char)(stringPointer))
+		strings = append(strings, str)
+
+		arrayPointer = incptr(arrayPointer, C.sizeof_gpointer)
+		stringPointer = *(**C.char)(arrayPointer)
 	}
 
 	return strings

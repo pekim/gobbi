@@ -2,6 +2,7 @@ package glib
 
 import (
 	"github.com/stretchr/testify/assert"
+	"os"
 	"strings"
 	"testing"
 )
@@ -49,15 +50,8 @@ func TestRecordMethod(t *testing.T) {
 	assert.Equal(t, uint32(102), dayOfYear)
 }
 
-func TestReturnArrayOfStrings(t *testing.T) {
-	Envir
-
-	//ok, charsets := GetFilenameCharsets()
-	//assert.True(t, ok)
-	//assert.Equal(t, 3, len(charsets))
-
-	//b, i32, strings := ShellParseArgv("$PATH gobbi")
-	//fmt.Println(b, i32, strings)
+func TestReturnArrayOfNullTerminatedStrings(t *testing.T) {
+	assert.Equal(t, len(os.Environ()), len(GetEnviron()))
 }
 
 func BenchmarkReturnedTransferOwnershipSring(b *testing.B) {
