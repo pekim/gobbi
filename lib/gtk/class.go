@@ -199,16 +199,20 @@ func aboutDialogGetArtistsFunction_Set() error {
 }
 
 // GetArtists is a representation of the C type gtk_about_dialog_get_artists.
-func (recv *AboutDialog) GetArtists() {
+func (recv *AboutDialog) GetArtists() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := aboutDialogGetArtistsFunction_Set()
 	if err == nil {
-		aboutDialogGetArtistsFunction.Invoke(inArgs[:], nil)
+		ret = aboutDialogGetArtistsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var aboutDialogGetAuthorsFunction *gi.Function
@@ -227,16 +231,20 @@ func aboutDialogGetAuthorsFunction_Set() error {
 }
 
 // GetAuthors is a representation of the C type gtk_about_dialog_get_authors.
-func (recv *AboutDialog) GetAuthors() {
+func (recv *AboutDialog) GetAuthors() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := aboutDialogGetAuthorsFunction_Set()
 	if err == nil {
-		aboutDialogGetAuthorsFunction.Invoke(inArgs[:], nil)
+		ret = aboutDialogGetAuthorsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var aboutDialogGetCommentsFunction *gi.Function
@@ -319,16 +327,20 @@ func aboutDialogGetDocumentersFunction_Set() error {
 }
 
 // GetDocumenters is a representation of the C type gtk_about_dialog_get_documenters.
-func (recv *AboutDialog) GetDocumenters() {
+func (recv *AboutDialog) GetDocumenters() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := aboutDialogGetDocumentersFunction_Set()
 	if err == nil {
-		aboutDialogGetDocumentersFunction.Invoke(inArgs[:], nil)
+		ret = aboutDialogGetDocumentersFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var aboutDialogGetLicenseFunction *gi.Function
@@ -1351,7 +1363,7 @@ func (recv *AccelGroup) GetIsLocked() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_accel_group_get_modifier_mask' : return type 'Gdk.ModifierType' not supported
+// UNSUPPORTED : C value 'gtk_accel_group_get_modifier_mask' : return type not supported
 
 var accelGroupLockFunction *gi.Function
 var accelGroupLockFunction_Once sync.Once
@@ -6661,17 +6673,21 @@ func applicationGetAccelsForActionFunction_Set() error {
 }
 
 // GetAccelsForAction is a representation of the C type gtk_application_get_accels_for_action.
-func (recv *Application) GetAccelsForAction(detailedActionName string) {
+func (recv *Application) GetAccelsForAction(detailedActionName string) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(detailedActionName)
 
+	var ret gi.Argument
+
 	err := applicationGetAccelsForActionFunction_Set()
 	if err == nil {
-		applicationGetAccelsForActionFunction.Invoke(inArgs[:], nil)
+		ret = applicationGetAccelsForActionFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var applicationGetActionsForAccelFunction *gi.Function
@@ -6690,17 +6706,21 @@ func applicationGetActionsForAccelFunction_Set() error {
 }
 
 // GetActionsForAccel is a representation of the C type gtk_application_get_actions_for_accel.
-func (recv *Application) GetActionsForAccel(accel string) {
+func (recv *Application) GetActionsForAccel(accel string) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(accel)
 
+	var ret gi.Argument
+
 	err := applicationGetActionsForAccelFunction_Set()
 	if err == nil {
-		applicationGetActionsForAccelFunction.Invoke(inArgs[:], nil)
+		ret = applicationGetActionsForAccelFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var applicationGetActiveWindowFunction *gi.Function
@@ -6981,16 +7001,20 @@ func applicationListActionDescriptionsFunction_Set() error {
 }
 
 // ListActionDescriptions is a representation of the C type gtk_application_list_action_descriptions.
-func (recv *Application) ListActionDescriptions() {
+func (recv *Application) ListActionDescriptions() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := applicationListActionDescriptionsFunction_Set()
 	if err == nil {
-		applicationListActionDescriptionsFunction.Invoke(inArgs[:], nil)
+		ret = applicationListActionDescriptionsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var applicationPrefersAppMenuFunction *gi.Function
@@ -10562,7 +10586,7 @@ func (recv *Builder) GetTypeFromName(typeName string) int64 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_builder_lookup_callback_symbol' : return type 'GObject.Callback' not supported
+// UNSUPPORTED : C value 'gtk_builder_lookup_callback_symbol' : return type not supported
 
 var builderSetApplicationFunction *gi.Function
 var builderSetApplicationFunction_Once sync.Once
@@ -18850,39 +18874,7 @@ func (recv *Clipboard) WaitForImage() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-var clipboardWaitForRichTextFunction *gi.Function
-var clipboardWaitForRichTextFunction_Once sync.Once
-
-func clipboardWaitForRichTextFunction_Set() error {
-	var err error
-	clipboardWaitForRichTextFunction_Once.Do(func() {
-		err = clipboardObject_Set()
-		if err != nil {
-			return
-		}
-		clipboardWaitForRichTextFunction, err = clipboardObject.InvokerNew("wait_for_rich_text")
-	})
-	return err
-}
-
-// WaitForRichText is a representation of the C type gtk_clipboard_wait_for_rich_text.
-func (recv *Clipboard) WaitForRichText(buffer *TextBuffer) (*gdk.Atom, uint64) {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetPointer(buffer.Native())
-
-	var outArgs [2]gi.Argument
-
-	err := clipboardWaitForRichTextFunction_Set()
-	if err == nil {
-		clipboardWaitForRichTextFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := gdk.AtomNewFromNative(outArgs[0].Pointer())
-	out1 := outArgs[1].Uint64()
-
-	return out0, out1
-}
+// UNSUPPORTED : C value 'gtk_clipboard_wait_for_rich_text' : return type not supported
 
 // UNSUPPORTED : C value 'gtk_clipboard_wait_for_targets' : parameter 'targets' of type 'nil' not supported
 
@@ -18934,16 +18926,20 @@ func clipboardWaitForUrisFunction_Set() error {
 }
 
 // WaitForUris is a representation of the C type gtk_clipboard_wait_for_uris.
-func (recv *Clipboard) WaitForUris() {
+func (recv *Clipboard) WaitForUris() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := clipboardWaitForUrisFunction_Set()
 	if err == nil {
-		clipboardWaitForUrisFunction.Invoke(inArgs[:], nil)
+		ret = clipboardWaitForUrisFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var clipboardWaitIsImageAvailableFunction *gi.Function
@@ -21545,7 +21541,7 @@ func (recv *ComboBox) GetPopupFixedWidth() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_combo_box_get_row_separator_func' : return type 'TreeViewRowSeparatorFunc' not supported
+// UNSUPPORTED : C value 'gtk_combo_box_get_row_separator_func' : return type not supported
 
 var comboBoxGetRowSpanColumnFunction *gi.Function
 var comboBoxGetRowSpanColumnFunction_Once sync.Once
@@ -25981,7 +25977,7 @@ func (recv *Entry) GetInputPurpose() InputPurpose {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_entry_get_invisible_char' : return type 'gunichar' not supported
+// UNSUPPORTED : C value 'gtk_entry_get_invisible_char' : return type not supported
 
 var entryGetLayoutFunction *gi.Function
 var entryGetLayoutFunction_Once sync.Once
@@ -37846,7 +37842,7 @@ func (recv *Gesture) GetGroup() *glib.List {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_gesture_get_last_event' : return type 'Gdk.Event' not supported
+// UNSUPPORTED : C value 'gtk_gesture_get_last_event' : return type not supported
 
 var gestureGetLastUpdatedSequenceFunction *gi.Function
 var gestureGetLastUpdatedSequenceFunction_Once sync.Once
@@ -45401,34 +45397,7 @@ func (recv *IconTheme) GetExampleIconName() string {
 	return retGo
 }
 
-var iconThemeGetIconSizesFunction *gi.Function
-var iconThemeGetIconSizesFunction_Once sync.Once
-
-func iconThemeGetIconSizesFunction_Set() error {
-	var err error
-	iconThemeGetIconSizesFunction_Once.Do(func() {
-		err = iconThemeObject_Set()
-		if err != nil {
-			return
-		}
-		iconThemeGetIconSizesFunction, err = iconThemeObject.InvokerNew("get_icon_sizes")
-	})
-	return err
-}
-
-// GetIconSizes is a representation of the C type gtk_icon_theme_get_icon_sizes.
-func (recv *IconTheme) GetIconSizes(iconName string) {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetString(iconName)
-
-	err := iconThemeGetIconSizesFunction_Set()
-	if err == nil {
-		iconThemeGetIconSizesFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'gtk_icon_theme_get_icon_sizes' : return type not supported
 
 var iconThemeGetSearchPathFunction *gi.Function
 var iconThemeGetSearchPathFunction_Once sync.Once
@@ -51045,7 +51014,7 @@ func (recv *Label) GetCurrentUri() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_label_get_ellipsize' : return type 'Pango.EllipsizeMode' not supported
+// UNSUPPORTED : C value 'gtk_label_get_ellipsize' : return type not supported
 
 var labelGetJustifyFunction *gi.Function
 var labelGetJustifyFunction_Once sync.Once
@@ -51208,7 +51177,7 @@ func (recv *Label) GetLineWrap() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_label_get_line_wrap_mode' : return type 'Pango.WrapMode' not supported
+// UNSUPPORTED : C value 'gtk_label_get_line_wrap_mode' : return type not supported
 
 var labelGetLinesFunction *gi.Function
 var labelGetLinesFunction_Once sync.Once
@@ -71610,37 +71579,7 @@ func (recv *PrintSettings) GetOutputBin() string {
 	return retGo
 }
 
-var printSettingsGetPageRangesFunction *gi.Function
-var printSettingsGetPageRangesFunction_Once sync.Once
-
-func printSettingsGetPageRangesFunction_Set() error {
-	var err error
-	printSettingsGetPageRangesFunction_Once.Do(func() {
-		err = printSettingsObject_Set()
-		if err != nil {
-			return
-		}
-		printSettingsGetPageRangesFunction, err = printSettingsObject.InvokerNew("get_page_ranges")
-	})
-	return err
-}
-
-// GetPageRanges is a representation of the C type gtk_print_settings_get_page_ranges.
-func (recv *PrintSettings) GetPageRanges() int32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := printSettingsGetPageRangesFunction_Set()
-	if err == nil {
-		printSettingsGetPageRangesFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Int32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'gtk_print_settings_get_page_ranges' : return type not supported
 
 var printSettingsGetPageSetFunction *gi.Function
 var printSettingsGetPageSetFunction_Once sync.Once
@@ -73282,7 +73221,7 @@ func ProgressBarNew() *ProgressBar {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_progress_bar_get_ellipsize' : return type 'Pango.EllipsizeMode' not supported
+// UNSUPPORTED : C value 'gtk_progress_bar_get_ellipsize' : return type not supported
 
 var progressBarGetFractionFunction *gi.Function
 var progressBarGetFractionFunction_Once sync.Once
@@ -93200,37 +93139,7 @@ func (recv *TextBuffer) GetCopyTargetList() *TargetList {
 	return retGo
 }
 
-var textBufferGetDeserializeFormatsFunction *gi.Function
-var textBufferGetDeserializeFormatsFunction_Once sync.Once
-
-func textBufferGetDeserializeFormatsFunction_Set() error {
-	var err error
-	textBufferGetDeserializeFormatsFunction_Once.Do(func() {
-		err = textBufferObject_Set()
-		if err != nil {
-			return
-		}
-		textBufferGetDeserializeFormatsFunction, err = textBufferObject.InvokerNew("get_deserialize_formats")
-	})
-	return err
-}
-
-// GetDeserializeFormats is a representation of the C type gtk_text_buffer_get_deserialize_formats.
-func (recv *TextBuffer) GetDeserializeFormats() int32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := textBufferGetDeserializeFormatsFunction_Set()
-	if err == nil {
-		textBufferGetDeserializeFormatsFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Int32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'gtk_text_buffer_get_deserialize_formats' : return type not supported
 
 var textBufferGetEndIterFunction *gi.Function
 var textBufferGetEndIterFunction_Once sync.Once
@@ -93724,37 +93633,7 @@ func (recv *TextBuffer) GetSelectionBounds() (bool, *TextIter, *TextIter) {
 	return retGo, out0, out1
 }
 
-var textBufferGetSerializeFormatsFunction *gi.Function
-var textBufferGetSerializeFormatsFunction_Once sync.Once
-
-func textBufferGetSerializeFormatsFunction_Set() error {
-	var err error
-	textBufferGetSerializeFormatsFunction_Once.Do(func() {
-		err = textBufferObject_Set()
-		if err != nil {
-			return
-		}
-		textBufferGetSerializeFormatsFunction, err = textBufferObject.InvokerNew("get_serialize_formats")
-	})
-	return err
-}
-
-// GetSerializeFormats is a representation of the C type gtk_text_buffer_get_serialize_formats.
-func (recv *TextBuffer) GetSerializeFormats() int32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := textBufferGetSerializeFormatsFunction_Set()
-	if err == nil {
-		textBufferGetSerializeFormatsFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Int32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'gtk_text_buffer_get_serialize_formats' : return type not supported
 
 var textBufferGetSliceFunction *gi.Function
 var textBufferGetSliceFunction_Once sync.Once
@@ -94525,41 +94404,7 @@ func (recv *TextBuffer) SelectRange(ins *TextIter, bound *TextIter) {
 	return
 }
 
-var textBufferSerializeFunction *gi.Function
-var textBufferSerializeFunction_Once sync.Once
-
-func textBufferSerializeFunction_Set() error {
-	var err error
-	textBufferSerializeFunction_Once.Do(func() {
-		err = textBufferObject_Set()
-		if err != nil {
-			return
-		}
-		textBufferSerializeFunction, err = textBufferObject.InvokerNew("serialize")
-	})
-	return err
-}
-
-// Serialize is a representation of the C type gtk_text_buffer_serialize.
-func (recv *TextBuffer) Serialize(contentBuffer *TextBuffer, format *gdk.Atom, start *TextIter, end *TextIter) uint64 {
-	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetPointer(contentBuffer.Native())
-	inArgs[2].SetPointer(format.Native())
-	inArgs[3].SetPointer(start.Native())
-	inArgs[4].SetPointer(end.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := textBufferSerializeFunction_Set()
-	if err == nil {
-		textBufferSerializeFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint64()
-
-	return out0
-}
+// UNSUPPORTED : C value 'gtk_text_buffer_serialize' : return type not supported
 
 var textBufferSetModifiedFunction *gi.Function
 var textBufferSetModifiedFunction_Once sync.Once
@@ -101502,7 +101347,7 @@ func ToolItemNew() *ToolItem {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tool_item_get_ellipsize_mode' : return type 'Pango.EllipsizeMode' not supported
+// UNSUPPORTED : C value 'gtk_tool_item_get_ellipsize_mode' : return type not supported
 
 var toolItemGetExpandFunction *gi.Function
 var toolItemGetExpandFunction_Once sync.Once
@@ -102565,7 +102410,7 @@ func (recv *ToolItemGroup) GetDropItem(x int32, y int32) *ToolItem {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tool_item_group_get_ellipsize' : return type 'Pango.EllipsizeMode' not supported
+// UNSUPPORTED : C value 'gtk_tool_item_group_get_ellipsize' : return type not supported
 
 var toolItemGroupGetHeaderReliefFunction *gi.Function
 var toolItemGroupGetHeaderReliefFunction_Once sync.Once
@@ -105614,7 +105459,7 @@ func (recv *TreeSelection) GetMode() SelectionMode {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_selection_get_select_function' : return type 'TreeSelectionFunc' not supported
+// UNSUPPORTED : C value 'gtk_tree_selection_get_select_function' : return type not supported
 
 var treeSelectionGetSelectedFunction *gi.Function
 var treeSelectionGetSelectedFunction_Once sync.Once
@@ -108085,7 +107930,7 @@ func (recv *TreeView) GetReorderable() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_get_row_separator_func' : return type 'TreeViewRowSeparatorFunc' not supported
+// UNSUPPORTED : C value 'gtk_tree_view_get_row_separator_func' : return type not supported
 
 var treeViewGetRubberBandingFunction *gi.Function
 var treeViewGetRubberBandingFunction_Once sync.Once
@@ -108215,9 +108060,9 @@ func (recv *TreeView) GetSearchEntry() *Entry {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_tree_view_get_search_equal_func' : return type 'TreeViewSearchEqualFunc' not supported
+// UNSUPPORTED : C value 'gtk_tree_view_get_search_equal_func' : return type not supported
 
-// UNSUPPORTED : C value 'gtk_tree_view_get_search_position_func' : return type 'TreeViewSearchPositionFunc' not supported
+// UNSUPPORTED : C value 'gtk_tree_view_get_search_position_func' : return type not supported
 
 var treeViewGetSelectionFunction *gi.Function
 var treeViewGetSelectionFunction_Once sync.Once
@@ -115796,7 +115641,7 @@ func (recv *Widget) GetDeviceEnabled(device *gdk.Device) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_widget_get_device_events' : return type 'Gdk.EventMask' not supported
+// UNSUPPORTED : C value 'gtk_widget_get_device_events' : return type not supported
 
 var widgetGetDirectionFunction *gi.Function
 var widgetGetDirectionFunction_Once sync.Once
@@ -118623,16 +118468,20 @@ func widgetListActionPrefixesFunction_Set() error {
 }
 
 // ListActionPrefixes is a representation of the C type gtk_widget_list_action_prefixes.
-func (recv *Widget) ListActionPrefixes() {
+func (recv *Widget) ListActionPrefixes() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := widgetListActionPrefixesFunction_Set()
 	if err == nil {
-		widgetListActionPrefixesFunction.Invoke(inArgs[:], nil)
+		ret = widgetListActionPrefixesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var widgetListMnemonicLabelsFunction *gi.Function
@@ -123927,7 +123776,7 @@ func (recv *Window) GetFocusVisible() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_window_get_gravity' : return type 'Gdk.Gravity' not supported
+// UNSUPPORTED : C value 'gtk_window_get_gravity' : return type not supported
 
 var windowGetGroupFunction *gi.Function
 var windowGetGroupFunction_Once sync.Once
@@ -124121,7 +123970,7 @@ func (recv *Window) GetIconName() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_window_get_mnemonic_modifier' : return type 'Gdk.ModifierType' not supported
+// UNSUPPORTED : C value 'gtk_window_get_mnemonic_modifier' : return type not supported
 
 var windowGetMnemonicsVisibleFunction *gi.Function
 var windowGetMnemonicsVisibleFunction_Once sync.Once
@@ -124575,7 +124424,7 @@ func (recv *Window) GetTransientFor() *Window {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_window_get_type_hint' : return type 'Gdk.WindowTypeHint' not supported
+// UNSUPPORTED : C value 'gtk_window_get_type_hint' : return type not supported
 
 var windowGetUrgencyHintFunction *gi.Function
 var windowGetUrgencyHintFunction_Once sync.Once

@@ -254,16 +254,20 @@ func appLaunchContextGetEnvironmentFunction_Set() error {
 }
 
 // GetEnvironment is a representation of the C type g_app_launch_context_get_environment.
-func (recv *AppLaunchContext) GetEnvironment() {
+func (recv *AppLaunchContext) GetEnvironment() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := appLaunchContextGetEnvironmentFunction_Set()
 	if err == nil {
-		appLaunchContextGetEnvironmentFunction.Invoke(inArgs[:], nil)
+		ret = appLaunchContextGetEnvironmentFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var appLaunchContextGetStartupNotifyIdFunction *gi.Function
@@ -1719,20 +1723,22 @@ func applicationCommandLineGetArgumentsFunction_Set() error {
 }
 
 // GetArguments is a representation of the C type g_application_command_line_get_arguments.
-func (recv *ApplicationCommandLine) GetArguments() int32 {
+func (recv *ApplicationCommandLine) GetArguments() ([]string, int32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := applicationCommandLineGetArgumentsFunction_Set()
 	if err == nil {
-		applicationCommandLineGetArgumentsFunction.Invoke(inArgs[:], outArgs[:])
+		ret = applicationCommandLineGetArgumentsFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Int32()
 
-	return out0
+	return retGo, out0
 }
 
 var applicationCommandLineGetCwdFunction *gi.Function
@@ -1783,16 +1789,20 @@ func applicationCommandLineGetEnvironFunction_Set() error {
 }
 
 // GetEnviron is a representation of the C type g_application_command_line_get_environ.
-func (recv *ApplicationCommandLine) GetEnviron() {
+func (recv *ApplicationCommandLine) GetEnviron() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := applicationCommandLineGetEnvironFunction_Set()
 	if err == nil {
-		applicationCommandLineGetEnvironFunction.Invoke(inArgs[:], nil)
+		ret = applicationCommandLineGetEnvironFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var applicationCommandLineGetExitStatusFunction *gi.Function
@@ -2309,37 +2319,7 @@ func (recv *BufferedInputStream) GetBufferSize() uint64 {
 
 // UNSUPPORTED : C value 'g_buffered_input_stream_peek' : parameter 'buffer' of type 'nil' not supported
 
-var bufferedInputStreamPeekBufferFunction *gi.Function
-var bufferedInputStreamPeekBufferFunction_Once sync.Once
-
-func bufferedInputStreamPeekBufferFunction_Set() error {
-	var err error
-	bufferedInputStreamPeekBufferFunction_Once.Do(func() {
-		err = bufferedInputStreamObject_Set()
-		if err != nil {
-			return
-		}
-		bufferedInputStreamPeekBufferFunction, err = bufferedInputStreamObject.InvokerNew("peek_buffer")
-	})
-	return err
-}
-
-// PeekBuffer is a representation of the C type g_buffered_input_stream_peek_buffer.
-func (recv *BufferedInputStream) PeekBuffer() uint64 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := bufferedInputStreamPeekBufferFunction_Set()
-	if err == nil {
-		bufferedInputStreamPeekBufferFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint64()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_buffered_input_stream_peek_buffer' : return type not supported
 
 var bufferedInputStreamReadByteFunction *gi.Function
 var bufferedInputStreamReadByteFunction_Once sync.Once
@@ -6781,16 +6761,20 @@ func dBusMessageGetHeaderFieldsFunction_Set() error {
 }
 
 // GetHeaderFields is a representation of the C type g_dbus_message_get_header_fields.
-func (recv *DBusMessage) GetHeaderFields() {
+func (recv *DBusMessage) GetHeaderFields() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := dBusMessageGetHeaderFieldsFunction_Set()
 	if err == nil {
-		dBusMessageGetHeaderFieldsFunction.Invoke(inArgs[:], nil)
+		ret = dBusMessageGetHeaderFieldsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var dBusMessageGetInterfaceFunction *gi.Function
@@ -7757,21 +7741,23 @@ func dBusMessageToBlobFunction_Set() error {
 }
 
 // ToBlob is a representation of the C type g_dbus_message_to_blob.
-func (recv *DBusMessage) ToBlob(capabilities DBusCapabilityFlags) uint64 {
+func (recv *DBusMessage) ToBlob(capabilities DBusCapabilityFlags) (string, uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetInt32(int32(capabilities))
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := dBusMessageToBlobFunction_Set()
 	if err == nil {
-		dBusMessageToBlobFunction.Invoke(inArgs[:], outArgs[:])
+		ret = dBusMessageToBlobFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var dBusMessageToGerrorFunction *gi.Function
@@ -9786,16 +9772,20 @@ func dBusProxyGetCachedPropertyNamesFunction_Set() error {
 }
 
 // GetCachedPropertyNames is a representation of the C type g_dbus_proxy_get_cached_property_names.
-func (recv *DBusProxy) GetCachedPropertyNames() {
+func (recv *DBusProxy) GetCachedPropertyNames() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := dBusProxyGetCachedPropertyNamesFunction_Set()
 	if err == nil {
-		dBusProxyGetCachedPropertyNamesFunction.Invoke(inArgs[:], nil)
+		ret = dBusProxyGetCachedPropertyNamesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var dBusProxyGetConnectionFunction *gi.Function
@@ -10848,21 +10838,23 @@ func dataInputStreamReadLineFunction_Set() error {
 }
 
 // ReadLine is a representation of the C type g_data_input_stream_read_line.
-func (recv *DataInputStream) ReadLine(cancellable *Cancellable) uint64 {
+func (recv *DataInputStream) ReadLine(cancellable *Cancellable) (string, uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetPointer(cancellable.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := dataInputStreamReadLineFunction_Set()
 	if err == nil {
-		dataInputStreamReadLineFunction.Invoke(inArgs[:], outArgs[:])
+		ret = dataInputStreamReadLineFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 // UNSUPPORTED : C value 'g_data_input_stream_read_line_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
@@ -10883,21 +10875,23 @@ func dataInputStreamReadLineFinishFunction_Set() error {
 }
 
 // ReadLineFinish is a representation of the C type g_data_input_stream_read_line_finish.
-func (recv *DataInputStream) ReadLineFinish(result *AsyncResult) uint64 {
+func (recv *DataInputStream) ReadLineFinish(result *AsyncResult) (string, uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetPointer(result.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := dataInputStreamReadLineFinishFunction_Set()
 	if err == nil {
-		dataInputStreamReadLineFinishFunction.Invoke(inArgs[:], outArgs[:])
+		ret = dataInputStreamReadLineFinishFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var dataInputStreamReadLineFinishUtf8Function *gi.Function
@@ -12107,16 +12101,20 @@ func desktopAppInfoGetKeywordsFunction_Set() error {
 }
 
 // GetKeywords is a representation of the C type g_desktop_app_info_get_keywords.
-func (recv *DesktopAppInfo) GetKeywords() {
+func (recv *DesktopAppInfo) GetKeywords() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := desktopAppInfoGetKeywordsFunction_Set()
 	if err == nil {
-		desktopAppInfoGetKeywordsFunction.Invoke(inArgs[:], nil)
+		ret = desktopAppInfoGetKeywordsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var desktopAppInfoGetLocaleStringFunction *gi.Function
@@ -12298,21 +12296,23 @@ func desktopAppInfoGetStringListFunction_Set() error {
 }
 
 // GetStringList is a representation of the C type g_desktop_app_info_get_string_list.
-func (recv *DesktopAppInfo) GetStringList(key string) uint64 {
+func (recv *DesktopAppInfo) GetStringList(key string) ([]string, uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(key)
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := desktopAppInfoGetStringListFunction_Set()
 	if err == nil {
-		desktopAppInfoGetStringListFunction.Invoke(inArgs[:], outArgs[:])
+		ret = desktopAppInfoGetStringListFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var desktopAppInfoHasKeyFunction *gi.Function
@@ -12398,16 +12398,20 @@ func desktopAppInfoListActionsFunction_Set() error {
 }
 
 // ListActions is a representation of the C type g_desktop_app_info_list_actions.
-func (recv *DesktopAppInfo) ListActions() {
+func (recv *DesktopAppInfo) ListActions() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := desktopAppInfoListActionsFunction_Set()
 	if err == nil {
-		desktopAppInfoListActionsFunction.Invoke(inArgs[:], nil)
+		ret = desktopAppInfoListActionsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 // AppInfo returns the AppInfo interface implemented by DesktopAppInfo
@@ -14071,17 +14075,21 @@ func fileInfoGetAttributeStringvFunction_Set() error {
 }
 
 // GetAttributeStringv is a representation of the C type g_file_info_get_attribute_stringv.
-func (recv *FileInfo) GetAttributeStringv(attribute string) {
+func (recv *FileInfo) GetAttributeStringv(attribute string) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(attribute)
 
+	var ret gi.Argument
+
 	err := fileInfoGetAttributeStringvFunction_Set()
 	if err == nil {
-		fileInfoGetAttributeStringvFunction.Invoke(inArgs[:], nil)
+		ret = fileInfoGetAttributeStringvFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var fileInfoGetAttributeTypeFunction *gi.Function
@@ -14809,17 +14817,21 @@ func fileInfoListAttributesFunction_Set() error {
 }
 
 // ListAttributes is a representation of the C type g_file_info_list_attributes.
-func (recv *FileInfo) ListAttributes(nameSpace string) {
+func (recv *FileInfo) ListAttributes(nameSpace string) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(nameSpace)
 
+	var ret gi.Argument
+
 	err := fileInfoListAttributesFunction_Set()
 	if err == nil {
-		fileInfoListAttributesFunction.Invoke(inArgs[:], nil)
+		ret = fileInfoListAttributesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var fileInfoRemoveAttributeFunction *gi.Function
@@ -16361,17 +16373,21 @@ func filenameCompleterGetCompletionsFunction_Set() error {
 }
 
 // GetCompletions is a representation of the C type g_filename_completer_get_completions.
-func (recv *FilenameCompleter) GetCompletions(initialText string) {
+func (recv *FilenameCompleter) GetCompletions(initialText string) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(initialText)
 
+	var ret gi.Argument
+
 	err := filenameCompleterGetCompletionsFunction_Set()
 	if err == nil {
-		filenameCompleterGetCompletionsFunction.Invoke(inArgs[:], nil)
+		ret = filenameCompleterGetCompletionsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var filenameCompleterSetDirsOnlyFunction *gi.Function
@@ -26283,17 +26299,21 @@ func settingsGetStrvFunction_Set() error {
 }
 
 // GetStrv is a representation of the C type g_settings_get_strv.
-func (recv *Settings) GetStrv(key string) {
+func (recv *Settings) GetStrv(key string) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(key)
 
+	var ret gi.Argument
+
 	err := settingsGetStrvFunction_Set()
 	if err == nil {
-		settingsGetStrvFunction.Invoke(inArgs[:], nil)
+		ret = settingsGetStrvFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var settingsGetUintFunction *gi.Function
@@ -26477,16 +26497,20 @@ func settingsListChildrenFunction_Set() error {
 }
 
 // ListChildren is a representation of the C type g_settings_list_children.
-func (recv *Settings) ListChildren() {
+func (recv *Settings) ListChildren() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := settingsListChildrenFunction_Set()
 	if err == nil {
-		settingsListChildrenFunction.Invoke(inArgs[:], nil)
+		ret = settingsListChildrenFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var settingsListKeysFunction *gi.Function
@@ -26505,16 +26529,20 @@ func settingsListKeysFunction_Set() error {
 }
 
 // ListKeys is a representation of the C type g_settings_list_keys.
-func (recv *Settings) ListKeys() {
+func (recv *Settings) ListKeys() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := settingsListKeysFunction_Set()
 	if err == nil {
-		settingsListKeysFunction.Invoke(inArgs[:], nil)
+		ret = settingsListKeysFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var settingsRangeCheckFunction *gi.Function
@@ -35808,16 +35836,20 @@ func themedIconGetNamesFunction_Set() error {
 }
 
 // GetNames is a representation of the C type g_themed_icon_get_names.
-func (recv *ThemedIcon) GetNames() {
+func (recv *ThemedIcon) GetNames() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := themedIconGetNamesFunction_Set()
 	if err == nil {
-		themedIconGetNamesFunction.Invoke(inArgs[:], nil)
+		ret = themedIconGetNamesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var themedIconPrependNameFunction *gi.Function
@@ -38757,69 +38789,9 @@ func (recv *UnixFDList) GetLength() int32 {
 	return retGo
 }
 
-var unixFDListPeekFdsFunction *gi.Function
-var unixFDListPeekFdsFunction_Once sync.Once
+// UNSUPPORTED : C value 'g_unix_fd_list_peek_fds' : return type not supported
 
-func unixFDListPeekFdsFunction_Set() error {
-	var err error
-	unixFDListPeekFdsFunction_Once.Do(func() {
-		err = unixFDListObject_Set()
-		if err != nil {
-			return
-		}
-		unixFDListPeekFdsFunction, err = unixFDListObject.InvokerNew("peek_fds")
-	})
-	return err
-}
-
-// PeekFds is a representation of the C type g_unix_fd_list_peek_fds.
-func (recv *UnixFDList) PeekFds() int32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := unixFDListPeekFdsFunction_Set()
-	if err == nil {
-		unixFDListPeekFdsFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Int32()
-
-	return out0
-}
-
-var unixFDListStealFdsFunction *gi.Function
-var unixFDListStealFdsFunction_Once sync.Once
-
-func unixFDListStealFdsFunction_Set() error {
-	var err error
-	unixFDListStealFdsFunction_Once.Do(func() {
-		err = unixFDListObject_Set()
-		if err != nil {
-			return
-		}
-		unixFDListStealFdsFunction, err = unixFDListObject.InvokerNew("steal_fds")
-	})
-	return err
-}
-
-// StealFds is a representation of the C type g_unix_fd_list_steal_fds.
-func (recv *UnixFDList) StealFds() int32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := unixFDListStealFdsFunction_Set()
-	if err == nil {
-		unixFDListStealFdsFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Int32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_unix_fd_list_steal_fds' : return type not supported
 
 var unixFDMessageObject *gi.Object
 var unixFDMessageObject_Once sync.Once
@@ -39045,37 +39017,7 @@ func (recv *UnixFDMessage) GetFdList() *UnixFDList {
 	return retGo
 }
 
-var unixFDMessageStealFdsFunction *gi.Function
-var unixFDMessageStealFdsFunction_Once sync.Once
-
-func unixFDMessageStealFdsFunction_Set() error {
-	var err error
-	unixFDMessageStealFdsFunction_Once.Do(func() {
-		err = unixFDMessageObject_Set()
-		if err != nil {
-			return
-		}
-		unixFDMessageStealFdsFunction, err = unixFDMessageObject.InvokerNew("steal_fds")
-	})
-	return err
-}
-
-// StealFds is a representation of the C type g_unix_fd_message_steal_fds.
-func (recv *UnixFDMessage) StealFds() int32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := unixFDMessageStealFdsFunction_Set()
-	if err == nil {
-		unixFDMessageStealFdsFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Int32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_unix_fd_message_steal_fds' : return type not supported
 
 var unixInputStreamObject *gi.Object
 var unixInputStreamObject_Once sync.Once
@@ -40148,16 +40090,20 @@ func vfsGetSupportedUriSchemesFunction_Set() error {
 }
 
 // GetSupportedUriSchemes is a representation of the C type g_vfs_get_supported_uri_schemes.
-func (recv *Vfs) GetSupportedUriSchemes() {
+func (recv *Vfs) GetSupportedUriSchemes() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := vfsGetSupportedUriSchemesFunction_Set()
 	if err == nil {
-		vfsGetSupportedUriSchemesFunction.Invoke(inArgs[:], nil)
+		ret = vfsGetSupportedUriSchemesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var vfsIsActiveFunction *gi.Function

@@ -935,11 +935,11 @@ func ErrorTrapPush() {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_event_get' : return type 'Event' not supported
+// UNSUPPORTED : C value 'gdk_event_get' : return type not supported
 
 // UNSUPPORTED : C value 'gdk_event_handler_set' : parameter 'func' of type 'EventFunc' not supported
 
-// UNSUPPORTED : C value 'gdk_event_peek' : return type 'Event' not supported
+// UNSUPPORTED : C value 'gdk_event_peek' : return type not supported
 
 var eventRequestMotionsFunction *gi.Function
 var eventRequestMotionsFunction_Once sync.Once

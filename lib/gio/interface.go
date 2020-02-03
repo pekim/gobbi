@@ -741,16 +741,20 @@ func actionGroupListActionsFunction_Set() error {
 }
 
 // ListActions is a representation of the C type g_action_group_list_actions.
-func (recv *ActionGroup) ListActions() {
+func (recv *ActionGroup) ListActions() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := actionGroupListActionsFunction_Set()
 	if err == nil {
-		actionGroupListActionsFunction.Invoke(inArgs[:], nil)
+		ret = actionGroupListActionsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var actionGroupQueryActionFunction *gi.Function
@@ -1502,16 +1506,20 @@ func appInfoGetSupportedTypesFunction_Set() error {
 }
 
 // GetSupportedTypes is a representation of the C type g_app_info_get_supported_types.
-func (recv *AppInfo) GetSupportedTypes() {
+func (recv *AppInfo) GetSupportedTypes() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := appInfoGetSupportedTypesFunction_Set()
 	if err == nil {
-		appInfoGetSupportedTypesFunction.Invoke(inArgs[:], nil)
+		ret = appInfoGetSupportedTypesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var appInfoLaunchFunction *gi.Function
@@ -3254,16 +3262,20 @@ func driveEnumerateIdentifiersFunction_Set() error {
 }
 
 // EnumerateIdentifiers is a representation of the C type g_drive_enumerate_identifiers.
-func (recv *Drive) EnumerateIdentifiers() {
+func (recv *Drive) EnumerateIdentifiers() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := driveEnumerateIdentifiersFunction_Set()
 	if err == nil {
-		driveEnumerateIdentifiersFunction.Invoke(inArgs[:], nil)
+		ret = driveEnumerateIdentifiersFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var driveGetIconFunction *gi.Function
@@ -8940,17 +8952,21 @@ func mountGuessContentTypeFinishFunction_Set() error {
 }
 
 // GuessContentTypeFinish is a representation of the C type g_mount_guess_content_type_finish.
-func (recv *Mount) GuessContentTypeFinish(result *AsyncResult) {
+func (recv *Mount) GuessContentTypeFinish(result *AsyncResult) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetPointer(result.Native())
 
+	var ret gi.Argument
+
 	err := mountGuessContentTypeFinishFunction_Set()
 	if err == nil {
-		mountGuessContentTypeFinishFunction.Invoke(inArgs[:], nil)
+		ret = mountGuessContentTypeFinishFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var mountGuessContentTypeSyncFunction *gi.Function
@@ -8969,18 +8985,22 @@ func mountGuessContentTypeSyncFunction_Set() error {
 }
 
 // GuessContentTypeSync is a representation of the C type g_mount_guess_content_type_sync.
-func (recv *Mount) GuessContentTypeSync(forceRescan bool, cancellable *Cancellable) {
+func (recv *Mount) GuessContentTypeSync(forceRescan bool, cancellable *Cancellable) []string {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetBoolean(forceRescan)
 	inArgs[2].SetPointer(cancellable.Native())
 
+	var ret gi.Argument
+
 	err := mountGuessContentTypeSyncFunction_Set()
 	if err == nil {
-		mountGuessContentTypeSyncFunction.Invoke(inArgs[:], nil)
+		ret = mountGuessContentTypeSyncFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var mountIsShadowedFunction *gi.Function
@@ -10000,18 +10020,22 @@ func proxyResolverLookupFunction_Set() error {
 }
 
 // Lookup is a representation of the C type g_proxy_resolver_lookup.
-func (recv *ProxyResolver) Lookup(uri string, cancellable *Cancellable) {
+func (recv *ProxyResolver) Lookup(uri string, cancellable *Cancellable) []string {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(uri)
 	inArgs[2].SetPointer(cancellable.Native())
 
+	var ret gi.Argument
+
 	err := proxyResolverLookupFunction_Set()
 	if err == nil {
-		proxyResolverLookupFunction.Invoke(inArgs[:], nil)
+		ret = proxyResolverLookupFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 // UNSUPPORTED : C value 'g_proxy_resolver_lookup_async' : parameter 'callback' of type 'AsyncReadyCallback' not supported
@@ -10032,17 +10056,21 @@ func proxyResolverLookupFinishFunction_Set() error {
 }
 
 // LookupFinish is a representation of the C type g_proxy_resolver_lookup_finish.
-func (recv *ProxyResolver) LookupFinish(result *AsyncResult) {
+func (recv *ProxyResolver) LookupFinish(result *AsyncResult) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetPointer(result.Native())
 
+	var ret gi.Argument
+
 	err := proxyResolverLookupFinishFunction_Set()
 	if err == nil {
-		proxyResolverLookupFinishFunction.Invoke(inArgs[:], nil)
+		ret = proxyResolverLookupFinishFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var remoteActionGroupInterface *gi.Interface
@@ -11398,16 +11426,20 @@ func volumeEnumerateIdentifiersFunction_Set() error {
 }
 
 // EnumerateIdentifiers is a representation of the C type g_volume_enumerate_identifiers.
-func (recv *Volume) EnumerateIdentifiers() {
+func (recv *Volume) EnumerateIdentifiers() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := volumeEnumerateIdentifiersFunction_Set()
 	if err == nil {
-		volumeEnumerateIdentifiersFunction.Invoke(inArgs[:], nil)
+		ret = volumeEnumerateIdentifiersFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var volumeGetActivationRootFunction *gi.Function

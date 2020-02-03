@@ -2884,37 +2884,7 @@ func (recv *Layout) GetLinesReadonly() *glib.SList {
 
 // UNSUPPORTED : C value 'pango_layout_get_log_attrs' : parameter 'attrs' of type 'nil' not supported
 
-var layoutGetLogAttrsReadonlyFunction *gi.Function
-var layoutGetLogAttrsReadonlyFunction_Once sync.Once
-
-func layoutGetLogAttrsReadonlyFunction_Set() error {
-	var err error
-	layoutGetLogAttrsReadonlyFunction_Once.Do(func() {
-		err = layoutObject_Set()
-		if err != nil {
-			return
-		}
-		layoutGetLogAttrsReadonlyFunction, err = layoutObject.InvokerNew("get_log_attrs_readonly")
-	})
-	return err
-}
-
-// GetLogAttrsReadonly is a representation of the C type pango_layout_get_log_attrs_readonly.
-func (recv *Layout) GetLogAttrsReadonly() int32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := layoutGetLogAttrsReadonlyFunction_Set()
-	if err == nil {
-		layoutGetLogAttrsReadonlyFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Int32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'pango_layout_get_log_attrs_readonly' : return type not supported
 
 var layoutGetPixelExtentsFunction *gi.Function
 var layoutGetPixelExtentsFunction_Once sync.Once

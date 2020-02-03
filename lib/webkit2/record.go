@@ -3929,16 +3929,20 @@ func mimeInfoGetExtensionsFunction_Set() error {
 }
 
 // GetExtensions is a representation of the C type webkit_mime_info_get_extensions.
-func (recv *MimeInfo) GetExtensions() {
+func (recv *MimeInfo) GetExtensions() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := mimeInfoGetExtensionsFunction_Set()
 	if err == nil {
-		mimeInfoGetExtensionsFunction.Invoke(inArgs[:], nil)
+		ret = mimeInfoGetExtensionsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var mimeInfoGetMimeTypeFunction *gi.Function

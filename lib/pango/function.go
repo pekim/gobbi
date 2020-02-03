@@ -1686,16 +1686,20 @@ func splitFileListFunction_Set() error {
 }
 
 // SplitFileList is a representation of the C type pango_split_file_list.
-func SplitFileList(str string) {
+func SplitFileList(str string) []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(str)
 
+	var ret gi.Argument
+
 	err := splitFileListFunction_Set()
 	if err == nil {
-		splitFileListFunction.Invoke(inArgs[:], nil)
+		ret = splitFileListFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var trimStringFunction *gi.Function

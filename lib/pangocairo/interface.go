@@ -163,7 +163,7 @@ func (recv *FontMap) CreateContext() *pango.Context {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'pango_cairo_font_map_get_font_type' : return type 'cairo.FontType' not supported
+// UNSUPPORTED : C value 'pango_cairo_font_map_get_font_type' : return type not supported
 
 var fontMapGetResolutionFunction *gi.Function
 var fontMapGetResolutionFunction_Once sync.Once

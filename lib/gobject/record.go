@@ -1145,37 +1145,7 @@ func (recv *ObjectClass) InstallProperty(propertyId uint32, pspec *ParamSpec) {
 	return
 }
 
-var objectClassListPropertiesFunction *gi.Function
-var objectClassListPropertiesFunction_Once sync.Once
-
-func objectClassListPropertiesFunction_Set() error {
-	var err error
-	objectClassListPropertiesFunction_Once.Do(func() {
-		err = objectClassStruct_Set()
-		if err != nil {
-			return
-		}
-		objectClassListPropertiesFunction, err = objectClassStruct.InvokerNew("list_properties")
-	})
-	return err
-}
-
-// ListProperties is a representation of the C type g_object_class_list_properties.
-func (recv *ObjectClass) ListProperties() uint32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := objectClassListPropertiesFunction_Set()
-	if err == nil {
-		objectClassListPropertiesFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_object_class_list_properties' : return type not supported
 
 var objectClassOverridePropertyFunction *gi.Function
 var objectClassOverridePropertyFunction_Once sync.Once
@@ -1459,38 +1429,7 @@ func (recv *ParamSpecPool) Insert(pspec *ParamSpec, ownerType int64) {
 	return
 }
 
-var paramSpecPoolListFunction *gi.Function
-var paramSpecPoolListFunction_Once sync.Once
-
-func paramSpecPoolListFunction_Set() error {
-	var err error
-	paramSpecPoolListFunction_Once.Do(func() {
-		err = paramSpecPoolStruct_Set()
-		if err != nil {
-			return
-		}
-		paramSpecPoolListFunction, err = paramSpecPoolStruct.InvokerNew("list")
-	})
-	return err
-}
-
-// List is a representation of the C type g_param_spec_pool_list.
-func (recv *ParamSpecPool) List(ownerType int64) uint32 {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetInt64(ownerType)
-
-	var outArgs [1]gi.Argument
-
-	err := paramSpecPoolListFunction_Set()
-	if err == nil {
-		paramSpecPoolListFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_param_spec_pool_list' : return type not supported
 
 var paramSpecPoolListOwnedFunction *gi.Function
 var paramSpecPoolListOwnedFunction_Once sync.Once

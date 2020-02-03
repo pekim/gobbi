@@ -1171,34 +1171,7 @@ func (recv *CellAccessibleParent) GetChildIndex(cell *CellAccessible) int32 {
 	return retGo
 }
 
-var cellAccessibleParentGetColumnHeaderCellsFunction *gi.Function
-var cellAccessibleParentGetColumnHeaderCellsFunction_Once sync.Once
-
-func cellAccessibleParentGetColumnHeaderCellsFunction_Set() error {
-	var err error
-	cellAccessibleParentGetColumnHeaderCellsFunction_Once.Do(func() {
-		err = cellAccessibleParentInterface_Set()
-		if err != nil {
-			return
-		}
-		cellAccessibleParentGetColumnHeaderCellsFunction, err = cellAccessibleParentInterface.InvokerNew("get_column_header_cells")
-	})
-	return err
-}
-
-// GetColumnHeaderCells is a representation of the C type gtk_cell_accessible_parent_get_column_header_cells.
-func (recv *CellAccessibleParent) GetColumnHeaderCells(cell *CellAccessible) {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetPointer(cell.Native())
-
-	err := cellAccessibleParentGetColumnHeaderCellsFunction_Set()
-	if err == nil {
-		cellAccessibleParentGetColumnHeaderCellsFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'gtk_cell_accessible_parent_get_column_header_cells' : return type not supported
 
 var cellAccessibleParentGetRendererStateFunction *gi.Function
 var cellAccessibleParentGetRendererStateFunction_Once sync.Once
@@ -1233,34 +1206,7 @@ func (recv *CellAccessibleParent) GetRendererState(cell *CellAccessible) CellRen
 	return retGo
 }
 
-var cellAccessibleParentGetRowHeaderCellsFunction *gi.Function
-var cellAccessibleParentGetRowHeaderCellsFunction_Once sync.Once
-
-func cellAccessibleParentGetRowHeaderCellsFunction_Set() error {
-	var err error
-	cellAccessibleParentGetRowHeaderCellsFunction_Once.Do(func() {
-		err = cellAccessibleParentInterface_Set()
-		if err != nil {
-			return
-		}
-		cellAccessibleParentGetRowHeaderCellsFunction, err = cellAccessibleParentInterface.InvokerNew("get_row_header_cells")
-	})
-	return err
-}
-
-// GetRowHeaderCells is a representation of the C type gtk_cell_accessible_parent_get_row_header_cells.
-func (recv *CellAccessibleParent) GetRowHeaderCells(cell *CellAccessible) {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetPointer(cell.Native())
-
-	err := cellAccessibleParentGetRowHeaderCellsFunction_Set()
-	if err == nil {
-		cellAccessibleParentGetRowHeaderCellsFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'gtk_cell_accessible_parent_get_row_header_cells' : return type not supported
 
 var cellAccessibleParentGrabFocusFunction *gi.Function
 var cellAccessibleParentGrabFocusFunction_Once sync.Once
@@ -5978,20 +5924,22 @@ func recentChooserGetUrisFunction_Set() error {
 }
 
 // GetUris is a representation of the C type gtk_recent_chooser_get_uris.
-func (recv *RecentChooser) GetUris() uint64 {
+func (recv *RecentChooser) GetUris() ([]string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := recentChooserGetUrisFunction_Set()
 	if err == nil {
-		recentChooserGetUrisFunction.Invoke(inArgs[:], outArgs[:])
+		ret = recentChooserGetUrisFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var recentChooserListFiltersFunction *gi.Function
@@ -7025,7 +6973,7 @@ func (recv *ToolShell) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'gtk_tool_shell_get_ellipsize_mode' : return type 'Pango.EllipsizeMode' not supported
+// UNSUPPORTED : C value 'gtk_tool_shell_get_ellipsize_mode' : return type not supported
 
 var toolShellGetIconSizeFunction *gi.Function
 var toolShellGetIconSizeFunction_Once sync.Once

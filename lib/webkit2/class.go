@@ -2821,17 +2821,21 @@ func cookieManagerGetDomainsWithCookiesFinishFunction_Set() error {
 }
 
 // GetDomainsWithCookiesFinish is a representation of the C type webkit_cookie_manager_get_domains_with_cookies_finish.
-func (recv *CookieManager) GetDomainsWithCookiesFinish(result *gio.AsyncResult) {
+func (recv *CookieManager) GetDomainsWithCookiesFinish(result *gio.AsyncResult) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetPointer(result.Native())
 
+	var ret gi.Argument
+
 	err := cookieManagerGetDomainsWithCookiesFinishFunction_Set()
 	if err == nil {
-		cookieManagerGetDomainsWithCookiesFinishFunction.Invoke(inArgs[:], nil)
+		ret = cookieManagerGetDomainsWithCookiesFinishFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var cookieManagerSetAcceptPolicyFunction *gi.Function
@@ -4151,16 +4155,20 @@ func fileChooserRequestGetMimeTypesFunction_Set() error {
 }
 
 // GetMimeTypes is a representation of the C type webkit_file_chooser_request_get_mime_types.
-func (recv *FileChooserRequest) GetMimeTypes() {
+func (recv *FileChooserRequest) GetMimeTypes() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := fileChooserRequestGetMimeTypesFunction_Set()
 	if err == nil {
-		fileChooserRequestGetMimeTypesFunction.Invoke(inArgs[:], nil)
+		ret = fileChooserRequestGetMimeTypesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var fileChooserRequestGetMimeTypesFilterFunction *gi.Function
@@ -4243,16 +4251,20 @@ func fileChooserRequestGetSelectedFilesFunction_Set() error {
 }
 
 // GetSelectedFiles is a representation of the C type webkit_file_chooser_request_get_selected_files.
-func (recv *FileChooserRequest) GetSelectedFiles() {
+func (recv *FileChooserRequest) GetSelectedFiles() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := fileChooserRequestGetSelectedFilesFunction_Set()
 	if err == nil {
-		fileChooserRequestGetSelectedFilesFunction.Invoke(inArgs[:], nil)
+		ret = fileChooserRequestGetSelectedFilesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var fileChooserRequestSelectFilesFunction *gi.Function
@@ -12829,17 +12841,21 @@ func userContentFilterStoreFetchIdentifiersFinishFunction_Set() error {
 }
 
 // FetchIdentifiersFinish is a representation of the C type webkit_user_content_filter_store_fetch_identifiers_finish.
-func (recv *UserContentFilterStore) FetchIdentifiersFinish(result *gio.AsyncResult) {
+func (recv *UserContentFilterStore) FetchIdentifiersFinish(result *gio.AsyncResult) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetPointer(result.Native())
 
+	var ret gi.Argument
+
 	err := userContentFilterStoreFetchIdentifiersFinishFunction_Set()
 	if err == nil {
-		userContentFilterStoreFetchIdentifiersFinishFunction.Invoke(inArgs[:], nil)
+		ret = userContentFilterStoreFetchIdentifiersFinishFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var userContentFilterStoreGetPathFunction *gi.Function
@@ -14215,16 +14231,20 @@ func webContextGetSpellCheckingLanguagesFunction_Set() error {
 }
 
 // GetSpellCheckingLanguages is a representation of the C type webkit_web_context_get_spell_checking_languages.
-func (recv *WebContext) GetSpellCheckingLanguages() {
+func (recv *WebContext) GetSpellCheckingLanguages() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := webContextGetSpellCheckingLanguagesFunction_Set()
 	if err == nil {
-		webContextGetSpellCheckingLanguagesFunction.Invoke(inArgs[:], nil)
+		ret = webContextGetSpellCheckingLanguagesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var webContextGetTlsErrorsPolicyFunction *gi.Function
@@ -15539,21 +15559,23 @@ func webResourceGetDataFinishFunction_Set() error {
 }
 
 // GetDataFinish is a representation of the C type webkit_web_resource_get_data_finish.
-func (recv *WebResource) GetDataFinish(result *gio.AsyncResult) uint64 {
+func (recv *WebResource) GetDataFinish(result *gio.AsyncResult) (string, uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetPointer(result.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := webResourceGetDataFinishFunction_Set()
 	if err == nil {
-		webResourceGetDataFinishFunction.Invoke(inArgs[:], outArgs[:])
+		ret = webResourceGetDataFinishFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var webResourceGetResponseFunction *gi.Function

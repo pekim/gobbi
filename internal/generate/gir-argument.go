@@ -36,12 +36,16 @@ func (a *Argument) transferOwnership() *bool {
 }
 
 func (a Argument) supportedAsOutParameter() bool {
-	if a.Type == nil || a.Type.Name == "none" {
+	if a.Array == nil && (a.Type == nil || a.Type.Name == "none") {
 		// return type is void
 		return true
 	}
 
-	if a.Type.isAlias() {
+	if a.Array == nil && a.Type == nil {
+		return false
+	}
+
+	if a.Type != nil && a.Type.isAlias() {
 		alias, _ := a.Type.namespace.Aliases.byName(a.Type.Name)
 		if !strings.HasPrefix(alias.Type.Name, "g") {
 			// Alias that is not a simple type is not yet supported.

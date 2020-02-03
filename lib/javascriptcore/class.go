@@ -1932,16 +1932,20 @@ func valueObjectEnumeratePropertiesFunction_Set() error {
 }
 
 // ObjectEnumerateProperties is a representation of the C type jsc_value_object_enumerate_properties.
-func (recv *Value) ObjectEnumerateProperties() {
+func (recv *Value) ObjectEnumerateProperties() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := valueObjectEnumeratePropertiesFunction_Set()
 	if err == nil {
-		valueObjectEnumeratePropertiesFunction.Invoke(inArgs[:], nil)
+		ret = valueObjectEnumeratePropertiesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var valueObjectGetPropertyFunction *gi.Function

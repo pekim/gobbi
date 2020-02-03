@@ -2583,33 +2583,7 @@ func SignalHasHandlerPending(instance *Object, signalId uint32, detail glib.Quar
 	return retGo
 }
 
-var signalListIdsFunction *gi.Function
-var signalListIdsFunction_Once sync.Once
-
-func signalListIdsFunction_Set() error {
-	var err error
-	signalListIdsFunction_Once.Do(func() {
-		signalListIdsFunction, err = gi.FunctionInvokerNew("GObject", "signal_list_ids")
-	})
-	return err
-}
-
-// SignalListIds is a representation of the C type g_signal_list_ids.
-func SignalListIds(itype int64) uint32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetInt64(itype)
-
-	var outArgs [1]gi.Argument
-
-	err := signalListIdsFunction_Set()
-	if err == nil {
-		signalListIdsFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_signal_list_ids' : return type not supported
 
 var signalLookupFunction *gi.Function
 var signalLookupFunction_Once sync.Once
@@ -3317,33 +3291,7 @@ func TypeCheckValueHolds(value *Value, type_ int64) bool {
 	return retGo
 }
 
-var typeChildrenFunction *gi.Function
-var typeChildrenFunction_Once sync.Once
-
-func typeChildrenFunction_Set() error {
-	var err error
-	typeChildrenFunction_Once.Do(func() {
-		typeChildrenFunction, err = gi.FunctionInvokerNew("GObject", "type_children")
-	})
-	return err
-}
-
-// TypeChildren is a representation of the C type g_type_children.
-func TypeChildren(type_ int64) uint32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetInt64(type_)
-
-	var outArgs [1]gi.Argument
-
-	err := typeChildrenFunction_Set()
-	if err == nil {
-		typeChildrenFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_type_children' : return type not supported
 
 var typeClassAdjustPrivateOffsetFunction *gi.Function
 var typeClassAdjustPrivateOffsetFunction_Once sync.Once
@@ -3960,61 +3908,9 @@ func TypeInterfacePeek(instanceClass *TypeClass, ifaceType int64) *TypeInterface
 	return retGo
 }
 
-var typeInterfacePrerequisitesFunction *gi.Function
-var typeInterfacePrerequisitesFunction_Once sync.Once
+// UNSUPPORTED : C value 'g_type_interface_prerequisites' : return type not supported
 
-func typeInterfacePrerequisitesFunction_Set() error {
-	var err error
-	typeInterfacePrerequisitesFunction_Once.Do(func() {
-		typeInterfacePrerequisitesFunction, err = gi.FunctionInvokerNew("GObject", "type_interface_prerequisites")
-	})
-	return err
-}
-
-// TypeInterfacePrerequisites is a representation of the C type g_type_interface_prerequisites.
-func TypeInterfacePrerequisites(interfaceType int64) uint32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetInt64(interfaceType)
-
-	var outArgs [1]gi.Argument
-
-	err := typeInterfacePrerequisitesFunction_Set()
-	if err == nil {
-		typeInterfacePrerequisitesFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint32()
-
-	return out0
-}
-
-var typeInterfacesFunction *gi.Function
-var typeInterfacesFunction_Once sync.Once
-
-func typeInterfacesFunction_Set() error {
-	var err error
-	typeInterfacesFunction_Once.Do(func() {
-		typeInterfacesFunction, err = gi.FunctionInvokerNew("GObject", "type_interfaces")
-	})
-	return err
-}
-
-// TypeInterfaces is a representation of the C type g_type_interfaces.
-func TypeInterfaces(type_ int64) uint32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetInt64(type_)
-
-	var outArgs [1]gi.Argument
-
-	err := typeInterfacesFunction_Set()
-	if err == nil {
-		typeInterfacesFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_type_interfaces' : return type not supported
 
 var typeIsAFunction *gi.Function
 var typeIsAFunction_Once sync.Once

@@ -1398,20 +1398,22 @@ func base64DecodeFunction_Set() error {
 }
 
 // Base64Decode is a representation of the C type g_base64_decode.
-func Base64Decode(text string) uint64 {
+func Base64Decode(text string) (string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(text)
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := base64DecodeFunction_Set()
 	if err == nil {
-		base64DecodeFunction.Invoke(inArgs[:], outArgs[:])
+		ret = base64DecodeFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var base64DecodeInplaceFunction *gi.Function
@@ -1866,27 +1868,7 @@ func BuildPathv(separator string, args []string) string {
 
 // UNSUPPORTED : C value 'g_byte_array_free_to_bytes' : parameter 'array' of type 'nil' not supported
 
-var byteArrayNewFunction *gi.Function
-var byteArrayNewFunction_Once sync.Once
-
-func byteArrayNewFunction_Set() error {
-	var err error
-	byteArrayNewFunction_Once.Do(func() {
-		byteArrayNewFunction, err = gi.FunctionInvokerNew("GLib", "byte_array_new")
-	})
-	return err
-}
-
-// ByteArrayNew is a representation of the C type g_byte_array_new.
-func ByteArrayNew() {
-
-	err := byteArrayNewFunction_Set()
-	if err == nil {
-		byteArrayNewFunction.Invoke(nil, nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'g_byte_array_new' : return type not supported
 
 // UNSUPPORTED : C value 'g_byte_array_new_take' : parameter 'data' of type 'nil' not supported
 
@@ -2288,7 +2270,7 @@ func convertFunction_Set() error {
 }
 
 // Convert is a representation of the C type g_convert.
-func Convert(str string, toCodeset string, fromCodeset string) (uint64, uint64) {
+func Convert(str string, toCodeset string, fromCodeset string) (string, uint64, uint64) {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(int32(len(str)))
@@ -2296,16 +2278,18 @@ func Convert(str string, toCodeset string, fromCodeset string) (uint64, uint64) 
 	inArgs[3].SetString(fromCodeset)
 
 	var outArgs [2]gi.Argument
+	var ret gi.Argument
 
 	err := convertFunction_Set()
 	if err == nil {
-		convertFunction.Invoke(inArgs[:], outArgs[:])
+		ret = convertFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(true)
 	out0 := outArgs[0].Uint64()
 	out1 := outArgs[1].Uint64()
 
-	return out0, out1
+	return retGo, out0, out1
 }
 
 var convertErrorQuarkFunction *gi.Function
@@ -2346,7 +2330,7 @@ func convertWithFallbackFunction_Set() error {
 }
 
 // ConvertWithFallback is a representation of the C type g_convert_with_fallback.
-func ConvertWithFallback(str string, toCodeset string, fromCodeset string, fallback string) (uint64, uint64) {
+func ConvertWithFallback(str string, toCodeset string, fromCodeset string, fallback string) (string, uint64, uint64) {
 	var inArgs [5]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(int32(len(str)))
@@ -2355,16 +2339,18 @@ func ConvertWithFallback(str string, toCodeset string, fromCodeset string, fallb
 	inArgs[4].SetString(fallback)
 
 	var outArgs [2]gi.Argument
+	var ret gi.Argument
 
 	err := convertWithFallbackFunction_Set()
 	if err == nil {
-		convertWithFallbackFunction.Invoke(inArgs[:], outArgs[:])
+		ret = convertWithFallbackFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(true)
 	out0 := outArgs[0].Uint64()
 	out1 := outArgs[1].Uint64()
 
-	return out0, out1
+	return retGo, out0, out1
 }
 
 var convertWithIconvFunction *gi.Function
@@ -2379,23 +2365,25 @@ func convertWithIconvFunction_Set() error {
 }
 
 // ConvertWithIconv is a representation of the C type g_convert_with_iconv.
-func ConvertWithIconv(str string, converter *IConv) (uint64, uint64) {
+func ConvertWithIconv(str string, converter *IConv) (string, uint64, uint64) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(str)
 	inArgs[1].SetInt32(int32(len(str)))
 	inArgs[2].SetPointer(converter.Native())
 
 	var outArgs [2]gi.Argument
+	var ret gi.Argument
 
 	err := convertWithIconvFunction_Set()
 	if err == nil {
-		convertWithIconvFunction.Invoke(inArgs[:], outArgs[:])
+		ret = convertWithIconvFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(true)
 	out0 := outArgs[0].Uint64()
 	out1 := outArgs[1].Uint64()
 
-	return out0, out1
+	return retGo, out0, out1
 }
 
 var datalistClearFunction *gi.Function
@@ -3438,19 +3426,23 @@ func environSetenvFunction_Set() error {
 }
 
 // EnvironSetenv is a representation of the C type g_environ_setenv.
-func EnvironSetenv(envp []string, variable string, value string, overwrite bool) {
+func EnvironSetenv(envp []string, variable string, value string, overwrite bool) []string {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetStringArray(envp)
 	inArgs[1].SetString(variable)
 	inArgs[2].SetString(value)
 	inArgs[3].SetBoolean(overwrite)
 
+	var ret gi.Argument
+
 	err := environSetenvFunction_Set()
 	if err == nil {
-		environSetenvFunction.Invoke(inArgs[:], nil)
+		ret = environSetenvFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var environUnsetenvFunction *gi.Function
@@ -3465,17 +3457,21 @@ func environUnsetenvFunction_Set() error {
 }
 
 // EnvironUnsetenv is a representation of the C type g_environ_unsetenv.
-func EnvironUnsetenv(envp []string, variable string) {
+func EnvironUnsetenv(envp []string, variable string) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetStringArray(envp)
 	inArgs[1].SetString(variable)
 
+	var ret gi.Argument
+
 	err := environUnsetenvFunction_Set()
 	if err == nil {
-		environUnsetenvFunction.Invoke(inArgs[:], nil)
+		ret = environUnsetenvFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var fileErrorFromErrnoFunction *gi.Function
@@ -4139,14 +4135,18 @@ func getEnvironFunction_Set() error {
 }
 
 // GetEnviron is a representation of the C type g_get_environ.
-func GetEnviron() {
+func GetEnviron() []string {
+
+	var ret gi.Argument
 
 	err := getEnvironFunction_Set()
 	if err == nil {
-		getEnvironFunction.Invoke(nil, nil)
+		ret = getEnvironFunction.Invoke(nil, nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var getFilenameCharsetsFunction *gi.Function
@@ -4241,14 +4241,18 @@ func getLanguageNamesFunction_Set() error {
 }
 
 // GetLanguageNames is a representation of the C type g_get_language_names.
-func GetLanguageNames() {
+func GetLanguageNames() []string {
+
+	var ret gi.Argument
 
 	err := getLanguageNamesFunction_Set()
 	if err == nil {
-		getLanguageNamesFunction.Invoke(nil, nil)
+		ret = getLanguageNamesFunction.Invoke(nil, nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var getLanguageNamesWithCategoryFunction *gi.Function
@@ -4263,16 +4267,20 @@ func getLanguageNamesWithCategoryFunction_Set() error {
 }
 
 // GetLanguageNamesWithCategory is a representation of the C type g_get_language_names_with_category.
-func GetLanguageNamesWithCategory(categoryName string) {
+func GetLanguageNamesWithCategory(categoryName string) []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(categoryName)
 
+	var ret gi.Argument
+
 	err := getLanguageNamesWithCategoryFunction_Set()
 	if err == nil {
-		getLanguageNamesWithCategoryFunction.Invoke(inArgs[:], nil)
+		ret = getLanguageNamesWithCategoryFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var getLocaleVariantsFunction *gi.Function
@@ -4287,16 +4295,20 @@ func getLocaleVariantsFunction_Set() error {
 }
 
 // GetLocaleVariants is a representation of the C type g_get_locale_variants.
-func GetLocaleVariants(locale string) {
+func GetLocaleVariants(locale string) []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(locale)
 
+	var ret gi.Argument
+
 	err := getLocaleVariantsFunction_Set()
 	if err == nil {
-		getLocaleVariantsFunction.Invoke(inArgs[:], nil)
+		ret = getLocaleVariantsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var getMonotonicTimeFunction *gi.Function
@@ -4441,14 +4453,18 @@ func getSystemConfigDirsFunction_Set() error {
 }
 
 // GetSystemConfigDirs is a representation of the C type g_get_system_config_dirs.
-func GetSystemConfigDirs() {
+func GetSystemConfigDirs() []string {
+
+	var ret gi.Argument
 
 	err := getSystemConfigDirsFunction_Set()
 	if err == nil {
-		getSystemConfigDirsFunction.Invoke(nil, nil)
+		ret = getSystemConfigDirsFunction.Invoke(nil, nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var getSystemDataDirsFunction *gi.Function
@@ -4463,14 +4479,18 @@ func getSystemDataDirsFunction_Set() error {
 }
 
 // GetSystemDataDirs is a representation of the C type g_get_system_data_dirs.
-func GetSystemDataDirs() {
+func GetSystemDataDirs() []string {
+
+	var ret gi.Argument
 
 	err := getSystemDataDirsFunction_Set()
 	if err == nil {
-		getSystemDataDirsFunction.Invoke(nil, nil)
+		ret = getSystemDataDirsFunction.Invoke(nil, nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var getTmpDirFunction *gi.Function
@@ -5422,14 +5442,18 @@ func listenvFunction_Set() error {
 }
 
 // Listenv is a representation of the C type g_listenv.
-func Listenv() {
+func Listenv() []string {
+
+	var ret gi.Argument
 
 	err := listenvFunction_Set()
 	if err == nil {
-		listenvFunction.Invoke(nil, nil)
+		ret = listenvFunction.Invoke(nil, nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var localeFromUtf8Function *gi.Function
@@ -5444,22 +5468,24 @@ func localeFromUtf8Function_Set() error {
 }
 
 // LocaleFromUtf8 is a representation of the C type g_locale_from_utf8.
-func LocaleFromUtf8(utf8string string, len int32) (uint64, uint64) {
+func LocaleFromUtf8(utf8string string, len int32) (string, uint64, uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(utf8string)
 	inArgs[1].SetInt32(len)
 
 	var outArgs [2]gi.Argument
+	var ret gi.Argument
 
 	err := localeFromUtf8Function_Set()
 	if err == nil {
-		localeFromUtf8Function.Invoke(inArgs[:], outArgs[:])
+		ret = localeFromUtf8Function.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(true)
 	out0 := outArgs[0].Uint64()
 	out1 := outArgs[1].Uint64()
 
-	return out0, out1
+	return retGo, out0, out1
 }
 
 var localeToUtf8Function *gi.Function
@@ -7695,19 +7721,23 @@ func regexSplitSimpleFunction_Set() error {
 }
 
 // RegexSplitSimple is a representation of the C type g_regex_split_simple.
-func RegexSplitSimple(pattern string, string_ string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) {
+func RegexSplitSimple(pattern string, string_ string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) []string {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetString(pattern)
 	inArgs[1].SetString(string_)
 	inArgs[2].SetInt32(int32(compileOptions))
 	inArgs[3].SetInt32(int32(matchOptions))
 
+	var ret gi.Argument
+
 	err := regexSplitSimpleFunction_Set()
 	if err == nil {
-		regexSplitSimpleFunction.Invoke(inArgs[:], nil)
+		ret = regexSplitSimpleFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var reloadUserSpecialDirsCacheFunction *gi.Function
@@ -8995,21 +9025,23 @@ func strTokenizeAndFoldFunction_Set() error {
 }
 
 // StrTokenizeAndFold is a representation of the C type g_str_tokenize_and_fold.
-func StrTokenizeAndFold(string_ string, translitLocale string) []string {
+func StrTokenizeAndFold(string_ string, translitLocale string) ([]string, []string) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(string_)
 	inArgs[1].SetString(translitLocale)
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := strTokenizeAndFoldFunction_Set()
 	if err == nil {
-		strTokenizeAndFoldFunction.Invoke(inArgs[:], outArgs[:])
+		ret = strTokenizeAndFoldFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].StringArray(true)
 
-	return out0
+	return retGo, out0
 }
 
 var strcanonFunction *gi.Function
@@ -9288,16 +9320,20 @@ func strdupvFunction_Set() error {
 }
 
 // Strdupv is a representation of the C type g_strdupv.
-func Strdupv(strArray string) {
+func Strdupv(strArray string) []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(strArray)
 
+	var ret gi.Argument
+
 	err := strdupvFunction_Set()
 	if err == nil {
-		strdupvFunction.Invoke(inArgs[:], nil)
+		ret = strdupvFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var strerrorFunction *gi.Function
@@ -9801,18 +9837,22 @@ func strsplitFunction_Set() error {
 }
 
 // Strsplit is a representation of the C type g_strsplit.
-func Strsplit(string_ string, delimiter string, maxTokens int32) {
+func Strsplit(string_ string, delimiter string, maxTokens int32) []string {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(string_)
 	inArgs[1].SetString(delimiter)
 	inArgs[2].SetInt32(maxTokens)
 
+	var ret gi.Argument
+
 	err := strsplitFunction_Set()
 	if err == nil {
-		strsplitFunction.Invoke(inArgs[:], nil)
+		ret = strsplitFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var strsplitSetFunction *gi.Function
@@ -9827,18 +9867,22 @@ func strsplitSetFunction_Set() error {
 }
 
 // StrsplitSet is a representation of the C type g_strsplit_set.
-func StrsplitSet(string_ string, delimiters string, maxTokens int32) {
+func StrsplitSet(string_ string, delimiters string, maxTokens int32) []string {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetString(string_)
 	inArgs[1].SetString(delimiters)
 	inArgs[2].SetInt32(maxTokens)
 
+	var ret gi.Argument
+
 	err := strsplitSetFunction_Set()
 	if err == nil {
-		strsplitSetFunction.Invoke(inArgs[:], nil)
+		ret = strsplitSetFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var strstrLenFunction *gi.Function
@@ -11837,16 +11881,20 @@ func uriListExtractUrisFunction_Set() error {
 }
 
 // UriListExtractUris is a representation of the C type g_uri_list_extract_uris.
-func UriListExtractUris(uriList string) {
+func UriListExtractUris(uriList string) []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetString(uriList)
 
+	var ret gi.Argument
+
 	err := uriListExtractUrisFunction_Set()
 	if err == nil {
-		uriListExtractUrisFunction.Invoke(inArgs[:], nil)
+		ret = uriListExtractUrisFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var uriParseSchemeFunction *gi.Function
@@ -11960,7 +12008,7 @@ func Usleep(microseconds uint64) {
 	return
 }
 
-// UNSUPPORTED : C value 'g_utf16_to_ucs4' : return type 'gunichar' not supported
+// UNSUPPORTED : C value 'g_utf16_to_ucs4' : return type not supported
 
 var utf16ToUtf8Function *gi.Function
 var utf16ToUtf8Function_Once sync.Once
@@ -12168,9 +12216,9 @@ func Utf8FindPrevChar(str string, p string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_utf8_get_char' : return type 'gunichar' not supported
+// UNSUPPORTED : C value 'g_utf8_get_char' : return type not supported
 
-// UNSUPPORTED : C value 'g_utf8_get_char_validated' : return type 'gunichar' not supported
+// UNSUPPORTED : C value 'g_utf8_get_char_validated' : return type not supported
 
 var utf8MakeValidFunction *gi.Function
 var utf8MakeValidFunction_Once sync.Once
@@ -12497,9 +12545,9 @@ func Utf8Substring(str string, startPos int64, endPos int64) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_utf8_to_ucs4' : return type 'gunichar' not supported
+// UNSUPPORTED : C value 'g_utf8_to_ucs4' : return type not supported
 
-// UNSUPPORTED : C value 'g_utf8_to_ucs4_fast' : return type 'gunichar' not supported
+// UNSUPPORTED : C value 'g_utf8_to_ucs4_fast' : return type not supported
 
 var utf8ToUtf16Function *gi.Function
 var utf8ToUtf16Function_Once sync.Once

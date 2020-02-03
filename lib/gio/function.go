@@ -805,14 +805,18 @@ func contentTypeGetMimeDirsFunction_Set() error {
 }
 
 // ContentTypeGetMimeDirs is a representation of the C type g_content_type_get_mime_dirs.
-func ContentTypeGetMimeDirs() {
+func ContentTypeGetMimeDirs() []string {
+
+	var ret gi.Argument
 
 	err := contentTypeGetMimeDirsFunction_Set()
 	if err == nil {
-		contentTypeGetMimeDirsFunction.Invoke(nil, nil)
+		ret = contentTypeGetMimeDirsFunction.Invoke(nil, nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var contentTypeGetMimeTypeFunction *gi.Function
@@ -915,16 +919,20 @@ func contentTypeGuessForTreeFunction_Set() error {
 }
 
 // ContentTypeGuessForTree is a representation of the C type g_content_type_guess_for_tree.
-func ContentTypeGuessForTree(root *File) {
+func ContentTypeGuessForTree(root *File) []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(root.Native())
 
+	var ret gi.Argument
+
 	err := contentTypeGuessForTreeFunction_Set()
 	if err == nil {
-		contentTypeGuessForTreeFunction.Invoke(inArgs[:], nil)
+		ret = contentTypeGuessForTreeFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var contentTypeIsAFunction *gi.Function
@@ -2619,17 +2627,21 @@ func resourcesEnumerateChildrenFunction_Set() error {
 }
 
 // ResourcesEnumerateChildren is a representation of the C type g_resources_enumerate_children.
-func ResourcesEnumerateChildren(path string, lookupFlags ResourceLookupFlags) {
+func ResourcesEnumerateChildren(path string, lookupFlags ResourceLookupFlags) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetString(path)
 	inArgs[1].SetInt32(int32(lookupFlags))
 
+	var ret gi.Argument
+
 	err := resourcesEnumerateChildrenFunction_Set()
 	if err == nil {
-		resourcesEnumerateChildrenFunction.Invoke(inArgs[:], nil)
+		ret = resourcesEnumerateChildrenFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var resourcesGetInfoFunction *gi.Function

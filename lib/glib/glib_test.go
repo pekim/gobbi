@@ -50,7 +50,7 @@ func TestRecordMethod(t *testing.T) {
 }
 
 func TestReturnArrayOfStrings(t *testing.T) {
-	GetEnviron()
+	Envir
 
 	//ok, charsets := GetFilenameCharsets()
 	//assert.True(t, ok)

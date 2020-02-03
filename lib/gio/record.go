@@ -14121,18 +14121,22 @@ func resourceEnumerateChildrenFunction_Set() error {
 }
 
 // EnumerateChildren is a representation of the C type g_resource_enumerate_children.
-func (recv *Resource) EnumerateChildren(path string, lookupFlags ResourceLookupFlags) {
+func (recv *Resource) EnumerateChildren(path string, lookupFlags ResourceLookupFlags) []string {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(path)
 	inArgs[2].SetInt32(int32(lookupFlags))
 
+	var ret gi.Argument
+
 	err := resourceEnumerateChildrenFunction_Set()
 	if err == nil {
-		resourceEnumerateChildrenFunction.Invoke(inArgs[:], nil)
+		ret = resourceEnumerateChildrenFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var resourceGetInfoFunction *gi.Function
@@ -14907,16 +14911,20 @@ func settingsSchemaListChildrenFunction_Set() error {
 }
 
 // ListChildren is a representation of the C type g_settings_schema_list_children.
-func (recv *SettingsSchema) ListChildren() {
+func (recv *SettingsSchema) ListChildren() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := settingsSchemaListChildrenFunction_Set()
 	if err == nil {
-		settingsSchemaListChildrenFunction.Invoke(inArgs[:], nil)
+		ret = settingsSchemaListChildrenFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var settingsSchemaListKeysFunction *gi.Function
@@ -14935,16 +14943,20 @@ func settingsSchemaListKeysFunction_Set() error {
 }
 
 // ListKeys is a representation of the C type g_settings_schema_list_keys.
-func (recv *SettingsSchema) ListKeys() {
+func (recv *SettingsSchema) ListKeys() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := settingsSchemaListKeysFunction_Set()
 	if err == nil {
-		settingsSchemaListKeysFunction.Invoke(inArgs[:], nil)
+		ret = settingsSchemaListKeysFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var settingsSchemaRefFunction *gi.Function

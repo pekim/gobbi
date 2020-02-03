@@ -45,7 +45,7 @@ func AccelGroupsFromObject(object_ *gobject.Object) *glib.SList {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_accelerator_get_default_mod_mask' : return type 'Gdk.ModifierType' not supported
+// UNSUPPORTED : C value 'gtk_accelerator_get_default_mod_mask' : return type not supported
 
 // UNSUPPORTED : C value 'gtk_accelerator_get_label' : parameter 'accelerator_mods' of type 'Gdk.ModifierType' not supported
 
@@ -91,7 +91,7 @@ func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_binding_entry_add_signal_from_string' : return type 'GLib.TokenType' not supported
+// UNSUPPORTED : C value 'gtk_binding_entry_add_signal_from_string' : return type not supported
 
 // UNSUPPORTED : C value 'gtk_binding_entry_add_signall' : parameter 'modifiers' of type 'Gdk.ModifierType' not supported
 
@@ -850,7 +850,7 @@ func GetBinaryAge() uint32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_get_current_event' : return type 'Gdk.Event' not supported
+// UNSUPPORTED : C value 'gtk_get_current_event' : return type not supported
 
 var getCurrentEventDeviceFunction *gi.Function
 var getCurrentEventDeviceFunction_Once sync.Once
@@ -2432,14 +2432,18 @@ func rcGetDefaultFilesFunction_Set() error {
 }
 
 // RcGetDefaultFiles is a representation of the C type gtk_rc_get_default_files.
-func RcGetDefaultFiles() {
+func RcGetDefaultFiles() []string {
+
+	var ret gi.Argument
 
 	err := rcGetDefaultFilesFunction_Set()
 	if err == nil {
-		rcGetDefaultFilesFunction.Invoke(nil, nil)
+		ret = rcGetDefaultFilesFunction.Invoke(nil, nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var rcGetImModuleFileFunction *gi.Function
@@ -3986,33 +3990,7 @@ func StockLookup(stockId string) (bool, *StockItem) {
 
 // UNSUPPORTED : C value 'gtk_target_table_free' : parameter 'targets' of type 'nil' not supported
 
-var targetTableNewFromListFunction *gi.Function
-var targetTableNewFromListFunction_Once sync.Once
-
-func targetTableNewFromListFunction_Set() error {
-	var err error
-	targetTableNewFromListFunction_Once.Do(func() {
-		targetTableNewFromListFunction, err = gi.FunctionInvokerNew("Gtk", "target_table_new_from_list")
-	})
-	return err
-}
-
-// TargetTableNewFromList is a representation of the C type gtk_target_table_new_from_list.
-func TargetTableNewFromList(list *TargetList) int32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(list.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := targetTableNewFromListFunction_Set()
-	if err == nil {
-		targetTableNewFromListFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Int32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'gtk_target_table_new_from_list' : return type not supported
 
 // UNSUPPORTED : C value 'gtk_targets_include_image' : parameter 'targets' of type 'nil' not supported
 
@@ -4145,31 +4123,7 @@ func TestFindWidget(widget *Widget, labelPattern string, widgetType int64) *Widg
 
 // UNSUPPORTED : C value 'gtk_test_init' : parameter '...' of type 'nil' not supported
 
-var testListAllTypesFunction *gi.Function
-var testListAllTypesFunction_Once sync.Once
-
-func testListAllTypesFunction_Set() error {
-	var err error
-	testListAllTypesFunction_Once.Do(func() {
-		testListAllTypesFunction, err = gi.FunctionInvokerNew("Gtk", "test_list_all_types")
-	})
-	return err
-}
-
-// TestListAllTypes is a representation of the C type gtk_test_list_all_types.
-func TestListAllTypes() uint32 {
-
-	var outArgs [1]gi.Argument
-
-	err := testListAllTypesFunction_Set()
-	if err == nil {
-		testListAllTypesFunction.Invoke(nil, outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'gtk_test_list_all_types' : return type not supported
 
 var testRegisterAllTypesFunction *gi.Function
 var testRegisterAllTypesFunction_Once sync.Once

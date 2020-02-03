@@ -162,16 +162,20 @@ func pixbufFormatGetExtensionsFunction_Set() error {
 }
 
 // GetExtensions is a representation of the C type gdk_pixbuf_format_get_extensions.
-func (recv *PixbufFormat) GetExtensions() {
+func (recv *PixbufFormat) GetExtensions() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := pixbufFormatGetExtensionsFunction_Set()
 	if err == nil {
-		pixbufFormatGetExtensionsFunction.Invoke(inArgs[:], nil)
+		ret = pixbufFormatGetExtensionsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var pixbufFormatGetLicenseFunction *gi.Function
@@ -222,16 +226,20 @@ func pixbufFormatGetMimeTypesFunction_Set() error {
 }
 
 // GetMimeTypes is a representation of the C type gdk_pixbuf_format_get_mime_types.
-func (recv *PixbufFormat) GetMimeTypes() {
+func (recv *PixbufFormat) GetMimeTypes() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := pixbufFormatGetMimeTypesFunction_Set()
 	if err == nil {
-		pixbufFormatGetMimeTypesFunction.Invoke(inArgs[:], nil)
+		ret = pixbufFormatGetMimeTypesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var pixbufFormatGetNameFunction *gi.Function

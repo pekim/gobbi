@@ -179,7 +179,6 @@ func (f *Function) generateFunction(fi *file) {
 			f.Parameters.generateReturnDeclarations(g) // out params
 		}).
 		BlockFunc(f.generateBody) // { body }
-
 	fi.Line()
 }
 

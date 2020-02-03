@@ -6504,37 +6504,7 @@ func (recv *Language) GetSampleString() string {
 	return retGo
 }
 
-var languageGetScriptsFunction *gi.Function
-var languageGetScriptsFunction_Once sync.Once
-
-func languageGetScriptsFunction_Set() error {
-	var err error
-	languageGetScriptsFunction_Once.Do(func() {
-		err = languageStruct_Set()
-		if err != nil {
-			return
-		}
-		languageGetScriptsFunction, err = languageStruct.InvokerNew("get_scripts")
-	})
-	return err
-}
-
-// GetScripts is a representation of the C type pango_language_get_scripts.
-func (recv *Language) GetScripts() int32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := languageGetScriptsFunction_Set()
-	if err == nil {
-		languageGetScriptsFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Int32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'pango_language_get_scripts' : return type not supported
 
 var languageIncludesScriptFunction *gi.Function
 var languageIncludesScriptFunction_Once sync.Once
@@ -7168,7 +7138,7 @@ func (recv *LayoutIter) GetLineYrange() (int32, int32) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'pango_layout_iter_get_run' : return type 'LayoutRun' not supported
+// UNSUPPORTED : C value 'pango_layout_iter_get_run' : return type not supported
 
 var layoutIterGetRunExtentsFunction *gi.Function
 var layoutIterGetRunExtentsFunction_Once sync.Once
@@ -7203,7 +7173,7 @@ func (recv *LayoutIter) GetRunExtents() (*Rectangle, *Rectangle) {
 	return out0, out1
 }
 
-// UNSUPPORTED : C value 'pango_layout_iter_get_run_readonly' : return type 'LayoutRun' not supported
+// UNSUPPORTED : C value 'pango_layout_iter_get_run_readonly' : return type not supported
 
 var layoutIterNextCharFunction *gi.Function
 var layoutIterNextCharFunction_Once sync.Once

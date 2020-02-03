@@ -481,17 +481,21 @@ func bufferGetContextClassesAtIterFunction_Set() error {
 }
 
 // GetContextClassesAtIter is a representation of the C type gtk_source_buffer_get_context_classes_at_iter.
-func (recv *Buffer) GetContextClassesAtIter(iter *gtk.TextIter) {
+func (recv *Buffer) GetContextClassesAtIter(iter *gtk.TextIter) []string {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetPointer(iter.Native())
 
+	var ret gi.Argument
+
 	err := bufferGetContextClassesAtIterFunction_Set()
 	if err == nil {
-		bufferGetContextClassesAtIterFunction.Invoke(inArgs[:], nil)
+		ret = bufferGetContextClassesAtIterFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var bufferGetHighlightMatchingBracketsFunction *gi.Function
@@ -4579,7 +4583,7 @@ func (recv *Gutter) GetWindow() *gdk.Window {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_get_window_type' : return type 'Gtk.TextWindowType' not supported
+// UNSUPPORTED : C value 'gtk_source_gutter_get_window_type' : return type not supported
 
 var gutterInsertFunction *gi.Function
 var gutterInsertFunction_Once sync.Once
@@ -5136,7 +5140,7 @@ func (recv *GutterRenderer) GetVisible() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_source_gutter_renderer_get_window_type' : return type 'Gtk.TextWindowType' not supported
+// UNSUPPORTED : C value 'gtk_source_gutter_renderer_get_window_type' : return type not supported
 
 // UNSUPPORTED : C value 'gtk_source_gutter_renderer_query_activatable' : parameter 'event' of type 'Gdk.Event' not supported
 
@@ -6179,16 +6183,20 @@ func languageGetGlobsFunction_Set() error {
 }
 
 // GetGlobs is a representation of the C type gtk_source_language_get_globs.
-func (recv *Language) GetGlobs() {
+func (recv *Language) GetGlobs() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := languageGetGlobsFunction_Set()
 	if err == nil {
-		languageGetGlobsFunction.Invoke(inArgs[:], nil)
+		ret = languageGetGlobsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var languageGetHiddenFunction *gi.Function
@@ -6304,16 +6312,20 @@ func languageGetMimeTypesFunction_Set() error {
 }
 
 // GetMimeTypes is a representation of the C type gtk_source_language_get_mime_types.
-func (recv *Language) GetMimeTypes() {
+func (recv *Language) GetMimeTypes() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := languageGetMimeTypesFunction_Set()
 	if err == nil {
-		languageGetMimeTypesFunction.Invoke(inArgs[:], nil)
+		ret = languageGetMimeTypesFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var languageGetNameFunction *gi.Function
@@ -6429,16 +6441,20 @@ func languageGetStyleIdsFunction_Set() error {
 }
 
 // GetStyleIds is a representation of the C type gtk_source_language_get_style_ids.
-func (recv *Language) GetStyleIds() {
+func (recv *Language) GetStyleIds() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := languageGetStyleIdsFunction_Set()
 	if err == nil {
-		languageGetStyleIdsFunction.Invoke(inArgs[:], nil)
+		ret = languageGetStyleIdsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var languageGetStyleNameFunction *gi.Function
@@ -6643,16 +6659,20 @@ func languageManagerGetLanguageIdsFunction_Set() error {
 }
 
 // GetLanguageIds is a representation of the C type gtk_source_language_manager_get_language_ids.
-func (recv *LanguageManager) GetLanguageIds() {
+func (recv *LanguageManager) GetLanguageIds() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := languageManagerGetLanguageIdsFunction_Set()
 	if err == nil {
-		languageManagerGetLanguageIdsFunction.Invoke(inArgs[:], nil)
+		ret = languageManagerGetLanguageIdsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var languageManagerGetSearchPathFunction *gi.Function
@@ -6671,16 +6691,20 @@ func languageManagerGetSearchPathFunction_Set() error {
 }
 
 // GetSearchPath is a representation of the C type gtk_source_language_manager_get_search_path.
-func (recv *LanguageManager) GetSearchPath() {
+func (recv *LanguageManager) GetSearchPath() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := languageManagerGetSearchPathFunction_Set()
 	if err == nil {
-		languageManagerGetSearchPathFunction.Invoke(inArgs[:], nil)
+		ret = languageManagerGetSearchPathFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var languageManagerGuessLanguageFunction *gi.Function
@@ -8309,7 +8333,7 @@ func (recv *PrintCompositor) GetTabWidth() uint32 {
 
 // UNSUPPORTED : C value 'gtk_source_print_compositor_get_top_margin' : parameter 'unit' of type 'Gtk.Unit' not supported
 
-// UNSUPPORTED : C value 'gtk_source_print_compositor_get_wrap_mode' : return type 'Gtk.WrapMode' not supported
+// UNSUPPORTED : C value 'gtk_source_print_compositor_get_wrap_mode' : return type not supported
 
 var printCompositorPaginateFunction *gi.Function
 var printCompositorPaginateFunction_Once sync.Once
@@ -10930,16 +10954,20 @@ func styleSchemeGetAuthorsFunction_Set() error {
 }
 
 // GetAuthors is a representation of the C type gtk_source_style_scheme_get_authors.
-func (recv *StyleScheme) GetAuthors() {
+func (recv *StyleScheme) GetAuthors() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := styleSchemeGetAuthorsFunction_Set()
 	if err == nil {
-		styleSchemeGetAuthorsFunction.Invoke(inArgs[:], nil)
+		ret = styleSchemeGetAuthorsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var styleSchemeGetDescriptionFunction *gi.Function
@@ -11622,16 +11650,20 @@ func styleSchemeManagerGetSchemeIdsFunction_Set() error {
 }
 
 // GetSchemeIds is a representation of the C type gtk_source_style_scheme_manager_get_scheme_ids.
-func (recv *StyleSchemeManager) GetSchemeIds() {
+func (recv *StyleSchemeManager) GetSchemeIds() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := styleSchemeManagerGetSchemeIdsFunction_Set()
 	if err == nil {
-		styleSchemeManagerGetSchemeIdsFunction.Invoke(inArgs[:], nil)
+		ret = styleSchemeManagerGetSchemeIdsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var styleSchemeManagerGetSearchPathFunction *gi.Function
@@ -11650,16 +11682,20 @@ func styleSchemeManagerGetSearchPathFunction_Set() error {
 }
 
 // GetSearchPath is a representation of the C type gtk_source_style_scheme_manager_get_search_path.
-func (recv *StyleSchemeManager) GetSearchPath() {
+func (recv *StyleSchemeManager) GetSearchPath() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := styleSchemeManagerGetSearchPathFunction_Set()
 	if err == nil {
-		styleSchemeManagerGetSearchPathFunction.Invoke(inArgs[:], nil)
+		ret = styleSchemeManagerGetSearchPathFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(false)
+
+	return retGo
 }
 
 var styleSchemeManagerPrependSearchPathFunction *gi.Function

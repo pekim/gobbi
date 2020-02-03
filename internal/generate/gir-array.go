@@ -18,7 +18,10 @@ type Array struct {
 
 func (a *Array) init(ns *Namespace) {
 	a.Namespace = ns
-	a.Type.init(ns)
+
+	if a.Type != nil {
+		a.Type.init(ns)
+	}
 
 	//// Some array's Type has a Name but no CType.
 	//// In all observed cases this is an integer type, usually 'guint8'.

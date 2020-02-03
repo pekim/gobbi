@@ -2491,7 +2491,7 @@ func (recv *Display) GetDeviceManager() *DeviceManager {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_display_get_event' : return type 'Event' not supported
+// UNSUPPORTED : C value 'gdk_display_get_event' : return type not supported
 
 var displayGetMaximalCursorSizeFunction *gi.Function
 var displayGetMaximalCursorSizeFunction_Once sync.Once
@@ -3043,7 +3043,7 @@ func (recv *Display) NotifyStartupComplete(startupId string) {
 	return
 }
 
-// UNSUPPORTED : C value 'gdk_display_peek_event' : return type 'Event' not supported
+// UNSUPPORTED : C value 'gdk_display_peek_event' : return type not supported
 
 var displayPointerIsGrabbedFunction *gi.Function
 var displayPointerIsGrabbedFunction_Once sync.Once
@@ -5660,7 +5660,7 @@ func (recv *Keymap) GetCapsLockState() bool {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gdk_keymap_get_direction' : return type 'Pango.Direction' not supported
+// UNSUPPORTED : C value 'gdk_keymap_get_direction' : return type not supported
 
 // UNSUPPORTED : C value 'gdk_keymap_get_entries_for_keycode' : parameter 'keys' of type 'nil' not supported
 

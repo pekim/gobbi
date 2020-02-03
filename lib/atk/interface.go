@@ -942,7 +942,7 @@ func (recv *Document) GetAttributeValue(attributeName string) string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_document_get_attributes' : return type 'AttributeSet' not supported
+// UNSUPPORTED : C value 'atk_document_get_attributes' : return type not supported
 
 var documentGetCurrentPageNumberFunction *gi.Function
 var documentGetCurrentPageNumberFunction_Once sync.Once
@@ -3626,33 +3626,7 @@ func (recv *TableCell) Native() unsafe.Pointer {
 	return recv.native
 }
 
-var tableCellGetColumnHeaderCellsFunction *gi.Function
-var tableCellGetColumnHeaderCellsFunction_Once sync.Once
-
-func tableCellGetColumnHeaderCellsFunction_Set() error {
-	var err error
-	tableCellGetColumnHeaderCellsFunction_Once.Do(func() {
-		err = tableCellInterface_Set()
-		if err != nil {
-			return
-		}
-		tableCellGetColumnHeaderCellsFunction, err = tableCellInterface.InvokerNew("get_column_header_cells")
-	})
-	return err
-}
-
-// GetColumnHeaderCells is a representation of the C type atk_table_cell_get_column_header_cells.
-func (recv *TableCell) GetColumnHeaderCells() {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	err := tableCellGetColumnHeaderCellsFunction_Set()
-	if err == nil {
-		tableCellGetColumnHeaderCellsFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'atk_table_cell_get_column_header_cells' : return type not supported
 
 var tableCellGetColumnSpanFunction *gi.Function
 var tableCellGetColumnSpanFunction_Once sync.Once
@@ -3758,33 +3732,7 @@ func (recv *TableCell) GetRowColumnSpan() (bool, int32, int32, int32, int32) {
 	return retGo, out0, out1, out2, out3
 }
 
-var tableCellGetRowHeaderCellsFunction *gi.Function
-var tableCellGetRowHeaderCellsFunction_Once sync.Once
-
-func tableCellGetRowHeaderCellsFunction_Set() error {
-	var err error
-	tableCellGetRowHeaderCellsFunction_Once.Do(func() {
-		err = tableCellInterface_Set()
-		if err != nil {
-			return
-		}
-		tableCellGetRowHeaderCellsFunction, err = tableCellInterface.InvokerNew("get_row_header_cells")
-	})
-	return err
-}
-
-// GetRowHeaderCells is a representation of the C type atk_table_cell_get_row_header_cells.
-func (recv *TableCell) GetRowHeaderCells() {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	err := tableCellGetRowHeaderCellsFunction_Set()
-	if err == nil {
-		tableCellGetRowHeaderCellsFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'atk_table_cell_get_row_header_cells' : return type not supported
 
 var tableCellGetRowSpanFunction *gi.Function
 var tableCellGetRowSpanFunction_Once sync.Once
@@ -3928,37 +3876,7 @@ func (recv *Text) AddSelection(startOffset int32, endOffset int32) bool {
 	return retGo
 }
 
-var textGetBoundedRangesFunction *gi.Function
-var textGetBoundedRangesFunction_Once sync.Once
-
-func textGetBoundedRangesFunction_Set() error {
-	var err error
-	textGetBoundedRangesFunction_Once.Do(func() {
-		err = textInterface_Set()
-		if err != nil {
-			return
-		}
-		textGetBoundedRangesFunction, err = textInterface.InvokerNew("get_bounded_ranges")
-	})
-	return err
-}
-
-// GetBoundedRanges is a representation of the C type atk_text_get_bounded_ranges.
-func (recv *Text) GetBoundedRanges(rect *TextRectangle, coordType CoordType, xClipType TextClipType, yClipType TextClipType) {
-	var inArgs [5]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetPointer(rect.Native())
-	inArgs[2].SetInt32(int32(coordType))
-	inArgs[3].SetInt32(int32(xClipType))
-	inArgs[4].SetInt32(int32(yClipType))
-
-	err := textGetBoundedRangesFunction_Set()
-	if err == nil {
-		textGetBoundedRangesFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'atk_text_get_bounded_ranges' : return type not supported
 
 var textGetCaretOffsetFunction *gi.Function
 var textGetCaretOffsetFunction_Once sync.Once
@@ -3992,7 +3910,7 @@ func (recv *Text) GetCaretOffset() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_text_get_character_at_offset' : return type 'gunichar' not supported
+// UNSUPPORTED : C value 'atk_text_get_character_at_offset' : return type not supported
 
 var textGetCharacterCountFunction *gi.Function
 var textGetCharacterCountFunction_Once sync.Once
@@ -4063,7 +3981,7 @@ func (recv *Text) GetCharacterExtents(offset int32, coords CoordType) (int32, in
 	return out0, out1, out2, out3
 }
 
-// UNSUPPORTED : C value 'atk_text_get_default_attributes' : return type 'AttributeSet' not supported
+// UNSUPPORTED : C value 'atk_text_get_default_attributes' : return type not supported
 
 var textGetNSelectionsFunction *gi.Function
 var textGetNSelectionsFunction_Once sync.Once
@@ -4167,7 +4085,7 @@ func (recv *Text) GetRangeExtents(startOffset int32, endOffset int32, coordType 
 	return out0
 }
 
-// UNSUPPORTED : C value 'atk_text_get_run_attributes' : return type 'AttributeSet' not supported
+// UNSUPPORTED : C value 'atk_text_get_run_attributes' : return type not supported
 
 var textGetSelectionFunction *gi.Function
 var textGetSelectionFunction_Once sync.Once

@@ -1099,16 +1099,20 @@ func pixbufGetPixelsFunction_Set() error {
 }
 
 // GetPixels is a representation of the C type gdk_pixbuf_get_pixels.
-func (recv *Pixbuf) GetPixels() {
+func (recv *Pixbuf) GetPixels() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := pixbufGetPixelsFunction_Set()
 	if err == nil {
-		pixbufGetPixelsFunction.Invoke(inArgs[:], nil)
+		ret = pixbufGetPixelsFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var pixbufGetPixelsWithLengthFunction *gi.Function
@@ -1127,20 +1131,22 @@ func pixbufGetPixelsWithLengthFunction_Set() error {
 }
 
 // GetPixelsWithLength is a representation of the C type gdk_pixbuf_get_pixels_with_length.
-func (recv *Pixbuf) GetPixelsWithLength() uint32 {
+func (recv *Pixbuf) GetPixelsWithLength() (string, uint32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := pixbufGetPixelsWithLengthFunction_Set()
 	if err == nil {
-		pixbufGetPixelsWithLengthFunction.Invoke(inArgs[:], outArgs[:])
+		ret = pixbufGetPixelsWithLengthFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(false)
 	out0 := outArgs[0].Uint32()
 
-	return out0
+	return retGo, out0
 }
 
 var pixbufGetRowstrideFunction *gi.Function

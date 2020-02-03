@@ -19,12 +19,15 @@ func (r *ReturnValue) init(ns *Namespace) {
 		r.Type.init(ns)
 	}
 
-	//if r.Array != nil && r.Array.Type != nil {
-	//	r.Array.init(ns)
-	//}
+	if r.Array != nil {
+		r.Array.init(ns)
+	}
 }
 
 func (r *ReturnValue) isVoid() bool {
+	if r.Array != nil && r.Array.Type != nil {
+		return false
+	}
 	return r.Type == nil || r.Type.Name == "none"
 }
 
@@ -33,7 +36,7 @@ func (r *ReturnValue) supported() (bool, string) {
 		return true, ""
 	}
 
-	return false, fmt.Sprintf("return type '%s' not supported", r.Type.Name)
+	return false, fmt.Sprintf("return type not supported")
 }
 
 func (r *ReturnValue) generateDeclaration(g *jen.Group) {

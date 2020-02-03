@@ -5963,37 +5963,7 @@ func (recv *CellAreaClass) InstallCellProperty(propertyId uint32, pspec *gobject
 	return
 }
 
-var cellAreaClassListCellPropertiesFunction *gi.Function
-var cellAreaClassListCellPropertiesFunction_Once sync.Once
-
-func cellAreaClassListCellPropertiesFunction_Set() error {
-	var err error
-	cellAreaClassListCellPropertiesFunction_Once.Do(func() {
-		err = cellAreaClassStruct_Set()
-		if err != nil {
-			return
-		}
-		cellAreaClassListCellPropertiesFunction, err = cellAreaClassStruct.InvokerNew("list_cell_properties")
-	})
-	return err
-}
-
-// ListCellProperties is a representation of the C type gtk_cell_area_class_list_cell_properties.
-func (recv *CellAreaClass) ListCellProperties() uint32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := cellAreaClassListCellPropertiesFunction_Set()
-	if err == nil {
-		cellAreaClassListCellPropertiesFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'gtk_cell_area_class_list_cell_properties' : return type not supported
 
 // CellAreaClassStruct creates an uninitialised CellAreaClass.
 func CellAreaClassStruct() *CellAreaClass {
@@ -10176,37 +10146,7 @@ func (recv *ContainerClass) InstallChildProperty(propertyId uint32, pspec *gobje
 	return
 }
 
-var containerClassListChildPropertiesFunction *gi.Function
-var containerClassListChildPropertiesFunction_Once sync.Once
-
-func containerClassListChildPropertiesFunction_Set() error {
-	var err error
-	containerClassListChildPropertiesFunction_Once.Do(func() {
-		err = containerClassStruct_Set()
-		if err != nil {
-			return
-		}
-		containerClassListChildPropertiesFunction, err = containerClassStruct.InvokerNew("list_child_properties")
-	})
-	return err
-}
-
-// ListChildProperties is a representation of the C type gtk_container_class_list_child_properties.
-func (recv *ContainerClass) ListChildProperties() uint32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := containerClassListChildPropertiesFunction_Set()
-	if err == nil {
-		containerClassListChildPropertiesFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'gtk_container_class_list_child_properties' : return type not supported
 
 // ContainerClassStruct creates an uninitialised ContainerClass.
 func ContainerClassStruct() *ContainerClass {
@@ -30370,20 +30310,22 @@ func recentInfoGetApplicationsFunction_Set() error {
 }
 
 // GetApplications is a representation of the C type gtk_recent_info_get_applications.
-func (recv *RecentInfo) GetApplications() uint64 {
+func (recv *RecentInfo) GetApplications() ([]string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := recentInfoGetApplicationsFunction_Set()
 	if err == nil {
-		recentInfoGetApplicationsFunction.Invoke(inArgs[:], outArgs[:])
+		ret = recentInfoGetApplicationsFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var recentInfoGetDescriptionFunction *gi.Function
@@ -30498,20 +30440,22 @@ func recentInfoGetGroupsFunction_Set() error {
 }
 
 // GetGroups is a representation of the C type gtk_recent_info_get_groups.
-func (recv *RecentInfo) GetGroups() uint64 {
+func (recv *RecentInfo) GetGroups() ([]string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := recentInfoGetGroupsFunction_Set()
 	if err == nil {
-		recentInfoGetGroupsFunction.Invoke(inArgs[:], outArgs[:])
+		ret = recentInfoGetGroupsFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var recentInfoGetIconFunction *gi.Function
@@ -32957,16 +32901,20 @@ func selectionDataGetDataFunction_Set() error {
 }
 
 // GetData is a representation of the C type gtk_selection_data_get_data.
-func (recv *SelectionData) GetData() {
+func (recv *SelectionData) GetData() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := selectionDataGetDataFunction_Set()
 	if err == nil {
-		selectionDataGetDataFunction.Invoke(inArgs[:], nil)
+		ret = selectionDataGetDataFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var selectionDataGetDataTypeFunction *gi.Function
@@ -33017,20 +32965,22 @@ func selectionDataGetDataWithLengthFunction_Set() error {
 }
 
 // GetDataWithLength is a representation of the C type gtk_selection_data_get_data_with_length.
-func (recv *SelectionData) GetDataWithLength() int32 {
+func (recv *SelectionData) GetDataWithLength() (string, int32) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := selectionDataGetDataWithLengthFunction_Set()
 	if err == nil {
-		selectionDataGetDataWithLengthFunction.Invoke(inArgs[:], outArgs[:])
+		ret = selectionDataGetDataWithLengthFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(false)
 	out0 := outArgs[0].Int32()
 
-	return out0
+	return retGo, out0
 }
 
 var selectionDataGetDisplayFunction *gi.Function
@@ -33275,16 +33225,20 @@ func selectionDataGetUrisFunction_Set() error {
 }
 
 // GetUris is a representation of the C type gtk_selection_data_get_uris.
-func (recv *SelectionData) GetUris() {
+func (recv *SelectionData) GetUris() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := selectionDataGetUrisFunction_Set()
 	if err == nil {
-		selectionDataGetUrisFunction.Invoke(inArgs[:], nil)
+		ret = selectionDataGetUrisFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var selectionDataSetFunction *gi.Function
@@ -41861,7 +41815,7 @@ func (recv *TextIter) GetBytesInLine() int32 {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'gtk_text_iter_get_char' : return type 'gunichar' not supported
+// UNSUPPORTED : C value 'gtk_text_iter_get_char' : return type not supported
 
 var textIterGetCharsInLineFunction *gi.Function
 var textIterGetCharsInLineFunction_Once sync.Once
@@ -46865,37 +46819,7 @@ func (recv *TreePath) GetIndices() int32 {
 	return retGo
 }
 
-var treePathGetIndicesWithDepthFunction *gi.Function
-var treePathGetIndicesWithDepthFunction_Once sync.Once
-
-func treePathGetIndicesWithDepthFunction_Set() error {
-	var err error
-	treePathGetIndicesWithDepthFunction_Once.Do(func() {
-		err = treePathStruct_Set()
-		if err != nil {
-			return
-		}
-		treePathGetIndicesWithDepthFunction, err = treePathStruct.InvokerNew("get_indices_with_depth")
-	})
-	return err
-}
-
-// GetIndicesWithDepth is a representation of the C type gtk_tree_path_get_indices_with_depth.
-func (recv *TreePath) GetIndicesWithDepth() int32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := treePathGetIndicesWithDepthFunction_Set()
-	if err == nil {
-		treePathGetIndicesWithDepthFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Int32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'gtk_tree_path_get_indices_with_depth' : return type not supported
 
 var treePathIsAncestorFunction *gi.Function
 var treePathIsAncestorFunction_Once sync.Once
@@ -49802,37 +49726,7 @@ func (recv *WidgetClass) InstallStyleProperty(pspec *gobject.ParamSpec) {
 
 // UNSUPPORTED : C value 'gtk_widget_class_install_style_property_parser' : parameter 'parser' of type 'RcPropertyParser' not supported
 
-var widgetClassListStylePropertiesFunction *gi.Function
-var widgetClassListStylePropertiesFunction_Once sync.Once
-
-func widgetClassListStylePropertiesFunction_Set() error {
-	var err error
-	widgetClassListStylePropertiesFunction_Once.Do(func() {
-		err = widgetClassStruct_Set()
-		if err != nil {
-			return
-		}
-		widgetClassListStylePropertiesFunction, err = widgetClassStruct.InvokerNew("list_style_properties")
-	})
-	return err
-}
-
-// ListStyleProperties is a representation of the C type gtk_widget_class_list_style_properties.
-func (recv *WidgetClass) ListStyleProperties() uint32 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := widgetClassListStylePropertiesFunction_Set()
-	if err == nil {
-		widgetClassListStylePropertiesFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint32()
-
-	return out0
-}
+// UNSUPPORTED : C value 'gtk_widget_class_list_style_properties' : return type not supported
 
 // UNSUPPORTED : C value 'gtk_widget_class_set_accessible_role' : parameter 'role' of type 'Atk.Role' not supported
 

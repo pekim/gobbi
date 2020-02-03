@@ -1034,21 +1034,23 @@ func bookmarkFileGetApplicationsFunction_Set() error {
 }
 
 // GetApplications is a representation of the C type g_bookmark_file_get_applications.
-func (recv *BookmarkFile) GetApplications(uri string) uint64 {
+func (recv *BookmarkFile) GetApplications(uri string) ([]string, uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(uri)
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := bookmarkFileGetApplicationsFunction_Set()
 	if err == nil {
-		bookmarkFileGetApplicationsFunction.Invoke(inArgs[:], outArgs[:])
+		ret = bookmarkFileGetApplicationsFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var bookmarkFileGetDescriptionFunction *gi.Function
@@ -1100,21 +1102,23 @@ func bookmarkFileGetGroupsFunction_Set() error {
 }
 
 // GetGroups is a representation of the C type g_bookmark_file_get_groups.
-func (recv *BookmarkFile) GetGroups(uri string) uint64 {
+func (recv *BookmarkFile) GetGroups(uri string) ([]string, uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(uri)
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := bookmarkFileGetGroupsFunction_Set()
 	if err == nil {
-		bookmarkFileGetGroupsFunction.Invoke(inArgs[:], outArgs[:])
+		ret = bookmarkFileGetGroupsFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var bookmarkFileGetIconFunction *gi.Function
@@ -1333,20 +1337,22 @@ func bookmarkFileGetUrisFunction_Set() error {
 }
 
 // GetUris is a representation of the C type g_bookmark_file_get_uris.
-func (recv *BookmarkFile) GetUris() uint64 {
+func (recv *BookmarkFile) GetUris() ([]string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := bookmarkFileGetUrisFunction_Set()
 	if err == nil {
-		bookmarkFileGetUrisFunction.Invoke(inArgs[:], outArgs[:])
+		ret = bookmarkFileGetUrisFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var bookmarkFileGetVisitedFunction *gi.Function
@@ -2045,20 +2051,22 @@ func bookmarkFileToDataFunction_Set() error {
 }
 
 // ToData is a representation of the C type g_bookmark_file_to_data.
-func (recv *BookmarkFile) ToData() uint64 {
+func (recv *BookmarkFile) ToData() (string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := bookmarkFileToDataFunction_Set()
 	if err == nil {
-		bookmarkFileToDataFunction.Invoke(inArgs[:], outArgs[:])
+		ret = bookmarkFileToDataFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var bookmarkFileToFileFunction *gi.Function
@@ -2296,37 +2304,7 @@ func (recv *Bytes) Equal(bytes2 *Bytes) bool {
 	return retGo
 }
 
-var bytesGetDataFunction *gi.Function
-var bytesGetDataFunction_Once sync.Once
-
-func bytesGetDataFunction_Set() error {
-	var err error
-	bytesGetDataFunction_Once.Do(func() {
-		err = bytesStruct_Set()
-		if err != nil {
-			return
-		}
-		bytesGetDataFunction, err = bytesStruct.InvokerNew("get_data")
-	})
-	return err
-}
-
-// GetData is a representation of the C type g_bytes_get_data.
-func (recv *Bytes) GetData() uint64 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := bytesGetDataFunction_Set()
-	if err == nil {
-		bytesGetDataFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint64()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_bytes_get_data' : return type not supported
 
 var bytesGetSizeFunction *gi.Function
 var bytesGetSizeFunction_Once sync.Once
@@ -2486,65 +2464,9 @@ func (recv *Bytes) Unref() {
 	return
 }
 
-var bytesUnrefToArrayFunction *gi.Function
-var bytesUnrefToArrayFunction_Once sync.Once
+// UNSUPPORTED : C value 'g_bytes_unref_to_array' : return type not supported
 
-func bytesUnrefToArrayFunction_Set() error {
-	var err error
-	bytesUnrefToArrayFunction_Once.Do(func() {
-		err = bytesStruct_Set()
-		if err != nil {
-			return
-		}
-		bytesUnrefToArrayFunction, err = bytesStruct.InvokerNew("unref_to_array")
-	})
-	return err
-}
-
-// UnrefToArray is a representation of the C type g_bytes_unref_to_array.
-func (recv *Bytes) UnrefToArray() {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	err := bytesUnrefToArrayFunction_Set()
-	if err == nil {
-		bytesUnrefToArrayFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
-
-var bytesUnrefToDataFunction *gi.Function
-var bytesUnrefToDataFunction_Once sync.Once
-
-func bytesUnrefToDataFunction_Set() error {
-	var err error
-	bytesUnrefToDataFunction_Once.Do(func() {
-		err = bytesStruct_Set()
-		if err != nil {
-			return
-		}
-		bytesUnrefToDataFunction, err = bytesStruct.InvokerNew("unref_to_data")
-	})
-	return err
-}
-
-// UnrefToData is a representation of the C type g_bytes_unref_to_data.
-func (recv *Bytes) UnrefToData() uint64 {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	var outArgs [1]gi.Argument
-
-	err := bytesUnrefToDataFunction_Set()
-	if err == nil {
-		bytesUnrefToDataFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint64()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_bytes_unref_to_data' : return type not supported
 
 var checksumStruct *gi.Struct
 var checksumStruct_Once sync.Once
@@ -6338,7 +6260,7 @@ func (recv *HashTableIter) Native() unsafe.Pointer {
 	return recv.native
 }
 
-// UNSUPPORTED : C value 'g_hash_table_iter_get_hash_table' : return type 'GLib.HashTable' not supported
+// UNSUPPORTED : C value 'g_hash_table_iter_get_hash_table' : return type not supported
 
 // UNSUPPORTED : C value 'g_hash_table_iter_init' : parameter 'hash_table' of type 'GLib.HashTable' not supported
 
@@ -8415,39 +8337,7 @@ func (recv *KeyFile) GetBoolean(groupName string, key string) bool {
 	return retGo
 }
 
-var keyFileGetBooleanListFunction *gi.Function
-var keyFileGetBooleanListFunction_Once sync.Once
-
-func keyFileGetBooleanListFunction_Set() error {
-	var err error
-	keyFileGetBooleanListFunction_Once.Do(func() {
-		err = keyFileStruct_Set()
-		if err != nil {
-			return
-		}
-		keyFileGetBooleanListFunction, err = keyFileStruct.InvokerNew("get_boolean_list")
-	})
-	return err
-}
-
-// GetBooleanList is a representation of the C type g_key_file_get_boolean_list.
-func (recv *KeyFile) GetBooleanList(groupName string, key string) uint64 {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetString(groupName)
-	inArgs[2].SetString(key)
-
-	var outArgs [1]gi.Argument
-
-	err := keyFileGetBooleanListFunction_Set()
-	if err == nil {
-		keyFileGetBooleanListFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint64()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_key_file_get_boolean_list' : return type not supported
 
 var keyFileGetCommentFunction *gi.Function
 var keyFileGetCommentFunction_Once sync.Once
@@ -8517,39 +8407,7 @@ func (recv *KeyFile) GetDouble(groupName string, key string) float64 {
 	return retGo
 }
 
-var keyFileGetDoubleListFunction *gi.Function
-var keyFileGetDoubleListFunction_Once sync.Once
-
-func keyFileGetDoubleListFunction_Set() error {
-	var err error
-	keyFileGetDoubleListFunction_Once.Do(func() {
-		err = keyFileStruct_Set()
-		if err != nil {
-			return
-		}
-		keyFileGetDoubleListFunction, err = keyFileStruct.InvokerNew("get_double_list")
-	})
-	return err
-}
-
-// GetDoubleList is a representation of the C type g_key_file_get_double_list.
-func (recv *KeyFile) GetDoubleList(groupName string, key string) uint64 {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetString(groupName)
-	inArgs[2].SetString(key)
-
-	var outArgs [1]gi.Argument
-
-	err := keyFileGetDoubleListFunction_Set()
-	if err == nil {
-		keyFileGetDoubleListFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint64()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_key_file_get_double_list' : return type not supported
 
 var keyFileGetGroupsFunction *gi.Function
 var keyFileGetGroupsFunction_Once sync.Once
@@ -8567,20 +8425,22 @@ func keyFileGetGroupsFunction_Set() error {
 }
 
 // GetGroups is a representation of the C type g_key_file_get_groups.
-func (recv *KeyFile) GetGroups() uint64 {
+func (recv *KeyFile) GetGroups() ([]string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := keyFileGetGroupsFunction_Set()
 	if err == nil {
-		keyFileGetGroupsFunction.Invoke(inArgs[:], outArgs[:])
+		ret = keyFileGetGroupsFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var keyFileGetInt64Function *gi.Function
@@ -8651,39 +8511,7 @@ func (recv *KeyFile) GetInteger(groupName string, key string) int32 {
 	return retGo
 }
 
-var keyFileGetIntegerListFunction *gi.Function
-var keyFileGetIntegerListFunction_Once sync.Once
-
-func keyFileGetIntegerListFunction_Set() error {
-	var err error
-	keyFileGetIntegerListFunction_Once.Do(func() {
-		err = keyFileStruct_Set()
-		if err != nil {
-			return
-		}
-		keyFileGetIntegerListFunction, err = keyFileStruct.InvokerNew("get_integer_list")
-	})
-	return err
-}
-
-// GetIntegerList is a representation of the C type g_key_file_get_integer_list.
-func (recv *KeyFile) GetIntegerList(groupName string, key string) uint64 {
-	var inArgs [3]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetString(groupName)
-	inArgs[2].SetString(key)
-
-	var outArgs [1]gi.Argument
-
-	err := keyFileGetIntegerListFunction_Set()
-	if err == nil {
-		keyFileGetIntegerListFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint64()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_key_file_get_integer_list' : return type not supported
 
 var keyFileGetKeysFunction *gi.Function
 var keyFileGetKeysFunction_Once sync.Once
@@ -8701,21 +8529,23 @@ func keyFileGetKeysFunction_Set() error {
 }
 
 // GetKeys is a representation of the C type g_key_file_get_keys.
-func (recv *KeyFile) GetKeys(groupName string) uint64 {
+func (recv *KeyFile) GetKeys(groupName string) ([]string, uint64) {
 	var inArgs [2]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(groupName)
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := keyFileGetKeysFunction_Set()
 	if err == nil {
-		keyFileGetKeysFunction.Invoke(inArgs[:], outArgs[:])
+		ret = keyFileGetKeysFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var keyFileGetLocaleForKeyFunction *gi.Function
@@ -8804,7 +8634,7 @@ func keyFileGetLocaleStringListFunction_Set() error {
 }
 
 // GetLocaleStringList is a representation of the C type g_key_file_get_locale_string_list.
-func (recv *KeyFile) GetLocaleStringList(groupName string, key string, locale string) uint64 {
+func (recv *KeyFile) GetLocaleStringList(groupName string, key string, locale string) ([]string, uint64) {
 	var inArgs [4]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(groupName)
@@ -8812,15 +8642,17 @@ func (recv *KeyFile) GetLocaleStringList(groupName string, key string, locale st
 	inArgs[3].SetString(locale)
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := keyFileGetLocaleStringListFunction_Set()
 	if err == nil {
-		keyFileGetLocaleStringListFunction.Invoke(inArgs[:], outArgs[:])
+		ret = keyFileGetLocaleStringListFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var keyFileGetStartGroupFunction *gi.Function
@@ -8905,22 +8737,24 @@ func keyFileGetStringListFunction_Set() error {
 }
 
 // GetStringList is a representation of the C type g_key_file_get_string_list.
-func (recv *KeyFile) GetStringList(groupName string, key string) uint64 {
+func (recv *KeyFile) GetStringList(groupName string, key string) ([]string, uint64) {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(groupName)
 	inArgs[2].SetString(key)
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := keyFileGetStringListFunction_Set()
 	if err == nil {
-		keyFileGetStringListFunction.Invoke(inArgs[:], outArgs[:])
+		ret = keyFileGetStringListFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var keyFileGetUint64Function *gi.Function
@@ -10267,7 +10101,7 @@ func (recv *MainContext) FindSourceByUserData(userData unsafe.Pointer) *Source {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_main_context_get_poll_func' : return type 'PollFunc' not supported
+// UNSUPPORTED : C value 'g_main_context_get_poll_func' : return type not supported
 
 // UNSUPPORTED : C value 'g_main_context_invoke' : parameter 'function' of type 'SourceFunc' not supported
 
@@ -11273,7 +11107,7 @@ func (recv *MarkupParseContext) GetElement() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_markup_parse_context_get_element_stack' : return type 'GLib.SList' not supported
+// UNSUPPORTED : C value 'g_markup_parse_context_get_element_stack' : return type not supported
 
 var markupParseContextGetPositionFunction *gi.Function
 var markupParseContextGetPositionFunction_Once sync.Once
@@ -11680,16 +11514,20 @@ func matchInfoFetchAllFunction_Set() error {
 }
 
 // FetchAll is a representation of the C type g_match_info_fetch_all.
-func (recv *MatchInfo) FetchAll() {
+func (recv *MatchInfo) FetchAll() []string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := matchInfoFetchAllFunction_Set()
 	if err == nil {
-		matchInfoFetchAllFunction.Invoke(inArgs[:], nil)
+		ret = matchInfoFetchAllFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var matchInfoFetchNamedFunction *gi.Function
@@ -14600,7 +14438,7 @@ func (recv *Queue) Copy() *Queue {
 
 // UNSUPPORTED : C value 'g_queue_delete_link' : parameter 'link_' of type 'GLib.List' not supported
 
-// UNSUPPORTED : C value 'g_queue_find' : return type 'GLib.List' not supported
+// UNSUPPORTED : C value 'g_queue_find' : return type not supported
 
 // UNSUPPORTED : C value 'g_queue_find_custom' : parameter 'func' of type 'CompareFunc' not supported
 
@@ -14805,7 +14643,7 @@ func (recv *Queue) PeekHead() unsafe.Pointer {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_queue_peek_head_link' : return type 'GLib.List' not supported
+// UNSUPPORTED : C value 'g_queue_peek_head_link' : return type not supported
 
 var queuePeekNthFunction *gi.Function
 var queuePeekNthFunction_Once sync.Once
@@ -14840,7 +14678,7 @@ func (recv *Queue) PeekNth(n uint32) unsafe.Pointer {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_queue_peek_nth_link' : return type 'GLib.List' not supported
+// UNSUPPORTED : C value 'g_queue_peek_nth_link' : return type not supported
 
 var queuePeekTailFunction *gi.Function
 var queuePeekTailFunction_Once sync.Once
@@ -14874,7 +14712,7 @@ func (recv *Queue) PeekTail() unsafe.Pointer {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_queue_peek_tail_link' : return type 'GLib.List' not supported
+// UNSUPPORTED : C value 'g_queue_peek_tail_link' : return type not supported
 
 var queuePopHeadFunction *gi.Function
 var queuePopHeadFunction_Once sync.Once
@@ -14908,7 +14746,7 @@ func (recv *Queue) PopHead() unsafe.Pointer {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_queue_pop_head_link' : return type 'GLib.List' not supported
+// UNSUPPORTED : C value 'g_queue_pop_head_link' : return type not supported
 
 var queuePopNthFunction *gi.Function
 var queuePopNthFunction_Once sync.Once
@@ -14943,7 +14781,7 @@ func (recv *Queue) PopNth(n uint32) unsafe.Pointer {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_queue_pop_nth_link' : return type 'GLib.List' not supported
+// UNSUPPORTED : C value 'g_queue_pop_nth_link' : return type not supported
 
 var queuePopTailFunction *gi.Function
 var queuePopTailFunction_Once sync.Once
@@ -14977,7 +14815,7 @@ func (recv *Queue) PopTail() unsafe.Pointer {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_queue_pop_tail_link' : return type 'GLib.List' not supported
+// UNSUPPORTED : C value 'g_queue_pop_tail_link' : return type not supported
 
 var queuePushHeadFunction *gi.Function
 var queuePushHeadFunction_Once sync.Once
@@ -16561,18 +16399,22 @@ func regexSplitFunction_Set() error {
 }
 
 // Split is a representation of the C type g_regex_split.
-func (recv *Regex) Split(string_ string, matchOptions RegexMatchFlags) {
+func (recv *Regex) Split(string_ string, matchOptions RegexMatchFlags) []string {
 	var inArgs [3]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(string_)
 	inArgs[2].SetInt32(int32(matchOptions))
 
+	var ret gi.Argument
+
 	err := regexSplitFunction_Set()
 	if err == nil {
-		regexSplitFunction.Invoke(inArgs[:], nil)
+		ret = regexSplitFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var regexSplitFullFunction *gi.Function
@@ -16591,7 +16433,7 @@ func regexSplitFullFunction_Set() error {
 }
 
 // SplitFull is a representation of the C type g_regex_split_full.
-func (recv *Regex) SplitFull(string_ string, startPosition int32, matchOptions RegexMatchFlags, maxTokens int32) {
+func (recv *Regex) SplitFull(string_ string, startPosition int32, matchOptions RegexMatchFlags, maxTokens int32) []string {
 	var inArgs [6]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 	inArgs[1].SetString(string_)
@@ -16600,12 +16442,16 @@ func (recv *Regex) SplitFull(string_ string, startPosition int32, matchOptions R
 	inArgs[4].SetInt32(int32(matchOptions))
 	inArgs[5].SetInt32(maxTokens)
 
+	var ret gi.Argument
+
 	err := regexSplitFullFunction_Set()
 	if err == nil {
-		regexSplitFullFunction.Invoke(inArgs[:], nil)
+		ret = regexSplitFullFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.StringArray(true)
+
+	return retGo
 }
 
 var regexUnrefFunction *gi.Function
@@ -17015,7 +16861,7 @@ func (recv *Scanner) CurToken() TokenType {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'g_scanner_cur_value' : return type 'TokenValue' not supported
+// UNSUPPORTED : C value 'g_scanner_cur_value' : return type not supported
 
 var scannerDestroyFunction *gi.Function
 var scannerDestroyFunction_Once sync.Once
@@ -23953,20 +23799,22 @@ func variantDupBytestringFunction_Set() error {
 }
 
 // DupBytestring is a representation of the C type g_variant_dup_bytestring.
-func (recv *Variant) DupBytestring() uint64 {
+func (recv *Variant) DupBytestring() (string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := variantDupBytestringFunction_Set()
 	if err == nil {
-		variantDupBytestringFunction.Invoke(inArgs[:], outArgs[:])
+		ret = variantDupBytestringFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.String(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var variantDupBytestringArrayFunction *gi.Function
@@ -23985,20 +23833,22 @@ func variantDupBytestringArrayFunction_Set() error {
 }
 
 // DupBytestringArray is a representation of the C type g_variant_dup_bytestring_array.
-func (recv *Variant) DupBytestringArray() uint64 {
+func (recv *Variant) DupBytestringArray() ([]string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := variantDupBytestringArrayFunction_Set()
 	if err == nil {
-		variantDupBytestringArrayFunction.Invoke(inArgs[:], outArgs[:])
+		ret = variantDupBytestringArrayFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var variantDupObjvFunction *gi.Function
@@ -24017,20 +23867,22 @@ func variantDupObjvFunction_Set() error {
 }
 
 // DupObjv is a representation of the C type g_variant_dup_objv.
-func (recv *Variant) DupObjv() uint64 {
+func (recv *Variant) DupObjv() ([]string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := variantDupObjvFunction_Set()
 	if err == nil {
-		variantDupObjvFunction.Invoke(inArgs[:], outArgs[:])
+		ret = variantDupObjvFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var variantDupStringFunction *gi.Function
@@ -24083,20 +23935,22 @@ func variantDupStrvFunction_Set() error {
 }
 
 // DupStrv is a representation of the C type g_variant_dup_strv.
-func (recv *Variant) DupStrv() uint64 {
+func (recv *Variant) DupStrv() ([]string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := variantDupStrvFunction_Set()
 	if err == nil {
-		variantDupStrvFunction.Invoke(inArgs[:], outArgs[:])
+		ret = variantDupStrvFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(true)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var variantEqualFunction *gi.Function
@@ -24214,16 +24068,20 @@ func variantGetBytestringFunction_Set() error {
 }
 
 // GetBytestring is a representation of the C type g_variant_get_bytestring.
-func (recv *Variant) GetBytestring() {
+func (recv *Variant) GetBytestring() string {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
+	var ret gi.Argument
+
 	err := variantGetBytestringFunction_Set()
 	if err == nil {
-		variantGetBytestringFunction.Invoke(inArgs[:], nil)
+		ret = variantGetBytestringFunction.Invoke(inArgs[:], nil)
 	}
 
-	return
+	retGo := ret.String(false)
+
+	return retGo
 }
 
 var variantGetBytestringArrayFunction *gi.Function
@@ -24242,20 +24100,22 @@ func variantGetBytestringArrayFunction_Set() error {
 }
 
 // GetBytestringArray is a representation of the C type g_variant_get_bytestring_array.
-func (recv *Variant) GetBytestringArray() uint64 {
+func (recv *Variant) GetBytestringArray() ([]string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := variantGetBytestringArrayFunction_Set()
 	if err == nil {
-		variantGetBytestringArrayFunction.Invoke(inArgs[:], outArgs[:])
+		ret = variantGetBytestringArrayFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(false)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 // UNSUPPORTED : C value 'g_variant_get_child' : parameter '...' of type 'nil' not supported
@@ -24389,38 +24249,7 @@ func (recv *Variant) GetDouble() float64 {
 	return retGo
 }
 
-var variantGetFixedArrayFunction *gi.Function
-var variantGetFixedArrayFunction_Once sync.Once
-
-func variantGetFixedArrayFunction_Set() error {
-	var err error
-	variantGetFixedArrayFunction_Once.Do(func() {
-		err = variantStruct_Set()
-		if err != nil {
-			return
-		}
-		variantGetFixedArrayFunction, err = variantStruct.InvokerNew("get_fixed_array")
-	})
-	return err
-}
-
-// GetFixedArray is a representation of the C type g_variant_get_fixed_array.
-func (recv *Variant) GetFixedArray(elementSize uint64) uint64 {
-	var inArgs [2]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-	inArgs[1].SetUint64(elementSize)
-
-	var outArgs [1]gi.Argument
-
-	err := variantGetFixedArrayFunction_Set()
-	if err == nil {
-		variantGetFixedArrayFunction.Invoke(inArgs[:], outArgs[:])
-	}
-
-	out0 := outArgs[0].Uint64()
-
-	return out0
-}
+// UNSUPPORTED : C value 'g_variant_get_fixed_array' : return type not supported
 
 var variantGetHandleFunction *gi.Function
 var variantGetHandleFunction_Once sync.Once
@@ -24630,20 +24459,22 @@ func variantGetObjvFunction_Set() error {
 }
 
 // GetObjv is a representation of the C type g_variant_get_objv.
-func (recv *Variant) GetObjv() uint64 {
+func (recv *Variant) GetObjv() ([]string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := variantGetObjvFunction_Set()
 	if err == nil {
-		variantGetObjvFunction.Invoke(inArgs[:], outArgs[:])
+		ret = variantGetObjvFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(false)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var variantGetSizeFunction *gi.Function
@@ -24728,20 +24559,22 @@ func variantGetStrvFunction_Set() error {
 }
 
 // GetStrv is a representation of the C type g_variant_get_strv.
-func (recv *Variant) GetStrv() uint64 {
+func (recv *Variant) GetStrv() ([]string, uint64) {
 	var inArgs [1]gi.Argument
 	inArgs[0].SetPointer(recv.Native())
 
 	var outArgs [1]gi.Argument
+	var ret gi.Argument
 
 	err := variantGetStrvFunction_Set()
 	if err == nil {
-		variantGetStrvFunction.Invoke(inArgs[:], outArgs[:])
+		ret = variantGetStrvFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
+	retGo := ret.StringArray(false)
 	out0 := outArgs[0].Uint64()
 
-	return out0
+	return retGo, out0
 }
 
 var variantGetTypeFunction *gi.Function

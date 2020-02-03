@@ -1126,7 +1126,7 @@ func (recv *Object) GetAccessibleId() string {
 	return retGo
 }
 
-// UNSUPPORTED : C value 'atk_object_get_attributes' : return type 'AttributeSet' not supported
+// UNSUPPORTED : C value 'atk_object_get_attributes' : return type not supported
 
 var objectGetDescriptionFunction *gi.Function
 var objectGetDescriptionFunction_Once sync.Once
@@ -2612,33 +2612,7 @@ func (recv *Relation) GetRelationType() RelationType {
 	return retGo
 }
 
-var relationGetTargetFunction *gi.Function
-var relationGetTargetFunction_Once sync.Once
-
-func relationGetTargetFunction_Set() error {
-	var err error
-	relationGetTargetFunction_Once.Do(func() {
-		err = relationObject_Set()
-		if err != nil {
-			return
-		}
-		relationGetTargetFunction, err = relationObject.InvokerNew("get_target")
-	})
-	return err
-}
-
-// GetTarget is a representation of the C type atk_relation_get_target.
-func (recv *Relation) GetTarget() {
-	var inArgs [1]gi.Argument
-	inArgs[0].SetPointer(recv.Native())
-
-	err := relationGetTargetFunction_Set()
-	if err == nil {
-		relationGetTargetFunction.Invoke(inArgs[:], nil)
-	}
-
-	return
-}
+// UNSUPPORTED : C value 'atk_relation_get_target' : return type not supported
 
 var relationRemoveTargetFunction *gi.Function
 var relationRemoveTargetFunction_Once sync.Once
