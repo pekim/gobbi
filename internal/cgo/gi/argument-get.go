@@ -67,6 +67,10 @@ func (a Argument) StringArray(transferOwnership bool) []string {
 	var strings []string
 
 	arrayPointer := a.Pointer()
+	if arrayPointer == nil {
+		return strings
+	}
+
 	stringPointer := *(**C.char)(arrayPointer)
 
 	for stringPointer != nil {
