@@ -81,7 +81,7 @@ func (a *Argument) SetStringArray(value []string) {
 	//	*cStringPtr = C.CString(str)
 	//
 	//	// advance to next
-	//	cStringPtr = (**C.gchar)(incptr(unsafe.Pointer(cStringPtr), C.sizeof_gpointer))
+	//	cStringPtr = (**C.gchar)(incrPointer(unsafe.Pointer(cStringPtr), C.sizeof_gpointer))
 	//}
 	//
 	//*(***C.gchar)(unsafe.Pointer(a)) = cArray

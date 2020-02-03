@@ -73,7 +73,7 @@ func (a Argument) StringArray(transferOwnership bool) []string {
 		str := C.GoString((*C.char)(stringPointer))
 		strings = append(strings, str)
 
-		arrayPointer = incptr(arrayPointer, C.sizeof_gpointer)
+		arrayPointer = incrPointerPointer(arrayPointer)
 		stringPointer = *(**C.char)(arrayPointer)
 	}
 
