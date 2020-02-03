@@ -85,10 +85,10 @@ func TestSignalMultipleHandlers(t *testing.T) {
 	assert.Equal(t, 2, calledCount)
 }
 
-//func TestInit(t *testing.T) {
-//	argsIn := []string{"one", "--g-fatal-warnings", "two", "--class", "cls", "three"}
-//
-//	argc, argsOut := Init(argsIn)
-//	assert.Equal(t, 3, argc)
-//	assert.Equal(t, []string{"one", "two", "three"}, argsOut)
-//}
+func TestInit(t *testing.T) {
+	argsIn := []string{"one", "--g-fatal-warnings", "two", "--class", "cls", "three"}
+
+	argc, argsOut := Init(argsIn)
+	assert.Equal(t, int32(3), argc)
+	assert.Equal(t, []string{"one", "two", "three"}, argsOut)
+}

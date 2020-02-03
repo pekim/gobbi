@@ -67,24 +67,25 @@ func (a *Argument) SetStringArray(value []string) {
 		return
 	}
 
-	cArray := make([](*C.gchar), len(value), len(value))
-	for i, str := range value {
-		cArray[i] = C.CString(str)
-	}
-
-	*(***C.gchar)(unsafe.Pointer(a)) = &cArray[0]
-
-	//arraySize := len(value) * C.sizeof_gpointer
-	//cArray := (**C.gchar)(C.malloc(C.ulong(arraySize)))
-	//cStringPtr := cArray
-	//for _, str := range value {
-	//	*cStringPtr = C.CString(str)
-	//
-	//	// advance to next
-	//	cStringPtr = (**C.gchar)(incrPointer(unsafe.Pointer(cStringPtr), C.sizeof_gpointer))
+	//cArray := make([](*C.gchar), len(value), len(value))
+	//for i, str := range value {
+	//	cArray[i] = C.CString(str)
 	//}
 	//
+	//*(***C.gchar)(unsafe.Pointer(a)) = &cArray[0]
+
+	arraySize := len(value) * C.sizeof_gpointer
+	cArray := (**C.gchar)(C.malloc(C.ulong(arraySize)))
+	cStringPtr := cArray
+	for _, str := range value {
+		*cStringPtr = C.CString(str)
+
+		// advance to next
+		cStringPtr = (**C.gchar)(incrPointer(unsafe.Pointer(cStringPtr), C.sizeof_gpointer))
+	}
+
 	//*(***C.gchar)(unsafe.Pointer(a)) = cArray
+	a.SetPointer(unsafe.Pointer(cArray))
 }
 
 func (a *Argument) SetPointer(value unsafe.Pointer) {
