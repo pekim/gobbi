@@ -5,6 +5,7 @@ package gi
 import "C"
 
 import (
+	"fmt"
 	"unsafe"
 )
 
@@ -67,6 +68,17 @@ func (a *Argument) SetStringArray(value []string) {
 		return
 	}
 
+	count := len(value) + 1
+	arraySize := count * C.sizeof_gpointer
+	fmt.Println(arraySize)
+	cArray := (**C.gchar)(C.malloc(C.ulong(arraySize)))
+	cStrings := (*[1 << 28]*C.char)(unsafe.Pointer(cArray))[:count:count]
+
+	for i, str := range value {
+		cStrings[i] = C.CString(str)
+	}
+	cStrings[count-1] = nil
+
 	//cArray := make([](*C.gchar), len(value), len(value))
 	//for i, str := range value {
 	//	cArray[i] = C.CString(str)
@@ -74,15 +86,15 @@ func (a *Argument) SetStringArray(value []string) {
 	//
 	//*(***C.gchar)(unsafe.Pointer(a)) = &cArray[0]
 
-	arraySize := len(value) * C.sizeof_gpointer
-	cArray := (**C.gchar)(C.malloc(C.ulong(arraySize)))
-	cStringPtr := cArray
-	for _, str := range value {
-		*cStringPtr = C.CString(str)
-
-		// advance to next
-		cStringPtr = (**C.gchar)(incrPointer(unsafe.Pointer(cStringPtr), C.sizeof_gpointer))
-	}
+	//arraySize := len(value) * C.sizeof_gpointer
+	//cArray := (**C.gchar)(C.malloc(C.ulong(arraySize)))
+	//cStringPtr := cArray
+	//for _, str := range value {
+	//	*cStringPtr = C.CString(str)
+	//
+	//	// advance to next
+	//	cStringPtr = (**C.gchar)(incrPointer(unsafe.Pointer(cStringPtr), C.sizeof_gpointer))
+	//}
 
 	//*(***C.gchar)(unsafe.Pointer(a)) = cArray
 	a.SetPointer(unsafe.Pointer(cArray))
