@@ -79,6 +79,8 @@ func (a *Argument) SetStringArray(value []string) {
 	}
 	cStrings[count-1] = nil
 
+	fmt.Println(cArray, cStrings)
+
 	//cArray := make([](*C.gchar), len(value), len(value))
 	//for i, str := range value {
 	//	cArray[i] = C.CString(str)
@@ -97,7 +99,8 @@ func (a *Argument) SetStringArray(value []string) {
 	//}
 
 	//*(***C.gchar)(unsafe.Pointer(a)) = cArray
-	a.SetPointer(unsafe.Pointer(cArray))
+	//a.SetPointer(unsafe.Pointer(cArray))
+	a.SetPointer(unsafe.Pointer(&cStrings[0]))
 }
 
 func (a *Argument) SetPointer(value unsafe.Pointer) {

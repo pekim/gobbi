@@ -18,6 +18,14 @@ func TestFunctionCall(t *testing.T) {
 	assert.Equal(t, uint32(3), v)
 }
 
+func TestInit(t *testing.T) {
+	argsIn := []string{"one", "--g-fatal-warnings", "two", "--class", "cls", "three"}
+
+	argc, argsOut := Init(argsIn)
+	assert.Equal(t, int32(3), argc)
+	assert.Equal(t, []string{"one", "two", "three"}, argsOut)
+}
+
 func TestClass(t *testing.T) {
 	Init([]string{})
 
@@ -83,12 +91,4 @@ func TestSignalMultipleHandlers(t *testing.T) {
 	button.Widget().Show()
 
 	assert.Equal(t, 2, calledCount)
-}
-
-func TestInit(t *testing.T) {
-	argsIn := []string{"one", "--g-fatal-warnings", "two", "--class", "cls", "three"}
-
-	argc, argsOut := Init(argsIn)
-	assert.Equal(t, int32(3), argc)
-	assert.Equal(t, []string{"one", "two", "three"}, argsOut)
 }
