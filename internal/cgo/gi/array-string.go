@@ -5,6 +5,7 @@ package gi
 import "C"
 
 import (
+	"fmt"
 	"unsafe"
 )
 
@@ -30,5 +31,20 @@ func StringArrayToC(value []string, nilTerminated bool) unsafe.Pointer {
 		cStrings[cStringsCount-1] = nil
 	}
 
+	fmt.Println("satc", cArray)
 	return unsafe.Pointer(cArray)
+}
+
+func FreeCStringArray(array unsafe.Pointer, count int) {
+	fmt.Println("fcsa", array)
+	cArray := (**C.gchar)(array)
+	fmt.Println(cArray)
+
+	cStrings := (*[1 << 28]*C.char)(unsafe.Pointer(cArray))[:count:count]
+
+	for _, str := range cStrings {
+		C.free(unsafe.Pointer(str))
+	}
+
+	C.free(array)
 }

@@ -3,6 +3,7 @@
 package gtk
 
 import (
+	"fmt"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
@@ -1358,20 +1359,41 @@ func initFunction_Set() error {
 // Init is a representation of the C type gtk_init.
 func Init(argv []string) (int32, []string) {
 	var inArgs [2]gi.Argument
-	inArgs[0].SetInt32(int32(len(argv)))
-	inArgs[1].SetStringArray(argv)
+	l := len(argv)
+	inArgs[0].SetPointer(unsafe.Pointer(&l))
+	//inArgs[1].SetStringArray(argv)
+	i1 := gi.StringArrayToC(argv, false)
+	defer func(ptr unsafe.Pointer, count int) {
+		fmt.Println(i1)
+		gi.FreeCStringArray(ptr, l)
+	}(i1, l)
+	//i1f := i1
+	fmt.Println(i1)
+	inArgs[1].SetPointer(unsafe.Pointer(&i1))
 
 	var outArgs [2]gi.Argument
+	outArgs[0] = inArgs[0]
+	outArgs[1] = inArgs[1]
+
+	//var o0 int32
+	//outArgs[0].SetPointer(unsafe.Pointer(&o0))
 
 	err := initFunction_Set()
 	if err == nil {
 		initFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := outArgs[0].Int32()
-	out1 := outArgs[1].StringArray(true)
+	//out0 := outArgs[0].Int32()
+	//out1 := outArgs[1].StringArray(true)
+	out1 := []string{}
 
-	return out0, out1
+	o0 := (*int32)(outArgs[0].Pointer())
+	fmt.Println(*o0)
+
+	//fmt.Println(i1, i1f)
+	//gi.FreeCStringArray(i1f, l)
+
+	return *o0, out1
 }
 
 var initCheckFunction *gi.Function
