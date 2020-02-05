@@ -31,11 +31,11 @@ func TestFunctionCallArgStringReturnString(t *testing.T) {
 	assert.Equal(t, "aabbcc-zz", result)
 }
 
-//func TestFunctionInAndOutParams(t *testing.T) {
-//	value, end := AsciiStrtoll("1234xyx", 16)
-//	assert.Equal(t, int64(4660), value)
-//	assert.Equal(t, "xyz", end)
-//}
+func TestFunctionInAndOutParams(t *testing.T) {
+	value, end := AsciiStrtoll("1234xyx", 16)
+	assert.Equal(t, int64(4660), value)
+	assert.Equal(t, "xyz", end)
+}
 
 func TestRecordConstructor(t *testing.T) {
 	date := DateNew()
