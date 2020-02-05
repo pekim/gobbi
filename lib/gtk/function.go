@@ -1363,13 +1363,15 @@ func Init(argv []string) (int32, []string) {
 	inArgs[0].SetPointer(unsafe.Pointer(&l))
 	//inArgs[1].SetStringArray(argv)
 	i1 := gi.StringArrayToC(argv, false)
-	defer func(ptr unsafe.Pointer, count int) {
-		fmt.Println(i1)
-		gi.FreeCStringArray(ptr, l)
-	}(i1, l)
-	//i1f := i1
-	fmt.Println(i1)
 	inArgs[1].SetPointer(unsafe.Pointer(&i1))
+
+	defer func() {
+		//fmt.Println("in defer", ptr, count)
+		//gi.FreeCStringArray(ptr, count)
+		fmt.Println("in defer", i1, l)
+		gi.FreeCStringArray(i1, l)
+	}()
+	fmt.Println(i1, l)
 
 	var outArgs [2]gi.Argument
 	outArgs[0] = inArgs[0]
@@ -1388,10 +1390,11 @@ func Init(argv []string) (int32, []string) {
 	out1 := []string{}
 
 	o0 := (*int32)(outArgs[0].Pointer())
-	fmt.Println(*o0)
+	fmt.Println("out count", *o0)
 
 	//fmt.Println(i1, i1f)
 	//gi.FreeCStringArray(i1f, l)
+	fmt.Println("func exit", i1, l)
 
 	return *o0, out1
 }

@@ -36,13 +36,19 @@ func StringArrayToC(value []string, nilTerminated bool) unsafe.Pointer {
 }
 
 func FreeCStringArray(array unsafe.Pointer, count int) {
-	fmt.Println("fcsa", array)
+	fmt.Println("fcsa", array, count)
+
+	if array == nil || count == 0 {
+		return
+	}
+
 	cArray := (**C.gchar)(array)
 	fmt.Println(cArray)
 
 	cStrings := (*[1 << 28]*C.char)(unsafe.Pointer(cArray))[:count:count]
 
 	for _, str := range cStrings {
+		fmt.Println("free", str, C.GoString(str))
 		C.free(unsafe.Pointer(str))
 	}
 
