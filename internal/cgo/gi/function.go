@@ -45,21 +45,6 @@ func FunctionInvokerNew(namespace string, funcName string) (*Function, error) {
 	}
 	fi.initTracing()
 
-	argCount := C.g_callable_info_get_n_args(fi.info)
-	fmt.Println("argCount ", argCount)
-	for a := C.int(0); a < argCount; a++ {
-		argInfo := C.g_callable_info_get_arg(fi.info, a)
-		fmt.Println("  name", C.GoString(C.g_base_info_get_name(argInfo)))
-		argTypeInfo := C.g_arg_info_get_type(argInfo)
-		fmt.Println("    isPointer", C.g_type_info_is_pointer(argTypeInfo))
-		fmt.Println("    typeTag", C.g_type_info_get_tag(argTypeInfo))
-		fmt.Println("    arrayType", C.g_type_info_get_array_type(argTypeInfo))
-		paramType := C.g_type_info_get_param_type(argTypeInfo, 0)
-		if paramType != nil {
-			fmt.Println("    paramType 0", C.g_base_info_get_type(paramType))
-		}
-	}
-
 	return fi, nil
 }
 
@@ -118,7 +103,6 @@ func (fi *Function) Invoke(in []Argument, out []Argument) Argument {
 	if !invoked {
 		panic(fmt.Sprintf("%s.%s not called", fi.namespace, fi.funcName))
 	}
-
 	return returnValue
 }
 

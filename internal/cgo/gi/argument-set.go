@@ -70,7 +70,6 @@ func (a *Argument) SetStringArray(value []string) {
 
 	count := len(value) + 1
 	arraySize := count * C.sizeof_gpointer
-	fmt.Println(arraySize)
 	cArray := (**C.gchar)(C.malloc(C.ulong(arraySize)))
 	cStrings := (*[1 << 28]*C.char)(unsafe.Pointer(cArray))[:count:count]
 
@@ -81,26 +80,9 @@ func (a *Argument) SetStringArray(value []string) {
 
 	fmt.Println(cArray, cStrings)
 
-	//cArray := make([](*C.gchar), len(value), len(value))
-	//for i, str := range value {
-	//	cArray[i] = C.CString(str)
-	//}
-	//
-	//*(***C.gchar)(unsafe.Pointer(a)) = &cArray[0]
-
-	//arraySize := len(value) * C.sizeof_gpointer
-	//cArray := (**C.gchar)(C.malloc(C.ulong(arraySize)))
-	//cStringPtr := cArray
-	//for _, str := range value {
-	//	*cStringPtr = C.CString(str)
-	//
-	//	// advance to next
-	//	cStringPtr = (**C.gchar)(incrPointer(unsafe.Pointer(cStringPtr), C.sizeof_gpointer))
-	//}
-
-	//*(***C.gchar)(unsafe.Pointer(a)) = cArray
-	//a.SetPointer(unsafe.Pointer(cArray))
-	a.SetPointer(unsafe.Pointer(&cStrings[0]))
+	cArrayPtr := (***C.gchar)(C.malloc(C.ulong(C.sizeof_gpointer)))
+	*cArrayPtr = cArray
+	a.SetPointer(unsafe.Pointer(cArrayPtr))
 }
 
 func (a *Argument) SetPointer(value unsafe.Pointer) {
