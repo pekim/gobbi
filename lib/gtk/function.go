@@ -1362,14 +1362,18 @@ func Init(argv []string) (int32, []string) {
 	l := len(argv)
 	inArgs[0].SetPointer(unsafe.Pointer(&l))
 	//inArgs[1].SetStringArray(argv)
-	i1 := gi.StringArrayToC(argv, false)
+	in1Array := gi.StringArrayToC(argv, false)
+	var i1 *unsafe.Pointer
+	if in1Array != nil {
+		i1 = &in1Array[0]
+	}
 	inArgs[1].SetPointer(unsafe.Pointer(&i1))
 
 	defer func() {
 		//fmt.Println("in defer", ptr, count)
 		//gi.FreeCStringArray(ptr, count)
 		fmt.Println("in defer", i1, l)
-		gi.FreeCStringArray(i1, l)
+		gi.FreeCStringArray(in1Array, l)
 	}()
 	fmt.Println(i1, l)
 

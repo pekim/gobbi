@@ -9,48 +9,35 @@ import (
 	"unsafe"
 )
 
-func StringArrayToC(value []string, nilTerminated bool) unsafe.Pointer {
-	if value == nil || len(value) == 0 {
+func StringArrayToC(strings []string, nilTerminated bool) []unsafe.Pointer {
+	if strings == nil || len(strings) == 0 {
 		return nil
 	}
 
-	cStringsCount := len(value)
+	cStringsCount := len(strings)
 	if nilTerminated {
 		cStringsCount++
 	}
 
-	arraySize := cStringsCount * C.sizeof_gpointer
-	cArray := (**C.gchar)(C.malloc(C.ulong(arraySize)))
-	cStrings := (*[1 << 28]*C.char)(unsafe.Pointer(cArray))[:cStringsCount:cStringsCount]
-
-	for i, str := range value {
-		cStrings[i] = C.CString(str)
+	cStrings := make([]unsafe.Pointer, cStringsCount, cStringsCount)
+	for i, str := range strings {
+		cStrings[i] = unsafe.Pointer(C.CString(str))
 	}
 
 	if nilTerminated {
 		cStrings[cStringsCount-1] = nil
 	}
 
-	fmt.Println("satc", cArray)
-	return unsafe.Pointer(cArray)
+	return cStrings
 }
 
-func FreeCStringArray(array unsafe.Pointer, count int) {
-	fmt.Println("fcsa", array, count)
-
-	if array == nil || count == 0 {
+func FreeCStringArray(cArray []unsafe.Pointer, count int) {
+	if cArray == nil || count == 0 {
 		return
 	}
 
-	cArray := (**C.gchar)(array)
-	fmt.Println(cArray)
-
-	cStrings := (*[1 << 28]*C.char)(unsafe.Pointer(cArray))[:count:count]
-
-	for _, str := range cStrings {
-		fmt.Println("free", str, C.GoString(str))
+	for _, str := range cArray {
+		fmt.Println("free", str, C.GoString((*C.char)(str)))
 		C.free(unsafe.Pointer(str))
 	}
-
-	C.free(array)
 }
