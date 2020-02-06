@@ -1369,11 +1369,9 @@ func Init(argv []string) (int32, []string) {
 	}
 	inArgs[1].SetPointer(unsafe.Pointer(&i1))
 
+	in1ArrayCopy := append([]unsafe.Pointer(nil), in1Array...)
 	defer func() {
-		//fmt.Println("in defer", ptr, count)
-		//gi.FreeCStringArray(ptr, count)
-		fmt.Println("in defer", i1, l)
-		gi.FreeCStringArray(in1Array)
+		gi.FreeCStringArray(in1ArrayCopy)
 	}()
 	fmt.Println(i1, l)
 
