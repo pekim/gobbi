@@ -35,7 +35,7 @@ func NewLibrary(name string) *Library {
 	}
 }
 
-func (l *Library) function(name string) (unsafe.Pointer, error) {
+func (l *Library) function(name string) (*Function, error) {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
 
@@ -43,8 +43,8 @@ func (l *Library) function(name string) (unsafe.Pointer, error) {
 	fn := C.dlsym(l.handle, cName)
 	if fn == nil {
 		dlError := C.GoString(C.dlerror())
-		return fn, fmt.Errorf("Failed to find function : %s", dlError)
+		return nil, fmt.Errorf("Failed to find function : %s", dlError)
 	}
 
-	return fn, nil
+	return &Function{fn: fn}, nil
 }

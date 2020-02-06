@@ -21,7 +21,7 @@ func TestLibraryFunction(t *testing.T) {
 	lib := NewLibrary("libgtk-3.so.0")
 	fn, err := lib.function("gtk_init")
 
-	assert.NotEqual(t, unsafe.Pointer(nil), fn)
+	assert.NotEqual(t, unsafe.Pointer(nil), fn.fn)
 	assert.Nil(t, err)
 }
 
