@@ -1,8 +1,12 @@
 package ffi
 
-// #include <dlfcn.h>
-// #include <stdlib.h>
-// #cgo LDFLAGS: -ldl
+/*
+#include <stdlib.h>
+
+#include <dlfcn.h>
+#cgo LDFLAGS: -ldl
+
+*/
 import "C"
 
 import (
@@ -19,14 +23,28 @@ func NewLibrary(name string) *Library {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
 
-	handle := C.dlopen(cName, C.RTLD_NOW)
+	handle := C.dlopen(cName, C.RTLD_LAZY)
 	if handle == nil {
-		error := C.GoString(C.dlerror())
-		panic(fmt.Sprintf("Failed to load library : %s", error))
+		dlError := C.GoString(C.dlerror())
+		panic(fmt.Sprintf("Failed to load library : %s", dlError))
 	}
 
 	return &Library{
 		name:   name,
 		handle: handle,
 	}
+}
+
+func (l *Library) function(name string) (unsafe.Pointer, error) {
+	cName := C.CString(name)
+	defer C.free(unsafe.Pointer(cName))
+
+	C.dlerror()
+	fn := C.dlsym(l.handle, cName)
+	if fn == nil {
+		dlError := C.GoString(C.dlerror())
+		return fn, fmt.Errorf("Failed to find function : %s", dlError)
+	}
+
+	return fn, nil
 }
