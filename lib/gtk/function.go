@@ -3,7 +3,6 @@
 package gtk
 
 import (
-	"fmt"
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
@@ -1361,7 +1360,6 @@ func Init(argv []string) (int32, []string) {
 	var inArgs [2]gi.Argument
 	l := len(argv)
 	inArgs[0].SetPointer(unsafe.Pointer(&l))
-	//inArgs[1].SetStringArray(argv)
 	in1Array := gi.CArrayFromStringSlice(argv, false)
 	var i1 *unsafe.Pointer
 	if in1Array != nil {
@@ -1373,33 +1371,20 @@ func Init(argv []string) (int32, []string) {
 	defer func() {
 		gi.FreeCStringArray(in1ArrayCopy)
 	}()
-	fmt.Println(i1, l)
 
 	var outArgs [2]gi.Argument
 	outArgs[0] = inArgs[0]
 	outArgs[1] = inArgs[1]
-
-	//var o0 int32
-	//outArgs[0].SetPointer(unsafe.Pointer(&o0))
 
 	err := initFunction_Set()
 	if err == nil {
 		initFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	//out0 := outArgs[0].Int32()
-	//out1 := outArgs[1].StringArray(true)
-	//out1 := []string{}
-
 	o0 := (*int32)(outArgs[0].Pointer())
-	fmt.Println("out count", *o0)
 
 	o1 := (*unsafe.Pointer)(outArgs[1].Pointer())
 	out1 := gi.StringSliceFromCArray(*o1, int(*o0))
-
-	//fmt.Println(i1, i1f)
-	//gi.FreeCStringArray(i1f, l)
-	fmt.Println("func exit", i1, l)
 
 	return *o0, out1
 }
