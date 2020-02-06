@@ -1362,7 +1362,7 @@ func Init(argv []string) (int32, []string) {
 	l := len(argv)
 	inArgs[0].SetPointer(unsafe.Pointer(&l))
 	//inArgs[1].SetStringArray(argv)
-	in1Array := gi.StringArrayToC(argv, false)
+	in1Array := gi.CArrayFromStringSlice(argv, false)
 	var i1 *unsafe.Pointer
 	if in1Array != nil {
 		i1 = &in1Array[0]
@@ -1373,7 +1373,7 @@ func Init(argv []string) (int32, []string) {
 		//fmt.Println("in defer", ptr, count)
 		//gi.FreeCStringArray(ptr, count)
 		fmt.Println("in defer", i1, l)
-		gi.FreeCStringArray(in1Array, l)
+		gi.FreeCStringArray(in1Array)
 	}()
 	fmt.Println(i1, l)
 
@@ -1391,10 +1391,13 @@ func Init(argv []string) (int32, []string) {
 
 	//out0 := outArgs[0].Int32()
 	//out1 := outArgs[1].StringArray(true)
-	out1 := []string{}
+	//out1 := []string{}
 
 	o0 := (*int32)(outArgs[0].Pointer())
 	fmt.Println("out count", *o0)
+
+	o1 := (*unsafe.Pointer)(outArgs[1].Pointer())
+	out1 := gi.StringSliceFromCArray(*o1, int(*o0))
 
 	//fmt.Println(i1, i1f)
 	//gi.FreeCStringArray(i1f, l)

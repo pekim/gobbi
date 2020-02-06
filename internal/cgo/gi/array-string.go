@@ -9,7 +9,7 @@ import (
 	"unsafe"
 )
 
-func StringArrayToC(strings []string, nilTerminated bool) []unsafe.Pointer {
+func CArrayFromStringSlice(strings []string, nilTerminated bool) []unsafe.Pointer {
 	if strings == nil || len(strings) == 0 {
 		return nil
 	}
@@ -31,11 +31,22 @@ func StringArrayToC(strings []string, nilTerminated bool) []unsafe.Pointer {
 	return cStrings
 }
 
-func FreeCStringArray(cArray []unsafe.Pointer, count int) {
+func StringSliceFromCArray(cArray unsafe.Pointer, count int) []string {
 	if cArray == nil || count == 0 {
-		return
+		return nil
 	}
 
+	cStrings := (*[1 << 28]*C.char)(unsafe.Pointer(cArray))[:count:count]
+
+	strings := make([]string, len(cStrings), len(cStrings))
+	for i, cString := range cStrings {
+		strings[i] = C.GoString((*C.char)(cString))
+	}
+
+	return strings
+}
+
+func FreeCStringArray(cArray []unsafe.Pointer) {
 	for _, str := range cArray {
 		fmt.Println("free", str, C.GoString((*C.char)(str)))
 		C.free(unsafe.Pointer(str))
