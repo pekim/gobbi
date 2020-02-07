@@ -10,10 +10,12 @@ import (
 )
 
 type Function struct {
-	library *Library
-	name    string
-	fn      unsafe.Pointer
-	cif     C.ffi_cif
+	library    *Library
+	name       string
+	argTypes   []Type
+	returnType Type
+	fn         unsafe.Pointer
+	cif        C.ffi_cif
 }
 
 func (f *Function) prepare() {

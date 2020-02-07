@@ -37,7 +37,7 @@ func OpenLibrary(name string, filename string) *Library {
 	}
 }
 
-func (l *Library) function(name string) *Function {
+func (l *Library) function(name string, argTypes []Type, returnType Type) *Function {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
 
@@ -51,9 +51,11 @@ func (l *Library) function(name string) *Function {
 	}
 
 	f := &Function{
-		library: l,
-		name:    name,
-		fn:      fn,
+		library:    l,
+		name:       name,
+		argTypes:   argTypes,
+		returnType: returnType,
+		fn:         fn,
 	}
 	f.prepare()
 
