@@ -15,27 +15,29 @@ import (
 )
 
 type Library struct {
-	name   string
-	handle unsafe.Pointer
+	name     string
+	filename string
+	handle   unsafe.Pointer
 }
 
-func OpenLibrary(name string) *Library {
-	cName := C.CString(name)
-	defer C.free(unsafe.Pointer(cName))
+func OpenLibrary(name string, filename string) *Library {
+	cFilename := C.CString(filename)
+	defer C.free(unsafe.Pointer(cFilename))
 
-	handle := C.dlopen(cName, C.RTLD_LAZY)
+	handle := C.dlopen(cFilename, C.RTLD_LAZY)
 	if handle == nil {
 		dlError := C.GoString(C.dlerror())
 		panic(fmt.Sprintf("Failed to load library : %s", dlError))
 	}
 
 	return &Library{
-		name:   name,
-		handle: handle,
+		name:     name,
+		filename: filename,
+		handle:   handle,
 	}
 }
 
-func (l *Library) function(name string) (*Function, error) {
+func (l *Library) function(name string) *Function {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
 
@@ -45,12 +47,15 @@ func (l *Library) function(name string) (*Function, error) {
 		dlError := C.GoString(C.dlerror())
 		err := fmt.Errorf("Failed to find function : %s", dlError)
 		handleError(err)
-		return nil, err
+		return nil
 	}
 
-	return &Function{
+	f := &Function{
 		library: l,
 		name:    name,
 		fn:      fn,
-	}, nil
+	}
+	f.prepare()
+
+	return f
 }

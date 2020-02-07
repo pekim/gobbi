@@ -7,22 +7,27 @@ import (
 )
 
 func TestNewLibrary(t *testing.T) {
-	lib := OpenLibrary("libgtk-3.so.0")
+	lib := OpenLibrary("Gtk", "libgtk-3.so.0")
 	assert.NotNil(t, lib.handle)
 }
 
 func TestNewLibraryNotLoaded(t *testing.T) {
 	assert.Panics(t, func() {
-		OpenLibrary("bad")
+		OpenLibrary("Bad", "bad")
 	})
 }
 
 func TestLibraryFunction(t *testing.T) {
-	lib := OpenLibrary("libgtk-3.so.0")
-	fn, err := lib.function("gtk_init")
+	handledError := false
+	SetErrorHandler(func(err error) {
+		handledError = true
+	})
+
+	lib := OpenLibrary("Gtk", "libgtk-3.so.0")
+	fn := lib.function("gtk_init")
 
 	assert.NotEqual(t, unsafe.Pointer(nil), fn.fn)
-	assert.Nil(t, err)
+	assert.False(t, handledError)
 }
 
 func TestLibraryFunctionNotFound(t *testing.T) {
@@ -31,9 +36,9 @@ func TestLibraryFunctionNotFound(t *testing.T) {
 		handledError = true
 	})
 
-	lib := OpenLibrary("libgtk-3.so.0")
-	_, err := lib.function("bad")
+	lib := OpenLibrary("Gtk", "libgtk-3.so.0")
+	fn := lib.function("bad")
 
-	assert.NotNil(t, err)
+	assert.Nil(t, fn)
 	assert.True(t, handledError)
 }
