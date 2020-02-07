@@ -43,7 +43,9 @@ func (l *Library) function(name string) (*Function, error) {
 	fn := C.dlsym(l.handle, cName)
 	if fn == nil {
 		dlError := C.GoString(C.dlerror())
-		return nil, fmt.Errorf("Failed to find function : %s", dlError)
+		err := fmt.Errorf("Failed to find function : %s", dlError)
+		handleError(err)
+		return nil, err
 	}
 
 	return &Function{

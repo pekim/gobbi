@@ -26,8 +26,14 @@ func TestLibraryFunction(t *testing.T) {
 }
 
 func TestLibraryFunctionNotFound(t *testing.T) {
+	handledError := false
+	SetErrorHandler(func(err error) {
+		handledError = true
+	})
+
 	lib := OpenLibrary("libgtk-3.so.0")
 	_, err := lib.function("bad")
 
 	assert.NotNil(t, err)
+	assert.True(t, handledError)
 }
