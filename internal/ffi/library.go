@@ -19,7 +19,7 @@ type Library struct {
 	handle unsafe.Pointer
 }
 
-func NewLibrary(name string) *Library {
+func OpenLibrary(name string) *Library {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
 
@@ -46,5 +46,9 @@ func (l *Library) function(name string) (*Function, error) {
 		return nil, fmt.Errorf("Failed to find function : %s", dlError)
 	}
 
-	return &Function{fn: fn}, nil
+	return &Function{
+		library: l,
+		name:    name,
+		fn:      fn,
+	}, nil
 }

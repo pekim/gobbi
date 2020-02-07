@@ -3,5 +3,7 @@ package ffi
 import "unsafe"
 
 type Function struct {
-	fn unsafe.Pointer
+	library *Library
+	name    string
+	fn      unsafe.Pointer
 }
