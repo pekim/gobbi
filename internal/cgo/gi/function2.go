@@ -105,6 +105,16 @@ func (fi *Function2) Invoke(args []Arg, inLen int, outLen int, returnArg Arg) Ar
 		&err,
 	) == C.TRUE
 
+	outIndex = 0
+	for i, arg := range args {
+		if arg.out {
+			(&arg).setValue(outArgs[outIndex])
+			args[i] = arg
+
+			outIndex++
+		}
+	}
+
 	(&returnArg).setValue(cReturnValue)
 
 	if cgo.Tracing() {

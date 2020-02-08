@@ -56,8 +56,51 @@ func (a *Arg) getValue() C.GIArgument {
 	var cArg C.GIArgument
 
 	switch a.typ {
-	case ArgType_size:
+	case ArgType_boolean:
+		var cValue C.gboolean = C.FALSE
+		if a.value.(bool) {
+			cValue = C.TRUE
+		}
+		(*(*C.gboolean)(unsafe.Pointer(a))) = cValue
+	case ArgType_int8:
+		(*(*int8)(unsafe.Pointer(&cArg))) = a.value.(int8)
+	case ArgType_uint8:
+		(*(*uint8)(unsafe.Pointer(&cArg))) = a.value.(uint8)
+	case ArgType_int16:
+		(*(*int16)(unsafe.Pointer(&cArg))) = a.value.(int16)
+	case ArgType_uint16:
+		(*(*uint16)(unsafe.Pointer(&cArg))) = a.value.(uint16)
+	case ArgType_int32:
+		(*(*int32)(unsafe.Pointer(&cArg))) = a.value.(int32)
+	case ArgType_uint32:
+		(*(*uint32)(unsafe.Pointer(&cArg))) = a.value.(uint32)
+	case ArgType_int64:
+		(*(*int64)(unsafe.Pointer(&cArg))) = a.value.(int64)
+	case ArgType_uint64:
 		(*(*uint64)(unsafe.Pointer(&cArg))) = a.value.(uint64)
+	case ArgType_float:
+		(*(*float32)(unsafe.Pointer(&cArg))) = a.value.(float32)
+	case ArgType_double:
+		(*(*float64)(unsafe.Pointer(&cArg))) = a.value.(float64)
+	case ArgType_short:
+		(*(*int16)(unsafe.Pointer(&cArg))) = a.value.(int16)
+	case ArgType_ushort:
+		(*(*uint16)(unsafe.Pointer(&cArg))) = a.value.(uint16)
+	case ArgType_int:
+		(*(*int32)(unsafe.Pointer(&cArg))) = a.value.(int32)
+	case ArgType_uint:
+		(*(*uint32)(unsafe.Pointer(&cArg))) = a.value.(uint32)
+	case ArgType_long:
+		(*(*int64)(unsafe.Pointer(&cArg))) = a.value.(int64)
+	case ArgType_ulong:
+		(*(*uint64)(unsafe.Pointer(&cArg))) = a.value.(uint64)
+	case ArgType_ssize:
+		(*(*int)(unsafe.Pointer(&cArg))) = a.value.(int)
+	case ArgType_size:
+		(*(*uint)(unsafe.Pointer(&cArg))) = a.value.(uint)
+	//ArgType_string
+	case ArgType_pointer:
+		(*(*unsafe.Pointer)(unsafe.Pointer(&cArg))) = a.value.(unsafe.Pointer)
 	default:
 		panic(fmt.Sprintf("Unhandle arg type, %#v", a))
 	}
@@ -96,9 +139,9 @@ func (a *Arg) setValue(value C.GIArgument) {
 	case ArgType_ushort:
 		a.value = (uint16)(*(*C.gushort)(ptrValue))
 	case ArgType_int:
-		a.value = (int)(*(*C.gint)(ptrValue))
+		a.value = (int32)(*(*C.gint)(ptrValue))
 	case ArgType_uint:
-		a.value = (uint)(*(*C.guint)(ptrValue))
+		a.value = (uint32)(*(*C.guint)(ptrValue))
 	case ArgType_long:
 		a.value = (int64)(*(*C.glong)(ptrValue))
 	case ArgType_ulong:
@@ -107,6 +150,7 @@ func (a *Arg) setValue(value C.GIArgument) {
 		a.value = (int)(*(*C.gssize)(ptrValue))
 	case ArgType_size:
 		a.value = (uint)(*(*C.gsize)(ptrValue))
+		//ArgType_string
 	case ArgType_pointer:
 		a.value = unsafe.Pointer(*(*C.gpointer)(ptrValue))
 	default:
