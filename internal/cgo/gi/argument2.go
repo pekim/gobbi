@@ -52,6 +52,8 @@ func (a *Arg) getValue() C.GIArgument {
 
 func (a *Arg) setValue(value C.GIArgument) {
 	switch a.typ {
+	case ArgType_boolean:
+		a.value = (*(*C.gboolean)(unsafe.Pointer(&value))) == C.TRUE
 	case ArgType_uint:
 		a.value = (uint)(*(*C.guint)(unsafe.Pointer(&value)))
 	default:

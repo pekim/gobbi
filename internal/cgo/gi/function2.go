@@ -67,6 +67,7 @@ func (fi *Function2) Invoke(args []Arg, inLen int, outLen int, returnArg Arg) Ar
 	inArgs := make([]C.GIArgument, inLen, inLen)
 	outArgs := make([]C.GIArgument, outLen, outLen)
 
+	// populate inArgs and outArgs
 	inIndex := 0
 	outIndex := 0
 	for _, arg := range args {

@@ -23,6 +23,13 @@ func TestFunctionIntegerReturn(t *testing.T) {
 	assert.True(t, ret.value.(uint) > 0)
 }
 
+func TestFunctionStringArg(t *testing.T) {
+	fn, _ := Function2InvokerNew("GLib", "mem_is_system_malloc")
+
+	ret := fn.Invoke([]Arg{}, 0, 0, Arg{typ: ArgType_boolean})
+	assert.True(t, ret.value.(bool))
+}
+
 func BenchmarkFuncCall(b *testing.B) {
 	fn, _ := Function2InvokerNew("GLib", "get_num_processors")
 
