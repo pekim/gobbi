@@ -23,9 +23,10 @@ func TestFunctionIntegerReturn(t *testing.T) {
 	assert.True(t, ret.value.(uint) > 0)
 }
 
-func TestFunctionIntegerReturn2(t *testing.T) {
+func BenchmarkFuncCall(b *testing.B) {
 	fn, _ := Function2InvokerNew("GLib", "get_num_processors")
 
-	ret := fn.Invoke([]Arg{}, 0, 0, Arg{typ: ArgType_uint})
-	assert.True(t, ret.value.(uint) > 0)
+	for n := 0; n < b.N; n++ {
+		fn.Invoke([]Arg{}, 0, 0, Arg{typ: ArgType_uint})
+	}
 }
