@@ -52,6 +52,8 @@ type Arg struct {
 	transferOwnership transferOwnership
 }
 
+// getValue extracts the value field in to a C.GIArgument
+// suitable for passing to a gi function invoker.
 func (a *Arg) getValue() C.GIArgument {
 	var cArg C.GIArgument
 
@@ -108,6 +110,8 @@ func (a *Arg) getValue() C.GIArgument {
 	return cArg
 }
 
+// setValue takes a C.GIArgument with a value returned from a gi
+// function invocation, and sets its value in the value field.
 func (a *Arg) setValue(value C.GIArgument) {
 	ptrValue := unsafe.Pointer(&value)
 
