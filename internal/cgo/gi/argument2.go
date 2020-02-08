@@ -1,9 +1,17 @@
 package gi
 
+// #include <girepository.h>
+import "C"
+
+import (
+	"fmt"
+	"unsafe"
+)
+
 type ArgType int
 
 const (
-	ArgType_boolean int = iota
+	ArgType_boolean ArgType = iota
 	ArgType_int8
 	ArgType_uint8
 	ArgType_int16
@@ -34,4 +42,19 @@ type Arg struct {
 	array   bool
 	in      bool
 	out     bool
+}
+
+func (a *Arg) getValue() C.GIArgument {
+	var cArg C.GIArgument
+
+	return cArg
+}
+
+func (a *Arg) setValue(value C.GIArgument) {
+	switch a.typ {
+	case ArgType_uint:
+		a.value = (uint)(*(*C.guint)(unsafe.Pointer(&value)))
+	default:
+		panic(fmt.Sprintf("Unhandle arg type, %#v", a))
+	}
 }

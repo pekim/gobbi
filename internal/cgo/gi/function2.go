@@ -19,7 +19,7 @@ type Function2 struct {
 	info           *C.GIFunctionInfo
 }
 
-func FunctionInvoker2New(namespace string, funcName string) (*Function2, error) {
+func Function2InvokerNew(namespace string, funcName string) (*Function2, error) {
 	cNamespace := C.CString(namespace)
 	defer C.free(unsafe.Pointer(cNamespace))
 
@@ -60,8 +60,7 @@ func (fi *Function2) initTracing() {
 	fi.hasReturnValue = returnTypeTag != C.GI_TYPE_TAG_VOID
 }
 
-func (fi *Function2) Invoke(args []Arg, inLen int, outLen int) Arg {
-	var returnValue Arg
+func (fi *Function2) Invoke(args []Arg, inLen int, outLen int, returnArg Arg) Arg {
 	var cReturnValue C.GIArgument
 	var err *C.GError
 
@@ -71,7 +70,7 @@ func (fi *Function2) Invoke(args []Arg, inLen int, outLen int) Arg {
 	inIndex := 0
 	outIndex := 0
 	for _, arg := range args {
-		var cArg C.GIArgument
+		cArg := arg.getValue()
 
 		if arg.in {
 			inArgs[inIndex] = cArg
@@ -104,9 +103,24 @@ func (fi *Function2) Invoke(args []Arg, inLen int, outLen int) Arg {
 		(*C.GIArgument)(&cReturnValue),
 		&err,
 	) == C.TRUE
-	fmt.Println(invoked)
 
-	return returnValue
+	(&returnArg).setValue(cReturnValue)
+
+	if cgo.Tracing() {
+		//fi.trace(in, out, returnValue)
+	}
+
+	// check error
+	if err != nil {
+		message := C.GoString(err.message)
+		panic(message)
+	}
+
+	// verify invoke happened
+	if !invoked {
+		panic(fmt.Sprintf("%s.%s not called", fi.namespace, fi.funcName))
+	}
+	return returnArg
 
 	//// invoke
 	//invoked := C.g_function_info_invoke(
