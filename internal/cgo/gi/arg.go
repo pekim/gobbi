@@ -61,7 +61,7 @@ func (a *Arg) getValue() C.GIArgument {
 		if a.value.(bool) {
 			cValue = C.TRUE
 		}
-		(*(*C.gboolean)(unsafe.Pointer(a))) = cValue
+		(*(*C.gboolean)(unsafe.Pointer(&cArg))) = cValue
 	case ArgType_int8:
 		(*(*int8)(unsafe.Pointer(&cArg))) = a.value.(int8)
 	case ArgType_uint8:
