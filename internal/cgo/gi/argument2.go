@@ -34,18 +34,33 @@ const (
 	ArgType_pointer
 )
 
-type Arg struct {
-	value interface{}
-	typ   ArgType
+type transferOwnership int
 
-	pointer bool
-	array   bool
-	in      bool
-	out     bool
+const (
+	TransferOwnershipNone = iota
+	TransferOwnershipFull
+	TransferOwnershipContainer
+)
+
+type Arg struct {
+	value             interface{}
+	typ               ArgType
+	pointer           bool
+	array             bool
+	in                bool
+	out               bool
+	transferOwnership transferOwnership
 }
 
 func (a *Arg) getValue() C.GIArgument {
 	var cArg C.GIArgument
+
+	switch a.typ {
+	case ArgType_size:
+		(*(*uint64)(unsafe.Pointer(&cArg))) = a.value.(uint64)
+	default:
+		panic(fmt.Sprintf("Unhandle arg type, %#v", a))
+	}
 
 	return cArg
 }
@@ -56,6 +71,8 @@ func (a *Arg) setValue(value C.GIArgument) {
 		a.value = (*(*C.gboolean)(unsafe.Pointer(&value))) == C.TRUE
 	case ArgType_uint:
 		a.value = (uint)(*(*C.guint)(unsafe.Pointer(&value)))
+	case ArgType_pointer:
+		a.value = unsafe.Pointer(*(*C.gpointer)(unsafe.Pointer(&value)))
 	default:
 		panic(fmt.Sprintf("Unhandle arg type, %#v", a))
 	}

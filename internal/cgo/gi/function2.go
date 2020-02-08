@@ -78,7 +78,7 @@ func (fi *Function2) Invoke(args []Arg, inLen int, outLen int, returnArg Arg) Ar
 			inIndex++
 		}
 
-		if arg.in {
+		if arg.out {
 			outArgs[outIndex] = cArg
 			outIndex++
 		}
