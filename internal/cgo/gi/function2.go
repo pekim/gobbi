@@ -60,7 +60,7 @@ func (fi *Function2) initTracing() {
 	fi.hasReturnValue = returnTypeTag != C.GI_TYPE_TAG_VOID
 }
 
-func (fi *Function2) Invoke(args []Arg, inLen int, outLen int, returnArg *Arg) {
+func (fi *Function2) Invoke(args []*Arg, inLen int, outLen int, returnArg *Arg) {
 	var cReturnValue C.GIArgument
 	var err *C.GError
 
@@ -106,11 +106,9 @@ func (fi *Function2) Invoke(args []Arg, inLen int, outLen int, returnArg *Arg) {
 	) == C.TRUE
 
 	outIndex = 0
-	for i, arg := range args {
+	for _, arg := range args {
 		if arg.out {
-			(&arg).setValue(outArgs[outIndex])
-			args[i] = arg
-
+			arg.setValue(outArgs[outIndex])
 			outIndex++
 		}
 	}

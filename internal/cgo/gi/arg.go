@@ -51,6 +51,7 @@ type Arg struct {
 	in                bool
 	out               bool
 	transferOwnership transferOwnership
+	outPtr            unsafe.Pointer
 }
 
 // getValue extracts the value field in to a C.GIArgument
@@ -102,8 +103,14 @@ func (a *Arg) getValue() C.GIArgument {
 	case ArgType_size:
 		(*(*uint)(unsafe.Pointer(&cArg))) = a.value.(uint)
 	case ArgType_string:
-		cString := C.CString(a.value.(string))
-		(*(*unsafe.Pointer)(unsafe.Pointer(&cArg))) = unsafe.Pointer(cString)
+		if a.in && !a.out {
+			cString := C.CString(a.value.(string))
+			(*(*unsafe.Pointer)(unsafe.Pointer(&cArg))) = unsafe.Pointer(cString)
+		}
+		if a.out && !a.in {
+			// where called function is to place output
+			(*(*unsafe.Pointer)(unsafe.Pointer(&cArg))) = unsafe.Pointer(&a.outPtr)
+		}
 	case ArgType_pointer:
 		(*(*unsafe.Pointer)(unsafe.Pointer(&cArg))) = a.value.(unsafe.Pointer)
 	default:
@@ -158,11 +165,17 @@ func (a *Arg) setValue(value C.GIArgument) {
 	case ArgType_size:
 		a.value = (uint)(*(*C.gsize)(ptrValue))
 	case ArgType_string:
-		cString := *(**C.gchar)(ptrValue)
+		var cString *C.gchar
+		if a.out {
+			cString = *(**C.gchar)(unsafe.Pointer(&a.outPtr))
+		} else {
+			cString = *(**C.gchar)(ptrValue)
+		}
+
 		a.value = C.GoString(cString)
 
 		if a.transferOwnership != TransferOwnershipNone {
-			C.free(ptrValue)
+			C.free(unsafe.Pointer(cString))
 		}
 	case ArgType_pointer:
 		a.value = unsafe.Pointer(*(*C.gpointer)(ptrValue))
