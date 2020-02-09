@@ -22,8 +22,8 @@ func TestFunctionIntegerReturn(t *testing.T) {
 
 	args := []Arg{}
 	retArg := Arg{typ: ArgType_uint}
-	ret := fn.Invoke(args, 0, 0, retArg)
-	assert.True(t, ret.value.(uint32) > 0)
+	fn.Invoke(args, 0, 0, &retArg)
+	assert.True(t, retArg.value.(uint32) > 0)
 }
 
 func TestFunctionBooleanReturn(t *testing.T) {
@@ -31,8 +31,8 @@ func TestFunctionBooleanReturn(t *testing.T) {
 
 	args := []Arg{}
 	retArg := Arg{typ: ArgType_boolean}
-	ret := fn.Invoke(args, 0, 0, retArg)
-	assert.True(t, ret.value.(bool))
+	fn.Invoke(args, 0, 0, &retArg)
+	assert.True(t, retArg.value.(bool))
 }
 
 func TestFunctionIntegerArgPointerReturn(t *testing.T) {
@@ -41,8 +41,20 @@ func TestFunctionIntegerArgPointerReturn(t *testing.T) {
 	in1 := Arg{typ: ArgType_size, value: uint(8), in: true}
 	args := []Arg{in1}
 	retArg := Arg{typ: ArgType_pointer}
-	ret := fn.Invoke(args, 1, 0, retArg)
-	assert.NotNil(t, (*byte)(ret.value.(unsafe.Pointer)))
+	fn.Invoke(args, 1, 0, &retArg)
+	assert.NotNil(t, (*byte)(retArg.value.(unsafe.Pointer)))
+}
+
+func TestFunctionStringArg(t *testing.T) {
+	fn, _ := Function2InvokerNew("GLib", "ascii_strup")
+
+	in1 := Arg{typ: ArgType_string, value: "QWerty", in: true}
+	in2 := Arg{typ: ArgType_ssize, value: -1, in: true}
+	args := []Arg{in1, in2}
+	ret := Arg{typ: ArgType_string}
+	fn.Invoke(args, 2, 0, &ret)
+
+	assert.Equal(t, "QWERTY", ret.value.(string))
 }
 
 func TestFunctionPointerArg(t *testing.T) {
@@ -51,20 +63,20 @@ func TestFunctionPointerArg(t *testing.T) {
 	in1 := Arg{typ: ArgType_size, value: uint(8), in: true}
 	args := []Arg{in1}
 	retArg := Arg{typ: ArgType_pointer}
-	ret := malloc.Invoke(args, 1, 0, retArg)
+	malloc.Invoke(args, 1, 0, &retArg)
 
 	// free is the function with a pointer arg
 	free, _ := Function2InvokerNew("GLib", "free")
-	in1 = Arg{typ: ArgType_pointer, value: ret.value.(unsafe.Pointer), in: true}
+	in1 = Arg{typ: ArgType_pointer, value: retArg.value.(unsafe.Pointer), in: true}
 	args = []Arg{in1}
 	retArg = Arg{}
-	free.Invoke(args, 1, 0, retArg)
+	free.Invoke(args, 1, 0, &retArg)
 }
 
 func BenchmarkFuncCall(b *testing.B) {
 	fn, _ := Function2InvokerNew("GLib", "get_num_processors")
 
 	for n := 0; n < b.N; n++ {
-		fn.Invoke([]Arg{}, 0, 0, Arg{typ: ArgType_uint})
+		fn.Invoke([]Arg{}, 0, 0, &Arg{typ: ArgType_uint})
 	}
 }

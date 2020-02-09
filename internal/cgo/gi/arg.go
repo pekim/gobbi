@@ -1,6 +1,7 @@
 package gi
 
 // #include <girepository.h>
+// #include <stdlib.h>
 import "C"
 
 import (
@@ -100,7 +101,9 @@ func (a *Arg) getValue() C.GIArgument {
 		(*(*int)(unsafe.Pointer(&cArg))) = a.value.(int)
 	case ArgType_size:
 		(*(*uint)(unsafe.Pointer(&cArg))) = a.value.(uint)
-	//ArgType_string
+	case ArgType_string:
+		cString := C.CString(a.value.(string))
+		(*(*unsafe.Pointer)(unsafe.Pointer(&cArg))) = unsafe.Pointer(cString)
 	case ArgType_pointer:
 		(*(*unsafe.Pointer)(unsafe.Pointer(&cArg))) = a.value.(unsafe.Pointer)
 	default:
@@ -154,7 +157,13 @@ func (a *Arg) setValue(value C.GIArgument) {
 		a.value = (int)(*(*C.gssize)(ptrValue))
 	case ArgType_size:
 		a.value = (uint)(*(*C.gsize)(ptrValue))
-		//ArgType_string
+	case ArgType_string:
+		cString := *(**C.gchar)(ptrValue)
+		a.value = C.GoString(cString)
+
+		if a.transferOwnership != TransferOwnershipNone {
+			C.free(ptrValue)
+		}
 	case ArgType_pointer:
 		a.value = unsafe.Pointer(*(*C.gpointer)(ptrValue))
 	default:

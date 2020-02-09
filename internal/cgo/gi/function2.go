@@ -60,7 +60,7 @@ func (fi *Function2) initTracing() {
 	fi.hasReturnValue = returnTypeTag != C.GI_TYPE_TAG_VOID
 }
 
-func (fi *Function2) Invoke(args []Arg, inLen int, outLen int, returnArg Arg) Arg {
+func (fi *Function2) Invoke(args []Arg, inLen int, outLen int, returnArg *Arg) {
 	var cReturnValue C.GIArgument
 	var err *C.GError
 
@@ -115,7 +115,7 @@ func (fi *Function2) Invoke(args []Arg, inLen int, outLen int, returnArg Arg) Ar
 		}
 	}
 
-	(&returnArg).setValue(cReturnValue)
+	returnArg.setValue(cReturnValue)
 
 	if cgo.Tracing() {
 		//fi.trace(in, out, returnValue)
@@ -131,32 +131,6 @@ func (fi *Function2) Invoke(args []Arg, inLen int, outLen int, returnArg Arg) Ar
 	if !invoked {
 		panic(fmt.Sprintf("%s.%s not called", fi.namespace, fi.funcName))
 	}
-	return returnArg
-
-	//// invoke
-	//invoked := C.g_function_info_invoke(
-	//	fi.info,
-	//	cIn, cInLen,
-	//	cOut, cOutLen,
-	//	(*C.GIArgument)(&returnValue),
-	//	&err,
-	//) == C.TRUE
-	//
-	//if cgo.Tracing() {
-	//	fi.trace(in, out, returnValue)
-	//}
-	//
-	//// check error
-	//if err != nil {
-	//	message := C.GoString(err.message)
-	//	panic(message)
-	//}
-	//
-	//// verify invoke happened
-	//if !invoked {
-	//	panic(fmt.Sprintf("%s.%s not called", fi.namespace, fi.funcName))
-	//}
-	//return returnValue
 }
 
 func (fi *Function2) trace(in []Argument, out []Argument, returnValue Argument) {
