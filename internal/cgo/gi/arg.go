@@ -42,13 +42,18 @@ const (
 	TransferOwnershipContainer
 )
 
+// Arg hold an argument's value and type.
 type Arg struct {
-	value             interface{}
-	typ               ArgType
+	value interface{}
+	typ   ArgType
+
+	// Qualifiying attributes of an argument's type.
 	pointer           bool
 	array             bool
 	in                bool
 	out               bool
 	transferOwnership transferOwnership
-	outPtr            unsafe.Pointer
+
+	// A place for out arguments to leave a pointer.
+	outPtr unsafe.Pointer
 }
