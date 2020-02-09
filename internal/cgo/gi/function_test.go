@@ -23,7 +23,7 @@ func TestFunctionIntegerReturn(t *testing.T) {
 	args := []*Arg{}
 	retArg := &Arg{typ: ArgType_uint}
 	fn.Invoke(args, 0, 0, retArg)
-	assert.True(t, retArg.value.(uint32) > 0)
+	assert.True(t, retArg.value.(uint) > 0)
 }
 
 func TestFunctionBooleanReturn(t *testing.T) {
@@ -62,7 +62,7 @@ func TestFunctionOutStringArg(t *testing.T) {
 
 	in1 := &Arg{typ: ArgType_string, value: "123abc", in: true}
 	out2 := &Arg{typ: ArgType_string, out: true}
-	in3 := &Arg{typ: ArgType_uint, value: uint32(10), in: true}
+	in3 := &Arg{typ: ArgType_uint, value: uint(10), in: true}
 	args := []*Arg{in1, out2, in3}
 	ret := &Arg{typ: ArgType_int64}
 	fn.Invoke(args, 2, 1, ret)

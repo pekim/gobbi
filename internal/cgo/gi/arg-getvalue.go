@@ -45,9 +45,9 @@ func (a *Arg) getValue() C.GIArgument {
 	case ArgType_ushort:
 		(*(*uint16)(unsafe.Pointer(&cArg))) = a.value.(uint16)
 	case ArgType_int:
-		(*(*int32)(unsafe.Pointer(&cArg))) = a.value.(int32)
+		(*(*int)(unsafe.Pointer(&cArg))) = a.value.(int)
 	case ArgType_uint:
-		(*(*uint32)(unsafe.Pointer(&cArg))) = a.value.(uint32)
+		(*(*uint)(unsafe.Pointer(&cArg))) = a.value.(uint)
 	case ArgType_long:
 		(*(*int64)(unsafe.Pointer(&cArg))) = a.value.(int64)
 	case ArgType_ulong:

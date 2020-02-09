@@ -42,9 +42,9 @@ func (a *Arg) setValue(value C.GIArgument) {
 	case ArgType_ushort:
 		a.value = (uint16)(*(*C.gushort)(valuePtr))
 	case ArgType_int:
-		a.value = (int32)(*(*C.gint)(valuePtr))
+		a.value = (int)(*(*C.gint)(valuePtr))
 	case ArgType_uint:
-		a.value = (uint32)(*(*C.guint)(valuePtr))
+		a.value = (uint)(*(*C.guint)(valuePtr))
 	case ArgType_long:
 		a.value = (int64)(*(*C.glong)(valuePtr))
 	case ArgType_ulong:
