@@ -12,6 +12,7 @@ import (
 // suitable for passing to a gi function invoker.
 func (a *Arg) getValue() C.GIArgument {
 	var cArg C.GIArgument
+	var cArgPtr = unsafe.Pointer(&cArg)
 
 	switch a.typ {
 	case ArgType_boolean:
@@ -19,57 +20,61 @@ func (a *Arg) getValue() C.GIArgument {
 		if a.value.(bool) {
 			cValue = C.TRUE
 		}
-		(*(*C.gboolean)(unsafe.Pointer(&cArg))) = cValue
+		(*(*C.gboolean)(cArgPtr)) = cValue
 	case ArgType_int8:
-		(*(*int8)(unsafe.Pointer(&cArg))) = a.value.(int8)
+		(*(*int8)(cArgPtr)) = a.value.(int8)
 	case ArgType_uint8:
-		(*(*uint8)(unsafe.Pointer(&cArg))) = a.value.(uint8)
+		(*(*uint8)(cArgPtr)) = a.value.(uint8)
 	case ArgType_int16:
-		(*(*int16)(unsafe.Pointer(&cArg))) = a.value.(int16)
+		(*(*int16)(cArgPtr)) = a.value.(int16)
 	case ArgType_uint16:
-		(*(*uint16)(unsafe.Pointer(&cArg))) = a.value.(uint16)
+		(*(*uint16)(cArgPtr)) = a.value.(uint16)
 	case ArgType_int32:
-		(*(*int32)(unsafe.Pointer(&cArg))) = a.value.(int32)
+		(*(*int32)(cArgPtr)) = a.value.(int32)
 	case ArgType_uint32:
-		(*(*uint32)(unsafe.Pointer(&cArg))) = a.value.(uint32)
+		(*(*uint32)(cArgPtr)) = a.value.(uint32)
 	case ArgType_int64:
-		(*(*int64)(unsafe.Pointer(&cArg))) = a.value.(int64)
+		(*(*int64)(cArgPtr)) = a.value.(int64)
 	case ArgType_uint64:
-		(*(*uint64)(unsafe.Pointer(&cArg))) = a.value.(uint64)
+		(*(*uint64)(cArgPtr)) = a.value.(uint64)
 	case ArgType_float:
-		(*(*float32)(unsafe.Pointer(&cArg))) = a.value.(float32)
+		(*(*float32)(cArgPtr)) = a.value.(float32)
 	case ArgType_double:
-		(*(*float64)(unsafe.Pointer(&cArg))) = a.value.(float64)
+		(*(*float64)(cArgPtr)) = a.value.(float64)
 	case ArgType_short:
-		(*(*int16)(unsafe.Pointer(&cArg))) = a.value.(int16)
+		(*(*int16)(cArgPtr)) = a.value.(int16)
 	case ArgType_ushort:
-		(*(*uint16)(unsafe.Pointer(&cArg))) = a.value.(uint16)
+		(*(*uint16)(cArgPtr)) = a.value.(uint16)
 	case ArgType_int:
-		(*(*int)(unsafe.Pointer(&cArg))) = a.value.(int)
+		(*(*int)(cArgPtr)) = a.value.(int)
 	case ArgType_uint:
-		(*(*uint)(unsafe.Pointer(&cArg))) = a.value.(uint)
+		(*(*uint)(cArgPtr)) = a.value.(uint)
 	case ArgType_long:
-		(*(*int64)(unsafe.Pointer(&cArg))) = a.value.(int64)
+		(*(*int64)(cArgPtr)) = a.value.(int64)
 	case ArgType_ulong:
-		(*(*uint64)(unsafe.Pointer(&cArg))) = a.value.(uint64)
+		(*(*uint64)(cArgPtr)) = a.value.(uint64)
 	case ArgType_ssize:
-		(*(*int)(unsafe.Pointer(&cArg))) = a.value.(int)
+		(*(*int)(cArgPtr)) = a.value.(int)
 	case ArgType_size:
-		(*(*uint)(unsafe.Pointer(&cArg))) = a.value.(uint)
+		(*(*uint)(cArgPtr)) = a.value.(uint)
 	case ArgType_string:
-		if a.in && !a.out {
-			cString := C.CString(a.value.(string))
-			(*(*unsafe.Pointer)(unsafe.Pointer(&cArg))) = unsafe.Pointer(cString)
-		}
-		if a.out && !a.in {
-			// where called function is to place output
-			(*(*unsafe.Pointer)(unsafe.Pointer(&cArg))) = unsafe.Pointer(&a.outPtr)
-		}
+		a.getStringValue(cArgPtr)
 	case ArgType_pointer:
-		(*(*unsafe.Pointer)(unsafe.Pointer(&cArg))) = a.value.(unsafe.Pointer)
+		(*(*unsafe.Pointer)(cArgPtr)) = a.value.(unsafe.Pointer)
 	default:
 		panic(fmt.Sprintf("Unhandle arg type, %#v", a))
 	}
 
 	return cArg
+}
+
+func (a *Arg) getStringValue(cArgPtr unsafe.Pointer) {
+	if a.in && !a.out {
+		cString := C.CString(a.value.(string))
+		(*(*unsafe.Pointer)(cArgPtr)) = unsafe.Pointer(cString)
+	}
+	if a.out && !a.in {
+		// where called function is to place output
+		(*(*unsafe.Pointer)(cArgPtr)) = unsafe.Pointer(&a.outPtr)
+	}
 }

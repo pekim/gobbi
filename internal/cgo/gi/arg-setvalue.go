@@ -54,21 +54,25 @@ func (a *Arg) setValue(value C.GIArgument) {
 	case ArgType_size:
 		a.value = (uint)(*(*C.gsize)(valuePtr))
 	case ArgType_string:
-		var cString *C.gchar
-		if a.out {
-			cString = *(**C.gchar)(unsafe.Pointer(&a.outPtr))
-		} else {
-			cString = *(**C.gchar)(valuePtr)
-		}
-
-		a.value = C.GoString(cString)
-
-		if a.transferOwnership != TransferOwnershipNone {
-			C.free(unsafe.Pointer(cString))
-		}
+		a.setStringValue(valuePtr)
 	case ArgType_pointer:
 		a.value = unsafe.Pointer(*(*C.gpointer)(valuePtr))
 	default:
 		panic(fmt.Sprintf("Unhandle arg type, %#v", a))
+	}
+}
+
+func (a *Arg) setStringValue(valuePtr unsafe.Pointer) {
+	var cString *C.gchar
+	if a.out {
+		cString = *(**C.gchar)(unsafe.Pointer(&a.outPtr))
+	} else {
+		cString = *(**C.gchar)(valuePtr)
+	}
+
+	a.value = C.GoString(cString)
+
+	if a.transferOwnership != TransferOwnershipNone {
+		C.free(unsafe.Pointer(cString))
 	}
 }
