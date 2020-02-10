@@ -48,8 +48,12 @@ type Arg struct {
 	typ   ArgType
 
 	// Qualifiying attributes of an argument's type.
-	pointer             bool
-	array               bool
+	pointer bool
+	array   bool
+	// The index of the arg with array's length.
+	// applicable if arrayNullTerminated is false
+	arrayLengthArg int
+	// array is null-terminated
 	arrayNullTerminated bool
 	in                  bool
 	out                 bool
