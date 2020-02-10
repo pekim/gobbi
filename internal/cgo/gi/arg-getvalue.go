@@ -58,7 +58,11 @@ func (a *Arg) getValue() C.GIArgument {
 	case ArgType_size:
 		(*(*uint)(cArgPtr)) = a.value.(uint)
 	case ArgType_string:
-		a.getStringValue(cArgPtr)
+		if a.array {
+			a.getValueStringArray(cArgPtr)
+		} else {
+			a.getValueString(cArgPtr)
+		}
 	case ArgType_pointer:
 		(*(*unsafe.Pointer)(cArgPtr)) = a.value.(unsafe.Pointer)
 	default:
@@ -68,7 +72,7 @@ func (a *Arg) getValue() C.GIArgument {
 	return cArg
 }
 
-func (a *Arg) getStringValue(cArgPtr unsafe.Pointer) {
+func (a *Arg) getValueString(cArgPtr unsafe.Pointer) {
 	if a.in && !a.out {
 		cString := C.CString(a.value.(string))
 		(*(*unsafe.Pointer)(cArgPtr)) = unsafe.Pointer(cString)
@@ -77,4 +81,35 @@ func (a *Arg) getStringValue(cArgPtr unsafe.Pointer) {
 		// where called function is to place output
 		(*(*unsafe.Pointer)(cArgPtr)) = unsafe.Pointer(&a.outPtr)
 	}
+}
+
+func (a *Arg) getValueStringArray(cArgPtr unsafe.Pointer) {
+	if a.arrayNullTerminated {
+		a.getValueStringArrayNullTerminated(cArgPtr)
+	} else {
+		panic("not supported : string array with length")
+	}
+}
+
+func (a *Arg) getValueStringArrayNullTerminated(cArgPtr unsafe.Pointer) {
+	strings := a.value.([]string)
+
+	if strings == nil || len(strings) == 0 {
+		(*(*unsafe.Pointer)(cArgPtr)) = nil
+		return
+	}
+
+	count := len(strings) + 1
+	arraySize := count * C.sizeof_gpointer
+	cArray := (**C.gchar)(C.malloc(C.ulong(arraySize)))
+	cStrings := (*[1 << 28]*C.char)(unsafe.Pointer(cArray))[:count:count]
+
+	for i, str := range strings {
+		cStrings[i] = C.CString(str)
+	}
+
+	// null terminator
+	cStrings[count-1] = nil
+
+	(*(*unsafe.Pointer)(cArgPtr)) = unsafe.Pointer(cArray)
 }

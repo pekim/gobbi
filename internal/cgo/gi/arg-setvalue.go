@@ -55,9 +55,9 @@ func (a *Arg) setValue(value C.GIArgument) {
 		a.value = (uint)(*(*C.gsize)(valuePtr))
 	case ArgType_string:
 		if a.array {
-			a.setStringArrayValue(valuePtr)
+			a.setValueStringArray(valuePtr)
 		} else {
-			a.setStringValue(valuePtr)
+			a.setValueString(valuePtr)
 		}
 	case ArgType_pointer:
 		a.value = unsafe.Pointer(*(*C.gpointer)(valuePtr))
@@ -66,7 +66,7 @@ func (a *Arg) setValue(value C.GIArgument) {
 	}
 }
 
-func (a *Arg) setStringValue(valuePtr unsafe.Pointer) {
+func (a *Arg) setValueString(valuePtr unsafe.Pointer) {
 	var cString *C.gchar
 	if a.out {
 		cString = *(**C.gchar)(unsafe.Pointer(&a.outPtr))
@@ -81,15 +81,15 @@ func (a *Arg) setStringValue(valuePtr unsafe.Pointer) {
 	}
 }
 
-func (a *Arg) setStringArrayValue(valuePtr unsafe.Pointer) {
+func (a *Arg) setValueStringArray(valuePtr unsafe.Pointer) {
 	if a.arrayNullTerminated {
-		a.setStringArrayNullTerminatedValue(valuePtr)
+		a.setValueStringArrayNullTerminated(valuePtr)
 	} else {
 		panic("not supported : string array with length")
 	}
 }
 
-func (a *Arg) setStringArrayNullTerminatedValue(valuePtr unsafe.Pointer) {
+func (a *Arg) setValueStringArrayNullTerminated(valuePtr unsafe.Pointer) {
 	strings := []string{}
 
 	array := *(***C.gchar)(valuePtr)

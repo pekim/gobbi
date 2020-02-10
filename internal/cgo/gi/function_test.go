@@ -72,7 +72,7 @@ func TestFunctionOutStringArg(t *testing.T) {
 	assert.Equal(t, "abc", out2.value.(string))
 }
 
-func TestFunctionReturnStringArrayArg(t *testing.T) {
+func TestFunctionReturnStringArray(t *testing.T) {
 	fn, _ := Function2InvokerNew("GLib", "get_environ")
 
 	args := []*Arg{}
@@ -88,6 +88,27 @@ func TestFunctionReturnStringArrayArg(t *testing.T) {
 	assert.True(t, len(envVars) > 0)
 	env := envVars[0]
 	assert.True(t, strings.ContainsRune(env, '='))
+}
+
+func TestFunctionStringArrayArg(t *testing.T) {
+	fn, _ := Function2InvokerNew("GLib", "environ_getenv")
+
+	envVars := []string{
+		"one=1",
+		"two=2",
+		"three=3",
+	}
+
+	in1 := &Arg{typ: ArgType_string, value: envVars, array: true, arrayNullTerminated: true, in: true}
+	in2 := &Arg{typ: ArgType_string, value: "two", in: true}
+	args := []*Arg{in1, in2}
+	ret := &Arg{
+		typ: ArgType_string,
+	}
+	fn.Invoke(args, 2, 0, ret)
+
+	envVar := ret.value.(string)
+	assert.Equal(t, "2", envVar)
 }
 
 func TestFunctionPointerArg(t *testing.T) {
