@@ -15,6 +15,30 @@ func TestArgValueBoolean(t *testing.T) {
 	assert.True(t, arg2.value.(bool))
 }
 
+func TestArgValueString(t *testing.T) {
+	value := "qwerty"
+
+	arg1 := Arg{typ: ArgType_string, value: value, in: true}
+	giArg := arg1.getValue()
+
+	arg2 := Arg{typ: ArgType_string, value: ""}
+	arg2.setValue(giArg)
+
+	assert.Equal(t, value, arg2.value.(string))
+}
+
+func TestArgValueStringArrayNullTerminated(t *testing.T) {
+	value := []string{"one", "two"}
+
+	arg1 := Arg{typ: ArgType_string, value: value, array: true, arrayNullTerminated: true, in: true}
+	giArg := arg1.getValue()
+
+	arg2 := Arg{typ: ArgType_string, value: []string{}, array: true, arrayNullTerminated: true}
+	arg2.setValue(giArg)
+
+	assert.Equal(t, value, arg2.value.([]string))
+}
+
 func TestArgValueInt(t *testing.T) {
 	for _, test := range []struct {
 		name      string
