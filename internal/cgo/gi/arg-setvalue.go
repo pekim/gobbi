@@ -54,7 +54,11 @@ func (a *Arg) setValue(value C.GIArgument) {
 	case ArgType_size:
 		a.value = (uint)(*(*C.gsize)(valuePtr))
 	case ArgType_string:
-		a.setStringValue(valuePtr)
+		if a.array {
+			a.setStringArrayValue(valuePtr)
+		} else {
+			a.setStringValue(valuePtr)
+		}
 	case ArgType_pointer:
 		a.value = unsafe.Pointer(*(*C.gpointer)(valuePtr))
 	default:
@@ -75,4 +79,18 @@ func (a *Arg) setStringValue(valuePtr unsafe.Pointer) {
 	if a.transferOwnership != TransferOwnershipNone {
 		C.free(unsafe.Pointer(cString))
 	}
+}
+
+func (a *Arg) setStringArrayValue(valuePtr unsafe.Pointer) {
+	strings := []string{}
+
+	arrayItem := *(***C.gchar)(valuePtr)
+	for *arrayItem != nil {
+		goString := C.GoString(*arrayItem)
+		strings = append(strings, goString)
+
+		arrayItem = (**C.gchar)(incrPointerPointer(unsafe.Pointer(arrayItem)))
+	}
+
+	a.value = strings
 }

@@ -3,6 +3,7 @@ package gi
 import (
 	"github.com/stretchr/testify/assert"
 	"os"
+	"strings"
 	"testing"
 	"unsafe"
 )
@@ -69,6 +70,19 @@ func TestFunctionOutStringArg(t *testing.T) {
 
 	assert.Equal(t, int64(123), ret.value.(int64))
 	assert.Equal(t, "abc", out2.value.(string))
+}
+
+func TestFunctionReturnStringArrayArg(t *testing.T) {
+	fn, _ := Function2InvokerNew("GLib", "get_environ")
+
+	args := []*Arg{}
+	ret := &Arg{typ: ArgType_string, array: true}
+	fn.Invoke(args, 0, 0, ret)
+
+	envVars := ret.value.([]string)
+	assert.True(t, len(envVars) > 0)
+	env := envVars[0]
+	assert.True(t, strings.ContainsRune(env, '='))
 }
 
 func TestFunctionPointerArg(t *testing.T) {
