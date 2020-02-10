@@ -76,7 +76,12 @@ func TestFunctionReturnStringArrayArg(t *testing.T) {
 	fn, _ := Function2InvokerNew("GLib", "get_environ")
 
 	args := []*Arg{}
-	ret := &Arg{typ: ArgType_string, array: true}
+	ret := &Arg{
+		typ:                 ArgType_string,
+		array:               true,
+		arrayNullTerminated: true,
+		transferOwnership:   TransferOwnershipFull,
+	}
 	fn.Invoke(args, 0, 0, ret)
 
 	envVars := ret.value.([]string)

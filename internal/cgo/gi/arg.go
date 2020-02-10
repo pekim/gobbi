@@ -48,11 +48,12 @@ type Arg struct {
 	typ   ArgType
 
 	// Qualifiying attributes of an argument's type.
-	pointer           bool
-	array             bool
-	in                bool
-	out               bool
-	transferOwnership transferOwnership
+	pointer             bool
+	array               bool
+	arrayNullTerminated bool
+	in                  bool
+	out                 bool
+	transferOwnership   transferOwnership
 
 	// A place for out arguments to leave a pointer.
 	outPtr unsafe.Pointer

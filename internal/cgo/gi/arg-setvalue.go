@@ -82,15 +82,35 @@ func (a *Arg) setStringValue(valuePtr unsafe.Pointer) {
 }
 
 func (a *Arg) setStringArrayValue(valuePtr unsafe.Pointer) {
+	if a.arrayNullTerminated {
+		a.setStringArrayNullTerminatedValue(valuePtr)
+	} else {
+		panic("not supported : string array with length")
+	}
+}
+
+func (a *Arg) setStringArrayNullTerminatedValue(valuePtr unsafe.Pointer) {
 	strings := []string{}
 
-	arrayItem := *(***C.gchar)(valuePtr)
+	array := *(***C.gchar)(valuePtr)
+
+	arrayItem := array
 	for *arrayItem != nil {
 		goString := C.GoString(*arrayItem)
 		strings = append(strings, goString)
+
+		if a.transferOwnership == TransferOwnershipFull {
+			C.free(unsafe.Pointer(*arrayItem))
+		}
 
 		arrayItem = (**C.gchar)(incrPointerPointer(unsafe.Pointer(arrayItem)))
 	}
 
 	a.value = strings
+
+	if a.transferOwnership == TransferOwnershipFull ||
+		a.transferOwnership == TransferOwnershipContainer {
+
+		C.free(unsafe.Pointer(array))
+	}
 }
