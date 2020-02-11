@@ -10,9 +10,12 @@ type Parameter struct {
 	Name      string `xml:"name,attr"`
 	Direction string `xml:"direction,attr"`
 	Argument
-	AllowNone bool      `xml:"allow-none,attr"`
-	Doc       *Doc      `xml:"doc"`
-	Varargs   *struct{} `xml:"varargs"`
+	CallerAllocates bool      `xml:"caller-allocates,attr"`
+	Nullable        bool      `xml:"nullable,attr"`
+	Optional        bool      `xml:"optional,attr"`
+	AllowNone       bool      `xml:"allow-none,attr"`
+	Doc             *Doc      `xml:"doc"`
+	Varargs         *struct{} `xml:"varargs"`
 
 	goVarName string
 	namespace *Namespace
