@@ -42,7 +42,59 @@ const (
 	TransferOwnershipContainer
 )
 
-// Arg hold an argument's value and type.
+/*
+Arg holds an argument's value and type.
+
+An Arg's value may be extracted with getValue method, and placed in a C.GIArgument.
+Its value may set from a C.GIArgument with the setValue method.
+
+When the Arg's value is represented in a C.GIArgument it may do so in
+several different forms depending on the type of the value and various flags.
+
+A number type.
+	Go : int
+	C  : int
+
+The number value is simply set in the GIArgument.
+
+	GIArgument 	= value
+
+
+A pointer to a number type.
+Typically for an output parameter
+	Go : *int
+	C  : *int
+Or can be an optional input parameter, where GIArgument could hold nil.
+	Go : *int
+	C  : int*
+
+	GIArgument	= pointer to arg.value
+	arg.ptr		= value
+
+
+A string.
+	Go : string
+	C  : gchar*
+
+	GIArgument	= pointer to a null terminated C string
+
+
+An output string.
+	Go : *string
+	C  : gchar**
+The ptr field is used to provide somewhere for the function
+to place the pointer to the null terminated string.
+
+	GIArgument	= pointer to arg.ptr
+
+
+An array of numbers
+	Go : []int
+	C  : int*
+
+	GIArgument 	= pointer to arg.value[0]
+
+*/
 type Arg struct {
 	value interface{}
 	typ   ArgType
@@ -59,6 +111,7 @@ type Arg struct {
 	out                 bool
 	transferOwnership   transferOwnership
 
+	valuePtr unsafe.Pointer
 	// A place for out arguments to leave a pointer.
 	outPtr unsafe.Pointer
 }
