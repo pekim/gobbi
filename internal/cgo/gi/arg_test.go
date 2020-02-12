@@ -39,7 +39,7 @@ func TestArgValueStringArrayNullTerminated(t *testing.T) {
 	assert.Equal(t, value, arg2.value.([]string))
 }
 
-func TestArgValueInt(t *testing.T) {
+func TestArgValueSimple(t *testing.T) {
 	for _, test := range []struct {
 		name      string
 		typ       ArgType
@@ -70,6 +70,44 @@ func TestArgValueInt(t *testing.T) {
 			giArg := arg1.getValue()
 
 			arg2 := Arg{typ: test.typ, value: test.initValue}
+			arg2.setValue(giArg)
+
+			assert.Equal(t, test.value, arg2.value)
+		})
+	}
+}
+
+func TestArgValueSimpleArray(t *testing.T) {
+	for _, test := range []struct {
+		name      string
+		typ       ArgType
+		value     interface{}
+		initValue interface{}
+	}{
+		{"int8", ArgType_int8, []int8{42, 43}, []int8{1, 2}},
+		{"uint8", ArgType_uint8, []uint8{42, 43}, []uint8{1, 2}},
+		{"int16", ArgType_int16, []int16{42, 43}, []int16{1, 2}},
+		{"uint16", ArgType_uint16, []uint16{42, 43}, []uint16{1, 2}},
+		{"int32", ArgType_int32, []int32{42, 43}, []int32{1, 2}},
+		{"uint32", ArgType_uint32, []uint32{42, 43}, []uint32{1, 2}},
+		{"int64", ArgType_int64, []int64{42, 43}, []int64{1, 2}},
+		{"uint64", ArgType_uint64, []uint64{42, 43}, []uint64{1, 2}},
+		{"float", ArgType_float, []float32{42, 43}, []float32{1, 2}},
+		{"double", ArgType_double, []float64{42, 43}, []float64{1, 2}},
+		{"short", ArgType_int16, []int16{42, 43}, []int16{1, 2}},
+		{"ushort", ArgType_uint16, []uint16{42, 43}, []uint16{1, 2}},
+		{"int", ArgType_int, []int{42, 43}, []int{1, 2}},
+		{"uint", ArgType_uint, []uint{42, 43}, []uint{1, 2}},
+		{"long", ArgType_long, []int64{42, 43}, []int64{1, 2}},
+		{"ulong", ArgType_ulong, []uint64{42, 43}, []uint64{1, 2}},
+		{"ssize", ArgType_ssize, []int{42, 43}, []int{1, 2}},
+		{"size", ArgType_size, []uint{42, 43}, []uint{1, 2}},
+	} {
+		t.Run(test.name, func(t *testing.T) {
+			arg1 := Arg{typ: test.typ, array: true, arrayNullTerminated: true, value: test.value}
+			giArg := arg1.getValue()
+
+			arg2 := Arg{typ: test.typ, array: true, arrayNullTerminated: true, value: test.initValue}
 			arg2.setValue(giArg)
 
 			assert.Equal(t, test.value, arg2.value)
