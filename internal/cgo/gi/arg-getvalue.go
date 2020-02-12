@@ -23,7 +23,7 @@ func (a *Arg) getValue() C.GIArgument {
 		ArgType_ssize, ArgType_size,
 		ArgType_pointer:
 		if a.array {
-			panic(fmt.Sprintf("Unhandle array arg type, %#v", a))
+			a.getValueSimpleArray(cArgPtr)
 		} else {
 			a.getValueSimple(cArgPtr)
 		}
@@ -87,6 +87,58 @@ func (a *Arg) getValueSimple(cArgPtr unsafe.Pointer) {
 	case ArgType_pointer:
 		(*(*unsafe.Pointer)(cArgPtr)) = a.value.(unsafe.Pointer)
 	}
+}
+
+func (a *Arg) getValueSimpleArray(cArgPtr unsafe.Pointer) {
+	if a.arrayNullTerminated {
+		panic("not supported : simple null-terminated array")
+	}
+
+	var array unsafe.Pointer
+	switch a.typ {
+	case ArgType_int8:
+		array = unsafe.Pointer(&(a.value.([]int8))[0])
+	case ArgType_uint8:
+		array = unsafe.Pointer(&(a.value.([]uint8))[0])
+	case ArgType_int16:
+		array = unsafe.Pointer(&(a.value.([]int16))[0])
+	case ArgType_uint16:
+		array = unsafe.Pointer(&(a.value.([]uint16))[0])
+	case ArgType_int32:
+		array = unsafe.Pointer(&(a.value.([]int32))[0])
+	case ArgType_uint32:
+		array = unsafe.Pointer(&(a.value.([]uint32))[0])
+	case ArgType_int64:
+		array = unsafe.Pointer(&(a.value.([]int64))[0])
+	case ArgType_uint64:
+		array = unsafe.Pointer(&(a.value.([]uint64))[0])
+	case ArgType_float:
+		array = unsafe.Pointer(&(a.value.([]float32))[0])
+	case ArgType_double:
+		array = unsafe.Pointer(&(a.value.([]float64))[0])
+	case ArgType_short:
+		array = unsafe.Pointer(&(a.value.([]int16))[0])
+	case ArgType_ushort:
+		array = unsafe.Pointer(&(a.value.([]uint16))[0])
+	case ArgType_int:
+		array = unsafe.Pointer(&(a.value.([]int))[0])
+	case ArgType_uint:
+		array = unsafe.Pointer(&(a.value.([]uint))[0])
+	case ArgType_long:
+		array = unsafe.Pointer(&(a.value.([]int64))[0])
+	case ArgType_ulong:
+		array = unsafe.Pointer(&(a.value.([]uint64))[0])
+	case ArgType_ssize:
+		array = unsafe.Pointer(&(a.value.([]int))[0])
+	case ArgType_size:
+		array = unsafe.Pointer(&(a.value.([]uint))[0])
+	case ArgType_pointer:
+		array = unsafe.Pointer(&(a.value.([]unsafe.Pointer))[0])
+	default:
+		panic(fmt.Sprintf("Unsupported array of type %#v", a.value))
+	}
+
+	(*(*unsafe.Pointer)(cArgPtr)) = array
 }
 
 func (a *Arg) getValueString(cArgPtr unsafe.Pointer) {

@@ -13,6 +13,7 @@ import (
 // function invocation, and sets its value in the value field.
 func (a *Arg) setValue(value C.GIArgument) {
 	valuePtr := unsafe.Pointer(&value)
+	valueAsPtr := unsafe.Pointer(*(*C.gpointer)(unsafe.Pointer(&value)))
 
 	switch a.typ {
 	case ArgType_boolean,
@@ -23,7 +24,7 @@ func (a *Arg) setValue(value C.GIArgument) {
 		ArgType_ssize, ArgType_size,
 		ArgType_pointer:
 		if a.array {
-			panic(fmt.Sprintf("Unhandle array arg type, %#v", a))
+			a.setValueSimpleArray(valueAsPtr)
 		} else {
 			a.setValueSimple(valuePtr)
 		}
@@ -80,6 +81,57 @@ func (a *Arg) setValueSimple(valuePtr unsafe.Pointer) {
 		a.value = (uint)(*(*C.gsize)(valuePtr))
 	case ArgType_pointer:
 		a.value = unsafe.Pointer(*(*C.gpointer)(valuePtr))
+	}
+}
+
+func (a *Arg) setValueSimpleArray(valuePtr unsafe.Pointer) {
+	if a.arrayNullTerminated {
+		panic("not supported : simple null-terminated array")
+	}
+
+	switch a.typ {
+	case ArgType_boolean:
+		panic("not supported : bool array")
+	case ArgType_int8:
+		a.value = (*[1 << 28]int8)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_uint8:
+		a.value = (*[1 << 28]uint8)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_int16:
+		a.value = (*[1 << 28]int16)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_uint16:
+		a.value = (*[1 << 28]uint16)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_int32:
+		a.value = (*[1 << 28]int32)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_uint32:
+		a.value = (*[1 << 28]uint32)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_int64:
+		a.value = (*[1 << 28]int64)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_uint64:
+		a.value = (*[1 << 28]uint64)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_float:
+		a.value = (*[1 << 28]float32)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_double:
+		a.value = (*[1 << 28]float64)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_short:
+		a.value = (*[1 << 28]int16)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_ushort:
+		a.value = (*[1 << 28]uint16)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_int:
+		a.value = (*[1 << 28]int)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_uint:
+		a.value = (*[1 << 28]uint)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_long:
+		a.value = (*[1 << 28]int64)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_ulong:
+		a.value = (*[1 << 28]uint64)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_ssize:
+		a.value = (*[1 << 28]int)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_size:
+		a.value = (*[1 << 28]uint)(valuePtr)[:a.arrayLength:a.arrayLength]
+	case ArgType_pointer:
+		a.value = (*[1 << 28]unsafe.Pointer)(valuePtr)[:a.arrayLength:a.arrayLength]
+	default:
+		panic(fmt.Sprintf("Unsupported array of type %#v", a.value))
 	}
 }
 

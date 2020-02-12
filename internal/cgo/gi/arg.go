@@ -105,6 +105,7 @@ type Arg struct {
 	// The index of the arg with array's length.
 	// applicable if arrayNullTerminated is false
 	arrayLengthArg int
+	arrayLength    int
 	// array is null-terminated
 	arrayNullTerminated bool
 	in                  bool

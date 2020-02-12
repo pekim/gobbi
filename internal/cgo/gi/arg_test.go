@@ -3,6 +3,7 @@ package gi
 import (
 	"github.com/stretchr/testify/assert"
 	"testing"
+	"unsafe"
 )
 
 func TestArgValueBoolean(t *testing.T) {
@@ -102,12 +103,14 @@ func TestArgValueSimpleArray(t *testing.T) {
 		{"ulong", ArgType_ulong, []uint64{42, 43}, []uint64{1, 2}},
 		{"ssize", ArgType_ssize, []int{42, 43}, []int{1, 2}},
 		{"size", ArgType_size, []uint{42, 43}, []uint{1, 2}},
+		{"pointer", ArgType_pointer, []unsafe.Pointer{unsafe.Pointer(uintptr(42)), unsafe.Pointer(uintptr(43))},
+			[]unsafe.Pointer{unsafe.Pointer(uintptr(1)), unsafe.Pointer(uintptr(2))}},
 	} {
 		t.Run(test.name, func(t *testing.T) {
-			arg1 := Arg{typ: test.typ, array: true, arrayNullTerminated: true, value: test.value}
+			arg1 := Arg{typ: test.typ, array: true, value: test.value}
 			giArg := arg1.getValue()
 
-			arg2 := Arg{typ: test.typ, array: true, arrayNullTerminated: true, value: test.initValue}
+			arg2 := Arg{typ: test.typ, array: true, value: test.initValue, arrayLength: 2}
 			arg2.setValue(giArg)
 
 			assert.Equal(t, test.value, arg2.value)
