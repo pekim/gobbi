@@ -15,6 +15,33 @@ func (a *Arg) getValue() C.GIArgument {
 	var cArgPtr = unsafe.Pointer(&cArg)
 
 	switch a.typ {
+	case ArgType_boolean,
+		ArgType_int8, ArgType_uint8, ArgType_int16, ArgType_uint16,
+		ArgType_int32, ArgType_uint32, ArgType_int64, ArgType_uint64,
+		ArgType_float, ArgType_double,
+		ArgType_short, ArgType_ushort, ArgType_int, ArgType_uint, ArgType_long, ArgType_ulong,
+		ArgType_ssize, ArgType_size,
+		ArgType_pointer:
+		if a.array {
+			panic(fmt.Sprintf("Unhandle array arg type, %#v", a))
+		} else {
+			a.getValueSimple(cArgPtr)
+		}
+	case ArgType_string:
+		if a.array {
+			a.getValueStringArray(cArgPtr)
+		} else {
+			a.getValueString(cArgPtr)
+		}
+	default:
+		panic(fmt.Sprintf("Unhandled arg type, %#v", a))
+	}
+
+	return cArg
+}
+
+func (a *Arg) getValueSimple(cArgPtr unsafe.Pointer) {
+	switch a.typ {
 	case ArgType_boolean:
 		var cValue C.gboolean = C.FALSE
 		if a.value.(bool) {
@@ -57,19 +84,9 @@ func (a *Arg) getValue() C.GIArgument {
 		(*(*int)(cArgPtr)) = a.value.(int)
 	case ArgType_size:
 		(*(*uint)(cArgPtr)) = a.value.(uint)
-	case ArgType_string:
-		if a.array {
-			a.getValueStringArray(cArgPtr)
-		} else {
-			a.getValueString(cArgPtr)
-		}
 	case ArgType_pointer:
 		(*(*unsafe.Pointer)(cArgPtr)) = a.value.(unsafe.Pointer)
-	default:
-		panic(fmt.Sprintf("Unhandle arg type, %#v", a))
 	}
-
-	return cArg
 }
 
 func (a *Arg) getValueString(cArgPtr unsafe.Pointer) {
