@@ -91,7 +91,7 @@ func (a *Arg) setValueSimpleArray(valuePtr unsafe.Pointer) {
 
 	switch a.typ {
 	case ArgType_boolean:
-		panic("not supported : bool array")
+		a.setValueBoolArray(valuePtr)
 	case ArgType_int8:
 		a.value = (*[1 << 28]int8)(valuePtr)[:a.arrayLength:a.arrayLength]
 	case ArgType_uint8:
@@ -182,4 +182,19 @@ func (a *Arg) setValueStringArrayNullTerminated(valuePtr unsafe.Pointer) {
 
 		C.free(unsafe.Pointer(array))
 	}
+}
+
+func (a *Arg) setValueBoolArray(valuePtr unsafe.Pointer) {
+	cBooleans := (*[1 << 28]C.gboolean)(valuePtr)[:a.arrayLength:a.arrayLength]
+	booleans := make([]bool, a.arrayLength, a.arrayLength)
+
+	for i, cBoolean := range cBooleans {
+		if cBoolean == C.TRUE {
+			booleans[i] = true
+		} else {
+			booleans[i] = false
+		}
+	}
+
+	a.value = booleans
 }

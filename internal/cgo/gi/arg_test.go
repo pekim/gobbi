@@ -85,6 +85,7 @@ func TestArgValueSimpleArray(t *testing.T) {
 		value     interface{}
 		initValue interface{}
 	}{
+		{"boolean", ArgType_boolean, []bool{false, true}, []bool{true, false}},
 		{"int8", ArgType_int8, []int8{42, 43}, []int8{1, 2}},
 		{"uint8", ArgType_uint8, []uint8{42, 43}, []uint8{1, 2}},
 		{"int16", ArgType_int16, []int16{42, 43}, []int16{1, 2}},

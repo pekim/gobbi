@@ -96,6 +96,8 @@ func (a *Arg) getValueSimpleArray(cArgPtr unsafe.Pointer) {
 
 	var array unsafe.Pointer
 	switch a.typ {
+	case ArgType_boolean:
+		array = a.getValueBoolArray()
 	case ArgType_int8:
 		array = unsafe.Pointer(&(a.value.([]int8))[0])
 	case ArgType_uint8:
@@ -181,4 +183,28 @@ func (a *Arg) getValueStringArrayNullTerminated(cArgPtr unsafe.Pointer) {
 	cStrings[count-1] = nil
 
 	(*(*unsafe.Pointer)(cArgPtr)) = unsafe.Pointer(cArray)
+}
+
+func (a *Arg) getValueBoolArray() unsafe.Pointer {
+	bools := a.value.([]bool)
+
+	if bools == nil || len(bools) == 0 {
+		return unsafe.Pointer(nil)
+	}
+
+	count := len(bools)
+	arraySize := count * C.sizeof_gboolean
+	cArray := (*C.gboolean)(C.malloc(C.ulong(arraySize)))
+	cBooleans := (*[1 << 28]C.gboolean)(unsafe.Pointer(cArray))[:count:count]
+
+	for i, boolean := range bools {
+		var cBoolean C.gboolean = C.FALSE
+		if boolean {
+			cBoolean = C.TRUE
+		}
+
+		cBooleans[i] = cBoolean
+	}
+
+	return unsafe.Pointer(cArray)
 }
