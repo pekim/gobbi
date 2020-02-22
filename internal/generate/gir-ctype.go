@@ -2,6 +2,7 @@ package generate
 
 import (
 	"fmt"
+	"github.com/dave/jennifer/jen"
 	"regexp"
 	"strings"
 )
@@ -29,4 +30,8 @@ func parseCtype(raw string) cType {
 	}
 
 	return ct
+}
+
+func (ct cType) jenCgoType() *jen.Statement {
+	return jen.Parens(jen.Op(ct.stars).Qual("C", ct.typ))
 }

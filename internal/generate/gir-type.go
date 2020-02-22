@@ -89,7 +89,7 @@ func (t *Type) isQualifiedName() bool {
 }
 
 func (t *Type) jenGoCType() *jen.Statement {
-	return jen.Parens(jen.Op(t.cType.stars).Qual("C", t.cType.typ))
+	return t.cType.jenCgoType()
 }
 
 func (t *Type) idOrQual() *jen.Statement {
