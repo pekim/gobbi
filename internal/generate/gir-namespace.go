@@ -13,6 +13,7 @@ import (
 )
 
 type Namespace struct {
+	context             *context
 	Name                string       `xml:"name,attr"`
 	Version             string       `xml:"version,attr"`
 	CIdentifierPrefixes string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
@@ -36,7 +37,8 @@ type Namespace struct {
 	unsupportedCount  int
 }
 
-func (n *Namespace) init(namespaces namespaces) {
+func (n *Namespace) init(repository *repository, namespaces namespaces) {
+	n.context = newContext(repository.context, "Namespace", n.Name)
 	n.namespaces = namespaces
 	n.cSymbolPrefixes = strings.Split(n.CSymbolPrefixes, ",")
 	n.goPackageName = strings.ToLower(n.Name)
@@ -46,10 +48,10 @@ func (n *Namespace) init(namespaces namespaces) {
 	n.Bitfields.init(n)
 	n.Constants.init(n)
 	n.Enumerations.init(n)
-	n.Functions.init(n)
-	n.Records.init(n)
-	n.Classes.init(n)
-	n.Interfaces.init((n))
+	n.Functions.init(n.context, n)
+	n.Records.init(n.context, n)
+	n.Classes.init(n.context, n)
+	n.Interfaces.init(n.context, n)
 }
 
 func (n *Namespace) generate() {

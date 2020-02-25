@@ -2,9 +2,9 @@ package generate
 
 type Constructors []*Constructor
 
-func (cc Constructors) init(ns *Namespace, record *Record) {
+func (cc Constructors) init(context *context, ns *Namespace, record *Record) {
 	for _, ctor := range cc {
-		ctor.init(ns, record)
+		ctor.init(context, ns, record)
 	}
 }
 

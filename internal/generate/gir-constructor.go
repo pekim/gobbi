@@ -8,7 +8,7 @@ type Constructor struct {
 	*Function
 }
 
-func (c *Constructor) init(ns *Namespace, record *Record) {
+func (c *Constructor) init(context *context, ns *Namespace, record *Record) {
 	// Some constructors defined in gir files reference a subclass
 	// of their real type.
 	// Ensure that all constructors return a pointer to their
@@ -16,7 +16,7 @@ func (c *Constructor) init(ns *Namespace, record *Record) {
 	c.ReturnValue.Type.CType = record.CType + "*"
 	c.ReturnValue.Type.Name = record.Name
 
-	c.Function.init(ns, record, false)
+	c.Function.init(context, ns, record, false)
 	c.Function.ctorRecord = record
 
 	c.goName = record.goName + makeExportedGoName(c.Name)

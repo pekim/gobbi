@@ -9,6 +9,7 @@ import (
 const receiverName = "recv"
 
 type Function struct {
+	context           *context
 	Name              string `xml:"name,attr"`
 	Version           string `xml:"version,attr"`
 	MovedTo           string `xml:"moved-to,attr"`
@@ -33,9 +34,10 @@ type Function struct {
 	funcInfoSetFuncGoName string
 }
 
-func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
+func (f *Function) init(context *context, ns *Namespace, record *Record, receiver bool) {
+	f.context = newContext(context, "Function", f.Name)
 	f.namespace = ns
-	f.Parameters.init(ns)
+	f.Parameters.init(f.context, ns)
 	f.ReturnValue.init(ns)
 	f.record = record
 	f.receiver = receiver

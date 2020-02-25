@@ -2,9 +2,9 @@ package generate
 
 type Functions []*Function
 
-func (ff Functions) init(ns *Namespace /*, namePrefix string*/) {
+func (ff Functions) init(context *context, ns *Namespace /*, namePrefix string*/) {
 	for _, function := range ff {
-		function.init(ns, nil, false)
+		function.init(context, ns, nil, false)
 	}
 }
 

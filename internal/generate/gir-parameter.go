@@ -7,6 +7,7 @@ import (
 )
 
 type Parameter struct {
+	context   *context
 	Name      string `xml:"name,attr"`
 	Direction string `xml:"direction,attr"`
 	Argument
@@ -21,7 +22,8 @@ type Parameter struct {
 	lengthForParam *Parameter
 }
 
-func (p *Parameter) init(ns *Namespace) {
+func (p *Parameter) init(context *context, ns *Namespace) {
+	p.context = newContext(context, "Parameter", p.Name)
 	p.namespace = ns
 
 	p.goVarName = makeUnexportedGoName(p.Name)

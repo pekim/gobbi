@@ -7,6 +7,7 @@ import (
 )
 
 type Signal struct {
+	context   *context
 	Namespace *Namespace
 
 	Name        string       `xml:"name,attr"`
@@ -20,12 +21,13 @@ type Signal struct {
 	record *Record
 }
 
-func (s *Signal) init(ns *Namespace, record *Record) {
+func (s *Signal) init(context *context, ns *Namespace, record *Record) {
+	s.context = newContext(context, "Signal", s.Name)
 	s.Namespace = ns
 	s.record = record
 	s.goName = makeExportedGoName(s.Name)
 
-	s.Parameters.init(ns)
+	s.Parameters.init(s.context, ns)
 
 	if s.ReturnValue != nil {
 		s.ReturnValue.init(ns)
