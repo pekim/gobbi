@@ -6,6 +6,7 @@ import (
 )
 
 type Parameter struct {
+	context   *context
 	Name      string `xml:"name,attr"`
 	Direction string `xml:"direction,attr"`
 	Argument
@@ -22,7 +23,8 @@ type Parameter struct {
 	lengthForParamN int
 }
 
-func (p *Parameter) init(ns *Namespace) {
+func (p *Parameter) init(ns *Namespace, parentContext *context) {
+	p.context = newContext(parentContext, "Parameter", p.Name)
 	p.namespace = ns
 	p.Type.init(ns)
 	p.Array.init(ns)

@@ -18,7 +18,7 @@ func TestTypeSysParamGoPlainType(t *testing.T) {
 			},
 		},
 	}
-	ns.init(nil, namespaces{"GLib": ns})
+	ns.init(&repository{}, namespaces{"GLib": ns})
 
 	tests := []struct {
 		name     string

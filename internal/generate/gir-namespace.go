@@ -12,6 +12,7 @@ import (
 )
 
 type Namespace struct {
+	context             *context
 	Name                string       `xml:"name,attr"`
 	Version             string       `xml:"version,attr"`
 	CIdentifierPrefixes string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
@@ -42,6 +43,7 @@ type Namespace struct {
 }
 
 func (n *Namespace) init(repository *repository, namespaces namespaces) {
+	n.context = newContext(repository.context, "Namespace", n.Name)
 	n.repository = repository
 	n.namespaces = namespaces
 	n.cSymbolPrefixes = strings.Split(n.CSymbolPrefixes, ",")

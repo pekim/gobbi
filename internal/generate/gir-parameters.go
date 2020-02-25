@@ -4,11 +4,11 @@ import "fmt"
 
 type Parameters []*Parameter
 
-func (pp Parameters) init(ns *Namespace) {
+func (pp Parameters) init(ns *Namespace, parentContext *context) {
 	pp.pairUpArrayLengthParams()
 
 	for _, param := range pp {
-		param.init(ns)
+		param.init(ns, parentContext)
 	}
 }
 

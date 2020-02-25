@@ -18,7 +18,7 @@ func TestParameterSysParamGoType(t *testing.T) {
 			},
 		},
 	}
-	ns.init(nil, namespaces{"GLib": ns})
+	ns.init(&repository{}, namespaces{"GLib": ns})
 
 	tests := []struct {
 		name     string
@@ -85,7 +85,7 @@ func TestParameterSysParamGoType(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			test.param.init(ns)
+			test.param.init(ns, &context{})
 
 			// generate
 			f := jen.NewFile("test")

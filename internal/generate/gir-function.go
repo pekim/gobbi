@@ -6,6 +6,7 @@ import (
 )
 
 type Function struct {
+	context           *context
 	Name              string `xml:"name,attr"`
 	Version           string `xml:"version,attr"`
 	MovedTo           string `xml:"moved-to,attr"`
@@ -28,6 +29,7 @@ type Function struct {
 }
 
 func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
+	f.context = newContext(ns.context, "Function", f.Name)
 	f.namespace = ns
 	f.applyAddenda()
 	f.version = versionNew(f.Version)
@@ -43,9 +45,9 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 
 	f.sysName = "Fn_" + f.CIdentifier
 	if f.InstanceParameter != nil {
-		f.InstanceParameter.init(ns)
+		f.InstanceParameter.init(ns, f.context)
 	}
-	f.Parameters.init(ns)
+	f.Parameters.init(ns, f.context)
 	f.ReturnValue.init(ns)
 }
 

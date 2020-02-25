@@ -8,6 +8,8 @@ import (
 )
 
 type repository struct {
+	context *context
+
 	// xml mappings
 	XMLName   xml.Name  `xml:"repository"`
 	Version   string    `xml:"Version,attr"`
@@ -31,6 +33,8 @@ func repositoryFromFile(spec repositorySpec) *repository {
 }
 
 func (r *repository) loadFromFile(filename string, required bool) {
+	r.context = newContext(nil, "Filename", filename)
+
 	filepath := projectFilepath("gir-files", filename)
 	source, err := ioutil.ReadFile(filepath)
 	if err != nil {
