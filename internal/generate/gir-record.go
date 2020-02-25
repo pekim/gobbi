@@ -8,6 +8,7 @@ import (
 )
 
 type Record struct {
+	context        *context
 	Name           string       `xml:"name,attr"`
 	Version        string       `xml:"version,attr"`
 	CSymbolPrefix  string       `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefix,attr"`
@@ -35,7 +36,8 @@ type Record struct {
 	giInfoSetFuncGoName string
 }
 
-func (r *Record) init(ns *Namespace, giInfoType string) {
+func (r *Record) init(context *context, ns *Namespace, giInfoType string) {
+	r.context = newContext(context, "Record", r.Name)
 	r.namespace = ns
 
 	r.goName = r.Name
@@ -51,11 +53,11 @@ func (r *Record) init(ns *Namespace, giInfoType string) {
 	r.giInfoOnceGoName = fmt.Sprintf("%s_Once", r.giInfoGoName)
 	r.giInfoSetFuncGoName = fmt.Sprintf("%s_Set", r.giInfoGoName)
 
-	r.Constructors.init(ns, r)
-	r.Functions.init(ns /*r.GoName*/)
-	r.Methods.init(ns, r)
+	r.Constructors.init(r.context, ns, r)
+	r.Functions.init(r.context, ns /*r.GoName*/)
+	r.Methods.init(r.context, ns, r)
 	r.Fields.init(ns, r)
-	r.Signals.init(ns, r)
+	r.Signals.init(r.context, ns, r)
 }
 
 func (r *Record) generate(f *file) {

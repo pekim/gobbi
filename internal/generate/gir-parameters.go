@@ -7,7 +7,7 @@ import (
 
 type Parameters []*Parameter
 
-func (pp Parameters) init(ns *Namespace) {
+func (pp Parameters) init(context *context, ns *Namespace) {
 	//pp.fixupArgcArgv()
 	//pp.fixupStringLengthParams()
 	//pp.fixupFormatArgs()
@@ -29,7 +29,7 @@ func (pp Parameters) init(ns *Namespace) {
 	}
 
 	for _, param := range pp {
-		param.init(ns)
+		param.init(context, ns)
 
 		//if param.Array != nil {
 		//	if param.Array.Type != nil {

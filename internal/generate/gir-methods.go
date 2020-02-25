@@ -2,9 +2,9 @@ package generate
 
 type Methods []*Method
 
-func (mm Methods) init(ns *Namespace, record *Record) {
+func (mm Methods) init(context *context, ns *Namespace, record *Record) {
 	for _, m := range mm {
-		m.init(ns, record)
+		m.init(context, ns, record)
 	}
 }
 

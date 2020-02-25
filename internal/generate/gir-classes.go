@@ -2,9 +2,9 @@ package generate
 
 type Classes []*Class
 
-func (cc Classes) init(ns *Namespace) {
+func (cc Classes) init(context *context, ns *Namespace) {
 	for _, class := range cc {
-		class.init(ns)
+		class.init(context, ns)
 	}
 }
 

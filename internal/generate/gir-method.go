@@ -4,6 +4,6 @@ type Method struct {
 	*Function
 }
 
-func (m *Method) init(ns *Namespace, record *Record) {
-	m.Function.init(ns, record, true)
+func (m *Method) init(context *context, ns *Namespace, record *Record) {
+	m.Function.init(context, ns, record, true)
 }

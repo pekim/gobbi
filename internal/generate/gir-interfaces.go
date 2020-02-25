@@ -2,9 +2,9 @@ package generate
 
 type Interfaces []*Interface
 
-func (ii Interfaces) init(ns *Namespace) {
+func (ii Interfaces) init(context *context, ns *Namespace) {
 	for _, i := range ii {
-		i.init(ns, "Interface")
+		i.init(context, ns, "Interface")
 	}
 }
 

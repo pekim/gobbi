@@ -2,9 +2,9 @@ package generate
 
 type Records []*Record
 
-func (rr Records) init(ns *Namespace) {
+func (rr Records) init(context *context, ns *Namespace) {
 	for _, record := range rr {
-		record.init(ns, "Struct")
+		record.init(context, ns, "Struct")
 	}
 }
 

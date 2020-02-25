@@ -45,7 +45,7 @@ func (ss RepositorySpecs) Generate() {
 	// Deep initialise all namespaces.
 	// In particular provide descendants with their namespace.
 	for _, r := range rr {
-		r.Namespace.init(namespaces)
+		r.Namespace.init(r, namespaces)
 	}
 
 	// Generate files for all namespaces

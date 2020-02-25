@@ -1358,35 +1358,20 @@ func initFunction_Set() error {
 // Init is a representation of the C type gtk_init.
 func Init(argv []string) (int32, []string) {
 	var inArgs [2]gi.Argument
-	l := len(argv)
-	inArgs[0].SetPointer(unsafe.Pointer(&l))
-	in1Array := gi.CArrayFromStringSlice(argv, false)
-	var i1 *unsafe.Pointer
-	if in1Array != nil {
-		i1 = &in1Array[0]
-	}
-	inArgs[1].SetPointer(unsafe.Pointer(&i1))
-
-	in1ArrayCopy := append([]unsafe.Pointer(nil), in1Array...)
-	defer func() {
-		gi.FreeCStringArray(in1ArrayCopy)
-	}()
+	inArgs[0].SetInt32(int32(len(argv)))
+	inArgs[1].SetStringArray(argv)
 
 	var outArgs [2]gi.Argument
-	outArgs[0] = inArgs[0]
-	outArgs[1] = inArgs[1]
 
 	err := initFunction_Set()
 	if err == nil {
 		initFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	o0 := (*int32)(outArgs[0].Pointer())
+	out0 := outArgs[0].Int32()
+	out1 := outArgs[1].StringArray(true)
 
-	o1 := (*unsafe.Pointer)(outArgs[1].Pointer())
-	out1 := gi.StringSliceFromCArray(*o1, int(*o0))
-
-	return *o0, out1
+	return out0, out1
 }
 
 var initCheckFunction *gi.Function

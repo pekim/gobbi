@@ -2,9 +2,9 @@ package generate
 
 type Signals []*Signal
 
-func (ss Signals) init(ns *Namespace, record *Record) {
+func (ss Signals) init(context *context, ns *Namespace, record *Record) {
 	for _, signal := range ss {
-		signal.init(ns, record)
+		signal.init(context, ns, record)
 	}
 }
 

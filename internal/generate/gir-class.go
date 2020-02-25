@@ -11,8 +11,8 @@ type Class struct {
 	Implements Implementss `xml:"implements"`
 }
 
-func (c *Class) init(ns *Namespace) {
-	c.Record.init(ns, "Object")
+func (c *Class) init(context *context, ns *Namespace) {
+	c.Record.init(context, ns, "Object")
 	c.setParent()
 }
 
