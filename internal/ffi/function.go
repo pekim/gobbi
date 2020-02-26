@@ -9,6 +9,7 @@ import (
 // #include <stdlib.h>
 // #include <stdio.h>
 // #cgo pkg-config: libffi
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 /*
 static void cc() {
   ffi_cif cif;
