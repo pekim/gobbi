@@ -37,7 +37,7 @@ func OpenLibrary(name string, filename string) *Library {
 	}
 }
 
-func (l *Library) function(name string, argTypes []Type, returnType Type) *Function {
+func (l *Library) Function(name string, argTypes []Type, returnType Type) *Function {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
 
@@ -45,7 +45,7 @@ func (l *Library) function(name string, argTypes []Type, returnType Type) *Funct
 	fn := C.dlsym(l.handle, cName)
 	if fn == nil {
 		dlError := C.GoString(C.dlerror())
-		err := fmt.Errorf("Failed to find function : %s", dlError)
+		err := fmt.Errorf("Failed to find Function : %s", dlError)
 		handleError(err)
 		return nil
 	}

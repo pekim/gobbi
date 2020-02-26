@@ -24,7 +24,7 @@ func TestLibraryFunction(t *testing.T) {
 	})
 
 	lib := OpenLibrary("Gtk", "libgtk-3.so.0")
-	fn := lib.function("gtk_init", []Type{}, Type_void)
+	fn := lib.Function("gtk_init", []Type{}, Type_void)
 
 	assert.NotEqual(t, unsafe.Pointer(nil), fn.fn)
 	assert.False(t, handledError)
@@ -37,8 +37,18 @@ func TestLibraryFunctionNotFound(t *testing.T) {
 	})
 
 	lib := OpenLibrary("Gtk", "libgtk-3.so.0")
-	fn := lib.function("bad", []Type{}, Type_void)
+	fn := lib.Function("bad", []Type{}, Type_void)
 
 	assert.Nil(t, fn)
 	assert.True(t, handledError)
+}
+
+func TestLibraryFunctionCall(t *testing.T) {
+	SetErrorHandler(func(err error) {
+		panic(err)
+	})
+
+	lib := OpenLibrary("GLib", "libglib-2.0.so.0")
+	fn := lib.Function("g_utf8_strdown", []Type{Type_pointer, Type_slong}, Type_void)
+	fn.Call()
 }
