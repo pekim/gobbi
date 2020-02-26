@@ -18,3 +18,7 @@ func Utf8Strdown(str string, len int64) string {
 
 	return retGo
 }
+
+func Malloc(length int) {
+	C.malloc(C.ulong(length))
+}
