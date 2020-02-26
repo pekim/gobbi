@@ -5,14 +5,20 @@ import (
 	"testing"
 )
 
-func BenchmarkGiCall(b *testing.B) {
+func BenchmarkGiGlibCall(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		glib.Utf8Strdown("AaBbCc-Zz", -1)
 	}
 }
 
-func BenchmarkCgoCall(b *testing.B) {
+func BenchmarkCgoGlibCall(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		Utf8Strdown("AaBbCc-Zz", -1)
+	}
+}
+
+func BenchmarkCgoCall(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		Malloc(1)
 	}
 }
