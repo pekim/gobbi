@@ -23,12 +23,9 @@ func (t *Type) sysParamGoPlainType() *jen.Statement {
 		return jenUnsafePointer()
 	}
 
-	if t.isNumber() {
-		return jen.Add(simpleSysParamGoTypes[t.cType.typ])
+	if simpleGoType, ok := simpleSysParamGoTypes[t.cType.typ]; ok {
+		return jen.Add(simpleGoType)
 	}
-	//if simpleGoType, ok := simpleSysParamGoTypes[t.cType.typ]; ok {
-	//	return jen.Add(simpleGoType)
-	//}
 
 	if t.isAlias() {
 		if t.isQualifiedName() {
