@@ -52,6 +52,10 @@ func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
 		return jen.Id("toCBool").Call(goValue)
 	}
 
+	if p.Type.cType.indirectionCount == 0 && p.Type.isNumber() {
+		return jen.Parens(jen.Qual("C", p.Type.cType.typ)).Parens(goValue)
+	}
+
 	if p.Type.cType.indirectionCount > 0 {
 		goValue = jenUnsafePointer().Call(goValue)
 	}
