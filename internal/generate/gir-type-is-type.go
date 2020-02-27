@@ -1,5 +1,7 @@
 package generate
 
+import "strings"
+
 func (t *Type) isAlias() bool {
 	if t.isQualifiedName() {
 		_, found := t.foreignNamespace.Aliases.byName(t.foreignName)
@@ -95,8 +97,22 @@ func (t *Type) isVaList() bool {
 	return t.Name == "va_list"
 }
 
+func (t *Type) isBoolean() bool {
+	return t.Name == "gboolean"
+}
+
+func (t *Type) isPointer() bool {
+	return t.Name == "gpointer"
+}
+
+func (t *Type) isNumber() bool {
+	return strings.HasPrefix(t.Name, "g") &&
+		!t.isBoolean() &&
+		!t.isPointer()
+}
+
 func (t *Type) isLongDouble() bool {
-	return t.cType.typ == "long double"
+	return t.Name == "long double"
 }
 
 func (t *Type) isString() bool {
