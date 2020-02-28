@@ -27,7 +27,7 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 			Add(p.Array.sysParamGoType())
 	}
 
-	panic(fmt.Sprintf("Parameter is not a type or an array: %s", p.Name))
+	panic(fmt.Sprintf("Parameter is not a type or an array: %s", p.context))
 }
 
 func (p *Parameter) generateSysCArg(g *jen.Group, goVarName string, cVarName string) {
@@ -70,7 +70,8 @@ func (p *Parameter) generateSysCArgString(g *jen.Group, goVarName string, cVarNa
 		return
 	}
 
-	panic(fmt.Sprintf("Unsupported indirection count (%d) for string param ", p.Type.cType.indirectionCount))
+	panic(fmt.Sprintf("Unsupported indirection count (%d) for string param : %s",
+		p.Type.cType.indirectionCount, p.context))
 }
 
 func (p *Parameter) generateSysCArgStringSimple(g *jen.Group, goVarName string, cVarName string) {
@@ -111,7 +112,7 @@ func (p *Parameter) generateSysCArgOut(g *jen.Group, goVarName string, cVarName 
 
 	if p.Array != nil {
 		if p.lengthParam == nil {
-			panic(fmt.Sprintf("No length param for %s", p.Name))
+			panic(fmt.Sprintf("No length param for %s", p.context))
 		}
 
 		if p.Array.Type.isString() && p.Array.cType.indirectionCount == 3 {
@@ -223,7 +224,8 @@ func (p *Parameter) generateSysCArgArray(g *jen.Group, goVarName string, cVarNam
 			return
 		}
 
-		panic(fmt.Sprintf("Unsupported indirection count (%d) for array string param %s", p.Array.cType.indirectionCount, p.Name))
+		panic(fmt.Sprintf("Unsupported indirection count (%d) for array string param : %s",
+			p.Array.cType.indirectionCount, p.context))
 	}
 
 	if p.isOut() {
@@ -233,8 +235,6 @@ func (p *Parameter) generateSysCArgArray(g *jen.Group, goVarName string, cVarNam
 		p.generateSysCArgArrayNonString(g, goVarName, cVarName)
 		return
 	}
-
-	panic(fmt.Sprintf("Unsupported indirection count (%d) for array param %s", p.Array.cType.indirectionCount, p.Name))
 }
 
 func (p *Parameter) generateSysCArgArrayString(g *jen.Group, goVarName string, cVarName string) {
@@ -347,6 +347,6 @@ func (p *Parameter) generateSysCArgArrayNonStringOut(g *jen.Group, goVarName str
 	g.Id(cVarName).Op(":=").Op("&").Id(cArrayPointerVarName)
 
 	if p.isIn() {
-		panic(fmt.Sprintf("Unsupported inout array param %s", p.Name))
+		panic(fmt.Sprintf("Unsupported inout array param : %s", p.context))
 	}
 }
